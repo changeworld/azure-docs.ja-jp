@@ -7,13 +7,13 @@ ms.custom: mvc
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
-ms.date: 09/15/2021
-ms.openlocfilehash: 0cedb35e03427c3c8827a4a47e3358cc7e7d5758
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/15/2021
+ms.openlocfilehash: aed4439cf608c5080d5c429a4f3af957bd77ccdb
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701581"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070130"
 ---
 # <a name="product-updates-for-postgresql---hyperscale-citus"></a>PostgreSQL - Hyperscale (Citus) の製品更新
 
@@ -28,6 +28,12 @@ Azure Database for PostgreSQL - Hyperscale (Citus) では、未リリースの�
 現在プレビュー向けに提供されている機能は次のとおりです。
 
 * **[pgAudit](concepts-hyperscale-audit.md)** 。 PostgreSQL の標準的なログ記録機能を使用して、セッションおよびオブジェクトの詳細な監査ログを提供します。 特定の政府、財務、ISO 認定の監査を通過するうえで必要な監査ログが生成されます。
+* **[プライベート アクセス](concepts-hyperscale-private-access.md)** 。
+  仮想ネットワーク (VNet) 上のホストが、プライベート エンドポイント経由で Hyperscale (Citus) サーバー グループに安全にアクセスできます。
+
+> [!NOTE]
+>
+> プライベート アクセスは、[特定のリージョン](concepts-hyperscale-limits.md#regions)でのみプレビューで使用できます。
 
 ## <a name="contact-us"></a>お問い合わせ
 

@@ -3,7 +3,7 @@ title: 仮想マシンを別のリージョンに移動する (Azure Site Recove
 description: Azure 内のあるリージョンから別のリージョンに SQL Server 仮想マシンを移行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0cd917ced00220d1251b5aa1118f4287623b9445
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d35912c6edafed201a037c8c865746fb299cb1d7
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080041"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163786"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 内の別のリージョンに SQL Server VM を移動する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,4 +156,4 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM における SQL Server に関するよくあるご質問](frequently-asked-questions-faq.yml)
 * [Windows VM における SQL Server に関する料金ガイダンス](pricing-guidance.md)
-* [Windows VM における SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

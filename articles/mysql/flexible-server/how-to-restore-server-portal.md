@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/01/2021
-ms.openlocfilehash: 687d9386d330e5b09366e22ace8f7fd8666ee9d9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 20632b46067f7ec1db6add26d9bed4318f6a7fd5
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781065"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069617"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Azure portal を使用した Azure Database for MySQL - フレキシブル サーバー (プレビュー) のポイントインタイム リストア
 
@@ -80,7 +80,7 @@ ms.locfileid: "121781065"
 9. 既存の **プライベート DNS ゾーン** を選択するか、新たに作成します。
     > [!NOTE]
     > プライベート DNS ゾーン名は、`mysql.database.azure.com` で終わる必要があります。 </br>
-    > 新しいプライベート DNS ゾーンを作成するオプションが表示されない場合は、 **[基本]** タブでサーバー名を入力してください。</br>
+    > 新しいプライベート DNS ゾーンを作成するオプションが表示されない場合は、 **[基本]** タブにサーバー名を入力してください。</br>
     > フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、パブリック アクセス (許可された IP アドレス) に移動することはできません。</br>
 
     :::image type="content" source="./media/how-to-manage-virtual-network-portal/private-dns-zone.png" alt-text="DNS の構成":::

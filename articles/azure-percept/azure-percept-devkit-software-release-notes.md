@@ -7,18 +7,30 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: f957ad88d89b9d31ab8e073214e765dbbdb13094
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: dd0d2c3e8466d0f5b4486be7c15b0092d7026a5e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224924"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996249"
 ---
 # <a name="azure-percept-dk-software-release-notes"></a>Azure Percept DK ソフトウェアのリリース ノート
 
 このページでは、Azure Percept DK OS とファームウェアの各リリースの変更点と修正内容について説明します。
 
 更新プログラムのイメージをダウンロードするには、[USB ケーブル経由の更新用 Azure Percept DK ソフトウェア リリース](./software-releases-usb-cable-updates.md)または [OTA 経由の更新用 Azure Percept DK ソフトウェア リリース](./software-releases-over-the-air-updates.md)に関するページを参照してください。
+
+## <a name="september-2109-release"></a>9 月 (2109) のリリース
+
+- Wi-Fi:
+  - hostapd.service が常に再試行、再起動されないように、自動選択のチャネルではなく固定チャネルを使用します。
+- セットアップ エクスペリエンス:
+  - OOBE サーバー システム エラーがローカライズされています。
+  - IPv6 の複数のルーティング テーブルを有効にします。
+- オペレーティング システム
+  - 最新のセキュリティ修正プログラム。
+  - Nginx サービスがルートではないユーザーとして実行されます。
+
 
 ## <a name="july-2107-release"></a>7 月 (2107) リリース
 

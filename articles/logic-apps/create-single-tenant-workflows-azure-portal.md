@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 09/25/2021
-ms.openlocfilehash: 33a40f118daf90ccc97ea6c14b87c5aa7c79b6c9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 10/05/2021
+ms.openlocfilehash: 5be8a3cfa8681bced90ba6fc74ebc69baa2f7962
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708819"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065675"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Azure portal でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
@@ -55,6 +55,8 @@ ms.locfileid: "129708819"
 
 * [Application Insights](../azure-monitor/app/app-insights-overview.md) の使用をサポートする設定を使用してロジック アプリ リソースを作成する場合は、必要に応じて、ロジック アプリの診断ログとトレースを有効にすることができます。 ロジック アプリを作成するとき、またはデプロイの後に、それを行うことができます。 Application Insights のインスタンスを用意する必要がありますが、このリソースは、[事前に](../azure-monitor/app/create-workspace-resource.md)、ロジック アプリを作成するときに、またはデプロイの後で、作成することができます。
 
+* **Logic App (Standard)** リソースを [App Service Environment v3 (ASEv3)](../app-service/environment/overview.md) にデプロイするには、まずこの環境リソースを作成する必要があります。 ロジック アプリ リソースを作成するときに、配置場所としてこの環境を選択できます。 詳細については、「[リソースの種類と環境](single-tenant-overview-compare.md#resource-environment-differences)」と「[App Service Environment を作成する](../app-service/environment/creation.md)」を参照してください。
+
 <a name="create-logic-app-resource"></a>
 
 ## <a name="create-the-logic-app-resource"></a>ロジック アプリ リソースを作成する
@@ -75,8 +77,8 @@ ms.locfileid: "129708819"
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | ロジック アプリと関連リソースを作成する Azure リソース グループ。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows-RG` という名前のリソース グループを作成します。 |
    | **Type** | はい | **Standard** | このロジック アプリ リソースの種類は、シングルテナント Azure Logic Apps 環境で実行され、[Standard 使用、課金、価格モデル](logic-apps-pricing.md#standard-pricing)を使用します。 |
    | **ロジック アプリ名** | はい | <*ロジック アプリ名*> | ロジック アプリに使用する名前。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows` という名前のロジック アプリを作成します。 <p><p>**注**:**ロジック アプリ (Standard)** リソースには Azure Functions の機能が利用され、同じアプリ名前付け規則が使用されるため、ロジック アプリの名前には `.azurewebsites.net` というサフィックスが自動的に付けられます。 |
-   | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 既定では、シングル テナント Azure Logic Apps にデプロイするための **ワークフロー** が選択されています。 Azure により、最初のワークフローを追加する必要がある空のロジック アプリ リソースが作成されます。 <p><p>**注**: 現時点では、**Docker コンテナー** オプションを使用するには Azure Arc enabled Kubernetes クラスター上に "[*カスタムの場所*](../azure-arc/kubernetes/conceptual-custom-locations.md)" が必要です。これは、[Azure Arc enabled Logic Apps (プレビュー)](azure-arc-enabled-logic-apps-overview.md) で使用できます。 ロジック アプリのリソースの場所、カスタムの場所、クラスターはすべて同じである必要があります。 |
-   | **[リージョン]** | はい | <*Azure-region*> | リソース グループやリソースを作成する際に使用する場所です。 **[Docker コンテナー]** を選択した場合は、カスタムの場所を選択します。 <p><p>この例では、サンプル ロジック アプリを Azure にデプロイし、**米国西部** を使用します。 |
+   | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 既定では、シングル テナント Azure Logic Apps にデプロイするための **ワークフロー** が選択されています。 Azure により、最初のワークフローを追加する必要がある空のロジック アプリ リソースが作成されます。 <p><p>**注**: 現時点では、**Docker コンテナー** オプションを使用するには Azure Arc enabled Kubernetes クラスター上に [*カスタムの場所*](../azure-arc/kubernetes/conceptual-custom-locations.md) が必要です。これは、[Azure Arc enabled Logic Apps (プレビュー)](azure-arc-enabled-logic-apps-overview.md) で使用できます。 ロジック アプリのリソースの場所、カスタムの場所、クラスターはすべて同じである必要があります。 |
+   | **[リージョン]** | はい | <*Azure-region*> | リソース グループやリソースを作成する際に使用する場所です。 この例では、サンプル ロジック アプリを Azure にデプロイし、**米国西部** を使用します。 <p>- **[Docker コンテナー]** を選択した場合は、カスタムの場所を選択します。 <p>- あらかじめ存在している必要がある [ASEv3](../app-service/environment/overview.md) リソースにデプロイするには、**[リージョン]** の一覧からその環境リソースを選択します。 |
    |||||
 
    次の例は、 **[ロジックアプリの作成 (標準)]** ページを示しています。

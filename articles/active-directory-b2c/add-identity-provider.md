@@ -1,21 +1,21 @@
 ---
-title: ID プロバイダーの追加 - Azure Active Directory B2C | Microsoft Docs
+title: ID プロバイダーの追加 - Azure Active Directory B2C
 description: Active Directory B2C テナントに ID プロバイダーを追加する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
-ms.author: mimart
+author: kengaderdus
+manager: CelesteDG
+ms.author: kengaderdus
 ms.date: 04/29/2021
 ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9c7eda8db68d4b9fba532d2f665f31d302a7822e
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 92cbc796d4372c6127922ac6cac11d803a29b293
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277212"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039982"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントへの ID プロバイダーの追加
 

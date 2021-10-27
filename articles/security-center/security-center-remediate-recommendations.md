@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: c35b9de3b4660c3a5f809fe519040618142490dd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 18871a1c8b98efd7bd759f3114d089f885e8be22
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763369"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047021"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -68,12 +68,12 @@ ms.locfileid: "124763369"
 
 ## <a name="fix-actions-logged-to-the-activity-log"></a>アクティビティ ログに記録された修正プログラム アクション<a name="activity-log"></a>
 
-修復操作では、テンプレートのデプロイまたは REST PATCH API の呼び出しを使用して、リソースに構成を適用します。 これらの操作は、[Azure のアクティビティ ログ](../azure-monitor/essentials/activity-log.md)に記録されます。
+修復操作では、テンプレートのデプロイまたは REST API `PATCH` 要求を使用して、リソースに構成を適用します。 これらの操作は、[Azure のアクティビティ ログ](../azure-monitor/essentials/activity-log.md)に記録されます。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
+このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 Security Center の詳細については、次のページを参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています
 * [セキュリティ ポリシー、イニシアティブ、および推奨事項とは](security-policy-concept.md)

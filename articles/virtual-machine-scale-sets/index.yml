@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 3b50b0bc3c25a157c3af62004d2fb34f3bb2fcef
-  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+  ms.openlocfilehash: 9aa8dadbc9ea3514e9595d047470c7d433db00bd
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/23/2021
-  ms.locfileid: "122691313"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130245798"
 landingContent:
 - title: 仮想マシン スケール セットについて
   linkLists:
@@ -91,3 +91,17 @@ landingContent:
       url: ../virtual-machines/flexible-virtual-machine-scale-sets-portal.md
     - text: Virtual Machine Scale Sets のオーケストレーション モード
       url: virtual-machine-scale-sets-orchestration-modes.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: トラブルシューティング ガイド
+      url: /troubleshoot/azure/virtual-machine-scale-sets/welcome-virtual-machine-scale-sets
+    - text: スケーリング エラーのトラブルシューティング
+      url: /troubleshoot/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-quota-exceeded
+    - text: デプロイ エラーのトラブルシューティング
+      url: /troubleshoot/azure/virtual-machine-scale-sets/vmss-public-ip-count-limit-exceeded
+    - text: 拡張機能に関する問題のトラブルシューティング
+      url: /troubleshoot/azure/virtual-machine-scale-sets/vm-extension-provisioning-errors
+    - text: Microsoft Q&A
+      url: /answers/topics/azure-virtual-machine-scale-sets.html

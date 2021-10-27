@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 1966ce24919e2d98658afe2cec09d37e3b567c60
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 58e5f6f5646eb2dd75215a17349b053426b7c837
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387489"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133331"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
@@ -29,27 +29,28 @@ ms.locfileid: "129387489"
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
 | **汎用**  |        |             |                 |                      |
-| D2s_v3               | 2      | 8 GiB       | 859             | 856                  |
-| D4s_v3               | 4      | 16 GiB      | 1719            | 1716                 |
-| D8s_v3               | 8      | 32 GiB      | 3438            | 3435                 |
-| D16s_v3              | 16     | 64 GiB      | 5000            | 4997                 |
-| D32s_v3              | 32     | 128 GiB     | 5000            | 4997                 |
-| D48s_v3              | 48     | 192 GiB     | 5000            | 4997                 |
-| D64s_v3              | 64     | 256 GiB     | 5000            | 4997                 |
+| D2s_v3  / D2ds_v4    | 2      | 8 GiB       | 859             | 856                  |
+| D4s_v3  / D4ds_v4    | 4      | 16 GiB      | 1719            | 1716                 |
+| D8s_v3  / D8ds_V4    | 8      | 32 GiB      | 3438            | 3435                 |
+| D16s_v3 / D16ds_v4   | 16     | 64 GiB      | 5000            | 4997                 |
+| D32s_v3 / D32ds_v4   | 32     | 128 GiB     | 5000            | 4997                 |
+| D48s_v3 / D48ds_v4   | 48     | 192 GiB     | 5000            | 4997                 |
+| D64s_v3 / D64ds_v4   | 64     | 256 GiB     | 5000            | 4997                 |
 | **メモリ最適化** |        |             |                 |                      |
-| E2s_v3               | 2      | 16 GiB      | 1719            | 1716                 |
-| E4s_v3               | 4      | 32 GiB      | 3438            | 3433                 |
-| E8s_v3               | 8      | 64 GiB      | 5000            | 4997                 |
-| E16s_v3              | 16     | 128 GiB     | 5000            | 4997                 |
-| E32s_v3              | 32     | 256 GiB     | 5000            | 4997                 |
-| E48s_v3              | 48     | 384 GiB     | 5000            | 4997                 |
-| E64s_v3              | 64     | 432 GiB     | 5000            | 4997                 |
+| E2s_v3  / E2ds_v4    | 2      | 16 GiB      | 1719            | 1716                 |
+| E4s_v3  / E4ds_v4    | 4      | 32 GiB      | 3438            | 3433                 |
+| E8s_v3  / E8ds_v4    | 8      | 64 GiB      | 5000            | 4997                 |
+| E16s_v3 / E16ds_v4   | 16     | 128 GiB     | 5000            | 4997                 |
+| E20ds_v4             | 20     | 160 GiB     | 5000            | 4997                 |
+| E32s_v3 / E32ds_v4   | 32     | 256 GiB     | 5000            | 4997                 |
+| E48s_v3 / E48ds_v4   | 48     | 384 GiB     | 5000            | 4997                 |
+| E64s_v3 / E64ds_v4   | 64     | 432 GiB     | 5000            | 4997                 |
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > FATAL:  sorry, too many clients already. (致命的: 申し訳ありません。クライアントが多すぎます。)
 
 > [!IMPORTANT]
-> 最適なエクスペリエンスを得るために、pgBouncer のような接続プーラーを使用して、接続を効率的に管理することをお勧めします。
+> 最適なエクスペリエンスを得るために、pgBouncer のような接続プール マネージャーを使用して、接続を効率的に管理することをお勧めします。 Azure Database for PostgreSQL - フレキシブル サーバーでは、[組み込みの接続プールの管理ソリューション](concepts-pgbouncer.md)として PgBouncer が提供されます。 
 
 PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリを占有する可能性があります。 また、新しい接続の作成には時間もかかります。 ほとんどのアプリケーションでは、短時間の接続を多数要求します。これにより、この状況が悪化します。 結果として、実際のワークロードに使用できるリソースが少なくなるため、パフォーマンスが低下します。 接続プールを使用すると、アイドル状態の接続の数を削減し、既存の接続を再利用して問題を回避できます。 詳細については、[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)を参照してください。
 

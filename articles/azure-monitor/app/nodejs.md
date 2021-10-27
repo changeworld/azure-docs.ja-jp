@@ -4,12 +4,12 @@ description: Application Insights を使用して Node.js サービスのパフ�
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 703862d80a7c079739c3bb7f733ae417375675e9
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3148dccc9bf6e99d528e34fe54643c871d4a28b5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287139"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162858"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -69,6 +69,9 @@ TelemetryClient API を使用して手動でインストルメント化すれば
     `appInsights.defaultClient.config.disableAppInsights = true` を設定すると、テレメトリを送信することなく SDK を試すことができます。
 
 5. `appInsights.start();` を呼び出して、データの収集と送信を自動的に開始します。
+
+> [!NOTE]
+> Application Insights インストルメンテーションの使用の一部として、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a> アプリを監視する
 

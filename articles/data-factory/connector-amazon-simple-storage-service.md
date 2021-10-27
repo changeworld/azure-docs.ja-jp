@@ -1,22 +1,22 @@
 ---
-title: Amazon Simple Storage Service (S3) からデータをコピーする
+title: Amazon Simple Storage Service (S3) のデータのコピーと変換を行う
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory または Synapse Analytics パイプラインを使用して、Amazon Simple Storage Service (S3) のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
+description: Amazon Simple Storage Service (S3) からデータをコピーし、Azure Data Factory または Azure Synapse Analytics パイプラインを使用して Amazon Simple Storage Service (S3) のデータを変換する方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: baaf601ce6ab21a524cbabc7188de24231002ffd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/15/2021
+ms.openlocfilehash: ffc3a58ef83d667c812ae1c4b9cc3f899a1aa03d
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762086"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064003"
 ---
-# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Amazon Simple Storage Service からデータをコピーする
+# <a name="copy-and-transform-data-in-amazon-simple-storage-service-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Amazon Simple Storage Service のデータのコピーと変換を行う
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 >
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
@@ -24,7 +24,7 @@ ms.locfileid: "124762086"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Amazon Simple Storage Service (Amazon S3) からデータをコピーする方法を概説します。 詳細については、[Azure Data Factory](introduction.md) と [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
+この記事では、コピーアクティビティを使用して、Amazon Simple Storage Service (Amazon S3) からデータをコピーし、Data Flow を使用して Amazon S3 のデータを変換する方法について説明します。 詳細については、[Azure Data Factory](introduction.md) と [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 >[!TIP]
 >Amazon S3 から Azure Storage へのデータ移行のシナリオの詳細については、「[Amazon S3 から Azure Storage にデータを移行する](data-migration-guidance-s3-azure-storage.md)」を参照してください。
@@ -281,6 +281,81 @@ Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設�
 ## <a name="preserve-metadata-during-copy"></a>コピー中にメタデータを保存する
 
 Amazon S3 から Azure Data Lake Storage Gen2 または Azure Blob ストレージにファイルをコピーする場合、ファイルのメタデータをデータと共に保存することもできます。 詳細については、[メタデータの保存](copy-activity-preserve-metadata.md#preserve-metadata)に関する記事を参照してください。
+
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+マッピング データ フローでデータを変換するときに、次の形式で Amazon S3 からファイルを読み取ることができます。
+
+- [Avro](format-avro.md#mapping-data-flow-properties)
+- [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)
+- [Delta](format-delta.md#mapping-data-flow-properties)
+- [Excel](format-excel.md#mapping-data-flow-properties)
+- [JSON](format-json.md#mapping-data-flow-properties)
+- [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+形式固有の設定は、各形式のドキュメントに記載されています。 詳細については、「[マッピング データ フローのソース変換](data-flow-source.md)」を参照してください。
+
+> [!NOTE]
+> Amazon S3 のソース変換は、現在、**Azure Synapse Analytics** ワークスペースでのみサポートされています。
+
+### <a name="source-transformation"></a>ソース変換
+
+ソース変換では、Amazon S3 のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 ファイルの読み取り方法を管理するには、 **[ソース オプション]** タブを使用します。 
+
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="ソース オプションのスクリーンショット。":::
+
+**ワイルドカード パス:** ワイルドカード パターンを使用して、1 回のソース変換で、一致するフォルダーとファイルをそれぞれループ処理するようサービスに指示します。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンにマウス ポインターを合わせると表示されるプラス記号を使って、複数のワイルドカード一致パターンを追加します。
+
+ソース コンテナーから、パターンに一致する一連のファイルを選択します。 データセット内で指定できるのはコンテナーのみです。 そのため、ワイルドカード パスには、ルート フォルダーからのフォルダー パスも含める必要があります。
+
+ワイルドカードの例:
+
+- `*` - 任意の文字セットを表します。
+- `**` - ディレクトリの再帰的な入れ子を表します。
+- `?` - 1 文字を置き換えます。
+- `[]` - 角カッコ内の 1 文字以上に一致します。
+
+- `/data/sales/**/*.csv` - /data/sales の下のすべての .csv ファイルを取得します。
+- `/data/sales/20??/**/` - 20 世紀のすべてのファイルを取得します。
+- `/data/sales/*/*/*.csv` - /data/sales の 2 レベル下の .csv ファイルを取得します。
+- `/data/sales/2004/*/12/[XY]1?.csv` - 前に 2 桁の数字が付いた X または Y で始まる、2004 年 12 月のすべての .csv ファイルを取得します。
+
+**[Partition root path]\(パーティションのルート パス\):** `key=value` 形式 (例: `year=2019`) のファイル ソース内のフォルダーをパーティション分割した場合、そのパーティション フォルダー ツリーの最上位をデータ フローのデータ ストリーム内の列名に割り当てることができます。
+
+最初に、ワイルドカードを設定して、パーティション分割されたフォルダーと読み取るリーフ ファイルのすべてのパスを含めます。
+
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="パーティション ソース ファイルの設定のスクリーンショット。":::
+
+**[Partition root path]\(パーティションのルート パス\)** 設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューでデータの内容を表示すると、各フォルダー レベルで見つかった解決済みのパーティションがサービスによって追加されることがわかります。
+
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="パーティション ルート パスのスクリーンショット。":::
+
+**[List of files]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
+
+**[Column to store file name]\(ファイル名を格納する列\):** ソース ファイルの名前をデータの列に格納します。 ファイル名文字列を格納するための新しい列名をここに入力します。
+
+**[After completion]\(完了後\):** データ フローの実行後にソース ファイルに何もしないか、ソース ファイルを削除するか、またはソース ファイルを移動することを選択します。 移動のパスは相対パスです。
+
+後処理でソース ファイルを別の場所に移動するには、まず、ファイル操作の "移動" を選択します。 次に、"移動元" ディレクトリを設定します。 パスにワイルドカードを使用していない場合、"移動元" 設定はソース フォルダーと同じフォルダーになります。
+
+ワイルドカードを含むソース パスがある場合、構文は次のようになります。
+
+`/data/sales/20??/**/*.csv`
+
+"移動元" は次のように指定できます。
+
+`/data/sales`
+
+"移動先" は次のように指定できます。
+
+`/backup/priorSales`
+
+この場合、ソースとして指定された `/data/sales` の下のすべてのファイルは `/backup/priorSales` に移動されます。
+
+> [!NOTE]
+> ファイル操作は、パイプライン内のデータ フローの実行アクティビティを使用するパイプライン実行 (パイプラインのデバッグまたは実行) からデータ フローを開始する場合にのみ実行されます。 データ フロー デバッグ モードでは、ファイル操作は実行 *されません*。
+
+**[Filter by last modified]\(最終更新日時でフィルター処理\):** 最終更新日時の範囲を指定することで、処理するファイルをフィルター処理できます。 日時はすべて UTC 形式です。 
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

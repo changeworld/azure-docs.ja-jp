@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7df260f0ef02df5d706bc78ed4938cb1868eead
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86132331"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065086"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -179,7 +179,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS とドメイン コントローラーが異なるマシン上に存在する場合
 
-同じ VM 上でドメイン コントローラーと DNS を実行している場合は、この手順を省略できます。
+同じ VM 上でドメイン コントローラーと DNS を実行している場合は、この手順をスキップできます。
 
 DNS がドメイン コントローラーと同じ VM 上にない場合は、テスト フェールオーバー用の DNS VM を作成する必要があります。 新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。 たとえば、Active Directory ドメインが `contoso.com` である場合には、`contoso.com` という名前で DNS ゾーンを作成することができます。 Active Directory に対応するエントリは DNS で次のように更新する必要があります。
 

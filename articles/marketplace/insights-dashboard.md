@@ -8,22 +8,22 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 09/27/2021
-ms.openlocfilehash: a8ee69e0c9c196f42a733c4cb6c3079228238b21
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 30b26ea098c66bc807250c0100db93d7564222b6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082929"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069199"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 
 この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、コマーシャル マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のコマーシャル マーケットプレースのオンライン ストアに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: Microsoft AppSource と Azure Marketplace。
 
-分析の用語の詳細な定義については、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析の用語とよく寄せられる質問<ept id="p1">](./analytics-faq.yml)</ept>」を参照してください。
+分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="marketplace-insights-dashboard"></a>[Marketplace の分析情報] ダッシュボード
 
-<bpt id="p1">[</bpt>[Marketplace の分析情報] ダッシュボード<ept id="p1">](https://go.microsoft.com/fwlink/?linkid=2165936)</ept>には、Azure Marketplace および AppSource のオファーのビジネス パフォーマンスの概要が示されます。 このダッシュボードは、次のことについて大まかに説明しています。
+[[Marketplace の分析情報] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165936)には、Azure Marketplace および AppSource のオファーのビジネス パフォーマンスの概要が示されます。 このダッシュボードは、次のことについて大まかに説明しています。
 
 - ページ アクセス数の傾向
 - Call to Action の傾向
@@ -130,7 +130,7 @@ Marketplace の分析情報ダッシュボードにはクリックストリー�
 - マップを動かして正確な場所を見ることができます。
 - 特定の場所にズーム インできます。
 - ヒートマップには、特定の場所での顧客数、注文数、正規化された使用量の詳細を表示するための補助グリッドがあります。
-- グリッドで国またはリージョンを検索して選択すると、マップ内の場所にズームできます。 地図内の <bpt id="p1">**</bpt>[ホーム]<ept id="p1">**</ept> ボタンを選択すると、元のビューに戻ります。
+- グリッドで国またはリージョンを検索して選択すると、マップ内の場所にズームできます。 地図内の **[ホーム]** ボタンを選択すると、元のビューに戻ります。
 
 ### <a name="marketplace-insights-details-table"></a>Marketplace の分析情報の詳細テーブル
 
@@ -162,10 +162,10 @@ Marketplace の分析情報ダッシュボードにはクリックストリー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「<bpt id="p1">[</bpt>パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする<ept id="p1">](analytics.md)</ept>」を参照してください。
-- グラフィカルでダウンロード可能な形式での注文の詳細については、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析の注文ダッシュボード<ept id="p1">](orders-dashboard.md)</ept>」を参照してください。
+- コマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)」を参照してください。
+- グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](orders-dashboard.md)」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析の使用量ダッシュボード<ept id="p1">](usage-dashboard.md)</ept>」を参照してください。
 - 成長傾向など、顧客の詳細については、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析の顧客ダッシュボード<ept id="p1">](customer-dashboard.md)</ept>」を参照してください。
-- 過去 30 日間のダウンロード要求の一覧については、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析のダウンロード ダッシュボード<ept id="p1">](downloads-dashboard.md)</ept>」を参照してください。
+- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「<bpt id="p1">[</bpt>パートナー センターの評価とレビューの分析ダッシュボード<ept id="p1">](ratings-reviews.md)</ept>」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「<bpt id="p1">[</bpt>コマーシャル マーケットプレース分析の用語とよく寄せられる質問<ept id="p1">](analytics-faq.yml)</ept>」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](analytics-faq.yml)」を参照してください。

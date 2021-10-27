@@ -4,14 +4,14 @@ description: Resource Manager テンプレートを使用して Azure Blob Stora
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/04/2021
+ms.date: 10/12/2021
 ms.author: normesta
-ms.openlocfilehash: 025aa395fa6d2fd3a8fe98f4781a6b554e2b506d
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 3f6b82e447fec4ce4e1c2e9b1f700f9b976d6a3d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710534"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994393"
 ---
 #  <a name="upgrade-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする
 
@@ -22,7 +22,15 @@ ms.locfileid: "129710534"
 > [!IMPORTANT]
 > アップグレードは一方向です。 アップグレードを実行した後で、アカウントを元に戻す方法はありません。 非運用環境でアップグレードを検証することをお勧めします。
 
+## <a name="review-feature-support"></a>レビュー機能のサポート
+
+お使いのアカウントが、Data Lake Storage Gen2 対応アカウントではまだサポートされていない機能を使用するように構成されていることがあります。 アカウントでまだサポートされていない機能を使用している場合、アップグレードの検証手順は成功しません。 
+
+サポートされていない機能を識別するには、「[Azure Storage アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」を参照してください。 アカウントでサポートされていない機能を使用している場合は、アップグレードを開始する前にそれらを無効にしてください。
+
 ## <a name="perform-the-upgrade"></a>アップグレードを実行する
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインして、作業を開始します。
 
@@ -79,6 +87,186 @@ ms.locfileid: "129710534"
    > [!div class="mx-imgBorder"]
    > ![移行完了ページ](./media/upgrade-to-data-lake-storage-gen2-how-to/upgrade-to-an-azure-data-lake-gen2-account-completed.png)
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Windows PowerShell コマンド ウィンドウを開きます。
+
+2. 最新の Azure PowerShell モジュールがあることを確認します。 「[Azure PowerShell モジュールをインストールする](/powershell/azure/install-Az-ps)」を参照してください。
+
+3. `Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+4. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを設定します。
+
+   ```powershell
+   $context = Get-AzSubscription -SubscriptionId <subscription-id>
+   Set-AzContext $context
+   ```
+
+   `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
+
+6. 次のコマンドを使用して、ストレージ アカウントを検証します。
+
+   ```powershell
+   $result = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>" -RequestType Validation -AsJob
+   ```
+
+   - `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+
+   アカウントのサイズによっては、このプロセスに時間がかかる場合があります。 クライアントがブロックされないように、`asJob` スイッチを使用してコマンドをバックグラウンド ジョブで実行できます。 コマンドはリモートで実行されますが、ジョブはコマンドを実行するローカル コンピューターまたは VM 上に存在します。 結果は、ローカル コンピューターまたは VM に送信されます。
+
+7. ジョブの状態を確認し、ジョブのすべてのプロパティを一覧で表示するには、戻り値の変数を `Format-List` コマンドレットにパイプします。 
+
+   ```powershell
+   $result | Format-List -Property *
+   ```
+
+   検証が成功した場合、**State** プロパティは **Completed** に設定されます。
+
+   検証に失敗した場合、**State** プロパティは **Failed** に設定され、**Error** プロパティで検証エラーが表示されます。 
+
+   次の出力は、アカウントで互換性のない機能が有効になっていることを示しています。 この場合は、その機能を無効にしてから、検証プロセスを再度開始します。
+
+   > [!div class="mx-imgBorder"]
+   > ![検証エラー](./media/upgrade-to-data-lake-storage-gen2-how-to/validation-error-powershell.png)
+
+   場合によっては、**Error** プロパティによって **error.json** という名前のファイルへのパスが提供されます。 そのファイルを開いて、アカウントが検証手順に合格しなかった理由を判断できます。 
+
+   次の JSON は、アカウントで互換性のない機能が有効になっていることを示しています。 この場合は、その機能を無効にしてから、検証プロセスを再度開始します。
+
+   ```json
+   {
+    "startTime": "2021-08-04T18:40:31.8465320Z",
+    "id": "45c84a6d-6746-4142-8130-5ae9cfe013a0",
+    "incompatibleFeatures": [
+        "Blob Delete Retention Enabled"
+    ],
+    "blobValidationErrors": [],
+    "scannedBlobCount": 0,
+    "invalidBlobCount": 0,
+    "endTime": "2021-08-04T18:40:34.9371480Z"
+   }
+   ```
+
+8. アカウントが正常に検証された後、次のコマンドを実行してアップグレードを開始します。
+   
+   ```powershell
+   $result = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>" -RequestType Upgrade -AsJob -Force
+   ```
+
+   上記の検証例と同様に、この例では `asJob` スイッチを使用して、コマンドをバックグラウンド ジョブで実行します。 `Force` スイッチによって、アップグレードを確認するプロンプトがオーバーライドされます。  `AsJob` スイッチを使用しない場合は、単にプロンプトに応答できるので、`Force` スイッチを使用する必要はありません。
+
+   > [!IMPORTANT]
+   > アカウントがアップグレードされている間、書き込み操作は無効になります。 読み取り操作は無効になりませんが、アップグレード プロセスが不安定になる可能性があるため、読み取り操作を中断することを強く推奨します。
+
+   ジョブの状態を確認するには、前の手順で説明したのと同じテクニックを使用します。 プロセスが実行されると、**State** プロパティが **Running** に設定されます。
+
+   移行が正常に完了すると、**State** プロパティが **Completed** に設定され、**Error** プロパティにエラーは表示されません。
+   
+   > [!div class="mx-imgBorder"]
+   > ![正常な完了の出力](./media/upgrade-to-data-lake-storage-gen2-how-to/success-message-powershell.png)
+
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. まず、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。または、Azure CLI をローカルに[インストール](/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
+
+2. 次のコマンドを使用して、インストールされている Azure CLI のバージョンが `2.29.0` 以上であることを確認します。
+
+   ```azurecli
+    az --version
+   ```
+
+   Azure CLI のバージョンが `2.29.0` より前の場合は、新しいバージョンをインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+
+2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを設定します。
+
+   ```azurecli
+      az account set --subscription <subscription-id>
+   ```
+
+   `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
+
+3. 次のコマンドを使用して、ストレージ アカウントを検証します。
+
+   ```azurecli
+   az storage account hns-migration start --type validation -n <storage-account-name> -g <resource-group-name>
+   ```
+
+   - `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+
+   検証が成功した場合、プロセスは完了し、エラーは表示されません。
+   
+   検証に失敗した場合は、検証エラーがコンソールに表示されます。 たとえば、エラー `(IncompatibleValuesForAccountProperties) Values for account properties are incompatible: Versioning Enabled` は、アカウントで互換性のない機能 (バージョン管理) が有効になっていることを示しています。 この場合は、その機能を無効にしてから、検証プロセスを再度開始します。
+
+   場合によっては、**error.json** という名前のファイルへのパスがコンソールに表示されます。 そのファイルを開いて、アカウントが検証手順に合格しなかった理由を判断できます。 
+
+   次の JSON は、アカウントで互換性のない機能が有効になっていることを示しています。 この場合は、その機能を無効にしてから、検証プロセスを再度開始します。
+
+   ```json
+   {
+    "startTime": "2021-08-04T18:40:31.8465320Z",
+    "id": "45c84a6d-6746-4142-8130-5ae9cfe013a0",
+    "incompatibleFeatures": [
+        "Blob Delete Retention Enabled"
+    ],
+    "blobValidationErrors": [],
+    "scannedBlobCount": 0,
+    "invalidBlobCount": 0,
+    "endTime": "2021-08-04T18:40:34.9371480Z"
+   }
+   ```
+
+5. アカウントが正常に検証された後、次のコマンドを実行してアップグレードを開始します。
+   
+   ```azurecli
+   az storage account hns-migration start --type upgrade -n storage-account-name -g <resource-group-name>
+   ```
+
+   > [!IMPORTANT]
+   > アカウントがアップグレードされている間、書き込み操作は無効になります。 読み取り操作は無効になりませんが、アップグレード プロセスが不安定になる可能性があるため、読み取り操作を中断することを強く推奨します。
+
+   移行が成功した場合、プロセスは完了し、エラーは表示されません。
+
+---
+
+## <a name="stop-the-upgrade"></a>アップグレードを停止する
+
+移行が完了する前に、それを停止できます。 停止すると何が起こるかについて、説明します。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+アップグレードが完了する前にそれを停止するには、アップグレードの進行中に **[アップグレードの取り消し]** を選択します。
+
+> [!div class="mx-imgBorder"]
+> ![アップグレードの取り消し](./media/upgrade-to-data-lake-storage-gen2-how-to/cancel-the-upgrade.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+アップグレードが完了する前にそれを停止するには、`Stop-AzStorageAccountHierarchicalNamespaceUpgrade` コマンドを使用します。
+
+```powershell
+Stop-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName <resource-group-name> -Name <storage-account-name>
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+アップグレードが完了する前にそれを停止するには、`az storage account hns-migration stop` コマンドを使用します。
+
+```azurecli
+az storage account hns-migration stop -n <storage-account-name> -g <resource-group-name>
+```
+
+---
+
+
 ## <a name="migrate-data-workloads-and-applications"></a>データ、ワークロード、アプリケーションを移行する 
 
 1. **Blob service** エンドポイントまたは **Data Lake Storage** エンドポイントを指し示すように、[ワークロード内のサービス](data-lake-storage-integrate-with-azure-services.md)を構成します。
@@ -97,6 +285,6 @@ ms.locfileid: "129710534"
    BLOB API の場合と同様に、スクリプトの多くは、変更を必要とせずに機能する可能性があります。 ただし、必要な場合は、Data Lake Storage Gen2 の [PowerShell コマンドレット](data-lake-storage-directory-file-acl-powershell.md)と [Azure CLI コマンド](data-lake-storage-directory-file-acl-cli.md)を使用するようにスクリプト ファイルをアップグレードできます。
  
 
-## <a name="see-also"></a>こちらもご覧ください
+## <a name="see-also"></a>関連項目
 
 [Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)

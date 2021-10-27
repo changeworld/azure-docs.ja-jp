@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターで貴社のコンサルティング サービス オファーのプロパティを構成する方法
-description: パートナー センターを使用して、Microsoft コマーシャル マーケットプレースでの貴社のコンサルティング サービス オファーのプロパティを構成する方法について説明します。
+title: コマーシャル マーケットプレースでのコンサルティング サービス オファーのプロパティを構成する
+description: パートナー センターを使用して、コマーシャル マーケットプレースでのコンサルティング サービス オファーのプロパティを構成します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: a77414e794073771f7bf5fe9346e4196b6b4b836
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 60f4d1d8e86eed6a3dab390ebf8e46296f4644d2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715776"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040191"
 ---
-# <a name="how-to-configure-your-consulting-service-offer-properties"></a>貴社のコンサルティング サービス オファーのプロパティを構成する方法
+# <a name="configure-consulting-service-offer-properties"></a>コンサルティング サービス オファーのプロパティを構成する
 
-この記事では、Microsoft コマーシャル マーケットプレースでの貴社のコンサルティング サービス オファーのプロパティを構成する方法について説明します。
+この記事では、Microsoft コマーシャル マーケットプレースでのコンサルティング サービス オファーのプロパティを構成する方法について説明します。
 
 パートナー センターの貴社のオファーの **[プロパティ]** タブで、貴社のコンサルティング サービスの中心にある主な製品、サービスの種類、および適用可能な業界を定義します。 貴社が獲得している関連する Microsoft コンピテンシーを示すこともできます。 このタブの情報によって、貴社のコンサルティング サービスがコマーシャル マーケットプレースに正しく表示され、適切な顧客に確実に提示されます。
 

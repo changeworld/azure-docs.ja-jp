@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7665d2b3855765c0d3c60cdb9c7181720835a963
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 08e4df487786de0e43e7bc1ae7c0a5debb6a9752
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456976"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002512"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -125,6 +125,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `category` (string): ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
 - `preview` (boolean):ポリシー定義が _preview_ であるかどうかを示す true または false フラグです。
 - `deprecated` (boolean):ポリシー定義が _deprecated_ とマークされているかどうかを示す true または false フラグです。
+- `portalReview` (string): 必要な入力に関係なく、ポータルでパラメーターを確認するかどうかを指定します。 
 
 > [!NOTE]
 > Azure Policy サービスは、`version`、`preview`、`deprecated` の各プロパティを使用して、組み込みのポリシー定義に対する変更のレベルや取り組み、状態を伝えます。 `version` の形式は `{Major}.{Minor}.{Patch}` です。 特定の状態 (_deprecated_、_preview_ など) は、`version` プロパティに追加されるほか、別のプロパティに **boolean** として追加されます。 Azure Policy が組み込みをバージョン管理する方法の詳細については、[組み込みのバージョン管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)に関する記事を参照してください。

@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 98af913787ede9a0c9f543315043540b7994729f
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 14aef56cc84b505afcc58f7f3662ed133bf829c5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754237"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162709"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -144,6 +144,9 @@ Azure Monitor に表示されるテレメトリの種類にマップされる、
     # Use properties in logging statements
     logger.warning('action', extra=properties)
     ```
+
+> [!NOTE]
+> Application Insights インストルメンテーションの使用の一部として、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 #### <a name="configure-logging-for-django-applications"></a>Django アプリケーション用にログ記録を構成する
 

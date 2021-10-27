@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47445520e92f6c7f4a8e5eb78c404b6875dbe017
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 187c4c1808133308f607bf9cb70b851a16d50e57
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274066"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039127"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -108,9 +108,9 @@ az storage account update \
 
 ライブ マイグレーション中にはストレージ アカウント内のデータにアクセスでき、持続性や可用性が失われることはありません。 移行プロセスの間、Azure Storage の SLA は維持されます。 ライブ マイグレーションに関連するデータ損失はありません。 サービス エンドポイント、アクセス キー、Shared Access Signature、およびその他のアカウント オプションは、移行後も変更されません。
 
-Standard パフォーマンス レベルでは、ZRS は汎用 v2 アカウントにのみ対応しているため、汎用 v1 アカウントの場合は、ZRS へのライブ マイグレーションの要求を送信する前に、必ずストレージ アカウントをアップグレードしてください。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)」を参照してください。 ストレージ アカウントには、ライブ マイグレーションによって移行するデータが含まれている必要があります。
+Standard パフォーマンスでは、ZRS は汎用 v2 アカウントにのみ対応しているため、汎用 v1 アカウントの場合は、ZRS へのライブ マイグレーションの要求を送信する前に、必ずストレージ アカウントをアップグレードしてください。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)」を参照してください。 ストレージ アカウントには、ライブ マイグレーションによって移行するデータが含まれている必要があります。
 
-Premium パフォーマンス レベルでは、Premium ファイル共有アカウントはライブ マイグレーションに対応していますが、Premium ブロック BLOB や Premium ページ BLOB アカウントは対応していません。
+Premium パフォーマンスでは、Premium ファイル共有アカウントはライブ マイグレーションに対応していますが、Premium ブロック BLOB や Premium ページ BLOB アカウントは対応していません。
 
 ご使用のアカウントで RA-GRS が使用されている場合は、ライブ マイグレーションを続行する前に、まずご使用のアカウントのレプリケーションの種類を LRS または GRS のいずれかに変更する必要があります。 この中間の手順により、RA-GRS によって提供される読み取り専用のセカンダリ エンドポイントが削除されます。
 

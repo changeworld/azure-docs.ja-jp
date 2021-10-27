@@ -3,7 +3,7 @@ title: Azure Dedicated Host で SQL Server VM を実行する
 description: Azure Dedicated Host で SQL Server VM を実行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/12/2019
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 7b1259843a1195301ff66e7c8d1ad7650f9ca686
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: a53b35ef7371d6608283374cfef1086cf9f0bbfd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078746"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162209"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure Dedicated Host で SQL Server VM を実行する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -78,4 +78,4 @@ A:お客様はソフトウェア アシュアランス付きの既存の Windows
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

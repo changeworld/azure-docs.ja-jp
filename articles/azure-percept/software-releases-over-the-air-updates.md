@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: c8f05b1c2d04e492b44aef88ac31a8e4dece5e16
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 1eb6f41d738f7ab5a2dbd68fab341c2b7c9917ad
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222862"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001165"
 ---
 # <a name="software-releases-for-ota-updates"></a>OTA 更新プログラムのソフトウェア リリース
 
@@ -67,15 +67,15 @@ Microsoft は、開発キットの各リリースに OTA パッケージを提�
 
 **最新リリース:**
 
-|Release|適用可能なバージョン|ダウンロード リンク|メモ|
+|Release|適用可能なバージョン|ダウンロード リンク|Note|
 |---|---|---|---|
-|7 月のサービス リリース (2107)|2021.106.111.115|[2021.107.129.116 OTA 更新プログラム パッケージ](https://go.microsoft.com/fwlink/?linkid=2169245)||
+|9 月のサービス リリース (2109)|2021.106.111.115,<br>2021.107.129.116|[2021.109.129.108 OTA 更新プログラム パッケージ](https://go.microsoft.com/fwlink/?linkid=2174634)||
 
 **ハードストップ リリース:**
 
 |Release|適用可能なバージョン|ダウンロード リンク|メモ|
 |---|---|---|---|
-|6 月のサービス リリース (2106)|2021.102.108.112、2021.104.110.103、2021.105.111.122 |[2021.106.111.115 OTA マニフェスト (PE-101 用)](https://go.microsoft.com/fwlink/?linkid=2167127)<br>[2021.106.111.115 OTA マニフェスト (APDK-101 用)](https://go.microsoft.com/fwlink/?linkid=2167235) <br>[2021.106.111.115 OTA 更新プログラム パッケージ](https://go.microsoft.com/fwlink/?linkid=2167128) |"モデル名" (PE-101、APDK-101) に基づいて適切なマニフェストを使用してください|
+|6 月のサービス リリース (2106)|2021.102.108.112、2021.104.110.103、2021.105.111.122 |[2021.106.111.115 OTA マニフェスト (PE-101 用)](https://download.microsoft.com/download/d/f/0/df0f17dc-d2fb-42ff-aaa5-98edf4d6d1e8/aduimportmanifest_PE-101_2021.106.111.115_v3.json)<br>[2021.106.111.115 OTA マニフェスト (APDK-101 用)](https://download.microsoft.com/download/d/f/0/df0f17dc-d2fb-42ff-aaa5-98edf4d6d1e8/aduimportmanifest_Azure-Percept-DK_2021.106.111.115_v3.json) <br>[2021.106.111.115 OTA 更新プログラム パッケージ](https://download.microsoft.com/download/d/f/0/df0f17dc-d2fb-42ff-aaa5-98edf4d6d1e8/Microsoft-Azure-Percept-DK-2021.106.111.115.swu) |"モデル名" (PE-101、APDK-101) に基づいて適切なマニフェストを使用してください|
 
 ## <a name="next-steps"></a>次のステップ
 

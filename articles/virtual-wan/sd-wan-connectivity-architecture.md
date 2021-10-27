@@ -1,5 +1,5 @@
 ---
-title: Virtual WAN と SD-WAN の接続とアーキテクチャ
+title: 'アーキテクチャ: Virtual WAN と SD-WAN の接続'
 titleSuffix: Azure Virtual WAN
 description: プライベート SD-WAN と Azure Virtual WAN の相互接続について説明します。
 services: virtual-wan
@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 4711e63e1d9309d3111e3207f6cb824704ac4290
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5ef4695b4655841d7cdfb5b40c56d4c21f4f979f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652796"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004912"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Azure Virtual WAN を使用した SD-WAN 接続アーキテクチャ
 

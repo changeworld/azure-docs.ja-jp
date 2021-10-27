@@ -4,13 +4,13 @@ description: Azure HDInsight の最新のリリース ノート。 Hadoop、Spar
 ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/27/2021
-ms.openlocfilehash: cf726033a90e256a2d41a3249e237f5eb91aee84
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/15/2021
+ms.openlocfilehash: 7cb93adaa00e11b88dcbe4b104e10acf84a009b9
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732917"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131412"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -31,6 +31,24 @@ Azure HDInsight は、Azure 上でオープン ソース分析を行うエンタ
 - HDInsight 4.0: Ubuntu 18.04.5 LTS
 
 ## <a name="new-features"></a>新機能
+### <a name="azure-hdinsight-support-for-restricted-public-connectivity-is-generally-available-on-oct-15-2021"></a>制限付きパブリック接続に対する Azure HDInsight のサポートは、2021 年 10 月 15 日に一般提供されます
+すべてのリージョンの Azure HDInsight で、制限付きパブリック接続がサポートされるようになります。 この機能の主な特徴を次に示します。 
+
+- クラスターからリソース プロバイダーに送信されるように、リソース プロバイダーからクラスターへの通信を反転する機能 
+- HDinsight クラスターがプライベート ネットワークのみを使用してリソースにアクセスするため、独自の Private Link 対応リソース (ストレージ、SQL、キー コンテナーなど) の持ち込みのサポート 
+- パブリック IP アドレスはプロビジョニングされたリソースではありません 
+
+この新機能を使用すると、HDInsight 管理 IP のインバウンド ネットワーク セキュリティ グループ (NSG) のサービス タグ規則をスキップすることもできます。  [パブリック接続の制限](./hdinsight-restrict-public-connectivity.md)の詳細を確認してください
+
+### <a name="azure-hdinsight-support-for-azure-private-link-is-generally-available-on-oct-15-2021"></a>Azure Private Link に対する Azure HDInsight のサポートは、2021 年 10 月 15 日に一般提供されます
+プライベート エンドポイントを使用して、プライベート リンク経由で HDInsight クラスターに接続できるようになります。プライベート リンクは、VNET ピアリングが使用できない、または有効になっていないクロス VNET シナリオで利用できます。 
+
+Azure Private Link を使用すると、仮想ネットワーク内の [プライベート エンドポイント](../private-link/private-endpoint-overview.md)経由で、Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナーのサービスにアクセスできます。  
+
+仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを通ります。 パブリック インターネットにサービスを公開する必要はありません。 
+
+ [プライベート リンクの有効化](./hdinsight-private-link.md)の詳細を確認してください。  
+
 ### <a name="new-azure-monitor-integration-experience-preview"></a>新しい Azure Monitor 統合エクスペリエンス (プレビュー)
 新しい Azure Monitor 統合エクスペリエンスは、このリリースで、米国東部と西ヨーロッパでプレビュー段階になります。 新しい Azure Monitor エクスペリエンスについては、[こちら](./log-analytics-migration.md#migrate-to-the-new-azure-monitor-integration)をご覧ください。
 

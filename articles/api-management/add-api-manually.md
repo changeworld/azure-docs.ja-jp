@@ -8,12 +8,13 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 04/26/2021
 ms.author: danlep
-ms.openlocfilehash: 2e88bef36179a0e923ad6dfa8c7744f20d0a4d33
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 07b200c67b831b7d7fb01ea8da657e9bcc9b3b18
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623971"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997007"
 ---
 # <a name="add-an-api-manually"></a>手動による API の追加
 
@@ -110,6 +111,9 @@ Azure Portal で操作をテストします。  または、**開発者ポータ
 1. **[送信]** をクリックします。
 
     "http://httpbin.org/headers" 操作によって生成される応答が表示されます。 操作を変換する場合は、「[API を変換および保護する](transform-api.md)」をご覧ください。
+  
+>[!NOTE] 
+> 統合するバックエンド API のホストが操作 URL の末尾のスラッシュを処理する方法を理解することが重要な場合があります。 詳細については、こちらの [API Management の FAQ](./api-management-faq.yml#how-does-api-management-handle-trailing-slashes-when-calling-backend-services-) に関するページを参照してください。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

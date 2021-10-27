@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 6be59e810f504e6909818a8e7ceb57b23174238b
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 88025243a379b18b5b24cb3c47caee4713b47585
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855880"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131545"
 ---
 # <a name="join-a-teams-meeting"></a>Teams 会議に参加する
 
@@ -30,7 +30,9 @@ Azure Communication Services SDK で Microsoft 365 Teams の ID を使用する�
 
 ## <a name="enabling-anonymous-meeting-join-in-your-teams-tenant"></a>Teams テナントで匿名の会議参加を有効にする
 
-BYOI ユーザーが Teams の会議に参加すると、Teams Web アプリケーションを使用して匿名で Teams の会議に参加するユーザーと同様に、匿名の外部ユーザーとして扱われます。 BYOI ユーザーが Teams の会議に匿名ユーザーとして参加する機能は、既存の "匿名での会議への参加を許可する" 構成によって制御されます。これは、既存の Teams の匿名での会議への参加も制御します。 この設定は、[Teams の管理センター](https://admin.teams.microsoft.com/meetings/settings)で、または Teams の PowerShell コマンドレット [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) を使用して更新できます。 カスタム アプリケーションでは、Teams の会議を保護するためにユーザー認証などのセキュリティ対策について考慮する必要があります。 匿名ユーザーを会議に参加させることによって生じるセキュリティへの影響に留意し、[Teams のセキュリティ ガイド](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)を利用して、匿名ユーザーに提供する機能を構成してください。
+BYOI ユーザーが Teams の会議に参加すると、Teams Web アプリケーションを使用して匿名で Teams の会議に参加するユーザーと同様に、匿名の外部ユーザーとして扱われます。 BYOI ユーザーが Teams の会議に匿名ユーザーとして参加する機能は、既存の "匿名での会議への参加を許可する" 構成によって制御されます。これは、既存の Teams の匿名での会議への参加も制御します。 この設定は、[Teams の管理センター](https://admin.teams.microsoft.com/meetings/settings)で、または Teams の PowerShell コマンドレット [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) を使用して更新できます。  
+
+Azure Communication Services を使用して構築された、Teams ユーザーとの接続と通信を行うカスタム アプリケーションは、エンド ユーザーまたはボットから使用される可能性があります。また、アプリケーションの開発者が通信の一部として明示的に表示しない限り、Teams ユーザーに表示される方法に違いはありません。 カスタム アプリケーションでは、Teams の会議を保護するためにユーザー認証などのセキュリティ対策について考慮する必要があります。 匿名ユーザーを会議に参加させることによって生じるセキュリティへの影響に留意し、[Teams のセキュリティ ガイド](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)を利用して、匿名ユーザーに提供する機能を構成してください。
 
 ## <a name="meeting-experience"></a>会議エクスペリエンス
 
@@ -48,11 +50,13 @@ Azure Communication Services と Microsoft Teams の間の相互運用性によ�
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
 - BYOI ユーザーは、Teams チャネルでスケジュールされている Teams 会議に参加し、音声と動画を使用できますが、チャネルのメンバーではないため、チャット メッセージを送受信することはできません。
-- Microsoft Graph を使用して [Teams ミーティングの参加者の一覧を表示する](https://docs.microsoft.com/graph/api/call-list-participants)と、Communication Services のユーザーに関する詳細は現在は含まれません。
+- Microsoft Graph を使用して [Teams ミーティングの参加者の一覧を表示する](/graph/api/call-list-participants)と、Communication Services のユーザーに関する詳細は現在は含まれません。
 - Teams の会議では最大 1,000 人の参加者がサポートされますが、現在の Azure Communication Services Calling SDK でサポートされる参加者は 350 人のみです。
-- [Microsoft Teams のクラウド ビデオ相互運用性](https://docs.microsoft.com/microsoftteams/cloud-video-interop)を使用すると、Communication Services のユーザーが画面を共有するときにいくつかのデバイスで問題が発生しています。
+- [Microsoft Teams のクラウド ビデオ相互運用性](/microsoftteams/cloud-video-interop)を使用すると、Communication Services のユーザーが画面を共有するときにいくつかのデバイスで問題が発生しています。
 - 挙手、集合モード、ブレイクアウト ルームなどの機能は、Teams ユーザーのみが使用できます。
 - 現在、Calling SDK では、Teams 会議のクローズ ドキャプションはサポートされていません。
+- Communication Services ユーザーは [Teams ライブ イベント](/microsoftteams/teams-live-events/what-are-teams-live-events)に参加できません。
+- Communication Services ユーザーが Teams ミーティングに参加しても、ボット用の [Teams アクティビティ ハンドラー イベント](/microsoftteams/platform/bots/bot-basics?tabs=csharp)は発生しません。
 
 ## <a name="next-steps"></a>次の手順
 

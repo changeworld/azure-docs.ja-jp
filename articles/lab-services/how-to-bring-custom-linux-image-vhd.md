@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services - 物理ラボ環境から Linux カスタム イメージを取り込む方法
+title: 物理ラボ環境から Linux カスタム イメージを取り込む方法
 description: 物理ラボ環境から Linux カスタム イメージを取り込む方法を説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9a8591d383ac5230085bc83d1d791e9de830a99e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6f044c062b770c6653a1e239ca7c1074ed969b9c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771367"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180896"
 ---
 # <a name="bring-a-linux-custom-image-from-your-physical-lab-environment"></a>物理ラボ環境から Linux カスタム イメージを取り込む
 
@@ -26,11 +26,11 @@ Azure では、さまざまな[ディストリビューションとバージョ�
 
 ## <a name="prepare-a-custom-image-by-using-hyper-v-manager"></a>Hyper-V マネージャーを使用してカスタム イメージを準備する
 
-次の手順では Windows Hyper-V マネージャーを使用して、Hyper-V 仮想マシン (VM) から Ubuntu 16.04\18.04\20.04 イメージを作成する方法を示します。
+次の手順では Windows Hyper-V マネージャーを使用して、Hyper-V 仮想マシン (VM) から Ubuntu 18.04\20.04 イメージを作成する方法を示します。
 
 1. Hyper-V VM でカスタムイメージを設定するために使用する Windows ホストコンピューターに、公式の [Linux Ubuntu サーバー](https://ubuntu.com/server/docs)イメージをダウンロードします。
 
-   [GNOME](https://www.gnome.org/) GUI デスクトップがインストールされて "*いない*" Ubuntu イメージを使用することをお勧めします。 現在、GNOME は、Lab Services でイメージが正常に機能するために必要な Azure Linux エージェントと競合しています。 たとえば、Ubuntu サーバー イメージを使用し、XFCE や MATE などの別の GUI デスクトップをインストールします。
+   Ubuntu 18.04 LTS を使用している場合は、[GNOME](https://www.gnome.org/) または [MATE](https://mate-desktop.org/) グラフィカル デスクトップがインストールされて *いない* イメージを使用することをお勧めします。 現在、GNOME と MATE は、Azure Lab Services でイメージが正常に機能するために必要な Azure Linux エージェントとネットワーク競合が発生します。 代わりに、Ubuntu Server イメージを使用して、[XFCE](https://www.xfce.org/) などの別のグラフィカル デスクトップをインストールします。  もう 1 つのオプションは、ラボのテンプレート VM を使用して [GNOME\MATE](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/GNOME_MATE/ReadMe.md) をインストールする方法です。
 
    Ubuntu では、[ダウンロード用に構築済みの Azure VHD](https://cloud-images.ubuntu.com/) の発行も行います。 これらの VHD は、Linux ホスト コンピューターおよびハイパーバイザー (KVM など) からカスタム イメージを作成することを目的としています。 これらの VHD では、最初に既定のユーザー パスワードを設定する必要があります。これは、Windows では使用できない、qemu などの Linux ツールを使用してのみ実行できます。 このため、Windows Hyper-V を使用してカスタム イメージを作成する場合、これらの VHD に接続してイメージをカスタマイズすることはできません。 あらかじめ構築された Azure VHD の詳細については、[Ubuntu のドキュメント](https://help.ubuntu.com/community/UEC/Images?_ga=2.114783623.1858181609.1624392241-1226151842.1623682781#QEMU_invocation)を参照してください。
 
@@ -54,7 +54,9 @@ Azure では、さまざまな[ディストリビューションとバージョ�
     - 最後の手順は、**VHDX** ファイルを **VHD** ファイルに変換することです。 **Hyper-V マネージャー** を使用してこれを行う同等の手順を次に示します。
 
         1. **[Hyper-V マネージャー]**  >  **[操作]**  >  **[ディスクの編集]** に移動します。
-        1. 次に、ディスクを VHDX から VHD に **変換** します。
+        1. 変換する VHDX ディスクを見つけます。
+        1. 次に、ディスクの **[変換]** を選択します。
+        1. 選択するオプションは、**VHD ディスク形式** です。
         1. **[ディスクの種類]** で、 **[固定サイズ]** を選択します。
             - また、ここでディスク サイズを拡大も行う場合は、128 GB を "*超えない*" ようにしてください。
             :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="[操作の選択] 画面を示すスクリーンショット。":::
@@ -67,13 +69,14 @@ VHD のサイズ変更と VHDX への変換を支援するために、次の Pow
 ## <a name="upload-the-custom-image-to-a-shared-image-gallery"></a>カスタム イメージを共有イメージ ギャラリーにアップロードする
 
 1. VHD を Azure にアップロードして、マネージド ディスクを作成します。
-    1. Storage Explorer またはコマンド ラインから AzCopy を使用することができます。「[VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
+    1. Azure Storage Explorer またはコマンド ラインから AzCopy を使用することができます。「[VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
+
+        > [!WARNING]
+        > コンピューターがスリープ状態またはロック状態になった場合、アップロード プロセスが中断され、失敗するおそれがあります。 また、AzCopy が完了したら、ディスクへの SAS アクセスを取り消していることを確認してください。 そうせずに、ディスクからイメージを作成しようとすると、次のエラーが表示されます。"操作 'イメージの作成' は、ディスク 'ディスク名' が 'アクティブ アップロード' 状態ではサポートされません。 エラー コード: OperationNotAllowed*。"
 
     1. VHD をアップロードすると、マネージド ディスクが作成されて Azure portal に表示されます。
 
-    コンピューターがスリープ状態またはロック状態になった場合、アップロード プロセスが中断され、失敗するおそれがあります。 また、AzCopy が完了したら、ディスクへの SAS アクセスを取り消していることを確認してください。 そうせずに、ディスクからイメージを作成しようとすると、次のエラーが表示されます。"操作 'イメージの作成' は、ディスク 'ディスク名' が 'アクティブ アップロード' 状態ではサポートされません。 エラー コード: OperationNotAllowed*。"
-
-    Azure portal のマネージド ディスクの **[サイズおよびパフォーマンス]** タブを使用して、ディスク サイズを変更します。 前に説明したように、サイズは 128 GB を "*超えない*" ようにしてください。
+        Azure portal のマネージド ディスクの **[サイズおよびパフォーマンス]** タブを使用して、ディスク サイズを変更できます。 前に説明したように、サイズは 128 GB を "*超えない*" ようにしてください。
 
 1. 共有イメージ ギャラリーで、イメージの定義とバージョンを作成します。
     1. [イメージの定義を作成します](../virtual-machines/image-version.md)。
@@ -81,16 +84,16 @@ VHD のサイズ変更と VHDX への変換を支援するために、次の Pow
         - **[オペレーティング システム]** として **[Linux]** を選択します。
         - **[オペレーティング システムの状態]** として **[一般化]** を選択します。
 
-    イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+        イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-    既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
+        既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
 
-1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
-    - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。 Lab Services を使用してラボを作成してカスタム イメージを選択すると、最新バージョンのイメージが自動的に使用されます。 最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。
-    - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
-    - **[OS ディスク]** プロパティで、前の手順で作成したディスクを選択します。
+    1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
+        - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。 Lab Services を使用してラボを作成してカスタム イメージを選択すると、最新バージョンのイメージが自動的に使用されます。 最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。
+        - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
+        - **[OS ディスク]** プロパティで、前の手順で作成したディスクを選択します。
 
-    イメージ定義に指定できる値の詳細については、[イメージ バージョン](../virtual-machines/shared-image-galleries.md#image-versions)に関するページを参照してください。
+        イメージ バージョンに指定できる値の詳細については、[イメージ バージョン](../virtual-machines/shared-image-galleries.md#image-versions)に関するページを参照してください。
 
 ## <a name="create-a-lab"></a>ラボを作成する
 

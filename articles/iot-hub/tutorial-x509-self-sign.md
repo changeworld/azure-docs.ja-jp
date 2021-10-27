@@ -11,19 +11,16 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: b6e79ee61440ffeb9fdd5f05cdb840480112a14a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 552475edc586c015d89fb12db91376852fa88460
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304795"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165469"
 ---
 # <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>チュートリアル: OpenSSL を使用して自己署名証明書を作成する
 
-IoT ハブに対するデバイスの認証は、2 つの自己署名デバイス証明書を使用して行うことができます。 IoT ハブに送信する拇印 (ハッシュ値) が証明書に含まれることから、これは拇印認証と呼ばれることがあります。 次の手順では、2 つの自己署名証明書を作成する方法について説明します。
-
-> [!NOTE]
-> この例は Windows 用の Cygwin64 を使用して作成されました。 Cygwin は、Linux に似たインターフェイス内から Windows で Unix または Linux アプリケーションを実行できるオープン ソースのツール コレクションです。 CygWin64 は OpenSSL にバンドルされています。 Linux を使用している場合は、既に OpenSSL がインストールされている可能性があります。 
+IoT ハブに対するデバイスの認証は、2 つの自己署名デバイス証明書を使用して行うことができます。 IoT ハブに送信する拇印 (ハッシュ値) が証明書に含まれることから、これは拇印認証と呼ばれることがあります。 次の手順では、2 つの自己署名証明書を作成する方法について説明します。 この種類の証明書は、主にテストに使用されます。
 
 ## <a name="step-1---create-a-key-for-the-first-certificate"></a>手順 1 - 1 つ目の証明書のキーを作成する
 
@@ -111,4 +108,8 @@ Azure portal で自分の IoT ハブに移動し、次の特性で新しい IoT 
 
 ## <a name="next-steps"></a>次の手順
 
-「[証明書認証のテスト](tutorial-x509-test-certificate.md)」を参照し、証明書を使ってデバイスを IoT ハブに認証できるかどうかを確認します。
+「[証明書認証のテスト](tutorial-x509-test-certificate.md)」を参照し、証明書を使ってデバイスを IoT ハブに認証できるかどうかを確認します。 そのページのコードでは、PFX 証明書を使用する必要があります。 デバイスの .crt 証明書を .pfx 形式に変換するには、次の OpenSSL コマンドを使用します。
+
+```bash
+openssl pkcs12 -export -in device.crt -inkey device.key -out device.pfx
+```

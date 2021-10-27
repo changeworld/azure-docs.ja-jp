@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: mathoma, bonova, danil
 ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 7f9067d2f568c3f3d65b89508d85046970c9e334
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 1f8d848c87979419b4c2605560c3c371edfa5147
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273421"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045694"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ SQL Managed Instance には、SQL Server と比べて PaaS の制限と動作の
 
 これらの機能の大半はアーキテクチャ上の制約であり、サービスの機能を表します。
 
-SQL Managed Instance で見つかり、将来解決される予定の一時的な既知の問題については、<bpt id="p1">[</bpt>リリース ノート ページ<ept id="p1">](../database/doc-changes-updates-release-notes.md)</ept>で説明しています。
+SQL Managed Instance で見つかり、将来解決される予定の一時的な既知の問題については、[新機能](doc-changes-updates-release-notes-whats-new.md)に関するページで説明しています。
 
 ## <a name="availability"></a>可用性
 
@@ -96,16 +96,16 @@ Microsoft Azure SQL と SQL Server での監査の主な違いは次のとおり
  
 SQL Managed Instance の XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログはサポートされていません。
 
-Azure Blob Storage を監査するための <ph id="ph1">`CREATE AUDIT`</ph> 構文の主な相違点は次のとおりです。
+Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 
 - <ph id="ph2">`.xel`</ph> ファイルが配置されている Azure BLOB ストレージ コンテナーの URL の指定に使用できる新しい <ph id="ph1">`TO URL`</ph> 構文が用意されています。
 - SQL Managed Instance は Windows ファイル共有にアクセスできないため、<ph id="ph1">`TO FILE`</ph> 構文はサポートされていません。
 
 詳細については、次を参照してください。 
 
-- <bpt id="p1">[</bpt>CREATE SERVER AUDIT<ept id="p1">](/sql/t-sql/statements/create-server-audit-transact-sql)</ept> 
-- <bpt id="p1">[</bpt>ALTER SERVER AUDIT<ept id="p1">](/sql/t-sql/statements/alter-server-audit-transact-sql)</ept>
-- <bpt id="p1">[</bpt>監査<ept id="p1">](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)</ept>
+- [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
+- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>証明書
 
@@ -561,5 +561,6 @@ SQL Managed Instance では、エラー ログに詳細情報が書き込まれ�
 
 - SQL Managed Instance の詳細については、<bpt id="p1">[</bpt>SQL Managed Instance の概要<ept id="p1">](sql-managed-instance-paas-overview.md)</ept>に関する記事を参照してください。
 - 機能と比較の一覧については、<bpt id="p1">[</bpt>Azure SQL Managed Instance の機能の比較<ept id="p1">](../database/features-comparison.md)</ept>に関する記事を参照してください。
-- 更新プログラムのリリースと既知の問題の状態については、<bpt id="p1">[</bpt>SQL Managed Instance のリリース ノート<ept id="p1">](../database/doc-changes-updates-release-notes.md)</ept>を参照してください
+- リリースの更新については、[新機能](doc-changes-updates-release-notes-whats-new.md)に関するページを参照してください。
+- 問題、回避策、および解決策については、[既知の問題](doc-changes-updates-known-issues.md)に関するページを参照してください。
 - 新しい SQL Managed Instance の作成方法を示したクイックスタートについては、<bpt id="p1">[</bpt>SQL Managed Instance の作成<ept id="p1">](instance-create-quickstart.md)</ept>に関するページを参照してください。

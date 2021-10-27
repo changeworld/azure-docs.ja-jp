@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 10/04/2021
-ms.openlocfilehash: b5086256142c4ce72111dddcacaf19c4a40cdc35
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/15/2021
+ms.openlocfilehash: 98685bfd969cd02848330c8abb3108fa044a25a0
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429340"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071418"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -97,6 +97,7 @@ ms.locfileid: "129429340"
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
 > - [Microsoft.Experimentation](#microsoftexperimentation)
+> - [Microsoft.ExtendedLocation](#microsoftextendedlocation)
 > - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Features](#microsoftfeatures)
 > - [Microsoft.Genomics](#microsoftgenomics)
@@ -831,7 +832,7 @@ ms.locfileid: "129429340"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ---------- |
-> | backupvaults | [はい](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-resource-group) | [はい](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-subscription) | いいえ |
+> | backupvaults | [あり](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-resource-group) | [はい](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-subscription) | いいえ |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
@@ -987,6 +988,13 @@ ms.locfileid: "129429340"
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | experimentworkspaces | いいえ | いいえ | いいえ |
+
+## <a name="microsoftextendedlocation"></a>Microsoft.ExtendedLocation
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
+> | ------------- | ----------- | ---------- | ----------- |
+> | customLocations | いいえ | いいえ | いいえ |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -1425,7 +1433,7 @@ ms.locfileid: "129429340"
 > | expressroutecircuits | いいえ | いいえ | いいえ |
 > | expressroutegateways | いいえ | いいえ | いいえ |
 > | expressrouteserviceproviders | いいえ | いいえ | いいえ |
-> | firewallpolicies | はい | はい | いいえ |
+> | firewallpolicies | いいえ | いいえ | いいえ |
 > | frontdoors | いいえ | いいえ | いいえ |
 > | ipallocations | はい | はい | いいえ |
 > | ipgroups | はい | はい | いいえ |

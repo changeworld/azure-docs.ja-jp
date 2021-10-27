@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: f222245af177380a59f4c2adc9987b144a1c9b6f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 6ea06820a9f66c831847808d9f6de9a6bf4803b1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864670"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073964"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>コマーシャル マーケットプレース オファーのプランと価格
 
@@ -80,7 +80,7 @@ ms.locfileid: "122864670"
 
 - **市場**: すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。  Microsoft がパートナーに代わって消費税および使用税を送金する、"税送金済み" の国のみを選択するオプションがあります。
 - **価格**: 価格モデルは、Azure マネージド アプリケーション、SaaS、および Azure 仮想マシン オファーのプランのみに適用されます。 同じオファーのすべてのプランで同じ価格モデルを使用する必要があります。  
-- **プランの可視性**: オファーの種類によっては、プライベート対象ユーザーを定義したり、Azure Marketplace でオファーまたはプランを非表示にしたりすることができます。 詳細については、この記事の後半の「[プランの可視性](#plan-visibility)」を参照してください。
+- **プランの可視性**: オファーの種類によっては、プライベート対象ユーザーを定義したり、Azure Marketplace でオファーまたはプランを非表示にしたりできます。 詳細については、この記事の後半の「[プランの可視性](#plan-visibility)」を参照してください。
 
 > [!TIP]
 > ターゲットとする顧客基盤の使用パターンに最も適したプランを作成することをお勧めします。 これにより、ユーザーは使用状況の変化に基づいて頻繁にプランを切り替える必要がなくなります。 3 つの従量制課金プランを含む SaaS プランの例については、「[サンプル オファー](./partner-center-portal/saas-metered-billing.md#sample-offer)」を参照してください。

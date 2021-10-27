@@ -1,25 +1,25 @@
 ---
-title: Azure Stack Edge Pro リソースのデバイス イベント アラート通知を管理する | Microsoft Docs
-description: Azure portal を使用して、Azure Stack Edge Pro リソースのデバイス イベントのアラートを管理する方法について説明します。
+title: アクション ルールを使用して Azure Stack Edge デバイスでアラート通知を管理する | Microsoft Docs
+description: Azure portal 内の Azure Stack Edge デバイスのアラート通知を管理するアクション ルールを定義する方法について説明します。
 services: databox
 author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 10/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 585343137a4a8fd8a1fb591c640e1183d71c0fd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 804d956f934774b01b29301e0be8f9c1a6fd2657
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443099"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043360"
 ---
-# <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Azure Stack Edge Pro リソースのデバイス イベント アラート通知を管理する
+# <a name="use-action-rules-to-manage-alert-notifications-on-azure-stack-edge-devices"></a>アクション ルールを使用して Azure Stack Edge デバイスでアラート通知を管理する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure portal でアクション ルールを作成し、リソース グループ、Azure サブスクリプション、または個々の Azure Stack Edge リソース内で発生するデバイス イベントのアラート通知をトリガーまたは非表示にする方法について説明します。 この記事は、Azure Stack Edge のすべてのモデルに適用されます。  
+この記事では、Azure portal でアクション ルールを作成し、リソース グループ、Azure サブスクリプション、または個々の Azure Stack Edge リソース内で発生するデバイス イベントのアラート通知をトリガーまたは非表示にする方法について説明します。  
 
 ## <a name="about-action-rules"></a>アクション ルールについて
 
@@ -125,8 +125,6 @@ Azure Stack Edge デバイスのアクション ルールを作成するには�
 
 ## <a name="next-steps"></a>次のステップ
 
-<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
-- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
-- デバイス イベント、ハードウェアの状態、およびメトリック グラフの確認に関する情報については、「[Azure Stack Edge Pro を監視する](azure-stack-edge-monitor.md)」を参照してください。 
-- Azure Stack Edge Pro GPU デバイス用の Azure Monitor の最適化に関する情報については、[Azure Monitor の使用](azure-stack-edge-gpu-enable-azure-monitor.md)に関するページを参照してください。
-- 個々のアラートの管理に関する情報については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-metric.md)」を参照してください。
+- [デバイス アラートの表示](azure-stack-edge-alerts.md)
+- [アラート メトリックの操作](../azure-monitor/alerts/alerts-metric.md)
+- [Azure Monitor の設定](azure-stack-edge-gpu-enable-azure-monitor.md)

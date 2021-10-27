@@ -10,12 +10,12 @@ ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: data
-ms.openlocfilehash: 3c3b995cdf4b27056b0714ae6f9f8bc29fad6302
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6c229f4afddc77e9b85f0dbd7fb4669facf8788e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713105"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129983990"
 ---
 # <a name="azure-advisor-for-azure-communication-services"></a>Azure Advisor for Azure Communication Services
 
@@ -27,7 +27,7 @@ ms.locfileid: "129713105"
 
 ![チャット SDK を更新するように勧める、Azure Advisor での推奨事項の例。](./media/advisor-chat-sdk-update-example.png)
 
-この機能では、次に示す SDK と、それらが対応するすべての言語がサポートされています。 詳細については、使用可能な [SDK オプション](./sdk-options.md)に関するページを参照してください。
+この機能では、次に示す SDK と、それらが対応するすべての言語がサポートされています。 この機能で送信されるのは、一般公開されている最新バージョンの SDK に関するレコメンデーションのみであることに注意してください。 ベータ版またはプレビュー バージョンでは、レコメンデーションやアラートはトリガーされません。 詳細については、使用可能な [SDK オプション](./sdk-options.md)に関するページを参照してください。
 
 * 呼び出し元 (クライアント)
 * チャット

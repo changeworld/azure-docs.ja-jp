@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 8b6e2ba3c65b5fd521bdb6326069ce5d8be05599
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25b6eaea3c639d39721bd80aaad08cf2c6f80380
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128564887"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066473"
 ---
 # <a name="modify-a-capacity-reservation-preview"></a>容量予約を変更する (プレビュー)
 
@@ -65,6 +65,17 @@ ms.locfileid: "128564887"
 1. 上部にある **[予約の管理]** を選択します 
 1. *[予約管理]* ページで、 **[インスタンス]** フィールドに予約する新しい数量を入力します 
 1. **[保存]** を選びます。 
+
+### <a name="cli"></a>[CLI](#tab/cli1)
+予約された数量を更新するには、更新された `capacity ` プロパティを指定して `az capacity reservation update` を使用します。
+
+ ```azurecli-interactive
+ az capacity reservation update 
+ -c myCapacityReservationGroup 
+ -n myCapacityReservation 
+ -g myResourceGroup2 
+ --capacity 5
+ ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -160,6 +171,32 @@ Update-AzCapacityReservation
 1. 各予約に予約されている "*VM サイズ*" を確認します 
     1. ターゲット VM サイズがグループの一部ではない場合は、ターゲット VM の[新しい容量予約を作成](capacity-reservation-create.md)します 
     1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](resize-vm.md) 
+
+### <a name="cli"></a>[CLI](#tab/cli2)
+
+1. `az capacity reservation group show` を使用して、容量予約グループ内のすべての容量予約の名前を取得します
+
+    ```azurecli-interactive
+    az capacity reservation group show 
+    -g myResourceGroup
+    -n myCapacityReservationGroup 
+    ```
+
+1. その応答から、すべての容量予約の名前を確認します
+
+1. 次のコマンドを実行して、各予約で予約されている VM サイズを確認します
+
+    ```azurecli-interactive
+    az capacity reservation show
+    -g myResourceGroup
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    ```
+
+1. 以下、具体例に沿って説明します。 
+    1. ターゲット VM サイズがグループの一部ではない場合は、ターゲット VM の[新しい容量予約を作成](capacity-reservation-create.md)します 
+    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](resize-vm.md) 
+
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
@@ -285,6 +322,38 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
     1. 容量予約グループに移動します
     1. ページの上部にある **[削除]** を選択します
 
+### <a name="cli"></a>[CLI](#tab/cli3)
+
+容量予約グループに関連付けられているすべての仮想マシンを見つけて、関連付けを解除します。
+
+1. 次のコマンドレットを実行します。 
+    
+    ```azurecli-interactive
+    az capacity reservation group show
+    -g myResourceGroup
+    -n myCapacityReservationGroup
+    ```
+
+1. 上記の応答から、`VirtualMachinesAssociated` プロパティですべての仮想マシンの名前を見つけて、「[容量予約グループから仮想マシンの関連付けを削除する](capacity-reservation-remove-vm.md)」で説明されている手順を使用して、それらを容量予約グループから削除します。
+
+1. すべての仮想マシンがグループから削除されたら、次の手順に進みます。 
+
+1. 容量予約を削除します。
+
+    ```azurecli-interactive
+    az capacity reservation delete 
+    -g myResourceGroup 
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    ```
+
+1. 容量予約グループを削除します。
+
+    ```azurecli-interactive
+    az capacity reservation group delete 
+    -g myResourceGroup 
+    -n myCapacityReservationGroup
+    ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell3)
 

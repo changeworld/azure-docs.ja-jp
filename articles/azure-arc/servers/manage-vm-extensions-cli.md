@@ -1,15 +1,15 @@
 ---
 title: Azure CLI を使用して VM 拡張機能を有効にする
 description: この記事では、Azure CLI を使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 08/05/2021
+ms.date: 10/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e9427d714681883fd5422ab0a7d17fd337c9568
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 41924f20679de16205af3c7cb962d6005e757e2d
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807440"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069636"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure CLI を使用して Azure VM 拡張機能を有効にする
 
@@ -22,7 +22,9 @@ ms.locfileid: "124807440"
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
 
-ConnectedMachine コマンドは、Azure CLI の一部として付属していません。 Azure CLI を使用して、Azure Arc 対応サーバーで管理されているハイブリッド サーバー上の VM 拡張機能を管理するには、事前に ConnectedMachine 拡張機能を読み込む必要があります。 次のコマンドを実行して取得します。
+ConnectedMachine コマンドは、Azure CLI の一部として付属していません。 Azure CLI を使用して、Azure に接続し、Azure Arc 対応サーバーで管理されているハイブリッド サーバー上の VM 拡張機能を管理するには、事前に ConnectedMachine 拡張機能を読み込む必要があります。 これらの管理操作はワークステーションから実行できます。Azure Arc 対応サーバー上で実行する必要はありません。
+
+次のコマンドを実行して取得します。
 
 ```azurecli
 az extension add --name connectedmachine
@@ -35,19 +37,25 @@ Azure Arc 対応サーバーで VM 拡張機能を有効にするには、`--mac
 次の例では、Azure Arc 対応サーバーで Log Analytics VM 拡張機能を有効にします。
 
 ```azurecli
-az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "eastus" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
+az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "regionName" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
 ```
 
 次の例では、Azure Arc 対応サーバーでカスタム スクリプト拡張機能を有効にします。
 
 ```azurecli
-az connectedmachine extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
+az connectedmachine extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "regionName" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
 ```
 
 次の例では、Azure Arc 対応サーバーで Key Vault VM 拡張機能を有効にします。
 
 ```azurecli
 az connectedmachine extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.KeyVault" --type "KeyVaultForLinux or KeyVaultForWindows" --name "KeyVaultForLinux or KeyVaultForWindows" --settings '{"secretsManagementSettings": { "pollingIntervalInS": "60", "observedCertificates": ["observedCert1"] }, "authenticationSettings": { "msiEndpoint": "http://localhost:40342/metadata/identity" }}'
+```
+
+次の例では、Azure Arc 対応 Windows サーバーで Microsoft Antimalware 拡張機能を有効にします。
+
+```azurecli
+az connectedmachine extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.Security" --type "IaaSAntimalware" --name "IaaSAntimalware" --settings '{"AntimalwareEnabled": true}'
 ```
 
 ## <a name="list-extensions-installed"></a>インストールされている拡張機能を一覧表示する
@@ -70,7 +78,7 @@ az connectedmachine extension list --machine-name "myMachineName" --resource-gro
     "autoUpgradingMinorVersion": "false",
     "forceUpdateTag": null,
     "id": "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.HybridCompute/machines/SVR01/extensions/DependencyAgentWindows",
-    "location": "eastus",
+    "location": "regionName",
     "name": "DependencyAgentWindows",
     "namePropertiesInstanceViewName": "DependencyAgentWindows",
 ```

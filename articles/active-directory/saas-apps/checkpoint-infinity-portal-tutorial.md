@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Infinity Portal の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Check Point Infinity Portal の統合'
 description: Azure Active Directory と Check Point Infinity Portal の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/14/2021
+ms.date: 10/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 25511f956d61a16efbfe589f8b4df4cb16a406a7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3dbb0cde804ac913a139cdffdd142fa6e22b5206
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124747666"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993741"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-infinity-portal"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Infinity Portal の統合
+# <a name="tutorial-azure-ad-sso-integration-with-check-point-infinity-portal"></a>チュートリアル: Azure AD SSO と Check Point Infinity Portal の統合
 
 このチュートリアルでは、Check Point Infinity Portal と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Check Point Infinity Portal を統合すると、次のことができます。
 
@@ -112,7 +112,56 @@ Check Point Infinity Portal に対して Azure AD SSO を構成してテスト�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+ユーザーを認証するには、2 つの方法があります。
+
+* Azure AD ポータルで Check Point Infinity Portal アプリケーションのユーザー ロールを構成する
+
+* Check Point Infinity Portal で Check Point Infinity Portal アプリケーションのユーザー ロールを構成する
+
+#### <a name="configure-check-point-infinity-portal-application-user-roles-in-azure-ad-portal"></a>Azure AD ポータルで Check Point Infinity Portal アプリケーションのユーザー ロールを構成する
+
+このセクションでは、Azure portal で管理者と読み取り専用ロールを作成します。
+
+1. Azure portal の左ペインから **[App Registration]\(アプリの登録\)** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Check Point Infinity Portal]** アプリケーションを選択します。
+
+2. 左ペインから **[App roles]\(アプリ ロール\)** を選択し、 **[Create app role]\(アプリ ロールの作成\)** をクリックし、次の手順に従います。
+
+   a. **[表示名]** フィールドに、「**管理者**」と入力します。
+
+   b. **[Allowed member types]\(許可されるメンバーの種類\)** で、 **[ユーザー/グループ]** を選択します。
+   
+   c. **[値]** フィールドに、「**admin**」と入力します。
+
+   d. **[説明]** フィールドに、「**Check Point Infinity Portal の管理者ロール**」と入力します。
+
+   e. **[enable this app role]\(このアプリ ロールを有効にする\)** オプションが選択されていることを確認します。
+
+   f. **[Apply]** をクリックします。
+
+   g. **[Create app role] \(アプリ ロールの作成\)** をもう一度クリックします。
+
+   h. **[Display name]\(表示名\)** フィールドに、「**読み取り専用**」と入力します。
+
+   i. **[Allowed member types]\(許可されるメンバーの種類\)** で、 **[ユーザー/グループ]** を選択します。
+
+   j. **[値]** フィールドに「**readonly**」と入力します。
+
+   k. **[説明]** フィールドに、「**Check Point Infinity Portal の管理者ロール**」と入力します。
+
+   l. **[enable this app role]\(このアプリ ロールを有効にする\)** オプションが選択されていることを確認します。
+
+   m. **[Apply]** をクリックします。
+
+#### <a name="configure-check-point-infinity-portal-application-user-roles-in-check-point-infinity-portal"></a>Check Point Infinity Portal で Check Point Infinity Portal アプリケーションのユーザー ロールを構成する
+
+この構成は、Azure AD で Check Point Infinity Portal アプリケーションに割り当てられたグループにのみ適用されます。
+
+このセクションでは、関連する Azure AD グループのグローバルとサービス ロールを保持する 1 つ以上のユーザー グループを作成します。
+
+* Check Point Infinity Portal ユーザー グループで使用するために割り当てられたグループの ID をコピーします。
+* ユーザー グループの構成については、[Infinity Portal 管理ガイド](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/Infinity-Portal-Admin-Guide/Default.htm#cshid=user_groups)のページを参照してください。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -124,7 +173,7 @@ Check Point Infinity Portal に対して Azure AD SSO を構成してテスト�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Check Point Infinity Portal へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -136,13 +185,13 @@ Check Point Infinity Portal に対して Azure AD SSO を構成してテスト�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-check-point-infinity-portal-sso&quot;></a>Check Point Infinity Portal の SSO の構成
+## <a name="configure-check-point-infinity-portal-sso"></a>Check Point Infinity Portal の SSO の構成
 
 1. Check Point Infinity Portal 企業サイトに管理者としてログインします。
 
 2. **[グローバル設定]**  >  **[アカウント設定]** に移動し、SSO 認証の下の **[定義]** をクリックします。
    
-   ![アカウント](./media/checkpoint-infinity-portal-tutorial/define.png &quot;Account") 
+   ![アカウント](./media/checkpoint-infinity-portal-tutorial/define.png "Account") 
 
 3. **[SSO 認証]** ページで、 **[SAML 2.0]** を **[ID プロバイダー]** として選択肢、 **[次へ]** をクリックします。
      

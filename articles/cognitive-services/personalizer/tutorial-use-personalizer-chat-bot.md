@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15774ad99391dee3cc89bec6fa09bb808715a4ef
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 94c46b0c911d8f9e6ba0bee34d207bd7c1d4b8e5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830295"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044745"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>チュートリアル:.NET チャット ボットで Personalizer を使用する
 
@@ -331,7 +331,7 @@ public class PersonalizerChatbot : ActivityHandler
 
 #### <a name="calling-rank-api-and-display-results"></a>Rank API の呼び出しと結果の表示
 
-メソッド `ChooseRankAsync` は、特徴を含むアクションとコンテキストの特徴を収集することによって、Personalizer の Rank API に送信する JSON データを構築します。
+メソッド `ChooseRankAsync` は、特徴を含むアクションとコンテキストの特徴を収集することによって、Personalizer Rank API に送信する JSON データを構築します。
 
 ```csharp
 private async Task<RankResponse> ChooseRankAsync(ITurnContext turnContext, string eventId, CancellationToken cancellationToken)
@@ -400,7 +400,7 @@ private async Task<RankResponse> ChooseRankAsync(ITurnContext turnContext, strin
 
 #### <a name="calling-reward-api-and-display-results"></a>Reward API の呼び出しと結果の表示
 
-メソッド `RewardAsync` は、スコアを決定することによって、Personalizer の Reward API に送信する JSON データを構築します。 スコアは、ユーザーテキストで識別され、`OnTurnAsync` メソッドから送信される LUIS インテントから決定されます。
+メソッド `RewardAsync` は、スコアを決定することによって、Personalizer Reward API に送信する JSON データを構築します。 スコアは、ユーザーテキストで識別され、`OnTurnAsync` メソッドから送信される LUIS インテントから決定されます。
 
 ```csharp
 private async Task RewardAsync(ITurnContext turnContext, string eventId, double reward, CancellationToken cancellationToken)

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/28/2021
+ms.date: 10/14/2021
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 6042acd29325ab6bb887a74e47ceff115d000a9d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 85f6ce139db0fb69428dc775ef75befccb081af3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360050"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042733"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス
 
@@ -36,6 +36,12 @@ Blob Storage の機能を使用するようにアカウントを構成する場�
 #### <a name="understand-the-terms-used-in-documentation"></a>ドキュメントで使用されている用語を理解する
 
 コンテンツ セット間を移動すると、わずかな用語の違いがわかります。 たとえば、[Blob Storage のドキュメント](storage-blobs-introduction.md)に含まれるコンテンツでは、"*ファイル*" ではなく "*BLOB*" という用語が使用されます。 技術的には、ストレージ アカウントに取り込むファイルは、アカウント内の BLOB になります。 そのため、その用語が正しくなります。 ただし、 *"ファイル"* という用語を使用すると混乱が生じる可能性があります。 *"ファイル システム"* を指す場合は、 *"コンテナー"* という用語も使用されます。 これらの用語は同義と見なします。
+
+## <a name="consider-premium"></a>Premium を検討する
+
+ワークロードで待機時間を一貫して短くする必要がある場合、また 1 秒あたりの入出力操作数 (IOP) を高くする必要がある場合は、Premium ブロック BLOB ストレージ アカウントの使用を検討してください。 このタイプのアカウントでは、高パフォーマンスのハードウェアを介してデータを処理できます。 データは、低待機時間のために最適化されたソリッドステート ドライブ (SSD) に格納されています。 SSD は従来のハード ドライブと比べ、スループットが高くなります。 Premium パフォーマンスのストレージ コストは高くなりますが、トランザクション コストは低くなります。そのため、ワークロードで大量のトランザクションが実行される場合、Premium パフォーマンスの ブロック BLOB アカウントを使用した方が、コストを抑えられる可能性があります。
+
+ストレージ アカウントを分析に使用する場合は、Premium ブロック BLOB ストレージ アカウントと共に Azure Data Lake Storage Gen2 を使用することを強くお勧めします。 Premium ブロック BLOB ストレージ アカウントと Data Lake Storage 対応アカウントを組み合わせて使用する方法は、[Azure Data Lake Storage の Premium レベル](premium-tier-for-data-lake-storage.md)と呼ばれています。
 
 ## <a name="optimize-for-data-ingest"></a>データの取り込みを最適化する
 
@@ -151,92 +157,32 @@ Hive ワークロードでは、時系列データのパーティションを削
 
 次に、Data Lake Storage Gen2 が有効なアカウントに固有のガイダンスについては、「[Azure Data Lake Storage Gen2 のアクセス制御モデル](data-lake-storage-access-control-model.md)」を参照してください。 この記事は、Azure のロールベースのアクセス制御 (Azure RBAC) ロールをアクセス制御リスト (ACL) とともに使用して、階層ファイル システム内のディレクトリとファイルにセキュリティ アクセス許可を適用する方法を理解するのに役立ちます。 
 
-## <a name="ingest-data"></a>データの取り込み
+## <a name="ingest-process-and-analyze"></a>取り込み、処理、分析
 
-このセクションでは、さまざまなデータ ソースと、そのデータを Data Lake Storage Gen2 アカウントに取り込む各種方法について説明します。
+Data Lake Storage Gen2 対応アカウントにデータを取り込むには、数多くのデータ ソースとさまざまな方法が存在します。 
 
-#### <a name="ad-hoc-data"></a>アドホック データ
+たとえば、HDInsight と Hadoop クラスターから大量のデータ セットを取り込んだり、アプリケーションのプロトタイプを作成するために、*アドホック* データの小さなセットを取り込んだりできます。 アプリケーション、デバイス、センサーなどのさまざまなソースによって生成されたストリーミング データを取り込むことができます。 この種類のデータでは、ツールを使用して、リアルタイムでイベントごとにデータをキャプチャして処理し、その後、イベントをアカウントに一括で書き込むことができます。 ページ要求の履歴などの情報を含む Web サーバーを取り込むこともできます。 ログ データの場合は、データをアップロードするためのカスタム スクリプトまたはアプリケーションを作成することを検討してください。これにより、大規模なビッグ データ アプリケーションの一部としてデータ アップロード コンポーネントを柔軟に組み込むことができます。 
 
-これは、ビッグ データ アプリケーションのプロトタイプ作成に使用される小規模なデータ セットを表します。 データの取り込みには、次のいずれかのツールを使用することを検討してください。 
+アカウントでデータを使用できるようになると、そのデータに対して分析を実行したり、視覚エフェクトを作成したり、データをローカル コンピューターやその他のリポジトリ (Azure SQL データベースや SQL Server インスタンスなど) にダウンロードしたりすることができます。 
 
-- Azure portal
-- [Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)
-- [REST](/rest/api/storageservices/data-lake-storage-gen2)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-- [Apache DistCp](data-lake-storage-use-distcp.md)
-- [AzCopy](../common/storage-use-azcopy-v10.md)
+以下の表では、データの取り込み、分析、視覚化、ダウンロードに使用できるツールを推奨しています。 この表のリンクで、各ツールの構成方法と使用方法に関するガイダンスを参照してください。 
 
-#### <a name="streamed-data"></a>ストリーミングされたデータ
+| 目的 | ツールとツールのガイダンス |
+|---|---|
+| アドホック データの取り込み| Azure portal、[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2)、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)、[Apache DistCp](data-lake-storage-use-distcp.md)、[AzCopy](../common/storage-use-azcopy-v10.md)|
+| ストリーミング データの取り込み | [HDInsight Storm](../../hdinsight/storm/apache-storm-write-data-lake-store.md)、[Azure Stream Analytics](../../stream-analytics/stream-analytics-quick-create-portal.md) |
+| リレーショナル データの取り込み | [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) |
+| Web サーバーのログの取り込み | [Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2)、Azure SDK ([.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[Node.js](data-lake-storage-directory-file-acl-javascript.md))、[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) |
+| HDInsight クラスターから取り込み | [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)、[Apache DistCp](data-lake-storage-use-distcp.md)、[AzCopy](../common/storage-use-azcopy-v10.md) |
+| Hadoop クラスターから取り込み | [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)、[Apache DistCp](data-lake-storage-use-distcp.md)、[WANdisco LiveData Migrator for Azure](migrate-gen2-wandisco-live-data-platform.md)、[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md) |
+| 大きなデータ セットの取り込み (数テラバイト) | [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) |
+| データの表示と分析 | [Azure Synapse Analytics](../../synapse-analytics/get-started-analyze-storage.md)、[Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、[Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) |
+| データの視覚化 | [Power BI](/power-query/connectors/datalakestorage)、[Azure Data Lake Storage のクエリ アクセラレーション](data-lake-storage-query-acceleration.md) |
+| データをダウンロードする | Azure portal、[PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2)、Azure SDK ([.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[Node.js](data-lake-storage-directory-file-acl-javascript.md))、[Azure Storage Explorer](data-lake-storage-explorer.md)、[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)、[Azure Data Factory](../../data-factory/copy-activity-overview.md)、[Apache DistCp](./data-lake-storage-use-distcp.md) |
 
-アプリケーション、デバイス、センサーなどのさまざまなソースによって生成されます。 この種類のデータを取り込むために使用されるツールは、通常、リアルタイムでイベントごとにデータをキャプチャして処理し、その後、イベントをアカウントに一括で書き込みます。 データの取り込みには、次のいずれかのツールを使用することを検討してください。
+> [!NOTE]
+> この表には、Data Lake Storage Gen2 がサポートされる Azure サービスの完全な一覧が反映されているわけではありません。 サポートされる Azure サービスの一覧と、そのサポートのレベルについては、「[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)」を参照してください。 
 
-- [HDInsight Storm](../../hdinsight/storm/apache-storm-write-data-lake-store.md)
-- [Azure Stream Analytics](../../stream-analytics/stream-analytics-quick-create-portal.md)
-
-#### <a name="relational-data"></a>リレーショナル データ
-
-リレーショナル データベースでは、膨大な数のレコードを収集します。これにより、ビッグ データ パイプラインで処理された場合に重要な分析情報を得ることができます。 リレーショナル データの取り込みには [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) を使用することをお勧めします。
-
-#### <a name="web-server-log-data"></a>Web サーバー ログ データ
-
-ページ要求の履歴などの情報を含むログ ファイル。 このデータをアップロードするためのカスタム スクリプトまたはアプリケーションを作成することを検討してください。これにより、大規模なビッグ データ アプリケーションの一部としてデータ アップロード コンポーネントを柔軟に組み込むことができます。 次のツールと SDK の使用を検討してください。
-
-- [Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)
-- [REST](/rest/api/storageservices/data-lake-storage-gen2)
-- Azure SDK ([.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[Node.js](data-lake-storage-directory-file-acl-javascript.md))
-- [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)
-
-#### <a name="hdinsight-clusters"></a>HDInsight クラスター
-
-ほとんどの種類の HDInsight クラスター (Hadoop、HBase、Storm) では、データ ストレージ リポジトリとして Data Lake Storage Gen2 がサポートされています。 データの取り込みには、次のいずれかのツールを使用することを検討してください。
-
-- [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)
-- [Apache DistCp](data-lake-storage-use-distcp.md)
-- [AzCopy](../common/storage-use-azcopy-v10.md)
-
-#### <a name="hadoop-clusters"></a>Hadoop クラスター
-
-これらのクラスターは、オンプレミスまたはクラウドで実行されている可能性があります。 データの取り込みには、次のいずれかのツールを使用することを検討してください。
-
-- [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)
-- [Apache DistCp](data-lake-storage-use-distcp.md)
-- [WANdisco LiveData Migrator for Azure](migrate-gen2-wandisco-live-data-platform.md)
-- [Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)
-
-#### <a name="large-data-sets"></a>大容量のデータ セット
-
-数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。 このような場合は、Azure ExpressRoute を使用できます。  
-
-Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。 これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳しくは、[Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
-
-## <a name="process-and-analyze-data"></a>データを表示して分析する
-
-データを Data Lake Storage Gen2 で使用できるようになると、そのデータに対して分析を実行したり、視覚エフェクトを作成したり、データをローカル コンピューターやその他のリポジトリ (Azure SQL データベースや SQL Server インスタンスなど) にダウンロードしたりすることができます。 以下のセクションでは、データの分析、視覚化、ダウンロードに使用できるツールを推奨しています。
-
-#### <a name="tools-for-analyzing-data"></a>データを分析するためのツール
-
-- [Azure Synapse Analytics](../../synapse-analytics/get-started-analyze-storage.md)
-- [Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)
-- [Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse)
-
-#### <a name="tools-for-visualizing-data"></a>データを視覚化するためのツール
-
-- [Power BI](/power-query/connectors/datalakestorage)
-- [Azure Data Lake Storage のクエリ アクセラレーション](data-lake-storage-query-acceleration.md)
-
-#### <a name="tools-for-downloading-data"></a>データをダウンロードするためのツール
-
-- Azure portal
-- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md)
-- [REST](/rest/api/storageservices/data-lake-storage-gen2)
-- Azure SDK ([.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[Node.js](data-lake-storage-directory-file-acl-javascript.md))
-- [Azure Storage Explorer](data-lake-storage-explorer.md)
-- [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)
-- [Azure Data Factory](../../data-factory/copy-activity-overview.md)
-- [Apache DistCp](./data-lake-storage-use-distcp.md)
 
 ## <a name="monitor-telemetry"></a>テレメトリを監視する
 

@@ -12,12 +12,12 @@ ms.date: 6/4/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: cf7821b8227b21efb063850b02222f2675a245b7
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 606d1d06a76a1783b38841f2344f2e5273add915
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429025"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069571"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
@@ -34,6 +34,30 @@ ms.locfileid: "122429025"
 > このページは頻繁に更新されるため、定期的にアクセスしてご確認ください。 特に明記されていない限り、これらの変更は新規に登録されたアプリケーションに対してのみ適用されます。
 
 ## <a name="upcoming-changes"></a>今後の変更
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains"></a>シングル テナント アプリケーションの AppId URI には、既定のスキームまたは検証済みドメインを使用する必要があります
+
+**発効日**: 2021 年 10 月
+
+**影響を受けるエンドポイント**: v2.0 および v1.0
+
+**影響を受けるプロトコル**:すべてのフロー
+
+**変更**
+
+シングル テナント アプリケーションの場合、AppId URI (identifierUris) を追加または更新する要求により、URI の値のドメインが顧客テナントの検証済みドメイン リストに含まれるか、または AAD によって提供される既定のスキーム (`api://{appId}`) がその値で使用されているかが、検証されます。
+これにより、ドメインが検証済みドメイン リストに含まれない場合、または値で既定のスキームが使用されていない場合は、アプリケーションで AppId URI を追加できないおそれがあります。
+検証済みドメインの詳細については、[カスタム ドメインのドキュメント](../../active-directory/fundamentals/add-custom-domain.md)を参照してください。
+
+この変更は、AppID URI で未検証のドメインが使用されている既存のアプリケーションには影響しません。 検証が行われるのは、新しいアプリケーションの場合、または既存のアプリケーションで識別子 URI が更新されるか、新しいものが identifierUri コレクションに追加されるときだけです。 新しい制限は、2021 年 10 月 15 日より後にアプリの identifierUris コレクションに追加された URI にのみ適用されます。 2021 年 10 月 15 日に制限が有効になった時点でアプリケーションの identifierUris コレクションに既に存在している AppId URI は、そのコレクションに新しい URI が追加されても引き続き機能します。
+
+検証チェックで要求に問題があった場合、作成および更新用のアプリケーション API からは HostNameNotOnVerifiedDomain を示す `400 badrequest` がクライアントに返されます。
+
+[!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
+
+## <a name="june-2021"></a>2021 年 6 月
 
 ### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>デバイス コード フロー UX にアプリの確認プロンプトが含まれるようになります
 

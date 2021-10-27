@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 9d92a1baddbd12f80084dbbdb9a9205edb3f56b1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: ec97cba6afd1a335791b51ed905af2f713ce6a19
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272853"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179748"
 ---
 # <a name="use-private-endpoints-for-your-azure-purview-account"></a>Azure Purview アカウントにプライベート エンドポイントを使用する
 
@@ -73,44 +73,87 @@ Azure Purview アカウント用のプライベート エンドポイントを�
 
 **2021 年 9 月 27 日 15:30 (UTC) より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、このセクションで詳しく説明されている操作を実行する必要があります。
 
-- **カスタム DNS を使用している場合や、必要な DNS A レコードをマシンのホスト ファイルに直接追加した** 場合は、**必要な操作はありません**。 
+### <a name="review-your-current-dns-settings"></a>現在の DNS 設定を確認する
 
-- Purview アカウントに対して **Azure プライベート DNS ゾーン統合を構成** した場合は、これらの手順に従ってプライベート エンドポイントを再デプロイし、DNS 設定を再構成します。 
+1. Azure portal から、ご利用の Purview アカウントを探します。 左側のメニューで **[ネットワーク]** をクリックし、**[プライベート エンドポイント接続]** を選択します。 リストにある各プライベート エンドポイントをクリックし、以下の手順に従います。
 
-    1. 新しいポータルのプライベート エンドポイントをデプロイします。
-       
-        1. [Azure portal](https://portal.azure.com) に移動し、お使いの Azure Purview アカウントをクリックして、 **[設定]** で **[ネットワーク]** を選択し、 **[プライベート エンドポイント接続]** を選択します。
+    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-1.png" alt-text="Purview のプライベート エンドポイントを表示する画面のスクリーンショット。":::
 
-            :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal.png" alt-text="ポータルのプライベート エンドポイントの作成を示すスクリーンショット。":::
+2. ターゲット サブリソースが "_ポータル_" の場合、**[DNS の構成]** を確認します。それ以外の場合は、前の手順に戻って次のプライベート エンドポイントを選択します。すべてのプライベート エンドポイントを確認し、ポータルに関連付けられているプライベート エンドポイントをすべて検証するまで、これを繰り返します。
 
-        2. **[+ プライベート エンドポイント]** を選択して、新しいプライベート エンドポイントを作成します。
+    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-2.png" alt-text="ポータル Purview プライベート エンドポイントを表示する画面のスクリーンショット。":::
 
-        3. 基本情報を入力します。
-
-        4. **[リソース]** タブで、 **[リソースの種類]** として **[Microsoft.Purview/account]** を選択します。
-
-        5. **[リソース]** として Azure Purview アカウントを選択し、 **[対象サブリソース]** として **[ポータル]** を選択します。
-
-        6. **[構成]** タブで仮想ネットワークを選択し、Azure プライベート DNS ゾーンを選択して新しい Azure DNS ゾーンを作成します。
-            
-            :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png" alt-text="ポータルのプライベート エンドポイントと DNS 設定の作成を示すスクリーンショット。":::
-
-        7. [概要] ページに移動し、 **[作成]** を選択してポータルのプライベート エンドポイントを作成します。
-
-    2. Purview アカウントに関連付けられている、以前のポータルのプライベート エンドポイントを削除します。 
-
-    3. ポータルのプライベート エンドポイントのデプロイ時に新しい Azure プライベート DNS ゾーン (privatelink.purviewstudio.azure.com) が作成され、対応する A レコード (Web) がプライベート DNS ゾーンに存在することを確認します。 
+3. **[DNS の構成]** ウィンドウで、現在の設定を確認します。
+   
+    - **[カスタム DNS レコード]** セクションにレコードが存在する場合は、[修復シナリオ 1](#scenario-1) および[修復シナリオ 2](#scenario-2) の手順に従います。
     
-    4. Azure Purview Studio を正常に読み込むことができることを確認します。 DNS を再構成した後、新しい DNS ルーティングが有効になるまでに数分 (約 10 分) かかる場合があります。 すぐに読み込まれない場合は、数分待ってから、もう一度やり直してください。
-    
-    5. ナビゲーションが失敗した場合は、nslookup web.purview.azure.com を実行します。これは、ポータルのプライベート エンドポイントに関連付けられているプライベート IP アドレスに解決されるはずです。
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-3.png" alt-text="ポータル Purview プライベート エンドポイントのカスタム DNS 構成を表示する画面のスクリーンショット。":::
+
+    - **[構成名]** セクションにレコードが存在し、DNS ゾーンが `privatelink.purviewstudio.azure.com` である場合、このプライベート エンドポイントは対処不要です。 **手順 1** に戻り、残っているポータル プライベート エンドポイントを確認してください。
   
-    6. 既存のすべてのポータルのプライベート エンドポイントについて、上の手順 1. から 3. を繰り返します。 
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-4.png" alt-text="ポータル Purview プライベート エンドポイントと新しい DNS ゾーンを表示する画面のスクリーンショット。":::
+    
+    - **[構成名]** セクションにレコードが存在し、DNS ゾーンが `privatelink.purview.azure.com` である場合、[修復シナリオ 3](#scenario-3) の手順に従います。
 
-- **オンプレミスまたはカスタムの DNS 解決を構成した** 場合 (独自の DNS サーバーを使用している場合や、ホスト ファイルを構成した場合など) は、以下の操作を実行します。 
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-5.png" alt-text="ポータル Purview プライベート エンドポイントと古い DNS ゾーンを表示する画面のスクリーンショット。":::
 
-  - DNS レコードが `web.purview.azure.com` である場合は、**必要な操作はありません**。  
-  - DNS レコードが `web.privatelink.purview.azure.com` である場合は、レコードを `web.privatelink.purviewstudio.azure.com` に更新します。 
+### <a name="remediation-scenarios"></a>修復シナリオ
+
+#### <a name="scenario-1"></a>シナリオ 1
+
+**必要な DNS A レコードを DNS またはマシンのホスト ファイルに直接追加** した場合、**対処の必要はありません**。
+    
+:::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-host.png" alt-text="A レコードを含むホスト ファイルを示す画面のスクリーンショット。":::
+
+#### <a name="scenario-2"></a>シナリオ 2
+
+**オンプレミス DNS サーバー**、**DNS フォワーダー、カスタム DNS 解決** のいずれかの構成が済んでいる場合、DNS 設定を確認して適切な措置を講じます。
+
+1. DNS サーバーを確認します。 DNS レコードが `web.purview.azure.com` である場合や、条件付きフォワーダーが `purview.azure.com` である場合、**対処の必要はありません**。 
+
+2. DNS レコードが `web.privatelink.purview.azure.com` である場合は、レコードを `web.privatelink.purviewstudio.azure.com` に更新します。
+
+3. 条件付きフォワーダーが `privatelink.purview.azure.com` である場合、"決してゾーンを削除しないでください"。 新しい条件付きフォワーダーを `privatelink.purviewstudio.azure.com` に追加する必要があります。
+
+#### <a name="scenario-3"></a>シナリオ 3
+
+Purview アカウントに対して **Azure プライベート DNS ゾーン統合を構成** した場合は、これらの手順に従ってプライベート エンドポイントを再デプロイし、DNS 設定を再構成します。
+
+1. 新しいポータルのプライベート エンドポイントをデプロイします。
+       
+    1. [Azure portal](https://portal.azure.com) に移動し、お使いの Azure Purview アカウントをクリックして、 **[設定]** で **[ネットワーク]** を選択し、 **[プライベート エンドポイント接続]** を選択します。
+
+        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal.png" alt-text="ポータルのプライベート エンドポイントの作成を示すスクリーンショット。":::
+
+    2. **[+ プライベート エンドポイント]** を選択して、新しいプライベート エンドポイントを作成します。
+
+    3. 基本情報を入力します。
+
+    4. **[リソース]** タブで、 **[リソースの種類]** として **[Microsoft.Purview/account]** を選択します。
+
+    5. **[リソース]** として Azure Purview アカウントを選択し、 **[対象サブリソース]** として **[ポータル]** を選択します。
+
+    6. **[構成]** タブで仮想ネットワークを選択し、Azure プライベート DNS ゾーンを選択して新しい Azure DNS ゾーンを作成します。
+            
+        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png" alt-text="ポータルのプライベート エンドポイントと DNS 設定の作成を示すスクリーンショット。":::
+
+    7. [概要] ページに移動し、 **[作成]** を選択してポータルのプライベート エンドポイントを作成します。
+
+2. Purview アカウントに関連付けられている、以前のポータルのプライベート エンドポイントを削除します。 
+
+3. ポータルのプライベート エンドポイントのデプロイ時に新しい Azure プライベート DNS ゾーン (`privatelink.purviewstudio.azure.com`) が作成され、対応する A レコード (Web) がプライベート DNS ゾーンに存在することを確認します。 
+    
+4. Azure Purview Studio を正常に読み込むことができることを確認します。 DNS を再構成した後、新しい DNS ルーティングが有効になるまでに数分 (約 10 分) かかる場合があります。 すぐに読み込まれない場合は、数分待ってから、もう一度やり直してください。
+    
+5. ナビゲーションが失敗した場合は、nslookup web.purview.azure.com を実行します。これは、ポータルのプライベート エンドポイントに関連付けられているプライベート IP アドレスに解決されるはずです。
+  
+6. 既存のすべてのポータルのプライベート エンドポイントについて、上の手順 1. から 3. を繰り返します。 
+
+### <a name="validation-steps"></a>検証手順
+
+1. Azure Purview Studio を正常に読み込むことができることを確認します。 DNS を再構成した後、新しい DNS ルーティングが有効になるまでに数分 (約 10 分) かかる場合があります。 すぐに読み込まれない場合は、数分待ってから、もう一度やり直してください。
+
+2. ナビゲーションが失敗した場合は、nslookup `web.purview.azure.com` を実行します。これは、ポータルのプライベート エンドポイントに関連付けられているプライベート IP アドレスに解決されるはずです。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問  
 

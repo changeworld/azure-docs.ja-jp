@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 07/01/2021
 ms.author: allensu
-ms.openlocfilehash: e17bc129268f8bc93d107492912c868e8efebae1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: adeca1558fd97c1f8534539b7a4ad134d364e4d8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671148"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996135"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>アウトバウンド接続に送信元ネットワーク アドレス変換 (SNAT) を使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "128671148"
 | 2 | サブネットへの NAT ゲートウェイの関連付け | 静的、明示的 | はい | 最高 | 
 | 3 | 仮想マシンへのパブリック IP の割り当て | 静的、明示的 | はい | [OK] | 
 | 4 | アウトバウンド (およびインバウンド) 用の Load Balancer のフロントエンド IP アドレスを使用する | 暗黙 | いいえ | 下から 2番目 |
-| 5 | 既定のアウトバウンド アクセスを使用する | 暗黙 | いいえ | 最低 |
+| 5 | [既定のアウトバウンド アクセス](../virtual-network/default-outbound-access.md)を使用する | 暗黙 | いいえ | 最低 |
 
 ## <a name="using-the-frontend-ip-address-of-a-load-balancer-for-outbound-via-outbound-rules"></a><a name="outboundrules"></a>アウトバウンド規則を使用してアウトバウンド用のロード バランサーのフロントエンド IP アドレスを使用する
 
@@ -180,7 +180,7 @@ UDP 接続の場合、ロード バランサーには **ポート制限コーン
 
 バックエンド プールのサイズと frontendIPConfigurations の数に基づいて SNAT ポートを手動で割り当てると、SNAT のポート不足を回避するのに役立ちます。 
 
-"インスタンスあたりのポート数" または "バックエンド インスタンスの最大数" を使用して SNAT ポートを手動で割り当てできます。 バックエンドに仮想マシンがある場合は、SNAT ポートを最大限に使用できるように、"インスタンスあたりのポート数"を使用してポートを割り当てることをお勧めします。 インスタンスあたりのポート数は、次のように計算する必要があります。フロントエンド IP の数 * 64K / バックエンド インスタンスの数 of frontend IP * 64K / No. 。 それ以外の場合、バックエンドに仮想マシン スケール セットがある場合は、"バックエンド インスタンスの最大数" を使用してポートを割り当てることをお勧めします。 
+"インスタンスあたりのポート数" または "バックエンド インスタンスの最大数" を使用して SNAT ポートを手動で割り当てできます。 バックエンドに仮想マシンがある場合は、SNAT ポートを最大限に使用できるように、"インスタンスあたりのポート数"を使用してポートを割り当てることをお勧めします。 インスタンスあたりのポート数は、次のように計算する必要があります。フロントエンド IP の数 * 64K / バックエンド インスタンスの数 フロントエンド IP の数 * 64K / いいえ。 。 それ以外の場合、バックエンドに仮想マシン スケール セットがある場合は、"バックエンド インスタンスの最大数" を使用してポートを割り当てることをお勧めします。 
 
 ただし、許可されている残りの SNAT ポートよりも多くの VM がバックエンドに追加されると、VMSS のスケールアップがブロックされるか、新しい VM が十分な SNAT ポート数を取得できなくなるおそれがあります。 
 

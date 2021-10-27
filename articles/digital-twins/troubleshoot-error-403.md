@@ -1,19 +1,20 @@
 ---
-title: 'Azure Digital Twins 要求が失敗しました。状態: 403 (許可されていません)'
-description: "'サービス要求が失敗しました。 状態:403 (許可されていません)' が Azure Digital Twins 上で発生する場合の原因と解決策。"
+title: '失敗したサービス要求のトラブルシューティング: エラー 403 (禁止)'
+titleSuffix: Azure Digital Twins
+description: Azure Digital Twins からエラーの状態として 403 (禁止) が返されたとき、それを診断し、解決する方法について説明します。
 ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 8/20/2021
-ms.openlocfilehash: b3ad9c84e35483cf81bde83703b01ef0ff3d8a9d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 9/23/2021
+ms.openlocfilehash: 60c553faad2917ec57fd6e622348e9a694ff6fe2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772332"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134243"
 ---
-# <a name="service-request-failed-status-403-forbidden"></a>サービス要求が失敗しました。 状態:403 (許可されていません)
+# <a name="troubleshooting-failed-service-request-error-403-forbidden"></a>失敗したサービス要求のトラブルシューティング: エラー 403 (禁止)
 
 この記事では、Azure Digital Twins へのサービス要求から 403 エラーを受信した場合の原因と解決手順について説明します。 
 

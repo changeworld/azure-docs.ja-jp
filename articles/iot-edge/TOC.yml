@@ -117,14 +117,24 @@
   items:
     - name: IoT Edge デバイスを作成する
       items:
-        - name: IoT Hub にデバイスを登録する
-          href: how-to-register-device.md
-        - name: IoT Edge のインストールとプロビジョニング
+        - name: シングル デバイスを手動でプロビジョニングする
           items:
-            - name: IoT Edge for Linux をインストールする
-              href: how-to-install-iot-edge.md
-            - name: IoT Edge for Linux on Windows をインストールする
-              href: how-to-install-iot-edge-on-windows.md
+            - name: X.509 証明書の構成証明
+              items:
+                - name: Linux
+                  href: how-to-provision-single-device-linux-x509.md
+                - name: Windows 上の Linux コンテナー
+                  href: how-to-provision-single-device-linux-on-windows-x509.md
+                - name: Windows
+                  href: how-to-provision-single-device-windows-x509.md
+            - name: 対称キーの構成証明
+              items:
+                - name: Linux
+                  href: how-to-provision-single-device-linux-symmetric.md
+                - name: Windows 上の Linux コンテナー
+                  href: how-to-provision-single-device-linux-on-windows-symmetric.md
+                - name: Windows
+                  href: how-to-provision-single-device-windows-symmetric.md
         - name: IoT Edge を更新する
           href: how-to-update-iot-edge.md
         - name: デバイス証明書の管理
@@ -137,8 +147,6 @@
           href: gpu-acceleration.md
     - name: 代替デバイスのシナリオ
       items:
-        - name: Windows コンテナーを使用して IoT Edge を実行する
-          href: how-to-install-iot-edge-windows-on-windows.md
         - name: Kubernetes で IoT Edge を実行する
           href: how-to-install-iot-edge-kubernetes.md
         - name: ARM テンプレートを使用して IoT Edge VM をデプロイする

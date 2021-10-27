@@ -5,14 +5,14 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 05/13/2021
+ms.date: 10/15/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 86795c29f5eaaedb1ea08975a69b6afde9d755c1
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 9f9043b7ff667903ed9d2318e4ec20363cae71f9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271488"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063661"
 ---
 # <a name="quickstart-integrate-azure-spring-cloud-with-azure-database-for-mysql"></a>クイック スタート: Azure Spring Cloud と Azure Database for MySQL との統合
 
@@ -34,6 +34,10 @@ export MYSQL_DATABASE_NAME=petclinic
 
 ## <a name="prepare-an-azure-database-for-mysql-instance"></a>Azure Database for MySQL インスタンスを準備する
 
+1. 前のクイックスタートで次のコマンドを実行していない場合は、CLI の既定値を設定します。
+    ```azcli
+    az configure --defaults group=<resource group name> spring-cloud=<service name>
+    ```
 1. Azure Database for MySQL サーバーを作成します。 
 
     ```azcli
@@ -162,5 +166,5 @@ az spring-cloud app update --name visits-service \
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする](how-to-bind-mysql.md)
-* [マネージド ID を使用して Azure SQL Database を Azure Spring Cloud アプリに接続する](./connect-managed-identity-to-azure-sql.md)
+* [Azure Database for MySQL インスタンスを Azure Spring Cloud 内のアプリケーションにバインドする](how-to-bind-mysql.md)
+* [マネージド ID を使用して Azure SQL Database を Azure Spring Cloud 内のアプリに接続する](./connect-managed-identity-to-azure-sql.md)

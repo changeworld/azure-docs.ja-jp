@@ -6,13 +6,13 @@ ms.author: zeinam
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: c077eb0c1639089fcc7196693a617e32c01d9a9a
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.date: 10/15/2021
+ms.openlocfilehash: cb41c6bd06541f414b5cd8f353e59f6094182d13
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230458"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063360"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Purview アカウントのプライベート エンドポイント構成のトラブルシューティング
 
@@ -196,6 +196,18 @@ ms.locfileid: "129230458"
 
 ### <a name="resolution"></a>解像度
 この場合、Azure Purview Studio を開くには、Azure Purview ポータルのプライベート エンドポイントと同じ仮想ネットワークにデプロイされているマシンを使用するか、ハイブリッド接続が許可されている CorpNet に接続されている VM を使用します。
+
+### <a name="issue"></a>問題
+セルフホステッド統合ランタイムを使用して SQL サーバーをスキャンすると、次のエラー メッセージが表示される場合があります。
+
+  `Message=This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms`
+
+### <a name="cause"></a>原因 
+セルフホステッド統合ランタイム マシンで FIPS モードが有効になっています。
+Federal Information Processing Standards (FIPS) では、使用が許可される暗号化アルゴリズムの特定のセットを定義します。 マシンで FIPS モードが有効になっている場合、一部のシナリオでは、起動したプロセスが依存する一部の暗号化クラスがブロックされます。
+
+### <a name="resolution"></a>解像度
+セルフホステッド統合サーバーで FIPS モードを無効にします。
 
 ## <a name="next-steps"></a>次のステップ
 

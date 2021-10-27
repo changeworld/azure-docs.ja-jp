@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 418bc82a503822a79f138fc71213f9ec5c9b5266
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 71cc84defc8eb791b8d1f1189162b97ee44db9ec
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471307"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129208"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLI を使用してマネージド HSM を管理する
 
@@ -47,6 +47,8 @@ CLI を使用したログイン オプションの詳細については、「[Az
 > [!NOTE]
 > 以下のすべてのコマンドは、2 つの使用方法を示しています。 1 つは **--hsm-name** と **--name** (キー名用) パラメーターを使用し、もう 1 つは **--id** パラメーターを使用して、必要に応じてキー名を含む URL 全体を指定できます。 後者の方法は、呼び出し元 (ユーザーまたはアプリケーション) にコントロール プレーンに対する読み取りアクセス権がなく、データ プレーンに対する制限付きアクセスだけがある場合に便利です。
 
+> [!NOTE]
+> キー マテリアルとの一部のやり取りでは、特定のローカル RBAC アクセス許可が必要です。 組み込みのローカル RBAC ロールとアクセス許可の全一覧については、「[Managed HSM のローカル RBAC の組み込みロール](./built-in-roles.md)」を参照してください。 これらのアクセス許可をユーザーに割り当てるには、「[マネージド HSM へのアクセスをセキュリティで保護する](./secure-your-managed-hsm.md)」を参照してください。
 ## <a name="create-an-hsm-key"></a>HSM キーを作成する
 
 > [!NOTE]
@@ -176,7 +178,7 @@ az keyvault key purge --hsm-name ContosoHSM --name myrsakey
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key recover --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey
+az keyvault key purge --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey
 
 ```
 
@@ -202,12 +204,12 @@ az keyvault key backup --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys
 > 同じ名前のキーがアクティブまたは削除済みの状態である場合、復元は成功しません。
 
 ```azurecli-interactive
-az keyvault key restore --hsm-name ContosoHSM --name myrsakey --file myrsakey.bakup
+az keyvault key restore --hsm-name ContosoHSM --name myrsakey --file myrsakey.backup
 
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key recover --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey --file myrsakey.bakup
+az keyvault key restore --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey --file myrsakey.backup
 
 ```
 

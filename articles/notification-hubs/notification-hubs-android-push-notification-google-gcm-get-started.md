@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4781bd532402b1f92d1027f3aab2a9ae938d47d5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87832656"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042904"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する (非推奨)
 
@@ -111,7 +111,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>プロジェクトの AndroidManifest.xml を更新する
 
-1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を使用して、[登録トークンを取得する](https://developers.google.com/cloud-messaging/)ために使用されるインスタンス ID リスナー サービスをコード内に実装します。 このチュートリアルでは、クラスの名前は `MyInstanceIDService` です。
+1. GCM をサポートするには、[Google Instance ID API](https://developers.google.com/instance-id/) を使用して、[登録トークンを取得する](https://developers.google.com/cloud-messaging/)ために使用されるインスタンス ID リスナー サービスをコード内に実装します。 このチュートリアルでは、クラスの名前は `MyInstanceIDService` です。
 
     次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 `<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
   

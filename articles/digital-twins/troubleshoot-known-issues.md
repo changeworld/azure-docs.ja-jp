@@ -1,20 +1,21 @@
 ---
-title: 既知の問題 - Azure Digital Twins
+title: 既知の問題のトラブルシューティング
+titleSuffix: Azure Digital Twins
 description: Azure Digital Twinds の既知の問題を認識し、軽減するのに役立ちます。
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.date: 09/15/2021
+ms.date: 10/6/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 02a1a6d5088a722c0b919811afc0ac89c7c52550
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b80da6d98a2b70f9c0d8d84922e9043bef114d80
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593574"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133616"
 ---
-# <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
+# <a name="troubleshooting-azure-digital-twins-known-issues"></a>Azure Digital Twins のトラブルシューティング: 既知の問題
 
 この記事では、Azure Digital Twins に関連する既知の問題について説明します。
 

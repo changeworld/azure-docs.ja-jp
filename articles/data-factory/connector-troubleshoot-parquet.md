@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 64a49592609b2cb7fd262264bb9802de58db5f04
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: b12666fdd66b3c85702b7222f2f2edca7136e323
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390448"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062759"
 ---
 # <a name="troubleshoot-the-parquet-format-connector-in-azure-data-factory-and-azure-synapse"></a>Azure Data Factory と Azure Synapse で Parquet 形式コネクタのトラブルシューティング
 
@@ -172,6 +172,14 @@ ms.locfileid: "129390448"
 - **原因**: 列名に無効な文字が含まれています。
 
 - **解決方法**: シンク列名が有効になるように列マッピングを追加または変更します。
+
+## <a name="the-file-created-by-the-copy-data-activity-extracts-a-table-that-contains-a-varbinary-max-column"></a>データのコピー アクティビティによって作成されたファイルで、varbinary (max) 列を含むテーブルが抽出される
+
+- **現象**: データのコピー アクティビティによって作成された Parquet ファイルで、varbinary (max) 列を含むテーブルが抽出されます。
+
+- **原因**: この問題は、大きな列を読み取っている Parquet-mr ライブラリのバグが原因で発生します。 
+
+- **解決方法**: ファイルあたりの行数を 1000 行に制限して、より小さいファイル (サイズ < 1G) を生成してみてください。
 
 ## <a name="next-steps"></a>次のステップ
 

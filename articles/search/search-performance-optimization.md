@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: c3cb2a64cd2981c73a673776c01ec98bf44c8041
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 60dd14be7d420d5aac5da5ba85d3e78e72a5ba42
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458190"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002531"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure Cognitive Search の可用性とビジネス継続性
 
@@ -32,6 +32,10 @@ Microsoft は、個々の検索サービスについて、次の条件を満た�
 + 読み取り/書き込みワークロード (クエリとインデックス作成) の高可用性を実現するには 3 つ以上のレプリカ 
 
 Free レベルに対して、SLA は提供されません。 詳細については、「[Azure Cognitive Search の SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」を参照してください。
+
+## <a name="data-residency"></a>データ所在地
+
+Azure Cognitive Search は、お客様の許可なく、お客様が指定したリージョン外にお客様のデータを保存することはありません。
 
 <a name="availability-zones"></a>
 

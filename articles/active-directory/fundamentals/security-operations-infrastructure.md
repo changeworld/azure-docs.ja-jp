@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a3c2b380160ef68655f0727f4d47280cd5cd02
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 12e86dc602e52fb96b7f9cea3a52079fc80c201b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754287"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041692"
 ---
 # <a name="security-operations-for-infrastructure"></a>インフラストラクチャのためのセキュリティ運用
 
@@ -57,7 +57,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合 - Azure Event Hub 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) – アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
 この記事の残りの部分で、監視とアラートが必要な対象について説明し、脅威の種類別にまとめています。 特定の事前構築済みソリューションがある場合は、表の後にリンクを示しています。 それ以外の場合は、前述のツールを使用してアラートを作成できます。
 

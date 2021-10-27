@@ -2,18 +2,18 @@
 title: Azure Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 description: Azure Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング方法について説明します
 services: application-gateway
-author: surajmb
+author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
-ms.author: surmb
+ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3bb3a89443cdefeedbe5df254d215dfcec770983
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3cc75c637dd286cb87ca745d713a55a0a2cf8834
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737849"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137705"
 ---
 # <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 
@@ -121,6 +121,37 @@ BackendAddressPoolsText : [
 1.  Azure の既定の DNS を使用している場合は、適切な A レコードまたは CNAME レコード マッピングが完了しているかどうかをドメイン名レジストラーで確認します。
 
 1.  ドメインがプライベートまたは内部の場合は、同じ仮想ネットワーク内の VM から解決を試みます。 解決できる場合は、Application Gateway を再起動して、もう一度確認してください。 Application Gateway を再起動するには、次のリンク先のリソースで説明されている PowerShell コマンドを使用して、[停止](/powershell/module/azurerm.network/stop-azurermapplicationgateway)および[起動](/powershell/module/azurerm.network/start-azurermapplicationgateway)する必要があります。
+
+### <a name="updates-to-the-dns-entries-of-the-backend-pool"></a>バックエンド プールの DNS エントリの更新
+
+**メッセージ:** The backend health status could not be retrieved. (バックエンドの正常性状態を取得できませんでした。) This happens when an NSG/UDR/Firewall on the application gateway subnet is blocking traffic on ports 65503-65534 in case of v1 SKU, and ports 65200-65535 in case of the v2 SKU or if the FQDN configured in the backend pool could not be resolved to an IP address. (これは、v1 SKU の場合はポート 65503 から 65534、v2 SKU の場合はポート 65200 から 65535 のトラフィックがアプリケーション ゲートウェイ サブネット上の NSG/UDR/Firewall によってブロックされている場合、またはバックエンド プールで構成された FQDN を IP アドレスに解決できない場合に発生します。) To learn more visit - https://aka.ms/UnknownBackendHealth. (詳細については、次にアクセスしてください。)
+
+**原因:** Application Gateway では起動時にバックエンド プールの DNS エントリが解決され、実行中には動的に更新されません。
+
+**解決方法:**
+
+新しい IP アドレスの使用を開始するには、バックエンド サーバーの DNS エントリを変更した後に Application Gateway を再起動する必要があります。  この操作は Azure PowerShell または Azure CLI から実行できます。
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+```
+# Get Azure Application Gateway
+$appgw=Get-AzApplicationGateway -Name <appgw_name> -ResourceGroupName <rg_name>
+ 
+# Stop the Azure Application Gateway
+Stop-AzApplicationGateway -ApplicationGateway $appgw
+ 
+# Start the Azure Application Gateway
+Start-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+```
+# Stop the Azure Application Gateway
+az network application-gateway stop -n <appgw_name> -g <rg_name>
+
+# Start the Azure Application Gateway
+az network application-gateway start -n <appgw_name> -g <rg_name>
+```
 
 ### <a name="tcp-connect-error"></a>TCP 接続エラー
 

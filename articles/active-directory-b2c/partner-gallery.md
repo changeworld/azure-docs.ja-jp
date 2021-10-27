@@ -3,20 +3,20 @@ title: Azure AD B2C の ISV パートナー ギャラリー
 titleSuffix: Azure AD B2C
 description: ISV パートナーと統合して、エンドユーザー エクスペリエンスをニーズに合わせて調整する方法について説明します。 Microsoft のパートナー ネットワークは、ソリューションの機能を拡張し、MFA、セキュリティで保護されたカスタマー認証、ロールベースのアクセス制御を有効にし、ID の検証と証明を通じて不正行為を防止します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 01/11/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4935b42efa6e6fd17d66ddfba744ae36653ed952
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a80b5b6340ddf0660961874281cbc6207ffea859
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419213"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063578"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -72,6 +72,7 @@ Microsoft は、次の ISV と提携して、オンプレミス アプリケー�
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
 | ![Datawiza ロゴのスクリーンショット](./media/partner-gallery/datawiza-logo.png) | [Datawiza](./partner-datawiza.md) を使用すると、アプリケーションに対する SSO ときめ細かなアクセス制御が可能になり、Azure AD B2C がオンプレミスのレガシ アプリケーションの保護まで拡張されます。  |
+| ![F5 ロゴのスクリーンショット](./media/partner-gallery/f5-logo.png) | [F5](./partner-f5.md) を使用すると、Azure AD B2C の事前認証、条件付きアクセス (CA) と SSO と組み合わせて、ビッグ IP セキュリティを使用して、レガシ アプリケーションをインターネットに安全に公開できます。  |
 | ![Ping ロゴのスクリーンショット](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) を使用すると、複数のクラウドにわたってオンプレミスのレガシ アプリケーションへの安全なハイブリッド アクセスが可能になります。 |
 | ![Strata ロゴのスクリーンショット](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) は、一貫性のあるアクセス ポリシーを適用し、ID の同期を維持し、レガシ ID システムから Azure AD B2C によって提供される標準ベースの認証とアクセス制御にアプリケーションを簡単に移行できるようにすることで、オンプレミスのアプリケーションへの、セキュリティで保護されたハイブリッド アクセスを提供します。 |
 | ![Zscaler ロゴのスクリーンショット](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) は、VPN のコスト、手間、セキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産への、セキュリティで保護されたポリシーベースのアクセスを実現します。 |

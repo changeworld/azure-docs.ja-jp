@@ -3,15 +3,15 @@ title: Azure Virtual Desktop のトラブルシューティングの概要 - Azu
 description: Azure Virtual Desktop 環境の設定時の問題のトラブルシューティングの概要。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 12/04/2020
+ms.date: 10/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c847c87a24dedc994da39a37f37def3caeef4db1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8abe1cc793b5e7e5528d377ee0a7226d5415909
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818617"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045296"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-azure-virtual-desktop"></a>Azure Virtual Desktop のトラブルシューティングの概要、フィードバック、サポート
 
@@ -19,6 +19,10 @@ ms.locfileid: "124818617"
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)を参照してください。
 
 この記事では、Azure Virtual Desktop 環境の設定時に発生することがある問題の概要とその問題の解決方法について説明しています。
+
+## <a name="troubleshoot-deployment-and-connection-issues"></a>デプロイと接続の問題を解決する
+
+[Azure Monitor for Windows Virtual Desktop](azure-monitor.md) は Azure Monitor ブックを基盤に作られたダッシュボードであり、Azure Virtual Desktop 環境の問題を自動的にすばやく特定し、解決できます。 Kusto クエリの使用を望む場合、代わりに組み込みの診断機能である [Log Analytics](diagnostics-log-analytics.md) の使用をお勧めします。
 
 ## <a name="report-issues"></a>レポートに関する問題
 
@@ -54,7 +58,7 @@ ms.locfileid: "124818617"
 - Azure Virtual Desktop 環境でホスト プールを作成しているときに発生した問題のトラブルシューティングを行うには、「[ホスト プールの作成](troubleshoot-set-up-issues.md)」を参照してください。
 - Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
 - Azure Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
-- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、「[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」を参照してください。
+- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。

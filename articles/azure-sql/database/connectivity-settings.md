@@ -11,12 +11,12 @@ ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de6af2c8581c157634ee1f8676e3dbc84ccd1803
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f31c53d57b64254c1be654f58b387d7524974e92
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590679"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987444"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]

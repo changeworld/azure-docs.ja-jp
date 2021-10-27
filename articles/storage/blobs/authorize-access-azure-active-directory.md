@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 10/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fe6397b79ff37074342b40880aa5284e020cd8a1
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 86cf5cfaf5d64c9aa1f1cda17df543b953a5ed17
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859192"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066986"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB へのアクセスを認可する
 
@@ -32,15 +32,17 @@ Blob Storage ではさらに、Azure AD 資格情報で署名された Shared Ac
 
 認証の手順では、アプリケーションが実行時に OAuth 2.0 アクセス トークンを要求する必要があります。 アプリケーションが Azure VM、仮想マシン スケール セット、または Azure Functions アプリなどの Azure エンティティ内から実行されている場合、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用して BLOB データにアクセスできます。 Azure Blob service に対してマネージド ID によって行われた要求を承認する方法については、[Azure リソースのマネージド ID を使用した BLOB データへのアクセスの承認](authorize-managed-identity.md)に関するページを参照してください。
 
-承認の手順では、セキュリティ プリンシパルに 1 つまたは複数の Azure ロールを割り当てる必要があります。 BLOB データへの一般的なアクセス許可セットを含む Azure ロールは、Azure Storage によって提供されます。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 BLOB アクセス用の Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
+承認の手順では、要求を行うセキュリティ プリンシパルに 1 つまたは複数の Azure RBAC ロールを割り当てる必要があります。 詳細については、「[アクセス権の Azure ロールを割り当てる](#assign-azure-roles-for-access-rights)」を参照してください。
 
 Azure Blob service に対する要求を作成するネイティブ アプリケーションと Web アプリケーションは、Azure AD でアクセスを認可することもできます。 アクセス トークンを要求し、それを使用して BLOB データへの要求を認可する方法については、[Azure Storage アプリケーションからの Azure AD による Azure Storage へのアクセスの認可](../common/storage-auth-aad-app.md)に関する記事をご覧ください。
 
 ## <a name="assign-azure-roles-for-access-rights"></a>アクセス権の Azure ロールを割り当てる
 
-Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Storage では、BLOB データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールが定義されます。 BLOB データにアクセスするためのカスタム ロールを定義することもできます。
+Azure Active Directory (Azure AD) では、Azure RBAC を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB データへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。 BLOB データにアクセスするためのカスタム ロールを定義することもできます。 BLOB アクセス用の Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
 
-Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
+Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。 セキュリティ プリンシパルに割り当てられた RBAC ロールによって、そのプリンシパルが持つアクセス許可が決定されます。 BLOB アクセス用の Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
+
+場合によっては、BLOB リソースへのきめ細かなアクセスを有効にしたり、ストレージ リソースに対するロールの割り当てが多数ある場合にアクセス許可を簡略化したりする必要があります。 Azure 属性ベースのアクセス制御 (Azure ABAC) を使用して、ロール割り当てに関する条件を構成できます。 [カスタム役割](../../role-based-access-control/custom-roles.md)で条件を使用したり、組み込みロールを選択したりすることができます。 ABAC を使用した Azure ストレージ リソースの条件の構成に関する詳細については、「[Azure ロールの割り当て条件を使用して BLOB へのアクセスを承認する (プレビュー)](../common/storage-auth-abac.md)」を参照してください。 BLOB データ操作でサポートされる条件の詳細については、「[Azure Storage 内での Azure のロールの割り当て条件のアクションと属性 (プレビュー)](../common/storage-auth-abac-attributes.md)」を参照してください。
 
 ### <a name="resource-scope"></a>リソースのスコープ
 

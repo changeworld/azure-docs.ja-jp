@@ -4,20 +4,20 @@ description: Azure Key Vault で Azure Cosmos DB アカウントのカスタマ�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 10/15/2021
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f9f9c9688340a153efab189cc24ace13fc4da6e
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: d22b299cca557774ed47ecf6d8309f780f32fee8
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113589211"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133065"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (**サービス マネージド キー**) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー (**カスタマー マネージド キー**) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
+Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (**サービス マネージド キー**) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー (**カスタマー マネージド キー** または CMK) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
@@ -238,37 +238,80 @@ az cosmosdb show \
 - Azure Cosmos DB のファーストパーティ ID は、Azure Cosmos DB サービスへのアクセス権を付与するために使用できます。
 - Azure Cosmos DB アカウントの[マネージド ID](how-to-setup-managed-identity.md) は、ご使用のアカウントへのアクセス権を明示的に付与するために使用できます。
 
+### <a name="to-use-a-system-assigned-managed-identity"></a>システム割り当てマネージド ID を使用する方法
+
 システムによって割り当てられたマネージド ID を取得できるのは、アカウントの作成後のみになります。そのため、[上記](#add-access-policy)で説明したように、最初にファーストパーティ ID を使用してアカウントを作成する必要があります。 その後、以下を実行します。
 
-1. アカウントの作成中にこれが行われなかった場合は、アカウントで、[システムによって割り当てられたマネージド ID を有効にし](how-to-setup-managed-identity.md)、割り当てられた `principalId` をコピーします。
+1.  アカウントの作成中にこれが行われなかった場合は、アカウントで、[システムによって割り当てられたマネージド ID を有効にし](./how-to-setup-managed-identity.md#add-a-system-assigned-identity)、割り当てられた `principalId` をコピーします。
 
-1. [上記](#add-access-policy)で説明したように、新しいアクセス ポリシーを Azure Key Vault アカウントに追加しますが、Azure Cosmos DB のファーストパーティ ID ではなく、前の手順でコピーした `principalId` を使用します。
+1.  [上記](#add-access-policy)で説明したように、新しいアクセス ポリシーを Azure Key Vault アカウントに追加しますが、Azure Cosmos DB のファーストパーティ ID ではなく、前の手順でコピーした `principalId` を使用します。
 
-1. Azure Key Vault 内の暗号化キーにアクセスするときは、Azure Cosmos DB アカウントを更新して、システムによって割り当てられたマネージド ID を使用するように指定します。 これを行うには、以下を実行します。
+1.  Azure Key Vault 内の暗号化キーにアクセスするときは、Azure Cosmos DB アカウントを更新して、システムによって割り当てられたマネージド ID を使用するように指定します。 これを行うには、以下を実行します。
 
-   - アカウントの Azure Resource Manager テンプレートにこのプロパティを指定します。
+    - アカウントの Azure Resource Manager テンプレートにこのプロパティを指定します。
 
-     ```json
-     {
-         "type": " Microsoft.DocumentDB/databaseAccounts",
-         "properties": {
-             "defaultIdentity": "SystemAssignedIdentity",
-             // ...
-         },
-         // ...
-     }
-     ```
+    ```json
+    {
+        "type": " Microsoft.DocumentDB/databaseAccounts",
+        "properties": {
+            "defaultIdentity": "SystemAssignedIdentity",
+            // ...
+        },
+        // ...
+    }
+    ```
 
-   - Azure CLI を使用して自身のアカウントを更新します。
+    - Azure CLI を使用して自身のアカウントを更新します。
 
-     ```azurecli
-     resourceGroupName='myResourceGroup'
-     accountName='mycosmosaccount'
-     
-     az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
-     ```
+    ```azurecli
+        resourceGroupName='myResourceGroup'
+        accountName='mycosmosaccount'
 
-1. その後、必要に応じて、Azure Cosmos DB のファーストパーティ ID を Azure Key Vault アクセス ポリシーから削除できます。
+        az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
+    ```
+  
+1.  その後、必要に応じて、Azure Cosmos DB のファーストパーティ ID を Azure Key Vault アクセス ポリシーから削除できます。
+
+### <a name="to-use-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を使用する方法
+
+1.  [上記](#add-access-policy)で説明したように、Azure Key Vault アカウントで新しいアクセス ポリシーを作成する場合は、Azure Cosmos DB のファースト パーティ ID ではなく、使用するマネージド ID の `Object ID` を使用します。
+
+1.  Azure Cosmos DB アカウントを作成する場合は、ユーザー割り当てマネージド ID を有効にし、Azure Key Vault で暗号化キーにアクセスするときにこの ID を使用するように指定する必要があります。 これを行うには、以下を実行します。
+
+    - Azure Resource Manager テンプレートの場合:
+
+    ```json
+    {
+        "type": "Microsoft.DocumentDB/databaseAccounts",
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+                "<identity-resource-id>": {}
+            }
+        },
+        // ...
+        "properties": {
+            "defaultIdentity": "UserAssignedIdentity=<identity-resource-id>"
+            "keyVaultKeyUri": "<key-vault-key-uri>"
+            // ...
+        }
+    }
+    ```
+
+    - Azure CLI を使用する場合:
+
+    ```azurecli
+    resourceGroupName='myResourceGroup'
+    accountName='mycosmosaccount'
+    keyVaultKeyUri = 'https://<my-vault>.vault.azure.net/keys/<my-key>'
+
+    az cosmosdb create \
+        -n $accountName \
+        -g $resourceGroupName \
+        --key-uri $keyVaultKeyUri
+        --assign-identity <identity-resource-id>
+        --default-identity "UserAssignedIdentity=<identity-resource-id>"  
+    ```
 
 ## <a name="key-rotation"></a>キーの交換
 
@@ -305,7 +348,7 @@ Azure Cosmos アカウントで使用されるカスタマー マネージド �
     
 ## <a name="error-handling"></a>エラー処理
 
-Azure Cosmos DB でカスタマー マネージド キー (CMK) を使用しているときにエラーが発生した場合、Azure Cosmos DB は、エラーの詳細を HTTP サブ状態コードと共に応答で返します。 このサブ状態コードを使用して、問題の根本原因をデバッグできます。 サポートされている HTTP サブ状態コードの一覧については、「[Azure Cosmos DB の HTTP 状態コード](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」を参照してください。
+Azure Cosmos DB でカスタマー マネージド キーを使用しているときにエラーが発生した場合、Azure Cosmos DB は、エラーの詳細を HTTP サブ状態コードと共に応答で返します。 このサブ状態コードを使用して、問題の根本原因をデバッグできます。 サポートされている HTTP サブ状態コードの一覧については、「[Azure Cosmos DB の HTTP 状態コード](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -357,7 +400,9 @@ Azure portal から、Azure Cosmos アカウントに移動し、左側のメニ
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>カスタマー マネージド キーはバックアップにどのように影響しますか?
 
-Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](./online-backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 復元されたバックアップを使用するには、バックアップの時点で使用していた暗号化キーが必要です。 つまり、失効されておらず、バックアップの時点で使用していたキーのバージョンが依然有効になっている必要があります。
+Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](./online-backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 バックアップを正常に復元するには、次の条件が必要です。
+- バックアップ時に使用した暗号化キーは、Azure Key Vault で使用できる必要があります。 つまり、失効されておらず、バックアップの時点で使用していたキーのバージョンがまだ有効である必要があります。
+- [Azure Key Vault のアクセス ポリシーでマネージド ID を使用](#using-managed-identity)した場合、ソース アカウントで構成された ID が削除されておらず、Azure Key Vault インスタンスのアクセス ポリシーでも宣言されている必要があります。
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>暗号化キーを失効させるにはどうすればよいですか?
 

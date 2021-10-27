@@ -3,12 +3,12 @@ title: すべてのエンタープライズ センサーによって検出され
 description: オンプレミスの管理コンソールのデバイス インベントリを使用して、接続されているセンサーからのデバイス情報の包括的なビューを取得します。 この情報を管理するには、インポート、エクスポート、およびフィルター処理のツールを使用します。
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: 0ae59123b59cfb54cba2a2ee9bdeefb411c8793b
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 8016efe809d03cbc00bdb94b67f99caa7f98ac4c
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020086"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137789"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>デバイス インベントリのすべてのエンタープライズ センサー検出を調査する
 
@@ -42,6 +42,7 @@ ms.locfileid: "113020086"
 | **グループ** | このデバイスが参加するグループ。 |
 | **最終アクティビティ** | デバイスで最後に実行されたアクティビティ。 |
 | **Discovered** | このデバイスがネットワークに最初に表示された日時。 |
+| **PLC モード (プレビュー)** | PLC 動作モードには、キーの状態 (物理) と実行状態 (論理) が含まれます。 **キー** の状態には、[実行]、[プログラム]、[リモート]、[停止]、[無効]、[Programming Disabled]\(プログラムの無効化\) があります。 **実行** 状態には、[実行]、[プログラム]、[停止]、[一時停止]、[例外]、[停止]、[Trapped]\(トラップ\)、[アイドル]、[オフライン] があります。 両方の状態が同じ場合は、1 つの状態のみが表示されます。 |
 
 ## <a name="integrate-data-into-the-enterprise-device-inventory"></a>エンタープライズ デバイス インベントリにデータを統合する
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/27/2021
-ms.openlocfilehash: 7f784773ff2f29b7f5b9c244811f818861f5ae42
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b8d72d3b2e32f22cd3fc6bbe8a89b11469b343c4
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080626"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072216"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Azure Consumption Commitment の登録
 
@@ -56,7 +56,7 @@ MACC プログラムに登録するには、オファーが次の要件を満た
 
 #### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
 1. **[オファー]** セクションで、確認するオファーを選択します。
 1. **[オファーの概要]** ページの **[Marketplace programs]\(マーケットプレース プログラム\)** セクションで、 **[Microsoft Azure Consumption Commitment]** の状態に "_登録済み_" または "_未登録_" と表示されます。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/27/2021
+ms.date: 10/13/2021
 ms.author: b-juche
-ms.openlocfilehash: acdb84621af21cc29feb3f750a5ea60cb21e3d4a
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 06d7e334205de142b60f73d1e98f0c4167c65b7d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094845"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993152"
 ---
 # <a name="configure-policy-based-backups-for-azure-netapp-files"></a>Azure NetApp Files 用にポリシー ベースのバックアップを構成する 
 
@@ -48,7 +48,7 @@ Azure NetApp Files バックアップでは、ボリューム レベルで、"*�
 スナップショット ポリシーを作成して、バックアップするボリュームにスナップショット ポリシーを関連付ける必要があります。 1 つのスナップショット ポリシーを、複数のボリュームにアタッチできます。 スナップショット ポリシーに変更があると、ボリュームのバックアップ機能に影響する可能性があります。 
 
 1. Azure portal にサインインして、 **[Azure NetApp Files]** に移動します。    
-2. お使いの Azure NetApp Files サブスクリプションを選択します。   
+2. Azure NetApp Files アカウントを選択します。   
 3. **[スナップショット ポリシー]** を選択します。   
 
     ![[スナップショット ポリシー] オプションに移動する方法を示すスクリーンショット。](../media/azure-netapp-files/backup-navigate-snapshot-policy.png)   
@@ -88,7 +88,7 @@ Azure NetApp Files バックアップでは、ボリューム レベルで、"*�
 ポリシー ベースの (スケジュールされた) バックアップを有効にするには: 
 
 1. Azure portal にサインインして、 **[Azure NetApp Files]** に移動します。 
-2. お使いの Azure NetApp Files サブスクリプションを選択します。
+2. Azure NetApp Files アカウントを選択します。
 3. **[バックアップ]** を選択します。 
 
     ![[バックアップ] オプションに移動する方法を示すスクリーンショット。](../media/azure-netapp-files/backup-navigate.png)

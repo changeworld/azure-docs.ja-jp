@@ -4,16 +4,16 @@ description: ServiceNow インスタンスに送られたサービス正常性�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd806768e0ce73de824ea398ef954121d5ae86bd
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588189"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040533"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
 
-この記事では、webhook を使用して Azure サービス正常性アラートを ServiceNow と統合する方法について説明します。 ServiceNow インスタンスと webhook の統合を設定すると、Azure サービスの問題で影響を受ける場合に、既存の通知インフラストラクチャを通じてアラートを受け取ることになります。 Azure サービス正常性アラートが発生するたびに、ServiceNow のスクリプト化された REST API を介して webhook が呼び出されます。
+この記事では、webhook を使用して Azure サービス正常性アラートを ServiceNow と統合する方法について説明します。 ServiceNow インスタンスと webhook の統合を設定すると、Azure サービスの問題で影響を受ける場合に、既存の通知インフラストラクチャを通じてアラートを受け取ることになります。 Azure サービス正常性アラートが発生するたびに、ServiceNow のスクリプト化された REST API を介して Webhook が呼び出されます。
 
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>ServiceNow でスクリプト化された REST API を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "100588189"
 
 1.  **[Name]\(名前\)** に REST API の名前を追加し、**[API ID]** を `azureservicehealth` に設定します。
 
-1.  **[Submit]\(送信\)** をクリックします。
+1.  **[送信]** を選択します。
 
     ![ServiceNow の "REST API 設定"](./media/webhook-alerts/servicenow-restapi-settings.png)
 
@@ -66,8 +66,8 @@ ms.locfileid: "100588189"
                 } else {
                     inc.initialize();
                 }
-                var short_description = "Azure Service Health&quot;;
-                if (event.data.context.activityLog.properties.incidentType == &quot;Incident") {
+                var short_description = "Azure Service Health";
+                if (event.data.context.activityLog.properties.incidentType == "Incident") {
                     short_description += " - Service Issue - ";
                 } else if (event.data.context.activityLog.properties.incidentType == "Maintenance") {
                     short_description += " - Planned Maintenance - ";
