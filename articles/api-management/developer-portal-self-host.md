@@ -7,12 +7,12 @@ ms.author: danlep
 ms.date: 04/15/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: f3e0004115b417c85914c7cc40fd98acf3c63d73
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dc709f96c44ddf6ee701493e49c006d01533ede8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592643"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040514"
 ---
 # <a name="self-host-the-api-management-developer-portal"></a>API Management 開発者ポータルをセルフホストする
 
@@ -68,7 +68,7 @@ ms.locfileid: "128592643"
 
 ## <a name="step-2-configure-json-files-static-website-and-cors-settings"></a>手順 2: JSON ファイル、静的な Web サイト、および CORS 設定を構成する
 
-開発者ポータルでは、コンテンツを管理するために API Management の REST API が必要です。
+開発者ポータルでは、コンテンツを管理するために API Management REST API が必要です。
 
 ### <a name="configdesignjson-file"></a>config.design.json ファイル
 

@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 38347644557b2e2e3bf76dc4412381ab52396de2
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 7f0d206b9327cad0c58cc92dbec16227c1c22644
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129658559"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000133"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -63,7 +63,7 @@ ms.locfileid: "129658559"
     * コンピューティング クラスターは動的にスケーリングできます。 未割り当ての IP アドレスが十分でない場合、クラスターは部分的に割り当てられます。
     * コンピューティング インスタンスに必要な IP アドレスは 1 つのみです。
 
-* [パブリック IP アドレスを持たない](#no-public-ip)コンピューティング インスタンス (プレビュー機能) を作成するには、ワークスペースから VNet に接続するためにプライベート エンドポイントを使用する必要があります。 詳細については、「[Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する](how-to-configure-private-link.md)」を参照してください。
+* [パブリック IP アドレスを持たない](#no-public-ip)コンピューティング クラスターまたはインスタンス (プレビュー機能) を作成するには、ワークスペースから VNet に接続するためにプライベート エンドポイントを使用する必要があります。 詳細については、「[Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する](how-to-configure-private-link.md)」を参照してください。
 * 仮想ネットワークを管理するためのアクセス許可を制限するセキュリティ ポリシーまたはロックがないことを確認します。 ポリシーまたはロックを確認する場合は、仮想ネットワークのサブスクリプションとリソース グループの両方を確認します。
 * 仮想ネットワークのサブスクリプションまたはリソース グループに対するセキュリティ ポリシーまたはロックで、仮想ネットワークを管理するためのアクセス許可が制限されているかどうかを確認します。 
 * トラフィックを制限することで仮想ネットワークのセキュリティを保護する計画の場合は、「<bpt id="p1">[</bpt>必要なパブリック インターネット アクセス<ept id="p1">](#required-public-internet-access)</ept>」を参照してください。
@@ -91,10 +91,9 @@ ms.locfileid: "129658559"
 
 
         > [!TIP]
-        > コンピューティング インスタンスにパブリック IP アドレス (プレビュー機能) が使用されていない場合、これらの受信 NSG 規則は必要ありません。 コンピューティング クラスターも使用している場合は、クラスターに引き続きこれらの規則が必要です。
-    * コンピューティング クラスターの場合は、1 つのパブリック IP アドレスです。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、コンピューティングのデプロイが失敗します。
-
-    * コンピューティング インスタンスの場合、パブリック IP アドレスを削除できるようになりました (プレビュー機能)。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、コンピューティング インスタンスのデプロイが成功します。
+        > コンピューティング クラスターまたはインスタンスにパブリック IP アドレス (プレビュー機能) が使用されていない場合、これらの受信 NSG 規則は必要ありません。 
+        
+    * コンピューティング クラスターまたはインスタンスの場合、パブリック IP アドレスを削除できるようになりました (プレビュー機能)。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、コンピューティング クラスターまたはインスタンスのデプロイが成功します。
 
     * 1 つのロード バランサー
 
@@ -220,6 +219,31 @@ except ComputeTargetException:
 作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、<bpt id="p1">[</bpt>トレーニング用のコンピューティング ターゲットの選択と使用<ept id="p1">](how-to-set-up-training-targets.md)</ept>に関するページをご覧ください。
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+
+### <a name="no-public-ip-for-compute-clusters-preview"></a><a name="no-public-ip-amlcompute"></a>コンピューティング クラスターの [No public IP]\(パブリック IP なし\) (プレビュー)
+
+**[No public IP]\(パブリック IP なし\)** を有効にすると、コンピューティング クラスターと依存関係との通信にパブリック IP は使用されません。 代わりに、Azure Private Link エコシステムとサービスまたはプライベート エンドポイントを使用して仮想ネットワーク内でのみ通信が行われ、パブリック IP の必要性がまったくなくなります。 [No public IP]\(パブリック IP なし\) を使用すると、インターネットからコンピューティング クラスター ノードへのアクセスと検出ができなくなるため、重大な脅威のベクトルを排除できます。 **[No public IP]\(パブリック IP なし\)** クラスターは、多くの企業が使用しているパブリック IP なしのポリシーに準拠するのに役立ちます。 
+
+**[No public IP]\(パブリック IP なし\)** が有効なコンピューティング クラスターには、パブリック IP コンピューティング クラスターの場合と比較して、パブリック インターネットからの **受信通信要件はありません**。 具体的には、どちらの受信 NSG 規則 (`BatchNodeManagement`、`AzureMachineLearning`) も必要ありません。 **VirtualNetwork** のソースとあらゆるポート ソース、**VirtualNetwork** の宛先、**29876、29877** の宛先ポートからの受信は引き続き許可する必要があります。
+
+**[No public IP]\(パブリック IP なし\)** クラスターは、Azure Machine Learning のワークスペースの場合に [Azure Private Link](how-to-configure-private-link.md) に依存しています。 また、 **[No public IP]\(パブリック IP なし\)** が有効なコンピューティング クラスターの場合、プライベート エンドポイント ネットワーク ポリシーとプライベート リンク サービス ネットワーク ポリシーを無効にする必要があります。 これらの要件は、Azure Private Link サービスとプライベート エンドポイントに由来するものであり、Azure Machine Learning 固有のものではありません。 [Private Link サービスのネットワーク ポリシーの無効化](../private-link/disable-private-link-service-network-policy.md)に関するページの指示に従って、仮想ネットワーク サブネットにパラメーター `disable-private-endpoint-network-policies` と `disable-private-link-service-network-policies` を設定します。
+
+**送信接続** が機能するには、ユーザー定義のルートを持つ Azure Firewall などのエグレス ファイアウォールを設定する必要があります。 たとえば、[受信および送信の構成](how-to-access-azureml-behind-firewall.md)で設定されたファイアウォールを使用し、コンピューティング クラスターがデプロイされているサブネット上にルート テーブルを定義することで、トラフィックをそこにルーティングすることができます。 ルート テーブル エントリには、ファイアウォールのプライベート IP アドレスのネクスト ホップとして、0.0.0.0/0 というアドレス プレフィックスを設定することができます。
+
+クラスターがデプロイされているサブネット内の Azure コンテナー レジストリと Azure ストレージには、サービス エンドポイントまたはプライベート エンドポイントを使用できます。
+
+Studio で [No public IP address]\(パブリック IP アドレスなし\) コンピューティング クラスター (プレビュー機能) を作成するには、仮想ネットワーク セクションで **[No public IP]\(パブリック IP なし\)** チェックボックスをオンにします。
+また、ARM テンプレートを使用して [No public IP]\(パブリック IP なし\) コンピューティング クラスターを作成することもできます。 ARM テンプレートで、enableNodePublicIP パラメーターを false に設定してください。
+
+[!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
+
+**トラブルシューティング**
+
+* クラスターの作成時に "The specified subnet has PrivateLinkServiceNetworkPolicies or PrivateEndpointNetworkEndpoints enabled" (指定されたサブネットでは PrivateLinkServiceNetworkPolicies または PrivateEndpointNetworkEndpoints が有効になっています) というエラー メッセージが表示された場合は、[Private Link サービスのネットワーク ポリシーの無効化](../private-link/disable-private-link-service-network-policy.md)および[プライベート エンドポイントのネットワーク ポリシーの無効化](../private-link/disable-private-endpoint-network-policy.md)に関するページの指示を参照してください。
+
+* ACR または Azure Storage への接続の問題があってジョブの実行が失敗した場合は、お客様がサブネットに ACR と Azure Storage のサービス エンドポイントまたはプライベート エンドポイントを追加済みであること、ACR または Azure Storage によってそのサブネットからのアクセスが許可されていることをご確認ください。
+
+* [no public IP]\(パブリック IP なし\) クラスターを作成したことを確保するには、Studio でクラスターの詳細を表示すれば、リソースのプロパティで **[No Public IP]\(パブリック IP なし\)** プロパティが **[true]** に設定されていることがわかります。
 
 ## <a name="compute-instance"></a>コンピューティング インスタンス
 

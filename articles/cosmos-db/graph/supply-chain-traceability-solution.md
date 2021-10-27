@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Graph API を使用した Infosys サプライ チェーン トレーサビリティ ソリューション
+title: Azure Cosmos DB Gremllin API を使用した Infosys サプライ チェーン トレーサビリティ ソリューション
 description: Infosys によって実装されているサプライ チェーンのトレーサビリティ グラフ ソリューションでは、Azure Cosmos DB Gremlin API とその他の Azure サービスを使用しています。 このソリューションでは、グローバル サプライ チェーンの追跡と完成した商品に対するトレース機能が提供されます。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 10/07/2021
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: 4ec236a57e9c8f24625d22f4af3f39299d118804
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 3dacf188e0a3fbf901a97ff2125788f080d6532e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716350"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003896"
 ---
-# <a name="supply-chain-traceability-solution-using-azure-cosmos-db-graph-api"></a>Azure Cosmos DB Graph API を使用したサプライ チェーン トレーサビリティ ソリューション
+# <a name="supply-chain-traceability-solution-using-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API を使用したサプライ チェーン トレーサビリティ ソリューション
 
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
 
@@ -30,19 +30,20 @@ ms.locfileid: "129716350"
 
 ## <a name="overview"></a>概要
 
-食品サプライ チェーンでは、商品の追跡可能性として、商品のライフサイクル全体にわたり、サプライ チェーン全体で "追跡およびトレース" できることが求められます。 そのサプライ チェーンには、供給、製造、配送が含まれます。 追跡可能性は、さまざまな規制にさらされる中で、食べ物の安全性やブランドを守っていくのに必要不可欠です。 これまで、一部の組織では、サプライ チェーンで商品を効果的に追跡およびトレースできなかったため、コストのかかるリコールを行ったり、罰金を支払ったり、消費者の健康問題を引き起こしたりしてきました。
+食品サプライ チェーンでは、商品の追跡可能性として、商品のライフサイクル全体にわたり、サプライ チェーン全体で "追跡およびトレース" できることが求められます。 そのサプライ チェーンには、供給、製造、配送が含まれます。 追跡可能性は、さまざまな規制にさらされる中で、食べ物の安全性やブランドを守っていくのに必要不可欠です。 これまで、一部の組織では、サプライ チェーンで商品を効果的に追跡およびトレースできなかったため、コストのかかるリコールを行ったり、罰金を支払ったり、消費者の健康問題を引き起こしたりしてきました。 トレーサビリティ ソリューションでは、さまざまな速度と正確性でデータの調和やデータ インジェストのニーズに対処する必要があります。さらに重要なのは、従来のプラットフォームでは実現できないインベントリ サイクルの目標に従う必要があることです。
 
-アプリケーションサービス、統合サービス、データベース サービスなどの Azure 機能を使用して開発された Infosys のトレーサビリティ ソリューションは、次のような重要な機能を提供します。
+アプリケーション サービス、統合サービス、データベース サービスなどの Azure 機能を使用して開発された Infosys のトレーサビリティ ソリューションは、次のような重要な機能を提供します。
 
 * 工場、倉庫、流通センターを接続します。
 * 並行在庫移動イベントを取り込み、処理します。
 * 原材料、バッチ、完成品 (FG) パレット、複数レベルの親子関係のパレット、商品の移動の間のつながりを示すナレッジ グラフ。
-* パレットをトレースおよび追跡するための検索機能を備えたポータル。
+* ワイルドカード検索から特定キーワード検索までの範囲の検索機能を備えたユーザー ポータル。
 * 影響を受ける原材料バッチ、影響を受けるパレット、それらのパレットの場所など、品質インシデントの影響を特定します。
+* 製品のリコール情報など、複数の市場でイベントの履歴を取得する機能。
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
-サプライ チェーンの追跡可能性では、通常、パレット移動の取り込み、品質インシデントの処理、店舗データのトレース/分析におけるパターンが共有されます。 まず、これらのシステムでは、地理的に分散している工場/倉庫管理システムからの大量のデータを取り込む必要があります。 次に、これらのシステムでは、ストリーミング データを処理および分析して、原材料、生産バッチ、完成品パレット、複雑な親子関係 (共同パック/再パック) 間にみられる複雑なリレーションシップが導き出されます。 その後、システムは、追跡を可能にするために必要となる原材料、完成品、パレットの間の複雑なリレーションシップを保存する必要があります。 検索機能を備えたユーザー ポータルでは、サプライ チェーン ネットワーク内の商品を追跡およびトレースすることができます。
+サプライ チェーンの追跡可能性では、通常、パレット移動の取り込み、品質インシデントの処理、店舗データのトレース/分析におけるパターンが共有されます。 最初に、これらのシステムでは、地理的に離れた工場および倉庫管理システムから大量のデータを取り込む必要があります。 次に、これらのシステムでは、ストリーミング データを処理および分析して、原材料、生産バッチ、完成品パレット、複雑な親子関係 (共同パック/再パック) 間にみられる複雑なリレーションシップを導き出します。 その後、システムで、原材料、完成した商品、パレットの間の複雑なリレーションシップに関する情報、トレーサビリティのために必要なすべてのものを保存する必要があります。 検索機能を備えたユーザー ポータルでは、サプライ チェーン ネットワーク内の商品を追跡およびトレースすることができます。 これらのサービスにより、クラウドネイティブ、API ファースト、データ駆動型の機能をサポートするエンドツーエンドのトレーサビリティ ソリューションが実現します。
 
 Microsoft Azure には、Azure Cosmos DB、Azure Event Hubs、Azure API Management、Azure App Service、Azure SignalR、Azure Synapse Analytics、Power BI など、追跡可能性に関するユース ケースに利用できる豊富なサービスが用意されています。
 
@@ -55,7 +56,7 @@ Infosys のトレーサビリティ ソリューションは、追跡とトレ�
 * Azure Cosmos DB では、パフォーマンスを柔軟にスケール アップまたはスケール ダウンできます。 Gremlin API では、原材料、完成品、倉庫間の複雑なリレーションシップを構築し、クエリを実行することができます。
 * Azure API Management は、3PL (サード パーティ ロジスティック プロバイダー) と倉庫管理システム (WMS) に対する在庫移動イベントのための API を提供します。  
 * Azure Event Hubs では、さらに処理を行うために WMS と 3PL から多数の同時イベントを収集することができます。
-* Azure Function アプリは、Graph API を使用して、イベントを処理し、Azure Cosmos DB にデータを取り込みます。
+* Azure Function アプリは、Gremlin API を使用して、イベントを処理し、Azure Cosmos DB にデータを取り込みます。
 * Azure Search サービスを使用すると、ユーザーは複雑な検索、パレット情報のフィルター処理を行うことができます。
 * Azure Databricks では、変更フィードを読み取り、Synapse Analytics でモデルを作成して、Power BI を利用しているユーザーのためにセルフサービス レポートを作成します。
 * Azure Web アプリと App Service プランを使用すると、ユーザー ポータルをデプロイできます。
@@ -90,5 +91,6 @@ Infosys のトレーサビリティ ソリューションは、追跡とトレ�
 ## <a name="next-steps"></a>次の手順
 
 * [Infosys トレーサビリティ グラフ ソリューション](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-traceability-knowledge-graph?tab=Overview)
+* [Infosys Integrate+ for Azure](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-integrate-for-azure)
 * グラフ データを視覚化するには、[Gremlin API 可視化ソリューション](graph-visualization-partners.md)に関する記事を参照してください。
 * グラフ データをモデル化するには、[Gremlin API モデリング ソリューション](graph-modeling-tools.md)に関する記事を参照してください。

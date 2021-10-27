@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a0ce6658168bd86188875d9d89f218ee26ef7941
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: c368e94d8d2b07e3d1487d1b6e505d2a87a89e91
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651569"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994083"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのサーバーの概念
 
@@ -51,7 +51,7 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 サーバーが **停止** 状態にある場合、サーバーのコンピューティングは課金されません。 ただし、サーバーが再び起動されたときにデータ ファイルを使用できるようにするため、サーバーのストレージは維持されているため、ストレージは引き続き課金されます。
 
 > [!IMPORTANT]
-> サーバーを **停止** すると、それ以降連続して 7 日間は、その状態のままになります。 この期間内に手動で **開始** しないと、サーバーは 7 日の終わりに自動的に開始されます。 サーバーを使用していない場合は、再び **停止** することができます。
+> サーバーを **停止** すると、それ以降連続して 30 日間は、その状態のままになります。 この期間内に手動で **起動** しない場合、サーバーは 30 日が経過した時点で自動的に起動されます。 サーバーを使用していない場合は、再び **停止** することができます。
 
 サーバーが停止されている間、サーバーで管理操作を実行することはできません。 サーバーの構成設定を変更するには、[サーバーを起動する](how-to-stop-start-server-portal.md)必要があります。 [停止と開始の制限事項](./concepts-limitations.md#stopstart-operation)に関するページを参照してください。
 
@@ -63,7 +63,7 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
 |*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
-|*mysql.az_load_timezone*|該当なし|該当なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
+|*mysql.az_load_timezone*|該当なし|なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
 
 
 ## <a name="next-steps"></a>次のステップ

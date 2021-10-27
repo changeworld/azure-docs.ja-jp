@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: 8e705c95f875428c5089416ed3f49d90a474def9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eccc66085ae8a3df93315054a1acdea994310d28
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731203"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065523"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft のセールス チームとパートナーによる共同販売の概要
 
@@ -72,13 +72,13 @@ Azure IP 共同販売インセンティブ ステータスは、これらのプ�
 
 Business Applications 共同販売インセンティブ (Standard および Premium) ステータスは、これらのプランの種類に適用されます。
 
-- Dynamics 365 for Customer Engagement および PowerApps
+- Dynamics 365 for Customer Engagement & Power Apps
 - Dynamics 365 for Operations
 
 "_Azure IP 共同販売インセンティブ対象_" ステータスを取得したプランでは、コマーシャル マーケットプレースでこれらの恩恵を得られます。
 
 - クラウド ソリューション プロバイダー (CSP) パートナーは、10% のインセンティブを受けて貴社の IaaS ソリューションまたは SaaS プランを販売します。 CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」をご覧ください。
-- Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、Azure portal で **Azure 特典対象** とマークされたプランが表示されます。 MACC プログラムで顧客にもたらされるメリットと、MACC に対して有効になっているソリューションを見つける方法の詳細については、「[Azure の消費コミットメントのベネフィット](/marketplace/azure-consumption-commitment-benefit)」を参照してください。 パブリッシャーが取引可能なオファーを MACC に登録する方法の詳細については、[Azure の消費コミットメントの登録](azure-consumption-commitment-enrollment.md)に関するページを参照してください。
+- Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、**Azure 特典対象** とマークされたプランが Azure portal に表示されます。 MACC プログラムで顧客にもたらされるメリットと、MACC に対して有効になっているソリューションを見つける方法の詳細については、「[Azure の消費コミットメントのベネフィット](/marketplace/azure-consumption-commitment-benefit)」を参照してください。 パブリッシャーが取引可能なオファーを MACC に登録する方法の詳細については、[Azure の消費コミットメントの登録](azure-consumption-commitment-enrollment.md)に関するページを参照してください。
 - "_Azure IP 共同販売インセンティブ対象_" ステータスを達成する、または [Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)に登録していてステータスが共同販売の準備完了であるプランには、オンライン ストア ([Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/)) のプラン リスト ページに **Microsoft 推奨ソリューション** バッジが表示されます。  プランが対応する状態になってから、優先されるソリューション バッジがオンライン ストアに表示されるまでに最大で 30 日間かかることがあります。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。
 
 共同販売の準備完了および共同販売インセンティブ ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブの要件](co-sell-requirements.md)に関するページを参照してください。

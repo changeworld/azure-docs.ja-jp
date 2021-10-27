@@ -12,15 +12,15 @@ ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 10/14/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 18e7132d6c767ecd1a7cd085d5b563a89d6af300
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0e063c185495c41c1ce82b7e99a8a35f00a6a94d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446087"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047477"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>Linux 用の InfiniBand ドライバー拡張機能
 
@@ -39,8 +39,8 @@ OFED ドライバーの手動インストール手順については、[HPC VM �
 | Distribution | Version |
 |---|---|
 | Linux: Ubuntu | 16.04 LTS、18.04 LTS、20.04 LTS |
-| Linux: CentOS | 7.4、7.5、7.6、7.7、8.1、8.2 |
-| Linux: Red Hat Enterprise Linux | 7.4、7.5、7.6、7.7、8.1、8.2 |
+| Linux: CentOS | 7.4、7.5、7.6、7.7、7.8、7.9、8.1、8.2 |
+| Linux: Red Hat Enterprise Linux | 7.4、7.5、7.6、7.7、7.8、7.9、8.1、8.2 |
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
@@ -62,7 +62,7 @@ InfiniBand ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "InfiniBandDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -77,7 +77,7 @@ InfiniBand ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
 | type | InfiniBandDriverLinux | string |
-| typeHandlerVersion | 1.1 | INT |
+| typeHandlerVersion | 1.2 | INT |
 
 
 
@@ -104,7 +104,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "InfiniBandDriverLinux",
-    "typeHandlerVersion": "1.1",
+    "typeHandlerVersion": "1.2",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -122,7 +122,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "InfiniBandDriverLinux" `
     -ExtensionType "InfiniBandDriverLinux" `
-    -TypeHandlerVersion 1.1 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
@@ -135,16 +135,16 @@ az vm extension set \
   --vm-name myVM \
   --name InfiniBandDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.1 
+  --version 1.2 
 ```
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>仮想マシン スケール セットに拡張機能を追加する
 
-次の例では、*myResourceGroup* という名前のリソース グループにデプロイされた *myVMSS* という名前の既存の仮想マシン スケール セットのすべての RDMA 対応 VM に、最新のバージョン 1.1 の InfiniBandDriverLinux 拡張機能をインストールします。
+次の例では、*myResourceGroup* という名前のリソース グループにデプロイされた *myVMSS* という名前の既存の仮想マシン スケール セットのすべての RDMA 対応 VM に、最新のバージョン 1.2 の InfiniBandDriverLinux 拡張機能をインストールします。
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
-  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.1"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.2"
   Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
 ```

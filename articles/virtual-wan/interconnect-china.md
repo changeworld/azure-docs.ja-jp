@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual WAN とセキュリティ保護付きハブを使用した中国との相互接続
+title: 'アーキテクチャ: Azure Virtual WAN とセキュリティ保護付きハブを使用した中国との相互接続'
 description: Azure Virtual WAN とセキュリティ保護付きハブを使用して中国との相互接続を行う方法について説明します。
 services: virtual-wan
 author: skishen525
@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: 169477ffdf6fd593f1b6f01469c7303f8bd3a488
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0353cf0c8c98c148ac70121849d510aadc31d131
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96531839"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000804"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure Virtual WAN とセキュリティ保護付きハブを使用した中国との相互接続
 

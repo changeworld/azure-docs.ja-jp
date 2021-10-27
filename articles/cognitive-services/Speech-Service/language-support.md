@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: pafarley
 ms.custom: references_regions
-ms.openlocfilehash: 7937ce57cc432143d449f398a0a433686a6671ed
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 0628af8b495fccd834179edfc9cf0e5c32baf350
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547040"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000463"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -64,27 +64,27 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | クロアチア語 (クロアチア)                 | `hr-HR` | テキスト<br>発音                  |                           |                          |
 | チェコ語 (チェコ共和国)             | `cs-CZ` | テキスト<br>発音                  |                           |                          |
 | デンマーク語 (デンマーク)                   | `da-DK` | Text<br>発音                  | はい                          |                          |
-| オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>テキスト<br>発音|    はい                       |                          |
-| 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |                          |
-| 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |                          |
+| オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>Text<br>発音|    はい                       |                          |
+| 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>Text<br>発音| はい                          |                          |
+| 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>Text<br>発音| はい                          |                          |
 | 英語 (ガーナ)                    | `en-GH` | テキスト<br>発音                  |                           |                          |
 | 英語 (香港)                | `en-HK` | テキスト<br>発音                  |                           |                          |
 | 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text<br>発音 |                          |                          |
 | 英語 (アイルランド)                  | `en-IE` | テキスト<br>発音                  |                           |                          |
 | 英語 (ケニア)                    | `en-KE` | テキスト<br>発音                  |                           |                          |
-| 英語 (ニュージーランド)              | `en-NZ` | オーディオ (20201019)<br>テキスト<br>発音 |                          |                          |
+| 英語 (ニュージーランド)              | `en-NZ` | オーディオ (20201019)<br>Text<br>発音 |                          |                          |
 | 英語 (ナイジェリア)                  | `en-NG` | テキスト<br>発音                  |                           |                          |
 | 英語 (フィリピン)              | `en-PH` | テキスト<br>発音                  |                           |                          |
 | 英語 (シンガポール)                | `en-SG` | テキスト<br>発音                  |                           |                          |
 | 英語 (南アフリカ)             | `en-ZA` | テキスト<br>発音                  |                           |                          |
 | 英語 (タンザニア)                 | `en-TZ` | テキスト<br>発音                  |                           |                          |
-| 英語 (イギリス)           | `en-GB` | オーディオ (20201019)<br>テキスト<br>発音| はい                          | はい                         |
+| 英語 (イギリス)           | `en-GB` | オーディオ (20201019)<br>Text<br>発音| はい                          | はい                         |
 | 英語 (米国)            | `en-US` | Audio (20201019、20210223)<br>テキスト<br>発音| はい                          | はい                         |
 | エストニア語 (エストニア)                  | `et-EE` | テキスト<br>発音                  |                           |                          |
 | フィリピノ語 (フィリピン)             | `fil-PH`| テキスト<br>発音                  |                           |                          |
 | フィンランド語 (フィンランド)                  | `fi-FI` | Text<br>発音                  |     はい                      |                          |
-| フランス語 (カナダ)                    | `fr-CA` | オーディオ (20201015)<br>テキスト<br>発音|     はい                      |                          |
-| フランス語 (フランス)                    | `fr-FR` | オーディオ (20201015)<br>テキスト<br>発音|      はい                     |                          |
+| フランス語 (カナダ)                    | `fr-CA` | オーディオ (20201015)<br>Text<br>発音|     はい                      |                          |
+| フランス語 (フランス)                    | `fr-FR` | オーディオ (20201015)<br>Text<br>発音|      はい                     |                          |
 | フランス語 (スイス)               | `fr-CH` | テキスト<br>発音                  |                           |                          |
 | ドイツ語 (オーストリア)                   | `de-AT` | テキスト<br>発音                  |                           |                          |
 | ドイツ語 (スイス)               | `de-CH` | テキスト<br>発音                  |                           |                          |
@@ -98,6 +98,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アイルランド語 (アイルランド)                    | `ga-IE` | テキスト<br>発音                  |                           |                          |
 | イタリア語 (イタリア)                    | `it-IT` | オーディオ (20201016)<br>テキスト<br>発音|      はい                     |                          |
 | 日本語 (日本)                   | `ja-JP` | Text                                   |      はい                     |                          |
+| カンナダ語 (インド)                   | `kn-IN` | Text                                   |                           |                          |
 | 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>Text                 |      はい                     |                          |
 | ラトビア語 (ラトビア)                   | `lv-LV` | テキスト<br>発音                  |                           |                          |
 | リトアニア語 (リトアニア)             | `lt-LT` | テキスト<br>発音                  |                           |                          |
@@ -108,7 +109,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | ペルシア語 (イラン)                     | `fa-IR` | Text                                   |                           |                          |
 | ポーランド語 (ポーランド)                    | `pl-PL` | Text<br>発音                  |       はい                    |                          |
 | ポルトガル語 (ブラジル)                | `pt-BR` | オーディオ (20190620、20201015)<br>テキスト<br>発音|          はい                 |                          |
-| ポルトガル語 (ポルトガル)              | `pt-PT` | テキスト<br>発音                  |             はい              |                          |
+| ポルトガル語 (ポルトガル)              | `pt-PT` | Text<br>発音                  |             はい              |                          |
 | ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト<br>発音                  |  はい                         |                          |
 | ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>Text                 |                はい           |                          |
 | スロバキア語 (スロバキア)                  | `sk-SK` | テキスト<br>発音                  |                           |                          |
@@ -125,13 +126,13 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | スペイン語 (赤道ギニア)        | `es-GQ` | テキスト                                   |                           |                          |
 | スペイン語 (グアテマラ)                | `es-GT` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (ホンジュラス)                 | `es-HN` | テキスト<br>発音                  |                           |                          |
-| スペイン語 (メキシコ)                   | `es-MX` | オーディオ (20200907)<br>テキスト<br>発音|    はい                       |                          |
+| スペイン語 (メキシコ)                   | `es-MX` | オーディオ (20200907)<br>Text<br>発音|    はい                       |                          |
 | スペイン語 (ニカラグア)                | `es-NI` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (パナマ)                   | `es-PA` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (パラグアイ)                 | `es-PY` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (ペルー)                     | `es-PE` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (プエルトリコ)              | `es-PR` | テキスト<br>発音                  |                           |                          |
-| スペイン語 (スペイン)                    | `es-ES` | オーディオ (20201015)<br>テキスト<br>発音|  はい                         |                          |
+| スペイン語 (スペイン)                    | `es-ES` | オーディオ (20201015)<br>Text<br>発音|  はい                         |                          |
 | スペイン語 (ウルグアイ)                  | `es-UY` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (米国)                      | `es-US` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (ベネズエラ)                | `es-VE` | テキスト<br>発音                  |                           |                          |
@@ -340,7 +341,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 > [!IMPORTANT]
 > 英語 (イギリス) 音声の `en-GB-MiaNeural` は、**2021 年 10 月 30 日** に廃止される予定です。 `en-GB-MiaNeural` へのサービス要求は、**2021 年 10 月 30 日** 以降、自動的に `en-GB-SoniaNeural` にリダイレクトされます。
-> コンテナーの Neural TTS をお使いの場合は、**2021 年 10 月 30 日** までに最新版を[ダウンロード](speech-container-howto.md#get-the-container-image-with-docker-pull)して導入してください。 **2021 年 10 月 30 日** 以降、以前のバージョンの要求はすべて拒否されます。
+> コンテナーの Neural TTS をお使いの場合は、**2021 年 10 月 30 日** までに最新版を [ダウンロード](speech-container-howto.md#get-the-container-image-with-docker-pull)して導入してください。 **2021 年 10 月 30 日** 以降、以前のバージョンの要求はすべて拒否されます。
 
 #### <a name="neural-voices-in-preview"></a>プレビュー段階のニューラル音声
 

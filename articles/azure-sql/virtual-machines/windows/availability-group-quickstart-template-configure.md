@@ -3,7 +3,7 @@ title: 可用性グループを構成する (Azure クイックスタート テ�
 description: Azure クイックスタート テンプレートを使用して、Windows フェールオーバー クラスターを作成し、SQL Server VM をそのクラスターに参加させ、リスナーを作成し、Azure で内部ロード バランサーを構成します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/04/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: rsetlem
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 0f9d98eb2a4fe09728a890af59b4c54afbed3737
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 612280242c528065c8ba74ccd745cca28e7af1bd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112291657"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167048"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,8 @@ ms.locfileid: "112291657"
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
 - [SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以降の) Enterprise エディションを実行する Azure の VM](./create-sql-vm-portal.md)。  
-- 可用性グループと同じサブネット内の内部ロード バランサー用に 1 つと、可用性グループ リスナー用に 1 つの、2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 既存のロード バランサーが使用されている場合は、使用可能な IP アドレスが 1 つだけ必要です。  
+- 内部 Azure Load Balancer と、SQL Server VM と同じサブネット内の可用性グループ リスナー用の使用可能な (どのエンティティにも使用されていない) IP アドレス。 
+
 
 ## <a name="permissions"></a>アクセス許可
 Azure クイックスタート テンプレートを使用して Always On 可用性グループを構成するには、次のアクセス許可が必要です。 
@@ -232,5 +233,5 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 * [SQL Server VM の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server VM の FAQ](frequently-asked-questions-faq.yml)
 * [SQL Server VM の価格ガイダンス](pricing-guidance.md)
-* [SQL Server VM のリリース ノート](../../database/doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)
 * [SQL Server VM のライセンス モデルの切り替え](licensing-model-azure-hybrid-benefit-ahb-change.md)

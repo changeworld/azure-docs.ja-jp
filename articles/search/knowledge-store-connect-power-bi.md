@@ -7,21 +7,21 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2021
-ms.openlocfilehash: 97a0025437b7f055f9fcf2e7860e926e9693cde6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/18/2021
+ms.openlocfilehash: 14a6cd5ec07d9c4c5ee584312e9ba20b2251d0ef
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124766951"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178305"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
 
-この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、探索する方法を説明します。 テンプレートを使用してすぐに作業を開始することも、カスタム ダッシュボードを最初から作成することもできます。
+この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、照会する方法を説明します。 テンプレートを使用してすぐに作業を開始することも、カスタム ダッシュボードを最初から作成することもできます。
 
 Azure Storage のテーブルで構成されるナレッジ ストアは、Power BI で最適に機能します。 テーブルに同じスキルセットとプロジェクション グループのプロジェクションが含まれている場合は、それらを簡単に "結合" して、関連テーブルのフィールドを含むテーブルの視覚化を作成できます。
 
-サンプル データと [Azure portal で作成された](knowledge-store-create-portal.md)ナレッジ ストアを使用するか、または [Postman と REST API](knowledge-store-create-rest.md) を使用して、この記事の手順に従います。 
+サンプル データと[このポータル クイックスタートで作成された](knowledge-store-create-portal.md)ナレッジ ストアを使用して、または [Postman と REST API](knowledge-store-create-rest.md) を使用して、この記事の手順に従います。 
 
 ## <a name="connect-to-azure-storage"></a>Azure Storage への接続
 
@@ -45,11 +45,11 @@ Azure Storage のテーブルで構成されるナレッジ ストアは、Power
 
    ![Power Query を開く](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query を開く")
 
-1. *[hotelReviewsSsDocument]* を選択し、 *[PartitionKey]* 、 *[RowKey]* 、 *[Timestamp]* の各列を削除します。 
+1. *hotelReviewsDocument* を開き、その *PartitionKey*、*RowKey*、*Timestamp* の各列を削除します。 それらの列は、Azure Table Storage でのテーブルのリレーションシップに使用されます。 Power BI にはそれらは必要はありません。 それぞれの "*レコード*" を示す "Content" という名前の 1 つの列が残っている必要があります。 
 
    ![テーブルを編集する](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "テーブルを編集する")
 
-1. テーブルの右上にある対立する矢印を含んだアイコンをクリックして、 *[コンテンツ]* を展開します。 列が一覧表示されたら、すべての列を選択し、"metadata" で始まる列の選択を解除します。 **[OK]** をクリックすると、選択した列が表示されます。
+1. テーブルの右上にある反対向きの矢印のアイコンをクリックして、 *[コンテンツ]* を展開します。 列の一覧が表示されたら、すべての列を選択します。 "metadata" で始まる列の選択を解除します。 **[OK]** をクリックすると、選択した列が含められます。
 
    ![コンテンツを展開する](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "コンテンツを展開する")
 
@@ -60,9 +60,9 @@ Azure Storage のテーブルで構成されるナレッジ ストアは、Power
 
    ![データ型を変更する](media/knowledge-store-connect-power-bi/powerbi-change-type.png "データ型を変更する")
 
-1. *[hotelReviewsSsPages]* を選択し、手順 9. と手順 10. を繰り返して列を削除し、 *[コンテンツ]* を展開します。
+1. *hotelReviewsSsPages* を開き、列の削除手順を繰り返し、 *[コンテンツ]* を展開してレコードから列を選択します。 このテーブルについては、データ型を変更しません。
 
-1. *[hotelReviewsSsKeyPhrases]* を選択し、手順 9. と手順 10. を繰り返して列を削除し、 *[コンテンツ]* を展開します。 このテーブルについては、データ型を変更しません。
+1. *hotelReviewsSsKeyPhrases* を開き、列の削除手順を繰り返し、 *[コンテンツ]* を展開してレコードから列を選択します。 このテーブルについては、データ型を変更しません。
 
 1. コマンド バーで、 **[閉じて適用する]** をクリックします。
 

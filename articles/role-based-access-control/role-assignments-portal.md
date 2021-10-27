@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal,subject-rbac-steps
-ms.openlocfilehash: 368a3480af60b4c1a9b819d3b4667f2212e62290
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: a1d48ccbc2687feea584d9da717ac97b9eabce72
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094810"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072109"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる
 
@@ -26,10 +26,6 @@ Azure Active Directory で管理者ロールを割り当てる必要がある場
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
-
-## <a name="choose-experience"></a>エクスペリエンスを選択する
-
-Azure RBAC には、Azure portal で Azure ロールを割り当てるための新しいエクスペリエンスがあります。これは、現在パブリック プレビューの段階です。 この新しいエクスペリエンスを試す場合は、 **[(プレビュー)]** タブの手順に従います。
 
 #### <a name="current"></a>[Current](#tab/current/)
 
@@ -49,7 +45,7 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
     ![リソース グループの [概要] ページのスクリーンショット。](./media/shared/rg-overview.png)
 
-## <a name="step-2-open-the-add-role-assignment-pane"></a>手順 2: [ロールの割り当ての追加] ウィンドウを開く
+## <a name="step-2-open-the-add-role-assignment-page"></a>手順 2: [ロールの割り当ての追加] ページを開く
 
 **アクセス制御 (IAM)** は、一般的には、ロールを割り当てて Azure リソースへのアクセスを付与するために使用するページです。 "ID とアクセス管理 (IAM)" とも呼ばれており、Azure portal のいくつかの場所に表示されます。
 
@@ -62,111 +58,32 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
 
 1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
-   ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
-
-   ![[追加] > [ロールの割り当ての追加] メニューのスクリーンショット。](./media/shared/add-role-assignment-menu.png)
-
-    [ロールの割り当ての追加] ウィンドウが開きます。
-
-   ![[ロール]、[アクセスの割り当て先]、[選択] オプションが表示された [ロールの割り当ての追加] ページのスクリーンショット。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
-
-## <a name="step-3-select-the-appropriate-role"></a>手順 3: 適切なロールを選択する
-
-1. **[ロール]** リストで、割り当てるロールを検索またはスクロールします。
-
-    適切なロールを判断するため、情報アイコンをポイントすると、ロールの説明が表示されます。 詳細については、「[Azure 組み込みロール](built-in-roles.md)」の記事をご覧ください。
-
-   ![[ロールの割り当ての追加] の [ロールの選択] の一覧のスクリーンショット。](./media/role-assignments-portal/add-role-assignment-role.png)
-
-1. クリックしてロールを選択します。
-
-## <a name="step-4-select-who-needs-access"></a>手順 4:アクセスを必要とするユーザーを選択する
-
-1. **[アクセスの割り当て先]** リストで、アクセス権を割り当てるセキュリティ プリンシパルの種類を選択します。
-
-    | Type | 説明 |
-    | --- | --- |
-    | **ユーザー、グループ、またはサービス プリンシパル** | ロールをユーザー、グループ、またはサービス プリンシパル (アプリケーション) に割り当てるには、この種類を選択します。 |
-    | **ユーザー割り当てマネージド ID** | [ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) にロールを割り当てるには、この種類を選択します。 |
-    | *システム割り当てマネージド ID* | [システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) にロールを割り当てるには、マネージド ID が配置されている Azure サービス インスタンスを選択します。 |
-
-   ![[ロールの割り当ての追加] でのセキュリティ プリンシパルの選択を示すスクリーンショット。](./media/role-assignments-portal/add-role-assignment-type.png)
-
-1. ユーザー割り当てマネージド ID またはシステム割り当てマネージド ID を選択した場合は、マネージド ID が配置されている **サブスクリプション** を選択します。
-
-1. **[選択]** セクションで、文字列を入力するかリストをスクロールして、セキュリティ プリンシパルを検索します。
-
-   ![[ロールの割り当ての追加] でのユーザーの選択を示すスクリーンショット。](./media/role-assignments-portal/add-role-assignment-user.png)
-
-1. セキュリティ プリンシパルが見つかったら、クリックして選択します。
-
-## <a name="step-5-assign-role"></a>手順 5:ロールを割り当てる
-
-1. ロールを割り当てるには、 **[保存]** をクリックします。
-
-   しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
-
-1. **[ロールの割り当て]** タブで、リストにロールの割り当てが表示されていることを確認します。
-
-    ![ロールを割り当てた後のロールの割り当ての一覧のスクリーンショット。](./media/role-assignments-portal/rg-role-assignments.png)
-
-#### <a name="preview"></a>[(プレビュー)](#tab/preview/)
-
-## <a name="step-1-identify-the-needed-scope-preview"></a>手順 1: 必要なスコープを特定する (プレビュー)
-
-[!INCLUDE [Scope for Azure RBAC introduction](../../includes/role-based-access-control/scope-intro.md)]詳細については、「[スコープを理解する](scope-overview.md)」を参照してください。
-
-![Azure RBAC のスコープ レベル (プレビュー エクスペリエンス) を示す図。](../../includes/role-based-access-control/media/scope-levels.png)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-
-1. 上部にある検索ボックスで、アクセス権を付与するスコープを検索します。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、または特定のリソースを検索します。
-
-1. そのスコープの特定のリソースをクリックします。
-
-    リソース グループの例を次に示します。
-
-    ![リソース グループの [概要] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/rg-overview.png)
-
-## <a name="step-2-open-the-add-role-assignment-page-preview"></a>手順 2: [ロールの割り当ての追加] ぺージを開く (プレビュー)
-
-**アクセス制御 (IAM)** は、一般的には、ロールを割り当てて Azure リソースへのアクセスを付与するために使用するページです。 "ID とアクセス管理 (IAM)" とも呼ばれており、Azure portal のいくつかの場所に表示されます。
-
-1. **[アクセス制御 (IAM)]** をクリックします。
-
-    リソース グループの [アクセス制御 (IAM)] ページの例を次に示します。
-
-    ![リソース グループの [アクセス制御 (IAM)] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/rg-access-control.png)
-
-1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
-
-1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** の順にクリックします。
 
     ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-    ![[追加] > [ロールの割り当ての追加] メニュー (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/add-role-assignment-menu-preview.png)
+    ![[追加] > [ロールの割り当ての追加] メニューのスクリーンショット。](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ページが開きます。
 
-## <a name="step-3-select-the-appropriate-role-preview"></a>手順 3: 適切なロールを選択する (プレビュー)
+## <a name="step-3-select-the-appropriate-role"></a>手順 3: 適切なロールを選択する
 
 1. **[ロール]** タブで、使用するロールを選択します。
 
     ロールは、名前または説明で検索できます。 種類とカテゴリでロールをフィルター処理することもできます。
 
-   ![[ロール] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/roles.png)
+   ![[ロールの割り当ての追加] ページで [ロール] タブが表示された状態のスクリーンショット。](./media/shared/roles.png)
 
 1. **[詳細]** 列で **[表示]** をクリックして、ロールに関する詳細を表示します。
 
-   ![[アクセス許可] タブが表示された [View role details]\(ロールの詳細の表示\) ウィンドウ (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal/select-role-permissions.png)
+   ![[アクセス許可] タブが表示された [ロールの詳細の表示] ウィンドウのスクリーンショット。](./media/role-assignments-portal/select-role-permissions.png)
 
 1. **[次へ]** をクリックします。
 
-## <a name="step-4-select-who-needs-access-preview"></a>手順 4: アクセスを必要とするユーザーを選択する (プレビュー)
+## <a name="step-4-select-who-needs-access"></a>手順 4:アクセスを必要とするユーザーを選択する
 
 1. **[メンバー]** タブで、 **[ユーザー、グループ、またはサービス プリンシパル]** を選択して、選択したロールを 1 つ以上の Azure AD ユーザー、グループ、またはサービス プリンシパル (アプリケーション) に割り当てます。
 
-   ![[メンバー] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/members.png)
+   ![[ロールの割り当ての追加] ページで [メンバー] タブが表示された状態のスクリーンショット。](./media/shared/members.png)
 
 1. **[メンバーの選択]** をクリックします。
 
@@ -174,7 +91,7 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
     **[選択]** ボックスに表示名またはメール アドレスを入力してディレクトリを検索できます。
 
-   ![[メンバーの選択] ペイン (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/select-members.png)
+   ![[メンバーの選択] ウィンドウのスクリーンショット。](./media/shared/select-members.png)
 
 1. **[選択]** をクリックして、メンバーの一覧にユーザー、グループ、またはサービス プリンシパルを追加します。
 
@@ -188,7 +105,7 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
     システム割り当てマネージド ID の場合は、Azure サービス インスタンス別のマネージド ID を選択できます。
 
-   ![プレビュー エクスペリエンスのためにマネージド ID ウィンドウを選択するスクリーンショット。](./media/role-assignments-portal/select-managed-identity.png)
+   ![マネージド ID ウィンドウを選択するスクリーンショット。](./media/role-assignments-portal/select-managed-identity.png)
 
 1. **[選択]** をクリックして、メンバーの一覧にマネージド ID を追加します。
 
@@ -211,23 +128,106 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
 1. ストレージ BLOB の属性に基づいてロールの割り当てをさらに調整する場合は、 **[条件の追加]** をクリックします。 詳細については、[Azure ロールの割り当て条件の追加または編集](conditions-role-assignments-portal.md)に関するページを参照してください。
 
-   ![[条件の追加] タブが表示されている [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/condition.png)
+   ![[ロールの割り当ての追加] ページで [条件の追加] タブが表示された状態のスクリーンショット。](./media/shared/condition.png)
 
 1. **[次へ]** をクリックします。
 
-## <a name="step-6-assign-role-preview"></a>手順 6: ロールを割り当てる (プレビュー)
+## <a name="step-6-assign-role"></a>手順 6: ロールを割り当てる
 
 1. **[Review + assign]\(確認と割り当て\)** タブで、ロールの割り当ての設定を確認します。
 
-   ![[Review + assign]\(確認と割り当て\) タブが表示された [ロールの割り当て] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal/review-assign.png)
+   ![[Review + assign]\(確認と割り当て\) タブが表示された [ロールの割り当て] ページのスクリーンショット。](./media/role-assignments-portal/review-assign.png)
 
 1. **[Review + assign]\(確認と割り当て\)** をクリックしてロールを割り当てます。
 
    しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
 
-    ![ロールを割り当てた後のロール割り当ての一覧 (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal/rg-role-assignments.png)
+    ![ロールを割り当てた後のロールの割り当ての一覧のスクリーンショット。](./media/role-assignments-portal/rg-role-assignments.png)
 
 1. ロールの割り当ての説明が表示されない場合は、 **[列の編集]** をクリックして **[説明]** 列を追加します。
+
+#### <a name="classic"></a>[クラシック](#tab/classic/)
+
+## <a name="step-1-identify-the-needed-scope-classic"></a>手順 1: 必要なスコープを特定する (クラシック)
+
+[!INCLUDE [Scope for Azure RBAC introduction](../../includes/role-based-access-control/scope-intro.md)] 詳細については、[スコープの概要](scope-overview.md)に関する記事を参照してください。
+
+![Azure RBAC のスコープ レベル (クラシック エクスペリエンス) を示す図。](../../includes/role-based-access-control/media/scope-levels.png)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+
+1. 上部にある検索ボックスで、アクセス権を付与するスコープを検索します。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、または特定のリソースを検索します。
+
+1. そのスコープの特定のリソースをクリックします。
+
+    リソース グループの例を次に示します。
+
+    ![リソース グループの [概要] ページ (クラシック エクスペリエンス) のスクリーンショット。](./media/shared/rg-overview.png)
+
+## <a name="step-2-open-the-add-role-assignment-pane-classic"></a>手順 2: [ロールの割り当ての追加] ウィンドウを開く (クラシック)
+
+**アクセス制御 (IAM)** は、一般的には、ロールを割り当てて Azure リソースへのアクセスを付与するために使用するページです。 "ID とアクセス管理 (IAM)" とも呼ばれており、Azure portal のいくつかの場所に表示されます。
+
+1. **[アクセス制御 (IAM)]** をクリックします。
+
+    リソース グループの [アクセス制御 (IAM)] ページの例を次に示します。
+
+    ![リソース グループの [アクセス制御 (IAM)] ページ (クラシック エクスペリエンス) のスクリーンショット。](./media/shared/rg-access-control.png)
+
+1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
+
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
+   ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
+
+   ![[追加] > [ロールの割り当ての追加] メニュー (クラシック エクスペリエンス) のスクリーンショット。](./media/shared/add-role-assignment-menu.png)
+
+1. [ロールの割り当ての追加] ページで、**[クラシック エクスペリエンスの使用]** をクリックします。
+
+   ![クラシック エクスペリエンスの [クラシック エクスペリエンスの使用] リンクが表示された [ロールの割り当ての追加] ページのスクリーンショット。](./media/role-assignments-portal/add-role-assignment-page-use-classic.png)
+
+    [ロールの割り当ての追加] ウィンドウが開きます。
+
+   ![クラシック エクスペリエンスの [ロール]、[アクセスの割り当て先]、[選択] オプションが表示された [ロールの割り当ての追加] ページのスクリーンショット。](./media/role-assignments-portal/add-role-assignment-page.png)
+
+## <a name="step-3-select-the-appropriate-role-classic"></a>手順 3: 適切なロールを選択する (クラシック)
+
+1. **[ロール]** リストで、割り当てるロールを検索またはスクロールします。
+
+    適切なロールを判断するため、情報アイコンをポイントすると、ロールの説明が表示されます。 詳細については、「[Azure 組み込みロール](built-in-roles.md)」の記事をご覧ください。
+
+   ![クラシック エクスペリエンスの [ロールの割り当ての追加] の [ロールの選択] の一覧のスクリーンショット。](./media/role-assignments-portal/add-role-assignment-role.png)
+
+1. クリックしてロールを選択します。
+
+## <a name="step-4-select-who-needs-access-classic"></a>手順 4: アクセスを必要とするユーザーを選択する (クラシック)
+
+1. **[アクセスの割り当て先]** リストで、アクセス権を割り当てるセキュリティ プリンシパルの種類を選択します。
+
+    | Type | 説明 |
+    | --- | --- |
+    | **ユーザー、グループ、またはサービス プリンシパル** | ロールをユーザー、グループ、またはサービス プリンシパル (アプリケーション) に割り当てるには、この種類を選択します。 |
+    | **ユーザー割り当てマネージド ID** | [ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) にロールを割り当てるには、この種類を選択します。 |
+    | *システム割り当てマネージド ID* | [システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) にロールを割り当てるには、マネージド ID が配置されている Azure サービス インスタンスを選択します。 |
+
+   ![クラシック エクスペリエンスの [ロールの割り当ての追加] でセキュリティ プリンシパルを選択するスクリーンショット。](./media/role-assignments-portal/add-role-assignment-type.png)
+
+1. ユーザー割り当てマネージド ID またはシステム割り当てマネージド ID を選択した場合は、マネージド ID が配置されている **サブスクリプション** を選択します。
+
+1. **[選択]** セクションで、文字列を入力するかリストをスクロールして、セキュリティ プリンシパルを検索します。
+
+   ![クラシック エクスペリエンスの [ロールの割り当ての追加] でユーザーを選択するスクリーンショット。](./media/role-assignments-portal/add-role-assignment-user.png)
+
+1. セキュリティ プリンシパルが見つかったら、クリックして選択します。
+
+## <a name="step-5-assign-role-classic"></a>手順 5: ロールを割り当てる (クラシック)
+
+1. ロールを割り当てるには、 **[保存]** をクリックします。
+
+   しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
+
+1. **[ロールの割り当て]** タブで、リストにロールの割り当てが表示されていることを確認します。
+
+    ![ロールを割り当てた後のロール割り当ての一覧 (クラシック エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal/rg-role-assignments.png)
 
 ---
 

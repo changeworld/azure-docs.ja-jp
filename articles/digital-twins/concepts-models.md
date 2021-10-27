@@ -1,33 +1,31 @@
 ---
 title: DTDL モデル
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins でカスタム モデルを使用して環境内のエンティティを記述する方法について説明します。
+description: Azure Digital Twins でカスタム モデルを使用して環境内のエンティティを記述する方法と、これらのモデルをデジタル ツイン定義言語 (DTDL) を使用して定義する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 8/25/2021
+ms.date: 10/7/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 792ddf3f3ca57b16112de78a6ecf2c2d887494ef
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 79931aeb1e2f6fc37ea2cf4030a6b35dc55e6a26
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535850"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130130975"
 ---
-# <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
+# <a name="learn-about-twin-models-and-how-to-define-them-in-azure-digital-twins"></a>ツイン モデルについて、および Azure Digital Twins で定義する方法について説明します。
 
-Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー提供の **モデル** を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 
+Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー提供の **モデル** を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Definition language (DTDL)** で表現されます。 
 
 モデルは、オブジェクト指向プログラミング言語の **クラス** に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 (*Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す[デジタル ツイン](concepts-twins-graph.md)を作成します。
-
-Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Definition language (DTDL)** で表現されます。  
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>モデル用の Digital Twin Definition Language (DTDL)
 
 Azure Digital Twins のモデルは、Digital Twins Definition Language (DTDL) を使用して定義されます。 
 
-DTDL の完全な言語仕様については、GitHub: [Digital Twins Definition Language (DTDL) - Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を参照してください。
+DTDL の完全な言語仕様については、GitHub: [Digital Twins Definition Language (DTDL) - Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を参照してください。 このページには、独自の DTDL モデルを作成し始める際に役立つ詳細な DTDL リファレンスと例が含まれています。
 
 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 Azure Digital Twins は DTDL **バージョン 2** を使用します (Azure Digital Twins での DTDL バージョン 1 の使用は非推奨となりました)。 
 

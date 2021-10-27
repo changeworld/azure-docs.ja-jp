@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/06/2021
-ms.openlocfilehash: 714dc6ac27f466c98e5c74bc16a9cfa3c5cd30cf
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 07442ce360baa152b36bcc1145e0636d73d6fedb
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620281"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132723"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search の機能
 
@@ -33,9 +33,9 @@ Azure Cognitive Search は、フルテキスト検索エンジン、検索イン
 
 | カテゴリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 特徴 |
 |-------------------|----------|
-|インデックス作成中の AI 処理 | イメージおよびテキスト分析のための [**AI エンリッチメント**](cognitive-search-concept-intro.md)をインデックス作成パイプラインに適用して、生のコンテンツからテキスト情報を抽出できます。 [組み込みのスキル](cognitive-search-predefined-skills.md)の例には、光学式文字認識 (スキャン済みの JPEG を検索可能にする)、エンティティ認識 (組織、名前、または場所を識別する)、キー フレーズ認識などがあります。 [カスタム スキルをコーディング](cognitive-search-create-custom-skill-example.md)してパイプラインにアタッチすることもできます。 [Azure Machine Learning で作成されたスキルを統合](./cognitive-search-tutorial-aml-custom-skill.md)することもできます。 |
-| 検索以外のシナリオでの分析と使用のためのエンリッチされたコンテンツの格納 | [**ナレッジ ストア**](knowledge-store-concept-intro.md) は、インデックス作成パイプラインの代替出力です。 トークン化された用語をインデックスに送信する代わりに、構成に応じて、Azure Blob Storage または Table Storage に格納されているナレッジ ストアに、インデックス作成パイプラインによって作成された強化されたドキュメントを送信できます。 ナレッジ ストアは、AI ベースのインデックス作成 (スキルセット) から作成されます。 ナレッジ ストアの目的は、下流の分析または処理をサポートすることです。 ナレッジ ストアに新しい情報と構造を追加したら、それを機械学習処理に使用したり、Power BI から接続してデータを探索したりすることができます。<br/><br/> |
-| キャッシュされたコンテンツ | [**インクリメンタル エンリッチメント (プレビュー)**](cognitive-search-incremental-indexing-conceptual.md) では、パイプラインに対する特定の編集によって変更されたドキュメントのみに処理が制限され、パイプラインの変更されていない部分に対してはキャッシュされたコンテンツが使用されます。 |
+|インデックス作成中の AI 処理 | [**AI エンリッチメント**](cognitive-search-concept-intro.md)とは、本来であれば全文検索用にインデックスを作成できないコンテンツからテキストや情報を抽出する、インデクサー パイプラインの埋め込み画像や自然言語処理です。 AI 処理は、後でインデクサーにアタッチするスキルセットに、スキルを追加して組み合わせることによって実現されます。 AI には、テキスト翻訳や光学式文字認識 (OCR) などの Microsoft の[組み込みスキル](cognitive-search-predefined-skills.md)と、お客様が提供する[カスタム スキル](cognitive-search-create-custom-skill-example.md)があります。 |
+| 検索以外のシナリオでの分析と使用のためのエンリッチされたコンテンツの格納 | [**ナレッジ ストア**](knowledge-store-concept-intro.md)は、ナレッジ マイニングやデータ サイエンス処理など、検索以外のシナリオを想定した、充実したコンテンツの永続的なストレージです。 ナレッジ ストアは、スキルセットで定義されますが、Azure Storage ではオブジェクトまたは表形式の行セットとして作成されます。|
+| キャッシュされたエンリッチメント | [**増分エンリッチメント (プレビュー)**](cognitive-search-incremental-indexing-conceptual.md) とは、スキルセットの実行中に再利用できるキャッシュされたエンリッチメントを指します。 キャッシュは、処理コストが高い OCR や画像分析を含むスキルセットで特に重要です。 |
 
 ## <a name="query-and-user-experience"></a>クエリとユーザー エクスペリエンス
 

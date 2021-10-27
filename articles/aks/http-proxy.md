@@ -6,12 +6,12 @@ author: nickomang
 ms.topic: article
 ms.date: 09/09/2021
 ms.author: nickoman
-ms.openlocfilehash: 19a1392756596a1cbfe7000ebd9c7013c053c153
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 43ee8a41ad6c487f5998760396b05a3ec56206d7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856925"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004751"
 ---
 # <a name="http-proxy-support-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での HTTP プロキシのサポート (プレビュー)
 
@@ -79,10 +79,29 @@ HTTP プロキシで AKS を使用するには、クラスターの作成時に 
 }
 ```
 
-ファイルを作成し、*httpProxy*、*httpsProxy*、*noProxy* の値を指定します。 ご自身の環境で必要な場合は、*trustedCa* の値も指定します。 次に、`proxy-configuration-file` フラグを使ってファイル名を渡して、クラスターをデプロイします。
+`httpProxy`: クラスターの外部で HTTP 接続を作成するために使用するプロキシ URL。 URL スキームは `http` である必要があります。
+`httpsProxy`: クラスターの外部で HTTPS 接続を作成するために使用するプロキシ URL。 これを指定しない場合、`httpProxy` が HTTP と HTTPS の両方の接続に使用されます。
+`noProxy`: プロキシを除外する宛先ドメイン名、ドメイン、IP アドレス、または他のネットワーク CIDR の一覧。
+`trustedCa`: `base64 encoded` 代替 CA 証明書の内容を含む文字列。 現在、`PEM` 形式のみサポートされています。 もう 1 つの注意点は、k8s システムの一部である Go ベースのコンポーネントとの互換性のために、証明書によって、非推奨の共通名証明書ではなく、`Subject Alternative Names(SANs)` がサポートされている必要があることです。
+
+入力例: CA 証明書は、PEM 形式の証明書コンテンツの base64 でエンコードされた文字列である必要があります。
+
+```json
+"httpProxyConfig": { 
+     "httpProxy": "http://myproxy.server.com:8080/", 
+     "httpsProxy": "https://myproxy.server.com:8080/", 
+     "noProxy": [
+         "localhost",
+         "127.0.0.1"
+     ],
+     "trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
+}
+```
+
+ファイルを作成し、*httpProxy*、*httpsProxy*、*noProxy* の値を指定します。 ご自身の環境で必要な場合は、*trustedCa* の値も指定します。 次に、`http-proxy-config` フラグを使ってファイル名を渡して、クラスターをデプロイします。
 
 ```azurecli
-az aks create -n $clusterName -g $resourceGroup --proxy-configuration-file aks-proxy-config.json
+az aks create -n $clusterName -g $resourceGroup --http-proxy-config aks-proxy-config.json
 ```
 
 クラスターは、ノードに構成されている HTTP プロキシを使用して初期化されます。
@@ -114,7 +133,7 @@ ARM テンプレートを使用して構成された HTTP プロキシを使用�
 たとえば、*aks-proxy-config-2.json* という新しい CA 証明書の base64 エンコードされた文字列を使用して新しいファイルが作成されたと仮定すると、次の操作によってクラスターが更新されます。
 
 ```azurecli
-az aks update -n $clusterName -g $resourceGroup --proxy-configuration-file aks-proxy-config-2.json
+az aks update -n $clusterName -g $resourceGroup --http-proxy-config aks-proxy-config-2.json
 ```
 
 ## <a name="next-steps"></a>次の手順

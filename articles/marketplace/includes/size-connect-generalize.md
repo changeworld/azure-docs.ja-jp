@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: b1eb954626570d7feb2af7fe0980e4f7a10e70c6
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 2c0ce50c1aac28b532d23ecd1203ff76f10529d4
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113280053"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130077855"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 

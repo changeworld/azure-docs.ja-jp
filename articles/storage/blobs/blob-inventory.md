@@ -4,18 +4,18 @@ description: Azure Storage インベントリは、ストレージ アカウン�
 services: storage
 author: normesta
 ms.service: storage
-ms.date: 08/16/2021
+ms.date: 10/11/2021
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 6962688a574d7f7c11f8cbfc71ccdb29ac3b6445
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 712cf4c6002983a47e44fb87be983bfca575f534
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619390"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996819"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage BLOB インベントリ
 
@@ -55,7 +55,7 @@ BLOB インベントリ レポートを有効にするには、1 つ以上のル
 
 ## <a name="inventory-policy"></a>インベントリ ポリシー
 
-インベントリ ポリシーは、JSON ドキュメントに記述されたルールのコレクションです。
+インベントリ レポートは、1 つまたは複数のルールを含むインベントリ ポリシーを追加することによって構成されます。 インベントリ ポリシーは、JSON ドキュメントに記述されたルールのコレクションです。
 
 ```json
 {
@@ -197,7 +197,7 @@ Azure portal の **[BLOB インベントリ]** セクションで **[コード �
 
 ## <a name="inventory-run"></a>インベントリの実行
 
-BLOB インベントリの実行は、毎日自動的にスケジュールされます。 インベントリの実行が完了するまでに最大で 24 時間かかることがあります。 インベントリ レポートは、1 つまたは複数のルールを含むインベントリ ポリシーを追加することによって構成されます。
+BLOB インベントリの実行は、毎日自動的にスケジュールされます。 インベントリの実行が完了するまでに最大で 24 時間かかることがあります。 階層型名前空間が有効になっているアカウントの場合、実行に 2 日間かかる可能性があります。また、処理されるファイルの数によっては、2 日間経過しても実行が完了しない場合があります。 実行が正常に完了しない場合、サポートに連絡する前に、その後の実行が完了するかどうかを確認します。 実行のパフォーマンスは変化する可能性があるため、実行が完了しない場合でも、その後の実行は完了する可能性があります。
 
 インベントリ ポリシーの読み取りまたは書き込みは全体に対して行われます。 部分的な更新はサポートされません。
 
@@ -231,7 +231,7 @@ BLOB インベントリの実行は、毎日自動的にスケジュールされ
 
 次の表で、`BlobInventoryPolicyCompleted` イベントのスキーマについて説明します。
 
-|フィールド|型|説明|
+|フィールド|Type|説明|
 |---|---|
 |scheduleDateTime|string|インベントリ ポリシーがスケジュールされた時刻。|
 |accountName|string|ストレージ アカウント名。|
@@ -254,12 +254,17 @@ BLOB インベントリの実行は、毎日自動的にスケジュールされ
 
 ルールのインベントリの実行ごとに、次のファイルが生成されます。
 
-- **インベントリ ファイル:** ルールを使用してインベントリを実行すると、CSV または Apache Parquet 形式のファイルが少なくとも 1 つ生成されます。 一致したオブジェクトの数が大きい場合は、1 つのファイルではなく複数のファイルが生成されます。 そのような各ファイルには、一致したオブジェクトとそのメタデータが含まれます。 CSV 形式のファイルの場合、最初の行は常にスキーマ行になります。 次の図は、Microsoft Excel で開いたインベントリ CSV ファイルを示しています。
-
-  :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Microsoft Excel で開いたインベントリ CSV ファイルのスクリーンショット":::
+- **インベントリ ファイル:** ルールを使用してインベントリを実行すると、CSV または Apache Parquet 形式のファイルが少なくとも 1 つ生成されます。 一致したオブジェクトの数が大きい場合は、1 つのファイルではなく複数のファイルが生成されます。 そのような各ファイルには、一致したオブジェクトとそのメタデータが含まれます。 
 
   > [!NOTE]
   > Apache Parquet 形式のレポートでは、次の形式で日付が表示されます。`timestamp_millis [number of milliseconds since 1970-01-01 00:00:00 UTC`
+
+  CSV 形式のファイルの場合、最初の行は常にスキーマ行になります。 次の図は、Microsoft Excel で開いたインベントリ CSV ファイルを示しています。
+
+  :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Microsoft Excel で開いたインベントリ CSV ファイルのスクリーンショット":::
+
+  > [!IMPORTANT]
+  > インベントリ ファイルに表示される BLOB パスは、特定の順序で表示されないことがあります。 
 
 - **チェックサム ファイル:** チェックサム ファイルには、manifest.json ファイルの内容の MD5 チェックサムが記載されています。 チェックサムファイルの名前は `<ruleName>-manifest.checksum` です。 チェックサム ファイルの生成は、インベントリ ルールの実行の完了を示します。
 
@@ -341,7 +346,7 @@ Azure Storage BLOB インベントリの価格の詳細については、[Azure 
 
 ### <a name="inventory-job-fails-to-complete-for-hierarchical-namespace-enabled-accounts"></a>階層型名前空間が有効になっているアカウントでインベントリ ジョブを完了できない
 
-何億もの BLOB と階層型名前空間が有効になっているアカウントでは、インベントリ ジョブが 24 時間以内に完了しないことがあります。 これが発生した場合、インベントリ ファイルは作成されません。
+何億もの BLOB と階層型名前空間が有効になっているアカウントでは、インベントリ ジョブが 2 日以内に完了しないことがあります。 これが発生した場合、インベントリ ファイルは作成されません。 ジョブが正常に完了しない場合、サポートに連絡する前に、その後のジョブが完了するかどうかを確認してください。 ジョブのパフォーマンスは変化する可能性があるため、ジョブが完了しない場合でも、その後のジョブは完了する可能性があります。
 
 ### <a name="inventory-job-cannot-write-inventory-reports"></a>インベントリ ジョブがインベントリ レポートを書き込めない
 

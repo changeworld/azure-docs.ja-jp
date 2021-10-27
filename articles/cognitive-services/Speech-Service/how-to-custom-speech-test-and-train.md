@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 046499f32050bf856e6eb39874f3f7b0f0fa2e51
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fa62d0e7c24c6a63c63f082333823b5e74a24cf0
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569494"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132283"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -69,7 +69,10 @@ ms.locfileid: "128569494"
 
 ## <a name="upload-data"></a>データをアップロードする
 
-データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech ポータル </a>に移動します。 プロジェクトを作成したら、 **[Speech データセット]** タブに移動し、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データセットの音声データ型を選択し、データをアップロードします。
+データをアップロードするには、[Speech Studio](https://aka.ms/speechstudio/customspeech) に移動します。 プロジェクトを作成したら、 **[Speech データセット]** タブに移動し、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データセットの音声データ型を選択し、データをアップロードします。
+
+> [!NOTE]
+> データセット ファイルのサイズが 128 MB を超える場合は、*[Azure Blob or shared location]\(Azure Blob または共有場所\)* オプションを使用してのみアップロードできます。 また、[Speech to Text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) を使用して、[許可されているあらゆるサイズ](speech-services-quotas-and-limits.md#model-customization)のデータセットをアップロードすることもできます。 詳細については、[次のセクション](#upload-data-using-speech-to-text-rest-api-v30)を参照してください。
 
 まず、データセットを **トレーニング** または **テスト** のどちらに使用するかを指定します。 **トレーニング** または **テスト** 用にアップロードして使用できるデータには、複数の種類があります。 アップロードする各データセットは、アップロードする前に正しくフォーマットされていなければならず、選択したデータの種類の要件が満たされている必要があります。 要件は、以降のセクションに示されています。
 
@@ -78,6 +81,35 @@ ms.locfileid: "128569494"
 * **[カスタム モデルのトレーニング]** タブに移動 して、カスタム モデルをトレーニングできます。
 * **[テスト モデル]** タブに移動して、オーディオ専用データで品質を視覚的に検査したり、オーディオ + 人間によってラベル付けされた文字起こしデータを使用して精度を評価することができます。
 
+### <a name="upload-data-using-speech-to-text-rest-api-v30"></a>Speech-to-text REST API v3.0 を使用してデータをアップロードする
+
+[Speech-to-text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) を使用して、カスタム モデルに関連するすべての操作を自動化できます。 特に、これを使用してデータセットをアップロードすることができます。 これはデータセット ファイルが 128 MB を超える場合に特に便利です。その理由は、この大きさのファイルは Speech Studio の *[Local file]\(ローカルファイル\)* オプションを使用してアップロードできないためです。 (前のセクションで説明したのと同じ目的で、Speech Studio の *[Azure Blob or shared location]\(Azure Blob または共有場所\)* オプションを使用することもできます)。
+
+データセットを作成してアップロードするには、次のいずれかの要求を使用します。
+* [データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)
+* [フォームからのデータセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)
+
+**REST API で作成されたデータセットと Speech Studio プロジェクト**
+
+Speech-to-text REST API v3.0 で作成されたデータセットは、要求本文に特別なパラメーターが指定されていない限り、Speech Studio プロジェクトに接続 "*されません*" (下記参照)。 モデルのカスタマイズ操作が REST API 経由で実行される場合、Speech Studio プロジェクトとの接続は必要 "*ありません*"。
+
+Speech Studio にログオンすると、接続されていないオブジェクト (プロジェクト参照を使用せずに REST API によってアップロードされたデータセットなど) が見つかったときに、そのユーザー インターフェイスによって通知され、そのようなオブジェクトを既存のプロジェクトに接続できます。 
+
+アップロード中に新しいデータセットを Speech Studio の既存のプロジェクトに接続するには、[データセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)または[フォームからのデータセットの作成](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)を使用し、次の形式に従って要求本文に入力します。
+```json
+{
+  "kind": "Acoustic",
+  "contentUrl": "https://contoso.com/mydatasetlocation",
+  "locale": "en-US",
+  "displayName": "My speech dataset name",
+  "description": "My speech dataset description",
+  "project": {
+    "self": "https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/projects/c1c643ae-7da5-4e38-9853-e56e840efcb2"
+  }
+}
+```
+
+`project` 要素に必要なプロジェクト URL は、[プロジェクトの取得](https://westeurope.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects)要求で取得できます。
 
 ## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>トレーニング/テスト用のオーディオ + 人間というラベルが付いた文字起こしデータ
 

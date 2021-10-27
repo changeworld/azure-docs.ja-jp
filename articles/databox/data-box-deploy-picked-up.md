@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/07/2021
+ms.date: 10/17/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 86609d42a7c8f0e78df6b3a0019d97c951b5d378
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 8b51cbf8af938a71faea05b2cadbea904b508d26
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736239"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138659"
 ---
 ::: zone target="docs"
 
@@ -76,11 +76,15 @@ ms.locfileid: "109736239"
 
 デバイスへのデータ コピーが完了し、**発送準備** が正常に実行されたことを確認します。 デバイスを発送する地域によって手順が異なります。
 
+### <a name="microsoft-managed-shipping"></a>Microsoft 管理の出荷
+
+Microsoft 管理による出荷を使用している場合は、出荷元のリージョンのガイドラインに従います。
+
 ::: zone-end
 
-## <a name="us-canada-europe"></a>[米国、カナダ、ヨーロッパ](#tab/in-us-canada-europe)
+## <a name="us--canada"></a>[米国およびカナダ](#tab/in-us-canada)
 
-米国、カナダ、またはヨーロッパでデバイスを返送する場合は、次の手順を行います。
+米国またはカナダでデバイスを返送するには、次の手順を実行します。
 
 1. 必ずデバイスの電源をオフにてケーブルを取り外します。
 2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
@@ -93,6 +97,53 @@ ms.locfileid: "109736239"
 
     集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
+
+Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
+
+::: zone-end
+
+## <a name="europe"></a>[ヨーロッパ](#tab/in-europe)
+
+ヨーロッパでデバイスを返送するには、次の手順を実行します。
+
+1. 必ずデバイスの電源をオフにてケーブルを取り外します。
+2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+3. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。
+1. **ドイツまたはスイスから発送する場合**、Azure データセンターでは、すべてのデバイスの返却に事前通知が必要です。
+    1. 次のテンプレートを使用して Azure Data Box Operations に電子メールを送信し、入荷 ID を受け取ります。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。
+
+       ```
+       To: adbops@microsoft.com
+       Subject: Request for Azure Data Box Inbound ID: <orderName> 
+       Body: 
+        
+       I am ready to return an Azure Data Box and would like to request an Inbound ID for the following order:
+       
+       Order Name: <orderName>
+       Return Tracking Number: <returnTracking#>
+       ```
+
+    1. Azure Data Box Operations から提供される入荷 ID 番号を書き留め、返品ラベルの近くの見やすい場所に記入してください。
+1. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷のスケジュールを設定するには:
+
+    * 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
+    * 電話で、電子インク ディスプレイまたは印刷ラベルに表示されている返送追跡番号を伝えます。 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
+    * 集荷のスケジュール中に問題が発生した場合や、追加料金の支払いを求められた場合は、Azure Data Box Operations にお問い合わせください。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。
+
+    集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
+
+    **ドイツまたはスイスから発送する場合** は、[自己管理の出荷を使用](data-box-deploy-picked-up.md#self-managed-shipping)することもできます。
+
+4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
+
 
 ::: zone target="chromeless"
 
@@ -279,7 +330,7 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 ::: zone-end
 
-## <a name="united-arab-emirates"></a>[アラブ首長国連邦](#tab/in-uae)
+## <a name="uae"></a>[アラブ首長国連邦](#tab/in-uae)
 
 1. デバイスを返送する際に使用する元の箱を保管しておきます。
 2. デバイスへのデータ コピーが完了し、 **[発送準備]** の手順が正常に完了したことを確認します。
@@ -349,9 +400,13 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
+---
 
-米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、西ヨーロッパ、オーストラリアまたはブラジルで Data Box をお使いの方で、ご自分の注文の作成時に自己管理による出荷を選択した場合は、次の手順に従います。
+### <a name="self-managed-shipping"></a>自己管理の出荷
+
+Microsoft 管理による出荷を使用している場合は、出荷元のリージョンのガイドラインに従います。
+
+米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、ドイツ、スイス、西ヨーロッパ、オーストラリア、またはブラジルで Data Box をお使いの方で、ご自分の注文の作成時に自己管理による出荷を選択した場合は、こちらの手順に従います。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の **[発送準備]** ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。

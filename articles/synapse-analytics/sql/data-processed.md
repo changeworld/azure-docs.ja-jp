@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e87198d66e94204b0465919e7a94e0d04f9c885
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b1439eb4b2f1f014608c2fe411176d14177c4487
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128849"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137306"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのサーバーレス SQL プールのコスト管理
 
@@ -139,6 +139,14 @@ WHERE name like 'Data processed %';
 ```sql
 SELECT * FROM sys.dm_external_data_processed
 ```
+
+## <a name="exceeding-the-limits-defined-in-the-cost-control"></a>コスト管理で定義されている制限の超過
+
+クエリの実行中に制限を超えた場合、クエリは終了されません。  
+
+制限を超えた場合、新しいクエリは拒否され、エラー メッセージには、期間に関する詳細情報、その期間に定義された制限、およびその期間の処理済みデータが含まれています。 たとえば、新しいクエリを実行するとき、毎週の制限が 1 TB に設定されていて、それを超えた場合、エラー メッセージは次のようになります。 
+
+```Query is rejected because SQL Serverless budget limit for a period is exceeded. (Period = Weekly: Limit = 1 TB, Data processed = 1 TB))```
 
 ## <a name="next-steps"></a>次のステップ
 

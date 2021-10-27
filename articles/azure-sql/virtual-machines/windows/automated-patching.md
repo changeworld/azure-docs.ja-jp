@@ -3,7 +3,7 @@ title: SQL Server VM の自動修正 (Resource Manager) | Microsoft Docs
 description: この記事では、Azure で実行されている SQL Server 仮想マシンに対する、Resource Manager を使用した自動修正機能について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44dae9d8c8bc5ee3896bfc65340dfeee7679d54e
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 689b7565acad65ec963cf28d0f1fb164446e8764
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223186"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162393"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 仮想マシンでの SQL Server の自動修正 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -123,6 +123,10 @@ Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceG
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。
 
 自動修正を無効にするには、**New-AzVMSqlServerAutoPatchingConfig** の **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。
+
+> [!NOTE]
+> また、Azure VM の自動修正 ([Update Management](/azure/automation/update-management/overview) や [VM ゲストの自動パッチ適用](/azure/virtual-machines/automatic-vm-guest-patching)など) を有効にする他の方法もいくつかあります。 ツールが重複すると更新に失敗する可能性があるため、VM を自動的に更新するオプションを 1 つだけ選択してください。 
+
 
 ## <a name="next-steps"></a>次のステップ
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。

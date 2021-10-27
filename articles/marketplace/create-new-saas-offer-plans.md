@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/05/2021
-ms.openlocfilehash: ce68d4161762d47b8754cb69633a3918848085d0
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.date: 10/15/2021
+ms.openlocfilehash: 1988668640a0c9e6d60c0dd9f09e6e8831ce0809
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113593835"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132609"
 ---
 # <a name="create-plans-for-a-saas-offer"></a>SaaS オファーのプランを作成する
 
@@ -73,6 +73,9 @@ Microsoft のコマーシャル マーケットプレースを通じて販売さ
 1. **[基本に含まれている月間数量]** ボックスに、定期的な月額料金を支払う顧客に対して毎月含まれるディメンションの数量 (整数) を入力します。 無制限の数量を設定するには、代わりにそのチェック ボックスをオンにします。
 1. **[基本に含まれている年間数量]** ボックスに、定期的な年額料金を支払う顧客に対して毎月含まれるディメンションの数量 (整数) を入力します。 無制限の数量を設定するには、代わりにそのチェック ボックスをオンにします。
 1. 別のカスタム測定ディメンションを追加するには、 **[別のディメンションの追加]** リンクを選択し、手順 1 から 7 を繰り返します。
+
+> [!IMPORTANT]
+> コード内の使用状況を把握し、基本料金を超えた使用分についてのみ、使用状況のイベントを Microsoft に送信する必要があります。
 
 ### <a name="configure-per-user-pricing"></a>ユーザーごとの価格を構成する
 

@@ -4,12 +4,12 @@ description: この記事では、オンプレミスのマシンを Azure に移
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 5f5a0f65bfbde5ef8513780933cc570a4b5737df
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e4eb6bdd2153cd67fb6dbdf442a09485ca2ef4e1
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581140"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177955"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 

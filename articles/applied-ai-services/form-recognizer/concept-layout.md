@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 425a5cb9ab332076ddd0d745bba7b914e5601917
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 913eb155820832936295a6cc9df6a22175a9bec5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707149"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041977"
 ---
 # <a name="form-recognizer-layout-model"></a>Form Recognizer レイアウト モデル
 
-Azure Form Recognizer の Layout API を使用すると、ドキュメント (PDF、TIFF) と画像 (JPG、PNG、BMP) から、テキスト、テーブル、選択マーク、および構造情報を抽出できます。 これを使用すると、お客様はさまざまな形式のドキュメントを受け取り、ドキュメントの構造化されたデータ表現を返すことができます。 これは、Microsoft の強力な[光学式文字認識 (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) 機能の強化バージョンと、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。
+Azure Form Recognizer の Layout API を使用すると、ドキュメント (PDF、TIFF) と画像 (JPG、PNG、BMP) から、テキスト、テーブル、選択マーク、構造情報を抽出できます。 これを使用すると、お客様はさまざまな形式のドキュメントを受け取り、ドキュメントの構造化されたデータ表現を返すことができます。 これは、Microsoft の強力な[光学式文字認識 (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) 機能の強化バージョンと、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。
 
 ##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)のレイアウト機能を使用して処理されたサンプル フォーム:
 
@@ -67,11 +67,11 @@ Azure Form Recognizer の Layout API を使用すると、ドキュメント (PD
 
 * 最適な結果を得るには、ドキュメントごとに 1 つの鮮明な写真または高品質のスキャンを提供してください。
 * サポートされているファイル形式: JPEG、PNG、BMP、TIFF、および PDF (テキスト埋め込みまたはスキャン済み)。 文字の抽出と位置に関するエラーが発生する可能性を排除するには、テキストが埋め込まれている PDF が最適です。
-* PDF および TIFF の場合、最大 2000 ページが処理されます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
+* PDF および TIFF の場合、最大 2000 ページを処理できます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
 * ファイル サイズは 50 MB 未満である必要があります。
 * 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
 * PDF の寸法は、17 x 17 インチまでで、Legal または A3 サイズ以下の用紙に対応します。
-* トレーニング データ セットの合計サイズは、500 ページ以下です。
+* トレーニング データの合計サイズは、500 ページ以下です。
 * PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
 * 教師なし学習の場合 (ラベルの付いたデータなし):
   * データには、キーと値を含める必要があります。
@@ -128,7 +128,7 @@ Layout API により、ドキュメントと画像から、複数のテキスト
 
 * アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
 
-* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
+* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

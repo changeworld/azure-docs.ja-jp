@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: d79bae8b84a9e776e64dbe5d93038f88db5bb04c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 83fb74673b5da94cc656b512886ce1ee5d772ac1
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354519"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064401"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -59,6 +59,7 @@ Arc 対応サーバーでは、リソース グループまたは別の Azure �
 |拡張子 |Publisher |Type |追加情報 |
 |----------|----------|-----|-----------------------|
 |Azure Defender が統合された脆弱性スキャナー |Qualys |WindowsAgent.AzureSecurityCenter |[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Microsoft Antimalware 拡張機能 |Microsoft.Azure.Security |IaaSAntimalware |[Windows 用の Microsoft Antimalware 拡張機能](../../virtual-machines/extensions/iaas-antimalware-windows.md) |
 |カスタム スクリプト拡張機能 |Microsoft.Compute | CustomScriptExtension |[Windows カスタム スクリプト拡張機能](../../virtual-machines/extensions/custom-script-windows.md)|
 |Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Windows 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor for VMs (分析情報) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [Windows 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-windows.md)|

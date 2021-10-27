@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) で Container Storage Interface (CSI) ド�
 description: Azure Kubernetes Service (AKS) クラスターで Azure ディスクと Azure Files 用の Container Storage Interface (CSI) ドライバーを有効にする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 08/31/2021
+ms.date: 10/15/2021
 author: palma21
-ms.openlocfilehash: 0f941b612c76811ba750a06036faf48c7359bedd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 26de8065b5f96b9fc914a824018c7c7a2028b7b9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429853"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065447"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクと Azure Files 用の Container Storage Interface (CSI) ドライバーを有効にする
 
@@ -33,7 +33,7 @@ AKS での CSI ストレージ ドライバーのサポートにより、次を�
 - CSI ドライバーをサポートする最小の Kubernetes マイナー バージョンは、v1.17 です。
 - 既定のストレージ クラスは `managed-csi` ストレージ クラスになります。
 
-## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>CSI ストレージ ドライバーを使用する新しいクラスターを作成する
+## <a name="install-csi-storage-drivers-on-a-new-cluster-with-version--121"></a>バージョンが 1.21 より前の新しいクラスターに CSI ストレージ ドライバーをインストールする
 
 次の CLI コマンドを使用すると、Azure ディスクと Azure Files 用に CSI ストレージ ドライバーを使用する新しいクラスターを作成できます。 `--aks-custom-headers` フラグを使用して `EnableAzureDiskFileCSIDriver` 機能を設定します。
 
@@ -51,7 +51,7 @@ CSI ストレージ ドライバーをサポートする AKS クラスターを�
 az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure  --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
-CSI ストレージ ドライバーではなく、クラスター ツリー内ストレージ ドライバーを作成する場合は、カスタム `--aks-custom-headers` パラメーターを省略します。
+CSI ストレージ ドライバーではなく、クラスター ツリー内ストレージ ドライバーを作成する場合は、カスタム `--aks-custom-headers` パラメーターを省略します。 Kubernetes バージョン 1.21 以降では、既定で CSI ドライバーのみが使用されます。
 
 
 このノードにアタッチできる Azure ディスク ベース ボリュームの数を確認するには、次を実行します。
@@ -65,6 +65,10 @@ aks-nodepool1-25371499-vmss000002
 $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocatable.count}")
 8
 ```
+
+## <a name="install-csi-storage-drivers-on-an-existing-cluster-with-version--121"></a>バージョンが 1.21 より前の既存のクラスターに CSI ストレージ ドライバーをインストールする
+ - [AKS クラスターで Azure Disk CSI ドライバーを設定する](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/install-driver-on-aks.md)
+ - [AKS クラスターで Azure File CSI ドライバーを設定する](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/install-driver-on-aks.md)
 
 ## <a name="migrating-custom-in-tree-storage-classes-to-csi"></a>ツリー内のカスタム ストレージ クラスを CSI に移行する
 ツリー内ストレージ ドライバーに基づいてカスタム ストレージ クラスを作成した場合は、クラスターを 1.21.x にアップグレードするときに、これらのクラスを移行する必要があります。

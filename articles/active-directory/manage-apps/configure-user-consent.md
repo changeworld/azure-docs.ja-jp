@@ -12,13 +12,13 @@ ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5289f9a6ed602df67d85cbb5b11875befec916f5
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: contperf-fy21q2, contperf-fy22q2
+ms.openlocfilehash: cbdf0ed80397d5cd63cd7c38f12f6432e420ec7c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614899"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998031"
 ---
 # <a name="configure-how-end-users-consent-to-applications-using-azure-active-directory"></a>Azure Active Directory を使用してエンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -58,27 +58,25 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview) を使用して、アプリケーションに対するユーザーの同意を制御するアプリの同意ポリシーを選択できます。
+最新の [Azure AD PowerShell](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールを使用して、アプリケーションに対するユーザーの同意を制御するアプリの同意ポリシーを選択できます。
 
 #### <a name="disable-user-consent"></a>ユーザーの同意を無効にする
 
 ユーザーの同意を無効にするには、ユーザーの同意を制御する同意ポリシーを空に設定します。
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @() }
+```
 
 #### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>アプリの同意ポリシーに従ってユーザーの同意を許可する
 
 ユーザーの同意を許可するには、アプリに同意するユーザーの承認を管理するアプリの同意ポリシーを選択します。
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @("managePermissionGrantsForSelf.{consent-policy-id}") }
+```
 
 `{consent-policy-id}` を、適用するポリシーの ID に置き換えます。 作成した[カスタム アプリの同意ポリシー](manage-app-consent-policies.md#create-a-custom-app-consent-policy)を選択することも、次の組み込みポリシーから選択することもできます。
 
@@ -90,9 +88,8 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 たとえば、組み込みのポリシー `microsoft-user-default-low` に従ってユーザーの同意を有効にするには、次のようにします。
 
 ```powershell
-Set-AzureADMSAuthorizationPolicy `
-   -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @("managePermissionGrantsForSelf.microsoft-user-default-low") }
 ```
 
 ---

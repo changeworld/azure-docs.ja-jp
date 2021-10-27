@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 472f06a10e76cb557bd5e9350c94a352ebad17b3
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/13/2021
+ms.openlocfilehash: b3e6e4336a86b71fe3bfb096cbfc8e1ddc65a186
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538126"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063129"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスのデータ永続化の構成
 
@@ -19,8 +19,8 @@ ms.locfileid: "129538126"
 
 Azure Cache for Redis は、Redis データベース (RDB) と追加専用ファイル (AOF) を使用して Redis の永続化を提供します。
 
-* **RDB 永続化** - RDB 永続化を使用する場合、Azure Cache for Redis は、Azure Cache for Redis のスナップショットを Redis でバイナリ形式でディスクに永続化します。 スナップショットは Azure Storage アカウントに保存されます。 構成可能なバックアップ頻度によって、スナップショットを永続化する頻度が決まります。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。 RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
-* **AOF の永続化** - AOF の永続化を使用する場合、Azure Cache for Redis がすべての書き込み操作をログに保存します。 ログは、少なくとも 1 秒に 1 回 Azure Storage に保存されます。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、保存されている書き込み操作を使用してキャッシュが再構築されます。 AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
+- **RDB 永続化** - RDB 永続化を使用する場合、Azure Cache for Redis によってキャッシュのスナップショットがバイナリ形式で保持されます。 スナップショットは Azure Storage アカウントに保存されます。 構成可能なバックアップ頻度によって、スナップショットを永続化する頻度が決まります。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。 RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
+- **AOF の永続化** - AOF の永続化を使用する場合、Azure Cache for Redis がすべての書き込み操作をログに保存します。 ログは、少なくとも 1 秒に 1 回 Azure Storage に保存されます。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、保存されている書き込み操作を使用してキャッシュが再構築されます。 AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
 
 永続化では、自分が所有して管理している Azure Storage アカウントに Redis データが書き込まれます。 キャッシュの作成中に左側で **新しい Azure Cache for Redis** を構成します。 既存の Premium キャッシュの場合は、 **[リソース] メニュー** を使用します。
 
@@ -62,8 +62,8 @@ Azure Cache for Redis は、Redis データベース (RDB) と追加専用ファ
   
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **バックアップ頻度** | ドロップダウンからバックアップ間隔を選択します。 選択肢は、**15 分**、**30 分**、**60 分**、**6 時間**、**12 時間**、**24 時間** です。 | 前のバックアップ操作が正常に完了するとこの間隔のカウントダウンが開始し、期間が経過すると新しいバックアップが開始されます。 |
-   | **ストレージ アカウント** | ドロップダウンで、お使いのストレージ アカウントを選択します。 | Cache と同じリージョンおよびサブスクリプションのストレージ アカウントを選択します。また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。  |
+   | **バックアップ頻度** | ドロップダウンからバックアップ間隔を選択します。 選択肢は、**15 分**、**30 分**、**60 分**、**6 時間**、**12 時間**、**24 時間** です。 | 前のバックアップ操作が正常に完了すると、この間隔のカウントダウンが開始されます。 この期間が経過すると、新しいバックアップが開始されます。 |
+   | **ストレージ アカウント** | ドロップダウンで、お使いのストレージ アカウントを選択します。 | キャッシュと同じリージョンおよびサブスクリプション内にあるストレージ アカウントを選択してください。 スループットが高い **Premium Storage** アカウントの使用をお勧めします。 また、ストレージ アカウントで論理的な削除機能を使用すると、ストレージ コストが増加する可能性があります。 詳細については、「[価格と課金](/azure/storage/blobs/soft-delete-blob-overview)」を参照してください。 |
    | **ストレージ キー** | ドロップダウンで、使用する **[主キー]** または **[セカンダリ キー]** を選択します。 | 永続化アカウントのストレージ キーを再生成した場合、 **[ストレージ キー]** ドロップダウンからキーを再構成する必要があります。 |
 
     バックアップ間隔が経過すると、最初のバックアップが開始されます。
@@ -75,7 +75,7 @@ Azure Cache for Redis は、Redis データベース (RDB) と追加専用ファ
 
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **最初のストレージ アカウント** | ドロップダウンで、お使いのストレージ アカウントを選択します。 | キャッシュと同じリージョンおよびサブスクリプションのストレージ アカウントを指定する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。 |
+   | **最初のストレージ アカウント** | ドロップダウンで、お使いのストレージ アカウントを選択します。 | キャッシュと同じリージョンおよびサブスクリプション内にあるストレージ アカウントを選択してください。 スループットが高い **Premium Storage** アカウントの使用をお勧めします。 また、ストレージ アカウントで論理的な削除機能を使用すると、ストレージ コストが増加する可能性があります。 詳細については、「[価格と課金](/azure/storage/blobs/soft-delete-blob-overview)」を参照してください。 |
    | **最初のストレージ キー** | ドロップダウンで、使用する **[主キー]** または **[セカンダリ キー]** を選択します。 | 永続化アカウントのストレージ キーを再生成した場合、 **[ストレージ キー]** ドロップダウンからキーを再構成する必要があります。 |
    | **2 つ目のストレージ アカウント** | (省略可能) ドロップダウンで、お使いの 2 つ目のストレージ アカウントを選択します。 | 必要に応じて、別のストレージ アカウントを構成できます。 2 つ目のストレージ アカウントが構成されていると、レプリカ キャッシュへの書き込みはこの 2 つ目のストレージ アカウントに書き込まれます。 |
    | **2 つ目のストレージ キー** | (省略可能) ドロップダウンで、使用する **[主キー]** または **[セカンダリ キー]** を選択します。 | 永続化アカウントのストレージ キーを再生成した場合、 **[ストレージ キー]** ドロップダウンからキーを再構成する必要があります。 |
@@ -96,27 +96,28 @@ Azure Cache for Redis は、Redis データベース (RDB) と追加専用ファ
 
 次の一覧は、Azure Cache for Redis の永続化に関するよく寄せられる質問への回答です。
 
-* [以前に作成したキャッシュで永続化を有効にできますか](#can-i-enable-persistence-on-a-previously-created-cache)
-* [AOF 永続化と RDB 永続化を同時に有効にすることはできますか](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
-* [どちらの永続化モデルを選択すべきですか](#which-persistence-model-should-i-choose)
-* [別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか](#what-happens-if-ive-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
-* [2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することはできますか。](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
-* [データ永続化で使用されているストレージに対して課金されますか。](#will-i-be-charged-for-the-storage-being-used-in-data-persistence)
+- [以前に作成したキャッシュで永続化を有効にできますか](#can-i-enable-persistence-on-a-previously-created-cache)
+- [AOF 永続化と RDB 永続化を同時に有効にすることはできますか](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
+- [どちらの永続化モデルを選択すべきですか](#which-persistence-model-should-i-choose)
+- [別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか](#what-happens-if-ive-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+- [2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することはできますか。](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
+- [データ永続化で使用されているストレージに対して課金されますか。](#will-i-be-charged-for-the-storage-being-used-in-data-persistence)
+- [RDB および AOF 永続化の BLOB への書き込みはどのくらいの頻度で行われますか。また、論理的な削除を有効にする必要はありますか](#how-frequently-does-rdb-and-aof-persistence-write-to-my-blobs-and-should-i-enable-soft-delete)
 
 ### <a name="rdb-persistence"></a>RDB 永続化
 
-* [キャッシュの作成後に RDB バックアップ頻度を変更できますか](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
-* [RDB バックアップ頻度を 60 分に設定しているときに、バックアップの間隔が 60 分より長くなるのはなぜですか](#why-is-there-more-than-60-minutes-between-backups-when-i-have-an-rdb-backup-frequency-of-60-minutes)
-* [新しいバックアップが作成されると、古い RDB バックアップはどうなりますか](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
+- [キャッシュの作成後に RDB バックアップ頻度を変更できますか](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
+- [RDB バックアップ頻度を 60 分に設定しているときに、バックアップの間隔が 60 分より長くなるのはなぜですか](#why-is-there-more-than-60-minutes-between-backups-when-i-have-an-rdb-backup-frequency-of-60-minutes)
+- [新しいバックアップが作成されると、古い RDB バックアップはどうなりますか](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
 
 ### <a name="aof-persistence"></a>AOF 永続化
 
-* [どのような場合に 2 つ目のストレージ アカウントを使用すべきですか](#when-should-i-use-a-second-storage-account)
-* [AOF 永続化はキャッシュのスループット、待ち時間、またはパフォーマンスに影響しますか](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
-* [2 つ目のストレージ アカウントを削除するには、どうすればよいですか](#how-can-i-remove-the-second-storage-account)
-* [再書き込みとは何ですか。キャッシュにどのように影響しますか](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
-* [AOF が有効になっているキャッシュをスケーリングする場合に、どのようなことを想定すべきですか](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
-* [AOF データはストレージ内でどのように整理されますか](#how-is-my-aof-data-organized-in-storage)
+- [どのような場合に 2 つ目のストレージ アカウントを使用すべきですか](#when-should-i-use-a-second-storage-account)
+- [AOF 永続化はキャッシュのスループット、待ち時間、またはパフォーマンスに影響しますか](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+- [2 つ目のストレージ アカウントを削除するには、どうすればよいですか](#how-can-i-remove-the-second-storage-account)
+- [再書き込みとは何ですか。キャッシュにどのように影響しますか](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
+- [AOF が有効になっているキャッシュをスケーリングする場合に、どのようなことを想定すべきですか](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
+- [AOF データはストレージ内でどのように整理されますか](#how-is-my-aof-data-organized-in-storage)
 
 ### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>以前に作成したキャッシュで永続化を有効にできますか
 
@@ -130,8 +131,8 @@ Azure Cache for Redis は、Redis データベース (RDB) と追加専用ファ
 
 AOF 永続化では、すべての書き込みがログに保存されます。これはスループットに大きな影響を与えます。 AOF と比較して RDB の永続化では、構成されたバックアップ間隔に基づいてバックアップを保存し、パフォーマンスへの影響を最小限に抑えます。 主な目的がデータ損失の最小化で、キャッシュでのスループットの低下に対処できるという場合は、AOF 永続化を選択してください。 キャッシュでのスループットを最適に維持したいものの、データ復旧メカニズムも必要という場合は、RDB 永続化を選択してください。
 
-* RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
-* AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
+- RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
+- AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
 
 AOF 永続化を使用しているときのパフォーマンスの詳細については、「[AOF 永続化はキャッシュのスループット、待ち時間、またはパフォーマンスに影響しますか](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)」を参照してください。
 
@@ -139,13 +140,21 @@ AOF 永続化を使用しているときのパフォーマンスの詳細につ�
 
 RDB 永続化の場合も AOF 永続化の場合も、以下のように処理されます。
 
-* より大きなサイズにスケーリングした場合、影響はありません。
-* 小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。 詳細については、「[スケーリング中に影響を受けるカスタム データベース](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)」を参照してください
-* 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。  通常は [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用して、キーが削除されます。
+- より大きなサイズにスケーリングした場合、影響はありません。
+- 小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。 詳細については、「[スケーリング中に影響を受けるカスタム データベース](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)」を参照してください
+- 小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。  通常は [allkeys-lru](https://redis.io/topics/lru-cache) 削除ポリシーを使用して、キーが削除されます。
 
 ### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することはできますか。
 
-はい、2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用することができます。
+はい、2 つの異なるキャッシュ間で永続化するために同じストレージ アカウントを使用できます。
+
+### <a name="will-i-be-charged-for-the-storage-being-used-in-data-persistence"></a>データ永続化で使用されているストレージに対して課金されますか。
+
+はい。使用されているストレージ アカウントの価格モデルに従って、使用されているストレージに対して課金されます。
+
+### <a name="how-frequently-does-rdb-and-aof-persistence-write-to-my-blobs-and-should-i-enable-soft-delete"></a>RDB および AOF 永続化の BLOB への書き込みはどのくらいの頻度で行われますか。また、論理的な削除を有効にする必要はありますか。
+
+論理的な削除は推奨されません。 RDB および AOF 永続化では、1 時間ごと、数分ごと、または 1 秒ごとに BLOB に書き込むことができます。 また、ストレージ アカウントで論理的な削除を有効にすると、Azure Cache for Redis では、古いバックアップ データを削除することでストレージ コストを最小限に抑えることができなくなります。 論理的な削除では、通常のデータ サイズのキャッシュと、毎秒の書き込み操作によって、すぐにコストが高くなる可能性があります。 論理的な削除のコストの詳細については、「[価格と課金](/azure/storage/blobs/soft-delete-blob-overview)」を参照してください。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>キャッシュの作成後に RDB バックアップ頻度を変更できますか
 
@@ -157,7 +166,7 @@ RDB 永続化のバックアップ頻度の間隔は、その前のバックア�
 
 ### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>新しいバックアップが作成されると、古い RDB バックアップはどうなりますか
 
-最新のものを除くすべての RDB 永続化のバックアップは自動的に削除されます。 この削除はすぐに行われないことがありますが、古いバックアップは無期限には保持されません。 ストレージ アカウントで論理的な削除が有効になっている場合は、論理的な削除の設定が適用され、既存のバックアップは引き続き論理的な削除状態になっていることに注意してください。
+最新のものを除くすべての RDB 永続化のバックアップは自動的に削除されます。 この削除はすぐに行われないことがありますが、古いバックアップは無期限には保持されません。 ストレージ アカウントで論理的な削除が有効になっている場合、論理的な削除の設定が適用され、既存のバックアップは引き続き論理的な削除状態になります。
 
 ### <a name="when-should-i-use-a-second-storage-account"></a>どのような場合に 2 つ目のストレージ アカウントを使用すべきですか
 
@@ -177,7 +186,7 @@ AOF ファイルが十分な大きさになると、キャッシュに対する�
 
 ### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>AOF が有効になっているキャッシュをスケーリングする場合に、どのようなことを想定すべきですか
 
-スケーリング時の AOF ファイルが非常に大きい場合は、スケーリングの完了後にファイルが再度読み込まれるため、スケール操作に予想よりも長い時間がかかることを想定しておいてください。
+スケーリング時の AOF ファイルが大きい場合は、スケーリングの完了後にファイルが再度読み込まれるため、スケール操作に予想よりも長い時間がかかることを想定しておいてください。
 
 スケーリングの詳細については、「[別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか](#what-happens-if-ive-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)」を参照してください。
 
@@ -194,26 +203,10 @@ AOF ファイルに格納されたデータは、ストレージへのデータ�
 
 クラスタリングが有効になっている場合は、前の表に示されているように、キャッシュ内の各シャードにそれぞれのページ BLOB のセットが含まれます。 たとえば、3 つのシャードがある P2 キャッシュでは、AOF ファイルが 24 個のページ BLOB (シャードあたり 8 BLOB で 3 シャード) に振り分けられています。
 
-再書き込み後、ストレージ内には 2 セットの AOF ファイルが存在します。 再書き込みはバックグラウンドで実行され、最初のファイルのセットに追加されます。 再書き込み時にキャッシュに送信されるセット操作は、2番目のセットに追加されます。 障害が発生した場合、バックアップは再書き込み中に一時的に保存されます。 再書き込みが完了すると、バックアップは即座に削除されます。 ストレージ アカウントで論理的な削除が有効になっている場合は、論理的な削除の設定が適用され、既存のバックアップは引き続き論理的な削除状態になっていることに注意してください。
+再書き込み後、ストレージ内には 2 セットの AOF ファイルが存在します。 再書き込みはバックグラウンドで実行され、最初のファイルのセットに追加されます。 再書き込み時にキャッシュに送信されるセット操作は、2番目のセットに追加されます。 障害が発生した場合、バックアップは再書き込み中に一時的に保存されます。 再書き込みが完了すると、バックアップは即座に削除されます。 ストレージ アカウントで論理的な削除が有効になっている場合、論理的な削除設定が適用され、既存のバックアップは引き続き論理的な削除状態になります。
 
-### <a name="will-i-be-charged-for-the-storage-being-used-in-data-persistence"></a>データ永続化で使用されているストレージに対して課金されますか。
-
-はい。使用されているストレージ アカウントの価格モデルに従って、使用されているストレージに対して課金されます。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cache for Redis の機能について
 
-* [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)
-
-<!-- IMAGES -->
-
-[redis-cache-premium-pricing-tier]: ./media/cache-how-to-premium-persistence/redis-cache-premium-pricing-tier.png
-
-[redis-cache-persistence]: ./media/cache-how-to-premium-persistence/redis-cache-persistence.png
-
-[redis-cache-rdb-persistence]: ./media/cache-how-to-premium-persistence/redis-cache-rdb-persistence.png
-
-[redis-cache-aof-persistence]: ./media/cache-how-to-premium-persistence/redis-cache-aof-persistence.png
-
-[redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
+- [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)

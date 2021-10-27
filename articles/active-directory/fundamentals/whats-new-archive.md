@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 9/7/2021
+ms.date: 9/30/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0dcffa6c027fb520d8a3a4551223ea28e5d09b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e8f056354fdda60adfe82598800d8a030c9a3668
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230211"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133711"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -32,6 +32,204 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - 非推奨の機能
 - 変更の計画
 
+---
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="guidance-on-how-to-enable-support-for-tls-12-in-your-environment-in-preparation-for-upcoming-azure-ad-tls-1011-deprecation"></a>今後の Azure AD TLS 1.0 および 1.1 の非推奨に備えてお使いの環境で TLS 1.2 のサポートを有効にする方法に関するガイダンス
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** 該当なし  
+**製品の機能:** 標準
+
+Azure Active Directory では、2021 年 6 月 30 日以降、Azure Active Directory の世界各地のリージョンで次のプロトコルが非推奨になります。
+
+
+- TLS 1.0
+- TLS 1.1
+- 3DES 暗号スイート (TLS_RSA_WITH_3DES_EDE_CBC_SHA)
+
+影響を受ける環境は次のとおりです。
+
+- Azure 商用クラウド
+- Office 365 GCC および WW
+
+詳細については、[Azure AD TLS 1.1 と 1.0 の非推奨に備えてお使いの環境で TLS 1.2 のサポートを有効にする](/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
+
+---
+
+### <a name="public-preview----azure-ad-entitlement-management-now-supports-multi-geo-sharepoint-online"></a>パブリック プレビュー - Azure AD のエンタイトルメント管理で、Multi-Geo の SharePoint Online がサポートされるようになりました
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** エンタイトルメント管理
+ 
+Multi-Geo の SharePoint Online を使用している組織では、特定の Multi-Geo 環境のサイトをエンタイトルメント管理アクセス パッケージに含められるようになりました。 [詳細については、こちらを参照してください](../governance/entitlement-management-catalog-create.md#add-a-multi-geo-sharepoint-site)。
+
+---
+
+### <a name="public-preview----restore-deleted-apps-from-app-registrations"></a>パブリック プレビュー - アプリの登録から削除されたアプリを復元する
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** 開発者エクスペリエンス
+ 
+Azure portal から、削除されたアプリの登録を表示、復元、および完全に削除できるようになりました。 これは、個人の Microsoft アカウントのアプリケーションではなく、ディレクトリに関連付けられたアプリケーションにのみ適用されます。 [詳細については、こちらを参照してください](../develop/howto-restore-app.md)。
+ 
+---
+
+### <a name="public-preview----new-user-action-in-conditional-access-for-registering-or-joining-devices"></a>パブリック プレビュー - デバイスを登録または参加させるための条件付きアクセスでの新しい "ユーザー操作"
+
+**種類:** 新機能  
+**サービス カテゴリ:** 条件付きアクセス  
+**製品の機能:** ID のセキュリティ & 保護
+ 
+ 条件付きアクセスで、「デバイスの登録または参加」という新しいユーザー操作が利用できるようになりました。 このユーザー操作を使用すると、Azure AD のデバイス登録に関する Azure Active Directory Multi-Factor Authentication (MFA) ポリシーを制御できます。 
+
+現時点では、このユーザー操作は、ユーザーがデバイスを Azure AD に登録または参加させるときの制御として Azure AD MFA を有効にできるだけです。 Azure AD デバイスの登録に依存している、または適用されないその他の制御は、このユーザー操作では無効になっています。 [詳細については、こちらを参照してください](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)。 
+ 
+---
+
+### <a name="public-preview----optimize-connector-groups-to-use-the-closest-application-proxy-cloud-service"></a>パブリック プレビュー - 最も近いアプリケーション プロキシ クラウド サービスを使用するようにコネクタ グループを最適化する
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+ 
+この新しい機能を使用すると、アプリケーションがホストされている最も近いリージョンのアプリケーション プロキシ サービスにコネクタ グループを割り当てることができます。 これにより、アプリがホーム テナントのリージョン以外のリージョンでホストされているシナリオで、アプリのパフォーマンスを向上させることができます。 [詳細については、こちらを参照してください](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
+ 
+---
+
+### <a name="public-preview----external-identities-self-service-sign-up-in-aad-using-email-one-time-passcode-accounts"></a>パブリック プレビュー - ワンタイム パスコードの電子メール送信アカウントを使用した AAD での External Identities セルフサービス サインアップ
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+
+外部ユーザーは、ワンタイム パスコードの電子メール送信アカウントを使用して、Azure AD ファースト パーティおよび LOB アプリにサインアップできるようになります。 [詳細については、こちらを参照してください](../external-identities/one-time-passcode.md)。
+
+---
+
+### <a name="public-preview----availability-of-ad-fs-sign-ins-in-azure-ad"></a>パブリック プレビュー - Azure AD で AD FS サインインが利用可能になります
+
+**種類:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** 監視とレポート
+ 
+AD FS サインイン アクティビティを Azure AD のアクティビティ レポートと統合して、ハイブリッド ID インフラストラクチャの統合ビューを提供できるようになりました。 Azure AD のサインイン レポート、Log Analytics、および Azure Monitor Workbooks を使用すると、AD FS アカウントのロックアウト、不適切なパスワード試行、予期しないサインイン試行のスパイクなど、AAD と AD FS サインインの両方のシナリオについて詳細な分析を行うことができます。
+
+詳細については、「[Connect Health を使用した Azure AD での AD FS サインイン](../hybrid/how-to-connect-health-ad-fs-sign-in.md)」を参照してください。
+
+---
+
+### <a name="general-availability---staged-rollout-to-cloud-authentication"></a>一般提供 - クラウド認証への段階的ロールアウト
+
+**種類:** 新機能  
+**サービス カテゴリ:** AD Connect  
+**製品の機能:** ユーザー認証
+ 
+クラウド認証への段階的ロールアウトが一般公開されました。 段階的ロールアウト機能を使用すると、パススルー認証 (PTA) やパスワード ハッシュの同期 (PHS) などのクラウド認証方法を使用して、ユーザー グループを選択的にテストできます。 一方、フェデレーション ドメイン内の他のすべてのユーザーは、引き続き AD FS などのフェデレーションサービスや、その他のフェデレーション サービスを使用してユーザーを認証します。 [詳細については、こちらを参照してください](../hybrid/how-to-connect-staged-rollout.md)。
+
+---
+
+### <a name="general-availability---user-type-attribute-can-now-be-updated-in-the-azure-admin-portal"></a>一般提供 - ユーザー タイプ属性を Azure 管理ポータルで更新できるようになりました
+
+**種類:** 新機能  
+**サービスカテゴリ:** ユーザー エクスペリエンスと管理  
+**製品の機能:** [ユーザー管理]
+ 
+Azure 管理ポータルからユーザー プロファイル情報を更新するときに、Azure AD ユーザーのユーザー タイプを更新できるようになりました。 ユーザー タイプは Microsoft Graph からも更新できます。 詳細については、[ユーザー プロファイル情報の追加または更新](active-directory-users-profile-azure-portal.md)に関する記事を参照してください。
+ 
+---
+
+### <a name="general-availability---replica-sets-for-azure-active-directory-domain-services"></a>一般提供 - Azure Active Directory Domain Services のレプリカ セット
+
+**種類:** 新機能  
+**サービス カテゴリ:** Azure AD Domain Services  
+**製品の機能:** Azure AD Domain Services
+ 
+Azure Active Directory Domain Services のレプリカ セット機能が一般提供されました。 [詳細については、こちらを参照してください](../../active-directory-domain-services/concepts-replica-sets.md)。
+ 
+---
+
+### <a name="general-availability---collaborate-with-your-partners-using-email-one-time-passcode-in-the-azure-government-cloud"></a>一般提供 - Azure Government クラウドでワンタイム パスコードの電子メール送信を使用してパートナーと共同作業を行う
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+ 
+Microsoft Azure Government クラウド内の組織では、ゲストはワンタイム パスコードの電子メール送信を使用して招待の引き換えができるようになりました。 これにより、Azure AD、Microsoft、または Gmail のアカウントを使用していない Azure Government クラウド内のゲスト ユーザーも、共有リソースにサインインするための一時的コードを要求して入力することによって、パートナーと共同作業できます。 [詳細については、こちらを参照してください](../external-identities/one-time-passcode.md#note-for-azure-us-government-customers)。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---march-2021"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになりました - 2021 年 3 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+ 
+2021 年 3 月、フェデレーションをサポートする次の 37 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
+
+[Bambuser Live Video Shopping](https://lcx.bambuser.com/)、[DeepDyve Inc](https://www.deepdyve.com/azure-sso)、[Moqups](../saas-apps/moqups-tutorial.md)、[RICOH Spaces Mobile](https://ricohspaces.app/welcome)、[Flipgrid](https://auth.flipgrid.com/)、[hCaptcha Enterprise](../saas-apps/hcaptcha-enterprise-tutorial.md)、[SchoolStream ASA](https://jsd.schoolstreamk12.com/ASA/ASAlogin.aspx)、[TransPerfect GlobalLink Dashboard](../saas-apps/transperfect-globallink-dashboard-tutorial.md)、[SimplificaCI](https://app.simplificaci.com.br/)、[Thrive LXP](../saas-apps/thrive-lxp-tutorial.md)、[Lexonis TalentScape](../saas-apps/lexonis-talentscape-tutorial.md)、[Exium](../saas-apps/exium-tutorial.md)、[Sapient](../saas-apps/sapient-tutorial.md)、[TrueChoice](../saas-apps/truechoice-tutorial.md)、[RICOH Spaces](https://ricohspaces.app/welcome)、[Saba Cloud](../saas-apps/learning-at-work-tutorial.md)、[Acunetix 360](../saas-apps/acunetix-360-tutorial.md)、[Exceed.ai](../saas-apps/exceed-ai-tutorial.md)、[GitHub Enterprise Managed User](../saas-apps/github-enterprise-managed-user-tutorial.md)、[Enterprise Vault.cloud for Outlook](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=openid%20profile%20User.Read&client_id=7176efe5-e954-4aed-b5c8-f5c85a980d3a&nonce=4b9e1981-1bcb-4938-a283-86f6931dc8cb)、[Smartlook](../saas-apps/smartlook-tutorial.md)、[Accenture Academy](../saas-apps/accenture-academy-tutorial.md)、[Onshape](../saas-apps/onshape-tutorial.md)、[Tradeshift](../saas-apps/tradeshift-tutorial.md)、[JuriBlox](../saas-apps/juriblox-tutorial.md)、[SecurityStudio](../saas-apps/securitystudio-tutorial.md)、[ClicData](https://app.clicdata.com/)、[Evergreen](../saas-apps/evergreen-tutorial.md)、[Patchdeck](https://patchdeck.com/ad_auth/authenticate/)、[FAX.PLUS](../saas-apps/fax-plus-tutorial.md)、[ValidSign](../saas-apps/validsign-tutorial.md)、[AWS Single Sign-on](../saas-apps/aws-single-sign-on-tutorial.md)、[Nura Space](https://dashboard.nuraspace.com/login)、[Broadcom DX SaaS](../saas-apps/broadcom-dx-saas-tutorial.md)、[Interplay Learning](https://skilledtrades.interplaylearning.com/#login)、[SendPro Enterprise](../saas-apps/sendpro-enterprise-tutorial.md)、[FortiSASE SIA](../saas-apps/fortisase-sia-tutorial.md)
+
+すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください。
+
+Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、次の詳細をお読みください: https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---march-2021"></a>Azure AD アプリケーション ギャラリーの新しいプロビジョニング コネクタ - 2021 年 3 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [AWS Single Sign-On](../saas-apps/aws-single-sign-on-provisioning-tutorial.md)
+- [Bpanda](../saas-apps/bpanda-provisioning-tutorial.md)
+- [Britive](../saas-apps/britive-provisioning-tutorial.md)
+- [GitHub Enterprise Managed User](../saas-apps/github-enterprise-managed-user-provisioning-tutorial.md)
+- [Grammarly](../saas-apps/grammarly-provisioning-tutorial.md)
+- [LogicGate](../saas-apps/logicgate-provisioning-tutorial.md)
+- [SecureLogin](../saas-apps/secure-login-provisioning-tutorial.md)
+- [TravelPerk](../saas-apps/travelperk-provisioning-tutorial.md)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)に関するページをご覧ください。
+ 
+---
+
+### <a name="introducing-ms-graph-api-for-company-branding"></a>会社のブランド向けに MS Graph API を導入する
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** MS Graph  
+**製品の機能:** B2B/B2C
+
+[会社のブランド用の MS Graph API](/graph/api/resources/organizationalbrandingproperties) は、Azure AD または Microsoft 365 のログイン エクスペリエンスで使用できます。これを使用すると、プログラムによるブランド化パラメーターの管理が可能になります。
+
+---
+
+### <a name="general-availability---header-based-authentication-sso-with-application-proxy"></a>一般提供 - アプリケーション プロキシによるヘッダーベースの認証 SSO
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+ 
+ヘッダーベースの認証に対する Azure AD アプリケーション プロキシのネイティブ サポートが一般公開されました。 この機能を使用すると、追加コンポーネントのデプロイを必要とせずに、必要なユーザー属性をアプリケーションの HTTP ヘッダーとして構成できます。 [詳細については、こちらを参照してください](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md)。
+
+---
+
+### <a name="two-way-sms-for-mfa-server-is-no-longer-supported"></a>MFA Server での双方向 SMS はサポートされなくなりました
+
+**種類:** 非推奨  
+**サービス カテゴリ:** MFA  
+**製品の機能:** ID のセキュリティ & 保護
+ 
+
+MFA Server での双方向 SMS は、最初、2018 年に非推奨になり、2021 年 2 月 24 日以降サポートされなくなります。 管理者は、現在も双方向 SMS を使用しているユーザーに対して、別の方法を有効にする必要があります。
+
+影響を受ける管理者に対して、2020 年 12 月 8 日と 2021 年 1 月 28 日に、電子メール通知と Azure portal Service Health 通知が送信されました。 アラートは、サブスクリプションに関連付けられている、所有者、共同所有者、管理者、およびサービス管理者の各 RBAC の役割に送信されました。 [詳細については、こちらを参照してください](../authentication/how-to-authentication-two-way-sms-unsupported.md)。
+ 
 ---
  
 ## <a name="february-2021"></a>2021 年 2 月
@@ -200,13 +398,13 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 
 ---
 
-### <a name="new-company-branding-in-mfasspr-combined-registration"></a>MFA/SSPR の統合登録での新しい会社のブランディングの表示
+### <a name="new-company-branding-in-multi-factor-authentication-mfasspr-combined-registration"></a>多要素認証 (MFA) と SSPR の統合登録での新しい会社のブランディングの表示
 
 **種類:** 変更された機能  
 **サービスカテゴリ:** ユーザー エクスペリエンスと管理  
 **製品の機能:** エンド ユーザー エクスペリエンス
  
-これまで、Azure Active Directory サインイン ページで会社のロゴは使用されていませんでした。 このたび、会社のブランディングが、MFA/SSPR の統合登録の左上に配置されました。 会社のブランディングには、自分のサインインとセキュリティ情報ページにも表示されます。 [詳細については、こちらを参照してください](../fundamentals/customize-branding.md)。
+これまで、Azure Active Directory サインイン ページで会社のロゴは使用されていませんでした。 このたび、会社のブランディングが、多要素認証 (MFA) と SSPR の統合登録の左上に配置されました。 会社のブランディングには、自分のサインインとセキュリティ情報ページにも表示されます。 [詳細については、こちらを参照してください](../fundamentals/customize-branding.md)。
 
 ---
 
@@ -444,8 +642,8 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 **製品の機能:** ID のセキュリティ & 保護
  
 ユーザー アカウントを保護するため、2020 年 11 月 12 日以降に作成されるすべての新しいテナントについては、セキュリティの既定値群が有効になります。 セキュリティの既定値群により、次のような複数のポリシーが適用します。
-- すべてのユーザーと管理者は、Microsoft Authenticator アプリを使用して MFA に登録する必要があります
-- クリティカルな管理者ロールは、サインインするたびに MFA を使用する必要があります。 他のすべてのユーザーは、必要に応じて MFA の入力を求められます。 
+- すべてのユーザーと管理者は、Microsoft Authenticator アプリを使用して多要素認証 (MFA) に登録する必要があります
+- クリティカルな管理者ロールは、サインインするたびに多要素認証 (MFA) を使用する必要があります。 他のすべてのユーザーは、必要に応じて多要素認証 (MFA) の入力を求められます。 
 - レガシ認証は、テナント全体でブロックされます。 
 
 詳細については、「[セキュリティの既定値群とは](../fundamentals/concept-fundamentals-security-defaults.md)」を参照してください。
@@ -1002,7 +1200,7 @@ MSAL.js バージョン 2.x でシングル ページ Web アプリ (SPA) の承
 
 信頼済みデバイス上での [Azure Active Directory Multi-Factor Authentication (MFA) の記憶](../authentication/howto-mfa-mfasettings.md#remember-multi-factor-authentication)機能に対する最近の更新によって、認証が最大 365 日間に延長されました。 Azure Active Directory (Azure AD) Premium ライセンスの場合は、[条件付きアクセス – サインイン頻度ポリシー](../conditional-access/howto-conditional-access-session-lifetime.md#user-sign-in-frequency)も使用できます。これにより、再認証の設定がより柔軟になります。
 
-最適なユーザー エクスペリエンスのためには、信頼済みデバイスで MFA を記憶する設定の代わりに、条件付きアクセスのサインイン頻度を使用して、信頼済みのデバイスや場所、リスクの低いセッションでのセッションの有効期間を延長することをお勧めします。 最初に、[再認証エクスペリエンスの最適化に関する最新のガイダンス](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)を確認してください。
+最適なユーザー エクスペリエンスのためには、信頼済みデバイスで多要素認証 (MFA) を記憶する設定の代わりに、条件付きアクセスのサインイン頻度を使用して、信頼済みのデバイスや場所、リスクの低いセッションでのセッションの有効期間を延長することをお勧めします。 最初に、[再認証エクスペリエンスの最適化に関する最新のガイダンス](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)を確認してください。
 
 ---
 
@@ -1160,7 +1358,7 @@ Azure AD エンタイトルメント管理に、割り当てを管理するた�
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
  
-以前は、Privileged Identity Management (PIM) にオンボードするには、ユーザーの同意と、Azure AD MFA への登録が含まれる PIM のブレードでのオンボード フローが必要でした。 Azure AD の [ロールと管理者] ブレードへの PIM エクスペリエンスの最近の統合により、このエクスペリエンスは削除されています。 有効な P2 ライセンスを持つテナントは、PIM に自動的にオンボードされます。
+以前は、Privileged Identity Management (PIM) にオンボードするには、ユーザーの同意と、Azure Active Directory Multi-Factor Authentication (MFA) への登録が含まれる PIM のブレードでのオンボード フローが必要でした。 Azure AD の [ロールと管理者] ブレードへの PIM エクスペリエンスの最近の統合により、このエクスペリエンスは削除されています。 有効な P2 ライセンスを持つテナントは、PIM に自動的にオンボードされます。
 
 PIM へのオンボードにより、テナントが直接悪影響を受けることはありません。 次の変更が予想されます。
 - PIM または Azure AD の [ロールと管理者] ブレードで割り当てを行うときに、開始時刻と終了時刻でアクティブか有資格かなどの、追加の割り当てオプション。 
@@ -1193,9 +1391,9 @@ PIM へのオンボードにより、テナントが直接悪影響を受ける�
 **サービス カテゴリ:** MFA  
 **製品の機能:** ID のセキュリティ & 保護
  
-2020 年 10 月 1 日以降、Azure MFA Server のファイアウォール要件には、追加の IP 範囲が必要になります。
+2020 年 10 月 1 日以降、Azure AD Multi-Factor Authentication (MFA) Server のファイアウォール要件には、追加の IP 範囲が必要になります。
 
-組織に送信ファイアウォール規則がある場合は、MFA サーバーが必要なすべての IP 範囲と通信できるように規則を更新します。 IP 範囲については、「[Azure Active Directory Multi-Factor Authentication Server ファイアウォールの要件](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)」を参照してください。
+組織に送信ファイアウォール規則がある場合は、多要素認証 (MFA) サーバーが必要なすべての IP 範囲と通信できるように規則を更新します。 IP 範囲については、「[Azure Active Directory Multi-Factor Authentication Server ファイアウォールの要件](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)」を参照してください。
 
 ---
 
@@ -1522,7 +1720,7 @@ Azure AD ポータルの [ロールと管理者] タブで、ロールのすべ�
 2017 年 11 月に最初に発表されたように、2018 年 11 月 14 日をもって Azure Active Directory Multi-Factor Authentication ソフトウェア開発 (Azure MFA SDK) の提供は終了しました。 Microsoft は、2020 年 9 月 30 日に有効な SDK サービスを終了します。 SDK に対するすべての呼び出しは失敗します。
 
 組織で Azure MFA SDK を使用している場合は、2020 年 9 月 30 日までに移行する必要があります。
-- MIM に対する Azure MFA SDK: MIM で SDK を使用している場合は、Azure MFA Server に移行し、次の[の手順](/microsoft-identity-manager/working-with-mfaserver-for-mim)に従って Privileged Access Management (PAM) をアクティブ化する必要があります。   
+- MIM に対する Azure MFA SDK: MIM で SDK を使用している場合は、Azure AD Multi-Factor Authentication (MFA) Server に移行し、次の[手順](/microsoft-identity-manager/working-with-mfaserver-for-mim)に従って Privileged Access Management (PAM) をアクティブ化する必要があります。   
 - カスタマイズされたアプリに対する Azure MFA SDK: アプリを Azure AD に統合し、条件付きアクセスを使用して MFA を適用することを検討してください。 始めるには、こちらの[ページ](../manage-apps/plan-an-application-integration.md)を確認してください。 
 
 ---
@@ -1583,7 +1781,7 @@ externalUserState と externalUserStateChangedDateTime プロパティを使用�
  
 認証セッションの管理機能を使用すると、ユーザーがサインイン資格情報を提供する必要がある頻度と、ブラウザーを閉じて再び開いた後に資格情報を提供する必要があるかどうかを構成することで、環境内でより高いセキュリティと柔軟性を提供できます。
  
-また、認証セッション管理は以前、Azure AD 参加済み、Hybrid Azure AD 参加済み、および Azure AD 登録済みのデバイスでの第一要素認証のみに適用されていました。 現在、認証セッション管理は MFA にも適用されるようになりました。 詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」を参照してください。
+また、認証セッション管理は以前、Azure AD 参加済み、Hybrid Azure AD 参加済み、および Azure AD 登録済みのデバイスでの第一要素認証のみに適用されていました。 現在、認証セッション管理は多要素認証 (MFA) にも適用されるようになりました。 詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」を参照してください。
 
 ---
 
@@ -1739,14 +1937,14 @@ signIns v1.0 API に新しい riskEventsTypes_v2 (string) プロパティが導�
 
 --- 
 
-### <a name="upcoming-changes-to-mfa-email-notifications"></a>MFA のメール通知の予定されている変更点
+### <a name="upcoming-changes-to-multi-factor-authentication-mfa-email-notifications"></a>多要素認証 (MFA) のメール通知の予定されている変更点
 
 **種類:** 変更の計画  
 **サービス カテゴリ:** MFA  
 **製品の機能:** ID のセキュリティ & 保護
  
 
-クラウドの MFA の MFA メール通知には、次の変更があります。
+クラウドの多要素認証 (MFA) のメール通知には、次の変更があります。
 
 メール通知は次のアドレスから送信されるようになります: azure-noreply@microsoft.com と msonlineservicesteam@microsoftonline.com。 不正アクセスのアラート メールの内容を更新して、使用のブロックを解除するために必要な手順をわかりやすく示します。
 
@@ -1992,7 +2190,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、Azure AD テナ�
 
 **製品の機能:** ID のセキュリティ & 保護
 
-多要素認証 (MFA) とセルフサービス パスワード リセット (SSPR) 用の統合された登録エクスペリエンスの一般提供が開始されました。 この新しい登録エクスペリエンスによって、ユーザーは 1 つの順を追ったプロセスで MFA と SSPR に登録できるようになります。 ご自身の組織に向けて新しいエクスペリエンスを展開すると、ユーザーはより短時間で、より少ない作業で登録できるようになります。 [こちら](https://bit.ly/3etiRyQ)のブログ記事をご覧ください。
+多要素認証 (MFA) とセルフサービス パスワード リセット (SSPR) 用の統合された登録エクスペリエンスの一般提供が開始されました。 この新しい登録エクスペリエンスによって、ユーザーは 1 つの順を追ったプロセスで多要素認証 (MFA) と SSPR に登録できるようになります。 ご自身の組織に向けて新しいエクスペリエンスを展開すると、ユーザーはより短時間で、より少ない作業で登録できるようになります。 [こちら](https://bit.ly/3etiRyQ)のブログ記事をご覧ください。
 
 ---
 
@@ -2138,7 +2336,7 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 
 **製品の機能:** 開発者エクスペリエンス
 
-これらの API は、ユーザーの認証方法を管理するための主要なツールです。 MFA とセルフサービス パスワード リセット (SSPR) に使用される認証子を、プログラムで事前登録および管理できるようになりました。 これは、Azure AD MFA、SSPR、および Microsoft Graph の領域で最も要求の多い機能の 1 つでした。 このウェーブでリリースされた新しい API により、次のことが可能になります。
+これらの API は、ユーザーの認証方法を管理するための主要なツールです。 多要素認証 (MFA) とセルフサービス パスワード リセット (SSPR) に使用される認証子を、プログラムで事前登録および管理できるようになりました。 これは、Azure AD Multi-Factor Authentication (MFA)、SSPR、および Microsoft Graph の領域で最も要求の多い機能の 1 つでした。 このウェーブでリリースされた新しい API により、次のことが可能になります。
 
 - ユーザーの認証用電話を読み取り、追加、更新、削除する
 - ユーザーのパスワードをリセットする
@@ -2307,7 +2505,7 @@ Azure Active Directory (Azure AD) で、動的グループ ルールを検証す
 
 ---
 
-### <a name="identity-secure-score---security-defaults-and-mfa-improvement-action-updates"></a>ID セキュリティ スコア - セキュリティの既定値群と MFA の改善アクションの更新
+### <a name="identity-secure-score---security-defaults-and-multi-factor-authentication-mfa-improvement-action-updates"></a>ID セキュリティ スコア - セキュリティの既定値群と多要素認証 (MFA) の改善アクションの更新
 
 **種類:** 変更された機能
 
@@ -2318,23 +2516,23 @@ Azure Active Directory (Azure AD) で、動的グループ ルールを検証す
 **Azure AD 改善アクションのセキュリティの既定値群のサポート:** Microsoft セキュリティ スコアでは、[Azure AD のセキュリティの既定値群](./concept-fundamentals-security-defaults.md)をサポートするように改善アクションが更新されます。これにより、一般的な攻撃に対する事前構成済みのセキュリティ設定を使用して組織を保護しやすくなります。 これは、次の改善アクションに影響します。
 
 - すべてのユーザーがセキュリティで保護されたアクセスのために多要素認証を完了できるようにする
-- 管理者ロールに対して MFA を必須にする
+- 管理者ロールに多要素認証 (MFA) を要求する
 - レガシ認証をブロックするポリシーを有効にする
  
-**MFA の改善アクションの更新:** ビジネスに適したポリシーを適用しつつ、最高のセキュリティを保証するという企業のニーズを反映するために、Microsoft セキュリティ スコアでは多要素認証を中心とした 3 つの改善アクションが削除され、新たに 2 つが追加されました。
+**多要素認証 (MFA) の改善アクションの更新:** ビジネスに適したポリシーを適用しつつ、最高のセキュリティを保証するという企業のニーズを反映するために、Microsoft セキュリティ スコアでは多要素認証を中心とした 3 つの改善アクションが削除され、新たに 2 つが追加されました。
 
 削除された改善アクション:
 
 - すべてのユーザーを多要素認証に登録する
-- すべてのユーザーに対して MFA を必須にする
-- Azure AD 特権ロールに対して MFA を必須にする
+- すべてのユーザーに多要素認証 (MFA) を要求する
+- Azure AD 特権ロールに多要素認証 (MFA) を要求する
 
 追加された改善アクション:
 
 - すべてのユーザーがセキュリティで保護されたアクセスのために多要素認証を完了できるようにする
-- 管理者ロールに対して MFA を必須にする
+- 管理者ロールに多要素認証 (MFA) を要求する
 
-これらの新しい改善アクションでは、ディレクトリ全体で多要素認証 (MFA) のためにユーザーまたは管理者を登録し、組織のニーズに合った適切な一連のポリシーを確立する必要があります。 主な目的は、すべてのユーザーと管理者が多要素またはリスクベースの本人確認プロンプトで認証できるようにしながら、柔軟性を高めることです。 それには、スコープに基づく決定を適用する複数のポリシーの使用や、ユーザーに MFA を要求するタイミングが Microsoft によって決定されるようにするためのセキュリティの既定値群の設定 (3 月 16 日以降) などの形態があります。 [Microsoft セキュリティ スコアの新機能をご覧ください](/microsoft-365/security/mtp/microsoft-secure-score#whats-new)。
+これらの新しい改善アクションでは、ディレクトリ全体で多要素認証 (MFA) のためにユーザーまたは管理者を登録し、組織のニーズに合った適切な一連のポリシーを確立する必要があります。 主な目的は、すべてのユーザーと管理者が多要素またはリスクベースの本人確認プロンプトで認証できるようにしながら、柔軟性を高めることです。 それには、スコープに基づく決定を適用する複数のポリシーの使用や、ユーザーに多要素認証 (MFA) を要求するタイミングが Microsoft によって決定されるようにするためのセキュリティの既定値群の設定 (3 月 16 日以降) などの形態があります。 [Microsoft セキュリティ スコアの新機能をご覧ください](/microsoft-365/security/mtp/microsoft-secure-score#whats-new)。
 
 ---
 
@@ -2499,13 +2697,13 @@ Azure AD サービスの信頼性を確保するために、ユーザーのパ�
 **サービス カテゴリ:** MFA  
 **製品の機能:** ID のセキュリティ & 保護
  
-現在のカスタム コントロールのプレビューを、パートナーが提供する認証機能で Azure Active Directory 管理者およびエンド ユーザー エクスペリエンスとシームレスに連携させることができる方法に置き換える予定です。 現在、パートナー MFA ソリューションは次の制約に直面しています。パスワードが入力された後にのみ機能すること、他の主要なシナリオではステップアップ認証用の MFA としては機能しないこと、およびエンド ユーザーまたは管理者の資格情報管理機能と統合されていないことです。 新しい実装では、パートナーが提供する認証要素を、登録、使用状況、MFA 要求、ステップアップ認証、レポート、ログ記録などの主要なシナリオに対して組み込みの要素と共に使用できます。 
+現在のカスタム コントロールのプレビューを、パートナーが提供する認証機能で Azure Active Directory 管理者およびエンド ユーザー エクスペリエンスとシームレスに連携させることができる方法に置き換える予定です。 現在、パートナー多要素認証 (MFA) ソリューションは次の制約に直面しています。パスワードが入力された後にのみ機能すること、他の主要なシナリオではステップアップ認証用の多要素認証 (MFA) としては機能しないこと、およびエンド ユーザーまたは管理者の資格情報管理機能と統合されていないことです。 新しい実装では、パートナーが提供する認証要素を、登録、使用状況、多要素認証 (MFA) 要求、ステップアップ認証、レポート、ログ記録などの主要なシナリオに対して組み込みの要素と共に使用できます。 
 
 カスタム コントロールは、一般提供が開始されるまで、新しい設計と共にプレビューで引き続きサポートされます。 その時点で、お客様に新しい設計に移行する猶予を与えます。 現在のアプローチには制約があるため、新しい設計を利用できるようになるまで新しいプロバイダーをオンボードしません。 Microsoft はお客様やプロバイダーと密接に協力しており、近づいてきたらスケジュールをお知らせします。 [詳細については、こちらを参照してください](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#)。
 
 ---
 
-### <a name="identity-secure-score---mfa-improvement-action-updates"></a>ID セキュリティ スコア - MFA の改善アクションの更新
+### <a name="identity-secure-score---multi-factor-authentication-mfa-improvement-action-updates"></a>ID セキュリティ スコア - 多要素認証 (MFA) の改善アクションの更新
 
 **種類:** 変更の計画  
 **サービス カテゴリ:** MFA  
@@ -2515,16 +2713,16 @@ Azure AD サービスの信頼性を確保するために、ユーザーのパ�
 
 次の改善アクションが削除されます。
 
-- すべてのユーザーを MFA に登録する
-- すべてのユーザーに対して MFA を必須にする
-- Azure AD 特権ロールに対して MFA を必須にする
+- すべてのユーザーを多要素認証 (MFA) に登録する
+- すべてのユーザーに多要素認証 (MFA) を要求する
+- Azure AD 特権ロールに多要素認証 (MFA) を要求する
 
 次の改善アクションが追加されます。
 
-- すべてのユーザーが安全にアクセスできるよう MFA を完了できることを確認する
-- 管理者ロールに対して MFA を必須にする
+- すべてのユーザーがセキュリティで保護されたアクセスのために多要素認証 (MFA) を完了できるようにする
+- 管理者ロールに多要素認証 (MFA) を要求する
 
-これらの新しい改善アクションでは、ユーザーまたは管理者をディレクトリ全体での MFA のために登録し、組織のニーズに合った適切な一連のポリシーを確立する必要があります。 主な目的は、すべてのユーザーと管理者が多要素またはリスクベースの本人確認プロンプトで認証できるようにしながら、柔軟性を高めることです。 これには、Microsoft がユーザーに MFA を要求するタイミングを決定するセキュリティの既定値群の設定や、スコープに基づく決定を適用する複数のポリシーの使用などの形態があります。 これらの改善アクションの更新の一環として、ベースライン保護ポリシーはスコアの計算に含まれなくなります。 [Microsoft セキュリティ スコアに関する最新情報をご覧ください](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming)。
+これらの新しい改善アクションでは、ディレクトリ全体で多要素認証 (MFA) のためにユーザーまたは管理者を登録し、組織のニーズに合った適切な一連のポリシーを確立する必要があります。 主な目的は、すべてのユーザーと管理者が多要素またはリスクベースの本人確認プロンプトで認証できるようにしながら、柔軟性を高めることです。 これには、Microsoft がユーザーに多要素認証 (MFA) を要求するタイミングを決定するセキュリティの既定値群の設定や、スコープに基づく決定を適用する複数のポリシーの使用などの形態があります。 これらの改善アクションの更新の一環として、ベースライン保護ポリシーはスコアの計算に含まれなくなります。 [Microsoft セキュリティ スコアに関する最新情報をご覧ください](/microsoft-365/security/mtp/microsoft-secure-score-whats-coming)。
 
 ---
 
@@ -2918,7 +3116,7 @@ Azure AD アプリケーション ギャラリーが更新され、プロビジ�
 
 **種類:** 変更の計画 **サービス カテゴリ:** ID 保護 **製品の機能:** ID のセキュリティ & 保護
 
-開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) API ベータ版では、**2020 年 1 月 10 日** 頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
+開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityprotection-root) API ベータ版では、**2020 年 1 月 10 日** 頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
 
 新しい riskDetection API の詳細については、[リスク検出 API のリファレンス ドキュメント](/graph/api/resources/riskdetection)をご覧ください。
 
@@ -2953,13 +3151,13 @@ Azure AD アカウントを持つユーザーはアプリケーション登録�
 
 ---
 
-### <a name="users-are-no-longer-required-to-re-register-during-migration-from-per-user-mfa-to-conditional-access-based-mfa"></a>ユーザーは今後、ユーザーごとの MFA から条件付きアクセス ベースの MFA への移行中に再登録をする必要がない
+### <a name="users-are-no-longer-required-to-re-register-during-migration-from-per-user-multi-factor-authentication-mfa-to-conditional-access-based-multi-factor-authentication-mfa"></a>ユーザーは今後、ユーザーごとの多要素認証 (MFA) から条件付きアクセス ベースの多要素認証 (MFA) への移行中に再登録をする必要がない
 
 **種類:** 修正済み **サービス カテゴリ:** MFA **製品の機能:** ID のセキュリティ & 保護
 
-ユーザーがユーザーごとの Multi-Factor Authentication (MFA) に対して無効であったところ、条件付きアクセス ポリシーを介して MFA が有効となった場合、ユーザーは再登録する必要がある、という既知の問題が修正されました。
+ユーザーがユーザーごとの Multi-Factor Authentication (MFA) に対して無効であったところ、条件付きアクセス ポリシーを介して多要素認証 (MFA) が有効となった場合、ユーザーは再登録する必要がある、という既知の問題が修正されました。
 
-ユーザーに再登録を要求するには、Azure AD ポータルでユーザーの認証方法から **[Required re-register MFA]\(MFA の再登録が必要\)** オプションを選択します。 
+ユーザーに再登録を要求するには、Azure AD ポータルでユーザーの認証方法から **[Required re-register multi-factor authentication (MFA)]\(MFA の再登録が必要\)** オプションを選択します。 
 
 ---
 
@@ -3062,7 +3260,7 @@ Azure portal の新しい **[セキュリティ]** メニュー項目と **[検�
 - Security Center
 - ID セキュリティ スコア
 - 認証方法
-- MFA
+- Multi-Factor Authentication (MFA)
 - リスク レポート - 危険なユーザー、危険なサインイン、リスクの検出
 - その他...
 
@@ -3206,7 +3404,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 **種類:** 修正済み **サービス カテゴリ:** MFA **製品の機能:** ID のセキュリティ & 保護
 
-2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、MFA Server の最新バージョン (バージョン 8.0.2) をダウンロードできるようになりました。 この新しいバージョンでは、次のことを行いました。
+2019 年 7 月 1 日より前に Azure AD Multi-Factor Authentication (MFA) Server をアクティブ化した既存のお客様は、Azure AD Multi-Factor Authentication (MFA) Server の最新バージョン (バージョン 8.0.2) をダウンロードできるようになりました。 この新しいバージョンでは、次のことを行いました。
 
 - Azure AD 同期によってユーザーが無効から有効に変更されると、電子メールがユーザーに送信されるように問題を修正しました。
 
@@ -3220,7 +3418,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 - その他の軽微なバグを修正しました。
 
-2019 年 7 月 1 日以降、Microsoft は新しいデプロイに対する MFA Server の提供を停止しました。 多要素認証が必要な新しいお客様は、クラウドベースの Azure Active Directory Multi-Factor Authentication を使用する必要があります。 詳細については、[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)に関するページを参照してください。
+2019 年 7 月 1 日以降、Microsoft は新しいデプロイに対する Multi-Factor Authentication (MFA) Server の提供を停止しました。 多要素認証が必要な新しいお客様は、クラウドベースの Azure Active Directory Multi-Factor Authentication を使用する必要があります。 詳細については、[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)に関するページを参照してください。
 
 ---
 
@@ -3431,11 +3629,11 @@ Azure Monitor を設定する方法については、[Azure Monitor の Azure AD
 
 ---
 
-### <a name="plan-for-change-removal-of-the-mfa-server-ip-address-from-the-office-365-ip-address"></a>変更の計画: Office 365 IP アドレスから MFA サーバーの IP アドレスを削除する
+### <a name="plan-for-change-removal-of-the-multi-factor-authentication-mfa-server-ip-address-from-the-office-365-ip-address"></a>変更の計画: Office 365 IP アドレスから多要素認証 (MFA) サーバー IP アドレスが削除されます
 
 **種類:** 変更の計画 **サービス カテゴリ:** MFA **製品の機能:** ID のセキュリティ & 保護
 
-[Office 365 の IP アドレスと URL Web サービス](/office365/enterprise/office-365-ip-web-service)から、MFA サーバーの IP アドレスを削除する予定です。 現在これらのページに依存してファイアウォールの設定を更新している場合は、「[Azure Active Directory Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)」の「**Azure Active Directory Multi-Factor Authentication Server ファイアウォールの要件**」セクションに記載されている IP アドレスの一覧も含まれていることを確認する必要があります。
+[Office 365 の IP アドレスと URL Web サービス](/office365/enterprise/office-365-ip-web-service)から、多要素認証 (MFA) サーバーの IP アドレスを削除する予定です。 現在これらのページに依存してファイアウォールの設定を更新している場合は、「[Azure Active Directory Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md#azure-multi-factor-authentication-server-firewall-requirements)」の「**Azure Active Directory Multi-Factor Authentication Server ファイアウォールの要件**」セクションに記載されている IP アドレスの一覧も含まれていることを確認する必要があります。
 
 ---
 
@@ -3696,7 +3894,7 @@ Azure AD が更新されて、会社のブランドがサインイン ページ�
 
 **種類:** 非推奨 **サービス カテゴリ:** MFA **製品の機能:** ID のセキュリティ & 保護
 
-2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 組織内で多要素認証が必要な新しいお客様は、今後はクラウドベースの Azure Active Directory Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に MFA Server をアクティブ化したお客様には、変更が表示されません。 引き続き、最新バージョンをダウンロードしたり、今後の更新プログラムを取得したり、アクティブ化資格情報を生成したりすることができます。
+2019 年 7 月 1 日より、Microsoft から新しいデプロイに対して多要素認証 (MFA) サーバーはもう提供されません。 組織内で多要素認証が必要な新しいお客様は、今後はクラウドベースの Azure Active Directory Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に多要素認証 (MFA) サーバーをアクティブ化したお客様には、変更が表示されません。 引き続き、最新バージョンをダウンロードしたり、今後の更新プログラムを取得したり、アクティブ化資格情報を生成したりすることができます。
 
 詳細については、「[Azure Active Directory Multi-Factor Authentication Server の概要](../authentication/howto-mfaserver-deploy.md)」を参照してください。 クラウドベースの Azure AD Multi-factor Authentication の詳細については、[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)に関するページを参照してください。
 
@@ -4155,17 +4353,17 @@ Azure AD アクセス レビューを使用してアクセス レビューを作
 
 2019 年 2 月に、フェデレーションがサポートされる次の 27 の新しいアプリがアプリ ギャラリーに追加されました。
 
-[Euromonitor Passport](../saas-apps/euromonitor-passport-tutorial.md)、[MindTickle](../saas-apps/mindtickle-tutorial.md)、[FAT FINGER](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7)、[AirStack](../saas-apps/airstack-tutorial.md)、[Oracle Fusion ERP](../saas-apps/oracle-fusion-erp-tutorial.md)、[IDrive](../saas-apps/idrive-tutorial.md)、[Skyward Qmlativ](../saas-apps/skyward-qmlativ-tutorial.md)、[Brightidea](../saas-apps/brightidea-tutorial.md)、[AlertOps](../saas-apps/alertops-tutorial.md)、[Soloinsight-CloudGate SSO](../saas-apps/soloinsight-cloudgate-sso-tutorial.md)、Permission Click、[Brandfolder](../saas-apps/brandfolder-tutorial.md)、[StoregateSmartFile](../saas-apps/smartfile-tutorial.md)、[Pexip](../saas-apps/pexip-tutorial.md)、[Stormboard](../saas-apps/stormboard-tutorial.md)、[Seismic](../saas-apps/seismic-tutorial.md)、[Share A Dream](https://www.shareadream.org/how-it-works)、[Bugsnag](../saas-apps/bugsnag-tutorial.md)、[webMethods Integration Cloud](../saas-apps/webmethods-integration-cloud-tutorial.md)、[Knowledge Anywhere LMS](../saas-apps/knowledge-anywhere-lms-tutorial.md)、[OU Campus](../saas-apps/ou-campus-tutorial.md)、[Periscope Data](../saas-apps/periscope-data-tutorial.md)、[Netop Portal](../saas-apps/netop-portal-tutorial.md)、[smartvid.io](../saas-apps/smartvid.io-tutorial.md)、[PureCloud by Genesys](../saas-apps/purecloud-by-genesys-tutorial.md)、[ClickUp Productivity Platform](../saas-apps/clickup-productivity-platform-tutorial.md)
+[Euromonitor Passport](../saas-apps/euromonitor-passport-tutorial.md)、[MindTickle](../saas-apps/mindtickle-tutorial.md)、[FAT FINGER](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7)、[AirStack](../saas-apps/airstack-tutorial.md)、[Oracle Fusion ERP](../saas-apps/oracle-fusion-erp-tutorial.md)、[IDrive](../saas-apps/idrive-tutorial.md)、[Skyward Qmlativ](../saas-apps/skyward-qmlativ-tutorial.md)、[Brightidea](../saas-apps/brightidea-tutorial.md)、[AlertOps](../saas-apps/alertops-tutorial.md)、[Soloinsight-CloudGate SSO](../saas-apps/soloinsight-cloudgate-sso-tutorial.md)、Permission Click、[Brandfolder](../saas-apps/brandfolder-tutorial.md)、[StoregateSmartFile](../saas-apps/smartfile-tutorial.md)、[Pexip](../saas-apps/pexip-tutorial.md)、[Stormboard](../saas-apps/stormboard-tutorial.md)、[Seismic](../saas-apps/seismic-tutorial.md)、[Share A Dream](https://www.shareadream.org/)、[Bugsnag](../saas-apps/bugsnag-tutorial.md)、[webMethods Integration Cloud](../saas-apps/webmethods-integration-cloud-tutorial.md)、[Knowledge Anywhere LMS](../saas-apps/knowledge-anywhere-lms-tutorial.md)、[OU Campus](../saas-apps/ou-campus-tutorial.md)、[Periscope Data](../saas-apps/periscope-data-tutorial.md)、[Netop Portal](../saas-apps/netop-portal-tutorial.md)、[smartvid.io](../saas-apps/smartvid.io-tutorial.md)、[PureCloud by Genesys](../saas-apps/purecloud-by-genesys-tutorial.md)、[ClickUp Productivity Platform](../saas-apps/clickup-productivity-platform-tutorial.md)
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../develop/v2-howto-app-gallery-listing.md)」を参照してください。
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>拡張された MFA と SSPR の統合登録
+### <a name="enhanced-combined-multi-factor-authentication-mfasspr-registration"></a>拡張された多要素認証 (MFA) と SSPR の統合登録
 
 **種類:** 変更された機能 **サービス カテゴリ:** セルフサービス パスワード リセット **製品の機能:** ユーザー認証
 
-お客様からのフィードバックに基づき、MFA と SSPR の統合登録のプレビュー版の機能を強化して、ユーザーが MFA と SSPR の両方のセキュリティ情報をより迅速に登録できるようにしました。
+お客様からのフィードバックに基づき、多要素認証 (MFA) と SSPR の統合登録のプレビュー版の機能を強化して、ユーザーが多要素認証 (MFA) と SSPR の両方のセキュリティ情報をより迅速に登録できるようにしました。
 
 **ユーザーがこの強化された機能を今すぐ利用できるようにするには、以下の手順を実行してください。**
 
@@ -4173,7 +4371,7 @@ Azure AD アクセス レビューを使用してアクセス レビューを作
 
 2. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます – 更新]** オプションで、この機能を有効にする対象として **[選択したユーザー グループ]** または **[すべてのユーザー]** を選択します。
 
-今後数週間のうちに、現時点で有効にされていない MFA/SSPR の古い統合登録 のプレビュー版の機能を有効にできないようにする予定です。
+今後数週間のうちに、現時点で有効にされていない多要素認証 (MFA) と SSPR の古い統合登録のプレビュー版の機能を有効にできないようにする予定です。
 
 **ご使用のテナントで対象コントロールが削除されるかどうかを確認するには、次の手順を実行します。**
 
@@ -4181,7 +4379,7 @@ Azure AD アクセス レビューを使用してアクセス レビューを作
 
 2. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます]** オプションを **[なし]** に設定すると、このオプションがテナントから削除されます。
 
-以前に MFA/SSPR の古い統合登録のプレビュー版の機能をユーザーに対して有効にしたかどうかに関係なく、古い機能は今後無効になる予定です。 そのため、可能なかぎり早急に、強化された新しい機能に移行することをお勧めします。
+以前に多要素認証 (MFA) と SSPR の古い統合登録のプレビュー版の機能をユーザーに対して有効にしたかどうかに関係なく、古い機能は今後無効になる予定です。 そのため、可能なかぎり早急に、強化された新しい機能に移行することをお勧めします。
 
 強化された登録機能の詳細については、[Azure AD の MFA とパスワードのリセットの統合登録エクスペリエンスに関する優れた拡張内容](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)に関するページを参照してください。
 
@@ -4261,7 +4459,7 @@ Azure AD、Microsoft アカウント (MSA)、Google フェデレーションな�
 
 2019 年 1 月に、フェデレーションを使用した以下の 35 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
 
-[Firstbird](../saas-apps/firstbird-tutorial.md)、[Folloze](../saas-apps/folloze-tutorial.md)、[Talent Palette](../saas-apps/talent-palette-tutorial.md)、[Infor CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md)、[Cisco Umbrella](../saas-apps/cisco-umbrella-tutorial.md)、[Zscaler Internet Access Administrator](../saas-apps/zscaler-internet-access-administrator-tutorial.md)、[Expiration Reminder](../saas-apps/expiration-reminder-tutorial.md)、[InstaVR Viewer](../saas-apps/instavr-viewer-tutorial.md)、[CorpTax](../saas-apps/corptax-tutorial.md)、[Verb](https://app.verb.net/login)、[OpenLattice](https://openlattice.com/agora)、[TheOrgWiki](https://www.theorgwiki.com/signup)、[Pavaso Digital Close](../saas-apps/pavaso-digital-close-tutorial.md)、[GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md)、[Cloud Service PICCO](../saas-apps/cloud-service-picco-tutorial.md)、[AuditBoard](../saas-apps/auditboard-tutorial.md)、[iProva](../saas-apps/iprova-tutorial.md)、[Workable](../saas-apps/workable-tutorial.md)、[CallPlease](https://webapp.callplease.com/create-account/create-account.html)、[GTNexus SSO System](../saas-apps/gtnexus-sso-module-tutorial.md)、[CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md)、[Deskradar](../saas-apps/deskradar-tutorial.md)、[Coralogixv](../saas-apps/coralogix-tutorial.md)、[Signagelive](../saas-apps/signagelive-tutorial.md)、[ARES for Enterprise](../saas-apps/ares-for-enterprise-tutorial.md)、[K2 for Office 365](https://www.k2.com/O365)、[Xledger](https://www.xledger.net/)、[iDiD Manager](../saas-apps/idid-manager-tutorial.md)、[HighGear](../saas-apps/highgear-tutorial.md)、[Visitly](../saas-apps/visitly-tutorial.md)、[Korn Ferry ALP](../saas-apps/korn-ferry-alp-tutorial.md)、[Acadia](../saas-apps/acadia-tutorial.md)、[Adoddle cSaas Platform](../saas-apps/adoddle-csaas-platform-tutorial.md)
+[Firstbird](../saas-apps/firstbird-tutorial.md)、[Folloze](../saas-apps/folloze-tutorial.md)、[Talent Palette](../saas-apps/talent-palette-tutorial.md)、[Infor CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md)、[Cisco Umbrella](../saas-apps/cisco-umbrella-tutorial.md)、[Zscaler Internet Access Administrator](../saas-apps/zscaler-internet-access-administrator-tutorial.md)、[Expiration Reminder](../saas-apps/expiration-reminder-tutorial.md)、[InstaVR Viewer](../saas-apps/instavr-viewer-tutorial.md)、[CorpTax](../saas-apps/corptax-tutorial.md)、[Verb](https://app.verb.net/login)、[OpenLattice](https://help.openlattice.com/)、[TheOrgWiki](https://www.theorgwiki.com/signup)、[Pavaso Digital Close](../saas-apps/pavaso-digital-close-tutorial.md)、[GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md)、[Cloud Service PICCO](../saas-apps/cloud-service-picco-tutorial.md)、[AuditBoard](../saas-apps/auditboard-tutorial.md)、[iProva](../saas-apps/iprova-tutorial.md)、[Workable](../saas-apps/workable-tutorial.md)、[CallPlease](https://webapp.callplease.com/create-account/create-account.html)、[GTNexus SSO System](../saas-apps/gtnexus-sso-module-tutorial.md)、[CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md)、[Deskradar](../saas-apps/deskradar-tutorial.md)、[Coralogixv](../saas-apps/coralogix-tutorial.md)、[Signagelive](../saas-apps/signagelive-tutorial.md)、[ARES for Enterprise](../saas-apps/ares-for-enterprise-tutorial.md)、[K2 for Office 365](https://www.k2.com/O365)、[Xledger](https://www.xledger.net/)、[iDiD Manager](../saas-apps/idid-manager-tutorial.md)、[HighGear](../saas-apps/highgear-tutorial.md)、[Visitly](../saas-apps/visitly-tutorial.md)、[Korn Ferry ALP](../saas-apps/korn-ferry-alp-tutorial.md)、[Acadia](../saas-apps/acadia-tutorial.md)、[Adoddle cSaas Platform](../saas-apps/adoddle-csaas-platform-tutorial.md)
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](../saas-apps/tutorial-list.md)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../develop/v2-howto-app-gallery-listing.md)」を参照してください。
 
@@ -4722,13 +4920,13 @@ Microsoft では、Azure AD に対してより大規模な IP 範囲の導入を
 
 ---
 
-### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>セルフサービスのパスワード (SSPR) と Multi-Factor Authentication (MFA) の集中型セキュリティ情報管理
+### <a name="converged-security-info-management-for-self-service-password-sspr-and-multi-factor-authentication-mfa"></a>セルフサービスのパスワード (SSPR) と多要素認証 (MFA) の集中型セキュリティ情報管理
 
 **種類:** 新機能 **サービス カテゴリ:** SSPR **製品の機能:** ユーザー認証
 
-この新しい機能を使用すると、ユーザーは SSPR および MFA に対するセキュリティ情報 (電話番号、モバイル アプリなど) を 1 つの場所とエクスペリエンス管理できます。以前は、2 つの異なる場所で行われていました。
+この新しい機能を使用すると、ユーザーは SSPR および多要素認証 (MFA) に対するセキュリティ情報 (電話番号、モバイル アプリなど) を 1 つの場所とエクスペリエンス管理できます。以前は、2 つの異なる場所で行われていました。
 
-この集中型エクスペリエンスは、SSPR または MFA のどちらかを使用しているユーザーでも機能します。 さらに、MFA または SSPR の登録を強制していない組織の場合でも、ユーザーは、組織で許可されている MFA または SSPR のセキュリティ情報の方法に、マイ アプリ ポータルから登録できます。
+この集中型エクスペリエンスは、SSPR または多要素認証 (MFA) のどちらかを使用しているユーザーでも機能します。 さらに、多要素認証 (MFA) または SSPR の登録を強制していない組織の場合でも、ユーザーは、組織で許可されている多要素認証 (MFA) または SSPR のセキュリティ情報の方法に、マイ アプリ ポータルから登録できます。
 
 これは、オプトイン パブリック プレビューです。 管理者は、新しいエクスペリエンスを (必要に応じて) テナント内の特定のグループまたはすべてのユーザーに有効にできます。 集中型エクスペリエンスについて詳しくは、[集中型エクスペリエンスのブログ](https://cloudblogs.microsoft.com/enterprisemobility/2018/08/06/mfa-and-sspr-updates-now-in-public-preview/)をご覧ください。
 
@@ -4952,9 +5150,9 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 **種類:** 新機能 **サービス カテゴリ:** SSPR **製品の機能:** ユーザー認証
 
-この新しい機能を使用すれば、ユーザーはセキュリティ情報 (たとえば、電話番号、電子メール アドレス、モバイル アプリなど) のセルフサービス パスワード リセット (SSPR) と多要素認証 (MFA) を 1 つのエクスペリエンスで管理できます。 ユーザーが SSPR と MFA の 2 つの異なるエクスペリエンスのために同じセキュリティ情報を登録する必要がなくなります。 この新しいエクスペリエンスは、SSPR または MFA のいずれかを持つユーザーにも適用されます。
+この新しい機能を使用すれば、ユーザーはセキュリティ情報 (たとえば、電話番号、電子メール アドレス、モバイル アプリなど) のセルフサービス パスワード リセット (SSPR) と多要素認証 (MFA) を 1 つのエクスペリエンスで管理できます。 ユーザーが SSPR と多要素認証 (MFA) の 2 つの異なるエクスペリエンスのために同じセキュリティ情報を登録する必要がなくなります。 この新しいエクスペリエンスは、SSPR または多要素認証 (MFA) のいずれかを持つユーザーにも適用されます。
 
-組織で MFA または SSPR 登録を使用していない場合は、ユーザーは **Myapps** ポータルを通してセキュリティ情報を登録できます。 そこから、ユーザーは MFA または SSPR に有効な任意の方法を登録できます。
+組織で多要素認証 (MFA) または SSPR 登録を使用していない場合は、ユーザーは **Myapps** ポータルを通してセキュリティ情報を登録できます。 そこから、ユーザーは多要素認証 (MFA) または SSPR に有効な任意の方法を登録できます。
 
 これは、オプトイン パブリック プレビューです。 管理者は、新しいエクスペリエンス (必要に応じて) を特定のユーザー グループまたはテナント内のすべてのユーザーに有効にできます。
 
@@ -5086,7 +5284,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 組織に Azure AD Multi-Factor Authentication (MFA) をデプロイする方法に関する新しいステップ バイ ステップ ガイドを公開しました。
 
-MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](./active-directory-deployment-plans.md) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
+Azure AD Multi-Factor Authentication (MFA) のデプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](./active-directory-deployment-plans.md) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 
 ---
 
@@ -5845,9 +6043,9 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 
 **種類:** 非推奨 **サービス カテゴリ:** Azure AD **製品の機能:** ディレクトリ
 
-2018 年 1 月 8日に、PhoneFactor Web ポータルは廃止されました。 このポータルは、MFA サーバーの管理に使用されていましたが、これらの機能は portal.azure.com の Azure Portal に移行しました。
+2018 年 1 月 8日に、PhoneFactor Web ポータルは廃止されました。 このポータルは、多要素認証 (MFA) サーバーの管理に使用されていましたが、これらの機能は portal.azure.com の Azure Portal に移行しました。
 
-MFA の構成は、 **[Azure Active Directory] \> [MFA サーバー]** にあります。
+多要素認証 (MFA) の構成は、 **[Azure Active Directory] \> [multi-factor authentication (MFA) Server]\(多要素認証 (MFA) サーバー\)** にあります
 
 ---
 
@@ -6114,7 +6312,7 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
 
 ### <a name="network-policy-server-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の ネットワーク ポリシー サーバー拡張機能
 
-**種類:** 新機能 **サービス カテゴリ:** Multi-Factor Authentication **製品の機能:** ユーザー認証
+**種類:** 新機能 **サービス カテゴリ:** 多要素認証 **製品の機能:** ユーザー認証
 
 Azure Active Directory (Azure AD) Multi-Factor Authentication のネットワーク ポリシー サーバー拡張機能は、既存のサーバーを使用してクラウド ベースの多要素認証機能をご利用の認証インフラストラクチャに追加します。 ネットワーク ポリシー サーバー拡張機能を使用すると、電話、テキスト メッセージ、またはモバイル アプリによる検証を、ご利用の既存の認証フローに追加できます。 新しいサーバーをインストール、構成、メンテナンスする必要はありません。
 
@@ -6206,14 +6404,14 @@ Azure AD は、HTML ユーザー名とパスワード フィールドをレン�
 
 ### <a name="new-multi-factor-authentication-features"></a>新しい多要素認証機能
 
-**種類:** 新機能 **サービス カテゴリ:** Multi-Factor Authentication **製品の機能:** ID のセキュリティと保護
+**種類:** 新機能 **サービス カテゴリ:** 多要素認証 **製品の機能:** ID のセキュリティと保護
 
-Azure Active Directory (Azure AD) Multi-Factor Authentication (MFA) は組織を保護するための重要な要素となっています。 資格情報の適応性を高めて多要素認証をよりシームレスに利用できるようにするため、以下の機能が追加されました。
+Azure Active Directory Multi-Factor Authentication (MFA) は組織を保護するための重要な要素となっています。 資格情報の適応性を高めて多要素認証をよりシームレスに利用できるようにするため、以下の機能が追加されました。
 
-- MFA 結果へのプログラムによるアクセスなどを含め、多要素認証結果が Azure AD サインイン レポートに直接統合されました。
-- MFA 構成 が Azure Portal の Azure AD 構成エクスペリエンスに、より緊密に統合されました。
+- 多要素認証 (MFA) の結果へのプログラムによるアクセスなどを含め、多要素認証結果が Azure AD サインイン レポートに直接統合されました。
+- 多要素認証 (MFA) 構成 が Azure portal の Azure AD 構成エクスペリエンスに、より緊密に統合されました。
 
-このパブリック プレビューでは、MFA の管理およびレポートが、コアとなる Azure AD の構成エクスペリエンスに組み込まれました。 Azure AD を使用しながら MFA の管理ポータル機能を管理できます。
+このパブリック プレビューでは、多要素認証 (MFA) の管理およびレポートが、コアとなる Azure AD の構成エクスペリエンスに組み込まれました。 Azure AD を使用しながら多要素認証 (MFA) の管理ポータル機能を管理できます。
 
 詳細については、「[Azure Portal の多要素認証レポートのリファレンス](../authentication/howto-mfa-reporting.md)」をご覧ください。
 

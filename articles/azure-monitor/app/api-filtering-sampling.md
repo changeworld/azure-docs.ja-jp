@@ -4,12 +4,12 @@ description: テレメトリが Application Insights ポータルに送信され
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe23d6cae1b363cdb0c70cba561953368412361
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 293de0f963829516e3fdb119e3bcbf592f9ad113
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645134"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063414"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるフィルター処理および前処理
 
@@ -512,6 +512,9 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 * テレメトリ プロセッサを使用すると、テレメトリ項目を完全に置換または破棄できます。
 * 登録されているテレメトリ初期化子はすべて、テレメトリ項目ごとに呼び出されることが保証されます。 テレメトリ プロセッサの場合、SDK で呼び出しが保証されるのは、最初のテレメトリ プロセッサのみです。 その他のプロセッサが呼び出されるかどうかは、先行するテレメトリ プロセッサによって決まります。
 * 追加のプロパティでテレメトリをエンリッチしたり、既存のプロパティをオーバーライドしたりするには、TelemetryInitializers を使用します。 テレメトリ プロセッサを使用してテレメトリを除外します。
+
+> [!NOTE]
+> JavaScript には、[ITelemetryInitializer を使用してイベントをフィルター処理できる](#javascript-web-applications)テレメトリー初期化子のみがあります。
 
 ## <a name="troubleshoot-applicationinsightsconfig"></a>ApplicationInsights.config のトラブルシューティング
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 74d08095b8ea1df0ffb34264c2f0ca3af64b5dd8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ef1725161630e4a79b078a3c473f56e3d14a06ca
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772697"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994520"
 ---
 # <a name="about-keys"></a>キーについて
 
@@ -59,17 +59,17 @@ Key Vault は、RSA および EC キーをサポートしています。 マネ�
 
 |キーの種類|コンテナー (Premium SKU のみ)|マネージド HSM|
 |--|--|--|
-|**EC-HSM**:楕円曲線キー | サポートされています | サポートされています|
-|**RSA-HSM**:RSA キー|サポートされています|サポートされています|
-|**oct-HSM**: 対称キー|サポートされていません|サポートされています|
+|**EC-HSM**:楕円曲線キー | サポートされています (P-256、P-384、P-521、P-256K)| サポートされています (P-256、P-256K、P-384、P-521)|
+|**RSA-HSM**:RSA キー|サポートされています (2048 ビット、3072 ビット、4096 ビット)|サポートされています (2048 ビット、3072 ビット、4096 ビット)|
+|**oct-HSM**: 対称キー|サポートされていません|サポートされています (128 ビット、192 ビット、256 ビット)|
 |||
 
 ### <a name="software-protected-keys"></a>ソフトウェアで保護されるキー
 
 |キーの種類|コンテナー|マネージド HSM|
 |--|--|--|
-**RSA**:"ソフトウェアで保護される" RSA キー|サポートされています|サポートされていません
-**EC**:"ソフトウェアで保護される" 楕円曲線キー|サポートされています|サポートされていません
+**RSA**:"ソフトウェアで保護される" RSA キー|サポートされています (2048 ビット、3072 ビット、4096 ビット)|サポートされていません
+**EC**:"ソフトウェアで保護される" 楕円曲線キー |サポートされています (P-256、P-384、P-521、P-256K)|サポートされていません
 |||
 
 ### <a name="compliance"></a>コンプライアンス

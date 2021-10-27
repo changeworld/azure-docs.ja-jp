@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/17/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7f1f7d6f9ab6036fbcfcd1d19e175302bbd1a2a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 483d51ab654a67ca9c9ac59a5ae1efdd6861419b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87298817"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130188589"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>デバイス管理操作のカスタマイズと拡張を行う
 
@@ -27,6 +27,6 @@ IoT ソリューションでは、定義された一連のデバイス管理パ�
 
 このチュートリアルでは、ダイレクト メソッドを使用して、デバイスのリモート再起動をトリガーしました。 報告されるプロパティを使用してデバイスの最後の再起動時間を報告し、デバイス ツインのクエリを実行してクラウドからデバイスの最後の再起動時間を検出しました。
 
-IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、[ファームウェアの更新方法](../articles/iot-hub/tutorial-firmware-update.md)に関するページを参照してください。
+エンドツーエンドのイメージベースの更新など、IoT Hub とデバイス管理パターンの使用開始を続けるには、「[Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル](../articles/iot-hub-device-update/device-update-raspberry-pi.md)」を参照してください。
 
 IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、[ジョブのスケジュールとブロードキャスト](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)に関するページを参照してください。

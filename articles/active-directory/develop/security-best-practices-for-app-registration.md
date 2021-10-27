@@ -12,12 +12,12 @@ ms.date: 07/8/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: saumadan, marsma
-ms.openlocfilehash: 55633a1a3a6f4377abbfc413d866af031f57a31c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7c3398b6f7a2f4de99adfbdf137886278e69a007
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742909"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071719"
 ---
 # <a name="azure-ad-application-registration-security-best-practices"></a>Azure AD アプリケーションの登録に関するセキュリティのベスト プラクティス
 
@@ -83,15 +83,9 @@ Azure Active Directory (Azure AD) アプリケーションの登録は、ビジ�
 ## <a name="appid-uri-configuration"></a>AppId URI の構成
 
 特定のアプリケーションでは、(WebAPI を介して) リソースを公開できるため、テナント内のリソースを一意に識別する AppId URI を定義する必要があります。 組織内での URI の競合を回避するために、api または https のいずれかの URI スキームを使用し、AppId URI を次の形式で設定することをお勧めします。
+AppId URI は API のコードで参照されるスコープのプレフィックスとして機能します。また、AppId URI では、顧客が所有し、検証済みのドメインが使用される必要があります。 マルチテナント アプリケーションの場合、値もグローバルで一意にする必要があります。
 
-**有効な API スキーム:**
-
-- api:// _{appId}_
-- api:// _{tenantId}/{appId}_
-- api:// _{tenantId}/{string}_
-- https:// _{verifiedCustomerDomain}/{string}_
-- https:// _{string}.{verifiedCustomerDomain}_
-- https:// _{string}.{verifiedCustomerDomain}/{string}_
+[!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
 
 ![アプリケーション ID URI](media/active-directory-application-registration-best-practices/app-id-uri.png)
 
@@ -102,6 +96,7 @@ Azure Active Directory (Azure AD) アプリケーションの登録は、ビジ�
 | 有効な URI 形式を使用して競合を回避する。 | ワイルドカード AppId URI を使用する |
 | 基幹業務 (LoB) アプリで確認済みドメインを使用する | 形式に誤りがある URI    |
 | AppId URI のインベントリを作成する                    |      -----             |
+| AppId URI を使用し、組織内で WebApi を公開する| AppId URI を使用してアプリケーションを識別する。(代わりに appId プロパティを使用します)|
 
 ## <a name="app-ownership-configuration"></a>アプリの所有権の構成
 

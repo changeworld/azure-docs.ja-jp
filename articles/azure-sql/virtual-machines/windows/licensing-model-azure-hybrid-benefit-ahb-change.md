@@ -3,7 +3,7 @@ title: Azure での SQL VM のライセンス モデルを変更する
 description: Azure ハイブリッド特典を使用して、Azure の SQL Server VM のライセンスを従量課金制からライセンス持ち込みに切り替える方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.subservice: management
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d840893de2c516137e54d015123fa9249b93d54
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 6f6e2a4216284776b0d566caac0f79ccfaeb349b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434626"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162236"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -117,7 +117,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
    - [ソフトウェアアシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview) をお持ちのお客様のみご利用いただけます。
    - SQL Server の Standard および Enterprise エディションでのみサポートされています。 Express、Web、Developer のライセンス変更はサポートされていません。 
    - Azure Resource Manager モデルを介してデプロイされた仮想マシンでのみサポートされます。 クラシック モデルを介してデプロイされた仮想マシンはサポートされていません。 
-   - パブリック クラウドまたは Azure Government クラウドでのみ使用できます。 
+   - パブリック クラウドまたは Azure Government クラウドでのみ使用できます。 現在、Azure China リージョンでは利用できません。 
 
 > [!Note]
 > Azure ハイブリッド特典の対象となるのは、ソフトウェア アシュアランスまたはサブスクリプション ライセンス付きの SQL Server コア ベース ライセンスのみです。 SQL Server に Server + CAL ライセンスを使用していて、ソフトウェア アシュアランスをお持ちの場合は、Azure SQL Server 仮想マシン イメージに対してライセンス持ち込みを使用することで、これらのサーバーのライセンス モビリティを利用できますが、Azure ハイブリッド特典の他の機能は利用できません。 
@@ -143,5 +143,5 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)
 * [SQL IaaS Agent 拡張機能の概要](./sql-server-iaas-agent-extension-automate-management.md)

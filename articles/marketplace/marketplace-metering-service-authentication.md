@@ -1,5 +1,5 @@
 ---
-title: Marketplace の測定サービスの認証方法 |Azure Marketplace
+title: Azure Marketplace でサポートされているマーケットプレース測定サービスの認証方法
 description: Azure Marketplace でサポートされている測定サービスの認証方法。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/01/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 93c9f1f3b2d02ad6737e7323bd2227ffcd8580ca
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 1670552bbbe4b9032befc118947df46e480f1faf
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457084"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071097"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace の測定サービスの認証方法
 

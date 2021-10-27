@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 98c1dba49283cd1f7a9e1c4c748af37b9a4fac02
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 80bb6aac5d6eb80f82372fd90d77fa0c2a082957
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219325"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166719"
 ---
 # <a name="how-to-automatically-apply-sensitivity-labels-to-your-data-in-azure-purview"></a>Azure Purview のデータに秘密度ラベルを自動的に適用する方法
 
@@ -41,6 +41,12 @@ ms.locfileid: "129219325"
 次に例を示します。
 
 :::image type="content" source="media/how-to-automatically-label-your-content/extend-sensitivity-labels-to-purview-small.png" alt-text="[有効にする] ボタンを選択して、秘密度ラベルを Purview に拡張します" lightbox="media/how-to-automatically-label-your-content/extend-sensitivity-labels-to-purview.png":::
+
+:::image type="content" source="media/how-to-automatically-label-your-content/extend-sensitivity-labels-to-purview-confirmation-small.png" alt-text="秘密度ラベルを Purview に拡張する選択を確定します" lightbox="media/how-to-automatically-label-your-content/extend-sensitivity-labels-to-purview-confirmation.png":::。
+
+> [!TIP]
+>このボタンが表示されず、Purview の資産にラベル付けを拡張することの同意が承認されたかどうかわからない場合は、[この FAQ](sensitivity-labels-frequently-asked-questions.yml#how-can-i-determine-if-consent-has-been-granted-to-extend-labeling-to-purview) 項目で状態を判断する方法を確認してください。
+>
 
 Azure Purview の資産にラベル付けを拡張すると、すべての公開済みの秘密度ラベルを Purview で使用できるようになります。
 

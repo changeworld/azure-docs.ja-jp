@@ -3,22 +3,25 @@ title: 複数ステップ Web テストを使用した監視 - Azure Application
 description: 複数手順の Web テストを設定して、Azure Application Insights で Web アプリケーションを監視します
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: d248340aa272a6a1fef386ca755ed46536668ad9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e0cbbc772b9eb2f3ad245fcb9728b047d2d7126
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448000"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993228"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
 複数ステップ Web テストを使用して、記録された一連の URL と Web サイトとのインタラクションを監視することができます。 この記事では、Visual Studio Enterprise を使用した複数ステップ Web テストを作成するプロセスについて説明します。
 
+> [!IMPORTANT]
+> [複数ステップ Web テストは非推奨となっています](https://azure.microsoft.com/updates/retirement-notice-transition-to-custom-availability-tests-in-application-insights/)。 複数ステップ Web テストの代わりに、[TrackAvailability](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)  を使用して [カスタム可用性テスト](availability-azure-functions.md) を送信することをお勧めします。 TrackAvailability() とカスタム可用性テストを使用すると、任意のコンピューティングでテストを実行でき、また、C# を使用して容易に新しいテストを作成することができます。
+
 > [!NOTE]
 > [Azure Government](../../azure-government/index.yml) クラウドでは、複数ステップ Web テストは **サポートされていません**。
 
-> [!NOTE]
-> 複数ステップ Web テストはクラシック テストとして分類され、[Availability]\(可用性\) ペインの **[Add Classic Test]\(クラシック テストの追加\)** に表示されます。
+
+複数ステップ Web テストはクラシック テストとして分類され、[Availability]\(可用性\) ペインの **[Add Classic Test]\(クラシック テストの追加\)** に表示されます。
 
 ## <a name="multi-step-webtest-alternative"></a>複数ステップ Web テストに代わる機能
 

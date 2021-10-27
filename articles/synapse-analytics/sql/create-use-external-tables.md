@@ -6,15 +6,15 @@ author: vvasic-msft
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 07/23/2021
 ms.author: vvasic
-ms.reviewer: jrasnick
-ms.openlocfilehash: 35a56131c55549cc5d33989579514fec3a0184c8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: 50464db5c62ffa0b5f6c48a323a9a23a43b06315
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428238"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994026"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL プールを使用してネイティブの外部テーブルを作成および使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "123428238"
 - 保護されたストレージ。ユーザーは、Synapse ワークスペースの SAS 資格情報、Azure AD ID、またはマネージド ID を使用して、ストレージ ファイルにアクセスします。
 
 > [!NOTE]
->  専用 SQL プールでは、Parquet ネイティブの外部テーブルのみを使用できます。 この機能はすべてのリージョンで使用できるわけではないため、ネイティブ Parquet 外部テーブルは専用 SQL プールでの限定パブリック プレビュー段階にあります。 ご自身の専用プールでネイティブ Parquet 外部テーブルを使用できるかどうかを確認するためにパブリック プレビューに参加したい場合は、Microsoft テクニカル アカウント マネージャーまたはクラウド ソリューション アーキテクトにお問い合わせください。 一般提供されている機能を専用 SQL プールで使用する場合、または CSV または ORC ファイルにアクセスする必要がある場合は、Hadoop 外部テーブルを使用します。 ネイティブの外部テーブルは、サーバーレス SQL プールで一般提供されています。
+> 専用 SQL プールで、Parquet のファイルの種類のネイティブ外部テーブルのみ使用できます。この機能は **パブリック プレビュー** 段階です。 一般提供されている Parquet リーダー機能を専用 SQL プールで使用する場合、または CSV または ORC ファイルにアクセスする必要がある場合は、Hadoop 外部テーブルを使用します。 ネイティブの外部テーブルは、サーバーレス SQL プールで一般提供されています。
 > ネイティブおよび Hadoop の外部テーブルの違いの詳細については、[Synapse SQL で外部テーブルを使用する](develop-tables-external-tables.md)方法に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件

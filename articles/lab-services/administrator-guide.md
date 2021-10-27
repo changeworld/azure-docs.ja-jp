@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services - 管理者ガイド | Microsoft Docs
+title: 管理者ガイド | Microsoft Docs
 description: このガイドは、Azure Lab Services を使用してラボ アカウントを作成および管理する管理者に役立ちます。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/20/2020
-ms.openlocfilehash: 567a6ad5cd7eae6fb6963dbcdb781fc2d7667f79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 698b6ddb6474031e7d19f2029156197b7d6a7741
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737698"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177272"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 管理者または教師は、ラボ アカウントを設定した後、アカウント内に含まれるラボを作成します。 この記事では、関連する Azure リソースの概要を説明し、それらを作成するためのガイダンスを示します。

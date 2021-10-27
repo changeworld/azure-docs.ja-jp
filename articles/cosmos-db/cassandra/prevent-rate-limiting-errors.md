@@ -7,15 +7,20 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: turao
-ms.openlocfilehash: 469dc3f87bb7c783f2c3138e2bcf592c85312006
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 2e110aeb7cf5395a9aea8d0efae9c0f97b6e74ce
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754747"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003877"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-cassandra-operations"></a>Azure Cosmos DB API for Cassandra の操作のレート制限エラーを回避する
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
+
+> [!IMPORTANT]
+> Cassandra の Cosmos DB API のサーバー側の再試行を有効にして、レート制限エラーを防止する方法はパブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 すべてのデータベース操作のコストは Azure Cosmos DB によって正規化され、要求ユニット (RU) によって表されます。 要求ユニットは、Azure Cosmos DB によってサポートされるデータベース操作を実行するために必要な CPU、IOPS、メモリなどのシステム リソースを抽象化する、パフォーマンスの通貨です。
 
@@ -69,8 +74,16 @@ Azure Cosmos DB Cassandra API の操作は、テーブルのスループット�
 
 SSR を有効にしたら、クライアント アプリで読み取りタイムアウトをサーバーの再試行の 60 秒より長くする必要があります。 念のため、90 秒にすることをお勧めします。
 
-SocketOptions setReadTimeoutMillis DefaultDriverOption.REQUEST_TIMEOUT
-
+コード サンプル Driver3
+```java
+SocketOptions socketOptions = new SocketOptions()
+    .setReadTimeoutMillis(90000); 
+```
+コード サンプル Driver4  
+```java
+ProgrammaticDriverConfigLoaderBuilder configBuilder = DriverConfigLoader.programmaticBuilder()
+    .withDuration(DefaultDriverOption.REQUEST_TIMEOUT, Duration.ofSeconds(90)); 
+```
 
 ### <a name="how-can-i-monitor-the-effects-of-a-server-side-retry"></a>サーバー側の再試行の影響はどのように監視するのですか。
 

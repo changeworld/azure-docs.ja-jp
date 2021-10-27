@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 113dcc4de4ceb1b283f7bdeb1941ced76a9425d0
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 4656c98718d024a43096081df2ac662b38b2efb8
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714566"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163001"
 ---
 # <a name="understand-azure-files-billing"></a>Azure Files の課金について
 Azure Files には、プロビジョニングと従量課金制という 2 つの異なる課金モデルが用意されています。 プロビジョニング モデルは Premium ファイル共有でのみ使用できます。これは、**FileStorage** ストレージ アカウントの種類でデプロイされたファイル共有です。 従量課金制モデルは Standard ファイル共有でのみ使用できます。Standard ファイル共有は、**汎用バージョン 2 (GPv2)** ストレージ アカウントの種類でデプロイされたファイル共有です。 この記事では、Azure Files の毎月の請求書を理解できるように、両方のモデルがどのように機能するかについて説明します。
@@ -82,8 +82,8 @@ Premium ファイル共有をプロビジョニングするときは、ワーク
 | ファイル共有の最小サイズ | 100 GiB |
 | プロビジョニングの単位 | 1 GiB |
 | ベースライン IOPS 式 | `MIN(400 + 1 * ProvisionedGiB, 100000)` |
-| バースト限度 | `MIN(MAX(4000, 3 * BaselineIOPS), 100000)` |
-| バースト クレジット | `BurstLimit * 3600` |
+| バースト限度 | `MIN(MAX(4000, 3 * ProvisionedGiB), 100000)` |
+| バースト クレジット | `(BurstLimit - BaselineIOPS) * 3600` |
 | イングレス レート | `40 MiB/sec + 0.04 * ProvisionedGiB` |
 | エグレス レート | `60 MiB/sec + 0.06 * ProvisionedGiB` |
 
@@ -91,14 +91,14 @@ Premium ファイル共有をプロビジョニングするときは、ワーク
 
 | 容量 (GiB) | ベースライン IOPS | バースト IOPS | バースト クレジット | イングレス (MiB/秒) | エグレス (MiB/秒) |
 |-|-|-|-|-|-|
-| 100 | 500 | 最大 4,000 | 14,400,000 | 44 | 66 |
-| 500 | 900 | 最大 4,000 | 14,400,000 | 60 | 90 |
-| 1,024 | 1,424 | 最大 4,272 | 15,379,200 | 81 | 122 |
-| 5,120 | 5,520 | 最大 16,560 | 59,616,000 | 245 | 368 |
-| 10,240 | 10,640 | 最大 31,920 | 114,912,000 | 450 | 675 |
-| 33,792 | 34,192 | 最大 100,000 | 360,000,000 | 1,392 | 2,088 |
-| 51,200 | 51,600 | 最大 100,000 | 360,000,000 | 2,088 | 3,132 |
-| 102,400 | 100,000 | 最大 100,000 | 360,000,000 | 4,136 | 6,204 |
+| 100 | 500 | 最大 4,000 | 12,600,000 | 44 | 66 |
+| 500 | 900 | 最大 4,000 | 11,160,000 | 60 | 90 |
+| 1,024 | 1,424 | 最大 4,000 | 10,713,600 | 81 | 122 |
+| 5,120 | 5,520 | 最大 15,360 | 35,424,000 | 245 | 368 |
+| 10,240 | 10,640 | 最大 30,720 | 72,288,000 | 450 | 675 |
+| 33,792 | 34,192 | 最大 100,000 | 236,908,800 | 1,392 | 2,088 |
+| 51,200 | 51,600 | 最大 100,000 | 174,240,000 | 2,088 | 3,132 |
+| 102,400 | 100,000 | 最大 100,000 | 0 | 4,136 | 6,204 |
 
 ファイル共有の実効パフォーマンスは、他の多くの要因の中でも特にマシン ネットワークの制限、使用可能なネットワーク帯域幅、IO サイズ、並列処理の影響を受けます。 たとえば、8 KiB の読み取り/書き込み IO サイズでの内部テストに基づいて、SMB 経由で Premium ファイル共有に接続された、SMB マルチチャネルが有効になっていない単一の Windows 仮想マシン (*Standard F16s_v2*) は 20K の読み取り IOPS と 15K の書き込み IOPS を実現できます。 512 MiB の読み取り/書き込み IO サイズでは、同じ VM は 1.1 GiB/秒の送信スループットと 370 MiB/秒の受信スループットを実現できます。 Premium 共有で SMB マルチチャネルが有効になっている場合は、同じクライアントで 最大 \~3 倍のパフォーマンスを達成できます。 最大のパフォーマンス スケールを達成するには、[SMB マルチチャネルを有効にし](files-smb-protocol.md#smb-multichannel)、負荷を複数の VM に分散します。 よくあるパフォーマンスの問題と回避策については「[SMB マルチチャネルのパフォーマンス](storage-files-smb-multichannel-performance.md)」と[トラブルシューティングのガイド](storage-troubleshooting-files-performance.md)を参考にしてください。
 
@@ -141,10 +141,13 @@ Azure Files での保存データに対する料金は、ファイルの論理�
 
 書き込み、一覧表示、読み取り、その他、削除の 5 つの基本的なトランザクション カテゴリがあります。 REST API または SMB を介して実行されるすべての操作は、次の 4 つのカテゴリのいずれかにバケット処理されます。
 
-| 操作の種類 | 書き込みトランザクション | 一覧表示トランザクション | 読み取りトランザクション | その他トランザクション | 削除トランザクション |
-|-|-|-|-|-|-|
-| 管理操作 | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
-| データ操作 | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
+| トランザクション バケット | 管理操作 | データ操作 |
+|-|-|-|
+| 書き込みトランザクション | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> |
+| 一覧表示トランザクション | <ul><li>`ListShares`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul> |
+| 読み取りトランザクション | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> |
+| その他トランザクション | | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> |
+| 削除トランザクション | <ul><li>`DeleteShare`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |  
 
 > [!Note]  
 > NFS 4.1 は、プロビジョニング課金モデルを使用する Premium ファイル共有でのみ使用できます。トランザクションは Premium ファイル共有の課金に影響しません。

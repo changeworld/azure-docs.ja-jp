@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d74cb93cd28f3dc02b37a6c29832d9e8412ef098
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c7661f91475b85ad8d606770ff74777bb3b8abab
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458910"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994273"
 ---
 # <a name="configure-azure-key-vault-alerts"></a>Azure Key Vault のアラートの構成
 
@@ -85,7 +85,7 @@ Azure Key Vault を使用して運用環境のシークレットの保管を開�
 4. アラートのロジックを定義するしきい値を選択してから、 **[追加]** を選択します。 Key Vault チームでは、次のしきい値を構成することをお勧めします。 
 
     + Key Vault の可用性が 100% を下回る (静的しきい値)
-    + Key Vault の待機時間が 500 ミリ秒を超える (静的しきい値) 
+    + Key Vault の待機時間が 1,000 ミリ秒を超える (静的しきい値) 
     + コンテナーの全体的な飽和度が 75% を超える (静的しきい値) 
     + コンテナーの全体的な飽和度が平均を超える (動的しきい値)
     + エラー コードの総数が平均を超える (動的しきい値) 
@@ -105,7 +105,7 @@ Azure Key Vault を使用して運用環境のシークレットの保管を開�
    + **[しきい値]** を **[静的]** に設定します。 
    + **[演算子]** を **[より大きい]** に設定します。
    + **[集計の種類]** を **[平均]** に設定します。
-   + **[しきい値]** を **[500]** に設定します。
+   + **[しきい値]** を **[1000]** に設定します。
    + **[集約粒度 (期間)]** を **[5 分]** に設定します。
    + **[評価の頻度]** を **[1 分ごと]** に設定します。
 

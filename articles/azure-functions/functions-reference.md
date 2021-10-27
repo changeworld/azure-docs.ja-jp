@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: 49c6fc554eab18ec598db7ec21ef8c15b95d7be9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b29ae41d85d243e64fea777dcb0cf9ee5ccff581
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669647"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130137370"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -105,59 +105,64 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 ただし、接続名では複数の構成アイテムのコレクションを参照することもできます。 2 つのアンダースコア `__` で終わる共有プレフィックスを使用して、環境変数をコレクションとして扱うことができます。 このプレフィックスに接続名を設定することによって、グループを参照できます。
 
-たとえば、Azure Blob トリガー定義の `connection` プロパティが `Storage1` であるとします。 名前を `Storage1` として構成された 1 つの文字列値がない限り、`Storage1__serviceUri` は接続の `serviceUri` プロパティに使用されます。 接続のプロパティはサービスによって異なります。 接続を使用する拡張機能のドキュメントを参照してください。
+たとえば、Azure BLOB トリガー定義の `connection` プロパティが "Storage1" であるとします。 "Storage1" という名前の環境変数で構成された単一の文字列値がない限り、`Storage1__blobServiceUri` という名前の環境変数を使用して、接続の `blobServiceUri` プロパティを通知できます。 接続のプロパティはサービスによって異なります。 接続を使用するコンポーネントのドキュメントを参照してください。
 
 ### <a name="configure-an-identity-based-connection"></a>ID ベースの接続を構成する
 
-Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成されています。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。
+Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成できます。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。
 
-ID ベースの接続は、次のトリガーおよびバインド拡張機能でサポートされています。
+ID ベースの接続は、次のコンポーネントでサポートされています。
+
+| 接続元                                       | サポートされているプラン | 詳細情報                                                                                                         |
+|---------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| Azure BLOB のトリガーとバインディング - プレビュー              | All             | [拡張機能バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
+| Azure キューのトリガーとバインディング - プレビュー             | All             | [拡張機能バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
+| Azure Event Hubs のトリガーとバインディング - プレビュー        | All             | [拡張機能バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
+| Azure Service Bus のトリガーとバインディング - プレビュー       | All             | [拡張機能バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
+| Azure Cosmos DB のトリガーとバインディング - プレビュー         | エラスティック Premium | [拡張機能バージョン 4.0.0-preview1 以降](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) |
+| ホスト (必須) ストレージ ("AzureWebJobsStorage") - プレビュー | All             | [ID を使用してホスト ストレージに接続する](#connecting-to-host-storage-with-an-identity-preview)                        |
 
 > [!NOTE]
 > ID ベースの接続は、Durable Functions ではサポートされません。
 
-| 拡張機能の名前 | 拡張機能のバージョン                                                                                     | サポートされているプラン     |
-|----------------|-------------------------------------------------------------------------------------------------------|---------------------|
-| Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | すべて                 |
-| Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | すべて                 |
-| Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | すべて            |
-| Azure Service Bus    | [バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | すべて         |
-| Azure Cosmos DB   | [バージョン 4.0.0-preview1 以降](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) | エラスティック Premium |
+[!INCLUDE [functions-identity-based-connections-configuration](../../includes/functions-identity-based-connections-configuration.md)]
 
+以下のタブを選択して、各コンポーネントのアクセス許可について学習します。
 
-Functions ランタイム (`AzureWebJobsStorage`) によって使用されるストレージ接続は、ID ベースの接続を使用して構成することもできます。 以下の[「ID を使用してホスト ストレージに接続する」](#connecting-to-host-storage-with-an-identity)を参照してください。
+# <a name="azure-blobs-extension"></a>[Azure BLOB の拡張機能](#tab/blob)
 
-Azure Functions サービスでホストされている場合、ID ベースの接続では、[マネージド ID](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json) が使用されます。 ユーザー割り当て ID を `credential` および `clientID` プロパティで指定できますが、システム割り当て ID が既定で使用されます。 ローカル開発などの他のコンテキストで実行する場合は、代わりに開発者 ID が使用されます。ただし、代替接続パラメーターを使用してカスタマイズすることもできます。
+[!INCLUDE [functions-blob-permissions](../../includes/functions-blob-permissions.md)]
 
-#### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
+# <a name="azure-queues-extension"></a>[Azure キューの拡張機能](#tab/queue)
 
-使用されている ID が何であれ、目的のアクションを実行するためのアクセス許可が必要です。 これは通常、接続先のサービスに応じて、Azure RBAC でロールを割り当てるか、アクセスポリシーで ID を指定することによって行われます。 必要なアクセス許可とその設定方法については、各拡張機能のドキュメントを参照してください。
+[!INCLUDE [functions-queue-permissions](../../includes/functions-queue-permissions.md)]
 
-> [!IMPORTANT]
-> すべてのコンテキストに必要ではない一部のアクセス許可がターゲット サービスによって公開される場合があります。 可能であれば、**最小限の特権の原則** に従い、必要な特権だけを ID に付与します。 たとえば、アプリが BLOB からの読み取りのみを必要とする場合、[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)では読み取り操作に対して過剰なアクセス許可が含まれるため、[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ロールを使用します。
-次のロールでは、通常の操作で拡張機能別に必要なプライマリ アクセス許可がすべて与えられます。
+# <a name="event-hubs-extension"></a>[Event Hubs の拡張機能](#tab/eventhubs)
 
-| サービス     | 組み込みロールの例 |
-|-------------|------------------------|
-| Azure BLOB  | [Storage Blob Data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)、[Storage Blob Data Owner](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)                 |
-| Azure キュー | [Storage Queue Data Reader](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[Storage Queue Data Message Processor](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[Storage Queue Data Message Sender](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[Storage Queue Data Contributor](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
-| Event Hubs   |    [Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure Event Hubs Data Sender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure Event Hubs Data Owner](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
-| Service Bus | [Azure Service Bus Data Receiver](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure Service Bus Data Sender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure Service Bus Data Owner](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
-| Azure Cosmos DB | [Cosmos DB Built-in Data Reader](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions)、[Cosmos DB Built-in Data Contributor](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions) |
+[!INCLUDE [functions-event-hubs-permissions](../../includes/functions-event-hubs-permissions.md)]
 
-#### <a name="connection-properties"></a>接続のプロパティ
+# <a name="service-bus-extension"></a>[Service Bus の拡張機能](#tab/servicebus)
 
-Azure サービスの ID ベースの接続では、次のプロパティを使用できます。ここで、`<CONNECTION_NAME_PREFIX>` は、トリガーまたはバインディングの定義内の `connection` プロパティの値です。
+[!INCLUDE [functions-service-bus-permissions](../../includes/functions-service-bus-permissions.md)]
 
-| プロパティ    | 拡張機能に必要 | 環境変数 | 説明 |
+# <a name="azure-cosmos-db-extension"></a>[Azure Cosmos DB の拡張機能](#tab/cosmos)
+
+[!INCLUDE [functions-cosmos-permissions](../../includes/functions-cosmos-permissions.md)]
+
+# <a name="functions-host-storage"></a>[Functions ホスト ストレージ](#tab/azurewebjobsstorage)
+
+[!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
+
+---
+
+#### <a name="common-properties-for-identity-based-connections"></a>ID ベース接続に共通のプロパティ
+
+Azure サービスの ID ベース接続では、次の共通プロパティが受け入れられます。ここで `<CONNECTION_NAME_PREFIX>` は、トリガーまたはバインディング定義内の `connection` プロパティの値です。
+
+| プロパティ    |  環境変数テンプレート | 説明 |
 |---|---|---|---|
-| サービス URI | Azure Blob<sup>1</sup>、Azure Queue | `<CONNECTION_NAME_PREFIX>__serviceUri` | 接続先サービスのデータ プレーン URI。 |
-| 完全修飾名前空間 | Event Hubs、Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Event Hubs と Service Bus の完全修飾名前空間。 |
-| アカウント エンドポイント | Azure Cosmos DB | `<CONNECTION_NAME_PREFIX>__accountEndpoint` | Azure Cosmos DB アカウント エンドポイント URI。 |
-| トークン資格情報 | (オプション)。 | `<CONNECTION_NAME_PREFIX>__credential` | 接続のためにトークンを取得する方法を定義します。 "managedidentity" に設定する必要がある場合の、ユーザー割り当て ID の指定時にのみ推奨されます。 これは Azure Functions サービスでホストされるときにのみ有効です。 |
-| クライアント ID | (オプション)。 | `<CONNECTION_NAME_PREFIX>__clientId` | `credential` が "managedidentity" に設定されると、このプロパティによって、トークンの取得時に使用されるユーザー割り当て ID が指定されます。 このプロパティは、アプリケーションに割り当てられたユーザー割り当て ID に相当するクライアント ID を受け取ります。 指定されていない場合、システム割り当て ID が使用されます。 このプロパティは、`credential` を設定しないとき、[ローカル開発シナリオ](#local-development-with-identity-based-connections)で異なる方法で使用されます。 |
-
-<sup>1</sup> Azure BLOB には、BLOB とキュー サービス URI の両方が必要です。
+| トークン資格情報 |  `<CONNECTION_NAME_PREFIX>__credential` | 接続のためにトークンを取得する方法を定義します。 "managedidentity" に設定する必要がある場合の、ユーザー割り当て ID の指定時にのみ推奨されます。 これは Azure Functions サービスでホストされるときにのみ有効です。 |
+| クライアント ID | `<CONNECTION_NAME_PREFIX>__clientId` | `credential` が "managedidentity" に設定されると、このプロパティによって、トークンの取得時に使用されるユーザー割り当て ID が指定されます。 このプロパティは、アプリケーションに割り当てられたユーザー割り当て ID に相当するクライアント ID を受け取ります。 指定されていない場合、システム割り当て ID が使用されます。 このプロパティは、`credential` を設定しないとき、[ローカル開発シナリオ](#local-development-with-identity-based-connections)で異なる方法で使用されます。 |
 
 特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
 
@@ -172,26 +177,24 @@ Azure サービスの ID ベースの接続では、次のプロパティを使�
 
 これらのオプションのいずれも成功しなかった場合は、エラーが発生します。
 
-場合によっては、別の ID の使用を指定したい場合があります。 代替 ID を指す接続の構成プロパティを追加できます。
+これには開発者 ID が使用されているため、開発リソースに対して既にいくつかのロールがある可能性はありますが、データ アクセスが提供されない場合があります。 [所有者](../role-based-access-control/built-in-roles.md#owner)のような管理ロールでは十分ではありません。 各コンポーネントの接続に必要なアクセス許可を再確認し、それらが自分に割り当てられていることを確認してください。
 
-> [!NOTE]
-> Azure Functions サービスでホストされている場合、次の構成オプションはサポートされません。
+場合によっては、別の ID の使用を指定したい場合があります。 Azure Active Directory サービス プリンシパルのクライアント ID とクライアント シークレットに基づいて、代替 ID をポイントする接続の構成プロパティを追加できます。 **Azure Functions サービスでホストされている場合、この構成オプションはサポートされません。** ローカル コンピューターで ID とシークレットを使用するには、次の追加のプロパティを指定して接続を定義します。
 
-クライアント ID とシークレットを指定して Azure Active Directory サービス プリンシパルを使用して接続するには、上記の[接続プロパティ](#connection-properties)に加えて、次の必須プロパティを使用して接続を定義します。
-
-| プロパティ    | 環境変数 | 説明 |
+| プロパティ    | 環境変数テンプレート | 説明 |
 |---|---|---|
 | テナント ID | `<CONNECTION_NAME_PREFIX>__tenantId` | Azure Active Directory のテナント (ディレクトリ) ID。 |
 | クライアント ID | `<CONNECTION_NAME_PREFIX>__clientId` |  テナント内のアプリの登録のクライアント (アプリケーション) ID。 |
 | クライアント シークレット | `<CONNECTION_NAME_PREFIX>__clientSecret` | アプリの登録で生成されたクライアント シークレット。 |
 
-Azure Blob との ID ベースの接続に必要な `local.settings.json` プロパティの例を次に示します。 
+Azure BLOB への ID ベース接続に必要な `local.settings.json` プロパティの例を以下に示します。 
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__blobServiceUri": "<blobServiceUri>",
+    "<CONNECTION_NAME_PREFIX>__queueServiceUri": "<queueServiceUri>",
     "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
     "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
     "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
@@ -199,32 +202,27 @@ Azure Blob との ID ベースの接続に必要な `local.settings.json` プロ
 }
 ```
 
-Azure Cosmos DB との ID ベースの接続に必要な `local.settings.json` プロパティの例を次に示します。 
+#### <a name="connecting-to-host-storage-with-an-identity-preview"></a>ID を使用するホスト ストレージへの接続 (プレビュー)
 
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "<CONNECTION_NAME_PREFIX>__accountEndpoint": "<accountEndpoint>",
-    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
-    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
-    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
-  }
-}
-```
-
-#### <a name="connecting-to-host-storage-with-an-identity"></a>ID を使用してホスト ストレージに接続する
-
-Azure Functionsでは、タイマー トリガーのシングルトン実行の調整や既定のアプリ キー ストレージなどのコア動作に `AzureWebJobsStorage` 接続が使用されます。 これは、ID を活用するように構成することもできます。
+Azure Functions では、タイマー トリガーのシングルトン実行の調整や既定のアプリ キー ストレージなどのコア動作に "AzureWebJobsStorage" 接続が既定で使用されます。 これは、ID を利用するように構成することもできます。
 
 > [!CAUTION]
-> 一部のアプリは、トリガー、バインド、関数コード内のストレージ接続で `AzureWebJobsStorage` を再利用します。 接続文字列からこの接続を変更する前に、`AzureWebJobsStorage` のすべての用途で ID ベースの接続形式を使用できるようにします。
+> Functions の他のコンポーネントは、既定の動作では "AzureWebJobsStorage" に依存します。 この種の接続をサポートしていない古いバージョンの拡張機能 (Azure BLOB および Event Hubs のトリガーとバインディングを含む) を使用している場合は、それを ID ベースの接続に移動させないでください。
+> 
+> また、一部のアプリでは、トリガー、バインディング、関数コード内の他のストレージ接続に "AzureWebJobsStorage" が再利用されます。 接続文字列からこの接続を変更する前に、"AzureWebJobsStorage" のすべての用途で ID ベースの接続形式を使用できるようにしてください。
 
-この方法で接続を構成するには、コア ホスト機能をサポートするために、アプリの ID に[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが含まれる必要があります。 他の目的で "AzureWebJobsStorage" を使用する場合は、追加のアクセス許可が必要な場合があります。
+"AzureWebJobsStorage" に ID ベース接続を使用するには、次のアプリ設定を構成します。
 
-グローバル Azure の既定の DNS サフィックスとサービス名を使用するストレージ アカウントを使用する場合は、`https://<accountName>.blob/queue/file/table.core.windows.net` 形式に従って、ストレージ アカウントの名前に `AzureWebJobsStorage__accountName` を設定できます。 
+| 設定                       | 説明                                | 値の例                                        |
+|-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| `AzureWebJobsStorage__blobServiceUri`| ストレージ アカウントの BLOB サービスのデータ プレーン URI。 | <storage_account_name>.blob.core.windows.net |
+| `AzureWebJobsStorage__queueServiceUri` | ストレージ アカウントのキュー サービスのデータ プレーン URI。 | <storage_account_name>.queue.core.windows.net |
 
-代わりにソブリン クラウドまたはカスタム DNS でストレージ アカウントを使用する場合は、`AzureWebJobsStorage__serviceUri` を BLOB サービスの URI に設定します。 他のサービスに "AzureWebJobsStorage" を使用する場合は、代わりに `AzureWebJobsStorage__blobServiceUri`、`AzureWebJobsStorage__queueServiceUri`、および `AzureWebJobsStorage__tableServiceUri` を個別に指定できます。
+同様に [ID ベース接続に共通のプロパティ](#common-properties-for-identity-based-connections)を設定することもできます。
+
+グローバル Azure の既定の DNS サフィックスとサービス名を使用するストレージ アカウントを使う場合は、`https://<accountName>.blob/queue/file/table.core.windows.net` 形式に従って、代わりにストレージ アカウントの名前に `AzureWebJobsStorage__accountName` を設定できます。 このアカウントの BLOB およびキュー エンドポイントが推定されます。 ストレージ アカウントがソブリン クラウドにある場合、またはカスタム DNS がある場合、これは機能しません。
+
+[!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 
 ## <a name="reporting-issues"></a>問題の報告
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 39e2e9c0258be13698d3569dcc6e64d02bff8f42
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2bae7f2466363861afe99d37748e7ea41fc0e1c9
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554506"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046641"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -95,7 +95,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
-        user: process.env.COSMOSDB_USER,
+        username: process.env.COSMOSDB_USER,
         password: process.env.COSMOSDB_PASSWORD
       },
     useNewUrlParser: true,
@@ -317,7 +317,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
     });
     ```
 
-説明からわかるように、Mongoose ディスクリミネーターは容易に使用できます。 そのため、Mongoose フレームワークを使用するアプリがある場合は、このチュートリアルを使用すると、それほど多くの変更を行わなくても Azure Cosmos の MongoDB 用 API を使用してアプリケーションを実行できます。
+説明からわかるように、Mongoose ディスクリミネーターは容易に使用できます。 そのため、Mongoose フレームワークを使用するアプリがある場合は、このチュートリアルを使用すると、それほど多くの変更を行わなくても Azure Cosmos DB の MongoDB 用 API を使用してアプリケーションを実行できます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

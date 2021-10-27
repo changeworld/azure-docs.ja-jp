@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f4bf378db5d9091cb48f2b0c813a92823bc72589
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 54069c9b37b33ab343c11b8eb3ef02712e29ea3e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031747"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038766"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="evaluateadultracy-method"></a>EvaluateAdultRacy メソッド
 
-**Program** クラスの **EvaluateAdultRacy** メソッドを見てください。 このメソッドでは、画像 URL、およびキーと値のペアの配列がパラメーターとして受け取られます。 これによって Content Moderator の Image API が呼び出され (REST を使用)、画像の Adult と Racy のスコアが取得されます。 いずれかのスコアが 0.4 を超える場合 (範囲は 0 から 1 の間)、**ReviewTags** 配列の対応する値が **True** に設定されます。
+**Program** クラスの **EvaluateAdultRacy** メソッドを見てください。 このメソッドでは、画像 URL、およびキーと値のペアの配列がパラメーターとして受け取られます。 これにより、画像の Adult と Racy のスコアを取得するために、Content Moderator Image REST API が呼び出されます。 いずれかのスコアが 0.4 を超える場合 (範囲は 0 から 1 の間)、**ReviewTags** 配列の対応する値が **True** に設定されます。
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 

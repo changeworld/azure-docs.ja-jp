@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2021
-ms.openlocfilehash: ef34ec8531242dfdb20e984c4c6d8f86d08b8fcf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 28bd435e8c6f6144b1dafd11df174d69f763d45d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724598"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987463"
 ---
 # <a name="query-packs-in-azure-monitor-logs-preview"></a>Azure Monitor ログでのクエリ パック (プレビュー)
 クエリ パックは、Azure Monitor のログ クエリのコンテナーとして機能する Resource Manager オブジェクトであり、ログ クエリを保存し、Log Analytics の複数のワークスペースや他のコンテキストでそれらを共有する方法を提供します。 
@@ -79,11 +79,8 @@ API を使用して新しいクエリ パックを作成するときに、ビジ
 | 関連     | クエリの関連カテゴリ、リソースの種類、およびソリューション。 クエリを見つけやすくするために、ユーザーが Log Analytics でグループ化とフィルター処理に使用します。 各クエリには、最大 10 個のタイプを使用することができます。 使用可能な値は、 https://api.loganalytics.io/v1/metadata?select=resourceTypes 、ソリューション、カテゴリから取得します。 |
 | tags        | ユーザーが Log Analytics での並べ替えとフィルター処理に使用する追加のタグ。 各タグは、[クエリをグループ化およびフィルター処理](queries.md#finding-and-filtering-queries)するときに、カテゴリ、リソースの種類、およびソリューションに追加されます。 |
 
-
-
-
 ## <a name="create-a-query-pack"></a>クエリ パックを作成する
-現在、クエリ パックをインストールする唯一の方法は、REST API を使用することです。 
+Azure portal でクエリ パックは、[Log Analytics query pack]\(Log Analytics クエリ パック\) ブレードで、または REST API を使用して作成します。 
 
 ### <a name="create-token"></a>トークンの作成
 API 要求の認証にはトークンが必要です。 **armclient** の使用を含めて、トークンを取得するには、複数の方法があります。

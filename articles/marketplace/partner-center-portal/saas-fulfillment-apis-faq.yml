@@ -8,12 +8,12 @@ metadata:
   ms.date: 03/19/2021
   author: saasguide
   ms.author: souchak
-  ms.openlocfilehash: 8cc5dc728279477fc698135a317b773cbdaccabf
-  ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+  ms.openlocfilehash: 4092ad53e67cc7ed526f66b4e5214a9bb9a1aeda
+  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129456444"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130043303"
 title: SaaS Fulfillment API についてよく寄せられる質問
 summary: この記事では、Azure ユーザーが SaaS オファーにサブスクライブできるようにするための Microsoft コマーシャル マーケットプレースの統合要件をいくつか説明します。
 sections:
@@ -52,7 +52,7 @@ sections:
       > [ポリシー](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)で指示されているように、購入ユーザーは Azure Active Directory、シングルサインオン (Azure AD SSO) を使用してサインインする必要があります。 Microsoft Graph API から取得したユーザー リソースの `mail` プロパティにより、Azure AD と MSA の `userPrincipalName` の場合の連絡先情報が提供されます。 Azure AD の "mail" フィールドが空で、ユーザーのメール アドレスが記録されていないこともあります。 このような場合は、それを検出し、連絡先のメール アドレスを求めることをお勧めします。 これは、お客様のオンボード プロセス中またはその後に、お客様に連絡するための連絡先メール アドレスを取得する唯一のチャンスです。
 
 
-      Azure ユーザーがランディング ページにリダイレクトされると、トークンがクエリ URL に追加されます。 このトークンは有効期間が短く、24 時間有効です。 その後、このトークンが存在していることを検出し、Microsoft の API を呼び出して、トークンに関連する追加のコンテキストを取得できます。
+      Azure ユーザーがランディング ページにリダイレクトされると、トークンがクエリ URL に追加されます。 このトークンは有効期間が短く、24 時間有効です。 その後、このトークンが存在していることを検出し、Microsoft API を呼び出して、トークンに関連する追加のコンテキストを取得できます。
 
 
       ![ユーザーのサブスクリプション フロー](media/saas-metering-service-integration-flow-a.png)

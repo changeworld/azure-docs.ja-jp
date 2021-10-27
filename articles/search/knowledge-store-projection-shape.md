@@ -6,13 +6,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: 7cc61d144576e8f386997e1d2acfa083c9e5f571
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 10/15/2021
+ms.openlocfilehash: 26f70e4750d29231b3f139ecd617b43071e369bb
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535799"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066093"
 ---
 # <a name="shaping-data-for-projection-into-a-knowledge-store"></a>ナレッジ ストアへのプロジェクションのためのデータのシェイプ
 
@@ -144,7 +144,7 @@ Shaper スキル内で、入力は `sourceContext` エレメントを持つこ�
 ]
 ```
 
-## <a name="inline-shaping-projections"></a>プロジェクションのインライン整形
+## <a name="inline-shape-for-table-projections"></a>テーブル プロジェクションのインライン シェイプ
 
 インライン シェイプは、プロジェクション定義自体の中で新しいシェイプを形成する機能です。 インライン シェイプには、次の特徴があります。
 
@@ -219,6 +219,67 @@ Shaper スキル内で、入力は `sourceContext` エレメントを持つこ�
 ```
   
 両方の方法から観察されることの 1 つは、"sourceContext" を使用して "Keyphrases" の値が射影される方法です。 文字列のコレクションが含まれる "Keyphrases" ノードは、それ自体がページ テキストの子になります。 ただし、プロジェクションには JSON オブジェクトが必要であり、ページはプリミティブ (文字列) であるため、"sourceContext" を使用して、キー フレーズが名前付きプロパティを持つオブジェクトにラップされます。 この手法を使用すると、プリミティブであっても個別に射影できます。
+
+<a name="inline-shape"></a>
+
+## <a name="inline-shape-for-object-projections"></a>オブジェクト プロジェクションのインライン シェイプ
+
+Shaper スキルを使用して新しいシェイプを生成するか、またはオブジェクト プロジェクションのインライン整形を使用することができます。 テーブルの例ではシェイプの作成とスライスの手法を示しましたが、この例ではインライン整形の使用を例示します。 
+
+インライン整形とは、プロジェクションへの入力の定義内で新しいシェイプを作成する機能です。 インライン整形では、Shaper スキルによって生成されるもの (この場合は `projectionShape`) と同じ匿名のオブジェクトが作成されます。 再利用する予定がないシェイプを定義する場合は、インライン整形が便利です。
+
+projections プロパティは配列です。 この例では、新しいプロジェクション インスタンスを配列に追加しています。そこでは、インライン プロジェクションが knowledgeStore の定義に含まれています。 インライン プロジェクションを使用するときは、Shaper スキルを省略することができます。
+
+```json
+"knowledgeStore" : {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
+    "projections": [
+            {
+            "tables": [ ],
+            "objects": [
+                {
+                    "storageContainer": "sampleobject",
+                    "source": null,
+                    "generatedKeyName": "myobject",
+                    "sourceContext": "/document",
+                    "inputs": [
+                        {
+                            "name": "metadata_storage_name",
+                            "source": "/document/metadata_storage_name"
+                        },
+                        {
+                            "name": "metadata_storage_path",
+                            "source": "/document/metadata_storage_path"
+                        },
+                        {
+                            "name": "content",
+                            "source": "/document/content"
+                        },
+                        {
+                            "name": "keyPhrases",
+                            "source": "/document/merged_content/keyphrases/*"
+                        },
+                        {
+                            "name": "entities",
+                            "source": "/document/merged_content/entities/*/name"
+                        },
+                        {
+                            "name": "ocrText",
+                            "source": "/document/normalized_images/*/text"
+                        },
+                        {
+                            "name": "ocrLayoutText",
+                            "source": "/document/normalized_images/*/layoutText"
+                        }
+                    ]
+
+                }
+            ],
+            "files": []
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

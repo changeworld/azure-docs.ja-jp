@@ -4,16 +4,17 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 10/12/2021
 ms.author: owend
 ms.reviewer: minewiskan
+recommendations: false
 ms.custom: references_regions
-ms.openlocfilehash: c3b95b92f2b76e669b4e207163f76f8cec2d3244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 815fe276f4c44085eebfa91f33167c2428c31c1f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731685"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992870"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -129,13 +130,13 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 サーバーをスケールアップ、スケールダウン、または一時停止します。 Azure Portal を使用するか、PowerShell を使用して即座に全体を制御します。 料金は使用した分だけになります。  
 
-### <a name="scale-out-resources-for-fast-query-responses"></a>リソースをスケールアウトしてクエリの応答速度を高める
+### <a name="scale-out-resources-for-fast-query-response"></a>リソースをスケールアウトしてクエリの応答速度を高める
 
 スケールアウトにより、クライアント クエリは、クエリ プール内の複数の "*クエリ レプリカ*" に分散されます。 クエリ レプリカには、表形式モデルの同期コピーが格納されます。 クエリのワークロードを分散することによって、高クエリ ワークロード下における応答時間を短縮することができます。 モデルの処理操作をクエリ プールから切り離すことができるので、クライアントのクエリに処理操作による悪影響が及ぶことはありません。 
 
 クエリ プールは、追加分として最大 7 つのクエリ レプリカ (ご使用のサーバーを含めて合計 8 つ) で作成することができます。 プール内に作成できるクエリ レプリカの数は、選択したプランとリージョンによって異なります。 クエリ レプリカをサーバーのリージョンの外部に分散させることはできません。 クエリ レプリカは、お使いのサーバーと同じ料金で課金されます。
 
-レベルの変更と同じように、必要に応じてクエリ レプリカをスケールアウトできます。 スケールアウトの構成は、ポータルまたは REST API を使用して行います。 詳しくは、「[Azure Analysis Services のスケールアウト](analysis-services-scale-out.md)」をご覧ください。
+レベルの変更と同じように、必要に応じてクエリ レプリカをスケールアウトできます。 スケールアウトの構成は、ポータルまたは REST API を使用して行います。 詳しくは、「[Azure Analysis Services scale-out (Azure Analysis Services のスケールアウト)](analysis-services-scale-out.md)」をご覧ください。
 
 ## <a name="pricing"></a>価格
 
@@ -147,7 +148,7 @@ Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition
 
 インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 
 
-パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新の状態であることを柔軟に保証できます。 
+パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの他の高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新の状態であることを柔軟に保証できます。 
 
 DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure Synapse Analytics、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
 
@@ -186,7 +187,7 @@ Azure Analysis Services は、Azure Blob Storage を使用して、Analysis Serv
 
 Analysis Services では、サーバーとモデルのデータベース操作、オブジェクト、およびデータへのアクセス権を付与する[ロール ベースの承認](/analysis-services/tabular-models/roles-ssas-tabular)を使用します。 サーバーまたはデータベースにアクセスするすべてのユーザーは、割り当てられているロール内の Azure AD ユーザー アカウントを使用してアクセスします。 サーバー管理者ロールは、サーバー リソース レベルで割り当てられます。 既定では、サーバーの作成時に使用されるアカウントが、サーバー管理者ロールに自動的に追加されます。 追加のユーザーとグループのアカウントは、ポータル、SSMS、または PowerShell を使用して追加されます。
   
-データのクエリを実行する管理者以外のエンドユーザーは、データベース ロールを通してアクセス権が付与されます。 データベース ロールは、データベース内に個別のオブジェクトとして作成され、そのロールが作成されたデータベースにのみ適用されます。 データベース ロールは、(データベースの) 管理者によって定義され、読み取りと処理のアクセス許可が与えられます。 ユーザーとグループのアカウントは、SSMS または PowerShell を使用して追加されます。
+データのクエリを実行する管理者以外のユーザーには、データベース ロールを通してアクセス権が付与されます。 データベース ロールは、データベース内に個別のオブジェクトとして作成され、そのロールが作成されたデータベースにのみ適用されます。 データベース ロールは、(データベースの) 管理者によって定義され、読み取りと処理のアクセス許可が与えられます。 ユーザーとグループのアカウントは、SSMS または PowerShell を使用して追加されます。
 
 ### <a name="row-level-security"></a>行レベルのセキュリティ
 
@@ -194,11 +195,11 @@ Analysis Services では、サーバーとモデルのデータベース操作�
 
 ### <a name="object-level-security"></a>オブジェクト レベルのセキュリティ 
 
-1400 互換性レベルの表形式モデルは、オブジェクト レベルのセキュリティをサポートします。これには、テーブル レベルのセキュリティと列レベルのセキュリティが含まれます。 オブジェクト レベルのセキュリティは、TMSL または TOM を使用して、Model.bim ファイルに JSON ベースのメタデータで設定されます。 詳細については、「[オブジェクト レベルのセキュリティ](/analysis-services/tabular-models/object-level-security)」を参照してください。
+1400 以上の互換性レベルの表形式モデルでは、オブジェクト レベルのセキュリティがサポートされます。これには、テーブル レベルのセキュリティと列レベルのセキュリティが含まれます。 オブジェクト レベルのセキュリティは、TMSL または TOM を使用して JSON ベースのメタデータで設定されます。 詳細については、「[オブジェクト レベルのセキュリティ](/analysis-services/tabular-models/object-level-security)」を参照してください。
 
 ### <a name="automation-through-service-principals"></a>サービス プリンシパルによる自動化
 
-サービス プリンシパルは、リソース/サービス レベルの無人操作を実行する目的でテナント内で作成する Azure Active Directory アプリケーション リソースです。 サービス プリンシパルは、Azure Automation、PowerShell 無人モード、カスタム クライアント アプリケーション、Web アプリと共に使用され、データの更新、スケールアップ/スケールダウン、一時停止/再開などの一般的なタスクを自動化します。 ロール メンバーシップを介して、サービス プリンシパルにアクセス許可が割り当てられます。 詳細については、「[サービス プリンシパルによる自動化](analysis-services-service-principal.md)」を参照してください。
+サービス プリンシパルは、リソースおよびサービス レベルの無人操作を実行する目的でテナント内で作成する Azure Active Directory アプリケーション リソースです。 サービス プリンシパルは、Azure Automation、PowerShell 無人モード、カスタム クライアント アプリケーション、Web アプリと共に使用され、データの更新、スケールアップ/スケールダウン、一時停止/再開などの一般的なタスクを自動化します。 ロール メンバーシップを介して、サービス プリンシパルにアクセス許可が割り当てられます。 詳細については、「[サービス プリンシパルによる自動化](analysis-services-service-principal.md)」を参照してください。
 
 ### <a name="azure-governance"></a>Azure のガバナンス
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81c1e8315bdc51b1806016c3a895a031185ccac6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 41ba1bb39b4cf92b84ccc6ff0365cb6735a65bcc
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539350"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143731"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -78,6 +78,24 @@ public class Program
     {
         var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     }
+}
+```
+
+## <a name="select-synthesis-language-and-voice"></a>合成言語と音声を選択する
+
+Azure Text to Speech サービスでは、250 を超える音声と 70 を超える言語とバリアントがサポートされています。
+[すべてのリスト](../../../language-support.md#neural-voices)を入手することも、[テキスト読み上げのデモ](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)でそれらを試すこともできます。
+入力テキストに合わせて [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) の言語または音声を指定し、必要な音声を使用します。
+
+```csharp
+static async Task SynthesizeAudioAsync()
+{
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    // Note: if only language is set, the default voice of that language is chosen.
+    config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
+    // The voice setting will overwrite language setting.
+    // The voice setting will not overwrite the voice element in input SSML.
+    config.SpeechSynthesisVoiceName = "<your-wanted-voice>";
 }
 ```
 

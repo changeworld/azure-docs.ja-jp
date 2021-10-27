@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 07/28/2021
-ms.openlocfilehash: eca62eccca6f53935f29a16bca0afc382896212c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d23daba1618a606ee53b117518324604d47f3fe3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810364"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998262"
 ---
 # <a name="troubleshoot-assessment"></a>評価に関するトラブルシューティング
 
@@ -142,6 +142,10 @@ Azure VM 評価では、評価の種類に基づいて、より大きいディ�
 
 - Azure VM および Azure VMware Solution の評価では、検出の開始後に作成されたサーバーはほとんどありませんでした。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかのサーバーが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細については、こちらを参照してください](./concepts-assessment-calculation.md#confidence-ratings-performance-based)。
 - Azure SQL の評価の場合、検出が開始された後で、いくつかの SQL インスタンスまたはデータベースが作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの SQL インスタンスまたはデータベースが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細については、こちらを参照してください](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)。
+
+## <a name="why-is-my-ram-utilization-greater-than-100"></a>RAM 使用率が 100% を超えるのはなぜですか?
+
+設計上、プロビジョニングされた最大メモリが VM で必要なメモリよりも小さい場合、Hyper-V では、評価によってメモリ使用率に 100% を超える値が表示されます。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>オペレーティング システムのライセンスは Azure VM 評価に含まれていますか?
 

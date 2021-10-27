@@ -3,16 +3,16 @@ title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 020e602ec52c40c66439df09275f7d4936a57229
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8a025210fc399c1d36fa416c3a4795331eca2293
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112293079"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134205"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
-検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](./app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
+トランザクションの検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](./app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
 (データでのより複雑なクエリについては、[Analytics](../logs/log-analytics-tutorial.md) を使用してください。)
 
@@ -20,7 +20,7 @@ ms.locfileid: "112293079"
 
 ### <a name="in-the-azure-portal"></a>Azure Portal で次の操作を行います。
 
-[Application Insights] でお使いのアプリケーションの [概要] タブ から診断検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
+[Application Insights] でお使いのアプリケーションの [概要] タブからトランザクションの検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
 
 ![[検索] タブ](./media/diagnostic-search/view-custom-events.png)
 

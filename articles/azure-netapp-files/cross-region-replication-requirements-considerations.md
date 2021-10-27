@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files ボリュームのリージョン間レプリケーションを使用するための要件と考慮事項 | Microsoft Docs
+title: Azure NetApp Files リージョン間レプリケーションのための要件と考慮事項 | Microsoft Docs
 description: Azure NetApp Files ボリュームのリージョン間レプリケーション機能を使用するための要件と考慮事項について説明します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,22 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 10/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 6e711f3101426f59aead80b84b88350af86bbd6b
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: b098243c3f4cf160aadfb2fa001c23c4cad691bd
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669190"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042391"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>リージョン間レプリケーションを使用するための要件と考慮事項 
 
-Azure NetApp Files [ボリュームのリージョン間レプリケーション機能の使用](cross-region-replication-create-peering.md)に関する次の要件と考慮事項に注意してください。  
+この記事では、Azure NetApp Files の[ボリュームのリージョン間レプリケーション機能の使用](cross-region-replication-create-peering.md)に関する要件と考慮事項について説明します。
 
 ## <a name="requirements-and-considerations"></a>要件と考慮事項 
 
-* リージョン間レプリケーションの機能は、現在プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
 * Azure NetApp Files レプリケーションは、特定の固定されたリージョン ペアでのみ使用できます。 「[サポートされているリージョン ペア](cross-region-replication-introduction.md#supported-region-pairs)」を参照してください。 
 * SMB ボリュームは、NFS ボリュームと共にサポートされます。 SMB ボリュームのレプリケーションを行うには、ソースと宛先の NetApp アカウントに Active Directory 接続が必要です。 宛先の AD 接続には、宛先リージョン内の委任されたサブネットから到達可能な DNS サーバーまたは ADDS ドメイン コントローラーへのアクセス権が含まれている必要があります。 詳細については、「[Active Directory 接続の要件](create-active-directory-connections.md#requirements-for-active-directory-connections)」を参照してください。 
 * 宛先アカウントは、ソース ボリューム リージョンとは異なるリージョンにある必要があります。 別のリージョン内の既存の NetApp アカウントを選択することもできます。  

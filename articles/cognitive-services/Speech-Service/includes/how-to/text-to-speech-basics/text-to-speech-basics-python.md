@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
 ms.author: pafarley
-ms.openlocfilehash: 3aa8b987c51691d9f13df83945e39931ae0743ca
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 8c7adb5a8f76082e34171daeec1a8a79b0170c27
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539336"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143752"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -59,12 +59,26 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 * サブスクリプションの場合: 音声キーと、それに関連付けられた場所/リージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 音声キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 音声キーまたは認証トークンは省略可能です。
-* 認証トークンの場合: 認証トークンと、それに関連付けられた場所/リージョンを渡します。
+* 認証トークンの場合: 認証トークンと、それに関連付けられた場所またはリージョンを渡します。
 
 この例では、音声キーと場所/リージョンを使用して [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
 
 ```python
 speech_config = SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
+```
+
+## <a name="select-synthesis-language-and-voice"></a>合成言語と音声を選択する
+
+Azure Text to Speech サービスでは、250 を超える音声と 70 を超える言語とバリアントがサポートされています。
+[すべてのリスト](../../../language-support.md#neural-voices)を入手することも、[テキスト読み上げのデモ](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)でそれらを試すこともできます。
+入力テキストに合わせて [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) の言語または音声を指定し、必要な音声を使用します。
+
+```python
+# Note: if only language is set, the default voice of that language is chosen.
+speech_config.speech_synthesis_language = "<your-synthesis-language>" # e.g. "de-DE"
+# The voice setting will overwrite language setting.
+# The voice setting will not overwrite the voice element in input SSML.
+speech_config.speech_synthesis_voice_name ="<your-wanted-voice>"
 ```
 
 ## <a name="synthesize-speech-to-a-file"></a>音声をファイルに合成する

@@ -1,19 +1,20 @@
 ---
-title: Azure Digital Twins Explorer の認証エラー
-description: "\"認証失敗\" の原因と解決策: Azure Digital Twins Explorer の場合。"
+title: 'Azure Digital Twins Explorer のトラブルシューティング: 認証エラー'
+titleSuffix: Azure Digital Twins
+description: Azure Digital Twins Explorer の認証エラーを診断して解決する方法について説明します。
 ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 4/8/2021
-ms.openlocfilehash: ef78f1dd6089201744de19900738ebcc6e5f70db
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/7/2021
+ms.openlocfilehash: f03c85f912271dbd5d1cb7904f159d89f4a09ba6
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468674"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132628"
 ---
-# <a name="authentication-failed"></a>認証に失敗しました
+# <a name="troubleshooting-azure-digital-twins-explorer-authentication-error"></a>Azure Digital Twins Explorer のトラブルシューティング: 認証エラー
 
 この記事では、ローカル コンピューターで [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを実行しているときに "認証失敗" エラーを受け取ったときの原因と解決手順について説明します。 
 

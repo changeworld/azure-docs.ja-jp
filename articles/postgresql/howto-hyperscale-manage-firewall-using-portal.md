@@ -6,16 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 9/11/2020
-ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/15/2021
+ms.openlocfilehash: 23874f83e55fb8ff1ea3f60872cdfc10a64dfc80
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91275423"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071581"
 ---
-# <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則を管理する
-サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Hyperscale (Citus) コーディネーター ノードへのアクセスを管理できます。
+# <a name="manage-public-access-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のパブリック アクセスを管理する
+
+サーバーレベルのファイアウォール規則を使用して、パブリック インターネット内の指定した IP アドレス (または IP アドレス範囲) から Hyperscale (Citus) コーディネーター ノードへの[パブリック アクセス](concepts-hyperscale-firewall-rules.md)を管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -32,27 +33,27 @@ ms.locfileid: "91275423"
 
    :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure portal - [ネットワーク] のクリック":::
 
-2. **[現在のクライアント IP アドレスを追加する]** をクリックすると、Azure システムによって認識されたコンピューターのパブリック IP アドレスでファイアウォール規則が作成されます。
+2. 必要に応じて、**[Enable access to the worker nodes]\(ワーカー ノードへのアクセスを有効にする\)** をオンにします。 このオプションを使用すると、ファイアウォール規則ですべてのワーカー ノードとコーディネーター ノードへのアクセスが許可されます。
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure portal - [クライアント IP の追加] のクリック":::
+3. **[現在のクライアント IP アドレスを追加する]** をクリックすると、Azure システムによって認識されたコンピューターのパブリック IP アドレスでファイアウォール規則が作成されます。
 
 あるいは、(オプション B の右側にある) **[+ Add 0.0.0.0 - 255.255.255.255]** をクリックすると、IP だけでなく、インターネット全体でコーディネーター ノードのポート 5432 にアクセスできるようになります。 この場合も、クライアントでは、クラスターを使用するために正しいユーザー名とパスワードでログインする必要があります。 ただし、世界中からのアクセスは短時間のみ、運用環境以外のデータベースだけに許可することをお勧めします。
 
-3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
+4. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
    検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します (たとえば、"what is my IP" を検索します)。
 
    :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="「What is my IP」の Bing 検索":::
 
-4. アドレス範囲を追加します。 このファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] と [終了 IP] のフィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者、ユーザー、およびアプリケーションは、ポート 5432 でコーディネーター ノードにアクセスできるようになります。
+5. さらにアドレス範囲を追加します。 このファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] と [終了 IP] のフィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者、ユーザー、およびアプリケーションは、ポート 5432 でコーディネーター ノードにアクセスできるようになります。
 
-5. ツール バーの **[保存]** をクリックしてこのサーバーレベルのファイアウォール規則を保存します。 ファイアウォール規則の更新が成功したという確認を待機します。
+6. ツール バーの **[保存]** をクリックしてこのサーバーレベルのファイアウォール規則を保存します。 ファイアウォール規則の更新が成功したという確認を待機します。
 
 ## <a name="connecting-from-azure"></a>Azure からの接続
 
-Azure でホストされているアプリケーション (Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションなど) に、Hyperscale (Citus) データベースへのアクセス権を簡単に付与する方法があります。 **[ネットワーク]** ウィンドウからポータルの **[Azure サービスおよびリソースにこのサーバー グループへのアクセスを許可する]** オプションを **[はい]** に設定し、 **[保存]** を押すだけです。
+Azure でホストされているアプリケーション (Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションなど) に、Hyperscale (Citus) データベースへのアクセス権を簡単に付与する方法があります。 ポータルの **[ネットワーク]** ペインで **[Azure サービスおよびリソースにこのサーバー グループへのアクセスを許可する]** チェック ボックスをオンにして、**[保存]** を選択します。
 
 > [!IMPORTANT]
-> このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールを構成します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Azure ポータルで既存のサーバー レベルのファイアウォール規則を管理する
 ファイアウォール規則を管理する手順を繰り返します。

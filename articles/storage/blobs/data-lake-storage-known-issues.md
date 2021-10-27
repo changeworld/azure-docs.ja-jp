@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 10/14/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 11572f957fc2d305f5d6f17303bb8386345abc7b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6a612621ef316e7d4e7c248968b3cc87c04b85ae
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714062"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046263"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -68,7 +68,7 @@ Data Lake Storage Gen2 API、NFS 3.0、BLOB API では、同じデータを処�
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>アクセス制御リスト (ACL) と匿名読み取りアクセス
 
-コンテナーへの[匿名読み取りアクセス](./anonymous-read-access-configure.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
+コンテナーへの[匿名読み取りアクセス](./anonymous-read-access-configure.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。  これは読み取り要求にのみ影響を与えます。  書き込み要求では ACL が引き続き優先されます。
 
 <a id="known-issues-tools"></a>
 
@@ -78,7 +78,7 @@ AzCopy の最新バージョン ([AzCopy v10](../common/storage-use-azcopy-v10.m
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 
 バージョン `1.6.0` 以降のみを使用します。
 
@@ -98,15 +98,11 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 
 リテンション期間の設定はまだサポートされていませんが、Azure Storage Explorer、REST、SDK などのサポートされているツールを使用して、ログを手動で削除することができます。
 
-## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage の Premium レベルでのライフサイクル管理ポリシー
-
-Premium レベルで格納されているデータは、ホット、クール、アーカイブ層間で移動することはできません。 ただし、Premium レベルのデータを別のアカウントのホット アクセス層にコピーすることはできます。
-
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) ドライバー (Data Lake Storage Gen2 ではサポートされていません)
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure Storage Blob (WASB) ドライバー
 
 現時点では、BLOB API のみで動作するように設計された WASB ドライバーでは、いくつかの一般的なシナリオで問題が発生します。 特に、階層型名前空間が有効なストレージ アカウントのクライアントである場合です。 これらの問題は、Data Lake Storage のマルチプロトコル アクセスによっても軽減されません。
 
-しばらく (おそらく当面) の間は、階層型名前空間が有効なストレージ アカウントのクライアントとして、WASB ドライバーを使用しているお客様はサポートされません。 代わりに、Hadoop 環境で [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ドライバーを使用することをお勧めします。 Hadoop branch 3 より前のバージョンを使用するオンプレミスの Hadoop 環境から移行しようとしている場合は、お客様と組織にとって適切な方法についてご連絡できるように、Azure サポート チケットを開いてください。
+階層型名前空間が有効なストレージ アカウントへのクライアントとして WASB ドライバーを使用することはできません。 代わりに、Hadoop 環境で [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ドライバーを使用することをお勧めします。 Hadoop branch 3 より前のバージョンを使用するオンプレミスの Hadoop 環境から移行しようとしている場合は、お客様と組織にとって適切な方法についてご連絡できるように、Azure サポート チケットを開いてください。
 
 ## <a name="soft-delete-for-blobs-capability-currently-in-preview"></a>BLOB の論理削除機能 (現在プレビュー段階)
 

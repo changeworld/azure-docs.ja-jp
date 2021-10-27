@@ -1,19 +1,19 @@
 ---
-title: リソースの正常性を理解する
+title: 'トラブルシューティング: リソースの正常性'
 titleSuffix: Azure Digital Twins
 description: Azure Resource Health を使用して Azure Digital Twins インスタンスの状態を確認する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 8/27/2021
+ms.date: 10/7/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 551193ebcddb023010f1cea1029571c99176afb9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 9c816e613fe6f495de9abb57e2ac041960bffdbe
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113093"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131450"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Azure Digital Twins のトラブルシューティング: リソース ヘルス
 
@@ -47,7 +47,7 @@ Azure Service Health の詳細については、「[Service Health の概要](..
 
 ## <a name="use-azure-status"></a>[Azure の状態] を使用する
 
-[[Azure の状態]](../service-health/azure-status-overview.md) ページには、Azure サービスおよびリージョンの正常性のグローバルなビューが提供されます。 Azure Service Health や Azure Resource Health ほどパーソナライズされていませんが、広範な影響を伴うインシデントを把握するのに役立ちます。
+[[Azure の状態]](../service-health/azure-status-overview.md) ページには、Azure サービスおよびリージョンの正常性のグローバルなビューが提供されます。 Azure Service Health と Azure Resource Health は、特定のリソースにパーソナライズされていますが、Azure の状態はスコープが広いので、広範囲に影響するインシデントを把握するのに役立ちます。
 
 Azure の状態をチェックするには、[[Azure の状態]](https://status.azure.com/status/) ページに移動します。 Azure サービス、そしてリージョンごとの正常性インジケーターの表が表示されます。 Azure Digital Twins を確認するには、ページ内の表から Azure Digital Twins に対応するエントリを検索します。
 
@@ -56,6 +56,6 @@ Azure の状態をチェックするには、[[Azure の状態]](https://status.
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins インスタンスを監視するその他の方法については、次の記事を参照してください。
-* [トラブルシューティング:Azure Monitor でメトリックを表示する](troubleshoot-metrics.md)" に関するページを参照してください
-* [トラブルシューティング:診断の設定](troubleshoot-diagnostics.md)に関するページを参照してください。
-* [トラブルシューティング:アラートを設定する](troubleshoot-alerts.md)
+* [トラブルシューティング: メトリック](troubleshoot-metrics.md)
+* [トラブルシューティング: 診断ログ](troubleshoot-diagnostics.md)
+* [トラブルシューティング: アラート](troubleshoot-alerts.md)

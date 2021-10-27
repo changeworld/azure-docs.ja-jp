@@ -6,14 +6,14 @@ ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.topic: article
 ms.custom: subject-monitoring
-ms.date: 08/24/2021
+ms.date: 10/13/2021
 ms.author: v-hborys
-ms.openlocfilehash: 779a70c4a0386420389937864be01295f985f5b8
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 4f90fc00dc895617796cc478835690c931a55f51
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104459"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004865"
 ---
 # <a name="monitor-sap-on-azure-preview"></a>SAP on Azure の監視 (プレビュー)
 
@@ -23,9 +23,9 @@ Azure リソースに依存するクリティカルなアプリケーション�
 
 ## <a name="overview"></a>概要
 
-Azure Monitor for SAP Solutions は、SAP ランドスケープを Azure で実行しているユーザー向けの Azure ネイティブの監視製品です。 製品は、[SAP on Azure Virtual Machines](./hana-get-started.md) と [SAP on Azure Large Instances](./hana-overview-architecture.md) の両方で動作します。
+Azure Monitor for SAP Solutions は、SAP ランドスケープを Azure で実行しているユーザー向けの Azure ネイティブの監視製品です。 これは、[SAP on Azure Virtual Machines](./hana-get-started.md) と [SAP on Azure Large Instances](./hana-overview-architecture.md) の両方で動作します。
 
-SAP ソリューション向け Azure Monitor を使用すると、Azure インフラストラクチャとデータベースからの利用統計情報を 1 か所で収集し、迅速なトラブルシューティングのために利用統計情報を視覚的に関連付けることができます。
+Azure Monitor for SAP Solutions を使用すると、Azure インフラストラクチャとデータベースからの利用統計情報を 1 か所で収集し、迅速なトラブルシューティングのためにデータを視覚的に関連付けることができます。
 
 コンポーネントに対応する **プロバイダー** を追加することにより、Azure 仮想マシン (VM)、高可用性クラスター、SAP HANA データベース、SAP NetWeaver など、SAP ランドスケープのさまざまなコンポーネントを監視できます。 詳細は、「[Azure portal を使用して Azure Monitor for SAP Solutions をデプロイする](azure-monitor-sap-quickstart.md)」を参照してください。
 
@@ -38,9 +38,7 @@ SAP ソリューション向け Azure Monitor を使用すると、Azure イン�
 - SAP HANA データベース
 - Microsoft SQL Server
 
-Azure Monitor for SAP Solutions は、[Azure Monitor](../../../azure-monitor/overview.md) の機能のうち、[Log Analytics](../../../azure-monitor/logs/log-analytics-overview.md) と [Workbook](../../../azure-monitor/visualize/workbooks-overview.md) を使用します。
-
-これを使用すると、次のことができます。
+Azure Monitor for SAP Solutions は、[Azure Monitor](../../../azure-monitor/overview.md) の機能のうち、[Log Analytics](../../../azure-monitor/logs/log-analytics-overview.md) と [Workbook](../../../azure-monitor/visualize/workbooks-overview.md) を使用します。 これを使用すると、次のことができます。
 
 - Azure Monitor for SAP Solutions によって提供される既定の Workbooks を編集することで、[カスタム視覚化](../../../azure-monitor/visualize/workbooks-overview.md#getting-started)を作成できます。 
 - [カスタム クエリ](../../../azure-monitor/logs/log-analytics-tutorial.md)を書き込みます。
@@ -111,7 +109,7 @@ Azure Monitor for SAP Solutions リソースを作成するときに Microsoft �
 - **Azure portal** – お客様の始点になります。 Azure portal 内のマーケットプレースに移動して、Azure Monitor for SAP Solutions を見つけることができます。
 - **Azure Monitor for SAP Solutions リソース** – 監視テレメトリを表示するためのランディング プレースです。
 - **管理対象リソース グループ** – Azure Monitor for SAP Solutions リソース デプロイの一部として自動的にデプロイされます。 管理対象リソース グループにデプロイされたリソースは、テレメトリの収集に役立ちます。 デプロイされる主なリソースとその用途は次のとおりです。
-   - **Azure 仮想マシン**: *コレクター VM* とも呼ばれる、Standard_B2ms VM です。 この VM の主な目的は、"*監視ペイロード*" をホストすることです。 監視ペイロードとは、ソース システムから利用統計情報を収集し、そのデータを監視フレームワークに転送するロジックのことです。 上の図では、監視ペイロードには、SQL ポート経由で SAP HANA データベースに接続するためのロジックが含まれています。
+   - **Azure 仮想マシン**: *コレクター VM* とも呼ばれる、Standard_B2ms VM です。 この VM の主な目的は、"*監視ペイロード*" をホストすることです。 監視ペイロードとは、ソース システムから利用統計情報を収集し、そのデータを監視フレームワークに転送するロジックのことです。 前の図では、監視ペイロードには、SQL ポート経由で SAP HANA データベースに接続するためのロジックが含まれています。
    - **[Azure Key Vault](../../../key-vault/general/basic-concepts.md)** : このリソースは、SAP HANA データベースの資格情報を安全に保持し、[プロバイダー](./azure-monitor-providers.md)に関する情報を格納するためにデプロイされます。
    - **Log Analytics ワークスペース**: 利用統計情報が格納される宛先です。
       - 視覚化は、[Azure ブック](../../../azure-monitor/visualize/workbooks-overview.md)を使用して Log Analytics の利用統計情報を基に構築されます。 視覚化をカスタマイズできます。 また、ブックやブック内の特定の視覚化を Azure ダッシュボードにピン留めして自動的に更新することもできます。 更新頻度は最大で 30 分ごとです。

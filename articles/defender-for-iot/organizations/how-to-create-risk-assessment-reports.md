@@ -3,12 +3,12 @@ title: リスク評価レポートの作成
 description: 個々のセンサーによって検出されたネットワーク リスクや、すべてのセンサーによって検出されたリスクの集計ビューを把握できます。
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 567660d1e1e55ee3dde0cbf5e5c09748cbb2cf0c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 908a78f659dc17d0207d81613b6be7dd2295a1d2
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020597"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138617"
 ---
 # <a name="risk-assessment-reporting"></a>リスク評価レポートの作成
 
@@ -44,7 +44,10 @@ ms.locfileid: "113020597"
 
 ### <a name="risk-mitigation"></a>リスクの軽減
 
-レポートには、セキュリティ スコアの向上に役立つ推奨事項が記載されています。 たとえば、最新のセキュリティ更新プログラムをインストールする、ファームウェアを最新バージョンにアップグレードする、アラートをフォローアップするなどです。
+レポートには、セキュリティ スコアの向上に役立つ推奨事項が記載されています。 次に例を示します。
+- 最新のセキュリティ更新プログラムをインストールする。
+- ファームウェアを最新バージョンにアップグレードする。
+- セキュリティで保護されていない状態の PLC を調査する。
 
 ## <a name="about-security-scores"></a>セキュリティ スコアについて
 
@@ -112,4 +115,3 @@ PDF のリスク評価レポートを作成します。 レポート名は、ris
 ## <a name="see-also"></a>関連項目
 
 [攻撃ベクトル レポートの作成](how-to-create-attack-vector-reports.md)
-

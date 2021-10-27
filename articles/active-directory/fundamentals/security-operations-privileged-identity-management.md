@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f17ff93dde6c4bbb7df57d177bc7d1e3d746b347
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ac4f2982166fabf7a49a92966ca783a260ca875a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814622"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038728"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Privileged Identity Management に対する Azure Active Directory (PIM) セキュリティ操作
 
@@ -68,7 +68,7 @@ Azure portal で、Azure AD 監査ログを表示したり、コンマ区切り�
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md)**と SIEM の統合**- [Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの他の SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) と Azure AD ログを統合できます。
 
-* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
 この記事の残りの部分では、階層モデルを使用して編成された、監視およびアラートのベースラインを設定する際の推奨事項について説明します。 事前構築済みのソリューションへのリンクを次の表に示します。 前述のツールを使用してアラートを作成することもできます。 内容は、PIM の次のトピック領域で構成されています。
 

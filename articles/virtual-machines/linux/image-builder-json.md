@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d10c64af28f6b8dacdbc28d7d29c691fe50580e2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ec39fb3ec368d315d6d9fa4a17d2cb763e49bce6
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569335"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137591"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
 
@@ -292,7 +292,7 @@ Image Builder では、複数の "カスタマイザー" がサポートされ�
 customize セクションは配列です。 Azure Image Builder では、カスタマイザーが順番に実行されます。 いずれかのカスタマイザーでエラーが発生すると、ビルド プロセスが失敗します。 
 
 > [!NOTE]
-> インライン コマンドは、イメージ テンプレート定義に表示され、サポート ケース支援時に Microsoft サポートによって表示されることがあります。 機密情報がある場合は、アクセスに認証が必要な Azure Storage 内のスクリプトに移動する必要があります。
+> インライン コマンドは、イメージ テンプレート定義で表示できます。 機密情報 (パスワード、SAS トークン、認証トークンなど) がある場合は、アクセスに認証が必要な Azure Storage 内のスクリプトに移動する必要があります。
  
 ### <a name="shell-customizer"></a>シェル カスタマイザー
 
@@ -328,7 +328,7 @@ OS のサポート: Linux
     * Mac/Linux のターミナルを使用して sha256Checksum を生成するには、`sha256sum <fileName>` を実行します。
 
 > [!NOTE]
-> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらのコマンドを確認できます。また、トラブルシューティングのためにサポート ケースが発生した場合に、Microsoft サポートでこれらのコマンドを表示することもできます。 機密性の高いコマンドまたは値がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
+> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらを確認できます。. 機密性の高いコマンドまたは値 (パスワード、SAS トークン、認証トークンなど) がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
 
 #### <a name="super-user-privileges"></a>スーパー ユーザー特権
 先頭に `sudo` がある、スーパーユーザー特権で実行するコマンドは、スクリプトに追加したり、次の例のように inline コマンドで使用したりすることができます。
@@ -399,7 +399,7 @@ Linux 再起動カスタマイザーはありませんが、ドライバーま�
      ], 
 ```
 
-OS のサポート: Windows と Linux
+OS のサポート: Windows
 
 カスタマイズのプロパティ:
 

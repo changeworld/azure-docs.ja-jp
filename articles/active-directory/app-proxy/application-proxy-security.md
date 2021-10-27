@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシのセキュ�
 description: Azure AD アプリケーション プロキシを使用する場合のセキュリティに関する注意事項を説明します
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/21/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: a6951b6d52fad3b0d2bbed41422600d5f28892f0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: ashishj
+ms.openlocfilehash: 96d2fac930b65ffb9bc05330e37e52bc7af3d4dc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186736"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043531"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -158,9 +158,9 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 
 アプリケーション プロキシは、要求に基づいて次のいずれかのアクションを実行します。
 
-* 要求が単純な操作の場合 (たとえば、本文にデータがない RESTful *GET* 要求) は、コネクタはターゲットの内部リソースへの接続を確立し、応答を待機します。
+* 要求が単純な操作 (本文にデータがない RESTful API `GET` 要求など) の場合、コネクタでターゲットの内部リソースへの接続が確立された後、応答のために待機します。
 
-* 関連付けられたデータが本文に含まれている要求 (RESTful *POST* 操作など) の場合、コネクタはクライアント証明書を使用して、アプリケーション プロキシのインスタンスへの送信接続を確立します。 この接続は、データを要求し、内部リソースへの接続を開くために確立されます。 アプリケーション プロキシ サービスは、コネクタからの要求を受信すると、ユーザーからのコンテンツの受け入れを開始し、データをコネクタに転送します。 そしてコネクタが内部リソースにデータを転送します。
+* 関連付けられたデータが本文に含まれている要求 (RESTful API `POST` 操作など) の場合、コネクタでクライアント証明書を使用して、アプリケーション プロキシのインスタンスへの送信接続が確立されます。 この接続は、データを要求し、内部リソースへの接続を開くために確立されます。 アプリケーション プロキシ サービスは、コネクタからの要求を受信すると、ユーザーからのコンテンツの受け入れを開始し、データをコネクタに転送します。 そしてコネクタが内部リソースにデータを転送します。
 
 #### <a name="4-the-connector-waits-for-a-response"></a>4.コネクタが応答のために待機する
 

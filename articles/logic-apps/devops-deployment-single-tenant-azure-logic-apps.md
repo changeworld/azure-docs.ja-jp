@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: a94abb3b2c640dbd0bcd372e83844d660af514cd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7e418c6e8fd282bc04f7a4a95c90d085e86deae
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548198"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067081"
 ---
 # <a name="devops-deployment-for-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps への DevOps のデプロイ
 
@@ -43,7 +43,7 @@ ms.locfileid: "128548198"
 
 ### <a name="local-development-and-testing"></a>ローカル環境での開発とテスト
 
-Visual Studio Code と Azure Logic Apps (Standard) 拡張機能を使用すると、ローカルな開発環境でシングルテナント ベースのロジック アプリ ワークフローを開発、ビルド、実行でき、Azure にデプロイする必要はありません。 また、Azure Functions を実行できる場所で、ワークフローを実行できます。 たとえば、コンテナーが必要なシナリオの場合は、ロジック アプリをコンテナー化し、コンテナーとしてデプロイできます。
+Visual Studio Code と Azure Logic Apps (Standard) 拡張機能を使用すると、ローカルな開発環境でシングルテナント ベースのロジック アプリ ワークフローを開発、ビルド、実行でき、Azure にデプロイする必要はありません。 シナリオでコンテナーが必要な場合は、[Azure Arc 対応 Logic Apps](azure-arc-enabled-logic-apps-overview.md) を使用して作成とデプロイを実行できます。
 
 これは大きな機能の向上であり、Azure に配置されて実行されているリソースで開発を行う必要があるマルチテナント モデルと比較すると、大きなベネフィットになります。
 
@@ -174,7 +174,7 @@ Azure Functions で作成およびホストされている関数を呼び出す�
 
 ## <a name="authentication"></a>認証
 
-シングルテナントの Azure Logic Apps でのロジック アプリ ワークフロー用のホスティング モデルは単一のテナントであり、マルチテナント モデルより高い分離性はワークロードにとってベネフィットがあります。 さらに、シングルテナントの Azure Logic Apps ランタイムは移植可能です。つまり、Azure Functions を実行できる場所でワークフローを実行できます。 それでも、この設計でロジック アプリが Azure のマネージド コネクタ エコシステムにアクセスするには、ロジック アプリの ID の認証を行うための方法が必要です。 アプリには、マネージド接続を使用しているときに操作を実行するための適切なアクセス許可も必要です。
+シングルテナントの Azure Logic Apps でのロジック アプリ ワークフロー用のホスティング モデルは単一のテナントであり、マルチテナント モデルより高い分離性はワークロードにとってベネフィットがあります。 さらに、シングルテナントの Azure Logic Apps ランタイムは移植可能です。つまり、ワークフローを他の環境で、たとえば Visual Studio Code でローカルに実行できます。 それでも、この設計でロジック アプリが Azure のマネージド コネクタ エコシステムにアクセスするには、ロジック アプリの ID の認証を行うための方法が必要です。 アプリには、マネージド接続を使用しているときに操作を実行するための適切なアクセス許可も必要です。
 
 シングルテナント ベースのロジック アプリごとに、既定で、システム割り当てマネージド ID が自動的に有効になります。 この ID は、接続の作成時に使用される認証資格情報または接続文字列とは異なります。 実行時には、ロジック アプリにより、この ID を使用して、Azure アクセス ポリシーによる接続の認証が行われます。 この ID を無効にした場合、接続は実行時に機能しません。
 

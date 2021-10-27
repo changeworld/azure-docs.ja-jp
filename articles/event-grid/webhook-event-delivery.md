@@ -2,13 +2,13 @@
 title: webhook のイベント配信
 description: この記事では、WebHook を使用する場合の WebHook イベント配信とエンドポイント検証について説明します。
 ms.topic: conceptual
-ms.date: 09/29/2021
-ms.openlocfilehash: 77908b7f36c51ca729915b09cb1e813c978235e3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.date: 10/13/2021
+ms.openlocfilehash: 35b088f18b4261760d7908a8e779dbc1bda56501
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614368"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062996"
 ---
 # <a name="webhook-event-delivery"></a>Webhook のイベント配信
 Webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid サービスは、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに POST します。
@@ -20,11 +20,12 @@ Webhook をサポートする他の多くのサービスと同様に、Event Gri
 - [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用した Azure Functions
 
 ## <a name="endpoint-validation-with-event-grid-events"></a>Event Grid イベントを使用したエンドポイントの検証
+
 他の種類のエンドポイント (HTTP トリガー ベースの Azure 関数など) を使用する場合は、エンドポイントのコードが Event Grid を使用した検証ハンドシェイクに参加する必要があります。 Event Grid では、サブスクリプションを検証する 2 つの方法がサポートされています。
 
-1. **同期ハンドシェイク**:イベント サブスクリプションの作成時に、Event Grid はサブスクリプション検証イベントをエンドポイントに送信します。 このイベントのスキーマは、他の Event Grid イベントに似ています。 このイベントのデータ部分には `validationCode` プロパティが含まれます。 アプリケーションでは、検証の要求が想定されるイベント サブスクリプションに対するものであることが確認され、検証コードを応答で同期的に返します。 このハンドシェイク メカニズムは、すべての Event Grid バージョンでサポートされます。
+- **同期ハンドシェイク**:イベント サブスクリプションの作成時に、Event Grid はサブスクリプション検証イベントをエンドポイントに送信します。 このイベントのスキーマは、他の Event Grid イベントに似ています。 このイベントのデータ部分には `validationCode` プロパティが含まれます。 アプリケーションでは、検証の要求が想定されるイベント サブスクリプションに対するものであることが確認され、検証コードを応答で同期的に返します。 このハンドシェイク メカニズムは、すべての Event Grid バージョンでサポートされます。
 
-2. **非同期ハンドシェイク**:検証コードを応答で同期的に返さない場合があります。 たとえば、サード パーティのサービス ([`Zapier`](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できません。
+- **非同期ハンドシェイク**:検証コードを応答で同期的に返さない場合があります。 たとえば、サード パーティのサービス ([`Zapier`](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できません。
 
    2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが Event Grid によってサポートされるようになりました。 API バージョン 2018-05-01-preview 以降を使用する SDK またはツールでイベント サブスクリプションを作成すると、Event Grid によって、サブスクリプション検証イベントのデータ部分で `validationUrl` プロパティが送信されます。 ハンドシェイクを完了するには、イベント データ内でその URL を探し、そこへ GET 要求を実行します。 REST クライアントと Web ブラウザーのどちらでも使用できます。
 
@@ -83,12 +84,8 @@ SubscriptionValidationEvent の例を以下に示します。
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
 CloudEvents v1.0 では、**HTTP OPTIONS** メソッドを使用して、独自の [不正使用防止のセマンティクス](webhook-event-delivery.md)が実装されます。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
 
-## <a name="event-subscriptions-considerations"></a>イベント サブスクリプションに関する考慮事項
-
-サブスクリプションの作成中の問題を防ぐには、この参照を使用し、トピックとサブスクリプション スキーマの間の互換性を検証します。 トピックが作成されると、受信イベント スキーマが定義されます。また、サブスクリプションが作成されるとき、送信イベント スキーマが定義されます。
-
-> [!NOTE]
-> この互換性の表の参照はカスタム トピックとイベント ドメインに適用されます。
+## <a name="event-schema-compatibility"></a>イベント スキーマの互換性
+トピックが作成されると、受信イベント スキーマが定義されます。 また、サブスクリプションが作成されると、送信イベント スキーマが定義されます。 次の表に、サブスクリプションの作成時に使用できる互換性を示します。 
 
 | 受信イベント スキーマ | 送信イベント スキーマ | サポートされています |
 | ---- | ---- | ---- |

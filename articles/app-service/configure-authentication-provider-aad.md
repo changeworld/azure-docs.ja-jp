@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 61253ab7360253e1c6902b6a7b38c9fb53faa3eb
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 039a32d1f1ec1327ee032c17af36dc910f363eed
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611750"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045977"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -70,14 +70,15 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
 1. アプリの登録が作成されたら、後のために **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** をコピーします。
 1. **[認証]** を選択します。 **[暗黙的な許可]** で **[ID トークン]** を有効にして、App Service からの OpenID Connect ユーザーのサインインを許可します。
 1. (省略可能) **[ブランド]** を選択します。 **[ホーム ページ URL]** に App Service アプリの URL を入力し、 **[保存]** を選択します。
-1. **[API の公開]**  >  **[設定]** を選択します。 シングルテナント アプリの場合は、App Service アプリの URL を貼り付けて **[保存]** を選択します。マルチテナント アプリの場合は、テナントで検証済みのいずれかのドメインに基づく URL を貼り付けて、 **[保存]** を選択します。
+1. **[API の公開]** を選択し、"アプリケーション ID URI" の横にある **[設定]** をクリックします。 この値によって、リソースとしての使用時、アプリケーションが一意に特定されます。アクセスを付与するトークンを要求できます。 作成するスコープのプレフィックスとして使用されます。
 
-   > [!NOTE]
-   > この値は、アプリの登録の **アプリケーション ID の URI** です。 Web アプリでクラウドの API にアクセスする必要がある場合、クラウド App Service リソースの構成時、**Web アプリのアプリケーション ID URI** が必要になります。 たとえば、クラウド サービスで Web アプリにアクセスを明示的に与える場合にこれを利用できます。
+    シングルテナントのアプリの場合、`api://<application-client-id>` 形式である既定値を使用できます。 テナントの検証済みドメインの 1 つに基づき、`https://contoso.com/api` のような、もっと読みやすい URI を指定することもできます。 マルチテナントのアプリの場合は、カスタム URI を指定する必要があります。 アプリ ID URI で使用できる形式の詳細については、[アプリ登録のベスト プラクティス リファレンス](../active-directory/develop/security-best-practices-for-app-registration.md#appid-uri-configuration) ページを参照してください。
+
+    値を入力したら、 **[保存]** をクリックします。
 
 1. **[Scope の追加]** を選択します。
    1. **[スコープ名]** に、「*user_impersonation*」と入力します。
-   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「*Access my app*」と入力します。
+   1. 同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 たとえば、「 *&lt;アプリケーション名&gt; にアクセスする*」と入力します。
    1. **[スコープの追加]** を選択します。
 1. (省略可能) クライアント シークレットを作成するには、 **[Certificates & secrets]\(証明書とシークレット)**  >  **[New client secret]\(新しいクライアント シークレット)**  >  **[追加]** を選択します。 ページに表示されるクライアント シークレットの値をコピーします。 二度と表示されることはありません。
 1. (省略可能) 複数の **応答 URL** を追加するには、 **[認証]** を選択します。

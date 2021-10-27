@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services - 物理ラボ環境から Windows カスタム イメージを取り込む方法
+title: 物理ラボ環境から Windows カスタムイメージを取り込む方法
 description: 物理ラボ環境から Windows カスタム イメージを取り込む方法について説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 50d224f82943a4157c9c6a1eda77af0b151fafa8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 36a6c8f920ebada3d5cd4110e48fe8544e4c7ae3
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736691"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179015"
 ---
 # <a name="bring-a-windows-custom-image-from-a-physical-lab-environment"></a>物理ラボ環境からの Windows カスタム イメージの取り込み
 

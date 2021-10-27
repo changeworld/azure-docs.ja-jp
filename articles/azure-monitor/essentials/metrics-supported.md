@@ -4,14 +4,14 @@ description: Azure Monitor で使用できるメトリックの一覧 (リソー
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 09/10/2021
+ms.date: 10/05/2021
 ms.author: robb
-ms.openlocfilehash: 15e8ea8c1622ec846d9ab36452d8982c1a64a084
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e0843f9e25b3059bbdd0102e4a830f151b0e87b0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458152"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996914"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -58,7 +58,6 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 ## <a name="table-formatting"></a>表の書式設定
 
 この最新の更新では、新しい列が追加され、メトリックがアルファベット順に並べ替えられています。 追加情報とは、ブラウザー ウィンドウの幅に応じて、表の下部に水平スクロール バーが表示される場合があることを意味します。 情報が欠落していると思われる場合は、スクロール バーを使用して表の全体が表示されるようにしてください。
-
 
 ## <a name="microsoftaadiamazureadmetrics"></a>microsoft.aadiam/azureADMetrics
 
@@ -126,7 +125,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |---|---|---|---|---|---|---|
 |BackendDuration|はい|バックエンド要求の期間|MilliSeconds|Average|バックエンド要求の期間 (ミリ秒)|Location、Hostname|
 |容量|はい|容量|Percent|Average|ApiManagement サービスの使用率メトリック。 注: Premium 以外の SKU の場合、"Max" 集計では、値は 0 と表示されます。|場所|
-|ConnectionAttempts|はい|WebSocket 接続試行 (プレビュー)|カウント|合計|選択したソースと宛先に基づく WebSocket 接続試行の数|場所、ソース、宛先、状態|
+|ConnectionAttempts|はい|WebSocket 接続試行 (プレビュー)|Count|合計|選択したソースと宛先に基づく WebSocket 接続試行の数|場所、ソース、宛先、状態|
 |Duration|はい|ゲートウェイ要求の全体の期間|MilliSeconds|Average|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
 |EventHubDroppedEvents|はい|破棄された EventHub イベント数|Count|合計|キューのサイズ制限に達したためスキップされたイベントの数|場所|
 |EventHubRejectedEvents|はい|拒否された EventHub イベント数|Count|合計|拒否された EventHub イベントの数 (誤った構成または未承認)|場所|
@@ -143,7 +142,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |SuccessfulRequests|はい|成功したゲートウェイ要求 (非推奨)|Count|合計|成功したゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
 |TotalRequests|はい|ゲートウェイ要求の合計 (非推奨)|Count|合計|ゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
 |UnauthorizedRequests|はい|未承認ゲートウェイ要求 (非推奨)|Count|合計|未承認ゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
-|WebSocketMessages|はい|WebSocket メッセージ (プレビュー)|カウント|合計|選択したソースと宛先に基づく WebSocket メッセージの数|場所、ソース、宛先|
+|WebSocketMessages|はい|WebSocket メッセージ (プレビュー)|Count|合計|選択したソースと宛先に基づく WebSocket メッセージの数|場所、ソース、宛先|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -280,7 +279,6 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |UnusableNodeCount|いいえ|使用できないノード数|Count|合計|使用できないノードの数|ディメンションなし|
 |WaitingForStartTaskNodeCount|いいえ|開始タスクの待機ノード数|Count|合計|開始タスクの完了を待機しているノードの数|ディメンションなし|
 
-
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
@@ -300,7 +298,6 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |ノード総数|はい|ノード総数|Count|Average|ノードの合計数|Scenario、ClusterName|
 |使用できないコア|はい|使用できないコア|Count|Average|使用できないコアの数|Scenario、ClusterName|
 |使用できないノード|はい|使用できないノード|Count|Average|使用できないノードの数|Scenario、ClusterName|
-
 
 ## <a name="microsoftbingaccounts"></a>microsoft.bing/accounts
 
@@ -455,7 +452,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |cachemisses7|はい|キャッシュ ミス数 (シャード 7)|Count|合計|失敗したキー参照の数。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ディメンションなし|
 |cachemisses8|はい|キャッシュ ミス数 (シャード 8)|Count|合計|失敗したキー参照の数。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ディメンションなし|
 |cachemisses9|はい|キャッシュ ミス数 (シャード 9)|Count|合計|失敗したキー参照の数。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ディメンションなし|
-|cachemissrate|はい|キャッシュ ミス率|Percent|cachemissrate|ミスした GET 要求の %。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ShardId|
+|cachemissrate|はい|キャッシュ ミス率|Percent|合計|ミスした GET 要求の %。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ShardId|
 |cacheRead|はい|キャッシュの読み取り|BytesPerSecond|最大値|キャッシュから読み取られたデータ量。1 秒あたりのメガバイト (MB/秒) 単位。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ShardId|
 |cacheRead0|はい|キャッシュの読み取り (シャード 0)|BytesPerSecond|最大値|キャッシュから読み取られたデータ量。1 秒あたりのメガバイト (MB/秒) 単位。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ディメンションなし|
 |cacheRead1|はい|キャッシュの読み取り (シャード 1)|BytesPerSecond|最大値|キャッシュから読み取られたデータ量。1 秒あたりのメガバイト (MB/秒) 単位。 詳細については、「https://aka.ms/redis/metrics」を参照してください。|ディメンションなし|
@@ -811,48 +808,48 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|AudioSecondsTranscribed|はい|書き起こされた Audio Seconds|カウント|合計|書き起こしの秒数|ApiName、FeatureName、UsageChannel、Region|
-|AudioSecondsTranslated|はい|翻訳された Audio Seconds|カウント|合計|翻訳の秒数|ApiName、FeatureName、UsageChannel、Region|
+|AudioSecondsTranscribed|はい|書き起こされた Audio Seconds|Count|合計|書き起こしの秒数|ApiName、FeatureName、UsageChannel、Region|
+|AudioSecondsTranslated|はい|翻訳された Audio Seconds|Count|合計|翻訳の秒数|ApiName、FeatureName、UsageChannel、Region|
 |BlockedCalls|はい|ブロックされた呼び出し|Count|合計|レートまたはクォータの制限を超えた呼び出しの回数。|ApiName、OperationName、Region|
-|CharactersTrained|はい|トレーニングされた文字数 (非推奨)|カウント|合計|トレーニングされた文字の合計数。|ApiName、OperationName、Region|
-|CharactersTranslated|はい|翻訳された文字数 (非推奨)|カウント|合計|受信テキスト要求の合計文字数。|ApiName、OperationName、Region|
+|CharactersTrained|はい|トレーニングされた文字数 (非推奨)|Count|合計|トレーニングされた文字の合計数。|ApiName、OperationName、Region|
+|CharactersTranslated|はい|翻訳された文字数 (非推奨)|Count|合計|受信テキスト要求の合計文字数。|ApiName、OperationName、Region|
 |ClientErrors|はい|クライアント エラー|Count|合計|クライアント側のエラー (HTTP 応答コード 4xx) があった呼び出しの回数。|ApiName、OperationName、Region|
-|ComputerVisionTransactions|はい|Computer Vision のトランザクション|カウント|合計|Computer Vision のトランザクションの数|ApiName、FeatureName、UsageChannel、Region|
+|ComputerVisionTransactions|はい|Computer Vision のトランザクション|Count|合計|Computer Vision のトランザクションの数|ApiName、FeatureName、UsageChannel、Region|
 |CustomVisionTrainingTime|はい|Custom Vision のトレーニング時間|Seconds|合計|Custom Vision のトレーニング時間|ApiName、FeatureName、UsageChannel、Region|
-|CustomVisionTransactions|はい|Custom Vision のトランザクション|カウント|合計|Custom Vision 予測トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
+|CustomVisionTransactions|はい|Custom Vision のトランザクション|Count|合計|Custom Vision 予測トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
 |DataIn|はい|受信データ|バイト|合計|受信データのサイズ (バイト)。|ApiName、OperationName、Region|
 |DataOut|はい|送信データ|バイト|合計|送信データのサイズ (バイト)。|ApiName、OperationName、Region|
-|DocumentCharactersTranslated|はい|翻訳されたドキュメント文字|カウント|合計|ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|DocumentCustomCharactersTranslated|はい|翻訳されたドキュメントのカスタム文字|カウント|合計|カスタム ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|FaceImagesTrained|はい|トレーニング済みの顔画像|カウント|合計|トレーニングされたイメージの数。 トランザクションごとにトレーニングされた 1,000 のイメージ。|ApiName、FeatureName、UsageChannel、Region|
-|FacesStored|はい|格納されている顔|カウント|合計|1 日に日分けして格納された顔の数。 格納されている顔の数は毎日報告されます。|ApiName、FeatureName、UsageChannel、Region|
-|FaceTransactions|はい|顔のトランザクション|カウント|合計|Face サービスに対して行われた API 呼び出しの数|ApiName、FeatureName、UsageChannel、Region|
-|ImagesStored|はい|格納されているイメージ|カウント|合計|格納されている Custom Vision イメージの数。|ApiName、FeatureName、UsageChannel、Region|
+|DocumentCharactersTranslated|はい|翻訳されたドキュメント文字|Count|合計|ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|DocumentCustomCharactersTranslated|はい|翻訳されたドキュメントのカスタム文字|Count|合計|カスタム ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|FaceImagesTrained|はい|トレーニング済みの顔画像|Count|合計|トレーニングされたイメージの数。 トランザクションごとにトレーニングされた 1,000 のイメージ。|ApiName、FeatureName、UsageChannel、Region|
+|FacesStored|はい|格納されている顔|Count|合計|1 日に日分けして格納された顔の数。 格納されている顔の数は毎日報告されます。|ApiName、FeatureName、UsageChannel、Region|
+|FaceTransactions|はい|顔のトランザクション|Count|合計|Face サービスに対して行われた API 呼び出しの数|ApiName、FeatureName、UsageChannel、Region|
+|ImagesStored|はい|格納されているイメージ|Count|合計|格納されている Custom Vision イメージの数。|ApiName、FeatureName、UsageChannel、Region|
 |Latency|はい|Latency|MilliSeconds|Average|待機時間 (ミリ秒)。|ApiName、OperationName、Region|
 |LearnedEvents|はい|学習したイベント|Count|合計|学習したイベントの数。|IsMatchBaseline、Mode、RunId|
-|LUISSpeechRequests|はい|LUIS 音声要求|カウント|合計|意図を理解する要求に対する LUIS 音声の数|ApiName、FeatureName、UsageChannel、Region|
-|LUISTextRequests|はい|LUIS テキスト要求|カウント|合計|LUIS テキスト要求の数|ApiName、FeatureName、UsageChannel、Region|
+|LUISSpeechRequests|はい|LUIS 音声要求|Count|合計|意図を理解する要求に対する LUIS 音声の数|ApiName、FeatureName、UsageChannel、Region|
+|LUISTextRequests|はい|LUIS テキスト要求|Count|合計|LUIS テキスト要求の数|ApiName、FeatureName、UsageChannel、Region|
 |MatchedRewards|はい|一致した報酬|Count|合計|一致した報酬の数。|Mode、RunId|
-|NumberofSpeakerProfiles|はい|スピーカー プロファイルの数|カウント|合計|登録されたスピーカー プロファイルの数。 日次で日分けされます。|ApiName、FeatureName、UsageChannel、Region|
+|NumberofSpeakerProfiles|はい|スピーカー プロファイルの数|Count|合計|登録されたスピーカー プロファイルの数。 日次で日分けされます。|ApiName、FeatureName、UsageChannel、Region|
 |ObservedRewards|はい|観察された報酬|Count|合計|観察された報酬の数。|Mode、RunId|
 |ProcessedCharacters|はい|処理された文字|Count|合計|Immersive Reader によって処理された文字数。|ApiName、FeatureName、UsageChannel、Region|
-|ProcessedHealthTextRecords|はい|処理された正常性テキスト レコード|カウント|合計|処理された正常性テキスト レコードの数|ApiName、FeatureName、UsageChannel、Region|
+|ProcessedHealthTextRecords|はい|処理された正常性テキスト レコード|Count|合計|処理された正常性テキスト レコードの数|ApiName、FeatureName、UsageChannel、Region|
 |ProcessedImages|はい|Processed Images (処理されたイメージ)|Count|合計|処理されたイメージの数|ApiName、FeatureName、UsageChannel、Region|
-|ProcessedPages|はい|処理されたページ|カウント|合計|処理されたイメージの数|ApiName、FeatureName、UsageChannel、Region|
+|ProcessedPages|はい|処理されたページ|Count|合計|処理されたイメージの数|ApiName、FeatureName、UsageChannel、Region|
 |ProcessedTextRecords|はい|処理されたテキスト レコード|Count|合計|テキスト レコードの数。|ApiName、FeatureName、UsageChannel、Region|
 |ServerErrors|はい|サーバー エラー|Count|合計|サービスの内部エラー (HTTP 応答コード 5xx) があった呼び出しの回数。|ApiName、OperationName、Region|
-|SpeakerRecognitionTransactions|はい|Speaker Recognition トランザクション|カウント|合計|Speaker Recognition トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
-|SpeechModelHostingHours|はい|音声モデル ホスティングの時間|カウント|合計|音声モデル ホスティングの時間数|ApiName、FeatureName、UsageChannel、Region|
+|SpeakerRecognitionTransactions|はい|Speaker Recognition トランザクション|Count|合計|Speaker Recognition トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
+|SpeechModelHostingHours|はい|音声モデル ホスティングの時間|Count|合計|音声モデル ホスティングの時間数|ApiName、FeatureName、UsageChannel、Region|
 |SpeechSessionDuration|はい|音声セッション期間 (非推奨)|Seconds|合計|音声セッションの合計継続時間 (秒)。|ApiName、OperationName、Region|
 |SuccessfulCalls|はい|成功した呼び出し|Count|合計|成功した呼び出しの数。|ApiName、OperationName、Region|
 |SynthesizedCharacters|はい|合成した文字|Count|合計|文字数。|ApiName、FeatureName、UsageChannel、Region|
-|TextCharactersTranslated|はい|翻訳されたテキスト文字|カウント|合計|受信テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|TextCustomCharactersTranslated|はい|翻訳されたテキストのカスタム文字|カウント|合計|受信カスタム テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|TextTrainedCharacters|はい|テキストのトレーニング済み文字|カウント|合計|テキスト翻訳を使用してトレーニングされた文字数。|ApiName、FeatureName、UsageChannel、Region|
+|TextCharactersTranslated|はい|翻訳されたテキスト文字|Count|合計|受信テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|TextCustomCharactersTranslated|はい|翻訳されたテキストのカスタム文字|Count|合計|受信カスタム テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|TextTrainedCharacters|はい|テキストのトレーニング済み文字|Count|合計|テキスト翻訳を使用してトレーニングされた文字数。|ApiName、FeatureName、UsageChannel、Region|
 |TotalCalls|はい|合計呼び出し数|Count|合計|呼び出しの合計数。|ApiName、OperationName、Region|
 |TotalErrors|はい|合計エラー数|Count|合計|エラー応答 (HTTP 応答コード 4xx または 5xx) があった呼び出しの合計回数。|ApiName、OperationName、Region|
 |TotalTokenCalls|はい|トークン呼び出しの合計|Count|合計|トークン呼び出しの合計回数。|ApiName、OperationName、Region|
-|TotalTransactions|はい|トランザクションの合計 (非推奨)|カウント|合計|トランザクションの合計数。|ディメンションなし|
+|TotalTransactions|はい|トランザクションの合計 (非推奨)|Count|合計|トランザクションの合計数。|ディメンションなし|
 |VoiceModelHostingHours|はい|音声モデル ホスティングの時間|Count|合計|時間数。|ApiName、FeatureName、UsageChannel、Region|
 |VoiceModelTrainingMinutes|はい|音声モデル トレーニングの分数|Count|合計|分数。|ApiName、FeatureName、UsageChannel、Region|
 
@@ -961,7 +958,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |VmAvailabilityMetric|はい|VM 可用性メトリック (プレビュー)|Count|Average|経時的な仮想マシンの可用性の測定。 注: 現時点では、このメトリックは、データの品質と一貫性の向上を優先して、一部の顧客にのみプレビューされます。 データ標準の改善に伴って、この機能は段階的に展開されます。|ディメンションなし|
 
 
-## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
+## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualmachineScaleSets
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
@@ -1015,6 +1012,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |[VM Cached IOPS Consumed Percentage]\(VM のキャッシュされた IOPS の消費率\)|はい|[VM Cached IOPS Consumed Percentage]\(VM のキャッシュされた IOPS の消費率\)|Percent|Average|VM によって消費されたキャッシュされたディスク IOPS の割合|VMName|
 |VM のキャッシュされていない帯域幅の消費率|はい|VM のキャッシュされていない帯域幅の消費率|Percent|Average|VM によって消費されたキャッシュされていないディスク帯域幅の割合|VMName|
 |[VM Uncached IOPS Consumed Percentage]\(VM のキャッシュされていない IOPS の消費率\)|はい|[VM Uncached IOPS Consumed Percentage]\(VM のキャッシュされていない IOPS の消費率\)|Percent|Average|VM によって消費されたキャッシュされていないディスク IOPS の割合|VMName|
+|VmAvailabilityMetric|はい|VM 可用性メトリック (プレビュー)|Count|Average|経時的な仮想マシンの可用性の測定。 注: 現時点では、このメトリックは、データの品質と一貫性の向上を優先して、一部の顧客にのみプレビューされます。 データ標準の改善に伴って、この機能は段階的に展開されます。|VMName|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
@@ -1077,16 +1075,19 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|ClaimsProviderRequestLatency|はい|クレーム要求の実行時間|ミリ秒|Average|カスタマー クレーム プロバイダーのエンドポインに対する要求の平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName|
-|ClaimsProviderRequests|はい|クレーム プロバイダーの要求|Count|合計|クレーム プロバイダーに対する要求の数|VehicleId、DeviceName|
-|ConnectionServiceRequestRuntime|はい|車両の接続サービス要求の実行時間|ミリ秒|Average|車両の接続要求の平均実行時間 (ミリ秒単位)|VehicleId、DeviceName|
-|ConnectionServiceRequests|はい|車両の接続サービスの要求|Count|合計|車両の接続要求の合計数|VehicleId、DeviceName|
-|ProvisionerServiceRequestRuntime|はい|車両のプロビジョニング実行時間|ミリ秒|Average|車両のプロビジョニング要求の平均実行時間 (ミリ秒)|VehicleId、DeviceName|
-|ProvisionerServiceRequests|はい|車両のプロビジョニング サービス要求|Count|合計|車両のプロビジョニング要求の合計数|VehicleId、DeviceName|
-|StateStoreReadRequestLatency|はい|状態ストア読み取りの実行時間|ミリ秒|Average|状態ストア読み取り要求の平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName|
-|StateStoreReadRequests|はい|状態ストア読み取り要求|Count|合計|状態ストア読み取り要求の数|VehicleId、DeviceName|
-|StateStoreWriteRequestLatency|はい|状態ストア書き込みの実行時間|ミリ秒|Average|状態ストア書き込み要求の平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName|
-|StateStoreWriteRequests|はい|状態ストア書き込み要求|Count|合計|状態ストア書き込み要求の数|VehicleId、DeviceName|
+|ClaimsProviderRequestLatency|はい|クレーム要求の実行時間|ミリ秒|Average|カスタマー クレーム プロバイダーのエンドポインに対する要求の平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|ClaimsProviderRequests|はい|クレーム プロバイダーの要求|Count|合計|クレーム プロバイダーに対する要求の数|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|ConnectionServiceRequestRuntime|はい|車両の接続サービス要求の実行時間|ミリ秒|Average|車両の接続要求の平均実行時間 (ミリ秒単位)|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|ConnectionServiceRequests|はい|車両の接続サービスの要求|Count|合計|車両の接続要求の合計数|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|DataPipelineMessageCount|はい|データ パイプラインのメッセージ数|Count|合計|ストレージの MCVP データ パイプラインに送信されたメッセージの合計数。|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|ExtensionInvocationCount|はい|拡張機能の呼び出し数|Count|合計|拡張機能が呼び出された回数の合計。|VehicleId、DeviceName、ExtensionName、IsSuccessful、FailureCategory|
+|ExtensionInvocationRuntime|はい|拡張機能の呼び出しの実行時間|ミリ秒|Average|拡張機能内で費やされた平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName、ExtensionName、IsSuccessful、FailureCategory|
+|ProvisionerServiceRequestRuntime|はい|車両のプロビジョニング実行時間|ミリ秒|Average|車両のプロビジョニング要求の平均実行時間 (ミリ秒)|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|ProvisionerServiceRequests|はい|車両のプロビジョニング サービス要求|Count|合計|車両のプロビジョニング要求の合計数|VehicleId、DeviceName、IsSuccessful、FailureCategory|
+|StateStoreReadRequestLatency|はい|状態ストア読み取りの実行時間|ミリ秒|Average|状態ストア読み取り要求の平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName、ExtensionName、IsSuccessful、FailureCategory|
+|StateStoreReadRequests|はい|状態ストア読み取り要求|Count|合計|状態ストア読み取り要求の数|VehicleId、DeviceName、ExtensionName、IsSuccessful、FailureCategory|
+|StateStoreWriteRequestLatency|はい|状態ストア書き込みの実行時間|ミリ秒|Average|状態ストア書き込み要求の平均実行時間 (ミリ秒単位)。|VehicleId、DeviceName、ExtensionName、IsSuccessful、FailureCategory|
+|StateStoreWriteRequests|はい|状態ストア書き込み要求|Count|合計|状態ストア書き込み要求の数|VehicleId、DeviceName、ExtensionName、IsSuccessful、FailureCategory|
 
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
@@ -1119,7 +1120,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |apiserver_current_inflight_requests|いいえ|配信要求|Count|Average|最後の 1 秒間に要求の種類ごとに apiserver で現在使用されている配信要求の最大数|requestKind|
 |cluster_autoscaler_cluster_safe_to_autoscale|いいえ|クラスターの正常性|Count|Average|クラスターの自動スケーラーがクラスターでアクションを実行するかどうかを決定します|ディメンションなし|
 |cluster_autoscaler_scale_down_in_cooldown|いいえ|スケールダウン クールダウン|Count|Average|スケールダウンがクールダウン内かどうかを判断します。この間、ノードは削除されません|ディメンションなし|
-|cluster_autoscaler_unneeded_nodes_count|いいえ|不要なノード|Count|Average|クラスター オートスケーラーでは、これらのノードは削除候補としてマークされ、最終的に削除されます|ディメンションなし|
+|cluster_autoscaler_unneeded_nodes_count|いいえ|不要なノード|Count|Average|クラスターの自動スケーラーでは、これらのノードを削除の候補としてマークし、最終的に削除されます|ディメンションなし|
 |cluster_autoscaler_unschedulable_pods_count|いいえ|スケジュールできないポッド|Count|Average|クラスターで現在スケジュールできないポッドの数|ディメンションなし|
 |kube_node_status_allocatable_cpu_cores|いいえ|マネージド クラスターで使用可能な CPU コアの合計数|Count|Average|マネージド クラスターで使用可能な CPU コアの合計数|ディメンションなし|
 |kube_node_status_allocatable_memory_bytes|いいえ|マネージド クラスターで使用可能なメモリの合計量|バイト|Average|マネージド クラスターで使用可能なメモリの合計量|ディメンションなし|
@@ -1583,7 +1584,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |---|---|---|---|---|---|---|
 |AddRegion|はい|追加されたリージョン|Count|Count|追加されたリージョン|リージョン|
 |AutoscaleMaxThroughput|いいえ|自動スケーリングの最大スループット|Count|最大値|自動スケーリングの最大スループット|DatabaseName、CollectionName|
-|AvailableStorage|いいえ|(非推奨) 使用可能な記憶域|バイト|合計|"使用可能な記憶域" は、2023 年 9 月末に Azure Monitor から削除されます。 Cosmos DB コレクション ストレージのサイズは無制限になりました。 唯一の制限は、各論理パーティション キーのストレージ サイズが 20 GB であることです。 診断ログで PartitionKeyStatistics を有効にすると、上位のパーティション キーのストレージ消費量を知ることができます。 Cosmos DB のストレージ クォータの詳細については、ドキュメント「[Azure Cosmos DB サービスのクォータ](../../cosmos-db/concepts-limits.md)」を参照してください。 非推奨になった後、非推奨メトリックでまだ定義されている残りのアラート ルールは、非推奨となる日の後に自動的に無効になります。|CollectionName、DatabaseName、Region|
+|AvailableStorage|いいえ|(非推奨) 使用可能な記憶域|バイト|合計|"使用可能な記憶域" は、2023 年 9 月末に Azure Monitor から削除されます。 Cosmos DB コレクション ストレージのサイズは無制限になりました。 唯一の制限は、各論理パーティション キーのストレージ サイズが 20 GB であることです。 診断ログで PartitionKeyStatistics を有効にすると、上位のパーティション キーのストレージ消費量を知ることができます。 Cosmos DB のストレージ クォータの詳細については、こちらのドキュメント [https://docs.microsoft.com/azure/cosmos-db/concepts-limits](/azure/cosmos-db/concepts-limits) をご確認ください。 非推奨になった後、非推奨メトリックでまだ定義されている残りのアラート ルールは、非推奨となる日の後に自動的に無効になります。|CollectionName、DatabaseName、Region|
 |CassandraConnectionClosures|いいえ|Cassandra 接続の終了|Count|合計|1 分単位の細分性で報告された、閉じられた Cassandra 接続の数|APIType、Region、ClosureReason|
 |CassandraConnectorAvgReplicationLatency|いいえ|Cassandra Connector Average Replication Latency\(Cassandra コネクタの平均レプリケーション待機時間\)|MilliSeconds|Average|Cassandra コネクタの平均レプリケーション待機時間|ディメンションなし|
 |CassandraConnectorReplicationHealthStatus|いいえ|Cassandra Connector Replication Health Status\(Cassandra コネクタ レプリケーションの正常性状態\)|Count|Count|Cassandra コネクタ レプリケーションの正常性の状態|NotStarted、ReplicationInProgress、Error|
@@ -1620,6 +1621,10 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |IntegratedCacheItemHitRate|いいえ|IntegratedCacheItemHitRate|Percent|Average|統合キャッシュを使用したポイント読み取りの数を、最終的な整合性を保って専用ゲートウェイを経由したポイント読み取りの数で割った値|Region、CacheEntryType|
 |IntegratedCacheQueryExpirationCount|いいえ|IntegratedCacheQueryExpirationCount|Count|Average|TTL の有効期限により統合キャッシュから削除されたクエリの数|Region、CacheEntryType|
 |IntegratedCacheQueryHitRate|いいえ|IntegratedCacheQueryHitRate|Percent|Average|統合キャッシュを使用したクエリの数を、最終的な整合性を保って専用ゲートウェイを経由したクエリの数で割った値|Region、CacheEntryType|
+|MaterializedViewCatchupGapInMinutes|いいえ|具体化されたビューのキャッチアップ ギャップ (分)|Count|最大値|ソース コンテナー内のデータと具体化されたビューに反映されるデータの最大時間差 (分)|Region、TargetContainerName、BuildType|
+|MaterializedViewsBuilderAverageCPUUsage|いいえ|具体化されたビュー ビルダーの平均 CPU 使用率|Percent|Average|具体化されたビュー ビルダー インスタンス全体の平均 CPU 使用率。これは、具体化されたビューにデータを設定するために使用されます|Region、MetricType|
+|MaterializedViewsBuilderAverageMemoryUsage|いいえ|具体化されたビュー ビルダーの平均メモリ使用量|バイト|Average|具体化されたビュー ビルダー インスタンス全体の平均メモリ使用量。これは、具体化されたビューにデータを設定するために使用されます|リージョン|
+|MaterializedViewsBuilderMaximumCPUUsage|いいえ|具体化されたビュー ビルダーの最大 CPU 使用率|Percent|Average|具体化されたビュー ビルダー インスタンス全体の平均最大 CPU 使用率。これは、具体化されたビューにデータを設定するために使用されます|Region、MetricType|
 |MetadataRequests|いいえ|メタデータの要求数|Count|Count|メタデータの要求数。 Cosmos DB はメタデータ コレクションをアカウントごとに保持します。これにより、コレクションやデータベースなどとそれらの構成を無料で列挙できます。|DatabaseName、CollectionName、Region、StatusCode、Role|
 |MongoCollectionCreate|いいえ|作成された Mongo コレクション|Count|Count|作成された Mongo コレクション|ResourceName、ChldResourceName、ApiKind、ApiKindResourceType、IsThroughputRequest、OperationType|
 |MongoCollectionDelete|いいえ|Mongo Collection Deleted (削除された Mongo コレクション)|Count|Count|削除された Mongo コレクション|ResourceName、ChildResourceName、ApiKind、ApiKindResourceType、OperationType|
@@ -2204,6 +2209,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |ContentKeyPolicyCount|はい|コンテンツ キー ポリシー数|Count|Average|現在のメディア サービス アカウントに既に作成されているコンテンツ キー ポリシーの数|ディメンションなし|
 |ContentKeyPolicyQuota|はい|コンテンツ キー ポリシーのクォータ|Count|Average|現在のメディア サービス アカウントで許可されているコンテンツ キー ポリシーの数|ディメンションなし|
 |ContentKeyPolicyQuotaUsedPercentage|はい|コンテンツ キー ポリシーのクォータの使用率|Percent|Average|現在のメディア サービス アカウントで使用されているコンテンツ キー ポリシーの割合 (%)|ディメンションなし|
+|JobQuota|はい|ジョブのクォータ|Count|Average|現在のメディア サービス アカウントのジョブクォータ。|ディメンションなし|
 |JobsScheduled|はい|スケジュールされたジョブ|Count|Average|スケジュール済み状態のジョブの数。 このメトリックのカウントには、v3 API を介して送信されたジョブのみが反映されます。 v2 (レガシ) API を介して送信されたジョブはカウントされません。|ディメンションなし|
 |MaxChannelsAndLiveEventsCount|はい|ライブ イベントの最大クォータ|Count|Average|現在のメディア サービス アカウントで許可されるライブ イベントの最大数|ディメンションなし|
 |MaxRunningChannelsAndLiveEventsCount|はい|実行中のライブ イベントの最大クォータ|Count|Average|現在のメディア サービス アカウントで許可される実行中のライブ イベントの最大数|ディメンションなし|
@@ -2211,6 +2217,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |StreamingPolicyCount|はい|ストリーミング ポリシー数|Count|Average|現在のメディア サービス アカウントに既に作成されているストリーミング ポリシーの数|ディメンションなし|
 |StreamingPolicyQuota|はい|ストリーミング ポリシーのクォータ|Count|Average|現在のメディア サービス アカウントで許可されているストリーミング ポリシーの数|ディメンションなし|
 |StreamingPolicyQuotaUsedPercentage|はい|ストリーミング ポリシーのクォータの使用率|Percent|Average|現在のメディア サービス アカウントで使用されているストリーミング ポリシーの割合 (%)|ディメンションなし|
+|TransformQuota|はい|変換クォータ|Count|Average|現在のメディア サービス アカウントの変換クォータ。|ディメンションなし|
 
 
 ## <a name="microsoftmediamediaservicesliveevents"></a>Microsoft.Media/mediaservices/liveEvents
@@ -2238,7 +2245,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|ReceivedBytes|はい|受信バイト|バイト|合計|パイプライン ノードが受信したバイト数。|PipelineTopology、Pipeline、Node|
+|IngressBytes|はい|イングレス バイト数|バイト|合計|パイプライン ノードで受信されたバイト数。|PipelineTopology、Pipeline、Node|
 
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft.MixedReality/remoteRenderingAccounts
@@ -2516,8 +2523,8 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|PEBytesIn|いいえ|入力バイト数|Count|合計|出力バイト数の合計|ディメンションなし|
-|PEBytesOut|いいえ|出力バイト数|Count|合計|出力バイト数の合計|ディメンションなし|
+|PEBytesIn|はい|入力バイト数|Count|合計|出力バイト数の合計|ディメンションなし|
+|PEBytesOut|はい|出力バイト数|Count|合計|出力バイト数の合計|ディメンションなし|
 
 
 ## <a name="microsoftnetworkprivatelinkservices"></a>Microsoft.Network/privateLinkServices
@@ -2837,6 +2844,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |PrefixLatency|はい|プレフィックスの待機時間|ミリ秒|Average|プレフィックスの待機時間の中央値|PrefixName|
+|RoundTripTime|はい|ラウンド トリップ時間|ミリ秒|Average|平均ラウンド トリップ時間|ConnectionMonitorTestName|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
@@ -3503,7 +3511,7 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 |Gen1Collections|はい|Gen 1 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 1 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。 WebApps と FunctionApps が対象。|インスタンス|
 |Gen2Collections|はい|Gen 2 ガベージ コレクション|Count|合計|アプリ プロセスが開始されてからジェネレーション 2 オブジェクトがガベージ コレクションされた回数。 WebApps と FunctionApps が対象。|インスタンス|
 |ハンドル|はい|ハンドルの数|Count|Average|アプリ プロセスによって現在開かれているハンドルの合計数。 WebApps と FunctionApps が対象。|インスタンス|
-|HealthCheckStatus|はい|正常性チェックの状態|Count|Average|正常性チェックの状態。WebApps と FunctionApps が対象。|インスタンス|
+|HealthCheckStatus|はい|正常性チェックの状態|Count|Average|正常性チェックの状態。 WebApps と FunctionApps が対象。|インスタンス|
 |Http101|はい|Http 101|Count|合計|HTTP 状態コード 101 が結果として返された要求の数。 WebApps と FunctionApps が対象。|インスタンス|
 |Http2xx|はい|HTTP 2xx|Count|合計|200 以上 300 未満の HTTP 状態コードが結果として返された要求の数。 WebApps と FunctionApps が対象。|インスタンス|
 |Http3xx|はい|HTTP 3xx|Count|合計|300 以上 400 未満の HTTP 状態コードが結果として返された要求の数。 WebApps と FunctionApps が対象。|インスタンス|
@@ -3588,18 +3596,17 @@ Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲ�
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|BytesPerSecond|はい|バイト/秒。|BytesPerSecond|Average|Migrator に使用されているバイト/秒のスループット速度。||
-|DirectoriesCreatedCount|はい|作成されたディレクトリ数|カウント|合計|これにより、移行の一環として作成されたディレクトリの数の実行中のビューが提供されます。||
-|FileMigrationCount|はい|ファイルの移行数|カウント|合計|これにより、移行されたファイルの総数が提供されます。||
-|InitialScanDataMigratedInBytes|はい|移行された初期スキャン データ (バイト単位)|バイト|合計|これにより、オンプレミスのファイル システムの初回スキャンの結果として、新しい移行プログラムで転送された合計バイト数が表示されます。 初回スキャン移行後に移行に追加されるデータは、このメトリックには含まれません。||
-|LiveDataMigratedInBytes|はい|移行されたライブ データ (バイト単位)|カウント|合計|移行が開始された後、クライアント アクティビティによって変更された LiveData の合計を提供します。||
-|MigratorCPULoad|はい|Migrator の CPU 負荷|Percent|Average|Migrator の処理による CPU 消費。||
-|NumberOfExcludedPaths|はい|除外されたパスの数|カウント|合計|除外ルールにより移行から除外されたパスの実行数を提供します。||
-|NumberOfFailedPaths|はい|失敗したパスの数|カウント|合計|移行に失敗したパスの数。||
-|SystemCPULoad|はい|システム CPU 負荷|Percent|Average|CPU 合計消費量。||
-|TotalMigratedDataInBytes|はい|移行されたデータの合計 (バイト単位)|バイト|合計|これにより、特定の Migrator に対して正常に移行されたバイト数が表示されます||
-|TotalTransactions|はい|合計トランザクション|Count|合計|これにより、ユーザーに請求される可能性があるデータ トランザクションの合計が提供されます。||
-
+|BytesPerSecond|はい|バイト/秒。|BytesPerSecond|Average|Migrator に使用されているバイト/秒のスループット速度。|ディメンションなし|
+|DirectoriesCreatedCount|はい|作成されたディレクトリ数|Count|合計|これにより、移行の一環として作成されたディレクトリの数の実行中のビューが提供されます。|ディメンションなし|
+|FileMigrationCount|はい|ファイルの移行数|Count|合計|これにより、移行されたファイルの総数が提供されます。|ディメンションなし|
+|InitialScanDataMigratedInBytes|はい|移行された初期スキャン データ (バイト単位)|バイト|合計|これにより、オンプレミスのファイル システムの初回スキャンの結果として、新しい移行プログラムで転送された合計バイト数が表示されます。 初回スキャン移行後に移行に追加されるデータは、このメトリックには含まれません。|ディメンションなし|
+|LiveDataMigratedInBytes|はい|移行されたライブ データ (バイト単位)|Count|合計|移行が開始された後、クライアント アクティビティによって変更された LiveData の合計を提供します。|ディメンションなし|
+|MigratorCPULoad|はい|Migrator の CPU 負荷|Percent|Average|Migrator の処理による CPU 消費。|ディメンションなし|
+|NumberOfExcludedPaths|はい|除外されたパスの数|Count|合計|除外ルールにより移行から除外されたパスの実行数を提供します。|ディメンションなし|
+|NumberOfFailedPaths|はい|失敗したパスの数|Count|合計|移行に失敗したパスの数。|ディメンションなし|
+|SystemCPULoad|はい|システム CPU 負荷|Percent|Average|CPU 合計消費量。|ディメンションなし|
+|TotalMigratedDataInBytes|はい|移行されたデータの合計 (バイト単位)|バイト|合計|これにより、特定の Migrator に対して正常に移行されたバイト数が表示されます|ディメンションなし|
+|TotalTransactions|はい|合計トランザクション|Count|合計|これにより、ユーザーに請求される可能性があるデータ トランザクションの合計が提供されます。|ディメンションなし|
 
 ## <a name="next-steps"></a>次のステップ
 

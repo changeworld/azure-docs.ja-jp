@@ -3,20 +3,18 @@ title: AutoML 実験結果の評価
 titleSuffix: Azure Machine Learning
 description: 自動機械学習の実験を実行するごとに、グラフとメトリックを確認し、評価する方法について説明します。
 services: machine-learning
-author: gregorybchris
-ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: automl
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: 91c620a68d375084f8a4be6c5a8bf30b92d016c1
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 2b9384b53b1fa5ac8681f6acab4df6d923d95703
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812193"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162908"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -72,18 +70,21 @@ ms.locfileid: "129812193"
 
 次の表は、実験用に生成された各分類モデルに対して自動 ML によって計算されるモデル パフォーマンス メトリックをまとめたものです。 詳細については、各メトリックの **"計算"** フィールドにリンクされている scikit-learn のドキュメントを参照してください。 
 
+> [!NOTE]
+> 画像分類モデルのメトリックの詳細については、[画像メトリック](#metrics-for-image-models-preview)に関するセクションを参照してください。
+
 |メトリック|説明|計算|
 |--|--|---|
 |AUC | AUC は[受信者操作特性曲線](#roc-curve)の下の領域です。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`AUC_macro`: クラスごとの AUC の算術平均です。<li> `AUC_micro`: マルチラベル形式で計算されます。 すべてのサンプルについて、異なる各クラスが独立した `0/1` の予測として扱われます。 正しいクラスは `true` クラスになり、残りは `false` クラスになります。 その後、すべてのサンプルを組み合わせて、新しい二項分類タスクに対する AUC が計算されます。 <li> `AUC_weighted`: 各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `AUC_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、AUC の値。<br><br>|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.roc_auc_score.html) | 
 |accuracy| 精度は、true クラス ラベルと正確に一致する予測の割合です。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
 |average_precision|平均適合率は、各しきい値で達成した適合率の加重平均として適合率-再現率曲線をまとめたもので、前のしきい値より増加した再現率を重みとして使用します。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>`average_precision_score_macro`: 各クラスの平均適合率スコアの算術平均です。<li> `average_precision_score_micro`: マルチラベル形式で計算されます。 すべてのサンプルについて、異なる各クラスが独立した `0/1` の予測として扱われます。 正しいクラスは `true` クラスになり、残りは `false` クラスになります。 その後、すべてのサンプルを組み合わせて、新しい二項分類タスクの平均適合率が計算されます。<li>`average_precision_score_weighted`: 各クラスの平均適合率スコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `average_precision_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、平均適合率の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.average_precision_score.html)|
 balanced_accuracy|バランスの取れた精度は、各クラスの再現率の算術平均です。<br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
-f1_score|F1 スコアは、適合率と再現率の調和平均です。 偽陽性と偽陰性の両方を適切に調整して測定します。 ただし、真陰性は考慮されません。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>  `f1_score_macro`: 各クラスの F1 スコアの算術平均です。 <li> `f1_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって計算されます。 <li> `f1_score_weighted`: 各クラスの F1 スコアのクラスごとの頻度の加重平均です。 <li> `f1_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、f1 の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.f1_score.html)|
+f1_score|F1 スコアは、適合率と再現率の調和平均です。 偽陽性と偽陰性の両方を適切に調整して測定します。 ただし、真陰性は考慮されません。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>  `f1_score_macro`: 各クラスの F1 スコアの算術平均です。 <li> `f1_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって計算されます。 <li> `f1_score_weighted`: 各クラスの F1 スコアのクラスごとの頻度の加重平均です。 <li> `f1_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、f1 の値。 <br><br>注: `f1_score_micro` の値は常に `accuracy` の値と等しくなります。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|これは、(多項) ロジスティック回帰とその拡張機能 (ニューラル ネットワークなど) で使用される損失関数で、確率的分類法の予測を前提として、true ラベルの負の対数尤度として定義されます。 <br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| 正規化されたマクロ再現率は、ランダムなパフォーマンスでのスコアが 0、最適なパフォーマンスでのスコアが 1 になるように、マクロ平均化および正規化された再現率です。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>ここで、`R` はランダム予測の `recall_score_macro` の予想される値です。<br><br>`R = 0.5`&nbsp;: &nbsp;バイナリ&nbsp;分類の場合。 <br>`R = (1 / C)`: C クラス分類の問題の場合。|
 matthews_correlation | Matthews 相関係数は、精度のバランスを取ります。これは、1 つのクラスに他より多くのサンプルが含まれている場合でも使用できます。 係数 1 は完全な予測、0 はランダムな予測、-1 は逆予測を示します。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
-精度|適合率は、負のサンプルが正としてラベル付けされないようにするモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li> `precision_score_macro`: 各クラスの適合率の算術平均です。 <li> `precision_score_micro`: 真陽性と偽陽性の合計をカウントすることによって、グローバルに計算されます。 <li> `precision_score_weighted`: 各クラスの適合率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `precision_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、適合率の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.precision_score.html)|
-リコール| 再現率は、すべての正のサンプルを検出するモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`recall_score_macro`: 各クラスの再現率の算術平均です。 <li> `recall_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます。<li> `recall_score_weighted`: 各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `recall_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、再現率の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
+精度|適合率は、負のサンプルが正としてラベル付けされないようにするモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li> `precision_score_macro`: 各クラスの適合率の算術平均です。 <li> `precision_score_micro`: 真陽性と偽陽性の合計をカウントすることによって、グローバルに計算されます。 <li> `precision_score_weighted`: 各クラスの適合率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `precision_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、適合率の値。<br><br>注: `precision_score_micro` の値は常に `accuracy` の値と等しくなります。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.precision_score.html)|
+リコール| 再現率は、すべての正のサンプルを検出するモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`recall_score_macro`: 各クラスの再現率の算術平均です。 <li> `recall_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます。<li> `recall_score_weighted`: 各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `recall_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、再現率の値。<br><br>注: `recall_score_micro` の値は常に `accuracy` の値と等しくなります。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|加重精度は、各サンプルが同じクラスに属するサンプルの合計数によって重み付けされる精度です。 <br><br>**目的:** 1 に近いほど良い <br>**範囲:** [0, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
 
 ### <a name="binary-vs-multiclass-classification-metrics"></a>バイナリと多クラスの分類メトリック
@@ -204,9 +205,12 @@ spearman_correlation| スピアマンの相関は、2 つのデータセット�
 
 ### <a name="metric-normalization"></a>メトリックの正規化
 
-自動 ML は回帰および予測メトリックを正規化します。これにより、異なる範囲のデータでトレーニングされたモデルを比較できます。 より大きな範囲のデータでトレーニングされたモデルは、そのエラーが正規化されていない限り、より小さな範囲のデータでトレーニングされた同じモデルよりもエラーが高くなります。
+自動 ML は回帰および予測メトリックを正規化します。これにより、異なるデータでトレーニングされたモデルを比較できます。 一般的に、より大きな範囲のデータでトレーニングされたモデルは、そのエラーが正規化されていない限り、より小さな範囲のデータでトレーニングされた同じモデルよりもエラーが高くなります。
 
-エラー メトリックを標準化する標準的な方法はありませんが、自動 ML では、データの範囲によってエラーを除算する一般的な方法を採用しています: `normalized_error = error / (y_max - y_min)`
+エラー メトリックを標準化する標準的な方法はありませんが、自動 ML では、データの範囲によってエラーを除算する一般的な方法を採用しています: `normalized_error = error / (y_max - y_min)`。 
+
+> [!Note]
+> データの範囲はモデルと一緒に保存されません。 予約テスト セットに対して同じモデルを使用して推論を行う場合、`y_min` と `y_max` はテスト データに応じて変化する可能性があります。また、トレーニング セットとテスト セットに対するモデルのパフォーマンスを比較するために正規化されたメトリックを直接使用できないことがあります。 トレーニング セットから `y_min` と `y_max` の値を渡すことで、比較を公平に行うことができます。
 
 時系列データの予測モデルを評価する場合、自動 ML では、時系列 ID (粒度) ごとに正規化が行われるように追加の手順が必要になります。これは、各時系列でターゲット値の分布が異なる可能性があるためです。
 ## <a name="residuals"></a>残差
@@ -234,6 +238,60 @@ spearman_correlation| スピアマンの相関は、2 つのデータセット�
 
 ### <a name="predicted-vs-true-chart-for-a-bad-model"></a>適切でないモデルの予測と True のグラフ
 ![適切でないモデルの予測と True のグラフ](./media/how-to-understand-automated-ml/chart-predicted-true-bad.png)
+
+## <a name="metrics-for-image-models-preview"></a>イメージ モデルのメトリック (プレビュー)
+
+モデルのパフォーマンスを評価するために、自動 ML には検証データセットの画像が使用されます。 トレーニングの進行状況を把握するために、モデルのパフォーマンスは **エポックレベル** で測定されます。 ニューラル ネットワーク内でデータセット全体が 1 回だけ送信と返信で渡されると、1 エポックが経過します。 
+
+### <a name="image-classification-metrics"></a>画像分類メトリック
+
+評価の主なメトリックは、バイナリおよびマルチクラス分類モデルの場合は **正確性** であり、マルチラベル分類モデルの場合は **IoU** ([Intersection over Union](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.jaccard_score.html#sklearn.metrics.jaccard_score)) です。
+画像分類モデルの分類メトリックは、「[分類メトリック](#classification-metrics)」セクションに定義されているものと同じです。 また、あるエポックに関連付けられた損失値はログに記録もされます。これは、トレーニングの進行状況を監視し、モデルが過剰適合か過少適合かを判断するのに役立ちます。
+
+分類モデルのすべての予測は、予測が行われたときの信頼度のレベルを示す信頼度スコアと関連付けられています。 マルチラベル画像分類モデルは、既定では、0.5 のスコアしきい値を使用して評価されます。つまり、少なくともこのレベルの信頼性を持つ予測のみが、関連するクラスの陽性の予測と見なされます。 マルチクラス分類にはスコアしきい値が使用されませんが、代わりに、最大の信頼度スコアを持つクラスが予測と見なされます。 
+
+#### <a name="epoch-level-metrics-for-image-classification"></a>画像分類のためのエポックレベルのメトリック
+表形式データセットの分類メトリックとは異なり、画像分類モデルの場合、以下に示すように、すべての分類メトリックはエポックレベルでログに記録されます。
+
+![画像分類のエポックレベルのグラフ](./media/how-to-understand-automated-ml/image-classification-accuracy.png)
+
+#### <a name="summary-metrics-for-image-classification"></a>画像分類の概要メトリック
+
+エポック レベルでログに記録されるスカラー メトリックとは別に、画像分類モデルの場合、[混同行列](#confusion-matrix)、ROC 曲線、適合率 - 再現率曲線を含む[分類グラフ](#roc-curve)、最高レベルの主要メトリック (正確性) スコアを取得した最善のエポックのモデルの分類レポートなどの概要メトリックもログに記録されます。
+
+分類レポートには、適合率、リコール、f1 スコア、サポート、auc、平均適合率などのメトリックのクラスレベルの値を、以下に示すように、ミクロ、マクロ、加重といったさまざまなレベルの平均化と共に利用できます。
+「[分類メトリック](#classification-metrics)」セクションのメトリック定義 を参照してください。
+
+![画像分類の分類レポート](./media/how-to-understand-automated-ml/image-classification-report.png)
+
+### <a name="object-detection-and-instance-segmentation-metrics"></a>オブジェクト検出とインスタンスのセグメント化メトリック
+
+画像オブジェクト検出またはインスタンス セグメント化のモデルからのすべての予測は、信頼度スコアと関連付けられます。
+信頼度スコアがスコアのしきい値より大きい予測は予測として出力され、メトリックの計算に使用されます。その既定値はモデルによって異なり、[ハイパーパラメーターの調整](how-to-auto-train-image-models.md#model-specific-hyperparameters)に関するページ (`box_score_threshold` ハイパーパラメーター) から参照できます。
+
+画像オブジェクト検出とインスタンス セグメント化モデルのメトリック コンピューティングは、**IoU** ([Intersection over Union](https://en.wikipedia.org/wiki/Jaccard_index)) というメトリックで定義される重複測定に基づいて行われます。これを計算するには、グランドトゥルースと予測の間の積集合を、グランドトゥルースと予測の和集合で除算します。 すべての予測から計算された IoU は、IoU しきい値と呼ばれる **重複しきい値** と比較されます。これにより、予測がユーザーが注釈をつけたグランドトゥルースとどれだけ重なると、予測が陽性の予測と見なされるかが決まります。 予測から計算された IoU が重複しきい値よりも小さい場合、その予測は関連するクラスの陽性の予測とは見なされません。
+
+画像オブジェクト検出モデルとインスタンス セグメント化モデルを評価するための主要なメトリックは、**平均適合率 (mAP)** です。 mAP は、すべてのクラスの平均適合率 (AP) の平均値です。 自動化 ML オブジェクト検出モデルは、次の 2 つの一般的な方法を使用した mAP の計算をサポートしています。
+
+**パスカル VOC メトリック**: 
+
+[パスカル VOC](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/devkit_doc.html#SECTION00044000000000000000) mAP は、オブジェクト検出またはインスタンス セグメント化モデルで既定の mAP 計算方法です。 パスカル VOC スタイルの mAP 法により、適合率 - 再現率曲線のバージョンの下の面積が計算されます。 最初の p(rᵢ) は、再現率 i における適合率であり、すべての一意の再現率値に対して計算されます。 次に、p(rᵢ) は任意の再現率 r' >= rᵢ で取得された最大適合率に置き換えられます。 このバージョンの曲線の適合率値は、単調に減少しています。 パスカル VOC mAP メトリックは、既定では IoU しきい値 0.5 で評価されます。 この概念の詳細な説明については、この[ブログ](https://jonathan-hui.medium.com/map-mean-average-precision-for-object-detection-45c121a31173)を参照してください。
+
+
+**COCO メトリック**: 
+
+[COCO 評価法](https://cocodataset.org/#detection-eval)の場合、10 個の IoU しきい値の平均値と共に、101 点補間法が AP の計算に使用されます。 AP@[.5:.95] は 0.5 から 0.95 までの IoU の平均 AP に対応し、ステップ サイズは 0.05 です。 自動 ML を使用すると、AP や AR (平均再現率) などの COCO 法で定義された 12 個のメトリックがさまざまなスケールでアプリケーション ログに記録されますが、メトリックのユーザー インターフェイスには、IoU しきい値が 0.5 の mAP のみが表示されます。 
+
+> [!TIP]
+> [ハイパーパラメーターの調整](how-to-auto-train-image-models.md#task-specific-hyperparameters)に関するセクションで説明されているように、`validation_metric_type`ハイパーパラメーターを 'coco' に設定すると、画像オブジェクト検出モデルの評価に coco メトリックを使用できます。
+
+#### <a name="epoch-level-metrics-for-object-detection-and-instance-segmentation"></a>オブジェクト検出とインスタンス セグメント化のエポックレベル メトリック
+mAP、適合率、再現率の値は、画像オブジェクト検出およびインスタンス セグメント化モデルのエポックレベルでログに記録されます。 また、mAP、適合率、再現率のメトリックは、'per_label_metrics' という名前でクラスレベルでもログに記録されます。 この 'per_label_metrics' は表形式で表示することをお勧めします。 
+
+> [!NOTE]
+> 'coco' 法を使用している場合、適合率、再現率、ラベル単位のメトリックのエポックレベル メトリックは使用できません。
+
+![オブジェクト検出のエポックレベルのグラフ](./media/how-to-understand-automated-ml/image-object-detection-map.png)
 
 ## <a name="model-explanations-and-feature-importances"></a>モデルの説明と特徴の重要度
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 8/27/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 844c450e5a549458964b7747160d7efe553d406a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c9eabf879522d517f35da2a859c488ebdfbee64a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620699"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038462"
 ---
 # <a name="tutorial-configure-datawiza-with-azure-active-directory-for-secure-hybrid-access"></a>チュートリアル: Datawiza と Azure Active Directory の統合を構成して安全なハイブリッド アクセスを実現する
 
@@ -47,7 +47,7 @@ Datawiza 統合には、次のコンポーネントが含まれています。
 
 - Datawiza Access Broker (DAB) - サービス ユーザーがサインオンし、HTTP ヘッダーを介してアプリケーションに透過的に ID を渡します。
 
-- Datawiza Cloud Management Console (DCMC) - DAB を管理する集中管理コンソール。 DCMC には、管理者が DAB の構成とそのアクセス制御ポリシーを管理するための UI および Restful API が用意されています。
+- Datawiza Cloud Management Console (DCMC) - DAB を管理する集中管理コンソール。 DCMC には、管理者が DAB の構成とそのアクセス制御ポリシーを管理するための UI および RESTful API が用意されています。
 
 次のアーキテクチャの図に、この実装を示します。
 

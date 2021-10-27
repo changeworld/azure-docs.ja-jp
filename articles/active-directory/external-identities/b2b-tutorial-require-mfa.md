@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df6d39401165c281af2c8b1a1896f60311c1b52
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: b9fa2dd3ab101a340b01f3adcbdb33f8ea36595e
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579119"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163618"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル: B2B ゲスト ユーザーに多要素認証を適用する
 
@@ -80,7 +80,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 4. **[条件付きアクセス]** ページで、上部のツール バーの **[新しいポリシー]** を選択します。
 5. **[新規]** ページの **[名前]** テキスト ボックスに、「**B2B ポータルにアクセスするには MFA が必要**」と入力します。
 6. **[割り当て]** セクションで、 **[ユーザーとグループ]** を選択します。
-7. **[ユーザーとグループ]** ページで、 **[ユーザーとグループの選択]** を選択し、 **[すべてのゲスト ユーザー (プレビュー)]** を選択します。
+7. **[ユーザーとグループ]** ページで、 **[ユーザーとグループの選択]** を選択し、 **[すべてのゲストおよび外部ユーザー]** を選択します。
 
     ![すべてのゲスト ユーザーを選択する方法を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9. **[完了]** を選択します。

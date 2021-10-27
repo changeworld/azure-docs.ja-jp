@@ -13,12 +13,12 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 1f4a710beba53987ce555aad5526298f81d0a43c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c0b54b7c7e424c8c7f645fe41d7b7b57c105ca65
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232301"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993779"
 ---
 # <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>テナントで ADAL を使用しているアプリの一覧を取得する
 
@@ -40,9 +40,9 @@ Azure Monitor にイベントを送信するように Azure AD を構成する *
 
 Azure AD サインインと監査ログを、Azure Monitor 統合に指定されている Azure Monitor と統合したら、サインイン ブックにアクセスします。
 
-   1. Azure portal にサインインします 
-   1.  **[Azure Active Directory]**  > **[監視]**  > **[ブック]** に移動します 
-   1. **[使用状況]** セクションで、 **[サインイン]** ブックを開きます 
+   1. Azure portal にサインインする
+   1. **[Azure Active Directory]** > **[監視]** > **[Workbooks]\(ブック\)** に移動します
+   1. **[使用状況]** セクションで、**[サインイン]** ブックを開きます
 
    :::image type="content" source="media/howto-get-list-of-all-active-directory-auth-library-apps/sign-in-workbook.png" alt-text="[サインイン] ブックを強調表示している Azure Active Directory ポータル ブック インターフェイスのスクリーンショット。":::
 

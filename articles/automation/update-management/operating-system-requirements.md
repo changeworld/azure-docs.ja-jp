@@ -3,14 +3,14 @@ title: Azure Automation Update Management でサポートされているクラ�
 description: この記事では、Azure Automation Update Management でサポートされている Windows オペレーティング システムと Linux オペレーティング システムについて説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/14/2021
+ms.date: 10/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: a470a3c8d4ab9ac4f390f7b18133f65f44fed096
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 790544818a207d0a7bb0453f03b890b0dbf5510f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711628"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992807"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>Update Management でサポートされているオペレーティング システム
 
@@ -32,7 +32,7 @@ ms.locfileid: "129711628"
 |CentOS 6、7、および 8       | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
 |Oracle Linux 6.x、7.x、8x | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |Red Hat Enterprise 6、7、および 8      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
-|SUSE Linux Enterprise Server 12、15、15.1、および 15.2      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。     |
+|SUSE Linux Enterprise Server 12、15、および 15.1      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。     |
 |Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS、および 20.04 LTS       |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 
 > [!NOTE]

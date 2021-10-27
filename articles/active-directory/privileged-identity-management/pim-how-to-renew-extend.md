@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 10/11/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 748abad646342f2f13a554212fcd84393b8d3391
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 7ba5d47c33b276b1585ad6200058439be4c4bc02
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669646"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993589"
 ---
 # <a name="extend-or-renew-azure-ad-role-assignments-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの割り当てを延長または更新する
 
@@ -48,7 +48,7 @@ Privileged Identity Management は、14 日以内に期限切れになるロー�
 
 ![資格のあるロールと [アクション] 列が一覧表示されている [Azure AD ロール] - [自分のロール] ページ](./media/pim-how-to-renew-extend/pim-extend-link-in-portal.png)
 
-割り当ての終了日時が 14 日以内にある場合は、ユーザー インターフェイスの **延長** ボタンがアクティブ リンクになります。 次の例では、現在の日付が 3 月 27 日であると想定しています。
+割り当ての終了日時が 14 日以内にある場合は、ユーザー インターフェイスの **延長** ボタンがアクティブ リンクになります。 次の例では、現在の日付が 3 月 27 日であると想定しています。 ロールに割り当てられたグループで、**[延長]** リンクが利用できないので、割り当てを継承している 1 人のユーザーがグループの割り当てを延長できません。
 
 ![アクティブ化または延長するためのリンクがある [アクション] 列](./media/pim-how-to-renew-extend/pim-extend-within-fourteen.png)
 

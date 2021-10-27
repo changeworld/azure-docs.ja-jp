@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: ce3587d0e70c2dec04e60bed5a23f16bd6c7688b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 3cbc6d9b0f51b939a03378c45845c50f91c4549f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233033"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991985"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -290,6 +290,9 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
     ![LDP.exe を使用してマネージド ドメインからオブジェクトを検索する](./media/tutorial-configure-ldaps/ldp-query.png)
 
 特定のコンテナーに対して直接クエリを実行するには、 **[表示] > [ツリー]** メニューから、*OU=AADDC Users,DC=AADDSCONTOSO,DC=COM* や *OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM* などの **BaseDN** を指定します。 クエリの書式設定と作成の方法の詳細については、[LDAP クエリの基礎][ldap-query-basics]に関するページを参照してください。
+
+> [!NOTE]
+> 自己署名証明書を使用する場合は、LDAPS 用に信頼されたルート証明機関に追加した自己署名証明書が LDP.exe で機能することを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

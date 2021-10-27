@@ -2,19 +2,18 @@
 title: このリリースの新機能
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning および Machine Learning SDK と Data Prep Python SDK の最新の更新プログラムについて説明します。
-services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 10/04/2021
-ms.openlocfilehash: 598cc1944cb49024d91da476b95f9aa0b25f6279
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 8807aa11ce8f9d4c96ae27656d9d29a4f5f7e7f1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811102"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994178"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -42,7 +41,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
   + **azureml-responsibleai**
     + ダッシュボードのダウンロードに失敗したときのエラーメッセージを改善します
   + **azureml-train-automl-client**
-    + イメージ分類、オブジェクト検出、インスタンス セグメント化などのコンピューター ビジョン タスクのサポートが追加されました。 詳細なドキュメントは次の場所にあります: https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-image-models
+    + イメージ分類、オブジェクト検出、インスタンス セグメント化などのコンピューター ビジョン タスクのサポートが追加されました。 詳細なドキュメントについては、「[イメージ モデルを自動的にトレーニングする方法](how-to-auto-train-image-models.md)」を参照してください。
     + バイナリ メトリックの計算を有効にします
   + **azureml-train-automl-runtime**
     + モデル テストの実行に TCNForecaster のサポートが追加されます。

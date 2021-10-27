@@ -4,18 +4,18 @@ description: 監視のために関数アプリを Application Insights に接続
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3afe10184ba2b3f0eba02111b98b31e86b26e075
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493755"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006483"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Functions の監視を構成する方法
 
 Azure Functions が Application Insights に統合されると、関数アプリの監視をより適切に行うことができます。 Azure Monitor の機能である Application Insights は、アプリがログに書き込む情報など、関数アプリによって生成されたデータを収集する拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights との統合は、通常、関数アプリが作成されるときに有効になります。 アプリにインストルメンテーション キーが設定されていない場合は、まず [Application Insights との統合を有効にする](#enable-application-insights-integration)必要があります。 
 
-Application Insights はカスタム構成なしで使用できます。 既定の構成ではデータ量が多くなる可能性があります。 Visual Studio Azure サブスクリプションを使っている場合、Application Insights のデータ上限に達する可能性があります。 Application Insights のコストの詳細については、「[Application Insights の使用量とコストを管理する](../azure-monitor/app/pricing.md)」を参照してください。
+Application Insights はカスタム構成なしで使用できます。 既定の構成ではデータ量が多くなる可能性があります。 Visual Studio Azure サブスクリプションを使っている場合、Application Insights のデータ上限に達する可能性があります。 Application Insights のコストの詳細については、「[Application Insights の使用量とコストを管理する](../azure-monitor/app/pricing.md)」を参照してください。 詳細については、「[テレメトリの量が多いソリューション](#solutions-with-high-volume-of-telemetry)」を参照してください。
 
 この記事の後半では、関数から Application Insights に送信するデータを構成し、カスタマイズする方法を説明します。 関数アプリの場合、ログは [host.json] ファイルで構成されます。 
 
@@ -140,6 +140,16 @@ Azure Functions のロガーでは、すべてのログに *カテゴリ* があ
 ---
 
 `None` というログ レベル設定を使用すれば、カテゴリのログが書き込まれないようにすることができます。 
+
+> [!CAUTION]
+> Azure Functions と Application Insights の統合は、Application Insights のテーブルにテレメトリ イベントを格納することによって行われます。カテゴリ ログ レベルを `Information` 以外の値に設定すると、テレメトリはそれらのテーブルに流れなくなるため、Application Insights または関数の [モニター] タブに関連データを表示することはできません。
+>
+> 上記のサンプルから:
+> * `Host.Results` カテゴリが `Error` ログ レベルに設定されている場合、`requests` テーブルには、失敗した関数の実行に関するホスト実行テレメトリ イベントのみが収集されます。これにより、Application Insights と関数の [モニター] タブの両方に、成功した実行のホスト実行の詳細は表示されなくなります。
+> * `Function` カテゴリが `Error` ログ レベルに設定されている場合は、すべての関数について、`dependencies`、`customMetrics`、`customEvents` に関連する関数テレメトリ データの収集が停止され、Application Insights にこのデータが表示されなくなります。 `Error` レベルで記録された `traces` のみが収集されます。 
+>
+> どちらの場合も、Application Insights と関数の [モニター] タブでのエラーと例外のデータの収集は続けられます。詳細については、「[テレメトリの量が多いソリューション](#solutions-with-high-volume-of-telemetry)」を参照してください。
+
 
 ## <a name="configure-the-aggregator"></a>アグリゲーターを構成する
 
@@ -280,6 +290,130 @@ Application Insights を有効にする場合は、Azure Storage を使用する
 
 組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。 アプリ設定を削除する前に、同じ関数アプリの既存の関数によって、Azure Storage のトリガーまたはバインドにその設定が使用されていないことを確認してください。
 
+## <a name="solutions-with-high-volume-of-telemetry"></a>テレメトリの量が多いソリューション 
+
+関数アプリはソリューションの重要な部分であり、本質的に大量のテレメトリ (IoT ソリューション、イベント ドリブン ベースのソリューション、高負荷の金融システム、統合システムなど) が発生する可能性があります。この場合、監視を維持しながらコストを削減するために、追加の構成を検討する必要があります。
+
+生成されたテレメトリの使用方法 (リアルタイム ダッシュボード、アラート、詳細な診断など) に応じて、生成されるデータの量を減らすための戦略を定義する必要があります。 その戦略により、運用環境での関数アプリの監視、運用、診断を適切に行うことができます。 次のオプションを検討できます。
+
+* **サンプリングを使用する**: [前述](#configure-sampling)のように、これは統計的に正しい分析を維持しながら、取り込まれるテレメトリ イベントの量を大幅に減らすのに役立ちます。 サンプリングを使用しても、テレメトリの量が多くなる可能性があります。 [アダプティブ サンプリング](../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-applications)によって提供されるオプションを調べてください。たとえば、`maxTelemetryItemsPerSecond` を、監視のニーズによって生成される量のバランスを取る値に設定します。 テレメトリ サンプリングは、関数アプリを実行しているホストごとに適用されることに注意してください。 
+
+* **既定のログ レベル**: すべてのテレメトリ カテゴリの既定値として `Warning` または `Error` を使用します。 その上で、関数を適切に監視および診断できるように、どの[カテゴリ](#configure-categories)を `Information` に設定するかを決めることができます。
+
+* **関数のテレメトリを調整する**: 既定のログ レベルを `Error` または `Warning` に設定すると、各関数からの詳細情報 (依存関係、カスタム メトリック、カスタム イベント、トレース) は収集されません。 運用環境の監視にとって重要な関数については、`Function.<YOUR_FUNCTION_NAME>` カテゴリに明示的なエントリを定義して、`Information` に設定します。これにより、詳細情報を収集できます。 この時点で、[ユーザーが生成したログ](functions-monitoring.md#writing-to-logs)が `Information` レベルで収集されないようにするには、`Function.<YOUR_FUNCTION_NAME>.User` カテゴリを `Error` または `Warning` のログ レベルに設定します。
+
+* **Host.Aggregator カテゴリ**: 「[カテゴリを構成する](#configure-categories)」で説明したように、このカテゴリを使用すると関数呼び出しの集計情報が提供されます。 このカテゴリの情報は Application Insights の `customMetrics` テーブルに収集され、Azure portal の 関数の [概要] タブに表示されます。 アグリゲーターの構成方法によっては、`flushTimeout` によって決定される遅延が、収集されるテレメトリに含まれることを考慮してください。 このカテゴリを `Information` 以外の値に設定すると、`customMetrics` テーブルでのデータの収集は停止され、関数の [概要] タブにメトリックが表示されなくなります。
+
+  次に示すのは、関数の [概要] タブに表示されている Host.Aggregator テレメトリ データのスクリーンショットです。:::image type="content" source="media/configure-monitoring/host-aggregator-function-overview.png" alt-text="関数の [概要] タブに表示されている Host.Aggregator テレメトリのスクリーンショット。" lightbox="media/configure-monitoring/host-aggregator-function-overview-big.png":::
+
+  次のスクリーンショットは、Application Insights の customMetrics テーブルの Host.Aggregator テレメトリ データを示したものです。
+  :::image type="content" source="media/configure-monitoring/host-aggregator-custom-metrics.png" alt-text="customMetrics Application Insights テーブルの Host.Aggregator テレメトリのスクリーンショット。" lightbox="media/configure-monitoring/host-aggregator-custom-metrics-big.png":::
+
+* **Host.Results カテゴリ**: 「[カテゴリを構成する](#configure-categories)」で説明されているように、このカテゴリでは、ランタイムによって生成された、関数呼び出しの成功または失敗を示すログが提供されます。 このカテゴリの情報は、Application Insights の `requests` テーブルに収集されて、関数の [モニター] タブと Application Insights のさまざまなダッシュボード ([パフォーマンス]、[エラー] など) に表示されます。このカテゴリを `Information` 以外の値に設定した場合は、定義されているログ レベル (またはそれより高いもの) で生成されたテレメトリのみが収集されます。たとえば、これを `error` に設定すると、失敗した実行の要求データのみが追跡されます。 
+
+  次のスクリーンショットでは、関数の [モニター] タブに表示された Host.Results テレメトリ データが示されています。:::image type="content" source="media/configure-monitoring/host-results-function-monitor.png" alt-text="関数の [モニター] タブでの Host.Results テレメトリのスクリーンショット。" lightbox="media/configure-monitoring/host-results-function-monitor-big.png":::
+
+  次のスクリーンショットは、Application Insights の [パフォーマンス] ダッシュボードに表示された Host.Results テレメトリ データを示したものです。
+  :::image type="content" source="media/configure-monitoring/host-results-application-insights.png" alt-text="Application Insights の [パフォーマンス] ダッシュボードでの Host.Results テレメトリのスクリーンショット。" lightbox="media/configure-monitoring/host-results-application-insights-big.png":::
+
+* **Host.Aggregator と Host.Results の比較**: どちらのカテゴリでも、関数の実行に関する優れた分析情報が提供されます。必要に応じて、これらのカテゴリの 1 つから詳細情報を削除して、他のカテゴリを監視とアラートに使用できます。
+サンプルを次に示します。
+# <a name="v2x"></a>[v2.x+](#tab/v2)
+
+``` json
+{
+  "version": "2.0",  
+  "logging": {
+    "logLevel": {
+      "default": "Warning",
+      "Function": "Error",
+      "Host.Aggregator": "Error",
+      "Host.Results": "Information", 
+      "Function.Function1": "Information",
+      "Function.Function1.User": "Error"
+    },
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond": 1,
+        "excludedTypes": "Exception"
+      }
+    }
+  }
+} 
+```
+# <a name="v1x"></a>[v1.x](#tab/v1) 
+```json
+{
+  "logger": {
+    "categoryFilter": {
+      "defaultLevel": "Warning",
+      "categoryLevels": {
+        "Function": "Error",
+        "Host.Aggregator": "Error",
+        "Host.Results": "Information",
+        "Host.Executor": "Warning"
+      }
+    }
+  },
+  "applicationInsights": {
+    "sampling": {
+      "isEnabled": true,
+      "maxTelemetryItemsPerSecond" : 5
+    }
+  }
+}
+```
+---
+
+この構成では、次のものが得られます。
+
+* すべての関数とテレメトリ カテゴリの既定値は `Warning` に設定されるため (Microsoft と Worker のカテゴリを含め)、既定では、ランタイム ログとカスタム ログの両方によって生成されたエラーと警告がすべて収集されます。 
+
+* `Function` カテゴリ ログ レベルは `Error` に設定されているため、すべての関数について、既定では例外とエラー ログだけが収集されます (依存関係、ユーザー生成メトリック、ユーザー生成イベントはスキップされます)。
+
+* `Host.Aggregator` カテゴリは `Error` ログ レベルに設定されているため、関数呼び出しからの集計情報は `customMetrics` Application Insights テーブルに収集されず、実行数 (合計、成功、失敗など) に関する情報は関数の概要ダッシュボードに表示されません。
+
+* `Host.Results` カテゴリについては、すべてのホスト実行情報が `requests` Application Insights テーブルに収集されます。 関数の [モニター] ダッシュボードと Application Insights のダッシュボードに、すべての呼び出し結果が表示されます。
+
+* `Function1` という関数ではログ レベルを `Information` に設定しているので、この具象関数については、すべてのテレメトリ (依存関係、カスタム メトリック、カスタム イベント) が収集されます。 同じ関数で、`Function1.User` カテゴリ (ユーザー生成トレース) は `Error` に設定されているため、カスタム エラー ログだけが収集されます。 v1.x では、関数ごとの構成はサポートされていないので注意してください。 
+
+* 例外を除き、サンプリングは種類ごとに 1 秒あたり 1 つのテレメトリ項目を送信するように構成されます。 このサンプリングは、関数アプリを実行しているサーバー ホストごとに行われるので、4 つのインスタンスがある場合、この構成により、1 秒あたり 4 つの種類ごとのテレメトリ項目と、発生する可能性があるすべての例外が出力されます。 メトリックの要求レートや例外レートなどのカウントはサンプリング レートを補正するように調整され、メトリックス エクスプローラーにはほぼ正しい値が表示されることに注意してください。  
+
+> [!TIP]
+> さまざまな構成を試して、ログ、監視、アラートの要件が満たされることを確認してください。 予期しないエラーや誤動作が発生した場合に詳細な診断ができるようにします。
+
+### <a name="overriding-monitoring-configuration-at-runtime"></a>実行時の監視構成のオーバーライド
+最後に、運用環境で特定のカテゴリのログ動作をすばやく変更する必要があり、`host.json` ファイルの変更のためだけに全体のデプロイを行いたくない場合があります。 そのような場合は、[host.json の値](functions-host-json.md#override-hostjson-values)をオーバーライドすることができます。
+
+
+これらの値をアプリ設定レベルで構成する (そして、host.json の変更だけでの再デプロイを回避する) には、アプリケーションの設定として同等の値を作成することにより、`host.json` の特定の値をオーバーライドする必要があります。 ランタイムによって `AzureFunctionsJobHost__path__to__setting` の形式のアプリケーション設定が検出されると、JSON の `path.to.setting` にある同等の `host.json` の設定がオーバーライドされます。 アプリケーション設定として表現した場合、JSON 階層を示すために使用されるドット (`.`) は 2 つのアンダースコア (`__`) に置き換えられます。 たとえば、以下のアプリ設定を使用して、上記の `host.json` と同じ個々の関数ログ レベルを構成できます。
+
+
+| host.json のパス | アプリ設定 |
+|----------------|-------------|
+| logging.logLevel.default  | AzureFunctionsJobHost__logging__logLevel__default  |
+| logging.logLeve.Host.Aggregator | AzureFunctionsJobHost__logging__logLevel__Host__Aggregator |
+| logging.logLevel.Function | AzureFunctionsJobHost__logging__logLevel__Function |
+| logging.logLevel.Function.Function1 | AzureFunctionsJobHost__logging__logLevel__Function1 |
+| logging.logLevel.Function.Function1.User | AzureFunctionsJobHost__logging__logLevel__Function1.User |
+
+
+設定のオーバーライドは、Azure portal の関数アプリの [構成] ブレードで直接、または Azure CLI や PowerShell スクリプトを使用して、行うことができます。
+
+# <a name="az-cli"></a>[az cli](#tab/v2)
+```azurecli-interactive
+az functionapp config appsettings set --name MyFunctionApp --resource-group MyResourceGroup --settings "AzureFunctionsJobHost__logging__logLevel__Host__Aggregator=Information"
+```
+# <a name="powershell"></a>[PowerShell](#tab/v1) 
+```powershell
+Update-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSetting @{"AzureFunctionsJobHost__logging__logLevel__Host__Aggregator" = "Information"}
+```
+---
+
+> [!NOTE]
+> アプリ設定を変更して `host.json` をオーバーライドすると、関数アプリが再起動されます。
+ 
 ## <a name="next-steps"></a>次のステップ
 
 監視の詳細については、以下に関するページを参照してください。

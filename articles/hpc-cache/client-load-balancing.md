@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0aa704b44a7a61472b3d10c3b7cc94f5e95dd9ff
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2a8c35db125b80223cbb4f07e8c01ca45428a3a8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699204"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004941"
 ---
 # <a name="load-balance-hpc-cache-client-traffic"></a>HPC Cache のクライアント トラフィックの負荷分散
 
@@ -37,7 +37,9 @@ ms.locfileid: "128699204"
 
 ## <a name="use-scripted-load-balancing"></a>スクリプト化された負荷分散を使用する
 
-使用可能な IP アドレス間でクライアント マウントをプログラムでローテーションするには、いくつかの方法があります。
+使用可能な IP アドレス間でクライアント マウントをプログラムでローテーションするには、いくつかの方法があります。 次に 2 つの例を示します。
+
+### <a name="mount-command-script-cksum-example"></a>マウント コマンド スクリプト cksum の例
 
 こちらのマウント コマンド例では、ハッシュ関数 ``cksum`` と クライアント ホスト名を使用して、HPC Cache 上の使用可能なすべての IP アドレス間に、クライアント接続を自動的に分散します。 すべてのクライアント マシンに一意のホスト名がある場合は、各クライアントでこのコマンドを実行して、使用可能なすべてのマウント ポイントが使用されていることを確認できます。
 
@@ -67,6 +69,35 @@ mount -o hard,proto=tcp,mountproto=tcp,retry=30 $(X=(10.0.0.{1..3});echo ${X[$((
 
 ```bash
 mount -o hard,proto=tcp,mountproto=tcp,retry=30 $(X=(10.7.0.{1..3});echo ${X[$(($(hostname|cksum|cut -f 1 -d ' ')%3))]}):/blob-target-1 /hpc-cache/blob1 
+```
+
+### <a name="round-robin-function-example"></a>ラウンド ロビン関数の例
+
+このコード例では、HPC Cache で使用可能なすべての IP アドレスにクライアントを分散させるためのランダム化要素として、クライアントの IP アドレスを使用しています。
+
+```bash
+function mount_round_robin() {
+
+  # to ensure the clients are spread out somewhat evenly the default
+  # mount point is based on this client's IP octet4 % number of HPC cache mount IPs.
+
+  declare -a MOUNT_IPS="($(echo ${NFS_IP_CSV} | sed "s/,/ /g"))"
+  HASH=$(hostname | cksum | cut -f 1 -d ' ')
+  DEFAULT_MOUNT_INDEX=$((${HASH} % ${#MOUNT_IPS[@]}))
+  ROUND_ROBIN_IP=${MOUNT_IPS[${DEFAULT_MOUNT_INDEX}]}
+
+  DEFAULT_MOUNT_POINT="${BASE_DIR}/default"
+
+  # no need to write again if it is already there
+  if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
+      echo "${ROUND_ROBIN_IP}:${NFS_PATH} ${DEFAULT_MOUNT_POINT} nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+      mkdir -p "${DEFAULT_MOUNT_POINT}"
+      chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
+  fi
+  if ! grep -qs "${DEFAULT_MOUNT_POINT} " /proc/mounts; then
+      retrycmd_if_failure 12 20 mount "${DEFAULT_MOUNT_POINT}" || exit 1
+  fi
+}
 ```
 
 ## <a name="use-dns-load-balancing"></a>DNS 負荷分散を使用する

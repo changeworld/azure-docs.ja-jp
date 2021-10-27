@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
 ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: d973276781a1664680a3dec08eb894fc362911a5
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 46e0373b7c95b559dd6037d20f00324cd89209d7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211178"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045883"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 

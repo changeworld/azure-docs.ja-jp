@@ -9,13 +9,13 @@ ms.topic: how-to
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 09/21/2021
-ms.openlocfilehash: 9452b12a8ad26ec2da5c488dc83f624863a4c647
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/13/2021
+ms.openlocfilehash: 333b6faabd6603f09c4522f09a18b52c5503f357
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582565"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004637"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,9 +47,10 @@ Intelligent Insights ログのエクスポートをストリーミングする�
 | [Deadlocks](#deadlocks-dataset): データベースにはデッドロック イベントに関する情報が含まれます。 | はい | いいえ |
 | [AutomaticTuning](#automatic-tuning-dataset): データベースの自動チューニングの推奨事項に関する情報が含まれます。 | はい | いいえ |
 | [SQLInsights](#intelligent-insights-dataset):データベースのパフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](intelligent-insights-overview.md) に関するページを参照してください。 | はい | はい |
+| ワークロード管理: "*Azure Synapse でのみ利用可能*" 詳細については、「[Azure Synapse Analytics – ワークロード管理ポータル監視](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor)」を参照してください。| いいえ | いいえ | 
 
 > [!NOTE]
-> master、msdb、model、resource、および tempdb データベースなどの **システム データベース** に対して診断設定を構成することはできません。
+> `master`、`msdb`、`model`、リソース、および `tempdb` データベースなどの **システム データベース** に対して診断設定を構成することはできません。
 
 ## <a name="streaming-export-destinations"></a>ストリーミング エクスポートの宛先
 

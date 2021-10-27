@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: 378ba28eaa4b68cb1d05fa0af5c11ca95bd52a8b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 3a56f01c210fb9b6e29294e00a1cb13715108b42
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210328"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167554"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) についてよく寄せられる質問
 
@@ -96,7 +96,7 @@ Azure Front Door は、グローバルに分散されたマルチ テナント �
 
 * 使用するバックエンドが、Azure Front Door のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスからのトラフィックのみを受け入れるように IP ACL 処理を構成します。 バックエンドに対する ACL については、以下の IP の詳細を参照してください。
  
-    * Front Door の IPv4 バックエンド IP アドレスの範囲については、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)に関するページの「*AzureFrontDoor.Backend*」セクションを参照してください。 または、[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
+    * Front Door のバックエンド IP アドレスの範囲については、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)に関するページの「*AzureFrontDoor.Backend*」セクションを参照してください。 または、[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
     * 仮想化されたホスト IP アドレスを通した Azure の[基本的なインフラストラクチャ サービス](../../virtual-network/network-security-groups-overview.md#azure-platform-considerations): `168.63.129.16` および `169.254.169.254`。
 
     > [!WARNING]

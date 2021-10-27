@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: fe50e8db24f0f280365e435d8a205e9b45ac6ccb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b2fa87d140a9a86c3ced814d15a3898b34c9d4d1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774522"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072938"
 ---
 # <a name="on-demand-capacity-reservation-preview"></a>オンデマンドの容量予約 (プレビュー)
 
@@ -38,54 +38,6 @@ Azure によって予約要求が受け入れられると、一致する構成�
 
 > [!NOTE]
 > 容量予約には、仮想マシンで使用する Azure 可用性 SLA も付属しています。 SLA は、パブリック プレビューの期間中は適用されず、容量予約が一般提供されるようになった時点で定義されます。
-
-
-## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
-
-容量予約機能を使用するには、その前に、プレビュー用にサブスクリプションを登録する必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使って、機能の登録を完了することができます。
-
-### <a name="cli"></a>[CLI](#tab/cli1)
-
-1. [az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
-
-    ```azurecli-interactive
-    az feature register --namespace Microsoft.Compute --name CapacityReservationPreview
-    ```
-
-1. 機能の登録には最大で 15 分かかる場合があります。 登録の状態を確認します。
-
-    ```azurecli-interactive
-    az feature show --namespace Microsoft.Compute --name CapacityReservationPreview
-    ```
-
-1. サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.Compute
-    ``` 
-
-### <a name="powershell"></a>[PowerShell](#tab/powershell1)
-
-1. [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。
-
-    ```powershell-interactive
-    Register-AzProviderFeature -FeatureName CapacityReservationPreview -ProviderNamespace Microsoft.Compute
-    ``` 
-
-1. 機能の登録には最大で 15 分かかる場合があります。 登録の状態を確認します。
-
-    ```powershell-interactive
-    Get-AzProviderFeature -FeatureName CapacityReservationPreview -ProviderNamespace Microsoft.Compute
-    ``` 
-
-1. サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-    ```powershell-interactive
-    Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-    ``` 
-
---- 
-<!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
 ## <a name="benefits-of-capacity-reservation"></a>容量予約のベネフィット 
 
@@ -120,6 +72,18 @@ Azure によって予約要求が受け入れられると、一致する構成�
 その後、D2s_v3 VM をデプロイし、そのプロパティとして予約を指定すると、容量予約が使用されるようになります。 いったん使い始めた VM について支払うのは、その VM に対する料金だけであり、容量予約についての余分な料金はかかりません。 たとえば、前述の容量予約で 5 台の D2s_v3 VM をデプロイするとします。 請求には 5 台の D2s_v3 VM と 5 つの未使用の容量予約が示されており、どちらも D2s_v3 VM と同じ料金です。    
 
 使用済みと未使用の両方の容量予約は、予約インスタンスの期間コミットメント割引の対象となります。 上の例では、同じ Azure リージョンに 2 台の D2s_v3 VM の予約インスタンスがある場合、2 つのリソース (VM または未使用の容量予約) の請求はゼロになり、残りの 8 つのリソース (つまり、5 つの未使用の容量予約と 3 台の D2s_v3 VM) についてのみ支払います。 この場合、期間コミットメント割引は、VM または未使用の容量予約のいずれにも適用でき、どちらも同じ PAYG レートで課金されます。 
+
+## <a name="difference-between-on-demand-capacity-reservation-and-reserved-instances"></a>オンデマンド容量予約と予約インスタンスの違い 
+
+
+| 相違点 | オンデマンド容量予約 | 予約インスタンス|
+|---|---|---|
+| 期間 | 期間コミットメントは不要。 顧客要件に従って作成し、削除できる | 1 年間または 3 年間で期間コミットメントが固定される|
+| 課金割引 | 基になる VM サイズの従量課金制料金で課金 | 従量課金制料金よりも大幅なコスト削減 |
+| 容量 SLA | 指定の場所 (リージョンまたは可用性ゾーン) で容量が保証される | 容量は保証されない。 顧客は "容量優先度" を選択してアクセスを向上させることができるが、そのオプションでは SLA が遂行されない |
+| リージョンと可用性ゾーン | リージョンまたは可用性ゾーンごとにデプロイ可能 | リージョン レベルでのみ利用可能 |
+
+*別途購入した場合、予約インスタンス割引の対象になります
 
 
 ## <a name="work-with-capacity-reservation"></a>容量予約を使用する 

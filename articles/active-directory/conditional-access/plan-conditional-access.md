@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: karenhoran
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa2519027f210e88af4e03ec9232fcdefb5d3e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 38f602d41d8891aadc45a9dd35d2ea62afda897d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597856"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998240"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -217,7 +217,7 @@ Group 1 に所属していないユーザーがこのアプリにアクセスし
 
 ### <a name="minimize-the-number-of-conditional-access-policies"></a>条件付きアクセス ポリシーの数を最小限にする
 
-アプリごとにポリシーを作成するのは効率的ではなく、管理が困難になります。 条件付きアクセスでは、ユーザーごとに最初の 195 個のポリシーのみが適用されます。 アプリを分析し、同じユーザーに対して同じリソース要件があるアプリケーションにそれらをグループ化することをお勧めします。 たとえば、すべての Microsoft 365 アプリまたはすべての HR アプリで同じユーザーに対して同じ要件がある場合、1 つのポリシーを作成し、それが適用されるすべてのアプリを含めます。 
+アプリごとにポリシーを作成するのは効率的ではなく、管理が複雑になります。 Azure AD テナントごとに、最大 195 の条件付きアクセスを設定できます。 アプリを分析し、同じアクセス要件を持つポリシーにそれらをグループ化することをお勧めします。 たとえば、すべての Microsoft 365 アプリまたはすべての HR アプリで同じユーザーに対して同じ要件がある場合、アプリごとにポリシーを追加する代わりに、1 つのポリシーを作成して対象のアプリをすべて含めます。
 
 ### <a name="set-up-emergency-access-accounts"></a>緊急アクセス用アカウントを設定する
 

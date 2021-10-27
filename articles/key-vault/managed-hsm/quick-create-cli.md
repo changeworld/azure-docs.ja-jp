@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 06/21/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f47ce2ea3d805bfc5e5cdd4fd328195c12fe516d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 13eba035fc81b6ca26ccf56cefc8c955d9af972e
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821588"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132229"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
 
@@ -41,10 +41,10 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus2* の場所に作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *centralus* の場所に作成します。
 
 ```azurecli-interactive
-az group create --name "ContosoResourceGroup" --location eastus2
+az group create --name "ContosoResourceGroup" --location centralus
 ```
 
 ## <a name="create-a-managed-hsm"></a>Managed HSM を作成する
@@ -62,11 +62,11 @@ Managed HSM リソースを作成するには、次の入力を指定する必�
 - Azure の場所。
 - 初期管理者のリスト。
 
-次の例では、**ContosoMHSM** という名前の HSM を、**米国東部 2** に存在するリソース グループ **ContosoResourceGroup** に作成します。**現在サインインしているユーザー** が唯一の管理者であり、論理的な削除に対して **28 日間の保持期間** が設定されています。 マネージド HSM の論理的な削除の詳細については、[こちら](soft-delete-overview.md)をお読みください。
+次の例では、**ContosoMHSM** という名前の HSM を、**米国中部** に存在するリソース グループ **ContosoResourceGroup** に作成します。**現在サインインしているユーザー** が唯一の管理者であり、論理的な削除に対して **28 日間の保持期間** が設定されています。 マネージド HSM の論理的な削除の詳細については、[こちら](soft-delete-overview.md)をお読みください。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid --retention-days 28
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "centralus" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]

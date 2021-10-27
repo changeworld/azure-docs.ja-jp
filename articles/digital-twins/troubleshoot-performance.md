@@ -1,18 +1,18 @@
 ---
-title: パフォーマンスのトラブルシューティング
+title: 'トラブルシューティング: パフォーマンス'
 titleSuffix: Azure Digital Twins
 description: Azure Digital Twins インスタンスのパフォーマンスのトラブルシューティングに関するヒント。
 author: baanders
 ms.author: baanders
-ms.date: 5/11/2021
+ms.date: 10/8/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 252eeea15e5c9ebde19c5925423615cd7c50234c
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 67f182ffbaf439d2c6b592854156073d6104efa7
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113493101"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131431"
 ---
 # <a name="troubleshooting-azure-digital-twins-performance"></a>Azure Digital Twins のトラブルシューティング: パフォーマンス
 
@@ -20,7 +20,7 @@ Azure Digital Twins の使用中に遅延またはその他のパフォーマン
 
 ## <a name="isolate-the-source-of-the-delay"></a>遅延の原因を特定する
 
-遅延が Azure Digital Twins またはソリューション内の別のサービスによって発生しているかどうかを判断します。 この遅延を調査するには、Azure portal から [Azure Monitor](../azure-monitor/essentials/quick-monitor-azure-resource.md) の **API 待機時間** メトリックを使用できます。 Azure Digital Twins インスタンスに対する Azure Monitor メトリック表示する方法については、「[トラブルシューティング: Azure Monitor でメトリックを表示する](troubleshoot-metrics.md)」を参照してください。
+遅延が Azure Digital Twins またはソリューション内の別のサービスによって発生しているかどうかを判断します。 この遅延を調査するには、Azure portal から [Azure Monitor](../azure-monitor/essentials/quick-monitor-azure-resource.md) の **API 待機時間** メトリックを使用できます。 Azure Digital Twins インスタンスに対する Azure Monitor メトリック表示する方法については、[トラブルシューティング: メトリック](troubleshoot-metrics.md)に関する記事を参照してください。
 
 ## <a name="check-regions"></a>リージョンを確認する
 
@@ -28,7 +28,7 @@ Azure Digital Twins の使用中に遅延またはその他のパフォーマン
 
 ## <a name="check-logs"></a>ログを確認する
 
-Azure Digital Twins を使用すると、サービス インスタンスのログを収集でき、その他のデータの中でもパフォーマンスを監視するのに役立ちます。 ログは [Log Analytics](../azure-monitor/logs/log-analytics-overview.md) またはカスタムのストレージ メカニズムに送信できます。 インスタンスでのログ記録を有効にするには、「[トラブルシューティング: 診断を設定する](troubleshoot-diagnostics.md)」の手順に従ってください。 ログのタイムスタンプを分析して、待機時間を測定し、それらに一貫性があるかどうかを評価することで、原因を確認できます。
+Azure Digital Twins を使用すると、サービス インスタンスのログを収集でき、その他のデータの中でもパフォーマンスを監視するのに役立ちます。 ログは [Log Analytics](../azure-monitor/logs/log-analytics-overview.md) またはカスタムのストレージ メカニズムに送信できます。 インスタンスでのログ記録を有効にするには、[トラブルシューティング: 診断ログ](troubleshoot-diagnostics.md)に関する記事の手順に従ってください。 ログのタイムスタンプを分析して、待機時間を測定し、それらに一貫性があるかどうかを評価することで、原因を確認できます。
 
 ## <a name="check-api-frequency"></a>API の頻度を確認する
 
@@ -46,7 +46,7 @@ Azure Digital Twins を使用すると、サービス インスタンスのロ�
 ## <a name="next-steps"></a>次の手順
 
 Azure Digital Twins インスタンスのトラブルシューティングを行うその他の方法については、次の記事を参照してください。
-* [トラブルシューティング:Azure Monitor でメトリックを表示する](troubleshoot-metrics.md)" に関するページを参照してください
-* [トラブルシューティング:診断の設定](troubleshoot-diagnostics.md)に関するページを参照してください。
-* [トラブルシューティング:アラートを設定する](troubleshoot-alerts.md)
-* [トラブルシューティング: リソースの正常性を理解する](troubleshoot-resource-health.md)
+* [トラブルシューティング: メトリック](troubleshoot-metrics.md)
+* [トラブルシューティング: 診断ログ](troubleshoot-diagnostics.md)
+* [トラブルシューティング: アラート](troubleshoot-alerts.md)
+* [トラブルシューティング: リソースの正常性](troubleshoot-resource-health.md)

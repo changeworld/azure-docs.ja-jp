@@ -9,12 +9,12 @@ ms.subservice: mldata
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 2af916866aa78a081f8769322a80f4d846c89d3e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 3af540df0629181197455d8495b774483579b2de
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424087"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984009"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -48,6 +48,8 @@ ms.locfileid: "129424087"
 エクスポートした Azure Machine Learning データセットには、Azure Machine Learning Studio の **[データセット]** セクションでアクセスできます。 また、データセットの **[詳細]** ページには、Python からラベルにアクセスするためのサンプル コードも用意されています。
 
 ![エクスポートされたデータセット](./media/how-to-create-labeling-projects/exported-dataset.png)
+
+ラベル付きデータを Azure Machine Learning データセットにエクスポートした後、AutoML を使用して、ラベル付きデータでトレーニングされた Computer Vision モデルを作成できます。 詳細については、「[Python を使用して Computer Vision モデルをトレーニングする AutoML を設定する (プレビュー)](how-to-auto-train-image-models.md)」を参照してください
 
 ## <a name="explore-labeled-datasets"></a>ラベル付きデータセットを探索する
 

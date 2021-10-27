@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 layout: LandingPage
 ms.date: 06/23/2021
-ms.openlocfilehash: e48c464ffa1aa5077f04ea1a7580e0d15e0fd7ca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cb78f108e53c93e736b11d49d21d8cd7c242b79
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732604"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047078"
 ---
 # <a name="data-sources-gallery"></a>データ ソース ギャラリー
 
@@ -670,7 +670,7 @@ BAI Bentley AssetWise コネクタを使用すると、AssetWise からのコン
 
 [Accenture](https://www.accenture.com) を利用
 
-Box コネクタでは、Box リポジトリからのコンテンツをクロールします。 このコネクタでは、RESTful API を使用して、サポートされている要素を取得し、フル クロールや増分クロール、メタデータの抽出、ACL の取得などを提供します。
+Box コネクタでは、Box リポジトリからのコンテンツをクロールします。 このコネクタでは、REST API を使用して、サポートされている要素を取得し、フル クロールや増分クロール、メタデータの抽出、ACL の取得などを提供します。
 
 [[詳細]](https://contentanalytics.digital.accenture.com/display/aspire40/Box++Connector)
 

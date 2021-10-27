@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 49274ba0c43b2cc473470df61e22f16b8a83c022
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 677d492deac036291c87694095fb0b195cb01b90
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427104"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006301"
 ---
 # <a name="software-releases-for-usb-cable-updates"></a>USB ケーブル更新プログラムのソフトウェア リリース
 
@@ -28,7 +28,7 @@ ms.locfileid: "123427104"
 ## <a name="latest-releases"></a>最新のリリース
 
 - **最新のサービス リリース**  
-7 月のサービス リリース (2107): [Azure-Percept-DK-1.0.20210729.0957-public_preview_1.0.zip](https://go.microsoft.com/fwlink/?linkid=2169086)
+9 月のサービス リリース (2109): [Azure-Percept-DK-1.0.20210929.1747-public_preview_1.0.zip](https://go.microsoft.com/fwlink/?linkid=2174462)
 - **最新のメジャー更新プログラムまたは既知の安定バージョン**  
 機能更新プログラム (2104): [Azure-Percept-DK-1.0.20210409.2055.zip](https://download.microsoft.com/download/6/4/d/64d53e60-f702-432d-a446-007920a4612c/Azure-Percept-DK-1.0.20210409.2055.zip)
 
@@ -36,7 +36,8 @@ ms.locfileid: "123427104"
 
 |Release|ダウンロード リンク|Note|
 |---|---|:---:|
-|7 月のサービス リリース (2107)|[Azure-Percept-DK-1.0.20210729.0957-public_preview_1.0.zip](https://go.microsoft.com/fwlink/?linkid=2169086)||
+|9 月のサービス リリース (2109)|[Azure-Percept-DK-1.0.20210929.1747-public_preview_1.0.zip](https://go.microsoft.com/fwlink/?linkid=2174462)||
+|7 月のサービス リリース (2107)|[Azure-Percept-DK-1.0.20210729.0957-public_preview_1.0.zip](https://download.microsoft.com/download/f/a/9/fa95d9d9-a739-493c-8fad-bccf839072c9/Azure-Percept-DK-1.0.20210729.0957-public_preview_1.0.zip)||
 |6 月のサービス リリース (2106)|[Azure-Percept-DK-1.0.20210511.1825.zip](https://download.microsoft.com/download/e/0/1/e01b6f7e-04f7-45ee-8933-8514c2fdbe6a/Azure-Percept-DK-1.0.20210511.1825.zip)||
 |5 月のサービス リリース (2105)|[Azure-Percept-DK-1.0.20210611.0952-public_preview_1.0.zip](https://download.microsoft.com/download/1/5/8/1588f7e3-f8ae-4c06-baa2-c559364daae5/Azure-Percept-DK-1.0.20210611.0952-public_preview_1.0.zip)||
 |機能更新プログラム (2104) |[Azure-Percept-DK-1.0.20210409.2055.zip](https://download.microsoft.com/download/6/4/d/64d53e60-f702-432d-a446-007920a4612c/Azure-Percept-DK-1.0.20210409.2055.zip)||

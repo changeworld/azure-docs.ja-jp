@@ -1,8 +1,8 @@
 ---
 title: SQL IaaS Agent 拡張機能への自動登録
 description: Azure portal を使用して自動登録機能を有効にし、既存および今後のすべての SQL Server VM を SQL IaaS Agent 拡張機能に自動的に登録する方法について説明します。
-author: MashaMSFT
-ms.author: mathoma
+author: adbadram
+ms.author: adbadram
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,17 +11,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e1193dea6826e4188a7d8f933d2c0a2637a72c1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.reviewer: mathoma
+ms.openlocfilehash: c41e2add335e423a31cc9f804bf643b45641a3d7
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650156"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164534"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能への自動登録
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure portal で自動登録機能を有効にすると、Azure Virtual Machines (VM) 上の既存および今後のすべての SQL Server は軽量モードで [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に自動的に登録されます。 
+Azure portal で自動登録機能を有効にすると、Azure Virtual Machines (VM) 上の既存および今後のすべての SQL Server は軽量モードで [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に自動的に登録されます。 既定で、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると、SQL IaaS Agent 拡張機能に自動的に登録されます。 詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
 
 この記事では、自動登録機能を有効にする方法について説明します。 また、SQL IaaS Agent 拡張機能に [1 つの VM を登録する](sql-agent-extension-manually-register-single-vm.md)ことや、[複数の VM を一括で登録する](sql-agent-extension-manually-register-vms-bulk.md)こともできます。 
 
@@ -33,6 +34,10 @@ Azure portal で自動登録機能を有効にすると、Azure Virtual Machines
 ご使用の SQL Server VM を [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に登録すると、特典の完全な機能セットがロック解除されます。 
 
 自動登録が有効になっている場合、サブスクリプション内のすべての未登録の VM に SQL Server がインストールされているかどうかを検出するため、ジョブが毎日実行されます。 これを行うには、SQL IaaS Agent 拡張機能バイナリを VM にコピーし、SQL Server レジストリ ハイブをチェックする 1 回限りのユーティリティを実行します。 SQL Server ハイブが検出された場合、仮想マシンは軽量モードで拡張機能に登録されます。 レジストリに SQL Server ハイブが存在しない場合は、バイナリが削除されます。 新しく作成された SQL Server VM を検出するために、自動登録には最大 4 日かかることがあります。
+
+> [!CAUTION]
+> SQL Server ハイブがレジストリに存在しない場合に[リソース ロック](/azure/governance/blueprints/concepts/resource-locking#locking-modes-and-states)が存在すると、バイナリの削除に影響する可能性があります。 
+
 
 サブスクリプションに対して自動登録を有効にすると、SQL Server が既にインストールされている、または今後インストールされる VM が、**軽量モードでダウンタイムがなく、また、SQL Server サービスを再起動することなく**、SQL IaaS Agent 拡張機能に登録されます。 完全な機能セットを使用するには、[完全管理モードに手動でアップグレードする](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)必要があります。 ライセンスの種類は、自動的に VM イメージの既定値に設定されます。 VM に従量課金イメージを使用する場合、ライセンスの種類は `PAYG` になります。それ以外の場合、ライセンスの種類は既定で `AHUB` になります。 
 

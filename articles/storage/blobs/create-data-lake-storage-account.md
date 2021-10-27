@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 で使用するストレージ アカ�
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 04/27/2021
+ms.date: 10/14/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: a2d9c23e5a6819c9e74cea10e78caab242d5cb35
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 35761e10cecf1cb209f004f99f773c09d91dc0e5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600325"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046869"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する
 
@@ -43,14 +43,14 @@ Premium ブロック BLOB アカウントを作成するには、 **[Premium]** 
 
 ## <a name="enable-the-hierarchical-namespace"></a>階層型名前空間を有効にする
 
-**[ストレージ アカウントの作成]** ページの **[詳細設定]** タブで **[階層型名前空間を有効にする]** 設定を選択して、Data Lake Storage 機能のロックを解除します。 この設定は、アカウントを作成するときに有効にする必要があります。 後で有効にすることはできません。
+**[ストレージ アカウントの作成]** ページの **[詳細設定]** タブで **[階層型名前空間を有効にする]** 設定を選択して、Data Lake Storage 機能のロックを解除します。 
 
 次の図は、 **[ストレージ アカウントの作成]** ページのこの設定を示しています。
 
 > [!div class="mx-imgBorder"]
 > ![階層型名前空間の設定](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
-Data Lake Storage で使用する既存のストレージ アカウントがあり、階層型名前空間の設定が無効になっている場合は、この設定が有効になっている新しいストレージ アカウントにデータを移行する必要があります。
+既存のアカウントで Data Lake Storage 機能を有効にするには、「[Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする](upgrade-to-data-lake-storage-gen2-how-to.md)」を参照してください。
 
 > [!NOTE]
 > **データ保護** と階層型名前空間を同時に有効にすることはできません。
@@ -58,5 +58,5 @@ Data Lake Storage で使用する既存のストレージ アカウントがあ�
 ## <a name="next-steps"></a>次のステップ
 
 - [ストレージ アカウントの概要](../common/storage-account-overview.md)
-- [Data Lake Storage Gen2 を使用してビッグ データの要件に対応する](data-lake-storage-data-scenarios.md)
+- [Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする](upgrade-to-data-lake-storage-gen2-how-to.md)
 - [Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)

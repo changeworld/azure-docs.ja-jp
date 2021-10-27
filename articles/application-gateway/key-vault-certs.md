@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 15119b3196735e2358b76c1a804ca25f67b05efa
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: c44691496df3610688f13843f3c5ccbfe20f625a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809927"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004067"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 証明書を使用した TLS 終端
 
@@ -47,7 +47,7 @@ Azure portal では、シークレットではなく Key Vault 証明書のみ�
 
 ## <a name="certificate-settings-in-key-vault"></a>Key Vault 内の証明書の設定
 
-TLS 終端の場合、Application Gateway は、Personal Information Exchange (PFX) 形式の証明書をサポートしています。 既存の証明書をインポートするか、ご自身のキー コンテナーで新しい証明書を作成することがします。 エラーを回避するには、Key Vault 内で証明書の状態が **[有効]** に設定されていることを確認します。
+TLS 終端の場合、Application Gateway は、Personal Information Exchange (PFX) 形式の証明書のみサポートしています。 既存の証明書をインポートするか、ご自身のキー コンテナーで新しい証明書を作成することがします。 エラーを回避するには、Key Vault 内で証明書の状態が **[有効]** に設定されていることを確認します。
 
 ## <a name="how-integration-works"></a>統合のしくみ
 

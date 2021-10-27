@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 89766dd612a43a60456199ae1fdc9de35c9dd061
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b419b816de822c72e3c33acddd9d9b6c50745b7f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774217"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047853"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシン
 
@@ -44,7 +44,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="locations"></a>場所
-Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には **場所** と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
+Azure リソースを作成できる[地理的地域](https://azure.microsoft.com/regions/)は、世界各地に複数あります。 通常、このリージョンは VM の作成時には **場所** と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所が指定されます。
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 

@@ -5,7 +5,7 @@
     - name: App Service について
       href: overview.md
     - name: App Service 環境について
-      href: environment/intro.md
+      href: environment/overview.md
     - name: ホスティング オプションの比較
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: クイックスタート
@@ -120,7 +120,7 @@
       href: overview-arc-integration.md
     - name: セキュリティ
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -143,8 +143,8 @@
           href: networking/private-endpoint.md
         - name: Hybrid Connections (ハイブリッド接続)
           href: app-service-hybrid-connections.md
-        - name: Virtual Network 統合
-          href: web-sites-integrate-with-vnet.md
+        - name: 仮想ネットワークの統合
+          href: overview-vnet-integration.md
         - name: Application Gateway の統合
           href: networking/app-gateway-with-service-endpoints.md
         - name: NAT ゲートウェイの統合
@@ -301,6 +301,10 @@
           href: manage-disaster-recovery.md
         - name: Azure Arc で有効にする
           href: manage-create-arc-environment.md
+        - name: VNet 統合を有効にする
+          href: configure-vnet-integration-enable.md
+        - name: VNet 統合ルーティングを構成する
+          href: configure-vnet-integration-routing.md
     - name: アプリの移動
       items:
         - name: リージョン間の移動

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: 8fb4583fbf04637c58795d6532dcce82ccb8168e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1268df1aaf095fd6a965b447d48a9ef4978325d7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624977"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046888"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項
 
@@ -23,17 +23,17 @@ Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プ
 
 Azure Blob Storage は、ストレージ アカウントのエグレスとイングレスの上限に達するまで、直線的にスケーリングします。 したがって、アプリケーションで使用するクライアントが多いほど、より高いスループットを実現できます。 ストレージ アカウントのエグレスとイングレスの制限については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md)」を参照してください。
 
-次のグラフは、クライアントを追加すると帯域幅がどのように増加するかを示したものです。 このグラフのクライアントは仮想マシン (VM) であり、アカウントでは Standard パフォーマンス レベルが使用されています。
+次のグラフは、クライアントを追加すると帯域幅がどのように増加するかを示したものです。 このグラフでは、クライアントは仮想マシン (VM) であり、Standard 汎用 v2 ストレージ アカウントを使用しています。
 
 > [!div class="mx-imgBorder"]
 > ![Standard パフォーマンス](./media/network-file-system-protocol-support-performance/standard-performance-tier.png)
 
-次のグラフは、Premium パフォーマンス レベルを使用するアカウントに同じ効果を適用した場合を示しています。
+次のグラフは、Premium ブロック BLOB ストレージ アカウントに同じ効果を適用した場合を示しています。
 
 > [!div class="mx-imgBorder"]
 > ![Premium パフォーマンス](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
 
-## <a name="use-premium-performance-tier-for-small-scale-applications"></a>小規模なアプリケーションに Premium パフォーマンス レベルを使用する
+## <a name="use-premium-block-blob-storage-accounts-for-small-scale-applications"></a>小規模なアプリケーションに Premium ブロック BLOB ストレージ アカウントを使用する
 
 クライアントを追加することにより、すべてのアプリケーションをスケールアップできるわけではありません。 そのようなアプリケーションの場合は、[Azure Premium ブロック BLOB ストレージ アカウント](../common/storage-account-create.md)を使用することで、低遅延と高トランザクション レートが一貫して提供されます。 Premium ブロック BLOB ストレージ アカウントは、より少ないスレッドとクライアントで最大帯域幅に到達できます。 たとえば、クライアントが 1 つの場合、Standard パフォーマンスの汎用 v2 ストレージ アカウントで使用される同じセットアップと比較して、Premium ブロック BLOB ストレージ アカウントでは **2.3 倍** の帯域幅を実現できます。
 

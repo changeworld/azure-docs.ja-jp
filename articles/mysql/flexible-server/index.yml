@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 876bdc57f2d97cf4254cc0c4bba381df812bdda5
-  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+  ms.openlocfilehash: 81c0d46d58b39b0d4b6698da1f1b39d5c36eb587
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/06/2021
-  ms.locfileid: "129616647"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130246194"
 landingContent:
 - title: フレキシブル サーバー (プレビュー) について
   linkLists:
@@ -109,6 +109,10 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure Database for MySQL への移行に使用する適切なツールを選択する
+      url: ../how-to-decide-on-right-migration-tools.md
+    - text: 単一サーバーからフレキシブル サーバーに移行する
+      url: ../howto-migrate-single-flexible-minimum-downtime.md
     - text: オンラインで移行する
       url: ../howto-migrate-online.md
     - text: データイン レプリケーションを使用して RDS for MySQL を移行する

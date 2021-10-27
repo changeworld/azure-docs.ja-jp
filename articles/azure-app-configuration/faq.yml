@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: fdfc62b4b5c61cd1b064e6623464147d01dbc58e
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: e68cc85c5c4512fe5f60344b77e38920d703b015
+  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128603108"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130179349"
 title: Azure App Configuration の FAQ
 summary: この記事では、Azure App Configuration についてよく寄せられる質問に回答します。
 sections:
@@ -60,7 +60,11 @@ sections:
 
       App Service と App Configuration の間で設定をインポート/エクスポートすることもできます。 この機能を使用すると、既存の App Service 設定に基づいて新しい App Configuration ストアをすばやく設定できます。 App Service 設定に依存する既存のアプリと構成を共有することもできます。
   - question: App Configuration に格納されているキーや値に対するサイズ制限はありますか?
-    answer: 1 つのキー値項目に対して 10 KB の制限があります。
+    answer: >
+      1 つのキー値には 10 KB の制限があります。これには、ラベル、コンテンツタイプ、タグ、その他のメタデータなどの属性が含まれます。
+
+
+      この制限は、ほとんどのアプリケーションの 1 つの設定に対して十分であるはずです。 ご使用の設定がこの制限を超えている場合は、データを他の場所に格納し、App Configuration に[そのデータの参照を追加する](./howto-best-practices.md#references-to-external-data)ことを検討してください。
   - question: 複数の環境 (テスト、ステージング、本番など) の構成は、どのように格納すべきでしょうか?
     answer: >
       ストアごとのレベルで App Configuration にアクセスできるユーザーを制御します。 異なるアクセス許可を必要とする環境ごとに、個別のストアを使用してください。 セキュリティ分離上、このアプローチが最も優れています。
@@ -161,7 +165,7 @@ sections:
       保有期間を過ぎるまでは、App Configuration ストアを別のサブスクリプション/リソース グループで作成することはできません。 ただし、[こちらの手順](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)に従うことで、元のサブスクリプション/リソース グループでリソースを再作成し、その後、それらを新しいサブスクリプション/リソース グループに移動できます。
 
 
-      保有期間中の App Configuration ストアの再作成は、現在、Azure CLI で `az appconfig create` コマンド (詳細については、[こちら](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create)を参照) を使用した場合にのみサポートされます。
+      保有期間中に App Configuration ストアを再作成することは、現在、Azure CLI で `az appconfig create` [コマンド](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create)を使用した場合にのみサポートされます。
   - question: 誤って削除した App Configuration ストアを復元する方法はありますか。
     answer: >
       Standard レベルの App Configuration ストアは、削除された後 7 日以内は復旧できます。 誤って削除された App Configuration ストアを回復するには、Microsoft サポートに問い合わせてください。

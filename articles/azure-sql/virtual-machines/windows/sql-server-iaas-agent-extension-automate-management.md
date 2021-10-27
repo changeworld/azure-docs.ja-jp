@@ -3,7 +3,7 @@ title: SQL Server IaaS Agent 拡張機能とは
 description: この記事では、SQL Server IaaS Agent 拡張機能を使用して、Azure VM 上の SQL Server の管理固有の管理タスクを自動化する方法について説明します。 この中には、自動バックアップ、自動修正、Azure Key Vault の統合、ライセンス管理、ストレージ構成、すべての SQL Server VM インスタンスの中央管理といった機能が含まれます。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: adbadram
 editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 9/01/2021
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: adbadram
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e5c4dd695cb9761721386eb98e18f00ad53bdc26
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: b5a0aa73a2017323657a6e1300bc18775824b1f6
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231313"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163733"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,7 +118,7 @@ Azure portal を介して SQL Server VM の Azure Marketplace イメージをデ
 
 ### <a name="named-instance-support"></a>名前付きインスタンスのサポート
 
-SQL Server IaaS Agent 拡張機能は、それが仮想マシンで使用できる唯一の SQL Server インスタンスである場合に、SQL Server の名前付きインスタンスを使用して動作します。 VM 上に既定のインスタンスが存在しない場合、拡張機能は複数の名前付き SQL Server インスタンスを持つ VM にインストールできません。 
+SQL Server IaaS Agent 拡張機能は、それが仮想マシンで使用できる唯一の SQL Server インスタンスである場合に、SQL Server の名前付きインスタンスを使用して動作します。 VM に SQL Server の名前付きインスタンスが複数あり、既定のインスタンスがない場合、SQL IaaS 拡張機能では軽量モードで登録され、最上位のエディションのインスタンス、またはすべてのインスタンスのエディションが同じである場合は最初のインスタンスが選択されます。 
 
 SQL Server の名前付きインスタンスを使用するには、Azure 仮想マシンをデプロイし、1 つの名前付き SQL Server インスタンスをそれにインストールし、その後、[SQL IaaS 拡張機能](sql-agent-extension-manually-register-single-vm.md)にそれを登録します。
 
@@ -166,6 +166,9 @@ SQL IaaS Agent 拡張機能では、以下のみがサポートされます。
 
 - Azure Resource Manager を介してデプロイされた SQL Server VM。 クラシック モデルを介してデプロイされた SQL Server VM はサポートされません。 
 - パブリック クラウドまたは Azure Government クラウドにデプロイされた SQL Server VM。 その他のプライベート クラウドや政府機関向けクラウドにデプロイされている場合はサポートされません。 
+- 軽量モードのフェールオーバー クラスター インスタンス (FCI)。 
+- 軽量モードの 1 つの VM 上に複数のインスタンスがある名前付きインスタンス。 
+
 
 
 ## <a name="in-region-data-residency"></a>リージョンのデータ所在地

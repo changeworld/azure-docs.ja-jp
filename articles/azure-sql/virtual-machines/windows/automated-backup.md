@@ -3,7 +3,7 @@ title: SQL Server 2016/2017 Azure VM の自動バックアップ v2 | Microsoft 
 description: この記事では、Azure 上で実行されている SQL Server 2016/2017 VM の自動バックアップ機能について説明します。 この記事は、Resource Manager を使用する VM のみにあてはまります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a93214a8577dc298551e4e819282a58f10a72f38
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 047280e5db0ce67a80b44dee224196d2ac6668c4
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746606"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166243"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -112,8 +112,9 @@ ms.locfileid: "121746606"
 
 その後、火曜日の午後 10 時からの 6 時間、すべてのデータベースの完全バックアップが再び開始されます。
 
+
 > [!IMPORTANT]
-> 毎日のバックアップをスケジュールする場合は、すべてのデータベースが設定された時間内に確実にバックアップされるよう、時間枠に余裕を持たせることをお勧めします。 これは、大量のデータをバックアップする場合に特に重要です。
+> バックアップは各間隔で順番に行われます。 多数のデータベースがあるインスタンスの場合は、すべてのバックアップに対応する十分な時間でバックアップ間隔をスケジュールします。 指定された間隔内にバックアップを完了できない場合、一部のバックアップがスキップされ、1 つのデータベースのバックアップ間の時間が構成されたバックアップ間隔時間より長くなり、回復ポイントの目標 (RPO) に悪影響を与える可能性があります。 
 
 ## <a name="configure-new-vms"></a>新しい VM を構成する
 

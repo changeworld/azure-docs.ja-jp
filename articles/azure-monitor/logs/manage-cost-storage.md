@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 10/17/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e894fc6c6e210249e591ed7f9b9b662ff5ae187
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 1713d3091794ed95438a5e9d7944b3f5ee41f5ee
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272929"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131792"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -69,9 +69,18 @@ Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料
 2. **Azure Kubernetes Service (AKS) クラスターの監視:** 一般的な AKS クラスターを監視する必要があるデータ ボリュームの詳細については、[こちら](../containers/container-insights-cost.md#estimating-costs-to-monitor-your-aks-cluster)を参照してください。 次の[ベスト プラクティス](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost)に従って、AKS クラスターの監視コストを制御します。 
 3. **アプリケーションの監視**: Azure Monitor 料金計算ツールには、アプリケーションの使用状況と Application インサイト データ ボリュームの統計分析に基づいて を使用するデータ ボリューム推定機能が含まれています。 料金計算ツールの [Application Insights] セクションで、[アプリケーション アクティビティに基づいてデータ量を見積もる] の横にあるスイッチを切り替えて、これを使用します。 
 
-## <a name="understand-your-usage-and-estimate-costs"></a>ご自分の使用量を理解してコストを見積もる
+## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>ご自分の Azure 請求書での Log Analytics の使用状況の表示 
 
-現在 Azure Monitor ログを使用している場合は、最近の使用パターンに基づいてコストがどのくらいになるかを容易に理解できます。 これには、データ使用状況を確認して分析するために **Log Analytics の [使用量と推定コスト]** を使用します。 これにより、各ソリューションによって収集されるデータの量、保持されるデータの量、および取り込まれたデータ量と無料使用量を超える追加リテンション期間に基づいたコストの推定値が示されます。
+特定の Log Analytics ワークスペースの課金対象の使用量を表示する最も簡単な方法は、ワークスペースの **概要** ページに移動し、ページ上部にある基本セクションの右上にある **[View Cost]\(価格の表示\)** をクリックすることです。 これにより、このワークスペースに対して既にスコープが設定されている Azure Cost Management + Billing のコスト分析が起動します。  
+
+または、[Azure Cost Management + Billing](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) ハブから起動することもできます。 ここでは、"コスト分析" 機能を使用して、Azure リソースの経費を表示できます。 まず、Log Analytics の支出を追跡するために、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。 **[グループ化]** で **[測定カテゴリ]** または **[測定]** を選択します。 Azure Defender (Security Center) や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行います。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
+
+使用状況をさらに詳しく理解するために、[Azure portal から使用状況をダウンロード](../../cost-management-billing/understand/download-azure-daily-usage.md)することもできます。 ダウンロードしたスプレッドシートで、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Log Analytics ワークスペースからの使用状況を検索できます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (一部のレガシ価格レベルで使用)、"Azure Monitor" (コミットメント レベルの価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含める) を追加します。 使用量が [消費量] 列に表示され、各エントリの単位が [測定単位] 列に表示されます。 詳細については、「[個々の Azure サブスクリプションの課金書を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
+
+## <a name="understand-your-usage-and-optimizing-your-pricing-tier"></a>使用量の把握と価格レベルの最適化
+<a name="understand-your-usage-and-estimate-costs"></a>
+
+使用量の傾向を知り、最も費用対効果の高いログ分析の価格レベルを選択するには、**ログ分析の使用量と推定コスト** を使用します。 これにより、各ソリューションで収集されたデータ量、保持されているデータ量、および最近のデータ インジェスト パターンに基づく各価格レベルのコストの見積もりを示します。 
 
 :::image type="content" source="media/manage-cost-storage/usage-estimated-cost-dashboard-01.png" alt-text="使用量と推定コスト":::
 
@@ -82,12 +91,6 @@ Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料
 **[使用量と推定コスト]** ページでは、該当の月のデータ ボリュームを確認できます。 これには、受信して Log Analytics ワークスペースに格納されたすべての課金対象データが含まれます。  
  
 Log Analytics の課金は Azure の課金内容に加えられます。 Azure Portal の **[課金]** または [Azure Billing Portal](https://account.windowsazure.com/Subscriptions) で、Azure の課金内容の詳細を確認できます。  
-
-## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>ご自分の Azure 請求書での Log Analytics の使用状況の表示 
-
-Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用して、Azure リソースの経費を表示できます。 まず、Log Analytics の支出を追跡するために、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。 **[グループ化]** で **[測定カテゴリ]** または **[測定]** を選択します。 Azure Defender (Security Center) や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行います。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
-
-使用状況をさらに詳しく理解するために、[Azure portal から使用状況をダウンロード](../../cost-management-billing/understand/download-azure-daily-usage.md)することもできます。 ダウンロードしたスプレッドシートで、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Log Analytics ワークスペースからの使用状況を検索できます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (一部のレガシ価格レベルで使用)、"Azure Monitor" (コミットメント レベルの価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含める) を追加します。 使用量が [消費量] 列に表示され、各エントリの単位が [測定単位] 列に表示されます。 詳細については、「[個々の Azure サブスクリプションの課金書を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
 ## <a name="changing-pricing-tier"></a>価格レベルの変更
 
@@ -134,6 +137,10 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 
 価格レベルを従量課金制などの他の値 (SKU では `pergb2018` と呼ばれます) に設定するには、`capacityReservationLevel` プロパティを省略します。 詳細については、[ARM テンプレートの作成](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)、[テンプレートへのリソースの追加](../../azure-resource-manager/templates/template-tutorial-add-resource.md)、[テンプレートの適用](../resource-manager-samples.md)に関する記事を参照してください。 
 
+### <a name="tracking-pricing-tier-changes"></a>価格レベルの変更の追跡
+
+ワークスペースの価格レベルの変更は、"ワークスペースの作成" という名前の操作を含むイベントと共に[アクティビティ ログ](../essentials/activity-log.md)に記録されます。 イベントの **[変更履歴]** タブの `properties.sku.name` 行には、新旧の価格レベルが表示されます。  ワークスペースの [アクティビティ ログ] オプションをクリックすると、特定のワークスペースを対象としたイベントが表示されます。 価格レベルの変更を監視するには、"ワークスペースの作成" 操作に対するアラートを作成します。 
+
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
 2018 年 4 月 2 日に Log Analytics ワークスペースまたは Application Insights リソースが含まれていたか、2019 年 2 月 1 日より前に開始され、まだアクティブな Enterprise Agreement にリンクされているサブスクリプションは、レガシ価格レベル (**無料試用版**、**スタンドアロン (GB 単位)** 、および **ノードごと (OMS)** ) を引き続き利用できます。 無料試用版の価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Azure Defender (Security Center)](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データ保有は 7 日に制限されます。 無料試用版価格レベルは、評価目的専用です。 Free レベルに対して、SLA は提供されません。  スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
@@ -150,6 +157,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 > ワークスペースで **ノードごとの** 価格レベルにアクセスできるが、従量課金制レベルよりもコストが低いかどうか知りたい場合は、[次のクエリを使用](#evaluating-the-legacy-per-node-pricing-tier)して、推奨事項を簡単に取得できます。 
 
 2016 年 4 月より前に作成されたワークスペースの場合、**Standard** と **Premium** の価格レベルを引き続き利用できます。これらのデータ保有は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでの Azure 請求書のデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
+
+### <a name="legacy-pricing-tiers-and-azure-defender-security-center"></a>レガシ価格レベルと Azure Defender (Security Center)
 
 また、従来の Log Analytics レベルの使用と [Azure Defender (Security Center)](../../security-center/index.yml) に対する使用量の請求方法の間にもいくつかの動作があります。 
 
@@ -287,14 +296,15 @@ _LogOperation 関数の詳細については、[こちら](./monitor-workspace.m
 ```kusto
 let DailyCapResetHour=14;
 Usage
-| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| where DataType !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
 | extend TimeGenerated=datetime_add("hour",-1*DailyCapResetHour,TimeGenerated)
 | where TimeGenerated > startofday(ago(31d))
 | where IsBillable
-| summarize IngestedGbBetweenDailyCapResets=sum(Quantity)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
+| summarize IngestedGbBetweenDailyCapResets=sum(Quantity)/1000. by day=bin(TimeGenerated, 1d) // Quantity in units of MB
+| render areachart  
 ```
+ワークスペースで Update Management ソリューションが実行されていないか、ソリューションのターゲット設定が有効になっている場合は、`Update` および `UpdateSummary` データ型を `where Datatype` 行に追加します ([詳細はこちら](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance)。)
 
-(Usage データ型では、`Quantity` の単位は MB です。)
 
 ### <a name="alert-when-daily-cap-is-reached"></a>1 日の上限に達したら警告する
 

@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 10/11/2021
-ms.openlocfilehash: 07e48fba8bfb554604d875f9f4a041fed466dbe7
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 5523b04235ce386e62abc175ac498f4df34b0641
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754712"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132305"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -35,9 +35,14 @@ ms.locfileid: "129754712"
 
 ## <a name="october-2021"></a>2021 年 10 月
 
+- [M365 Defender コネクタで使用できるようになった Office 365 イベントの Defender (パブリック プレビュー)](#defender-for-office-365-events-now-available-in-the-m365-defender-connector-public-preview)
 - [プレイブックのテンプレートとギャラリーを使用できるようになりました (パブリック プレビュー)](#playbook-templates-and-gallery-now-available-public-preview)
 - [スケジュールされた分析ルールのテンプレート バージョンを管理する (パブリック プレビュー)](#manage-template-versions-for-your-scheduled-analytics-rules-public-preview)
 - [DHCP 正規化スキーマ (パブリック プレビュー)](#dhcp-normalization-schema-public-preview)
+
+### <a name="defender-for-office-365-events-now-available-in-the-m365-defender-connector-public-preview"></a>M365 Defender コネクタで使用できるようになった Office 365 イベントの Defender (パブリック プレビュー)
+
+Microsoft Defender for Endpoint からのものに加えて、[Microsoft 365 Defender コネクタ](connect-microsoft-365-defender.md)を通じて [Microsoft Defender for Office 365](/microsoft-365/security/office-365-security/overview) から生の[高度なハンティング イベント](/microsoft-365/security/defender/advanced-hunting-overview)を取り込むことができるようになりました。 [詳細については、こちらを参照してください](microsoft-365-defender-sentinel-integration.md#advanced-hunting-event-collection)。
 
 ### <a name="playbook-templates-and-gallery-now-available-public-preview"></a>プレイブックのテンプレートとギャラリーを使用できるようになりました (パブリック プレビュー)
 
@@ -90,7 +95,7 @@ Azure Sentinel 用の組み込みデータ コネクタを継続的に追加し�
 - **一般的な方法に関する記事**:
 
    - [Azure、Windows、Microsoft、Amazon サービスへの接続](connect-azure-windows-microsoft-services.md)
-   - [データ ソースを Azure Sentinel の Data Collector API に接続してデータを取り込む](connect-rest-api-template.md)
+   - [データ ソースを Azure Sentinel のデータ コレクター API に接続してデータを取り込む](connect-rest-api-template.md)
    - [デバイスまたはアプライアンスの CEF 形式のログを Azure Sentinel に取得する](connect-common-event-format.md)
    - [Syslog を使用して Linux ベースのソースからデータを収集する](connect-syslog.md)
    - [Log Analytics エージェントを使用してカスタム ログ形式のデータを Azure Sentinel に収集する](connect-custom-logs.md)
@@ -199,7 +204,6 @@ Azure Sentinel Information Model (ASIM) でサポートされるようになっ�
 - [ウォッチリストは一般提供中です](#watchlists-are-in-general-availability)
 - [データ レジデンシーをより多くの地域でサポート](#support-for-data-residency-in-more-geos)
 - [Azure Defender コネクタでの双方向同期 (パブリック プレビュー)](#bidirectional-sync-in-azure-defender-connector-public-preview)
-
 
 ### <a name="microsoft-threat-intelligence-matching-analytics-public-preview"></a>Microsoft 脅威インテリジェンス照合分析 (パブリック プレビュー)
 

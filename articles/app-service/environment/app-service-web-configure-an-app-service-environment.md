@@ -1,18 +1,18 @@
 ---
 title: ASE v1 の構成
 description: App Service Environment v1 の構成、管理、および監視 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
-author: ccompy
+author: madsd
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1d2023d0b258b0bcc2ab72bff9bb019f91f61f0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962589"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998791"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
 
@@ -72,7 +72,7 @@ ms.locfileid: "88962589"
 データベースには、環境を定義する情報だけでなく、環境内で実行されているアプリに関する詳細情報が格納されています。 これは、Azure が保持しているサブスクリプションの一部です。 ユーザーが直接操作することはできません。 仮想ネットワーク ルーティングまたはセキュリティを調整する場合も、SQL Azure へのアクセスを許可する必要があります。そうしないと、ASE が機能しません。
 
 ### <a name="network"></a>ネットワーク
-ASE で使用される VNet には、ASE の作成時または事前に作成したネットワークを使用できます。 ASE の作成時にサブネットを作成すると、強制的にその仮想ネットワークと同じリソース グループ内に ASE が作成されます。 ASE で使用するリソース グループを VNet とは異なるリソース グループにする必要がある場合は、リソースマネージャー テンプレートを使用して ASE を作成する必要があります。
+ASE で使用される VNet には、ASE の作成時または事前に作成したネットワークを使用できます。 ASE の作成時にサブネットを作成すると、強制的にその仮想ネットワークと同じリソース グループ内に ASE が作成されます。 ASE で使用するリソース グループを VNet とは異なるものにする必要がある場合は、Azure Resource Manager テンプレートを使用して ASE を作成する必要があります。
 
 ASE に使用される仮想ネットワークにはいくつかの制限があります。
 
@@ -96,7 +96,7 @@ ASE に入ってくる受信トラフィックは、主に 2 つの方法で制�
 
 ASE を作成すると、VNet に VIP が作成されます。  VIP には、外部と内部の 2 種類が存在します。  外部 VIP で ASE を作成した場合、その ASE 内のアプリには、インターネットでルーティングできる IP アドレスを介してアクセスすることができます。 内部 VIP を選択した場合、ASE は ILB を使って構成され、インターネットから直接アクセスすることはできません。  外部 VIP は ILB ASE でも必要ですが、この場合は、Azure の管理と保守を目的としたアクセスに限定されます。  
 
-ILB ASE の作成時には、ILB ASE で使用するサブドメインを指定することになります。また、指定したサブドメインに対しては、独自の DNS を管理する必要があります。  サブドメイン名は自分で設定するため、HTTPS アクセスに使用する証明書も自分で管理する必要があります。  ASE の作成後、その証明書を指定するように求められます。  ILB ASE の作成と使用の詳細については、「[App Service Environment での内部ロード バランサーの使用][ILBASE]」を参照してください。 
+ILB ASE の作成時には、ILB ASE で使用するサブドメインを指定することになります。また、指定したサブドメインに対しては、独自の DNS を管理する必要があります。  サブドメイン名は自分で設定するため、HTTPS アクセスに使用する証明書も自分で管理する必要があります。  ASE の作成後、その証明書を指定するように求められます。  ILB ASE の作成と使用の詳細については、[テンプレートから ASEv1 を作成する方法](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)に関するページを参照してください。 
 
 ## <a name="portal"></a>ポータル
 App Service Environment の管理と監視は、Azure ポータルの UI を使って実行できます。 ASE があれば、ほとんどの場合、サイド バーに App Service 記号が表示されます。 この記号は、Azure ポータルに App Service Environment があることを示すために使用されます。
@@ -185,7 +185,7 @@ App Service Environment を削除する必要がある場合は、単に [App Se
 ![Delete an App Service Environment UI][9]  
 
 ## <a name="getting-started"></a>作業の開始
-App Service Environment の使用を開始するには、 [App Service Environment の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
+App Service Environment の使用を開始するには、[テンプレートから ASEv1 を作成する方法](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)に関するページを参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -203,7 +203,6 @@ App Service Environment の使用を開始するには、 [App Service Environme
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
 [Appserviceplans]: ../overview-hosting-plans.md
-[HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: ../../virtual-network/virtual-networks-faq.md

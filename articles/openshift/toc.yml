@@ -14,12 +14,18 @@
       href: tutorial-connect-cluster.md
     - name: 3 - ARO クラスターを削除する
       href: tutorial-delete-cluster.md
+- name: クイックスタート
+  items:
+    - name: Azure portal を使用して ARO クラスターをデプロイする
+      href: quickstart-portal.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作
       items:
         - name: ARO クラスターをアップグレードする
           href: howto-upgrade.md
+        - name: スポット ノードを使用する
+          href: howto-spot-nodes.md
     - name: ネットワーク
       items:
         - name: プライベート ARO クラスターを作成する

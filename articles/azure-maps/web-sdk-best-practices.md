@@ -6,12 +6,12 @@ ms.author: v-stharr
 ms.date: 3/22/2021
 ms.topic: conceptual
 ms.service: azure-maps
-ms.openlocfilehash: 3bcf3125e09ee2023e36b3eefc5d34d4a1215c4e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0d21b23c9b1192f2f660615079da0831c1ec92fc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439364"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006358"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Azure Maps Web SDK のベスト プラクティス
 
@@ -27,8 +27,11 @@ Azure Maps Web SDK を使用すると、大規模な空間データセットを�
 
 > [!IMPORTANT]
 > Azure Maps には、2 つの認証方法が用意されています。
+>
 > * サブスクリプション キーベースの認証
-> * Azure Active Directory 認証: すべての実稼働アプリケーションに Azure Active Directory を使用します。
+> * Azure Active Directory 認証
+>
+> すべての実稼働アプリケーションで Azure Active Directory を使用します。
 > サブスクリプション キーベースの認証はシンプルであり、ほとんどのマッピング プラットフォームで、課金のためにプラットフォームの使用状況を測定するための軽量な方法として使用されます。 ただし、これはセキュリティで保護された認証形式ではなく、アプリ開発時にローカルで使用するだけにとどめる必要があります。 一部のプラットフォームには、要求に含まれる IP アドレスや HTTP の参照元を制限する機能がありますが、この情報は簡単に偽装できます。 サブスクリプション キーを使用する場合は、[それらを定期的にローテーション](how-to-manage-authentication.md#manage-and-rotate-shared-keys)してください。
 > Azure Active Directory は、あらゆる種類のアプリケーション シナリオに対応するさまざまなセキュリティ機能と設定を備えたエンタープライズ ID サービスです。 Azure Maps を使用するすべての実稼働アプリケーションで Azure Active Directory を認証に使用することをお勧めします。
 > Azure Maps での認証の管理の詳細については、[このドキュメント](how-to-manage-authentication.md)を参照してください。
@@ -63,7 +66,7 @@ Web ページの読み込み中に最初に行うべきことの 1 つは、ユ�
 
 ### <a name="lazy-load-the-azure-maps-web-sdk"></a>Azure Maps Web SDK の遅延読み込みを行う
 
-マップがすぐに必要ではない場合、必要になるまで Azure Maps Web SDK の読み込みを遅延させます。 そうすれば、Azure Maps Web SDK によって使用される JavaScript および CSS ファイルは、必要になるまで読み込みが遅延されます。 これが行われる一般的なシナリオは、ページ読み込み時点では表示されないタブまたはポップアップ パネルにマップが読み込まれる場合です。
+マップがすぐに必要ではない場合、必要になるまで Azure Maps Web SDK の読み込みを遅延させます。 これにより、Azure Maps Web SDK によって使用される JavaScript ファイルと CSS ファイルは、必要になるまで読み込みが遅延されます。 これが行われる一般的なシナリオは、ページ読み込み時点では表示されないタブまたはポップアップ パネルにマップが読み込まれる場合です。
 次のコード サンプルは、ボタンが押されるまで Azure Maps Web SDK の読み込みを遅延する方法を示しています。
 
 <br/>
@@ -78,7 +81,7 @@ Web ページの読み込み中に最初に行うべきことの 1 つは、ユ�
 
 ### <a name="set-initial-map-style-and-camera-options-on-initialization"></a>初期化時にマップのスタイルとカメラの初期オプションを設定する
 
-多くの場合は、アプリでマップを特定の場所またはスタイルに読み込む必要があります。 場合により、開発者はマップの読み込みが完了するまで待機 (または `ready` イベントを待機) してから、マップの `setCemer` または `setStyle` 関数を使用することがあります。 こうすると、多くの場合は、必要な初期マップ ビューの表示にかかる時間が長くなります。目的のマップ ビューのために必要なリソースを読み込む前に、既定により多くのリソースを読み込むことになるからです。 より適切な方法は、マップの初期化時に、必要なマップのカメラとスタイルのオプションをマップに渡すことです。
+多くの場合は、アプリでマップを特定の場所またはスタイルに読み込む必要があります。 場合により、開発者はマップの読み込みが完了するまで待機 (または `ready` イベントを待機) してから、マップの `setCemer` または `setStyle` 関数を使用することがあります。 こうすると、目的のマップ ビューのために必要なリソースを読み込む前に、多くのリソースが既定で読み込まれることになるため、多くの場合、必要な初期マップ ビューの取得にかかる時間が長くなります。 より適切な方法は、マップの初期化時に、必要なマップのカメラとスタイルのオプションをマップに渡すことです。
 
 ## <a name="optimize-data-sources"></a>データ ソースを最適化する
 
@@ -361,6 +364,7 @@ Azure Maps Web SDK を使用して開発するときに発生する一般的な�
 * [サポートされているブラウザー](supported-browsers.md)を使用していることを確認します。
 
 **すべてのデータが地球の反対側に表示されます。どうなっているのでしょうか?**
+
 Azure Maps SDK においては、座標 (位置とも呼ばれる) は `[longitude, latitude]` という地理空間業界の標準形式で配置されます。 この同じ形式は、Azure Maps SDK 内で使用される形式設定されたコア データである GeoJSON スキーマで座標を定義する方法でもあります。 データが地球の反対側に表示されているときは、ほとんどの場合、経度と緯度の値が座標または位置情報で反転されていることが原因と考えられます。
 
 **HTML マーカーが Web コントロールの間違った場所に表示されるのはなぜですか?**
@@ -372,6 +376,7 @@ Azure Maps SDK においては、座標 (位置とも呼ばれる) は `[longitu
 * HTML マーカーの DOM 要素を調べて、アプリの CSS がマーカーに追加され、その位置に影響を与えているかどうかを確認します。
 
 **シンボル レイヤーのアイコンまたはテキストが間違った場所に表示されるのはなぜですか?**
+
 `anchor` および `offset` オプションが、マップ上の座標に合わせる画像またはテキストの部分と揃うように正しく構成されていることを確認してください。
 マップを回転したときにのみシンボルの配置が正しくない場合は、`rotationAlignment` オプションを確認します。 既定では、シンボルはマップのビューポートと共に回転し、ユーザーに対して正立するように表示されます。 ただし、シナリオによっては、マップの向きに合わせてシンボルをロックすることが望ましい場合があります。 これを行うには、`rotationAlignment` オプションを `'map'` に設定します。
 マップをピッチ調整または傾けた場合にのみシンボルの配置が正しくない場合は、`pitchAlignment` オプションを確認します。 既定では、マップをピッチ調整または傾けたときに、シンボルはマップのビューポートで正立した状態を維持します。 ただし、シナリオによっては、マップのピッチにシンボルを固定することが望ましい場合があります。 これを行うには、`pitchAlignment` オプションを `'map'` に設定します。
@@ -387,7 +392,10 @@ Azure Maps SDK においては、座標 (位置とも呼ばれる) は `[longitu
 
 **サンドボックス化された iframe で Azure Maps Web SDK を使用できますか?**
 
-はい。 Safari には、サンドボックス化された iframe による Web worker の実行を妨げる[バグ](https://bugs.webkit.org/show_bug.cgi?id=170075)があることに注意してください。これは Azure Maps Web SDK の要件です。 解決方法は、iframe の sandbox プロパティに `"allow-same-origin"` タグを追加することです。
+はい。
+
+> [!TIP]
+> Safari には、Azure Maps Web SDK の要件であるサンドボックス化された iframe による Web worker の実行を妨げる[バグ](https://bugs.webkit.org/show_bug.cgi?id=170075)があります。 解決方法は、iframe の sandbox プロパティに `"allow-same-origin"` タグを追加することです。
 
 ## <a name="get-support"></a>サポートを受ける
 
@@ -395,19 +403,22 @@ Azure Maps SDK においては、座標 (位置とも呼ばれる) は `[longitu
 
 **データの問題や住所に関する問題を報告するには、どうすればよいですか?**
 
-Azure Maps には、データの問題を報告および追跡できるデータ フィードバック ツールがあります。 [https://feedback.azuremaps.com/](https://feedback.azuremaps.com/) 送信された問題ごとに、データの問題の進捗状況を追跡するために使用できる一意の URL が生成されます。 データの問題の解決にかかる時間は、問題の種類と、変更が正しいことを確認するのがどれだけ簡単であるかによって異なります。 修正が完了すると、レンダリング サービスには週単位の更新プログラムで更新が反映されますが、ジオコーディングやルーティングなどの他のサービスについては、月単位の更新プログラムで更新が反映されます。 データの問題を報告する方法の詳細については、こちらの[ドキュメント](how-to-use-feedback-tool.md)を参照してください。
+[Azure Maps データ フィードバック ツール](https://feedback.azuremaps.com)を使用して、データの問題を報告します。 データの問題の報告に関する詳細な手順については、記事「[Azure Maps にデータのフィードバックを提供する](how-to-use-feedback-tool.md)」を参照してください。
+
+> [!NOTE]
+> 送信された問題ごとに、それを追跡するための一意の URL が生成されます。 解決時間は、問題の種類と、変更が正しいことを確認するために必要な時間によって異なります。 変更は、レンダリング サービスでは毎週の更新に表示され、ジオコーディングやルーティングなどの他のサービスでは毎月の更新に表示されます。
 
 **サービスまたは API のバグを報告するには、どうすればよいですか?**
 
-https://azure.com/support
+**[サポート リクエストの作成]** ボタンを選択して、Azure の [[ヘルプとサポート]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ページで問題を報告します。
 
 **Azure Maps のテクニカル ヘルプはどこで入手できますか?**
 
-Power BI の Azure Maps ビジュアルに関連する場合: https://powerbi.microsoft.com/support/ 他のすべての Azure Maps サービス: https://azure.com/support または開発者フォーラム: [https://docs.microsoft.com/answers/topics/azure-maps.html](/answers/topics/azure-maps.html)
+* Power BI の Azure Maps ビジュアルに関連する質問については、[Power BI サポート](https://powerbi.microsoft.com/support/)に問い合わせてください。
 
-**機能を要求するには、どのようにすればよいですか?**
+* その他すべての Azure Maps サービスについては、[Azure サポート](https://azure.com/support)に問い合わせてください。
 
-ユーザーの声のサイトで機能の要求を行います: https://feedback.azure.com/forums/909172-azure-maps
+* 特定の Azure Maps の機能に関する質問またはコメントについては、[Azure Maps 開発者フォーラム](/answers/topics/azure-maps.html)を使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

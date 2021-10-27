@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24ea1fa02a70e63c8eaab21acff1d1c7b625e9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6828f1c02bbcccebcd6b96305b051ebfc996c1a7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727723"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046223"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -81,7 +81,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 
 現代の企業では、ユーザーが作業を行うために使用しているすべてのクラウド アプリケーションを IT 部門が認識していないことがよくあります。 IT 管理者は、従業員が使用しているクラウド アプリの数はどのくらいだと思うかと尋ねられたとき、平均で 30 または 40 と答えています。 実際には、平均 1,000 個を超える個別のアプリが組織内の従業員によって使用されています。 従業員の 80% が、誰も確認しておらず、セキュリティ ポリシーとコンプライアンス ポリシーに準拠していない未承認のアプリを使用しています。
 
-[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
+[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能のベネフィットを受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
 <em>"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"</em> --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 99fbf0a6ecd232ae646639e84864addd103c1f5a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: fb27a56dcf1661a95b6c7926a3c11628f6341446
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129807772"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133901"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure Digital Twins でのエンドポイントとルートの管理
 
@@ -476,7 +476,7 @@ portal のホームページで、Azure Digital Twins インスタンスを検�
 
 ここから、インスタンスのメトリックを表示したり、カスタム ビューを作成したりできます。
 
-Azure Digital Twins メトリックの表示について詳しくは、「[Azure Monitor でメトリックを表示する](troubleshoot-metrics.md)」を参照してください。
+Azure Digital Twins メトリックの表示について詳しくは、[トラブルシューティング: メトリック](troubleshoot-metrics.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

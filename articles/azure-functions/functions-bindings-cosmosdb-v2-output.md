@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: d43407221d62992a54f1e5efdeb23afd3dde92ef
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e8c2ba6f93d788d377cdb21beb157ea55a066b98
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661181"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999798"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の出力バインド
 
@@ -673,15 +673,17 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 |**direction**     | 該当なし | `out` に設定する必要があります。         |
 |**name**     | 該当なし | 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** | **DatabaseName**|ドキュメントが作成されたコレクションを含むデータベース。     |
-|**collectionName** <br> または <br> **containerName** |**CollectionName** <br> または <br> **ContainerName** | ドキュメントが作成されたコレクションの名前。 <br><br> [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では、このプロパティは `ContainerName` と呼ばれます。 |
+|**collectionName** <br> または <br> **containerName** |**CollectionName** <br> または <br> **ContainerName** | ドキュメントが作成されたコレクションの名前。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `ContainerName` と呼ばれます。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。  |
 |**partitionKey**|**PartitionKey** |`CreateIfNotExists` が true の場合に、作成されるコレクションのパーティション キー パスを定義します。|
-|**collectionThroughput** <br> または <br> **containerThroughput**|**CollectionThroughput** <br> または <br> **ContainerThroughput**| `CreateIfNotExists` が true の場合に、作成されるコレクションの[スループット](../cosmos-db/set-throughput.md)を定義します。 <br><br> [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では、このプロパティは `ContainerThroughput` と呼ばれます。 |
-|**connectionStringSetting** <br> または <br> **connection**   |**ConnectionStringSetting** <br> または <br> **接続**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。  <br><br> [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では、このプロパティは `Connection` と呼ばれます。 値はアプリ設定の名前であり、接続文字列、または接続を定義する構成セクションあるいはプレフィックスが含まれます。 「[接続](./functions-reference.md#connections)」を参照してください。 |
+|**collectionThroughput** <br> または <br> **containerThroughput**|**CollectionThroughput** <br> または <br> **ContainerThroughput**| `CreateIfNotExists` が true の場合に、作成されるコレクションの[スループット](../cosmos-db/set-throughput.md)を定義します。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `ContainerThroughput` と呼ばれます。 |
+|**connectionStringSetting** <br> または <br> **connection**   |**ConnectionStringSetting** <br> または <br> **接続**| Azure Cosmos DB アカウントへの接続方法を指定するアプリの設定または設定のコレクションの名前。 「[接続](#connections)」を参照してください。 <br><br> [拡張機能バージョン 4.x] では、このプロパティは `connection` と呼ばれます。 |
 |**preferredLocations**| **PreferredLocations**| (省略可能) Azure Cosmos DB サービスの geo レプリケートされたデータベース アカウントの優先される場所 (リージョン) を定義します。 複数の値はコンマで区切る必要があります。 たとえば、"East US,South Central US,North Europe" などです。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (省略可能) `PreferredLocations` と共に `true` に設定すると、Azure Cosmos DB サービスで[マルチ リージョン書き込み](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)を利用できます。 <br><br> このプロパティは、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では使用できません。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (省略可能) `PreferredLocations` と共に `true` に設定すると、Azure Cosmos DB サービスで[マルチ リージョン書き込み](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)を利用できます。 <br><br> このプロパティは、[拡張機能バージョン 4.x] では使用できません。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-cosmosdb-connections](../../includes/functions-cosmosdb-connections.md)]
 
 ## <a name="usage"></a>使用法
 
@@ -720,10 +722,12 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 |プロパティ  |Default |説明 |
 |----------|--------|------------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
-|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。 両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください <br><br> この設定は、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では使用できません。 |
-|leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。 <br><br> この設定は、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では使用できません。|
+|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。 両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください <br><br> この設定は、[拡張機能バージョン 4.x] では使用できません。 |
+|leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。 <br><br> この設定は、[拡張機能バージョン 4.x] では使用できません。|
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB ドキュメントが作成または変更されたときに関数を実行する (トリガー)](./functions-bindings-cosmosdb-v2-trigger.md)
 - [Azure Cosmos DB ドキュメントを読み込む (入力バインド)](./functions-bindings-cosmosdb-v2-input.md)
+
+[バージョン 4.x の拡張機能]: ./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher

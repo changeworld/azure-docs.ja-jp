@@ -3,7 +3,7 @@ title: SQL IaaS Agent 拡張機能に登録する
 description: Azure SQL Server 仮想マシンを SQL IaaS Agent 拡張機能に登録して、Azure Marketplace の外部にデプロイされた SQL Server 仮想マシンの機能を有効にし、コンプライアンスと管理容易性を向上させます。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: adbadram
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -12,21 +12,21 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/01/2021
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: adbadram
+ms.reviewer: mathoma
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 3dfcfcab7421b6aa8710310fdffa08f54688c4fd
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b66b7c86cf7ba6d23cb09c7feed1f3ced19fd531
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219946"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160967"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-ご使用の SQL Server VM を [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に登録すると、Azure VM 上の SQL Server に対する数多くの機能面の利点を活用できるようになります。
+ご使用の SQL Server VM を [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に登録すると、Azure VM 上の SQL Server に対する数多くの機能面の利点を活用できるようになります。 既定では、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると、SQL IaaS Agent 拡張機能に自動的に登録されます。  詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
 
 この記事では、SQL IaaS Agent 拡張機能に 1 つの SQL Server VM を登録する方法について説明します。 また、サブスクリプションのすべての SQL Server VM を[自動的に](sql-agent-extension-automatic-registration-all-vms.md)登録することや、[複数の VM を一括でスクリプト化](sql-agent-extension-manually-register-vms-bulk.md)して登録することもできます。
 
@@ -51,6 +51,7 @@ SQL Server VM を拡張機能に登録するには、以下のものが必要に
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - パブリック クラウドまたは Azure Government クラウドにデプロイされた Azure Resource Model の [Windows Server 2008 (またはそれ以降) の仮想マシン](../../../virtual-machines/windows/quick-create-portal.md)と [SQL Server 2008 (またはそれ以降)](https://www.microsoft.com/sql-server/sql-server-downloads)。
 - [Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell (最低 5.0)](/powershell/azure/install-az-ps) の最新バージョン。
+- .NET Framework 4.5.1 以降。
 
 ## <a name="register-subscription-with-rp"></a>リソースプロバイダーを使用してサブスクリプションを登録する
 
@@ -382,4 +383,4 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

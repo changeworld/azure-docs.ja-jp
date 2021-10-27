@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/16/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 0e1192e310c658e93c4cfe5738e9ad4d36984113
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 051e218b8c0bce8249c6fbe3dd785d797130b61f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580874"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062730"
 ---
 # <a name="get-started-with-document-translation"></a>ドキュメント翻訳を使ってみる
 
@@ -117,7 +117,7 @@ Translator サービスへの要求には、アクセス認証を受けるため
 * 各ターゲット言語の `targetUrl` は一意でなければなりません。
 
 >[!NOTE]
-> 同じ名前のファイルが宛先に既に存在する場合は、上書きされます。
+> 同じ名前のファイルが宛先に既に存在する場合、ジョブは失敗します。
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="translate-all-documents-in-a-container"></a>コンテナー内のすべてのドキュメントを翻訳する

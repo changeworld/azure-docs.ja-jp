@@ -3,13 +3,13 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 09/22/2021
-ms.openlocfilehash: 516bcbdd00ae4b116326e797746485c82be9c3fb
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.date: 10/13/2021
+ms.openlocfilehash: e04ab727e1bb7e168a4461e69b62ab049e59cacf
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740514"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003403"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -72,7 +72,7 @@ Azure の公開アプリから使用される Functions ランタイムのバー
 
 ## <a name="migrating-from-3x-to-4x-preview"></a><a name="migrating-from-3x-to-4x"></a>3.x から 4.x への移行 (プレビュー)
 
-Azure Functions バージョン 4.x (プレビュー) では、バージョン 3.x との下位互換性が高くなっています。  多くのアプリでは、コードを変更することなく、4.x に安全にアップグレードできるはずです。 運用アプリでメジャー バージョンを変更する前に、広範囲なテストを必ず実行してください。
+Azure Functions バージョン 4.x (プレビュー) では、バージョン 3.x との下位互換性が高くなっています。 多くのアプリでは、コードを大幅に変更することなく、4.x に安全にアップグレードされるはずです。 運用アプリでメジャー バージョンを変更する前に、必ず広範囲にテストしてください。
 
 3\.x から 4.x にアプリを移行するには、次の Azure CLI コマンドを使用して、`FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を `~4` に設定します。
 
@@ -91,32 +91,46 @@ az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURC
 
 - Azure Functions プロキシは、4.x ではサポートされなくなりました。 [Azure API Management](../api-management/import-function-app-as-api.md) を使用することをお勧めします。
 
-- *AzureWebJobsDashboard* を使用した Azure Storage へのログ記録は、4.x ではサポートされなくなりました。 [Application Insights](./functions-monitoring.md) を使用することをお勧めします。
+- *AzureWebJobsDashboard* を使用した Azure Storage へのログ記録は、4.x ではサポートされなくなりました。 [Application Insights](./functions-monitoring.md) を使用することをお勧めします。 ([#1923](https://github.com/Azure/Azure-Functions/issues/1923))
 
-- Azure Functions 4.x では、拡張機能の[最小バージョン要件](https://github.com/Azure/Azure-Functions/issues/1987)が適用されます。 影響を受ける拡張機能の最新バージョンにアップグレードします。 .NET 以外の言語では、拡張機能バンドル バージョン 2.x 以降に[アップグレード](./functions-bindings-register.md#extension-bundles)してください。
+- Azure Functions 4.x では、拡張機能の[最小バージョン要件](https://github.com/Azure/Azure-Functions/issues/1987)が適用されます。 影響を受ける拡張機能の最新バージョンにアップグレードします。 .NET 以外の言語では、拡張機能バンドル バージョン 2.x 以降に[アップグレード](./functions-bindings-register.md#extension-bundles)してください。 ([#1987](https://github.com/Azure/Azure-Functions/issues/1987))
 
-- 4\.x Linux 従量課金プランの関数アプリでは、既定および最大のタイムアウトが適用されるようになりました。
+- 4\.x Linux 従量課金プランの関数アプリでは、既定および最大のタイムアウトが適用されるようになりました。 ([#1915](https://github.com/Azure/Azure-Functions/issues/1915))
 
-- Application Insights は、4.x には既定では含まれなくなっています。 別の拡張機能としてそれを使用できます。
+- Application Insights は、4.x には既定では含まれなくなっています。 別の拡張機能としてそれを使用できます。 ([#2027](https://github.com/Azure/Azure-Functions/issues/2027))
     - インプロセス .NET アプリの場合は、[Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) 拡張機能パッケージを関数アプリに追加します。
     - 分離 .NET アプリの場合:
         - [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) 拡張機能パッケージを、関数アプリに追加します。
         - [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) および [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) パッケージを、最新バージョンに更新します。
-    - 他の言語の場合は、[Azure Functions 拡張機能バンドル](functions-bindings-register.md#extension-bundles)の今後の更新で、Application Insights 拡張機能が組み込まれます。 新しいバンドルが使用できるようになったら、アプリでそれが自動的に使用されます。
+    - 他の言語の場合は、[Azure Functions 拡張機能バンドル](functions-bindings-register.md#extension-bundles)の今後の更新で、Application Insights 拡張機能が組み込まれます。 新しいバンドルが使用できるようになったら、アプリでそれが自動的に使用されます。 更新された拡張機能バンドルの準備が整うまで、関数アプリから `APPINSIGHTS_INSTRUMENTATIONKEY` および `APPLICATIONINSIGHTS_CONNECTION_STRING` アプリの設定の両方を削除します。 これで、ホストの起動に失敗することがなくなります。
+
+- ストレージ アカウントを共有する関数アプリは、計算されたホスト名が同じ場合、起動に失敗します。 関数アプリごとに個別のストレージ アカウントを使用します。 ([#2049](https://github.com/Azure/Azure-Functions/issues/2049))
 
 #### <a name="languages"></a>言語
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-現在何も報告されていません。
+- `InvalidHostServicesException` は致命的なエラーになります。 ([#2045](https://github.com/Azure/Azure-Functions/issues/2045))
+
+- `EnableEnhancedScopes` は既定で有効になっています。 ([#1954](https://github.com/Azure/Azure-Functions/issues/1954))
+
+- 登録済みサービスとして `HttpClient` を削除します。 ([#1911](https://github.com/Azure/Azure-Functions/issues/1911))
+
+# <a name="java"></a>[Java](#tab/java)
+
+- Java 11 では、単一クラス ローダーを使用します。 ([#1997](https://github.com/Azure/Azure-Functions/issues/1997))
+
+- Java 8 では、ワーカー jar の読み込みを停止します。 ([#1991](https://github.com/Azure/Azure-Functions/issues/1991))
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-現在何も報告されていません。
+- 以前の不整合に対処するために、Node.js アプリの出力シリアル化が更新されました。 ([#2007](https://github.com/Azure/Azure-Functions/issues/2007))
 
 # <a name="python"></a>[Python](#tab/python)
 
-- 共有メモリ転送は、Azure Functions 4.x では既定で有効になっています。
+- 共有メモリ転送は、既定で有効になっています。 ([#1973](https://github.com/Azure/Azure-Functions/issues/1973))
+
+- 既定のスレッド数が更新されました。 スレッド セーフではない関数やメモリ使用量が多い関数は、影響を受ける可能性があります。 ([#1962](https://github.com/Azure/Azure-Functions/issues/1962))
 
 ---
 
@@ -138,6 +152,10 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 >[!NOTE]
 >.NET Core 2.2 のサポートに関する問題のため、バージョン 2 (`~2`) に固定された関数アプリは、基本的には .Net core 3.1 で実行されています。 詳細については、[Functions v2.x 互換性モード](functions-dotnet-class-library.md#functions-v2x-considerations)に関するページを参照してください。
+
+# <a name="java"></a>[Java](#tab/java)
+
+[なし] :
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfc0ca4250cc6cfefbf7c68d27996ccd81fd2857
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90563864"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993627"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同期: アーキテクチャの概要
 このトピックでは、Azure AD Connect 同期の基本的なアーキテクチャについて説明します。多くの点で、前身の MIIS 2003、ILM 2007、FIM 2010 と似ています。 Azure AD Connect sync は、これらのテクノロジが進化したものです。 これらの以前のテクノロジのいずれかに慣れていれば、このトピックの内容も既によくご存知のことと思われます。 同期テクノロジについて初めて学ぶ場合は、このトピックを読むことをお勧めします。 ただし、このトピックの内容を隅々まで理解しなくても、(このトピックでは同期エンジンと呼んでいる) Azure AD Connect 同期を問題なくカスタマイズできます。
@@ -193,7 +193,7 @@ ID 管理プロセスは、異なる接続されたデータ ソース間で ID 
 * 受信同期: コネクタ スペース内のデータを使用して、メタバースの内容が更新されます。
 * 送信同期: メタバース内のデータを使用して、コネクタ スペースの内容が更新されます。
 
-コネクタ スペース内のステージングされた情報を使用することにより、受信同期プロセスは、接続されたデータ ソースに格納されているデータの統合ビューをメタバースに作成します。 ルールの構成方法に応じて、すべてのステージング オブジェクト、またはインポート保留中の情報があるステージング オブジェクトだけが集約されます。
+コネクタ スペース内のステージングされた情報を使用することにより、受信同期プロセスは、接続されたデータ ソースに格納されているメタバースにデータの統合ビューを作成します。 ルールの構成方法に応じて、すべてのステージング オブジェクト、またはインポート保留中の情報があるステージング オブジェクトだけが集約されます。
 
 送信同期プロセスは、メタバース オブジェクトが変化するとエクスポート オブジェクトを更新します。
 

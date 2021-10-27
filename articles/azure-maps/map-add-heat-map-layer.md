@@ -1,20 +1,20 @@
 ---
 title: マップにヒート マップ レイヤーを追加する | Microsoft Azure Maps
 description: ヒート マップを作成する方法について説明します。 Azure Maps Web SDK を使用し、ヒート マップ レイヤーをマップに追加する方法について説明します。 ヒート マップ レイヤーをカスタマイズする方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 07/29/2019
-ms.topic: conceptual
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/06/2021
+ms.topic: how-to
 ms.service: azure-maps
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 181cd714f85195157b767062cac99caadd32e817
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e3827deeb1b87471f215028ac7479a83c24231fb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432758"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992638"
 ---
-# <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
+# <a name="add-a-heat-map-layer-to-a-map"></a>マップにヒート マップ レイヤーを追加する
 
 点密度マップとも呼ばれるヒート マップは、データ視覚化の 1 つの種類です。 一定の範囲の色を使用して、データの密度を表すために使用され、マップ上にデータの "ホット スポット" を示します。 ヒート マップは、多数の点によってデータセットをレンダリングする優れた方法です。
 
@@ -65,14 +65,14 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 前の例では、半径と不透明度のオプションを設定してヒート マップをカスタマイズしました。 ヒート マップ レイヤーには、次のようなカスタマイズのためのオプションがいくつか用意されています。
 
-* `radius`:各データ ポイントをレンダリングするときのピクセルの半径を定義します。 この半径は、固定数または式として設定できます。 式を使用することにより、ズーム レベルに基づいて半径をスケーリングし、マップ上の一貫した空間領域 (たとえば、5 マイルの半径) を表すことができます。
-* `color`:ヒート マップの配色方法を指定します。 色のグラデーションは、ヒート マップの一般的な機能です。 `interpolate` 式を利用して、その効果を実現できます。 また、`step` 式を使用してヒート マップを色分けし、密度を、等高線またはレーダー スタイル マップのような範囲に視覚的に分割することもできます。 このようなカラー パレットでは、最小濃度値から最大濃度値の色を定義します。
+- `radius`:各データ ポイントをレンダリングするときのピクセルの半径を定義します。 この半径は、固定数または式として設定できます。 式を使用することにより、ズーム レベルに基づいて半径をスケーリングし、マップ上の一貫した空間領域 (たとえば、5 マイルの半径) を表すことができます。
+- `color`:ヒート マップの配色方法を指定します。 色のグラデーションは、ヒート マップの一般的な機能です。 `interpolate` 式を利用して、その効果を実現できます。 また、`step` 式を使用してヒート マップを色分けし、密度を、等高線またはレーダー スタイル マップのような範囲に視覚的に分割することもできます。 このようなカラー パレットでは、最小濃度値から最大濃度値の色を定義します。
 
   ヒート マップの色の値は、`heatmap-density` 値に対する式として指定します。 "補間" 式のインデックス 0 または "段階" 式の既定の色では、データのない領域の色が定義されます。 この値を使用して、背景色を定義することができます。 多くの場合、この値は透明、または半透明の黒に設定されます。
 
   色の式の例を次に示します。
 
-  | 補間色の式 | 段階的な色の式 | 
+  | 補間色の式 | 段階的な色の式 |
   |--------------------------------|--------------------------|
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |
 
@@ -118,11 +118,13 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 > [!TIP]
 > データ ソースに対するクラスタリングを有効にすると、相互に近いポイントはクラスター化されたポイントとしてグループ化されます。 各クラスターのポイント数をヒート マップの重み式として使用できます。 これにより、レンダリングされる点の数を大幅に減らすことができます。 クラスターのポイント数は、ポイント フィーチャーの `point_count` プロパティに格納されています。
+>
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
+>
 > クラスタリングの半径がわずか数ピクセルの場合、レンダリングによる視覚的な違いは小さくなります。 半径が大きいほど各クラスター内でグループ化されるポイントが増えるので、ヒート マップのパフォーマンスは向上します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -130,7 +132,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [HeatMapLayer](/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HeatMapLayer](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
 
 > [!div class="nextstepaction"]
 > [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)

@@ -3,7 +3,7 @@ title: Azure portal を使用して Azure 内の SQL Server 仮想マシンを�
 description: SQL Server 設定を変更するために、Azure でホストされている SQL Server VM 用の Azure portal 内の SQL 仮想マシン リソースにアクセスする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2021
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 37b4f063f2d08c137c44784c55cc3c47569a3c56
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: a25f5bf28feb8fcb3903094f45568e96388ec0bd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434600"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162150"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Azure portal を使用して SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -132,6 +132,6 @@ SQL 仮想マシン リソースの **[Security Center]** ページを使用し�
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)
 
 

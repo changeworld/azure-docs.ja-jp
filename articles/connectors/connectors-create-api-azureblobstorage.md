@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/11/2021
 tags: connectors
-ms.openlocfilehash: cc56c079173fad1509d9da9cf1d435675b1918f7
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 7ceafa54a202433e84535b19e73e99d38726dd0c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808976"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064067"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
 
@@ -337,7 +337,7 @@ Blob Storage コネクタを使用してファイアウォールの背後にあ�
 
 1. ロジック アプリ リソースのナビゲーション メニューで、 **[設定]** の配下にある **[ID]** を選択します。
 
-1. **[システム割り当て済み]** ペインで、 **[状態]** を **[オン]** に設定します (すでに有効になっている可能性があります)。 **[アクセス許可]** で、 **[Azure でのロールの割り当て]** を選択します。
+1. **[システム割り当て]** ペインで、**[状態]** を **[オン]** に設定します (まだ有効になっていない場合)。**[保存]** を選択し、変更を確定します。 **[アクセス許可]** で、 **[Azure でのロールの割り当て]** を選択します。
 
    :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-add-1.png" alt-text="Azure portal と、&quot;ID&quot; 設定ペインと &quot;Azure でのロール割り当ての許可&quot; ボタンが表示されているロジック アプリのリソース メニューを示すスクリーンショット。":::
 
@@ -345,21 +345,19 @@ Blob Storage コネクタを使用してファイアウォールの背後にあ�
 
    :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-add-2.png" alt-text="ロジック アプリのロールの割り当てペインのスクリーンショット。選択したサブスクリプションと新しいロールの割り当てを追加するためのボタンが表示されています。":::
 
-1. **[Add role assignments]\(ロールの割り当ての追加\)** ペインで、次の手順に従って、新しいロールの割り当てを設定します。
+1. **[ロールの割り当ての追加]** ペインで、新しいロールの割り当てを次の値で設定します。
 
-   1. **[スコープ]** で **[ストレージ]** を選択します。
+   | プロパティ | 値 | 説明 |
+   |----------|-------|-------------|
+   | **スコープ** | <*resource-scope*> | ロールの割り当てを適用するリソースセット。 この例では、**[ストレージ]** を選択します。 |
+   | **サブスクリプション** | <*Azure-subscription*> | お使いのストレージ アカウントの Azure サブスクリプション。 |
+   | **リソース** | <*storage-account-name*> | ロジック アプリ ワークフローからアクセスするストレージ アカウントの名前。 |
+   | **ロール** | <*role-to-assign*> | シナリオのワークフローでリソースを操作するために必要なロール。 この例では、BLOB コンテナーと日付に対する読み取り、書き込み、削除アクセスが許可される **[ストレージ BLOB データ共同作成者]** が必要です。 ドロップダウン メニューのロールの横にある情報アイコンにマウス ポインターを合わせると、アクセス許可の詳細が表示されます。 |
+   ||||
 
-   1. **[サブスクリプション]** で、ストレージ アカウントのサブスクリプションを選択します。
+   :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-configure.png" alt-text="ロールの割り当ての構成ペインのスクリーンショット。スコープ、サブスクリプション、リソース、ロールの設定が表示されている。":::
 
-   1. **[リソース]** で、ロジック アプリ ワークフローからアクセスしたいストレージ アカウントを選択します。
-
-   1. **[ロール]** で、実際のシナリオに合った適切なアクセス許可を選択します。
-
-      この例では、 **[ストレージ BLOB データ共同作成者]** を使用しており、BLOB コンテナーと日付に対する読み取り、書き込み、削除アクセスが許可されます。 ドロップダウン メニューのロールの横にある情報アイコンにマウス ポインターを合わせると、アクセス許可の詳細が表示されます。
-
-      :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-configure.png" alt-text="ロールの割り当ての構成ペインのスクリーンショット。スコープ、サブスクリプション、リソース、ロールの設定が表示されている。":::
-
-   1. **[保存]** を選択して、ロールの割り当ての作成を終了します。
+1. 操作を完了したら、**[保存]** を選択して、ロールの割り当ての作成を終了します。
 
 <a name="enable-managed-identity-support"></a>
 
@@ -387,7 +385,7 @@ Blob Storage コネクタを使用してファイアウォールの背後にあ�
 
     :::image type="content" source="./media/connectors-create-api-azureblobstorage/managed-identity-connect.png" alt-text="ワークフロー デザイナーと、必要な &quot;PUT&quot; パラメータを持つ HTTP トリガーまたはアクションを示すスクリーンショット。":::
 
-1. **[新しいパラメーターの追加]** リストから **[認証]** を選択して[マネージド ID を構成](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)します。
+1. **[新しいパラメーターの追加]** リストから **[認証]** を選択して [マネージド ID を構成](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)します。
 
     1. **[認証]** の下にある **[認証の種類]** で、 **[マネージド ID]** を選択します。
 

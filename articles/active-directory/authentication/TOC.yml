@@ -58,6 +58,8 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: よく寄せられる質問
           href: multi-factor-authentication-faq.yml
+        - name: オペレーターのサポート
+          href: concept-authentication-operator-assistance.md
     - name: パスワード保護
       items:
         - name: 統合されたパスワード ポリシー チェック

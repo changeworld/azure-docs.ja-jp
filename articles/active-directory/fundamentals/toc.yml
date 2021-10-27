@@ -91,7 +91,7 @@
               href: service-accounts-govern-on-premises.md
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
-        - name: セキュリティの既定値
+        - name: セキュリティの既定値群
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md
@@ -113,6 +113,16 @@
           href: active-directory-architecture.md
         - name: すべてのアプリを Azure AD と統合する
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: マルチテナント ユーザー管理
+          items:
+            - name: マルチテナント ユーザー管理の概要
+              href: multi-tenant-user-management-introduction.md
+            - name: 一般的なシナリオ
+              href: multi-tenant-user-management-scenarios.md
+            - name: 一般的な考慮事項
+              href: multi-tenant-common-considerations.md
+            - name: 一般的な解決方法
+              href: multi-tenant-common-solutions.md
         - name: 認証とプロトコルのプロビジョニング
           items:
             - name: 概要

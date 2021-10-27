@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: 7b0af3fbd090eec36c69f784639ff401f5d80c46
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 44f41d0adebe21eaec28aced556f67e8c1aeda1d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831429"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047230"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 
@@ -25,9 +25,9 @@ ms.locfileid: "124831429"
 
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーはパイプラインと 1 対 1 の関係を持ち、単一のパイプラインのみを参照できます。 タンブリング ウィンドウ トリガーはスケジュール トリガーの代替として適しており、複雑なシナリオ ([他のタンブリング ウィンドウ トリガーに対する依存関係](#tumbling-window-trigger-dependency)、[失敗したジョブの再実行](tumbling-window-trigger-dependency.md#monitor-dependencies)、および[パイプラインに対するユーザー再試行の設定](#user-assigned-retries-of-pipelines)) のための一連の機能を提供します。 スケジュール トリガーとタンブリング ウィンドウ トリガーの違いについて詳しく理解するには、[こちら](concepts-pipeline-execution-triggers.md#trigger-type-comparison)をご覧ください。
 
-## <a name="ui-experience"></a>UI エクスペリエンス
+## <a name="azure-data-factory-and-synapse-portal-experience"></a>Azure Data Factory と Synapse のポータル エクスペリエンス
 
-1. UI でタンブリング ウィンドウ トリガーを作成するには、 **[トリガー]** タブを選択し、 **[新規]** を選択します。 
+1. Azure portal でタンブリング ウィンドウ トリガーを作成するには、**[トリガー]** タブを選択し、**[新規]** を選択します。 
 1. [トリガーの構成] ウィンドウが開いたら、 **[タンブリング ウィンドウ]** を選択し、タンブリング ウィンドウ トリガーのプロパティを定義します。 
 1. 終了したら、 **[保存]** を選択します。
 
@@ -199,11 +199,23 @@ ms.locfileid: "124831429"
 
 ---
 
-## <a name="sample-for-azure-powershell"></a>Azure PowerShell のサンプル
+## <a name="sample-for-azure-powershell-and-azure-cli"></a>Azure PowerShell と Azure CLI のサンプル
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+ここでは、Azure PowerShell を使用してトリガーを作成、起動、および監視する方法について説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-ここでは、Azure PowerShell を使用してトリガーを作成、起動、および監視する方法について説明します。
+### <a name="prerequisites"></a>前提条件
+
+- **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
+
+- **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/install-az-ps)」に記載されている手順に従います。 
+
+- **Azure Data Factory**。 「[PowerShell を使用した Azure Data Factory の作成](/azure/data-factory/quickstart-create-data-factory-powershell)」に記載されている手順に従って、データ ファクトリとパイプラインを作成します。
+
+### <a name="sample-code"></a>サンプル コード
 
 1. 次の内容が含まれた **MyTrigger.json** という名前の JSON ファイルを C:\ADFv2QuickStartPSH\ フォルダーに作成します。
 
@@ -219,6 +231,7 @@ ms.locfileid: "124831429"
           "frequency": "Minute",
           "interval": "15",
           "startTime": "2017-09-08T05:30:00Z",
+          "endTime" : "2017-09-08T06:30:00Z",
           "delay": "00:00:01",
           "retryPolicy": {
             "count": 2,
@@ -241,35 +254,115 @@ ms.locfileid: "124831429"
     }
     ```
 
-2. **Set-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
+2. [Set-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/set-azdatafactoryv2trigger) コマンドレットを使用してトリガーを作成します。
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
+3. [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. **Start-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
+4. [Start-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/start-azdatafactoryv2trigger) コマンドレットを使用してトリガーを起動します。
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
+5. [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6. **Get-AzDataFactoryV2TriggerRun** コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
+6. [Get-AzDataFactoryV2TriggerRun](/powershell/module/az.datafactory/get-azdatafactoryv2triggerrun) コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+ここでは、Azure CLI を使用してトリガーを作成、起動、および監視する方法について説明します。
+
+### <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 「[Azure CLI を使用して Azure Data Factory を作成する](/azure/data-factory/quickstart-create-data-factory-azure-cli)」に記載されている手順に従って、データ ファクトリとパイプラインを作成します。
+
+### <a name="sample-code"></a>サンプル コード
+
+1. 作業ディレクトリで、トリガーのプロパティを使用して、**MyTrigger.json** という名前の JSON ファイルを作成します。 このサンプルでは、次のコンテンツを使用します。
+
+    > [!IMPORTANT]
+    > JSON ファイルを保存する前に、**referenceName** の値をパイプライン名に設定します。 **startTime** 要素の値を現在の UTC 時間に設定します。 **endTime** 要素の値を現在の UTC 時間の 1 時間後に設定します。
+
+    ```json
+    {
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+          "frequency": "Minute",
+          "interval": "15",
+          "startTime": "2017-12-08T00:00:00Z",
+          "endTime": "2017-12-08T01:00:00Z",
+          "delay": "00:00:01",
+          "retryPolicy": {
+            "count": 2,
+            "intervalInSeconds": 30
+          },
+          "maxConcurrency": 50
+        },
+        "pipeline": {
+          "pipelineReference": {
+            "type": "PipelineReference",
+            "referenceName": "DynamicsToBlobPerfPipeline"
+          },
+          "parameters": {
+            "windowStart": "@trigger().outputs.windowStartTime",
+            "windowEnd": "@trigger().outputs.windowEndTime"
+          }
+        },
+        "runtimeState": "Started"
+    }
+    ```
+
+2. [az datafactory trigger create](/cli/azure/datafactory/trigger#az_datafactory_trigger_create) コマンドを使用してトリガーを作成します。
+
+    > [!IMPORTANT]
+    > この手順とそれ以降のすべての手順で、`ResourceGroupName` をリソース グループ名に置き換えます。 `DataFactoryName` は、データ ファクトリ名に置き換えます。
+
+    ```azurecli
+    az datafactory trigger create --resource-group "ResourceGroupName" --factory-name "DataFactoryName"  --name "MyTrigger" --properties @MyTrigger.json  
+    ```
+
+3. [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show) コマンドを使用して、トリガーの状態が **Stopped** であることを確認します。
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --name "MyTrigger" 
+    ```
+
+4. [az datafactory trigger start](/cli/azure/datafactory/trigger#az_datafactory_trigger_start) コマンドを使用してトリガーを起動します。
+
+    ```azurecli
+    az datafactory trigger start --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --name "MyTrigger" 
+    ```
+
+5. [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show) コマンドを使用して、トリガーの状態が **Started** であることを確認します。
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --name "MyTrigger" 
+    ```
+
+6. [az datafactory trigger-run query-by-factory](/cli/azure/datafactory/trigger-run#az_datafactory_trigger_run_query_by_factory) コマンドを使用して、Azure CLI でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**last-updated-after** と **last-updated-before** の値を更新します。
+
+    ```azurecli
+    az datafactory trigger-run query-by-factory --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --filters operand="TriggerName" operator="Equals" values="MyTrigger" --last-updated-after "2017-12-08T00:00:00Z" --last-updated-before "2017-12-08T01:00:00Z"
+    ```
+---
 
 Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
 

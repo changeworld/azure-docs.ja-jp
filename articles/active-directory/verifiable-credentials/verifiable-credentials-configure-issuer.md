@@ -1,18 +1,19 @@
 ---
-title: チュートリアル - アプリケーションから Azure AD の検証可能な資格情報を発行する
+title: チュートリアル - アプリケーションから Azure AD の検証可能な資格情報を発行する (プレビュー)
 description: このチュートリアルでは、サンプル アプリを使用して検証可能な資格情報を発行する方法について説明します
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 author: barclayn
+manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 10/08/2021
-ms.openlocfilehash: ded592a6c33ce592aae70c98c757c8262fd8a42b
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 2e0d1028efab3b157c21c90944a8bcd41be04c55
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129731017"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070738"
 ---
 # <a name="issue-azure-ad-verifiable-credentials-from-an-application-preview"></a>アプリケーションから Azure AD の検証可能な資格情報を発行する (プレビュー)
 
@@ -37,7 +38,7 @@ ms.locfileid: "129731017"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 開始する前に、[Azure AD の検証可能な資格情報のテナントをセットアップする](https://tbd-link-to-the-tenant-config-article/)ことが重要です。
+- 開始する前に、[Azure AD の検証可能な資格情報のテナントをセットアップする](/azure/active-directory/verifiable-credentials/verifiable-credentials-configure-tenant)ことが重要です。
 - サンプル アプリをホストするリポジトリを複製するために、[GIT](https://git-scm.com/downloads) をインストールします
 - [Visual Studio Code](https://code.visualstudio.com/Download)、または同様のコード エディター。
 - [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
@@ -236,7 +237,7 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
     1. シークレットの **値** を記録します。 この値は、後の手順での構成に使用します。 シークレットの値は、再度表示することも、その他の方法で取得することもできないため、表示されたらすぐに記録してください。
 
-この時点で、サンプル アプリケーションを設定するために必要なすべての情報が揃いました。
+この時点で、サンプル アプリケーションを設定するために必要なすべての情報が表示されます。
 
 ## <a name="update-the-sample-application"></a>サンプル アプリケーションを更新する
 
@@ -244,7 +245,7 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 1. *active-directory-verifiable-credentials-dotnet-main* フォルダーで Visual Studio Code を開き、**1.asp-net-core-api-idtokenhint** フォルダー内のプロジェクトを選択します。
 
-1. プロジェクトのルート フォルダーで、appsettings.json ファイルを開きます。 このファイルには、ご自分の Azure AD の検証可能な資格情報に関する情報が含まれています。 上記の手順で以前に記録した情報を使用して、次のプロパティを更新します。
+1. プロジェクトのルート フォルダーで、appsettings.json ファイルを開きます。 このファイルには、ご自分の Azure AD の検証可能な資格情報が含まれています。 上記の手順で以前に記録した情報を使用して、次のプロパティを更新します。
 
     1. **Tenant ID:** ご自分のテナント ID
     1. **Client ID:** ご自分のクライアント ID

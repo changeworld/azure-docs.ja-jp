@@ -3,14 +3,14 @@ title: Azure Event Grid の Azure AD を使用して WebHook 配信をセキュ�
 description: Azure Event Grid を使用して Azure Active Directory によって保護された HTTPS エンドポイントにイベントを配信する方法について説明します
 ms.topic: how-to
 ms.date: 09/29/2021
-ms.openlocfilehash: ef5bbb33f738a102277870c6227813f6ce8ad257
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 18db7a5244cb498ff54999646082d3d5628468e1
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616859"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066917"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Azure Active Directory で保護されたエンドポイントにイベントを発行する
+# <a name="deliver-events-to-azure-active-directory-protected-endpoints"></a>Azure Active Directory で保護されたエンドポイントにイベントを配信する
 この記事では、Azure Active Directory (Azure AD) を使用して、**イベント サブスクリプション** と **Webhook エンドポイント** 間の接続をセキュリティで保護する方法について説明します。 Azure AD アプリケーションとサービス プリンシパルの概要については、[Microsoft ID プラットフォーム (v2.0) の概要](../active-directory/develop/v2-overview.md)に関するページを参照してください。
 
 この記事ではデモンストレーションのために Azure portal を使用しますが、CLI、PowerShell、または SDK を使用して機能を有効にすることもできます。
@@ -18,7 +18,7 @@ ms.locfileid: "129616859"
 > [!IMPORTANT]
 > セキュリティの脆弱性に対処するために、2021 年 3 月 30 日にイベント サブスクリプションの作成または更新の一環として追加のアクセス確認が導入されました。 サブスクライバー クライアントのサービス プリンシパルは、所有者であるか、配信先のアプリケーション サービス プリンシパルのロールが割り当てられている必要があります。 以下の新しい手順に従って、ご自分の AAD アプリケーションを再構成してください。
 
-## <a name="single-tenant-events-with-azure-ad-and-webhooks"></a>Azure AD と Webhook を使用したシングル テナント イベント
+## <a name="deliver-events-to-a-webhook-in-the-same-azure-ad-tenant"></a>同じ Azure AD テナントの Webhook にイベントを配信する
 
 ![Azure Event Grid の Azure AD を使用して WebHook 配信をセキュリティで保護する](./media/secure-webhook-delivery/single-tenant-diagram.png)
 
@@ -40,10 +40,10 @@ ms.locfileid: "129616859"
     PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
     ```
 
-4. [以下のスクリプト](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-user.md)を開き、 **$webhookAppObjectId** と **$eventSubscriptionWriterUserPrincipalName** の値を実際の識別子に置き換えて更新し、スクリプトの実行に進みます。
+4. [次のスクリプト](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-user.md)を開き、**$webhookAppObjectId** と **$eventSubscriptionWriterUserPrincipalName** の値を実際の識別子に置き換えて更新し、スクリプトの実行を続けます。
 
     - Variables:
-        - **$webhookAppObjectId**: Webhook 用に作成された　Azure AD アプリケーション ID
+        - **$webhookAppObjectId**: Webhook 用に作成された Azure AD アプリケーション ID
         - **$eventSubscriptionWriterUserPrincipalName**: イベント サブスクリプションを作成するユーザーの Azure ユーザー プリンシパル名
 
     > [!NOTE]
@@ -59,7 +59,7 @@ ms.locfileid: "129616859"
     4. **[追加機能]** タブで、次の手順を実行します。
         1. **[AAD 認証を使用する]** を選択し、テナント ID とアプリケーション ID を構成します。
         2. スクリプトの出力から Azure AD のテナント ID をコピーし、 **[AAD テナント ID]** フィールドに入力します。
-        3. スクリプトの出力から Azure AD のアプリケーション ID をコピーし、 **[AAD アプリケーション ID]** フィールドに入力します。 または、AAD のアプリケーション ID URI を使用することもできます。 アプリケーション ID URI の詳細については、[こちらの記事](../app-service/configure-authentication-provider-aad.md)を参照してください。
+        3. スクリプトの出力から Azure AD のアプリケーション ID をコピーし、 **[AAD アプリケーション ID]** フィールドに入力します。 アプリケーション ID を使用する代わりに、AAD アプリケーション ID URI を使用できます。 アプリケーション ID URI の詳細については、[こちらの記事](../app-service/configure-authentication-provider-aad.md)を参照してください。
     
             ![Secure Webhook アクション](./media/secure-webhook-delivery/aad-configuration.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "129616859"
     PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
     ```
 
-7. [以下のスクリプト](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md)を開き、 **$webhookAppObjectId** と **$eventSubscriptionWriterAppId** の値を実際の識別子に置き換えて更新し、スクリプトの実行に進みます。
+7. [次のスクリプト](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md)を開き、**$webhookAppObjectId** と **$eventSubscriptionWriterAppId** の値を実際の識別子に置き換えて更新し、スクリプトの実行を続けます。
 
     - Variables:
-        - **$webhookAppObjectId**: Webhook 用に作成された　Azure AD アプリケーション ID
+        - **$webhookAppObjectId**: Webhook 用に作成された Azure AD アプリケーション ID
         - **$eventSubscriptionWriterAppId**: Event Grid サブスクリプション ライターの Azure AD アプリケーション ID
 
     > [!NOTE]
@@ -114,9 +114,9 @@ ms.locfileid: "129616859"
     > [!NOTE]
     > この時点で、Event Grid はすべてのメッセージで Azure AD ベアラー トークンを Webhook クライアントに渡すようになっているため、Webhook で認証トークンを検証する必要があります。
 
-## <a name="multitenant-events-with-azure-ad-and-webhooks"></a>Azure AD と Webhook を使用したマルチテナント イベント
+## <a name="deliver-events-to-a-webhook-in-a-different-azure-ad-tenant"></a>別の Azure AD テナントの Webhook にイベントを配信する 
 
-セキュリティで保護された Webhook サブスクリプションを複数のテナントで有効にするには、Azure AD アプリケーションを使用してこのタスクを実行する必要があります。このプロセスは現在、ポータルから Azure AD ユーザーを使用して利用することはできません。
+セキュリティで保護された Webhook サブスクリプションを複数のテナントで有効にするには、Azure AD アプリケーションを使用してこのタスクを実行する必要があります。現在、ポータルから Azure AD ユーザーを使用してこのプロセスを利用することはできません。
 
 ![Azure AD と Webhook を使用したマルチテナント イベント](./media/secure-webhook-delivery/multitenant-diagram.png)
 
@@ -142,10 +142,10 @@ ms.locfileid: "129616859"
     PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
     ```
 
-7. [以下のスクリプト](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md)を開き、 **$webhookAppObjectId** と **$eventSubscriptionWriterAppId** の値を実際の識別子に置き換えて更新し、スクリプトの実行に進みます。
+7. [次のスクリプト](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md)を開き、**$webhookAppObjectId** と **$eventSubscriptionWriterAppId** の値を実際の識別子に置き換えて更新し、スクリプトの実行を続けます。
 
     - Variables:
-        - **$webhookAppObjectId**: Webhook 用に作成された　Azure AD アプリケーション ID
+        - **$webhookAppObjectId**: Webhook 用に作成された Azure AD アプリケーション ID
         - **$eventSubscriptionWriterAppId**: Event Grid サブスクリプション ライターの Azure AD アプリケーション ID
 
     > [!NOTE]

@@ -4,16 +4,23 @@ description: Azure Event Grid を使用して Azure AD ユーザーによって�
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 09/29/2021
-ms.openlocfilehash: 4b0f445572099dbf8b555f26be5474f84062d42a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 91cdc4f4959d417e8f68dc9712737d234248e4bd
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129621452"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063699"
 ---
 # <a name="secure-webhook-delivery-with-azure-ad-user-in-azure-event-grid"></a>Azure Event Grid の Azure AD ユーザーを使用して WebHook 配信をセキュリティで保護する
 
 このスクリプトは、Azure Event Grid を使用して Azure AD ユーザーによって保護された HTTPS エンドポイントにイベントを配信するための構成を提供します。
+
+スクリプトの大まかな手順を次に示します。
+
+1. **Microsoft.EventGrid** 用のサービス プリンシパルがない場合は作成します。
+1. **Webhook のための Azure AD アプリ** で、**AzureEventGridSecureWebhookSubscriber** という名前のロールを作成します。
+1. サブスクリプションを作成するユーザーのサービス プリンシパルを AzureEventGridSecureWebhookSubscriber ロールに追加します。
+1. Microsoft EventGrid のサービス プリンシパルを AzureEventGridSecureWebhookSubscriber に追加します。
 
 ## <a name="sample-script---stable"></a>サンプル スクリプト - 安定版
 

@@ -385,6 +385,8 @@ items:
     items:
       - name: サポート オプションとヘルプ オプション
         href: ../iot-fundamentals/iot-support-help.md?toc=/azure/azure-maps/toc.json&bc=/azure/azure-maps/breadcrumb/toc.json
+      - name: Azure Maps QPS レート制限
+        href: azure-maps-qps-rate-limits.md
       - name: Azure IoT のサービス
         items:
           - name: IoT Hub

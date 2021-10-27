@@ -10,16 +10,18 @@ ms.custom: mvc
 ms.date: 06/21/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 5cbb4496b9317e64c0cdec8e78bf825d19d8bd38
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8a83c26a5aaf5bc06609b0e8e889c18fadce1d2a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258622"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003101"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>Azure Key Vault Managed HSM とは
 
-Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM (ハードウェア セキュリティ モジュール) を使用してクラウド アプリケーションの暗号化キーを保護することができます。 価格情報については、[Azure Key Vault の価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)の「マネージド HSM プール」セクションを参照してください。 
+Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM (ハードウェア セキュリティ モジュール) を使用してクラウド アプリケーションの暗号化キーを保護することができます。 
+
+価格情報については、[Azure Key Vault の価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)の「マネージド HSM プール」セクションを参照してください。 サポートされているキーの種類については、「[キーについて](../keys/about-keys.md)」を参照してください。
 
 ## <a name="why-use-managed-hsm"></a>Managed HSM を使用する理由
 

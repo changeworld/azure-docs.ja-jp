@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 8552cbcb79522933e0b2cf9ffe369cefdf900b79
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 28aa7fee3ab7cf2bbc8f10d1ba2f5ea54a792cd6
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390459"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066674"
 ---
 # <a name="troubleshoot-the-dynamics-365-dataverse-common-data-service-and-dynamics-crm-connectors-in-azure-data-factory-and-azure-synapse"></a>Azure Data Factory と Azure Synapse で Dynamics 365、Dataverse (Common Data Service)、Dynamics CRM のコネクタの問題を解決します。
 
@@ -148,6 +148,40 @@ ms.locfileid: "129390459"
 - **原因**: 列マッピングのシンク列に 'type' プロパティがありません。 
  
 - **推奨事項**: ポータルの JSON エディターを使用して、列マッピングのこれらの列に 'type' プロパティを追加できます。 
+
+## <a name="the-copy-activity-from-the-dynamics-365-reads-more-rows-than-the-actual-number"></a>Dynamics 365 の Copy アクティビティで、実際の数よりも多くの行が読み込まれる
+
+- **現象**: Dynamics 365 の Copy アクティビティで、実際の数よりも多くの行が読み込まれます。
+
+- **原因**: Dynamics 365 サーバーでは、利用可能なレコード数が常に多く表示されます。 
+
+- **推奨事項**: **XrmToolBox** を使用して、ページングを使用した FetchXML をテストします。 **XrmToolBox** と一部のインストールされているツールでレコード数を取得できます。 詳細については、[XrmToolBox](https://www.xrmtoolbox.com/) を参照してください。
+
+## <a name="cannot-access-virtual-columns-from-dynamics-sources-in-the-copy-activity"></a>Copy アクティビティで Dynamics ソースの仮想列にアクセスできない
+
+- **現象**: Copy アクティビティで Dynamics ソースの仮想列にアクセスできません。
+
+- **原因**: 仮想列は現在サポートされていません。 
+
+- **推奨事項**: オプション セットの値については、次のオプションに従って取得します。
+  - オブジェクト タイプ コードは、[任意のエンティティのオブジェクト タイプ コードを取得する方法](https://powerobjects.com/tips-and-tricks/find-object-type-code-entity/)に関するページと、[Dynamics 365 のブログ](https://dynamicscrmdotblog.wordpress.com/)を参考にして取得することができます。
+  - StringMap エンティティをターゲット エンティティにリンクし、関連付けられている値を取得できます。
+
+## <a name="the-parallel-copy-in-a-dynamics-crm-data-store"></a>Dynamics CRM データ ストアの並列コピー
+
+- **現象**: Dynamics CRM のデータ ストアで並列コピーを設定できるかどうか、または、[Degree of copy parallelism]\(コピーの並列度\) に設定できる値の範囲がわかりません。
+
+- **推奨事項**: 並列コピーは並列処理を制御し、[Degree of copy parallelism]\(コピーの並列度\) セクションは 0 以外の値に設定できます。 数値が大きいと Dynamics サーバー側でスロットリングが発生し、スループットが低下する場合がありましたが、現在は公開 SDK を使用してスロットリングが処理されます。
+
+  :::image type="content" source="./media/connector-troubleshoot-guide/degree-of-copy-parallelism-section.png" alt-text="コピーの並列度セクションの図。":::
+
+## <a name="dynamics-type-conversion"></a>Dynamics 型の変換
+
+- **現象**: GUID を Dynamics ソースの文字列に変換しようとしましたが、エラーが発生します。
+
+- **原因**: Dynamics をソースとして使用した場合、型変換はサポートされません。
+
+- **推奨事項**: ステージングを有効にして再試行します。
 
 ## <a name="next-steps"></a>次のステップ
 

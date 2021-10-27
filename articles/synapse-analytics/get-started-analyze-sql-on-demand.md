@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 04/15/2021
-ms.openlocfilehash: 8a8e8fae151b0d9be318d4dfad832ead34ef04da
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 492f8d42a072418586a6646a9beed2e750849b31
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738088"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996988"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してデータを分析する
 
@@ -58,7 +58,7 @@ ms.locfileid: "109738088"
 - 特定のデータ ソースまたはデータベース オブジェクトへのアクセス許可を持つデータベース ユーザー。
 - クエリの中で使用できるユーティリティ ビュー、プロシージャ、関数。
 
-1. 別途これらのオブジェクトを使用するためのデータベースを作成します。 カスタム データベース オブジェクトを `master` データベースに作成することはできません。
+1. `master` データベースを使用して、カスタム データベース オブジェクト用に別のデータベースを作成します。 カスタム データベース オブジェクトを `master` データベースに作成することはできません。
 
     ```sql
     CREATE DATABASE DataExplorationDB 
@@ -76,15 +76,15 @@ ms.locfileid: "109738088"
     ```
 
    > [!NOTE]
-   > 外部データ ソースは、資格情報なしで作成することができます。 その場合、外部データ ソースへのアクセスには呼び出し元の ID が使用されます。
+   > 外部データ ソースは、資格情報なしで作成できます。 資格情報が存在しない場合は、外部データ ソースにアクセスするために呼び出し元の ID が使用されます。
 
-3. 必要に応じて、外部データにアクセスすることになるユーザーのログインを `DataExplorationDB` に作成します。
+3. 必要に応じて、'master' データベースを使用して、外部データにアクセスする予定のユーザーのログインを `DataExplorationDB` に作成します。
 
     ```sql
     CREATE LOGIN data_explorer WITH PASSWORD = 'My Very Strong Password 1234!';
     ```
 
-    そのログインを使用するデータベース ユーザーを `DataExplorationDB` に作成し、`ADMINISTER DATABASE BULK OPERATIONS` アクセス許可を付与します。
+    次に、そのログインに対してデータベース ユーザーを `DataExplorationDB` に作成し、`ADMINISTER DATABASE BULK OPERATIONS` アクセス許可を付与します。
     ```sql
     CREATE USER data_explorer FOR LOGIN data_explorer;
     GO

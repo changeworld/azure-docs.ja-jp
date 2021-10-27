@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: f2ab2dfeec7522599cfb8b3eccdf9b498fdfff32
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: c1638b7851ea0a7cc7484de04dad00a2b86d3d34
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713708"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042676"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -219,7 +219,7 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 適応型アプリケーション制御をプログラムで管理するには、REST API を使用します。 
 
-関連する API ドキュメントは、[Security Center の API ドキュメントの「適応型アプリケーション制御」セクション](/rest/api/securitycenter/adaptiveapplicationcontrols)で参照できます。
+関連する API ドキュメントは、[Security Center の API ドキュメントの「適応型アプリケーション制御」セクション](/rest/api/securitycenter/adaptiveapplicationcontrols)で入手できます。
 
 REST API から使用できる関数をいくつか以下に示します。
 

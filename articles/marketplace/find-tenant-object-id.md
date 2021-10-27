@@ -1,17 +1,17 @@
 ---
 title: Azure Marketplace でテナント ID、オブジェクト ID、パートナーの関連付けの詳細を検索する
-description: Azure Marketplace でサブスクリプション ID におけるテナント ID、オブジェクト ID、パートナーの関連付けの詳細を検索する方法。
+description: Azure Marketplace でサブスクリプション ID におけるテナント ID、オブジェクト ID、およびパートナーの関連付けの詳細を検索します。
 ms.service: marketplace
 ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: 92819c28002c79ff905174e5b2f94779050237fd
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a71a60bd4f12a46456c3a2d0725642118b2acc40
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356705"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065295"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>テナント ID、オブジェクト ID、パートナーの関連付けの詳細を検索する
 
@@ -38,11 +38,11 @@ ms.locfileid: "129356705"
 1. Azure portal に移動し、上記の手順 1 と 2 の説明に従って **[Azure Active Directory]** を選択します。
 2. **[サブスクリプション]** を選択します。
 
-    :::image type="content" source="media/tenant-and-object-id/icon-azure-subscriptions-1.png" alt-text="Azure portal での [サブスクリプション] アイコン。":::
+    :::image type="content" source="media/tenant-and-object-id/icon-azure-subscriptions-1.png" alt-text="Azure portal の [サブスクリプション] アイコン。":::
 
 3. サブスクリプションとロールを表示します。
 
-    :::image type="content" source="media/tenant-and-object-id/subscriptions-screen-1.png" alt-text="Azure portal での [サブスクリプション] 画面。":::
+    :::image type="content" source="media/tenant-and-object-id/subscriptions-screen-1.png" alt-text="Azure portal の [サブスクリプション] 画面。":::
 
 ## <a name="find-partner-id"></a>パートナー ID を検索する
 

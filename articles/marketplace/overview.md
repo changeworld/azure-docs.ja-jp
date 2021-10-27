@@ -1,6 +1,6 @@
 ---
 title: Microsoft コマーシャル マーケットプレースとは何ですか?
-description: Microsoft コマーシャル マーケットプレースにソリューションを登録する Microsoft パートナーにとっての利点とオプションの概要。
+description: コマーシャル マーケットプレースにソリューションを登録する Microsoft パートナーにとっての利点とオプションの概要。
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: overview
 ms.custom: contperf-fy21q4
 ms.date: 10/15/2020
-ms.openlocfilehash: 9764afb8bbb0dd6e627336e360ed5b5edc5b8d14
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 6a3d9dbb81bffc628e574d22aa56526a9abeeaa1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855975"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070964"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
@@ -61,11 +61,11 @@ Microsoft との提携の下でビジネスを促進し、パートナー様の�
 
 AppSource プランには、Microsoft 365、Dynamics 365、Power Platform、Azure からアクセスすることもできます。 次の例は、AppSource アドインに Power BI の **[ファイル]** メニューからアクセスする方法を示したものです。
 
-:::image type="content" source="media/overview/power-bi.png" alt-text="AppSource 内の Power BI ビジュアルに Power BI の [ファイル] メニューからアクセスする方法"::: 
+:::image type="content" source="media/overview/power-bi.png" alt-text="AppSource 内の Power BI ビジュアルに Power BI の [ファイル] メニューからアクセスする方法を示すスクリーンショット。":::
 
 このオプションを選択すると、ユーザーが Power BI アドインをその名前やカテゴリで検索できるウィンドウが開きます。 
 
-:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Power BI 内から AppSource のアドインを一覧表示する"::: 
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Power BI 内から AppSource のアドインを一覧表示するスクリーンショット。":::
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -73,17 +73,17 @@ AppSource プランには、Microsoft 365、Dynamics 365、Power Platform、Azur
 
 以下に示したのは、Azure Marketplace のオファー登録情報ページの例です。
 
-:::image type="content" source="media/overview/example-marketplace.png" alt-text="Azure Marketplace のオファー登録情報ページの画像。"::: 
+:::image type="content" source="media/overview/example-marketplace.png" alt-text="Azure Marketplace のオファー登録情報ページの画像。":::
 
 #### <a name="azure-marketplace-in-the-azure-portal"></a>Azure portal における Azure Marketplace
 
 Azure ユーザーは、[Azure portal](https://portal.azure.com/) の **[リソースの作成]** オプションから、Azure Marketplace ソリューションを探してデプロイすることができます。
 
-:::image type="content" source="media/overview/create-resource.png" alt-text="Azure portal の [リソースの作成] オプションの画像"::: 
+:::image type="content" source="media/overview/create-resource.png" alt-text="Azure portal での [リソースの作成] オプションを示すスクリーンショット。":::
 
-このオプションを選択すると、Azure portal に Azure Marketplace が表示され、名前やカテゴリでソリューションを検索することができます。
+このオプションを選択すると、Azure portal に Azure Marketplace が表示され、名前やカテゴリでソリューションを検索できます。
 
-:::image type="content" source="media/overview/search-portal.png" alt-text="Azure portal 内の Azure Marketplace の検索オプションを示す画像"::: 
+:::image type="content" source="media/overview/search-portal.png" alt-text="Azure portal 内の Azure Marketplace の検索オプションを示すスクリーンショット。":::
 
 ### <a name="which-store-should-i-choose"></a>どちらのストアを選択すればよいですか?
 パートナー センターでコマーシャル マーケットプレース オファーを作成すると、オファーの種類やカテゴリなど、選択したオプションに応じて、どちらか一方のストアにそのオファーが登録されます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。 詳細については、「[オンライン ストア別の登録情報オプションと価格オプション](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)」を参照してください。

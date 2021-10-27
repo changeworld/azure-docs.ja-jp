@@ -3,7 +3,7 @@ title: 可用性グループ リスナーとロード バランサーの構成 (
 description: 1 つ以上の IP アドレスを持つ内部ロード バランサーを使用して、Azure Resource Manager モデルで可用性グループ リスナーを構成します。
 services: virtual-machines
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -12,14 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
-ms.author: mathoma
+ms.author: rsetlem
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 3c58814943d844ec1e644412eef926745e2df620
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.reviewer: mathoma
+ms.openlocfilehash: c7b2bff6f4c927090dfdff92f324b4957b645644
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572391"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167715"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 
@@ -137,7 +138,7 @@ foreach($VMName in $VMNames)
 
 ## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> サンプル スクリプト: PowerShell を使用して既存のロード バランサーに IP アドレスを追加する
 
-複数の可用性グループを使用するには、ロード バランサーに追加の IP アドレスを追加します。 各 IP アドレスには、独自の負荷分散規則、プローブ ポート、およびフロント ポートが必要です。
+複数の可用性グループを使用するには、ロード バランサーに追加の IP アドレスを追加します。 各 IP アドレスには、独自の負荷分散規則、プローブ ポート、およびフロント ポートが必要です。 [セカンダリ VM の IP アドレスが ローディングIP をサポートしていない](/azure/load-balancer/load-balancer-floating-ip)ため、ロード バランサーのバックエンド プールに VM のプライマリ IP アドレスのみを追加します。
 
 フロントエンド ポートは、アプリケーションが SQL Server インスタンスに接続するために使用するポートです。 複数の異なる可用性グループの IP アドレスで同じフロントエンド ポートを使用できます。
 

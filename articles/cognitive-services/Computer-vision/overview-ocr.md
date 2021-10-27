@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 06/21/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 48b1eaa6e01bf25b11ca269e0771b4fd03530bba
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 02654c3f196b6c3bc199e636b3601777ed372a99
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533210"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992536"
 ---
 # <a name="what-is-optical-character-recognition"></a>光学式文字認識とは
 
@@ -32,7 +32,7 @@ ms.locfileid: "129533210"
 
 ## <a name="read-api"></a>Read API 
 
-Computer Vision の <bpt id="p1">[</bpt>Read API<ept id="p1">](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)</ept> は、印刷されたテキスト (複数の言語)、手書きのテキスト (英語のみ)、数字、通貨記号を、画像や複数ページの PDF ドキュメントから抽出する、Azure の最新の OCR テクノロジです (<bpt id="p2">[</bpt>新機能について学習する<ept id="p2">](./whats-new.md)</ept>)。 これは、テキストの多い画像や、混合言語を含む複数ページの PDF ドキュメントからテキストを抽出するように最適化されています。 同じ画像またはドキュメントで、印刷と手書き両方のテキストの検出がサポートされています。
+Computer Vision の [Read API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) は、印刷されたテキスト (複数の言語)、手書きのテキスト (複数の言語)、数字、通貨記号を、画像や複数ページの PDF ドキュメントから抽出する、Azure の最新 OCR テクノロジです ([新機能について学習する](./whats-new.md))。 これは、テキストの多い画像や、混合言語を含む複数ページの PDF ドキュメントからテキストを抽出するように最適化されています。 同じ画像またはドキュメントで、印刷と手書き両方のテキストの検出がサポートされています。
 
 ![OCR で画像やドキュメントからテキストを抽出して構造化された出力に変換するしくみ](./Images/how-ocr-works.svg)
 
@@ -83,5 +83,5 @@ Cognitive Services 全般に言えることですが、Computer Vision サービ
 
 ## <a name="next-steps"></a>次のステップ
 
-- <bpt id="p1">[</bpt>OCR (Read) REST API またはクライアント ライブラリのクイックスタート<ept id="p1">](./quickstarts-sdk/client-library.md)</ept>を参照して使用を開始します。
-- <bpt id="p1">[</bpt>Read 3.2 REST API<ept id="p1">](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)</ept> について学習します。
+- [OCR (Read) REST API またはクライアント ライブラリのクイックスタート](./quickstarts-sdk/client-library.md)を参照して使用を開始します。
+- [Read 3.2 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) について学習します。

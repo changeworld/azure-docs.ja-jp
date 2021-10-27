@@ -3,12 +3,12 @@ title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
 ms.date: 10/01/2021
 ms.topic: sample
-ms.openlocfilehash: 7c24a3c660587e1ff70c9d208e6bf87c84c5bf1e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 53c478a051f279da6a307e65da6daee51fce1f57
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355234"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045902"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -39,7 +39,7 @@ Azure CLI (拡張経由) および Azure PowerShell (モジュール経由) は�
 
 ## <a name="show-resource-types-and-api-versions"></a><a name="apiversion"></a>リソースの種類と API バージョンを表示する
 
-Resource Graph は、主にリソース プロバイダーの API の最新の非プレビュー バージョンを使用して、更新中にリソース プロパティの `GET` を行います。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 次のクエリは、リソースの種類ごとにプロパティを収集するために使用される API バージョンの詳細を示しています。
+Resource Graph は、主にリソース プロバイダー API の最新の非プレビュー バージョンを使用して、更新中にリソース プロパティの `GET` を行います。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 次のクエリは、リソースの種類ごとにプロパティを収集するために使用される API バージョンの詳細を示しています。
 
 ```kusto
 Resources

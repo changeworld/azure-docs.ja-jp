@@ -41,10 +41,6 @@
 - name: 概念
   expanded: true
   items:
-    - name: アプリ管理のベスト プラクティス
-      href: application-management-fundamentals.md
-    - name: 一般的なアプリ管理シナリオ
-      href: common-scenarios.md
     - name: ホーム領域検出ポリシー
       href: home-realm-discovery-policy.md
     - name: クラウド アプリの統合の計画
@@ -148,8 +144,10 @@
               href: f5-aad-integration.md
             - name: Azure IaaS での F5 BIG-IP VE のデプロイ
               href: f5-bigip-deployment-guide.md
-            - name: パスワードレス VPN のための F5 Big-IP と Azure AD
+            - name: パスワードレス VPN のための F5 BIG-IP と Azure AD
               href: f5-aad-password-less-vpn.md
+            - name: フォーム ベース認証 SSO のための F5 BIG-IP と Azure AD
+              href: f5-big-ip-forms-advanced.md
         - name: Silverfort
           href: silverfort-azure-ad-integration.md
     - name: シングル サイン オン

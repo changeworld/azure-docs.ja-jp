@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: f258ba3b8c62d0d290785bbf6a66cc7651286162
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 84208764621bd03959db7d695bf0616dcccc4491
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390405"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064782"
 ---
 # <a name="troubleshoot-the-azure-synapse-analytics-azure-sql-database-and-sql-server-connectors-in-azure-data-factory-and-azure-synapse"></a>Azure Data Factory および Azure Synapse Analytics の Azure Synapse Analytics、Azure SQL Database、および SQL Server コネクタのトラブルシューティング
 
@@ -93,10 +93,12 @@ ms.locfileid: "129390405"
 
 - **メッセージ**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
-- **原因**:指定されたストアド プロシージャは無効です。 ストアド プロシージャがデータを返さないという原因が考えられます。
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **推奨事項**:SQL ツールを使用してストアド プロシージャを検証してください。 ストアド プロシージャがデータを返せることを確認してください。
-
+  | 原因分析                                               | 推奨                                             |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | 指定されたストアド プロシージャは無効です。 | SQL ツールを使用してストアド プロシージャを検証してください。 ストアド プロシージャがデータを返せることを確認してください。  |
+  | 検索アクティビティでは、なんらかの値を返すストアド プロシージャが必要ですが、ストアド プロシージャ コードでは値は返されません。 | ストアド プロシージャで返されるデータがないことが予想される場合は、ストアド プロシージャ アクティビティを使用します。 |
 
 ## <a name="error-code-sqlinvaliddbquerystring"></a>エラー コード:SqlInvalidDbQueryString
 

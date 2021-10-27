@@ -116,6 +116,8 @@
           href: batch-customer-managed-key.md
         - name: リージョン間の移動
           href: account-move.md
+        - name: 簡素化されたコンピューティング ノード通信を使用する
+          href: simplified-compute-node-communication.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD

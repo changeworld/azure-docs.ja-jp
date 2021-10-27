@@ -3,12 +3,12 @@ title: Azure Event Grid でのシステム トピック
 description: Azure Event Grid でのシステム トピックについて説明します。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: cb054b8085c422f56a6cf8c6cc492470aaa4be95
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2c0bf2879ce2b137faf33f1ec00d456ab884ccf8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437040"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035108"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは **すべての BLOB イベント**、または **特定のストレージ アカウント** に対して発行された **BLOB 作成** および **BLOB 削除** イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成** イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの [サブスクライバー](event-handlers.md)に転送されます。 
@@ -57,7 +57,12 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 
 [CLI](create-view-manage-system-topics-cli.md)、[REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)、または [Azure Resource Manager テンプレート](create-view-manage-system-topics-arm.md)を使用する場合は、上の方法のどちらかを選択できます。 まずシステム トピックを作成し、次にそのトピックのサブスクリプションを作成することをお勧めします。それは、これがシステム トピックを作成するための最新の方法であるためです。
 
+### <a name="failure-to-create-system-topics"></a>システム トピックの作成に失敗する
 Azure ポリシーを Event Grid サービスがシステム トピックを作成できないように設定している場合は、システム トピックの作成が失敗します。 たとえば、サブスクリプション内の特定の種類のリソース (Azure Storage や Azure Event Hubs など) の作成のみを許可するポリシーにしている場合があります。 
+
+このような場合、イベント フローの機能は維持されます。 ただし、システム トピックのメトリックと診断機能は使用できません。
+
+この機能が必要な場合は、システム トピック タイプのリソースの作成を許可し、「[システム トピックのライフサイクル](#lifecycle-of-system-topics)」の説明に従って、不足しているシステム トピックを作成します。
 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>システム トピックのための場所とリソース グループ
 特定のリージョンまたは場所にある Azure イベント ソースの場合、システム トピックは Azure イベント ソースと同じ場所に作成されます。 たとえば、米国東部の Azure Blob Storage に対してイベント サブスクリプションを作成すると、米国東部にシステム トピックが作成されます。 Azure サブスクリプション、リソース グループ、Azure Maps などのグローバルな Azure イベント ソースの場合は、Event Grid によって **グローバル** な場所にシステム トピックが作成されます。 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 05/01/2021
+ms.date: 10/12/2021
 ms.author: banders
-ms.openlocfilehash: 395f6804e0fdea88e65879817b83b9a8aabdd0f1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 79e32c7514e561cc3c245464038130f5d4bef763
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748069"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001012"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる
 
@@ -206,6 +206,10 @@ EA 購入者ロールについては、登録リーダーのものと同じ手�
    `200 OK` という応答は、SPN が正常に追加されたことを示します。
 
 これで、SPN を使用して EA API シリーズに自動的にアクセスできます。 SPN には SubscriptionCreator ロールが割り当てられています。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+EA ロールを付与したエンタープライズ アプリケーションのオブジェクト ID を特定して使用する必要があります。 他のアプリケーションのオブジェクト ID を使用すると、API 呼び出しは失敗します。 正しいエンタープライズ アプリケーションのオブジェクト ID を使用していることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 1a8956971e48529c75f07db54c196867a6c5955e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/18/2021
+ms.openlocfilehash: 110f2b5847a1a56bfae91c4567762b88915ec6f7
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216948"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181409"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle ソースの登録とスキャン
 
@@ -21,6 +21,8 @@ ms.locfileid: "129216948"
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 Oracle ソースでは Oracle データベースからメタデータを抽出するための **フル スキャン** がサポートされており、データ資産間の **系列** がフェッチされます。
+
+Oracle ソースをスキャンする場合、プロキシ サーバーはサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,31 +41,34 @@ Oracle ソースでは Oracle データベースからメタデータを抽出�
 5.  サポートされている Oracle データベースのバージョンは、6i から 19c です。
 
 6.  ユーザーのアクセス許可: システム テーブルへの読み取り専用アクセスが必要です。 ユーザーには、セッションを作成するためのアクセス許可、および SELECT\_CATALOG\_ROLE というロールが割り当てられている必要があります。 または、このコネクタでメタデータを照会する各システム テーブルに対する SELECT アクセス許可をユーザーに付与することもできます。
-       > grant create session to \[user\];\
-        grant select on all\_users to \[user\];\
-        grant select on dba\_objects to \[user\];\
-        grant select on dba\_tab\_comments to \[user\];\
-        grant select on dba\_external\_locations to \[user\];\
-        grant select on dba\_directories to \[user\];\
-        grant select on dba\_mviews to \[user\];\
-        grant select on dba\_clu\_columns to \[user\];\
-        grant select on dba\_tab\_columns to \[user\];\
-        grant select on dba\_col\_comments to \[user\];\
-        grant select on dba\_constraints to \[user\];\
-        grant select on dba\_cons\_columns to \[user\];\
-        grant select on dba\_indexes to \[user\];\
-        grant select on dba\_ind\_columns to \[user\];\
-        grant select on dba\_procedures to \[user\];\
-        grant select on dba\_synonyms to \[user\];\
-        grant select on dba\_views to \[user\];\
-        grant select on dba\_source to \[user\];\
-        grant select on dba\_triggers to \[user\];\
-        grant select on dba\_arguments to \[user\];\
-        grant select on dba\_sequences to \[user\];\
-        grant select on dba\_dependencies to \[user\];\
-        grant select on dba\_type\_attrs to \[user\];\
-        grant select on V\_\$INSTANCE to \[user\];\
-        grant select on v\_\$database to \[user\];
+
+    ```sql
+    grant create session to [user];
+    grant select on all_users to [user];
+    grant select on dba_objects to [user];
+    grant select on dba_tab_comments to [user];
+    grant select on dba_external_locations to [user];
+    grant select on dba_directories to [user];
+    grant select on dba_mviews to [user];
+    grant select on dba_clu_columns to [user];
+    grant select on dba_tab_columns to [user];
+    grant select on dba_col_comments to [user];
+    grant select on dba_constraints to [user];
+    grant select on dba_cons_columns to [user];
+    grant select on dba_indexes to [user];
+    grant select on dba_ind_columns to [user];
+    grant select on dba_procedures to [user];
+    grant select on dba_synonyms to [user];
+    grant select on dba_views to [user];
+    grant select on dba_source to [user];
+    grant select on dba_triggers to [user];
+    grant select on dba_arguments to [user];
+    grant select on dba_sequences to [user];
+    grant select on dba_dependencies to [user];
+    grant select on dba_type_attrs to [user];
+    grant select on V_$INSTANCE to [user];
+    grant select on v_$database to [user];
+    ```
     
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
@@ -87,8 +92,11 @@ Oracle ソースでサポートされている認証は **基本認証** のみ�
 2.  Oracle ソースに接続するための **ホスト** 名を入力します。 これは、次のいずれかにすることができます。
     - データベース サーバーに接続するために JDBC で使用されるホスト名。 たとえば、MyDatabaseServer.com または
     - IP アドレス。 たとえば、192.169.1.2 または
-    - 完全修飾の JDBC 接続文字列。 たとえば、
-        jdbc:oracle:thin:@(DESCRIPTION=(LOAD\_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT\_DATA=(SERVICE\_NAME=orcl)))
+    - 完全修飾の JDBC 接続文字列。 次に例を示します。
+
+        ```
+        jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)))
+        ```
 
 3.  データベース サーバーに接続するために JDBC で使用される **ポート番号** (Oracle の場合、既定では 1521) を入力します。
 

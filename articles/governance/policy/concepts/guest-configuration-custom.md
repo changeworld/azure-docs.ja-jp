@@ -3,12 +3,12 @@ title: ゲスト構成用の PowerShell Desired State Configuration の動作に
 description: この記事では、Azure Policy を介してマシンに構成の変更を配信するために使用されるプラットフォームの概要について説明します。
 ms.date: 05/31/2021
 ms.topic: how-to
-ms.openlocfilehash: ee5165ea9e8a80fc31863389df018548859e9b20
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: b501305513e99963ec9d00a49e6e7aa1c74b3683
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257155"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045334"
 ---
 # <a name="changes-to-behavior-in-powershell-desired-state-configuration-for-guest-configuration"></a>ゲスト構成用の PowerShell Desired State Configuration の動作に対する変更
 
@@ -72,6 +72,7 @@ Azure Automation の状態の構成では、DSC 構成で[サイズの制限](..
 - 返されるハッシュテーブルには **Reasons** という名前のプロパティが含まれている必要があります。
 - Reason プロパティは配列である必要があります。
 - 配列内の各項目は、**コード** および **フレーズ** という名前のキーを持つハッシュテーブルである必要があります。
+- ハッシュテーブル以外の値を返さないでください。
 
 Reasons プロパティは、コンプライアンス情報をどのように表すかをサービスで標準化するために使用されます。 Reasons の各項目は、そのリソースが準拠していない「理由」と考えることができます。 リソースが複数の理由で準拠していない可能性があるため、プロパティは配列となっています。
 
@@ -93,6 +94,8 @@ return @{
     reasons = $reasons
 }
 ```
+
+コマンドライン ツールを使用して Get で返される情報を取得すると、予期しない出力が返されることがあります。 PowerShell で出力をキャプチャする場合でも、出力が標準エラーに書き込まれる可能性があります。 この問題を回避するには、出力を null にリダイレクトすることを検討してください。
 
 ### <a name="the-reasons-property-embedded-class"></a>Reasons プロパティが埋め込まれたクラス
 
@@ -172,6 +175,8 @@ PowerShell ギャラリーの `PsDscResources` モジュールと Windows に含
 
 - Windows に含まれている `PSDesiredStateConfiguration` モジュールのリソースは使用しないでください。 代わりに、`PSDscResources` に切り替えます。
 - `PsDscResources` の `WindowsFeature` および `WindowsFeatureSet` リソースを使用しないでください。 代わりに、`WindowsOptionalFeature` および `WindowsOptionalFeatureSet` リソースに切り替えます。
+  
+[Linux 用 DSC](https://github.com/microsoft/PowerShell-DSC-for-Linux/tree/master/Providers) リポジトリに含まれていた Linux 用の "nx" リソースは、C 言語と Python 言語を組み合わせて記述されていました。 Linux での DSC に進むパスでは PowerShell を使用するため、既存の "nx" リソースは DSCv3 と互換性がありません。 Linux でサポートされているリソースを含む新しいモジュールが利用可能になるまで、カスタム リソースを作成する必要があります。
 
 ## <a name="coexistance-with-dsc-version-3-and-previous-versions"></a>DSC バージョン 3 と以前のバージョンの共存
 
@@ -186,4 +191,4 @@ PowerShell ギャラリーの `PsDscResources` モジュールと Windows に含
 - 開発環境から[パッケージ成果物をテストする](../how-to/guest-configuration-create-test.md)。
 - `GuestConfiguration` モジュールを使用して、環境を大規模に管理するための [Azure Policy の定義を作成する](../how-to/guest-configuration-create-definition.md)。
 - Azure portal を使用して[カスタム ポリシー定義を割り当てる](../assign-policy-portal.md)。
-- [ゲスト構成のポリシー割り当てのコンプライアンスの詳細](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)を確認する方法を学ぶ。
+- [ゲスト構成ポリシーの割り当てに関するコンプライアンスの詳細](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)を見る方法を学習する。

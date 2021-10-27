@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 05/06/2021
-ms.openlocfilehash: 0d5fb976bfeb496e6c69e7df401ed0a756985475
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: c56a90ab18467e67360653c83d32c7cfc6f84078
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113295886"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133255"
 ---
-# <a name="log-analytics-workspace-insights-preview"></a>Log Analytics Workspace Insights (プレビュー)
+# <a name="log-analytics-workspace-insights"></a>Log Analytics Workspace Insights
 
-Log Analytics Workspace Insights (プレビュー) では、ワークスペースの使用量、パフォーマンス、正常性、エージェント、クエリ、変更ログの包括的な監視を行います。 この記事は、Log Analytics Workspace Insights (プレビュー) をオンボードする方法を理解するのに役立ちます。
+Log Analytics Workspace Insights では、ワークスペースの使用量、パフォーマンス、正常性、エージェント、クエリ、変更ログの包括的な監視を行います。 この記事は、Log Analytics Workspace Insights をオンボードする方法を理解するのに役立ちます。
 
 ## <a name="overview-your-log-analytics-workspaces"></a>Log Analytics ワークスペースの概要
 
@@ -29,7 +29,7 @@ Log Analytics Workspace Insights を大規模視点で開くには、次の手�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. Azure portal の左側のペインで **[Monitor]** を選択し、[Insights Hub] セクションで **[Log Analytics Workspace Insights (プレビュー)]** を選択します。
+2. Azure portal の左側のペインで **[Monitor]** を選択し、[Insights Hub] セクションで **[Log Analytics Workspace Insights]** を選択します。
 
 ## <a name="view-insights-for-a-log-analytics-workspace"></a>Log Analytics ワークスペースのインサイトを見る
 

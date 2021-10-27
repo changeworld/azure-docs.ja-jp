@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cb19372e5b97a9f508367366faa9ae49d0d11261
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a05935f547815ffba419e2e4302c5197d1907bbf
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596963"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045277"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -31,7 +31,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 | ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | 使用 |
 |--|--|--|--|
 | Standard 汎用 v2 | Blob Storage (Data Lake Storage<sup>1</sup> を含む)、Queue Storage、Table Storage、Azure Files  | LRS、GRS、RA-GRS<br /><br />ZRS、GZRS、RA-GZRS<sup>2</sup> | BLOB、ファイル共有、キュー、テーブル用の Standard タイプのストレージ アカウント。 Azure Storage を使用するほとんどのシナリオにお勧めします。 Azure Files の NFS ファイル共有のサポートが必要な場合は、Premium ファイル共有タイプのアカウントを使用してください。 |
-| Premium ブロック BLOB<sup>3</sup> | Blob Storage (Data Lake Storage<sup>1</sup> を含む) | LRS<br /><br />ZRS<sup>2</sup> | ブロック BLOB と追加 BLOB 用の Premium タイプのストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。 [ワークロードの例に関する詳細情報](../blobs/storage-blob-performance-tiers.md#premium-performance)を参照してください。 |
+| Premium ブロック BLOB<sup>3</sup> | Blob Storage (Data Lake Storage<sup>1</sup> を含む) | LRS<br /><br />ZRS<sup>2</sup> | ブロック BLOB と追加 BLOB 用の Premium タイプのストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。 [ワークロードの例に関する詳細情報](../blobs/storage-blob-block-blob-premium.md)を参照してください。 |
 | Premium ファイル共有<sup>3</sup> | Azure Files | LRS<br /><br />ZRS<sup>2</sup> | ファイル共有専用の Premium タイプのストレージ アカウント。 エンタープライズまたはハイ パフォーマンス スケール アプリケーションにお勧めします。 SMB ファイル共有と NFS ファイル共有の両方をサポートするストレージアカウントが必要な場合は、このタイプのアカウントを使用します。 |
 | Premium ページ BLOB<sup>3</sup> | ページ BLOB のみ | LRS | ページ BLOB に特化した Premium Storage アカウントの種類。 [ページ BLOB とサンプル ユース ケースの詳細情報](../blobs/storage-blob-pageblob-overview.md)を参照してください。 |
 
@@ -39,7 +39,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 <sup>2</sup> ゾーン冗長ストレージ (ZRS) と geo ゾーン冗長ストレージ (GZRS、RA-GZRS) は、特定のリージョンの Standard 汎用 v2、Premium ブロック BLOB、Premium ファイル共有の各アカウントでのみ使用できます。 詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
-<sup>3</sup> Premium パフォーマンス レベルのストレージ アカウントは、ソリッド ステート ドライブ (SSD) を使用することで、低遅延と高スループットを実現しています。
+<sup>3</sup> Premium パフォーマンス ストレージ アカウントでは、ソリッド ステート ドライブ (SSD) を使用することで低遅延と高スループットを実現しています。
 
 レガシ ストレージ アカウントもサポートされます。 詳細については、「[レガシ ストレージ アカウントの種類](#legacy-storage-account-types)」を参照してください。
 
@@ -108,7 +108,7 @@ Azure Storage では、ストレージ アカウントの使用に基づいて�
 
 次の表では、レガシ ストレージ アカウントの種類について説明します。 これらの種類のアカウントは、Microsoft によって推奨されていませんが、特定のシナリオで使用される場合があります。
 
-| レガシ ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | デプロイメント モデル | 使用法 |
+| レガシ ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | デプロイメント モデル | 使用 |
 |--|--|--|--|--|
 | Standard 汎用 v1 | Blob Storage、Queue Storage、Table Storage、Azure Files | LRS、GRS、RA-GRS | Resource Manager、クラシック | 汎用 v1 アカウントでは、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 使用が検討されるシナリオは次のとおりです。<br /><ul><li>アプリケーションで、Azure [クラシック デプロイ モデル](../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md)が必要である。</li><li>アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。</li><li>Azure Storage REST API の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。</li></ul> |
 | Standard Blob Storage | Blob Storage (ブロック BLOB および追加 BLOB のみ) | LRS、GRS、RA-GRS | リソース マネージャー | 可能であれば、Standard 汎用の v2 アカウントの使用をお勧めします。 |

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: fc0cdbcb85470fb9f1e0eb4d4bf6cc43c3ae4e23
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9d4ad2b71d9ef5e3632344cb715926d2e5ebd343
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034421"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072664"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -84,7 +84,7 @@ ms.locfileid: "123034421"
                 )
     ```
 
-* **既存の Azure リソースを使用する**。  既存の Azure リソースを Azure リソース ID 形式で使用するワークスペースを作成することもできます。 Azure portal または SDK を使用して、特定の Azure リソース ID を見つけます。 この例では、リソース グループ、ストレージ アカウント、キー コンテナー、App Insights、およびコンテナー レジストリが既に存在していることを前提としています。
+* **既存の Azure リソースを使用する**。  既存の Azure リソースを Azure リソース ID 形式で使用するワークスペースを作成することもできます。 Azure portal または SDK を使用して、特定の Azure リソース ID を見つけます。 この例では、リソース グループ、ストレージ アカウント、キー コンテナー、App Insights、コンテナー レジストリが既に存在していることを前提としています。
 
    ```python
    import os
@@ -338,6 +338,8 @@ Workspace.list('<subscription-id>')
 ## <a name="delete-a-workspace"></a>ワークスペースを削除する
 
 ワークスペースが不要になったら、削除します。  
+
+[!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
 
 # <a name="python"></a>[Python](#tab/python)
 

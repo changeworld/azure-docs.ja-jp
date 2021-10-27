@@ -1,18 +1,18 @@
 ---
 title: Microsoft AppSource で Azure Container のオファー登録情報の詳細を構成する
-description: Microsoft AppSource で Azure Container のオファー登録情報の詳細を構成します。
+description: パートナー センターで Azure Container のオファー登録情報の詳細を構成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2021
-ms.openlocfilehash: 16bac156af04394552c280271d13ecbe41a1982b
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 8d72d2ca68f3a874f0c954174a123d6665cd5ebd
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615182"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065409"
 ---
 # <a name="configure-azure-container-offer-listing-details"></a>Azure Container のオファー登録情報の詳細を構成する
 
@@ -88,15 +88,15 @@ The following examples show how the offer listing fields appear in different pla
 
 This shows search results in Azure Marketplace:
 
-[![Illustrates the search results in Azure Marketplace](media/azure-container/azure-create-7-search-results-mkt-plc-small.png)](media/azure-container/azure-create-7-search-results-mkt-plc.png#lightbox)
+[![Illustrates search results in Azure Marketplace](media/azure-container/azure-create-7-search-results-mkt-plc-small.png)](media/azure-container/azure-create-7-search-results-mkt-plc.png#lightbox)
 
-This shows the **Offer listing** page in Azure portal:
+This shows the **Offer listing** page in the Azure portal:
 
-:::image type="content" source="media/azure-container/azure-create-8-offer-listing-portal.png" alt-text="Illustrates the Offer listing page in Azure portal.":::
+:::image type="content" source="media/azure-container/azure-create-8-offer-listing-portal.png" alt-text="Illustrates the Offer listing page in the Azure portal.":::
 
-This shows search results in Azure portal:
+This shows search results in the Azure portal:
 
-[![Illustrates the search results in Azure portal.](media/azure-container/azure-create-9-search-results-portal-small.png)](media/azure-container/azure-create-9-search-results-portal.png#lightbox) -->
+[![Illustrates search results in the Azure portal.](media/azure-container/azure-create-9-search-results-portal-small.png)](media/azure-container/azure-create-9-search-results-portal.png#lightbox) -->
 
 ## <a name="next-steps"></a>次のステップ
 

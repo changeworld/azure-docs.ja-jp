@@ -7,12 +7,12 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7ea55c3f21664d504366657a653b5e3598666710
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 751da192288fd7dc7b0c46a537c7206309fc2f6f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387239"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160841"
 ---
 # <a name="microsoft-azure-confidential-ledger-preview"></a>Microsoft Azure Confidential Ledger (プレビュー)
 
@@ -66,4 +66,7 @@ Functional API で Confidential Ledger のインスタンスと直接やりと�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Microsoft Azure Confidential Ledger の概要](overview.md)
+- [Microsoft Azure Confidential Ledger のアーキテクチャ](architecture.md)
+- [クイック スタート: Azure portal](quickstart-portal.md)
+- [クイック スタート: Python](quickstart-python.md)
+- [クイック スタート: Azure Resource Manager (ARM) テンプレート](quickstart-portal.md)

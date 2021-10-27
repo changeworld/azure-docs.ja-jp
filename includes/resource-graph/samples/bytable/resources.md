@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cabddc920971d75bc609ce5b0b736cefca6ce1d4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 8839fb93bd04e3a26538d6753ce59f2304adbde2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535963"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050636"
 ---
 ### <a name="combine-results-from-two-queries-into-a-single-result"></a>2 つのクエリの結果を結合して 1 つの結果にする
 
@@ -1254,7 +1254,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="show-resource-types-and-api-versions"></a>リソースの種類と API バージョンを表示する
 
-Resource Graph は、主にリソース プロバイダーの API の最新の非プレビュー バージョンを使用して、更新中にリソース プロパティの `GET` を行います。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 次のクエリは、リソースの種類ごとにプロパティを収集するために使用される API バージョンの詳細を示しています。
+Resource Graph は、主にリソース プロバイダー API の最新の非プレビュー バージョンを使用して、更新中にリソース プロパティの `GET` を行います。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 次のクエリは、リソースの種類ごとにプロパティを収集するために使用される API バージョンの詳細を示しています。
 
 ```kusto
 Resources

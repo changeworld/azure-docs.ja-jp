@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5d6a9ca83060c074740985b87af841bfa4be17f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6bf722279462c1f9b6d08830af19577ec218f756
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728681"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039146"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 
@@ -107,7 +107,7 @@ Azure portal で直接ルールを作成するには:
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>API を使用して抑制ルールの作成および管理を行う
 
-Security Center の REST API を使用して、アラート抑制ルールを作成、表示、または削除することができます。 
+Security Center REST API を使用して、アラート抑制ルールを作成、表示、または削除することができます。 
 
 抑制ルールに関連する REST API の HTTP メソッドは次のとおりです。
 

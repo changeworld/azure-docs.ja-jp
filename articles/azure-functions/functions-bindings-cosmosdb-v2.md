@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
-ms.openlocfilehash: dbeec528e22d3622b374d6cfee2d51a61b989aac
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: d0b97d65a9c543c6afd4ae8afa9e75bf37b9f7a3
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661162"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071209"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガーとバインドの概要
 
@@ -41,7 +41,7 @@ ms.locfileid: "129661162"
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| 言語                                        | 追加手段                                   | 解説 
+| Language                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
@@ -55,7 +55,11 @@ ms.locfileid: "129661162"
 
 ### <a name="cosmos-db-extension-4x-and-higher"></a>Cosmos DB 拡張機能 4.x 以降
 
-Cosmos DB のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB/4.0.0-preview1)として入手できます。 このプレビューでは、[シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更され、v2 SDK `Microsoft.Azure.DocumentDB` からの型が v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) からの新しい型に置き換えられます。 これらの新しい型の相違点と、それらへの移行方法の詳細については、[SDK 移行ガイド](../cosmos-db/sql/migrate-dotnet-v3.md)、[トリガー](./functions-bindings-cosmosdb-v2-trigger.md)、[入力バインディング](./functions-bindings-cosmosdb-v2-input.md)、および[出力バインディング](./functions-bindings-cosmosdb-v2-output.md)の例を参照してください。
+Cosmos DB のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 [シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更され、v2 SDK `Microsoft.Azure.DocumentDB` からの型が v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) からの新しい型に置き換えられます。 これらの新しい型の相違点と、それらへの移行方法の詳細については、[SDK 移行ガイド](../cosmos-db/sql/migrate-dotnet-v3.md)、[トリガー](./functions-bindings-cosmosdb-v2-trigger.md)、[入力バインディング](./functions-bindings-cosmosdb-v2-input.md)、および[出力バインディング](./functions-bindings-cosmosdb-v2-output.md)の例を参照してください。
+
+この拡張機能のバージョンは、[プレビュー NuGet パッケージ]として入手できます。 詳細については、[ユーザーの更新]に関するページを参照してください。
+
+[プレビュー NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB/4.0.0-preview2
 
 > [!NOTE]
 > 現在、Elastic Premium プランでは、4.x プレビュー拡張機能を使用したシークレットは使用できず、ID による認証が使用できるだけです。 

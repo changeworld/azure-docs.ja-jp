@@ -2,13 +2,13 @@
 title: Bicep CLI コマンドと概要
 description: Bicep CLI で使用できるコマンドについて説明します。 これらのコマンドには、Bicep からの Azure Resource Manager テンプレートの作成が含まれます。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: dd1f292d4ce60353d2f8cecaaa83e38b26bdfaa3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 10/18/2021
+ms.openlocfilehash: ff5eea15c5e8e3b4f92cdde73d1dfd25865488f0
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540803"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137618"
 ---
 # <a name="bicep-cli-commands"></a>Bicep CLI コマンド
 
@@ -29,7 +29,7 @@ az bicep build --file main.bicep
 次の例では、_main.json_ を別のディレクトリに保存します。
 
 ```azurecli
- az bicep build --file main.bicep --outdir c:\jsontemplates
+az bicep build --file main.bicep --outdir c:\jsontemplates
 ```
 
 次の例では、作成するファイルの名前と場所を指定します。
@@ -43,6 +43,24 @@ az bicep build --file main.bicep --outfile c:\jsontemplates\azuredeploy.json
 ```azurecli
 az bicep build --file main.bicep --stdout
 ```
+
+Bicep ファイルに外部レジストリを参照するモジュールが含まれている場合、build コマンドによって [restore](#restore) が自動的に呼び出されます。 restore コマンドは、レジストリからファイルを取得し、ローカル キャッシュに格納します。
+
+restore を自動的に呼び出さないようにするには、`--no-restore` スイッチを使用します。
+
+```azurecli
+az bicep build --no-restore <bicep-file>
+```
+
+外部モジュールのいずれかがまだキャッシュされていない場合、`--no-restore` スイッチを使用したビルド プロセスは失敗します。
+
+```error
+The module with reference "br:exampleregistry.azurecr.io/bicep/modules/storage:v1" has not been restored.
+```
+
+このエラーが発生した場合は、`--no-restore` スイッチを指定せずに `build` コマンドを実行するか、最初に `bicep restore` を実行します。
+
+`--no-restore` スイッチを使用するには、Bicep CLI バージョン **0.4.1008 以降** が必要です。
 
 ## <a name="decompile"></a>decompile
 
@@ -98,6 +116,60 @@ az bicep list-versions
   "v0.1.37-alpha",
   "v0.1.1-alpha"
 ]
+```
+
+## <a name="publish"></a>[発行]
+
+`publish` コマンドは、レジストリにモジュールを追加します。 Azure コンテナー レジストリが存在しており、レジストリへの発行を行うアカウントが適切なアクセス許可を所持している必要があります。 モジュール レジストリの設定の詳細については、[Bicep モジュール用のプライベート レジストリの使用](private-module-registry.md)に関する記事を参照してください。
+
+ファイルをレジストリに発行すると、[それをモジュール内で参照](modules.md#file-in-registry)できます。
+
+publish コマンドを使用するには、Bicep CLI バージョン **0.4.1008 以降** が必要です。
+
+モジュールをレジストリに発行するには、次のコマンドを使用します。
+
+```azurecli
+az bicep publish <bicep-file> --target br:<registry-name>.azurecr.io/<module-path>:<tag>
+```
+
+次に例を示します。
+
+```azurecli
+az bicep publish storage.bicep --target br:exampleregistry.azurecr.io/bicep/modules/storage:v1
+```
+
+`publish` コマンドは、[bicepconfig.json](bicep-config.md) ファイルに定義されたエイリアスを認識しません。 モジュールの完全なパスを指定してください。
+
+> [!WARNING]
+> 同じターゲットに発行すると、古いモジュールが上書きされます。 更新するときは、バージョンを増やすことをお勧めします。
+
+## <a name="restore"></a>復元
+
+レジストリに発行されたモジュールを Bicep ファイルで使用する場合、`restore` コマンドにより、必要なすべてのモジュールのコピーがレジストリから取得されます。 これらのコピーはローカル キャッシュに格納されます。 Bicep ファイルは、外部ファイルがローカル キャッシュで使用可能な場合にのみビルドできます。 通常は、`restore` を実行する必要はありません。`build` によって自動的に呼び出されます。
+
+restore コマンドを使用するには、Bicep CLI バージョン **0.4.1008 以降** が必要です。
+
+ファイルの外部モジュールを手動で復元するには、次のコマンドを使用します。
+
+```azurecli
+az bicep restore <bicep-file>
+```
+
+指定する Bicep ファイルはデプロイするファイルです。 これには、レジストリにリンクするモジュールが含まれている必要があります。 たとえば、次のファイルを復元できます。
+
+```bicep
+module stgModule 'br:exampleregistry.azurecr.io/bicep/modules/storage:v1' = {
+  name: 'storageDeploy'
+  params: {
+    storagePrefix: 'examplestg1'
+  }
+}
+```
+
+ローカル キャッシュは次の場所にあります。
+
+```path
+%USERPROFILE%\.bicep\br\<registry-name>.azurecr.io\<module-path\<tag>
 ```
 
 ## <a name="upgrade"></a>upgrade

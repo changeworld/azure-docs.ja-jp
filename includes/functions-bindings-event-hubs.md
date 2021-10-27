@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 11d9b2c4825df76bad8e7c860c9edae3b60233ea
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5a3b9ab410ff8a757aa3ef23ee7d097ee1b3071b
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110574841"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130077981"
 ---
 ## <a name="add-to-your-functions-app"></a>Functions アプリに追加する
 
@@ -31,11 +31,23 @@ ms.locfileid: "110574841"
 
 ### <a name="event-hubs-extension-5x-and-higher"></a>Event Hubs 拡張機能 5.x 以降
 
-Event Hubs のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.4)として入手できます。 このプレビューでは、[シークレットではなく ID を使用して接続する](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`Microsoft.Azure.EventHubs` の型が [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) の新しい型に置き換えられます。
+Event Hubs のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 [シークレットではなく ID を使用して接続する](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`Microsoft.Azure.EventHubs` の型が [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) の新しい型に置き換えられます。
 
-> [!NOTE]
-> このプレビュー パッケージは拡張機能バンドルに含まれていないため、手動でインストールする必要があります。 .NET アプリの場合は、パッケージへの参照を追加します。 その他のすべてのアプリの種類については、[拡張機能の更新]に関する記事を参照してください。
+この拡張機能バージョンは[プレビュー NuGet パッケージ]として利用できます。あるいは、`host.json` ファイルに次を追加することでプレビュー拡張機能バンドル v3 から追加できます。
 
+```json
+{
+  "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
+    "version": "[3.*, 4.0.0)"
+  }
+}
+```
+
+詳細については、[ユーザーの更新]に関するページを参照してください。
+
+[プレビュー NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.7
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/

@@ -1,19 +1,20 @@
 ---
-title: Azure Digital Twins の要求が状態 404 Sub-Domain not found で失敗した
-description: "'サービス要求が失敗しました。 Azure Digital Twins での状態 404 Sub-Domain not found"
+title: '失敗したサービス要求のトラブルシューティング: エラー 404 (サブドメインが見つかりません)'
+titleSuffix: Azure Digital Twins
+description: Azure Digital Twins からエラーの状態として 404 (サブドメインが見つかりません) が返されたとき、それを診断し、解決する方法について説明します。
 ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 4/13/2021
-ms.openlocfilehash: 774642e15b7d7371872c1ec97455c8f56f8b8789
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 9/23/2021
+ms.openlocfilehash: 91125140632d689eaab18a74b7da75fe3c69800b
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456087"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132248"
 ---
-# <a name="service-request-failed-status-404-sub-domain-not-found"></a>サービス要求が失敗しました。 状態: 404 Sub-Domain not found
+# <a name="troubleshooting-failed-service-request-error-404-sub-domain-not-found"></a>失敗したサービス要求のトラブルシューティング: エラー 404 (サブドメインが見つかりません)
 
 この記事では、Azure Digital Twins へのサービス要求から 404 エラーを受信した場合の原因と解決手順について説明します。 
 

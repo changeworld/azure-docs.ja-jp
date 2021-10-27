@@ -3,23 +3,23 @@ title: ドメインを分散識別子 (DID) (プレビュー) にリンクする
 description: DNS バインドの方法について学習しますか?
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c1254176966a902f81cd42b68db17557288aa241
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d1a74d0019c931c8d52dccdc14ddd11a5ed7a1f3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466182"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006871"
 ---
-# <a name="link-your-domain-to-your-decentralized-identifier-did"></a>ドメインを分散識別子 (DID) にリンクする
+# <a name="link-your-domain-to-your-decentralized-identifier-did-preview"></a>ドメインを分散識別子 (DID) (プレビュー) にリンクする
 
 > [!IMPORTANT]
-> Azure Active Directory Verifiable Credentials は、現在パブリック プレビュー段階です。
+> Azure Active Directory Verifiable Credentials は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事の内容:

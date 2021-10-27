@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: 3886d26c571246f42c54bb9aab45bae32e05b750
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a78ec3828e0bbcf6c864f346d632ee70ad4a7777
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362444"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134167"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Azure Sentinel データ コネクタを見つける
 
@@ -978,7 +978,7 @@ end
 | --- | --- |
 | **データ インジェスト方法** | **Azure サービス間の統合: <br>[Microsoft 365 Defender から Azure Sentinel にデータを接続する](connect-microsoft-365-defender.md)** (上位のコネクタに関する記事) |
 | **ライセンスの前提条件/<br>コスト情報** | [Microsoft 365 Defender の有効なライセンス](/microsoft-365/security/mtp/prerequisites)
-| **Log Analytics テーブル** | SecurityAlert<br>SecurityIncident<br>DeviceEvents<br>DeviceFileEvents<br>DeviceImageLoadEvents<br>DeviceInfo<br>DeviceLogonEvents<br>DeviceNetworkEvents<br>DeviceNetworkInfo<br>DeviceProcessEvents<br>DeviceRegistryEvents<br>DeviceFileCertificateInfo |
+| **Log Analytics テーブル** | **アラート:**<br>SecurityAlert<br>SecurityIncident<br>**Defender for Endpoint のイベント:**<br>DeviceEvents<br>DeviceFileEvents<br>DeviceImageLoadEvents<br>DeviceInfo<br>DeviceLogonEvents<br>DeviceNetworkEvents<br>DeviceNetworkInfo<br>DeviceProcessEvents<br>DeviceRegistryEvents<br>DeviceFileCertificateInfo<br>**Defender for Office 365 のイベント:**<br>EmailAttachmentInfo<br>EmailUrlInfo<br>EmailEvents<br>EmailPostDeliveryEvents |
 | **サポートしているもの** | Microsoft |
 | | |
 

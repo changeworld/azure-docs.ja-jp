@@ -11,12 +11,12 @@ metadata:
   author: karlerickson
   ms.author: karler
   ms.date: 09/26/2019
-  ms.openlocfilehash: b9802ea4398ec138ef17245dcd1a1fbe5b4b4a39
-  ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+  ms.openlocfilehash: 1c5fbd1314d4296efb42afa8fecc94acb87b2a39
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122015530"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130245836"
 landingContent:
 - title: Azure Spring Cloud について
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: クイックスタート - 初めての Azure Spring Cloud アプリケーションをデプロイする
+    - text: クイック スタート - 初めての Spring Boot アプリを Azure Spring Cloud にデプロイする
       url: quickstart.md
     - text: PiggyMetrics サンプル アプリの概要
       url: quickstart-sample-app-introduction.md

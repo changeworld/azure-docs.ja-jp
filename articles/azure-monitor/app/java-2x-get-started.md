@@ -3,24 +3,24 @@ title: クイック スタート:Azure Application Insights を使用した Java
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 ms.topic: conceptual
 ms.date: 11/22/2020
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 043287d8a66ee6954e171dc0c09b42963f522fac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 53dc6c6f757c65842512ab9c215161058d451962
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104521"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134034"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
+# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
 > [!CAUTION]
-> このドキュメントは、非推奨となった Application Insights Java 2.x について記載しています。
+> このドキュメントは、推奨されなくなった Application Insights Java 2.x に適用されます。
 >
 > 最新バージョン用のドキュメントについては [Application Insights Java 3.x](./java-in-process-agent.md) に関するページをご覧ください。
 
-このクイックスタートでは、Application Insights SDK を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
+このチュートリアルでは、Application Insights SDK を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
 
 Application Insights は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 

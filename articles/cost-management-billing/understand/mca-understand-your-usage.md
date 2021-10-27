@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/13/2021
 ms.author: banders
-ms.openlocfilehash: 4e494b38bea9b799a6a2ee82b3fbb9847446d699
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: db7dbf6da5405b0b86a6231b31572cfeaffe12f0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611710"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000197"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 
@@ -97,7 +97,7 @@ product | 料金が発生する製品の名前
 subscriptionName | 料金が発生するサブスクリプションの名前
 reservationId | 購入した予約インスタンスの一意の識別子
 reservationName | 購入した予約インスタンスの名前
-publisherType | 発行元の種類 (値: firstParty、thirdPartyReseller、thirdPartyAgency)
+publisherType | Microsoft/Azure、Marketplace および AWS のコスト。  値は、Microsoft 顧客契約アカウントの場合は `Microsoft` で、EA と従量課金制アカウントの場合は `Azure` です。
 publisherName | Marketplace サービスの発行元
 resourceGroupId | リソースに関連付けられているリソース グループの一意の識別子
 resourceGroupName | リソースに関連付けられているリソース グループの名前

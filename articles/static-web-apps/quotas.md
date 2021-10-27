@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 10/13/2021
 ms.author: cshoe
-ms.openlocfilehash: 5030b0fb4e714be221e28e590c463186ec81ad04
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 4565012ec824961f971f1f1fb34ab330ae11372c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515587"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999304"
 ---
 # <a name="quotas-in-azure-static-web-apps"></a>Azure Static Web Apps のクォータ
 
@@ -27,7 +27,8 @@ Azure Static Web Apps には、次のクォータがあります。
 | プランのサイズ                   | 単一のデプロイでは最大 500 MB のアプリ サイズ、すべてのステージング環境と運用環境では最大 0.50 GB  | 単一のデプロイでは最大 500 MB のアプリ サイズ、すべてのステージング環境と運用環境を合わせて最大 2.00 GB |
 | 実稼働前の環境数 | 3                | 10 |
 | カスタム ドメイン              | アプリあたり 2        | アプリあたり 5 |
-| 承認 (カスタム ロールとルーティング規則を使用) | カスタム ロールに属することができるエンドユーザーは最大 25 名 | カスタム ロールに属することができるエンドユーザーは最大 25 名 |
+| 承認 (組み込みロール) | 組み込みの `authenticated` ロールで認証できる無制限のエンドユーザー | 組み込みの `authenticated` ロールで認証できる無制限のエンドユーザー |
+| 承認 (カスタム ロール) | [招待](authentication-authorization.md?tabs=invitations#role-management)によってカスタム ロールに属することができる最大 25 人のエンドユーザー | [招待](authentication-authorization.md?tabs=invitations#role-management)によってカスタム ロールに属することができる最大 25 人のエンドユーザー、または[サーバーレス機能](authentication-authorization.md?tabs=function#role-management)によってカスタム ロールを割り当てられる無制限のエンドユーザー |
 
 ## <a name="github-storage"></a>GitHub ストレージ
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 66d32a61a3c8f3b88562bdff0c541ec5d88e65d8
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 4814f7efa762be94dfa5950ab2a5d8ab65ee27a7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830979"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038500"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 
@@ -46,7 +46,7 @@ Personalizer ループの **目的** は、できるだけ多くの場合にユ�
 
 ## <a name="how-the-simulation-works"></a>シミュレーションの動作
 
-実行中のシステムの開始時点では、Personalizer からの提案がうまくいくのはたった 20% から 30% です。 この成功は、Personalizer の Reward API に返される報酬 (スコアは 1) によって示されます。 いくつかの Rank と Reward の呼び出しの後、システムは改善されます。
+実行中のシステムの開始時点では、Personalizer からの提案がうまくいくのはたった 20% から 30% です。 この成功は、Personalizer Reward API に返される報酬 (スコアは 1) によって示されます。 いくつかの Rank と Reward の呼び出しの後、システムは改善されます。
 
 最初の要求の後、オフライン評価を実行します。 これにより、Personalizer はデータを確認し、より適切な学習ポリシーを提案することができます。 新しい学習ポリシーを適用し、前の要求数の 20% を指定してこのノートブックを再実行します。 新しい学習ポリシーにより、このループのパフォーマンスは向上します。
 

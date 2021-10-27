@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 30764913ae92670a9034f709f9bb3f50a309374f
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: 24d30a475071667fa9f701776302aa81c652fbe2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113296885"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045049"
 ---
 # <a name="what-is-the-anomaly-detector-univariate-api"></a>Anomaly Detector 一変量 API とは
 
@@ -27,10 +27,10 @@ Anomaly Detector API では、時系列データを監視し、その中の異�
 
 ![サービス要求のパターンの変化を検出する](./media/anomaly_detection2.png)
 
-Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。RESTful API によってサービスをアプリケーションやプロセスに簡単に統合できます。
+Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。REST API によってサービスをアプリケーションやプロセスに簡単に統合できます。
 
 このドキュメントには、次のような記事が記載されています。
-* [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* <bpt id="p1">[</bpt>クイックスタート<ept id="p1">](./quickstarts-sdk/client-library.md)</ept>は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
 * [攻略ガイド](./how-to/identify-anomalies.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 * [概念の記事](./concepts/anomaly-detection-best-practices.md)では、サービスの機能と特長について詳しく説明します。
 * [チュートリアル](./tutorials/batch-anomaly-detection-powerbi.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。

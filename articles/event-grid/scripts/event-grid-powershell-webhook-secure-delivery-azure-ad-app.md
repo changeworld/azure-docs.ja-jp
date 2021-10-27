@@ -3,17 +3,25 @@ title: Azure PowerShell - Azure Event Grid で Azure AD アプリを使用して
 description: Azure Event Grid を使用して Azure AD Application によって保護された HTTPS エンドポイントにイベントを配信する方法について説明します
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 09/29/2021
-ms.openlocfilehash: d05b8d5eb42e6b656b07e7d573a4fc67841a071a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.date: 10/14/2021
+ms.openlocfilehash: d32676858c72685dfc70da476fb6fd8297194cfb
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129621532"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066587"
 ---
 # <a name="secure-webhook-delivery-with-azure-ad-application-in-azure-event-grid"></a>Azure Event Grid で Azure AD アプリを使用して Webhook 配信をセキュリティで保護する
 
 このスクリプトは、Azure Event Grid を使用して Azure AD アプリによって保護された HTTPS エンドポイントにイベントを配信するための構成を提供します。
+
+スクリプトの大まかな手順を次に示します。
+
+1. **Microsoft.EventGrid** のサービス プリンシパルがない場合は作成します。
+1. **Webhook のための Azure AD アプリ** で、**AzureEventGridSecureWebhookSubscriber** という名前のロールを作成します。
+1. まだ存在しない場合は、**イベント サブスクリプション ライター アプリ** のサービス プリンシパルを作成します。
+1. イベント サブスクリプション ライター Azure AD アプリのサービス プリンシパルを AzureEventGridSecureWebhookSubscriber ロールに追加します 
+1. Microsoft.EventGrid のサービス プリンシパルも AzureEventGridSecureWebhookSubscriber ロールに追加します
 
 ## <a name="sample-script---stable"></a>サンプル スクリプト - 安定版
 

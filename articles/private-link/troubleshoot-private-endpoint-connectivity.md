@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0df95d90d0119f8bc513fe2a26ed731d87401b3d
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 77295f2d47f0645b8d4610af3834f0b8a64ec7a0
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154263"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064459"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -103,8 +103,9 @@ Azure プライベート エンドポイントは、プライベート リンク
 1. ソース仮想マシンでは、NIC の有効なルートで、プライベート エンドポイント IP のネクスト ホップへのルートが InterfaceEndpoints として設定されている必要があります。 
 
     a. ソース VM のプライベート エンドポイント ルートを確認できない場合は、次の点を調べてください 
-     - ソース VM とプライベート エンドポイントが同じ VNET に属している。 「はい」の場合は、サポートに問い合わせる必要があります。 
-     - ソース VM とプライベート エンドポイントは異なる VNET に属している。この場合は、VNET 間の IP 接続を調べます。 IP 接続が確立していてもルートを確認できない場合は、サポートにお問い合わせください。 
+     - ソース VM とプライベート エンドポイントが、同じ VNET の一部かどうか。 「はい」の場合は、サポートに問い合わせる必要があります。 
+     - ソース VM とプライベート エンドポイントが、互いに直接ピアリングされている異なる VNET の一部かどうか。 「はい」の場合は、サポートに問い合わせる必要があります。
+     - ソース VM とプライベート エンドポイントが、互いに直接ピアリングされていない異なる VNET に属しているかどうか。この場合は、VNET 間の IP 接続を調べます。
 
 1. 接続の結果が正しいと確認された場合、接続の問題は、アプリケーション層でのシークレット、トークン、パスワードなどの他の側面に関連している可能性があります。
    - この場合、プライベート エンドポイントに関連付けられているプライベート リンク リソースの構成を確認してください。 詳細については、[Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください

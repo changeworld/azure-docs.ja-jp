@@ -3,17 +3,17 @@ title: Azure Cost Management での一般的なコスト分析の使用
 description: この記事では、Cost Management で一般的なコスト分析タスクの結果を取得する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 0fa5eba77727676f21a7b45848171859395b00f0
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 642c9ba475690b05723601f4e6ff429e382f29bb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706001"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992501"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用
 
@@ -67,6 +67,18 @@ Azure と AWS のコストをまとめて表示するには、Azure で管理グ
 1. コネクタのリンクされたアカウントに "*同じ*" 管理グループを割り当てます。
 1. コスト分析に移動して、 **[累積コスト]** を選択します
 1. **[グループ化]**  -  **[プロバイダー]** を選択します。
+
+## <a name="view-new-commerce-license-and-consumption-costs"></a>新しいコマース ライセンスと従量課金コストを表示する
+
+新しいコマース ライセンスと従量課金製品は、[コスト分析] に Azure の料金と共に表示されます。 フィルター リストを選択し、 **[プロバイダー]** を選択し、オプションの一覧から選択します。 たとえば、Microsoft 365 と Dynamics 365 です。
+
+:::image type="content" source="./media/cost-analysis-common-uses/filter-select-provider.png" alt-text="[プロバイダー] フィルターでの選択を示すスクリーンショット。" lightbox="./media/cost-analysis-common-uses/filter-select-provider.png" :::
+
+**[料金の種類]** フィルターを使用し、 **[購入]** または **[用途]** の値を選択して、特定のシートベースまたは従量課金の料金に絞り込むことができます。
+
+:::image type="content" source="./media/cost-analysis-common-uses/filter-charge-type.png" alt-text="[料金タイプ] フィルターでの選択を示すスクリーンショット。" lightbox="./media/cost-analysis-common-uses/filter-charge-type.png" :::
+
+現在、新しいコマース製品を購入できるのはパートナーのみです。
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Azure サービス別のコストの内訳を表示する
 

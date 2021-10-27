@@ -3,7 +3,7 @@ title: 可用性グループ リスナーとロード バランサーの構成 (
 description: Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。
 services: virtual-machines
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -12,14 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mathoma
+ms.author: rsetlem
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4fe42db21a08a398f5518d794b897d7ce015fa66
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.reviewer: mathoma
+ms.openlocfilehash: 5a072b5009341809af2b209c808e6164ba0a9be3
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861825"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166196"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -214,7 +215,7 @@ SQLCMD 接続では、プライマリ レプリカのホストとなる SQL Serv
 
 ## <a name="create-an-ip-address-for-an-additional-availability-group"></a>追加の可用性グループの IP アドレスを作成する
 
-各可用性グループは、個別のリスナーを使用します。 各リスナーには独自の IP アドレスがあります。 追加のリスナーの IP アドレスを保持するために、同じロード バランサーを使用します。 可用性グループを作成した後で、IP アドレスをロード バランサーに追加し、リスナーを構成します。
+各可用性グループは、個別のリスナーを使用します。 各リスナーには独自の IP アドレスがあります。 追加のリスナーの IP アドレスを保持するために、同じロード バランサーを使用します。 [セカンダリ VM の IP アドレスが ローディングIP をサポートしていない](/azure/load-balancer/load-balancer-floating-ip)ため、ロード バランサーのバックエンド プールに VM のプライマリ IP アドレスのみを追加します。
 
 Azure Portal で IP アドレスをロード バランサーに追加するには、次の手順に従います。
 

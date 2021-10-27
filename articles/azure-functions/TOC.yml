@@ -71,7 +71,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -93,6 +93,12 @@
           href: functions-create-private-site-access.md
         - name: 送信 NAT ゲートウェイを使用する
           href: functions-how-to-use-nat-gateway.md
+    - name: ID ベースの接続
+      items:
+        - name: ホスト接続に ID を使用する
+          href: functions-identity-based-connections-tutorial.md
+        - name: トリガーとバインドに ID を使用する
+          href: functions-identity-based-connections-tutorial-2.md
     - name: Event Grid でのイメージのサイズ変更
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: サーバーレス Web アプリの作成
@@ -540,7 +546,7 @@
             - name: 入力
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: Output
+            - name: 出力
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB

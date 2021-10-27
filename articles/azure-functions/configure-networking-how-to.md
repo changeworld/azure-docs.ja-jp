@@ -4,12 +4,12 @@ description: Azure Functions の特定の仮想ネットワーク タスクを�
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1e04a43a7a9b2eb8b3d29be6ced0d92d8bcc8308
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 0a431abe5d32bdc59bb163f32e4c5f636c870335
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202924"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063047"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>仮想ネットワークで Azure Functions を構成する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "114202924"
 関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 プライベート エンドポイントを使用してストレージ アカウントを構成すると、関数アプリへのパブリック アクセスは自動的に無効になり、関数アプリには仮想ネットワーク経由でのみアクセスできるようになります。 
 
 > [!NOTE]  
-> この機能は、現在、専用 (App Service) プランのすべての Windows 仮想ネットワークでサポートされている SKU と、Windows Elastic Premium プランで有効です。 それは、Linux 仮想ネットワークでサポートされている SKU に対してもプライベート DNS によってサポートされています。 従量課金プランと Linux 用カスタム DNS プランはサポートされていません。 
+> この機能は、現在、専用 (App Service) プランのすべての Windows 仮想ネットワークでサポートされている SKU と、Windows Elastic Premium プランで有効です。 ASEv3 はまだサポートされていません。 それは、Linux 仮想ネットワークでサポートされている SKU に対してもプライベート DNS によってサポートされています。 従量課金プランと Linux 用カスタム DNS プランはサポートされていません。 
 
 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
 

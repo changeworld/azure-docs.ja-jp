@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: cfa3004b0587bbfe74157bf2922dd98cd8741597
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 89c7c903d382d67d9be64829118bdddf8ee4bd31
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740397"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005997"
 ---
 # <a name="create-an-azure-vmware-solution-assessment"></a>Azure VMware Solution の評価を作成する
 
@@ -123,9 +123,10 @@ Azure VMware Solution (AVS) の評価作成に使用できるサイズ変更の�
 Azure VMware Solution (AVS) の評価の内容は次のとおりです。
 
 - **Azure VMware Solution (AVS) 対応性**: オンプレミスのサーバーが Azure VMware Solution (AVS) への移行に適しているかどうか。
-- **AVS ノード数**: サーバーの実行に必要な AVS ノードの予測数。
+- **Azure VMware Solution ノードの数**: サーバーを実行するために必要な Azure VMware Solution ノードの推定数。
 - **すべての AVS ノードの使用率**: すべてのノードにおける CPU、メモリ、および記憶域の使用率の予測。
     - 使用率では、vCenter Server、NSX Manager (大規模)、NSX Edge など、クラスター管理オーバーヘッドが事前に考慮されます。HCX がデプロイされている場合は、HCX Manager と IX アプライアンスによる消費 (圧縮と重複除去の前の最大 44vCPU (11 CPU)、75 GB の RAM、722 GB のストレージ) も考慮されます。
+    - 制限因子により、リソースに対応するために必要なホストとノードの数が決まります。
 - **月間コスト見積もり**: オンプレミスの VM を実行しているすべての Azure VMware Solution (AVS) ノードの月間推定コスト。
 
 
@@ -137,7 +138,7 @@ Azure VMware Solution (AVS) の評価の内容は次のとおりです。
 
     :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="AVS 評価の概要":::
 
-1. 評価の概要を確認します。 評価のプロパティを編集して、評価を再計算することもできます。
+1. 評価の概要を確認します。 **[Sizing assumptions]\(サイズ決定の前提\)** をクリックすると、ノードのサイズ設定とリソース使用率の計算で使用された前提を確認できます。 評価のプロパティを編集して、評価を再計算することもできます。
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Azure VMware Solution (AVS) の対応性の確認
 
@@ -173,8 +174,6 @@ Azure VMware Solution (AVS) の評価の内容は次のとおりです。
 ### <a name="review-confidence-rating"></a>信頼度レーティングを確認する
 
 パフォーマンスベースの評価を実行すると、評価に信頼度レーティングが割り当てられます。
-
-![信頼度レーティング](./media/how-to-create-assessment/confidence-rating.png)
 
 - 1 つ星 (最低) から 5 つ星 (最高) までの評価が与えられます。
 - 信頼度レーティングは、評価による推奨サイズの信頼性を判断する目安となります。

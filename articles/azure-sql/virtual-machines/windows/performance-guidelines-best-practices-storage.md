@@ -3,7 +3,7 @@ title: 'ストレージ: パフォーマンスのベスト プラクティスお
 description: Azure 仮想マシン (VM) 上の SQL Server のパフォーマンスを最適化するための、ストレージのベスト プラクティスおよびガイドラインについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: dplessMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/25/2021
-ms.author: dpless
-ms.reviewer: jroth
-ms.openlocfilehash: 86db0ce090c68f1a610aae6c69ed74dcf303416a
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 83d47a3b1d42233df6f90690e88a898feaccb70b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635204"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161517"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>ストレージ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,9 +39,9 @@ ms.locfileid: "122635204"
 - ディスクの種類を選択する前に、アプリケーションを監視し、SQL Server のデータ、ログ、および tempdb の各ファイルの[ストレージ帯域幅と待機時間の要件を判断します](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements)。 
 - ストレージのパフォーマンスを最適化するには、キャッシュ不使用時の使用可能な最大の IOPS を計画し、データ読み取りのパフォーマンス機能としてデータ キャッシュを使用する一方で、[仮想マシンとディスクの上限](../../../virtual-machines/premium-storage-performance.md#throttling)を回避します。
 - データ、ログ、tempdb の各ファイルを別々のドライブに配置します。
-    - データ ドライブには、[Premium P30 と P40 のディスク](../../../virtual-machines/disks-types.md#premium-ssd)のみを使用して、キャッシュ サポートの可用性を確保します
-    - ログ ドライブについては、[Premium P30 から P80 のディスク](../../../virtual-machines/disks-types.md#premium-ssd)を評価しながら、容量を計画し、コスト パフォーマンスをテストします
-      - ミリ秒未満のストレージ待機時間が求められる場合は、トランザクション ログに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disk)を使用します。 
+    - データ ドライブには、[Premium P30 と P40 のディスク](../../../virtual-machines/disks-types.md#premium-ssds)のみを使用して、キャッシュ サポートの可用性を確保します
+    - ログ ドライブについては、[Premium P30 から P80 のディスク](../../../virtual-machines/disks-types.md#premium-ssds)を評価しながら、容量を計画し、コスト パフォーマンスをテストします
+      - ミリ秒未満のストレージ待機時間が求められる場合は、トランザクション ログに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disks)を使用します。
       - M シリーズの仮想マシン デプロイについて、Azure Ultra ディスクの使用よりも[書き込みアクセラレータ](../../../virtual-machines/how-to-enable-write-accelerator.md)を検討します。
     - 最適な VM サイズを選択した後、大半の SQL Server ワークロード用のローカル エフェメラル SSD `D:\` ドライブに [tempdb](/sql/relational-databases/databases/tempdb-database) を配置します。 
       - ローカル ドライブの容量が tempdb に対して十分でない場合は、VM のサイズを増やすことを検討します。 詳細については、「[データ ファイルのキャッシュ ポリシー](#data-file-caching-policies)」を参照してください。
@@ -71,7 +71,7 @@ Azure VM での SQL Server ワークロードの最も効果的な構成を見�
 
 ディスクのパフォーマンス レベルを選択できます。 基になるストレージとして使用できるマネージド ディスクの種類は (パフォーマンス向上能力が低いものから高いものの順に) 標準のハード ディスク ドライブ (HDD)、標準 SSD、Premium ソリッドステート ドライブ (SSD)、および Ultra ディスクです。 
 
-ディスクのパフォーマンスは、容量に従って増加します。これは、4 GiB の容量と 120 の IOPS を持つ P1 から、32 TiB のストレージと 20,000 の IOSP を持つ P80 まで、[Premium ディスク ラベル](../../../virtual-machines/disks-types.md#premium-ssd)でグループ分けされます。 Premium Storage では、一部のワークロードの読み取りと書き込みのパフォーマンスを向上させるストレージ キャッシュがサポートされています。 詳細については、[マネージド ディスクの概要](../../../virtual-machines/managed-disks-overview.md)に関する記事を参照してください。 
+ディスクのパフォーマンスは、容量に従って増加します。これは、4 GiB の容量と 120 の IOPS を持つ P1 から、32 TiB のストレージと 20,000 の IOSP を持つ P80 まで、[Premium ディスク ラベル](../../../virtual-machines/disks-types.md#premium-ssds)でグループ分けされます。 Premium Storage では、一部のワークロードの読み取りと書き込みのパフォーマンスを向上させるストレージ キャッシュがサポートされています。 詳細については、[マネージド ディスクの概要](../../../virtual-machines/managed-disks-overview.md)に関する記事を参照してください。 
 
 Azure VM 上の SQL Server として考慮すべき主な[ディスクの種類](../../../virtual-machines/managed-disks-overview.md#disk-roles)として、OS ディスク、一時ディスク、データ ディスクの 3 種類があります。 オペレーティング システム ドライブと`(C:\)`エフェメラル一時ドライブに格納される内容を慎重に選択してください`(D:\)`。 
 
@@ -99,6 +99,9 @@ Azure 仮想マシンには、一時ディスクと呼ばれる別の種類の�
 
 ドライブに配置されるすべてのデータ ファイルに 64 KB アロケーション ユニット サイズを使用するように、データ ディスクをフォーマットします。ただし、一時 `D:\` ドライブ (既定値は 4 KB) 以外が対象です。 Azure Marketplace を通じてデプロイされた SQL Server VM には、アロケーション ユニット サイズでフォーマットされたデータ ディスクが付属しており、64 KB に設定された記憶域プールに対してインターリーブします。 
 
+> [!NOTE]
+> また、[Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) 上、または [Azure Premium ファイル共有](../../../storage/files/storage-how-to-create-file-share.md)などの [SMB ストレージ](/sql/database-engine/install-windows/install-sql-server-with-smb-fileshare-as-a-storage-option)上で直接 SQL Server データベース ファイルをホストすることもできますが、最適なパフォーマンス、信頼性、機能の可用性を実現するためには、[Azure マネージド ディスク](../../../virtual-machines/managed-disks-overview.md)を使用することをお勧めします。
+
 ## <a name="premium-disks"></a>Premium Disk
 
 運用 SQL Server ワークロードのデータ ファイルとログ ファイルには、Premium SSD ディスクを使用します。 Premium SSD の IOPS と帯域幅は、[ディスクのサイズと種類](../../../virtual-machines/disks-types.md)によって異なります。 
@@ -109,7 +112,7 @@ OLTP ワークロードの場合は、ピーク時のワークロードと `Disk
 
 記憶域スペースを使用して最適なパフォーマンスを達成し、2 つのプール (ログ ファイル用とデータ ファイル用にそれぞれ 1 つずつ) を構成します。 ディスク ストライピングを使用していない場合は、1 つのディスクにログ ファイルが含まれ、もう 1 つにデータが含まれた 2 つの Premium SSD ディスクを使用します。
 
-記憶域プールの一部として使用される、ディスクあたりの[プロビジョニングされた IOPS とスループット](../../../virtual-machines/disks-types.md#premium-ssd)。 ディスクの総合的な IOPS とスループットの能力は、仮想マシンのスループット上限までの最大能力です。
+記憶域プールの一部として使用される、ディスクあたりの[プロビジョニングされた IOPS とスループット](../../../virtual-machines/disks-types.md#premium-ssds)。 ディスクの総合的な IOPS とスループットの能力は、仮想マシンのスループット上限までの最大能力です。
 
 ベスト プラクティスは、IOPS (およびスループット) と容量の最小要件を満たす一方で、できるだけ少ない数のディスクを使用することです。 ただし、価格とパフォーマンスのバランスは、小容量のディスクを多数使用した方が、大容量ディスクを少数使用した場合よりも、良くなる傾向があります。
 
@@ -127,15 +130,15 @@ Azure マネージド ディスクを最初にデプロイするとき、その�
 
 ## <a name="azure-ultra-disk"></a>Azure Ultra ディスク
 
-待機時間を短縮し、ミリ秒未満の応答時間が必要な場合は、SQL Server ログ ドライブに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disk)を使用するか、I/O 待機時間が非常に重要なアプリケーション用のデータ ドライブを使用することを検討してください。 
+待機時間を短縮し、ミリ秒未満の応答時間が必要な場合は、SQL Server ログ ドライブに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disks)を使用するか、I/O 待機時間が非常に重要なアプリケーション用のデータ ドライブを使用することを検討してください。
 
 容量と IOPS を個別にスケーリングできるように、Ultra Disk を構成できます。 Ultra Disk を使用すると、管理者は、アプリケーションのニーズに基づいて、容量、IOPS、スループットの要件を備えたディスクをプロビジョニングできます。 
 
-Ultra ディスクはすべての VM シリーズでサポートされているわけではなく、リージョンの可用性、冗長性、Azure Backup のサポートなど、その他の制限があります。 制限の一覧については、「[Azure Ultra ディスクの使用](../../../virtual-machines/disks-enable-ultra-ssd.md)」を参照してください。 
+Ultra ディスクはすべての VM シリーズでサポートされているわけではなく、リージョンの可用性、冗長性、Azure Backup のサポートなど、その他の制限があります。 制限の一覧については、「[Azure Ultra ディスクの使用](../../../virtual-machines/disks-enable-ultra-ssd.md)」を参照してください。
 
 ## <a name="standard-hdds-and-ssds"></a>Standard の HDD と SSD
 
-[Standard の HDD](../../../virtual-machines/disks-types.md#standard-hdd) と SSD には、さまざまな待機時間や帯域幅があり、開発/テストのワークロードにのみ推奨されます。 運用環境のワークロードでは、Premium SSD を使用する必要があります。 Standard SSD (開発/テスト シナリオ) を使用している場合は、最良のパフォーマンスを得るために、ご使用の [VM サイズ](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json)でサポートされる最大数のデータ ディスクを追加し、記憶域スペースでディスク ストライピングを使用することをお勧めします。
+[Standard の HDD](../../../virtual-machines/disks-types.md#standard-hdds) と SSD には、さまざまな待機時間や帯域幅があり、開発/テストのワークロードにのみ推奨されます。 運用環境のワークロードでは、Premium SSD を使用する必要があります。 Standard SSD (開発/テスト シナリオ) を使用している場合は、最良のパフォーマンスを得るために、ご使用の [VM サイズ](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json)でサポートされる最大数のデータ ディスクを追加し、記憶域スペースでディスク ストライピングを使用することをお勧めします。
 
 ## <a name="caching"></a>キャッシュ
 

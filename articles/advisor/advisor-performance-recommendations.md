@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 7229f4a786fc0afc43793ffe730470427ca2b107
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 110501087cc42662412e6446b9859f4078252455
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234928"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000690"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -180,6 +180,11 @@ Windows Virtual Desktop (WVD) を使用して、お客様の VM はユーザー�
 Advisor では、深さ優先が負荷分散アルゴリズムとして設定されているホスト プールがあること、およびそのホスト プールのセッション上限が 999999 以上であることが検出されます。 深さ優先の負荷分散では、最大セッション数を使用して、1 つのセッション ホストで同時セッションを持つことができるユーザーの最大数が決定されます。 最大セッション数が高すぎる場合、すべてのユーザー セッションは同じセッション ホストに送られるので、パフォーマンスと信頼性の問題が発生します。 そのため、ホスト プールを深さ優先で負荷分散するように設定する場合は、VM のデプロイと容量の構成に応じて、適切な最大セッション数を設定する必要があります。 
 
 Windows Virtual Desktop での負荷分散の詳細については、「[Windows 仮想デスクトップの負荷分散方法の構成](../virtual-desktop/troubleshoot-set-up-overview.md)」を参照してください。
+
+## <a name="upgrade-to-the-latest-version-of-the-azure-communication-services-sdks"></a>Azure Communication Services SDK を最新バージョンにアップグレードする
+
+特定の Azure Communication Services SDK の古いバージョンが使用され、Advisor により、このサブスクリプションのリソースが特定されました。 最新バージョンの Azure Communication Services SDK を使用すると、更新されたセキュリティ、パフォーマンス、および通信エクスペリエンスをカスタマイズおよび強化する一連の拡張機能が提供されます。
+詳細については、「[Azure Communication Services とは](../communication-services/overview.md)」と [Azure Advisor との統合](../communication-services/concepts/advisor-overview.md)に関するページを参照してください。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

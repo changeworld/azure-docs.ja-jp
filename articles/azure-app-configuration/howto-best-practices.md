@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c322ebcbda0d123a9048e92971e20c6b7c7c5fee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d56760b85bfca74cb18481ebf08ece2e4255d389
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064506"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178013"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -31,7 +31,7 @@ App Configuration には、キーを整理するために、次の 2 つの方�
 
 どちらか一方または両方のオプションを使用して、キーをグループ化できます。
 
-"*キー プレフィックス*" は、キーの先頭部分です。 キー名に同じプレフィックスを使用することによって、一連のキーを論理的にグループ化することができます。 プレフィックスに、URL パスのように区切り記号 (`/` など) で接続した複数の構成要素を含めることで、名前空間を作成できます。 さまざまなアプリケーション、コンポーネント サービス、環境に使用するキーを 1 つの App Configuration ストアに保管する際に、このような階層構造が役立ちます。
+"*キー プレフィックス*" は、キーの先頭部分です。 キー名に同じプレフィックスを使用することによって、一連のキーを論理的にグループ化することができます。 プレフィックスに、URL パスのように区切り記号 (`/` など) で接続した複数の構成要素を含めることで、名前空間を作成できます。 さまざまなアプリケーションとマイクロサービスに使用するキーを 1 つの App Configuration ストアに保管する際に、このような階層構造が役立ちます。
 
 キーとは、対応する設定の値を取得するために、アプリケーション コードから参照するものであるということに注意してください。 キーは変更しないでください。変更した場合、その都度、コードを修正する必要があります。
 
@@ -57,6 +57,14 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 「[ラベルを使用してさまざまな環境でさまざまな構成を有効にする](./howto-labels-aspnet-core.md)」に、完全な例が挙げられています。
 
+## <a name="references-to-external-data"></a>外部データへの参照
+
+App Configuration は、通常は構成ファイルや環境変数に保存する任意の構成データを格納するように設計されています。 ただし、データの種類によっては、他のソースに保存するのが適している場合もあります。 たとえば、シークレット情報は Key Vault に、ファイルは Azure Storage に、メンバーシップ情報は Azure AD グループに、顧客一覧はデータベースに格納するなどです。
+
+それでも、外部データへの参照をキーと値に保存することで、App Configuration を利用することができます。 アプリケーションから参照が読み取られると、参照されたソースからデータが読み込まれます。 外部データの場所を変更した場合は、アプリケーション全体を更新して再デプロイするのではなく、App Configuration の参照を更新するだけで済みます。
+
+App Configuration の [Key Vault の参照](use-key-vault-references-dotnet-core.md)機能はこのケースの一例です。 これにより、アプリケーションに必要なシークレットを必要に応じて更新しながら、基となるシークレット自体は Key Vault に残すことができます。
+
 ## <a name="app-configuration-bootstrap"></a>App Configuration の準備
 
 アプリ構成ストアには、対応する接続文字列を Azure portal から入手してアクセスできます。 接続文字列は資格情報を含んでいるため、シークレットと見なされます。 これらのシークレットは Azure Key Vault に格納する必要があり、コードはそれらを取得するために Key Vault に対して認証を行う必要があります。
@@ -65,7 +73,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="app-or-function-access-to-app-configuration"></a>アプリまたは関数から App Configuration へのアクセス
 
-次のいずれかの方法を使用して、Web アプリまたは関数に App Configuration へのアクセスを提供できます。
+次のいずれかの方法を使用して、Web Apps または Azure Functions に App Configuration へのアクセスを提供できます。
 
 * Azure portal を介して、App Service のアプリケーション設定に App Configuration ストアへの接続文字列を入力します。
 * 接続文字列を Key Vault の App Configuration ストアに保存し、[App Service からそれを参照](../app-service/app-service-key-vault-references.md)します。
@@ -84,7 +92,7 @@ App Configuration に過剰な要求があると、調整や超過分料金が�
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>App Configuration への構成データのインポート
 
-App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](./howto-import-export-data.md)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration から値をエクスポートすることもできます。 GitHub リポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](./concept-github-action.md) を使用できます。これにより、App Configuration のメリットを得ながら、既存のソース管理手法を引き続き使用できます。
+App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](./howto-import-export-data.md)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration からキーと値をエクスポートすることもできます。 GitHub または Azure DevOps のリポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](./concept-github-action.md) または [Azure パイプラインのプッシュ タスク](./push-kv-devops-pipeline.md)を使用できます。これにより、App Configuration を活用しながら、既存のソース管理手法を引き続き使用できます。
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>App Configuration での複数リージョンのデプロイ
 

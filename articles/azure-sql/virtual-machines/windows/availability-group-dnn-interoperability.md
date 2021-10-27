@@ -3,7 +3,7 @@ title: 可用性グループおよび DNN リスナーとの機能の相互運�
 description: '特定の SQL Server 機能および分散ネットワーク名 (DNN) リスナーと、Azure VM 上の SQL Server の Always On 可用性グループを一緒に操作する場合の追加の考慮事項について説明します。 '
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
-ms.author: mathoma
-ms.openlocfilehash: e7ff8eaaca03a2c977311c6469e06714c87ce53f
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: dd8713bcbe96c16e24305e05f693bbf15af327ab
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572353"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163055"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>AG と DNN リスナーとの機能の相互運用性 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -128,6 +129,9 @@ AG DNN リスナーの名前とポートを使用して、リンク サーバー
 
    はい。 DNS の DNN は、サブネットに関係なく、クラスターによって可用性内のすべてのレプリカの物理 IP アドレスにバインドされます。 SQL クライアントは、サブネットに関係なく、DNS 名の IP アドレスをすべて試行します。 
 
+- 可用性グループ DNN リスナーでは読み取り専用ルーティングはサポートされますか? 
+
+   はい。 読み取り専用ルーティングは、DNN リスナーでサポートされています。 
 
 
 ## <a name="next-steps"></a>次のステップ

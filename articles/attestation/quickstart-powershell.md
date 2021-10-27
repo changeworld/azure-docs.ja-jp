@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eca74ffe7b62cc5071d8ebaeefab52e5e59409d4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c7acaadefc3e249971f69bc833831bf14246ba88
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832232"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044575"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Attestation を設定する
 
@@ -75,7 +75,7 @@ Update-Module -Name Az.Attestation
 構成証明の操作をサポートするうえで必要な Az モジュールの最小バージョン:
 - Az 4.5.0
 - Az.Accounts 1.9.2
-- Az.Attestation 0.1.8
+- Az.Attestation 1.0.0
 
 すべての Az モジュールについてインストールされているバージョンを確認するには、次のコマンドを実行します。 
 

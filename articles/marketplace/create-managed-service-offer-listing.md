@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/12/2021
-ms.openlocfilehash: 1b2171c300fd52403da29d23f9f34d3f94961b3d
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: c8b18179af70788d7dea385224b02d7dddeb5ad6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204501"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072995"
 ---
 # <a name="configure-managed-service-offer-listing-details"></a>マネージド サービス オファー登録情報の詳細を構成する
 
@@ -54,15 +54,15 @@ Azure グローバルの顧客や Azure Government の顧客向けのサポー�
 
 ### <a name="add-logos"></a>ロゴを追加する
 
-**[ロゴ]** で、**大** (216 x 216 から 350 x 350 ピクセル) のロゴを .PNG 形式でアップロードします。 パートナー センターでは、**中** と **小** のロゴが自動的に作成されます。ロゴは後で置き換えることができます。
+**[ロゴ]** で **大** のロゴを .PNG 形式で、216 x 216 から 350 x 350 ピクセルまでの範囲でアップロードします。 パートナー センターでは、**中** と **小** のロゴが自動的に作成されます。ロゴは後で置き換えることができます。
 
-- 大のロゴ (216 x 216 から 350 x 350 ピクセル) は、Azure Marketplace のオファー登録情報に表示されます。
+- 大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルまで) は、Azure Marketplace のオファー登録情報に表示されます。
 - 新しいリソースが作成されると、中のロゴ (90 x 90 ピクセル) が表示されます。
-- 小のロゴ (48 x 48 ピクセル) は、Azure Marketplace での検索結果で使用されます。
+- 小のロゴ (48 x 48 ピクセル) は Azure Marketplace での検索結果で使用されます。
 
 ### <a name="add-screenshots-optional"></a>スクリーンショットを追加する (省略可能)
 
-オファーを示す画像を最大 5 つ追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
+オファーを示す画像を最大 5 つ追加します。 イメージはすべて、1280 x 720 ピクセルのサイズで PNG 形式にする必要があります。
 
 1. **[スクリーンショット]** で、PNG ファイルを **[スクリーンショット]** ボックスにドラッグ アンド ドロップします。
 2. **[イメージの字幕の追加]** を選択します。

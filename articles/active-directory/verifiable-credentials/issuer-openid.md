@@ -2,19 +2,19 @@
 title: 発行者サービスの通信の例 (プレビュー) - Azure Active Directory Verifiable Credentials
 description: ID プロバイダーと発行者サービスの間の通信の詳細
 author: barclayn
-manager: davba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 66e939bae0716cbcbde5614159e47a412990564f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6420825d8ed758658db0e652dc2b88fea91ce908
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466009"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994786"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>発行者サービスの通信の例 (プレビュー)
 

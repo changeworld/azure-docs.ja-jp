@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/23/2021
-ms.openlocfilehash: e83ea29b4894827ac68af6b243ce0e19842f2d87
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d6a43a64cbe24bc547ef1c6e61d4c0e3c340d76f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769815"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067271"
 ---
 # <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Azure Logic Apps の使用量の測定、課金、各価格モデル
 
@@ -25,7 +25,7 @@ ms.locfileid: "122769815"
 
 ## <a name="consumption-multi-tenant"></a>従量課金 (マルチテナント)
 
-マルチテナント Azure Logic Apps では、ロジック アプリとそのワークフローの価格と課金は、[**従量課金** プラン](https://azure.microsoft.com/pricing/details/logic-apps)に従います。 このようなロジック アプリは、さまざまな方法で作成します。たとえば、**ロジック アプリ (従量課金)** リソースの種類を選択するとき、Visual Studio Code で **Azure Logic Apps (従量課金)** 拡張機能を使用するとき、または[自動化タスク](create-automation-tasks-azure-resources.md)を作成するときなどです。
+マルチテナント Azure Logic Apps では、ロジック アプリとそのワークフローの価格と課金は、[**従量課金** プラン](https://azure.microsoft.com/pricing/details/logic-apps)に従います。 このようなロジック アプリは、さまざまな方法で作成します。たとえば、**ロジック アプリ (従量課金)** リソースの種類を選択するとき、Visual Studio Code で **Azure Logic Apps (従量課金)** 拡張機能を使用するとき、または [自動化タスク](create-automation-tasks-azure-resources.md)を作成するときなどです。
 
 次の表は、マルチテナント Azure Logic Apps のロジック アプリとワークフローで次のコンポーネントを使用した場合に、従量課金モデルでそれらに対して測定と課金がどのように処理されるかをまとめたものです。
 
@@ -74,9 +74,9 @@ ms.locfileid: "122769815"
 シングルテナント Azure Logic Apps では、ロジック アプリとそのワークフローの価格と課金は、[**標準** プラン](https://azure.microsoft.com/pricing/details/logic-apps/)に従います。 このようなロジック アプリは、さまざまな方法で作成します。たとえば、**ロジック アプリ (標準)** リソースの種類を選択するときや、Visual Studio Code で **Azure Logic Apps (標準)** 拡張機能を使用するときなどです。 この価格モデルでは、ロジック アプリでホスティング プランと価格レベルを使用する必要があります。これは、予約容量と専用リソースに対して、それらを使用しているかどうかに関係なく課金されるという点で、従量課金プランとは異なります。
 
 > [!IMPORTANT]
-> **ロジック アプリ (標準)** リソースの種類に基づいて新しいロジック アプリを作成またはデプロイする場合、すべての Azure リージョンでワークフロー標準ホスティング プランを使用できます。または、 **[基本]** タブで **[App Service Environment v3]** リージョンを選択した場合にのみ、App Service ホスティング プランを使用することもできます。
+> リソースの種類を **ロジック アプリ (Standard)** にして新しいロジック アプリを作成またはデプロイするとき、すべての Azure リージョンでワークフロー Standard ホスティング プランを使用できます。 ロジック アプリ リソースを作成し、デプロイするリージョンとして既存の **App Service Environment v3 (ASEv3)** リソースを使用する場合に "*のみ*" App Service ホスティング プランを使用できます。
 >
-> プレビューの **ロジック アプリ (標準)** リソースの種類では、App Service プラン、Functions の Premium プラン、App Service Environment v1、および App Service Environment v2 を使用することができますが、これらのオプションは、この Azure Logic Apps リソースの種類のパブリック リリースでは使用できず、サポート対象外になっています。
+> Azure リージョンでは現在、Functions Premium プラン、App Service Environment v1、App Service Environment v2 は、リソース タイプ **Logic App (Standard)** のパブリック リリースで利用できなくなっています。あるいはサポートされていません。 App Service プランは ASEv3 以外では利用できず、サポートされていません。
 
 次の表は、シングルテナント Azure Logic Apps のロジック アプリとワークフローで次のコンポーネントを使用した場合に、標準モデルでそれらに対して測定と課金がどのように処理されるかをまとめたものです。
 

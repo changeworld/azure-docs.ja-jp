@@ -10,12 +10,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: bea14b1630cbe5d1c4035e9abea62130cd546964
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e2621a6eea481866bb5351623065e7d113e8e9bd
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831427"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138665"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>ストレージ イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -119,7 +119,7 @@ ms.locfileid: "124831427"
 
 Azure Data Factory および Synapse のパイプラインでは、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、BLOB イベントにリンクされたパイプラインをリッスン、更新元をサブスクライブ、トリガーするための不正アクセスが禁止されます。
 
-* ストレージ イベント トリガーの新規作成または既存の更新を正常に行うには、サービスにサインインしている Azure アカウントが、関連するストレージ アカウントに適切にアクセスできる必要があります。 できない場合は、"_アクセス拒否_" によって操作が失敗します。
+* ストレージ イベント トリガーの新規作成または既存の更新を正常に行うには、サービスにサインインしている Azure アカウントが、関連するストレージ アカウントに適切にアクセスできる必要があります。 それ以外の場合は、_アクセス拒否_ によって操作が失敗します。
 * Azure Data Factory と Azure Synapse には Event Grid に対する特別なアクセス許可は必要ありません。この操作のために Data Factory または Azure Synapse のサービス プリンシパルに特別な RBAC アクセス許可を割り当てる必要は "_ありません_"。
 
 ストレージ イベント トリガーでは、次のいずれかの RBAC 設定が機能します。

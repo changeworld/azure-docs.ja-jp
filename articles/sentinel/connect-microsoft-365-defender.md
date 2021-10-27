@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: c31ed32e13e8b71b5ad6253d5e157b5adc2096bf
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: a70e6429ab535222f2ff7b86a807e5fc4a4b2a7a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260021"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133749"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender から Azure Sentinel にデータを接続する
 
@@ -29,6 +29,8 @@ ms.locfileid: "123260021"
 >
 > **Microsoft Defender for Endpoint** は、以前は **Microsoft Defender Advanced Threat Protection** または **MDATP** と呼ばれていました。
 >
+> **Microsoft Defender for Office 365** は、以前は **Office 365 Advanced Threat Protection** と呼ばれていました。
+>
 > 以前の名前がしばらくの間使用されることがあります。
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
@@ -37,9 +39,9 @@ ms.locfileid: "123260021"
 
 インシデント統合と共に Azure Sentinel の [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) コネクタを使用すると、すべての M365D インシデントとアラートを Azure Sentinel にストリーミングし、両方のポータル間でインシデントの同期を維持することができます。 M365D インシデントには、すべてのアラート、エンティティ、およびその他の関連情報が含まれています。これらは M365D のコンポーネント サービスである **Microsoft Defender for Endpoint**、**Microsoft Defender for Identity**、**Microsoft Defender for Office 365**、および **Microsoft Cloud App Security** によって強化され、アラートがグループ化されています。
 
-このコネクタを使用すると、Microsoft Defender for Endpoint から Azure Sentinel に **詳細な捜索** イベントをストリーミングできます。これにより、Defender for Endpoint の詳細な捜索クエリを Azure Sentinel にコピーすること、Sentinel アラートを Defender for Endpoint の未加工のイベント データを使用して強化し、追加の分析情報を提供すること、リテンション期間を長くしてログを Log Analytics に格納することができます。
+このコネクタを使用すると、Microsoft Defender for Endpoint と Microsoft Defender for Office 365 から Azure Sentinel に **詳細な捜索** イベントをストリーミングできます。これにより、これらの Defender コンポーネントの詳細な捜索クエリを Azure Sentinel にコピーすること、Sentinel アラートを Defender コンポーネントの未加工のイベント データを使用して強化し、追加の分析情報を提供すること、保持期間を長くしてログを Log Analytics に格納することができます。
 
-インシデント統合と詳細な捜索イベントの収集の詳細については、「[Microsoft 365 Defender と Azure Sentinel の統合](microsoft-365-defender-sentinel-integration.md)」を参照してください。
+インシデント統合と詳細な捜索イベントの収集の詳細については、「[Microsoft 365 Defender と Azure Sentinel の統合](microsoft-365-defender-sentinel-integration.md#advanced-hunting-event-collection)」を参照してください。
 
 > [!IMPORTANT]
 >
@@ -68,23 +70,37 @@ ms.locfileid: "123260021"
     | where ProviderName == "Microsoft 365 Defender"
     ```
 
-1. Microsoft Defender for Endpoint から詳細な捜索イベントを収集する場合は、対応する詳細な捜索テーブルから次の種類のイベントを収集できます。
+1. Microsoft Defender for Endpoint または Microsoft Defender for Office 365 から詳細な捜索イベントを収集する場合は、対応する詳細な捜索テーブルから次の種類のイベントを収集できます。
 
     1. 収集するイベントの種類があるテーブルのチェック ボックスをオンにします。
 
+       # <a name="defender-for-endpoint"></a>[Defender for Endpoint](#tab/MDE)
+
        | テーブル名 | イベントの種類 |
        |-|-|
-       | DeviceInfo | マシン情報 (OS 情報を含む) |
-       | DeviceNetworkInfo | マシンのネットワーク プロパティ |
-       | DeviceProcessEvents | プロセスの作成と関連イベント |
-       | DeviceNetworkEvents | ネットワーク接続と関連イベント |
-       | DeviceFileEvents | ファイルの作成、変更、およびその他のファイル システム イベント |
-       | DeviceRegistryEvents | レジストリ エントリの作成と変更 |
-       | DeviceLogonEvents | サインインとその他の認証イベント |
-       | DeviceImageLoadEvents | DLL 読み込みイベント |
-       | DeviceEvents | その他のイベントの種類 |
-       | DeviceFileCertificateInfo | 署名されたファイルの証明書情報 |
+       | **[DeviceInfo](/microsoft-365/security/defender/advanced-hunting-deviceinfo-table)** | コンピューター情報 (OS 情報を含む) |
+       | **[DeviceNetworkInfo](/microsoft-365/security/defender/advanced-hunting-devicenetworkinfo-table)** | 物理アダプター、IP および MAC アドレス、接続されているネットワークとドメインを含む、デバイスのネットワーク プロパティ |
+       | **[DeviceProcessEvents](/microsoft-365/security/defender/advanced-hunting-deviceprocessevents-table)** | プロセスの作成と関連イベント |
+       | **[DeviceNetworkEvents](/microsoft-365/security/defender/advanced-hunting-devicenetworkevents-table)** | ネットワーク接続と関連イベント |
+       | **[DeviceFileEvents](/microsoft-365/security/defender/advanced-hunting-devicefileevents-table)** | ファイルの作成、変更、およびその他のファイル システム イベント |
+       | **[DeviceRegistryEvents](/microsoft-365/security/defender/advanced-hunting-deviceregistryevents-table)** | レジストリ エントリの作成と変更 |
+       | **[DeviceLogonEvents](/microsoft-365/security/defender/advanced-hunting-devicelogonevents-table)** | デバイスでのサインインとその他の認証イベント |
+       | **[DeviceImageLoadEvents](/microsoft-365/security/defender/advanced-hunting-deviceimageloadevents-table)** | DLL 読み込みイベント |
+       | **[DeviceEvents](/microsoft-365/security/defender/advanced-hunting-deviceevents-table)** | Windows Defender ウイルス対策や Exploit Protection などのセキュリティ制御によってトリガーされるイベントを含む、複数のイベントの種類 |
+       | **[DeviceFileCertificateInfo](/microsoft-365/security/defender/advanced-hunting-DeviceFileCertificateInfo-table)** | エンドポイントで証明書の検証イベントから取得された署名付きファイルの証明書情報 |
        |
+
+       # <a name="defender-for-office-365"></a>[Defender for Office 365](#tab/MDO)
+
+       | テーブル名 | イベントの種類 |
+       |-|-|
+       | **[EmailAttachmentInfo](/microsoft-365/security/defender/advanced-hunting-emailattachmentinfo-table)** | 電子メールに添付されているファイルに関する情報 |
+       | **[EmailEvents](/microsoft-365/security/defender/advanced-hunting-emailevents-table)** | Microsoft 365 メール イベント (メール配信とブロックのイベントを含む) |
+       | **[EmailPostDeliveryEvents](/microsoft-365/security/defender/advanced-hunting-emailpostdeliveryevents-table)** | 配信後、つまり、Microsoft 365 によって電子メールが受信者のメールボックスに配信された後に発生するセキュリティ イベント |
+       | **[EmailUrlInfo](/microsoft-365/security/defender/advanced-hunting-emailurlinfo-table)** | 電子メールの URL に関する情報 |
+       |
+
+       ---
 
     1. **[変更の適用]** をクリックします。
 
@@ -131,7 +147,7 @@ let Now = now();
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Microsoft 365 Defender コネクタを使用して、Microsoft 365 Defender インシデントと Microsoft Defender for Endpoint からの詳細な捜索イベント データを Azure Sentinel に統合する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Microsoft 365 Defender コネクタを使用し、Microsoft 365 Defender インシデントと、Microsoft Defender for Endpoint および Defender for Office 365 からの詳細な捜索イベント データを Azure Sentinel に統合する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

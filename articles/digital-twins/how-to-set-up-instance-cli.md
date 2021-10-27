@@ -4,15 +4,16 @@ titleSuffix: Azure Digital Twins
 description: CLI を使用して Azure Digital Twins サービスのインスタンスを設定する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 7/23/2020
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6f64791df0c564183900fd75c718ac4e5f9d0976
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: contperf-fy22q2
+ms.openlocfilehash: 615680552bc1854c650477f314c4ab14815dbc01
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468846"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000216"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -20,15 +21,11 @@ ms.locfileid: "114468846"
 
 この記事では、**新しい Azure Digital Twins インスタンスを設定する** 手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が完了します。
 
-この記事のこのバージョンでは、CLI を使用して、これらの手順を 1 つずつ手動で実行します。
-* これらの手順を Azure portal から手動で実行するには、[インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md) にあるこのアーティクルのポータル バージョンを参照してください。
-* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、[インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md) にあるこのアーティクルのスクリプト化バージョンを参照してください。
-
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="set-up-cloud-shell-session"></a>Cloud Shell セッションの設定
+### <a name="set-up-cloud-shell-session"></a>Cloud Shell セッションの設定
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを作成する
@@ -53,7 +50,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> --resource-g
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Azure portal でリソース グループと Azure Digital Twins インスタンスが正常に作成された Cloud Shell ウィンドウのスクリーンショット。":::
 
-Azure Digital Twins インスタンスの **hostName**、**name**、**resourceGroup** を出力から確認します。 これらはすべて、認証および関連する Azure リソースを設定するために、Azure Digital Twins インスタンスを引き続き操作する場合に必要になる可能性がある重要な値です。 他のユーザーがこのインスタンスに対してプログラミングする場合は、これらの値をそのユーザーと共有する必要があります。
+Azure Digital Twins インスタンスの **hostName**、**name**、**resourceGroup** を出力から確認します。 これらの値はすべて重要であり、Azure Digital Twins インスタンスの認証および関連する Azure リソースを設定する引き続きの操作で、必要になる可能性があります。 他のユーザーがこのインスタンスに対してプログラミングする場合は、これらの値をそのユーザーと共有する必要があります。
 
 > [!TIP]
 > これらのプロパティは、インスタンスのすべてのプロパティと共に、`az dt show --dt-name <your-Azure-Digital-Twins-instance>` を実行することでいつでも確認できます。
@@ -72,7 +69,7 @@ Azure Digital Twins インスタンスの **hostName**、**name**、**resourceGr
 
 ユーザーに Azure Digital Twins インスタンスを管理するためのアクセス許可を付与するには、そのインスタンス内の **"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)** ロールをそのユーザーに割り当てる必要があります。
 
-ロールを割り当てるには、次のコマンドを使用します (Azure サブスクリプションで、[十分なアクセス許可](#prerequisites-permission-requirements)を持つユーザーによって実行される必要があります)。 このコマンドを実行するには、ロールを割り当てる必要があるユーザーの Azure AD アカウントで、"*ユーザー プリンシパル名*" を渡す必要があります。 ほとんどの場合、これは Azure AD アカウントのユーザーの電子メールと一致します。
+ロールを割り当てるには、次のコマンドを使用します (Azure サブスクリプションで、[十分なアクセス許可](#prerequisites-permission-requirements)を持つユーザーによって実行される必要があります)。 このコマンドを実行するには、ロールを割り当てる必要があるユーザーの Azure AD アカウントで、"*ユーザー プリンシパル名*" を渡す必要があります。 ほとんどの場合、これの値は Azure AD アカウントのユーザーの電子メールと同じです。
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"

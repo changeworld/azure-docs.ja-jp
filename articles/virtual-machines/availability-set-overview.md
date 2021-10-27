@@ -6,12 +6,12 @@ ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: ac6995a2653ea9f88a25e75f6c1b98e2446a4788
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0a3b85f7fe6a11b461e138b920bfb607bb0ebfcc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622438"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999114"
 ---
 # <a name="availability-sets-overview"></a>可用性セットの概要
 

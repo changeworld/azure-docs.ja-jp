@@ -1,24 +1,24 @@
 ---
 title: クイックスタート - Azure Digital Twins Explorer での作業を始める
 titleSuffix: Azure Digital Twins
-description: クイック スタート - Azure Digital Twins Explorer サンプルを使用して、事前構築済みのシナリオを視覚化し、精査します。
+description: モデルを使用してツインのインスタンスを作成し、ツイン グラフを操作するこちらのデモに従って、Azure Digital Twins Explorer の使用方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 4/27/2021
+ms.date: 10/4/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 92b1eeb5317f5a7535406d1b3781a4b0b66cad45
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 174efb47f8770496fbac8fa781b26b93c1b6b601
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272455"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133027"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>クイックスタート - Azure Digital Twins Explorer でサンプル シナリオを使用して作業を始める
 
-Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 最初に、個々の要素を "**デジタル ツイン**" としてモデル化します。 次に、ライブ イベントに応答して情報を照会できるナレッジ "**グラフ**" にそれらを接続します。
+このクイックスタートでは、[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) を使用して、事前構築済みの Azure Digital Twins グラフを調べます。 このツールを使用すると、Azure portal 内で Azure Digital Twins のデータを視覚化して操作できます。
 
-このクイックスタートでは、[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) を使用して、事前構築済みの Azure Digital Twins グラフを調べます。 このツールを使用すると、Azure portal 内で Azure Digital Twins のデータを視覚化して操作できます。 
+Azure Digital Twins を使用すると、より広範な IoT ソリューションの一部にできる、実際の環境のライブ モデルを作成して対話的に操作することができます。 最初に、個々の要素を "**デジタル ツイン**" としてモデル化します。 次に、ライブ イベントに応答して情報を照会できるナレッジ "**グラフ**" にそれらを接続します。
 
 次の手順で行います。
 
@@ -28,7 +28,7 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 1. グラフに変更を加える。
 1. 経験から学習したことを確認する。
 
-ここで使用するサンプル グラフは、2 つのフロアと 2 つの部屋から成る建物を表します。 Floor0 には Room0 が含まれ、Floor1 には Room1 が含まれます。 グラフは次の画像のようになります。
+ここで使用する Azure Digital Twins のサンプル グラフは、2 つのフロアと 2 つの部屋から成る建物を表します。 Floor0 には Room0 が含まれ、Floor1 には Room1 が含まれます。 グラフは次の画像のようになります。
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="Azure Digital Twins Explorer での、矢印で接続された 4 つの円形ノードで構成されたグラフのスクリーンショット。":::
 
@@ -39,10 +39,10 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 このクイックスタートを完了するには、Azure サブスクリプションが必要です。 まだお持ちでない場合は、すぐに [無料で作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) できます。
 
-また、クイックスタートで使用するサンプル グラフの素材をダウンロードする必要もあります。 以下のリンクと説明を使用して、[digital-twins-explorer GitHub リポジトリ](https://github.com/Azure-Samples/digital-twins-explorer)から 3 つの必要なファイルをダウンロードします。
-* [Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Room.json): リンク先に移動して、画面のどこかを右クリックし、ブラウザーの右クリック メニューで **[名前を付けて保存]** を選択します。 次の [名前を付けて保存] ウィンドウを使用して、コンピューターのどこかに **Room.json** という名前でファイルを保存します。
-* [Floor.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Floor.json): リンク先に移動して、画面のどこかを右クリックし、ブラウザーの右クリック メニューで **[名前を付けて保存]** を選択します。 次の [名前を付けて保存] ウィンドウを使用して、**Room.json** と同じ場所に、**Floor.json** という名前でファイルを保存します。
-* [buildingScenario.xlsx](https://github.com/Azure-Samples/digital-twins-explorer/blob/main/client/examples/buildingScenario.xlsx): リンク先に移動し、 **[ダウンロード]** ボタンを選択します。 これにより、既定のダウンロード場所にファイルがダウンロードされます。
+また、クイックスタートで使用するサンプル グラフの素材をダウンロードする必要もあります。 以下のリンクと説明を使用して、[digital-twins-explorer GitHub リポジトリ](https://github.com/Azure-Samples/digital-twins-explorer)から 3 つの必要なファイルをダウンロードします。 後で、これらを Azure Digital Twins にアップロードするための追加の手順について説明します。
+* [Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Room.json): これは、建物内の部屋を表すモデル ファイルです。 リンク先に移動して、画面の任意の場所を右クリックし、ブラウザーの右クリック メニューで **[名前を付けて保存]** を選択します。 次の [名前を付けて保存] ウィンドウを使用して、コンピューターのどこかに **Room.json** という名前でファイルを保存します。
+* [Floor.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Floor.json): これは、建物内のフロアを表すモデル ファイルです。 リンク先に移動して、画面の任意の場所を右クリックし、ブラウザーの右クリック メニューで **[名前を付けて保存]** を選択します。 次の [名前を付けて保存] ウィンドウを使用して、**Room.json** と同じ場所に、**Floor.json** という名前でファイルを保存します。
+* [buildingScenario.xlsx](https://github.com/Azure-Samples/digital-twins-explorer/blob/main/client/examples/buildingScenario.xlsx): このファイルには、部屋とフロアのツインのグラフと、それらの間のリレーションシップが含まれています。 リンク先に移動し、 **[ダウンロード]** ボタンを選択します。 これにより、既定のダウンロード場所にファイルがダウンロードされます。
 
     :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png" alt-text="GitHub の digital-twins-explorer/client/examples/buildingScenario.xlsx ファイルのスクリーンショット。[ダウンロード] ボタンが強調されています。" lightbox="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png":::
 
@@ -85,9 +85,9 @@ Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twin
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="インターネット ブラウザーでの Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-## <a name="add-the-sample-data"></a>サンプル データを追加する
+## <a name="upload-the-sample-materials"></a>サンプル素材をアップロードする
 
-次に、Azure Digital Twins Explorer にサンプル シナリオとグラフをインポートします。 サンプル シナリオは、「[前提条件](#prerequisites)」セクションでダウンロードした **digital-twins-explorer-main** フォルダーにあります。
+次に、Azure Digital Twins Explorer にサンプル モデルとグラフをインポートします。 「[前提条件](#prerequisites)」セクションでマシンにダウンロードしたモデル ファイルとグラフ ファイルを使用します。
 
 ### <a name="models"></a>モデル
 
@@ -106,9 +106,9 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 * 床
 * ルーム
 
-#### <a name="upload-models"></a>モデルのアップロード
+#### <a name="upload-the-models-json-files"></a>モデル (.json ファイル) をアップロードする
 
-次の手順に従いモデルをアップロードします。
+こちらの手順に従って、モデル (先ほどダウンロードした *.json* ファイル) をアップロードします。
 
 1. **[モデル]** パネルで、クラウドを指す矢印が表示されている **[モデルのアップロード]** アイコンを選択します。
 
@@ -142,9 +142,9 @@ Azure Digital Twins Explorer によって、これらのモデル ファイル�
 * Floor1
     - Room1 を含む
 
-#### <a name="import-the-graph"></a>グラフをインポートする
+#### <a name="import-the-graph-xlsx-file"></a>グラフ (.xlsx ファイル) をインポートする
 
-こちらの手順に従いグラフをインポートします。
+こちらの手順に従って、グラフ (先ほどダウンロードした *.xlsx* ファイル) をインポートします。
 
 1. **[Twin Graph]\(ツイン グラフ\)** パネルで、クラウドを指す矢印が表示されている **[Import Graph]\(グラフのインポート\)** アイコンを選択します。
 
@@ -156,13 +156,7 @@ Azure Digital Twins Explorer によって、これらのモデル ファイル�
 
 3. グラフのアップロードを確認するには、グラフ プレビュー パネルの右上隅にある **[保存]** アイコンを選択します。
 
-   :::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png" alt-text="グラフ プレビュー ペインの [保存] アイコンが強調されている Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-   :::row-end:::
+    :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png" alt-text="グラフ プレビュー ペインの [保存] アイコンが強調されている Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png":::
 
 4. アップロードしたファイルを使用して、要求したツインとそれらの間のリレーションシップが Azure Digital Twins Explorer によって作成されます。 終了すると、ダイアログ ボックスが表示されます。 **[閉じる]** を選択します。
 

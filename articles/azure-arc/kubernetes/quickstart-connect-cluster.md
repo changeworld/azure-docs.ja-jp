@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: e876ecf11de197e523c9d34825a5a52284af871b
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 6716ae8b85893b9af4b439ea76eca631bff525bf
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740457"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066454"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する
 
@@ -85,8 +85,8 @@ ms.locfileid: "129740457"
 ## <a name="meet-network-requirements"></a>ネットワーク要件を満たす
 
 > [!IMPORTANT]
-> Azure Arc エージェントが機能するには、次のプロトコル、ポート、送信 URL が両方とも必要です。
-> * ポート 443 での TCP: `https://:443`
+> Azure Arc エージェントが機能するには、`https://:443` に次の送信 URL が必要です。
+> `*.servicebus.windows.net` の場合、ファイアウォールとプロキシで送信アクセスに対して Websockets を有効にする必要があります。
 
 | エンドポイント (DNS) | 説明 |
 | ----------------- | ------------- |

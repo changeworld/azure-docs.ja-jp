@@ -1,20 +1,20 @@
 ---
-title: Azure Data Explorer との間でデータをコピーする
+title: Azure Data Explorer のデータのコピーと変換を行う
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、Azure Data Explorer をコピー先またはコピー元としてデータをコピーする方法について説明します。
+description: Data Factory または Azure Synapse Analytics を使用して、Azure Data Explorer のデータのコピーと変換を行う方法について説明します。
 ms.author: orspodek
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: 511e1d58e3abf3c44025a02059c5d6aa947809c0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/14/2021
+ms.openlocfilehash: a764b6e0046b399d1984f13404aae6ba1eb4d72f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771899"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063889"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -339,6 +339,81 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
         ]
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+マッピング データ フローでデータを変換するときに、Azure Data Explorer のテーブルに対する読み取りと書き込みを実行できます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事をご覧ください。 ソースとシンクの種類として、Azure Data Explorer データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用できます。
+
+### <a name="source-transformation"></a>ソース変換
+
+次の表に、Azure Data Explorer ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| テーブル | 入力として [テーブル] を選択した場合、データ フローでは、Azure Data Explorer データセットで指定された、またはインライン データセットを使用するときにソース オプションで指定されたテーブルからすべてのデータがフェッチされます。 | いいえ | String | *(インライン データセットのみ)*<br>tableName |
+| クエリ | [KQL 形式](/azure/data-explorer/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。  | いいえ | String | query |
+| タイムアウト | クエリ要求がタイムアウトするまでの待機時間。既定値は '172000' (2 日間) です。  | いいえ | Integer | timeout |
+
+#### <a name="azure-data-explorer-source-script-examples"></a>Azure Data Explorer ソース スクリプトの例
+
+ソースの種類として Azure Data Explorer データセットを使用する場合、関連付けられるデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'table | take 10',
+    format: 'query') ~> AzureDataExplorerSource
+
+```
+
+インライン データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'table | take 10',
+    store: 'azuredataexplorer') ~> AzureDataExplorerSource
+
+```
+
+### <a name="sink-transformation"></a>シンク変換
+
+次の表に、Azure Data Explorer シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[設定]** タブで編集できます。インライン データセットを使用する場合、「[データセットのプロパティ](#dataset-properties)」セクションで説明されているプロパティと同じ追加の設定が表示されます。 
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| テーブル アクション | 書き込み前に変換先テーブルのすべての行を再作成するか削除するかを指定します。<br>- **なし**: テーブルに対してアクションは実行されません。<br>- **Recreate**:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。<br>- **Truncate**:ターゲット テーブルのすべての行が削除されます。 | いいえ | `true` または `false` | recreate<br/>truncate |
+| 事前および事後の SQL スクリプト | データがシンク データベースに書き込まれる前 (前処理) と書き込まれた後 (後処理) に実行される複数の [Kusto 管理コマンド](/azure/data-explorer/kusto/query/#control-commands)を指定します。 | いいえ | String | preSQL; postSQL |
+| タイムアウト | クエリ要求がタイムアウトするまでの待機時間。既定値は '172000' (2 日間) です。 | いいえ | Integer | timeout |
+
+
+#### <a name="azure-data-explorer-sink-script-examples"></a>Azure Data Explorer シンク スクリプトの例
+
+シンクの種類として Azure Data Explorer データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    preSQLs:['pre SQL scripts'],
+    postSQLs:['post SQL script'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureDataExplorerSink
+
+```
+
+インライン データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    store: 'azuredataexplorer',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureDataExplorerSink
+
 ```
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ

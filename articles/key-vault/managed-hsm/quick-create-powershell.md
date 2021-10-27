@@ -10,12 +10,12 @@ ms.subservice: keys
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 0658d715c7d7b2e7a34cd8fbd9ec3f76d9a67d10
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a9e4db26d2d40818c5b98c9aa5a8e46c272992b2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550461"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131089"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>クイックスタート: PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う
 
@@ -33,10 +33,10 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 Azure PowerShell の [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、*myResourceGroup* という名前のリソース グループを *westus* に作成します。 
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 Azure PowerShell の [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、*myResourceGroup* という名前のリソース グループを *centralus* の場所に作成します。 
 
 ```azurepowershell-interactive
-New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
 
 ## Get your principal ID
 
@@ -58,11 +58,11 @@ Get-AzADUser -UserPrincipalName "<your@email.address>"
   > 各マネージド HSM には一意の名前が必要です。 次の例で、\<your-unique-managed-hsm-name\> をご自分のマネージド HSM の名前と置き換えます。
 
 - リソース グループ名: **myResourceGroup**
-- 場所: **EastUS**。
+- 場所: **米国中部**
 - プリンシパル ID: 前セクションで取得した Azure Active Directory のプリンシパル ID を "Administrator" パラメーターに渡します。 
 
 ```azurepowershell-interactive
-New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "West US" -Administrator "<your-principal-ID>"
+New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "centralus" -Administrator "<your-principal-ID>"
 ```
 
 このコマンドレットの出力では、新しく作成したマネージド HSM のプロパティが示されます。 次の 2 つのプロパティをメモしておきます。

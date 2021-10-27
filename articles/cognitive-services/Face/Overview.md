@@ -11,12 +11,12 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
-ms.openlocfilehash: 3cb63bb5fb98eddee84677bb8e2d8d11ed86c876
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 90a2b656d66c15eed10d68be8e5af5c35f35d135
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362756"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005693"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
@@ -34,7 +34,7 @@ Azure Face サービスは、画像に含まれている人の顔の検出、認
 顔編集: プライバシーを保護するため、ビデオに記録された人の顔を編集またはぼかします。
 
 このドキュメントには、次のような記事が記載されています。
-* [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* <bpt id="p1">[</bpt>クイックスタート<ept id="p1">](./quickstarts-sdk/client-library.md)</ept>は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
 * [攻略ガイド](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 * [概念の記事](./concepts/face-detection.md)では、サービスの機能と特長について詳しく説明します。
 * [チュートリアル](./enrollment-overview.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
@@ -57,7 +57,7 @@ Azure Face サービスは、画像に含まれている人の顔の検出、認
 
 ### <a name="identification"></a>識別
 
-顔識別では、画像内の 1 つの顔を、安全なリポジトリ内の一連の顔と "一対多" で照合できます。 一致候補は、顔データがクエリの顔とどれだけ一致しているかに基づいて返されます。 このシナリオは、特定のユーザー グループに建物へのアクセス権を付与したり、デバイスのユーザーを検証したりするために使用されます。
+顔識別では、画像内の 1 つの顔を、安全なリポジトリ内の一連の顔と "一対多" で照合できます。 一致候補は、顔データがクエリの顔とどれだけ一致しているかに基づいて返されます。 このシナリオは、特定のユーザー グループに建物や空港へのアクセス権を付与したり、デバイスのユーザーを検証したりするために使用されます。
 
 次の画像は、`"myfriends"` という名前のデータベースの例を示しています。 各グループは、最大で 100 万個の異なる person オブジェクトを含むことができます。 各 person オブジェクトには最大で 248 個の顔を登録できます。
 
@@ -69,9 +69,7 @@ Azure Face サービスは、画像に含まれている人の顔の検出、認
 
 検証操作は、"これら 2 つの顔は同じ人物のものでしょうか?" という質問に答えます。 
 
-また、検証では、画像内の 1 つの顔を、安全なリポジトリまたは写真内の 1 つの顔と "一対一" で照合します。
-
-本人確認や出入管理のシナリオで、前もって撮影された画像 (政府発行の ID カードの写真など) と写真が一致していることを確認する目的に検証を使用できます。
+また、検証では、画像内の顔をセキュリティで保護されたリポジトリや写真からの 1 つの顔と "1 対 1" で照合して、それらが同じ個人であることが確認されます。 検証は、ユーザーが自分の身元を確認するために自撮りしたり、自分の写真付き ID を撮影することで、リモートでクレジット アカウントを開くことができる銀行アプリなどの本人確認に使用することができます。 
 
 本人確認の詳細については、[顔認識](concepts/face-recognition.md)の概念ガイドまたは [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) および [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) の API リファレンス ドキュメントを参照してください。
 

@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) で Ultra Disk のサポートを有効に
 description: Azure Kubernetes Service (AKS) クラスターで Ultra Disks を有効化し、構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: d42834252416a2aeed40db5fe307cd97f1bbada9
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 10/12/2021
+ms.openlocfilehash: 07d43fc72d10f1739fb67124feadacc9632206be
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007303"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984860"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での Azure Ultra Disks の使用 (プレビュー)
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service"></a>Azure Kubernetes Service での Azure Ultra Disks の使用
 
 [Azure Ultra Disks](../virtual-machines/disks-enable-ultra-ssd.md) は、ステートフル アプリケーションに高スループット、高 IOPS、および一貫性のある低待機時間のディスク ストレージを提供します。 Ultra Disks の主なメリットの 1 つが、エージェント ノードを再起動することなく、SSD のパフォーマンスをワークロードと共に動的に変更する機能です。 Ultra Disks は、データ量の多いワークロードに適しています。
 
@@ -21,18 +21,6 @@ ms.locfileid: "112007303"
 
 > [!IMPORTANT]
 > Azure Ultra Disks では、特定の VM シリーズだけでなく、これらのディスクをサポートする可用性ゾーンとリージョンにデプロイされたノードプールが必要です。 [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください。
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-
-Ultra Disks を使用できる AKS クラスターまたはノード プールを作成するには、最新の *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
 
 ### <a name="limitations"></a>制限事項
 - [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください

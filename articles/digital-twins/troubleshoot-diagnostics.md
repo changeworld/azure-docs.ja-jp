@@ -1,25 +1,25 @@
 ---
-title: 診断ログを使用する
+title: 'トラブルシューティング: 診断ログ'
 titleSuffix: Azure Digital Twins
-description: 診断設定を使用したログ記録を有効にし、ログに対してクエリを実行してすぐに表示する方法を確認する。 また、ログ カテゴリとそのスキーマについて学習します。
+description: この記事では、診断設定を使用したログ記録を有効にし、ログに対してクエリを実行してすぐに表示する方法を確認します。 また、ログ カテゴリとそのスキーマについて学習します。
 author: baanders
 ms.author: baanders
-ms.date: 9/15/2021
+ms.date: 9/24/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: c868f0c8418f6b265e3de5b4d8ea0c6b7312a33e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 89b7c741ce75a629de99e3337428027429bce5b7
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593651"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131773"
 ---
-# <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
-
-Azure Digital Twins では、サービス インスタンスの **ログ** を収集し、そのパフォーマンス、アクセス、その他のデータを監視できます。 これらのログを使用して、Azure Digital Twins インスタンスで何が起こっているかを把握し、問題の根本原因を分析できます。Azure サポートに連絡する必要はありません。
+# <a name="troubleshooting-azure-digital-twins-diagnostics-logs"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
 この記事では、[Azure portal](https://portal.azure.com) で診断設定を構成する方法について説明します。これには、収集するログの種類と、それらを保存する場所 (Log Analytics や選択したストレージ アカウントなど) が含まれます。 その後、ログに対してクエリを実行し、カスタム分析情報をすばやく収集することができます。
+
+Azure Digital Twins では、サービス インスタンスの **ログ** を収集し、そのパフォーマンス、アクセス、その他のデータを監視できます。 これらのログを使用して、Azure Digital Twins インスタンスで何が起こっているかを把握し、問題の根本原因を分析できます。Azure サポートに連絡する必要はありません。
 
 この記事には、Azure Digital Twins で収集できるすべての **ログ カテゴリ** と、それらの **スキーマ** に関する情報も含まれています。
 
@@ -367,5 +367,5 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
 ## <a name="next-steps"></a>次のステップ
 
 * 診断を構成することの詳細については、[Azure リソースからログ データを収集して使用する](../azure-monitor/essentials/platform-logs-overview.md)ことに関するページを参照してください。
-* Azure Digital Twins のメトリックについては、[トラブルシューティング: Azure Monitor でメトリックを表示する方法](troubleshoot-metrics.md)に関するページを参照してください。
-* メトリックのアラートを有効にする方法については、[トラブルシューティング:アラートの設定](troubleshoot-alerts.md)に関するページを参照してください。
+* Azure Digital Twins のメトリックについては、[トラブルシューティング: メトリック](troubleshoot-metrics.md)に関するページを参照してください。
+* メトリックのアラートを有効にする方法については、[トラブルシューティング: アラート](troubleshoot-alerts.md)に関するページを参照してください。

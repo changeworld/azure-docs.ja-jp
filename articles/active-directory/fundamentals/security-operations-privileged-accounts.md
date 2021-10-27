@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4a9afd9e2470085509c809153fd2abd9a63c27
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 467c5ad44b38e237b1ad9b947f438dcef1006750
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796440"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038842"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>特権アカウントのためのセキュリティ運用
 
@@ -52,7 +52,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) を SIEM と統合 - Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログをプッシュできます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) – アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
 * Microsoft Graph - データとユーザーをエクスポートして、 MS Graph を使用してより詳細な分析を行うことができます。 MS Graph の詳細については、[Microsoft Graph PowerShell SDK と Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md) に関するページを参照してください。 
 

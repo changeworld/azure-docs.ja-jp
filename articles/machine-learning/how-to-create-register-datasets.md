@@ -11,12 +11,12 @@ ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
-ms.openlocfilehash: f640165420f06a85633d4db30d6338f4bfa205c4
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a125ee289f9f3ea87f1015136b07ec2ad76cef32
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428371"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003044"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -117,6 +117,8 @@ Python SDK を使用してデータストアからデータセットを作成す
 ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセットを使用する](how-to-secure-workspace-vnet.md#datastores-and-datasets)方法に関する詳細を確認してください。
 
 ```Python
+from azureml.core import Workspace, Datastore, Dataset
+
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
 datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
@@ -126,12 +128,22 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
              'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
-ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。 
 
-> [!TIP] 
-> ローカル ディレクトリからファイルをアップロードし、パブリック プレビュー メソッドの [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-) を使用して 1 つのメソッドで FileDataset を作成します。 このメソッドは[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
-> 
->  このメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
+ローカル ディレクトリからすべてのファイルをアップロードする場合は、[upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-) を使用して 1 つのメソッドで FileDataset を作成します。 このメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
+
+```Python
+from azureml.core import Workspace, Datastore, Dataset
+from azureml.data.datapath import DataPath
+
+ws = Workspace.from_config()
+datastore = Datastore.get(ws, '<name of your datastore>')
+ds = Dataset.File.upload_directory(src_dir='<path to you data>',
+           target=DataPath(datastore,  '<path on the datastore>'),
+           show_progress=True)
+
+```
+
+ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。 
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
@@ -317,36 +329,20 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Pandas データフレーム からデータセットを作成する
 
-メモリ内の Pandas データ フレームから TabularDataset を作成するには、csv などのローカル ファイルにデータを書き込み、そのファイルからデータセットを作成します。 次のコードはこのワークフローを示しています。
+インメモリの pandas データフレームから TabularDataset を作成するには、[`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#register-pandas-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) メソッドを使用します。 このメソッドは、TabularDataset をワークスペースに登録し、基になるストレージにデータをアップロードするため、ストレージ コストが発生します。 
 
 ```python
-# azureml-core of version 1.0.72 or higher is required
-# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Datastore, Dataset
+import pandas as pd
 
-from azureml.core import Workspace, Dataset
-local_path = 'data/prepared.csv'
-dataframe.to_csv(local_path)
+pandas_df = pd.read_csv('<path to your csv file>')
+ws = Workspace.from_config()
+datastore = Datastore.get(ws, '<name of your datastore>')
+dataset = Dataset.Tabular.register_pandas_dataframe(pandas_df, datastore, "dataset_from_pandas_df", show_progress=True)
 
-# upload the local file to a datastore on the cloud
-
-subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
-resource_group = 'xxxxxx'
-workspace_name = 'xxxxxxxxxxxxxxxx'
-
-workspace = Workspace(subscription_id, resource_group, workspace_name)
-
-# get the datastore to upload prepared data
-datastore = workspace.get_default_datastore()
-
-# upload the local file from src_dir to the target_path in datastore
-datastore.upload(src_dir='data', target_path='data')
-
-# create a dataset referencing the cloud location
-dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepared.csv'))])
 ```
-
 > [!TIP]
-> 1 つのメソッドで、[`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#methods) と [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#methods) のパブリック プレビュー メソッドを使用して、メモリ内のスパークや Pandas データフレームから TabularDataset を作成して登録します。 これらの登録メソッドは[試験段階の](/python/api/overview/azure/ml/#stable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。 
+> パブリック プレビュー メソッド [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory##register-spark-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) および [`register_dask_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#register-dask-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) を使用して、インメモリのスパークや pandas データフレームから TabularDataset を作成して登録します。 これらのメソッドは[試験段階の](/python/api/overview/azure/ml/#stable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。 
 > 
 >  これらのメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
 
@@ -365,13 +361,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 [https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) には、データセットの作成に使用できる多数のテンプレートがあります。
 
 これらのテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します](how-to-create-workspace-template.md)」を参照してください。
-
-
-## <a name="create-datasets-from-azure-open-datasets"></a>Azure Open Datasets からデータセットを作成する
-
-[Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 データセットには、機械学習モデルのトレーニングと予測ソリューションのエンリッチメントに役立つ天気、国勢調査、祝日、公共の安全、場所に関するパブリック ドメイン データが含まれます。 Open Datasets は Microsoft Azure 上のクラウドにあり、SDK と Studio の両方に含まれています。
-
-[Azure Open Datasets から Azure Machine Learning データセット](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)を作成する方法を確認してください。 
+ 
 
 ## <a name="train-with-datasets"></a>データセットを使用したトレーニング
 

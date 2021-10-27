@@ -141,7 +141,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -151,8 +151,6 @@
           href: alerts/alerts-unified-log.md
         - name: アクティビティ ログ アラート
           href: alerts/activity-log-alerts.md
-    - name: データの視覚化
-      href: visualizations.md
     - name: パートナー統合
       href: partners.md
     - name: セキュリティ
@@ -166,6 +164,18 @@
   items:
     - name: シナリオ
       items:
+        - name: Azure Monitor に関するベスト プラクティス
+          items:
+            - name: 概要
+              href: best-practices.md
+            - name: 計画
+              href: best-practices-plan.md
+            - name: データ収集を構成する
+              href: best-practices-data-collection.md
+            - name: 解析と視覚化
+              href: best-practices-analysis.md
+            - name: アラートと自動アクション
+              href: best-practices-alerts.md
         - name: Azure リソースの監視
           href: essentials/monitor-azure-resource.md
         - name: 仮想マシンの監視
@@ -185,13 +195,6 @@
           displayname: VM
         - name: Kubernetes の監視
           href: ../aks/monitor-aks.md?toc=/azure/azure-monitor/toc.json
-    - name: デプロイ
-      items:
-        - name: Azure Monitor をデプロイする
-          href: deploy.md
-        - name: 大規模にデプロイする
-          displayName: 'Azure Policy, Policy'
-          href: deploy-scale.md
     - name: 管理と構成
       items:
         - name: ロールのアクセス許可とセキュリティ
@@ -390,7 +393,7 @@
         - name: 概要
           href: agents/agents-overview.md
         - name: よく寄せられる質問
-          href: /azure/azure-monitor/faq#agents
+          href: ./faq.yml
         - name: Azure Monitor エージェント
           items:
             - name: 概要
@@ -402,15 +405,12 @@
             - name: データ コレクション
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
-            - name: 大規模にデプロイする
-              displayname: Deploy Azure Monitor agent at scale
-              href: deploy-scale.md#azure-monitor-agent
             - name: レガシ エージェントから移行する
               displayname: Migrate to Azure Monitor agent
               href: agents/azure-monitor-agent-migration.md
             - name: よく寄せられる質問
               displayname: Azure Monitor agent FAQ
-              href: /azure/azure-monitor/faq#azure-monitor-agent
+              href: ./faq.yml
         - name: Log Analytics エージェント
           items:
             - name: 概要
@@ -661,7 +661,7 @@
           href: app/app-insights-overview.md
         - name: よく寄せられる質問
           href: /azure/azure-monitor/faq#application-insights
-        - name: コードベースの監視
+        - name: Application Insights SDK
           items:
             - name: .NET
               items:
@@ -736,7 +736,7 @@
               href: app/api-custom-events-metrics.md
             - name: Application Insights の削除
               href: app/remove-application-insights.md
-        - name: コード不要の監視
+        - name: 自動インストルメンテーション
           items:
             - name: 概要
               href: app/codeless-overview.md
@@ -762,7 +762,7 @@
               href: app/monitor-functions.md
             - name: Azure Kubernetes Service
               href: app/kubernetes-codeless.md
-            - name: オンプレミスのサーバー
+            - name: すべての環境
               items:
                 - name: ASP.NET
                   items:
@@ -779,7 +779,7 @@
                       href: app/status-monitor-v2-api-reference.md
                 - name: Java
                   href: app/java-on-premises.md
-        - name: OpenTelemetry
+        - name: OpenTelemetry ベースのインストルメンテーション
           items:
             - name: 概要
               href: app/opentelemetry-overview.md
@@ -814,7 +814,7 @@
             - name: Python
               href: app/opentelemetry-enable.md?tabs=python
             - name: よく寄せられる質問
-              href: /azure/azure-monitor/faq#opentelemetry
+              href: ./faq.yml
         - name: リソースの作成 (クラシック)
           href: app/create-new-resource.md
         - name: リソースの作成 (ワークスペースベース)
@@ -1027,7 +1027,7 @@
               href: app/export-telemetry.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           items:
             - name: F5 による洞察
               href: app/visual-studio.md
@@ -1054,7 +1054,7 @@
         - name: 一般提供の FAQ
           href: vm/vminsights-ga-release-faq.yml
         - name: よく寄せられる質問
-          href: /azure/azure-monitor/faq#vm-insights
+          href: ./faq.yml
         - name: ワークスペースの構成
           href: vm/vminsights-configure-workspace.md
         - name: エージェントのインストール
@@ -1106,7 +1106,7 @@
         - name: 概要
           href: containers/container-insights-overview.md
         - name: よく寄せられる質問
-          href: /azure/azure-monitor/faq#container-insights
+          href: ./faq.yml
         - name: 監視を有効にする
           items:
             - name: 監視の有効化の概要
@@ -1200,7 +1200,7 @@
             - name: 概要
               href: insights/sql-insights-overview.md
             - name: よく寄せられる質問
-              href: /azure/azure-monitor/faq#sql-insights-(preview)
+              href: ./faq.yml
             - name: 有効にする
               href: insights/sql-insights-enable.md
             - name: 警告

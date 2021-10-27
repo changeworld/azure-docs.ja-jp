@@ -1,20 +1,22 @@
 ---
-title: アラートを設定する
+title: 'トラブルシューティング: アラート'
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins メトリックでアラートを有効にする方法を確認します。
+description: サービス メトリックに基づいてアラートを設定することで、Azure Digital Twins のトラブルシューティングを行う方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 9/15/2021
+ms.date: 10/5/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6a5397a2387b7fb55b0e03664ddb9f52ec8baf59
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 653a710274abc4da116b0c3f3e06b93ed3fce92a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642770"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130128999"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins のトラブルシューティング: 警告
+
+この記事では、[Azure portal](https://portal.azure.com) でアラートを設定する方法を説明します。 これらのアラートは、Azure Digital Twins インスタンスのメトリックに基づいて定義した構成可能な条件が満たされた場合に通知され、重要なアクションを実行することができます。
 
 Azure Digital Twins では、リソースの状態に関する情報を提供する、サービス インスタンスの[メトリック](troubleshoot-metrics.md)が収集されます。 これらのメトリックを使用すると、Azure Digital Twins サービスやそれに接続されているリソースの全体的な正常性を評価できます。
 
@@ -32,9 +34,9 @@ Azure Digital Twins インスタンスに対してアラートを有効にする
 
 3. 続いて表示される *[アラート ルールの作成]* ページで、画面の指示に従って条件、トリガーされるアクション、アラートの詳細を定義できます。     
     * **[スコープ]** の詳細には、インスタンスの詳細が自動的に入力されます。
-    * アラートのトリガーと応答をカスタマイズするには、**条件** と **アクション グループ** の詳細を定義します。
+    * アラートのトリガーと応答をカスタマイズするには、**条件** と **アクション グループ** の詳細を定義します
     * **[アラート ルールの詳細]** セクションで、ルールの名前と説明 (省略可能) を入力します。 
-        - アラートが作成されるとすぐにアクティブになるようにするには、 _[作成時にアラート ルールを有効にする]_ チェックボックスをオンにします。
+        - アラートが作成されるとすぐにアクティブになるようにするには、_[作成時にアラート ルールを有効にする]_ チェックボックスをオンにします。
         - 条件が満たされなくなったときにアラートが解決されるようにしたい場合は、 _[自動的にアラートを解決する]_ チェックボックスをオンにします。
         - このセクションは、 _[サブスクリプション]_ 、 _[リソース グループ]_ 、 _[重大度]_ レベルの選択にも使用します。
 
@@ -63,5 +65,5 @@ Azure Digital Twins で使用できるアラート シグナルの種類を示�
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Monitor でのアラートについて詳しくは、「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
-* Azure Digital Twins のメトリックについては、[トラブルシューティング: Azure Monitor でメトリックを表示する方法](troubleshoot-metrics.md)に関するページを参照してください。
-* メトリックの診断ログを有効にする方法については、[トラブルシューティング:診断の設定](troubleshoot-diagnostics.md)に関するページを参照してください。
+* Azure Digital Twins のメトリックについては、[トラブルシューティング: メトリック](troubleshoot-metrics.md)に関するページを参照してください。
+* メトリックの診断ログを有効にする方法については、「[トラブルシューティング: 診断ログ](troubleshoot-diagnostics.md)」を参照してください。

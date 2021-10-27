@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: f408a9182727d8e4395972f8d9f7025f8342b4eb
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 6f4625f87bddfdffca19c3a6b8ebdf7ca4586c70
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635150"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997651"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -33,7 +33,7 @@ ms.locfileid: "122635150"
 
 上記のすべての操作は、処理中のビデオ フレームを視覚化する機能を備えた `.debug` バージョンでも使用できます。 ビデオ フレームとイベントの視覚化を有効にするには、ホスト コンピューターで `xhost +` を実行する必要があります。
 
-| 操作識別子| 説明|
+操作識別子| 説明
 |---------|---------|
 | cognitiveservices.vision.spatialanalysis-personcount.debug | カメラの視野内の指定されたゾーン内の人数をカウントします。 <br> 初期 _personCountEvent_ イベントを生成し、人数が変わると、_personCountEvent_ イベントを生成します。  |
 | cognitiveservices.vision.spatialanalysis-personcrossingline.debug | 人がカメラの視野内の指定されたラインを越えた時点を追跡します。 <br>人がラインを越えると、_personLineEvent_ イベントを生成し、方向情報を提供します。 
@@ -67,11 +67,13 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | VIDEO_URL| カメラ デバイスの RTSP URL (例: `rtsp://username:password@url`)。 空間分析では、RTSP、http、または mp4 のいずれかを使用して H.264 でエンコードされたストリームがサポートされています。 Video_URL は、AES 暗号化を使用して難読化された base64 文字列値として指定できます。ビデオの URL が難読化されている場合は、環境変数として `KEY_ENV` と `IV_ENV` を指定する必要があります。 キーと暗号化を生成するためのサンプル ユーティリティについては、[こちら](/dotnet/api/system.security.cryptography.aesmanaged)を参照してください。 |
 | VIDEO_SOURCE_ID | カメラ デバイスまたはビデオ ストリームのフレンドリ名。 これは、イベントの JSON 出力と共に返されます。|
 | VIDEO_IS_LIVE| カメラ デバイスの場合は true、録画されたビデオの場合は false。|
-| VIDEO_DECODE_GPU_INDEX| ビデオ フレームをデコードする GPU。 既定では 0 です。 `VICA_NODE_CONFIG`、`DETECTOR_NODE_CONFIG` などの他のノード構成の `gpu_index` と同じである必要があります。|
+| VIDEO_DECODE_GPU_INDEX| ビデオ フレームをデコードする GPU。 既定では 0 です。 `DETECTOR_NODE_CONFIG`、`CAMERACALIBRATOR_NODE_CONFIG` などの他のノード構成の `gpu_index` と同じである必要があります。|
 | INPUT_VIDEO_WIDTH | ビデオまたはストリームのフレーム幅を入力します (例: 1920)。 これは省略可能なフィールドですが、指定されている場合、フレームは縦横比を維持しながらこのディメンションに合わせてスケーリングされます。|
 | DETECTOR_NODE_CONFIG | 検出ノードを実行する GPU を示す JSON。 これは、`"{ \"gpu_index\": 0 }",` という形式になっている必要があります。|
+| TRACKER_NODE_CONFIG | トラッカー ノードで速度を計算するかどうかを示す JSON です。 これは、`"{ \"enable_speed\": true }",` という形式になっている必要があります。|
 | CAMERA_CONFIG | 複数のカメラ用に調整されたカメラ パラメーターを示す JSON です。 使用したスキルに調整が必要であり、カメラ パラメーターが既にある場合は、この構成を使用して直接指定することができます。 `"{ \"cameras\": [{\"source_id\": \"endcomputer.0.persondistancegraph.detector+end_computer1\", \"camera_height\": 13.105561256408691, \"camera_focal_length\": 297.60003662109375, \"camera_tiltup_angle\": 0.9738943576812744}] }"` は次の形式にする必要があります。`source_id` は、各カメラを識別するために使用されます。 発行されたイベントの `source_info` から取得できます。 このメソッドは、`DETECTOR_NODE_CONFIG` で `do_calibration=false` の場合にのみ有効になります。|
-| TRACKER_NODE_CONFIG | トラッカー ノードで速度を計算するかどうかを示す JSON です。 これは、`"{ \"enable_speed\": false }",` という形式になっている必要があります。|
+| CAMERACALIBRATOR_NODE_CONFIG | カメラ キャリブレーター ノードを実行する GPU と、調整を使用するかどうかを示す JSON です。 これは、`"{ \"gpu_index\": 0, \"do_calibration\": true, \"enable_orientation\": true}",` という形式になっている必要があります。|
+| CALIBRATION_CONFIG | カメラの調整方法を制御するパラメーターを示す JSON です。 これは、`"{\"enable_recalibration\": true, \"quality_check_frequency_seconds\": 86400}",` という形式になっている必要があります。|
 | SPACEANALYTICS_CONFIG | 後述するゾーンとラインの JSON 構成。|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` を使用すると、ビデオ ストリームでフェイス マスクを着用している人を検出できるようになり、`False` を使用すると無効になります。 既定では、この構成は無効です。 フェイス マスクの検出には、入力ビデオ幅パラメーターを 1920 `"INPUT_VIDEO_WIDTH": 1920` にする必要があります。 検出された人物がカメラに向いていないか、カメラから離れすぎている場合、フェイス マスク属性は返されません。 詳細については、[カメラの配置](spatial-analysis-camera-placement.md)に関するガイドを参照してください。 |
 
@@ -81,7 +83,38 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 ```json
 {
 "gpu_index": 0,
+"enable_breakpad": false
+}
+```
+
+| 名前 | Type| 説明|
+|---------|---------|---------|
+| `gpu_index` | string| この操作が実行される GPU インデックス。|
+| `enable_breakpad`| [bool] | デバッグ用のクラッシュ ダンプを生成するために使用される breakpad を有効にするかどうかを示します。 既定値は `false` です。 `true` に設定した場合は、コンテナー `createOptions` の `HostConfig` 部分に `"CapAdd": ["SYS_PTRACE"]` も追加する必要があります。 既定では、クラッシュ ダンプは [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter アプリにアップロードされます。クラッシュ ダンプを独自の AppCenter アプリにアップロードする場合は、環境変数 `RTPT_APPCENTER_APP_SECRET` をアプリのアプリ シークレットでオーバーライドできます。|
+
+### <a name="camera-calibration-node-parameter-settings"></a>カメラ調整ノードのパラメーター設定
+すべての空間分析操作の `CAMERACALIBRATOR_NODE_CONFIG` パラメーターの例を次に示します。
+
+```
+{
+"gpu_index": 0,
 "do_calibration": true,
+"enable_breakpad": false,
+"enable_orientation": true
+}
+```
+
+| 名前 | Type| 説明|
+|---------|---------|---------|
+| `do_calibration` | string | 調整がオンになっていることを示します。 **cognitiveservices.vision.spatialanalysis-persondistance** が正しく機能するには、`do_calibration` が true である必要があります。 `do_calibration` は既定で `True` に設定されます。 |
+| `enable_breakpad`| [bool] | デバッグ用のクラッシュ ダンプを生成するために使用される breakpad を有効にするかどうかを示します。 既定値は `false` です。 `true` に設定した場合は、コンテナー `createOptions` の `HostConfig` 部分に `"CapAdd": ["SYS_PTRACE"]` も追加する必要があります。 既定では、クラッシュ ダンプは [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter アプリにアップロードされます。クラッシュ ダンプを独自の AppCenter アプリにアップロードする場合は、環境変数 `RTPT_APPCENTER_APP_SECRET` をアプリのアプリ シークレットでオーバーライドできます。
+| `enable_orientation` | bool | 検出された人の向きを計算するかどうかを示します。 `enable_orientation` は既定で `True` に設定されます。 |
+
+### <a name="calibration-config"></a>調整の構成
+すべての空間分析操作の `CALIBRATION_CONFIG` パラメーターの例を次に示します。
+
+```
+{
 "enable_recalibration": true,
 "calibration_quality_check_frequency_seconds": 86400,
 "calibration_quality_check_sample_collect_frequency_seconds": 300,
@@ -93,16 +126,12 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 
 | 名前 | Type| 説明|
 |---------|---------|---------|
-| `gpu_index` | string| この操作が実行される GPU インデックス。|
-| `do_calibration` | string | 調整がオンになっていることを示します。 **cognitiveservices.vision.spatialanalysis-persondistance** が正しく機能するには、`do_calibration` が true である必要があります。 do_calibration は、既定では True に設定されています。 |
 | `enable_recalibration` | [bool] | 自動再調整がオンになっているかどうかを示します。 既定値は `true` です。|
 | `calibration_quality_check_frequency_seconds` | INT | 再調整が必要かどうかを判断するための、各品質チェック間の最小秒数。 既定値は `86400` (24 時間) です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_quality_check_sample_collect_frequency_seconds` | INT | 再調整と品質チェックのために新しいデータ サンプルを収集する間の最小秒数。 既定値は `300` (5 分間) です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_quality_check_one_round_sample_collect_num` | INT | サンプル コレクションのラウンドごとに収集する新しいデータ サンプルの最小数。 既定値は `10` です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_quality_check_queue_max_size` | INT | カメラ モデルの調整時に格納するデータ サンプルの最大数。 既定値は `1000` です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_event_frequency_seconds` | INT | カメラ調整イベントの出力頻度 (秒)。 値が `-1` の場合、カメラの調整情報が変更されない限り、カメラの調整は送信されません。 既定値は `-1` です。|
-| `enable_breakpad`| [bool] | デバッグ用のクラッシュ ダンプを生成するために使用される breakpad を有効にするかどうかを示します。 既定値は `false` です。 `true` に設定した場合は、コンテナー `createOptions` の `HostConfig` 部分に `"CapAdd": ["SYS_PTRACE"]` も追加する必要があります。 既定では、クラッシュ ダンプは [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter アプリにアップロードされます。クラッシュ ダンプを独自の AppCenter アプリにアップロードする場合は、環境変数 `RTPT_APPCENTER_APP_SECRET` をアプリのアプリ シークレットでオーバーライドできます。
-| `enable_orientation` | bool | 検出された人の向きを計算するかどうかを示します。 `enable_orientation` は既定で False に設定されます。 |
 
 
 ### <a name="camera-calibration-output"></a>カメラ調整の出力
@@ -204,7 +233,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 ```
 | Name | Type| 説明|
 |---------|---------|---------|
-| `enable_speed` | bool | 検出された人の速度を計算するかどうかを示します。 `enable_speed` は既定で false に設定されます。 速度と向きの両方に最適な推定値を設定することを強くお勧めします。 |
+| `enable_speed` | bool | 検出された人の速度を計算するかどうかを示します。 `enable_speed` は既定で `True` に設定されます。 速度と向きの両方に最適な推定値を設定することを強くお勧めします。 |
 
 
 ## <a name="spatial-analysis-operations-configuration-and-output"></a>空間分析操作の構成と出力
@@ -645,7 +674,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `properties` | collection| 値のコレクション|
 | `trackinId` | string| 検出された人の一意識別子|
 | `status` | string| ラインを越える方向 ("CrossLeft" または "CrossRight") 方向は、そのラインの "終わり" に向かって "開始" 位置に立つことを想像することに基づいています。 CrossRight は左から右に交差しています。 CrossLeft は右から左に交差しています。|
-| `orientationDirection` | string| 検出された人がラインを越える向きの方向。 "Left"、"Right"、または "Straigh" を指定できます。 この値は、`DETECTOR_NODE_CONFIG`で `True` に`enable_orientation` が設定されている場合に出力されます。 |
+| `orientationDirection` | string| 検出された人がラインを越える向きの方向。 "Left"、"Right"、または "Straigh" を指定できます。 この値は、`CAMERACALIBRATOR_NODE_CONFIG`で `True` に`enable_orientation` が設定されている場合に出力されます。 |
 | `zone` | string | 越えられたラインの "name" フィールド|
 
 | Detections フィールド名 | Type| 説明|
@@ -803,7 +832,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `side` | INT| 人が越えた多角形の辺の数。 各辺は、ゾーンを表す多角形の 2 つの頂点の間の番号付きのエッジです。 多角形にある最初の 2 つの頂点間のエッジは、最初の辺を表します。 オクルージョンが原因でイベントが特定の側に関連付けられていない場合、'Side' は空です。 たとえば、人の姿が消えたにも関わらずゾーンの辺を横切る姿が見られなかった際に出たことが検出されたり、ゾーン内に人の姿が見られるにも関わらず、辺を横切っているのが見られなかった際に入りが発生したりなどです。|
 | `dwellTime` | float | 人がゾーンで過ごした時間を表すミリ秒数。 このフィールドは、イベントの種類が personZoneDwellTimeEvent の場合に指定されます。|
 | `dwellFrames` | INT | 人がゾーン内にいたフレーム数。 このフィールドは、イベントの種類が personZoneDwellTimeEvent の場合に指定されます。|
-| `dwellTimeForTargetSide` | float | 人がゾーン内にいて `target_side` に向いていた時間を表すミリ秒数。 このフィールドは、`DETECTOR_NODE_CONFIG ` で `enable_orientation` が `True` にあり、`target_side` の値が `SPACEANALYTICS_CONFIG` に設定されている場合に指定されます。|
+| `dwellTimeForTargetSide` | float | 人がゾーン内にいて `target_side` に向いていた時間を表すミリ秒数。 このフィールドは、`CAMERACALIBRATOR_NODE_CONFIG ` で `enable_orientation` が `True` にあり、`target_side` の値が `SPACEANALYTICS_CONFIG` に設定されている場合に指定されます。|
 | `avgSpeed` | float| ゾーン内の人の平均速度。 単位は `foot per second (ft/s)` です。|
 | `minSpeed` | float| ゾーン内の人の最小速度。 単位は `foot per second (ft/s)` です。|
 | `zone` | string | 越えられたゾーンを表す多角形の "name" フィールド|
@@ -993,12 +1022,12 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
                     "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"batch_size\": 7, \"do_calibration\": true}",
                 }
             },
-            "shared_detector1": {
-                "node": "PersonCrossingLineGraph.detector",
+            "shared_calibrator0": {
+                "node": "PersonCrossingLineGraph/cameracalibrator",
                 "parameters": {
-                    "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"batch_size\": 8, \"do_calibration\": true}",
+                    "CAMERACALIBRATOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true, \"enable_zone_placement\": true}",
+                    "CALIBRATION_CONFIG": "{\"enable_recalibration\": true, \"quality_check_frequency_seconds\": 86400}",
                 }
-            }
         },
         "parameters": {
             "VIDEO_DECODE_GPU_INDEX": 0,
@@ -1008,6 +1037,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "1": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 1>",
@@ -1018,6 +1048,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "2": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 2>",
@@ -1028,6 +1059,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "3": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 3>",
@@ -1038,6 +1070,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "4": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 4>",
@@ -1048,6 +1081,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "5": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 5>",
@@ -1058,6 +1092,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "6": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 6>",
@@ -1068,6 +1103,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             "7": {
                 "sharedNodeMap": {
                     "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 7>",
@@ -1077,7 +1113,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "8": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 8>",
@@ -1087,7 +1124,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "9": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 9>",
@@ -1097,7 +1135,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "10": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 10>",
@@ -1107,7 +1146,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "11": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 11>",
@@ -1117,7 +1157,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "12": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 12>",
@@ -1127,7 +1168,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "13": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 13>",
@@ -1137,7 +1179,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "14": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 14>",
@@ -1147,7 +1190,8 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
             },
             "15": {
                 "sharedNodeMap": {
-                    "PersonCrossingLineGraph/detector": "shared_detector1",
+                    "PersonCrossingLineGraph/detector": "shared_detector0",
+            "PersonCrossingLineGraph/cameracalibrator": "shared_calibrator0",
                 },
                 "parameters": {
                     "VIDEO_URL": "<Replace RTSP URL for camera 15>",

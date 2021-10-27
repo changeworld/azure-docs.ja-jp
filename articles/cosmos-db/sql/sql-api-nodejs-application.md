@@ -1,20 +1,20 @@
 ---
-title: 'チュートリアル: Azure Cosmos DB の JavaScript SDK を使用して Node.js Web アプリを構築し SQL API データを管理する'
+title: 'チュートリアル: Azure Cosmos DB の JavaScript SDK を使用して Node.js Web アプリを構築して SQL API データを管理する'
 description: この Node.js チュートリアルでは、Microsoft Azure Cosmos DB を使用して、Microsoft Azure App Service の Web Apps 機能にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 10/18/2021
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: e83c245960815630891407a042303f1d8ae58b35
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e9ee6ef04563466cb47f1bc6fe8f92929dd11950
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123118202"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177557"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -92,7 +92,7 @@ ms.locfileid: "123118202"
 
 ## <a name="install-the-required-modules"></a><a name="install-modules"></a>必須のモジュールをインストールする
 
-**package.json** ファイルは、プロジェクトのルートに作成されるファイルの 1 つです。 このファイルには、Node.js アプリケーションで必要な追加モジュールのリストが含まれます。 このファイルは、このアプリケーションを Azure にデプロイするときに、アプリケーションをサポートするために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルのために、さらに 2 つのパッケージをインストールします。
+**package.json** ファイルは、プロジェクトのルートに作成されるファイルの 1 つです。 このファイルには、Node.js アプリケーションで必要な他のモジュールのリストが含まれています。 このファイルは、このアプリケーションを Azure にデプロイするときに、アプリケーションをサポートするために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルのために、さらに 2 つのパッケージをインストールします。
 
 1. npm を使用して **\@azure/cosmos** モジュールをインストールします。 
 
@@ -455,25 +455,17 @@ ms.locfileid: "123118202"
 
 5. アプリケーションを停止するには、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、 **[Y]** を選択してバッジ ジョブを終了します。
 
-## <a name="deploy-your-application-to-web-apps"></a><a name="deploy-app"></a>アプリケーションを Web Apps にデプロイする
+## <a name="deploy-your-application-to-app-service"></a><a name="deploy-app"></a>アプリケーションを App Service にデプロイする
 
-お客様のアプリケーションがローカルで成功した後は、次の手順を使用して、それを Azure にデプロイできます。
+お使いのアプリケーションがローカルで成功した後、それを Azure App Service にデプロイできます。 ターミナルで、*todo* アプリ ディレクトリにいることを確認します。 次の [az webapp up](/cli/azure/webapp?view=azure-cli-latest#az_webapp_up&preserve-view=true) コマンドを使用して、ローカル フォルダー (todo) 内のコードをデプロイします。
 
-1. お客様の Web Apps アプリケーションの Git リポジトリをまだ有効にしていない場合は、有効にします。
+```azurecli
+az webapp up --sku F1 --name <app-name>
+```
 
-2. お客様の Web Apps アプリケーションを Git リモートとして追加します。
-   
-   ```bash
-   git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
-   ```
+<app_name> を Azure 全体で一意の名前で置き換えます (有効な文字は、a から z、0 から 9、および - です)。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。 アプリのデプロイの詳細については、[Azure での Node.js アプリのデプロイ](../../app-service/quickstart-nodejs.md?tabs=linux&pivots=development-environment-cli#deploy-to-azure)に関する記事を参照してください。
 
-3. アプリケーションをリモートにプッシュすることによって、アプリケーションをデプロイします。
-   
-   ```bash
-   git push azure main
-   ```
-
-4. 数秒後に、Web アプリケーションが公開され、ブラウザーで起動されます。
+コマンドが完了するまでに数分かかる場合があります。 実行中、リソース グループ、App Service プラン、アプリ リソースの作成、ログの構成、ZIP のデプロイの実行に関するメッセージが表示されます。 次に、`http://<app-name>.azurewebsites.net` でアプリを起動する URL が表示されます。これは、Azure 上のアプリの URL です。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -482,12 +474,11 @@ ms.locfileid: "123118202"
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+  * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+  * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築](mobile-apps-with-xamarin.md)
-
 
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/

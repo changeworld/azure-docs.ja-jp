@@ -4,12 +4,12 @@ ms.author: cherylmc
 ms.date: 08/30/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: ebaa86a60ae11c50658bfcfe58bbd0184bf15576
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c52c00dd8fa834775a01162e2506f1821b0dcdae
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699719"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130173350"
 ---
 1. [Azure portal](https://portal.azure.com) で、接続先の仮想マシンに移動します。 **[概要]** ページで **[接続]** を選択し、ドロップダウンから **[要塞]** を選択します。
 
@@ -29,4 +29,4 @@ ms.locfileid: "128699719"
 
 1. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。 
 
-   VM に接続しているとき、キーボード ショートカット キーを使用すると、ローカル コンピューターのショートカット キーとは同じ動作にならないことがあります。 たとえば、Windows クライアント コンピューターから Windows VM に接続すると、"CTRL + ALT + END" は "CTRL + ALT + Delete" のキーボード ショートカットになります。 Mac クライアント コンピューターから Windows VM に接続すると、キーボード ショートカットは "Fn + CTRL + ALT + Backspace" になります。
+   VM に接続しているとき、キーボード ショートカット キーを使用すると、ローカル コンピューターのショートカット キーとは同じ動作にならないことがあることに注意してください。 たとえば、Windows クライアント コンピューターから Windows VM に接続すると、"CTRL + ALT + END" は "CTRL + ALT + Delete" のキーボード ショートカットになります。 Mac クライアント コンピューターから Windows VM に接続すると、キーボード ショートカットは "Fn + CTRL + ALT + Backspace" になります。

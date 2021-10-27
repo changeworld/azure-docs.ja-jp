@@ -10,17 +10,17 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: 0bc7f6a01dc2e537e91f162ba76eb6e505518747
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 984b680c207c8c7e6bf404a7ced08f2fdcfd7b71
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746011"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984442"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials--verification-solution-preview"></a>Azure Active Directory Verifiable Credentials の検証ソリューションを計画する (プレビュー)
 
 >[!IMPORTANT]
-> Azure Active Directory の検証可能な資格情報は現在、パブリック プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Azure Active Directory Verifiable Credentials は現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Microsoft の Azure Active Directory Verifiable Credentials (Azure AD VC) サービスを使用すると、アカウントを作成したり、別の ID プロバイダーとフェデレーションしたりして信頼境界を広げることなく、ユーザー ID の証明を信頼することができます。 オープン標準に基づく検証可能な資格情報を使用することで、検証の交換により、アプリケーションで特定のドメインにバインドされていない資格情報を要求できます。 これにより、大規模な資格情報の要求と検証が容易になります。
 

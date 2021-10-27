@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, references_regions
-ms.openlocfilehash: f9b307aeba76f3d5c5ef43ad88f86163b7fc2f57
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 339e6059ae1dd55e55dfe143d8ea4dd5dcbb2236
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273858"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003308"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -24,7 +24,6 @@ Azure Maps は、最新のマッピング データを使用して、地理的�
 * 世界中の住所、場所、および目的地を見つけるための検索サービス。
 * ポイント間、マルチポイント、マルチポイント最適化、等時線、電気自動車、商用車、影響を受ける交通、マトリックス ルーティングなど、さまざまなルーティングのオプション。
 * リアルタイムの交通情報を必要とするアプリケーション向けのトラフィック フロー ビューとインシデント ビュー。
-* 公共の輸送情報を要求する Mobility Service (プレビュー)。さまざまな移動手段とリアルタイムの到着を組み合わせて、ルートを計画します。
 * タイム ゾーンと位置情報サービス。
 * 数値標高モデルを使用した Elevation Service
 * Azure 内でホストされている位置情報を使用した、ジオフェンシング サービスとマッピング データ ストレージ。
@@ -67,12 +66,6 @@ Azure Maps は、Azure アプリケーションに地理的なコンテキスト
 Geolocation Service は、IP アドレスの 2 文字の国および地域コードを取得するために使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを強化するのに役立てることができます。
 
 詳細については、[Geolocation Service のドキュメント](/rest/api/maps/geolocation)を参照してください。
-
-### <a name="mobility-services-preview"></a>Mobility サービス プレビュー
-
-Azure Maps Mobility Service では、輸送経路を指定したり、公共輸送機関の最寄りの停留所を検索したりするなど、公共輸送機関機能を利用できるため、アプリケーションの開発時間が短縮されます。 ユーザーは、輸送の停留所、路線、スケジュールに関する詳細情報を取得できます。 Mobility Service では、ユーザーは停留所や路線の配置、停留所、路線、サービス エリアのアラート、公共輸送機関のリアルタイム到着アラートやサービス アラートを取得することもできます。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモードの旅行計画では、徒歩、自転車、公共輸送機関の選択肢がすべて 1 つの旅行に組み込まれます。 ユーザーはまた、段階式で詳しいマルチモードの旅程にアクセスできます。
-
-このサービスの詳細については、[Mobility Service のドキュメント](/rest/api/maps/mobility)を参照してください。
 
 ### <a name="render-service"></a>Render Service
 
@@ -227,7 +220,7 @@ Azure Maps サービスにアクセスするには、[Azure portal](https://port
 Azure Maps では、キーベースの認証スキームが使用されます。 アカウントを作成すると、2 つのキーが生成されます。 Azure Maps サービスに対して認証するには、いずれかのキーを使用します。
 
 > [!NOTE]
-> Azure Maps では、顧客が入力した住所や場所のクエリ ("クエリ") を、マッピング機能の向上のためにサードパーティの TomTom と共有します。 クエリが TomTom と共有される際、クエリはどの顧客やエンド ユーザーにもリンクされないため、個人を識別するために使用されることはありません。 Moovit との統合を含むモビリティ サービスは現在のところ、[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
+> Azure Maps では、顧客が入力した住所や場所のクエリを、マッピング機能の目的でサードパーティの TomTom と共有します。 これらのクエリは、TomTom と共有される際、顧客にもエンド ユーザーにもリンクされず、個人の識別に使用できません。
 
 Microsoft は現在、オンライン サービスの下請業者の一覧に TomTom、Moovit、および AccuWeather を追加するプロセスを実行中です。
 

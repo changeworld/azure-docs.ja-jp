@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 724ffa23cf533133603db717b4d01ebbd81894a1
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 8f1710246158e953492fec23869ba91a77c78e60
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446678"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177823"
 ---
 #  <a name="azure-web-pubsub-supported-json-websocket-subprotocol"></a>Azure Web PubSub でサポートされる JSON WebSocket サブプロトコル
      
@@ -83,17 +83,18 @@ REST API またはサーバー SDK により、サーバー側でクライアン
     "type": "sendToGroup",
     "group": "<group_name>",
     "ackId" : 1, // optional
+    "noEcho": true|false,
     "dataType" : "json|text|binary",
     "data": {}, // data can be string or valid json token depending on the dataType 
 }
 ```
 
 * `ackId` は省略可能です。これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
-
-`dataType` には、`json`、`text`、`binary` のいずれかを指定できます。
-* `json`: `data` は JSON でサポートされているどの型でもよく、そのままで発行されます。`dataType` が指定されていない場合は、既定で `json` になります。
-* `text`: `data` は文字列形式である必要があり、文字列データが発行されます。
-* `binary`: `data` は base64 形式である必要があり、バイナリ データが発行されます。
+* `noEcho` はオプションです。 true に設定した場合、このメッセージは同じ接続にエコーバックされません。 設定しない場合の既定値は false です。
+* `dataType` には、`json`、`text`、`binary` のいずれかを指定できます。
+     * `json`: `data` は JSON でサポートされているどの型でもよく、そのままで発行されます。`dataType` が指定されていない場合は、既定で `json` になります。
+     * `text`: `data` は文字列形式である必要があり、文字列データが発行されます。
+     * `binary`: `data` は base64 形式である必要があり、バイナリ データが発行されます。
 
 #### <a name="case-1-publish-text-data"></a>ケース 1: テキスト データを発行する:
 ```json
@@ -327,6 +328,7 @@ WebSocket フレームは、テキスト メッセージ フレームの場合�
         "group": "<group_name>",
         "dataType": "json|text|binary",
         "data" : {} // The data format is based on the dataType
+        "fromUserId": "abc"
     }
     ```
 

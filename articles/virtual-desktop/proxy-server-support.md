@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.author: helohr
 ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: c8df5cbcc241877e5637abd89804071b4dcbf938
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d90f6106d94777c58418a209097d84fe69458d06
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753091"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177576"
 ---
 # <a name="proxy-server-guidelines-for-azure-virtual-desktop"></a>Azure Virtual Desktop のプロキシ サーバーのガイドライン
 
@@ -36,9 +36,9 @@ Azure Virtual Desktop トラフィックが通る唯一のパスとしてプロ�
 
 - Azure ファイアウォールでの Azure サービス タグ
 - プロキシ自動構成 (PAC) ファイルを使用してプロキシ サーバーをバイパスする
-- ローカル プロキシ構成のリストをバイパスする 
-- ユーザー構成ごとにプロキシ サーバー使用する 
-- プロキシ経由のサービス トラフィックを保持しながら RDP 接続に RDP Shortpath を使用する 
+- ローカル プロキシ構成のリストをバイパスする
+- ユーザー構成ごとにプロキシ サーバー使用する
+- プロキシ経由のサービス トラフィックを保持しながら RDP 接続に RDP Shortpath を使用する
 
 ## <a name="recommendations-for-using-proxy-servers"></a>プロキシ サーバーを使用するための推奨事項
 
@@ -48,9 +48,9 @@ Azure Virtual Desktop トラフィックが通る唯一のパスとしてプロ�
 
 プロキシ サーバーを使用すると、Azure Virtual Desktop インフラストラクチャとのすべての通信が処理され、最も近い Azure Front Door に対する DNS 解決とエニーキャスト ルーティングが実行されます。 プロキシ サーバーが Azure 地域で遠い場所にある場合や分散している場合は、地理的な解決の精度が低下します。 地理的な解決の精度の低下は、接続がより遠くの Azure Virtual Desktop クラスターにルーティングされることを意味します。 この問題を回避するには、Azure Virtual Desktop クラスターに地理的に近い場所にあるプロキシ サーバーのみを使用します。
 
-### <a name="use-rdp-shortpath-for-desktop-connectivity"></a>デスクトップ接続に RDP Shortpath を使用する
+### <a name="use-rdp-shortpath-for-managed-networks-for-desktop-connectivity"></a>デスクトップ接続のためにマネージド ネットワークに RDP Shortpath を使用する
 
-RDP Shortpath を有効にすると、可能な場合に RDP データがプロキシ サーバーをバイパスします。 プロキシ サーバーをバイパスすると、UDP トランスポートを使用しながら最適なルーティングを実現できます。 その他の Azure Virtual Desktop トラフィック (ブローカー、オーケストレーション、診断など) は、引き続きプロキシ サーバーを経由します。 
+マネージド ネットワークの RDP Shortpath を有効にすると、可能な場合に RDP データがプロキシ サーバーをバイパスします。 プロキシ サーバーをバイパスすると、UDP トランスポートを使用しながら最適なルーティングを実現できます。 その他の Azure Virtual Desktop トラフィック (ブローカー、オーケストレーション、診断など) は、引き続きプロキシ サーバーを経由します。
 
 ### <a name="dont-use-ssl-termination-on-the-proxy-server"></a>プロキシ サーバーで SSL ターミネーションを使用しない
 
@@ -115,7 +115,7 @@ Windows 7 で実行されているクライアントは、リバース接続 RDP
 | macOS | はい |
 | Windows ストア | はい |
 
-Linux ベースのシン クライアントでのプロキシ サポートの詳細については、「[シン クライアントのサポート](linux-overview.md)」を参照してください。
+Linux ベースのシン クライアントでのプロキシ サポートの詳細については、「[シン クライアントのサポート](./user-documentation/linux-overview.md)」を参照してください。
 
 ## <a name="support-limitations"></a>サポートの制限
 

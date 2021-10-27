@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/25/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: af88edbb788afa3576d3317d4e1cd54dea6f4deb
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: b4801d18454ad93c4ffa7284ab5bfaabea254cd1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988069"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074211"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Azure サブスクリプションの管理者としてユーザーを割り当てる
 
@@ -49,11 +49,11 @@ ms.locfileid: "112988069"
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
 
-1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** の順にクリックします。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-    ![[追加] > [ロールの割り当ての追加] メニュー (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/add-role-assignment-menu-preview.png)
+    ![[追加] > [ロールの割り当ての追加] メニューのスクリーンショット。](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ページが開きます。
 
@@ -65,7 +65,7 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 
     ロールは、名前または説明で検索できます。 種類とカテゴリでロールをフィルター処理することもできます。
 
-   ![[ロール] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/roles.png)
+   ![[ロールの割り当ての追加] ページで [ロール] タブが表示された状態のスクリーンショット。](./media/shared/roles.png)
 
 1. **[次へ]** をクリックします。
 
@@ -73,7 +73,7 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 
 1. **[メンバー]** タブで、 **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
 
-   ![[メンバーの追加] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/members.png)
+   ![[ロールの割り当ての追加] ページで [メンバーの追加] タブが表示された状態のスクリーンショット。](./media/shared/members.png)
 
 1. **[メンバーの選択]** をクリックします。
 
@@ -81,7 +81,7 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 
     **[選択]** ボックスに表示名またはメール アドレスを入力してディレクトリを検索できます。
 
-   ![[メンバーの選択] ペイン (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/select-members.png)
+   ![[メンバーの選択] ウィンドウのスクリーンショット。](./media/shared/select-members.png)
 
 1. **[保存]** をクリックして、メンバーの一覧にユーザーを追加します。
 
@@ -99,7 +99,7 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 
    しばらくすると、サブスクリプションの所有者のロールがユーザーに割り当てられます。
 
-    ![ロールを割り当てた後のロール割り当ての一覧 (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
+    ![ロールを割り当てた後のロールの割り当ての一覧のスクリーンショット。](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
 
 ## <a name="next-steps"></a>次のステップ
 

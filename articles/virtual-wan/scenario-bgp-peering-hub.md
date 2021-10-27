@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: cherylmc
-ms.openlocfilehash: e570e5f06af814a6d0cbb581275d1c70ebf0df8a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5cc5b3dd26d0cb88460fabbd2ceb3cd28b107121
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780796"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129075"
 ---
 # <a name="scenario-bgp-peering-with-a-virtual-hub-preview"></a>シナリオ: 仮想ハブとの BGP ピアリング (プレビュー)
 
@@ -61,6 +61,8 @@ Azure Virtual WAN ハブ ルーター (仮想ハブ ルーターとも呼ばれ�
    | リソース | 制限 |
    |---|---|
    |  各 BGP ピアで仮想ハブにアドバタイズできるルートの数。| ハブは、接続されているリソースから、最大で 10,000 のルート (合計) のみを受け入れることができます。 たとえば仮想ハブに、接続された仮想ネットワーク、ブランチ、仮想ハブなどからの合計で 6,000 のルートがある場合、新しい BGP ピアリングが NVA で構成されると、NVA は最大で 4,000 のルートのみをアドバタイズできます。 |
+* 仮想ネットワークのアドレス空間より具体的な仮想ネットワーク内の NVA からのルートは、BGP 経由で仮想ハブに公開されるときは、それ以上オンプレミスに伝達されません。
+* 仮想ハブに直接接続されている仮想ネットワーク内のアドレス宛てのトラフィックは、ハブと NVA の間の BGP ピアリングを使用して NVA 経由でルーティングするように構成することはできません。 これは、スポークの仮想ネットワーク接続が作成されるときに、スポーク仮想ネットワークのアドレスに関連付けられているシステム ルートが、仮想ハブによって自動的に学習されるためです。 これらの自動学習されるシステム ルートは、BGP を介してハブによって学習されたルートより優先されます。
 
 ## <a name="bgp-peering-scenarios"></a>BGP ピアリングのシナリオ
 

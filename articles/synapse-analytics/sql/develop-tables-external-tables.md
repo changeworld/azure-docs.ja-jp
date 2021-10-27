@@ -2,19 +2,19 @@
 title: Synapse SQL で外部テーブルを使用する
 description: Synapse SQL で外部テーブルを使用してデータ ファイルの読み取りと書き込みを行います
 services: synapse-analytics
-author: julieMSFT
+author: ma77b
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/26/2021
-ms.author: jrasnick
-ms.reviewer: jrasnick
-ms.openlocfilehash: 834feed476c307bc1a16bf95719b630389e58511
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 07/23/2021
+ms.author: maburd
+ms.reviewer: wiassaf
+ms.openlocfilehash: a229bd769afa30b93cae9ca0f2073ad8a0621cdd
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430794"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001392"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -22,15 +22,15 @@ ms.locfileid: "123430794"
 
 外部データ ソースの種類に応じて、次の 2 種類の外部テーブルを使用できます。
 - Hadoop 外部テーブル。各種データ形式 (CSV、Parquet、ORC など) のデータを読み取ったりエクスポートしたりする際に使用できます。 Hadoop 外部テーブルは、専用 SQL プールでは利用できますが、サーバーレス SQL プールでは利用できません。
-- ネイティブ外部テーブル。各種データ形式 (CSV、Parquet など) のデータの読み取りとエクスポートに使用できます。 ネイティブ外部テーブルは、サーバーレス SQL プールで利用可能であり、専用 Synapse SQL プールではプレビュー段階です。
+- ネイティブ外部テーブル。各種データ形式 (CSV、Parquet など) のデータの読み取りとエクスポートに使用できます。 ネイティブ外部テーブルは、サーバーレス SQL プールで利用可能であり、専用 SQL プールでは **パブリック プレビュー** 段階です。
 
 Hadoop 外部テーブルとネイティブ外部テーブルの主な違いを次の表に示します。
 
 | 外部テーブルの種類 | Hadoop | ネイティブ |
 | --- | --- | --- |
-| 専用 SQL プール | 利用可能 | Parquet テーブルは **限定的なプレビュー** 段階で利用可能 - Microsoft のテクニカル アカウント マネージャーまたはクラウド ソリューション アーキテクトに問い合わせて、お使いの専用 SQL プールを限定的プレビューに追加できるかどうかを確認してください。 |
+| 専用 SQL プール | 利用可能 | Parquet テーブルは、**パブリック プレビュー** で利用可能です。 |
 | サーバーレス SQL プール | 使用不可 | 利用可能 |
-| サポートされるフォーマット | 区切り形式 (CSV)、Parquet、ORC、Hive RC、RC | サーバーレス SQL プール: 区切り形式 (CSV)、Parquet、Delta Lake (プレビュー)<br/>専用 SQL プール: Parquet |
+| サポートされるフォーマット | 区切り形式 (CSV)、Parquet、ORC、Hive RC、RC | サーバーレス SQL プール: 区切り形式 (CSV)、Parquet、[Delta Lake (プレビュー)](query-delta-lake-format.md)<br/>専用 SQL プール: Parquet |
 | フォルダー パーティションの除外 | No | Synapse ワークスペースの Apache Spark プールからサーバーレス SQL プールに同期されたパーティション テーブルのみ |
 | 場所のカスタム形式 | Yes | Yes (`/year=*/month=*/day=*` などのワイルドカードを使用) |
 | 再帰的フォルダー スキャン | No | ロケーション パスの末尾に `/**` で指定されている場合、サーバーレス SQL プールのみ |
@@ -38,14 +38,14 @@ Hadoop 外部テーブルとネイティブ外部テーブルの主な違いを�
 | ストレージ認証 | ストレージ アクセス キー (SAK)、AAD パススルー、マネージド ID、カスタム アプリケーションの Azure AD ID | Shared Access Signature (SAS)、AAD パススルー、マネージド ID |
 
 > [!NOTE]
-> Delta Lake 形式のネイティブ外部テーブルは、パブリック プレビュー段階にあります。 [CETAS](develop-tables-cetas.md) では、Delta Lake 形式でのコンテンツのエクスポートはサポートされていません。
+> Delta Lake 形式のネイティブ外部テーブルは、パブリック プレビュー段階にあります。 詳細については、[Delta Lake ファイルのクエリ (プレビュー)](query-delta-lake-format.md) に関するページを参照してください。 [CETAS](develop-tables-cetas.md) では、Delta Lake 形式でのコンテンツのエクスポートはサポートされていません。
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>専用 SQL プールとサーバーレス SQL プールにおける外部テーブル
 
 外部テーブルを使用して次のことができます。
 
 - Transact-SQL ステートメントを使用して、Azure Blob Storage と Azure Data Lake Gen2 に対するクエリを実行する。
-- [CETAS](develop-tables-cetas.md) を使用して、クエリ結果を Azure Blob Storage または Azure Data Lake Storage 内のファイルに格納する
+- [CETAS](develop-tables-cetas.md) を使用して、クエリ結果を Azure Blob Storage または Azure Data Lake Storage 内のファイルに格納する。
 - Azure Blob Storage や Azure Data Lake Storage からデータをインポートして、専用 SQL プールに格納する (専用プールでは Hadoop テーブルのみ)。
 
 > [!NOTE]

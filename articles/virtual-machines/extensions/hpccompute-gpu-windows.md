@@ -10,15 +10,15 @@ ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/15/2021
+ms.date: 10/14/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 220b2da56791fde38301bd1f69f5e134be77982c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8e164fad73fd04ea2f9093e99b454f43aa441088
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446008"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038310"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
@@ -62,7 +62,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.3",
+    "typeHandlerVersion": "1.4",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -77,10 +77,38 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
-| typeHandlerVersion | 1.3 | INT |
+| typeHandlerVersion | 1.4 | INT |
 
 
 ## <a name="deployment"></a>デプロイ
+
+### <a name="azure-portal"></a>Azure portal
+
+Azure Nvidia VM 拡張機能は Azure portal でデプロイできます。
+
+1. ブラウザーで、 [Azure ポータル](https://portal.azure.com)に移動します。
+
+2. ドライバーをインストールする仮想マシンに移動します。
+
+3. 左側のメニューで **[拡張機能]** を選択します。
+
+    :::image type="content" source="./media/nvidia-ext-portal/extensions-menu.png" alt-text="Azure portal のメニューで [拡張機能] を選択する場面のスクリーンショット。":::
+
+4. **[追加]** を選択します。
+
+    :::image type="content" source="./media/nvidia-ext-portal/add-extension.png" alt-text="選択した VM の VM 拡張機能を追加する場面のスクリーンショット。":::
+
+5. スクロールして **[NVIDIA GPU Driver Extension]\(NVIDIA GPU ドライバー拡張機能\)** を見つけて選択し、 **[次へ]** を選択します。
+
+    :::image type="content" source="./media/nvidia-ext-portal/select-nvidia-extension.png" alt-text="NVIDIA GPU ドライバーを選択している場面のスクリーンショット。":::
+
+6. **[確認と作成]** を選択し、ドライバーがデプロイされるまで数分待機します。
+
+    :::image type="content" source="./media/nvidia-ext-portal/create-nvidia-extension.png" alt-text="[確認と作成] ボタンを選択する場面のスクリーンショット。":::
+  
+7. インストール済み拡張機能の一覧に拡張機能が追加されていることを確認します。
+
+    :::image type="content" source="./media/nvidia-ext-portal/verify-extension.png" alt-text="VM の拡張機能一覧の新しい拡張機能を示すスクリーンショット。":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 
 
@@ -102,7 +130,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.3",
+    "typeHandlerVersion": "1.4",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -120,7 +148,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.3 `
+    -TypeHandlerVersion 1.4 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +161,7 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverWindows \
   --publisher Microsoft.HpcCompute \
-  --version 1.3 \
+  --version 1.4 \
   --settings '{ \
   }'
 ```

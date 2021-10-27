@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: 090003e25c2d8ca13be27bf94bc12b4941cda798
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e9d31ae4ccaa7bffaf1ce38a9f044993277f5f2f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814644"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041673"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
 

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
-ms.openlocfilehash: 938693353505a7fb3d37c85234da429ed2367ad4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c1ac63dde4dd489449db5db913aeb55f5d3de3ad
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787890"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064971"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -356,7 +356,7 @@ OData からデータをコピーするときに、OData のデータ型とサ�
 
 ## <a name="copy-data-from-project-online"></a>Project Online からデータをコピーする
 
-Project Online からデータをコピーするには、OData コネクタと、Postman などのツールで取得したアクセス トークンを使用します。
+Project Online にはユーザーベースの OAuth が必要ですが、これは Azure Data Factory ではサポートされていません。 Project Online からデータをコピーするには、OData コネクタと、Postman などのツールで取得したアクセス トークンを使用します。
 
 > [!CAUTION]
 > 既定では、アクセス トークンは 1 時間で有効期限が切れます。有効期限が切れたときは、新しいアクセス トークンを取得する必要があります。
@@ -377,7 +377,7 @@ Project Online からデータをコピーするには、OData コネクタと�
    1. 自分のユーザー名とパスワードを使用してログインするように求められます。
    1. アクセス トークンを取得したら、次の手順のためにそれをコピーして保存してください。
    
-    :::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox" alt-text="Postman を使用してアクセス トークンを取得する":::
+    :::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-inline.png" alt-text="Postman を使用してアクセス トークンを取得するスクリーンショット。" lightbox="./media/connector-odata/odata-project-online-postman-access-token-expanded.png":::        
 
 1. OData のリンクされたサービスを作成します。
     - **Service URL**: 「`https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata`」と入力します。 `<your tenant name>` は自分のテナント名に置き換えます。 

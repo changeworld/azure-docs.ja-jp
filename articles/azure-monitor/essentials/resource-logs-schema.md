@@ -3,12 +3,12 @@ title: Azure リソース ログでサポートされているサービスとス
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 05/10/2021
-ms.openlocfilehash: 99746b8f392d8afc5df9aa14ac7e1c7f19069151
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 1ef9c5ecea1ff45c7e6b3501f7c71928a5ea60d6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129454983"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069465"
 ---
 # <a name="common-and-service-specific-schemas-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -23,6 +23,9 @@ ms.locfileid: "129454983"
 
 
 ## <a name="top-level-common-schema"></a>上位の共通スキーマ
+
+> [!NOTE]
+> ここで説明されているスキーマは、リソース ログが Azure Storage またはイベント ハブに送信されるときに該当します。 ログが Log Analytics ワークスペースに送信される場合、列名が異なる場合があります。 Log Analytics ワークスペースの全テーブルに共通する列については「[Azure Monitor ログ内の標準列](../logs/log-standard-columns.md)」を、さまざまなテーブルのリファレンスについては「[Azure Monitor データ参照](/azure/azure-monitor/reference)」を参照してください。
 
 | 名前 | 必須または省略可能 | 説明 |
 |---|---|---|

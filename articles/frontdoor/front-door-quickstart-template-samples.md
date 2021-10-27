@@ -8,14 +8,14 @@ ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/14/2021
+ms.date: 10/15/2021
 ms.author: duau
-ms.openlocfilehash: 28c25e060b4bab0ab588cd45bc01ef44e17927da
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: c76b78b8ed834b1cd3c86cab1bdbf5cb98141956
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295023"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073242"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 
@@ -25,7 +25,8 @@ ms.locfileid: "112295023"
 | ---| ---|
 | [基本的な Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-create-basic)| 1 つのバックエンドを備えた基本的な Front Door 構成を作成します。 |
 | [複数のバック エンドおよびバックエンド プールと URL ベースのルーティングを備えた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-create-multiple-backends)| 複数のバックエンドおよびバックエンド プール用に負荷分散が構成され、URL パスに基づくバックエンド プール間の Front Door を作成します。 |
-| [Front Door によるカスタム ドメインのオンボード](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-custom-domain)| 自分の Front Door にカスタム ドメインを追加します。 |
+| [Front Door を使用したカスタム ドメインとマネージド TLS 証明書のオンボード](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-custom-domain)| Front Door にカスタム ドメインを追加し、Front Door で管理される TLS 証明書を使用します。 |
+| [Front Door を使用したカスタム ドメインとカスタマー マネージド TLS 証明書のオンボード](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-custom-domain-customer-certificate)| Front Door にカスタム ドメインを追加し、Key Vault を使用することで独自の TLS 証明書を使用します。 |
 | [地域フィルタリングされた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering)| 特定の国/地域からのトラフィックを許可/ブロックするフロント ドアを作成します。 |
 | [Front Door のバックエンドの正常性プローブのコントロール](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-health-probes)| プローブ パスおよびプローブ送信間隔を更新することによって、Front Door を更新し、正常性プローブの設定を変更します。 |
 | [アクティブ/スタンバイ バックエンド構成を備えた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-priority-lb)| アクティブ/スタンバイ アプリケーション トポロジの優先順位ベースのルーティングをデモする Front Door を作成します。つまり、デフォルトではプライマリ (最高の優先順位) バックエンドが使用できなくなるまですべてのトラフィックをこのバックエンドに送信します。 |

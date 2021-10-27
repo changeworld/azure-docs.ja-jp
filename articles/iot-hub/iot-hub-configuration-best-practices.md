@@ -7,12 +7,12 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 26d81a492b12cd2dd7f1d4de260aa22ac4e73a3e
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2003e4b6f143f9220b9618a57a2894e678014602
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234454"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175638"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT ソリューション内のデバイス構成のベスト プラクティス
 
@@ -90,4 +90,4 @@ Azure 上に構築された IoT ソリューションを使用する IoT ソリ�
 
 * 「[多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)」で、自動デバイス構成を作成、更新、または削除する手順を紹介します。
 
-* 「[チュートリアル: デバイス ファームウェア更新プロセスを実装する](tutorial-firmware-update.md)」で、デバイス ツインと自動デバイス構成を使用してファームウェア更新パターンを実装します。
+* [Raspberry Pi 3 B+ リファレンス イメージ を使用して、Device Update for Azure IoT Hub チュートリアル](../iot-hub-device-update/device-update-raspberry-pi.md)でエンドツーエンドのイメージ ベースの更新を完了する方法について説明します。

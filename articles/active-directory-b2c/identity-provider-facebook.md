@@ -3,22 +3,22 @@ title: Facebook アカウントでのサインアップおよびサインイン�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで Facebook アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6d7180b92ba4f4dbcc23f19bdc2581072446a15f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d9fb37bd05c6cddf1509d40433783692864e588d
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128574921"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137836"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -42,7 +42,7 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 
 1. Facebook 開発者アカウントの資格情報を使用して、[開発者向けの Facebook](https://developers.facebook.com/apps)にサインインします。
 1. **[Create app]\(アプリの作成\)** を選択します。
-1. **[アプリの種類を選択]** で、 **[コンシューマー]** を選択して **[続行]** を選択します。
+1. **[アプリの種類を選択]** で、**[コンシューマー]** を選択して **[次へ]** を選択します。
 1. **[アプリの表示名]** と、有効な **[アプリの連絡先メール アドレス]** を入力します。
 1. **[Create app]\(アプリの作成\)** を選択します。 この手順では、Facebook プラットフォームのポリシーを受け入れてオンライン セキュリティ チェックを完了することが必要な場合があります。
 1. **[設定]**  >  **[基本]** を選択します。
@@ -55,7 +55,7 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 1. ページの下部で、 **[プラットフォームの追加]** 、 **[Web サイト]** の順に選択します。
 1. **[サイトの URL]** に、Web サイトのアドレス (たとえば `https://contoso.com`) を入力します。 
 1. **[変更の保存]** を選択します。
-1. メニューから、 **[製品]** の横にある **プラス記号** を選択します。 **[アプリに製品を追加する]** で、 **[Facebook ログイン]** の下にある **[設定]** を選択します。
+1. メニューから **[製品]** の横にある **プラス** 記号または **[製品の追加]** リンクを選択します。 **[アプリに製品を追加する]** で、 **[Facebook ログイン]** の下にある **[設定]** を選択します。
 1. メニューから、 **[Facebook ログイン]** 、 **[設定]** の順に選択します。
 1. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。 
 1. ページの下部にある **[Save Changes]\(変更の保存\)** を選択します。

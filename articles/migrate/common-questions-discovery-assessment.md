@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a882e0e1f0a5cf0dd9ea3690453887478319268e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 0463ea748c4d82cc4c098ddd137a12c70f55afb2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538935"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006073"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -81,6 +81,16 @@ Azure App Service 評価用のパフォーマンス データはキャプチャ�
 
 - Azure VM および AVS の評価では、検出の開始後に作成されたサーバーはほとんどありませんでした。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかのサーバーが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 - Azure SQL の評価の場合、検出が開始された後で、いくつかの SQL インスタンスまたはデータベースが作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの SQL インスタンスまたはデータベースが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="why-is-my-ram-utilization-greater-than-100"></a>RAM 使用率が 100% を超えるのはなぜですか?
+
+設計上、プロビジョニングされた最大メモリが VM で必要な量よりも少ない場合、Hyper-V では、評価によってメモリ使用率に 100% を超える値が表示されます。
+
+## <a name="why-cant-i-see-all-azure-vm-families-in-the-azure-vm-assessment-properties"></a>Azure VM の評価のプロパティですべての Azure VM ファミリが表示されないのはなぜですか?
+
+これには、次の 2 つの理由が考えられます。
+- 特定のシリーズがサポートされていない Azure リージョンを選択した。 Azure VM の評価のプロパティで表示されるAzure VM ファミリは、選択した Azure の場所、ストレージの種類、予約インスタンスで VM シリーズを使用できるかどうかに基づきます。 
+- VM シリーズが評価でサポートされておらず、評価の考慮ロジックに含まれていない。 現在、B シリーズのバースト可能で高速化されたハイ パフォーマンスの SKU シリーズはサポートされていません。 VM シリーズを継続的に更新するよう努力しており、ここに記載されているシリーズが予定されています。 
 
 ## <a name="the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>検出と評価ツールの Azure VM または AVS 評価の数が正しくない
 

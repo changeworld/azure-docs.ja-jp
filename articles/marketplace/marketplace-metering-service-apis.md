@@ -4,19 +4,22 @@ description: 使用状況イベント API を使用すると、Microsoft AppSour
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/12/2021
+ms.date: 10/15/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 056fd364902ccd530b1aa2d540cd7d0457e0276b
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 84e55aa971eae4c67bc6ec2dcaa4618b55c8f737
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855861"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134110"
 ---
 # <a name="marketplace-metered-billing-apis"></a>マーケットプレースの従量制課金 API
 
 従量制課金 API は、発行元がパートナー センターで発行されるオファーのカスタム測定ディメンションを作成するときに使用する必要があります。 従量制課金 API との統合は、使用状況イベントを生成するカスタム ディメンションを含む 1 つ以上のプランを持つ購入済みオファーに必要です。
+
+> [!IMPORTANT]
+> コード内の使用状況を把握し、基本料金を超えた使用分についてのみ、使用状況のイベントを Microsoft に送信する必要があります。
 
 SaaS のカスタム測定ディメンションを作成する方法の詳細については、「[マーケットプレース測定サービスを使用した従量制課金](partner-center-portal/saas-metered-billing.md)」を参照してください。
 

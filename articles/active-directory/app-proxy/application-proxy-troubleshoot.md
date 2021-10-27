@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシのトラブ�
 description: Azure Active Directory アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/27/2021
+ms.date: 10/12/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 798f381ef067af174370fb21893c32386390449a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.reviewer: ashishj
+ms.openlocfilehash: 12a07bb3dca953d134f3532701521ae4797358ef
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617285"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988603"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 
@@ -36,7 +36,7 @@ ms.locfileid: "129617285"
 
 ## <a name="connector-errors"></a>コネクタのエラー
 
-コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
+コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Windows Logs\Application** (Source = "Microsoft AAD Application Proxy Connector " でフィルタリング) にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 
 ```powershell
 Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1

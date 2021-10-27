@@ -11,17 +11,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/8/2021
+ms.date: 10/18/2021
 ms.author: gunnarc
-ms.openlocfilehash: 76807a8f653de9a48c91c5d6429869ae0e5c9312
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 194e425ca62cbe36fa163efaf88a75fb7e1f09f9
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728876"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175885"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+>[!NOTE] 
+
+>10 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 10 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。 
+
+## <a name="october-2021-guest-os"></a>2021 年 10 月のゲスト OS
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 21-10 |  [5006672]  |  最新の累積的な更新プログラム (LCU) | 6.36 | 2021 年 10 月 12 日 |
+|  Rel 21-10 |  [5006671]  |  IE の累積的な更新プログラム | 2.115, 3.102, 4.95 | 2021 年 10 月 12 日 |
+|  Rel 21-10 |  [5006699]  |  IE の累積的な更新プログラム | 7.00 | 2021 年 10 月 12 日 |
+|  Rel 21-10 |  [5006669]  |  最新の累積的な更新プログラム (LCU) | 5.60 | 2021 年 10 月 12 日 |
+|  Rel 21-10 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | 2.115 | 2021 年 2 月 16 日 |
+|  Rel 21-10 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | 2.115 | 2021 年 6 月 8 日 |
+|  Rel 21-10 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | 4.95 | 2021 年 2 月 16 日 |
+|  Rel 21-10 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | 4.95 | 2021 年 2 月 16 日 |
+|  Rel 21-10 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | 3.102 | 2021 年 2 月 16 日 |
+|  Rel 21-10 |  [4578954]  |  . .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | 3.102 | 2021 年 2 月 16 日 |
+|  Rel 21-10 |  [5004335]  |  . NET Framework 3.5 と 4.7.2 の累積的な更新プログラム  | 6.36 | 2021 年 8 月 10 日 |
+|  Rel 21-10 |  [5006743]  |  マンスリー ロールアップ  | 2.115 | 2021 年 9 月 14 日 |
+|  Rel 21-10 |  [5006739]  |  マンスリー ロールアップ  | 3.102 | 2021 年 9 月 14 日 |
+|  Rel 21-10 |  [5006714]  |  マンスリー ロールアップ  | 4.95 | 2021 年 9 月 14 日 |
+|  Rel 21-10 |  [5001401]  |  サービス スタック更新プログラム  | 3.102 | 2021 年 4 月 13 日 |
+|  Rel 21-10 |  [5001403]  |  サービス スタック更新プログラム  | 4.95 | 2021 年 4 月 13 日 |
+|  Rel 21-10 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム  | 4.95 | 2020 年 8 月 19 日 |
+|  Rel 21-10 |  [5005698]  |  サービス スタック更新プログラム  | 5.60 | 2021 年 9 月 14 日 |
+|  Rel 21-10 |  [5006749]  |  サービス スタック更新プログラム  | 2.115 | 2021 年 7 月 13 日 |
+|  Rel 21-10 |  [5005701]  |  サービス スタック更新プログラム  | 6.36 | 2021 年 8 月 10 日 |
+|  Rel 21-10 |  [4494175]  |  マイクロコード  | 5.60 | 2020 年 9 月 1 日 |
+|  Rel 21-10 |  [4494174]  |  マイクロコード  | 6.36 | 2020 年 9 月 1 日 |
+
+[5006672]: https://support.microsoft.com/kb/5006672
+[5006671]: https://support.microsoft.com/kb/5006671
+[5006699]: https://support.microsoft.com/kb/5006699
+[5006669]: https://support.microsoft.com/kb/5006669
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[5004335]: https://support.microsoft.com/kb/5004335
+[5006743]: https://support.microsoft.com/kb/5006743
+[5006739]: https://support.microsoft.com/kb/5006739
+[5006714]: https://support.microsoft.com/kb/5006714
+[5001401]: https://support.microsoft.com/kb/5001401
+[5001403]: https://support.microsoft.com/kb/5001403
+[4578013]: https://support.microsoft.com/kb/4578013
+[5005698]: https://support.microsoft.com/kb/5005698
+[5006749]: https://support.microsoft.com/kb/5006749
+[5005701]: https://support.microsoft.com/kb/5005701
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 
 ## <a name="september-2021-guest-os"></a>2021 年 9 月のゲスト OS
 

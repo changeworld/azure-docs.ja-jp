@@ -10,12 +10,12 @@ ms.author: siarora
 ms.date: 06/14/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: eddf1f5a77ef67de3ab6e1861ae44a19b07d8027
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: bbfcf7fd3edb483415041a4706e7a5cd22e2d76a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425982"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997121"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
@@ -99,6 +99,7 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 | ノードあたりのパラメーター サーバー数 | 1 |
 
 <sup>1</sup> 最大有効期間は、実行が開始されてから完了するまでの期間です。 完了した実行は無期限に保持されます。 最大有効期間内に完了しなかった実行のデータにはアクセスできません。
+
 <sup>2</sup> 容量の制約がある場合は、優先度の低いノードのジョブをいつでも横取りできます。 ジョブにチェックポイントを実装することをお勧めします。
 
 ### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Azure Machine Learning マネージド オンライン エンドポイント (プレビュー)
@@ -114,13 +115,13 @@ Azure Machine Learning マネージド オンライン エンドポイントに�
 | サブスクリプションあたりのデプロイの数 | 200 |
 | エンドポイントあたりのデプロイの数 | 20 |
 | デプロイあたりのインスタンスの数 | 20 |
-| エンドポイント レベルでのペイロードの最大サイズ |1.5 MB |
+| エンドポイント レベルでのペイロードの最大サイズ | 1.5 MB |
 | エンドポイント レベルでの最大要求タイムアウト  | 60 秒 |
-| すべてのデプロイのエンドポイント レベルでの QPS 合計  | 100 |
+| すべてのデプロイのエンドポイント レベルでの QPS 合計 | 100 |
 
-<sup>1</sup> `my-endpoint-name` のような単一のダッシュは、エンドポイント名およびデプロイ名で使用できます
+<sup>1</sup> エンドポイント名とデプロイ名で、`my-endpoint-name` のような単一のダッシュを使用できます。
 
-#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
+### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)には次の制限事項があります。
 
 | **リソース** | **制限** |

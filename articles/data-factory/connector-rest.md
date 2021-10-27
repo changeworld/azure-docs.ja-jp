@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: dc9aec86e01655087a64c3ac0a494d448889f857
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f24bb345442b2320344cf1c9e89d383571447ded
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733074"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044769"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "124733074"
 
 この REST コネクタ、[HTTP コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
-- **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
+- **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされます。
 - **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタの前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
 

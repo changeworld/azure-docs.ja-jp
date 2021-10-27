@@ -1,22 +1,22 @@
 ---
-title: RelyingParty - Azure Active Directory B2C | Microsoft Docs
+title: RelyingParty - Azure Active Directory B2C
 description: Azure Active Directory B2C でカスタム ポリシーの RelyingParty 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/27/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0ce866514aef703f3b79980d94fba156c83b10f5
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: b4344626318799a79fa668784e5674730e1731cd
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981468"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065497"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -221,6 +221,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | 説明 | 0:1 | 技術プロファイルの説明を含む文字列。 |
 | Protocol | 1:1 | フェデレーションに使用されるプロトコル。 |
 | Metadata | 0:1 | プロトコルによって使用されるキーと値のペアの *項目* のコレクション。これによってトランザクション中に証明書利用者と他のコミュニティ参加者との間の対話を構成するようにエンドポイントとやりとりされます。 |
+| InputClaims | 1:1 | 技術プロファイルの入力として実行される要求の種類の一覧。 これらの各要素には、**ClaimsSchema** セクションに、またはポリシー ファイルが継承したポリシー内に既に定義されている **ClaimType** への参照が含まれています。 |
 | OutputClaims | 1:1 | 技術プロファイルの出力として実行される要求の種類の一覧。 これらの各要素には、**ClaimsSchema** セクションに、またはポリシー ファイルが継承したポリシー内に既に定義されている **ClaimType** への参照が含まれています。 |
 | SubjectNamingInfo | 1:1 | トークンで使用されているサブジェクト名。 |
 
@@ -244,6 +245,21 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | WantsSignedResponses| No | Azure AD B2C が SAML 応答の `Response` セクションに署名するかどうかを示します。 指定できる値: `true` (既定値) または `false`。  |
 | RemoveMillisecondsFromDateTime| いいえ | SAML 応答内の datetime の値からミリ秒を削除するかどうかを示します (これには、IssueInstant、NotBefore、NotOnOrAfter、および AuthnInstant が含まれます)。 指定できる値: `false` (既定値) または `true`。  |
 
+### <a name="inputclaims"></a>InputClaims
+
+**InputClaims** 要素には、次の要素が含まれています。
+
+| 要素 | 発生回数 | Description |
+| ------- | ----------- | ----------- |
+| InputClaim | 0:n | 予想される入力要求の種類。 |
+
+**InputClaim** 要素には、次の属性が含まれています。
+
+| 属性 | 必須 | Description |
+| --------- | -------- | ----------- |
+| ClaimTypeReferenceId | はい | ポリシー ファイル内の **ClaimsSchema** セクションに既に定義されている **ClaimType** への参照。 |
+| DefaultValue | いいえ | 既定値が空の場合に使用できる既定値。 |
+| PartnerClaimType | いいえ | ClaimType 定義で構成されている別の名前で、要求を送信します。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 

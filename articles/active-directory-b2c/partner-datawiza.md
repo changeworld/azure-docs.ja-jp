@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 7/07/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a007f567b6f137f1bff225f90c3f52dfaf71c1f2
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 87cce83adcd24c9933d1d0668e4b9ce5a8fb6c2e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228586"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036077"
 ---
 # <a name="tutorial-configure-azure-ad-b2c-with-datawiza-to-provide-secure-hybrid-access"></a>チュートリアル: セキュリティで保護されたハイブリッド アクセスを提供するために、Azure AD B2C と Datawiza を構成する
 
@@ -43,7 +43,7 @@ Datawiza 統合には、次のコンポーネントが含まれています。
 
 - **Datawiza Access Broker (DAB)** : サービス ユーザーがサインオンし、HTTP ヘッダーを介してアプリケーションに透過的に ID を渡します。
 
-- **Datawiza Cloud Management Console (DCMC)** - DAB を管理する集中管理コンソール。 DCMC には、管理者が DAB の構成とそのアクセス制御ポリシーを管理するための UI および Restful API が用意されています。
+- **Datawiza Cloud Management Console (DCMC)** - DAB を管理する集中管理コンソール。 DCMC には、管理者が DAB の構成とそのアクセス制御ポリシーを管理するための UI および RESTful API が用意されています。
 
 次のアーキテクチャの図に、この実装を示します。
 

@@ -2,19 +2,19 @@
 title: サーバーレス SQL プール (プレビュー) を使用して Delta Lake 形式のクエリを実行する
 description: この記事では、サーバーレス SQL プールを使用して Apache Delta Lake 形式で格納されているファイルに対してクエリを実行する方法について説明します。
 services: synapse analytics
-author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 04/27/2021
+ms.date: 07/15/2021
+author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick
-ms.openlocfilehash: 096cee4aca9830acf9e74d3d60d08e6a79590cb4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: c06826fa8d08a06ed49bdd56e86c999aff849899
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745044"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002836"
 ---
 # <a name="query-delta-lake-files-preview-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Delta Lake ファイル (プレビュー) のクエリを実行する
 
@@ -174,7 +174,8 @@ deltaTable = DeltaTable.convertToDelta(spark, "parquet.`abfss://delta-lake@sqlon
 
 ## <a name="limitations"></a>制限事項
 
-この機能はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+- この機能はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+- 現時点では、Azure Synapse Analytics の Spark プールとサーバーレス SQL プールの両方が、Delta Lake 形式をサポートしています。 サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 Spark プールからサーバーレス SQL プールに共有されるのは、Parquet 形式のテーブルのみです。 詳細については、「[共有 Spark テーブル](../metadata/table.md#shared-spark-tables)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

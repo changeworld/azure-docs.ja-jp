@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49963f7c2625a0aa454d8a1bac5ff001cb4debe9
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 618283c64268f279b0a63ffb35779ea6e8ef55d0
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230914"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043550"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -88,15 +88,35 @@ $domain = "contoso.corp.com"
 # Enter an Azure Active Directory global administrator username and password.
 $cloudCred = Get-Credential
 
-If you have MFA enabled for Global administrator, Please remove "-Cloudcredential $cloudCred"
-you will see web-based popup and complete the U/P and MFA there
-
 # Enter a domain administrator username and password.
 $domainCred = Get-Credential
 
 # Create the new Azure AD Kerberos Server object in Active Directory
 # and then publish it to Azure Active Directory.
 Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
+```
+
+> [!NOTE]
+> 組織でパスワードベースのサインインを保護し、MFA、FIDO2、スマート カードなどの最新の認証方法を採用している場合は、"-UserPrincipalName" パラメーターに全体管理者のユーザー プリンシパル名を指定する必要があります。
+>    - 次の例の `contoso.corp.com` を、オンプレミスの Active Directory ドメイン名に置き換えます。
+>    - 次の例の `administrator@contoso.onmicrosoft.com` を全体管理者のユーザー プリンシパル名に置き換えます。
+
+```powerShell
+Import-Module ".\AzureAdKerberos.psd1"
+
+# Specify the on-premises Active Directory domain. A new Azure AD
+# Kerberos Server object will be created in this Active Directory domain.
+$domain = "contoso.corp.com"
+
+# Enter a User Principal Name of Azure Active Directory global administrator
+$userPrincipalName = "administrator@contoso.onmicrosoft.com"
+
+# Enter a domain administrator username and password.
+$domainCred = Get-Credential
+
+# Create the new Azure AD Kerberos Server object in Active Directory
+# and then publish it to Azure Active Directory.
+Set-AzureADKerberosServer -Domain $domain -UserPrincipalName $userPrincipalName -DomainCredential $domainCred
 ```
 
 ### <a name="viewing-and-verifying-the-azure-ad-kerberos-server"></a>Azure AD Kerberos サーバーの表示と確認
@@ -203,6 +223,11 @@ Microsoft はこの機能を一般提供 (GA) するため、この機能に取�
 
 > [!NOTE]
 > `nltest` コマンドの `/keylist` スイッチは、クライアント Windows 10 v2004 以上で使用できます。
+
+
+### <a name="is-fido2-security-keys-works-on-windows-login-with-rodc-present-in-the-hybrid-enviornment"></a>ハイブリッド環境に RODC が存在する Windows ログインで FIDO2 セキュリティ キーは機能しますか?
+
+FIOD2 Windows ログインでは、ユーザー TGT を交換するために書き込み可能な DC が検索されます。 サイトごとに少なくとも 1 つの書き込み可能 DC がある限り、 正常に動作します。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 591e7c43b26bbd8668bbe50bc78965f04f194c36
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6061b0ccba7448bbb51dcc93bacecce27c63b910
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729848"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179281"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>ジョブのスケジュールとブロードキャスト (Node.js)
 
@@ -297,6 +297,6 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
-IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、「[チュートリアル: ファームウェアを更新する方法](tutorial-firmware-update.md)」を参照してください。
+エンドツーエンドのイメージベースの更新など、IoT Hub とデバイス管理パターンの使用開始を続けるには、「[Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル](../iot-hub-device-update/device-update-raspberry-pi.md)」を参照してください。
 
 引き続き IoT Hub の使用方法を確認するには、[Azure IoT Edge の使用](../iot-edge/quickstart-linux.md)に関する記事を参照してください。

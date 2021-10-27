@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a599e80dea9d172ddb42cdfe76325ff5e807fbc
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 67ce4e9ca3dc3bc8efc18dc35d834716628d5257
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129378431"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143669"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -77,13 +77,32 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 * リソースの場合: 音声キーと、それに関連付けられた場所/リージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 音声キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 音声キーまたは認証トークンは省略可能です。
-* 認証トークンの場合: 認証トークンと、それに関連付けられた場所/リージョンを渡します。
+* 認証トークンの場合: 認証トークンと、それに関連付けられた場所またはリージョンを渡します。
 
 この例では、音声キーと場所/リージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```javascript
 function synthesizeSpeech() {
     const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+}
+
+synthesizeSpeech();
+```
+
+## <a name="select-synthesis-language-and-voice"></a>合成言語と音声を選択する
+
+Azure Text to Speech サービスでは、250 を超える音声と 70 を超える言語とバリアントがサポートされています。
+[すべてのリスト](../../../language-support.md#neural-voices)を入手することも、[テキスト読み上げのデモ](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)でそれらを試すこともできます。
+入力テキストに合わせて [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) の言語または音声を指定し、必要な音声を使用します。
+
+```javascript
+function synthesizeSpeech() {
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    // Note: if only language is set, the default voice of that language is chosen.
+    speechConfig.speechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
+    // The voice setting will overwrite language setting.
+    // The voice setting will not overwrite the voice element in input SSML.
+    speechConfig.speechSynthesisVoiceName = "<your-wanted-voice>";
 }
 
 synthesizeSpeech();
@@ -259,10 +278,10 @@ function synthesizeSpeech() {
 
 ## <a name="use-ssml-to-customize-speech-characteristics"></a>SSML を使用して音声の特徴をカスタマイズする
 
-音声合成マークアップ言語 (SSML) を使用すると、XML スキーマから要求を送信して、テキスト読み上げ出力のピッチ、発音、読み上げ速度、ボリュームなどを微調整することができます。 このセクションでは音声を変更する例を紹介しますが、より詳細なガイドについては、[SSML の操作方法に関する記事](../../../speech-synthesis-markup.md)を参照してください。 
+音声合成マークアップ言語 (SSML) を使用すると、XML スキーマから要求を送信して、テキスト読み上げ出力のピッチ、発音、読み上げ速度、ボリュームなどを微調整することができます。 このセクションでは音声を変更する例を紹介しますが、より詳細なガイドについては、[SSML の操作方法に関する記事](../../../speech-synthesis-markup.md)を参照してください。
 
 SSML を使用したカスタマイズを開始するには、音声を切り替える単純な変更を加えます。
-まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 サポートされている **ニューラル** 音声の [全一覧](../../../language-support.md#neural-voices)を参照してください。 
+まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 サポートされている **ニューラル** 音声の [全一覧](../../../language-support.md#neural-voices)を参照してください。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">

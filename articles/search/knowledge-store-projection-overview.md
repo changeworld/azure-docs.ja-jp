@@ -1,43 +1,68 @@
 ---
 title: プロジェクションの概念
 titleSuffix: Azure Cognitive Search
-description: 全文検索以外のシナリオで使用するために、AI エンリッチメントのインデックス作成パイプラインからエンリッチされたデータをナレッジ ストアに保存して整形します。
+description: プロジェクションの概念とベスト プラクティスについて説明します。 Cognitive Search でナレッジ ストアを作成している場合、プロジェクションによって Azure Storage 内のオブジェクトの種類、数量、構成が決まります。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.openlocfilehash: 841cd106f1c54e1c35d3b2785eb942842d77f825
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 10/15/2021
+ms.openlocfilehash: fe7353f8b4021e4cacb6037f65fcf9f22520f8ae
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706756"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129455"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでの "プロジェクション"
 
-プロジェクションは、[ナレッジ ストア](knowledge-store-concept-intro.md)定義の要素で、Azure Storage におけるデータの物理的な表現を指定します。 プロジェクション定義によって、Azure Storage におけるデータ構造の数と型が決まります。
+プロジェクションは、Cognitive Search AI エンリッチメント パイプラインからコンテンツを受け入れる [**ナレッジ ストア**](knowledge-store-concept-intro.md)内の物理的なテーブル、オブジェクト、ファイルです。 ナレッジ ストアを作成する場合は、作業の多くがプロジェクションの定義と整形になります。
 
-## <a name="types-of-data-structures"></a>データ構造の種類
+この記事では、コーディングを開始する前にある程度の背景を理解できるように、プロジェクションの概念とワークフローについて説明します。
 
-ナレッジ ストアは、テーブル、JSON オブジェクト、またはバイナリ イメージ ファイルとして Azure Storage で物理的に表現される論理構造です。
+プロジェクションは、Cognitive Search スキルセットで定義されますが、最終的な成果は Azure Storage 内のテーブル、オブジェクト、画像ファイル プロジェクションになります。
+
+:::image type="content" source="media/knowledge-store-concept-intro/projections-azure-storage.png" alt-text="Azure Storage 内で表されるプロジェクション" border="true":::
+
+## <a name="types-of-projections-and-usage"></a>プロジェクションの種類と使用方法
+
+ナレッジ ストアは、Azure Storage 内のテーブル、JSON オブジェクト、またはバイナリ画像ファイルの疎集合として物理的に表される論理構造です。
 
 | Projection | ストレージ | 使用方法 |
 |------------|---------|-------|
-| テーブル | Azure Table Storage | 行と列として最も良く表されるデータに使用されます。 テーブル プロジェクションでは、スキーマ化された形状またはプロジェクションを定義できます。 有効な JSON オブジェクトのみをテーブルとして射影できます。 強化されたドキュメントには、名前付き JSON オブジェクトではないノードを含めることができるため、スキル内で [Shaper スキルを追加するかインライン整形を使用して](knowledge-store-projection-shape.md)、有効な JSON を作成します。 |
-| オブジェクト | Azure Blob Storage | データの JSON 表現とエンリッチメントが必要な場合に、使用されます。 テーブル プロジェクションと同様に、有効な JSON オブジェクトのみオブジェクトとして射影できます。また、整形によりその作業を容易に行うことができます。 |
-| ファイル | Azure Blob Storage | 正規化されたバイナリ イメージ ファイルを保存する必要がある場合に使用されます。 |
+| [テーブル](knowledge-store-projections-examples.md#define-a-table-projection) | Azure Table Storage | 行と列で表すのが最も適しているデータ、またはデータの詳細な表現 (データ フレームなど) が必要な場合に使用されます。 テーブル プロジェクションを使用すると、[Shaper スキルまたはインライン シェイプ](knowledge-store-projection-shape.md)を使用して列と行を指定することにより、スキーマ化されたシェイプを定義できます。 使い慣れた正規化の原則に基づいて、コンテンツを複数のテーブルに整理できます。 同じグループ内のテーブルは自動的に関連付けられます。 |
+| [オブジェクト](knowledge-store-projections-examples.md#define-an-object-projection) | Azure Blob Storage | 1 つの JSON ドキュメントでデータとエンリッチメントの完全な JSON 表現が必要な場合に使用されます。 テーブル プロジェクションと同様に、有効な JSON オブジェクトのみオブジェクトとして射影できます。また、整形によりその作業を容易に行うことができます。 |
+| [[ファイル]](knowledge-store-projections-examples.md#define-a-file-projection) | Azure Blob Storage | 正規化されたバイナリ イメージ ファイルを保存する必要がある場合に使用されます。 |
 
-データが強化されると、データの複数のプロジェクションを定義できます。 同じデータを個々のユース ケースに応じて異なる方法で整形したい場合には、プロジェクションを複数用意することが有用です。
+## <a name="projection-definition"></a>プロジェクション定義
 
-## <a name="basic-definition"></a>基本的な定義
+プロジェクションは、[スキルセット](/rest/api/searchservice/create-skillset)の "knowledgeStore" プロパティで指定されます。 プロジェクション定義は、インデクサーの呼び出し中に、強化されたコンテンツを含むオブジェクトを作成し、Azure Storage に読み込むために使用されます。 これらの概念に習熟していない場合は、入門として [AI エンリッチメント](cognitive-search-concept-intro.md)から始めてください。
 
-プロジェクションは、[スキルセット オブジェクト](/rest/api/searchservice/create-skillset)の `knowledgeStore` 定義の下にある複雑なコレクションの配列です。 
+次の例は、knowledgeStore でのプロジェクションの配置と、基本的な構造を示しています。 プロジェクション定義は、名前、種類、コンテンツ ソースで構成されます。
 
-テーブル、オブジェクト、ファイルの各セットは "*プロジェクト グループ*" です。ストレージ要件にさまざまなツールとシナリオのサポートが含まれている場合、複数のグループを設定できます。 1 つのグループ内に、複数のテーブル、オブジェクト、ファイルを含めることができます。 
+```json
+"knowledgeStore" : {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
+    "projections": [
+      {
+        "tables": [
+          { "tableName": "ks-museums-main", "generatedKeyName": "ID", "source": "/document/tableprojection" },
+          { "tableName": "ks-museumEntities", "generatedKeyName": "ID","source": "/document/tableprojection/Entities/*" }
+        ],
+        "objects": [
+          { "storageContainer": "ks-museums", "generatedKeyName": "ID", "source": "/document/objectprojection" }
+        ],
+        "files": [ ]
+      }
+    ]
+```
 
-通常は 1 つのグループしか使用されませんが、複数のグループの場合にどうなるかを示すため、次の例には 2 つ示されています。
+## <a name="projection-groups"></a>プロジェクション グループ
+
+プロジェクションは複雑なコレクションの配列です。つまり、各種類の複数のセットを指定できます。 1 つのプロジェクション グループのみを使用するのが一般的ですが、ストレージ要件にさまざまなツールやシナリオのサポートが含まれる場合は、複数のグループを使用できます。 たとえば、スキルセットの設計とデバッグに 1 つのグループを使用し、2 つ目のセットでオンライン アプリに使用される出力を収集し、3 つ目をデータ サイエンスのワークロードに使用します。
+
+プロジェクションの下にあるすべてのグループにデータを読み込むには、同じスキルセット出力を使用します。 次の例は、2 つを示しています。
 
 ```json
 "knowledgeStore" : {
@@ -57,137 +82,22 @@ ms.locfileid: "129706756"
 }
 ```
 
-## <a name="data-isolation-and-relatedness"></a>データの分離と関連性
-
-テーブル-オジェクト-ファイルの組み合わせのセットを複数使用すると、さまざまなシナリオをサポートする際に役立ちます。 たとえば、1 つ目のセットをスキルセットの設計とデバッグに使用して、さらに詳細な検査のために出力をキャプチャし、2 つ目のセットでオンライン アプリに使用する出力を収集し、3 つ目をデータ サイエンス ワークロードに使用するなどです。
-
 プロジェクション グループには、次のように相互排他性と関連性の重要な特性があります。 
 
 | 原則 | 説明 |
 |-----------|-------------|
-| 相互排他性 | 1 つのグループに射影されるすべてのコンテンツは、他のプロジェクション グループに射影されるデータとは無関係です。 このような独立性が確保されていることによって、同じデータを異なる形状で持ち、各プロジェクション グループで繰り返すことができるようになっています。 各グループは、同じソース (強化ツリー) からデータを取得しますが、すべてのピア プロジェクション グループのテーブル-オブジェクト-ファイルの組み合わせからは完全に分離されています。|
-| 関連性 | プロジェクションは、グループ内の関連性をサポートします。 グループ内では、テーブル内のコンテンツは、オブジェクトまたはファイル内のコンテンツに関連しています。 同じグループ内の各種類 (テーブル、オブジェクト、ファイル) 間で、強化ツリーの 1 つのノード (例: `/document/translated_text`) がさまざまなテーブルとオブジェクトにわたって射影されるときに、リレーションシップは保持されます。 テーブル内部では、リレーションシップは生成されたキーに基づいており、各子ノードは親ノードへの参照を保持します。 たとえば、画像とテキストが含まれるドキュメントがあるシナリオを考えてみましょう。 テーブルまたはオブジェクトにファイルの URL を表す列/プロパティがあれば、テキストをテーブルまたはオブジェクト、画像をファイルに、それぞれ射影できます。|
+| 相互排他性 | 各グループは他のグループから完全に分離されており、さまざまなデータ整形シナリオをサポートします。 たとえば、異なるテーブル構造と組み合わせをテストする場合、AB テスト用の異なるプロジェクション グループに各セットを配置します。 各グループは、同じソース (強化ツリー) からデータを取得しますが、すべてのピア プロジェクション グループのテーブル-オブジェクト-ファイルの組み合わせからは完全に分離されています。|
+| 関連性 | プロジェクション グループ内では、テーブル、オブジェクト、ファイルのコンテンツが関連付けられます。 ナレッジ ストアでは、生成されたキーが共通の親ノードへの参照ポイントとして使用されます。 たとえば、画像とテキストが含まれるドキュメントがあるシナリオを考えてみましょう。 テキストをテーブルに投影し、画像をバイナリ ファイルに投影できます。テーブルとオブジェクトの両方には、ファイルの URL を含む列およびプロパティが含まれます。|
 
-追加のプロジェクション グループを作成するかどうかは、多くの場合、データ表現の要件に基づいて決定されます。 たとえば、異なるデータ リレーションシップが必要なときに、これを行う場合があります。 セット内では、それらのリレーションシップが存在し、検出できることを前提として、データが関連付けられます。 追加のセットを作成する場合、各グループ内のドキュメントは決して関連付けられません。 複数のプロジェクション グループを使用する例として、オンライン システムで使用するために同じデータをプロジェクションし、それを特定の方式で表現する必要がある場合に、異なる方式で表現されるデータ サイエンス パイプラインで使用するために同じデータをさらにプロジェクションする、というものがあります。
+## <a name="projection-source"></a>プロジェクションの "ソース"
 
-<!-- ## Knowledge Store composition
+ソース パラメーターは、プロジェクション定義の 3 番目のコンポーネントです。 プロジェクションは AI エンリッチメント パイプラインからのデータを格納するため、プロジェクションのソースは常にスキルの出力です。 そのため、出力は、単一のフィールド (たとえば、翻訳されたテキストのフィールド) の場合もありますが、多くの場合、データ シェイプへの参照です。
 
-The knowledge store consists of an annotation cache and projections. The *cache* is used by the service internally to cache the results from skills and track changes. A *projection* defines the schema and structure of the enrichments that match your intended use.
+データ シェイプはスキルセットから取得されます。 Cognitive Search で提供されるすべての組み込みスキルの中には、データ シェイプの作成に使用される [**Shaper スキル**](cognitive-search-skill-shaper.md)と呼ばれるユーティリティ スキルがあります。 ナレッジ ストアのプロジェクションをサポートするために、Shaper スキル (必要に応じた数) を含めることができます。
 
-Within Azure Storage, projections can be articulated as tables, objects, or files.
+シェイプはテーブル プロジェクションで頻繁に使用されます。シェイプを使用することにより、テーブルに入れる行だけでなく、作成される列も指定できます (オブジェクト プロジェクションにシェイプを渡すこともできます)。
 
-+ As an object, the projection maps to Blob storage, where the projection is saved to a container, within which are the objects or hierarchical representations in JSON for scenarios like a data science pipeline.
-
-+ As a table, the projection maps to Table storage. A tabular representation preserves relationships for scenarios like data analysis or export as data frames for machine learning. The enriched projections can then be easily imported into other data stores. 
-
-You can create multiple projections in a knowledge store to accommodate various constituencies in your organization. A developer might need access to the full JSON representation of an enriched document, while data scientists or analysts might want granular or modular data structures shaped by your skillset.
-
-For instance, if one of the goals of the enrichment process is to also create a dataset used to train a model, projecting the data into the object store would be one way to use the data in your data science pipelines. Alternatively, if you want to create a quick Power BI dashboard based on the enriched documents the tabular projection would work well. -->
-
-## <a name="table-projections"></a>テーブル プロジェクション
-
-テーブル プロジェクションは、データ探索が必要なシナリオ (Power BI を使用した分析など) で推奨されます。 テーブル定義は、射影するテーブルの一覧です。 各テーブルには 3 つのプロパティが必要です。
-
-+ tableName: Azure Table Storage 内のテーブルの名前。
-
-+ generatedKeyName:この行を一意に識別するキーの列名。
-
-+ source:強化のソースとする強化ツリーのノード。 このノードは通常、テーブルの形状を定義する Shaper スキルの出力です。 テーブルには行と列があります。整形とは、行と列を指定するメカニズムのことです。 [Shaper スキルまたはインライン シェイプ](knowledge-store-projection-shape.md)を使用できます。 Shaper スキルは有効な JSON を生成しますが、有効な JSON であれば、任意のスキルからの出力とすることができます。 
-
-この例で示すように、キー フレーズとエンティティは異なるテーブルにモデル化されており、各行の親 (MainTable) への参照が含まれます。 
-
-```json
-"knowledgeStore": {
-  "storageConnectionString": "an Azure storage connection string",
-  "projections" : [
-    {
-      "tables": [
-        { "tableName": "MainTable", "generatedKeyName": "SomeId", "source": "/document/EnrichedShape" },
-        { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/EnrichedShape/*/KeyPhrases/*" },
-        { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/EnrichedShape/*/Entities/*" }
-      ]
-    },
-    {
-      "objects": [ ]
-    },
-    {
-      "files": [ ]
-    }
-  ]
-}
-```
-
-"source" で指定された強化ノードは、複数のテーブルに射影するためにスライスできます。 "EnrichedShape" への参照は、Shaper スキルの出力です (表示されていません)。 スキルの入力によって、テーブルの構成とそれを埋める行が決まります。 生成されたキーと各テーブル内の共通フィールドは、テーブル リレーションシップの基礎となります。
-
-## <a name="object-projections"></a>オブジェクト プロジェクション
-
-オブジェクト プロジェクションは、任意のノードをソースにすることができる強化ツリーの JSON 表現です。 多くのケースでは、テーブル プロジェクションの作成と同じ Shaper スキルを使用してオブジェクト プロジェクションを生成できます。 
-
-オブジェクト プロジェクションを生成するには、いくつかのオブジェクト固有の属性が必要です。
-
-+ storageContainer:オブジェクトが保存される BLOB コンテナー
-
-+ source:プロジェクションのルートとなる強化ツリーのノードのパス
-
-```json
-"knowledgeStore": {
-  "storageConnectionString": "an Azure storage connection string",
-  "projections" : [
-    {
-      "tables": [ ]
-    },
-    {
-      "objects": [
-        {
-          "storageContainer": "hotelreviews", 
-          "source": "/document/hotel"
-        }
-      ]
-    },
-    {
-        "files": [ ]
-    }
-  ]
-}
-```
-
-## <a name="file-projections"></a>ファイル プロジェクション
-
-ファイル プロジェクションは `normalized_images` コレクションに対してのみ機能します。ただし、それ以外については、ドキュメント ID の base64 でエンコードされた値のフォルダー プレフィックスを使用して BLOB コンテナーに保存されるという点で、オブジェクト プロジェクションと同様です。 
-
-ファイル プロジェクションとオブジェクト プロジェクションのコンテナーを同じにすることはできないため、両者は別々のコンテナーに射影する必要があります。 ファイル プロジェクションには、オブジェクト プロジェクションと同じ以下のプロパティがあります。
-
-+ storageContainer:オブジェクトが保存される BLOB コンテナー
-
-+ source:プロジェクションのルートとなる強化ツリーのノードのパス
-
-```json
-"knowledgeStore": {
-  "storageConnectionString": "an Azure storage connection string",
-  "projections" : [
-    {
-      "tables": [ ]
-    },
-    {
-      "objects": [ ]
-    },
-    {
-        "files": [
-              {
-              "storageContainer": "ReviewImages",
-              "source": "/document/normalized_images/*"
-            }
-        ]
-    }
-  ]
-}
-```
-
-## <a name="projection-shaping"></a>プロジェクションの整形
-
-プロジェクションのスキーマに一致するオブジェクトが強化ツリーにあると、プロジェクションの定義が簡単になります。これは、テーブルの場合もオブジェクトの場合も同様です。 計画された使用法に基づいてデータを整形または構造化する機能は通常、[Shaper スキル](cognitive-search-skill-shaper.md)をスキルセットに追加することで実行されます。 Shaper スキルから生成されたシェイプはプロジェクションの `source` として使用されますが、別のスキルへの入力として使用することもできます。
-
-簡単に言えば、テーブル プロジェクションでは、Shaper スキルによってテーブル内の列またはフィールドが決定されます。 Shaper スキルへの入力は、強化ツリー内のノードで構成されます。 出力は、テーブル プロジェクションで指定する構造体です。 次の例では、"mytableprojection" という名前のテーブル プロジェクションが、Shaper スキルで指定された入力で構成されます。
+シェイプは複雑になる可能性があります。ここでは範囲外のため詳細に説明しませんが、基本的なシェイプを簡単に示した例を次に示します。 Shaper スキルの出力は、テーブル プロジェクションのソースとして指定されます。 テーブル プロジェクション内で、それ自体は、シェイプで指定される、"metadata-storage_path"、"reviews_text"、"reviews_title" などの列です。
 
 ```json
 {
@@ -224,43 +134,45 @@ For instance, if one of the goals of the enrichment process is to also create a 
 }
 ```
 
-Shaper スキルを使用すると、強化ツリーのさまざまなノードからオブジェクトを構成し、それらを新しいノード以下の子にすることができます。 また、これを使用すると、入れ子になったオブジェクトを含む複合型を定義することができます。 例については、[Shaper スキル](cognitive-search-skill-shaper.md)のドキュメントを参照してください。
-
-## <a name="projection-slicing"></a>プロジェクションのスライス
-
-テーブル プロジェクション グループ内で、強化ツリーの 1 つのノードを複数の関連テーブルにスライスし、各テーブルに 1 つのデータ カテゴリが含まれるようにすることができます。 これは、関連データを集計するかどうか、およびその方法をユーザーが制御できる分析に役立つことがあります。
-
-複数の子テーブルを作成するには、親テーブルから始め、親のソースに基づいて作成されるテーブルを追加で作成します。 この例では、"KeyPhrases" と "Entities" は "/document/EnrichedShape" のスライスを取得します。
-
-```json
-"tables": [
-  { "tableName": "MainTable", "generatedKeyName": "SomeId", "source": "/document/EnrichedShape" },
-  { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/EnrichedShape/*/KeyPhrases/*" },
-  { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/EnrichedShape/*/Entities/*" }
-]
-```
-
-複数のテーブルに射影する場合、子ノードが同じグループ内の別のテーブルのソースでない限り、完全な形状が各テーブルに射影されます。 既存のプロジェクションの子であるソース パスを含むプロジェクションを追加すると、子ノードが親ノードからスライスされ、関連する新しいテーブルまたはオブジェクトに射影されます。 この手法により、すべてのプロジェクションのソースとして使用できる 1 つのノードを Shaper スキルで定義できます。
-
 ## <a name="projection-lifecycle"></a>プロジェクションのライフサイクル
 
 プロジェクションには、データ ソース内のソース データに関連付けられているライフサイクルがあります。 ソース データが更新され、インデックスが再作成されると、エンリッチメントの結果と共にプロジェクションが更新され、最終的にプロジェクションがデータ ソースのデータと一致するようになります。 ただし、同時にプロジェクションは Azure Storage に個別に格納されています。 インデクサーまたは検索サービス自体が削除された場合でも、それらが削除されることはありません。 
 
-## <a name="using-projections"></a>プロジェクションの使用
+## <a name="consume-in-apps"></a>アプリ内での使用
 
-インデクサーの実行後に、プロジェクションによって指定したコンテナーまたはテーブル内の射影されたデータを読み取ることができます。
+インデクサーを実行した後、プロジェクションに接続し、そのデータを他のアプリやワークロードで使用します。
 
-分析に関しては、Power BI での探索は、Azure Table Storage をデータ ソースとして設定する場合と同じくらい簡単です。 内部のリレーションシップを利用すると、データを簡単に視覚化できます。
++ [Storage Explorer](knowledge-store-view-storage-explorer.md) を使用して、オブジェクトの作成とコンテンツを確認します。
 
-また、データ サイエンス パイプラインで強化されたデータを使用する必要がある場合は、[BLOB から Pandas DataFrame にデータを読み込む](/azure/architecture/data-science-process/explore-data-blob)こともできます。
++ [データ探索用の Power BI](knowledge-store-connect-power-bi.md) を使用します。 このツールは、データが Azure Table Storage 内にある場合に最適です。 Power BI 内では、データを操作して、クエリと分析が容易な新しいテーブルに格納できます。
 
-最後に、ナレッジ ストアからデータをエクスポートする必要がある場合、Azure Data Factory には、データをエクスポートして任意のデータベースに格納するコネクタがあります。 
++ データ サイエンス パイプラインの BLOB コンテナーで強化されたデータを使用します。 たとえば、[データを BLOB から Pandas DataFrame に読み込む](/azure/architecture/data-science-process/explore-data-blob)ことができます。
+
++ 最後に、ナレッジ ストアからデータをエクスポートする必要がある場合、Azure Data Factory には、データをエクスポートして任意のデータベースに格納するコネクタがあります。
+
+## <a name="checklist-for-getting-started"></a>使用を開始するためのチェックリスト
+
+プロジェクションはナレッジ ストア専用であり、検索インデックスの構造化には使用されないことを忘れないでください。
+
+1. Azure Storage で、**アクセス キー** から接続文字列を取得し、アカウントが StorageV2 (汎用 V2) であることを確認します。
+
+1. Azure Storage 内で、コンテナーとテーブルの既存のコンテンツを十分に理解し、プロジェクション名として競合しない名前を選択します。 ナレッジ ストアは、テーブルおよびコンテナーの疎集合です。 関連するオブジェクトを追跡するために、名前付け規則を採用することを検討してください。
+
+1. Cognitive Search のインデクサーで [エンリッチメント キャッシュ (プレビュー) を有効](search-howto-incremental-index.md)にした後、[インデクサーを実行](search-howto-run-reset-indexers.md)して、スキルセットを実行し、キャッシュにデータを読み込みます。 これはプレビュー機能であるため、インデクサー要求で必ずプレビュー REST API (api-version=2020-06-30-preview 以降) を使用してください。 キャッシュにデータが読み込まれると、(スキル自体が変更されない限り) ナレッジ ストア内のプロジェクション定義を無料で変更できます。
+
+1. コードでは、すべてのプロジェクションはスキルセットでのみ定義されます。 プロジェクションに適用されるインデクサー プロパティ (フィールド マッピング、出力フィールド マッピング) はありません。 スキルセット定義内では、knowledgeStore プロパティとスキル配列の 2 つの領域に重点を置きます。
+
+   1. knowledgeStore 下の `projections` セクションで、テーブル、オブジェクト、ファイルの各プロジェクションを指定します。 オブジェクトの種類、オブジェクト名、数量 (定義するプロジェクションの数ごと) は、このセクションで決定されます。
+
+   1. スキル配列から、各プロジェクションの `source` で参照されるスキル出力を決定します。 すべてのプロジェクションにはソースがあります。 ソースは、アップストリーム スキルの出力になる場合もありますが、多くの場合は、Shaper スキルの出力です。 プロジェクションの構成は、シェイプによって決定されます。 
+
+1. 既存のスキルセットにプロジェクションを追加する場合、[スキルセットを更新](/rest/api/searchservice/update-skillset)し、[インデクサーを実行](/rest/api/searchservice/run-indexer)します。
+
+1. Azure Storage で結果を確認します。 以降の実行では、Azure Storage 内のオブジェクトを削除するか、スキルセットでプロジェクト名を変更して、名前の競合を回避します。
 
 ## <a name="next-steps"></a>次のステップ
 
-次の手順として、サンプル データと手順を使用して最初のナレッジ ストアを作成します。
+各プロジェクトの種類の構文と例を確認します。
 
 > [!div class="nextstepaction"]
-> [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)
-
-スライス、インラインの整形、リレーションシップなどの高度な概念についての詳細は、[ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)に関する記事を参照してください。
+> [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)

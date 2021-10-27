@@ -1,6 +1,6 @@
 ---
 title: コマーシャル マーケットプレースにコンサルティング サービス オファーを計画する
-description: パートナー センターを使用して、Microsoft AppSource または Azure Marketplace の新しいコンサルティング サービス オファーを計画します。
+description: パートナー センターを使用して、Microsoft AppSource または Azure Marketplace のコンサルティング サービス オファーを計画します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7350fe9dfcadce2d454ab5ee9e78ad80b996bafe
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 29c7460d8d9831a671759f6bf5f1ce3711a1a12d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667252"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041483"
 ---
-# <a name="plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでコンサルティング サービス オファーを計画する
+# <a name="plan-a-consulting-service-offer"></a>コンサルティング サービス オファーの計画
 
-この記事では、コンサルティング サービス オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 パートナー センターで公開するためにオファーを準備するには、この記事をお読みください。
+この記事では、コンサルティング サービス オファーをコマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 パートナー センターで公開するためにオファーを準備するには、この記事をお読みください。
 
 ## <a name="whats-a-consulting-service"></a>コンサルティング サービスとは
 

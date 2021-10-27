@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 4b660d464a8615886be9b466fd2e9de808ef3bd9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 458e6d9b9de91dcf9f9214f2021fb780841ff7b4
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716358"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164353"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -40,7 +40,7 @@ ms.locfileid: "129716358"
 
 サンプル ラベル付けツールを試すことで、請求書データがどのように抽出されるかを確認できます。 次が必要です。
 
-* Azure サブスクリプション - [無料で作成](https://azure.microsoft.com/free/cognitive-services/)できます
+* Azure サブスクリプション: [無料で作成できます](https://azure.microsoft.com/free/cognitive-services/)。
 
 * Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "129716358"
 
 ## <a name="input-requirements"></a>入力の要件
 
-* 最適な結果を得るには、ドキュメントごとに 1 つの鮮明な写真または高品質のスキャンを用意してください。
+* 最適な結果を得るには、ドキュメントごとに 1 つの鮮明な写真または高品質のスキャンを提供してください。
 * サポートされているファイル形式: JPEG、PNG、BMP、TIFF、および PDF (テキスト埋め込みまたはスキャン済み)。 文字の抽出と位置に関するエラーが発生する可能性を排除するには、テキストが埋め込まれている PDF が最適です。
 * PDF および TIFF の場合、最大 2000 ページを処理できます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
 * ファイル サイズは 50 MB 未満である必要があります。
@@ -77,13 +77,13 @@ ms.locfileid: "129716358"
 
 ## <a name="supported-languages-and-locales"></a>サポートされている言語とロケール
 
-| モデル | 言語 - ロケール コード | Default |
+| モデル | 言語: ロケール コード | Default |
 |--------|:----------------------|:---------|
-|請求書| <ul><li>英語 (米国) - en-US</li></ul>| 英語 (米国) - en-US|
+|請求書| <ul><li>英語 (米国) - en-US</li></ul>| 英語 (米国): en-US|
 
 ## <a name="key-value-pair-extraction"></a>キーと値のペアの抽出
 
-|名前| 型 | 説明 | 標準化された出力 |
+|名前| Type | 説明 | 標準化された出力 |
 |:-----|:----|:----|:---:|
 | CustomerName | string | 請求された顧客| |
 | CustomerId | string | 顧客の参照 ID | |
@@ -112,13 +112,31 @@ ms.locfileid: "129716358"
 | ServiceEndDate | date | サービス期間の最後の日 (たとえば、公共料金サービス期間) | yyyy-mm-dd|
 | PreviousUnpaidBalance | 数値 | 明示的な以前の未払い残高 | 整数 (integer) |
 
+### <a name="line-items"></a>品目
+
+次に示すのは、JSON の出力応答で請求書から抽出される品目です (以下の出力では、こちらの[サンプル請求書](media/sample-invoice.jpg)が使用されています)
+
+|名前| Type | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
+|:-----|:----|:----|:----| :----|
+| 項目 | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
+| Amount | 数値 | 品目の金額 | $60.00 | 100 |
+| 説明 | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
+| 数量 | 数値 | この請求書明細項目の数量 | 2 | 2 |
+| UnitPrice | 数値 | この項目の 1 つの単位の正味価格または総価格 (請求書の総請求書の設定によって異なります) | $30.00 | 30 |
+| ProductCode | string| 特定の品目に関連付けられている製品コード、製品番号、または SKU | A123 | |
+| ユニット | string| 品目の単位 (kg、lb など) | 時間 | |
+| Date | 日付| 各品目に対応する日付。 多くの場合、これは品目が発送された日付です | 3/4/2021| 2021-03-04 |
+| 税 | 数値 | 各品目に関連付けられている税。 使用可能な値には、課税額、税金 (%)、税金 (Y/N) などがあります | 10% | |
+
+抽出された請求書のキーと値のペアと品目は、JSON 出力の `documentResults` セクションにあります。 
+
 ## <a name="form-recognizer-preview-v30"></a>Form Recognizer プレビュー v3.0
 
  Form Recognizer プレビューでは、いくつかの新機能が導入されています。
 
 * アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
 
-* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
+* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

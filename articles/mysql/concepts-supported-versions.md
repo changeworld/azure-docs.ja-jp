@@ -7,24 +7,24 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: ''
 ms.date: 6/3/2020
-ms.openlocfilehash: 2c212922ebf550b75ee140637717a48beec9de02
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1dc37ae36703e334ca132b52749edbcdb9b3a602
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122652854"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164781"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
 [!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
-Azure Database for MySQL は、InnoDB ストレージ エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。 このサービスは、コミュニティでサポートされている現在のメジャー バージョン (MySQL 5.6、5.7、8.0) をすべてサポートしています。 MySQL では、X.Y.Z の名前付けスキームが使用されています。ここで、X はメジャー バージョン、Y はマイナー バージョン、Z はバグ修正リリースです。 スキームの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)をご覧ください。
+Azure Database for MySQL は、InnoDB ストレージ エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。 このサービスは、コミュニティでサポートされている現在のメジャー バージョン (MySQL 5.7 および 8.0) をすべてサポートしています。 MySQL では、X.Y.Z の名前付けスキームが使用されています。ここで、X はメジャー バージョン、Y はマイナー バージョン、Z はバグ修正リリースです。 スキームの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)をご覧ください。
 
 ## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>特定の MySQL バージョンが実行されているゲートウェイ ノードに接続する
 
 シングルサーバー デプロイ オプションでは、ゲートウェイを使用してサーバー インスタンスに接続がリダイレクトされます。 接続が確立すると、MySQL には、MySQL サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MySQL のバージョンが表示されます。 MySQL サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。 Azure Database for MySQL サービス アーキテクチャ内のゲートウェイの詳細については、「[接続のアーキテクチャ](./concepts-connectivity-architecture.md#connectivity-architecture)」を参照してください。
 
-Azure Database for MySQL ではメジャー バージョン v5.6、v5.7、v8.0 がサポートされているため、Azure Database for MySQL に接続するための既定のポート 3306 では MySQL クライアント バージョン 5.6 (最小の共通分母) が実行され、サポートされている 3 つすべてのメジャー バージョンのサーバーへの接続に対応しています。 ただし、アプリケーションに、特定のメジャー バージョン (たとえば、v5.7 や v8.0) に接続する要件がある場合は、サーバー接続文字列のポートを変更することによって実行できます。
+Azure Database for MySQL ではメジャー バージョン v5.7 および v8.0 がサポートされているため、Azure Database for MySQL に接続するための既定のポート 3306 では MySQL クライアント バージョン 5.7 (最小の共通分母) が実行され、サポートされている 2 つすべてのメジャー バージョンのサーバーへの接続に対応しています。 ただし、アプリケーションに、特定のメジャー バージョン (たとえば、v5.7 や v8.0) に接続する要件がある場合は、サーバー接続文字列のポートを変更することによって実行できます。
 
 Azure Database for MySQL サービスでは、ゲートウェイ ノードは、v5.7 クライアントの場合はポート 3308、v8.0 クライアントの場合はポート 3309 でリッスンします。 言い換えると、v 5.7 ゲートウェイ クライアントに接続する場合は、完全修飾サーバー名とポート 3308 を使用して、クライアント アプリケーションからサーバーに接続する必要があります。 同様に、v8.0 ゲートウェイ クライアントに接続する場合は、完全修飾サーバー名とポート 3309 を使用してサーバーに接続することができます。 次の例を確認すると、さらにわかりやすくなります。
 

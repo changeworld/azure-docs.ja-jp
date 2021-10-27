@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: ffe327d2389ef86a8d11b802a3eb6d8e5e466a4f
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 9b50ef87ba6ea41d3ab983d1f93bcf94043064af
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812485"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004808"
 ---
 # <a name="tutorial-configure-zero-for-automatic-user-provisioning"></a>チュートリアル: Zero を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -30,7 +30,7 @@ ms.locfileid: "129812485"
 > * アクセスが不要になった場合に Zero のユーザーを削除する。
 > * Azure AD と Zero の間でユーザー属性の同期を維持する。
 > * Zero でグループとグループ メンバーシップをプロビジョニングする。
-> * Chaos に[シングル サインオンする](../manage-apps/add-application-portal-setup-oidc-sso.md) (推奨)。
+> * Zero に[シングル サインオン](../manage-apps/add-application-portal-setup-oidc-sso.md)する (推奨)。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -48,7 +48,7 @@ ms.locfileid: "129812485"
 
 ## <a name="step-2-configure-zero-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Zero を構成する
 
-1. 最初に、Zero 管理者アカウントが必要です。次に、[Zero サポート](https://help.teamzero.com/)に連絡して SCIM シークレット トークンを取得します。 この値を、Azure portal で Zero アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+1. ZERO アカウント管理者から [Zero サポート](https://help.teamzero.com/)に問い合わせてもらい、SCIM シークレット トークンを取得します。この値を、Azure portal で Zero アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 1. テナント URL は `https://api.teamzero.com/scim/v2/` です。 この値を、Azure portal で Zero アプリケーションの [プロビジョニング] タブ内にある [テナント URL] フィールドに入力します。
 
 ## <a name="step-3-add-zero-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Zero を追加する

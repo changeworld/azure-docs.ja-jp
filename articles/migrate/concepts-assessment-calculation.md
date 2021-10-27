@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 0a5591ddad8410c2cea7018fa2f4d4f13a3afa86
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f3fc574e8e381f8e5c911a340ae958ee0939db8f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124735950"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073850"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>評価の概要 (Azure VM への移行)
 
@@ -208,8 +208,13 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
 Azure VM の評価でパフォーマンスベースのサイズ設定を使用する場合、評価はサイズ設定の推奨事項を次のように作成します。
 
 - 評価はサーバーのパフォーマンス履歴を考慮して Azure での VM サイズとディスクの種類を特定します。
-- CSV ファイルを使用してサーバーをインポートする場合、指定する値が使用されます。 この方法は、オンプレミスのサーバーを割り当て過ぎて使用率が低下したときに、Azure VM のサイズを適切に設定してコストを削減する必要がある場合に特に有用です。
+
+> [!NOTE] 
+> CSV ファイルを利用してサーバーをインポートする場合、指定するパフォーマンス値 (CPU 使用率、メモリ使用率、ディスク IOPS、スループット) はパフォーマンスベースのサイズ設定を選択したときに使用されます。 パフォーマンス履歴とパーセンタイル情報は指定できません。
+
+- この方法は、オンプレミスのサーバーを割り当て過ぎて使用率が低下したときに、Azure VM のサイズを適切に設定してコストを削減する必要がある場合に特に有用です。
 - パフォーマンス データを使用しない場合は、前のセクションで説明したように、サイズ設定条件を現状のオンプレミスにリセットします。
+
 
 #### <a name="calculate-storage-sizing"></a>ストレージのサイズ設定を計算する
 
@@ -232,7 +237,7 @@ Ultra Disk の場合、特定のディスク サイズに対して許容され�
     - 1 つのディスク (ディスク 2) は、合計 IOPS の要件を満たすことができます
         - プロビジョニングされる IOPS = (ソース ディスク スループット) * 1024/256
     - 1 つのディスク (ディスク 3) は、合計スループットの要件を満たすことができます
-1. 3 つのディスクから、ディスク サイズが最大のものが検出され、次に使用可能な [Ultra Disk オファリング](../virtual-machines/disks-types.md#disk-size)に切り上げられます。 これが、プロビジョニングされる Ultra Disk サイズです。
+1. 3 つのディスクから、ディスク サイズが最大のものが検出され、次に使用可能な [Ultra Disk オファリング](../virtual-machines/disks-types.md#ultra-disks)に切り上げられます。 これが、プロビジョニングされる Ultra Disk サイズです。
 1. プロビジョニングされた IOPS は、次のロジックを使用して計算されます。
     - 検出されたソース スループットが Ultra Disk の許容範囲内である場合、プロビジョニングされる IOPS はソース ディスクの IOPS と等しくなります
     - そうでない場合、プロビジョニングされる IOPS は、"プロビジョニングされる IOPS = (ソース ディスクのスループット) * 1024/256" を使用して計算されます

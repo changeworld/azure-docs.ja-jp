@@ -3,22 +3,28 @@ title: Azure Policy のゲスト構成機能について
 description: Azure Policy によりゲスト構成機能を使用して仮想マシン内の設定が監査または構成されるしくみについて説明します。
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d9da1454fa531bcc6526cc11dda3b341be0688df
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: d562842da341394247a02516c08b062ee12a01cc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092625"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042638"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Azure Policy のゲスト構成機能について
 
-Azure Policy を使用すると、Azure で実行されるマシンと [Arc 対応マシン](../../../azure-arc/servers/overview.md)の両方について、マシン内の設定を監査または構成できます。
-各タスクは、Windows および Linux のゲスト構成エージェントによって実行されます。
-ゲスト構成拡張機能によりエージェントを介して次のような設定が管理されます。
+Azure Policy のゲスト構成機能を使用すると、Azure で実行されているコンピューターとハイブリッド [Arc 対応のコンピューター](../../../azure-arc/servers/overview.md)の両方で、オペレーティングシステムの設定をコードとして監査または構成することができます。
+この機能は、コンピューターごとに直接使用することも、Azure Policy によって調整することもできます。
 
-- オペレーティング システムの構成
+構成は、ポリシー定義とは別です。 ゲスト構成では Azure Policy を利用して、構成をコンピューターに動的に割り当てます。 [手動](/guest-configuration-assignments.md#manually-creating-guest-configuration-assignments)で、あるいは [AutoManage](../../../automanage/automanage-virtual-machines.md) など他の Azure サービスを利用して、コンピューターに設定を割り当てることもできます。
+
+Azure の構成リソースは、[拡張リソース](../../../azure-resource-manager/management/extension-resource-types.md)として設計されています。
+各構成は、コンピューターのプロパティの追加のセットと考えることができます。 構成には、次のような設定を含めることができます。
+
+- オペレーティング システムの設定
 - アプリケーションの構成または存在
 - 環境設定
+
+各構成の結果は、[ゲスト割り当て] ページで、または構成が Azure Policy の割り当てによってオーケストレーションされている場合には [[コンプライアンスの詳細]](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale) ページの [[前回の評価済みリソース]](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) リンクをクリックして確認できます。
 
 [このドキュメントのビデオ チュートリアルを利用できます](https://youtu.be/t9L8COY-BkM)。
 
@@ -78,8 +84,8 @@ Azure Policy のゲスト構成機能を使用するには、その前に、`Mic
 |Publisher|名前|バージョン|
 |-|-|-|
 |Amazon|Linux|2|
-|Canonical|Ubuntu Server|16.04 - 20.x|
-|Credativ|Debian|9 - 10.x|
+|Canonical|Ubuntu Server|14.04 - 20.x|
+|Credativ|Debian|8 - 10.x|
 |Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows クライアント|Windows 10|
 |Oracle|Oracle-Linux|7.x - 8.x|

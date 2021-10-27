@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: acae63eff8be41453c4483a2d8364531ee109f71
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 28e9bbcb4086cc9a9bd5e18ef27eb1264f086e29
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955709"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070301"
 ---
 # <a name="set-plan-technical-configuration-for-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーのプランの技術的な構成を設定する
 

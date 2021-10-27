@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 07/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c2fb5175b077275d0c2ef5b0a37f6d4ead76b9d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b7b99f1a5b4c52fb07b2e58c8952eb9ace1f1567
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728577"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138254"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -285,7 +285,7 @@ Site Recovery での[復旧計画](site-recovery-create-recovery-plans.md)は、
 
 ### <a name="how-does-sequencing-work"></a>シーケンス処理のしくみを教えてください。
 
-復旧計画では、シーケンス処理のために VM の複数のグループを作成できます。 グループは一度に 1 つずつフェールオーバーされるので、同じグループに含まれる VM は一緒にフェールオーバーされます。 [詳細については、こちらを参照してください](recovery-plan-overview.md#model-apps)。
+復旧計画では、シーケンス処理のために VM のグループを 7 つまで作成できます。 グループは一度に 1 つずつフェールオーバーされるので、同じグループに含まれる VM は一緒にフェールオーバーされます。 [詳細については、こちらを参照してください](recovery-plan-overview.md#model-apps)。
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>復旧計画の RTO を検索するにはどうしたらよいですか?
 

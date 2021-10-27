@@ -1,21 +1,21 @@
 ---
-title: 要求サービス REST API を呼び出す方法
+title: 要求サービス REST API を呼び出す方法 (プレビュー)
 titleSuffix: Azure Active Directory Verifiable Credentials
 description: 要求サービス REST API を使用して発行および検証する方法について説明します
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 6dff1940219aa666453d150ed24d84f8eb0165da
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: f4c3a42108e6098cfde3509bc5f365b78d9a4bba
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809860"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073546"
 ---
 # <a name="request-service-rest-api-preview"></a>要求サービス REST API (プレビュー)
 
@@ -180,7 +180,7 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 検証可能な資格情報を発行または検証するには、次の手順を実行します。
 
-1. 要求サービス REST API に対する HTTP POST 要求を作成します。 `{tenantID}` を実際の[テナント ID](https://TBD) またはテナント名に置き換えます。
+1. 要求サービス REST API に対する HTTP POST 要求を作成します。 `{tenantID}` を実際の **テナント ID** またはテナント名に置き換えます。
 
     ```http
     POST https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request

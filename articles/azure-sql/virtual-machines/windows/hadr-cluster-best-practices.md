@@ -3,7 +3,7 @@ title: HADR 構成のベスト プラクティス
 description: Azure Virtual Machines 上の SQL Server に対して高可用性とディザスター リカバリー (HADR) を構成する場合に、サポートされるクラスター構成について説明します (サポートされるクォーラムまたは接続ルーティングのオプションなど)。
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: mathoma
-ms.openlocfilehash: b9aa10e9a11ee1268c8bb49d5cb32d0550c2ca3a
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 40c68a77a3e432c5ff03da2a99e93255719e8898
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582080"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163412"
 ---
 # <a name="hadr-configuration-best-practices-sql-server-on-azure-vms"></a>HADR 構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -284,7 +285,9 @@ VM またはディスクの制限により、クラスターの正常性に影�
 
 ## <a name="networking"></a>ネットワーク
 
-サーバー (クラスター ノード) ごとに 1 つの NIC と、1 つのサブネットを使用します。 Azure ネットワークは物理的な冗長を備えているので、Azure 仮想マシンのゲスト クラスターに NIC とサブネットを追加する必要はありません。 クラスター検証レポートには、ノードは 1 つのネットワーク上でのみ到達可能であることを警告するメッセージが表示されます。 Azure 仮想マシンのゲスト フェールオーバー クラスターでは、この警告を無視できます。
+サーバー (クラスター ノード) ごとに 1 つの NIC を使用します。 Azure ネットワークは物理的な冗長を備えているので、Azure 仮想マシンのゲスト クラスターに NIC を追加する必要はありません。 クラスター検証レポートには、ノードは 1 つのネットワーク上でのみ到達可能であることを警告するメッセージが表示されます。 Azure 仮想マシンのゲスト フェールオーバー クラスターでは、この警告を無視できます。 
+
+特定の VM の帯域幅の制限は NIC 間で共有され、NIC を追加しても、Azure VM 上の SQL Server の可用性グループ パフォーマンスは向上しません。 そのため、2 つ目の NIC を追加する必要はありません。 
 
 Azure の RFC に準拠していない DHCP サービスにより、特定のフェールオーバー クラスター構成の作成に失敗する可能性があります。 この失敗は、クラスター ネットワーク名に重複する IP アドレス (クラスター ノードの 1 つと同じ IP アドレスなど) が割り当てられていることが原因で発生します。 これは、Windows フェールオーバー クラスター機能に依存する、可用性グループを使用するときに問題になります。
 

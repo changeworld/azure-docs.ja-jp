@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT の API を操作する
 description: 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
-ms.date: 12/14/2020
+ms.date: 10/17/2021
 ms.topic: reference
-ms.openlocfilehash: 7b97be1e30440131045dccf1822fe6855e747768
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f11627a35f2d91cb719866e6fc7d8fc480a50b17
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600629"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131582"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -26,27 +26,27 @@ ms.locfileid: "128600629"
   
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-tokens.png" alt-text="[アクセス トークン] ボタンが強調表示されている [システム設定] ウィンドウのスクリーンショット。":::
 
-2. **[新しいトークンの生成]** を選択します。
-   
+1. **[新しいトークンの生成]** を選択します。
+
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/new-token.png" alt-text="新しいトークンを生成するには、このボタンを選択します。":::
 
-3. 新しいトークンの目的を記述し、 **[次へ]** を選択します。
-   
+1. 新しいトークンの目的を記述し、 **[次へ]** を選択します。
+
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/token-name.png" alt-text="新しいトークンを生成し、それに関連付けられている統合の名前を入力します。":::
 
-4. アクセス トークンが表示されます。 これは二度と表示されないため、コピーしておきます。
-   
+1. アクセス トークンが表示されます。 これは二度と表示されないため、コピーしておきます。
+
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/token-code.png" alt-text="統合用のアクセス トークンをコピーします。":::
 
-5. **[完了]** を選択します。 作成したトークンは、 **[アクセス トークン]** ダイアログ ボックスに表示されます。
-   
+1. **[完了]** を選択します。 作成したトークンは、 **[アクセス トークン]** ダイアログ ボックスに表示されます。
+
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="入力されたトークンを含む [デバイス トークン] ダイアログ ボックスのスクリーンショット":::
 
    **[Used]\(使用日\)** は、このトークンを持つ外部呼び出しが最後に受信された日時を示します。
 
    このトークンの **[Used]\(使用日\)** フィールドに **N/A** と表示されている場合、センサーと接続されているサーバー間の接続が機能していません。
 
-6. **Authorization** という名前の HTTP ヘッダーを要求に追加し、その値を生成したトークンに設定します。
+1. **Authorization** という名前の HTTP ヘッダーを要求に追加し、その値を生成したトークンに設定します。
 
 ## <a name="sensor-api-specifications"></a>Sensor API 仕様
 
@@ -74,13 +74,15 @@ ms.locfileid: "128600629"
 
 - [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
 
+- [アラート PCAP を取得する - /api/v2/alerts/pcap](#retrieve-alert-pcap---apiv2alertspcap)
+
 ### <a name="retrieve-device-information---apiv1devices"></a>デバイス情報を取得する - /api/v1/devices
 
 Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求するには、この API を使用します。
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求します。
 
@@ -96,7 +98,7 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -277,7 +279,7 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 | Type | API | 例 |
 |--|--|--|
-| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices?authorized=true` |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices?authorized=true` |
 
 ### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>デバイスの接続情報を取得する - /api/v1/devices/connections
 
@@ -285,7 +287,7 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
@@ -321,7 +323,7 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -450,8 +452,8 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 > [!div class="mx-tdBreakAll"]
 > | Type | API | 例 |
 > |--|--|--|
-> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/connections` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/connections` |
-> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/devices/<deviceId>/connections?lastActiveInMinutes=&discoveredBefore=&discoveredAfter='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/devices/2/connections?lastActiveInMinutes=20&discoveredBefore=1594550986000&discoveredAfter=1594550986000'` |
+> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/connections` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices/connections` |
+> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/devices/<deviceId>/connections?lastActiveInMinutes=&discoveredBefore=&discoveredAfter='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/api/v1/devices/2/connections?lastActiveInMinutes=20&discoveredBefore=1594550986000&discoveredAfter=1594550986000'` |
 
 ### <a name="retrieve-information-on-cves---apiv1devicescves"></a>CVE に関する情報を取得する - /api/v1/devices/cves
 
@@ -459,7 +461,7 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
@@ -485,7 +487,7 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -565,8 +567,8 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 | Type | API | 例 |
 |--|--|--|
-| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/cves` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/cves` |
-| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/<deviceIpAddress>/cves?top=` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/10.10.10.15/cves?top=50` |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/cves` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices/cves` |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/<deviceIpAddress>/cves?top=` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/devices/10.10.10.15/cves?top=50` |
 
 ### <a name="retrieve-alert-information---apiv1alerts"></a>アラート情報を取得する - /api/v1/alerts
 
@@ -574,7 +576,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
@@ -604,7 +606,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -708,7 +710,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 > [!div class="mx-tdBreakAll"]
 > | Type | API | 例 |
 > |--|--|--|
-> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/alerts?state=&fromTime=&toTime=&type='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/alerts?state=unhandled&fromTime=1594550986000&toTime=1594550986001&type=disconnections'` |
+> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/alerts?state=&fromTime=&toTime=&type='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/api/v1/alerts?state=unhandled&fromTime=1594550986000&toTime=1594550986001&type=disconnections'` |
 
 ### <a name="retrieve-timeline-events---apiv1events"></a>タイムライン イベントを取得する - /api/v1/events
 
@@ -716,7 +718,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
@@ -736,7 +738,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -829,7 +831,7 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 | Type | API | 例 |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/events?minutesTimeFrame=&type=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/events?minutesTimeFrame=20&type=DEVICE_CONNECTION_CREATED' |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/events?minutesTimeFrame=&type='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/api/v1/events?minutesTimeFrame=20&type=DEVICE_CONNECTION_CREATED'` |
 
 ### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>脆弱性情報を取得する - /api/v1/reports/vulnerabilities/devices
 
@@ -837,11 +839,11 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -1076,14 +1078,13 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
     }
 
 ]
-
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
 | Type | API | 例 |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/devices | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/devices |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/devices` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/reports/vulnerabilities/devices` |
 
 ### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>セキュリティの脆弱性を取得する - /api/v1/reports/vulnerabilities/security
 
@@ -1093,79 +1094,79 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
 評価結果を表す JSON オブジェクト。 各キーは null 許容にすることができます。 それ以外の場合は、null 非許容キーを持つ JSON オブジェクトが含まれます。
 
-### <a name="result-fields"></a>結果フィールド
+#### <a name="result-fields"></a>結果フィールド
 
-**[キー]**
+- **[キー]**
 
-**unauthorizedDevices**
+    **unauthorizedDevices**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **address** | String | IP アドレス |
-| **name** | String | - |
-| **firstDetectionTime** | 数値 | エポック (UTC) |
-| lastSeen | 数値 | エポック (UTC) |
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **address** | String | IP アドレス |
+    | **name** | String | - |
+    | **firstDetectionTime** | 数値 | エポック (UTC) |
+    | lastSeen | 数値 | エポック (UTC) |
 
-**illegalTrafficByFirewallRules**
+    **illegalTrafficByFirewallRules**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **server** | String | IP アドレス |
-| **client** | String | IP アドレス |
-| **port** | 数値 | - |
-| **transport** | String | TCP、UDP、または ICMP |
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **server** | String | IP アドレス |
+    | **client** | String | IP アドレス |
+    | **port** | 数値 | - |
+    | **transport** | String | TCP、UDP、または ICMP |
 
-**weakFirewallRules**
+    **weakFirewallRules**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **sources** | ソースの JSON 配列。 各ソースには、4 つの形式を使用できます。 | "Any"、"IP アドレス (ホスト)"、"IP から IP (範囲)"、"IP アドレス, サブネット マスク (ネットワーク)" |
-| **destinations** | 宛先の JSON 配列。 各宛先には、4 つの形式を使用できます。 | "Any"、"IP アドレス (ホスト)"、"IP から IP (範囲)"、"IP アドレス, サブネット マスク (ネットワーク)" |
-| **ports** | 3 つの形式のいずれかのポートの JSON 配列 | "Any"、"ポート (検出されている場合はプロトコル)"、"ポート - ポート (検出されている場合はプロトコル)" |
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **sources** | ソースの JSON 配列。 各ソースには、4 つの形式を使用できます。 | "Any"、"IP アドレス (ホスト)"、"IP から IP (範囲)"、"IP アドレス, サブネット マスク (ネットワーク)" |
+    | **destinations** | 宛先の JSON 配列。 各宛先には、4 つの形式を使用できます。 | "Any"、"IP アドレス (ホスト)"、"IP から IP (範囲)"、"IP アドレス, サブネット マスク (ネットワーク)" |
+    | **ports** | 3 つの形式のいずれかのポートの JSON 配列 | "Any"、"ポート (検出されている場合はプロトコル)"、"ポート - ポート (検出されている場合はプロトコル)" |
 
-**accessPoints**
+    **accessPoints**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **macAddress** | String | MAC アドレス |
-| **vendor** | String | ベンダー名 |
-| **ipAddress** | String | IP アドレス、または N/A |
-| **name** | String | デバイス名、または N/A |
-| **wireless** | String | No、Suspected、または Yes |
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **macAddress** | String | MAC アドレス |
+    | **vendor** | String | ベンダー名 |
+    | **ipAddress** | String | IP アドレス、または N/A |
+    | **name** | String | デバイス名、または N/A |
+    | **wireless** | String | No、Suspected、または Yes |
 
-**connectionsBetweenSubnets**
+    **connectionsBetweenSubnets**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **server** | String | IP アドレス |
-| **client** | String | IP アドレス |
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **server** | String | IP アドレス |
+    | **client** | String | IP アドレス |
 
-**industrialMalwareIndicators**
+    **industrialMalwareIndicators**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **detectionTime** | 数値 | エポック (UTC) |
-| **alertMessage** | String | - |
-| **description** | String | - |
-| **devices** | JSON 配列 | デバイス名 | 
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **detectionTime** | 数値 | エポック (UTC) |
+    | **alertMessage** | String | - |
+    | **description** | String | - |
+    | **devices** | JSON 配列 | デバイス名 |
 
-**internetConnections**
+    **internetConnections**
 
-| フィールド名 | Type | ［値の一覧］ |
-| ---------- | ---- | -------------- |
-| **internalAddress** | String | IP アドレス |
-| **承認済み** | ブール型 | はい、いいえ | 
-| **externalAddresses** | JSON 配列 | IP アドレス |
+    | フィールド名 | Type | ［値の一覧］ |
+    | ---------- | ---- | -------------- |
+    | **internalAddress** | String | IP アドレス |
+    | **承認済み** | ブール型 | はい、いいえ |
+    | **externalAddresses** | JSON 配列 | IP アドレス |
 
 #### <a name="response-example"></a>応答の例
 
@@ -1323,14 +1324,13 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
     ]
 
 }
-
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
 | Type | API | 例 |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/security | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/security |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/security` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/reports/vulnerabilities/security` |
 
 ### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>動作の脆弱性を取得する - /api/v1/reports/vulnerabilities/operational
 
@@ -1338,11 +1338,11 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -1350,51 +1350,51 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 #### <a name="result-fields"></a>結果フィールド
 
-**[キー]**
+- **[キー]**
 
-**backupServer**
+    **backupServer**
 
-| フィールド名 | Type | ［値の一覧］ |
-|--|--|--|
-| **source** | String | IP アドレス |
-| **destination** | String | IP アドレス |
-| **port** | 数値 | - |
-| **transport** | String | TCP または UDP |
-| **backupMaximalInterval** | String | - |
-| **lastSeenBackup** | 数値 | エポック (UTC) |
+    | フィールド名 | Type | ［値の一覧］ |
+    |--|--|--|
+    | **source** | String | IP アドレス |
+    | **destination** | String | IP アドレス |
+    | **port** | 数値 | - |
+    | **transport** | String | TCP または UDP |
+    | **backupMaximalInterval** | String | - |
+    | **lastSeenBackup** | 数値 | エポック (UTC) |
 
-**ipNetworks**
+    **ipNetworks**
 
-| フィールド名 | Type | ［値の一覧］ |
-|--|--|--|
-| **addresse** s | 数値 | - |
-| **network** | String | IP アドレス |
-| **mask** | String | サブネット マスク |
+    | フィールド名 | Type | ［値の一覧］ |
+    |--|--|--|
+    | **addresse** s | 数値 | - |
+    | **network** | String | IP アドレス |
+    | **mask** | String | サブネット マスク |
 
-**protocolProblems**
+    **protocolProblems**
 
-| フィールド名 | Type | ［値の一覧］ |
-|--|--|--|
-| **protocol** | String | - |
-| **addresses** | JSON 配列 | IP アドレス |
-| **alert** | String | - |
-| **reportTime** | 数値 | エポック (UTC) |
+    | フィールド名 | Type | ［値の一覧］ |
+    |--|--|--|
+    | **protocol** | String | - |
+    | **addresses** | JSON 配列 | IP アドレス |
+    | **alert** | String | - |
+    | **reportTime** | 数値 | エポック (UTC) |
 
-**protocolDataVolumes**
+    **protocolDataVolumes**
 
-| フィールド名 | Type | ［値の一覧］ |
-|--|--|--|
-| protocol | String | - |
-| ボリューム | String | "ボリューム量 MB" |
+    | フィールド名 | Type | ［値の一覧］ |
+    |--|--|--|
+    | protocol | String | - |
+    | ボリューム | String | "ボリューム量 MB" |
 
-**disconnections**
+    **disconnections**
 
-| フィールド名 | Type | ［値の一覧］ |
-|--|--|--|
-| **assetAddress** | String | IP アドレス |
-| **assetName** | String | - |
-| **lastDetectionTime** | 数値 | エポック (UTC) |
-| **backToNormalTime** | 数値 | エポック (UTC) |     
+    | フィールド名 | Type | ［値の一覧］ |
+    |--|--|--|
+    | **assetAddress** | String | IP アドレス |
+    | **assetName** | String | - |
+    | **lastDetectionTime** | 数値 | エポック (UTC) |
+    | **backToNormalTime** | 数値 | エポック (UTC) |
 
 #### <a name="response-example"></a>応答の例
 
@@ -1520,14 +1520,13 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
     ]
 
 }
-
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
 | Type | API | 例 |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/operational | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/operational |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/operational` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/v1/reports/vulnerabilities/operational` |
 
 ### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>ユーザーの資格情報を検証する - /api/external/authentication/validation
 
@@ -1537,11 +1536,11 @@ Defender for IoT のユーザー名とパスワードを検証するには、こ
 
 #### <a name="method"></a>メソッド
 
-**POST**
+- **POST**
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
@@ -1567,7 +1566,7 @@ request:
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -1587,14 +1586,13 @@ response:
     "msg": "Authentication succeeded."
 
 }
-
 ```
 
 #### <a name="curl-command"></a>Curl コマンド
 
 | Type | API | 例 |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/external/authentication/validation |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/api/external/authentication/validation` |
 
 ### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
 
@@ -1602,11 +1600,11 @@ response:
 
 #### <a name="method"></a>メソッド
 
-**POST**
+- **POST**
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="request-example"></a>要求の例
 
@@ -1622,12 +1620,11 @@ request:
     "new_password": "Test54321\!"
 
 }
-
 ```
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -1653,7 +1650,6 @@ response:
     }
 
 }
-
 ```
 
 #### <a name="device-fields"></a>デバイス フィールド
@@ -1668,7 +1664,7 @@ response:
 
 | Type | API | 例 |
 |--|--|--|
-| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password | curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password |
+| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/api/external/authentication/set_password` |
 
 ### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
 
@@ -1676,11 +1672,11 @@ response:
 
 #### <a name="method"></a>メソッド
 
-**POST**
+- **POST**
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="request-example"></a>要求の例
 
@@ -1700,7 +1696,7 @@ request:
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -1749,18 +1745,72 @@ response:
 > [!div class="mx-tdBreakAll"]
 > | Type | API | 例 |
 > |--|--|--|
-> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password_by_admin |
+> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/api/external/authentication/set_password_by_admin` |
 
-## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様 ##
+### <a name="retrieve-alert-pcap---apiv2alertspcap"></a>アラート PCAP を取得する - /api/v2/alerts/pcap
+
+この API を使用して、アラートに関連する PCAP ファイルを取得します
+
+このエンドポイントには、承認に通常のアクセス トークンが使用されません。 代わりに、CM 上の `/external/v2/alerts/pcap` API エンドポイントによって作成された特別なトークンが必要です。
+
+#### <a name="method"></a>メソッド
+
+- **GET**
+
+#### <a name="query-parameters"></a>クエリ パラメーター
+
+- id: Xsense アラート ID  
+例:  
+`/api/v2/alerts/pcap/<id>`
+
+#### <a name="response-type"></a>応答の種類
+
+- **JSON**
+
+#### <a name="response-content"></a>応答コンテンツ
+
+- **成功**: PCAP データを含むバイナリ ファイル
+- **失敗**: エラー メッセージを含む JSON オブジェクト
+
+#### <a name="response-example"></a>応答の例
+
+#### <a name="error"></a>エラー
+
+```json
+{
+  "error": "PCAP file is not available"
+}
+```
+
+#### <a name="curl-command"></a>Curl コマンド
+
+|Type|API|例|
+|-|-|-|
+|GET|`curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v2/alerts/pcap/<ID>'`|`curl -k -H "Authorization: d2791f58-2a88-34fd-ae5c-2651fe30a63c" 'https://10.1.0.2/api/v2/alerts/pcap/1'`|
+
+## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様
 
 このセクションでは、次のオンプレミス管理コンソール API について説明します。
-- アラート除外
-- デバイス情報
-- Alert information (アラート情報)
 
-### <a name="alert-exclusions"></a>アラートの除外 ###
+- [アラートの除外](#alert-exclusions)
 
-アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 たとえば、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止したいとします。 ここで定義した項目は、オンプレミスの管理コンソールの **[アラートの除外]** ウィンドウに読み取り専用の除外ルールとして表示されます。
+- [デバイス情報を取得する - /external/v1/devices](#retrieve-device-information---externalv1devices)
+
+- [アラート情報を取得する - /external/v1/alerts](#retrieve-alert-information---externalv1alerts)
+
+- [QRadar アラート](#qradar-alerts)
+
+- [アラートの除外 (メンテナンス期間) - /external/v1/maintenanceWindow](#alert-exclusions-maintenance-window---externalv1maintenancewindow)
+
+- [パスワードを変更する - /external/authentication/set_password (1)](#change-password---externalauthenticationset_password-1)
+
+- [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
+
+- [アラート PCAP を要求する - /external/v2/alerts/pcap](#request-alert-pcap---externalv2alertspcap)
+
+### <a name="alert-exclusions"></a>アラートの除外
+
+アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 たとえば、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止したいとします。 ここで定義した項目は、オンプレミスの管理コンソールの [アラートの除外] ウィンドウに読み取り専用の除外ルールとして表示されます。
 
 #### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
@@ -1774,28 +1824,19 @@ response:
 {
     "msg": "Authentication succeeded."
 }
-
 ```
 
-#### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password 
-
-ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin 
-
-システム管理者が特定のユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-### <a name="retrieve-device-information---externalv1devices"></a>デバイス情報を取得する - /external/v1/devices ###
+### <a name="retrieve-device-information---externalv1devices"></a>デバイス情報を取得する - /external/v1/devices
 
 この API は、オンプレミスの管理コンソールに接続されている Defender for IoT sensors センサーによって検出されたすべてのデバイスの一覧を要求します。
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -2008,7 +2049,7 @@ response:
 
 | Type | API | 例 |
 |--|--|--|
-| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/devices?siteId=&zoneId=&sensorId=&authorized=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/devices?siteId=1&zoneId=2&sensorId=5&authorized=true' |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/devices?siteId=&zoneId=&sensorId=&authorized='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/external/v1/devices?siteId=1&zoneId=2&sensorId=5&authorized=true'` |
 
 ### <a name="retrieve-alert-information---externalv1alerts"></a>アラート情報を取得する - /external/v1/alerts
 
@@ -2016,7 +2057,7 @@ response:
 
 #### <a name="method"></a>メソッド
 
-**GET**
+- **GET**
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 
@@ -2137,7 +2178,7 @@ response:
 > [!div class="mx-tdBreakAll"]
 > | Type | API | 例 |
 > |--|--|--|
-> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/alerts?state=unhandled&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1'` |
+> | GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/external/v1/alerts?state=unhandled&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1'` |
 
 ### <a name="qradar-alerts"></a>QRadar アラート
 
@@ -2169,7 +2210,7 @@ QRadar に送信されるペイロードの例を次に示します。
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="request-content"></a>要求内容
 
@@ -2192,14 +2233,13 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
 デバイスを表す JSON オブジェクトの配列。
 
 #### <a name="response-fields"></a>応答フィールド
-
 
 | 名前 | Type | Nullable | 説明 |
 |--|--|--|--|
@@ -2240,7 +2280,7 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 | Type | API | 例 |
 |--|--|--|
-| PUT | `curl -k -X PUT -d '{"action": "<ACTION>"}' -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/external/v1/alerts/<UUID>` | `curl -k -X PUT -d '{"action": "handle"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/alerts/1-1594550943000` |
+| PUT | `curl -k -X PUT -d '{"action": "<ACTION>"}' -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/external/v1/alerts/<UUID>` | `curl -k -X PUT -d '{"action": "handle"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/external/v1/alerts/1-1594550943000` |
 
 ### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>アラートの除外 (メンテナンス期間) - /external/v1/maintenanceWindow
 
@@ -2260,11 +2300,15 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 - **engines**:メンテナンス プロセス中にどのセキュリティ エンジンからアラートを抑制するかを定義します。
 
-   - ANOMALY
-   - MALWARE
-   - OPERATIONAL
-   - POLICY_VIOLATION
-   - PROTOCOL_VIOLATION
+    - ANOMALY
+
+    - MALWARE
+
+    - OPERATIONAL
+
+    - POLICY_VIOLATION
+
+    - PROTOCOL_VIOLATION
 
 - **sensorIds**:メンテナンス プロセス中にどの Defender for IoT センサーからアラートを抑制するかを定義します。 これは、/api/v1/appliances (GET) から取得したものと同じ ID です。
 
@@ -2366,7 +2410,7 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -2389,10 +2433,10 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 | Type | API | 例 |
 |--|--|--|
-| POST | `curl -k -X POST -d '{"ticketId": "<TICKET_ID>",ttl": <TIME_TO_LIVE>,"engines": [<ENGINE1, ENGINE2...ENGINEn>],"sensorIds": [<SENSOR_ID1, SENSOR_ID2...SENSOR_IDn>],"subnets": [<SUBNET1, SUBNET2....SUBNETn>]}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X POST -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl": "20","engines": ["ANOMALY"],"sensorIds": ["5","3"],"subnets": ["10.0.0.3"]}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow` |
-| PUT | `curl -k -X PUT -d '{"ticketId": "<TICKET_ID>",ttl": "<TIME_TO_LIVE>"}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X PUT -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl": "20"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow` |
-| DELETE | `curl -k -X DELETE -d '{"ticketId": "<TICKET_ID>"}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X DELETE -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow` |
-| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v1/maintenanceWindow?fromDate=&toDate=&ticketId=&tokenName='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/maintenanceWindow?fromDate=2020-01-01&toDate=2020-07-14&ticketId=a5fe99c-d914-4bda-9332-307384fe40bf&tokenName=a'` |
+| POST | `curl -k -X POST -d '{"ticketId": "<TICKET_ID>",ttl": <TIME_TO_LIVE>,"engines": [<ENGINE1, ENGINE2...ENGINEn>],"sensorIds": [<SENSOR_ID1, SENSOR_ID2...SENSOR_IDn>],"subnets": [<SUBNET1, SUBNET2....SUBNETn>]}' -H "Authorization: <AUTH_TOKEN>" https://127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X POST -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl": "20","engines": ["ANOMALY"],"sensorIds": ["5","3"],"subnets": ["10.0.0.3"]}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/external/v1/maintenanceWindow` |
+| PUT | `curl -k -X PUT -d '{"ticketId": "<TICKET_ID>",ttl": "<TIME_TO_LIVE>"}' -H "Authorization: <AUTH_TOKEN>" https://127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X PUT -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl": "20"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/external/v1/maintenanceWindow` |
+| DELETE | `curl -k -X DELETE -d '{"ticketId": "<TICKET_ID>"}' -H "Authorization: <AUTH_TOKEN>" https://127.0.0.1/external/v1/maintenanceWindow` | `curl -k -X DELETE -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"}' -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https://127.0.0.1/external/v1/maintenanceWindow` |
+| GET | `curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v1/maintenanceWindow?fromDate=&toDate=&ticketId=&tokenName='` | `curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://127.0.0.1/external/v1/maintenanceWindow?fromDate=2020-01-01&toDate=2020-07-14&ticketId=a5fe99c-d914-4bda-9332-307384fe40bf&tokenName=a'` |
 
 ### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>ユーザーの資格情報を認証する - /external/authentication/validation
 
@@ -2404,7 +2448,7 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="request-example"></a>要求の例
 
@@ -2422,7 +2466,7 @@ request:
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -2455,7 +2499,7 @@ response:
 
 | Type | API | 例 |
 |--|--|--|
-| POST | `curl -k -d '{"username":"<USER_NAME>","password":"PASSWORD"}' 'https://<IP_ADDRESS>/external/authentication/validation'` | `curl -k -d '{"username":"myUser","password":"1234@abcd"}' 'https:/<span>/127.0.0.1/external/authentication/validation'` |
+| POST | `curl -k -d '{"username":"<USER_NAME>","password":"PASSWORD"}' 'https://<IP_ADDRESS>/external/authentication/validation'` | `curl -k -d '{"username":"myUser","password":"1234@abcd"}' 'https://127.0.0.1/external/authentication/validation'` |
 
 ### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
 
@@ -2467,7 +2511,7 @@ response:
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="request-example"></a>要求の例
 
@@ -2488,7 +2532,7 @@ request:
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -2529,7 +2573,7 @@ response:
 
 | Type | API | 例 |
 |--|--|--|
-| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/external/authentication/set_password` |
+| POST | `curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password` | `curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/external/authentication/set_password` |
 
 ### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
 
@@ -2537,11 +2581,11 @@ response:
 
 #### <a name="method"></a>メソッド
 
-**POST**
+- **POST**
 
 #### <a name="request-type"></a>要求の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="request-example"></a>要求の例
 
@@ -2561,7 +2605,7 @@ request:
 
 #### <a name="response-type"></a>応答の種類
 
-**JSON**
+- **JSON**
 
 #### <a name="response-content"></a>応答コンテンツ
 
@@ -2610,7 +2654,68 @@ response:
 > [!div class="mx-tdBreakAll"]
 > | Type | API | 例 |
 > |--|--|--|
-> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/external/authentication/set_password_by_admin` |
+> | POST | `curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password_by_admin` | `curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https://127.0.0.1/external/authentication/set_password_by_admin` |
+
+### <a name="request-alert-pcap---externalv2alertspcap"></a>アラート PCAP を要求する - /external/v2/alerts/pcap
+
+この API を使用して、アラートに関連する PCAP ファイルを要求します
+
+#### <a name="method"></a>メソッド
+
+- **GET**
+
+#### <a name="query-parameters"></a>クエリ パラメーター
+
+- id: CM アラート ID  
+例:  
+`/external/v2/alerts/pcap/<id>`
+
+#### <a name="response-type"></a>応答の種類
+
+- **JSON**
+
+#### <a name="response-content"></a>応答コンテンツ
+
+- **成功**: 要求された PCAP ファイルに関するデータを含む JSON オブジェクト
+- **失敗**: エラー メッセージを含む JSON オブジェクト
+
+#### <a name="data-fields"></a>データ フィールド
+
+|名前|Type|Nullable|
+|-|-|-|
+|id|数値|いいえ|
+|xsenseId|数値|いいえ|
+|xsenseAlertId|数値|いいえ|
+|downloadUrl|String|いいえ|
+|token|String|いいえ|
+
+#### <a name="response-example"></a>応答の例
+
+#### <a name="success"></a>Success
+
+```json
+{
+  "downloadUrl": "https://10.1.0.2/api/v2/alerts/pcap/1",
+  "xsenseId": 1,
+  "token": "d2791f58-2a88-34fd-ae5c-2651fe30a63c",
+  "id": 1,
+  "xsenseAlertId": 1
+}
+```
+
+#### <a name="error"></a>エラー
+
+```json
+{
+  "error": "alert not found"
+}
+```
+
+### <a name="curl-command"></a>Curl コマンド
+
+|Type|API|例|
+|-|-|-|
+|GET|`curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v2/alerts/pcap/<ID>'`|`curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https://10.1.0.1/external/v2/alerts/pcap/1'`
 
 ## <a name="next-steps"></a>次のステップ
 

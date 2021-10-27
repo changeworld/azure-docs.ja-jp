@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e7ee0deb84b6b7ef7c10c296eab236524a3ee487
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 14bc05787a589356eec6d4cbb9abd5eebba255a8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357332"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045581"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -100,7 +100,7 @@ ms.locfileid: "129357332"
 
 ::: zone pivot="platform-windows"  
 
-Cloud Shell で次のコマンドを実行して、2 つの Windows Web アプリを作成します。 _\<front-end-app-name>_ および _\<back-end-app-name>_ を、グローバルに一意な 2 つのアプリ名で置き換えてください (有効な文字は、`a-z`、`0-9`、および `-` です)。 各コマンドの詳細については、[Azure App Service での RESTful API と CORS](app-service-web-tutorial-rest-api.md) に関する記事を参照してください。
+Cloud Shell で次のコマンドを実行して、2 つの Windows Web アプリを作成します。 _\<front-end-app-name>_ および _\<back-end-app-name>_ を、グローバルに一意な 2 つのアプリ名で置き換えてください (有効な文字は、`a-z`、`0-9`、および `-` です)。 各コマンドの詳細については、「[Azure App Service で CORS を使用して RESTful API をホストする](app-service-web-tutorial-rest-api.md)」を参照してください。
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"

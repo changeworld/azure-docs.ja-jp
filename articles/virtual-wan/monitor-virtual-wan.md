@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: d1ac031b79372987561651044e81da2e3d2d2779
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fd0eeb94bb35248aababa3f3a8d9fe820d4abe7f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636537"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002873"
 ---
 # <a name="monitoring-virtual-wan"></a>Virtual WAN の監視
 
@@ -96,6 +96,12 @@ Azure ExpressRoute ゲートウェイでは、次のメトリックを利用で�
 | --- | --- |
 | **BitsInPerSecond (受信ビット数/秒)** | 1 秒あたりの Azure へのイングレス ビット数。|
 | **BitsOutPerSecond (送信ビット数/秒)** | 1 秒あたりの Azure からのエグレス ビット数。 |
+| **CPU 使用率** | ExpressRoute ゲートウェイの CPU 使用率。|
+| **1 秒あたりのパケット数** | ExpressRoute ゲートウェイのパケット数。|
+| **ピアにアドバタイズされたルートの数**| ExpressRoute ゲートウェイによってピアにアドバタイズされたルートの数。 | 
+| **ピアから学習したルートの数**| ExpressRoute ゲートウェイによってピアから学習したルートの数。|
+| **ルートが変更された頻度** | ExpressRoute ゲートウェイでのルート変更の頻度。|
+| **仮想ネットワーク内の VM の数**| この ExpressRoute ゲートウェイを使用する VM の数。|
 
 ### <a name="view-gateway-metrics"></a><a name="metrics-steps"></a>ゲートウェイ メトリックを表示する
 

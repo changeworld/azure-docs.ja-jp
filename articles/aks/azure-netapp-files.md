@@ -3,13 +3,13 @@ title: Azure NetApp Files と Azure Kubernetes Service を統合する | Microso
 description: Azure NetApp Files と Azure Kubernetes Service をプロビジョニングする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 10/04/2021
-ms.openlocfilehash: 177526fa98ada37341fadc90e183f224e1aa0830
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.date: 10/18/2021
+ms.openlocfilehash: a88f2ac33d22852f1b14be65434eb2e354c45155
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544794"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162303"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files と Azure Kubernetes Service を統合する
 
@@ -17,10 +17,10 @@ ms.locfileid: "129544794"
 
 [Azure NetApp Files][anf] は、エンタープライズクラスでハイパフォーマンスの Azure 上で実行される従量制課金ファイル ストレージ サービスです。 Azure NetApp Files ボリュームを Kubernetes のワークロードに使用する場合、Kubernetes ユーザーには以下の 2 つの選択肢があります。
 
-* Azure NetApp Files ボリュームを **静的** に作成する: このシナリオでは、ボリュームの作成は AKS の外部で行われます。ボリュームは `az`/Azure UI を使用して作成され、`PersistentVolume` の作成によって Kubernetes に公開されます。
-* **オンデマンド** で Azure NetApp Files ボリュームを作成し、Kubernetes でオーケストレーションを行う: この方法は、Kubernetes で複数のボリュームを直接作成する場合に **推奨される** 操作モードで、[Astra Trident](https://netapp-trident.readthedocs.io/) を使用して実施します。
+* Azure NetApp Files ボリュームを **静的** に作成する: このシナリオでは、ボリュームの作成は AKS の外部で行われます。ボリュームは `az`/Azure UI を使用して作成され、`PersistentVolume` の作成によって Kubernetes に公開されます。 静的に作成された Azure NetApp Files ボリュームには多くの制限 (たとえば、拡張できない、過剰なプロビジョニングが必要など) があるため、ほとんどのユース ケースには推奨されません。
+* **オンデマンド** で Azure NetApp Files ボリュームを作成し、Kubernetes でオーケストレーションを行う: この方法は、Kubernetes で複数のボリュームを直接作成する場合に **推奨される** 操作モードで、[Astra Trident](https://docs.netapp.com/us-en/trident/index.html) を使用して実施します。 Astra Trident は、CSI に準拠した動的ストレージ オーケストレーターであり、Kubernetes を通じてボリュームをネイティブにプロビジョニングするのに役立ちます。
 
-Kubernetes ユーザーが AKS 経由で Azure NetApp Files ボリュームを直接使用できる、実稼働可能な CSI ドライバーを使用することを **強くお勧めします**。 この要件は、Kubernetes 用のオープンソースの動的ストレージ オーケストレーターである Astra Trident を使用することで対応可能です。 これは、NetApp で完全にサポートされている Kubernetes 専用に開発されたエンタープライズグレードのストレージ オーケストレーターです。 ストレージ プロビジョニングを自動化することで、Kubernetes 環境におけるストレージへのアクセスを簡略化します。 コンシューマーは、Astra Trident の Azure NetApp Files 用 CSI ドライバーを利用することで、基になる詳細情報を抽象化し、オンデマンドでボリュームを作成、展開、スナップショットすることができます。
+CSI ドライバーを使用して AKS ワークロードから Azure NetApp Files ボリュームを直接使用することは、ほとんどのユース ケースで **強く推奨されます**。 この要件は、Kubernetes 用のオープンソースの動的ストレージ オーケストレーターである Astra Trident を使用することで対応可能です。 Astra Trident は、Kubernetes 専用のエンタープライズ レベルのストレージ オーケストレーターであり、NetApp で完全にサポートされています。 ストレージ プロビジョニングを自動化することで、Kubernetes クラスターからストレージへのアクセスを簡略化します。 Astra Trident の Azure NetApp Files 用 Container Storage Interface (CSI) ドライバーを利用することで、基になる詳細情報を抽象化し、オンデマンドでボリュームの作成、拡張、スナップショットすることができます。 また、Astra Trident を使用すると、Astra Trident の上に構築された [Astra Control Service](https://cloud.netapp.com/astra-control) を使用して、Azure リージョン内および Azure リージョン全体のクラスター間で AKS ワークロードのアプリケーション データ ライフサイクルをバックアップ、復旧、移動、管理し、ビジネスおよびサービス継続性のニーズを満たすことができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -37,7 +37,7 @@ Azure NetApp Files を使用する場合、次の考慮事項が適用されま�
 
 * Azure NetApp Files は、[選択された Azure リージョン][anf-regions]でのみ利用できます。
 * AKS クラスターの初期デプロイ後、Azure NetApp Files ボリュームのプロビジョニングを静的または動的に行うかを選択できます。
-* Azure NetApp Files で動的プロビジョニングを使用するには [Astra Trident](https://netapp-trident.readthedocs.io/) バージョン 19.07 以降をインストールして構成します。
+* Azure NetApp Files で動的プロビジョニングを使用するには [Astra Trident](https://docs.netapp.com/us-en/trident/index.html) バージョン 19.07 以降をインストールして構成します。
 
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files の構成
 
@@ -273,11 +273,11 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 ボリュームを動的にプロビジョニングするには、Astra Trident をインストールする必要があります。 Astra Trident は、Kubernetes 専用に開発された NetApp の動的ストレージ プロビジョナーです。 Astra Trident の業界標準である [Container Storage Interface (CSI)](https://kubernetes-csi.github.io/docs/) ドライバーを使用して、Kubernetes アプリケーションのストレージの消費を簡素化します。 Astra Trident は、Kubernetes クラスターにポッドとしてデプロイされ、Kubernetes ワークロードに動的ストレージ オーケストレーション サービスを提供します。
 
-詳細については、[ドキュメント](https://netapp-trident.readthedocs.io/en/latest/index.html)を参照してください。
+詳細については、[ドキュメント]https://docs.netapp.com/us-en/trident/index.html) を参照してください。
 
 次の手順に進む前に、次の手順を実行する必要があります。
 
-1. **Astra Trident をインストールします**。 Trident は、オペレーター、Helm チャート、または `tridentctl` を使用してインストールすることができます。 以下の手順では、オペレーターを使用して Astra Trident をインストールする方法について説明します。 他のインストール方法については、[インストール ガイド](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html)を参照してください。
+1. **Astra Trident をインストールします**。 Trident は、オペレーター、Helm チャート、または `tridentctl` を使用してインストールすることができます。 以下の手順では、オペレーターを使用して Astra Trident をインストールする方法について説明します。 他のインストール方法については、[インストール ガイド](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html)を参照してください。
 
 2. **バックエンドを作成します**。 Astra Trident に Azure NetApp Files サブスクリプションとボリュームを作成する場所を指示するために、バックエンドを作成します。 この手順では、前の手順で作成したアカウントの詳細が必要です。
 
@@ -285,10 +285,10 @@ Filesystem             Size  Used Avail Use% Mounted on
 
 このセクションでは、オペレーターを使用して Astra Trident をインストールする方法について説明します。 また、残りの他の方法でインストールすることもできます。
 
-* [Helm チャート](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/operator-deploy.html#deploy-trident-operator-by-using-helm)。
-* [tridentctl](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/tridentctl-deploy.html)。
+* [Helm チャート](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html)。
+* [`tridentctl`](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html).
 
-各オプションの仕組みを理解し、ご自身に最適なオプションを選択するには、[Trident のデプロイ](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html)に関するページを参照してください。
+各オプションの仕組みを理解し、ご自身に最適なオプションを選択するには、[Trident のデプロイ](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html)に関するページを参照してください。
 
 [GitHub リポジトリ](https://github.com/NetApp/trident/releases)から Astra Trident をダウンロードします。 目的のバージョンを選択し、インストーラー バンドルをダウンロードします。
 
@@ -322,7 +322,7 @@ $ kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml
 tridentorchestrator.trident.netapp.io/trident created 
 ```
 
-オペレーターによって、`TridentOrchestrator` の仕様に記載されているパラメータを使用してインストールが行われます。構成パラメーターやバックエンドの例については、広範な[インストール](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html)および[バックエンド ガイド](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/index.html)を参照してください。
+オペレーターによって、`TridentOrchestrator` の仕様に記載されているパラメータを使用してインストールが行われます。構成パラメーターやバックエンドの例については、広範な[インストール](https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html)および[バックエンド ガイド](https://docs.netapp.com/us-en/trident/trident-use/backends.html)を参照してください。
 
 Astra Trident がインストールされていることを確認します。 
 
@@ -511,9 +511,9 @@ Events:
 
 Astra Trident では、次のような Azure NetApp Files の多くの機能がサポートされています。
 
-* [ボリュームの拡張](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/vol-expansion.html)
-* [オンデマンドのボリューム スナップショット](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/snapshots.html)
-* [ボリュームのインポート](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/import.html)
+* [ボリュームの拡張](https://docs.netapp.com/us-en/trident/trident-use/vol-expansion.html)
+* [オンデマンドのボリューム スナップショット](https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html)
+* [ボリュームのインポート](https://docs.netapp.com/us-en/trident/trident-use/vol-import.html)
 
 ## <a name="next-steps"></a>次のステップ
 

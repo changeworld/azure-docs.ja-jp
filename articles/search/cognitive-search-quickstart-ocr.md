@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/07/2021
-ms.openlocfilehash: 84647ef7aef1955f03d8d5fd58f27c278c1e6247
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 68fc76ab80320a41cd9c9f0884dec8dc7771bccc
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716708"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065276"
 ---
 # <a name="quickstart-apply-ocr-and-image-analysis-using-the-import-data-wizard"></a>クイックスタート: データ インポート ウィザードを使用して OCR と画像分析を適用する
 
@@ -55,7 +55,9 @@ ms.locfileid: "129716708"
    1. "signs" という名前の[コンテナーを作成します](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 既定のパブリック アクセス レベルを使用します。
    1. "signs" コンテナーで、 **[アップロード]** を選択して、ローカルの **unsplash-images\jpg-signs** フォルダーからファイルをアップロードします。
 
-標識の写真を含む 10 個のファイルがあるはずです。 目印になる建物を格納した 2 つ目のサブフォルダーがあります。 検索サービスが Basic 以上の場合に、テキストの画像が含まれていないファイルの画像分析を評価するには、2 つ目のファイル セットを含めます。
+標識の写真を含む 10 個のファイルがあるはずです。
+
+目印になる建物を格納した 2 つ目のサブフォルダーがあります。 [Cognitive Services キーをアタッチする](cognitive-search-attach-cognitive-services.md)場合は、これらのファイルを含めて、埋め込みテキストを含まない画像ファイルで画像分析がどのように動作するかを確認することもできます。 このキーは、無料枠を超えるジョブに必要です。
 
 これでデータ インポート ウィザードに進む準備が整いました。
 

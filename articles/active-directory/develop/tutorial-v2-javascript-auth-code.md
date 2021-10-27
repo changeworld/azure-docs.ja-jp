@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 07/17/2020
+ms.date: 10/12/2021
 ms.author: marsma
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: d9944b2e3ac68cc2b04b4a6052e9dd0647fe91ad
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ffd447d4fcacad1185d8ad95778e0a9d22cb16ce
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229622"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066017"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -49,13 +49,13 @@ MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく�
 
 ## <a name="get-the-completed-code-sample"></a>完成したコード サンプルを入手する
 
-代わりに、このチュートリアルの完成したサンプル プロジェクトをダウンロードすることもできます。 Node.js などのローカル Web サーバーを使用してプロジェクトを実行するには、[ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) リポジトリを複製します。
+代わりに、このチュートリアルの完成したサンプル プロジェクトをダウンロードすることもできます。 [ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) リポジトリを複製します。 
 
 `git clone https://github.com/Azure-Samples/ms-identity-javascript-v2`
 
-その後、コード サンプルを実行前に構成するために、[構成手順](#register-your-application)に進みます。
+ダウンロードしたプロジェクトをローカル開発環境で実行するには、まず、「[プロジェクトを作成する](#create-your-project)」の手順 1 で説明されているように、アプリケーション用の localhost サーバーを作成します。 完了したら、[構成手順](#register-your-application)に進んでコード サンプルを構成できます。
 
-チュートリアルを続行してアプリケーションを自分でビルドする場合は、次のセクション「[前提条件](#prerequisites)」に進みます。
+チュートリアルを続行してアプリケーションを自分でビルドする場合は、次のセクション「[プロジェクトを作成する](#create-your-project)」に進みます。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 

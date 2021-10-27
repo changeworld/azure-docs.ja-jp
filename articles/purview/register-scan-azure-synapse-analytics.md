@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 26d4327c5763a1296cd492730004b80947269afa
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 507ea92f6aa50d4d1441874e8dc62bbb06621aec
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218339"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047401"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) の登録とスキャン
 
@@ -23,7 +23,7 @@ ms.locfileid: "129218339"
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Synapse Analytics (旧称 SQL DW) では、メタデータとスキーマをキャプチャするためにフルおよび増分スキャンがサポートされています。 また、スキャンでは、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+専用 SQL プール (旧称 SQL DW) では、メタデータとスキーマをキャプチャするためにフルおよび増分スキャンがサポートされています。 また、スキャンでは、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
 
 ### <a name="known-limitations"></a>既知の制限事項
 
@@ -33,11 +33,11 @@ Azure Synapse Analytics (旧称 SQL DW) では、メタデータとスキーマ�
 
 - データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
 - Azure Purview データ ソース管理者である必要があります
-- Purview アカウントと Azure Synapse Analytics 間のネットワーク アクセス。
+- Purview アカウントと Azure Synapse Analytics の専用 SQL プールの間のネットワーク アクセス。
  
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
-Azure Synapse Analytics の認証を設定するには、次の 3 つの方法があります。
+認証を設定するには、次の 3 つの方法があります。
 
 - マネージド ID
 - SQL 認証
@@ -48,7 +48,7 @@ Azure Synapse Analytics の認証を設定するには、次の 3 つの方法�
 
 ### <a name="managed-identity-recommended"></a>マネージド ID (推奨) 
    
-Purview アカウントには独自のマネージド ID があり、これは基本的に作成時の Purview の名前になっています。 「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md)」の前提条件とチュートリアルに従い、Purview の正確なマネージド ID 名を使用して Azure Synapse Analytics (旧称 SQL DW) に Azure AD ユーザーを作成する必要があります。
+Purview アカウントには独自のマネージド ID があり、これは基本的に作成時の Purview の名前になっています。 「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md)」の前提条件とチュートリアルに従い、Purview の正確なマネージド ID 名を使用して 専用 SQL プール (旧称 SQL DW) に Azure AD ユーザーを作成する必要があります。
 
 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
@@ -88,9 +88,9 @@ GO
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します 
 
-#### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>サービス プリンシパルに Azure Synapse Analytics (旧称 SQL DW) へのアクセス権を付与する
+#### <a name="granting-the-service-principal-access"></a>サービス プリンシパルへのアクセスの付与
 
-さらに、「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md)」の前提条件とチュートリアルに従って、Azure Synapse Analytics に Azure AD ユーザーを作成する必要もあります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
+さらに、「[Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md)」の前提条件とチュートリアルに従って、専用 SQL プールに Azure AD ユーザーを作成する必要もあります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -105,7 +105,7 @@ GO
 
 ### <a name="sql-authentication"></a>SQL 認証
 
-まだお持ちでない場合は、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1)」の手順に従って、Azure Synapse Analytics (旧称 SQL DW) のログインを作成できます。
+まだお持ちでない場合は、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1)」の手順に従って、専用 SQL プール (旧称 SQL DW) のログインを作成できます。
 
 選択した認証方法が **SQL 認証** の場合は、パスワードを取得して、キー コンテナーに格納する必要があります。
 
@@ -124,18 +124,16 @@ Purview で新しい SQL 専用プールを登録するには、次の手順を�
 1. ご自分の Purview アカウントに移動します。
 1. 左側のナビゲーションで **[Data Map]** を選択します。
 1. **[登録]** を選択します
-1. **[ソースの登録]** で、 **[SQL 専用プール (以前の SQL DW)]** を選択します。
+1. **[ソースの登録]** で、**[Azure SQL 専用プール (以前の SQL DW)]** を選択します。
 1. **[続行]** を選択します
 
-**[ソースの登録 (Azure Synapse Analytics)]** 画面で、次の操作を行います。
+**[ソースの登録]** 画面で、次のようにします。
 
-1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-2. お使いの Azure サブスクリプションを選択して、Azure Synapse ワークスペースをフィルター処理します。
-3. Azure Synapse ワークスペースを選択します。
+1. データ ソースがカタログに表示されるときの **名前** を入力します。
+2. Azure サブスクリプションを選択して、専用 SQL プールの検索結果を絞り込みます。
+3. 専用 SQL プールを選択します。
 4. コレクションを選択するか、新しいものを作成します (省略可能)。
 5. **[登録]** を選択してデータ ソースを登録します。
-
-:::image type="content" source="media/register-scan-azure-synapse-analytics/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
 ## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
 

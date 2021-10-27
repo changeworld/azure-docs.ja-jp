@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 11/05/2020
-  ms.openlocfilehash: b432bbee09865ae89aabc281f514ec6330fbd42d
-  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+  ms.openlocfilehash: fab3cb5e7cc0476128e55e2bc9a4c9abe5acde11
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/23/2021
-  ms.locfileid: "122697044"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130257976"
 landingContent:
 - title: 最新の機能
   linkLists:
@@ -55,22 +55,22 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: " Azure における Linux 仮想マシンの作成"
+    - text: Azure における Linux 仮想マシンの作成
       url: /learn/modules/create-linux-virtual-machine-in-azure/
-    - text: " Azure で Windows 仮想マシンを作成する"
+    - text: Azure で Windows 仮想マシンを作成する
       url: /learn/modules/create-windows-virtual-machine-in-azure/
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: SSH の問題をトラブルシューティングする
-      url: /troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection
-    - text: RDP の問題をトラブルシューティングする
-      url: /troubleshoot/azure/virtual-machines/rdp
-    - text: Linux VM が起動しない
-      url: /troubleshoot/azure/virtual-machines/boot-error-troubleshoot-linux
-    - text: Windows VM が起動しない
-      url: /troubleshoot/azure/virtual-machines/boot-error-troubleshoot
+    - text: トラブルシューティング ガイド
+      url: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
+    - text: デプロイに関する問題のトラブルシューティング
+      url: /troubleshoot/azure/virtual-machines/welcome-deployment-troubleshooting
+    - text: 割り当てエラーのトラブルシューティングを行う
+      url: /troubleshoot/azure/virtual-machines/allocation-failure
+    - text: 予期しない再起動のトラブルシューティング
+      url: /troubleshoot/azure/virtual-machines/understand-vm-reboot
     - text: Microsoft Q&A
       url: /answers/topics/azure-virtual-machines.html
 - title: リソース

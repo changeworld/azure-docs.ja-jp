@@ -11,12 +11,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: f3a665df26e504eee1c9bea77f8bf6bf5631193f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0a80fe8bc2cf2cfa86b5b8b1a9c78684d718e68f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591028"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038367"
 ---
 # <a name="network-routing-preference-for-azure-storage"></a>Azure Storage のネットワーク ルーティング優先設定
 
@@ -25,7 +25,7 @@ Azure ストレージ アカウントに対してネットワークの[ルーテ
 ルーティング優先設定の構成を使用すると、Premium ネットワークのパフォーマンスやコストに応じて、トラフィックを柔軟に最適化できます。 ルーティング優先設定を構成するときは、ストレージ アカウントのパブリック エンドポイントにトラフィックが送信される既定の方法を指定します。 また、ストレージ アカウント用にルート固有のエンドポイントを公開することもできます。
 
 > [!NOTE]
-> この機能は、premium パフォーマンス レベルまたはゾーン冗長ストレージ (ZRS) を使用するように構成されているストレージ アカウントではサポートされていません。
+> この機能は、Premium パフォーマンス ストレージ アカウントと、ゾーン冗長ストレージ (ZRS) を使用するように構成されているアカウントではサポートされていません。
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Microsoft グローバル ネットワークとインターネット ルーティングの比較
 

@@ -3,12 +3,12 @@ title: Azure Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
 ms.topic: overview
 ms.date: 05/05/2021
-ms.openlocfilehash: e731d45d527a3bb2a59e532065fefc78a3237fd5
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: bb039f53228b5b6abc05708ba7f6efd79c349672
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011233"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179547"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能  
 
@@ -30,6 +30,62 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 |--|--|--|
 | 10.0 | 2021 年 1 月 | 2021 年 10 月 |
 | 10.3 | 2021 年 4 月 | 2022 年 2 月 |
+
+## <a name="october-2021"></a>2021 年 10 月
+
+次の機能拡張は、Azure Defender for IoT のバージョン 10.5.2 で利用できます。
+
+- [PLC 動作モードの検出 (パブリック プレビュー)](#plc-operating-mode-detections-public-preview)
+
+- [PCAP API](#pcap-api)
+
+- [オンプレミスの管理コンソール監査](#on-premises-management-console-audit)
+
+- [Webhook 拡張](#webhook-extended)
+
+- [証明書のパスフレーズに対する Unicode サポート](#unicode-support-for-certificate-passphrases) 
+
+### <a name="plc-operating-mode-detections-public-preview"></a>PLC 動作モードの検出 (パブリック プレビュー)
+
+ユーザーは、PLC の動作モードの状態、変更、リスクを表示できるようになりました。 PLC の動作モードは、PLC の論理実行状態と物理キー状態 (物理キー スイッチが PLC に存在する場合) で構成されます。
+この新機能は、"*安全でない*" PLC を検出することでセキュリティを向上させるのに役立ち、その結果、PLC プログラムのダウンロードなどの悪意のある攻撃を防ぐのに役立ちます。 石油化学工場に対する 2017 年のトリトン攻撃は、このようなリスクの影響を示しています。
+また、この情報により、エンタープライズ PLC の動作モードに対する極めて重要な可視性を運用エンジニアに提供できます。
+
+#### <a name="what-is-an-unsecure-mode"></a>安全でないモードとは
+
+キー状態がプログラムとして検出された場合、または実行状態がリモートまたはプログラムとして検出された場合、PLC は Defender for IoT によって "*安全でない*" 状態として定義されます。
+
+#### <a name="visibility-and-risk-assessment"></a>可視性とリスク評価
+
+- デバイス インベントリを使用して、組織の PLC の PLC 状態とコンテキスト デバイス情報を表示します。 [デバイス インベントリ設定] ダイアログボックスを使用して、この列をインベントリに追加します。
+
+    :::image type="content" source="media/release-notes/device-inventory-plc.png" alt-text="PLC の動作モードを示すデバイス インベントリ。":::
+
+- [デバイスのプロパティ] 画面の [属性] セクションで、PLC ごとの PLC のセキュリティ保護状態と最後の変更情報を表示します。 キー状態がプログラムとして検出された場合、または実行状態がリモートまたはプログラムとして検出された場合、PLC は Defender for IoT によって "*安全でない*" 状態として定義されます。 [デバイスのプロパティ] の PLC の [セキュリティ保護] オプションには、false と表示されます。 詳細については、「[デバイスのプロパティを表示および管理する](how-to-work-with-the-sensor-device-map.md#view-and-manage-device-properties)」を参照してください。
+
+    :::image type="content" source="media/release-notes/attributes-plc.png" alt-text="PLC 情報を表示する属性画面。":::
+
+- PLC 操作モード情報を使用してデータ マイニングを作成することで、すべてのネットワーク PLC の実行状態とキーの状態のステータスを表示します。
+
+    :::image type="content" source="media/release-notes/data-mining-plc.png" alt-text="PLC オプションを示すデータ インベントリ画面。":::
+
+- リスク評価レポートを使用して、安全でないモードのネットワーク PLC の数と、安全でない PLC のリスクを軽減するために使用できる追加情報を確認します。
+
+### <a name="pcap-api"></a>PCAP API
+
+新しい PCAP API を使用すると、ユーザーはセンサー自体に直接アクセスして、または直接アクセスせずに、オンプレミスの管理コンソールを介してセンサーから PCAP ファイルを取得できます。 これを行うには、管理コンソールをプロキシとして使用します。
+
+### <a name="on-premises-management-console-audit"></a>オンプレミスの管理コンソール監査
+
+センサーのデプロイの監査ログが、オンプレミスの管理コンソールから使用できるようになりました。
+
+### <a name="webhook-extended"></a>Webhook 拡張
+
+Webhook 拡張を使用すると、Webhook アラートのすべての情報と追加のデータをエンドポイントに送信できます。
+
+### <a name="unicode-support-for-certificate-passphrases"></a>証明書のパスフレーズに対する Unicode サポート 
+
+センサー証明書のパスフレーズを操作するときに、Unicode 文字がサポートされるようになりました。 詳細については、「[証明書について](how-to-deploy-certificates.md#about-certificates)」を参照してください。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -103,20 +159,6 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 オンプレミスの管理コンソールに 2 つ目のネットワーク インターフェイスを追加することで、デプロイのセキュリティを強化できるようになりました。 この機能を使用すると、オンプレミスの管理において、セキュリティで保護された 1 つのネットワーク上にセンサーを接続する一方で、ユーザーは 2 つ目の別のネットワーク インターフェイスを介してオンプレミスの管理コンソールにアクセスできるようになります。
 
 この機能は、バージョン 10.2 のリリースのオンプレミスの管理コンソールで使用できます。
-
-### <a name="device-builder---new-micro-agent-public-preview"></a>デバイス ビルダー - 新しいマイクロ エージェント (パブリック プレビュー)
-
-新しいデバイス ビルダー モジュールが登場しました。 このモジュール (マイクロ エージェントと呼ばれます) では、次のことが可能です。
-
-- **Azure IoT Hub と Azure Defender for IoT との統合** - Azure IoT Hub と Azure Defender for IoT の両方で提供される監視オプションと統合することで、より強力なエンドポイント セキュリティを IoT デバイスに直接構築します。
-- **標準的な IoT オペレーティング システムをサポートする柔軟なデプロイ オプション** - Linux や Azure RTOS などの標準的な IoT オペレーティング システムをサポートし、バイナリ パッケージまたは変更可能なソース コードとしてデプロイできます。
-- **OS カーネルに依存しない最小限のリソース要件** - 占有領域が小さく、CPU 使用率が低く、OS カーネルに依存しません。
-- **セキュリティ態勢管理** - IoT デバイスのセキュリティ態勢を事前に監視します。
-- **継続的なリアルタイムの IoT/OT 脅威検出** - ボットネット、ブルート フォース攻撃、クリプト マイナー、疑わしいネットワーク アクティビティなどの脅威を検出します
-
-非推奨の Defender for IoT マイクロ エージェントのドキュメントは、*デバイス ビルダー向けのエージェントベースのソリューション > Classic* フォルダーに移動されます。
-
-この機能セットは、現在のパブリック プレビュー クラウド リリースで使用できます。
 
 ## <a name="january-2021"></a>2021 年 1 月
 

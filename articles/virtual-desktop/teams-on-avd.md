@@ -3,15 +3,15 @@ title: Microsoft Teams on Azure Virtual Desktop - Azure
 description: Microsoft Teams on Azure Virtual Desktop の使用方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/02/2021
+ms.date: 10/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 63c75636fcab47a31735b772f85a8dccbb9c65f5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7b2a0c17ef0e55dc4dbe583a2dc60845dde94224
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728450"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072387"
 ---
 # <a name="use-microsoft-teams-on-azure-virtual-desktop"></a>Microsoft Teams on Azure Virtual Desktop を使用する
 
@@ -51,7 +51,7 @@ Teams でメディアの最適化を有効にするには、ホストで次の�
 
 ### <a name="install-the-teams-websocket-service"></a>Teams WebSocket Service をインストールする
 
-最新の [Remote Desktop WebRTC Redirector Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWFYsj) を VM イメージにインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
+最新バージョンの [Remote Desktop WebRTC Redirector Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWNg9F) を VM イメージにインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
 
 #### <a name="latest-websocket-service-versions"></a>最新の WebSocket サービスのバージョン
 
@@ -59,9 +59,17 @@ Teams でメディアの最適化を有効にするには、ホストで次の�
 
 |Version        |リリース日  |
 |---------------|--------------|
+|1.1.2110.16001 |2021 年 10 月 15 日    |
 |1.0.2106.14001 |2021 年 7 月 29 日    |
 |1.0.2006.11001 |2020 年 7 月 28 日    |
 |0.11.0         |2020 年 5 月 29 日    |
+
+#### <a name="updates-for-version-11211016001"></a>バージョン 1.1.2110.16001 用の更新プログラム
+
+- 画面の共有時、画面が真っ暗になる問題を解消しました。 この問題が発生していた場合、Teams ウィンドウのサイズを変更し、この更新プログラムで解決されることを確認してください。 サイズの変更後、画面共有が再び機能し始めた場合、この更新プログラムでこの問題が解決されます。
+- これでホスト VM からミーティング、着信音、通知音量を制御できるようになりました。 この機能は、1.2.2459 以降の [Windows Desktop クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)でのみ使用できます。
+- これでインストーラーによって、更新プログラムがインストールされる前に Teams が閉じられるようになります。
+- 呼び出しウィンドウの終了後、全画面に戻らない問題を解決しました。
 
 #### <a name="updates-for-version-10210614001"></a>バージョン 1.0.2106.14001 用の更新プログラム
 

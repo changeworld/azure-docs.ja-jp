@@ -3,19 +3,19 @@ title: Azure Service Fabric のステートフル サービスの単体テスト
 description: Service Fabric のステートフル サービスの単体テストの概念と実践について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8247d9c71f73f00bd9b8235778f7256af72ed27
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75433909"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042619"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric のステートフル サービスの単体テスト
 
 この記事では、Service Fabric のステートフル サービスの単体テストの概念と実践について説明します。 複数のさまざまなコンテキストでアプリケーション コードがアクティブとして稼働するため、Service Fabric 内での単体テストには固有の考慮事項があります。 この記事では、アプリケーション コードに想定されるさまざまな実行コンテキストをすべてテストでカバーするために用いられる各種の実践について取り上げます。
 
 ## <a name="unit-testing-and-mocking"></a>単体テストとモック作成
-この記事の文脈での単体テストとは、テスト ランナー (MSTest、NUnit など) のコンテキスト内で実行できる自動化されたテストです。 この記事の単体テストでは、リモート リソース (データベース、RESTFul API など) に対する操作を実行しません。 これらのリモート リソースはモック作成する必要があります。 この記事の文脈では、モック作成によって、リモートリソースに対する戻り値の擬似的な再現、記録、制御を行います。
+この記事の文脈での単体テストとは、テスト ランナー (MSTest、NUnit など) のコンテキスト内で実行できる自動化されたテストです。 この記事の単体テストでは、リモート リソース (データベース、RESTful など) に対する操作を実行しません。 これらのリモート リソースはモック作成する必要があります。 この記事の文脈では、モック作成によって、リモートリソースに対する戻り値の擬似的な再現、記録、制御を行います。
 
 ### <a name="service-fabric-considerations"></a>Service Fabric の考慮事項
 Service Fabric のステートフル サービスに対する単体テストには、いくつかの考慮事項があります。 まず、サービス コードは、複数のノードで、かつさまざまなロールの下で実行されます。 単体テストですべてのケースを網羅するためには、それぞれのロールの下でコードを評価しなければなりません。 ロールの種類としては、Primary、Active Secondary、Idle Secondary、Unknown があります。 "None" というロールもありますが、このロールは、Service Fabric によって無効または NULL サービスと見なされるので、通常は特にテストでカバーする必要はありません。 次に、各ノードのロールはそのときどきで変化します。 すべてのケースを網羅するためには、ロールを変化させながらコードの実行パスをテストする必要があります。

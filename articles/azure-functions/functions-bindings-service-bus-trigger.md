@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: d6685d86cb9c807db130b10a9573c3ca44ec911d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56f0a58d1713a2ddf47734686214846c7765baf5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763796"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130137873"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions の Azure Service Bus トリガー
 
@@ -331,12 +331,14 @@ def main(msg: func.ServiceBusMessage):
 |**queueName**|**QueueName**|監視するキューの名前。  トピックではなくキューを監視する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックを監視する場合にのみ設定します。|
-|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 <br><br>[バージョン 5.x またはそれ以降の拡張機能](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)を使用している場合は、接続文字列の代わりに、接続を定義する構成セクションへの参照を指定できます。 「[接続](./functions-reference.md#connections)」を参照してください。|
+|**connection**|**接続**| Service Bus への接続方法を指定するアプリ設定または設定コレクションの名前。 「[接続](#connections)」を参照してください。|
 |**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が **管理** アクセス許可を持つことを示します。 **管理** アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Service Bus SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
 |**isSessionsEnabled**|**IsSessionsEnabled**|[セッション対応の](../service-bus-messaging/message-sessions.md)キューまたはサブスクリプションに接続する場合は `true`。 それ以外の場合は `false` (既定値)。|
 |**autoComplete**|**オートコンプリート**|`true`トリガーが処理後に自動的に complete を呼び出す必要があるか、または関数コードで complete を手動で呼び出すかどうか。<br><br>`false` に設定することは、C# でのみサポートされています。<br><br>`true` に設定した場合、関数の実行が正常に完了するとトリガーによって自動的にメッセージが完了され、それ以外の場合はメッセージが破棄されます。<br><br>`false` に設定する場合は、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) を呼び出し、メッセージを完了、破棄、または配信不能にする必要があります。 例外がスローされた場合 (かつ `MessageReceiver` メソッドが呼び出されなかった場合)、ロックは維持されます。 ロックが期限切れになると、メッセージはキューに再登録されて `DeliveryCount` はインクリメントされ、ロックは自動的に更新されます。<br><br>C# 以外の関数では、関数で例外が発生すると、ランタイムによってバックグラウンドで `abandonAsync` が呼び出されます。 例外が発生しなかった場合は、バックグラウンドで `completeAsync` が呼び出されます。 このプロパティは Azure Functions 2.x 以降でのみ利用できます。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-service-bus-connections](../../includes/functions-service-bus-connections.md)]
 
 ## <a name="usage"></a>使用法
 
@@ -372,11 +374,6 @@ def main(msg: func.ServiceBusMessage):
 5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 名前空間の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) の `ServiceBusReceivedMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
 
 - [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
-
-### <a name="additional-types"></a>その他の型 
-5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus 名前空間](/dotnet/api/microsoft.azure.servicebus.message)の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) の `ServiceBusReceivedMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
-
-- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 

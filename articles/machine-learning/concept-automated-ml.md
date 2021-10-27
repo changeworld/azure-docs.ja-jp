@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: 51094590cde45093731e1ac593f4f706e3dad660
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 7f6f3a4b24753cf20284f69b2a1e2a06e6cb3522
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427022"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998403"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -42,9 +42,10 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 次の設定を使用して、自動 ML の実験を構成できます。 
 
 | |Python SDK|Studio Web エクスペリエンス|
-----|:----:|:----:
+|----|:----:|:----:|
 |**データをトレーニングおよび検証セットに分割する**| ✓|✓
 |**ML タスクのサポート: 分類、回帰、予測**| ✓| ✓
+|**Computer Vision タスクのサポート (プレビュー): 画像分類、物体検出、インスタンスのセグメント化**| ✓| 
 |**プライマリ メトリックに基づいて最適化する**| ✓| ✓
 |**Azure ML コンピューティングをコンピューティング ターゲットとしてサポートする** | ✓|✓
 |**予測期間、ターゲットのラグ、ローリング期間を構成する**|✓|✓
@@ -82,7 +83,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 |**ガードレールを取得する**| ✓|✓|
 |**実行を一時停止および再開する**| ✓| |
 
-## <a name="when-to-use-automl-classification-regression--forecasting"></a>AutoML をいつ使用するか: 分類、回帰、予測
+## <a name="when-to-use-automl-classification-regression-forecasting--computer-vision"></a>AutoML をいつ使用するか: 分類、回帰、予測、Computer Vision
 
 指定したターゲット メトリックを使用して自分の代わりに Azure Machine Learning にモデルのトレーニングと調整を行わせる場合は、自動 ML を適用します。 自動 ML を使うと、誰でも機械学習モデルの開発プロセスを使用でき、ユーザーはデータ サイエンスの専門知識に関係なく、どの問題についてもエンド ツー エンドの機械学習パイプラインを識別することができます。
 
@@ -125,13 +126,43 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 
 予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [売上予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需要予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)、[飲料生産の予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
+### <a name="computer-vision-preview"></a>Computer Vision (プレビュー)
+
+> [!IMPORTANT]
+> 現在、この機能はパブリック プレビュー段階にあります。 このプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+画像の自動 ML (プレビュー) では、Computer Vision タスクのサポートが追加されます。これにより、画像分類や物体検出のようなシナリオで、画像データでトレーニングされたモデルを簡単に生成できます。 
+
+この機能を使用して、次のことができます。 
+ 
+* [Azure Machine Learning のデータのラベル付け](how-to-create-labeling-projects.md)機能とシームレスに統合する
+* ラベル付けされたデータを使用して画像モデルを生成する
+* モデル アルゴリズムを指定し、ハイパーパラメーターを調整することで、モデルのパフォーマンスを最適化します。 
+* 結果のモデルを Web サービスとして Azure Machine Learning でダウンロードまたはデプロイします。 
+* Azure Machine Learning [MLOps](concept-model-management-and-deployment.md) と [ML パイプライン](concept-ml-pipelines.md)の機能を活用して、大規模に運用できるようにします。 
+
+ビジョン タスク用の AutoML モデルの作成は、Azure ML Python SDK を介してサポートされます。 結果として得られる実験実行、モデル、出力には、Azure Machine Learning スタジオ UI からアクセスできます。
+
+[Computer Vision モデルの AutoML トレーニングを設定する](how-to-auto-train-image-models.md)方法を確認してください。
+
+![Computer Vision タスクの例。 画像の引用元: http://cs231n.stanford.edu/slides/2021/lecture_15.pdf](./media/concept-automated-ml/automl-computer-vision-tasks.png) 画像の引用元: http://cs231n.stanford.edu/slides/2021/lecture_15.pdf
+
+画像の自動 ML では、次の Computer Vision タスクがサポートされます。 
+
+タスク | 説明
+----|----
+複数クラスの画像分類 | クラスのセットから 1 つのラベルのみに画像が分類されるタスク (例: 各画像は、"猫" または "犬" または "アヒル" の画像として分類されます)
+複数ラベルの画像分類 | ラベルのセットから 1 つまたは複数のラベルが画像に適用される可能性のあるタスク (例: 1 つの画像に "猫" と "犬" の両方がラベル付けされる可能性があります)
+オブジェクトの検出| 画像内の物体を識別し、境界ボックスを使用して各物体を特定するタスク (例: 画像内のすべての犬と猫を見つけ、それぞれの周囲に境界ボックスを描画します)。
+インスタンスのセグメント化 | 画像内の物体をピクセル レベルで識別し、画像の各物体の周囲にポリゴンを描画するタスク。
+
 ## <a name="how-automated-ml-works"></a>自動 ML の動作
 
 トレーニング中、Azure Machine Learning は、さまざまなアルゴリズムとパラメーターを試行する多数のパイプラインを並列に作成します。 サービスは、機能選択と組み合わせた ML アルゴリズムを介して反復し、それぞれの反復で、トレーニング スコアを含むモデルを生成します。 このスコアが高いほど、モデルがデータに「適合している」と見なされます。  実験に定義されている終了基準に到達すると停止します。 
 
 **Azure Machine Learning** を利用するとき、次の手順で自動 ML トレーニング実験を設計し、実験できます。
 
-1. 解決すべき **ML 問題を特定します**。分類、予測、または回帰になります。
+1. 解決すべき **ML 問題を特定します**。分類、予測、回帰、または Computer Vision (プレビュー)。
 
 1. **Python SDK と Studio Web エクスペリエンスのどちらを使用するかを選択します**。[Python SDK と Studio Web エクスペリエンス](#parity)の同等性を確認してください。
 
@@ -154,7 +185,6 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 ログに記録された実行情報を調べることもできます。これには、実行中に収集した[メトリックが含まれています](how-to-understand-automated-ml.md)。 トレーニングを実行すると、モデルおよびデータ前処理を含む Python シリアル化オブジェクト (`.pkl` ファイル) が生成されます。
 
 モデルの構築は自動ですが、生成されたモデルにとって[特徴がどれだけ重要であるか、または関連性があるか](how-to-configure-auto-train.md#explain)を学ぶこともできます。
-
 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
@@ -221,20 +251,20 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 ローカルとリモートのどちらを使用するかを選択する場合は、以下の長所と短所を考慮してください。
 
 |  | 長所 (利点)  |短所 (欠点)  |
-|---------|---------|---------|---------|
+|---------|---------|---------|
 |**ローカル コンピューティング先** |  <li> 環境の起動時間がかからない   | <li>  機能のサブセット<li>  実行を並列化できない <li> 大規模なデータには適さない。 <li>トレーニング中のデータ ストリーミングがない <li>  DNN ベースの特徴量化がない <li> Python SDK のみ |
 |**リモート ML コンピューティング クラスター**|  <li> 機能の完全なセット <li> 子実行の並列化 <li>   大規模なデータのサポート<li>  DNN ベースの特徴量化 <li>  必要に応じたコンピューティング クラスターの動的スケーラビリティ <li> コードなしのエクスペリエンス (Web UI) も使用可能  |  <li> クラスター ノードの起動時間 <li> 子実行ごとの起動時間    |
 
 ### <a name="feature-availability"></a>使用可能な機能 
 
- 次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 
+次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 
 
 | 機能                                                    | Remote | ローカル | 
 |------------------------------------------------------------|--------|-------|
 | データ ストリーミング (大規模なデータのサポート、最大 100 GB)          | ✓      |       | 
 | DNN-BERT ベースのテキストの特徴量化とトレーニング             | ✓      |       |
 | すぐに使用できる GPU サポート (トレーニングと推論)        | ✓      |       |
-| 画像の分類とラベル付けのサポート                  | ✓      |       |
+| 画像分類 (プレビュー) とラベル付けのサポート        | ✓      |       |
 | 予測のための自動 ARIMA、Prophet、および ForecastTCN モデル | ✓      |       | 
 | 並列での複数の実行/反復                       | ✓      |       |
 | AutoML スタジオ Web エクスペリエンス UI で解釈可能なモデルを作成する      | ✓      |       |
@@ -243,6 +273,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 | Azure ML パイプライン ワークフローのサポート                         | ✓      |       |
 | 実行の継続                                             | ✓      |       |
 | 予測                                                | ✓      | ✓     |
+| Computer Vision (プレビュー)                                  | ✓      |       |
 | ノートブックで実験を作成して実行する                    | ✓      | ✓     |
 | UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |
 | データ ガードレール                                            | ✓      | ✓     |
@@ -266,8 +297,10 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 チュートリアルでは、AutoML シナリオのサンプルを端から端まで紹介します。
 + **コード ファースト エクスペリエンス** については、「[チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする](tutorial-auto-train-models.md)」に従ってください。
 
- + **わずかなコードまたはコードなしのエクスペリエンス** については、「[チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする](tutorial-first-experiment-automated-ml.md)」を参照してください。
++ **わずかなコードまたはコードなしのエクスペリエンス** については、「[チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする](tutorial-first-experiment-automated-ml.md)」を参照してください。
 
++ **AutoML を使用した Computer Vision モデルのトレーニングについては、**「[チュートリアル: AutoML と Python を使用して物体検出モデル (プレビュー) をトレーニングする](tutorial-auto-train-image-models.md)」を参照してください。
+   
 操作方法の記事では、自動 ML が提供する機能について詳しく説明しています。 たとえば、次のように入力します。 
 
 + 自動トレーニング実験の設定を構成してください
@@ -276,6 +309,8 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 
 +  [時系列データを使用して予測モデルをトレーニングする](how-to-auto-train-forecast.md)方法について学習します。
 
++  [Python を使用して Computer Vision モデルをトレーニングする](how-to-auto-train-image-models.md)方法について学習します。
+   
 ### <a name="jupyter-notebook-samples"></a>Jupyter Notebook のサンプル 
 
 [GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)で詳しいコード サンプルやユース ケースを確認してください。

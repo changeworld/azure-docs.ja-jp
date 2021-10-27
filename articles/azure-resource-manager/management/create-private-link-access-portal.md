@@ -3,12 +3,12 @@ title: リソースを管理するためのプライベート リンクを作成
 description: Azure portal を使用して、リソースを管理するためのプライベート リンクを作成します。
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: efe1fdb47bf550b996f4f44eed9f2d41f2a1083d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 4d829dbc75aa384e57f706f3e689e8b36365a9c1
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227304"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137761"
 ---
 # <a name="use-portal-to-create-private-link-for-managing-azure-resources"></a>ポータルを使用して、Azure リソースを管理するためのプライベート リンクを作成します
 
@@ -38,7 +38,7 @@ ms.locfileid: "123227304"
 
 次に、このリソース管理のプライベート リンクを参照するプライベート エンドポイントを作成します。
 
-1. **[Private Link センター]** に移動します。 **[プライベート リンクの作成]** を選択します。
+1. **[Private Link センター]** に移動します。 **[プライベート エンドポイントの作成]** を選択します。
 
    :::image type="content" source="./media/create-private-link-access-portal/private-link-center.png" alt-text="プライベート リンク センターを選択します":::
 

@@ -138,6 +138,8 @@
           href: how-to-dynatrace-one-agent-monitor.md
         - name: New Relic Java インプロセス エージェント
           href: how-to-new-relic-monitor.md
+        - name: AppDynamics インプロセス エージェント
+          href: how-to-appdynamics-java-agent-monitor.md
         - name: アプリのライフサイクル イベントを監視する
           href: monitor-app-lifecycle-events.md
     - name: ネットワーク

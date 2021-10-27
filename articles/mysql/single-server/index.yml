@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 3986e2b63db40b2222bcb37fc69a8913ebe2ef63
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: fdf4c52b5f5b7fdc212d887d5b22ea1839fcb089
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124796877"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130214998"
 landingContent:
 - title: シングル サーバーについて
   linkLists:
@@ -95,6 +95,10 @@ landingContent:
     links:
     - text: サーバー パラメーターの構成
       url: ../howto-server-parameters.md
+    - text: Azure Database for MySQL への移行に使用する適切なツールを選択する
+      url: ../how-to-decide-on-right-migration-tools.md
+    - text: 単一サーバーからフレキシブル サーバーに移行する
+      url: ../howto-migrate-single-flexible-minimum-downtime.md
     - text: データ移行サービスを使用して移行する
       url: ../howto-migrate-online.md
     - text: ダンプと復元を使用して移行する

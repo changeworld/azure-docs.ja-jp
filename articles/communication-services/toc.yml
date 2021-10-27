@@ -123,8 +123,8 @@ items:
             href: concepts/call-flows.md
           - name: 通話フローのトポロジ
             href: concepts/detailed-call-flows.md
-          - name: 通話の診断
-            href: concepts/voice-video-calling/call-diagnostics.md
+          - name: ユーザー向け診断
+            href: concepts/voice-video-calling/user-facing-diagnostics.md
           - name: Web のベスト プラクティス
             href: concepts/best-practices.md
           - name: 既知の問題

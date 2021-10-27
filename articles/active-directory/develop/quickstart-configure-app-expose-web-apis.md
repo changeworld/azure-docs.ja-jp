@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 820bc7dfe9123db495c151cd5cd0ea5ae337619f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d5f4a92955aab2d920c21e73ec71bdf56bf76e9
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103976"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044348"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
@@ -55,6 +55,8 @@ Web API を登録すると、スコープを追加する準備は完了です。
 1. まだ構成していない場合は、 **[アプリケーション ID URI]** を設定するように求められます。
 
    アプリ ID URI は、API のコードで参照するスコープのプレフィックスとして機能し、グローバルに一意である必要があります。 指定されている既定値 (`api://<application-client-id>` 形式) を使用するか、`https://contoso.com/api` のようにより読みやすい URI を指定できます。
+   
+   有効なアプリ ID URI パターンの詳細については、[Azure AD アプリ マニフェスト リファレンス](reference-app-manifest.md)を参照してください。
 
 1. 次に、 **[スコープの追加]** ペインでスコープの属性を指定します。 このチュートリアルでは、例の値を使用するか、独自の値を指定できます。
 

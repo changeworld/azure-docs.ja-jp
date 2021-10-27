@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 09/16/2020
-ms.openlocfilehash: 48d037e4fe18f214af0f5ecaf9eb4e9b7e3ed59e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/13/2021
+ms.openlocfilehash: 1bc89a91bde0cc720b56f52900c2e0b57542dfa4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735582"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984159"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>高密度エラスティック プールでのリソース管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,6 +37,8 @@ Azure SQL Database では、これらの目標を達成するために、複数�
 > アクティブなデータベースが多数ある高密度プールでは、プール内のデータベースの数を、[DTU](resource-limits-dtu-elastic-pools.md) および[仮想コア](resource-limits-vcore-elastic-pools.md)のエラスティック プールについて記載された最大数まで増やすことができない可能性があります。
 >
 > リソースの競合やパフォーマンスの問題を発生させることなく高密度プールに配置できるデータベースの数は、同時にアクティブになっているデータベースの数と、各データベースのユーザー ワークロードによるリソース消費量によって決まります。 この数は、ユーザー ワークロードの変化に応じて変わる可能性があります。
+> 
+> また、データベースあたりの最小仮想コア数またはデータベース設定あたりの最小 DTU が 0 よりも大きい値に設定されている場合、プール内のデータベースの最大数は暗黙的に制限されます。 詳細については、「[プールされた仮想コア データベースのデータベース プロパティ](resource-limits-vcore-elastic-pools.md#database-properties-for-pooled-databases)」、および「[プールされた DTU データベースのデータベース プロパティ](resource-limits-dtu-elastic-pools.md#database-properties-for-pooled-databases)」を参照してください。
 
 高密度のプールでリソースの競合が発生する場合、お客様は次の 1 つまたは複数の操作を選択して軽減できます。
 
@@ -75,6 +77,9 @@ Azure SQL Database では、この種の監視に関連する複数のメトリ�
 |[sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)|過去 32 分間のワークロード グループ使用率の統計が返されます。 各行は 20 秒間隔を表します。 `delta_` 列では、間隔の間の各統計の変化が返されます。|
 |||
 
+> [!TIP]
+> サーバー管理者以外のプリンシパルを使用して、これらおよび他の動的管理ビューに対してクエリを実行するには、このプリンシパルを`##MS_ServerStateReader##`[サーバー ロール](security-server-roles.md)に追加します。
+
 これらのビューを使って、リソースの使用率を監視し、ほぼリアルタイムでリソースの競合のトラブルシューティングを行うことができます。 プライマリ レプリカおよび読み取り可能なセカンダリ レプリカ (geo レプリカを含む) のユーザー ワークロードは、`SloSharedPool1` リソース プールと `UserPrimaryGroup.DBId[N]` ワークロード グループに分類されます。`N` はデータベース ID の値を表します。
 
 高密度プールを使用しているお客様は、現在のリソース使用率を監視するだけでなく、リソース使用率の履歴データを別のデータ ストアに保持することもできます。 このデータを予測分析に使用し、過去および季節の傾向に基づいてリソース使用率を事前に管理できます。
@@ -104,9 +109,7 @@ Azure SQL Database では、この種の監視に関連する複数のメトリ�
 
 **サーバーを過度に高密度にするのを避ける**。 Azure SQL Database では、サーバーあたり最大 5,000 個のデータベースが[サポート](./resource-limits-logical-server.md)されています。 何千ものデータベースを含むエラスティック プールを使用しているお客様は、データベースの総数をサポートされている上限以下にして、1 台のサーバーに複数のエラスティック プールを配置することを検討できます。 しかし、何千ものデータベースが含まれるサーバーでは、運用上の課題が生じます。 たとえば、ポータルでのデータベースの表示など、サーバー上のすべてのデータベースを列挙する必要がある操作は遅くなります。 サーバー レベルのログインやファイアウォール規則の正しくない変更などの操作エラーは、多くのデータベースに影響します。 サーバーを誤って削除すると、削除したサーバー上のデータベースを復旧するために Microsoft サポートによる支援が必要になり、影響を受けるすべてのデータベースで長時間の停止が発生します。
 
-サーバーあたりのデータベースの数を、サポートされている最大数より少ない数に制限することをお勧めします。 多くのシナリオでは、サーバーあたり最大 1,000 から 2,000 個のデータベースを使用するのが最適です。 サーバーを誤って削除する可能性を減らすために、サーバーまたはそのリソース グループに[削除ロック](../../azure-resource-manager/management/lock-resources.md)を設定することをお勧めします。
-
-以前は、同じサーバー上でエラスティック プール内へ、エラスティック プール外へ、またはエラスティック プール間でデータベースを移動する操作を含む特定のシナリオは、サーバー間でデータベースを移動するより高速でした。 現在では、すべてのデータベースの移動は、転送元と転送先のサーバーに関係なく、同じ速度で実行されます。
+サーバーあたりのデータベースの数は、サポートされている最大数より少ない数に制限することをお勧めします。 多くのシナリオでは、サーバーあたり最大 1,000 から 2,000 個のデータベースを使用するのが最適です。 サーバーを誤って削除する可能性を減らすために、サーバーまたはそのリソース グループに[削除ロック](../../azure-resource-manager/management/lock-resources.md)を設定してください。
 
 ## <a name="examples"></a>例
 

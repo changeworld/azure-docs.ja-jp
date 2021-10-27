@@ -1,6 +1,6 @@
 ---
 title: 分析データにプログラムでアクセスするための前提条件
-description: プログラムを使用してコマーシャル マーケットプレースの分析データにアクセスする前に満たす必要がある要件について説明します。
+description: プログラムを使用して、パートナー センターでコマーシャル マーケットプレースの分析データにアクセスする前に満たす必要がある要件について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
@@ -8,12 +8,12 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: a3c27a8e91ef1f202fbc757eb1a21eeddfc1d3d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 842314bb514f74de73ab4eb077b09057ea914d50
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748278"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064174"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>分析データにプログラムでアクセスするための前提条件
 
@@ -34,8 +34,8 @@ Azure portal で作成した Azure AD アプリケーションをパートナー
 1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 1. 右上にある歯車アイコンを選択し、 **[アカウント設定]** を選択します。
 1. **[アカウント設定]** メニューで、 **[ユーザー管理]** を選択します。
-1. **[Azure AD アプリケーション]** を選択し、 **[+ Azure AD アプリケーションの作成]** を選択します。
-1. Azure portal で作成した Azure AD アプリケーションを選択し、 **[次へ]** を選択します。
+1. **[Azure AD アプリケーション]** を選択し、**[+ Azure AD アプリケーションの作成]** を選択します。
+1. Azure portal で作成した Azure AD アプリケーションを選択し、**[次へ]** を選択します。
 1. **[マネージャー (Windows)]** チェックボックスをオンにして、 **[追加]** を選択します。
 
     :::image type="content" source="./media/analytics-programmatic-access/azure-ad-roles.png" alt-text="ロールを選択するためのチェックボックスが表示されている [Azure AD アプリケーションの作成] ページを示しています。":::

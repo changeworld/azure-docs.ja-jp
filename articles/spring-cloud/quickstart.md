@@ -4,16 +4,16 @@ description: このクイックスタートでは、Spring Cloud アプリケー
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/23/2020
+ms.date: 10/12/2021
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 7976adb7fa4f9b1bfa8f8a2bac1a2c055e28ae31
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 33718af136a6f9675e7cc9360f7f18dd79935e09
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855386"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984512"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
 
@@ -24,7 +24,6 @@ ms.locfileid: "129855386"
 > Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
 
 このクイックスタートでは、次の方法について説明します。
-
 > [!div class="checklist"]
 > * 基本的な Steeltoe .NET Core プロジェクトを生成する
 > * Azure Spring Cloud サービス インスタンスをプロビジョニングする
@@ -333,16 +332,17 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 * [JDK 8 または JDK 11 をインストールする](/java/azure/jdk/)
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
-* (オプション) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
+* (省略可能) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
+* (省略可能) [IntelliJ IDEA をインストールする](https://www.jetbrains.com/idea/)
 * (オプション) [Azure Toolkit for IntelliJ をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する
-* (省略可能) [Maven をインストールする](https://maven.apache.org/download.cgi) Azure Cloud Shell を使用する場合、このインストールは不要です。
+* (省略可能) [Maven をインストールする](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) Azure Cloud Shell を使用する場合、このインストールは不要です。
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud プロジェクトを生成する
 
-[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) を開始して、Azure Spring Cloud に対して推奨される依存関係があるサンプル プロジェクトを生成します。 このリンクでは、次の URL を使用して既定の設定が提供されます。 
+[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-config-client) を開始して、Azure Spring Cloud に対して推奨される依存関係があるサンプル プロジェクトを生成します。 このリンクでは、次の URL を使用して既定の設定が提供されます。 
 
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-config-client
 ```
 次の図は、このサンプル プロジェクトに対して推奨される Initializr 設定を示しています。 
 
@@ -350,7 +350,8 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5
 
 ![Initializr のページ](media/spring-cloud-quickstart-java/initializr-page.png)
 
-1. すべての依存関係が設定されたら、 **[生成]** を選択します。 パッケージをダウンロードしてアンパックし、次のように `src/main/java/com/example/hellospring/HelloController.java` を追加して、単純な Web アプリケーション用の Web コントローラーを作成します。
+1. すべての依存関係が設定されたら、 **[生成]** を選択します。 
+1. パッケージをダウンロードしてアンパックし、次の内容を含むファイル *src/main/java/com/example/hellospring/HelloController.java* を追加して、単純な Web アプリケーション用の Web コントローラーを作成します。
 
     ```java
     package com.example.hellospring;
@@ -375,9 +376,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5
 
 1. 新しいタブで、[Azure portal](https://ms.portal.azure.com/) を開きます。
 
-2. 上部の検索ボックスから *Azure Spring Cloud* を探します。
+2. 上部の検索ボックスから **Azure Spring Cloud** を探します。
 
-3. その結果から *[Azure Spring Cloud]* を選択します。
+3. その結果から **[Azure Spring Cloud]** を選択します。
 
     ![ASC アイコンでの開始](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
@@ -434,32 +435,32 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5
 1. アプリの Jar ファイルをデプロイします (Windows では `target\hellospring-0.0.1-SNAPSHOT.jar`)。
 
     ```azurecli
-    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --artifact-path <jar file path>
+    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --artifact-path <jar file path>/hellospring-0.0.1-SNAPSHOT.jar
     ```
 
 1. アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** ブレードに移動します。 アプリケーションの状態が表示されるはずです。
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
-次の手順では、Azure Spring Cloud 用の IntelliJ プラグインを使用して、IntelliJ IDEA でサンプル アプリをデプロイします。
+次の手順では、Azure Spring Cloud 用の IntelliJ プラグインを使用して、IntelliJ IDEA にサンプル アプリをデプロイします。
 
 ### <a name="import-project"></a>プロジェクトのインポート
 
-1. IntelliJ の **[Welcome]\(ようこそ\)** ダイアログを開き、 **[Import Project]\(プロジェクトのインポート\)** を選択してインポート ウィザードを開きます。
-1. `hellospring` フォルダーを選択します。
+1. IntelliJ の **[Welcome]\(ようこそ\)** ダイアログを開き、 **[Open]\(開く\)** を選択してインポート ウィザードを開きます。
+1. **hellospring** フォルダーを選択します。
 
     ![プロジェクトのインポート](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
-Azure にデプロイするには、Azure アカウントでサインインし、ご自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
+Azure にデプロイするには、Azure アカウントでサインインし、自分のサブスクリプションを選択する必要があります。  サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
-1. IntelliJ のプロジェクト エクスプローラーでプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
+1. IntelliJ のプロジェクト エクスプローラーで対象のプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
 
-    [ ![Azure 1 へのデプロイ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png) ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
+    [![Azure へのデプロイ 1](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png)](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
 1. **[Name]\(名前\)** フィールドのアプリの名前はそのまま使用します。 **[Name]\(名前\)** は、アプリ名ではなく構成を参照します。 通常、ユーザーはこれを変更する必要はありません。
-1. **[Artifact]\(成果物\)** ボックスで、 *[hellospring-0.0.1-SNAPSHOT.jar]* を選択します。
+1. **[Artifact]\(成果物\)** テキストボックスで、 *[Maven : com.example:hellospring-0.0.1-SNAPSHOT]* を選択します。
 1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションを確認します。
 1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
@@ -474,7 +475,7 @@ Azure にデプロイするには、Azure アカウントでサインインし�
 
 デプロイが完了したら、`https://<service instance name>-hellospring.azuremicroservices.io/` でアプリにアクセスできるようになります。
 
-[ ![ブラウザーからアプリにアクセスする](media/spring-cloud-quickstart-java/access-app-browser.png) ](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
+[![ブラウザーからアプリにアクセスする](media/spring-cloud-quickstart-java/access-app-browser.png)](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
 
 ## <a name="streaming-logs-in-real-time"></a>リアルタイムでログをストリーミングする
 
@@ -500,17 +501,17 @@ az spring-cloud app logs -n hellospring -s <service instance name> -g <resource 
 1. ドロップダウン リストから **[Streaming Logs]\(ストリーミング ログ\)** を選択します。
 1. インスタンスを選択します。
 
-    [ ![ストリーミング ログの選択](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png) ](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png)
+    [![ストリーミング ログの選択](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png)](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png)
 
 1. ストリーミング ログが出力ウィンドウに表示されます。
 
-    [ ![ストリーミング ログの出力](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png) ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
+    [![ストリーミング ログの出力](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
 
 ---
 
 高度なログ分析機能については、[Azure portal](https://portal.azure.com/) のメニューで **[ログ]** タブにアクセスしてください。 ここで、ログの待ち時間は数分です。
 
-[ ![Logs Analytics](media/spring-cloud-quickstart-java/logs-analytics.png) ](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
+[![Logs Analytics](media/spring-cloud-quickstart-java/logs-analytics.png)](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
 
 ::: zone-end
 
@@ -519,7 +520,7 @@ az spring-cloud app logs -n hellospring -s <service instance name> -g <resource 
 前の手順で作成した Azure リソースは、サブスクリプションに残っている間は課金され続けます。 これらのリソースが今後は必要ないと予想される場合は、ポータルから、または Azure CLI で次のコマンドを実行して、このリソース グループを削除してください。
 
 ```azurecli
-az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
+az group delete --name <your resource group name> --yes
 ```
 
 ## <a name="next-steps"></a>次の手順

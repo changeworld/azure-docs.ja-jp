@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 86a998e304755085a9ae1e15e011df3b242c4df8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 97e7c6a21eaf33e2f32d3277e14b4da74decc6cc
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725152"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132552"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender と Azure Sentinel の統合
 
@@ -31,6 +31,8 @@ ms.locfileid: "121725152"
 > **Microsoft 365 Defender** は、以前は **Microsoft Threat Protection** または **MTP** と呼ばれていました。
 >
 > **Microsoft Defender for Endpoint** は、以前は **Microsoft Defender Advanced Threat Protection** または **MDATP** と呼ばれていました。
+>
+> **Microsoft Defender for Office 365** は、以前は **Office 365 Advanced Threat Protection** と呼ばれていました。
 >
 > 以前の名前がしばらくの間使用されることがあります。
 
@@ -94,13 +96,13 @@ Microsoft 365 Defender では、1 つのインシデントからのすべての�
 
 ## <a name="advanced-hunting-event-collection"></a>高度なハンティング イベント収集
 
-Microsoft 365 Defender コネクタを使用すると、**高度なハンティング** イベント (生のイベント データの種類) を、Microsoft 365 Defender およびそのコンポーネント サービスから Azure Sentinel にストリーミングすることもできます。 現在、[Microsoft Defender For Endpoint (MDATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) の[高度なハンティング](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) イベントを収集して、それらを Azure Sentinel ワークスペースの専用のテーブルに直接ストリーミングすることができます。 これらのテーブルは Microsoft 365 Defender ポータルで使用されているのと同じスキーマに基づいて構築されており、高度なハンティング イベントの完全なセットに完全にアクセスして、次のことを行うことができます。
+Microsoft 365 Defender コネクタを使用すると、**高度なハンティング** イベント (生のイベント データの種類) を、Microsoft 365 Defender およびそのコンポーネント サービスから Azure Sentinel にストリーミングすることもできます。 現在は Microsoft Defender for Endpoint から、また *(2021 年 10 月以降は)* Microsoft Defender for Office 365 から、[高度なハンティング](/microsoft-365/security/defender/advanced-hunting-overview) イベントを収集して、それらを Azure Sentinel ワークスペースの用途別のテーブルに直接ストリーミングすることができます。 これらのテーブルは Microsoft 365 Defender ポータルで使用されているのと同じスキーマに基づいて構築されており、高度なハンティング イベントの完全なセットに完全にアクセスして、次のことを行うことができます。
 
-- 既存の Microsoft Defender for Endpoint の高度なハンティング クエリを Azure Sentinel に簡単にコピーする。
+- 既存の Microsoft Defender for Endpoint/Office 365 の高度なハンティング クエリを Azure Sentinel に簡単にコピーする。
 
 - 生のイベント ログを使用して、アラート、ハンティング、調査に関する追加の分析情報を取得し、Azure Sentinel のその他のデータ ソースのイベントとこれらのイベントを関連付ける。
 
-- Microsoft Defender for Endpoint または Microsoft 365 Defender の 30 日間の既定の保有期間を超えて、延長された保有期間でログを保存する。 これを行うには、ワークスペースの保有期間を構成するか、Log Analytics でテーブルごとの保有期間を構成します。
+- Microsoft Defender for Endpoint/Office 365 の、または Microsoft 365 Defender の 30 日間の既定の保有期間を超えて、延長された保有期間でログを保存する。 これを行うには、ワークスペースの保有期間を構成するか、Log Analytics でテーブルごとの保有期間を構成します。
 
 ## <a name="next-steps"></a>次のステップ
 

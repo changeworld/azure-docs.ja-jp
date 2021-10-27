@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 305d3103e9f0f0bdfb3ce49f5c801ca0f2f975ff
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 93374b3cf4f2383039f0a3a670388803511881f2
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835243"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178977"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>ジョブのスケジュールとブロードキャスト (Python)
 
@@ -342,4 +342,4 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
-IoT Hub およびリモートによるファームウェアのワイヤレス更新などの他のデバイス管理パターンを確認するには、[ファームウェアの更新方法](tutorial-firmware-update.md)に関するページを参照してください。
+エンドツーエンドのイメージベースの更新など、IoT Hub とデバイス管理パターンの使用開始を続けるには、「[Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル](../iot-hub-device-update/device-update-raspberry-pi.md)」を参照してください。

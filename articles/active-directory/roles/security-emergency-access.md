@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f840d72698790be10630fe182f4655554ff23962
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 115b0c01fd80b3c0542ee9ef1ce152b06c880599
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748385"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993475"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -97,7 +97,29 @@ AD Domain Services と AD FS または類似の ID プロバイダーを使用�
     1. **[検索クエリ]** に次のクエリを入力し、2 つの緊急用アカウントのオブジェクト ID を挿入します。
         > [!NOTE]
         > 追加する緊急用アカウントごとに、別の "or UserId == "<オブジェクト GUID>"" をクエリに追加します。
-
+                
+        サンプル クエリ:
+        ```kusto
+        // Search for a single Object ID (UserID)
+        SigninLogs
+        | project UserId 
+        | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448"
+        ```
+        
+         ```kusto
+        // Search for multiple Object IDs (UserIds)
+        SigninLogs
+        | project UserId 
+        | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448" or UserId == "0383eb26-1cbc-4be7-97fd-e8a0d8f4e62b"
+        ```
+        
+        ```kusto
+        // Search for a single UserPrincipalName
+        SigninLogs
+        | project UserPrincipalName 
+        | where UserPrincipalName == "user@yourdomain.onmicrosoft.com"
+        ```
+        
         ![緊急用アカウントのオブジェクト ID をアラート ルールに追加する](./media/security-emergency-access/query-image1.png)
 
     1. **[アラート ロジック]** に、次のように入力します。

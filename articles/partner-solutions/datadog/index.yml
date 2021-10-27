@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Datadog と Azure の統合
+summary: 大規模なアプリケーションのための監視および分析を提供します。
+metadata:
+  title: Datadog と Azure のドキュメント
+  description: Datadog と Azure の統合により、大規模なアプリケーションのための監視および分析が提供されます。
+  ms.service: partner-services
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 10/22/2021
+  ms.openlocfilehash: 721d810132a78c2de2f6fef5e880f9a8b8e82748
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130269108"
+landingContent:
+- title: Azure での Datadog について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Datadog とは
+      url: overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Datadog リソースを管理する
+      url: manage.md
+- title: '[Create Datadog resource]\(Datadog リソースの作成\)'
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 新しいインスタンスを作成して Datadog の使用を開始する
+      url: create.md
+    - text: 既存の Datadog 組織にリンクする
+      url: link-to-existing-organization.md
+  - linkListType: how-to-guide
+    links:
+    - text: Datadog を展開する前に環境を構成する
+      url: prerequisites.md
+    - text: Azure 上の Datadog の一般的なエラーを修正する
+      url: troubleshoot.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/datadog

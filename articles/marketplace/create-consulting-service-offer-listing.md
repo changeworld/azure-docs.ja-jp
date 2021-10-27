@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターでコンサルティング サービス オファー登録情報の詳細を構成する方法
-description: パートナー センターを使用して、Microsoft コマーシャル マーケットプレースのコンサルティング サービス オファー登録情報の詳細を構成する方法について説明します。
+title: コマーシャル マーケットプレースのコンサルティング サービス プラン登録情報の詳細を構成する
+description: パートナー センターを使用して、Microsoft コマーシャル マーケットプレースのコンサルティング サービス プラン登録情報の詳細を構成します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 2476d60cacc9690c24d7d3d2f7e21f04c6811500
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b810c78cdbee84c23cb810a4a622b2ddceb19471
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92754287"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039070"
 ---
-# <a name="how-to-configure-your-consulting-service-offer-listing-details"></a>コンサルティング サービス オファー登録情報の詳細を構成する方法
+# <a name="configure-consulting-service-offer-listing-details"></a>コンサルティング サービス プラン登録情報の詳細を構成する
 
 パートナー センターの **[Offer listing]\(オファー登録情報\)** ページで入力した情報は、Microsoft コマーシャル マーケットプレースのオンライン ストアに表示されます。 これには、オファーの名前、説明、メディア、その他のマーケティング資産が含まれます。
 

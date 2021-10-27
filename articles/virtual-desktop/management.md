@@ -3,19 +3,22 @@ title: Microsoft Endpoint Configuration Manager による Azure Virtual Desktop 
 description: Azure Virtual Desktop 環境の推奨管理方法。
 author: heidilohr
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 10/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1c44b679daa000602aad83d98a04894c5cc267b3
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: cc859f82fa65ed1505a440c0b974ef8f4fde5fc7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359096"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003384"
 ---
 # <a name="microsoft-endpoint-manager-and-intune-for-azure-virtual-desktop"></a>Microsoft Endpoint Manager と Intune による Azure Virtual Desktop の管理
 
 展開後に、[Microsoft エンドポイント マネージャー](https://www.microsoft.com/endpointmanager)を使用して、Azure Virtual Desktop 環境を管理することをお勧めします。 Microsoft エンドポイント マネージャーは、Microsoft Endpoint Configuration Manager と Microsoft Intune が組み込まれた統合管理プラットフォームです。
+
+> [!NOTE]
+> Microsoft エンドポイント マネージャーを使用した Azure Virtual Desktop セッション ホストの管理は、現在 Azure パブリック クラウドでのみサポートされています。
 
 ## <a name="microsoft-endpoint-configuration-manager"></a>Microsoft Endpoint Configuration Manager
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 08/24/2021
 ms.author: cshoe
-ms.openlocfilehash: 95e180d34577f94f96b3e35c1f2432d85eb946a9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 15df9d0bf25739fd1271f0f51f693e1a1d368637
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361405"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138453"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure Functions による Azure Static Web Apps での API のサポート
 
@@ -22,7 +22,7 @@ Azure Static Web Apps では、[Azure Functions](../azure-functions/functions-ov
 
 - カスタム CORS ルールを必要とせずに、Web アプリで安全に _api_ ルートを使用できるようにする **シームレスなルーティング**。
 
-Azure Static Web Apps API は、次の使用できる 2 つの構成でサポートされています。
+Azure Static Web Apps の API は、[ホスティング プラン](plans.md#features)に基づき、使用できる次の 2 つの構成でサポートされています。
 
 - **マネージド関数**: 既定では、静的 Web アプリの API は、いくつかの制限が関連付けられた、Azure Static Web Apps によって管理およびデプロイされる Azure Functions アプリです。
 

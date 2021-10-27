@@ -1,21 +1,21 @@
 ---
-title: Request Service REST API の発行要求を指定する
+title: Request Service REST API の発行要求を指定する (プレビュー)
 titleSuffix: Azure Active Directory Verifiable Credentials
 description: 発行済みの検証可能な資格情報を発行する方法について説明します
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: reference
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 6b1a33ee563123d5fb724f0bc29c3e7c753a86ea
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 837b42b5cb46743b7d486def32d01ab2333db54a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811055"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006681"
 ---
 # <a name="request-service-rest-api-issuance-specification-preview"></a>Request Service REST API の発行の指定 (プレビュー)
 
@@ -89,6 +89,7 @@ Request Service REST API を呼び出すには、次のアクセス許可が必�
     },
     "issuance": {
         "type": "VerifiedCredentialExpert",
+        "manifest": "https://beta.did.msidentity.com/v1.0/12345678-0000-0000-0000-000000000000/verifiableCredential/contracts/VerifiedCredentialExpert",
         "pin": {
             "value": "3539",
             "length": 4
@@ -170,7 +171,7 @@ Request Service REST API により、コールバック エンドポイントに
 
 ## <a name="successful-response"></a>成功応答
 
-成功した場合、このメソッドからは、HTTP 201 Created 応答コードと、応答本文内のイベント オブジェクトのコレクションが返されます。 次の JSON では、成功した応答を示します。
+成功した場合、このメソッドからは、HTTP 201 Created 応答コードと、応答本文内のイベント オブジェクトのコレクションが返されます。 次の JSON は、成功した応答を示しています。
 
 ```json
 {  
@@ -279,4 +280,4 @@ Request Service REST API により、コールバック エンドポイントに
 
 ## <a name="next-steps"></a>次の手順
 
-[Request Service REST API を呼び出す方法](get-started-request-api.md)を確認する
+[Request Service REST API を呼び出す方法](get-started-request-api.md)を確認します

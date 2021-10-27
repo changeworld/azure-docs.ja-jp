@@ -1,19 +1,21 @@
 ---
 title: iOS アプリの作成
 description: Azure Maps アカウントと最初の iOS アプリを作成する手順
-author: deniseatmicrosoft
-ms.author: v-dbogomolov
-ms.date: 09/30/2021
-ms.topic: conceptual
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/13/2021
+ms.topic: quickstart
 ms.service: azure-maps
-ms.openlocfilehash: 46e5ec41c0cea9a417b920e8441ff1129040c209
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+services: azure-maps
+manager: eriklind
+ms.openlocfilehash: e2f1f8fff5869cc8d2eb942e45fe40e59d050b4c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389610"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045112"
 ---
-#  <a name="create-an-ios-app-public-preview"></a>iOS アプリを作成する (パブリック プレビュー)
+# <a name="create-an-ios-app-public-preview"></a>iOS アプリを作成する (パブリック プレビュー)
 
 この記事では、iOS アプリに Azure Maps を追加する方法について説明します。 次の基本的な手順について説明します。
 
@@ -34,21 +36,22 @@ ms.locfileid: "129389610"
 
 次の手順で、新しい Azure Maps アカウントを作成します。
 
-1. [Azure portal](https://portal.azure.com/) の左上隅にある **[リソースの作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の左上隅にある **[リソースの作成]** を選択します。
 
 2. _[Marketplace を検索]_ ボックスに「**Azure Maps**」と入力します。
 
-3. _[結果]_ から **[Azure Maps]** を選択します。 マップの下に表示される **[作成]** ボタンをクリックします。
+3. _[結果]_ から **[Azure Maps]** を選択し、マップの下に表示される **[作成]** ボタンを選択します。
 
 4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
-   - このアカウントで使う "_サブスクリプション_"。
-   - このアカウントの "_リソース グループ_" の名前。 _[新規作成]_ を選んで新しく作成することも、 _[既存のものを使用]_ を選んで既存のリソース グループを使うこともできます。
-   - 新しいアカウントの "_名前_"。
-   - このアカウントの "_価格レベル_"。
-   - _[ライセンス]_ と _[プライバシーに関する声明]_ の内容を読み、チェック ボックスをオンにして条件に同意します。
-   - **[作成]** ボタンをクリックします。
 
-   :::image source="./media/quick-ios-app/create-account.png" alt-text="Azure Maps アカウントを作成しているスクリーンショット。":::
+   * このアカウントで使う "_サブスクリプション_"。
+   * このアカウントの "_リソース グループ_" の名前。 _[新規作成]_ を選んで新しく作成することも、 _[既存のものを使用]_ を選んで既存のリソース グループを使うこともできます。
+   * 新しいアカウントの "_名前_"。
+   * このアカウントの "_価格レベル_"。
+   * _[ライセンス]_ と _[プライバシーに関する声明]_ の内容を読み、チェック ボックスをオンにして条件に同意します。
+   * **[作成]** ボタンを選択します。
+
+    ![Azure Maps アカウントを作成する。](./media/ios-sdk/quick-ios-app/create-account.png)
 
 ## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
 
@@ -60,10 +63,12 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
 
-   > [!Note]
-   > Azure Maps のプライマリ キーではなく Azure サブスクリプション キーを使用した場合、マップは正しく表示されません。 また、セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](../key-vault/secrets/tutorial-rotation-dual.md)」を参照してください。
-
-   :::image source="./media/quick-ios-app/get-key.png" alt-text="サブスクリプション キーを取得しているスクリーンショット。":::
+>[!NOTE]
+> このクイックスタートでは、デモンストレーションの目的で[共有キー](azure-maps-authentication.md#shared-key-authentication)認証アプローチを使用しますが、どの運用環境でも推奨されるアプローチは [Azure Active Directory](azure-maps-authentication.md#azure-ad-authentication) 認証を使用することです。
+<!--
+> If you use the Azure subscription key instead of the Azure Maps primary key, your map won't render properly. Also, for security purposes, it is recommended that you rotate between your primary and secondary keys. To rotate keys, update your app to use the secondary key, deploy, then press the cycle/refresh button beside the primary key to generate a new primary key. The old primary key will be disabled. For more information on key rotation, see [Set up Azure Key Vault with key rotation and auditing](/azure/key-vault/secrets/tutorial-rotation-dual)
+-->
+![サブスクリプション キーを取得する。](./media/ios-sdk/quick-ios-app/get-key.png)
 
 ## <a name="create-a-project-in-xcode"></a>Xcode でプロジェクトを作成する
 
@@ -71,80 +76,99 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 1. **[File]\(ファイル\)** から、 **[New]\(新規作成\)**  ->  **[Project]\(プロジェクト\)** の順に選択します。
 
-2. **[iOS]** タブで、 **[App]\(アプリ\)** と選択してから、 **[Next]\(次へ\)** を選択します。
+2. **[iOS]** タブで、 **[App]\(アプリ\)** 、 **[Next]\(次へ\)** の順に選択します。
 
-3. アプリ名とバンドル ID を入力したら、 **[Next]\(次へ\)** を選択します。
+3. アプリ名とバンドル ID を入力し、 **[Next]\(次へ\)** を選択します。
 
-   新しいプロジェクトの作成に関する詳細については、[アプリ用の Xcode プロジェクトを作成する](https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app)方法に関する記事を参照してください。
+新しいプロジェクトの作成に関する詳細については、[アプリ用の Xcode プロジェクトを作成する](https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app)方法に関する記事を参照してください。
 
-:::image source="./media/quick-ios-app/create-app.png" alt-text="最初の iOS アプリケーションを作成します。":::
+![最初の iOS アプリケーションを作成します。](./media/ios-sdk/quick-ios-app/create-app.png)
 
 ## <a name="install-the-azure-maps-ios-sdk"></a>Azure Maps iOS SDK をインストールする
 
 アプリケーションのビルドの次の手順は、Azure Maps iOS SDK をインストールすることです。 SDK をインストールするには、以下の手順を完了します。
 
-1. **[Project navigator]\(プロジェクト ナビゲーター\)** で自分のプロジェクトを選択します
+1. **[Project navigator]\(プロジェクト ナビゲーター\)** で目的の Xcode iOS プロジェクトを選択して、**パッケージの依存関係を追加する** ために、 **+** ボタンを選択します。
 
-2. 開いた **[Project Editor]\(プロジェクト エディター\)** でプロジェクトを選択します
+   ![パッケージの依存関係を追加する。](./media/ios-sdk/quick-ios-app/xcode-add-package-dependency.png)
 
-3. **[Swift Package]\(Swift パッケージ\)** タブに切り替えます
+2. 結果のダイアログに以下を入力します。
+   * 右上隅に表示される検索バーに「`https://github.com/Azure/azure-maps-ios-sdk-distribution.git`」と入力します。
+   * **[Dependency Rule]\(依存関係ルール\)** フィールドで `Up to Next Major Version` を選択します。
+   * **[Dependency Rule]\(依存関係ルール\)** のバージョン フィールドに「`1.0.0-pre.1`」と入力します。
 
-4. Azure Maps iOS SDK を追加します: `{link goes here}`
+   ![iOS プロジェクトに依存関係ルールを追加する。](./media/ios-sdk/quick-ios-app/xcode-dependency-rule.png)
 
-   :::image source="./media/quick-ios-app/add-project.png" alt-text="iOS プロジェクトを追加しているスクリーンショット":::
-  
+3. パッケージと一緒にその依存関係が解決されたら、 **[Add Package]\(パッケージの追加\)** ボタンを選択して、依存関係のセットアップを完了します。
+
+   ![iOS プロジェクトにパッケージを追加する。](./media/ios-sdk/quick-ios-app/xcode-add-package.png)
+
 ## <a name="add-mapcontrol-view"></a>MapControl ビューを追加します
 
 1. ビュー コントローラーにカスタム `UIView` を追加します
 
-2. `AzureMapsControl` モジュールから `MapControl` クラスを選択します
+1. `AzureMapsControl` モジュールから `MapControl` クラスを選択します
 
-   :::image source="./media/quick-ios-app/add-map-control.png" alt-text="Azure Maps コントロールを追加するスクリーンショット。":::
+   ![Azure Maps コントロールを追加する。](./media/ios-sdk/quick-ios-app/add-map-control.png)
 
-3. **AppDelegate.swift** ファイルで、以下の操作を行う必要があります。
+1. **AppDelegate.swift** ファイルで、以下の操作を行う必要があります。
 
-   - Azure Maps SDK のインポートを追加する。
-   - Azure Maps の認証情報を設定する。
-   
-   `AzureMaps.configure(subscriptionKey:)` または `AzureMaps.configure(aadClient:aadAppId:aadTenant:)` メソッドを使用して AzureMaps クラスにグローバルに認証情報を設定すると、すべてのビューで認証情報を追加する必要がなくなります。
+   * Azure Maps SDK のインポートを追加する
+   * Azure Maps の認証情報を設定する
 
-4. 以下の図に示すように、実行ボタンを選択して (または `CMD` + `R` キーを押す)、アプリケーションをビルドします。
+`AzureMaps.configure(subscriptionKey:)` または `AzureMaps.configure(aadClient:aadAppId:aadTenant:)` メソッドを使用して AzureMaps クラスにグローバルに認証情報を設定すると、すべてのビューで認証情報を追加する必要がなくなります。
 
-   :::image source="./media/quick-ios-app/run.png" alt-text="iOS アプリケーションを実行しているスクリーンショット。":::
+1. 以下の図に示すように、実行ボタンを選択して (または `CMD` + `R` キーを押す)、アプリケーションをビルドします。
 
-   Xcode でアプリケーションをビルドするには、数秒かかります。 ビルドが完了した後、シミュレートされた iOS デバイスでアプリケーションをテストできます。 次のようなマップが表示されます。
+   ![iOS アプリケーションを実行する。](./media/ios-sdk/quick-ios-app/run.png)
 
-   :::image source="./media/quick-ios-app/example.png" alt-text="iOS アプリケーションで動作する最初のマップのスクリーンショット。":::
+Xcode でアプリケーションをビルドするには、数秒かかります。 ビルドが完了した後、シミュレートされた iOS デバイスでアプリケーションをテストできます。 次のようなマップが表示されます。
+
+![iOS アプリケーションでの最初のマップ。](./media/ios-sdk/quick-ios-app/example.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
+<!--
 > [!WARNING]
-> 「[次のステップ](#next-steps)」セクションに示されているチュートリアルでは、お使いのアカウントで Azure Maps を使用および構成する方法を詳しく説明しています。 チュートリアルに進む場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。
+> The tutorials listed in the [Next Steps](#next-steps) section detail how to use and configure Azure Maps with your account. Don't clean up the resources created in this quickstart if you plan to continue to the tutorials.
+-->
 
-チュートリアルに進まない場合は、次の手順に従ってリソースをクリーンアップしてください。
+このクイックスタートで作成したリソースをクリーンアップするには、こちらの手順を実行します。
 
 1. Xcode を閉じ、作成したプロジェクトを削除します。
+
 2. 外部のデバイスでアプリケーションをテストした場合は、そのデバイスからアプリケーションをアンインストールします。
 
 今後 Azure Maps iOS SDK を使用した開発を行う予定がない場合は次の手順を実行します。
 
-1. Azure portal ページに移動します。 ポータルのメイン ページで、 **[すべてのリソース]** を選択します。 または、左上隅にあるメニュー アイコンをクリックします。 **[すべてのリソース]** を選択します。
-2. お使いの Azure Maps アカウントをクリックします。 ページの上部にある **[削除]** をクリックします。
+1. Azure portal ページに移動します。 ポータルのメイン ページで、 **[すべてのリソース]** を選択します。 または、左上隅のメニュー アイコン、 **[すべてのリソース]** の順に選択します。
+
+2. Azure Maps アカウントを選択します。 ページの上部で、**[削除]** を選択します。
+
 3. iOS アプリの開発を今後行う予定がない場合は、必要に応じて Xcode をアンインストールします。
 
+## <a name="additional-information"></a>関連情報
+
+その他のコード例については、次の記事を参照してください。
+
+* [Azure Maps での認証の管理](how-to-manage-authentication.md)
+
 <!--
-For more code examples, see these guides:
+## Additional information
 
-*  [Manage authentication in Azure Maps](how-to-manage-authentication.md)
-*  [Change map styles in iOS maps](Set%20map%20style%20%28iOS%20SDK%29.md)
-*  [Add a symbol layer](Add%20a%20symbol%20layer%20%28iOS%20SDK%29.md)
-*  [Add a line layer](Add%20a%20line%20layer%20to%20the%20map%20%28iOS%20SDK%29.md)
-*  [Add a polygon layer](Add%20a%20polygon%20layer%20to%20the%20map%20%28iOS%20SDK%29.md)
--->
+See the following articles for additional code examples:
 
-## <a name="next-steps"></a>次のステップ
+* [Manage authentication in Azure Maps](how-to-manage-authentication.md)
+* [Change map styles in iOS maps](set-map-style-ios-sdk.md)
+* [Add a symbol layer](add-symbol-layer-ios.md)
+* [Add a line layer](add-line-layer-to-map-ios.md)
+* [Add a polygon layer](add-polygon-layer-map-ios.md)
 
-このクイックスタートでは、Azure Maps アカウントを作成し、デモ アプリケーションを作成しました。 Azure Maps の詳細については、以下のチュートリアルを参照してください。
+## Next steps
+
+In this quickstart, you created your Azure Maps account and created a demo application. Take a look at the following tutorials to learn more about Azure Maps:
 
 > [!div class="nextstepaction"]
-> [GeoJSON データを Azure Maps に読み込む](tutorial-load-geojson-file-android.md)
+
+> [Load GeoJSON data into Azure Maps](tutorial-load-geojson-file-ios.md)
+-->

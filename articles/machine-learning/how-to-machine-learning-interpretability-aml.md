@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: 803a70b01a39d20080a9724b6ab1780c9a81d354
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 878af265e99c1d6ea431f027e19a6b930eb1ded6
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425413"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001449"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
@@ -565,6 +565,15 @@ Azure Machine Learning スタジオの説明ダッシュボードにアクセス
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * **スパース データがサポートされない**: モデルの説明ダッシュボードでは、特徴の数が多いと機能が中断するか、速度が大幅に低下するため、現在、スパース データ形式はサポートされていません。 さらに、データ セットが大きい場合や特徴の数が多い場合、一般的なメモリの問題が発生します。 
+* **サポートされている説明と特徴の一覧**
+
+サポートされている説明のタブ | 未加工の特徴 (高密度) | 未加工の特徴 (スパース) | エンジニアリングされた特徴 (高密度) | エンジニアリングされた特徴 (スパース)
+:----- | :--- | :--- | :---- | :---- |
+モデル パフォーマンス   | サポート (予測なし) | サポート (予測なし)  | サポートされています | サポートされています |
+データセット エクスプローラー  | サポート (予測なし)   | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | サポートされています | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | 
+ 特徴量の重要度の集計 | サポートされています | サポートされています | サポートされています | サポートされています |
+ 個々の特徴量の重要度| サポート (予測なし)   | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | サポートされています | サポートされていません。 スパース データはアップロードされず、UI ではスパース データを表示できません。 | 
+
 
 * **モデルの説明で予測モデルがサポートされない**: 解釈可能性、最適なモデルの説明は、最適なモデルとして TCNForecaster、AutoArima、Prophet、ExponentialSmoothing、Average、Naive、Seasonal Average、Seasonal Naive のアルゴリズムを推奨する AutoML 予測実験では利用できません。 AutoML 予測回帰モデルでは、説明がサポートされています。 ただし、説明ダッシュボードでは、データ パイプラインが複雑なため、[Individual feature importance]\(個々の特徴量の重要度\) タブは予測についてはサポートされていません。
 

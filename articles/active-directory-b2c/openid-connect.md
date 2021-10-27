@@ -2,21 +2,21 @@
 title: OpenID Connect による Web サインイン - Azure Active Directory B2C
 description: Azure Active Directory B2C の OpenID Connect 認証プロトコルを使用して Web アプリケーションを構築します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/05/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab62cae223b60103043df0c9dd79acf64e552358
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7b9cb3fb0a3c856741217ffd29c963735eef028d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588943"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036115"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -271,9 +271,9 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 
-ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、「[Azure AD B2C のセッション](session-behavior.md)」をご覧ください。
+ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、[Azure AD B2C のセッションの動作](session-behavior.md)に関する記事を参照してください。
 
-ユーザーをサインアウトするには、前述した OpenID Connect メタデータ ドキュメントに示されている `end_session` エンドポイントにユーザーをリダイレクトします。
+ユーザーをサインアウトするには、前述した OpenID Connect メタデータ ドキュメントに示されている `end_session_endpoint` にユーザーをリダイレクトします。
 
 ```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
@@ -286,7 +286,9 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | id_token_hint| いいえ | エンド ユーザーのクライアントとの現在の認証済みセッションに関するヒントとしてログアウトエンド ポイントに渡される発行済みの ID トークン。 `id_token_hint` によって、`post_logout_redirect_uri` が Azure AD B2C アプリケーション設定に登録済みの応答 URL であることが確認されます。 詳細については、「[ログアウトのリダイレクトをセキュリティで保護する](#secure-your-logout-redirect)」を参照してください。 |
 | client_id | いいえ* | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。<br><br>\**これは、`Application` の分離の SSO 構成を使用し、 _[ログアウト要求に ID トークンが必要]_ が `No` に設定されている場合に必要となります。* |
 | post_logout_redirect_uri | いいえ | サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C では、ユーザーに対して一般的なメッセージが表示されます。 `id_token_hint` を指定しない限り、この URL を Azure AD B2C アプリケーション設定に応答 URL として登録することはできません。 |
-| state | いいえ | 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリケーションでは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
+| state | いいえ | `state` パラメーターが承認要求に含まれている場合は、`post_logout_redirect_uri` への応答で同じ値が返されます。 アプリケーションでは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
+
+サインアウト要求が発生すると、Azure AD B2C は Azure AD B2C Cookie ベースのセッションを無効にし、フェデレーション ID プロバイダーからのサインアウトを試行します。 詳細については、「[シングル サインアウト](session-behavior.md?pivots=b2c-custom-policy#single-sign-out)」をご覧ください。
 
 ### <a name="secure-your-logout-redirect"></a>ログアウトのリダイレクトをセキュリティで保護する
 

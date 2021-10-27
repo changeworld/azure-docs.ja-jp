@@ -1,195 +1,121 @@
 ---
 title: Bicep モジュール
-description: モジュールを定義して使用する方法、およびモジュール スコープを使用する方法について説明します。
-author: mumian
-ms.author: jgao
+description: Bicep ファイルでモジュールを定義する方法と、モジュールのスコープを使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 10/05/2021
-ms.openlocfilehash: bd5069db6a2ad9cb14f5f0b3bc28612afa519727
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.date: 10/15/2021
+ms.openlocfilehash: 21dc273e506f0c0f148e8a220ca4ea160c7423a8
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619597"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074496"
 ---
-# <a name="use-bicep-modules"></a>Bicep モジュールを使用する
+# <a name="bicep-modules"></a>Bicep モジュール
 
-Bicep を使用すると、複雑なソリューションをモジュールに分割できます。 Bicep モジュールとは、別の Bicep ファイルからデプロイされた単なる Bicep ファイルです。 リソース宣言の複雑な詳細をモジュールにカプセル化することができるので、そのモジュールを使用するファイルの読みやすさが向上します。 これらのモジュールは、再利用したり、他のユーザーと共有したりすることができます。 Bicep モジュールは、[入れ子になったテンプレート](../templates/linked-templates.md#nested-template)を持つ単一の Azure Resource Manager テンプレートに変換されて、デプロイされます。
+Bicep を使用すると、デプロイをモジュールにまとめることができます。 モジュールとは、別の Bicep ファイルからデプロイされる単なる Bicep ファイルです。 モジュールを使用して、デプロイの複雑な詳細をカプセル化することで、Bicep ファイルの読みやすさが向上します。 また、モジュールを異なるデプロイに簡単に再利用することもできます。
 
-この記事では、モジュールを定義して使用する方法について説明します。
+組織内の他のユーザーとモジュールを共有するには、[プライベート レジストリを作成します](private-module-registry.md)。 レジストリ内のモジュールは、正しいアクセス許可を持つユーザーのみが使用できます。
 
-チュートリアルについては、[Bicep テンプレートを使用した Azure リソースのデプロイ](/learn/modules/deploy-azure-resources-by-using-bicep-templates/)の記事を参照してください。
+Bicep モジュールは、[入れ子になったテンプレート](../templates/linked-templates.md#nested-template)を持つ単一の Azure Resource Manager テンプレートに変換されます。
 
-## <a name="define-modules"></a>モジュールを定義する
+## <a name="definition-syntax"></a>定義の構文
 
-すべての Bicep ファイルをモジュールとして使用できます。 モジュールは、他の Bicep ファイルへのコントラクトとしてパラメーターと出力のみを公開します。 パラメーターと出力は省略可能です。
-
-次の Bicep ファイルを直接デプロイすると、ストレージ アカウントを作成したり、モジュールとして使用したりできます。  次のセクションでは、モジュールを使用する方法について説明します。
+モジュールを定義するための基本的な構文は次のとおりです。
 
 ```bicep
-@minLength(3)
-@maxLength(11)
-param storagePrefix string
-
-@allowed([
-  'Standard_LRS'
-  'Standard_GRS'
-  'Standard_RAGRS'
-  'Standard_ZRS'
-  'Premium_LRS'
-  'Premium_ZRS'
-  'Standard_GZRS'
-  'Standard_RAGZRS'
-])
-param storageSKU string = 'Standard_LRS'
-param location string
-
-var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
-
-resource stg 'Microsoft.Storage/storageAccounts@2019-04-01' = {
-  name: uniqueStorageName
-  location: location
-  sku: {
-    name: storageSKU
-  }
-  kind: 'StorageV2'
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
-}
-
-output storageEndpoint object = stg.properties.primaryEndpoints
-```
-
-出力は、親の Bicep ファイルに値を渡すために使用されます。
-
-## <a name="consume-modules"></a>モジュールを使用する
-
-モジュールを使用するには、_module_ キーワードを使用します。 次の Bicep ファイルは、参照されているモジュール ファイルで定義されているリソースをデプロイします。
-
-```bicep
-@minLength(3)
-@maxLength(11)
-param namePrefix string
-param location string = resourceGroup().location
-
-module stgModule 'storageAccount.bicep' = {
-  name: 'storageDeploy'
+module <symbolic-name> '<path-to-file>' = {
+  name: '<linked-deployment-name>'
   params: {
-    storagePrefix: namePrefix
-    location: location
+    <parameter-names-and-values>
   }
 }
-
-output storageEndpoint object = stgModule.outputs.storageEndpoint
 ```
 
-- **モジュール**: キーワード。
-- **シンボリック名** (stgModule): モジュールの識別子。
-- **モジュール ファイル**: モジュール ファイルは、相対パスで参照する必要があります。 Bicep のすべてのパスは、クロスプラットフォームでの一貫したコンパイルを保証するために、スラッシュ (/) ディレクトリ区切り文字を使用して指定する必要があります。 Windows の円記号 (\\) 文字はサポートされていません。 パスにはスペースを含めることができます。
-- モジュールを使用する際には、**_name_** プロパティ (storageDeploy) が必要です。 Bicep がテンプレート IL を生成するとき、このフィールドは、モジュールに対して生成される入れ子になったデプロイ リソースの名前として使用されます。
+したがって、実際の簡単な例は次のようになります。
 
-    ```json
-    ...
-    ...
-    "resources": [
-      {
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "name": "storageDeploy",
-        "properties": {
-          ...
-        }
-      }
-    ]
-    ...
-    ```
-- **_params_** プロパティには、モジュール ファイルに渡すパラメーターが含まれます。 そのパラメーターは Bicep ファイルに定義されているパラメーターに一致します。
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/local-file-definition.bicep" :::
 
-リソースと同様に、モジュールは他のモジュールやリソースのデプロイに依存しない限り、並列でデプロイされます。 依存関係の詳細については、「[リソースの依存関係を設定する](resource-declaration.md#set-resource-dependencies)」を参照してください。
+Bicep ファイルの別の部分にあるモジュールを参照するには、シンボリック名を使用します。 たとえば、シンボリック名を使用して、モジュールからの出力を取得できます。 シンボリック名には、a - z、A - Z、0 - 9、"_" を含めることができます。 名前の先頭を数字にすることはできません。 モジュールの名前を、パラメーター、変数、またはリソースと同じにすることはできません。
 
-モジュールから出力値を取得するには、`stgModule.outputs.storageEndpoint` ような構文を使用してプロパティ値を取得します。`stgModule` はモジュールの識別子です。
+パスは、ローカル ファイルでもレジストリ内のファイルでもかまいません。 詳細については、「[モジュールへのパス](#path-to-module)」を参照してください。
 
-モジュールを条件付きでデプロイできます。 [リソースを条件付きでデプロイする](conditional-resource-deployment.md)ときと同じ **if** 構文を使用します。
+**name** プロパティは必須です。 生成されるテンプレートでは、それは入れ子になったデプロイ リソースの名前になります。
+
+メイン ファイルのスコープとは異なる **スコープを指定する** 必要がある場合は、scope プロパティを追加します。 詳細については、「[モジュールのスコープを設定する](#set-module-scope)」を参照してください。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/scope-definition.bicep" highlight="4" :::
+
+**モジュールを条件付きでデプロイする** には、`if` 式を追加します。 使用方法は、[リソースを条件付きでデプロイする](conditional-resource-deployment.md)場合と似ています。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
+
+モジュールの **複数のインスタンス** をデプロイするには、`for` 式を追加します。 詳細については、「[Bicep でのモジュールの反復処理](loop-modules.md)」を参照してください。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
+
+リソースと同様に、モジュールは、他のモジュールやリソースに依存しない限り、並列でデプロイされます。 通常、依存関係は暗黙的に決定されるので設定する必要はありません。 明示的な依存関係を設定する必要がある場合は、モジュールの定義に `dependsOn` を追加できます。 依存関係の詳細については、「[リソースの依存関係を設定する](resource-declaration.md#set-resource-dependencies)」を参照してください。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/dependsOn-definition.bicep" highlight="6-8" :::
+
+## <a name="path-to-module"></a>モジュールへのパス
+
+モジュールのファイルには、ローカル ファイルまたは Bicep モジュール レジストリ内の外部ファイルのいずれかを指定できます。 両方のオプションの構文を次に示します。
+
+### <a name="local-file"></a>ローカル ファイル
+
+モジュールが **ローカル ファイル** の場合は、そのファイルへの相対パスを指定します。 プラットフォーム間で一貫したコンパイルを保証するため、Bicep のすべてのパスは、スラッシュ (/) ディレクトリ区切り文字を使用して指定する必要があります。 Windows の円記号 (\\) 文字はサポートされていません。 パスにはスペースを含めることができます。
+
+たとえば、ディレクトリ内でメイン ファイルより 1 つ上のレベルにあるファイルをデプロイするには、以下を使用します。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/local-file-definition.bicep" highlight="1" :::
+
+### <a name="file-in-registry"></a>レジストリ内のファイル
+
+[モジュールをレジストリに発行](bicep-cli.md#publish)した場合は、そのモジュールにリンクできます。 Azure コンテナー レジストリの名前とモジュールへのパスを指定します。 モジュールのパスは次の構文で指定します。
 
 ```bicep
-param deployZone bool
-
-module dnsZone 'dnszones.bicep' = if (deployZone) {
-  name: 'myZoneModule'
-}
+module <symbolic-name> 'br:<registry-name>.azurecr.io/<file-path>:<tag>' = {
 ```
 
-ループを使用すると、モジュールを複数回デプロイできます。 詳細については、「[Bicep でのモジュールの反復処理](loop-modules.md)」を参照してください。
+- **br** は、Bicep レジストリのスキーマ名です。
+- **ファイル パス** は、Azure Container Registry では `repository` と呼ばれます。 `/` 文字で区切ることで、複数のセグメントを **ファイル パス** に含めることができます。
+- **タグ** は、モジュールのバージョンを指定するために使用します。
 
-## <a name="configure-module-scopes"></a>モジュールのスコープを構成する
+次に例を示します。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/registry-definition.bicep" highlight="1" :::
+
+レジストリ内のモジュールを参照すると、Visual Studio Code の Bicep 拡張機能によって [bicep restore](bicep-cli.md#restore) が自動的に呼び出されて、外部モジュールがローカル キャッシュにコピーされます。 外部モジュールが復元されるまで、しばらく時間がかかります。 モジュールの IntelliSense がすぐに機能しない場合は、復元が完了するまで待ちます。
+
+レジストリ内のモジュールの完全なパスは長くなる場合があります。 モジュールを使用するたびに完全なパスを指定する代わりに、[bicepconfig.json ファイルでエイリアスを構成する](bicep-config.md#aliases-for-modules)ことができます。 エイリアスを使用すると、モジュールの参照が簡単になります。 たとえば、エイリアスを使用すると、パスを次のように短縮できます。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/alias-definition.bicep" highlight="1" :::
+
+## <a name="parameters"></a>パラメーター
+
+モジュールの定義で指定するパラメーターは、Bicep ファイル内のパラメーターと一致します。
+
+次の Bicep の例には、storagePrefix、storageSKU、location という 3 つのパラメーターが含まれます。 storageSKU パラメーターには既定値があるので、デプロイ時にそのパラメーターの値を指定する必要はありません。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/create-storage-account/main.bicep" highlight="3,15,17" :::
+
+前の例をモジュールとして使用するには、それらのパラメーターの値を指定します。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/modules/parent-output.bicep" highlight="14-17" :::
+
+## <a name="set-module-scope"></a>モジュールのスコープを設定する
 
 モジュールを宣言するとき、そのモジュールのスコープとして、中に含まれている Bicep ファイルとは異なるスコープを設定できます。 モジュールのスコープを設定するには、`scope` プロパティを使用します。 scope プロパティが指定されていない場合、モジュールは親のターゲット スコープにデプロイされます。
 
-次の Bicep ファイルは、リソース グループを作成し、そのリソース グループにモジュールをデプロイする方法を示しています。
+次の Bicep ファイルでは、リソース グループと、そのリソース グループ内のストレージ アカウントが作成されます。 ファイルはサブスクリプションにデプロイされますが、モジュールのスコープは新しいリソース グループになります。
 
-```bicep
-// set the target scope for this file
-targetScope = 'subscription'
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/modules/rg-and-storage.bicep" highlight="2,12,19" :::
 
-@minLength(3)
-@maxLength(11)
-param namePrefix string
+次の例では、2 つの異なるリソース グループにストレージ アカウントがデプロイされます。 どちらのリソース グループも既に存在している必要があります。
 
-param location string = deployment().location
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/modules/scope-two-resource-groups.bicep" highlight="1,13,22" :::
 
-var resourceGroupName = '${namePrefix}rg'
-resource myResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: resourceGroupName
-  location: location
-  scope: subscription()
-}
-
-module stgModule './storageAccount.bicep' = {
-  name: 'storageDeploy'
-  scope: myResourceGroup
-  params: {
-    storagePrefix: namePrefix
-    location: location
-  }
-}
-
-output storageEndpoint object = stgModule.outputs.storageEndpoint
-```
-
-次の例では、既存のリソース グループにデプロイします。
-
-```bicep
-targetScope = 'subscription'
-
-resource firstRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
-  name: 'demogroup1'
-}
-
-resource secondRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
-  name: 'demogroup2'
-}
-
-module storage1 'storageAccount.bicep' = {
-  name: 'westusdeploy'
-  scope: firstRG
-  params: {
-    storagePrefix: 'stg1'
-    location: 'westus'
-  }
-}
-
-module storage2 'storageAccount.bicep' = {
-  name: 'eastusdeploy'
-  scope: secondRG
-  params: {
-    storagePrefix: 'stg2'
-    location: 'eastus'
-  }
-}
-```
-
-scope プロパティには、有効なスコープ オブジェクトを設定する必要があります。 Bicep ファイルを使用してリソース グループ、サブスクリプション、または管理グループをデプロイする場合、モジュールのスコープをそのリソースのシンボリック名に設定することができます。 また、スコープ関数を使用して有効なスコープを取得することもできます。
+scope プロパティには、有効なスコープ オブジェクトを設定します。 Bicep ファイルを使用してリソース グループ、サブスクリプション、または管理グループをデプロイする場合、モジュールのスコープをそのリソースのシンボリック名に設定することができます。 また、スコープ関数を使用して有効なスコープを取得することもできます。
 
 以下がその関数です。
 
@@ -200,16 +126,21 @@ scope プロパティには、有効なスコープ オブジェクトを設定�
 
 次の例では、`managementGroup` 関数を使用してスコープを設定します。
 
-```bicep
-param managementGroupName string
+::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/function-scope.bicep" highlight="5" :::
 
-module  'module.bicep' = {
-  name: 'deployToMG'
-  scope: managementGroup(managementGroupName)
-}
-```
+## <a name="output"></a>出力
+
+モジュールから値を取得し、メインの Bicep ファイルでそれを使用できます。 モジュールから出力値を取得するには、モジュール オブジェクトで `outputs` プロパティを使用します。
+
+最初の例では、ストレージ アカウントが作成されて、プライマリ エンドポイントが返されます。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/create-storage-account/main.bicep" highlight="33" :::
+
+モジュールとして使用すると、その出力値を取得できます。
+
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/modules/parent-output.bicep" highlight="20" :::
 
 ## <a name="next-steps"></a>次のステップ
 
+- チュートリアルについては、[Bicep テンプレートを使用した Azure リソースのデプロイ](/learn/modules/deploy-azure-resources-by-using-bicep-templates/)の記事を参照してください。
 - 機密値をモジュールに渡すには、[getSecret](bicep-functions-resource.md#getsecret) 関数を使用します。
-- ループを使用すると、モジュールを複数回デプロイできます。 詳細については、「[Bicep でのモジュールの反復処理](loop-modules.md)」を参照してください。

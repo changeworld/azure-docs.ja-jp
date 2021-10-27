@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: a91b334b5494d8db44c86352c95fd7b4d1ea2c14
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 887138730d0d023a388b3203367a45e8a677fd1e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604077"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005978"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でユーザーを作成する
 
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
 
 サーバーの管理者ユーザーは、azure_pg_admin ロールのメンバーです。 ただし、サーバー管理者アカウントは azure_superuser ロールの一部ではありません。 このサービスは管理対象の PaaS サービスなので、Microsoft だけがスーパー ユーザー ロールの一部になります。
 
-[PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。 Azure Database for PostgreSQL でサーバー管理者ユーザーが付与される特権は、LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION です
+[PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。 Azure Database for PostgreSQL では、サーバー管理者ユーザーには LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、REPLICATION の各特権が付与されます。
 
 サーバー管理者ユーザー アカウントを使うと、他のユーザーを作成して、azure_pg_admin ロールをそれらのユーザーに付与できます。 また、サーバー管理者アカウントを使って、個々のデータベースとスキーマに対するアクセス権を持つ特権の少ないユーザーとロールを作成することもできます。
 

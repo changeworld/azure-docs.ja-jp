@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: sajagtap
-ms.openlocfilehash: e476f6da88688cb055c741f0888001d864908bae
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 2a336955ba40c8f3beb5b1e7575bee07cc3ef170
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812383"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997917"
 ---
 # <a name="form-recognizer-studio--preview"></a>Form Recognizer Studio | プレビュー
 
@@ -41,6 +41,10 @@ Studio では、Form Recognizer サービスの次の機能を利用できます
 
 ## <a name="next-steps"></a>次の手順
 
+* [**Form Recognizer v3.0 の移行ガイド**](v3-migration-guide.md)に関するページに従って、REST API の以前のバージョンとの違いを確認してください。
+* [**プレビュー SDK クイックスタート**](quickstarts/try-v3-python-sdk.md)に関するページを探索し、新しい SDK を使用してアプリケーションでプレビュー機能を試してください。
+* [**プレビュー REST API クイックスタート**](quickstarts/try-v3-rest-api.md)に関するページを参照し、新しい REST API を使用してプレビュー機能を試してください。
+
 > [!div class="nextstepaction"]
-> [Form Recognizer Studio (プレビュー) の使用を開始する](https://formrecognizer.appliedai.azure.com)
+> [Form Recognizer Studio (プレビュー) クイックスタート](quickstarts/try-v3-form-recognizer-studio.md)
 

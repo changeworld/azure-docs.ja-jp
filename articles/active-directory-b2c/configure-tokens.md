@@ -1,23 +1,23 @@
 ---
-title: トークンの構成 - Azure Active Directory B2C | Microsoft Docs
+title: トークンを構成する - Azure Active Directory B2C
 description: Azure Active Directory B2C でトークンの有効期間と互換性の設定を構成する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/08/2021
+ms.date: 10/15/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9ca7d1b5f5e8a9958d072317bfb2d01bd7a9199e
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 70be31920e96c651285c4e77ace161b65ccd3118
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611832"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066036"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -158,10 +158,10 @@ ms.locfileid: "129611832"
     </ClaimType>
     ```
 
-    **OutputClaims** 要素に、次の要素を追加します。
+    [証明書利用者ポリシー](relyingparty.md)の **OutputClaims** 要素の下に、次の出力要求を追加します。
 
     ```xml
-    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
+    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" PartnerClaimType="tfp" />
     ```
 
     ACR の場合は、**AuthenticationContextReferenceClaimPattern** 項目を削除します。

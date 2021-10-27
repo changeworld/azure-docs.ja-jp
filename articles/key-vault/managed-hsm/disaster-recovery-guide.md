@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5f2ea76f9c1a27485e31a3e90f27b1d5d4e424cb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 66c20cc564d52d62f71d28dd35fd616a228d088f
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443541"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130130956"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Managed HSM のディザスター リカバリー
 
@@ -48,11 +48,11 @@ ms.locfileid: "114443541"
 - Azure の場所。
 - 初期管理者のリスト。
 
-次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成します。これは **米国東部 2** に存在し、**現在サインインしているユーザー** が唯一の管理者となります。
+次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成します。これは **米国中部** に存在し、**現在サインインしているユーザー** が唯一の管理者となります。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid
+az keyvault create --hsm-name "ContosoMHSM2" --resource-group "ContosoResourceGroup" --location "centralus" --administrators $oid
 ```
 
 > [!NOTE]
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 このコマンドの出力は、作成したマネージド HSM のプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
 * **name**:この例では、名前は ContosoMHSM です。 この名前を他の Key Vault コマンドに使用できます。
-* **hsmUri**: この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
+* **hsmUri**: この例では、URI は "https://contosomhsm2.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
 
 これで、お使いの Azure アカウントは、このマネージド HSM に対して任意の操作を実行できるようになりました。 現在のところ、誰も承認されていません。
 

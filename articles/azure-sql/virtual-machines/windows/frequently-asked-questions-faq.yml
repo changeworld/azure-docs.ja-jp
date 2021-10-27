@@ -4,7 +4,7 @@ metadata:
   description: この記事では、Azure VM で SQL Server を実行することに関してよく寄せられる質問に対する回答を示します。
   services: virtual-machines-windows
   documentationcenter: ''
-  author: MashaMSFT
+  author: bluefooted
   editor: ''
   tags: azure-service-management
   ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,13 +14,13 @@ metadata:
   ms.tgt_pltfrm: vm-windows-sql-server
   ms.workload: iaas-sql-server
   ms.date: 9/01/2021
-  ms.author: mathoma
-  ms.openlocfilehash: 6b6b6ae343e5ac641e1fb855c7ca7d466fd91ba8
-  ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+  ms.author: pamela
+  ms.openlocfilehash: 0e3aeff84a7a7a8972872642b03df1b5b7c48aa2
+  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/30/2021
-  ms.locfileid: "123221429"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130166967"
 title: Azure VM における SQL Server についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -182,6 +182,10 @@ sections:
   - question: >
       Azure SQL 仮想マシンは、顧客データをリージョン外に移動または保存しますか?
     answer: いいえ。 実際、Azure SQL 仮想マシンと SQL IaaS Agent 拡張機能には、顧客データは格納されません。
+  - question: "可用性グループのクラスター間の移行には、どのような Azure Load Balancer SKU を使用する必要がありますか? \n"
+    answer: Azure VM の SQL Server 上で[可用性グループのクラスター間移行](http://download.microsoft.com/download/d/2/0/d20e1c5f-72ea-4505-9f26-fef9550efd44/alwayson%20ag%20os%20upgrade.docx)を実行するには、標準の [Azure Load Balancer SKU](/azure/load-balancer/skus) を使用します。
+  - question: "Azure Premium ファイル共有を使用して、SQL Server のスタンドアロン インスタンス上のデータベース ファイルをホストできますか?  \n"
+    answer: はい。 Azure Premium ファイル共有は、[SMB プロトコル](/sql/database-engine/install-windows/install-sql-server-with-smb-fileshare-as-a-storage-option)を使用するフェールオーバー クラスター インスタンスと SQL Server のスタンドアロン インスタンスの両方でサポートされています。
 - name: SQL Server IaaS Agent 拡張機能
   questions:
   - question: >

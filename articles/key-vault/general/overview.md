@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b4635b461441b4ac4ed193a48cbd8e14790ac835
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 50504d2e36c490c90c7c8bdbb8b737837b64eaff
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060670"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163032"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault について
 
@@ -39,7 +39,7 @@ Azure Key Vault には 2 つのサービス レベルがあります。ソフト
 
 キー コンテナーにアクセスする場合、呼び出し元 (ユーザーまたはアプリケーション) がアクセスする前に適切な認証と認可が必要になります。 認証では呼び出し元の ID を確認し、認可では呼び出し元が実行できる操作を決定します。
 
-認証は Azure Active Directory を介して行われます。 認可は、Azure ロールベースのアクセス制御 (Azure RBAC) または Key Vault のアクセス ポリシーを使用して行うことができます。 Azure RBAC は、コンテナーを管理するときに使用されます。キー コンテナーのアクセス ポリシーは、コンテナーに格納されているデータにアクセスするときに使用されます。
+認証は Azure Active Directory を介して行われます。 認可は、Azure ロールベースのアクセス制御 (Azure RBAC) または Key Vault のアクセス ポリシーを使用して行うことができます。 Azure RBAC は、コンテナーの管理と、コンテナーに格納されているデータへのアクセスの両方に使用できます。一方、Key Vault のアクセス ポリシーは、コンテナーに格納されているデータにアクセスしようとするときにのみ使用できます。
 
 Azure Key Vault はソフトウェアで保護する方法と、Azure Key Vault Premium レベルを使用し、HSM (ハードウェア セキュリティ モジュール) によってハードウェアで保護する方法とがあります。 ソフトウェアで保護されたキー、シークレット、証明書は、Azure によって業界標準のアルゴリズムとキーの長さを使用して保護されます。  さらに追加の保証が必要な状況では、HSM 内でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 Azure Key Vault で使用される nCipher HSM は、Federal Information Processing Standards (FIPS) 140-2 Level 2 適合認定取得済みです。 nCipher ツールを使用して、キーを HSM から Azure Key Vault に移動できます。
 

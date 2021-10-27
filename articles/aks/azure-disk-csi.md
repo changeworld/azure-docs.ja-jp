@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) で Azure ディスク用の Container Sto
 description: Azure Kubernetes Service (AKS) クラスターで Azure ディスク用の Container Storage Interface (CSI) ドライバーを使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 10/15/2021
 author: palma21
-ms.openlocfilehash: 19606a1b529fcd7e6140d81361c5434324836198
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 687bc761d870b92f7cf753b55722fc749daaf37d
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724738"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063946"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
@@ -21,6 +21,15 @@ CSI ドライバーがサポートされる AKS クラスターを作成する�
 
 > [!NOTE]
 > "*ツリー内ドライバー*" とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
+
+## <a name="azure-disk-csi-driver-new-features"></a>Azure Disk CSI ドライバーの新機能
+本来のインツリー ドライバー機能に加えて、Azure Disk CSI ドライバーには次の新機能が既に用意されています。
+- ディスクを並列でアタッチまたはデタッチする場合のパフォーマンスの向上
+  - インツリー ドライバーではディスクがシリアルでアタッチまたはデタッチされますが、CSI ドライバーではディスクがバッチでアタッチまたはデタッチされます。1 つのノードに複数のディスクが接続される場合は大幅な向上が実現します。
+- ZRS ディスクのサポート
+  - ディスクの種類として `Premium_ZRS` と `StandardSSD_ZRS` がサポートされています。詳細については、[マネージド ディスクのゾーン冗長ストレージ](../virtual-machines/disks-redundancy.md)に関する記事を参照してください。
+- [スナップショット](#volume-snapshots)
+- [ボリュームの複製](#clone-volumes)
 
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Azure ディスクを含む CSI 永続ボリュームを使用する
 

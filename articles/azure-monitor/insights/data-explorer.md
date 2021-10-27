@@ -4,14 +4,12 @@ description: この記事では、Azure Data Explorer Insights の使用方法�
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
-author: lgayhardt
-ms.author: lagayhar
-ms.openlocfilehash: b522e510968b97d80917bc6fa4123d33e4480cbf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc40608b7c9faa4acdef999fdef787d787aca720
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662212"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132818"
 ---
 # <a name="azure-data-explorer-insights"></a>Azure Data Explorer Insights
 
@@ -112,6 +110,8 @@ Azure Data Explorer クラスターから Azure Data Explorer Insights に直接
 - 失敗したクエリで上位のワークロード グループ、ユーザー、およびアプリケーションを特定します。
 - ワークロード グループ、ユーザー、およびアプリケーションごとに、過去の 1 日平均 (過去 16 日間) と比較したクエリ数の最近の変化を示します。
 - ワークロード グループ、ユーザー、アプリケーション、コマンドの種類別に、クエリ数、メモリ消費量、CPU 消費量の傾向とピークを示します。
+
+**[Usage]\(使用状況\)** タブには、ユーザーが直接実行するアクションが含まれています。 内部クラスター操作は、このタブには含まれません。
 
 [![コマンドとクエリに関連したドーナツ グラフを含む操作ビューのスクリーンショット。](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

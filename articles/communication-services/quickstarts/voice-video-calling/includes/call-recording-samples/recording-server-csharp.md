@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: f025f33a041dd40970b3ea34ff723e1270d16ea6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3f3b673da2809e45af88ae887eb289edb4e5c65f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801138"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050735"
 ---
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/ServerRecording) にあります。
@@ -93,6 +93,19 @@ CallingServerClient callingServerClient = new CallingServerClient("<Resource_Con
 
 ```csharp
 var startRecordingResponse = await callingServerClient.InitializeServerCall("<servercallid>").StartRecordingAsync("<callbackuri>").ConfigureAwait(false);
+```
+`StartRecordingAsync` API 応答には、レコーディング セッションのレコーディング ID が含まれています。
+
+## <a name="start-recording-session-with-options-using-startrecordingasync-server-api"></a>'StartRecordingAsync' サーバー API を使用して、オプションを指定してレコーディング セッションを開始する
+
+通話の開始中に受信したサーバー通話 ID を使用します。
+
+- RecordingContent は、レコーディング コンテンツ タイプを渡すために使用されます。 例: audio または audiovideo。
+- RecordingChannel は、レコーディング チャネルの種類を渡すために使用されます。 例: mixed または unmixed。
+- RecordingFormat は、レコーディングの形式を渡すために使用されます。 例: mp4、mp3、または wav。
+
+```csharp
+var startRecordingResponse = await callingServerClient.InitializeServerCall("<servercallid>").StartRecordingAsync("<callbackuri>","<RecordingContent>","<RecordingChannel>","<RecordingFormat>").ConfigureAwait(false);
 ```
 `StartRecordingAsync` API 応答には、レコーディング セッションのレコーディング ID が含まれています。
 

@@ -3,17 +3,17 @@ title: Azure Cost Management のグループおよびフィルター オプシ�
 description: この記事では、Cost Management でグループとフィルターのオプションを使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2021
+ms.date: 10/12/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 8cc4a0bfd7503a48b3df6887c05f268fcfae5733
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 150a79c00003d390f75eb32bc386e826702a173b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856336"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997140"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>コスト分析のグループとフィルターのオプション
 
@@ -53,26 +53,26 @@ ms.locfileid: "129856336"
 
 用語について詳しくは、「[Azure の利用状況と請求金額ファイル内の用語について](../understand/understand-usage.md)」をご覧ください。
 
-## <a name="changes-to-publisher-type-values"></a>パブリッシャーの種類の値の変更
+## <a name="publisher-type-value-changes"></a>パブリッシャーの種類の値の変更
 
-MCA 契約をお持ちのお客様の場合、`Publisher type` の値 **Azure** は、Cost Management + Billing で追跡される Microsoft からのすべての料金に適用されることを反映するため、値 **Microsoft** で置き換えられます。 この変更は、2021 年 10 月 14 日に有効になります。
+Cost Management では、PublisherType フィールドに、どの製品の料金であるかが示されます (Microsoft、Marketplace、または AWS ([クロス クラウド コネクタ](aws-integration-set-up-configure.md)が構成されている場合))。
 
-次のことを考慮してください。
+変更点
 
-- コスト分析の保存されたビュー - フィルター `PublisherType` = **Azure** を使用しているすべての保存されたビューは、新しい値 **Microsoft** を反映するように更新されます。 
-    - 必要な操作: なし。
-- `PublisherType` フィルターを使用した予算 - `PublisherType` = **Azure** フィルターを使用して作成された予算は、新しい値 **Microsoft** を反映するように更新されます。
-    - 必要な操作: なし。
-- エクスポート - 2021 年 10 月 14 日より前に生成されたすべてのエクスポート ファイルでは、`PublisherType field` の値は **Azure** になり、2021 年 10 月 14 日以降の値は **Microsoft** になります。
-    - 必要な操作: *新しいファイルと 2021 年 10 月 14 日より前にダウンロードしたファイルをマージするときは、変更された値を考慮してください*。
-- ダウンロードされたデータ - コスト分析からダウンロードしたファイルでは、2021 年 10 月 14 日より前にダウンロードしたファイルの使用状況の詳細の `PublisherType` フィールドには、古い値である **Azure** が残っています。
-    - 必要な操作: *新しいファイルと 2021 年 10 月 14 日より前にダウンロードしたファイルをマージするときは、変更された値を考慮してください*。
-- REST API 呼び出し - 値 **Azure** で PublisherType フィールドをフィルター処理する Cost Management + Billing REST API の呼び出しを使用している場合は、2021 年 10 月 14 日以降は **Microsoft** でフィルター処理するように更新します。
-    - 必要な操作: *すべてのファーストパーティ料金を取得するには、REST API の呼び出しで `Publisher type` = **Microsoft** を使用します。`Publisher type` = **Azure** を使用して呼び出すと、データは返されません*。
+2021 年 10 月 14 日、[Microsoft 顧客契約](../understand/review-customer-agreement-bill.md#check-access-to-a-microsoft-customer-agreement)を使用するすべてのお客様に対して、PublisherType フィールドの値 "Azure" が "Microsoft" に更新されます。 この変更は、Azure 以外の Microsoft 製品 (Microsoft 365 や Dynamics 365 など) をサポートするための今後の機能強化に対応するために行われます。
 
-> [!NOTE]
-> マイクロソフト エンタープライズ契約 (EA) または従量課金制 (PAYG) アカウントを持っている場合、この変更による影響はありません。
+"Marketplace" と "AWS" の値は変更されません。
 
+この変更は、エンタープライズ契約または従量課金制プランを使用しているお客様には影響しません。
+
+**影響とアクション**
+<a name="impact-action"></a>
+
+2021 年 10 月 14 日より前にダウンロードしている Cost Management データについては、PublisherType フィールドの古い "Azure" 値を新しい "Microsoft" 値とみなす必要があります。 データは、エクスポート、使用状況の詳細、または Cost Management からダウンロードされている可能性があります。
+
+PublisherType フィールドを値 "Azure" でフィルター処理する Cost Management + Billing REST API 呼び出しを使用している場合は、この変更に対応するために、October 2021 年 10 月 14 日以降は、新しい値 "Microsoft" でフィルター処理する必要があります。 以後、パブリッシャーの種類 = "Azure" でフィルター処理する API を呼び出しても、データは返されません。
+
+この変更はフィルターに自動的に反映されるため、コスト分析や予算には影響しません。 パブリッシャーの種類 = "Azure" フィルターを使用して作成された保存済みビューまたは予算は、自動的に更新されます。
 
 ## <a name="next-steps"></a>次のステップ
 

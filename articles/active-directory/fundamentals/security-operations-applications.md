@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a03b30c1e2628342246430089e3c6fbb47c98a7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bfe41b61a21aea87a35446f1b5c7052f62595b29
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754341"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046622"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>アプリケーション向けの Azure Active Directory セキュリティ運用ガイド
 
@@ -84,7 +84,7 @@ Azure AD 監査ログは、Azure portal で確認し、コンマ区切り値 (CS
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) を SIEM と統合** - Event Hub 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** – アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。
+* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。
 
 監視とアラートの対象の多くは、条件付きアクセス ポリシーの影響です。 [条件付きアクセスに関する分析情報とレポートのブック](../conditional-access/howto-conditional-access-insights-reporting.md)を使用すると、サインイン時の 1 つ以上の条件付きアクセス ポリシーの影響と、デバイスの状態などのポリシーの結果を確認できます。 このブックを使用すると、影響の概要を表示し、特定の期間における影響を特定できます。 ブックを使用して、特定のユーザーのサインインを調査することもできます。 
 

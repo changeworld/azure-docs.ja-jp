@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: 63bbc978f4927dc6922d92e1f339282f74e4fb4e
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: a048937226f979db58996eb4bf996b9f254d9182
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814300"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132460"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>チュートリアル: Azure Static Web Apps から Mongoose を使用して Cosmos DB のデータにアクセスする
 
@@ -44,17 +44,15 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 3. 検索ボックスに「**Azure Cosmos DB**」と入力します
 4. **[Azure Cosmos DB]** をクリックします
 5. **[作成]**
-6. 次の情報を使用して Azure Cosmos DB アカウントを構成します
+6. **[MongoDB 向けの Azure Cosmos DB API]** で **[作成]** を選択します
+7. 次の情報を使用して Azure Cosmos DB アカウントを構成します
     - [サブスクリプション]: 使用するサブスクリプションを選択します
     - [リソース]: **[新規作成]** をクリックし、名前を **aswa-mongoose** に設定します
     - [アカウント名]: 一意の値を入力する必要があります
-    - [API]: **Azure Cosmos DB for MongoDB API**
-    - [Notebooks (プレビュー)]: **オフ**
     - [場所]: **米国西部 2**
     - [容量モード]: **サーバーレス (プレビュー)**
-    - [バージョン]: **3.6**
-    - [可用性ゾーン]: **無効**
-:::image type="content" source="media/add-mongoose/cosmos-db.png" alt-text="新しい Cosmos DB インスタンスを作成する":::
+    - [バージョン]: **4.0**
+:::image type="content" source="media/add-mongoose/cosmos-db.png" alt-text="新しい Cosmos DB インスタンスの作成":::
 7. **[確認と作成]** をクリックします。
 8. **[作成]**
 
@@ -80,27 +78,26 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
     - [リージョン]: **米国西部 2**
     - **[GitHub アカウントでサインイン]** をクリックします
     - デプロイを可能にする GitHub アクションの作成を Azure Static Web Apps に許可するよう求められたら、 **[承認]** をクリックします
-    - [組織]: アカウント名
+    - [組織]: GitHub アカウント名
     - [リポジトリ]: **aswa-mongoose-tutorial**
     - [ブランチ]: **main**
     - [ビルドのプリセット]: **[Custom]\(カスタム\)** を選択します
     - [App location]\(アプリの場所\): **/public**
     - [Api location]\(API の場所\): **api**
-    - [App artifact location]\(アプリ成果物の場所\): "*空白のままにします*"
-    :::image type="content" source="media/add-mongoose/azure-static-web-apps.png" alt-text="入力済みの Azure 静的 Web アプリ フォーム":::
+    - [Output location]\(出力の場所\) "*空白のままにします*"
+    :::image type="content" source="media/add-mongoose/azure-static-web-apps.png" alt-text="入力済みの Azure Static Web Apps フォーム":::
 11. **[確認と作成]** をクリックします
 12. **[作成]**
-
-この作成プロセスには数分かかりますが、アプリがプロビジョニングされたら **[リソースに移動]** をクリックしてかまいません。
+13. この作成プロセスには数分かかります。静的 Web アプリがプロビジョニングされたら **[リソースに移動]** をクリックします
 
 ## <a name="configure-database-connection-string"></a>データベース接続文字列を構成する
 
-Web アプリがデータベースと通信を行えるように、データベース接続文字列がアプリケーション設定として格納されます。 Node.js では、`process.env` オブジェクトを使用して設定値にアクセスできます。
+Web アプリがデータベースと通信を行えるように、データベース接続文字列が[アプリケーション設定](application-settings.md)として格納されます。 Node.js では、`process.env` オブジェクトを使用して設定値にアクセスできます。
 
 1. Azure portal の左上隅にある **[ホーム]** をクリックします (または [https://portal.azure.com](https://portal.azure.com) に戻ります)
 2. **[リソース グループ]** をクリックします
 3. **[aswa-mongoose]** をクリックします
-4. データベース アカウントの名前をクリックします。その種類は、 **[Azure Cosmos DB アカウント]** となります
+4. データベース アカウントの名前をクリックします。その種類は、 **[MongoDB 向けの Azure Cosmos DB API]** となります
 5. **[設定]** で **[接続文字列]** をクリックします
 6. **[プライマリ接続文字列]** に表示されている接続文字列をコピーします
 7. 階層リンクの **[aswa-mongoose]** をクリックします
@@ -119,6 +116,8 @@ Web アプリがデータベースと通信を行えるように、データベ�
 1. **[概要]** をクリックします
 1. 右上に表示されている URL をクリックします
     1. これは `https://calm-pond-05fcdb.azurestaticapps.net` のようになります
+1. **[Please login to see your list of tasks]\(ログインしてタスクの一覧を表示してください\)** をクリックします
+1. **[同意する]** をクリックして、アプリケーションにアクセスします
 1. タイトルを入力し、 **[タスクの追加]** をクリックして、新しいタスクを作成します
 1. タスクが表示されたことを確認します (しばらく時間がかかる場合があります)
 1. **チェック ボックスをオン** にして、タスクを完了としてマークします

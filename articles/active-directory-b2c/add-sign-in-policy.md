@@ -3,22 +3,22 @@ title: サインイン フローの設定
 titleSuffix: Azure Active Directory B2C
 description: Azure Active Directory B2C でサインイン フローを設定する方法を学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/24/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78556d5f6d6a203a3d105f971cb7850109daa01a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 94845919e1b0bc171b7df831593b04daffb2213b
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570276"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064524"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン フローを設定する
 
@@ -37,7 +37,8 @@ ms.locfileid: "128570276"
 
 ## <a name="prerequisites"></a>[前提条件]
 
-まだそうしていない場合は、[Azure Active Directory B2C に Web アプリケーションを登録](tutorial-register-applications.md)します。
+- まだそうしていない場合は、[Azure Active Directory B2C に Web アプリケーションを登録](tutorial-register-applications.md)します。
+- [Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する方法](tutorial-create-user-flows.md)に関するページの手順を完了します。
 
 ::: zone pivot="b2c-user-flow"
 

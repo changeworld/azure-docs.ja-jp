@@ -12,12 +12,12 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: mathoma
 ms.date: 10/08/2020
-ms.openlocfilehash: f66050545c2c30c592b41cb21c30394316c80711
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 4a3e96c33a0bef8e533b4f7f563c701a2c0a8044
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692736"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042203"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>サーバー信頼グループを使用して SQL マネージド インスタンス間の信頼を設定および管理する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,5 +82,5 @@ ms.locfileid: "110692736"
 ## <a name="next-steps"></a>次のステップ
 
 * Azure SQL Managed Instance での分散トランザクションの詳細については、[分散トランザクション](../database/elastic-transactions-overview.md)に関するページを参照してください。
-* 更新プログラムのリリースと既知の問題の状態については、[Managed Instance のリリース ノート](../database/doc-changes-updates-release-notes.md)を参照してください。
+* リリースの更新情報や既知の問題の状態については、「[最新情報](doc-changes-updates-release-notes-whats-new.md)」を参照してください。
 * 機能に関するご要望がある場合は、[Managed Instance フォーラム](https://feedback.azure.com/forums/915676-sql-managed-instance)に追加してください。

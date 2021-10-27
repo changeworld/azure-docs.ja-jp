@@ -8,22 +8,24 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: db13884e3deed8e990d21d82e215a1e837371275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f078710392f895dc672c9562ac3a7b03f4623e1e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98052798"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019308"
 ---
 ## <a name="lifecycle"></a>ライフサイクル
 
 **[ライフサイクル]** タブでは、アクセス パッケージに対するユーザーの割り当ての有効期限を指定します。 ユーザーが割り当てを延長できるかどうかを指定することもできます。
 
-1. **[有効期限]** セクションで、 **[Access package assignments expires]\(アクセス パッケージ割り当ての有効期限\)** を **[日付]** 、 **[日数]** 、または **[無期限]** に設定します。
+1. **[有効期限]** セクションで、**[Access package assignments expires]\(アクセス パッケージ割り当ての有効期限\)** を **[日付]**、**[日数]**、**[時間数]** または **[無期限]** に設定します。
 
     **[日付]** の場合、将来の有効期限の日付を選択します。
 
     **[日数]** の場合、0 日から 3660 日までの数値を指定します。
+
+    **[時間数]** には、時間数を指定します。
 
     選択内容に基づき、アクセス パッケージに対するユーザーの割り当ては、特定の日付または承認された後の特定の日数に期限切れになるか、または期限切れになりません。
 

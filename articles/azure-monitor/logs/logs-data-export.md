@@ -3,15 +3,15 @@ title: Azure Monitor の Log Analytics ワークスペースのデータ エク�
 description: Log Analytics のデータ エクスポートを使用すると、選択したテーブルのデータを収集する際に Log Analytics ワークスペースから Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-author: bwren
-ms.author: bwren
-ms.date: 05/07/2021
-ms.openlocfilehash: 04662b734f86905f0064bad43ecbecd84bc48042
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+author: yossi-y
+ms.author: yossiy
+ms.date: 10/17/2021
+ms.openlocfilehash: 25d1d07edabdc8ee3d46175a51d8a20c5d9cc9eb
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401391"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133114"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -90,7 +90,10 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 ストレージ アカウントは、StorageV1 以降でかつ、ワークスペースと同じリージョンにある必要があります。 データを他のリージョン内の他のストレージ アカウントにレプリケートする必要がある場合は、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) (GRS や GZRS など) のいずれかを使用できます。
 
-データは、Azure Monitor に到達し、1 時間ごとの追加 BLOB に格納されると、ストレージ アカウントに送信されます。 このエクスポート ルール設定によって、ストレージ アカウント内のテーブルごとに、*am-* の後にそのテーブル名が続く名前を持つコンテナーが作成されます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+データは、Azure Monitor に到達し、1 時間ごとの追加 BLOB に格納されると、ストレージ アカウントに送信されます。 ストレージ アカウント内のテーブルごとに、*am-* の後にそのテーブル名が続く名前を持つコンテナーが作成されます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+
+> [!NOTE]
+> イングレス レートの割り当てを適切に行い、スロットリング、エラー、待機時間のイベントを減らすには、個別のストレージ アカウントを使用することが推奨されます。
 
 2021 年 10 月 15 日より、BLOB は、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json* というパス構造の 5 分フォルダーに格納されます。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT05M_#.json* になります。ここで、# は増分型の BLOB カウントです。
 
@@ -106,15 +109,14 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 データは、Azure Monitor に到達すると、イベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
 
+> [!NOTE]
+> - イベント ハブの 'Basic' レベルでは、サポートされるイベント サイズの[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)が小さいため、ワークスペース内の一部のログがそれを超え、削除される可能性があります。 エクスポート先には 'Standard'、'Premium'、または 'Dedicated' の各レベルを使用してください。
+> - エクスポートされるデータの量は時間の経過とともに増加し、イングレス レートを上げるためには結果的にスケーリングが必要となります。 **自動インフレ** 機能を使用して自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たします。 詳細については、「[Azure Event Hubs のスループット単位を自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」を参照してください。
+> - イングレス レートの割り当てを適切に行い、スロットリング、エラー、待機時間のイベントを減らすには、個別のイベント ハブ名前空間を使用します。
+> - データのエクスポートでは、仮想ネットワークが有効になっているとイベント ハブ リソースに到達できません。 Event Hubs リソースへのアクセスを許可するには、イベント ハブの設定 **[信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可しますか?]** を有効にする必要があります。
+
 > [!IMPORTANT]
 > ['Basic' および 'Standard' 名前空間レベルごとにサポートされるイベント ハブの数は 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers) です。 10 を超えるテーブルをエクスポートする場合は、複数のエクスポート ルール間でテーブルを別のイベント ハブ名前空間に分割するか、エクスポート ルールでイベントハブ名を指定して、すべてのテーブルをそのイベント ハブにエクスポートします。
-
-イベント ハブ名前空間に関する考慮事項:
-1. 'Basic' イベント ハブ SKU では、サポートされるイベント サイズの[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)が小さいため、ワークスペース内の一部のログがそれを超え、削除される可能性があります。 エクスポート先としては、"Standard" または "Dedicated" のイベント ハブを使用することをお勧めします。
-2. 多くの場合、エクスポートされるデータの量は時間の経過と共に増加します。そのため、より高い転送速度を処理し、調整シナリオやデータ待ち時間を回避するために、イベント ハブのスケールを拡大する必要があります。 Event Hubs の自動インフレ機能を使用して、自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たす必要があります。 詳細については、「[Azure Event Hubs のスループット ユニットを自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」参照してください。
-
-> [!NOTE]
-> Azure Monitor のデータのエクスポートでは、仮想ネットワークが有効になっているとイベント ハブ リソースにアクセスできません。 Azure Monitor のデータのエクスポートに Event Hubs リソースへのアクセス権が付与されるように、イベント ハブで [信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する] 設定を有効にする必要があります。 
 
 ## <a name="enable-data-export"></a>データ エクスポートを有効にする
 Log Analytics のデータ エクスポートを有効にするには、次の手順を実行する必要があります。 それぞれの詳細については、以降のセクションを参照してください。
@@ -142,12 +144,38 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 [![ストレージ アカウントの [ファイアウォールと仮想ネットワーク]](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
-データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 ワークスペースでは、有効なルールを 10 個持つことができますが、10 個以上のルールを追加する場合は、無効な状態にする必要があります。 エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
+データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 ワークスペースには有効な規則が 10 個ありますが、'無効' な状態の規則を追加することができます。 エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
 
-> [!NOTE]
-> データをエクスポートすると所有している宛先にログが送信されますが、これらには[ストレージ アカウントのスケーラビリティ](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[イベント ハブ名前空間のクォータ](../../event-hubs/event-hubs-quotas.md)などの制限があります。 エクスポート先のスロットリングを監視し、その限度に近づいたら対策を行うことをお勧めします。 次に例を示します。 
-> - TU の数 (スループット単位) を自動的にスケールアップして増加させる、イベント ハブの自動インフレ機能を設定します。 自動インフレが最大になった場合は、さらに多くの TU を要求できます。
-> - それぞれのエクスポート先が異なる複数のエクスポート ルールにテーブルを分割する
+データのエクスポート先には制限があるため、エクスポートの調整、失敗、待機時間を最小限に抑えるために監視する必要があります。 [ストレージ アカウントのスケーラビリティ](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)と[イベント ハブの名前空間のクォータ](../../event-hubs/event-hubs-quotas.md)に関する記事を参照してください。
+
+#### <a name="recommendations-for-storage-account"></a>ストレージ アカウントに関する推奨事項 
+
+1. エクスポートに個別のストレージ アカウントを使用します
+1. 次の設定を使用して、以下のメトリックに対するアラートを構成します。 
+
+    | Scope | メトリック名前空間 | メトリック | 集計 | Threshold |
+    |:---|:---|:---|:---|:---|
+    | storage-name | Account | イングレス | SUM | 最大ストレージ イングレス レートの 80%。 たとえば、米国西部の汎用 v2 の場合は 60 Gbps です。 |
+  
+1. アラートの修復アクション
+    - エクスポートに個別のストレージ アカウントを使用します
+    - Azure Storage Standard アカウントでは、依頼により、さらに高いイングレス制限がサポートされます。 引き上げを依頼するには、[Azure サポート](https://azure.microsoft.com/support/faq/)にお問い合わせください。
+    - 追加のストレージ アカウント間でテーブルを分割します
+
+#### <a name="recommendations-for-event-hub"></a>イベント ハブの推奨事項
+
+1. [メトリック アラート](../../event-hubs/monitor-event-hubs-reference.md)を構成します:
+  
+    | Scope | メトリック名前空間 | メトリック | 集計 | Threshold |
+    |:---|:---|:---|:---|:---|
+    | namespaces-name | Event Hub の標準メトリック | 着信バイト数 | SUM | 5 分あたりの最大イングレスの 80%。 たとえば、ユニットあたり 1 MB/秒 (TU または PU) です |
+    | namespaces-name | Event Hub の標準メトリック | 受信要求 | Count | 5 分あたりの最大イベントの 80%。 たとえば、ユニットあたり 1000/s (TU または PU) です |
+    | namespaces-name | Event Hub の標準メトリック | クォータ超過エラー数 | Count | 要求の 1% から 5% |
+
+1. アラートの修復アクション
+   - ユニット数を増やす (TU または PU)
+   - 追加の名前空間の間でテーブルを分割します
+   - スループットを高めるために 'Premium' または 'Dedicated' レベルを使用します
 
 エクスポート ルールには、ワークスペースにあるテーブルを含める必要があります。 ワークスペース内で使用できるテーブルの一覧を表示するには、このクエリを実行します。
 
@@ -157,7 +185,14 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+Azure portal の **[Log Analytics ワークスペース]** メニューで、**[設定]** セクションから **[データのエクスポート]** を選択し、中央のウィンドウの上部にある **[新しいエクスポート ルール]** をクリックします。
+
+![エクスポートの作成](media/logs-data-export/export-create-1.png)
+
+手順に従ったら、**[作成]** をクリックします。 
+
+<img src="media/logs-data-export/export-create-2.png" alt="export rule configuration" title="エクスポート ルールの構成" width="80%"/>
+
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -433,7 +468,14 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+Azure portal の **[Log Analytics ワークスペース]** メニューで、**[設定]** セクションから **[データのエクスポート]** を選択します。
+
+![ルール ビューのエクスポート](media/logs-data-export/export-view-1.png)
+
+構成ビューのルールをクリックします。
+
+<img src="media/logs-data-export/export-view-2.png" alt="export rule settings" title= "ルールの設定のエクスポート" width="65%"/>
+
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -465,7 +507,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+テストの実行中など、データを一定期間保持する必要がないときにエクスポートを停止できるように、エクスポート ルールを無効にすることができます。 Azure portal の **[Log Analytics ワークスペース]** メニューで、**[設定]** セクションから **[データのエクスポート]** を選択し、状態トグルをクリックしてエクスポート ルールを無効または有効にします。
+
+![エクスポート ルールの無効化](media/logs-data-export/export-disable.png)
+
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -512,7 +557,10 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+Azure portal の **[Log Analytics ワークスペース]** メニューで、**[設定]** セクションから *[データのエクスポート]* を選択してから、ルールの右にある省略記号をクリックし、**[削除]** をクリックします。 
+
+![エクスポート ルールの削除](media/logs-data-export/export-delete.png)
+
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -540,11 +588,15 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 ---
 
+
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>ワークスペース内のすべてのデータ エクスポート ルールを表示する
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+Azure portal の **[Log Analytics ワークスペース]** メニューで、**[設定]** セクションから **[データのエクスポート]** を選択して、ワークスペースのすべてのエクスポート ルールを表示します。
+
+![ルールのエクスポート](media/logs-data-export/export-view.png)
+
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -571,6 +623,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 該当なし
 
 ---
+
 
 ## <a name="unsupported-tables"></a>サポート対象外のテーブル
 サポート対象外のテーブルがデータ エクスポート ルールに含まれている場合、構成は成功しますが、そのテーブルのデータはエクスポートされません。 そのテーブルが後でサポートされるようになると、その時点でテーブルのデータがエクスポートされます。

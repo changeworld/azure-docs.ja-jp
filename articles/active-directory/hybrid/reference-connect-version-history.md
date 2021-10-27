@@ -11,12 +11,12 @@ ms.subservice: hybrid
 ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cc55100001f1210255a465b5622e1b862674bf
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: daaf76866b42196808d88d56725d4edbd54543d5
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352177"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064668"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -58,6 +58,18 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
  - Windows Server 2016 以降を使用している場合は、Azure AD Connect V2.0 を使用する必要があります。 Azure AD Connect 2.0 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/en-us/download/details.aspx?id=47594)からダウンロードできます。
  - 以前のバージョンの Windows Server を使用している場合は、Azure AD Connect V1.6 を使用する必要があります。 Azure AD Connect V1 の最新バージョンは、[このリンク](https://www.microsoft.com/download/details.aspx?id=103336)を使用してダウンロードできます。 
  - 今後、V1 バージョンには重要な変更のみを適用する予定であるため、V1 リリースでは V2 の機能や修正プログラムの一部が見つかからない場合があります。そのため、できるだけ早く V2 バージョンにアップグレードする必要があります。
+
+## <a name="16160"></a>1.6.16.0
+>[!NOTE] 
+>これは Azure AD Connect の修正プログラムのリリースです。 このバージョンは、古いバージョンの Windows Server を実行していて、この時点でサーバーを Windows Server 2016 以降にアップグレードできないお客様が使用することを目的としています。 このバージョンを使用して Azure AD Connect V2.0 サーバーを更新することはできません。 このリリースは、Windows Server 2016 以降ではサポートされていません。 このリリースには SQL Server 2012 コンポーネントが含まれていますが、2022 年 8 月 31 日に廃止される予定です。 その日より前に、サーバー OS と AADConnect のバージョンをアップグレードする必要があります。
+>このバージョンのダウンロードが可能になると、対象となるテナントの自動アップグレードが開始されます。自動アップグレードが完了するまで、数週間かかります。
+
+### <a name="release-status"></a>リリースの状態
+2021 年 10 月 13 日: ダウンロードと自動アップグレード向けにリリース済み。
+
+### <a name="bug-fixes"></a>バグの修正
+- 以前の Windows OS バージョン 2008 または 2008 R2 で実行されている AADConnect サーバーの自動アップグレード プロセスでアップグレードが失敗するバグを修正しました。 これらのバージョンの Windows Server はサポートされなくなりました。 このリリースでは、Windows Server 2012 以降を実行しているコンピューターの自動アップグレードのみが試行されます。
+- 特定の条件下で、アクセス違反例外が原因で miisserver がクラッシュする問題を修正しました。
 
 ## <a name="20280"></a>2.0.28.0
 

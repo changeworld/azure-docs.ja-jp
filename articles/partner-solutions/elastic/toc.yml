@@ -1,0 +1,17 @@
+- name: Elastic Azure 統合のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Elastic とは
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Elastic リソースを作成する
+      href: create.md
+- name: 方法
+  items:
+    - name: 統合の管理
+      href: manage.md
+    - name: トラブルシューティング
+      href: troubleshoot.md

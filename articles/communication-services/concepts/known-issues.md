@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 73a30e7052faaaa644511fec65796a4575e5ab4a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 3016fb18827c0c1323cb151024303a15a2454c5a
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259148"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177937"
 ---
 # <a name="known-issues"></a>既知の問題
 この記事では、Azure Communication Services Calling SDK と Azure Communication Services Call Automation API に関連する制限事項と既知の問題について説明します。
@@ -127,6 +127,8 @@ Communication Services ユーザーが JavaScript 通話 SDK を使用して通�
 ##### <a name="possible-causes"></a>考えられる原因
 一部のブラウザー (Safari など) では、同じデバイスから独自のストリームを取得すると、競合状態になるという副作用があります。 他のデバイスからストリームを取得すると、ユーザーの USB/IO 帯域幅が不足し、sourceUnavailableError 率が急上昇します。  
 
+#### <a name="support-for-simulcast"></a>サイマルキャストのサポート
+サイマルキャストとは、クライアント側で同じビデオ ストリームを異なる解像度とビットレートで 2 回エンコードし、クライアントが受信するストリームを ACS インフラストラクチャに決定させるために使用される手法です。 Windows、Android、iOS 用 ACS 呼び出し元ライブラリ SDK は、サイマルキャスト ストリームの送信をサポートしています。 ACS Web SDK は、現在、サイマルキャスト ストリームの送信をサポートしていません。
 
 ## <a name="azure-communication-services-call-automation-apis"></a>Azure Communication Services Call Automation API
 

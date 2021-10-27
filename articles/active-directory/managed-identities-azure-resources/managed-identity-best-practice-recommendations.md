@@ -4,7 +4,7 @@ description: ユーザー割り当てとシステム割り当てのマネージ�
 services: active-directory
 documentationcenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/21/2021
+ms.date: 10/15/2021
 ms.author: barclayn
-ms.openlocfilehash: dec6cb642c5a5899354912f133decde45d631406
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e25ebb85071b6d0af2696083afda45a453c5841a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953337"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131026"
 ---
 # <a name="managed-identity-best-practice-recommendations"></a>マネージド ID のベスト プラクティスに関する推奨事項
 
@@ -82,6 +82,21 @@ ms.locfileid: "111953337"
 ## <a name="limits"></a>制限 
 
 [マネージド ID](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-rbac-limits) の制限と、[カスタム ロールとロールの割り当て](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-rbac-limits)の制限をご覧ください。
+
+## <a name="follow-the-principle-of-least-privilege-when-granting-access"></a>アクセス権を付与する場合は最小特権の原則に従う
+
+マネージド ID を含む任意の ID にサービスへのアクセス許可を付与する際は、常に目的のアクションを実行するために必要な最小限の権限を付与するようにします。 たとえば、あるマネージド ID を使用してストレージ アカウントからデータを読み取る場合、その ID にストレージ アカウントにデータを書き込むアクセス許可を付与する必要はありません。 追加のアクセス許可を付与する (たとえば、不必要であるに、も関わらず、マネージド ID を Azure サブスクリプションの共同作成者にするなど) と、その ID に関連するセキュリティの影響範囲が大きくなります。 その ID が侵害された場合の被害が最小限になるように、セキュリティの影響範囲は常に最小にする必要があります。
+
+### <a name="consider-the-effect-of-assigning-managed-identities-to-azure-resources"></a>マネージド ID を Azure リソースに割り当てる影響を考慮する
+
+Azure Logic App、Azure 関数、仮想マシンなどの Azure リソースにマネージド ID が割り当てられると、そのマネージド ID に付与されているすべてのアクセス許可が Azure リソースで利用できるようになるということに注意する必要があります。 もし、あるユーザーがこのリソースにコードをインストールまたは実行するアクセス権を持っている場合、そのユーザーはその Azure リソースに割り当てられている、または関連付けられているすべての ID へのアクセス許可を持っていることになるため、これは特に重要なことです。 マネージド ID の目的は、開発者がアクセスを得るために資格情報の処理を行ったり、これをコードに直接挿入したりすることなく、Azure リソース上で実行されるコードに他のリソースへのアクセス許可を与えることです。
+
+例えば、マネージド ID (ClientId = 1234) に ***StorageAccount7755** _ への読み取りおよび書き込みアクセス許可が付与され、_*_LogicApp3388_*_ に割り当てられている場合、マネージド ID やストレージ アカウントに対する直接的な権限は持たないが、_*_LogicApp3388_*_ 内でコードを実行する権限を持つ Alice は、そのマネージド ID を使用するコードを実行することで、_ *_StorageAccount7755_** との間でデータの読み取りと書き込みを行うこともできます。
+
+:::image type="content" source="media/managed-identity-best-practice-recommendations/security-considerations.png" alt-text="セキュリティのシナリオ":::
+
+一般的に、コードを実行でき (Logic App など)、マネージド ID を持つリソースに対する管理者権限をユーザーに付与する際には、そのユーザーに割り当てられるロールを使ってリソース上でコードをインストールまたは実行できるかどうかを考慮し、そうである場合は必要な場合にのみ、そのロールを割り当てるようにします。
+
 
 ## <a name="maintenance"></a>メンテナンス
 

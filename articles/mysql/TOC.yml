@@ -478,7 +478,7 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: 監査ログ
               href: flexible-server/concepts-audit-logs.md
-            - name: ブック
+            - name: Workbooks
               href: flexible-server/concepts-workbooks.md
         - name: レプリケーション
           items:
@@ -559,7 +559,7 @@
               href: flexible-server/tutorial-query-performance-insights.md
             - name: 監査
               href: flexible-server/tutorial-configure-audit.md
-            - name: アラート
+            - name: 警告
               href: flexible-server/how-to-alert-on-metric.md
         - name: レプリケーション
           items:
@@ -592,6 +592,8 @@
           href: flexible-server/sample-scripts-azure-cli.md
 - name: 移行
   items:
+    - name: Azure Database for MySQL への移行に使用する適切なツールを選択する
+      href: how-to-decide-on-right-migration-tools.md
     - name: オンプレミスの MySQL から Azure Database for MySQL にデータを移行する
       href: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
     - name: mysqldump または phpmyadmin でデータを移行する

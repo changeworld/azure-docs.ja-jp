@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 04/21/2021
-ms.openlocfilehash: bc720b4df62a06d4c635cc9998dd453bfb7683b1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f6145e8732252f7d7b407a2d258d2127e6911ddc
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127481"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072159"
 ---
 # <a name="set-plan-technical-configuration-for-an-azure-container-offer"></a>Azure Container オファーに対するプランの技術的な構成を設定する
 

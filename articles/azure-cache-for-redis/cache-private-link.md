@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: 39d1d5cbffdc35880ab5065171092c473961e99d
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 25572c32eff7fcdaffe3bad2bbf349bc8ca885f7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546995"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045808"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Private Link を使用した Azure Cache for Redis
 
@@ -238,7 +238,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>プライベート エンドポイントをパブリック ネットワーク アクセスに対して無効または有効になるように変更するにはどうすればよいですか。
 
 既定では、`publicNetworkAccess` フラグは `Disabled` です。
-`Enabled` に設定すると、このフラグにより、パブリック エンドポイントとプライベート エンドポイントの両方がキャッシュにアクセスできます。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 Azure portal または Restful API パッチ要求で、この値を `Disabled` または `Enabled` に設定できます。
+`Enabled` に設定すると、このフラグにより、パブリック エンドポイントとプライベート エンドポイントの両方がキャッシュにアクセスできます。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 Azure portal または RESTful API パッチ要求で、この値を `Disabled` または `Enabled` に設定できます。
 
 Azure portal で値を変更するには、こちらの手順を実行します。
 
@@ -250,7 +250,7 @@ Azure portal で値を変更するには、こちらの手順を実行します�
 
 1. **[Enable public network access (パブリック ネットワーク アクセスを有効にする)]** ボタンを選択します。
 
-Restful API パッチ要求を使用して値を変更するには、下を参照して、キャッシュに必要なフラグを反映するように値を編集します。
+RESTful API パッチ要求を使用して値を変更するには、下を参照して、キャッシュに必要なフラグを反映するように値を編集します。
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -270,7 +270,7 @@ VNet インジェクションされたキャッシュを Private Link キャッ�
 
 ### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>キャッシュのすべてのプライベート エンドポイントを削除するとどうなりますか。
 
-キャッシュのプライベート エンドポイントを削除すると、明示的にパブリック ネットワーク アクセスを有効にするか、別のプライベート エンドポイントを追加するまで、キャッシュ インスタンスに到達できなくなる可能性があります。 `publicNetworkAccess` フラグは、Azure portal または Restful API パッチ要求のいずれかで変更できます。 値を変更する方法の詳細については、「[よくあるご質問](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)」を参照してください
+キャッシュのプライベート エンドポイントを削除すると、明示的にパブリック ネットワーク アクセスを有効にするか、別のプライベート エンドポイントを追加するまで、キャッシュ インスタンスに到達できなくなる可能性があります。 `publicNetworkAccess` フラグは、Azure portal または RESTful API パッチ要求のいずれかで変更できます。 値を変更する方法の詳細については、「[よくあるご質問](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)」を参照してください
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>ネットワーク セキュリティ グループ (NSG) はプライベート エンドポイントでは有効になっていますか。
 

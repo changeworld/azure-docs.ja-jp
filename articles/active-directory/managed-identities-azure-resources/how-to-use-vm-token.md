@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db83f9f2f5e7f93686506ec0f7f94153ef3501e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7a31cad4f2828a505eb89782bf28b01049a46cfc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080491"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998012"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -54,7 +54,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 | [C# を使用してトークンを取得する](#get-a-token-using-c) | C# クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [Java を使用してトークンを取得する](#get-a-token-using-java) | Java クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [Go を使用してトークンを取得する](#get-a-token-using-go) | Go クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
-| [Azure PowerShell を使用してトークンを取得する](#get-a-token-using-azure-powershell) | PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
+| [PowerShell を使用してトークンを取得する](#get-a-token-using-powershell) | PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | [CURL を使用してトークンを取得する](#get-a-token-using-curl) | Bash/CURL クライアントから Azure リソース REST エンドポイントのマネージド ID を使用する例 |
 | トークンのキャッシュの処理 | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
 | [エラー処理](#error-handling) | Azure リソース トークン エンドポイントのマネージド ID から返される HTTP エラーを処理するためのガイダンス |
@@ -282,7 +282,7 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Azure PowerShell を使用してトークンを取得する
+## <a name="get-a-token-using-powershell"></a>PowerShell を使用してトークンを取得する
 
 次の例では、PowerShell クライアントから Azure リソース REST エンドポイントのマネージド ID を使用して、以下を実行する方法を示します。
 

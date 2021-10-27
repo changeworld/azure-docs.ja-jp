@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: e13aeefca9ab5b9430f1a6b591a8b8b7b415b46f
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: bc376e8bc69845af245c66c045ed345f758e410e
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114342516"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063927"
 ---
 # <a name="azure-metrics-advisor-cost-management"></a>Azure Metrics Advisor のコスト管理
 
@@ -37,7 +37,7 @@ Azure Metrics Advisor は、販売収益や製造工程など、組織が成長�
 | 無料: 最初の 25 件の時系列 | $- |
 | 26 件から 1000 件までの時系列 | $0.75 |
 | 1000 件から 5000 件までの時系列 | $0.50 |
-| 5000 件から 1 万件までの時系列 | $0.25|
+| 5,000 件から 2 万件までの時系列 | $0.25|
 | 2 万件から 5 万件までの時系列| $0.10|
 | 5 万件を超える時系列 | $0.05 |
 

@@ -2,13 +2,13 @@
 title: Azure Monitor リソース ログでサポートされているカテゴリ
 description: Azure Monitor リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 09/10/2021
-ms.openlocfilehash: 9c41c714d2913247a6b0d00e3b242da9c59e038e
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 10/05/2021
+ms.openlocfilehash: bf7d5371a170f28e79828619aef9fc16e15a303a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457755"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006377"
 ---
 # <a name="supported-categories-for-azure-monitor-resource-logs"></a>Azure Monitor リソース ログでサポートされているカテゴリ
 
@@ -65,6 +65,9 @@ ms.locfileid: "129457755"
 |ApplicationAuditLogs|アプリケーションの監査ログ|はい|
 |FarmManagementLogs|ファーム管理のログ|はい|
 |FarmOperationLogs|ファーム操作のログ|はい|
+|InsightLogs|分析情報ログ|はい|
+|JobProcessedLogs|ジョブ処理ログ|はい|
+|ModelInferenceLogs|モデル推論ログ|はい|
 |ProviderAuthLogs|プロバイダー認証のログ|はい|
 |SatelliteLogs|衛星のログ|はい|
 |WeatherLogs|気象のログ|はい|
@@ -99,6 +102,7 @@ ms.locfileid: "129457755"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |ApplicationConsole|アプリケーション コンソール|いいえ|
+|BuildLogs|ビルド ログ|はい|
 |IngressLogs|イングレスのログ|はい|
 |SystemLogs|システム ログ|いいえ|
 
@@ -230,8 +234,8 @@ ms.locfileid: "129457755"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AuthOperational|操作認証ログ|はい|
-|CallDiagnosticsPRIVATEPREVIEW|診断ログの呼び出し - プライベート プレビュー|はい|
-|CallSummaryPRIVATEPREVIEW|概要ログの呼び出し - プライベート プレビュー|はい|
+|CallDiagnostics|通話診断ログ|はい|
+|CallSummary|通話概要ログ|はい|
 |ChatOperational|運用チャット ログ|いいえ|
 |SMSOperational|運用 SMS ログ|いいえ|
 |使用法|使用法レコード|いいえ|
@@ -241,6 +245,7 @@ ms.locfileid: "129457755"
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|Audit|MCVP 監査ログ|はい|
 |ログ|MCVP ログ|はい|
 
 
@@ -642,6 +647,7 @@ ms.locfileid: "129457755"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AuditEvent|[監査ログ]|いいえ|
+|AzurePolicyEvaluationDetails|Azure Policy の評価の詳細|はい|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
@@ -716,8 +722,9 @@ ms.locfileid: "129457755"
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
-|PipelineDiagnostics|パイプライン診断のログ|はい|
-|PipelineOperational|パイプライン操作のログ|はい|
+|Audit|[監査ログ]|はい|
+|診断|診断ログ|はい|
+|運用時|操作ログ|はい|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -947,6 +954,13 @@ ms.locfileid: "129457755"
 |MessagingLogs|Azure Web PubSub サービスのメッセージング ログ。|はい|
 
 
+## <a name="microsoftsingularityaccounts"></a>microsoft.singularity/accounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|実行|実行ログ|はい|
+
+
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -1110,7 +1124,6 @@ ms.locfileid: "129457755"
 |AppServiceAppLogs|App Service アプリケーション ログ|いいえ|
 |AppServiceAuditLogs|監査ログへのアクセス|いいえ|
 |AppServiceConsoleLogs|App Service コンソール ログ|いいえ|
-|AppServiceDiagnosticToolsLogs|レポート診断ツール ログ|はい|
 |AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|いいえ|
 |AppServiceHTTPLogs|HTTP ログ|いいえ|
 |AppServiceIPSecAuditLogs|IPSecurity 監査ログ|いいえ|

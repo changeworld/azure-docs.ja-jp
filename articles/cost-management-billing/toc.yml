@@ -126,6 +126,8 @@
           href: understand/mpa-overview.md
         - name: Azure EA ポータルの概要
           href: manage/ea-portal-get-started.md
+        - name: ダイレクト EA の Azure portal の概要
+          href: manage/ea-direct-portal-get-started.md
         - name: 源泉徴収税控除を要求する - インド
           href: manage/withholding-tax-credit-india.md
     - name: Security

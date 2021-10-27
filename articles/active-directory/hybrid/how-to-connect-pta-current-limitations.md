@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7db9a12a65cf127cb4c65e24128181ab6c0cb485
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: c3aadcb1ccb4ff3a88c5fae7286f2655e41e3195
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135034"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138735"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -43,6 +43,7 @@ ms.locfileid: "113135034"
 - [資格情報が漏洩した](../identity-protection/overview-identity-protection.md)ユーザーの検出。
 - Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証 _のみ_ を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
 - パススルー認証は [Azure AD Connect Health](./whatis-azure-ad-connect.md) にはTS統合されていません。
+- 一時的または期限切れのパスワードを使用して Azure AD 参加済み (AADJ) デバイスにサインインすることは、パススルー認証ユーザーではサポートされていません。 「使用しようとしているサインイン方法は許可されていません」というエラーが表示されます。  これらのユーザーは、ブラウザーにサインインして、自分の一時パスワードを更新する必要があります。
 
 > [!IMPORTANT]
 > サポートされていないシナリオ _のみ_ の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。

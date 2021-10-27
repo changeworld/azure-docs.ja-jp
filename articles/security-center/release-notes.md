@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 10/17/2021
 ms.author: memildin
-ms.openlocfilehash: c0ae5cc8d3dee5a09916194418345c1602a19e4b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: bd75b5fff78c213bc9d0541fb1824969b7a798a3
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424786"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129151"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -30,7 +30,51 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 10 月の更新プログラムには次のものが含まれます。
 
+- [Microsoft 脅威と脆弱性の管理が脆弱性評価ソリューションとして追加されました (プレビュー段階)](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview)
+- [脆弱性評価ソリューションを自動で有効化できるようになりました (プレビュー段階)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)
+- [資産インベントリにソフトウェア インベントリ フィルターが追加されました (プレビュー段階)](#software-inventory-filters-added-to-asset-inventory-in-preview)
 - [一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+- [推奨事項の詳細ページに、関連する推奨事項が表示されるようになりました](#recommendations-details-pages-now-show-related-recommendations)
+
+
+### <a name="microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview"></a>Microsoft 脅威と脆弱性の管理が脆弱性評価ソリューションとして追加されました (プレビュー版)
+
+[Microsoft 脅威と脆弱性の管理](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt)という新しい脆弱性評価のマシンへの提供をサポートするように、[Azure Defender for servers](defender-for-servers-introduction.md) と Microsoft Defender for Endpoint 間の統合を拡張しました。 
+
+**脅威と脆弱性の管理** を使用し、[Microsoft Defender for Endpoint との統合](security-center-wdatp.md)を有効にして、準リアルタイムで脆弱性と構成の誤りを発見します。追加のエージェントや定期的なスキャンは必要ありません。 脅威と脆弱性の管理により、組織内の脅威の状況と検出結果に基づいて、脆弱性に優先順位が付けられます。
+
+セキュリティに関する推奨事項の [[A vulnerability assessment solution should be enabled on your virtual machines]\(脆弱性評価ソリューションを仮想マシンで有効にする必要がある\)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/ffff0522-1e88-47fc-8382-2a80ba848f5d) を使用して、脅威と脆弱性の管理によって検出された[サポート対象マシン](/microsoft-365/security/defender-endpoint/tvm-supported-os?view=o365-worldwide&preserve-view=true)の脆弱性を表示します。 
+
+既存および新規のマシンで、手動で推奨事項を修正することなく、自動的に脆弱性を表示するには、「[脆弱性評価ソリューションを自動で有効にできるようになりました (プレビュー段階)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)」を参照してください。
+
+詳細については、「[Microsoft Defender for Endpoint の脅威と脆弱性の管理を使用して弱点を調査する](deploy-vulnerability-assessment-tvm.md)」を参照してください。
+
+### <a name="vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview"></a>脆弱性評価ソリューションを自動で有効にできるようになりました (プレビュー)
+
+Security Center の自動プロビジョニング ページに、[Azure Defender for servers](defender-for-servers-introduction.md) で保護されたサブスクリプションの Azure 仮想マシンと Azure Arc マシンに対して、脆弱性評価ソリューションを自動的に有効にするオプションが追加されました。
+
+また、[Microsoft Defender for Endpoint との統合](security-center-wdatp.md)を有効にすると、次の脆弱性評価ソリューションを選択できるようになります。
+
+- (**新規**) Microsoft Defender for Endpoint の Microsoft 脅威と脆弱性の管理モジュール ([リリース ノート](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview)を参照してください)
+- 統合された Qualys エージェント
+
+:::image type="content" source="media/deploy-vulnerability-assessment-tvm/auto-provision-vulnerability-assessment-agent.png" alt-text="Azure Security Center で、Microsoft の脅威と脆弱性の管理の自動プロビジョニングを構成します。":::
+
+選択したソリューションは、サポート対象のマシン上で自動的に有効になります。
+
+詳細については、「[マシンの脆弱性評価を自動的に構成する](auto-deploy-vulnerability-assessment.md)」を参照してください。
+
+### <a name="software-inventory-filters-added-to-asset-inventory-in-preview"></a>資産インベントリにソフトウェア インベントリ フィルターが追加されました (プレビュー段階)
+
+[資産インベントリ](asset-inventory.md) ページに、特定のソフトウェアを実行しているマシンを選択するフィルターが追加されました。さらに、対象のバージョンを指定することもできます。 
+
+また、**Azure Resource Graph Explorer** でソフトウェア インベントリ データのクエリを実行することができます。
+
+これらの新機能を使用するには、[Microsoft Defender for Endpoint](security-center-wdatp.md) との統合を有効にする必要があります。 
+
+Azure Resource Graph 用のサンプル Kusto クエリなどの詳細については、「[ソフトウェア インベントリにアクセスする](asset-inventory.md#access-a-software-inventory)」を参照してください。
+
+:::image type="content" source="media/deploy-vulnerability-assessment-tvm/software-inventory.png" alt-text="脅威と脆弱性のソリューションを有効にした場合、Security Center の資産インベントリにより、インストールされているソフトウェアによってリソースを選択するフィルターが提供されます。":::
 
 ### <a name="changed-prefix-of-some-alert-types-from-arm_-to-vm_"></a>一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更 
 
@@ -67,11 +111,47 @@ Azure Defender プランの論理的な再編成の一環として、21 個の�
 
 [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) プランと [Azure Defender for servers](defender-for-servers-introduction.md) プランの詳細を参照してください。
 
+### <a name="recommendations-details-pages-now-show-related-recommendations"></a>推奨事項の詳細ページに、関連する推奨事項が表示されるようになりました
+
+さまざまな推奨事項の関係を明確にするため、**関連する推奨事項** 領域を多くの推奨事項の詳細ページに追加しました。 
+
+これらのページに表示される 3 種類の関係は次のとおりです。
+
+- **前提条件** - 選択した推奨事項の前に完了する必要がある推奨事項
+- **代替** - 選択した推奨事項の目的を達成する別の方法を提供する別の推奨事項
+- **依存** - 選択した推奨事項が前提条件となる推奨事項
+
+それぞれの関連推奨事項に対して、"影響を受けるリソース" 列に異常なリソースの数が表示されます。
+
+> [!TIP]
+> 関連推奨事項が淡色表示されている場合、その依存関係はまだ完了していないため、使用できません。
+
+関連推奨事項の例を次に示します。
+
+1. 脆弱性評価ソリューションがサポートされているか、お使いのコンピューターが Security Center によって確認されます。<br>
+    **脆弱性評価ソリューションを仮想マシンで有効にする必要がある**
+
+1. 見つかった場合は、検出された脆弱性に関する通知が表示されます。<br>
+    **仮想マシンの脆弱性を修復する必要がある**
+
+言うまでもなく、サポートされている脆弱性評価ソリューションが見つからない限り、Security Center では検出された脆弱性を通知できません。
+
+そのため、次のようになります。
+
+ - 推奨事項 #1 は推奨事項 #2 の前提条件となる
+ - 推奨事項 #2 は推奨事項 #1 に依存する
+
+:::image type="content" source="media/release-notes/related-recommendations-solution-not-found.png" alt-text="脆弱性評価ソリューションを展開するための推奨事項のスクリーンショット。":::
+
+:::image type="content" source="media/release-notes/related-recommendations-vulnerabilities-found.png" alt-text="検出された脆弱性を解決するための推奨事項のスクリーンショット。":::
+
+
+
 ## <a name="september-2021"></a>2021 年 9 月
 
 9 月に、次の更新プログラムがリリースされました。
 
-### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance"></a>Azure のセキュリティ ベースライン コンプライアンスの OS 構成を監査する 2 つの新しい推奨事項
+### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance-in-preview"></a>Azure のセキュリティ ベースライン コンプライアンスの OS 構成を監査する 2 つの新しい推奨事項 (プレビュー段階)
 
 [Windows のセキュリティ ベースライン](../governance/policy/samples/guest-configuration-baseline-windows.md)と [Linux セキュリティ ベースライン](../governance/policy/samples/guest-configuration-baseline-linux.md)へのマシンのコンプライアンスを評価するため、次の 2 つの推奨事項がリリースされました。
 
@@ -511,11 +591,11 @@ Security Center には、VM、SQL サーバーとそのホスト、コンテナ�
 
 :::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="[クエリを開く] ボタンを使用して、より詳細なクエリを実行し、脆弱性スキャナー関連の推奨事項に関するセキュリティの結果を表示できるようになりました。":::
 
-**[クエリを開く]** ボタンを使用すると、関連するその他の推奨事項に関する追加のオプションも表示できます。
+**[クエリを開く]** ボタンを使用すると、関連するその他の推奨事項に関する追加のオプションを表示できます。
 
 Security Center の脆弱性スキャナーの詳細については、次のページを参照してください。
 
-- [Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価スキャナー](deploy-vulnerability-assessment-vm.md)
+- [Azure およびハイブリッド マシンに対する Azure Defender の統合された Qualys 脆弱性評価スキャナー](deploy-vulnerability-assessment-vm.md)
 - [SQL サーバーに対して Azure Defender の統合された脆弱性評価スキャナーを使用する](defender-for-sql-on-machines-vulnerability-assessment.md)
 - [コンテナー レジストリ向け Azure Defender の統合された脆弱性評価スキャナー](defender-for-container-registries-usage.md)
 

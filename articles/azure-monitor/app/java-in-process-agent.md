@@ -6,12 +6,12 @@ ms.date: 06/24/2021
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 9ebfaea28e249af5f8ecd140e08178398f38fd6f
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: c732762b825a38560c1191371565331271bc18b5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858305"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162731"
 ---
 # <a name="azure-monitor-opentelemetry-based-auto-instrumentation-for-java-applications"></a>Java アプリケーションのための Azure Monitor OpenTelemetry ベースの自動インストルメンテーション
 
@@ -89,6 +89,8 @@ Application Insights リソースの接続文字列を見つけます。
 > [!IMPORTANT]
 > 同じ Application Insights リソースに 2 つ以上のサービスがテレメトリを出力している場合は、それらをアプリケーション マップで正しく表すために、[クラウド ロール名を設定する](java-standalone-config.md#cloud-role-name)必要があります。
 
+> [!NOTE]
+> Application Insights インストルメンテーションの使用の一部として、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 ## <a name="configuration-options"></a>構成オプション
 
@@ -156,7 +158,7 @@ Java 3.X には、次のインストルメンテーション ライブラリが�
 * マイクロメーター (Spring Boot アクチュエータ メトリックを含む)
 * JMX メトリック
 
-### <a name="azure-sdks-preview"></a>Azure SDKs (プレビュー)
+### <a name="azure-sdks"></a>Azure SDK
 
 次の Azure SDK によって出力されるテレメトリは、既定で自動収集されます。
 

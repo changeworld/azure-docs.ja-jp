@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/30/2021
-ms.openlocfilehash: 8773957a2b34851babb42c6804fc21d6a9d5112b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3ab11ffb7779255a5b45a55d0098657834203d80
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657464"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072976"
 ---
-# <a name="plan-an-iot-edge-modules-offer"></a>IoT Edge モジュール プランの計画
+# <a name="plan-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの計画
 
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) プラットフォームは Microsoft Azure に支えられています。  このプラットフォームでは、ユーザーは IoT  デバイスで直接実行するクラウド ワークロードをデプロイすることができます。  IoT Edge モジュールでは、オフラインのワークロードを実行でき、ローカルでデータを分析することができます。 このプランでは、帯域幅を保存したり、ローカルおよび機密データを保護することができ、低待機応答時間を提供します。  このような構築済みのワークロードを活用するためにいくつかのオプションがあります。 今までは、ごく少数の Microsoft のファーストパーティ  ソリューションが使用可能でした。  カスタマイズ IoT ソリューションの構築に時間とリソースを使う必要がありました。
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) プラットフォームは Microsoft Azure に支えられています。 このプラットフォームでは、ユーザーは IoT  デバイスで直接実行するクラウド ワークロードをデプロイすることができます。  IoT Edge モジュールでは、オフラインのワークロードを実行でき、ローカルでデータを分析することができます。 このプランでは、帯域幅を保存したり、ローカルおよび機密データを保護することができ、低待機応答時間を提供します。  このような構築済みのワークロードを活用するためにいくつかのオプションがあります。 今までは、ごく少数の Microsoft のファーストパーティ  ソリューションが使用可能でした。 カスタマイズ IoT ソリューションの構築に時間とリソースを使う必要がありました。
 
 [Azure Marketplace の IoT Edge モジュール](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)により、パブリッシャーは IoT の対象ユーザーへのソリューションの公開や販売を 1 か所で行うことができるようになりました。 IoT 開発者は、適当な機能を検索して、それを購入することによって、自分のソリューションの開発を加速することができます。  
 

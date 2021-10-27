@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 253d763cffc8b70d134182c13678320f4ac50f4c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59fa14f66e5fdb1424a4bac30a30cf70118149b4
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586326"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131470"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -82,7 +82,7 @@ Azure には、Azure Digital Twins [データ プレーン API](concepts-apis-sd
 
 ### <a name="troubleshooting-permissions"></a>アクセス許可のトラブルシューティング
 
-ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、"[Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)](troubleshoot-error-403.md) " といったエラーのトラブルシューティングに関するページを参照してください。
+ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、[サービス要求の失敗: エラー 403 (許可されていません) のトラブルシューティング](troubleshoot-error-403.md)に関する記事を参照してください。
 
 ## <a name="managed-identity-for-accessing-other-resources"></a>他のリソースにアクセスするためのマネージド ID
 

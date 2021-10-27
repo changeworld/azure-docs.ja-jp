@@ -3,7 +3,7 @@ title: Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 description: SQL Server VM を SQL IaaS Agent 拡張機能に一括登録して管理性を向上させます。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: adbadram
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: adbadram
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b2066ef94cb87a9ab9c000615c018938cbeddb1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: bc4bfc48c9b8f6891c45730215f2c49e84467a42
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220623"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161896"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -249,4 +249,4 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)
+* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)

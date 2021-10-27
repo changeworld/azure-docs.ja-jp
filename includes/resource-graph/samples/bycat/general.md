@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 9b3e559e2fe0ea02978593aa3d2725c4e1d3b71d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e79329c4c3a7786e58a0a6f76488f86d21260c11
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536322"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050670"
 ---
 ### <a name="count-azure-resources"></a>Azure リソースの数
 
@@ -43,9 +43,9 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ---
 
-### <a name="list-impacted-resources-when-transferring-an-azure-subscription"></a>Azure サブスクリプションの移転時に影響を受けるリソースの一覧
+### <a name="list-impacted-resources-when-transferring-an-azure-subscription"></a>Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧
 
-サブスクリプションを別の Azure Active Directory (Azure AD) に移転するときに影響を受ける、Azure リソースの一部を返します。 サブスクリプションの移転前に存在していたリソースの一部を再作成する必要があります。
+サブスクリプションを別の Azure Active Directory (Azure AD) ディレクトリに譲渡するときに影響を受ける、Azure リソースの一部を返します。 サブスクリプションの譲渡前に存在していたリソースの一部を再作成する必要があります。
 
 ```kusto
 Resources
@@ -149,7 +149,7 @@ Search-AzGraph -Query "Resources | summarize resourceCount=count() by subscripti
 
 ### <a name="show-resource-types-and-api-versions"></a>リソースの種類と API バージョンを表示する
 
-Resource Graph は、主にリソース プロバイダーの API の最新の非プレビュー バージョンを使用して、更新中にリソース プロパティの `GET` を行います。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 次のクエリは、リソースの種類ごとにプロパティを収集するために使用される API バージョンの詳細を示しています。
+Resource Graph は、主にリソース プロバイダー API の最新の非プレビュー バージョンを使用して、更新中にリソース プロパティの `GET` を行います。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 次のクエリは、リソースの種類ごとにプロパティを収集するために使用される API バージョンの詳細を示しています。
 
 ```kusto
 Resources

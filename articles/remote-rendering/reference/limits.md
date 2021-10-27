@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06e266460e12218f531c85c2c6ca48c1e9658053
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100530248"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003025"
 ---
 # <a name="limitations"></a>制限事項
 
@@ -32,7 +32,7 @@ ms.locfileid: "100530248"
 * **アニメーション:** アニメーションは、[ゲーム オブジェクト](../concepts/entities.md)の個々の変換をアニメーション化することに限定されます。 スキニングや頂点のアニメーションを使用したスケルトン アニメーションはサポートされていません。 ソース資産ファイルからのアニメーション トラックは保持されません。 代わりに、クライアント コードからオブジェクト変換アニメーションを駆動する必要があります。
 * **カスタム シェーダー:** カスタム シェーダーの作成はサポートされていません。 使用できるのは、組み込みの[色素材](../overview/features/color-materials.md)または [PBR 素材](../overview/features/pbr-materials.md)だけです。
 * 1 つの資産内の **個別の素材の最大数**:65,535。 素材数の自動的な削減の詳細については、「[素材の重複除去](../how-tos/conversion/configure-model-conversion.md#material-de-duplication)」の章をご覧ください。
-* **1 つのテクスチャの最大寸法**:16,384 x 16,384。 これより大きなソース テクスチャは、変換プロセスでサイズが縮小されます。
+* **1 つのテクスチャの最大寸法**:16,384 x 16,384。 レンダラーでは、これより大きいテクスチャは使用できません。 変換プロセスにより、大きいテクスチャのサイズを縮小できる場合がありますが、一般に、この制限よりも大きいテクスチャは処理できません。
 
 ### <a name="overall-number-of-polygons"></a>多角形の全体数
 

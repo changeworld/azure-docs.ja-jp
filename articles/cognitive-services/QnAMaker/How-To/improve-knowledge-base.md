@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2ae3cd54f47e804b9bdd78433f96f96034d16ee
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011444"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047211"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -143,7 +143,7 @@ ms.locfileid: "103011444"
 
 クライアント アプリケーションでは、意図を最も適切に表している _1 つの質問_ をユーザーが選択するためのオプションを示して、質問が表示されます。
 
-ユーザーが既存の質問の 1 つを選択すると、QnA Maker の Train API を使用して、ユーザーの選択がフィードバックとしてクライアント アプリケーションから送信されます。 このフィードバックにより、アクティブ ラーニングのフィードバック ループが完了します。
+ユーザーが既存の質問の 1 つを選択すると、QnA Maker Train API を使用して、ユーザーの選択がフィードバックとしてクライアント アプリケーションから送信されます。 このフィードバックにより、アクティブ ラーニングのフィードバック ループが完了します。
 
 ## <a name="train-api"></a>Train API
 
@@ -226,7 +226,7 @@ JSON 本文の例は、次のようになります。
 ボット フレームワークのコードでは、ユーザーのクエリをアクティブ ラーニングに使用する必要がある場合は Train API を呼び出す必要があります。 記述するコードは 2 種類あります。
 
 * クエリをアクティブ ラーニングに使用するかどうかを指定する
-* アクティブ ラーニングのためにクエリを QnA Maker の Train API に送り返す
+* アクティブ ラーニングのためにクエリを QnA Maker Train API に送り返す
 
 [Azure Bot のサンプル](https://github.com/microsoft/BotBuilder-Samples)では、これらのアクティビティの両方がプログラムされています。
 

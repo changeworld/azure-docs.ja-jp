@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Azure との Elastic の統合
+summary: ログ、メトリック、およびトレース分析を一元化します。
+metadata:
+  title: Elastic と Azure のドキュメント
+  description: Elastic は Azure と統合され、監視ソリューションを提供します。
+  ms.service: partner-services
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 10/22/2021
+  ms.openlocfilehash: be8330927e12a65d92467dd293b64b02f9266ea3
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130269156"
+landingContent:
+- title: Azure での Elastic について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure との Elastic の統合とは
+      url: overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure との Elastic 統合を管理する
+      url: manage.md
+- title: Elastic リソースを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Elastic の概要
+      url: create.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure と Elastic の統合のトラブルシューティング
+      url: troubleshoot.md

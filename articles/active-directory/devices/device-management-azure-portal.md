@@ -1,28 +1,39 @@
 ---
-title: Azure Portal によるデバイスの管理 | Microsoft Docs
+title: Azure portal を使用して Azure AD のデバイスを管理する
 description: Azure Portal を使用してデバイスを管理する方法を説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 10/14/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef9dca3604be281ccedf4d6f1af3e7861273e6b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ecfbb1ad70fba1444d97d70abd0a5052a91fce15
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590724"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040316"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
-Azure AD は、デバイス ID を一元的に管理する場所を提供します。
+Azure AD によって、デバイス ID を一元的に管理し、関連するイベント情報を監視するための場所が用意されます。
 
-**[すべてのデバイス]** ページを使用すると、次のことを実行できます。
+[![Azure portal でのデバイスの概要](./media/device-management-azure-portal/devices-azure-portal.png)](./media/device-management-azure-portal/devices-azure-portal.png#lightbox)
+
+次の手順を使用して、デバイスの概要にアクセスできます。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
+
+デバイスの概要から、デバイスの総数、古いデバイス、非準拠デバイス、およびアンマネージド デバイスを確認できます。 Intune、条件付きアクセス、BitLocker キー、および基本的な監視へのリンクにすばやくアクセスすることもできます。 
+
+概要ページのデバイス数は、リアルタイムでは更新されません。変更は数時間ごとに反映されます。
+
+そこから、**[すべてのデバイス]** に移動して以下を実行できます。
 
 - 次のようなデバイスを識別する。
    - Azure AD に参加または登録しているデバイス。
@@ -37,42 +48,16 @@ Azure AD は、デバイス ID を一元的に管理する場所を提供しま�
 
 [![Azure portal の [すべてのデバイス] ビュー](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
-デバイス ポータルには、次の手順を使用してアクセスできます。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
-
-## <a name="manage-devices"></a>デバイスを管理する
-
-Azure AD には、デバイスを管理するために次の 2 つの場所があります。
-
-- **Azure portal** >  **[Azure Active Directory]**  >  **[デバイス]**
-- **Azure portal** >  **[Azure Active Directory]**  >  **[ユーザー]** > ユーザーの選択 > **[デバイス]**
-
-どちらのオプションでも、管理者は次のことを行うことができます。
-
-- デバイスを検索する。
-- 次のようなデバイスの詳細を表示する。
-    - [デバイス名]
-    - Device ID
-    - OS とバージョン
-    - 結合の種類
-    - 所有者
-    - モバイル デバイス管理とコンプライアンス
-    - BitLocker 回復キー
-- 有効化、無効化、削除、管理などのデバイス ID 管理タスクを実行する。
-   - [プリンター](/universal-print/fundamentals/)および [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) デバイスでは、Azure AD での管理オプションが制限されています。 これらは、それぞれの管理インターフェイスから管理する必要があります。
-
 > [!TIP]
 > - ハイブリッド Azure AD 参加済みの Windows 10 デバイスには、所有者がありません。 所有者でデバイスを検索していて、見つからなかった場合は、デバイス ID で検索してください。
 >
-> - [登録済み] 列の下の状態が "保留中" である "ハイブリッド Azure AD 参加済み" のデバイスが表示されている場合、そのデバイスが Azure AD 接続から同期されており、クライアントからの登録の完了を待機していることを示します。 [Hybrid Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)方法について詳細を参照してください。 追加情報については、[デバイスについてよく寄せられる質問](faq.yml)に関する記事を参照してください。
+> - **[登録済み]** 列の下の状態が [保留中] である "Hybrid Azure AD 参加済み" のデバイスが表示されている場合は、そのデバイスが Azure AD 接続から同期されており、クライアントからの登録の完了を待機していることを示します。 [Hybrid Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)方法について詳細を参照してください。 追加情報については、[デバイスについてよく寄せられる質問](faq.yml)に関する記事を参照してください。
 >
 > - 一部の iOS デバイスの名前で使用されているアポストロフィは、アポストロフィに見える別の文字である可能性があります。 このため、このようなデバイスを検索するときは少し注意が必要です。正しい検索結果が表示されない場合は、検索文字列のアポストロフィが、正しいアポストロフィ文字であることを確認してください。
 
 ### <a name="manage-an-intune-device"></a>Intune デバイスの管理
 
-Intune 管理者の場合は、MDM が **Microsoft Intune** とマークされているデバイスを管理することができます。 デバイスが Microsoft Intune に登録されていない場合、[管理] オプションは灰色で表示されます。
+Intune でデバイスを管理する権限がある場合は、モバイル デバイス管理で **Microsoft Intune** とマークされているデバイスを管理できます。 デバイスが Microsoft Intune に登録されていない場合、[管理] オプションは灰色で表示されます。
 
 ### <a name="enable-or-disable-an-azure-ad-device"></a>Azure AD デバイスを有効または無効にする
 
@@ -102,11 +87,11 @@ Intune 管理者の場合は、MDM が **Microsoft Intune** とマークされ�
 >    - Windows デバイスの BitLocker キーなど、デバイスに関連付けられているすべての詳細が削除されます。  
 >    - 削除は回復不可能な操作であり、必須の場合以外は推奨されません。
 
-デバイスが別の管理機関 (Microsoft Intune など) によって管理されている場合は、Azure AD でデバイスを削除する前に、デバイスがワイプ/使用中止されているかどうかを確認してください。 デバイスを削除する前に、[古いデバイスを管理する](manage-stale-devices.md)方法を確認してください。
+デバイスが別の管理機関 (Microsoft Intune など) によって管理されている場合は、デバイスを削除する前に、デバイスがワイプまたは使用中止されていることを確認します。 デバイスを削除する前に、[古いデバイスを管理する](manage-stale-devices.md)方法を確認してください。
 
 ### <a name="view-or-copy-device-id"></a>デバイス ID を表示またはコピーする
 
-デバイス ID を使うと、デバイス上で、またはトラブルシューティング中に PowerShell を使用して、デバイス ID の詳細を確認することができます。 コピー オプションにアクセスするには、デバイスをクリックします。
+デバイス ID を使うと、デバイス上で、またはトラブルシューティング中に PowerShell を使用して、デバイス ID の詳細を確認することができます。 コピー オプションにアクセスするには、デバイスを選択します。
 
 ![デバイス ID の表示](./media/device-management-azure-portal/35.png)
   
@@ -116,7 +101,7 @@ BitLocker キーを表示およびコピーして、暗号化されたドライ�
 
 ![BitLocker キーの表示](./media/device-management-azure-portal/device-details-show-bitlocker-key.png)
 
-BitLocker キーを表示またはコピーするには、デバイスの所有者であるか、次のロールが 1 つ以上割り当てられているユーザーである必要があります。
+BitLocker キーを表示またはコピーするには、デバイスの所有者であるか、次のロールのいずれかが割り当てられている必要があります。
 
 - クラウド デバイス管理者
 - グローバル管理者
@@ -144,11 +129,11 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
 1. **[新しいデバイスのフィルターの改善された機能をお試しください。クリックすると、プレビューが有効になります。]** というバナーを選択します。
 
-**[すべてのデバイス]** ビューに **フィルターを追加** できるようになりました。
+これで、**[すべてのデバイス]** ビューに **フィルターを追加** できます。
 
 ### <a name="download-devices-preview"></a>デバイスをダウンロードする (プレビュー)
 
-クラウド デバイス管理者、Intune 管理者、および全体管理者は、 **[Download devices (preview)]\(デバイスのダウンロード (プレビュー)\)** オプションを使用して、適用されているフィルターに基づいてデバイスの CSV ファイルをエクスポートできます。 一覧にフィルターが適用されていない場合は、すべてのデバイスがエクスポートされます。 エクスポートは、場合によっては最大で 1 時間実行される場合があります。 
+クラウド デバイス管理者、Intune 管理者、および全体管理者は、 **[Download devices (preview)]\(デバイスのダウンロード (プレビュー)\)** オプションを使用して、適用されているフィルターに基づいてデバイスの CSV ファイルをエクスポートできます。 一覧にフィルターが適用されていない場合は、すべてのデバイスがエクスポートされます。 エクスポート タスクは、選択内容によっては、最大で 1 時間実行される場合があります。
 
 エクスポートされた一覧には、次のデバイス ID 属性が含まれています。
 
@@ -222,12 +207,11 @@ Azure portal でデバイスの設定を表示または管理するには、次�
 - 移行先
 - 開始者 (アクター)
 
-フィルターだけでなく、特定のエントリを検索することができます。
+特定のエントリを検索することもできます。
 
 :::image type="content" source="./media/device-management-azure-portal/65.png" alt-text="監査データのフィルター コントロールのスクリーンショット。[カテゴリ]、[アクティビティのリソースの種類]、[アクティビティ]、[期間]、[移行先]、[アクター] の各フィールドと、検索フィールドが表示されている。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 
-[方法: Azure AD で古いデバイスを管理する](manage-stale-devices.md)
-
-[Enterprise State Roaming](enterprise-state-roaming-overview.md)
+- [方法: Azure AD で古いデバイスを管理する](manage-stale-devices.md)
+- [保留中のデバイス状態のトラブルシューティング](/troubleshoot/azure/active-directory/pending-devices)

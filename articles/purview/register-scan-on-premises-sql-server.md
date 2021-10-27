@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 4cef99adecadc73f105dfffcdc72163c8b622cc3
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 1921349be07d129e9889da3af6c72a7b25a58ff5
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208687"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074439"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>オンプレミスの SQL Server の登録とスキャン
 
@@ -93,7 +93,9 @@ SQL アカウントには、**master** データベースへのアクセス権�
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/set-up-sql-data-source.png" alt-text="SQL データ ソースを設定します。":::
 
-5. フレンドリ名とサーバー エンドポイントを指定し、 **[完了]** を選択してデータ ソースを登録します。 たとえば、SQL Server の FQDN が **foobar.database.windows.net** の場合は、サーバー エンドポイントとして *foobar* を入力します。
+1. フレンドリ名を指定します。これは、サーバーとサーバー エンドポイントを識別するために使用できる短い名前です。 
+ 
+1. **[完了]** を選択してデータ ソースを登録します。
 
 ## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
 

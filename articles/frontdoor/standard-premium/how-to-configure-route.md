@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 05/17/2021
 ms.author: qixwang
-ms.openlocfilehash: 8b25f56b238c7f0c42a1ba589f7da2d68344c915
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a9f0095ebd82ab82003c03c1ca9d59f70d908c9f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464393"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006111"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-route"></a>Azure Front Door Standard/Premium のルートを構成する
 
@@ -56,7 +56,7 @@ Azure Front Door のルートを構成するには、事前に、現在のエン
     | --- | --- |
     | 名前 | 新しいルートの一意の名前を入力します。 |   
     | Domain| 検証済みで、別のルートに関連付けられていないドメインを 1 つ以上選択します。 |
-    | 一致するパターン  | このルートで受け入れるすべての URL パスのパターンを構成します。 たとえば、これを `/images/*` に設定すると、URL `www.contoso.com/images/*` ですべての要求を受け入れることができます。 AFD では、まず完全一致に基づいてトラフィックの特定を試みます。完全一致のパスがない場合は、一致するワイルドカード パスを探します。 Path が一致するルーティング規則が存在しない場合、要求を拒否し、400: Bad Request エラー HTTP 応答を返します。 |
+    | 一致するパターン  | このルートで受け入れるすべての URL パスのパターンを構成します。 たとえば、これを `/images/*` に設定すると、URL `www.contoso.com/images/*` ですべての要求を受け入れることができます。 AFD では、まず完全一致に基づいてトラフィックの特定を試みます。完全一致のパスがない場合は、一致するワイルドカード パスを探します。 Path が一致するルーティング規則が存在しない場合、要求を拒否し、400: Bad Request エラー HTTP 応答を返します。 パスに一致するパターンでは大文字と小文字が区別されません。つまり、大文字と小文字が異なるパスは重複として扱われます。 たとえば、パスが `/FOO` および `/foo` で同じプロトコルを使用する同じホストがあるとします。 これらのパスは重複と見なされ、[一致するパターン] 設定では許可されません。 |
     | 受け入れ済みのプロトコル | クライアントが要求を行う際に、Azure Front Door で受け入れるプロトコルを指定します。 |
     | リダイレクト | HTTP 要求で受信要求に HTTPS を適用するかどうかを指定します。 |
     | 配信元グループ | 配信元に戻る要求が発生したときに、どの配信元グループに転送するかを選択します。 |

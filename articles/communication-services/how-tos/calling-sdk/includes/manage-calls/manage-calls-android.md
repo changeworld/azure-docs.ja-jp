@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: 319571066bd69d1bc80414de7bdb49da27102c18
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d2a6415a2cc03513606183c290443c453a82577
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128699163"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143813"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-android.md)]
 
@@ -255,3 +255,30 @@ ID は "Identifier" 型の 1 つです。
     ```java
     List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [RemoteVideoStream, RemoteVideoStream, ...]
     ```
+## <a name="using-foreground-services"></a>フォアグラウンド サービスの使用
+
+アプリケーションがバックグラウンドで動作しているときでも、ユーザーに表示されるタスクを実行する場合は、[フォアグラウンド サービス](https://developer.android.com/guide/components/foreground-services)を使用できます。
+
+フォアグラウンド サービスを使用すると、たとえば、アプリケーションにアクティブな通話があるときに、ユーザーに通知を表示したままにすることができます。 これにより、ユーザーがホーム画面に移動した場合や、[最近の画面](https://developer.android.com/guide/components/activities/recents)からアプリケーションを削除した場合でも、通話は引き続きアクティブになります。
+
+通話中にフォアグラウンド サービスを使用しない場合、ホーム画面に移動しても通話は継続されますが、アプリケーションを最近の画面から削除すると、Android OS によってアプリケーションのプロセスを強制終了された場合に通話が停止する可能性があります。
+
+たとえば、通話の開始時または参加時にフォアグラウンド サービスを開始することをお勧めします。
+
+```java
+call = callAgent.startCall(context, participants, options);
+startService(yourForegroundServiceIntent);
+```
+
+また、通話を切断したときや、通話の状態が切断済みの場合にフォアグラウンド サービスを停止します。
+
+```java
+call.hangUp(new HangUpOptions()).get();
+stopService(yourForegroundServiceIntent);
+```
+
+### <a name="notes-on-using-foreground-services"></a>フォアグラウンド サービスの使用に関する注意事項
+
+アプリが最近の一覧から削除されたときに、既に実行されているフォアグラウンド サービスを停止するようなシナリオの場合、ユーザーに表示される通知が削除されても、Android OS によってアプリケーションのプロセスが一定期間維持される可能性があることに注意してください。つまり、この期間中も通話はアクティブな可能性があります。
+
+たとえば、service `onTaskRemoved` メソッドでアプリケーションによってフォアグラウンド サービスが停止されている場合、[アクティビティのライフサイクル](https://developer.android.com/guide/components/activities/activity-lifecycle)に従って音声とビデオが開始または停止される可能性があります (`onDestroy` メソッドのオーバーライドでアクティビティが破棄されたときに音声とビデオが停止されるなど)。

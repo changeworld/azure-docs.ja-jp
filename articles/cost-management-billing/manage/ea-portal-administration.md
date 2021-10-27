@@ -3,18 +3,18 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/28/2021
+ms.date: 10/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: sapnakeshari
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ede22b400b597c8cc474d49f65341bb5b24ea118
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: aeb817f2d76306e2c2f3e571fb4a5bc67e98d098
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216766"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000311"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -122,7 +122,7 @@ ms.locfileid: "129216766"
 
 アカウントを追加するには:
 
-1. Azure エンタープライズ ポータルで、左側のナビゲーション領域の **[管理]** を選択します。
+1. Azure エンタープライズ ポータルで、左側のナビゲーション領域の **[管理]** を選択し、登録を選択します。
 1. **[アカウント]** タブを選択します。 **[アカウント]** ページで、 **[+ アカウントの追加]** を選択します。
 1. 部署を選択するか、割り当てなしのままにして、必要な認証の種類を選択します。
 1. レポートでアカウントを識別するためのフレンドリ名を入力します。
@@ -140,6 +140,19 @@ ms.locfileid: "129216766"
 
    状態は、 **[保留中]** から **[開始日/終了日]** に変わるはずです。 開始日/終了日は、ユーザーが最初にサインインした日付と契約終了日です。
 1. Azure エンタープライズ ポータルに初めてサインインするときに **警告** メッセージが表示されるときは、アカウント所有者は、 **[続行]** を選択してアカウントをアクティブ化する必要があります。
+
+## <a name="add-an-account-from-another-azure-ad-tenant"></a>別の Azure AD テナントからアカウントを追加する
+
+既定で、登録は特定の Azure AD テナントと関連付けられています。 そのテナントのアカウントのみ、Azure 登録アカウントの確立に使用できます。 ただし、動作を変更して、アカウントをどの Azure AD テナントからもリンクできるようにできます。
+
+どのテナントからもアカウントを追加できるようにするには:
+
+1.  Azure エンタープライズ ポータルで、左側のナビゲーション領域の **[管理]** を選択します。
+1. 適切な登録を選択します。 この設定を後で復元する場合は、**認証レベル** の現在の設定を書き留めておきます。
+1.  まだ構成されていない場合は、認証レベルを **[テナント間の職場または学校アカウント]** に変更します。
+1. 前のセクションの説明に従い、Azure AD のサインイン情報を使用してアカウントを追加します。
+1.  **認証レベル** を前の設定に戻すか、それを **[テナント間の職場または学校アカウント]** として設定します。
+1.  EA ポータルにサインインして、その後サブスクリプションを Azure portal に追加できるよう、適切なサブスクリプション オファーを表示します。
 
 ## <a name="change-azure-subscription-or-account-ownership"></a>Azure サブスクリプションまたはアカウントの所有権を変更する
 

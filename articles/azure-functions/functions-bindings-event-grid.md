@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e5cc7974038ed69c745a958c682967d26545d5bc
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 4935bb8c44c2f3d6d1a17a8c1f2ba897178d1606
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109577"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069503"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions における Azure Event Grid のバインド
 
@@ -36,7 +36,7 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| 言語 | 追加手段 | 解説 |
+| Language | 追加手段 | 解説 |
 |---|---|---|
 | C# | [NuGet パッケージ] バージョン 2.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |
@@ -50,11 +50,23 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 #### <a name="event-grid-extension-3x-and-higher"></a>Event Grid 拡張機能 3.x 以降
 
-Event Grid のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.2)として入手できます。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。 [クラウド イベント](/dotnet/api/azure.messaging.cloudevent)は、新しい Event Grid 拡張機能でもサポートされています。
+Event Grid のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。 [クラウド イベント](/dotnet/api/azure.messaging.cloudevent)は、新しい Event Grid 拡張機能でもサポートされています。
 
-> [!NOTE]
-> このプレビュー パッケージは拡張機能バンドルに含まれていないため、手動でインストールする必要があります。 .NET アプリの場合は、パッケージへの参照を追加します。 その他のすべてのアプリの種類については、[拡張機能の更新]に関する記事を参照してください。
+この拡張機能バージョンは[プレビュー NuGet パッケージ]として利用できます。あるいは、`host.json` ファイルに次を追加することでプレビュー拡張機能バンドル v3 から追加できます。
 
+```json
+{
+  "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
+    "version": "[3.*, 4.0.0)"
+  }
+}
+```
+
+詳細については、[ユーザーの更新]に関するページを参照してください。
+
+[プレビュー NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.4
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage

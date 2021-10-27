@@ -2,7 +2,6 @@
 title: F5 を使用した安全なハイブリッド アクセス
 titleSuffix: Azure AD
 description: F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
-services: active-directory
 author: davidmu1
 manager: martinco
 ms.service: active-directory
@@ -13,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: e5f17826d4a578f0c82a5e1e58abf54d4abac252
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 622834d3e91303f55fd4adaf2187800b2b2ce765
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620661"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164372"
 ---
 # <a name="integrate-f5-big-ip-with-azure-active-directory"></a>F5 BIG-IP と Azure Active Directory の統合
 
@@ -145,6 +144,8 @@ SHA を実装するために事前の経験や F5 BIG-IP に関する知識は�
 - [F5 BIG-IP APM と Azure AD SSO からヘッダーベースのアプリケーション](../saas-apps/headerf5-tutorial.md#configure-f5-single-sign-on-for-header-based-application)
 
 - [Azure AD SHA による F5 BIG-IP SSL-VPN の保護](f5-aad-password-less-vpn.md)
+
+- [Azure AD B2C と F5 BIG-IP を構成する](../../active-directory-b2c/partner-f5.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 

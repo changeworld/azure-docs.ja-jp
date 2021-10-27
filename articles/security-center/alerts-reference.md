@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 10/04/2021
 ms.author: memildin
-ms.openlocfilehash: 60f3615c55540168f5d65b796be15a7398046f2b
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 3ebcf82d59262bf36eb7dfb9f2cf6910263517f9
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129418559"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138746"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -314,6 +314,8 @@ ms.locfileid: "129418559"
 | **New high privileges role detected (新しい高い特権のロールが検出されました)**<br>(K8S_HighPrivilegesRole)                     | Kubernetes 監査ログ分析によって、高い特権を持つ新しいロールが検出されました。 高い特権が付与されているロールにバインドすると、クラスター内のユーザーやグループに高い特権が付与されます。 不必要な特権によって、クラスター内で特権エスカレーションが発生する可能性があります。                                                                                                                                                                                                                                                                                                                                                    | 永続化                                  | 低      |
 | **Privileged Container Detected (特権コンテナーが検出されました)**<br>(K8S_PrivilegedContainer)                        | Kubernetes 監査ログ分析によって、新しい特権コンテナーが検出されました。 特権コンテナーは、ノードのリソースにアクセスできるため、コンテナー間の分離が破壊されます。 侵害された場合、攻撃者はノードにアクセスするために、特権コンテナーを使用できます。                                                                                                                                                                                                                                                                                                                               | Privilege Escalation (特権昇格)                         | 低      |
 | **Role binding to the cluster-admin role detected (クラスター管理者ロールへのロール バインドが検出されました)**<br>(K8S_ClusterAdminBinding)      | Kubernetes 監査ログ分析によって、管理者特権を付与する、クラスター管理者ロールへの新しいバインドが検出されました。 不必要な管理者特権によって、クラスター内で特権エスカレーションが発生する可能性があります。                                                                                                                                                                                                                                                                                                                                                                                       | 永続化                                  | 低      |
+| **Anomalous pod deployment (Preview) (異常なポッドのデプロイ (プレビュー))**<br>(K8S_AnomalousPodDeployment)      | Kubernetes 監査ログ分析で、以前のポッドのデプロイ アクティビティに基づいて異常なポッドのデプロイが検出されました。 このアクティビティは、デプロイ操作に見られるさまざまな特徴の相互関係を考慮した場合、異常と考えられます。 この分析によって監視される特徴には、使用されるコンテナー イメージ レジストリ、デプロイを実行するアカウント、曜日、このアカウントがポッドのデプロイを実行する頻度、操作で使用されるユーザー エージェント、ポッドのデプロイが頻繁に発生する名前空間などの特徴があります。 異常なアクティビティとしてこのアラートが発生する主な原因については、アラートの拡張プロパティに詳しい説明があります。                                                                                                                                                                                                                                                                                                                                                                                       | 実行                                  | Medium      |
+| **Excessive role permissions assigned in Kubernetes cluster (Preview) (Kubernetes クラスターで割り当てられた過剰なロール権限 (プレビュー))**<br>(K8S_ServiceAcountPermissionAnomaly)      | Kubernetes 監査ログの分析で、クラスターへの過剰なアクセス許可ロールの割り当てが検出されました。 ロールの割り当ての調査から判断して、リストされているアクセス許可は、特定のサービス アカウントにとって一般的ではありません。 この検出では、Azure によって監視されるクラスター全体での同じサービス アカウントへの以前のロールの割り当て、アクセス許可あたりのボリューム、および特定のアクセス許可の影響が考慮されます。 このアラートに使用される異常検出モデルでは、このアクセス許可が、Azure Defender によって監視されるすべてのクラスターでどのように使用されているかが考慮されます。                                                                                                                                                                                                                                                                                                                                                                                       | Privilege Escalation (特権昇格)                                  | 低      |
 |                                                                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                              |          |
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>コンテナーのアラート - ホスト レベル

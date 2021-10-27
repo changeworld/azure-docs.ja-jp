@@ -4,7 +4,7 @@ description: Azure Active Directory におけるサインイン診断の概要�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/07/2021
+ms.date: 09/30/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30ec59a2b74ffb1a9de8bbf03271bf4699c98b6b
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 99e3999eaa137a26680ff5741f38d434d2a9f618
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552652"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998905"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Azure AD におけるサインイン診断とは
 
@@ -50,29 +50,39 @@ Azure AD の場合、サインインの試行は次によって制御されま�
 
 診断プロセスを開始し、完了するには、以下のことを行う必要があります。   
 
-1. **イベントの識別** - サインイン イベントに関する情報を入力します 
+1. **イベントの識別**  - 診断を開始し、ユーザーが支援を求めているフラグ付きイベントを確認します。または、調査するサインイン イベントに関する情報を入力します。 
 
-2. **イベントの選択** - 共有されている情報に基づいてイベントを選択します。 
+2. **イベントの選択**  - 共有されている情報に基づいてイベントを選択します。 
 
-3. **アクションの実行** - 診断結果を確認して、手順を行います。
+3. **アクションの実行**  - 診断結果を確認して、手順を実行します。 
+
 
 
 ### <a name="identify-event"></a>イベントの識別 
 
-適切なイベントを識別するために、次のオプションに基づいてフィルター処理できます。
+診断では、次の 2 つの方法で、調査するイベントを検索できます。  
 
-- ユーザーの名前
+- ユーザーが[支援を求めてフラグを設定](overview-flagged-sign-ins.md)したサインインの失敗。 
+- ユーザーと追加条件によって、特定のイベントを検索する。 
+
+フラグ付きのサインインは、最大 100 件の一覧に自動的に表示されます。 イベントをクリックすると、その診断をすぐに実行できます。  
+
+フラグ付きサインインが存在する場合でも、検索タブを選択して、特定のイベントを検索できます。 特定のイベントを検索する際、次のオプションに基づいてフィルター処理できます。 
+
+- ユーザーの名前 
+
 - Application 
-- 関連付け ID または要求 ID 
-- 日付と時刻
 
-![フィルターを示すスクリーンショット。](./media/overview-sign-in-diagnostics/sign-in-diagnostics.png)
+- 関連付け ID または要求 ID 
+
+- 日付と時刻 
 
 
 
 ### <a name="select-event"></a>イベントの選択  
 
-Azure AD では、検索条件に基づいて一致するすべてのサインイン イベントが取得され、認証の概要のリスト ビューに表示されます。  
+フラグ付きサインインの場合、または検索が完了すると、一致するすべてのサインイン イベントが Azure AD によって取得され、認証の概要一覧ビューに表示されます。 
+
 
 ![認証の要約リストを示すスクリーンショット。](./media/overview-sign-in-diagnostics/review-sign-ins.png)
 

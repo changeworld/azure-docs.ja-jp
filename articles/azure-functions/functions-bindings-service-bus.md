@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dc0e424e36d67cd25fc93e950e5758c6378c1b7d
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e9306d9931a34a192d0fb77caf1ab6147f2020a5
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660592"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071931"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -25,14 +25,11 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 ## <a name="add-to-your-functions-app"></a>Functions アプリに追加する
 
-> [!NOTE]
-> Service Bus バインドでは現在、マネージド ID を利用した認証がサポートされていません。 代わりに、[Service Bus の共有アクセス シグネチャ](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)を利用してください。
-
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 以降
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| 言語                                        | 追加手段                                   | 解説 
+| Language                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 4.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
@@ -46,11 +43,23 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 #### <a name="service-bus-extension-5x-and-higher"></a>Service Bus 拡張機能 5.x 以降
 
-Service Bus のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.2)として入手できます。 このプレビューでは、[シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`Microsoft.ServiceBus.Messaging` および `Microsoft.Azure.ServiceBus` の型が [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus) の新しい型に置き換えられます。
+Service Bus のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 [シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`Microsoft.ServiceBus.Messaging` および `Microsoft.Azure.ServiceBus` の型が [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus) の新しい型に置き換えられます。
 
-> [!NOTE]
-> このプレビュー パッケージは拡張機能バンドルに含まれていないため、手動でインストールする必要があります。 .NET アプリの場合は、パッケージへの参照を追加します。 その他のすべてのアプリの種類については、[拡張機能の更新]に関する記事を参照してください。
+この拡張機能バージョンは[プレビュー NuGet パッケージ]として利用できます。あるいは、`host.json` ファイルに次を追加することでプレビュー拡張機能バンドル v3 から追加できます。
 
+```json
+{
+  "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
+    "version": "[3.*, 4.0.0)"
+  }
+}
+```
+
+詳細については、[ユーザーの更新]に関するページを参照してください。
+
+[プレビュー NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage

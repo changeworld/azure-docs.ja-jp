@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 851a396fe848306223f2e875ac81fc7b2fcb5da1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 94e025c3a76ac2a6722e0fa21b39718624d8645c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803047"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042828"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合
 
@@ -91,7 +91,7 @@ Cisco Webex に対する Azure AD SSO を構成してテストするには、次
     d. **[サインオン URL]** ボックスに、`https://web.ciscospark.com/idb/Consumer/metaAlias/<ID>/sp` のパターンを使用して URL を入力します。
     
     > [!NOTE]
-    > これは実際の値ではありません。 横の応答 URL の値をコピーし、この値を `https://web.ciscospark.com/` に追加して、実際のサインオン URL の値を作成します。
+    > これは実際の値ではありません。 応答 URL のリテラル値をコピーし、この値を `https://web.ciscospark.com/` に追加して、実際のサインオン URL の値を作成します。
 
 1. Cisco Webex アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 

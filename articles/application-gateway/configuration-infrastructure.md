@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: f838b1821e38e6046014f5cd8233694db7f2ef87
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 841583de276e4657384854f8430bbb82d75517d3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729845"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045921"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway インフラストラクチャの構成
 
@@ -62,9 +62,10 @@ Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 の�
 
 1. ソース IP または IP 範囲からの着信トラフィックで、宛先が Application Gateway のサブネット アドレス範囲全体であり、宛先ポートがご使用の着信アクセス ポート (たとえば、HTTP アクセス用のポート 80) であるものを許可します。
 2. [バックエンド正常性状態通信](./application-gateway-diagnostics.md)のために、ソースが **GatewayManager** サービス タグ、宛先が **[すべて]** 、宛先ポートが Application Gateway v1 SKU の 65503 ～ 65534、および v2 SKU のポート 65200 ～ 65535 である着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
-3. [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
-4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
-5. すべての宛先に対してインターネットへの送信トラフィックを許可します。
+3. [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)で受信 Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) を許可します。
+4. [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)で受信仮想ネットワーク トラフィック (*VirtualNetwork* タグ) を許可します。
+5. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
+6. すべての宛先に対してインターネットへの送信トラフィックを許可します。
 
 ## <a name="supported-user-defined-routes"></a>サポートされているユーザー定義ルート 
 

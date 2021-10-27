@@ -5,21 +5,21 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 10/10/2021
+ms.date: 10/13/2021
 ms.author: memildin
-ms.openlocfilehash: 6a98a5dfbdf47ad9e2b74415786c240b32b3b499
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: e019e0acefe8acb8bf56f829fad38c6ac2a3c1c2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754693"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129018"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
 > [!IMPORTANT]
 > このページの情報は、販売を開始する前に大幅に変更される可能性があるプレリリース製品または機能に関連しています。 Microsoft は、ここで提供される情報に対して、明示または黙示を問わず、一切の確約または保証を行わないものとします。
 
-このページでは、Security Center に対して計画されている変更について説明します。 ここでは、セキュリティ スコアやワークフローなどに影響する可能性がある、製品に対して計画されている変更について説明します。
+このページでは、Security Center に対して計画されている変更について説明します。 このページでは、セキュリティ スコアやワークフローなどに影響する可能性がある、製品に対して計画されている変更について説明します。
 
 最新のリリース ノートをお探しの場合は、「<bpt id="p1">[</bpt>Azure Security Center の最新情報<ept id="p1">](release-notes.md)</ept>」をご覧ください。
 
@@ -33,6 +33,7 @@ ms.locfileid: "129754693"
 | <bpt id="p1">[</bpt>エンドポイント保護ソリューションを管理するための推奨事項の変更<ept id="p1">](#changes-to-recommendations-for-managing-endpoint-protection-solutions)</ept>             | 2021 年 11 月| 
 | [オンプレミスのマシンのインベントリ表示で、リソース名に別のテンプレートが使用されるようになります](#inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name)    | 2021 年 11 月    |
 | [ID の推奨事項に対する複数の変更](#multiple-changes-to-identity-recommendations)                                                                                          | 2021 年 11 月    |
+| [Azure Defender for Storage からのセキュリティ アラートに対する変更](#changes-to-a-security-alert-from-azure-defender-for-storage)  | 2021 年 11 月    |
 | <bpt id="p1">[</bpt>SQL データベースで機密データを分類するための推奨事項の強化<ept id="p1">](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)</ept>                              | Q1 2022    |
 |||
 
@@ -123,7 +124,7 @@ Security Center には、ユーザーとアカウントの管理を向上させ�
     |---------|---------|---------|
     |評価キー     | e52064aa-6853-e252-a11e-dffc675689c2        | 変更なし|
     |名前     |<bpt id="p1">[</bpt>所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad)</ept>         |Active Directory でブロックされていて、所有者のアクセス許可を持つアカウントをサブスクリプションから削除する必要がある        |
-    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](/azure/security/fundamentals/identity-management-best-practices.md)」を参照してください。|
+    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](/azure/security/fundamentals/identity-management-best-practices)」を参照してください。|
     |関連ポリシー     |<bpt id="p1">[</bpt>所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad)</ept>         |Active Directory でブロックされていて、所有者のアクセス許可を持つアカウントをサブスクリプションから削除する必要がある |
     |||
 
@@ -131,12 +132,31 @@ Security Center には、ユーザーとアカウントの管理を向上させ�
     |---------|---------|---------|
     |評価キー     | 00c6d40b-e990-6acf-d4f3-471e747a27c4        | 変更なし|
     |名前     |<bpt id="p1">[</bpt>非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474)</ept>|Active Directory でブロックされていて、読み取りおよび書き込みアクセス許可を持つアカウントをサブスクリプションから削除する必要がある|
-    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](/azure/security/fundamentals/identity-management-best-practices.md)」を参照してください。|
+    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](/azure/security/fundamentals/identity-management-best-practices)」を参照してください。|
     |関連ポリシー     |<bpt id="p1">[</bpt>非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474)</ept>|Active Directory でブロックされていて、読み取りおよび書き込みアクセス許可を持つアカウントをサブスクリプションから削除する必要がある|
     |||
  
 
 
+
+
+### <a name="changes-to-a-security-alert-from-azure-defender-for-storage"></a>Azure Defender for Storage からのセキュリティ アラートに対する変更
+
+**変更予定日:** 2021 年 11 月
+
+Azure Defender for Storage によって提供されるプレビュー アラートの 1 つを、2 つの新しい推奨事項に分けます。これにより、検出された疑わしいイベントをより明確にします。 このアラートは、Azure Blob Storage にのみ関連します。
+
+**アラートの種類も変更されます。**
+
+- 変更前のアラートは以下の通りです。<br>
+    "Preview - Anonymous scan of public storage containers (プレビュー - パブリック ストレージ コンテナーの匿名スキャン)"<br>(Storage.Blob_ContainerAnonymousScan)
+
+- この変更により、次の 2 つの推奨事項になります。
+
+    - "Open storage containers discovered by external scanning tool or script (外部スキャン ツールまたはスクリプトによって検出された開いているストレージ コンテナー)"<br>(Storage.Blob_OpenContainersScanning.FailedAttempt)
+    - "Successful discovery of open storage containers by external scanning script or tool (外部スキャン スクリプトまたはツールによる開いているストレージ コンテナーの検出の成功)"<br>(Storage.Blob_OpenContainersScanning.SuccessfulDiscovery)
+
+変更のリリース時に、これらのアラートの詳細が公開されます。
 
 
 ### <a name="enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases"></a>SQL データベースで機密データを分類するための推奨事項の強化

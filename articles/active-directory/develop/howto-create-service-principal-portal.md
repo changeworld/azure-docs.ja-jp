@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: f04dc73c6137e311b309a2009d6493414591eda5
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 9bcc18a16566f63678fb739b2d453ecc6ffdf3d5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858905"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993893"
 ---
 # <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -40,7 +40,7 @@ Azure portal を使用してサービス プリンシパルを直接作成する
 1. **[Azure Active Directory]** を選択します。
 1. **[概要]** -> **[マイ フィード]** で自分のロールを見つけます。 **[ユーザー]** ロールを持っている場合は、管理者以外のユーザーがアプリケーションを登録できることを確認する必要があります。
 
-   :::image type="content" source="media/howto-create-service-principal-portal/view-user-info.png" alt-text="自分のロールを見つける。ユーザーの場合、確実に管理者以外がアプリを登録できるようにする":::
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-info.png" alt-text="ロールを見つける方法を示すスクリーンショット。":::
 
 1. 左側のペインで、 **[ユーザー]** 、 **[ユーザー設定]** の順に選択します。
 1. **[アプリの登録]** 設定を確認します。 この値は、管理者だけが設定できます。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。
@@ -69,7 +69,7 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
 
 1. **[ロールの割り当て]** を選択して割り当て済みのロールを表示し、AD アプリにロールを割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーには所有者ロールが割り当てられているので、このユーザーには適切なアクセス許可があります。
 
-   :::image type="content" source="media/howto-create-service-principal-portal/view-user-role.png" alt-text="この例では、ユーザーには所有者ロールが割り当てられています":::
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-role.png" alt-text="ユーザーに所有者ロールが割り当てられていることを示すスクリーンショット。":::
 
 ## <a name="register-an-application-with-azure-ad-and-create-a-service-principal"></a>Azure AD にアプリケーションを登録し、サービス プリンシパルを作成する
 

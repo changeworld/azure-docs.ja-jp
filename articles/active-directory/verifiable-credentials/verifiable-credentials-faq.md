@@ -2,20 +2,20 @@
 title: よく寄せられる質問 - Azure Verifiable Credentials (プレビュー)
 description: Verifiable Credentials についてよく寄せられる質問の回答を示します
 author: barclayn
-manager: davba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c9253ce81b64b45d0ab8a72605eeba4c0d49f3f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 760f90a766eca28e3d6cc009e3370192a9bd5285
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457893"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994805"
 ---
-# <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-faq-preview"></a>よく寄せられる質問 (FAQ) (プレビュー)
 
 このページには、Verifiable Credentials と分散化 ID に関してよく寄せられる質問が含まれています。 質問は、次の各セクションに整理されています。
 

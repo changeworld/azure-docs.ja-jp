@@ -40,16 +40,18 @@ items:
         href: use-purview-studio.md
       - name: ベスト プラクティスとガイドライン
         items:
+          - name: 価格のガイドライン
+            href: concept-guidelines-pricing.md
           - name: デプロイのベスト プラクティス
             href: deployment-best-practices.md
           - name: アカウントのアーキテクチャ
             href: concept-best-practices-accounts.md
           - name: コレクションのアーキテクチャ
             href: concept-best-practices-collections.md
-          - name: 価格のガイドライン
-            href: concept-guidelines-pricing.md
           - name: ネットワーク アーキテクチャ
             href: concept-best-practices-network.md
+          - name: スキャンのベスト プラクティス
+            href: concept-best-practices-scanning.md
       - name: Azure Purview のアクセス許可
         href: catalog-permissions.md
       - name: データ マップ
@@ -233,8 +235,6 @@ items:
             href: classification-insights.md
           - name: 秘密度ラベルの分析情報を表示する
             href: sensitivity-insights.md
-          - name: ファイル名拡張子の分析情報を表示する
-            href: file-extension-insights.md
       - name: ネットワークとセキュリティ
         items:
           - name: プライベート エンドポイント

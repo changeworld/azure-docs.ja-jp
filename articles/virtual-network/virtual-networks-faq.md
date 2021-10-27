@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 936e031e72a98f2329202df4fb3b7a97e7f9d237
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3ac75e3cf3ae08d9b7d49077cf54d05fdbabdbad
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754478"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039051"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
@@ -194,7 +194,7 @@ Nothing。 IP アドレス (パブリック VIP、パブリック、プライベ
 はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイし、VNet 統合を使用してアプリのバックエンドを VNet に接続し、サービス エンドポイントを使用してインバウンド トラフィックをアプリにロックダウンできます。 詳細については、次の記事を参照してください。
 
 * [App Service のネットワーク機能](../app-service/networking-features.md)
-* [App Service 環境で Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [App Service 環境で Web Apps を作成する](../app-service/environment/using.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [アプリを Azure Virtual Network に統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
@@ -214,7 +214,7 @@ Azure Storage、Azure SQL Database などの一部の Azure PaaS サービスを
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>サービスを VNet 内外で移動できますか。
 いいえ。 サービスを VNet 内外で移動することはできません。 リソースを別の VNet に移動するには、リソースを削除して再デプロイする必要があります。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="what-is-the-security-model-for-vnets"></a>VNet のセキュリティ モデルとは何ですか。
 Vnet は、他の VNet から、および Azure インフラストラクチャでホストされている他のサービスから、完全に分離されています。 VNet は、トラスト バウンダリです。

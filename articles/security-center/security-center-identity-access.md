@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 9af4f225b1b9ca5e8023a8d5b4bb7607762e4447
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6ca7b13a7a0873300995a91a6469fc29050f3c95
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631899"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047040"
 ---
 # <a name="manage-multi-factor-authentication-mfa-enforcement-on-your-subscriptions"></a>サブスクリプションでの 多要素認証 (MFA) の実施を管理する
 
@@ -81,7 +81,7 @@ MFA が有効になっていないアカウントを確認するには、次の 
     > アカウントは、アカウント所有者のプライバシーを保護するために、アカウント名ではなくオブジェクト ID として表示されます。
 
 > [!TIP]
-> 別の方法として、Security Center の REST API メソッド [Assessments - Get](/rest/api/securitycenter/assessments/get) を使用できます。
+> 別の方法として、Security Center REST API メソッド [Assessments - Get](/rest/api/securitycenter/assessments/get) を使用できます。
 
 
 ## <a name="faq---mfa-in-security-center"></a>Security Center の MFA に関する FAQ

@@ -6,8 +6,8 @@
       href: azure-netapp-files-introduction.md
     - name: 新着情報
       href: whats-new.md
-    - name: Azure NetApp Files のストレージ階層
-      href: azure-netapp-files-understand-storage-hierarchy.md
+    - name: Azure Government 向け Azure NetApp Files
+      href: azure-government.md
 - name: クイックスタート
   expanded: true
   items:
@@ -15,12 +15,30 @@
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: 概念
   items:
-    - name: Azure NetApp Files のサービス レベル
-      href: azure-netapp-files-service-levels.md
-    - name: Azure NetApp Files のリソース制限
-      href: azure-netapp-files-resource-limits.md
-    - name: Azure NetApp Files のメトリック
-      href: azure-netapp-files-metrics.md
+    - name: Azure NetApp Files の基本
+      items:
+        - name: Azure NetApp Files のストレージ階層
+          href: azure-netapp-files-understand-storage-hierarchy.md
+        - name: Azure NetApp Files のサービス レベル
+          href: azure-netapp-files-service-levels.md
+        - name: Azure NetApp Files のネットワーク計画のガイドライン
+          href: azure-netapp-files-network-topologies.md
+        - name: Azure NetApp Files のリソース制限
+          href: azure-netapp-files-resource-limits.md
+        - name: Azure NetApp Files のメトリック
+          href: azure-netapp-files-metrics.md
+        - name: Storage サービスのアドオン
+          href: storage-service-add-ons.md
+        - name: Azure NetApp Files のコスト モデル
+          href: azure-netapp-files-cost-model.md
+    - name: Quotas (クォータ)
+      items:
+        - name: ボリューム クォータについて
+          href: volume-quota-introduction.md
+        - name: ボリューム ハード クォータについて
+          href: volume-hard-quota-guidelines.md
+        - name: リージョンごとの容量クォータ
+          href: regional-capacity-quota.md
     - name: パフォーマンス
       items:
         - name: Azure NetApp Files のパフォーマンスに関する考慮事項
@@ -49,29 +67,25 @@
               href: azure-netapp-files-smb-performance.md
             - name: Azure 仮想マシン SKU のベスト プラクティス
               href: performance-virtual-machine-sku.md
-    - name: Azure NetApp Files のコスト モデル
-      href: azure-netapp-files-cost-model.md
-    - name: ボリューム クォータについて
-      href: volume-quota-introduction.md
-    - name: Azure NetApp Files のネットワーク計画のガイドライン
-      href: azure-netapp-files-network-topologies.md
-    - name: 手動 QoS 容量プール
-      href: manual-qos-capacity-pool-introduction.md
-    - name: Azure NetApp Files のスナップショットのしくみ
-      href: snapshots-introduction.md
-    - name: Azure NetApp Files バックアップ
+    - name: データ保護
       items:
-        - name: Azure NetApp Files バックアップについて
-          href: backup-introduction.md
-        - name: Azure NetApp Files バックアップの要件と考慮事項
-          href: backup-requirements-considerations.md
-    - name: リージョン間レプリケーション
-      items:
-        - name: リージョン間レプリケーションについて
-          href: cross-region-replication-introduction.md
-        - name: リージョン間レプリケーションの要件と考慮事項
-          href: cross-region-replication-requirements-considerations.md
-    - name: ソリューション
+        - name: Azure NetApp Files のスナップショットのしくみ
+          href: snapshots-introduction.md
+        - name: Azure NetApp Files バックアップ
+          items:
+            - name: Azure NetApp Files バックアップについて
+              href: backup-introduction.md
+            - name: Azure NetApp Files バックアップの要件と考慮事項
+              href: backup-requirements-considerations.md
+        - name: リージョン間レプリケーション
+          items:
+            - name: リージョン間レプリケーションについて
+              href: cross-region-replication-introduction.md
+            - name: リージョン間レプリケーションの要件と考慮事項
+              href: cross-region-replication-requirements-considerations.md
+        - name: Azure アプリケーション整合性スナップショット ツールとは
+          href: azacsnap-introduction.md
+    - name: ソリューションとメリット
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
           href: azure-netapp-files-solution-architectures.md
@@ -85,16 +99,28 @@
               href: solutions-windows-virtual-desktop.md
             - name: SQL Server のデプロイに Azure NetApp Files を使用する利点
               href: solutions-benefits-azure-netapp-files-sql-server.md
-    - name: Azure NetApp Files についての FAQ
-      href: azure-netapp-files-faqs.md
-    - name: Azure アプリケーション整合性スナップショット ツールとは
-      href: azacsnap-introduction.md
-    - name: Storage サービスのアドオン
-      href: storage-service-add-ons.md
-    - name: ボリュームのハード クォータを変更する意味
-      href: volume-hard-quota-guidelines.md
-    - name: Azure Government 向け Azure NetApp Files
-      href: azure-government.md
+    - name: FAQ
+      items:
+        - name: ネットワークに関する FAQ
+          href: faq-networking.md
+        - name: 容量管理に関する FAQ
+          href: faq-capacity-management.md
+        - name: NFS に関する FAQ
+          href: faq-nfs.md
+        - name: SMB に関する FAQ
+          href: faq-smb.md
+        - name: パフォーマンスに関する FAQ
+          href: faq-performance.md
+        - name: アプリケーションの回復性に関する FAQ
+          href: faq-application-resilience.md
+        - name: データの移行と保護に関する FAQ
+          href: faq-data-migration-protection.md
+        - name: Azure NetApp Files のバックアップに関する FAQ
+          href: faq-backup.md
+        - name: セキュリティに関する FAQ
+          href: faq-security.md
+        - name: 統合に関する FAQ
+          href: faq-integration.md
 - name: 操作方法ガイド
   items:
     - name: 登録と設定
@@ -219,20 +245,14 @@
           href: azure-netapp-files-sdk-cli.md
     - name: トラブルシューティング
       items:
-        - name: 容量プールのトラブルシューティング
+        - name: 容量プールのエラーのトラブルシューティング
           href: troubleshoot-capacity-pools.md
-        - name: リージョン間レプリケーションのトラブルシューティング
-          href: troubleshoot-cross-region-replication.md
         - name: ボリュームのエラーのトラブルシューティング
           href: troubleshoot-volumes.md
-        - name: SMB またはデュアルプロトコル ボリュームのトラブルシューティング
-          href: troubleshoot-dual-protocol-volumes.md
-        - name: NFSv4.1 Kerberos ボリュームのトラブルシューティング
-          href: troubleshoot-nfsv41-kerberos-volumes.md
-        - name: スナップショット ポリシーのトラブルシューティング
+        - name: スナップショット ポリシーのエラーのトラブルシューティング
           href: troubleshoot-snapshot-policies.md
-        - name: LDAP ボリュームのトラブルシューティング
-          href: troubleshoot-ldap-volumes.md
+        - name: リージョン間レプリケーションのエラーのトラブルシューティング
+          href: troubleshoot-cross-region-replication.md
         - name: リソース プロバイダーのエラーのトラブルシューティング
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: リファレンス

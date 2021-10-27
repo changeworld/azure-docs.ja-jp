@@ -1,23 +1,23 @@
 ---
-title: クイックスタート - Azure Spring Cloud 構成サーバーを設定する
-description: アプリのデプロイのための Azure Spring Cloud 構成サーバーの設定について説明します。
+title: クイックスタート - Azure Spring Cloud Config Server を設定する
+description: アプリのデプロイのための Azure Spring Cloud Config Server の設定について説明します。
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f3a3e4897904dcfd02b6ef3879736d1afb533747
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: f4b4eeaac6e32335937f42e1b35abe3929f6e972
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014718"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005263"
 ---
-# <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
+# <a name="quickstart-set-up-azure-spring-cloud-config-server"></a>クイックスタート: Azure Spring Cloud Config Server を設定する
 
-Azure Spring Cloud 構成サーバーは、分散システムのための一元化された構成サービスです。 現時点でローカル ストレージ、Git、および Subversion をサポートしている、プラグ可能なリポジトリ レイヤーを使用します。 このクイックスタートでは、Git リポジトリからデータを取得するように構成サーバーを設定します。
+Azure Spring Cloud Config Server は、分散システムのための一元化された構成サービスです。 現時点でローカル ストレージ、Git、および Subversion をサポートしている、プラグ可能なリポジトリ レイヤーを使用します。 このクイックスタートでは、Git リポジトリからデータを取得するように Config Server を設定します。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -25,33 +25,33 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 * このシリーズの先行する次のクイックスタートを完了しておきます。「[Azure Spring Cloud サービスのプロビジョニング](./quickstart-provision-service-instance.md)」。
 
-## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud 構成サーバーの手順
+## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud Config Server の手順
 
-次のコマンドを実行し、プロジェクトの git リポジトリの場所を使用して、構成サーバーを設定します。 *\<service instance name>* を、以前に作成したサービスの名前に置き換えます。 前のクイックスタートで設定したサービス インスタンス名の既定値は、このコマンドでは機能しません。
+次のコマンドを実行し、プロジェクトの git リポジトリの場所を使用して、Config Server を設定します。 *\<service instance name>* を、以前に作成したサービスの名前に置き換えます。 前のクイックスタートで設定したサービス インスタンス名の既定値は、このコマンドでは機能しません。
 
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples --search-paths steeltoe-sample/config
 ```
 
-このコマンドは構成サーバーに、サンプル アプリ リポジトリの [steeltoe-sample/config](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample/config) フォルダー内の構成データを検索するように指示します。 構成データを取得するアプリの名前は `planet-weather-provider` であるため、使用されるファイルは [planet-weather-provider.yml](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/steeltoe-sample/config/planet-weather-provider.yml) です。
+このコマンドは Config Server に、サンプル アプリ リポジトリの [steeltoe-sample/config](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample/config) フォルダー内の構成データを検索するように指示します。 構成データを取得するアプリの名前は `planet-weather-provider` であるため、使用されるファイルは [planet-weather-provider.yml](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/steeltoe-sample/config/planet-weather-provider.yml) です。
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Azure Spring Cloud 構成サーバーは、分散システムのための一元化された構成サービスです。 現時点でローカル ストレージ、Git、および Subversion をサポートしている、プラグ可能なリポジトリ レイヤーを使用します。  Azure Spring Cloud にマイクロサービス アプリをデプロイするように、構成サーバーを設定します。
+Azure Spring Cloud Config Server は、分散システムのための一元化された構成サービスです。 現時点でローカル ストレージ、Git、および Subversion をサポートしている、プラグ可能なリポジトリ レイヤーを使用します。  Azure Spring Cloud にマイクロサービス アプリをデプロイするように、Config Server を設定します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [JDK 8 をインストールする](/java/azure/jdk/)
+* [JDK 8 または JDK 11 をインストールする](/azure/developer/java/fundamentals/java-jdk-install)
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
 * (オプション) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
 * (オプション) [Azure Toolkit for IntelliJ をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する
 
-## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud 構成サーバーの手順
+## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud Config Server の手順
 
 #### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 
-次の手順では、Azure portal を使用して、[PetClinic サンプル](https://github.com/azure-samples/spring-petclinic-microservices)をデプロイするように構成サーバーを設定します。
+次の手順では、Azure portal を使用して、[PetClinic サンプル](https://github.com/azure-samples/spring-petclinic-microservices)をデプロイするように Config Server を設定します。
 
 1. サービスの **[概要]** ページに移動し、 **[Config Server]\(構成サーバー\)** を選択します。
 
@@ -59,21 +59,21 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 3. **[検証]** を選択します。
 
-    ![構成サーバーへの移動](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Config Server への移動](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 4. 検証が完了したら、 **[適用]** を選択して変更を保存します。
 
-    ![構成サーバーの検証](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
+    ![Config Server の検証](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
 5. 構成の更新に数分かかる場合があります。
 
-    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
+    ![Config Server の更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
 
 6. 構成が完了すると、通知が届きます。
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-次の手順では、Azure CLI を使用して、[Pet Clinic サンプル](https://github.com/azure-samples/spring-petclinic-microservices)をデプロイするように構成サーバーを設定します。
+次の手順では、Azure CLI を使用して、[Pet Clinic サンプル](https://github.com/azure-samples/spring-petclinic-microservices)をデプロイするように Config Server を設定します。
 
 次のコマンドを実行して、既定のリポジトリを設定します。
 
@@ -84,7 +84,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ::: zone-end
 
 > [!TIP]
-> 構成サーバーにプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](./how-to-config-server.md)を参照してください。
+> Config Server にプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](./how-to-config-server.md)を参照してください。
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server のトラブルシューティング
 

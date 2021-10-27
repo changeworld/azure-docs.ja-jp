@@ -12,21 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/05/2021
+ms.date: 10/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 2dff42fcf855a41e2e907563b1aecccad0a1661a
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 78f8b282e701e181dd3a2c137ba254227651b048
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545927"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036857"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
-
-    
+ 
 ## <a name="october-2021"></a>2021 年 10 月
+
+* [Azure NetApp Files のリージョン間レプリケーション](cross-region-replication-introduction.md)の一般提供 (GA)
+
+    リージョン間レプリケーション機能が一般提供 (GA) になりました。 この機能を使用する前に登録する必要がなくなりました。
 
 * [Standard ネットワーク機能](configure-network-features.md) (プレビュー)
 
@@ -49,7 +52,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     Azure NetApp Files オンライン スナップショットが、スナップショットのバックアップによって拡張されました。 この新しいバックアップ機能を使用すると、Azure NetApp Files スナップショットを、コスト効率が高く ZRS 対応の Azure Storage に迅速かつコスト効率の高い方法で保管できます。これにより、データを誤って削除しないように保護できます。 Azure NetApp Files バックアップにより、ONTAP の組み込みスナップショット テクノロジが拡張されます。 スナップショットが Azure Storage に保管されると、以前に保管されたスナップショットと比較して変更されたブロックのみが、効率的な形式でコピーおよび格納されます。 ただし、保管されたスナップショットは依然として完全な形で表現され、新しいボリュームに直接かつ個別に復元できます。これにより、反復的な完全増分回復プロセスが不要になります。 この高度なテクノロジにより、Azure Storage との間でデータを格納、取得するために必要なデータ量が最小限に抑えられるため、データ転送とストレージのコストを抑えることができます。 また、バックアップの保管にかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。 Azure NetApp Files サービスで、ほぼ瞬時にデータを回復する必要がある場合に備えて最小数のスナップショットをオンラインで維持でき、また Azure NetApp Files バックアップ コンテナーで長期保存するために、これまでより長いスナップショットの履歴をより低いコストで作成することができるようになりました。 詳細については、「[Azure NetApp Files スナップショットのしくみ](snapshots-introduction.md)」を参照してください。
 
-* Active Directory 接続の [ **[管理者]** ](create-active-directory-connections.md#create-an-active-directory-connection) オプション (プレビュー)
+* Active Directory 接続の [ **[管理者]**](create-active-directory-connections.md#create-an-active-directory-connection) オプション (プレビュー)
 
     [Active Directory 接続] ページに **[管理者]** フィールドが追加されました。 ボリュームに対する管理者権限が付与されるユーザーまたはグループを指定できます。
 

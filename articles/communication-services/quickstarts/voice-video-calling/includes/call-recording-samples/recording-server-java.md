@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: e29973b55d3f74942f6d85fa28209b73773ad717
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b71ae256329d9fe8d28f0b5154f0b732de61009f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121802640"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050783"
 ---
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/ServerRecording) にあります。
@@ -101,9 +101,27 @@ CallingServerClientBuilder builder = new CallingServerClientBuilder().httpClient
 URI recordingStateCallbackUri = new URI("<CallbackUri>");
 
 Response<StartCallRecordingResult> response = this.callingServerClient.initializeServerCall("<serverCallId>")
-.startRecordingWithResponse(String.valueOf(recordingStateCallbackUri),null);
+.startRecordingWithResponse(String.valueOf(recordingStateCallbackUri), null, null);
 ```
 `startRecordingWithResponse` API 応答には、レコーディング セッションのレコーディング ID が含まれています。
+
+## <a name="start-recording-session-with-startrecordingoptions-using-startrecordingwithresponse-server-api"></a>'startRecordingWithResponse' サーバー API を使用して StartRecordingOptions でレコーディング セッションを開始する
+
+通話の開始中に受信したサーバー通話 ID を使用します。
+
+- RecordingContent は、レコーディング コンテンツ タイプを渡すために使用されます。 例: AUDIO/AUDIO_VIDEO。
+- RecordingChannel は、レコーディング チャネルの種類を渡すために使用されます。 例: MIXED/UNMIXED。
+- RecordingFormat は、レコーディングの形式を渡すために使用されます。 例: MP4/MP3/WAV。
+
+```java
+URI recordingStateCallbackUri = new URI("<CallbackUri>");
+StartRecordingOptions recordingOptions = new StartRecordingOptions();
+recordingOptions.setRecordingContent(RecordingContent.AUDIO_VIDEO);
+recordingOptions.setRecordingChannel(RecordingChannel.MIXED);
+recordingOptions.setRecordingFormat(RecordingFormat.MP4);
+Response<StartCallRecordingResult> response = this.callingServerClient.initializeServerCall("<serverCallId>")
+.startRecordingWithResponse(String.valueOf(recordingStateCallbackUri), recordingOptions, null);
+```
 
 ## <a name="stop-recording-session-using-stoprecordingwithresponse-server-api"></a>'stopRecordingWithResponse' サーバー API を使用してレコーディング セッションを停止する
 

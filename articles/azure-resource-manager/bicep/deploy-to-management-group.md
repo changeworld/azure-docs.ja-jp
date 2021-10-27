@@ -2,13 +2,13 @@
 title: Bicep を使用して管理グループにリソースをデプロイする
 description: 管理グループのスコープでリソースをデプロイする Bicep ファイルを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/19/2021
-ms.openlocfilehash: 7c0e2f6682ff5da0e0cc2bd3b7f16b3ab23af476
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/18/2021
+ms.openlocfilehash: 8e198f923e864b0919f20cb4d0ef6579bb375ec4
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659894"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178324"
 ---
 # <a name="management-group-deployments-with-bicep-files"></a>Bicep ファイルを使用した管理グループへのデプロイ
 
@@ -201,7 +201,7 @@ module exampleModule 'module.bicep' = {
 
 ## <a name="management-group"></a>管理グループ
 
-管理グループのデプロイで管理グループを作成するには、管理グループのスコープを `/` に設定する必要があります。
+管理グループのデプロイで管理グループを作成するには、スコープをテナントに設定する必要があります。
 
 次の例では、ルート管理グループに新しい管理グループを作成します。
 
@@ -219,13 +219,12 @@ resource newMG 'Microsoft.Management/managementGroups@2020-05-01' = {
 output newManagementGroup string = mgName
 ```
 
-次の例では、親として指定された管理グループに新しい管理グループを作成します。
+次の例では、デプロイの対象となる管理グループに新しい管理グループを作成します。 [管理グループの機能](bicep-functions-scope.md#managementgroup)を使用します。
 
 ```bicep
 targetScope = 'managementGroup'
 
 param mgName string = 'mg-${uniqueString(newGuid())}'
-param parentMGName string
 
 resource newMG 'Microsoft.Management/managementGroups@2020-05-01' = {
   scope: tenant()
@@ -233,15 +232,10 @@ resource newMG 'Microsoft.Management/managementGroups@2020-05-01' = {
   properties: {
     details: {
       parent: {
-        id: parentMG.id
+        id: managementGroup().id
       }
     }
   }
-}
-
-resource parentMG 'Microsoft.Management/managementGroups@2020-05-01' existing = {
-  name: parentMGName
-  scope: tenant()
 }
 
 output newManagementGroup string = mgName

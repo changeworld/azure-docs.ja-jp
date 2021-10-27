@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 011d13d68ad3cd9a3e6b1b5bab97a5561e8a355c
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 12f2b1edc4bc7d9f5106af9483da217fcd9eb402
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539415"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143890"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -62,7 +62,7 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 * サブスクリプションの場合: 音声キーと、それに関連付けられた場所/リージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 音声キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 音声キーまたは認証トークンは省略可能です。
-* 認証トークンの場合: 認証トークンと、それに関連付けられた場所/リージョンを渡します。
+* 認証トークンの場合: 認証トークンと、それに関連付けられた場所またはリージョンを渡します。
 
 この例では、音声キーと場所/リージョンを使用して [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
@@ -72,6 +72,23 @@ public class Program
     public static void main(String[] args) {
         SpeechConfig speechConfig = SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     }
+}
+```
+
+## <a name="select-synthesis-language-and-voice"></a>合成言語と音声を選択する
+
+Azure Text to Speech サービスでは、250 を超える音声と 70 を超える言語とバリアントがサポートされています。
+[すべてのリスト](../../../language-support.md#neural-voices)を入手することも、[テキスト読み上げのデモ](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)でそれらを試すこともできます。
+入力テキストに合わせて [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) の言語または音声を指定し、必要な音声を使用します。
+
+```java
+public static void main(String[] args) {
+    SpeechConfig speechConfig = SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    // Note: if only language is set, the default voice of that language is chosen.
+    config.setSpeechSynthesisLanguage("<your-synthesis-language>"); // e.g. "de-DE"
+    // The voice setting will overwrite language setting.
+    // The voice setting will not overwrite the voice element in input SSML.
+    config.setSpeechSynthesisVoiceName("<your-wanted-voice>");
 }
 ```
 

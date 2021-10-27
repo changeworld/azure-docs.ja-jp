@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 09/27/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 340c558d695a9a63bc5fe818e48b6f6ed76df144
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 473cf460460bf6fb13353587d49509cb192219b7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429169"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044651"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -44,7 +44,7 @@ ms.locfileid: "129429169"
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
-実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習によって、`classification`、`regression`、`forecasting` というタスクの種類がサポートされています。 [タスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)についての詳細情報を参照してください。
+実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習によって、`classification`、`regression`、`forecasting` というタスクの種類がサポートされています。 [タスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression-forecasting--computer-vision)についての詳細情報を参照してください。
 
 次のコードでは、`AutoMLConfig` コンストラクターで `task` パラメーターが使用され、実験の種類が `classification` として指定されています。
 
@@ -200,6 +200,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ||| Average
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
+||| Arimax
 
 ### <a name="primary-metric"></a>主要メトリック
 

@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 1c36fa5295acafb96e57484cf34429091dd634e9
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: e5300e8c2008d99ec7757ed3850b8b31698ac8a9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390401"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064345"
 ---
 # <a name="troubleshoot-the-azure-data-lake-storage-connectors-in-azure-data-factory-and-azure-synapse"></a>Azure Data Factory と Azure Synapse の Azure Data Lake Storage コネクタのトラブルシューティング
 
@@ -100,6 +100,16 @@ ms.locfileid: "129390401"
             }
         }
         ```
+
+### <a name="the-copy-activity-is-not-able-to-pick-files-from-azure-data-lake-storage-gen2"></a>コピー操作で Azure Data Lake Storage Gen2 からファイルを選択できません。
+
+- **現象**: ファイル名が "Asset_Metadata" のとき、コピー操作で Azure Data Lake Storage Gen2 からファイルを選択できません。 この問題は Parquet タイプのデータセットでのみ発生します。 他のタイプのデータセットの場合、同じファイル名でも正しく動作します。
+
+- **原因**: 下位互換性のために、`_metadata` はファイル名で予約されている substring として扱われます。 
+
+- **推奨**: 以下の Parquet の予約一覧を避けるため、ファイル名を変更します。 
+    1. ファイル名に `_metadata` が含まれています。
+    2. ファイル名は `.` (ドット) で始まります。
 
 ## <a name="next-steps"></a>次のステップ
 

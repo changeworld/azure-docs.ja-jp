@@ -24,6 +24,8 @@
       href: ./resource-graph-samples.md
 - name: 概念
   items:
+    - name: Log Analytics エージェントのデプロイ オプション
+      href: concept-log-analytics-extension-deployment.md
     - name: セキュリティ
       items:
         - name: Azure Policy によるセキュリティ制御

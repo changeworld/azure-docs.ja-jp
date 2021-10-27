@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: fa1ac05766a95754631c5a6c78f80b9abdc4e3a7
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: a8d5b2ca155917c5b08f11167da6309da9df7e6b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112573672"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047173"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -221,9 +221,9 @@ HBase データには、ESP 対応の HBase を使用している Hive からク
 > [!NOTE]
 > いずれかのクラスターをスケーリングした後、`/etc/hosts` を再度追加する必要があります
 
-## <a name="use-hbase-rest-apis-using-curl"></a>Curl を使用して HBase REST API を使用する
+## <a name="use-the-hbase-rest-api-via-curl"></a>Curl を使用して HBase REST API を使用する
 
-REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+HBase REST API のセキュリティは、[基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. HDInsight クラスターで HBase REST API を有効にするには、次のカスタム スタートアップ スクリプトを **Script Action** セクションに追加します。 クラスターを作成するとき、またはクラスターを作成した後に、スタートアップ スクリプトを追加できます。 **[ノードの種類]** では、 **[Region Servers]\(リージョン サーバー\)** を選択して、HBase リージョン サーバーだけでスクリプトが実行されるようにします。
 

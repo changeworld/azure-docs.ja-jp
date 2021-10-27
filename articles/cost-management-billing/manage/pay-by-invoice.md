@@ -7,19 +7,19 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 06/16/2021
+ms.date: 10/13/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: b8b59db6b73cdc2ecae3ca60741a892580162602
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 01261b31f1c471d030ddb095fba1fd1d7b5e2e0b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287761"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998458"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
-この記事は、Azure Web サイトから Azure にサインアップした Microsoft 顧客契約 (MCA) のお客様に適用されます。 [Microsoft Customer Agreement にアクセスできるかどうかを確認](#check-access-to-a-microsoft-customer-agreement)してください。 Microsoft 担当者を通じて Azure にサインアップした場合、既定の支払い方法があらかじめ "*小切手または電信送金*" に設定されています。
+この記事は、Microsoft 顧客契約 (MCA) を結んでいるお客様と、Azure Web サイトを通じて Azure (従量課金制アカウントとも呼ばれる Microsoft Online Services プログラム アカウント) にサインアップしたお客様に適用されます。 [Microsoft Customer Agreement にアクセスできるかどうかを確認](#check-access-to-a-microsoft-customer-agreement)してください。 Microsoft 担当者を通じて Azure にサインアップした場合、既定の支払い方法があらかじめ "*小切手または電信送金*" に設定されています。
 
 請求書による支払いに切り替えた場合、請求日から 30 日以内に小切手/電信送金で請求金額を支払うことになります。 Azure サブスクリプションの支払いを請求書で行う対象となるには、Azure サポートに要求を送信します。 要求が承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えられます。
 
@@ -68,7 +68,7 @@ ms.locfileid: "112287761"
 
 請求書による支払いが承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えることができます。
 
-Microsoft Online Services Program アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。
+Microsoft Online Services プログラム (従量課金制) アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure サブスクリプションを小切手/電信送金に切り替える
 

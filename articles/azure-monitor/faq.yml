@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: b3f18899eada6773fb8d2d78d7635bb47fa79d64
-  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+  ms.openlocfilehash: 439248f37075f7cbc91af0e15dcdf6b029e95b92
+  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129278863"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130066701"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -219,7 +219,7 @@ sections:
       「[Log Analytics エージェントからの移行](./agents/azure-monitor-agent-migration.md)」を参照してください
   - question: >
       System Center Operations Manager を監視するにあたり、Log Analytics エージェント (MMA) から Azure Monitor エージェント (AMA) へのアップグレード パスを教えてください。 System Center Operations Manager シナリオに AMA を使用できますか?
-    answer: "AMA が 2 つの System Center Operations Manager 関連の監視シナリオに与える影響をこちらに示します。\n- **シナリオ 1**: 監視の対象が System Center Operations Manager の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: System Center Operations Manager を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の System Center Operations Manager コネクタによって実現されるため、SCOM 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
+    answer: "AMA が 2 つの System Center Operations Manager 関連の監視シナリオに与える影響をこちらに示します。\n- **シナリオ 1**: 監視の対象が System Center Operations Manager の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: System Center Operations Manager を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の System Center Operations Manager コネクタによって実現されるため、Operations Manager 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
   - question: >
       新しい Azure Monitor エージェントは各種の Log Analytics ソリューションと Azure サービス (Security Center、Sentinel など) のデータ収集をサポートしますか?
     answer: "[プレビューで現在利用可能な AMA 拡張機能](./agents/azure-monitor-agent-overview.md#supported-services-and-features)の一覧をご確認ください。 こちらは、新しい Azure Monitor エージェントを代わりに使用した場合に現在利用できるのと同じソリューションとサービスです。 追加の拡張機能がソリューション/サービス用にインストールされる場合があります。これは、ソリューション/サービスで必要とされる追加のデータ収集または変換/処理を実行してから、AMA を使用して最終的なデータを Azure Monitor にルーティングするためです。 \n\n以下の図は、**新しい拡張アーキテクチャ** を説明したものです。\n\n![拡張機能アーキテクチャ](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
@@ -757,7 +757,7 @@ sections:
       OpenTelemetry の重要な価値提案は、ベンダーに中立であることと、言語間で一貫した API/SDK を提供することです。
 
 
-      時間が経つにつれ、OpenTelemetry により、Azure Monitor のお客様は、Microsoft が[サポートしている言語](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms)以外の言語で記述されたアプリケーションを監視できるようになり、お客様が使用できる[インストルメンテーション ライブラリ](https://opentelemetry.io/docs/concepts/components/#instrumentation-libraries)の数が増加すると確信してています。 特に、OpenTelemetry .NET SDK は、前身である Application Insights SDK よりも大幅にパフォーマンスが向上しています。
+      時間が経つにつれ、OpenTelemetry によって Azure Monitor のお客様は、Microsoft が[サポートしている言語](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms)以外の言語で記述されたアプリケーションを監視できるようになり、お客様が使用できる[インストルメンテーション ライブラリ](https://opentelemetry.io/docs/concepts/components/#instrumentation-libraries)の数が増加すると確信してています。 特に、OpenTelemetry .NET SDK は、前身である Application Insights SDK よりも大幅にパフォーマンスが向上しています。
 
 
       最後に、OpenTelemetry は[オープン ソースを採用する](https://opensource.microsoft.com/)という Microsoft の戦略に一致しています。
@@ -775,10 +775,10 @@ sections:
       OpenTelemetry コミュニティでは、[stable (安定版) または experimental (試験段階)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) を使用して、ソフトウェアの成熟度を示します。 これとは別に、Azure Monitor では "パブリック プレビュー" と "GA" を使用して安定性を示し、コミットメントをサポートします。
 
 
-      Azure Monitor Application Insights の既存のお客様の場合、OpenTelemetry への移行はまだお勧め **しません** ([2020 年 11 月に GA になった Microsoft の ](https://azure.microsoft.com/updates/java-agent-application-insights-ga/) [OpenTelemetry ベースのオファリング](./app/java-in-process-agent.md)をすべての人に推奨している Java アプリケーションを除く)。
+      Azure Monitor Application Insights の既存のお客様の場合、OpenTelemetry への移行はまだお勧め **しません** ([2020 年 11 月に GA になった Microsoft の](https://azure.microsoft.com/updates/java-agent-application-insights-ga/) [OpenTelemetry ベースのオファリング](./app/java-in-process-agent.md)をすべての人に推奨している Java アプリケーションを除く)。
 
 
-      C# ([ASP.NET](app/asp-net.md) および[ASP.NET Core](app/asp-net-core.md)) および [Javascript (Node.js)](app/nodejs.md) または [OpenCensus Python](app/opencensus-python.md) の現在の ApplicationInsights SDK では、Application Insights で最も機能豊富なエクスペリエンスが提供されます。
+      C# ([ASP.NET](app/asp-net.md) および[ASP.NET Core](app/asp-net-core.md)) および [JavaScript (Node.js)](app/nodejs.md) または [OpenCensus Python](app/opencensus-python.md) の現在の ApplicationInsights SDK では、Application Insights で最も機能豊富なエクスペリエンスが提供されます。
 
 
       すぐにでも OpenTelemetry への移行を検討する可能性のあるシナリオには、Azure Monitor と別のベンダーに同時にテレメトリを送信する、[既存のインストルメンテーション プロトコル](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)を収集して収束する、OpenTelemetry-Collector で利用可能な機能を活用するなどがあります。 たとえば、お客様は、[バッチ プロセッサ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)、[末尾ベースのサンプラー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)、[属性プロセッサ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)の使用を報告しています。 既存の Application Insights SDK にも同様の機能が存在しますが、この処理をエージェントのダウンストリームでホストすることを好むお客様もいます。
@@ -875,7 +875,7 @@ sections:
 
       //now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
 
-      //Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+      //Outer left is safer so you don't lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
 
       ContainerLog
 
@@ -949,6 +949,9 @@ sections:
       エージェントに対して開いたり許可したりする必要があるポートとドメインはどれですか?
     answer: >
       Azure、Azure US Government、および Azure China 21Vianet クラウドでコンテナー化されたエージェントに必要なプロキシとファイアウォールの構成情報については、「[ネットワーク ファイアウォールの要件](containers/container-insights-onboard.md#network-firewall-requirements)」をご覧ください。
+  - question: >
+      ARO クラスター用の Kubernetes 監査ログの収集はサポートされていますか?
+    answer: いいえ、Container Insights では Kubernetes 監査ログの収集はサポートされていません。
 - name: VM insights
   questions:
   - question: >

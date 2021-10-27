@@ -13,12 +13,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 9e908764ce860c045403048623d0a50b7b5d738b
-  ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+  ms.openlocfilehash: 7cc6b21fac7efbb183a57506c9fd966a4320544c
+  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/26/2021
-  ms.locfileid: "114690280"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130046394"
 title: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -47,14 +47,14 @@ sections:
       ### <a name="where-can-i-find-known-issues-and-defects"></a>既知の問題や欠陥はどこで確認できますか?
 
 
-      製品の欠陥や既知の問題については、「[既知の問題](../database/doc-changes-updates-release-notes.md#known-issues)」を参照してください。
+      製品の欠陥や既知の問題については、「[既知の問題](doc-changes-updates-known-issues.md)」を参照してください。
   - question: >
       新機能
     answer: >
       ### <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>最新の機能とパブリック プレビュー段階の機能はどこにありますか。
 
 
-      新機能とプレビュー機能については、[リリース ノート](../database/doc-changes-updates-release-notes.md?tabs=managed-instance)を参照してください。
+      新機能とプレビュー機能については、「[新機能](doc-changes-updates-release-notes-whats-new.md)」を参照してください。
   - question: >
       SQL Managed Instance の作成、更新、削除、または移動
     answer: "### <a name=\"how-can-i-provision-sql-managed-instance\"></a>SQL Managed Instance をプロビジョニングするにはどうすればよいですか?\n\nインスタンスは、[Azure portal](instance-create-quickstart.md)、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281)、および [ARM テンプレート](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)からプロビジョニングできます。\n\n### <a name=\"can-i-provision-managed-instances-in-an-existing-subscription\"></a>既存のサブスクリプションで Managed Instance をプロビジョニングすることはできますか?\n\nはい。サブスクリプションが[サポートされているサブスクリプションの種類](resource-limits.md#supported-subscription-types)に属している場合、既存のサブスクリプションで Managed Instance をプロビジョニングできます。\n\n### <a name=\"why-couldnt-i-provision-a-managed-instance-in-the-subnet-which-name-starts-with-a-digit\"></a>名前が数字で始まるサブネットで Managed Instance をプロビジョニングできないのはなぜですか?\n\nこれは、サブネット名を正規表現 ^[a-zA-Z_][^\\\\\\/\\:\\*\\?\\\"\\<\\>\\|\\`\\'\\^]*(?<![\\.\\s])$ と照合して検証する、基になるコンポーネントによる現在の制限です。 正規表現および有効なサブネット名を渡すすべての名前は、現在サポートされています。\n\n### <a name=\"how-can-i-scale-my-managed-instance\"></a>マネージド インスタンスをスケーリングするにはどうすればよいですか?\n\nマネージド インスタンスは、[Azure portal](../database/service-tiers-vcore.md?tabs=azure-portal)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi#az_sql_mi_update) または [ARM テンプレート](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)からスケーリングできます。\n\n### <a name=\"can-i-move-my-managed-instance-from-one-region-to-another\"></a>Managed Instance をあるリージョンから別のリージョンに移動することはできますか?\n\nはい、できます。 手順については、[リージョン間でリソースを移動する](../database/move-resources-across-regions.md)方法に関する記事を参照してください。\n\n### <a name=\"how-can-i-delete-my-managed-instance\"></a>Managed Instance を削除するにはどうすればよいですか?\n\nManaged Instance は、Azure portal、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance)、[Azure CLI](/cli/azure/sql/mi#az_sql_mi_delete) または [Resource Manager REST API](/rest/api/sql/managedinstances/delete) を使用して削除できます。\n\n### <a name=\"how-much-time-does-it-take-to-create-or-update-an-instance-or-to-restore-a-database\"></a>インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか?\n\n新しいマネージド インスタンスの作成やサービス レベル (仮想コア、ストレージ) の変更にかかると予想される時間は、いくつかの要因に左右されます。 詳細については、「[管理操作](sql-managed-instance-paas-overview.md#management-operations)」を参照してください。\n \n"

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 09/14/2021
 ms.author: sajagtap
-ms.openlocfilehash: 032669d298ef0aeda3663c303f5575e24cd02354
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 8c0fee509dabc0d7d0462dd28e14c453615af52e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809757"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000531"
 ---
 # <a name="get-started-form-recognizer-studio--preview"></a>概要: Form Recognizer Studio | プレビュー
 
@@ -38,6 +38,22 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
   * [**ストレージ アカウントを作成する**](/azure/storage/common/storage-account-create)。 ストレージ アカウントを作成するときに、 **[インスタンスの詳細] → [パフォーマンス]** フィールドで必ず **[Standard]** を選択してください。
   * [**コンテナーを作成する**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。 コンテナーを作成するときに、 **[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** フィールドを **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
+
+### <a name="configure-cors"></a>CORS を構成する
+
+[CORS (クロス オリジン リソース共有)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) に Form Recognizer Studio から アクセスするには、Azure ストレージ アカウントに構成する必要があります。 Azure portal で CORS を構成するには、ストレージ アカウントの [CORS] ブレードにアクセスする必要があります。
+
+:::image type="content" source="../media/quickstarts/storage-cors-example.png" alt-text="ストレージ アカウントの CORS 構成を示すスクリーンショット。":::
+
+1. ストレージ アカウントの [CORS] ブレードを選択します。
+2. まず、Blob service に新しい CORS エントリを作成します。
+3. **[許可されたオリジン]** は、 **https://formrecognizer.appliedai.azure.com** に設定します。
+4. **[許可されたメソッド]** で使用可能な 8 つすべてのオプションを選択します。
+5. 各フィールドに * を入力して、 **[許可されたヘッダー]** と **[公開されるヘッダー]** をすべて承認します。
+6. **[Max Age]\(最長有効期間\)** 120 秒、または任意の許容値に設定します。
+7. ページ上部にある [保存] ボタンをクリックして、変更を保存します。
+
+これで、CORS は、Form Recognizer Studio からストレージ アカウントを使用するように構成されました。
 
 ### <a name="sample-documents-set"></a>サンプル ドキュメント セット
 
@@ -150,15 +166,15 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 ## <a name="labeling-as-tables"></a>テーブルとしてのラベル付け
 
-カスタム モデルを作成する際に、ドキュメントから値のコレクションを抽出する必要がある場合があります。 これらのコレクションは、さまざまな形式で表示されます。 次に例を示します。
+カスタム モデルを作成しているときに、ドキュメントからデータ コレクションを抽出する必要がある場合があります。 これらは、いくつかの形式で表示される場合があります。 ビジュアル パターンとしてテーブルを使用した場合、
 
-* 特定のフィールド (列) のセットの値 (行) の動的コレクション
+* 特定のフィールド (列) セットに対する値 (行) の動的または可変の値の数
 
-* フィールドの 2 番目のセット (行または列) でグループ化された値の固定コレクション
+* 特定のフィールド (列や行) セットに対する特定の値のコレクション
 
 ### <a name="label-as-dynamic-table"></a>動的テーブルとしてのラベル付け
 
-特定のフィールドのセットに対して動的なデータ行にラベル付けするには、次の手順を実行します。
+動的テーブルを使用して、特定のフィールド (列) セットの値 (行) の変数を抽出します。
 
 1. 新しい "テーブル" 型ラベルを追加し、"動的テーブル" 型を選択して、ラベルに名前を付けます。
 
@@ -170,7 +186,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 ### <a name="label-as-fixed-table"></a>固定テーブルとしてのラベル付け
 
-2 つのフィールド セットでグループ化されたデータの固定コレクションにラベルを付けるには、次の手順を実行します。
+固定テーブルを使用して、特定のフィールド (列や行) セットに対する特定の値のコレクションを抽出します。
 
 1. 新しい "テーブル" 型ラベルを作成し、"固定テーブル" 型を選択して、それに名前を付けます。
 
@@ -193,5 +209,9 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 :::image border="true" type="content" source="../media/quickstarts/custom-signature.gif" alt-text="シグネチャ検出の Form Recognizer のラベル付けの例":::
 
 ## <a name="next-steps"></a>次の手順
+
+* [**Form Recognizer v3.0 の移行ガイド**](../v3-migration-guide.md)に関するページで、REST API の以前のバージョンとの違いを確認してください。
+* [**プレビュー SDK クイックスタート**](try-v3-python-sdk.md)に関するページを探索し、新しい SDK を使用してアプリケーションでプレビュー機能を試してください。
+* [**プレビュー REST API クイックスタート**](try-v3-rest-api.md)に関するページを参照し、新しい REST API を使用してプレビュー機能を試してください。
 
 [Form Recognizer Studio (プレビュー) の使用を開始する](https://formrecognizer.appliedai.azure.com)。

@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2021
-ms.openlocfilehash: 0a161c2341137abc047d81b408058ca56e192526
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 50eb92441c248884930e556551a92acb9e43661b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444834"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176408"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](./platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](./data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -196,19 +196,89 @@ Resource Manager テンプレートを使用して診断設定を作成または
 ## <a name="create-using-rest-api"></a>REST API を使用して作成する
 [Azure Monitor REST API](/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](/rest/api/monitor/diagnosticsettings)」を参照してください。
 
-## <a name="create-using-azure-policy"></a>Azure Policy を使用して作成する
-診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
+## <a name="create-at-scale-using-azure-policy"></a>Azure Policy を使用して大規模に作成する
+診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 Azure リソースの種類にはそれぞれ、診断設定に一覧表示する必要がある一意のカテゴリのセットがあります。 このため、リソースの種類ごとに別個のポリシー定義が必要です。 一部のリソースの種類には、変更せずに割り当てることができる組み込みのポリシー定義があります。 その他のリソースの種類については、カスタム定義を作成する必要があります。
 
-## <a name="error-metric-category-is-not-supported"></a>エラー: メトリック カテゴリがサポートされない
-診断設定をデプロイすると、次のエラー メッセージが表示されます。
+### <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 用の組み込みポリシー定義
+リソースの種類ごとに 2 つの組み込みポリシー定義があります。1 つは Log Analytics ワークスペースへの送信用で、もう 1 つはイベント ハブへの送信用です。 一方の場所のみが必要な場合は、そのポリシーをリソースの種類に割り当てます。 両方が必要な場合は、両方のポリシー定義をリソースに割り当てます。
 
-   "メトリック カテゴリ '*xxxx*' はサポートされていません"
+たとえば、次の画像は、Azure Data Lake Analytics の組み込みの診断設定ポリシー定義を示しています。
 
-次に例を示します。 
+![Data Lake Analytics 用の 2 つの組み込み診断設定ポリシー定義を示す [Azure Policy Definitions]\(Azure Policy 定義\) ページの部分的なスクリーンショット。](media/diagnostic-settings/builtin-diagnostic-settings.png)
 
-   "メトリック カテゴリ 'ActionsFailed' はサポートされていません"
+### <a name="custom-policy-definitions"></a>カスタム ポリシー定義
+組み込みポリシーがないリソースの種類の場合、カスタム ポリシー定義を作成する必要があります。 これは、既存の組み込みポリシーをコピーし、リソースの種類に合わせて変更することによって、Azure portal で、手動で行うことができます。 ただし、PowerShell ギャラリーにあるスクリプトを使用して、プログラムによってポリシーを作成する方が効率的です。
 
-この場合、以前はデプロイに成功しました。 
+[Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) スクリプトを使用すると、PowerShell または Azure CLI を使用してインストールできる特定のリソースの種類用ポリシー ファイルを作成できます。 診断設定のカスタム ポリシー定義を作成するには、次の手順を使用します。
+
+1. [Azure PowerShell](/powershell/azure/install-az-ps) がインストールされていることを確認します。
+2. 次のコマンドを使用してスクリプトをインストールします。
+  
+    ```azurepowershell
+    Install-Script -Name Create-AzDiagPolicy
+    ```
+
+3. ログの送信先を指定するパラメーターを使用してスクリプトを実行します。 サブスクリプションとリソースの種類を指定するように求められます。 
+
+   たとえば、Log Analytics ワークスペースとイベント ハブにログを送信するポリシー定義を作成するには、次のコマンドを使用します。
+
+   ```azurepowershell
+   Create-AzDiagPolicy.ps1 -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
+   ```
+
+   または、コマンドでサブスクリプションとリソースの種類を指定することもできます。 たとえば、SQL Server データベースの Log Analytics ワークスペースとイベント ハブにログを送信するポリシー定義を作成するには、次のコマンドを使用します。
+
+   ```azurepowershell
+   Create-AzDiagPolicy.ps1 -SubscriptionID xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceType Microsoft.Sql/servers/databases  -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
+   ```
+
+5. このスクリプトによって、ポリシー定義ごとに個別のフォルダーが作成されます。 各フォルダーには、*azurepolicy.json*、*azurepolicy.rules.json*、*azurepolicy.parameters.json* という名前の 3 つのファイルが含まれます。 Azure portal でポリシーを手動で作成する場合は、*azurepolicy.json* にはポリシー定義全体が含まれているため、その内容をコピーして貼り付けることができます。 PowerShell または Azure CLI で他の 2 つのファイルを使用して、コマンド ラインからポリシー定義を作成します。
+
+   次の例は、PowerShell と Azure CLI の両方からポリシー定義をインストールする方法を示しています。 各例には、組み込みポリシー定義を使用して新しいポリシー定義をグループ化するために、**監視** カテゴリを指定するメタデータが含まれています。
+
+   ```azurepowershell
+   New-AzPolicyDefinition -name "Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace" -policy .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json -parameter .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json -mode All -Metadata '{"category":"Monitoring"}'
+   ```
+
+   ```azurecli
+   az policy definition create --name 'deploy-diag-setting-sql-database--workspace' --display-name 'Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace'  --rules 'Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json' --params 'Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json' --subscription 'AzureMonitor_Docs' --mode All
+   ```
+
+### <a name="initiative"></a>イニシアティブ
+一般的な戦略では、ポリシー定義ごとに割り当てを作成する代わりに、各 Azure サービスの診断設定を作成するためのポリシー定義を含むイニシアティブを作成します。 お使いの環境の管理方法に応じて、イニシアティブと管理グループ、サブスクリプション、またはリソース グループ間の割り当てを作成します。 この戦略には次の利点があります。
+
+- リソースの種類ごとに複数の割り当てを作成する代わりに、イニシアティブに対して単一の割り当てを作成します。 同じイニシアティブを複数の監視グループ、サブスクリプション、またはリソース グループに使用します。
+- 新しいリソースの種類または送信先を追加する必要が生じたら、イニシアティブを変更します。 たとえば、最初の要件では、データを Log Analytics ワークスペースのみに送信する必要があったが、後でイベント ハブを追加する必要が生じた場合などです。 新しい割り当てを作成するのではなく、イニシアティブを変更します。
+
+イニシアティブの作成の詳細については、「[イニシアティブ定義の作成と割り当て](../../governance/policy/tutorials/create-and-manage.md#create-and-assign-an-initiative-definition)」を参照してください。 次の推奨事項を検討してください。
+
+- **[カテゴリ]** を **[監視]** に設定して、関連する組み込みおよびカスタムのポリシー定義を使用してグループ化します。
+- イニシアティブに含まれるポリシー定義の Log Analytics ワークスペースとイベント ハブの詳細を指定する代わりに、共通のイニシアティブ パラメーターを使用します。 このパラメーターを使用すると、すべてのポリシー定義に共通の値を簡単に指定し、必要に応じてその値を変更することができます。
+
+![イニシアティブ定義の設定を示すスクリーンショット。](media/diagnostic-settings/initiative-definition.png)
+
+### <a name="assignment"></a>割り当て 
+監視対象のリソースのスコープに応じて、イニシアティブを Azure 管理グループ、サブスクリプション、またはリソース グループに割り当てます。 [管理グループ](../../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に役立ちます。
+
+![Azure portal 内の [Diagnostic settings to Log Analytics workspace]\(Log Analytics ワークスペースに対する診断設定\) の [イニシアティブの割り当て] セクションにある [基本] タブの設定のスクリーンショット。](media/diagnostic-settings/initiative-assignment.png)
+
+イニシアティブ パラメーターを使用すると、イニシアティブ内のすべてのポリシー定義に対して 1 回でワークスペースまたはその他の詳細を指定することができます。 
+
+![[パラメーター] タブのイニシアティブ パラメーターを示すスクリーンショット。](media/diagnostic-settings/initiative-parameters.png)
+
+### <a name="remediation"></a>Remediation
+イニシアティブは、作成時に各仮想マシンに適用されます。 [修復タスク](../../governance/policy/how-to/remediate-resources.md)では、イニシアティブ内のポリシー定義が既存のリソースにデプロイされるため、既に作成されているすべてのリソースの診断設定を作成できます。 
+
+Azure portal を使用して割り当てを作成するときに、修復タスクを同時に作成することができます。 修復の詳細については、「[Azure Policy を使って準拠していないリソースを修復する](../../governance/policy/how-to/remediate-resources.md)」を参照してください。
+
+![Log Analytics ワークスペースのイニシアティブの修復を示すスクリーンショット。](media/diagnostic-settings/initiative-remediation.png)
+
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="metric-category-is-not-supported"></a>メトリック カテゴリがサポートされていない
+
+診断設定をデプロイすると、"*メトリック カテゴリ 'xxxx' がサポートされていません*" のようなエラー メッセージが表示されます。 以前のデプロイが成功した場合でも、このエラーが表示される場合があります。 
 
 この問題は、Resource Manager テンプレート、診断設定 REST API、Azure CLI または Azure PowerShell を使用するときに発生します。 Azure portal を介して作成された診断設定は、サポートされているカテゴリ名のみが表示されるため、影響を受けません。
 
@@ -216,7 +286,7 @@ Resource Manager テンプレートを使用して診断設定を作成または
 
 このエラーが発生した場合は、メトリック カテゴリ名をすべて 'AllMetrics' に置き換えるようにデプロイを更新して問題を解決してください。 以前にデプロイで複数のカテゴリを追加していた場合は、'AllMetrics' 参照を持つ 1 つのみを保持する必要があります。 引き続き問題が発生する場合は、Azure portal を通じて Azure サポートにお問い合わせください。 
 
-## <a name="error-setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>エラー: resourceID の ASCII 以外の文字が原因で設定が消える
+## <a name="setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>resourceID の ASCII 以外の文字が原因で設定が消える
 
 診断設定では、ASCII 以外の文字 (Preproducción など) を含む resourceID はサポートされていません。 Azure でリソースの名前を変更することはできません。唯一のオプションは、ASCII 以外の文字を使用せずに新しいリソースを作成する方法です。 文字がリソース グループ内にある場合は、その下のリソースを新しいリソースに移動できます。 それ以外の場合は、リソースを再作成する必要があります。 
 

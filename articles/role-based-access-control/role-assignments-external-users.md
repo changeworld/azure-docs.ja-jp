@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.custom: it-pro,subject-rbac-steps
-ms.openlocfilehash: 175beacc486c4b59919bf20300bbd06f7b9aa1a7
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 808e8e1dc5bcdcdddad490f30338c8f7a9e7ffa3
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988500"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074268"
 ---
 # <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーに Azure ロールを割り当てる
 
@@ -80,25 +80,25 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
     リソース グループの [アクセス制御 (IAM)] ページの例を次に示します。
 
-    ![リソース グループの [アクセス制御 (IAM)] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/rg-access-control.png)
+    ![リソース グループの [アクセス制御 (IAM)] ページのスクリーンショット。](./media/shared/rg-access-control.png)
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
 
-1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** の順にクリックします。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
 
     ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-    ![[追加] > [ロールの割り当ての追加] メニュー (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/add-role-assignment-menu-preview.png)
+    ![[追加] > [ロールの割り当ての追加] メニューのスクリーンショット。](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ページが開きます。
 
 1. **[ロール]** タブで、 **[仮想マシン共同作成者]** などのロールを選択します。
 
-   ![[ロール] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/roles.png)
+   ![[ロールの割り当ての追加] ページで [ロール] タブが表示された状態のスクリーンショット。](./media/shared/roles.png)
 
 1. **[メンバー]** タブで、 **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
 
-   ![[メンバー] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/members.png)
+   ![[ロールの割り当ての追加] ページで [メンバー] タブが表示された状態のスクリーンショット。](./media/shared/members.png)
 
 1. **[メンバーの選択]** をクリックします。
 
@@ -106,7 +106,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
     **[選択]** ボックスに表示名またはメール アドレスを入力してディレクトリを検索できます。
 
-    ![[メンバーの選択] ペイン (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-external-users/select-members.png)
+    ![[メンバーの選択] ウィンドウのスクリーンショット。](./media/role-assignments-external-users/select-members.png)
 
 1. **[選択]** をクリックして、メンバーの一覧にゲスト ユーザーを追加します。
 
@@ -130,11 +130,11 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 1. **[アクセス制御 (IAM)]** をクリックします。
 
-1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** の順にクリックします。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックします。
 
     ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-    ![[追加] > [ロールの割り当ての追加] メニュー (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/add-role-assignment-menu-preview.png)
+    ![[追加] > [ロールの割り当ての追加] メニューのスクリーンショット。](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ページが開きます。
 
@@ -142,7 +142,7 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 1. **[メンバー]** タブで、 **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
 
-   ![[メンバー] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/members.png)
+   ![[ロールの割り当ての追加] ページで [メンバー] タブが表示された状態のスクリーンショット。](./media/shared/members.png)
 
 1. **[メンバーの選択]** をクリックします。
 

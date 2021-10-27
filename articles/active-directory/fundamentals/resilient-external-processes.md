@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d3c159c615d928a8d56d3913c8e1cab846c7580
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fede718111b6f1dcc9e49e8c96ec88a967b31b20
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462095"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042336"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>外部プロセスとのインターフェイスの回復性の向上
 
-この記事では、ユーザー体験で RESTFul API を計画して実装する方法と、API エラーに対するアプリケーションの回復性を高める方法について説明します。
+この記事では、ユーザー体験で RESTful API を計画して実装する方法と、API エラーに対するアプリケーションの回復性を高める方法について説明します。
 
 ![外部プロセス コンポーネントとのインターフェイスを示す図](media/resilient-external-processes/external-processes-architecture.png)
 

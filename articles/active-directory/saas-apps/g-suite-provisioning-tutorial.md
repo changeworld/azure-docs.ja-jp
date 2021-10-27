@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: thwimmer
-ms.openlocfilehash: eb283ab73180bed43c90f57fd7ad09c045f82bc4
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fca85673ba31b71eda9e9b4242062093ae588aed
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763825"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046983"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -110,11 +110,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!NOTE]
-> G Suite の Directory API エンドポイントについて詳しくは、[Directory API](https://developers.google.com/admin-sdk/directory) に関するページをご覧ください。
+> G Suite の Directory API エンドポイントの詳細については、[Directory API のリファレンス ドキュメント](https://developers.google.com/admin-sdk/directory)を参照してください。
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD で G Suite の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。 ユーザーは portal.azure.com にログインする必要があり、aad.portal.azure.com を使用できなくなります
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。 ユーザーは `portal.azure.com` にログインする必要があり、`aad.portal.azure.com` を使用することはできません。
 
     ![[エンタープライズ アプリケーション] ブレード](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 

@@ -1,131 +1,138 @@
 ---
 title: Azure Video Analyzer を Azure Stack Edge にデプロイする
-description: この記事では、Azure Video Analyzer を Azure Stack Edge にデプロイするときに役立つ手順を示します。
+description: この記事では、Azure Video Analyzer を Azure Stack Edge に配置する方法について説明します。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: da14368846cd87d5d4e231933cec0068a4e558f9
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 2834828eb666bd80ca35284884e7745d8dbff350
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546625"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178108"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>Azure Video Analyzer を Azure Stack Edge にデプロイする
 
-この記事では、Video Analyzer を Azure Stack Edge にデプロイするときに役立つ手順を示します。 デバイスの設定とアクティブ化が済むと、Video Analyzer をデプロイできる状態になります。 
+この記事では、Azure Video Analyzer を Azure Stack Edge デバイスに配置するための詳細な手順について説明します。 デバイスを設定してアクティブ化すると、Video Analyzer を配置する準備が整います。 
 
-Video Analyzer では、IoT Hub を介してデプロイを行います。しかし、Azure Stack Edge リソースについては Kubernetes API が公開されており、これを使用して、Video Analyzer とやり取りできる IoT Hub 非対応ソリューションを追加でデプロイできます。 
+この記事では、Azure IoT Hub を使用して Video Analyzer を配置しますが、Azure Stack Edge リソースについては Kubernetes API が公開されており、これを使用して、Video Analyzer とやり取りできる IoT Hub 非対応ソリューションを追加で配置できます。 
 
 > [!TIP]
-> カスタム デプロイに Kubernetes (K8s) API を使用するのは、高度なユースケースです。 エッジ モジュールを作成して各 Azure Stack Edge リソースにデプロイする際には IoT Hub を使用するようにし、Kubernetes API は使用しないことをお客様にお勧めします。 この記事では、IoT Hub を使用して Video Analyzer モジュールをデプロイする手順について説明します。
+> カスタムの配置に Kubernetes API を使用するのは、高度なケースです。 Edge モジュールを作成して各 Azure Stack Edge リソースにデプロイする際には IoT Hub を使用するようにし、Kubernetes API は使用しないことをお勧めします。 この記事では、IoT Hub を使用して Video Analyzer モジュールを配置する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Video Analyzer アカウント
+* Azure Video Analyzer アカウント
 
-    この[クラウド サービス](./overview.md)は、Video Analyzer エッジ モジュールの登録、録画されたビデオの再生、およびビデオ分析に使用されます
+    この[クラウド サービス](./overview.md)は、Video Analyzer Edge モジュールの登録、録画されたビデオの再生、およびビデオ分析に使用されます
+
 * マネージド ID
 
-    これは、上記のストレージ アカウントへのアクセスを管理するために使用されるユーザー割り当ての[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) です。
+    これは、ストレージ アカウントへのアクセスを管理するために使用するユーザー割り当ての[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) です。
+
 * [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) リソース
+
 * [IoT ハブ](../../iot-hub/iot-hub-create-through-portal.md)
+
 * ストレージ アカウント
 
-    General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします。  
-    [汎用 v2 ストレージ アカウント](../../storage/common/storage-account-upgrade.md?tabs=azure-portal)についてご確認ください。
-* 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
-* 開発用マシンが接続されているネットワークで、ポート 5671 経由の Advanced Message Queuing Protocol が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT Hub と通信できるようになります。
+    [汎用 v2 ストレージ アカウント](../../storage/common/storage-account-upgrade.md?tabs=azure-portal)を使用することをお勧めします。  
+    
+* 開発マシンにインストールされている [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="configuring-azure-stack-edge-for-using-video-analyzer"></a>Video Analyzer を使用するための Azure Stack Edge の構成
+*  Visual Studio Code にインストールされている [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 詳細については、[Azure Stack Edge と詳細な設定手順](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)を参照してください。 最初に、以下のリンクの指示に従います。
+* 開発用マシンが接続されているネットワークで、ポート 5671 経由の Advanced Message Queuing Protocol が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT ハブと通信できるようになります。
 
-* [Azure Stack Edge および Data Box Gateway リソースの作成](../../databox-online/azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)
-* [インストールと設定](../../databox-online/azure-stack-edge-gpu-deploy-install.md)
-* 接続とアクティブ化
+## <a name="configure-azure-stack-edge-to-use-video-analyzer"></a>Video Analyzer を使用するように Azure Stack Edge を構成する
 
-    1. [のインスタンスに接続するときには、](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
-    2. [ネットワークを構成する](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
-    3. [デバイスを構成する](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
-    4. [証明書の構成](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
-    5. [アクティブ化](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
-* [Azure Stack Edge への IoT ハブのアタッチ](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
-### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件の有効化
+Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応の Edge コンピューティング デバイスです。 詳細については、[Azure Stack Edge と詳細な設定手順](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)に関する記事を参照してください。 
 
-続行する前に以下を確認します。
+使用を開始するには、以下を実行します。
+
+1. [Azure Stack Edge または Azure Data Box Gateway リソースを作成します](../../databox-online/azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)。  
+1. [Azure Stack Edge Pro with GPU をインストールして設定します](../../databox-online/azure-stack-edge-gpu-deploy-install.md)。  
+1. 次の手順でリソースを接続し、アクティブ化します。
+
+    a. [ローカル Web UI 設定に接続します](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)。  
+    b. [ネットワークを構成します](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。  
+    c. [デバイスを構成します](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)。  
+    d. [証明書を構成します](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)。  
+    e. [デバイスをアクティブ化します](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)。  
+
+1. [IoT ハブを Azure Stack Edge にアタッチします](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)。
+
+### <a name="meet-the-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge ローカル UI でコンピューティングに関する前提条件を満たす
+
+次に進む前に、以下を完了していることを確認します。
 
 * 自分の Azure Stack Edge リソースをアクティブにしていること。
 * Azure Stack Edge リソースにアクセスするために、PowerShell 5.0 以降を実行している Windows クライアント システムにアクセスできること。
-* Kubernetes クラスターをデプロイするには、[ローカル Web UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup) を使用して自分の Azure Stack Edge リソースを構成する必要があります。 
+* Kubernetes クラスターを配置する場合は、Azure Stack Edge リソースをその [ローカル Web UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup) 上で構成済みであること。 
 
-    * 接続と構成:
+    1. 次の手順でリソースを接続し、構成します。
     
-        1. [のインスタンスに接続するときには、](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
-        2. [ネットワークを構成する](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
-        3. [デバイスを構成する](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
-        4. [証明書の構成](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
-        5. [アクティブ化](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
-    * コンピューティングを有効にするには、自分のデバイスのローカル Web UI で [コンピューティング] ページに移動します。
+        a. [ローカル Web UI 設定に接続します](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)。  
+        b. [ネットワークを構成します](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。  
+        c. [デバイスを構成する](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)  
+        d. [証明書を構成します](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)。  
+        e. [デバイスをアクティブ化します](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)。
+
+    1. コンピューティングを有効にするには、自分のデバイスのローカル Web UI で **[コンピューティング]** ページに移動します。
     
-        * コンピューティングを有効にしたいネットワーク インターフェイスを選択します。 [有効化] を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイスでデバイスの仮想スイッチが作成されます。
-        * Kubernetes テスト ノードの IP と Kubernetes 外部サービスの IP は空白のままにします。
-        * [適用] を選択します (この操作には約 2 分かかります)。
+        a. コンピューティングに対して有効にするネットワーク インターフェイスを選択して、**[有効]** を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイス上のデバイスに仮想スイッチが作成されます。  
+        b. Kubernetes テスト ノードの IP と Kubernetes 外部サービスの IP は空白のままにします。  
+        c. **[適用]** を選択します。 この操作には約 2 分かかります。
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="../../databox-online/media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png" alt-text="Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件":::
+        > :::image type="content" source="../../databox-online/media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png" alt-text="Azure Stack Edge ローカル UI でのコンピューティングの前提条件のスクリーンショット。":::
 
-        * Kubernetes API および Azure Stack Edge リソース用に DNS を更新していない場合は、Windows のホスト ファイルを更新できます。
+        Azure DNS が Kubernetes API と Azure Stack Edge リソース用に構成されていない場合は、次の手順で Windows ホスト ファイルを更新できます。
         
-            * 管理者としてテキスト エディターを開きます
-            * "C:\Windows\System32\drivers\etc\hosts" のファイルを開きます
-            * Kubernetes API デバイス名の IPv4 とホスト名をファイルに追加します。 (この情報は、Azure Stack Edge ポータルの [デバイス] セクションで確認できます。)
-            * 保存して閉じる
+        a. 管理者としてテキスト エディターを開きます。  
+        b. *C:\Windows\System32\drivers\etc\\* にある *hosts* ファイルを開きます。  
+        c. このファイルに Kubernetes API デバイス名の インターネット プロトコル バージョン 4 (IPv4) とホスト名を追加します。 この情報は、Azure Stack Edge ポータルの **[デバイス]** で確認できます。  
+        d. ファイルを保存して閉じます。
 
-### <a name="deploy-video-analyzer-edge-modules-using-azure-portal"></a>Azure portal を使用して Video Analyzer Edge モジュールをデプロイする
+### <a name="deploy-video-analyzer-edge-modules-by-using-the-azure-portal"></a>Azure portal を使用して Video Analyzer Edge モジュールを配置する
 
-Azure portal では、配置マニフェストの作成から、IoT Edge デバイスへのデプロイのプッシュまでをガイドします。  
+Azure portal で配置マニフェストを作成し、IoT Edge デバイスに配置をプッシュすることができます。  
+
 #### <a name="select-your-device-and-set-modules"></a>デバイスを選択してモジュールを設定する
 
-1. [Azure Portal](https://ms.portal.azure.com/) にサインインし、IoT Hub に移動します。
-1. メニューから **[IoT Edge]** を選択します。
-1. デバイスの一覧でターゲット デバイスの ID をクリックします。
+1. [Azure portal](https://ms.portal.azure.com/) にサインインし、お使いの IoT ハブに移動します。
+1. 左側のペインで、 **[IoT Edge]** を選択します。
+1. デバイスの一覧で、ターゲット デバイスの ID を選択します。
 1. **[Set Modules] \(モジュールの設定)** を選択します。
 
 #### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レ表示と作成** を行います。
+配置マニフェストは、配置するモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 その 3 つの手順は、**[モジュール]**、**[ルート]**、**[確認と作成]** の各タブで構成されています。
 
 #### <a name="add-modules"></a>モジュールを追加する
 
-1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** ドロップダウンをクリックし、**IoT Edge モジュール** を選択して、 **[IoT Edge モジュールの追加]** ページを表示します。
-1. **モジュールの設定** タブで、モジュール名を入力し、コンテナー イメージ URI を指定します:   
-    例 :
-    
-    * **IoT Edge モジュールの名前**: avaedge
-    * **イメージ URI**: mcr.microsoft.com/media/video-analyzer:1    
+1. **[IoT Edge モジュール]** セクションで、**[追加]** ドロップダウン リストの **[IoT Edge モジュール]** を選択し、**[IoT Edge モジュールを追加する]** ページを表示します。
+1. **[モジュールの設定]** タブを選択し、モジュール名を入力して、コンテナー イメージ URI を指定します。 次の画像に示されているのはサンプルの値です。     
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/add-module.png" alt-text="[モジュール設定] タブを示しているスクリーンショット":::
+    > :::image type="content" source="./media/deploy-on-stack-edge/add-module.png" alt-text="[IoT Edge モジュールを追加する] ページの [モジュールの設定] ペインのスクリーンショット。":::
     
     > [!TIP]
-    > この手順の説明に従って、 **[モジュール設定]** タブ、 **[コンテナ作成オプション]** タブ、および **[モジュールツイン設定]** タブで値を指定するまで、 **[追加]** を選択しないでください。
+    > この手順の説明に従って、**[モジュール設定]** タブ、**[コンテナ作成オプション]** タブ、**[モジュールツイン設定]** タブで値を指定するまで、**[追加]** を選択しないでください。
     
-    > [!WARNING]
-    > Azure IoT Edge モジュールの呼び出しでは、大文字と小文字が区別されます。 モジュール名として使用する文字列を正確に記録しておきます。
+    > [!IMPORTANT]
+    > モジュールの呼び出し時に、Azure IoT Edge 値は大文字と小文字が区別されます。 モジュール名として使用する文字列を正確にメモしておきます。
 
-1. **[環境変数]** タブを開きます。
+1. **[環境変数]** タブを選択し、次の画像のように値を入力します。
    
-   表示される入力ボックスに、次の値を追加します
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/environment-variables.png" alt-text="[IoT Edge モジュールを追加する] ページの [環境変数] ペインのスクリーンショット。":::
+
+1. **[コンテナーの作成オプション]** タブを選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/environment-variables.png" alt-text="環境変数":::
-
-1. **[コンテナーの作成オプション]** タブを開きます。
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/container-create-options.png" alt-text="コンテナーの作成オプション":::
+    > :::image type="content" source="./media/deploy-on-stack-edge/container-create-options.png" alt-text="[IoT Edge モジュールを追加する] ページの [コンテナーの作成オプション] ペインのスクリーンショット。":::
  
-    次の JSON をコピーしてボックスに貼り付け、モジュールによって生成されるログ ファイルのサイズを制限します。
+    **[コンテナーの作成オプション]** ペインのボックスに、次の JSON コードを貼り付けます。 この操作により、モジュールから生成されるログ ファイルのサイズが制限されます。
     
     ```    
     {
@@ -148,24 +155,26 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     ````
    
    JSON の "Binds" セクションには、次の 2 つのエントリがあります。
-   1. "/var/lib/videoanalyzer:/var/lib/videoanalyzer": これは、永続的なアプリケーション構成データをコンテナーからバインドし、エッジ デバイスに格納するために使用されます。
-   1. "/var/media:/var/media": これにより、エッジ デバイスとコンテナーの間でメディア フォルダーがバインドされます。 これは、エッジ デバイスへのビデオ クリップの格納をサポートする pipelineTopology を実行するときに、ビデオ記録を格納するために使用されます。
+   * **"/var/lib/videoanalyzer:/var/lib/videoanalyzer"** は、永続的なアプリケーション構成データをコンテナーからバインドし、エッジ デバイスに格納するために使用されます。
+   * **"/var/media:/var/media"** により、エッジ デバイスとコンテナーの間でメディア フォルダーがバインドされます。 これは、エッジ デバイスへのビデオ クリップの格納をサポートする pipelineTopology を実行するときに、ビデオ記録を格納するために使用されます。
    
-1. **[モジュール ツインの設定]** タブで、以降の JSON をコピーし、ボックスに貼り付けます。
+1. **[モジュール ツイン設定]** タブを選択します。
  
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/twin-settings.png" alt-text="ツインの設定":::
+   [モジュール ツインの構成スキーマ](module-twin-configuration-schema.md)に関するページで説明されているように、実行するには、Azure Video Analyzer には一連の必須ツイン プロパティが必要です。  
 
-    [モジュール ツインの構成スキーマ](module-twin-configuration-schema.md)に関するページで説明されているように、Azure Video Analyzer では、実行するために一連の必須ツイン プロパティが必要です。  
+1. **[モジュール ツインの設定]** ペインのボックスに、次の JSON コードを貼り付けます。    
 
-    [モジュール ツインの設定] 編集ボックスには、次の JSON を入力する必要があります。    
     ```
     {
         "applicationDataDirectory": "/var/lib/videoanalyzer",
         "ProvisioningToken": "{provisioning-token}",
     }
     ```
-    次に示すのは、JSON に追加してモジュールを監視するのに役立つ、**推奨される** いくつかの追加プロパティです。 詳細については、「[監視とログ記録](monitor-log-edge.md)」を参照してください。
+   
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/twin-settings.png" alt-text="[IoT Edge モジュールを追加する] ページの [モジュール ツインの設定] ペインのスクリーンショット。":::   
+
+    モジュールの監視を支援するために、次の "*推奨される*" プロパティを JSON コードに追加することができます。 詳細については、「[監視とログ記録](monitor-log-edge.md)」を参照してください。
     
     ```
     "diagnosticsEventsOutputName": "diagnostics",
@@ -177,19 +186,15 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     ```
 1. **[追加]** を選択します。  
 
-RTSP シミュレーター エッジ モジュールを追加する
+#### <a name="add-the-real-time-streaming-protocol-rtsp-simulator-edge-module"></a>リアルタイム ストリーミング プロトコル (RTSP) シミュレーター Edge モジュールを追加する
 
-1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** ドロップダウンをクリックし、**IoT Edge モジュール** を選択して、 **[IoT Edge モジュールの追加]** ページを表示します。
-1. **モジュールの設定** タブで、モジュール名を入力し、コンテナー イメージ URI を指定します:   
-    例 :
+1. **[IoT Edge モジュール]** セクションで、**[追加]** ドロップダウン リストの **[IoT Edge モジュール]** を選択し、**[IoT Edge モジュールを追加する]** ページを表示します。
+1. **[モジュールの設定]** タブを選択し、モジュール名を入力して、コンテナー イメージ URI を指定します。 次に例を示します。   
     
-    * **IoT Edge モジュールの名前**: rtspsim
-    * **イメージ URI**: mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2  
+    * **IoT Edge モジュールの名前**: rtspsim  
+    * **イメージ URI**: mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2 
 
-
-1. **[コンテナーの作成オプション]** タブを開きます。
- 
-    次の JSON をコピーし、ボックスに貼り付けます。
+1. **[コンテナーの作成オプション]** タブを選択し、ボックス内に次の JSON コードを貼り付けます。
     
     ```
     {
@@ -209,164 +214,181 @@ RTSP シミュレーター エッジ モジュールを追加する
     ```
 1. **[追加]** を選択します。  
 
-1. **Next:ルート** 　でルート のセクションに進みます。 ルートを指定します。
+1. **次へ:ルート** 　でルート のセクションに進みます。 
 
-    [名前] に「**AVAToHub**」と入力し、[値] に「**FROM /messages/modules/avaedge/outputs/ INTO $upstream**」と入力します
-1. **[次: 確認および作成]** を選択して、レビュー セクションに進みます。
-1. デプロイ情報を確認してから、 **[作成]** を選択してモジュールをデプロイします。
+1. ルートを指定するには、**[名前]** に「**AVAToHub**」と入力し、**[値]** に「**FROM /messages/modules/avaedge/outputs/ INTO $upstream**」と入力します。
 
-    > [!TIP]
-    > プロビジョニング トークンを生成するには、次の手順のようにします。
-1. Azure portal を開き、Video Analyzer に移動します
-1. 左側のナビゲーション ウィンドウで、 **[Edge モジュール]** をクリックします。
-1. エッジ モジュールを選択して、 **[トークンの生成]** ボタンをクリックします。
+1. **[次へ: レビューと作成]** を選択し、レビュー セクションに進みます。
 
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/generate-provisioning-token.png" alt-text="トークンを生成します" lightbox="./media/deploy-on-stack-edge/generate-provisioning-token.png":::
-1. プロビジョニング トークンをコピーします。
+1. 配置情報を確認してから、**[作成]** を選択してモジュールを配置します。
+
+#### <a name="generate-the-provisioning-token"></a>プロビジョニング トークンを生成する
+
+1. Azure portal で Video Analyzer に移動します。
+1. 左側のペインで **[Edge modules]\(Edge モジュール\)** を選択します。
+1. Edge モジュールを選択し、**[トークンの生成]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/copy-provisioning-token.png" alt-text="トークンをコピーします":::
+    > :::image type="content" source="./media/deploy-on-stack-edge/generate-provisioning-token.png" alt-text="トークンを生成するための [Add edge modules]\(Edge モジュールの追加\) ペインのスクリーンショット。" lightbox="./media/deploy-on-stack-edge/generate-provisioning-token.png":::
+
+1. 次の画像に示すように、プロビジョニング トークンをコピーします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/copy-provisioning-token.png" alt-text="[Copy provisioning token]\(プロビジョニング トークンのコピー\) ページのスクリーンショット。":::
 
 
 
-#### <a name="optional-setup-docker-volume-mounts"></a>(省略可能) Docker ボリューム マウントの設定
+#### <a name="optional-set-up-docker-volume-mounts"></a>(省略可能) Docker ボリューム マウントを設定する
 
-作業ディレクトリ内のデータを表示したい場合は、これらの手順に従ってデプロイ前に Docker ボリューム マウントを設定します。 
+作業ディレクトリのデータを表示する場合は、配置する前に Docker ボリューム マウントを設定します。 
 
-これらの手順では、ゲートウェイ ユーザーの作成とファイル共有の設定を行って、Video Analyzer の作業ディレクトリと Video Analyzer のメディア フォルダーのコンテンツを表示できるようにする方法について説明します。
+このセクションでは、ゲートウェイ ユーザーの作成とファイル共有の設定を行って、Video Analyzer の作業ディレクトリと Video Analyzer のメディア フォルダーのコンテンツを表示できるようにする方法について説明します。
 
 > [!NOTE]
-> バインド マウントもサポートされていますが、ボリューム マウントでは、データを表示できるほか、必要に応じてリモートでコピーできます。 バインドとボリューム、両方のマウントを使用することが可能です。ただし、それらで同じコンテナー パスを指定することはできません。
+> バインド マウントもサポートされていますが、ボリューム マウントを使用すると、データを表示できるほか、選択した場合はリモートでコピーできます。 バインドとボリューム、両方のマウントを使用することはできますが、同じコンテナー パスを指定することはできません。
 
-1. Azure portal を開いて、Azure Stack Edge リソースに移動します。
-1. 共有にアクセスできる **ゲートウェイ ユーザー** を作成します。
+1. Azure portal で Azure Stack Edge リソースに移動します。
+1. 次の手順で共有にアクセスできるゲートウェイ ユーザーを作成します。
     
-    1. 左側のナビゲーション ペインで、 **[クラウド ストレージ ゲートウェイ]** をクリックします。
-    1. 左側のナビゲーション ペインで **[ユーザー]** をクリックします。
-    1. **[+ ユーザーの追加]** をクリックし、ユーザー名とパスワードを設定します。 (推奨: `avauser`)。
-    1. **[追加]** をクリックします。
+    a. 左側のペインで **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\)** を選択します。  
+    b. 左側のペインで **[ユーザー]** を選択します。  
+    c. **[ユーザーの追加]** を選択し、ユーザー名 (たとえば、「*avauser*」をお勧めします) とパスワードを設定します。  
+    d. **[追加]** を選択します。
 
-        > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-on-stack-edge/add-user.png" alt-text="ユーザーの追加":::
-1. Video Analyzer で保持するための **ローカル共有** を作成します。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/add-user.png" alt-text="Azure Stack Edge リソースの [ユーザーの追加] ページのスクリーンショット。":::
 
-    1. **[クラウド ストレージ ゲートウェイ] -> [共有]** をクリックします。
-    1. **[+ Add Shares]\(+ 共有の追加)\** をクリックします。
-    1. 共有名を設定します。 (推奨: `ava`)。
-    1. 共有の種類は SMB のままにします。
-    1. **[Edge コンピューティングで共有を使用する]** チェック ボックスがオンであることを確かめます。
-    1. **[Edge ローカル共有として構成]** チェック ボックスがオンであることを確かめます。
-    1. [ユーザーの詳細] で、先ほど作成したユーザーに共有へのアクセス権を付与します。
-    1. **[作成]** をクリックします。
+1. 次の手順で Video Analyzer の永続化のための "*ローカル共有*" を作成します。
+
+    a. **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\)** > **[共有]** を選択します。  
+    b. **[共有の追加]** を選択します。  
+    c. 共有名を設定します (たとえば、「*ava*」をお勧めします)。  
+    d. 共有の種類は **[SMB]** のままにします。  
+    e. **[Edge コンピューティングで共有を使用する]** チェックボックスがオンであることを確認します。  
+    f. **[Edge ローカル共有として構成]** チェックボックスがオンであることを確認します。  
+    g. **[ユーザーの詳細]** で **[既存のものを使用]** を選択し、最近作成したユーザーに共有へのアクセス権を付与します。  
+    h. **［作成］** を選択します
             
-        > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-on-stack-edge/local-share.png" alt-text="ローカル共有":::  
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/local-share.png" alt-text="ローカル共有を作成するための [共有の追加] ページのスクリーンショット。":::  
     
-        > [!TIP]
-        > 自分の Azure Stack Edge に接続された Windows クライアントを使用し、[このドキュメントで説明されている](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)次の手順に従って SMB 共有に接続します。    
-1. ファイル同期ストレージ用にリモート共有を作成します。
+    > [!TIP]
+    > Windows クライアントが Azure Stack Edge デバイスに接続されている状態で、「[Azure Stack Edge Pro FPGA を使用してデータを転送する](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)」の「SMB 共有に接続する」セクションの手順を実行します。    
 
-    1. 最初に、同じリージョンに BLOB ストレージ アカウントを作成します。そのためには、 **[クラウド ストレージ ゲートウェイ] -> [ストレージ アカウント]** をクリックします。
-    1. **[クラウド ストレージ ゲートウェイ] -> [共有]** をクリックします。
-    1. **[+ Add Shares]\(+ 共有の追加)\** をクリックします。
-    1. 共有名を設定します。 (推奨: media)。
-    1. 共有の種類は SMB のままにします。
-    1. **[Edge コンピューティングで共有を使用する]** チェック ボックスがオンであることを確かめます。
-    1. **[Edge ローカル共有として構成]** チェック ボックスがオフであることを確かめます。
-    1. 先ほど作成したストレージ アカウントを選択します。
-    1. ストレージの種類をブロック BLOB に設定します。
-    1. コンテナー名を設定します。
-    1. [ユーザーの詳細] で、先ほど作成したユーザーに共有へのアクセス権を付与します。
-    1. **[作成]** をクリックします。    
+1. 次の手順でファイル同期ストレージの "*リモート共有*" を作成します。
+
+    a. **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\)** > **[ストレージ アカウント]** を選択して、同じリージョン内に Azure Blob Storage アカウントを作成します。  
+    b. **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\)** > **[共有]** を選択します。  
+    c. **[共有の追加]** を選択します。  
+    d. **[名前]** ボックスに共有名を入力します (たとえば、「*media*」をお勧めします)。  
+    e. **[種類]** の共有の種類は **[SMB]** のままにします。  
+    f. **[Edge コンピューティングで共有を使用する]** チェックボックスがオンであることを確認します。  
+    g. **[Edge ローカル共有として構成]** チェックボックスがオフであることを確認します。  
+    h. **[ストレージ アカウント]** ドロップダウン リストで最近作成したストレージ アカウントを選択します。  
+    i. **[ストレージ サービス]** ドロップダウン リストで **[ブロック BLOB]** を選択します。  
+    j. **[BLOB コンテナーの選択**] ボックスにコンテナー名を入力します。  
+    k. **[ユーザーの詳細]** で **[既存のものを使用]** を選択し、最近作成したユーザーに共有へのアクセス権を付与します。  
+    l. **［作成］** を選択します    
         
-        > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-on-stack-edge/remote-share.png" alt-text="リモート共有":::
-1. ボリューム マウントを使用するように、RTSP シミュレーター モジュールのコンテナー作成オプションを更新します。
-    1. **[モジュールの設定]** ボタンをクリックします。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/remote-share.png" alt-text="リモート共有を作成するための [共有の追加] ページのスクリーンショット。":::
 
-        > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-on-stack-edge/set-modules.png" alt-text="モジュールを設定します" lightbox="./media/deploy-on-stack-edge/set-modules.png":::
-    1. **rtspsim** モジュールをクリックします。
+1. ボリューム マウントを使用するには、次の手順で RTSP シミュレーター モジュールの **[コンテナーの作成オプション]** ペインの設定を更新します。
 
-        > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-on-stack-edge/select-module.png" alt-text="モジュールを選択します":::
-    1. **[コンテナーの作成オプション]** タブを選択し、次に示すようにマウントを追加します。
+    a. **[モジュールの設定]** ボタンを選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/set-modules.png" alt-text="エッジ デバイスの設定ペインの [モジュールの設定] ボタンを示すスクリーンショット。" lightbox="./media/deploy-on-stack-edge/set-modules.png":::  
+
+    b. **[名前]** リストで **rtspsim** モジュールを選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/select-module.png" alt-text="エッジ デバイスの設定ペインの [IoT Edge モジュール] にある 'rtspsim' モジュールのスクリーンショット。":::  
     
-        > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-on-stack-edge/update-module.png" alt-text="モジュールを更新します":::
+    c. **[IoT Edge モジュールの更新]** ペインで **[コンテナーの作成オプション]** タブを選択し、次の JSON コードに示すようにマウントを追加します。
+    
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/deploy-on-stack-edge/update-module.png" alt-text="[コンテナーの作成オプション] ペインの JSON マウント コードのスクリーンショット。":::
 
-        ```json
-            "createOptions": 
+    ```json
+        "createOptions": 
+        {
+            "HostConfig": 
             {
-                "HostConfig": 
-                {
-                    "Mounts": 
-                    [
-                        {
-                            "Target": "/live/mediaServer/media",
-                            "Source": "media",
-                            "Type": "volume"
-                        }
-                    ],
-                    "PortBindings": {
-                        "554/tcp": [
-                            {
-                            "HostPort": "554"
-                            }
-                        ]
+                "Mounts": 
+                [
+                    {
+                        "Target": "/live/mediaServer/media",
+                        "Source": "media",
+                        "Type": "volume"
                     }
+                ],
+                "PortBindings": {
+                    "554/tcp": [
+                        {
+                        "HostPort": "554"
+                        }
+                    ]
                 }
             }
-        ```
-    1. **[更新]** ボタンをクリックします。
-    1. **[確認と作成]** ボタンをクリックし、最後に **[作成]** ボタンをクリックしてモジュールを更新します。
+        }
+    ```  
+    d. **[更新]** を選択します。  
+    e. モジュールを更新するには、**[確認と作成]** を選択し、**[作成]** を選択します。
     
 ### <a name="verify-that-the-module-is-running"></a>モジュールが動作していることの検証
 
-最後の手順では、モジュールが接続され、想定どおりに実行されていることを確認します。 モジュールのランタイムの状態は、IoT Hub リソース内のお客様の IoT Edge デバイスに対して実行中である必要があります。
-
-モジュールが実行中であることを確認するには、以下を実行します。
+最後に、期待したとおりに IoT Edge デバイス モジュールが接続され、動作していることを確認します。 モジュールのランタイムの状態を確認するには、次の手順を実行します。
 
 1. Azure portal で、Azure Stack Edge リソースに戻ります。
-1. [モジュール] タイルを選択します。 これにより、[モジュール] ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、[実行中] になっているはずです。
+1. 左側のペインで **[モジュール]** を選択します。 
+1. **[モジュール]** ペインの **[名前]** リストで配置したモジュールを選択します。 **[ランタイムの状態]** 列のモジュールの状態は "*実行中*" になっているはずです。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-on-stack-edge/running-module.png" alt-text="カスタム モジュール" lightbox="./media/deploy-on-stack-edge/running-module.png":::
+    > :::image type="content" source="./media/deploy-on-stack-edge/running-module.png" alt-text="[モジュール] ペインのスクリーンショット。選択したモジュールのランタイムの状態が &quot;実行中&quot; と表示されています。" lightbox="./media/deploy-on-stack-edge/running-module.png":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Azure IoT Tools 拡張機能を構成する
 
-Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、次の手順に従います。
+Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、次の手順を実行します。
 
-1. Visual Studio Code で [表示]、[エクスプローラー] の順に選択します。 または、Ctrl + Shift + E キーを押します。
-1. [エクスプローラー] タブの左下隅で、 [Azure IoT Hub] を選択します。
-1. [その他のオプション] アイコンを選択して、コンテキスト メニューを表示します。 次に、 [Set IoT Hub Connection String]\(IoT Hub 接続文字列を設定する\) を選択します。
-1. 入力ボックスが表示されたら、IoT Hub 接続文字列を入力します。 
+1. Visual Studio Code で、 **[表示]**  >  **[エクスプローラー]** を選択します。
+1. **[エクスプローラー]** ペインの左下にある **[Azure IoT Hub]** を選択します。
+1. **[その他のオプション]** アイコンを選択してコンテキスト メニューを表示し、**[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\)** を選択します。
 
-   * 接続文字列を取得するには、Azure portal で自分の IoT ハブに移動し、左側のナビゲーション ペインで共有アクセス ポリシーをクリックします。
-   * iothubowner をクリックし、共有アクセス キーを取得します。
-   * [接続文字列] のプライマリ キーをコピーし、それを VS Code の入力ボックスに貼り付けます。
+   入力ボックスが表示されたら、IoT Hub の接続文字列を入力します。 接続文字列を取得するには、次の手順を実行します。 
 
-   接続文字列は次のようになります。<br/>`HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx`
+   a. Azure portal で IoT Hub に移動します。  
+   b. 左側のペインで、 **[共有アクセス ポリシー]** を選択します。  
+   c. **iothubowner を選択し、共有アクセス キーを取得します**。  
+   d. 接続文字列のプライマリ キーをコピーし、それを入力ボックスに貼り付けます。
+
+   > [!NOTE]
+   > 接続文字列は次の形式で出力されます。
+   >
+   > `HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx`
     
-   接続に成功した場合、エッジ デバイスの一覧が表示されます。 自分の Azure Stack Edge が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、Azure Stack デバイスの [モジュール] ノードを展開します。
+   接続が成功すると、Azure Stack Edge デバイスを含むエッジ デバイスの一覧が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT ハブを操作できるようになりました。 
+   
+   エッジ デバイスに配置されたモジュールを表示するには、Azure Stack デバイスの **[モジュール]** ノードを展開します。
     
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * **Kubernetes API アクセス (kubectl)**
 
-    * ドキュメントに従って、[Kubernetes クラスターにアクセス](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md)できるように自分のマシンを構成します。
-    * デプロイしたすべての IoT Edge モジュールでは、`iotedge` 名前空間が使用されます。 kubectl の使用時にそれを含めるようにしてください。  
+    * [Azure Stack Edge Pro GPU デバイス上での Kubernetes クラスターの接続と管理](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事の手順を実行して、Kubernetes クラスターにアクセスできるようにマシンを構成します。
+    * 配置されたすべての IoT Edge モジュールには *iotedge* 名前空間が使用されます。 kubectl を使用するときには、必ずその名前を含めてください。 
+
 * **モジュール ログ**
 
-    `iotedge` ツールは、ログを取得するためにアクセスすることができません。 ログを表示したり、ファイルにパイプしたりするには、[kubectl logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) を使用する必要があります。 例: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+    *iotedge* ツールでログを取得できない場合は、[kubectl logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) を使用してログを表示するか、ファイルにパイプします。 次に例を示します。 <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
 * **ポッドとノードのメトリック**
 
-    ポッドとノードのメトリックを確認するには、[kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top) を使用します。
-    <br/>`kubectl top pods -n iotedge` 
+    ポッドとノードのメトリックを表示するには、[kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top) を使用します。 例:   <br/>`kubectl top pods -n iotedge` 
+
 * **モジュールのネットワーク**   
 
-    Azure Stack Edge でモジュールを検出するには、モジュールに createOptions のホスト ポート バインドがなければなりません。 このモジュールは、`moduleName:hostport` を介してアドレス指定できるようになります。
+    Azure Stack Edge 上のモジュールを検出するには、モジュールに createOptions のホスト ポート バインドを設定する必要があります。 このモジュールは、`moduleName:hostport` を介してアドレス指定できるようになります。
     
     ```json
     "createOptions": {
@@ -381,10 +403,12 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 * **ボリュームのマウント**
 
     空でない既存のディレクトリに対してコンテナーがボリュームのマウントを試行している場合、モジュールの起動は失敗します。
-* **gRPC を使用する際の共有メモリ**
 
-    Azure Stack Edge リソース上の共有メモリは、ホスト IPC を使用して、任意の名前空間のポッド全体でサポートされます。
-    IoT Hub を介してデプロイを行うために、エッジ モジュール上の共有メモリを構成します。
+* **gRPC を使用する場合の共有メモリ**
+
+    ホスト IPC を使用する場合、Azure Stack Edge リソース上の共有メモリは任意の名前空間のポッド全体でサポートされます。
+    
+    IoT Hub 経由で配置する Edge モジュールに共有メモリを構成するには、次のコードを使用します。
     
     ```
     ...
@@ -394,8 +418,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
         }
     ...
         
-    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
-    spec:
+    //(Advanced) Configuring shared memory on a Kubernetes pod or deployment manifest for deployment via the Kubernetes API spec:
         ...
         template:
         spec:
@@ -404,14 +427,15 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
     ```
 * **(高度) ポッドのコロケーション**
 
-    K8s を使用し、gRPC 経由で Video Analyzer と通信するカスタム推論ソリューションをデプロイしている場合は、必ず Video Analyzer モジュールと同じノードにポッドがデプロイされている必要があります。
+    Kubernetes を使用し、gRPC 経由で Video Analyzer と通信するカスタム推論ソリューションを配置している場合は、必ず Video Analyzer モジュールと同じノードにポッドを配置します。
 
-    * **オプション 1** - コロケーションにノード アフィニティと組み込みノード ラベルを使用する。
+    * **オプション 1** - コロケーションに "*ノード アフィニティ*" と組み込みノード ラベルを使用する。  
 
-    ノードにラベルを設定するためのアクセス権をユーザーが持っていないため、現在は NodeSelector カスタム構成を利用できないように思えるかもしれません。 しかし、お客様のトポロジと名前付け規則によっては、[組み込みノード ラベル](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels)を使用できる場合もあります。 Azure Stack Edge リソースと Video Analyzer を参照する nodeAffinity セクションは、コロケーションを実現するために推論ポッド マニフェストに追加できます。
-    * **オプション 2** - コロケーションにポッド アフィニティを使用する (推奨)。
+    ノードにラベルを設定するためのアクセス権をユーザーが持っていないため、現在は NodeSelector カスタム構成を利用できないように思えるかもしれません。 しかし、ユーザーのトポロジと名前付け規則によっては、[組み込みノード ラベル](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels)を使用できる場合もあります。 コロケーションを実現するには、Video Analyzer を使用して Azure Stack Edge リソースを参照する nodeAffinity セクションを推論ポッド マニフェストに追加します。
+    
+    * **オプション 2** - (推奨) コロケーションに "*ポッド アフィニティ*" を使用する。  
 
-        Kubernetes では、同じノードでポッドをスケジュールできる[ポッド アフィニティ](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)がサポートされています。 コロケーションを実現するために、Video Analyzer モジュールを参照する podAffinity セクションを推論ポッド マニフェストに追加できます。
+        Kubernetes は、同じノードでポッドをスケジュールできる[ポッド アフィニティ](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)をサポートしています。 コロケーションを実現するには、Video Analyzer モジュールを参照する podAffinity セクションを推論ポッド マニフェストに追加します。
 
          ```json   
         // Example Video Analyzer module deployment match labels
@@ -420,7 +444,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
             net.azure-devices.edge.deviceid: dev-ase-1-edge
             net.azure-devices.edge.module: mediaedge
         
-        // Example Inference deployment manifest pod affinity
+        // Example inference deployment manifest pod affinity
         spec:
           affinity:
             podAntiAffinity:
@@ -433,11 +457,13 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
                     - mediaedge
                 topologyKey: "kubernetes.io/hostname"
         ```
-* **`rtspsim` モジュールの使用中に発生する 404 エラー コード**  
+
+* ***rtspsim* モジュールを使用すると 404 エラー コードを受け取る**  
     
-    このコンテナーは、そこに含まれる 1 つのフォルダーからのみビデオを読み取ります。 コンテナー イメージ内の既存のフォルダーに外部のフォルダーをマッピング (バインド) した場合、そのコンテナー イメージに存在するファイルが、Docker によって非表示にされます。  
+    このコンテナーにより、コンテナー内の 1 つのフォルダーからのみビデオが読み取られます。 コンテナー イメージ内の既存のフォルダーに外部のフォルダーをマップまたはバインドした場合、そのコンテナー イメージに存在するファイルが、Docker によって非表示にされます。
  
     たとえば、バインディングがない状態で、コンテナーに次のファイルが存在するとします。  
+
     ```
     root@rtspsim# ls /live/mediaServer/media  
     /live/mediaServer/media/camera-300s.mkv  
@@ -445,6 +471,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
     ```
      
     また、ホストには次のファイルが存在するとします。
+
     ```    
     C:\MyTestVideos> dir
     Test1.mkv
@@ -452,6 +479,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
     ```
      
     ところが、次のバインディングを配置マニフェスト ファイルに追加すると、/live/mediaServer/media の内容が、ホスト側と一致するように Docker によって上書きされます。
+
     `C:\MyTestVideos:/live/mediaServer/media`
     
     ```

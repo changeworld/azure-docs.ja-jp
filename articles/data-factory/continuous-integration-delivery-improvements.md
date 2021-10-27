@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: 921db5e082748ce814a19c96c5de4ac3061750e2
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/14/2021
+ms.openlocfilehash: 3c14373567bf0860f59b44cd7f6042ad9aeb1adb
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219294"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066967"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>継続的インテグレーションおよびデリバリーの自動発行
 
@@ -69,6 +69,9 @@ Azure Data Factory では、継続的インテグレーションと継続的デ�
 
 > [!NOTE]
 > 引き続き既存のメカニズム (`adf_publish` ブランチ) を使用することも、新しいフローを使用することもできます。 両方ともサポートされています。
+
+> [!WARNING]
+> 自動発行を使用する場合、グローバル パラメーターの **[ARM テンプレートに含める]** 構成はサポートされていないため、ARM テンプレートのデプロイ後に、ファクトリの Git 構成が削除されます。 代わりに、[PowerShell スクリプトによる方法](author-global-parameters.md#cicd)を使用して、Azure パイプラインにグローバル パラメーターをデプロイします。
 
 ## <a name="package-overview"></a>パッケージの概要
 

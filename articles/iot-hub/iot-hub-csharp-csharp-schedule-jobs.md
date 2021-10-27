@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: b5c068f9c6810551a768b801b065cf526e0565ff
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3ff7e7fb2ae1249bc3b5c21f7d7b194344c428a5
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737733"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178381"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>ジョブのスケジュールとブロードキャスト (.NET)
 
@@ -308,6 +308,6 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
-* ファームウェアのリモートでのワイヤレス更新など、IoT Hub とデバイス管理パターンの作業を続けるには、[ファームウェア更新の実行方法に関するチュートリアル](tutorial-firmware-update.md)を参照してください。
+* エンドツーエンドのイメージベースの更新など、IoT Hub とデバイス管理パターンの使用開始を続けるには、「[Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル](../iot-hub-device-update/device-update-raspberry-pi.md)」を参照してください。
 
 * Azure IoT Edge を使用したエッジ デバイスへの AI のデプロイについては、[IoT Edge の使用](../iot-edge/quickstart-linux.md)に関するページを参照してください。

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/19/2021
-ms.openlocfilehash: efb6431805d6f1e648ffad2e30087d7ab8f77d78
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/15/2021
+ms.openlocfilehash: 9a53eba2b46333f3be08432ce69b22cfb3d9ef9c
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437470"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073527"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -74,3 +74,7 @@ Azure Cognitive Search のチームでは、原則として必要な場合にの
 |-------------|--------|------------------------------|
 | [Python azure-search-documents 11.0](https://pypi.org/project/azure-search-documents/) | Stable | 2020 年 7 月にリリースされた、Azure Python SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
 | [Python azure-mgmt-search 8.0](https://pypi.org/project/azure-mgmt-search/) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
+
+## <a name="all-azure-sdks"></a>すべての Azure SDK
+
+ベータ版のクライアント ライブラリとドキュメントをお探しの場合、[このページ](https://azure.github.io/azure-sdk/releases/latest/index.html)に、すべての Azure SDK ライブラリ パッケージ、コード、ドキュメントへのリンクが含まれています。 

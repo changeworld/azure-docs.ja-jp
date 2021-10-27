@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: cbe511388755e31a2d295a4cf8ed58e78c9afdc2
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 2c3dac941e766ae2d3889b3800e0b6864df16ebc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079525"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047910"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -192,6 +192,14 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 [Azure ゾーン固定 VM](../virtual-machines/windows/create-portal-availability-zone.md) は、同じリージョンの任意の[可用性ゾーン](../availability-zones/az-overview.md)で復元できます。
 
 復元プロセスでは、 **[可用性ゾーン]** オプションが表示されます。 既定のゾーンが最初に表示されます。 別のゾーンを選択するには、任意のゾーンの番号を選択します。 固定ゾーンが使用できない場合は、バックアップ データがゾーン的にレプリケートされないため、別のゾーンにデータを復元することはできません。 可用性ゾーンでは、コンテナー階層の復旧ポイントからの復元のみが可能です。
+
+要約すると、**可用性ゾーン** は次の場合にのみ表示されます。
+ - ソース VM がゾーン固定であり、暗号化されていない
+ - 復旧ポイントがコンテナー層にのみ存在する (スナップショットのみ、またはスナップショット層とコンテナー層はサポートされていません)
+ - 回復オプションが、新しい VM の作成またはディスクの復元のいずれかである (ディスクの置き換えオプションではソース データが置き換えられるので、可用性ゾーン オプションは適用できません)
+ - コンテナーのストレージ冗長性が ZRS の場合の、同じリージョンでの VM またはディスクの作成 (ソース VM がゾーン固定であっても、コンテナーのストレージ冗長性が GRS の場合は機能しません)
+ - コンテナーのストレージ冗長性がリージョン間の復元に対して有効である、かつペアになっているリージョンでゾーンがサポートされている場合の、ペア リージョンでの VM またはディスクの作成
+
 
 ![可用性ゾーンを選択する](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 

@@ -3,12 +3,12 @@ title: Azure Service Bus の認証と承認 | Microsoft Docs
 description: Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。
 ms.topic: article
 ms.date: 09/15/2021
-ms.openlocfilehash: 74ad1674bc09f1514264f4b7f1521526f8da2fd5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b1cc20df861f657ed9fff4704862e9ee36965a2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597153"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002076"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 Azure Service Bus リソースへのアクセスを認証して承認する方法は 2 つあります。Azure Activity Directory (Azure AD) と Shared Access Signature (SAS) です。 この記事では、この 2 種類のセキュリティ メカニズムの使用について詳しく説明します。 

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f988fafbdd381c88a3f8da60fb48fa3320a82876
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9025b32aa2ea6fd8fefa91d89b608c0e5d26b45e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674454"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992907"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Azure Virtual Desktop とは
 
@@ -99,7 +99,7 @@ Azure Virtual Desktop には、お客様がユーザーに配信する Windows �
 
 * クライアントのネットワークからホスト プールをデプロイした Azure リージョンまでのラウンドトリップ (RTT) 待ち時間は、150 ミリ秒を下回っている必要があります。 [エクスペリエンス予測ツール](https://azure.microsoft.com/services/virtual-desktop/assessment)を使用して、接続の正常性と推奨される Azure リージョンを表示します。
 * デスクトップとアプリをホストしている VM が管理サービスに接続する際には、ネットワーク トラフィックが国/リージョン外に流れることがあります。
-* ネットワークのパフォーマンスを最適化するために、セッション ホストの VM を管理サービスと同じ Azure リージョンに配置することをお勧めします。
+* ネットワークのパフォーマンスを最適化するために、セッション ホストの VM をユーザーに最も近い Azure リージョンに配置することをお勧めします。
 
 エンタープライズ向け Azure Virtual Desktop の標準的なアーキテクチャのセットアップについては、[アーキテクチャのドキュメント](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)で確認できます。
 

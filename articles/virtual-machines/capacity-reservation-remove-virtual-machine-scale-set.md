@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 03b89b1b8c0221795f58ff28addd4fdeaad5053e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: cc3b433b0ae36076a0442c8dc91e502020bdfd04
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532578"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063642"
 ---
 # <a name="remove-a-virtual-machine-scale-set-association-from-a-capacity-reservation-group"></a>容量予約グループから仮想マシン スケール セットの関連付けを削除する 
 
@@ -64,6 +64,27 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
     }
     }
     ```
+
+### <a name="cli"></a>[CLI](#tab/cli1)
+
+1. 仮想マシン スケール セットの割り当てを解除します。 次のように設定すると、スケール セット内のすべての仮想マシンの割り当てが解除されます。 
+
+    ```azurecli-interactive
+    az vmss deallocate
+    --location eastus
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    ```
+
+1. スケール セットを更新して、容量予約グループとの関連付けを削除します。 `capacity-reservation-group` プロパティを None に設定すると、スケール セットと容量予約グループの関連付けは削除されます。 
+
+    ```azurecli-interactive
+    az vmss update 
+    --resource-group myresourcegroup 
+    --name myVMSS 
+    --capacity-reservation-group None
+    ```
+
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -146,6 +167,27 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
         }
     }
     }
+    ```
+
+### <a name="cli"></a>[CLI](#tab/cli2)
+
+1. 予約数量をゼロに更新します。
+
+    ```azurecli-interactive
+    az capacity reservation update 
+    -g myResourceGroup 
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    --capacity 0
+    ```
+
+2. `capacity-reservation-group` プロパティを None に設定することで、スケール セットを更新して容量予約グループとの関連付けを削除します。 
+
+    ```azurecli-interactive
+    az vmss update 
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    --capacity-reservation-group None
     ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)

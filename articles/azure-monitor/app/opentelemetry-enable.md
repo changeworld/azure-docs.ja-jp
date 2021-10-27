@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: eb20d283e092be8b5932d1427f7e7064afa9c654
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 8f8daa67c22f8a505014ff326ca3961fa86f21f5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859584"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160821"
 ---
 # <a name="enable-azure-monitor-opentelemetry-exporter-for-net-nodejs-and-python-applications-preview"></a>.NET、Node.js、Python アプリケーション用の Azure Monitor OpenTelemetry エクスポーターを有効にする (プレビュー)
 
@@ -317,6 +317,9 @@ with tracer.start_as_current_span("hello"):
 
 > [!IMPORTANT]
 > 同じ Application Insights リソースに 2 つ以上のサービスがテレメトリを出力している場合は、それらをアプリケーション マップで正しく表すために、[クラウド ロール名を設定する](#set-cloud-role-name-and-cloud-role-instance)必要があります。
+
+> [!NOTE]
+> Application Insights インストルメンテーションの使用時に、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 ## <a name="set-cloud-role-name-and-cloud-role-instance"></a>クラウド ロール名とクラウド ロール インスタンスを設定する
 

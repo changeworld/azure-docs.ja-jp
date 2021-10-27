@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: fa1ea33e2e7987daa79267fb197981931ce1c2fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 46b5503e6c2c99c2c99f5cd18dc695ecb16275d1
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606268"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166842"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較
 
@@ -38,9 +38,9 @@ Azure Logic Apps を初めて使用する場合は、次のドキュメントを
 
 ## <a name="logic-app-standard-resource"></a>ロジック アプリ (Standard) リソース
 
-**ロジック アプリ (Standard)** のリソースの種類では、再設計されたシングルテナント Azure Logic Apps ランタイムが使用されています。 このランタイムには [Azure Functions 機能拡張モデル](../azure-functions/functions-bindings-register.md)が使用されており、Azure Functions ランタイムの拡張機能としてホストされます。 この設計により、ロジック アプリ ワークフローの移植性、柔軟性、パフォーマンス向上に加え、Azure Functions プラットフォームと Azure App Service エコシステムから継承されたその他の機能と利点が提供されます。
+**ロジック アプリ (Standard)** のリソースの種類では、再設計されたシングルテナント Azure Logic Apps ランタイムが使用されています。 このランタイムには [Azure Functions 機能拡張モデル](../azure-functions/functions-bindings-register.md)が使用されており、Azure Functions ランタイムの拡張機能としてホストされます。 この設計により、ロジック アプリ ワークフローの移植性、柔軟性、パフォーマンス向上に加え、Azure Functions プラットフォームと Azure App Service エコシステムから継承されたその他の機能と利点が提供されます。 たとえば、[Azure App Service Environment v3](../app-service/environment/overview.md) では、シングルテナント ベースのロジック アプリとそのワークフローを作成、デプロイ、および実行することができます。
 
-たとえば、Azure Functions アプリとその関数を実行できる場所であればどこでも、シングルテナント ベースのロジック アプリとそのワークフローを実行できます。 Azure Functions アプリで複数の関数をホストできるのと同様に、Standard のリソースの種類では、複数のワークフローをホストできるリソース構造が導入されています。 1 対多のマッピングでは、同じロジック アプリとテナント内のワークフローによってコンピューティングと処理リソースが共有され、その近接性によってパフォーマンスが向上します。 この構造は、ロジック アプリのリソースとワークフローの間に 1 対 1 のマッピングがある **ロジック アプリ (従量課金)** のリソースとは異なります。
+Azure Functions アプリで複数の関数をホストできるのと同様に、Standard のリソースの種類では、複数のワークフローをホストできるリソース構造が導入されています。 1 対多のマッピングでは、同じロジック アプリとテナント内のワークフローによってコンピューティングと処理リソースが共有され、その近接性によってパフォーマンスが向上します。 この構造は、ロジック アプリのリソースとワークフローの間に 1 対 1 のマッピングがある **ロジック アプリ (従量課金)** のリソースとは異なります。
 
 移植性、柔軟性、およびパフォーマンス向上の詳細については、引き続き次のセクションを参照してください。 または、シングルテナントの Azure Logic Apps ランタイムと Azure Functions の拡張性の詳細について、次のドキュメントを参照してください。
 
@@ -53,9 +53,7 @@ Azure Logic Apps を初めて使用する場合は、次のドキュメントを
 
 ### <a name="portability-and-flexibility"></a>移植性と柔軟性
 
-**ロジック アプリ (Standard)** のリソースの種類を使用してロジック アプリを作成する場合は、シングルテナント サービス環境だけでなく、Azure 関数アプリとその関数を実行できる場所であればどこでもワークフローを実行できます。
-
-たとえば、Visual Studio Code を **Azure Logic Apps (Standard)** 拡張機能と共に使用すると、Azure にデプロイせずに、開発環境で "*ローカルに*" ワークフローを開発、ビルド、および実行できます。 シナリオでコンテナーが必要な場合は、[Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリを作成します](azure-arc-enabled-logic-apps-create-deploy-workflows.md)。 詳細については、「[Azure Arc 対応 Logic Apps とは](azure-arc-enabled-logic-apps-overview.md)」をご覧ください。
+**Logic App (Standard)** リソースの種類を使用してロジック アプリを作成すると、[Azure App Service Environment v3](../app-service/environment/overview.md) などの他の環境でワークフローをデプロイおよび実行できます。 Visual Studio Code を **Azure Logic Apps (Standard)** 拡張機能と共に使用する場合、Azure にデプロイせずに、開発環境で "*ローカルに*" ワークフローを開発、ビルド、および実行できます。 シナリオでコンテナーが必要な場合は、[Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリを作成します](azure-arc-enabled-logic-apps-create-deploy-workflows.md)。 詳細については、「[Azure Arc 対応 Logic Apps とは](azure-arc-enabled-logic-apps-overview.md)」をご覧ください。
 
 Azure 内で実行されている既存のりソースに対して開発を行う必要があるマルチテナント モデルと比較すると、これらの機能によって大幅な改善と大きなメリットを得ることができます。 また、**ロジック アプリ (従量課金)** のリソースのデプロイを自動化するためのマルチテナント モデルは、アプリとインフラストラクチャの両方のリソース プロビジョニングを結合して処理する Azure Resource Manager テンプレート (ARM テンプレート) に完全に基づいています。
 
@@ -74,6 +72,12 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 **ロジック アプリ (Standard)** のリソースの種類とシングルテナント Azure Logic Apps ランタイムでは、より一般的なマネージド コネクタを組み込み操作として使用できるようにすることで、もう 1 つの大幅な改善が提供されます。 たとえば、Azure Service Bus、Azure Event Hubs、SQL などに対して組み込み操作を使用できます。 一方、マネージド コネクタのバージョンは現在も利用でき、引き続き機能します。
 
 新しい組み込み操作を使用する場合は、"*組み込み接続*" または "*サービス プロバイダー接続*" と呼ばれる接続を作成します。 それに対応するマネージド接続は "*API 接続*" と呼ばれます。これは、Azure リソースとして別個に作成されて実行され、ARM テンプレートを使用してデプロイする必要があります。 組み込み操作とその接続は、ワークフローを実行するのと同じプロセスでローカルに実行されます。 どちらも、シングルテナント Azure Logic Apps ランタイムでホストされます。 その結果、組み込み操作とその接続では、ワークフローとの近接性によってパフォーマンスが向上します。 サービス プロバイダーの接続が同じビルド成果物にパッケージされるため、この設計はデプロイ パイプラインでも適切に機能します。
+
+<a name="data-residency"></a>
+
+### <a name="data-residency"></a>データの保存場所
+
+**Logic App (Standard)** リソースの種類を使用して作成されたロジック アプリ リソースは、シングルテナントの Azure Logic Apps でホストされます。ここでは、[これらのロジック アプリ リソースをデプロイしたリージョン以外へのデータの格納、処理、レプリケートは行われません](https://azure.microsoft.com/global-infrastructure/data-residency)。つまり、ロジック アプリ ワークフローのデータは、その親リソースを作成してデプロイしたのと同じリージョン内に留まります。
 
 ## <a name="create-build-and-deploy-options"></a>作成、ビルド、およびデプロイのオプション
 
@@ -121,7 +125,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
   前のイベントのデータを保持、確認、または参照する必要がある場合は、ステートフル ワークフローを作成します。 これらのワークフローでは、各アクションとその状態のすべての入出力が外部ストレージに転送されて保存されます。これにより、各実行が完了した後にその実行の詳細と履歴を確認できます。 ステートフル ワークフローでは、サービス停止が発生した場合に高い回復性を実現できます。 サービスとシステムが復元された後に、中断された実行を保存済みの状態から再構築し、ワークフローを再実行して完了することができます。 ステートフル ワークフローは、ステートレス ワークフローよりもはるかに長い間実行を継続できます。
 
-  既定では、マルチテナントとシングルテナントの両方の Azure Logic Apps のステートフル ワークフローが非同期に実行されます。 HTTP ベースのすべてのアクションは、標準的な[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答を返すまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URI およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
+  既定では、マルチテナントとシングルテナントの両方の Azure Logic Apps のステートフル ワークフローが非同期に実行されます。 HTTP ベースのすべてのアクションは、標準的な[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答が返されるまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URI およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
 
 * *ステートレス*
 
@@ -198,7 +202,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
   * Azure Logic Apps によって、ロジック アプリでクラウド接続ランタイム エンドポイントに要求を送信するために使用できる Shared Access Signature (SAS) 接続文字列が生成されるため、**ロジック アプリ (Standard)** リソースはどこでも実行できます。 Azure Logic Apps サービスによって、これらの接続文字列が他のアプリケーション設定とともに保存されるため、Azure にデプロイするときにこれらの値を Azure Key Vault に簡単に格納できます。
 
     > [!NOTE]
-    > 既定では、**ロジック アプリ (Standard)** のリソースの種類には、実行時に接続を認証するために自動的に有効にされる[システム割り当てマネージド ID](create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。 この設定を表示するには、ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
+    > 既定では、**ロジック アプリ (Standard)** のリソースの種類には、実行時に接続を認証するために自動的に有効にされる [システム割り当てマネージド ID](create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。 この設定を表示するには、ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
     >
     > 現在、ユーザー割り当てマネージド ID は **ロジック アプリ (Standard)** のリソースの種類では使用できません。
 

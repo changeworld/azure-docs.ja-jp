@@ -3,20 +3,20 @@ title: Twilio Verify App と Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: Azure AD B2C のサンプル オンライン決済アプリを Twilio Verify API と統合する方法について説明します。 動的リンクと強力な顧客認証によって、PSD2 (Payment Services Directive 2) のトランザクション要件に準拠することができます。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 6937318e3d2e8d1a42279242a0d8b476cdab892f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 10fc0f015d67d6b0ab8b728156e161c91d1ffc8c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606686"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035830"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio Verify App と Azure Active Directory B2C の統合
 

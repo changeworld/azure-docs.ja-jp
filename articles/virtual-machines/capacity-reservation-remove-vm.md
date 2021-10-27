@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 0ac1f38d65542ac6c8a892a6469cd8c9301dd463
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f0c84e4b44218aa4f7659376251d1931ffc9516b
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532596"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063623"
 ---
 # <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>容量予約グループから VM の関連付けを削除する (プレビュー)
 
@@ -73,6 +73,27 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
 1. **[構成]** を選択します。
 1. **[Capacity Reservation Group]\(容量予約グループ\)** の値を *[なし]* に設定します。
     - これで VM と容量予約グループの関連付けがなくなります。 
+
+### <a name="cli"></a>[CLI](#tab/cli1)
+
+1. 仮想マシンの割り当てを解除する
+
+    ```azurecli-interactive
+    az vm deallocate 
+    -g myResourceGroup 
+    -n myVM
+    ```
+
+    状態が **[停止済み (割り当て解除)]** に変わると、仮想マシンの割り当てが解除されます。
+
+1. `capacity-reservation-group` プロパティを None に設定することで、VM を更新して容量予約グループとの関連付けを削除します。
+
+    ```azurecli-interactive
+    az vm update 
+    -g myresourcegroup 
+    -n myVM 
+    --capacity-reservation-group None
+    ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -168,6 +189,28 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
 1. 対象の仮想マシンに移動して、 **[構成]** を選択します。
 1. **[Capacity Reservation Group]\(容量予約グループ\)** の値を *[なし]* に設定します。
     - これで VM と容量予約グループの関連付けがなくなることに注目してください。
+
+### <a name="cli"></a>[CLI](#tab/cli2)
+
+1. 予約数量をゼロに更新する
+
+   ```azurecli-interactive
+   az capacity reservation update 
+   -g myResourceGroup
+   -c myCapacityReservationGroup 
+   -n myCapacityReservation 
+   --capacity 0
+   ```
+
+1. `capacity-reservation-group` プロパティを None に設定することで、VM を更新して容量予約グループとの関連付けを削除します。
+
+    ```azurecli-interactive
+    az vm update 
+    -g myresourcegroup 
+    -n myVM 
+    --capacity-reservation-group None
+    ```
+
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 

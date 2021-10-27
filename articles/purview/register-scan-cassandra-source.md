@@ -1,26 +1,26 @@
 ---
-title: Cassandra をソースとして登録してスキャンを設定する
-description: この記事では、Azure Purview に Cassandra サーバーを登録し、スキャンを設定する方法について、概要を説明します。
+title: Cassandra ソースの登録とスキャン
+description: この記事では、Azure Purview に Cassandra サーバーを登録し、スキャンを設定してメタデータを抽出する方法について説明します。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: overview
 ms.date: 09/27/2021
-ms.openlocfilehash: dcc0ef65654d8100a1c96cdb0c84a6ac758587a2
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5f8feffebff71c25f2a0d62d775894e7c4431615
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212735"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005318"
 ---
 # <a name="register-and-scan-a-cassandra-source-preview"></a>Cassandra ソースの登録とスキャン (プレビュー)
 
-この記事では、Azure Purview に Cassandra サーバーを登録し、スキャンを設定する方法について、概要を説明します。
+この記事では、Azure Purview に Cassandra サーバーを登録し、スキャンを設定する方法について説明します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Cassandra ソースではフル スキャンがサポートされており、Cassandra サーバーからメタデータを抽出し、データ資産間の系列をフェッチできます。
+Purview を使用すると、Cassandra でフル スキャンを実行して、データ資産間のメタデータと系列を抽出できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,71 +29,77 @@ Cassandra ソースではフル スキャンがサポートされており、Cas
 
 2.  セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 
-3.  セルフホステッド統合ランタイム コンピューターに \"Visual C++ 再頒布可能パッケージ 2012 Update 4\" がインストールされていることを確認します。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=30679)からダウンロードしてください。
+3.  セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムをインストールしていない場合は、[こちらから](https://www.microsoft.com/download/details.aspx?id=30679)ダウンロードします。
 
-4.  サポートされている Cassandra サーバーのバージョンは 3.x から 4.x です
+4.  お使いの Cassandra サーバーがバージョン 3.*x* または 4.*x* であることを確認します。
 
 ## <a name="register-a-cassandra-server"></a>Cassandra サーバーを登録する
 
-新しい Cassandra サーバーをデータ カタログに登録するには、次のようにします。
+新しい Cassandra サーバーをデータ カタログに登録するには:
 
 1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[Data Map]** を選択します。
+2.  左側のペインで **[Data Map]** を選択します。
 3.  **[登録]** を選択します。
-4.  [ソースの登録] で、 **[Cassandra]** を選択します。 **[続行]** を選択します。
-    :::image type="content" source="media/register-scan-cassandra-source/register-sources.png" alt-text="Cassandra ソースの登録" border="true":::
+4.  **[ソースの登録]** 画面で **[Cassandra]** を選択し、 **[続行]** を選択します。
+
+    :::image type="content" source="media/register-scan-cassandra-source/register-sources.png" alt-text="[ソースの登録] 画面を示すスクリーンショット。" border="true":::
    
-[ソースの登録 (Cassandra)] 画面で、次の手順を実行します。
+1. **[ソースの登録 (Cassandra)]** 画面で:
 
-1. データ ソースがカタログに一覧表示されるときの **名前** を入力します。
+   1. **[名前]** を入力します。 データ ソースでは、この名前がカタログで使用されます。
 
-2. Cassandra サーバーが実行中のサーバー アドレスを **[ホスト]** フィールドに入力します。 例: 20.190.193.10
+   2. **[ホスト]** ボックスに、Cassandra サーバーが実行されているサーバー アドレスを入力します。 例: 20.190.193.10。
 
-3. Cassandra サーバーによって使用されるポートを **[ポート]** フィールドに入力します。
-4. コレクションを選択するか、新しいものを作成します (省略可能)
+   3. **[ポート]** ボックスに、Cassandra サーバーで使用されるポートを入力します。
+   4. コレクションを選択するか新規作成します (省略可能)。
+    :::image type="content" source="media/register-scan-cassandra-source/configure-sources.png" alt-text="[ソースの登録 (Cassandra)] 画面を示すスクリーンショット。" border="true":::
+   5.  **[登録]** を選択します。
 
-5.  **[登録]** を選択します。
-    :::image type="content" source="media/register-scan-cassandra-source/configure-sources.png" alt-text="Cassandra ソースの構成" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="create-and-run-a-scan"></a>スキャンを作成して実行する
 
-新しいスキャンを作成して実行するには、次の操作を行います。
+新しいスキャンを作成して実行するには:
 
-1.  管理センターで、[統合ランタイム] を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、 **[統合ランタイム]** を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちらの手順を実行して、セルフホステッド統合ランタイムを設定します](./manage-integration-runtimes.md)。
+    
 
 2.  **[ソース]** に移動します。
 
-3.  登録されている **Cassandra** サーバーを選択します。
+3.  登録されている Cassandra サーバーを選択します。
 
-4.  **[+ 新しいスキャン]** を選択します。
+4.  **[新しいスキャン]** を選択します。
 
-5.  次の詳細を指定します。
+5.  以下の詳細を指定します。
 
-    a.  **[名前]** : スキャンの名前
+    a.  **[名前]** : スキャンの名前を指定します。
 
-    b.  **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します
+    b.  **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
 
-    c.  **[資格情報]** : Cassandra の資格情報を構成するときは、次のことを確認してください。
+    c.  **[資格情報]** : Cassandra の資格情報を構成する場合は、必ず次のことを行ってください。
 
-    - 認証方法として **[基本認証]** を選択します
-    - [ユーザー名] フィールドで、接続を行うユーザーのユーザー名を指定します。 
-    - キー コンテナーのシークレットに、接続を行う Cassandra ユーザーのパスワードを保存します
+    - 認証方法として **[基本認証]** を選択します。
+    - **[ユーザー名]** ボックスに、接続するユーザーの名前を指定します。 
+    - キー コンテナーのシークレットに、接続する Cassandra ユーザーのパスワードを保存します。
 
-    資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。
+    詳細については、[Purview でのソース認証用の資格情報](manage-credentials.md)に関するページを参照してください。
 
-    d.  **[Keyspaces]\(キースペース\)** : インポートする Cassandra キースペースの一覧を指定します。 複数のキースペースはセミコロンで区切る必要があります。 たとえば、keyspace1; keyspace2 のようになります。 一覧が空の場合は、使用可能なすべてのキースペースがインポートされます。
-    SQL LIKE 式の構文を使用したキースペース名のパターンとして、% の使用も許容されます。 
+    d.  **[Keyspaces]\(キースペース\)** : インポートする Cassandra キースペースの一覧を指定します。 複数のキースペースは、セミコロンで区切る必要があります。 たとえば、keyspace1; keyspace2 のようになります。 一覧が空の場合は、使用可能なすべてのキースペースがインポートされます。
+    
+    % を含む SQL LIKE 式構文を使用するキースペース名パターンを使用できます。 
 
     例: A%; %B; %C%; D
+
+    この式は、次を意味します。
     - A で始まる、または
     - B で終わる、または
-    - C を含む、または
+    - C が含まれている、または
     - D と等しい    
-NOT および特殊文字の使用は許容されません。
-    
-    f. **[Secure Sockets Layer (SSL) を使用する]** : Cassandra サーバーに接続するときに Secure Sockets Layer (SSL) を使用する必要があるかどうかを通知するために、[True] または [False] を選択します。 既定では、この値は Falseに設定されます。
 
-    g. **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする Cassandra サーバーのサイズによって異なります。
+    NOT または特殊文字は使用できません。
+    
+    e. **[Secure Sockets Layer (SSL) を使用する]** : Cassandra サーバーに接続するときに Secure Sockets Layer (SSL) を使用するかどうかを指定するには、**True** または **False** を選択します。 既定では、このオプションは **False** に設定されています。
+
+    f. **[Maximum memory available]\(使用可能な最大メモリ\)** : スキャン プロセスで使用される、お使いの VM で使用可能な最大メモリ (GB 単位) を指定します。 この値は、スキャンする Cassandra サーバーのサイズによって異なります。
         :::image type="content" source="media/register-scan-cassandra-source/scan.png" alt-text="Cassandra ソースのスキャン" border="true":::
 
 6.  **[接続テスト]** を選択します。
@@ -104,25 +110,32 @@ NOT および特殊文字の使用は許容されません。
 
 9.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
-## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
+## <a name="view-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を表示する
 
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択します。
+1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションで **[データ ソース]** を選択します。
 
-2. 目的のデータ ソースを選択します。 そのデータ ソースに対する既存のスキャンの一覧が表示されます。
+2. スキャンを表示するデータ ソースを選択します。 そのデータ ソースに対する既存のスキャンの一覧が表示されます。
 
 3. 結果を表示するスキャンを選択します。
 
-4. このページには、前回のすべてのスキャン実行と、各スキャン実行のメトリックと状態が表示されます。 また、そのスキャンがスケジュールされたスキャンと手動スキャンのどちらかであるか、分類が適用された資産の数、検出された資産の合計数、スキャンの開始時刻と終了時刻、スキャンの実行時間の合計も表示されます。
+   この結果のページには、以前のすべてのスキャン実行が、それぞれのメトリックとステータスとともに表示されます。 
+   また、次も示されます。 
+   - スキャンはスケジュールされたものか、または手動だったか。 
+   - 分類が適用された資産の数。 
+   - 検出された総資産の数。 
+   - スキャンの開始および終了時刻。
+   - スキャンの期間。
 
 ## <a name="manage-your-scans"></a>スキャンを管理する
 
-スキャンを管理または削除するには、次の操作を行います。
+スキャンを管理または削除するには:
 
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択し、目的のデータ ソースを選択します。
+1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションで **[データ ソース]** を選択します。 次に、スキャンを管理するデータ ソースを選択します。
 
-2. 管理するスキャンを選択します。 スキャンを編集するには、 **[編集]** を選択します。
+2. 管理するスキャンを選択します。 
+   - スキャンを編集するには、 **[編集]** を選択します。
 
-3. スキャンを削除するには、 **[削除]** を選択します。
+   - **[削除]** を選択することで、スキャンを削除できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,67 +1,72 @@
 ---
-title: 'チュートリアル: Azure Database for MySQL - フレキシブル サーバーの監査'
-description: 'チュートリアル: Azure Database for MySQL - フレキシブル サーバーの監査'
+title: 'チュートリアル: Azure Database for MySQL フレキシブル サーバーを使用して監査ログを構成する'
+description: このチュートリアルでは、Azure Database for MySQL フレキシブル サーバーを使用して監査ログを構成する方法を示します。
 author: SudheeshGH
 ms.author: sunaray
 ms.service: mysql
 ms.topic: tutorial
 ms.date: 10/01/2021
-ms.openlocfilehash: b4c8206071ce71cc29a9de45b46fa05c40f9cd91
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4a819814b8c5bb8cf6d4bea949463fddd05405a8
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129621259"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065865"
 ---
-# <a name="tutorial-auditing-for-azure-database-for-mysql--flexible-server"></a>チュートリアル: Azure Database for MySQL - フレキシブル サーバーの監査
+# <a name="tutorial-configure-audit-logs-by-using-azure-database-for-mysql-flexible-server"></a>チュートリアル: Azure Database for MySQL フレキシブル サーバーを使用して監査ログを構成する
+
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Azure Database for MySQL フレキシブル サーバーでは、ユーザーが監査ログを構成することができます。 監査ログは、接続、管理、DDL、DML の各イベントなど、データベースレベルのアクティビティを追跡するために使用できます。 これらの種類のログは、通常、コンプライアンスのために使用されます。 データベース監査は、通常、次のために使用されます。
-* 特定のスキーマ、テーブル、または行内で発生している、または特定のコンテンツに影響を与えるすべてのアクションの詳細を把握する
-* ユーザー (またはその他) の説明責任に基づいて、不適切な操作を行うのを防ぐ
-* 疑わしいアクティビティを調査する
-* 特定のデータベース アクティビティに関するデータの監視と収集
+Azure Database for MySQL フレキシブル サーバーを使用して監査ログを構成することができます。 監査ログは、接続、管理、データ定義言語 (DDL)、データ操作言語 (DML) のイベントなどのデータベースレベルのアクティビティを追跡するために使用できます。 これらの種類のログは、通常、コンプライアンスのために使用されます。 データベース監査は通常、次のために使用されます。
+* 特定のスキーマ、テーブル、または行で発生する、または特定のコンテンツに影響を与えるすべてのアクションについて説明する。
+* ユーザー (またはその他) の説明責任に基づいて、不適切な操作を行うのを防ぐ。
+* 疑わしいアクティビティを調査する。
+* 特定のデータベース アクティビティに関するデータを監視し収集する。
  
-このチュートリアルでは、MySQL 監査ログ、Log Analytics ツール、または Workbooks テンプレートを使用して、Azure Database for MySQL - フレキシブル サーバーの監査情報を視覚化する方法について説明します。 
-
-## <a name="prerequisites"></a>前提条件
-- Azure Database for MySQL – フレキシブル サーバーのインスタンスを作成する必要があります。 詳細な手順については、「[Azure Database for MySQL フレキシブル サーバーのインスタンスを作成する](./quickstart-create-server-portal.md)」を参照してください。
-- Log Analytics ワークスペースを作成する必要があります。 詳細な手順については、「[Log Analytics ワークスペースの作成](../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
+この記事では、MySQL 監査ログ、Log Analytics ツール、またはブック テンプレートを使用して Azure Database for MySQL フレキシブル サーバーの監査情報を視覚化する方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 >[!div class="checklist"]
-> * ポータルまたは Azure CLI 使用して監査を構成する
+> * Azure portal または Azure CLI を使用して監査を構成する
 > * 診断を設定する
 > * Log Analytics を使用して監査ログを表示する 
-> * ブックを使用して監査ログを表示する 
+> * ブックを使用して監査ログを表示する  
 
-## <a name="configure-auditing-from-portal"></a>ポータルから監査を構成する 
+## <a name="prerequisites"></a>前提条件
 
+- [Azure Database for MySQL フレキシブル サーバー インスタンスを作成します](./quickstart-create-server-portal.md)。
+- [Log Analytics ワークスペースを作成します](../../azure-monitor/logs/quick-create-workspace.md)。
+
+## <a name="configure-auditing-by-using-the-azure-portal"></a>Azure portal を使用して監査を構成する 
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. フレキシブル サーバーを選択します。
+1. フレキシブル サーバー インスタンスを選択します。
 
-1. サイドバーの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
-    :::image type="content" source="./media/tutorial-configure-audit/server-parameters.png" alt-text="サーバー パラメーター":::
+1. 左側のペインの **[設定]** の下で **[サーバー パラメーター]** を選択します。
 
-1. **audit_log_enabled** パラメーターを ON に更新します。
-    :::image type="content" source="./media/tutorial-configure-audit/audit-log-enabled.png" alt-text="監査ログの有効化":::
+    :::image type="content" source="./media/tutorial-configure-audit/server-parameters.png" alt-text="[サーバーパラメーター] の一覧を示すスクリーンショット。":::
 
-1. **audit_log_events** パラメーターを更新して、ログに記録する [イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
-    :::image type="content" source="./media/tutorial-configure-audit/audit-log-events.png" alt-text="監査ログのイベント":::
+1. **audit_log_enabled** パラメーターで、 **[ON]\(オン\)** を選択します。
 
-1. **audit_log_exclude_users** および **audit_log_include_users** パラメーターを更新して、ログに含めたりログから除外したりする MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
-    :::image type="content" source="./media/tutorial-configure-audit/audit-log-exclude-users.png" alt-text="監査ログの除外ユーザー":::
+    :::image type="content" source="./media/tutorial-configure-audit/audit-log-enabled.png" alt-text="[ON]\(オン\) に切り替えた 'audit_log_enabled' パラメーターを示すスクリーンショット。":::
 
-1. パラメーターを変更すると、 **[保存]** をクリックできます。 または変更を **[破棄]** することができます。
-    :::image type="content" source="./media/tutorial-configure-audit/save-parameters.png" alt-text="および":::
+1. **audit_log_events** パラメーターのドロップダウン リストで、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
+
+    :::image type="content" source="./media/tutorial-configure-audit/audit-log-events.png" alt-text="'audit_log_events' ドロップダウン リストのイベント オプションのスクリーンショット。":::
+
+1. **audit_log_exclude_users** および **audit_log_include_users** パラメーターについては、MySQL ユーザー名を入力することによって、ログに含めたりログから除外したりする MySQL ユーザーを指定します。
+
+    :::image type="content" source="./media/tutorial-configure-audit/audit-log-exclude-users.png" alt-text="ログに含めるかログから除外する MySQL ユーザー名を示すスクリーンショット。":::
+
+1. **[保存]** を選択します。
+
+    :::image type="content" source="./media/tutorial-configure-audit/save-parameters.png" alt-text="パラメーター値の変更を保存するための [保存] ボタンのスクリーンショット。":::
 
 
-
-## <a name="configure-auditing--from-azure-cli"></a>Azure CLI から監査を構成する
+## <a name="configure-auditing-by-using-the-azure-cli"></a>Azure CLI を使用して監査を構成する
  
-Azure CLI を使用して上記の手順を実行する場合は、CLI を使用してサーバーの監査を有効にし、構成することができます。 
+別の方法として、次のコマンドを実行して、Azure CLI からフレキシブル サーバーの監査を有効にして構成することもできます。 
 
 ```azurecli
 # Enable audit logs
@@ -75,66 +80,76 @@ az mysql flexible-server parameter set \
 
 ## <a name="set-up-diagnostics"></a>診断を設定する
 
-監査ログは Azure Monitor 診断設定と統合されており、ログを Azure Monitor ログ、Event Hubs、または Azure Storage にパイプすることができます。
+監査ログは Azure Monitor 診断設定と統合されているため、次の 3 つのデータ シンクにログをパイプすることができます。
+* Log Analytics ワークスペース
+* イベント ハブ
+* ストレージ アカウント
 
-1. サイドバーの **[監視]** セクションの下で、 **[診断設定]** を選択します。
+>[!Note]
+>診断設定を構成する前に、データ シンクを作成する必要があります。 構成したデータ シンクで監査ログにアクセスできます。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
-1. [+ 診断設定を追加する] をクリックします :::image type="content" source="./media/tutorial-configure-audit/add-diagnostic-setting.png" alt-text="診断設定を追加する":::
+1. 左側のウィンドウの **[モニター]** の下で、 **[診断設定]** を選択します。
 
-1. 診断設定の名前を指定します。
+1. **[診断設定]** ウィンドウで、 **[診断設定を追加する]** を選択します。
 
-1. 監査ログの送信先 (Log Analytics ワークスペース、ストレージ アカウント、イベント ハブ) を指定します。
+    :::image type="content" source="./media/tutorial-configure-audit/add-diagnostic-setting.png" alt-text="[診断設定] ウィンドウの [診断設定を追加する] リンクのスクリーンショット。":::
+
+1. **[名前]** ボックスに、診断設定の名前を入力します。
+
+    :::image type="content" source="./media/tutorial-configure-audit/configure-diagnostic-setting.png" alt-text="構成オプションを選択するための [診断設定] ウィンドウのスクリーンショット。":::
+
+1. 監査ログの送信先 (Log Analytics ワークスペース、イベント ハブ、またはストレージ アカウント) を指定するために、対応するチェックボックスをオンにします。
+
     >[!Note]
-    > このチュートリアルの範囲では、低速クエリ ログを Log Analytics ワークスペースに送信する必要があります。
+    > このチュートリアルでは、監査ログを Log Analytics ワークスペースに送信します。
     
-1. ログの種類として **MySqlAuditLogs** を選択します。
-    :::image type="content" source="./media/tutorial-configure-audit/configure-diagnostic-setting.png" alt-text="診断設定の構成":::
+1. **[ログ]** の [ログの種類] で、 **[MySqlAuditLogs]** のチェックボックスをオンにします。
 
-1. 監査ログをパイプするようにデータ シンクを設定したら、 **[保存]** をクリックすることができます。
-    :::image type="content" source="./media/tutorial-configure-audit/save-diagnostic-setting.png" alt-text="診断設定の保存":::
+1. 監査ログをパイプするようにデータ シンクを設定した後、 **[保存]** を選択します。
 
-    >[!Note]
-    >診断設定を構成する前に、データ シンク (Log Analytics ワークスペース、ストレージ アカウント、またはイベント ハブ) を作成する必要があります。 構成したデータ シンク (Log Analytics ワークスペース、ストレージ アカウント、またはイベント ハブ) で低速クエリ ログにアクセスできます。ログが表示されるまでに最大 10 分かかることがあります。
+    :::image type="content" source="./media/tutorial-configure-audit/save-diagnostic-setting.png" alt-text="[診断設定] ウィンドウの上部にある [保存] ボタンのスクリーンショット。":::
 
-## <a name="view-audit-logs-using-log-analytics"></a>Log Analytics を使用して監査ログを表示する 
+## <a name="view-audit-logs-by-using-log-analytics"></a>Log Analytics を使用して監査ログを表示する 
 
-**[監視]** セクションで、 **[ログ]** に移動します。 **[クエリ]** ウィンドウを閉じます。  
+1. Log Analytics の左側のペインの **[監視]** から **[ログ]** を選択します。
 
-:::image type="content" source="./media/tutorial-configure-audit/log-query.png" alt-text="Log Analytics のスクリーンショット":::
+1. **[クエリ]** ウィンドウを閉じます。  
 
-クエリ ウィンドウでは、実行するクエリを記述できます。  ここでは、クエリを使用して、特定のサーバーの監査イベントの集計を検索しました
+   :::image type="content" source="./media/tutorial-configure-audit/log-query.png" alt-text="Log Analytics の [クエリ] ウィンドウのスクリーンショット。":::
 
-```kusto
-AzureDiagnostics
-    |where Category =='MySqlAuditLogs' 
-    |project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s ,ip_s , sql_text_s 
-    |summarize count() by event_class_s,event_subclass_s 
-    |order by event_class_s 
-```
-  
-:::image type="content" source="./media/tutorial-configure-audit/audit-query.png" alt-text="Log Analytics クエリのスクリーンショット":::
+1. クエリ ウィンドウでは、実行するクエリを記述できます。 たとえば、特定のサーバーで監査イベントの概要を確認するために、次のクエリを使用しました。 
 
-## <a name="view-audit-logs-using-workbooks"></a>ブックを使用して監査ログを表示する 
+    ```kusto
+    AzureDiagnostics
+        |where Category =='MySqlAuditLogs' 
+        |project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s ,ip_s , sql_text_s 
+        |summarize count() by event_class_s,event_subclass_s 
+        |order by event_class_s 
+    ```
+    
+    :::image type="content" source="./media/tutorial-configure-audit/audit-query.png" alt-text="特定のサーバーで監査イベントの概要を検索するための Log Analytics クエリの例のスクリーンショット。":::
+
+## <a name="view-audit-logs-by-using-workbooks"></a>ブックを使用して監査ログを表示する 
  
 監査に使用するブック テンプレートでは、プラットフォーム ログを送信するための診断設定を作成する必要があります。 
 
-1.  プラットフォーム ログを送信する場合、Azure Monitor メニューの [アクティビティ ログ]、 **[診断設定]** の順にクリックします。 
+1. Azure Monitor の左側のペインで、 **[アクティビティ ログ]** を選択し、 **[診断設定]** を選択します。 
 
-    :::image type="content" source="./media/tutorial-configure-audit/activity-diagnostics.png" alt-text="診断設定のスクリーンショット":::
+    :::image type="content" source="./media/tutorial-configure-audit/activity-diagnostics.png" alt-text="Azure Monitor の [アクティビティ ログ] ウィンドウの [診断設定] タブを示すスクリーンショット。":::
 
-2.  新しい設定を追加するか、既存の設定を編集します。 各設定には、各送信先の種類を 1 つだけ含めることができます。
+1. **[診断設定]** ウィンドウでは、新しい設定を追加したり、既存の設定を編集したりすることができます。 各設定には、各送信先の種類を 1 つだけ含めることができます。
 
-    :::image type="content" source="./media/tutorial-configure-audit/activity-settings-diagnostic.png" alt-text="診断設定の選択のスクリーンショット":::
+    :::image type="content" source="./media/tutorial-configure-audit/activity-settings-diagnostic.png" alt-text="ログ出力先を選択するための Azure Monitor の [診断設定] ウィンドウのスクリーンショット。":::
 
-    >[!Note]
-    >構成したデータ シンク (Log Analytics ワークスペース、ストレージ アカウント、イベント ハブ) で低速クエリ ログにアクセスできます。ログが表示されるまでに最大 10 分かかることがあります。
+    > [!Note]
+    > 既に構成してあるデータ シンク (Log Analytics ワークスペース、ストレージ アカウント、またはイベント ハブ) で低速クエリ ログにアクセスできます。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
-3.  Azure portal で、Azure Database for MySQL - フレキシブル サーバーの **[監視]** ブレードに移動し、 **[Workbooks]** を選択します。
-4.  テンプレートを表示できるようになります。 **[監査]** を選択します。 
+1. Azure portal の左側のペインで、Azure Database for MySQL フレキシブル サーバー インスタンスの **[監視]** の下にある **[ブック]** を選択します。
+1. **[監査]** ブックを選択します。 
 
-    :::image type="content" source="./media/tutorial-configure-audit/monitor-workbooks.png" alt-text="ブック テンプレートのスクリーンショット":::
+    :::image type="content" source="./media/tutorial-configure-audit/monitor-workbooks.png" alt-text="ブック ギャラリー内のすべてのブックを示すスクリーンショット。":::
     
-以下の視覚化を表示できます 
+ブックでは、次の視覚化を表示できます。 
 >[!div class="checklist"]
 > * サービスでの管理操作
 > * 監査の概要
@@ -144,18 +159,22 @@ AzureDiagnostics
 > * 識別されたエラー
 
 
-:::image type="content" source="./media/tutorial-configure-audit/admin-events.png" alt-text="ブック テンプレートの管理者イベントのスクリーンショット":::
+:::image type="content" source="./media/tutorial-configure-audit/admin-events.png" alt-text="ブック テンプレート &quot;サービスでの管理操作&quot; のスクリーンショット。":::
 
-:::image type="content" source="./media/tutorial-configure-audit/audit-summary.png" alt-text="ブック テンプレートの監査の概要イベントのスクリーンショット":::
+:::image type="content" source="./media/tutorial-configure-audit/audit-summary.png" alt-text="ブック テンプレート &quot;接続イベントの監査&quot; のスクリーンショット。":::
 
 >[!Note]
-> * これらのテンプレートを編集し、要件に従ってカスタマイズすることもできます。 詳細については、[Azure Monitor ブックの概要 - Azure Monitor](../../azure-monitor/visualize/workbooks-overview.md#editing-mode) に関するページを参照してください。
-> * 素早く表示するために、ダッシュボードにブックまたは Log Analytics クエリをピン留めすることもできます。 詳細については、「[Azure portal でダッシュボードを作成する - Azure portal](../../azure-portal/azure-portal-dashboards.md)」を参照してください。 
+> * これらのテンプレートを編集し、要件に従ってカスタマイズすることもできます。 詳細については、[Azure Monitor ブックの概要](../../azure-monitor/visualize/workbooks-overview.md#editing-mode)に関する記事の「編集モード」セクションを参照してください。
+> * 素早く表示するために、ブックまたは Log Analytics クエリをダッシュボードにピン留めすることもできます。 詳細については、「[Azure portal でダッシュボードを作成する](../../azure-portal/azure-portal-dashboards.md)」を参照してください。 
 
-サービスに対する管理アクションでは、サービスで実行されたアクティビティの詳細が表示されます。 これは、サブスクリプションのリソースに対して行われたすべての書き込み操作 (PUT、POST、DELETE) について、何を、誰が、いつ行ったのかを確認するのに役立ちます。 
+*[Administrative Actions on the service]\(サービスでの管理操作\)* ビューでは、サービスで実行されたアクティビティの詳細が表示されます。 これは、サブスクリプションのリソースに対して行われたすべての書き込み操作 (PUT、POST、DELETE) について、"*何を、誰が、いつ*" 行ったのかを確認するのに役立ちます。 
 
-その他の視覚化は、データベース アクティビティの詳細を取得するのに役立ちます。 データベースのセキュリティは 4 つの部分で構成されます。 それは、サーバー セキュリティ、データベース接続、テーブル アクセスの制御、およびデータベース アクセスの制限です。 サーバー セキュリティは、承認されていないユーザーがデータベースにアクセスするのを防ぐ役割を担います。 データベース接続に関して、管理者は、データベースに対して行われた更新が承認された担当者によって行われたかどうかも確認する必要があります。 データベース アクセスの制限は、データベースがインターネットにアップロードされているユーザーにとって特に重要です。 これにより、外部ソースがデータベースに入り込んだり、データベースにアクセスしたりするのを防ぐことができます。 
+他の視覚化を使用して、データベースの利用状況の詳細を把握することができます。 データベース セキュリティには、次の 4 つの部分があります。 
+* **サーバー セキュリティ**: 承認されていないユーザーがデータベースにアクセスするのを防ぐ役割を担います。  
+* **データベース接続**: 管理者は、承認された担当者がデータベースの更新を実行したかどうかを確認する必要があります。
+* **テーブルのアクセス制御**: 許可されているユーザーのアクセス キーと、各ユーザーが扱うことを許可されているデータベース内のテーブルを表示します。
+* **データベース アクセス制限**: データベースをインターネットにアップロードしたユーザーにとっては特に重要であり、外部ソースからデータベースにアクセスできないようにするのに役立ちます。 
 
-## <a name="next-steps"></a>次の手順
-- [Azure Monitor ブックの使用を開始](../../azure-monitor/visualize/workbooks-overview.md#visualizations)し、ブックの豊富な視覚化オプションを確認します。
-- [監査ログ](concepts-audit-logs.md)の詳細を確認する
+## <a name="next-steps"></a>次のステップ
+- [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md#visualizations)とその豊富な視覚化オプションについて学習します。
+- [監査ログについて学習します](concepts-audit-logs.md)。

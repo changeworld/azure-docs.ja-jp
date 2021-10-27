@@ -17,12 +17,12 @@ ms.date: 07/08/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c327de515699ed0d0d8b74e0c393d206864fef85
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 4301caa11079604a19b8679311daf1e082b35b1f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113553087"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993494"
 ---
 # <a name="sign-in-diagnostics-for-azure-ad-scenarios"></a>Azure AD シナリオのサインイン診断
 
@@ -278,7 +278,13 @@ Azure AD のサインイン診断には、次のシナリオがサポートさ�
 詳細については、[リスク ポリシーを構成して有効にする方法](../identity-protection/howto-identity-protection-configure-risk-policies.md)に関するページを参照してください。 
 
 
+### <a name="pass-through-authentication"></a>パススルー認証 
 
+パススルー認証はオンプレミスとクラウド認証テクノロジを統合したものであるため、問題がある場所を特定するのが困難な場合があります。 この診断は、これらのシナリオを簡単に診断して解決できるようにすることを目的としています。 
+
+この診断シナリオでは、使用されている認証方法がパススルー認証 (PTA) であり、PTA 固有のエラーがある場合に、ユーザー固有のサインインの問題を識別します。 他の問題が原因のエラー (PTA 認証が使用されている場合でも) も正しく診断されます。 
+
+診断には、エラーとユーザーのサインインに関するコンテキスト情報、サインインに失敗した理由、および問題を解決するために管理者が実行できる推奨アクションが表示されます。 詳細については、[Azure AD Connect: パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

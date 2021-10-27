@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 6822514e6bcbb5a232f7ee7f22ec8b0ee8a21e10
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 5d19799d688e8273960b92efb3d60a3afc90bb18
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396743"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074173"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>仮想ネットワークに Azure Spring Cloud をデプロイする
 
@@ -62,6 +62,7 @@ Azure Spring Cloud インスタンスのデプロイ先となる仮想ネット�
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure Spring Cloud インスタンスをホストする仮想ネットワークが既にある場合は、手順 1、2、および 3 をスキップします。 手順 4 から開始して、仮想ネットワークのサブネットを準備することができます。
 
 1. Azure portal のメニューで、**[リソースの作成]** を選択します。 Azure Marketplace で、 **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
@@ -85,8 +86,61 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 残りは既定値のままにして、 **[作成]** を選択します。
 
+#### <a name="cli"></a>[CLI](#tab/azure-CLI)
+Azure Spring Cloud インスタンスをホストする仮想ネットワークが既にある場合は、手順 1、2、3、4 をスキップします。 手順 5 から開始して、仮想ネットワークのサブネットを準備することができます。
+
+1. サブスクリプション、リソース グループ、Azure Spring Cloud インスタンスの変数を定義します。 実際の環境に基づいて値をカスタマイズします。
+
+   ```azurecli
+   SUBSCRIPTION='subscription-id'
+   RESOURCE_GROUP='my-resource-group'
+   LOCATION='eastus'
+   SPRING_CLOUD_NAME='spring-cloud-name'
+   VIRTUAL_NETWORK_NAME='azure-spring-cloud-vnet'
+   ```
+
+1. Azure CLI にサインインし、アクティブなサブスクリプションを選択します。
+
+   ```azurecli
+   az login
+   az account set --subscription ${SUBSCRIPTION}
+   ```
+
+1. リソース用のリソース グループを作成します。
+
+   ```azurecli
+   az group create --name $RESOURCE_GROUP --location $LOCATION
+   ```
+
+1. 仮想ネットワークを作成します。
+
+   ```azurecli
+   az network vnet create --resource-group $RESOURCE_GROUP \
+       --name $VIRTUAL_NETWORK_NAME \
+       --location $LOCATION \
+       --address-prefix 10.1.0.0/16
+   ```
+
+1. この仮想ネットワークに 2 つのサブネットを作成します。 
+
+   ```azurecli
+   az network vnet subnet create --resource-group $RESOURCE_GROUP \
+       --vnet-name $VIRTUAL_NETWORK_NAME \
+       --address-prefixes 10.1.0.0/28 \
+       --name service-runtime-subnet 
+   az network vnet subnet create --resource-group $RESOURCE_GROUP \
+       --vnet-name $VIRTUAL_NETWORK_NAME \
+       --address-prefixes 10.1.1.0/28 \
+       --name apps-subnet 
+   ```
+
+---
+
 ## <a name="grant-service-permission-to-the-virtual-network"></a>仮想ネットワークにサービス アクセス許可を付与する
+
 仮想ネットワーク上の専用かつ動的なサービス プリンシパルにさらに高度なデプロイやメンテナンスの権限を付与するには、Azure Spring Cloud に仮想ネットワークの **所有者** としてのアクセス許可が必要です。
+
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 前に作成した仮想ネットワーク **azure-spring-cloud-vnet** を選択します。
 
@@ -94,7 +148,7 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
     ![[アクセス制御] 画面を示すスクリーンショット。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. **Azure Spring Cloud リソース プロバイダー** に *所有者* ロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md#step-2-open-the-add-role-assignment-pane)」を参照してください。
+1. **Azure Spring Cloud リソース プロバイダー** に *所有者* ロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md#step-2-open-the-add-role-assignment-page)」を参照してください。
 
     ![リソース プロバイダーへの所有者の割り当てを示すスクリーンショット。](./media/spring-cloud-v-net-injection/assign-owner-resource-provider.png)
 
@@ -113,8 +167,26 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
         --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
     ```
 
+#### <a name="cli"></a>[CLI](#tab/azure-CLI)
+
+```azurecli
+VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
+    --name $VIRTUAL_NETWORK_NAME \
+    --resource-group $RESOURCE_GROUP \
+    --query "id" \
+    --output tsv`
+
+az role assignment create \
+    --role "Owner" \
+    --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
+    --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
+```
+
+---
+
 ## <a name="deploy-an-azure-spring-cloud-instance"></a>Azure Spring Cloud インスタンスのデプロイ
 
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 仮想ネットワークに Azure Spring Cloud インスタンスをデプロイするには、次のように操作します。
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
@@ -146,6 +218,25 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
     ![指定の確認を示すスクリーンショット。](./media/spring-cloud-v-net-injection/verify-specifications.png)
 
+#### <a name="cli"></a>[CLI](#tab/azure-CLI)
+仮想ネットワークに Azure Spring Cloud インスタンスをデプロイするには、次のように操作します。
+
+先ほど作成した仮想ネットワークとサブネットを指定して Azure Spring Cloud インスタンスを作成します。
+
+   ```azurecli
+   az spring-cloud create  \
+       --resource-group "$RESOURCE_GROUP" \
+       --name "$SPRING_CLOUD_NAME" \
+       --vnet $VIRTUAL_NETWORK_NAME \
+       --service-runtime-subnet service-runtime-subnet \
+       --app-subnet apps-subnet \
+       --enable-java-agent \
+       --sku standard \
+       --location $LOCATION
+   ```
+
+---
+
 デプロイ後、Azure Spring Cloud インスタンスのネットワーク リソースをホストするために、サブスクリプションに 2 つの追加のリソース グループが作成されます。 **[ホーム]** に移動し、上部のメニュー項目から **[リソース グループ]** を選択して、次の新しいリソース グループを検索します。
 
 **ap-svc-rt_{サービス インスタンス名}_{サービス インスタンスのリージョン}** という名前のリソース グループには、サービス インスタンスのサービス ランタイム用のネットワーク リソースが含まれています。
@@ -162,6 +253,7 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
    > [!Important]
    > リソース グループは、Azure Spring Cloud サービスによって完全に管理されています。 内部のリソースを手動で削除または変更 "*しない*" でください。
+
 
 ## <a name="using-smaller-subnet-ranges"></a>使用するサブネット範囲を小さくする
 

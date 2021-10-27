@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 1b43a76e417505d4894396503ca93fc87f508d4c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3153abcc4a0fa76b0ebb6c0a9715020af6a646ec
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753163"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181485"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>リモート デスクトップ プロトコル (RDP) の帯域幅の要件
 
@@ -99,7 +99,7 @@ RDP では、帯域幅使用率のハード制限を使用する代わりに、�
 このような場合は、QoS ポリシーでスロットル レートを指定することで、RDP 送信ネットワーク トラフィックを制限できます。
 
   >[!NOTE]
-  > [RDP Shortpath が有効化されていることを確認してください。](./shortpath.md)スロットル レート制限は、リバース接続トランスポートではサポートされていません。
+  > [マネージド ネットワークに RDP Shortpath が有効化されていることを確認してください。](./shortpath.md)スロットル レート制限は、リバース接続トランスポートではサポートされていません。
 
 ### <a name="implement-throttle-rate-limiting-on-session-host-using-group-policy"></a>グループ ポリシーを使用してセッション ホストでスロットル レート制限を実装する
 
@@ -139,10 +139,10 @@ RDP では、帯域幅使用率のハード制限を使用する代わりに、�
 
 ### <a name="implement-throttle-rate-limiting-on-session-host-using-powershell"></a>PowerShell を使用してセッション ホストでスロットル レート制限を実装する
 
-次の PowerShell コマンドレットを使用して、RDP Shortpath のスロットル レートを設定できます。
+次の PowerShell コマンドレットを使用して、マネージド ネットワーク用 RDP Shortpath にスロットル レートを設定できます。
 
 ```powershell
-New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" -IPProtocolMatchCondition UDP -IPSrcPortStartMatchCondition 3390 -IPSrcPortEndMatchCondition 3390 -DSCPAction 46 -NetworkProfile All
+New-NetQosPolicy -Name "RDP Shortpath for managed networks" -AppPathNameMatchCondition "svchost.exe" -IPProtocolMatchCondition UDP -IPSrcPortStartMatchCondition 3390 -IPSrcPortEndMatchCondition 3390  -ThrottleRateActionBitsPerSecond 10mb -NetworkProfile All
 ```
 
 ## <a name="next-steps"></a>次のステップ

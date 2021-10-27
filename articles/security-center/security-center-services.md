@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2021
 ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: 21c453da9a2e84e4e936b92f04748854cbd928d3
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 4bb46ed8146067c44f2d4a602f3c8b1831340d7a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710746"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003536"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -93,8 +93,13 @@ ms.locfileid: "129710746"
 | Symantec v12.1.1100 以降                                      | Windows Server (すべて)                                   | いいえ                           | はい                       |
 | McAfee v10 以降                                               | Windows Server (すべて)                                   | いいえ                           | はい                       |
 | McAfee v10 以降                                               | Linux (プレビュー)                                        | いいえ                           | はい                       |
+| Microsoft Defender for Endpoint for Linux<sup>[1](#footnote1)</sup>  | Linux (プレビュー)                                        | 拡張機能経由                | いいえ                        |  
 | Sophos V9+                                                | Linux (プレビュー)                                        | いいえ                           | はい                       |
 |                                                           |                                                        |                              |                           |
+
+<sup><a name="footnote1" /></a>1</sup> Linux マシンに Microsoft Defender for Endpoint をインストールするだけでは不十分です。マシンは、AV コンポーネントがアクティブな場合にのみ正常として表示されます。
+既定では、AV コンポーネントは、他の AV ソフトウェアとの衝突を回避するために **無効** になっています。
+
 
 
 

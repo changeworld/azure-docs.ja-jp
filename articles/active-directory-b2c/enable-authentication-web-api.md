@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用して Web API で認証を有効にする
 description: この記事では、Azure Active Directory B2C を使用して Web API を保護する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/25/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: a67cdd9ba92e3c78c5cb29a827cf537ba2e372ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8bb890fb92352be9a0771cb0b80d2f1565dc664c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740199"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065694"
 ---
 # <a name="enable-authentication-in-your-own-web-api-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Web API で認証を有効にする
 
@@ -377,7 +377,7 @@ app.get('/hello',
 
 ## <a name="step-5-configure-the-web-server"></a>手順 5: Web サーバーを構成する
 
-開発環境で、受信 HTTP 要求のポート番号をリッスンするように Web API を設定します。 この例では、HTTP ポート 6000 を使用しています。 Web API のベース URI は <'http://localhost:6000 '> になります
+開発環境で、受信 HTTP または HTTPS 要求のポート番号をリッスンするように Web API を設定します。 この例では、HTTP ポート 6000 と HTTPS ポート 6001 を使用します。 Web API のベース URI は、HTTP の場合は `http://localhost:6000`、HTTPS の場合は `https://localhost:6001` になります。 [Node アプリケーションに対して HTTP および HTTPS エンドポイントを設定](https://github.com/expressjs/express/wiki/Migrating-from-2.x-to-3.x#application-function)することもできます。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/csharpclient)
 
@@ -388,7 +388,10 @@ app.get('/hello',
     "EndPoints": {
       "Http": {
         "Url": "http://localhost:6000"
-      }
+      },
+      "Https": {
+         "Url": "https://localhost:6001"   
+        }
     }
   }
 ```

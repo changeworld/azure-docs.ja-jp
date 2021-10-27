@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f9f580c903ccc806ab4cfe5229c4931a4810bf8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9086e3df2022822e890af4d187f35a55bad5ae03
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481888"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074116"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-external-identities-self-service-sign-up-user-flows"></a>Azure AD External Identities セルフサービス サインアップのユーザー フローで API コネクタとして使用される API をセキュリティで保護する
 
@@ -63,7 +63,7 @@ HTTP 基本認証を使用して API コネクタを構成するには、次の�
 
 これで、[証明書をエクスポート](../../key-vault/certificates/how-to-export-certificate.md)できます。
 
-#### <a name="option-2-prepare-a-self-sized-certificate-using-powershell-module"></a>オプション 2: PowerShell モジュールを使用して自己署名証明書を準備する
+#### <a name="option-2-prepare-a-self-signed-certificate-using-powershell"></a>オプション 2: PowerShell を使用して自己署名証明書を準備する
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 

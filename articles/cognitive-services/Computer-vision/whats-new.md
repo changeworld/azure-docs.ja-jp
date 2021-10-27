@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 395b9d2670a488ab0743a987b1e8b857f6f2fb2f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: c2cdf1dc396a04adb106ee1b3777eb11e7c36279
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708326"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045486"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -80,7 +80,7 @@ Computer Vision API v3.2 パブリック プレビューが更新されました
 ## <a name="february-2021"></a>2021 年 2 月
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Read API v3.2 のパブリック プレビューが 73 言語の OCR に対応
-クラウド サービスおよび Docker コンテナーとして利用できるようになった Computer Vision の Read API v3.2 パブリック プレビューでは、次の更新が行われています。
+クラウド サービスおよび Docker コンテナーとして利用できる Computer Vision Read API v3.2 パブリック プレビューには、こちらの更新が含まれます。
 * [OCR が 73 言語に対応](./language-support.md#optical-character-recognition-ocr)。簡易字中国語と繁体字中国語、日本語、韓国語、ラテン語系の言語が含まれます。
 * テキスト行出力に自然な読みの順序を使用 (ラテン語系の言語のみ)
 * テキスト行に対する手書きスタイルの分類と信頼度スコア (ラテン語系の言語のみ)。
@@ -123,7 +123,7 @@ Computer Vision API v3.2 パブリック プレビューが更新されました
 [空間分析コンテナー](spatial-analysis-container.md)は現在プレビュー段階です。 Computer Vision の空間分析機能を使用すると、リアルタイム ストリーミング ビデオを分析して、物理環境における人物とその動きとの間の空間的な関係を把握できます。 空間分析は、オンプレミスで使用できる Docker コンテナーです。 
 
 ### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Read API v3.1 パブリック プレビューが新たに日本語の OCR に対応
-Computer Vision の Read API v3.1 パブリック プレビューで次の機能が追加されました。
+Computer Vision Read API v3.1 パブリック プレビューで、こちらの機能が追加されました。
 * 日本語の OCR
 * それぞれのテキスト行について、その体裁が手書きであるか印刷スタイルであるかが信頼度スコア (ラテン語系の言語のみ) と共に示されます。
 * 複数ページから成るドキュメントから、選択されたページまたはページ範囲のテキストのみを抽出します。
@@ -138,7 +138,7 @@ Computer Vision の Read API v3.1 パブリック プレビューで次の機能
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>Read API v3.1 のパブリック プレビューが簡体字中国語の OCR に対応
-Computer Vision の Read API v3.1 パブリック プレビューでは、簡体字中国語のサポートが追加されています。
+Computer Vision Read API v3.1 パブリック プレビューで、簡体字中国語のサポートが追加されました。
 
 * この Read API のプレビュー バージョンでは、英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、簡体字中国語、およびスペイン語がサポートされています。
 

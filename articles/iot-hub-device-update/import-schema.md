@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 9d3cc8cb8ed36179e2297da7c057851345e1c02e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 839d5f7cd096b9b820e3a137f48efa8882fd3d1c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536928"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003120"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Device Update for IoT Hub への更新プログラムのインポート - スキーマおよびその他の情報
 Device Update for IoT Hub に更新プログラムにインポートする場合は、まず、[概念](import-concepts.md)と[攻略ガイド](import-update.md) を必ず確認しておいてください。 インポート マニフェストの構築時に使用されるスキーマの詳細と、関連するオブジェクトの情報に関心がある場合は、以下を参照してください。
@@ -83,7 +83,7 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 }
 ```
 
-## <a name="oauth-authorization-when-calling-import-apis"></a>インポート API を呼び出す際の OAuth 認可
+## <a name="oauth-authorization-when-calling-device-update-apis"></a>デバイス更新 API を呼び出す際の OAuth 認可
 
 **azure_auth**
 

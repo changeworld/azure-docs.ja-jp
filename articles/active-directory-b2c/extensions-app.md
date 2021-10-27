@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C の Extensions アプリ | Microsoft Docs
+title: Azure Active Directory B2C の Extensions アプリ
 description: b2c-extensions-app の復元。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/06/2017
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 044ea1f160fb2e8e5f119a9046ef6989440e346c
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: eae21e8f7305f307a343e44145f6ed435c8ffcd1
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728553"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041388"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ
 

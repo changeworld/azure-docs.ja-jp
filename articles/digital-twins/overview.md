@@ -1,22 +1,27 @@
 ---
 title: Azure Digital Twins とは
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins を使用して実行できる操作の概要を説明します。
+description: サービスの構成や広範なクラウド ソリューションでの使用方法など、Azure Digital Twins の概要。
 author: baanders
 ms.author: baanders
-ms.date: 8/23/2021
+ms.date: 10/5/2021
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 6dfb4faac6fd5bb11dfc1fbb928d9ba377ec1fe3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 818f001666baa55c1c015974932a5d291a82614d
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224391"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134148"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
-**Azure Digital Twins** は、環境全体のデジタル モデルに基づいたツイン グラフの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
+**Azure Digital Twins** は、環境全体 (建物、工場、農場、エネルギー ネットワーク、鉄道、スタジアム、さらには都市全体など) のデジタル モデル に基づいてツイン グラフを作成できるようにするサービスとしてのプラットフォーム (PaaS) です。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
+
+Azure Digital Twins を使用すると、より広範なクラウド ソリューションでの実際の IoT デバイスを表し、ライブ データを送受信するために IoT Hub デバイス ツインに接続するデジタル ツイン アーキテクチャを設計できます。
+
+> [!NOTE]
+> "*IoT Hub デバイス ツイン*" は、Azure Digital Twins サービスの "*デジタル ツイン*" とは異なります。 "*IoT Hub デバイス ツイン*" は接続先の各 IoT デバイスの IoT ハブによって保持されますが、"*デジタル ツイン*" はデジタル モデルによって定義され、Azure Digital Twins 内でインスタンスが作成されるすべてのものを表すことができます。 
 
 Azure Digital Twins に加えて特定分野の専門知識を活用し、次のようなカスタマイズされた接続済みのソリューションを構築します。
 * あらゆる環境をモデル化し、デジタル ツインをスケーラブルで安全な方法で実現する
@@ -80,7 +85,7 @@ Azure Digital Twins モデルのデータは、追加の分析またはストレ
 
 Azure Digital Twins は、大規模な IoT ソリューションの一部として、他の Azure サービスと組み合わせてよく使用されます。 
 
-Azure Digital Twins を使用した完全なソリューションには、次の部分が含まれる場合があります。
+Azure Digital Twins を使用した完全なソリューションのサンプル アーキテクチャは、次のようになります。
 * Azure Digital Twins サービス インスタンス。 このサービスは、ツイン モデルとツイン グラフをその状態で格納し、イベント処理を調整します。
 * モデルの構成、トポロジの作成、ツイン グラフからの分析情報の抽出によって Azure Digital Twins インスタンスを駆動する 1 つ以上のクライアント アプリ。
 * Azure Digital Twins によって生成されるイベントや、デバイスなどの接続されたデータ ソースを処理するための 1 つ以上の外部コンピューティング リソース。 コンピューティング リソースを提供する一般的な方法の 1 つは、[Azure Functions](../azure-functions/functions-overview.md) を使用することです。
@@ -101,6 +106,6 @@ Azure Digital Twins の **サービスの制限** については、「[Azure Di
 
 ## <a name="next-steps"></a>次のステップ
 
-* 「[Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」に関するページで、Azure Digital Twins の使用方法について学習します。
+* 「[Azure Digital Twins Explorer の概要](quickstart-azure-digital-twins-explorer.md)」と「[エンド ツー エンドのソリューションを構築する](tutorial-end-to-end.md)」でサンプル シナリオを参照して Azure Digital Twins の使用方法の詳細について学習します。
 
 * または、[DTDL モデル](concepts-models.md)に関するページで Azure Digital Twins の概念について学びます。

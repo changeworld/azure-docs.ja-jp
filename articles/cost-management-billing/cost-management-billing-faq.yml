@@ -8,14 +8,14 @@ metadata:
   ms.service: cost-management-billing
   ms.subservice: common
   ms.topic: conceptual
-  ms.date: 09/16/2021
+  ms.date: 10/13/2021
   ms.author: banders
-  ms.openlocfilehash: 7edae913ea733002aa3ad0736cf744f969003cdb
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: cc2ee1984af35b357f1c67c03fecacbf17444d22
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129706209"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129993057"
 title: Cost Management + Billing についてよくあるご質問 (FAQ)
 summary: ''
 sections:
@@ -121,6 +121,9 @@ sections:
   - question: コストの割り当てルール (ソースまたはターゲット) が重複した場合はどうなりますか?
     answer: >
       <a name="rule-overlap"></a>重複するソースや重複するターゲットを含むルールは推奨されません。 コストの割り当てルールはその作成日順に適用されます。そのため、コストの割り当てルールが重複している場合、最も古い作成日の割り当てルールが優先されます。
+  - question: Cost Management で Azure の他に新しいコマース ライセンスと従量課金製品を表示できますか?
+    answer: >
+      はい。 MCA 契約のパートナーは、パートナー センターで新しいコマース ライセンスと従量課金製品を購入できます。 それらの製品は、Azure 製品と共に請求され、Cost Management で料金を表示できます。 "プロバイダー" ディメンションは、Azure とライセンスベースの製品 (Microsoft 365 や Dyamics 365 など) を区別するのに役立ちます。
 - name: Cost Management + Billing API に関する質問
   questions:
   - question: EA Reporting API が非推奨になるのはいつですか?

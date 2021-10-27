@@ -3,12 +3,12 @@ title: データ マイニング レポートの作成
 description: さまざまなレイヤーのネットワーク デバイスに関する包括的で詳細な情報 (プロトコル、ファームウェア バージョン、プログラミング コマンドなど) を生成します。
 ms.date: 01/20/2021
 ms.topic: how-to
-ms.openlocfilehash: 99754959e7a3a08b4d763b85b0b9315476969774
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 460edc5aa21461f37bbcdf35d070ef3674d509d3
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020621"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138118"
 ---
 # <a name="sensor-data-mining-queries"></a>センサーのデータ マイニング クエリ
 
@@ -59,10 +59,11 @@ ms.locfileid: "113020621"
 
 - **可視性**: すべてのクエリ項目を対象として、ネットワークのすべてのベースライン パラメーターが表示されるレポートを生成します。
 
+- **PLC セキュリティ**: プログラムやリモートの状態など、セキュリティで保護されていない状態の PLC を検出することで、セキュリティを強化します。
+
 ## <a name="data-mining-storage"></a>データ マイニングのストレージ
 
 データ マイニング情報は、デバイスが削除された場合を除き、継続して保存および格納されます。 データ マイニングの結果は、セキュリティで保護された外部サーバーにエクスポートしたり格納したりできます。 さらに、システムの継続性とデータの保持のために、センサーによって毎日の自動バックアップが実行されます。
-
 
 ## <a name="predefined-data-mining-queries"></a>定義済みのデータ マイニング クエリ
 

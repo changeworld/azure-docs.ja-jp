@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36c43448abba82ef084a16e13e70700ddf12bdc2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90563150"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042015"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Firewall Manager のアーキテクチャのオプション
 
@@ -36,7 +36,7 @@ Azure Firewall Manager は、次の 2 種類のネットワーク アーキテ�
 |**ハブとスポーク**     |仮想ネットワーク ピアリングを使用|ハブ仮想ネットワーク接続を使用して自動化|
 |**オンプレミス接続**     |最大 10 Gbps とサイト間接続 30 個の VPN Gateway、ExpressRoute|よりスケーラブルな最大 20 Gbps とサイト間接続 1000 個の VPN Gateway、ExpressRoute|
 |**SDWAN を使用したブランチ接続の自動化**      |サポートされていません|サポートされています|
-|**リージョンごとのハブ**     |リージョンごとに複数の仮想ネットワーク|リージョンごとに 1 つの仮想ハブ。 複数の Virtual WAN で複数のハブが可能|
+|**リージョンごとのハブ**     |リージョンごとに複数の仮想ネットワーク|リージョンごとに複数の仮想ハブ|
 |**Azure Firewall – 複数のパブリック IP アドレス**      |お客様側で準備|自動生成|
 |**Azure Firewall Availability Zones**     |サポートされています|まだ使用できません|
 |**サードパーティのサービスとしてのセキュリティ パートナーによる高度なインターネット セキュリティ**     |お客様が自分で選択したパートナー サービスへの VPN 接続を確立して管理|セキュリティ パートナー プロバイダーのフローとパートナー管理のエクスペリエンスによって自動化|
