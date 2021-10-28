@@ -3,22 +3,22 @@ title: パスワードのリセット フローを設定する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C (Azure AD B2C) でパスワードのリセット フローを設定する方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/24/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fc49dc992125e22205f50faa3f38283024559cba
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 2d1c0dfd5a5fdb9573859c61421513c4dc91eb8e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657570"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130251207"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -148,6 +148,7 @@ ms.locfileid: "129657570"
         <OutputClaims>
           <OutputClaim ClaimTypeReferenceId="isForgotPassword" DefaultValue="true" AlwaysUseDefaultValue="true"/>
         </OutputClaims>
+        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
       </TechnicalProfile>
       <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
         <Metadata>

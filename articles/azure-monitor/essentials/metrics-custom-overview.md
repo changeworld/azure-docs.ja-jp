@@ -6,12 +6,12 @@ ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 770a308fe293140b4d9c56b51c931e426aa1ac81
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: cacb1d9af577a90d8e9030cf00e51dda58763041
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063015"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256631"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -241,7 +241,7 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
 
 メトリック名またはディメンション値に識別子またはカーディナリティの高いディメンションが誤って設定されている場合は、変数部分を削除することで簡単に修正できます。
 
-ただし、シナリオに高いカーディナリティが不可欠な場合、集計されたメトリックはおそらく適切な選択肢にはなりません。 カスタム ログの使用 (つまり、[trackEvent](/azure/azure-monitor/app/api-custom-events-metrics#trackevent) を使用した trackMetric API 呼び出し) に切り替えます。 ただし、ログでは値が集計されないので、すべてのエントリが格納されます。 その結果、短い期間に大量のログ (たとえば 1 秒間に 100 万件) がある場合は、調整やインジェストの遅延が発生する可能性があります。 
+ただし、シナリオに高いカーディナリティが不可欠な場合、集計されたメトリックはおそらく適切な選択肢にはなりません。 カスタム ログの使用 (つまり、[trackEvent](../app/api-custom-events-metrics.md#trackevent) を使用した trackMetric API 呼び出し) に切り替えます。 ただし、ログでは値が集計されないので、すべてのエントリが格納されます。 その結果、短い期間に大量のログ (たとえば 1 秒間に 100 万件) がある場合は、調整やインジェストの遅延が発生する可能性があります。 
 
 ## <a name="next-steps"></a>次のステップ
 以下のさまざまなサービスのカスタム メトリックを使用する。 

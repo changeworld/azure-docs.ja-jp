@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: c4f76a02a88b91c082106566ca236abe25d4ed88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc7eba43ad9706fd76526f99a9d041053b735179
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567350"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246796"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した ExpressRoute 回線のピアリングの作成と変更
 
@@ -122,11 +122,6 @@ Microsoft ピアリングの行を選択して、そのピアリングのプロ�
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure プライベート ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
-
-> [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階です。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[こちら](../virtual-network/ipv6-overview.md)で説明されているガイドラインに従ってください。
-> 
-> 
 
 ### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
 

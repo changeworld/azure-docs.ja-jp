@@ -8,12 +8,12 @@ ms.date: 10/01/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: e7c8ce91f15a6b92e3efa9bae8c5a78bc9fd4baa
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: e8015d4362f394fe8ddf8b05a1a1187112671f9f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129056"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265652"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>可用性ゾーンをサポートする Azure サービス
 
@@ -59,7 +59,7 @@ Azure は、クラウド プロバイダーの中でも最も広範なグロー�
 
 可用性ゾーンをサポートする Azure サービスは、ゾーン型およびゾーン冗長型オファリングを含め、継続的に拡張されています。
 
-旧世代の仮想マシンの詳細については、「[旧世代の仮想マシンのサイズ](/azure/virtual-machines/sizes-previous-gen)」を参照してください。
+旧世代の仮想マシンの詳細については、「[旧世代の仮想マシンのサイズ](../virtual-machines/sizes-previous-gen.md)」を参照してください。
 
 次の表は、ゾーン型、ゾーン冗長型、および常時利用可能型 Azure サービスの現在のオファリングをまとめたものです。 Azure オファリングを、それぞれのリージョンでの可能性に応じて一覧に記載しています。
 
@@ -73,12 +73,12 @@ Azure は、クラウド プロバイダーの中でも最も広範なグロー�
 | **成果物**   | **回復性**   |
 | --- | --- |
 | [Azure Application Gateway (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
-| [Azure Backup](/azure/backup/backup-create-rs-vault)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure Backup](../backup/backup-create-rs-vault.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
 | [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)   |
 | [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | [Azure DNS: Azure DNS Private Zones](../dns/private-dns-getstarted-portal.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | [Azure ExpressRoute](../expressroute/designing-for-high-availability-with-expressroute.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
-| [Azure パブリック IP](../virtual-network/public-ip-addresses.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
+| [Azure パブリック IP](../virtual-network/ip-services/public-ip-addresses.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg) ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
 | Azure SQL Database ([General Purpose レベル](../azure-sql/database/high-availability-sla.md))  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | Azure SQL Database ([Premium &amp; Business Critical レベル](../azure-sql/database/high-availability-sla.md))  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | [Azure Disk Storage](../storage/common/storage-redundancy.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
@@ -142,7 +142,7 @@ Azure は、クラウド プロバイダーの中でも最も広範なグロー�
 | [Azure Network Watcher](../network-watcher/frequently-asked-questions.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | Network Watcher:  [Traffic Analytics](../network-watcher/frequently-asked-questions.yml)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
-| [Premium Blob Storage](../storage/blobs/storage-blob-performance-tiers.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
+| [Premium Blob Storage](../storage/common/storage-account-overview.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | ストレージ:  [Azure Premium ファイル](../storage/files/storage-files-planning.md)  | ![このサービスがゾーン冗長型であることを示すアイコン。](media/icon-zone-redundant.svg)  |
 | 仮想マシン:  [Azure Dedicated Host](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |
 | Virtual Machines:  [Ddsv4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)  | ![このサービスがゾーン型であることを示すアイコン。](media/icon-zonal.svg)  |

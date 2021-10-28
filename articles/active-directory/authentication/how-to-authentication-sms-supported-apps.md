@@ -11,12 +11,12 @@ author: aanjusingh
 manager: daveba
 ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5b0ff9c70c84a1f3adda2e93c74ce388ceb322
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 7fd77e9a31d8ce49eeab411378726ef712040962
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228578"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245483"
 ---
 # <a name="app-support-for-sms-based-authentication"></a>SMS ベースの認証のためのアプリ サポート
 
@@ -35,6 +35,7 @@ Microsoft ID プラットフォーム (Azure AD) と統合された Microsoft �
 | Microsoft Stream | ● |   |
 | Microsoft Power Apps | ● |   |
 | Microsoft Azure | ● | ● |
+| Microsoft Authenticator |   | ● |
 | Azure Virtual Desktop | ● |  | 
 
 *_Word や Excel などの Office アプリケーションでは、SMS サインインは Web で直接アクセスした場合は使用できませんが、[Office 365 Web アプリ](https://www.office.com)を使用してアクセスした場合は使用できます。_

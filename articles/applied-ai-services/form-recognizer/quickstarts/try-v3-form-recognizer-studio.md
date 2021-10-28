@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 09/14/2021
 ms.author: sajagtap
-ms.openlocfilehash: 8c0fee509dabc0d7d0462dd28e14c453615af52e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: bb1c2ee770380b5f8689b1dd8f25712293a0bcb2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000531"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220220"
 ---
 # <a name="get-started-form-recognizer-studio--preview"></a>概要: Form Recognizer Studio | プレビュー
 
@@ -36,14 +36,14 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 **標準パフォーマンスの** [**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 コンテナーを含む Azure ストレージ アカウントを作成する方法がわからない場合は、次のクイックスタートに従ってください。
 
-  * [**ストレージ アカウントを作成する**](/azure/storage/common/storage-account-create)。 ストレージ アカウントを作成するときに、 **[インスタンスの詳細] → [パフォーマンス]** フィールドで必ず **[Standard]** を選択してください。
-  * [**コンテナーを作成する**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。 コンテナーを作成するときに、 **[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** フィールドを **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
+  * [**ストレージ アカウントを作成する**](../../../storage/common/storage-account-create.md)。 ストレージ アカウントを作成するときに、 **[インスタンスの詳細] → [パフォーマンス]** フィールドで必ず **[Standard]** を選択してください。
+  * [**コンテナーを作成する**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 コンテナーを作成するときに、 **[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** フィールドを **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
 
 ### <a name="configure-cors"></a>CORS を構成する
 
 [CORS (クロス オリジン リソース共有)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) に Form Recognizer Studio から アクセスするには、Azure ストレージ アカウントに構成する必要があります。 Azure portal で CORS を構成するには、ストレージ アカウントの [CORS] ブレードにアクセスする必要があります。
 
-:::image type="content" source="../media/quickstarts/storage-cors-example.png" alt-text="ストレージ アカウントの CORS 構成を示すスクリーンショット。":::
+:::image type="content" source="../media/quickstarts/cors-updated-image.png" alt-text="ストレージ アカウントの CORS 構成を示すスクリーンショット。":::
 
 1. ストレージ アカウントの [CORS] ブレードを選択します。
 2. まず、Blob service に新しい CORS エントリを作成します。
@@ -74,7 +74,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
     :::image border="true" type="content" source="../media/sas-tokens/upload-blob-window.png" alt-text="スクリーンショット: Azure portal の [BLOB のアップロード] ウィンドウ。":::
 
 > [!NOTE]
-> 既定では、Studio ではコンテナーのルートにあるフォーム ドキュメントが使用されます。 ただし、カスタム フォーム プロジェクトの作成手順で指定されている場合は、フォルダーに編成されたデータを使用できます。 *「* [**データをサブフォルダーに整理する**](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional)」を参照してください
+> 既定では、Studio ではコンテナーのルートにあるフォーム ドキュメントが使用されます。 ただし、カスタム フォーム プロジェクトの作成手順で指定されている場合は、フォルダーに編成されたデータを使用できます。 *「* [**データをサブフォルダーに整理する**](../build-training-data-set.md#organize-your-data-in-subfolders-optional)」を参照してください
 
 ## <a name="sign-into-the-form-recognizer-studio-preview"></a>Form Recognizer Studio プレビューにサインインする
 

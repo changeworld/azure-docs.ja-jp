@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 26b5e7f65ca688eb1f849fa582f2f02af6e470c0
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 6a707f349d4153c7b7a5dca78e2a739625cc7db5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131393"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232235"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -593,7 +593,7 @@ Azure Virtual Network 内の VM には、固定または予約済み IP アド�
 
 
 ##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP ホスト名仮想化のセカンダリ IP アドレス
-各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
+各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
 
 
 ##### <a name="multiple-nics-per-vm"></a>VM あたり複数の NIC
@@ -745,7 +745,7 @@ CLI のインストール方法、構成方法、および CLI コマンドを�
 
 * [Azure クラシック CLI のインストール][xplat-cli]
 * [Azure CLI 2.0 をインストールします][azure-cli-install]
-* [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](/articles/virtual-machines/linux/create-ssh-secured-vm-from-template)
+* [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../../linux/create-ssh-secured-vm-from-template.md)
 * [Azure Resource Manager での Mac、Linux、および Windows 用 Azure クラシック CLI の使用][xplat-cli-azure-resource-manager]
 
 
@@ -780,7 +780,7 @@ OS または DBMS バージョンの固有のパッチ要件により、Azure Ma
 ---
 > ![Windows ロゴ。][Logo_Windows] Windows
 >
-> 詳細については、「[汎用化した Windows VHD をアップロードして Azure で新しい VM を作成する](/azure/virtual-machines/windows/upload-generalized-managed)」を参照してください。オンプレミス VM では、sysprep コマンドを使用して Windows 設定 (Windows の SID やホスト名など) を抽象化または一般化する必要があります。
+> 詳細については、「[汎用化した Windows VHD をアップロードして Azure で新しい VM を作成する](../../windows/upload-generalized-managed.md)」を参照してください。オンプレミス VM では、sysprep コマンドを使用して Windows 設定 (Windows の SID やホスト名など) を抽象化または一般化する必要があります。
 >
 >
 > ![Linux ロゴ。][Logo_Linux] Linux

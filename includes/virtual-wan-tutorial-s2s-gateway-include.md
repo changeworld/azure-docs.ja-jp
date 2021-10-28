@@ -4,12 +4,12 @@ author: cherylmc
 ms.date: 08/17/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: 1169909f0cae9b8bcee5939dd00f497c5e1ab2df
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: ded79a3f13f2f25cf348d2c767f775a18116e85f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515215"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287920"
 ---
 1. **[仮想ハブの作成]** ページで **[サイト間]** をクリックして **[サイト間]** タブを開きます。
 
@@ -24,6 +24,6 @@ ms.locfileid: "122515215"
      1 スケール ユニット = 500 Mbps を選択した場合は、冗長性のための 2 つのインスタンスが作成され、それぞれの最大スループットが 500 Mbps であることを意味します。 たとえば、ブランチで 10 Mbps を実行する 5 つのブランチがある場合、ヘッド エンドで 50 Mbps の集計が必要になります。 Azure VPN ゲートウェイの合計容量を計画する場合は、ハブに対するブランチ数をサポートするために必要な容量を評価した後に行う必要があります。
    * **[ルーティングの優先順位]** : Azure のルーティングの優先順位を使用すると、Azure とインターネットの間でトラフィックをルーティングする方法を選択できます。 Microsoft ネットワーク経由または ISP ネットワーク (パブリック インターネット) 経由のどちらでトラフィックをルーティングするかを選択できます。 これらのオプションはそれぞれコールド ポテト ルーティングおよびホット ポテト ルーティングとも呼ばれます。 
 
-     Virtual WAN 内のパブリック IP アドレスは、選択したルーティング オプションに基づいてサービスによって割り当てられます。 Microsoft ネットワークまたは ISP によるルーティング設定の詳細については、[ルーティングの基本設定](../articles/virtual-network/routing-preference-overview.md)に関する記事を参照してください。
+     Virtual WAN 内のパブリック IP アドレスは、選択したルーティング オプションに基づいてサービスによって割り当てられます。 Microsoft ネットワークまたは ISP によるルーティング設定の詳細については、[ルーティングの基本設定](../articles/virtual-network/ip-services/routing-preference-overview.md)に関する記事を参照してください。
 1. **[確認と作成]** を選択して検証します。
 1. **[作成]** を選択してハブとゲートウェイを作成します。 最大 30 分かかることがあります。 30 分後に **[更新]** を実行して、 **[ハブ]** ページでハブを確認します。 **[リソースに移動]** を選択してリソースに移動します。

@@ -3,12 +3,12 @@ title: Azure Video Analyzer を IoT Edge デバイスにデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Azure Video Analyzer をデプロイする際に役立つ手順を示します。 たとえば、ローカルの Linux マシンにアクセスできる場合にこれを行います。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: cf73e5d44e9c4c04a7c2f018e403da18e18ff17d
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 4b7152859b0e05c44b16d2846c4acacca8b4c4bc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603888"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262263"
 ---
 # <a name="deploy-azure-video-analyzer-to-an-iot-edge-device"></a>Azure Video Analyzer を IoT Edge デバイスにデプロイする
 
@@ -23,8 +23,8 @@ ms.locfileid: "114603888"
 * [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス
 * アクティブなサブスクリプションが含まれる Azure アカウント
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)
+* [IoT Edge デバイスを登録します](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 
 
 ## <a name="create-resources-on-iot-edge-device"></a>IoT Edge デバイス上にリソースを作成する

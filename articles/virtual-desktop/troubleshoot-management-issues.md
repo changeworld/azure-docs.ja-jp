@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 06/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 529cf643cb68bc806aef991142e68f42fccc0d42
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 7632bbdda8515476cc88fa0735fcd41b9eb5444a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112420696"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245817"
 ---
 # <a name="management-issues"></a>管理に関する問題
 
@@ -41,4 +41,4 @@ ms.locfileid: "112420696"
 
 ## <a name="next-steps"></a>次のステップ
 
-診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](diagnostics-role-service.md#common-error-scenarios)」をご確認ください。
+診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](./troubleshoot-set-up-overview.md)」をご確認ください。

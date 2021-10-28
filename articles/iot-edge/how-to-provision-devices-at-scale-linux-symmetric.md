@@ -8,12 +8,12 @@ ms.date: 08/17/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c2bae93e325a36b6db28d1a9c1e6e47ee947db39
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b19990be57332df6de4ccbb45ae92c74b30041b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699802"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226055"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-linux-using-symmetric-key"></a>対称キーを使用して Linux で大規模に IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -235,7 +235,7 @@ Azure IoT Edge は、OCI と互換性のあるコンテナー ランタイムに
 
 IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上にセキュリティ標準が提供されて維持されます。 デーモンは起動のたびに開始され、IoT Edge ランタイムの残りの部分を開始することでデバイスをブートストラップします。
 
-このセクションの手順では、インターネットに接続されているデバイスに最新バージョンをインストールする一般的なプロセスが示されています。 プレリリース バージョンなどの特定のバージョンをインストールする必要がある場合、またはオフラインの間にインストールする必要がある場合は、「[オフラインまたは特定のバージョンのインストール](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional)」の手順に従ってください。
+このセクションの手順では、インターネットに接続されているデバイスに最新バージョンをインストールする一般的なプロセスが示されています。 プレリリース バージョンなどの特定のバージョンをインストールする必要がある場合、またはオフラインの間にインストールする必要がある場合は、「[オフラインまたは特定のバージョンのインストール](how-to-provision-single-device-linux-symmetric.md#offline-or-specific-version-installation-optional)」の手順に従ってください。
 
 1. デバイスのパッケージ リストを更新します。
 
@@ -262,7 +262,7 @@ IoT Edge サービスによって、IoT Edge デバイス上にセキュリテ�
 
 IoT ID サービスは、IoT Edge のバージョン 1.2 と共に導入されました。 このサービスにより、IoT Edge と、IoT Hub と通信する必要があるその他のデバイス コンポーネントの ID のプロビジョニングと管理が処理されます。
 
-このセクションの手順では、インターネットに接続されているデバイスに最新バージョンをインストールする一般的なプロセスが示されています。 プレリリース バージョンなどの特定のバージョンをインストールする必要がある場合、またはオフラインの間にインストールする必要がある場合は、「[オフラインまたは特定のバージョンのインストール](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional)」の手順に従ってください。
+このセクションの手順では、インターネットに接続されているデバイスに最新バージョンをインストールする一般的なプロセスが示されています。 プレリリース バージョンなどの特定のバージョンをインストールする必要がある場合、またはオフラインの間にインストールする必要がある場合は、「[オフラインまたは特定のバージョンのインストール](how-to-provision-single-device-linux-symmetric.md#offline-or-specific-version-installation-optional)」の手順に従ってください。
 
 デバイスのパッケージ リストを更新します。
 

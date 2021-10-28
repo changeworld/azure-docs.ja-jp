@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/04/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 851e1a04b7fa5ac14848c9d679118a8ebf4ada77
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e5a6f2fe52a9b74f74047a5a9512e40bb267161f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779578"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245286"
 ---
 # <a name="virtual-network-nat-gateway-integration"></a>Virtual Network NAT ゲートウェイの統合
 
@@ -34,8 +34,8 @@ NAT ゲートウェイにより、インターネットに接続された送信�
 
 App Service との NAT ゲートウェイ統合を構成するには、次の手順を実行する必要があります。
 
-* 「[アプリを Azure 仮想ネットワークと統合する](../web-sites-integrate-with-vnet.md)」の説明に従って、アプリとのリージョン VNet 統合を構成します
-* VNet 統合に対して [[Route All]\(すべてルーティング\)](../web-sites-integrate-with-vnet.md#routes) が有効になっていることを確認します。これにより、インターネットにバインドされたトラフィックは VNet 内のルートの影響を受けるようになります。
+* 「[アプリを Azure 仮想ネットワークと統合する](../overview-vnet-integration.md)」の説明に従って、アプリとのリージョン VNet 統合を構成します
+* VNet 統合に対して [[Route All]\(すべてルーティング\)](../overview-vnet-integration.md#routes) が有効になっていることを確認します。これにより、インターネットにバインドされたトラフィックは VNet 内のルートの影響を受けるようになります。
 * パブリック IP を使用して NAT ゲートウェイをプロビジョニングし、VNet 統合サブネットに関連付けます。
 
 ポータルを使用して NAT ゲートウェイを設定します。
@@ -84,4 +84,4 @@ NAT ゲートウェイでは、パブリック IP アドレスとパブリック
 ## <a name="next-steps"></a>次のステップ
 NAT ゲートウェイの詳細については、[NAT ゲートウェイのドキュメント](../../virtual-network/nat-gateway/nat-overview.md)を参照してください。
 
-VNet 統合の詳細については、[VNet 統合のドキュメント](../web-sites-integrate-with-vnet.md)を参照してください。
+VNet 統合の詳細については、[VNet 統合のドキュメント](../overview-vnet-integration.md)を参照してください。

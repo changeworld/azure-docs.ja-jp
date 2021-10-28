@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 893ed45046cef2feb10c64464952dafa34d16021
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 95b094620dd9cb3b36ce5f6de664a6aaf8c7990f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676943"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247552"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Event Grid を使用した通話の記録とダウンロード
 
@@ -219,5 +219,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - Microsoft の [Web 通話のサンプル](../../samples/web-calling-sample.md)を確認する
-- [Calling SDK の機能](./calling-client-samples.md?pivots=platform-web)について確認する
+- [Calling SDK の機能](./getting-started-with-calling.md?pivots=platform-web)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

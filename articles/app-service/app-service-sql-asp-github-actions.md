@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 09/13/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: 01d4293b33eb0756dec8bc9ae870a972959ced89
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a63a51299cf6ffac98dd7514e79c762b2acb67bd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701968"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236563"
 ---
 # <a name="tutorial-use-github-actions-to-deploy-to-app-service-and-connect-to-a-database"></a>チュートリアル: GitHub Actions を使用して App Service にデプロイし、データベースに接続する
 
-GitHub Actions ワークフローを設定して、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) バックエンドで ASP.NET Core アプリケーションをデプロイする方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。 まず、[ARM テンプレート](/azure/azure-resource-manager/templates/overview)を使用してリソースを作成します。
+GitHub Actions ワークフローを設定して、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) バックエンドで ASP.NET Core アプリケーションをデプロイする方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。 まず、[ARM テンプレート](../azure-resource-manager/templates/overview.md)を使用してリソースを作成します。
 
 このチュートリアルでは、コンテナーは使用しません。 コンテナー化された ASP.NET Core アプリケーションにデプロイする場合は、[GitHub Actions を使用した App Service for Containers へのデプロイとデータベースへの接続](app-service-sql-github-actions.md)に関する記事をご覧ください。
 
@@ -89,7 +89,7 @@ az group create --name {resource-group-name} --location {resource-group-location
  
 ## <a name="create-azure-resources"></a>Azure リソースを作成する
 
-Azure リソースの作成ワークフローにより、[ARM テンプレート](/azure/azure-resource-manager/templates/overview)が実行され、リソースが Azure にデプロイされます。 ワークフローは次のようになります。
+Azure リソースの作成ワークフローにより、[ARM テンプレート](../azure-resource-manager/templates/overview.md)が実行され、リソースが Azure にデプロイされます。 ワークフローは次のようになります。
 
 - [Checkout アクション](https://github.com/marketplace/actions/checkout)を使用してソース コードをチェックアウトします。
 - [Azure Login アクション](https://github.com/marketplace/actions/azure-login)を使用して Azure にログインし、環境と Azure リソース情報を収集します。

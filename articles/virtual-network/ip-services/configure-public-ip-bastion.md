@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 22fa5e1843cdff45a5bea9fb61393a0579278964
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: bd89926102c13937843b6bdbaba43e5915f3fddb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367763"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234001"
 ---
 # <a name="manage-a-public-ip-address-with-azure-bastion"></a>Azure Bastion でパブリック IP アドレスを管理する
 
@@ -29,7 +29,7 @@ Azure Bastion ホストの構成には、パブリック IP アドレスが必�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 1 つの Standard SKU のパブリック IP アドレス。 これらの IP アドレスはどのリソースにも関連付けできません。 Standard SKU のパブリック IP アドレス作成の詳細については、[パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md) を参照してください。
+- サブスクリプション内の 1 つの Standard SKU のパブリック IP アドレス。 これらの IP アドレスはどのリソースにも関連付けできません。 Standard SKU のパブリック IP アドレス作成の詳細については、[パブリック IP の作成 - Azure portal](./create-public-ip-portal.md) を参照してください。
     - このアーティクルの例では、新しいパブリック IP アドレスに **myStandardPublicIP** という名前を付けます。
 
 ## <a name="create-azure-bastion-using-existing-ip"></a>既存の IP を使用して Azure bastion を作成する
@@ -85,4 +85,4 @@ Azure Bastion は、作成後のパブリック IP アドレスの変更をサ�
 この記事では、Azure bastion を作成し、既存のパブリック IP を使用する方法について説明しました。 
 
 - Azure Bastion の詳細については、「[Azure Bastion とは](../../bastion/bastion-overview.md)」を参照してください。
-- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。

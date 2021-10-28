@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 09/21/2021
 ms.author: mbaldwin
 ms.custom: subject-monitoring
-ms.openlocfilehash: 59fb467c2494fa6fa15c10fe9556975b87e0780e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 229b7ace69c3b91f38f0cfb6e764f7771b4ff495
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000007"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234550"
 ---
 # <a name="monitoring-azure-key-vault"></a>Azure Key Vault の監視
 
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 Azure Key Vault の場合、スケーリングを開始するとキー コンテナーに送信される要求の数が増えるので、サービスを監視することが重要です。 これにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。
 
-この記事では、Key Vault によって生成される監視データについて説明します。 Key Vault では [Azure Monitor](/azure/azure-monitor/overview) が使用されます。 Azure Monitor を使用するすべての Azure サービスにとって共通する機能に詳しくない場合は、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/essentials/monitor-azure-resource)」を参照してください。
+この記事では、Key Vault によって生成される監視データについて説明します。 Key Vault では [Azure Monitor](../../azure-monitor/overview.md) が使用されます。 Azure Monitor を使用するすべての Azure サービスにとって共通する機能に詳しくない場合は、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
 
 ## <a name="monitoring-overview-page-in-azure-portal"></a>Azure portal の [監視の概要] ページ
 
@@ -47,7 +47,7 @@ Key Vault 分析情報ではキー コンテナーの要求、パフォーマン
 
 ## <a name="monitoring-data"></a>データの監視
 
-Key Vault では、[Azure リソースの監視データ](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data-from-Azure-resources)に関するページで説明されている他の Azure リソースと同じ種類の監視データが収集されます。
+Key Vault では、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md)に関するページで説明されている他の Azure リソースと同じ種類の監視データが収集されます。
 
 Key Vault によって作成されるメトリックとログ メトリックの詳細については、「[*Key Vault* 監視データのリファレンス](monitor-key-vault-reference.md)」を参照してください。
 
@@ -57,13 +57,13 @@ Key Vault によって作成されるメトリックとログ メトリックの
 
 リソース ログは、診断設定を作成して 1 つ以上の場所にルーティングするまでは収集および格納されません。
 
-Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../../azure-monitor/platform/diagnostic-settings.md)」を参照してください。 診断設定を作成するときは、収集するログのカテゴリを指定します。 *Key Vault* のカテゴリは、[Key Vault 監視データのリファレンス](monitor-key-vault-reference.md#resource-logs)に関するページに一覧表示されています。
+Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。 診断設定を作成するときは、収集するログのカテゴリを指定します。 *Key Vault* のカテゴリは、[Key Vault 監視データのリファレンス](monitor-key-vault-reference.md#resource-logs)に関するページに一覧表示されています。
 
 キー コンテナーの診断設定を作成するには、「[Key Vault のログ記録を有効にする](howto-logging.md)」を参照してください。  収集できるメトリックとログについては、次のセクションで説明します。
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
 
-**Azure Monitor** のメニューから **[メトリック]** を開き、メトリックス エクスプローラーを使用して、Key Vault のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](/azure/azure-monitor/platform/metrics-getting-started)」を参照してください。
+**Azure Monitor** のメニューから **[メトリック]** を開き、メトリックス エクスプローラーを使用して、Key Vault のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
 
 Key Vault のために収集されるプラットフォーム メトリックの一覧については、[Key Vault 監視データのリファレンスのメトリック](monitor-key-vault-reference.md#metrics)に関するページを参照してください  
 
@@ -71,9 +71,9 @@ Key Vault のために収集されるプラットフォーム メトリックの
 
 Azure Monitor ログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。  
 
-Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../../azure-monitor/platform/diagnostic-logs-schema.md#top-level-resource-logs-schema)に関する記事をご覧ください 
+Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../../azure-monitor/essentials/resource-logs-schema.md)に関する記事をご覧ください 
 
-[アクティビティ ログ](../../azure-monitor/platform/activity-log.md)は、サブスクリプションレベルのイベントに関する分析情報を提供する Azure のプラットフォーム ログの一種です。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
+[アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)は、サブスクリプションレベルのイベントに関する分析情報を提供する Azure のプラットフォーム ログの一種です。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
 
 Key Vault 用に収集されるリソース ログの種類の一覧については、「[Key Vault 監視データのリファレンス](monitor-key-vault-reference.md#resource-logs)」を参照してください  
 
@@ -84,7 +84,7 @@ Azure Monitor ログによって使用され、Log Analytics によってクエ�
 > [!IMPORTANT]
 > Key Vault のメニューから **[ログ]** を選択すると、クエリのスコープが現在のキー コンテナーに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のキー コンテナーのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **[Azure Monitor]** メニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](/azure/azure-monitor/log-query/scope/)」を参照してください。
 
-Key Vault リソースの監視に利用できる、 **[ログ検索]** バーに入力するクエリを紹介します。 これらのクエリは[新しい言語](/azure/azure-monitor/logs/log-query-overview)で使用できます。
+Key Vault リソースの監視に利用できる、 **[ログ検索]** バーに入力するクエリを紹介します。 これらのクエリは[新しい言語](../../azure-monitor/logs/log-query-overview.md)で使用できます。
 
 * 低速な要求はあるか?
 
@@ -178,9 +178,9 @@ Key Vault リソースの監視に利用できる、 **[ログ検索]** バー�
 
 ## <a name="alerts"></a>警告
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、先回りして問題を識別して対処できます。 アラートは[メトリック](../../azure-monitor/platform/alerts-metric-overview.md)、[ログ](../../azure-monitor/platform/alerts-unified-log.md)、[アクティビティ ログ](../../azure-monitor/platform/activity-log-alerts.md)に対して設定できます。  
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、先回りして問題を識別して対処できます。 アラートは[メトリック](../../azure-monitor/alerts/alerts-metric-overview.md)、[ログ](../../azure-monitor/alerts/alerts-unified-log.md)、[アクティビティ ログ](../../azure-monitor/alerts/activity-log-alerts.md)に対して設定できます。  
 
-Azure Key Vault 上で動作するアプリケーションを作成または実行している場合、[Azure Monitor Application Insights](/azure/azure-monitor/overview#application-insights) に、追加の種類のアラートがある場合があります。
+Azure Key Vault 上で動作するアプリケーションを作成または実行している場合、[Azure Monitor Application Insights](../../azure-monitor/overview.md#application-insights) に、追加の種類のアラートがある場合があります。
 
 Azure Key Vault の一般的な推奨されるアラート ルールを次に示します。
 
@@ -195,5 +195,5 @@ Azure Key Vault の一般的な推奨されるアラート ルールを次に示
 ## <a name="next-steps"></a>次のステップ
 
 - Key Vault によって作成されるメトリック、ログ、その他の重要な値のリファレンスについては、[Azure Key Vault 監視データのリファレンス](monitor-key-vault-reference.md)に関する記事を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resource)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
 - [Azure Key Vault のアラート](alert.md)に関するページを参照してください。

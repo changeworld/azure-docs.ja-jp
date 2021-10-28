@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f79e436f1fcce346304b2e88f213ff298b27aa04
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: f4b706c296c6f6d4f5921675dd87ec8f4052b9a5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300833"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256669"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -25,7 +25,7 @@ Service Map は自動的に Windows および Linux のシステム上のアプ�
 * Windows コンピューターまたは Linux サーバーにインストールされている [Dependency Agent](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM insights でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM insights の概要](../vm/vminsights-overview.md)に関するページをご覧ください。 Service Map ソリューションと VM insights のマップ機能の違いについては、次の [FAQ](/azure/azure-monitor/faq#vm-insights) をご覧ください。
+>Service Map を既にデプロイ済みの場合は、VM insights でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM insights の概要](../vm/vminsights-overview.md)に関するページをご覧ください。 Service Map ソリューションと VM insights のマップ機能の違いについては、次の [FAQ](../faq.yml) をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -570,7 +570,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解決方法 |
+| コード | 説明 | 解像度 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 

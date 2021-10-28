@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: aaafc0cf6134aa701ef30953460f55fc77fed27a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 73bc6efce68a49bf85d5485f4d9429e9826e7861
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661794"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235452"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間のデータの移動
 
@@ -677,7 +677,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| UNIQUEIDENTIFIER |Guid |
+| UNIQUEIDENTIFIER |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |

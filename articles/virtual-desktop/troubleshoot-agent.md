@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 31a65c31558940ba7e39e21c8b6e33ffa8e7c9b9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 12132e5143546abc2b12a83e3e6cd92a43069e1e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633659"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263043"
 ---
 # <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -144,7 +144,7 @@ Azure Virtual Desktop エージェントでは、次の複数の要因のため�
 3. [エージェント サービスが実行](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running)されていて、かつ[スタック リスナーが動作](#error-stack-listener-isnt-working-on-windows-10-2004-vm)していることを確認します。
 4. [エージェントをブローカーに接続できる](#error-agent-cannot-connect-to-broker-with-invalid_form)ことを確認します。
 5. [VM に有効な登録トークンが](#error-invalid_registration_token)あることを確認します。
-6. [VM 登録トークンの有効期限が切れていない](/azure/virtual-desktop/faq#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)ことを確認します。 
+6. [VM 登録トークンの有効期限が切れていない](./faq.yml)ことを確認します。 
 
 ## <a name="error-installmsiexception"></a>エラー:InstallMsiException
 

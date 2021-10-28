@@ -4,12 +4,12 @@ description: Azure Private Link を使用して、HDInsight クラスターの�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d21f543d7736ee69a9c15a7b2a4bf0ccd0e877e2
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5ed9587c0c8bdb378206db70ca459cc8cd004b45
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130165191"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215561"
 ---
 # <a name="enable-private-link-on-an-hdinsight-cluster"></a>HDInsight クラスターで Private Link を有効にする
 
@@ -22,7 +22,7 @@ Private Link は、仮想ネットワーク ピアリングが利用できない
 
 Private Link を使用して HDInsight クラスターに接続する機能はオプションであり、既定では無効になっています。 この機能は、[Azure HDInsight でのクラスター接続の制限](./hdinsight-restrict-public-connectivity.md)に関する記事で説明されているように、`resourceProviderConnection`ネットワーク プロパティが *outbound* に設定されている場合にのみ使用できます。
 
-`privateLink` が *enabled* に設定されている場合は、内部の[標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
+`privateLink` が *enabled* に設定されている場合は、内部の [標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -105,7 +105,7 @@ Azure で管理されているパブリック DNS ゾーン `azurehdinsight.net`
 
 ```json
 networkProperties: {
-    "resourceProviderConnection": "Inbound" | "Outbound",
+    "resourceProviderConnection": "Outbound",
     "privateLink": "Enabled"
 }
 ```

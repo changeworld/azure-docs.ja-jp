@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456f635e3cd7be91064a15b87c0da627678fdc45
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 73bd6ed2c94ca696eefd4e7a3dfcf5b78cc6dd99
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732982"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251188"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -283,7 +283,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
    * リスク イベント 
 
-    Azure AD により、サインイン アクティビティ ログと監査ログのための [Azure Monitor の統合](../reports-monitoring/concept-activity-logs-azure-monitor.md)が提供されます。 リスク イベントは、[Microsoft Graph API](/graph/api/resources/identityriskevent) を使用して取り込むことができます。 [Azure Monitor ログに Azure AD ログをストリーム配信する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)ことができます。
+    Azure AD により、サインイン アクティビティ ログと監査ログのための [Azure Monitor の統合](../reports-monitoring/concept-activity-logs-azure-monitor.md)が提供されます。 リスク イベントは、[Microsoft Graph API](/graph/api/resources/identityprotection-root) を使用して取り込むことができます。 [Azure Monitor ログに Azure AD ログをストリーム配信する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)ことができます。
 
 * **ハイブリッド インフラストラクチャの OS セキュリティ ログ**: すべてのハイブリッド ID インフラストラクチャ OS ログは、外部からのアクセスの影響があるため、アーカイブし、階層 0 システムとして注意深く監視する必要があります。 次の要素が含まれます。 
 

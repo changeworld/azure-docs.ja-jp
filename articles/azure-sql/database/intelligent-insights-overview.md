@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 06/12/2020
-ms.openlocfilehash: f05770143719b616aa0e195d6b719ae28da9dcd9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 10/18/2021
+ms.openlocfilehash: 3277952383d7a328c08a15b5958289ce322e01dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593041"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239454"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,11 +59,6 @@ Intelligent Insights は、過去 1 時間のデータベース ワークロー�
 | 検出 | イベントの期間中に、データベースで識別された検出。 15 の検出パターンがあります。 詳細については、[Intelligent Insights を使用したデータベース パフォーマンスに関する問題のトラブルシューティング](intelligent-insights-troubleshoot-performance.md)に関する記事をご覧ください。 |
 | 根本原因分析 | 人間が判読可能な形式で特定された、問題の根本原因分析。 一部の洞察には、可能な場合にパフォーマンス向上に関する推奨事項が含まれます。 |
 |||
-
-Azure SQL Analytics を伴う Intelligent Insights の使用に関する実践的な概要と、一般的な使用シナリオについては、このビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
->
 
 Intelligent Insights は、データベースのパフォーマンス問題の検出とトラブルシューティングで威力を発揮します。 Intelligent Insights を使用してデータベース パフォーマンスの問題を解決する方法については、「[Intelligent Insights を使用したパフォーマンスに関する問題のトラブルシューティング](intelligent-insights-troubleshoot-performance.md)」をご覧ください。
 

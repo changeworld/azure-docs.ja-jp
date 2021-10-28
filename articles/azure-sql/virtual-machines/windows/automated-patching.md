@@ -16,12 +16,12 @@ ms.date: 03/07/2018
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 689b7565acad65ec963cf28d0f1fb164446e8764
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8dc75fcddc1fc8fde70b4f86537edb0390391ef1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162393"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250409"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 仮想マシンでの SQL Server の自動修正 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -125,11 +125,10 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 自動修正を無効にするには、**New-AzVMSqlServerAutoPatchingConfig** の **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。
 
 > [!NOTE]
-> また、Azure VM の自動修正 ([Update Management](/azure/automation/update-management/overview) や [VM ゲストの自動パッチ適用](/azure/virtual-machines/automatic-vm-guest-patching)など) を有効にする他の方法もいくつかあります。 ツールが重複すると更新に失敗する可能性があるため、VM を自動的に更新するオプションを 1 つだけ選択してください。 
+> また、Azure VM の自動修正 ([Update Management](../../../automation/update-management/overview.md) や [VM ゲストの自動パッチ適用](../../../virtual-machines/automatic-vm-guest-patching.md)など) を有効にする他の方法もいくつかあります。 ツールが重複すると更新に失敗する可能性があるため、VM を自動的に更新するオプションを 1 つだけ選択してください。 
 
 
 ## <a name="next-steps"></a>次のステップ
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。
 
 Azure VM で SQL Server を実行する方法の詳細については、[Azure 仮想マシンにおける SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。
-

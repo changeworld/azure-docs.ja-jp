@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: danlep
-ms.openlocfilehash: 65f45758ab00d9e549ac0e52287a198bf5734acd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72bc12589cb63e2fcecc5568dbf628ccacb85394
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671205"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224651"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "128671205"
 
 プレーンテキストの値またはシークレットには[ポリシー式](./api-management-policy-expressions.md)を含めることができます。 たとえば、式 `@(DateTime.Now.ToString())` では、現在の日付と時刻を含む文字列が返されます。
 
-名前付きの値の属性の詳細については、API Management の [REST API リファレンス](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate)のページを参照してください。
+名前付きの値の属性の詳細については、API Management の [REST API リファレンス](/rest/api/apimanagement/2021-04-01-preview/named-value/create-or-update)のページを参照してください。
 
 ## <a name="key-vault-secrets"></a>キー コンテナーのシークレット
 
@@ -206,4 +206,3 @@ az apim nv delete --resource-group apim-hello-word-resource-group \
     -   [ポリシー式](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-

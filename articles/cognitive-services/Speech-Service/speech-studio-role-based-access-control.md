@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: pafarley
-ms.openlocfilehash: 72d2acd25381af654fb098d81a7cdc4ec0bbce22
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c234aa457c6aa77ff16f8297ca5861a66a5e05aa
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699779"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264524"
 ---
 # <a name="azure-role-based-access-control-in-speech-studio"></a>Speech Studio での Azure ロールベースのアクセス制御 
 
-Speech Studio では、Azure リソースへの個々のアクセスを管理するための認可システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用して、お使いの Speech Studio 操作に対するさまざまなレベルのアクセス許可を、さまざまなチーム メンバーに割り当てることができます。 Azure RBAC の詳細については、「[Azure RBAC のドキュメント](/azure/role-based-access-control/overview)」を参照してください。
+Speech Studio では、Azure リソースへの個々のアクセスを管理するための認可システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Azure RBAC を使用して、お使いの Speech Studio 操作に対するさまざまなレベルのアクセス許可を、さまざまなチーム メンバーに割り当てることができます。 Azure RBAC の詳細については、「[Azure RBAC のドキュメント](../../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,7 @@ Speech Studio では、Azure リソースへの個々のアクセスを管理す
 
 Azure Speech リソースへのアクセス権を付与するには、Azure portal の Azure RBAC ツールを使用してロールの割り当てを追加します。 
 
-数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](/azure/role-based-access-control/role-assignments-portal?tabs=current)」を参照してください。
+数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md?tabs=current)」を参照してください。
 
 ## <a name="supported-built-in-roles-in-speech-studio"></a>Speech Studio でサポートされている組み込みロール
 
@@ -45,7 +45,7 @@ Azure Speech リソースへのアクセス権を付与するには、Azure port
 |**Cognitive Service Speech ユーザー** |いいえ |プロジェクト/データセット/モデル/エンドポイントを表示できます。作成、編集、削除を行うことはできません |プロジェクト/データセット/モデル/エンドポイントを表示できます。作成、編集、削除を行うことはできません |フル アクセス |
 |**Cognitive Services データ閲覧者 (プレビュー)** |いいえ |プロジェクト/データセット/モデル/エンドポイントを表示できます。作成、編集、削除を行うことはできません |プロジェクト/データセット/モデル/エンドポイントを表示できます。作成、編集、削除を行うことはできません |フル アクセス |
 
-または、[独自のカスタム ロールを作成](/azure/role-based-access-control/custom-roles)することもできます。 たとえば、カスタム音声データセットをアップロードすることはできるが、エンドポイントにカスタム音声モデルを配置することはできないアクセス許可を持つカスタム ロールを作成できます。
+または、[独自のカスタム ロールを作成](../../role-based-access-control/custom-roles.md)することもできます。 たとえば、カスタム音声データセットをアップロードすることはできるが、エンドポイントにカスタム音声モデルを配置することはできないアクセス許可を持つカスタム ロールを作成できます。
 
 > [!NOTE]
 > Speech Studio は、キーベースの認証をサポートしています。 リソースキー (`Microsoft.CognitiveServices/accounts/listKeys/action`) を一覧表示するアクセス許可を持つロールは、最初にリソースキーで認証され、Azure portal でキー認証が有効になっている限り、Speech Studio 操作へのフルアクセスを持ちます。 キー認証がサービス管理者によって無効にされている場合、これらのロールは、Studio へのすべてのアクセスを失います。
@@ -55,4 +55,4 @@ Azure Speech リソースへのアクセス権を付与するには、Azure port
 
 ## <a name="next-steps"></a>次のステップ
 
-[Speech サービスによる保存データの暗号化](/azure/cognitive-services/speech-service/speech-encryption-of-data-at-rest)について学習します。
+[Speech サービスによる保存データの暗号化](./speech-encryption-of-data-at-rest.md)について学習します。

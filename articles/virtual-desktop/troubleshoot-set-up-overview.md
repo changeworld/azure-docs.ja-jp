@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f8abe1cc793b5e7e5528d377ee0a7226d5415909
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 435f26a7fba7939ffc7ac370c648f6aae0d7a67f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045296"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234039"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-azure-virtual-desktop"></a>Azure Virtual Desktop のトラブルシューティングの概要、フィードバック、サポート
 
@@ -34,7 +34,7 @@ ms.locfileid: "130045296"
 
 まず初めに、[Azure の状態のページ](https://status.azure.com/status)と [Azure Service Health](https://azure.microsoft.com/features/service-health/) を確認して、Azure サービスが正常に実行されていることを確認してください。
 
-リモート デスクトップ クライアントを使用して環境を設定しているときに発生することがある問題を特定し、解決するために次の表をご利用ください。 環境が設定されたら、新しい[診断サービス](diagnostics-role-service.md)を使用して、一般的なシナリオに関する問題を識別できます。
+リモート デスクトップ クライアントを使用して環境を設定しているときに発生することがある問題を特定し、解決するために次の表をご利用ください。 環境が設定されたら、新しい[診断サービス]()を使用して、一般的なシナリオに関する問題を識別できます。
 
 | **問題点**                                                            | **推奨されている解決方法**  |
 |----------------------------------------------------------------------|-------------------------------------------------|

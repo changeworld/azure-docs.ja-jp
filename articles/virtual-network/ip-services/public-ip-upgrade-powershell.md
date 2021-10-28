@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ca3d72ad346bf86ecf6d12a8292938aac2ac7117
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: bd34b38710bdf4cc3fe4d21c5dee8e1bb7773124
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367687"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254066"
 ---
 # <a name="upgrade-a-public-ip-address-using-azure-powershell"></a>Azure PowerShell を使用してパブリック IP アドレスをアップグレードする
 
@@ -24,7 +24,7 @@ Azure パブリック IP アドレスは Basic または Standard のいずれ�
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* サブスクリプション内の **静的な** Basic SKU のパブリック IP アドレス。 詳細については、[パブリック IP アドレスの作成 - Azure portal](../../virtual-network/create-public-ip-portal.md#create-a-basic-sku-public-ip-address) に関するページを参照してください。
+* サブスクリプション内の **静的な** Basic SKU のパブリック IP アドレス。 詳細については、[パブリック IP アドレスの作成 - Azure portal](./create-public-ip-portal.md#create-a-basic-sku-public-ip-address) に関するページを参照してください。
 * ローカルにインストールされた Azure PowerShell または Azure Cloud Shell
 
 PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
@@ -76,5 +76,4 @@ $pubIP.Sku.Name
 Azure のパブリック IP アドレスに関する詳細については、次を参照してください。
 
 - [Azure でのパブリック IP アドレス](public-ip-addresses.md)
-- [パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md)
-
+- [パブリック IP の作成 - Azure portal](./create-public-ip-portal.md)

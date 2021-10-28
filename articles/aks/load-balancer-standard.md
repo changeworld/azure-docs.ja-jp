@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 73c91e1c4d72fce5757b0b1a0caafc22e0fbcc60
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 764f6585aab43ba1f6db29a234cc2bc554b78c58
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230519"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236677"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -127,7 +127,7 @@ AKS によって作成されるパブリック IP は、AKS 管理対象リソ�
 
 - カスタム パブリック IP アドレスは、ユーザーが作成して所有する必要があります。 管理の競合が発生するため、AKS によって作成されるマネージド パブリック IP アドレスを独自のカスタム IP として再使用することはできません。
 - 送信 IP にアクセスするためのアクセス許可が AKS クラスター ID (サービス プリンシパルまたはマネージド ID) に付与されていることを確認する必要があります。 [必要なパブリック IP アクセス許可リストに従って](kubernetes-service-principal.md#networking)します。
-- 送信 IP または送信 IP プレフィックスを構成するために必要な[前提条件と制約](../virtual-network/public-ip-address-prefix.md#limitations)を満たしていることをご確認ください。
+- 送信 IP または送信 IP プレフィックスを構成するために必要な[前提条件と制約](../virtual-network/ip-services/public-ip-address-prefix.md#limitations)を満たしていることをご確認ください。
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>クラスターを独自の送信パブリック IP で更新する
 

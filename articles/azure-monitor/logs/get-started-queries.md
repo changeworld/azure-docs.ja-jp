@@ -4,13 +4,13 @@ description: この記事では、Azure Monitor でログ クエリの記述を�
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 10/24/2019
-ms.openlocfilehash: cc06241e948f2f82440d6e41f5a7a26639a54a9a
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.date: 10/20/2021
+ms.openlocfilehash: b7ac389da66d68cd0fdddf15b46ddcee6ff537f6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418733"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248251"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 

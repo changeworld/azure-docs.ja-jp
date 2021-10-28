@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: peterlu
-ms.openlocfilehash: d6d73754a22a3a0870a6ea141e4a21e7f2ccff09
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 83671800c0068ad606b6dbdad7448d55a1aea8cf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688772"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288005"
 ---
 次の表は、ML Studio (classic) と Azure Machine Learning との主な違いをまとめたものです。
 
@@ -25,6 +25,6 @@ ms.locfileid: "122688772"
 | モデル形式 | 専用の形式、Studio (クラシック) のみ | トレーニング ジョブの種類に応じて複数の形式がサポートされます |
 | 自動化されたモデル トレーニングとハイパーパラメーター調整 |  サポートされていません | [サポートされています](../articles/machine-learning/concept-automated-ml.md)。 コード ファースト オプションとコードなしオプション。 | 
 | データ ドリフト検出 | サポートされていません | [サポートされています](../articles/machine-learning/how-to-monitor-datasets.md) |
-| プロジェクトのラベル付けデータ | サポートされていません | [サポートされています](../articles/machine-learning/how-to-create-labeling-projects.md) |
+| プロジェクトのラベル付けデータ | サポートされていません | [サポートされています](../articles/machine-learning/how-to-create-image-labeling-projects.md) |
 | ロール ベースのアクセス制御 (RBAC) | 共同作成者と所有者ロールのみ | [柔軟なロール定義と RBAC 制御](../articles/machine-learning/how-to-assign-roles.md) |
 | AI Gallery | サポート対象 ([https://gallery.azure.ai/](https://gallery.azure.ai/)) | サポートされていない <br><br> [Python SDK ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks)を参照してください。 |

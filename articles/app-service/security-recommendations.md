@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 452c0479834ab7929696af2c95454662adfecfab
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5c8a6974778e76afc6f2ca7018e034ad5655690c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538329"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262529"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
@@ -49,7 +49,7 @@ ms.locfileid: "123538329"
 |-|-|
 | 静的 IP の制限を使用する | Windows 上の Azure App Service では、アプリへのアクセスを許可されている IP アドレスの一覧を定義できます。 許可一覧には、個々 の IP アドレスまたはサブネット マスクによって定義された IP アドレスの範囲を含めることができます。 詳細については、「[Azure App Service 静的 IP 制限](app-service-ip-restrictions.md)」を参照してください。  |
 | Isolated 価格レベルを使用する | Isolated 価格レベルを除くすべての価格レベルでは、Azure App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 Isolated 価格レベルでは、専用の [App Service Environment](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service Environment は、[Azure Virtual Network](../virtual-network/index.yml) の独自のインスタンスで実行されます。|
-| オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](web-sites-integrate-with-vnet.md)、または [App Service Environment](environment/intro.md)を使用できます。 |
+| オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](./overview-vnet-integration.md)、または [App Service Environment](environment/intro.md)を使用できます。 |
 | 受信ネットワーク トラフィックへの露出を制限する | ネットワーク セキュリティ グループを使用すると、ネットワーク アクセスを制限し、公開するエンドポイントの数を制御できます。 詳細については、[App Service Environment への受信トラフィックを制御する方法](environment/app-service-app-service-environment-control-inbound-traffic.md)に関する記事を参照してください。 |
 
 ## <a name="monitoring"></a>監視

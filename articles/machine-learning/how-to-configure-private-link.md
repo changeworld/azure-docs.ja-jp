@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/07/2021
-ms.openlocfilehash: 9bb40b02df8de4bbd5fc7e59f55c7f31052b3480
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: cd08a4cb752ede0f958adde438cb516791f4ae76
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429891"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215142"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する
 
@@ -191,11 +191,11 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 * 別の VNet 内の Azure Kubernetes Service (AKS) クラスター。
 * 別の VNet 内の他の Azure サービス。 たとえば、Azure Synapse と Azure Data Factory で、1 つの Microsoft マネージド仮想ネットワークを使用できます。 どの場合も、ワークスペース用のプライベート エンドポイントを、それらのサービスによって使用されるマネージド VNet に追加できます。 これらのサービスでマネージド仮想ネットワークを使用する方法の詳細については、次の記事を参照してください。
 
-    * [Synapse のマネージド プライベート エンドポイント](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints)
-    * [Azure Data Factory のマネージド仮想ネットワーク](/azure/data-factory/managed-virtual-network-private-endpoint)。
+    * [Synapse のマネージド プライベート エンドポイント](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)
+    * [Azure Data Factory のマネージド仮想ネットワーク](../data-factory/managed-virtual-network-private-endpoint.md)。
 
     > [!IMPORTANT]
-    > [Synapse のデータ流出防止](/azure/synapse-analytics/security/workspace-data-exfiltration-protection)は、Azure Machine Learning ではサポートされていません。
+    > [Synapse のデータ流出防止](../synapse-analytics/security/workspace-data-exfiltration-protection.md)は、Azure Machine Learning ではサポートされていません。
 
 > [!IMPORTANT]
 > ワークスペース用のプライベート エンドポイントが含まれる各 VNet は、ワークスペースで使用される Azure ストレージ アカウント、Azure Key Vault、Azure Container Registry にアクセスできる必要があります。 たとえば、各 VNet にサービス用のプライベート エンドポイントを作成します。

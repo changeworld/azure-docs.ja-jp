@@ -7,12 +7,12 @@ ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fd970e80f2b091d17c40b15d6c55699721fb1025
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3c4b8c2578d0443077b29eb350ca53c3176e6dbf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349669"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234607"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
@@ -165,7 +165,7 @@ Windows コンテナーでサポートされているオペレーティング �
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/support/green-check.png) | ![Yocto + ARM32v7](./media/support/green-check.png) | ![Yocto + ARM64](./media/support/green-check.png) |
 | Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/support/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/support/green-check.png) |
 
-<sup>1</sup> 「[Azure IoT Edge for Linux をインストールまたはアンインストールする](how-to-install-iot-edge.md)」の Ubuntu Server 18.04 のインストール手順は、Ubuntu 20.04 でそのまま機能します。
+<sup>1</sup> 「[Azure IoT Edge for Linux をインストールまたはアンインストールする](how-to-provision-single-device-linux-symmetric.md)」の Ubuntu Server 18.04 のインストール手順は、Ubuntu 20.04 でそのまま機能します。
 
 ## <a name="releases"></a>リリース
 

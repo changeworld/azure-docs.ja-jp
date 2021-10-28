@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 10/01/2021
 ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 1cbd1a3a43b7693c62c2955ae89b11c35f7d375e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 13440b0d504effa4faf231cc181731cca7053dc3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426569"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234393"
 ---
 # <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
 
 独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 必要なパッケージを取得するには、 
-* [完全な `automl` クライアントをインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+* [完全な `automl` クライアントをインストール](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/README.md#setup-using-a-local-conda-environment)します。
 * `pip install azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
 
 ## <a name="download-and-prepare-data"></a>データのダウンロードと準備

@@ -4,12 +4,12 @@ description: Shared Access Signature を使用して Service Bus のアクセス
 ms.topic: article
 ms.date: 10/18/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a31ce93c603f1bc1f0765fb2de438476e1f63de
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 86da611f3d64b4b3b913dc49da7f90c69562d8fc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164962"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263308"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -263,7 +263,7 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 | **ルール** | | |
 | 規則を作成する | リッスン |../myTopic/Subscriptions/mySubscription |
 | 規則を削除する | リッスン |../myTopic/Subscriptions/mySubscription |
-| 規則を列挙する | リッスン |../myTopic/Subscriptions/mySubscription/Rules
+| 規則を列挙する | 管理またはリッスン |../myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>次のステップ
 

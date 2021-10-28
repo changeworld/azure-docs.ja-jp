@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 77dc45d71a4a9706dd645289dd5839ee97c17314
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: e485efa572dd1b786b714b74b4d6df49d7a44853
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472022"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236452"
 ---
 # <a name="mount-azure-storage-as-a-local-share-in-a-container-app-in-app-service"></a>App Service のコンテナー アプリでローカル共有として Azure Storage をマウントする
 
@@ -20,7 +20,7 @@ ms.locfileid: "123472022"
 > [!NOTE]
 >App Service Windows コンテナーの Azure Storage は **プレビュー段階** であり、**運用シナリオ** では **サポートされていません**。
 
-このガイドでは、App Service で Azure Storage ファイルをネットワーク共有として Windows コンテナーにマウントする方法について説明します。 [Azure Files Shares](../storage/files/storage-how-to-use-files-cli.md) および [Premium ファイル共有](../storage/files/storage-how-to-create-file-share.md)のみがサポートされています。 カスタムマウント ストレージの利点は次のとおりです。
+このガイドでは、App Service で Azure Storage ファイルをネットワーク共有として Windows コンテナーにマウントする方法について説明します。 [Azure Files Shares](../storage/files/storage-how-to-use-files-portal.md) および [Premium ファイル共有](../storage/files/storage-how-to-create-file-share.md)のみがサポートされています。 カスタムマウント ストレージの利点は次のとおりです。
 
 ::: zone-end
 
@@ -39,7 +39,7 @@ ms.locfileid: "123472022"
 
 Windows コンテナーでは、次の機能がサポートされています。
 
-- [プライベート リンク](../storage/common/storage-private-endpoints.md)を使用したストレージ アカウントへの安全なアクセス ([VNET 統合](web-sites-integrate-with-vnet.md)が使用される場合)。 [サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)のサポートは現在提供されていません。
+- [プライベート リンク](../storage/common/storage-private-endpoints.md)を使用したストレージ アカウントへの安全なアクセス ([VNET 統合](./overview-vnet-integration.md)が使用される場合)。 [サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)のサポートは現在提供されていません。
 - Azure Files (読み取り/書き込み)。
 - アプリあたり最大 5 つのマウント ポイント。
 - ドライブ文字の割り当て (`C:` から `Z:`)。
@@ -50,7 +50,7 @@ Windows コンテナーでは、次の機能がサポートされています。
 
 Linux コンテナーでは、次の機能がサポートされています。
 
-- [サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)と[プライベート リンク](../storage/common/storage-private-endpoints.md)を使用したストレージ アカウントへの安全なアクセス ([VNET 統合](web-sites-integrate-with-vnet.md)が使用される場合)。
+- [サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)と[プライベート リンク](../storage/common/storage-private-endpoints.md)を使用したストレージ アカウントへの安全なアクセス ([VNET 統合](./overview-vnet-integration.md)が使用される場合)。
 - Azure Files (読み取り/書き込み)。
 - Azure BLOB (読み取り専用)。
 - アプリあたり最大 5 つのマウント ポイント。
@@ -62,7 +62,7 @@ Linux コンテナーでは、次の機能がサポートされています。
 ::: zone pivot="container-windows"
 
 - [Azure App Service の既存の Windows コンテナー アプリ](quickstart-custom-container.md)
-- [Azure ファイル共有の作成](../storage/files/storage-how-to-use-files-cli.md)
+- [Azure ファイル共有の作成](../storage/files/storage-how-to-use-files-portal.md)
 - [Azure File 共有へのファイルのアップロード](../storage/files/storage-how-to-create-file-share.md)
 
 ::: zone-end
@@ -71,7 +71,7 @@ Linux コンテナーでは、次の機能がサポートされています。
 
 - 既存の [App Service on Linux アプリ](index.yml)。
 - [Azure Storage アカウント](../storage/common/storage-account-create.md?tabs=azure-cli)
-- [Azure のファイル共有とディレクトリ](../storage/files/storage-how-to-use-files-cli.md)。
+- [Azure のファイル共有とディレクトリ](../storage/files/storage-how-to-use-files-portal.md)。
 
 ::: zone-end
 
@@ -85,7 +85,7 @@ Linux コンテナーでは、次の機能がサポートされています。
 
 - ストレージのマウントは、ネイティブの Windows アプリ (コンテナー化されていない) ではサポートされていません。
 - Azure Blob はサポートされていません。
-- [ストレージのファイアウォール](../storage/common/storage-network-security.md)は、[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を介してのみサポートされます ([VNET 統合](web-sites-integrate-with-vnet.md)が使用されている場合)。 現在、マウントされた Azure Storage アカウントがプライベート エンドポイントを使用している場合には、カスタム DNS サポートは使用できません。
+- [ストレージのファイアウォール](../storage/common/storage-network-security.md)は、[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を介してのみサポートされます ([VNET 統合](./overview-vnet-integration.md)が使用されている場合)。 現在、マウントされた Azure Storage アカウントがプライベート エンドポイントを使用している場合には、カスタム DNS サポートは使用できません。
 - マウントされたストレージへの FTP/FTPS アクセスはサポートされていません ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してください)。
 - カスタム マウント ストレージへの `[C-Z]:\`、`[C-Z]:\home`、`/`、`/home` のマッピングはサポートされていません。
 - [デプロイ スロット](deploy-staging-slots.md)の作成中に、ストレージのマウントを複製設定オプションと共に使用することはできません。
@@ -95,7 +95,7 @@ Linux コンテナーでは、次の機能がサポートされています。
 
 ::: zone pivot="container-linux"
 
-- [ストレージのファイアウォール](../storage/common/storage-network-security.md)は、[サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)と[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を介してのみサポートされます ([VNET 統合](web-sites-integrate-with-vnet.md)が使用されている場合)。 現在、マウントされた Azure Storage アカウントがプライベート エンドポイントを使用している場合には、カスタム DNS サポートは使用できません。
+- [ストレージのファイアウォール](../storage/common/storage-network-security.md)は、[サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)と[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を介してのみサポートされます ([VNET 統合](./overview-vnet-integration.md)が使用されている場合)。 現在、マウントされた Azure Storage アカウントがプライベート エンドポイントを使用している場合には、カスタム DNS サポートは使用できません。
 - カスタムマウント ストレージへの FTP/FTPS アクセスはサポートされていません ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してください)。
 - Azure CLI、Azure PowerShell、Azure SDK のサポートはプレビュー段階です。
 - カスタム マウント ストレージへの `/` または `/home` のマッピングはサポートされていません。

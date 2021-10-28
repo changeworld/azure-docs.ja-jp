@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/21/2021
 ms.author: allensu
-ms.openlocfilehash: d2f54b8ea7161f297528ac6ea82fde548827033a
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: f3c93d590036c0e9f16caad6cbfc55f32053d4ba
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681189"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249554"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>送信専用のロード バランサーの構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122681189"
 >
 > Azure Virtual Network NAT と NAT ゲートウェイを使用してアウトバウンド専用ロード バランサーの構成をデプロイするには、「[チュートリアル: NAT ゲートウェイと内部ロード バランサーを統合する - Azure portal](../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-internal-portal.md)」を参照してください。
 >
-> Azure でのアウトバウンド接続と既定のアウトバウンド アクセスの詳細については、[アウトバウンド接続の送信元ネットワーク アドレス変換 (SNAT)](load-balancer-outbound-connections.md) および[既定のアウトバウンド アクセス](../virtual-network/default-outbound-access.md)に関する記事を参照してください。
+> Azure でのアウトバウンド接続と既定のアウトバウンド アクセスの詳細については、[アウトバウンド接続の送信元ネットワーク アドレス変換 (SNAT)](load-balancer-outbound-connections.md) および[既定のアウトバウンド アクセス](../virtual-network/ip-services/default-outbound-access.md)に関する記事を参照してください。
 
 :::image type="content" source="./media/egress-only/load-balancer-egress-only.png" alt-text="エグレス専用のロード バランサーの構成を示す図" border="true":::
 
@@ -119,7 +119,7 @@ ms.locfileid: "122681189"
 
 6. **[名前]** に、「**LoadBalancerFrontend**」と入力します。
 
-7. **[サブネット]** で **myBackendSubnet** を選択します。
+7. **[サブネット]** で **[myBackendSubnet]** を選択します。
 
 8. **[割り当て]** で **[動的]** を選択します。
 
@@ -177,12 +177,12 @@ ms.locfileid: "122681189"
 7. **[IP バージョン]** には **[IPv4]** または **[IPv6]** を選択します。
 
     > [!NOTE]
-    > IPv6 は現在、ルーティングの優先順位またはリージョン間の負荷分散 (グローバル階層) ではサポートされていません。
+    > IPv6 は現在、ルーティングの優先順位およびリージョン間の負荷分散 (グローバル階層) ではサポートされていません。
 
 8. **[IP の種類]** として **[IP アドレス]** を選択します。
 
     > [!NOTE]
-    > IP プレフィックスの詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)に関するページを参照してください。
+    > IP プレフィックスの詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)に関するページを参照してください。
 
 9. **[パブリック IP アドレス]** で **[新規作成]** を選択します。
 
@@ -227,7 +227,7 @@ ms.locfileid: "122681189"
    
 3. **[仮想マシンの作成]** の **[基本]** タブに、値を入力するか選択します。
 
-    | 設定 | 値                                          |
+    | 設定 | [値]                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -250,7 +250,7 @@ ms.locfileid: "122681189"
   
 5. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -320,7 +320,7 @@ ms.locfileid: "122681189"
 
 5. 次の情報を入力または選択して、アウトバウンド規則を構成します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | 名前 | 「**myOutboundRule**」と入力します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontEnd]** を選択します。|
@@ -369,4 +369,3 @@ ms.locfileid: "122681189"
 この構成により、受信する内部トラフィックをバックエンド プールに負荷分散すると同時に、引き続きパブリック インバウンド接続を防ぐことができます。
 
 Azure Load Balancer と Azure Bastion の詳細については、「[Azure Load Balancer の概要](load-balancer-overview.md)」および「[Azure Bastion とは](../bastion/bastion-overview.md)」を参照してください。
-

@@ -2,14 +2,14 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 09/10/2021
 ms.author: juliako
-ms.openlocfilehash: 60f8968a3377479457cbe0faceae28bc83835453
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 75e0e274bd8cdb9dc7029815910f867dffdaef3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113735338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "130239203"
 ---
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -43,4 +43,4 @@ HTTP 拡張ノードは、プロキシの役割を果たします。 これは�
 * 結果を解釈する。
 * リソースをクリーンアップする。
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
-[!INCLUDE [setup development environment](./../../../includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
+[!INCLUDE [setup development environment](./../../../includes/set-up-dev-environment/python/python-set-up-dev-env.md)]

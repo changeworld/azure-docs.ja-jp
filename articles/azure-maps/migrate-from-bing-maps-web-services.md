@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d4dae509d65ef2d090439fe1f532f6878a2139b4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 361eca16094f48c957437eeb5ebdbf9b701d1049
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439472"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265233"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>チュートリアル:Bing 地図から Web サービスを移行する
 
@@ -58,7 +58,7 @@ Azure Maps には、必要になる可能性のある追加の REST Web サー�
 -   [マップ タイル](/rest/api/maps/render/getmaptile) - Azure Maps のラスターおよびベクター タイル形式の道路タイルとイメージ タイルにアクセスできます。
 -   [バッチ ルート指定](/rest/api/maps/route/postroutedirectionsbatchpreview) - 1 つのバッチで一定期間にわたり最大 1,000 件のルート要求を実行できます。 処理の高速化のため、ルートはサーバー上で並列に計算されます。
 -   [トラフィック](/rest/api/maps/traffic) フロー - ラスターおよびベクター タイル形式のリアルタイムのトラフィック フロー データにアクセスできます。
--   [位置情報 API (プレビュー)](/rest/api/maps/geolocation/getiptolocationpreview) - IP アドレスの位置情報を取得します。
+-   [位置情報 API (プレビュー)](/rest/api/maps/geolocation/get-ip-to-location) - IP アドレスの位置情報を取得します。
 -   [Weather サービス](/rest/api/maps/weather) - リアルタイムと予測の気象データにアクセスできます。
 
 次のベスト プラクティス ガイドも確認してください。
@@ -281,7 +281,7 @@ Azure Maps では、[ルートの道順](/rest/api/maps/route/postroutedirection
 | `points`                   | `supportingPoints` - Post 要求の本文にこれらのポイントを渡します  |
 | `interpolate`              | N/A                                                                 |
 | `includeSpeedLimit`        | 該当なし                                                                 |
-| `includeTruckSpeedLimit`   | 該当なし                                                                 |
+| `includeTruckSpeedLimit`   | N/A                                                                 |
 | `speedUnit`                | N/A                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` - ドキュメント「[Azure Maps による認証](./azure-maps-authentication.md)」も参照してください。 |
@@ -342,7 +342,7 @@ Azure Maps には、静的マップ イメージにデータを重ねてレン�
 | `mapLayer` (`ml`)        | N/A                                            |
 | `mapSize` (`ms`)         | `width` および `height` - 最大 8192 x 8192 のサイズを指定できます。 |
 | `declutterPins` (`dcl`)  | N/A                                            |
-| `dpi`                    | 該当なし                                            |
+| `dpi`                    | N/A                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | N/A                                            |
 | `pitch`                  | 該当なし - ストリート ビューはサポートされていません。                |

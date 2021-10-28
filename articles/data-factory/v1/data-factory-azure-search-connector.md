@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ab7ed3435cd49e6671e5a05623db964ce551e86
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28bd04a30be053a683209cf9cff421dcbb830152
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676848"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242918"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

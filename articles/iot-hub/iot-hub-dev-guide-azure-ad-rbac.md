@@ -7,15 +7,15 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 10/20/2021
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: a8387a5732ab51add02495b03236b42f9cd4e671
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a95501462fe1db0a06e6596054d09645c86ee64f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609443"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223532"
 ---
 # <a name="control-access-to-iot-hub-by-using-azure-active-directory"></a>Azure Active Directory を使用して IoT Hub へのアクセスを制御する
 
@@ -106,7 +106,7 @@ IoT Hub には、Azure AD と RBAC を使って IoT Hub サービス API への�
 1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。
 1. 左側のペインで、 **[共有アクセス ポリシー]** を選択します。
 1. **[共有アクセス ポリシーを使用して接続する]** で、 **[拒否]** を選択します。
-    :::image type="content" source="media/iot-hub-dev-guide-azure-ad-rbac/disable-local-auth.png" alt-text="IoT Hub 共有アクセス ポリシーを無効にする方法を示すスクリーンショット。":::
+    :::image type="content" source="media/iot-hub-dev-guide-azure-ad-rbac/disable-local-auth.png" alt-text="IoT Hub 共有アクセス ポリシーを無効にする方法を示すスクリーンショット。" border="true":::
 1. 警告を確認し、 **[保存]** を選択します。
 
 IoT Hub サービス API には、Azure AD と RBAC を使用してのみアクセスできるようになりました。

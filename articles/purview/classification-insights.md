@@ -6,12 +6,12 @@ ms.author: bagol
 ms.service: purview
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 642611a680e0848208aa7e42493fee6fc16fb4d7
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: c5f0f409f009d66afd0cb6103e2018c527c0b0a2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208856"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246063"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関する分類の分析情報
 
@@ -109,6 +109,3 @@ Azure Purview の分析情報レポートの詳細について学習します
 
 > [!div class="nextstepaction"]
 > [秘密度ラベルの分析情報](./sensitivity-insights.md)
-
-> [!div class="nextstepaction"]
-> [ファイル拡張子の分析情報](file-extension-insights.md)

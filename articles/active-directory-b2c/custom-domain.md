@@ -3,22 +3,22 @@ title: Azure AD B2C カスタム ドメインを有効にする
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のリダイレクト URL でカスタム ドメインを有効にする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ceb265ef339d39f14dbc042914e471c692ae6420
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: edddf44509e6eeff6f50b4361fe8c40a7832a8a8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128568561"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130222876"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ドメインを有効にする
 

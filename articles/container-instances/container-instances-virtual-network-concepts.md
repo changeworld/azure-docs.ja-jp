@@ -3,12 +3,12 @@ title: 仮想ネットワークを使用するシナリオ
 description: コンテナー グループを Azure 仮想ネットワークにデプロイするシナリオ、リソース、制限。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 4d56ba43480182077acc114200ebc69569835bca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f0e2719d6949037e2268f66bf1dce8904530992
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742467"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247496"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>仮想ネットワークのシナリオとリソース
 
@@ -47,7 +47,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークへのデプロイには標準のコンテナー インスタンスをデプロイするよりも時間がかかります。
 * ポート 25 への送信接続は、現時点ではサポートされていません。
 * コンテナー グループを Azure Storage アカウントに接続する場合は、そのリソースに[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加する必要があります。
-* [IPv6 アドレス](../virtual-network/ipv6-overview.md)は、現時点ではサポートされていません。 
+* [IPv6 アドレス](../virtual-network/ip-services/ipv6-overview.md)は、現時点ではサポートされていません。 
 
 ## <a name="required-network-resources"></a>必要なネットワーク リソース
 

@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: 2d928ec83559a1bd57adde3cbae98c589bb1cd15
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fbaf2eb104f213c6b4b071ce027b7cb6022aad97
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622001"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244618"
 ---
 # <a name="set-name-and-type-for-child-resources-in-bicep"></a>Bicep での子リソースの名前と種類の設定
 
@@ -88,7 +88,7 @@ output childAddressPrefix string = VNet1::VNet1_Subnet1.properties.addressPrefix
 
 ## <a name="outside-parent-resource"></a>親リソースの外側
 
-次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [loop](loop-resources.md) を使う場合は、このアプローチを使用することがあります。 値を親のシンボリック名に設定して、子の親プロパティを指定します。 この構文では、完全なリソースの種類を宣言する必要がありますが、子リソースの名前は子リソースの名前のみです。
+次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [loop](loops.md) を使う場合は、このアプローチを使用することがあります。 値を親のシンボリック名に設定して、子の親プロパティを指定します。 この構文では、完全なリソースの種類を宣言する必要がありますが、子リソースの名前は子リソースの名前のみです。
 
 ```bicep
 resource <parent-resource-symbolic-name> '<resource-type>@<api-version>' = {

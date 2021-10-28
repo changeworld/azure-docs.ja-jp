@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 4357d3bc347d000ebcdd7c2a9a01069eb64a9343
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: befabd5e35957241fa640c28146e47f01153b72b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003801"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251682"
 ---
 # <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの自動登録機能とは
 
@@ -28,7 +28,7 @@ Azure DNS プライベート ゾーンの自動登録機能では、仮想ネッ
 
 * 自動登録は、仮想マシンに対してのみ機能します。 内部ロード バランサーなどの他のすべてのリソースについては、仮想ネットワークにリンクされているプライベート DNS ゾーンに DNS レコードを手動で作成できます。
 * DNS レコードは、プライマリ仮想マシンの NIC に対してのみ自動的に作成されます。 仮想マシンに複数の NIC がある場合は、他のネットワーク インターフェイスの DNS レコードを手動で作成できます。
-* DNS レコードは、プライマリ仮想マシンの NIC で DHCP が使用されている場合のみ自動的に作成されます。 [Azure に複数の IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)がある構成など、静的 IP を使用している場合、自動登録によってその仮想マシンにレコードが作成されることはありません。
+* DNS レコードは、プライマリ仮想マシンの NIC で DHCP が使用されている場合のみ自動的に作成されます。 [Azure に複数の IP アドレス](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md#os-config)がある構成など、静的 IP を使用している場合、自動登録によってその仮想マシンにレコードが作成されることはありません。
 * IPv6 (AAAA レコード) の自動登録はサポートされていません。
 * 自動 VM DNS 登録が有効になっている場合、特定の仮想ネットワークを 1 つのプライベート DNS ゾーンにのみリンクできます。 ただし、複数の仮想ネットワークを 1 つの DNS ゾーンにリンクできます。
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0c1a3362c4f1dfd3396ccd4704933d06d2611414
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: f18174b1d3c38e571d2efaedfc41debec29f40ac
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814120"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263498"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -56,11 +56,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 現在のバージョンをクリックすると、前の手順で指定した値が表示されます。
 
-![シークレットのプロパティ](../media/quick-create-portal/current-version-hidden.png)
+:::image type="content" source="../media/quick-create-portal/current-version-hidden.png" alt-text="シークレットのプロパティ":::
 
 右側のウィンドウで [シークレット値を表示する] ボタンをクリックすると、非表示の値を確認できます。 
 
-![表示されたシークレット値](../media/quick-create-portal/current-version-shown.png)
+:::image type="content" source="../media/quick-create-portal/current-version-shown.png" alt-text="表示されたシークレット値":::
 
 以前に作成したシークレットを、[Azure CLI]() または [Azure PowerShell]() を使用して取得することもできます。
 

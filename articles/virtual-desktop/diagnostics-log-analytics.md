@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: caaaded204fbc433a77d7f5a9ccf6a356195e5b9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3a33c9e1542e6abbebfdf251864877112230af83
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757915"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261464"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
@@ -199,4 +199,4 @@ WVDErrors
 
 ## <a name="next-steps"></a>次のステップ
 
-診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](diagnostics-role-service.md#common-error-scenarios)」をご確認ください。
+診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](./troubleshoot-set-up-overview.md)」をご確認ください。

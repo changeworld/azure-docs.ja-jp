@@ -3,22 +3,22 @@ title: カスタム ポリシーを使用して AD FS を OpenID Connect ID プ�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で OpenID Connect プロトコルとカスタム ポリシーを使用して AD FS 2016 を設定する
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63d94ebe209c4b1a40c58f3c4b1b02e70c51a391
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 511f546437d12714ae77d1e3a99f15feda31e33f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572282"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130228132"
 ---
 # <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して AD FS を OpenID Connect プロバイダーとして追加する
 
