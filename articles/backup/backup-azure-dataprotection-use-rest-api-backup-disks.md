@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure ディスクの
 ms.topic: conceptual
 ms.date: 10/06/2021
 ms.assetid: 6050a941-89d7-4b27-9976-69898cc34cde
-ms.openlocfilehash: 6aeba0682839384b930dca0c2df34f109260335c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e01a0e528c3274ac6ddefe000311e2db7523bb5e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620920"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264714"
 ---
 # <a name="back-up-azure-disks-using-azure-data-protection-via-rest-api"></a>REST API と Azure データ保護を使用した Azure ディスクのバックアップ
 
@@ -51,7 +51,7 @@ Azure ディスク バックアップの使用可能なリージョン、サポ�
 
 ### <a name="assign-permissions"></a>アクセス許可の割り当て
 
-コンテナー (コンテナーの MSI で表される) や関連するディスク、ディスク RG には、RBAC を介していくつかのアクセス許可を割り当てる必要があります。 この操作は、Azure portal または CLI で行うことができます。 関連するアクセス許可を割り当てるには、[マネージド ディスクのバックアップを構成するための前提条件](/azure/backup/backup-managed-disks-ps#assign-permissions)に関する記事を参照してください。
+コンテナー (コンテナーの MSI で表される) や関連するディスク、ディスク RG には、RBAC を介していくつかのアクセス許可を割り当てる必要があります。 この操作は、Azure portal または CLI で行うことができます。 関連するアクセス許可を割り当てるには、[マネージド ディスクのバックアップを構成するための前提条件](./backup-managed-disks-ps.md#assign-permissions)に関する記事を参照してください。
 
 ### <a name="prepare-the-request-to-configure-backup"></a>バックアップを構成するための要求の準備
 
@@ -141,7 +141,7 @@ POST https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |型  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |  操作は非同期で実行されます      |
 |200 OK     |   [OperationJobExtendedInfo](/rest/api/dataprotection/backup-instances/validate-for-backup#operationjobextendedinfo)      |     同意    |
@@ -314,7 +314,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 バックアップ インスタンスを作成する場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |型  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     |  [BackupInstance](/rest/api/dataprotection/backup-instances/create-or-update#backupinstance)       |     BackupInstanceResource プロパティ    |
 
@@ -359,7 +359,7 @@ _バックアップ インスタンス要求_ の作成は、[非同期操作](.
 
 2 つの応答が返されます。つまり、バックアップ インスタンスが作成され、保護が構成されると、201 (Created) が返され、構成が完了すると 200 (OK) が返されます。
 
-|名前  |型  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |201 Created   |   [バックアップ インスタンス](/rest/api/dataprotection/backup-instances/create-or-update#backupinstanceresource)      |  バックアップインスタンスが作成され、保護の構成中です      |
 |200 OK     |    [バックアップ インスタンス](/rest/api/dataprotection/backup-instances/create-or-update#backupinstanceresource)     |     保護が構成されています    |
@@ -464,7 +464,7 @@ DELETE "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/Test
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |型  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |         |  削除要求の状態       |
 |202 Accepted     |         |     承認済み    |

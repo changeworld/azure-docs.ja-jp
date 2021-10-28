@@ -6,17 +6,17 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac4ada3fe234428216d50edd85caa16fed10a5d2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558697"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231572"
 ---
 # <a name="azure-resource-logs"></a>Azure リソース ログ
 Azure リソース ログは、Azure リソース内で実行された操作に関する分析情報を提供する[プラットフォーム ログ](../essentials/platform-logs-overview.md)です。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。 既定では、リソース ログは収集されません。 各 Azure リソースのリソース ログを、[Azure Monitor ログ](../logs/data-platform-logs.md)で使用するために Log Analytics ワークスペースに送信したり、Azure の外部に転送するために Azure Event Hubs に送信したり、アーカイブ用に Azure Storage に送信したりするために、各 Azure リソースの診断設定を作成する必要があります。
 
-診断設定を作成する方法の詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../essentials/diagnostic-settings.md)」を参照してください。Azure Policy を使用して、作成した各 Azure リソースの診断設定を自動的に作成する方法については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
+診断設定を作成する方法の詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../essentials/diagnostic-settings.md)」を参照してください。Azure Policy を使用して、作成した各 Azure リソースの診断設定を自動的に作成する方法については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../best-practices.md)」を参照してください。
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics ワークスペースに送信する
  次のような [Azure Monitor ログ](../logs/data-platform-logs.md)の機能を有効にするには、リソース ログを Log Analytics ワークスペースに送信します。

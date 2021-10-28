@@ -4,12 +4,12 @@ description: Azure PowerShell を使用して Azure マネージド ディスク
 ms.topic: conceptual
 ms.date: 09/17/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: beb6a266a9436b7c26f5786c5f5a57f10fb9319a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4aab90bdd5a8ee4ecafd0dbfec81052da6b39f69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672711"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264600"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-powershell"></a>Azure PowerShell を使用した Azure マネージド ディスクのバックアップ
 
@@ -159,7 +159,7 @@ $snapshotrg = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx/resourceGroups/snapshotrg"
 
 バックアップ コンテナーは、マネージド ID を使用して他の Azure リソースにアクセスします。 マネージド ディスクのバックアップを構成するには、バックアップ コンテナーのマネージド ID に、スナップショットが作成および管理されるソース ディスクとリソース グループに対する一連のアクセス許可を付与する必要があります。
 
-システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認してください。
+システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
 
 マネージド ディスクのバックアップを構成するには、次の前提条件を確認します。
 

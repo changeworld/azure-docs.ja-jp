@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
 description: Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイします。
-author: jiangma
+author: majguo
 ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.custom:
 - devx-track-javaee
 - devx-track-javaee-liberty
 - devx-track-javaee-liberty-aks
-ms.openlocfilehash: a55ddf7530b57442289dd734d299855e7c506e8b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f7d7816b88e7438d5ec2d91446997672bf57a38f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000898"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248851"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
 

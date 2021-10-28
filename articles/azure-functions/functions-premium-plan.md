@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 2bbef3190a38d1c0f9b058f2c57050ecd85756e3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c549f29e729eec4403f2943f51e8acb4a9f21b37
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984765"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248395"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -98,7 +98,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ## <a name="private-network-connectivity"></a>プライベート ネットワーク接続
 
-Premium プランにデプロイされた Function App では、[Web アプリ向けの VNet 統合](../app-service/web-sites-integrate-with-vnet.md)を利用できます。 構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。 受信トラフィックを制限するための IP 制限もアプリで利用できます。
+Premium プランにデプロイされた Function App では、[Web アプリ向けの VNet 統合](../app-service/overview-vnet-integration.md)を利用できます。 構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。 受信トラフィックを制限するための IP 制限もアプリで利用できます。
 
 Premium プランで Function App にサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
 

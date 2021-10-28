@@ -4,12 +4,12 @@ description: Azure Backup の暗号化機能が、バックアップ データ�
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7870a84d374bce90a9d41896a7c8704b42629d38
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 2e32bb880e42aad72a526e7515ba9156de75de9a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291365"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233058"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup での暗号化
 
@@ -29,4 +29,4 @@ Azure Backup には、次の 2 つのレベルの暗号化が含まれていま�
 ## <a name="next-steps"></a>次のステップ
 
 - [保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)
-- 暗号化について質問がある場合は [Azure Backup の FAQ](/azure/backup/backup-azure-backup-faq#encryption)
+- 暗号化について質問がある場合は [Azure Backup の FAQ](./backup-azure-backup-faq.yml)

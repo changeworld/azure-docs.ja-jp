@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7449043475389797be17c20a03e86fc3fbf5bdbe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 9cc40014c1cb5cef195ea90fb0d0a7b41e726466
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359118"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241938"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge のバージョンとリリース ノート
 
@@ -37,7 +37,7 @@ IoT Edge リリースの詳細については、「[Azure IoT Edge のサポー�
 | ------------------------ | ---- | ---- | ---------- |
 | [1.2](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0) | Stable | 2021 年 4 月 | [IoT Edge デバイスのゲートウェイ](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge MQTT ブローカー (プレビュー)](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true)<br>新しいインストールと構成の手順による新しい IoT Edge パッケージの導入。 詳細については、[1.0 または 1.1 から 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関するセクションを参照してください
 | [1.1](https://github.com/Azure/azure-iotedge/releases/tag/1.1.0) | 長期サポート (LTS) | 2021 年 2 月 | [長期サポート プランとサポート対象システムの更新](support.md) |
-| [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | 2020 年 10 月 | [UploadSupportBundle ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[ランタイム メトリックのアップロード](how-to-access-built-in-metrics.md)<br>[ルートの優先順位と有効期限](module-composition.md#priority-and-time-to-live)<br>[モジュールの起動順序](module-composition.md#configure-modules)<br>[X.509 の手動プロビジョニング](how-to-register-device.md) |
+| [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | 2020 年 10 月 | [UploadSupportBundle ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[ランタイム メトリックのアップロード](how-to-access-built-in-metrics.md)<br>[ルートの優先順位と有効期限](module-composition.md#priority-and-time-to-live)<br>[モジュールの起動順序](module-composition.md#configure-modules)<br>[X.509 の手動プロビジョニング](how-to-provision-single-device-linux-x509.md) |
 | [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | 2020 年 3 月 | DPS による X.509 の自動プロビジョニング<br>[RestartModule ダイレクト メソッド](how-to-edgeagent-direct-method.md#restart-module)<br>[support-bundle コマンド](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
 
 ## <a name="next-steps"></a>次のステップ

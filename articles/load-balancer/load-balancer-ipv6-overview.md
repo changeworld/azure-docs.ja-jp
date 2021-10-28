@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27b1601f9cdd1ccac001e71f2e0364ee168a201f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94700691"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232517"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
 
 >[!NOTE] 
->このコンテンツは、[Azure VNet 用の IPv6 の概要](../virtual-network/ipv6-overview.md)に関する記事に置き換えられました。 IPv6 の新しいデプロイでは、新しい Azure Virtual Network 用の IPv6 の機能を使用することをお勧めします。
+>このコンテンツは、[Azure VNet 用の IPv6 の概要](../virtual-network/ip-services/ipv6-overview.md)に関する記事に置き換えられました。 IPv6 の新しいデプロイでは、新しい Azure Virtual Network 用の IPv6 の機能を使用することをお勧めします。
 
 >[!NOTE]
 >Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](./load-balancer-overview.md)に関するページをご覧ください。

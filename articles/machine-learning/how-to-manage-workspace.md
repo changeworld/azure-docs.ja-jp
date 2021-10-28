@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 9d4ad2b71d9ef5e3632344cb715926d2e5ebd343
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: a8dd26019d94cbaeca620d4dbb6e1bdf9dabdb2d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072664"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246456"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -171,7 +171,7 @@ Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/a
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. 既定のネットワーク構成では、公衆インターネット上の __パブリック エンドポイント__ を使用します。 作成した Azure Virtual Network にお使いのワークスペースへのアクセスを制限するには、代わりに __[接続方法]__ として __[プライベート エンドポイント]__ (プレビュー) を選択し、 __[+ 追加]__ を使用してそのエンドポイントを構成します。   
+1. 既定のネットワーク構成では、公衆インターネット上の __パブリック エンドポイント__ を使用します。 作成した Azure Virtual Network にお使いのワークスペースへのアクセスを制限するには、代わりに __[接続方法]__ として __[プライベート エンドポイント]__ を選択し、 __[+ 追加]__ を使用してそのエンドポイントを構成します。 
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="プライベート エンドポイントを選択する":::  
 
@@ -182,10 +182,6 @@ Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/a
 1. ネットワークの構成が完了したら、 __[確認および作成]__ を選択するか、オプションの __[詳細]__ 構成に進みます。
 
 ---
-
-> [!IMPORTANT]  
-> Azure Machine Learning ワークスペースでのプライベート エンドポイントの使用は、現在パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。     
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 

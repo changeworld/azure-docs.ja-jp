@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 15bc0aa0c4a657bbb6f363a9c2786c1d4f9116ee
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 23d54c2725e48b1d587fb641c593be0c8d63958f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544377"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248642"
 ---
 # <a name="compute-platform-for-azure-api-management"></a>Azure API Management のコンピューティング プラットフォーム
 
@@ -57,7 +57,7 @@ Microsoft はサービスの機能を強化するため、いくつかの[サー
 
 > [!IMPORTANT]
 > Azure [仮想ネットワーク](virtual-network-concepts.md)に接続されたインスタンスのコンピューティング プラットフォームのバージョンを更新する際の注意点を次に示します。
-> * Standard SKU の[パブリック IPv4 アドレス](../virtual-network/public-ip-addresses.md#standard) リソースを指定する必要があります
+> * Standard SKU の[パブリック IPv4 アドレス](../virtual-network/ip-services/public-ip-addresses.md#standard) リソースを指定する必要があります
 > * API Management インスタンスの VIP アドレスは変化します。
 
 ## <a name="next-steps"></a>次のステップ

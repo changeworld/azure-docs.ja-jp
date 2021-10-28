@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
 ms.subservice: pstn
-ms.openlocfilehash: 879dcefc787185b51ab6019c1ad8e2a5f8befb16
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d04c6d298d84b9739564124a02ae8a7710186d0e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636004"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233077"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
 
@@ -85,7 +85,7 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 ### <a name="quickstarts"></a>クイックスタート
 
 - [電話番号を取得する](../../quickstarts/telephony-sms/get-phone-number.md)
-- [通話を行う](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- [通話を行う](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 - [SMS を送信する](../../quickstarts/telephony-sms/send.md)
 
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント

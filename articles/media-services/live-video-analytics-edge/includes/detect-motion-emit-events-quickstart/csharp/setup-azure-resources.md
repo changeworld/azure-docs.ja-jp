@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 6b1df49ed0f2c543706d7584a1ade5dc5554a564
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 456fc1be942ce51082cf671d77f2f24f5f9d6d3e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101749911"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288133"
 ---
 このチュートリアルでは、次の Azure リソースが必要です。
 
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 上の Linux VM ([IoT Edge ランタイム](../../../../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
+* Azure 上の Linux VM ([IoT Edge ランタイム](../../../../../iot-edge/how-to-provision-single-device-linux-symmetric.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 

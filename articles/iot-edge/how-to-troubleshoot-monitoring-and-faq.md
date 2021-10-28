@@ -9,12 +9,12 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 zone_pivot_groups: how-to-troubleshoot-monitoring-and-faq-zpg
-ms.openlocfilehash: 9d3e89ee74dd1f0274ad742cae4a9706f54b7780
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 8c4e74bbd72abdbfaf365afe720149f0eb7fe8ae
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015392"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215393"
 ---
 # <a name="faq-and-troubleshooting"></a>FAQ とトラブルシューティング
 
@@ -38,7 +38,7 @@ IoT Edge システム モジュールによって公開される組み込みの�
 
 ### <a name="update-moby-engine"></a>Moby エンジンの更新
 
-Linux ホスト上で、最新バージョンのコンテナー エンジンを使用していることを確認します。 [インストール手順](how-to-install-iot-edge.md#install-a-container-engine)に従って、最新バージョンに更新することをお勧めします。
+Linux ホスト上で、最新バージョンのコンテナー エンジンを使用していることを確認します。 [インストール手順](how-to-provision-single-device-linux-symmetric.md#install-iot-edge)に従って、最新バージョンに更新することをお勧めします。
 
 ## <a name="how-do-i-collect-logs-along-with-metrics"></a>メトリックと共にログを収集するにはどうすればよいですか?
 

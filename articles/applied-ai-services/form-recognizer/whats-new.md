@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: ddecc748443a6596c611fae857301e1f80f57a66
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8d118d72b267cc42780f198a1fb0dc63f0f0d965
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039374"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233603"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -55,7 +55,7 @@ v3.0 プレビュー API の新しい [REST API](https://westus2.dev.cognitive.m
 
 ## <a name="september-2021"></a>2021 年 9 月
 
-* Azure portal の Form Recognizer リソースの概要ページで、[Azure メトリックス エクスプローラーの高度な機能](/azure/azure-monitor/essentials/metrics-charts)を使用できます。
+* Azure portal の Form Recognizer リソースの概要ページで、[Azure メトリックス エクスプローラーの高度な機能](../../azure-monitor/essentials/metrics-charts.md)を使用できます。
 
     ### <a name="monitoring-menu"></a>監視メニュー
 
@@ -122,15 +122,15 @@ Form Recognizer 機能は、**レイアウト**、**名刺**、**身分証明書
 * Form Recognizer 2.1 は、一般提供されています。 この一般提供 (GA) リリースは、前の 2.1 プレビュー パッケージ バージョンで導入された変更が安定していることを示しています。 このリリースでは、次から情報とデータを検出して抽出することができます。
 
 * [ドキュメント](concept-layout.md)
-* [Receipts](concept-receipts.md)
-* [名刺](concept-business-cards.md)
-* [Invoices](concept-invoices.md)
-* [ID ドキュメント](concept-identification-cards.md)
+* [Receipts](./concept-receipt.md)
+* [名刺](./concept-business-card.md)
+* [Invoices](./concept-invoice.md)
+* [ID ドキュメント](./concept-id-document.md)
 * [カスタム フォーム](concept-custom.md)
 
 #### <a name="get-started"></a>はじめに
 
-[Form Recognizer サンプル ツール](https://fott-2-1.azurewebsites.net/)にアクセスし、[クイックスタート](quickstarts/get-started-with-form-recognizer.md)に従ってください
+[Form Recognizer サンプル ツール](https://fott-2-1.azurewebsites.net/)にアクセスし、[クイックスタート](./quickstarts/try-sample-label-tool.md)に従ってください
 
 ### <a name="layout-adds-table-headers"></a>レイアウトによってテーブル ヘッダーが追加される
 
@@ -263,7 +263,7 @@ NuGet パッケージ バージョン 3.1.0-beta.4
 
    **StartRecognizeIdDocumentsAsync**
 
-   フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+   フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](./concept-id-document.md)」を "_参照_" してください。
 
 * **[StartRecognizeContent](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecontent?view=azure-dotnet-preview&preserve-view=true)** メソッドに指定できるドキュメント言語のセットが拡大されました。
 
@@ -298,7 +298,7 @@ Maven アーティファクト パッケージの依存関係バージョン 3.1
 
   **[beginRecognizeIdDocuments]**
 
-   フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+   フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](./concept-id-document.md)」を "_参照_" してください。
 
 * **`FormContentType` 列挙型でのカスタムのフォームおよびトレーニング方法を対象にしたビットマップ画像ファイル (.bmp) のサポート**:
 
@@ -336,7 +336,7 @@ npm パッケージ バージョン 3.1.0-beta.3
 
     **[beginRecognizeIdDocuments](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocuments_FormRecognizerRequestBody__BeginRecognizeIdDocumentsOptions_)**
 
-    フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+    フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](./concept-id-document.md)」を "_参照_" してください。
 
 * **新しいフィールド値が FieldValue インターフェイスに追加されました**:
 
@@ -361,7 +361,7 @@ pip パッケージ バージョン 3.1.0b4
 
   **[begin_recognize_id_documents](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
 
-  フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+  フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](./concept-id-document.md)」を "_参照_" してください。
 
 * **新しいフィールド値が [FieldValueType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.fieldvaluetype?view=azure-python-preview&preserve-view=true) 列挙型に追加されました**:
 
@@ -409,13 +409,13 @@ pip パッケージ バージョン 3.1.0b4
 
 * **新しい事前構築済み ID モデル** 新しい事前構築済み ID モデルを使用すると、お客様は ID を取得して構造化データを返し、処理を自動化できます。 強力な光学式文字認識 (OCR) 機能と ID 理解モデルを組み合わせて、パスポートや米国の運転免許証から、名前、生年月日、発行日、有効期限などの重要な情報を抽出することができます。
 
-  [事前作成された ID モデルの詳細情報](concept-identification-cards.md)
+  [事前作成された ID モデルの詳細情報](./concept-id-document.md)
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="パスポートの例" lightbox="./media/id-canada-passport-example.png":::
 
 * **請求書モデルの品目抽出** - 事前構築済み請求書モデルは品目抽出をサポートするようになりました。完全な項目とその一部 (説明、金額、数量、製品 ID、日付など) が抽出されるようになりました。 簡単な API または SDK の呼び出しにより、請求書から有用なデータ (テキスト、テーブル、キーと値のペア、品目) を抽出できます。
 
-   [請求書モデルの詳細について確認してください](concept-invoices.md)
+   [請求書モデルの詳細について確認してください](./concept-invoice.md)
 
 * **監視対象テーブルのラベル付けとトレーニング、空の値のラベル付け** - Form Recognizer の [最先端のディープ ラーニング自動テーブル抽出機能](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)に加えて、お客様がテーブルに対してラベル付けとトレーニングを行えるようになりました。 この新しいリリースには、品目とテーブル (動的と固定) にラベルを付けてトレーニングし、キーと値のペアと品目を抽出するカスタム モデルをトレーニングする機能が含まれています。 モデルのトレーニングが完了すると、モデルにより documentResults セクションの JSON 出力の一部として品目が抽出されます。
 
@@ -439,7 +439,7 @@ pip パッケージ バージョン 3.1.0b4
 
 * **新しい事前構築済み請求書モデル** - 新しい事前構築済み請求書モデルにより、お客様はさまざまな形式で請求書を取得し、構造化されたデータを返して、請求書の処理を自動化することができます。 強力な光学式文字認識 (OCR) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求額、課税額、出荷先、請求先などの重要なテキスト、テーブル、情報が抽出されます。
 
-  > [事前作成された請求書モデルの詳細情報](concept-invoices.md)
+  > [事前作成された請求書モデルの詳細情報](./concept-invoice.md)
 
   :::image type="content" source="./media/invoice-example.jpg" alt-text="請求書の例" lightbox="./media/invoice-example.jpg":::
 
@@ -449,7 +449,7 @@ pip パッケージ バージョン 3.1.0b4
 
   > [レイアウト抽出の詳細情報](concept-layout.md)
 
-* **クライアント ライブラリの更新** - .NET、Python、Java、JavaScript 用の [クライアント ライブラリ](quickstarts/client-library.md)の最新バージョンでは、Form Recognizer 2.1 API がサポートされています。
+* **クライアント ライブラリの更新** - .NET、Python、Java、JavaScript 用の [クライアント ライブラリ](./quickstarts/try-sdk-rest-api.md)の最新バージョンでは、Form Recognizer 2.1 API がサポートされています。
 * **サポートされている新しい言語: 日本語** - `AnalyzeLayout` と `AnalyzeCustomForm` に対して、新しい言語: 日本語 (`ja`) がサポートされるようになりました。 [言語サポート](language-support.md)
 * **テキスト行のスタイルの表示 (手書き/その他) (ラテン言語のみ)** - Form Recognizer では、信頼度スコアと共に、各テキスト行が手書きスタイルであるかどうかを分類する `appearance` オブジェクトが出力されるようになりました。 この機能は、ラテン語系の言語でのみサポートされています。
 * **品質の向上** - 1 桁の抽出の改善を含め、抽出の品質が向上しました。
@@ -473,13 +473,13 @@ pip パッケージ バージョン 3.1.0b4
 * **チェックボックス、選択マークの検出** – Form Recognizer では、チェックボックスやオプション ボタンなどの選択マークの検出および抽出がサポートされています。 選択マークは `Layout` で抽出されます。また、`Train Custom Model`_ - [ラベルを使用したトレーニング]_ でラベル付けおよびトレーニングを行って、選択マーク用のキーと値のペアを抽出することもできるようになりました。
 * **[モデルの作成]** を使用すると、1 つのモデル ID で複数のモデルを構成して呼び出すことができます。 作成済みのモデル ID を使用して分析するドキュメントを送信すると、分類ステップが最初に実行され、適切なカスタム モデルにルーティングされます。 モデルの作成は、`Train Custom Model` -  _[ラベルを使用したトレーニング]_ で使用できます。
 * **モデル名**。管理と追跡が容易になるように、カスタム モデルにわかりやすい名前を追加します。
-* **[名刺用の新しい事前構築されたモデル](concept-business-cards.md)** 。英語の名刺内の共通のフィールドを抽出するためのものです。
-* **[事前に作成された領収書の新しいロケール](concept-receipts.md)** 。EN-US に加えて、EN-AU、EN-CA、EN-GB、EN-IN でもサポートが利用できるようになりました。
+* **[名刺用の新しい事前構築されたモデル](./concept-business-card.md)** 。英語の名刺内の共通のフィールドを抽出するためのものです。
+* **[事前に作成された領収書の新しいロケール](./concept-receipt.md)** 。EN-US に加えて、EN-AU、EN-CA、EN-GB、EN-IN でもサポートが利用できるようになりました。
 * **品質向上**。`Layout`、`Train Custom Model` -  _[ラベルを使用しないトレーニング]_ 、および _[ラベルを使用したトレーニング]_ が対象となります。
 
 **v2.0** には、次の更新が含まれています。
 
-* NET、Python、Java、および JavaScript 用の[クライアント ライブラリ](quickstarts/client-library.md)が一般提供になりました。
+* NET、Python、Java、および JavaScript 用の[クライアント ライブラリ](./quickstarts/try-sdk-rest-api.md)が一般提供になりました。
 
 **新しいサンプル** は GitHub で入手できます。
 
@@ -616,7 +616,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 ## <a name="next-steps"></a>次のステップ
 
-選択した開発言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。
+選択した開発言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](./quickstarts/try-sdk-rest-api.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

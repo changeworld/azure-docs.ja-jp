@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5db37717356cd06b257867615623e24a1c36a335
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9b47d3cfdb648a63156164f2341b05b4eeec4a1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779555"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234776"
 ---
 # <a name="azure-iot-edge-for-linux-on-windows-virtual-switch-creation"></a>Azure IoT Edge for Linux on Windows の仮想スイッチの作成
 Azure IoT Edge for Linux on Windows では、ホスト コンピューター上の仮想スイッチを使用して仮想マシンと通信します。 Windows のデスクトップ バージョンには、使用できる既定のスイッチが付属していますが、Windows Server にはありません。 IoT Edge for Linux on Windows を Windows Server デバイスにデプロイするには、まず仮想スイッチを作成する必要があります。 また、必要に応じて、このガイドを利用してカスタム仮想スイッチを作成することもできます。 
@@ -26,7 +26,7 @@ Azure IoT Edge for Linux on Windows では、ホスト コンピューター上�
 
 ## <a name="prerequisites"></a>前提条件
 - Windows デバイス。 サポートされている Windows バージョンについては、「[オペレーティング システム](support.md#operating-systems)」を参照してください。
-- Windows デバイスにインストールされている Hyper-V ロール。 Hyper-V を有効にする方法の詳細については、「[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする](./how-to-install-iot-edge-on-windows.md?tabs=powershell#prerequisites)」を参照してください。
+- Windows デバイスにインストールされている Hyper-V ロール。 Hyper-V を有効にする方法の詳細については、「[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする](./how-to-provision-single-device-linux-on-windows-symmetric.md?tabs=powershell#prerequisites)」を参照してください。
 
 ## <a name="create-virtual-switch"></a>仮想スイッチを作成する 
 このセクションの次の手順は、仮想スイッチの作成に関する一般的なガイドです。 仮想スイッチの構成がお使いのネットワーク環境に合っていることを確認してください。
@@ -99,4 +99,4 @@ Azure IoT Edge for Linux on Windows では、ホスト コンピューター上�
    ```
 
 ## <a name="next-steps"></a>次のステップ
-「[Azure IoT Edge for Linux on a Window デバイスのインストールとプロビジョニング](how-to-install-iot-edge-on-windows.md)」の手順に従って、IoT Edge for Linux on Windows でデバイスを設定します。
+「[Azure IoT Edge for Linux on a Window デバイスのインストールとプロビジョニング](how-to-provision-single-device-linux-on-windows-symmetric.md)」の手順に従って、IoT Edge for Linux on Windows でデバイスを設定します。

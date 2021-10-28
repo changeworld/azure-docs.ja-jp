@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: a31e16ffd74808fb6b6232f0cbda3d447cfce513
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c061fcd27cbafae20732f7ab1436b3a55a5a8dc0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007121"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214816"
 ---
 # <a name="azure-purview-accounts-architectures-and-best-practices"></a>Azure Purview アカウントのアーキテクチャとベスト プラクティス  
 
@@ -64,7 +64,7 @@ Azure Purview でデータ ソースをスキャンすると、そのメタデ�
 
 現在、Purview ではマルチテナントをサポートしていません。 Azure データ ソースが、異なる Azure Active Directory テナントにある複数の Azure サブスクリプションにまたがって分散されている場合は、各テナントで個別の Azure Purview アカウントをデプロイすることをお勧めします。 
 
-VM ベースのデータ ソースと Power BI テナントには例外が適用されます。テナント間の Power BI を 1 つの Purview アカウントでスキャンして登録する方法の詳細については、[テナント間の Power BI の登録とスキャン](/register-scan-power-bi-tenant#register-and-scan-a-cross-tenant-power-bi)に関するページを参照してください。 
+VM ベースのデータ ソースと Power BI テナントには例外が適用されます。テナント間の Power BI を 1 つの Purview アカウントでスキャンして登録する方法の詳細については、[テナント間の Power BI の登録とスキャン](/azure/purview/register-scan-power-bi-tenant#register-and-scan-a-cross-tenant-power-bi)に関するページを参照してください。 
 
 :::image type="content" source="media/concept-best-practices/accounts-multiple-tenants.png" alt-text="マルチテナントの要件に基づいた複数の Azure Purview アカウントを示すスクリーンショット。"lightbox="media/concept-best-practices/accounts-multiple-tenants.png"::: 
 
@@ -74,7 +74,7 @@ VM ベースのデータ ソースと Power BI テナントには例外が適用
 
 一部の組織には、多くの場合、個別に運営される多数の事業単位 (BU) があり、場合によっては、これらの事業単位では課金さえ互いに共有されません。 このような場合、組織は BU ごとに Purview インスタンスを作成することになります。 このモデルは理想的とは言えませんが、特に、事業単位は Azure の課金を進んで共有しようとしない場合が多いため、必要になることがあります。 
 
-チャージバックおよびショーバック モデルでのクラウド コンピューティングのコスト モデルの詳細については、[クラウド会計の概要](/cloud-adoption-framework/strategy/cloud-accounting)に関するページを参照してください。  
+チャージバックおよびショーバック モデルでのクラウド コンピューティングのコスト モデルの詳細については、[クラウド会計の概要](/azure/cloud-adoption-framework/strategy/cloud-accounting)に関するページを参照してください。  
 
 ## <a name="additional-considerations-and-recommendations"></a>その他の考慮事項と推奨事項 
 

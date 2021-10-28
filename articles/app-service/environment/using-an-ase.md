@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 8/5/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6d32e0f19ca37243fa0dbaca9bc04369bfd974b2
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 379122c7446c9a0a2434905d794072f03dd3a10c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354131"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240587"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 > [!NOTE]
@@ -297,6 +297,6 @@ For more specific examples, use: az find "az appservice ase"
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md

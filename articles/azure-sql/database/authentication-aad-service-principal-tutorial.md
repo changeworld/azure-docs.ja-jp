@@ -7,14 +7,14 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 05/10/2021
+ms.date: 10/21/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8980380fb16aadd2a5f3c8e64190bb7580d40425
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 91daa2bb029eb8a4769ba10069b3aa9011f74380
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252585"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248010"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する
 
@@ -116,7 +116,7 @@ if ($role -eq $null) {
     $role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq $roleName}
 }
  
-# Get service principal for managed instance
+# Get service principal for server
 $roleMember = Get-AzureADServicePrincipal -SearchString $AssignIdentityName
 $roleMember.Count
 if ($roleMember -eq $null) {

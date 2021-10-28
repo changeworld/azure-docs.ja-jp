@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 5acb23767f8c766de80961fb8e76297f4b31a5c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 348a52aaee7569a4f98a4d67b83d1d957fd89f62
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738084"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242219"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -102,7 +102,7 @@ Azure Firewall メトリックで SNAT ポートの使用率を監視できま�
 これにより、次のシナリオが実現します。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** - 送信 SNAT 接続にさらにポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
+- **SNAT** - 送信 SNAT 接続にさらにポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)を使用することを検討してください。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 

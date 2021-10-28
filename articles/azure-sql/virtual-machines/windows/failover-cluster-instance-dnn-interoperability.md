@@ -3,7 +3,7 @@ title: SQL Server FCI および DNN との機能の相互運用性
 description: '特定の SQL Server 機能および分散ネットワーク名 (DNN) リソースと、Azure VM 上の SQL Server のフェールオーバー クラスター インスタンスを一緒に操作する場合の追加の考慮事項について説明します。 '
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
-ms.author: mathoma
-ms.openlocfilehash: 03dcd9f4750e9bf3e6ec5568255b06ccb8316a0b
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: b868de74376199fdc173c41e8711575b44e67200
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569460"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164804"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>SQL Server FCI および DNN との機能の相互運用性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

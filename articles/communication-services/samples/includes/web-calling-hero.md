@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: rifox
-ms.openlocfilehash: bf6fba4f8267c1fb52f6b6d5dbc09e033c81a99d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 767fe99e7648b5f35995530f0404e0ceab8208f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "123078262"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287429"
 ---
 Azure Communication Services の **グループ通話のヒーロー サンプル** は、Communication Services Calling Web SDK を使用して、グループ通話エクスペリエンスを構築する方法を示しています。
 
@@ -97,7 +97,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 詳細については、次の記事を参照してください。
 
-- [Calling SDK の使用法](../../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
+- [Calling SDK の使用法](../../quickstarts/voice-video-calling/getting-started-with-calling.md)について理解する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 
 ### <a name="additional-reading"></a>その他の情報

@@ -3,12 +3,12 @@ title: Azure VM での SAP HANA データベースバックアップについて
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースをバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 053d57518e91292105475753279e6fefec19e7a4
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 470635afee7e6b483ec9ae6e79071cd4ef9975dc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081037"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264581"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM での SAP HANA データベースバックアップについて
 
@@ -35,7 +35,7 @@ Azure VM 内で実行されている SAP HANA データベースをバックア�
 
 * バックアップ プロセスは、Azure で [Recovery services コンテナー](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault)を作成することによって開始されます。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
 * SAP HANA サーバーを実行している Azure VM がコンテナーに登録されており、バックアップされるデータベースが [検出](./tutorial-backup-sap-hana-db.md#discover-the-databases) されます。 Azure Backup サービスでデータベースを検出できるようにするには、[事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610) を HANA サーバーで、root ユーザーとして実行する必要があります。
-* このスクリプトは、**AZUREWLBACKUPHANAUSER** データベース ユーザーを作成し、既に作成したカスタム バックアップ ユーザーを使用して、**hdbuserstore** 内に同じ名前で対応するキーを作成します。 スクリプトの機能について、[詳細を学習](/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does)してください。
+* このスクリプトは、**AZUREWLBACKUPHANAUSER** データベース ユーザーを作成し、既に作成したカスタム バックアップ ユーザーを使用して、**hdbuserstore** 内に同じ名前で対応するキーを作成します。 スクリプトの機能について、[詳細を学習](./tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)してください。
 * Azure Backup サービスは、登録されている SAP HANA サーバー上に、 **HANA 用の Azure Backup Plugin** をインストールするようになりました。
 * 事前登録スクリプトによって作成された **AZUREWLBACKUPHANAUSER** データベース ユーザー、または作成した (そして事前登録スクリプトへの入力として追加した) カスタム バックアップ ユーザーは、**HANA 用の Azure Backup Plugin** によって、すべてのバックアップ操作と復元操作を実行するために使用されます。 このスクリプトを実行せずに SAP HANA データベースのバックアップを構成しようとすると、**UserErrorHanaScriptNotRun** エラーを受け取る場合があります。
 * 検出されたデータベースで [バックアップを構成](./tutorial-backup-sap-hana-db.md#configure-backup) するには、必要なバックアップポリシーを選択し、バックアップを有効にする必要があります。

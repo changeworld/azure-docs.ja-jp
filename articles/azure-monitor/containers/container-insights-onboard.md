@@ -3,12 +3,12 @@ title: コンテナー分析情報を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: de7475ddb5a8057ef1b58d4ed21c55a1d10a4dd8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: be2dcaeb088d2996df1d09e3f373e48866db3eb9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708948"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233452"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
@@ -51,7 +51,7 @@ ms.locfileid: "129708948"
    
    自分でワークスペースを作成する場合は、次を使用して作成できます。 
    - [Azure Resource Manager](../logs/resource-manager-workspace.md)
-   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [PowerShell](../logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure ポータル](../logs/quick-create-workspace.md) 
    
    既定のワークスペースに使用する、サポートされているマッピング ペアの一覧については、[コンテナー分析情報のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。

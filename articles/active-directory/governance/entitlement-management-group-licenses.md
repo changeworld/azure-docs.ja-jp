@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05633ab0a46f3aa88ab3e520b493d40527717872
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: fcf38a949d15faa896f4ac673fc53814078a087e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809335"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231765"
 ---
 # <a name="tutorial-manage-the-lifecycle-of-your-group-based-licenses-in-azure-ad"></a>チュートリアル: Azure AD でグループベースのライセンスのライフサイクルを管理する
  
@@ -55,7 +55,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 1. **[次へ: リソース ロール]** を選択して **[リソースロール]** タブに進みます。
 
-2. このタブでは、アクセス パッケージに含めるリソースとリソース ロールを選択します。 このシナリオでは、 **[グループとチーム]** を選択し、[Office ライセンス](/azure/active-directory/enterprise-users/licensing-groups-assign)が割り当てられているグループを検索します。
+2. このタブでは、アクセス パッケージに含めるリソースとリソース ロールを選択します。 このシナリオでは、 **[グループとチーム]** を選択し、[Office ライセンス](../enterprise-users/licensing-groups-assign.md)が割り当てられているグループを検索します。
 
 3. **[ロール]** 一覧で **[メンバー]** を選択します。
 
@@ -141,4 +141,4 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 アクセス パッケージを作成して、アプリケーションやサイトなど、他の種類のリソースへのアクセスを管理する方法について説明します。 
 
-[Azure AD エンタイトルメント管理でリソースへのアクセスを管理する](/azure/active-directory/governance/entitlement-management-access-package-first)
+[Azure AD エンタイトルメント管理でリソースへのアクセスを管理する](./entitlement-management-access-package-first.md)

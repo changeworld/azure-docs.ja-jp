@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 920cfa4053fac692145f46cc5cff7d53381d900b
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: a59f97e41705e222bbbca6656cd67d2e692ec5fa
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201800"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232406"
 ---
 # <a name="tutorial-create-a-load-balancer-with-more-than-one-availability-set-in-the-backend-pool-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してバックエンド プールに複数の可用性セットを備えたロード バランサーを作成する
 
@@ -159,7 +159,7 @@ ms.locfileid: "122201800"
 8. **[IP の種類]** として **[IP アドレス]** を選択します。
 
     > [!NOTE]
-    > IP プレフィックスの詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)に関するページを参照してください。
+    > IP プレフィックスの詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)に関するページを参照してください。
 
 9. **[パブリック IP アドレス]** で **[新規作成]** を選択します。
 
@@ -190,15 +190,15 @@ ms.locfileid: "122201800"
 
 21. **[追加]** を選択します。
 
-22. ページ下部にある **[次へ: インバウンド規則]** ボタンを選択します。
+22. ページ下部にある **[次へ: 受信規則]** ボタンを選択します。
 
-23. **[インバウンド規則]** タブの **[負荷分散規則]** で、 **[+ 負荷分散規則の追加]** を選択します。
+23. **[受信規則]** タブの **[負荷分散規則]** で、 **[+ 負荷分散規則の追加]** を選択します。
 
 24. **[負荷分散規則の追加]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
-    | Name | 「**myHTTPRule**」と入力します。 |
+    | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | 要件に応じて、 **[IPv4]** または **[IPv6]** を選択します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontend]** を選択します。 |
     | Protocol | **[TCP]** を選択します。 |
@@ -207,7 +207,7 @@ ms.locfileid: "122201800"
     | バックエンド プール | **[myBackendPool]** を選択します。 |
     | 正常性プローブ | **[新規作成]** を選択します。 </br> **[名前]** に、「**myHealthProbe**」と入力します。 </br> **[プロトコル]** で、 **[HTTP]** を選択します。 </br> 残りの部分は既定値のままにし、 **[OK]** を選択します。 |
     | セッション永続化 | **[なし]** を選択します。 |
-    | アイドル タイムアウト (分) | 「**15**」と入力するか、その値を選択します。 |
+    | アイドル タイムアウト (分) | 「**15**」を入力または選択します。 |
     | TCP リセット | **[Enabled]** を選択します。 |
     | フローティング IP | **[無効]** をクリックします。 |
     | アウトバウンド送信元ネットワーク アドレス変換 (SNAT) | 既定値の **[(推奨) アウトバウンド規則を使用して、バックエンド プールのメンバーがインターネットにアクセスできるようにします。]** のままにします。 |
@@ -219,8 +219,8 @@ ms.locfileid: "122201800"
 27. **［作成］** を選択します
 
     > [!NOTE]
-    > この例では、アウトバウンド インターネット アクセスを提供する NAT ゲートウェイを作成しました。 構成の [アウトバウンド規則] タブは省略可能であり、NAT ゲートウェイでは不要なためバイパスされました。 Azure NAT ゲートウェイの詳細については、[Azure Virtual Network NAT とは何か](../virtual-network/nat-gateway/nat-overview.md)に関するページを参照してください。
-    > Azure でのアウトバウンド接続の詳細については、「[アウトバウンド接続の送信元ネットワーク アドレス変換 (SNAT)](../load-balancer/load-balancer-outbound-connections.md)」を参照してください。
+    > この例では、送信インターネット アクセスを提供する NAT ゲートウェイを作成しました。 構成の [アウトバウンド規則] タブは省略可能であり、NAT ゲートウェイでは不要なためバイパスされました。 Azure NAT ゲートウェイの詳細については、「[Virtual Network NAT とは](../virtual-network/nat-gateway/nat-overview.md)」を参照してください。
+    > Azure でのアウトバウンド接続の詳細については、[アウトバウンド接続の送信元ネットワーク アドレス変換 (SNAT)](../load-balancer/load-balancer-outbound-connections.md) に関するページを参照してください。
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
@@ -257,7 +257,7 @@ ms.locfileid: "122201800"
 
 5. **[ネットワーク]** タブで、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | **ネットワーク インターフェイス** |   |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |
@@ -278,7 +278,7 @@ ms.locfileid: "122201800"
 
 8. 手順 1. から 7. を繰り返して、セットの 2 つ目の仮想マシンを作成します。 VM の設定は、次の情報に置き換えます。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | 名前 | 「**myVM2**」と入力します。 |
     | 可用性セット | **[myAvailabilitySet1]** を選択します。 |
@@ -321,7 +321,7 @@ ms.locfileid: "122201800"
 
 5. **[ネットワーク]** タブで、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | **ネットワーク インターフェイス** |   |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |
@@ -342,7 +342,7 @@ ms.locfileid: "122201800"
 
 8. 手順 1. から 7. を繰り返して、セットの 2 つ目の仮想マシンを作成します。 VM の設定は、次の情報に置き換えます。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | 名前 | 「**myVM4**」と入力します。 |
     | 可用性セット | **[myAvailabilitySet2]** を選択します。 |
@@ -428,7 +428,7 @@ ms.locfileid: "122201800"
 
 6. **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。
 
@@ -440,4 +440,3 @@ ms.locfileid: "122201800"
 次の記事に進んで、リージョン間 Azure ロード バランサーの作成方法を学習してください。
 > [!div class="nextstepaction"]
 > [リージョン間ロード バランサーを作成する](tutorial-cross-region-portal.md)
-

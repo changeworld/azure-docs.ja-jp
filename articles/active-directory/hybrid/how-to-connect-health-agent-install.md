@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31dd21a7c525bd1e5dc659b611f72c2c33c6f043
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 963c2d997bd75dadbeb6a37ea80d4237ea46cc35
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725781"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240663"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -174,7 +174,7 @@ PowerShell ウィンドウが開き、エージェント登録プロセスが開
 3. 右側の **[現在のログをフィルター]** を選択します。
 4. **[イベント ソース]** で **[AD FS の監査]** を選択します。
 
-    監査ログの詳細については、「[操作に関する質問](/azure/active-directory/hybrid/reference-connect-health-faq#operations-questions)」を参照してください。
+    監査ログの詳細については、「[操作に関する質問](./reference-connect-health-faq.yml)」を参照してください。
 
     ![[現在のログをフィルター] ウィンドウを示すスクリーンショット。 [イベント ソース] フィールドで "AD FS の監査" が選択されています。](./media/how-to-connect-health-agent-install/adfsaudit.png)
 

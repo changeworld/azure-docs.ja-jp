@@ -1,17 +1,17 @@
 ---
 title: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
 description: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
-author: jiangma
+author: majguo
 ms.author: jiangma
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: dda050b8d824f0ff0ac1c84d2f008387de55aedf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1eec47a7801975b3974ea172bd2cfbdc5ea0901
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100636382"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214778"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
 

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 58986ee94998dde88f8113449b460a0208156463
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 68021567ee454c0479130d8c476b11c975d0012d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122039"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242182"
 ---
 # <a name="quickstart-connect-an-nxp-mimxrt1060-evk-evaluation-kit-to-iot-central"></a>クイックスタート: NXP MIMXRT1060-EVK Evaluation kit を IoT Central に接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "112122039"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * ハードウェア
 

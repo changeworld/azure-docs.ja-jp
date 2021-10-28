@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/30/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 9b8f854a2bf5753f9e2ac047cff9f4c7fcef68da
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b4bdf611870ed28bc1bc0c34f52c4eaaa7655173
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715408"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288046"
 ---
 <!-- markdownlint-disable MD024 -->
 
@@ -192,7 +192,7 @@ Table 0 has 2 rows and 6 columns.
 
 ## <a name="analyze-receipts"></a>領収書を分析する
 
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipt.md)を参照してください。
 
 URL からレシートを分析するには、`StartRecognizeReceiptsFromUri` メソッドを使用します。
 
@@ -251,7 +251,7 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>名刺を分析する
 
-このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-card.md)を参照してください。
 
 URL から名刺を分析するには、`StartRecognizeBusinessCardsFromUriAsync` メソッドを使用します。
 
@@ -266,7 +266,7 @@ URL から名刺を分析するには、`StartRecognizeBusinessCardsFromUriAsync
 
 ## <a name="analyze-invoices"></a>請求書を分析する
 
-このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。
+このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoice.md)を参照してください。
 
 URL から請求書を分析するには、`StartRecognizeInvoicesFromUriAsync` メソッドを使用します。
 
@@ -281,7 +281,7 @@ URL から請求書を分析するには、`StartRecognizeInvoicesFromUriAsync` 
 
 ## <a name="analyze-id-documents"></a>身分証明書を分析する
 
-このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 身分証明書の分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
+このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 身分証明書の分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-id-document.md)を参照してください。
 
 URI から身分証明書を分析するには、`StartRecognizeIdentityDocumentsFromUriAsync` メソッドを使用します。
 

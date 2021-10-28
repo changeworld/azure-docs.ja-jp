@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを Azure に移行する
 description: オンプレミスまたは他のクラウド環境で実行されている Azure Arc 対応サーバーを Azure に移行する方法について説明します。
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ed30fac28c3491a9772466aa193f721f4fa440f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a524e9930b96d0f18038a2afd43039081010a504
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124815994"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236265"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-azure-arc-enabled-server-to-azure"></a>オンプレミスまたは他のクラウドの Azure Arc 対応サーバーを Azure に移行する
 
@@ -72,7 +72,7 @@ Azure Migration を使用した移行に進む前に、「[Azure への移行に
 
 ゲスト構成ポリシー定義を使ってマシン内の監査設定の使用を再開するには、「[ゲスト構成を有効にする](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration)」を参照してください。
 
-Log Analytics の VM 拡張機能または Dependency Agent の VM 拡張機能が Azure Policy と [VM insights のイニシアチブ](../../azure-monitor/vm/vminsights-enable-policy.md)を使用してデプロイされていた場合は、前に作成した[除外](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)を削除します。 Azure Policy を使用して Azure 仮想マシンを有効にするには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../../azure-monitor/deploy-scale.md#vm-insights)」を参照してください。 
+Log Analytics の VM 拡張機能または Dependency Agent の VM 拡張機能が Azure Policy と [VM insights のイニシアチブ](../../azure-monitor/vm/vminsights-enable-policy.md)を使用してデプロイされていた場合は、前に作成した[除外](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)を削除します。 Azure Policy を使用して Azure 仮想マシンを有効にするには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../../azure-monitor/best-practices.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

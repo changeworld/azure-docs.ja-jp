@@ -11,12 +11,12 @@ ms.date: 09/25/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ffedd73860a9ef171d592689ef7a0d8a0cde82d0
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ce5da1ae3ae87d3dbfc91b72fbda412ad179cfa9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044177"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233963"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -50,11 +50,11 @@ ms.locfileid: "130044177"
 1. ご利用のサブスクリプションが含まれているディレクトリを選択します。
     1. Azure portal ツールバーで、 **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** フィルター アイコンを選択します。 
     
-    ![[Directories + subscriptions]\(ディレクトリ + サブスクリプション\) フィルター アイコン](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
+        ![[Directories + subscriptions]\(ディレクトリ + サブスクリプション\) フィルター アイコン](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
 
     1. サブスクリプションが含まれるディレクトリを見つけ、その隣にある **[切り替え]** ボタンを選択します。 ディレクトリを切り替えると、ポータルが再読み込みされます。
 
-    ![[Directories + subscriptions]\(ディレクトリ + サブスクリプション\) と [切り替え] ボタン](media/tutorial-create-tenant/switch-directory.png)
+        ![[Directories + subscriptions]\(ディレクトリ + サブスクリプション\) と [切り替え] ボタン](media/tutorial-create-tenant/switch-directory.png)
 
 1. 使用している Azure サブスクリプションのリソース プロバイダーとして **Microsoft.AzureActiveDirectory** を追加します ([詳細](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1))。
 

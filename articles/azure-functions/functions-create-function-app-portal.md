@@ -4,12 +4,12 @@ description: Azure Portal を使用して、サーバーレス実行のための
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 336e531f4ec64141770fc26d7e6eea9ebfedf922
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 60bea9c14c9f97193fc467b7e29a6d2f32fcf08f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517142"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248585"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -23,6 +23,10 @@ Azure Functions を使用すると、最初に仮想マシン (VM) を作成し�
 | Visual Studio Code | ターミナル/コマンド プロンプト | Visual Studio |
 | --- | --- | --- |
 |  &bull;&nbsp;[C# で作業を開始する](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Java で作業を開始する](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Python で作業を開始する](./create-first-function-vs-code-python.md) |&bull;&nbsp;[C# で作業を開始する](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Java で作業を開始する](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[JavaScript で作業を開始する](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[PowerShell で作業を開始する](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Python で作業を開始する](./create-first-function-cli-python.md) | [C# で作業を開始する](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [functions-portal-language-support](../../includes/functions-portal-language-support.md)]
+
+## <a name="prerequisites"></a>[前提条件] 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

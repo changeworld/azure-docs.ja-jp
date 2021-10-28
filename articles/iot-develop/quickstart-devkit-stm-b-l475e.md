@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: fe009eec23e940377e737938ea1986f515546138
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 30e64f70f713540574545200dc188342b63e2f01
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862134"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242163"
 ---
 # <a name="quickstart-connect-an-stmicroelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>クイックスタート: STMicroelectronics B-L475E-IOT01A または B-L4S5I-IOT01A Discovery kit を IoT Central に接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "121862134"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * ハードウェア
 

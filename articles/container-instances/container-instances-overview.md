@@ -4,12 +4,12 @@ description: Azure Container Instances サービスには、仮想マシンを�
 ms.topic: overview
 ms.date: 03/22/2021
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 4574802b86e517eac5a908b03759dcca3f17d9b3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3628171c8c4a7994ac3237c533c1e15c061a01f1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292308"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215804"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -64,7 +64,7 @@ Azure Container Instances では、同じ API で、Windows と Linux の両方�
 * [仮想ネットワークのデプロイ](container-instances-vnet.md)
 * [GPU リソース](container-instances-gpu.md) (プレビュー)
 
-Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)に基づくイメージを使用します。
+Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](./container-instances-faq.yml#what-windows-base-os-images-are-supported-)に基づくイメージを使用します。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

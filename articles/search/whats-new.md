@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: b3c84a46e19e4cf24459424458340233869ea683
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cd4249762e0e5836dc6a077d7f9d091394f427c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736301"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237968"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -24,7 +24,7 @@ ms.locfileid: "121736301"
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
 |------------------------------------|--------------|---------------|
 | [Search REST API 2021-04-30-Preview](/rest/api/searchservice/index-preview) | [マネージド ID](search-howto-managed-identities-data-sources.md) と Azure Active Directory (Azure AD) 認証を使用して行われるインデクサー接続の REST API サポートを追加します。 | パブリック プレビュー |
-| [ロールベースの承認 (プレビュー)](search-security-rbac.md) | データ プレーンからインデックスとインデックス作成へのアクセスのために Azure Active Directory と新しい組み込みのロールを使用して認証することで、API キーへの依存を解消または軽減します。 | パブリック プレビュー ([要求による](https://aka.ms/azure-cognitive-search/rbac-preview))。 サブスクリプションのオンボード化後、Azure portal または管理 REST API バージョン 2021-04-01- プレビューを使用して、データ プレーン認証用に検索サービスを構成します。|
+| [ロールベースの承認 (プレビュー)](search-security-rbac.md) | データ プレーンからインデックスとインデックス作成へのアクセスのために Azure Active Directory と新しい組み込みのロールを使用して認証することで、API キーへの依存を解消または軽減します。 | パブリック プレビュー ([要求による](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#step-1-preview-sign-up))。 サブスクリプションのオンボード化後、Azure portal または管理 REST API バージョン 2021-04-01- プレビューを使用して、データ プレーン認証用に検索サービスを構成します。|
 | [管理 REST API 2021-04-01-Preview](/rest/api/searchmanagement/) | 新しい [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) をサポートするために [[サービスの作成または更新]](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を変更します。 | パブリック プレビュー |
 
 ## <a name="may-2021"></a>2021 年 5 月

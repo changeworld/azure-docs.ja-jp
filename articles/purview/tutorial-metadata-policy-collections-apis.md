@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 09/24/2021
-ms.openlocfilehash: cfb62050da2b1c72ec8e620f9a4222552f50daa2
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 79848d8f54ea1d019f2a9e6cf93a61cc8b7c49f9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728686"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245931"
 ---
 # <a name="tutorial-use-rest-apis-to-manage-role-based-access-control-on-azure-purview-collections"></a>チュートリアル: REST API を使用して、Azure Purview コレクションのロールベースのアクセス制御 を管理する 
 
@@ -23,7 +23,7 @@ ms.locfileid: "129728686"
 Azure Purview の組み込みロールの詳細については、[Azure Purview のアクセス許可のガイド](catalog-permissions.md#roles)を参照してください。 このガイドでは、ユーザーに付与されるアクセス許可のレベルに対してロールがマップされています。
 
 ## <a name="metadata-policy-api-reference-summary"></a>メタデータ ポリシー API リファレンスの概要
-次の表は、[Azure Purview メタデータ ポリシー API リファレンス](/rest/api/purview/metadatapolicydataplane/Metadata-Policy.yml)の概要を示しています。 
+次の表は、[Azure Purview メタデータ ポリシー API リファレンス](/rest/api/purview/metadatapolicydataplane/Metadata-Policy)の概要を示しています。 
 
 これらの API を実行する前に、{pv-acc-name} をお使いの Azure Purview アカウントに置き換えてください。 たとえば、お使いの Azure Purview アカウント名が *FabrikamPurviewAccount* の場合、API エンドポイントは *FabrikamPurviewAccount.purview.azure.com* になります。
 

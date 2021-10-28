@@ -4,12 +4,12 @@ description: 既定の Azure Batch のクォータ、制限、および制約と
 ms.topic: conceptual
 ms.date: 07/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: ad5701c65f9f2068a1a68084b755f8d0a013b8c8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 799258258e1215977aea5b176d133bd121624bd6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465576"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239117"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -138,7 +138,7 @@ Azure クォータ REST API を使用して、サブスクリプション レベ
 仮想ネットワークでは、100 プール ノードごとに次のリソースが作成されます。
 
 - 1 つの[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#network-security-groups)
-- 1 つの[パブリック IP アドレス](../virtual-network/public-ip-addresses.md)
+- 1 つの[パブリック IP アドレス](../virtual-network/ip-services/public-ip-addresses.md)
 - 1 つの[ロード バランサー](../load-balancer/load-balancer-overview.md)
 
 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワークで大規模なプールのデプロイを計画している場合は、これらのリソースの 1 つ以上のクォータの増加を要求することが必要になる場合があります。

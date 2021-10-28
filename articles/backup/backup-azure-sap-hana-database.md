@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 9b78a6ed1e36b925bc5d0205effc00eb1b868f5f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 472a83ddac9b88179f583868ba4e19136b147154
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084172"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236044"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -37,15 +37,15 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 次の表に、接続の確立に使用できるさまざまな選択肢を示します。
 
-| <bpt id="p1">**</bpt>オプション<ept id="p1">**</ept>                        | <bpt id="p1">**</bpt>長所<ept id="p1">**</ept>                                               | <bpt id="p1">**</bpt>短所<ept id="p1">**</ept>                                            |
+| **オプション**                        | **長所**                                               | <bpt id="p1">**</bpt>短所<ept id="p1">**</ept>                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント <bpt id="p1">[</bpt>コスト<ept id="p1">](https://azure.microsoft.com/pricing/details/private-link/)</ept>が発生する |
 | NSG サービス タグ                  | 範囲の変更が自動的にマージされるため管理しやすい   <br><br>   追加のコストが発生しない | NSG でのみ使用可能  <br><br>    サービス全体へのアクセスを提供する |
 | Azure Firewall の FQDN タグ          | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能                         |
 | サービスの FQDN/IP へのアクセスを許可する | 追加のコストが発生しない   <br><br>  すべてのネットワーク セキュリティ アプライアンスとファイアウォールで動作する | 広範な IP または FQDN のセットへのアクセスが必要になる場合がある   |
 | HTTP プロキシを使用する                 | VM に対するインターネット アクセスを単一の場所で実現                       | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する         |
-| [仮想ネットワーク サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     Azure Storage (= Recovery Services コンテナー) に使用できます。     <br><br>     データ プレーン トラフィックのパフォーマンスを最適化する上で大きなメリットがあります。          |         Azure AD、Azure Backup サービスには使用できません。    |
-| ネットワーク仮想アプライアンス      |      Azure Storage、Azure AD、Azure Backup サービスに使用できます。 <br><br> <bpt id="p1">**</bpt>データ プレーン<ept id="p1">**</ept>   <ul><li>      Azure Storage: `*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     <bpt id="p1">**</bpt>管理プレーン<ept id="p1">**</ept>  <ul><li>  Azure AD:「[Microsoft 365 Common および Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online)」のセクション 56 および 59 に記載されている FQDN へのアクセスを許可します。 </li><li>   Azure Backup サービス: `.backup.windowsazure.com` </li></ul> <br>[Azure Firewall のサービス タグ](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.)の詳細を参照してください。       |  データ プレーン トラフィックにオーバーヘッドが追加され、スループットとパフォーマンスが低下します。  |
+| [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)    |     Azure Storage (= Recovery Services コンテナー) に使用できます。     <br><br>     データ プレーン トラフィックのパフォーマンスを最適化する上で大きなメリットがあります。          |         Azure AD、Azure Backup サービスには使用できません。    |
+| ネットワーク仮想アプライアンス      |      Azure Storage、Azure AD、Azure Backup サービスに使用できます。 <br><br> **データ プレーン**   <ul><li>      Azure Storage: `*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     <bpt id="p1">**</bpt>管理プレーン<ept id="p1">**</ept>  <ul><li>  Azure AD:「[Microsoft 365 Common および Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online)」のセクション 56 および 59 に記載されている FQDN へのアクセスを許可します。 </li><li>   Azure Backup サービス: `.backup.windowsazure.com` </li></ul> <br>[Azure Firewall のサービス タグ](../firewall/fqdn-tags.md)の詳細を参照してください。       |  データ プレーン トラフィックにオーバーヘッドが追加され、スループットとパフォーマンスが低下します。  |
 
 これらのオプションを使用する方法の詳細については、以下を参照してください。
 
@@ -57,15 +57,15 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 ネットワーク セキュリティ グループ (NSG) を使用する場合は、<bpt id="p1">*</bpt>AzureBackup<ept id="p1">*</ept> サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (<bpt id="p2">*</bpt>AzureActiveDirectory<ept id="p2">*</ept>) および Azure Storage (<bpt id="p3">*</bpt>Storage<ept id="p3">*</ept>) に対して同様の <bpt id="p1">[</bpt>NSG 規則<ept id="p1">](../virtual-network/network-security-groups-overview.md#service-tags)</ept>を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
-1. <bpt id="p1">**</bpt>[すべてのサービス]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[ネットワーク セキュリティ グループ]<ept id="p2">**</ept> に移動して、ネットワーク セキュリティ グループを選択します。
+1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
 
 1. <bpt id="p2">**</bpt>[設定]<ept id="p2">**</ept> で <bpt id="p1">**</bpt>[送信セキュリティ規則]<ept id="p1">**</ept> を選択します。
 
-1. <bpt id="p1">**</bpt>[追加]<ept id="p1">**</ept> を選択します。 <bpt id="p1">[</bpt>セキュリティ規則の設定<ept id="p1">](../virtual-network/manage-network-security-group.md#security-rule-settings)</ept>の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション <bpt id="p1">**</bpt>[宛先]<ept id="p1">**</ept> が <bpt id="p2">*</bpt>[サービス タグ]<ept id="p2">*</ept> に、 <bpt id="p3">**</bpt>[宛先サービス タグ]<ept id="p3">**</ept> が <bpt id="p4">*</bpt>[AzureBackup]<ept id="p4">*</ept> に設定されていることを確認します。
+1. **[追加]** を選択します。 <bpt id="p1">[</bpt>セキュリティ規則の設定<ept id="p1">](../virtual-network/manage-network-security-group.md#security-rule-settings)</ept>の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション <bpt id="p1">**</bpt>[宛先]<ept id="p1">**</ept> が <bpt id="p2">*</bpt>[サービス タグ]<ept id="p2">*</ept> に、 <bpt id="p3">**</bpt>[宛先サービス タグ]<ept id="p3">**</ept> が <bpt id="p4">*</bpt>[AzureBackup]<ept id="p4">*</ept> に設定されていることを確認します。
 
-1. <bpt id="p1">**</bpt>[追加]<ept id="p1">**</ept> を選択して、新しく作成した送信セキュリティ規則を保存します。
+1. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
 
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、<bpt id="p1">[</bpt>こちらの記事<ept id="p1">](../virtual-network/service-tags-overview.md)</ept>を参照してください。
+Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 
@@ -96,9 +96,9 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 
 ## <a name="enable-cross-region-restore"></a>リージョンをまたがる復元を有効にする
 
-Recovery Services コンテナーでは、リージョンをまたがる復元を有効にできます。 HANA データベースでバックアップを構成および保護する前に、リージョンをまたがる復元を有効にする必要があります。 [リージョンをまたがる復元を有効にする方法](/azure/backup/backup-create-rs-vault#set-cross-region-restore)に関する記事を参照してください。
+Recovery Services コンテナーでは、リージョンをまたがる復元を有効にできます。 HANA データベースでバックアップを構成および保護する前に、リージョンをまたがる復元を有効にする必要があります。 [リージョンをまたがる復元を有効にする方法](./backup-create-rs-vault.md#set-cross-region-restore)に関する記事を参照してください。
 
-リージョンをまたがる復元に関する[詳細情報を参照してください](/azure/backup/backup-azure-recovery-services-vault-overview)。
+リージョンをまたがる復元に関する[詳細情報を参照してください](./backup-azure-recovery-services-vault-overview.md)。
 
 ## <a name="discover-the-databases"></a>データベースを検出する
 
@@ -132,7 +132,7 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 4. ポリシーを作成した後、 <bpt id="p1">**</bpt>[バックアップ] メニュー<ept id="p1">**</ept>の <bpt id="p2">**</bpt>[バックアップの有効化]<ept id="p2">**</ept> を選択します。
 
     ![バックアップの有効化](./media/backup-azure-sap-hana-database/enable-backup.png)
-5. ポータルの <bpt id="p1">**</bpt>[通知]<ept id="p1">**</ept> 領域で、バックアップ構成の進行状況を追跡します。
+5. ポータルの **[通知]** 領域で、バックアップ構成の進行状況を追跡します。
 
 ### <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 
@@ -148,7 +148,7 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
 次のように、ポリシー設定を指定します。
 
-1. <bpt id="p1">**</bpt>[ポリシー名]<ept id="p1">**</ept> に新しいポリシーの名前を入力します。
+1. **[ポリシー名]** に新しいポリシーの名前を入力します。
 
    ![ポリシー名を入力する](./media/backup-azure-sap-hana-database/policy-name.png)
 1. <bpt id="p1">**</bpt>完全バックアップのポリシー<ept id="p1">**</ept>で <bpt id="p2">**</bpt>[バックアップ頻度]<ept id="p2">**</ept> を選択し、 <bpt id="p3">**</bpt>[毎日]<ept id="p3">**</ept> または <bpt id="p4">**</bpt>[毎週]<ept id="p4">**</ept> を選びます。
@@ -160,16 +160,16 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
    ![バックアップの頻度を選択する](./media/backup-azure-sap-hana-database/backup-frequency.png)
 
-1. <bpt id="p1">**</bpt>[リテンション期間]<ept id="p1">**</ept> で、完全バックアップのリテンション期間の設定を構成します。
+1. **[リテンション期間]** で、完全バックアップのリテンション期間の設定を構成します。
     * 既定では、すべてのオプションが選択されています。 使用しないリテンション期間の制限をすべてクリアして、使用するものを設定します。
     * あらゆる種類のバックアップ (完全、差分、ログ) の最小保持期間は 7 日間です。
     * 復旧ポイントは、そのリテンション期間の範囲に基づいて、リテンション期間に対してタグ付けされます。 たとえば、日次での完全バックアップを選択した場合、日ごとにトリガーされる完全バックアップは 1 回だけです。
     * 特定の曜日のバックアップがタグ付けされ、週次でのリテンション期間と設定に基づいて保持されます。
     * 月次および年次のリテンション期間の範囲でも、同様の動作になります。
 
-1. <bpt id="p1">**</bpt>完全バックアップのポリシー<ept id="p1">**</ept> メニューで、 <bpt id="p2">**</bpt>[OK]<ept id="p2">**</ept> を選択して設定を確定します。
+1. **完全バックアップのポリシー** メニューで、 **[OK]** を選択して設定を確定します。
 1. <bpt id="p1">**</bpt>[差分バックアップ]<ept id="p1">**</ept> を選択して、差分ポリシーを追加します。
-1. <bpt id="p1">**</bpt>差分バックアップのポリシー<ept id="p1">**</ept>で、 <bpt id="p2">**</bpt>[有効]<ept id="p2">**</ept> を選択して頻度とリテンション期間の制御を開きます。
+1. **差分バックアップのポリシー** で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
     * 最多で、1 日に 1 回の差分バックアップをトリガーできます。
     * 差分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。
 
@@ -183,8 +183,8 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
     ![増分バックアップ ポリシー](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-1. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択してポリシーを保存し、 <bpt id="p2">**</bpt>[バックアップ ポリシー]<ept id="p2">**</ept> のメイン メニューに戻ります。
-1. <bpt id="p1">**</bpt>[ログ バックアップ]<ept id="p1">**</ept> を選択し、トランザクション ログ バックアップ ポリシーを追加します。
+1. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
+1. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
     * <bpt id="p1">**</bpt>[ログ バックアップ]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[有効化]<ept id="p2">**</ept> を選択します。  すべてのログ バックアップは SAP HANA で管理されるため、これを無効にすることはできません。
     * 頻度とリテンション期間の制御を設定します。
 
@@ -192,7 +192,7 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
     > ログ バックアップでは、完全バックアップが正常に完了した後にのみ、フローが開始されます。
 
 1. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択してポリシーを保存し、 <bpt id="p2">**</bpt>[バックアップ ポリシー]<ept id="p2">**</ept> のメイン メニューに戻ります。
-1. バックアップ ポリシーの定義が完了した後、 <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択します。
+1. バックアップ ポリシーの定義が完了した後、 **[OK]** を選択します。
 
 > [!NOTE]
 > 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 ユーザーが、週単位の完全バックアップ、日単位の差分、2 時間ごとのログを実行しているとしましょう。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後でのみ、すなわち 30 + 7 日後に、実際にクリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
@@ -201,10 +201,10 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
 バックアップは、ポリシー スケジュールに従って実行されます。 次のように、バックアップ オンデマンを実行できます。
 
-1. コンテナー メニューで <bpt id="p1">**</bpt>[バックアップ項目]<ept id="p1">**</ept> を選択します。
-2. <bpt id="p1">**</bpt>[バックアップ項目]<ept id="p1">**</ept> で、SAP HANA データベースを実行している VM を選択してから、 <bpt id="p2">**</bpt>[今すぐバックアップ]<ept id="p2">**</ept> を選択します。
-3. <bpt id="p1">**</bpt>[今すぐバックアップ]<ept id="p1">**</ept> で、実行するバックアップの種類を選択します。 <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> をクリックします。 このバックアップは 45 日間保持されます。
-4. ポータルの通知を監視します。 コンテナー ダッシュボードの <bpt id="p1">**</bpt>[バックアップ ジョブ]<ept id="p1">**</ept> <ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[進行中]<ept id="p2">**</ept> でジョブの進行状況を監視できます。 データベースのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
+1. コンテナー メニューで **[バックアップ項目]** を選択します。
+2. **[バックアップ項目]** で、SAP HANA データベースを実行している VM を選択してから、 **[今すぐバックアップ]** を選択します。
+3. **[今すぐバックアップ]** で、実行するバックアップの種類を選択します。 **[OK]** をクリックします。 このバックアップは 45 日間保持されます。
+4. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]**  >  **[進行中]** でジョブの進行状況を監視できます。 データベースのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
 
 既定では、オンデマンド バックアップの保持期間は 45 日です。
 
@@ -214,7 +214,7 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
 
 1. データベースの完全バックアップまたはログ バックアップがすべて完了するまで待ちます。 SAP HANA Studio/Cockpit で状態を確認します。
 1. ログ バックアップを無効にし、関連するデータベースのファイル システムにバックアップ カタログを設定します。
-1. これを行うには、<bpt id="p1">**</bpt>systemdb<ept id="p1">**</ept><ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[構成]<ept id="p2">**</ept> <ph id="ph2"> > </ph> <bpt id="p3">**</bpt>[データベースの選択]<ept id="p3">**</ept> <ph id="ph3"> > </ph> <bpt id="p4">**</bpt>[Filter (Log)]\(フィルター (ログ)\)<ept id="p4">**</ept> の順にダブルクリックします。
+1. これを行うには、**systemdb** >  **[構成]**  >  **[データベースの選択]**  >  **[Filter (Log)]\(フィルター (ログ)\)** の順にダブルクリックします。
 1. <bpt id="p1">**</bpt>[enable_auto_log_backup]<ept id="p1">**</ept> を <bpt id="p2">**</bpt>[No]<ept id="p2">**</ept> に設定します。
 1. <bpt id="p1">**</bpt>[log_backup_using_backint]<ept id="p1">**</ept> を <bpt id="p2">**</bpt>[False]<ept id="p2">**</ept> に設定します。
 1. <bpt id="p1">**</bpt>[catalog_backup_using_backint]<ept id="p1">**</ept> を <bpt id="p2">**</bpt>[False]<ept id="p2">**</ept> に設定します。
@@ -227,5 +227,5 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
 
 ## <a name="next-steps"></a>次のステップ
 
-* <bpt id="p1">[</bpt>Azure VM で稼働している SAP HANA データベースを復元する<ept id="p1">](./sap-hana-db-restore.md)</ept>方法を学習する
-* <bpt id="p1">[</bpt>Azure Backup を使用してバックアップされた SAP HANA データベースを管理する<ept id="p1">](./sap-hana-db-manage.md)</ept>方法を学習する
+* [Azure VM で稼働している SAP HANA データベースを復元する](./sap-hana-db-restore.md)方法を学習する
+* [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](./sap-hana-db-manage.md)方法を学習する

@@ -8,12 +8,12 @@ ms.service: cache
 ms.topic: how-to
 ms.date: 09/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e62215649a79f16fcb9cbfc20cfe16bc98f2251f
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 2662ba2f2e87f79b034ae8138bba31fc9358d8d6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812397"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236173"
 ---
 # <a name="monitor-azure-cache-for-redis-data-using-diagnostic-settings"></a>診断設定を使用して Azure Cache for Redis のデータを監視する
 
@@ -28,7 +28,7 @@ Azure Cache for Redis インスタンスの診断設定を有効にして、次�
 - **イベント ハブ** - 仮想ネットワークが有効になっていると、診断設定でイベント ハブ リソースにアクセスすることはできません。 イベント ハブ リソースへのアクセスを許可するには、イベント ハブの設定 **[信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可しますか?]** を有効にします。 イベント ハブは、キャッシュと同じリージョンにある必要があります。
 - **ストレージ アカウント** - キャッシュと同じリージョンに存在する必要があります。
 
-診断の要件の詳細については、[診断設定](/azure/azure-monitor/essentials/diagnostic-settings?tabs=CMD)に関する記事を参照してください。
+診断の要件の詳細については、[診断設定](../azure-monitor/essentials/diagnostic-settings.md?tabs=CMD)に関する記事を参照してください。
 
 診断ログをいずれかの宛先に送信すると、ストレージ アカウントとイベント ハブの使用に対して通常のデータレートが課金されます。 この場合、請求は Azure Cache for Redis ではなく Azure Monitor で行われます。
 価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
@@ -53,7 +53,7 @@ Azure Cache for Redis インスタンスの診断設定を有効にして、次�
 
 ## <a name="create-diagnostic-setting-via-rest-api"></a> REST API を介した診断設定の作成
 
-Azure Monitor REST API を、対話型コンソールを介して診断設定を作成するために使用します。 詳細については、「 [作成または更新](/rest/api/monitor/diagnostic-settings/create-or-update.md)」を参照してください。
+Azure Monitor REST API を、対話型コンソールを介して診断設定を作成するために使用します。 詳細については、「 [作成または更新](/rest/api/monitor/diagnostic-settings/create-or-update)」を参照してください。
 
 ### <a name="request"></a>Request
 

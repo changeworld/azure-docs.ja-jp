@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/05/2021
-ms.openlocfilehash: 3b199223c7e77f31cd4bf6e99d6a170f6868848a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 443c2abbd005c3e2517caa98c707132ad0849d3a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448697"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234324"
 ---
 # <a name="api"></a>API #
 
@@ -30,7 +30,7 @@ API 関数を使用するには、プレーヤー オブジェクトにアクセ
 
 Azure Media Player がビデオと API をセットアップするためにかかる時間は、使用されている再生テクノロジによって異なります。 多くの場合、HTML5 は Flash や Silverlight よりも読み込みがはるかに高速です。 そのため、プレーヤーの API を必要とするコードをトリガーするには、プレーヤーの 'ready' 関数を使用する必要があります。
 
-```javacript
+```javascript
     amp("vid_1").ready(function(){
       var myPlayer = this;
 
@@ -41,7 +41,7 @@ Azure Media Player がビデオと API をセットアップするためにか�
 
 OR
 
-```javacript
+```javascript
     var myPlayer = amp("vid_1", myOptions, function(){
         //this is the ready function and will only execute after the player is loaded
     });
@@ -51,7 +51,7 @@ OR
 
 準備ができたプレーヤーにアクセスできるようになったので、ビデオの制御、値の取得、ビデオ イベントへの応答を行うことができます。 Azure Media Player API の関数名は、[HTML5 Media API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html) に準じて名付けられています。 主な違いは、ゲッター関数とセッター関数がビデオ プロパティに使用されることです。
 
-```javacript
+```javascript
     // setting a property on a bare HTML5 video element
     myVideoElement.currentTime = 120;
 
@@ -62,7 +62,7 @@ OR
 ## <a name="registering-for-events"></a>イベントの登録 ##
 すべてのイベントをアプリケーションに適切に報告するには、プレーヤーを初めて初期化した直後にイベントを登録するようにします。また、準備完了イベントの外部で実行するようにします。
 
-```javacript
+```javascript
     var myPlayer = amp("vid_1", myOptions, function(){
         //this is the ready function and will only execute after the player is loaded
     });

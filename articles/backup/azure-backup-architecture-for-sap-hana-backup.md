@@ -3,16 +3,16 @@ title: SAP HANA バックアップのための Azure Backup アーキテクチ�
 description: SAP HANA バックアップのための Azure Backup アーキテクチャについて説明します。
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 7ca16e9990f097a98b8395c97567cabfbcb71eae
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: df8bb6adfeff88eafba19bcc459f887f075aa75b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084224"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244580"
 ---
 # <a name="azure-backup-architecture-for-sap-hana-backup"></a>SAP HANA バックアップのための Azure Backup アーキテクチャ
 
-[Azure Backup サービス](/azure/backup/backup-overview)を使用すると、SAP HANA データベースのデータをアプリケーションで一貫した方法でバックアップできます。 この記事では、Azure Backup のアーキテクチャ、コンポーネント、およびプロセスについて説明します。
+[Azure Backup サービス](./backup-overview.md)を使用すると、SAP HANA データベースのデータをアプリケーションで一貫した方法でバックアップできます。 この記事では、Azure Backup のアーキテクチャ、コンポーネント、およびプロセスについて説明します。
 
 ## <a name="how-does-azure-backup-work-with-sap-hana-databases"></a>Azure Backup が SAP HANA データベースと連携する方法
 
@@ -20,13 +20,13 @@ Azure Backup には、Azure VM 上で動作する SAP HANA データベースを
 
 Azure Backup は、SAP によって [Backint 認定](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)されているため、SAP HANA のネイティブ API を使用したバックアップをネイティブでサポートしています。 このソリューションにより、Azure VM 上で動作する SAP HANA データベースのバックアップと復元をシームレスに行い、Azure Backup に用意されているエンタープライズ管理機能を使用することができます。
 
-Azure Backup が SAP HANA に提供する付加価値に関する[詳細情報を参照してください](/azure/backup/sap-hana-db-about#added-value)。
+Azure Backup が SAP HANA に提供する付加価値に関する[詳細情報を参照してください](./sap-hana-db-about.md#added-value)。
 
 ## <a name="where-is-the-data-backed-up"></a>データがバックアップされる場所
 
 Azure Backup によってバックアップされたデータは Recovery Services コンテナーに格納されます。 コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを格納するために使用される、Azure 上のオンライン ストレージ エンティティです。
 
-Recovery Services コンテナーに関する[詳細情報を参照してください](/azure/backup/backup-azure-backup-faq#recovery-services-vault)。
+Recovery Services コンテナーに関する[詳細情報を参照してください](./backup-azure-backup-faq.yml)。
 
 ## <a name="backup-agents"></a>Backup のエージェント
 
@@ -34,30 +34,30 @@ Azure VM 上で動作している SAP HANA データベースをバックアッ�
 
 ## <a name="backup-types"></a>バックアップの種類
 
-SAP HANA のバックアップの種類に関する[詳細情報を参照してください](/azure/backup/backup-architecture#sap-hana-backup-types)。
+SAP HANA のバックアップの種類に関する[詳細情報を参照してください](./backup-architecture.md#sap-hana-backup-types)。
 
 ## <a name="about-architecture"></a>アーキテクチャの概要
 
-[SAP HANA データベース用 Azure Backup のアーキテクチャの概要](/azure/backup/sap-hana-db-about#backup-architecture)を参照してください。 バックアップ プロセスの詳細については、次のプロセスを参照してください。
+[SAP HANA データベース用 Azure Backup のアーキテクチャの概要](./sap-hana-db-about.md#backup-architecture)を参照してください。 バックアップ プロセスの詳細については、次のプロセスを参照してください。
 
 :::image type="content" source="./media/sap-hana-db-about/backup-architecture.png" alt-text="SAP HANA データベースのバックアップ プロセスを示す図。":::
 
-1. バックアップ プロセスを開始するには、[Azure に Recovery Services コンテナー](/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-services-vault)を作成します。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
+1. バックアップ プロセスを開始するには、[Azure に Recovery Services コンテナー](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault)を作成します。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
 
-1. SAP HANA サーバーを実行している Azure VM がコンテナーに登録されており、バックアップされるデータベースが[検出](/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases)されます。 Azure Backup サービスでデータベースを検出できるようにするには、HANA サーバー上でこの[事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)を root ユーザーとして実行する必要があります。 
+1. SAP HANA サーバーを実行している Azure VM がコンテナーに登録されており、バックアップされるデータベースが[検出](./tutorial-backup-sap-hana-db.md#discover-the-databases)されます。 Azure Backup サービスでデータベースを検出できるようにするには、HANA サーバー上でこの[事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)を root ユーザーとして実行する必要があります。 
    >[!Note]
    >このインスタンスのデータベースを検出する間は、HANA インスタンスの稼働状態を確保します。
 
-1. また、[その他の前提条件](/azure/backup/tutorial-backup-sap-hana-db#prerequisites)が満たされていることを確認します。
+1. また、[その他の前提条件](./tutorial-backup-sap-hana-db.md#prerequisites)が満たされていることを確認します。
 
    >[!Important]
-   >適切なネットワーク接続を設定するための前提条件が満たされていることを確認します。 推奨事項については、[バックアップ オファリングを使用する追加のネットワーク コンポーネントを使用して、SAP HANA で動作している Azure VM を設定する方法](/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)に関する記事を参照してください。
+   >適切なネットワーク接続を設定するための前提条件が満たされていることを確認します。 推奨事項については、[バックアップ オファリングを使用する追加のネットワーク コンポーネントを使用して、SAP HANA で動作している Azure VM を設定する方法](./tutorial-backup-sap-hana-db.md#set-up-network-connectivity)に関する記事を参照してください。
 
-1. [事前登録スクリプトで実行される処理](/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does)の詳細を参照してください。 このスクリプトを実行せずに SAP HANA データベースのバックアップを構成しようとすると、エラー _UserErrorHanaScriptNotRun_ を受け取る場合があります。
+1. [事前登録スクリプトで実行される処理](./tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)の詳細を参照してください。 このスクリプトを実行せずに SAP HANA データベースのバックアップを構成しようとすると、エラー _UserErrorHanaScriptNotRun_ を受け取る場合があります。
 
 1. Azure Backup サービスにより、登録されている SAP HANA サーバー上に HANA 用の Azure Backup プラグインがインストールされるようになりました。 このプラグインにより、事前登録スクリプトによって作成された Backup ユーザーが使用され、すべてのバックアップと復元の操作が実行されます。
 
-1. 検出されたデータベースで[バックアップを構成](/azure/backup/tutorial-backup-sap-hana-db#configure-backup)するには、必要なバックアップポリシーを選択し、バックアップを有効にする必要があります。
+1. 検出されたデータベースで[バックアップを構成](./tutorial-backup-sap-hana-db.md#configure-backup)するには、必要なバックアップポリシーを選択し、バックアップを有効にする必要があります。
 
 1. SAP HANA 用 Azure Backup (Backint 認定ソリューション) は、基になるディスクまたは VM の種類に依存しません。 このバックアップは、SAP HANA で生成されたストリームによって実行されます。
 
@@ -71,9 +71,9 @@ SAP HANA のバックアップの種類に関する[詳細情報を参照して�
 
 1. バックアップ データをストリーミングするために、Backint によって最大 3 つのパイプが作成され、Azure Backup の Recovery Services コンテナーに直接書き込まれます。
 
-   ファイアウォールまたは NVA を使用していない場合、バックアップ ストリームは Azure ネットワークを介して Recovery Services コンテナーに転送されます。 また、[仮想ネットワーク サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)または[プライベート エンドポイント](/azure/private-link/private-endpoint-overview)を設定すると、NVA または Azure Firewall をスキップして SAP HANA から Azure Storage にバックアップ トラフィックを直接送信できるようになります。 さらに、ファイアウォールまたは NVA を使用する場合、Azure Active Directory と Recovery Services コンテナーへのトラフィックはファイアウォールまたは NVA を通過するため、全体のバックアップ パフォーマンスには影響しません。 
+   ファイアウォールまたは NVA を使用していない場合、バックアップ ストリームは Azure ネットワークを介して Recovery Services コンテナーに転送されます。 また、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)または[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を設定すると、NVA または Azure Firewall をスキップして SAP HANA から Azure Storage にバックアップ トラフィックを直接送信できるようになります。 さらに、ファイアウォールまたは NVA を使用する場合、Azure Active Directory と Recovery Services コンテナーへのトラフィックはファイアウォールまたは NVA を通過するため、全体のバックアップ パフォーマンスには影響しません。 
 
-1. Azure Backup により、非ログ バックアップの場合は最大 420 MB/秒、ログ バックアップの場合は最大 100 MB/秒の速度の達成が試行されます。 バックアップと復元のスループット パフォーマンスに関する[詳細情報を参照してください](/azure/backup/tutorial-backup-sap-hana-db#understanding-backup-and-restore-throughput-performance)。
+1. Azure Backup により、非ログ バックアップの場合は最大 420 MB/秒、ログ バックアップの場合は最大 100 MB/秒の速度の達成が試行されます。 バックアップと復元のスループット パフォーマンスに関する[詳細情報を参照してください](./tutorial-backup-sap-hana-db.md#understanding-backup-and-restore-throughput-performance)。
 
 1. 詳細なログは、SAP HANA インスタンス上の _backup.log_ と _backint.log_ のファイルに書き込まれます。
 
@@ -98,5 +98,4 @@ SAP HANA のバックアップの種類に関する[詳細情報を参照して�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure VM での SAP HANA データベースのバックアップ](/azure/backup/backup-azure-sap-hana-database)。
-
+[Azure VM での SAP HANA データベースのバックアップ](./backup-azure-sap-hana-database.md)。

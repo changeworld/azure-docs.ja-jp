@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 7c984f418ba35290f9c482efad83f3dd4d06c9b8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ea17d86bb4e5e4a6b5c5106c7d831c6691018b12
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823543"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214740"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -535,7 +535,7 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
 - Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
 - ストレージ アカウントまたは Key Vault にアクセスする。 Azure サービスへの接続は、[プライベート リンク](../private-link/private-link-overview.md)を使用して確立することもできます。 
 
-セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](https://aka.ms/defaultoutboundaccess)」を参照してください。
+セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](../virtual-network/ip-services/default-outbound-access.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

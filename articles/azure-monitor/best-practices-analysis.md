@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/18/2021
-ms.openlocfilehash: 3f4b671237c842c156e06281926be02ee3cdeb4a
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: c9f46404e1984c7f9eb4e8cea231229f31ffa8ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181542"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231667"
 ---
 # <a name="azure-monitor-best-practices---analyze-and-visualize-data"></a>Azure Monitor のベスト プラクティス - データの分析と視覚化
 この記事は、[Azure Monitor を構成する際の推奨事項](best-practices.md)に関する記事で紹介されているシナリオの一部です。 ここでは、収集されたデータを分析するための Azure Monitor の組み込み機能と、組織のさまざまなユーザーの要件を満たすためにカスタムの視覚化を作成する場合のオプションについて説明します。 チャートやグラフなどで視覚化すると、監視データを分析して問題をドリルダウンし、パターンを特定しやすくなります。
@@ -64,7 +64,7 @@ Azure Monitor Logs のデータが含まれるダッシュボードを作成す�
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) は、長期的な KPI 傾向を分析するレポートと共に、ビジネス中心のダッシュボードとレポートを作成するのに便利です。 Power BI のデータセットに[ログ クエリの結果をインポート](visualize/powerbi.md)して、その機能を利用できます。たとえば、さまざまなソースのデータを組み合わせたり、Web およびモバイル デバイス上でレポートを共有したりすることができます。
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) は、長期的な KPI 傾向を分析するレポートと共に、ビジネス中心のダッシュボードとレポートを作成するのに便利です。 Power BI のデータセットに[ログ クエリの結果をインポート](./logs/log-powerbi.md)して、その機能を利用できます。たとえば、さまざまなソースのデータを組み合わせたり、Web およびモバイル デバイス上でレポートを共有したりすることができます。
 
 ![IT の運用に関する Power BI レポートの例を示すスクリーンショット。](media/visualizations/power-bi.png)
 
@@ -105,4 +105,4 @@ Grafana の一般的なシナリオには次のようなものがあります。
 
 
 ## <a name="next-steps"></a>次のステップ
-- 「[アラートと自動アクション](best-practices-alerts.md)」を参照して、Azure Monitor データからアラートと自動アクションを定義します。 
+- 「[アラートと自動アクション](best-practices-alerts.md)」を参照して、Azure Monitor データからアラートと自動アクションを定義します。

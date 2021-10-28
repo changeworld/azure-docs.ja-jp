@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/14/2021
+ms.date: 10/20/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: c8cef623e26882443379fff73edcc1999463ec3e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 013b456bb3a101e29de5aaae954914615123224f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045770"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233246"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -35,6 +35,7 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 | [地理的な場所] | リージョン ペア A | リージョン ペア B  |
 |:--- |:--- |:--- |
 | オーストラリア | オーストラリア東部 | オーストラリア南東部 |
+| アジア太平洋 | 東アジア | 東南アジア |
 | Canada | カナダ中部 | カナダ東部 |
 | ヨーロッパ | 北ヨーロッパ | 西ヨーロッパ |
 | ドイツ | ドイツ中西部 | ドイツ北部 |
@@ -44,8 +45,10 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 | 北米 | 米国東部 2 | 米国中部 |
 | 北米 | 米国中北部 | 米国中南部|
 | ノルウェー | ノルウェー東部 | ノルウェー西部 |
+| スイス | スイス北部 | スイス西部 |
 | 英国 | 英国南部 | 英国西部 |
 | アラブ首長国連邦 | アラブ首長国連邦北部 | アラブ首長国連邦中部 |
+| 米国政府 | US Gov アリゾナ | US Gov テキサス |
 | 米国政府 | US Gov バージニア州 | US Gov テキサス |
 
 ### <a name="azure-regional-non-standard-pairs"></a>Azure リージョン非標準ペア
@@ -62,6 +65,7 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 | 北米 | 米国中南部 | 米国東部 2 |
 | 北米 | 米国中南部 | 米国中部 |
 | 北米 | 米国西部 2 | 米国東部 |
+| 米国政府 | US Gov アリゾナ | US Gov バージニア州 |
 
 ## <a name="service-level-objectives"></a>サービスレベルの目標
 

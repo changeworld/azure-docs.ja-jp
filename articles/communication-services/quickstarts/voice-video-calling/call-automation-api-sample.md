@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: 78ffdce7cbc4b8973407330a58e2ac3643bfac8b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e4d47fccb19504eb8e628963516f64c37362356c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676982"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264467"
 ---
 # <a name="quickstart-use-the-call-automation-apis"></a>クイックスタート: Call Automation API を使用する
 
@@ -42,5 +42,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [通話のヒーロー サンプル](../../samples/calling-hero-sample.md)を確認する
-- [Calling SDK の機能](./calling-client-samples.md)について確認する
+- [Calling SDK の機能](./getting-started-with-calling.md)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
