@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 7f0d206b9327cad0c58cc92dbec16227c1c22644
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d41c6537d597e34c826a4f0e7e6fecc75684d9a4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000133"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241872"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -261,6 +261,10 @@ Studio で [No public IP address]\(パブリック IP アドレスなし\) コ�
 
 Studio で [No public IP address]\(パブリック IP アドレスなし\) コンピューティング インスタンス (プレビュー機能) を作成するには、仮想ネットワーク セクションで **[No public IP]\(パブリック IP なし\)** チェックボックスをオンにします。
 また、ARM テンプレートを使用して [No public IP]\(パブリック IP なし\) コンピューティング インスタンスを作成することもできます。 ARM テンプレートで、enableNodePublicIP パラメーターを false に設定してください。
+
+次のステップ:
+* [カスタム DNS を使用する](how-to-custom-dns.md)
+* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
 
 [!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
 

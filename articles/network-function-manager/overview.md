@@ -1,18 +1,18 @@
 ---
 title: Azure Network Function Manager について
 description: フル マネージドのクラウドネイティブ オーケストレーション サービスである Azure Network Function Manager について説明します。このサービスを使用すると、Azure portal を使用して一貫したハイブリッド体験を実現するために、GPU を搭載した Azure Stack Edge Pro 上にネットワーク機能をデプロイ、プロビジョニングすることができます。
-author: cherylmc
+author: prmitt
 ms.service: network-function-manager
 ms.topic: overview
 ms.date: 06/16/2021
-ms.author: cherylmc
+ms.author: prmitt
 ms.custom: references_regions
-ms.openlocfilehash: df063a5b19e9287e1275683719d2d41a13200b5e
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: c64dd8ca25ee4b39533022e83e572442cc7529c5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128932"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263346"
 ---
 # <a name="what-is-azure-network-function-manager-preview"></a>Azure Network Function Manager とは (プレビュー)
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b8fc67076418678f6c53331dc6d0fbe0e7e7a0b1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8a43995dd125a658e2efd397745a91d7bd822e00
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410029"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226036"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18.04 x64 上のパッケージ エージェントを使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -35,7 +35,7 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 ## <a name="prerequisites"></a>前提条件
 
 * まだ [Device Update アカウントとインスタンス](create-device-update-account.md)を作成していない場合は作成します (IoT ハブの構成も含む)。
-* [IoT Edge デバイスの接続文字列](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings)。
+* [IoT Edge デバイスの接続文字列](../iot-edge/how-to-provision-single-device-linux-symmetric.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-provisioning-information)。
 
 ## <a name="prepare-a-device"></a>デバイスを準備する
 ### <a name="using-the-automated-deploy-to-azure-button"></a>自動化された [Azure へのデプロイ] ボタンを使用する
@@ -59,7 +59,7 @@ Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、こ
 
     **管理ユーザー名**: ユーザー名。デプロイ時にルート権限が与えられます。
 
-    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](../iot-edge/how-to-register-device.md)。
+    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](../iot-edge/how-to-provision-single-device-linux-symmetric.md#view-registered-devices-and-retrieve-provisioning-information)。
 
     **[VM サイズ]** :デプロイする仮想マシンの [サイズ](../cloud-services/cloud-services-sizes-specs.md)
 
@@ -88,7 +88,7 @@ Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、こ
 ### <a name="optional-manually-prepare-a-device"></a>(省略可) デバイスを手動で準備する
 以下に示したのは、[cloud-init スクリプト](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)によって自動化される手順と同じようにデバイスのインストールと構成を手動で行う手順です。 これらの手順に従って物理デバイスを準備することができます。
 
-1. [Azure IoT Edge ランタイムのインストール](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true)手順に従います。
+1. [Azure IoT Edge ランタイムのインストール](../iot-edge/how-to-provision-single-device-linux-symmetric.md?view=iotedge-2020-11&preserve-view=true)手順に従います。
    > [!NOTE]
    > Device Update パッケージ エージェントは IoT Edge に依存しません。 ただし、ID を取得して IoT Hub に接続するために、IoT Edge (1.2.0 以上) と一緒にインストールされる IoT ID サービス デーモンに依存します。
    >

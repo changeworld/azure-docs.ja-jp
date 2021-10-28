@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0adc8638eeffedf1f8b2b31357b43fc38e67773f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 186def3e179bc5cefdb9eb93d95e852bbe35bc1b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546335"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262928"
 ---
 # <a name="azure-security-baseline-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の Azure セキュリティ ベースライン
 
@@ -136,7 +136,7 @@ Azure AD では、外部 ID もサポートされるため、Microsoft アカウ
 
 - [Azure AD の ID セキュリティ スコアとは](../active-directory/fundamentals/identity-secure-score.md)
 
-- [Azure Virtual Desktop を操作するために必要な特定のロール](/azure/virtual-desktop/faq#what-are-the-minimum-admin-permissions-i-need-to-manage-objects)
+- [Azure Virtual Desktop を操作するために必要な特定のロール](./faq.yml)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -254,7 +254,7 @@ Azure Virtual Desktop では、ベースライン パスワード ポリシー�
 
 - [Azure サブスクリプション管理者](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-- [Azure Virtual Desktop を管理するために必要な最少管理者権限](/azure/virtual-desktop#what-are-the-minimum-admin-permissions-i-need-to-manage-objects)
+- [Azure Virtual Desktop を管理するために必要な最少管理者権限](./index.yml)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -500,7 +500,7 @@ Azure Virtual Desktop のすべてのログを、カスタム脅威検出を設�
 
 - [Azure Security Center セキュリティ アラート リファレンス ガイド](../security-center/alerts-reference.md)
 
-- [脅威を検出するためのカスタム分析規則を作成する](../sentinel/tutorial-detect-threats-custom.md) 
+- [脅威を検出するためのカスタム分析規則を作成する](../sentinel/detect-threats-custom.md) 
 
 - [Azure Sentinel を使用したサイバー脅威インテリジェンス](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
@@ -644,7 +644,7 @@ Azure Sentinel により、事実上すべてのログソースに対して広�
 
 - [Microsoft Azure サポートの診断情報とメモリ ダンプ コレクション](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
 
-- [Azure Sentinel でインシデントを調査します](../sentinel/tutorial-investigate-cases.md)
+- [Azure Sentinel でインシデントを調査します](../sentinel/investigate-cases.md)
 
 **Azure Security Center の監視**: 適用なし
 

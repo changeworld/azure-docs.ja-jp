@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: f4c3a42108e6098cfde3509bc5f365b78d9a4bba
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 9b701589f7ee28cd3da8d4c028750459c53bb793
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073546"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216922"
 ---
 # <a name="request-service-rest-api-preview"></a>要求サービス REST API (プレビュー)
 
@@ -235,7 +235,7 @@ Authorization: Bearer  <token>
 }
 ```  
 
-完全なコードについては、[C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/1-asp-net-core-api-idtokenhint/IssuerController.cs) または [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js) のいずれかのコード サンプルを確認してください。
+完全なコードについては、[C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs) または [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js) のいずれかのコード サンプルを確認してください。
 
 ## <a name="presentation-request-example"></a>プレゼンテーション要求の例
 
@@ -320,7 +320,7 @@ try
 }
 ```
 
-完全なコードについては、GitHub リポジトリの[発行](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/1-asp-net-core-api-idtokenhint/IssuerController.cs)と[プレゼンテーション](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/1-asp-net-core-api-idtokenhint/VerifierController.cs)のコードを参照してください。
+完全なコードについては、GitHub リポジトリの[発行](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs)と[プレゼンテーション](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/VerifierController.cs)のコードを参照してください。
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

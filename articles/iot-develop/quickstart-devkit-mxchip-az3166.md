@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 66a00319d2223879c693f8a670ca15808838459c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 073b8f4efd7651a8ee56b54319d36122cf0e9bc1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861737"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226302"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>クイックスタート: MXCHIP AZ3166 Devkit を IoT Central に接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "121861737"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * ハードウェア
 

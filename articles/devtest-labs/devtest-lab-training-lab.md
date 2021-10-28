@@ -3,12 +3,12 @@ title: トレーニングでの Azure DevTest Labs の使用
 description: この記事では、Azure DevTest Labs でトレーニング用のラボを設定するために実行する詳細な手順について説明します。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: d72d87cf2108a5e6d372edbf698e6adc7b100618
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7de17f89e5e7a23290e00402e13c7035df03578
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629258"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228998"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>トレーニングでの Azure DevTest Labs の使用
 Azure DevTest Labs を使用すると、開発とテストのみならず、さまざまな主要シナリオを実現できます。 そのようなシナリオの 1 つが、トレーニング用のラボのセットアップです。 Azure DevTest Labs を使用すると、ラボを作成し、各受講者がトレーニング用に同じ分離環境を作成するために使用できるカスタム テンプレートを提供できます。 各受講者が必要としている場合にのみトレーニング環境を利用できるようにし、トレーニング環境にトレーニングに必要なリソース (仮想マシンなど) が十分に含まれるようにするポリシーを適用できます。 さらに、ワンクリックでアクセスできるラボを受講者と簡単に共有することもできます。
@@ -68,10 +68,10 @@ Azure DevTest Labs は、任意の仮想環境でトレーニングを実施す�
    | タスク | 学習内容 |
    | --- | --- |
    | [ラボのポリシーの定義](devtest-lab-set-lab-policy.md) |ラボでポリシーを設定してコストを管理します。 |
-   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |トレーニングが完了したときに、1 回の操作ですべてのラボを削除します。 |
+   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](./devtest-lab-faq.yml) |トレーニングが完了したときに、1 回の操作ですべてのラボを削除します。 |
 5. **各受講者とラボを共有する**
    
-    受講者と共有したリンクを使用すれば、ラボに直接アクセスできます。 受講者は [Microsoft アカウント](/azure/devtest-labs/devtest-lab-faq#what-is-a-microsoft-account)さえ持っていれば、Azure アカウントすら必要ありません。 受講者は他の受講者によって作成された VM を見るこはできません。  
+    受講者と共有したリンクを使用すれば、ラボに直接アクセスできます。 受講者は [Microsoft アカウント](./devtest-lab-faq.yml)さえ持っていれば、Azure アカウントすら必要ありません。 受講者は他の受講者によって作成された VM を見るこはできません。  
    
     次の表のリンクをクリックして詳細を確認してください。
    
@@ -79,7 +79,7 @@ Azure DevTest Labs は、任意の仮想環境でトレーニングを実施す�
    | --- | --- |
    | [Azure DevTest Labs でのラボへの受講者の追加](devtest-lab-add-devtest-user.md) |Azure Portal を使用してトレーニング ラボに受講者を追加します。 |
    | [PowerShell スクリプトを使用した、ラボへの受講者の追加](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |PowerShell を使用してトレーニング ラボへの受講者の追加を自動化します。 |
-   | [ラボへのリンクの取得](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) |ハイパーリンクを通じてラボに直接アクセスする方法について学びます。 |
+   | [ラボへのリンクの取得](./devtest-lab-faq.yml) |ハイパーリンクを通じてラボに直接アクセスする方法について学びます。 |
 6. **ラボを繰り返し再利用する** 
    
     カスタム設定も含め、ラボの作成は自動化できます。それには、Resource Manager テンプレートを作成し、それを使って同一のラボを繰り返し作成します。 
@@ -88,6 +88,6 @@ Azure DevTest Labs は、任意の仮想環境でトレーニングを実施す�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Resource Manager テンプレートを使用したラボの作成](/azure/devtest-labs/devtest-lab-faq#how-do-i-create-a-lab-from-a-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
+   | [Resource Manager テンプレートを使用したラボの作成](./devtest-lab-faq.yml) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

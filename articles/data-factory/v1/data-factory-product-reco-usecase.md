@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: a9a194fb1f1db5723643f9f73a6c2018f5daa59f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: fecdf187a5cb1591cd585cf40397b48d8f0874b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665342"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218488"
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項
 Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  このスイートの詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) のページを参照してください。 このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。

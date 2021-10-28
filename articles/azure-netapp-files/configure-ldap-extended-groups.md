@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4b4c1e159fcd62d1d9d57b907edbfa4e5f0bfc24
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 90a87c85bace64c7c1cfc4a171c5fcbdb8d263c9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128576829"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256364"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する
 
@@ -111,4 +111,4 @@ ms.locfileid: "128576829"
 
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Active Directory 接続の作成と管理](create-active-directory-connections.md)
-* [LDAP ボリュームに関する問題のトラブルシューティング](troubleshoot-ldap-volumes.md)
+* [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)

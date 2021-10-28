@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2021
-ms.openlocfilehash: fa5a417ef79cf0e11fa50c280dfea768d5e61f40
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 32c1b2d6cd2d5574e03cdb6ad65900d8df598b2b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064269"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252765"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -31,7 +31,7 @@ Azure リソースを作成するとすぐに、Azure Monitor が有効にされ
 - Azure portal でのアクティビティ ログの収集と分析。
 - アクティビティ ログ警告ルールの作成。
 
-メトリックを収集してエクスポートするとき、Azure Monitor のコストはかかりません。 「[リソース ログでサポートされているカテゴリ](/azure/azure-monitor/essentials/resource-logs-categories)」に記載されているように、特定のカテゴリのリソース ログのエクスポートにはコストがかかる場合があります。 メトリックとログに対して選択した宛先に関連するコストも含まれます。
+メトリックを収集してエクスポートするとき、Azure Monitor のコストはかかりません。 「[リソース ログでサポートされているカテゴリ](./resource-logs-categories.md)」に記載されているように、特定のカテゴリのリソース ログのエクスポートにはコストがかかる場合があります。 メトリックとログに対して選択した宛先に関連するコストも含まれます。
 
 - Log Analytics ワークスペースでメトリックとログを収集するときの、データ インジェストと保持に関連するコスト。 [Log Analytics に関する Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)に関する記事を参照してください。
 - Azure ストレージ アカウントにメトリックとログを収集するときの、データ ストレージに関連するコスト。 [Blob Storage に関する Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関する記事を参照してください。

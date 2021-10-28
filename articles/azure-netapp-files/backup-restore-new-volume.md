@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 1a0b2e59f2d11caf1db9985cfba937e2df0f44c7
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 5e6302893884674708f584b0261204b2cc891c6c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094906"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256383"
 ---
 # <a name="restore-a-backup-to-a-new-volume"></a>バックアップを新しいボリュームに復元する
 
@@ -67,7 +67,4 @@ ms.locfileid: "129094906"
 * [ボリュームのバックアップ機能を無効にする](backup-disable.md)
 * [ボリュームのバックアップを削除する](backup-delete.md)
 * [ボリュームのバックアップ メトリック](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Azure NetApp Files のバックアップに関する FAQ](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
-
-
-
+* [Azure NetApp Files のバックアップに関する FAQ](faq-backup.md)

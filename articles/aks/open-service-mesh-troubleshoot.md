@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 397a1ff24152bf0496842971e545b3eb65e779a3
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: b73c46896c142b76e644eed9815ae4d5e76b6f85
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534005"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227267"
 ---
 # <a name="open-service-mesh-osm-aks-add-on-troubleshooting-guides"></a>Open Service Mesh (OSM) AKS アドオンのトラブルシューティング ガイド
 
@@ -456,4 +456,4 @@ kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/v0.8.2/ch
 
 ### <a name="upgrading-envoy"></a>Envoy のアップグレード
 
-アドオンによって監視されている名前空間に新しいポッドが作成されると、OSM により、そのポッドに [Envoy プロキシ サイドカー](https://docs.openservicemesh.io/docs/guides/app_onboarding/sidecar_injection/)が挿入されます。 Envoy のバージョンを更新する方法に関する情報は、OpenServiceMesh docs サイトの[更新ガイド](https://docs.openservicemesh.io/docs/getting_started/upgrade/#envoy)に記載されています。
+アドオンによって監視されている名前空間に新しいポッドが作成されると、OSM により、そのポッドに [Envoy プロキシ サイドカー](https://docs.openservicemesh.io/docs/guides/app_onboarding/sidecar_injection/)が挿入されます。 Envoy のバージョンを更新する方法に関する情報は、OpenServiceMesh docs サイトの[更新ガイド](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/upgrade/#envoy)に記載されています。

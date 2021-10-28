@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: dba8ecd9bbeca9c0b48f312d9c6c4ab27b52c9e7
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 46e70166fffba7c938ea6784db6eda18e69a043f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745315"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214759"
 ---
 # <a name="azure-monitor-for-azure-virtual-desktop-glossary"></a>Azure Monitor for Azure Virtual Desktop の用語集
 
@@ -57,7 +57,7 @@ Azure Monitor for Azure Virtual Desktop にエラーまたはアラートが表�
 
      - "service" または "ServiceError = TRUE" とマークされたエラーは、Azure Virtual Desktop サービスで発生しています。
      - "deployment" とマークされた、または "ServiceError = FALSE" のタグが付いたエラーは Azure Virtual Desktop サービスの外部で発生しています。
-     - ServiceError タグの詳細については、「[一般的なエラーシナリオ](diagnostics-role-service.md#common-error-scenarios)」を参照してください。
+     - ServiceError タグの詳細については、「[一般的なエラーシナリオ](./troubleshoot-set-up-overview.md)」を参照してください。
 
 - ソース: このカテゴリは、エラーが発生した場所について、より具体的な説明を示します。
 
@@ -71,7 +71,7 @@ Azure Monitor for Azure Virtual Desktop にエラーまたはアラートが表�
 
      - クライアント: エンドユーザーのコンピューターで実行されていて、Azure Virtual Desktop サービスへのインターフェイスを提供するソフトウェア。 選択すると、公開されたリソースの一覧を表示し、リモート デスクトップ接続をホストします。
 
-それぞれの診断の問題またはエラーには、どのような問題が発生したかを説明するメッセージが含まれます。 エラーのトラブルシューティングの詳細については、「[Azure Virtual Desktop のイシューの特定と診断](diagnostics-role-service.md)」を参照してください。
+それぞれの診断の問題またはエラーには、どのような問題が発生したかを説明するメッセージが含まれます。 エラーのトラブルシューティングの詳細については、「[Azure Virtual Desktop のイシューの特定と診断](./troubleshoot-set-up-overview.md)」を参照してください。
 
 ## <a name="input-delay"></a>入力遅延
 

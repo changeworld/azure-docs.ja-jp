@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d3180ba6e8c19714759563eb79a8488929efe940
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ca7503127342a5eceac43a8f5a2bfce578eb21e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675857"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257805"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -193,7 +193,7 @@ Azure は、受信トラフィックを処理するとき、最初にサブネ�
 * 既定のセキュリティ規則は、インターネットからの受信アクセスをブロックし、仮想ネットワークからの受信トラフィックのみを許可します。 インターネットからの受信トラフィックを許可するには、既定の規則より優先順位の高いセキュリティ規則を追加します。 [既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)または[セキュリティ規則を追加する](manage-network-security-group.md#create-a-security-rule)方法について学習します。
 * 既定では、仮想ネットワークをピアリングした場合、**VIRTUAL_NETWORK** サービス タグは、ピアリングされている仮想ネットワークのプレフィックスを含めるように自動的に拡張されます。 仮想ネットワークのピアリングに関する問題をトラブルシューティングするには、**ExpandedAddressPrefix** の一覧でプレフィックスを表示できます。 [仮想ネットワーク ピアリング](virtual-network-peering-overview.md)および[サービス タグ](./network-security-groups-overview.md#service-tags)の詳細を学習してください。
 * ネットワーク インターフェイスの有効なセキュリティ規則は、VM のネットワーク インターフェイスまたはサブネットに NSG が関連付けられていて、VM が実行中の状態である場合にのみ、表示されます。
-* ネットワーク インターフェイスやサブネットに関連付けられている NSG がなく、VM に[パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられている場合は、すべてのポートがすべての場所との間の受信/送信アクセス用に開かれます。 VM にパブリック IP アドレスがある場合は、ネットワーク インターフェイスが含まれるサブネットに NSG を適用することをお勧めします。
+* ネットワーク インターフェイスやサブネットに関連付けられている NSG がなく、VM に[パブリック IP アドレス](./ip-services/virtual-network-public-ip-address.md)が割り当てられている場合は、すべてのポートがすべての場所との間の受信/送信アクセス用に開かれます。 VM にパブリック IP アドレスがある場合は、ネットワーク インターフェイスが含まれるサブネットに NSG を適用することをお勧めします。
 
 ## <a name="additional-diagnosis"></a>追加の診断
 

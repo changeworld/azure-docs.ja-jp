@@ -8,12 +8,12 @@ ms.date: 09/10/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f125a5e1c7a0f26e92ec1e6e2d7afddb4f53a4b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0cf24c5196d1cdd9fc7418e93cdfaf47cfdebf30
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588639"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241347"
 ---
 # <a name="mount-smb-azure-file-share-on-windows"></a>SMB Azure ファイル共有を Windows でマウントする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -113,7 +113,7 @@ Azure portal には、ファイル共有をホストに直接マウントする�
 1. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、 **[切断]** を選択します。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows から共有スナップショットへのアクセス
-手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure PowerShell](storage-how-to-use-files-powershell.md)、[Azure CLI](storage-how-to-use-files-cli.md)、または [Azure portal](storage-how-to-use-files-portal.md) を使用して取得できます。
+手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure PowerShell](./storage-how-to-use-files-portal.md)、[Azure CLI](./storage-how-to-use-files-portal.md)、または [Azure portal](storage-how-to-use-files-portal.md) を使用して取得できます。
 
 #### <a name="list-previous-versions"></a>以前のバージョンを一覧表示する
 復元が必要な項目または親項目を参照します。 ダブルクリックして、目的のディレクトリに移動します。 右クリックして、メニューから **[プロパティ]** を選択します。

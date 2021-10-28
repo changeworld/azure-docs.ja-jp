@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9b2e38ca43bfa3bc8dcd229d6538f8a7784f9882
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: e632f7313582bfe33da59569f25319fbb90b13f0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367481"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215017"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-powershell"></a>Azure PowerShell を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -65,7 +65,7 @@ $publicIp = New-AzPublicIpAddress  `
 -IpAddressVersion IPv4
 ```
 
-上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](../../virtual-network/associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
+上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](./associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -78,4 +78,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 ## <a name="next-steps"></a>次のステップ
 
 - [パブリック IP アドレスでのルーティング優先設定](routing-preference-overview.md)について詳しく学習する。
-- [Azure PowerShell を使用して VM 用にルーティング優先設定を構成する](../../virtual-network/configure-routing-preference-virtual-machine-powershell.md)。
+- [Azure PowerShell を使用して VM 用にルーティング優先設定を構成する](./configure-routing-preference-virtual-machine-powershell.md)。

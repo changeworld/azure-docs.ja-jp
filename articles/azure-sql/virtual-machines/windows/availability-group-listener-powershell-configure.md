@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: rsetlem
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.reviewer: mathoma
-ms.openlocfilehash: c7b2bff6f4c927090dfdff92f324b4957b645644
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: bcf48bf068d48420c162effa563c4225baf7b990
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167715"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219642"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 
@@ -138,7 +138,7 @@ foreach($VMName in $VMNames)
 
 ## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> サンプル スクリプト: PowerShell を使用して既存のロード バランサーに IP アドレスを追加する
 
-複数の可用性グループを使用するには、ロード バランサーに追加の IP アドレスを追加します。 各 IP アドレスには、独自の負荷分散規則、プローブ ポート、およびフロント ポートが必要です。 [セカンダリ VM の IP アドレスが ローディングIP をサポートしていない](/azure/load-balancer/load-balancer-floating-ip)ため、ロード バランサーのバックエンド プールに VM のプライマリ IP アドレスのみを追加します。
+複数の可用性グループを使用するには、ロード バランサーに追加の IP アドレスを追加します。 各 IP アドレスには、独自の負荷分散規則、プローブ ポート、およびフロント ポートが必要です。 [セカンダリ VM の IP アドレスが ローディングIP をサポートしていない](../../../load-balancer/load-balancer-floating-ip.md)ため、ロード バランサーのバックエンド プールに VM のプライマリ IP アドレスのみを追加します。
 
 フロントエンド ポートは、アプリケーションが SQL Server インスタンスに接続するために使用するポートです。 複数の異なる可用性グループの IP アドレスで同じフロントエンド ポートを使用できます。
 

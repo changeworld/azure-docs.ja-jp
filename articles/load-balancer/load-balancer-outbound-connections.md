@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 07/01/2021
 ms.author: allensu
-ms.openlocfilehash: adeca1558fd97c1f8534539b7a4ad134d364e4d8
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6ca5d85e04cab46292ed51e23f4cd5f2add5dcae
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129996135"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223350"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>アウトバウンド接続に送信元ネットワーク アドレス変換 (SNAT) を使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "129996135"
 | 2 | サブネットへの NAT ゲートウェイの関連付け | 静的、明示的 | はい | 最高 | 
 | 3 | 仮想マシンへのパブリック IP の割り当て | 静的、明示的 | はい | [OK] | 
 | 4 | アウトバウンド (およびインバウンド) 用の Load Balancer のフロントエンド IP アドレスを使用する | 暗黙 | いいえ | 下から 2番目 |
-| 5 | [既定のアウトバウンド アクセス](../virtual-network/default-outbound-access.md)を使用する | 暗黙 | いいえ | 最低 |
+| 5 | [既定のアウトバウンド アクセス](../virtual-network/ip-services/default-outbound-access.md)を使用する | 暗黙 | いいえ | 最低 |
 
 ## <a name="using-the-frontend-ip-address-of-a-load-balancer-for-outbound-via-outbound-rules"></a><a name="outboundrules"></a>アウトバウンド規則を使用してアウトバウンド用のロード バランサーのフロントエンド IP アドレスを使用する
 

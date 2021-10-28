@@ -3,12 +3,12 @@ title: クイック スタート:Python 用 QnA Maker クライアント ライ�
 description: このクイックスタートでは、Python 用 QnA Maker クライアント ライブラリの使用を開始する方法について説明します。
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: d64946d60162f322d940d4bee7203bfd4b77a4f5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b013e65ac28119d1b6bf9547054c92b3f1078a5e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110486297"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287309"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/version-1)
 
@@ -275,7 +275,7 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 [!code-python[Authenticate the runtime](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=AuthorizationQuery)]
 
-QnAMakerRuntimeClient を使用してナレッジから回答を取得するか、または、[アクティブ ラーニング](../concepts/active-learning-suggestions.md)を目的として提案された新しい質問をナレッジ ベースに送信します。
+QnAMakerRuntimeClient を使用してナレッジから回答を取得するか、または、[アクティブ ラーニング](../index.yml)を目的として提案された新しい質問をナレッジ ベースに送信します。
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>ナレッジ ベースから回答を生成する
 

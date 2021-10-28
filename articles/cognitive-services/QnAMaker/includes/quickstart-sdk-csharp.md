@@ -3,12 +3,12 @@ title: クイック スタート:.NET 用 QnA Maker クライアント ライブ
 description: このクイックスタートでは、.NET 用 QnA Maker クライアント ライブラリの使用を開始する方法について説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。  QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
 ms.topic: quickstart
 ms.date: 04/28/2021
-ms.openlocfilehash: e59f2137af303242ef2747e2b3430dd9e081c6aa
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 65b0ec019061f0cd2fc38983441fec12edd50b99
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487365"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287537"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/version-1)
 
@@ -346,7 +346,7 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 QnAMakerRuntimeClient を使用して、次のことを行います。
 * ナレッジ ベースから回答を取得する
-* [アクティブ ラーニング](../concepts/active-learning-suggestions.md)のために、新しく提案された質問をナレッジ ベースに送信する
+* [アクティブ ラーニング](../index.yml)のために、新しく提案された質問をナレッジ ベースに送信する
 
 ## <a name="generate-an-answer-from-the-knowledge-base"></a>ナレッジ ベースから回答を生成する
 

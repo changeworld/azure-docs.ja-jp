@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: 821a8e5f3211f010489717447b733c17ee61c249
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f45784af9d1642ce4339745d3102743cdbe327bc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367455"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224842"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
       ![パブリック IP アドレスを作成する](./media/routing-preference-portal/public-ip-new.png)
 1. **[IPV4 IP アドレスの構成]** セクションで、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*RoutingPreferenceResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -55,11 +55,11 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     > [!NOTE]
     > パブリック IP アドレスは、IPv4 または IPv6 アドレスを使用して作成されます。 ただし、現在、ルーティング優先設定では IPV4 のみがサポートされています。
 
-上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](../../virtual-network/associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
+上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](./associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
 
 ## <a name="next-steps"></a>次のステップ
 - [ルーティング優先設定が指定されたパブリック IP アドレス](routing-preference-overview.md)について詳しく学習する。
-- [VM 用にルーティング優先設定を構成する](../../virtual-network/tutorial-routing-preference-virtual-machine-portal.md)。
+- [VM 用にルーティング優先設定を構成する](./tutorial-routing-preference-virtual-machine-portal.md)。
 - [PowerShell を使用してパブリック IP アドレスのルーティング優先設定を構成する](routing-preference-powershell.md)。
 - Azure の[パブリック IP アドレス](public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

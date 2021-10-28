@@ -4,12 +4,12 @@ description: すべてのアウトバウンド パブリック IP アドレス�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/20/2021
-ms.openlocfilehash: 6cc4a73c08d945f5a5ce26cef9c3774ffb5772d0
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 457e72f50b24b5850311b2869ab6daa956512ae6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069142"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215449"
 ---
 # <a name="restrict-public-connectivity-in-azure-hdinsight"></a>Azure HDInsight でパブリック接続を制限する
 
@@ -148,7 +148,7 @@ HDInsight クラスターでは、引き続き、パブリック インターネ
 
 ```json
 networkProperties: {
-    "resourceProviderConnection": "Inbound" | "Outbound"
+    "resourceProviderConnection": "Outbound"
 }
 ```
 
