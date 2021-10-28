@@ -4,16 +4,16 @@ description: SQL Server ストアド プロシージャ アクティビティを
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc69be48f172267c2d8894eb2a82f32a4970386f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a062bd4717cf13c7428da15e928a1e97cfde755d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559342"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250029"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]

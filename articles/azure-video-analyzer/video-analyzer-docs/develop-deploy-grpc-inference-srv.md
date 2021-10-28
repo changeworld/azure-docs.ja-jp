@@ -4,12 +4,12 @@ description: この記事では、Azure Video Analyzer で使用する gRPC 推�
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 5d0e09bc4d1f542de0e59a7dc6da37248d2e0674
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 0456ff121df2c6a7149261ec162907b61aceb107
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601448"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262225"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>gRPC 推論サーバーを開発およびデプロイする
 
@@ -27,7 +27,7 @@ ms.locfileid: "114601448"
 
 * [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス、または Windows マシン。
 * マシンに [Docker がインストール](https://docs.docker.com/desktop/#download-and-install)されている。
-* [IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)がインストールされている。
+* [IoT Edge ランタイム](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)がインストールされている。
 
 ## <a name="grpc-implementation-steps"></a>gRPC の実装手順
 

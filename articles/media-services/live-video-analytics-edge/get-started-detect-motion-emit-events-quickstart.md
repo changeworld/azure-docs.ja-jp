@@ -3,12 +3,12 @@ title: Azure Live Video Analytics on IoT Edge の概要
 description: このクイックスタートでは、Azure Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 06a84a53db4e981802ad3de930288b6aa467f563
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1d473824e7fd9a840e2ec349efb9058142e8f356
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371471"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217886"
 ---
 # <a name="quickstart-get-started-with-live-video-analytics-on-iot-edge"></a>クイック スタート: Live Video Analytics on IoT Edge の概要
 
@@ -45,7 +45,7 @@ ms.locfileid: "110371471"
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
+* Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 

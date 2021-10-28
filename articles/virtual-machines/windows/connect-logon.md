@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ae5dcbee8ef2240ddffdfaa6c7a837e083d5648f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 7e09a94270ee440f462e538492a13bde263c6163
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689675"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234059"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してサインオンする方法
 
@@ -45,7 +45,7 @@ Mac から Windows VM に接続するには、[Microsoft リモート デスク�
 
 
    > [!TIP]
-   > ポータルの **[接続]** ボタンが淡色表示され、[Express Route](../../expressroute/expressroute-introduction.md) や [サイト間 VPN 接続](../../vpn-gateway/tutorial-site-to-site-portal.md)で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。 詳細については、[Azure のパブリック IP アドレス](../../virtual-network/public-ip-addresses.md)に関するページを参照してください。
+   > ポータルの **[接続]** ボタンが淡色表示され、[Express Route](../../expressroute/expressroute-introduction.md) や [サイト間 VPN 接続](../../vpn-gateway/tutorial-site-to-site-portal.md)で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。 詳細については、[Azure のパブリック IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md)に関するページを参照してください。
    > 
    > 
 

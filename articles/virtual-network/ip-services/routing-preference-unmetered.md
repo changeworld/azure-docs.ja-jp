@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: 5d459c4a61518aae349184773561448148877afc
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: e4a1fcc508b83eae0d016fec02808047dfc79009
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367786"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224875"
 ---
 # <a name="what-is-routing-preference-unmetered"></a>従量制課金なしのルーティング優先設定とは
 
@@ -32,7 +32,7 @@ Azure の配信元から CDN プロバイダーに送信されるネットワー
 
 従量制課金なしのルーティング優先設定を利用するには、CDN プロバイダーがこのプログラムに含まれている必要があります。 CDN プロバイダーがプログラムに含まれていない場合は、CDN プロバイダーに問い合わせてください。
 
-次に、リソースのルーティング設定を構成し、ルーティング設定の種類を **[インターネット]** に設定します。 パブリック IP アドレスの作成中にルーティング優先設定を構成し、パブリック IP を仮想マシンやインターネットに接続するロード バランサーなどのリソースに関連付けることができます。 [Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する方法を説明します](../../virtual-network/routing-preference-portal.md)
+次に、リソースのルーティング設定を構成し、ルーティング設定の種類を **[インターネット]** に設定します。 パブリック IP アドレスの作成中にルーティング優先設定を構成し、パブリック IP を仮想マシンやインターネットに接続するロード バランサーなどのリソースに関連付けることができます。 [Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する方法を説明します](./routing-preference-portal.md)
 
 また、ストレージ アカウントのルーティング優先設定を有効にし、2 番目のエンドポイントを発行することもできます。このエンドポイントは、CDN プロバイダーによって使用されてストレージの配信元からデータをフェッチする必要があります。 たとえば、ストレージ アカウント *StorageAccountA* に対してインターネット ルート固有のエンドポイントを公開すると、次のように、ストレージ サービスに対して 2 番目のエンド ポイントが公開されます。
 
@@ -41,6 +41,6 @@ Azure の配信元から CDN プロバイダーに送信されるネットワー
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure PowerShell を使用して VM 用にルーティング優先設定を構成する](../../virtual-network/configure-routing-preference-virtual-machine-powershell.md)
-* [Azure CLI を使用して VM 用にルーティング優先設定を構成する](../../virtual-network/configure-routing-preference-virtual-machine-cli.md)
+* [Azure PowerShell を使用して VM 用にルーティング優先設定を構成する](./configure-routing-preference-virtual-machine-powershell.md)
+* [Azure CLI を使用して VM 用にルーティング優先設定を構成する](./configure-routing-preference-virtual-machine-cli.md)
 * [ストレージ アカウントのルーティング優先設定を構成する](../../storage/common/network-routing-preference.md)

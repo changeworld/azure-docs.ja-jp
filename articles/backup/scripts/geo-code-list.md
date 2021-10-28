@@ -3,12 +3,12 @@ title: ジオコード マッピング
 description: 各リージョンにマップされているジオコードについて説明します。
 ms.topic: sample
 ms.date: 09/17/2021
-ms.openlocfilehash: a214d45a974308422cb57840c3eb04d55c53c5b2
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 1192336476d25f5c0cc180e67d22c2db18015b36
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128709109"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264562"
 ---
 # <a name="geo-code-mapping"></a>ジオコード マッピング
 
@@ -152,4 +152,4 @@ ms.locfileid: "128709109"
 
 ## <a name="next-steps"></a>次のステップ
 
-ジオコードを使用して Azure Backup プライベート エンドポイントの DNS ゾーンを作成して追加する方法を[学習します](/azure/backup/private-endpoints)。
+ジオコードを使用して Azure Backup プライベート エンドポイントの DNS ゾーンを作成して追加する方法を[学習します](../private-endpoints.md)。

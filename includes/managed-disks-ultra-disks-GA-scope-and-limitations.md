@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0e0d3c131f5cd53684580d0035c8836a2537d780
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 8f485ef5d49ff2f0b9bfec4c6abc6db1b78c3826
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070826"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287396"
 ---
 Ultra ディスクで現在利用できる結い位置のインフラストラクチャ冗長オプションは可用性ゾーンです。 他の冗長オプションを使用している VM では、Ultra ディスクを接続できません。
 
@@ -24,9 +24,9 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
 
 | 冗長オプション | リージョン |
 |--------------------|---------|
-| **単一 VM** | オーストラリア中部<br/>ブラジル南部<br/>インド中部<br/>東アジア<br/>ドイツ中西部<br/>韓国中部<br/>米国中北部、米国中南部、米国西部<br/>US Gov アリゾナ、US Gov テキサス、US Gov バージニア<br/> |
-| **2 つの可用性ゾーン** | オーストラリア東部<br/>カナダ中部<br/>北ヨーロッパ、西ヨーロッパ<br/>東日本<br/>東南アジア<br/>英国南部<br/>米国中部、米国東部、米国東部 2、米国西部 2|
-| **3 つの可用性ゾーン** | フランス中部 |
+| **単一 VM** | オーストラリア中部<br/>ブラジル南部<br/>インド中部<br/>東アジア<br/>ドイツ中西部<br/>韓国中部<br/>米国中北部、米国中南部、米国西部<br/>US Gov アリゾナ、US Gov テキサス、US Gov バージニア |
+| **2 つの可用性ゾーン** | フランス中部 |
+| **3 つの可用性ゾーン** | オーストラリア東部<br/>カナダ中部<br/>北ヨーロッパ、西ヨーロッパ<br/>東日本<br/>東南アジア<br/>英国南部<br/>米国中部、米国東部、米国東部 2、米国西部 2 |
 
 Ultra Disk がサポートされているすべてのリージョンで、すべての VM サイズを使用できるわけではありません。 次の表に、Ultra ディスクと互換性のある VM シリーズを示します。
 

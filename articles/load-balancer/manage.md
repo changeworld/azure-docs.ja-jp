@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/16/2021
 ms.author: allensu
-ms.openlocfilehash: 1b13a4cde0d4c0278698100cde0d5cd9993465a3
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 024a523939e5f03cf01aec937a646f1159f6b79b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252960"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254648"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer ポータルの設定
 
@@ -53,7 +53,7 @@ Azure Load Balancer は、バックエンド プール内の VM インスタン�
 | ------- | ------- |
 | 名前 | ロード バランサーに追加されるフロントエンドの名前。 |
 | IP バージョン | **IPv4** </br> **IPv6** </br> ロード バランサーは IPv4 および IPv6 のフロントエンドをサポートします。 </br> 詳細については、[ロード バランサーと IPv6](load-balancer-ipv6-overview.md) に関するページを参照してください。 |
-| IP の種類 | **IP アドレス (IP address)** </br> **IP プレフィックス** </br> ロード バランサーは、フロントエンド IP アドレスについて IP アドレスまたは IP プレフィックスをサポートします。 詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)に関するページを参照してください。 |
+| IP の種類 | **IP アドレス (IP address)** </br> **IP プレフィックス** </br> ロード バランサーは、フロントエンド IP アドレスについて IP アドレスまたは IP プレフィックスをサポートします。 詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)に関するページを参照してください。 |
 
 :::image type="content" source="./media/manage/add-frontend-public.png" alt-text="フロントエンド IP 構成の追加のスクリーンショット。" border="true":::
 
@@ -67,7 +67,7 @@ Azure Load Balancer は、バックエンド プール内の VM インスタン�
 | 階層 | **Regional** </br> **グローバル** </br> ロード バランサー階層の種類によって、選択される内容が決定します。 従来のロード バランサーにはリージョナル、リージョン間にはグローバルです。 |
 | 割り当て | Standard には **[静的]** が自動的に選択されます。 </br> Basic のパブリック IP には、次の 2 種類があります。 **[動的]** と **[静的]** 。 </br> 動的パブリック IP アドレスは、作成されるまで割り当てられません。 </br> リソースが削除されると、IP が失われる可能性があります。 </br> 静的 IP アドレスをお勧めします。 |
 | 可用性ゾーン | 回復性があるロード バランサーを作成するには、 **[ゾーン冗長]** を選択します。 </br> ゾーン間ロード バランサーを作成するには、**1**、**2**、**3** の中から特定のゾーンを選択します。 </br> Standard ロード ランサーとパブリック IP により、ゾーンがサポートされています。 </br> ロード バランサーと可用性ゾーンの詳細については、[こちら](load-balancer-standard-availability-zones.md)を参照してください。 </br> Basic にはゾーンの選択は表示されません。 Basic Load Balancer では、ゾーンがサポートされていません。 |
-| ルーティング設定 | **[Microsoft ネットワーク]** を選択します。 </br> Microsoft ネットワークは、トラフィックが Microsoft グローバル ネットワーク経由でルーティングされることを意味します。 </br> インターネットは、トラフィックがインターネット サービス プロバイダー ネットワーク経由でルーティングされることを意味します。 </br> ルーティング設定の詳細については、[こちら](../virtual-network/routing-preference-overview.md)を参照してください。|
+| ルーティング設定 | **[Microsoft ネットワーク]** を選択します。 </br> Microsoft ネットワークは、トラフィックが Microsoft グローバル ネットワーク経由でルーティングされることを意味します。 </br> インターネットは、トラフィックがインターネット サービス プロバイダー ネットワーク経由でルーティングされることを意味します。 </br> ルーティング設定の詳細については、[こちら](../virtual-network/ip-services/routing-preference-overview.md)を参照してください。|
 
 :::image type="content" source="./media/manage/create-public-ip.png" alt-text="パブリック IP の作成のスクリーンショット" border="true":::
 
@@ -222,7 +222,7 @@ Azure Load Balancer の IP アドレスです。 クライアントにとって�
 | ---------- | ---------- |
 | 名前 | フロントエンド IP 構成の名前。 |
 | IP バージョン | フロントエンドに必要な IP アドレスのバージョン。 </br> ロード バランサーにより、IPv4 と IPv6 の両方のフロントエンド IP 構成がサポートされています。 |
-| IP の種類 | IP の種類により、1 つの IP アドレスが、フロントエンドに関連付けられているか、IP プレフィックスを使用して IP アドレスの範囲に関連付けられているかが決定されます。 </br> [パブリック IP プレフィックス](../virtual-network/public-ip-address-prefix.md)は、同じエンドポイントに繰り返し接続する必要がある場合に役立ちます。 プレフィックスによって、SNAT ポートの問題を支援するための十分なポートが提供されます。 |
+| IP の種類 | IP の種類により、1 つの IP アドレスが、フロントエンドに関連付けられているか、IP プレフィックスを使用して IP アドレスの範囲に関連付けられているかが決定されます。 </br> [パブリック IP プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)は、同じエンドポイントに繰り返し接続する必要がある場合に役立ちます。 プレフィックスによって、SNAT ポートの問題を支援するための十分なポートが提供されます。 |
 | パブリック IP アドレス (上記のプレフィックスを選択した場合はプレフィックス) | ロード バランサー フロントエンドの新しいパブリック IP (またはプレフィックス) を選択または作成します。 |
 
 :::image type="content" source="./media/manage/frontend.png" alt-text="フロントエンド IP 構成の作成ページ。" border="true":::

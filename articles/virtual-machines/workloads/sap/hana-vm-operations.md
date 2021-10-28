@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 667995b505339ae4db500964c1ce81bef6d9d0fa
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6507e2367005c1f400c68f46f2ea15705205e819
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467692"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262985"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -104,7 +104,7 @@ SAP HANA を実行するために VM をインストールするとき、VM に�
 >[Azure VNet ピアリング](../../../virtual-network/virtual-network-peering-overview.md)を使用してハブの VNet とスポークの VNet 間を流れるトラフィックによって、追加の[コスト](https://azure.microsoft.com/pricing/details/virtual-network/)という課題が生じます。 これらのコストを基に、VNet ピアリングをバイパスするために、状況に応じて厳格なハブ/スポークのネットワーク設計の実行と、 'スポーク' に接続する複数の [Azure ExpressRoute ゲートウェイ](../../../expressroute/expressroute-about-virtual-network-gateways.md)の実行の間に、妥協点を見出すことを検討する必要があります。 ただし、Azure ExpressRoute ゲートウェイも、追加の[コスト](https://azure.microsoft.com/pricing/details/vpn-gateway/)を発生させます。 また、ネットワーク トラフィックのログ記録、監査、および監視に使用するサードパーティ製のソフトウェアでも、追加のコストが発生する場合があります。 一方の側で生じる VNet ピアリングを通じたデータ交換のコストと、追加の Azure ExpressRoute ゲートウェイおよび追加のソフトウェア ライセンスによって生じるコストに応じて、VNet の代わりにサブネットを分離単位として使用して、1 つの VNet 内でマイクロセグメント化するという判断も可能です。
 
 
-IP アドレスを割り当てるさまざまな方法の概要については、「[Azure における IP アドレスの種類と割り当て方法](../../../virtual-network/public-ip-addresses.md)」をご覧ください。 
+IP アドレスを割り当てるさまざまな方法の概要については、「[Azure における IP アドレスの種類と割り当て方法](../../../virtual-network/ip-services/public-ip-addresses.md)」をご覧ください。 
 
 SAP HANA を実行している VM では、割り当てられた静的 IP アドレスを使用する必要があります。 これは、HANA の一部の構成属性が IP アドレスを参照するためです。
 
@@ -143,7 +143,7 @@ SAP HANA スケールアウトの VM ノードの基本構成は、次のよう�
 - その他のディスク ボリュームはすべて、異なるノード間では共有されず、NFS に基づきません。 非共有の **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。 使用できる HANA 認定ストレージについては、記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を確認してください。
 
 
-ボリュームまたはディスクのサイズを設定するときに、ワーカー ノードの数によって決まる必要なサイズについて、[SAP HANA TDI ストレージ要件](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)に関するドキュメントを確認する必要があります。 このドキュメントには、ボリュームの必要な容量を把握するために適用する必要がある数式が記載されています。
+ボリュームまたはディスクのサイズを設定するときに、ワーカー ノードの数によって決まる必要なサイズについて、[SAP HANA TDI ストレージ要件](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)に関するドキュメントを確認する必要があります。 このドキュメントには、ボリュームの必要な容量を把握するために適用する必要がある数式が記載されています。
 
 スケールアウト SAP HANA VM の単一ノード構成の図に示されているその他の設計基準として、VNet またはそれ以上に優れたサブネット構成があります。 SAP では、HANA ノード間の通信から、クライアント/アプリケーションに向かうトラフィックを分離することを強く推奨しています。 図に示すように、2 つの異なる vNIC を VM にアタッチすることで、この目的が達成されます。 2 つの vNIC は別々のサブネットにあり、2 つの異なる IP アドレスを備えています。 NSG またはユーザー定義のルートを使用して規則をルーティングすることで、トラフィックの流れを制御します。
 

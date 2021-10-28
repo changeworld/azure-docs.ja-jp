@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: cfbca90fe4c0053816421ff392f0af93938ff5ee
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e9496d3139861c41bbcc3467c8169e2350e5414b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254182"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249782"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -342,7 +342,7 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 ### <a name="access-and-security-for-virtual-machines"></a>仮想マシンのアクセスとセキュリティ
 
-インターネットから仮想マシンにアクセスするには、関連するネットワーク インターフェイスまたは (該当する場合) ロード バランサーをパブリック IP アドレスで構成する必要があります。 パブリック IP アドレスには、仮想マシンまたはロード バランサーに解決される DNS 名が含まれています。 詳細については、「[Azure 内の IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+インターネットから仮想マシンにアクセスするには、関連するネットワーク インターフェイスまたは (該当する場合) ロード バランサーをパブリック IP アドレスで構成する必要があります。 パブリック IP アドレスには、仮想マシンまたはロード バランサーに解決される DNS 名が含まれています。 詳細については、「[Azure 内の IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md)」を参照してください。
 
 ネットワーク セキュリティ グループ (NSG) リソースを利用し、パブリック IP アドレスによる仮想マシンへのアクセスを管理します。 NSG はファイアウォールのように機能し、定義された一連のポートで、ネットワーク インターフェイスまたはサブネットを通過するトラフィックを許可または拒否します。 たとえば、Azure VM でリモート デスクトップ セッションを作成するには、ポート 3389 で入ってくるトラフィックを許可するように NSG を構成する必要があります。 詳細については、「[Azure Portal を使用した Azure の VM へのポートの開放](../../virtual-machines/windows/nsg-quickstart-portal.md)」を参照してください。
 

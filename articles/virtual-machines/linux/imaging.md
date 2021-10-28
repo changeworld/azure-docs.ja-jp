@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 4da68df884eae4e0ae0f8e929d5ee58d4e782db8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 0378c3a8859092f65dca2b8e8147f9be6889e3e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691745"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251301"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "122691745"
 ## <a name="difference-between-managed-disks-and-images"></a>マネージド ディスクとイメージの違い
 
 
-Azure では、VHD をプラットフォームに取り込み、[マネージド ディスク](/azure/virtual-machines/faq-for-disks#managed-disks)として使用したり、イメージのソースとして使用したりすることができます。 
+Azure では、VHD をプラットフォームに取り込み、[マネージド ディスク](../faq-for-disks.yml)として使用したり、イメージのソースとして使用したりすることができます。 
 
 Azure マネージド ディスクは単一の VHD です。 既存の VHD を取得してそこからマネージド ディスクを作成することも、空のマネージド ディスクをゼロから作成することもできます。 VM にディスクをアタッチすることでマネージド ディスクから VM を作成できますが、使用できるのは 1 つの VM を含む 1 つの VHD のみです。 OS のプロパティを変更することはできません。Azure は VM をオンにして、そのディスクを使用して起動しようとします。 
 

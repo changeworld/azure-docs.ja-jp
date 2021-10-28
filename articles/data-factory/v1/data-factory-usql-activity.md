@@ -4,17 +4,17 @@ description: Azure Data Lake Analytics コンピューティング サービス 
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 10/01/2017
+ms.date: 10/22/2021
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 6bf6cf9b2bdf538c7d21e47c8f4e98f834a73ecd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a95aa13c776e9c9edf017694eafd3d54f249694e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580360"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218300"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -64,7 +64,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 | **servicePrincipalKey** | アプリケーションのキーを取得します。 | はい |
 | **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
 
-**例: サービス プリンシパル認証**
+**例:サービス プリンシパルの認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",

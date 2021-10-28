@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: quickstart
 ms.date: 10/01/2021
 ms.author: allensu
-ms.openlocfilehash: ef14611c6d5d981c61a69693b40cc8f3b8fd5185
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 017e782b322eb069f43fff399b0d6bc76f981ed1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129369172"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231915"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-a-resource-manager-template"></a>クイックスタート: Resource Manager テンプレートを使用してパブリック IP アドレスを作成する
 
@@ -224,6 +224,6 @@ Standard グローバル パブリック IPv4 アドレスを使用するため�
 この記事に記載されているパブリック IP プロパティの詳細については、[パブリック IP アドレスの管理](virtual-network-public-ip-address.md#create-a-public-ip-address)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [仮想マシンにパブリック IP アドレス](../../virtual-network/associate-public-ip-address-vm.md#azure-portal)を関連付ける
+- [仮想マシンにパブリック IP アドレス](./associate-public-ip-address-vm.md#azure-portal)を関連付ける
 - Azure の[パブリック IP アドレス](public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

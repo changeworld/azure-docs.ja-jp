@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 688fd2391d12f74b46a16954706b3c9e0ee1fb8a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b6a25b832c3acc65d6a7b343901cf23cdd17f98a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771848"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255789"
 ---
 # <a name="create-and-use-managed-identity"></a>マネージド ID の作成と使用
 
@@ -48,7 +48,7 @@ ms.locfileid: "124771848"
   * メイン ウィンドウで、 **[選択されたネットワークからのアクセスを許可する]** を選択します。
   :::image type="content" source="../media/managed-identities/firewalls-and-virtual-networks.png" alt-text="スクリーンショット: [選択されたネットワーク] ラジオ ボタンが選択された状態。":::
 
-  * [選択されたネットワーク] ページで、 **[例外]** カテゴリに移動し、[ **[信頼されたサービスの一覧で Azure サービスにこのストレージ アカウントへのアクセスを許可する]** ](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) チェックボックスがオンになっていることを確認します。
+  * 選択されたネットワーク ページで、 **[例外]** カテゴリに移動し、[[**信頼されたサービスの一覧で Azure サービスにこのストレージ アカウントへのアクセスを許可する**](../../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions) チェックボックスがオンになっていることを確認します。
 
     :::image type="content" source="../media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="スクリーンショット: ポータル ビューの信頼されたサービスを許可するチェックボックス":::
 

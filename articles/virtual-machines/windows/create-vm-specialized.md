@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2a10d58dc36304afdbd37c3fd1c3c41dd819d022
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 650065e45afa3b03098c948b8636ed2943b22140
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693456"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222990"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -201,7 +201,7 @@ $nsg = New-AzNetworkSecurityGroup `
 エンドポイントと NSG 規則の詳細については、[PowerShell を使用した Azure の VM へのポートの開放](nsg-quickstart-powershell.md)に関するページを参照してください。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>パブリック IP アドレスと NIC の作成
-仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)とネットワーク インターフェイスが必要です。
+仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md)とネットワーク インターフェイスが必要です。
 
 1. パブリック IP を作成します。 この例では、パブリック IP アドレス名を *myIP* に設定しています。
    

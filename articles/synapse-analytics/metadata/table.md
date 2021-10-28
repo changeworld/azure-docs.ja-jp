@@ -10,12 +10,12 @@ author: ma77b
 ms.author: maburd
 ms.reviewer: wiassaf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7dd442c981b4a3d9ac04716d123269457f24bf9e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7bb66b9fedb0f1e906a522f393ffde32ee9e2e3e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002778"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263175"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
@@ -69,7 +69,7 @@ Spark テーブルのデータ型は、Synapse SQL エンジンのものとは�
 |---|---|---|
 | `LongType`, `long`, `bigint`                | `bigint`              | **Spark**: *LongType* は 8 バイト符号付き整数値を表します。<BR>**SQL**: 「[int、bigint、smallint、および tinyint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)」を参照してください。|
 | `BooleanType`, `boolean`                    | `bit` (Parquet)、`varchar(6)` (CSV)  | **Spark**: ブール値。<BR>**SQL**: [/sql/t-sql/data-types/bit-transact-sql) を参照してください。|
-| `DecimalType`, `decimal`, `dec`, `numeric`  | `decimal`             | **Spark**: *DecimalType* は、任意の有効桁数の符号付き 10 進数を表します。 java.math.BigDecimal で内部的にサポートされています。 BigDecimal は、任意の有効桁数の小数点以下なしの整数値と、小数点以下保持の 32 ビットの整数値で構成されます。 <br> **SQL**: 固定長の有効桁数と小数点以下保持の数値です。 最大有効桁数を使用した場合、有効値は - 10^38 +1 から 10^38 - 1 です。 decimal の ISO のシノニムは、dec および dec(p, s) です。 numeric は機能的には decimal と同じです。 「[decimal 型と numeric 型](/sql/t-sql/data-types/decimal-and-numeric-transact-sql])」を参照してください。 |
+| `DecimalType`, `decimal`, `dec`, `numeric`  | `decimal`             | **Spark**: *DecimalType* は、任意の有効桁数の符号付き 10 進数を表します。 java.math.BigDecimal で内部的にサポートされています。 BigDecimal は、任意の有効桁数の小数点以下なしの整数値と、小数点以下保持の 32 ビットの整数値で構成されます。 <br> **SQL**: 固定長の有効桁数と小数点以下保持の数値です。 最大有効桁数を使用した場合、有効値は - 10^38 +1 から 10^38 - 1 です。 decimal の ISO のシノニムは、dec および dec(p, s) です。 numeric は機能的には decimal と同じです。 「[decimal 型と numeric 型](/sql/t-sql/data-types/decimal-and-numeric-transact-sql)」を参照してください。 |
 | `IntegerType`, `Integer`, `int`             | `int`                 | **Spark** *IntegerType* は 4 バイト符号付き整数値を表します。 <BR>**SQL**: 「[int、bigint、smallint、および tinyint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)」を参照してください。|
 | `ByteType`, `Byte`, `tinyint`               | `smallint`            | **Spark**: *ByteType* は 1 バイト符号付き整数値 [-128 から 127] を表し、ShortType は 2 バイト符号付き整数値 [-32768 から 32767] を表します。 <br> **SQL**: tinyint は 1 バイト符号付き整数値 [0, 255] を表し、smallint は 2 バイト符号付き整数値 [-32768, 32767] を表します。 「[int、bigint、smallint、および tinyint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)」を参照してください。|
 | `ShortType`, `Short`, `smallint`            | `smallint`            | 上記と同じです。 |
@@ -197,5 +197,3 @@ id | name | birthdate
 
 - [Azure Synapse Analytics の共有メタデータについての詳細情報](overview.md)
 - [Azure Synapse Analytics の共有メタデータ データベースの詳細情報](database.md)
-
-

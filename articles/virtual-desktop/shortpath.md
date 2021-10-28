@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 10/18/2021
 ms.author: denisgun
-ms.openlocfilehash: 39a3cc7086bb0778768187ef2deb49b91d5b9e46
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: d24c1b3bdc6da07b844638157a0ecdfc9eb18843
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181459"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225229"
 ---
 # <a name="azure-virtual-desktop-rdp-shortpath-for-managed-networks"></a>Azure Virtual Desktop マネージド ネットワーク用 RDP Shortpath
 
@@ -58,7 +58,7 @@ RDP Shortpath をサポートするには、Azure Virtual Desktop クライア�
 - [ExpressRoute プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md)を使用する
 - [サイト間仮想プライベート ネットワーク (VPN) (IPsec ベース)](../vpn-gateway/tutorial-site-to-site-portal.md) を使用する
 - [ポイント対サイト VPN (IPsec ベース)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) を使用する
-- [パブリック IP アドレスの割り当て](../virtual-network/virtual-network-public-ip-address.md)を使用する
+- [パブリック IP アドレスの割り当て](../virtual-network/ip-services/virtual-network-public-ip-address.md)を使用する
 
 他の VPN の種類を使用して Azure に接続する場合は、ユーザー データグラム プロトコル (UDP) ベースの VPN を使用することをお勧めします。 ほとんどの伝送制御プロトコル (TCP) ベースの VPN ソリューションでは、入れ子になった UDP がサポートされていますが、TCP 輻輳制御の継承されたオーバーヘッドが追加されるため、RDP のパフォーマンスが低下します。
 

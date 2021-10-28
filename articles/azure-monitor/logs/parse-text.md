@@ -4,13 +4,13 @@ description: データが取り込まれたとき、またデータがクエリ�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/04/2018
-ms.openlocfilehash: 2e2babd39dc9dadf06c9a3ca3292e021e0c1deaa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 10/20/2021
+ms.openlocfilehash: 4898174fda8dd597a1260211ed28d4719779c073
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037185"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219965"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
 Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../agents/data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。

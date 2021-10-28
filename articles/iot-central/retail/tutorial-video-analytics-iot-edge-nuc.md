@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 09/02/2021
-ms.openlocfilehash: 719962ce297cb6cafbaa15f2805a75ffb0aeab8b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 24eb83db1d1527941607b78ae64b1c61f3ebddbc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473714"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226226"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)
 
@@ -37,13 +37,13 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 
 * 開始する前に、これよりも前の [Azure IoT Central でのライブ ビデオ分析アプリケーションの作成 (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) に関するチュートリアルか、[Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するチュートリアルを完了しておく必要があります。
 * Linux を実行するデバイス (Intel NUC など)。Docker コンテナーを実行でき、なおかつビデオ分析を実行できるだけの処理能力を備えている必要があります。
-* デバイスに [IoT Edge ランタイムがインストール](../../iot-edge/how-to-install-iot-edge.md)され、実行されていること。
+* デバイスに [IoT Edge ランタイムがインストール](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)され、実行されていること。
 * Windows マシンから IoT Edge デバイスに接続できること。[PuTTY SSH クライアント](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)または同等のユーティリティが必要です。
 * さらに、Azure サブスクリプションが必要となります。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で無料で作成できます。
 
 ## <a name="configure-the-iot-edge-device"></a>IoT Edge デバイスを構成する
 
-Intel NUC マシンに IoT Edge ランタイムがインストールされていない場合は、「[Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)」の手順を参照してください。
+Intel NUC マシンに IoT Edge ランタイムがインストールされていない場合は、「[Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)」の手順を参照してください。
 
 IoT Edge ランタイムを更新するには:
 

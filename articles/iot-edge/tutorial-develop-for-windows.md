@@ -9,12 +9,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: e3e4add97b63dc7ed6e375f90eb3d5d48a81ffef
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 0164d0ed578ea3f20392f333408553fa60f4d165
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038994"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238588"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -49,7 +49,7 @@ Visual Studio を使用して、コードを開発し、IoT Edge を実行して
 
 Window 上の Azure IoT Edge デバイス:
 
-* [Windows コンテナーを使用して Azure IoT Edge をインストールし、管理します](how-to-install-iot-edge-windows-on-windows.md)。
+* [Windows コンテナーを使用して Azure IoT Edge をインストールし、管理します](how-to-provision-single-device-windows-symmetric.md)。
 * 可能であれば、開発マシンでは IoT Edge を実行せず、代わりに別のデバイスを使用することをお勧めします。 開発マシンと IoT Edge デバイスのこの区別は、実際のデプロイ シナリオをより正確に反映し、異なる概念を区別するのに役立ちます。
 
 クラウド リソース:

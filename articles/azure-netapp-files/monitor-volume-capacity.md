@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 14bbd15fec0015073eefbe2421d03a73fac45d75
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8f2dfe5d185b7de08dca189a83d856ac04d5404e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968388"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224118"
 ---
 # <a name="monitor-the-capacity-of-a-volume"></a>ボリュームの容量を監視する  
 
@@ -73,4 +73,4 @@ Azure NetApp Files の REST API 仕様とコード例は、[resource Manager Git
 * [ボリューム クォータについて](volume-quota-introduction.md)
 * [Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)
 * [容量プールまたはボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)
-* [容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)
+* [容量管理に関する FAQ](faq-capacity-management.md)

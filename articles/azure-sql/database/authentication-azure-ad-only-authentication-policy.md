@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 09/22/2021
-ms.openlocfilehash: 672a46b39a726d5fd21a8c2d740008e169cf1e2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/19/2021
+ms.openlocfilehash: 7f95dc74c4346e1053e963ba6d4ad458881df727
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699249"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255859"
 ---
 # <a name="azure-policy-for-azure-active-directory-only-authentication-with-azure-sql"></a>Azure SQL を使用した Azure Active Directory 専用認証の Azure Policy
 
@@ -32,15 +32,15 @@ Azure Policy には 2 つの新しい組み込みポリシーが導入されま�
 - Azure SQL Database で、Azure Active Directory 専用認証が有効になっている必要があります
 - Azure SQL Managed Instance で Azure Active Directory 専用認証を有効にする必要がある
 
-Azure Policy の詳細については、「[Azure Policy とは](/azure/governance/policy/overview)」および「[Azure Policy の定義の構造](/azure/governance/policy/concepts/definition-structure)」を参照してください。
+Azure Policy の詳細については、「[Azure Policy とは](../../governance/policy/overview.md)」および「[Azure Policy の定義の構造](../../governance/policy/concepts/definition-structure.md)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure Policy の管理に必要なアクセス許可の概要については、「[Azure Policy における Azure RBAC アクセス許可](/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)」を参照してください。
+Azure Policy の管理に必要なアクセス許可の概要については、「[Azure Policy における Azure RBAC アクセス許可](../../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。
 
 ### <a name="actions"></a>アクション
 
-カスタム役割を使用して Azure Policy を管理している場合は、次の[アクション](/azure/role-based-access-control/role-definitions#actions)が必要です。
+カスタム役割を使用して Azure Policy を管理している場合は、次の[アクション](../../role-based-access-control/role-definitions.md#actions)が必要です。
 
 - */read
 - Microsoft.Authorization/policyassignments/*
@@ -49,7 +49,7 @@ Azure Policy の管理に必要なアクセス許可の概要については、�
 - Microsoft.Authorization/policysetdefinitions/*
 - Microsoft.PolicyInsights/*
 
-カスタム ロールの詳細については、「[Azure カスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。
+カスタム ロールの詳細については、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
 
 ## <a name="manage-azure-policy-for-azure-ad-only-authentication"></a>Azure AD 専用認証の Azure Policy を管理する
 
@@ -77,7 +77,6 @@ Azure Policy は、Azure AD 専用認証を有効にせず、新しい論理サ�
 
 ## <a name="limitations"></a>制限事項
 
-- 現時点では、Azure AD 専用認証を有効にして、Azure portal 内で論理サーバーまたはマネージド インスタンスを作成することはできません。 Azure AD 専用認証を有効にして論理サーバーまたはマネージド インスタンスを作成するには、Azure CLI、PowerShell、Rest API、ARM テンプレートのいずれかを使用しします。 詳細については、「[Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する](authentication-azure-ad-only-authentication-create-server.md)」を参照してください。
 - Azure Policy は、論理サーバーまたはマネージド インスタンスの作成中に、Azure AD 専用認証を適用します。 サーバーが作成されると、特別なロールを持つ承認済み Azure AD ユーザー (SQL セキュリティ 管理者など) が、Azure AD 専用認証機能を無効にできます。 これは Azure Policy によって許可されていますが、この場合、サーバーまたはマネージド インスタンスはコンプライアンス レポートに `Non-compliant` と表示され、レポートには、サーバーまたはマネージド インスタンス名が示されます。  
 - 注釈、既知の問題、必要なアクセス許可の詳細については、[Azure AD 専用認証](authentication-azure-ad-only-authentication.md)に関するページをご覧ください。
 

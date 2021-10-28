@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 257fba85685c8c47a323c5ba671aa2bbbf59d572
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d655edd485de3b446ce4db758cf8722b551eee10
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113465"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219048"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Azure Cosmos DB のワークロードに対するパフォーマンス テスト
 * Azure Cosmos DB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。 
 * 開発中のクライアント アプリケーションで Azure Cosmos DB から高水準のスループットを引き出すにはどうすればよいか。
 
-最初に、[Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
+最初に、[Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Tools/Benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
 
 > [!NOTE]
 > このアプリケーションの目的は、クライアント マシンの数が少ない場合に Azure Cosmos DB で最良のパフォーマンスを得る方法を示すことです。 このサンプルの目的は、Azure Cosmos DBの (制限なしでスケールできる) ピーク時のスループット容量を達成することではありません。
@@ -37,7 +37,7 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
 ## <a name="run-the-performance-testing-application"></a>パフォーマンス テスト アプリケーションの実行
 まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。 ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
-**手順 1:** [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
+**手順 1:** [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Tools/Benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
 
 **手順 2:** App.config の EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
@@ -97,10 +97,10 @@ Press any key to exit...
 
 この記事では、.NET コンソール アプリを使用して Azure Cosmos DB でパフォーマンスとスケーリングのテストを実行する方法を説明しました。 詳細については、次の記事を参照してください。
 
-* [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
+* [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Tools/Benchmark)
 * [Azure Cosmos DB のパフォーマンスを向上させるクライアント構成オプション](performance-tips.md)
 * [Azure Cosmos DB でのサーバー側のパーティション分割](../partitioning-overview.md)
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 

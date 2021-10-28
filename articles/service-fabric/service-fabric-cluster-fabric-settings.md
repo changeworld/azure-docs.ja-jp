@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 5d6f15f4178b9f026be7205832a1f40c3dc01bab
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 28355bfac8d052c847cf2f08770f5aa869c5a786
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720686"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237949"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -567,7 +567,7 @@ ms.locfileid: "114720686"
 |MoveExistingReplicaForPlacement | ブール値、既定値は true |動的|配置中に既存のレプリカを移動するかどうかを指定します。 |
 |MovementPerPartitionThrottleCountingInterval | 時間 (秒単位)、既定値は 600 |静的| timespan を秒単位で指定します。 各パーティションのレプリカの移動を追跡する、過去の間隔の長さを示します (MovementPerPartitionThrottleThreshold と共に使用)。 |
 |MovementPerPartitionThrottleThreshold | uint、既定値は 50 |動的| パーティションのレプリカの均衡化に関連する移動数が、MovementPerPartitionThrottleCountingInterval で示されている過去の間隔で MovementPerFailoverUnitThrottleThreshold の値に達するか、この値を超えると、そのパーティションで均衡化に関連する移動は発生しなくなります。 |
-|MoveParentToFixAffinityViolation | ブール値、既定値は false |動的| アフィニティの制約を修正するために親レプリカを移動できるかどうかを指定します。|
+|MoveParentToFixAffinityViolation | ブール値、既定値は true |動的| アフィニティの制約を修正するために親レプリカを移動できるかどうかを指定します。|
 |NodeTaggingEnabled | ブール値、既定値は false |動的| true の場合、NodeTagging 機能が有効になります。 |
 |NodeTaggingConstraintPriority | int、既定値は 0 |動的| ノード タグ付けの構成可能な優先順位。 |
 |PartiallyPlaceServices | ブール値、既定値は true |動的| サービス レプリカに適したノードの数が限られている場合に、クラスター内のすべてのサービス レプリカを "全部かゼロか" 方式で配置するかどうかを指定します。|

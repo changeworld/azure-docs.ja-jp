@@ -3,12 +3,12 @@ title: プライベート エンドポイントを使用して Azure Functions �
 description: このチュートリアルでは、関数を Azure 仮想ネットワークに接続し、プライベート エンドポイントを使用してこれをロック ダウンする方法について説明します。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: 8007fde1d4aaf52a98bf924f607450462a993c1d
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: ee6fb79176b0188533725347c3b47369ce050706
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708436"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252979"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>チュートリアル: プライベート エンドポイントを使用して Azure Functions を Azure 仮想ネットワークに統合する
 
@@ -323,8 +323,7 @@ Azure Functions サービス バス トリガーがイベントを取得する�
     | **WEBSITE_CONTENTSHARE** | files | ストレージ アカウントで作成したファイル共有の名前。 この設定は、WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用します。 |
     | **SERVICEBUS_CONNECTION** | myServiceBusConnectionString | サービス バスの接続文字列に、このアプリ設定を作成します。 このストレージの接続文字列は、「[サービス バスの接続文字列を取得する](#get-a-service-bus-connection-string)」セクションのものです。|
     | **WEBSITE_CONTENTOVERVNET** | 1 | このアプリ設定を作成します。 値 1 を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 |
-    | **WEBSITE_DNS_SERVER** | 168.63.129.16 | このアプリ設定を作成します。 アプリが仮想ネットワークと統合されると、仮想ネットワークと同じ DNS サーバーが使用されます。 関数アプリで Azure DNS プライベート ゾーンを操作できるようにするには、この設定が必要です。 これは、プライベート エンドポイントを使用する場合に必要です。 この設定と WEBSITE_VNET_ROUTE_ALL によって、アプリからのすべての送信呼び出しが仮想ネットワークに送信されます。 |
-    | **WEBSITE_VNET_ROUTE_ALL** | 1 | このアプリ設定を作成します。 アプリが仮想ネットワークと統合されると、仮想ネットワークと同じ DNS サーバーが使用されます。 関数アプリで Azure DNS プライベート ゾーンを操作できるようにするには、この設定が必要です。 これは、プライベート エンドポイントを使用する場合に必要です。 この設定と WEBSITE_DNS_SERVER によって、アプリからのすべての送信呼び出しが仮想ネットワークに送信されます。 |
+    | **WEBSITE_VNET_ROUTE_ALL** | 1 | このアプリ設定を作成します。 アプリが仮想ネットワークと統合されると、仮想ネットワークと同じ DNS サーバーが使用されます。 関数アプリで Azure DNS プライベート ゾーンを操作できるようにするには、この設定が必要です。 これは、プライベート エンドポイントを使用する場合に必要です。 |
 
 1. **[構成]** ビューで、 **[関数のランタイム設定]** タブを選択します。
 

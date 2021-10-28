@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1e0ec6d37990fbddcdebf7a1d2efd063cd9e4ea6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a12e81e00b58206a7220b436128167df448ff174
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128909163"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287783"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -151,7 +151,7 @@ Azure Disk Encryption では、ポート番号をキー コンテナー シー�
 Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) コマンドを使用して新しい KEK を生成し、キー コンテナーに格納します。
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA --size 4096
 ```
 
 代わりに、Azure CLI [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import) コマンドを使用して秘密キーをインポートすることもできます。
@@ -167,7 +167,7 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用して新しい KEK を生成し、キー コンテナーに格納します。
 
  ```powershell-interactive
-Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
+Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM" -Size 4096
 ```
 
 代わりに、Azure PowerShell [az keyvault key import](/cli/azure/keyvault/key#az_keyvault_key_import) コマンドを使用して秘密キーをインポートすることもできます。

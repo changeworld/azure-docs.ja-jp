@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: c63fc37000fbd6cf376dd5a80b392e87466e9ce3
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: e1d59d336d331a41bf5f82e650d80d7843ab3977
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094857"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250580"
 ---
 # <a name="delete-backups-of-a-volume"></a>ボリュームのバックアップを削除する 
 
@@ -47,4 +47,4 @@ ms.locfileid: "129094857"
 * [バックアップを新しいボリュームに復元する](backup-restore-new-volume.md)
 * [ボリュームのバックアップ機能を無効にする](backup-disable.md)
 * [ボリュームのバックアップ メトリック](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Azure NetApp Files のバックアップに関する FAQ](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Azure NetApp Files のバックアップに関する FAQ](faq-backup.md)

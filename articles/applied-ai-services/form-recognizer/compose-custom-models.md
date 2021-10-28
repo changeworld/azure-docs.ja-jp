@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 55e3d529b0f0e713be1c19e9f2ae4736d9b6a9ca
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: ef5514b44ad2d35870674a85958c28f5f780c308
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177519"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233698"
 ---
 # <a name="how-to-use-custom-and-composed-models"></a>方法: カスタム モデルと作成済みモデルを使用する
 
@@ -25,7 +25,7 @@ Form Recognizer では、高度な機械学習テクノロジを使用して、�
 
 * **作成済みモデル**。 作成済みモデルは、カスタム モデルのコレクションを取得し、目的のフォームの種類を含む 1 つのモデルに割り当てることによって作成されます。 作成済みモデルにドキュメントが送信されると、サービスによって分類ステップが実行され、分析のために提示されたフォームを正確に表すカスタム モデルが決定されます。
 
-この記事では、[Form Recognizer サンプル ラベル付けツール](label-tool.md)、[REST API](quickstarts/client-library.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model)、または[クライアント ライブラリ SDK](quickstarts/client-library.md?branch=main&pivots=programming-language-csharp#train-a-custom-model) を使用して Form Recognizer のカスタム モデルと作成済みモデルを作成する方法について説明します。
+この記事では、[Form Recognizer サンプル ラベル付けツール](label-tool.md)、[REST API](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model)、または[クライアント ライブラリ SDK](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-csharp#train-a-custom-model) を使用して Form Recognizer のカスタム モデルと作成済みモデルを作成する方法について説明します。
 
 ## <a name="try-it-sample-labeling-tool"></a>試してみる: サンプル ラベル付けツール
 
@@ -71,7 +71,7 @@ Azure BLOB ストレージ コンテナーに[トレーニング データをア
 
 ## <a name="train-your-custom-model"></a>カスタム モデルをトレーニングする
 
-ラベル付きデータ セットの有無にかかわらず、[モデルをトレーニング](quickstarts/client-library.md#train-a-custom-model)できます。 ラベルのないデータセットの場合、[Layout API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync) のみに依存し、ユーザーの入力を追加することなく重要な情報を検出および特定できます。 ラベル付きデータセットの場合も、Layout API をに依存していますが、特定のラベルやフィールドの場所など、補助的なユーザーの入力が含まれています。 ラベル付きデータとラベルなしデータの両方を使用するには、ラベル付きトレーニング データに同じ種類の少なくとも 5 つの完成したフォームから始めて、ラベルなしデータを必要なデータ セットに追加します。
+ラベル付きデータ セットの有無にかかわらず、[モデルをトレーニング](./quickstarts/try-sdk-rest-api.md#train-a-custom-model)できます。 ラベルのないデータセットの場合、[Layout API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync) のみに依存し、ユーザーの入力を追加することなく重要な情報を検出および特定できます。 ラベル付きデータセットの場合も、Layout API をに依存していますが、特定のラベルやフィールドの場所など、補助的なユーザーの入力が含まれています。 ラベル付きデータとラベルなしデータの両方を使用するには、ラベル付きトレーニング データに同じ種類の少なくとも 5 つの完成したフォームから始めて、ラベルなしデータを必要なデータ セットに追加します。
 
 ### <a name="train-without-labels"></a>ラベルを使用しないトレーニング
 
@@ -113,13 +113,13 @@ Form Recognizer サンプル ラベル付けツール、REST API、またはク�
 
 ### <a name="rest-api"></a>[**REST API**](#tab/rest-api)
 
-[**REST API**](quickstarts/client-library.md?pivots=programming-language-rest-api#train-a-custom-model) から、**Location** ヘッダーを含む `201 (Success)` 応答が返されます。 このヘッダーの最後のパラメーターの値は、新しくトレーニングしたモデルのモデル ID です。
+[**REST API**](./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#train-a-custom-model) から、**Location** ヘッダーを含む `201 (Success)` 応答が返されます。 このヘッダーの最後のパラメーターの値は、新しくトレーニングしたモデルのモデル ID です。
 
 :::image type="content" source="media/model-id.png" alt-text="スクリーンショット: 返された Location ヘッダーにモデル ID が含まれている。":::
 
 ### <a name="client-library-sdks"></a>[**クライアント ライブラリ SDK**](#tab/sdks)
 
- [**クライアント ライブラリ SDK**](quickstarts/client-library.md?pivots=programming-language-csharp#train-a-custom-model) から返されたモデル オブジェクトをクエリすることで、トレーニングしたモデルの ID を取得できます。
+ [**クライアント ライブラリ SDK**](./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp#train-a-custom-model) から返されたモデル オブジェクトをクエリすることで、トレーニングしたモデルの ID を取得できます。
 
 * \#  | [CustomFormModel クラス](/dotnet/api/azure.ai.formrecognizer.training.customformmodel?view=azure-dotnet&preserve-view=true#properties "Azure SDK for .NET")
 
@@ -205,11 +205,11 @@ REST API を使用して [Analyze Form](https://westus.dev.cognitive.microsoft.c
 
 ---
 
-トレーニング データセットの一部ではなかった[フォームを分析](quickstarts/client-library.md#analyze-forms-with-a-custom-model)して、新しくトレーニングしたモデルをテストします。 レポートされる精度によっては、モデルを改善するために、さらにトレーニングを行う必要が生じる場合があります。 さらにトレーニングを続けて[結果を改善する](label-tool.md#improve-results)ことができます。
+トレーニング データセットの一部ではなかった[フォームを分析](./quickstarts/try-sdk-rest-api.md#analyze-forms-with-a-custom-model)して、新しくトレーニングしたモデルをテストします。 レポートされる精度によっては、モデルを改善するために、さらにトレーニングを行う必要が生じる場合があります。 さらにトレーニングを続けて[結果を改善する](label-tool.md#improve-results)ことができます。
 
 ## <a name="manage-your-custom-models"></a>カスタム モデルを管理する
 
-ライフサイクル全体にわたって[カスタム モデルを管理](quickstarts/client-library.md#manage-custom-models)できます。サブスクリプションに属する[すべてのカスタム モデルの一覧](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModels)を表示したり、[特定のカスタム モデル](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel)に関する情報を取得したり、アカウントから[カスタム モデルを削除](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/DeleteCustomModel)したりします。
+ライフサイクル全体にわたって[カスタム モデルを管理](./quickstarts/try-sdk-rest-api.md#manage-custom-models)できます。サブスクリプションに属する[すべてのカスタム モデルの一覧](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModels)を表示したり、[特定のカスタム モデル](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel)に関する情報を取得したり、アカウントから[カスタム モデルを削除](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/DeleteCustomModel)したりします。
 
 お疲れ様です。 カスタム モデルと作成済みモデルを作成し、それらを Form Recognizer プロジェクトとアプリケーションで使用する手順について学習しました。
 
@@ -220,4 +220,3 @@ API リファレンスのドキュメントを参照して、Form Recognizer ク
 > [!div class="nextstepaction"]
 > [Form Recognizer API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
 >
-

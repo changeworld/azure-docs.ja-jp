@@ -4,12 +4,12 @@ description: Azure Database for PostgreSQL バックアップ (プレビュー) 
 ms.topic: conceptual
 ms.date: 09/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3740d4c7d149181638da93a3a5ad713c2c230f29
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: b868af4c96691c9496a0c5382d9416e784d3eb8c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154415"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219396"
 ---
 # <a name="about-azure-database-for-postgresql-backup-preview"></a>Azure Database for PostgreSQL のバックアップについて (プレビュー)
 
@@ -18,10 +18,10 @@ Azure Backup と Azure Database Services を連携させることで、バック
 - お客様の管理による個々のデータベース レベルでのスケジュール バックアップとオンデマンド バックアップ。
 - PostgreSQL サーバーへのデータベース レベルでの復元、または任意の BLOB ストレージへのデータベース レベルでの復元。
 - すべての操作とジョブの一元的な監視。
-- バックアップは、個別のセキュリティ ドメインと障害ドメインに保存されます。 何らかの状況で元のサーバーまたはサブスクリプションが侵害された場合は、[バックアップ コンテナー](/azure/backup/backup-vault-overview) (Azure Backup マネージド ストレージ アカウント) でバックアップが安全に保たれます。
+- バックアップは、個別のセキュリティ ドメインと障害ドメインに保存されます。 何らかの状況で元のサーバーまたはサブスクリプションが侵害された場合は、[バックアップ コンテナー](./backup-vault-overview.md) (Azure Backup マネージド ストレージ アカウント) でバックアップが安全に保たれます。
 - **pg_dump** を使用すると、復元の柔軟性が向上します。 これは、データベースのバージョン間での復元に役立ちます。 
 
-このソリューションは個別に使用できます。また、データ保有期間が最大 35 日の [Azure PostgreSQL 提供のネイティブ バックアップ ソリューション](/azure/postgresql/concepts-backup)に加えて使用することもできます。 ネイティブ ソリューションは、最新のバックアップから復旧する場合など、運用復旧に適しています。 Azure Backup ソリューションを使用すると、コンプライアンスのニーズを満たし、より細かく柔軟なバックアップと復元を行うことができます。
+このソリューションは個別に使用できます。また、データ保有期間が最大 35 日の [Azure PostgreSQL 提供のネイティブ バックアップ ソリューション](../postgresql/concepts-backup.md)に加えて使用することもできます。 ネイティブ ソリューションは、最新のバックアップから復旧する場合など、運用復旧に適しています。 Azure Backup ソリューションを使用すると、コンプライアンスのニーズを満たし、より細かく柔軟なバックアップと復元を行うことができます。
 
 ## <a name="support-matrix"></a>サポート マトリックス
 
@@ -55,7 +55,7 @@ Azure Backup は、Azure によって配置される厳密なセキュリティ 
 
 ### <a name="key-vault-based-authentication-model"></a>キーコンテナー ベースの認証モデル
 
-Azure Backup サービスは、各バックアップの実行中に Azure PostgreSQL に接続する必要があります。 この接続には、データベースに対応する ‘username + password’ (または接続文字列) が使用されますが、これらの資格情報は Azure Backup と一緒には格納されません。 代わりに、これらの資格情報は、[シークレットとして Azure Key Vault](/azure/key-vault/secrets/about-secrets) 内にデータベース管理者によって安全にシード処理される必要があります。 ワークロード管理者は、資格情報の管理とローテーションを担当します。Azure Backup、バックアップを取得するために、キー コンテナーから最新のシークレットの詳細を呼び出します。
+Azure Backup サービスは、各バックアップの実行中に Azure PostgreSQL に接続する必要があります。 この接続には、データベースに対応する ‘username + password’ (または接続文字列) が使用されますが、これらの資格情報は Azure Backup と一緒には格納されません。 代わりに、これらの資格情報は、[シークレットとして Azure Key Vault](../key-vault/secrets/about-secrets.md) 内にデータベース管理者によって安全にシード処理される必要があります。 ワークロード管理者は、資格情報の管理とローテーションを担当します。Azure Backup、バックアップを取得するために、キー コンテナーから最新のシークレットの詳細を呼び出します。
  
 :::image type="content" source="./media/backup-azure-database-postgresql-overview/key-vault-based-authentication-model.png" alt-text="ワークロードまたはデータベース フローを示す図。":::
 
@@ -115,7 +115,7 @@ Azure Backup に必要なすべてのアクセス許可を付与するには、�
    - Azure のロールベースのアクセス制御 (Azure RBAC) 認可を使用する方法は次のとおりです。つまり、アクセス許可モデルは Azure ロールベースのアクセス制御に設定されます。
 
      - [アクセス制御] で、バックアップ コンテナーの MSI _Key Vault シークレット ユーザー_ に、キー コンテナーへのアクセス権を付与します。 そのロールのベアラーは、シークレットを読み取ることができます。
-     - [Azure RBAC を使用して Azure キー コンテナーへのアクセス許可をアプリケーションに付与します](/azure/key-vault/general/rbac-guide?tabs=azure-cli)。
+     - [Azure RBAC を使用して Azure キー コンテナーへのアクセス許可をアプリケーションに付与します](../key-vault/general/rbac-guide.md?tabs=azure-cli)。
 
    :::image type="content" source="./media/backup-azure-database-postgresql-overview/key-vault-secrets-user-access-inline.png" alt-text="シークレットのユーザー アクセス許可を提供するオプションを示すスクリーンショット。" lightbox="./media/backup-azure-database-postgresql-overview/key-vault-secrets-user-access-expanded.png":::
 
@@ -124,7 +124,7 @@ Azure Backup に必要なすべてのアクセス許可を付与するには、�
    - アクセス ポリシーを使用する方法は次のとおりです。つまり、アクセス許可モデルはコンテナー アクセス ポリシーに設定されます。
 
      - シークレットに対する Get 権限と List 権限を設定します。
-     - 「[Azure Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy?tabs=azure-portal)」を参照してください。
+     - 「[Azure Key Vault アクセス ポリシーを割り当てる](../key-vault/general/assign-access-policy.md?tabs=azure-portal)」を参照してください。
 
      :::image type="content" source="./media/backup-azure-database-postgresql-overview/permission-model-is-set-to-vault-access-policy-inline.png" alt-text="コンテナー アクセス ポリシー モデルに設定されるアクセス許可モデルを使用してアクセス許可を付与するオプションを示すスクリーンショット。" lightbox="./media/backup-azure-database-postgresql-overview/permission-model-is-set-to-vault-access-policy-expanded.png":::  
  

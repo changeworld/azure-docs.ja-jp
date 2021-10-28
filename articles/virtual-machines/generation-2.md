@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 48dd300148cdcccc9caf754a5e5bcc69e7c5c0e7
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: a8e6133d0b4e7d0595524bb4142e51610226ad7f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216557"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214689"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -87,7 +87,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | セキュア ブート                         | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用   |
 | シールドされた VM                         | :heavy_check_mark:  | :x:   |
 | vTPM                                | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用  |
-| 仮想化ベースのセキュリティ (VBS) | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用   |
+| 仮想化ベースのセキュリティ (VBS) | :heavy_check_mark:  | :heavy_check_mark:   |
 | VHDX 形式                         | :heavy_check_mark:  | :x:   |
 
 詳細については、[トラステッド起動 (プレビュー)](trusted-launch.md) に関するページを参照してください。
@@ -96,7 +96,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 世代と第 2 世代の特徴の比較
 
-| 機能 | 第 1 世代 | 第 2 世代 |
+| 特徴量 | 第 1 世代 | 第 2 世代 |
 |---------|--------------|--------------|
 | ブート             | PCAT                      | UEFI                               |
 | ディスク コントローラー | IDE                       | SCSI                               |

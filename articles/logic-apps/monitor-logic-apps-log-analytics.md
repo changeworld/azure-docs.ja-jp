@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: d1c095be1d0525cc843c04a3b83e14bb4211b175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5375649d8bf5bdf1a6a24babc6f05d30d40c93b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721261"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215186"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor ログを設定し、Azure Logic Apps の診断データを収集する
 
@@ -178,7 +178,7 @@ Azure Monitor ログと併せて、ロジック アプリの診断データを�
 * [Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 * [Azure プラットフォーム ログを Azure Event Hubs にストリーミングする](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
 
-これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/visualize/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 次に例を示します。
+これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/logs/log-powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 次に例を示します。
 
 * [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)

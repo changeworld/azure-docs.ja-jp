@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e082ae9343ff935ceeda168573be9648c6cee631
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5ea156773335ed31fe6c6e728f496f91c6de634
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358832"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215635"
 ---
 # <a name="what-are-certificates-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU の証明書とは
 
@@ -158,7 +158,7 @@ Azure Stack Edge デバイスでは、自己署名証明書を使用するか、
 
 - IoT Edge 証明書は `.pem` 形式でアップロードします。 
 
-IoT Edge 証明書の詳細については、[Azure IoT Edge 証明書の詳細](../iot-edge/iot-edge-certs.md#iot-edge-certificates)および [IoT Edge 運用証明書の作成](/azure/iot-edge/how-to-manage-device-certificates?view=iotedge-2020-11&preserve-view=true#create-production-certificates)に関するページを参照してください。
+IoT Edge 証明書の詳細については、[Azure IoT Edge 証明書の詳細](../iot-edge/iot-edge-certs.md#iot-edge-certificates)および [IoT Edge 運用証明書の作成](../iot-edge/how-to-manage-device-certificates.md?preserve-view=true&view=iotedge-2020-11#create-production-certificates)に関するページを参照してください。
 
 ## <a name="kubernetes-certificates"></a>Kubernetes 証明書
 

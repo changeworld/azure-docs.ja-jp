@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: tutorial
 ms.date: 06/01/2021
 titleSuffix: Azure
-ms.openlocfilehash: a36de6ac835b3ed9f4188b6f8d2bf3b5178be087
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 9be96267e6380a93b9cda6dfb43f4324a9da2f32
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604709"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260457"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -294,4 +294,4 @@ Visual Studio Code で、前の手順で使用した `topology.json` のロー�
 上級ユーザー向けのその他の課題を確認します。
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで検索できます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-* Azure Linux VM ではなく、ローカルの x64 Linux デバイスを使用します。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge.md)に関するページの手順を参照できます。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」の手順に従って、デバイスを Azure IoT Hub に登録します。
+* Azure Linux VM ではなく、ローカルの x64 Linux デバイスを使用します。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)に関するページの手順を参照できます。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」の手順に従って、デバイスを Azure IoT Hub に登録します。

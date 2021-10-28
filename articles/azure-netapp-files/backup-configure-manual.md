@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 827268fee96227f056029c8b2a75629353861d7e
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: fda75ec22d4573a1730d29fc4f9a34c1f4de239a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094859"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224257"
 ---
 # <a name="configure-manual-backups-for-azure-netapp-files"></a>Azure NetApp Files 用に手動バックアップを構成する 
 
-Azure NetApp Files バックアップは、ボリューム レベルで "*ポリシーベースの*" (スケジュールされた) バックアップと "*手動*" (オンデマンド) バックアップをサポートしています。 ユーザーは、同じボリューム内で両方の種類のバックアップを使用することができます。 構成プロセス中、ポリシーベースのバックアップまたは手動バックアップを行う前に、Azure NetApp Files ボリュームのバックアップ機能を有効にします。 
+Azure NetApp Files バックアップは、ボリューム レベルで "*ポリシーベースの*" (スケジュールされた) バックアップと "*手動*" (オンデマンド) バックアップをサポートしています。 同じボリューム内で両方の種類のバックアップを使用できます。 構成プロセス中、ポリシーベースのバックアップまたは手動バックアップを行う前に、Azure NetApp Files ボリュームのバックアップ機能を有効にします。 
 
 この記事では、手動バックアップの構成方法について説明します。 ポリシーベースのバックアップ構成については、[ポリシーベースのバックアップ構成](backup-configure-policy-based.md)に関するページをご覧ください。  
 
 > [!IMPORTANT]
-> Azure NetApp Files バックアップ機能は現在プレビューの段階です。 機能にアクセスするには、「 **[Azure NetApp Files バックアップ パブリック プレビュー](https://aka.ms/anfbackuppreviewsignup)** 」ページから、順番待ち要求を送信する必要があります。 Azure NetApp Files バックアップ機能は、Azure NetApp Files チームから正式な確認メールが届いてからご利用ください。
+> Azure NetApp Files バックアップ機能は現在プレビューの段階です。 機能にアクセスするための順番待ちリクエストを、「 **[Azure NetApp Files バックアップ パブリック プレビュー](https://aka.ms/anfbackuppreviewsignup)** 」ページから送信する必要があります。 Azure NetApp Files バックアップ機能は、Azure NetApp Files チームから正式な確認メールが届いてからご利用ください。
 
 ## <a name="about-manual-backups"></a>手動バックアップについて  
 
@@ -91,6 +91,6 @@ Azure NetApp Files バックアップは、ボリューム レベルで "*ポリ
 * [ボリュームのバックアップ機能を無効にする](backup-disable.md)
 * [ボリュームのバックアップを削除する](backup-delete.md)
 * [ボリュームのバックアップ メトリック](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Azure NetApp Files のバックアップに関する FAQ](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Azure NetApp Files のバックアップに関する FAQ](faq-backup.md)
 
 

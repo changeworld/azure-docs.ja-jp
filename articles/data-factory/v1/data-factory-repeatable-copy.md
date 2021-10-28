@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9dabe0767954d3ca19ea4b392c70641aa2f12c79
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: efa0df274a02e53d7b9d30b0b215f0082c6bcf90
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612797"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218338"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 

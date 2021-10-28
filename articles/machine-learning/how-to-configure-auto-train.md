@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 09/27/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 473cf460460bf6fb13353587d49509cb192219b7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 159452c18418508cb0640e909a49474e77ca3ce9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044651"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246418"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -35,7 +35,7 @@ ms.locfileid: "130044651"
     SDK をインストールするには、次のいずれかを行います。 
     * コンピューティング インスタンスを作成します。これにより、SDK が自動的にインストールされ、ML ワークフロー用に事前構成されます。 詳細については、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」を参照してください。 
 
-    * SDK の[既定のインストール](/python/api/overview/azure/ml/install#default-install)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+    * SDK の[既定のインストール](/python/api/overview/azure/ml/install#default-install)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/README.md#setup-using-a-local-conda-environment)します。
 
     [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
     
@@ -189,7 +189,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 [デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
 [K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* | [勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* | [デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
-[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* | [デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
+[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* | Arimax
 [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* | [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests) | [LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
 [Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* | [Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* | [確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
@@ -200,7 +200,6 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ||| Average
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
-||| Arimax
 
 ### <a name="primary-metric"></a>主要メトリック
 

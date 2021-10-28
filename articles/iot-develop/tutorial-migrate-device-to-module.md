@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 44dca3cd3cd7803271fba6abae72de5c54782c1f
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: a0a5402f4947da149609f9563c7f28c6581cd14a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457413"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259451"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>チュートリアル:IoT プラグ アンド プレイ モジュールを接続する (C#)
 
@@ -229,7 +229,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 コンテナー化されたモジュールをデプロイする方法については、以下を参照してください。
 
 * [Ubuntu 仮想マシン上で Azure IoT Edge を実行する](../iot-edge/how-to-install-iot-edge-ubuntuvm.md)。
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge.md)。
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-provision-single-device-linux-symmetric.md)。
 
 Azure IoT エクスプローラー ツールを使用して、以下を参照できます。
 

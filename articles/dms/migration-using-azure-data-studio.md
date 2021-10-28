@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7a6b1099ea81c7a4a50692496ee044fe4a72bd24
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 832ae975a19fa7765666acd791c7dfec05a55c3c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124742952"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235036"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>Azure Data Studio 用 Azure SQL Migration 拡張機能を使用してデータベースを移行する (プレビュー)
 
@@ -83,7 +83,7 @@ DMS では、Azure Data Factory のセルフホステッド統合ランタイム
     > データベース バックアップ ファイルが Azure ストレージ アカウントで既に提供されている場合、移行プロセス中にセルフホステッド統合ランタイムは不要です。
 
 * セルフホステッド統合ランタイムを使用する場合は、ランタイムがインストールされているマシンが、ソース SQL Server インスタンスと、バックアップ ファイルがあるネットワーク ファイル共有に接続できることを確認します。 アウトバウンド ポート 445 を有効にして、ネットワーク ファイル共有へのアクセスを許可する必要があります。
-* Azure Database Migration Service を初めて使用する場合は、Microsoft.DataMigration リソース プロバイダーがサブスクリプションに登録されていることを確認します。 [リソース プロバイダーを登録する](/azure/dms/quickstart-create-data-migration-service-portal#register-the-resource-provider)手順に従ってください
+* Azure Database Migration Service を初めて使用する場合は、Microsoft.DataMigration リソース プロバイダーがサブスクリプションに登録されていることを確認します。 [リソース プロバイダーを登録する](./quickstart-create-data-migration-service-portal.md#register-the-resource-provider)手順に従ってください
 
 ### <a name="recommendations-for-using-self-hosted-integration-runtime-for-database-migrations"></a>データベースの移行にセルフホステッド統合ランタイムを使用する際の推奨事項
 - 複数のソース SQL Server データベースに対して、1 つのセルフホステッド統合ランタイムを使用します。

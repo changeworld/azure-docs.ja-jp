@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 51a8bde53cf2e75501eadd185e0754ec6f0f673c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: afd5ca1c058945427ce78d3380ecc56e9a5cd0c4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803702"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240948"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -100,7 +100,7 @@ VM の[拡張機能](../extensions/features-windows.md?toc=/azure/virtual-machin
 | [リソース グループ](../../azure-resource-manager/management/overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
 | [ストレージ アカウント](../../storage/common/storage-account-create.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
 | [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
-| [パブリック IP アドレス](../../virtual-network/public-ip-addresses.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
+| [パブリック IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
 | [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
 | [データ ディスク](attach-managed-disk-portal.md) |いいえ |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 

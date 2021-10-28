@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 445163b0d33f404845a66b7d885815d6336dac46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 103a3004f6bf4ec6e536d87b7fe72484f2bff974
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726364"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259114"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>チュートリアル: Azure IoT Edge デバイスを構成する
 
@@ -142,7 +142,7 @@ Azure IoT Edge ランタイムがインストールされて構成されてい�
    | **リソース グループ** | 仮想マシンとそれに関連付けられたリソースを格納する、既存または新しく作成されたリソース グループ。 |
    | **DNS ラベル プレフィックス** | 仮想マシンのホスト名のプレフィックスとして使用される、あなたが選択した必要値。 |
    | **管理ユーザー名** | ユーザー名。デプロイ時にルート権限が与えられます。 |
-   | **デバイスの接続文字列** | 目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの[デバイス接続文字列](./how-to-register-device.md)。 |
+   | **デバイスの接続文字列** | 目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの[デバイス接続文字列](./how-to-provision-single-device-linux-symmetric.md#view-registered-devices-and-retrieve-provisioning-information)。 |
    | **VM のサイズ** | デプロイする仮想マシンの[サイズ](../cloud-services/cloud-services-sizes-specs.md)
    | **Ubuntu OS バージョン** | ベース仮想マシンにインストールする Ubuntu OS のバージョン。 |
    | **場所** | 仮想マシンをデプロイする[地理的リージョン](https://azure.microsoft.com/global-infrastructure/locations/)。選択したリソース グループの場所が規定値となります。 |

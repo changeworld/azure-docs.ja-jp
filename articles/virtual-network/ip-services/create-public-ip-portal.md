@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: quickstart
 ms.date: 10/01/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: ea18353a787918cbf0abe491b1a2437b9a7d3d4a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d45e48120c69eeb41ec8bf741e32437f77d2ec69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129369661"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225026"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してパブリック IP アドレスを作成する
 
@@ -72,7 +72,7 @@ ms.locfileid: "129369661"
 > [!NOTE]
 > [Availability Zones](../../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) があるリージョンでは、ゾーンなし (既定のオプション)、特定のゾーン、またはゾーン冗長を選択できます。 この選択は、特定のドメイン障害要件によって異なる場合があります。 Availability Zones がないリージョンでは、このフィールドは表示されません。 </br> 可用性ゾーンの詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページを参照してください。
 
-上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](../../virtual-network/associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
+上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](./associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-public-ip-basic)
 
@@ -114,7 +114,7 @@ ms.locfileid: "129369661"
 
 # <a name="routing-preference"></a>[**ルーティングの優先順位**](#tab/option-1-create-public-ip-routing-preference)
 
-このセクションでは、パブリック IP アドレスに対して ISP ネットワーク ( **[インターネット]** オプション) を介した[ルーティングの優先順位](routing-preference-overview.md)を構成する方法について示します。 パブリック IP アドレスを作成すると、次の Azure リソースに関連付けることができます。
+このセクションでは、パブリック IP アドレスに対して ISP ネットワーク ( **[インターネット]** オプション) を介した [ルーティングの優先順位](routing-preference-overview.md)を構成する方法について示します。 パブリック IP アドレスを作成すると、次の Azure リソースに関連付けることができます。
 
 * 仮想マシン
 * 仮想マシン スケール セット
@@ -163,7 +163,7 @@ ms.locfileid: "129369661"
 > [!NOTE]
 > [Availability Zones](../../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) があるリージョンでは、ゾーンなし (既定のオプション)、特定のゾーン、またはゾーン冗長を選択できます。 この選択は、特定のドメイン障害要件によって異なる場合があります。 Availability Zones がないリージョンでは、このフィールドは表示されません。 </br> 可用性ゾーンの詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページを参照してください。
 
-上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](../../virtual-network/associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
+上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](./associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
 
 # <a name="tier"></a>[**階層**](#tab/option-1-create-public-ip-tier)
 

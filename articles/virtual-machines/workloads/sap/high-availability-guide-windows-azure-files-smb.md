@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/13/2021
 ms.author: stmuelle
-ms.openlocfilehash: d1e01f51d4d83254031407a125c3578fb3feb718
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 458c63f27e9e17d71b9af97eda0de56f8f935a25
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594428"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251359"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-files-premium-smb-for-sap-applications"></a>SAP アプリケーションのための Azure Files Premium SMB を使用した Windows 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -58,7 +58,7 @@ Active Directory 統合を使用した Azure Files Premium SMB への SAP NetWea
 * SAP サーバーは Active Directory ドメインに参加している必要があります。
 * SAP サーバーが含まれる Active Directory ドメインは、Azure AD Connect を使用してAzure Active Directory にレプリケートされる必要があります。
 * ExpressRoute を使用してオンプレミスのドメイン コントローラーに接続する必要がないように、Azure 環境内に少なくとも 1 つの Active Directory ドメイン コントローラーを配置することを強くお勧めします。
-* Azure サポート チームは、[Active Directory 統合](/azure/storage/files/storage-files-identity-auth-active-directory-enable#videos)のドキュメントで Azure Files SMB を確認する必要があります。 *このビデオでは、簡略化の理由から変更 (DNS) およびスキップ (DFS-N) された追加の構成オプションが示されています。* それでも、これらは有効な構成オプションです。 
+* Azure サポート チームは、[Active Directory 統合](../../../storage/files/storage-files-identity-auth-active-directory-enable.md#videos)のドキュメントで Azure Files SMB を確認する必要があります。 *このビデオでは、簡略化の理由から変更 (DNS) およびスキップ (DFS-N) された追加の構成オプションが示されています。* それでも、これらは有効な構成オプションです。 
 * Azure Files PowerShell スクリプトを実行するユーザーは、Active Directory にオブジェクトを作成するアクセス許可を持っている必要があります。
 * **SWPM バージョン 1.0 SP32 および SWPM 2.0 SP09 以降が必要です。SAPInst のパッチは 749.0.91 以降である必要があります。**
 * スクリプトが実行される Windows Server に、PowerShell の最新リリースをインストールする必要があります。 
@@ -85,7 +85,7 @@ Active Directory 統合を使用した Azure Files Premium SMB への SAP NetWea
      1. 適切なサイズで **sapmnt** ファイル共有を作成します。  推奨されるサイズは 256 GB で、650 IOPS、75 MB/秒のエグレス、50 MB/秒のイングレスが提供されます。
          ![create-storage-account-5](media/virtual-machines-shared-sap-high-availability-guide/create-sa-5.png)SMB 共有の定義に関する Azure portal のスクリーンショット。 
       
-     1. [Azure Files の GitHub](/azure/storage/files/storage-files-identity-ad-ds-enable#download-azfileshybrid-module) コンテンツをダウンロードして、[スクリプト](/azure/storage/files/storage-files-identity-ad-ds-enable#run-join-azstorageaccountforauth)を実行します。   
+     1. [Azure Files の GitHub](../../../storage/files/storage-files-identity-ad-ds-enable.md#download-azfileshybrid-module) コンテンツをダウンロードして、[スクリプト](../../../storage/files/storage-files-identity-ad-ds-enable.md#run-join-azstorageaccountforauth)を実行します。   
      このスクリプトにより、コンピューター アカウントまたはサービス アカウントが Active Directory に作成されます。  スクリプトを実行するユーザーには、次のプロパティが必要です。 
          * スクリプトを実行するユーザーには、SAP サーバーが含まれる Active Directory ドメインにオブジェクトを作成するためのアクセス許可が必要です。 通常は、 **SAPCONT_ADMIN@SAPCONTOSO.local** のようなドメイン管理者アカウントが使用されます 
          * スクリプトを実行する前に、この Active Directory ドメイン ユーザー アカウントが Azure Active Directory (AAD) と同期していることを確認します。  たとえば、Azure portal を開き、AAD ユーザーに移動して、ユーザー **SAPCONT_ADMIN@SAPCONTOSO.local** が存在することを確認し、AAD ユーザー アカウント **SAPCONT_ADMIN@SAPCONTOSO.onmicrosoft.com** を確認します。

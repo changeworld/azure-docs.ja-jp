@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: fd666c51042811a8008657d965d629d1b17848f4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: 67db47b85791437eb39633ecda7b86cd33ebd21d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571275"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235717"
 ---
 # <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>Machine Learning スタジオ (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
 

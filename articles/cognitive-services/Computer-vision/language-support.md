@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 684af3b73d9e7b56db5cc5d077510727bed89618
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: f2ded17ed86a550ca781fbad792e89bfc4d7809d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044518"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215936"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -119,7 +119,7 @@ Read でサポートされる手書きの言語の一覧を次の表に示しま
 |コリャーク語 |`kpy`|✅ プレビュー | |
 |コスラエ語 |`kos`|✅ プレビュー | |
 |クムク語 (キリル) |`kum`|✅ プレビュー | |
-|クルド語 (ラテン文字)| `kur` |✅ | |
+|クルド語 (ラテン文字)| `ku` |✅ | |
 |キルギス語 (キリル) |`ky`|✅ プレビュー | |
 |ラコタ語 |`lkt`|✅ プレビュー | |
 |ラテン語|`la`|✅ プレビュー | |
@@ -154,13 +154,13 @@ Read でサポートされる手書きの言語の一覧を次の表に示しま
 |セルビア語 (ラテン) | `sr-latn` | ✅ プレビュー |✅ |
 |スコルト サーミ語|`sms`|✅ プレビュー | |
 |スロバキア語 | `sk` | ✅ プレビュー |✅ |
-|スロベニア語  | `slv` | ✅ ||
+|スロベニア語  | `sl` | ✅ ||
 |南部サーミ語|`sma`|✅ プレビュー | |
 |スペイン語 | `es` |✅ |✅ |
 |スワヒリ語 (ラテン)  | `sw` |✅ | |
 |スウェーデン語 | `sv` |✅ |✅ |
 |タジク語 (キリル)|`tg`|✅ プレビュー | |
-|タタール語 (ラテン)  | `tat` | ✅ |
+|タタール語 (ラテン)  | `tt` | ✅ |
 |テトゥン語    | `tet` |✅ |  |
 |トンガ語|`to`|✅ プレビュー | |
 |トルコ語 | `tr` |✅ | ✅ |

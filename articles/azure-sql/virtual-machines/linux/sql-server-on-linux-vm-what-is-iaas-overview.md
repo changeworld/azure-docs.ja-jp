@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ba3c22d28bba80e41d3f0cae1b6f22b368f80d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e303c886e1cecb0306849c96da966bc8614eccc2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733321"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264981"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ SQL Server on Linux を構成するときには、データベース エンジ�
 ### <a name="networking"></a>ネットワーク
 
 * [仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)
-* [Azure 内の IP アドレス](../../../virtual-network/public-ip-addresses.md)
+* [Azure 内の IP アドレス](../../../virtual-network/ip-services/public-ip-addresses.md)
 * [Azure Portal での完全修飾ドメイン名の作成](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL

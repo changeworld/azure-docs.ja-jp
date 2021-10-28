@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: a132b97822b9c4ca8f6f14b0b45cebc2775fdc86
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 94cf343ae8b8f55aa20b6ac4f25949e571ed6aa8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291093"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258660"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer の最新情報
 
@@ -31,12 +31,12 @@ Azure Load Balancer は定期的に更新されます。 最新のお知らせ�
 | ------ |---------|---------|---------|
 | 特徴量 | [IP ベースのバックエンド プールのサポート (一般提供)](https://azure.microsoft.com/updates/iplbga/) | Azure Load Balancer では、IPv4 または IPv6 アドレスを使用したバックエンド プールのリソースの追加と削除がサポートされます。 これにより、Load Balancer に関連付けられたコンテナー、仮想マシン、および仮想マシン スケール セットを簡単に管理できるようになります。 また、関連付けられたリソースが作成される前に、バックエンド プールの一部として IP アドレスを予約することもできます。 詳しくは[こちら](backend-pool-management.md)をご覧ください|2021 年 3 月 |
 | 機能 | [Standard SKU Load Balancers とパブリック IP のインスタンス メタデータ サポート](https://azure.microsoft.com/updates/standard-load-balancer-and-ip-addresses-metadata-now-available-through-azure-instance-metadata-service-imds/)|Standard のパブリック IP アドレスと Standard のロード バランサーのメタデータは、Azure Instance Metadata Service (IMDS) から取得できるようになりました。 このメタデータは、仮想マシン (VM) インスタンスと仮想マシン スケール セット (VMSS) インスタンスの実行中インスタンス内から利用できます。 このメタデータを活用し、仮想マシンを管理できます。 詳しくは[こちら](instance-metadata-service-load-balancer.md)をご覧ください| 2021 年 2 月 |
-| 機能 | [IP アドレスを失うことなく、パブリック IP SKU を Basic から Standard にアップグレードする](https://azure.microsoft.com/updates/public-ip-sku-upgrade-generally-available/) | Basic から Standard のロード バランサーに移行するとき、パブリック IP アドレスを保持します。 詳しくは[こちら](../virtual-network/public-ip-upgrade-portal.md)をご覧ください| 2021 年 1 月|
+| 機能 | [IP アドレスを失うことなく、パブリック IP SKU を Basic から Standard にアップグレードする](https://azure.microsoft.com/updates/public-ip-sku-upgrade-generally-available/) | Basic から Standard のロード バランサーに移行するとき、パブリック IP アドレスを保持します。 詳しくは[こちら](../virtual-network/ip-services/public-ip-upgrade-portal.md)をご覧ください| 2021 年 1 月|
 | 特徴量 | リソース グループ間の移動のサポート | Standard Load Balancer および Standard パブリック IP は、[リソース グループの移動](https://azure.microsoft.com/updates/standard-resource-group-move/)をサポートしています。 | 2020 年 10 月 |
-| 機能| Azure Monitor を使用した Azure Load Balancer の分析情報 | Azure Monitor for Networks の一部として構築された、すべての Load Balancer 構成のトポロジ・マップと事前にメトリックを使用して構成された Standard Load Balancer 用の正常性ダッシュボードを Azure portal で利用できます。 [詳細を確認して作業を開始する](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
+| 特徴量| Azure Monitor を使用した Azure Load Balancer の分析情報 | Azure Monitor for Networks の一部として構築された、すべての Load Balancer 構成のトポロジ・マップと事前にメトリックを使用して構成された Standard Load Balancer 用の正常性ダッシュボードを Azure portal で利用できます。 [詳細を確認して作業を開始する](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
 | 検証 | HA ポートの検証の追加 | Floating IP が有効になっているときにのみ、HA ポート ルールと非 HA ポート ルールを確実に構成できるようにする検証が追加されました。 以前は、この構成をしても意図どおりに機能しませんでした。 機能は変更されていません。 詳細については、[こちら](load-balancer-ha-ports-overview.md#limitations)を参照してください。| 2020 年 6 月 |
-| 機能| Azure Load Balancer の IPv6 サポート (一般公開) | Azure Load Balancer のフロントエンドとして IPv6 アドレスを使用できます。 [こちらでデュアル スタック アプリケーションの作成](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)方法について説明します。 |2020 年 4 月|
-| 機能| アイドル タイムアウト時の TCP リセット (一般公開)| TCP リセットを使用して、アプリケーションの動作をより予測可能にします。 [詳細情報](load-balancer-tcp-reset.md)| 2020 年 2 月 |
+| 特徴量| Azure Load Balancer の IPv6 サポート (一般公開) | Azure Load Balancer のフロントエンドとして IPv6 アドレスを使用できます。 [こちらでデュアル スタック アプリケーションの作成](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)方法について説明します。 |2020 年 4 月|
+| 特徴量| アイドル タイムアウト時の TCP リセット (一般公開)| TCP リセットを使用して、アプリケーションの動作をより予測可能にします。 [詳細情報](load-balancer-tcp-reset.md)| 2020 年 2 月 |
 
 ## <a name="known-issues"></a>既知の問題
 

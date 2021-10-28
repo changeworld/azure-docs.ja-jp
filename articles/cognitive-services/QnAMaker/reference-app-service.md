@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: 7a24045d38b594e09b931a885c60851109a108e3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fe949aef996169f6993623fa9c4716a602f32e93
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372690"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260343"
 ---
 # <a name="service-configuration"></a>サービス構成
 
@@ -40,7 +40,7 @@ QnA Maker は、App Service を使用して、[generateAnswer API](/rest/api/cog
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-App Service のカスタマイズは、Custom question answering (プレビュー) には適用されません。
+App Service のカスタマイズは、カスタム質問と回答 (プレビュー) には適用されません。
 
 ---
 
@@ -48,7 +48,7 @@ App Service のカスタマイズは、Custom question answering (プレビュ�
 
 QnA Maker サービスには、次のユーザーが 1 つの QnA Maker サービスとそのすべてのナレッジベースで共同作業するための構成があります。
 
-お使いのサービスに[コラボレーターを追加する方法](./reference-role-based-access-control.md)を確認してください。
+お使いのサービスに[コラボレーターを追加する方法](./index.yml)を確認してください。
 
 ## <a name="change-azure-cognitive-search"></a>Azure Cognitive Search を変更する
 
@@ -66,7 +66,7 @@ Application Insights は、QnA Maker GA でテレメトリを監視するため�
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-[テレメトリを Custom question answering (プレビュー) サービスに追加する方法](How-To/get-analytics-knowledge-base.md)を知る。 
+[カスタム質問と回答 (プレビュー) サービスにテレメトリを追加する方法](How-To/get-analytics-knowledge-base.md)を説明します。 
 
 ---
 
@@ -78,7 +78,7 @@ App Service プランには、QnA Maker に固有の構成設定はありませ�
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-App Service Plan は Custom question answering (プレビュー) には使用しません。
+App Service プランは、カスタム質問と回答 (プレビュー) では使用されません。
 
 ---
 

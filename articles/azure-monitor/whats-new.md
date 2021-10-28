@@ -3,12 +3,12 @@ title: Azure Monitor のドキュメントの最新情報
 description: Azure Monitor のドキュメントの最新情報
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 735c94026695e6eb89005c6e1bbc4bbdbe46f64b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 3c7a433ed3c13e7853cab9a72bdd6b7a447bb3a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178692"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219891"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -19,7 +19,7 @@ ms.locfileid: "130178692"
 
 **更新された記事**
 
-- [Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)
+- [Azure Policy を使用して大規模に Azure Monitor をデプロイする](./best-practices.md)
 - [Azure Monitor パートナーとの統合](partners.md)
 - [Azure Monitor 用の Resource Manager テンプレートのサンプル](resource-manager-samples.md)
 - [Azure Monitor でのロール、アクセス許可、セキュリティ](roles-permissions-security.md)
@@ -173,7 +173,7 @@ ms.locfileid: "130178692"
 **更新された記事**
 
 - [Azure Monitor についてよくあるご質問](faq.yml)
-- [Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)
+- [Azure Policy を使用して大規模に Azure Monitor をデプロイする](./best-practices.md)
 
 ### <a name="agents"></a>エージェント
 
@@ -349,4 +349,3 @@ ms.locfileid: "130178692"
 
 - [VM insights のゲストの正常性 (プレビュー) のトラブルシューティング](vm/vminsights-health-troubleshoot.md)
 - [VM Insights のブックを使用して対話型レポートを作成する](vm/vminsights-workbooks.md)
-

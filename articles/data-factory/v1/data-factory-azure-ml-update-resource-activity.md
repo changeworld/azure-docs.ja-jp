@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: 2d1cd9053f5be915015653e1b522e82eff7b978c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: 359b86861326cc2d0f375c95db54142c6da2fd12
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571237"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243868"
 ---
 # <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>更新リソース アクティビティを使用した ML Studio (クラシック) モデルの更新
 
@@ -48,7 +48,7 @@ ms.locfileid: "128571237"
 
 次の図は、ML Studio (クラシック) でのトレーニングとスコア付けのエンドポイントの関係を示しています。
 
-:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="Web サービス":::
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="[Web サービス]":::
 
 **ML Studio (クラシック) の Batch Execution アクティビティ** を使用して、**トレーニング Web サービス** を呼び出すことができます。 トレーニング Web サービスを呼び出す方法は、データのスコア付け用 ML Studio (クラシック) Web サービス (スコア付け Web サービス) を呼び出す場合と同じです。 前のセクションで、Azure Data Factory パイプラインから ML Studio (クラシック) Web サービスを呼び出す方法について詳しく説明しています。 
 

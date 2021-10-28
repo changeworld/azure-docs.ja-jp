@@ -3,12 +3,12 @@ title: Grafana を使用して Azure のサービスとアプリケーション�
 description: Grafana で表示できるように Azure Monitor および Application Insights データをルーティングします。
 ms.topic: conceptual
 ms.date: 10/10/2021
-ms.openlocfilehash: 691ba341369778692c92fec8ffc47cd60fac3348
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 612a65af3cfe83b96e2604d85348be03ff2b703a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002759"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252784"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Grafana](https://grafana.com/) とそれに含まれる [Azure Monitor データ ソース プラグイン](https://grafana.com/docs/grafana/latest/datasources/azuremonitor/)を使用して、Azure のサービスとアプリケーションを監視できます。 このプラグインにより、3 つの Azure サービスからデータが取得されます。
@@ -72,7 +72,7 @@ Grafana インスタンスが、マネージド ID を有効にして Azure VM �
 ### <a name="use-managed-identity"></a>マネージド ID の使用
 
 1. VM でマネージド ID を有効にし、Grafana サーバーでのマネージド ID のサポートの設定を true に変更します。
-    * ホスティング VM のマネージド ID には、Grafana で視覚化するサブスクリプション、リソース グループ、またはリソースに対する[監視閲覧者ロール](/azure/azure-monitor/roles-permissions-security)を割り当てる必要があります。
+    * ホスティング VM のマネージド ID には、Grafana で視覚化するサブスクリプション、リソース グループ、またはリソースに対する[監視閲覧者ロール](../roles-permissions-security.md)を割り当てる必要があります。
     * また、Grafana サーバーの構成で "managed_identity_enabled = true" の設定を更新する必要があります。詳細については、[Grafana の構成](https://grafana.com/docs/grafana/latest/administration/configuration/)に関する記事を参照してください。 両方の手順が完了したら、保存してアクセスをテストできます。
 
 2. **[保存 & テスト]** を選択すると、Grafana によって資格情報がテストされます。 次のようなメッセージが表示されます。  
@@ -82,8 +82,8 @@ Grafana インスタンスが、マネージド ID を有効にして Azure VM �
 ### <a name="or-use-app-registration"></a>またはアプリの登録を使用する
 
 1. サービス プリンシパルを作成します。Grafana では、Azure Active Directory サービス プリンシパルを使用して Azure Monitor API に接続してメトリック データを収集します。 Azure リソースへのアクセスを管理するには、サービス プリンシパルを作成するか、既存のものを使用する必要があります。
-    * サービス プリンシパルを作成するには、[この手順](/azure/active-directory/develop/howto-create-service-principal-portal)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
-    * [アプリケーションへのロールの割り当て](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに[監視閲覧者ロール](/azure/azure-monitor/roles-permissions-security)を割り当てます。
+    * サービス プリンシパルを作成するには、[この手順](../../active-directory/develop/howto-create-service-principal-portal.md)を参照してください。 ご自分のテナント ID (ディレクトリ ID)、クライアント ID (アプリケーション ID)、およびクライアント シークレット (アプリケーション キー値) をコピーして保存します。
+    * [アプリケーションへのロールの割り当て](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)に関する記事を参照して、監視するサブスクリプション内の Azure Active Directory アプリケーション、リソース グループ、またはリソースに[監視閲覧者ロール](../roles-permissions-security.md)を割り当てます。
   
 2. 使用する接続の詳細を指定します。
     * プラグインを構成するときに、このプラグインで監視する Azure クラウド (パブリック、Azure US Government、Azure Germany、または Azure China) を指定できます。
@@ -133,7 +133,7 @@ Azure Monitor プラグインに含まれる複数のダッシュボードをイ
 
      ![Grafana での Azure Log Analytics 用のグラフの構成](./media/grafana-plugin/logs-config.png)
 
-    * 上に示したメトリックとログのクエリに加えて、Azure Monitor プラグインでは、[Azure Resource Graph](/azure/governance/resource-graph/concepts/explore-resources) のクエリがサポートされています。
+    * 上に示したメトリックとログのクエリに加えて、Azure Monitor プラグインでは、[Azure Resource Graph](../../governance/resource-graph/concepts/explore-resources.md) のクエリがサポートされています。
 
 ## <a name="advanced-grafana-features"></a>Grafana の高度な機能
 

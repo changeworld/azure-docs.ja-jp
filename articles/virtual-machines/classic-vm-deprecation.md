@@ -9,18 +9,18 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 253433c98ce2da8e69fadf82ff9e5902e5a990ef
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 93b66a1cd8aa6f39cd12284d0a7bd3234d9b8ef5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542235"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225067"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023 年 3 月 1 日までに IaaS リソースを Azure Resource Manager に移行する 
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
-2014 年に、[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) でサービスとしてのインフラストラクチャ (IaaS) を開始しました。 それ以降、機能を強化し続けてきました。 Azure Resource Manager には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に [Azure Service Manager](/azure/virtual-machines/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) を介した IaaS 仮想マシン (VM) の管理を非推奨にしました。 この機能は、2023 年 3 月 1 日に完全に廃止される予定です。 
+2014 年に、[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) でサービスとしてのインフラストラクチャ (IaaS) を開始しました。 それ以降、機能を強化し続けてきました。 Azure Resource Manager には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に [Azure Service Manager](./migration-classic-resource-manager-faq.yml) (ASM) を介した IaaS 仮想マシン (VM) の管理を非推奨にしました。 この機能は、2023 年 3 月 1 日に完全に廃止される予定です。 
 
 現在、IaaS VM の約 90% で Azure Resource Manager が使用されています。 ASM を介して IaaS リソースを使用している場合は、今すぐ移行の計画を開始してください。 [Azure Resource Manager](../azure-resource-manager/management/index.yml) を利用するには、2023 年 3 月 1 日までに完了してください。
 

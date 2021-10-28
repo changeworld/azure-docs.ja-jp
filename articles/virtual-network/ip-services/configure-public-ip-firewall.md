@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f520b992e018b41a8adf99b87202975a4a2edd38
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a6f86fcf24316a24c36d0d42dfff4cef0c3ccaf3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367738"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217432"
 ---
 # <a name="manage-a-public-ip-address-with-azure-firewall"></a>Azure Firewall でパブリック IP アドレスを管理する
 
@@ -25,7 +25,7 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 3 つの Standard SKU パブリック IP アドレス。 IP アドレスはどのリソースにも関連付けることはできません。 Standard SKU のパブリック IP アドレスの作成について詳しくは、[Azure portal を使用してパブリック IP アドレスを作成する](../../virtual-network/create-public-ip-portal.md)方法に関するページを参照してください。
+- サブスクリプション内の 3 つの Standard SKU パブリック IP アドレス。 IP アドレスはどのリソースにも関連付けることはできません。 Standard SKU のパブリック IP アドレスの作成について詳しくは、[Azure portal を使用してパブリック IP アドレスを作成する](./create-public-ip-portal.md)方法に関するページを参照してください。
     - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1**、**myStandardPublicIP-2**、**myStandardPublicIP-3** という名前を付けます。
 
 ## <a name="create-azure-firewall-existing-public-ip"></a>Azure Firewall の既存のパブリック IP を作成する
@@ -121,5 +121,5 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 この記事では、Azure ファイアウォールを作成し、既存のパブリック IP を使用する方法について説明しました。 既定の IP 構成のパブリック IP を変更しました。 最後に、パブリック IP 構成をファイアウォールに追加しました。
 
-- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。
 - Azure Firewall の詳細については、「[Azure Firewall とは](../../firewall/overview.md)」を参照してください。

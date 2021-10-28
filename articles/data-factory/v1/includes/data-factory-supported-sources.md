@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: include
-ms.date: 11/19/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 6f3af8c4efa31a8d82a6a8e42d3cdcf2b2159b23
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1720542986d5597537bd652fedf6881bbdeda412
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554125"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223896"
 ---
 |カテゴリ | データ ストア |  
 | :-------- | :----- |  

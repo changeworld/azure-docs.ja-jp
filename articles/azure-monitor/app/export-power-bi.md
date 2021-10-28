@@ -3,12 +3,12 @@ title: Azure Application Insights から Power BI にエクスポートする | 
 description: Power BI で Analytics クエリを表示できます。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e0644a083021956316595d299a69a69b321a87d9
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0d1c5d58b668a23618b482bbc3ce82897ad760dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164131"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256971"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 
@@ -17,7 +17,7 @@ ms.locfileid: "108164131"
 Application Insights のデータを Power BI にエクスポートする場合、3 つの方法があります。
 
 * [**Analytics クエリのエクスポート**](#export-analytics-queries)。 可能であればこの方法の使用をお勧めします。 必要なクエリを作成し、Power BI にエクスポートします。 このクエリは、他のデータと共にダッシュボードに配置できます。
-* [**連続エクスポートと Azure Stream Analytics**](./export-stream-analytics.md)。 この方法は、データを長期間保存する必要がある場合に便利です。 長期にわたるデータ保有要件がない場合は、Analytics クエリのエクスポートの方法を使用します。 連続エクスポートと Stream Analytics では、多くの設定作業と追加のストレージ オーバーヘッドが必要になります。
+* [**連続エクスポートと Azure Stream Analytics**](../../stream-analytics/app-insights-export-stream-analytics.md)。 この方法は、データを長期間保存する必要がある場合に便利です。 長期にわたるデータ保有要件がない場合は、Analytics クエリのエクスポートの方法を使用します。 連続エクスポートと Stream Analytics では、多くの設定作業と追加のストレージ オーバーヘッドが必要になります。
 * **Power BI アダプター**。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
 
 > [!NOTE]

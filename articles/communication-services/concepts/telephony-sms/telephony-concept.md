@@ -9,18 +9,18 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: pstn
-ms.openlocfilehash: 66e39f0ec9beea775c18f0c1619cc8517e9b80a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9cda3c4f91c3e70d19c33d4fa06343d26f6ff6ee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609652"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218998"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure Communication Services の Calling SDK を使用すると、アプリケーションにテレフォニーと公衆交換電話網のアクセスを追加することができます。 このページには、テレフォニーの主な概念と機能がまとめられています。 具体的な SDK の言語と機能の詳細については、[通話ライブラリ](../../quickstarts/voice-video-calling/calling-client-samples.md)に関するページを参照してください。
+Azure Communication Services の Calling SDK を使用すると、アプリケーションにテレフォニーと公衆交換電話網のアクセスを追加することができます。 このページには、テレフォニーの主な概念と機能がまとめられています。 具体的な SDK の言語と機能の詳細については、[通話ライブラリ](../../quickstarts/voice-video-calling/getting-started-with-calling.md)に関するページを参照してください。
 
 ## <a name="overview-of-telephony"></a>テレフォニーの概要
 ユーザーが従来の電話番号を使用して対話すると、通話は常に PSTN (公衆交換電話網) 音声通話によって行われます。 PSTN 通話を発信および受信するには、Azure Communication Services リソースにテレフォニー機能を追加する必要があります。 この場合、信号とメディアでは、ユーザーを接続するために、IP ベースおよび PSTN ベースのテクノロジが組み合わされて使用されます。 Communication Services には、PSTN ネットワークに接続するための 2 つの異なる方法として、音声通話 (PSTN) と Azure 直接ルーティングが用意されています。

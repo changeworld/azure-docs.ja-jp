@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e3472393587fe117e342bbc1dce5d990520760d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7b7efadd5be8d6b956b662b643510d657d82bbcc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651220"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249839"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -30,7 +30,7 @@ ms.locfileid: "128651220"
 > [!IMPORTANT]
 > この Web コネクタは、現在、HTML ページからのテーブル コンテンツの抽出のみをサポートしています。 HTTP エンドポイントからデータを取得するには、代わりに [HTTP コネクタ](data-factory-http-connector.md)を使用します。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 この Web テーブル コネクタを使用するには、セルフホステッド Integration Runtime (Data Management Gateway) を設定し、シンクのリンクされたサービスで `gatewayName` プロパティを構成する必要があります。 たとえば、Web テーブルから Azure Blob Storage にコピーするには、次のように Azure Storage のリンクされたサービスを構成します。
 

@@ -10,12 +10,12 @@ author: ma77b
 ms.author: maburd
 ms.reviewer: wiassaf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fae1b6a6d2c9e697a55bbacaa11aa2736970d5a5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6144afdca350e8e7ff609eec273f84a39b84d2a3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002892"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228489"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
@@ -42,7 +42,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
 
 データベースを作成するセキュリティ プリンシパルは、そのデータベースの所有者と見なされ、データベースとそのオブジェクトに対するすべての権限を持ちます。 また、Synapse 管理者と Synapse SQL 管理者も、既定でサーバーレス SQL プール内の同期されたオブジェクトに対するすべてのアクセス許可を持ちます。 同期された SQL データベースにカスタム オブジェクト (ユーザーを含む) を作成することはできません。 
 
-セキュリティ プリンシパル (ユーザー、Azure AD アプリまたはセキュリティ グループなど) に、外部テーブルに使用される基になるデータへのアクセス権を付与するには、ルートまでのすべての親フォルダーに対して、ファイル (テーブルの基になるデータファイルなど) への `read (R)` アクセス許可と、ファイルが格納されるフォルダーへの `execute (X)` アクセス許可を付与する必要があります。 これらのアクセス許可の詳細については、[アクセス制御リスト (ACL)](/azure/storage/blobs/data-lake-storage-access-control) に関するページを参照してください。 
+セキュリティ プリンシパル (ユーザー、Azure AD アプリまたはセキュリティ グループなど) に、外部テーブルに使用される基になるデータへのアクセス権を付与するには、ルートまでのすべての親フォルダーに対して、ファイル (テーブルの基になるデータファイルなど) への `read (R)` アクセス許可と、ファイルが格納されるフォルダーへの `execute (X)` アクセス許可を付与する必要があります。 これらのアクセス許可の詳細については、[アクセス制御リスト (ACL)](../../storage/blobs/data-lake-storage-access-control.md) に関するページを参照してください。 
 
 たとえば、`https://<storage-name>.dfs.core.windows.net/<fs>/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/` では、セキュリティ プリンシパルは `<fs>` から `myparquettable` で始まるすべてのフォルダーに対する `X` アクセス許可と、`myparquettable` フォルダーとそのフォルダー内のファイルに対する `R` アクセス許可を持つ必要があります。これにより、(同期された、または元の) データベース テーブルを読み取ることができるようになります。
 

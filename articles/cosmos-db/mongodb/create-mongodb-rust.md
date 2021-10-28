@@ -8,18 +8,19 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 08/26/2021
-ms.openlocfilehash: 8fab3b577177c66e8999c5e7c594b165a310276a
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 4831c5f695baf923b5e687c3e3c0649262a9e361
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033698"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233001"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>クイックスタート: Azure Cosmos DB の MongoDB 用 API に Rust アプリケーションを接続する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
+> * [Python](create-mongodb-python.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Xamarin](create-mongodb-xamarin.md)
@@ -45,7 +46,7 @@ Azure Cosmos DB アカウントを設定するには、[こちらの手順](crea
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-次のコマンドを実行して、サンプル リポジトリを複製します。
+次のコマンドを実行して、サンプル リポジトリをクローンします。
 
 1. コマンド プロンプトを開いて `git-samples` という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -59,7 +60,7 @@ Azure Cosmos DB アカウントを設定するには、[こちらの手順](crea
     cd "C:\git-samples"
     ```
 
-1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
+1. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/cosmosdb-rust-mongodb-quickstart
@@ -322,8 +323,8 @@ fn delete_todo(self, todo_id: &str) {
 このクイックスタートでは、Azure Cloud Shell を使用して Azure Cosmos DB MongoDB API アカウントを作成し、Rust のコマンドライン アプリを作成、実行して `todo` を管理する方法について説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。
 
 Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-* 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+* 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](../../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

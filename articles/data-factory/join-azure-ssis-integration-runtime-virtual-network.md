@@ -8,12 +8,12 @@ ms.date: 07/16/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 023b6898b5ba7d7d5b457f1e0f9c9051d74a1126
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: c89dd88c7163f74abb9246d57d72c485c1ed7efc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399776"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218884"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -70,7 +70,7 @@ SSIS パッケージで、[仮想ネットワーク サービス エンドポイ
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>IP ファイアウォール規則によって保護されているデータ ソースへのアクセス
 
-SSIS パッケージで、特定の静的パブリック IP アドレスのみを許可するデータ ストアおよびリソースにアクセスするときに、Azure-SSIS IR からのそれらのリソースへのアクセスをセキュリティで保護する必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させながら[パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)を関連付け、それらの IP アドレスからのアクセスを許可するために関連するリソースに IP ファイアウォール規則を追加することができます。 これを行うには、次の 2 つの方法があります。 
+SSIS パッケージで、特定の静的パブリック IP アドレスのみを許可するデータ ストアおよびリソースにアクセスするときに、Azure-SSIS IR からのそれらのリソースへのアクセスをセキュリティで保護する必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させながら[パブリック IP アドレス](../virtual-network/ip-services/virtual-network-public-ip-address.md)を関連付け、それらの IP アドレスからのアクセスを許可するために関連するリソースに IP ファイアウォール規則を追加することができます。 これを行うには、次の 2 つの方法があります。 
 
 - Azure-SSIS IR を作成するときに、独自のパブリック IP アドレスを使用し、[Azure Data Factory Studio UI](join-azure-ssis-integration-runtime-virtual-network-ui.md) または [Azure PowerShell SDK](join-azure-ssis-integration-runtime-virtual-network-powershell.md) を介して指定することができます。 指定したパブリック IP アドレスが使用されるのは、Azure-SSIS IR の送信インターネット接続のみであり、サブネット内の他のデバイスでは使用されません。
 - サブネットに対して、Azure-SSIS IR を参加させ、このサブネット内のすべての送信接続で指定したパブリック IP アドレスが使用されるように [Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) を設定することもできます。

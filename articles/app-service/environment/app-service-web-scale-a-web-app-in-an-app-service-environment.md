@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 15fd0cccbc5db52de14f3de471519c92645572db
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: acc27352e44b6141196f8f5b0bbccd8d31f255bc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004618"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248661"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Environment v1 内でのアプリのスケーリング
 Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
@@ -69,7 +69,7 @@ App Service 環境の使用を開始するには、[テンプレートから ASE
 [WhatisASE]: app-service-app-service-environment-intro.md
 [ScaleWebapp]: ../manage-scale-up.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
-[CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
+[CreateWebappinASE]: ./using.md
 [Appserviceplans]: ../overview-hosting-plans.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md

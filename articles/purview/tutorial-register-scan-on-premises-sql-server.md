@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0054b41fdf12efa4bbd3f1bf34e66023b7ea2d75
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5fc1369c20130d8c689abe853e321fc1507fa414
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213150"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249573"
 ---
 # <a name="tutorial-register-and-scan-an-on-premises-sql-server"></a>チュートリアル: オンプレミスの SQL Server の登録とスキャン
 
@@ -33,7 +33,7 @@ Azure Purview は、データ ソースに接続することで機密データ�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- アクティブな [Azure Key Vault](../key-vault/certificates/quick-create-portal.md#create-a-vault)。
+- アクティブな [Azure Key Vault](../key-vault/general/quick-create-portal.md)。
 - Azure Purview アカウント。 まだない場合は、[クイック スタート ガイドに従って作成](create-catalog-portal.md)できます。
 - [オンプレミスの SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)。
 

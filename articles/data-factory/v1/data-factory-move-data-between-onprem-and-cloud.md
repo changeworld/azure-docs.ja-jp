@@ -6,14 +6,14 @@ ms.author: abnarain
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: cb3e020f1ac22daa6d0432ad0abaf1aa215d1048
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 90fd10d9ccde297989f6c372562bc088240783a7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580698"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264258"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]

@@ -4,12 +4,12 @@ description: PowerShell を使用した VHD ファイルからの Azure DevTest 
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e0a44b51ae96eca8abef9dd5fc17107264f83b2a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 812a0062caab01131b84465cc67c625b8253469e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675243"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235168"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>PowerShell を使用して VHD ファイルからカスタム イメージを作成する
 
@@ -96,7 +96,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
 
-- [Custom images or formulas? (カスタム イメージか数式か?)](/azure/devtest-labs/devtest-lab-faq#blog-post)
+- [Custom images or formulas? (カスタム イメージか数式か?)](./devtest-lab-faq.yml#blog-post)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>次のステップ

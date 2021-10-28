@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: 397423b0bc86833b9a029c84c0d3e785ffc35049
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 480b88568def6cb2c75a99ad3ee656f8c00a8ea4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671870"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264429"
 ---
 # <a name="call-recording-api-quickstart"></a>Call Recording API クイックスタート
 
@@ -41,5 +41,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [通話のヒーロー サンプル](../../samples/calling-hero-sample.md)を確認する
-- [Calling SDK の機能](./calling-client-samples.md)について確認する
+- [Calling SDK の機能](./getting-started-with-calling.md)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

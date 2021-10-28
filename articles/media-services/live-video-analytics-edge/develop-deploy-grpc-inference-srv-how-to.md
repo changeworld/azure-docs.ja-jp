@@ -3,12 +3,12 @@ title: Live Video Analytics を使用して gRPC 推論サーバーを開発お�
 description: この記事では、Live Video Analytics を使用して gRPC 推論サーバーを開発してデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: d7d636803ac49d78aae78dad256598d9de3e7448
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1e685a4c363a58e19295da8f5d563114db84df9b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371576"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232349"
 ---
 # <a name="develop-and-deploy-a-grpc-inference-server-with-live-video-analytics"></a>Live Video Analytics を使用して gRPC 推論サーバーを開発およびデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "110371576"
 
 * [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス、または Windows マシン。
 * マシンに [Docker がインストール](https://docs.docker.com/desktop/#download-and-install)されている。
-* [IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)がインストールされている。
+* [IoT Edge ランタイム](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)がインストールされている。
 
 ## <a name="grpc-implementation-steps"></a>gRPC の実装手順
 

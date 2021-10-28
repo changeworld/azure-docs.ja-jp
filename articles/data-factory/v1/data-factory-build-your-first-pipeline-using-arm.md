@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 236456ef88609eb98be22c1230f176d8eb06effd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6e7964a0251b7ecc958e8eb60a48c6fb63574a9c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653459"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218828"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
@@ -437,7 +437,7 @@ HDInsight のオンデマンドのリンクされたサービスを定義する�
 * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
 * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
   
-    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
+    処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 

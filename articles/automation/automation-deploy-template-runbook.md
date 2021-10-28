@@ -6,16 +6,16 @@ ms.subservice: process-automation
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61ff25cd9878ee94ce0ba6db7b2c4e4ac8e649de
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 8dd1c0269b9211900a5532e7a0d9e7d119830f68
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057759"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265633"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-automation-powershell-runbook"></a>Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
 
-[Azure Resource Manager テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を使用して、Azure リソースをデプロイする [Automation PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md) を記述できます。 テンプレートを使用すると、Azure Automation を使用して Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を使用して、Azure リソースをデプロイする [Automation PowerShell Runbook](./learn/powershell-runbook-managed-identity.md) を記述できます。 テンプレートを使用すると、Azure Automation を使用して Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
 
 この記事では、[Azure Storage](../storage/common/storage-introduction.md) に格納されている Resource Manager テンプレートを使用して新しい Azure ストレージ アカウントをデプロイする PowerShell Runbook を作成します。
 

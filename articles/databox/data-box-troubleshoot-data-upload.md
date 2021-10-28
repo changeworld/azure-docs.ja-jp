@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 10/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 471d5bff3fa3a4be092f1294f64b0bb8c3fdf9a8
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 019d4da7654c3cdf2eec7fc3b6f2434e1f42cd47
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "129211685"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218168"
 ---
 # <a name="review-copy-errors-in-uploads-from-azure-data-box-and-azure-data-box-heavy-devices"></a>Azure Data Box および Azure Data Box Heavy デバイスからのアップロードのコピー エラーを確認する
 
@@ -159,4 +159,4 @@ Azure portal に、次の通知が表示されます。 エラーはデータ �
 ## <a name="next-steps"></a>次のステップ
 
 - [一般的な REST API のエラーを確認する](/rest/api/storageservices/common-rest-api-error-codes)。
-- [Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md?tabs=in-us-canada-europe#verify-data-upload-to-azure-8)
+- [Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md#verify-data-upload-to-azure)

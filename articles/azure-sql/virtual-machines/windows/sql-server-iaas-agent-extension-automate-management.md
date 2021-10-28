@@ -17,12 +17,12 @@ ms.date: 9/01/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b5a0aa73a2017323657a6e1300bc18775824b1f6
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: e5a122fb23b7ebcfbbbf008dacc675eddf0c3cb0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163733"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247960"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ SQL Server IaaS Agent 拡張機能には、SQL Server VM を管理するため�
 | 機能 | 説明 |
 | --- | --- |
 | **ポータル管理** | [ポータルで管理することができます](manage-sql-vm-portal.md)。このため、すべての SQL Server VM を 1 か所に表示でき、ポータルから SQL 固有の機能を直接有効または無効にすることができます。 <br/> 管理モード: Lightweight および完全|  
-| **自動バックアップ** |VM 上の SQL Server の既定のインスタンスまたは[適切にインストールされた](/azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq#administration)名前付きインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、[Azure 仮想マシンでの SQL Server の自動バックアップ (Resource Manager)](automated-backup-sql-2014.md) に関する記事を参照してください。 <br/> 管理モード: [完全]|
+| **自動バックアップ** |VM 上の SQL Server の既定のインスタンスまたは[適切にインストールされた](./frequently-asked-questions-faq.yml)名前付きインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、[Azure 仮想マシンでの SQL Server の自動バックアップ (Resource Manager)](automated-backup-sql-2014.md) に関する記事を参照してください。 <br/> 管理モード: [完全]|
 | **自動修正** |VM で Windows と SQL Server の重要なセキュリティ更新プログラムを実行できるメンテナンス期間を構成します。こうすることで、ワークロードのピーク時に更新が実行されるのを回避できます。 詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)](automated-patching.md)」をご覧ください。 <br/> 管理モード: [完全]|
 | **Azure Key Vault の統合** |SQL Server VM に Azure Key Vault を自動的にインストールして構成できます。 詳細については、「[Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)](azure-key-vault-integration-configure.md)」をご覧ください。 <br/> 管理モード: [完全]|
 | **ポータルでディスク使用率を表示する** | Azure portal 内の SQL データ ファイルのディスク使用率をグラフィカルに表示できます。  <br/> 管理モード: [完全] | 

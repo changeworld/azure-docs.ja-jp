@@ -3,14 +3,14 @@ title: 独自のモデルを使用してライブ ビデオを分析する - HTT
 description: このクイック スタートでは、Video Analyzer を使用して独自のモデル (HTTP) でライブ ビデオを分析する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 09/10/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: a587191a0e5fd80174b3d288d1a9a1d8fd1d2e82
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: f771bdb457fee24d11a56abc09e35a0ba8d21d06
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605224"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239204"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>クイック スタート:独自のモデルを使用してライブ ビデオを分析する - HTTP
 
@@ -284,4 +284,4 @@ HTTP 拡張プロセッサ ノードは、yolov3 モジュールから推論の�
 上級ユーザー向けのその他の課題を確認します。
 
 - RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで検索できます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-- Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge.md?view=iotedge-2018-06&preserve-view=true)に関するページの手順を参照できます。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md?view=iotedge-2018-06&preserve-view=true)」の手順に従って、デバイスを Azure IoT Hub に登録します。
+- Azure Linux VM ではなく、AMD64 または x64 Linux デバイスを使用してください。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-provision-single-device-linux-symmetric.md?view=iotedge-2018-06&preserve-view=true)に関するページの手順を参照できます。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md?view=iotedge-2018-06&preserve-view=true)」の手順に従って、デバイスを Azure IoT Hub に登録します。

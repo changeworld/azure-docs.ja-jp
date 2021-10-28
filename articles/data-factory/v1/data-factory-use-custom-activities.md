@@ -4,17 +4,17 @@ description: カスタム アクティビティを作成して Azure Data Factor
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: bbf5a61e48a36a3eaa92a8c46e9cf943b8892247
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 178f60c43d24489a80a4fc5424212df762160652
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580643"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249915"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory バージョン 1 パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

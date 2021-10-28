@@ -7,12 +7,12 @@ ms.date: 10/08/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: c81fb82695d534864fa96d8a5bfff9b3cebd4a4e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 29a86a476737df6f5a2787748c5551953984f6b6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705291"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261597"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "129705291"
 
 アプリで最新の更新プログラムを確実に処理できるようにするには、検証ホスト プールを非検証環境のホスト プールとできるだけ類似したものにする必要があります。 ユーザーは、標準環境のホスト プールに接続する場合と同じくらい頻繁に、検証ホスト プールに接続する必要があります。 ホスト プールでのテストを自動化している場合は、検証ホスト プールでの自動テストも含める必要があります。
 
-[診断機能](diagnostics-role-service.md)または [Azure Virtual Desktop のトラブルシューティングの記事](troubleshoot-set-up-overview.md)を使用して、検証ホスト プールでの問題をデバッグできます。
+[診断機能](./troubleshoot-set-up-overview.md)または [Azure Virtual Desktop のトラブルシューティングの記事](troubleshoot-set-up-overview.md)を使用して、検証ホスト プールでの問題をデバッグできます。
 
 >[!NOTE]
 > 将来のすべての更新プログラムをテストするために、検証ホスト プールを所定の場所に置いておくことをお勧めします。

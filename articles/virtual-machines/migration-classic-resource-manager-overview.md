@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 51191a8b5e2ad377092e2303c2245caa466f0adc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1d5391d90c4770377a85eb6d78cd8cc30f10ccee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690317"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249212"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行
 
@@ -141,7 +141,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 | Compute |Premium storage を使用したブート診断 |VM のブート診断機能を無効にしてから移行を続行してください。 移行が完了した後に、Resource Manager スタックでブート診断を再び有効にできます。 さらに、スクリーン ショットとシリアル ログに使用されている BLOB を削除する必要があるため、これらの BLOB に対して課金されることはなくなります。 |
 | Compute | 2 つ以上の可用性セット (つまり、複数の可用性セット) を含むクラウド サービス。 |現在これはサポートされていません。 移行前に同じ可用性セットに Virtual Machines を移動してください。 |
 | Compute | Azure Security Center の拡張機能を備えた VM | Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。 サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。 Virtual Machines を移行するには、サブスクリプションでセキュリティ センター ポリシーを無効にします。これにより、Virtual Machines から Security Center の監視拡張機能が削除されます。 |
-| Compute | バックアップまたはスナップショットの拡張機能を備えた VM | これらの拡張機能は、Azure Backup サービスで構成された Virtual Machines にインストールされます。 これらの VM の移行はサポートされていませんが、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](/azure/virtual-machines/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)」のガイダンスに従って、移行前に取得したバックアップを保持してください。  |
+| Compute | バックアップまたはスナップショットの拡張機能を備えた VM | これらの拡張機能は、Azure Backup サービスで構成された Virtual Machines にインストールされます。 これらの VM の移行はサポートされていませんが、「[クラシックから Azure Resource Manager への移行に関してよく寄せられる質問](./migration-classic-resource-manager-faq.yml)」のガイダンスに従って、移行前に取得したバックアップを保持してください。  |
 | Compute | Azure Site Recovery 拡張機能を備えた VM | これらの拡張機能は、Azure Site Recovery サービスが構成された仮想マシンにインストールされます。 Site Recovery で使用されるストレージの移行は機能しますが、現在のレプリケーションに影響があります。 ストレージの移行後、VM のレプリケーションを無効にしてから有効にする必要があります。 |
 | ネットワーク |仮想マシンと Web/worker ロールを含む仮想ネットワーク |現在これはサポートされていません。 移行する前に、Web/ワーカー ロールを独自の仮想ネットワークに移動してください。 従来の仮想ネットワークが移行されると、それ以降、移行された Azure Resource Manager 仮想ネットワークは従来の仮想ネットワークを使ってピアリングされ、以前と同様の構成を実現できます。|
 | ネットワーク | クラシック Express Route 回線 |現在これはサポートされていません。 これらの回線は、IaaS 移行を開始する前に、Azure Resource Manager に移行する必要があります。 詳細については、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../expressroute/expressroute-move.md)」をご覧ください。|

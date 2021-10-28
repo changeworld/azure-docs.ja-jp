@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2021
 ms.author: ryanwi
 ms.reviewer: arcrowe
-ms.openlocfilehash: 35f7694dbdf3d7c4f3065f19dc89bac7d7b1915e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f0594994593dbb9505ca7fea24a11a5c5bc7a4eb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367494"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262795"
 ---
 # <a name="throttling-and-service-limits-to-consider-for-testing"></a>テストのために考慮すべき調整とサービスの制限
 開発者は、運用環境にリリースする前にアプリケーションをテストする必要があります。 Microsoft ID プラットフォームで保護されているアプリケーションをテストする場合は、テストに使用する Azure Active Directory (Azure AD) 環境とテナントを設定する必要があります。  
@@ -29,7 +29,7 @@ Microsoft ID プラットフォームと統合するアプリケーションに�
 Azure AD、Microsoft Graph などの Azure サービスでは、リソースが過剰に利用されるのを防ぐために、サービスへの同時呼び出しの数を制限したり、お客様ごとのコンピューティング負荷の量を制限したりします。 これは調整と呼ばれており、Azure サービスが確実に、サービスを停止せずに使用量と受信要求を処理できるようにします。 調整は、アプリケーション、テナント、またはサービス レベル全体で行うことができます。 調整は一般的に、テナント内またはテナント間でアプリケーションに大量の要求がある場合に発生します。  実行時に、アプリケーションは、ビジネス ロジックの一環として Microsoft Graph を通じて Azure AD ディレクトリ オブジェクトの読み取りまたは更新を行う可能性があります。 たとえば、ユーザー属性を読み取りまたは設定したり、ユーザーの予定表を更新したり、ユーザーの代わりに電子メールを送信したりします。  実行中、アプリケーションは、Azure リソースのデプロイ、アクセス、更新、削除を行う可能性があります。 テスト中、アプリケーションは、リソースやディレクトリ オブジェクトをデプロイするときに、これらの実行時の調整の制限と前述のサービスの制限に達する可能性があります。
 
 ## <a name="azure-ad-service-limits-relevant-to-testing"></a>テストに関連する Azure AD サービスの制限
-一般的な Azure AD の使用に関する制約とサービスの制限については、[こちら](/azure/active-directory/enterprise-users/directory-service-limits-restrictions)を参照してください。  一般的な Azure サブスクリプションとサービスの制限、クォータ、制約については、[こちら](/azure/azure-resource-manager/management/azure-subscription-service-limits)を参照してください。
+一般的な Azure AD の使用に関する制約とサービスの制限については、[こちら](../enterprise-users/directory-service-limits-restrictions.md)を参照してください。  一般的な Azure サブスクリプションとサービスの制限、クォータ、制約については、[こちら](../../azure-resource-manager/management/azure-subscription-service-limits.md)を参照してください。
 
 次の表に、テスト環境の設定時またはテストの実行時に考慮すべき Azure AD サービスの制限を示します。 
 
@@ -69,4 +69,3 @@ Azure AD、Microsoft Graph などの Azure サービスでは、リソースが�
 
 ## <a name="next-steps"></a>次のステップ
 [テスト環境を設定する](test-setup-environment.md)方法について説明します。
-

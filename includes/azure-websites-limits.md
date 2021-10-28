@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: fccfd7e0abd328e2284357aac72a22ded513bfc4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8e787aab95da883f5a448ee250eb542fb10e45f6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165523"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287278"
 ---
 | リソース | Free | 共有 | Basic | Standard | Premium (v1 から v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ ms.locfileid: "110165523"
 | ストレージ<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> |1 TB<sup>5</sup> <br/><br/> 使用可能なストレージ クォータは 999 GB です。 |
 | CPU 時間 (5 分)<sup>6</sup> |3 分 |3 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金|
 | CPU 時間 (1 日)<sup>6</sup> |約 60 分 |約 240 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |
-| メモリ (1 時間) |App Service プランごとに 1,024 MB |アプリごとに 1,024 MB |該当なし |N/A |N/A |該当なし |
+| メモリ (1 時間) |App Service プランごとに 1,024 MB |アプリごとに 1,024 MB |該当なし |該当なし |該当なし |該当なし |
 | 帯域幅 |165 MB |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |無制限、 [データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/) が適用される |
 | アプリケーションのアーキテクチャ |32 ビット |32 ビット |32 ビット/64 ビット |32 ビット/64 ビット |32 ビット/64 ビット |32 ビット/64 ビット |
 | インスタンスごとの Web ソケット数<sup>7</sup> |5 |35 |350 |無制限 |無制限 |無制限 |
@@ -30,7 +30,7 @@ ms.locfileid: "110165523"
 | アプリケーションごとのカスタム ドメイン数</a> |0 (azurewebsites.net サブドメインのみ)|500 |500 |500 |500 |500 |
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
 | [Hybrid Connections (ハイブリッド接続)](../articles/app-service/app-service-hybrid-connections.md) | | | プランあたり 5 | プランあたり 25 | アプリあたり 220 | アプリあたり 220 |
-| [Virtual Network 統合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Virtual Network 統合](../articles/app-service/overview-vnet-integration.md) | | |   |  X |  X  |  X  |
 | [プライベート エンドポイント](../articles/app-service/networking/private-endpoint.md) | | |   |   |  アプリあたり 100  |    |
 | 統合 Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [アクセス制限](../articles/app-service/networking-features.md#access-restrictions) | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール |

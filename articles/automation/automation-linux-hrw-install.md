@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6702fb96b616c59b539ce72f8da0bfec2feeec97
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 9eff8a0605f3cebce7f85f9c6edb2a3009ec4901
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707066"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240397"
 ---
 # <a name="deploy-an-agent-based-linux-hybrid-runbook-worker-in-automation"></a>Automation でエージェントベースの Linux Hybrid Runbook Worker をデプロイする
 
@@ -27,7 +27,7 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。
 

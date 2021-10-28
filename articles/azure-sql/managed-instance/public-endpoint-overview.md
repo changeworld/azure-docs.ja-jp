@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: 7c949579d23e3acfbecde3111534209151ed61ac
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2718816adfeaa8fa98c93ea1ed394c6634b5cb7b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314555"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250447"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,7 +50,7 @@ Azure SQL Managed Instance では、その仮想ネットワーク内から接�
 
 クライアントがオンプレミスのネットワークから接続を開始する必要がある場合は、送信元アドレスが既知の IP アドレスのセットに変換されるようにします。 そうできない場合 (たとえば、モバイル従業員が一般的なシナリオである場合) は、[ポイント対サイト VPN 接続とプライベート エンドポイント](point-to-site-p2s-configure.md)を使用することをお勧めします。
 
-接続が Azure から開始される場合、トラフィックは既知で割り当て済みの[仮想 IP アドレス](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) (たとえば、仮想マシン) からのものであることが推奨されます。 仮想 IP (VIP) アドレスの管理を容易にするために、[パブリック IP アドレス プレフィックス](../../virtual-network/public-ip-address-prefix.md)を使用したい場合があります。
+接続が Azure から開始される場合、トラフィックは既知で割り当て済みの[仮想 IP アドレス](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) (たとえば、仮想マシン) からのものであることが推奨されます。 仮想 IP (VIP) アドレスの管理を容易にするために、[パブリック IP アドレス プレフィックス](../../virtual-network/ip-services/public-ip-address-prefix.md)を使用したい場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 448b13d1406587c36b729b3258d8ca375a0914ae
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 8d076b43e2a6ea1c21394569b56a7e689a1ab5fc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706580"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250884"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Form Recognizer リソース用のマネージド ID を作成して使用する
 
@@ -55,7 +55,7 @@ Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure �
   * メイン ウィンドウで、 **[選択したネットワークからのアクセスを許可する]** を選択します。
   :::image type="content" source="media/managed-identities/firewalls-and-virtual-networks.png" alt-text="スクリーンショット: [選択されたネットワーク] のラジオ ボタンが選択された状態。":::
 
-  * 選択されたネットワーク ページで、 **[例外]** カテゴリに移動し、[[**信頼されたサービスの一覧で Azure サービスにこのストレージ アカウントへのアクセスを許可する**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) チェックボックスがオンになっていることを確認します。
+  * 選択されたネットワーク ページで、 **[例外]** カテゴリに移動し、[[**信頼されたサービスの一覧で Azure サービスにこのストレージ アカウントへのアクセスを許可する**](../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions) チェックボックスがオンになっていることを確認します。
 
     :::image type="content" source="media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="スクリーンショット: ポータル ビューの信頼されたサービスを許可するチェックボックス":::
 * Azure portal で使用する [**Azure ロールベースのアクセス制御 (Azure RBAC)**](../../role-based-access-control/role-assignments-portal.md) の概要の理解。

@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 2c3dac941e766ae2d3889b3800e0b6864df16ebc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a848a36632a4c0474c9f20de58c415bd779da198
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047910"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265038"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -225,7 +225,7 @@ VM の復元が必要になることがある、一般的なシナリオは多�
 **Hybrid Use Benefit を使用して VM を復元する** | Windows VM が [Hybrid Use Benefit (HUB) ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合、ディスクを復元し、提供されているテンプレート ( **[ライセンスの種類]** を **Windows_Server** に設定)、または PowerShell を使用して新しい VM を作成します。  この設定は、VM の設定後にも適用できます。
 **Azure データ センターでの障害発生時に VM を復元する** | コンテナーで GRS を使用しており、VM のプライマリ データセンターがダウンした場合、Azure Backup では、バックアップされた VM を、ペアのデータセンターに復元することができます。 ペアのデータセンターでストレージ アカウントを選択し、通常どおりに復元します。 Azure Backup は、ペアのリージョンのコンピューティング サービスを使用して、復元された VM を作成します。 データセンターの回復性に関して[詳しくはこちらを参照してください](/azure/architecture/resiliency/recovery-loss-azure-region)。<br><br> コンテナーで GRS が使用されている場合、[リージョンをまたがる復元](#cross-region-restore)という新しい機能を選択できます。 これにより、完全な停止でも、部分的な停止でも、あるいはまったく停止していない場合でさえも、第二リージョンに復元できます。
 **ベア メタル回復** | Azure VM とオンプレミスのハイパーバイザーの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、コンテナーからの VM の復元が、BMR の代わりとなります。
-**特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md)または[外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
+**特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md)または[外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
 **NIC/サブネットでのネットワーク セキュリティ グループ (NSG)** | Azure VM バックアップは、vnet、サブネット、および NIC レベルでの NSG 情報のバックアップと復元をサポートします。
 **ゾーンにピン留めされた VM** | ゾーンにピン留めされた Azure VM を (Azure Backup で) バックアップした場合は、それをピン留めされていたのと同じゾーンで復元できます。 [詳細情報](../availability-zones/az-overview.md)
 **可用性セットで VM を復元する** | ポータルから VM を復元するとき、可用性セットを選択するオプションはありません。 復元された VM には可用性セットがありません。 ディスクの復元オプションを使用する場合、提供されているテンプレートまたは PowerShell を使用してディスクから VM を作成するときに[可用性セットを指定する](../virtual-machines/windows/tutorial-availability-sets.md)ことができます。

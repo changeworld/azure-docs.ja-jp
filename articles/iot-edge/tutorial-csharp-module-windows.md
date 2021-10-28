@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: d7fe67fa9722328be1e730c18893032f98883df7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 530dbd3abba2c61af8ebab3b5fc625990fc1a391
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740632"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228791"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して C# IoT Edge モジュールを開発する
 
@@ -54,7 +54,7 @@ Windows コンテナーを使用して C# モジュールを開発してデプ�
 このチュートリアルを開始する前に、[Windows コンテナーを使用した IoT Edge モジュールの開発](tutorial-develop-for-windows.md)チュートリアルに記載された手順に従って開発環境を設定します。 これを完了すると、環境には次の前提条件が含まれます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* [Azure IoT Edge を実行している Windows デバイス](how-to-install-iot-edge-windows-on-windows.md)。
+* [Azure IoT Edge を実行している Windows デバイス](how-to-provision-single-device-windows-symmetric.md)。
 * コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 拡張機能で構成された [Visual Studio 2019](/visualstudio/install/install-visual-studio)。
 * Windows コンテナーを実行するように構成された [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)。

@@ -12,12 +12,12 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: mathoma
 ms.date: 10/08/2020
-ms.openlocfilehash: 4a3e96c33a0bef8e533b4f7f563c701a2c0a8044
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 454b5c20c7e1e28c87e2be38662c12055f14079e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042203"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226813"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>サーバー信頼グループを使用して SQL マネージド インスタンス間の信頼を設定および管理する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "130042203"
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="サーバー信頼グループの削除の確認":::
 
 > [!NOTE]
-> サーバー信頼グループを削除しても、2 つの Managed Instance 間の信頼がすぐに削除されない場合があります。 信頼の削除は、Managed Instance の[フェールオーバー](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover)を呼び出すことによって適用できます。 この最新の更新プログラムに関する「[既知の問題](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues)」を確認してください。
+> サーバー信頼グループを削除しても、2 つの Managed Instance 間の信頼がすぐに削除されない場合があります。 信頼の削除は、Managed Instance の[フェールオーバー](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover)を呼び出すことによって適用できます。 この最新の更新プログラムに関する「[既知の問題](../database/doc-changes-updates-release-notes-whats-new.md?tabs=managed-instance)」を確認してください。
 
 ## <a name="limitations"></a>制限事項
 

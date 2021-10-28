@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 07/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f53eb460d6b131dce607c0dd99f97babd758de35
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 5f0d27c03d32b748473e9b1d32afff051eed0cf7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603401"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222952"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (Large Instances) のストレージ アーキテクチャ
 
 この記事では、SAP HANA on Azure Large Instance (別称 BareMetal Infrastructure) をデプロイするためのストレージ アーキテクチャについて説明します。 
 
-SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP 推奨ガイドラインに従い、クラシック デプロイ モデルで SAP HANA によって構成されます。 ガイドラインの詳細は、[SAP HANA のストレージの要件](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)に関するドキュメントをご覧ください。
+SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP 推奨ガイドラインに従い、クラシック デプロイ モデルで SAP HANA によって構成されます。 ガイドラインの詳細は、[SAP HANA のストレージの要件](https://archive.sap.com/kmuuid2/70c8e423-c8aa-3210-3fae-e043f5c1ca92/SAP%20HANA%20TDI%20-%20Storage%20Requirements.pdf)に関するドキュメントをご覧ください。
 
 HANA Large Instances の Type I クラスには、ストレージ ボリュームの 4 倍のメモリ ボリュームが装備されています。 一方、HANA Large Instances の Type II クラスには、HANA トランザクション ログのバックアップを格納するためのボリュームが装備されています。 詳細については、[SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md)に関する記事をご覧ください。
 

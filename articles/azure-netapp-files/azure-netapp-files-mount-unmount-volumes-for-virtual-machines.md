@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 05/17/2021
-ms.openlocfilehash: 2da352a10f5ff9bacdfb28de8752e5ffefa3fd82
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 78932885ee7c1ec3650de08efe340e998a54acf7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068196"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240036"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
@@ -60,7 +60,7 @@ ms.locfileid: "110068196"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFS に関する FAQ](./azure-netapp-files-faqs.md#nfs-faqs)
+* [NFS に関する FAQ](faq-nfs.md)
 * [ネットワーク ファイル システムの概要](/windows-server/storage/nfs/nfs-overview)
 * [NFS Kerberos ボリュームをマウントする](configure-kerberos-encryption.md#kerberos_mount)
 * [ホスト名が同じ 2 つの VM が NFSv4.1 ボリュームにアクセスするように構成する](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes) 

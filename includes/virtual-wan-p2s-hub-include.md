@@ -4,12 +4,12 @@ author: cherylmc
 ms.date: 08/19/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: 6e09f3d115ad11bc6876092b8c4e87cc56c3c22a
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 762b5cc965b4f9ee0af929ff32574a98da43cc6a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779906"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287844"
 ---
 1. **仮想 WAN** のページで、左側のウィンドウの **[ハブ]** を選択します。 **[ハブ]** ページで **[+ 新しいハブ]** を選択します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "122779906"
 
    * **[ゲートウェイ スケール ユニット]** - ユーザー VPN ゲートウェイの合計容量を表します。 40 以上のゲートウェイ スケール ユニットを選択した場合は、それに応じてクライアント アドレス プールを計画します。 この設定がクライアント アドレス プールに与える影響の詳細については、[クライアント アドレス プールについて](../articles/virtual-wan/about-client-address-pools.md)の記事を参照してください。 ゲートウェイ スケール ユニットについては、[よくあるご質問](../articles/virtual-wan/virtual-wan-faq.md#for-user-vpn-point-to-site--how-many-clients-are-supported)に関する記事を参照してください。
    * **[ポイント対サイト構成]** - 前の手順で作成したユーザー VPN 構成を選択します。
-   * **[ルーティングの優先順位]** - Azure のルーティング設定を使用すると、Azure とインターネットの間でトラフィックをルーティングする方法を選択できます。 Microsoft ネットワーク経由または ISP ネットワーク (パブリック インターネット) 経由のどちらでトラフィックをルーティングするかを選択できます。 これらのオプションはそれぞれコールド ポテト ルーティングおよびホット ポテト ルーティングとも呼ばれます。 Virtual WAN 内のパブリック IP アドレスは、選択したルーティング オプションに基づいてサービスによって割り当てられます。 Microsoft ネットワークまたは ISP によるルーティング設定の詳細については、[ルーティングの基本設定](../articles/virtual-network/routing-preference-overview.md)に関する記事を参照してください。
+   * **[ルーティングの優先順位]** - Azure のルーティング設定を使用すると、Azure とインターネットの間でトラフィックをルーティングする方法を選択できます。 Microsoft ネットワーク経由または ISP ネットワーク (パブリック インターネット) 経由のどちらでトラフィックをルーティングするかを選択できます。 これらのオプションはそれぞれコールド ポテト ルーティングおよびホット ポテト ルーティングとも呼ばれます。 Virtual WAN 内のパブリック IP アドレスは、選択したルーティング オプションに基づいてサービスによって割り当てられます。 Microsoft ネットワークまたは ISP によるルーティング設定の詳細については、[ルーティングの基本設定](../articles/virtual-network/ip-services/routing-preference-overview.md)に関する記事を参照してください。
    * **[Client address pool]\(クライアント アドレス プール\)** - このアドレス プールから IP アドレスが VPN クライアントに自動的に割り当てられます。 詳細については、[クライアント アドレス プール](../articles/virtual-wan/about-client-address-pools.md)に関する記事を参照してください。
    * **[Custom DNS Servers]\(カスタム DNS サーバー\)** - クライアントが使用する DNS サーバーの IP アドレス。 最大で 5 つまで指定できます。
 

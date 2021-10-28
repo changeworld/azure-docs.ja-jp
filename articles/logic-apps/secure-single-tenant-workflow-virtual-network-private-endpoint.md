@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: 658d8c8c43bd2795a6a25730ff85ffb6bbd3a63c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 500ec9c14dea994b528528389ed03d2b561c1a56
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598177"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241822"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Logic Apps の仮想ネットワークとシングルテナント ワークフロー間のトラフィックをセキュリティで保護する
 
@@ -124,7 +124,7 @@ ms.locfileid: "128598177"
 
 ロジック アプリからの送信トラフィックをセキュリティで保護するために、ロジック アプリを仮想ネットワークと統合できます。 既定では、ロジック アプリからの送信トラフィックは、`10.0.0.0/8`、`172.16.0.0/12`、`192.168.0.0/16` などのプライベート アドレスに向かうときのみ、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) の影響を受けます。
 
-仮想ネットワークで独自のドメイン ネーム サーバー (DNS) を使用する場合は、ロジック アプリ リソースの `WEBSITE_DNS_SERVER` アプリ設定をその DNS の IP アドレスに設定します。 セカンダリ DNS がある場合は、`WEBSITE_DNS_ALT_SERVER` という名前の別のアプリ設定を追加し、その値を DNS の IP にも設定します。 また、内部 IP アドレスのプライベート エンドポイントを指し示すように DNS レコードを更新します。 プライベート エンドポイントは、特定のリソースのパブリック アドレスではなく、プライベート アドレスに DNS 参照を送信することで機能します。 詳細については、[プライベート エンドポイントでアプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md#private-endpoints)方法に関するページを参照してください。
+仮想ネットワークで独自のドメイン ネーム サーバー (DNS) を使用する場合は、ロジック アプリ リソースの `WEBSITE_DNS_SERVER` アプリ設定をその DNS の IP アドレスに設定します。 セカンダリ DNS がある場合は、`WEBSITE_DNS_ALT_SERVER` という名前の別のアプリ設定を追加し、その値を DNS の IP にも設定します。 また、内部 IP アドレスのプライベート エンドポイントを指し示すように DNS レコードを更新します。 プライベート エンドポイントは、特定のリソースのパブリック アドレスではなく、プライベート アドレスに DNS 参照を送信することで機能します。 詳細については、[プライベート エンドポイントでアプリを Azure 仮想ネットワークに統合する](../app-service/overview-vnet-integration.md#private-endpoints)方法に関するページを参照してください。
 
 > [!IMPORTANT]
 > Azure Logic Apps ランタイムが動作するには、バックエンド ストレージへの接続が中断されないようにする必要があります。 Azure でホストされるマネージド コネクタを機能させるには、マネージド API サービスへの接続が中断されないようにする必要があります。
@@ -135,7 +135,7 @@ ms.locfileid: "128598177"
 
 詳細については、次のドキュメントを確認してください。
 
-- [アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)
+- [アプリを Azure 仮想ネットワークに統合する](../app-service/overview-vnet-integration.md)
 
 - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
@@ -170,7 +170,7 @@ ms.locfileid: "128598177"
 
    1. 仮想ネットワークを使用してロジック アプリのワークフロー データにアクセスするには、ロジック アプリ リソースの設定で、`WEBSITE_CONTENTOVERVNET` の設定を `1` に設定します。
 
-   仮想ネットワークで独自のドメイン ネーム サーバー (DNS) を使用する場合は、ロジック アプリ リソースの `WEBSITE_DNS_SERVER` アプリ設定をその DNS の IP アドレスに設定します。 セカンダリ DNS がある場合は、`WEBSITE_DNS_ALT_SERVER` という名前の別のアプリ設定を追加し、その値を DNS の IP にも設定します。 また、内部 IP アドレスのプライベート エンドポイントを指し示すように DNS レコードを更新します。 プライベート エンドポイントは、特定のリソースのパブリック アドレスではなく、プライベート アドレスに DNS 参照を送信することで機能します。 詳細については、[プライベート エンドポイントでアプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md#private-endpoints)方法に関するページを参照してください。
+   仮想ネットワークで独自のドメイン ネーム サーバー (DNS) を使用する場合は、ロジック アプリ リソースの `WEBSITE_DNS_SERVER` アプリ設定をその DNS の IP アドレスに設定します。 セカンダリ DNS がある場合は、`WEBSITE_DNS_ALT_SERVER` という名前の別のアプリ設定を追加し、その値を DNS の IP にも設定します。 また、内部 IP アドレスのプライベート エンドポイントを指し示すように DNS レコードを更新します。 プライベート エンドポイントは、特定のリソースのパブリック アドレスではなく、プライベート アドレスに DNS 参照を送信することで機能します。 詳細については、[プライベート エンドポイントでアプリを Azure 仮想ネットワークに統合する](../app-service/overview-vnet-integration.md#private-endpoints)方法に関するページを参照してください。
 
 1. これらのアプリ設定を適用した後に、ストレージ アカウントからパブリック アクセスを削除できます。
 

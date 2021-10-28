@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 79abb40532ad4b7940ecf94552b5ee5c0727f2b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b9291a7d69bd2aeb5a9343d88d05d42d94d080e0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636631"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249046"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -339,10 +339,6 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 - サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
 - NAT を複数の仮想ネットワークにまたがって使用することはできません。
 - IP の断片化はサポートされていません。
-
-## <a name="suggestions"></a>検索候補
-
-サービスを改善するために、皆様のご意見をお待ちしております。 不足している機能があれば、 ぜひお聞かせください。今後の課題として、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
 
 ## <a name="next-steps"></a>次のステップ
 

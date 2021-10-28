@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-insights
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: cf3540f439396f3e4308eae10077693de440827f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 06a48cd4f1a0aa0d95f1c4b5fa0faf4d7ada2ab3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213976"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238043"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure Purview のデータに関する秘密度ラベルの分析情報
 
@@ -130,4 +130,3 @@ Microsoft 365 の秘密度ラベルを Azure Purview の資産に拡張するに
 - [用語集の分析情報](glossary-insights.md)
 - [スキャンの分析情報](scan-insights.md)
 - [分類の分析情報](./classification-insights.md)
-- [ファイル拡張子の分析情報](file-extension-insights.md)

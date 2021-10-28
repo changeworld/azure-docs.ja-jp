@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/27/2021
 ms.author: lajanuar
-ms.openlocfilehash: 47695a2445e0b61f972f6481471305ed5219b5d7
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 397f3c05d42837ffb5e9bb4fdb465a4aee352fbd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326464"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233679"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
@@ -72,7 +72,7 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニング データ セットの作成方法を習得したので、クイックスタートに従って、カスタム Form Recognizer モデルをトレーニングし、お使いのフォームでの使用を開始してください。
 
-* [クライアント ライブラリまたは REST API を使用し、モデルをトレーニングし、フォーム データを抽出する](./quickstarts/client-library.md)
+* [クライアント ライブラリまたは REST API を使用し、モデルをトレーニングし、フォーム データを抽出する](./quickstarts/try-sdk-rest-api.md)
 * [サンプル ラベル付けツールを使用したラベルによるトレーニング](label-tool.md)
 
 ## <a name="see-also"></a>関連項目
