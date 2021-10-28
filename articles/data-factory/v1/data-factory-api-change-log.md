@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
 robots: noindex
-ms.date: 01/22/2018
-ms.openlocfilehash: 18f77a9ed11d50083be4f0fe68cc0975b21d8997
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: 2010081ca22751e5e3e1a7f36084dff53b1c0aef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597590"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255183"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API の変更ログ
 > [!NOTE]

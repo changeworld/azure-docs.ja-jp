@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 09/28/2021
 ms.author: danlep
-ms.openlocfilehash: 553f7ce69d63ceebcdaacc3b29b0abc2a01987f7
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3fa10f238b3047b97e5d4d4c8c472010cfff883b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984556"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222535"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -116,7 +116,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 > [!NOTE]
-> B2C をレガシ開発者ポータルと適切に統合するには、Azure Active Directory B2C を使用して開発者アカウントにサインアップまたはサインインする前の [パスワードのリセット](/azure/active-directory-b2c/user-flow-self-service-password-reset)の有効化と組み合わせて **standard v1** のユーザー フローを使用します。 
+> B2C をレガシ開発者ポータルと適切に統合するには、Azure Active Directory B2C を使用して開発者アカウントにサインアップまたはサインインする前の [パスワードのリセット](../active-directory-b2c/add-password-reset-policy.md)の有効化と組み合わせて **standard v1** のユーザー フローを使用します。 
 
 1. 新しいブラウザー ウィンドウを開き、レガシ開発者ポータルにアクセスします。 **[サインアップ]** ボタンをクリックします。
 

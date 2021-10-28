@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: 44f41d0adebe21eaec28aced556f67e8c1aeda1d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6df2a24ca029f14a4743b28641b8ac4c2b88e851
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047230"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223786"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 
@@ -213,7 +213,7 @@ ms.locfileid: "130047230"
 
 - **Azure PowerShell**。 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/install-az-ps)」に記載されている手順に従います。 
 
-- **Azure Data Factory**。 「[PowerShell を使用した Azure Data Factory の作成](/azure/data-factory/quickstart-create-data-factory-powershell)」に記載されている手順に従って、データ ファクトリとパイプラインを作成します。
+- **Azure Data Factory**。 「[PowerShell を使用した Azure Data Factory の作成](./quickstart-create-data-factory-powershell.md)」に記載されている手順に従って、データ ファクトリとパイプラインを作成します。
 
 ### <a name="sample-code"></a>サンプル コード
 
@@ -292,7 +292,7 @@ ms.locfileid: "130047230"
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- 「[Azure CLI を使用して Azure Data Factory を作成する](/azure/data-factory/quickstart-create-data-factory-azure-cli)」に記載されている手順に従って、データ ファクトリとパイプラインを作成します。
+- 「[Azure CLI を使用して Azure Data Factory を作成する](./quickstart-create-data-factory-azure-cli.md)」に記載されている手順に従って、データ ファクトリとパイプラインを作成します。
 
 ### <a name="sample-code"></a>サンプル コード
 

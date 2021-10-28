@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: b4b2bf97b684ff83b2a4071ca676d30ffb28b87e
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 99afad4cad2cddb706957c8a8b860c6dd55d3b71
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721764"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257159"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>プライベート エンドポイントおよび VNet 統合と安全に接続された 2 つの Web アプリを作成する
 
-この記事では、以下の手順に従い、[プライベート エンドポイント](../networking/private-endpoint.md)とリージョン [VNet 統合](../web-sites-integrate-with-vnet.md)を使用して、2 つの Web アプリ (フロントエンドとバックエンド) を安全に接続する例について説明します。
+この記事では、以下の手順に従い、[プライベート エンドポイント](../networking/private-endpoint.md)とリージョン [VNet 統合](../overview-vnet-integration.md)を使用して、2 つの Web アプリ (フロントエンドとバックエンド) を安全に接続する例について説明します。
 - VNet をデプロイします
 - 統合用の最初のサブネットを作成します
 - プライベート エンドポイント用の 2 番目のサブネットを作成します。特定のパラメーターを設定して、ネットワーク ポリシーを無効にする必要があります
 - プライベート エンドポイント機能に必要な、PremiumV2 または PremiumV3 タイプの App Service プランを 1 つデプロイします
-- プライベート DNS ゾーンを使用する特定のアプリ設定を使用して、フロントエンド Web アプリを作成します。詳細は[こちら](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)を参照してください
+- プライベート DNS ゾーンを使用する特定のアプリ設定を使用して、フロントエンド Web アプリを作成します。詳細は[こちら](../overview-vnet-integration.md#azure-dns-private-zones)を参照してください
 - フロントエンド Web アプリを統合サブネットに接続します
 - バックエンド Web アプリを作成します
 - Web アプリのプライベート リンク ゾーンの名前 (privatelink.azurewebsites.net) を使用して、DNS プライベート ゾーンを作成します

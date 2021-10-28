@@ -6,14 +6,14 @@ ms.service: data-factory
 ms.subservice: v1
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 10/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 718ca020577a33e5225d46579ee62d8a9859b18a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b4d3ef9979fc53ebd4e1dce6c56ee4974399cd90
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641391"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218563"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/27/2021
 ms.author: pdecarlo
-ms.openlocfilehash: 5600702d43d0583324dc9e3b6942318ab52c5cbd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6865a89eae0df708d73d9062dd07c18c46ece4f8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702877"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263764"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -53,7 +53,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 
     **管理ユーザー名**: ユーザー名。デプロイ時にルート権限が与えられます。
 
-    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](./how-to-register-device.md)。
+    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](./how-to-provision-single-device-linux-symmetric.md#view-registered-devices-and-retrieve-provisioning-information)。
 
     **[VM サイズ]** :デプロイする仮想マシンの [サイズ](../cloud-services/cloud-services-sizes-specs.md)
 

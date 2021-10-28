@@ -6,12 +6,12 @@ metadata:
   ms.service: azure
   ms.date: 07/17/2020
   ms.custom: devx-track-azurepowershell, references_regions
-  ms.openlocfilehash: 55a8c385479b5a14407e07288d61ff9cd1eb21a5
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 1bd63686c5dc726a238723991132e93c1b13863c
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128650460"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130226416"
 title: Azure DevTest Labs に関する FAQ
 summary: "\nAzure DevTest Labs について特に多く寄せられる質問にお答えします。\n\n## <a name=\"blog-post\"></a>ブログ記事\nDevTest Labs チームのブログは 2019 年 3 月 20 日時点で廃止されました。 \n\n### <a name=\"where-can-i-track-feature-updates-from-now-on\"></a>今後の機能更新はどこで追跡できるのでしょうか。\n今後、Azure ブログと Azure の更新情報で、機能更新や情報ブログ記事を投稿していきます。 これらのブログ記事は、必要に応じて、Microsoft のドキュメントにもリンクされます。\n        \n[DevTest Labs Azure ブログ](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)と [DevTest Labs Azure の更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)をご覧になり、DevTest Labs の新機能に関する情報を入手するようにしてください。\n        \n### <a name=\"what-happens-to-the-existing-blog-posts\"></a>既存のブログ記事はどうなりますか。\n現在、既存のブログ記事 (障害更新情報を除く) の [DevTest Labs ドキュメント](devtest-lab-overview.md)への移行を進めています。 MSDN ブログが非推奨になると、DevTest Labs のドキュメントの概要にリダイレクトされます。 リダイレクトされたら、タイトルの 'フィルター条件' で探している記事を検索できます。 まだすべての記事を移行していませんが、今月末までに完了するはずです。 \n        \n### <a name=\"where-do-i-see-outage-updates\"></a>障害更新情報はどこで確認できますか。\n今後、Twitter ハンドルを使用して、障害更新情報を投稿する予定です。 Twitter でフォローして、障害と既知のバグに関する最新の更新情報を取得してください。\n\n### <a name=\"twitter\"></a>Twitter\nTwitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)\n"
 sections:
@@ -213,7 +213,7 @@ sections:
 
       - [Azure DevOps Tasks の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)を使用することができます。
 
-      - VM の作成中に [Resource Manager テンプレートを生成](devtest-lab-add-vm.md#save-azure-resource-manager-template)し、[Windows PowerShell から Resource Manager テンプレートをデプロイ](../azure-resource-manager/templates/deploy-powershell.md)できます。
+      - VM の作成中に [Resource Manager テンプレートを生成](devtest-lab-add-vm.md#create-and-add-virtual-machines)し、[Windows PowerShell から Resource Manager テンプレートをデプロイ](../azure-resource-manager/templates/deploy-powershell.md)できます。
 
       - また、仮想マシンの作成時にマシンのインスタンスが 1 つ以上作成されるように指定することもできます。 仮想マシンのインスタンスを複数作成する方法の詳細については、[ラボの仮想マシンの作成](devtest-lab-add-vm.md)に関するドキュメントをご覧ください。
   - question: >

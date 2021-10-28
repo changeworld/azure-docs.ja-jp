@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: mbullwin
-ms.openlocfilehash: 2bb387863baffdd014eedb20d94ea1273860b8c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d5d111e86623b3de63bc9aa5d77f5a14c37fabd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730611"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216772"
 ---
 # <a name="how-to-connect-different-data-sources"></a>方法: さまざまなデータ ソースを接続する
 
@@ -185,7 +185,7 @@ ms.locfileid: "121730611"
         Data Source=<URI Server>;Initial Catalog=<Database>
         ```
 
-    * **マネージド ID**: Azure リソースに対するマネージド ID では、BLOB およびキュー データへのアクセスを認可できます。 マネージド ID では、Azure 仮想マシン、関数アプリ、仮想マシン スケール セット、その他のサービスで動作するアプリケーションから、Azure AD 資格情報を使用します。 Azure リソースのマネージド ID と Azure AD 認証を使用すると、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。 [マネージド ID で認可する方法](../../storage/common/storage-auth-aad-msi.md#enable-managed-identities-on-a-vm)を参照してください。 
+    * **マネージド ID**: Azure リソースに対するマネージド ID では、BLOB およびキュー データへのアクセスを認可できます。 マネージド ID では、Azure 仮想マシン、関数アプリ、仮想マシン スケール セット、その他のサービスで動作するアプリケーションから、Azure AD 資格情報を使用します。 Azure リソースのマネージド ID と Azure AD 認証を使用すると、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。 [マネージド ID で認可する方法](../../storage/blobs/authorize-managed-identity.md#enable-managed-identities-on-a-vm)を参照してください。 
     
         マネージド ID は、Azure Data Explorer (Kusto) の Azure portal で作成できます。 **[アクセス許可]**  >  **[追加]** の順に選択します。 推奨されるロールの種類は、**admin/viewer** です。
         
@@ -237,7 +237,7 @@ ms.locfileid: "121730611"
         
         ![ロールを割り当てる手順を示すスクリーンショット。](media/datafeeds/adls-gen-2-app-reg-assign-roles.png)
 
-        **手順 3:** Metrics Advisor で[資格情報エンティティを作成する](how-tos/credential-entity.md)方法を参照します。これにより、サービス プリンシパルの認証の種類のデータ フィードを追加する場合に、そのエンティティを選択できます。 
+        **手順 3:** Metrics Advisor で [資格情報エンティティを作成する](how-tos/credential-entity.md)方法を参照します。これにより、サービス プリンシパルの認証の種類のデータ フィードを追加する場合に、そのエンティティを選択できます。 
         
     * **キー コンテナーからのサービス プリンシパル**: Key Vault では、クラウド アプリとサービスで使用される暗号化キーとシークレット値を保護するのに役立ちます。 Key Vault を使用すると、キーとシークレットの値を暗号化できます。 まず、サービス プリンシパルを作成してから、キー コンテナー内にサービス プリンシパルを格納する必要があります。 詳細については、[キー コンテナーからのサービス プリンシパルの資格情報エンティティの作成](how-tos/credential-entity.md#sp-from-kv)に関するページを参照してください。 アカウント名は、基本認証の種類と同じです。
 
@@ -360,7 +360,7 @@ Azure Monitor ログには、基本、サービス プリンシパル、キー �
         ![ロールの割り当て方法を示すスクリーンショット。](media/datafeeds/adls-gen-2-app-reg-assign-roles.png)
 
     
-    **手順 3:** Metrics Advisor で[資格情報エンティティを作成する](how-tos/credential-entity.md)方法を参照します。これにより、サービス プリンシパルの認証の種類のデータ フィードを追加する場合に、そのエンティティを選択できます。 
+    **手順 3:** Metrics Advisor で [資格情報エンティティを作成する](how-tos/credential-entity.md)方法を参照します。これにより、サービス プリンシパルの認証の種類のデータ フィードを追加する場合に、そのエンティティを選択できます。 
         
 * **キー コンテナーからのサービス プリンシパル**: Key Vault では、クラウド アプリとサービスで使用される暗号化キーとシークレット値を保護するのに役立ちます。 Key Vault を使用すると、キーとシークレットの値を暗号化できます。 まず、サービス プリンシパルを作成してから、キー コンテナー内にサービス プリンシパルを格納する必要があります。 詳細については、[キー コンテナーからのサービス プリンシパルの資格情報エンティティの作成](how-tos/credential-entity.md#sp-from-kv)に関するページを参照してください。 
 
@@ -413,7 +413,7 @@ Azure Monitor ログには、基本、サービス プリンシパル、キー �
         ```
     
         > [!NOTE]
-        > `MI Name` は、Metrics Advisor のマネージド ID 名 (サービス プリンシパルの場合は、サービス プリンシパル名に置き換える必要があります)。 詳細については、[マネージド ID を使用した認可](../../storage/common/storage-auth-aad-msi.md#enable-managed-identities-on-a-vm)に関するページを参照してください。 
+        > `MI Name` は、Metrics Advisor のマネージド ID 名 (サービス プリンシパルの場合は、サービス プリンシパル名に置き換える必要があります)。 詳細については、[マネージド ID を使用した認可](../../storage/blobs/authorize-managed-identity.md#enable-managed-identities-on-a-vm)に関するページを参照してください。 
             
         接続文字列の例を次に示します。 
        
@@ -437,7 +437,7 @@ Azure Monitor ログには、基本、サービス プリンシパル、キー �
 
         **手順 2:** 前述の手順 ([SQL Server のマネージド ID](#jump)) に従います。 
 
-        **手順 3:** Metrics Advisor で[資格情報エンティティを作成する](how-tos/credential-entity.md)方法を参照します。これにより、サービス プリンシパルの認証の種類のデータ フィードを追加する場合に、そのエンティティを選択できます。 
+        **手順 3:** Metrics Advisor で [資格情報エンティティを作成する](how-tos/credential-entity.md)方法を参照します。これにより、サービス プリンシパルの認証の種類のデータ フィードを追加する場合に、そのエンティティを選択できます。 
 
         接続文字列の例を次に示します。 
         

@@ -5,12 +5,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Monitor を使用して Azure Arc 対応 Kubernetes クラスターのメトリックとログを収集する
-ms.openlocfilehash: 1ece606aa3967d9fddaa5f964c43e24350610817
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: fe5a2cb8f57203310d37fa82829b3f1f2c3384e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709721"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250694"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc 対応 Kubernetes クラスター用の Azure Monitor Container Insights
 
@@ -30,7 +30,7 @@ ms.locfileid: "129709721"
 ## <a name="prerequisites"></a>前提条件
 
 - [汎用クラスターの拡張機能のドキュメント](../../azure-arc/kubernetes/extensions.md#prerequisites)に記載されている前提条件を満たしていること。
-- Log Analytics ワークスペース: Azure Monitor Container Insights では、[リージョン別の Azure 製品のページ](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に記載されているリージョンで Log Analytics ワークスペースがサポートされます。 [Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md)、または [Azure portal](../logs/quick-create-workspace.md) を使用して独自のワークスペースを作成できます。
+- Log Analytics ワークスペース: Azure Monitor Container Insights では、[リージョン別の Azure 製品のページ](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に記載されているリージョンで Log Analytics ワークスペースがサポートされます。 [Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-workspace-configuration.md)、または [Azure portal](../logs/quick-create-workspace.md) を使用して独自のワークスペースを作成できます。
 - Azure Arc 対応 Kubernetes リソースを含む Azure サブスクリプションで、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール割り当てが必要です。 Log Analytics ワークスペースが別のサブスクリプションに含まれる場合、その Log Analytics ワークスペースで、[Log Analytics 共同作成者](../logs/manage-access.md#manage-access-using-azure-permissions)ロール割り当てが必要です。
 - 監視データを表示するために、Log Analytics ワークスペースで、[Log Analytics 閲覧者](../logs/manage-access.md#manage-access-using-azure-permissions)ロール割り当てが必要です。
 - 送信アクセスのために、「[Kubernetes クラスターを Azure Arc に接続する](../../azure-arc/kubernetes/quickstart-connect-cluster.md#meet-network-requirements)」で示されているエンドポイントに加えて、下記に示すものも有効にする必要があります。

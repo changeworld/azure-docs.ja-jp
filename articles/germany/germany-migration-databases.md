@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate, devx-track-azurepowershell
-ms.openlocfilehash: 6fe6d653712e034c13f3b755e906de491b4dd49a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0843adb3060ca4ce8769b79eef3f05e043d4dc5d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "117029060"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259601"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>データベース リソースをグローバル Azure に移行する
 
@@ -143,7 +143,7 @@ geo レプリケーションまたは BACPAC ファイルを使用してデー�
 
 1. LTR バックアップをコピーするグローバル Azure の ターゲット データベースは、バックアップのコピーを開始する前に存在している必要があります。 最初に[アクティブ geo レプリケーション](#migrate-sql-database-using-active-geo-replication)を使用してソース データベースを移行した後で、LTR バックアップのコピーを始めることをお勧めします。 これにより、データベース バックアップが正しいコピー先データベースに確実にコピーされます。 削除されたデータベースの LTR バックアップをコピーする場合、このステップは必要ありません。 削除されたデータベースの LTR バックアップをコピーすると、ターゲット リージョンにダミーの DatabaseID が作成されます。 
 2. この [PowerShell Az モジュール](https://www.powershellgallery.com/packages/Az.Sql/3.0.0-preview)をインストールします
-3. 始める前に、必要な [Azure RBAC ロール](../azure-sql/database/long-term-backup-retention-configure.md#azure-roles-to-manage-long-term-retention)が **サブスクリプション** または **リソース グループ** のスコープで付与されていることを確認します。 注: 削除されたサーバーに属する LTR バックアップにアクセスするには、そのサーバーのサブスクリプション スコープでアクセス許可を付与する必要があります。 . 
+3. 始める前に、必要な [Azure RBAC ロール](../azure-sql/database/long-term-backup-retention-configure.md#prerequisites)が **サブスクリプション** または **リソース グループ** のスコープで付与されていることを確認します。 注: 削除されたサーバーに属する LTR バックアップにアクセスするには、そのサーバーのサブスクリプション スコープでアクセス許可を付与する必要があります。 . 
 
 
 ### <a name="limitations"></a>制限事項  

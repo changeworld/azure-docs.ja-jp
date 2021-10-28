@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 7078c07540ca1613b17b81e471bde519c7a2136c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e02537fbc4aa8e382b38dcaeb09c5292ff3ab7e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725222"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261750"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
@@ -24,7 +24,7 @@ ms.locfileid: "121725222"
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [**REST API 2021-04-30-Preview の検索**](/rest/api/searchservice/index-preview) | セキュリティ | 外部データ ソースに接続するインデクサーについて、Azure Active Directory でマネージド ID をサポートするように、[[データ ソースの作成または更新]](/rest/api/searchservice/preview-api/create-or-update-data-source) を変更します。 | パブリック レビュー、[REST API 2021-04-30-Preview の検索](/rest/api/searchservice/index-preview) |
-| [**Azure RBAC のサポート**](search-security-rbac.md) | セキュリティ | 新しい組み込みのロールを使用して、インデックスとインデックス作成へのアクセスを制御し、API キーの依存を解消または軽減します。 | パブリック プレビュー ([要求による](https://aka.ms/azure-cognitive-search/rbac-preview))。 サブスクリプションのオンボード化後、Azure portal または管理 REST API バージョン 2021-04-01-Preview を使用して、データ プレーン認証用に検索サービスを構成します。 |
+| [**Azure RBAC のサポート**](search-security-rbac.md) | セキュリティ | 新しい組み込みのロールを使用して、インデックスとインデックス作成へのアクセスを制御し、API キーの依存を解消または軽減します。 | パブリック プレビュー ([要求による](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#step-1-preview-sign-up))。 サブスクリプションのオンボード化後、Azure portal または管理 REST API バージョン 2021-04-01-Preview を使用して、データ プレーン認証用に検索サービスを構成します。 |
 | [**管理 REST API 2021-04-01-Preview**](/rest/api/searchmanagement/) | セキュリティ | 新しい [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) をサポートするために [[サービスの作成または更新]](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を変更します。 | パブリック プレビュー、[管理 REST API](/rest/api/searchmanagement/)、API バージョン 2021-04-01-Preview。|
 | [**ドキュメントのリセット**](search-howto-run-reset-indexers.md) | Indexer | インデクサー ワークロードで個別に選択された検索ドキュメントを再処理します。 | [ドキュメントのリセット REST API](/rest/api/searchservice/preview-api/reset-documents)、API バージョン 2021-04-30-Preview または 2020-06-30-Preview を使用します。 |
 |  [**Power Query コネクタ**](search-how-to-index-power-query-data-sources.md) | インデクサー データ ソース | インデクサーで、他のクラウド プラットフォームからインデックスを作成できるようになりました。 インデクサーを使用してインデックス作成に外部データ ソースをクロールする場合、Power Query コネクタを使用して Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce オブジェクト、Salesforce レポート、Smartsheet、Snowflake に接続できるようになりました。 | バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースを構成するには、[[データ ソースの作成または更新]](/rest/api/searchservice/preview-api/create-or-update-data-source)、API バージョン 2021-04-30-Preview または 2020-06-30-Preview、または Azure portal を使用します。|

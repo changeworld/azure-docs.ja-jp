@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4683b38ba6a59b0a50f7e0ea4165657407b59b69
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bb96e0da4e9e724220492821f1418f3d587b63e8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823188"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222914"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
 
@@ -40,7 +40,7 @@ SAP Netweaver および SAP HANA 用に Azure NetApp Files を検討するとき
 - 待ち時間を短縮するには、仮想マシンを Azure NetApp ストレージに近い場所にデプロイすることが重要です。  
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります
 - データベース サーバーから ANF ボリュームへの待機時間が計測されており、1 ミリ秒未満であることを確認します
-- Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。 または、ボリュームの容量とスループットを個別に構成およびスケーリングできる[手動 QoS 容量プール](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)の使用を検討してください (SAP HANA の具体的な例については、[このドキュメント](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)を参照してください)。
+- Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。 または、ボリュームの容量とスループットを個別に構成およびスケーリングできる[手動 QoS 容量プール](../../../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type)の使用を検討してください (SAP HANA の具体的な例については、[このドキュメント](../../../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type)を参照してください)。
 - 大きなボリュームでより高いパフォーマンスを実現するために、可能であれば、/sapmnt、/usr/sap/trans などに対して 1 つのボリュームを使用するなど、ボリュームを "統合" してみてください。 可能な場合  
 - Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。   
@@ -92,7 +92,7 @@ Azure で SAP のインフラストラクチャを設計する際には、SAP �
 | データ ボリュームの書き込み | 250 MB/秒 | 4 TB | 2 TB |
 | データ ボリュームの読み取り | 400 MB/秒 | 6.3 TB | 3.2 TB |
 
-3 つのすべての KPI が要求されるため、読み取りの最小要件を満たすには、 **/hana/data** のボリュームを、より大きな容量にサイズ調整する必要があります。 手動 QoS 容量プールを使用する場合、ボリュームのサイズとスループットを個別に定義できます。 容量とスループットの両方が同じ容量プールから取得されるため、プールのサービス レベルとサイズは全体のパフォーマンスを提供できる十分な大きさにする必要があります (例については、[こちら](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)を参照してください)。
+3 つのすべての KPI が要求されるため、読み取りの最小要件を満たすには、 **/hana/data** のボリュームを、より大きな容量にサイズ調整する必要があります。 手動 QoS 容量プールを使用する場合、ボリュームのサイズとスループットを個別に定義できます。 容量とスループットの両方が同じ容量プールから取得されるため、プールのサービス レベルとサイズは全体のパフォーマンスを提供できる十分な大きさにする必要があります (例については、[こちら](../../../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type)を参照してください)。
 
 高帯域幅を必要としない HANA システムの場合、ボリューム サイズを小さくするか、手動で QoS を行う場合にはスループットを直接調整することで、ANF ボリュームのスループットを下げることができます。 また、HANA システムのスループットを向上させる必要がある場合は、容量をオンラインでサイズ変更することでボリュームを調整できます。 KPI は、バックアップ ボリュームに対しては定義されていません。 ただし、高パフォーマンスの環境には、バックアップ ボリュームのスループットが不可欠です。 ログ、およびデータ ボリュームのパフォーマンスは、顧客の期待に合わせて設計する必要があります。
 

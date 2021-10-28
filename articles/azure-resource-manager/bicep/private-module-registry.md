@@ -2,13 +2,13 @@
 title: Bicep モジュール用のプライベート レジストリを作成する
 description: プライベート Bicep モジュール用に Azure コンテナー レジストリを設定する方法について説明します
 ms.topic: conceptual
-ms.date: 10/14/2021
-ms.openlocfilehash: ccdb8685fe230f19e31ce2802f7c9fc54a33a8a0
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.date: 10/22/2021
+ms.openlocfilehash: 1f14b29fb9d6740d661f74328c82758a74427355
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138715"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224070"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Bicep モジュール用のプライベート レジストリを作成する (プレビュー)
 
@@ -73,5 +73,5 @@ az bicep publish storage.bicep --target br:exampleregistry.azurecr.io/bicep/modu
 ## <a name="next-steps"></a>次のステップ
 
 * モジュールの詳細については、「[Bicep モジュール](modules.md)」を参照してください。
-* モジュール レジストリのエイリアスを構成するには、「[Bicep 構成ファイルにカスタム設定を追加する](private-module-registry.md)」を参照してください。
+* モジュール レジストリのエイリアスを構成するには、「[Bicep 構成ファイルにカスタム設定を追加する](bicep-config.md)」を参照してください。
 * モジュールの公開と復元の詳細については、「[Bicep CLI コマンド](bicep-cli.md)」を参照してください。

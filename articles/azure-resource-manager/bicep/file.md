@@ -3,12 +3,12 @@ title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 10/07/2021
-ms.openlocfilehash: 8cdeb75aa676b9121d69ba8bf612067157328ee0
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 7fa9126326bc1bc3922379c52a937013a33abd13
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067157"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216316"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -295,7 +295,7 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 
 `batchSize` デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「**sys**: `@sys.batchSize(2)`」を付けます。
 
-詳細については、[「バッチでのデプロイ」](loop-resources.md#deploy-in-batches)を参照してください。
+詳細については、[「バッチでのデプロイ」](loops.md#deploy-in-batches)を参照してください。
 
 ## <a name="outputs"></a>出力
 

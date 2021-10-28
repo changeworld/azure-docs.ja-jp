@@ -9,12 +9,12 @@ ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cced212913ad8f31f71445a6bf3e70fc3bb3f8e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b7d6605f1a387a917c9d106078ead404842ea02c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743125"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251929"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -172,7 +172,7 @@ Azure-SSIS IR を Azure Virtual Network に参加させる場合、特定の IP 
 | The provided static public IP address is already used, please provide two unused ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは既に使用されています。Azure-SSIS Integration Runtime 向けに未使用の IP アドレスを 2 つ指定してください。) | 未使用の静的パブリック IP アドレスを 2 つ選択するか、指定したパブリック IP アドレスへの現在の参照を削除してから、Azure-SSIS IR を再起動してください。 |
 | The provided static public IP address has no DNS name, please provide two of them with DNS name for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスには DNS 名が設定されていません。Azure-SSIS Integration Runtime 向けに、これら 2 つに DNS 名を指定してください。) | 下図に示すように、Azure portal でパブリック IP アドレスの DNS 名を設定できます。 具体的な手順は次のとおりです。(1) Azure portal を開き、目的のパブリック IP アドレスのリソース ページに移動します。(2) **[構成]** セクションを選択して DNS 名を設定し、 **[保存]** ボタンをクリックします。(3) Azure-SSIS IR を再起動します。 |
 | The provided VNet and static public IP addresses for your Azure-SSIS Integration Runtime must be in the same location. (Azure-SSIS Integration Runtime に指定する VNet と静的パブリック IP アドレスは、同じ場所内に存在する必要があります。) | Azure ネットワークの要件に従い、静的パブリック IP アドレスと仮想ネットワークは、同じ場所およびサブスクリプション内に存在する必要があります。 有効な静的パブリック IP アドレスを 2 つ指定し、Azure-SSIS IR を再起動してください。 |
-| The provided static public IP address is a basic one, please provide two standard ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは Basic のものです。Azure-SSIS Integration Runtime では Standard の IP アドレスを 2 つ指定してください。) | 詳細については、[パブリック IP アドレスの SKU](../virtual-network/public-ip-addresses.md#sku) に関するセクションを参照してください。 |
+| The provided static public IP address is a basic one, please provide two standard ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは Basic のものです。Azure-SSIS Integration Runtime では Standard の IP アドレスを 2 つ指定してください。) | 詳細については、[パブリック IP アドレスの SKU](../virtual-network/ip-services/public-ip-addresses.md#sku) に関するセクションを参照してください。 |
 
 :::image type="content" source="media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png" alt-text="Azure-SSIS IR":::
 

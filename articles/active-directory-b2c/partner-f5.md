@@ -10,12 +10,12 @@ ms.subservice: B2C
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 23db323f2fe34646f02fd82963f89bee085e3216
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 1db63555d2bf0ad8cfedcdfe90ba2ebae14292ee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071494"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253920"
 ---
 # <a name="tutorial-extend-azure-active-directory-b2c-to-protect-on-premises-applications-using-f5-big-ip"></a>チュートリアル: F5 BIG-IP を使用してオンプレミスのアプリケーションを保護するように Azure Active Directory B2C を拡張する
 
@@ -146,7 +146,7 @@ BIG-IP には Azure AD のセキュリティ保護されたハイブリッド �
 ### <a name="ssl-profiles"></a>SSL プロファイル
 
 クライアントの SSL プロファイルを使用して BIG-IP を構成すると、TLS 経由のクライアント側トラフィックをセキュリティ保護できます。 これを行うには、アプリケーションの公開 URL によって使用されるドメイン名と一致する証明書をインポートする必要があります。 可能であれば、公開証明機関を使用することをお勧めしますが、テスト時には組み込みの BIG-IP 自己署名証明書を使用することもできます。
-BIG-IP VE で[証明書を追加して管理](https://techdocs.f5.com/kb/products/big-ip_ltm/manuals/product/bigip-ssl-administration-13-0-0.html)します。
+BIG-IP VE で[証明書を追加して管理](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-ssl-administration-13-0-0.html)します。
 
 ## <a name="guided-configuration"></a>ガイド付き構成
 
@@ -427,4 +427,4 @@ Azure AD B2C では、さまざまな[メカニズム](session-behavior.md?pivot
   
   5. 最後に、左上隅の F5 のロゴの横にある黄色の **[Apply Access Policy]\(アクセス ポリシーを適用する\)** オプションを選択します。 それらの設定を適用し、**[Apply]\(適用\)** を再び選択してアクセス プロファイルの一覧を更新します。
 
-[OAuth クライアントとリソース サーバーのトラブルシューティングのヒント](https://techdocs.f5.com/bigip-16-1-0/big-ip-access-policy-manager-oauth-configuration/apm-oauth-client-and-resource-server.html#GUID-774384BC-CF63-469D-A589-1595D0DDFBA2)の詳細については、F5 のガイダンスを参照してください
+[OAuth クライアントとリソース サーバーのトラブルシューティングのヒント](https://techdocs.f5.com/en-us/bigip-14-1-0/big-ip-access-policy-manager-oauth-configuration-14-1-0/apm-oauth-client-and-resource-server.html#GUID-774384BC-CF63-469D-A589-1595D0DDFBA2)の詳細については、F5 のガイダンスを参照してください

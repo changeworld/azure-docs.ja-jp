@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a68a523a2a5ce14c9fccd2750eb9523b4c5281d
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: e1b7574e38146f9f175a124928c23dfb0187bb71
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129807233"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257368"
 ---
 # <a name="tutorial---onboard-external-users-to-azure-ad-through-an-approval-process"></a>チュートリアル - 承認プロセスを通じて Azure AD に外部ユーザーをオンボードする
 
@@ -130,4 +130,4 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーションやサイトなどの他の種類のリソースへのアクセスを管理するための、アクセス パッケージの作成について説明します。 [チュートリアル:Azure AD エンタイトルメント管理でリソースへのアクセスを管理する](/azure/active-directory/governance/entitlement-management-access-package-first)
+アプリケーションやサイトなどの他の種類のリソースへのアクセスを管理するための、アクセス パッケージの作成について説明します。 [チュートリアル:Azure AD エンタイトルメント管理でリソースへのアクセスを管理する](./entitlement-management-access-package-first.md)

@@ -8,12 +8,12 @@ manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 10/08/2021
-ms.openlocfilehash: d480696acf10586f41aa9c5c70a8dcf6e2c7651f
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 7f5ad896307466363845c66c89136879e4f92a96
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070016"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227475"
 ---
 # <a name="configure-your-tenant-for-azure-ad-verifiable-credentials-preview"></a>Azure AD の検証可能な資格情報のためのテナントを構成する (プレビュー)
 
@@ -67,7 +67,7 @@ Request Service API のためのサービス プリンシパルを作成しま�
 
 ## <a name="step-2-create-a-key-vault"></a>手順 2. Key Vault の作成
 
-[Azure Key Vault](/azure/key-vault/general/basic-concepts) は、シークレットとキーを安全に保管しアクセスできるようにするクラウド サービスです。 検証可能な資格情報サービスでは、Azure Key Vault に公開キーと秘密キーが格納されます。 これらのキーは、資格情報の署名と検証に使用されます。
+[Azure Key Vault](../../key-vault/general/basic-concepts.md) は、シークレットとキーを安全に保管しアクセスできるようにするクラウド サービスです。 検証可能な資格情報サービスでは、Azure Key Vault に公開キーと秘密キーが格納されます。 これらのキーは、資格情報の署名と検証に使用されます。
 
 Azure Key Vault のインスタンスがない場合は、次の手順に従って、Azure portal を使用してキー コンテナーを作成します。
 
@@ -78,7 +78,7 @@ Azure Key Vault のインスタンスがない場合は、次の手順に従っ�
 
 Azure の検証可能な資格情報サービスをオンボードすると、このサービスによって、メッセージ セキュリティを提供するために使用されるキーのセットが生成されます。 これらのキーは、キー コンテナーに格納されます。 発行するか検証するかにかかわらず、検証可能な資格情報の署名、更新、復旧にはキー セットが引き続き使用されます。
 
-Key Vault の[アクセス ポリシー](/azure/key-vault/general/assign-access-policy)では、指定されたセキュリティ プリンシパルによって、Key Vault のシークレットとキーの操作を実行できるかどうかが定義されます。 Azure AD の検証可能な資格情報サービスの管理者アカウントと、作成した Request Service API プリンシパルの両方について、Azure Key Vault にアクセス ポリシーを設定します。
+Key Vault の[アクセス ポリシー](../../key-vault/general/assign-access-policy.md)では、指定されたセキュリティ プリンシパルによって、Key Vault のシークレットとキーの操作を実行できるかどうかが定義されます。 Azure AD の検証可能な資格情報サービスの管理者アカウントと、作成した Request Service API プリンシパルの両方について、Azure Key Vault にアクセス ポリシーを設定します。
 
 1. [Azure portal](https://portal.azure.com/) で、このチュートリアルで使用する **Key Vault** に移動します。
 

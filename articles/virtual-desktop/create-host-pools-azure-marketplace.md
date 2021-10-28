@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8e33c165cd249b578bd4cba9ef4f25446287d7ec
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cf379d2eb5c20c8f8922631d5a467e961ea8f800
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124766447"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228470"
 ---
 # <a name="tutorial-create-a-host-pool"></a>チュートリアル: ホスト プールを作成する
 
@@ -155,7 +155,7 @@ Azure portal のホスト プール セットアップ プロセス中に仮想�
 
 3. 仮想マシンを作成する **仮想マシンの場所** を選択します。 これらは、ホスト プール用に選択したリージョンと同じでも、異なっていてもかまいません。 VM の価格はリージョンによって異なることに注意してください。また、可能であれば VM の場所をユーザーの近くにして、パフォーマンスを最大限に高めることをお勧めします。 詳細については、「[Azure Virtual Desktop のデータの場所](data-locations.md)」を参照してください。
    
-4. 次に、実際のニーズに最も合った可用性オプションを選択します。 どのオプションが適しているかの詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/availability.md)」と [FAQ](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me) ご覧ください。
+4. 次に、実際のニーズに最も合った可用性オプションを選択します。 どのオプションが適しているかの詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/availability.md)」と [FAQ](./faq.yml#which-availability-option-is-best-for-me-) ご覧ください。
    
    > [!div class="mx-imgBorder"]
    > ![可用性ゾーンのドロップダウン メニューのスクリーンショット。 可用性ゾーン オプションが強調表示されています。](media/availability-zone.png)
@@ -182,7 +182,7 @@ Azure portal のホスト プール セットアップ プロセス中に仮想�
 
     - **[Storage Blob]\(ストレージ BLOB\)** を選択した場合は、Hyper-V または Azure VM で独自のイメージ ビルドを利用できます。 ストレージ BLOB 内のイメージの場所を URI として入力するだけでかまいません。
    
-   イメージの場所は可用性オプションに依存しませんが、イメージのゾーンの回復性によって、そのイメージを可用性ゾーンで使用できるかどうかが決まります。 イメージの作成中に可用性ゾーンを選択する場合は、ゾーンの回復性が有効になっているギャラリーのイメージを使用していることを確認してください。 ゾーンの回復性オプションのどれを使用すべきかの詳細については、[FAQ](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me) をご覧ください。
+   イメージの場所は可用性オプションに依存しませんが、イメージのゾーンの回復性によって、そのイメージを可用性ゾーンで使用できるかどうかが決まります。 イメージの作成中に可用性ゾーンを選択する場合は、ゾーンの回復性が有効になっているギャラリーのイメージを使用していることを確認してください。 ゾーンの回復性オプションのどれを使用すべきかの詳細については、[FAQ](./faq.yml#which-availability-option-is-best-for-me-) をご覧ください。
 
 6. その後、使用する **仮想マシンのサイズ** を選択します。 既定のサイズのままにすることも、 **[サイズの変更]** を選択してサイズを変更することもできます。 **[サイズの変更]** を選択した場合は、表示されるウィンドウで、ワークロードに適した仮想マシンのサイズを選択してください。 仮想マシンのサイズと選択する必要があるサイズの詳細については、「[仮想マシンのサイズ設定ガイドライン](/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context)」を参照してください。
 

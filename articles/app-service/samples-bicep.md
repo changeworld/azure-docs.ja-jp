@@ -7,16 +7,16 @@ ms.topic: sample
 ms.date: 8/26/2021
 ms.author: jordanselig
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: de66f32afb86da526765016e9b8feca7d5ada337
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: c6423d3f77e85918f02bc64224dba86488b7323d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059101"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224279"
 ---
 # <a name="bicep-files-for-app-service"></a>App Service の Bicep ファイル
 
-次の表には、Azure App Service の Bicep ファイルへのリンクが含まれています。 Bicep のクイックスタートと詳細については、[Bicep のドキュメント](/azure/azure-resource-manager/bicep/)を参照してください。
+次の表には、Azure App Service の Bicep ファイルへのリンクが含まれています。 Bicep のクイックスタートと詳細については、[Bicep のドキュメント](../azure-resource-manager/bicep/index.yml)を参照してください。
 
 App Services リソースの Bicep 構文とプロパティについては、「[Microsoft.Web resource types (Microsoft.Web リソースの種類)](/azure/templates/microsoft.web/allversions)」を参照してください。
 

@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/14/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: c92a573bfa2f17fcf053f9f1d7599e1e802c8c12
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: b6cdeff69c1d9a919651d68b937af1c7b328edbe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167759"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257957"
 ---
 # <a name="migrate-deployments-and-resources-to-virtual-machine-scale-sets-in-flexible-orchestration"></a>フレキシブル オーケストレーションでデプロイとリソースを仮想マシン スケール セットに移行する 
 
@@ -102,7 +102,7 @@ ms.locfileid: "130167759"
 - Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
 - ストレージ アカウントまたは Key Vault にアクセスする。 Azure サービスへの接続は、[プライベート リンク](../private-link/private-link-overview.md)を使用して確立することもできます。 
 
-セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](https://aka.ms/defaultoutboundaccess)」を参照してください。
+セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](../virtual-network/ip-services/default-outbound-access.md)」を参照してください。
 
 > [!IMPORTANT]
 > 明示的な送信ネットワーク接続があることを確認します。 詳細については、「[Azure の仮想ネットワークと仮想マシン](../virtual-network/network-overview.md)」を参照し、Azure のネットワークの[ベスト プラクティス](../virtual-network/concepts-and-best-practices.md)に従っていることを確認してください。 

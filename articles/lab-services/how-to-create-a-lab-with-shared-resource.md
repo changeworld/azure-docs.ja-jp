@@ -5,12 +5,12 @@ author: emaher
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 6436a157c91c7594cd328be53dfaf6e0856412dd
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: efd33b95bd1a32c73712c7f094107717b4e5b973
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130180668"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225777"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services で共有リソースを使用してラボを作成する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "130180668"
 ライセンス サーバーは、ラボとピアリングされた仮想ネットワークに接続する必要があるため、ラボ アカウントと同じリージョンに配置する必要があります。
 
 #### <a name="static-private-ip-and-mac-address"></a>静的プライベート IP および MAC アドレス
-既定では、仮想マシンは動的プライベート IP を持つため、[ソフトウェアを設定する前に、プライベート IP を静的に設定します](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 これにより、プライベート IP と MAC アドレスが静的に設定されます。  
+既定では、仮想マシンは動的プライベート IP を持つため、[ソフトウェアを設定する前に、プライベート IP を静的に設定します](../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md)。 これにより、プライベート IP と MAC アドレスが静的に設定されます。  
 
 #### <a name="control-access"></a>アクセスを制御する
 ライセンス サーバーへのアクセスを制御することは重要です。  VM をセットアップした後も、メンテナンス、トラブルシューティング、および更新のためにアクセスが必要になります。  これを行うには、いくつかの方法があります。

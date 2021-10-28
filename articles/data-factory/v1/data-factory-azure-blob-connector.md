@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 02b51ff93b14adcbf0dc4c628421a7521fdc49c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 67a66e618206b182983ada474b1f0d3788526e1e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599812"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223913"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -206,14 +206,14 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     8. **[次へ]** をクリックします。
         :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-properties-page.png" alt-text="コピー ツール - [プロパティ] ページ":::
 3. **[Source data store (ソース データ ストア)]** ページで、 **[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 既存のデータ ストアのリンクされたサービスを使用するか、新しいデータ ストアを指定できます。 既存のリンクされたサービスを使用するには、 **[FROM EXISTING LINKED SERVICES (既存のリンクされたサービスから)]** を選択し、適切なリンクされたサービスを選択します。
-    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png" alt-text="コピー ツール - [ソース データ ストア] ページ":::
+    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png" alt-text="Copy Tool - Source data store page":::
 4. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。
     1. **[接続名]** は、自動生成された名前のままにします。 接続名は、リンクされたサービスの種類の名前である Azure Storage です。
     2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
     3. 使用している Azure サブスクリプションを選択するか、 **[Azure サブスクリプション]** で設定されている **[すべて選択]** をそのまま使用します。
     4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント** を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、 **[Account selection method (アカウントの選択方法)]** で **[手動で入力]** オプションを選択します。
     5. **[次へ]** をクリックします。  
-        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png" alt-text="コピー ツール - Azure BLOB ストレージ アカウントの指定":::
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png" alt-text="Copy Tool - Specify the Azure Blob storage account":::
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
     1. **[adfblobcontainer]** をダブルクリックします。
     2. **[input]** を選択し、 **[選択]** をクリックします。 このチュートリアルでは、input フォルダーを選択します。 フォルダーではなく、emp.txt ファイルも選択することもできます。
@@ -237,7 +237,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     3. ページの下部で、emp.txt ファイルのデータの **プレビュー** を確認します。
     4. 下部の **[スキーマ]** タブをクリックし、コピー元ファイルのデータからコピー ウィザードが推測したスキーマを確認します。
     5. 区切り記号を確認し、データをプレビューしたら、 **[次へ]** をクリックします。
-    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png" alt-text="コピー ツール - ファイル形式の設定":::
+    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png" alt-text="Copy Tool - File format settings":::
 8. **[Destination data store (コピー先データ ストア)]** ページで **[Azure Blob Storage]** を選択し、 **[次へ]** をクリックします。 このチュートリアルでは、コピー元データ ストアおよびコピー先データ ストアとして Azure Blob Storage を使用しています。  
     :::image type="content" source="media/data-factory-azure-blob-connector/select-destination-data-store.png" alt-text="コピー ツール - コピー先データ ストアの選択":::
 9. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。  

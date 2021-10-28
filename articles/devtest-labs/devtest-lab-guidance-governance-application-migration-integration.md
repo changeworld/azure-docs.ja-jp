@@ -4,12 +4,12 @@ description: この記事では、アプリケーションの移行と統合の�
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 3dbd2e45074d78bbef535773c17b7036fcaf3e72
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a76da1aa62444c3bf7b9cd99216779774766299a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606421"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251758"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
@@ -50,14 +50,14 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 カスタム組織イメージを DevTest Labs 環境に展開する簡単に反復可能なプロセスをセットアップするにはどうすればよいですか。
 
 ### <a name="answer"></a>回答
-[イメージ ファクトリ パターンに関するこちらのビデオ](/azure/devtest-labs/devtest-lab-faq#blog-post)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
+[イメージ ファクトリ パターンに関するこちらのビデオ](./devtest-lab-faq.yml#blog-post)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
 
 DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ パイプラインを作成します。
 
-- [概要: Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](/azure/devtest-labs/devtest-lab-faq#blog-post)
-- [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](/azure/devtest-labs/devtest-lab-faq#blog-post)
-- [イメージ ファクトリ – パート 3: カスタム イメージを保存して複数のラボに配布する](/azure/devtest-labs/devtest-lab-faq#blog-post)
-- [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](/azure/devtest-labs/devtest-lab-faq#blog-post)
+- [概要: Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](./devtest-lab-faq.yml#blog-post)
+- [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](./devtest-lab-faq.yml#blog-post)
+- [イメージ ファクトリ – パート 3: カスタム イメージを保存して複数のラボに配布する](./devtest-lab-faq.yml#blog-post)
+- [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](./devtest-lab-faq.yml#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン
 

@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.topic: article
 ms.date: 8/26/2021
 ms.custom: subject-terraform
-ms.openlocfilehash: 33aea508bd636ebb1b37cd2c9120d9fdb863460d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d41b61252abd3e914239a28e78564128a4fbf32d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061952"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227152"
 ---
 # <a name="create-app-service-app-using-a-terraform-template"></a>Terraform テンプレートを使用して App Service アプリを作成する
 
@@ -146,10 +146,10 @@ Terraform には、インフラストラクチャを管理、構築、デプロ�
 不要になったら、[リソース グループを削除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)するか、ご自身のターミナル/コマンド ラインに戻って `terraform destroy` を実行し、このクイックスタートに関連付けられているすべてのリソースを削除します。
 
 > [!NOTE]
-> Azure App Service のその他の Terraform のサンプルについては、[こちら](/azure/app-service/samples-terraform)を参照してください。 [こちら](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples)からは、すべての Azure サービスのその他の Terraform サンプルをご確認いただくことができます。
+> Azure App Service のその他の Terraform のサンプルについては、[こちら](./samples-terraform.md)を参照してください。 [こちら](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples)からは、すべての Azure サービスのその他の Terraform サンプルをご確認いただくことができます。
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure での Terraform の使用について詳細を参照](/azure/terraform)
 > [!div class="nextstepaction"] 
-> [Azure App Service の Terraform サンプル](/azure/app-service/samples-terraform)
+> [Azure App Service の Terraform サンプル](./samples-terraform.md)

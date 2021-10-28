@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c38c1ec60b3a7fbeb65f85e4560c4495ab93a031
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6ca686a9fcf2b2ba290e14687f090f833714502c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754811"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225179"
 ---
 # <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>Azure Private Link を使用してマネージド ディスクに対するインポートおよびエクスポートのアクセスを制限する
 
@@ -119,5 +119,5 @@ Private Link を使用してマネージド ディスクをエクスポートお
 
 - VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) または [Azure PowerShell モジュール](windows/disks-upload-vhd-to-managed-disk-powershell.md)
 - VHD をダウンロードする - [Windows](windows/download-vhd.md) または [Linux](linux/download-vhd.md)
-- [プライベート リンクとマネージド ディスクに関する FAQ](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- [プライベート リンクとマネージド ディスクに関する FAQ](./faq-for-disks.yml)
 - [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

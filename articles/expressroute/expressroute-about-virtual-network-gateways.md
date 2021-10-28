@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 672fac2b33ef1d8fd9be1948d0c7da332f8ce43b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 719ad0681e9d66828fc0e030394a2c910017a3ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733858"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259563"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute の仮想ネットワーク ゲートウェイについて
 
@@ -109,11 +109,6 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 * ErGw3AZ
 
 新しいゲートウェイ SKU では、ニーズに最も適したその他のデプロイ オプションもサポートされます。 新しいゲートウェイ SKU を使用して仮想ネットワーク ゲートウェイを作成する場合、特定のゾーン内にゲートウェイをデプロイするオプションもあります。 これは、ゾーン ゲートウェイと呼ばれます。 ゾーン ゲートウェイをデプロイすると、すべてのゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。
-
-> [!IMPORTANT]
-> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、デュアル スタックのゲートウェイ サブネットにデプロイするゲートウェイに対して AZ SKU を選択してください。
-> 
->
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 

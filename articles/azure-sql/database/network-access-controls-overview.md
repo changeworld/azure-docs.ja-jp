@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 1640cfae4925c1ef3699ea72778e392e4249db9b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 970e20135fab85cbcc6c67a7add1ca7527cefba6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666603"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260438"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御
 
@@ -131,7 +131,7 @@ IP ベースのファイアウォールは、Azure の論理 SQL サーバーの
 
 Azure SQL Database のファイアウォールでは、SQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 ただし、Azure プライベート ネットワーク内の仮想マシン (VM) では、"*動的*" IP アドレスが構成されます。 VM を再起動したときに動的 IP アドレスが変化し、その結果 IP ベースのファイアウォール規則が無効になることがあります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-この制限は、VM の "*静的*" IP アドレスを取得することで回避できます。 詳細については、「[Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)」を参照してください。 ただし、静的 IP の方法は管理が困難になる場合があり、大規模に実行した場合、コストがかかります。
+この制限は、VM の "*静的*" IP アドレスを取得することで回避できます。 詳細については、「[Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する](../../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-portal.md)」を参照してください。 ただし、静的 IP の方法は管理が困難になる場合があり、大規模に実行した場合、コストがかかります。
 
 仮想ネットワーク規則は、対象の VM を含む特定のサブネットからのアクセスを確立および管理するためのより簡単な代替手段です。
 

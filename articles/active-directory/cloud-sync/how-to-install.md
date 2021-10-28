@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/10/2021
+ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11428df3662bb03d7d74decbd7230be0fdffa44f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4a34bda9f5f25d31dec881bd6ea1e00442fbfafc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124742653"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217167"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect プロビジョニング エージェントをインストールする
 この記事では、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で初期構成する方法について説明します。
@@ -32,7 +32,7 @@ ms.locfileid: "124742653"
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mR]
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-グループ管理サービス アカウント (gMSA) は、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、および管理を他の管理者に委任する機能を提供する、マネージド ドメイン アカウントです。 また、この機能は複数のサーバーにも拡張されます。 Azure AD Connect Cloud Sync では、エージェントの実行にグループ管理サービス アカウントを使用することがサポートされ、またこれが推奨されています。 グループの管理されたサービス アカウントの詳細については、「[グループの管理されたサービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)」を参照してください。
+グループ管理サービス アカウント (gMSA) は、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、および管理を他の管理者に委任する機能を提供する、マネージド ドメイン アカウントです。 また、この機能は複数のサーバーにも拡張されます。 Azure AD Connect Cloud Sync では、エージェントの実行にグループ管理サービス アカウントを使用することがサポートされ、またこれが推奨されています。 グループの管理されたサービス アカウントの詳細については、「[グループの管理されたサービス アカウント](how-to-prerequisites.md#group-managed-service-accounts)」を参照してください。
 
 
 ### <a name="upgrade-an-existing-agent-to-use-the-gmsa"></a>gMSA を使用するよう既存のエージェントをアップグレードする

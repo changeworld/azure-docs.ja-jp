@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: 4bb6bf44de0dc98d0a7febbd22e42eea2fa838d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b585e21a5c8daa425a52d3212dec6ddfb64934f9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671756"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215898"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>クイックスタート: 通話アプリを Teams の会議に参加させる
 
@@ -55,5 +55,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [通話のヒーロー サンプル](../../samples/calling-hero-sample.md)を確認する
-- [Calling SDK の機能](./calling-client-samples.md)について確認する
+- [Calling SDK の機能](./getting-started-with-calling.md)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

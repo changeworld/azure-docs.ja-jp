@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 02a568d48ca99a58778adfd4068c359b4748ab43
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 639386e1a64ff40375fac5baafc10b6a3a1cb84d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178451"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227057"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -121,7 +121,7 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 ![ブックの例](media/overview/workbooks.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) は、さまざまなデータ ソースにわたって対話的な視覚化を提供するビジネス分析サービスです。 組織内外の他のユーザーがデータを使用できるようにする効果的な手段です。 [Azure Monitor からログ データを自動的にインポート](./visualize/powerbi.md)するように Power BI を構成すると、そのデータも追加で視覚化することができます。
+[Power BI](https://powerbi.microsoft.com) は、さまざまなデータ ソースにわたって対話的な視覚化を提供するビジネス分析サービスです。 組織内外の他のユーザーがデータを使用できるようにする効果的な手段です。 [Azure Monitor からログ データを自動的にインポート](./logs/log-powerbi.md)するように Power BI を構成すると、そのデータも追加で視覚化することができます。
 
 
 ![Power BI](media/overview/power-bi.png)

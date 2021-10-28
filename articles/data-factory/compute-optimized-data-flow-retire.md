@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 06/29/2021
-ms.openlocfilehash: 2ef5e68f9629feab42a4417b4e08697038947495
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 781841ff8a65d36a9ed712efa5d0bdf8480995bf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661832"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229372"
 ---
 # <a name="retirement-of-data-flow-compute-optimized-option"></a>データ フロー コンピューティング最適化オプションの廃止
 
@@ -38,5 +38,5 @@ Azure Data Factory と Azure Synapse Analytics のデータ フローでは、�
 | コンピューティング最適化データ フロー (非推奨) | 運用環境のワークロードにはお勧めしません |
 
 * [Azure Data Factory の価格ページで、General Purpose とメモリ最適化のデータ フローに対して用意された最新の更新済み価格を参照する](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
-* [こちらのデータ フローの FAQ で詳細情報を見つける](/azure/data-factory/frequently-asked-questions#mapping-data-flows)  
+* [こちらのデータ フローの FAQ で詳細情報を見つける](./frequently-asked-questions.yml#mapping-data-flows)  
 * [Microsoft Q&A でデータ フローに関する質問を投稿し、回答を見つける](https://aka.ms/datafactoryqa)

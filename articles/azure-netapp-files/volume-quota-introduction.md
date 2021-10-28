@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: d648630e02cbf8c1e7c771f77a3d2342fd9731f7
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ffcc36cecc4dbba32a8f3927ab88a5632018a9bb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294064"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219756"
 ---
 # <a name="understand-volume-quota"></a>ボリューム クォータについて
 
@@ -44,4 +44,4 @@ ms.locfileid: "108294064"
 * [Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)
 * [ボリュームの容量を監視する](monitor-volume-capacity.md)
 * [容量プールまたはボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)
-* [容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)
+* [容量管理に関する FAQ](faq-capacity-management.md)

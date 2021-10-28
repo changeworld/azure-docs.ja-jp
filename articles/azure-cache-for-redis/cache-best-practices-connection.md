@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: shpathak
-ms.openlocfilehash: 02b5c4bd42abc9c36ef971b053979d590d1e602d
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: dd7bb63204ccaa38379b49cfe3946372319dfc44
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808843"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252903"
 ---
 # <a name="connection-resilience"></a>接続の回復力
 
@@ -64,7 +64,7 @@ Linux の一部のバージョンでは、既定でオプティミスティッ�
 多くのクライアント インスタンスを再接続する場合は、接続されているクライアントの数が急増しないように、新しい接続のタイミングをずらすことを検討してください。
 
 > [!NOTE]
-> `StackExchange.Redis` クライアント ライブラリを使用する場合は、接続文字列で `abortConnect` を `false` に設定します。  `ConnectionMultiplexer` ハンドルの再接続を行うことをお勧めします。 詳細については、[StackExchange.Redis のベスト プラクティス](/azure/azure-cache-for-redis/cache-management-faq#stackexchangeredis-best-practices)に関するページを参照してください。
+> `StackExchange.Redis` クライアント ライブラリを使用する場合は、接続文字列で `abortConnect` を `false` に設定します。  `ConnectionMultiplexer` ハンドルの再接続を行うことをお勧めします。 詳細については、[StackExchange.Redis のベスト プラクティス](./cache-management-faq.yml#stackexchangeredis-best-practices)に関するページを参照してください。
 
 ## <a name="avoid-leftover-connections"></a>未使用の接続を避ける
 

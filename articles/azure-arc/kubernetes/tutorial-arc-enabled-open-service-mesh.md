@@ -6,12 +6,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: 16e13238ffd471678eab9bdd0245aa708b7c4419
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: d09bed41ff7553e79a4d05e616e07fabf85d71a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389363"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227133"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Azure Arc 対応 Open Service Mesh (プレビュー)
 
@@ -369,7 +369,7 @@ osm namespace add <namespace_name>
 
 ### <a name="configure-osm-with-service-mesh-interface-smi-policies"></a>Service Mesh Interface (SMI) ポリシーで OSM を構成する
 
-[デモ アプリケーション](https://docs.openservicemesh.io/docs/getting_started/quickstart/manual_demo/#deploy-applications)を確認することから始めてもかまいませんし、テスト環境で SMI ポリシーを試すこともできます。
+[デモ アプリケーション](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/quickstart/manual_demo/#deploy-applications)を確認することから始めてもかまいませんし、テスト環境で SMI ポリシーを試すこともできます。
 
 > [!NOTE] 
 > 実行する書店アプリのバージョンが、クラスターにインストールした OSM 拡張機能のバージョンと一致することを確認してください。 例: OSM 拡張機能の v0.8.4 を使用している場合は、OSM 上流リポジトリの release-v0.8 ブランチのブックストア デモを使用します。

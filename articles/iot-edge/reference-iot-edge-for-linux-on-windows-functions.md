@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 93a217a88b75ec6c472972d3f12cb33e33561f2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cfa116f91978ea5f9bc076c7d666a0428f3b6c72
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128579787"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259188"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows 用の PowerShell 関数
 
@@ -176,7 +176,7 @@ Get-EflowVM | Select -ExpandProperty VmConfiguration | Format-List
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
-| コマンドを使用します | String | VM で実行されるコマンド。 |
+| command | String | VM で実行されるコマンド。 |
 | ignoreError | なし |  このフラグを指定した場合、コマンドからのエラーが無視されます。 |
 
 詳細については、コマンド `Get-Help Invoke-EflowVmCommand -full` を使用してください。
@@ -257,4 +257,4 @@ Get-EflowVM | Select -ExpandProperty VmConfiguration | Format-List
 
 次の記事で、これらのコマンドを使用して IoT Edge for Linux on Windows をインストールおよびプロビジョニングする方法を確認します。
 
-* [Azure IoT Edge for Linux on Windows をインストールする](./how-to-install-iot-edge-on-windows.md)
+* [Azure IoT Edge for Linux on Windows をインストールする](./how-to-provision-single-device-linux-on-windows-symmetric.md)

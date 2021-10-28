@@ -6,12 +6,12 @@ author: an-emma
 ms.author: raan
 ms.topic: how-to
 ms.date: 03/15/2021
-ms.openlocfilehash: 544abb1e39710330d8d2529a83349c8669deae40
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0e632298c616c124cdd10b7a35672661bcde2d91
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638256"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258147"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack"></a>Azure Stack での Azure Stream Analytics の実行
 
@@ -41,8 +41,8 @@ IoT Edge デバイスまたは VM では、Azure Stack Hub リソースへのネ
 
 次の記事では、デバイスまたは VM で IoT Edge ランタイムを設定する方法について説明します。
 
-* [Windows に Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge.md)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge.md)
+* [Windows に Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 
 
 ## <a name="create-an-azure-stream-analytics-edge-job"></a>Azure Stream Analytics Edge ジョブを作成する

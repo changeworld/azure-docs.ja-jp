@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: 3dbf8b3e15380b1e267be4f1b4af382aa9097a48
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1581742e599c24f69e6aa56bf7caf694726ae66
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745089"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225645"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -91,7 +91,6 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
     | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
     | Kubernetes クラスターで API 資格情報の自動マウントを無効にする必要がある             | アクセスおよびアクセス許可の管理            | No                     |
     | コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある     | アクセスおよびアクセス許可の管理            | No                     |
-    | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
     | コンテナーをルート ユーザーとして実行しない                           | アクセスおよびアクセス許可の管理            | No                     |
     | 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある              | アクセスおよびアクセス許可の管理            | No                     |
     | コンテナーの CPU とメモリの制限を強制する必要がある                          | DDoS 攻撃からのアプリケーションの保護 | No                     |

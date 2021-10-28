@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 188e40f9bc3d2d23035549578cdc6440af60a3e5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: ab19ecb14f3aa7701205e038fe59b92e297decbd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359243"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262966"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Java アプリケーションを Azure VM と仮想マシン スケール セット上の JBoss EAP に移行する方法
 
@@ -237,7 +237,7 @@ JMS 永続ストアが構成されている場合は、それらの構成を把�
 
 お使いの環境に適した次の方法を使用して、アプリケーションを公開できます。
 
-* サーバーとアプリケーションにアクセスするための[パブリック IP を作成](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)します。
+* サーバーとアプリケーションにアクセスするための[パブリック IP を作成](../../../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address)します。
 * 同じ Virtual Network (VNet) 内の別のサブネット (新しいサブネット) に、[同じ Virtual Network 内のジャンプ VM を作成](../../windows/quick-create-portal.md#create-virtual-machine)し、ジャンプ VM 経由でサーバーにアクセスします。 このジャンプ VM は、アプリケーションを公開するために使用できます。
 * 別の Virtual Network で [VNet ピアリングを使用してジャンプ VM を作成](../../windows/quick-create-portal.md#create-virtual-machine)し、サーバーにアクセスして、[仮想ネットワーク ピアリング](../../../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks)を使用してアプリケーションを公開します。
 * [Application Gateway](../../../application-gateway/quick-create-portal.md#create-an-application-gateway) を使用してアプリケーションを公開します

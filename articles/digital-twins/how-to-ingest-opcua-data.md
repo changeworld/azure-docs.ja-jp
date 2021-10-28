@@ -7,12 +7,12 @@ ms.author: dahellem
 ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be6d4dd328d3b8cd0f02bede7bcba7b6a4e32ae9
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 41ae76350ef5483323edd0a5b244c3b64e08c674
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534537"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263922"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>Azure Digital Twins を使用した OPC UA データの取り込み
 
@@ -61,7 +61,7 @@ OPC UA サーバーのデータを Azure Digital Twins に送るには、異な�
 
 これらの各要素のインストールの詳細については、次のリソースを参照してください。
 * [Azure IoT Edge に OPC Publisher をインストールするためのステップバイステップ ガイド](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
-* [Linux に IoT Edge をインストールする](../iot-edge/how-to-install-iot-edge.md) 
+* [Linux に IoT Edge をインストールする](../iot-edge/how-to-provision-single-device-linux-symmetric.md) 
 * [GitHub の OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)
 * [OPC Publisher の構成](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 
@@ -163,7 +163,7 @@ OPC UA サーバーのデータを IoT Hub に取り込むには、OPC Publisher
 
 #### <a name="install-iot-edge-container"></a>IoT Edge コンテナーのインストール
 
-[Linux に IoT Edge をインストールする](../iot-edge/how-to-install-iot-edge.md)手順に従います。
+[Linux に IoT Edge をインストールする](../iot-edge/how-to-provision-single-device-linux-symmetric.md)手順に従います。
 
 インストールが完了したら、次のコマンドを実行してインストールの状態を確認します。
 
@@ -436,7 +436,7 @@ az webapp log tail –name <function-name> --resource-group <resource-group-name
 次に、以下のリソースを使用して、この記事で使用されたサポート ツールおよびプロセスの詳細を確認してください。
 
 * [Azure IoT Edge に OPC Publisher をインストールするためのステップバイステップ ガイド](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
-* [Linux に IoT Edge をインストールする](../iot-edge/how-to-install-iot-edge.md) 
+* [Linux に IoT Edge をインストールする](../iot-edge/how-to-provision-single-device-linux-symmetric.md) 
 * [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)
 * [OPC Publisher の構成](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 * [UANodeSetWebViewer](https://github.com/barnstee/UANodesetWebViewer) 

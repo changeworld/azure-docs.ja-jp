@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 76f65bffb2762735424084561dc0098f128bb7a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4dd60b3cf5a0e4ff6398a4f8304d24a1d910ad46
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548677"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252746"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL insights を使用して SQL デプロイを監視する (プレビュー)
 SQL Insights は、[Azure SQL ファミリ](../../azure-sql/index.yml)のあらゆる製品を監視するための包括的なソリューションです。 SQL Insights では、[動的管理ビュー](../../azure-sql/database/monitoring-with-dmvs.md)を使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。  
@@ -47,7 +47,7 @@ SQL insights では、次の環境で実行されている SQL Server がサポ�
 SQL insights では、次のサポートがないか、サポートが制限されています。
 - **Azure 以外のインスタンス**: Azure の外部の仮想マシンで実行されている SQL Server はサポートされていません。
 - **エラスティック プールの Azure SQL Database**: エラスティック プールまたはエラスティック プール内のデータベースのメトリックを収集することはできません。
-- **Azure SQL Database の低サービス レベル**: Basic、S0、S1、S2 の各[サービス レベル](../../azure-sql/database/resource-limits-dtu-single-databases.md)のデータベースのメトリックは収集できません。
+- **Azure SQL Database の低サービス レベル**: Basic、S0、S1、S2 の各 [サービス レベル](../../azure-sql/database/resource-limits-dtu-single-databases.md)のデータベースのメトリックは収集できません。
 - **Azure SQL Database サーバーレス サービス レベル**: サーバーレス コンピューティング サービス レベルを使用するデータベースのメトリックは収集できます。 ただし、メトリックを収集するプロセスによって自動一時停止の延期期間タイマーがリセットされ、データベースが自動一時停止状態に入れなくなります。
 - **セカンダリ レプリカ**: メトリックは、データベースごとに 1 つのセカンダリ レプリカに対してのみ収集できます。 データベースに複数のセカンダリ レプリカがある場合、監視できるのは 1 つだけです。
 - **Azure Active Directory による認証**: 監視に対してサポートされている [認証](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization)方法は SQL 認証のみです。 Azure 仮想マシンの SQL Server の場合、カスタム ドメイン コントローラー上の Active Directory を使用した認証はサポートされていません。  
@@ -126,4 +126,4 @@ Azure SQL Database、Azure SQL Managed Instance、および SQL Server 用の、
 
 ## <a name="next-steps"></a>次のステップ
 
-- SQL Insights に関してよく寄せられる質問については、「[よく寄せられる質問](/azure/azure-monitor/faq#sql-insights-preview)」を参照してください。
+- SQL Insights に関してよく寄せられる質問については、「[よく寄せられる質問](../faq.yml)」を参照してください。

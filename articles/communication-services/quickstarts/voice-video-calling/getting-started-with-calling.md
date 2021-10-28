@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: 75adda39e2a36bcbe03ccc72216f274264624deb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 188cfe09aa75d79ef4e67b705ada0a1eec549231
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671673"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229638"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>クイック スタート:音声通話をアプリに追加する
 
@@ -49,5 +49,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [通話のヒーロー サンプル](../../samples/calling-hero-sample.md)を確認する
-- [Calling SDK の機能](./calling-client-samples.md)について確認する
+- [Calling SDK の機能]()について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

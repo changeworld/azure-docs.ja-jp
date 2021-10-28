@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: b-juche
-ms.openlocfilehash: a12df50ac6fe2e1dc2bf793316538a90ba0f901d
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 8fd2656af426464ccddfaed50124b4ba189254f9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114361337"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256345"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -118,8 +118,9 @@ NFSv4.1 ボリュームに使用できるセキュリティ オプション、�
 ## <a name="next-steps"></a>次のステップ  
 
 * [NFSv4.1 ボリュームでの Kerberos のパフォーマンスに対する影響](performance-impact-kerberos.md)
-* [NFSv4.1 Kerberos ボリュームの問題のトラブルシューティング](troubleshoot-nfsv41-kerberos-volumes.md)
-* [Azure NetApp Files についての FAQ](azure-netapp-files-faqs.md)
+* [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)
+* [NFS に関する FAQ](faq-nfs.md)
+* [パフォーマンスに関する FAQ](faq-performance.md)
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Active Directory 接続を作成する](create-active-directory-connections.md)
 * [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md) 

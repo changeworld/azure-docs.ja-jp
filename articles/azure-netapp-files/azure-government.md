@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 3e820abf824a9593c265fd7d9d4c6ccd9be5cb38
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 9e7986a0e040d0d8241fd33a2990d8bd82e51a4e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047591"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130230237"
 ---
 # <a name="azure-netapp-files-for-azure-government"></a>Azure Government 向け Azure NetApp Files 
 
@@ -46,7 +46,7 @@ Azure Government ユーザーは、ブラウザーを **portal.azure.us** にポ
 
 Microsoft Azure Government ポータルから、Azure portal でアクセスするのと同じ方法で、Azure NetApp Files にアクセスできます。たとえば、Azure portal の [リソースを検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。  
 
-サービスの使用の詳細については、[Azure NetApp Files](/azure/azure-netapp-files/) のドキュメントを参照してください。
+サービスの使用の詳細については、[Azure NetApp Files](./index.yml) のドキュメントを参照してください。
 
 ## <a name="azure-cli-access"></a>Azure CLI アクセス
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: 380fc6e56cab49056e148a3ca14c8973a0539c6d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a076c0af631a6f75dbab788cd3aac82ecd9722b7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367727"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251245"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLI を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -64,9 +64,9 @@ az network public-ip create \
 > [!NOTE]
 >  現在、ルーティング優先設定では IPV4 パブリック IP アドレスのみがサポートされています。
 
-上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](../../virtual-network/associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
+上で作成したパブリック IP アドレスを、[Windows](../../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンに関連付けることができます。 チュートリアル ページ「[仮想マシンへのパブリック IP アドレスの関連付け](./associate-public-ip-address-vm.md#azure-cli)」の CLI セクションを使用して、パブリック IP アドレスを VM に関連付けます。 上で作成したパブリック IP アドレスを、ロード バランサーの **フロントエンド** 構成に割り当てることで、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md) と関連付けることもできます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [パブリック IP アドレスでのルーティング優先設定](routing-preference-overview.md)について詳しく学習する。 
-- [Azure CLI を使用して VM 用にルーティング優先設定を構成する](../../virtual-network/configure-routing-preference-virtual-machine-cli.md)。
+- [Azure CLI を使用して VM 用にルーティング優先設定を構成する](./configure-routing-preference-virtual-machine-cli.md)。

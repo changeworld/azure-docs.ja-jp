@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 78f8b282e701e181dd3a2c137ba254227651b048
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 0d733117cd9e1d4ac45dede368153bb77098fad5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036857"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252461"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
@@ -88,7 +88,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     **NetApp アドオン** は、 **[Storage service add-ons]\(ストレージ サービス アドオン\)** に導入されたアドオンの最初のカテゴリです。 ここから **[NetApp Cloud Compliance]** にアクセスできます。 **[NetApp Cloud Compliance]** タイルをクリックすると、新しいブラウザーが開き、アドオンのインストール ページに移動します。 
 
-* [手動 QoS 容量プール](manual-qos-capacity-pool-introduction.md)が一般提供 (GA) になりました   
+* [手動 QoS 容量プール](azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type)が一般提供 (GA) になりました   
 
     手動 QoS 容量プール機能が一般提供になりました。 この機能を使用する前に登録する必要がなくなりました。 
 
@@ -189,7 +189,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
   Azure NetApp Files で、リージョン間レプリケーションがサポートされるようになりました。 この新しいディザスター リカバリー機能を使用することで、Azure NetApp Files のボリュームをある Azure リージョンから別のリージョンに、素早くかつコスト効率の良い方法でレプリケートすることができます。これにより、予測不可能なリージョンの障害からデータを保護することができます。 Azure NetApp Files のリージョン間レプリケーションでは、NetApp の SnapMirror® 技術を活用しています。これにより、変更されたブロックのみが、圧縮された効率的な形式でネットワーク経由で送信されます。 この独自のテクノロジにより、リージョン間でのレプリケーションに必要なデータ量が最小化されるため、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。
 
-* [手動 QoS 容量プール](manual-qos-capacity-pool-introduction.md) (プレビュー)  
+* [手動 QoS 容量プール](azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type) (プレビュー)  
 
     手動 QoS 容量プールでは、ボリュームの容量とスループットを個別に割り当てることができます。 手動 QoS 容量プールで作成されたすべてのボリュームの合計スループットは、プールの合計スループットによって制限されます。 これは、プール サイズとサービスレベルのスループットの組み合わせによって決まります。 または、容量プールの [[QoS type]\(QoS の種類\)](azure-netapp-files-understand-storage-hierarchy.md#qos_types) を既定の設定である [auto]\(自動\) にすることもできます。 自動 QoS 容量プールでは、ボリュームに割り当てられたサイズ クォータに比例して、スループットがプール内のボリュームに自動的に割り当てられます。
 

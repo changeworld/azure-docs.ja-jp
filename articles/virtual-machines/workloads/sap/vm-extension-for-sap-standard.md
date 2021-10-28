@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2021
 ms.author: oldoll
-ms.openlocfilehash: 1d6710500cbe18fe74d06aa324023486a7ec5c4e
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 8e723e39364207e1075d66eeafcdf12b74e16624
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067328"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261388"
 ---
 # <a name="standard-version-of-azure-vm-extension-for-sap-solutions"></a>SAP ソリューション用 Azure VM 拡張機能の標準バージョン
 [new-extension]:vm-extension-for-sap-new.md (SAP ソリューション用 Azure VM 拡張機能の新しいバージョン)
@@ -464,7 +464,7 @@ SAP Note [1999351] を使用したトラブルシューティングで問題が�
 
 Azure Extension for SAP を実行している Microsoft Azure 仮想マシンには、インターネットへのアクセスが必要です。 Azure VM が Azure 仮想ネットワークに属しているか、オンプレミス ドメインにある場合は、関連するプロキシ設定が構成されていることを確認してください。 インターネットにアクセスするには、これらの設定がローカル システム アカウントでも有効である必要があります。 このガイドの「[プロキシの構成][configure-proxy]」の章に従ってください。
 
-また、Azure VM の静的 IP アドレスを設定する必要がある場合は、Azure VM 内で手動で設定せず、[Azure PowerShell](../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md)、[Azure CLI](../../../virtual-network/virtual-networks-static-private-ip-arm-cli.md)、[Azure portal](../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md) を使用して設定してください。 静的 IP は、Azure DHCP サービスを介して伝達されます。
+また、Azure VM の静的 IP アドレスを設定する必要がある場合は、Azure VM 内で手動で設定せず、[Azure PowerShell](../../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md)、[Azure CLI](../../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-cli.md)、[Azure portal](../../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md) を使用して設定してください。 静的 IP は、Azure DHCP サービスを介して伝達されます。
 
 Azure VM 内での静的 IP アドレスの手動による設定はサポートされておらず、Azure Extension for SAP に関する問題が発生する可能性があります。
 

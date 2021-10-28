@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b419b816de822c72e3c33acddd9d9b6c50745b7f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: b725577cadcde38117a2b21be31d37c2a8b02240
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047853"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223065"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシン
 
@@ -111,7 +111,7 @@ Azure は Linux ディストリビューションの多くで、[cloud-init](htt
 
 ## <a name="networking"></a>ネットワーク
 * [Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)
-* [Azure 内の IP アドレス](../../virtual-network/public-ip-addresses.md)
+* [Azure 内の IP アドレス](../../virtual-network/ip-services/public-ip-addresses.md)
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md)
 * [Azure Portal での完全修飾ドメイン名の作成](../create-fqdn.md)
 

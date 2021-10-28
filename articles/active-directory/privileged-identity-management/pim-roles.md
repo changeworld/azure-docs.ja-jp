@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adb5668f2a71c8fa8437275795308b66c44e737f
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 7ae4f269bbd34a0f8f863799c24f592f4fc20196
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668772"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253555"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
 
@@ -42,7 +42,7 @@ Exchange 管理者や SharePoint 管理者など、Azure AD ロールと管理�
 
 > [!NOTE]
 > - SharePoint 管理者ロール、デバイス管理者ロール、および Microsoft セキュリティ センターとコンプライアンス センターにアクセスしようとしているすべてのロールの対象ユーザーは、ロールをアクティブ化した後、最大で数時間の遅延に遭遇する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。
-> - Azure AD 参加済みデバイスのローカル管理者ロールのアクティブ化遅延について詳しくは、「[Azure AD 参加済みデバイスのローカル管理者グループの管理方法](/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)」をご覧ください。
+> - Azure AD 参加済みデバイスのローカル管理者ロールのアクティブ化遅延について詳しくは、「[Azure AD 参加済みデバイスのローカル管理者グループの管理方法](../devices/assign-local-admin.md#manage-the-device-administrator-role)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

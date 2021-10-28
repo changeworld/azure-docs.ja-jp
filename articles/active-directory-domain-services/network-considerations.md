@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/12/2021
 ms.author: justinha
-ms.openlocfilehash: 533d663b478ddd362ef18f81528afbe1b9393095
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 841d3b0db01938f42f56931bb370e25afe1651a6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015642"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216960"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -94,7 +94,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 | Azure リソース                          | 説明 |
 |:----------------------------------------|:---|
 | ネットワーク インターフェイス カード                  | Azure AD DS は、Windows Server 上で Azure VM として実行されている 2 つのドメイン コントローラー (DC) 上でマネージド ドメインをホストします。 各 VM には、仮想ネットワークのサブネットに接続する仮想ネットワーク インターフェイスがあります。 |
-| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/public-ip-addresses.md)」を参照してください。 |
+| 動的標準パブリック IP アドレス      | Azure AD DS は、Standard SKU のパブリック IP アドレスを使用して同期および管理サービスと通信します。 パブリック IP アドレスの詳細については、「[Azure における IP アドレスの種類と割り当て方法](../virtual-network/ip-services/public-ip-addresses.md)」を参照してください。 |
 | Azure Standard Load Balancer            | Azure AD DS では、ネットワーク アドレス変換 (NAT) および負荷分散 (セキュリティで保護された LDAP と共に使用する場合) に Standard SKU のロード バランサーを使用します。 Azure Load Balancer の詳細については、[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)に関する記事を参照してください。 |
 | ネットワーク アドレス変換 (NAT) 規則 | Azure AD DS は、安全な PowerShell リモート処理のために、ロード バランサーで 2 つのインバウンド NAT 規則を作成して使用します。 Standard SKU ロード バランサーが使用されている場合は、アウトバウンド NAT 規則もあります。 Basic SKU ロードバランサーでは、アウトバウンド NAT 規則は必要ありません。 |
 | 負荷分散規則                     | マネージド ドメインが TCP ポート 636 上のセキュリティで保護された LDAP 用に構成されている場合、トラフィックを分散する 3 つの規則がロード バランサーに対して作成され、使用されます。 |
@@ -112,7 +112,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 
 マネージド ドメインで認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの受信規則が必要です。 マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
 
-| 受信ポート番号 | プロトコル | ソース                             | 宛先 | アクション | 必須 | 目的 |
+| 受信ポート番号 | プロトコル | source                             | 到着地 | アクション | 必須 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | ドメインの管理。 |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | 省略可能      | サポートのためのデバッグ。 |
@@ -135,7 +135,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 フィルター処理された送信トラフィックは、クラシック デプロイではサポートされていません。
 
 
-| 送信ポート番号 | プロトコル | ソース | 宛先   | アクション | 必須 | 目的 |
+| 送信ポート番号 | プロトコル | source | 到着地   | アクション | 必須 | 目的 |
 |:--------------------:|:--------:|:------:|:-------------:|:------:|:--------:|:-------:|
 | 443 | TCP   | Any    | AzureActiveDirectoryDomainServices| Allow  | はい      | Azure AD Domain Services 管理サービスとの通信。 |
 | 443 | TCP   | Any    | AzureMonitor                      | Allow  | はい      | 仮想マシンの監視。 |

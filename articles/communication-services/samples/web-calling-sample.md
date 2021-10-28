@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: da09d05650c231abf2e8a6e30440ba17982ae248
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 394181c73b2282dfa5b4cada49a0ba31cedc5ae9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671566"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255738"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
@@ -84,7 +84,7 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 
 詳細については、次の記事を参照してください。
 
-- [Calling SDK の使用法](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
+- [Calling SDK の使用法](../quickstarts/voice-video-calling/getting-started-with-calling.md)について理解する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 - [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/)を確認する
 - [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する

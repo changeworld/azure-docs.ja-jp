@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 872f6efb6cc8df8ed63fec23af3807a18dde6201
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 711f83a33a530aef99bba75a0010bcd131aa771b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708486"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228967"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -50,11 +50,6 @@ ms.locfileid: "128708486"
 
 構成を開始する前に、これらの手順の[ビデオ](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)を表示できます。
 
-> [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[Azure VNet での IPv6](../virtual-network/ipv6-overview.md) に関するガイドラインに従ってください。
-> 
-> 
-
 ## <a name="create-the-gateway-subnet"></a>ゲートウェイ サブネットを作成する
 
 1. [ポータル](https://portal.azure.com)で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
@@ -76,7 +71,7 @@ ms.locfileid: "128708486"
 1. ポータルの左側で、 **[リソースの作成]** を選択し、検索ボックスに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、そのエントリを選択します。 **[仮想ネットワーク ゲートウェイ]** のページで、 **[作成]** を選択します。
 1. **[仮想ネットワーク ゲートウェイの作成]** ページで、これらの設定を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | --------| ----- |
     | サブスクリプション | 正しいサブスクリプションが選択されていることを確認します。 |
     | リソース グループ | 仮想ネットワークを選択すると、リソース グループが自動的に選択されます。 | 

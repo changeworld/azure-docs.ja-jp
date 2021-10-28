@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップを管理する
 description: この記事では、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.openlocfilehash: e955ed1cf01c055ea72218076799d7da31d096b7
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 421162387b28777acf1c4f86288796d8066468a6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714316"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216050"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure ファイル共有のバックアップを管理する
 
@@ -30,7 +30,7 @@ ms.locfileid: "129714316"
 
 ## <a name="monitor-using-azure-backup-reports"></a>Azure Backup レポートを使用した監視
 
-Azure Backup では、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースを利用すると、バックアップに関するさまざまな分析情報を得られます。 これらのレポートを利用して、Azure Files のバックアップ項目、項目レベルのジョブ、アクティブ ポリシーの詳細を可視化できます。 バックアップ レポートで使用できるメール レポート機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。Azure Backup レポートの構成と表示方法を[ご覧ください](/azure/backup/configure-reports#get-started)。
+Azure Backup では、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースを利用すると、バックアップに関するさまざまな分析情報を得られます。 これらのレポートを利用して、Azure Files のバックアップ項目、項目レベルのジョブ、アクティブ ポリシーの詳細を可視化できます。 バックアップ レポートで使用できるメール レポート機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。Azure Backup レポートの構成と表示方法を[ご覧ください](./configure-reports.md#get-started)。
 
 ## <a name="create-a-new-policy"></a>新しいポリシーの作成
 

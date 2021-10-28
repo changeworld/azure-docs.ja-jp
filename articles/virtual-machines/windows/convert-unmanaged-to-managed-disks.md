@@ -7,12 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 57f0d5ed33bf662867ce7a4323f5f69d889e6653
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 10b4da09ae851a95fdbb267174540972357e028a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688911"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217615"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
 
@@ -26,7 +26,7 @@ ms.locfileid: "122688911"
 
 * [Managed Disks への移行の計画](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)を確認します。
 
-* [Managed Disks への移行に関する FAQ](/azure/virtual-machines/faq-for-disks#migrate-to-managed-disks) を確認します。
+* [Managed Disks への移行に関する FAQ](../faq-for-disks.yml) を確認します。
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

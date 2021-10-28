@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fe0354f3d8e4d2b3ac2938f1cd03baa2ca2ce4d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 13185cdb0c75b2d88bf8b0fa5a4158789ac85e79
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324039"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228209"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -192,7 +192,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 
 ### <a name="web-apps"></a>Web Apps
 仮想ネットワークにリンクされた App Service を使用して構築された Web アプリから同じ仮想ネットワーク内の VM への名前解決を実行する必要があるとします。 Azure (仮想 IP 168.63.129.16) にクエリを転送する DNS フォワーダーがあるカスタム DNS サーバーを設定することに加え、次の手順を実行します。
-1. 既に実行していなければ、[仮想ネットワークへのアプリの統合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの説明に従って、Web アプリに対する仮想ネットワークの統合を有効にします。
+1. 既に実行していなければ、[仮想ネットワークへのアプリの統合](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの説明に従って、Web アプリに対する仮想ネットワークの統合を有効にします。
 2. Azure Portal で、Web アプリをホストしている App Service プランで、 **[ネットワーキング]** 、 **[Virtual Network 統合]** の下の **[ネットワークの同期]** を選択します。
 
     ![仮想ネットワークの名前解決のスクリーンショット](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
@@ -202,7 +202,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 * クエリを Azure の再帰的リゾルバー (仮想 IP 168.63.129.16) に転送することもできる VM 上のターゲット仮想ネットワーク内に DNS サーバーを設定します。 DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/resources/templates/dns-forwarder/)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) で確認できます。
 * VM 上のソース仮想ネットワーク内に DNS フォワーダーを設定します。 この DNS フォワーダーを、ターゲット仮想ネットワーク内の DNS サーバーにクエリを転送するように構成します。
 * ソース仮想ネットワークの設定内にソース DNS サーバーを構成します。
-* [仮想ネットワークへのアプリの統合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの指示に従って、ソース仮想ネットワークにリンクする App Service Web App に対する仮想ネットワークの統合を有効にします。
+* [仮想ネットワークへのアプリの統合](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの指示に従って、ソース仮想ネットワークにリンクする App Service Web App に対する仮想ネットワークの統合を有効にします。
 * Azure Portal で、Web アプリをホストしている App Service プランで、 **[ネットワーキング]** 、 **[Virtual Network 統合]** の下の **[ネットワークの同期]** を選択します。
 
 ## <a name="specify-dns-servers"></a>DNS サーバーの指定

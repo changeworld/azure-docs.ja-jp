@@ -3,12 +3,12 @@ title: Azure VMware Solution 仮想マシンのバックアップ ソリュー�
 description: Azure VMware Solution 仮想マシンのバックアップおよび復元のための優れたソリューションについて説明します。
 ms.topic: how-to
 ms.date: 04/21/2021
-ms.openlocfilehash: 76231aaed4b363daf20abe54a78f84a9e0740da4
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 4febf70d473f74b28356310a7c6704c41e3cb1b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431629"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252290"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Azure VMware Solution 仮想マシン (VM) のバックアップ ソリューション
 
@@ -19,7 +19,7 @@ Azure VMware Solution の主要な原則として、投資や、Azure で実行�
 Azure VMware Solution VM 間のバックアップ ネットワーク トラフィックと Azure のバックアップ リポジトリは、高帯域幅、低遅延のリンクを経由して送信されます。 リージョン間のレプリケーション トラフィックは内部の Azure バックプレーン ネットワークを経由して送信されるため、ユーザーの帯域幅コストが削減されます。
 
 >[!NOTE]
->一般的な質問については、[サードパーティのバックアップ ソリューションに関する FAQ](/azure/azure-vmware/faq#third-party-backup-and-recovery) を参照してください。
+>一般的な質問については、[サードパーティのバックアップ ソリューションに関する FAQ](./faq.yml) を参照してください。
 
 
 

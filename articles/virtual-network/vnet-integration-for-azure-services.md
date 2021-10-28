@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 8630451fe4ff8b3468b5c31168a417a72e8769f3
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d420c535ba7d230c357337c1500d0e2b187ec25a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386284"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262814"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>ネットワーク分離のために Azure サービスと仮想ネットワークを統合する
 
@@ -131,6 +131,6 @@ VNet 統合は、Azure サービスにネットワーク分離の利点を提供
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure ネットワークとアプリを統合する](../app-service/web-sites-integrate-with-vnet.md)方法について説明します。
+- [Azure ネットワークとアプリを統合する](../app-service/overview-vnet-integration.md)方法について説明します。
 - [サービス タグを使用してリソースへのアクセスを制限する](tutorial-restrict-network-access-to-resources.md)方法について説明します。
 - [Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)方法について説明します。

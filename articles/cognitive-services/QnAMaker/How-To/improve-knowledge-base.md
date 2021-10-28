@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f2ae3cd54f47e804b9bdd78433f96f96034d16ee
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: e5625907b0401919940a514586a86b34867b8e57
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047211"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252214"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -22,7 +22,7 @@ ms.locfileid: "130047211"
 
 ## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
 
-提案された質問を表示するには、QnA Maker リソースに対して[アクティブ ラーニングを有効にする](../concepts/active-learning-suggestions.md)必要があります。
+提案された質問を表示するには、QnA Maker リソースに対して[アクティブ ラーニングを有効にする](../index.yml)必要があります。
 
 ## <a name="view-suggested-questions"></a>提案された質問を表示する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: bb7505fe23079b13e702dec70bc9cc362cd7b848
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 5e66aad5df5b9adde5739aafe85428af2540e4e0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388263"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223372"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -37,7 +37,7 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 >後で示す信頼できるサービスを作成するための重要な[設計ガイダンス](#design)を含め、このドキュメント全体を確認してください。
 
 >[!IMPORTANT]
->Load Balancer の正常性プローブは IP アドレス 168.63.129.16 から送信されます。プローブによってお客様のインスタンスがアップとしてマークされるには、これがブロックされていない必要があります。  詳しくは、「[プローブのソース IP アドレス](#probesource)」をご覧ください。 バックエンド インスタンス内のこのプローブ トラフィックを確認するには、[こちらの FAQ](/azure/load-balancer/load-balancer-faqs#probes) を参照してください。
+>Load Balancer の正常性プローブは IP アドレス 168.63.129.16 から送信されます。プローブによってお客様のインスタンスがアップとしてマークされるには、これがブロックされていない必要があります。  詳しくは、「[プローブのソース IP アドレス](#probesource)」をご覧ください。 バックエンド インスタンス内のこのプローブ トラフィックを確認するには、[こちらの FAQ](./load-balancer-faqs.yml) を参照してください。
 
 >[!IMPORTANT]
 >構成されているタイムアウトしきい値に関係なく、HTTP(S) Load Balancer 正常性プローブでは、サーバーが HTTP 200 OK ではない状態コードを返すかどうか、または接続が TCP リセットによって終了されるかどうかが、インスタンスに対して自動的にプローブされます。

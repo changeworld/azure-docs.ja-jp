@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 63e68a247dd9d38cffe1555806ab23391c38f1fa
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 6b3cdddcc07df6961cc6493404583e6cb7da96e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177450"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224462"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Azure Policy を使用して VM insights を有効にする
 この記事では、Azure Policy を使用して、Azure 仮想マシンまたは Azure Arc (プレビュー) に接続されたハイブリッド仮想マシンで VM insights を有効にする方法について説明します。 Azure Policy を使用すると、Azure 環境全体にわたって VM insights に必要なエージェントをインストールし、各仮想マシンが作成されたら VM に対する監視を自動的に有効にするポリシー定義を割り当てることができます。 VM insights には、環境内の準拠していない VM を検出して修復できる機能が用意されています。 この機能は、Azure Policy を直接操作する代わりに使用します。
 
-Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」にある簡単な概要を参照してください。
+Azure Policy に精通していない場合は、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../best-practices.md)」にある簡単な概要を参照してください。
 
 > [!NOTE]
-> Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md#vm-insights)」を参照してください。
+> Azure 仮想マシン スケール セットで Azure Policy を使用するか、または Azure 仮想マシンを有効にするために Azure Policy を直接操作するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../best-practices.md)」を参照してください。
 
 ## <a name="vm-insights-initiatives"></a>VM insights イニシアティブ
 VM insights には、Azure 仮想マシンに Log Analytics エージェントと依存関係エージェントをインストールするための組み込みのポリシー定義が用意されています。 完全な監視を可能にするため、次の組み込みイニシアティブにより両方のエージェントがインストールされます。 これらのイニシアティブを管理グループ、サブスクリプション、またはリソース グループに割り当てて、そのスコープ内のすべての Windows または Linux Azure 仮想マシンにエージェントを自動的にインストールします。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0796716e61c900d475a961277e969e57b994805f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2f892af6b876d81d9312e1f93785265e55f960a2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699206"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226017"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-windows-using-symmetric-keys"></a>対称キーを使用して Windows で大規模に IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -166,7 +166,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上にセキュリティ標準が提供されて維持されます。 デーモンは起動のたびに開始され、IoT Edge ランタイムの残りの部分を開始することでデバイスをブートストラップします。
 
-このセクションの手順では、インターネットに接続されているデバイスに最新バージョンをインストールする一般的なプロセスが示されています。 プレリリース バージョンなどの特定のバージョンをインストールする必要がある場合、またはオフラインの間にインストールする必要がある場合は、「[オフラインまたは特定のバージョンのインストール](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional)」の手順に従ってください。
+このセクションの手順では、インターネットに接続されているデバイスに最新バージョンをインストールする一般的なプロセスが示されています。 プレリリース バージョンなどの特定のバージョンをインストールする必要がある場合、またはオフラインの間にインストールする必要がある場合は、「[オフラインまたは特定のバージョンのインストール](how-to-provision-single-device-windows-symmetric.md#offline-or-specific-version-installation-optional)」の手順に従ってください。
 
 1. PowerShell を管理者として実行します。
 

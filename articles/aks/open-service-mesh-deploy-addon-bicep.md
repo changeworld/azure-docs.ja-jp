@@ -6,20 +6,20 @@ ms.topic: article
 ms.date: 9/20/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 2096176c64781e99161188ce66b7dd87d226278e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f479a05fb305887d5e901ca236cb0183d4a2d87b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594445"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227304"
 ---
 # <a name="deploy-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-using-bicep"></a>Bicep を使用して Open Service Mesh (OSM) の Azure Kubernetes Service (AKS) アドオンをデプロイする
 
-この記事では、[Bicep](/azure/azure-resource-manager/bicep/) テンプレートを使用して OSM アドオンを AKS にデプロイする方法について説明します。
+この記事では、[Bicep](../azure-resource-manager/bicep/index.yml) テンプレートを使用して OSM アドオンを AKS にデプロイする方法について説明します。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-[Bicep](/azure/azure-resource-manager/bicep/overview) は、宣言型の構文を使用して Azure リソースをデプロイするドメイン固有言語 (DSL) です。 コードとしてのインフラストラクチャ Azure リソースをデプロイするために、Azure [ARM](/azure/azure-resource-manager/templates/overview) テンプレートを作成する代わりに Bicep を使用できます。
+[Bicep](../azure-resource-manager/bicep/overview.md) は、宣言型の構文を使用して Azure リソースをデプロイするドメイン固有言語 (DSL) です。 コードとしてのインフラストラクチャ Azure リソースをデプロイするために、Azure [ARM](../azure-resource-manager/templates/overview.md) テンプレートを作成する代わりに Bicep を使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "128594445"
 - OSM バージョン v0.9.1 以降
 - AKS のデプロイに使用される SSH 公開キー
 - Bash ターミナルを利用する [Visual Studio Code](https://code.visualstudio.com/)
-- Visual Studio Code の [Bicep 拡張機能](/azure/azure-resource-manager/bicep/install)
+- Visual Studio Code の [Bicep 拡張機能](../azure-resource-manager/bicep/install.md)
 
 ## <a name="install-the-aks-preview-extension"></a>aks-preview 拡張機能をインストールする
 
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="install-the-osm-aks-add-on-for-a-new-aks-cluster-using-bicep"></a>Bicep を使用して新しい AKS クラスターに OSM AKS アドオンをインストールする
 
-新しい AKS クラスターのデプロイ シナリオでは、クラスターの作成操作で OSM アドオンを有効にして AKS クラスターの新しいデプロイを開始します。 次の手順では、エフェメラル ディスクを使用し、[`kubenet`](/azure/aks/configure-kubenet) CNI を使用し、AKS OSM アドオンを有効にすることによって AKS クラスターをデプロイする、汎用 Bicep テンプレートを使用します。 さらに高度なデプロイのシナリオについては、[Bicep](/azure/azure-resource-manager/bicep/overview) のドキュメントを参照してください。
+新しい AKS クラスターのデプロイ シナリオでは、クラスターの作成操作で OSM アドオンを有効にして AKS クラスターの新しいデプロイを開始します。 次の手順では、エフェメラル ディスクを使用し、[`kubenet`](./configure-kubenet.md) CNI を使用し、AKS OSM アドオンを有効にすることによって AKS クラスターをデプロイする、汎用 Bicep テンプレートを使用します。 さらに高度なデプロイのシナリオについては、[Bicep](../azure-resource-manager/bicep/overview.md) のドキュメントを参照してください。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 

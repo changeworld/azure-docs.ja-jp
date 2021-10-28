@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 6b1f1468b85695facac7143389f863599d9f9d3e
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: b5c52d2ab3b788a1f06edbc59d8dab05cc8285dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161947"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257995"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Azure の仮想マシン スケール セットのフレキシブル オーケストレーション
 
@@ -140,7 +140,6 @@ az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[nam
 | インスタンス保護 | いいえ。[Azure リソースのロック](../azure-resource-manager/management/lock-resources.md)を使用します |
 | スケールイン ポリシー | いいえ |
 | VMSS インスタンス ビューの取得 | いいえ |
-| メンテナンス実行 | VM API を使用して各インスタンスのメンテナンスをトリガーします |
 | VM バッチ操作 (すべて開始、すべて停止、サブセットの削除など) | いいえ (VM API を使用して各インスタンスで操作をトリガーできます) |
 
 ### <a name="high-availability"></a>高可用性 
@@ -154,7 +153,7 @@ az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[nam
 | 障害ドメイン - 固定拡散 | 2 から 3 個の FD (リージョンの最大 FD 数によって異なります)。ゾーンのデプロイの場合は 1 個 |
 | 特定の障害ドメインへの VM の割り当て | はい |
 | 更新ドメイン | 非推奨 (プラットフォームのメンテナンスが FD ごとに実行されました) |
-| メンテナンス実行 | VM API を使用して各インスタンスのメンテナンスをトリガーします | はい | 該当なし |
+| メンテナンス実行 | VM API を使用して各インスタンスのメンテナンスをトリガーします |
 
 ### <a name="networking"></a>ネットワーク 
 

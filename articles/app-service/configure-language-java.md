@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: c7cf2aaeaaf9907ff87ab4805aebe04c3098b8f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d994716f24c0a5dff4fd42f8152a08cabc4fe12c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657141"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253423"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -66,7 +66,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 [Azure Web アプリ用の Maven プラグイン](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)を使用すると、プロジェクト ルートで 1 つのコマンドを使用して、Azure Web アプリ用の Maven Java プロジェクトを簡単に準備できます。
 
 ```shell
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
 ```
 
 このコマンドによって、既存の Azure Web アプリを選択するか、新しいアプリを作成するかを選択するメッセージが表示され、`azure-webapp-maven-plugin` プラグインと関連する構成が追加されます。 次のコマンドを使用して、Java アプリを Azure にデプロイできます。
@@ -74,12 +74,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 mvn package azure-webapp:deploy
 ```
 
-`pom/xml` の構成例を次に示します。
+`pom.xml` の構成例を次に示します。
 ```xml
 <plugin> 
   <groupId>com.microsoft.azure</groupId>  
   <artifactId>azure-webapp-maven-plugin</artifactId>  
-  <version>2.1.0</version>  
+  <version>2.2.0</version>  
   <configuration>
     <subscriptionId>111111-11111-11111-1111111</subscriptionId>
     <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
@@ -110,7 +110,7 @@ mvn package azure-webapp:deploy
 1. プラグインを `build.gradle` に追加して、[Azure Web アプリ用の Gradle プラグイン](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin) をセットアップします。
     ```groovy
     plugins {
-      id "com.microsoft.azure.azurewebapp" version "1.1.0"
+      id "com.microsoft.azure.azurewebapp" version "1.2.0"
     }
     ```
 
@@ -154,7 +154,7 @@ Azure では、次のような一般的な Java IDE でシームレスな Java A
 Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/publish/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。 
 
 > [!NOTE]
->  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](/azure/app-service/faq-app-service-linux#built-in-images) テキスト ボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
+>  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](./faq-app-service-linux.yml) テキスト ボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
 
 #### <a name="tomcat"></a>Tomcat
 
@@ -943,7 +943,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 #### <a name="shared-server-level-resources"></a>共有のサーバーレベル リソース
 
-サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、[スタートアップ スクリプト](/azure/app-service/faq-app-service-linux#built-in-images)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
+サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、[スタートアップ スクリプト](./faq-app-service-linux.yml)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
 
 スタートアップ スクリプトによって、server.xml ファイルへの [xsl 変換](https://www.w3schools.com/xml/xsl_intro.asp)が作成され、結果の xml ファイルが `/usr/local/tomcat/conf/server.xml` に出力されます。 スタートアップ スクリプトでは、apk を使用して libxslt をインストールする必要があります。 xsl ファイルとスタートアップ スクリプトは FTP 経由でアップロードできます。 以下にスタートアップ スクリプトの例を示します。
 

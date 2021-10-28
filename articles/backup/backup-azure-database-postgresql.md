@@ -3,12 +3,12 @@ title: Azure Database for PostgreSQL のバックアップ
 description: 長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー) について説明します。
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 25304aee2a759b55b8b3139aa2ae57511c967595
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: a012ef97db27b97039fa7aac7b108ca86afb9314
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389876"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219623"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "129389876"
 
    :::image type="content" source="./media/backup-azure-database-postgresql/adding-backup-details-inline.png" alt-text="バックアップ情報を追加するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/adding-backup-details-expanded.png":::
 
-   また、[バックアップ センター](/azure/backup/backup-center-overview)からこのページに移動することもできます。 
+   また、[バックアップ センター](./backup-center-overview.md)からこのページに移動することもできます。 
 
 1. バックアップ スケジュールと保持期間を定義するバックアップ ポリシーを選択または[作成](#create-backup-policy)します。
 

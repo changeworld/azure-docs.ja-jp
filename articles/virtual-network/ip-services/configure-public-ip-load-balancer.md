@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 68c400b2ec8ef85db494b85a04f8e70c32e0b6cb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 1d3f8f07412e55da49c8502fde57b9e45dc4a786
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367791"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217413"
 ---
 # <a name="manage-a-public-ip-address-with-a-load-balancer"></a>ロード バランサーでパブリック IP アドレスを管理する
 
@@ -38,9 +38,9 @@ Basic SKU Azure Load Balancer は、可用性オプションと機能セット�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md) に関するページを参照してください。
+- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](./create-public-ip-portal.md) に関するページを参照してください。
     - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1** および **myStandardPublicIP-2** という名前を付けます。
-- サブスクリプション内のパブリック IP プレフィックス。 パブリック IP プレフィックスの作成の詳細については、「[Azure portal を使用してパブリック IP アドレス プレフィックスを作成する](../../virtual-network/create-public-ip-prefix-portal.md)」を参照してください。
+- サブスクリプション内のパブリック IP プレフィックス。 パブリック IP プレフィックスの作成の詳細については、「[Azure portal を使用してパブリック IP アドレス プレフィックスを作成する](./create-public-ip-prefix-portal.md)」を参照してください。
     - この記事の例では、新しいパブリック IP プレフィックスに **myPublicIPPrefixOutbound** という名前を付けます。
 
 ## <a name="create-load-balancer-existing-public-ip"></a>ロード バランサーの既存のパブリック IP を作成する
@@ -155,7 +155,7 @@ Standard Load Balancer では、送信元ネットワーク アドレス変換 (
 
 ## <a name="caveats"></a>注意事項
 
-* Standard パブリック ロード バランサーでは、フロントエンド パブリック IP またはパブリック IP プレフィックスとして Standard SKU の静的 IPv6 アドレスを使用できます。  すべてのデプロイは、IPv4 と IPv6 の両方のフロントエンドを備えるデュアル スタックである必要があります。 NAT64 変換は使用できません。 詳細については、「[Azure で IPv6 デュアル スタック アプリケーションを展開する - PowerShell](../../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)」を参照してください (Basic パブリック ロード バランサーは、フロントエンドのパブリック IP として Basic SKU の動的 IPv6 アドレスを使用できます)。
+* Standard パブリック ロード バランサーでは、フロントエンド パブリック IP またはパブリック IP プレフィックスとして Standard SKU の静的 IPv6 アドレスを使用できます。  すべてのデプロイは、IPv4 と IPv6 の両方のフロントエンドを備えるデュアル スタックである必要があります。 NAT64 変換は使用できません。 詳細については、「[Azure で IPv6 デュアル スタック アプリケーションを展開する - PowerShell](../../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)」を参照してください (Basic パブリック ロード バランサーは、フロントエンドのパブリック IP として Basic SKU の動的 IPv6 アドレスを使用できます)。
 
 * パブリック ロード バランサーに複数のフロントエンドが割り当てられている場合、特定のバックエンド インスタンスからのフローを特定の IP 上のエグレスに割り当てる方法は存在しません。  詳細については、「[Azure Load Balancer の複数のフロントエンド](../../load-balancer/load-balancer-multivip-overview.md)」を参照してください
 ## <a name="next-steps"></a>次のステップ
@@ -167,4 +167,4 @@ Standard Load Balancer では、送信元ネットワーク アドレス変換 (
 最後に、パブリック IP プレフィックスを使用するようにアウトバウンド フロントエンド構成を変更しました。
 
 - Azure Load Balancer の詳細については、[Azure Load Balancer とは何か](../../load-balancer/load-balancer-overview.md)に関する記事を参照してください。
-- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。

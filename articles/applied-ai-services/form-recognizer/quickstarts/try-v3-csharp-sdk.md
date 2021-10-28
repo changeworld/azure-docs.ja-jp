@@ -10,33 +10,33 @@ ms.topic: quickstart
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: f0ed9d9b7574f6d8d1856c263b22dfa66e1207ca
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 50c1cfbcfc79212f03fd67f783afaff110ce1e09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809829"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216734"
 ---
 # <a name="quickstart-form-recognizer-c-client-library-sdks-v30--preview"></a>クイック スタート: Form Recognizer C# クライアント ライブラリ SDK v3.0 | プレビュー
 
 C# プログラミング言語を使用して、Azure Form Recognizer の使用を開始します。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築することができる [Azure Applied AI Services](../../../applied-ai-services/index.yml) クラウド サービスです。 Form Recognizer は、REST API または SDK を介して使用できます。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
 
 >[!NOTE]
-> Form Recognizer v3.0 は現在、パブリック プレビューの段階です。 一部の機能がサポートされなかったり、機能が制限されたりすることがあります。 
+> Form Recognizer v3.0 は現在、パブリック プレビュー段階です。 一部の機能がサポートされなかったり、機能が制限されたりすることがあります。 
 
 [リファレンスのドキュメント](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet&preserve-view=true ) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [サンプル](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-Azure Cognitive Services Form Recognizer は、機械学習を使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウド サービスです。 お使いのワークフローとアプリケーションに Microsoft のクライアント ライブラリ SDK を統合することで、Form Recognizer モデルを簡単に呼び出すことができます。
+Azure Cognitive Services Form Recognizer は、機械学習を使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウド サービスです。 お使いのワークフローとアプリケーションに Microsoft のクライアント ライブラリ SDK を統合して、Form Recognizer モデルを簡単に呼び出すことができます。
 
 ### <a name="form-recognizer-models"></a>Form Recognizer モデル
 
 C# SDK では、次のモデルと機能がサポートされています。
 
 * 🆕一般的なドキュメント — テキスト、テーブル、構造体、キーと値のペア、名前付きエンティティを分析および抽出します。
-* レイアウト - モデルをトレーニングすることなく、フォーム ドキュメント内のテーブル、行、単語、およびラジオ ボタンやチェック ボックスなどの選択マークを分析および抽出します。
+* レイアウト - モデルをトレーニングすることなく、フォーム ドキュメント内のラジオ ボタンやチェック ボックスなどのテーブル、行、単語、選択マークを分析および抽出します。
 * カスタム - 独自のフォームの種類でトレーニングしたモデルを使用して、カスタム フォームからフォーム フィールドや他のコンテンツを分析および抽出します。
 * 請求書 - 事前トレーニング済みの請求書モデルを使用して、請求書から共通フィールドを分析および抽出します。
-* 領収書 - 事前トレーニング済みの領収書モデルを使用して、領収書の共通フィールドを分析および抽出します。
+* レシート - 事前トレーニング済みのレシート モデルを使用して、レシートから共通フィールドを分析および抽出します。
 * 身分証明書 - 事前トレーニング済みの身分証明書モデルを使用して、パスポートや運転免許証などの身分証明書から共通フィールドを分析および抽出します。
 * 名刺 - 事前トレーニング済みの名刺モデルを使用して、名刺から共通フィールドを分析および抽出します。
 
@@ -57,7 +57,7 @@ C# SDK では、次のモデルと機能がサポートされています。
 * Cognitive Services または Form Recognizer リソース。 Azure サブスクリプションを用意できたら、Azure portal で[単一サービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)または[マルチサービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)の Form Recognizer リソースを作成し、キーとエンドポイントを取得します。 Free 価格レベル (<ph id="ph1">`F0`</ph>) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 > [!TIP] 
-> 1 つのエンドポイントまたはキーで複数のコグニティブ サービスにアクセスすることを予定している場合は、新しい Cognitive Services リソースを作成します。 Form Recognizer アクセスのみの場合は、Form Recognizer リソースを作成します。 [Azure Active Directory 認証](/azure/active-directory/authentication/overview-authentication)を使用する場合は、単一サービス リソースが必要になることに注意してください。
+> 1 つのエンドポイント/キーで複数の Cognitive Services にアクセスする予定の場合は、Cognitive Services リソースを作成します。 Form Recognizer アクセスのみの場合は、Form Recognizer リソースを作成します。 [Azure Active Directory 認証](../../../active-directory/authentication/overview-authentication.md)を使用する場合は、単一サービス リソースが必要になることに注意してください。
 
 * リソースがデプロイされたら、 **[リソースに移動]** をクリックします。 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
 
@@ -370,9 +370,9 @@ for (int i = 0; i < result.Tables.Count; i++)
 
 ### <a name="choose-the-invoice-prebuilt-model-id"></a>請求書の事前構築済みモデル ID を選択する
 
-請求書に限定されません。いくつかの事前構築済みモデルから選択できます。各モデルには、サポートされているフィールドの独自のセットがあります。 分析操作に使用するモデルは、分析するドキュメントの種類によって異なります。 Form Recognizer サービスで現在サポートされている事前構築済みモデルのモデルの ID を次に示します。
+請求書に限らず、複数の事前構築済みモデルから選択できます。各モデルには、独自のサポートされているフィールドのセットが含まれます。 分析操作に使用するモデルは、分析するドキュメントの種類によって異なります。 Form Recognizer サービスで現在サポートされている事前構築済みモデルのモデル ID を次に示します。
 
-* **prebuilt-invoice**: 請求書からテキスト、選択マーク、テーブル、キーと値のペア、およびキー情報を抽出します。
+* **prebuilt-invoice**: 請求書からテキスト、選択マーク、テーブル、キーと値のペア、キー情報を抽出します。
 * **prebuilt-businessCard**: 名刺からテキストとキー情報を抽出します。
 * **prebuilt-idDocument**: 運転免許証と国際パスポートからテキストとキー情報を抽出します。
 * **prebuilt-receipt**: レシートからテキストとキー情報を抽出します。

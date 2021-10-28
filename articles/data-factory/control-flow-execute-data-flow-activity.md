@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 09/09/2021
-ms.openlocfilehash: 14fa6484a3cba97602d33cf2b302d62bf6ef2871
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c42ba6008f80f3fe625d9716c6a6d62f3fb60d2a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743875"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260286"
 ---
 # <a name="data-flow-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics 内の Data Flow アクティビティ
 
@@ -107,11 +107,11 @@ Azure Synapse Analytics をシンクまたはソースとして使用する場�
 
 データ フロー シンクの既定の動作では、各シンクが逐次実行され、シンクでエラーが発生した場合はデータ フローが失敗します。 さらに、データ フロー プロパティでシンクに異なる優先順位を設定しない限り、すべてのシンクは既定で同じグループに設定されます。
 
+:::image type="content" source="media/data-flow/sink-properties.png" alt-text="シンクのプロパティ":::
+
 ### <a name="first-row-only"></a>First row only (先頭行のみ)
 
 このオプションは、"アクティビティへの出力" でキャッシュ シンクが有効になっているデータ フローでのみ使用できます。 パイプラインに直接挿入されるデータ フローからの出力は、2 MB に制限されます。 "最初の行のみ" を設定すると、データ フロー アクティビティの出力をパイプラインに直接挿入する際に、データ フローからのデータ出力を制限することができます。
-
-:::image type="content" source="media/data-flow/sink-properties.png" alt-text="シンクのプロパティ":::
 
 ## <a name="parameterizing-data-flows"></a>データ フローをパラメーター化する
 

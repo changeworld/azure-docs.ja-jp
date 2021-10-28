@@ -6,12 +6,12 @@ metadata:
   ms.service: azure-functions
   ms.date: 4/11/2019
   ms.reviewer: glenga
-  ms.openlocfilehash: 2fd3a00ef0ee01c5d7f535fcdb5021f831ff20d3
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: c75cd261eae3e5756162570c899b239ff954e679
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253828"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130260715"
 title: Azure Functions のネットワークについてよく寄せられる質問
 summary: >
   この記事では、Azure Functions のネットワークについてよく寄せられる質問をまとめています。 より包括的な概要については、[Functions のネットワーク オプション](functions-networking-options.md)に関する記事を参照してください。
@@ -58,4 +58,4 @@ sections:
 
 
       仮想ネットワークのリソースへの一方向のアクセスのみが必要なシナリオ、または緩くネットワークを分離する必要があるシナリオについては、[Functions のネットワークの概要](functions-networking-options.md)に関する記事を参照してください。
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nネットワークと関数の詳細については、以下を参照してください。 \n        \n* [仮想ネットワーク統合の概要に関するチュートリアル](./functions-create-vnet.md)\n* [Azure Functions のネットワーク オプションに関する詳細情報](./functions-networking-options.md)\n* [仮想ネットワーク統合と App Service および Functions に関する詳細情報](../app-service/web-sites-integrate-with-vnet.md)\n* [Azure の仮想ネットワークに関する詳細情報](../virtual-network/virtual-networks-overview.md)\n* [App Service Environment でさらなるネットワーク機能と制御を可能にする](../app-service/environment/intro.md)"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nネットワークと関数の詳細については、以下を参照してください。 \n        \n* [仮想ネットワーク統合の概要に関するチュートリアル](./functions-create-vnet.md)\n* [Azure Functions のネットワーク オプションに関する詳細情報](./functions-networking-options.md)\n* [仮想ネットワーク統合と App Service および Functions に関する詳細情報](../app-service/overview-vnet-integration.md)\n* [Azure の仮想ネットワークに関する詳細情報](../virtual-network/virtual-networks-overview.md)\n* [App Service Environment でさらなるネットワーク機能と制御を可能にする](../app-service/environment/intro.md)"

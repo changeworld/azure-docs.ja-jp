@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Azure Live Video Analytics をデプロイする
 description: この記事では、IoT Edge デバイスに Azure Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 75b91855ff8e46a45fac96e90be08a272ef52dfb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cf4dbd55314bae73d9082c8b45bfe728cb4c235a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367464"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225739"
 ---
 # <a name="deploy-azure-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Azure Live Video Analytics をデプロイする
 
@@ -25,8 +25,8 @@ ms.locfileid: "110367464"
 * [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス
 * [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)
+* [IoT Edge デバイスを登録します](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 * [Azure Media Services アカウントを作成します](../latest/account-create-how-to.md)
 
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国東部、米国中部、米国中北部、東日本、米国西部、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。

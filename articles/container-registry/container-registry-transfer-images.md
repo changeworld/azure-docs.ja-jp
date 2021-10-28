@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: a82bee4c0750004db11753c56f06b2ef19badf1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcec85f44b7538bfd741a6e6c890a4e92b5a9fb0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722482"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229467"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -210,7 +210,7 @@ ImportPipeline Resource Manager の[テンプレート ファイル](https://git
 |---------|---------|
 |registryName     | ターゲット コンテナー レジストリの名前      |
 |importPipelineName     |  インポート パイプライン用に選択した名前       |
-|sourceUri     |  ターゲット環境内のストレージ コンテナーの URI (インポート パイプラインのソース)。<br/>例: `https://targetstorage.blob.core.windows.net/transfer/`|
+|sourceUri     |  ターゲット環境内のストレージ コンテナーの URI (インポート パイプラインのソース)。<br/>例: `https://targetstorage.blob.core.windows.net/transfer`|
 |KeyVaultName     |  ターゲット キー コンテナーの名前 |
 |sasTokenSecretName     |  ターゲット キー コンテナー内の SAS トークン シークレットの名前<br/>例: acr importsas |
 

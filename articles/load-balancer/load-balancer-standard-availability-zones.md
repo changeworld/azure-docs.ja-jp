@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 06b8e193f48a4e1d3956c8c40ee03dfd11a4a088
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: d53ae804fa628c5fcf89fa61d5e9d153abd225cb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129276021"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225758"
 ---
 # <a name="load-balancer-and-availability-zones"></a>ロード バランサーと可用性ゾーン
 
@@ -59,7 +59,7 @@ Azure Load Balancer は、可用性ゾーンのシナリオをサポートして
 
 ## <a name="non-zonal"></a>非ゾーン
 
-ロード バランサーは、"ゾーンなし" フロントエンド (パブリック IP またはパブリック IP プレフィックス) を使用して、非ゾーン構成で作成することもできます。  このオプションによって、冗長性の保証は提供されません。 [アップグレード](../virtual-network/public-ip-upgrade-portal.md)されたパブリック IP アドレスはすべて、"ゾーンなし" の種類になることに注意してください。
+ロード バランサーは、"ゾーンなし" フロントエンド (パブリック IP またはパブリック IP プレフィックス) を使用して、非ゾーン構成で作成することもできます。  このオプションによって、冗長性の保証は提供されません。 [アップグレード](../virtual-network/ip-services/public-ip-upgrade-portal.md)されたパブリック IP アドレスはすべて、"ゾーンなし" の種類になることに注意してください。
 
 ## <a name="design-considerations"></a><a name="design"></a> 設計上の考慮事項
 

@@ -4,12 +4,12 @@ description: リージョン間で App Service リソースを移動する方法
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: ea789504476473bec2615180e76e671b06b85758
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: 67a3b0c8f5fd6a78ef65bdffe5f201ae42f90efe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895177"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216677"
 ---
 # <a name="move-an-app-service-resource-to-another-region"></a>App Service リソースを別のリージョンに移動する
 
@@ -34,7 +34,7 @@ App Service リソースはリージョン固有のものであり、リージ�
 - [デプロイ スロット](deploy-staging-slots.md)
 - [Azure で購入したカスタム ドメイン](manage-custom-dns-buy-domain.md)
 - [TLS/SSL 証明書](configure-ssl-certificate.md)
-- [Azure Virtual Network の統合](web-sites-integrate-with-vnet.md)
+- [Azure Virtual Network の統合](./overview-vnet-integration.md)
 - [ハイブリッド接続](app-service-hybrid-connections.md)。
 - [マネージド ID](overview-managed-identity.md)
 - [バックアップの設定](manage-backup.md)

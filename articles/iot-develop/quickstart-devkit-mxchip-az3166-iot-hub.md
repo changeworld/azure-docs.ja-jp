@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/09/2021
-ms.openlocfilehash: aea20a9f8a6f0725220a60e425b48e22c6aa8794
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 36e4a46cbe71b39550c1a6c066670be6008ab1c2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862123"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259470"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-hub"></a>クイックスタート: MXCHIP AZ3166 Devkit を IoT Hub に接続する
 
@@ -34,7 +34,7 @@ ms.locfileid: "121862123"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * Azure CLI。 このクイックスタートで Azure CLI コマンドを実行するには、2 つのオプションがあります。

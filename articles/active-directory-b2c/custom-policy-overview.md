@@ -11,12 +11,12 @@ ms.date: 10/14/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 6da41c32b3b67cbd4e418f844ee73ff4ee85341e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 51ed0b6bd0f5bd5eabf76c6789ab36a922653fd1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130037397"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222838"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C カスタム ポリシーの概要
 
@@ -160,7 +160,7 @@ Azure AD B2C カスタム ポリシーの使用を開始します。
 
 1. [Azure AD B2C テナントを作成する](tutorial-create-tenant.md)
 1. ポリシーをテストできるようにするために、Azure portal を使用して [Web アプリケーションを登録します](tutorial-register-applications.md)。
-1. 必要な[ポリシー キー](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys)を追加し、[Identity Experience Framework アプリケーションを登録します](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications)。
+1. 必要な[ポリシー キー](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys-for-identity-experience-framework-applications)を追加し、[Identity Experience Framework アプリケーションを登録します](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications)。
 1. [Azure AD B2C ポリシー スターター パックを取得し](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-the-starter-pack)、テナントにアップロードします。 
 1. スターター パックをアップロードした後、[サインアップまたはサインイン ポリシーをテストします](tutorial-create-user-flows.md?pivots=b2c-custom-policy#test-the-custom-policy)。
 1. [Visual Studio Code](https://code.visualstudio.com/) (VS Code) をダウンロードしてインストールすることをお勧めします。 Visual Studio Code は、軽量でありながら強力なソース コード エディターです。これはデスクトップで使用でき、Windows、macOS、Linux に対応しています。 VS Code では、[VS Code 用の Azure AD B2C 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)をインストールすることにより、Azure AD B2C カスタム ポリシーの XML ファイルをすばやく操作および編集できます。

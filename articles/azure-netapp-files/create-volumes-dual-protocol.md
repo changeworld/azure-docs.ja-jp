@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 4fc34329ec7f318d79dd04e271db7b37b7e1cc59
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 266ff9dd24ac01347f359ea44f46e7950f8b432f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533626"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252480"
 ---
 # <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル ボリュームを作成する
 
@@ -251,5 +251,4 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 * [Unix のアクセス許可を構成して所有権モードを変更する](configure-unix-permissions-change-ownership-mode.md) 
 * [Azure NetApp Files 用に ADDS LDAP over TLS を構成する](configure-ldap-over-tls.md)
 * [NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する](configure-ldap-extended-groups.md)
-* [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
-* [LDAP ボリュームに関する問題のトラブルシューティング](troubleshoot-ldap-volumes.md)
+* [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)

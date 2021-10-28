@@ -4,12 +4,12 @@ description: Azure Container Instances をデプロイ、実行、または管�
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f00b20751b60549b9b10409539354605ea4bd355
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: ef2ee343fe1c817453dd68dc79de882f3d637e12
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292245"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251967"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -45,7 +45,7 @@ Azure Container Instances でサポートされていないイメージを指定
 }
 ```
 
-このエラーは、半期チャネル (SAC) リリース 1709 または 1803 に基づく Windows イメージ (サポートされていない) をデプロイするときに最も多く発生します。 Azure Container Instances でサポートされている Windows イメージについては、[よく寄せられる質問](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)を参照してください。
+このエラーは、半期チャネル (SAC) リリース 1709 または 1803 に基づく Windows イメージ (サポートされていない) をデプロイするときに最も多く発生します。 Azure Container Instances でサポートされている Windows イメージについては、[よく寄せられる質問](./container-instances-faq.yml)を参照してください。
 
 ### <a name="unable-to-pull-image"></a>イメージをプルできない
 
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>キャッシュ イメージ
 
-Azure Container Instances では、キャッシュ メカニズムを使用して、`nanoserver:1809`、`servercore:ltsc2019`、`servercore:1809` など、一般的な [Windows ベースのイメージ](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)に基づいて構築されたイメージに対するコンテナーの起動時間を高速化します。 `ubuntu:1604` や `alpine:3.6` など、よく使用される Linux イメージもキャッシュされます。 Windows と Linux の両方のイメージには、`latest` タグを使用しないようにしてください。 ガイダンスについては、Container Registry の[イメージ タグのベスト プラクティス](../container-registry/container-registry-image-tag-version.md)に関する記事を参照してください。 キャッシュされたイメージとタグの最新の一覧については、[List Cached Images][list-cached-images] API を使用してください。
+Azure Container Instances では、キャッシュ メカニズムを使用して、`nanoserver:1809`、`servercore:ltsc2019`、`servercore:1809` など、一般的な [Windows ベースのイメージ](./container-instances-faq.yml)に基づいて構築されたイメージに対するコンテナーの起動時間を高速化します。 `ubuntu:1604` や `alpine:3.6` など、よく使用される Linux イメージもキャッシュされます。 Windows と Linux の両方のイメージには、`latest` タグを使用しないようにしてください。 ガイダンスについては、Container Registry の[イメージ タグのベスト プラクティス](../container-registry/container-registry-image-tag-version.md)に関する記事を参照してください。 キャッシュされたイメージとタグの最新の一覧については、[List Cached Images][list-cached-images] API を使用してください。
 
 > [!NOTE]
 > Azure Container Instances での Windows Server 2019 ベースのイメージの使用は、プレビュー段階です。

@@ -5,12 +5,12 @@ author: joshuawaddell
 ms.author: jowaddel
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: e9ec55ac41cb30a902b337184cc75a4f976700bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9afa64e394c9b7daee4d81a3d995f1b383a02fc7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699823"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216354"
 ---
 # <a name="migrate-to-bicep"></a>Bicep へ移行する
 
@@ -46,7 +46,7 @@ Bicep で Azure リソースを定義することには、シンプルな構文�
 
 1. **逆コンパイルされたテンプレートから各リソースをコピーする。** 変換された Bicep ファイルから新しい Bicep ファイルに各リソースを個別にコピーします。 このプロセスは、リソースごとに問題を解決し、テンプレートのサイズが大きくなるとともに生じる混乱を回避するのに役立ちます。
 
-1. **不足しているリソースを特定して再作成します。** すべての Azure リソースの種類を、Azure portal、Azure CLI、または Azure PowerShell を使用してエクスポートできるわけではありません。 たとえば、DependencyAgentWindows や MMAExtension (Microsoft Monitoring Agent) などの仮想マシン拡張機能は、エクスポート用にサポートされているリソースの種類ではありません。 仮想マシンの拡張機能など、エクスポートされなかったリソースについては、新しい Bicep ファイルでそれらのリソースを再作成する必要があります。 [Azure Resource Explorer](/azure/azure-resource-manager/templates/view-resources?azure-portal=true#use-resource-explorer)、[Bicep および ARM テンプレート リファレンスのドキュメント](/azure/templates/?azure-portal=true)、および [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates?azure-portal=true)のサイトなど、リソースの再作成に使用できるツールとアプローチは複数あります。
+1. **不足しているリソースを特定して再作成します。** すべての Azure リソースの種類を、Azure portal、Azure CLI、または Azure PowerShell を使用してエクスポートできるわけではありません。 たとえば、DependencyAgentWindows や MMAExtension (Microsoft Monitoring Agent) などの仮想マシン拡張機能は、エクスポート用にサポートされているリソースの種類ではありません。 仮想マシンの拡張機能など、エクスポートされなかったリソースについては、新しい Bicep ファイルでそれらのリソースを再作成する必要があります。 [Azure Resource Explorer](../templates/export-template-portal.md?azure-portal=true)、[Bicep および ARM テンプレート リファレンスのドキュメント](/azure/templates/?azure-portal=true)、および [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates?azure-portal=true)のサイトなど、リソースの再作成に使用できるツールとアプローチは複数あります。
 
 ## <a name="phase-3-refactor"></a>フェーズ 3: リファクタリング
 

@@ -3,22 +3,22 @@ title: 別の Azure AD B2C テナントの Azure AD B2C アカウントを使用
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで、別のテナントの Azure AD B2C アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5757b2e875253ac21c64cd3fbd0b7ade42085e8b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8aa68b99c4deaec0e20aedd663a3bfc7451d0742
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571919"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130228000"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>別の Azure AD B2C テナントの Azure AD B2C アカウントを使用したサインアップとサインインを設定する
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 71fcf944f0664c1d3e4d07e96348d109042047a8
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 0ed10fbe492a49f61a989e9159bed1cf4b60e513
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094898"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256307"
 ---
 # <a name="search-backups-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのバックアップを検索する
 
@@ -75,4 +75,4 @@ ms.locfileid: "129094898"
 * [ボリュームのバックアップ機能を無効にする](backup-disable.md)
 * [ボリュームのバックアップを削除する](backup-delete.md)
 * [ボリュームのバックアップ メトリック](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Azure NetApp Files のバックアップに関する FAQ](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Azure NetApp Files のバックアップに関する FAQ](faq-backup.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 372953e9a2a11cbb614cc6afd6ccde629344e0c2
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: beaa5df1d0a8e8537574e6e1e6284272d3a8a294
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132780"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261236"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
@@ -51,17 +51,17 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
     - また、Azure プラットフォームによる分散型サービス拒否 (DDoS) の保護が、インターネットに接続されたパブリック IP アドレスに拡張されます
 - 仮想ネットワーク内の IPv6 トラフィックのルーティングを、ユーザー定義ルートを使用してカスタマイズできます。これは特に、ネットワーク仮想アプライアンスを利用してアプリケーションを拡張しているときに便利です。
 - Linux および Windows Virtual Machines はすべて、Azure VNET の IPv6 を使用できます
-- 回復性があるスケーラブルなアプリケーションを作成するための [Standard IPv6 パブリック Load Balancer](../../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) のサポート。これには、次のものが含まれます。
+- 回復性があるスケーラブルなアプリケーションを作成するための [Standard IPv6 パブリック Load Balancer](../../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) のサポート。これには、次のものが含まれます。
     - IPv6 正常性プローブ (オプション)。どのバックエンド プール インスタンスが正常であり、新しいフローを受信できるかを判断します。
     - アウトバウンド規則 (オプション)。アウトバウンド接続の完全な宣言的制御を提供し、特定のニーズに合わせてこの機能をスケーリングおよび調整できます。
     - 複数のフロントエンド構成 (オプション)。これにより、単一のロード バランサーで複数の IPv6 パブリック IP アドレスを使用できます。フロントエンド アドレスをまたいで同じフロントエンド プロトコルとポートを再利用できます。
     - 負荷分散規則の *Floating IP* 機能を使用して、オプションの IPv6 ポートをバックエンド インスタンスで再利用できます 
     - 注:負荷分散では、プロトコル変換は実行されません (NAT64 はサポートされていません)。 
-- Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](../../virtual-network/ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。   
+- Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](../../load-balancer/ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。   
 - レガシ デプロイとの互換性のための Basic IPv6 パブリック Load Balancer のサポート
 - [予約された IPv6 パブリック IP アドレスおよびアドレス範囲](public-ip-address-prefix.md)により、安定した予測可能な IPv6 アドレスが提供されます。これにより、会社や顧客向けに、Azure でホストされているアプリケーションを簡単にフィルター処理することができます。
 - インスタンスレベル パブリック IP アドレスにより、個々の VM に対する IPv6 インターネットの直接接続が提供されます。
-- [既存の IPv4 のみのデプロイに対する IPv6 の追加](../../virtual-network/ipv6-add-to-existing-vnet-powershell.md) - この機能を使うと、既存の IPv4 のみのデプロイに IPv6 接続を簡単に追加でき、デプロイを作成しなおす必要はありません。  このプロセスの間、IPv4 のネットワーク トラフィックは影響を受けないため、アプリケーションと OS によっては、ライブ サービスに対しても IPv6 を追加できる場合があります。    
+- [既存の IPv4 のみのデプロイに対する IPv6 の追加](../../load-balancer/ipv6-add-to-existing-vnet-powershell.md) - この機能を使うと、既存の IPv4 のみのデプロイに IPv6 接続を簡単に追加でき、デプロイを作成しなおす必要はありません。  このプロセスの間、IPv4 のネットワーク トラフィックは影響を受けないため、アプリケーションと OS によっては、ライブ サービスに対しても IPv6 を追加できる場合があります。    
 - インターネット クライアントが、最適なプロトコルと、IPv6 (AAAA) レコードに対する Azure DNS サポートを使用して、デュアル スタック アプリケーションにシームレスにアクセスできるようにします。 
 - IPv6 の仮想マシン スケール セットにより、負荷に応じて自動的に拡大縮小するデュアル スタック アプリケーションを作成できます。
 - [仮想ネットワーク (VNET) ピアリング](../../virtual-network/virtual-network-peering-overview.md) - リージョン内ピアリングとグローバル ピアリングの両方。デュアル スタック VNET をシームレスに接続できます。ピアリングされたネットワーク内の VM 上の IPv4 エンドポイントと IPv6 エンドポイントの両方が、相互に通信できるようになります。 デプロイをデュアル スタックに移行するときに、IPv4 のみの VNET でデュアル スタックをピアリングすることもできます。 
@@ -87,6 +87,6 @@ Azure の IPv6 のリソースおよび帯域幅は、IPv4 と同じレートで
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure PowerShell を使用して IPv6 デュアル スタック アプリケーションをデプロイする](../../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)方法を学習します。
-- [Azure CLI を使用して IPv6 デュアル スタック アプリケーションをデプロイする](../../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)方法を学習します。
-- [Resource Manager テンプレート (JSON) を使用して IPv6 デュアル スタック アプリケーションをデプロイする](../../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)方法を学習します
+- [Azure PowerShell を使用して IPv6 デュアル スタック アプリケーションをデプロイする](../../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)方法を学習します。
+- [Azure CLI を使用して IPv6 デュアル スタック アプリケーションをデプロイする](../../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)方法を学習します。
+- [Resource Manager テンプレート (JSON) を使用して IPv6 デュアル スタック アプリケーションをデプロイする](../../load-balancer/ipv6-configure-standard-load-balancer-template-json.md)方法を学習します

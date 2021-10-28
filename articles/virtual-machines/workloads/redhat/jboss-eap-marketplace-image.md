@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 05/25/2021
-ms.openlocfilehash: 3c819367f35cb4a8174abaac1380eb439ace206a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 6682c5301861732189d532641060e136250957b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769707"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261483"
 ---
 # <a name="deploy-red-hat-jboss-enterprise-platform-eap-on-azure-vms-and-virtual-machine-scale-sets-using-the-azure-marketplace-offer"></a>Azure Marketplace プランを使用して Azure VM と仮想マシン スケール セットに Red Hat JBoss Enterprise Platform (EAP) をデプロイする
 
@@ -111,7 +111,7 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 JBoss 
 ## <a name="after-a-successful-deployment"></a>正常なデプロイの後
 
 1. 別の Virtual Network で [VNet ピアリングを使用してジャンプ VM を作成](../../windows/quick-create-portal.md#create-virtual-machine)し、サーバーにアクセスして、[仮想ネットワーク ピアリング](../../../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks)を使用してアプリケーションを公開します。
-2. サーバーとアプリケーションにアクセスするための[パブリック IP を作成](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)します。
+2. サーバーとアプリケーションにアクセスするための[パブリック IP を作成](../../../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address)します。
 3. 同じ Virtual Network (VNet) 内の別のサブネット (新しいサブネット) に、[同じ Virtual Network 内のジャンプ VM を作成](../../windows/quick-create-portal.md#create-virtual-machine)し、ジャンプ VM 経由でサーバーにアクセスします。 ジャンプ VM は、アプリケーションを公開するために使用できます。
 4. [Application Gateway](../../../application-gateway/quick-create-portal.md#create-an-application-gateway) を使用してアプリケーションを公開します。
 5. 外部 Load Balancer (ELB) を使用してアプリケーションを公開します。
@@ -128,7 +128,7 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 JBoss 
 
 ### <a name="2-create-a-public-ip-to-access-the-rhel-vm-and-jboss-eap-admin-console"></a>2. RHEL VM と JBoss EAP 管理コンソールにアクセスするためのパブリック IP を作成する。
 
-1. 作成した RHEL VM には、パブリック IP が関連付けられていません。 VM にアクセスするための[パブリック IP を作成](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)し、[パブリック IP を VM に関連付ける](../../../virtual-network/associate-public-ip-address-vm.md)ことができます。 パブリック IP の作成は、Azure portal または [Azure PowerShell](/powershell/) コマンドまたは [Azure CLI](/cli/azure/install-azure-cli) コマンドを使用して行うことができます。
+1. 作成した RHEL VM には、パブリック IP が関連付けられていません。 VM にアクセスするための[パブリック IP を作成](../../../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address)し、[パブリック IP を VM に関連付ける](../../../virtual-network/ip-services/associate-public-ip-address-vm.md)ことができます。 パブリック IP の作成は、Azure portal または [Azure PowerShell](/powershell/) コマンドまたは [Azure CLI](/cli/azure/install-azure-cli) コマンドを使用して行うことができます。
 2. VM のパブリック IP を取得する - VM の詳細ページにアクセスして、パブリック IP をコピーします。 パブリック IP を使用して、VM と JBoss EAP 管理コンソールにアクセスします。
 3. JBoss EAP on Azure Web ページを表示する - Web ブラウザーを開き、*http://<PUBLIC_HOSTNAME>:8080/* にアクセスすると、既定の EAP ようこそページが表示されます。
 4. JBoss EAP 管理コンソールへのログイン - Web ブラウザーを開き、*http://<PUBLIC_HOSTNAME>:9990* にアクセスします。 JBoss EAP ユーザー名とパスワードを入力してログインします。
