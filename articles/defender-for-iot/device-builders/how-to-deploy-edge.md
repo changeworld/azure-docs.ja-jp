@@ -3,12 +3,12 @@ title: IoT Edge セキュリティ モジュールをデプロイする
 description: IoT Edge に Defender for IoT セキュリティ エージェントをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2021
-ms.openlocfilehash: f5d6dbf45745629fb656812bf75a3b69381260eb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 67c60841d4d1e9080c95cf50a71be6ad4a845ef1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678575"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238626"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "128678575"
 
 ### <a name="prerequisites"></a>前提条件
 
-1. IoT Hub で、ご使用のデバイスが [[新しいデバイスを登録する]](../../iot-edge/how-to-register-device.md#register-a-new-device) であることを確認します。
+1. IoT Hub で、ご使用のデバイスが [[新しいデバイスを登録する]](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device) であることを確認します。
 
 1. Defender for IoT Edge モジュールでは、[AuditD フレームワーク](https://linux.die.net/man/8/auditd)が IoT Edge デバイスにインストールされている必要があります。
 

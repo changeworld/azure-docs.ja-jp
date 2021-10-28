@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: 3eba4506761903294c537049477ed61a97d31ee1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cee4d545381061016af432c9c2fb0e28096f2eaf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676962"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244257"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app"></a>クイックスタート: アプリに 1 対 1 のビデオ通話を追加する
 
@@ -43,5 +43,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - Microsoft の [Web 通話のサンプル](../../samples/web-calling-sample.md)を確認する
-- [Calling SDK の機能](./calling-client-samples.md?pivots=platform-web)について確認する
+- [Calling SDK の機能](./getting-started-with-calling.md?pivots=platform-web)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

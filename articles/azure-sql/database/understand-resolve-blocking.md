@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: cedd161a392af9df52ed94aa4ed60379cf28776a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: faf2d60162a7cd39b901414aedb8cda1406173f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413537"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226935"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database のブロックの問題の概要と解決策
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -425,7 +425,6 @@ Waittype、Open_Tran、Status 列は [sys.dm_exec_request](/sql/relational-datab
 ## <a name="learn-more"></a>詳細情報
 
 * [Azure SQL Database: 自動チューニングによるパフォーマンス チューニングの向上](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
-* [自動チューニングによる Azure SQL Database パフォーマンスの向上](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)
 * [Azure SQL で一貫したパフォーマンスを提供する](/learn/modules/azure-sql-performance/)
 * [Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](troubleshoot-common-errors-issues.md)
 * [Transient Fault Handling (一時的な障害の処理)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)

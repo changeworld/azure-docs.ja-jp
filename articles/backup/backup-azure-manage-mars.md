@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/05/2021
-ms.openlocfilehash: 525bdff82c224b02b941354983276747b483ae56
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: db7bd057cc2f781b1a55b62f28170fe462b11f39
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535195"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233565"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -170,7 +170,7 @@ ms.locfileid: "129535195"
 
 ## <a name="validate-passphrase"></a>パスフレーズを検証する
 
-MARS エージェント バージョン 2.0.9190.0 以降では、[更新された要件](/azure/backup/backup-azure-file-folder-backup-faq#what-characters-are-allowed-for-the-passphrase-)を満たしていることを確認するために、パスフレーズを検証する必要があります。
+MARS エージェント バージョン 2.0.9190.0 以降では、[更新された要件](./backup-azure-file-folder-backup-faq.yml#what-characters-are-allowed-for-the-passphrase-)を満たしていることを確認するために、パスフレーズを検証する必要があります。
 
 パスフレーズを検証するには、次の手順に従います。
 

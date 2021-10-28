@@ -3,12 +3,12 @@ title: VM を作成するための Azure DevTest Labs 数式を管理する
 description: この記事では、ベース (カスタム イメージ、Marketplace イメージ、他の数式) または既存の VM から数式を作成する方法について説明します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 632e05a566e1891afff3440563a2fabde0b669d3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6aea6af48344e6dfbdb811281e4ca0e8203968d3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678537"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226545"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -122,7 +122,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
-* [Custom images or formulas? (カスタム イメージか数式か?)](/azure/devtest-labs/devtest-lab-faq#what-is-the-difference-between-a-custom-image-and-a-formula)
+* [Custom images or formulas? (カスタム イメージか数式か?)](./devtest-lab-faq.yml)
 
 ## <a name="next-steps"></a>次のステップ
 VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](devtest-lab-add-vm.md)します。

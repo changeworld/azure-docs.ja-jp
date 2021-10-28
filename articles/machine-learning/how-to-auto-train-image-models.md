@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: automl
 ms.date: 10/06/2021
-ms.openlocfilehash: 944bab251d8e98da94a8d2e9d13418478e2dd46c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 312eea28371de6726bca5d1a89e305024e552dad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007027"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254367"
 ---
 # <a name="set-up-automl-to-train-computer-vision-models-with-python-preview"></a>Python を使用して Computer Vision モデルをトレーニングするために AutoML を設定する (プレビュー)
 
@@ -63,7 +63,7 @@ automl_image_config = AutoMLImageConfig(task=ImageTask.IMAGE_OBJECT_DETECTION)
 
 ## <a name="training-and-validation-data"></a>データをトレーニングして検証する
 
-Computer Vision モデルを生成するには、ラベル付き画像データを Azure Machine Learning [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) の形式でモデル トレーニングの入力として取り込む必要があります。 [データ ラベル付けプロジェクトからエクスポート](how-to-create-labeling-projects.md#export-the-labels)した `TabularDataset` を使用するか、ラベル付けされたトレーニング データで新しい `TabularDataset` を作成できます。 
+Computer Vision モデルを生成するには、ラベル付き画像データを Azure Machine Learning [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) の形式でモデル トレーニングの入力として取り込む必要があります。 [データ ラベル付けプロジェクトからエクスポート](./how-to-create-image-labeling-projects.md#export-the-labels)した `TabularDataset` を使用するか、ラベル付けされたトレーニング データで新しい `TabularDataset` を作成できます。 
 
 トレーニング データの形式が異なる (pascal VOC や COCO など) 場合は、サンプル ノートブックに含まれるヘルパー スクリプトを適用して、データを JSONL に変換できます。 [自動 ML で Computer Vision タスク用にデータを準備する](how-to-prepare-datasets-for-automl-images.md)方法の詳細を確認してください。 
 
@@ -513,4 +513,4 @@ def init():
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル: AutoML と Python を使用して物体検出モデル (プレビュー) をトレーニングする](tutorial-auto-train-image-models.md)。
-* [自動 ML 実験のトラブルシューティング](how-to-troubleshoot-auto-ml.md)。 
+* [自動 ML 実験のトラブルシューティング](how-to-troubleshoot-auto-ml.md)。

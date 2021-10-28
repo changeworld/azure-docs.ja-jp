@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2021
 ms.author: allensu
-ms.openlocfilehash: 116a36875c63e515725c90edc3d6fe2a86c9374c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 92f472afdb642633a093ebdf765b0d8ba968bd8a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367813"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228339"
 ---
 # <a name="create-change-or-delete-an-azure-public-ip-address"></a>Azure パブリック IP アドレスを作成、変更、または削除する
 
@@ -31,10 +31,10 @@ ms.locfileid: "129367813"
 
 ポータル、PowerShell、CLI、Resource Manager テンプレートを使用してパブリック IP アドレスを作成する方法については、以下のページを参照してください。
 
- * [パブリック IP アドレスの作成 - ポータル](../../virtual-network/create-public-ip-portal.md?tabs=option-create-public-ip-standard-zones)
- * [パブリック IP アドレスの作成 - PowerShell](../../virtual-network/create-public-ip-powershell.md?tabs=option-create-public-ip-standard-zones)
- * [パブリック IP アドレスの作成 - Azure CLI](../../virtual-network/create-public-ip-cli.md?tabs=option-create-public-ip-standard-zones)
- * [パブリック IP アドレスの作成 - テンプレート](../../virtual-network/create-public-ip-template.md)
+ * [パブリック IP アドレスの作成 - ポータル](./create-public-ip-portal.md?tabs=option-create-public-ip-standard-zones)
+ * [パブリック IP アドレスの作成 - PowerShell](./create-public-ip-powershell.md?tabs=option-create-public-ip-standard-zones)
+ * [パブリック IP アドレスの作成 - Azure CLI](./create-public-ip-cli.md?tabs=option-create-public-ip-standard-zones)
+ * [パブリック IP アドレスの作成 - テンプレート](./create-public-ip-template.md)
 
 >[!NOTE]
 >ポータルによって 2 つのパブリック IP アドレス リソース (IPv4 と IPv6) を作成できますが、PowerShell および CLI のコマンドを使用すると、どちらか一方の IP バージョンのアドレスで 1 つのリソースが作成されます。 2 つのパブリック IP アドレス リソース (IP バージョンごとに 1 つ) を作成する場合は、コマンドを 2 回実行し、異なる名前と IP バージョンでパブリック IP アドレス リソースを指定する必要があります。
@@ -61,7 +61,7 @@ ms.locfileid: "129367813"
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>パブリック IP アドレスを表示、設定変更、削除する
 
    - **表示または一覧表示**: SKU、アドレス、関連付けを含むパブリック IP の設定を確認します。 関連付けは、ロード バランサーのフロントエンド、仮想マシン、その他の Azure リソースの場合があります。
-   - **変更**: 「[パブリック IP アドレスを作成する](#create-a-public-ip-address)」の情報を使用して、設定を変更します。 設定はアイドル タイムアウト、DNS 名ラベル、割り当て方法などです。 パブリック IP SKU を Basic から Standard にアップグレードする完全なプロセスについては、[Azure パブリック IP アドレスのアップグレード](../../virtual-network/public-ip-upgrade-portal.md)に関するページを参照してください。
+   - **変更**: 「[パブリック IP アドレスを作成する](#create-a-public-ip-address)」の情報を使用して、設定を変更します。 設定はアイドル タイムアウト、DNS 名ラベル、割り当て方法などです。 パブリック IP SKU を Basic から Standard にアップグレードする完全なプロセスについては、[Azure パブリック IP アドレスのアップグレード](./public-ip-upgrade-portal.md)に関するページを参照してください。
    
    >[!WARNING]
    >該当する IP 構成からそのアドレスを削除し ( **[削除]** セクションを参照)、パブリック IP アドレスの割り当て方法を静的から動的に変更します。 割り当て方法を静的から動的に変更すると、パブリック IP リソースに割り当てられた IP アドレスが失われます。 静的または動的アドレスと任意の DNS 名ラベル (定義している場合) の間のマッピングは Azure パブリック DNS サーバーによって保持されますが、仮想マシンが停止 (割り当て解除) された状態にあった後に起動されると、動的 IP アドレスが変化する場合があります。 アドレスが変化しないようにするには、静的 IP アドレスを割り当ててください。
@@ -76,7 +76,7 @@ ms.locfileid: "129367813"
 
 |リソース|Azure portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[仮想マシン](../../virtual-network/remove-public-ip-address-vm.md)|**[関連付けの解除]** を選択して NIC 構成から IP アドレスの関連付けを解除してから、 **[削除]** を選択します。|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) で NIC 構成から IP アドレスの関連付けを解除。[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) で削除|[az network public-ip update を "--remove" パラメーターと一緒に使用して](/cli/azure/network/public-ip#az_network_public_ip_update)、IP アドレスを NIC 構成から削除します。 [az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete) を使用して、パブリック IP を削除します。 |
+|[仮想マシン](./remove-public-ip-address-vm.md)|**[関連付けの解除]** を選択して NIC 構成から IP アドレスの関連付けを解除してから、 **[削除]** を選択します。|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) で NIC 構成から IP アドレスの関連付けを解除。[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) で削除|[az network public-ip update を "--remove" パラメーターと一緒に使用して](/cli/azure/network/public-ip#az_network_public_ip_update)、IP アドレスを NIC 構成から削除します。 [az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete) を使用して、パブリック IP を削除します。 |
 |ロード バランサーのフロントエンド | 未使用のパブリック IP アドレスを参照し、 **[関連付け]** を選択します。 IP を置き換える、関連するフロントエンド IP 構成を持つロード バランサーを選択します。 古い IP は、仮想マシンと同じ方法を使用して削除できます。  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) を使用して、新しいフロントエンド IP 構成をパブリック ロード バランサーに関連付けます。 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) を使用して、パブリック IP を削除します。 また、[Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) を使用して、フロントエンド IP 構成が複数ある場合に削除できます。 | [az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) を使用して、新しいフロントエンド IP 構成をパブリック ロード バランサーに関連付けます。 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) を使用して、パブリック IP を削除します。 また、[az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) を使用して、フロントエンド IP 構成が複数ある場合に削除できます。 |
 |ファイアウォール|該当なし| [Deallocate](../../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) でファイアウォールの割り当てを解除し、すべての IP 構成を削除 | [az network firewall ip-config delete](/cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_delete) を使用して、IP を削除します。 まず PowerShell を使用して、割り当てを解除します。 |
 
@@ -92,7 +92,7 @@ ms.locfileid: "129367813"
 
 パブリック IP アドレスを割り当てる方法については、次のリソースを参照してください。
 
-- 作成時の [Windows](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンまたは [Linux](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシン。 IP を[既存の仮想マシン](../../virtual-network/virtual-network-network-interface-addresses.md#add-ip-addresses)に追加します。
+- 作成時の [Windows](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンまたは [Linux](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシン。 IP を[既存の仮想マシン](./virtual-network-network-interface-addresses.md#add-ip-addresses)に追加します。
 - [パブリック ロード バランサー](../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Application Gateway](../../application-gateway/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [VPN ゲートウェイを使用したサイト間接続](../../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

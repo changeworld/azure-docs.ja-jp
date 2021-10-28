@@ -9,22 +9,21 @@ ms.subservice: spark
 ms.date: 09/22/2021
 ms.author: midesa
 ms.custom: has-adal-ref
-ms.openlocfilehash: 32ef54e9db80879f822ea08cba6b0374697c806b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59510405dab8b73f648fc7c459280bda46d167d4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128583532"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225350"
 ---
 # <a name="azure-synapse-runtime-for-apache-spark-31"></a>Azure Synapse Runtime for Apache Spark 3.1 
 
 Azure Synapse Analytics は、Apache Spark の複数のランタイムをサポートしています。 このドキュメントでは、Azure Synapse Runtime for Apache Spark 3.1 のランタイム コンポーネントとバージョンについて説明します。 
 
-## <a name="known-issues-in-preview"></a>プレビューでの既知の問題
+## <a name="known-issues"></a>既知の問題
 * Synapse Pipeline と Dataflows のサポートは間もなく開始されます。
 * 次のコネクタのサポートは間もなく開始されます。
   * Azure Data Explorer コネクタ
-  * Cosmos DB
   * SQL Server
 * Hyperspace、Spark Cruise、Dynamic Allocation Executors は間もなく公開予定です。
 

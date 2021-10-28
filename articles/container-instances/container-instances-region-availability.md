@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: d48f9a13b24caab86b6d2cdfba039583f1b75c70
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 556d018a020aca7e6df11ff635719145af5bb8de
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998544"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252043"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -77,7 +77,7 @@ ms.locfileid: "129998544"
 
 ## <a name="windows-container-groups"></a>Windows コンテナー グループ
 
-次のリージョンと最大リソースは、[サポートされているかプレビュー](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)の Windows Server コンテナーを含むコンテナー グループで使用できます。
+次のリージョンと最大リソースは、[サポートされているかプレビュー](./container-instances-faq.yml)の Windows Server コンテナーを含むコンテナー グループで使用できます。
 
 > [!IMPORTANT]
 > 現時点では、Windows コンテナー グループを使用したデプロイは、Azure 仮想ネットワークのデプロイではサポートされていません。

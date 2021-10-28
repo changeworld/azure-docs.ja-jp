@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/13/2021
 ms.author: b-juche
-ms.openlocfilehash: 06d7e334205de142b60f73d1e98f0c4167c65b7d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3ecb9926a03efe792f4a62e7a1cf5477e1e62269
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993152"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224182"
 ---
 # <a name="configure-policy-based-backups-for-azure-netapp-files"></a>Azure NetApp Files 用にポリシー ベースのバックアップを構成する 
 
@@ -161,6 +161,6 @@ Azure NetApp Files バックアップでは、ボリューム レベルで、"*�
 * [ボリュームのバックアップ機能を無効にする](backup-disable.md)
 * [ボリュームのバックアップを削除する](backup-delete.md)
 * [ボリュームのバックアップ メトリック](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Azure NetApp Files のバックアップに関する FAQ](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Azure NetApp Files のバックアップに関する FAQ](faq-backup.md)
 
 

@@ -6,18 +6,18 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8eb9a6ad285bea2a5ac6e69ebb5ebef48b135899
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 50ab3c65abd6fe57941f18f58ff277de6822389c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713135"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216487"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor エージェントの概要
 Azure Monitor エージェント (AMA) によって、Azure 仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントの概要について説明します。また、そのインストール方法やデータ収集の構成方法などの情報が含まれます。
 
 ## <a name="relationship-to-other-agents"></a>他のエージェントとの関係
-Azure Monitor エージェントは、仮想マシンからゲスト データを収集するために Azure Monitor によって現在使用されている次のレガシ エージェントに代わるものです ([既知のギャップを確認](/azure/azure-monitor/faq#is-the-new-azure-monitor-agent-at-parity-with-existing-agents))。
+Azure Monitor エージェントは、仮想マシンからゲスト データを収集するために Azure Monitor によって現在使用されている次のレガシ エージェントに代わるものです ([既知のギャップを確認](../faq.yml))。
 
 - [Log Analytics エージェント](./log-analytics-agent.md): データを Log Analytics ワークスペースに送信し、VM insights ソリューションと監視ソリューションをサポートします。
 - [Diagnostics 拡張機能](./diagnostics-extension-overview.md): Azure Monitor メトリック (Windows のみ)、Azure Event Hubs、Azure Storage にデータを送信します。
@@ -54,7 +54,7 @@ Azure Monitor エージェントは [Azure Monitor のレガシ エージェン�
 - **環境要件:** Azure Monitor エージェントでは現在、[これらのオペレーティング システム](./agents-overview.md#supported-operating-systems)をサポートしています。 この新しいエージェントでは高い確率で、将来のオペレーティング システムのバージョン、環境のサポート、およびネットワーク要件のサポートが提供される予定です。 
  
   ご使用の環境が Azure Monitor エージェントでサポートされているかどうかを評価してください。 そうでない場合は、現在のエージェントのままにする必要がある可能性があります。 Azure Monitor エージェントで現在の環境がサポートされている場合は、その環境への移行を検討してください。
-- **現在と新規の機能要件:** Azure Monitor エージェントには、フィルター処理、スコープ、マルチホームなど、いくつかの新機能が導入されています。 ただし、カスタム ログ収集やすべてのソリューションとの統合など、他の機能については、まだ現在のエージェントと同等ではありません。 ([プレビュー段階のソリューションを参照してください](/azure/azure-monitor/faq#which-log-analytics-solutions-are-supported-on-the-new-azure-monitor-agent)。) 
+- **現在と新規の機能要件:** Azure Monitor エージェントには、フィルター処理、スコープ、マルチホームなど、いくつかの新機能が導入されています。 ただし、カスタム ログ収集やすべてのソリューションとの統合など、他の機能については、まだ現在のエージェントと同等ではありません。 ([プレビュー段階のソリューションを参照してください](../faq.yml)。) 
  
   Azure Monitor のほとんどの新機能は、Azure Monitor エージェントでのみ使用できるようになります。 時間の経過と共に、新しいエージェントでのみ使用できる機能が増えます。 Azure Monitor エージェントに必要な機能があるかどうか、またこの新しいエージェントの他の重要な機能を利用するために、一時的に利用できなくてもよい機能があるかどうかを検討することをお勧めします。 
   

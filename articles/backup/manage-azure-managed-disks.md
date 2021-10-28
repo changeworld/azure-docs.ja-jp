@@ -3,12 +3,12 @@ title: Azure Managed Disks を管理する
 description: Azure portal での Azure Managed Disks の管理について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2021
-ms.openlocfilehash: 4b40a71a71ce543c66bf347ec745fea6ae384779
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 38f131d9656f604ee4d53b5d1de0f16ffa56b9ba
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708915"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215993"
 ---
 # <a name="manage-azure-managed-disks"></a>Azure Managed Disks を管理する
 
@@ -37,7 +37,7 @@ Azure ディスクの保護を停止するには、次の 3 つの方法があ�
  
 1. 次のいずれかのデータ保持オプションを選択します。
 
-   1. いつまでも保持する
+   1. 無期限に保持する
    1. ポリシーに従って保持する
  
    :::image type="content" source="./media/manage-azure-managed-disks/data-retention-options-for-disk-inline.png" alt-text="ディスク バックアップ インスタンスの保護を停止するオプションを示すスクリーンショット。" lightbox="./media/manage-azure-managed-disks/data-retention-options-for-disk-expanded.png":::
@@ -58,7 +58,7 @@ Azure ディスクの保護を停止するには、次の 3 つの方法があ�
 
 1. **[バックアップの停止 (プレビュー)]** をクリックします。
 
-1. **[バックアップ データの削除]** を選択します。
+1. **[Delete Backup Data]\(バックアップ データの削除\)** を選択します。
 
    バックアップ インスタンスの名前、削除の理由、その他のコメントを指定します。
 
@@ -96,7 +96,7 @@ Azure ディスクの保護を停止するには、次の 3 つの方法があ�
 スケジュールされたバックアップ ジョブをすべて停止し、既存のすべてのバックアップを削除する場合は、 **[バックアップ インスタンスの削除]** を使用します。
 
 >[!Note]
->スナップショット リソース グループを手動で削除した場合、またはバックアップ コンテナーのマネージド ID に対するアクセス許可が取り消された場合、バックアップ インスタンスの削除は失敗します。 そのようなエラーが発生した場合は、スナップショット リソース グループを (同じ名前で) 一時的に作成し、バックアップ コンテナーのマネージド ID に[こちら](/azure/backup/backup-managed-disks-ps#assign-permissions)に記載されている必要なロールのアクセス許可を指定します。 スナップショット リソース グループの名前は、 **[バックアップ インスタンス]** 画面の **[基本]** タブで見つけることができます。 
+>スナップショット リソース グループを手動で削除した場合、またはバックアップ コンテナーのマネージド ID に対するアクセス許可が取り消された場合、バックアップ インスタンスの削除は失敗します。 そのようなエラーが発生した場合は、スナップショット リソース グループを (同じ名前で) 一時的に作成し、バックアップ コンテナーのマネージド ID に[こちら](./backup-managed-disks-ps.md#assign-permissions)に記載されている必要なロールのアクセス許可を指定します。 スナップショット リソース グループの名前は、 **[バックアップ インスタンス]** 画面の **[基本]** タブで見つけることができます。 
 
 ディスク バックアップ インスタンスを削除するには、次の手順のようにします。
 

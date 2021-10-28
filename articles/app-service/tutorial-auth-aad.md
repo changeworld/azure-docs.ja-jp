@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 14bc05787a589356eec6d4cbb9abd5eebba255a8
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2a77b03f4ea72e0cb22c790bbebab5127e4b0375
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045581"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220435"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -133,8 +133,8 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 1. `main` ブランチをデプロイするため、2 つの App Service アプリの既定のデプロイ ブランチを `main` に設定する必要があります (「[デプロイ ブランチを変更する](deploy-local-git.md#change-deployment-branch)」を参照してください)。 Cloud Shell で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して `DEPLOYMENT_BRANCH` アプリ設定を指定します。 
 
     ```azurecli-interactive
-    az webapp config appsettings set --name <front-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH='main'
-    az webapp config appsettings set --name <back-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH='main'
+    az webapp config appsettings set --name <front-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH=main
+    az webapp config appsettings set --name <back-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH=main
     ```
 
 1. "_ローカル ターミナル ウィンドウ_" に戻り、以下の Git コマンドを実行して、バックエンド アプリにデプロイします。 _\<deploymentLocalGitUrl-of-back-end-app>_ を、「[Azure リソースを作成する](#create-azure-resources)」で保存した Git リモートの URL で置き換えます。 Git Credential Manager によって資格情報の入力を求めるメッセージが表示されたら、Azure portal へのサインインに使用する資格情報ではなく、[デプロイ資格情報](deploy-configure-credentials.md)を入力してください。

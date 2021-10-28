@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/22/2021
-ms.openlocfilehash: 24cb978a20bc3a6e2385ed37994389abb6d32a32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6ad1e2819a2bd71d00943e4df11b50eb2f0ceb18
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699286"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256147"
 ---
 # <a name="using-azure-policy-to-enforce-azure-active-directory-only-authentication-with-azure-sql"></a>Azure Policy を使用して Azure SQL で Azure Active Directory 専用認証を適用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "128699286"
 
 ## <a name="prerequisite"></a>前提条件
 
-- Azure Policy を管理するためのアクセス許可があること。 詳細については、「[Azure Policy における Azure RBAC アクセス許可](/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)」を参照してください。
+- Azure Policy を管理するためのアクセス許可があること。 詳細については、「[Azure Policy における Azure RBAC アクセス許可](../../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。
 
 ## <a name="create-an-azure-policy"></a>Azure ポリシーを作成する
 

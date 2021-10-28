@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8f056354fdda60adfe82598800d8a030c9a3668
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 4f0c6c8d37e8472f737b81a692552c5fd143598c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133711"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257558"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -3396,7 +3396,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 **種類:** 変更された機能 **サービス カテゴリ:** その他 **製品の機能:** ディレクトリ
 
-自動アップグレードのお客様を対象とした Azure AD Connect の更新バージョンをリリースしました。 この新しいバージョンには、いくつかの新機能、機能強化、およびバグ修正が含まれています。 この新しいバージョンの詳細については、「[Azure AD Connect:バージョンのリリース履歴](../hybrid/reference-connect-version-history.md#14250)」を参照してください。
+自動アップグレードのお客様を対象とした Azure AD Connect の更新バージョンをリリースしました。 この新しいバージョンには、いくつかの新機能、機能強化、およびバグ修正が含まれています。 
 
 ---
 

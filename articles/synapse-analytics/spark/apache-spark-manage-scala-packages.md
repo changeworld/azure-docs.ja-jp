@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: bed5c6b1b1cf21de0105e0eeb2096d359177c115
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 952e0b325fe37345db42d1dcd8d6c521f8235366
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109815002"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225400"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Scala および Java パッケージを管理する
 
@@ -82,7 +82,7 @@ Spark プールのライブラリを更新または追加するには:
 >
 > この設定をオフにした場合は、現在の Spark セッションが終了するまで待つか、手動で停止する必要があります。 セッションが終了したら、プールが再起動されるようにする必要があります。
 
-#### <a name="track-installation-progress-preview"></a>インストールの進行状況の追跡 (プレビュー)
+#### <a name="track-installation-progress"></a>インストールの進行状況の追跡 
 システム予約 Spark ジョブは、新しい一連のライブラリを使用してプールが更新されるたびに開始されます。 この Spark ジョブは、ライブラリのインストールの状態を監視するために役立ちます。 ライブラリの競合またはその他の問題のためインストールが失敗した場合、Spark プールは以前の、または既定の状態に戻ります。 
 
 さらに、ユーザーはインストール ログを調査することで、依存関係の競合を特定したり、プールの更新中にインストールされたライブラリを確認したりすることもできます。

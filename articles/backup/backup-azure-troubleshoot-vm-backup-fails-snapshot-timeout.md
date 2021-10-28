@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 72e2ce2c32a1be1e6f116ef5513c1c24a42284bc
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: cefb166363677e0d4a7c52eae967b92a8216c825
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438197"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264639"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -272,7 +272,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 | 原因 | 解決策 |
 | --- | --- |
 | VM が リモート デスクトップ プロトコル (RDP) でシャットダウンされているため、VM の状態が正しく報告されない。 | RDP で VM をシャットダウンした場合は、ポータルでその VM の状態が正しいかどうかを確認します。 正しくない場合は、VM のダッシュボードにある **[シャットダウン]** オプションを使用して、ポータル上で VM をシャットダウンします。 |
-| VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。 VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、**Azure portal** または **PowerShell** を通じて静的プライベート IP を構成し、VM 内の DHCP オプションが有効になっていることを確認します。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)をご覧ください。
+| VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。 VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、**Azure portal** または **PowerShell** を通じて静的プライベート IP を構成し、VM 内の DHCP オプションが有効になっていることを確認します。 PowerShell を使用した静的 IP アドレスの設定については、[こちら](../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md)をご覧ください。
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>復旧ポイントのリソース グループに対するロックを解除する
 

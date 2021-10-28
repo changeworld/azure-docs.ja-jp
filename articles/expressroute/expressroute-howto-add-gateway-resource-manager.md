@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e8bc2d0ed29cbac171e1d03bc9a6806b1ef64f1f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: b69ed57ec67b7f08ef7beec8df73f1da20c06a0b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465314"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254883"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>チュートリアル:PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -52,11 +52,6 @@ ms.locfileid: "112465314"
 | ゲートウェイ IP 構成名 | *gwipconf* |
 | 型 | *ExpressRoute* |
 | ゲートウェイのパブリック IP 名  | *gwpip* |
-
-> [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[こちら](../virtual-network/ipv6-overview.md)で説明されているガイドラインに従ってください。
-> 
-> 
 
 ## <a name="add-a-gateway"></a>ゲートウェイを追加する
 

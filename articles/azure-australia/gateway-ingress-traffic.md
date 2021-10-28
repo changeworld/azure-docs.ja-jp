@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 3e2fcfb91a0cb514a26608a29cb8cb09722b7f32
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bc1bef31da6082e33e14ba3e9bd5b3c8b480c130
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "117029023"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253104"
 ---
 # <a name="controlling-ingress-traffic-in-azure-australia"></a>Azure オーストラリアでのイングレス トラフィックの制御
 
@@ -205,7 +205,7 @@ Microsoft ピアリングは、インターネットを経由せずに、Microso
 |リソース | Link|
 |---|---|
 |ネットワーク インターフェイスの作成、変更、または削除 | [https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface](../virtual-network/virtual-network-network-interface.md)|
-|ネットワーク インターフェイスの IP アドレス指定 | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/private-ip-addresses.md)|
+|ネットワーク インターフェイスの IP アドレス指定 | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/ip-services/private-ip-addresses.md)|
 |
 
 ### <a name="subnet"></a>Subnet
@@ -244,8 +244,8 @@ VNet ピアリングは、2 つの仮想ネットワーク間の直接通信パ�
 
 |リソース | Link|
 |---|---|
-|パブリック IP アドレスの概要 | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/public-ip-addresses.md#public-ip-addresses)|
-|パブリック IP アドレスの作成、変更、削除 | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/virtual-network-public-ip-address.md)|
+|パブリック IP アドレスの概要 | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses)|
+|パブリック IP アドレスの作成、変更、削除 | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/ip-services/virtual-network-public-ip-address.md)|
 |
 
 ### <a name="expressroute-gateway"></a>ExpressRoute ゲートウェイ
@@ -280,7 +280,7 @@ PaaS をシステムまたはアプリケーション アーキテクチャの�
 |リソース | Link|
 |---|---|
 |Azure サービスの仮想ネットワーク統合 | [https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services](../virtual-network/virtual-network-for-azure-services.md)|
-|Azure 仮想ネットワークへのアプリの統合に関するハウツー ガイド | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/web-sites-integrate-with-vnet.md)|
+|Azure 仮想ネットワークへのアプリの統合に関するハウツー ガイド | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/overview-vnet-integration.md)|
 |
 
 ## <a name="paas-ingress"></a>PaaS イングレス

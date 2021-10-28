@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: da47d07b804dfee46299ef75e81261171880ea76
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 725b483d4da7ce55b3ae9e866aa60a09226be7e9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232073"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233287"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -576,7 +576,7 @@ SQL Managed Instance の場合:
 
 - 単純な Web アプリの場合、パブリック エンドポイント経由で接続するには、 **[Azure サービスを許可する]** を [オン] に設定する必要があります。
 
-- マネージド インスタンスへのプライベート データ パスの接続のために、[アプリを Azure Virtual Network に統合](../../app-service/web-sites-integrate-with-vnet.md)します。 必要に応じて、[App Service Environment (ASE)](../../app-service/environment/intro.md) を使用して Web アプリをデプロイすることもできます。
+- マネージド インスタンスへのプライベート データ パスの接続のために、[アプリを Azure Virtual Network に統合](../../app-service/overview-vnet-integration.md)します。 必要に応じて、[App Service Environment (ASE)](../../app-service/environment/intro.md) を使用して Web アプリをデプロイすることもできます。
 
 - ASE を使用する Web アプリ、または SQL Database 内のデータベースに接続する仮想ネットワークに統合された Web アプリの場合、[仮想ネットワーク サービス エンドポイントと仮想ネットワーク ファイアウォール規則](vnet-service-endpoint-rule-overview.md)を使用して特定の仮想ネットワークとサブネットからのアクセスを制限することができます。 次に、 **[Azure サービスを許可する]** を [オフ] に設定します。 また、プライベート データ パス経由で ASE を SQL Managed Instance のマネージド インスタンスに接続することもできます。  
 

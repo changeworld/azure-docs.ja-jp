@@ -3,12 +3,12 @@ title: クラウドとの間での継続的なビデオ記録と再生 - Azure
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウドにビデオを継続的に記録し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 38a6afbae8f05bea4d165131eeab8cf97f48a465
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f28af228008f2977f202d2d33b62b4fd7525b8b8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376693"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241841"
 ---
 # <a name="tutorial-use-live-video-analytics-for-continuous-video-recording-and-playback-tofrom-the-cloud"></a>チュートリアル: Live Video Analytics を使用してクラウドとの間で継続的なビデオ記録と再生を行う
 
@@ -51,7 +51,7 @@ ms.locfileid: "110376693"
 * Azure IoT Hub
 * Azure ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 上の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
+* Azure 上の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)がインストール済み)
 
 > [!TIP]
 > 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
@@ -404,4 +404,4 @@ body セクションには、出力場所に関する情報が含まれていま
 ## <a name="next-steps"></a>次のステップ
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラを検索するには、[ONVIF 準拠製品のページ](https://www.onvif.org/conformant-products/)でプロファイル G、S、または T に準拠しているデバイスを検索します。
-* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge.md)に関するページの手順に従います。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録します。
+* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)に関するページの手順に従います。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録します。

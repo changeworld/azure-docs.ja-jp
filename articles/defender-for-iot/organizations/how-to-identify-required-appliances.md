@@ -3,12 +3,12 @@ title: 必要なアプライアンスを特定する
 description: 認定済みの Defender for IoT センサーとオンプレミス管理コンソールのハードウェアおよび仮想アプライアンスについて説明します。
 ms.date: 06/21/2021
 ms.topic: how-to
-ms.openlocfilehash: c124ccd69257b9a0b7a57c53b6fa6b0817d95fb6
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 22a79bc1f78536df1dd1c248b75eb3b4db8b443d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754351"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238550"
 ---
 # <a name="identify-required-appliances"></a>必要なアプライアンスを特定する
 
@@ -40,7 +40,7 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | モデル | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | 監視ポート | 最大 15 個の RJ45 または 8 個の OPT | 最大 8 個の RJ45 または 6 個の OPT | 最大 4 個の RJ45 | 最大 5 個の RJ45 |
 | 最大帯域幅 [1](#anchortext) | 3 Gb/秒 | 1 Gb/秒 | 200 Mb/秒 | 100 Mb/秒 |
-| 保護される最大デバイス数 | 10,000 | 10,000 | 1,000 | 800 |
+| 保護される最大デバイス数 | 12,000 | 10,000 | 1,000 | 800 |
 
 ベンダーの詳細については、「[アプライアンスの仕様](#appliance-specifications)」をご覧ください。
 
@@ -59,7 +59,7 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | デプロイの種類 | 企業 | Enterprise | SMB |
 |--|--|--|--|
 | 最大帯域幅 | 2.5 Gbps | 800 Mbps | 160 Mbps |
-| 保護される最大デバイス数 | 10,000 | 10,000 | 800 |
+| 保護される最大デバイス数 | 12,000 | 10,000 | 800 |
 
 ## <a name="on-premises-management-console-appliance"></a>オンプレミス管理コンソール アプライアンス
 
@@ -97,7 +97,7 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | チップセット | Intel C621 |
 | メモリ | 32 GB = 2 x 16GB 2666MT/秒 DDR4 ECC UDIMM |
 | ストレージ | 6 x 1.2TB SAS 12G Enterprise 10K SFF (2.5 インチ) ホットプラグ対応ハード ドライブ - RAID 5 |
-| ネットワーク コントローラー | オンボード: 2 x 1Gb Broadcom BCM5720<br>オンボード LOM: iDRAC ポート カード 1Gb Broadcom BCM5720<br><br>外部: 1 x Intel Ethernet i350 QP 1Gb サーバー アダプター、ロー プロファイル |
+| ネットワーク コントローラー | オンボード: 2 x 1 Gb <br>オンボード: iLO ポート カード 1 Gb <br>外部: 1 x HPE Ethernet 1Gb 4 ポート 366FLR アダプター |
 | 管理 | HPE iLO Advanced |
 | デバイス アクセス | 2 つの背面 USB 3.0<br>1 つの前面 USB 2.0<br>1 つの内蔵 USB 3.0 |
 | Power | 2 x HPE 500 W フレキシブル スロット Platinum ホット プラグ対応低ハロゲン電源キット |

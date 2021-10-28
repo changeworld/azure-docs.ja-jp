@@ -4,12 +4,12 @@ description: Azure Functions の特定の仮想ネットワーク タスクを�
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0a431abe5d32bdc59bb163f32e4c5f636c870335
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 6465a1c5e9b39bcef29fb28ebf2e19c7203da648
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063047"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257045"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>仮想ネットワークで Azure Functions を構成する方法
 
@@ -49,7 +49,6 @@ ms.locfileid: "130063047"
     | `WEBSITE_CONTENTSHARE` | ファイル共有 | プロジェクト配置ファイルが存在する、セキュリティで保護されたストレージ アカウントに作成されたファイル共有の名前。 |
     | `WEBSITE_CONTENTOVERVNET` | 1 | 新しい設定 |
     | `WEBSITE_VNET_ROUTE_ALL` | 1 | すべての送信トラフィックが強制的に仮想ネットワーク経由になります。 ストレージ アカウントでプライベート エンドポイント接続を使用している場合は必須です。 |
-    | `WEBSITE_DNS_SERVER` | `168.63.129.16` | アプリによって使用される DNS サーバー。 ストレージ アカウントでプライベート エンドポイント接続を使用している場合は必須です。 |
 
 1. **[保存]** を選択して、アプリケーション設定を保存します。 アプリの設定を変更すると、アプリが再起動されます。  
 

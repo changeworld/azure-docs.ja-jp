@@ -7,14 +7,14 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 09/27/2021
-ms.openlocfilehash: 72505a4e3c9003032c29b55e8cfa2152617bc928
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 764875272975e6a7698b6dafc452e597c8195000
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080106"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225701"
 ---
-# <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーの作成
+# <a name="create-a-dynamics-365-for-customer-engagement--power-apps-offer"></a>Dynamics 365 for Customer Engagement & Power Apps オファーの作成
 
 この記事では、Dynamics 365 for Customer Engagement & Power Apps オファーの作成方法について説明します。 Dynamics 365 のすべてのオファーは、弊社の認定プロセスを通過する必要があります。 試用版エクスペリエンスでは、ユーザーがソリューションをライブの Dynamics 365 環境にデプロイできます。
 
@@ -30,8 +30,8 @@ ms.locfileid: "129080106"
 
 #### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-1. ホーム ページで、 **[Marketplace のオファー]** タイルを選択します。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
 
     [ ![パートナー センターのホーム ページにある Marketplace オファーのタイルを示す図。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
@@ -42,9 +42,9 @@ ms.locfileid: "129080106"
 > [!IMPORTANT]
 > オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
 
-#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+#### <a name="current-view"></a><bpt id="p1">[</bpt>現在のビュー<ept id="p1">](#tab/current-view)</ept>
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
 2. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
 3. [概要] ページで、 **[+ 新しいオファー]**  >  **[Dynamics 365 for Customer Engagement & Power Apps]** の順に選択します。
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/01/2021
-ms.openlocfilehash: ac6a6964c738cfb970b7bd65a6d7e3b12f796b2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5239812bdd916b19571059aa2641eb738ef5ba09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128653725"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249459"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-with-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL - フレキシブル サーバーのポイントインタイム リストア
 
@@ -65,10 +65,10 @@ az mysql flexible-server restore --restore-time
 **例:** この ```2021-03-03T13:10:00Z``` バックアップ スナップショットからサーバーを復元します。
 
 ```azurecli
-az mysql server restore \
+az mysql flexible-server restore \
 --name mydemoserver-restored \
 --resource-group myresourcegroup \
---restore-point-in-time "2021-03-03T13:10:00Z" \
+--restore-time "2021-03-03T13:10:00Z" \
 --source-server mydemoserver
 ```
 復元にかかる時間は、サーバーに格納されているデータのサイズによって異なります。

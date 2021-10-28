@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: 7f6f3a4b24753cf20284f69b2a1e2a06e6cb3522
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c08eae9654e01fda15889ac6fe65f99de2d73bb6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998403"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261807"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -135,7 +135,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 
 この機能を使用して、次のことができます。 
  
-* [Azure Machine Learning のデータのラベル付け](how-to-create-labeling-projects.md)機能とシームレスに統合する
+* [Azure Machine Learning のデータのラベル付け](./how-to-create-image-labeling-projects.md)機能とシームレスに統合する
 * ラベル付けされたデータを使用して画像モデルを生成する
 * モデル アルゴリズムを指定し、ハイパーパラメーターを調整することで、モデルのパフォーマンスを最適化します。 
 * 結果のモデルを Web サービスとして Azure Machine Learning でダウンロードまたはデプロイします。 
@@ -285,7 +285,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 
 Azure Machine Learning では、自動化された ML を使用して Python モデルを構築し、それを ONNX 形式に変換できます。 ONNX 形式になったモデルは、さまざまなプラットフォームやデバイスで実行することができます。 [ONNX での ML モデルの能率化](concept-onnx.md)に関する詳細をご覧ください。
 
-ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#select-your-experiment-type)についてご確認ください。
+ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#supported-models)についてご確認ください。
 
 ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://onnxruntime.ai/docs/api/csharp-api.html)に関するページを参照してください。 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 0d7d68f9452f5f551361a48580e223b0dd614a09
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e3cc7420a976812d462b3f5c5e60878ba67641ff
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818132"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249155"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Linux on Azure 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -702,7 +702,7 @@ Web サーバー全体でトラフィックを分散するには、Azure Load Ba
 
 ファイルストアは、レポートや BI ドキュメントなどの実際のファイルが格納されているディスク ディレクトリです。 ファイルストア内のすべてのファイルがディザスター リカバリー リージョンと同期されていることが重要です。 Linux で実行されている SAP BOBI プラットフォームに使用しているファイル共有サービスの種類に基づいて、コンテンツを同期するために必要なディザスター リカバリー戦略を採用する必要があります。
 
-- **Azure NetApp Files** によって NFS および SMB ボリュームが提供されるため、ファイルベースの任意のコピー ツールを使用して、Azure リージョン間でデータをレプリケートできます。 別のリージョンにあるボリュームをコピーする方法の詳細については、[Azure NetApp Files に関するよくあるご質問](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region)を参照してください。
+- **Azure NetApp Files** によって NFS および SMB ボリュームが提供されるため、ファイルベースの任意のコピー ツールを使用して、Azure リージョン間でデータをレプリケートできます。 別のリージョンにあるボリュームをコピーする方法の詳細については、[Azure NetApp Files に関するよくあるご質問](../../../azure-netapp-files/faq-data-migration-protection.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region)を参照してください。
 
   Azure NetApp Files リージョン間レプリケーションを使用できます。これは現在[プレビュー](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)段階です。 変更されたブロックだけが、圧縮された効率的な形式でネットワーク経由で送信されます。 これにより、リージョン間でのレプリケーションに必要なデータ量が最小限に抑えられるため、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい RPO を実現できます。 詳細については、「[リージョン間レプリケーションを使用するための要件と考慮事項](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)」を参照してください。
 

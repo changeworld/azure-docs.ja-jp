@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 16ba023f4fef0b2fae4b84b1bff746332500cbc6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f6be8adf08000fdd23568481b592cde36f9bb248
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672561"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257748"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure パブリック IP 構成を別のリージョンに移動する
 
@@ -134,7 +134,7 @@ ms.locfileid: "110672561"
                     },
          ```
 
-         Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](./virtual-network-public-ip-address.md)」を参照してください。
+         Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](./ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
     * **パブリック IP の割り当て方法** と **アイドル タイムアウト** - **publicIPAllocationMethod** プロパティを **Dynamic** から **Static** または **Static** から **Dynamic** に変更することで、テンプレートのこれらのオプションの両方を変更できます。 アイドル タイムアウトは、**idleTimeoutInMinutes** プロパティを目的の量に変えることで変更できます。  既定値は **4** です。
 
@@ -161,7 +161,7 @@ ms.locfileid: "110672561"
                 }            
          ```
 
-        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](./virtual-network-public-ip-address.md)」を参照してください。
+        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](./ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
 
 9. **\<resource-group-name>.json** ファイルを保存します。

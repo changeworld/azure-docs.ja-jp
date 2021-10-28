@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f700b4850f68f9938bc574b26172f49c1d7c0a73
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4c8bffabb1cb2e12fb8144e66e038f500a8e5229
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613816"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253863"
 ---
 # <a name="secure-hybrid-access-with-azure-active-directory-partner-integrations"></a>Azure Active Directory パートナー統合を使用した安全なハイブリッド アクセス
 
@@ -34,34 +34,34 @@ ISV には、顧客がサービスとしてのソフトウェア (SaaS) アプ�
 1. **アプリの検出**。 顧客は使用しているアプリケーションを全部把握しているとは限りません。 このため、最初のステップとして、アプリケーションの検出機能をソリューションに組み込み、検出したアプリケーションをユーザー インターフェイスに表示することができます。 これにより、顧客はアプリケーションと Azure AD との統合についての優先順位を判断できるようになります。
 2. **アプリの移行**。 次に、顧客が Azure AD ポータルに移動しなくてもアプリを直接 Azure AD に統合できるようにする、製品内ワークフローを作成できます。 ソリューションに検出機能を実装しない場合は、ソリューションをここから開始し、顧客が把握しているアプリケーションを Azure AD に統合できます。
 3. **従来の認証のサポート**。 従来の認証方法を使用してアプリを Azure AD に接続することで、シングル サインオン (SSO) やその他の機能の利点を活用できます。
-4. **条件付きアクセス**。 追加の機能として、顧客が Azure AD ポータルに移動しなくても、ソリューション内から、Azure AD の[条件付きアクセス](/azure/active-directory/conditional-access/overview/) ポリシーをアプリケーションに適用できるようにすることもできます。
+4. **条件付きアクセス**。 追加の機能として、顧客が Azure AD ポータルに移動しなくても、ソリューション内から、Azure AD の[条件付きアクセス](../conditional-access/overview.md) ポリシーをアプリケーションに適用できるようにすることもできます。
 
 このガイドのこれ以降の部分では、ソリューションを実装するための技術的な検討事項と、推奨事項について説明します。
 
 ## <a name="publishing-your-application-to-azure-marketplace"></a>Azure Marketplace にアプリケーションを公開する
 
-[Azure Marketplace で公開する](/azure/active-directory/develop/v2-howto-app-gallery-listing/)ためのプロセスに従って、アプリケーションを Azure AD と事前に統合し、SSO や自動プロビジョニングをサポートすることができます。 Azure Marketplace は、IT 管理者にとって信頼できるアプリケーション ソースです。 そこにリストされているアプリケーションは、Azure AD と互換性があることが検証されています。 SSO がサポートされており、ユーザー プロビジョニングを自動化でき、自動アプリ登録により顧客テナントへの統合が容易です。
+[Azure Marketplace で公開する](../develop/v2-howto-app-gallery-listing.md)ためのプロセスに従って、アプリケーションを Azure AD と事前に統合し、SSO や自動プロビジョニングをサポートすることができます。 Azure Marketplace は、IT 管理者にとって信頼できるアプリケーション ソースです。 そこにリストされているアプリケーションは、Azure AD と互換性があることが検証されています。 SSO がサポートされており、ユーザー プロビジョニングを自動化でき、自動アプリ登録により顧客テナントへの統合が容易です。
 
-また、[確認済みの発行元](/azure/active-directory/develop/publisher-verification-overview/)になり、顧客からアプリの信頼された発行元であると認識してもらえるようにすることをお勧めします。
+また、[確認済みの発行元](../develop/publisher-verification-overview.md)になり、顧客からアプリの信頼された発行元であると認識してもらえるようにすることをお勧めします。
 
 ## <a name="enabling-single-sign-on-for-it-admins"></a>IT 管理者のシングル サインオンを有効にする
 
 [OIDC か SAML のどちらかを選択](/azure/active-directory/manage-apps/sso-options#choosing-a-single-sign-on-method/)し、ソリューションで IT 管理者が SSO を利用できるようにします。 最適なのは、OIDC を使用することです。 
 
-Microsoft Graph は [OIDC/OAuth](/azure/active-directory/develop/v2-protocols-oidc/) を使用しています。 ソリューションで IT 管理者の SSO のために OIDC と Azure AD を使用すると、顧客にとってシームレスなエンドツーエンドのエクスペリエンスになります。 OIDC を使用してソリューションにサインインし、Azure AD が発行したのと同じ JSON Web Token (JWT) を使用して Microsoft Graph とやり取りできます。
+Microsoft Graph は [OIDC/OAuth](../develop/v2-protocols-oidc.md) を使用しています。 ソリューションで IT 管理者の SSO のために OIDC と Azure AD を使用すると、顧客にとってシームレスなエンドツーエンドのエクスペリエンスになります。 OIDC を使用してソリューションにサインインし、Azure AD が発行したのと同じ JSON Web Token (JWT) を使用して Microsoft Graph とやり取りできます。
 
 一方、IT 管理者の SSO に [SAML](/azure/active-directory/manage-apps/configure-saml-single-sign-on/) を使用するソリューションの場合、SAML トークンでソリューションと Microsoft Graph とのやり取りはできません。 IT 管理者の SSO には SAML を使用できますが、ソリューションと Microsoft Graph との適正なやり取りのためには、Azure AD との OIDC 統合をサポートして、Azure AD から JWT を取得できるようにする必要があります。 次のいずれかの手順を利用できます。
 
-- **推奨される SAML アプローチ**: Azure Marketplace で新しい登録を作成します。これは [OIDC アプリ](/azure/active-directory/saas-apps/openidoauth-tutorial/)です。 これは顧客にとって最もシームレスなエクスペリエンスです。 それぞれが自分のテナントに SAML と OIDC の両方のアプリを追加します。 アプリケーションが現時点で Azure AD ギャラリーにない場合、ギャラリーに含まれない[マルチテナント アプリケーション](/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant/)で開始できます。
+- **推奨される SAML アプローチ**: Azure Marketplace で新しい登録を作成します。これは [OIDC アプリ](../saas-apps/openidoauth-tutorial.md)です。 これは顧客にとって最もシームレスなエクスペリエンスです。 それぞれが自分のテナントに SAML と OIDC の両方のアプリを追加します。 アプリケーションが現時点で Azure AD ギャラリーにない場合、ギャラリーに含まれない[マルチテナント アプリケーション](../develop/howto-convert-app-to-be-multi-tenant.md)で開始できます。
 
-- **代替の SAML アプローチ**: 顧客が自分の Azure AD テナントに手動で [OIDC のアプリケーションの登録を作成](/azure/active-directory/saas-apps/openidoauth-tutorial/)します。この記事の後のセクションに示す正しい URI、エンドポイント、アクセス許可が設定されていることを確認します。
+- **代替の SAML アプローチ**: 顧客が自分の Azure AD テナントに手動で [OIDC のアプリケーションの登録を作成](../saas-apps/openidoauth-tutorial.md)します。この記事の後のセクションに示す正しい URI、エンドポイント、アクセス許可が設定されていることを確認します。
 
-[client_credentials 付与タイプ](/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#get-a-token/)を使用することが望ましく思える場合もあります。 この場合、ソリューションのユーザー インターフェイスに各顧客がクライアント ID とシークレットを入力できるようにすることと、この情報を保存することが必要です。 Azure AD から JWT を取得し、それを使用して Microsoft Graph とやり取りします。
+[client_credentials 付与タイプ](../develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)を使用することが望ましく思える場合もあります。 この場合、ソリューションのユーザー インターフェイスに各顧客がクライアント ID とシークレットを入力できるようにすることと、この情報を保存することが必要です。 Azure AD から JWT を取得し、それを使用して Microsoft Graph とやり取りします。
 
 この方法を選択する場合は、顧客の Azure AD テナント内でこのアプリケーションの登録を作成する方法に関する顧客向けのドキュメントを用意しておく必要があります。 この情報には、エンドポイント、URI、必要なアクセス許可が含まれます。
 
 > [!NOTE]
-> アプリケーションを IT 管理者またはユーザーのどちらかの SSO に使用できるようにするには、事前に顧客の IT 管理者が[テナント内でアプリケーションに同意する](/azure/active-directory/manage-apps/grant-admin-consent/)必要があります。
+> アプリケーションを IT 管理者またはユーザーのどちらかの SSO に使用できるようにするには、事前に顧客の IT 管理者が[テナント内でアプリケーションに同意する](./grant-admin-consent.md)必要があります。
 
 ## <a name="authentication-flows"></a>認証フロー
 
@@ -242,8 +242,8 @@ https://graph.microsoft.com/v1.0/applications/54c4806b-b260-4a12-873c-9671169837
 
 SaaS アプリケーションを Azure AD 内で登録したら、Azure AD を ID プロバイダーとして使用し始めるために、アプリケーションで切り替えを行う必要があります。 これには、2 つの方法があります。
 
-- アプリケーションで One Click SSO がサポートされている場合、顧客に代わって Azure AD でアプリケーションの切り替えを行うことができます。 顧客は、Azure AD ポータルに移動して、サポートされている SaaS アプリケーションに対して管理者の資格情報を使用して One Click SSO を実行するだけで済みます。 詳細については、「[アプリの One Click シングル サインオンの構成](/azure/active-directory/manage-apps/one-click-sso-tutorial/)」を参照してください。
-- アプリケーションで One Click SSO がサポートされていない場合は、Azure AD を使用し始めるために、顧客が手動でアプリケーションを切り替える必要があります。 詳細については、「[SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル](/azure/active-directory/saas-apps/tutorial-list/)」を参照してください。
+- アプリケーションで One Click SSO がサポートされている場合、顧客に代わって Azure AD でアプリケーションの切り替えを行うことができます。 顧客は、Azure AD ポータルに移動して、サポートされている SaaS アプリケーションに対して管理者の資格情報を使用して One Click SSO を実行するだけで済みます。 詳細については、「[アプリの One Click シングル サインオンの構成](./one-click-sso-tutorial.md)」を参照してください。
+- アプリケーションで One Click SSO がサポートされていない場合は、Azure AD を使用し始めるために、顧客が手動でアプリケーションを切り替える必要があります。 詳細については、「[SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル](../saas-apps/tutorial-list.md)」を参照してください。
 
 ### <a name="connect-apps-by-using-legacy-authentication-methods-to-azure-ad"></a>従来の認証方法を使用してアプリを Azure AD に接続する
 
@@ -436,7 +436,7 @@ https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/
 }
 ```
 
-新しい Azure AD 条件付きアクセス ポリシーを作成したい場合は、次の追加のテンプレートを使用して、[条件付きアクセス API](/azure/active-directory/conditional-access/howto-conditional-access-apis/) の使用を開始することができます。
+新しい Azure AD 条件付きアクセス ポリシーを作成したい場合は、次の追加のテンプレートを使用して、[条件付きアクセス API](../conditional-access/howto-conditional-access-apis.md) の使用を開始することができます。
 
 ```https
 #Policy Template for Requiring Compliant Device
@@ -565,28 +565,28 @@ Microsoft では、既存のネットワーク コントローラーとデリバ
 
 | **ADC プロバイダー** | **リンク** |
 | --- | --- |
-| Akamai Enterprise Application Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial](/azure/active-directory/saas-apps/akamai-tutorial) |
-| Citrix ADC | [https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial](/azure/active-directory/saas-apps/citrix-netscaler-tutorial) |
-| F5 Big-IP Access Policy Manager | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration](/azure/active-directory/manage-apps/f5-aad-integration) |
-| Kemp LoadMaster | [https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial](/azure/active-directory/saas-apps/kemp-tutorial) |
-| Pulse Secure Virtual Traffic Manager | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial](/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial) |
+| Akamai Enterprise Application Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial](../saas-apps/akamai-tutorial.md) |
+| Citrix ADC | [https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial](../saas-apps/citrix-netscaler-tutorial.md) |
+| F5 Big-IP Access Policy Manager | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration](./f5-aad-integration.md) |
+| Kemp LoadMaster | [https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial](../saas-apps/kemp-tutorial.md) |
+| Pulse Secure Virtual Traffic Manager | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md) |
 
 次の VPN ソリューション プロバイダーでは、Azure AD と接続して、SSO や多要素認証などの最新の認証および認可方法を利用できるようにしています。
 
 | **VPN ベンダー** | **リンク** |
 | --- | --- |
-| Cisco AnyConnect | [https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect](/azure/active-directory/saas-apps/cisco-anyconnect) |
-| Fortinet FortiGate | [https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial](/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial) |
-| F5 Big-IP Access Policy Manager | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn](/azure/active-directory/manage-apps/f5-aad-password-less-vpn) |
-| Palo Alto Networks GlobalProtect | [https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial](/azure/active-directory/saas-apps/paloaltoadmin-tutorial) |
-| Pulse Connect Secure | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial](/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial) |
+| Cisco AnyConnect | [https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect](../saas-apps/cisco-anyconnect.md) |
+| Fortinet FortiGate | [https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial](../saas-apps/fortigate-ssl-vpn-tutorial.md) |
+| F5 Big-IP Access Policy Manager | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn](./f5-aad-password-less-vpn.md) |
+| Palo Alto Networks GlobalProtect | [https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial](../saas-apps/paloaltoadmin-tutorial.md) |
+| Pulse Connect Secure | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial](../saas-apps/pulse-secure-pcs-tutorial.md) |
 
 次の SDP (Software Defined Perimeter) ソリューション プロバイダーでは、Azure AD と接続して、SSO や多要素認証などの最新の認証および認可方法を利用できるようにしています。
 
 | **SDP ベンダー** | **リンク** |
 | --- | --- |
-| Datawiza Access Broker | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/datawiza-with-azure-ad](/azure/active-directory/manage-apps/datawiza-with-azure-ad) |
-| Perimeter 81 | [https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial](/azure/active-directory/saas-apps/perimeter-81-tutorial) |
-| Silverfort Authentication Platform | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/silverfort-azure-ad-integration](/azure/active-directory/manage-apps/silverfort-azure-ad-integration) |
-| Strata Maverics Identity Orchestrator | [https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial](/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial) |
-| Zscaler Private Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial](/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial) |
+| Datawiza Access Broker | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/datawiza-with-azure-ad](./datawiza-with-azure-ad.md) |
+| Perimeter 81 | [https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial](../saas-apps/perimeter-81-tutorial.md) |
+| Silverfort Authentication Platform | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/silverfort-azure-ad-integration](./silverfort-azure-ad-integration.md) |
+| Strata Maverics Identity Orchestrator | [https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial](../saas-apps/maverics-identity-orchestrator-saml-connector-tutorial.md) |
+| Zscaler Private Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial](../saas-apps/zscalerprivateaccess-tutorial.md) |

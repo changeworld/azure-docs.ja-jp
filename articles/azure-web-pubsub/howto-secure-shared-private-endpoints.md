@@ -7,16 +7,16 @@ ms.service: azure-web-pubsub
 ms.topic: article
 ms.date: 07/13/2021
 ms.author: dayshen
-ms.openlocfilehash: 2f48b2b0f21c389df30cc11d79a919cdf94317a7
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 00a9cf5c0eac035378248b03e316c6f211bfb52b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114342429"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239079"
 ---
 # <a name="secure-azure-web-pubsub-outbound-traffic-through-shared-private-endpoints"></a>共有プライベート エンドポイントを経由する Azure Web PubSub アウトバウンド トラフィックをセキュリティで保護する
 
-Azure Web PubSub Service で[イベント ハンドラー](https://azure.github.io/azure-webpubsub/concepts/service-internals#event_handler)を使用している場合は、アップストリームへのアウトバウンド トラフィックがある可能性があります。 Azure Web アプリや Azure Functions などのアップストリームは、一連の仮想ネットワークからの接続を受け入れ、公衆ネットワークからの外部接続を拒否するように構成できます。 それらのエンドポイントに到達するためのアウトバウンド [プライベート エンドポイント接続](../private-link/private-endpoint-overview.md)を作成できます。
+Azure Web PubSub Service で[イベント ハンドラー](concept-service-internals.md#event_handler)を使用している場合は、アップストリームへのアウトバウンド トラフィックがある可能性があります。 Azure Web アプリや Azure Functions などのアップストリームは、一連の仮想ネットワークからの接続を受け入れ、公衆ネットワークからの外部接続を拒否するように構成できます。 それらのエンドポイントに到達するためのアウトバウンド [プライベート エンドポイント接続](../private-link/private-endpoint-overview.md)を作成できます。
 
    :::image type="content" alt-text="共有プライベート エンドポイントの概要。" source="media\howto-secure-shared-private-endpoints\shared-private-endpoint-overview.png" border="false" :::
 
@@ -46,7 +46,7 @@ Azure Web PubSub Service API によって作成された、セキュリティで
 [Azure CLI](/cli/azure/) で次の API 呼び出しを行って、共有プライベート リンク リソースを作成することができます。
 
 ```dotnetcli
-az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.SignalRService/webPubSub/contoso-webpubsub/sharedPrivateLinkResources/func-pe?api-version=2021-06-01-preview --body @create-pe.json
+az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.SignalRService/webPubSub/contoso-webpubsub/sharedPrivateLinkResources/func-pe?api-version=2021-06-01-preview --body @create-pe.json --debug
 ```
 
 API への要求本文を表す *create-pe.json* ファイルの内容は次のとおりです。

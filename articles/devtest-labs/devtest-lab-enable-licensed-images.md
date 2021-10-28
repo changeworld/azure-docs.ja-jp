@@ -3,12 +3,12 @@ title: ラボのライセンスされたイメージを有効にする
 description: Azure Portal を使って Azure DevTest Labs でライセンスされたイメージを有効にする方法について説明します
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4c96661688d7b64884f0a02e15eb2c7b208bdfba
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c7f0ce7998d4c77596bb04559465135015da9846
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643956"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254935"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
 
@@ -78,7 +78,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
 
-- [Custom images or formulas? (カスタム イメージか数式か?)](/azure/devtest-labs/devtest-lab-faq#blog-post)
+- [Custom images or formulas? (カスタム イメージか数式か?)](./devtest-lab-faq.yml#blog-post)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>次のステップ

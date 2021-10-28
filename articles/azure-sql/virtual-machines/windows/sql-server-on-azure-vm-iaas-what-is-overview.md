@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6befd620da91b569d5bd72a4d0165e81c93583ac
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 3f426af6719b821373a565c58e27919e7f6082f7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235651"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247912"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -133,7 +133,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 - [SQL Server 仮想マシンを作成する](sql-vm-create-portal-quickstart.md)
 
 ## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM イメージの更新ポリシー
-Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](/azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq#images) に関するページの「**イメージ**」セクションを参照してください。
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](./frequently-asked-questions-faq.yml) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](/sql/sql-server/sql-server-privacy)」を参照してください。
@@ -147,7 +147,7 @@ Azure に保持される仮想マシン イメージは、サポートされる�
 
 ### <a name="networking"></a>ネットワーク
 * [仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)
-* [Azure 内の IP アドレス](../../../virtual-network/public-ip-addresses.md)
+* [Azure 内の IP アドレス](../../../virtual-network/ip-services/public-ip-addresses.md)
 * [Azure Portal での完全修飾ドメイン名の作成](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL

@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: aa852abe4764b04ae83e1cb59e8e9b07e6682bd2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: 284fa5910a397efa30b0fc12a55e1301438cadc3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632369"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259925"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="変換アクティビティ"]

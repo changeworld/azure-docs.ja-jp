@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.date: 09/23/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: bed6b3e8d40beab403b8295b9c17fc8b6f6eefbe
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 70ab13f1ca1eee2d5c01d3aa1af6255bc06aeb3d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659262"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233660"
 ---
 # <a name="generate-sas-tokens-for-storage-containers"></a>ストレージ コンテナーの SAS トークンを生成する
 
@@ -47,8 +47,8 @@ Azure Blob Storage には、3 種類のリソースがあります。
 * [Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) または [Cognitive Services マルチサービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) リソース。
 * **標準パフォーマンス** の [Azure Blob Storage アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 コンテナーを含む Azure ストレージ アカウントを作成する方法がわからない場合は、次のクイックスタートに従ってください。
 
-  * [ストレージ アカウントの作成](/azure/storage/common/storage-account-create)。 ストレージ アカウントを作成するときに、 **[インスタンスの詳細]**  >  **[パフォーマンス]** フィールドで **[Standard]** を選択してください。
-  * [コンテナーを作成する](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。 コンテナーを作成するときに、 **[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** を **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
+  * [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)。 ストレージ アカウントを作成するときに、 **[インスタンスの詳細]**  >  **[パフォーマンス]** フィールドで **[Standard]** を選択してください。
+  * [コンテナーを作成する](../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。 コンテナーを作成するときに、 **[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** を **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
 
 ## <a name="upload-your-documents"></a>ドキュメントをアップロードする
 
@@ -67,7 +67,7 @@ Azure Blob Storage には、3 種類のリソースがあります。
     :::image type="content" source="media/sas-tokens/upload-blob-window.png" alt-text="Azure portal の [BLOB のアップロード] ウィンドウを示すスクリーンショット。":::
 
 > [!NOTE]
-> 既定では、REST API ではコンテナーのルートにあるフォーム ドキュメントが使用されます。 API 呼び出しで指定されている場合は、サブフォルダーに整理されたデータを使用することもできます。 詳細については、「[データをサブフォルダーに整理する](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional)」を参照してください
+> 既定では、REST API ではコンテナーのルートにあるフォーム ドキュメントが使用されます。 API 呼び出しで指定されている場合は、サブフォルダーに整理されたデータを使用することもできます。 詳細については、「[データをサブフォルダーに整理する](./build-training-data-set.md#organize-your-data-in-subfolders-optional)」を参照してください
 
 ## <a name="create-a-shared-access-signature-with-the-azure-portal"></a>Azure portal で Shared Access Signature を作成する
 
@@ -94,8 +94,8 @@ Azure Blob Storage には、3 種類のリソースがあります。
     >
     >     :::image type="content" source="media/sas-tokens/need-permissions.png" alt-text="アクセス許可の不足の警告を示すスクリーンショット。":::
     >
-     > * [Azure ロールベースのアクセス制御](/azure/role-based-access-control/overview) (Azure RBAC) は、Azure のリソースに対するアクセスを管理するために使用する認可システムです。 Azure RBAC は、Azure リソースのアクセスとアクセス許可を管理するのに役立ちます。
-    > * 「[BLOB データへのアクセスのための Azure ロールの割り当て](/azure/role-based-access-control/role-assignments-portal?tabs=current)」には、Azure ストレージ コンテナーの読み取り、書き込み、削除のアクセス許可を許可するロールを割り当てる方法が記載されています。 たとえば、「[Storage Blob データ共同作成者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)」を参照してください。
+     > * [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md) (Azure RBAC) は、Azure のリソースに対するアクセスを管理するために使用する認可システムです。 Azure RBAC は、Azure リソースのアクセスとアクセス許可を管理するのに役立ちます。
+    > * 「[BLOB データへのアクセスのための Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md?tabs=current)」には、Azure ストレージ コンテナーの読み取り、書き込み、削除のアクセス許可を許可するロールを割り当てる方法が記載されています。 たとえば、「[Storage Blob データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)」を参照してください。
 
 1. 署名されたキーの **開始** と **有効期限** の時刻を指定します。 有効期限の値は、Shared Access Signature の開始から最大 7 日間です。
 
@@ -122,7 +122,7 @@ Azure Blob Storage には、3 種類のリソースがあります。
 
 1. コンテナーでユーザー委任 SAS に対してサポートされているアクセス許可には、追加 (a)、作成 (c)、削除 (d)、一覧表示 (l)、読み取り (r)、書き込み (w) があります。 **r**、**w**、**d**、**l** がアクセス許可パラメーターの一部として含まれている必要があります。
 
-1. Azure CLI を使用してユーザー委任 SAS を作成する場合、ユーザー委任キーが有効な間隔は開始日から最大 7 日間です。 開始時刻から 7 日以内で Shared Access Signature の有効期限を指定します。 詳細については、「[Azure CLI を使用したコンテナーまたは BLOB のユーザー委任 SAS の作成](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli#use-azure-ad-credentials-to-secure-a-sas)」を参照してください。
+1. Azure CLI を使用してユーザー委任 SAS を作成する場合、ユーザー委任キーが有効な間隔は開始日から最大 7 日間です。 開始時刻から 7 日以内で Shared Access Signature の有効期限を指定します。 詳細については、「[Azure CLI を使用したコンテナーまたは BLOB のユーザー委任 SAS の作成](../../storage/blobs/storage-blob-user-delegation-sas-create-cli.md#use-azure-ad-credentials-to-secure-a-sas)」を参照してください。
 
 ### <a name="example"></a>例
 

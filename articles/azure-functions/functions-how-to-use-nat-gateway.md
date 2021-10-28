@@ -4,12 +4,12 @@ description: Azure 仮想ネットワークに接続されている関数の NAT
 ms.topic: tutorial
 ms.author: kyburns
 ms.date: 2/26/2021
-ms.openlocfilehash: 9b91ccd725fbd6ae1e3a974ecb70b4c01201adb4
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 0223ebe7401745fc9dfff9b3935b5f2252cfa39d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432268"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265414"
 ---
 # <a name="tutorial-control-azure-functions-outbound-ip-with-an-azure-virtual-network-nat-gateway"></a>チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する
 
@@ -30,7 +30,7 @@ ms.locfileid: "113432268"
 
 ![NAT ゲートウェイ統合の UI](./media/functions-how-to-use-nat-gateway/topology.png)
 
-Premium プランで実行されている関数には、VNet 統合機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。 トラブルシューティングや高度な構成など、VNet 統合の詳細については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
+Premium プランで実行されている関数には、VNet 統合機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。 トラブルシューティングや高度な構成など、VNet 統合の詳細については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/overview-vnet-integration.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[仮想ネットワークの作成]** で、次の表で指定されている設定を入力するか選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |

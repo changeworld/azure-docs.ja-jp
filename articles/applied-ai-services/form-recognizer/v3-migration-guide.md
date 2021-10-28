@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: vikurpad
 recommendations: false
-ms.openlocfilehash: 8d20fd0211fb2601ffd0f88e37e78d682d550711
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 11010ebe6a4afa8698491dacfb495625a8445779
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728914"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240416"
 ---
 # <a name="form-recognizer-v30-migration--preview"></a>Form Recognizer v3.0 への移行 | プレビュー
 
@@ -26,10 +26,10 @@ ms.locfileid: "129728914"
 Form Recognizer v3.0 (プレビュー) では、いくつかの新機能が導入されています。
 
 * [Form Recognizer REST API](quickstarts/try-v3-rest-api.md) は、いっそう使いやすいように再設計されました。
-* [**一般ドキュメント (v3.0)** ](concept-general-document.md) モデルは新しい API であり、テキスト、テーブル、構造、キーと値のペア、名前付きエンティティがフォームとドキュメントから抽出されます。
-* [**領収書 (v3.0)** ](concept-receipt.md) モデルでは、単一ページのホテルの領収書の処理がサポートされます。
-* [**身分証明書 (v3.0)** ](concept-id-document.md) モデルでは、米国の運転免許証からの署名、制限、車両分類の抽出がサポートされています。
-* [**カスタム モデル API (v3.0)** ](concept-custom.md) では、カスタム フォームの署名の検出がサポートされています。
+* [**一般ドキュメント (v3.0)**](concept-general-document.md) モデルは新しい API であり、テキスト、テーブル、構造、キーと値のペア、名前付きエンティティがフォームとドキュメントから抽出されます。
+* [**領収書 (v3.0)**](concept-receipt.md) モデルでは、単一ページのホテルの領収書の処理がサポートされます。
+* [**身分証明書 (v3.0)**](concept-id-document.md) モデルでは、米国の運転免許証からの署名、制限、車両分類の抽出がサポートされています。
+* [**カスタム モデル API (v3.0)**](concept-custom.md) では、カスタム フォームの署名の検出がサポートされています。
 
 この記事では、Form Recognizer v2.1 と v3.0 の違いと、新しいバージョンの API に移行する方法について説明します。
 
@@ -360,4 +360,4 @@ GET https://{your-form-recognizer-endpoint}/formrecognizer/info? api-version=202
 
 * [新しい REST API を確認する](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)
 * [Form Recognizer とは](overview.md)
-* [Form Recognizer のクイックスタート](quickstarts/client-library.md)
+* [Form Recognizer のクイックスタート](./quickstarts/try-sdk-rest-api.md)

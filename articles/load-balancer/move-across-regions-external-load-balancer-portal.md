@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: da37816b68e9984fdf801e3e84d50a57bf290e96
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: b9eabb4f49a533c97177dc0598e425ab63b20ec5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273554"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258717"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して外部ロード バランサーを別のリージョンに移動する
 
@@ -110,7 +110,7 @@ ms.locfileid: "129273554"
             },
         ```
 
-        Basic と Standard SKU のパブリック IP の違いについては、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
+        Basic と Standard SKU のパブリック IP の違いについては、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
     * **パブリック IP の割り当て方法** と **アイドル タイムアウト**。 パブリック IP の割り当て方法を変更するには、**publicIPAllocationMethod** プロパティを **Dynamic** から **Static**、または **Static** から **Dynamic** に変更します。 アイドル タイムアウトを変更するには、**idleTimeoutInMinutes** プロパティを目的の値に変更します。 既定値は **4** です。
 
@@ -136,7 +136,7 @@ ms.locfileid: "129273554"
 
         ```
 
-        割り当て方法とアイドル タイムアウト値については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
+        割り当て方法とアイドル タイムアウト値については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
  
 13. オンライン エディターで **[保存]** を選択します。

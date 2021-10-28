@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 51941e9b8ef7165e3d5756d8c4fa9ed3520bc460
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: ba24669f04966d9ee3cfa5af4cd677e83ad3ea7a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132362"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256612"
 ---
 # <a name="honey-comb-visualizations"></a>蜂の巣の視覚化
 
@@ -93,4 +93,4 @@ ms.locfileid: "130132362"
 ## <a name="next-steps"></a>次の手順
 
 - [ブックで複合バー レンダラー](workbooks-composite-bar.md)を作成する方法を確認します。
-- [Azure Monitor ログ データを Power BI にインポートする](./powerbi.md)方法を確認します。
+- [Azure Monitor ログ データを Power BI にインポートする](../logs/log-powerbi.md)方法を確認します。

@@ -4,12 +4,12 @@ description: このクイックスタートでは、Node.js 用 QnA Maker クラ
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: c101458f9cee00fbc1f25f4c6679485439864eab
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d394928df4abae926922e075ae00e7547a17b08e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487466"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288015"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/version-1)
 
@@ -322,7 +322,7 @@ create メソッドから戻ったら、返された操作 ID を [wait_for_oper
 
 [!code-javascript[Authenticate the runtime](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=AuthorizationQuery)]
 
-QnAMakerRuntimeClient を使用してナレッジから回答を取得するか、または、[アクティブ ラーニング](../concepts/active-learning-suggestions.md)を目的として提案された新しい質問をナレッジ ベースに送信します。
+QnAMakerRuntimeClient を使用してナレッジから回答を取得するか、または、[アクティブ ラーニング](../index.yml)を目的として提案された新しい質問をナレッジ ベースに送信します。
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>ナレッジ ベースから回答を生成する
 

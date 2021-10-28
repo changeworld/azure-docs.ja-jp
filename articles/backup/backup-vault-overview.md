@@ -4,12 +4,12 @@ description: バックアップ コンテナーの概要。
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8d617dd2d2b1fa61a797d14c709ce285dc28b9bf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: afe103e7fb6c2cb59634029c5ae9a75acadf0afc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799533"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235888"
 ---
 # <a name="backup-vaults-overview"></a>バックアップ コンテナーの概要
 
@@ -188,7 +188,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 1. **[サブスクリプション]** ドロップダウン リストから既存のサブスクリプションを選択します。
 
-   サブスクリプション間でコンテナーを移動する場合、ターゲット サブスクリプションがソース サブスクリプションと同じテナントに存在する必要があります。 コンテナーを別のテナントに移動するには、「[サブスクリプションを別のディレクトリに転送する](/azure/role-based-access-control/transfer-subscription)」を参照してください。
+   サブスクリプション間でコンテナーを移動する場合、ターゲット サブスクリプションがソース サブスクリプションと同じテナントに存在する必要があります。 コンテナーを別のテナントに移動するには、「[サブスクリプションを別のディレクトリに転送する](../role-based-access-control/transfer-subscription.md)」を参照してください。
 
 1. **[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、 **[新規作成]** を選択して、新しいリソース グループを作成します。
 

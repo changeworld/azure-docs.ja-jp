@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: quickstart
 ms.date: 10/18/2021
 zone_pivot_groups: iot-develop-toolset
-ms.openlocfilehash: 2b2b0cdb4c81a8ca501c58fce9ddb4771a5bbaba
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 2d5d8aafb9eaae7617ee7ecc98cc8896339f23e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167561"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218149"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>クイックスタート: Microchip ATSAME54-XPro Evaluation kit を IoT Central に接続する
 
@@ -39,7 +39,7 @@ ms.locfileid: "130167561"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * ハードウェア
 
@@ -239,7 +239,7 @@ Termite は、次の手順でデバイスの出力を監視するために開い
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 
 * ハードウェア
 
@@ -371,7 +371,7 @@ Termite は、次の手順でデバイスの出力を監視するために開い
 
 ## <a name="prerequisites"></a>前提条件
 
-* Microsoft Windows 10 で実行されている PC
+* Windows 10 を実行している PC
 
 * ハードウェア
 

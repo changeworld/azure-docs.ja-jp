@@ -3,12 +3,12 @@ title: Live Video Analytics を使用して IoT Edge for Linux on Windows にデ
 description: この記事では、Live Video Analytics を使用して IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: c504ecf2bb7405ee49d6e9ee94f069336924f5c0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 315501540e38340285e113dace2b68a46c3f6493
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378097"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225720"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device-with-live-video-analytics"></a>Live Video Analytics を使用して IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
 
@@ -31,7 +31,7 @@ ms.locfileid: "110378097"
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="IoT Edge for Linux on Windows (EFLOW) の図":::
 
-1. Windows デバイスに [EFLOW をインストール](../../iot-edge/how-to-install-iot-edge-on-windows.md)します。 
+1. Windows デバイスに [EFLOW をインストール](../../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md)します。 
 
     1. Windows PC を使用している場合、[Windows Admin Center](/windows-server/manage/windows-admin-center/overview) 開始ページにある接続の一覧に、Windows Admin Center を実行している PC を表すローカル ホスト接続が表示されます。 
     1. その他の管理対象のサーバー、PC、またはクラスターもここに表示されます。

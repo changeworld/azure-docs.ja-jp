@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: d2477c46b79692033baabb5327cda47f6652589d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3646fad2900d7efe8e3f0a0c5cca3e746e71a1b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671129"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219226"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLI を使用して Azure Bastion ホストを作成する
 
@@ -62,7 +62,7 @@ Azure サブスクリプションを持っていることを確認します。 A
    ```
 ## <a name="disassociate-the-vm-public-ip-address"></a>VM のパブリック IP アドレスの関連付けの解除
 
-Azure Bastion では、クライアント VM への接続にパブリック IP アドレスは使用されません。 VM のパブリック IP アドレスが不要な場合は、「[Azure VM からのパブリック IP アドレスの関連付けの解除](../virtual-network/remove-public-ip-address-vm.md)」の記事の手順を使用して、パブリック IP アドレスの関連付けを解除できます。
+Azure Bastion では、クライアント VM への接続にパブリック IP アドレスは使用されません。 VM のパブリック IP アドレスが不要な場合は、「[Azure VM からのパブリック IP アドレスの関連付けの解除](../virtual-network/ip-services/remove-public-ip-address-vm.md)」の記事の手順を使用して、パブリック IP アドレスの関連付けを解除できます。
 
 ## <a name="next-steps"></a>次のステップ
 

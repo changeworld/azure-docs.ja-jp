@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 56ba97d5a13744ee034024f510eac70d4f343877
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f66c1528058fd2d03098c00a54928fb0fbbd4057
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129052806"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225156"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
 
@@ -161,7 +161,7 @@ Ultra 共有ディスクは、プロビジョニング済みの容量、プロ�
 
 **Q: 共有ディスクはどのリージョンでサポートされていますか?**
 
-**A:** リージョンごとの情報については、[概念に関する記事](/azure/virtual-machines/disks-shared)を参照してください。
+**A:** リージョンごとの情報については、[概念に関する記事]()を参照してください。
 
 **Q: 共有ディスクを OS ディスクとして使用できますか?**
 
@@ -169,7 +169,7 @@ Ultra 共有ディスクは、プロビジョニング済みの容量、プロ�
 
 **Q: どのディスク サイズで共有ディスクがサポートされますか?**
 
-**A:** サポートされているサイズについては、[概念に関する記事](/azure/virtual-machines/disks-shared)を参照してください。
+**A:** サポートされているサイズについては、[概念に関する記事]()を参照してください。
 
 **Q: 既存のディスクがある場合、そこで共有ディスクを有効にできますか?**
 

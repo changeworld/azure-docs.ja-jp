@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a21b734ee1825a86c9276a2e603d04d723bd8d46
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d7c1f9faeb196f73fd6b336421591cfd895407fe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367771"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249003"
 ---
 # <a name="manage-a-public-ip-address-with-an-azure-virtual-machine"></a>Azure Virtual Machine を使用してパブリック IP アドレスを管理する
 
@@ -29,9 +29,9 @@ Azure Virtual Machines は、Azure の主要コンピューティング サー�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 IP アドレスはどのリソースにも関連付けることはできません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md) に関するページを参照してください。
+- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 IP アドレスはどのリソースにも関連付けることはできません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](./create-public-ip-portal.md) に関するページを参照してください。
     - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1** と **myStandardPublicIP-2** という名前を付けます。
-- サブスクリプション内の **インターネット** のルーティング優先設定を持つ 1 つの Standard SKU のパブリック IP アドレス。 **インターネット** ルーティング優先設定を持つパブリック IP を作成する方法の詳細については、「[Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する](../../virtual-network/routing-preference-portal.md)」を参照してください。
+- サブスクリプション内の **インターネット** のルーティング優先設定を持つ 1 つの Standard SKU のパブリック IP アドレス。 **インターネット** ルーティング優先設定を持つパブリック IP を作成する方法の詳細については、「[Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する](./routing-preference-portal.md)」を参照してください。
     - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-3** という名前を付けます。
 ## <a name="create-virtual-machine-existing-public-ip"></a>仮想マシンの既存のパブリック IP を作成する
 
@@ -71,7 +71,7 @@ Azure Virtual Machines は、Azure の主要コンピューティング サー�
 
 7. **[ネットワーク]** タブで、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | **ネットワーク インターフェイス** |   |
     | 仮想ネットワーク | 既定値の **(新規) myResourceGroupVM vnet** のままにします。 |
@@ -120,9 +120,9 @@ Azure Virtual Machines は、Azure の主要コンピューティング サー�
 
 このセクションでは、仮想マシンにパブリック IP 構成を追加します。 
 
-複数の IP アドレスを追加する方法の詳細については、「[Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる](../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)」を参照してください。 
+複数の IP アドレスを追加する方法の詳細については、「[Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる](./virtual-network-multiple-ip-addresses-portal.md)」を参照してください。 
 
-両方の種類のルーティング優先設定を使用する方法の詳細については、「[仮想マシンの両方のルーティング優先設定オプションを構成する](../../virtual-network/routing-preference-mixed-network-adapter-portal.md)」を参照してください。
+両方の種類のルーティング優先設定を使用する方法の詳細については、「[仮想マシンの両方のルーティング優先設定オプションを構成する](./routing-preference-mixed-network-adapter-portal.md)」を参照してください。
 
 1. ポータルの上部にある検索ボックスに、「**仮想マシン**」と入力します。
 
@@ -178,4 +178,4 @@ Azure Virtual Machines は、Azure の主要コンピューティング サー�
 
 この記事では、仮想マシンを作成し、既存のパブリック IP を使用する方法について説明しました。 既定の IP 構成のパブリック IP を変更しました。 最後に、インターネット ルーティング優先設定を使用して、パブリック IP 構成をファイアウォールに追加しました。
 
-- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。

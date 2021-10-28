@@ -4,12 +4,12 @@ description: Azure Database for PostgreSQL のバックアップを復元する�
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5de8e74fb05eea45e5cb730515b3280c4952951
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: df48d37f61b910dd9e8396fb8460d98479186f9c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359508"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224032"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Azure Database for PostgreSQL のバックアップを復元する (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "129359508"
 
    :::image type="content" source="./media/restore-azure-database-postgresql/select-database-for-restore-inline.png" alt-text="データベースを選択して復元するプロセスを示すスクリーンショット。" lightbox="./media/restore-azure-database-postgresql/select-database-for-restore-expanded.png":::
 
-   また、[バックアップ センター](/azure/backup/backup-center-overview)からこのページに移動することもできます。   
+   また、[バックアップ センター](./backup-center-overview.md)からこのページに移動することもできます。    
   
 1. **[復元ポイントの選択]** ページで、選択したバックアップ インスタンスで利用できるすべての完全バックアップの一覧からいずれかの復旧ポイントを選択します。 既定では、最新の復旧ポイントが選択されます。
 
@@ -43,7 +43,7 @@ ms.locfileid: "129359508"
 
      1. **[Select key vault and the secret]\(キー コンテナーとシークレットの選択\)** ボックスの一覧から、ターゲット サーバーに接続するための資格情報が格納されるコンテナーを選択します。
 
-     1. **[レビューと復元]** を選択すると検証がトリガーされ、サービスに[ターゲット サーバーに対する復元のアクセス許可がある](backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore)か確認されます。 これらのアクセス許可は[手動で付与](backup-azure-database-postgresql-overview.md#grant-access-on-the-azure-postgresql-server-and-key-vault-manually)する必要があります。
+     1. **[レビューと復元]** を選択すると検証がトリガーされ、サービスに [ターゲット サーバーに対する復元のアクセス許可がある](backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore)か確認されます。 これらのアクセス許可は[手動で付与](backup-azure-database-postgresql-overview.md#grant-access-on-the-azure-postgresql-server-and-key-vault-manually)する必要があります。
 
      :::image type="content" source="./media/restore-azure-database-postgresql/restore-as-database-inline.png" alt-text="[Restore as Database]\(データベースとして復元\) として選択された復元タイプを示すスクリーンショット。" lightbox="./media/restore-azure-database-postgresql/restore-as-database-expanded.png":::
 

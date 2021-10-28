@@ -4,12 +4,12 @@ description: ファイルまたはサード パーティ製ライブラリを使
 ms.date: 4/6/2020
 ms.topic: article
 zone_pivot_groups: bring-third-party-dependency-programming-functions
-ms.openlocfilehash: 3cd1139e8c733650acc879bf1d0d5d9efb2f6fb4
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: be01f07a9906da58d080060185104aef29f78b77
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716382"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265307"
 ---
 # <a name="bring-dependencies-or-third-party-library-to-azure-functions"></a>依存関係またはサードパーティ製ライブラリを Azure Functions に取り込む
 
@@ -205,7 +205,7 @@ az webapp config storage-account add \
 
 ### <a name="uploading-the-dependencies-to-azure-files"></a>依存関係を Azure Files にアップロードする
 
-依存関係を Azure Files にアップロードするには、Azure portal を使用することもオプションの 1 つです。 ポータルを使用して依存関係をアップロードする手順については、この [ ガイド ](../storage/files/storage-how-to-use-files-portal.md#upload-a-file) を参照してください。 依存関係を Azure Files にアップロードするその他のオプションには、[Azure CLI](../storage/files/storage-how-to-use-files-cli.md#upload-a-file) と [PowerShell](../storage/files/storage-how-to-use-files-powershell.md#upload-a-file) の使用もあります。
+依存関係を Azure Files にアップロードするには、Azure portal を使用することもオプションの 1 つです。 ポータルを使用して依存関係をアップロードする手順については、この [ ガイド ](../storage/files/storage-how-to-use-files-portal.md#upload-a-file) を参照してください。 依存関係を Azure Files にアップロードするその他のオプションには、[Azure CLI](../storage/files/storage-how-to-use-files-portal.md#upload-a-file) と [PowerShell](../storage/files/storage-how-to-use-files-portal.md#upload-a-file) の使用もあります。
 
 
 ### <a name="accessing-the-dependencies-in-your-code"></a>コード内の依存関係へのアクセス

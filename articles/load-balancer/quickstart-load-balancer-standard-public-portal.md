@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/09/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a25c35971d341c9ea6bce716931a76d682027e79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 59bd93cf5c17675e99a14484d8a13821e287047a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732857"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234569"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷分散を行うパブリック ロード バランサーを作成する
 
@@ -157,19 +157,19 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 4. ページ下部にある **[次へ: フロントエンド IP の構成]** を選択します。
 
-5. **[フロントエンド IP の構成]** で、 **[+ フロントエンド IP の追加]** を選択します。
+5. **[フロントエンド IP 構成]** で、 **[+ フロントエンド IP の追加]** を選択します。
 
 6. **[名前]** に、「**LoadBalancerFrontend**」と入力します。
 
 7. **[IP バージョン]** には **[IPv4]** または **[IPv6]** を選択します。
 
     > [!NOTE]
-    > IPv6 は現在、ルーティングの優先順位またはリージョン間の負荷分散 (グローバル階層) ではサポートされていません。
+    > IPv6 は現在、ルーティングの優先順位およびリージョン間の負荷分散 (グローバル階層) ではサポートされていません。
 
 8. **[IP の種類]** として **[IP アドレス]** を選択します。
 
     > [!NOTE]
-    > IP プレフィックスの詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)に関するページを参照してください。
+    > IP プレフィックスの詳細については、[Azure パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)に関するページを参照してください。
 
 9. **[パブリック IP アドレス]** で **[新規作成]** を選択します。
 
@@ -206,7 +206,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 24. **[負荷分散規則の追加]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | 要件に応じて、 **[IPv4]** または **[IPv6]** を選択します。 |
@@ -229,7 +229,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 27. **［作成］** を選択します
 
     > [!NOTE]
-    > この例では、送信インターネット アクセスを提供する NAT ゲートウェイを作成しました。 構成の [アウトバウンド規則] タブは省略可能であるため、バイパスされ、NAT ゲートウェイでは不要です。 Azure NAT ゲートウェイの詳細については、「[Virtual Network NAT とは](../virtual-network/nat-gateway/nat-overview.md)」を参照してください。
+    > この例では、送信インターネット アクセスを提供する NAT ゲートウェイを作成しました。 構成の [アウトバウンド規則] タブは省略可能であり、NAT ゲートウェイでは不要なためバイパスされました。 Azure NAT ゲートウェイの詳細については、「[Virtual Network NAT とは](../virtual-network/nat-gateway/nat-overview.md)」を参照してください。
     > Azure でのアウトバウンド接続の詳細については、[アウトバウンド接続の送信元ネットワーク アドレス変換 (SNAT)](../load-balancer/load-balancer-outbound-connections.md) に関するページを参照してください。
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
@@ -244,7 +244,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    
 3. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | 値                                          |
+    | 設定 | [値]                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -268,7 +268,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
   
 5. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -367,7 +367,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    
 3. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | 値                                          |
+    | 設定 | [値]                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -391,7 +391,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
   
 5. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **[myVNet]** を選択します |
@@ -406,7 +406,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 7. **[管理]** タブで、次を選択または入力します。
     
-    | 設定 | 値 |
+    | 設定 | [値] |
     |---|---|
     | **Monitoring** | |
     | ブート診断 | **[オフ]** を選択します |
@@ -456,7 +456,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
  
 4. ページ下部にある **[次へ: フロントエンド IP の構成]** を選択します。
 
-5. **[フロントエンド IP の構成]** で、 **[+ フロントエンド IP の追加]** を選択します。
+5. **[フロントエンド IP 構成]** で、 **[+ フロントエンド IP の追加]** を選択します。
 
 6. **[名前]** に、「**LoadBalancerFrontend**」と入力します。
 
@@ -498,9 +498,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 25. **[負荷分散規則の追加]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
-    | Name | 「**myHTTPRule**」と入力します。 |
+    | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | 要件に応じて、 **[IPv4]** または **[IPv6]** を選択します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontend]** を選択します。 |
     | Protocol | **[TCP]** を選択します。 |

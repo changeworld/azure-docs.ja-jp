@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9c9c6bb5281f506e278ca05266afe9631baae36f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d11eca42ee264626ee994bdf10db8882418fdfa4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745947"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265671"
 ---
 # <a name="metrics-advisor-whats-new-in-the-docs"></a>Metrics Advisor: ドキュメントの更新内容
 
@@ -52,4 +52,4 @@ Metrics Advisor クライアント SDK の最新の更新については、こ�
 
 ### <a name="updated-articles"></a>更新された記事
 
-* [Metrics Advisor による多次元メトリックのインシデント ツリーの構築方法に関する更新](/azure/applied-ai-services/metrics-advisor/faq#how-does-metric-advisor-build-a-diagnostic-tree-for-multi-dimensional-metrics)
+* [Metrics Advisor による多次元メトリックのインシデント ツリーの構築方法に関する更新](./faq.yml)

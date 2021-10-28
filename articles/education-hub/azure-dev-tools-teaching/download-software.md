@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: dfc16a5bfdb9297f60bced986f17a33ec69f6be9
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 8022813e544ba2d4869e9d0c67113a91908ed1c4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888844"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232776"
 ---
 # <a name="help-students-download-software-developer-tools-from-the-azure-education-hub"></a>学生が Azure Education Hub からソフトウェア開発者ツールをダウンロードするのを支援する
 
@@ -37,4 +37,4 @@ Azure Dev Tools for Teaching プログラムを使用すると、現行のアク
 - [Microsoft Azure for Students](azure-students-program.md)
 - [Azure for Students Starter](azure-students-starter-program.md)
 - [Microsoft Learn: 無料のオンライン学習プラットフォーム](/learn/)
-- [よく寄せられる質問](/azure/education-hub/azure-dev-tools-teaching/program-faq#azure-for-students)
+- [よく寄せられる質問](./program-faq.yml)

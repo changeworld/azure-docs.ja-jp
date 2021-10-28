@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: bded5aa229802a2563701eb1fa5d6dbde875f25a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f1ce1818031c81bf84ec35c96d1b11d248a6e308
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637455"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218582"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

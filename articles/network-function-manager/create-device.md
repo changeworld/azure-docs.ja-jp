@@ -1,17 +1,17 @@
 ---
 title: 'チュートリアル: Azure Network Function Manager のデバイス リソースを作成する'
 description: このチュートリアルでは、Azure Network Function Manager のデバイス リソースを作成する方法について説明します。
-author: cherylmc
+author: prmitt
 ms.service: network-function-manager
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.author: cherylmc
-ms.openlocfilehash: 048b086c407f5fbdc6239aec9dc509aceda7c8c2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: prmitt
+ms.openlocfilehash: 41347c5afe8664955fd5b298330f4299244edb6a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468193"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263327"
 ---
 # <a name="tutorial-create-a-network-function-manager-device-resource-preview"></a>チュートリアル: Network Function Manager のデバイス リソースを作成する (プレビュー)
 

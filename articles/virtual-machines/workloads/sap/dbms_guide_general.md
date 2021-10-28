@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: cbc41f6e58be523b1a5dc6ad55c9e78b563d2ae8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6d7a391bcd90d54c7024da6deeef74849c178039
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144351"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232077"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -286,7 +286,7 @@ Azure 可用性セットの設定方法については、[このチュートリ�
 
 - SAP アプリケーションがデプロイされている仮想ネットワークは、インターネットにアクセスできません。
 - データベース VM は、アプリケーション層と同じ仮想ネットワーク内で実行され、SAP アプリケーション層とは別のサブネットに分離されます。
-- 仮想ネットワーク内の VM には、プライベート IP アドレスが静的に割り当てられます。 詳しくは、「[Azure における IP アドレスの種類と割り当て方法](../../../virtual-network/public-ip-addresses.md)」をご覧ください。
+- 仮想ネットワーク内の VM には、プライベート IP アドレスが静的に割り当てられます。 詳しくは、「[Azure における IP アドレスの種類と割り当て方法](../../../virtual-network/ip-services/public-ip-addresses.md)」をご覧ください。
 - DBMS VM を出入りする際のルーティングの制限は、ローカルの DBMS VM にインストールされているファイアウォールでは設定 "*されません*"。 代わりに、トラフィック ルーティングは[ネットワーク セキュリティ グループ (NSG)](../../../virtual-network/network-security-groups-overview.md) を使用して定義されます。
 - DBMS VM へのトラフィックを分離および隔離するには、異なる NIC を VM に割り当てます。 各 NIC は異なる IP アドレスを取得し、異なる仮想ネットワーク サブネットに割り当てられます。 サブネットごとに異なる NSG ルールがあります。 ネットワーク トラフィックを分離または隔離するのは、ルーティングのための 1 つの手段です。 ネットワーク スループットのクォータを設定するためには使用されません。
 

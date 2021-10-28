@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: ceb57d364cca4b05d170ad6e42e8894f9a1ce86e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 4e6ef102a4cf0a4528125e336e21ecf709bb37bc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710235"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240017"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Azure Monitor を使用して仮想マシンを監視する: 監視の構成
 この記事は、シナリオ「[Azure Monitor で仮想マシンとそのワークロードを監視する](monitor-virtual-machine.md)」の一部です。 Azure Monitor で Azure 仮想マシンとハイブリッド仮想マシンの監視を構成する方法について説明します。
@@ -112,7 +112,7 @@ Log Analytics エージェントによって既に収集されているデータ
 
 Azure 仮想マシンと Azure Arc 対応サーバーで同じ方法を使用して、個々のマシンに Azure Monitor エージェントをインストールできます。 これらの方法には、Azure portal または Resource Manager テンプレートを使用した個々のマシンのオンボードや、Azure Policy を使用した大規模なマシンの有効化が含まれます。 Azure Arc 対応サーバーを使用できないハイブリッド マシンの場合は、エージェントを手動でインストールします。
 
-Azure portal を使用して、DCR を作成し、Azure Monitor エージェントを 1 つ以上のエージェントにデプロイするには、[Azure portal でのルールと関連付けの作成](../agents/data-collection-rule-azure-monitor-agent.md)に関する記事を参照してください。 その他のインストール方法については、「[Azure Monitor エージェントをインストールする](../agents/azure-monitor-agent-install.md)」で説明されています。 エージェントと DCR を作成時に新しいマシンに自動的にデプロイするポリシーを作成するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md#azure-monitor-agent)」を参照してください。
+Azure portal を使用して、DCR を作成し、Azure Monitor エージェントを 1 つ以上のエージェントにデプロイするには、[Azure portal でのルールと関連付けの作成](../agents/data-collection-rule-azure-monitor-agent.md)に関する記事を参照してください。 その他のインストール方法については、「[Azure Monitor エージェントをインストールする](../agents/azure-monitor-agent-install.md)」で説明されています。 エージェントと DCR を作成時に新しいマシンに自動的にデプロイするポリシーを作成するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../best-practices.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

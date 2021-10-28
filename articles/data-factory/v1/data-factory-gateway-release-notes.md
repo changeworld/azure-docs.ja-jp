@@ -5,15 +5,15 @@ author: nabhishek
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 22a709cf5d0725a09eb07a8f1675da316b0ab6c3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3c1992bd9208867677e168a2cc3cf6c7ffcb5554
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680587"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260020"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]

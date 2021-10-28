@@ -11,12 +11,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 3f0e2baa7ac30e0e75167dc603de73fdd1df8d73
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: b495476a93d3cef76c866b3927aa4bfacdb98477
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215362"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238751"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device"></a>クイックスタート:初めての IoT Edge モジュールを Windows デバイスにデプロイする
 
@@ -61,7 +61,7 @@ Azure CLI の環境を準備します。
   * 最小空きディスク領域:10 GB
 
 >[!NOTE]
->このクイックスタートでは、PowerShell を使用して、IoT Edge for Linux on Windows 用のデプロイを作成します。 Windows Admin Center を使用することもできます。 Windows Admin Center を使用してデプロイを作成する場合は、[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする方法](how-to-install-iot-edge-on-windows.md?tabs=windowsadmincenter)に関する攻略ガイドの手順に従ってください。
+>このクイックスタートでは、PowerShell を使用して、IoT Edge for Linux on Windows 用のデプロイを作成します。 Windows Admin Center を使用することもできます。 Windows Admin Center を使用してデプロイを作成する場合は、[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする方法](how-to-provision-single-device-linux-on-windows-symmetric.md?tabs=windowsadmincenter)に関する攻略ガイドの手順に従ってください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -151,7 +151,7 @@ Azure IoT Edge for Linux on Windows をデプロイするターゲット デバ�
 
 1. 必要に応じて、「O」または「R」を入力して **[Optional diagnostic data]\(オプションの診断データ\)** をオンまたはオフに切り替えます。 デプロイが成功したときの表示を次に示します。
 
-   ![デプロイが成功すると、メッセージの最後に [Deployment successful]\(デプロイ成功\) と表示されます](./media/how-to-install-iot-edge-on-windows/successful-powershell-deployment-2.png)
+   ![デプロイが成功すると、メッセージの最後に [Deployment successful]\(デプロイ成功\) と表示されます](./media/quickstart/successful-powershell-deployment.png)
 
 1. 前のセクションで取得したデバイス接続文字列を使用し、デバイスをプロビジョニングします。 プレースホルダー テキストは実際の値に置き換えてください。
 

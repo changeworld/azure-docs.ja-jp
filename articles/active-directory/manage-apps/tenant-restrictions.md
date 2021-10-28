@@ -12,12 +12,12 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 029328313ac58a5177f5a5e3c75b86fdc3587b43
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8b5cdbbe4955063d6a241949be14cd7dcd0af0a5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613740"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997518"
 ---
 # <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントへのアクセスを制限する
 
@@ -225,5 +225,5 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Office 365 の最新の認証の更新](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)について確認する
+- [Office 365 の最新の認証の更新](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)について確認する
 - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)を確認する

@@ -4,12 +4,12 @@ description: Azure App Service で受信および送信 IP アドレスがどの
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: f8354d52c43d786e3506cf6fcee0907f9f365ab6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b637157def16a3d540e918890cbc24730797cde6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836330"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224519"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -82,7 +82,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 ## <a name="get-a-static-outbound-ip"></a>静的送信 IP を取得する
-仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信すると、アプリからの送信トラフィックの IP アドレスを制御できます。 [リージョン VNet 統合](./web-sites-integrate-with-vnet.md)は、**Standard**、**Premium**、**PremiumV2** および **PremiumV3** App Service プランのみで使用できます。 このセットアップの詳細については、[NAT ゲートウェイの統合](./networking/nat-gateway-integration.md)に関するページを参照してください。
+仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信すると、アプリからの送信トラフィックの IP アドレスを制御できます。 [リージョン VNet 統合](./overview-vnet-integration.md)は、**Standard**、**Premium**、**PremiumV2** および **PremiumV3** App Service プランのみで使用できます。 このセットアップの詳細については、[NAT ゲートウェイの統合](./networking/nat-gateway-integration.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yvettep
-ms.openlocfilehash: 58fccb77131aac8311029cb06372201f2dd4b3bb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: ded9ebca49183a8fd772fae440370cfd20677eee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359560"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265508"
 ---
 # <a name="controlling-egress-traffic-in-azure-australia"></a>Azure Australia でのエグレス トラフィックの制御
 
@@ -177,7 +177,7 @@ Azure 内に仮想ネットワークのベース アドレス空間とルーテ�
 |リソース|Link|
 |---|---|
 |*ネットワーク インターフェイスの作成、変更、または削除* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface](../virtual-network/virtual-network-network-interface.md) |
-|*ネットワーク インターフェイスの IP アドレス指定*               | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/private-ip-addresses.md)
+|*ネットワーク インターフェイスの IP アドレス指定*               | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/ip-services/private-ip-addresses.md)
 |
 
 ### <a name="vnet-integrated-paas"></a>VNet 統合 PaaS
@@ -191,7 +191,7 @@ PaaS をシステムまたはアプリケーション アーキテクチャの�
 | リソース  | Link  |
 | --- | --- |
 | *Azure サービスの仮想ネットワーク統合* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services](../virtual-network/virtual-network-for-azure-services.md) |
-| *Azure 仮想ネットワークへのアプリの統合に関するハウツー ガイド* | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/web-sites-integrate-with-vnet.md)
+| *Azure 仮想ネットワークへのアプリの統合に関するハウツー ガイド* | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/overview-vnet-integration.md)
 |
 
 ### <a name="public-ip"></a>パブリック IP
@@ -200,8 +200,8 @@ PaaS をシステムまたはアプリケーション アーキテクチャの�
 
 |リソース|Link|
 |---|---|
-|*パブリック IP アドレスの概要*  | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/public-ip-addresses.md#public-ip-addresses) |
-|*パブリック IP アドレスの作成、変更、削除* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/virtual-network-public-ip-address.md)
+|*パブリック IP アドレスの概要*  | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses) |
+|*パブリック IP アドレスの作成、変更、削除* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 |
 
 ## <a name="effective-routes"></a>有効なルート

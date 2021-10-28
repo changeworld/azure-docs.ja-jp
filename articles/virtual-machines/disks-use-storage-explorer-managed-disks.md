@@ -7,12 +7,12 @@ ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 84b2ea53ebb0b6102edf5bc501e0e1b9b6f21726
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3206eb5b7092a43561cd114082ac567a63bff61b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781729"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237930"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer を使用して Azure マネージド ディスクを管理する
 
@@ -146,5 +146,5 @@ Storage Explorer を使うと、リージョン内またはリージョン間で
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal で VHD から仮想マシンを作成する](/azure/virtual-machines/windows/create-vm-specialized-portal)
-- [Azure portal で マネージド データ ディスクを Windows 仮想マシンに接続する](/azure/virtual-machines/windows/attach-managed-disk-portal)
+- [Azure portal で VHD から仮想マシンを作成する](./windows/create-vm-specialized-portal.md)
+- [Azure portal で マネージド データ ディスクを Windows 仮想マシンに接続する](./windows/attach-managed-disk-portal.md)

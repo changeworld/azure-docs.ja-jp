@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2021
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 9d021eb435eb74612f7716fb6d790e6878b9d9d5
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 364487d697aee69215e9ca9f080e4aa6a1a83468
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544394"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253366"
 ---
 # <a name="use-a-virtual-network-with-azure-api-management"></a>仮想ネットワークの Azure API Management との使用
 
@@ -55,7 +55,7 @@ API Management の仮想ネットワーク リソース要件は次のとおり�
 ### <a name="stv2"></a>[stv2](#tab/stv2)
 
 * Azure Resource Manager 仮想ネットワークが必要です。
-* 仮想ネットワークとサブネットを指定するだけでなく、Standard SKU [パブリック IPv4 アドレス](../virtual-network/public-ip-addresses.md#standard)を指定する必要があります。
+* 仮想ネットワークとサブネットを指定するだけでなく、Standard SKU [パブリック IPv4 アドレス](../virtual-network/ip-services/public-ip-addresses.md#standard)を指定する必要があります。
 * API Management インスタンスへの接続に使用されるサブネットには、他の Azure リソースの種類が含まれる場合があります。
 * API Management サービス、仮想ネットワークとサブネット、およびパブリック IP アドレス リソースは、同じリージョンとサブスクリプション内に存在する必要があります。
 * 複数リージョンの API Management デプロイの場合、場所ごとに仮想ネットワーク リソースを個別に構成します。
@@ -123,7 +123,7 @@ API Management インスタンスを[外部 VNET](./api-management-using-with-vn
 
 各項目の詳細情報
 
-* [VPN Gateway を使用して Virtual Network をバックエンドに接続する](../vpn-gateway/design.md#s2smulti)
+* [VPN Gateway を使用した仮想ネットワークのバックエンドへの接続](../vpn-gateway/design.md#s2smulti)
 * [異なるデプロイ モデルの Virtual Network を PowerShell を使用して接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Virtual Network についてよく寄せられる質問](../virtual-network/virtual-networks-faq.md)
 

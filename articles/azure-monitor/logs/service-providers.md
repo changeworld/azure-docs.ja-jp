@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: d2e0dcb7d973a4e4b2b6f4438aab5f08187ae44b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 076574173f0bfd4daff4845ab354e730ec0844d9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953112"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233265"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -76,7 +76,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 1. 中央ワークスペース:サービス プロバイダーでは、そのテナント内にワークスペースを作成し、[クエリ API](https://dev.loganalytics.io/) を[データ収集 API](../logs/data-collector-api.md) と共に利用して、さまざまなワークスペースからこの中央の場所にデータを移動させるスクリプトを使用できます。 スクリプト以外のもう 1 つのオプションは [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) を使用するというものです。
 
-2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](../visualize/powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。
+2. 中央の場所としての Power BI:Power BI は、さまざまなワークスペースで Log Analytics ワークスペースと [Power BI](./log-powerbi.md) との統合を利用してデータをエクスポートするときに、中央の場所として機能します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -86,6 +86,6 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 * [アラート](../alerts/alerts-overview.md) を使用して既存のシステムと統合する
 
-* [Power BI](../visualize/powerbi.md) を使用して概要レポートを作成する
+* [Power BI](./log-powerbi.md) を使用して概要レポートを作成する
 
 * [Azure の委任されたリソース管理](../../lighthouse/concepts/architecture.md)に顧客をオンボードする

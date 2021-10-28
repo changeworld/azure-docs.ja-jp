@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/11/2021
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 3baad1974c44fae8d683632050fa3850dd44270d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5a76287385e3e24485d9ec76126eafd3c818a57c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005188"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248623"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -191,7 +191,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
 [Create ASEv3]: creation.md

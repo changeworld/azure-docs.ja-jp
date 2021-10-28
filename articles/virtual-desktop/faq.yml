@@ -4,31 +4,32 @@ metadata:
   description: Azure Virtual Desktop のよく寄せられる質問とベスト プラクティス。
   author: Heidilohr
   ms.topic: conceptual
+  ms.service: virtual-desktop
   ms.date: 03/09/2021
   ms.author: helohr
   ms.custom: devx-track-azurepowershell
   manager: femila
-  ms.openlocfilehash: d4270dcd5670b07c6bd5ff3c50621f11e5a64353
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.openlocfilehash: c1a60fe5b6b8d171521ce7fcee25502612a56fc8
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114727399"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130254047"
 title: Azure Virtual Desktop に関する FAQ
 summary: この記事では、Azure Virtual Desktop について、よく寄せられる質問に回答し、ベスト プラクティスについて説明します。
 sections:
 - name: 無視
   questions:
   - question: >
-      What are the minimum admin permissions I need to manage objects?
+      オブジェクトを管理するために必要な、最少管理者権限は何ですか。
     answer: >
-      If you want to create host pools and other objects, you must be assigned the Contributor role on the subscription or resource group you're working with.
+      ホスト プールとその他のオブジェクトを作成する場合は、使用しているサブスクリプションまたはリソース グループの共同作成者ロールが割り当てられている必要があります。
 
 
-      You must be assigned the User Access Admin role on an app group to publish app groups to users or user groups.
+      アプリ グループをユーザーまたはユーザー グループに公開するには、アプリ グループのユーザー アクセス管理者ロールが割り当てられている必要があります。
 
 
-      To restrict an admin to only manage user sessions, such as sending messages to users, signing out users, and so on, you can create custom roles. For example:
+      ユーザーへのメッセージの送信、ユーザーのサインアウトなど、管理者がユーザー セッションの管理のみを行えるよう制限するには、カスタム ロールを作成します。 次に例を示します。
 
 
       ```powershell
@@ -59,26 +60,26 @@ sections:
 
       ```
   - question: >
-      Does Azure Virtual Desktop support split Azure Active Directory models?
+      Azure Virtual Desktop では、Azure Active Directory モデルの分割はサポートされていますか。
     answer: >
-      When a user is assigned to an app group, the service does a simple Azure role assignment. As a result, the user’s Azure Active Directory (AD) and the app group’s Azure AD must be in the same location. All service objects, such as host pools, app groups, and workspaces, also must be in the same Azure AD as the user.
+      ユーザーがアプリ グループに割り当てられると、サービスにより単純な Azure ロールの割り当てが行われます。 そのため、ユーザーの Azure Active Directory (AD) とアプリ グループの Azure AD は同じ場所にある必要があります。 ホスト プール、アプリ グループ、ワークスペースなどのすべてのサービス オブジェクトも、ユーザーと同じ Azure AD に含まれている必要があります。
 
 
-      You can create virtual machines (VMs) in a different Azure AD as long as you sync the Active Directory with the user's Azure AD in the same virtual network (VNET).
+      同じ仮想ネットワーク (VNET) 内のユーザーの Azure AD と Active Directory が同期されている限り、異なる Azure AD に仮想マシン (VM) を作成できます。
   - question: >
-      What are location restrictions?
+      場所の制限とは何ですか。
     answer: >
-      All service resources have a location associated with them. A host pool’s location determines which geography the service metadata for the host pool is stored in. An app group can't exist without a host pool. If you add apps to a RemoteApp app group, you'll also need a session host to determine the start menu apps. For any app group action, you'll also need a related data access on the host pool. To make sure data isn't being transferred between multiple locations, the app group's location should be the same as the host pool's.
+      すべてのサービス リソースには、場所が関連付けられています。 ホスト プールの場所によって、ホスト プールのサービス メタデータが格納される地理的な場所が決まります。 ホスト プールなしで、アプリ グループは存在できません。 アプリを RemoteApp アプリ グループに追加する場合は、スタート メニュー アプリを決定するためのセッション ホストも必要になります。 アプリ グループ アクションの場合は、ホスト プール上の関連データ アクセスも必要になります。 データが複数の場所に転送されないようにするには、アプリ グループの場所をホスト プールと同じ場所にする必要があります。
 
 
-      Workspaces also must be in the same location as their app groups. Whenever the workspace updates, the related app group updates along with it. Like with app groups, the service requires that all workspaces are associated with app groups created in the same location.
+      また、ワークスペースもそのアプリ グループと同じ場所にある必要があります。 ワークスペースが更新されるたびに、関連するアプリ グループが更新されます。 アプリ グループと同様に、サービスでは、すべてのワークスペースが同じ場所で作成されたアプリ グループに関連付けられている必要があります。
   - question: >
-      How do you expand an object's properties in PowerShell?
+      PowerShell でオブジェクトのプロパティを展開するにはどうすればよいですか。
     answer: >
-      When you run a PowerShell cmdlet, you only see the resource name and location.
+      PowerShell コマンドレットを実行すると、リソース名と場所のみが表示されます。
 
 
-      For example:
+      次に例を示します。
 
 
       ```powershell
@@ -95,10 +96,10 @@ sections:
       ```
 
 
-      To see all of a resource's properties, add either `format-list` or `fl` to the end of the cmdlet.
+      リソースのすべてのプロパティを表示するには、`format-list` または `fl` をコマンドレットの最後に追加します。
 
 
-      For example:
+      次に例を示します。
 
 
       ```powershell
@@ -108,10 +109,10 @@ sections:
       ```
 
 
-      To see specific properties, add the specific property names after `format-list` or `fl`.
+      特定のプロパティを表示するには `format-list` または `fl` の後に、その特定のプロパティ名を追加します。
 
 
-      For example:
+      次に例を示します。
 
 
       ```powershell
@@ -123,74 +124,74 @@ sections:
 
       ```
   - question: >
-      Does Azure Virtual Desktop support guest users?
+      Azure Virtual Desktop では、ゲスト ユーザーはサポートされていますか。
     answer: >
-      Azure Virtual Desktop doesn't support Azure AD guest user accounts. For example, let's say a group of guest users have Microsoft 365 E3 Per-user, Windows E3 Per-user, or WIN VDA licenses in their own company, but are guest users in a different company's Azure AD. The other company would manage the guest users' user objects in both Azure AD and Active Directory like local accounts.
+      Azure Virtual Desktop では、Azure AD ゲスト ユーザー アカウントはサポートされていません。 たとえば、ゲスト ユーザーのグループが Microsoft 365 E3 (ユーザーごと)、Windows E3 (ユーザーごと) または WIN VDA ライセンスを会社で使用しているにも関わらず、別の会社の Azure AD のゲスト ユーザーであるとします。 もう一方の会社では、Azure AD と Active Directory の両方で、ゲスト ユーザーのユーザー オブジェクトをローカル アカウントのように管理します。
 
 
-      You can't use your own licenses for the benefit of a third party. Also, Azure Virtual Desktop doesn't currently support Microsoft Account (MSA).
+      サード パーティのベネフィットになるように、独自のライセンスを使用することはできません。 また、Azure Virtual Desktop では、Microsoft アカウント (MSA) は現在サポートされていません。
   - question: >
-      Why don't I see the client IP address in the WVDConnections table?
-    answer: We don't currently have a reliable way to collect the web client's IP addresses, so we don't include that value in the table.
+      WVDConnections テーブルにクライアント IP アドレスが表示されないのはなぜですか。
+    answer: 現在、Web クライアントの IP アドレスを収集する信頼性の高い方法がないため、テーブルにはその値が含まれていません。
   - question: >
-      How does Azure Virtual Desktop handle backups?
-    answer: There are multiple options in Azure for handling backup. You can use Azure backup, Site Recovery, and snapshots.
+      Azure Virtual Desktop でバックアップはどのように処理されますか。
+    answer: Azure には、バックアップを処理するための複数のオプションがあります。 Azure Backup、Site Recovery、およびスナップショットを使用できます。
   - question: >
-      Does Azure Virtual Desktop support third-party collaboration apps?
-    answer: Azure Virtual Desktop is currently optimized for Teams. Microsoft currently doesn't support third-party collaboration apps like Zoom. Third-party organizations are responsible for giving compatibility guidelines to their customers. Azure Virtual Desktop also doesn't support Skype for Business.
+      Azure Virtual Desktop では、サード パーティのコラボレーション アプリはサポートされていますか。
+    answer: 現在、Azure Virtual Desktop は Teams に最適化されています。 Microsoft では現在、Zoom のようなサード パーティ コラボレーション アプリはサポートしていません。 サード パーティの組織は、お客様に互換性ガイドラインを提供する責任を負います。 Azure Virtual Desktop では、Skype for Business もサポートされていません。
   - question: >
-      Can I change from pooled to personal host pools?
-    answer: Once you create a host pool, you can't change its type. However, you can move any VMs you register to a host pool to a different type of host pool.
+      プールから個人用ホスト プールに変更できますか。
+    answer: ホスト プールを作成した後は、その種類を変更することはできません。 ただし、ホスト プールに登録したすべての VM を別の種類のホスト プールに移動することはできます。
   - question: >
-      What's the largest profile size FSLogix can handle?
+      FSLogix で処理できる最大のプロファイル サイズは何ですか。
     answer: >
-      Limitations or quotas in FSLogix depend on the storage fabric used to store user profile VHD(X) files.
+      FSLogix の制限事項またはクォータは、ユーザー プロファイルの VHD(X) ファイルの格納に使用される記憶域ファブリックによって異なります。
 
 
-      The following table gives an example of how many IOPS an FSLogix profile needs to support each user. Requirements can vary widely depending on the user, applications, and activity on each profile.
+      次の表に、FSLogix プロファイルで各ユーザーをサポートするために必要な IOPS 数を示します。 要件は、各プロファイルのユーザー、アプリケーション、およびアクティビティによって大きく異なる場合があります。
 
 
-      | Resource | Requirement |
+      | リソース | 要件 |
 
       |---|---|
 
-      | Steady state IOPS | 10 |
+      | 安定状態での IOPS | 10 |
 
-      | Sign in/sign out IOPS | 50 |
+      | サインイン/サインアウト時の IOPS | 50 |
 
 
-      The example in this table is of a single user, but can be used to estimate requirements for the total number of users in your environment. For example, you'd need around 1,000 IOPS for 100 users, and around 5,000 IOPS during sign-in and sign-out.
+      この表の例は 1 人のユーザーの場合を示していますが、環境内のユーザーの合計数の要件を見積もるために使用できます。 たとえば、100 ユーザーの場合は 1000 IOPS、サインインとサインアウトの場合は 5000 IOPS が必要になります。
   - question: >
-      Is there a scale limit for host pools created in the Azure portal?
+      Azure portal で作成されたホスト プールに、スケールの制限はありますか。
     answer: >
-      These factors can affect scale limit for host pools:
+      以下の要因が、ホスト プールのスケール制限に影響することがあります。
 
 
-      - The Azure template is limited to 800 objects. To learn more, see [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md#template-limits). Each VM also creates about six objects, so that means you can create around 132 VMs each time you run the template.
+      - Azure テンプレートでは、800 オブジェクトに制限されています。 詳しくは、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#template-limits)」をご覧ください。 また、各 VM では約 6 個のオブジェクトが作成されるため、テンプレートを実行するたびに約 132 台の VM を作成できます。
 
 
-      - There are restrictions on how many cores you can create per region and per subscription. For example, if you have an Enterprise Agreement subscription, you can create 350 cores. You'll need to divide 350 by either the default number of cores per VM or your own core limit to determine how many VMs you can create each time you run the template. Learn more at [Virtual Machines limits - Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager).
+      - リージョンごと、およびサブスクリプションごとに作成できるコアの数には制限があります。 たとえば、Enterprise Agreement サブスクリプションがある場合は、350 コアを作成できます。 テンプレートを実行するたびに作成できる VM の数を決定するには、350 を VM あたりの既定のコア数または独自のコア制限のどちらかで割る必要があります。 詳細については、「[Virtual Machines の制限 - Azure リソース マネージャー](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)」を参照してください。
 
 
-      - The VM prefix name and the number of VMs is fewer than 15 characters. To learn more, see [Naming rules and restrictions for Azure resources](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
+      - VM のプレフィックス名と VM の数は 15 文字未満です。 詳細については、「[Azure リソースの名前付け規則と制限事項](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)」を参照してください。
   - question: >
-      Can I manage Azure Virtual Desktop environments with Azure Lighthouse?
+      Azure Lighthouse を使用して Azure Virtual Desktop 環境を管理できますか。
     answer: >
-      Azure Lighthouse doesn't fully support managing Azure Virtual Desktop environments. Since Lighthouse doesn't currently support cross-Azure AD tenant user management, Lighthouse customers still need to sign in to the Azure AD that customers use to manage users.
+      Azure Lighthouse では、Azure Virtual Desktop 環境の管理は完全にはサポートされていません。 Lighthouse では現在、Azure AD テナント間でのユーザー管理がサポートされていないため、Lighthouse のお客様はユーザーを管理するために使用する Azure AD にサインインする必要があります。
 
 
-      You also can't use CSP sandbox subscriptions with the Azure Virtual Desktop service. To learn more, see [Integration sandbox account](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+      また、Azure Virtual Desktop サービスで CSP サンドボックス サブスクリプションを使用することもできません。 詳細については、「[統合サンドボックス アカウント](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)」を参照してください。
 
 
-      Finally, if you enabled the resource provider from the CSP owner account, the CSP customer accounts won't be able to modify the resource provider.
+      最後に、CSP の所有者アカウントからリソース プロバイダーを有効にした場合、CSP の顧客アカウントでリソース プロバイダーを変更することはできません。
   - question: >
-      How often should I turn my VMs on to prevent registration issues?
+      登録の問題を防ぐには、VM をどれくらいの頻度でオンにする必要がありますか?
     answer: >
-      After you register a VM to a host pool within the Azure Virtual Desktop service, the agent regularly refreshes the VM's token whenever the VM is active. The certificate for the registration token is valid for 90 days. Because of this 90-day limit, we recommend VMs to be online for 20 minutes every 90 days so that the machine can refresh its tokens and update the agent and side-by-side stack components. Turning your VM on within this time limit will prevent its registration token from expiring or becoming invalid. If you've started your VM after 90 days and are experiencing registration issues, follow the instructions in the [Azure Virtual Desktop agent troubleshooting guide](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) to remove the VM from the host pool, reinstall the agent, and reregister it to the pool.
+      Azure Virtual Desktop サービス内のホスト プールに VM を登録した後は、VM がアクティブになるたびに、エージェントによって VM のトークンが定期的に更新されます。 登録トークンの証明書の有効期間は 90 日間です。 この 90 日間の制限のために、マシンがトークンを最新の情報に更新し、エージェントとサイド バイ サイド スタック コンポーネントを更新できるように、90 日ごとに 20 分間 VM をオンラインにすることをお勧めします。 この期限内に VM をオンにすれば、登録トークンが期限切れになったり、無効になったりするのを回避できます。 90 日を過ぎた後に VM を起動し、登録に関する問題が発生した場合は、[Azure Virtual Desktop エージェントのトラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)に記載されている手順に従って、ホスト プールから VM を削除し、エージェントを再インストールした後、VM をプールに再登録してください。
   - question: >
-      Can I set availability options when creating host pools?
+      ホスト プールの作成時に可用性オプションを設定できますか?
     answer: >
-      Yes. Azure Virtual Desktop host pools have an option for selecting either availability set or availability zones when you create a VM. These availability options are the same as the ones Azure Compute uses. If you select a zone for the VM you create in a host pool, the setting automatically applies to all VMs you create in that zone. If you'd prefer to spread your host pool VMs across multiple zones, you'll need to follow the directions in [Add virtual machines with the Azure portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) to manually select a new zone for each new VM you create.
+      はい。 Azure Virtual Desktop ホスト プールには、VM を作成するときに可用性セットまたは可用性ゾーンのいずれかを選択するオプションがあります。 これらの可用性オプションは、Azure Compute で使用されるものと同じです。 ホスト プールに作成する VM のゾーンを選択すると、そのゾーンに作成するすべての VM に自動的に設定が適用されます。 ホスト プールの VM を複数のゾーンに分散する場合は、「[Azure portal を使用して仮想マシンを追加する](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal)」の指示に従って、作成する新しい VM ごとに新しいゾーンを手動で選択する必要があります。
   - question: >
-      Which availability option is best for me?
-    answer: "The availability option you should use for your VMs depends on your image's location and its managed disk fields. The following table explains the relationship each setting has with these variables to help you figure out which option is best for your deployment. \n\n| Availability option | Image location | Use managed disk option button (radio button) |\n|---|---|---|\n| None | Gallery | Disabled with \"Yes\" as default |\n| None | Blob storage | Enabled with \"No\" as default |\n| Availability zone | Gallery (blob storage option disabled) | Disabled with \"Yes\" as default |\n| Availability set with managed SKU (managed disk) | Gallery | Disabled with \"Yes\" as default |\n| Availability set with managed SKU (managed disk) | Blob storage | Enabled with \"No\" as default |\n| Availability set with managed SKU (managed disk) | Blob storage (Gallery option disabled) | Disabled with \"No\" as default |\n| Availability set (newly created by user) | Gallery | Disabled with \"Yes\" as default |\n| Availability set (newly created by user) | Blob storage | Enabled with \"No\" as default |"
+      どの可用性オプションが最適ですか?
+    answer: "VM に使用すべき可用性オプションは、イメージの場所とそのマネージド ディスクのフィールドによって異なります。 次の表では、各設定とこれらの変数の関係が説明されており、デプロイに最適なオプションを判断するのに役立ちます。 \n\n| 可用性オプション | イメージの場所 | [マネージド ディスクの使用] オプション ボタン (ラジオ ボタン) |\n|---|---|---|\n| なし | [ギャラリー] | 既定として \"Yes\" で無効 |\n| なし | BLOB ストレージ | 既定として \"No\" で有効 |\n| 可用性ゾーン | ギャラリー (BLOB ストレージ オプションは無効) | 既定として \"Yes\" で無効 |\n| 管理対象 SKU を使用した可用性セット (マネージド ディスク) | [ギャラリー] | 既定として \"Yes\" で無効 |\n| 管理対象 SKU を使用した可用性セット (マネージド ディスク) | BLOB ストレージ | 既定として \"No\" で有効 |\n| 管理対象 SKU を使用した可用性セット (マネージド ディスク) | BLOB ストレージ (ギャラリー オプションは無効) | 既定として \"No\" で無効 |\n| 可用性セット (ユーザーが新しく作成) | [ギャラリー] | 既定として \"Yes\" で無効 |\n| 可用性セット (ユーザーが新しく作成) | BLOB ストレージ | 既定として \"No\" で有効 |"

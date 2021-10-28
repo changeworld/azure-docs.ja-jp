@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5c9df61e7f4430a623f354294863b2a1bc06b7c8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: b9cd899516188dbac4671addd11d9c6cd05fc843
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164273"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216658"
 ---
 # <a name="language-support-for-form-recognizer"></a>Form Recognizer の言語サポート
 
@@ -32,7 +32,7 @@ ms.locfileid: "130164273"
 >
 > Form Recognizer のディープ ラーニング ベースのユニバーサル モデルでは、言語が混在するテキスト行を含め、ドキュメント内のすべての多言語テキストが抽出されます。言語コードを指定する必要はありません。 言語について確認し、関連するモデルのみサービスを適用するように強制する場合を除き、言語コードをパラメーターとして指定しないでください。 そうしないと、サービスが不完全で不正確なテキストを返すことがあります。
 
-レイアウトとカスタム モデルのプレビュー言語を使用するには、[v3.0 REST API 移行ガイド](/v3-migration-guide.md#changes-to-the-rest-api-endpoints)を参照して v2.1 GA API との違いを理解し、[v3.0 プレビュー SDK のクイックスタート](quickstarts/try-v3-python-sdk.md)と[プレビュー REST API のクイックスタート](quickstarts/try-v3-rest-api.md)を確認してください。
+レイアウトとカスタム モデルのプレビュー言語を使用するには、[v3.0 REST API 移行ガイド](/rest/api/media/#changes-to-the-rest-api-endpoints)を参照して v2.1 GA API との違いを理解し、[v3.0 プレビュー SDK のクイックスタート](quickstarts/try-v3-python-sdk.md)と[プレビュー REST API のクイックスタート](quickstarts/try-v3-rest-api.md)を確認してください。
 
 ### <a name="handwritten-languages"></a>手書きの言語
 次の表は、Form Recognizer のレイアウトとカスタム モデル機能によりサポートされる手書き言語の一覧です。
@@ -118,7 +118,7 @@ ms.locfileid: "130164273"
 |コリャーク語 |`kpy`| preview |
 |コスラエ語 |`kos`| preview |
 |クムク語 (キリル) |`kum`| preview |
-|クルド語 (ラテン文字)| `kur` | |
+|クルド語 (ラテン文字)| `ku` | |
 |キルギス語 (キリル) |`ky`| preview |
 |ラコタ語 |`lkt`| preview |
 |ラテン語|`la`| preview |
@@ -152,13 +152,13 @@ ms.locfileid: "130164273"
 |セルビア語 (ラテン) | `sr-latn` | preview |
 |スコルト サーミ語|`sms`| preview |
 |スロバキア語 | `sk` | preview |
-|スロベニア語  | `slv` | |
+|スロベニア語  | `sl` | |
 |南部サーミ語|`sma`| preview |
 |スペイン語 | `es` | |
 |スワヒリ語 (ラテン)  | `sw` | |
 |スウェーデン語 | `sv` | |
 |タジク語 (キリル)|`tg`| preview |
-|タタール語 (ラテン)  | `tat` | |
+|タタール語 (ラテン)  | `tt` | |
 |テトゥン語    | `tet` |  |
 |トンガ語|`to`|(プレビュー) |
 |トルコ語 | `tr` | |

@@ -1,17 +1,17 @@
 ---
 title: Azure Network Function Manager パートナー
 description: このサービスで使用されるネットワーク機能を提供しているパートナーについて説明します。
-author: cherylmc
+author: prmitt
 ms.service: network-function-manager
 ms.topic: article
 ms.date: 06/30/2021
-ms.author: cherylmc
-ms.openlocfilehash: fc10a6acd6f3218a37ff327f1126cec616b8fa5b
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: prmitt
+ms.openlocfilehash: 5186d16d36503ad5f057424b6251ee8be109b958
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290750"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258489"
 ---
 # <a name="network-function-manager-partners-preview"></a>Network Function Manager パートナー (プレビュー)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: eriklind
-ms.openlocfilehash: e2f1f8fff5869cc8d2eb942e45fe40e59d050b4c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a486f8e2f2505470b54c0b0f646794a7789afc09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045112"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256876"
 ---
 # <a name="create-an-ios-app-public-preview"></a>iOS アプリを作成する (パブリック プレビュー)
 
@@ -66,7 +66,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 >[!NOTE]
 > このクイックスタートでは、デモンストレーションの目的で[共有キー](azure-maps-authentication.md#shared-key-authentication)認証アプローチを使用しますが、どの運用環境でも推奨されるアプローチは [Azure Active Directory](azure-maps-authentication.md#azure-ad-authentication) 認証を使用することです。
 <!--
-> If you use the Azure subscription key instead of the Azure Maps primary key, your map won't render properly. Also, for security purposes, it is recommended that you rotate between your primary and secondary keys. To rotate keys, update your app to use the secondary key, deploy, then press the cycle/refresh button beside the primary key to generate a new primary key. The old primary key will be disabled. For more information on key rotation, see [Set up Azure Key Vault with key rotation and auditing](/azure/key-vault/secrets/tutorial-rotation-dual)
+> If you use the Azure subscription key instead of the Azure Maps primary key, your map won't render properly. Also, for security purposes, it is recommended that you rotate between your primary and secondary keys. To rotate keys, update your app to use the secondary key, deploy, then press the cycle/refresh button beside the primary key to generate a new primary key. The old primary key will be disabled. For more information on key rotation, see [Set up Azure Key Vault with key rotation and auditing](../key-vault/secrets/tutorial-rotation-dual.md)
 -->
 ![サブスクリプション キーを取得する。](./media/ios-sdk/quick-ios-app/get-key.png)
 

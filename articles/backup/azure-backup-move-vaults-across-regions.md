@@ -4,12 +4,12 @@ description: この記事では、リージョン間でリソースを移動し�
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: how-to
-ms.openlocfilehash: 658b4965c008105957165a858987442f23630c14
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 2b3804a0a73329d7b2e4e2449fe773918791dcea
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058882"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264943"
 ---
 # <a name="back-up-resources-in-recovery-services-vault-after-moving-across-regions"></a>リージョン間での移動後に Recovery Services コンテナー内のリソースをバックアップする
 
@@ -28,17 +28,17 @@ Recovery Services コンテナーによって保護された Azure 仮想マシ�
 
 VM を移動する前に、以下の前提条件が満たされていることを確認してください。
 
-1. [VM の移動に伴う前提条件](/azure/resource-mover/tutorial-move-region-virtual-machines#prerequisites)を参照して、VM が移動の条件を満たしていることを確認します。
+1. [VM の移動に伴う前提条件](../resource-mover/tutorial-move-region-virtual-machines.md#prerequisites)を参照して、VM が移動の条件を満たしていることを確認します。
 1. 既存のコンテナーのダッシュボードの [ **[バックアップ項目]** タブで VM を選択](./backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)し、 **[保護の停止]** を選択します。その後、データを保持するか削除するかを必要に応じて選択します。 データを保持する設定で VM のバックアップ データが停止された場合、復旧ポイントは無期限に維持され、いずれのポリシーにも従いません。 これにより、確実にいつでもバックアップ データを復元できるようになります。
    >[!Note]
    >以前のコンテナー内のデータを保持すると、バックアップ料金が発生します。 データを保持することによる課金を避けたい場合は、[データの削除オプション](./backup-azure-manage-vms.md#delete-backup-data)を使用して、保持されているバックアップ データを削除する必要があります。
 1. VM がオンになっていることを確認します。 移動先のリージョンで使用できる必要がある VM のディスクはすべて、VM 内でアタッチと初期化が行われます。
-1. VM に、最新の信頼されたルート証明書と、更新された証明書失効リスト (CRL) があることを確認します。 これを実行するには、次のようにします。
+1. VM に、最新の信頼されたルート証明書と、更新された証明書失効リスト (CRL) があることを確認します。 そのためには次を行います。
    - Windows VM で、最新の Windows 更新プログラムをインストールします。
    - Linux VM では、ディストリビューター ガイダンスを参照して、マシンに最新の証明書と CRL が存在するようにします。
 1. VM からの送信接続を許可します。
-   - URL ベースのファイアウォール プロキシを使用して送信接続を制御しようとしている場合は、[これらの URL](/azure/resource-mover/support-matrix-move-region-azure-vm#url-access) へのアクセスを許可します。
-   - ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御しようとしている場合は、[これらのサービス タグ ルール](/azure/resource-mover/support-matrix-move-region-azure-vm#nsg-rules)を作成します。
+   - URL ベースのファイアウォール プロキシを使用して送信接続を制御しようとしている場合は、[これらの URL](../resource-mover/support-matrix-move-region-azure-vm.md#url-access) へのアクセスを許可します。
+   - ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御しようとしている場合は、[これらのサービス タグ ルール](../resource-mover/support-matrix-move-region-azure-vm.md#nsg-rules)を作成します。
 
 ### <a name="move-azure-vms"></a>Azure VM の移動
 
@@ -48,7 +48,7 @@ VM を移動する前に、以下の前提条件が満たされていること�
 
 新しいリージョンの新しいまたは既存の Recovery Services コンテナーで VM の保護を開始します。 以前のバックアップから復元する必要がある場合は、バックアップ データを保持するように選択してあれば、引き続き以前の Recovery Services コンテナーから復元することができます。 
 
-上記の手順は、新しいリージョンでもリソースが確実にバックアップされるようにするのに役立つはずです。
+以上の手順により、新しいリージョンでもリソースが確実にバックアップされるようになります。
 
 ## <a name="back-up-azure-file-share-after-moving-across-regions"></a>リージョン間での移動後に Azure ファイル共有をバックアップする
 
@@ -58,8 +58,8 @@ VM を移動する前に、以下の前提条件が満たされていること�
 
 ストレージ アカウントを移動する前に、以下の前提条件が満たされていることを確認してください。
 
-1.  [ストレージ アカウントを移動するための前提条件](/azure/storage/common/storage-account-move?tabs=azure-portal#prerequisites)を確認します。 
-1. リソースの移動テンプレートをエクスポートして変更します。 詳細については、[リージョン移動のためにストレージ アカウントを準備する](/azure/storage/common/storage-account-move?tabs=azure-portal#prepare)ことに関するページを参照してください。
+1.  [ストレージ アカウントを移動するための前提条件](../storage/common/storage-account-move.md?tabs=azure-portal#prerequisites)を確認します。 
+1. リソースの移動テンプレートをエクスポートして変更します。 詳細については、[リージョン移動のためにストレージ アカウントを準備する](../storage/common/storage-account-move.md?tabs=azure-portal#prepare)ことに関するページを参照してください。
 
 ### <a name="move-azure-file-share"></a>Azure ファイル共有を移動する
 
@@ -84,17 +84,17 @@ SQL または SAP HANA サーバーが実行されている VM を別のリー�
 
 VM で実行中の SQL Server や SAP HANA を新しいリージョンに移動する前に、以下の前提条件が満たされていることを確認してください。
 
-1. [VM の移動に伴う前提条件](/azure/resource-mover/tutorial-move-region-virtual-machines#prerequisites)を参照して、VM が移動の条件を満たしていることを確認します。 
+1. [VM の移動に伴う前提条件](../resource-mover/tutorial-move-region-virtual-machines.md#prerequisites)を参照して、VM が移動の条件を満たしていることを確認します。 
 1. 既存のコンテナーのダッシュボードの [[バックアップ項目] タブ](./backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)で VM を選択し、バックアップを停止する必要がある "_データベース_" を選択します。 **[保護の停止]** を選択した後、必要に応じてデータを保持または削除します。 データを保持する設定でバックアップ データが停止された場合、復旧ポイントは無期限に維持され、いずれのポリシーにも従いません。 これにより、確実にいつでもバックアップ データを復元できるようになります。
    >[!Note]
    >以前のコンテナー内のデータを保持すると、バックアップ料金が発生します。 データを保持することによる課金を避けたい場合は、[データの削除オプション](./backup-azure-manage-vms.md#delete-backup-data)を使用して、保持されているバックアップ データを削除する必要があります。
 1. 移動する VM がオンになっていることを確認します。 移動先のリージョンで使用できる必要がある VM のディスクはすべて、VM 内でアタッチと初期化が行われます。
-1. VM に、最新の信頼されたルート証明書と、更新された証明書失効リスト (CRL) があることを確認します。 これを実行するには、次のようにします。
+1. VM に、最新の信頼されたルート証明書と、更新された証明書失効リスト (CRL) があることを確認します。 そのためには次を行います。
    - Windows VM で、最新の Windows 更新プログラムをインストールします。
    - Linux VM では、ディストリビューター ガイダンスを参照し、マシンに最新の証明書と CRL が存在するようにします。
 1. VM からの送信接続を許可します。
-   - URL ベースのファイアウォール プロキシを使用して送信接続を制御しようとしている場合は、[これらの URL](/azure/resource-mover/support-matrix-move-region-azure-vm#url-access) へのアクセスを許可します。
-   - ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御しようとしている場合は、[これらのサービス タグ ルール](/azure/resource-mover/support-matrix-move-region-azure-vm#nsg-rules)を作成します。
+   - URL ベースのファイアウォール プロキシを使用して送信接続を制御しようとしている場合は、[これらの URL](../resource-mover/support-matrix-move-region-azure-vm.md#url-access) へのアクセスを許可します。
+   - ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御しようとしている場合は、[これらのサービス タグ ルール](../resource-mover/support-matrix-move-region-azure-vm.md#nsg-rules)を作成します。
 
 ### <a name="move-sql-serversap-hana-in-azure-vm"></a>Azure VM 内の SQL Server または SAP HANA を移動する
 

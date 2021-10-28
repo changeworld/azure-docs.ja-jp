@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: jocorte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 591f2882e6886f208a5452ac547a5bb1e4024906
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2070ab097407e377df123260965d7066512c1153
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610163"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228753"
 ---
 # <a name="scale-snat-ports-with-azure-nat-gateway"></a>Azure NAT ゲートウェイを使用した SNAT ポートのスケーリング
 
 Azure Firewall では、構成されているパブリック IP アドレスごとに 2048 個の SNAT ポートが提供され、最大で [250 個のパブリック IP アドレス](./deploy-multi-public-ip-powershell.md)を関連付けることができます。 アーキテクチャとトラフィック パターンによっては、この構成で 512,000 を超える SNAT ポートが必要になる場合があります。 たとえば、Microsoft 365 アプリと統合する大規模な [Windows Virtual Desktop デプロイ](./protect-azure-virtual-desktop.md)を保護するために、これを使用する場合などです。
 
-多数のパブリック IP アドレスを使用する場合のもう 1 つの課題は、ダウンストリームの IP アドレス フィルター要件がある場合です。 Azure Firewall では、接続に使用されるソース パブリック IP アドレスがランダムに選択されるため、それに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 送信 SNAT ポートの要件を満たすために、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用し、250 個のパブリック IP アドレスを関連付ける必要がある場合でも、16 個のパブリック IP アドレス プレフィックスを作成して許可する必要があります。
+多数のパブリック IP アドレスを使用する場合のもう 1 つの課題は、ダウンストリームの IP アドレス フィルター要件がある場合です。 Azure Firewall では、接続に使用されるソース パブリック IP アドレスがランダムに選択されるため、それに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 送信 SNAT ポートの要件を満たすために、[パブリック IP アドレス プレフィックス](../virtual-network/ip-services/public-ip-address-prefix.md)を使用し、250 個のパブリック IP アドレスを関連付ける必要がある場合でも、16 個のパブリック IP アドレス プレフィックスを作成して許可する必要があります。
 
 送信 SNAT ポートをスケーリングするためのより適切なオプションは、[NAT ゲートウェイ リソース](../virtual-network/nat-gateway/nat-overview.md)を使用することです。 これにより、パブリック IP アドレスごとに 64,000 個の SNAT ポートが提供され、最大 16 個のパブリック IP アドレスがサポートされます。したがって、最大 1,024,000 個の送信 SNAT ポートを効果的に提供できます。
 

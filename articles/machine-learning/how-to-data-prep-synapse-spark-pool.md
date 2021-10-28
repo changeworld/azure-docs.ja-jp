@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 927b672aa4bd17efcfa491b0ec0092db9a2118c0
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 625a49930b68f2f5d76110a3548ad6e422ebf451
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429796"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251549"
 ---
 # <a name="data-wrangling-with-apache-spark-pools-preview"></a>Apache Spark プールを使用したデータ ラングリング (プレビュー) 
 
@@ -96,7 +96,7 @@ env.register(workspace=ws)
 Apache Spark プールとカスタム環境を使用したデータ準備を開始するには、Apache Spark プールの名前と Apache Spark セッション中に使用する環境を指定します。 さらに、サブスクリプション ID、機械学習ワークスペースのリソース グループ、機械学習ワークスペースの名前を指定することもできます。
 
 >[!IMPORTANT]
-> リンクされた Synapse ワークスペースで [[セッション レベルのパッケージを許可する]](../synapse-analytics/spark/apache-spark-manage-python-packages.md#session-scoped-packages-preview) が有効になっている必要があります。
+> リンクされた Synapse ワークスペースで [[セッション レベルのパッケージを許可する]](../synapse-analytics/spark/apache-spark-manage-python-packages.md#session-scoped-packages) が有効になっている必要があります。
 >
 >![セッション レベルのパッケージを有効にする](media/how-to-data-prep-synapse-spark-pool/enable-session-level-package.png)
 

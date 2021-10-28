@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: dlepow
 ms.author: danlep
 ms.date: 07/12/2021
-ms.openlocfilehash: e2f56f8886a387158c148edaf9ae557deac3783f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 87684e6a4bc2c349a2b65faefe825c455be413d5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659155"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215523"
 ---
 # <a name="azure-api-management-as-an-event-grid-source-preview"></a>Event Grid ソースとしての Azure API Management (プレビュー)
 
@@ -123,7 +123,7 @@ API Management から出力されるイベントの種類は次のとおりで�
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "eventType": "Microsoft.ApiManagement.APIUpdated",
   "dataVersion": "1",
@@ -157,7 +157,7 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -172,7 +172,7 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -186,7 +186,7 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `resourceUri` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/Microsoft.ApiManagement/service/<ServiceName>/<ResourceType>/<ResourceName>` の形式が使用されます。 |
 

@@ -6,7 +6,7 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/20/2021
 ms.author: robinsh
 ms.custom:
 - amqp
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: e7e7f8979ac07502f0e50f59b612f63b3e9a7240
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 0f2a454a746a806b449251a52b97c8c5325d13ee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236825"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263643"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 

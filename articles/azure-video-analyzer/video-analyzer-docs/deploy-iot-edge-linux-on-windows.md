@@ -3,12 +3,12 @@ title: IoT Edge for Linux on Windows にデプロイする - Azure
 description: この記事では、IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.openlocfilehash: 18a08d903fc256790799d8c66d400226f8ac48ef
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 01631b219149282d645de9d5b1126bc8b79cbcfc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968676"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236021"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
 
@@ -19,7 +19,7 @@ ms.locfileid: "122968676"
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
-* [EFLOW の概要](../../iot-edge/iot-edge-for-linux-on-windows.md)に関するページを参照してください。
+* [EFLOW の概要](../../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md)に関するページを参照してください。
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 

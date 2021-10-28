@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 29826aba135c2d409a99489aeb9e2c71f6d6a7c4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3a9d7f4f6c3413fe82cd1dde52ebde866d77eedf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754711"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262909"
 ---
 # <a name="identify-and-diagnose-issues-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) での問題の特定と診断
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-role-service.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-overview.md)を参照してください。
 
 Azure Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Azure Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Azure Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
 

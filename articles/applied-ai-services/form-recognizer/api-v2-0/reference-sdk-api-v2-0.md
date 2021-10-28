@@ -12,18 +12,18 @@ ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp
 keywords: フォーム処理, 自動データ処理
-ms.openlocfilehash: 32dcfb1ba1e413e666e6a3d27ef9f03dbce81978
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cba7378dcc504e675e449dda4243149419e2726a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641756"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265871"
 ---
 # <a name="reference-azure-form-recognizer-client-library-v300-and-rest-api-v20"></a>リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0
 
 >[!IMPORTANT]
 >
-> * このガイドは、Azure Form Recognizer SDK v3.0.0 と REST API v2.0 に基づいています。 最新バージョンのドキュメントとコードサンプルについては、 **[クイックスタート](../quickstarts/client-library.md)** の記事を参照してください。
+> * このガイドは、Azure Form Recognizer SDK v3.0.0 と REST API v2.0 に基づいています。 最新バージョンのドキュメントとコードサンプルについては、 **[クイックスタート](../quickstarts/try-sdk-rest-api.md)** の記事を参照してください。
 >
 >* この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境では、セキュリティで保護された方法を使用して資格情報を格納し、アクセスします。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services/cognitive-services-security.md)に関するページを参照してください。
 

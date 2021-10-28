@@ -7,12 +7,12 @@ ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 83eec8682291a74bc9b23bf4ff1326cee7134e7f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: fb3619ed95f0636ae83829e1ee1c818545dc86c9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534934"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227342"
 ---
 # <a name="download-the-open-service-mesh-osm-client-library"></a>Open Service Mesh (OSM) クライアント ライブラリのダウンロード
 この記事では、AKS 用の OSM アドオンの操作と構成に使用する OSM クライアント ライブラリをダウンロードする方法について説明します。
@@ -41,4 +41,4 @@ ms.locfileid: "129534934"
 > `osm install` を使用してバイナリから OSM のインストールを試行しないでください。 こうすると、AKS のアドオンとして統合されていない OSM がインストールされます。
 
 > [!NOTE]
-> OSM CLI を使用する前に、バイナリのインストール後に OSM CLI を構成して [OSM AKS アドオン エクスペリエンスをカスタマイズ](/open-service-mesh-customize-addon-experience.md)することをお勧めします。 
+> OSM CLI を使用する前に、バイナリのインストール後に OSM CLI を構成して [OSM AKS アドオン エクスペリエンスをカスタマイズ](./open-service-mesh-customize-add-on-experience.md)することをお勧めします。

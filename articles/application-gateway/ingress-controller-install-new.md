@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 95a8f3090fd1599cbf30f783df1c501fa797cdff
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 9148bbf83a8fadc6c71fd995fd4a444e7c6d7db4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287949"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253136"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -74,7 +74,7 @@ ms.locfileid: "112287949"
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md)
 - [Application Gateway](./overview.md) v2
 - 2 つの[サブネット](../virtual-network/virtual-networks-overview.md)を含む [Virtual Network](../virtual-network/virtual-networks-overview.md)
-- [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)
+- [パブリック IP アドレス](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 - [AAD ポッド ID](https://github.com/Azure/aad-pod-identity/blob/master/README.md) で使用される[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)
 
 1. Azure Resource Manager テンプレートをダウンロードし、必要に応じてそのテンプレートを変更します。
@@ -250,7 +250,7 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
     ```
 
    値:
-     - `verbosityLevel`:AGIC ログ インフラストラクチャの詳細レベルを設定します。 使用できる値については、「[ログ レベル](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.yml#logging-levels)」を参照してください。
+     - `verbosityLevel`:AGIC ログ インフラストラクチャの詳細レベルを設定します。 使用できる値については、「[ログ レベル](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)」を参照してください。
      - `appgw.subscriptionId`:Application Gateway が存在する Azure サブスクリプション ID。 例: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`:Application Gateway が作成された Azure リソース グループの名前。 例: `app-gw-resource-group`
      - `appgw.name`:Application Gateway の名前。 例: `applicationgatewayd0f0`

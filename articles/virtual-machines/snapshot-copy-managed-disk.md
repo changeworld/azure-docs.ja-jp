@@ -8,12 +8,12 @@ ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/16/2021
-ms.openlocfilehash: b2dadea22326f8b4bf2af6a55d90e392feea8c7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0a63e0f346fedac9b7178f25a19177a9908bc6a4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624768"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223009"
 ---
 # <a name="create-a-snapshot-of-a-virtual-hard-disk"></a>仮想ハード ディスクのスナップショットを作成する
 
@@ -32,8 +32,8 @@ Azure portal を使用してスナップショットを作成するには、こ�
 1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]** を選択します。
 1. **[スナップショット]** を探して選択します。
 1. **スナップショット** ウィンドウで、 **[作成]** を選択します。 **[スナップショットの作成]** ウィンドウが表示されます。
-1. **[リソース グループ]** では、既存の[リソース グループ](/azure/azure-resource-manager/management/overview#resource-groups)を選択するか、新しいグループの名前を入力します。
-1. **[名前]** に入力し、新しいスナップショットの **[リージョン]** と **[スナップショットの種類]** を選択します。 スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](/azure/availability-zones/az-overview)をサポートするリージョンを選択する必要があります。 サポートされるリージョンの一覧については、「[可用性ゾーンを持つ Azure リージョン](/azure/availability-zones/az-region#azure-regions-with-availability-zones)」をご覧ください。
+1. **[リソース グループ]** では、既存の [リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択するか、新しいグループの名前を入力します。
+1. **[名前]** に入力し、新しいスナップショットの **[リージョン]** と **[スナップショットの種類]** を選択します。 スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../availability-zones/az-overview.md)をサポートするリージョンを選択する必要があります。 サポートされるリージョンの一覧については、「[可用性ゾーンを持つ Azure リージョン](../availability-zones/az-region.md#azure-regions-with-availability-zones)」をご覧ください。
 1. **[ソース サブスクリプション]** では、バックアップするマネージド ディスクが含まれているサブスクリプションを選択します。
 1. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
 1. **[ストレージの種類]** では、スナップショットにゾーン冗長ストレージまたは高パフォーマンスストレージが必要な場合を除き、 **[Standard HDD]** を選択します。
@@ -74,7 +74,7 @@ Azure portal を使用してスナップショットを作成するには、こ�
        -CreateOption copy
    ```
 
-   ゾーン回復性のあるストレージにスナップショットを格納する場合は、[availability zones](/azure/availability-zones/az-overview) をサポートするリージョンにスナップショットを作成し、`-SkuName Standard_ZRS` パラメーターを含める必要があります。 Availability Zones をサポートするリージョンのリストについては、「[Azure のリージョンと Availability Zones](/azure/availability-zones/az-region#azure-regions-with-availability-zones)」をご覧ください。
+   ゾーン回復性のあるストレージにスナップショットを格納する場合は、[availability zones](/azure/availability-zones/az-overview) をサポートするリージョンにスナップショットを作成し、`-SkuName Standard_ZRS` パラメーターを含める必要があります。 Availability Zones をサポートするリージョンのリストについては、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones)」をご覧ください。
 
 1. スナップショットを取得する。
 
@@ -117,7 +117,7 @@ Azure portal を使用してスナップショットを作成するには、こ�
         --name osDisk-backup
     ```
 
-    スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](/azure/availability-zones/az-overview)をサポートするリージョンにストレージを作成し、オプションの `--sku Standard_ZRS` パラメーターを含める必要があります。 [Availability Zones](/azure/availability-zones/az-region#azure-regions-with-availability-zones) のリストは、ここで確認できます。
+    スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、オプションの `--sku Standard_ZRS` パラメーターを含める必要があります。 [Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones) のリストは、ここで確認できます。
     
 1. [az snapshot list](/cli/azure/snapshot#az_snapshot_list) を使用して、スナップショットが存在することを確認します。
     

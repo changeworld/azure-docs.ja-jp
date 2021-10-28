@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 48d8747883bfb3d47368d96cc2d4e52d07c599d9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 927711935c6aaea56ca2e2a26d38c5d619b7320c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715466"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288251"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -38,7 +38,7 @@ ms.locfileid: "129715466"
 * **レシートの画像** の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)を使用できます。
 * **名刺の画像** の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)を使用できます。
 * **請求書の画像** の URL。 このクイックスタートでは、[サンプル ドキュメント](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)を使用できます。
-* **身分証明書の画像** の URL。 [サンプル画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)を使用できます。
+* **身分証明書の画像** の URL。 [サンプル画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png)を使用できます。
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
@@ -218,7 +218,7 @@ JSON コンテンツを含む `200 (success)` 応答が返されます。
 
 ## <a name="analyze-receipts"></a>領収書を分析する
 
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。 レシートの分析を開始するには、下の cURL コマンドを使用して **[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipt.md)を参照してください。 レシートの分析を開始するには、下の cURL コマンドを使用して **[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your receipt URL}` を、レシートの画像の URL アドレスに置き換えます。
@@ -597,7 +597,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 
 ## <a name="analyze-business-cards"></a>名刺を分析する
 
-このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 名刺の分析を開始するには、下の cURL コマンドを使用して **[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-card.md)を参照してください。 名刺の分析を開始するには、下の cURL コマンドを使用して **[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your business card URL}` を、レシートの画像の URL アドレスに置き換えます。
@@ -760,7 +760,7 @@ JSON 出力で `200 (Success)` 応答を受信します。
 
 ## <a name="analyze-invoices"></a>請求書を分析する
 
-Form Recognizer を使用して、指定された請求書ドキュメントからフィールド テキストとセマンティック値を抽出できます。  請求書の分析を開始するには、下の cURL コマンドを使用します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 請求書の分析を開始するには、下の cURL コマンドを使用して **[Analyze Invoice](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+Form Recognizer を使用して、指定された請求書ドキュメントからフィールド テキストとセマンティック値を抽出できます。  請求書の分析を開始するには、下の cURL コマンドを使用します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoice.md)を参照してください。 請求書の分析を開始するには、下の cURL コマンドを使用して **[Analyze Invoice](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your invoice URL}` を、請求書ドキュメントの URL アドレスで置き換えます。
@@ -970,7 +970,7 @@ JSON 出力で `200 (Success)` 応答を受信します。
 
 ## <a name="analyze-identity-id-documents"></a>身分証明書を分析する
 
-身分証明書の分析を開始するには、下の cURL コマンドを使用します。 身分証明書の分析の詳細については、[身分証明書の概念ガイド](../../concept-identification-cards.md)を参照してください。 身分証明書の分析を開始するには、以下の cURL コマンドを使用して 「 **[身分証明書の分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** 」の API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+身分証明書の分析を開始するには、下の cURL コマンドを使用します。 身分証明書の分析の詳細については、[身分証明書の概念ガイド](../../concept-id-document.md)を参照してください。 身分証明書の分析を開始するには、以下の cURL コマンドを使用して 「 **[身分証明書の分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** 」の API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your ID document URL}` を、レシートの画像の URL アドレスに置き換えます。
@@ -1017,7 +1017,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 
 サンプルの身分証明書とそれに対応する JSON 出力を以下に示します
 
-* :::image type="content" source="https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg" alt-text="サンプルの運転免許証":::
+* :::image type="content" source="https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png" alt-text="サンプルの運転免許証":::
 
 #### <a name="response-body"></a>応答本文
 
@@ -1576,4 +1576,3 @@ curl -v -X DELETE "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
-

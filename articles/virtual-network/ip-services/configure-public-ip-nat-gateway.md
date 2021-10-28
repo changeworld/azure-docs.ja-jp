@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 2fd41f3459469474c100657747c4873ee99dc057
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: b87947aa265e5a92abf033fffd28ab3424785bb5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367790"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217394"
 ---
 # <a name="manage-a-public-ip-address-with-a-nat-gateway"></a>NAT ゲートウェイを使用してパブリック IP アドレスを管理する
 
@@ -31,9 +31,9 @@ NAT ゲートウェイに関連付けられている現在のパブリック IP 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md) に関するページを参照してください。
+- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](./create-public-ip-portal.md) に関するページを参照してください。
     - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1** および **myStandardPublicIP-2** という名前を付けます。
-- サブスクリプション内のパブリック IP プレフィックス。 パブリック IP プレフィックスの作成の詳細については、「[Azure portal を使用してパブリック IP アドレス プレフィックスを作成する](../../virtual-network/create-public-ip-prefix-portal.md)」を参照してください。
+- サブスクリプション内のパブリック IP プレフィックス。 パブリック IP プレフィックスの作成の詳細については、「[Azure portal を使用してパブリック IP アドレス プレフィックスを作成する](./create-public-ip-prefix-portal.md)」を参照してください。
     - この記事の例の目的のため、新しいパブリック IP プレフィックスに **myPublicIPPrefixNAT** という名前を付けます。
 
 ## <a name="create-nat-gateway-existing-public-ip"></a>NAT ゲートウェイの既存のパブリック IP を作成する
@@ -149,4 +149,4 @@ IP を変更するには、以前に作成した新しいパブリック IP ア�
 この記事では、NAT ゲートウェイを作成し、既存のパブリック IP を使用する方法について説明しました。 NAT ゲートウェイの送信 IP 構成の IP アドレスを置き換えました。 最後に、パブリック IP プレフィックスを使用するように送信 IP 構成を変更しました。
 
 - Azure Virtual Network NAT の詳細については、「[Azure Virtual Network NAT とは](../nat-gateway/nat-overview.md)」を参照してください。
-- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。

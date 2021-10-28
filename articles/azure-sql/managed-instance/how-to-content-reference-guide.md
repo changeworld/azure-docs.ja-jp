@@ -11,12 +11,12 @@ ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: dafe702121934a1267f01a861932dc49361e5258
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 2b64353da7de0b7f7d29502695c9d7ea22d6a19f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688550"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244682"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "114688550"
 - [新しい VNet とサブネットを作成する](virtual-network-subnet-create-arm-template.md): [ネットワーク要件](connectivity-architecture-overview.md#network-requirements)に従って、仮想ネットワークとサブネットを構成します。 
 - [既存の VNet とサブネットを構成する](vnet-existing-add-subnet.md): ネットワーク要件を確認し、SQL Managed Instance をデプロイする既存の仮想ネットワークとサブネットを構成します。 
 - [カスタム DNS を構成する](custom-dns-configure.md): データベース メール プロファイルのリンク サーバー経由で SQL Managed Instance からカスタム ドメインにアクセスする権限を外部リソースに付与するようにカスタム DNS を構成します。 
-- [ネットワーク構成を同期する](azure-app-sync-network-configuration.md): [ご利用のアプリを Azure 仮想ネットワークに統合](../../app-service/web-sites-integrate-with-vnet.md)してから接続を確立できなくなった場合に、ネットワーク構成計画を更新します。
+- [ネットワーク構成を同期する](azure-app-sync-network-configuration.md): [ご利用のアプリを Azure 仮想ネットワークに統合](../../app-service/overview-vnet-integration.md)してから接続を確立できなくなった場合に、ネットワーク構成計画を更新します。
 - [管理エンドポイント IP アドレスを検索する](management-endpoint-find-ip-address.md): SQL Managed Instance が管理目的で使用するパブリック エンドポイントを特定します。 
 - [組み込みのファイアウォール保護を確認する](management-endpoint-verify-built-in-firewall.md): 必要なポート上でのみ SQL Managed Instance によってトラフィックが許可されること、およびその他の組み込みのファイアウォール規則を確認します。 
 - [アプリケーションを接続する](connect-application-instance.md): アプリケーションを SQL Managed Instance に接続するさまざまなパターンについて説明します。

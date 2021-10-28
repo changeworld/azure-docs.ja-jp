@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8139d6c6309bf971ed9a955f5ef02f0c674b152b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c700ca1bdd1e596d3c393f1a857adba81116b576
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367670"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248984"
 ---
 # <a name="manage-a-public-ip-address-with-an-azure-application-gateway"></a>Azure Application Gateway を使用してパブリック IP アドレスを管理する
 
@@ -27,7 +27,7 @@ Application Gateway のフロントエンドは、プライベート IP アド�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md) に関するページを参照してください。
+- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](./create-public-ip-portal.md) に関するページを参照してください。
     - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1** および **myStandardPublicIP-2** という名前を付けます。
 
 ## <a name="create-application-gateway-existing-public-ip"></a>Application Gateway の既存のパブリック IP を作成する
@@ -118,4 +118,4 @@ Application Gateway では、作成後のパブリック IP アドレスの変�
 この記事では、Application Gateway を作成し、既存のパブリック IP を使用する方法について説明しました。 
 
 - Azure Virtual Network NAT の詳細については、[Azure Virtual Network NAT の概要](../nat-gateway/nat-overview.md)ページを参照してください。
-- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)」を参照してください。
+- Azure のパブリック IP アドレスの詳細については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。

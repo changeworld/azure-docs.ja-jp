@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0e925e520b5136750dc7ef9151d7e5741176525c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7cee43e911c2713b13f7e8e729a00b4c2379ce22
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595619"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251093"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメール アドレスを使用して Azure AD にサインインする (プレビュー)
 
@@ -64,7 +64,6 @@ ms.locfileid: "128595619"
     * [ハイブリッド Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)
     * [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)
     * [Azure AD 登録済みデバイス](../devices/concept-azure-ad-register.md)
-    * [シームレス SSO](../hybrid/how-to-connect-sso.md)
     * [リソース所有者のパスワード資格情報 (ROPC) を使用したアプリケーション](../develop/v2-oauth-ropc.md)
     * POP3 や SMTP などのレガシ認証を使用したアプリケーション
     * Skype for Business

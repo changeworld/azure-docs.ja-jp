@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2021
 ms.author: depadia
-ms.openlocfilehash: 7ece73f467e2dc148e79512c7dd1a6fcc19cf270
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b4bdebe8ce06ba402df9d798e346a43dfefd89a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072634"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261407"
 ---
 # <a name="sap-bw-nls-implementation-guide-with-sap-iq-on-azure"></a>Azure 上で SAP IQ を使用した SAP BW NLS の実装ガイド
 
@@ -204,7 +204,7 @@ SAP IQ のバイナリとデータベース ファイルが Azure 共有ディ�
   
 DR サイト上にスタンドアロンの SAP IQ が必要な場合は、[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用してプライマリの SAP IQ 仮想マシンをセカンダリ リージョンにレプリケートできます。 これにより、サーバーと、ローカルに接続されているすべてのマネージド ディスクがセカンダリ リージョンにレプリケートされますが、Azure 共有ディスクまたはネットワーク ドライブ (Azure NetApp Files など) はレプリケートされません。 
   
-Azure 共有ディスクまたはネットワーク ドライブのデータをコピーする場合は、任意のファイルベースのコピー ツールを使用して、Azure リージョン間でデータをレプリケートできます。 Azure NetApp Files のボリュームを別のリージョンにコピーする方法について詳しくは、[Azure NetApp Files についての FAQ](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region) に関するページをご覧ください。
+Azure 共有ディスクまたはネットワーク ドライブのデータをコピーする場合は、任意のファイルベースのコピー ツールを使用して、Azure リージョン間でデータをレプリケートできます。 Azure NetApp Files のボリュームを別のリージョンにコピーする方法について詳しくは、[Azure NetApp Files についての FAQ](../../../azure-netapp-files/faq-data-migration-protection.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

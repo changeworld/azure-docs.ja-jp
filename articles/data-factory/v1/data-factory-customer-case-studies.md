@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 79b03705f82902b465a643d6722c25e130ca12e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: f88687c7d2107f146534c5ccdb64388b16504656
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128668749"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242758"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - お客様導入事例
 Data Factory は、データの移動や変換を自動化するクラウド ベースの情報管理サービスです。 さまざまな業種のお客様が、Data Factory をはじめとする Azure のサービスを利用して分析パイプラインを構築し、ビジネス上の問題を解決しています。  Data Factory を使用する方法と理由について、お客様の生の声をご覧ください。

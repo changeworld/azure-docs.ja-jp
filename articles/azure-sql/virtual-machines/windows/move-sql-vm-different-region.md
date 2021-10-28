@@ -15,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d35912c6edafed201a037c8c865746fb299cb1d7
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 00b2b42090e88d375f12daccdae37ad0b2ba28b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163786"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219377"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 内の別のリージョンに SQL Server VM を移動する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 - 実際の環境に適した、最も一般的に使用されるネットワーク リソースをソース VM の構成に基づいて作成する場合は、次のドキュメントを参照してください。 
     - [ネットワーク セキュリティ グループ](../../../virtual-network/tutorial-filter-network-traffic.md) 
     - [Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
-    - [パブリック IP アドレス](../../../virtual-network/virtual-network-public-ip-address.md)
+    - [パブリック IP アドレス](../../../virtual-network/ip-services/virtual-network-public-ip-address.md)
     - その他のネットワーク コンポーネントについては、[ネットワークに関するドキュメント](../../../virtual-network/virtual-networks-overview.md)を参照してください。
 - ターゲット リージョンへの最終的な移動を行う前に構成をテストしたい場合は、ターゲット リージョンに手動で非運用ネットワークを作成します。 運用環境のネットワークへの影響が最小限で済むため、この手順をお勧めします。 
 

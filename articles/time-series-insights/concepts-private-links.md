@@ -9,16 +9,16 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/01/2021
-ms.openlocfilehash: 58532e07b80e0084666e6847d5bd62313a51ee76
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 7005028eb61c53788e7283b9a0af5878b3e3961b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207775"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214797"
 ---
 # <a name="private-network-access-with-azure-private-link-preview"></a>Azure Private Link を使用したプライベート ネットワーク アクセス (プレビュー) 
 
-[Azure Private Link](/azure/private-link/private-link-overview)  は、 [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) 内のプライベート エンドポイント経由で Azure リソース ( [Azure Event Hubs](/azure/event-hubs/event-hubs-about)、 [Azure Storage](/azure/storage/common/storage-introduction)、 [Azure Cosmos DB](/azure/cosmos-db/introduction) など) や Azure でホストされている顧客とパートナーのサービスにアクセスできるようにするサービスです。 
+[Azure Private Link](../private-link/private-link-overview.md)  は、 [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) 内のプライベート エンドポイント経由で Azure リソース ( [Azure Event Hubs](../event-hubs/event-hubs-about.md)、 [Azure Storage](../storage/common/storage-introduction.md)、 [Azure Cosmos DB](../cosmos-db/introduction.md) など) や Azure でホストされている顧客とパートナーのサービスにアクセスできるようにするサービスです。 
 
 同様に、Time Series Insights インスタンス用のプライベート エンドポイントを使用すると、仮想ネットワーク内に配置されたクライアントは Private Link 経由でこのインスタンスに安全にアクセスできます。 
 
@@ -36,4 +36,4 @@ ms.locfileid: "129207775"
 
 ## <a name="next-steps"></a>次のステップ
 
-* 詳細については、[TSI 環境用にプライベート エンドポイントを構成する方法](./how-to-private-links.md)に関するページを参照してください。 
+* 詳細については、[TSI 環境用にプライベート エンドポイントを構成する方法](./how-to-private-links.md)に関するページを参照してください。

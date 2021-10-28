@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 04/26/2021
+ms.date: 10/19/2021
 ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 9f8a3fc284fc04b6e9808ca90eb05ba106fa55d3
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 305ad833ea34ef51ca1ed0e636dd442238d7a654
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428567"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238249"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>チュートリアル: Jupyter Notebook の例を使用して画像分類モデルをトレーニングする 
 

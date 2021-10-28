@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 06/30/2021
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: be335dc70290c61f35608b8adf55483bf2a61ca8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c8b54da4b46847ae0522d8eae62cc5599ae71be
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449454"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250352"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM で SQL データベースをバックアップおよび復元する
 
@@ -166,9 +166,8 @@ $testVault.ID
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
-$UtcTime = Get-Date -Date "2019-03-20 01:30:00Z"
-$UtcTime = $UtcTime.ToUniversalTime()
-$schpol.ScheduleRunTimes[0] = $UtcTime
+$UtcTime = (Get-Date -Date "2019-03-20 01:30:00Z").ToUniversalTime()
+$schPol.FullBackupSchedulePolicy.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]

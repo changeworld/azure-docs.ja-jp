@@ -3,15 +3,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: databox
 ms.topic: include
-ms.date: 09/08/2021
+ms.date: 10/21/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 6f784c075d24fe26b7ec1ea9d5921dfb460e5298
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d5b7294a54db4e89e80ad577a87fda74c66b3695
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743334"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287942"
 ---
 デバイスを注文するには、Azure portal で次の手順を実行します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "124743334"
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択します。 次に、 **[次へ: データの格納先 >]** を選択します。
 
-    |設定  |値  |
+    |設定  |[値]  |
     |---------|---------|
     |サブスクリプション      | サブスクリプションは、前の選択に基づいて自動的に設定されます。|
     |Resource group    | 前に選択したリソース グループ。 |
@@ -76,7 +76,7 @@ ms.locfileid: "124743334"
 
     ![格納先を [マネージド ディスク] とした Data Box 注文の [データの格納先] タブのスクリーンショット。 [データの格納先] タブ、[マネージド ディスク]、[次へ: セキュリティ] ボタンが強調表示されています。](media/data-box-order-portal/data-box-import-07.png)
 
-    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](../articles/databox/data-box-deploy-picked-up.md#verify-data-upload-to-azure-8)」を参照してください。
+    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](../articles/databox/data-box-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
 
    > [!NOTE]
    > ページ BLOB は、正常にマネージド ディスクに変換されなかった場合、ストレージ アカウントに残るため、ストレージの使用料が課金されます。

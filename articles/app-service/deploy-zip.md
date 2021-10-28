@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/13/2021
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a73d03d97e2b5d5d743b1db3980c8e587a0f454b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: be58de78ba82c3c5e99475b00649e2a7ebfdf5e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225480"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216941"
 ---
 # <a name="deploy-files-to-app-service"></a>App Service にファイルをデプロイする
 
@@ -93,7 +93,7 @@ curl -X POST -u <username> https://<app-name>.scm.azurewebsites.net/api/publish 
 
 デプロイの進行中、右上隅のアイコンにその進行状況がパーセンテージで表示されます。 また、ページのエクスプローラー領域の下に、操作に関する詳細なメッセージも表示されます。 完了すると、最後のデプロイ メッセージに "`Deployment successful`" と表示されます。
 
-現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](/azure/app-service/faq-app-service-linux#continuous-integration-and-deployment) の使用を検討してください。
+現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](./faq-app-service-linux.yml) の使用を検討してください。
 
 -----
 

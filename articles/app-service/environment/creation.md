@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fdf74a88a34f9d497bc23b9fed00c8fa55b6875a
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ea80e890b7f4514aae441aa90c51d46ca3648294
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236088"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248547"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment を作成する
 > [!NOTE]
@@ -93,7 +93,7 @@ ASE は、通常、マルチテナント ハイパーバイザーでプロビジ
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: ./integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
 [AZoverview]: ../../availability-zones/az-overview.md

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ac75e3cf3ae08d9b7d49077cf54d05fdbabdbad
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2a916c83cc3249b304648d090f739e66bb6b7dd3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039051"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245590"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
@@ -113,10 +113,10 @@ VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用する�
 はい。 VNet で使用された CIDR ブロックを追加、削除、変更することができます。
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>VNet でサービスを実行している場合、インターネットに接続できますか。
-はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
+はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](./ip-services/virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet は IPv6 をサポートするでしょうか。
-はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure Virtual Network の IPv6 の概要](./ipv6-overview.md)」をご覧ください。
+はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure Virtual Network の IPv6 の概要](./ip-services/ipv6-overview.md)」をご覧ください。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet は複数のリージョンで広がるでしょうか。
 いいえ。 VNet は、1 つのリージョンに制限されます。 ただし、仮想ネットワークは複数の可用性ゾーンにまたがります。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 仮想ネットワーク ピアリングを使用して、別々のリージョンにある仮想ネットワークを接続できます。 詳細については、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)に関する記事をご覧ください。
@@ -171,7 +171,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 一概には言えません。 VM が Resource Manager を使用してデプロイされた場合は、静的または動的な割り当て方法のどちらを使用して割り当てられていても、変更されることはありません。 VM がクラシック デプロイ モデルを使用してデプロイされた場合は、VM が停止 (割り当て解除) 状態になった後で起動された場合に、動的 IP アドレスが変更される可能性があります。 このアドレスは、いずれかのデプロイメント モデルを使用してデプロイされた VM が削除されると、その VM から解放されます。
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>VM オペレーティング システム内の NIC に手動で IP アドレスを割り当てることはできますか。
-はい。ただし、必要な場合 (仮想マシンに複数の IP アドレスを割り当てる場合など) 以外はお勧めしません。 詳細については、[仮想マシンに複数の IP アドレスを追加する方法](virtual-network-multiple-ip-addresses-portal.md#os-config)に関する記事をご覧ください。 VM にアタッチされた Azure NIC に割り当てられている IP アドレスが変更され、VM オペレーティング システム内の IP アドレスと異なる場合は、VM への接続が失われます。
+はい。ただし、必要な場合 (仮想マシンに複数の IP アドレスを割り当てる場合など) 以外はお勧めしません。 詳細については、[仮想マシンに複数の IP アドレスを追加する方法](./ip-services/virtual-network-multiple-ip-addresses-portal.md#os-config)に関する記事をご覧ください。 VM にアタッチされた Azure NIC に割り当てられている IP アドレスが変更され、VM オペレーティング システム内の IP アドレスと異なる場合は、VM への接続が失われます。
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>クラウド サービス デプロイ スロットを停止した場合や、オペレーティング システム内から VM をシャットダウンした場合、IP アドレスはどうなりますか。
 Nothing。 IP アドレス (パブリック VIP、パブリック、プライベート) は、クラウド サービス デプロイ スロットまたは VM に割り当てられたままとなります。
@@ -195,7 +195,7 @@ Nothing。 IP アドレス (パブリック VIP、パブリック、プライベ
 
 * [App Service のネットワーク機能](../app-service/networking-features.md)
 * [App Service 環境で Web Apps を作成する](../app-service/environment/using.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [アプリを Azure Virtual Network に統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [アプリを Azure Virtual Network に統合する](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ロールと worker ロール (PaaS) を持つ Cloud Services を VNet にデプロイすることはできますか。
@@ -426,8 +426,4 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 |Azure Data Lake Store V1|  100|
  
 >[!NOTE]
-> 制限は、Azure サービスの判断で変更される可能性があります。 サービスについて詳しくは、それぞれのサービス ドキュメントをご覧ください。 
-
-
-
-
+> 制限は、Azure サービスの判断で変更される可能性があります。 サービスについて詳しくは、それぞれのサービス ドキュメントをご覧ください。

@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 5985c653d02a041e648f306847b5bcfd93783302
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: 12ea58dbfcf389441758eaa3371c8a3ce9f144c6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615227"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223578"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]

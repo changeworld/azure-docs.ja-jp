@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.custom: template-how-to
-ms.openlocfilehash: dd29aea9d2522b772c10f56db86a1563cd8a0210
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a07f18f0bb340b095f8b3d2b3392824e6a7bbf1d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367747"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251131"
 ---
 # <a name="migrate-a-classic-reserved-ip-address-to-a-public-ip-address"></a>従来の予約済み IP アドレスをパブリック IP アドレスに移行する
 
@@ -76,5 +76,4 @@ azure network reserved-ip commit-migration myReservedIP
 Azure のパブリック IP アドレスの詳細については、次を参照してください。
 
 - [Azure でのパブリック IP アドレス](public-ip-addresses.md)
-- [パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md)
-
+- [パブリック IP の作成 - Azure portal](./create-public-ip-portal.md)

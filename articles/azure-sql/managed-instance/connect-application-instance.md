@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
 ms.date: 08/20/2021
-ms.openlocfilehash: 3acd77d986d22af08ac7042da751a6aa8c7fc24b
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: a1cb62bce41ce0003628ce4223fe06e6587317f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607581"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250502"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,9 +84,9 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 
 ## <a name="connect-azure-app-service"></a>Azure App Service の接続 
 
-Azure App Service によってホストされているアプリケーションを接続することもできます。 Azure App Service から仮想ネットワーク経由でアクセスするには、まずそのアプリケーションと SQL Managed Instance 仮想ネットワーク間を接続する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。 仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。 
+Azure App Service によってホストされているアプリケーションを接続することもできます。 Azure App Service から仮想ネットワーク経由でアクセスするには、まずそのアプリケーションと SQL Managed Instance 仮想ネットワーク間を接続する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../../app-service/overview-vnet-integration.md)」を参照してください。 仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。 
 
-仮想ネットワーク経由の Azure App Service アクセスのトラブルシューティングについては、[仮想ネットワークとアプリケーションのトラブルシューティング](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting)に関するセクションを参照してください。 接続を確立できない場合は、[ネットワーク構成の同期](azure-app-sync-network-configuration.md)を試してください。
+仮想ネットワーク経由の Azure App Service アクセスのトラブルシューティングについては、[仮想ネットワークとアプリケーションのトラブルシューティング](../../app-service/overview-vnet-integration.md#troubleshooting)に関するセクションを参照してください。 接続を確立できない場合は、[ネットワーク構成の同期](azure-app-sync-network-configuration.md)を試してください。
 
 Azure App Service を SQL Managed Instance に接続する場合の特殊なケースとして、SQL Managed Instance 仮想ネットワークにピアリングされたネットワークに Azure App Service を統合しているケースが考えられます。 その場合は、次の構成をセットアップする必要があります。
 
@@ -143,7 +143,7 @@ Azure App Service を SQL Managed Instance に接続する場合の特殊なケ�
 
 - 仮想ネットワーク ピアリングを使用している場合、[ゲートウェイ転送を許可し、リモート ゲートウェイを使用する方法](#connect-from-on-premises)に関する設定の手順に必ず従ってください。
 
-- 仮想ネットワーク ピアリングを使用して Azure App Service ホスト アプリケーションに接続していて、SQL Managed Instance 仮想ネットワークにパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョンでの仮想ネットワーク統合](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)」の手順に従います。
+- 仮想ネットワーク ピアリングを使用して Azure App Service ホスト アプリケーションに接続していて、SQL Managed Instance 仮想ネットワークにパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョンでの仮想ネットワーク統合](../../app-service/overview-vnet-integration.md#regional-vnet-integration)」の手順に従います。
 
 ## <a name="required-versions-of-drivers-and-tools"></a>ドライバーとツールの必要なバージョン
 

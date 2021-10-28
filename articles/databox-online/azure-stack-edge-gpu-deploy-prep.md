@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/06/2021
 ms.author: alkohli
-ms.openlocfilehash: b223d428daf1a7080478f4f80b6a997fb97cd7a0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d87c0221bc5d6bfc8aa4eb308417234bca9f7b14
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322600"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249953"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -71,7 +71,7 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
 - Azure Stack Edge Pro、IoT Hub、Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
     - Azure Stack Edge のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 
-    - また、`Microsoft.DataBoxEdge` および `MicrosoftKeyVault` リソース プロバイダーが登録されていることを確認する必要もあります。 どのような IoT Hub リソースを作成する場合でも、`Microsoft.Devices` プロバイダーを登録する必要があります。 
+    - また、`Microsoft.DataBoxEdge` および `Microsoft.KeyVault` リソース プロバイダーが登録されていることを確認する必要もあります。 どのような IoT Hub リソースを作成する場合でも、`Microsoft.Devices` プロバイダーを登録する必要があります。 
         - リソース プロバイダーを登録するには、Azure portal で、 **[ホーム] > [サブスクリプション] > お使いのサブスクリプション > [リソース プロバイダー]** と移動します。 
         - 特定のリソース プロバイダー (`Microsoft.DataBoxEdge` など) を検索し、そのリソース プロバイダーを登録します。 
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
@@ -128,7 +128,7 @@ Azure Stack Edge サービスを使用して Azure Stack Edge リソースを作
 
 2. **[Azure サービス]** で、 **[Azure Stack Edge]** を検索して選択します。 次に、 **[+ 作成]** を選択します。 
 
-3. **[Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\)** で、 **[Try Azure Edge Hardware Center]\(Azure Edge Hardware Center を試す\)** リンクを選択します。
+3. **[Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\)** で、 **[Try Azure Hardware Center]\(Azure Hardware Center を試す\)** リンクを選択します。
 
     ![[+ 作成] ボタンによって開かれた [Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\) 画面のスクリーンショット。 [Try Azure Edge Hardware Center]\(Azure Edge Hardware Center を試す\) リンクが強調表示されています。](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-1.png)
 
@@ -150,14 +150,14 @@ Azure Stack Edge サービスを使用して Azure Stack Edge リソースを作
 
 8. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
-    |設定  |値  |
+    |設定  |[値]  |
     |---------|---------|
     |サブスクリプション    |サブスクリプションは、前の選択に基づいて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 9. 次の **インスタンス情報** を入力または選択します。
 
-    |設定  |値  |
+    |設定  |[値]  |
     |---------|---------|
     |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|

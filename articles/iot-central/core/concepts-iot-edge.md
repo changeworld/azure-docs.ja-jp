@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 15d6da6b5fe458e34847469faf230222f20efb38
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: a8d57f2d9f17b0a20f029ed4849e244af308bb0f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273141"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246739"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -315,8 +315,8 @@ IoT Edge ランタイムを実行できる場所については、「[Azure IoT 
 
 次の環境に IoT Edge ランタイムをインストールすることもできます。
 
-* [Azure IoT Edge for Linux をインストールまたはアンインストールする](../../iot-edge/how-to-install-iot-edge.md)
-* [Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)](../../iot-edge/how-to-install-iot-edge-on-windows.md)
+* [Azure IoT Edge for Linux をインストールまたはアンインストールする](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
+* [Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)](../../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md)
 * [Azure の Ubuntu 仮想マシン上で Azure IoT Edge を実行する](../../iot-edge/how-to-install-iot-edge-ubuntuvm.md)
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge ゲートウェイ デバイス

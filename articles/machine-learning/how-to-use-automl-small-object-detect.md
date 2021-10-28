@@ -7,12 +7,12 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.date: 10/13/2021
-ms.openlocfilehash: 2fb5dfc77a15e1f9fcd5b90a058e2cc03f81b910
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7800399be259dddf2782c47696ce014442d8bf55
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007149"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234455"
 ---
 # <a name="train-a-small-object-detection-model-with-automl-preview"></a>AutoML を使用して小さなオブジェクト検出モデルをトレーニングする (プレビュー)
 
@@ -34,8 +34,6 @@ ms.locfileid: "130007149"
 * Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。
 
 * この記事では、[コンピューター ビジョン タスク用の自動機械学習の実験](how-to-auto-train-image-models.md)を構成する方法に関するある程度の知識を前提にしています。 
-
-[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 
 ## <a name="supported-models"></a>サポートされているモデル
 

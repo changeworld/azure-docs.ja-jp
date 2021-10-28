@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Video Analyzer を使�
 ms.topic: quickstart
 ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 6ffcd4be2a0abde81943025866931e5aa31b9277
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e461a0deaed66f533810fb13f604a2ae3757514f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748720"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219452"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>クイック スタート:モーションの検出とイベントの生成
 
@@ -127,4 +127,4 @@ ms.locfileid: "121748720"
 - 上級ユーザー向けのその他の課題を確認します。
 
   - RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで見つけることができます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-  - Azure では、Linux VM を使用するのではなく、AMD64 または x64 Linux デバイスを使用します。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11)に関するページの手順に従います。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md?preserve-view=true&view=iotedge-2020-11)」の手順に従って、デバイスを Azure IoT Hub に登録します。
+  - Azure では、Linux VM を使用するのではなく、AMD64 または x64 Linux デバイスを使用します。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](../../iot-edge/how-to-provision-single-device-linux-symmetric.md?preserve-view=true&view=iotedge-2020-11)に関するページの手順に従います。 次に、「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](../../iot-edge/quickstart-linux.md?preserve-view=true&view=iotedge-2020-11)」の手順に従って、デバイスを Azure IoT Hub に登録します。

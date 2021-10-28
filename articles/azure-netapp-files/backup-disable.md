@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 1254a9884063fce100152f370a434c55ec2ae207
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 1555a1c42f6365202787750f149b345ccd0cd55c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094925"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224145"
 ---
 # <a name="disable-backup-functionality-for-a-volume"></a>ボリュームのバックアップ機能を無効にする 
 
@@ -51,5 +51,5 @@ ms.locfileid: "129094925"
 * [バックアップを新しいボリュームに復元する](backup-restore-new-volume.md)
 * [ボリュームのバックアップを削除する](backup-delete.md)
 * [ボリュームのバックアップ メトリック](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Azure NetApp Files のバックアップに関する FAQ](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Azure NetApp Files のバックアップに関する FAQ](faq-backup.md)
 

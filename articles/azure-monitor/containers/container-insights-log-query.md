@@ -3,12 +3,12 @@ title: Container insights のログのクエリを実行する方法
 description: Container insights により、メトリックとログ データが収集されます。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 07ff7a65f6f4ed0865a45e92288caa362051fd20
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ff2ce2fa2e70400b4b591f4e8f3dbb50e3dc6415
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428022"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240131"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Container insights のログのクエリを実行する方法
 
@@ -78,7 +78,8 @@ Perf
 InsightsMetrics
 | where Name == "requests_count"
 | summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)
-| sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated
+| sort by TimeGenerated asc
+| project RequestsPerMinute = Val - prev(Val), TimeGenerated
 | render barchart 
 ```
 ### <a name="pods-by-name-and-namespace"></a>名前と名前空間別のポッド

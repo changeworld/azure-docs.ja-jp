@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dcc1b584956bb4cee2865cd264b91b389ace19e4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 848d3264dbc31d01a767871d1e4783c8d383841d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689330"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258698"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure 外部ロード バランサーを別のリージョンに移動する
 
@@ -132,7 +132,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     },
          ```
 
-         Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
+         Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
     * **パブリック IP の割り当て方法** と **アイドル タイムアウト** - **publicIPAllocationMethod** プロパティを **Dynamic** から **Static** または **Static** から **Dynamic** に変更することで、テンプレートのこれらのオプションの両方を変更できます。 アイドル タイムアウトは、**idleTimeoutInMinutes** プロパティを目的の量に変えることで変更できます。  既定値は **4** です。
 
@@ -159,7 +159,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                 }            
          ```
 
-        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/virtual-network-public-ip-address.md)」を参照してください。
+        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](../virtual-network/ip-services/virtual-network-public-ip-address.md)」を参照してください。
 
 
 9. **\<resource-group-name>.json** ファイルを保存します。

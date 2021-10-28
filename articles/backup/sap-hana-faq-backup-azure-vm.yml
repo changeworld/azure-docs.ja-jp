@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 09/27/2021
-  ms.openlocfilehash: 2b1a7e39c1cf4a7e6c5b1da6f748c7e143608104
-  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+  ms.openlocfilehash: fd2fee68735686a15720c87bc4fb1f3ce9f410b5
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/27/2021
-  ms.locfileid: "129080700"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130244244"
 title: よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 summary: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 sections:
@@ -35,7 +35,7 @@ sections:
       現在、成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ生成されます。 Azure portal を使用してバックアップ アラートを表示する[方法を参照してください](backup-azure-monitoring-built-in-monitor.md)。
   - question: >
       バックアップ (スケジュールまたはオンデマンド) が正常に行われるかどうかを確認するにはどうすればよいですか?
-    answer: "次のいずれかの場所から、バックアップ (スケジュールまたはオンデマンド) の状態を確認できます。\n\n1. **バックアップ ジョブ**: Azure Backup では、手動でトリガーされたすべてのジョブが Azure portal の [バックアップ ジョブ] セクションに表示されます。  <br><br>   Azure portal に表示されるジョブには、データベースの検出と登録操作、バックアップと復元操作などがあります。 スケジュールされたジョブ (ログ バックアップを含む) はこのセクションに表示されません。 また、SAP HANA ネイティブ クライアント (Studio、Cockpit、または DBA Cockpit) から手動でトリガーされたバックアップも、ここには表示されません。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"Azure portal の [バックアップ ジョブ] セクションの手動でトリガーされたジョブを示すスクリーンショット。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"データベースの検出と登録、およびバックアップと復元の操作などのジョブを示すスクリーンショット。\":::\n \n1. **バックアップ アラート**: アラートは、SAP HANA データベースのバックアップを監視するために役立ちます。 これらを使用すると、必要なイベントに集中できるため、バックアップによって生成される多数のイベントを頻繁にチェックする手間を省くことができます。 詳細については、「[バックアップ アラートを表示する](/azure/backup/sap-hana-db-manage#view-backup-alerts)」を参照してください。\n\n1. **バックアップ レポート**: バックアップ ジョブの状態を表示するためのもう 1 つの方法がレポートです。 レポートは、次のようになります。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"Azure portal でのレポートの一種を示すスクリーンショット。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"Azure portal でのもう一種のレポートを示すスクリーンショット。\":::\n\n   [Azure Backup のレポートを構成する方法](/azure/backup/configure-reports)について学習してください。\n\n1. **SAP HANA ネイティブ クライアント**: SAP HANA のユーザーの場合は、最も一般的な HANA クライアントの 1 つである HANA Studio を使用することもできます。 このクライアントで **バックアップの状態** を確認するには、**[Backup Console]\\(バックアップ コンソール\\)** -> **[Backup Catalog]\\(バックアップ カタログ\\)** の順に移動します。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"SAP HANA ネイティブ クライアントでのレポートを示すスクリーンショット。\":::\n"
+    answer: "次のいずれかの場所から、バックアップ (スケジュールまたはオンデマンド) の状態を確認できます。\n\n1. **バックアップ ジョブ**: Azure Backup では、手動でトリガーされたすべてのジョブが Azure portal の [バックアップ ジョブ] セクションに表示されます。  <br><br>   Azure portal に表示されるジョブには、データベースの検出と登録操作、バックアップと復元操作などがあります。 スケジュールされたジョブ (ログ バックアップを含む) はこのセクションに表示されません。 また、SAP HANA ネイティブ クライアント (Studio、Cockpit、または DBA Cockpit) から手動でトリガーされたバックアップも、ここには表示されません。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"Azure portal の [バックアップ ジョブ] セクションの手動でトリガーされたジョブを示すスクリーンショット。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"データベースの検出と登録、およびバックアップと復元の操作などのジョブを示すスクリーンショット。\":::\n \n1. **バックアップ アラート**: アラートは、SAP HANA データベースのバックアップを監視するために役立ちます。 これらを使用すると、必要なイベントに集中できるため、バックアップによって生成される多数のイベントを頻繁にチェックする手間を省くことができます。 詳細については、「[バックアップ アラートを表示する](./sap-hana-db-manage.md#view-backup-alerts)」を参照してください。\n\n1. **バックアップ レポート**: バックアップ ジョブの状態を表示するためのもう 1 つの方法がレポートです。 レポートは、次のようになります。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"Azure portal でのレポートの一種を示すスクリーンショット。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"Azure portal でのもう一種のレポートを示すスクリーンショット。\":::\n\n   [Azure Backup のレポートを構成する方法](./configure-reports.md)について学習してください。\n\n1. **SAP HANA ネイティブ クライアント**: SAP HANA のユーザーの場合は、最も一般的な HANA クライアントの 1 つである HANA Studio を使用することもできます。 このクライアントで **バックアップの状態** を確認するには、**[Backup Console]\\(バックアップ コンソール\\)** -> **[Backup Catalog]\\(バックアップ カタログ\\)** の順に移動します。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"SAP HANA ネイティブ クライアントでのレポートを示すスクリーンショット。\":::\n"
   - question: >
       スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
     answer: >
@@ -172,16 +172,16 @@ sections:
   - question: >
       Azure Backup で提供されるバックアップと復元のスループット パフォーマンスはどのくらいですか? また、この最大スループットになるように HANA システムを設定するにはどうすればよいですか?
     answer: >
-      Azure Backup によって HANA ワークロードに対して提供される[バックアップと復元のスループット パフォーマンス](/azure/backup/tutorial-backup-sap-hana-db#understanding-backup-and-restore-throughput-performance)に関するセクションを参照してください。 <br><br> 向上したパフォーマンスを活用するように HANA システムを設定するには、以下のリソースを使用してください。
+      Azure Backup によって HANA ワークロードに対して提供される[バックアップと復元のスループット パフォーマンス](./tutorial-backup-sap-hana-db.md#understanding-backup-and-restore-throughput-performance)に関するセクションを参照してください。 <br><br> 向上したパフォーマンスを活用するように HANA システムを設定するには、以下のリソースを使用してください。
 
-       - [Azure IaaS VM 用のディスクの種類の選択 - マネージド ディスク](/azure/virtual-machines/disks-types#premium-ssd)
-       - [Azure マネージド ディスクのパフォーマンス レベル](/azure/virtual-machines/disks-change-performance)
-       - [M シリーズ](/azure/virtual-machines/m-series)
-       - [SAP HANA Azure 仮想マシンのストレージ構成](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
+       - [Azure IaaS VM 用のディスクの種類の選択 - マネージド ディスク](../virtual-machines/disks-types.md)
+       - [Azure マネージド ディスクのパフォーマンス レベル](../virtual-machines/disks-change-performance.md)
+       - [M シリーズ](../virtual-machines/m-series.md)
+       - [SAP HANA Azure 仮想マシンのストレージ構成](../virtual-machines/workloads/sap/hana-vm-operations-storage.md#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
 
       >[!Note]
 
-      >バックアップのスループット パフォーマンスを制限することもできます。 [詳細については、こちらを参照してください](/azure/backup/tutorial-backup-sap-hana-db#limiting-backup-throughput-performance)。
+      >バックアップのスループット パフォーマンスを制限することもできます。 [詳細については、こちらを参照してください](./tutorial-backup-sap-hana-db.md#limiting-backup-throughput-performance)。
 - name: 復元
   questions:
   - question: >

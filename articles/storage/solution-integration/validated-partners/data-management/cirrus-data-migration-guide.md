@@ -8,12 +8,12 @@ ms.date: 09/06/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 69ee8dd0f7acf0959ccbfb47ebde01e6d17cfe21
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b9e56df2b4643fabdbdcf0d00baa6fe63c0d9e95
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699181"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263232"
 ---
 # <a name="migrate-your-block-data-to-azure-with-cirrus-migrate-cloud"></a>Cirrus Migrate Cloud を使用してブロック データを Azure に移行する
 
@@ -42,7 +42,7 @@ Cirrus Migrate Cloud は複数のコンポーネントから構成されてい�
 
 ## <a name="implementation-guide"></a>実装ガイド
 
-ユーザーは Azure のベスト プラクティスに従って新しい仮想マシンを実装する必要があります。 このプロセスについて詳しくは、[クイック スタート ガイド](/azure/virtual-machines/windows/quick-create-portal)を参照してください。
+ユーザーは Azure のベスト プラクティスに従って新しい仮想マシンを実装する必要があります。 このプロセスについて詳しくは、[クイック スタート ガイド](../../../../virtual-machines/windows/quick-create-portal.md)を参照してください。
 
 移行を始める前に、次の前提条件を満たしておく必要があります。
 
@@ -159,8 +159,8 @@ cMotion™ のトリガー後、移行先のデバイスにすべての IO が�
 CMC ポータルの **[Help Center]\(ヘルプ センター\)** タブを選択して Cirrus Data Solutions サポートに連絡するか、[CDSI Web サイト](https://support.cirrusdata.cloud/en/)にアクセスしてサポート リクエストを送信します。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure 仮想マシン](/azure/virtual-machines/windows/overview)の詳細情報
-- [Azure Managed Disks](/azure/virtual-machines/managed-disks-overview) の詳細情報
-- [ストレージ移行](/azure/storage/common/storage-migration-overview)の詳細情報
+- [Azure 仮想マシン](../../../../virtual-machines/windows/overview.md)の詳細情報
+- [Azure Managed Disks](../../../../virtual-machines/managed-disks-overview.md) の詳細情報
+- [ストレージ移行](../../../common/storage-migration-overview.md)の詳細情報
 - [Cirrus Data の Web サイト](https://www.cirrusdata.com/)
 - [cMotion](https://support.cirrusdata.cloud/en/category/howtos-1un623w/) のステップバイステップ ガイド

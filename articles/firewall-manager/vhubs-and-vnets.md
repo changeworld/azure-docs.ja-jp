@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 36c43448abba82ef084a16e13e70700ddf12bdc2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a7aebbe0b454c1db49e001bb4caaab96c2903090
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042015"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251644"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Firewall Manager のアーキテクチャのオプション
 
@@ -38,7 +38,7 @@ Azure Firewall Manager は、次の 2 種類のネットワーク アーキテ�
 |**SDWAN を使用したブランチ接続の自動化**      |サポートされていません|サポートされています|
 |**リージョンごとのハブ**     |リージョンごとに複数の仮想ネットワーク|リージョンごとに複数の仮想ハブ|
 |**Azure Firewall – 複数のパブリック IP アドレス**      |お客様側で準備|自動生成|
-|**Azure Firewall Availability Zones**     |サポートされています|まだ使用できません|
+|**Azure Firewall Availability Zones**     |サポートされています|サポートされています|
 |**サードパーティのサービスとしてのセキュリティ パートナーによる高度なインターネット セキュリティ**     |お客様が自分で選択したパートナー サービスへの VPN 接続を確立して管理|セキュリティ パートナー プロバイダーのフローとパートナー管理のエクスペリエンスによって自動化|
 |**ハブにトラフィックをルーティングするための集中ルート管理**     |お客様が管理するユーザー定義ルート|BGP を使用してサポート|
 |**複数のセキュリティ プロバイダーのサポート**|サードパーティのファイアウォールへの強制トンネリングを手動で構成してサポート|2 つのセキュリティ プロバイダーの自動サポート:プライベート トラフィックのフィルタリング用の Azure Firewall とインターネット フィルタリング用のサードパーティ|

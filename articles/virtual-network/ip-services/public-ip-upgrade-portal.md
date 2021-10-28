@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f436cd2d113909a65b62891f9fbfb5965d06a981
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a40806f6328c513fe6a835ca3a81b46ad962b86d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367805"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224951"
 ---
 # <a name="upgrade-a-public-ip-address-using-the-azure-portal"></a>Azure portal を使用してパブリック IP アドレスをアップグレードする
 
@@ -24,7 +24,7 @@ Azure パブリック IP アドレスは Basic または Standard のいずれ�
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* サブスクリプション内の静的な Basic SKU のパブリック IP アドレス。 詳細については、[パブリック IP アドレスの作成 - Azure portal](../../virtual-network/create-public-ip-portal.md#create-a-basic-sku-public-ip-address) を参照してください。
+* サブスクリプション内の静的な Basic SKU のパブリック IP アドレス。 詳細については、[パブリック IP アドレスの作成 - Azure portal](./create-public-ip-portal.md#create-a-basic-sku-public-ip-address) を参照してください。
 
 ## <a name="upgrade-public-ip-address"></a>パブリック IP アドレスのアップグレード
 
@@ -73,5 +73,4 @@ Azure パブリック IP アドレスは Basic または Standard のいずれ�
 Azure のパブリック IP アドレスの詳細については、次を参照してください。
 
 - [Azure でのパブリック IP アドレス](public-ip-addresses.md)
-- [パブリック IP の作成 - Azure portal](../../virtual-network/create-public-ip-portal.md)
-
+- [パブリック IP の作成 - Azure portal](./create-public-ip-portal.md)

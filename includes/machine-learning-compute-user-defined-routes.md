@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 08/26/2021
 ms.author: larryfr
-ms.openlocfilehash: 6ccdeea7b283ab4e4674e2a7959ead4553c43f2f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 5d9575afdad08bed279f2f9ea3f9a455d54338a5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130077954"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241871"
 ---
 Azure Machine Learning の __コンピューティング インスタンス__ (パブリック IP あり) または __コンピューティング クラスター__ を使用するときは、Azure Batch 管理サービスと Azure Machine Learning service からのインバウンド トラフィックを許可します。 パブリック IP (プレビュー) を持つコンピューティング インスタンスでは、このインバウンド通信は必要ありません。 このトラフィックを許可するネットワーク セキュリティ グループは自動的に動的に作成されますが、ファイアウォールがある場合は、ユーザー定義ルート (UDR) の作成も必要な場合があります。 このトラフィック用の UDR を作成する場合は、**IP アドレス** または **サービス タグ** を使用してトラフィックをルーティングできます。
 
@@ -49,4 +49,4 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 ---
 
-UDR の構成については、[ルーティング テーブルを使用したネットワーク トラフィックのルーティング](/azure/virtual-network/tutorial-create-route-table-portal)に関する記事を参照してください。
+UDR の構成については、[ルーティング テーブルを使用したネットワーク トラフィックのルーティング](../articles/virtual-network/tutorial-create-route-table-portal.md)に関する記事を参照してください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 1f0c4f7f70dc186c29ffa5d90c6a7ea2f245f431
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: de25644e90b459991f9c2365eceba54b1cde8906
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298081"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223426"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "112298081"
 
 
 >[!NOTE] 
->この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください  
+>この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ip-services/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください  
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 

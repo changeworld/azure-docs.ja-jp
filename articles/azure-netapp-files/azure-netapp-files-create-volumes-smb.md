@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 546f3ad04a371277903f9b11f6d62bba50794051
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 738e3d6cb3b27180cd8337e09a72fbe3a0639edf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536246"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240055"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -29,7 +29,7 @@ Azure NetApp Files では、NFS (NFSv3 または NFSv4.1)、SMB3、またはデ�
 
 ## <a name="before-you-begin"></a>開始する前に 
 
-* あらかじめ容量プールを設定しておく必要があります。 詳細については、[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)に関するページを参照してください。     
+* あらかじめ容量プールを設定しておく必要があります。 「[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。     
 * サブネットが Azure NetApp Files に委任されている必要があります。 「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
 ## <a name="configure-active-directory-connections"></a>Active Directory Domain Services 接続を構成する 
@@ -82,7 +82,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
     * **ネットワーク機能**  
-        サポートされているリージョンでは、ボリュームで使用するネットワーク機能を **Basic** または **Standard** から選ぶことができます。 詳細については、[ボリュームのネットワーク機能を構成する](configure-network-features.md)ことに関するページと、「[Azure NetApp Files のネットワーク計画のガイドライン](azure-netapp-files-network-topologies.md)」を参照してください。
+        サポートされているリージョンでは、ボリュームで使用するネットワーク機能を **Basic** または **Standard** から選ぶことができます。 細については、[ボリュームのネットワーク機能を構成する](configure-network-features.md)ことに関するページと、「[Azure NetApp Files のネットワーク計画のガイドライン](azure-netapp-files-network-topologies.md)」を参照してください。
 
     * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 
@@ -171,6 +171,6 @@ Windows SMB クライアントで、オブジェクトのプロパティの **[�
 * [Azure NetApp Files 用に ADDS LDAP over TLS を構成する](configure-ldap-over-tls.md) 
 * [既存の SMB ボリュームで継続的可用性を有効にする](enable-continuous-availability-existing-SMB.md)
 * [SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)
-* [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
+* [Azure NetApp Files のボリュームに関するエラーをトラブルシューティングする](troubleshoot-volumes.md)
 * [Azure サービスの仮想ネットワーク統合について理解する](../virtual-network/virtual-network-for-azure-services.md)
 * [Azure CLI を使用して新しい Active Directory フォレストをインストールする](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

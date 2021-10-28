@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/02/2021
+ms.date: 10/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a38361355c48021b6145552071593056a2a3caa6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4dadaa832e065163186ef590989c22c0f7e7700a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759740"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233906"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
@@ -37,11 +37,6 @@ Microsoft Authenticator アプリから電話によるサインインを有効�
 Microsoft Authenticator アプリでパスワードなしの電話によるサインインを使用するには、次の前提条件を満たしている必要があります。
 
 - 検証方法としてプッシュ通知が許可されている Azure AD Multi-Factor Authentication。 スマートフォンまたはタブレットへのプッシュ通知は、Authenticator アプリでアカウントへの不正アクセスを防止したり、不正なトランザクションを停止させたりするのに役立ちます。 Authenticator アプリは、プッシュ通知を行うように設定されたときに自動的にコードを生成します。これにより、デバイスが接続されていない場合でも、ユーザーはバックアップのサインイン方法を保持できます。 
-  
-  ユーザーが電話によるサインインのプッシュ通知を登録できるようにするには、Azure Multi-factor Auth Connector を有効にする必要があります。
-
-  ![有効化された Azure Multi-Factor Auth Connector のスクリーンショット。](media/howto-authentication-passwordless-phone/connector.png)
-
 - iOS 8.0 以降、または Android 6.0 以降を実行しているデバイスにインストールされている最新バージョンの Microsoft Authenticator。
 - Microsoft Authenticator アプリがインストールされているデバイスを、Azure AD テナント内で個々のユーザーに登録する必要があります。 
 
@@ -51,10 +46,6 @@ Microsoft Authenticator アプリでパスワードなしの電話によるサ�
 ## <a name="enable-passwordless-authentication-methods"></a>パスワードなしの認証方法を有効にする
 
 Azure AD でパスワードレス認証を使用するには、まず、統合された登録エクスペリエンスを有効にしてから、パスワードなしの方法に対してユーザーを有効にします。
-
-### <a name="enable-the-combined-registration-experience"></a>統合された登録エクスペリエンスを有効にする
-
-パスワードなしの認証方法の登録機能は、統合された登録機能に依存しています。 ユーザー自身が統合された登録を完了できるようにするには、[統合されたセキュリティ情報の登録を有効にする](howto-registration-mfa-sspr-combined.md)手順に従ってください。
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>パスワードなしの電話によるサインインの認証方法を有効にする
 

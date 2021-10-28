@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d773c25059f1d5767df735ff89bd7701d4733c4b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 23cba5dbee4900f56e4180912f276cbd29c743f7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601598"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264201"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure Synapse Analytics に読み込む
 > [!NOTE]

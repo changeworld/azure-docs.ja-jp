@@ -6,19 +6,19 @@ ms.author: hickeys
 ms.date: 10/08/2021
 ms.service: app-service
 ms.topic: reference
-ms.openlocfilehash: 3af5ba0580b0cb662c9ab87c73afac965a8c066f
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 8a818ea51e1d4a3f2df03ae1c4bafcf16da35b13
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730533"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261008"
 ---
 # <a name="data-encryption-in-azure-fluid-relay"></a>Azure Fluid Relay でのデータの暗号化
 
 > [!NOTE]
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 
-Microsoft Azure Fluid Relay Server には、[Azure Kubernetes](/azure/aks/enable-host-encryption)、[Microsoft Azure Cosmos DB]/azure/cosmos-db/database-encryption-at-rest)、[Azure Blob Storage](/azure/storage/common/storage-service-encryption) の保存時の暗号化機能が利用されています。 AFRS とこれらのリソース間のサービス間通信は TLS で暗号化され、Azure 仮想ネットワーク教会で囲まれ、ネットワーク セキュリティ規則によって外部からの干渉から保護されています。
+Microsoft Azure Fluid Relay Server には、[Azure Kubernetes](../../aks/enable-host-encryption.md)、[Microsoft Azure Cosmos DB]/azure/cosmos-db/database-encryption-at-rest)、[Azure Blob Storage](../../storage/common/storage-service-encryption.md) の保存時の暗号化機能が利用されています。 AFRS とこれらのリソース間のサービス間通信は TLS で暗号化され、Azure 仮想ネットワーク教会で囲まれ、ネットワーク セキュリティ規則によって外部からの干渉から保護されています。
 
 次の図は、Azure Fluid Relay Server がどのように実装され、どのようにデータ ストレージが処理されているかの概要を示しています。
 

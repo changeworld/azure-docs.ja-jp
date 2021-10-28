@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: ec24d4df5a792166812693ad90f21396771ecdd6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1f9ad2fd05e11d981dd374919e2cc43d1b8d1f97
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537899"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232311"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge モジュールの認定前チェックリスト
 
@@ -55,7 +55,7 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 #### <a name="steps"></a>手順
 
 1. Putty を使用して、作成したデバイスと VM にアクセスできることを確認します。
-1. [IoT Edge ランタイム](../iot-edge/how-to-install-iot-edge.md)をデバイスにダウンロードします。
+1. [IoT Edge ランタイム](../iot-edge/how-to-provision-single-device-linux-symmetric.md)をデバイスにダウンロードします。
 1. 手順 5 でコピーした接続文字列を config.yaml ファイルに貼り付けて更新します。
 1. `sudo systemctl restart iotedge` を使用して Edge モジュールを再起動します。
 1. `sudo iotedge list` を使用して、モジュールがデバイスにデプロイされたかどうかを確認します。実行状態になっている必要があります。
