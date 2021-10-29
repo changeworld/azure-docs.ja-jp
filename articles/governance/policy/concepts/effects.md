@@ -17,7 +17,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 現在、ポリシー定義では次の効果がサポートされています。
 
 - [Append](#append)
-- [監査](#audit)
+- [Audit](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
