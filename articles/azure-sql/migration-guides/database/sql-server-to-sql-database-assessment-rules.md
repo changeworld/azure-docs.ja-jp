@@ -3,19 +3,19 @@ title: SQL Server から Azure SQL Database に移行するための評価ルー
 description: Azure SQL Database に移行する前に対処する必要があるソース SQL Server インスタンスの問題を特定する評価ルール。
 ms.service: sql-database
 ms.subservice: migration-guide
-ms.custom: ''
+ms.custom: ignite-fall-2021
 ms.devlang: ''
 ms.topic: how-to
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 17b3cd2c0257989a220be6b35e93d88db7225188
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 88c90896cd8c480f828116c479a4dc5d0a3ee99f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457470"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069503"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server から Azure SQL Database に移行するための評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ Azure SQL Database では、ファイルにアクセスできない CRYPTOGRAPHI
 
 **推奨事項**   
 Azure SQL Database では、複数のデータベースにまたがるクエリはサポートされていません。 次のアクションを推奨します。 
-- Azure SQL Database に依存データベースを移行し、エラスティック データベース クエリ (現時点ではプレビュー) 機能を使用して、複数の Azure SQL データベースにクエリを実行します。 
+- Azure SQL Database に依存データベースを移行し、エラスティック データベース クエリ (現時点ではプレビュー) 機能を使用して、複数の Azure SQL Database にクエリを実行します。 
 - 依存データセットを他のデータベースから、移行するデータベースに移動します。 
 - Azure SQL Managed Instance に移行します。
 - Azure Virtual Machines 上の SQL Server に移行します。 
@@ -201,7 +201,7 @@ Azure SQL Database では、NTFS ファイル システムに、テキスト ド
 **推奨事項**   
 Azure SQL Database では、リンク サーバー機能はサポートされていません。 リンク サーバーが必要なくなるようにするには、次のアクションが推奨されます。 
 - リモートの SQL サーバーから依存データベースを特定し、これらを移行するデータベースに移動することを検討します。 
-- Azure に依存データベースを移行し、エラスティック データベース クエリ (プレビュー) 機能を使用して、複数の Azure SQL データベースにクエリを実行できるようにします。 
+- Azure に依存データベースを移行し、エラスティック データベース クエリ (プレビュー) 機能を使用して、複数の Azure SQL Database にクエリを実行できるようにします。 
 
 詳細情報: [Azure SQL Database エラスティック クエリ (プレビュー) を参照](../../database/elastic-query-overview.md) 
 
@@ -217,7 +217,7 @@ Azure SQL Database では、Transact SQL BEGIN DISTRIBUTED TRANSACTION によっ
 **推奨事項**   
 Azure Migrate の [影響を受けるオブジェクト] セクションを確認し、BEGIN DISTRUBUTED TRANSACTION を使用するすべてのオブジェクトを確認します。 複数のインスタンス間での分散トランザクションがサポートされている (現在、プレビュー段階) Azure SQL Managed Instance に参加しているデータベースを移行することを検討してください。 または、Azure 仮想マシン上の SQL Server に移行します。
 
-詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション](../../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance)
+詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション](../../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance)
 
 
 ## <a name="openrowset-bulk"></a>OPENROWSET (BULK)<a id="OpenRowsetWithNonBlobDataSourceBulk"></a>

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 18746da524c4b045471031af2330d9daba4bfcc0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 10ae4e5711d6ec238d73a6b401f6f3fc4498fdd8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949352"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040701"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
@@ -29,7 +29,7 @@ Azure Dedicated HSM サービスには、明確に区別される 2 つの側面
 
 ## <a name="hsm-registration"></a>HSM の登録
 
-Dedicated HSM は無償提供されません。ハードウェア リソースをクラウドで提供するものである以上、保護を必要とする貴重なリソースであるためです。 そのため Microsoft では、メール (HSMrequest@microsoft.com) を用いた許可リスト登録プロセスを採用しています。 
+Dedicated HSM は無償提供されません。ハードウェア リソースをクラウドで提供するものである以上、保護を必要とする貴重なリソースであるためです。 そのため Microsoft では、メール (`HSMrequest@microsoft.com`) を用いた許可リスト登録プロセスを採用しています。
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Dedicated HSM へのアクセス
 

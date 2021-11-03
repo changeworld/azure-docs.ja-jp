@@ -4,21 +4,17 @@ description: Azure Managed Instance for Apache Cassandra に必要なアウト�
 author: christopheranderson
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 11/02/2021
 ms.author: chrande
-ms.openlocfilehash: fc96e4a09a24348ab8344733c8059925af209b39
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6d52f1c72765b3e7d3b7dd171c53c84e85138a20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767149"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005235"
 ---
 # <a name="required-outbound-network-rules"></a>必要なアウトバウンド ネットワーク規則
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Managed Instance for Apache Casandra サービスを使用するには、サービスを適切に管理するために特定のネットワーク規則が必要です。 適切なルールが公開されているようにすることで、サービスのセキュリティを維持し、運用上の問題を防ぐことができます。
 
@@ -33,13 +29,21 @@ Azure Firewall を使用してアウトバウンド アクセスを制限して�
 | EventHub | HTTPS | 443 | Azure にログを転送するために必要です |
 | AzureMonitor | HTTPS | 443 | Azure にメトリックを転送するために必要です |
 | AzureActiveDirectory| HTTPS | 443 | Azure Active Directory の認証に必要です。|
-| GuestandHybridManagement | HTTPS | 443 |  Cassandra ノードに関する情報を収集し、ノードを管理する (再起動など) ために必要です |
+| AzureResourceManager| HTTPS | 443 | Cassandra ノードに関する情報を収集し、ノードを管理する (再起動など) ために必要です|
+| AzureFrontDoor.Firstparty| HTTPS | 443 | ログ操作に必要です。|
+| GuestAndHybridManagement | HTTPS | 443 |  Cassandra ノードに関する情報を収集し、ノードを管理する (再起動など) ために必要です |
 | ApiManagement  | HTTPS | 443 | Cassandra ノードに関する情報を収集し、ノードを管理する (再起動など) ために必要です |
-| Storage.\<Region\>  | HTTPS | 443 | コントロール プレーンの通信と構成のためにノードと Azure Storage 間で行う安全な通信に必要です。 **データセンターをデプロイしたリージョンごとにエントリが必要です。** |
+
+> [!NOTE]
+> 上記に加えて、関連するサービスのサービス タグが存在しない場合、104.40.0.0/13 13.104.0.0/14 40.64.0.0/10 のアドレス プレフィックスも追加する必要があります。
+
+## <a name="user-defined-routes"></a>ユーザー定義のルート
+
+サードパーティのファイアウォールを使用して送信アクセスを制限している場合は、独自のファイアウォール経由の接続を許可するのではなく、Microsoft アドレス プレフィックス用に[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md#user-defined) を構成することをお勧めします。 ユーザー定義のルートに必要なアドレス プレフィックスを追加するサンプル [bash スクリプト](https://github.com/Azure-Samples/cassandra-managed-instance-tools/blob/main/configureUDR.sh)を参照してください。
 
 ## <a name="azure-global-required-network-rules"></a>Azure Global に必要なネットワーク規則
 
-Azure Firewall を使用していない場合、必要なネットワーク規則と IP アドレスの依存関係は次のとおりです。
+必要なネットワーク規則と IP アドレスの依存関係は次のとおりです。
 
 | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|

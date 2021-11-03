@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: デバイス ビルダー向け Azure Defender for IoT のドキュメント
-summary: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+summary: 'Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。 注: Azure Defender for IoT は、Microsoft Defender for IoT に名前が変更されています。 ドキュメントは間もなく更新されます。'
 metadata:
   title: デバイス ビルダー向け Azure Defender for IoT のドキュメント
   description: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
@@ -12,12 +12,12 @@ metadata:
   ms.author: v-ekrieg
   manager: raynew
   ms.date: 06/17/2021
-  ms.openlocfilehash: c4853f4ca1017510c24a97fd4c974972667e26df
-  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+  ms.openlocfilehash: 0c46acdd0a6e5f1278710b0ad66acc3eab9adb78
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/29/2021
-  ms.locfileid: "113013959"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131056606"
 landingContent:
 - title: デバイス ビルダー向け Azure Defender for IoT について
   linkLists:

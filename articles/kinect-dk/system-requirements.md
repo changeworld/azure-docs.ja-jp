@@ -3,20 +3,18 @@ title: Azure Kinect Sensor SDK のシステム要件
 description: Windows および Linux の Azure Kinect Sensor SDK のシステム要件について説明します。
 author: qm13
 ms.author: quentinm
-ms.custom:
-- CI 115266
-- CSSTroubleshooting
+ms.custom: CI 115266, CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: article
 keywords: azure, kinect, システム要件, CPU, GPU, USB, セットアップ, セットアップ, 最小, 要件
-ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ba6782ad0a0278f1f66266c8abbe91d33cb5bf68
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656976"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085850"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect Sensor SDK のシステム要件
 

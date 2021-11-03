@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 9afdbef418f9397cb4f13d4eb51220e6fc5573ab
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bc6d92d0992c44cd0cb9bb0f874b9ea1952a211
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779086"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evidencecom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Evidence.com の統合
 
@@ -75,12 +75,12 @@ Evidence.com に対して Azure AD SSO を構成してテストするには、�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<yourtenant>.evidence.com`
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<yourtenant>.evidence.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<yourtenant>.evidence.com`
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<yourtenant>.evidence.com`
 
-    c. **[応答 URL]** ボックスに、`https://<your tenant>.evidence.com/?class=UIX&proc=Login` のパターンを使用して URL を入力します。
-    
+    1. **[応答 URL]** ボックスに、`https://<your tenant>.evidence.com/?class=UIX&proc=Login` のパターンを使用して URL を入力します。
+
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Evidence.com クライアント サポート チーム](https://communities.taser.com/support/SupportContactUs?typ=LE)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 

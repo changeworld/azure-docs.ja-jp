@@ -3,12 +3,12 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 7793259797a47eb0353de7ecb27686ea2eafa24c
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 40fb046506238c5f02c7e36d6ce12b31ed44fcaa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185905"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020542"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
@@ -109,7 +109,7 @@ AzureRM モジュールが存在しないことを確認したら、次のいず
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
     ```
 
-Azure PowerShell は、msi ファイルを使用してインストールされている可能性もあります。 それを削除するには、コントロール パネルの **[プログラムのアンインストール]** オプションを使用してアンインストールします。
+Azure PowerShell は、MSI ファイルを使用してインストールされている可能性もあります。 それを削除するには、コントロール パネルの **[プログラムのアンインストール]** オプションを使用してアンインストールします。
 
 ### <a name="order-and-receive-the-data-box-device"></a>Data Box デバイスを注文して受け取る
 

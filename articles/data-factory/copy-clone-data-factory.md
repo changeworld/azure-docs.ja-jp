@@ -3,17 +3,17 @@ title: Azure Data Factory のデータ ファクトリをコピーまたは複�
 description: Azure Data Factory のデータ ファクトリをコピーまたは複製する方法について説明します
 ms.service: data-factory
 ms.subservice: data-movement
-author: minhe-msft
-ms.author: hemin
+author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ccacddbaaa5dbf3c9bbf5fa28c9a6c7ed48d64f7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7bf5a063c1474c7b01cfcfbdd0da3b8ba3912b4e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742355"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062152"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory のデータ ファクトリをコピーまたは複製する
 

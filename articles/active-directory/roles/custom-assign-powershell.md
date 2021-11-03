@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1fbd4d57b3daa073d506fbaf371b379030a810
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 348f862c97b62ed4f1bab8bcf6aa418aaa43e7da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776464"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057307"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory で PowerShell を使用してリソース スコープのカスタム ロールを割り当てる
 
@@ -147,6 +147,6 @@ Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
+- [Azure AD 管理ロール フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)でご意見をお寄せください。
 - ロールと Azure AD 管理者ロールの割り当ての詳細については、「[管理者ロールを割り当てる](permissions-reference.md)」を参照してください。
 - 既定のユーザー アクセス許可については、[アクセス許可に関する既定のゲストとメンバー ユーザーの比較](../fundamentals/users-default-permissions.md)に関する記事を参照してください。

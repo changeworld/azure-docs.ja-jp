@@ -5,14 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 09/07/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0bac9ef5d9a636fb4772352c93de537d21483139
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3765b1abb6996e364ed3f7004e56f323fe256450
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179307"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017043"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>チュートリアル:Bastion を構成し、Windows VM に接続する
 
@@ -96,7 +97,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * **リージョン**: リソースが作成される Azure パブリック リージョンです。 仮想ネットワークが存在するリージョンを選択します。
 
-* **価格レベル:** 価格レベルは **SKU** とも呼ばれます。 このチュートリアルでは、ドロップダウンから **Standard** SKU を選択します。 Standard SKU を選択すると、ホスト スケーリングのインスタンス数を構成できます。 Basic SKU では、ホストのスケーリングはサポートされていません。 詳細については、[構成設定 - SKU](configuration-settings.md#skus) に関するページを参照してください。 Standard SKU は、プレビュー段階にあります。
+* **価格レベル:** 価格レベルは **SKU** とも呼ばれます。 このチュートリアルでは、ドロップダウンから **Standard** SKU を選択します。 Standard SKU を選択すると、ホスト スケーリングのインスタンス数を構成できます。 Basic SKU では、ホストのスケーリングはサポートされていません。 詳細については、[構成設定 - SKU](configuration-settings.md#skus) に関するページを参照してください。
 
 * **インスタンス数:** これは、**ホスト スケーリングの設定** で、スケール ユニットの増分で構成されます。 スライダーを使用して、インスタンス数を構成します。 Basic レベルの SKU を指定した場合、この設定を構成することはできません。 詳細については、[構成設定 - ホスト スケーリング](configuration-settings.md#instance)に関するページを参照してください。 このチュートリアルでは、スケール ユニットの [価格](https://azure.microsoft.com/pricing/details/azure-bastion) に関する考慮事項に留意しながら、希望するインスタンス数を選択できます。
 

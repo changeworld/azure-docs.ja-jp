@@ -7,12 +7,12 @@ ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: 260aac69c33efa7ef006f882af1cfd2c851eecc2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fd861e4ab92235ec4f2b3ec8051e854a08effd3c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437726"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072372"
 ---
 # <a name="use-the-drawing-tools-module"></a>描画ツール モジュールを使用する
 
@@ -31,14 +31,14 @@ Azure Maps の Web SDK は、*描画ツール モジュール* を提供して�
 
     - または、[azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm パッケージを使用して、Azure Maps Web SDK ソース コード用の描画ツール モジュールをローカルに読み込み、アプリを使用してそれをホストできます。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
 
-        > **npm install azure-maps-drawing-tools**
+      `npm install azure-maps-drawing-tools`
 
-        次に、ファイルの `<head>` 要素に JavaScript および CSS スタイルシートへの参照を追加します。
+      次に、ファイルの `<head>` 要素に JavaScript および CSS スタイルシートへの参照を追加します。
 
-         ```html
-        <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
-        <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
-         ```
+      ```html
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
+      ```
 
 ## <a name="use-the-drawing-manager-directly"></a>描画マネージャーを直接使用する
 

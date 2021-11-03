@@ -7,16 +7,13 @@ ms.author: magoedte
 ms.date: 08/27/2021
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.custom:
-- mvc
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: daf04e7070b1d05e077993ae9cdb38d38595944f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.custom: mvc, subject-armqs, mode-arm
+ms.openlocfilehash: db69e08db30a2b2ffcf7acc780619f23d8b41feb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110774"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031691"
 ---
 # <a name="create-an-azure-automation-account-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Automation アカウントを作成する
 

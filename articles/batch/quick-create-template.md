@@ -3,15 +3,13 @@ title: Azure クイック スタート - Batch アカウントの作成 - Azure 
 description: このクイックスタートでは、ARM テンプレートを使用して Batch アカウントを作成する方法を示します。
 ms.date: 05/25/2021
 ms.topic: quickstart
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: d28a60fd3476877bf79fa8ea542db074c565fc89
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.custom: subject-armqs, mode-arm
+ms.openlocfilehash: fcc0876bc9a165b06705e4c57090b084205dd0c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005683"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086832"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Batch アカウントを作成する
 

@@ -4,13 +4,14 @@ description: QnA Maker には、ナレッジ ベースとサービスの一部�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 11/09/2020
-ms.openlocfilehash: 0d9e3d4c9ec9eab75ce5917e9ea20011653ff133
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ac7741a6404f47e3cabdd9eff81f81c6ad39de36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790196"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011981"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -51,9 +52,6 @@ ms.locfileid: "110790196"
 
 抽出できるファイルの最大数と最大ファイル サイズは、 **[QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** に基づきます。
 
-> [!NOTE]
-> カスタム質問と回答 (プレビュー) は、追加できるソースの数に制限がない無料のサービスです。 管理 API と予測 API の両方に対して、スループットは現在、毎秒 10 トランザクションに制限されています。
-
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL からのディープリンクの最大数
 
 URL ページから QnA を抽出するためにクロールできるディープリンクの最大数は **20** です。
@@ -62,29 +60,11 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 メタデータは、テキストベースの "キー:値" のペアとして表示されます (`product:windows 10` など)。 これは小文字で格納され、比較されます。 メタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)** に基づきます。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 GA バージョンの場合、テスト インデックスはすべてのナレッジ ベースで共有されます。このため、この制限は、QnA Maker サービス内のすべてのナレッジ ベースに適用されます。
 
 |**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-1 つのサービスで複数の言語のナレッジ ベースを使用する場合は、ナレッジ ベースごとに専用のテスト インデックスがあります。 そのため、この制限は、QnA Maker サービス内のナレッジ ベースごとに適用されます。
-
-|**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
-|---|---|---|---|---|---|----|
-|QnA Maker サービスごとの最大のメタデータ フィールド数 (ナレッジ ベースごと)|1,000|100*|1,000|1,000|1,000|1,000|
-
-複数の言語にナレッジ ベースを含むオプションを選択しない場合は、QnA Maker サービス内のすべてのナレッジ ベースに制限が適用されます。
-
-|**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
-|---|---|---|---|---|---|----|
-|QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
-
----
 
 ### <a name="by-name-and-value"></a>名前と値
 
@@ -146,7 +126,7 @@ GA バージョンの場合、テスト インデックスはすべてのナレ�
 * ドキュメントあたりの最大応答数は 3 です。
 
 > [!IMPORTANT]
-> 非構造化ファイルまたはコンテンツと事前構築済み API のサポートは、カスタム質問と回答 (プレビュー) でのみご利用いただけます
+> 非構造化ファイルまたはコンテンツのサポートは、質問応答でのみご利用いただけます
 
 ## <a name="next-steps"></a>次のステップ
 

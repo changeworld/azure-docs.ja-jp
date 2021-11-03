@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cf360196b3fee73dc91ea7936f2a8faad2dedc5
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 6c731d863d6ab9f2531a90a6306a9e65af0166b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231636"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067920"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -93,4 +93,4 @@ Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済�
 - [**技術的な詳細**](how-to-connect-sso-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](how-to-connect-sso-faq.yml) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
+- [**UserVoice**](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) - 新しい機能の要求を提出します。

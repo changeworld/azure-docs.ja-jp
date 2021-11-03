@@ -7,15 +7,13 @@ ms.author: spelluru
 ms.date: 11/18/2020
 ms.topic: quickstart
 ms.devlang: python
-ms.custom:
-- devx-track-python
-- mode-api
-ms.openlocfilehash: 920aadf1cc800a8ea9d7c764cf0bcfa7cf9287f3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: devx-track-python, mode-api
+ms.openlocfilehash: a7f65a23a1be03111dc8f8d02c02fad3ce716a39
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614025"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036943"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (Python)
 この記事では、Python を使用して Service Bus トピックにメッセージを送信したり、そのトピックのサブスクリプションからメッセージを受信したりする方法について説明します。 

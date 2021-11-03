@@ -6,15 +6,14 @@ ms.author: owend
 ms.date: 10/12/2021
 ms.topic: quickstart
 ms.service: azure-analysis-services
-tags:
-- azure-resource-manager
-ms.custom: devx-track-azurepowershell - subject-armqs - references_regions - mode-arm
-ms.openlocfilehash: b8010df6b4e6284a1050d479e9ab312fb8e7bb97
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+tags: azure-resource-manager
+ms.custom: devx-track-azurepowershell, subject-armqs, references_regions, mode-arm
+ms.openlocfilehash: 3725c71f1334d3fd87df3e2fb50846c7ef2984dc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998829"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060018"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>クイック スタート:サーバーの作成 - ARM テンプレート
 

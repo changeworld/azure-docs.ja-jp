@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0842de3ef0d3bc154193413987ae2a57d87ead38
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6ec984ebaa6b12019b1f1942d2849f7e9efaf288
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631535"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049788"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用して Azure 内の Windows 仮想マシンにログインする
 
@@ -405,7 +405,7 @@ Windows Hello for Business のデプロイがなく、それが当面は選択�
 > [!NOTE]
 > RDP での Windows Hello for Business PIN 認証は Windows 10 のいくつかのバージョンでサポートされています。ただし、RDP での生体認証のサポートは Windows 10 バージョン 1809 で追加されています。 RDP での Windows Hello for Business 認証の使用は、証明書信頼モデルを使用するデプロイでのみ利用できます。現時点ではキー信頼モデルでは利用できません。
  
-[Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、この機能に関するフィードバックを共有するか、この機能の使用に関する問題を報告してください。
+[Azure AD フィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)で、この機能に関するフィードバックを共有するか、この機能の使用に関する問題を報告してください。
 
 ## <a name="next-steps"></a>次のステップ
 

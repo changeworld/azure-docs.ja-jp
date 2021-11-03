@@ -707,6 +707,8 @@ items:
           - name: 自己ホスト型統合ランタイムの資格情報の暗号化
             href: encrypt-credentials-self-hosted-integration-runtime.md
             displayName: self hosted
+          - name: Data Factory の資格情報
+            href: credentials.md
           - name: Data Factory のマネージド ID
             href: data-factory-service-identity.md
           - name: カスタマー マネージド キーを使用したデータ ファクトリの暗号化
@@ -821,7 +823,11 @@ items:
                 href: join-azure-ssis-integration-runtime-virtual-network.md
               - name: Virtual Network の構成
                 href: azure-ssis-integration-runtime-virtual-network-configuration.md
-              - name: Azure Data Factory Studio UI の使用
+              - name: 高速仮想ネットワーク インジェクション
+                href: azure-ssis-integration-runtime-express-virtual-network-injection.md
+              - name: 標準仮想ネットワーク インジェクション
+                href: azure-ssis-integration-runtime-standard-virtual-network-injection.md
+              - name: Azure Data Factory UI の使用
                 href: join-azure-ssis-integration-runtime-virtual-network-ui.md
               - name: Azure PowerShell の使用
                 href: join-azure-ssis-integration-runtime-virtual-network-powershell.md

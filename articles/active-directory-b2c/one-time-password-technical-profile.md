@@ -3,20 +3,20 @@ title: ワンタイム パスワード (OTP) の確認を有効にする
 titleSuffix: Azure AD B2C
 description: Azure AD B2C カスタム ポリシーを使用してワンタイム パスワード (OTP) シナリオを設定する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/19/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4815eec021e4ebecda065667dca4568ded703ac5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881193"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131044876"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -146,8 +146,8 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
-| UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
-| UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
+| UserMessageIfMaxRetryAttempted | No | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfMaxNumberOfCodeGenerated | No | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
 | UserMessageIfInvalidCode | いいえ | 無効なコードが指定された場合にユーザーに表示するメッセージ。 |
 | UserMessageIfVerificationFailedRetryAllowed | いいえ | 無効なコードを指定した場合にユーザーに表示するメッセージ。ユーザーは正しいコードを指定できます。  |
 |UserMessageIfSessionConflict|いいえ| コードを確認できない場合にユーザーに表示するメッセージ。|

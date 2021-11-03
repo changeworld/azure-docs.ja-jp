@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2021
 ms.author: bagol
-ms.openlocfilehash: 6e29b444f7a9e1afbea3ffc7f9d53c0279c6af8c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3dbeae805c28b9cfbfe7871b49f021a1d3ad19c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725158"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023160"
 ---
 # <a name="tutorial-investigate-incidents-with-ueba-data"></a>チュートリアル: UEBA データを使用したインシデントの調査
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、通常の調査ワークフローで[ユーザー エンティティ行動分析 (UEBA)](identify-threats-with-entity-behavior-analytics.md) を使用する一般的な方法とサンプル手順について説明します。
 

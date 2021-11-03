@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 8cd1cd820583a177ec65c9b63066119399e4bba0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 512eff61d6195ad0ff21a4d22bc4a9e633f7d109
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435152"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006717"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure Maps サービス モジュールの使用
 
@@ -26,19 +26,19 @@ Azure Maps の Web SDK は、*サービス モジュール* を提供します�
 1. Azure Maps サービス モジュールの読み込み 次の 2 つの方法のいずれかで読み込みます。
     - グローバルにホストされている Azure Maps サービス モジュールの Azure Content Delivery Network のバージョンを使用します。 次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
 
-        ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
-        ```
+    ```html
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+    ```
 
     - または、[azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) NPM パッケージを使用して、Azure Maps Web SDK ソース コード用のサービス モジュールをローカルに読み込み、アプリを使用してそれをホストします。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
-    
-        > **npm install azure-maps-rest**
-    
-        次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
 
-         ```html
-        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
-         ```
+      `npm install azure-maps-rest`
+
+      次に、ファイルの `<head>` 要素にスクリプト参照を追加します。
+
+      ```html
+      <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
+      ```
 
 1. 認証パイプラインを作成します。 サービス URL のクライアント エンドポイントを初期化するには、事前にパイプラインを作成しておく必要があります。 Azure Maps 検索サービス クライアントを認証するには、自身の Azure Maps アカウント キーまたは Azure Active Directory (Azure AD) 資格情報を使用します。 この例では、検索サービス URL クライアントが作成されます。 
 

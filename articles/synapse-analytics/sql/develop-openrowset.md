@@ -6,15 +6,16 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/07/2020
+ms.date: 11/02/2021
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 392d457ead16d0bcfc057282886669a01e24ff3e
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c87f8d7b2beaa0ad77e5fa9740910bcdd1a019e5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018870"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -82,7 +83,8 @@ OPENROWSET
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ] 
     FORMAT = 'CSV'
-    [ <bulk_options> ] }  
+    [ <bulk_options> ]
+    [ , <reject_options> ] }  
 )  
 WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
@@ -99,6 +101,13 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
 [ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
 [ , ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
+
+<reject_options> ::=  
+{  
+    | MAXERRORS = reject_value,  
+    | ERRORFILE_DATA_SOURCE = <data source name>,
+    | ERRORFILE_LOCATION = '/REJECT_Directory'
+}  
 ```
 
 ## <a name="arguments"></a>引数
@@ -256,6 +265,40 @@ CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
 
 このオプションを選択すると、クエリの実行中にファイル変更チェックが無効にされ、クエリの実行中に更新されたファイルが読み取られます。 これは、クエリの実行中に追加される追加専用ファイルを読み取る必要がある場合に便利なオプションです。 追加可能なファイルでは、既存のコンテンツは更新されず、新しい行の追加のみが行われます。 そのため、更新可能なファイルと比較して、結果が不正確になる可能性が最小限に抑えられます。 このオプションを使用すると、エラーを処理する必要なく、頻繁に追加されるファイルを読み取ることができるようになります。 詳細については、[追加可能な CSV ファイルのクエリ](query-single-csv-file.md#querying-appendable-files)に関する記事を参照してください。
+
+拒否オプション 
+
+> [!NOTE]
+> 拒否された行機能はパブリック プレビュー段階にあります。
+> 拒否された行機能は、区切られたテキスト ファイルと PARSER_VERSION 1.0 で動作することに注意してください。
+
+
+外部データ ソースから取得したダーティ レコードがどのように処理されるかを決める reject パラメーターを指定できます。 データ レコードが "ダーティ" と見なされるのは、実際のデータ型が外部テーブルの列の定義と一致しない場合です。
+
+拒否オプションを指定も変更もしないと、既定値が使用されます。 サービスによって拒否オプションが使用され、実際のクエリが失敗する前に拒否できる行数が決定されます。 拒否のしきい値を超えるまで、クエリの (部分的な) 結果が返されます。 その後、適切なエラー メッセージと共に失敗します。
+
+
+MAXERRORS = *reject_value* 
+
+クエリが失敗するまでに拒否できる行数を指定します。 MAXERRORS は 0 から 2,147,483,647 までの整数にする必要があります。
+
+ERRORFILE_DATA_SOURCE = *data source*
+
+拒否された行と対応するエラー ファイルが書き込まれるデータ ソースを指定します。
+
+ERRORFILE_LOCATION = *Directory Location*
+
+拒否された行と対応するエラー ファイルが書き込まれる DATA_SOURCE、または指定されている場合は ERROR_FILE_DATASOURCE を指定します。拒否された行と該当エラー ファイルをそこに書き込みます。 指定したパスが存在しない場合、そのパスが自動的に作成されます。 "_rejectedrows" という名前で子ディレクトリが作成されます。"_ " 文字があることで、場所パラメーターで明示的に指定されない限り、他のデータ処理ではこのディレクトリがエスケープされます。 このディレクトリ内には、読み込み送信時刻に基づいて作成されたフォルダーが存在し、これは次の形式になっています。YearMonthDay_HourMinuteSecond_StatementID (例: 20180330-173205-559EE7D2-196D-400A-806D-3BF5D007F891)。 ステートメント id を使用して、フォルダーをその生成元のクエリと関連付けることができます。 このフォルダーには、2 つのファイルが書き込まれます。具体的には、error.json ファイルとデータ ファイルです。 
+
+error.json ファイルには、拒否された行に関連する、発生したエラーの json 配列が含まれています。 エラーを表す各要素には、次の属性が含まれています。
+
+| 属性 | 説明                                                  |
+| --------- | ------------------------------------------------------------ |
+| エラー     | 行が拒否された理由。                                  |
+| 行       | ファイル内の拒否された行の序数。                         |
+| 列    | 拒否された列の序数。                              |
+| 値     | 拒否された列の値。 値が 100 文字を超える場合は、最初の 100 文字のみが表示されます。 |
+| File      | 行が属しているファイルのパス。                            |
 
 ## <a name="fast-delimited-text-parsing"></a>高速の区切りテキスト解析
 
@@ -426,6 +469,24 @@ WITH (
     [population] bigint 'strict $.population' -- this one works as column name casing is valid
     --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
 )
+AS [r]
+```
+
+### <a name="specify-multiple-filesfolders-in-bulk-path"></a>複数のファイルまたはフォルダーを BULK パスで指定する
+
+次の例は、BULK パラメーターで複数のファイルまたはフォルダーのパスを使用する方法を示しています。
+
+```sql
+SELECT 
+    TOP 10 *
+FROM  
+    OPENROWSET(
+        BULK (
+            'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=2000/*.parquet',
+            'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=2010/*.parquet',
+        ),
+        FORMAT='PARQUET'
+    )
 AS [r]
 ```
 

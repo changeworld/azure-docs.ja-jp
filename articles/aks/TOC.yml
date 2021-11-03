@@ -192,6 +192,8 @@
               href: use-system-pools.md
             - name: WebAssembly System Interface (WASI) ノード プールを使用する
               href: use-wasi-node-pools.md
+            - name: ノード プールを開始および停止する (プレビュー)
+              href: start-stop-nodepools.md
         - name: Terraform を使用した AKS のデプロイ
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
@@ -363,6 +365,8 @@
           href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md
+        - name: Dapr を使用する
+          href: dapr.md
           maintainContext: true
     - name: サービス メッシュのデプロイ
       items:
@@ -378,22 +382,20 @@
                   href: open-service-mesh-deploy-addon-az-cli.md
                 - name: Bicep テンプレートを使用する
                   href: open-service-mesh-deploy-addon-bicep.md
-            - name: OSM クライアント バイナリをダウンロードする
+            - name: OSM クライアント バイナリをダウンロードして構成する
               href: open-service-mesh-binary.md
             - name: OSM のチュートリアル
               items:
                 - name: 新しいアプリケーションのデプロイを管理する
                   href: open-service-mesh-deploy-new-application.md
-                - name: 既存のアプリケーションのデプロイを管理する
+                - name: アプリケーションをメッシュにオンボードする
                   href: open-service-mesh-deploy-existing-application.md
                 - name: Azure Application Gateway イングレス コントローラーの使用
                   href: open-service-mesh-azure-application-gateway-ingress.md
-                - name: NGINX イングレスの使用
+                - name: Kubernetes Nginx イングレス コントローラーの使用
                   href: open-service-mesh-nginx-ingress.md
                 - name: Prometheus、Grafana、Jaeger を使用して監視を構成する
                   href: open-service-mesh-open-source-observability.md
-                - name: OSM CLI のエクスペリエンスをカスタマイズする
-                  href: open-service-mesh-customize-add-on-experience.md
                 - name: IP とポート範囲を除外する
                   href: open-service-mesh-ip-port-exclusion.md
             - name: Azure Monitor を構成する
@@ -402,6 +404,8 @@
               href: open-service-mesh-troubleshoot.md
             - name: OSM を無効にする
               href: open-service-mesh-disable-add-on.md
+    - name: クラスター拡張機能を使用する (プレビュー)
+      href: cluster-extensions.md
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成

@@ -6,18 +6,21 @@ documentationcenter: na
 author: batamig
 ms.service: azure-sentinel
 ms.topic: reference
-ms.date: 08/12/2021
+ms.date: 10/11/2021
 ms.author: bagol
-ms.openlocfilehash: a78ec3828e0bbcf6c864f346d632ee70ad4a7777
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8f9a02149cb7229a201f8dfb9c11381b19d8e8ec
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134167"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023331"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Azure Sentinel データ コネクタを見つける
 
-この記事では、Azure Sentinel にデータ コネクタをデプロイする方法について説明し、サポートされているすべての組み込みデータ コネクタの一覧と共に、一般的なデプロイ手順へのリンクと特定のコネクタに必要な追加手順を示します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+この記事では、Azure Sentinel にデータ コネクタをデプロイする方法について説明し、サポートされているすべての既定のデータ コネクタの一覧と共に、一般的なデプロイ手順へのリンクと特定のコネクタに必要な追加手順を示します。
 
 > [!TIP]
 > 一部のデータ コネクタは、ソリューションによってのみデプロイされます。 詳細については、「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。 また、[Azure Sentinel の GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors)には、コミュニティによって作成された他のデータ コネクタが掲載されています。
@@ -85,7 +88,7 @@ Agari 関数アプリを使用すると、セキュリティ グラフ API を�
 Agari コネクタでは、環境変数を使用してログ アクセスのタイムスタンプを格納します。 アプリケーションでこの変数に書き込むには、システムに割り当てられている ID にアクセス許可を割り当てる必要があります。
 
 1. Azure portal で **[関数アプリ]** に移動します。
-1. **[関数アプリ]** ブレードで、一覧から関数アプリを選択し、関数アプリのナビゲーション メニューの **[設定]** で **[ID]** を選択します。
+1. **[関数アプリ]** ページで、一覧から関数アプリを選択し、関数アプリのナビゲーション メニューの **[設定]** で **[ID]** を選択します。
 1. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に設定します。
 1. **[保存]** を選択すると、 **[Azure でのロールの割り当て]** ボタンが表示されます。 それを選択します。
 1. **[Azure でのロールの割り当て]** 画面で、 **[ロールの割り当ての追加]** を選択します。 **[スコープ]** を **[サブスクリプション]** に設定し、 **[サブスクリプション]** ドロップダウンからサブスクリプションを選択し、 **[ロール]** を **[App Configuration データ所有者]** に設定します。
@@ -147,7 +150,7 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 | **Log Analytics テーブル** | CommonSecurityLog |
 | **Kusto 関数エイリアス:** | AkamaiSIEMEvent |
 | **Kusto 関数 URL:** | https://aka.ms/sentinel-akamaisecurityevents-parser |
-| **ベンダーのドキュメント/<br>インストール手順** | [SIEM 統合を構成する](https://developer.akamai.com/tools/integrations/siem)<br>[CEF コネクタを設定する](https://developer.akamai.com/tools/integrations/siem/siem-cef-connector)。 |
+| **ベンダーのドキュメント/<br>インストール手順** | [セキュリティ情報イベント管理 (SIEM) 統合の構成](https://developer.akamai.com/tools/integrations/siem)<br>[CEF コネクタを設定する](https://developer.akamai.com/tools/integrations/siem/siem-cef-connector)。 |
 | **サポートしているもの** | [Akamai](https://www.akamai.com/us/en/support/) |
 | | |
 
@@ -184,7 +187,7 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 
     **Alsid for AD** ポータルで、 **[システム]** 、 **[構成]** 、 **[Syslog]** の順に選択します。 そこから、Syslog サーバーに対して新しい Syslog アラートを作成できます。
 
-    これが完了したら、ログがサーバー上の別のファイルに正しく収集されていることを確認します (これを行うために、AFAD の Syslog アラート構成で [*構成のテスト*] ボタンを使用できます)。 クイックスタート テンプレートを使用した場合、Syslog サーバーでは、既定で TLS を使用せずにポート 514 (UDP) および 1514 (TCP) でリッスンします。
+    新しい Syslog アラートを作成したら、ログがサーバー上の別のファイルに正しく収集されていることを確認します。 たとえば、ログを確認するには、AFAD の Syslog アラート構成の *[構成のテスト]* ボタンを使用できます。 クイックスタート テンプレートを使用した場合、Syslog サーバーでは、既定で TLS を使用せずにポート 514 (UDP) および 1514 (TCP) でリッスンします。
 
 ## <a name="amazon-web-services---cloudtrail"></a>アマゾン ウェブ サービス - CloudTrail
 
@@ -311,7 +314,7 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 
 新しい Azure アクティビティ ログ コネクタを設定する前に、既存のサブスクリプションを従来方式から切断する必要があります。
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[Azure Activity]\(Azure アクティビティ\)** を選択し、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
+1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[Azure Activity]\(Azure アクティビティ\)** を選択し、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンを選択します。
 
 1. **[Instructions]\(手順\)** タブの **[構成]** セクションの手順 1 で、従来方式に接続している既存のサブスクリプションの一覧を確認して、新しい方式に追加するものを特定し、下にある **[Disconnect All]\(すべて切断\)** ボタンをクリックしてすべてを一度に切断します。
 
@@ -389,7 +392,7 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Azure Policy によって管理される診断設定ベースの接続](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)** |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Azure Policy によって管理される診断設定ベースの接続](connect-azure-windows-microsoft-services.md?tabs=AP#diagnostic-settings-based-connections)** <br><br>[SQL PaaS 用 Azure SQL および Azure Sentinel for SQL PaaS ソリューション](sentinel-solutions-catalog.md#azure)でも利用可能|
 | **Log Analytics テーブル** | SQLSecurityAuditEvents<br>SQLInsights<br>AutomaticTuning<br>QueryStoreWaitStatistics<br>エラー<br>DatabaseWaitStatistics<br>Timeouts<br>Blocks<br>デッドロック<br>Basic<br>InstanceAndAppAdvanced<br>WorkloadManagement<br>DevOpsOperationsAudit |
 | **サポートしているもの** | Microsoft |
 | | |
@@ -497,21 +500,23 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** |
+| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** <br><br>[Check Point ソリューション](sentinel-solutions-catalog.md#check-point)からも利用可能|
 | **Log Analytics テーブル** | CommonSecurityLog |
 | **ベンダーのドキュメント/<br>インストール手順** | [Log Exporter - Check Point ログのエクスポート](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk122323) |
 | **サポートしているもの** | [Check Point](https://www.checkpoint.com/support-services/contact-support/) |
 | | |
 
+
 ## <a name="cisco-asa"></a>Cisco ASA
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** |
+| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** <br><br>[Cisco ASA ソリューション](sentinel-solutions-catalog.md#cisco)で利用可能|
 | **Log Analytics テーブル** | CommonSecurityLog |
 | **ベンダーのドキュメント/<br>インストール手順** | [Cisco ASA シリーズ CLI 構成ガイド](https://www.cisco.com/c/en/us/support/docs/security/pix-500-series-security-appliances/63884-config-asa-00.html) |
 | **サポートしているもの** | Microsoft |
 | | |
+
 
 ## <a name="cisco-firepower-estreamer-preview"></a>Cisco Firepower eStreamer (プレビュー)
 
@@ -538,13 +543,14 @@ Firepower の **[システム] -> [統合] -> [eStreamer]** で、VM インス�
 pkcs12 ファイルを FMC から Azure/VM インスタンスにコピーし、テスト ユーティリティ (./encore.sh test) を実行して、接続を確立できることを確認します。 詳細については、[設定ガイド](https://www.cisco.com/c/en/us/td/docs/security/firepower/670/api/eStreamer_enCore/eStreamereNcoreSentinelOperationsGuide_409.html#_Toc527049430)をご覧ください。
 
 1. **エージェントにデータをストリーミングするように eNcore を構成する**  
-TCP 経由で Log Analytics エージェントにデータをストリーミングするように eNcore を構成します。 これは既定で有効になっています。 ただし、ネットワークのセキュリティ体制に応じて、追加のポートとストリーミング プロトコルを構成できます。 データをファイル システムに保存することもできます。 詳細については、[eNcore の構成](https://www.cisco.com/c/en/us/td/docs/security/firepower/670/api/eStreamer_enCore/eStreamereNcoreSentinelOperationsGuide_409.html#_Toc527049433)に関するページをご覧ください。
+TCP 経由で Log Analytics エージェントにデータをストリーミングするように eNcore を構成します。 この設定は既定で有効にする必要がありますが、ネットワークのセキュリティ体制に応じて、追加のポートとストリーミング プロトコルを構成できます。 データをファイル システムに保存することもできます。 詳細については、[eNcore の構成](https://www.cisco.com/c/en/us/td/docs/security/firepower/670/api/eStreamer_enCore/eStreamereNcoreSentinelOperationsGuide_409.html#_Toc527049433)に関するページをご覧ください。
+
 
 ## <a name="cisco-meraki-preview"></a>Cisco Meraki (プレビュー)
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | [**Syslog**](connect-syslog.md) |
+| **データ インジェスト方法** | [**Syslog**](connect-syslog.md)<br><br> [Cisco ISE ソリューション](sentinel-solutions-catalog.md#cisco)で利用可能|
 | **Log Analytics テーブル** | syslog |
 | **Kusto 関数エイリアス:** | CiscoMeraki |
 | **Kusto 関数 URL:** | https://aka.ms/sentinel-ciscomeraki-parser |
@@ -552,11 +558,12 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 | **サポートしているもの** | Microsoft |
 | | |
 
+
 ## <a name="cisco-umbrella-preview"></a>Cisco Umbrella (プレビュー)
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) |
+| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) <br><br> [Cisco Umbrella ソリューション](sentinel-solutions-catalog.md#cisco)で利用可能|
 | **Log Analytics テーブル** | Cisco_Umbrella_dns_CL<br>Cisco_Umbrella_proxy_CL<br>Cisco_Umbrella_ip_CL<br>Cisco_Umbrella_cloudfirewall_CL |
 | **Azure 関数アプリのコード** | https://aka.ms/sentinel-CiscoUmbrellaConn-functionapp |
 | **API 資格情報** | <li>AWS アクセス キー ID<li>AWS シークレット アクセス キー<li>AWS S3 バケット名 |
@@ -580,6 +587,7 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 | **サポートしているもの** | Microsoft |
 | | |
 
+
 ## <a name="citrix-analytics-security"></a>Citrix Analytics (セキュリティ)
 
 | コネクタ属性 | 説明 |
@@ -600,6 +608,7 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 | **サポートしているもの** | [Citrix Systems](https://www.citrix.com/support/) |
 | | |
 
+
 ## <a name="cognni-preview"></a>Cognni (プレビュー)
 
 | コネクタ属性 | 説明 |
@@ -609,6 +618,17 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 | **ベンダーのドキュメント/<br>インストール手順** | **Cognni に接続する**<br><ol><li>[Cognni の統合ページ](https://intelligence.cognni.ai/integrations)にアクセスします。<li>[Azure Sentinel] ボックスで、 **[接続]** を選択します。<li>**WorkspaceId** と **sharedKey** (主キー) を Cognni の統合画面のフィールドに貼り付けます。<li>**[接続]** ボタンを選択して構成を完了します。 |
 | **サポートしているもの** | [Cognni](https://cognni.ai/contact-support/)
 | | |
+
+## <a name="continuous-threat-monitoring-for-sap-preview"></a>Continuous Threat Monitoring for SAP (プレビュー)
+
+| コネクタ属性 | 説明 |
+| --- | --- |
+| **データ インジェスト方法** | [Continuous Threat Monitoring for SAP ソリューション](sentinel-solutions-catalog.md#sap)のインストール後にのみ利用可能|
+| **Log Analytics テーブル** | [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)をご覧ください |
+| **ベンダーのドキュメント/<br>インストール手順** | [SAP の継続的な脅威監視のデプロイ](sap-deploy-solution.md) |
+| **サポートしているもの** | Microsoft |
+| | |
+
 
 ## <a name="cyberark-enterprise-password-vault-epv-events-preview"></a>CyberArk Enterprise Password Vault (EPV) Events (プレビュー)
 
@@ -631,6 +651,8 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 | **サポートしているもの** | [Cyberpion](https://www.cyberpion.com/) |
 | | |
 
+
+
 ## <a name="domain-name-server"></a>ドメイン ネーム サーバー
 
 | コネクタ属性 | 説明 |
@@ -644,7 +666,7 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[API ベースの接続](connect-azure-windows-microsoft-services.md#api-based-connections)** |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[API ベースの接続](connect-azure-windows-microsoft-services.md#api-based-connections)** <br><br> [Azure Sentinel 4 Dynamics 365 ソリューション](sentinel-solutions-catalog.md#azure)の一部としても入手できます|
 | **ライセンスの前提条件/<br>コスト情報** | <li>[Microsoft Dynamics 365 の運用ライセンス](/office365/servicedescriptions/microsoft-dynamics-365-online-service-description)。 サンドボックス環境では使用できません。<li>アクティビティのログ記録を行うには、Microsoft 365 Enterprise [E3 または E5](/power-platform/admin/enable-use-comprehensive-auditing#requirements) サブスクリプションが必要です。<br>その他の料金が適用される場合があります |
 | **Log Analytics テーブル** | Dynamics365Activity |
 | **サポートしているもの** | Microsoft |
@@ -667,7 +689,7 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 1. **[新規追加]** ボタンを選択して、**ネイティブ ユーザー** を追加します。
 1. API アカウントの新しいユーザーを作成します。 **省略可能:** **[すべて]** 以外の **ホーム グループ** を選択して、取り込む検出を制限します。
 1. **[アクセス許可セット]** タブで、**Enterprise Inspector レビュー担当者** のアクセス許可セットを割り当てます。
-1. 管理者アカウントからログアウトし、検証のために新しい API 資格情報を使用してコンソールにログインした後、API アカウントからログアウトします。
+1. 管理者アカウントからサインアウトし、検証のために新しい API 資格情報を使用してコンソールにログインした後、API アカウントからサインアウトします。
 
 ## <a name="eset-security-management-center-smc-preview"></a>ESET Security Management Center (SMC) (プレビュー)
 
@@ -708,7 +730,7 @@ ESET データを簡単に認識するため、データを別のテーブルに
 
 **/etc/opt/microsoft/omsagent/{REPLACEyourworkspaceid}/conf/omsagent.conf** ファイルで、`match oms.**` セクションの型を `out_oms_api` に変更して、データを API オブジェクトとして送信するようにします。
     
-完全な `match oms.**` セクションの例を次に示します。
+完全な `match oms.**` セクションの例を次のコードに示します。
 
 ```bash
     <match oms.** docker.**>
@@ -826,6 +848,8 @@ BSD スタイルと JSON 形式を使用して ESET ログを構成します。
 | **サポートしているもの** | [F5 Networks](https://support.f5.com/csp/home) |
 | | |
 
+
+
 ## <a name="forcepoint-cloud-access-security-broker-casb-preview"></a>Forcepoint クラウド アクセス セキュリティ ブローカー (CASB) (プレビュー)
 
 | コネクタ属性 | 説明 |
@@ -855,6 +879,7 @@ BSD スタイルと JSON 形式を使用して ESET ログを構成します。
 | **ベンダーのドキュメント/<br>インストール手順** | [Forcepoint Data Loss Prevention と Azure Sentinel](https://forcepoint.github.io/docs/dlp_and_azure_sentinel/) |
 | **サポートしているもの** | [Forcepoint](https://support.forcepoint.com/) |
 | | |
+
 ## <a name="forcepoint-next-generation-firewall-ngfw-preview"></a>Forcepoint Next Generation Firewall (NGFW) (プレビュー)
 
 | コネクタ属性 | 説明 |
@@ -864,6 +889,8 @@ BSD スタイルと JSON 形式を使用して ESET ログを構成します。
 | **ベンダーのドキュメント/<br>インストール手順** | [Forcepoint Next-Gen Firewall と Azure Sentinel](https://forcepoint.github.io/docs/ngfw_and_azure_sentinel/) |
 | **サポートしているもの** | [Forcepoint](https://support.forcepoint.com/) |
 | | |
+
+
 
 ## <a name="forgerock-common-audit-caud-for-cef-preview"></a>ForgeRock Common Audit (CAUD) for CEF (プレビュー)
 
@@ -879,11 +906,12 @@ BSD スタイルと JSON 形式を使用して ESET ログを構成します。
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** <br><br>[Fortinet ログをログ フォワーダーに送信する](#send-fortinet-logs-to-the-log-forwarder) |
+| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** <br><br>[Fortinet ログをログ フォワーダーに送信する](#send-fortinet-logs-to-the-log-forwarder) <br<br>[Fortinet Fortigate ソリューション](sentinel-solutions-catalog.md#fortinet-fortigate)で利用可能|
 | **Log Analytics テーブル** | CommonSecurityLog |
 | **ベンダーのドキュメント/<br>インストール手順** | [Fortinet ドキュメント ライブラリ](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)<br>お使いのバージョンを選択し、*Handbook* (ハンドブック) および *Log Message Reference* (ログ メッセージ リファレンス) PDF を使用します。 |
 | **サポートしているもの** | [Fortinet](https://support.fortinet.com/) |
 | | |
+
 ### <a name="send-fortinet-logs-to-the-log-forwarder"></a>Fortinet ログをログ フォワーダーに送信する
 
 お使いの Fortinet アプライアンスで CLI を開き、次のコマンドを実行します。
@@ -900,6 +928,7 @@ end
 - サーバーの **IP アドレス** をログ フォワーダーの IP アドレスに置き換えます。
 - **Syslog のポート** を **514** に設定するか、フォワーダーの Syslog デーモンに設定されているポートに設定します。
 - 初期の FortiOS のバージョンで CEF 形式を有効にするため、コマンド セット **csv disable** を実行する必要が生じる場合があります。
+
 
 
 ## <a name="google-workspace-g-suite-preview"></a>Google Workspace (G-Suite) (プレビュー)
@@ -926,6 +955,7 @@ end
 1. Google pickle 文字列を取得するには、(credentials.json と同じパスで) [この python スクリプト](https://aka.ms/sentinel-GWorkspaceReportsAPI-functioncode)を実行します。
 1. 単一引用符で囲まれた pickle 文字列の出力をコピーして保存します。 これは、関数アプリをデプロイするために必要になります。
 
+
 ## <a name="illusive-attack-management-system-ams-preview"></a>Illusive 攻撃管理システム (AMS) (プレビュー)
 
 | コネクタ属性 | 説明 |
@@ -940,7 +970,7 @@ end
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** |
+| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** <br><br>[Imperva Cloud WAF ソリューション](sentinel-solutions-catalog.md#imperva)で利用可能|
 | **Log Analytics テーブル** | CommonSecurityLog |
 | **ベンダーのドキュメント/<br>インストール手順** | [Imperva WAF Gateway アラートの Azure Sentinel へのログ記録を有効にする手順](https://community.imperva.com/blogs/craig-burlingame1/2020/11/13/steps-for-enabling-imperva-waf-gateway-alert) |
 | **サポートしているもの** | [Imperva](https://www.imperva.com/support/technical-support/) |
@@ -951,13 +981,16 @@ end
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | [**Syslog**](connect-syslog.md) |
+| **データ インジェスト方法** | [**Syslog**](connect-syslog.md)<br><br> [InfoBlox Threat Defense ソリューション](sentinel-solutions-catalog.md#infoblox)で利用可能 |
 | **Log Analytics テーブル** | syslog |
 | **Kusto 関数エイリアス:** | InfobloxNIOS |
 | **Kusto 関数 URL:** | https://aka.ms/sentinelgithubparsersinfoblox |
 | **ベンダーのドキュメント/<br>インストール手順** | [NIOS SNMP および Syslog デプロイ ガイド](https://www.infoblox.com/wp-content/uploads/infoblox-deployment-guide-slog-and-snmp-configuration-for-nios.pdf) |
 | **サポートしているもの** | Microsoft |
 | | |
+
+
+
 
 ## <a name="juniper-srx-preview"></a>Juniper SRX (プレビュー)
 
@@ -971,6 +1004,18 @@ end
 | **サポートしているもの** | [Juniper Networks](https://support.juniper.net/support/) |
 | | |
 
+## <a name="lookout-mobile-threat-defense-preview"></a>Lookout Mobile Threat Defense (プレビュー)
+
+| コネクタ属性 | 説明 |
+| --- | --- |
+| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) <br><br>[Lookout Mobile Threat Defense for Azure Sentinel](sentinel-solutions-catalog.md#lookout) ソリューションのインストール後にのみ利用可能 |
+| **Log Analytics テーブル** | Lookout_CL |
+| **API 資格情報** | <li>Lookout アプリケーション キー |
+| **ベンダーのドキュメント/<br>インストール手順** | <li>[インストール ガイド](https://esupport.lookout.com/s/article/Lookout-with-Azure-Sentinel) (サインインが必要)<li>[API のドキュメント](https://esupport.lookout.com/s/article/Mobile-Risk-API-Guide) (サインインが必要)<li>[Lookout Mobile Endpoint Security](https://www.lookout.com/products/mobile-endpoint-security) |
+| **サポートしているもの** | [Lookout](https://www.lookout.com/support) |
+| | |
+
+
 
 ## <a name="microsoft-365-defender"></a>Microsoft 365 Defender
 
@@ -979,6 +1024,17 @@ end
 | **データ インジェスト方法** | **Azure サービス間の統合: <br>[Microsoft 365 Defender から Azure Sentinel にデータを接続する](connect-microsoft-365-defender.md)** (上位のコネクタに関する記事) |
 | **ライセンスの前提条件/<br>コスト情報** | [Microsoft 365 Defender の有効なライセンス](/microsoft-365/security/mtp/prerequisites)
 | **Log Analytics テーブル** | **アラート:**<br>SecurityAlert<br>SecurityIncident<br>**Defender for Endpoint のイベント:**<br>DeviceEvents<br>DeviceFileEvents<br>DeviceImageLoadEvents<br>DeviceInfo<br>DeviceLogonEvents<br>DeviceNetworkEvents<br>DeviceNetworkInfo<br>DeviceProcessEvents<br>DeviceRegistryEvents<br>DeviceFileCertificateInfo<br>**Defender for Office 365 のイベント:**<br>EmailAttachmentInfo<br>EmailUrlInfo<br>EmailEvents<br>EmailPostDeliveryEvents |
+| **サポートしているもの** | Microsoft |
+| | |
+
+## <a name="microsoft-365-insider-risk-management-irm-preview"></a>Microsoft 365 Insider Risk Management (IRM) (プレビュー)
+
+| コネクタ属性 | 説明 |
+| --- | --- |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[API ベースの接続](connect-azure-windows-microsoft-services.md#api-based-connections)**<br><br>[Microsoft 365 Insider Risk Management ソリューション](sentinel-solutions-catalog.md#domain-solutions)でも利用可能 |
+| **ライセンスと他の前提条件** | <ul><li>Microsoft 365 E5/A5/G5、またはそれに付随するコンプライアンスまたは IRM アドオンの有効なサブスクリプション。<li>[Microsoft 365 Insider Risk Management](/microsoft-365/compliance/insider-risk-management) が完全にオンボードされ、[IRM ポリシー](/microsoft-365/compliance/insider-risk-management-policies)が定義され、アラートが生成されている。<li>Azure Sentinel コネクタ経由でアラートを受信するために、Office 365 Management Activity API への IRM アラートのエクスポートを有効にするように[構成された Microsoft 365 IRM](/microsoft-365/compliance/insider-risk-management-settings#export-alerts-preview)。)
+| **Log Analytics テーブル** | SecurityAlert |
+| **データ クエリ フィルター** | `SecurityAlert`<br>`\| where ProductName == "Microsoft 365 Insider Risk Management"` |
 | **サポートしているもの** | Microsoft |
 | | |
 
@@ -1029,6 +1085,8 @@ end
 | **Log Analytics テーブル** | OfficeActivity |
 | **サポートしているもの** | Microsoft |
 | | |
+
+
 
 ## <a name="morphisec-utpp-preview"></a>Morphisec UTPP (プレビュー)
 
@@ -1148,6 +1206,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | | |
 
 
+
 ## <a name="oracle-weblogic-server-preview"></a>Oracle WebLogic Server (プレビュー)
 
 | コネクタ属性 | 説明 |
@@ -1189,7 +1248,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** |
+| **データ インジェスト方法** | **[Syslog を介した Common Event Format (CEF)](connect-common-event-format.md)** <br><br>[Palo Alto PAN-OS and Prisma ソリューション](sentinel-solutions-catalog.md#palo-alto)でも利用可能|
 | **Log Analytics テーブル** | CommonSecurityLog |
 | **ベンダーのドキュメント/<br>インストール手順** | [Common Event Format (CEF) 構成ガイド](https://aka.ms/asi-syslog-paloalto-forwarding)<br>[Syslog の監視を構成する](https://aka.ms/asi-syslog-paloalto-configure) |
 | **サポートしているもの** | [Palo Alto Networks](https://www.paloaltonetworks.com/company/contact-support) |
@@ -1207,11 +1266,12 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | | |
 
 
+
 ## <a name="proofpoint-on-demand-pod-email-security-preview"></a>Proofpoint On Demand (POD) の電子メール セキュリティ (プレビュー)
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) |
+| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) <br><br>[Proofpoint POD ソリューション](sentinel-solutions-catalog.md#proofpoint)でも利用可能 |
 | **Log Analytics テーブル** | ProofpointPOD_message_CL<br>ProofpointPOD_maillog_CL |
 | **Azure 関数アプリのコード** | https://aka.ms/sentinel-proofpointpod-functionapp |
 | **API 資格情報** | <li>ProofpointClusterID<li>ProofpointToken |
@@ -1227,7 +1287,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) |
+| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md) <br><br>[Proofpoint TAP ソリューション](sentinel-solutions-catalog.md#proofpoint)でも利用可能 |
 | **Log Analytics テーブル** | ProofPointTAPClicksPermitted_CL<br>ProofPointTAPClicksBlocked_CL<br>ProofPointTAPMessagesDelivered_CL<br>ProofPointTAPMessagesBlocked_CL |
 | **Azure 関数アプリのコード** | https://aka.ms/sentinelproofpointtapazurefunctioncode |
 | **API 資格情報** | <li>API ユーザー名<li>API パスワード |
@@ -1254,7 +1314,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md)<br><br>[Qualys VM KB の追加構成](#extra-configuration-for-the-qualys-vm-kb) |
+| **データ インジェスト方法** | [**Azure Functions と REST API**](connect-azure-functions-template.md)<br><br>[Qualys VM KB の追加構成](#extra-configuration-for-the-qualys-vm-kb) <br><br>[Qualys VM ソリューション](sentinel-solutions-catalog.md#qualys)でも利用可能|
 | **Log Analytics テーブル** | QualysKB_CL |
 | **Azure 関数アプリのコード** | https://aka.ms/sentinel-qualyskb-functioncode |
 | **API 資格情報** | <li>API ユーザー名<li>API パスワード |
@@ -1272,7 +1332,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 1. **[新規]** ドロップダウン メニューを選択し、 **[ユーザー]** を選択します。
 1. API アカウントのユーザー名とパスワードを作成します。
 1. **[ユーザー ロール]** タブで、アカウント ロールが **[マネージャー]** に設定され、**GUI** と **API** へのアクセスが許可されていることを確認します
-1. 管理者アカウントからログアウトし、検証のために新しい API 資格情報を使用してコンソールにログインした後、API アカウントからログアウトします。
+1. 管理者アカウントからサインアウトし、検証のために新しい API 資格情報を使用してコンソールにサインインした後、API アカウントからサインアウトします。
 1. 管理者アカウントを使用してコンソールにログインし直し、API アカウントのユーザー ロールを変更して、**GUI** へのアクセスを削除します。
 1. すべての変更を保存します。
 
@@ -1296,7 +1356,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 1. **[新規]** ドロップダウン メニューを選択し、 **[ユーザー]** を選択します。
 1. API アカウントのユーザー名とパスワードを作成します。
 1. **[ユーザー ロール]** タブで、アカウント ロールが **[マネージャー]** に設定され、**GUI** と **API** へのアクセスが許可されていることを確認します
-1. 管理者アカウントからログアウトし、検証のために新しい API 資格情報を使用してコンソールにログインした後、API アカウントからログアウトします。
+1. 管理者アカウントからサインアウトし、検証のために新しい API 資格情報を使用してコンソールにログインした後、API アカウントからサインアウトします。
 1. 管理者アカウントを使用してコンソールにログインし直し、API アカウントのユーザー ロールを変更して、**GUI** へのアクセスを削除します。
 1. すべての変更を保存します。
 
@@ -1306,12 +1366,13 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 大量の Qualys ホスト検出データが取り込まれる可能性があるため、実行時間が関数アプリの既定のタイムアウトである 5 分を超える可能性があります。 従量課金プランで、既定のタイムアウト時間を最大の 10 分に増やして、関数アプリを実行できる時間を増やします。
 
-1. 関数アプリで、関数アプリ名を選択し、 **[App Service Editor]** ブレードを選択します。
+1. 関数アプリで、関数アプリ名を選択し、 **[App Service Editor]** ページを選択します。
 1. **[移動]** を選択してエディターを開いた後、**wwwroot** ディレクトリの **host.json** ファイルを選択します。
 1. 行 `managedDependancy` の前に行 `"functionTimeout": "00:10:00",` を追加します。
 1. **[保存済み]** がエディターの右上隅に表示されたことを確認してから、エディターを終了します。
 
 より長いタイムアウト時間が必要な場合は、[App Service プラン](../azure-functions/functions-scale.md)へのアップグレードを検討してください。
+
 
 
 ## <a name="salesforce-service-cloud-preview"></a>Salesforce Service Cloud (プレビュー)
@@ -1331,7 +1392,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | | |
 
 
-## <a name="security-events-windows"></a>セキュリティ イベント (Windows)
+## <a name="security-events-via-legacy-agent-windows"></a>レガシ エージェントを使用したセキュリティ イベント (Windows)
 
 | コネクタ属性 | 説明 |
 | --- | --- |
@@ -1341,6 +1402,8 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | | |
 
 詳細については、[セキュリティで保護されていないプロトコル ブックの設定](./get-visibility.md#use-built-in-workbooks)に関するページを参照してください。
+
+Azure Monitor エージェント (AMA) に基づく [**AMA コネクタを使用した Windows セキュリティ イベント**](#windows-security-events-via-ama)も参照
 
 ## <a name="sentinelone-preview"></a>SentinelOne (プレビュー)
 
@@ -1362,7 +1425,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 手順に従って資格情報を取得します。
 
-1. 管理者ユーザーの資格情報を使用して SentinelOne 管理コンソールにログインします。
+1. 管理者ユーザーの資格情報を使用して SentinelOne 管理コンソールにサインインします。
 1. 管理コンソールで、 **[設定]** を選択します。
 1. **[設定]** ビューで、 **[ユーザー]** を選択します
 1. **[新しいユーザー]** を選択します。
@@ -1370,6 +1433,8 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 1. [ロール] で、 **[管理者]** を選択します。
 1. **[保存]** を選択します
 1. 新しいユーザーの資格情報を、データ コネクタで使用するために保存します。
+
+
 
 ## <a name="sonicwall-firewall-preview"></a>SonicWall ファイアウォール (プレビュー)
 
@@ -1391,6 +1456,8 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | **ベンダーのドキュメント/<br>インストール手順** | [Azure Sentinel と統合します](https://docs.sophos.com/pcg/optix/help/en-us/pcg/optix/tasks/IntegrateAzureSentinel.html) (最初の手順はスキップします)。<br>[Sophos クエリのサンプル](https://docs.sophos.com/pcg/optix/help/en-us/pcg/optix/concepts/ExampleAzureSentinelQueries.html) |
 | **サポートしているもの** | [Sophos](https://secure2.sophos.com/en-us/support.aspx) |
 | | |
+
+
 
 
 ## <a name="sophos-xg-firewall-preview"></a>Sophos XG Firewall (プレビュー)
@@ -1465,6 +1532,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | | |
 
 
+
 ## <a name="thycotic-secret-server-preview"></a>Thycotic Secret Server (プレビュー)
 
 | コネクタ属性 | 説明 |
@@ -1474,6 +1542,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | **ベンダーのドキュメント/<br>インストール手順** | [セキュリティで保護された Syslog/CEF ログ](https://thy.center/ss/link/syslog) |
 | **サポートしているもの** | [Thycotic](https://thycotic.force.com/support/s/) |
 | | |
+
 
 ## <a name="trend-micro-deep-security"></a>Trend Micro Deep Security
 
@@ -1510,6 +1579,8 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | **コネクタのデプロイ手順** | Azure Resource Manager (ARM) テンプレートを使用した[ワンクリック デプロイ](connect-azure-functions-template.md?tabs=ARM) |
 | **サポートしているもの** | [Trend Micro](https://success.trendmicro.com/technical-support) |
 | | |
+
+
 
 ## <a name="vmware-carbon-black-endpoint-standard-preview"></a>VMware Carbon Black Endpoint Standard (プレビュー)
 
@@ -1569,14 +1640,16 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 | **サポートしているもの** | Microsoft |
 | | |
 
-## <a name="windows-security-events"></a>Windows セキュリティ イベント
+## <a name="windows-security-events-via-ama"></a>AMA を使用した Windows セキュリティ イベント
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[セキュリティ イベントを収集するために Windows サーバーに接続する](connect-windows-security-events.md)** (上位のコネクタの記事) |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[セキュリティ イベントを収集するために Windows サーバーに接続する](connect-windows-security-events.md?tabs=AMA)** (上位のコネクタの記事) |
 | **Log Analytics テーブル** | SecurityEvents |
 | **サポートしているもの** | Microsoft |
 | | |
+
+[**レガシ エージェント コネクタを使用したセキュリティ イベント**](#security-events-via-legacy-agent-windows)も参照。
 
 ## <a name="workplace-from-facebook-preview"></a>Workplace from Facebook (プレビュー)
 
@@ -1596,7 +1669,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 ### <a name="configure-webhooks"></a>Webhook を構成する
 
-1. 管理者ユーザーの資格情報を使用して Workplace にログインします。
+1. 管理者ユーザーの資格情報を使用して Workplace にサインインします。
 1. 管理者用パネルで、 **[統合]** を選択します。
 1. **[すべての統合]** ビューで、 **[カスタム統合を作成]** を選択します。
 1. 名前と説明を入力して、 **[作成]** を選択します。
@@ -1609,17 +1682,19 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 1. **Workplace from Facebook** に戻ります。 **[Webhook を設定]** パネルの各タブで、 **[コールバック URL]** を直前の手順でコピーした関数の URL として設定し、 **[トークンを認証]** を自動デプロイ中に受信した、または手動デプロイ中に入力した同じ値として設定します。
 1. **[保存]** を選択します。
 
+
+
 ## <a name="zimperium-mobile-thread-defense-preview"></a>Zimperium Mobile Thread Defense (プレビュー)
 
-Zimperium Mobile Threat Defense データ コネクタでは、Zimperium の脅威ログを Azure Sentinel に接続して、ダッシュボードを表示し、カスタム アラートを作成し、調査を向上させることができます。 このコネクタにより、組織のモバイル脅威のランドスケープに関するより詳細な分析情報が提供され、セキュリティ運用機能が向上します。 詳細については、を参照してください。
+Zimperium Mobile Threat Defense データ コネクタでは、Zimperium の脅威ログを Azure Sentinel に接続して、ダッシュボードを表示し、カスタム アラートを作成し、調査を向上させることができます。 このコネクタにより、組織のモバイル脅威のランドスケープに関するより詳細な分析情報が提供され、セキュリティ運用機能が向上します。
 
-Azure Sentinel への接続の詳細については、[Azure Sentinel への Zimperium の接続](#zimperium-mobile-thread-defense-preview)に関するページを参照してください。
+詳細については、「[Zimperium の Azure Sentinel への接続](#zimperium-mobile-thread-defense-preview)」を参照してください。
 
 | コネクタ属性 | 説明 |
 | --- | --- |
 | **データ インジェスト方法** | [**Azure Sentinel データ コレクター API**](connect-rest-api-template.md)<br><br>[Zimperium MTD を構成して接続する](#configure-and-connect-zimperium-mtd) |
 | **Log Analytics テーブル** | ZimperiumThreatLog_CL<br>ZimperiumMitigationLog_CL |
-| **ベンダーのドキュメント/<br>インストール手順** | [Zimperium カスタマー サポート ポータル](https://support.zimperium.com/) (ログインが必要) |
+| **ベンダーのドキュメント/<br>インストール手順** | [Zimperium カスタマー サポート ポータル](https://support.zimperium.com/) (サインインが必要) |
 | **サポートしているもの** | [Zimperium](https://www.zimperium.com/support) |
 | | |
 
@@ -1677,7 +1752,7 @@ Azure Sentinel への接続の詳細については、[Azure Sentinel への Zim
 
 ### <a name="extra-configuration-for-zscaler-private-access"></a>Zscaler Private Access の追加構成
 
-次の構成手順に従って、Zscaler Private Access のログを Azure Sentinel に取り込みます。 以下に示す手順の詳細については、[Azure Monitor のドキュメント](../azure-monitor/agents/data-sources-json.md)をご覧ください。 Zscaler Private Access のログは、ログ ストリーミング サービス (LSS) を介して配信されます。 詳細については、[LSS のドキュメント](https://help.zscaler.com/zpa/about-log-streaming-service)をご覧ください。
+次の構成手順に従って、Zscaler Private Access のログを Azure Sentinel に取り込みます。 詳細については、[Azure Monitor のドキュメント](../azure-monitor/agents/data-sources-json.md)を参照してください。 Zscaler Private Access のログは、ログ ストリーミング サービス (LSS) を介して配信されます。 詳細については、[LSS のドキュメント](https://help.zscaler.com/zpa/about-log-streaming-service)をご覧ください。
 
 1. [ログ レシーバー](https://help.zscaler.com/zpa/configuring-log-receiver)を構成します。 ログ レシーバーの構成中に、 **[ログ テンプレート]** として **[JSON]** を選択します。
 1. 構成ファイル ([zpa.conf](https://aka.ms/sentinel-zscalerprivateaccess-conf)) をダウンロードします。

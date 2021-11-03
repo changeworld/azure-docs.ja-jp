@@ -84,6 +84,8 @@
           href: synapse-link-use-cases.md
         - name: Synapse Link に関する FAQ
           href: synapse-link-frequently-asked-questions.yml
+        - name: カスタム パーティション分割 - 概要
+          href: custom-partitioning-analytical-store.md
     - name: バックアップと復元
       items:
         - name: バックアップと復元の概要
@@ -650,6 +652,14 @@
               href: secure-access-to-data.md
             - name: 高度な脅威保護
               href: sql/advanced-threat-protection.md
+        - name: 部分的なドキュメント更新
+          items:
+            - name: 部分的なドキュメント更新の概要
+              href: partial-document-update.md
+            - name: 部分的なドキュメント更新を開始する
+              href: partial-document-update-getting-started.md
+            - name: 部分的なドキュメント更新の FAQ
+              href: partial-document-update-faq.yml
         - name: 接続モード
           href: sql/sql-sdk-connection-modes.md
     - name: 攻略ガイド
@@ -1077,6 +1087,10 @@
           href: cassandra/powershell-samples.md
         - name: Azure CLI を使用して管理する
           href: cassandra/cli-samples.md
+        - name: Cassandra API を使用した Glowroot
+          href: cassandra/glowroot-cassandra.md
+        - name: エラー コードの定義
+          href: cassandra/error-codes-solution.md
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
@@ -1412,6 +1426,9 @@
     - name: Free レベル
       href: free-tier.md
       displayName: free tier
+    - name: 合計アカウント スループットを制限する
+      displayName: 'cost, RUs, RU'
+      href: limit-total-account-throughput.md
     - name: Azure Cosmos DB リソースの管理
       items:
         - name: Azure Cosmos アカウントを管理する
@@ -1474,6 +1491,8 @@
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Synapse Link で Power BI を使用する
           href: synapse-link-power-bi.md
+        - name: カスタム パーティション分割を構成する
+          href: configure-custom-partitioning.md
     - name: バックアップと復元
       items:
         - name: 継続的バックアップの管理

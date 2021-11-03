@@ -8,12 +8,12 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 027450a2e5e2a0c749c2f4b02148ffe849f2a182
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: fba44d9c7ce64f82785ec4f8cbb47ad7d3f292b5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823941"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071384"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-classic-application-with-azure-diagnostics"></a>Azure Diagnostics で Cloud Services (クラシック) アプリケーションのフローをトレースする
 
@@ -36,29 +36,31 @@ Trace、Debug、TraceSource では、送信されるメッセージを収集お�
 Visual Studio で提供されるテンプレートを使用すると、リスナーの構成が自動的に追加されるので注意してください。
 
 ### <a name="add-a-trace-listener"></a>トレース リスナーを追加する
+
 1. ロールに応じて web.config または app.config ファイルを開きます。
+
 2. 次のコードをファイルに追加します。 Version 属性を変更して、参照するアセンブリのバージョン番号を使用します。 Azure SDK の更新プログラムがある場合を除き、アセンブリのバージョンは Azure SDK のリリースごとに必ずしも変更されるわけではありません。
-   
-    ```
-    <system.diagnostics>
-        <trace>
-            <listeners>
-                <add type="Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitorTraceListener,
-                  Microsoft.WindowsAzure.Diagnostics,
-                  Version=2.8.0.0,
-                  Culture=neutral,
-                  PublicKeyToken=31bf3856ad364e35"
-                  name="AzureDiagnostics">
-                    <filter type="" />
-                </add>
-            </listeners>
-        </trace>
-    </system.diagnostics>
-    ```
+
+   ```xml
+   <system.diagnostics>
+       <trace>
+           <listeners>
+               <add type="Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitorTraceListener,
+                 Microsoft.WindowsAzure.Diagnostics,
+                 Version=2.8.0.0,
+                 Culture=neutral,
+                 PublicKeyToken=31bf3856ad364e35"
+                 name="AzureDiagnostics">
+                   <filter type="" />
+               </add>
+           </listeners>
+       </trace>
+   </system.diagnostics>
+   ```
+
    > [!IMPORTANT]
    > Microsoft.WindowsAzure.Diagnostics アセンブリへのプロジェクト参照があることを確認してください。 参照先の Microsoft.WindowsAzure.Diagnostics アセンブリのバージョンと一致するように上記の xml のバージョン番号を更新します。
-   > 
-   > 
+
 3. 構成ファイルを保存します。
 
 リスナーの詳細については、「 [トレース リスナー](/dotnet/framework/debug-trace-profile/trace-listeners)」を参照してください。

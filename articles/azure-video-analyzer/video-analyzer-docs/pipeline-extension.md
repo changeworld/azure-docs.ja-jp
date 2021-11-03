@@ -3,13 +3,14 @@ title: パイプライン拡張機能 - Azure Video Analyzer
 description: Azure Video Analyzer を使用すると、パイプライン拡張ノードを通じてパイプライン処理機能を拡張できます。 この記事では、パイプライン拡張ノードについて説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 55cb6a265e74eb4209742f8fb0a8b6f34cb08254
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 70c5ab2f2bc3a82889501496d23eb8a681c7ec68
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604696"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020591"
 ---
 # <a name="pipeline-extension"></a>パイプライン拡張機能
 
@@ -19,9 +20,11 @@ Video Analyzer では、次のパイプライン拡張プロセッサがサポ�
 
 * [HTTP 拡張プロセッサ](pipeline.md#http-extension-processor) 
 * [gRPC 拡張プロセッサ](pipeline.md#grpc-extension-processor)
-* [Cognitive Services 拡張プロセッサ](pipeline.md#cognitive-services-extension-processor) 
-    
-パイプライン拡張ノードが結果を JSON 形式で返すためには、分析拡張機能プラグインが必要となります。 理想的には、結果が[推論メタデータ スキーマ オブジェクト モデル](inference-metadata-schema.md)に準拠している必要があります
+* [Cognitive Services 拡張プロセッサ](pipeline.md#cognitive-services-extension-processor)
+
+パイプライン拡張ノードが結果を JSON 形式で返すためには、分析拡張機能プラグインが必要となります。 理想的には、結果が[推論メタデータ スキーマ オブジェクト モデル](inference-metadata-schema.md)に準拠している必要があります。
+
+[!INCLUDE [available-features](./includes/available-features.md)]
 
 ## <a name="http-extension-processor"></a>HTTP 拡張プロセッサ
 
@@ -49,12 +52,12 @@ gRPC 拡張プロセッサは、推論メッセージの交換と共にプロパ
 
 ## <a name="cognitive-services-extension-processor"></a>Cognitive Services 拡張プロセッサ
 
-Cognitive Services 拡張プロセッサは、Video Analyzer が gRPC ベースの高パフォーマンスの[構造化プロトコル](grpc-extension-protocol.md)を使用して [Computer Vision 空間分析](../../cognitive-services/computer-vision/)機能とうまく連携できるようにするカスタムビルドの拡張プロセッサです。 
+Cognitive Services 拡張プロセッサ (Microsoft によって構築およびサポートされている AI) は、Video Analyzer が gRPC ベースの高パフォーマンスの[構造化プロトコル](grpc-extension-protocol.md)を使用して [Computer Vision 空間分析](../../cognitive-services/computer-vision/overview.md)機能とうまく連携できるようにするカスタムビルドの拡張プロセッサです。 
 
 Cognitive Services 拡張プロセッサ ノードは、次の場合に使用します。
 
 * 既存の[空間分析操作](../../cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview.md)との相互運用性を向上させたい。
-* Microsoft によって構築およびサポートされている AI の gRPC プロトコル、精度、パフォーマンスのすべての利点を利用したい。
+* **Microsoft によって構築およびサポートされている AI** の gRPC プロトコル、精度、パフォーマンスのすべての利点を利用したい。
 * 低遅延かつ高スループットで複数のカメラ フィードを分析する。
 
 ## <a name="use-your-inferencing-model"></a>推論モデルを使用する
@@ -70,8 +73,6 @@ Cognitive Services 拡張プロセッサ ノードは、次の場合に使用し
 
 あらかじめ構築された拡張サービスを使用し、低フレーム レート ([HTTP 拡張プロセッサ](pipeline.md#http-extension-processor)) または高フレーム レート ([gRPC 拡張プロセッサ](pipeline.md#grpc-extension-processor)) で Video Analyzer の操作を行う例を紹介した、いずれかのクイックスタートを体験してみましょう。
 
-
 ## <a name="next-steps"></a>次の手順 
 
-概念: [イベントベースのビデオ記録](event-based-video-recording-concept.md)
-
+概念: [ビデオ記録](video-recording.md)

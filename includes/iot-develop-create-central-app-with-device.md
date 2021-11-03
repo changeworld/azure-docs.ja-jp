@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 981ebfece7bc12584adfdf1e565bd275d8e1b2fb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 210978e3ecc817c55103267014fef9bd9e36a0e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226693"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032780"
 ---
 ## <a name="create-an-application"></a>アプリケーションの作成
 デバイスを Azure IoT に接続する方法は複数あります。 このセクションでは、Azure IoT Central を使用してデバイスを接続する方法について説明します。 IoT Central は、IoT ソリューションにおけるデバイス管理のコストと複雑さを軽減する IoT アプリケーション プラットフォームです。
@@ -38,16 +38,15 @@ ms.locfileid: "108226693"
     :::image type="content" source="media/iot-develop-create-central-app-with-device/iot-central-created.png" alt-text="IoT Central の [新しいアプリケーション] ダッシュボード":::
 
 ## <a name="add-a-device"></a>デバイスを追加する
-このセクションでは、IoT Central アプリケーションに新しいデバイスを追加します。 デバイスとは、アプリケーションに接続する実際のデバイスまたはシミュレートされたデバイスを表す、デバイス テンプレートのインスタンスです。 
+このセクションでは、IoT Central アプリケーションに新しいデバイスを追加します。 このデバイスはデバイス テンプレートのインスタンスであり、アプリケーションに接続するデバイスを表しています。 
 
 新しいデバイスを作成するには:
 1. 左ペインで **[デバイス]** を選択し、 **[+ 新規]** を選択します。
-1. **[デバイス テンプレート]** の設定は *[Unassigned]\(未割り当て\)* のままにしてください。
+1. **[Device template]\(デバイス テンプレート\)** は *[Unassigned]\(割り当てなし\)* のままにし、 **[Simulate this device?]\(このデバイスをシミュレート\)** は *[No]\(いいえ\)* に設定します。
 
-    > [!NOTE]
-    > このクイックスタートでは、簡潔にするために、未割り当てのテンプレートを使用するシミュレートされたデバイスを接続します。 引き続き IoT Central を使用してデバイスを管理する場合は、デバイス テンプレートの使用に関する知識が必要です。 デバイス テンプレートを使った作業の概要については、「[クイックスタート: IoT Central アプリケーションにシミュレートされたデバイスを追加する](../articles/iot-central/core/quick-create-simulated-device.md)」を参照してください。
 1. わかりやすい **デバイス名** と **デバイス ID** を選択します。 必要に応じて、生成された値を使用します。
     :::image type="content" source="media/iot-develop-create-central-app-with-device/iot-central-create-device.png" alt-text="IoT Central の新しいデバイス ダイアログ":::
+
 1. **［作成］** を選択します
 
     作成したデバイスが **[すべてのデバイス]** 一覧に表示されます。

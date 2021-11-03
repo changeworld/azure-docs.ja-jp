@@ -5,23 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 09/08/2021
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 276ac87c4d1f0c31d75c4dd653aaa5c67f96d6c0
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.date: 11/02/2021
+ms.custom: references_regions, devx-track-azurecli, ignite-fall-2021
+ms.openlocfilehash: 32e21c102bec3c66c066cad9083ab6a561105289
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754522"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084996"
 ---
-# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
+# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する
 
 Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングの自動操作が提供されます。これにより、ハイブリッド シナリオが推進され、継続的なメンテナンスが削減されます。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このクイックスタートでは、Azure portal を使用して、Azure Managed Instance for Apache Cassandra クラスターを作成する方法について説明します。
 
@@ -53,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    * **[Confirm Cassandra admin password]\(Cassandra 管理者パスワードの確認\)** - パスワードを再入力します。
 
    > [!NOTE]
-   > パブリック プレビュー期間中は、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、インド中部、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
+   > 現時点では、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、インド中部、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="クラスターの作成フォームに入力する。" lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 

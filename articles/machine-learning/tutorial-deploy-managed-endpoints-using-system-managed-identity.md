@@ -10,12 +10,12 @@ author: rsethur
 ms.date: 08/05/2021
 ms.topic: tutorial
 ms.custom: tutorial, devplatv2
-ms.openlocfilehash: 7c55e5a5a73a3b9076c1077f36c1f951eeee11cc
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 18e8c09f1d1a734d2e68e656658c3017a115f9a9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429986"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079341"
 ---
 # <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>チュートリアル: マネージド オンライン エンドポイントと ID を使用してリソースにアクセスする (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "129429986"
 
 * Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
-* Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[CLI (v2) (プレビュー) のインストール、設定、使用](how-to-configure-cli.md)に関するページを参照してください。 
+* Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[CLI (v2) (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
 * Azure リソース グループがあること、また、そのリソース グループにおける `Contributor` アクセス権がご自身 (またはご使用のサービス プリンシパル) に割り当てられていることが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなリソース グループが得られます。 
 
@@ -120,7 +120,7 @@ YAML のリファレンスについては、[マネージド オンライン エ
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
-問題が発生した場合は、「[マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)」を参照してください。
+問題が発生した場合は、「[マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](./how-to-troubleshoot-online-endpoints.md)」を参照してください。
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>システム割り当てマネージド ID にストレージへのアクセス許可を与える
 

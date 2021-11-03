@@ -2,17 +2,17 @@
 title: マネージド ID を使用してストレージ アカウントへの接続を設定する
 titleSuffix: Azure Cognitive Search
 description: マネージド ID を使用して、Azure Storage アカウントへのインデクサー接続を設定する方法を学ぶ
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: 139fa020459804571129d63819a0e82e3f1737e2
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 20669c08b00e75ed7e1ec87b67f3f12269512e3b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129418653"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056131"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 

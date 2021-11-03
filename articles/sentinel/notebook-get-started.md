@@ -7,14 +7,16 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 08/23/2021
-ms.openlocfilehash: e5dc225d96021761fcdf12d5adf0f1fa371ebdb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b6ba98d1e0640070ac8d36943e6f546e10018f4e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594482"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036962"
 ---
 # <a name="tutorial-get-started-with-jupyter-notebooks-and-msticpy-in-azure-sentinel"></a>チュートリアル: Azure Sentinel での Jupyter Notebook と MSTICPy の概要
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 このチュートリアルでは、**Azure Sentinel ML ノートブックのファースト ステップ・ガイド** ノートブックを実行する方法を説明します。これにより、Azure Sentinel で Jupyter Notebook を実行し、簡単なデータ クエリを実行する基本的な構成が設定されます。
 
@@ -258,13 +260,13 @@ qry_prov = QueryProvider("AzureSentinel")
 ```
 
 > [!NOTE]
-> Azure Sentinel ドライバーを読み込んでいるときに、警告 `Runtime dependency of PyGObject is missing` が表示された場合、[[Error: *Runtime dependency of PyGObject is missing (エラー: PyGObject のランタイム依存関係が欠落しています)* ](https://github.com/Azure/Azure-Sentinel-Notebooks/wiki/%22Runtime-dependency-of-PyGObject-is-missing%22-error)] を確認してください。
+> Azure Sentinel ドライバーを読み込んでいるときに、警告 `Runtime dependency of PyGObject is missing` が表示された場合、[[Error: *Runtime dependency of PyGObject is missing (エラー: PyGObject のランタイム依存関係が欠落しています)*](https://github.com/Azure/Azure-Sentinel-Notebooks/wiki/%22Runtime-dependency-of-PyGObject-is-missing%22-error)] を確認してください。
 この警告は、ノートブックの機能には影響しません。
 >
 
 ### <a name="authenticate-to-your-azure-sentinel-workspace-from-your-notebook"></a>ノートブックから Azure Sentinel ワークスペースに対して認証する
 
-Azure 資格情報を使用した[デバイス承認](/azure/active-directory/develop/v2-oauth2-device-code)を使用して、Azure Sentinel ワークスペースに対して認証を行います。
+Azure 資格情報を使用した[デバイス承認](../active-directory/develop/v2-oauth2-device-code.md)を使用して、Azure Sentinel ワークスペースに対して認証を行います。
 
 デバイスの承認では、認証プロセスの一環として指定する 1 回限りのデバイス コードを生成することによって、認証に別の要素を追加します。
 
@@ -421,7 +423,6 @@ qry_prov.browse_queries()
 各クエリ プロバイダーには、クエリ用の既定の開始時刻と終了時刻のパラメーターがあります。 これらの時間パラメーターは、時間パラメーターが呼び出されるたびに、既定で使用されます。 既定の時間範囲を変更するには、`query_time` コントロールを開きます。 変更は、再度変更するまで有効になります。
 
 次のセルに進み、次のコードを入力して実行します。
-
 
 ```python
 # Open the query time control for your query provider
@@ -703,4 +704,3 @@ Key Vault を構成した後、データ プロバイダー セクションと T
 |**MSTICPy**     |      - [MSTICPy パッケージ構成](https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html)<br> - [MSTICPy 設定エディター](https://msticpy.readthedocs.io/en/latest/getting_started/SettingsEditor.html)<br>    - [ノートブック環境の構成](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/ConfiguringNotebookEnvironment.ipynb)<br>    - [MPSettingsEditor ノートブック](https://github.com/microsoft/msticpy/blob/master/docs/notebooks/MPSettingsEditor.ipynb) <br><br>**注**: Azure-Sentinel-Notebooks GitHub リポジトリには、コメントアウトされたセクションを含むテンプレート *msticpyconfig.yaml* ファイルも含まれており、設定を理解するのに役立ちます。      |
 |**Azure Sentinel および Jupyter Notebook**     |      - [Jupyter Notebook: 概要](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy のドキュメント](https://msticpy.readthedocs.io/)<br>    - [Azure Sentinel Notebook のドキュメント](notebooks.md)<br>    - [Infosec Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Linux Host Explorer Notebook のチュートリアル](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [セキュリティ調査に Jupyter を使用する理由](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Azure Sentinel と Notebooks を使用したセキュリティ調査](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas のドキュメント](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Batch のドキュメント](https://docs.bokeh.org/en/latest/)       |
 |     |         |
-

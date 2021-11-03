@@ -4,12 +4,12 @@ description: Application Insights でシステムとカスタムの .NET パフ�
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2b0ddb84430ccccf5da7f44909f1f2ce0459aaa9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031363"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044306"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -55,7 +55,7 @@ ASP.NET Core Web アプリケーションについて収集するように構成
    * 開発中にアプリに Application Insights を追加した場合は、プロジェクトで ApplicationInsights.config を編集して、サーバーに再デプロイします。
 3. パフォーマンス コレクター ディレクティブを編集します。
 
-    ```XML
+    ```xml
 
         <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
           <Counters>
@@ -78,7 +78,6 @@ ASP.NET Core Web アプリケーションについて収集するように構成
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-web-applications-or-netnet-core-console-applications"></a>ASP.NET Web アプリケーションまたは .NET/.NET Core Console アプリケーションについてコードでパフォーマンス カウンターを収集する
 システム パフォーマンス カウンターを収集し、それらを Application Insights に送信する場合は、次のスニペットを使用できます。
-
 
 ```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
@@ -120,17 +119,17 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ## <a name="performance-counters-in-analytics"></a>Analytics のパフォーマンス カウンター
 [Analytics](../logs/log-query-overview.md) でパフォーマンス カウンター レポートを検索して表示できます。
 
-**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが確認できます。 たとえば、使用できるカウンターを表示するには次のようにします。 
+**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが確認できます。 たとえば、使用できるカウンターを表示するには次のようにします。
 
 ![Application Insights Analytics のパフォーマンス カウンター](./media/performance-counters/analytics-performance-counters.png)
 
 (ここで、"instance" は役割またはサーバー マシンのインスタンスではなくパフォーマンス カウンターのインスタンスを示します。 パフォーマンス カウンター インスタンス名は通常、プロセスまたはアプリケーションの名前によって、プロセッサ時間などのカウンターをセグメントに分割します。)
 
-最近の利用可能なメモリのグラフを取得するには、次のようにします。 
+最近の利用可能なメモリのグラフを取得するには、次のようにします。
 
 ![Application Insights Analytics のメモリ タイムチャート](./media/performance-counters/analytics-available-memory.png)
 
-他のテレメトリと同様に、**performanceCounters** にも、アプリを実行しているホスト サーバー インスタンスの ID を示す列 `cloud_RoleInstance` があります。 たとえば、異なるコンピューター上でのアプリのパフォーマンスを比較するには、次のようにします。 
+他のテレメトリと同様に、**performanceCounters** にも、アプリを実行しているホスト サーバー インスタンスの ID を示す列 `cloud_RoleInstance` があります。 たとえば、異なるコンピューター上でのアプリのパフォーマンスを比較するには、次のようにします。
 
 ![Application Insights Analytics でロール インスタンス別にセグメント化されたパフォーマンス](./media/performance-counters/analytics-metrics-role-instance.png)
 
@@ -140,7 +139,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 * *例外レート* はシステム パフォーマンス カウンターです。 CLR ではスローされた処理済みおよび未処理の例外をすべてカウントし、特定のサンプリング時間間隔での合計をその時間間隔の長さで除算します。 Application Insights SDK では、この結果を収集し、ポータルに送信します。
 
-* *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。 これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、 [未処理の例外](./asp-net-exceptions.md)はいずれも含められません。 
+* *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。 これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、 [未処理の例外](./asp-net-exceptions.md)はいずれも含められません。
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Azure Web Apps で実行されているアプリケーションのパフォーマンス カウンター
 
@@ -162,4 +161,3 @@ ASP.NET Core でのパフォーマンス カウンターのサポートは制限
 
 * [依存関係の追跡](./asp-net-dependencies.md)
 * [例外の追跡](./asp-net-exceptions.md)
-

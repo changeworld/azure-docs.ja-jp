@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2913665d2cc834bd3b88f23ce81b46ca7a7dfbbe
-ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
+ms.openlocfilehash: e5ec368b0bc53cb70dd948669d855670ee603b12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111352752"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057402"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory で Microsoft Graph API を使用してカスタム管理者ロールを割り当てる 
 
@@ -27,10 +27,10 @@ Microsoft Graph API を使って、ユーザー アカウントにロールを�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure AD Premium P1 または P2 ライセンス
-- 特権ロール管理者または全体管理者
-- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
+- 特権ロール管理者またはグローバル管理者
+- 管理者の同意 (Microsoft Graph API の Graph エクスプローラーを使用する場合)
 
-詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment での POST 操作
 
@@ -308,6 +308,7 @@ HTTP/1.1 400 Bad Request
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください
+* [Azure AD 管理ロール フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)でご意見をお寄せください
 * ロールのアクセス許可の詳細については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください
 * 既定のユーザー アクセス許可については、[アクセス許可に関する既定のゲストとメンバー ユーザーの比較](../fundamentals/users-default-permissions.md)に関する記事を参照してください。
+

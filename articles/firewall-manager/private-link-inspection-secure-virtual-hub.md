@@ -2,17 +2,17 @@
 title: Azure Virtual WAN でプライベート エンドポイント宛てのトラフィックをセキュリティで保護する
 description: ネットワーク ルールとアプリケーション ルールを使用して、Azure Virtual WAN でプライベート エンドポイント宛てのトラフィックをセキュリティで保護する方法について説明します。
 services: firewall-manager
-author: jocortems
+author: KumudD
 ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.author: jocorte
-ms.openlocfilehash: 7322bab635d398fc7a5335546ba6fef327ff24b2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.author: kumud
+ms.openlocfilehash: 58dd59bc47c15dd5f6b04588b441297b9fbb7968
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259355"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068686"
 ---
 # <a name="secure-traffic-destined-to-private-endpoints-in-azure-virtual-wan"></a>Azure Virtual WAN でプライベート エンドポイント宛てのトラフィックをセキュリティで保護する
 
@@ -48,7 +48,7 @@ SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql
 
 4. プライベート エンドポイントのパブリック DNS ゾーンの DNS クエリを、セキュリティ保護付き仮想ハブにデプロイされている Azure Firewall に関連付けられているプライベート IP アドレスに転送するように、オンプレミスの DNS サーバーを構成します。
 
-5. 必要に応じて、セキュリティ保護付き仮想ハブにデプロイされている Azure Firewall に関連付けられているファイアウォール ポリシーで、*宛先の種類* が FQDN でプライベート リンク リソースのパブリック FQDN を *宛先* に設定して、[アプリケーション ルール](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)または[ネットワーク ルール](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)を構成します。
+5. 必要に応じて、セキュリティ保護付き仮想ハブにデプロイされている Azure Firewall に関連付けられているファイアウォール ポリシーで、*宛先の種類* が FQDN でプライベート リンク リソースのパブリック FQDN を *宛先* に設定して、[アプリケーション ルール](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)または [ネットワーク ルール](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)を構成します。
 
 6. セキュリティ保護付き仮想ハブにデプロイされている Azure Firewall に関連付けられているファイアウォール ポリシーの *[セキュリティ保護付き仮想ハブ]* に移動し、プライベート エンドポイント宛てのトラフィック フィルターを構成するセキュリティ保護付き仮想ハブを選択します。
 
@@ -150,6 +150,6 @@ SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql
    | where msg_s contains "database.windows.net"
    | where Category contains "ApplicationRule"
    ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する](../private-link/inspect-traffic-with-azure-firewall.md)

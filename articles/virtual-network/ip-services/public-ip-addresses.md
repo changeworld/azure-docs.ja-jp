@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 205cb1ea608d2e6ee82206e6cf5f85f4d1f3dfcb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5f24b2478acc0b305595b70b579d744320f0da3a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367812"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261198"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -163,4 +163,4 @@ Azure での IPv6 の詳細については、[こちら](ipv6-overview.md)を参
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure でのプライベート IP アドレス](private-ip-addresses.md)について学習する
-* [Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)
+* [Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする](./virtual-network-deploy-static-pip-arm-portal.md)

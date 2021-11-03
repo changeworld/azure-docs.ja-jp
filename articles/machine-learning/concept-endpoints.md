@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
-ms.custom: devplatv2
-ms.date: 06/17/2021
-ms.openlocfilehash: 4a4cc34b3f3bb77e0c2405d3b0a29b40fa1cd616
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: devplatv2, ignite-fall-2021
+ms.date: 10/21/2021
+ms.openlocfilehash: 02c927b55812e4b309e53679cf3548d889bdc12f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427003"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079417"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 
@@ -29,7 +29,7 @@ Azure Machine Learning エンドポイント (プレビュー) を使用して�
 > * エンドポイント
 > * デプロイメント
 > * マネージド オンライン エンドポイント
-> * Azure Kubernetes Service (AKS) オンライン エンドポイント
+> * Kubernetes オンライン エンドポイント
 > * バッチ推論エンドポイント
 
 ## <a name="what-are-endpoints-and-deployments-preview"></a>エンドポイントとデプロイ (プレビュー) とは
@@ -95,7 +95,7 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 すべてのオンライン エンドポイントは、SLA の監視と問題の診断のために、Application Insights と統合されています。 
 
-ただし、[マネージド オンライン エンドポイント](#managed-online-endpoints-vs-aks-online-endpoints-preview)には、Azure ログと Azure メトリックとの追加設定なしの統合も含まれています。
+ただし、[マネージド オンライン エンドポイント](#managed-online-endpoints-vs-kubernetes-online-endpoints-preview)には、Azure ログと Azure メトリックとの追加設定なしの統合も含まれています。
 
 ### <a name="security"></a>セキュリティ
 
@@ -104,25 +104,25 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 - エンドポイント呼び出しのための既定の SSL
 
 
-## <a name="managed-online-endpoints-vs-aks-online-endpoints-preview"></a>マネージド オンライン エンドポイントと AKS オンライン エンドポイント (プレビュー)
+## <a name="managed-online-endpoints-vs-kubernetes-online-endpoints-preview"></a>マネージド オンライン エンドポイントと Kubernetes オンライン エンドポイント (プレビュー)
 
-オンライン エンドポイントには、2 つの種類があります。**マネージド オンライン エンドポイント** (プレビュー) と **AKS オンライン エンドポイント** (プレビュー) です。 次の表は、主な違いの一部を示しています。
+オンライン エンドポイントには、2 つの種類があります。**マネージド オンライン エンドポイント** (プレビュー) と **Kubernetes オンライン エンドポイント** (プレビュー) です。 次の表は、主な違いの一部を示しています。
 
-|  | マネージド オンライン エンドポイント | AKS オンライン エンドポイント |
+|  | マネージド オンライン エンドポイント | Kubernetes オンライン エンドポイント |
 |-|-|-|
-| **推奨されるユーザー** | マネージド モデル デプロイおよび拡張された MLOps エクスペリエンスを必要とするユーザー | Azure Kubernetes Service (AKS) を使用し、インフラストラクチャの要件を自己管理できるユーザー |
+| **推奨されるユーザー** | マネージド モデル デプロイおよび拡張された MLOps エクスペリエンスを必要とするユーザー | Kubernetes を使用し、インフラストラクチャの要件を自己管理できるユーザー |
 | **インフラストラクチャの管理** | マネージド コンピューティング プロビジョニング、スケーリング、ホスト OS イメージの更新、およびセキュリティ強化 | ユーザーの責任での対応 |
-| **コンピューティングの種類** | マネージド (AmlCompute) | AKS |
+| **コンピューティングの種類** | マネージド (AmlCompute) | Kubernetes クラスター (Kubernetes) |
 | **追加設定なしの監視** | [Azure 監視](how-to-monitor-online-endpoints.md) <br> (待ち時間やスループットなど、主要なメトリックが含まれます) | サポートされていない |
-| **追加設定なしのログ** | [エンドポイント レベルでの Azure ログと Log Analytics](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | クラスター レベルでの手動セットアップ |
+| **追加設定なしのログ** | [エンドポイント レベルでの Azure ログと Log Analytics](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | サポートされています |
 | **Application Insights** | サポートされています | サポートされています |
-| **管理対象 ID** | [サポートされています](tutorial-deploy-managed-endpoints-using-system-managed-identity.md) | サポートされていません |
-| **仮想ネットワーク (VNET)** | サポートされていません (パブリック プレビュー) | クラスター レベルで手動で構成する |
+| **管理対象 ID** | [サポートされています](tutorial-deploy-managed-endpoints-using-system-managed-identity.md) | サポートされています |
+| **仮想ネットワーク (VNET)** | サポートされていません (パブリック プレビュー) | サポートされています |
 | **コストを表示する** | [エンドポイントとデプロイのレベル](how-to-view-online-endpoints-costs.md) | クラスター レベル |
 
 ### <a name="managed-online-endpoints"></a>マネージド オンライン エンドポイント
 
-マネージド オンライン エンドポイントは、デプロイ プロセスを効率化するために役立ちます。 マネージド オンライン エンドポイントには、AKS オンライン エンドポイントと比べて、以下の利点があります。
+マネージド オンライン エンドポイントは、デプロイ プロセスを効率化するために役立ちます。 マネージド オンライン エンドポイントには、Kubernetes オンライン エンドポイントと比べて、以下の利点があります。
 
 - マネージド インフラストラクチャ
     - コンピューティングを自動的にプロビジョニングし、モデルをホストします (VM の種類とスケールの設定のみ指定する必要があります) 

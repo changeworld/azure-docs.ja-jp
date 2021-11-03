@@ -3,22 +3,23 @@ title: エッジからの継続的なビデオ記録 - Azure Video Analyzer
 description: 継続的なビデオ記録 (CVR) とは、ライブ ビデオ ソースから連続して記録するプロセスを指します。 このトピックでは、CVR について、また Azure Video Analyzer で CVR を使用する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: a7909fab420302fe8246e8f1ce2cd050d1f854f8
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 11/01/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 830727c530d71e3700799ae296af6a124010a921
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603992"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031178"
 ---
 # <a name="continuous-video-recording"></a>継続的なビデオ記録    
 
-継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 Azure Video Analyzer は、RTSP ソース ノードとビデオ シンク ノードで構成されるビデオ プロセスの[パイプライン トポロジー](pipeline.md)を介して、CCTV カメラから 24 時間 365 日ベースで連続してビデオを記録することをサポートしています。 このようなパイプラインをグラフィカルに表したものが次の図です。 トポロジの JSON 表現は、こちらの[ドキュメント](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)で確認できます。 このようなトポロジを使用して、任意の長さのレコーディング (数年分のコンテンツ) を作成でき、UTC 時刻に基づいて参照できます。  
+継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 Azure Video Analyzer は、RTSP ソース ノードとビデオ シンク ノードで構成されるビデオ プロセスの[パイプライン トポロジー](pipeline.md)を介して、CCTV カメラから 24 時間 365 日ベースで連続してビデオを記録することをサポートしています。 このようなパイプラインをグラフィカルに表したものが次の図です。 トポロジの JSON 表現は、こちらの[ドキュメント](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)で確認できます。 このようなトポロジを使用して、任意の長さの記録 (数年分のコンテンツ) を作成できます。 録画のタイムスタンプは UTC で格納されます。  
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="継続的なビデオ記録":::
 
-上に示したパイプライン トポロジのインスタンスは、ビデオ シンクから Video Analyzer の[ビデオ リソース](terminology.md#video)に記録して、エッジ デバイス上で実行できます。 パイプラインがアクティブ状態にある限り、ビデオは記録されます。 ビデオはビデオ リソースとして記録されるため、Video Analyzer のストリーミング機能を使用して再生できます。 詳細については、[ビデオ レコーディングの再生](playback-recordings-how-to.md)に関するページを参照してください。
+上図のパイプライン トポロジのインスタンスは、Video Analyzer サービスのエッジ デバイス上で実行でき、ビデオ シンクは[ビデオ リソース](terminology.md#video)に記録されます。 パイプラインがアクティブ状態にある限り、ビデオは記録されます。 録画されたビデオは、Video Analyzer のストリーミング機能を使用して再生できます。 詳細については、[ビデオ レコーディングの再生](playback-recordings-how-to.md)に関するページを参照してください。
 
 ## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事  
 
@@ -29,7 +30,7 @@ ms.locfileid: "114603992"
  
 ## <a name="resilient-recording"></a>回復性がある記録
 
-Video Analyzer は、エッジ デバイスがときどきクラウドとの接続を失ったり、使用可能な帯域幅が低下したりすることがある状況での運用をサポートしています。 これを考慮して、ソースからのビデオはローカルでキャッシュに記録され、定期的にビデオ リソースと自動同期されます。 [パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)を調べると、次のプロパティが定義されていることがわかります。
+Video Analyzer エッジ モジュールは、エッジ デバイスが時折クラウドとの接続を失ったり、使用可能な帯域幅が低下することがある状況での運用をサポートしています。 これを考慮して、ソースからのビデオはローカルでキャッシュに記録され、定期的にビデオ リソースと自動同期されます。 [パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)を調べると、次のプロパティが定義されていることがわかります。
 
 ```
 "segmentLength": "PT30S",
@@ -47,12 +48,11 @@ Video Analyzer は、エッジ デバイスがときどきクラウドとの接�
 
 ## <a name="segmented-recording"></a>セグメント化された記録  
 
-上記の `segmentLength` プロパティを使用して、ビデオ リソースが記録されているストレージ アカウントへのデータ書き込みに伴う書き込みトランザクション コストを制御できます。 たとえば、アップロード期間を 30 秒から 5 分に増やした場合、ストレージ トランザクションの数は 10 分の 1 (5*60/30) に減少します。
+上記の `segmentLength` プロパティを使用して、ビデオ リソースが記録されているストレージ アカウントへのデータ書き込みに伴う書き込みトランザクション コストを制御できます。 たとえば、この値を 30 秒から 5 分に増やした場合、ストレージ トランザクションの数は 10 分の 1 (5*60/30) に減少します。
 
-`segmentLength` プロパティを使用して、`segmentLength` 秒ごとに最大 1 回ビデオを確実にアップロードするようにします。 このプロパティの最小値は 30 秒 (既定値) で、30 秒刻みで最大 5 分まで増やすことができます。
+プロパティ `segmentLength` は、`segmentLength` 秒ごとに最大 1 回、ビデオがストレージ アカウントに書き込まれることを保証します。 このプロパティの最小値は 30 秒 (既定値) で、30 秒刻みで最大 5 分まで増やすことができます。
 
-> [!NOTE]
-> `segmentLength` が再生に与える影響については、[ビデオ レコーディングの再生](playback-recordings-how-to.md)に関する記事を参照してください。
+このプロパティは、Video Analyzer エッジ モジュールと Video Analyzer サービスの両方に適用されます。 `segmentLength` が再生に与える影響については、[ビデオ レコーディングの再生](playback-recordings-how-to.md)に関する記事を参照してください。
 
 ## <a name="see-also"></a>関連項目
 
@@ -61,12 +61,4 @@ Video Analyzer は、エッジ デバイスがときどきクラウドとの接�
 
 ## <a name="next-steps"></a>次のステップ
 
-[チュートリアル: 継続的なビデオ記録](use-continuous-video-recording.md) 
-
-<!-- links 
-[pipeline-cvr-json]: https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset
-[terminology-video]: terminology.md#video
-[concept-pipeline]: pipeline.md
-[concept-video-playback]: playback-recordings-how-to.md
-[concept-recording]: video-recording-concept.md
--->
+[チュートリアル: 継続的なビデオ記録](edge/use-continuous-video-recording.md) 

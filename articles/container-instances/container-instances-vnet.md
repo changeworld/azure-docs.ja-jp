@@ -4,12 +4,12 @@ description: Azure コマンド ライン インターフェイスを使用し�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f107b5b04726047bea4d7c05a6c031d921f26547
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: da24d64ba4615ff6d06ca2617e8e9c45a4dbff9f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300167"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080215"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -141,7 +141,7 @@ az network profile list --resource-group myResourceGroup \
 
 ネットワーク プロファイル ID が取得できたら、*vnet-deploy-aci.yaml* という名前の新しいファイルに、次の YAML をコピーします。 `networkProfile` で、`id` の値を先ほど取得した ID に置き換え、ファイルを保存します。 この YAML は、*appcontaineryaml* という名前のコンテナー グループを仮想ネットワーク内に作成します。
 
-```YAML
+```yaml
 apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml

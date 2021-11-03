@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache をマウントする
 description: Azure HPC Cache サービスにクライアントを接続する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.author: v-erkel
-ms.openlocfilehash: ab66fc29a29461e6808686aa53b520144b39a1e1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.author: femila
+ms.openlocfilehash: 45c84008705ef47bd64301e262e878d0308123af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274199"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032964"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 

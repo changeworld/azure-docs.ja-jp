@@ -9,12 +9,13 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e10a31b2156cce03dcef40a88f5cb380f12dd03c
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 04d9b7ab0255212ed1b753d0bf6f31abfe1db03d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835527"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018952"
 ---
 # <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>クイック スタート: Azure Synapse Analytics で Cognitive Services を使用するための前提条件を構成する
 
@@ -39,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 
-[Azure Cognitive Services](../../cognitive-services/index.yml) には、さまざまな種類のサービスが含まれています。 Azure Synapse のチュートリアルでは、Text Analytics と Anomaly Detector の 2 つが例として使用されています。
+[Azure Cognitive Services](../../cognitive-services/index.yml) には、さまざまな種類のサービスが含まれています。 次のサービスは、Azure Synapse のチュートリアルで使用されている例です。
 
 Azure portal で [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) リソースを作成できます。
 
@@ -48,6 +49,28 @@ Azure portal で [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.
 Azure portal で [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) リソースを作成できます。
 
 ![ポータルの Anomaly Detector と [作成] ボタンを示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00a.png)
+
+Azure portal で、[Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) リソースを作成できます。
+
+![ポータルの Form Recognizer と [作成] ボタンを示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-form-recognizer.png)
+
+Azure portal で、[Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) リソースを作成できます。
+
+![ポータルの Translator と [作成] ボタンを示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-translator.png)
+
+Azure portal で、[Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) リソースを作成できます。
+
+![ポータルの Computer Vision と [作成] ボタンを示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-computer-vision.png)
+
+
+Azure portal で、[Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace) リソースを作成できます。
+
+![ポータルの Face と [作成] ボタンを示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-face.png)
+
+
+Azure portal で、[音声](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)リソースを作成できます。
+
+![ポータルの音声と [作成] ボタンを示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-speech.png)
 
 ## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>キー コンテナーを作成してシークレットとアクセスを構成する
 

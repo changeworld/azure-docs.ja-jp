@@ -3,12 +3,13 @@ title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
 ms.date: 10/06/2021
-ms.openlocfilehash: e3899dec34a8c39de0bede60e7cc520989a3239f
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 67439ad4c3d51dc354007b11008179d210aeaca6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620241"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046814"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -24,7 +25,7 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 | 予測可能なパフォーマンス |変わりやすい待機時間 |
 | 固定価格 |従量課金制の変わりやすい料金 |
 | ワークロードをスケールアップおよびスケールダウンする機能 |該当なし |
-| 最大 1 MB のメッセージ サイズ。 [最大 100 MB のメッセージ ペイロードのサポート](#large-messages-support-preview)は現在、プレビュー段階です。 |最大 256 KB のメッセージ サイズ |
+| 最大 1 MB のメッセージ サイズ。 |最大 256 KB のメッセージ サイズ |
 
 **Service Bus Premium メッセージング** では、各顧客のワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット* と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 各 Service Bus Premium 名前空間に対して 1、2、4、8、または 16 のメッセージング ユニットを購入することができます。 1 つのワークロードまたはエンティティが複数のメッセージング ユニットにまたがることができ、メッセージング ユニットの数は任意で変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
@@ -93,7 +94,7 @@ Premium メッセージングは簡単に使い始めることができ、その
 
 [Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/resources/templates/servicebus-pn-ar/)を作成することもできます。
 
-## <a name="large-messages-support-preview"></a>大きいメッセージのサポート (プレビュー)
+## <a name="large-messages-support"></a>大きいメッセージのサポート
 Azure Service Bus Premium レベルの名前空間では、最大 100 MB の大きいメッセージ ペイロードを送信する機能がサポートされています。 この機能は主に、他のエンタープライズ メッセージング ブローカー上で大きいメッセージ ペイロードが使用され、Azure Service Bus にシームレスに移行しようとしているレガシ ワークロードを対象としています。
 
 Azure Service Bus 上で大きいメッセージを送信するときの考慮事項をいくつか次に示します。
@@ -123,5 +124,3 @@ Service Bus メッセージングの詳細については、次のリンクを�
 - [メッセージング ユニットを自動的に更新する](automate-update-messaging-units.md)
 - [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 - [Azure Service Bus Premium メッセージングの概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-
-

@@ -10,15 +10,13 @@ ms.date: 05/12/2020
 ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.custom:
-- devx-track-python
-- mode-api
-ms.openlocfilehash: adbf3d9abddf01ba67046cfa433ffd46f713ff83
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-python, mode-api
+ms.openlocfilehash: 1aea74fb93c21bf3612f4807d9b305cad43ccbb4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536663"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051251"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート:Python で Bing Local Business Search API にクエリを送信する
 

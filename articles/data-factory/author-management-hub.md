@@ -4,15 +4,15 @@ description: Azure Data Factory 管理ハブでの接続、ソース管理の構
 ms.service: data-factory
 ms.subservice: authoring
 ms.topic: conceptual
-author: minhe-msft
-ms.author: hemin
+author: jasonwhowell
+ms.author: jasonh
 ms.date: 04/27/2021
-ms.openlocfilehash: 4c9b56a206a4ae515fdf8eae66dabf8dfafa1fcb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: d4793a36e72715bc7d4ffdc44ad788ebfae0832f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218132"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077840"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory の管理ハブ
 

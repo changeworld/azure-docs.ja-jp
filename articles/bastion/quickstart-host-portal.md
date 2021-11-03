@@ -6,14 +6,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 08/30/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: d9f3d2c8f30f3b5d249aae0789a7e2fee282e867
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9e9504220ac6aa001314c8ebf78bdb11a6cd011a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128677817"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071593"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>クイックスタート: VM 設定から Azure Bastion を構成する
 
@@ -95,8 +96,8 @@ bastion ホストは、いくつかの方法で構成できます。 以降の�
 1. サブネットが作成されたら、ページは自動的に **手順 3** に進みます。 手順 3 では、次の値を使用します。
 
    * **[名前]** : bastion ホストに名前を付けます。
-   * **価格レベル:** 価格レベルは SKU です。 この演習では、ドロップダウンから **Standard** を選択します。 Standard SKU を選択すると、ホスト スケーリングのインスタンス数を構成できます。 Basic SKU では、ホストのスケーリングはサポートされていません。 詳細については、[構成設定 - SKU](configuration-settings.md#skus) に関するページを参照してください。 Standard SKU は、プレビュー段階にあります。
-   * **インスタンス数:** これは、ホスト スケーリングの設定です。 スライダーを使用して構成します。 Basic レベルの SKU を指定した場合、インスタンスは 2 つに制限され、この設定を構成することはできません。 詳細については、[構成設定 - ホスト スケーリング](configuration-settings.md#instance)に関するページを参照してください。 インスタンス数はプレビュー段階であり、Standard SKU に依存しています。 このクイックスタートでは、スケール ユニットの [価格](https://azure.microsoft.com/pricing/details/azure-bastion) に関する考慮事項に留意しながら、希望するインスタンス数を選択できます。
+   * **価格レベル:** 価格レベルは SKU です。 この演習では、ドロップダウンから **Standard** を選択します。 Standard SKU を選択すると、ホスト スケーリングのインスタンス数を構成できます。 Basic SKU では、ホストのスケーリングはサポートされていません。 詳細については、[構成設定 - SKU](configuration-settings.md#skus) に関するページを参照してください。
+   * **インスタンス数:** これは、ホスト スケーリングの設定です。 スライダーを使用して構成します。 Basic レベルの SKU を指定した場合、インスタンスは 2 つに制限され、この設定を構成することはできません。 詳細については、[構成設定 - ホスト スケーリング](configuration-settings.md#instance)に関するページを参照してください。 インスタンス数は、Standard SKU に依存します。 このクイックスタートでは、スケール ユニットの [価格](https://azure.microsoft.com/pricing/details/azure-bastion) に関する考慮事項に留意しながら、希望するインスタンス数を選択できます。
    * **[パブリック IP アドレス]**: **[新規作成]** を選択します｡
    * **[パブリック IP アドレス名]** : パブリック IP アドレス リソースの名前です。
    * **[パブリック IP アドレスの SKU]** : **[Standard]** に事前構成されています。

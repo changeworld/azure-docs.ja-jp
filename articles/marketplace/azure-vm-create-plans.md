@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/13/2021
-ms.openlocfilehash: fd4d93b09328ad0b8de982a065567ffbadd87be3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0a7ca14a797ef2680527cd6992ff9a7a1d6ea115
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004390"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084902"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
@@ -167,7 +167,7 @@ Microsoft がパートナーに代わって消費税および使用税を送金�
 2. パブリック プランで使用している技術的な構成を、価格の異なるプライベート プランで再利用するため。 
 3. ソリューションの動作は、ユーザーデプロイするプランによって異なるため。 たとえば、ソフトウェアが同じでも、機能はプランによって異なります。
 
-[Azure Instance Metadata Service](/azure/virtual-machines/windows/instance-metadata-service) (IMDS) を利用して、ソリューションがどのプランにデプロイされているかを特定し、ライセンスを検証したり、適切な機能を有効にしたりします。
+[Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) (IMDS) を利用して、ソリューションがどのプランにデプロイされているかを特定し、ライセンスを検証したり、適切な機能を有効にしたりします。
 
 後日、プラン間で異なる変更を公開することになった場合は、これを切り離すことができます。 プランでこのオプションを選択解除すると、技術的な構成を再利用してプランを切り離すことができます。 一度切り離すと、プランは最後に設定した場所の技術的な構成の設定を引き継ぐため、プランの構成が分岐する可能性があります。 過去に独立して公開したプランで、技術的な構成を後から再利用することはできません。 
 

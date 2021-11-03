@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: c06e6fe787070adbe0817e295380b2a2ef2775b5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ee313000b5b2fd21e7f629c57f45bbe0d3557835
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440132"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066826"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-with-nginx-ingress"></a>NGINX イングレスを使用して Open Service Mesh (OSM) によって管理されるアプリケーションをデプロイする
 
@@ -36,11 +36,8 @@ Open Service Mesh (OSM) は、軽量で拡張可能なクラウド ネイティ�
 次のリソースがインストールされている必要があります。
 
 - Azure CLI バージョン 2.20.0 以降
-- `aks-preview` 拡張機能バージョン 0.5.5 以降
-- OSM バージョン v0.8.0 以降
+- OSMバージョンバージョン v 0.11.1 以降
 - JSON プロセッサ "jq" バージョン 1.6 以上
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="view-and-verify-the-current-osm-cluster-configuration"></a>現在の OSM クラスター構成を表示して確認する
 
@@ -177,7 +174,7 @@ service/bookwarehouse created
 deployment.apps/bookwarehouse created
 ```
 
-## <a name="update-the-bookbuyer-service"></a>bookbuyer サービスを更新する
+## <a name="update-the-bookbuyer-service"></a>Bookbuyer サービスを更新する
 
 次のサービス マニフェストを使用して、`bookbuyer` サービスを正しい受信ポート構成に更新します。
 

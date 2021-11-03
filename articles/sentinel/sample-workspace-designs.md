@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/18/2021
-ms.openlocfilehash: dca6beedfe8fa3d57674323490c2d79cf5aa048f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9cd48e8537f46ce9580b1b2e573e12bb5e12e455
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179353"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013994"
 ---
 # <a name="azure-sentinel-sample-workspace-designs"></a>Azure Sentinel のサンプル ワークスペースの設計
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、次のサンプル要件がある組織に推奨されるワークスペースの設計について説明します。
 

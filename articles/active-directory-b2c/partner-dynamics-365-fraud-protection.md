@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 5/12/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 219cb793da7835922ad707d0ad1ee7e122990ba8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 83715b34578176ba08fb364cfae11df8b1cf1209
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962189"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044724"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
@@ -76,12 +76,12 @@ Microsoft DFP を使用するように [Azure AD テナントを設定](/dynamic
 
 | 環境 | サービス | Domain |
 |:------------|:---------------|:---------------|
-| 開発 | Azure AD B2C | contoso-dev.b2clogin.com |
-| 開発 | Microsoft DFP フィンガープリント | fpt.dfp.microsoft-int.com |
-| UAT | Azure AD B2C | contoso-uat.b2clogin.com |
-| UAT | Microsoft DFP フィンガープリント | fpt.dfp.microsoft.com |
-| Production | Azure AD B2C | login.contoso.com |
-| Production | Microsoft DFP フィンガープリント | fpt.login.contoso.com |
+| 開発 | Azure AD B2C | `contoso-dev.b2clogin.com` |
+| 開発 | Microsoft DFP フィンガープリント | `fpt.dfp.microsoft-int.com` |
+| UAT | Azure AD B2C | `contoso-uat.b2clogin.com` |
+| UAT | Microsoft DFP フィンガープリント | `fpt.dfp.microsoft.com` |
+| Production | Azure AD B2C | `login.contoso.com` |
+| Production | Microsoft DFP フィンガープリント | `fpt.login.contoso.com` |
 
 ## <a name="deploy-the-ui-templates"></a>UI テンプレートをデプロイする
 

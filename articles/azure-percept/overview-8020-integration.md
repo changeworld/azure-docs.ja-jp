@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.custom: template-concept
-ms.openlocfilehash: eafd3e24fad7549c68908deb4632053fdfc994e4
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-concept, ignite-fall-2021
+ms.openlocfilehash: 384dd5e2209451b714f7c77323fee1e615b05042
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222023"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069864"
 ---
 # <a name="azure-percept-dk-8020-integration"></a>Azure Percept DK の 80/20 統合
 

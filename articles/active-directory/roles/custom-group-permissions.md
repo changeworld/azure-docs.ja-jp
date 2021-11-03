@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 10/18/2021
+ms.date: 10/26/2021
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
-ms.openlocfilehash: 1c798104e950312b49c86d88a83428772aeb1ef0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5e768d9661a7030fb75d8089a6a49e9d5022d612
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167757"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057212"
 ---
 # <a name="group-management-permissions-for-azure-ad-custom-roles-preview"></a>Azure AD カスタム ロールに対するグループ管理アクセス許可 (プレビュー)
 
@@ -34,6 +34,9 @@ ms.locfileid: "130167757"
 - 特定の種類のグループを管理する
 
 この記事では、さまざまなグループ管理シナリオのカスタム ロールで使用できるアクセス許可の一覧を示します。 カスタム ロールを作成する方法については、[カスタム ロールの作成と割り当て](custom-create.md)に関するページを参照してください。
+
+> [!NOTE]
+> Azureポータルを使用してグループスコープでカスタム役割を割り当てることは、現在、Azure AD Premium P1で **のみ** 可能です。
 
 ## <a name="how-to-interpret-group-management-permissions"></a>グループ管理アクセス許可を解釈する方法
 

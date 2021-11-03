@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
-ms.openlocfilehash: cf2a9380b404876ef9c963d54d9069ebd66fef56
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3e5c431c8795f464e3ab83e0f6dff47028fdb5a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725149"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019782"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Azure Sentinel で複数のテナントを MSSP として管理する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 マネージド セキュリティ サービス プロバイダー (MSSP) が [Azure Lighthouse](../lighthouse/overview.md) を使用してセキュリティ運用センター (SOC) サービスを顧客に提供している場合は、顧客のテナントに接続する必要なしに、顧客の Azure Sentinel リソースを自社の Azure テナントから直接管理することができます。 
 
@@ -55,4 +58,3 @@ ms.locfileid: "121725149"
 このドキュメントでは、複数の Azure Sentinel テナントをシームレスに管理する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
-

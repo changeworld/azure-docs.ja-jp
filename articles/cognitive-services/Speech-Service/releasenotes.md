@@ -8,15 +8,25 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
-ms.custom: seodec18
-ms.openlocfilehash: 017e1ce50c121860038594279a339a03f17bc180
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e0be3ef40e60f43d3b76c58b8141a0e29ce2742f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363047"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067681"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="text-to-speech-2021-october-release"></a>テキスト読み上げの 2021 年 10 月のリリース
+**ニューラル TTS 用に新しい言語と音声を追加**
+- **49 個の新しい言語とバリアントが導入されました** - ニューラル TTS 言語の一覧に、以下に示す 49 個の新しいロケールの 98 個の新しい音声が追加されています。`af-ZA` アフリカーンス語 (南アフリカ) の Adri、`af-ZA` アフリカーンス語 (南アフリカ) の Willem、`am-ET` アムハラ語 (エチオピア) の Mekdes、`am-ET` アムハラ語 (エチオピア) の Ameha、`ar-AE` アラビア語 (アラブ首長国連邦) の Fatima、`ar-AE` アラビア語 (アラブ首長国連邦) の Hamdan、`ar-BH` アラビア語 (バーレーン) の Laila、`ar-BH` アラビア語 (バーレーン) の Ali、`ar-DZ` アラビア語 (アルジェリア) の Amina、`ar-DZ` アラビア語 (アルジェリア) の Ismael、`ar-IQ` アラビア語 (イラク) の Rana、`ar-IQ` アラビア語 (イラク) の Bassel、`ar-JO` アラビア語 (ヨルダン) の Sana、`ar-JO` アラビア語 (ヨルダン) の Taim、`ar-KW` アラビア語 (クウェート) の Noura、`ar-KW` アラビア語 (クウェート) の Fahed、`ar-LY` アラビア語 (リビア) の Iman、`ar-LY` アラビア語 (リビア) の Omar、`ar-MA` アラビア語 (モロッコ) の Mouna、`ar-MA` アラビア語 (モロッコ) の Jamal、`ar-QA` アラビア語 (カタール) の Amal、`ar-QA` アラビア語 (カタール) の Moaz、`ar-SY` アラビア語 (シリア) の Amany、`ar-SY` アラビア語 (シリア) の Laith、`ar-TN` アラビア語 (チュニジア) の Reem、`ar-TN` アラビア語 (チュニジア) の Hedi、`ar-YE` アラビア語 (イエメン) の Maryam、`ar-YE` アラビア語 (イエメン) の Saleh、`bn-BD` バングラ語 (バングラデシュ) の Nabanita、`bn-BD` バングラ語 (バングラデシュ) の Pradeep、`en-KE` 英語 (ケニア) の Asilia、`en-KE` 英語 (ケニア) の Chilemba、`en-NG` 英語 (ナイジェリア) の Ezinne、`en-NG` 英語 (ナイジェリア) の Abeo、`en-TZ` 英語 (タンザニア) の Imani、`en-TZ` 英語 (タンザニア) の Elimu、`es-BO` スペイン語 (ボリビア) の Sofia、`es-BO` スペイン語 (ボリビア) の Marcelo、`es-CL` スペイン語 (チリ) の Catalina、`es-CL` スペイン語 (チリ) の Lorenzo、`es-CR` スペイン語 (コスタリカ) の Maria、`es-CR` スペイン語 (コスタリカ) の Juan、`es-CU` スペイン語 (キューバ) の Belkys、`es-CU` スペイン語 (キューバ) の Manuel、`es-DO` スペイン語 (ドミニカ共和国) の Ramona、`es-DO` スペイン語 (ドミニカ共和国) の Emilio、`es-EC` スペイン語 (エクアドル) の Andrea、`es-EC` スペイン語 (エクアドル) の Luis、`es-GQ` スペイン語 (赤道ギニア) の Teresa、`es-GQ` スペイン語 (赤道ギニア) の Javier、`es-GT` スペイン語 (グアテマラ) の Marta、`es-GT` スペイン語 (グアテマラ) の Andres、`es-HN` スペイン語 (ホンジュラス) の Karla、`es-HN` スペイン語 (ホンジュラス) の Carlos、`es-NI` スペイン語 (ニカラグア) の Yolanda、`es-NI` スペイン語 (ニカラグア) の Federico、`es-PA` スペイン語 (パナマ) の Margarita、`es-PA` スペイン語 (パナマ) の Roberto、`es-PE` スペイン語 (ペルー) の Camila、`es-PE` スペイン語 (ペルー) の Alex、`es-PR` スペイン語 (プエルトリコ) の Karina、`es-PR` スペイン語 (プエルトリコ) の Victor、`es-PY` スペイン語 (パラグアイ) の Tania、`es-PY` スペイン語 (パラグアイ) の Mario、`es-SV` スペイン語 (エルサルバドル) の Lorena、`es-SV` スペイン語 (エルサルバドル) の Rodrigo、`es-UY` スペイン語 (ウルグアイ) の Valentina、`es-UY` スペイン語 (ウルグアイ) の Mateo、`es-VE` スペイン語 (ベネズエラ) の Paola、`es-VE` スペイン語 (ベネズエラ) の Sebastian、`fa-IR` ペルシャ語 (イラン) の Dilara、`fa-IR` ペルシャ語 (イラン) の Farid、`fil-PH` フィリピン語 (フィリピン) の Blessica、`fil-PH` フィリピン語 (フィリピン) の Angelo、`gl-ES` ガリシア語 (スペイン) の Sabela、`gl-ES` ガリシア語 (スペイン) の Roi、`jv-ID` ジャワ語 (インドネシア) の Siti、`jv-ID` ジャワ語 (インドネシア) の Dimas、`km-KH` クメール語 (カンボジア) の Sreymom、`km-KH` クメール語 (カンボジア) の Piseth、`my-MM` ミャンマー語 (ミャンマー) の Nilar、`my-MM` ミャンマー語 (ミャンマー) の Thiha、`so-SO` ソマリ語 (ソマリア) の Ubax、`so-SO` ソマリ語 (ソマリア) の Muuse、`su-ID` スンダ語 (インドネシア) の Tuti、`su-ID` スンダ語 (インドネシア) の Jajang、`sw-TZ` スワヒリ語 (タンザニア) の Rehema、`sw-TZ` スワヒリ語 (タンザニア) の Daudi、`ta-LK` タミル語 (スリランカ) の Saranya、`ta-LK` タミル語 (スリランカ) の Kumar、`ta-SG` タミル語 (シンガポール) の Venba、`ta-SG` タミル語 (シンガポール) の Anbu、`ur-IN` ウルドゥー語 (インド) の Gul、`ur-IN` ウルドゥー語 (インド) の Salman、`uz-UZ` ウズベク語 (ウズベキスタン) の Madina、`uz-UZ` ウズベク語 (ウズベキスタン) の Sardor、`zu-ZA` ズールー語 (南アフリカ) の Thando、`zu-ZA` ズールー語 (南アフリカ) の Themba。
+
+## <a name="text-to-speech-2021-september-release"></a>テキスト読み上げの 2021 年 9 月のリリース
+- **`en-US` 英語 (米国) の新しいチャットボット音声**: よりくだけた話し方をする若い女性を表わす Sara は、チャットボットのシナリオに最適です。 
+- **`ja-JP` 日本語音声 Nanami の新しいスタイルを追加**: Nanami では、3 つの新しいスタイルとしてチャット、カスタマー サービス、陽気な雰囲気を使用できるようになりました。
+- **発音全般の改善**: `id-ID` の Ardi、`th-TH` の Premwadee、`da-DK` の Christel、`vi-VN` の HoaiMy と NamMinh。
+- **プレビューの `zh-CN` 中国語 (北京官話、中国) に 2 つの新しい音声**: 自然な音声とカスタマー サービスのシナリオに最適化された Xiaochen と Xiaoyan。
 
 ## <a name="text-to-speech-2021-july-release"></a>テキスト読み上げ 2021 年 7 月リリース
 
@@ -32,7 +42,7 @@ ms.locfileid: "129363047"
 **注**: [こちら](speech-sdk.md#get-the-speech-sdk)から Speech SDK を開始してください。
 
 **要点の概要**
-- Ubuntu 16.04 の有効期間は、2021 年 4 月に終了しました。 Azure DevOps および Github と併せて、16.04 のサポートは 2021 年 9 月をもって終了します。  その前に、ubuntu-16.04 のワークフローを ubuntu-18.04 以降に移行してください。 
+- Ubuntu 16.04 の有効期間は、2021 年 4 月に終了しました。 Azure DevOps および GitHub と併せて、16.04 のサポートは 2021 年 9 月をもって終了します。  その前に、ubuntu-16.04 のワークフローを ubuntu-18.04 以降に移行してください。 
 
 #### <a name="new-features"></a>新機能
 
@@ -194,7 +204,7 @@ ms.locfileid: "129363047"
 - **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用に `BookmarkReached` イベントが追加されました。 入力 SSML でブックマークを設定し、各ブックマークのオーディオ オフセットを取得することができます。 [こちら](./speech-synthesis-markup.md#bookmark-element)のドキュメントを参照してください。
 - **Java**: Speaker Recognition API のサポートが追加されました。 詳細については、[こちら](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) を参照してください。
 - **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用 WebM コンテナー (Webm16Khz16BitMonoOpus および Webm24Khz16BitMonoOpus) の 2 つの新しい出力オーディオ形式が追加されました。 これらは、Opus コーデックを使用したオーディオのストリーミングに適した形式です。 Details for [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat), [C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat), [Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat) の詳細。
-- **C++、C#、Java**: 話者認識シナリオの音声プロファイルを取得するためのサポートが追加されました。 [C++](/cpp/cognitive-services/speech/speaker-speakerrecognizer)、[C#](/en-us/dotnet/api/microsoft.cognitiveservices.speech.speaker.speakerrecognizer)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) の詳細。
+- **C++、C#、Java**: 話者認識シナリオの音声プロファイルを取得するためのサポートが追加されました。 [C++](/cpp/cognitive-services/speech/speaker-speakerrecognizer)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speaker.speakerrecognizer)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) の詳細。
 - **C++、C#、Java、Objective-C、Python**: オーディオ マイクとスピーカー コントロール用の別個の共有ライブラリのサポートが追加されました。 これにより、必要なオーディオ ライブラリの依存関係がない環境で、SDK を使用できるようになります。
 - **Objective-C/Swift**: アンブレラ ヘッダーを持つモジュール フレームワークのサポートが追加されました。 これにより、iOS/Mac Objective-C/Swift アプリで Speech SDK をモジュールとしてインポートできます。 これは、[GitHub イシュー #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452) に対応するものです。
 - **Python**: [Python 3.9](./quickstarts/setup-platform.md?pivots=programming-language-python) のサポートが追加され、Python の [3.5 のサポート終了](https://devguide.python.org/devcycle/#end-of-life-branches)に伴って Python 3.5 のサポートが停止しました。

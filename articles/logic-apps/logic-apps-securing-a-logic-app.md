@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: rarayudu, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: 0fedae22564d9bb393952e65a737d73e1fd254f9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d3814c0888499a1b31d707560f6acd26c572b95e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350486"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040663"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -976,7 +977,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [管理対象 ID](#managed-identity-authentication) | **組み込みのトリガーとアクション** <p><p>Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook <p><p>**マネージド コネクタ** <p><p>Azure AD Identity Protection、Azure Automation、Azure コンテナー インスタンス、Azure Data Explorer、Azure Data Factory、Azure Data Lake、Azure Event Grid、Azure IoT Central V3、Azure Key Vault、Azure Resource Manager、Azure Sentinel、Azure AD を使用した HTTP <p><p>**注**:マネージド コネクタのサポートは、現在プレビュー段階です。 |
+| [管理対象 ID](#managed-identity-authentication) | **ロジック アプリ (従量課金)** : <p><p>- **組み込み**: Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook <p><p>- **マネージド コネクタ** (プレビュー): <p><p>--- **単一認証**: Azure AD Identity Protection、Azure Automation、Azure コンテナー インスタンス、Azure Data Explorer、Azure Data Factory、Azure Data Lake、Azure Event Grid、Azure IoT Central V3、Azure Key Vault、Azure Resource Manager、Azure Sentinel、Azure AD を使用した HTTP <p><p>--- **複数認証**: Azure Blob Storage、SQL Server <p><p>___________________________________________________________________________________________<p><p>**ロジック アプリ (Standard)** : <p><p>- **組み込み**: HTTP、HTTP Webhook <p><p>- **マネージド コネクタ** (プレビュー): <p>--- **単一認証**: Azure AD Identity Protection、Azure Automation、Azure コンテナー インスタンス、Azure Data Explorer、Azure Data Factory、Azure Data Lake、Azure Event Grid、Azure IoT Central V3、Azure Key Vault、Azure Resource Manager、Azure Sentinel、Azure AD を使用した HTTP <p><p>--- **複数認証**: Azure Blob Storage、SQL Server |
 |||
 
 <a name="basic-authentication"></a>

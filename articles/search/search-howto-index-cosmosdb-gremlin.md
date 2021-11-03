@@ -2,18 +2,18 @@
 title: Gremlin API からのデータのインデックスを付ける (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でのフルテキスト検索用に Gremlin API コンテンツのインデックス付けを自動化するように Azure Cosmos DB インデクサーを設定します。
-author: MarkHeff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: 69642aa1b9d977591bee6dbb8464cdf74ca7be1e
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 82d7a385567459f9e3292af8f88594dec96b5a77
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731012"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010690"
 ---
 # <a name="index-data-using-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API を使用したデータのインデックス作成
 

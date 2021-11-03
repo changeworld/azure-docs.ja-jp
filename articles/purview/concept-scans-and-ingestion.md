@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
-ms.openlocfilehash: 42162519e9e8f3835498d8955adbd7c254775dd9
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: af12878750c6976a3ce3b459d9cf1ff6b262c112
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211717"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024033"
 ---
 # <a name="scans-and-ingestion-in-azure-purview"></a>Azure Purview でのスキャンとインジェスト
 
@@ -38,7 +39,7 @@ Purview は既定で保護されています。 パスワードまたはシー�
 
 ソースをスキャンする場合は、データ ソース全体をスキャンするか、スキャンする特定のエンティティ (フォルダー/テーブル) のみを選択できます。 使用可能なオプションは、スキャンするソースによって異なり、1 回限りのスキャンと、スケジュールされたスキャンの両方で定義できます。
 
-たとえば、[Azure SQL Database のスキャンを作成して実行する](register-scan-azure-sql-database.md#creating-and-running-a-scan)場合、スキャンするテーブルを選択するか、データベース全体を選択できます。
+たとえば、[Azure SQL Database のスキャンを作成して実行する](register-scan-azure-sql-database.md#creating-the-scan)場合、スキャンするテーブルを選択するか、データベース全体を選択できます。
 
 ### <a name="scan-rule-set"></a>スキャン ルール セット
 
@@ -74,5 +75,5 @@ Data Lake Storage Gen2 のような大規模なデータ ストアを列挙す�
 詳細またはソースのスキャンに関する具体的な手順については、次のリンクを参照してください。
 
 * リソース セットについては、[リソース セットに関する記事](concept-resource-sets.md)を参照してください。
-* [Azure SQL Database の登録とスキャンの方法](register-scan-azure-sql-database.md#creating-and-running-a-scan)
+* [Azure SQL Database の登録とスキャンの方法](register-scan-azure-sql-database.md#creating-the-scan)
 * [Azure Purview のデータ系列](catalog-lineage-user-guide.md)

@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 969e2d2424b9f9af1dcd921a1cebfa9407e313eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f08d1c38965121564c21dee7053ae0c152b82814
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438431"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021982"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -124,7 +124,7 @@ Storage Explorer を使用すると、さまざまな認証方法を使用して
 | ファイル共有      | いいえ       | いいえ                   | はい (URL)                      | いいえ                 |
 | キュー           | はい      | いいえ                   | はい (URL)                      | いいえ                 |
 | テーブル           | いいえ       | いいえ                   | はい (URL)                      | いいえ                 |
- 
+
 Storage Explorer では、エミュレーターで構成されたポートを使用して、[ローカル ストレージ エミュレーター](#local-storage-emulator)に接続することもできます。
 
 個々のリソースに接続するには、左側のツールバーにある **[接続]** ボタンを選択します。 次に、接続先のリソースの種類に応じた手順に従います。
@@ -146,7 +146,7 @@ Storage Explorer では、Azure アカウントを使用して、次のリソー
 * Azure Data Lake Storage Gen2 コンテナー
 * Azure Data Lake Storage Gen2 ディレクトリ
 * キュー
- 
+
 リソースへのデータ層アクセス権がある一方で、管理層アクセス権がない場合は、Azure AD を使用することをお勧めします。
 
 1. [前述の手順](#sign-in-to-azure)に従って、少なくとも 1 つの Azure アカウントにサインインします。

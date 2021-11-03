@@ -7,13 +7,13 @@ ms.author: victorh
 ms.date: 02/17/2021
 ms.topic: quickstart
 ms.service: firewall-manager
-ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 9ce29e4ae856ce73b046fe4b4138fe85d48b0a03
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm
+ms.openlocfilehash: 4754b2202b5c36d664ac77e4f5626ac9c88f3681
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005003"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057782"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>クイックスタート: Azure ファイアウォールとファイアウォール ポリシーを作成する - ARM テンプレート
 

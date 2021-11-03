@@ -12,17 +12,17 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: 5b13040c02d72a2cfd423f014f4f89ffba11d627
-  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+  ms.openlocfilehash: 416ded296fa1ba7454ca0e4bf4a5d2b462abe975
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/01/2021
-  ms.locfileid: "129350712"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131005976"
 title: Computer Vision API についてよく寄せられる質問
 summary: >
   > [!TIP]
 
-  > この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、[UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743) のヘルプとサポートにご連絡ください。
+  > この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、[UserVoice](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858) のヘルプとサポートにご連絡ください。
 sections:
 - name: 無視
   questions:

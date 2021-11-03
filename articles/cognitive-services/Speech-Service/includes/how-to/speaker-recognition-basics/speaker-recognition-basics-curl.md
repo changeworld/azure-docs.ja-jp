@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: 3a32946e10e8a81394b54fc44e4c92e8625e7ad6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 11e93561a0f78ad1fb62d1cab1f3e8d8f3f3b293
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015474"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069152"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -18,7 +18,7 @@ ms.locfileid: "95015474"
 * 音声のグループから音声サンプルを識別する話者識別
 * 音声プロファイルの削除
 
-Speech Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。
+Speaker Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。 サポートされているプラットフォームの一覧については、左側のナビゲーションの参照ノードを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

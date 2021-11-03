@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: ee78fb4f778ac1ab629a68173249bdcada7b00fa
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ce5ef0c1e018ca740b50ee971881307b00835f8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082596"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045522"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 
@@ -42,10 +42,9 @@ telemetryClient.TrackTrace("Hello World!");
 > [!NOTE]
 > テレメトリはすぐには送信されません。 テレメトリ項目はバッチ処理され、ApplicationInsights SDK によって送信されます。 `Track()` メソッドを呼び出した直後に終了するコンソール アプリでは、この記事で後述する[完全な例](#full-example)に示すように、アプリが終了する前に `Flush()` と `Sleep`/`Delay` が完了しない限り、テレメトリが送信されない場合があります。 `InMemoryChannel` を使用する場合、`Sleep` は必要ありません。 `Sleep` の必要性に関してはアクティブな問題があります。参照先:[ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
-
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) パッケージの最新バージョンをインストールします。このパッケージにより、HTTP、SQL、またはその他の外部の依存関係呼び出しが自動的に追跡されます。
 
-コードから、または `ApplicationInsights.config` ファイルを使用して、Application Insights を初期化し、構成できます。 初期化はできるだけ早期に実行するようにします。 
+コードから、または `ApplicationInsights.config` ファイルを使用して、Application Insights を初期化し、構成できます。 初期化はできるだけ早期に実行するようにします。
 
 > [!NOTE]
 > **ApplicationInsights.config** を参照している説明は、.NET Framework を対象とするアプリに対してのみ適用され、.NET Core アプリケーションには適用されません。
@@ -70,7 +69,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) パッケージの最新バージョンをインストールすることにより、構成ファイルの完全な例を入手できます。 ここでは、このコード例と同等の依存関係コレクションの **最小** 構成を示します。
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
   <InstrumentationKey>Your Key</InstrumentationKey>
@@ -136,7 +135,6 @@ configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitial
 ```
 
 * [こちら](https://apmtips.com/posts/2017-02-13-enable-application-insights-live-metrics-from-code/)の説明に従って、パフォーマンス カウンター コレクター モジュールをインストールし、初期化することもできます
-
 
 #### <a name="full-example"></a>完全な例
 
@@ -213,4 +211,3 @@ namespace ConsoleApp
 ## <a name="next-steps"></a>次のステップ
 * [依存関係の監視](./asp-net-dependencies.md): REST、SQL、その他の外部リソースの処理速度が低下しているかどうかを確認します。
 * [API の使用](./api-custom-events-metrics.md) : アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
-

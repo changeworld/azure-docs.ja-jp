@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 77728c7b61fc6b76cb5ecb51ff1d90e0c0a93e99
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1dc58fa0709cdf1e09482a3f3ac3ee05788cd1eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535541"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066864"
 ---
 # <a name="manage-a-new-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Open Service Mesh (OSM) Azure Kubernetes Service (AKS) アドオンを使用して新しいアプリケーションを管理する
 
@@ -22,11 +22,8 @@ ms.locfileid: "129535541"
 次のリソースがインストールされている必要があります。
 
 - Azure CLI バージョン 2.20.0 以降
-- `aks-preview` 拡張機能バージョン 0.5.5 以降
-- OSM バージョン v0.8.0 以降
+- OSMバージョンバージョン v 0.11.1 以降
 - JSON プロセッサ "jq" バージョン 1.6 以上
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="create-namespaces-for-the-application"></a>アプリケーションの名前空間を作成する
 
@@ -72,19 +69,19 @@ Namespace [bookwarehouse] successfully added to mesh [osm]
 ## <a name="deploy-the-bookstore-application-to-the-aks-cluster"></a>bookstore アプリケーションを AKS クラスターにデプロイする
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookbuyer.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookbuyer.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookthief.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookthief.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookstore.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookstore.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookwarehouse.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookwarehouse.yaml
 ```
 
 下に、すべてのデプロイ出力の要約を示します。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: b0387aaecd45a2f09acc8d9ad7af230a62da6ed1
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 634310ea429f950daa6b25c4203dea199adf4103
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628502"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036639"
 ---
 # <a name="using-storage-explorer-with-azure-files"></a>Azure Files での Storage Explorer の使用
 
@@ -72,7 +72,7 @@ Azure Files は、標準のサーバー メッセージ ブロック (SMB) プ�
     ![共有を開く](media/vs-azure-tools-storage-explorer-files/image4.png)
 
 1. ファイル共有の内容がメイン ウィンドウに表示されます。
-    
+
     ![Storage Explorer のファイル共有のメイン ウィンドウのスクリーンショット。共有の内容を確認できます。](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>ファイル共有の削除
@@ -92,7 +92,7 @@ Azure Files は、標準のサーバー メッセージ ブロック (SMB) プ�
     ![削除](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. 確認のダイアログで **[はい]** を選択します。
-    
+
     ![確認のダイアログ](media/vs-azure-tools-storage-explorer-files/image7.png)
 
 ## <a name="copy-a-file-share"></a>ファイル共有のコピー
@@ -138,7 +138,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 1. SAS オプションの指定が完了したら、 **[作成]** を選択します。
 
 1. 2 番目の **[Shared Access Signature]** ダイアログが表示されます。このダイアログには、ファイル共有と共に、ストレージ リソースへのアクセスに使用できる URL とクエリ文字列が表示されます。 クリップボードにコピーする URL の横にある **[コピー]** を選択します。
-    
+
     ![2 番目の SAS ダイアログ](media/vs-azure-tools-storage-explorer-files/image12.png)
 
 1. 完了したら、 **[閉じる]** を選択します。
@@ -158,11 +158,11 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
     ![Manage access policies context menu](media/vs-azure-tools-storage-explorer-files/image13.png)
 
 1. **[アクセス ポリシー]** ダイアログには、選択したファイル共有用に既に作成されているアクセス ポリシーの一覧が表示されます。
-    
+
     ![アクセス ポリシー](media/vs-azure-tools-storage-explorer-files/image14.png)
 
 1. アクセス ポリシーの管理タスクに応じて、以下の手順に従います。
-    
+
     - **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。 生成後、 **[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
 
     - **アクセス ポリシーを編集する** - 必要な編集を行い、 **[保存]** を選択します。
@@ -170,9 +170,9 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
     - **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
 
 1. 先ほど作成したアクセス ポリシーを使用して新しい SAS URL を作成します。
-    
+
     ![SAS の取得](media/vs-azure-tools-storage-explorer-files/image15.png)
-    
+
     ![SAS の名前とプロパティ](media/vs-azure-tools-storage-explorer-files/image16.png)
 
 ## <a name="managing-files-in-a-file-share"></a>ファイル共有内のファイルの管理
@@ -202,7 +202,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         a.  メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
 
         ![ファイルをアップロードする](media/vs-azure-tools-storage-explorer-files/image18.png)
-        
+
         b. **[Upload Files (ファイルのアップロード)]** ダイアログで、 **[ファイル]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![ファイルの追加](media/vs-azure-tools-storage-explorer-files/image19.png)
@@ -210,7 +210,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         c. **[アップロード]** を選択します。
 
     - **ファイル共有にフォルダーをアップロードする**
-        
+
         a. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Folder (フォルダーのアップロード)]** を選択します。
 
         ![Upload folder menu](media/vs-azure-tools-storage-explorer-files/image20.png)
@@ -222,21 +222,21 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         d. **[アップロード]** を選択します。
 
     - **ローカル コンピューターにファイルをダウンロードする**
-        
+
         a. ダウンロードするファイルを選択します。
-        
+
         b. メイン ウィンドウのツール バーで、 **[ダウンロード]** を選択します。
-        
+
         c. **[Specify where to save the downloaded file (ダウンロードしたファイルを保存する場所の指定)]** ダイアログで、ファイルのダウンロード先の場所と、その場所に付ける名前を指定します。
 
         d. **[保存]** を選択します。
 
     - **ローカル コンピューターでファイルを開く**
-        
+
         a.  開くファイルを選択します。
-        
+
         b.  メイン ウィンドウのツール バーで、 **[開く]** を選択します。
-        
+
         c.  ファイルがダウンロードされ、その基になるファイルの種類に関連付けられているアプリケーションを使用して開かれます。
 
     - **ファイルをクリップボードにコピーする**
@@ -257,7 +257,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com/)を確認します。
 

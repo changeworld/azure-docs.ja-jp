@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: normesta
-ms.openlocfilehash: 5dfdddb3458d552c0c3336c9d7609cfe2fdc6de3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 70f191a33eeb4d09ea8e4f14b17cd6ceadcec76e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003498"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003582"
 ---
 # <a name="upgrading-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Azure Data Lake Storage Gen2 の機能による Azure Blob Storage のアップグレード
 
@@ -106,7 +106,7 @@ BLOB をアップロードするとき、指定したパスに存在しないデ
 
 Blob Storage のほとんどの機能は、これらの機能を有効にした後も引き続き機能しますが、一部の機能はプレビュー段階のままであり、まだサポートされていません。 
 
-Data Lake Storage Gen2 での Blob Storage の機能の現在のサポートについては、[Azure Data Lake Storage Gen2 で使用できる Blob Storage の機能](data-lake-storage-supported-blob-storage-features.md)に関する記事を参照してください。 
+Data Lake Storage Gen2 での Blob Storage の機能の現在のサポートについては、[Azure Data Lake Storage Gen2 で使用できる Blob Storage の機能](./storage-feature-support-in-storage-accounts.md)に関する記事を参照してください。 
 
 ### <a name="diagnostic-logs"></a>診断ログ
 

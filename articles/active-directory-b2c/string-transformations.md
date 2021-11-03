@@ -3,20 +3,20 @@ title: カスタム ポリシーの文字列要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの文字列要求変換の例
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: f581d7f4400e4cff734e3094d5957fec6148488f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 2327cb0bd2760492858c8a2a3105c5a5ee55368b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536324"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131032280"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 

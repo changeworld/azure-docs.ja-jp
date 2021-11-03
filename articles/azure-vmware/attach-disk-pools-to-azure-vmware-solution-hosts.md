@@ -2,17 +2,18 @@
 title: ディスク プールを Azure VMware Solution ホストにアタッチする (プレビュー)
 description: iSCSI ターゲットを通じて表示されたディスク プールを、Azure VMware Solution プライベート クラウドの VMware データストアとしてアタッチする方法について説明します。 データストアが構成されたら、そこにボリュームを作成し、VMware インスタンスにアタッチすることができます。
 ms.topic: how-to
-ms.date: 08/20/2021
-ms.openlocfilehash: 72af6f2e2186b2c4f79d6e49e8f8a272cc6a6326
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2719b135860f448732f5f36285ef2c33ff0115e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073204"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071645"
 ---
 # <a name="attach-disk-pools-to-azure-vmware-solution-hosts-preview"></a>ディスク プールを Azure VMware Solution ホストにアタッチする (プレビュー)
 
-[Azure ディスク プール](../virtual-machines/disks-pools.md)は、Azure ディスクによってサポートされるアプリケーションとワークロードに永続的なブロック ストレージを提供します。 最適なコストとパフォーマンスを実現するために、Azure VMware Solution の永続ストレージとしてディスクを使用できます。 たとえば、記憶域を集中的に使用するワークロードをホストする場合は、クラスターのスケーリングではなくディスク プールを使用してスケールアップすることができます。 また、ディスクを使用して、オンプレミスまたはプライマリ VMware 環境からセカンダリ サイトのディスク ストレージにデータをレプリケートすることもできます。 Azure VMware Solution ホストから独立してストレージをスケーリングするために、データストアとしての [Ultra Disk](../virtual-machines/disks-types.md#ultra-disks) と [Premium SSD](../virtual-machines/disks-types.md#premium-ssds) の提示がサポートされています。  
+[Azure ディスク プール](../virtual-machines/disks-pools.md)は、Azure ディスクによってサポートされるアプリケーションとワークロードに永続的なブロック ストレージを提供します。 最適なコストとパフォーマンスを実現するために、Azure VMware Solution の永続ストレージとしてディスクを使用できます。 たとえば、記憶域を集中的に使用するワークロードをホストする場合は、クラスターのスケーリングではなくディスク プールを使用してスケールアップすることができます。 また、ディスクを使用して、オンプレミスまたはプライマリ VMware 環境からセカンダリ サイトのディスク ストレージにデータをレプリケートすることもできます。 Azure VMware Solution ホストから独立してストレージをスケーリングするために、データストアとしての [Ultra Disk](../virtual-machines/disks-types.md#ultra-disks)、[Premium SSD](../virtual-machines/disks-types.md#premium-ssds)、[Standard SSD](../virtual-machines/disks-types.md#standard-ssds) の提示がサポートされています。  
 
 >[!IMPORTANT]
 >Azure VMware Solution (プレビュー) の Azure ディスク プールは現在、パブリック プレビュー段階にあります。
@@ -38,108 +39,158 @@ Azure マネージド ディスクは、Azure VMware Solution リソース グ�
 
 - [仮想ネットワークを構成](deploy-azure-vmware-solution.md#connect-to-azure-virtual-network-with-expressroute)してデプロイされた [Azure VMware Solution プライベート クラウド](deploy-azure-vmware-solution.md)。 詳細については、[ネットワーク計画のチェックリスト](tutorial-network-checklist.md)および[VMware プライベート クラウド用のネットワークの構成](tutorial-configure-networking.md)に関するページを参照してください。 
 
-   - [Ultra disks] を選択した場合は、Azure VMware Solution プライベート クラウドに対して Ultra Performance を使用し、次に [ExpressRoute FastPath を有効化](../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)します。
+   - Ultra Disk を選んだ場合は、Azure VMware Solution プライベート クラウドへのディスク プール ネットワーク接続に Ultra Performance ExpressRoute 仮想ネットワーク ゲートウェイを使用して、[ExpressRoute FastPath を有効化](../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)してください。
 
-   - Premium SSD を選択した場合は、Azure VMware Solution プライベート クラウドに Standard (1 Gbps) を使用します。  iSCSI をホストするには、Standard\_DS##\_v3 を使用する必要があります。  クォータの問題が発生した場合は、Dsv3 シリーズの Azure VM シリーズあたりの [vCPU クォータ制限](../azure-portal/supportability/per-vm-quota-requests.md) の引き上げを依頼してください。
+   - Premium SSD または Standard SSD を選んだ場合は、Azure VMware Solution プライベート クラウドへのディスク プール ネットワーク接続に Standard (1 Gbps) または High Performance (2 Gbps) ExpressRoute 仮想ネットワーク ゲートウェイを使用します。  
+
+- iSCSI をホストするには、Standard\_DS##\_v3 を使用する必要があります。  クォータの問題が発生した場合は、Dsv3 シリーズの Azure VM シリーズあたりの [vCPU クォータ制限](../azure-portal/supportability/per-vm-quota-requests.md) の引き上げを依頼してください。
 
 - ディスク プール。バックアップ用ストレージとしてデプロイされ、各ディスクが個々の LUN として指定された iSCSI ターゲットとして公開されます。 詳細については、「[Azure ディスク プールをデプロイする](../virtual-machines/disks-pools-deploy.md)」を参照してください。
 
    >[!IMPORTANT]
    > ディスク プールは、VMware クラスターと同じサブスクリプションにデプロイする必要があり、VMware クラスターと同じ VNET にアタッチする必要があります。
 
-## <a name="attach-a-disk-pool-to-your-private-cloud"></a>ディスク プールをプライベート クラウドにアタッチする
+## <a name="add-a-disk-pool-to-your-private-cloud"></a>ディスク プールをプライベート クラウドに追加する
 iSCSI ターゲットを通じて表示されたディスク プールを、Azure VMware Solution プライベート クラウドの VMware データストアとしてアタッチします。
 
 >[!IMPORTANT]
 >**パブリック プレビュー** 中は、テスト クラスターまたは非運用クラスターにのみディスク プールをアタッチします。
 
-1. サブスクリプションが `Microsoft.AVS` に登録されているかどうかを確認します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-   ```azurecli
-   az provider show -n "Microsoft.AVS" --query registrationState
-   ```
+サブスクリプションが `Microsoft.AVS` に登録されているかどうかを確認します。
 
-   まだ登録されていない場合は、次のように登録します。
+```azurecli
+az provider show -n "Microsoft.AVS" --query registrationState
+```
 
-   ```azurecli
-   az provider register -n "Microsoft.AVS"
-   ```
+まだ登録されていない場合は、次のように登録します。
 
-2. サブスクリプションが Microsoft.AVS 内の `CloudSanExperience` AFEC に登録されているかどうかを確認します。
+```azurecli
+az provider register -n "Microsoft.AVS"
+```
 
-   ```azurecli
-   az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
-   ```
+サブスクリプションが Microsoft.AVS 内の `CloudSanExperience` AFEC に登録されているかどうかを確認します。
 
-   - まだ登録されていない場合は、次のように登録します。
+```azurecli
+az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
+```
 
-      ```azurecli
-      az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
-      ```
+まだ登録されていない場合は、次のように登録します。
 
-      登録の完了には約 15 分かかる場合があり、現在の状態を確認できます。
-      
-      ```azurecli
-      az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS" --query properties.state
-      ```
+```azurecli
+az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
+```
 
-      >[!TIP]
-      >15 分以上経過しても登録が完了せず、途中で停止した場合は、フラグを登録解除してから再登録します。
-      >
-      >```azurecli
-      >az feature unregister --name "CloudSanExperience" --namespace "Microsoft.AVS"
-      >az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
-      >```
+登録の完了には約 15 分かかる場合があります。次のコマンドを使用して状態を確認できます。
 
-3. `vmware ` 拡張機能がインストールされているかどうか確認します。 
+```azurecli
+az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS" --query properties.state
+```
 
-   ```azurecli
-   az extension show --name vmware
-   ```
+>[!TIP]
+>15 分以上経過しても登録が完了せず、途中で停止した場合は、フラグを登録解除してから再登録します。
+>
+>```azurecli
+>az feature unregister --name "CloudSanExperience" --namespace "Microsoft.AVS"
+>az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
+>```
 
-   - 拡張機能が既にインストールされている場合は、バージョンが **3.0.0** であるかどうかを確認します。 古いバージョンがインストールされている場合は、次のように拡張機能を更新します。
+`vmware ` 拡張機能がインストールされているかどうか確認します。 
 
-      ```azurecli
-      az extension update --name vmware
-      ```
+```azurecli
+az extension show --name vmware
+```
 
-   - まだインストールされていない場合は、インストールします。
+拡張機能が既にインストールされている場合は、バージョンが **3.0.0** であるかどうかを確認します。 古いバージョンがインストールされている場合は、次のように拡張機能を更新します。
 
-      ```azurecli
-      az extension add --name vmware
-      ```
+```azurecli
+az extension update --name vmware
+```
 
-4. iSCSI ターゲットによって指定された `Microsoft.StoragePool` を使用して、Azure VMware Solution プライベート クラウド クラスターに iSCSI データストアを作成してアタッチします。 ディスク プールは委任されたサブネットを介して vNet にアタッチされ、これは Microsoft.StoragePool/diskPools リソース プロバイダーで行われます。  サブネットが委任されていない場合、デプロイは失敗します。
+まだインストールされていない場合は、インストールします。
 
-   ```bash
-   az vmware datastore disk-pool-volume create --name iSCSIDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name lun0
-   ```
+```azurecli
+az extension add --name vmware
+```
 
-   >[!TIP]
-   >データストアでヘルプを表示できます。
-   >
-   >   ```azurecli
-   >   az vmware datastore -h
-   >   ```
-   
+### <a name="attach-the-iscsi-lun"></a>iSCSI LUN をアタッチする
 
-5. プライベート クラウド クラスター内の iSCSI データストアの詳細を表示します。
-   
-   ```azurecli
-   az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
-   ```
+iSCSI ターゲットによって指定された `Microsoft.StoragePool` を使用して、Azure VMware Solution プライベート クラウド クラスターに iSCSI データストアを作成してアタッチします。 ディスク プールは委任されたサブネットを介して仮想ネットワークにアタッチされます。これは Microsoft.StoragePool/diskPools リソース プロバイダーで行われます。  サブネットが委任されていない場合、デプロイは失敗します。
 
-6. プライベート クラウド クラスター内のすべてのデータストアの一覧を表示します。
+```bash
+#Initialize input parameters
+resourceGroupName='<yourRGName>'
+name='<desiredDataStoreName>'
+cluster='<desiredCluster>'
+privateCloud='<privateCloud>'
+lunName='<desiredLunName>'
 
-   ```azurecli
-   az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
-   ```
+az vmware datastore disk-pool-volume create --name $name --resource-group $resourceGroupName --cluster $cluster --private-cloud $privateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name $lunName
+```
 
-## <a name="delete-an-iscsi-datastore-from-your-private-cloud"></a>プライベート クラウドから iSCSI データストアを削除する
+>[!TIP]
+>データストアでヘルプを表示できます。
+>
+>   ```azurecli
+>   az vmware datastore -h
+>   ```
 
-プライベート クラウドのデータストアを削除しても、ディスク プールのリソースは削除されません。 この操作に必要なメンテナンス期間がありません。
 
-1. VM の電源をオフにし、次のような iSCSI データストアに関連付けられているすべてのオブジェクトを削除します。
+アタッチが成功したことを確認するには、次のコマンドを使用できます。
+
+プライベート クラウド クラスター内の iSCSI データストアの詳細を表示します。
+
+```azurecli
+az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
+```
+
+プライベート クラウド クラスター内のすべてのデータストアの一覧を表示します。
+
+```azurecli
+az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+### <a name="preview-registration"></a>登録のプレビュー
+
+まず、Microsoft.AVS と CloudSanExperience にサブスクリプションを登録します。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. **サブスクリプション** を検索して選択します。
+1. 使用するサブスクリプションを選択し、 **[設定]** で **[リソース プロバイダー]** を選択します。
+1. **Microsoft.AVS** を検索して選択し、 **[再登録]** を選択します。
+1. **[設定]** で、 **[プレビュー機能]** を選択します。
+1. **CloudSanExperience** を検索して、登録します。
+
+### <a name="connect-your-disk-pool"></a>ディスク プールを接続する
+
+サブスクリプションが正しく登録されたので、ディスク プールを Azure VMware Solution プライベート クラウド クラスターに接続できます。
+
+> [!IMPORTANT]
+> ディスク プールは委任されたサブネットを介して仮想ネットワークにアタッチされます。これは Microsoft.StoragePool リソース プロバイダーで行われます。 サブネットが委任されていない場合、デプロイは失敗します。 詳細については、「[サブネット アクセス許可を委任する](../virtual-machines/disks-pools-deploy.md#delegate-subnet-permission)」を参照してください。
+
+1. Azure VMware Solution に移動します。
+1. **[管理]** で **[ストレージ (プレビュー)]** を選択します。
+1. **[ディスク プールを接続します]** を選択します。
+1. 使用するサブスクリプションを選択します。
+1. ディスク プールと、それを接続するクライアント クラスターを選択します。
+1. LUN を有効にし (存在する場合)、データストア名 (既定では LUN が使用されます) を指定して、 **[Connect]\(接続\)** を選択します。
+
+:::image type="content" source="media/attach-disk-pools-to-azure-vmware-solution-hosts/connect-a-disk-pool-temp.png" alt-text="ディスク プールの接続エクスペリエンスのスクリーンショット。" lightbox="media/attach-disk-pools-to-azure-vmware-solution-hosts/connect-a-disk-pool-temp.png":::
+
+接続が成功すると、vCenter に追加されたデータストアが表示されます。
+
+:::image type="content" source="media/attach-disk-pools-to-azure-vmware-solution-hosts/vsphere-datastores.png" alt-text="vSphere エクスペリエンスのスクリーンショット。ディスク プールはデータストアとしてアタッチされています。" lightbox="media/attach-disk-pools-to-azure-vmware-solution-hosts/vsphere-datastores.png":::
+
+---
+
+## <a name="disconnect-a-disk-pool-from-your-private-cloud"></a>プライベート クラウドからディスク プールを切断する
+
+ディスク プールを切断しても、ディスク プール リソースは削除されません。 この操作に必要なメンテナンス期間がありません。 ただし、これを行う場合は注意してください。
+
+まず、VM の電源をオフにし、次のような、ディスク プール データストアに関連付けられているすべてのオブジェクトを削除します。
 
    - VM (インベントリからの削除)
 
@@ -147,13 +198,15 @@ iSCSI ターゲットを通じて表示されたディスク プールを、Azur
 
    - スナップショット
 
-2. プライベート クラウド データストアを削除します。
+その後、プライベート クラウド データストアを削除します。
 
-   ```azurecli
-   az vmware datastore delete --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
-   ```
+1. Azure portal で Azure VMware Solutionに移動しますl。
+1. **[管理]** で **[ストレージ]** を選択します。
+1. 切断するディスク プールを選択し、 **[接続解除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+:::image type="content" source="media/attach-disk-pools-to-azure-vmware-solution-hosts/disconnect-a-disk-pool.png" alt-text="Azure VMware Solution の [ストレージ] ページのスクリーンショット。アタッチされているディスク プールの一覧と、[接続解除] が強調表示されています。" lightbox="media/attach-disk-pools-to-azure-vmware-solution-hosts/disconnect-a-disk-pool.png":::
+
+## <a name="next-steps"></a>次のステップ
 
 Azure VMware Solution ホストにディスク プールをアタッチできましたので、次のことについて学習します。
 

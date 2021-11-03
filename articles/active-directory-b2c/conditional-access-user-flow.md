@@ -7,16 +7,16 @@ ms.subservice: conditional-access
 ms.topic: overview
 ms.date: 09/15/2021
 ms.custom: project-no-code
-ms.author: mimart
-author: msmimart
-manager: celested
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 54229ff68cf9e4ac749fb1396282d9c881f52806
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e4f1bf6bdb46bd87fb24fe5564a1d53204477a5d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572673"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008011"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "128572673"
 Azure AD B2C では、各サインイン イベントが評価され、すべてのポリシーの要件が満たされていることを確認したうえで、ユーザー アクセスが許可されます。 この **評価** フェーズでは、条件付きアクセス サービスによって、サインイン イベント時に Identity Protection のリスク検出で収集されたシグナルが評価されます。 この評価プロセスの結果は、サインインを許可するかブロックするかを示す一連の要求です。 Azure AD B2C ポリシーは、これらの要求を使用してユーザー フロー内で動作します。 たとえば、アクセスをブロックしたり、多要素認証 (MFA) などの特定の修復策へのチャレンジをユーザーに求めたりします。 "アクセスのブロック" は、他のすべての設定よりも優先されます。
 ::: zone pivot="b2c-custom-policy"
 サインインの脅威を評価するために使用される条件付きアクセス技術プロファイルの例を次に示します。
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessEvaluation">
   <DisplayName>Conditional Access Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -45,7 +45,7 @@ Identity Protection のシグナルが適切に評価されるようにするに
 > 一連の手順の中でリスクを正常に修復するには、"*評価*" 技術プロファイルの実行後に "*修復*" 技術プロファイルが呼び出されたことを確認します。 "*評価*" が "*修復*" なしで呼び出された場合、リスクの状態は " *[危険]* " です。
 "*評価*" 技術プロファイルの推奨事項から `Block` が返された場合、"*評価*" 技術プロファイルの呼び出しは必要ありません。 リスクの状態は " *[危険]* " に設定されます。
 特定された脅威を修復するために使用される条件付きアクセス技術プロファイルの例を次に示します。
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessRemediation">
   <DisplayName>Conditional Access Remediation</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -351,7 +351,7 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
 1. ポリシー ファイルをアップロードします。
 ### <a name="configure-claim-other-than-phone-number-to-be-used-for-mfa"></a>MFA で使用する電話番号以外の要求を構成する
 上記の条件付きアクセス ポリシーでは、`DoesClaimExist` 要求変換メソッドによって、たとえば要求 `strongAuthenticationPhoneNumber` に電話番号が含まれているかどうかなど、要求に値が含まれているかどうかが確認されます。 要求変換は、要求 `strongAuthenticationPhoneNumber` だけのことではありません。 シナリオに応じて、他の要求も使用できます。 次の XML スニペットでは、代わりに要求 `strongAuthenticationEmailAddress` がチェックされています。 選択する要求には有効な値が必要です。それがない場合、要求 `IsMfaRegistered` は `False` に設定されます。 `False` に設定されると、条件付きアクセス ポリシーの評価によって付与タイプ `Block` が返され、ユーザーがユーザー フローを完了できなくなります。
-```XML
+```xml
  <ClaimsTransformation Id="IsMfaRegisteredCT" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim" />

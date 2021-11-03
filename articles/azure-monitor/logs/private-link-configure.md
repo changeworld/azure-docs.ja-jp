@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 9f0b1a3f51a5eae7b10ed74880c8abe1c92aae7a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 99e8830b1b4b667d68bb8db1243d1c0ddaeab15a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278996"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006774"
 ---
 # <a name="configure-your-private-link"></a>プライベート リンクを構成する
 プライベート リンクを構成するには、いくつかの手順を実行する必要があります。 
@@ -303,5 +303,5 @@ $scope | Set-AzResource -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート ストレージ](private-storage.md)について確認します
+- カスタム ログとカスタマー マネージド キー (CMK) の[プライベート ストレージ](private-storage.md)について確認する
 - [Automation 用の Private Link](../../automation/how-to/private-link-security.md) について確認します

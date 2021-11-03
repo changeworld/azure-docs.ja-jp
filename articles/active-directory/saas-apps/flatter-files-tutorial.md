@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 34372fe7d623041c46d33b97e58740612adeb87a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 26ce0b43047596426c2a3a708dd336d9ca33b0c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124834798"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>チュートリアル: Azure Active Directory と Flatter Files の統合
 
@@ -124,12 +124,12 @@ Flatter Files で Azure AD シングル サインオンを構成するには、�
     ![Flatter Files アプリで選択されている [DASHBOARD]\(ダッシュボード\) を示すスクリーンショット。](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. **[設定]** をクリックし、 **[会社]** タブで次の手順に従います。 
-   
+
     ![[Use S A M L 2.0 for Authentication]\(認証に S A M L 2.0 を使用する\) がオンになっていて、[Configure S A M L]\(S A M L の構成\) ボタンが選択されている [Company]\(会社\) タブを示すスクリーンショット。](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+
+    1. **[Use SAML 2.0 for Authentication]** を選択します。
     
-    a. **[Use SAML 2.0 for Authentication]** を選択します。
-    
-    b. **[Configure SAML]** をクリックします。
+    1. **[Configure SAML]** をクリックします。
 
 4. **[SAML Configuration]** ダイアログ ボックスで、次の手順を実行します。 
    

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: e5f71566d3e31858a60f805bf45fe95793dd9b20
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c5dbbb41f75e3b1d2646c00019843d9a08805db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094260"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058656"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -208,6 +208,26 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 |-----------------------------------------------|-----------|----------|
 | **`data.policy.azure.us`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
 | **`store.policy.azure.us`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
+
+## <a name="cluster-extensions"></a>クラスター拡張機能
+
+### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則
+
+AKS クラスターでクラスター拡張機能を使用するには、次の FQDN/アプリケーションルールが必要です。
+
+| FQDN | Port | 用途 |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.com`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能サービスから構成情報を取得し、サービスに拡張状態をレポートするために使用されます。|
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能エージェントを AKS クラスターにインストールするためにコンテナーイメージをプルするために必要です。|
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure US Government に必要な FQDN とアプリケーションの規則
+
+AKS クラスターでクラスター拡張機能を使用するには、次の FQDN/アプリケーションルールが必要です。
+
+| FQDN | Port | 用途 |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.us`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能サービスから構成情報を取得し、サービスに拡張状態をレポートするために使用されます。 |
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | このアドレスは、クラスター拡張機能エージェントを AKS クラスターにインストールするためにコンテナーイメージをプルするために必要です。|
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Firewall を使用してエグレス トラフィックを制限する
 

@@ -6,14 +6,14 @@ keywords: 機械学習を使用した天気予報
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 10/26/2021
 ms.author: robinsh
-ms.openlocfilehash: 1a85456c6227df1f32387ff92746e0efb8c721ca
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 8e38125b0694ba59330cb27d5a4930f79ce33fd6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597451"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077598"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) で IoT ハブからのセンサー データを使用して天気予報を行う
 

@@ -8,12 +8,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 07/19/2021
 ms.author: danlep
-ms.openlocfilehash: c593d9d9f2d957564eed5be98f3f92f29ce79a27
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 950684fdbaa1553447b818c0751b13f4a8e26f34
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551101"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031767"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。
@@ -85,6 +86,8 @@ ms.locfileid: "128551101"
     - [パラメーターを検証する](validation-policies.md#validate-parameters) - API スキーマに対して要求ヘッダー、クエリ、またはパス パラメーターを検証します。
     - [ヘッダーを検証する](validation-policies.md#validate-headers) - API スキーマに対して応答ヘッダーを検証します。
     - [状態コードを検証する](validation-policies.md#validate-status-code) - API スキーマに対して応答の HTTP 状態コードを検証します。
+- [GraphQL 検証ポリシー](graphql-validation-policies.md)
+    - [GraphQL 要求を検証する](graphql-validation-policies.md#validate-graphql-request) - GraphQL API への要求を検証して承認します。
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。

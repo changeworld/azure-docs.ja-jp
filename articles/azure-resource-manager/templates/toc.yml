@@ -76,8 +76,6 @@
           href: template-tutorial-deploy-vm-extensions.md
         - name: SQL 拡張機能のデプロイ
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: テンプレートのデプロイに関するトラブルシューティング
-          href: template-tutorial-troubleshoot.md
     - name: テンプレートに関する Microsoft Learn パス
       href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: サンプル - Azure サービス
@@ -447,40 +445,6 @@
           href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
-    - name: デプロイのトラブルシューティング
-      items:
-        - name: デプロイ エラーのトラブルシューティング
-          href: common-deployment-errors.md
-        - name: AccountNameInvalid
-          href: error-storage-account-name.md
-        - name: DeploymentQuotaExceeded
-          href: deployment-quota-exceeded.md
-        - name: InvalidTemplate
-          href: error-invalid-template.md
-        - name: JobSizeExceeded
-          href: error-job-size-exceeded.md
-        - name: Linux デプロイの問題
-          href: /troubleshoot/azure/virtual-machines/troubleshoot-deploy-vm-linux
-        - name: NoRegisteredProviderFound
-          href: error-register-resource-provider.md
-        - name: NotFound
-          href: error-not-found.md
-        - name: ParentResourceNotFound
-          href: error-parent-resource.md
-        - name: Linux のプロビジョニングと割り当ての問題
-          href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux
-        - name: Windows のプロビジョニングと割り当ての問題
-          href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows
-        - name: RequestDisallowedByPolicy
-          href: error-policy-requestdisallowedbypolicy.md
-        - name: ReservedResourceName
-          href: error-reserved-resource-name.md
-        - name: ResourceQuotaExceeded
-          href: error-resource-quota.md
-        - name: SkuNotAvailable
-          href: error-sku-not-available.md
-        - name: Windows デプロイの問題
-          href: /troubleshoot/azure/virtual-machines/troubleshoot-deploy-vm-windows
 - name: リファレンス
   items:
     - name: テンプレート リファレンス

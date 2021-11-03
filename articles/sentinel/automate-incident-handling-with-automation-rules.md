@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 1244959bac7a2c530444e3d4b36691d4f760529a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2d618dacc14c188c188f92be41de3fba20eabe38
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731054"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014222"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>自動化ルールで Azure Sentinel でのインシデント処理を自動化する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel 自動化ルールの概要と、それらを使用してセキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作を実装する方法について説明します。これにより、SOC の有効性が向上し、時間とリソースを節約できます。
 
@@ -34,7 +36,7 @@ ms.locfileid: "121731054"
 
 オートメーション ルールとは、Azure Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 自動化ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
 
-## <a name="components"></a>Components
+## <a name="components"></a>コンポーネント
 
 自動化ルールは、次のいくつかのコンポーネントで構成されています。
 

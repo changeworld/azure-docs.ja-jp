@@ -8,12 +8,12 @@ ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 932e3e0cc51c5b74e10d86bffa5785e5f65564cf
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 16102dde6c354922f7347a33069c953724d1f3df
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278654"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022552"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -227,5 +227,5 @@ Gen2 でアプリケーションとワークロードが安定していること
 ## <a name="next-steps"></a>次のステップ
 
 - ストレージ アカウントに対するセキュリティの設定のさまざまな部分について学習します。 詳しくは、「[Azure Storage セキュリティ ガイド](./security-recommendations.md)」をご覧ください。
-- Data Lake Store のパフォーマンスを最適化します。 「[パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する](data-lake-storage-performance-tuning-guidance.md)」をご覧ください
+- Data Lake Store のパフォーマンスを最適化します。 「[パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する](./data-lake-storage-best-practices.md)」をご覧ください
 - Data Lake Store の管理に関するベスト プラクティスを確認します。 「[Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス](data-lake-storage-best-practices.md)」をご覧ください

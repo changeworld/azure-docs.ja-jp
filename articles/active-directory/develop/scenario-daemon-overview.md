@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/31/2020
+ms.date: 10/14/2021
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a9aa754d09333b1384fe46e424deaf3c5525ff3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582776"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018055"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデーモン アプリケーション
 
@@ -44,10 +44,9 @@ Web API を呼び出すデーモン アプリをビルドするために必要�
 
 ## <a name="specifics"></a>詳細
 
-> [!IMPORTANT]
->
-> - ユーザーは、デーモン アプリケーションと対話できません。 デーモン アプリケーションには独自の ID が必要です。 この種のアプリケーションは、アプリケーション ID を使用し、アプリケーション ID、資格情報 (パスワードまたは証明書)、アプリケーション ID の URI を Azure AD に提示して、アクセス トークンを要求します。 認証が成功すると、デーモンは Microsoft ID プラットフォームからアクセス トークン (および更新トークン) を受け取ります。 このトークンは、Web API の呼び出しに使用されます (必要に応じて更新されます)。
-> - ユーザーはデーモン アプリケーションと対話できないため、増分の同意を実行できません。 必要なすべての API アクセス許可は、アプリケーションの登録時に構成する必要があります。 このアプリケーションのコードでは、静的に定義されたアクセス許可のみが要求されます。 これは、デーモン アプリケーションが増分同意をサポートしないことも意味します。
+ユーザーは、デーモン アプリケーションと対話できません。 デーモン アプリケーションには独自の ID が必要です。 この種のアプリケーションは、アプリケーション ID を使用し、アプリケーション ID、資格情報 (パスワードまたは証明書)、アプリケーション ID の URI を Azure AD に提示して、アクセス トークンを要求します。 認証が成功すると、デーモンは Microsoft ID プラットフォームからアクセス トークン (および更新トークン) を受け取ります。 このトークンは、Web API の呼び出しに使用されます (必要に応じて更新されます)。
+
+ユーザーはデーモン アプリケーションと対話できないため、増分の同意を実行できません。 必要なすべての API アクセス許可は、アプリケーションの登録時に構成する必要があります。 このアプリケーションのコードでは、静的に定義されたアクセス許可のみが要求されます。 これは、デーモン アプリケーションが増分同意をサポートしないことも意味します。
 
 開発者にとって、このシナリオのエンドツーエンドのエクスペリエンスには、次の側面があります。
 

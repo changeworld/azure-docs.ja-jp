@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a843952e05d71a13a26d56e1588fd10bea0e50c8
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4d9fa14246832f339b6a38b6a4128cf3f73c607b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275869"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054934"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
@@ -129,7 +129,7 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | プロジェクトの詳細 | Resource group | 必須 | このストレージ アカウント用に新しいリソース グループを作成するか、既存のものを選択します。 詳細については、「[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 |
 | インスタンスの詳細 | ストレージ アカウント名 | 必須 | ストレージ アカウント用に一意の名前を選択します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 |
 | インスタンスの詳細 | リージョン | 必須 | ストレージ アカウントの適切なリージョンを選択します。 詳細については、「[Azure のリージョンと Availability Zones](../../availability-zones/az-overview.md)」をご覧ください。<br /><br />ストレージ アカウントまたは冗長構成の種類によっては、サポートされていないリージョンがあります。 詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。<br /><br />リージョンの選択は、課金に影響を与える可能性があります。 詳細については、「[ストレージ アカウントの課金](storage-account-overview.md#storage-account-billing)」を参照してください。 |
-| インスタンスの詳細 | パフォーマンス | 必須 | 汎用 v2 ストレージ アカウント (既定) の場合は、 **[Standard]** パフォーマンスを選択します。 Microsoft は、ほとんどのシナリオにこのアカウントの種類をお勧めします。 詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。<br /><br />待機時間を短くする必要があるシナリオの場合は、 **[Premium]** を選択します。 **[Premium]** を選択した後、作成する Premium ストレージ アカウントの種類を選択します。 次の種類の Premium ストレージ アカウントを使用できます。 <ul><li>[ブロック BLOB](../blobs/storage-blob-performance-tiers.md)</li><li>[ファイル共有](../files/storage-files-planning.md#management-concepts)</li><li>[ページ BLOB](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
+| インスタンスの詳細 | パフォーマンス | 必須 | 汎用 v2 ストレージ アカウント (既定) の場合は、 **[Standard]** パフォーマンスを選択します。 Microsoft は、ほとんどのシナリオにこのアカウントの種類をお勧めします。 詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。<br /><br />待機時間を短くする必要があるシナリオの場合は、 **[Premium]** を選択します。 **[Premium]** を選択した後、作成する Premium ストレージ アカウントの種類を選択します。 次の種類の Premium ストレージ アカウントを使用できます。 <ul><li>[ブロック BLOB](./storage-account-overview.md)</li><li>[ファイル共有](../files/storage-files-planning.md#management-concepts)</li><li>[ページ BLOB](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
 | インスタンスの詳細 | 冗長性 | 必須 | 目的の冗長構成を選択します。 すべてのリージョンのすべてのストレージ アカウントの種類で、すべての冗長オプションを使用できるわけではありません。 冗長構成の詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。<br /><br />Geo 冗長構成 (GRS または GZRS) を選択した場合、データは別のリージョンのデータ センターにレプリケートされます。 セカンダリ リージョンのデータへの読み取りアクセスを行う場合は、 **[Make read access to data available in the event of regional unavailability]\(リージョンが使用できない場合に使用できるデータに読み取りアクセスを行う\)** をオンにします。 |
 
 次の図は、新しいストレージ アカウントの標準構成を示しています。
@@ -144,9 +144,9 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 
 | Section | フィールド | 必須または省略可能 | 説明 |
 |--|--|--|--|
-| セキュリティ | 安全な転送を有効にする | Optional | セキュリティで保護された転送を有効にして、このストレージ アカウントへの受信要求は HTTPS を介してのみ行われるように要求します (既定)。 最善のセキュリティのためにお勧めします。 詳細については、「[セキュリティで保護された接続を確保するために安全な転送を要求する](storage-require-secure-transfer.md)」を参照してください。 |
+| セキュリティ | 安全な転送を有効にする | 省略可能 | セキュリティで保護された転送を有効にして、このストレージ アカウントへの受信要求は HTTPS を介してのみ行われるように要求します (既定)。 最善のセキュリティのためにお勧めします。 詳細については、「[セキュリティで保護された接続を確保するために安全な転送を要求する](storage-require-secure-transfer.md)」を参照してください。 |
 | セキュリティ | インフラストラクチャ暗号化を有効にする | 省略可能 | 既定では、インフラストラクチャの暗号化は有効になっていません。 サービス レベルとインフラストラクチャ レベルの両方でデータを暗号化するには、インフラストラクチャの暗号化を有効にします。 詳細については、「[データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する](infrastructure-encryption-enable.md)」を参照してください。 |
-| セキュリティ | BLOB パブリック アクセスを有効にする | Optional | この設定を有効にすると、適切なアクセス許可を持つユーザーは、ストレージ アカウント内のコンテナーへの匿名パブリック アクセスを有効にすることができます (既定)。 この設定を無効にすると、ストレージ アカウントへのすべての匿名パブリック アクセスが禁止されます。 詳細については、「[コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](../blobs/anonymous-read-access-prevent.md)」を参照してください。<br> <br> ユーザーが追加の手順によってコンテナーのパブリック アクセスの設定を明示的に構成しない限り、BLOB のパブリック アクセスを有効にしても、パブリック アクセスで BLOB のデータを利用することはできません。 |
+| セキュリティ | BLOB パブリック アクセスを有効にする | 省略可能 | この設定を有効にすると、適切なアクセス許可を持つユーザーは、ストレージ アカウント内のコンテナーへの匿名パブリック アクセスを有効にすることができます (既定)。 この設定を無効にすると、ストレージ アカウントへのすべての匿名パブリック アクセスが禁止されます。 詳細については、「[コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](../blobs/anonymous-read-access-prevent.md)」を参照してください。<br> <br> ユーザーが追加の手順によってコンテナーのパブリック アクセスの設定を明示的に構成しない限り、BLOB のパブリック アクセスを有効にしても、パブリック アクセスで BLOB のデータを利用することはできません。 |
 | セキュリティ | ストレージ アカウント キーへのアクセスを有効にする (プレビュー) | 省略可能 | この設定を有効にすると、クライアントは、アカウント アクセス キーまたは Azure Active Directory (Azure AD) アカウントのいずれかを使用して、ストレージ アカウントへの要求を承認できます (既定)。 この設定を無効にすると、アカウント アクセス キーによる承認はできなくなります。 詳細については、[Azure ストレージ アカウントの共有キーによる認可の禁止](shared-key-authorization-prevent.md)に関するページを参照してください。 |
 | セキュリティ | TLS の最小バージョン | 必須 | ストレージ アカウントへの受信要求に対するトランスポート層セキュリティ (TLS) の最小バージョンを選択します。 既定値は TLS バージョン 1.2 です。 既定値に設定すると、TLS 1.0 または TLS 1.1 を使用して行われた受信要求は拒否されます。 詳細については、「[ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する](transport-layer-security-configure-minimum-version.md)」を参照してください。 |
 | Data Lake Storage Gen2 | 階層型名前空間を有効にする | 省略可能 | このストレージ アカウントを Azure Data Lake Storage Gen2 ワークロードに使用するには、階層型名前空間を構成します。 詳細については、「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」を参照してください。 |
@@ -175,7 +175,7 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | Section | フィールド | 必須または省略可能 | 説明 |
 |--|--|--|--|
 | Recovery | Enable point-in-time restore for containers (コンテナーのポイントインタイム リストアを有効にする) | 省略可能 | ポイントインタイム リストアでは、ブロック BLOB データを以前の状態に復元できるようにすることで、誤った削除や破損を防ぐことができます。 詳細については、「[ブロック BLOB のポイントインタイム リストア](../blobs/point-in-time-restore-overview.md)」を参照してください。<br /><br />ポイントインタイム リストアを有効にすると、BLOB のバージョン管理、BLOB の論理的な削除、BLOB の変更フィードも有効になります。 これらの前提条件機能は、コストに影響を与える可能性があります。 詳細については、ポイントインタイム リストアに関する「[価格と課金](../blobs/point-in-time-restore-overview.md#pricing-and-billing)」を参照してください。 |
-| Recovery | BLOB の論理的な削除の有効化 | Optional | BLOB の論理的な削除を使用すると、削除されたデータがシステムに指定された保持期間だけ維持されることにより、個々の BLOB、スナップショット、またはバージョンが誤った削除または上書きから保護されます。 保持期間中は、論理的に削除されたオブジェクトを削除された時点の状態に復元することができます。 詳細については、「[BLOB の論理的な削除](../blobs/soft-delete-blob-overview.md)」を参照してください。<br /><br />Microsoft は、ストレージ アカウントで BLOB の論理的な削除を有効にし、最小保持期間を 7 日に設定することをお勧めします。 |
+| Recovery | BLOB の論理的な削除の有効化 | 省略可能 | BLOB の論理的な削除を使用すると、削除されたデータがシステムに指定された保持期間だけ維持されることにより、個々の BLOB、スナップショット、またはバージョンが誤った削除または上書きから保護されます。 保持期間中は、論理的に削除されたオブジェクトを削除された時点の状態に復元することができます。 詳細については、「[BLOB の論理的な削除](../blobs/soft-delete-blob-overview.md)」を参照してください。<br /><br />Microsoft は、ストレージ アカウントで BLOB の論理的な削除を有効にし、最小保持期間を 7 日に設定することをお勧めします。 |
 | Recovery | Enable soft delete for containers (preview) (コンテナーの論理的な削除を有効にする (プレビュー)) | 省略可能 | コンテナーの論理的な削除を使用すると、削除されたデータがシステムに指定された保持期間だけ維持されることにより、コンテナーとその内容が誤った削除から保護されます。 保持期間中は、論理的に削除されたコンテナーを削除された時点の状態に復元することができます。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](../blobs/soft-delete-container-overview.md)」を参照してください。<br /><br />Microsoft は、ストレージ アカウントでコンテナーの論理的な削除を有効にし、最小保持期間を 7 日に設定することをお勧めします。 |
 | Recovery | ファイル共有の論理的な削除を有効にする | 省略可能 | ファイル共有の論理的な削除を使用すると、削除されたデータがシステムに指定された保持期間だけ維持されることにより、ファイル共有とその内容が誤った削除から保護されます。 保持期間中は、論理的に削除されたファイル共有を削除された時点の状態に復元することができます。 詳細については、「[Azure ファイル共有の誤削除を防ぐ](../files/storage-files-prevent-file-share-deletion.md)」を参照してください。<br /><br />Microsoft は、Azure Files ワークロード用のファイル共有で論理的な削除を有効にし、最小保持期間を 7 日に設定することをお勧めします。 |
 | 追跡 | BLOB のバージョン管理を有効にする | 省略可能 | BLOB のバージョン管理を有効にすると、BLOB が上書きされるときに、前のバージョンでの BLOB の状態が自動的に保存されます。 詳細については、「[BLOB のバージョン管理](../blobs/versioning-overview.md)」を参照してください。<br /><br />Microsoft は、ストレージ アカウントのデータ保護を最善にするため、BLOB のバージョン管理を有効にすることをお勧めします。 |
@@ -227,7 +227,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 | Premium ブロック BLOB | LRS、ZRS | BlockBlobStorage | Premium_LRS、Premium_ZRS | はい |
 | Premium ファイル共有 | LRS、ZRS | FileStorage | Premium_LRS、Premium_ZRS | いいえ |
 | Premium ページ BLOB | LRS | StorageV2 | Premium_LRS | いいえ |
-| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | ストレージ | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
+| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | Storage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 | レガシ BLOB ストレージ | LRS、GRS、RA-GRS | BlobStorage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -269,7 +269,7 @@ az storage account create \
 | Premium ブロック BLOB | LRS、ZRS | BlockBlobStorage | Premium_LRS、Premium_ZRS | はい |
 | Premium ファイル共有 | LRS、ZRS | FileStorage | Premium_LRS、Premium_ZRS | いいえ |
 | Premium ページ BLOB | LRS | StorageV2 | Premium_LRS | いいえ |
-| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | ストレージ | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
+| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | Storage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 | レガシ BLOB ストレージ | LRS、GRS、RA-GRS | BlobStorage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 
 # <a name="template"></a>[テンプレート](#tab/template)

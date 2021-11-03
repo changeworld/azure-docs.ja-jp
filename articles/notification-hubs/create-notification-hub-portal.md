@@ -11,14 +11,13 @@ ms.lastreviewed: 02/14/2019
 ms.topic: quickstart
 ms.service: notification-hubs
 ms.workload: mobile
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 4381c9259788982832a02ecbe2c87c6f6e723772
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-portal
+ms.openlocfilehash: 1f9ba3f32a2b7f5b0845593ec3439cf826b50ce6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533594"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070130"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>クイック スタート:Azure portal 内で Azure 通知ハブを作成する
 

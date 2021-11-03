@@ -3,20 +3,20 @@ title: カスタム ポリシーの一般的な要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの一般的な要求変換の例。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7024079269481792b45b121cee97223580aabe28
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85202222"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007279"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
 

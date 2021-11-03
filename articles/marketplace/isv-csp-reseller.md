@@ -8,12 +8,12 @@ author: emerb19
 ms.author: emerb
 ms.date: 10/07/2021
 robots: noindex
-ms.openlocfilehash: 28f14cf4414266e6395ec60432c6d2e106a1a69a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: bb663f42be1e7d1c798420ef483cf52c34c84aff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716087"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048294"
 ---
 # <a name="isv-to-cloud-reseller-private-offers"></a>ISV からクラウド リセラーへのプライベート オファー
 
@@ -33,7 +33,7 @@ CSP パートナーは、パートナー センターの UI または API を使
 :::image type="content" source="media/isv-csp-cloud/csp-private-offer-experience.png" alt-text="CSP プライベート オファーのエクスペリエンスの進行状況を示しています。":::
 
 > [!NOTE]
-> オファーを (Azure Marketplace では利用できないよう) Microsoft AppSource にのみ公開し、クラウド ソリューション プロバイダー (CSP) プログラムのパートナーが販売できるよう選択した場合、オファーがポータルに表示されて CSP パートナーが購入できるようにるまでに時間がかかることがあります。 オファーが表示されておらず、CSP パートナーが利用できない状態になっていると思われる場合は、[サポート](/azure/marketplace/support)にお問い合わせください。
+> オファーを (Azure Marketplace では利用できないよう) Microsoft AppSource にのみ公開し、クラウド ソリューション プロバイダー (CSP) プログラムのパートナーが販売できるよう選択した場合、オファーがポータルに表示されて CSP パートナーが購入できるようにるまでに時間がかかることがあります。 オファーが表示されておらず、CSP パートナーが利用できない状態になっていると思われる場合は、[サポート](./support.md)にお問い合わせください。
 
 ## <a name="prerequisites-to-create-a-private-offer-for-cloud-resellers"></a>クラウド リセラー向けのプライベート オファーを作成するための前提条件
 
@@ -188,4 +188,4 @@ Microsoft が請求する支払い金額と代理店手数料は、マージン�
 
 ## <a name="next-steps"></a>次の手順
 
-- ISV からクラウド リセラーへのプライベート オファーの構成に関する[よく寄せられる質問](/azure/marketplace/isv-csp-faq)
+- ISV からクラウド リセラーへのプライベート オファーの構成に関する[よく寄せられる質問](./isv-csp-faq.yml)

@@ -1,29 +1,30 @@
 ---
 title: レイアウト - Form Recognizer
 titleSuffix: Azure Applied AI Services
-description: Form Recognizer API を使用したレイアウト分析に関連する概念 (使用法と制限) について説明します。
+description: Form Recognizer API の使用方法や制限など、Layout API の解析の概念について説明します。
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 913eb155820832936295a6cc9df6a22175a9bec5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 325e11a16162646b7cd4a57c0330d9bc36d51f46
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041977"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027439"
 ---
 # <a name="form-recognizer-layout-model"></a>Form Recognizer レイアウト モデル
 
-Azure Form Recognizer の Layout API を使用すると、ドキュメント (PDF、TIFF) と画像 (JPG、PNG、BMP) から、テキスト、テーブル、選択マーク、構造情報を抽出できます。 これを使用すると、お客様はさまざまな形式のドキュメントを受け取り、ドキュメントの構造化されたデータ表現を返すことができます。 これは、Microsoft の強力な[光学式文字認識 (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) 機能の強化バージョンと、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。
+Azure Form Recognizer の Layout API を使用すると、ドキュメント (PDF、TIFF) と画像 (JPG、PNG、BMP) から、テキスト、テーブル、選択マーク、構造情報を抽出できます。  これは、Microsoft の強力な[光学式文字認識 (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) 機能の強化版と、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。
 
-##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)のレイアウト機能を使用して処理されたサンプル フォーム:
+***[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)のレイアウト機能で処理されたサンプル フォーム***
 
-:::image type="content" source="media/layout-demo.gif" alt-text="{alt-text}":::
+:::image type="content" source="media/layout-demo.gif" alt-text="スクリーンショット: gif を処理するサンプル ラベル付けツール。":::
 
 **データ抽出機能**
 
@@ -31,37 +32,64 @@ Azure Form Recognizer の Layout API を使用すると、ドキュメント (PD
 | --- | --- | --- | --- |
 | Layout  | ✓  | ✓  | ✓  |
 
-## <a name="try-form-recognizer-studio-preview"></a>Form Recognizer スタジオ (プレビュー) を試す
+## <a name="development-options"></a>開発オプション
 
-* Form Recognizer スタジオは、プレビュー (v3.0) API で使用できます。
+Form Recognizer v2.1 では、次のリソースがサポートされています。
 
-* Form Recognizer スタジオのレイアウト機能を使用して、フォームとドキュメントからテーブル、チェック ボックス、テキストを抽出します。
+| 機能 | リソース |
+|----------|-------------------------| 
+|**Layout API**| <ul><li>[**Form Recognizer ラベル付けツール**](https://fott-2-1.azurewebsites.net/layout-analyze)</li><li>[**REST API**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-layout)</li><li>[**クライアント ライブラリ SDK**](quickstarts/try-sdk-rest-api.md)</li><li>[**Form Recognizer Docker コンテナー**](containers/form-recognizer-container-install-run.md?branch=main&tabs=layout#run-the-container-with-the-docker-compose-up-command)</li></ul>|
 
-> [!div class="nextstepaction"]
-> [Form Recognizer スタジオを試す](https://formrecognizer.appliedai.azure.com/studio/layout)
+Form Recognizer v3.0 では、次のリソースがサポートされています。
 
-## <a name="try-form-recognizer-sample-labeling-tool"></a>Form Recognizer サンプル ラベル付けツールを試す
+| 機能 | リソース | モデル ID |
+|----------|------------|------------|
+|**レイアウト モデル**| <ul><li>[**Form Recognizer Studio**](https://formrecognizer.appliedai.azure.com)</li><li>[**REST API**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**C# SDK**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Python SDK**](quickstarts/try-v3-python-sdk.md)</li><li>[**Java SDK**](quickstarts/try-v3-java-sdk.md)</li><li>[**JavaScript SDK**](quickstarts/try-v3-javascript-sdk.md)</li></ul>|**事前構築済みレイアウト**|
 
-サンプル ラベル付けツールを試すことで、レイアウト データがどのように抽出されるかを確認できます。 次が必要です。
+### <a name="try-form-recognizer"></a>Form Recognizer を試す
+
+Form Recognizer Studio やサンプル ラベル付けツールを使って、フォームやドキュメントからテーブル、チェック ボックス、テキストなどのデータを抽出する様子を確認できます。 次が必要です。
 
 * Azure サブスクリプション — [無料で作成する](https://azure.microsoft.com/free/cognitive-services/)ことができます
 
-* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
+* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[Go to resource (リソースに移動)]** を選択して、API キーとエンドポイントを取得します。
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
 
-* フォーム ドキュメント。 [サンプル フォーム ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf)を使用できます。
+#### <a name="form-recognizer-studio-preview"></a>Form Recognizer Studio (プレビュー)
 
-> [!div class="nextstepaction"]
-  > [試してみる](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+> [!NOTE]
+> Form Recognizer スタジオは、プレビュー (v3.0) API で使用できます。
 
-  Form Recognizer UI で以下の手順を実行します。
+***[Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/layout) で処理されたフォームのサンプル***
 
-  1. **[Use Layout to get text, tables, and selection marks]\(レイアウトを使用してテキスト、テーブル、および選択マークを取得する\)** を選択します。
-  1. ドロップダウン メニューから、 **[ローカル ファイル]** を選択します。
-  1. ファイルをアップロードし、 **[Run Layout]\(レイアウトの実行\)** を選択します
+:::image type="content" source="media/studio/sample-layout.png" alt-text="スクリーンショット: Form Recognizer Studio でのドキュメント処理。":::
 
-  :::image type="content" source="media/try-layout.png" alt-text="スクリーンショット: スクリーンショット: サンプル ラベル付けツールのドロップダウンのレイアウト ファイル ソース選択メニュー。":::
+1. Form Recognizer Studio のホーム ページで、 **[レイアウト]** を選択します
+
+1. サンプル ドキュメントを分析するか、 **[+ Add (+ 追加)]** ボタンを選択して、独自のサンプルをアップロードできます。
+
+1. **[Analyze (分析)]** ボタンを選択します。
+
+    :::image type="content" source="media/studio/layout-analyze.png" alt-text="スクリーンショット: レイアウトの分析メニュー。":::
+
+   > [!div class="nextstepaction"]
+   > [Form Recognizer スタジオを試す](https://formrecognizer.appliedai.azure.com/studio/layout)
+
+#### <a name="sample-labeling-tool"></a>サンプル ラベル付けツール
+
+フォーム ドキュメントが必要です。 [サンプル フォーム ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf)を使用できます。
+
+1. サンプル ラベル付けツールのホーム ページで、 **[Use Layout to get text, tables and selection marks (レイアウトを使用してテキスト、テーブル、選択マークを取得する)]** を選択します。
+
+1. ドロップダウン メニューから、 **[ローカル ファイル]** を選択します。
+
+1. ファイルをアップロードし、 **[Run Layout]\(レイアウトの実行\)** を選択します
+
+   :::image type="content" source="media/try-layout.png" alt-text="スクリーンショット: スクリーンショット: サンプル ラベル付けツールのドロップダウンのレイアウト ファイル ソース選択メニュー。":::
+
+   > [!div class="nextstepaction"]
+   > [サンプル ラベル付けツールを試す](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
 
 ## <a name="input-requirements"></a>入力の要件
 
@@ -75,7 +103,7 @@ Azure Form Recognizer の Layout API を使用すると、ドキュメント (PD
 * PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
 * 教師なし学習の場合 (ラベルの付いたデータなし):
   * データには、キーと値を含める必要があります。
-  * キーは値の上または左に配置されている必要があり、下または右に配置されていてはいけません。
+  * キーは値の上または左に表示され、下または右に表示することはできません。
 
 > [!NOTE]
 > [サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)では、BMP ファイル形式はサポートされていません。 これは、Form Recognizer サービスではなく、ツールの制限です。
@@ -126,7 +154,7 @@ Layout API により、ドキュメントと画像から、複数のテキスト
 
  Form Recognizer プレビューでは、いくつかの新機能が導入されています。
 
-* アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
+* アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)の説明を参照してください。
 
 * プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
 

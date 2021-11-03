@@ -3,20 +3,20 @@ title: カスタム ポリシーでの Azure AD SSPR の技術プロファイル
 titleSuffix: Azure AD B2C
 description: Azure AD B2C での Azure AD SSPR 技術プロファイルのカスタム ポリシー リファレンス。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/23/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c1bac41a0c70a2d9dff2a8ce1ac5544ad687fe5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85383599"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008372"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーで Azure AD SSPR 技術プロファイルを定義する
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) では、セルフサービス パス�
 この技術プロファイル:
 
 - ユーザーとやり取りするためのインターフェイスは用意していません。 代わりに、ユーザー インターフェイスは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルから、または[検証技術プロファイル](validation-technical-profile.md)としての[表示制御](display-controls.md)から呼び出されます。
-- Azure AD SSPR サービスを使用して、コードを生成し、メール アドレスに送信してから、コードを確認します。  
+- Azure AD SSPR サービスを使用して、コードを生成し、メール アドレスに送信してから、コードを確認します。
 - 確認コードを使用してメール アドレスを検証します。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, C
 
 次の例では、Azure AD SSPR の技術プロファイルを示します。
 
-```XML
+```xml
 <TechnicalProfile Id="AadSspr-SendCode">
   <DisplayName>Send Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -60,7 +60,6 @@ Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, C
 | ClaimReferenceId | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | emailAddress | はい | メール アドレスを所有しているユーザーの識別子。 入力要求の `PartnerClaimType` プロパティを `emailAddress` に設定する必要があります。 |
-
 
 **InputClaimsTransformations** 要素には、Azure AD SSPR サービスに送信する前に、入力要求の変更または新しい入力要求の生成に使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
@@ -85,12 +84,11 @@ Azure AD SSPR プロトコル プロバイダーでは **OutputClaims** は返�
 | UserMessageIfInternalError | いいえ | サーバーで内部エラーが発生した場合のユーザー エラー メッセージ。 |
 | UserMessageIfThrottled| いいえ | 要求が調整された場合のユーザー エラー メッセージ。|
 
-
 ### <a name="example-send-an-email"></a>例: メールの送信
 
 次の例では、電子メールでコードを送信するために使用される Azure AD SSPR 技術プロファイルを示します。
 
-```XML
+```xml
 <TechnicalProfile Id="AadSspr-SendCode">
   <DisplayName>Send Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -146,7 +144,7 @@ Azure AD SSPR プロトコル プロバイダーでは **OutputClaims** は返�
 
 次の例では、コードの検証に使用される Azure AD SSPR の技術プロファイルを示します。
 
-```XML
+```xml
 <TechnicalProfile Id="AadSspr-VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

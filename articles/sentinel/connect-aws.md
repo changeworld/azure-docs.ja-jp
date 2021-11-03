@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: b1e514d208f7d5d0a2e290c95aa5508166a3e2f7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 86be5f6a7a777b40d85531100a4ef2d5d0dc99c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251467"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009474"
 ---
 # <a name="connect-aws-cloudtrail-to-azure-sentinel"></a>AWS CloudTrail を Azure Sentinel に接続する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 AWS コネクタを使用して、AWS CloudTrail 管理イベントを Azure Sentinel にストリーミングします。 この接続プロセスにより、Azure Sentinel へのアクセスが AWS リソース ログに委任され、AWS CloudTrail とAzure Sentinel の間の信頼関係が確立されます。 これを行うには、Azure Sentinel にアクセス許可を付与するロールを AWS で作成し、AWS ログにアクセスできるようにします。
 

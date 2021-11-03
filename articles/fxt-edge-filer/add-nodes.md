@@ -1,17 +1,17 @@
 ---
 title: チュートリアル:Azure FXT Edge Filer クラスターにノードを追加する
 description: Azure FXT Edge Filer ストレージ キャッシュにクラスター ノードを追加し、高可用性 (HA) 機能を有効にする方法について説明します。
-author: ekpgh
-ms.author: v-erkel
+author: femila
+ms.author: femila
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 05/26/2021
-ms.openlocfilehash: 59c46de835d6fb445380600fdb760b429e97b9ac
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: cf78fbe8b3438798361921fade875d55960514d9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414544"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044952"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>チュートリアル:Azure FXT Edge Filer クラスターにクラスター ノードを追加する
 

@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: vikurpad
 recommendations: false
-ms.openlocfilehash: 11010ebe6a4afa8698491dacfb495625a8445779
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fd0c9c1ebaf177f6f10698631b96e2c27825603f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240416"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020827"
 ---
 # <a name="form-recognizer-v30-migration--preview"></a>Form Recognizer v3.0 への移行 | プレビュー
 
@@ -104,6 +105,7 @@ base64 エンコードは、Form Recognizer v3.0 でもサポートされてい�
 ## <a name="changes-to-analyze-result"></a>結果の分析に関する変更
 
 分析応答は、複数ページの要素をサポートするため、次の最上位レベルの結果にリファクタリングされています。
+
 * ページ
 * テーブル
 * keyValuePairs
@@ -249,6 +251,7 @@ base64 エンコードは、Form Recognizer v3.0 でもサポートされてい�
 ## <a name="build-or-train-model"></a>モデルの構築またはトレーニング
 
 モデル オブジェクトの新しい API には 2 つの更新が含まれています
+
 * ```modelId``` は、モデルで人間が読むことのできる名前に設定できるプロパティです。
 * ```modelName``` の名前が ```description``` に変更されました
 
@@ -268,6 +271,7 @@ POST https://{your-form-recognizer-endpoint}/formrecognizer/documentModels:build
   }
 }
 ```
+
 ## <a name="changes-to-compose-model"></a>モデルの構成に関する変更
 
 モデルの構成は、単一レベルの入れ子に制限されるようになりました。 構成されたモデルはカスタム モデルと一貫性が保たれ、```modelId``` プロパティと ```description``` プロパティが追加されています。
@@ -298,7 +302,8 @@ POST https://{your-form-recognizer-endpoint}/formrecognizer/documentModels:compo
 * ```authorizeCopy``` に対する HTTP アクションが POST 要求になりました。
 * 承認ペイロードには、コピー要求を送信するために必要なすべての情報が含まれています。
 
-コピーを承認します。
+***コピーを承認する***
+
 ```json
 POST https://{targetHost}/formrecognizer/documentModels:authorizeCopy?api-version=2021-09-30-preview
 {
@@ -306,6 +311,7 @@ POST https://{targetHost}/formrecognizer/documentModels:authorizeCopy?api-versio
   "description": "{targetModelDescription}",
 }
 ```
+
 承認アクションからの応答本文を使用して、コピーの要求を作成します。
 
 ```json
@@ -324,7 +330,7 @@ POST https://{sourceHost}/formrecognizer/documentModels/{sourceModelId}:copy-to?
 
 モデルの一覧表示が拡張され、事前構築済みモデルとカスタム モデルが返されるようになりました。 事前構築済みモデルの名前はすべて、```prebuilt-``` で始まります。 状態が成功のモデルのみが返されます。 失敗したモデルまたは進行中のモデルを一覧表示するには、[一覧表示操作](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetModels)に関するページを参照してください。
 
-モデル一覧表示要求の例
+***モデル一覧表示要求の例***
 
 ```json
 GET https://{your-form-recognizer-endpoint}/formrecognizer/documentModels?api-version=2021-09-30-preview
@@ -339,12 +345,15 @@ GET https://{your-form-recognizer-endpoint}/formrecognizer/documentModels/{model
 ```
 
 ## <a name="new-get-info-operation"></a>新しい情報取得操作
+
 サービスに対する ```info``` 操作からは、カスタム モデルの数とカスタム モデルの制限が返されます。
 
 ```json
 GET https://{your-form-recognizer-endpoint}/formrecognizer/info? api-version=2021-09-30-preview
 ```
-応答のサンプル
+
+***応答のサンプル***
+
 ```json
 {
   "customDocumentModels": {

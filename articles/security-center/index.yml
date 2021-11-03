@@ -1,38 +1,38 @@
 ### YamlMime:Landing
-title: Azure Security Center のドキュメント
-summary: Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。
+title: Microsoft Defender for Cloud のドキュメント
+summary: Microsoft Defender for Cloud では、統合されたセキュリティ管理と高度な脅威に対する保護がハイブリッド クラウド ワークロードに提供されます。
 metadata:
-  title: Azure Security Center のドキュメント
-  description: Microsoft が提供するクイックスタートとチュートリアルを使用して、Security Center の利用開始、ワークロードをセキュリティで保護する方法の確認、リスクの抑制、攻撃の検出および対応を行えます。
+  title: Microsoft Defender for Cloud のドキュメント
+  description: Microsoft が提供するクイックスタートとチュートリアルを使用して、Defender for Cloud の利用開始、ワークロードをセキュリティで保護する方法の確認、リスクの抑制、攻撃の検出および対応を行えます。
   services: security-center
   ms.service: security-center
   ms.topic: landing-page
   ms.collection: collection
   author: memildin
   ms.author: memildin
-  ms.date: 05/12/2021
-  ms.openlocfilehash: e8f2db04945768b1c89eb09f02f6c248053dedaa
-  ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+  ms.date: 10/21/2021
+  ms.openlocfilehash: 5ab94b1a0cf16df2475d073e62ee7877b97c28e2
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/04/2021
-  ms.locfileid: "129425109"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131009645"
 landingContent:
-- title: Security Center について
+- title: Defender for Cloud について
   linkLists:
   - linkListType: overview
     links:
-    - text: Security Center の主な機能
-      url: security-center-introduction.md
-    - text: Azure Defender の主な機能
-      url: azure-defender.md
+    - text: Defender for Cloud の主な機能
+      url: defender-for-cloud-introduction.md
     - text: サポートされる Windows Server および Linux のバージョン
       url: security-center-os-coverage.md
+    - text: Defender for Cloud の開始方法
+      url: get-started.md
 - title: 最新情報
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Security Center のリリース ノート
+    - text: Defender for Cloud のリリース ノート
       url: release-notes.md
     - text: マシンに Azure セキュリティ ベースラインを適用する
       url: apply-security-baseline.md
@@ -40,20 +40,20 @@ landingContent:
       url: custom-dashboards-azure-workbooks.md
     - text: ハイブリッドおよびマルチクラウド Kubernetes クラスターを保護する
       url: defender-for-kubernetes-azure-arc.md
-    - text: オープンソースのリレーショナル データベース用 Azure Defender
+    - text: オープンソース リレーショナル データベース用 Microsoft Defender
       url: defender-for-databases-introduction.md
 - title: はじめに
   linkLists:
   - linkListType: get-started
     links:
-    - text: サブスクリプションで Security Center を有効にする
-      url: security-center-get-started.md
-    - text: Azure Defender を有効にする
-      url: enable-azure-defender.md
+    - text: サブスクリプションで Defender for Cloud を有効にする
+      url: get-started.md
+    - text: 強化されたセキュリティ機能を有効にする
+      url: enable-enhanced-security.md
     - text: 自動プロビジョニングを構成する
-      url: security-center-enable-data-collection.md
+      url: enable-data-collection.md
     - text: メール通知の設定
-      url: security-center-provide-security-contact-details.md
+      url: configure-email-notifications.md
     - text: Azure 以外のマシンを接続する
       url: quickstart-onboard-machines.md
 - title: セキュリティ スコアを向上させる
@@ -63,7 +63,7 @@ landingContent:
     - text: セキュア スコアについて
       url: secure-score-security-controls.md
     - text: セキュリティの推奨事項への対応
-      url: security-center-remediate-recommendations.md
+      url: implement-security-recommendations.md
     - text: リソースを推奨事項から除外する
       url: exempt-resource.md
     - text: 時間の経過に伴うスコアの追跡
@@ -73,10 +73,10 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Just-In-Time アクセスの管理
-      url: security-center-just-in-time.md
+      url: just-in-time-access-usage.md
     - text: 適応型アプリケーション制御の設定
-      url: security-center-adaptive-application.md
+      url: adaptive-application-controls.md
     - text: アダプティブ ネットワーク強化の実装
-      url: security-center-adaptive-network-hardening.md
-    - text: Azure Defender ダッシュボードを使用する
-      url: azure-defender-dashboard.md
+      url: adaptive-network-hardening.md
+    - text: ワークロード保護の使用
+      url: workload-protections-dashboard.md

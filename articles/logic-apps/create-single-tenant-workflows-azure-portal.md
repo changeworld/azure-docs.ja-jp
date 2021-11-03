@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/05/2021
-ms.openlocfilehash: 5be8a3cfa8681bced90ba6fc74ebc69baa2f7962
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 507e7a97c0ec884580b0a29fd8a8691035221751
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065675"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085982"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Azure portal でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
@@ -65,7 +66,7 @@ ms.locfileid: "130065675"
 
 1. Azure portal の検索ボックスに「`logic apps`」と入力し、 **[ロジック アプリ]** を選択します。
 
-   ![Azure portal の検索ボックスに "logic apps" という検索用語が入力され、[ロジック アプリ (Standard)] リソースが選択されているスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
+   ![Azure portal の検索ボックスに "ロジック アプリ" という検索用語が入力され、[ロジック アプリ (Standard)] グループが選択されているスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
 
 1. **[ロジック アプリ]** ページで **[追加]** を選択します。
 
@@ -76,7 +77,7 @@ ms.locfileid: "130065675"
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | ロジック アプリに使用する Azure サブスクリプション。 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | ロジック アプリと関連リソースを作成する Azure リソース グループ。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows-RG` という名前のリソース グループを作成します。 |
    | **Type** | はい | **Standard** | このロジック アプリ リソースの種類は、シングルテナント Azure Logic Apps 環境で実行され、[Standard 使用、課金、価格モデル](logic-apps-pricing.md#standard-pricing)を使用します。 |
-   | **ロジック アプリ名** | はい | <*ロジック アプリ名*> | ロジック アプリに使用する名前。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows` という名前のロジック アプリを作成します。 <p><p>**注**:**ロジック アプリ (Standard)** リソースには Azure Functions の機能が利用され、同じアプリ名前付け規則が使用されるため、ロジック アプリの名前には `.azurewebsites.net` というサフィックスが自動的に付けられます。 |
+   | **ロジック アプリ名** | はい | <*ロジック アプリ名*> | ロジック アプリに使用する名前。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows` という名前のロジック アプリを作成します。 <p><p>**注**: ロジック アプリの名前には自動的にサフィックス `.azurewebsites.net` が付けられます。これは、**ロジック アプリ (Standard)** リソースは、Azure Functions の機能拡張モデルを使用し、Azure Functions ランタイムの拡張機能としてホストされているシングルテナント Azure Logic Apps ランタイムで実行されるためです。 Azure Functions では、同じアプリの名前付け規則が使用されます。 |
    | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 既定では、シングル テナント Azure Logic Apps にデプロイするための **ワークフロー** が選択されています。 Azure により、最初のワークフローを追加する必要がある空のロジック アプリ リソースが作成されます。 <p><p>**注**: 現時点では、**Docker コンテナー** オプションを使用するには Azure Arc enabled Kubernetes クラスター上に [*カスタムの場所*](../azure-arc/kubernetes/conceptual-custom-locations.md) が必要です。これは、[Azure Arc enabled Logic Apps (プレビュー)](azure-arc-enabled-logic-apps-overview.md) で使用できます。 ロジック アプリのリソースの場所、カスタムの場所、クラスターはすべて同じである必要があります。 |
    | **[リージョン]** | はい | <*Azure-region*> | リソース グループやリソースを作成する際に使用する場所です。 この例では、サンプル ロジック アプリを Azure にデプロイし、**米国西部** を使用します。 <p>- **[Docker コンテナー]** を選択した場合は、カスタムの場所を選択します。 <p>- あらかじめ存在している必要がある [ASEv3](../app-service/environment/overview.md) リソースにデプロイするには、**[リージョン]** の一覧からその環境リソースを選択します。 |
    |||||
@@ -89,6 +90,7 @@ ms.locfileid: "130065675"
 
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
+   | **ストレージの種類** | はい | - **SQL と Azure Storage** <br>- **Azure Storage** | ワークフロー関連の成果物およびデータに使用するストレージの種類。 <p><p>- Azure のみにデプロイする場合は、 **[Azure Storage]** を選択します。 <p><p>- プライマリ ストレージとして SQL を使用し、セカンダリ ストレージとして Azure Storage を使用するには、 **[SQL と Azure Storage]** を選び、「[シングルテナント Azure Logic Apps で Standard ロジック アプリの SQL データベース ストレージを設定する](set-up-sql-db-storage-single-tenant-standard-workflows.md)」を参照してください。 <p><p>**注**: Azure リージョンにデプロイする場合は、引き続き Azure Storage アカウントが必要です。これは、Azure Logic Apps プラットフォームでロジック アプリの構成の 1 回限りのホスティングを完了するために使用されます。 進行中のワークフローの状態、実行履歴、およびその他のランタイム成果物は、SQL データベースに格納されます。 <p><p>Azure Arc クラスターでホストされているカスタムの場所へのデプロイでは、ストレージ プロバイダーとして SQL のみが必要です。 |
    | **ストレージ アカウント** | はい | <*Azure-storage-account-name*> | ストレージ トランザクションに使用する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 <p><p>このリソース名は、リージョン間で一意であり、数字と小文字のみを含む 3 から 24 文字である必要があります。 既存のアカウントを選択するか、新しいアカウントを作成します。 <p><p>この例では、`fabrikamstorageacct` という名前のストレージ アカウントを作成します。 |
    | **[プランの種類]** | はい | <*hosting-plan*> | ロジック アプリのデプロイに使用するホスティング プラン。 <p><p>詳細については、「[ホスティング プランと価格レベル](logic-apps-pricing.md#standard-pricing)」を参照してください。 |
    | **Windows プラン** | はい | <*プラン名*> | 使用するプラン名。 既存のプラン名を選択するか、新しいプランの名前を指定します。 <p><p>この例では、 `Fabrikam-Service-Plan`という名前を使用しています。 |

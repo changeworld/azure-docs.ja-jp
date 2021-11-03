@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: afb17cf0cc999680d2cd60a0be8e4a227aa146bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90885846"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009189"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>ワークスペースから Azure Sentinel を削除する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel が不要になった場合にワークスペースから削除する方法について説明します。
 
@@ -37,7 +40,7 @@ ms.locfileid: "90885846"
     
     ![SecurityInsights ソリューションを削除する](media/offboard/delete-solution.png)
 
-## <a name="what-happens-behind-the-scenes"></a>舞台裏では何が起こっているのか?
+## <a name="what-happens-behind-the-scenes&quot;></a>舞台裏では何が起こっているのか?
 
 Azure Sentinel の場合、ソリューションを削除するには、削除プロセスの最初の段階を完了するために最大 48 時間かかります。
 
@@ -48,7 +51,7 @@ Azure Sentinel の場合、ソリューションを削除するには、削除�
 
 -   AWS
 
--   Microsoft サービスのセキュリティ アラート: Microsoft Defender for Identity ("*以前の Azure ATP*")、Cloud Discovery シャドウ IT レポートを含む Microsoft Cloud App Security、Azure AD Identity Protection、Microsoft Defender for Endpoint ("*以前の Microsoft Defender ATP*")、Azure Security Center からの Azure Defender アラート
+-   Microsoft サービスのセキュリティ アラート: Microsoft Defender for Identity (&quot;*以前の Azure ATP*")、Cloud Discovery シャドウ IT レポートを含む Microsoft Cloud App Security、Azure AD Identity Protection、Microsoft Defender for Endpoint ("*以前の Microsoft Defender ATP*")、Azure Security Center からの Azure Defender アラート
 
 -   [脅威インテリジェンス]
 

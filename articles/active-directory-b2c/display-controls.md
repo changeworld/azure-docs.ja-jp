@@ -3,20 +3,20 @@ title: 表示コントロール リファレンス
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 表示コントロールのリファレンスです。 カスタム ポリシーで定義されているユーザー体験をカスタマイズするには、表示コントロールを使用します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4b6ea85cfaf32ab9ba2c04c40befbe1fbf8ce915
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 498946016a057d39bbd2bd62af9829a56f77fa01
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445473"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007355"
 ---
 # <a name="display-controls"></a>表示コントロール
 

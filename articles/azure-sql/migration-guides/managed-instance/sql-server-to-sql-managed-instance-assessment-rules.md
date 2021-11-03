@@ -3,19 +3,19 @@ title: SQL Server から Azure SQL Managed Instance への移行に関する評�
 description: Azure SQL Managed Instance に移行する前に、対処する必要があるソース SQL Server インスタンスに関する問題を特定するための評価ルール。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
-ms.custom: ''
+ms.custom: ignite-fall-2021
 ms.devlang: ''
 ms.topic: how-to
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 0d3ef1e9a7a4d30e4a716992caf4ec3f2f04cc1c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 92fee6cde8c7a98806db6084c413202eb2f153f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625584"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069484"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server から Azure SQL Managed Instance への移行に関する評価ルール
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -216,7 +216,7 @@ FASTFIRSTROW クエリ ヒントの代わりに OPTION (FAST n) を使用しま�
 **推奨事項**   
 Azure Migrate の [影響を受けるオブジェクト] セクションを確認し、BEGIN DISTRUBUTED TRANSACTION を使用するすべてのオブジェクトを確認します。 複数のインスタンス間での分散トランザクションがサポートされている (現在、プレビュー段階) Azure SQL Managed Instance に参加しているデータベースを移行することを検討してください。 または、Azure 仮想マシン上の SQL Server に移行します。
 
-詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション ](../../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance)
+詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション ](../../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance)
 
 ## <a name="homogenous-ms-dtc"></a>同種 MS DTC<a id="MIHomogeneousMSDTCTransactSQL"></a>
 
@@ -230,7 +230,7 @@ Transact SQL BEGIN DISTRIBUTED TRANSACTION によって開始され、Microsoft 
 **推奨事項**   
 Azure Migrate の [影響を受けるオブジェクト] セクションを確認し、BEGIN DISTRUBUTED TRANSACTION を使用するすべてのオブジェクトを確認します。 複数のインスタンス間での分散トランザクションがサポートされている (現在、プレビュー段階) Azure SQL Managed Instance に参加しているデータベースを移行することを検討してください。 または、Azure 仮想マシン上の SQL Server に移行します。 
 
-詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション](../../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance)
+詳細情報: [Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション](../../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance)
 
 
 ## <a name="linked-server-non-sql-provider"></a>リンク サーバー (SQL 以外のプロバイダー)<a id="LinkedServerWithNonSQLProvider"></a>

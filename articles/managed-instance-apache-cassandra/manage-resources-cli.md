@@ -4,25 +4,20 @@ description: Azure CLI を使用して Azure Managed Instance for Apache Cassand
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 09/17/2021
+ms.date: 11/02/2021
 ms.author: thvankra
-ms.custom: devx-track-azurecli, seo-azure-cli
+ms.custom: devx-track-azurecli, seo-azure-cli, ignite-fall-2021
 keywords: azure resource manager cli
-ms.openlocfilehash: 72cada375a6c88f5a3401acb77f0a982d231d0a4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6f299601c013363965697b026a0f563fba4a7ae6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663727"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020114"
 ---
-# <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する (プレビュー)
+# <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli"></a>Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する
 
 この記事では、Azure CLI を使用して Azure Managed Instance for Apache Cassandra クラスターの管理を自動化するための一般的なコマンドについて説明します。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 

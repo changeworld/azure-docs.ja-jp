@@ -8,12 +8,13 @@ ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 2/08/2021
 ms.author: amgowda
-ms.openlocfilehash: 203185d9f6def2204906b8722f1969b14eee8787
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e63e8d2caba6fe9ca5fa7b4a239f2194976dd569
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933153"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086515"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Azure Kubernetes Service 上のコンフィデンシャル コンピューティング ノード
 
@@ -53,11 +54,13 @@ AKS 上のコンフィデンシャル コンピューティング ノードで�
 
 ## <a name="next-steps"></a>次の手順
 
-[コンフィデンシャル コンピューティング ノードを使用して AKS クラスターをデプロイする](./confidential-nodes-aks-get-started.md)
+[コンフィデンシャル コンピューティング ノードを使用して AKS クラスターをデプロイする](./confidential-enclave-nodes-aks-get-started.md)
 
 [機密コンテナーのクイック スタート サンプル](https://github.com/Azure-Samples/confidential-container-samples)
 
-[DCsv2 SKU リスト](../virtual-machines/dcv2-series.md)
+[Intel SGX Confidential VM の - DCsv2 SKU リスト](../virtual-machines/dcv2-series.md)
+
+[Intel SGX Confidential VM の - DCsv3 SKU リスト](../virtual-machines/dcv3-series.md)
 
 [機密コンテナーを使用した多層防御に関するウェビナー セッション](https://www.youtube.com/watch?reload=9&v=FYZxtHI_Or0&feature=youtu.be)
 
@@ -66,4 +69,4 @@ AKS 上のコンフィデンシャル コンピューティング ノードで�
 
 
 <!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
+[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions-sgx.md

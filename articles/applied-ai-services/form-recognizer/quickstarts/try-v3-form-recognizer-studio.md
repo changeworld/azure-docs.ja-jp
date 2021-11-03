@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 09/14/2021
 ms.author: sajagtap
-ms.openlocfilehash: bb1c2ee770380b5f8689b1dd8f25712293a0bcb2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a14cd140d2bb0d2768c85fa2addca2140ccb1ffa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130220220"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026735"
 ---
 # <a name="get-started-form-recognizer-studio--preview"></a>概要: Form Recognizer Studio | プレビュー
 
@@ -106,6 +107,14 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 ## <a name="prebuilt-models"></a>事前構築済みのモデル
 
+複数の事前構築済みモデルから選択できます。各モデルには、独自のサポートされているフィールドのセットが含まれます。 分析操作に使用するモデルは、分析するドキュメントの種類によって異なります。 Form Recognizer サービスで現在サポートされている事前構築済みモデルを次に示します。
+
+* [🆕**一般的なドキュメント**](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=document): テキスト、テーブル、構造、キーと値のペア、名前付きエンティティを分析および抽出します。
+* [**請求書**](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=invoice): 請求書からテキスト、選択マーク、テーブル、キーと値のペア、キー情報を抽出します。
+* [**レシート**](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=receipt): レシートからテキストとキー情報を抽出します。
+* [**身分証明書**](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=idDocument): 運転免許証と国際パスポートからテキストとキー情報を抽出します。
+* [**名刺**](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=businessCard): 名刺からテキストとキー情報を抽出します。
+
 [事前構築済み] ビューで:
 
 1. Studio ホームから、事前構築済みモデルのいずれかを選択します。 この例では、請求書モデルを使用しています。
@@ -126,7 +135,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 カスタム モデルを作成するには、まずプロジェクトを構成することから始めます。
 
-1. Studio ホームから [カスタム フォーム] プロジェクトを選択して、[カスタム フォーム] ホーム ページを開きます。
+1. Studio ホームから [[カスタム フォーム] プロジェクト](https://formrecognizer.appliedai.azure.com/studio/customform/projects)を選択して、[カスタム フォーム] ホーム ページを開きます。
 
 1. [プロジェクトの作成] コマンドを使用して、新しいプロジェクト構成ウィザードを開始します。
 
@@ -142,7 +151,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 1. ラベル付けビューから、抽出するラベルとその種類を定義します。
 
-1. ドキュメント内のテキストを選択し、ドロップダウン リストまたは [ラベル] ペインからラベルをクリックします。
+1. ドキュメント内のテキストを選択し、ドロップダウン リストまたは [ラベル] ペインからラベルを選択します。
 
 1. さらに 4 つのドキュメントにラベルを付け、少なくとも 5 つのドキュメントにラベルを付けます。
 
@@ -180,7 +189,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 1. 必要な列 (フィールド) と行 (データの場合) の数を追加します。
 
-1. ページ内のテキストを選択し、テキストに割り当てるセルをクリックします。 すべてのドキュメント内のすべてのページのすべての行と列に対して繰り返します。
+1. ページ内のテキストを選択し、テキストに割り当てるセルを選択します。 すべてのドキュメント内のすべてのページのすべての行と列に対して繰り返します。
 
 :::image border="true" type="content" source="../media/quickstarts/custom-tables-dynamic.gif" alt-text="動的テーブルとしての Form Recognizer のラベル付けの例":::
 
@@ -192,7 +201,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 1. 2 つのフィールド セットに対応させる必要がある列と行の数を追加します。
 
-1. ページ内のテキストを選択し、テキストに割り当てるセルをクリックします。 他のドキュメントに対して同じ手順を繰り返します。
+1. ページ内のテキストを選択し、テキストに割り当てるセルを選択します。 他のドキュメントに対して同じ手順を繰り返します。
 
 :::image border="true" type="content" source="../media/quickstarts/custom-tables-fixed.gif" alt-text="固定テーブルとしての Form Recognizer のラベル付けの例":::
 
@@ -204,7 +213,7 @@ Azure アカウントと、Form Recognizer または Cognitive Services のリ�
 
 1. [領域] コマンドを使用して、シグネチャの予想される位置に四角形の領域を作成します。
 
-1. 描画領域を選択し、シグネチャ型のラベルをクリックして描画領域に割り当てます。 他のドキュメントに対して同じ手順を繰り返します。
+1. 描画領域を選択し、シグネチャ型のラベルを選択して描画領域に割り当てます。 他のドキュメントに対して同じ手順を繰り返します。
 
 :::image border="true" type="content" source="../media/quickstarts/custom-signature.gif" alt-text="シグネチャ検出の Form Recognizer のラベル付けの例":::
 

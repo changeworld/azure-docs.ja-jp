@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8d076b43e2a6ea1c21394569b56a7e689a1ab5fc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e1ccf10041c36b26b70bf5c4e5a107c0f6bf19ac
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130250884"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021621"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Form Recognizer リソース用のマネージド ID を作成して使用する
 

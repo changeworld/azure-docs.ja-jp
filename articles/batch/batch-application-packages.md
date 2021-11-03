@@ -3,16 +3,13 @@ title: コンピューティング ノードへのアプリケーション パ�
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.custom:
-- H1Hack27Feb2017
-- devx-track-csharp
-- contperf-fy21q1
-ms.openlocfilehash: 9c4b40f0e99475fc0b19ec94a14f67af131e5f59
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: H1Hack27Feb2017, devx-track-csharp, contperf-fy21q1
+ms.openlocfilehash: 6ffa06f284c3406ebe62c1f62fc0c9c487cede3d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389385"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086927"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 

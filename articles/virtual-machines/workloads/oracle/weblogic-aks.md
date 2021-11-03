@@ -9,17 +9,13 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: rezar
 ms.reviewer: cynthn
-ms.custom:
-- devx-track-java
-- devx-track-javaee
-- devx-track-javaee-wls
-- devx-track-javaee-wls-aks
-ms.openlocfilehash: 6d87eed9b8f145f997e12ae21a2f2f1484b3497b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-wls, devx-track-javaee-wls-aks
+ms.openlocfilehash: 1c5d5de82f2398649999a46cca853eb7c72ff4e3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063444"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソリューションとは
 

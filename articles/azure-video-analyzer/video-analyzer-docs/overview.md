@@ -2,35 +2,39 @@
 title: Azure Video Analyzer とは
 description: このトピックでは、Azure Video Analyzer の概要を示します
 ms.topic: overview
-ms.date: 06/01/2021
-ms.openlocfilehash: 25f289a26743e92f6c904149e296ba6699fcf8b2
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/30/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7485eb54996228ae9a781c0f0bb97c0fa55ba936
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389109"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058409"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure Video Analyzer とは (プレビュー)
  
-Azure Video Analyzer は、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームを提供します。 このプラットフォームは、IoT Edge モジュールと、関連付けられた Azure サービスで構成されます。 ライブ ビデオをキャプチャ、記録、および分析し、結果 (ビデオやビデオ分析) を発行する機能を提供します。 ビデオは、エッジまたは Video Analyzer クラウド サービスに発行できます。一方、ビデオ分析は、(クラウドまたはエッジ内の) Azure サービスに発行できます。 このプラットフォームは、ビデオ分析を使用して IoT ソリューションを強化するために使用できます。 Video Analyzer 機能は、他の Azure IoT Edge モジュール (Stream Analytics on IoT Edge、Cognitive Services on IoT Edge など)、およびクラウドの Azure サービス (イベント ハブ、Cognitive Services など) と組み合わせて、強力なハイブリッド (たとえばエッジ + クラウド) アプリケーションを構築できます。
+Azure Video Analyzer は、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームを提供します。 このプラットフォームは、IoT Edge モジュールと Azure サービスで構成されます。 ライブ ビデオをキャプチャ、記録、分析し、結果 (ビデオやビデオからの分析情報など) をエッジまたはクラウドに公開する機能を提供します。
 
-Video Analyzer エッジ モジュールは、拡張可能なプラットフォームとして設計されており、さまざまなビデオ分析エッジ モジュール (Cognitive Services コンテナーや、オープンソースの機械学習モデルまたは独自のデータでトレーニングしたカスタム モデルを使用して自分で構築したカスタム エッジ モジュールなど) を接続できます。それらを使用して、ライブ ビデオ パイプラインを構築および実行する複雑さを気にすることなく、ライブ ビデオを分析できます。 Video Analyzer クラウド サービスを使用すると、このようなワークフローからビデオおよびビデオ分析を再生できます。
+Azure Video Analyzer エッジ モジュールは、Azure Stream Analytics、Azure Cognitive Services などの他の Azure IoT Edge モジュール、および Azure Event Hubs や Azure Cognitive Services などの他の Azure クラウド サービスと一緒に使用して、強力なハイブリッド (エッジとクラウドの混成) アプリケーションを構築できます。 この拡張可能なエッジ モジュールは、オープン ソースの機械学習モデルとトレーニング データを使用して構築された Azure Cognitive Services コンテナーやカスタム エッジ モジュールなど、さまざまな AI エッジ モジュールとシームレスに統合されます。 Azure Video Analyzer プラットフォーム上に構築することで、複雑なシステムの構築、運用、保守の複雑さを懸念せずに、ライブ ビデオを分析できます。
+
+ライブ ビデオの分析とは別に、エッジ モジュールを使用すると、必要に応じて、エッジまたはクラウドにローカルでビデオを記録したり、Azure サービス (エッジやクラウド内) にビデオ分析情報を発行したりすることができます。 ビデオとビデオの分析情報がクラウドに記録されている場合は、Azure Video Analyzer クラウド サービスを使用してそれらを管理できます。
+
+そのため、Azure Video Analyzer クラウド サービスは、記録、再生、エクスポート (外部で共有できるビデオ ファイルの生成) などの[ビデオ管理システム (VMS)](https://en.wikipedia.org/wiki/Video_management_system) 機能で IoT ソリューションを強化するために使用できます。 また、次の図に示すように、カメラがクラウドに直接接続されているのと同じ機能を備えるクラウドネイティブ ソリューションを構築するためにも使用できます。
 
 ## <a name="accelerate-iot-solutions-development"></a>IoT ソリューション開発の高速化 
 
 ビデオ分析を他の IoT センサーからの信号やビジネス データと組み合わせる IoT ソリューションは、ビジネス上の意思決定の自動化または半自動化に役立ち、生産性を高めます。 Video Analyzer を使用すると、このようなソリューションをより迅速に構築できます。 ビジネスに固有のビデオ分析モジュールとロジックの構築に専念でき、ビデオ パイプラインの管理と実行の複雑さは、プラットフォームによって隠されます。
 
-Video Analyzer を使用すると、既存の[ビデオ管理システム (VMS)](https://en.wikipedia.org/wiki/Video_management_system) で引き続き [CCTV カメラ](https://en.wikipedia.org/wiki/Closed-circuit_television_camera)を使用し、独立したビデオ分析アプリを構築できます。 Video Analyzer を、Computer Vision SDK シリーズおよびツールキットと組み合わせて使用することで、最先端の IoT ソリューションを構築できます。 以下の図は、これを示しています。
+Video Analyzer を使用すると、既存の[ビデオ管理システム (VMS)](https://en.wikipedia.org/wiki/Video_management_system) で引き続き [CCTV カメラ](https://en.wikipedia.org/wiki/Closed-circuit_television_camera)を使用し、独立したビデオ分析アプリを構築できます。 Azure Video Analyzer を、Computer Vision SDK シリーズおよびツールキットと一緒に使用することで、最先端の IoT ソリューションを構築できます。 以下の図は、これを示しています。
 
-![Video Analyzer を使用して IoT ソリューションを開発する](./media/overview/product-diagram.png)
+![Video Analyzer を使用して IoT ソリューションを開発する](./media/overview/product-diagram.svg)
 
 ### <a name="concepts"></a>概念
 
 * [パイプライン](pipeline.md)
-* [ビデオ録画](video-recording.md)
-* [継続的なビデオ記録](continuous-video-recording.md)
-* [イベントベースのビデオ記録](event-based-video-recording-concept.md)
 * [ビデオ記録を行わない Video Analyzer](analyze-live-video-without-recording.md)
+* [ビデオ録画](video-recording.md)
+
 
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
 
@@ -38,9 +42,9 @@ Video Analyzer を使用すると、既存の[ビデオ管理システム (VMS)]
 
 Video Analyzer でビデオを処理する前に、ビデオを使用するための適切な権限をすべて取得している必要があります。これには、法律で義務づけられている場合において、ビデオまたは画像に含まれる人物から、Video Analyzer および Azure でのデータの使用、処理、および保管について、必要なすべての同意を得ることが含まれます (このような人物が存在する場合)。 一部の法的管轄区域では、生体認証データなどの特定のカテゴリのデータの収集、オンライン処理、および保管に関して特別な法的要件が課せられる場合があります。 特別な法的要件の対象となるデータの処理と保管のために Video Analyzer と Azure を使用する前に、適用される可能性のあるこのような法的要件に準拠していることを確認する必要があります。
 
-Video Analyzer のコンプライアンス、プライバシー、およびセキュリティについては、Microsoft [トラスト センター](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いとデータ保有の慣行 (データの削除方法など) については、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Video Analyzer を使用することによって、OST、DPA およびプライバシー ステートメントに従うことに同意したものと見なされます。
+Video Analyzer のコンプライアンス、プライバシー、およびセキュリティについては、Microsoft [トラスト センター](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いとデータ保有の慣行 (データの削除方法など) については、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[製品契約条件](https://www.microsoft.com/licensing/terms/welcome/welcomepage)、および [Microsoft の製品およびサービス データ保護の補遺](https://www.microsoft.com/licensing/docs/view/Microsoft-Products-and-Services-Data-Protection-Addendum-DPA) ("DPA") に関するページをご確認ください。 Azure Video Analyzer を使用することによって、製品契約条件、DPA およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* 「[クイックスタート: Azure Video Analyzer で作業を開始する](get-started-detect-motion-emit-events.md)」の記事に従って、ライブ ビデオ フィードでモーション検出を実行する方法を確認してください。
+* 「[クイックスタート: Azure Video Analyzer で作業を開始する](get-started-detect-motion-emit-events.md)」の記事に従って、ライブ ビデオでモーション検出を実行する方法を確認してください。
 * [用語](terminology.md)を確認します。

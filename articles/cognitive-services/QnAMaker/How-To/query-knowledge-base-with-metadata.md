@@ -8,17 +8,19 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2fde10090312956e6f9e5332d5827ac0de07be87
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: e38baa47d22ebb1fbdd5127cbd415afc3027d8a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792274"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016853"
 ---
 # <a name="filter-responses-with-metadata"></a>メタデータを使用して応答をフィルター処理する
 
 QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="qna-entity"></a>
 

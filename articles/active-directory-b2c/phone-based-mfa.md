@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/20/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 30e9f10b1c39aa1b05a5e8fcc395373a502f8c33
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ef0c610b0b7177b4132832974a6f2ac6de37aa7b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035747"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044515"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>電話ベースの多要素認証 (MFA) のセキュリティ保護
 

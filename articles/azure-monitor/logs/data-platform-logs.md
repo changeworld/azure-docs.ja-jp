@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 73fce933d81daca78d538b9a169a53d2a99c9869
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0814a25c96ae1d3d2d624746db0c753c782d8dad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227000"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078220"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor ログの概要
 Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)からログとパフォーマンス データを収集して整理する Azure Monitor の機能です。 複数のソースからのデータを 1 つのワークスペースに統合できます。 これらのソースには次のようなものがあります。
@@ -37,7 +37,7 @@ Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)
 | **分析** | Azure portal で [Log Analytics](./log-analytics-tutorial.md) を使用して[ログ クエリ](./log-query-overview.md)を書き込み、強力な分析エンジンを使用してログ データを対話形式で分析します。 |
 | **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](../alerts/action-groups.md)を実行する、[ログ警告ルール](../alerts/alerts-log.md)を構成します。 |
 | **視覚化** | テーブルまたはグラフとして表示されるクエリ結果を [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めします。<br>[ブック](../visualize/workbooks-overview.md)を作成し、対話形式のレポートに複数のデータ セットを結合します。 <br>クエリの結果を [Power BI](./log-powerbi.md) にエクスポートし、さまざまな視覚化を使用して Azure の外部のユーザーと共有します。<br>クエリの結果を [Grafana](../visualize/grafana-plugin.md) にエクスポートし、そのダッシュボード機能を活用して、他のデータ ソースと結合します。|
-| **洞察を得る** | 特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供する[分析情報](../monitor-reference.md#insights-and-core-solutions)をサポートします。  |
+| **洞察を得る** | 特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供する[分析情報](../monitor-reference.md#insights-and-curated-visualizations)をサポートします。  |
 | **取得** | [Azure CLI](/cli/azure/monitor/log-analytics) を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[PowerShell コマンドレット](/powershell/module/az.operationalinsights)を使用して、コマンド ラインからログ クエリの結果にアクセスします。<br>[REST API](https://dev.loganalytics.io/) を使用して、カスタム アプリケーションからログ クエリの結果にアクセスします。 |
 | **エクスポート** | Azure ストレージ アカウントまたは Azure Event Hubs への[ログ データの自動エクスポート](./logs-data-export.md)を構成します。<br>[Azure Logic Apps](./logicapp-flow-connector.md) を使用し、ログ データを取得して外部の場所にコピーするワークフローを構築します。 |
 

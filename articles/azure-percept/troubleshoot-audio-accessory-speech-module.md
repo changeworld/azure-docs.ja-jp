@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 00f3694201d3aaf876d642e67e5b523f6fb50547
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 3cd92c3158aec8dd63d58455641d4d42d02ff6e9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222725"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059815"
 ---
 # <a name="troubleshoot-azure-percept-audio-and-speech-module"></a>Azure Percept Audio と音声モジュールのトラブルシューティング
 

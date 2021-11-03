@@ -3,15 +3,13 @@ title: 'クイック スタート: JavaScript 使用した管理グループの�
 description: このクイックスタートでは、JavaScript を使用して、リソースをリソース階層で整理する管理グループを作成します。
 ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-js
-- mode-api
-ms.openlocfilehash: 6e4f0c0c3dff16e3493e9c2171039f7305c97bb7
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: devx-track-js, mode-api
+ms.openlocfilehash: a05eb48e4513ef1eca7f92a50351cbc371e8dc2b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322775"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081222"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>クイック スタート: JavaScript 使用した管理グループの作成
 

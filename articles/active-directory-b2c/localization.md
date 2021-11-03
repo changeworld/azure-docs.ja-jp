@@ -2,21 +2,21 @@
 title: ローカライズ - Azure Active Directory B2C
 description: Azure Active Directory B2C でカスタム ポリシーの Localization 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/08/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dfcb3f88638d0cf7fd1fba9a22ca7e0d8a18506
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453123"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131006918"
 ---
 # <a name="localization-element"></a>Localization 要素
 

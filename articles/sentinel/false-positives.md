@@ -6,14 +6,17 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 1b13d49707402143c59078aa3e73cd93db1b10de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d14d4942f659be48b49615e6fe9addb2ffa34905
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748077"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046890"
 ---
 # <a name="handle-false-positives-in-azure-sentinel"></a>Azure Sentinel での偽陽性の処理
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ネットワークで疑わしい問題が発生すると、[Azure Sentinel の分析ルール](detect-threats-built-in.md)によって通知されます。 完璧な分析ルールはありません。必ず処理が必要な偽陽性を受け取ります。 この記事では、オートメーションを使用するか、スケジュールが設定された分析ルールを変更して、偽陽性を処理する方法について説明します。
 

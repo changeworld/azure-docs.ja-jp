@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 54a750fc8418d48afcffdc8260322ca27382372b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 00eeda0b831f58ed0a739521cff95133f2a24bd1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786562"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017979"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
@@ -245,10 +245,9 @@ MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカ�
 
    ここでは、`BundleId` によってデバイスが一意に識別されます。 たとえば、`BundleId` が `yourcompany.xforms` の場合、URL スキームは `msauth.com.yourcompany.xforms` になります。
 
-  
       この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
 
-   ```XML
+   ```xml
     <key>CFBundleURLTypes</key>
        <array>
          <dict>
@@ -270,7 +269,7 @@ MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにイ�
 
 次のコード例のように、`Info.plist` ファイルの `LSApplicationQueriesSchemes` セクションに `msauthv2` を追加します。
 
-```XML
+```xml
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
@@ -326,7 +325,7 @@ iOS および macOS 用の MSAL では、URL を使用してブローカーが�
 
     この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。 [Azure portal](https://portal.azure.com) で、`msauth.(BundleId)://auth` 形式のリダイレクト URI がアプリケーションに対して登録されていることを確認してください。
 
-   ```XML
+   ```xml
    <key>CFBundleURLTypes</key>
    <array>
        <dict>
@@ -347,7 +346,7 @@ Microsoft Authenticator アプリがインストールされている場合に�
 
 `LSApplicationQueriesSchemes` を追加する方法の例を次に示します。
 
-```XML
+```xml
 <key>LSApplicationQueriesSchemes</key>
 <array>
   <string>msauthv2</string>

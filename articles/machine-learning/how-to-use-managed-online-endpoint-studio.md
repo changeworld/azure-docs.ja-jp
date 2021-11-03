@@ -11,12 +11,12 @@ ms.author: ssambare
 author: shivanissambare
 ms.reviewer: peterlu
 ms.date: 05/25/2021
-ms.openlocfilehash: 764532fd06a26810dcee7c9d348aaf04abc037a4
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: d195ce6019f200b3cd3b264aacf09a8cbdb30c5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428865"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057592"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する
 
@@ -169,6 +169,6 @@ ms.locfileid: "129428865"
 - [Azure CLI を使用してマネージド オンライン エンドポイントをデプロイする方法](how-to-deploy-managed-online-endpoints.md)
 - [REST を使用してモデルをデプロイする (プレビュー)](how-to-deploy-with-rest.md)
 - [マネージド オンライン エンドポイントを監視する方法](how-to-monitor-online-endpoints.md)
-- [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)
+- [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](./how-to-troubleshoot-online-endpoints.md)
 - [Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)
 - [Azure Machine Learning を使用するリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

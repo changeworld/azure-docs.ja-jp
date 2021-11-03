@@ -1,18 +1,18 @@
 ---
 title: Azure HPC Cache にストレージを追加する
 description: Azure HPC Cache で長期的なファイルの保管にオンプレミス NFS システムまたは Azure BLOB コンテナーを使用できるようにストレージ ターゲットを定義する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.custom: subject-rbac-steps
-ms.author: v-erkel
-ms.openlocfilehash: 016a62bc7713b389e8baf7d0a5b5aeefceb81f2b
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.author: femila
+ms.openlocfilehash: 29ecaecc579d1947d3e86ef6d9e080030a419331
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129271967"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070605"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 

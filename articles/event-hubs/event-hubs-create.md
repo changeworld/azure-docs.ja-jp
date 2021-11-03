@@ -2,13 +2,14 @@
 title: Azure クイック スタート - Azure portal を使用したイベント ハブの作成
 description: このクイックスタートでは、Azure portal を使用して Azure イベント ハブを作成する方法について説明します。
 ms.topic: quickstart
-ms.date: 05/25/2021
-ms.openlocfilehash: 6a483981f1461c738f087c6f9401006319fd0135
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b08ea54d7f408f35c9a584d9608848638dead827
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617141"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081336"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート:Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。

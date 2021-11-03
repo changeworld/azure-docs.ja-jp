@@ -8,14 +8,13 @@ ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 7836e15c307a0dcfcf4bfa4b8c56fbeea869d315
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: mode-portal
+ms.openlocfilehash: f471ce5ca6ae4204dd3dce8ae80057b34379e52e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709763"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020903"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>クイック スタート:Azure portal で仮想マシンに対して Azure Automanage を有効にする
 

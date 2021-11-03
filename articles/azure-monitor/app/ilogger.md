@@ -3,12 +3,12 @@ title: .NET を使用した Application Insights のログ
 description: .NET の ILogger インターフェイスで Application Insights を使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.openlocfilehash: 274fa5a9ab3fef94f892ed75fd69bc6cca6cccc9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 63ffa404c5f36bbb9bddfd86fd275f4bb740a66a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617794"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079037"
 ---
 # <a name="application-insights-logging-with-net"></a>.NET を使用した Application Insights のログ
 
@@ -154,7 +154,7 @@ namespace WebApplication
                     // or when you need to capture logs during application startup, such as
                     // in Program.cs or Startup.cs itself.
                     builder.AddApplicationInsights(
-                        context.Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+                        context.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
                     // Capture all log-level entries from Program
                     builder.AddFilter<ApplicationInsightsLoggerProvider>(
@@ -168,7 +168,7 @@ namespace WebApplication
 }
 ```
 
-前のコードでは、`ApplicationInsightsLoggerProvider` は `"APPINSIGHTS_CONNECTIONSTRING"` 接続文字列を使用して構成されています。 フィルターが適用され、ログ レベルが <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> に設定されます。
+前のコードでは、`ApplicationInsightsLoggerProvider` は `"APPLICATIONINSIGHTS_CONNECTION_STRING"` 接続文字列を使用して構成されています。 フィルターが適用され、ログ レベルが <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> に設定されます。
 
 > [!IMPORTANT]
 > インストルメンテーション キーに対して[接続文字列](./sdk-connection-string.md?tabs=net)をお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する *必要* があります。 

@@ -4,14 +4,14 @@ description: Azure と Logz.io の統合を管理する方法について説明�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 08/17/2021
+ms.date: 10/25/2021
 ms.author: tomfitz
-ms.openlocfilehash: e86b42694276c23f4d38809c9b40a7f92e39fa64
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 223dba26ab32659b710edde8f5bbbca7a67ba1af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429411"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076587"
 ---
 # <a name="manage-the-logzio-integration-in-azure"></a>Azure で Logz.io の統合を管理する
 
@@ -23,7 +23,7 @@ Logz.io の **[Overview]\(概要\)** 画面には、次の項目を含むリソ�
 
 - **リソース グループ**
 - **場所**
-- **[サブスクリプション]**
+- **サブスクリプション**
 - **タグ**
 - **Logz.io SSO**
 - **請求期間**

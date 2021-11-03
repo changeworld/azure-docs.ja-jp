@@ -4,12 +4,12 @@ description: Azure Functions Tools for Visual Studio 2019 を使用して、Azur
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 12/10/2020
-ms.openlocfilehash: 2cd702286b2f35fcbc725af5ee231e1ab4b78284
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: a8be86708f2f3a8394b1e6e17d70a9d9038dc6e2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862401"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039280"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -184,6 +184,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
         }
     }
     ```
+
    Queue Storage への接続は、`AzureWebJobsStorage` 設定から取得されます。 詳しくは、特定のバインドの参照記事をご覧ください。 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]

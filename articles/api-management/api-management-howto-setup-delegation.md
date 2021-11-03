@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2021
 ms.author: danlep
-ms.openlocfilehash: a642206389c5c92209a8d47e7a72992296b46428
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dbb948e45473bf091cb2d69e82ad2adf5fcfe8a2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603621"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058637"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -153,7 +153,7 @@ ms.locfileid: "128603621"
 
 以下のコード サンプルは、次の操作を行う方法を示しています｡
 
-* "*委任検証キー*" を取得する。このキーは、パブリッシャー ポータルの **[委任]** 画面で設定されます。
+* "*委任検証キー*" を取得する。このキーは、Azure ポータルの **[委任]** 画面で設定されます。
 * HMAC を作成する。この HMAC は、署名の検証のために使用されます。これにより、渡された returnUrl の有効性が証明されます。
 
 このコードは、少し変更すれば、**productId** と **userId** に対して使用できます。

@@ -43,6 +43,14 @@
           href: tutorial-cross-region-powershell.md
         - name: リージョン間ロード バランサーの作成 - Azure CLI
           href: tutorial-cross-region-cli.md
+    - name: ゲートウェイ ロード バランサー
+      items:
+        - name: ゲートウェイ ロード バランサーを作成する - ポータル
+          href: tutorial-gateway-portal.md
+        - name: ゲートウェイ ロード バランサーを作成する - PowerShell
+          href: tutorial-gateway-powershell.md
+        - name: ゲートウェイ ロード バランサーを作成する - Azure CLI
+          href: tutorial-gateway-cli.md
     - name: NAT Gateway
       items:
         - name: NAT ゲートウェイ パブリック ロード バランサーを統合する
@@ -67,6 +75,8 @@
       href: manage.md
     - name: リージョン間のロード バランサー
       href: cross-region-overview.md
+    - name: ゲートウェイ ロード バランサー
+      href: gateway-overview.md
     - name: 新機能
       href: whats-new.md
     - name: コンポーネント

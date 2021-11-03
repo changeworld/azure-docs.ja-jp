@@ -9,12 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
 ms.date: 05/18/2021
-ms.openlocfilehash: 2fa7a60b4f0cbc7e72304c1b01444bf9a9f6a842
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d5a67a12d6dbdb72625ab0459767eb8be92a8241
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667632"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131035986"
 ---
 # <a name="azure-sql-managed-instance---compute-hardware-in-the-vcore-service-tier"></a>Azure SQL Managed Instance - 仮想コア サービス レベルのコンピューティング ハードウェア
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,7 +36,7 @@ Azure SQL Managed Instance で使用される仮想コア (vCore) 購入モデ�
 |**ユース ケース**|**汎用**|**Business Critical**|
 |---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、最大の I/O パフォーマンスを実現します。|
-|ストレージ|リモート ストレージを使用します。 32 GB ～ 8 TB </br> コア数に応じて 16 TB (プレビュー)、Gen5 のみ |ローカル SSD ストレージを使用します。 32 GB ～ 4 TB |
+|ストレージ|リモート ストレージを使用します。 コアの数に応じて 32 GB から 16 TB |ローカル SSD ストレージを使用します。 <BR>- **Standard シリーズ (Gen5):** 32 GB から 4 TB <BR>- **Premium シリーズ:** 32 GB から 5.5 TB <BR>- **メモリ最適化 Premium シリーズ:** 32 GB から 16 TB |
 |IOPS とスループット (概算)|[Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md#service-tier-characteristics)に関するページを参照してください。|[Azure SQL Managed Instance のリソース制限の概要](../managed-instance/resource-limits.md#service-tier-characteristics)に関するページを参照してください。|
 |可用性|1 レプリカ、読み取りスケール レプリカなし|合計 4 レプリカ、1 つの[読み取りスケール レプリカ](../database/read-scale-out.md)、<br/> 2 つの高可用性レプリカ (HA)|
 |バックアップ|[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/geo-redundant-design.md)、1 ～ 35 日 (既定では 7 日)|[RA-GRS](../../storage/common/geo-redundant-design.md)、1 ～ 35 日 (既定では 7 日)|
@@ -55,20 +56,15 @@ SQL Managed Instance コンピューティングでは、ワークロード ア�
 
 ## <a name="hardware-generations"></a>ハードウェアの世代
 
-仮想コア モデルのハードウェアの世代オプションには、Gen 5 ハードウェア シリーズがあります。 ハードウェアの世代では、一般に、ワークロードのパフォーマンスに影響を与えるコンピューティングおよびメモリの制限とその他の特性を定義します。
+仮想コアモデルのハードウェア世代オプションには、Standard シリーズ (Gen5)、Premium シリーズ、メモリ最適化 Premium シリーズの各ハードウェア世代が含まれます。 ハードウェアの世代では、一般に、ワークロードのパフォーマンスに影響を与えるコンピューティングおよびメモリの制限とその他の特性を定義します。
 
-### <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
+ハードウェアの世代の詳細と制限事項について詳しくは、「[ハードウェアの世代の特性](resource-limits.md#hardware-generation-characteristics)」をご覧ください。
 
-|ハードウェアの世代  |Compute  |メモリ  |
-|:---------|:---------|:---------|
-|Gen4     |- Intel&reg; E5-2673 v3 (Haswell) 2.4 GHz プロセッサ<br>- 最大 24 個の仮想コアをプロビジョニング (1 仮想コア = 1 物理コア)  |- 仮想コアあたり 7 GB<br>- 最大 168 GB のプロビジョニング|
-|第 5 世代     |- Intel&reg; E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、Intel&reg; SP-8160 (Skylake)\* プロセッサ、および Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\* プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング|
-
-\* [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel&reg; SP-8160 (Skylake) プロセッサを使用するインスタンスのハードウェア世代は Gen6 と表示され、Intel&reg; 8272CL (Cascade Lake) を使用するインスタンスのハードウェア世代は Gen7 と表示されます。 すべての Gen5 インスタンスのリソース制限は、プロセッサの種類 (Broadwell、Skylake、Cascade Lake) に関係なく同じです。
+ [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel&reg; SP-8160 (Skylake) プロセッサを使用するインスタンスのハードウェア世代は Gen6 と表示され、Intel&reg; 8272CL (Cascade Lake) を使用するインスタンスのハードウェア世代は Gen7 と表示されます。 Premium シリーズとメモリ最適化 Premium シリーズのハードウェア世代で使われる Intel&reg; 8370C (Ice Lake) CPU は、Gen8 として示されます。 Standard シリーズ (Gen5) のすべてのインスタンスに対するリソース制限は、プロセッサの種類 (Broadwell、Skylake、Cascade Lake) に関係なく同じです。
 
 ### <a name="selecting-a-hardware-generation"></a>ハードウェアの世代を選択する
 
-Azure portal では、作成時にハードウェア世代を選択できます。また、既存の SQL Managed Instance のハードウェア世代を変更することもできます
+Azure portal では、作成時にハードウェア世代を選択できます。また、既存の SQL Managed Instance のハードウェア世代を変更することもできます。
 
 **SQL Managed Instance の作成時にハードウェア世代を選択するには**
 
@@ -112,11 +108,15 @@ az sql mi update -g mygroup -n myinstance --family Gen5
 
 ### <a name="hardware-availability"></a>ハードウェアの可用性
 
-#### <a name="gen4gen5"></a><a id="gen4gen5-1"></a>Gen4/Gen5
+#### <a name="gen4"></a><a id="gen4gen5-1"></a> Gen4
 
-Gen4 ハードウェアは[段階的に廃止中](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)であり、新しいデプロイでは利用できなくなりました。 すべての新しいインスタンスを Gen5 ハードウェアにデプロイする必要があります。
+Gen4 ハードウェアは[段階的に廃止中](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)であり、新しいデプロイでは利用できなくなりました。 新しいインスタンスはすべて、それより後のハードウェア世代に展開する必要があります。
 
-Gen5 は、世界中のすべてのパブリック リージョンで使用できます。
+#### <a name="standard-series-gen5-and-premium-series"></a>Standard シリーズ (Gen5) と Premium シリーズ
+
+Standard シリーズ (Gen5) のハードウェアは、世界中のすべてのパブリック リージョンで利用できます。
+  
+Premium シリーズとメモリ最適化 Premium シリーズのハードウェアはプレビュー段階であり、利用できるリージョンは限られています。 詳しくは、[Azure SQL Managed Instance のリソース制限](../managed-instance/resource-limits.md#hardware-generation-characteristics)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

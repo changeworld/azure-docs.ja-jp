@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: 787a0e4990988f35ca8e2c98eab1d9c77bea9c1b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 476b77cd2f319e5c082235ade3468ddb2fd34d44
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128576355"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069446"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレスのリアルタイム チャット アプリを作成する
 
@@ -73,21 +73,25 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
 
 1. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージを明示的にインストールします。
 
-   a. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
-    ```json
-    {
+   1. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
+
+      ```json
+      {
         "version": "2.0"
-    }
-    ```
-   b. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
-    ```bash
-    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-    ```
+      }
+      ```
+
+   1. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
+
+      ```bash
+      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
+      ```
 
 1. クライアントの静的 Web ページを読み取ってホストする `index` 関数を作成します。
     ```bash
     func new -n index -t HttpTrigger
     ```
+
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - `index/function.json` を更新して次の json コードをコピーします。
         ```json

@@ -4,16 +4,16 @@ description: ホストでの暗号化を使用して Azure VM のエンドツー
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 3417288a0ed765d1ff53c47282379ae6cbb85254
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: references_regions, devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: 480f325fdec8b6290594adeec258715992506350
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694695"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022051"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure PowerShell モジュールを使用してホストでの暗号化でエンドツーエンドでの暗号化を有効にする
 

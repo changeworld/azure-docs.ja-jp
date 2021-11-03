@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache のデータ取り込み - 手動コピー
 description: cp コマンドを使用して Azure HPC Cache の Blob Storage ターゲットにデータを移動する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: v-erkel
-ms.openlocfilehash: f96a0fa264124f9d050e667b003d98579da63b77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: femila
+ms.openlocfilehash: d3d93a767839d552791466d77be5ecbb9c50adf1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87092339"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078524"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache のデータ取り込み - 手動でコピーする方法
 

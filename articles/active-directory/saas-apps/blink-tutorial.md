@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 2d05eab0bb43fcfeb727556b002405e830fc4ae7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bcc11f74a5d6d6816286fc21bda983f338f5c22d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624370"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blink"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Blink の統合
 
@@ -77,16 +77,16 @@ Blink に対する Azure AD SSO を構成してテストするには、次の手
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
-    
+    1. **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
+
     | [サインオン URL]|
     |------------|
     | `https://app.joinblink.com` |
     | `https://<SUBDOMAIN>.joinblink.com` |
-    |
-    
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://api.joinblink.com/saml/o-<TENANTID>`
+    2. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+
+    `https://api.joinblink.com/saml/o-<TENANTID>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Blink クライアント サポート チーム](https://help.joinblink.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -104,17 +104,17 @@ Blink に対する Azure AD SSO を構成してテストするには、次の手
     |   email       | User.mail |
     | | |
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+    1. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    1. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[名前空間]** は空白のままにします。
+    1. **[名前空間]** は空白のままにします。
 
-    d. [ソース] として **[属性]** を選択します。
+    1. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+    1. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-    f. **[保存]** をクリックします。
+    1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7d7666e82970114cad352c702cdf13e29c4f86f6
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 80f96605069e2bfdc7596831018a81c09a0c7a9a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071969"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060423"
 ---
 # <a name="updated-ndv2-series"></a>更新された NDv2 シリーズ
 
@@ -42,7 +42,7 @@ NDv2 インスタンスは、CUDA GPU 最適化計算カーネルと、GPU ア�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md): サポートされています ([プレビュー段階](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています<br>
 InfiniBand: サポートされています<br>
 Nvidia NVLink Interconnect:サポートされています<br>
 <br>

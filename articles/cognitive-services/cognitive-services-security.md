@@ -3,19 +3,19 @@ title: Azure Cognitive Services のセキュリティ
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services を使用するときに考慮する必要のあるセキュリティに関する事柄について説明します。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: erhopf
+ms.author: pafarley
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: b77eadcbd46c4cac442ed26af94d5781d225806a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 33ed0fc2f104d0f94001ef821e9152926f6ab72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475784"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077916"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 

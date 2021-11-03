@@ -5,20 +5,23 @@ keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 05/17/2021
-ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d48d80170e3f1b9db83e12b34610a8b6736f42ca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 10/20/2021
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
+ms.openlocfilehash: 1595831e4da756e16df257ce93d28b03bb7c6eab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095826"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069256"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+> [!NOTE]
+> 新しいバージョンの Language Understanding 機能が、Azure Cognitive Service for Language の一部として使用できるようになりました。 詳しくは、[Azure Cognitive Service for Language のドキュメント](../language-service/index.yml)参照してください。 Language Service 内の言語理解機能については、「[Conversational Language Understanding](../language-service/conversational-language-understanding/overview.md)」、「[カスタム固有表現認識](../language-service/custom-named-entity-recognition/overview.md)」、「[カスタム分類](../language-service/custom-classification/overview.md)」を参照してください。
 
 Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 LUIS には、[カスタム ポータル](https://www.luis.ai)、[API][endpoint-apis]、および [SDK クライアント ライブラリ](client-libraries-rest-api.md)を介してアクセスできます。
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 初めてのユーザーは、次の手順に従って [LUIS ポータルにサインイン](sign-in-luis-portal.md "LUIS ポータルにサインインする")してください。作業を開始するにあたり、LUIS の[作成済みドメイン アプリ](luis-get-started-create-app.md)を試すこともできます。
 

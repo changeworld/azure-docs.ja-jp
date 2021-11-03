@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 63ca9c2a76b5daaf576992f715a7ec112ac98b25
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: f333ea27279098d43065a9ffd613f994940ff340
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681526"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019706"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Azure Sentinel SAP ソリューションをデプロイするための既定の手順](sap-deploy-solution.md)には、必要な SAP 変更要求と SAP ノートが含まれ、すべての必要なアクセス許可を備えた組み込みロールが用意されています。
 

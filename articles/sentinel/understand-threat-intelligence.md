@@ -3,7 +3,7 @@ title: Azure Sentinel における脅威インテリジェンスについて | M
 description: データの分析、脅威の検出、アラートの強化を行うために、Azure Sentinel で脅威インテリジェンス フィードを接続、管理、使用する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2021
-ms.author: yelevin
-ms.openlocfilehash: 6ab9ecbe3b67ec933604ab1d8f6efdc7dbd8a5af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/19/2021
+ms.author: bagol
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9b8bafe6cbfb9f2351bcf3e8004fbed2a08e61b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737523"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055067"
 ---
 # <a name="understand-threat-intelligence-in-azure-sentinel"></a>Azure Sentinel の脅威インテリジェンスについて
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="introduction-to-threat-intelligence"></a>脅威インテリジェンスの概要
 
@@ -29,26 +32,33 @@ ms.locfileid: "121737523"
 
 サイバー脅威インテリジェンス (CTI) は、システムとユーザーに対する既存または潜在的な脅威について説明する情報です。 この種の情報には、特定の脅威アクターの動機、インフラストラクチャ、手法を詳細に説明したレポートから、既知のサイバー脅威に関連する IP アドレス、ドメイン、ファイル ハッシュ、その他の成果物に関する具体的な観測結果まで、さまざまな形式があります。 CTI は、通常とは異なるアクティビティに対して重要なコンテキストを提供するために組織によって使用されます。これにより、セキュリティ担当者は、ユーザー、情報、その他の資産を保護する措置を迅速に講じることができます。 CTI は、オープンソースのデータ フィード、脅威インテリジェンス共有コミュニティ、商用インテリジェンス フィード、組織内のセキュリティ調査の過程で集められたローカル インテリジェンスなど、多くのソースから取得できます。
 
-Azure Sentinel のようなセキュリティ情報イベント管理 (SIEM) ソリューションで最も一般的に使用される CTI の形式は、セキュリティ侵害のインジケーター (IoC) とも呼ばれる脅威インジケーターです。 脅威インジケーターは、URL、ファイル ハッシュ、IP アドレスなどの観測された成果物を、フィッシング、ボットネット、マルウェアなどの既知の脅威アクティビティに関連付けるデータです。 この形式の脅威インテリジェンスは、組織に対する潜在的な脅威を検出して、それらから保護するために、セキュリティ製品と自動化に大規模に適用できるため、戦術的脅威インテリジェンスと呼ばれることがよくあります。 Azure Sentinel では、脅威インジケーターを使用して、お使いの環境で観察された悪意のあるアクティビティを検出し、セキュリティ調査担当者にコンテキストを提供して、応答の決定に役立てることができます。
+Azure Sentinel のようなセキュリティ情報イベント管理 (SIEM) ソリューションで最も一般的に使用される CTI の形式は、セキュリティ侵害のインジケーター (IoC) とも呼ばれる脅威インジケーターです。 脅威インジケーターは、URL、ファイル ハッシュ、IP アドレスなどの観測された成果物を、フィッシング、ボットネット、マルウェアなどの既知の脅威アクティビティに関連付けるデータです。 この形式の脅威インテリジェンスは、組織に対する潜在的な脅威を検出して、それらから保護するために、セキュリティ製品と自動化に大規模に適用できるため、"*戦術的脅威インテリジェンス*" と呼ばれることがよくあります。 Azure Sentinel では、脅威インジケーターを使用して、お使いの環境で観察された悪意のあるアクティビティを検出し、セキュリティ調査担当者にコンテキストを提供して、応答の決定に役立てることができます。
 
-次のアクティビティを通して脅威インテリジェンス (TI) を Azure Sentinel に統合できます。
+次のアクティビティを通して脅威インテリジェンス (TI) を Azure Sentinel に統合します。
 
-- さまざまな TI [プラットフォーム](connect-threat-intelligence-tip.md)および [フィード](connect-threat-intelligence-taxii.md)に対して **データ コネクタ** を有効化して、Azure Sentinel に **脅威インテリジェンスをインポートします**。
-- インポートした脅威インテリジェンスを Azure Sentinel の **[ログ]** および **[脅威インテリジェンス]** のブレードに **表示して、管理します**。
-- **脅威を検出し**、インポートした脅威インテリジェンスに基づいて、組み込みの **分析** ルール テンプレートを使用してセキュリティのアラートとインシデントを生成します。
-- Azure Sentinel で、**脅威インテリジェンス ブック** を使用して、インポートした脅威インテリジェンスに関する **重要な情報を視覚化します**。
+- さまざまな TI [プラットフォーム](connect-threat-intelligence-tip.md)および [フィード](connect-threat-intelligence-taxii.md)への **データ コネクタ** を有効化して、Azure Sentinel に **脅威インテリジェンスをインポート** します。
 
-また、脅威インテリジェンスによって、 **[ハンティング]** や **[ノートブック]** などの他の Azure Sentinel エクスペリエンスにも有用なコンテキストが提供されます。これらのエクスペリエンスについては、この記事では取り上げていませんが、Notebooks 内での CTI の使用について書かれた、[Azure Sentinel での Jupyter Notebooks](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239) に関する Ian Hellen による優れたブログ記事で取り上げられています。
+- インポートした脅威インテリジェンスを Azure Sentinel の **[ログ]** と **[脅威インテリジェンス]** ブレードに **表示し、管理します**。
+
+- **脅威を検出** し、インポートした脅威インテリジェンスに基づいて、組み込みの **分析** ルール テンプレートを使用してセキュリティ アラートとインシデントを生成します。
+
+- **脅威インテリジェンス ブック** を使用して、Azure Sentinel で、インポートした脅威インテリジェンスに関する **重要な情報を視覚化** します。
+
+Microsoft は、他のインジケーターの詳細と共に表示される[位置情報および WhoIs データ](#view-your-geolocation-and-whois-data-enrichments-public-preview)を使用して、インポートされたすべての脅威インテリジェンス インジケーターをエンリッチします。
+
+> [!TIP]
+> 脅威インテリジェンスは、**ハンティング** や **Notebooks** など、Azure Sentinel の他のエクスペリエンスで便利なコンテキストを提供します。 詳細については、[Azure Sentinel での Jupyter Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239) に関するページおよび「[チュートリアル: Azure Sentinel で Jupyter Notebook と MSTICPy の使用を開始する](notebook-get-started.md)」を参照してください。
+>
 
 ## <a name="import-threat-intelligence-with-data-connectors"></a>データ コネクタを使用して脅威インテリジェンスをインポートする
 
-Azure Sentinel の他のすべてのイベント データと同様に、脅威インジケーターはデータ コネクタを使用してインポートされます。 Azure Sentinel には、脅威インジケーター用に特別に用意された 2 つのデータ コネクタがあります。業界標準の STIX/TAXII フィード用の **脅威インテリジェンス - TAXII** と、統合およびキュレーションされた TI フィード用の **脅威インテリジェンス プラットフォーム** です。 組織の脅威インジケーターの取得元となる場所に応じて、どちらかのデータ コネクタを単独で使用することも、両方のコネクタを一緒に使用することもできます。 
+Azure Sentinel の他のすべてのイベント データと同様に、脅威インジケーターはデータ コネクタを使用してインポートされます。 Azure Sentinel には、脅威インジケーター用に特別に用意された 2 つのデータ コネクタがあります。業界標準の STIX/TAXII フィード用の **脅威インテリジェンス - TAXII** と、統合およびキュレーションされた TI フィード用の **脅威インテリジェンス プラットフォーム** です。 組織の脅威インジケーターの取得元となる場所に応じて、どちらかのデータ コネクタを単独で使用することも、両方のコネクタを一緒に使用することもできます。
 
 Azure Sentinel で利用できる、[脅威インテリジェンスの統合](threat-intelligence-integration.md)に関するカタログを参照してください。
 
-### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>脅威インテリジェンス プラットフォーム データ コネクタを使用して Azure Sentinel に脅威インジケーターを追加する
+### <a name="add-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>脅威インテリジェンス プラットフォーム データ コネクタを使用して Azure Sentinel に脅威インジケーターを追加する
 
-多くの組織では、脅威インテリジェンス プラットフォーム (TIP) ソリューションを使用して、さまざまなソースからの脅威インジケーター フィードを集約し、プラットフォーム内のデータをキュレーションしてから、ネットワーク デバイス、EDR/XDR ソリューション、Azure Sentinel のような SIEM など、さまざまなセキュリティ ソリューションに適用する脅威インジケーターを選択します。 [統合された TIP ソリューション](connect-threat-intelligence-tip.md)を組織で使用している場合は、**脅威インテリジェンス プラットフォーム データ コネクタ** でその TIP を使用して、Azure Sentinel に脅威インジケーターをインポートできます。 
+多くの組織では、脅威インテリジェンス プラットフォーム (TIP) ソリューションを使用して、さまざまなソースからの脅威インジケーター フィードを集約し、プラットフォーム内のデータをキュレーションしてから、ネットワーク デバイス、EDR/XDR ソリューション、Azure Sentinel のような SIEM など、さまざまなセキュリティ ソリューションに適用する脅威インジケーターを選択します。 [統合された TIP ソリューション](connect-threat-intelligence-tip.md)を組織で使用している場合は、**脅威インテリジェンス プラットフォーム データ コネクタ** でその TIP を使用して、Azure Sentinel に脅威インジケーターをインポートできます。
 
 TIP データ コネクタは [Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) と連携してこれを実現するため、tiIndicators API とやり取りする任意のカスタム脅威インテリジェンス プラットフォームで使用して、Azure Sentinel (および Microsoft 365 Defender などの他の Microsoft セキュリティ ソリューション) にインジケーターを送信することもできます。
 
@@ -56,7 +66,7 @@ TIP データ コネクタは [Microsoft Graph Security tiIndicators API](/graph
 
 Azure Sentinel と統合された TIP ソリューションの詳細については、「[統合された脅威インテリジェンス プラットフォーム製品](threat-intelligence-integration.md#integrated-threat-intelligence-platform-products)」を参照してください。
 
-統合された TIP またはカスタム脅威インテリジェンス ソリューションから Azure Sentinel に脅威インジケーターをインポートするために実行する必要がある主要な手順を以下に示します。
+**統合された TIP またはカスタム脅威インテリジェンス プラットフォームから Azure Sentinel に脅威インジケーターをインポートするには**:
 
 1. Azure Active Directory から **アプリケーション ID** と **クライアント シークレット** を取得する
 
@@ -64,22 +74,21 @@ Azure Sentinel と統合された TIP ソリューションの詳細について
 
 1. Azure Sentinel で脅威インテリジェンス プラットフォーム データ コネクタを有効にする
 
-これらの各手順の詳細については、[Azure Sentinel への脅威インテリジェンス プラットフォームの接続](connect-threat-intelligence-tip.md)に関する記事を参照してください。
+詳細については、「[脅威インテリジェンス プラットフォームを Azure Sentinel に接続する](connect-threat-intelligence-tip.md)」を参照してください。
 
-
-### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence---taxii-data-connector"></a>脅威インテリジェンス - TAXII データ コネクタを使用して Azure Sentinel に脅威インジケーターを追加する
+### <a name="add-threat-indicators-to-azure-sentinel-with-the-threat-intelligence---taxii-data-connector"></a>脅威インテリジェンス - TAXII データ コネクタを使用して Azure Sentinel に脅威インジケーターを追加する
 
 脅威インテリジェンスの送信用に最も広く採用されている業界標準は、[STIX データ形式と TAXII プロトコルの組み合わせ](https://oasis-open.github.io/cti-documentation/)です。 組織が現在の STIX/TAXII バージョン (2.0 または 2.1) をサポートするソリューションから脅威インジケーターを取得している場合、**脅威インテリジェンス - TAXII** データ コネクタを使用して、脅威インジケーターを Azure Sentinel に取り込むことができます。 脅威インテリジェンス - TAXII データ コネクタを使用すると、Azure Sentinel に組み込みの TAXII クライアントで、TAXII 2.x サーバーから脅威インテリジェンスをインポートできます。
 
 :::image type="content" source="media/understand-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="TAXII のインポート パス":::
- 
-TAXII サーバーから Azure Sentinel に STIX 形式の脅威インジケーターをインポートするには、次の手順に従います。
+
+**TAXII サーバーから Azure Sentinel に STIX 形式の脅威インジケーターをインポートするには**:
 
 1. TAXII サーバー API ルートとコレクション ID を取得する
 
 1. Azure Sentinel で脅威インテリジェンス - TAXII データ コネクタを有効にする
 
-これらの各手順の詳細については、[STIX/TAXII 脅威インテリジェンス フィードへの Azure Sentinel の接続](connect-threat-intelligence-taxii.md)に関する記事を参照してください。
+詳細については、「[Azure Sentinel を STIX/TAXII 脅威インテリジェンス フィードに接続する](connect-threat-intelligence-taxii.md)」を参照してください。
 
 ## <a name="view-and-manage-your-threat-indicators"></a>脅威インジケーターを表示および管理する
 
@@ -91,11 +100,19 @@ TAXII サーバーから Azure Sentinel に STIX 形式の脅威インジケー�
 
 また、Azure Sentinel のメイン メニューからアクセスできる新しい **[脅威インテリジェンス]** ブレードで、インジケーターを表示し、管理することもできます。 Log Analytics クエリを作成しなくても、インポートされた脅威インジケーターの並べ替え、フィルター処理、検索を行うことができます。 この機能では、Azure Sentinel インターフェイスで直接脅威インジケーターを作成できます。また、インジケーターのタグ付けやセキュリティ調査に関連した新しいインジケーターの作成という最も一般的な 2 つの脅威インテリジェンス管理タスクを実行することもできます。
 
-タグ付けは、脅威インジケーターをグループ化して見つけやすくする簡単な方法です。 通常は、特定のインシデントに関連するインジケーター、または特定の既知のアクターや既知の攻撃キャンペーンからの脅威を表すインジケーターにタグを適用することができます。 脅威インジケーターは個別にタグ付けすることも、インジケーターを複数選択してすべて一度にタグ付けすることもできます。 複数のインジケーターにインシデント ID をタグ付けする例を次に示します。 タグ付けは自由形式であるため、脅威インジケーター タグの標準的な名前付け規則を作成することをお勧めします。 各インジケーターに複数のタグを適用できます。
+タグ付けは、脅威インジケーターをグループ化して見つけやすくする簡単な方法です。 通常は、特定のインシデントに関連するインジケーター、または特定の既知のアクターや既知の攻撃キャンペーンからの脅威を表すものにタグを適用できます。 脅威インジケーターは個別にタグ付けすることも、インジケーターを複数選択してすべて一度にタグ付けすることもできます。 複数のインジケーターにインシデント ID をタグ付けする例を次に示します。 タグ付けは自由形式であるため、脅威インジケーター タグの標準的な名前付け規則を作成することをお勧めします。 各インジケーターに複数のタグを適用できます。
 
 :::image type="content" source="media/understand-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="脅威インジケーターにタグを適用する" lightbox="media/understand-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 脅威インジケーターの表示と管理の詳細については、[Azure Sentinel での脅威インジケーターの操作](work-with-threat-indicators.md#view-your-threat-indicators-in-azure-sentinel)に関する記事を参照してください。
+
+### <a name="view-your-geolocation-and-whois-data-enrichments-public-preview"></a>位置情報と WhoIs データのエンリッチメントを表示する (パブリック プレビュー)
+
+Microsoft では、位置情報と WhoIs の追加データを使用して各インジケーターをエンリッチし、選択した侵害インジケーター (IOC) が検出された調査についてより多くのコンテキストを提供します。
+
+位置情報と WhoIs のデータは、 **[脅威インテリジェンス]** ペインで、Azure Sentinel にインポートした侵害インジケーターごとに表示できます。
+
+たとえば、位置情報データを使用してインジケーターの "*組織*" や "*国*" などの詳細を検索し、WhoIs データを使用して "*レジストラー*" や "*レコード作成*" などのデータを検索します。
 
 ## <a name="detect-threats-with-threat-indicator-based-analytics"></a>脅威インジケータに基づく分析を使用して脅威を検出する
 
@@ -113,13 +130,14 @@ Azure Sentinel では、分析ルールから生成されたアラートでも�
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>ブックによって脅威インテリジェンスに関する分析情報を提供する
 
-ブックには、Azure Sentinel のあらゆる側面に関する分析情報を提供する、強力な対話型ダッシュボードが用意されており、脅威インテリジェンスも例外ではありません。 組み込みの **脅威インテリジェンス ブック** を使用して、脅威インテリジェンスに関する重要な情報を視覚化したり、ビジネス ニーズに応じて簡単にブックをカスタマイズしたりすることができます。 多くのさまざまなデータソースを組み合わせて、新しいダッシュボードを作成することもできます。これにより、独自の方法でデータを視覚化できます。 Azure Sentinel ブックは Azure Monitor ブックに基づいているため、広範なドキュメントが既にあり、さらに多くのテンプレートを利用できます。 [Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/visualize/workbooks-overview.md)の方法に関するこの記事から読み始めることをお勧めします。 
+ブックには、Azure Sentinel のあらゆる側面に関する分析情報を提供する、強力な対話型ダッシュボードが用意されており、脅威インテリジェンスも例外ではありません。 組み込みの **脅威インテリジェンス ブック** を使用して、脅威インテリジェンスに関する重要な情報を視覚化したり、ビジネス ニーズに応じて簡単にブックをカスタマイズしたりすることができます。 多くのさまざまなデータソースを組み合わせて、新しいダッシュボードを作成することもできます。これにより、独自の方法でデータを視覚化できます。 Azure Sentinel ブックは Azure Monitor ブックに基づいているため、広範なドキュメントが既にあり、さらに多くのテンプレートを利用できます。 [Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/visualize/workbooks-overview.md)の方法に関するこの記事から読み始めることをお勧めします。
 
 また、[GitHub 上に Azure Monitor ブック](https://github.com/microsoft/Application-Insights-Workbooks)の活発なコミュニティがあり、追加のテンプレートをダウンロードしたり、独自のテンプレートを投稿したりすることができます。
 
 脅威インテリジェンス ブックの使用とカスタマイズの詳細については、[Azure Sentinel での脅威インジケーターの操作](work-with-threat-indicators.md#workbooks-provide-insights-about-your-threat-intelligence)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 このドキュメントでは、脅威インテリジェンス ブレードを含め、Azure Sentinel の脅威インテリジェンス機能について説明しました。 Azure Sentinel の脅威インテリジェンス機能の使用に関する実用的なガイダンスについては、次の記事を参照してください。
 
 - Azure Sentinel を [STIX/TAXII 脅威インテリジェンス フィード](./connect-threat-intelligence-taxii.md)に接続する。

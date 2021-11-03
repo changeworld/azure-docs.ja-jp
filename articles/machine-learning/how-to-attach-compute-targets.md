@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
-ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d6a50982b546ae5d4e615c2e3cfc2b2dcd955a0f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: devx-track-python, contperf-fy21q1, ignite-fall-2021
+ms.openlocfilehash: 118276b2f455d54a7cc87d1336d6c3c5ea12f09a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713250"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056492"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -347,7 +347,7 @@ Azure Container Instances (ACI) は、モデルのデプロイ時に動的に作
 
 ## <a name="kubernetes-preview"></a><a id="kubernetes"></a>Kubernetes (プレビュー)
 
-Azure Machine Learning には、トレーニング用に独自の Kubernetes クラスターを接続するための次のオプションが用意されています。
+Azure Machine Learning には、トレーニングと推論用に独自の Kubernetes クラスターを接続するための次のオプションが用意されています。
 
 * [Azure Kubernetes Service](../aks/intro-kubernetes.md)。 Azure Kubernetes Service は、Azure のマネージド クラスターを提供します。
 * [Azure Arc Kubernetes](../azure-arc/kubernetes/overview.md)。 クラスターが Azure の外でホストされている場合は、Azure Arc 対応 Kubernetes クラスターを使用します。

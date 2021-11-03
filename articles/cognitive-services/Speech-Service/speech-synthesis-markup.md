@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a43758b1c20b3983b4b2c0920481549ddccb0328
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: d6a4278c1d44a0b2bf6b67b1b375169fefd2913b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708854"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048484"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -88,7 +88,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 > [!NOTE]
 > この例では、`en-US-ChristopherNeural` 音声を使用します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 
-```XML
+```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-ChristopherNeural">
         This is the text that is spoken.
@@ -452,14 +452,14 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **構文**
 
-```XML
+```xml
 <p></p>
 <s></s>
 ```
 
 **例**
 
-```XML
+```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-ChristopherNeural">
         <p>
@@ -485,7 +485,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **構文**
 
-```XML
+```xml
 <phoneme alphabet="string" ph="string"></phoneme>
 ```
 
@@ -535,7 +535,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **構文**
 
-```XML
+```xml
 <lexicon uri="string"/>
 ```
 
@@ -591,7 +591,8 @@ A good place to start is by trying out the slew of educational apps that are hel
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
-> [!Note]
+
+> [!NOTE]
 > 音節境界は、国際音標文字では "." です。
 
 また、頭字語または略語に対して期待される `alias` を直接指定することもできます。 次に例を示します。
@@ -671,7 +672,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 **構文**
 
-```XML
+```xml
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
 ```
 
@@ -754,7 +755,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 **構文**
 
-```XML
+```xml
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
 ```
 
@@ -791,7 +792,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 音声合成エンジンは、"Your first request was for one room on October nineteenth twenty ten with early arrival at twelve thirty five PM" (最初のリクエストは 2010 年 10 月 19 日に 1 部屋、午後 12 時 35 分にアーリー アライバル、というものでした) という例を読み上げます。
 
-```XML
+```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-ChristopherNeural">
         <p>
@@ -853,7 +854,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 
 **構文**
 
-```XML
+```xml
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
 ```
 

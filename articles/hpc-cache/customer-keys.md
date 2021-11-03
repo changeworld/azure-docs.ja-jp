@@ -1,17 +1,17 @@
 ---
 title: カスタマー マネージド キーを使用して Azure HPC Cache 内のデータを暗号化する
 description: 既定の Microsoft のマネージド暗号化キーを使用する代わりに、Azure Key Vault と Azure HPC Cache を使用して暗号化キーへのアクセスを制御する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
-ms.author: v-erkel
-ms.openlocfilehash: dbb2834d6d51f2555da05863c606b4678b9a17b7
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.author: femila
+ms.openlocfilehash: 87f80d77f1b2768291532c216ff99b892ba8f12a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772287"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019953"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 

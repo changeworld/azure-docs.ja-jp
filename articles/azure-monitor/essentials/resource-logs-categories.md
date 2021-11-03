@@ -3,12 +3,12 @@ title: Azure Monitor リソース ログでサポートされているカテゴ�
 description: Azure Monitor リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 10/05/2021
-ms.openlocfilehash: bf7d5371a170f28e79828619aef9fc16e15a303a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 11233e33d7dc5dffbdfc65acec9eac9223a96f2b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006377"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231534"
 ---
 # <a name="supported-categories-for-azure-monitor-resource-logs"></a>Azure Monitor リソース ログでサポートされているカテゴリ
 
@@ -19,7 +19,7 @@ ms.locfileid: "130006377"
 
 リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
 
-リソースの種類 (`resourceId` プロパティで使用可能) とカテゴリの組み合わせにより、スキーマが一意に識別されます。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、「[Azure リソース ログの共通およびサービス固有のスキーマ](/azure/azure-monitor/essentials/resource-logs-schema)」を参照してください。
+リソースの種類 (`resourceId` プロパティで使用可能) とカテゴリの組み合わせにより、スキーマが一意に識別されます。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、「[Azure リソース ログの共通およびサービス固有のスキーマ](./resource-logs-schema.md)」を参照してください。
 
 ## <a name="costs"></a>コスト
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/25/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 68eaef6943bea96261e73abc141c87362071665d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: fddb35cd2b610280440ac01fe5ffc9027a59a2b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991947"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021887"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -55,14 +55,14 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 - 単一値の文字列属性を追加するための要求
 - 複数の属性を置き換える要求
 - グループのメンバーを削除する要求        
-                                                                                     
+
 この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。 この機能フラグは、現在オンデマンド プロビジョニングでは機能しません。 
   * **URL (SCIM Compliant):** aadOptscim062020
   * **SCIM RFC 参照:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2    
 
 次に示すのは、同期エンジンによって現在送信されている内容と、機能フラグを有効にした後で送信される要求の概要を比較するときに役立つ要求の例です。 
-                           
+
 **ユーザーを無効にするために行われる要求:**
 
 **機能フラグなし**
@@ -237,18 +237,18 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 
   * **ダウングレード URL:** ギャラリー以外のアプリケーションで新しい SCIM 準拠の動作が既定になったら、次の URL を使用して、SCIM に準拠していない以前の動作にロールバックすることができます。AzureAdScimPatch2017
-  
+
 
 
 ## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>前の customappsso ジョブから SCIM ジョブへのアップグレード
 次の手順に従うと、既存の customappsso ジョブが削除され、新しい scim ジョブが作成されます。 
- 
+
 1. Azure portal (https://portal.azure.com ) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションで、既存の SCIM アプリケーションを検索して選択します。
 3. 既存 SCIM アプリの **[プロパティ]** セクションで、 **[オブジェクト ID]** をコピーします。
 4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、プロビジョニング ジョブの ID を確認します。 "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
- 
+
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
    ![ジョブを取得する](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "ジョブを取得する") 
@@ -256,21 +256,21 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 6. 結果内で、"customappsso" または "scim" のいずれかで始まる完全な "ID" 文字列をコピーします。
 7. バックアップを作成するために、次のコマンドを実行して属性マッピング構成を取得します。 前と同じ [object-id] を使用し、[job-id] を、最後の手順でコピーしたプロビジョニング ジョブ ID に置き換えます。
- 
+
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
- 
+
    ![スキーマを取得する](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "スキーマを取得する") 
 
 8. 最後の手順から JSON 出力をコピーし、テキスト ファイルに保存します。 この JSON には、前のアプリに追加したすべてのカスタム属性マッピングが含まれており、およそ数千行の JSON となります。
 9. 次のコマンドを実行して、プロビジョニング ジョブを削除します。
- 
+
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. 次のコマンドを実行して、最新のサービス修正プログラムを含む新しいプロビジョニング ジョブを作成します。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   "templateId": "scim"   }`
-   
+
 11. 最後の手順の結果内で、"scim" で始まる完全な "ID" 文字列をコピーします。 必要に応じて、次のコマンドで、[new-job-id] をコピーした新しいジョブ ID に置き換え、要求本文として手順 7 の JSON 出力を入力してコマンドを実行し、前の属性マッピングを再適用します。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
@@ -291,7 +291,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
- 
+
 6. 最初の Web ブラウザー ウィンドウに戻り、アプリケーション用の **[プロビジョニング]** タブを選択します。
 7. 通常どおりにユーザー プロビジョニング構成を完了します。
 

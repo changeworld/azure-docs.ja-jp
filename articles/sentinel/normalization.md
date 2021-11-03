@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: e90171faf59daf70bde2150036fdf0a757e53979
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9bb09b6a9b65e0e10b2d7d2d1b02e29dde3e85fc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621397"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009227"
 ---
 # <a name="normalization-and-the-azure-sentinel-information-model-asim-public-preview"></a>正規化と Azure Sentinel 情報モデル (ASIM) (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel は、多くのソースからデータを取り込みます。 さまざまなデータ型とテーブルを組み合わせて使用するには、それらを理解し、各型またはスキーマの分析ルール、ブック、ハンティング クエリに対して一意のデータ セットを記述し、使用する必要があります。
 
@@ -69,7 +71,7 @@ Azure Sentinel Information Model には、次のコンポーネントが含ま�
 
 |コンポーネント  |説明  |
 |---------|---------|
-|**正規化されたスキーマ**     |   統合機能を構築する際に使用できる予測可能なイベント種類の標準セットについて説明します。 <br><br>各スキーマは、イベントを表すフィールド、正規化された列の名前付け規則と、フィールド値の標準形式を定義します。 <br><br> 現在、ASIM では次のスキーマが定義されています。<br> - [ネットワーク セッション](normalization-schema.md)<br> - [DNS アクティビティ](dns-normalization-schema.md)<br> - [プロセス イベント](process-events-normalization-schema.md)<br> - [認証イベント](authentication-normalization-schema.md)<br> - [レジストリ イベント](registry-event-normalization-schema.md)<br> - [ファイル アクティビティ](file-event-normalization-schema.md)  <br><br>詳細については、「[Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)」を参照してください。  |
+|**正規化されたスキーマ**     |   統合機能を構築する際に使用できる予測可能なイベント種類の標準セットについて説明します。 <br><br>各スキーマは、イベントを表すフィールド、正規化された列の名前付け規則と、フィールド値の標準形式を定義します。 <br><br> 現在、ASIM では次のスキーマが定義されています。<br> - [ネットワーク セッション](./network-normalization-schema.md)<br> - [DNS アクティビティ](dns-normalization-schema.md)<br> - [プロセス イベント](process-events-normalization-schema.md)<br> - [認証イベント](authentication-normalization-schema.md)<br> - [レジストリ イベント](registry-event-normalization-schema.md)<br> - [ファイル アクティビティ](file-event-normalization-schema.md)  <br><br>詳細については、「[Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)」を参照してください。  |
 |**パーサー**     |  [KQL 関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)を使用して、既存のデータを正規化されたスキーマにマップします。 <br><br>Microsoft が開発した正規化パーサーを、[Azure Sentinel GitHub パーサー フォルダー](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers) からデプロイします。 正規化されたパーサーは、**ASim*** で始まるサブフォルダーに存在します。  <br><br>詳細については、「[Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)」を参照してください。     |
 |**正規化されたスキーマごとのコンテンツ**     |    これには、分析ルール、ブック、ハンティング クエリなどが含まれます。 正規化されたスキーマごとのコンテンツは、ソース固有のコンテンツを作成することなく、正規化されたデータに対して機能します。 <br><br>詳細については、「[Azure Sentinel 情報モデルのコンテンツ](normalization-content.md)」を参照してください。   |
 | | |
@@ -78,7 +80,7 @@ Azure Sentinel Information Model には、次のコンポーネントが含ま�
 
 Azure Sentinel Information Model では、次の用語を使用します。
 
-|期間  |説明  |
+|用語  |説明  |
 |---------|---------|
 |**レポート デバイス**     |   レコードを Azure Sentinel に送信するシステム。 このシステムは、送信されるレコードのサブジェクト システムではない可能性があります。      |
 |**レコード**     |レポート デバイスから送信されるデータの単位。 レコードは、`log`、`event`、`alert` と呼ばれることが多いですが、他の種類のデータであることもあります。         |

@@ -1,41 +1,52 @@
 ---
-title: Azure Data Explorer の登録とスキャンの方法
-description: このハウツーガイドでは、Azure Purview 内で Azure Data Explorer をスキャンする方法の詳細について説明します。
+title: Azure Data Explorer に接続して管理する
+description: このガイドでは、Azure Purview で Azure Data Explorer に接続する方法と、Purview の機能を使用して Azure Data Explorer ソースをスキャンおよび管理する方法について説明します。
 author: nayenama
 ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 28ed2e82108cce48ac7ce6988bd9e9833253855a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: df323dd973f65f6e4d332ec7a8a0d408c26ecc4e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209940"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076322"
 ---
-# <a name="register-and-scan-azure-data-explorer"></a>Azure Data Explorer の登録とスキャン
+# <a name="connect-to-and-manage-azure-data-explorer-in-azure-purview"></a>Azure Purview で Azure Data Explorer に接続して管理する
 
-この記事では、Azure Purview に Azure Data Explorer アカウントを登録し、スキャンを設定する方法について説明します。
+
+この記事では、Azure Purview で、Azure Data Explorer を登録する方法、および Azure Data Explorer を認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Data Explorer では、フル スキャンと増分スキャンがサポートされ、メタデータとスキーマがキャプチャされます。 また、スキャンでは、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register) | [あり](#scan) | [あり](#scan) | [あり](#scan)| [あり](#scan)| いいえ | いいえ |
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
-- Azure Purview データ ソース管理者である必要があります
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
+* アクティブな [Purview リソース](create-catalog-portal.md)。
+
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
+
+## <a name="register"></a>登録
+
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に Azure Data Explorer を登録する方法について説明します。
+
+### <a name="authentication-for-registration"></a>登録の認証
 
 Azure Data Explorer の認証を設定する方法は 1 つだけです。
 
 - サービス プリンシパル
 
-### <a name="service-principal"></a>サービス プリンシパル
+#### <a name="service-principal-to-register"></a>登録するサービス プリンシパル
 
-スキャンにサービス プリンシパルの認証を使用するには、既存のものを使用するか、新しく作成することができます。 
+スキャンにサービス プリンシパルの認証を使用するには、既存のものを使用するか、新しく作成することができます。
 
 > [!Note]
 > 新しいサービス プリンシパルを作成する必要がある場合は、次の手順に従います。
@@ -65,7 +76,7 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 
 1. **[アクセス許可]** タブで、サービス プリンシパルを **[AllDatabasesViewer]** ロールに追加します。
 
-## <a name="register-an-azure-data-explorer-account"></a>Azure Data Explorer アカウントを登録する
+### <a name="steps-to-register"></a>登録する手順
 
 新しい Azure Data Explorer (Kusto) アカウントをデータ カタログに登録するには、次の手順を実行します。
 
@@ -87,7 +98,11 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="scan"></a>スキャン
+
+次の手順に従って、Azure Data Explorer をスキャンし、自動的に資産を識別してデータを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください
+
+### <a name="create-and-run-scan"></a>スキャンの作成と実行
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
@@ -119,5 +134,8 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 3eb0ab8ac6ca4c0ceddd9e3ebf84b8c2ddd5a9f4
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 2479e5b269d6cc6a4d0aaadd6b3616da17670c2d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301314"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070035"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
@@ -20,9 +20,6 @@ ms.locfileid: "113301314"
 
 > [!NOTE]
 > [Log Analytics ワークスペース](../logs/log-analytics-tutorial.md)からのログ データを、Azure Monitor メトリック ストアに送信することもできます。 各メトリック アラートの[動作](alerts-metric-overview.md)は異なります。これは、操作するデータによっては、より望ましい場合があります。 メトリックにルーティングできるログとその方法については、[ログのメトリック アラート](alerts-metric-logs.md)に関するページを参照してください。
-
-> [!NOTE]
-> 現時点では、API バージョン `2020-05-01-preview` とリソース中心のログ アラートに関して追加料金は発生しません。  プレビュー段階にある機能の価格は、後で発表され、課金が始まる前に通知されます。 通知期間後も新しい API バージョンとリソース中心ログ アラートを引き続き使用することを選択した場合は、該当する料金が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -153,7 +150,7 @@ requests
 このルールでは、過去 15 分間にエラー イベントが発生した仮想マシンがあるかどうかが監視されます。 各仮想マシンは個別に監視され、アクションが個別にトリガーされます。
 
 > [!NOTE]
-> アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
+> アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-08-01` 以上の API バージョンでのみサポートされています。
 
 ## <a name="alert-logic-definition"></a>アラート ロジックの定義
 

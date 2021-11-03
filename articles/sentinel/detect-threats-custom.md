@@ -1,6 +1,6 @@
 ---
-title: 脅威を検出するためのカスタム分析ルールを Azure Sentinel を使用して作成する | Microsoft Docs
-description: セキュリティ上の脅威を検出するカスタム分析ルールを、Azure Sentinel を使用して作成する方法について説明します。 イベントのグループ化、アラートのグループ化、アラート エンリッチメントを利用し、自動無効化について理解します。
+title: Azure Sentinel を使用して、脅威を検出するためのカスタム分析ルールを作成する | Microsoft Docs
+description: Azure Sentinel を使用して、セキュリティの脅威を検出するためのカスタム分析ルールを作成する方法について説明します。 イベントのグループ化、アラートのグループ化、アラート エンリッチメントを利用し、自動無効化について理解します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,21 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0a2fd5f134cd97348fb23a88e6b40dcfbf46a275
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d1290d5d89c4e48c8e2e875bae5e64959f6f2c36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778814"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037228"
 ---
 # <a name="create-custom-analytics-rules-to-detect-threats"></a>脅威を検出するためのカスタム分析規則を作成する
 
-Azure Sentinel に[データソースを接続](quickstart-onboard.md)した後は、環境内の脅威や異常な動作を検出するのに役立つカスタム分析ルールを作成します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-分析ルールによって、環境全体にわたる特定のイベントまたはイベント セットの検索、特定のイベントのしきい値または条件に達したときのアラート生成、SOC がトリアージと調査を行うためのインシデントの生成、自動化された追跡および修復プロセスによる脅威への対応が行われます。
+Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)した後、環境内の脅威や異常な動作を検出するために役立つカスタム分析ルールを作成します。
+
+分析ルールでは、環境全体にわたる特定のイベントまたは一連のイベントを検索したり、特定のイベントしきい値または条件に達したときはユーザーに警告したり、SOC でトリアージと調査を行うためのインシデントを生成したり、自動化された追跡および修復プロセスを使用して脅威に対応したりします。
 
 > [!TIP]
-> カスタム ルールを作成する場合は、既存のルールをテンプレートとして、または参照用に使用します。 既存のルールをベースラインとして使用すると、ほとんどのロジックを構築した後で、必要な変更を加えることができます。
+> カスタム ルールを作成する場合は、既存のルールをテンプレートまたは参照として使用します。 既存のルールをベースラインとして使用すると、必要な変更を行う前にほとんどのロジックを構築するのに役立ちます。
 > 
 
 > [!div class="checklist"]
@@ -77,7 +80,7 @@ Azure Sentinel に[データソースを接続](quickstart-onboard.md)した後�
     ```
 
     > [!NOTE]
-    > **ルールのクエリのベスト プラクティス**: 
+    > **ルール クエリのベスト プラクティス**: 
     > - クエリの長さは 1 から 10,000 文字にする必要があります。また、"`search *`" または "`union *`" を含めることはできません。 [ユーザー定義関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)を使用すると、クエリの長さの制限を克服できます。
     >
     > - ADX 関数を使用して Log Analytics クエリウィンドウ 内で Azure Data Explorer クエリを作成することは、**サポートされていません**。
@@ -215,11 +218,11 @@ Azure Sentinel に[データソースを接続](quickstart-onboard.md)した後�
 
 ## <a name="set-automated-responses-and-create-the-rule"></a>自動応答を設定してルールを作成する
 
-1. **[Automated responses]\(自動応答\)** タブでは、この分析ルールによって生成された 1 つまたは複数のアラートに基づいて、またはアラートによって作成されたインシデントに基づいて、自動化を設定できます。
-    - アラート ベースの自動化の場合は、 **[Alert automation]\(アラート自動化\)** の下にあるドロップダウン リストから、アラートが生成されたときに自動的に実行するプレイブックを選択します。
-    - インシデントベースの自動化では、 **[Incident automation (preview)]\(インシデント自動化 (プレビュー)\)** で自動化ルールを選択または作成します。 これらの自動化ルールからプレイブック (**インシデント トリガー** に基づくもの) を呼び出したり、トリアージ、割り当て、終了を自動化したりすることもできます。
-    - プレイブックと自動化ルールを作成する方法の詳細と手順については、「[脅威への対応を自動化する](tutorial-respond-threats-playbook.md#automate-threat-responses)」を参照してください。
-    - **アラート トリガー** または **インシデント トリガー** を使用するタイミングの詳細については、「[Azure Sentinel プレイブックでトリガーとアクションを使用する](playbook-triggers-actions.md#azure-sentinel-triggers-summary)」を参照してください。
+1. **[自動応答]** タブで、この分析ルールによって生成された 1 つまたは複数のアラートに基づいて、またはアラートによって作成されたインシデントに基づいて自動化を設定できます。
+    - アラートベースの自動化の場合は、 **[アラートの自動化]** の下にあるドロップダウン リストから、アラートが生成されたときに自動的に実行する任意のプレイブックを選択します。
+    - インシデントベースの自動化の場合は、 **[インシデントの自動化 (プレビュー)]** で自動化ルールを選択または作成します。 これらの自動化ルールから (**インシデント トリガー** に基づいた) プレイブックを呼び出したり、トリアージ、割り当て、終了を自動化したりすることができます。
+    - プレイブックや自動化ルールの作成に関する詳細と手順については、「[脅威への対応を自動化する](tutorial-respond-threats-playbook.md#automate-threat-responses)」を参照してください。
+    - **アラート トリガー** または **インシデント トリガー** を使用するタイミングの詳細については、[Azure Sentinel プレイブックでのトリガーとアクションの使用](playbook-triggers-actions.md#azure-sentinel-triggers-summary)に関するページを参照してください。
 
     :::image type="content" source="media/tutorial-detect-threats-custom/automated-response-tab.png" alt-text="自動応答の設定を定義する":::
 
@@ -290,9 +293,9 @@ SOC マネージャーは、自動無効化されたルールがあるかどう�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Sentinel から分析ルールを使用して脅威を検出する場合は、接続されたデータ ソースに関連付けられているすべてのルールを有効にして、環境全体にセキュリティを適用できるようにしてください。 最も効率的に分析ルールを有効にする方法として、関連するルールがすべて一覧表示されているデータ コネクタ ページから直接行います。 詳細については、「[データ ソースの接続](connect-data-sources.md)」を参照してください。
+Azure Sentinel から分析ルールを使用して脅威を検出する場合は、セキュリティが環境全体に確実に適用されるように、接続されたデータ ソースに関連付けられているすべてのルールを必ず有効にするようにしてください。 分析ルールを有効にするための最も効率的な方法として、関連するすべてのルールが一覧表示されているデータ コネクタ ページから直接行います。 詳細については、「[データ ソースの接続](connect-data-sources.md)」を参照してください。
 
-また、[API](/rest/api/securityinsights/) と [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0) を介して Azure Sentinel にルールをプッシュすることもできます。ただし、それには追加の作業が必要になります。 API または PowerShell を使用する場合は、ルールを有効にする前に、まずルールを JSON にエクスポートする必要があります。 API または PowerShell は、Azure Sentinel の複数のインスタンスでルールを有効にし、各インスタンスで同じ設定を使用する場合に役立つ可能性があります。
+ルールは [API](/rest/api/securityinsights/) や [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0) 経由で Azure Sentinel にプッシュすることもできますが、それを行うには追加の作業が必要です。 API または PowerShell を使用している場合は、ルールを有効にする前に、まずルールを JSON にエクスポートする必要があります。 API または PowerShell は、Azure Sentinel の複数のインスタンスでルールを有効にし、各インスタンスの設定を同じにする場合に役立つことがあります。
 
 詳細については、次を参照してください。
 
@@ -302,4 +305,4 @@ Azure Sentinel から分析ルールを使用して脅威を検出する場合�
 - [Azure Sentinel でエンティティを使用してデータを分類および分析する](entities-in-azure-sentinel.md)
 - [チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する](tutorial-respond-threats-playbook.md)
 
-また、[カスタム コネクタ](create-custom-connector.md)で [Zoom を監視](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)するときのカスタム分析ルールの使用例もご覧ください。
+また、[カスタム コネクタ](create-custom-connector.md)で [Zoom を監視する](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)するときにカスタム分析ルールを使用する例も参照してください。

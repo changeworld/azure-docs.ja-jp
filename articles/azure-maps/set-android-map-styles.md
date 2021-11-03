@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: c6d9eaedbd4a257a60fa0ba3dc7f41857173207e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1d16131c51527ead525bf17143892d15229658d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431570"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072429"
 ---
 # <a name="set-map-style-android-sdk"></a>マップ スタイルを設定する (Android SDK)
 
@@ -24,7 +24,7 @@ ms.locfileid: "123431570"
 
 [クイックスタート: Android アプリの作成](quick-android-map.md)に関する記事の手順を必ず完了してください。
 
->[!important]
+>[!IMPORTANT]
 >このセクションの手順には、Gen 1 または Gen 2 価格レベルの Azure Maps アカウントが必要です。 価格レベルの詳細については、「[Azure Maps での適切な価格レベルの選択](choose-pricing-tier.md)」を参照してください。
 
 
@@ -32,7 +32,7 @@ ms.locfileid: "123431570"
 
 マップ スタイルは、マップ コントロールの追加時に、アクティビティ クラスのレイアウト ファイルで設定できます。 次のコードは、中央の場所、ズーム レベル、およびマップ スタイルを設定します。
 
-```XML
+```xml
 <com.azure.android.maps.control.MapControl
     android:id="@+id/mapcontrol"
     android:layout_width="match_parent"

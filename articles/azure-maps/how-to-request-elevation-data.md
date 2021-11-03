@@ -7,12 +7,12 @@ ms.date: 05/18/2021
 ms.topic: how-to
 ms.service: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: c7c9bcfa405abe21b335156862b0ee6d19e0a9ac
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 6562af274455297e12084353926478f1954c2407
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438446"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031406"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>Azure Maps Elevation Service を使用して標高データを要求する
 
@@ -122,7 +122,7 @@ GeoJSON 形式で標高データを要求するには、Elevation Service API �
 
 8. **Body** フィールドに、次の座標点の情報を指定します。
 
-     ```json
+    ```json
     [
         {
             "lon": -73.998672,
@@ -258,7 +258,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 
 11. **Body** フィールドに、次の座標点の情報を指定します。
 
-     ```json
+    ```json
     [
         {
             "lon": 86.9797222,

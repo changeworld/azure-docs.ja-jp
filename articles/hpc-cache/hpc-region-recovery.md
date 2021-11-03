@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache を使用したリージョン冗長とフェールオーバーの回復
 description: Azure HPC Cache を使用してディザスター リカバリーのためのフェールオーバー機能を提供する技法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/19/2021
-ms.author: v-erkel
-ms.openlocfilehash: a05a281bdf01a01be842e99cc1b08383d0b9c1bc
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.author: femila
+ms.openlocfilehash: b47e664bcbe5435a527940c0c1df8f92d95d5cb5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515016"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078542"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>リージョン内フェールオーバーの回復に複数のキャッシュを使用する
 

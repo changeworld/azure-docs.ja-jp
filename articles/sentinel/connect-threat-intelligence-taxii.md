@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 1335d10b1fd46b24326636e7caece4583c84f523
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a3e0381654e8a4d80c9eccffd6e02207b997fad8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253530"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004361"
 ---
 # <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Azure Sentinel を STIX/TAXII 脅威インテリジェンス フィードに接続する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 

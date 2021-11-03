@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: c60b8f605fea83ef0eccab140f1d9f460be78701
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2583397a34635d54fa7982656019433442e2e96b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778953"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Oracle PeopleSoft - Protected by F5 BIG-IP APM の統合
 
@@ -294,9 +294,17 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
     * **[Local Traffic]\(ローカル トラフィック\)、[iRule]** の順に移動して、 **[Create]\(作成\)** をクリックし、次の情報を入力して **[Finished]\(完了\)** をクリックします。
 
-        名前: `<Name>`  
-        定義は次のとおりです。  
-                    _when HTTP_REQUEST { switch -glob -- [HTTP::uri] { `/psp/ps/?cmd=logout` { HTTP::redirect `/my.logout.php3` } } }_
+      ```text
+      Name: `<Name>`
+      Definition:
+                  _when HTTP_REQUEST {
+                      switch -glob -- [HTTP::URI] {
+                          `/psp/ps/?cmd=logout` {
+                              HTTP::redirect `/my.logout.php3`
+                          }
+                      }
+                  }_
+      ```
 
 1. 作成した iRule を仮想サーバーに割り当てます
 

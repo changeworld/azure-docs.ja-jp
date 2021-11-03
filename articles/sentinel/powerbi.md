@@ -6,14 +6,17 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 0e877439b18d4c7ff6c4b21baa18b3b0fd1586b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 558d6d979321148923f8a10bc2f92bb13eedd746
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724151"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023046"
 ---
 # <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>チュートリアル: Azure Sentinel のデータから Power BI レポートを作成する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Power BI](https://powerbi.microsoft.com/) は、データをイマーシブで一貫性のある対話型の視覚化に変えるレポートおよび分析プラットフォームです。 Power BI を使用すると、データ ソースへの接続、リレーションシップの視覚化と検出、必要に応じた分析情報の共有を簡単に実行できます。
 
@@ -206,5 +209,5 @@ Management Teams チャネルのメンバーがレポートを表示できるよ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ログ データを Power BI にインポートする](../azure-monitor/visualize/powerbi.md)
+- [Azure Monitor ログ データを Power BI にインポートする](../azure-monitor/logs/log-powerbi.md)
 - [Power Query M 式言語](/powerquery-m/)

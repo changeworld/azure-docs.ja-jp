@@ -8,13 +8,13 @@ ms.author: duau
 ms.date: 6/2/2021
 ms.topic: quickstart
 ms.service: dns
-ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 4b025f9073497a718f5ab47144794e84b57b1b5b
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm
+ms.openlocfilehash: dba996bcd4d2416a41ac6a7f1ad94804c0ecb839
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568537"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033097"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>ARM テンプレートを使用して Azure DNS ゾーンとレコードを作成する
 

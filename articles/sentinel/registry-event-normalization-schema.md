@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 07/01/2021
 ms.author: bagol
-ms.openlocfilehash: d10d1e9408db7ab29a7fe01e5bf906e9023124c7
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dd1a6b99c65d92b1a6a96a25790a8b780d73565f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407230"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055197"
 ---
 # <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 レジストリ イベント スキーマは、Windows レジストリ エンティティの作成、変更、または削除の Windows アクティビティを記述するために使用されます。
 
@@ -69,7 +71,7 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 
 次のフィールドは、レコードごとに Log Analytics によって生成され、カスタム コネクタの作成時にオーバーライドできます。
 
-| フィールド         | Type     | 考察 (Discussion)      |
+| フィールド         | 型     | 考察 (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
@@ -85,7 +87,7 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 
 イベント フィールドは、すべてのスキーマに共通であり、アクティビティ自体とレポート デバイスを記述します。
 
-| フィールド               | クラス       | Type       |  説明        |
+| フィールド               | クラス       | 型       |  説明        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
 | **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
@@ -93,7 +95,7 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 | **EventEndTime**        | Mandatory   | エイリアス      |      [TimeGenerated](#timegenerated) フィールドの別名。    |
 | **EventType**           | Mandatory   | Enumerated |    レコードによってレポートされる操作を記述します。 <br><br>レジストリ レコードの場合、次の値がサポートされます。 <br>- `RegistryKeyCreated` <br>- `RegistryKeyDeleted`<br>- `RegistryKeyRenamed` <br>- `RegistryValueDeleted` <br>- `RegistryValueSet`|
 | **EventOriginalUid**    | オプション    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
-| **EventOriginalType**   | オプション    | String     |   ソースによって提供されている場合、元のイベントの種類または ID。<br><br>例: `4657`|
+| **EventOriginalType**   | オプション    | String     |   元のイベントの種類または ID (ソースによって提供されている場合)。<br><br>例: `4657`|
 | <a name ="eventproduct"></a>**EventProduct**        | Mandatory   | String     |             イベントを生成している製品。 <br><br>例: `Sysmon`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
 | **EventProductVersion** | オプション    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
 | **EventVendor**         | Mandatory   | String     |           イベントを生成している製品のベンダー。 <br><br>例: `Microsoft`  <br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。  |
@@ -115,7 +117,7 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 
 詳細については、Windows ドキュメントの[レジストリの構造](/windows/win32/sysinfo/structure-of-the-registry)に関するページを参照してください。
 
-| フィールド          | クラス        | Type       | 説明   |
+| フィールド          | クラス        | 型       | 説明   |
 |---------------|--------------|------------|-----------------|
 |<a name="registrykey"></a>**RegistryKey**     |     Mandatory    |   String      |操作に関連付けられたレジストリ キー。標準のルート キーの名前付け規則に正規化されます。 詳細については、「[ルート キー](#root-keys)」を参照してください。<br><br>レジストリ キーは、ファイル システムのフォルダーに似ています。 <br><br>例: `HKEY_LOCAL_MACHINE\SOFTWARE\MTG`        |
 |**RegistryValue**     |    推奨     |  String       |操作に関連付けられたレジストリ値。 レジストリ値は、ファイル システムのファイルに似ています。 <br><br>例: `Path`        |
@@ -176,4 +178,4 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 - [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
 - [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
 - [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](normalization-schema.md)
+- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)

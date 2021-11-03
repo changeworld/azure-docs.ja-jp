@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 6c3e4de61d59841f2856af2194ec22a63b407b5c
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8ac52d1c861ec41600ae882a4e12becb56619595
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185437"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075488"
 ---
 # <a name="authenticate-playbooks-to-azure-sentinel"></a>Azure Sentinel に対してプレイブックを認証する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Logic Apps の動作のしくみは、Azure Sentinel 自体を含めて、連携するすべての種類のすべてのリソースに対し、独立した接続を持ち、個別に認証する必要があります。 Azure Logic Apps は、この目的で、各リソースの種類に独自のコネクタを持つ[専用のコネクタ](/connectors/connector-reference/)を使用します。 このドキュメントでは、[Azure Logic Apps Azure Sentinel コネクタ](/connectors/azuresentinel/)での接続と認証の種類について説明します。これは、プレイブックがワークスペースのテーブル内の情報にアクセスするための Microsoft Azure Sentinel との対話に使用できます。
 

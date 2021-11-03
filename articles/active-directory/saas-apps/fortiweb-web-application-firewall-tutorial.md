@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
-ms.openlocfilehash: c8e79373a4a3823ec616adec4a5c29d782b60913
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 288efa59cfd423baf83d1f15c817381db8033c72
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124747080"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortiweb-web-application-firewall"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiWeb Web Application Firewall の統合
 
@@ -76,13 +76,13 @@ FortiWeb Web Application Firewall に対して Azure AD SSO を構成してテ�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
 
-    b. **[応答 URL]** ボックスに、`https://www.<CUSTOMER_DOMAIN>.com/<FORTIWEB_NAME>/saml.sso/SAML2/POST` のパターンを使用して URL を入力します
+    1. **[応答 URL]** ボックスに、`https://www.<CUSTOMER_DOMAIN>.com/<FORTIWEB_NAME>/saml.sso/SAML2/POST` のパターンを使用して URL を入力します
 
-    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.<CUSTOMER_DOMAIN>.com`
 
-    d. **[ログアウト URL]** テキスト ボックスに、`https://www.<CUSTOMER_DOMAIN>.info/<FORTIWEB_NAME>/saml.sso/SLO/POST` のパターンを使用して URL を入力します。
+    1. **[ログアウト URL]** テキスト ボックスに、`https://www.<CUSTOMER_DOMAIN>.info/<FORTIWEB_NAME>/saml.sso/SLO/POST` のパターンを使用して URL を入力します。
  
     > [!NOTE]
     > `<FORTIWEB_NAME>` は、後で FortiWeb に対して構成を指定するときに使用される名前識別子です。
@@ -91,7 +91,6 @@ FortiWeb Web Application Firewall に対して Azure AD SSO を構成してテ�
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

@@ -8,16 +8,18 @@ ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
-ms.custom: ''
+ms.custom: ignite-fall-2021
 ms.date: 01/14/2021
-ms.openlocfilehash: 4601f2d6eddbbe8809dfd46a7e0cc5aa3c40c722
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: b70c04724fa947ed8659b71845543abf5012cca2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209572"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023293"
 ---
 # <a name="data-source-schema-reference"></a>データ ソース スキーマ リファレンス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、サポートされている Azure とサードパーティのデータ ソース スキーマの一覧と、リファレンス ドキュメントへのリンクを示します。
 

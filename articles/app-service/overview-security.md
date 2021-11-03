@@ -5,12 +5,12 @@ keywords: azure app service, web アプリ, モバイル アプリ, api アプ�
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: d661781d7eea0b5627dcab13648422003c82e0a4
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c4c69ba78460f8a629848717da6bb76a782d1aa2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130220465"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045560"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -55,7 +55,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 バックエンド サービスに対して認証する場合、App Service には必要に応じて 2 つの異なるメカニズムが用意されています。
 
-- **サービス ID** - アプリ自体の ID を使用してリモート リソースにサインインします。 App Service を使用すると、[マネージド ID](overview-managed-identity.md) を簡単に作成できます。この ID は、[Azure SQL Database](/azure/sql-database/)、[Azure Key Vault](../key-vault/index.yml) などの他のサービスで認証するために使用できます。 この方法のエンドツーエンドのチュートリアルについては、「[マネージド ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護](app-service-web-tutorial-connect-msi.md)」を参照してください。
+- **サービス ID** - アプリ自体の ID を使用してリモート リソースにサインインします。 App Service を使用すると、[マネージド ID](overview-managed-identity.md) を簡単に作成できます。この ID は、[Azure SQL Database](/azure/sql-database/)、[Azure Key Vault](../key-vault/index.yml) などの他のサービスで認証するために使用できます。 この方法のエンドツーエンドのチュートリアルについては、「[マネージド ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護](tutorial-connect-msi-sql-database.md)」を参照してください。
 - **代理 (OBO)** - ユーザーの代理でリモート リソースへの委任されたアクセスを行います。 Azure Active Directory を認証プロバイダーとして使用すると、App Service アプリは、[Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) や App Service のリモート API アプリなどのリモート サービスへの委任されたサインインを実行できます。 この方法のエンドツーエンドのチュートリアルについては、「[Linux 用 Azure App Service でユーザーをエンドツーエンドで認証および承認する](tutorial-auth-aad.md)」を参照してください。
 
 ## <a name="connectivity-to-remote-resources"></a>リモート リソースへの接続性

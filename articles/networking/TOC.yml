@@ -50,7 +50,7 @@
             - name: Azure のネットワーク待ち時間
               href: azure-network-latency.md
             - name: Azure でのインターネット ルーティング設定
-              href: ../virtual-network/routing-preference-overview.md
+              href: ../virtual-network/ip-services/routing-preference-overview.md
         - name: セキュリティ
           items:
             - name: Azure Policy によるセキュリティ制御

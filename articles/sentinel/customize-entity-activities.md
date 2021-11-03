@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 4b906e9c9fc72cd44513969c316900b190aa5a76
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6fd6db5b75124552bff3f48a516cd352d817cf27
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689226"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055219"
 ---
 # <a name="customize-activities-on-entity-page-timelines"></a>エンティティ ページのタイムラインのアクティビティをカスタマイズする
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >

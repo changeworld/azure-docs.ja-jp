@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 591d248bed623a31d9c120ae669615efa5c5544d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 81407a3f705668abe03f7cfbdc03fa205d19e108
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763255"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060811"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel ワークスペース デプロイを計画するときに、Log Analytics ワークスペースのアーキテクチャも設計する必要があります。 ワークスペースのアーキテクチャに関する決定は、通常、ビジネスと技術面の要件により主導されます。 この記事では、組織にとって適切なワークスペースのアーキテクチャを決定するのに役立つ、以下を含む主な決定要因について説明します。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: ab2e9c691f17b8f0891ecbc82ff42cd3529a1328
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f862f6f467d491d1aeb992a0e918244bde40a0d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031193"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051403"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>データ コレクター API によるデータ パイプラインの作成
 
@@ -129,18 +129,18 @@ Logic Apps を使えば JSON データは簡単に取り込むことができ、
 
 ![Logic Apps ワークフロー全体の例](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
-## <a name="testing-the-pipeline"></a>パイプラインのテスト
+## <a name="testing-the-pipeline&quot;></a>パイプラインのテスト
 では、先ほど構成した BLOB に新しいファイルをアップロードし、ロジック アプリで監視してみましょう。 間もなく、ロジック アプリの新しいインスタンスが起動し、Azure 関数を呼び出した後、データを Azure Monitor に正常に送信したことを確認できます。 
 
 >[!NOTE]
 >新しい種類のデータを初めて送信するときは、Azure Monitor にデータが表示されるまでに最大 30 分程度かかる場合があります。
 
 
-## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights 内の他のデータと関連付ける
+## <a name=&quot;correlating-with-other-data-in-log-analytics-and-application-insights&quot;></a>Log Analytics と Application Insights 内の他のデータと関連付ける
 カスタム データ ソースから取り込んだ人口データに Application Insights のページ ビュー データを関連付けるという目標を達成するために、Application Insights の分析ウィンドウまたは Log Analytics ワークスペースから次のクエリを実行します。
 
 ``` KQL
-app("fabrikamprod").pageViews
+app(&quot;fabrikamprod").pageViews
 | summarize numUsers = count() by client_CountryOrRegion
 | join kind=leftouter (
    workspace("customdatademo").Population_CL

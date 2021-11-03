@@ -5,12 +5,13 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: ea0a02366f2c2d2c3fd656d9a6dbce111d632422
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bdbc77bdb1b0b16085c6df8fb302c5483c36a01f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121211"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080690"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
@@ -23,19 +24,9 @@ ms.locfileid: "112121211"
 
 ## <a name="prerequisites"></a>前提条件
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 > * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください。
 > * Azure portal で作成された [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
 > * 新しい [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)をセットアップします
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-> * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください。
-> * Azure portal でカスタム質問と回答機能が有効になっている [Text Analytics リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、Text Analytics リソース名を覚えておいてください。
-> * [カスタム質問と回答](../How-To/set-up-qnamaker-service-azure.md)のセットアップ
-
----
 
 ## <a name="export-a-knowledge-base"></a>ナレッジ ベースをエクスポートする
 1. [QnA Maker ポータル](https://qnamaker.ai)にサインインします。

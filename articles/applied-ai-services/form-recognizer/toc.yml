@@ -16,10 +16,10 @@ items:
     items:
       - name: Form Recognizer v2.1
         items:
-          - name: Form Recognizer ラベル付けツール
+          - name: サンプル ラベル付けツール
             href: quickstarts/try-sample-label-tool.md
           - name: クライアント ライブラリと REST API
-            href: quickstarts/try-sdk-rest-api.md
+            href: quickstarts/get-started-sdk-rest-api.md
       - name: Form Recognizer v3.0 | プレビュー
         items:
           - name: Form Recognizer Studio (プレビュー)
@@ -28,8 +28,58 @@ items:
             href: quickstarts/try-v3-rest-api.md
           - name: C# SDK (プレビュー)
             href: quickstarts/try-v3-csharp-sdk.md
+          - name: Java SDK (プレビュー)
+            href: quickstarts/try-v3-java-sdk.md
+          - name: JavaScript SDK (プレビュー)
+            href: quickstarts/try-v3-javascript-sdk.md
           - name: Python SDK (プレビュー)
             href: quickstarts/try-v3-python-sdk.md
+  - name: 操作方法ガイド
+    items:
+      - name: Form Recognizer v3.0 (プレビュー) への移行
+        href: v3-migration-guide.md
+      - name: SDK と REST API を使う
+        href: how-to-guides/try-sdk-rest-api.md
+      - name: Azure BLOB コンテナーの SAS トークンを生成する
+        href: generate-sas-tokens.md
+      - name: カスタム モデル
+        items:
+          - name: カスタム モデルを構築してトレーニングする
+            items:
+              - name: トレーニング データ セットを集める
+                href: build-training-data-set.md
+              - name: サンプル ラベル付けツールのデプロイ
+                href: deploy-label-tool.md
+              - name: サンプル ラベル付けツールを使用してカスタム モデルをトレーニングする
+                href: label-tool.md
+              - name: テーブル タグを使用したカスタム フォーム モデルのトレーニング
+                href: supervised-table-tags.md
+          - name: カスタム モデルを作成する
+            href: compose-custom-models.md
+      - name: モデルのバックアップと復旧
+        href: disaster-recovery.md
+      - name: コンテナーの使用
+        items:
+          - name: コンテナーのインストールと実行
+            displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+            href: containers/form-recognizer-container-install-run.md
+          - name: コンテナーを構成する
+            href: containers/form-recognizer-container-configuration.md
+            displayName: 'docker, container, run, billing, apikey, logging'
+          - name: コンテナー イメージ タグ
+            href: containers/form-recognizer-container-image-tags.md
+          - name: Container Instances の使用
+            href: ../../cognitive-services/containers/azure-container-instance-recipe.md
+      - name: エンタープライズ対応
+        items:
+          - name: 仮想ネットワークの設定
+            href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/form-recognizer/context/context
+          - name: マネージド ID の作成と使用
+            href: managed-identity-byos.md
+          - name: カスタマー マネージド キーを使用する
+            href: encrypt-data-at-rest.md
+          - name: Azure AD 認証を使用する
+            href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/form-recognizer/context/context
   - name: サンプル
     items:
       - name: C#/.NET
@@ -52,48 +102,6 @@ items:
         href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/applied-ai-services/form-recognizer/context/context
       - name: データ、プライバシー、セキュリティ
         href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
-  - name: 操作方法ガイド
-    items:
-      - name: Form Recognizer v3.0 (プレビュー) への移行
-        href: v3-migration-guide.md
-      - name: Azure BLOB コンテナーの SAS トークンを生成する
-        href: generate-sas-tokens.md
-      - name: カスタム モデルを構築してトレーニングする
-        items:
-          - name: トレーニング データ セットを集める
-            href: build-training-data-set.md
-          - name: サンプル ラベル付けツールのデプロイ
-            href: deploy-label-tool.md
-          - name: サンプル ラベル付けツールを使用してカスタム モデルをトレーニングする
-            href: label-tool.md
-          - name: テーブル タグを使用したカスタム フォーム モデルのトレーニング
-            href: supervised-table-tags.md
-      - name: カスタム モデルを作成する
-        href: compose-custom-models.md
-      - name: コンテナーの使用
-        items:
-          - name: コンテナーのインストールと実行
-            displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
-            href: containers/form-recognizer-container-install-run.md
-          - name: コンテナーを構成する
-            href: containers/form-recognizer-container-configuration.md
-            displayName: 'docker, container, run, billing, apikey, logging'
-          - name: コンテナー イメージ タグ
-            href: containers/form-recognizer-container-image-tags.md
-          - name: Container Instances の使用
-            href: ../../cognitive-services/containers/azure-container-instance-recipe.md
-      - name: モデルのバックアップと復旧
-        href: disaster-recovery.md
-      - name: エンタープライズ対応
-        items:
-          - name: 仮想ネットワークの設定
-            href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/form-recognizer/context/context
-          - name: マネージド ID の作成と使用
-            href: managed-identity-byos.md
-          - name: カスタマー マネージド キーを使用する
-            href: encrypt-data-at-rest.md
-          - name: Azure AD 認証を使用する
-            href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/form-recognizer/context/context
   - name: 概念
     items:
       - name: モデルの概要
@@ -116,19 +124,19 @@ items:
         href: concept-custom.md
   - name: チュートリアル
     items:
-      - name: Azure Form Recognizer と AI Builder を使用する
+      - name: Azure Form Recognizer と AI Builder のワークフロー
         expanded: true
         items:
-          - name: カスタム フォーム処理ワークフロー
+          - name: Custom
             href: /ai-builder/create-form-processing-model?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
-          - name: 名刺処理ワークフロー
-            href: /ai-builder/flow-business-card-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
-          - name: 身分証明書処理ワークフロー
-            href: /ai-builder/id-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/cognitive-services/applied-ai-services/breadcrumb/toc.json
-          - name: 請求書処理ワークフロー
+          - name: 請求書
             href: /ai-builder/flow-invoice-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
-          - name: レシート処理ワークフロー
+          - name: Receipt
             href: /ai-builder/flow-receipt-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+          - name: 身分証明書
+            href: /ai-builder/id-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/cognitive-services/applied-ai-services/breadcrumb/toc.json
+          - name: 名刺
+            href: /ai-builder/flow-business-card-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
       - name: Cognitive Search で Azure Form Recognizer を使用する
         href: ../../search/cognitive-search-custom-skill-form.md
       - name: Azure Functions で Azure Form Recognizer を使用する

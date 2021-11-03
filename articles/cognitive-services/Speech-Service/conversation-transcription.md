@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: pafarley
-ms.openlocfilehash: abef7e44ad2e15bda230d28e8dae74a3fd949f88
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 993cc1105c476f3581fd996be5c1aa6aa7c0c590
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706333"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056703"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
 
@@ -54,7 +55,7 @@ ms.locfileid: "129706333"
 
 ## <a name="expected-inputs"></a>想定される入力
 
-- **マルチチャンネル オーディオ ストリーム** - 仕様と設計の詳細については、[Microsoft Speech Device SDK マイク](./speech-devices-sdk-microphone.md)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](./get-speech-devices-sdk.md)に関するページを参照してください。
+- **マルチチャンネル オーディオ ストリーム** - 仕様と設計の詳細については、[Microsoft Speech Device SDK マイク](./speech-sdk-microphone.md)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](./get-speech-devices-sdk.md)に関するページを参照してください。
 - **ユーザーの音声サンプル** - 会話の文字起こしには、話者識別の会話の前にユーザー プロファイルが必要です。 各ユーザーからオーディオ録音を収集し、[署名生成サービス](https://aka.ms/cts/signaturegenservice)にその録音を送信して、音声を検証し、ユーザー プロファイルを生成する必要があります。
 
 > [!NOTE]

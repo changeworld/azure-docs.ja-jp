@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 60e92f28d36f9dd4e08338ac90b703f9536cf767
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 057338f70c4ced4156ab1e89119fa963e7cd8c28
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726072"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064527"
 ---
 # <a name="classify-and-analyze-data-using-entities-in-azure-sentinel"></a>Azure Sentinel でエンティティを使用してデータを分類および分析する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="what-are-entities"></a>エンティティとは
 

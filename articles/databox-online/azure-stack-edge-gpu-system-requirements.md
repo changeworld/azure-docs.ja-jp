@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 2cacb9a975dba536fc4744a24ea26ec1083b5668
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b79f878b7149bb41732f924c657f711f9bdf3128
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827042"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033116"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
@@ -85,6 +85,17 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。|
 
 詳細は、[IoT Edge デプロイのファイアウォール規則とポート構成規則](../iot-edge/troubleshoot.md)を参照してください。
+
+
+### <a name="port-requirements-for-kubernetes-on-azure-stack-edge"></a>Azure Stack Edge での Kubernetes のポート要件
+
+| ポート番号 | インまたはアウト | ポート範囲 | 必須 | ガイダンス |
+|----------|-----------|------------|----------|----------|
+| TCP 31000 (HTTPS)| /       | LAN        | 場合によっては。 <br> 「ノート」を参照してください。      |このポートは、Kubernetes ダッシュボードに接続してデバイスを監視する場合にのみ必要です。 |
+| TCP 6443 (HTTPS)| /       | LAN        | 場合によっては。 <br> 「ノート」を参照してください。       |このポートは、Kubernetes APIサーバーがデバイスへのアクセスに使用する場合のみ必要となります。 |
+
+> [!IMPORTANT]
+> データセンターのファイアウォールが、発信元 IPアドレスまたは MAC アドレスに基づいてトラフィックを制限またはフィルター処理している場合は、コンピューティングIP (Kubernetes node Ip) と MAC アドレスが許可リストに含まれていることを確認してください。 MAC アドレスを指定するには、 `Set-HcsMacAddressPool` デバイスの PowerShell インターフェイスでコマンドレットを実行します。
 
 ## <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 

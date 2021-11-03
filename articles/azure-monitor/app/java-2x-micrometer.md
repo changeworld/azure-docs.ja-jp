@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.date: 11/01/2018
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 20d43fca48bfcdf264ae7c008c5fa406b7d5d719
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 10ef93c1e977c86059365a1d08e312f1d72e312d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133939"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078904"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Azure Application Insights Java SDK で Micrometer を使用する方法 (非推奨)
 
@@ -33,7 +33,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 1. Spring Boot アプリケーションの pom.xml ファイルを更新し、次の依存関係を追加します。
 
-    ```XML
+    ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
@@ -71,7 +71,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 1. Spring Boot アプリケーションの pom.xml ファイルを更新し、次の依存関係を追加します。
 
-    ```XML
+    ```xml
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
@@ -130,7 +130,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 1. 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。
 
-    ```XML
+    ```xml
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-azure-monitor</artifactId>
@@ -146,7 +146,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 2. リソース フォルダーに `ApplicationInsights.xml` ファイルを置く:
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 

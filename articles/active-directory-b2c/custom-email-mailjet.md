@@ -3,21 +3,21 @@ title: Mailjet を使用するカスタム メール確認
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 対応アプリケーションを使用する目的で新規登録した顧客に送信される確認メールをカスタマイズするために、Mailjet と統合する方法について学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c8b7a30cfa47634aeb2eace9ee1c8d3ad2d388c9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0a7f91b540e06ba0b973bf5aeb9f790a58410ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128564255"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007427"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -37,15 +37,14 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 ## <a name="create-a-mailjet-account"></a>Mailjet アカウントを作成する
 
-まだお持ちでない場合は、まず、Mailjet アカウントを設定してください (Azure のお客様は、電子メールの上限が 200/日である 6,000 の電子メールを使用できます)。 
+まだお持ちでない場合は、まず、Mailjet アカウントを設定してください (Azure のお客様は、電子メールの上限が 200/日である 6,000 の電子メールを使用できます)。
 
 1. [Mailjet アカウントの作成](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)に関するページの設定手順に従います。
 1. 電子メールを送信できるようにするには、送信者のメール アドレスまたはドメインを[登録して確認](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)します。
-2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
+2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。
 
 > [!IMPORTANT]
 > Mailjet によって、共有 IP アドレスと[専用 IP アドレス](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)から電子メールを送信する機能が顧客に提供されます。 専用 IP アドレスを使用する場合は、IP アドレスのウォームアップを使用して、独自の評判を適切に築く必要があります。 詳細については、「[IP をウォームアップする方法](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-)」を参照してください。
-
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
@@ -156,7 +155,6 @@ Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリ�
                        <td width="24" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
                        <td id="PageFooterContainer" width="585" valign="top" colspan="6" style="border-bottom:1px solid #e3e3e3;padding:0px;">
 
-
                        </td>
 
                        <td width="29" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
@@ -180,14 +178,13 @@ Mailjet アカウントを作成し、Mailjet API キーを Azure AD B2C ポリ�
 1. 右上の **[Save & Publish]\(保存して発行\)** を選択してから、 **[Yes, publish changes]\(はい、変更を発行します\)** を選びます
 1. 後の手順で使用するために、作成したテンプレートの **テンプレート ID** を記録します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
 
-
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C の要求の種類を追加する
 
 ポリシーで、`<BuildingBlocks>` 内の `<ClaimsSchema>` 要素に次の要求の種類を追加します。
 
 これらの要求の種類は、ワンタイム パスワード (OTP) コードを利用してメール アドレスを生成し、検証するために必要です。
 
-```XML
+```xml
 <!--
 <BuildingBlocks>
   <ClaimsSchema> -->
@@ -222,7 +219,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 * `Messages.0.From.Email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。
 * `Messages.0.Subject` 件名入力パラメーターの値を組織に適切な件名で更新します。
 
-```XML
+```xml
 <!-- 
 <BuildingBlocks>
   <ClaimsTransformations> -->
@@ -256,7 +253,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 `<BuildingBlocks>` 内の要求変換の下で、バージョン 2.1.2 データ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
-```XML
+```xml
 <!--
 <BuildingBlocks> -->
   <ContentDefinitions>
@@ -286,7 +283,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 引き続きコンテンツ定義の下の `<BuildingBlocks>` 内で、種類が [VerificationControl](display-control-verification.md) の次の [DisplayControl](display-controls.md) をポリシーに追加します。
 
-```XML
+```xml
 <!--
 <BuildingBlocks> -->
   <DisplayControls>
@@ -326,7 +323,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 
-```XML
+```xml
 <!--
 <ClaimsProviders> -->
   <ClaimsProvider>
@@ -374,7 +371,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 
 OTP 技術プロファイルの場合と同様に、次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>RestfulProvider</DisplayName>
   <TechnicalProfiles>
@@ -408,7 +405,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 詳細については、[セルフアサート技術プロファイル](restful-technical-profile.md)に関するページと「[DisplayControl](display-controls.md)」を参照してください。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -454,7 +451,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 1. 次の XML スニペットの入力要求を使用するように `GenerateEmailRequestBody` 要求変換を変更します。
 1. Azure AD B2C によってローカライズされるすべての文字列の代わりに、動的パラメーターが使用されるように、お使いの Mailjet テンプレートを更新します。
 
-    ```XML
+    ```xml
     <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -550,12 +547,12 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
-    
+
 ## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
 
-Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。 
+Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。
 
-```XML
+```xml
 <LocalizedResources Id="api.custom-email.en">
   <LocalizedStrings>
     ...

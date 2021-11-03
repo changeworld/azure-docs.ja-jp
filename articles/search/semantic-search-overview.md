@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 9df6e2c1bd937f275fb3b35db8cd6ac2e3909502
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 7d7eb6bae2a6000f2f117dbe8f38976a13504825
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532874"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014806"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのセマンティック検索
 
@@ -36,7 +36,7 @@ ms.locfileid: "129532874"
 
 セマンティック検索は、検索結果の品質を向上させる機能のコレクションです。 検索サービスで有効にすると、クエリの実行パイプラインに 2 つの機能が追加されます。 1 つ目として、最初の結果セットに対する二次ランク付けが追加され、セマンティック的に最も関連性の高い結果が一覧の先頭にレベル上げされます。 2 つ目として、キャプションと回答が抽出されて応答で返されます。これを検索ページにレンダリングして、ユーザーの検索エクスペリエンスを向上させることができます。
 
-| 特徴量 | 説明 |
+| 機能 | 説明 |
 |---------|-------------|
 | [セマンティックの再ランク付け](semantic-ranking.md) | コンテキストまたはセマンティックの意味を利用して、既存の結果に対して新しい関連スコアを計算します。 |
 | [セマンティック キャプションとハイライト](semantic-how-to-query-request.md) | コンテンツを最もよく要約している文やフレーズをドキュメントから抽出し、スキャンを簡単にするために重要な部分を強調表示します。 結果を要約するキャプションは、個々のコンテンツ フィールドが結果ページに対して高密度である場合に便利です。 強調表示されたテキストにより、最も関連性の高い用語とフレーズが目立つため、ユーザーはその一致が関連していると見なされた理由を迅速に判断できます。 |
@@ -90,7 +90,9 @@ ms.locfileid: "129532874"
 | 機能 | レベル | リージョン | サインアップ | 価格 |
 |---------|------|--------|---------------------|-------------------|
 | セマンティック検索 (ランク、キャプション、ハイライト、回答) | スタンダード レベル (S1、S2、S3) | 米国中北部、米国西部、米国西部 2、米国東部 2、北ヨーロッパ、西ヨーロッパ | 必須 | [Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)  |
-| スペル チェック | Basic 以上 | All | なし | なし (無料) |
+| スペル チェック | Basic<sup>1</sup> 以上  | All | なし | なし (無料) |
+
+<sup>1</sup> 共有 (無料) 検索サービスのプロビジョニングの仕組みや有効期間により、少数のサービスで無料のスペルチェックが発生します。 ただし、無料のスペルチェックの利用は保証されておらず、すでに存在しない場合は追加できません。
 
 セマンティック検索の料金は、"queryType=semantic" を含む、検索文字列が空でないクエリ要求 (たとえば "search=pet friendly hotels in new york") を使用した場合に発生します。 検索文字が空の場合 ("search=*")、queryType が "semantic" に設定されていても課金されません。
 
@@ -118,7 +120,7 @@ PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups
 セマンティック検索を再び有効にするには、上記の要求を再実行し、"semanticSearch" を "free" (既定値) か "standard" に設定します。
 
 > [!TIP]
-> Management REST API 呼び出しは、Azure Active Directory を介して認証されます。 セキュリティ プリンシパルと要求の設定に関するガイダンスについては、ブログ記事「[Azure REST APIs with Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)」(Postman を使用した Azure REST API (2021)) を参照してください。 前の例は、このブログ記事に記載されている命令と Postman コレクションを使用してテストされています。
+> Management REST API 呼び出しは、Azure Active Directory を介して認証されます。 セキュリティの原則と要求の設定に関するガイダンスについては、ブログ記事「[Postman を使用した Azure REST API (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)」を参照してください。 前の例は、このブログ記事に記載されている手順と Postman コレクションを使用してテストされています。
 
 ## <a name="next-steps"></a>次のステップ
 

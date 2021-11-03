@@ -6,16 +6,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/05/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 818ab11d64468a945d85f5b15f6b39dc1664a424
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 8569826c548e768e593e024af38b8b937ee02ca2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536228"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058732"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>チュートリアル:Azure SQL Database を使用して Azure に ASP.NET アプリをデプロイする
 
-<bpt id="p1">[</bpt>Azure App Service<ept id="p1">](overview.md)</ept> は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、App Service でデータ主導の ASP.NET アプリをデプロイし、それを <bpt id="p1">[</bpt>Azure SQL Database<ept id="p1">](../azure-sql/database/sql-database-paas-overview.md)</ept> に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、App Service でデータ主導の ASP.NET アプリをデプロイし、それを <bpt id="p1">[</bpt>Azure SQL Database<ept id="p1">](../azure-sql/database/sql-database-paas-overview.md)</ept> に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
 
 ![Azure App Service に発行された ASP.NET アプリケーション](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "129536228"
 
 1. デバッグせずにアプリを実行するには、<ph id="ph1">`Ctrl+F5`</ph> キーを押します。 アプリが既定のブラウザーに表示されます。
 
-1. <bpt id="p1">**</bpt>[新規作成]<ept id="p1">**</ept> リンクを選択し、いくつかの <bpt id="p2">*</bpt>To Do<ept id="p2">*</ept> アイテムを作成します。
+1. **[新規作成]** リンクを選択し、いくつかの *To Do* アイテムを作成します。
 
     ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
@@ -112,14 +112,14 @@ ms.locfileid: "129536228"
    | 設定  | 推奨値 | 詳細情報 |
    | ----------------- | ------------ | ----|
    |<bpt id="p1">**</bpt>App Service プラン<ept id="p1">**</ept>| myAppServicePlan | <bpt id="p1">[</bpt>App Service プラン<ept id="p1">](../app-service/overview-hosting-plans.md)</ept> |
-   |<bpt id="p1">**</bpt>場所<ept id="p1">**</ept>| 西ヨーロッパ | <bpt id="p1">[</bpt>Azure リージョン<ept id="p1">](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)</ept> |
-   |<bpt id="p1">**</bpt>[サイズ]<ept id="p1">**</ept>| Free | <bpt id="p1">[</bpt>価格レベル<ept id="p1">](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)</ept>|
+   |**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+   |**[サイズ]**| Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
    ![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
 1. <bpt id="p1">**</bpt>[作成]<ept id="p1">**</ept> をクリックして、Azure リソースが作成されるまで待ちます。
 
-1. 構成したリソースが <bpt id="p1">**</bpt>[発行]<ept id="p1">**</ept> ダイアログに表示されます。 <bpt id="p1">**</bpt>[完了]<ept id="p1">**</ept> をクリックします。
+1. 構成したリソースが <bpt id="p1">**</bpt>[発行]<ept id="p1">**</ept> ダイアログに表示されます。 **[完了]** をクリックします。
 
    ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "129536228"
    > [!IMPORTANT]
    > (Visual Studio および App Service で) 接続文字列のパスワードがマスクされていても、それがどこかに保持されているのは事実であり、アプリの攻撃対象領域が増えることになります。 App Service では、<bpt id="p1">[</bpt>マネージド サービス ID<ept id="p1">](overview-managed-identity.md)</ept> を使用して、コードやアプリの構成にシークレットを保持する必要性をなくすことで、このリスクを排除できます。 詳細については、「<bpt id="p1">[</bpt>次のステップ<ept id="p1">](#next-steps)</ept>」を参照してください。
 
-1. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> をクリックします。
+1. **[OK]** をクリックします。
 
 1. <bpt id="p1">**</bpt>[Azure SQL Database]<ept id="p1">**</ept> ダイアログの <bpt id="p2">**</bpt>[データベース名]<ept id="p2">**</ept> は、生成された既定の名前のままにします。 <bpt id="p1">**</bpt>[作成]<ept id="p1">**</ept> を選択して、データベース リソースが作成されるまで待ちます。
 
@@ -231,7 +231,7 @@ Entity Framework Code First Migrations の使用方法の詳細については�
 
 #### <a name="update-your-data-model"></a>データ モデルを更新する
 
-コード エディターで <bpt id="p1">_</bpt>Models\Todo.cs<ept id="p1">_</ept> を開きます。 <ph id="ph1">`ToDo`</ph> クラスに次のプロパティを追加します。
+コード エディターで <bpt id="p1">_</bpt>Models\Todo.cs<ept id="p1">_</ept> を開きます。 `ToDo` クラスに次のプロパティを追加します。
 
 ```csharp
 public bool Done { get; set; }
@@ -267,11 +267,11 @@ public bool Done { get; set; }
 
 #### <a name="use-the-new-property"></a>新しいプロパティを使用する
 
-<ph id="ph1">`Done`</ph> プロパティを使用するために、コードにいくつかの変更を加えます。 このチュートリアルでは、わかりやすくするために <ph id="ph1">`Index`</ph> ビューと <ph id="ph2">`Create`</ph> ビューのみを変更して、実際のプロパティを確認します。
+<ph id="ph1">`Done`</ph> プロパティを使用するために、コードにいくつかの変更を加えます。 このチュートリアルでは、わかりやすくするために `Index` ビューと `Create` ビューのみを変更して、実際のプロパティを確認します。
 
 1. <bpt id="p1">_</bpt>Controllers\TodosController.cs<ept id="p1">_</ept> を開きます。
 
-1. 52 行目にある <ph id="ph1">`Create()`</ph> メソッドを探し、<ph id="ph3">`Bind`</ph> 属性内のプロパティの一覧に <ph id="ph2">`Done`</ph> を追加します。 完了すると、<ph id="ph1">`Create()`</ph> メソッドのシグネチャは次のコードのようになります。
+1. 52 行目にある <ph id="ph1">`Create()`</ph> メソッドを探し、<ph id="ph3">`Bind`</ph> 属性内のプロパティの一覧に <ph id="ph2">`Done`</ph> を追加します。 完了すると、`Create()` メソッドのシグネチャは次のコードのようになります。
 
     ```csharp
     public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
@@ -295,7 +295,7 @@ public bool Done { get; set; }
     
 1. <bpt id="p1">_</bpt>Views\Todos\Index.cshtml<ept id="p1">_</ept> を開きます。
 
-1. 空の <ph id="ph1">`<th></th>`</ph> 要素を探します。 この要素のすぐ上に、次の Razor コードを追加します。
+1. 空の `<th></th>` 要素を探します。 この要素のすぐ上に、次の Razor コードを追加します。
 
     ```csharp
     <th>
@@ -311,11 +311,11 @@ public bool Done { get; set; }
     </td>
     ```
     
-    これだけで、<ph id="ph1">`Index`</ph> ビューと <ph id="ph2">`Create`</ph> ビューの変更を確認できます。
+    これだけで、`Index` ビューと `Create` ビューの変更を確認できます。
 
 1. <ph id="ph1">`Ctrl+F5`</ph> キーを押してアプリを実行します。
 
-これで、To Do 項目を追加し、 <bpt id="p1">**</bpt>[完了]<ept id="p1">**</ept> チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 <ph id="ph1">`Edit`</ph> ビューを変更していないため、<ph id="ph3">`Edit`</ph> ビューには <ph id="ph2">`Done`</ph> フィールドが表示されないことに注意してください。
+これで、To Do 項目を追加し、 **[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
 
 #### <a name="enable-code-first-migrations-in-azure"></a>Azure で Code First Migrations を有効にする
 
@@ -355,7 +355,7 @@ Azure アプリから Visual Studio に、トレース メッセージを直接�
 
 #### <a name="enable-log-streaming"></a>ログ ストリーミングを有効にする
 
-1. <bpt id="p1">**</bpt>[表示]<ept id="p1">**</ept> メニューの <bpt id="p2">**</bpt>[Cloud Explorer]<ept id="p2">**</ept> を選択します。
+1. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 
 1. <bpt id="p1">**</bpt>Cloud Explorer<ept id="p1">**</ept> で、自分のアプリがある Azure サブスクリプションを展開し、 <bpt id="p2">**</bpt>[App Service]<ept id="p2">**</ept> を展開します。
 
@@ -377,7 +377,7 @@ Azure アプリから Visual Studio に、トレース メッセージを直接�
 
 1. アプリのポータル管理ページで、左側のメニューから <bpt id="p1">**</bpt>[App Service ログ]<ept id="p1">**</ept> を選択します。
 
-1. <bpt id="p1">**</bpt>[Application Logging (File System)]\(アプリケーション ログ記録 (ファイル システム)\)<ept id="p1">**</ept> の <bpt id="p3">**</bpt>[レベル]<ept id="p3">**</ept> から <bpt id="p2">**</bpt>[詳細]<ept id="p2">**</ept> を選択します。 <bpt id="p1">**</bpt>[保存]<ept id="p1">**</ept> をクリックします。
+1. <bpt id="p1">**</bpt>[Application Logging (File System)]\(アプリケーション ログ記録 (ファイル システム)\)<ept id="p1">**</ept> の <bpt id="p3">**</bpt>[レベル]<ept id="p3">**</ept> から <bpt id="p2">**</bpt>[詳細]<ept id="p2">**</ept> を選択します。 **[保存]** をクリックします。
 
     ![トレース レベルを [詳細] に変更する](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 

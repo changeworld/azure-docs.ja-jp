@@ -3,12 +3,12 @@ title: チュートリアル - 複数コンテナー グループをデプロイ
 description: このチュートリアルでは、複数のコンテナーを含むコンテナー グループを YAML ファイルと Azure CLI を使用して Azure Container Instances にデプロイする方法を説明します。
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 74269440357ee2d7ae36661618a31293346fa712
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dbd29d94aef06b60bf09639feb2215c5e9751ecd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771265"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024488"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
@@ -45,7 +45,7 @@ code deploy-aci.yaml
 
 この YAML ファイルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備える "myContainerGroup" というコンテナー グループが定義されます。 コンテナーは、パブリック Microsoft イメージからデプロイされます。 グループの最初のコンテナーでは、インターネットに接続する Web アプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、コンテナー グループのローカル ネットワークを介して最初のコンテナーで実行されている Web アプリケーションに定期的に HTTP 要求を行います。
 
-```YAML
+```yaml
 apiVersion: 2019-12-01
 location: eastus
 name: myContainerGroup
@@ -82,7 +82,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 プライベート コンテナー イメージ レジストリを使用するには、お使いの環境に合わせて変更された値を含む `imageRegistryCredentials` プロパティをコンテナー グループに追加します。
 
-```YAML
+```yaml
   imageRegistryCredentials:
   - server: imageRegistryLoginServer
     username: imageRegistryUsername

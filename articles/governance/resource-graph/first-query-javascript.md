@@ -3,15 +3,13 @@ title: クイック スタート:初めての JavaScript クエリ
 description: このクイックスタートでは、手順に従って、JavaScript 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
 ms.date: 07/09/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-js
-- mode-api
-ms.openlocfilehash: 9dc5068232e6ad19715535ba8e41cff213e23311
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: devx-track-js, mode-api
+ms.openlocfilehash: 9ff7237938deeebee33568fcb176fdde1b2275ef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459965"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068591"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>クイック スタート:JavaScript を使用して初めての Resource Graph クエリを実行する
 

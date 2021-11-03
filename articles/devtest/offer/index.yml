@@ -1,0 +1,61 @@
+### YamlMime:Hub
+title: Azure Dev/Test オファーのドキュメント
+summary: Visual Studio サブスクリプションの特典を使用して、Azure での開発とテストを追加料金なしで行う方法について説明します。 チュートリアル、操作方法など。
+metadata:
+  title: Azure Dev/Test オファーのドキュメント
+  description: Visual Studio サブスクリプションの特典を使用して、Azure での開発とテストを追加料金なしで行う方法について説明します。 チュートリアル、操作方法など。
+  ms.topic: hub-page
+  ms.collection: collection
+  ms.prod: visual-studio-windows
+  ms.author: jmartens
+  author: j-martens
+  ms.date: 10/06/2021
+  ms.custom: devtestoffer
+  adobe-target: true
+highlightedContent:
+  items:
+    - title: Azure Dev/Test オファーとは
+      itemType: overview
+      url: overview-what-is-devtest-offer-visual-studio.md
+    - title: Azure クレジットの使用を開始する
+      itemType: quickstart
+      url: quickstart-individual-credit.md
+    - title: エンタープライズおよび組織のサブスクリプションを作成する
+      itemType: quickstart
+      url: concepts-gitops-azure-devtest.md
+conceptualContent:
+  items:
+    - title: 個人向けの Azure Dev/Test オファー
+      links:
+        - url: ../../devtest/offer/quickstart-individual-credit.md
+          itemType: how-to-guide
+          text: Azure クレジットの使用を開始する
+        - url: ../../devtest/offer/how-to-add-users-directory.md
+          itemType: how-to-guide
+          text: ディレクトリにユーザーを追加する
+        - url: ../../devtest/offer/how-to-remove-credit-limits.md
+          itemType: how-to-guide
+          text: クレジットの制限を削除する
+        - url: ../../devtest/offer/how-to-sign-into-azure-with-github.md
+          itemType: how-to-guide
+          text: GitHub 資格情報を使用して Azure にサインインする
+        - url: ../../devtest/offer/how-to-change-directory-tenants-visual-studio-azure.md
+          itemType: how-to-guide
+          text: VSS Azure サブスクリプションを使用してディレクトリ テナントを変更する
+    - title: エンタープライズ向けの Azure Dev/Test オファー
+      links:
+        - url: ../../devtest/offer/quickstart-create-enterprise-devtest-subscriptions.md
+          itemType: how-to-guide
+          text: エンタープライズおよび組織のサブスクリプションを作成する
+        - url: ../../devtest/offer/concepts-gitops-azure-devtest.md
+          itemType: how-to-guide
+          text: Azure Dev/Test で GitOps を使用する
+        - url: ../../devtest/offer/how-to-manage-monitor-devtest.md
+          itemType: how-to-guide
+          text: Azure Dev/Test サブスクリプションを管理する
+        - url: ../../devtest/offer/how-to-manage-reliability-performance.md
+          itemType: how-to-guide
+          text: アプリケーションに信頼性を構築する
+        - url: ../../devtest/offer/concepts-security-governance-devtest.md
+          itemType: how-to-guide
+          text: セキュリティとガバナンス

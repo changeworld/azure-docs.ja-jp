@@ -1,21 +1,20 @@
 ---
 title: Azure Event Hubs スキーマ レジストリを作成する
 description: この記事では、Azure Event Hubs 名前空間にスキーマ レジストリを作成する方法について説明します。
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 06/01/2021
-ms.custom: references_regions
-ms.openlocfilehash: 360f81157f5431a6e6e70a25ef33e707c57cc91a
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: f15327c6e5f35dcdd37ee45222f351257c846f5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536608"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070843"
 ---
-# <a name="create-an-azure-event-hubs-schema-registry--preview"></a>Azure Event Hubs スキーマ レジストリを作成する (プレビュー)
+# <a name="create-an-azure-event-hubs-schema-registry"></a>Azure Event Hubs スキーマ レジストリを作成する
 この記事では、Azure Event Hubs によってホストされるスキーマ レジストリに、スキーマを含むスキーマ グループを作成する方法について説明します。 Azure Event Hubs のスキーマ レジストリ機能の概要については、「[Event Hubs の Azure スキーマ レジストリ](schema-registry-overview.md)」を参照してください。
 
 > [!NOTE]
-> - 現在、**Schema Registry** 機能は **プレビュー** 段階にあります。運用環境のワークロードにはお勧めできません。
 > - この機能は、**basic** レベルでは使用できません。
 > - イベント ハブが **仮想ネットワーク** にある場合、同じ仮想ネットワーク内の VM からポータルにアクセスしない限り、Azure portal にスキーマを作成することはできません。 
 
@@ -47,24 +46,24 @@ ms.locfileid: "129536608"
 
 1. **[スキーマ グループ]** ページで、ツールバーの **[+ スキーマ]** を選択します。 
 1. **[スキーマの作成]** ページで、こちらの手順を実行します。
-    1. スキーマの **名前** を入力します。
+    1. **[名前]** に「**orderschema**」と入力します。
     1. 次の **スキーマ** をテキスト ボックスにコピーします。 スキーマを含むファイルを選択することもできます。
     
         ```json
         {
-            "type": "record",
-            "name": "AvroUser",
-            "namespace": "com.azure.schemaregistry.samples",
-            "fields": [
-                {
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "name": "favoriteNumber",
-                    "type": "int"
-                }
-            ]
+          "namespace": "com.azure.schemaregistry.samples",
+          "type": "record",
+          "name": "Order",
+          "fields": [
+            {
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "type": "double"
+            }
+          ]
         }
         ```
     1. **［作成］** を選択します 
@@ -78,7 +77,7 @@ ms.locfileid: "129536608"
 
 ## <a name="create-a-new-version-of-schema"></a>新しいバージョンのスキーマを作成する
 
-1. テキスト ボックス内のスキーマを更新し、 **[検証]** を選択します。 次の例では、新しいフィールド `id` がスキーマに追加されています。 
+1. テキスト ボックス内のスキーマを更新し、 **[検証]** を選択します。 次の例では、新しいフィールド `description` がスキーマに追加されています。 
 
     :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="[スキーマの更新] ページが表示されている画像":::    
     
@@ -88,9 +87,8 @@ ms.locfileid: "129536608"
 1. **[スキーマの概要]** ページの **[バージョン]** で [`2`] が選択されていることがわかります。 
 
     :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="スキーマの新しいバージョンが表示された画像":::    
-1. [`1`] を選択すると、スキーマのバージョン 1 が表示されます。 
+1. `1` を選択し、スキーマのバージョン 1 を確認します。 
 
 
 ## <a name="next-steps"></a>次のステップ
 スキーマレジストリの詳細については、「[Event Hubs の Azure スキーマ レジストリ](schema-registry-overview.md)」を参照してください。
-

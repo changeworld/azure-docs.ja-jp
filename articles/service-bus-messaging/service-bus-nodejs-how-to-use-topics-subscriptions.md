@@ -6,15 +6,13 @@ ms.author: spelluru
 ms.date: 11/09/2020
 ms.topic: quickstart
 ms.devlang: nodejs
-ms.custom:
-- devx-track-js
-- mode-api
-ms.openlocfilehash: 13664e2a465ae891666e9c296514dc18a14ed191
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: devx-track-js, mode-api
+ms.openlocfilehash: 80401e1d5051ed324be329f17fca02cc802ce4a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950206"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004057"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-javascript"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (JavaScript)
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus トピックにメッセージを送信したり、そのトピックの Service Bus サブスクリプションからメッセージを受信したりする方法について説明します。

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: a0706962ea783e55eb92f8918b53ff5c355e1e6f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 60b60a0dcd8e7578f9adbde1e6a509516815e8c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121788198"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045256"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>クイック スタート:.NET Core と Azure Cosmos DB を使用して Cassandra アプリを構築する
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -39,7 +39,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 さらに、次のものが必要です。 
 * まだ Visual Studio 2019 をインストールしていない場合は、**無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
-* [Git](https://www.git-scm.com/) をインストールして例を複製します。
+* [Git](https://www.git-scm.com/) をインストールして例をクローンします。
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
@@ -49,7 +49,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-次は、コードを使った作業に移りましょう。 GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+次は、コードを使った作業に移りましょう。 GitHub から Cassandra API アプリをクローンし、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開きます。 `git-samples` という名前の新しいフォルダーを作成します。 その後、コマンド プロンプトを閉じます。
 
@@ -63,7 +63,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-core-getting-started.git
@@ -105,30 +105,30 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 * 新しいテーブルを作成します。
 
-   ```csharp
+  ```csharp
   await session.ExecuteAsync(new SimpleStatement("CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)"));
-   ```
+  ```
 
 * uprofile キースペースに接続する新しいセッションで IMapper オブジェクトを使用し、ユーザーのエンティティを挿入します。
 
-    ```csharp
-    await mapper.InsertAsync<User>(new User(1, "LyubovK", "Dubai"));
-    ```
+  ```csharp
+  await mapper.InsertAsync<User>(new User(1, "LyubovK", "Dubai"));
+  ```
 
 * すべてのユーザーの情報を取得するクエリを実行します。
 
-    ```csharp
-    foreach (User user in await mapper.FetchAsync<User>("Select * from user"))
-    {
-        Console.WriteLine(user);
-    }
-    ```
+  ```csharp
+  foreach (User user in await mapper.FetchAsync<User>("Select * from user"))
+  {
+      Console.WriteLine(user);
+  }
+  ```
 
 * 単一ユーザーの情報を取得するクエリを実行します。
 
-    ```csharp
-    mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
-    ```
+  ```csharp
+  mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
+  ```
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 

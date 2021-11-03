@@ -7,14 +7,17 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 09/12/2021
-ms.openlocfilehash: b3a33bc1f72af20a28bffbd96df73b95d31e3cca
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 354db7af1198335247d97c31b44b3c40b59ed75d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594477"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060708"
 ---
 # <a name="advanced-configurations-for-jupyter-notebooks-and-msticpy-in-azure-sentinel"></a>Azure Sentinel での Jupyter Notebook と MSTICPy の詳細な構成
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel で Jupyter Notebook と MSTICPy を操作するための詳細な構成について説明します。
 
@@ -180,7 +183,7 @@ Azure ML で実行していて、**msticpyconfig.yaml** ファイルがユーザ
 
     ただし、ファイルにシークレットも保存されている場合は、構成ファイルをコンピューティング ローカル ドライブに保存することをお勧めします。 コンピューティング内部ストレージにアクセスできるのは、コンピューティングを作成したユーザーだけですが、共有ストレージには、Azure ML ワークスペースへのアクセス権を持つすべてのユーザーがアクセスできます。
 
-    詳細については、「[Azure Machine Learning コンピューティング インスタンスとは](/azure/machine-learning/concept-compute-instance)」を参照してください。
+    詳細については、「[Azure Machine Learning コンピューティング インスタンスとは](../machine-learning/concept-compute-instance.md)」を参照してください。
 
 1. 必要に応じて、**msticpyconfig.yaml** ファイルを選択した場所にコピーします。
 
@@ -235,7 +238,6 @@ Windows システムで **MSTICPYCONFIG** 環境変数を設定する場合:
 
     - **msticpyconfig.yaml** ファイルを移動した場合は、`export MSTICPYCONFIG=~/msticpyconfig.yaml` を実行します。
     - **msticpyconfig.yaml** ファイルを移動しなかった場合は、`export MSTICPYCONFIG=~/cloudfiles/code/Users/<YOURNAME>/msticpyconfig.yaml` を実行します。
-
 
 # <a name="azure-ml-options"></a>[Azure ML オプション](#tab/azure-ml)
 
@@ -309,6 +311,5 @@ Azure ML ユーザー フォルダー以外の場所に **msticpyconfig.yaml** �
 |サブジェクト  |その他の参考資料  |
 |---------|---------|
 |**MSTICPy**     |      - [MSTICPy パッケージ構成](https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html)<br> - [MSTICPy 設定エディター](https://msticpy.readthedocs.io/en/latest/getting_started/SettingsEditor.html)<br>    - [ノートブック環境の構成](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/ConfiguringNotebookEnvironment.ipynb)<br>    - [MPSettingsEditor ノートブック](https://github.com/microsoft/msticpy/blob/master/docs/notebooks/MPSettingsEditor.ipynb) <br><br>**注**: Azure-Sentinel-Notebooks GitHub リポジトリには、コメントアウトされたセクションを含むテンプレート *msticpyconfig.yaml* ファイルも含まれており、設定を理解するのに役立ちます。      |
-|**Azure Sentinel および Jupyter Notebook**     |      - [Jupyter Notebook: 概要](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy のドキュメント](https://msticpy.readthedocs.io/)<br>    - [Azure Sentinel Notebooks のドキュメント](notebooks.md)<br>    - [Infosec Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Linux Host Explorer Notebook のチュートリアル](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [セキュリティ調査に Jupyter を使用する理由](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Azure Sentinel と Notebooks を使用したセキュリティ調査](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas のドキュメント](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Bokeh のドキュメント](https://docs.bokeh.org/en/latest/)       |
+|**Azure Sentinel および Jupyter Notebook**     |      - [Jupyter Notebook: 概要](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy のドキュメント](https://msticpy.readthedocs.io/)<br>    - [Azure Sentinel Notebook のドキュメント](notebooks.md)<br>    - [Infosec Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Linux Host Explorer Notebook のチュートリアル](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [セキュリティ調査に Jupyter を使用する理由](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Azure Sentinel と Notebooks を使用したセキュリティ調査](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas のドキュメント](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Batch のドキュメント](https://docs.bokeh.org/en/latest/)       |
 |     |         |
-

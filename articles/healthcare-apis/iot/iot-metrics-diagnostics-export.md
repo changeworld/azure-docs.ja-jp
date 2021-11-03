@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 10/25/2021
 ms.author: jasteppe
-ms.openlocfilehash: 23908c8ab910324cda4cd2802158447a1c97db4e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 08edb99de13e0102597c7a078adbcb4225e28d15
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354588"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085963"
 ---
 # <a name="export-iot-connector-metrics-through-diagnostic-settings"></a>診断設定を使用して IoT コネクタのメトリックをエクスポートする
 
@@ -36,7 +36,7 @@ ms.locfileid: "129354588"
 5. 診断ログへのアクセスに使用する方法を選択します。
 
     1. 監査や手動での検査のために、**ストレージ アカウントにアーカイブ** します。 使用するストレージ アカウントは既に作成済みである必要があります。
-    2. サード パーティのサービスやカスタム分析ソリューションで取り込むために、**イベント ハブにストリーム配信** します。 この手順を構成する前に、イベント ハブの名前空間とイベント ハブのポリシーを作成する必要があります。
+    2. サードパーティのサービスまたはカスタム分析ソリューションによるインジェストのために、**イベントハブにストリーミング** します。 この手順を構成する前に、イベントハブの名前空間とイベントハブのポリシーを作成する必要があります。
     3. Azure Monitor の **Log Analytics ワークスペースにストリーム配信** します。 このオプションを選択する前に、Log Analytics ワークスペースを作成する必要があります。
 
 6. IoT コネクタの **エラー、トラフィック、待機時間** を選択します。  FHIR サービス用にキャプチャする追加のメトリックカテゴリを選択します。
@@ -53,11 +53,11 @@ ms.locfileid: "129354588"
 ## <a name="conclusion"></a>まとめ 
 メトリック ログにアクセス可能であることは、監視とトラブルシューティングに欠かせません。  IoT コネクタでは、メトリックログを使用してこれらのアクションを実行できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT コネクタについてよく寄せられる質問を確認してください。
 
 >[!div class="nextstepaction"]
->[IoT コネクタに関する Faq](../fhir/fhir-faq.md)
+>[IoT コネクタに関する Faq](iot-connector-faqs.md)
 
 (FHIR&#174;) HL7 の登録商標であり、HL7 のアクセス許可と共に使用されます。

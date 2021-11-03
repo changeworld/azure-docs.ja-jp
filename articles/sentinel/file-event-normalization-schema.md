@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: d5928cf93aed6e1a887be07f2befd27df9a8e276
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ba1dd4cd4b3552466db55723432f5e9c79593070
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407838"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055188"
 ---
 # <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ファイル イベント正規化スキーマは、ファイルまたはドキュメントの作成、変更、削除などのファイル アクティビティを記述するために使用されます。 このようなイベントは、オペレーティング システム、Azure Files などのファイル ストレージ システム、Microsoft SharePoint などのドキュメント管理システムによって報告されます。
 
@@ -77,7 +79,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 
 次のフィールドは、レコードごとに Log Analytics によって生成され、カスタム コネクタの作成時にオーバーライドできます。
 
-| フィールド         | Type     | 考察 (Discussion)      |
+| フィールド         | 型     | 考察 (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
@@ -92,7 +94,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 
 イベント フィールドは、すべてのスキーマに共通であり、アクティビティ自体とレポート デバイスを記述します。
 
-| フィールド               | クラス       | Type       |  説明       |
+| フィールド               | クラス       | 型       |  説明       |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
 | **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
@@ -102,7 +104,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 | **EventResult**         | Mandatory   | Enumerated |  イベントの結果を記述し、次のサポートされている値の 1 つに正規化されます。 <br><br>- `Success`<br>- `Partial`<br>- `Failure`<br>- `NA` (該当なし) <br><br>ソースから [EventOriginalResultDetails](#eventoriginalresultdetails) フィールドの値のみが提供される場合があり、**EventResult** の値を取得するには分析が行われる必要があります。 |
 | <a name="eventoriginalresultdetails"></a>**EventOriginalResultDetails**  | オプション    | String     | イベントの結果を記述します。 <br><br>**注**: この値は正規化されず、ソースによって提供されたままの元の値を対象とします。 現在、ファイル イベント正規化スキーマには、*EventResultDetails* のような関連する正規化されたフィールドはありません。 |
 | **EventOriginalUid**    | オプション    | String     | 元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
-| **EventOriginalType**   | オプション    | String     | ソースによって提供されている場合、元のイベントの種類または ID。<br><br>例: `4663`|
+| **EventOriginalType**   | オプション    | String     | 元のイベントの種類または ID (ソースによって提供されている場合)。<br><br>例: `4663`|
 | <a name ="eventproduct"></a>**EventProduct**       | Mandatory   | String     | イベントを生成している製品。 <br><br>例: `Sysmon`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
 | **EventProductVersion** | オプション    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
 | **EventVendor**         | Mandatory   | String     | イベントを生成している製品のベンダー。 <br><br>例: `Microsoft`  <br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。  |
@@ -135,7 +137,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 
 例: `JohnDoe` (**アクター**) が `Windows File Explorer` (**実行プロセス**) を使用して `new.doc` (**ソース ファイル**) の名前を `old.doc` (**ターゲット ファイル**) に変更する。
 
-| フィールド          | クラス        | Type       | 説明   |
+| フィールド          | クラス        | 型       | 説明   |
 |---------------|--------------|------------|-----------------|
 | **ActingProcessCommandLine** |オプション  |String  | 実行プロセスを実行するために使用するコマンド ライン。 <br><br>例: `"choco.exe" -v` |
 |**ActingProcessGuid** |オプション     | String     |  実行プロセスの生成された一意識別子 (GUID)。 システム間でプロセスを識別できます。  <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
@@ -176,7 +178,7 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 |**TargetFileSHA1** |省略可能 |SHA1 |ターゲット ファイルの SHA-1 ハッシュ。 <br><br>例:<br> `d55c5a4df19b46db8c54`<br>`c801c4665d3338acdab0`|
 |**TargetFileSHA256** | 省略可能|SHA256 |ターゲット ファイルの SHA-256 ハッシュ。 <br><br>例:<br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`  |
 | **TargetFileSHA512**| 省略可能| SHA512|ソース ファイルの SHA-512 ハッシュ。 |
-|**ハッシュ**|エイリアス | |利用可能な最善のターゲット ファイルのハッシュの別名。 |
+|**Hash**|エイリアス | |利用可能な最善のターゲット ファイルのハッシュの別名。 |
 |**TargetFileSize** |オプション | Integer|ターゲット ファイルのサイズ (バイト単位)。 |
 | **TargetUrl**|オプション | String|HTTP または HTTPS を使用して操作が開始されているときは、使用されている URL。 <br><br>例: `https://onedrive.live.com/?authkey=...` |
 | | | | |
@@ -204,6 +206,6 @@ KQL 関数をソースに依存しないパーサー `imFileEvent` に追加し�
 - [Azure Sentinel での正規化](normalization.md)
 - [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
 - [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](normalization-schema.md)
+- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
 - [Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)
 - [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)

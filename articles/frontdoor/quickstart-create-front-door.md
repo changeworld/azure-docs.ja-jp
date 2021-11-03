@@ -12,14 +12,13 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 30bcdce70ce15e7f960d8d04b3796a04f59b1ec2
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.custom: mode-portal
+ms.openlocfilehash: 57b99677d182f176b3721c155aab2e794c60574c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039274"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040530"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する
 

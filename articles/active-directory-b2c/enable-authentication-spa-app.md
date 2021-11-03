@@ -11,12 +11,12 @@ ms.date: 06/25/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 535cecf04857810d002843159d7ef3ce968e169b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a42d8f356286e2936ca9d6bdd15151bbf9ef1064
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041046"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007336"
 ---
 # <a name="enable-authentication-in-your-own-single-page-application-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自のシングルページ アプリケーションで認証を有効にする
 
@@ -106,12 +106,12 @@ SAP アプリの `index.html` ファイルを追加します。 このファイ�
 |---|---|
 |MSAL.js ライブラリ| MSAL.js 認証 JavaScript ライブラリの [CDN パス](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/cdn-usage.md)。|
 |[Bootstrap スタイルシート](https://getbootstrap.com/) | 高速で簡単な Web 開発用の無料のフロントエンド フレームワーク。 フレームワークには、HTML ベースと CSS ベースのデザイン テンプレートが含まれています。 |
-|[policies.js](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/policies.js) | Azure AD B2C のカスタム ポリシーとユーザー フローが含まれます。 |
-|[authConfig.js](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/authConfig.js) | 認証構成パラメーターが含まれます。|
-|[authRedirect.js](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/authRedirect.js) | 認証ロジックが含まれます。 |
-|[apiConfig.js](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/apiConfig.js) | Web API スコープと API エンドポイントの場所が含まれます。 |
-|[api.js](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/api.js) | API を呼び出してその応答を処理するために使用するメソッドが定義されています。|
-|[ui.js](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/ui.js) | UI 要素を制御します。 |
+|[`policies.js`](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/policies.js) | Azure AD B2C のカスタム ポリシーとユーザー フローが含まれます。 |
+|[`authConfig.js`](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/authConfig.js) | 認証構成パラメーターが含まれます。|
+|[`authRedirect.js`](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/authRedirect.js) | 認証ロジックが含まれます。 |
+|[`apiConfig.js`](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/apiConfig.js) | Web API スコープと API エンドポイントの場所が含まれます。 |
+|[`api.js`](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/api.js) | API を呼び出してその応答を処理するために使用するメソッドが定義されています。|
+|[`ui.js`](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/blob/main/App/ui.js) | UI 要素を制御します。 |
 | | |
 
 SPA の index ファイルを提供するには、*myApp* フォルダーに、次の HTML スニペットが含まれる *index.html* という名前のファイルを作成します。

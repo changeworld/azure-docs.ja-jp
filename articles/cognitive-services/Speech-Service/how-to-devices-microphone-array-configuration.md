@@ -10,18 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
-ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6fe1739006f3f5b9943076c917cc2e3ef5dc2efa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025063"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024564"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>マイク配列を構成する方法
 
-この記事では、[マイク配列](./speech-devices-sdk-microphone.md)を構成する方法について説明します。 これには、動作する角度の設定と、Speech Devices SDK に使用するマイクを選択する方法が含まれます。
+この記事では、[マイク配列](./speech-sdk-microphone.md)を構成する方法について説明します。 これには、動作する角度の設定と、Speech Devices SDK に使用するマイクを選択する方法が含まれます。
 
-Speech Devices SDK は、[Microsoft のガイドライン](./speech-devices-sdk-microphone.md)に従って設計されたマイク配列で最適に動作します。 マイク配列の構成は、オペレーティング システムによって提供されるか、次のいずれかの方法で提供されます。
+Speech Devices SDK は、[Microsoft のガイドライン](./speech-sdk-microphone.md)に従って設計されたマイク配列で最適に動作します。 マイク配列の構成は、オペレーティング システムによって提供されるか、次のいずれかの方法で提供されます。
 
 元々、マイク配列は Speech Devices SDK でサポートされており、固定された一連の構成から選択することができました。
 

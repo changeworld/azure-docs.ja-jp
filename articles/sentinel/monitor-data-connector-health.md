@@ -10,19 +10,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 1b8507f29d157cd715d6423c773b01a561a5e181
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 89f18c1a7ab517dde3552e1449d0971f29774f91
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737565"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037019"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>この Azure Sentinel ブックを使用してデータ コネクタの正常性を監視する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 **データ コネクタの正常性監視ブック** を使用すると、Azure Sentinel 内からデータ コネクタの正常性、接続性、およびパフォーマンスを追跡できます。 このブックには追加のモニターが用意されており、異常を検出して、ワークスペースのデータ インジェストの状態に関する分析情報を得ることができます。 ブックのロジックを使用して、取り込まれたデータの全般的な正常性を監視したり、カスタム ビューやルールベースのアラートを作成したりすることができます。
 

@@ -4,15 +4,15 @@ description: Fulfillment API バージョン 2 を使用し、Microsoft AppSourc
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 10/08/2021
+ms.date: 10/25/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: c420a2fd947e32acb0cce9a6ce4a73ddd1d2a3bd
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 2defbfba47f40780be507636e300a4d0859f4864
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729142"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048325"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
@@ -39,14 +39,16 @@ ms.locfileid: "129729142"
 
 このような呼び出しの例として `https://contoso.com/signup?token=<blob>` がありますが、パートナー センターでは、この SaaS オファーのランディング ページの URL は `https://contoso.com/signup` として構成されています。 このトークンにより、SaaS の購入と顧客を一意に識別する ID が発行者に提供されます。
 
->[!NOTE]
->顧客が Microsoft 側からの構成プロセスを開始するまで、SaaS の購入は公開元に通知されません。
+[!INCLUDE [pound-sign-note](../includes/pound-sign-note.md)]
 
 ランディング ページの URL は毎日一日中稼働し、いつでも Microsoft からの新しい呼び出しを受け取る準備ができている必要があります。 ランディング ページが使用できなくなった場合、お客様は SaaS サービスにサインアップして使用を開始することができません。
 
 次に、公開元は Microsoft に "*トークン*" を返す必要があります。これは、[SaaS Resolve API](#resolve-a-purchased-subscription) を呼び出し、`x-ms-marketplace-token header` ヘッダー パラメーターの値としてそのトークンを入力して行います。 Resolve API 呼び出しの結果として、そのトークンが、購入の一意の ID、購入されたオファーの ID、購入されたプランの ID などの SaaS 購入の詳細と交換されます。
 
 ランディング ページでは、顧客は Azure Active Directory (Azure AD) シングル サインオン (SSO) を使用して、新規または既存の SaaS アカウントにサインインする必要があります。
+
+>[!NOTE]
+>顧客が Microsoft 側からの構成プロセスを開始するまで、SaaS の購入は公開元に通知されません。
 
 公開元は、このフローに Microsoft が要求するユーザー エクスペリエンスを提供するために、SSO を実装する必要があります。 SSO を構成するときに、必ず、マルチテナント Azure AD アプリケーションを使用し、職場と学校のアカウントの両方または個人の Microsoft アカウントを許可してください。 この要件が適用されるのはランディング ページのみで、Microsoft 資格情報を使用して既にサインインしているときに SaaS サービスにリダイレクトされるユーザー向けです。 SSO は、SaaS サービスへのすべてのサインインに必要とされるわけではありません。
 

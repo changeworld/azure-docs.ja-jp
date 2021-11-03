@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用してサンプルの Angular SPA で認証を構成する
 description: Azure Active Directory B2C を使用して、Angular SPA でユーザーをサインインおよびサインアップする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 65190ed6f79a72f59c4329b6f413428ea8e7bb35
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: acce5f3152f8e12bd93640892f9f495834f34b9f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426550"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007900"
 ---
 # <a name="configure-authentication-in-a-sample-angular-single-page-application-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用してサンプルの Angular シングルページ アプリケーションで認証を構成する
 
@@ -150,7 +150,7 @@ export const b2cPolicies = {
 export const msalConfig: Configuration = {
      auth: {
          clientId: '<your-MyApp-application-ID>',
-         authority: b2cPolicies.authorities.signUpSignIn.
+         authority: b2cPolicies.authorities.signUpSignIn,
          knownAuthorities: [b2cPolicies.authorityDomain],
          redirectUri: '/', 
      },

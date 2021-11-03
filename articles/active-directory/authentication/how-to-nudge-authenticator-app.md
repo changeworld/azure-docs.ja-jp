@@ -10,12 +10,12 @@ ms.author: justinha
 author: mjsantani
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c83c4c60028c77033227411d68aeb576a9b43a46
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: cd27eb5e55b679d8cfd1589857cc88d7f27917d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707865"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054364"
 ---
 # <a name="how-to-nudge-users-to-set-up-microsoft-authenticator-preview---microsoft-authenticator-app"></a>Microsoft Authenticator をセットアップをするようにユーザーにナッジする方法 (プレビュー) - Microsoft Authenticator アプリ
 
@@ -92,7 +92,7 @@ Graph エクスプローラーを使用してポリシーを構成するには�
 
 | Name | 指定できる値 | 説明 |
 |------|-----------------|-------------|
-| state |   "enabled"<br>"disabled"<br>"default" | この機能を有効または無効にすることができます。<br>この構成が明示的に設定されていない場合は、既定値が使用され、Azure AD の既定値がこの設定に使用されます。 現在は disabled にマップされます。<br>必要に応じて、状態を有効または無効に変更します。  |
+| state | "enabled"<br>"disabled"<br>"default" | この機能を有効または無効にすることができます。<br>この構成が明示的に設定されていない場合は、既定値が使用され、Azure AD の既定値がこの設定に使用されます。 現在は disabled にマップされます。<br>必要に応じて、状態を有効または無効に変更します。  |
 | snoozeDurationInDays | 範囲: 0 – 14 | ユーザーにナッジが再び表示されるまでの日数を定義します。<br>値が 0 の場合、ユーザーは MFA を試行するたびにナッジされます。<br>既定値: 1 日 |
 | includeTargets | N/A | 機能の対象にするさまざまなユーザーとグループを含めることができます。 |
 | excludeTargets | N/A | 機能の対象としないさまざまなユーザーとグループを除外できます。 ユーザーが除外されるグループと含められるグループのメンバーである場合、そのユーザーは機能から除外されます。|
@@ -156,7 +156,7 @@ Graph エクスプローラーを使用してポリシーを構成するには�
                     "targetType": "group",
                     "targetedAuthenticationMethod": "microsoftAuthenticator"
                 },
-        {
+                {
                     "id": "*********PLEASE ENTER GUID***********",
                     "targetType": "user",
                     "targetedAuthenticationMethod": "microsoftAuthenticator"
@@ -181,7 +181,7 @@ Graph エクスプローラーを使用してポリシーを構成するには�
                       "id": "*********PLEASE ENTER GUID***********",
                       "targetType": "group"
                   },
-        {
+                {
                       "id": "*********PLEASE ENTER GUID***********",
                       "targetType": "user"
                   }
@@ -192,7 +192,7 @@ Graph エクスプローラーを使用してポリシーを構成するには�
                       "targetType": "group",
                       "targetedAuthenticationMethod": "microsoftAuthenticator"
                   },
-        {
+                  {
                       "id": "*********PLEASE ENTER GUID***********",
                       "targetType": "user",
                       "targetedAuthenticationMethod": "microsoftAuthenticator"

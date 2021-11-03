@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/11/2021
 ms.author: aahi
-ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7415070639f4f6dbcee62c33871f4fbdbc64edac
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939851"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011734"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に Text Analytics 言語検出コンテナーをデプロイする
 
@@ -38,7 +39,7 @@ ms.locfileid: "98939851"
 
 この手順では、言語検出用の Cognitive Services コンテナーのサンプルを読み込んで実行します。 このサンプルには、クライアント アプリケーション用と Cognitive Services コンテナー用の 2 つのコンテナーがあります。 これらのイメージを両方とも Azure Container Registry にプッシュします。 独自のレジストリに設定したら、これらのイメージにアクセスしてコンテナーを実行する Azure Kubernetes Service を作成します。 コンテナーの実行中に、**kubectl** CLI を使用してコンテナーのパフォーマンスを監視します。 HTTP 要求を使用してクライアント アプリケーションにアクセスし、結果を確認します。
 
-![サンプルのコンテナーの実行に関する概念的な構想](../text-analytics/media/how-tos/container-instance-sample/containers.png)
+![Kubernetes でのコンテナーの実行の概念を示す図](media/container-instance-sample.png)
 
 ## <a name="the-sample-containers"></a>サンプルのコンテナー
 
@@ -383,7 +384,7 @@ replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 
 ブラウザーを開いて、前のセクションの `language` コンテナーの外部 IP (`http://<external-ip>:5000/swagger/index.html`) に移動します。 API の `Try it` 機能を使用して、言語検出エンドポイントをテストすることができます。
 
-![コンテナーの Swagger のドキュメントを表示する](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
+![コンテナーの Swagger ドキュメントを示すスクリーンショット](./media/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>クライアント アプリケーション コンテナーをテストする
 

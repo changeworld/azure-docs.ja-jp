@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: yelevin
-ms.openlocfilehash: 43af18f508a0e9b4239dedb793a3de9565ee5f03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 96de38a38c5e28117916bc2265a943e4064e8fae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747128"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022894"
 ---
 # <a name="work-with-anomaly-detection-analytics-rules-in-azure-sentinel"></a>Azure Sentinel で異常検出分析ルールを使用する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >

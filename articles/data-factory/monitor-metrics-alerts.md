@@ -1,19 +1,19 @@
 ---
 title: Data Factory のメトリックとアラート
 description: Azure Data Factory の監視に使用できるメトリックについて説明します。
-author: minhe-msft
-ms.author: hemin
+author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 53f12eed1e39eb035f5ec69c825ab5658b207b03
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 57378ba773fd9907b0fdf0104d4165285129e958
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400517"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020200"
 ---
 # <a name="data-factory-metrics-and-alerts"></a>Data Factory のメトリックとアラート
 
@@ -46,7 +46,7 @@ Azure Data Factory バージョン 2 で出力されるメトリックの一部�
 | SSISPackageExecutionCancelled         | キャンセルされた SSIS パッケージ実行回数のメトリック  | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionFailed           | 失敗した SSIS パッケージ実行回数のメトリック    | Count    | 合計                | 1 分の枠内で失敗した SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionSucceeded        | 成功した SSIS パッケージ実行回数のメトリック | Count    | 合計                | 1 分の枠内で成功した SSIS パッケージ実行の合計数。 |
-| PipelineElapsedTimeRuns | 経過時間パイプライン実行メトリック | カウント | 合計 | 1 分の枠内で、ユーザー定義の予想される持続時間を超えてパイプラインが実行された回数 [(詳細情報)。](tutorial-operationalize-pipelines.md) |
+| PipelineElapsedTimeRuns | 経過時間パイプライン実行メトリック | Count | 合計 | 1 分の枠内で、ユーザー定義の予想される持続時間を超えてパイプラインが実行された回数 [(詳細情報)。](tutorial-operationalize-pipelines.md) |
 
 メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](../azure-monitor/data-platform.md)」に記載された手順に従います。
 

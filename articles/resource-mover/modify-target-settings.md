@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 7044414d47f685062331bc4aceb1b538d6f9a062
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 54c2594e823e2e78f7a3fd62afba1d0d023ff347
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461611"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048123"
 ---
 # <a name="modify-destination-settings"></a>宛先の設定を変更する
 
@@ -42,7 +42,7 @@ Azure VM と関連リソースを移動するときに、宛先の設定を変�
 **ディスク暗号化セット** | VM でサーバー側の暗号化にカスタマー マネージド キーを使用する場合に関連付けられるディスク暗号化セット。
 **リソース グループ** | 宛先 VM が配置されるリソース グループ。
 **ネットワーク リソース** | ネットワーク インターフェイス、仮想ネットワーク (VNets/)、ネットワーク セキュリティ グループ/ネットワーク インターフェイスのオプション:<br/><br/> - 宛先リージョンに同じ名前で新しいリソースを作成します。<br/><br/> - 宛先リージョンに別の名前で新しいリソースを作成します。<br/><br/> - 宛先リージョンの既存のネットワーク リソースを使用します。<br/><br/> 新しい宛先リソースを作成すると、変更した設定を除いて、ソース リソースと同じ設定がそれに割り当てられます。
-**パブリック IP アドレス名、SKU、ゾーン** | 標準パブリック IP アドレスの名前、[SKU](../virtual-network/public-ip-addresses.md#sku)、[ゾーン](../virtual-network/public-ip-addresses.md#standard)を指定します。<br/><br/> ゾーン冗長にする場合は、「**Zone redundant**」と入力します。
+**パブリック IP アドレス名、SKU、ゾーン** | 標準パブリック IP アドレスの名前、[SKU](../virtual-network/ip-services/public-ip-addresses.md#sku)、[ゾーン](../virtual-network/ip-services/public-ip-addresses.md#standard)を指定します。<br/><br/> ゾーン冗長にする場合は、「**Zone redundant**」と入力します。
 **ロード バランサー名、SKU、ゾーン** | ロード バランサーの名前、SKU (Basic または Standard)、ゾーンを指定します。<br/><br/> Standard SKU を使用することをお勧めします。<br/><br/> ゾーン冗長にする場合は、 **[ゾーン冗長]** を指定します。
 **リソースの依存関係** | 各依存関係のオプション:<br/><br/>- リソースでは、ソースの依存リソース (これらは宛先リージョンに移動されます) が使用されます。<br/><br/> - リソースでは、宛先リージョンにあるさまざまな依存リソースが使用されます。 この場合は、宛先リージョンの同様のリソースから選択できます。
 

@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用して Web API を呼び出すサンプルの Web アプリケーションで認証を構成する
 description: この記事では、Web API を呼び出す ASP.NET Web アプリケーションで、Azure Active Directory B2C を使用して、ユーザーをサインインおよびサインアップさせる方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/05/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: fec8af9d4153736738cf658e7e77bb1e9506fedd
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: f2f0f00bfc3b5f551d60817e3ea52924c78d98d8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122868580"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007789"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-that-calls-a-web-api-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して Web API を呼び出すサンプルの Web アプリで認証を構成する
 

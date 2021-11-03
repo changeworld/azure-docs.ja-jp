@@ -1,5 +1,5 @@
 ---
-title: サーバーレス SQL プール (プレビュー) を使用して Delta Lake 形式のクエリを実行する
+title: サーバーレス SQL プールを使用して Delta Lake 形式のクエリを実行する
 description: この記事では、サーバーレス SQL プールを使用して Apache Delta Lake 形式で格納されているファイルに対してクエリを実行する方法について説明します。
 services: synapse analytics
 ms.service: synapse-analytics
@@ -9,14 +9,15 @@ ms.date: 07/15/2021
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: c06826fa8d08a06ed49bdd56e86c999aff849899
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e103cad62f213cdd39c92c8743753aede7cc0a75
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002836"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018623"
 ---
-# <a name="query-delta-lake-files-preview-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Delta Lake ファイル (プレビュー) のクエリを実行する
+# <a name="query-delta-lake-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Delta Lake ファイルのクエリを実行する
 
 この記事では、サーバーレス SQL プールを使用して Apache Delta Lake ファイルを読み取るクエリを作成する方法について説明します。
 Delta Lake は、ACID (原子性、一貫性、分離性、持続性) トランザクションを Apache Spark とビッグ データ ワークロードに導入するオープンソースのストレージ レイヤーです。
@@ -24,8 +25,6 @@ Delta Lake は、ACID (原子性、一貫性、分離性、持続性) トラン�
 Synapse ワークスペースのサーバーレス SQL プールを使用すると、Delta Lake 形式で格納されているデータを読み取り、レポート ツールに提供できます。 サーバーレス SQL プールは、Apache Spark、Azure Databricks、または Delta Lake 形式の他のプロデューサーを使用して作成された Delta Lake ファイルを読み取ることができます。
 
 Azure Synapse の Apache Spark プールを使用すると、データ エンジニアが Scala、PySpark、.NET を使用して Delta Lake ファイルを変更できます。 サーバーレス SQL プールは、データ アナリストがデータ エンジニアによって作成された Delta Lake ファイルに関するレポートを作成するのに役立ちます。
-
-[!INCLUDE [synapse-analytics-preview-features](../../../includes/synapse-analytics-preview-features.md)]
 
 ## <a name="quickstart-example"></a>クイック スタートの例
 
@@ -174,7 +173,7 @@ deltaTable = DeltaTable.convertToDelta(spark, "parquet.`abfss://delta-lake@sqlon
 
 ## <a name="limitations"></a>制限事項
 
-- この機能はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+- 制限事項と既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)をご覧ください。
 - 現時点では、Azure Synapse Analytics の Spark プールとサーバーレス SQL プールの両方が、Delta Lake 形式をサポートしています。 サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 Spark プールからサーバーレス SQL プールに共有されるのは、Parquet 形式のテーブルのみです。 詳細については、「[共有 Spark テーブル](../metadata/table.md#shared-spark-tables)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,15 +7,13 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 07/08/2021
 ms.author: cherylmc
-ms.custom:
-- contperf-fy21q1
-- e2e-hybrid
-ms.openlocfilehash: ae7c9ee5357e09dcf7c33cd2ae3111cce15b6641
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.custom: contperf-fy21q1, e2e-hybrid
+ms.openlocfilehash: fc0b86b7174472bd4f246396b294ffede69eaf45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721199"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036563"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -85,4 +83,3 @@ RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/
 - [チュートリアル: VPN ゲートウェイを作成して管理する](tutorial-create-gateway-portal.md)。
 - [Learn モジュール: VPN Gateway を使用して、ご利用のオンプレミス ネットワークを Azure に接続する](/learn/modules/connect-on-premises-network-with-vpn-gateway/)。
 - [サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
-

@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2021
 ms.author: yelevin
-ms.openlocfilehash: 807083fa77023753382abb96419c9cd5fe689b33
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9e9460620c3d18c8e7d35663e5e89ca7aa024360
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254250"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004336"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog を使用して Linux ベースのソースからデータを収集する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh, chmutali
-ms.openlocfilehash: 1a1b0dfbdad6aaea91ca8e3fe7d11d74b1aa2967
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0f0e3532960196b3c52279343de3bb04d5cb8535
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990351"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068248"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory のプロビジョニングと Workday の統合方法
 
@@ -61,7 +61,7 @@ Workday 管理者と協力して制約付きの統合システム セキュリ�
 
 Workday への接続をテストするため、次の *Get_Workers* Workday Web サービス要求が Azure AD によって送信されます。 
 
-```XML
+```xml
 <!-- Test connection query tries to retrieve one record from the first page -->
 <!-- Replace version with Workday Web Services version present in your connection URL -->
 <!-- Replace timestamps below with the UTC time corresponding to the test connection event -->
@@ -96,7 +96,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 
 ワーカー データを取得するために、次の *Get_Workers* Workday Web サービス要求が Azure AD によって送信されます。 このクエリでは、Workday トランザクション ログから、完全同期の実行に対応する時点の有効日が指定されたすべてのワーカー エントリが検索されます。 
 
-```XML
+```xml
 <!-- Workday full sync query -->
 <!-- Replace version with Workday Web Services version present in your connection URL -->
 <!-- Replace timestamps below with the UTC time corresponding to full sync run -->
@@ -156,7 +156,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 
 上記のクエリに対する Workday からの *Get_Workers* 応答には、ワーカー レコードの数とページ数が含まれています。
 
-```XML
+```xml
   <wd:Response_Results>
     <wd:Total_Results>509</wd:Total_Results>
     <wd:Total_Pages>17</wd:Total_Pages>
@@ -166,7 +166,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 ```
 結果セットの次のページを取得するには、次の *Get_Workers* クエリで、*Response_Filter* のパラメーターとしてページ番号を指定します。
 
-```XML
+```xml
   <p1:Response_Filter>
     <p1:As_Of_Effective_Date>2021-01-19T02:29:16.0094202Z</p1:As_Of_Effective_Date>
     <p1:As_Of_Entry_DateTime>2021-01-19T02:29:16.0094202Z</p1:As_Of_Entry_DateTime>

@@ -1,17 +1,17 @@
 ---
 title: Azure FXT Edge Filer を監視する
 description: Azure FXT Edge Filer ハイブリッド ストレージ キャッシュのハードウェアの状態を監視する方法
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 06/20/2019
-ms.author: v-erkel
-ms.openlocfilehash: 7b127f9e7b9acb846eb39032f0a6c570be013ceb
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: femila
+ms.openlocfilehash: c5475d39870f1f3003c2df78b92fd7b524ebf998
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415418"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024317"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Azure FXT Edge Filer ハードウェアの状態を監視する
 

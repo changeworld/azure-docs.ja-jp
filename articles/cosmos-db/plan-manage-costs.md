@@ -3,16 +3,16 @@ title: Azure Cosmos DB のコストを計画および管理する
 description: Azure portal でコスト分析を使用して、Azure Cosmos DB のコストを計画および管理する方法を説明します。
 author: SnehaGunda
 ms.author: sngun
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, ignite-fall-2021
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: f954be4b5ce82bf84bc99fcdab253c48fccf9933
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 10/08/2021
+ms.openlocfilehash: 3004cd93eb9222ef1e8163584c03d762bb0c85e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226990"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080158"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -49,6 +49,9 @@ Azure Cosmos DB に移行するにあたっては、コストを見積もる手�
 プロビジョニングされたスループット モードで Azure Cosmos DB を使用する予定の場合は、Azure Cosmos アカウントでリソースを作成する前に、[Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) を使用してコストを見積もってください。 Capacity Calculator は、ワークロードに必要なスループットとコストの見積もりを取得するために使用されます。 容量計算ツールは現在、SQL API、Cassandra API、MongoDB 用 API でのみ使用できます。
 
 コストとパフォーマンスを最適化するうえで、ワークロードにとって適切な量のプロビジョニング済みスループット、つまり[要求ユニット (RU/秒)](request-units.md) を使用して Azure Cosmos データベースとコンテナーを構成することが不可欠です。 コスト見積もりを取得するには、API の種類、リージョンの数、項目のサイズ、1 秒あたりの読み取り/書き込み要求数、合計格納データなどの詳細を入力する必要があります。 Capacity Calculator の詳細については、[見積もり](estimate-ru-with-capacity-planner.md)に関する記事を参照してください。
+
+> [!TIP]
+> 予算設定されたプロビジョニング済みスループットを超えないようにするには、[アカウントのプロビジョニング済みスループットの合計を制限します](./limit-total-account-throughput.md)
 
 次のスクリーンショットは、Capacity Calculator の利用によるスループットとコストの見積もりを示しています。
 

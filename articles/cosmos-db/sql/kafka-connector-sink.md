@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/28/2021
 ms.author: kuthapar
-ms.openlocfilehash: fa0fc899453c11858d518ed5f224b6eb94e218f4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: aa4b870a76d9d346116a48633bf3baddc7c44ef4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114148"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056735"
 ---
 # <a name="kafka-connect-for-azure-cosmos-db---sink-connector"></a>Azure Cosmos DB 用 Kafka Connect - シンク コネクタ
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -172,7 +172,7 @@ Azure Cosmos DB シンク コネクタにより、シンク レコードは次�
 | スキーマの種類 | JSON データ型 |
 | :--- | :--- |
 | Array | Array |
-| ブール値 | ブール値 |
+| Boolean | ブール値 |
 | Float32 | Number |
 | Float64 | Number |
 | Int8 | Number |
@@ -295,7 +295,7 @@ org.apache.kafka.common.errors.SerializationException: Unknown magic byte!
 
 Kafka Connect では、次のようなペイロードとスキーマの両方を含む JSON メッセージの特殊な構造がサポートされます。
 
- ```json
+```json
 {
   "schema": {
     "type": "struct",

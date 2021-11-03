@@ -1,51 +1,46 @@
 ---
-title: クイックスタート - Azure portal で Azure Confidential Computing 仮想マシンを作成する
-description: Azure portal でコンフィデンシャル コンピューティング仮想マシンをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
+title: クイック スタート - Azure portal で Intel SGX VM を作成する
+description: Azure portal で Intel SGX VM をすばやく作成する方法を学習し、自分のデプロイで開始します。
 author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: quickstart
-ms.date: 06/13/2021
+ms.date: 11/1/2021
 ms.author: JenCook
-ms.openlocfilehash: 8fb93b7697e2dd9077995572fc91b6e82a7d8512
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.custom: mode-portal, ignite-fall-2021
+ms.openlocfilehash: 51a91b6bb5ff5991ad2d92a41f7f70ef39c2a0c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107220"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033281"
 ---
-# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Confidential Computing VM をデプロイする
+# <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>クイック スタート - Azure portal で Intel SGX VM を作成する
 
-Intel SGX を使用した仮想マシン (VM) を Azure portal から作成して、Azure Confidential Computing を体験してみましょう。 これで、エンクレーブ アプリケーションを実行できるようになります。
-
-このチュートリアルは、カスタム構成でのコンフィデンシャル コンピューティング仮想マシンのデプロイに関心がある読者にお勧めします。 それ以外の方は、[Microsoft コマーシャル マーケットプレース向けコンフィデンシャル コンピューティング仮想マシンのデプロイ手順](quick-create-marketplace.md)に従うことをお勧めします。
-
+このチュートリアルでは、Azure portal を使用して Intel SGX VM をデプロイするプロセスについて手順を追って説明します。 それ以外の場合は、次の [Azure Marketplace](quick-create-marketplace.md) テンプレートをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)してください。
 
 > [!NOTE]
-> 無料試用版アカウントでは、このチュートリアルで使用されている仮想マシンを利用できません。 従量課金制サブスクリプションにアップグレードしてください。
+> 無料試用版アカウントでは、このチュートリアルで使用されている VM を利用できません。 従量課金制サブスクリプションにアップグレードしてください。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 1. 一番上にある **[+ リソースの作成]** を選択します。
 
-1. **[Marketplace]** ペインで、左側にある **[Compute]** を選択します。
+1. 左側のウィンドウで、 **[コンピューティング]** を選択します。
 
-1. ドロップダウンから **[Virtual machine]** を選択します。
+1. **[仮想マシンの作成]** を選択します。
 
     ![VM をデプロイする](media/quick-create-portal/compute-virtual-machine.png)
 
-1. 仮想マシンのランディング ページで、 **[作成]** を選択します。
-
-
-## <a name="configure-a-confidential-computing-virtual-machine"></a>コンフィデンシャル コンピューティング仮想マシンを構成する
+## <a name="configure-an-intel-sgx-virtual-machine"></a>Intel SGX 仮想マシンを構成する
 
 1. **[基本]** タブで、**サブスクリプション** と **リソース グループ** を選択します。
 
@@ -56,28 +51,23 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
    * **[リージョン]** :適切な Azure リージョンを選択します。
 
         > [!NOTE]
-        > コンフィデンシャル コンピューティング仮想マシンを実行できるのは、特定のリージョンにある特殊なハードウェアのみです。 DCsv2 シリーズ VM が利用できる最新のリージョンについては、[リージョン別の提供状況](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを参照してください。
+        > Intel SGX VM は、特定のリージョンの特殊なハードウェア上で実行されます。 最新のリージョンの可用性については、[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)で DCsv2 シリーズまたは DCsv3/DCdsv3 シリーズを探してください。
 
 1. 仮想マシンに使用するオペレーティング システム イメージを構成します。
 
-    * **イメージを選択する**: このチュートリアルでは、Ubuntu 18.04 LTS を選択します。 Windows Server 2019、Windows Server 2016、Ubuntu 16.04 LTS を選択することもできます。 そのように選択した場合は、このチュートリアルの中で適宜、対応する指示に従ってください。
+    * **[イメージの選択]** : このチュートリアルでは、Ubuntu 20.04 LTS - Gen2 を選択します。 Ubuntu 18.04 LTS - Gen2 または Windows Server 2019 も選択できます。
     
-    * **Gen 2 のイメージに切り替える**: コンフィデンシャル コンピューティング仮想マシンを実行できるのは、[Generation 2](../virtual-machines/generation-2.md) のイメージのみです。 選択したイメージが Gen 2 イメージであることを確認してください。 上の **[Advanced]\(詳細\)** タブをクリックして、仮想マシンを構成します。 下へスクロールして、"VM Generation (VM の世代)" と書かれたセクションに移動します。 [Gen 2] を選択したら、 **[基本]** タブに戻ります。
+    * **第 2 世代に更新する**: [イメージ] の下にある **[Configure VM generation]\(VM の世代の構成\)** を選択し、そのフライアウトで **[第 2 世代]** を選択します。
     
+        ![image](https://user-images.githubusercontent.com/63871188/137009767-421ee49a-ded8-4cfd-ac53-a3d6750880b9.png)
 
-        ![[詳細設定] タブ](media/quick-create-portal/advanced-tab-virtual-machine.png)
 
-
-        ![VM の世代](media/quick-create-portal/gen2-virtual-machine.png)
-
-    * **基本構成に戻る**: 上部のナビゲーションを使用して **[基本]** タブに戻ります。
-
-1. サイズ セレクターで **[サイズの変更]** を選択して、コンフィデンシャル コンピューティング機能を備えた仮想マシンを選択します。 仮想マシン サイズ セレクターで、 **[すべてのフィルターをクリア]** をクリックします。 **[フィルターの追加]** を選択し、フィルターの種類で **[ファミリー]** を選択して、 **[Confidential compute]\(コンフィデンシャル コンピューティング\)** のみを選択します。
+1. サイズ セレクターで **[サイズの変更]** を選択して、Intel SGX 機能を備えた仮想マシンを選択します。 仮想マシン サイズ セレクターで、 **[すべてのフィルターをクリア]** をクリックします。 **[フィルターの追加]** を選択し、フィルターの種類で **[ファミリー]** を選択して、 **[Confidential compute]\(コンフィデンシャル コンピューティング\)** のみを選択します。
 
     ![DCsv2 シリーズ VM](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > **DC1s_v2**、**DC2s_v2**、**DC4s_V2**、**DC8_v2** の各サイズが表示されます。 現在、コンフィデンシャル コンピューティングがサポートされているのは、これらの仮想マシン サイズのみです。 [詳細については、こちらを参照してください](virtual-machine-solutions.md)。
+    > サイズ **DC(number)s_v2**、**DC(number)s_v3**、**DC(number)ds_v3** が表示されるはずです。 [詳細については、こちらを参照してください](virtual-machine-solutions-sgx.md)。
 
 1. 次の情報を入力します。
 
@@ -102,8 +92,8 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 1. **[ディスク]** タブで変更を加えます。
 
-   * **DC1s_v2**、**DC2s_v2**、**DC4s_V2** の仮想マシンを選択した場合は、ディスクの種類として **[Standard SSD]** または **[Premium SSD]** を選択します。 
-   * **DC8_v2** の仮想マシンを選択した場合は、ディスクの種類として **[Standard SSD]** を選択します。
+   * **DCsv2-series** は **Standard SSD** をサポートし、**Premium SSD** は DC1、DC2、DC4 全体でサポートされます。 
+   * **DCsv3 シリーズと DCdsv3 シリーズ** は、**Standard SSD**、**Premium SSD**、**Ultra Disk** をサポートします
 
 1. 次のタブで、設定を変更するか、既定の設定をそのまま使用します。
 
@@ -134,7 +124,7 @@ ssh azureadmin@40.55.55.555
 
 Windows を使用していて BASH シェルがない場合は PuTTY などの SSH クライアントをインストールします。
 
-1. [PuTTY をダウンロードしてインストールします](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
+1. [PuTTY をダウンロードしてインストールします](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)。
 
 1. PuTTY を実行します。
 
@@ -147,16 +137,12 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 > [!NOTE]
 > サーバーのホストキーがレジストリにキャッシュされていないことを示す PuTTY のセキュリティ アラートが表示された場合は、次のオプションから選択します。 このホストを信頼する場合は、 **[Yes]\(はい\)** を選択して PuTTy のキャッシュにキーを追加し、接続を続行します。 キーをキャッシュに追加せずに接続を 1 回だけ実行する場合は、 **[No]\(いいえ\)** を選択します。 このホストを信頼しない場合は、 **[Cancel]\(キャンセル\)** を選択して接続を破棄します。
 
-## <a name="intel-sgx-drivers"></a>Intel SGX ドライバー
+## <a name="install-azure-dcap-client"></a>Azure DCAP クライアントをインストールする
 
 > [!NOTE]
-> Intel SGX ドライバーは、既に Ubuntu & Windows ギャラリー イメージの一部として含まれています。 ドライバーを特別にインストールする必要はありません。 オプションで、[Intel SGX DCAP ドライバーの一覧](https://01.org/intel-software-guard-extensions/downloads)にアクセスして、イメージに含まれている既存のドライバーを更新することもできます。
+> Trusted Hardware Identity Management (THIM) は、さまざまな高信頼実行環境 (TEE) のハードウェア ID を管理するのに役立つ無料の Azure サービスです。 Intel Provisioning Certification Service (PCS) から関連情報をフェッチし、キャッシュします。 このサービスは、構成証明のために、Azure セキュリティ ベースラインとして最小の信頼されたコンピューティング ベース (TCB) レベルを適用します。
 
-## <a name="optional-testing-enclave-apps-built-with-open-enclave-sdk-oe-sdk"></a>オプション: Open Enclave SDK (OE SDK) を使用して構築されたエンクレーブ アプリのテスト <a id="Install"></a>
-
-Ubuntu 18.04 LTS Gen 2 イメージが実行されている DCsv2 シリーズ仮想マシンに対し、手順に従って [OE SDK](https://github.com/openenclave/openenclave) をインストールします。 
-
-仮想マシンが Ubuntu 18.04 LTS Gen 2 で実行されている場合は、[Ubuntu 18.04 のインストール手順](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)に従う必要があります。
+DCsv2、DCsv3、DCdsv3 シリーズの Azure VM ユーザーは、構成証明プロセス中に、Azure DCAP クライアントをインストールして、THIM と対話し、見積もり生成のために TEE 関連資料をフェッチすることをお勧めします。 構成証明の詳細については、「[Microsoft Azure Attestation](/azure/attestation/overview)」または [ECDSA Attestation](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html) に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -166,7 +152,7 @@ Ubuntu 18.04 LTS Gen 2 イメージが実行されている DCsv2 シリーズ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、コンフィデンシャル コンピューティング仮想マシンをデプロイし、Open Enclave SDK をインストールしました。 Azure におけるコンフィデンシャル コンピューティング仮想マシンの詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions.md)」を参照してください。 
+このクイックスタートでは、Intel SGX VM をデプロイしてこれに接続しました。 詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions-sgx.md)」を参照してください。 
 
 コンフィデンシャル コンピューティング アプリケーションを作成する方法については、引き続き GitHub の Open Enclave SDK サンプルをご覧ください。 
 

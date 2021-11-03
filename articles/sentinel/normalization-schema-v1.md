@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/15/2021
 ms.author: yelevin
-ms.openlocfilehash: 12a99c816ad3bf2b855c9ea48b7d7f27619d0e50
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7442db85d7b6105278024c9fc23bca9eba20ab19
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837752"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064395"
 ---
 # <a name="azure-sentinel-network-normalization-schema-legacy-version---public-preview"></a>Azure Sentinel ネットワーク正規化スキーマ (レガシ バージョン - パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ネットワーク正規化スキーマは、報告されたネットワーク イベントを説明するために使用されます。Azure Sentinel では、ソースに依存しない分析を可能にするために使用されます。
 
@@ -370,4 +372,3 @@ Azure Sentinel ネットワーク セッション正規化スキーマ バージ
 - [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
 - [Azure Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
 - [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
-

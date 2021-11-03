@@ -3,14 +3,16 @@ title: 記録を行わないライブ ビデオの分析 - Azure
 description: パイプライン技術は、ライブ ビデオ ストリームから分析を単に抽出するためだけに使用できます。これをエッジやクラウドに記録する必要はありません。 この記事ではこの概念について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 8444759d231153419873679624645a96e07058ce
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5bf4490a058fb00e12c9c43faa5af0a6f261fede
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515702"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043947"
 ---
 # <a name="analyzing-live-videos-without-recording"></a>記録を行わないライブ ビデオの分析
+
 
 ## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事 
 
@@ -22,12 +24,15 @@ ms.locfileid: "122515702"
 
 パイプライン トポロジを使用して、ビデオの一部をファイルや資産に記録することなく、ライブ ビデオを分析することができます。 以下に示すパイプライン技術は、「[イベントベースのビデオ記録](event-based-video-recording-concept.md)」の記事のものと似ていますが、資産シンク ノードやファイル シンク ノードはありません。
 
+> [!NOTE]
+> 現在、ライブ ビデオは、エッジ モジュールでのみ分析でき、クラウドではできません。
+
 ### <a name="motion-detection"></a>モーション検出
 
 以下に示すパイプライン トポロジは、[RTSP ソース](pipeline.md#rtsp-source) ノード、[モーション検出プロセッサ](pipeline.md#motion-detection-processor) ノード、および [IoT Hub メッセージ シンク](pipeline.md#iot-hub-message-sink) ノードで構成されています。[JSON 表現](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/motion-detection/topology.json)で使用されている設定を確認できます。 このトポロジを使用すると、受信ライブ ビデオ ストリームのモーションを検出し、IoT Hub メッセージ シンク ノードを介して他のアプリやサービスにモーション イベントを中継できます。 外部のアプリまたはサービスではアラートをトリガーしたり、適切な担当者に通知を送信したりすることができます。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/get-started-detect-motion-emit-events/motion-detection.svg" alt-text="ライブ ビデオでのモーションの検出":::
+> :::image type="content" source="./media/analyze-live-video-without-recording/motion-detection.svg" alt-text="ライブ ビデオでのモーションの検出":::
 
 ### <a name="analyzing-video-using-a-custom-vision-model"></a>カスタム ビジョン モデルを使用するビデオの分析 
 

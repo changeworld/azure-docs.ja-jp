@@ -8,19 +8,19 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: jasteppe
-ms.openlocfilehash: 41ad8d284636e431b74c43006bb544f737ce1f47
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 51c5303c86c83c93e6ec38064a6b7eea74cc7bc6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005505"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068479"
 ---
-# <a name="iot-connector-data-flow"></a>IoT コネクタのデータフロー
+# <a name="iot-connector-data-flow"></a>IoT コネクタのデータ フロー
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-この記事では、IoT コネクタの概要について説明します。 デバイスデータを高速医療相互運用性リソース (FHIR&#174;) ベースの [監視](https://www.hl7.org/fhir/observation.html) リソースに変換する IoT コネクタ内のさまざまなデータ処理ステージについて説明します。
+この記事では、IoT コネクタのデータフローの概要について説明します。 デバイスデータを高速医療相互運用性リソース (FHIR&#174;) ベースの [監視](https://www.hl7.org/fhir/observation.html) リソースに変換する IoT コネクタ内のさまざまなデータ処理ステージについて説明します。
 
 次に、IoT コネクタによって受信されたデータのさまざまな段階を示します。
 
@@ -33,10 +33,14 @@ ms.locfileid: "130005505"
 ## <a name="normalize"></a>Normalize (正規化)
 ノーマライズは、デバイスデータが上記の Azure Event Hub から取得され、デバイスマッピングを使用して処理される次の段階です。 このマッピング プロセスにより、デバイス データが、正規化されたスキーマに変換されます。 
 
-正規化プロセスによって、後の段階でのデータ処理が簡素化されるだけでなく、1 つの入力メッセージを複数の正規化されたメッセージに投影することもできます。 たとえば、デバイスから 1 つのメッセージで、体温、脈拍数、血圧、および呼吸速度に関する複数の生命兆候を送信できます。 この入力メッセージから、4 つの別個の FHIR リソースが作成されます。 各リソースは異なる生命兆候を表し、入力メッセージが 4 つの異なる正規化されたメッセージに投影されます。
+正規化プロセスでは、後の段階でのデータ処理が簡単になるだけでなく、1つの入力メッセージを複数の正規化されたメッセージに射影する機能も用意されています。 たとえば、デバイスから 1 つのメッセージで、体温、脈拍数、血圧、および呼吸速度に関する複数の生命兆候を送信できます。 この入力メッセージから、4 つの別個の FHIR リソースが作成されます。 各リソースは異なる生命兆候を表し、入力メッセージが 4 つの異なる正規化されたメッセージに投影されます。
 
 ## <a name="group"></a>グループ
-次の段階であるグループ化では、デバイス ID、測定タイプ、期間の 3 つの異なるパラメーターを使用して、前の段階から入手できる正規化されたメッセージがグループ化されます。
+グループは次の段階で、前の段階から使用できる正規化されたメッセージは、3つの異なるパラメーターを使用してグループ化されます。
+
+* デバイス ID
+* 測定の種類 
+* 期間
 
 デバイス ID と測定タイプのグループ化により、[SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) 測定タイプを使用できるようになります。 このタイプは、FHIR 内のデバイスから収集した時間ベースの一連の測定値を表す簡潔な方法を提供します。 および期間は、IoT コネクタによって生成される監視リソースが FHIR サービスに書き込まれる待ち時間を制御します。
 
@@ -64,6 +68,6 @@ ms.locfileid: "130005505"
 > [デバイス マッピング](how-to-use-device-mapping-iot.md)
 
 > [!div class="nextstepaction"]
-> [FHIR 変換先マッピング](how-to-use-fhir-mapping-iot.md)
+> [FHIR 宛先マッピング](how-to-use-fhir-mapping-iot.md)
 
 (FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

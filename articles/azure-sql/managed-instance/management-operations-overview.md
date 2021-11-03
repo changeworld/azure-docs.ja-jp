@@ -5,19 +5,19 @@ description: Azure SQL Managed Instance 管理操作の所要時間とベスト 
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: ''
+ms.custom: ignite-fall-2021
 ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
 ms.date: 08/20/2021
-ms.openlocfilehash: 2131f5549c026afdfde1d0ec14a27608a2ffaae8
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: f48197e7f59718f0843708a9ef0013c26bf48757
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215225"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062247"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ Azure SQL Managed Instance には、新しいマネージド インスタンス�
 |操作  |実行時間の長いセグメント  |推定所要時間  |
 |---------|---------|---------|
 |空のサブネットへの最初のインスタンス|仮想クラスターの作成|操作の 90% は 4 時間以内に完了。|
-|空ではないサブネットへの別のハードウェア世代の最初のインスタンス (Gen 4 インスタンスを含んだサブネットへの初の Gen 5 インスタンスなど)|仮想クラスターの作成<sup>1</sup>|操作の 90% は 4 時間以内に完了。|
+|空ではないサブネットへの別のハードウェア世代の最初のインスタンス (Gen4 インスタンスを含んだサブネットへの初の Gen5 インスタンスなど)|仮想クラスターの作成<sup>1</sup>|操作の 90% は 4 時間以内に完了。|
 |空ではないサブネットに後続のインスタンス (第 2、第 3 のインスタンスなど) を作成|仮想クラスターのサイズ変更|操作の 90% は 2.5 時間以内に完了。|
 | | | 
 

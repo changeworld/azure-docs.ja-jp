@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2021
 ms.author: bagol
-ms.openlocfilehash: da901a0beb5a90981293b4cae1f620a0668c7e0e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b21bb010755e8f618cba2ae40db14d12aa3b28df
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179376"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023027"
 ---
 # <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>Azure Sentinel で MSSP の知的財産権を保護する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、マネージド セキュリティ サービス プロバイダー (MSSP) が、Azure Sentinel で開発した知的財産 (Azure Sentinel の分析ルール、ハンティング クエリ、プレイブック、ブックなど) を保護するために使用できる方法について説明します。
 
@@ -127,7 +129,7 @@ Power BI へのブックのエクスポート:
 - **ブックの視覚エフェクトをより簡単に共有できます**。 顧客には Power BI ダッシュボードへのリンクを送信できます。このダッシュボードでは、Azure のアクセス許可なしで、報告されたデータを表示できます。
 - **スケジュールを有効にします**。 特定の時点でのダッシュボードのスナップショットを含む電子メールを定期的に送信するように Power BI を構成します。
 
-詳細については、「[Azure Monitor ログ データを Power BI にインポートする](../azure-monitor/visualize/powerbi.md)」をご覧ください。
+詳細については、「[Azure Monitor ログ データを Power BI にインポートする](../azure-monitor/logs/log-powerbi.md)」をご覧ください。
 
 ### <a name="playbooks"></a>プレイブック
 

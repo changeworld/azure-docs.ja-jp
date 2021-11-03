@@ -2,22 +2,36 @@
 title: Azure に接続された Azure Video Analyzer for Media (旧 Video Indexer) アカウントを作成する
 description: Azure に接続された Azure Video Analyzer for Media (旧 Video Indexer) アカウントを作成する方法について説明します。
 ms.topic: tutorial
-ms.date: 01/14/2021
-ms.author: juliako
-ms.openlocfilehash: 13bf5c4eb6fc34848e90b80eb7cd242abf8824c9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/19/2021
+ms.author: itnorman
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 55a0a203bb359ca0d5cad44b5e773cee0f65edef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662138"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016970"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>メディア アカウント用の Video Analyzer を作成する
 
-Azure Video Analyzer for Media (旧称 Video Indexer) アカウントを作成する際は、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限なし) を選択することができます。 無料試用アカウントで Video Analyzer for Media 使用する場合、Web サイト ユーザーは最大 600 分間の無料インデックス作成を利用でき、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、Azure サブスクリプションに接続する Video Analyzer for Media アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
+Azure Video Analyzer for Media (旧称 Video Indexer) アカウントを作成する際は、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限なし) を選択することができます。 無料試用版では、Azure Video Analyzer for Media は、ユーザーに最大 600 分の無料インデックス作成を提供し、[開発者ポータル](https://aka.ms/avam-dev-portal)で Azure Video Analyzer API をサブスクライブしているユーザーに最大 2400 分の無料インデックス作成を提供します。 有料オプションを使用すると、Azure Video Analyzer for Media では、クラシック アカウント (一般提供) と ARM ベースのアカウント (パブリック プレビュー) という 2 種類のアカウントが提供されます。 2 つの主な違いは、アカウント管理プラットフォームです。 クラシック アカウントは API Management 上に構築されていますが、ARM ベースのアカウント管理は Azure 上に構築されているので、ロールベースのアクセス制御 (Azure RBAC) を使用して、すべてのサービスへのアクセス制御をネイティブで適用できます。
 
-この記事では、Azure サブスクリプションと Azure Media Services アカウントにリンクされた Video Analyzer for Media アカウントを作成する方法について説明します。 このトピックでは、自動 (既定) フローを使用して Azure に接続する手順について説明します。 また、手動で Azure に接続する方法 (上級) についても説明します。
+* Azure Video Analyzer for Media **クラシック** アカウントは、[API](https://aka.ms/avam-dev-portal) を介して作成できます。
 
-"*試用版*" から "*有料版*" の Video Analyzer for Media アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「[試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
+* 次のいずれかを使用して、**ARM ベース** の Azure Video Analyzer for Media アカウントを作成できます。
+
+  1.  [Azure Video Analyzer for Media ポータル](https://aka.ms/vi-portal-link)
+
+  2.  [Azure Portal](https://ms.portal.azure.com/#home)
+
+  3.  [ARM テンプレートのクイックスタート](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/ARM-Samples/Create-Account)
+
+### <a name="to-read-more-on-how-to-create-a-new-arm-based-video-analyzer-for-media-account-read-this-article"></a>**新しい ARM ベース** の Azure Video Analyzer for Media アカウントを作成する方法について詳しくは、こちらの [記事](create-video-analyzer-for-media-account.md)をご覧ください。
+
+## <a name="how-to-create-classic-accounts"></a>クラシック アカウントを作成する方法
+この記事では、Azure Video Analyzer for Media クラシック アカウントを作成する方法について説明します。 このトピックでは、自動 (既定) フローを使用して Azure に接続する手順について説明します。 また、手動で Azure に接続する方法 (上級) についても説明します。
+
+*試用版* から *有料版の ARM ベース* の Azure Video Analyzer for Media アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「[試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
 
 この記事では、[Azure Government への Video Analyzer for Media アカウントのリンク](#video-analyzer-for-media-in-azure-government)についても説明します。
 
@@ -55,49 +69,12 @@ Azure Video Analyzer for Media (旧称 Video Indexer) アカウントを作成�
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account-on-azure"></a>Azure で新しいアカウントを作成する 
-
-> [!NOTE]
-> Azure サブスクリプションが証明書ベースの多要素認証を使用する場合、必要な証明書がインストールされているデバイスで次の手順を実行することが重要です。
-
-1. [Video Analyzer for Media](https://www.videoindexer.ai/) Web サイトに移動して、サインインします。
-1. **[Create unlimited account]\(無制限アカウントの作成\)**  ボタンを選択します。
-
-    ![新しい Video Analyzer for Media アカウントの作成](./media/create-account/create-unlimited-account.png)
-1. サブスクリプション一覧が表示されたら、使用するサブスクリプションを選択します。
-
-    ![Video Analyzer for Media の Azure への接続](./media/create-account/new-account-on-azure-subscription.png)
-1. サポートされている場所から Azure リージョンを選択します。米国西部 2、北ヨーロッパ、東アジアです。
-1. **[Azure Media Services アカウント]** で、次のいずれかのオプションを選択します。
-
-    * 新しい Media Services アカウントを作成するには、 **[新規リソース グループの作成]** を選択します。 リソース グループの名前を入力します。
-
-        新しい Azure Storage アカウントを含め、新しいアカウントが Azure のサブスクリプションに作成されます。  
-    * 既存の Media Services アカウントを使用するには、 **[既存のリソースの使用]** を選択します。 アカウント一覧からアカウントを選択します。
-
-        Media Services アカウントは Video Analyzer for Media アカウントと同じリージョンになっている必要があります。
-
-        > [!NOTE]
-        > インデックス作成時間を最小限に抑え、スループットを低くするために、Media Services アカウントの [予約ユニット](../../media-services/previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整することを強くお勧めします。 [ポータルを使用して予約ユニットを変更する方法](../../media-services/previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。 予約ユニットは自分のアカウントに課金されます。[価格の詳細](https://azure.microsoft.com/pricing/details/media-services/#analytics)を参照してください。
-    * 接続を手動で構成するには、 **[手動構成に切り替える]** リンクを選択します。
-
-        詳細については、後述する「[Azure に手動で接続する](#connect-to-azure-manually-advanced-option) (上級者向けオプション)」を参照してください。
-1. 操作が完了したら、 **[作成]** を選択します。 この操作が完了するまでに数分かかる場合があります。
-
-    Azure への接続が完了すると、新しい Video Analyzer for Media アカウントがアカウント一覧に表示されます。
-
-    ![新しいアカウント](./media/create-account/new-account.png)
-1. Video Analyzer for Media Web アプリで動画を再生する前に、Media Services アカウントのストリーミング エンドポイントが実行されていることを確認します (停止状態の場合は [開始] をクリックします)。
-
-> [!TIP]
-> アカウントにわかりやすい表示名を付けるには、 **[設定]** にアクセスします。
-
 ## <a name="connect-to-azure-manually-advanced-option"></a>Azure に手動で接続する (上級者向けオプション)
 
 Azure への接続に失敗する場合は、手動で接続して問題の解決を試みることができます。
 
 > [!NOTE]
-> Video Analyzer for Media アカウント、それと接続している Media Services アカウント、同じ Media Services アカウントに接続されている Azure Storage アカウントの 3 つのアカウントは、同じリージョン内に置くことを強くお勧めします。
+> Azure Video Analyzer for Media アカウント、それと接続している Media Services アカウント、同じ Media Services アカウントに接続されている Azure Storage アカウントの 3 つのアカウントは、同じリージョン内に置くことが必須です。
 
 ### <a name="create-and-configure-a-media-services-account"></a>Media Services アカウントの作成と構成
 
@@ -114,9 +91,7 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
     > [!NOTE]
     > Media Services リソースとアカウント名を書き留めてください。 次のセクションの手順で必要になります。
-1. 作成した Media Services アカウントの [予約ユニット](../../media-services/previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット** に調整します。 [ポータルを使用して予約ユニットを変更する方法](../../media-services/previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
 
-    予約ユニットは自分のアカウントに課金されます。[価格の詳細](https://azure.microsoft.com/pricing/details/media-services/#analytics)を参照してください。
 1. Video Analyzer for Media Web アプリでビデオを再生するには、新しい Media Services アカウントの既定の **ストリーミング エンドポイント** を起動しておく必要があります。
 
     新しい Media Services アカウントで **[ストリーミング エンドポイント]** を選択します。 次に、ストリーミング エンドポイントを選択し、[開始] を押します。
@@ -153,12 +128,27 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 ### <a name="import-your-content-from-the-trial-account"></a>"*試用版*" アカウントからコンテンツをインポートする
 
-新しいアカウントを作成する場合は、 *"試用版"* アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、"*試用版*" アカウントから新しいアカウントにコピーされます。
+新しい **ARM ベース** のアカウントを作成する場合は、*試用版* アカウントから新しい **ARM ベース** の無料アカウントにコンテンツをインポートするオプションがあります。
+> [!NOTE]
+> * 試用版からのインポートは、試用アカウントごとに 1 回だけ実行できます。
+> * インポートが割り当てられる前に、ターゲットの ARM ベースのアカウントを作成して使用できるようにする必要があります。  
+> * ターゲットの ARM ベースのアカウントは、空のアカウントである必要があります (メディア ファイルのインデックスが作成されたことがない)。
 
-コンテンツをインポートする機能は、前述の自動と手動の両方の方法で有効です。
+データをインポートするには、次の手順に従います。
+ 1. [Azure Video Analyzer for Media ポータル](https://aka.ms/vi-portal-link)に移動します。
+ 2. 試用版のアカウントを選択し、 *[アカウント設定]* ページに移動します。
+ 3. *[Import content to an ARM-based account]\(コンテンツを ARM ベースのアカウントにインポートする\)* をクリックします。
+ 4. ドロップダウン メニューから、データのインポート先となる ARM ベースのアカウントを選択します。
+   * アカウント ID が表示されていない場合は、Azure Video Analyzer for Media ポータルのサイド ブレードで Azure portal またはアカウント一覧からアカウント ID をコピーして貼り付けることができます。
+ 5. **[Import content]\(コンテンツをインポートする\)** をクリックします。  
+
+![import](./media/create-account/import-steps.png)
+
+
+すべてのメディアおよびコンテンツ モデルのカスタマイズは、*試用* アカウントから新しい ARM ベースのアカウントにコピーされます。
+
 
 > [!NOTE]
-> コンテンツは、各アカウントから一度だけインポートすることができます。
 >
 > "*試用版*" アカウントは、Azure Government クラウドでは利用できません。
 

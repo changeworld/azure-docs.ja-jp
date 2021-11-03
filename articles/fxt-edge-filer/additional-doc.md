@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer - その他のドキュメント
 description: その他の参照ドキュメントは、Microsoft Azure FXT Edge Filer ハイブリッド キャッシュを理解し、使用する上で役立ちます。
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkel
-ms.openlocfilehash: 109fa14478a906ded08086576101e870c54c56ad
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: femila
+ms.openlocfilehash: 8061184188f0c10f3a54fe25bb8dd3edbbd2f9ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415136"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044838"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge Filer に関するその他のドキュメント
 

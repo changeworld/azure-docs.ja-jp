@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 917bcf74adaaec4e354662ec25816bcad471025d
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5fc5c3f7778c45286a8e2b1fb5354eb0066cec33
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991912"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046871"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="the-need-to-use-multiple-azure-sentinel-workspaces"></a>複数の Azure Sentinel ワークスペースを使用する必要がある場合
 

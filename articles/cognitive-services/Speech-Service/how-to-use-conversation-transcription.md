@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: pafarley
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: b3057bc9ee058ece0fd4a005c26ef8b95ec6a4b0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a30065bf58b2afa9d6e8411c3844071596ebc823
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539085"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086813"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>リアルタイムの会話の文字起こしの概要
 
@@ -25,7 +26,7 @@ Speech SDK の **ConversationTranscriber** API を使用すると、会議やそ
 ## <a name="limitations"></a>制限事項
 
 * 次のサブスクリプション リージョンでのみ使用できます: `centralus`、`eastasia`、`eastus`、`westeurope`
-* 7 つのマイクの循環マルチマイク配列が必要です。 このマイク配列は、[Microsoft の仕様](./speech-devices-sdk-microphone.md)を満たす必要があります。
+* 7 つのマイクの循環マルチマイク配列が必要です。 このマイク配列は、[Microsoft の仕様](./speech-sdk-microphone.md)を満たす必要があります。
 * [Speech Devices SDK](speech-devices-sdk.md) には、会話の文字起こしを実行する適切なデバイスやサンプル アプリが提供されています。
 
 ## <a name="prerequisites"></a>前提条件

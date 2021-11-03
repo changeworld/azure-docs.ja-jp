@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.custom: cog-serv-seo-aug-2020
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 keywords: ドキュメントの処理
-ms.openlocfilehash: 23f525449edfa8d37a7bd8e3ebeff1fb9cdff601
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 61654777f94b44b2fca0d2976ea6fd4470987a62
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224500"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021709"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -62,7 +62,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 > [!TIP]
 > GitHub のオープンソース プロジェクトの OCR Form Labeling Tool を使用することもできます。 このツールは、React + Redux を使用して作成された TypeScript Web アプリケーションです。 詳細または共同作成については、[OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) リポジトリを参照してください。 ツールをオンラインで試すには、[Form Recognizer サンプル ラベル付けツールの Web サイト](https://fott-2-1.azurewebsites.net/)にアクセスします。
 
-1. まず、ホスト コンピューターに Docker をインストールします。 このガイドでは、ローカル コンピューターをホストとして使用する方法について説明します。 Azure で Docker ホスティング サービスを使用する場合は、「[サンプルのラベル付けツールのデプロイ](deploy-label-tool.md)」攻略ガイドを参照してください。
+1. まず、ホスト コンピューターに Docker をインストールします。 このガイドでは、ローカル コンピューターをホストとして使用する方法について説明します。 Azure で Docker ホスティング サービスを使用する場合は、「[サンプル ラベル付けツールのデプロイ](deploy-label-tool.md)」攻略ガイドを参照してください。
 
    ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
 
@@ -270,7 +270,7 @@ v2.1 では、トレーニング ドキュメントに値が入力されてい�
 
 [Model Compose]\(モデルの作成\) では、1 つのモデル ID に最大 100 個のモデルを作成できます。 作成された `modelID` で Analyze を呼び出すと、まず送信されたフォームが分類され、最も適合するモデルが選択され、そのモデルに対する結果が返されます。 この操作は、受信フォームが複数のテンプレートのいずれかに属している場合に役立ちます。
 
-サンプル ラベル付けツールでモデルを作成するには、左側にある [Model Compose]\(モデルの作成\) (結合する矢印) アイコンを選択します。 左側で、一緒に作成したいモデルを選択します。 矢印アイコンの付いたモデルは、既に作成済みのモデルです。
+サンプル ラベル付けツールでモデルを作成するには、左側にある [モデルの作成] (結合する矢印) アイコンを選択します。 左側で、一緒に作成したいモデルを選択します。 矢印アイコンの付いたモデルは、既に作成済みのモデルです。
 **[作成] ボタン** を選択します。 ポップアップで、新しく作成するモデルに名前を付け、 **[作成]** をクリックします。 操作が完了すると、新しく作成されたモデルが一覧に表示されます。
 
 :::image type="content" source="media/label-tool/model-compose.png" alt-text="モデルの作成の UX ビュー。":::

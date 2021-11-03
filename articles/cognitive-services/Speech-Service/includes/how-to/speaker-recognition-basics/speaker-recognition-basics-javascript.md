@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: a651fe0ddb25fb44de518c794264133f16879982
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 6b167c24aeaa5acc97f1c071d7b0ae8f5c0cbc71
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129378589"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069151"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -18,11 +18,11 @@ ms.locfileid: "129378589"
 * 音声のグループから音声サンプルを識別する話者識別
 * 音声プロファイルの削除
 
-Speech Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。
+Speaker Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。 サポートされているプラットフォームの一覧については、左側のナビゲーションの参照ノードを参照してください。
 
 ## <a name="skip-to-samples-on-github"></a>記事をスキップして GitHub 上のサンプルにアクセスする
 
-この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の [JavaScript クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/fa6428a0837779cbeae172688e0286625e340942/quickstart/javascript/node/speaker-recognition)を参照してください。
+この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の [JavaScript クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

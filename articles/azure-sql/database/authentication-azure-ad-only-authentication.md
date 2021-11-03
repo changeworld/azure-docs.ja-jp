@@ -8,20 +8,18 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/31/2021
-ms.openlocfilehash: 95a3d04ce8af0e83072e214e2b3fac72c78b28c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 74b02577e6bb59481182afda881216ebff0544cf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669590"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044040"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Azure SQL を使用した Azure AD 専用認証
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
-> [!NOTE]
-> この記事で説明している **Azure AD 専用認証** 機能は、**パブリック プレビュー** 段階です。 
 
 Azure AD 専用認証は、サービスで Azure AD 専用認証をサポートできるようにする [Azure SQL](../azure-sql-iaas-vs-paas-what-is-overview.md) 内の機能であり、[Azure SQL Database](sql-database-paas-overview.md) および [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) でサポートされています。 Azure SQL 環境で Azure AD 専用認証を有効にすると、SQL Server 管理者、ログイン、ユーザーからの接続を含め、SQL 認証は無効になります。 [Azure AD 認証](authentication-aad-overview.md)を使用しているユーザーのみが、サーバーまたはデータベースへの接続を許可されます。
 
@@ -29,12 +27,9 @@ Azure AD 専用認証は、Azure portal、Azure CLI、PowerShell、または RES
 
 Azure SQL 認証の詳細については、「[認証と承認](logins-create-manage.md#authentication-and-authorization)」を参照してください。
 
-> [!IMPORTANT]
-> 現時点では、Azure SQL Managed Instance に対して Azure portal で Azure AD 専用認証を管理することはできません。 Azure AD 専用認証を有効にするさまざまな方法に関するチュートリアルについては、「[チュートリアル: Azure SQL を使用して Azure Active Directory 専用認証を有効にする](authentication-azure-ad-only-authentication-tutorial.md)」を参照してください。
-
 ## <a name="feature-description"></a>機能の説明
 
-Azure AD 専用認証を有効にすると、[SQL 認証](logins-create-manage.md#authentication-and-authorization)はサーバー レベルで無効になり、SQL 認証資格情報に基づく認証はすべて禁止されます。 SQL 認証ユーザーは、Azure SQL Database の[論理サーバー](logical-servers.md) (すべてのデータベースを含む) に接続できなくなります。 SQL 認証は無効になっていますが、適切なアクセス許可を持つ Azure AD アカウントを使用して、新しい SQL 認証ログインおよびユーザーを作成できます。 新しく作成された SQL 認証アカウントは、サーバーへの接続を許可されません。 Azure AD 専用認証を有効にしても、既存の SQL 認証ログインおよびユーザー アカウントは削除されません。 この機能により、これらのアカウントはサーバーと、このサーバー用に作成されたデータベースに単に接続できなくなります。
+Azure AD 専用認証を有効にすると、[SQL 認証](logins-create-manage.md#authentication-and-authorization)はサーバーまたはマネージド インスタンス レベルで無効になり、SQL 認証資格情報に基づく認証はすべて禁止されます。 SQL 認証ユーザーは、Azure SQL Database またはマネージド インスタンスの[論理サーバー](logical-servers.md) (すべてのデータベースを含む) に接続できなくなります。 SQL 認証は無効になっていますが、適切なアクセス許可を持つ Azure AD アカウントを使用して、新しい SQL 認証ログインおよびユーザーを作成できます。 新しく作成された SQL 認証アカウントは、サーバーへの接続を許可されません。 Azure AD 専用認証を有効にしても、既存の SQL 認証ログインおよびユーザー アカウントは削除されません。 この機能により、これらのアカウントはサーバーと、このサーバー用に作成されたデータベースに単に接続できなくなります。
 
 Azure Policy を使用して Azure AD 専用認証が有効になっているサーバーを強制的に作成することもできます。 詳細については、[Azure AD 専用認証のための Azure Policy](authentication-azure-ad-only-authentication-policy.md) に関するページを参照してください。
 
@@ -400,10 +395,28 @@ SELECT SERVERPROPERTY('IsExternalAuthenticationOnly')
 - 適切なアクセス許可を持つ Azure AD ユーザーは、既存の SQL ユーザーの権限を借用できます。
     - Azure AD 専用認証機能が有効になっている場合でも、権限借用は SQL 認証ユーザー間で引き続き機能します。
 
-## <a name="known-issues"></a>既知の問題
+### <a name="limitations-for-azure-ad-only-authentication-in-sql-database"></a>SQL Database での Azure AD 専用認証に関する制限事項
 
-- Azure AD 専用認証が有効になっていると、サーバー管理者のパスワードをリセットすることができません。 現在のところ、パスワードのリセット操作はポータルでは成功しますが、SQL エンジンでは失敗します。 このエラーはサーバー アクティビティ ログに示されます。 サーバー管理者のパスワードをリセットするには、Azure AD 専用認証機能を無効にする必要があります。
+SQL Database に対して Azure AD 専用認証が有効になっている場合、次の機能はサポートされていません。
 
+- [Azure SQL Database サーバーのロール](security-server-roles.md)
+- [エラスティック ジョブ](job-automation-overview.md)
+- [SQL データ同期](sql-data-sync-data-sql-server-sql-database.md)
+- [CDC (変更データ キャプチャ)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)
+- [トランザクション レプリケーション](/azure/azure-sql/managed-instance/replication-transactional-overview) - レプリケーションの参加者間の接続には SQL 認証が必要なため、Azure AD 専用認証を有効にすると、以下のシナリオの SQL Database では、トランザクション レプリケーションはサポートされません。Azure SQL Managed Instance、オンプレミスの SQL Server、または Azure VM SQL Server インスタンスに加えられた変更を Azure SQL Database 内のデータベースにプッシュするためにトランザクションレプリケーションが使用される場合。
+- [SQL Insights](/azure/azure-monitor/insights/sql-insights-overview)
+- Azure AD グループ メンバー アカウントの EXEC AS ステートメント
+
+### <a name="limitations-for-azure-ad-only-authentication-in-managed-instance"></a>Managed Instance での Azure AD 専用認証に関する制限事項
+
+Managed Instance に対して Azure AD 専用認証が有効になっている場合、次の機能はサポートされていません。
+
+- [トランザクション レプリケーション](/azure/azure-sql/managed-instance/replication-transactional-overview) 
+- [Managed Instance の SQL Agent ジョブ](../managed-instance/job-automation-managed-instance.md)は Azure AD 専用認証をサポートしています。 ただし、マネージド インスタンスにアクセスできる Azure AD グループのメンバーである Azure AD ユーザーは、SQL Agent ジョブを所有できません
+- [SQL Insights](/azure/azure-monitor/insights/sql-insights-overview)
+- Azure AD グループ メンバー アカウントの EXEC AS ステートメント
+
+詳しくは、「[SQL Server と Azure SQL Managed Instance での T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#logins-and-users)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

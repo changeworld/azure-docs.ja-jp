@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: abd839bdc15430b3b4936fe1d2b65826ae792da8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6db84461df49a335ce8a3c427fe1408b00034dcd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592548"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058219"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -263,7 +263,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
     - **ソースとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、コピーするファイルの **読み取り** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ閲覧者** ロールを付与します。
     - **シンクとして**: Storage Explorer で、すべての上位フォルダーとファイル システムについて、少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに対する **書き込み** アクセス許可を与えます。 または、[アクセス制御 (IAM)] で、少なくとも **ストレージ BLOB データ共同作成者** ロールを付与します。
     
-2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](data-factory-service-identity.md#credentials)します。 
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](credentials.md)します。 
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 

@@ -2,13 +2,13 @@
 title: Service Fabric の管理対象クラスター
 description: Service Fabric マネージド クラスターは、デプロイとクラスター管理を効率化する Azure Service Fabric クラスター リソース モデルの進化版です。
 ms.topic: overview
-ms.date: 5/10/2021
-ms.openlocfilehash: 12f5c7bd16e8738aaadfb8ca9aeed491bab5b8e0
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/22/2021
+ms.openlocfilehash: 2b0b0b79899acaf0b4be3b05f52fceadf8acf54d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866920"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055048"
 ---
 # <a name="service-fabric-managed-clusters"></a>Service Fabric の管理対象クラスター
 
@@ -61,7 +61,7 @@ Service Fabric マネージド クラスターには、Basic SKU と Standard SK
 
 | 機能 | Basic | Standard |
 | ------- | ----- | -------- |
-| ネットワーク リソース ([ロード バランサー](../load-balancer/skus.md)、[パブリック IP](../virtual-network/public-ip-addresses.md) の SKU) | Basic | Standard |
+| ネットワーク リソース ([ロード バランサー](../load-balancer/skus.md)、[パブリック IP](../virtual-network/ip-services/public-ip-addresses.md) の SKU) | Basic | Standard |
 | 最小ノード (VM インスタンス) 数 | 3 | 5 |
 | ノード タイプごとの最大ノード数 | 100 | 1000 |
 | 最大ノード タイプ数 | 1 | 20 |
@@ -74,7 +74,7 @@ Service Fabric マネージド クラスターには、Basic SKU と Standard SK
 
 * [ARM テンプレートを使用するアプリケーションのデプロイ](how-to-managed-cluster-app-deployment-template.md)
 * [アプリケーション シークレット](how-to-managed-cluster-application-secrets.md)
-* [OS イメージの自動アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [OS イメージの自動アップグレード](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades)
 * [可用性ゾーンのスパニング](how-to-managed-cluster-availability-zones.md)
 * [ディスク暗号化](how-to-enable-managed-cluster-disk-encryption.md)と[マネージド ディスクの種類](how-to-managed-cluster-managed-disk.md)の選択
 * マネージド クラスターの[ノードの種類](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md)と[アプリケーション認証](how-to-managed-cluster-application-managed-identity.md)に対するマネージド ID のサポート

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: 38f98ab557738031e4c3933a4bc914b31c42cd91
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 484b05483119914003f4d8ff28967cad262e8542
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814838"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086445"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>チュートリアル:SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -187,7 +187,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. 統合ランタイムの名前に使用する変数を作成します。 一意の名前を使用し、その名前を書き留めます。 このチュートリアルの後の方で、それを使用します。
 
     ```powershell
-   $integrationRuntimeName = "ADFTutorialIR"
+    $integrationRuntimeName = "ADFTutorialIR"
     ```
 
 1. セルフホステッド統合ランタイムを作成します。
@@ -210,7 +210,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. 作成された統合ランタイムの状態を取得するために、次のコマンドを実行します。
 
     ```powershell
-   Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+    Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
     出力例を次に示します。

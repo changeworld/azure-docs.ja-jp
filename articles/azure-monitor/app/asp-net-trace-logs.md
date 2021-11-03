@@ -4,12 +4,12 @@ description: Trace、NLog、または Log4Net で生成されたログを検索�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 8b956c0e63f96dbfbcf3204c260952ccf2f2c22a
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 2836dfabbc2370ed6200030564e2b559cb656f8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552876"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079189"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -22,7 +22,7 @@ ASP.NET または ASP.NET Core アプリケーションの診断トレース ロ
 ## <a name="install-logging-on-your-app"></a>アプリにログ記録フレームワークをインストールする
 プロジェクトで選択したログ記録フレームワークをインストールします。これにより、app.config または web.config にエントリが追加されます。
 
-```XML
+```xml
  <configuration>
   <system.diagnostics>
     <trace>
@@ -116,7 +116,7 @@ Application Insights にトレースとして送信する [System.Diagnostics.Di
 ## <a name="use-etw-events"></a>ETW イベントを使用する
 Application Insights にトレースとして送信される Event Tracing for Windows (ETW) イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EtwCollector` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) ファイルの "TelemetryModules" セクションを編集します。
 
-> [!NOTE] 
+> [!NOTE]
 > ETW イベントを収集できるのは、SDK をホストするプロセスが、Performance Log Users または Administrators のメンバーである ID で実行されている場合だけです。
 
 ```xml
@@ -188,7 +188,7 @@ logger.warning('Hello, World!')
 * ページの構成をお気に入りとして保存する。
 
 > [!NOTE]
->アプリケーションで大量のデータが送信され、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、"*アダプティブ サンプリング*" 機能が動作して、テレメトリの一部のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](./sampling.md)
+> アプリケーションで大量のデータが送信され、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、"*アダプティブ サンプリング*" 機能が動作して、テレメトリの一部のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](./sampling.md)
 >
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -233,4 +233,3 @@ Application Insights をインストールしないでログ アダプターの 
 [portal]: https://portal.azure.com/
 [qna]: ../faq.yml
 [start]: ./app-insights-overview.md
-

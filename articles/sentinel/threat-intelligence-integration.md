@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: ba9d853b6c4bcbe43b81463870a06821dc34d665
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8fa4f4262e5591154de641070f910984221c9cdd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277615"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019573"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスの統合
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 既知の脅威を検出して優先順位を付けるセキュリティ アナリストの能力を高めるために、Azure Sentinel には、[脅威インテリジェンスのフィードを使用](work-with-threat-indicators.md)する方法がいくつか用意されています。 
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: srijangupta
-ms.openlocfilehash: 1e62653a7b48ac22f4482974696ad14c13b39a88
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 7ebabe554121e2ad07ef776ed78046a09db9ca9c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698857"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054592"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 
@@ -140,14 +140,13 @@ packages:
   - httpd
 ```
 > [!NOTE]
-> cloud-init には複数の[入力の種類](https://cloudinit.readthedocs.io/en/latest/topics/format.html)があります。cloud-init では、customData/userData の最初の行を使用して入力を処理する方法が指定されます。たとえば、`#cloud-config` は、コンテンツを cloud-init 構成として処理する必要があることを指定します。
+> cloud init には複数の [入力方法](https://cloudinit.readthedocs.io/en/latest/topics/format.html)があり、CustomData/userData の最初の行を使用して入力を処理する方法が示され `#cloud-config` ます。例えば、コンテンツをクラウド初期化構成として処理する必要があることを示します。
 
-
-`ctrl-X` キーを押してファイルを終了し、「`y`」と入力してファイルを保存して、`enter` キーを押して終了時にファイル名を確認します。
+<kbd>Ctrl + X</kbd>キーを押してファイルを終了し、「 <kbd>y</kbd> 」と入力してファイルを保存します。 <kbd>enter</kbd>キーを押して、終了時にファイル名を確認します。
 
 最後のステップでは、[az vm create](/cli/azure/vm) コマンドで VM を作成します。 
 
-次の例では、*centos74* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 
+次の例では、`centos74` という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 
 
 ```azurecli-interactive 
 az vm create \

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: b42b3c9146b99ee6e65dc83968ba8e97c8f209fb
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 6bc664d5f7dab7d000f1ea540db56e240c307e15
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730491"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006660"
 ---
 # <a name="design-your-private-link-setup"></a>Private Link のセットアップ設計
 
@@ -151,9 +151,9 @@ Log Analytics ワークスペースまたは Application Insights コンポー�
     |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 送信
 
 ### <a name="collecting-custom-logs-and-iis-log-over-private-link"></a>Private Link 経由でのカスタム ログと IIS ログの収集
-ストレージ アカウントは、カスタム ログの取り込みプロセスで使用されます。 既定では、サービスで管理されるストレージ アカウントが使用されます。 ただし、プライベート リンクにカスタム ログを取り込むには、独自のストレージ アカウントを使用して、それらを Log Analytics ワークスペースに関連付ける必要があります。 [コマンド ライン](/cli/azure/monitor/log-analytics/workspace/linked-storage)を使用してこのようなアカウントをセットアップする方法の詳細について参照してください。
+ストレージ アカウントは、カスタム ログの取り込みプロセスで使用されます。 既定では、サービスで管理されるストレージ アカウントが使用されます。 ただし、プライベート リンクにカスタム ログを取り込むには、独自のストレージ アカウントを使用して、それらを Log Analytics ワークスペースに関連付ける必要があります。
 
-独自のストレージ アカウントを接続する方法の詳細については、[ログ取り込み用の顧客所有ストレージ アカウント](private-storage.md)に関する記事を参照してください。
+独自のストレージ アカウントを接続する方法の詳細については、「[ログ取り込み用の顧客所有のストレージ アカウント](private-storage.md)」および特に「[プライベート リンクの使用](private-storage.md#using-private-links)」と「[ストレージ アカウントを Log Analytics ワークスペースにリンクする](private-storage.md#link-storage-accounts-to-your-log-analytics-workspace)」を参照してください。
 
 ### <a name="automation"></a>Automation
 Automation アカウント (Update Management、Change Tracking、Inventory など) を必要とする Log Analytics ソリューションを使用する場合は、Automation アカウント用にプライベート リンクを作成する必要もあります。 詳細は、「[Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する](../../automation/how-to/private-link-security.md)」を参照してください。
@@ -206,5 +206,5 @@ REST API、[CLI](/cli/azure/monitor) または PowerShell をプライベート 
 
 ## <a name="next-steps"></a>次のステップ
 - [Private Link の構成](private-link-configure.md)方法について確認します
-- [プライベート ストレージ](private-storage.md)について確認します
+- カスタム ログとカスタマー マネージド キー (CMK) の[プライベート ストレージ](private-storage.md)について確認する
 - [Automation 用の Private Link](../../automation/how-to/private-link-security.md) について確認します

@@ -7,16 +7,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.service: sql-database
 ms.subservice: service-overview
-ms.custom: sqldbrb=2, references_regions
+ms.custom: sqldbrb=2, references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/21/2021
-ms.openlocfilehash: 11e76fc7a6b84076f3161ec622e7fe8b63404169
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 077d022c5d996f5c495c38e4789a37bf234d093b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130176113"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006223"
 ---
 # <a name="whats-new-in-azure-sql-database"></a>Azure SQL Database の新機能
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,17 +33,16 @@ Azure SQL Managed Instance については、「[新機能](../managed-instance/
 
 | 特徴量 | 詳細 |
 | ---| --- |
-| [Azure AD のみの認証](authentication-azure-ad-only-authentication.md) | Azure Active Directory からの認証のみを許可するように Azure SQL Database を構成することができます。 | 
 | [変更データのキャプチャ](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | 変更データ キャプチャ (CDC) を使用すると、データベース上で発生したすべての変更を追跡できます。 この機能は、かなり前から SQL Server で使用できましたが、Azure SQL Database での使用は現在プレビュー段階です。 |
 | [エラスティック ジョブ](elastic-jobs-overview.md) | エラスティック ジョブ機能は、PaaS オファリングとして利用できる Azure SQL Database の SQL Server エージェントの代替機能です。  |
 | [エラスティック クエリ](elastic-query-overview.md) | エラスティック クエリ機能を使用すると、Azure SQL Database で複数のデータベースにまたがるクエリを実行できます。 |
-| [エラスティック トランザクション](elastic-transactions-overview.md) | エラスティック トランザクションは、Azure SQL Database と Azure SQL Managed Instance の複数のクラウド データベースに分散することができます。 |
+| [エラスティック トランザクション](elastic-transactions-overview.md) | エラスティック トランザクションを使用すると、Azure SQL Database のクラウド データベース間で分散されたトランザクションを実行できます。 |
 | [台帳](ledger-overview.md) | Azure SQL Database の台帳機能を使用すると、監査人や他のビジネス関係者などの他者に対して、データが改ざんされていないことを暗号を使用した方法で証明することができます。 | 
 | [メンテナンス期間](maintenance-window.md)| メンテナンス期間機能を使用して、Azure SQL Database のメンテナンス スケジュールを構成できます。 |
 | [Azure portal のクエリ エディター](connect-query-portal.md) | ポータルのクエリ エディターを使用すると、[Azure portal](https://portal.azure.com) から Azure SQL Database に対してクエリを直接実行できます。|
 | [クエリ ストアのヒント](/sql/relational-databases/performance/query-store-hints?view=azuresqldb-current&preserve-view=true) | OPTION 句によるクエリの実行を最適化するには、クエリ ヒントを使用します。 |
 | [SQL Analytics](../../azure-monitor/insights/azure-sql.md)|Azure SQL Analytics は、1 つのビューですべての Azure SQL Database のパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 Azure SQL Analytics で組み込みのインテリジェンスを使用して重要なパフォーマンス メトリックを収集し、視覚化することによって、パフォーマンスのトラブルシューティングを行うことができます。|
-| [SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) |  SQL Insights は、Azure SQL ファミリのあらゆる製品を監視するための包括的なソリューションです。 SQL Insights では、動的管理ビューを使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。| 
+| [SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) |  SQL Insights は、Azure SQL ファミリのあらゆる製品を監視するための包括的なソリューションです。 SQL Insights では、動的管理ビューを使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。|
 | [汎用レベル向けのゾーン冗長構成](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | このゾーン冗長構成機能を選択すると、[Azure Availability Zones](../../availability-zones/az-overview.md#availability-zones) が利用され、Azure リージョン内の複数の物理的な場所にデータベースがレプリケートされます。 [ゾーン冗長](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)を選択すると、アプリケーション ロジックを変更することなく、データセンターの壊滅的な障害を含む、大規模な障害から汎用データベースやエラスティック プールを回復できるようになります。 現在、この機能は汎用レベルでのみ使用できます。 | 
 |||
 
@@ -53,20 +52,29 @@ Azure SQL Managed Instance については、「[新機能](../managed-instance/
 
 | 特徴量 | GA の月 | 詳細 |
 | ---| --- |--- |
+| [Azure Active Directory のみの認証](authentication-azure-ad-only-authentication.md) | 2021 年 11 月 | Azure Active Directory からの認証のみを許可するように Azure SQL Database を構成することができます。 | 
 | [AAD サービス プリンシパル](authentication-aad-service-principal.md) |  2021 年 9 月 | Azure Active Directory (Azure AD) は、Azure AD アプリケーション (サービス プリンシパル) の代わりに Azure SQL Database でのユーザー作成をサポートします。| 
 | [管理操作の監査](../database/auditing-overview.md#auditing-of-microsoft-support-operations) |  2021 年 3 月 | Azure SQL 監査機能を使用すると、サポート リクエスト中に SQL 資産にアクセスする必要がある場合、Microsoft サポート エンジニアが実行した操作を監査して、従業員の透明性を高めることができます。 | 
 |||| 
 
+
 ## <a name="documentation-changes"></a>ドキュメントの変更点
 
 Azure SQL Database ドキュメントに対する重要な変更点について説明します。
+
+### <a name="november-2021"></a>2021 年 11 月
+
+| [変更点] | 詳細 |
+| --- | --- |
+| **Azure AD のみの認証** | Azure SQL Database の認証を Azure Active Directory ユーザーのみに制限する機能が一般提供されました。 詳細については、[Azure AD のみの認証](../database/authentication-azure-ad-only-authentication.md)に関する記事を参照してください。 | 
+| | | 
 
 
 ### <a name="october-2021"></a>2021 年 10 月
 
 | [変更点] | 詳細 |
 | --- | --- |
-|**新機能の分割** | 以前、一緒になっていた、**新機能** に関する記事は、製品ごとに「[SQL Database の新機能](doc-changes-updates-release-notes-whats-new.md)」と「[SQL Managed Instance の新機能](../managed-instance/doc-changes-updates-release-notes-whats-new.md)」に分割されています。これにより、現在プレビュー段階の機能、一般提供されている機能、重要なドキュメントの変更点を簡単に識別できます。 さらに、[SQL Managed Instance での既知の問題](../managed-instance/doc-changes-updates-known-issues.md)に関するコンテンツが、独自のページに移動されました。  | 
+|**新機能の分割** | 以前、一緒になっていた、**新機能** に関する記事は、製品ごとに「[SQL Database の新機能](doc-changes-updates-release-notes-whats-new.md)」と「[SQL Managed Instance の新機能](../managed-instance/doc-changes-updates-release-notes-whats-new.md)」に分割されています。これにより、現在プレビュー段階の機能、一般提供されている機能、重要なドキュメントの変更点を簡単に確認できます。 さらに、[SQL Managed Instance での既知の問題](../managed-instance/doc-changes-updates-known-issues.md)に関するコンテンツが、独自のページに移動されました。  | 
 
 ### <a name="september-2021"></a>2021 年 9 月
 

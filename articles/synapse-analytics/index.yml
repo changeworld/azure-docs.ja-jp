@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: 92caeb92dbe5d162ba4e590a0a9847abb1224863
-  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+  ms.openlocfilehash: 1457bfcee61ba019a2b9009e734688d44117c349
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121861834"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131008543"
 landingContent:
 - title: Azure Synapse Analytics について
   linkLists:
@@ -65,6 +65,16 @@ landingContent:
       url: get-started-monitor.md
     - text: 手順 9 - Knowledge Center を探索する
       url: get-started-knowledge-center.md
+- title: Data Explorer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Analytics の Data Explorer
+      url: data-explorer/data-explorer-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Synapse Studio を使用して Data Explorer プールを作成する
+      url: data-explorer/data-explorer-create-pool-studio.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview

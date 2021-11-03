@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e0c9a1d640a4ac1596370cace9cd657e082aee48
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 872a9c1f58974f1394286a6dd8f2a1c35892930c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275755"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078182"
 ---
 # <a name="use-azure-private-link-to-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に接続する
 
@@ -83,5 +83,5 @@ AMPLS に追加されない Application Insights リソースへのトラフィ�
 ## <a name="next-steps"></a>次のステップ
 - [Private Link のセットアップ設計](private-link-design.md)
 - [Private Link の構成](private-link-configure.md)方法について確認します
-
+- カスタムログとお客様が管理するキー (CMK) の [プライベートストレージ](private-storage.md) について説明します。
 <h3><a id="connect-to-a-private-endpoint"></a></h3>

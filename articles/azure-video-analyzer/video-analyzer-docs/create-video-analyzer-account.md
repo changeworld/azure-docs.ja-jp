@@ -3,19 +3,20 @@ title: Azure Video Analyzer アカウントを作成する
 description: このトピックでは、Azure Video Analyzer のアカウントを作成する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 1cb2f317ca712f2ad8ca911ecff0ac5e62cac0f5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 10/31/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3dc43f2d6882b4a1c22dee331e780a91c8425af7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604002"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031197"
 ---
 # <a name="create-a-video-analyzer-account"></a>Video Analyzer アカウントを作成する
 
-Azure Video Analyzer の使用を開始するには、Video Analyzer アカウントを作成する必要があります。 アカウントは、ストレージアカウントと [ユーザーが割り当てられたマネージド ID][docs-uami]に関連付けられている必要があります。 マネージド ID は、ストレージアカウントの [ストレージ Blob データ共同作成者][docs-storage-access] ロールと [閲覧者][docs-role-reader]ロールのアクセス許可を持っている必要があります。 この記事では、新しい Video Analyzer アカウントを作成する手順について説明します。
+Azure Video Analyzer の使用を開始するには、Video Analyzer アカウントを作成する必要があります。 アカウントは、ストレージ アカウントと少なくとも 1 つの[ユーザー割り当てマネージド ID][docs-uami] (UAMI) に関連付けられている必要があります。 UAMI には、ストレージ アカウントに対する[ストレージ BLOB データ共同作成者][docs-storage-access]ロールと、[閲覧者][docs-role-reader]ロールの権限が必要です。 必要に応じて、IoT Hub を Video Analyzer アカウントに関連付けできます。これは、Video Analyzer エッジ モジュールを[透過ゲートウェイ](./cloud/use-remote-device-adapter.md)として使用する場合に必要です。 その場合は、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール権限を持つ UAMI を追加する必要があります。 ストレージ アカウントと IoT Hub の両方に同じ UAMI を使用することも、別々の UAMI を使用することもできます。
 
- Azure portal または [Azure Resource Manager (ARM) テンプレート][docs-arm-template] を使用して、Video Analyzer アカウントを作成できます。 使用するメソッドのタブを選択します。
+この記事では、新しい Video Analyzer アカウントを作成する手順について説明します。 Azure portal や[Azure Resource Manager (ARM) テンプレート][docs-arm-template]を利用できます。 使用するメソッドのタブを選択します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +29,7 @@ Azure Video Analyzer の使用を開始するには、Video Analyzer アカウ�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. 上部にある検索バーを使用して、「**Video Analyzer**」と入力します。
 1. [*Services*]\ (サービス\) の [*Video Analyzers*]\ (ビデオアナライザー\) をクリックします。
-1. **[追加]** をクリックします。
+1. **Create** をクリックしてください。
 1. **[Create Video Analyzer account]** \(Video Analyzer アカウントを作成する\) セクションに必要な値を入力します。
 
     | Name | 説明 |
@@ -38,9 +39,19 @@ Azure Video Analyzer の使用を開始するには、Video Analyzer アカウ�
     |**Video Analyzer アカウント名**|Video Analyzer アカウント名を入力します。 Video Analyzer アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 文字から 24 文字です。|
     |**場所**|Video Analyzer アカウントのビデオとメタデータのレコードを保存する際に使用する地理的リージョンを選択します。 ドロップダウン リストのボックスには、利用可能な Video Analyzer リージョンのみが表示されます。 |
     |**ストレージ アカウント**|Video Analyzer アカウントのビデオ コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。 Video Analyzer アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 新しいストレージ アカウントは同じリージョンに作成されます。 ストレージ アカウントの命名規則は、Video Analyzer アカウントと同じです。<br/>|
-    |**ユーザー ID**|新しい Video Analyzer アカウントがストレージ アカウントにアクセスするために使用する、ユーザーが割り当てたマネージド ID を選択します。 既存のユーザー割り当てマネージド ID を選択することも、新しい ID を作成することもできます。 ユーザー割り当てマネージド ID には、ストレージ アカウントの [ストレージ Blob データ共同作成者][docs-storage-access] と [閲覧者][docs-role-reader]のロールが割り当てられます。
+    |**管理対象 ID**|新しい Video Analyzer アカウントがストレージ アカウントにアクセスするために使用する、ユーザーが割り当てたマネージド ID を選択します。 既存のユーザー割り当てマネージド ID を選択することも、新しい ID を作成することもできます。 ユーザー割り当てマネージド ID には、ストレージ アカウントの [ストレージ Blob データ共同作成者][docs-storage-access] と [閲覧者][docs-role-reader]のロールが割り当てられます。
 
 1. フォームの下部にある **[確認と作成]** をクリックします。
+
+### <a name="post-deployment-steps"></a>デプロイ後の手順
+既存の IoT Hub を Video Analyzer アカウントにアタッチすることもできますが、その場合は既存の UAMI が必要です。
+
+1. リソースのデプロイが完了したら、 **[Go to resource (リソースに移動)]** をクリックします。
+1. 設定で **[IoT Hub]** を選択し、 **[アタッチする]** をクリックします。  **[Attach IoT Hub]** の構成フライアウト ブレードで必要な値を入力します。
+     - サブスクリプション - IoT Hub が作成された Azure サブスクリプション名を選択します
+     - IoT Hub - 目的の IoT Hub を選択します
+     - マネージド ID - IoT Hub へのアクセスに使用する既存の UAMI を選択します
+1. **[Save (保存)]** をクリックして、IoT Hub を Video Analyzer アカウントにリンクします。
 
 ## <a name="template"></a>[テンプレート](#tab/template/)
 
@@ -217,9 +228,19 @@ Azure Video Analyzer の使用を開始するには、Video Analyzer アカウ�
     - **場所**: 場所を選択します。  たとえば、**米国西部 2** にします。
     - **名前プレフィックス**: リソースの名前のプレフィックスとして使用される文字列を指定します (既定値をお勧めします)。
 
-1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、 **[作成]** を選択して VM を作成し、デプロイします。
+1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、 **[作成する]** を選択してテンプレートを作成し、デプロイします。
 
-テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
+上記では、テンプレートのデプロイに Azure portal を使用しています。 Azure portal だけでなく、Azure PowerShell、Azure CLI、REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
+
+### <a name="post-deployment-steps"></a>デプロイ後の手順
+既存の IoT Hub を Video Analyzer アカウントにアタッチすることもできますが、その場合は既存の UAMI が必要です。
+
+1. リソースのデプロイが完了したら、 **[Go to resource (リソースに移動)]** をクリックします。
+1. 設定で **[IoT Hub]** を選択し、 **[アタッチする]** をクリックします。  **[Attach IoT Hub]** の構成フライアウト ブレードで必要な値を入力します。
+     - サブスクリプション - IoT Hub が作成された Azure サブスクリプション名を選択します
+     - IoT Hub - 目的の IoT Hub を選択します
+     - マネージド ID - IoT Hub へのアクセスに使用する既存の UAMI を選択します
+1. **[Save (保存)]** をクリックして、IoT Hub を Video Analyzer アカウントにリンクします。
 
 ### <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
@@ -237,7 +258,8 @@ Azure Video Analyzer の使用を開始するには、Video Analyzer アカウ�
 
 ### <a name="next-steps"></a>次のステップ
 
-[IoT Edge デバイスに Video Analyzer をデプロイする][docs-deploy-on-edge]方法について説明します。
+* [IoT Edge デバイスに Video Analyzer をデプロイする][docs-deploy-on-edge]方法について説明します。
+* [ビデオをキャプチャしてクラウドに直接記録する](cloud/get-started-livepipelines-portal.md)方法について説明します。
 
 <!-- links -->
 [docs-uami]: ../../active-directory/managed-identities-azure-resources/overview.md
@@ -245,5 +267,3 @@ Azure Video Analyzer の使用を開始するには、Video Analyzer アカウ�
 [docs-role-reader]: ../../role-based-access-control/built-in-roles.md#reader
 [docs-arm-template]: ../../azure-resource-manager/templates/overview.md
 [docs-deploy-on-edge]: deploy-iot-edge-device.md
-[click-to-deploy]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgist.githubusercontent.com%2Fbennage%2F58523b2e6a4d3bf213f16893d894dcaf%2Fraw%2Fazuredeploy.json
-<!-- TODO update the link above! -->

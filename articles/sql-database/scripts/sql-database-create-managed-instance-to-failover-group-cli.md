@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: BustosMSFT
-ms.author: robustos
+author: rothja
+ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 07/16/2019
-ms.openlocfilehash: c828c8f5b2242653cfd6d6e2bc6675c8b591d380
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 34d64e9afc9e744ceb44751eb01dafb59d32cd6b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110705854"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013690"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL Managed Instance をフェールオーバー グループに作成する
 
