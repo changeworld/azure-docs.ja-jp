@@ -47,6 +47,8 @@
       href: manage-permissions.md
     - name: DDoS Rapid Response (DRR) に参加する
       href: ddos-rapid-response.md
+    - name: Gateway Load Balancer およびパートナー NVA を使用したインライン L7 DDoS 保護
+      href: inline-protection-glb.md
     - name: パートナーをオンボードする
       href: ddos-protection-partner-onboarding.md
 - name: リファレンス

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 53e2cc3c62cc04ef05ccfe22b4876616916b0284
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 8ddefc9ee135b897dc866826208f50f7f9ad21ed
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074937"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084390"
 ---
 # <a name="private-access-preview-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL でのプライベート アクセス (プレビュー) - Hyperscale (Citus)
 
@@ -43,7 +43,7 @@ Hyperscale (Citus) に対してプライベート アクセスを有効にする
 
 ## <a name="private-link"></a>プライベート リンク
 
-Hyperscale (Citus) サーバー グループの[プライベート エンドポイント](/azure/private-link/private-endpoint-overview)を使用すると、仮想ネットワーク (VNet) 上のホストは[プライベート リンク](/azure/private-link/private-link-overview)を介してデータに安全にアクセスできるようになります。
+Hyperscale (Citus) サーバー グループの[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、仮想ネットワーク (VNet) 上のホストは[プライベート リンク](../private-link/private-link-overview.md)を介してデータに安全にアクセスできるようになります。
 
 サーバー グループのプライベート エンドポイントでは、仮想ネットワークのアドレス空間から IP アドレスを使用します。 仮想ネットワークと Hyperscale (Citus) ノード上のホスト間のトラフィックは、Microsoft バックボーン ネットワーク上のプライベート リンクを経由します。これによって、パブリック インターネットに公開されないようにします。
 
@@ -53,24 +53,24 @@ Hyperscale (Citus) サーバー グループの作成中にプライベート �
 
 ### <a name="using-a-private-dns-zone"></a>プライベート DNS ゾーンを使用する
 
-Hyperscale (Citus) によって以前に作成されたプライベート DNS ゾーンのいずれかを選択しない限り、プライベート エンドポイントごとに新しいプライベート DNS ゾーンが自動的にプロビジョニングされます。 詳細については、[プライベート DNS ゾーンの概要](/azure/dns/private-dns-overview)に関するページを参照してください。
+Hyperscale (Citus) によって以前に作成されたプライベート DNS ゾーンのいずれかを選択しない限り、プライベート エンドポイントごとに新しいプライベート DNS ゾーンが自動的にプロビジョニングされます。 詳細については、[プライベート DNS ゾーンの概要](../dns/private-dns-overview.md)に関するページを参照してください。
 
 Hyperscale (Citus) サービスは、プライベート エンドポイントを持つ各ノードに対して、選択したプライベート DNS ゾーンに `c.privatelink.mygroup01.postgres.database.azure.com` などの DNS レコードを作成します。 プライベート エンドポイント経由で Azure VM から Hyperscale (Citus) ノードに接続すると、Azure DNS はノードの FQDN をプライベート IP アドレスに解決します。
 
-プライベート DNS ゾーンの設定と、仮想ネットワーク ピアリングはそれぞれ独立しています。 同じリージョンまたは異なるリージョンの別の仮想ネットワークでプロビジョニングされたクライアントからサーバー グループ内のノードに接続する場合は、プライベート DNS ゾーンをその仮想ネットワークにリンクさせる必要があります。 詳細については、「[仮想ネットワークのリンク](/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)」を参照してください。
+プライベート DNS ゾーンの設定と、仮想ネットワーク ピアリングはそれぞれ独立しています。 同じリージョンまたは異なるリージョンの別の仮想ネットワークでプロビジョニングされたクライアントからサーバー グループ内のノードに接続する場合は、プライベート DNS ゾーンをその仮想ネットワークにリンクさせる必要があります。 詳細については、「[仮想ネットワークのリンク](../dns/private-dns-getstarted-portal.md#link-the-virtual-network)」を参照してください。
 
 > [!NOTE]
 >
 > また、サービスは、すべてのノードに対して `c.mygroup01.postgres.database.azure.com` などのパブリック CNAME レコードを常に作成します。 ただし、パブリック インターネット上の選択されたコンピューターは、データベース管理者がサーバー グループへの[パブリック アクセス](concepts-hyperscale-firewall-rules.md)を有効にした場合にのみ、パブリック ホスト名に接続できます。
 
-カスタム DNS サーバーを使用する場合は、DNS フォワーダーを使用して Hyperscale (Citus) ノードの FQDN を解決する必要があります。 フォワーダーの IP アドレスは、168.63.129.16 である必要があります。 カスタム DNS サーバーは、仮想ネットワーク内にあるか、仮想ネットワークの DNS サーバー設定を使用して到達可能である必要があります。 詳細については、「[独自の DNS サーバーを使用する名前解決](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)」を参照してください。
+カスタム DNS サーバーを使用する場合は、DNS フォワーダーを使用して Hyperscale (Citus) ノードの FQDN を解決する必要があります。 フォワーダーの IP アドレスは、168.63.129.16 である必要があります。 カスタム DNS サーバーは、仮想ネットワーク内にあるか、仮想ネットワークの DNS サーバー設定を使用して到達可能である必要があります。 詳細については、「[独自の DNS サーバーを使用する名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 
 ### <a name="recommendations"></a>Recommendations
 
 Hyperscale (Citus) サーバー グループのプライベート アクセスを有効にする場合は、次の点を考慮してください。
 
 * **サブネットのサイズ**: Hyperscale (Citus) サーバー グループのサブネットのサイズを選択するときは、コーディネーターの IP アドレスやそのサーバー グループ内のすべてのノードなどの現在のニーズ、および将来のニーズ (サーバー グループの成長など) を考慮してください。 現在および将来のニーズに対応するために十分なプライベート IP アドレスがあることを確認します。 Azure では、各サブネットで 5 つの IP アドレスが予約されています。
-  詳細については、こちらの [FAQ](/azure/virtual-network/virtual-networks-faq#configuration) を参照してください。
+  詳細については、こちらの [FAQ](../virtual-network/virtual-networks-faq.md#configuration) を参照してください。
 * **プライベート DNS ゾーン**: プライベート IP アドレスを持つ DNS レコードは、Hyperscale (Citus) サービスによって管理されます。 Hyperscale (Citus) サーバー グループに使用されているプライベート DNS ゾーンを削除しないようにしてください。
 
 ## <a name="limits-and-limitations"></a>制限と制限事項
@@ -81,6 +81,6 @@ Hyperscale (Citus) サーバー グループのプライベート アクセス�
 
 * [プライベート アクセス (プレビュー) を有効にし、管理する](howto-hyperscale-private-access.md)方法を学習する
 * [チュートリアル](tutorial-hyperscale-private-access.md)に従って、プライベート アクセス (プレビュー) の動作を確認する。
-* [プライベート エンドポイント](/azure/private-link/private-endpoint-overview)について学習する
-* [仮想ネットワーク](/azure/virtual-network/concepts-and-best-practices)について学習する
-* [プライベート DNS ゾーン](/azure/dns/private-dns-overview)について学習する
+* [プライベート エンドポイント](../private-link/private-endpoint-overview.md)について学習する
+* [仮想ネットワーク](../virtual-network/concepts-and-best-practices.md)について学習する
+* [プライベート DNS ゾーン](../dns/private-dns-overview.md)について学習する

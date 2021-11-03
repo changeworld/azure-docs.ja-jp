@@ -7,15 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 181d96d2e722d7f9b79c47285bab417bf0337133
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 825bd073759d27f789aac454eb2b384bbf065c4b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754674"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027658"
 ---
 # <a name="form-recognizer-custom-and-composed-models"></a>Form Recognizer のカスタム モデルと作成済みモデル
 
@@ -25,8 +26,7 @@ Form Recognizer では、高度な機械学習テクノロジを使用して、�
 
 * **作成済みモデル**。 作成済みモデルは、カスタム モデルのコレクションを取得し、目的のフォームの種類を含む 1 つのモデルに割り当てることによって作成されます。 作成済みモデルにドキュメントが送信されると、サービスによって分類ステップが実行され、分析のために提示されたフォームを正確に表すカスタム モデルが決定されます。
 
-:::image type="content" source="media/analyze.png" alt-text="スクリーンショット: Form Recognizer ツールのカスタム フォーム分析ウィンドウ。":::
-
+:::image type="content" source="media/studio/analyze-custom.png" alt-text="スクリーンショット: Form Recognizer ツールのカスタム フォーム分析ウィンドウ。":::
 
 ## <a name="what-is-a-custom-model"></a>カスタム モデルとは
 
@@ -36,37 +36,70 @@ Form Recognizer では、高度な機械学習テクノロジを使用して、�
 
 作成済みモデルを使用すると、1 つのモデル ID で呼び出される作成済みモデルに複数のカスタム モデルを割り当てることができます。 これは、複数のモデルをトレーニングし、類似したフォームの種類を分析するためにそれらをグループ化する場合に役立ちます。 たとえば、作成済みモデルには、サプライ、備品、家具の発注書を分析するようにトレーニングされたカスタム モデルを含めることができます。 適切なモデルを手動で選択する代わりに、作成済みモデルを使用すれば、分析と抽出ごとに適切なカスタム モデルを決定できます。
 
-## <a name="try-form-recognizer-studio-preview"></a>Form Recognizer Studio (プレビュー) を試す
+## <a name="development-options"></a>開発オプション
 
-* Form Recognizer Studio は、プレビュー (v3.0) API で使用できます。
+Form Recognizer v2.1 では、次のリソースがサポートされています。
 
-* Form Recognizer Studio のカスタム フォーム機能を使用して、特定または固有の種類のフォームを分析します。
+| 機能 | リソース |
+|----------|-------------------------|
+|**カスタム モデル**| <ul><li>[**Form Recognizer ラベル付けツール**](https://fott-2-1.azurewebsites.net)</li><li>[**REST API**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-forms-with-a-custom-model)</li><li>[**クライアント ライブラリ SDK**](quickstarts/try-sdk-rest-api.md)</li><li>[**Form Recognizer Docker コンテナー**](containers/form-recognizer-container-install-run.md?tabs=custom#run-the-container-with-the-docker-compose-up-command)</li></ul>|
 
-> [!div class="nextstepaction"]
-> [Form Recognizer Studio を試す](https://formrecognizer.appliedai.azure.com/studio/customform/projects)
+Form Recognizer v3.0 では、次のリソースがサポートされています。
 
-## <a name="try-form-recognizer-sample-labeling-tool"></a>Form Recognizer サンプル ラベル付けツールを試す
+| 機能 | リソース |
+|----------|-------------|
+|**カスタム モデル**| <ul><li>[**Form Recognizer Studio**](https://fott-2-1.azurewebsites.net)</li><li>[**REST API**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**C# SDK**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Python SDK**](quickstarts/try-v3-python-sdk.md)</li></ul>| 
 
-カスタム フォームからデータを抽出する方法を確認するには、サンプル ラベル付けツールを試してください。 次が必要です。
+### <a name="try-form-recognizer"></a>Form Recognizer を試す
 
-* Azure サブスクリプション — [無料で作成できます](https://azure.microsoft.com/free/cognitive-services/)
+カスタム モデルを使用して、特定のドキュメントまたは一意のドキュメントからデータを抽出する方法について説明します。 次が必要です。
 
-* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
+* Azure サブスクリプション — [無料で作成する](https://azure.microsoft.com/free/cognitive-services/)ことができます
+
+* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[Go to resource (リソースに移動)]** を選択して、API キーとエンドポイントを取得します。
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
 
-> [!div class="nextstepaction"]
-> [試してみる](https://fott-2-1.azurewebsites.net/projects/create)
+#### <a name="form-recognizer-studio-preview"></a>Form Recognizer Studio (プレビュー)
+
+> [!NOTE]
+> Form Recognizer スタジオは、プレビュー (v3.0) API で使用できます。
+
+1. Form Recognizer Studio のホーム ページで、 **[Custom form]\(カスタムフォーム\)** を選択します。
+
+1. **[マイ プロジェクト]** で、 **[+ Create a project]\(+ プロジェクトの作成\)** を選択します。
+
+1. **プロジェクトの詳細** を指定するフィールドに値を入力します。
+
+1. **サービス リソースを構成** します。
+
+1. **[Connect your training data source]\(トレーニング データ ソースを接続\)** に、**Storage アカウント** と  **BLOB コンテナー** を追加します。
+
+1. プロジェクトを **確認して作成** します。
+
+1. カスタム モデルをビルドしてテストするための一連のサンプル ドキュメントが用意されています。
+
+    > [!div class="nextstepaction"]
+    > [Form Recognizer スタジオを試す](https://formrecognizer.appliedai.azure.com/studio/customform/projects)
+
+#### <a name="sample-labeling-tool"></a>サンプル ラベル付けツール
+
+同じ種類の少なくとも 6 つのフォームのセットが必要になります。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 [サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 *sample_data.zip* をダウンロードして抽出し、コンテンツを Azure Blob Storage コンテナーにアップロードします。
 
 Form Recognizer UI で以下の手順を実行します。
 
-1. **[Use Custom to train a model with labels and get key value pairs]\(キーと値のペアを取得するためにカスタムを使用してラベルでモデルのトレーニングを行う\)** を選択します。
+1. サンプル ラベル付けツールのホーム ページで、 **[Use Custom to train a model with labels and get key value pairs]\(キーと値のペアを取得するためにカスタムを使用してラベルでモデルのトレーニングを行う\)** を選択します。
 
       :::image type="content" source="media/label-tool/fott-use-custom.png" alt-text="スクリーンショット: カスタム オプションの FOTTtool の選択。":::
 
 1. 次のウィンドウで **[New project]\(新規プロジェクト\)** を選択します。
 
     :::image type="content" source="media/label-tool/fott-new-project.png" alt-text="スクリーンショット: FOTTtools で新しいプロジェクトが選択されます。":::
+
+    詳細な手順については、[サンプル ラベル付けツール](quickstarts/try-sample-label-tool.md)のクイックスタートを *参照* してください。
+
+    > [!div class="nextstepaction"]
+    > [サンプル ラベル付けツールを試す](https://fott-2-1.azurewebsites.net/projects/create)
 
 ## <a name="input-requirements"></a>入力の要件
 
@@ -80,7 +113,7 @@ Form Recognizer UI で以下の手順を実行します。
 * PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
 * 教師なし学習の場合 (ラベルの付いたデータなし):
   * データには、キーと値を含める必要があります。
-  * キーは値の上または左に配置されている必要があり、下または右に配置されていてはいけません。
+  * キーは値の上または左に表示される必要があり、下または右に表示することはできません。
 
   > [!TIP]
   > **トレーニング データ**
@@ -103,29 +136,29 @@ Form Recognizer UI で以下の手順を実行します。
 
 * **カスタム モデル API (v3.0)** では、カスタム フォームの署名の検出がサポートされています。 カスタム モデルをトレーニングするときに、特定のフィールドを署名として指定できます。  カスタム モデルでドキュメントが分析されるときに、署名が検出されたかどうかが示されます。
 
-* アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
+* アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)の説明を参照してください。
 
-* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
+* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
 
 ### <a name="try-signature-detection"></a>署名の検出を試す
 
-1. [**トレーニング データセットを作成します**](build-training-data-set.md#custom-model-input-requirements)。
+1. トレーニング データセットを作成します。
 
-1. [**Form Recognizer サンプル ラベル付ツール**](https://fott-preview-private.azurewebsites.net)に移動し、 **[Use Custom to train a models with labels and get key value pairs]\(カスタムを使用してラベルでモデルをトレーニングし、キーと値のペアを取得する\)** を選択します。
+1. [Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio) に移動し、[Custom models]\(カスタム モデル\) で **[Custom form]\(カスタム フォーム\)** を選択します。
 
-    :::image type="content" source="media/label-tool/fott-use-custom.png" alt-text="スクリーンショット: カスタム オプションの FOTTtools の選択。":::
+    :::image type="content" source="media/label-tool/select-custom-form.png" alt-text="スクリーンショット: Form Recognizer Studio でカスタム フォーム ページを選択します。":::
 
-1. 次のウィンドウで **[New project]\(新規プロジェクト\)** を選択します。
+1. ワークフローに従って、新しいプロジェクトを作成します。
 
-    :::image type="content" source="media/label-tool/fott-new-project.png" alt-text="スクリーンショット: FOTTtools で新しいプロジェクトが選択されます。":::
+1. カスタム モデルの入力要件に従います。
 
-1. 「[**カスタム モデルの入力要件**](build-training-data-set.md#custom-model-input-requirements)」に従います。
+1. ドキュメントにラベルを付けます。 署名フィールドの場合、精度を向上させるため領域ラベル付けを使用することをお勧めします。
 
-1. 種類を **署名** にしてラベルを作成します。
+1. ドキュメントにラベルを付けます。 署名フィールドの場合、精度を向上させるため領域ラベル付けを使用することをお勧めします。
 
-1. **ドキュメントにラベルを付けます**。  署名フィールドの場合、精度を向上させるため領域ラベル付けを使用することをお勧めします。
+    :::image type="content" source="media/label-tool/signature-label-region-too.png" alt-text="スクリーンショット: 署名フィールドへのラベル付け。":::
 
-1. トレーニング セットにラベルを付けた後は、**カスタム モデルをトレーニング** し、それを使用してドキュメントを分析できます。 署名フィールドで、署名が検出されたかどうかが指定されます。
+トレーニング セットにラベルを付けた後は、カスタム モデルをトレーニングし、それを使用してドキュメントを分析できます。 署名フィールドで、署名が検出されたかどうかが指定されます。
 
 ## <a name="next-steps"></a>次の手順
 

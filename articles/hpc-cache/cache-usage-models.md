@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache の使用モデル
 description: さまざまなキャッシュ使用モデルと、それらを選択する方法、および読み取り専用または読み取り/書き込みキャッシュを設定し、その他のキャッシュ設定を制御する方法について説明します。
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
-ms.author: v-erkel
-ms.openlocfilehash: b623bd074b327d8139082d3060a6cdb120c8acbb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: femila
+ms.openlocfilehash: 84964e8a5f188d03fb9e5bcb98d4466610732c75
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294906"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015240"
 ---
 <!-- filename is referenced from GUI in aka.ms/hpc-cache-usagemodel -->
 

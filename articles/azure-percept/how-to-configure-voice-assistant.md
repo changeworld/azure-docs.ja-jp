@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.custom: template-how-to
-ms.openlocfilehash: ed9a6bcc77e94b569e10a439b044ce78a90faff2
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 82be52611d12b69e146fdaa477614a3dbc25242d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226821"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006565"
 ---
 # <a name="configure-your-azure-percept-voice-assistant-application"></a>Azure Percept 音声アシスタント アプリケーションを構成する
 
@@ -104,4 +104,3 @@ ms.locfileid: "123226821"
 ## <a name="next-steps"></a>次のステップ
 
 音声アシスタントの構成を更新したら、Azure Percept Studio のデモに戻り、アプリケーションを操作します。
-

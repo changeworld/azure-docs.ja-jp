@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9fa0e633c92300e0932200725aa1fa82de46f359
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: e8c89f4542b29a69346f43f95a7d2f5de78148f9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221477"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012494"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -71,7 +71,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
     > [bin()](/azure/kusto/query/binfunction) では不均一な期間が返される可能性があるため、実行時、アラート サービスでは適切な時間を使用して [bin()](/azure/kusto/query/binfunction) 関数が [bin_at()](/azure/kusto/query/binatfunction) に変換され、固定小数点を持つ結果が得られるようにします。
 
     > [!NOTE]
-    > アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
+    > アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-08-01` 以上の API バージョンでのみサポートされています。
 
     ![[集計] オプション](media/alerts-log/aggregate-on.png)
 
@@ -143,9 +143,6 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 ### <a name="log-alert-for-all-other-resource-types"></a>その他の種類のリソースのログ アラート
 
-> [!NOTE]
-> 現時点では、API バージョン `2020-05-01-preview` とリソース中心のログ アラートに対して追加料金は発生しません。  プレビュー段階にある機能の価格は、後で発表され、課金が始まる前に通知されます。 通知期間後も新しい API バージョンとリソース中心のログ アラートを引き続き使用することを選択した場合は、該当する料金が適用されます。
-
 1. **[条件]** タブから開始します。
 
     1. [ **[測定]**](./alerts-unified-log.md#measure)、[ **[集計の種類]**](./alerts-unified-log.md#aggregation-type)、および [ **[集計の粒度]**](./alerts-unified-log.md#aggregation-granularity) が正しいことを確認します。 
@@ -210,7 +207,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 現在、PowerShell は API バージョン `2020-05-01-preview` ではサポートされていません
+> 現在、PowerShell は API バージョン `2020-08-01` ではサポートされていません
 
 下に一覧表示されている PowerShell コマンドレットは、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) を利用してルールを管理するために用意されています。
 
@@ -280,7 +277,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ## <a name="managing-log-alerts-using-cli"></a>CLI を使用したログ アラートの管理
 
 > [!NOTE]
-> Azure CLI サポートは、scheduledQueryRules API バージョン `2020-05-01-preview` 以降でのみ使用できます。 以前の API バージョンでは、次に示すように、テンプレートと共に Azure Resource Manager CLI を使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、CLI を使用するよう切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。
+> Azure CLI サポートは、scheduledQueryRules API バージョン `2020-08-01` 以降でのみ使用できます。 以前の API バージョンでは、次に示すように、テンプレートと共に Azure Resource Manager CLI を使用できます。 従来の [Log Analytics Alert API](./api-alerts.md) を使用する場合は、CLI を使用するよう切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。
 
 前のセクションでは、Azure portal を使用してログ アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用することです。 この記事では、Cloud Shell を使用します。
 

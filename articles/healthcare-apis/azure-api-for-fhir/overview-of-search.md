@@ -5,14 +5,14 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 5/17/2021
+ms.date: 10/25/2021
 ms.author: cavoeg
-ms.openlocfilehash: f974cb0a5099ce23f9b7ecaf719c09239c21eca8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 0a6ca1bd251b65b93baf1a262acc0d22102b1ad1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824531"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084848"
 ---
 # <a name="overview-of-search-in-azure-api-for-fhir"></a>Azure API for FHIR での検索の概要
 
@@ -136,10 +136,13 @@ Azure API for FHIRでは、次の検索パラメーター型のペアがサポ�
 | _revinclude                   | はい                  | はい                       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS の _revinclude には、:iterate のサポートが含まれません [(#2137)](https://github.com/microsoft/fhir-server/issues/2137)。  また、不適切な要求に対する正しくない状態コードがあります [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | はい             | はい                   |
 | _total                        | 部分的              | 部分的                   | _total=none および _total=accurate                               |
-| _sort                         | 部分的              | 部分的                   | sort=_lastUpdated はサポートされています。 既定では、レコードは昇順で並べ替えられます。 プレフィックス '-' を使用して、降順で並べ替えることができます。 2021 年 4 月 20 日より後に作成された Azure API for FHIR Cosmos および OSS Cosmos DB データベースの場合は、名、姓、および臨床日でも並べ替えがサポートされます。          |
+| _sort                         | 部分的              | Partial                   | sort = _lastUpdated は、Azure API for FHIR および FHIR サービスでサポートされています。 fhir サービスと OSS SQL DB fhir サーバーでは、文字列と dateTime フィールドによる並べ替えがサポートされています。 2021年4月20日より後に作成された Azure API for fhir および OSS Cosmos DB データベースでは、first name、last name、および臨床日に対して sort がサポートされています。          |
 | _contained                    | いいえ                   | いいえ                        |
 | _containedType                | いいえ                   | いいえ                        |
 | _score                        | いいえ                   | いいえ                        |
+
+> [!NOTE]
+> 既定で `_sort` は、レコードは昇順で並べ替えられます。 プレフィックスを使用して、降順に並べ替えることができ `'-'` ます。 さらに、FHIR サービスと Azure API for FHIR では、一度に1つのフィールドでのみ並べ替えを行うことができます。
 
 既定では、Azure API for FHIR は厳密な処理に設定されています。 これは、サーバーが不明なパラメーターまたはサポートされていないパラメーターを無視することを意味します。 厳密な処理を使用する場合は、**Prefer** ヘッダーを使用して `handling=strict` を設定できます。
 

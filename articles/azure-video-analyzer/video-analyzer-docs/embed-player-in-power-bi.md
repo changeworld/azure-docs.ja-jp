@@ -4,21 +4,23 @@ description: Azure Video Analyzer を使用して、継続的なビデオ記録�
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 08/06/2021
-ms.openlocfilehash: 38fcd60352fe151637e0e7f8fa4dfe9159b12915
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fb6014649e6fe71a2d2de5e4d7adb72ba9b66a37
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620713"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012163"
 ---
 # <a name="embed-player-widget-in-power-bi"></a>Power BI にプレーヤー ウィジェットを埋め込む
+
 
 Azure Video Analyzer を使用すると、ビデオと関連する推論メタデータを Video Analyzer クラウド リソースに[記録](detect-motion-record-video-clips-cloud.md)できます。 Video Analyzer には、[プレーヤー ウィジェット](player-widget.md)が用意されています。この簡単に埋め込むことができるウィジェットを利用すると、クライアント アプリはビデオと推論メタデータを再生できます。
 
 ダッシュボードは、ビジネスを監視し、最も重要なすべてのメトリックを一目で監視する方法です。 Power BI ダッシュボードは、IoT Hub のテレメトリを含む複数のデータ ソースとビデオを組み合わせる強力なツールです。 このチュートリアルでは、[Microsoft Power BI](https://powerbi.microsoft.com/) Web サービスを使用して 1 つまたは複数のプレーヤー ウィジェットをダッシュボードに追加する方法について説明します。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/power-bi/embed-block-diagram.png" alt-text="Microsoft Power BI に Azure Video Analyzer player ウィジェットを埋め込むためのブロック図。":::
+> :::image type="content" source="./media/power-bi/embed-block-diagram.svg" alt-text="Microsoft Power BI に Azure Video Analyzer player ウィジェットを埋め込むためのブロック図。":::
 
 ## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事
 

@@ -6,20 +6,20 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Translator はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってテキストを翻訳することができます。 このサービスでは、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 カスタム翻訳ツールは Translator の拡張機能で、使用するとニューラル翻訳システムを構築できます。 カスタマイズした翻訳システムを使用すると、Translator または Microsoft 音声サービスを使ってテキストを翻訳できます。
   services: cognitive-services
-  author: erhopf
+  author: laujan
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
   ms.date: 10/14/2019
-  ms.author: erhopf
+  ms.author: lajanuar
   ms.custom: contperf-fy21q2
-  ms.openlocfilehash: 98e67bace94a4680b3f19fe64d77882ec87551ce
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: feea685e567c9a5d4867b3d4a47a200cc7a02117
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121750028"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131073436"
 landingContent:
 - title: Translator
   linkLists:

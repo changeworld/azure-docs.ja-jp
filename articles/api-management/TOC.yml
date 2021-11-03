@@ -110,6 +110,8 @@
           href: restify-soap-api.md
         - name: Websocket API のインポート
           href: websocket-api.md
+        - name: GraphQL API のインポート
+          href: graphql-api.md
         - name: Web アプリのインポート
           href: import-app-service-as-api.md
         - name: 関数アプリのインポート
@@ -290,6 +292,8 @@
           href: api-management-dapr-policies.md
         - name: 検証ポリシー
           href: validation-policies.md
+        - name: GraphQL 検証ポリシー
+          href: graphql-validation-policies.md
     - name: 運用環境でテストする
       items:
         - name: API を Power Platform にエクスポートする

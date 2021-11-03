@@ -3,12 +3,13 @@ title: Azure Container Registry でのリポジトリに対するアクセス許
 description: イメージのプルやプッシュまたは他のアクションを実行するための、Premium レジストリ内の特定のリポジトリをスコープとするアクセス許可を持つトークンを作成します。
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 796d98173a5ec850af2f8dbec3e8bfd1db902ca0
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 560722669dc663799af3219393cb7bdc4acdf3ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220436"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037988"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
@@ -428,7 +429,7 @@ az acr token delete --name MyToken --registry myregistry
 
 * スコープ マップとトークンを管理するには、[az acr scope-map][az-acr-scope-map] および [az acr token][az-acr-token] コマンド グループの追加コマンドを使用します。
 * Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure コンテナー レジストリで認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
-
+* [接続されたレジストリ](intro-connected-registry.md)と[アクセス](overview-connected-registry-access.md)のためのトークンの使用について説明します。
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

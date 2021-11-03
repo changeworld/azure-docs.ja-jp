@@ -3,21 +3,21 @@ title: 'クイックスタート: Translator を使ってみる'
 titleSuffix: Azure Cognitive Services
 description: Translator サービスを使用して、テキストの翻訳、テキストの表記変換、言語の検出などを行う方法について説明します。 例は、C#、Java、JavaScript、および Python で提供されています。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 07/06/2021
-ms.author: erhopf
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator サービス, テキストの翻訳, テキストの表記変換, 言語の検出
-ms.openlocfilehash: 10e879df320d527ab6c853a03e9eb49d1b4d50de
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4b3aa5c75f18126f14fb3fae6c3a7a9a93b39710
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113355906"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011828"
 ---
 # <a name="quickstart-get-started-with-translator"></a>クイックスタート: Translator を使ってみる
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/17/2021
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 598f1df9808bfe4e367719615ebae332c617a984
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9fef5f438cc28c5e0fe3ae86d1d85b67af45a8ba
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767833"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005805"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v3 ドライバー)
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "124767833"
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-次は、コードを使った作業に移りましょう。 GitHub から Cassandra アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+次は、コードを使った作業に移りましょう。 GitHub から Cassandra アプリのクローンを作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開きます。 `git-samples` という名前の新しいフォルダーを作成します。 その後、コマンド プロンプトを閉じます。
 
@@ -63,7 +63,7 @@ ms.locfileid: "124767833"
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -75,27 +75,27 @@ ms.locfileid: "124767833"
 
 * Cassandra ホスト、ポート、ユーザー名、パスワード、および TLS/SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
 
-   ```java
-   cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
-   ```
+  ```java
+  cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
+  ```
 
 * `cluster` は Azure Cosmos DB Cassandra API に接続し、アクセスするセッションを返します。
 
-    ```java
-    return cluster.connect();
-    ```
+  ```java
+  return cluster.connect();
+  ```
 
 次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 新しいキースペースを作成します。
 
-    ```java
-    public void createKeyspace() {
-        final String query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' } ";
-        session.execute(query);
-        LOGGER.info("Created keyspace 'uprofile'");
-    }
-    ```
+  ```java
+  public void createKeyspace() {
+      final String query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' } ";
+      session.execute(query);
+      LOGGER.info("Created keyspace 'uprofile'");
+  }
+  ```
 
 * 新しいテーブルを作成します。
 
@@ -109,41 +109,41 @@ ms.locfileid: "124767833"
 
 * 準備されたステートメント オブジェクトを使用してユーザー エンティティを挿入します。
 
-    ```java
-    public PreparedStatement prepareInsertStatement() {
-        final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (?,?,?)";
-        return session.prepare(insertStatement);
-    }
+  ```java
+  public PreparedStatement prepareInsertStatement() {
+      final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name, user_bcity) VALUES (?,?,?)";
+      return session.prepare(insertStatement);
+  }
 
-    public void insertUser(PreparedStatement statement, int id, String name, String city) {
-        BoundStatement boundStatement = new BoundStatement(statement);
-        session.execute(boundStatement.bind(id, name, city));
-    }
-    ```
+  public void insertUser(PreparedStatement statement, int id, String name, String city) {
+      BoundStatement boundStatement = new BoundStatement(statement);
+      session.execute(boundStatement.bind(id, name, city));
+  }
+  ```
 
 * すべてのユーザー情報を取得するクエリを実行します。
 
-    ```java
-   public void selectAllUsers() {
-        final String query = "SELECT * FROM uprofile.user";
-        List<Row> rows = session.execute(query).all();
+  ```java
+  public void selectAllUsers() {
+      final String query = "SELECT * FROM uprofile.user";
+      List<Row> rows = session.execute(query).all();
 
-        for (Row row : rows) {
-            LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-        }
-    }
-    ```
+      for (Row row : rows) {
+          LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+      }
+  }
+  ```
 
 * 単一ユーザーの情報を取得するクエリを実行します。
 
-    ```java
-    public void selectUser(int id) {
-        final String query = "SELECT * FROM uprofile.user where user_id = 3";
-        Row row = session.execute(query).one();
+  ```java
+  public void selectUser(int id) {
+      final String query = "SELECT * FROM uprofile.user where user_id = 3";
+      Row row = session.execute(query).one();
 
-        LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-    }
-    ```
+      LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+  }
+  ```
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 

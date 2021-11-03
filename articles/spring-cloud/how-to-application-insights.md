@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 328d99d2e690004f87d7224253e81ed6815a2e75
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1886632101e7d453c2c7e4d4a5b84dbd57c2305a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984047"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075013"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud での Application Insights Java In-Process Agent
 
@@ -294,9 +294,9 @@ Azure Spring Cloud の名前 `App Instance` は、次のシナリオで変更ま
 * [Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)
 * [ログとメトリックの分析](diagnostic-services.md)
 * [リアルタイムでログをストリームする](./how-to-log-streaming.md)
-* [アプリケーション マップ](/azure/azure-monitor/app/app-map)
-* [ライブ メトリック](/azure/azure-monitor/app/live-stream)
-* [パフォーマンス](/azure/azure-monitor/app/tutorial-performance)
-* [エラー](/azure/azure-monitor/app/tutorial-runtime-exceptions)
-* [メトリック](/azure/azure-monitor/essentials/tutorial-metrics-explorer)
-* [ログ](/azure/azure-monitor/logs/data-platform-logs)
+* [アプリケーション マップ](../azure-monitor/app/app-map.md)
+* [ライブ メトリック](../azure-monitor/app/live-stream.md)
+* [パフォーマンス](../azure-monitor/app/tutorial-performance.md)
+* [エラー](../azure-monitor/app/tutorial-runtime-exceptions.md)
+* [メトリック](../azure-monitor/essentials/tutorial-metrics-explorer.md)
+* [ログ](../azure-monitor/logs/data-platform-logs.md)

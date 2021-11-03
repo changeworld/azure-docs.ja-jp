@@ -8,16 +8,18 @@ ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 07/11/2021
-ms.openlocfilehash: be35be9211ce9d183ab19d768d504798b7150a33
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ef2afe833af9d5beb1351c6306493e5aed55f907
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179373"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083823"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel ウォッチリストを使用する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境内のイベントと関連付けるために、外部データ ソースからのデータ収集が可能になります。 ウォッチリストを作成すると、検索、検出規則、脅威ハンティング、および応答プレイブックで使用できます。 ウォッチリストは、名前と値のペアとして Azure Sentinel ワークスペースに格納され、最適なクエリ パフォーマンスと待ち時間の短縮のためにキャッシュされます。
 

@@ -1,26 +1,24 @@
 ---
-title: Event Hubs Premium (プレビュー) の概要
+title: Event Hubs Premium の概要
 description: この記事では、ハイエンドのストリーミングのニーズに対応するために Event Hubs のマルチテナント デプロイを提供する Azure Event Hubs Premium の概要を説明します。
 ms.topic: article
-ms.date: 5/25/2021
-ms.openlocfilehash: d60469937324226b8d928fb257d83966c52dce7e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8822b44f5f2a6d5cbc367da9a8ac5d397f87e9f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112415028"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073018"
 ---
-# <a name="overview-of-event-hubs-premium-preview"></a>Event Hubs Premium (プレビュー) の概要
+# <a name="overview-of-event-hubs-premium"></a>Event Hubs Premium の概要
 
 Event Hubs Premium レベルは、予測可能な待機時間を伴うエラスティックで優れたパフォーマンスを必要とする、ハイエンド ストリーミング シナリオ向けに設計されています。 パフォーマンスは、予約済みのコンピューティング、メモリ、ストレージ リソースを提供することで実現され、これによりマネージド マルチテナント PaaS 環境でのテナント間の干渉が最小限に抑えられます。 
 
-Event Hubs Premium プレビューでは、耐久性を損なうことなく、以前の世代よりもはるかに予測可能で、送信とパススルーの待機時間を大幅に短縮する、新しい 2 層のネイティブ コード ログ エンジンが導入されています。 Event Hubs Premium では、すべてのイベントが 3 つのレプリカにレプリケートされ、使用可能な場合は Azure 可用性ゾーンに分散されます。すべてのレプリカは、送信操作が完了したと報告される前に、基になる高速ストレージに同期的にフラッシュされます。 すぐに読み取られないイベント、または後で再読み取りが必要なイベントは、最大 90 日間保持され、可用性ゾーンの冗長ストレージ層に透過的に保持できます。 高速ストレージ層とデータ保持ストレージ層の両方のイベントは暗号化されます。Event Hubs Premium では、暗号化キーを指定することができます。 
+Event Hubs Premium では、耐久性を損なうことなく、以前の世代よりもはるかに予測可能で、送信とパススルーの待機時間を大幅に短縮する、新しい 2 層のネイティブ コード ログ エンジンが導入されています。 Event Hubs Premium では、すべてのイベントが 3 つのレプリカにレプリケートされ、使用可能な場合は Azure 可用性ゾーンに分散されます。すべてのレプリカは、送信操作が完了したと報告される前に、基になる高速ストレージに同期的にフラッシュされます。 すぐに読み取られないイベント、または後で再読み取りが必要なイベントは、最大 90 日間保持され、可用性ゾーンの冗長ストレージ層に透過的に保持できます。 高速ストレージ層とデータ保持ストレージ層の両方のイベントは暗号化されます。Event Hubs Premium では、暗号化キーを指定することができます。 
 
 これらのストレージ関連の機能と、Event Hubs Standard オファリングのすべての機能およびプロトコルのサポートに加えて、Event Hubs Premium の分離モデルを使用すると、動的パーティションのスケールアップやまだ追加されていない将来的な機能などの新機能が可能になります。 また、クォータの割り当て量がはるかに多くなります。 Event Hubs Capture は追加コストなしで含まれます。
 
-> [!IMPORTANT]
-> 現在、Event Hubs Premium はパブリック プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
- 
 Premium オファリングは、基になるインフラストラクチャ内の分離されたリソース (CPU、メモリ、ストレージ) の共有に対応する[処理ユニット (PU)](event-hubs-scalability.md#processing-units) によって請求されます。 
 
 専用オファリングと比較して、Event Hubs Premium は、リソースをすばやくシフトできる非常に大規模なマルチテナント環境内で分離を提供するため、はるかにエラスティックかつ迅速にスケーリングでき、PU を動的に調整できます。 そのため、Event Hubs Premium は、Event Hubs Dedicated と比較した場合に、特に 1 日または 1 週間を通して負荷が変化する状況では、ミッドレンジ (<120 MB/sec) のスループット要件に対してよりコスト効率の高いオプションとなることがよくあります。 
@@ -71,5 +69,4 @@ Premium レベルでは、Standard プランのすべての機能が提供され
 
 ## <a name="next-steps"></a>次のステップ
 
-Event Hubs Premium (プレビュー) は、[Azure portal](https://portal.azure.com/#create/Microsoft.EventHub) から使用を開始できます。 価格設定の詳細については [Event Hubs Premium の価格設定](https://azure.microsoft.com/pricing/details/event-hubs/)に関する記事を、Event Hubs に関してよく寄せられる質問に対する回答を見つけるには [Event Hubs に関する FAQ](event-hubs-faq.yml) をご覧ください。 
-
+Event Hubs Premium は、[Azure portal](https://portal.azure.com/#create/Microsoft.EventHub) から使用を開始できます。 価格設定の詳細については [Event Hubs Premium の価格設定](https://azure.microsoft.com/pricing/details/event-hubs/)に関する記事を、Event Hubs に関してよく寄せられる質問に対する回答を見つけるには [Event Hubs に関する FAQ](event-hubs-faq.yml) をご覧ください。 

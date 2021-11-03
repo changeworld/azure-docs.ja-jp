@@ -10,17 +10,14 @@ ms.date: 06/18/2020
 ms.topic: quickstart
 ms.service: active-directory
 ms.subservice: B2B
-ms.custom:
-- it-pro
-- seo-update-azuread-jan
-- mode-portal
+ms.custom: it-pro, seo-update-azuread-jan, mode-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242f5a721959246b8d0159598cc86ab3b5194641
-ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
+ms.openlocfilehash: 550f4bc700c6ade4f608a3108a254f683deebce5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112422608"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049541"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>クイック スタート:Azure portal でディレクトリにゲスト ユーザーを追加する
 

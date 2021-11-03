@@ -3,71 +3,84 @@
 - name: 概要
   expanded: true
   items:
-    - name: Azure のコンフィデンシャル コンピューティングへようこそ
+    - name: コンフィデンシャル コンピューティングとは
       href: overview.md
+    - name: Azure におけるコンフィデンシャル コンピューティング
+      href: overview-azure-products.md
     - name: ユース ケースとシナリオ
       href: use-cases-scenarios.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: 仮想マシン
+    - name: エンクレーブを使用した機密 VM
       items:
-        - name: Azure Portal で作成する
-          href: quick-create-portal.md
-        - name: Marketplace で作成する
-          href: quick-create-marketplace.md
-    - name: Azure Kubernetes Services (AKS)
+        - name: Intel SGX をデプロイする
+          items:
+            - name: Azure portal で Intel SGX VM を作成する
+              href: quick-create-portal.md
+            - name: Marketplace で Intel SGX VM を作成する
+              href: quick-create-marketplace.md
+    - name: エンクレーブを使用したコンフィデンシャル コンテナー
       items:
-        - name: AKS の機密ノードの概要
-          href: confidential-nodes-aks-overview.md
-        - name: 機密ノードと Azure CLI
-          href: confidential-nodes-aks-get-started.md
-        - name: AKS 上の機密ノードに関する FAQ
-          href: confidential-nodes-aks-faq.yml
+        - name: CLI で Intel SGX AKS を作成する
+          href: confidential-enclave-nodes-aks-get-started.md
 - name: 概念
   expanded: true
   items:
-    - name: 仮想マシン (VM)
+    - name: コンフィデンシャル コンピューティング ソリューションの構築
+      href: confidential-computing-solutions.md
+    - name: コンフィデンシャル コンピューティングへのソリューションのデプロイ
+      href: confidential-computing-deployment-models.md
+    - name: 機密仮想マシン
       items:
-        - name: エンクレーブ対応仮想マシン
-          href: confidential-computing-enclaves.md
-        - name: 仮想マシン上のソリューション
-          href: virtual-machine-solutions.md
-        - name: コンフィデンシャル コンピューティング VM に関する FAQ
-          href: faq.yml
-    - name: コンテナー コンピューティング
-      expanded: true
+        - name: エンクレーブを使用してビルドする
+          items:
+            - name: エンクレーブの概要
+              href: confidential-computing-enclaves.md
+            - name: エンクレーブ アプリケーションの開発
+              items:
+                - name: エンクレーブ開発の概要
+                  href: application-development.md
+                - name: 開発用のオープンソース プロジェクト
+                  href: enclave-development-oss.md
+                - name: アプリケーション エンクレーブの構成証明
+                  href: attestation.md
+            - name: Intel SGX 仮想マシンのデプロイ
+              href: virtual-machine-solutions-sgx.md
+            - name: アプリケーション エンクレーブ VM に関する FAQ
+              href: faq-application-enclaves.yml
+    - name: 機密コンテナー
       items:
-        - name: 機密コンテナー
+        - name: コンテナー ソリューションの概要
+          href: confidential-containers.md
+        - name: 適切なコンテナー オファリングの選択
+          href: choose-confidential-containers-offerings.md
+        - name: コンテナーをデプロイする
           items:
-            - name: 作業の開始
-              href: confidential-containers.md
-        - name: エンクレーブ対応コンテナー
-          items:
-            - name: 作業の開始
+            - name: エンクレーブ対応コンテナー
               href: enclave-aware-containers.md
-    - name: 構成証明
-      href: attestation.md
-    - name: アプリケーション開発
-      href: application-development.md
+            - name: AKS 上の機密エンクレーブ ノード
+              href: confidential-nodes-aks-overview.md
+            - name: AKS アドオン
+              href: confidential-nodes-aks-addon.md
+            - name: 機密エンクレーブ ノードに関する FAQ
+              href: confidential-nodes-aks-faq.yml
 - name: 操作方法
   items:
-    - name: Fortanix Confidential Computing Manager
-      href: how-to-fortanix-confidential-computing-manager.md
-    - name: Fortanix Confidential Computing Manager Node Agent
-      href: how-to-fortanix-confidential-computing-manager-node-agent.md
-- name: リファレンス
-  items:
-    - name: SGX クォート ヘルパー機能
-      href: confidential-nodes-out-of-proc-attestation.md
+    - name: パートナー ソリューション
+      items:
+        - name: Fortanix
+          items:
+            - name: Fortanix Confidential Computing Manager
+              href: how-to-fortanix-confidential-computing-manager.md
+            - name: Fortanix Confidential Computing Manager Node Agent
+              href: how-to-fortanix-confidential-computing-manager-node-agent.md
 - name: リソース
   items:
     - name: Confidential Computing に関するフィードバック
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow
       href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
-    - name: Enclave SDK を開く
-      href: 'https://aka.ms/oesdkGitHubRepo'
     - name: Confidential Computing のコンソーシアム
       href: 'https://confidentialcomputing.io/'
     - name: Azure 上の仮想マシン

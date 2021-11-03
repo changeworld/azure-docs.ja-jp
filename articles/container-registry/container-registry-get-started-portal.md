@@ -3,16 +3,13 @@ title: クイックスタート - ポータルでのレジストリの作成
 description: Azure portal を使用してプライベート Azure コンテナー レジストリを作成する方法について簡単に説明します。
 ms.date: 06/23/2021
 ms.topic: quickstart
-ms.custom:
-- mvc
-- mode-portal
-- contperf-fy21q4
-ms.openlocfilehash: 51531b6af5babe256ec89079c7705cfea71ef52a
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.custom: mvc, mode-portal, contperf-fy21q4
+ms.openlocfilehash: 8ac194e2343120dea1daec688bf383162846bdfd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895942"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043549"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure コンテナー レジストリを作成する
 

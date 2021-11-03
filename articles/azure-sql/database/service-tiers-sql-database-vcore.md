@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
 ms.date: 09/10/2021
-ms.custom: references_regions
-ms.openlocfilehash: a92dd67011d7ef7d5ad162983de51b98839c4a84
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: fb168fad05acf84fd9b64f34c929176933a1fd2f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621984"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026034"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>仮想コア購入モデルの概要 - Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -164,7 +164,7 @@ Azure portal では、SQL Database でデータベースまたはプールの作
 
 #### <a name="gen4gen5"></a><a id="gen4gen5-1"></a>Gen4/Gen5
 
-Gen4 ハードウェアは[段階的に廃止中](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)であり、新しいデプロイでは利用できなくなりました。 すべての新しいデータベースを Gen5 ハードウェアにデプロイする必要があります。
+Gen4 ハードウェアは[段階的に廃止中](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)であり、新しいデプロイでは利用できなくなりました。 新しいデータベースはすべて、それより後のハードウェア世代に展開する必要があります。
 
 Gen5 は、世界中のすべてのパブリック リージョンで使用できます。
 

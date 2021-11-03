@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: troubleshooting
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 08/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 45bef2c4e6cbbe9ae2c6b1f316987eb613a4509a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d514ceee8f81943efd6024abcde510e910b6cc5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258470"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013937"
 ---
 # <a name="troubleshooting-your-azure-sentinel-sap-solution-deployment"></a>Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="useful-docker-commands"></a>便利な Docker コマンド
 
@@ -108,7 +110,7 @@ total 508
 docker cp sapcon-[SID]:/sapcon-app/sapcon/logs /directory
 ```
 
-例:
+次に例を示します。
 
 ```bash
 docker cp sapcon-A4H:/sapcon-app/sapcon/logs /tmp/sapcon-logs-extract

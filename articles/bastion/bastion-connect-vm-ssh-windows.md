@@ -8,21 +8,22 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4e08aed1b1b91f55a12f5920dfff898cd0109bae
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 433b86cb879fbe0541b9da3a6ae2edcb99e98b7b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278597"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071555"
 ---
-# <a name="create-an-ssh-connection-to-a-windows-vm-using-azure-bastion-preview"></a>Azure Bastion (プレビュー) を使用して Windows VM への SSH 接続を作成する
+# <a name="create-an-ssh-connection-to-a-windows-vm-using-azure-bastion"></a>Azure Bastion を使用して Windows VM への SSH 接続を作成する
 
 この記事では、Azure 仮想ネットワーク内にある Windows VM への RDP 接続を、Azure portal 経由で直接安全かつシームレスに作成する方法について説明します。 Azure Bastion を使用する場合、VM にクライアント、エージェント、追加のソフトウェアは不要です。 RDP を使用して Windows VM に接続することもできます。 詳細については、[Windows VM への RDP 接続の作成](bastion-connect-vm-rdp-windows.md)に関する記事を参照してください。
 
 Azure Bastion は、プロビジョニングされる仮想ネットワーク内のすべての VM に対して安全な接続を提供します。 Azure Bastion を使用すると、RDP または SSH を使用した安全なアクセスを提供しながら、お使いの仮想マシンが RDP または SSH ポートを外部に公開しないように保護されます。 詳細については、「[Azure Bastion とは](bastion-overview.md)」を参照してください。
 
 > [!NOTE]
-> Windows VM への SSH 接続を作成する場合は、Standard SKU を使用して Azure Bastion を構成する必要があります。 Standard SKU は現在プレビュー段階です。
+> Windows VM への SSH 接続を作成する場合は、Standard SKU を使用して Azure Bastion を構成する必要があります。
 >
 
 SSH を使用して Windows 仮想マシンに接続する場合は、認証にユーザー名およびパスワードと SSH キーの両方を使用できます。 SSH キーを使用して VM に接続するには、次のいずれかを使用します。

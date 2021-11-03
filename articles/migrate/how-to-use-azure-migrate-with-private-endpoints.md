@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 773a22fb1fbd94540f8d56fb417a88bbcfccdd3a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a7398de8f9c853ca3c17f5052fdc126a33030594
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003139"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084693"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>プライベート エンドポイントで Azure Migrate を使用する
 
@@ -27,7 +27,7 @@ Private Link を使用すると、Azure ExpressRoute のプライベート ピ�
 
 ### <a name="supported-geographies"></a>サポートされている地域
 
-この機能は、現在サポートされている[パブリック クラウド](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud)と[政府機関のクラウド地域でプレビュー段階にあります。](/azure/migrate/migrate-support-matrix#supported-geographies-azure-government)
+この機能は、現在サポートされている[パブリック クラウド](./migrate-support-matrix.md#supported-geographies-public-cloud)と[政府機関のクラウド地域でプレビュー段階にあります。](./migrate-support-matrix.md#supported-geographies-azure-government)
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
@@ -304,7 +304,7 @@ Azure Resource Manager のロールのアクセス許可は、ストレージ �
 
 その後、[レプリケーションの確認と開始](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)および[移行の実行](./tutorial-migrate-physical-virtual-machines.md#run-a-test-migration)に関する手順に従ってください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [移行プロセス](./tutorial-migrate-physical-virtual-machines.md#complete-the-migration)を完了します。
 - [移行後のベスト プラクティス](./tutorial-migrate-physical-virtual-machines.md#post-migration-best-practices)を確認します。

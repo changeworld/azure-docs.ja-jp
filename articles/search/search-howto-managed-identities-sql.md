@@ -2,17 +2,17 @@
 title: マネージド ID を使用して Azure SQL Database への接続を設定する
 titleSuffix: Azure Cognitive Search
 description: マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法について説明します
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/02/2021
-ms.openlocfilehash: c0bff947d0f5b58a956d05959dd49bbea1f942ab
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 1b8386cac5c17f775f6719bdf8ab67243731179b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183987"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037684"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する
 
@@ -39,23 +39,23 @@ ms.locfileid: "122183987"
 
 ![オブジェクト ID](./media/search-managed-identities/system-assigned-identity-object-id.png "Object ID")
  
-### <a name="option-2---assign-a-user-assigned-managed-identity-to-the-search-service-preview"></a>オプション 2 - ユーザー割り当てマネージド ID を検索サービスに割り当てる (プレビュー)
+### <a name="option-2---assign-a-user-assigned-managed-identity-to-the-search-service-preview"></a>オプション 2 - ユーザー割り当てのマネージド ID を検索サービスに割り当てる (プレビュー)
 
-ユーザー割り当てマネージド ID をまだ作成していない場合には、作成する必要があります。 ユーザー割り当てマネージド ID は Azure のリソースです。
+ユーザー割り当てマネージド ID をまだ作成していない場合は、作成する必要があります。 ユーザー割り当てマネージド ID は Azure のリソースです。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[+ リソースの作成]** を選択します。
-1. 「サービスとマーケットプレース」の検索バーで、「ユーザー割り当てマネージド ID」を検索し、 **[作成]** を選択します。
+1. [サービスとマーケットプレース] の検索バーで、[ユーザー割り当てマネージド ID] を検索し、 **[作成]** を選択します。
 1. ID にわかりやすい名前を付けます。
 
-次に、ユーザー割り当てマネージド ID を検索サービスに割り当てます。 これは、[2021-04-01-プレビュー管理 API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を使用して行うことができます。
+次に、ユーザー割り当てマネージド ID を検索サービスに割り当てます。 これは、[2021-04-01-preview 管理 API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を使用して行うことができます。
 
 ID プロパティは、型と 1 つ以上の完全修飾ユーザー割り当て ID を受け取ります。
 
-* **型** は ID の型です。 両方を使用する場合、有効な値は「SystemAssigned」、「UserAssigned」、または「SystemAssigned, UserAssigned」です。 値「None」を指定すると、検索サービスから以前に割り当てられた ID がクリアされます。
+* **type** は ID の型です。 有効な値は "SystemAssigned"、"UserAssigned"、または "SystemAssigned, UserAssigned" (両方を使用する場合) です。 値 "None" を指定すると、検索サービスから以前に割り当てられた ID がクリアされます。
 * **userAssignedIdentities** には、ユーザー割り当てマネージド ID の詳細が含まれます。
     * ユーザー割り当てマネージド ID の形式: 
-        * /サブスクリプション/**サブスクリプション ID**/resourcegroups/**リソース グループ名**/プロバイダー/Microsoft.ManagedIdentity/userAssignedIdentities/**マネージド ID の名前**
+        * /subscriptions/**サブスクリプション ID**/resourcegroups/**リソース グループ名**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**マネージド ID の名前**
 
 ユーザー割り当てマネージド ID を検索サービスに割り当てる方法の例:
 
@@ -178,7 +178,7 @@ api-key: [admin key]
 
 ### <a name="option-2---create-the-data-source-with-a-user-assigned-managed-identity"></a>オプション 2 - ユーザー割り当てマネージド ID を使用してデータ ソースを作成する
 
-2021-04-30-プレビュー REST API では、ユーザー割り当てマネージド ID がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source)、マネージド ID 接続文字列、ユーザー割り当てマネージド ID を使用し、ストレージ アカウントのデータにインデックスを付けてデータ ソースを作成する方法例を示します。
+2021-04-30-preview REST API では、ユーザー割り当てマネージド ID がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source)、マネージド ID 接続文字列、ユーザー割り当てマネージド ID を使用し、ストレージ アカウントのデータにインデックスを付けてデータ ソースを作成する方法例を示します。
 
 次の必須プロパティがデータ ソースに必要です。
 
@@ -192,7 +192,7 @@ api-key: [admin key]
 * **ID** には、ユーザー割り当てマネージド ID のコレクションが含まれます。 データ ソースを作成するとき、ユーザー割り当てマネージド ID を 1 つだけ指定する必要があります。
     * **userAssignedIdentities** には、ユーザー割り当てマネージド ID の詳細が含まれます。
         * ユーザー割り当てマネージド ID の形式: 
-            * /サブスクリプション/**サブスクリプション ID**/resourcegroups/**リソース グループ名**/プロバイダー/Microsoft.ManagedIdentity/userAssignedIdentities/**マネージド ID の名前**
+            * /subscriptions/**サブスクリプション ID**/resourcegroups/**リソース グループ名**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**マネージド ID の名前**
 
 [REST API](/rest/api/searchservice/create-data-source) を使用して BLOB データ ソース オブジェクトを作成する方法の例:
 

@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9d5d111e86623b3de63bc9aa5d77f5a14c37fabd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 005886c0399a89fe2e58aa669a8f7c0d33821cd3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216772"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026640"
 ---
 # <a name="how-to-connect-different-data-sources"></a>方法: さまざまなデータ ソースを接続する
 
@@ -199,13 +199,13 @@ ms.locfileid: "130216772"
      
 * **クエリ**: データを取得して多次元時系列データに編成するには、[Kusto クエリ言語](/azure/data-explorer/kusto/query)に関するページを参照してください。 クエリでは、変数 `@IntervalStart` と `@IntervalEnd` を使用できます。 これらは `yyyy-MM-ddTHH:mm:ssZ` のように書式設定する必要があります。
 
-    サンプル クエリ:
+  サンプル クエリ:
     
-    ``` Kusto
-   [TableName] | where [TimestampColumn] >= datetime(@IntervalStart) and [TimestampColumn] < datetime(@IntervalEnd);    
-   ```
+  ```kusto
+  [TableName] | where [TimestampColumn] >= datetime(@IntervalStart) and [TimestampColumn] < datetime(@IntervalEnd);    
+  ```
 
-    詳細については、[有効なクエリの作成に関するチュートリアル](tutorials/write-a-valid-query.md)に関するページを参照してください。
+  詳細については、[有効なクエリの作成に関するチュートリアル](tutorials/write-a-valid-query.md)に関するページを参照してください。
 
 ## <a name="span-idadlazure-data-lake-storage-gen2span"></a><span id="adl">Azure Data Lake Storage Gen2</span>
 

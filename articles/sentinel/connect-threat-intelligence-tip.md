@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: e1f6a508e72277fcc596a5217b0c5a061758e131
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dae86dee7843f6e763d343ffab025161762cc8cd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253554"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004380"
 ---
 # <a name="connect-your-threat-intelligence-platform-to-azure-sentinel"></a>脅威インテリジェンス プラットフォームを Azure Sentinel に接続する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 

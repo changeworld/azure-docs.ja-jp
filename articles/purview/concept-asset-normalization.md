@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 07/23/2021
-ms.openlocfilehash: 68092e55cfe53ecde6e6b8146608267e39df0557
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 470bfa9fc111002dbb7518833d71f918df265b45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114670055"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010975"
 ---
 # <a name="asset-normalization"></a>アセット正規化
 

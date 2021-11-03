@@ -4,12 +4,12 @@ description: Azure Service Fabric クラスターとアプリケーションを�
 ms.topic: conceptual
 ms.date: 07/20/2021
 ms.author: micraft
-ms.openlocfilehash: ddda30f949ac4abfe7f19890ce9f7c6f8fedadbe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cbd2e21508296b6174a2322559973fb98728e2b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780849"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083481"
 ---
 # <a name="move-an-azure-service-fabric-cluster-to-a-new-region"></a>Azure Service Fabric クラスターを新しいリージョンに移動する
 
@@ -38,7 +38,7 @@ Service Fabric クラスター リソースは、本質的に 1 つのリージ�
    -  すべてのサービスの場合:  
       * <p>クライアントとサービス間の通信ステージが、ソース クラスターと同様に構成されていることを確認します。 たとえば、この検証には、Event Hubs、ネットワーク ロード バランサー、App Gateway、または API Management などの中継局が、クラスターへのトラフィックのフローを許可するために必要な規則で設定されていることの確認が含まれる場合があります。</p>  
 
-3. 古いリージョンから新しいリージョンにトラフィックをリダイレクトします。 移行には、さまざまな[ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)を提供している [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用することをお勧めします。 トラフィック ルーティング規則をどの程度正確に更新するかは、既存のリージョンを維持するか非推奨にするかによって異なります。また、アプリケーション内でトラフィックがどのように流れるかによっても異なります。 場合によっては、プライベートまたはパブリック IP あるいは DNS 名を異なるリージョンの異なる Azure リソース間で移動できるかどうかを調査する必要があります。 Service Fabric ではシステムのこの部分が認識されないため、特に複雑な場合やワークロードで待ち時間が重要な場合には、調査を行い、必要に応じてトラフィック フローに関与する Azure チームを調査に参加させてください。 [カスタム ドメインの構成](../api-management/configure-custom-domain.md)、[パブリック IP アドレス](../virtual-network/public-ip-addresses.md)、[DNS ゾーンとレコード](../dns/dns-zones-records.md)などに関するドキュメントが役立つ場合があります。また、これらはトラフィック フローとプロトコルに応じて必要になる情報の例です。 トラフィック ルーティングの更新にアプローチする方法を示す 2 つのシナリオ例を次に示します。  
+3. 古いリージョンから新しいリージョンにトラフィックをリダイレクトします。 移行には、さまざまな[ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)を提供している [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用することをお勧めします。 トラフィック ルーティング規則をどの程度正確に更新するかは、既存のリージョンを維持するか非推奨にするかによって異なります。また、アプリケーション内でトラフィックがどのように流れるかによっても異なります。 場合によっては、プライベートまたはパブリック IP あるいは DNS 名を異なるリージョンの異なる Azure リソース間で移動できるかどうかを調査する必要があります。 Service Fabric ではシステムのこの部分が認識されないため、特に複雑な場合やワークロードで待ち時間が重要な場合には、調査を行い、必要に応じてトラフィック フローに関与する Azure チームを調査に参加させてください。 [カスタム ドメインの構成](../api-management/configure-custom-domain.md)、[パブリック IP アドレス](../virtual-network/ip-services/public-ip-addresses.md)、[DNS ゾーンとレコード](../dns/dns-zones-records.md)などに関するドキュメントが役立つ場合があります。また、これらはトラフィック フローとプロトコルに応じて必要になる情報の例です。 トラフィック ルーティングの更新にアプローチする方法を示す 2 つのシナリオ例を次に示します。  
    * 既存のソース リージョンを保持する予定がなく、元のソース クラスターへの呼び出しを配信しているネットワーク ロード バランサーのパブリック IP に関連付けられている DNS/CNAME がある場合。 新しいリージョンの新しいネットワーク ロード バランサーの新しいパブリック IP に関連付けられるように DNS/CNAME を更新します。 この転送を完了すると、既存のクラスターを使用しているクライアントは、新しいクラスターを使用するように切り替えられます。 
   
    * 既存のソース リージョンを保持する予定があり、元のソース クラスターへの呼び出しを配信していたネットワーク ロード バランサーのパブリック IP に関連付けられている DNS/CNAME がある場合。 Azure Traffic Manager のインスタンスを設定してから、DNS 名をその Azure Traffic Manager インスタンスに関連付けます。 この Azure Traffic Manager はその後、各リージョン内の個々のネットワーク ロード バランサーにルーティングするように構成できます。 

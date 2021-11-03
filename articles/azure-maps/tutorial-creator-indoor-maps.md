@@ -7,12 +7,12 @@ ms.date: 5/19/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 7f3fbec3fd393bb354f7ea5df1614cf1c53bfbe2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db5bebce41e8fd13cf0796e02fc0bfe91d63a6c9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733427"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060017"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>チュートリアル:Creator を使用して屋内マップを作成する
 
@@ -128,7 +128,7 @@ Drawing パッケージ リソースからメタデータを取得できます�
 5. 「[Drawing パッケージのアップロードの状態を確認する](#check-the-drawing-package-upload-status)」でコピーした `resource Location URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-   https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
@@ -413,7 +413,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 
 7. 応答が返された後、`unit` 地物の 1 つに地物 `id` をコピーします。 次の例では、地物 `id` は "UNIT26" です。 このチュートリアルの次のセクションでは、地物 `id` として "UNIT26" を使用します。
 
-     ```json
+    ```json
     {
         "type": "FeatureCollection",
         "features": [

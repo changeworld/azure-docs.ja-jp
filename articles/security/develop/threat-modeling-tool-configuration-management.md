@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f4179a79df5bb952ca4a374602cb4dea8bf4dbbd
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 0f5eb88a3694e492f01dcf8646753a522f7c478c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178260"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064641"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -150,7 +150,7 @@ X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用し�
 
 ### <a name="example"></a>例
 Web.config にアクセスできる場合、CORS は、次のコードを使用して追加できます。 
-```XML
+```xml
 <system.webServer>
     <httpProtocol>
       <customHeaders>
@@ -181,11 +181,11 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ### <a name="example"></a>例
 ただし、この機能は、ページ レベルで無効にできます。 
-```XML
+```xml
 <%@ Page validateRequest="false" %> 
 ```
 アプリケーション レベルでも無効にできます 
-```XML
+```xml
 <configuration>
    <system.web>
       <pages validateRequest="false" />
@@ -218,7 +218,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ### <a name="example"></a>例
 アプリケーションがインターネット インフォメーション サービス (IIS) 7 以降でホストされている場合は、web.config ファイルにヘッダーを追加します。 
-```XML
+```xml
 <system.webServer>
 <httpProtocol>
 <customHeaders>

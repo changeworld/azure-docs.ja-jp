@@ -5,11 +5,14 @@
   items:
     - name: Network Function Manager について
       href: overview.md
-- name: チュートリアル
+- name: クイックスタート
   expanded: true
   items:
     - name: デバイス リソースを作成する
       href: create-device.md
+- name: チュートリアル
+  expanded: true
+  items:
     - name: ネットワーク機能をデプロイする
       href: deploy-functions.md
 - name: 概念
@@ -19,6 +22,13 @@
       href: partners.md
     - name: よく寄せられる質問
       href: faq.md
+    - name: 前提条件と要件
+      href: requirements.md
+- name: 使い方ガイド
+  expanded: true
+  items:
+    - name: アクセス許可を構成してリソースを登録する
+      href: resources-permissions.md
 - name: リファレンス
   items:
     - name: REST

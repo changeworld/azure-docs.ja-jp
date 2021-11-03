@@ -4,15 +4,16 @@ description: Azure ディスク プールを別のサブスクリプションに
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 629ca5617bfc2166e10172863fc6d7560698919d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 71b0fd25412f7269e7de717ee2b8f1b4df056011
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436938"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082780"
 ---
 # <a name="move-a-disk-pool-preview-to-a-different-subscription"></a>ディスク プール (プレビュー) を別のサブスクリプションに移動する
 

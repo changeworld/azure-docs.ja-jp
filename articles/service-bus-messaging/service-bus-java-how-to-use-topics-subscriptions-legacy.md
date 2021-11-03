@@ -4,18 +4,13 @@ description: この記事では、Azure Service Bus のトピックにメッセ�
 ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
-ms.custom:
-- seo-java-july2019
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: f6f0520797a5c221f1c3e1ea60c22d1576bad07e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: b0f62a9e2953fd7d088a2bed1d3cfa52f6a3b26a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736245"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083595"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Java (古いパッケージ) で Service Bus のトピックとサブスクリプションを使用する
 この記事では、Azure Service Bus のトピックにメッセージを送信し、そのトピックへのサブスクリプションからメッセージを受信する Java コードを記述します。 

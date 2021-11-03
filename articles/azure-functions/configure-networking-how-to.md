@@ -3,13 +3,13 @@ title: 仮想ネットワークで Azure Functions を構成する方法
 description: Azure Functions の特定の仮想ネットワーク タスクを実行する方法を示す記事。
 ms.topic: conceptual
 ms.date: 3/13/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 6465a1c5e9b39bcef29fb28ebf2e19c7203da648
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 91555099c7144d976b5f0b5ef2fe639912857bce
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257045"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048819"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>仮想ネットワークで Azure Functions を構成する方法
 
@@ -58,4 +58,3 @@ ms.locfileid: "130257045"
 
 > [!div class="nextstepaction"]
 > [Azure Functions のネットワーク オプション](functions-networking-options.md)
-

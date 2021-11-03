@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: 960ade1209b6473884e75c660d658abaf6e73af7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 08690347f9a0dae5237ad74bfda9ad3eb6c8ef84
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609956"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072858"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>Visual Studio Code でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
@@ -80,7 +81,7 @@ Visual Studio Code でローカル開発を行う場合は、ローカルの開�
 
   * [Visual Studio Code 用の C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。これにより、F5 機能でロジック アプリを実行できるようになります。
 
-  * [Azure Functions Core Tools 3.0.3477 以降](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3477) (Microsoft インストーラー (MSI) バージョン (`func-cli-3.0.3477-x*.msi`) を使用)。
+  * [Azure Functions Core Tools - 最新バージョン](https://github.com/Azure/azure-functions-core-tools/releases) (Microsoft インストーラー (MSI) バージョン (`func-cli-X.X.XXXX-x*.msi`) を使用)。
 
     これらのツールには、Azure Functions ランタイムで利用されるものと同じランタイムのバージョンが含まれており、それは Azure Logic Apps (Standard) 拡張機能によって Visual Studio Code で使用されます。
 
@@ -542,7 +543,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
       ![要求ウィンドウを開いた Postman を示すスクリーンショット](./media/create-single-tenant-workflows-visual-studio-code/postman-request-pane.png)
 
-   1. Visual Studio Code に戻ります。 ワークフローの [概要] ページから、 **[コールバック URL]** プロパティ値をコピーします。
+   1. Visual Studio Code に戻ります。 ワークフローの [概要] ページから、 **[コールバック URL]** プロパティの値をコピーします。
 
    1. Postman に戻ります。 [要求] ウィンドウで、既定の要求メソッドとして **[GET]** が表示されているメソッドの一覧の横にあるアドレス ボックスに、先ほどコピーしたコールバック URL を貼り付け、 **[送信]** を選択します。
 
@@ -726,6 +727,8 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 Visual Studio Code から、プロジェクトを Azure に直接発行することができます。これにより、**Logic App (Standard)** リソースの種類を使用して、ロジック アプリがデプロイされます。 ロジック アプリは新しいリソースとして発行できます。これにより、[関数アプリの要件と同様に、Azure ストレージ アカウントなど](../azure-functions/storage-considerations.md)、必要なリソースが自動的に作成されます。 または、以前にデプロイされた **Logic App (Standard)** リソースにロジック アプリを発行することもできます。これにより、そのロジック アプリは上書きされます。
 
 **Logic App (Standard)** リソースの種類のデプロイには、ホスティング プランと価格レベルが必要です。これらはデプロイ時に選択します。 詳細については、[ホスティング プランと価格レベル](logic-apps-pricing.md#standard-pricing)に関する記事を参照してください。
+
+<a name="publish-new-logic-app"></a>
 
 ### <a name="publish-to-a-new-logic-app-standard-resource"></a>新しい Logic App (Standard) リソースに発行する
 
@@ -920,7 +923,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
    ![開いている "Azure Logic Apps (Standard)" 拡張機能ウィンドウとデプロイされたワークフローが示された Visual Studio Code を示すスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. ロジック アプリのすべてのワークフローを表示するには、ロジック アプリを展開した後、 **[ワークフロー]** という名前のノードを展開します。
+1. ロジック アプリのすべてのワークフローを表示するには、ロジック アプリを展開した後、 **[ワークフロー]** ノードを展開します。
 
 1. 特定のワークフローを表示するには、ワークフローのショートカット メニューを開き、 **[デザイナーで開く]** を選択します。これにより、ワークフローが読み取り専用モードで開きます。
 

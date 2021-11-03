@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/07/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 6c790baf2dfc7c08306bdf96598e33e8bdc6b9c6
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 76789c36e935e03a2677054e9a318291ebd149f9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991225"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028027"
 ---
 # <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション プロビジョニングの既知の問題
 この記事では、アプリのプロビジョニングを操作する場合に注意する必要がある既知の問題について説明します。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供するには、[Azure Active Directory (Azure AD) のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。
@@ -105,7 +105,7 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 
 #### <a name="active-directory-domain-services-user-or-group-writeback-from-azure-ad-by-using-the-on-premises-provisioning-preview"></a>Active Directory Domain Services (オンプレミスのプロビジョニング プレビューを使用した Azure AD からのユーザーまたはグループの書き戻し)
    - ユーザーが Azure AD Connect によって管理されている場合、権限のあるソースはオンプレミスの Azure AD です。 そのため、Azure AD 内でユーザー属性を変更することはできません。 このプレビューでは、Azure AD Connect によって管理されるユーザーの権限のソースは変更されません。
-   - Azure AD Connect とオンプレミスのプロビジョニングを使用して Active Directory Domain Services にグループまたはユーザーをプロビジョニングしようとすると、ループが作成される可能性があります。この場合、Azure AD Connect はクラウドのプロビジョニング サービスによって行われた変更を上書きできます。 Microsoft では、グループまたはユーザーの書き戻し専用の機能に取り組んでいます。 [この Web サイト](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/16887037-enable-user-writeback-to-on-premise-ad-from-azure)で UserVoice のフィードバックに賛成投票して、プレビューの状態を追跡します。 または、Azure AD から Active Directory へのユーザーまたはグループの書き戻しに [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) を使用することもできます。
+   - Azure AD Connect とオンプレミスのプロビジョニングを使用して Active Directory Domain Services にグループまたはユーザーをプロビジョニングしようとすると、ループが作成される可能性があります。この場合、Azure AD Connect はクラウドのプロビジョニング サービスによって行われた変更を上書きできます。 Microsoft では、グループまたはユーザーの書き戻し専用の機能に取り組んでいます。 [この Web サイト](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789/)で UserVoice のフィードバックに賛成投票して、プレビューの状態を追跡します。 または、Azure AD から Active Directory へのユーザーまたはグループの書き戻しに [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) を使用することもできます。
 
 #### <a name="connectors-other-than-sql"></a>SQL 以外のコネクタ
 

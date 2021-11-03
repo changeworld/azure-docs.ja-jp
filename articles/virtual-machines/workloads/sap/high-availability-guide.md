@@ -10,13 +10,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef0f3cf29927e0d15702a9429fcabc54d10a8506
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: H1Hack27Feb2017, ignite-fall-2021
+ms.openlocfilehash: a80eea61e2088dcf10e67a0ce5f3282c34aa395e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648660"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013329"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -69,8 +69,8 @@ ms.locfileid: "128648660"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:https://docs.microsoft.com/powershell/azure/
-[azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
+[azure-ps]:/powershell/azure/
+[azure-quickstart-templates-github]: https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -558,7 +558,7 @@ _**図 2:** 共有ディスクを使用しない Azure での Windows Server フ
 2. 両方の仮想マシン ノードで、SIOS DataKeeper Cluster Edition を実行します。
 3. ソース仮想マシンの追加 VHD 接続ボリュームの内容をターゲット仮想マシンの追加 VHD 接続ボリュームにミラー化するように、SIOS DataKeeper Cluster Edition を構成します。 SIOS DataKeeper は、ソースとターゲットのローカル ボリュームを抽象化し、1 つの共有ディスクとして Windows フェールオーバー クラスタリングに提示します。
 
-詳細については、[SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/) を参照してください。
+詳細については、[SIOS DataKeeper](https://us.sios.com/products/windows/datakeeper-cluster/) を参照してください。
 
 ![図 3:SIOS DataKeeper を使用する Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1002]
 

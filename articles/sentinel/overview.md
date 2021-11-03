@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: yelevin
-ms.openlocfilehash: 0c782c7cb301a88e54213f18d702ed1f81baabf2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1718551221200d7a327cbfea1dd99e9babd7b533
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563098"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014032"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型の **セキュリティ情報イベント管理 (SIEM)** および **セキュリティ オーケストレーション自動応答 (SOAR)** ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。
 

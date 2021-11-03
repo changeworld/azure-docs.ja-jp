@@ -8,12 +8,12 @@ ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: 90fd10d9ccde297989f6c372562bc088240783a7
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ac9b0d0105ed28847fbf0db4d7ba8cc420fa2328
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264258"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059644"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -187,7 +187,7 @@ ms.locfileid: "130264258"
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>チュートリアル用にオンプレミスの SQL Server を用意します。
 1. SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
-    ```SQL   
+    ```sql
     CREATE TABLE dbo.emp
     (
         ID int IDENTITY(1,1) NOT NULL,
@@ -197,9 +197,10 @@ ms.locfileid: "130264258"
     )
     GO
     ```
+
 2. テーブルにサンプルをいくつか挿入します。
 
-    ```SQL
+    ```sql
     INSERT INTO emp VALUES ('John', 'Doe')
     INSERT INTO emp VALUES ('Jane', 'Doe')
     ```
@@ -207,10 +208,11 @@ ms.locfileid: "130264258"
 ### <a name="create-input-dataset"></a>入力データセットの作成
 
 1. **Data Factory エディター** のコマンド バーで **[...More (...詳細)]** をクリックし、 **[新しいデータセット]** 、 **[SQL Server テーブル]** の順にクリックします。
+
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。
 
-    ```JSON   
-    {        
+    ```json
+    {
         "name": "EmpOnPremSQLTable",
         "properties": {
             "type": "SqlServerTable",
@@ -231,8 +233,9 @@ ms.locfileid: "130264258"
                 }
             }
         }
-    }     
-    ```       
+    }
+    ```
+
    以下の点に注意してください。
 
    * **type** は **SqlServerTable** に設定されています。
@@ -241,14 +244,15 @@ ms.locfileid: "130264258"
    * Azure Data Factory の別のパイプラインでは生成されない入力データセットの場合、**external** を **true** に設定する必要があります。 これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。 必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます。    
 
    JSON プロパティの詳細については、[SQL Server に対するデータの移動](data-factory-sqlserver-connector.md)に関するページを参照してください。
-3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。  
+
+3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
 
 1. **Data Factory エディター** で、コマンド バーの **[新しいデータセット]** をクリックし、 **[Azure BLOB ストレージ]** をクリックします。
 2. 右側のウィンドウの JSON を次のテキストに置き換えます。
 
-    ```JSON   
+    ```json
     {
         "name": "OutputBlobTable",
         "properties": {
@@ -266,8 +270,9 @@ ms.locfileid: "130264258"
                 "interval": 1
             }
         }
-     }
-    ```   
+    }
+    ```
+
    以下の点に注意してください。
 
    * **type** は **AzureBlob** に設定されています。
@@ -344,11 +349,10 @@ ms.locfileid: "130264258"
          "isPaused": false
        }
      }
-    ```   
+    ```
+
    > [!IMPORTANT]
    > **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。
-   >
-   >
 
    以下の点に注意してください。
 

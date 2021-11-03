@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 07/26/2021
-ms.openlocfilehash: f31aa44237e0312d08a43155db867192d83a57ef
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ee4aec218ba3969b54531f6f025b84b4909f6b85
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722013"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064546"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 下記の表では、Common Event Format (CEF) のフィールド名を、Azure Sentinel の CommonSecurityLog で使用する名前にマップしています。これらの表は、Azure Sentinel で CEF データ ソースを操作するときに役立つ場合があります。
 

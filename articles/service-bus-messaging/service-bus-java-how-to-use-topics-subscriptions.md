@@ -4,14 +4,13 @@ description: このクイックスタートでは、Azure Service Bus トピッ�
 ms.date: 02/13/2021
 ms.topic: quickstart
 ms.devlang: Java
-ms.custom:
-- mode-api
-ms.openlocfilehash: 6fe0a3a91ebbd5b6daced95494b8eaa5b7db0c46
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: mode-api
+ms.openlocfilehash: ec2374a2881eb8888b40158848bf024c1292fa1d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536387"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083614"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (Java)
 このクイックスタートでは、Azure Service Bus トピックにメッセージを送信してそのトピックのサブスクリプションからメッセージを受信する Java コードを、azure-messaging-servicebus パッケージを使用して作成します。

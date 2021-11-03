@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 519ef3c4e53eb55bd00957d1d825c96375e241ae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 71c376b93433a06d6b9ffee0c1e574c967e0629f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604843"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040192"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -87,7 +87,6 @@ ms.locfileid: "128604843"
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
-
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-java-project"></a>手順 3: Java プロジェクトの構成
 >
@@ -135,9 +134,9 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> 各値の説明:
->> * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または **テナント名** (例: contoso.microsoft.com) に置き換えます。
->> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの **アプリケーション (クライアント) ID**。
+> > 各値の説明:
+> > * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または **テナント名** (例: contoso.microsoft.com) に置き換えます。
+> > * `Enter_the_Application_Id_Here` - 登録したアプリケーションの **アプリケーション (クライアント) ID**。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-4-run-the-application"></a>手順 4:アプリケーションの実行
@@ -161,7 +160,6 @@ $ java -jar msal-client-credential-secret-1.0.0.jar
 
 実行後、構成済みのテナントに存在するユーザーが一覧表示されます。
 
-
 > [!IMPORTANT]
 > このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルと同じ GitHub リポジトリの 2 つ目のフォルダー **msal-client-credential-certificate** にある [これらの手順](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate)を参照してください。
 
@@ -175,7 +173,7 @@ Maven または Gradle を使用して、アプリケーションに MSAL4J を�
 
 pom.xml 内:
 
-```XML
+```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>

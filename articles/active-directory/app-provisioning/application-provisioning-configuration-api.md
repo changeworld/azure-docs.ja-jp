@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/03/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b5e9fda1932c367555ff54c98c0079332d274528
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b9d337af752d7b463ffc4922b903e4b6064c6881
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991852"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028084"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API を使用してプロビジョニングを構成する
 
@@ -82,7 +82,7 @@ Content-type: application/json
          ],
          "publisher": "Amazon",
          "description": "Federate to a single AWS account and use SAML claims to authorize access to AWS IAM roles. If you have many AWS accounts, consider using the AWS Single Sign-On gallery application instead."    
-  
+
 }
 ```
 
@@ -247,7 +247,7 @@ HTTP/1.1 204 No Content
 #### <a name="request"></a>Request
 ```msgraph-interactive
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
- 
+
 { 
     "value": [ 
         { 

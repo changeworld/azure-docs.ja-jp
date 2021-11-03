@@ -7,17 +7,16 @@ author: nitinme
 manager: nitinme
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス, コグニティブな理解, コグニティブ機能
 ms.service: cognitive-services
-ms.subservice: ''
 ms.topic: overview
 ms.date: 10/08/2021
 ms.author: nitinme
-ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2b5519d5a71f9a431bd5948283ea12ae79647196
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
+ms.openlocfilehash: e19c16d8ee1142374461fb0fdc95c59c84ef8b36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730035"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073322"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -57,9 +56,9 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
+|[Azure Cognitive Service for Language](./language-service/index.yml "言語サービス")| Azure Cognitive Service for Language からは、テキストを理解して分析するための自然言語処理 (NLP) 機能がいくつか提供されます。|
 |[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 開始するには、[LUIS のクイックスタート](./luis/luis-get-started-create-app.md)に関する記事をご覧ください。|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。 開始するには、[QnA Maker のクイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md)に関する記事をご覧ください。|
-|[Text Analytics](./text-analytics/index.yml "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。 開始するには、[Text Analytics のクイックスタート](./text-analytics/quickstarts/client-libraries-rest-api.md)に関する記事をご覧ください。|
 |[Translator](./translator/index.yml "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
 
 ## <a name="decision-apis"></a>Decision API
@@ -130,7 +129,7 @@ Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-vi
 
 Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions "Azure リージョンの一覧")で API ごとのリージョン別の提供状況がわかります。
 
-まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://feedback.azure.com/forums/932041-azure-cognitive-services "UserVoice フォーラム")に機能要求を記入してご連絡ください。
+まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858)に機能要求を記入してご連絡ください。
 
 ## <a name="supported-cultural-languages"></a>サポートされる言語 (カルチャ)
 

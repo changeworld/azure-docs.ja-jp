@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: 86dca0c57b473ca759c7dd2a685707c09dd11f05
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1ef403583082f1fff631392d7a4467fe253a516
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748194"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024185"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-planning"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: 計画
 
@@ -66,7 +66,7 @@ WWI はサンフランシスコを拠点としているため、Azure ランデ�
 
 ネットワークに関するその他の考慮事項は次のとおりです。
 
-- VNET 内にある DMS には、サービスへの[動的パブリック IP](/azure/dms/faq#setup) が割り当てられます。 このサービスは、作成時に [ExpressRoute](../../../expressroute/expressroute-introduction.md) 経由または[サイト間 VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) 経由で接続されている仮想ネットワーク内に配置できます。
+- VNET 内にある DMS には、サービスへの[動的パブリック IP](../../../dms/faq.yml) が割り当てられます。 このサービスは、作成時に [ExpressRoute](../../../expressroute/expressroute-introduction.md) 経由または[サイト間 VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) 経由で接続されている仮想ネットワーク内に配置できます。
 
 - Azure 仮想マシンを使用して移行ツールを実行する場合は、パブリック IP アドレスを割り当て、オンプレミスの MySQL インスタンスへの接続のみを許可します。
 

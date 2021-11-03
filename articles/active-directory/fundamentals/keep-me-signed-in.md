@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e27ac47426e8c3d8ff7b4b02fcdbfcf06d3a3453
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e89eb124b9cfb4100ddfca0d949331508fce398f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231294"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052391"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Azure AD アカウントに "サインインの状態を維持しますか?" のプロンプトを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "129231294"
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="マネージド テナントとフェデレーション テナントのユーザー サインイン フローを示す図":::
 
 > [!NOTE]
-> "サインインしたままにする" オプションを構成するには、Azure Active Directory (Azure AD) Premium 1 エディション、Premium 2 エディション、または Basic エディションを使用しているか、Microsoft 365 ライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションと Basic エディションは現在サポートされていません。 詳細については、[Azure AD フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
+> "サインインしたままにする" オプションを構成するには、Azure Active Directory (Azure AD) Premium 1 エディション、Premium 2 エディション、または Basic エディションを使用しているか、Microsoft 365 ライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure AD のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションと Basic エディションは現在サポートされていません。 詳細については、[Azure AD フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)を利用してお問い合わせください。
 
 ## <a name="configure-kmsi"></a>KMSI の構成
 

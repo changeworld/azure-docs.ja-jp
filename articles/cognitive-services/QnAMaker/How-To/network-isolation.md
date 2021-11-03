@@ -4,21 +4,20 @@ description: ユーザーは QnA Maker リソースへのパブリック アク�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/13/2021
-ms.openlocfilehash: eb00a9fa81b6fadd999c6c824ff7be06f76c8f4a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 87726db1f0747c3f9383168321bc3054c685c8a9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221770"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038723"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
 
 QnA Maker リソースへのパブリック アクセスを制限するには、次の手順に従います。 [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>App Service (QnA runtime) へのアクセスを制限する
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 ServiceTag `CognitiveServicesMangement` を使用すると、App Service または ASE (App Service Environment) のネットワーク セキュリティ グループの受信規則の受信アクセスを制限することができます。サービス タグiの詳細については、 [「仮想ネットワーク サービス タグ」の記事](../../../virtual-network/service-tags-overview.md)を参照してください。 
 
@@ -68,22 +67,13 @@ App Service Environment (ASE) を使用して、QnA Maker App Service のイン�
 
 ### <a name="related-questions"></a>関連する質問
 
-#### <a name="can-qna-maker-be-deployed-to-an-internal-ase"></a>QnA Maker を内部 ASE にデプロイすることはできますか。 
+#### <a name="can-qna-maker-be-deployed-to-an-internal-ase"></a>QnA Maker を内部 ASE にデプロイすることはできますか。
 
 外部 ASE を使用する主な理由は、QnAMaker サービス バックエンド (オーサリング API) をインターネット経由で App Service に接続するようにできるためです。 ただし、`CognitiveServicesManagement` サービス タグに関連付けられたアドレスからの接続のみを許可するように受信アクセス制限を追加することで、引き続き保護することができます。
 
 それでも内部 ASE を使用したい場合は、アプリ ゲートウェイの DNS TLS/SSL 証明書を使用して、その特定の QnA Maker アプリをパブリック ドメインの ASE で公開する必要があります。詳細については、[App Services の Enterprise デプロイに関する記事](/azure/architecture/reference-architectures/enterprise-integration/ase-standard-deployment)を参照してください。
 
-    
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-App Service は、カスタム質問と回答とは一緒にデプロイされません。
-
----
-
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Cognitive Search リソースへのアクセスを制限する
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 Cognitive Search インスタンスは、QnA Maker リソースの作成後、プライベート エンドポイントを介して分離できます。 アクセスをロック ダウンするには、次の手順に従います。
 
@@ -117,9 +107,6 @@ Cognitive Search インスタンスは、QnA Maker リソースの作成後、�
      > [!div class="mx-imgBorder"]
      > [ ![VNET 統合 UI のスクリーンショット]( ../media/network-isolation/integration.png) ](  ../media/network-isolation/integration.png#lightbox)
 
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
 Azure Search リソースに[プライベート エンドポイントを作成](../reference-private-endpoint.md)します。
 
 QnA Maker リソースへのパブリック アクセスを制限するには、次の手順に従います。 [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
@@ -131,6 +118,3 @@ VNet に基づいて Cognitive Service リソースへのアクセスを制限�
 
      > [!div class="mx-imgBorder"]
      > [ ![ファイアウォールと仮想ネットワークの構成 UI のスクリーンショット]( ../media/network-isolation/firewall.png) ](  ../media/network-isolation/firewall.png#lightbox)
-
----
-

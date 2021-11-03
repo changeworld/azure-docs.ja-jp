@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.custom: template-how-to
-ms.openlocfilehash: b22a359e112d7d0d3caae76acd20a7e3fd3ada01
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: edb45634ee58ada77320374cba4218f3fb00a2c3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226220"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006337"
 ---
 # <a name="connect-to-azure-percept-dk-over-ssh"></a>Azure Percept DK に SSH で接続する
 

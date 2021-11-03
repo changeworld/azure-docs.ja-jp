@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: TheovanKraay
   ms.author: thvankra
-  ms.date: 01/18/2021
-  ms.openlocfilehash: 7c91c2e1b01f6ee96805ee69cc66cd8a62677905
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.date: 11/02/2021
+  ms.openlocfilehash: a81b79347a48ad0cfd7c7aa5876cc385b995b3f0
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123430956"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131061316"
 landingContent:
 - title: Azure Managed Instance for Apache Cassandra について
   linkLists:

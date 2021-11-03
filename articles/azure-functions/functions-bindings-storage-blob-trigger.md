@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: d405d08f7050da3b3767c23b37f8c71c2f499282
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 58167006a1925ee1110f9d7468a66d580545f336
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998658"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039299"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -266,7 +266,7 @@ def main(myblob: func.InputStream):
 
   次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
 
-   ```csharp
+  ```csharp
   [FunctionName("ResizeImage")]
   public static void Run(
       [BlobTrigger("sample-images/{name}", Connection = "StorageConnectionAppSetting")] Stream image,
@@ -274,7 +274,7 @@ def main(myblob: func.InputStream):
   {
       ....
   }
-   ```
+  ```
 
   完全な例については、「[トリガー - 例](#example)」を参照してください。
 

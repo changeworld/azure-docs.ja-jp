@@ -2,17 +2,17 @@
 title: Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でのフルテキスト検索用にコンテンツとメタデータのインデックス作成を自動化するように Azure Data Lake Storage Gen2 インデクサーを設定します。
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: a0ad2bcbccac87d19a5026ae72416f6d793bad90
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 82999e8b30034b7322dba64cb464515754f84261
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129418748"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023541"
 ---
 # <a name="index-data-from-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 

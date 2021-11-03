@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 keywords: オンプレミス, Docker, コンテナー, 識別
-ms.openlocfilehash: 1fb19ef8f7b4855107d089e6b0ce21673ce5b841
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bdd04a42ba97721d5d5dafd23f9e8e7b5b661f4b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057343"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027001"
 ---
 # <a name="install-and-run-form-recognizer-v21-preview-containers"></a>Form Recognizer v2.1-preview コンテナーのインストールと実行
 

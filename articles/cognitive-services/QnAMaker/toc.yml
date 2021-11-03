@@ -12,6 +12,8 @@
       href: whats-new.md
     - name: カスタム質問と回答 (プレビュー)
       href: custom-question-answering.md
+    - name: カスタム質問と回答への移行
+      href: ../language-service/question-answering/how-to/migrate-qnamaker.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: クイックスタート
   items:
     - name: ナレッジベースの作成とクエリ実行
@@ -21,7 +23,7 @@
         - name: クライアント ライブラリまたは REST API
           href: Quickstarts/quickstart-sdk.md
 - name: サンプル
-  href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face&terms=qna-maker'
+  href: /samples/browse/?products=azure&term=face&terms=qna-maker
 - name: AI の責任ある使用
   items:
     - name: 透明性に関するメモ
@@ -64,9 +66,6 @@
           href: How-To/edit-knowledge-base.md
         - name: メタデータ タグの追加
           href: Quickstarts/add-question-metadata-portal.md
-        - name: フォローアップ プロンプトの追加
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
         - name: 既定の回答の変更
           href: How-To/change-default-answer.md
     - name: ナレッジ ベースの照会
@@ -104,8 +103,6 @@
       href: Concepts/data-sources-and-content.md
     - name: Azure ロールベースのアクセス制御 (Azure RBAC)
       href: Concepts/role-based-access-control.md
-    - name: 正確な回答
-      href: reference-precise-answering.md
     - name: アクティブ ラーニングを有効にする
       href: How-To/use-active-learning.md
     - name: ランカー プロセス
@@ -128,15 +125,15 @@
     - name: FAQ ボットをカスタマイズする
       items:
         - name: マルチターン プロンプトを使用してガイド付きの会話を作成する
-          href: Tutorials/guided-conversations.md
+          href: ../language-service/question-answering/tutorials/guided-conversations.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: ボットに複数のドメインを追加する
-          href: Tutorials/create-faq-bot-for-multiple-domains.md
+          href: ../language-service/question-answering/tutorials/multiple-domains.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: アクティブ ラーニングを使用してナレッジ ベースを強化する
-          href: Tutorials/active-learning.md
-        - name: 複数の言語のナレッジ ベースを追加する
-          href: Tutorials/multiple-languages.md
+          href: ../language-service/question-answering/tutorials/active-learning.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: 同意語を追加して関連性を向上させる
-          href: Tutorials/adding-synonyms.md
+          href: ../language-service/question-answering/tutorials/adding-synonyms.md?context=/azure/cognitive-services/qnamaker/context/context
+        - name: 複数の言語のナレッジ ベースを追加する
+          href: ../language-service/question-answering/tutorials/multiple-languages.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: リファレンス
   items:
     - name: REST API

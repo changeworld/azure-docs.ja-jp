@@ -4,18 +4,13 @@ description: このチュートリアルでは、Java を使用して、Azure Se
 ms.date: 02/13/2021
 ms.topic: quickstart
 ms.devlang: Java
-ms.custom:
-- seo-java-july2019
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: e3998e812bb921ff8bea5e83199bc4e142ed2e83
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: f9bbe3a36c64e9e726081e3ca9d15dd382f0fe9a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533427"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013956"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Azure Service Bus キューとの間でメッセージを送受信する (Java)
 このクイックスタートでは、Azure Service Bus キューとの間でメッセージを送受信する Java アプリを作成します。 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8e39864e2246e175bb9f699f01b78646782d84eb
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ffbdb8349f9da359cd050b8fd7f058d1877966b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315347"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004286"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -148,7 +148,6 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Azure Cognitive Search           | はい                | はい                | -                  |
 | Azure Cognitive Services         | はい                | はい                | -                  |
 | Azure Machine Learning           | はい                | はい                | -                  |
-| Azure Machine Learning Studio (クラシック) | はい         | プレビュー、RSA 2048 ビット | -               |
 | Content Moderator                | はい                | はい                | -                  |
 | Face                             | はい                | はい                | -                  |
 | Language Understanding           | はい                | はい                | -                  |

@@ -11,14 +11,13 @@ ms.service: traffic-manager
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 13b5925310c615461424f78d90ba9849c9bf58c5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.custom: mode-portal
+ms.openlocfilehash: be0061fb42a391506adf7c944e60836e14d6cb8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727980"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003468"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
 
@@ -40,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. **[Web アプリの作成]** の **[基本]** タブで、次の値を入力または選択します。
 
-    | 設定                 | 値 |
+    | 設定                 | [値] |
     | ---                     | --- |
     | サブスクリプション            | サブスクリプションを選択します。 |    
     | Resource group          | **[新規作成]** を選択し、テキスト ボックスに「*myResourceGroupTM1*」と入力します。|
@@ -67,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 1. 画面の左上で、 **[リソースの作成]** を選択します。 次に、「**Traffic Manager プロファイル**」を検索し、 **[作成]** を選択します。
 1. **[Traffic Manager プロファイルの作成]** ブレードで、次の設定を入力するか、選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | --------| ----- |
     | 名前 | Traffic Manager プロファイルの一意の名前を入力します。|
     | ルーティング方法 | **[優先順位]** を選択します。|
@@ -89,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 
 1. 次の設定を入力または選択します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ------|
     | Type | **[Azure エンドポイント]** を選択します。 |
     | 名前 | 「*myPrimaryEndpoint*」と入力します。 |
@@ -102,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 1. **[OK]** を選択します。
 1. 2 つ目の Azure リージョンのフェールオーバー エンドポイントを作成するには、次の設定を使用して手順 3. と手順 4. を繰り返します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ------|
     | Type | **[Azure エンドポイント]** を選択します。 |
     | 名前 | 「*myFailoverEndpoint*」と入力します。 |

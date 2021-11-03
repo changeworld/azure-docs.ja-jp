@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 38b595e4f9b2582f3baefecabf6285ee36436ad6
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 02ba134062b51ba074ad5d19506eef13e5e3b89c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260054"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004266"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack Hub 仮想マシンを Azure Sentinel に接続する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel では、Azure 上で稼動する VM と Azure Stack Hub で稼動する VM を 1 か所で監視できます。 Azure Stack マシンを Azure Sentinel にオンボードするにはまず、既存の Azure Stack Hub 仮想マシンに仮想マシン拡張機能を追加する必要があります。 
 

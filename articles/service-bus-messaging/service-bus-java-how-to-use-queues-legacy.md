@@ -4,18 +4,13 @@ description: この記事では、Java アプリケーションを作成して�
 ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
-ms.custom:
-- seo-java-july2019
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: 28b57d309c673cfe57bd6d743d876c07685b6353
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: 6689f54035467b7ee380e292abad98db180b5516
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779404"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083652"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>Java で Azure Service Bus キューを使用してメッセージを送受信する (古いパッケージ)
 

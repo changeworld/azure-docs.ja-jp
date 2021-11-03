@@ -4,12 +4,13 @@ description: この記事では、Azure Video Analyzer のクォータと制限�
 ms.service: azure-video-analyzer
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a94ebd36728519b7ae73d9cc48c82097dcfdbb21
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 45c867d3420c51e931b1cc9a0a8e1b54836f7494
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602077"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012019"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Azure Video Analyzer のクォータと制限事項
 
@@ -62,10 +63,79 @@ RTSP プロトコルをサポートする IP カメラのみを使用できま�
 
 これらのカメラは、H.264 ビデオと AAC オーディオを使用するように構成する必要があります。 他のコーデックは現在サポートされていません。
 
-Video Analyzer では、[インターリーブされた RTP ストリーム]( https://datatracker.ietf.org/doc/html/rfc2326#section-10.12)でのみ RTSP がサポートされます。 このモードでは、RTP トラフィックは RTSP TCP 接続を通じてトンネリングされます。 UDP 経由の RTP トラフィックはサポートされていません。
+Video Analyzer では、[インターリーブされた RTP ストリーム](https://datatracker.ietf.org/doc/html/rfc2326#section-10.12)でのみ RTSP がサポートされます。 このモードでは、RTP トラフィックは RTSP TCP 接続を通じてトンネリングされます。 UDP 経由の RTP トラフィックはサポートされていません。 
 
 ### <a name="support-for-video-ai"></a>ビデオ AI のサポート
 HTTP または gRPC 拡張プロセッサは、外部 AI モジュールを使用した画像/ビデオ フレーム データの送信のみをサポートします。 したがって、オーディオ データに対する推論の実行はサポートされていません。 そのため、`inputs` の 1 つとして RTSP ソース ノードを持つパイプライン トポロジ内のプロセッサ ノードも、`outputSelectors` プロパティを使用して、ビデオのみがプロセッサに渡されるようにします。 例として、この[トポロジ](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-grpcExtension-video-sink/topology.json)を確認してください。
+
+## <a name="quotas-and-limitations---live-and-batch-pipeline"></a>クォータと制限事項 - ライブおよびバッチ パイプライン
+
+このセクションでは、Video Analyzer クラウド パイプラインのクォータと制限事項について説明します。 
+
+### <a name="maximum-number-of-pipeline-topologies"></a>パイプライン トポロジの最大数 
+
+Azure Video Analyzer アカウントあたり最大 5 つのパイプライン トポロジがサポートされています。 
+
+### <a name="limits-on-concurrent-activation-of-live-pipelines"></a>ライブ パイプラインの同時アクティブ化に関する制限事項 
+
+最大 10 個のライブ パイプラインは、5 分の時間枠でアクティブ化できます。また、最大で 10 個のパイプラインを任意の時点で `Activating` 状態にすることができます。
+
+これらの制限は、パイプライン ジョブには適用されません。  
+
+### <a name="maximum-live-pipelines-per-topology"></a>トポロジあたりの最大ライブ パイプライン数  
+
+トポロジあたり最大 50 個のライブ パイプラインがサポートされています。  
+
+### <a name="concurrent-low-latency-streaming-sessions"></a>同時実行の待機時間の短いストリーミング セッション  
+
+アクティブなライブ パイプラインごとに、[待機時間の短いストリーム](playback-recordings-how-to.md#low-latency-streaming)を表示するクライアント アプリケーションが最大で 1 つあります。 別のクライアントが接続しようとすると、要求は拒否されます。  
+
+### <a name="limitations-on-designing-pipeline-topologies"></a>パイプライン トポロジの設計に関する制限事項 
+
+パイプライン トポロジで接続できるさまざまなノードと、それらの制限事項を次に示します。 
+
+* RTSP ソース
+   * パイプライン トポロジごとに 1 つの RTSP ソースのみを使用できます。
+* ビデオ ソース
+   * パイプライン トポロジごとに 1 つのビデオ ソースのみを使用できます。
+   * [バッチの種類](pipeline.md#batch-pipeline)のパイプライン トポロジでのみ使用できます。 `archive` の種類のビデオ リソースのみを受け入れることができます。 
+* エンコーダー プロセッサ 
+   * パイプライン トポロジごとに、1 つのエンコーダー プロセッサのみが許可されます。
+   * [バッチの種類](pipeline.md#batch-pipeline)のパイプライン トポロジでのみ使用できます。また、このようなトポロジでは、ビデオ シンク ノードの直近の上流にある必要があります。
+   * これは、AAC コーデックを使用した h.264 コーデックとオーディオによるビデオのエンコードのみをサポートしています。
+   * 録画されたビデオをダウンストリーム処理の目的の形式に変換するときに、ユーザーがエンコード プロパティを指定できるようにします。 2 種類: (a) システム プリセット (b) カスタム プリセット。 各プリセットに許可されている構成を次の表に示します。 
+     
+     | 構成       | システム プリセット        | カスタム プリセット |
+     | -----------         | -----------          |----------- |
+     | ビデオ エンコーダー ビットレート kbps      | ソースと同じ      | 200 から 16,000 kbps |
+     | フレーム レート       | ソースと同じ      | 0 から 300 |
+     | [高さ]    | ソースと同じ        | 1 から 4320 |
+     | 幅    | ソースと同じ       | 1 から 8192 |
+     | モード   | Pad        | Pad、PreserveAspectRatio、Stretch |     
+     | オーディオ エンコーダー ビットレート kbps  | ソースと同じ        | 指定できる値: 96、112、128、160、192、224、256 |
+     
+* ビデオ シンク 
+   *  パイプライン トポロジごとに 1 つのビデオ シンクのみが許可されます。
+   *  RTSP ソースまたはエンコーダーのプロセッサ ノードから直近の下流のストリームである必要があります。 
+   *  バッチの種類のパイプライン トポロジで使用した場合、出力として MP4 ファイルが生成されます。
+
+### <a name="support-for-batch-video-export"></a>バッチ ビデオ エクスポートのサポート 
+
+* セグメントの選択 
+   * タイム シーケンスは、エクスポートするアーカイブ済みビデオの部分の開始タイムスタンプと終了タイムスタンプであり、UTC 時間で指定する必要があります。 
+   * タイム シーケンスの最大時間 (終了タイムスタンプと開始タイムスタンプの間) は、24 時間以内である必要があります。 
+
+### <a name="supported-cameras"></a>サポートされているカメラ
+
+RTSP プロトコルをサポートする IP カメラのみを使用できます。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products)のページで見つけることができます。 プロファイル G、S、または T に準拠しているデバイスを探します。 
+
+これらのカメラは、H.264 ビデオと AAC オーディオを使用するように構成する必要があります。 他のコーデックは現在サポートされていません。 ビデオ エンコードのビットレートは、500 から 3000 Kbps の範囲で指定する必要があります。実際のインジェスト ビットレートがこのしきい値を超えた場合、インジェストは切断され、エクスポネンシャル バックオフに再接続されます。
+
+Video Analyzer では、[インターリーブされた RTP ストリーム](https://datatracker.ietf.org/doc/html/rfc2326#section-10.12)でのみ RTSP がサポートされます。 このモードでは、RTP トラフィックは RTSP TCP 接続を通じてトンネリングされます。 UDP 経由の RTP トラフィックはサポートされていません。 
+
+### <a name="support-for-video-ai"></a>ビデオ AI のサポート 
+
+ライブ ビデオまたは録画済みビデオの分析は、現在サポートされていません。
 
 ## <a name="quotas-and-limitations---service"></a>クォータと制限事項 - Service
 

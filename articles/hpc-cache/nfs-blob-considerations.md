@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache で NFS BLOB ストレージを使用する
 description: Azure HPC Cache で ADLS-NFS BLOB ストレージを使用する場合の手順と制限事項について説明します
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
-ms.author: v-erkel
-ms.openlocfilehash: e9d31ae4ccaa7bffaf1ce38a9f044993277f5f2f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.author: femila
+ms.openlocfilehash: 297030bc35e9fcf726201695b273eac79a044028
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041673"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051042"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
 

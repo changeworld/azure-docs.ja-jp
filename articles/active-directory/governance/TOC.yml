@@ -43,10 +43,8 @@
           href: what-is-inter-directory-provisioning.md
     - name: アクセス レビュー
       items:
-        - name: レビューを使用したゲスト アクセスの管理
-          href: manage-guest-access-with-access-reviews.md
-        - name: レビューでのユーザー アクセスの管理
-          href: manage-user-access-with-access-reviews.md
+        - name: レビューを使用したアクセスの管理
+          href: manage-access-review.md
         - name: 条件付きアクセスから除外されたユーザーの管理
           href: conditional-access-exclusion.md
     - name: 外部組織からのユーザーの確認と削除
@@ -94,7 +92,7 @@
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: 職務の分離を構成する
               href: entitlement-management-access-package-incompatible.md
-            - name: 要求を表示する
+            - name: 要求の表示と削除
               href: entitlement-management-access-package-requests.md
             - name: 要求を再処理する
               href: entitlement-management-reprocess-access-package-requests.md
@@ -123,9 +121,7 @@
             - name: アクセス レビューの作成
               href: entitlement-management-access-reviews-create.md
             - name: アクセスのレビュー
-              href: entitlement-management-access-reviews-review-access.md
-            - name: 自分のアクセス権のレビュー
-              href: entitlement-management-access-reviews-self-review.md
+              href: self-access-review.md
         - name: グループとアプリ
           items:
             - name: アクセス レビューの作成

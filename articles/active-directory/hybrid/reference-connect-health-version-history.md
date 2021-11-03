@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21d59036677a9a62d366e03bcdedb3a2f5d44abe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: dc0495e4ddd3e266b375a9d6a137497f457803da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351699"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049256"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -30,7 +30,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 > Connect Health エージェントは、新しいバージョンがリリースされると自動的に更新されます。 Azure portal で自動アップグレード設定が有効になっていることを確認してください。
 >
 
-Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](./reference-connect-version-history.md)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
+Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](./reference-connect-version-history.md)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)で投票してください
 
 ## <a name="september-2021"></a>2021 年 9 月
 **エージェントの更新**
@@ -285,5 +285,5 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 * アプリケーション、エラーの種類などによってグループ化された AD FS サーバーへの失敗した要求の傾向。
 * Azure AD グローバル管理者の資格情報を使用した簡単なエージェントのデプロイメント。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](./whatis-azure-ad-connect.md)」を参照してください。

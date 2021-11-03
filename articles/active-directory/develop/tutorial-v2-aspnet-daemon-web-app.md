@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, has-adal-ref
-ms.openlocfilehash: bb5b6068b935be2f437b10e4fcbccf7c6a86219d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0deaa92659cbd022444c0e4d43389f39ebbaa51c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637990"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050358"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -245,7 +245,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 
 MSAL.NET にバグを見つけた場合は、[MSAL.NET GitHub の Issues](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues) に問題を提起してください。
 
-ご提案をお寄せいただく場合は、[ユーザーの声の投稿ページ](https://feedback.azure.com/forums/169401-azure-active-directory)にアクセスしてください。
+ご提案をお寄せいただく場合は、[ユーザーの声の投稿ページ](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

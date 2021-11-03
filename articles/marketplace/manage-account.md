@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 09/27/2021
-ms.openlocfilehash: 115556f2118d34fa4fd2baf3ac84d97a1b9f5962
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 40ea8110ddf9a8f81395dea86beb656dba736cf7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071665"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024336"
 ---
 # <a name="manage-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -234,7 +234,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ## <a name="multi-user-account-management"></a>マルチユーザー アカウント管理
 
-パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
+パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 

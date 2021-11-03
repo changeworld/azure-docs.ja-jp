@@ -1,44 +1,52 @@
 ---
-title: Azure Synapse Analytics ワークスペースを登録してスキャンする方法
-description: Azure Purview データ カタログで Azure Synapse ワークスペースをスキャンする方法について説明します。
+title: Azure Synapse Analytics ワークスペースに接続して管理する
+description: このガイドでは、Azure Purview で Azure Synapse Analytics ワークスペースに接続し、Purview の機能を使用して、Azure Synapse Analytics ワークスペース ソースをスキャンおよび管理する方法について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 8a7b23089e9b17e35b56b04991c76b37baedf231
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: ed76730cd37cf903c77b0893b546ab824e7ddff3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207794"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010918"
 ---
-# <a name="register-and-scan-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics ワークスペースを登録してスキャンする
+# <a name="connect-to-and-manage-azure-synapse-analytics-workspaces-in-azure-purview"></a>Azure Purview で Azure Synapse Analytics ワークスペースに接続して管理する
 
-この記事では、Azure Purview に Azure Synapse Analytics ワークスペースを登録し、そのスキャンを設定する方法の概要について説明します。
+この記事では、Azure Purview で Azure Synapse Analyticsワークスペースを登録する方法と、Azure Synapse Analytics ワークスペースを認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Synapse Analytics ワークスペースのスキャンは、内部の専用およびサーバーレス SQL データベースのメタデータとスキーマの取得をサポートしています。 また、ワークスペース スキャンでは、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan)| [あり](#scan)| いいえ| [あり](how-to-lineage-azure-synapse-analytics.md)|
+
+
+<!-- 4. Prerequisites
+Required. Add any relevant/source-specific prerequisites for connecting with this source. Authentication/Registration should be covered by the sections below and does not need to be covered here.
+-->
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
-- Azure Purview データ ソース管理者である必要があります。
-- 以下のセクションの説明に従って認証を設定します。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="register-and-scan-an-azure-synapse-workspace"></a>Azure Synapse ワークスペースを登録してスキャンする
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-> [!IMPORTANT]
-> ワークスペースを正常にスキャンするには、次のセクションで説明されている手順に正確に従って、アクセス許可を適用してください。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-### <a name="step-1-register-your-source"></a>**手順 1**: ソースを登録する
+## <a name="register"></a>登録
 
-> [!NOTE]
-> Azure Synapse ワークスペースに対して少なくとも "*閲覧者*" ロールを持ち、Azure Purview の "*データ ソース管理者*" でもあるユーザーのみがこの手順を実行できます。
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して、Azure Purview で Azure Synapse Analytics ワークスペースを登録する方法について説明します。
 
-新しい Azure Synapse のソースをデータ カタログに登録するには、次の手順を行います。
+### <a name="authentication-for-registration"></a>登録の認証
+
+Azure Synapse ワークスペースに対して少なくとも "*閲覧者*" ロールを持ち、Azure Purview の "*データ ソース管理者*" でもあるユーザーのみが、Azure Synapse ワークスペースを登録できます。
+
+### <a name="steps-to-register"></a>登録の手順
 
 1. Azure Purview アカウントに移動します。
 1. 左側のペインで、 **[ソース]** を選択します。
@@ -56,28 +64,33 @@ Azure Synapse Analytics ワークスペースのスキャンは、内部の専�
     d. エンドポイントの各ドロップダウン リストには、ワークスペースの選択に基づいて、SQL エンドポイントが自動的に入力されます。  
     e. **[Select a collection]\(コレクションの選択\)** ドロップダウン リストでは、使用しているコレクションを選択するか、必要に応じて新しく作成します。  
     f. **[登録]** を選択して、データ ソースの登録を完了します。
-    
+
     :::image type="content" source="media/register-scan-synapse-workspace/register-synapse-source-details.png" alt-text="Azure Synapse ソースに関する詳細を入力するための [Register sources (Azure Synapse Analytics)]\(ソースの登録 (Azure Synapse Analytics)\) ページのスクリーンショット。":::
 
+## <a name="scan"></a>スキャン
 
-### <a name="step-2-apply-permissions-to-enumerate-the-contents-of-the-azure-synapse-workspace"></a>**手順 2**: Azure Synapse ワークスペースの内容を列挙するためのアクセス許可を適用する
+次の手順に従って、Azure Synapse Analytics ワークスペースをスキャンして、資産を自動的に識別し、データを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
 
-#### <a name="set-up-authentication-for-enumerating-dedicated-sql-database-resources"></a>専用 SQL データベース リソースを列挙するための認証を設定する
+まず、[専用](#authentication-for-enumerating-dedicated-sql-database-resources)リソースまたは[サーバーレス](#authentication-for-enumerating-serverless-sql-database-resources) リソースの列挙用に認証を設定する必要があります。 これにより、Purview はワークスペース資産を列挙し、スコープ付きスキャンを実行できます。
+
+次に、[ワークスペースの内容をスキャンするためのアクセス許可を適用する](#apply-permissions-to-scan-the-contents-of-the-workspace)必要があります。
+
+### <a name="authentication-for-enumerating-dedicated-sql-database-resources"></a>専用 SQL データベース リソースを列挙するための認証
 
 1. Azure portal で、Azure Synapse ワークスペース リソースに移動します。  
-1. 左側のペインで  **[アクセス制御 (IAM)]** を選択します。 
+1. 左側のペインで  **[アクセス制御 (IAM)]** を選択します。
 
    > [!NOTE]
    > リソースにロールを追加するには、"*所有者*" または "*ユーザー アクセス管理者*" である必要があります。
-   
-1. **[追加]** ボタンを選びます。   
+
+1. **[追加]** ボタンを選びます。
 1. **[閲覧者]** ロールを設定し、Azure Purview アカウント名 (管理サービス ID (MSI) を表すもの) を入力します。
 1. **[保存]** を選択して、ロールの割り当てを完了します。
 
 > [!NOTE]
-> Azure Purview アカウントで複数の Azure Synapse ワークスペースを登録してスキャンする予定の場合、リソース グループやサブスクリプションなどの上位のレベルからロールを割り当てることもできます。 
+> Azure Purview アカウントで複数の Azure Synapse ワークスペースを登録してスキャンする予定の場合、リソース グループやサブスクリプションなどの上位のレベルからロールを割り当てることもできます。
 
-#### <a name="set-up-authentication-for-enumerating-serverless-sql-database-resources"></a>サーバーレス SQL データベース リソースを列挙するための認証を設定する
+### <a name="authentication-for-enumerating-serverless-sql-database-resources"></a>サーバーレス SQL データベース リソースを列挙するための認証
 
 Purview でサーバーレス SQL データベース リソースを列挙できるように認証を設定する必要がある場所は、Synapse ワークスペース、関連付けられているストレージ、サーバーレス データベースの 3 つです。 以下の手順では、3 つすべてに対してアクセス許可を設定します。
 
@@ -107,7 +120,7 @@ Purview でサーバーレス SQL データベース リソースを列挙でき
     CREATE LOGIN [PurviewAccountName] FROM EXTERNAL PROVIDER;
     ```
 
-### <a name="step-3-apply-permissions-to-scan-the-contents-of-the-workspace"></a>**手順 3**: ワークスペースの内容をスキャンするためのアクセス許可を適用する
+### <a name="apply-permissions-to-scan-the-contents-of-the-workspace"></a>ワークスペースの内容をスキャンするためのアクセス許可を適用する
 
 Azure Synapse ソースの認証は、次の 2 つの方法のいずれかで設定できます。
 
@@ -175,6 +188,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
     EXEC sp_addrolemember 'db_datareader', [ServicePrincipalID]
     GO
     ```
+
 > [!NOTE]
 > Synapse ワークスペース内のすべての専用 SQL データベースに対して、前の手順を繰り返します。 
 
@@ -194,7 +208,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
     ALTER ROLE db_datareader ADD MEMBER [ServicePrincipalID]; 
     ```
 
-### <a name="step-4-set-up-azure-synapse-workspace-firewall-access"></a>**手順 4**: Azure Synapse ワークスペースのファイアウォール アクセスを設定する
+### <a name="set-up-azure-synapse-workspace-firewall-access"></a>Azure Synapse ワークスペースのファイアウォール アクセスを設定する
 
 1. Azure portal で、Azure Synapse ワークスペースに移動します。 
 
@@ -204,7 +218,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
 
 1. **[保存]** を選択します。
 
-### <a name="step-5-set-up-a-scan-on-the-workspace"></a>**手順 5**: ワークスペースに対するスキャンを設定する
+### <a name="create-and-run-scan"></a>スキャンを作成して実行する
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
@@ -229,36 +243,14 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewA
 
 1. スキャン トリガーを選択します。 これは、**毎週または毎月**、あるいは **1 回** 実行するようにスケジュールできます。
 
-1. スキャンの設定を確認し、 **[保存]** を選択して設定を完了します。   
+1. スキャンの設定を確認し、 **[保存]** を選択して設定を完了します。  
 
-#### <a name="view-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を表示する
-
-1. ソース セクションの下にあるタイルで **[詳細の表示]** を選択して、ソースの詳細を表示します。 
-
-      :::image type="content" source="media/register-scan-synapse-workspace/synapse-source-details.png" alt-text="Azure Synapse Analytics のソースの詳細ページのスクリーンショット。"::: 
-
-1. **スキャンの詳細** ページに移動して、スキャン実行の詳細を表示します。
-
-    * **[状態] バー** には、子リソースの実行状態の概要が表示されます。 状態は、ワークスペース レベルのスキャンに対して表示されます。  
-    * 緑はスキャン実行の成功を示し、赤はスキャン実行の失敗を示し、灰色はスキャン実行がまだ進行中であることを示します。  
-    * スキャンの実行に関するより詳細な情報を表示するには、それを選択します。
-
-      :::image type="content" source="media/register-scan-synapse-workspace/synapse-scan-details.png" alt-text="Azure Synapse Analytics のスキャンの詳細ページのスクリーンショット。" lightbox="media/register-scan-synapse-workspace/synapse-scan-details.png"::: 
-
-    * **ソースの詳細** ページの下部に、最近失敗したスキャン実行の概要が表示されます。 ここでも、スキャンの実行に関するより詳細な情報を表示するには、それを選択します。
-
-#### <a name="manage-your-scans"></a>スキャンを管理する
-
-スキャンを編集、削除、またはキャンセルするには、次の操作を行います。
-
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションで **[データ ソース]** を選択し、管理するデータ ソースを選択します。
-
-1. 管理するスキャンを選択し、 **[編集]** を選択します。
-
-   - スキャンを削除するには、 **[削除]** を選択します。
-   - スキャンが現在実行されている場合は、それをキャンセルできます。
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview Data Catalog の参照](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)   
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

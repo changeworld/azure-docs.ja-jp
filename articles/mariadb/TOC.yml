@@ -200,8 +200,6 @@
       href: concepts-query-store.md
     - name: Query Performance Insight
       href: concepts-query-performance-insight.md
-    - name: パフォーマンスに関する推奨事項
-      href: concepts-performance-recommendations.md
     - name: Azure Advisor の推奨事項
       href: concepts-azure-advisor-recommendations.md
 - name: レプリケーション

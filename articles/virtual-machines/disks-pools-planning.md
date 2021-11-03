@@ -4,15 +4,16 @@ description: Azure ディスク プールのパフォーマンスを最大限に
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74d50826811198811e6cea671641cae378d1235c
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: db70740b484290b56d140d6b71d570d61afd138d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419587"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082723"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Azure ディスク プール (プレビュー) の計画ガイド
 
@@ -28,7 +29,7 @@ Azure ディスク プール (プレビュー) をデプロイする前に、ワ
 
 ## <a name="optimize-for-high-throughput"></a>高スループットのための最適化
 
-スループットを優先する場合は、まず、スループット ターゲットの配信に必要なディスク プールの数を評価します。 必要なターゲットが得られたら、各ディスクとその種類に分割できます。 現在、ディスク プール、Premium Ssd、および Ultra ディスクでは、2 つのディスクの種類を使用できます。 Premium Ssd は、記憶域容量に合わせてスケーリングする高 IOPS と MBps を提供できます。一方、Ultra ディスクは、記憶域容量に関係なく、パフォーマンスをスケーリングできます。 コストとパフォーマンスのバランスに最適な種類を選択します。 また、クライアントからディスク プールへのネットワーク接続がボトルネックになっていないことを確認します (特にスループット)。
+スループットを優先する場合は、まず、さまざまなディスク プール SKU のパフォーマンス ターゲットと、スループット ターゲットの配信に必要なディスク プールの数を評価します。 必要なパフォーマンスが Premium ディスク プールで提供できるものを超える場合は、複数のディスク プールにデプロイを分割できます。 その後、ディスク プールの個々のディスクとその種類で提供されるパフォーマンスを最大限に活用する方法を決定できます。 ディスク プールの場合は、Premium と Standard の SSD を組み合わせるか、Ultra Disk のみを使用することができます。 Ultra Disk を Premium または Standard の SSD と共に使用することはできません。 ニーズに最適なディスクの種類を選びます。 また、クライアントからディスク プールへのネットワーク接続がボトルネックになっていないことを確認します (特にスループット)。
 
 
 ## <a name="use-cases"></a>ユース ケース
@@ -36,36 +37,40 @@ Azure ディスク プール (プレビュー) をデプロイする前に、ワ
 次の表に、Azure VMware Solution でのディスク プールの一般的な使用例と推奨される構成を示します。
 
 
-|Azure VMware Solution のユース ケース  |推奨されるディスクの種類  |推奨されるネットワーク構成  |
-|---------|---------|---------|
-|Azure VMware Solution vSAN の拡張機能など、アクティブなワーキング セットのブロック ストレージ。     |Ultra ディスク         |ExpressRoute 仮想ネットワーク ゲートウェイ: Ultra Performance または ErGw3AZ (10 Gbps) を使用して、ディスク プール仮想ネットワークを Azure VMware Solution クラウドに接続し、FastPath を有効にしてネットワーク待機時間を最小化します。         |
-|階層化-頻繁にアクセスされないデータは、Azure VMware Solution vSAN からディスク プールに階層化されます。     |Premium SSD         |ExpressRoute virtual network gateway: Standard (1 Gbps) または ハイ パフォーマンス (2 Gbps) を使用して、ディスク プール仮想ネットワークを Azure VMware Solution クラウドに接続します。         |
-|Azure VMware Solution 上のディザスター リカバリー サイトのデータ ストレージ: オンプレミスまたはプライマリ VMware 環境からセカンダリ サイトとしてディスク プールにデータをレプリケートします。     |Premium SSD         |ExpressRoute virtual network gateway: Standard (1 Gbps) または ハイ パフォーマンス (2 Gbps) を使用して、ディスク プール仮想ネットワークを Azure VMware Solution クラウドに接続します。         |
+|Azure VMware Solution のユース ケース  |推奨されるディスクの種類  |推奨されるディスク プール SKU  |推奨されるネットワーク構成  |
+|---------|---------|---------|---------|
+|Azure VMware Solution vSAN の拡張機能など、アクティブなワーキング セットのブロック ストレージ。     |Ultra ディスク         |Premium         |ExpressRoute 仮想ネットワーク ゲートウェイ: Ultra Performance または ErGw3AZ (10 Gbps) を使用して、ディスク プール仮想ネットワークを Azure VMware Solution クラウドに接続し、FastPath を有効にしてネットワーク待機時間を最小化します。         |
+|階層化-頻繁にアクセスされないデータは、Azure VMware Solution vSAN からディスク プールに階層化されます。     |Premium SSD、Standard SSD         |Standard         |ExpressRoute virtual network gateway: Standard (1 Gbps) または ハイ パフォーマンス (2 Gbps) を使用して、ディスク プール仮想ネットワークを Azure VMware Solution クラウドに接続します。         |
+|Azure VMware Solution 上のディザスター リカバリー サイトのデータ ストレージ: オンプレミスまたはプライマリ VMware 環境からセカンダリ サイトとしてディスク プールにデータをレプリケートします。     |Premium SSD、Standard SSD         |Standard、Basic         |ExpressRoute virtual network gateway: Standard (1 Gbps) または ハイ パフォーマンス (2 Gbps) を使用して、ディスク プール仮想ネットワークを Azure VMware Solution クラウドに接続します。         |
+
 
 ネットワークのセットアップの計画については、[Azure VMware Solution のネットワーク計画チェックリスト](../azure-vmware/tutorial-network-checklist.md)を参照してください。またその他の Azure VMware Solution の考慮事項も確認してください。
 
 ## <a name="disk-pool-scalability-and-performance-targets"></a>ディスク プールのスケーラビリティとパフォーマンスのターゲット
 
-|リソース  |制限  |
-|---------|---------|
-|ディスク プールあたりの最大ディスク数|8|
-|ディスク プールあたりの最大 IOPS|25,600|
-|ディスク プールあたりの最大 MBps|384|
+|リソース  |Basic ディスク プール  |Standard ディスク プール  |Premium ディスク プール  |
+|---------|---------|---------|---------|
+|ディスク プールあたりの最大ディスク数     |16         |32         |32         |
+|ディスク プールあたりの最大 IOPS     |12,800         |25,600         |51,200         |
+|ディスク プールあたりの最大 MBps     |192         |384         |768         |
 
 次の例では、さまざまなパフォーマンス要因がどのように連携するかについて説明します。
 
-たとえば、2 つの 1-TiB Premium Ssd (P30、プロビジョニングされたターゲットが 5000 IOPS、200 Mbps) をディスク プールに追加した場合、2 x 5000 = 10,000 IOPS を実現できます。 ただし、スループットはディスク プールによって 384 MBps に制限されます。 この 384 MBps という制限を超えるためには、さらに多くのディスク プールをデプロイしてスケールアウトし、スループットを向上できます。 ネットワーク スループットによって、スケールアウトの効果が制限されます。
+たとえば、2 つの 1 TiB Premium SSD (P30、プロビジョニングされたターゲットが 5000 IOPS、200 Mbps) を Standard ディスク プールに追加した場合、2 x 5000 = 10,000 IOPS を実現できます。 ただし、スループットはディスク プールによって 384 MBps に制限されます。 この 384 MBps という制限を超えるためには、さらに多くのディスク プールをデプロイしてスケールアウトし、スループットを向上できます。 ネットワーク スループットによって、スケールアウトの効果が制限されます。
 
 ## <a name="availability"></a>可用性
 
-現在ディスク プールはプレビューであり、運用環境のワークロードには使用しないでください。
+現在ディスク プールはプレビューであり、運用環境のワークロードには使用しないでください。 既定状態のディスク プールでは、Premium および Standard の SSD のみがサポートされます。 代わりに、ディスク プールで Ultra Disk のサポートを有効にできますが、Ultra Disk を使うディスク プールには Premium または Standard の SSD との互換性がありません。
+
+Premium および Standard の SSD をサポートするディスク プールは、iSCSI エンドポイントをホストする複数のものを使用する高可用性アーキテクチャに基づいています。 Ultra Disk をサポートするディスク プールは、1 つのインスタンス デプロイでホストされます。
 
 何らかの理由でディスク プールが Azure VMware Solution クラウドにアクセスできなくなった場合、次が発生します。
 
 - ディスク プールに関連付けられているすべてのデータストアにアクセスできなくなります。
-- 影響を受けたデータストアを使用しているこの Azure VMware Solution クラウドでホストされているすべての VMware VM は、不健全な状態になります。
-- この Azure VMware Solution クラウド内のクラスターの正常性は、1 回の操作を除き、影響を受けません。ホストをメンテナンス モードにすることはできません。 Azure VMware Solution は、この障害を処理し、影響を受けたデータストアを切断することで復旧を試みます。
+- 影響を受けたデータストアを使っている Azure VMware Solution クラウドでホストされているすべての VMware VM は、不健全な状態になります。
+- Azure VMware Solution クラウド内のクラスターの正常性は、1 回の操作を除き、影響を受けません。ホストをメンテナンス モードにすることはできません。 Azure VMware Solution は、この障害を処理し、影響を受けたデータストアを切断することで復旧を試みます。
 
 ## <a name="next-steps"></a>次の手順
 
-[ディスク プールをデプロイする](disks-pools-deploy.md)。
+- [ディスク プールをデプロイする](disks-pools-deploy.md)。
+- Azure VMware Solution によるディスク プールの統合方法については、「[ディスク プールを Azure VMware Solution ホストにアタッチする (プレビュー)](../azure-vmware/attach-disk-pools-to-azure-vmware-solution-hosts.md)」をご覧ください。

@@ -10,19 +10,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 621e2829f8c28ced39c3ed70b1dee974a5fcd36d
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 350adddd3ab31265ce0a1b07e131a828c5998a8c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251428"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004399"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft セキュリティ アラートからインシデントを自動的に作成する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Microsoft Cloud App Security や Microsoft Defender for Identity (旧 Azure ATP) など、Azure Sentinel に接続されている Microsoft セキュリティ ソリューションでトリガーされたアラートによって、自動的に Azure Sentinel にインシデントは作成されません。 既定では、Microsoft ソリューションを Azure Sentinel に接続すると、そのサービスで生成されたアラートは、Azure Sentinel の Azure Sentinel ワークスペースのセキュリティ アラート テーブルに生データとして格納されます。 そのデータは、Azure Sentinel に接続する他の生データと同様に使用できます。
 

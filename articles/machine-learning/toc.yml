@@ -313,6 +313,9 @@
             - name: Azure Arc 対応機械学習
               displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
               href: how-to-attach-arc-kubernetes.md
+            - name: Kubernetes インスタンスの種類
+              displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
+              href: how-to-kubernetes-instance-type.md
             - name: Azure Kubernetes Service
               displayName: 'AKS, inference'
               href: how-to-create-attach-kubernetes.md
@@ -547,7 +550,7 @@
           items:
             - name: リアルタイム
               items:
-                - name: マネージド オンライン エンドポイントを使用して ML モデルをデプロイする
+                - name: オンライン エンドポイントを使用して ML モデルをデプロイする
                   href: how-to-deploy-managed-online-endpoints.md
                 - name: マネージド オンライン エンドポイントを使用してカスタム コンテナーをデプロイする
                   href: how-to-deploy-custom-container.md

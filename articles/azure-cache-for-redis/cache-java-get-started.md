@@ -7,18 +7,13 @@ ms.date: 05/22/2020
 ms.topic: quickstart
 ms.service: cache
 ms.devlang: java
-ms.custom:
-- mvc
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: 65848832acba8107e3a24167c1328c65222b9d3a
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: 7200b135a1e534442e5ae037b307b0c9e6411202
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538049"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039719"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>クイックスタート: Java で Azure Cache for Redis を使用する
 

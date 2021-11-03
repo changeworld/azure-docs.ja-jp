@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: JenCook
-ms.openlocfilehash: 72c3f523ebc3cfef43709153c09c416d32e0b1b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f74c34f9c0b2e854a23753b755a9d83f93d6bf0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469602"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024475"
 ---
 # <a name="run-an-application-by-using-fortanix-confidential-computing-manager"></a>Fortanix Confidential Computing Manager を使用してアプリケーションを実行する
 
@@ -125,7 +126,7 @@ Fortanix ノード エージェントを作成すると、仮想マシン、ネ�
 1. このページでは、仮想マシンをデプロイするための情報を入力します。 この VM は、Fortanix Node Agent ソフトウェアがインストールされた、Azure からの DCsv2 シリーズの Intel SGX 対応の仮想マシンです。 ノード エージェントにより、変換されたイメージは Azure の Intel SGX ノードでさらに安全に実行できます。 仮想マシンおよび関連付けられているリソースをデプロイするサブスクリプションとリソース グループを選択します。
 
    > [!NOTE]
-   > 制約は、DCsv2 シリーズの仮想マシンを Azure にデプロイするときに適用されます。 追加のコアのクォータを要求することが必要な場合もあります。 詳細については、[Azure VM でのコンフィデンシャル コンピューティング ソリューション](./virtual-machine-solutions.md)に関するページを参照してください。
+   > 制約は、DCsv2 シリーズの仮想マシンを Azure にデプロイするときに適用されます。 追加のコアのクォータを要求することが必要な場合もあります。 詳細については、[Azure VM でのコンフィデンシャル コンピューティング ソリューション](./virtual-machine-solutions-sgx.md)に関するページを参照してください。
 
 1. 使用可能なリージョンを選択します。
 1. **[ノード名]** ボックスで、仮想マシンの名前を入力します。
@@ -175,7 +176,7 @@ Fortanix ノード エージェントを作成すると、仮想マシン、ネ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Fortanix ツールを使用して、コンフィデンシャル コンピューティング仮想マシン上で実行されるようにアプリケーション イメージを変換しました。 Azure におけるコンフィデンシャル コンピューティング仮想マシンの詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions.md)」を参照してください。
+このチュートリアルでは、Fortanix ツールを使用して、コンフィデンシャル コンピューティング仮想マシン上で実行されるようにアプリケーション イメージを変換しました。 Azure におけるコンフィデンシャル コンピューティング仮想マシンの詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions-sgx.md)」を参照してください。
 
 Azure のコンフィデンシャル コンピューティング オファリングの詳細については、「[Azure におけるコンフィデンシャル コンピューティング](overview.md)」を参照してください。
 

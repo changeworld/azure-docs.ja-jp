@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 10/14/2021
-ms.openlocfilehash: a764b6e0046b399d1984f13404aae6ba1eb4d72f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 8aafbbd0cc7063fdccf3ae44e9442fa86cfe5f94
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063889"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005767"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -185,7 +185,7 @@ Azure リソース用マネージド ID の詳細については、[Azure リソ
     - **ソースとして**、少なくとも **データベース ビューアー** ロールをデータベースに付与します。
     - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
      
-2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリまたは Synapse ワークスペースに割り当て、ユーザー割り当てマネージド ID ごとに[資格情報を作成](data-factory-service-identity.md#credentials)します。
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリまたは Synapse ワークスペースに割り当て、ユーザー割り当てマネージド ID ごとに[資格情報を作成](credentials.md)します。
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 

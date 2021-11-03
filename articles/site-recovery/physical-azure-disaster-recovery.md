@@ -4,12 +4,12 @@ description: Azure Site Recovery サービスを使用して Azure にオンプ�
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2021
-ms.openlocfilehash: 93a7d3274dbe682a6a08763302804c250545ec47
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 33b8df96dc4ad8272b158f73e4243b5b1cb1e706
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591256"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075108"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -48,7 +48,7 @@ ms.locfileid: "128591256"
 Microsoft [Azure アカウント](https://azure.microsoft.com/)を取得します。
 
 - アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
-- [Site Recovery の価格](/azure/site-recovery/site-recovery-faq#pricing)について理解し、[価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)を確認します。
+- [Site Recovery の価格](./site-recovery-faq.yml)について理解し、[価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)を確認します。
 - Site Recovery の[サポート対象のリージョン](https://azure.microsoft.com/pricing/details/site-recovery/)を見つけます。
 
 ### <a name="verify-azure-account-permissions"></a>Azure アカウントのアクセス許可を確認する

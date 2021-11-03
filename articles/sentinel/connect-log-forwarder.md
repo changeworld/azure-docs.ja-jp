@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: bagol
-ms.openlocfilehash: 5a7df5ba2de5b3d12e39b403be6a9e336734d144
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 02ffb7089ac0888fe918ca8f11898f479f273234
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260944"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014070"
 ---
 # <a name="deploy-a-log-forwarder-to-ingest-syslog-and-cef-logs-to-azure-sentinel"></a>ログ フォワーダーをデプロイして Syslog および CEF ログを Azure Sentinel に取り込む
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Syslog と CEF ログを Azure Sentinel に取り込むには (特に Log Analytics エージェントを直接インストールできないデバイスとアプライアンスから)、デバイスからログを収集して Azure Sentinel ワークスペースに転送する Linux マシンを指定して構成する必要があります。 このマシンは、オンプレミス環境の物理マシンや仮想マシン、Azure VM のほか、別のクラウドの VM でもかまいません。 
 

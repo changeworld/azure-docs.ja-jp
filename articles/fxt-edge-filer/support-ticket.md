@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer のサポート チケットを開く
 description: Microsoft カスタマー サービスおよびサポートのサポート チケットを開き、Azure FXT Edge Filer システムに関するサポートを要請します。
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: v-erkel
-ms.openlocfilehash: 71c0c1cf014333799821f87a6532ded8d50b8340
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: femila
+ms.openlocfilehash: e15269b0b592b2538c0f930e7cc40ea76dd74833
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415105"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011165"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge Filer のサポート チケットを開く
 

@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.custom: template-how-to
-ms.openlocfilehash: b724e18d8f9119ac33d878cfbf4393c4712d003f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 0712c10df8f987237df74d2078519afbd70e72f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219676"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006584"
 ---
 # <a name="capture-images-in-azure-percept-studio"></a>Azure Percept Studio でイメージをキャプチャする
 

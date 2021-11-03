@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 60f4d1d8e86eed6a3dab390ebf8e46296f4644d2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ec57245e1f3c0381bb362183122904b86af70473
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040191"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015221"
 ---
 # <a name="configure-consulting-service-offer-properties"></a>コンサルティング サービス オファーのプロパティを構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "130040191"
 
 ## <a name="select-the-primary-product"></a>主な製品を選択する
 
-**[主な製品]** ドロップダウン リストから、貴社のコンサルティング サービス オファーの焦点となる Microsoft 製品を選択します。 選択した製品によって、貴社のオファーが Microsoft AppSource と Azure Marketplace のどちらに公開されるかが決まります。 オファーを正確に表すと、顧客がオファーを見つけやすくなります。 選択した製品の[適格性の要件](https://aka.ms/AAacrbv)を満たす必要があります。 
+**[主な製品]** ドロップダウン リストから、貴社のコンサルティング サービス オファーの焦点となる Microsoft 製品を選択します。 選択した製品によって、貴社のオファーが Microsoft AppSource と Azure Marketplace のどちらに公開されるかが決まります。 オファーを正確に表すと、顧客がオファーを見つけやすくなります。 選択した製品の[適格性の要件](./plan-consulting-service-offer.md#eligibility-requirements)を満たす必要があります。 
 
 - [Azure] を選択すると、オファーは Azure Marketplace の一覧に表示されます。 オファーを最も適切に表す最大 3 つの **ソリューション領域** を選択します。
 - Microsoft 365 を選択している場合、オファーを最も適切に表す最大 3 つの **ソリューション領域** を選択します。 オファーは、Microsoft AppSource にリストされるようになります。

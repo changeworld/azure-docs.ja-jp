@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e82c980bb92832c3abd092ed799cf55b6f47438
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9a4fa43318a7e56e93cfe3a439eadcec2e476002
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835691"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049351"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Egnyte の統合
 
@@ -137,21 +137,21 @@ Form.com に対して Azure AD SSO を構成してテストするには、次の
 
     ![シングル サインオン認証](./media/egnyte-tutorial/authentication.png "シングル サインオン認証")   
     
-    a. [**シングル サインオン認証**] として [**SAML 2.0**] を選択します。
-   
-    b. [**Id プロバイダー**] として [**AzureAD**] を選択します。
-   
-    c. Azure portal からコピーした **ログイン URL** を **[ID プロバイダーのログイン URL]** テキスト ボックス内に貼り付けます。
-   
-    d. Azure portal からコピーした **Azure AD 識別子** を **[Identity provider entity ID]\(ID プロバイダーのエンティティ ID\)** テキスト ボックスに貼り付けます。
-      
-    e. Azure Portal からダウンロードした base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[Identity provider certificate]\(ID プロバイダー証明書\)** ボックスに貼り付けます。
-   
-    f. **[既定のユーザー マッピング]** として **[電子メール アドレス]** を選択します。
-   
-    g. **[ドメイン固有の発行者の値を使用]** として、**[無効]** を選択します。
-   
-    h. **[保存]** をクリックします。
+    1. [**シングル サインオン認証**] として [**SAML 2.0**] を選択します。
+
+    1. [**Id プロバイダー**] として [**AzureAD**] を選択します。
+
+    1. Azure portal からコピーした **ログイン URL** を **[ID プロバイダーのログイン URL]** テキスト ボックス内に貼り付けます。
+
+    1. Azure portal からコピーした **Azure AD 識別子** を **[Identity provider entity ID]\(ID プロバイダーのエンティティ ID\)** テキスト ボックスに貼り付けます。
+
+    1. Azure Portal からダウンロードした base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[Identity provider certificate]\(ID プロバイダー証明書\)** ボックスに貼り付けます。
+
+    1. **[既定のユーザー マッピング]** として **[電子メール アドレス]** を選択します。
+
+    1. **[ドメイン固有の発行者の値を使用]** として、**[無効]** を選択します。
+
+    1. **[保存]** をクリックします。
 
 ### <a name="create-egnyte-test-user"></a>Egnyte のテスト ユーザーの作成
 

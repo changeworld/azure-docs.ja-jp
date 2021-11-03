@@ -1,5 +1,5 @@
 ---
-title: 方法 - カスタム モデルと作成済みモデル
+title: 'ハウツー ガイド: カスタム モデルと作成済みモデルを使用する'
 titleSuffix: Azure Applied AI Services
 description: Form Recognizer のカスタム モデルと作成済みモデルを作成、使用、管理する方法について説明します
 author: laujan
@@ -7,17 +7,18 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: ef5514b44ad2d35870674a85958c28f5f780c308
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5389e30e2aca2d93ba0fb27c71a6b934d7bf10e0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233698"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027791"
 ---
-# <a name="how-to-use-custom-and-composed-models"></a>方法: カスタム モデルと作成済みモデルを使用する
+# <a name="use-custom-and-composed-models"></a>カスタム モデルと作成済みモデルを使用する
 
 Form Recognizer では、高度な機械学習テクノロジを使用して、ドキュメント イメージから情報を検出および抽出し、抽出したデータを構造化 JSON 出力で返します。 Form Recognizer を使用すると、スタンドアロンのカスタム モデルのトレーニングを行ったり、カスタム モデルを組み合わせて作成済みモデルを作成することができます。
 
@@ -25,15 +26,19 @@ Form Recognizer では、高度な機械学習テクノロジを使用して、�
 
 * **作成済みモデル**。 作成済みモデルは、カスタム モデルのコレクションを取得し、目的のフォームの種類を含む 1 つのモデルに割り当てることによって作成されます。 作成済みモデルにドキュメントが送信されると、サービスによって分類ステップが実行され、分析のために提示されたフォームを正確に表すカスタム モデルが決定されます。
 
-この記事では、[Form Recognizer サンプル ラベル付けツール](label-tool.md)、[REST API](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model)、または[クライアント ライブラリ SDK](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-csharp#train-a-custom-model) を使用して Form Recognizer のカスタム モデルと作成済みモデルを作成する方法について説明します。
+"***Form Recognizer Studio の [モデル構成] ウィンドウ***"
 
-## <a name="try-it-sample-labeling-tool"></a>試してみる: サンプル ラベル付けツール
+:::image type="content" source="media/studio/composed-model.png" alt-text="スクリーンショット: Form Recognizer Studio の [モデル構成] ウィンドウ。":::
+
+この記事では、[Form Recognizer サンプル ラベル付けツール](label-tool.md)、[REST API](quickstarts/client-library.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model)、または[クライアント ライブラリ SDK](quickstarts/client-library.md?branch=main&pivots=programming-language-csharp#train-a-custom-model) を使用して Form Recognizer のカスタム モデルと作成済みモデルを作成する方法について説明します。
+
+## <a name="sample-labeling-tool"></a>サンプル ラベル付けツール
 
 カスタム フォームからデータを抽出する方法を確認するには、サンプル ラベル付けツールを試してください。 次が必要です。
 
 * Azure サブスクリプション: [無料で作成できます](https://azure.microsoft.com/free/cognitive-services/)。
 
-* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
+* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[Go to resource (リソースに移動)]** を選択して、API キーとエンドポイントを取得します。
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
 
@@ -107,7 +112,7 @@ Form Recognizer サンプル ラベル付けツール、REST API、またはク�
 
 ### <a name="form-recognizer-sample-labeling-tool"></a>[**Form Recognizer サンプル ラベル付けツール**](#tab/fott)
 
-[**Form Recognizer サンプル ラベル付けツール**](https://fott-2-1.azurewebsites.net/)を使用してモデルをトレーニングすると、モデル ID は [Train Result] (トレーニング結果) ウィンドウに表示されます。
+[**Form Recognizer サンプル ラベル付けツール**](https://fott-2-1.azurewebsites.net/)を使用してモデルをトレーニングすると、モデル ID が [Train Result]\(トレーニング結果\) ウィンドウに表示されます。
 
 :::image type="content" source="media/fott-training-results.png" alt-text="スクリーンショット: トレーニング結果ウィンドウ。":::
 

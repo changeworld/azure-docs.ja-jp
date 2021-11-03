@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/08/2021
-ms.custom: project-no-code
+ms.custom: project-no-code, ignite-fall-2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 306aef9867025ef4c40495871ed9bffbd287d3e3
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 19a13d9c2941d9a98cce4415b9266d67a9bb8e53
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036381"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028103"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
 Microsoft Graph では、お使いの Azure AD B2C ディレクトリ内のリソースを管理できます。 次の Microsoft Graph API 操作は、ユーザー、ID プロバイダー、ユーザーフロー、カスタム ポリシー、およびポリシー キーなど、Azure AD B2C リソースの管理に対してサポートされています。 次のセクションの各リンクは、その操作の Microsoft Graph API リファレンス内の対応するページを対象としています。 
 
 > [!NOTE]
-> また、Azure サブスクリプションにリンクされている対応の Azure リソースと共に、Azure AD B2C ディレクトリ自体をプログラムによって作成することもできます。 この機能は Microsoft Graph API ではなく、Azure REST API を通じて公開されます。 詳細については、「[B2C テナント - 作成](/rest/api/activedirectory/b2ctenants/create)」を参照してください。
+> また、Azure サブスクリプションにリンクされている対応の Azure リソースと共に、Azure AD B2C ディレクトリ自体をプログラムによって作成することもできます。 この機能は Microsoft Graph API ではなく、Azure REST API を通じて公開されます。 詳細については、「[B2C テナント - 作成](/rest/api/activedirectory/b2c-tenants/create)」を参照してください。
 
 Microsoft Graph API を使用した Azure AD B2C ユーザーの移行については、こちらのビデオをご覧ください。
 
@@ -253,4 +253,4 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 <!-- LINK -->
 
 [graph-objectIdentity]: /graph/api/resources/objectidentity
-[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)
+[graph-user]: /graph/api/resources/user

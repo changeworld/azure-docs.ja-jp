@@ -10,12 +10,12 @@ author: rsethur
 ms.author: seramasu
 ms.date: 08/03/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ebb4db34c802c1cd82e0065579cc97ffeb3fe642
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: de4a9c78501fd74fa65a453b593701891e04d345
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779162"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024260"
 ---
 # <a name="cli-v2-managed-online-endpoint-yaml-schema"></a>CLI (v2) マネージド オンライン エンドポイント YAML スキーマ
 
@@ -84,4 +84,4 @@ ms.locfileid: "121779162"
 
 - [CLI (v2) をインストールして使用する](how-to-configure-cli.md)
 - [マネージド オンライン エンドポイントを使用してモデルをデプロイする](how-to-deploy-managed-online-endpoints.md)方法について学習する
-- [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)
+- [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](./how-to-troubleshoot-online-endpoints.md)

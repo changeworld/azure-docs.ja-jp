@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 0ceb71b5caaf17c485d4f4bd649e6b68d7c72a5d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: f4c8544c768f3eaf783450acfe27e4a3d42fc833
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224049"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059834"
 ---
 # <a name="create-a-no-code-voice-assistant-in-azure-percept-studio"></a>Azure Percept Studio でコードなしの音声アシスタントを作成する
 

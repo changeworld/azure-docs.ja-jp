@@ -4,21 +4,17 @@ description: Azure Managed Instance for Apache Cassandra クラスターから�
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 11/02/2021
 ms.author: thvankra
-ms.openlocfilehash: ed0ff343595429a4cb81fef280203f1180eeb098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 4464db95637511339e0000235b85da86306b4cef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051023"
 ---
 # <a name="configure-grafana-to-visualize-metrics-emitted-from-the-managed-instance-cluster"></a>マネージド インスタンス クラスターから生成されたメトリックを視覚化するように Grafana を構成する
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Managed Instance for Apache Cassandra クラスターをデプロイすると、さまざまなクライアント ツールで利用できる [Prometheus](https://prometheus.io/) をホストするサーバーがこのサービスによってプロビジョニングされます。 Prometheus は、オープンソースの監視ソリューションです。 マネージド インスタンスはメトリックを生成し、データが 10 GB に達するか 10 分が経過するまで (どちらかのしきい値に達するまで) それらを保持します。 この記事では、マネージド インスタンス クラスターから生成されたメトリックを視覚化するように Grafana を構成する方法について説明します。 メトリックを視覚化するには、次のタスクが必要となります。
 
@@ -117,4 +113,4 @@ Azure Managed Instance for Apache Cassandra クラスターをデプロイする
 この記事では、Grafana を使用してダッシュボードを構成し、Prometheus のメトリックを視覚化する方法について説明しました。 Azure Managed Instance for Apache Cassandra の詳細については、次の記事を参照してください。
 
 * [Azure Managed Instance for Apache Cassandra の概要](introduction.md)
-* [Azure Databricks でマネージド Apache Spark クラスターをデプロイする (プレビュー)](deploy-cluster-databricks.md)
+* [Azure Databricks でマネージド Apache Spark クラスターをデプロイする](deploy-cluster-databricks.md)

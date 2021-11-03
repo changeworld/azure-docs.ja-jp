@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 07/23/2021
 ms.author: vvasic
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: 50464db5c62ffa0b5f6c48a323a9a23a43b06315
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e06c0924cb028736d7a6313aa7950ac8d389b490
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994026"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013159"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL プールを使用してネイティブの外部テーブルを作成および使用する
 
@@ -178,7 +179,7 @@ CREATE EXTERNAL TABLE Covid (
 );
 ```
 
-Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+パーティション分割されたフォルダーに外部テーブルを作成することはできません。 その他の既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)をご覧ください。
 
 ## <a name="use-an-external-table"></a>外部テーブルを使用する
 

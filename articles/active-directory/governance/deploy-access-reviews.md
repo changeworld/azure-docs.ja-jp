@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141322495fe31283b90f34bbf77a7d1ebb86d00d
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: f754d527a1b469ae420ca1af53e2c3b73692a5ef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730472"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051840"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -191,7 +191,7 @@ ms.locfileid: "129730472"
 
 | リソースの種類| アクセス レビューの作成と管理 (作成者)| アクセス レビュー結果の読み取り |
 | - | - | -|
-| グループまたはアプリケーション| グローバル管理者 <p>ユーザー管理者<p>Identity Governance 管理者<p>特権ロール管理者 (Azure AD ロール割り当て可能グループの場合はレビューのみ)<p>グループ所有者 ([管理者によって有効にされている場合]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview))| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>Identity Governance 管理者<p>特権ロール管理者<p>セキュリティ閲覧者<p>グループ所有者 ([管理者によって有効にされている場合]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)) |
+| グループまたはアプリケーション| グローバル管理者 <p>ユーザー管理者<p>Identity Governance 管理者<p>特権ロール管理者 (Azure AD ロール割り当て可能グループの場合はレビューのみ)<p>グループ所有者 ([管理者によって有効にされている場合]( create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview))| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>Identity Governance 管理者<p>特権ロール管理者<p>セキュリティ閲覧者<p>グループ所有者 ([管理者によって有効にされている場合]( create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview)) |
 |Azure AD ロール| グローバル管理者 <p>特権ロール管理者|  グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>特権ロール管理者<p> <p>セキュリティ閲覧者 |
 | Azure リソース ロール| グローバル管理者<p>リソースの所有者| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>特権ロール管理者<p> <p>セキュリティ閲覧者  |
 | アクセス パッケージ| グローバル管理者<p>ユーザー管理者<p>Identity Governance 管理者| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>Identity Governance 管理者<p> <p>セキュリティ閲覧者  |

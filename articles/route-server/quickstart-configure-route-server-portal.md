@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: a6714867b5b863f608e3282c5e6f3bb0d2425969
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 7dfded652c14ec6805b7fa48004cf5dfe8d72b5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091485"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061107"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>クイックスタート: Azure portal を使用してルート サーバーを作成および構成する
 
@@ -65,7 +65,7 @@ ms.locfileid: "129091485"
 
 このセクションは、お使いの NVA との BGP ピアリングを構成するのに役立ちます。
 
-1. Azure portal で [[Route Server]\(ルート サーバー\)](https://aka.ms/routeserver) に移動し、構成するルート サーバーを選択します。
+1. Azure portal で [[Route Server]\(ルート サーバー\)](./overview.md) に移動し、構成するルート サーバーを選択します。
 
     :::image type="content" source="./media/quickstart-configure-route-server-portal/select-route-server.png" alt-text="ルート サーバーの一覧のスクリーンショット。"::: 
 
@@ -95,7 +95,7 @@ ms.locfileid: "129091485"
 
 ExpressRoute ゲートウェイや VPN ゲートウェイがあり、それらがルート サーバーとルートを交換するようにする場合は、ルート交換を有効にできます。
 
-1. Azure portal で [[Route Server]\(ルート サーバー\)](https://aka.ms/routeserver) に移動し、構成するルート サーバーを選択します。
+1. Azure portal で [[Route Server]\(ルート サーバー\)](./overview.md) に移動し、構成するルート サーバーを選択します。
 
 1. 左側のナビゲーション パネルの *[設定]* で、 **[構成]** を選択します。
 

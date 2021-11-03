@@ -4,12 +4,12 @@ description: Azure Policy ゲスト構成で実装する Azure の Windows 向�
 ms.date: 08/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: c69a15fc97a605e1166a1721cb9e2fef9ce21ab7
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: b523a239c591d94f733a4d6339964dfb24eec8b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779171"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016247"
 ---
 # <a name="windows-security-baseline"></a>Windows セキュリティ ベースライン
 
@@ -201,7 +201,7 @@ ms.locfileid: "122779171"
 |名前<br /><sub>(ID)</sub> |詳細 |必要な値<br /><sub>(型)</sub> |重大度 |
 |---|---|---|---|
 |PNP アクティビティの監査<br /><sub>(AZ-WIN-00182)</sub> |**説明**: このポリシー設定を使用すると、プラグ アンド プレイにより外付けデバイスを検出したときに監査できるようになります。 この設定の推奨値は `Success` です。 **注:** グループ ポリシーにアクセスしてこの値を設定するには、Windows 10 および Windows Server 2016 以降の OS が必要です。<br />**キーのパス**: {0CCE9248-69AE-11D9-BED3-505054503030}<br />**OS**: WS2016<br />**サーバーの種類**:ドメイン コントローラ、ドメイン メンバー、ワークグループ メンバー |\>\= Success<br /><sub>(監査)</sub> |重大 |
-|プロセス作成の監査<br /><sub>(CCE-36059-4)</sub> |**説明**: このサブカテゴリでは、プロセスの作成と、それを作成したプログラムまたはユーザーの名前を報告します。 このサブカテゴリには次のイベントが含まれます: - 4688: 新しいプロセスが作成されました。 - 4696: プライマリ トークンがプロセスに割り当てられました。 この設定に関する最新の情報は、次の Microsoft のサポート技術情報の記事 947226: ["Description of security events in Windows Vista and in Windows Server 2008" (Windows Vista および Windows Server 2008 のセキュリティ イベントの説明)](https://support.microsoft.com/en-us/kb/947226) を参照してください。 この設定の推奨値は `Success` です。<br />**キーのパス**: {0CCE922B-69AE-11D9-BED3-505054503030}<br />**OS**: WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**サーバーの種類**:ドメイン コントローラ、ドメイン メンバー、ワークグループ メンバー |\>\= Success<br /><sub>(監査)</sub> |重大 |
+|プロセス作成の監査<br /><sub>(CCE-36059-4)</sub> |**説明**: このサブカテゴリでは、プロセスの作成と、それを作成したプログラムまたはユーザーの名前を報告します。 このサブカテゴリには次のイベントが含まれます: - 4688: 新しいプロセスが作成されました。 - 4696: プライマリ トークンがプロセスに割り当てられました。 この設定の推奨値は `Success` です。<br />**キーのパス**: {0CCE922B-69AE-11D9-BED3-505054503030}<br />**OS**: WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**サーバーの種類**:ドメイン コントローラ、ドメイン メンバー、ワークグループ メンバー |\>\= Success<br /><sub>(監査)</sub> |重大 |
 
 ## <a name="system-audit-policies---logon-logoff"></a>システム監査ポリシー - ログオン/ログオフ
 

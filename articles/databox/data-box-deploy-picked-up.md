@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/21/2021
+ms.date: 10/26/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5f2d368748dc722e680f956ea7dd233313a97efe
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 055ffcb662b5a12dfefe194b08e293f277ba5005
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251986"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005619"
 ---
 ::: zone target="docs"
 
@@ -73,7 +73,9 @@ ms.locfileid: "130251986"
 
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
-デバイスへのデータ コピーが完了し、**発送準備** が正常に実行されたことを確認します。 デバイスを発送する地域によって手順が異なります。
+デバイスへのデータ コピーが完了し、**発送準備** が正常に実行されたことを確認します。 
+
+デバイスを発送する地域によって手順が異なります。 多くの国、地域では、Microsoft が提供している配送方法を利用するか、または、自分で行うそれ以外の方法で配送できます。
 
 ### <a name="microsoft-managed-shipping"></a>Microsoft 管理の出荷
 
@@ -83,9 +85,15 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 
 [!INCLUDE [data-box-shipping-in-us-canada](../../includes/data-box-shipping-in-us-canada.md)]
 
-## <a name="europe"></a>[ヨーロッパ](#tab/in-europe)
+## <a name="eu"></a>[EU](#tab/in-europe)
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
+
+**ドイツまたはスイスから発送する場合** は、[自己管理の出荷を使用](#self-managed-shipping)することもできます。
+
+## <a name="uk"></a>[英国](#tab/in-uk)
+
+[!INCLUDE [data-box-shipping-in-uk](../../includes/data-box-shipping-in-uk.md)]
 
 ## <a name="australia"></a>[オーストラリア](#tab/in-australia)
 
@@ -99,23 +107,27 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 
 [!INCLUDE [data-box-shipping-in-singapore](../../includes/data-box-shipping-in-singapore.md)]
 
-## <a name="south-africa"></a>[南アフリカ](#tab/in-sa)
-
-[!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
-
 ## <a name="hong-kong"></a>[香港特別行政区](#tab/in-hk)
 
 [!INCLUDE [data-box-shipping-in-hk](../../includes/data-box-shipping-in-hk.md)]
+
+## <a name="korea"></a>[韓国](#tab/in-korea)
+
+[!INCLUDE [data-box-shipping-in-korea](../../includes/data-box-shipping-in-korea.md)]
+
+## <a name="s-africa"></a>[南アフリカ](#tab/in-sa)
+
+[!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
 
 ## <a name="uae"></a>[アラブ首長国連邦](#tab/in-uae)
 
 [!INCLUDE [data-box-shipping-in-uae](../../includes/data-box-shipping-in-uae.md)]
 
----
-
 ### <a name="self-managed-shipping"></a>自己管理の出荷
 
 [!INCLUDE [data-box-shipping-self-managed](../../includes/data-box-shipping-self-managed.md)]
+
+---
 
 ::: zone target="chromeless"
 

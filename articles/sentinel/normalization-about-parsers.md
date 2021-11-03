@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: b3dc1575258c495a2be63eced6aa141c60bb6631
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 12f26ca7567387cd6a9edfcde0ef1229e9635f69
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659440"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064470"
 ---
 # <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel Information Model (ASIM) パーサー (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel では、解析と[正規化](normalization.md)はクエリ時に行われます。 パーサーは [KQL ユーザー定義関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)として構築され、**CommonSecurityLog**、カスタム ログテーブル、Syslog などの既存のテーブルのデータを正規化されたスキーマに変換します。 パーサーをワークスペース関数として保存すると、すべての Azure Sentinel テーブルと同じように使用できます。
 
