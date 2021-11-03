@@ -5,12 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 364ceacaea122e7ffda58ef0c7d4db072c8fee13
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 153276c1f3ccc63bbca0f286d3ae18c9e4de1b18
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122263135"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253912"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -33,7 +34,7 @@ Windows に Speech CLI をインストールするには、次の手順に従い
 ### <a name="font-limitations"></a>フォントの制限事項
 
 Windows の Speech CLI では、ローカル コンピューター上のコマンド プロンプトで使用できるフォントのみを表示できます。
-[Windows ターミナル](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)では、Speech CLI によって対話的に生成されるすべてのフォントがサポートされます。
+[Windows ターミナル](https://www.microsoft.com/p/windows-terminal/9n0dx20hk701)では、Speech CLI によって対話的に生成されるすべてのフォントがサポートされます。
 
 ファイルに出力すると、メモ帳などのテキスト エディターや、Microsoft Edge などの Web ブラウザーでも、すべてのフォントを表示できます。
 

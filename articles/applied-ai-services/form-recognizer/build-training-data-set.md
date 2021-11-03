@@ -7,14 +7,15 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/27/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: 397f3c05d42837ffb5e9bb4fdb465a4aee352fbd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 640cad589343a90912dfe0dba615f1df6baaa6b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233679"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027696"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
@@ -72,7 +73,7 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニング データ セットの作成方法を習得したので、クイックスタートに従って、カスタム Form Recognizer モデルをトレーニングし、お使いのフォームでの使用を開始してください。
 
-* [クライアント ライブラリまたは REST API を使用し、モデルをトレーニングし、フォーム データを抽出する](./quickstarts/try-sdk-rest-api.md)
+* [クライアント ライブラリまたは REST API を使用し、モデルをトレーニングし、フォーム データを抽出する](quickstarts/try-sdk-rest-api.md)
 * [サンプル ラベル付けツールを使用したラベルによるトレーニング](label-tool.md)
 
 ## <a name="see-also"></a>関連項目

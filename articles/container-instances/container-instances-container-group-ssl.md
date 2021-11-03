@@ -3,12 +3,12 @@ title: サイドカー コンテナーで TLS を有効にする
 description: サイドカー コンテナーで Nginx を実行することで、Azure Container Instances 内で実行されるコンテナー グループに対して SSL または TLS エンドポイントを作成します
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: d2bd750849f99229d6bc4b487e21b42702980ceb
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: bc9300176a63f96a53fc26108f5acf344d79d2d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183432"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080234"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで TLS を有効にする
 
@@ -146,7 +146,7 @@ code deploy-aci.yaml
 
 Base64 でエンコードされたファイルのコンテンツを、`secret` の下に示された場所に入力します。 たとえば、Base64 でエンコードされた各ファイルを `cat` して、そのコンテンツを表示します。 デプロイ中に、これらのファイルはコンテナー グループ内の[シークレット ボリューム](container-instances-volume-secret.md)に追加されます。 この例では、シークレット ボリュームは Nginx コンテナーにマウントされます。
 
-```YAML
+```yaml
 api-version: 2019-12-01
 location: westus
 name: app-with-ssl

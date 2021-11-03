@@ -10,12 +10,12 @@ author: denniseik
 ms.date: 10/08/2021
 ms.topic: how-to
 ms.custom: ''
-ms.openlocfilehash: e273c2f10ddbc21d12be9eb62e069d77a5b5d65e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b567accf1a83506731fa58b793fca428c9c702e2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716271"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085015"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-terraform-preview"></a>Terraform を使用して Azure Machine Learning ワークスペースを管理する (プレビュー)
 
@@ -50,7 +50,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 ## <a name="deploy-a-workspace"></a>ワークスペースをデプロイする
 
-Azure Machine Learning ワークスペースを作成するには、次の Terraform 構成を使用できます。 Azure Machine Learning ワークスペースを作成するときは、依存関係として他のさまざまなサービスが必要です。 テンプレートでは、これらの[ワークスペースに関連付けられているリソース](/azure/machine-learning/concept-workspace#resources)も指定します。 ニーズに応じて、パブリックまたはプライベート ネットワーク接続を使用するリソースを作成するテンプレートを使用できます。
+Azure Machine Learning ワークスペースを作成するには、次の Terraform 構成を使用できます。 Azure Machine Learning ワークスペースを作成するときは、依存関係として他のさまざまなサービスが必要です。 テンプレートでは、これらの[ワークスペースに関連付けられているリソース](./concept-workspace.md#resources)も指定します。 ニーズに応じて、パブリックまたはプライベート ネットワーク接続を使用するリソースを作成するテンプレートを使用できます。
 
 # <a name="public-network-connectivity"></a>[パブリック ネットワーク接続](#tab/publicworkspace)
 
@@ -64,11 +64,11 @@ Azure の一部のリソースには、グローバルに一意の名前が必�
 
 # <a name="private-network-connectivity"></a>[プライベート ネットワーク接続](#tab/privateworkspace)
 
-次の構成を使用すると、Azure Private Link エンドポイントを使用して分離されたネットワーク環境にワークスペースが作成されます。 [プライベート DNS ゾーン](/azure/dns/private-dns-privatednszone)が含まれているので、仮想ネットワーク内でドメイン名を解決できます。
+次の構成を使用すると、Azure Private Link エンドポイントを使用して分離されたネットワーク環境にワークスペースが作成されます。 [プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)が含まれているので、仮想ネットワーク内でドメイン名を解決できます。
 
 Azure の一部のリソースには、グローバルに一意の名前が必要です。 次のテンプレートを使用してリソースをデプロイする前に、`resourceprefix` 変数に一意の値を設定します。
 
-Azure Container Registry と Azure Machine Learning の両方にプライベート リンク エンドポイントを使用すると、[環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)イメージのビルドに Azure Container Registry タスクを使用できません。 代わりに、Azure Machine Learning コンピューティング クラスターを使用してイメージをビルドできます。 使用するクラスター名を構成するには、[image_build_compute_name](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/machine_learning_workspace) 引数を設定します。 [public_network_access_enabled](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/machine_learning_workspace) 引数を使用すると、プライベート リンク エンドポイントを持つワークスペースへの[パブリック アクセスを許可する](/azure/machine-learning/how-to-configure-private-link?tabs=python#enable-public-access)ように構成できます。
+Azure Container Registry と Azure Machine Learning の両方にプライベート リンク エンドポイントを使用すると、[環境](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)イメージのビルドに Azure Container Registry タスクを使用できません。 代わりに、Azure Machine Learning コンピューティング クラスターを使用してイメージをビルドできます。 使用するクラスター名を構成するには、[image_build_compute_name](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/machine_learning_workspace) 引数を設定します。 [public_network_access_enabled](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/machine_learning_workspace) 引数を使用すると、プライベート リンク エンドポイントを持つワークスペースへの[パブリック アクセスを許可する](./how-to-configure-private-link.md?tabs=python#enable-public-access)ように構成できます。
 
 **variables.tf**:
 :::code language="terraform" source="~/terraform/quickstart/201-machine-learning-moderately-secure/variables.tf":::
@@ -114,7 +114,7 @@ resource "azurerm_subnet" "snet-workspace" {
 # For full reference, see: https://github.com/Azure/terraform/blob/master/quickstart/201-machine-learning-moderately-secure/network.tf
 ```
 
-プライベート リンク エンドポイント ワークスペースに接続するには、複数のオプションがあります。 これらのオプションの詳細については、「[ワークスペースに安全に接続する](/azure/machine-learning/how-to-secure-workspace-vnet#securely-connect-to-your-workspace)」を参照してください。
+プライベート リンク エンドポイント ワークスペースに接続するには、複数のオプションがあります。 これらのオプションの詳細については、「[ワークスペースに安全に接続する](./how-to-secure-workspace-vnet.md#securely-connect-to-your-workspace)」を参照してください。
 
 ---
 
@@ -138,5 +138,5 @@ resource "azurerm_subnet" "snet-workspace" {
   * [202: 201 に似ているが、既存のネットワーク コンポーネントを使用するオプション](https://github.com/Azure/terraform/tree/master/quickstart/202-machine-learning-moderately-secure-existing-VNet)。
   
 * Terraform Azure プロバイダーの詳細については、[Terraform レジストリの Azure Resource Manager プロバイダー](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)に関するページを参照してください。
-* ネットワーク構成オプションの詳細については、「[仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する](/azure/machine-learning/how-to-network-security-overview)」を参照してください。
+* ネットワーク構成オプションの詳細については、「[仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する](./how-to-network-security-overview.md)」を参照してください。
 * Azure Resource Manager テンプレート ベースの別のデプロイについては、[Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-rest.md)に関する記事を参照してください。

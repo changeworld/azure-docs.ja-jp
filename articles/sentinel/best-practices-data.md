@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 7c29ae41acd800a3e8893ec50ef25cb77c89fe04
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0ba9d4d1452b0a3248e7df817561ec080c95ca93
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810162"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047613"
 ---
 #  <a name="data-collection-best-practices"></a>データ収集のベスト プラクティス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 このセクションでは、Azure Sentinel データ コネクタを使用してデータを収集するためのベスト プラクティスについて説明します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」、「[Azure Sentinel データ コネクタ リファレンス](data-connectors-reference.md)」、および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
 

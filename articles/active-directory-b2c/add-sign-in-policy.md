@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 94845919e1b0bc171b7df831593b04daffb2213b
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 5177d06ce6507f23dfbc31b9825ce38d85422bb6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064524"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008173"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン フローを設定する
 
@@ -26,7 +26,7 @@ ms.locfileid: "130064524"
 
 ## <a name="sign-in-flow-overview"></a>サインイン フローの概要
 
-サインイン ポリシーによって、ユーザーは以下を実行できます。 
+サインイン ポリシーによって、ユーザーは以下を実行できます。
 
 * ユーザーは Azure AD B2C ローカルアカウントでサインインできる
 * ソーシャル アカウントでサインアップまたはサインインする
@@ -78,7 +78,7 @@ ms.locfileid: "130064524"
 
 ## <a name="remove-the-sign-up-link"></a>サインアップ リンクを削除する
 
-**SelfAsserted-LocalAccountSignin-Email** 技術プロファイルは [セルフアサート](self-asserted-technical-profile.md)であり、サインアップまたはサインイン フローの間に呼び出されます。 サインアップ リンクを削除するには、`setting.showSignupLink` メタデータを `false` に設定します。 拡張ファイルで SelfAsserted-LocalAccountSignin-Email 技術プロファイルを上書きします。 
+**SelfAsserted-LocalAccountSignin-Email** 技術プロファイルは [セルフアサート](self-asserted-technical-profile.md)であり、サインアップまたはサインイン フローの間に呼び出されます。 サインアップ リンクを削除するには、`setting.showSignupLink` メタデータを `false` に設定します。 拡張ファイルで SelfAsserted-LocalAccountSignin-Email 技術プロファイルを上書きします。
 
 1. お使いのポリシーの拡張ファイルを開きます。 たとえば、_`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`**_ です。
 1. `ClaimsProviders` 要素を見つけます。 要素が存在しない場合は追加します。
@@ -103,7 +103,7 @@ ms.locfileid: "130064524"
 
 1. `<BuildingBlocks>` 要素内で、1.2.0 以降のデータ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
-    ```XML
+    ```xml
     <!-- 
     <BuildingBlocks> 
       <ContentDefinitions>-->

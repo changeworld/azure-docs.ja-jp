@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 67a66e618206b182983ada474b1f0d3788526e1e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: cd797c58edb1d6918c8681f9cadffecdba8ef827
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223913"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011467"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -272,14 +272,16 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 4. **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストに 5 つのアクティビティ ウィンドウが表示されます。 **[Window Start (ウィンドウの開始)]** 時間には、すべての日付のパイプライン開始時間からパイプライン終了時間が表示されます。
 5. すべてのアクティビティ ウィンドウの状態が [準備完了] に設定されるまで、 **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストの **[更新]** を何度かクリックします。
 6. 次に、出力ファイルが adfblobconnector コンテナーの出力フォルダーに生成されていることを確認します。 出力フォルダーのフォルダー構造は次のとおりです。
-    ```
+
+    ```output
     2017/04/21
     2017/04/22
     2017/04/23
     2017/04/24
     2017/04/25
     ```
-   データ ファクトリの監視と管理の詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事をご覧ください。
+
+    データ ファクトリの監視と管理の詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事をご覧ください。
 
 ### <a name="data-factory-entities"></a>Data Factory のエンティティ
 ここで、Data Factory のホーム ページのタブに戻ります。 現在データ ファクトリには、2 つのリンクされたサービス、2 つのデータセット、および 1 つのパイプラインがあります。

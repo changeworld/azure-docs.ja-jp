@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 65df8c53522bb971bcd089967047f8a86de55f44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b0dea6bebd20ca5071a4c1395d5835f31c80e90c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749363"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048104"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -241,7 +241,7 @@ New-AzSearchService -ResourceGroupName <resource-group-name> `
 
 ## <a name="create-a-service-with-a-private-endpoint"></a>プライベート エンドポイントを使用してサービスを作成する
 
-Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 詳細については、[Azure Cognitive Search 用のプライベート エンドポイントの作成](service-create-private-endpoint.md)に関する記事を参照してください
+Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/ip-services/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 詳細については、[Azure Cognitive Search 用のプライベート エンドポイントの作成](service-create-private-endpoint.md)に関する記事を参照してください
 
 次の例では、プライベート エンドポイントを使用して検索サービスを作成する方法を示します。 
 

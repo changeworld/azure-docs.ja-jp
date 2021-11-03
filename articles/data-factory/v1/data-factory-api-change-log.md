@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: conceptual
 robots: noindex
 ms.date: 10/22/2021
-ms.openlocfilehash: 2010081ca22751e5e3e1a7f36084dff53b1c0aef
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3b28e8d4042377e7834fe619e15feabb916b2591
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255183"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059625"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API の変更ログ
 > [!NOTE]
@@ -145,7 +145,9 @@ ms.locfileid: "130255183"
 | SqlServerDataset |[SqlServerTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.sqlservertabledataset) |
 
 ## <a name="version-400"></a>バージョン 4.0.0
+
 ### <a name="breaking-changes"></a>重大な変更
+
 * 次のクラスとインターフェイスの名前が変更されました。
 
 | 以前の名前 | 新しい名前 |
@@ -162,7 +164,7 @@ ms.locfileid: "130255183"
 
 * **List** メソッドでページングされた結果が返されるようになりました。 応答に空でない **NextLink** プロパティが含まれている場合、クライアント アプリケーションは、すべてのページが返されるまで次のページを取得し続ける必要があります。  たとえば次のようになります。
 
-    ```csharp
+  ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
     var pipelines = new List<Pipeline>(response.Pipelines);
 
@@ -174,7 +176,8 @@ ms.locfileid: "130255183"
 
         nextLink = nextResponse.NextLink;
     }
-    ```
+  ```
+
 * **List** パイプライン API では、全詳細ではなく、パイプラインの概要だけが返されます。 たとえば、パイプライン概要のアクティビティには、名前と種類だけが含まれます。
 
 ### <a name="feature-additions"></a>機能の追加

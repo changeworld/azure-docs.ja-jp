@@ -1,135 +1,137 @@
 ---
-title: Azure Purview に Looker を登録してスキャンを設定する
-description: この記事では、Azure Purview に Looker ソースを登録し、スキャンを設定する方法について、概要を説明します。
+title: Looker に接続して管理する
+description: このガイドでは、Azure Purview で Looker に接続し、Azure Purview の機能を使用して Looker ソースをスキャンおよび管理する方法について説明します。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 1f39a1d261b4c8ed4223d66ebb34c94be7310b2e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: a420923ed3d1ef57b8d0d3abdcb688e5412bafd6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214782"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048161"
 ---
-# <a name="register-and-scan-looker-preview"></a>Looker の登録とスキャン (プレビュー)
+# <a name="connect-to-and-manage-looker-in-azure-purview"></a>Azure Purview で Looker に接続して管理する
 
-この記事では、Azure Purview に Looker サーバーを登録し、スキャンを設定する方法について、概要を説明します。
+この記事では、Looker を登録する方法と、Azure Purview で Looker を認証して操作する方法の概要を説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
+
+> [!IMPORTANT]
+> ソースとしての Looker は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Looker ソースでは、Looker サーバーからメタデータを抽出するフルスキャンがサポートされています。 Looker サーバーからメタデータがインポートされました。これには、データベース接続、LookML モデル、関連付けられているレポート (Look とダッシュボード) が含まれます。 このデータ ソースにより、データ資産間の系列もフェッチされます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register)| [はい](#scan)| いいえ | いいえ | いいえ | いいえ| [はい](how-to-lineage-looker.md)|
 
-> [!Note]
-> ソースとしての Looker は、現在、プライベート プレビューでサポートされています。 このソースを登録し、非運用環境の Purview アカウントにスキャンを設定して、フィードバックをお寄せください。
+> [!Important]
+> サポートされている Looker サーバーのバージョンは 7.2 です
 
 ## <a name="prerequisites"></a>前提条件
 
-1.  最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。
-    詳細については、「[セルフホステッド統合ランタイムを作成して共有する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-2.  セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-3.  セルフホステッド統合ランタイムが実行されている VM に \"Visual C++ 再頒布可能パッケージ 2012 Update 4\" がインストールされていることを確認します。 インストールしていない場合は、\'[こちら](https://www.microsoft.com/download/details.aspx?id=30679)からダウンロードしてください。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-4.  サポートされている Looker サーバーのバージョンは 7.2 です
+* 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
+* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+
+* セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
+
+## <a name="register"></a>登録
+
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に Looker を登録する方法について説明します。
+
+### <a name="authentication-for-registration"></a>登録の認証
 
 Looker サーバーに接続するには、API3 キーが必要です。 API3 キーは、パブリック client_id とプライベート client_secret で構成され、OAuth2 認証パターンに従います。
 
-## <a name="register-a-looker-server"></a>Looker サーバーを登録する
+### <a name="steps-to-register"></a>登録する手順
 
 新しい Looker サーバーをデータ カタログに登録するには、次のようにします。
 
 1. ご自分の Purview アカウントに移動します。
-2. 左側のナビゲーションで **[Data Map]** を選択します。
-3. **[登録]** を選択します。
-4. [ソースの登録] で、 **[Looker]** を選択します。 **[続行]** を選択します。
-    :::image type="content" source="media/register-scan-looker-source/register-sources.png" alt-text="looker ソースの登録" border="true":::
+1. 左側のナビゲーションで **[Data Map]** を選択します。
+1. **[登録]** を選択します。
+1. [ソースの登録] で、 **[Looker]** を選択します。 **[続行]** を選択します。
 
+:::image type="content" source="media/register-scan-looker-source/register-sources.png" alt-text="looker ソースの登録" border="true":::
 
 [ソースの登録 (Looker)] 画面で、次の操作を行います。
 
 1. データ ソースがカタログに一覧表示されるときの **名前** を入力します。
 
-2. **[サーバー API URL]** フィールドに Looker API URL を入力します。 API 要求の既定のポートは、ポート 19999 です。 また、すべての Looker API エンドポイントには HTTPS 接続が必要です。 たとえば、'https://azurepurview.cloud.looker.com ' です
+1. **[サーバー API URL]** フィールドに Looker API URL を入力します。 API 要求の既定のポートは、ポート 19999 です。 また、すべての Looker API エンドポイントには HTTPS 接続が必要です。 例: 'https://azurepurview.cloud.looker.com'
 
-3. コレクションを選択するか、新しいものを作成します (省略可能)
+1. コレクションを選択するか、新しいものを作成します (省略可能)
 
-4. データ ソースの登録を終了します。
+1. データ ソースの登録を終了します。
 
     :::image type="content" source="media/register-scan-looker-source/scan-source.png" alt-text="looker ソースのスキャン" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="scan"></a>スキャン
+
+次の手順に従って Looker をスキャンし、資産を自動的に識別し、データを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
+
+### <a name="create-and-run-scan"></a>スキャンの作成と実行
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1. 管理センターで、[統合ランタイム] を選択します。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1. 管理センターで、[統合ランタイム] を選択します。 erwin Mart インスタンスが実行されている VM にセルフホステッド統合ランタイムが設定されている必要があります。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順に従って、セルフホステッド統合ランタイムを設定します。
 
-2. **[ソース]** に移動します。
+1. **[ソース]** に移動します。
 
-3. 登録されている **Looker** サーバーを選択します。
+1. 登録されている **Looker** サーバーを選択します。
 
-4. **[+ 新しいスキャン]** を選択します。
+1. **[+ 新しいスキャン]** を選択します。
 
-5. 次の詳細を指定します。
+1. 次の詳細を指定します。
 
-    a.  **[名前]** : スキャンの名前
+    1. **[名前]** : スキャンの名前
 
-    b.  **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
+    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
 
-    c.  **サーバー API の URL** は、登録時に入力した値に基づいて自動的に設定されます。
+    1. **サーバー API の URL** は、登録時に入力した値に基づいて自動的に設定されます。
 
-    d.  **資格情報:** Looker 資格情報を構成するときは、次のことを確認してください。
+    1. **資格情報:** Looker 資格情報を構成するときは、次のことを確認してください。
 
-    - 認証方法として **[基本認証]** を選択します
-    - Looker API3 キーのクライアント ID を [ユーザー名] フィールドに入力します
-    - Looker API3 キーのクライアント シークレットをキー コンテナーのシークレットに保存します。
+        * 認証方法として **[基本認証]** を選択します
+        * Looker API3 キーのクライアント ID を [ユーザー名] フィールドに入力します
+        * Looker API3 キーのクライアント シークレットをキー コンテナーのシークレットに保存します。
 
-    **注:** クライアント ID とクライアント シークレットにアクセスするには、[Looker]、[管理]、[ユーザー] の順に移動し、ユーザーの [編集] を選択し、 **[EditKeys]** を選択し、クライアント ID とクライアント シークレットを使用するか、新しいシークレットを作成します。
-    :::image type="content" source="media/register-scan-looker-source/looker-details.png" alt-text="looker の詳細を取得する" border="true":::
-    
+        クライアント ID とクライアント シークレットにアクセスするには、[Looker]\>[管理]\>[ユーザー]\> の順に移動し、ユーザーの **[編集]** を選択し、\> **[EditKeys]**  -\> を選択し、クライアント ID とクライアント シークレットを使用するか、新しいシークレットを作成します。
 
-    資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。
+        :::image type="content" source="media/register-scan-looker-source/looker-details.png" alt-text="looker の詳細を取得する" border="true":::
 
-    e.  **プロジェクト フィルター** -- セミコロンで区切られた Looker プロジェクトの一覧を提供することによって、スキャンの範囲を指定します。 このオプションは、親プロジェクトによって look とダッシュボードを選択するために使用されます。
+        資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。
 
-    f.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする erwin Mart のサイズによって異なります。
+    1. **プロジェクト フィルター** -- セミコロンで区切られた Looker プロジェクトの一覧を提供することによって、スキャンの範囲を指定します。 このオプションは、親プロジェクトによって look とダッシュボードを選択するために使用されます。
 
-    :::image type="content" source="media/register-scan-looker-source/setup-scan.png" alt-text="スキャンのトリガー" border="true":::
+    1. **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする erwin Mart のサイズによって異なります。
 
-6. **[テスト接続]** を選択します。
+        :::image type="content" source="media/register-scan-looker-source/setup-scan.png" alt-text="スキャンのトリガー" border="true":::
 
-7. **[続行]** を選択します。
+1. **[テスト接続]** を選択します。
 
-8. **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+1. **[続行]** を選択します。
 
-9. 自分のスキャンを確認し、 **[保存および実行]** を選択します。
+1. **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
+1. 自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択します。
-
-2. 目的のデータ ソースを選択します。 そのデータ ソースに対する既存のスキャンの一覧が表示されます。
-
-3. 結果を表示するスキャンを選択します。
-
-4. このページには、前回のすべてのスキャン実行と、各スキャン実行のメトリックと状態が表示されます。 また、そのスキャンがスケジュールされたスキャンと手動スキャンのどちらかであるか、分類が適用された資産の数、検出された資産の合計数、スキャンの開始時刻と終了時刻、スキャンの実行時間の合計も表示されます。
-
-## <a name="manage-your-scans"></a>スキャンを管理する
-
-スキャンを管理または削除するには、次の操作を行います。
-
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択し、目的のデータ ソースを選択します。
-
-2. 管理するスキャンを選択します。 スキャンを編集するには、 **[編集]** を選択します。
-
-3. スキャンを削除するには、 **[削除]** を選択します。
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

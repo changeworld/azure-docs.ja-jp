@@ -3,20 +3,20 @@ title: カスタム ポリシーの整数要求変換の例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの整数要求変換の例。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7583698bd78ecb3a56d00b1af845f6d5f94c78c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc637e6369a1dbaaa9a25ad5d7b91b7b5d95ffd6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724900"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131036401"
 ---
 # <a name="integer-claims-transformations"></a>整数要求変換
 
@@ -83,7 +83,7 @@ ms.locfileid: "121724900"
 
 ### <a name="assertion-mode"></a>アサーション モード
 
-`throwError` 入力パラメーターが `true` (既定値) のときは、**AssertNumber** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) から実行されます。 
+`throwError` 入力パラメーターが `true` (既定値) のときは、**AssertNumber** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) から実行されます。 
 
 **AssertNumberError** セルフアサート技術プロファイル メタデータでは、技術プロファイルによってユーザーに表示されるエラー メッセージが制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 

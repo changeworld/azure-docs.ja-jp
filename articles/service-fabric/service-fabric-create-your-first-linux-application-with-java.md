@@ -4,12 +4,12 @@ description: Java Service Fabric Reliable Actors アプリケーションを 5 �
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d51bc288eac658f7b0fe2ef019fc77eaa83837c7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655953"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013747"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -18,7 +18,7 @@ ms.locfileid: "97655953"
 >
 >
 
-このクイック スタートでは、Linux 開発環境で初めての Azure Service Fabric Java アプリケーションをほんの数分で作成できます。  作業が終了すると、単純な Java 単一サービス アプリケーションがローカル開発クラスターで実行された状態になります。  
+このクイック スタートでは、Linux 開発環境で初めての Azure Service Fabric Java アプリケーションをほんの数分で作成できます。  作業が終了すると、単純な Java 単一サービス アプリケーションがローカル開発クラスターで実行された状態になります。
 
 ## <a name="prerequisites"></a>前提条件
 作業を開始する前に、[Linux 開発環境](service-fabric-get-started-linux.md)に Service Fabric SDK と Service Fabric CLI、Yeoman をインストールし、Java 開発環境をセットアップし、開発クラスターをセットアップします。 Mac OS X を使用している場合は、[Docker を使用して Mac に開発環境をセットアップ](service-fabric-get-started-mac.md)することができます。
@@ -215,12 +215,12 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
 ## <a name="start-the-test-client-and-perform-a-failover"></a>テスト クライアントの起動と、フェールオーバーの実行
 アクターは単独では何も実行しません。メッセージを送信するには、別のサービスまたはクライアントが必要です。 アクター テンプレートには、アクター サービスとの対話に使用できる簡単なテスト スクリプトが含まれています。
 
-> [!Note]
+> [!NOTE]
 > テスト クライアントは、ActorProxy クラスを使用してアクターと通信します。アクターは、アクター サービスと同じクラスター内で実行するか、同じ IP アドレス空間を共有する必要があります。  テスト クライアントは、ローカル開発クラスターと同じコンピューターで実行できます。  ただし、リモート クラスター内のアクターと通信するには、アクターとの外部通信を処理するゲートウェイをクラスターにデプロイする必要があります。
 
 1. ウォッチ ユーティリティを使用してスクリプトを実行し、アクター サービスの出力を確認します。  テスト スクリプトは、アクターに対して `setCountAsync()` メソッドを呼び出してカウンターを増分させ、`getCountAsync()` メソッドを呼び出して新しいカウンター値を取得し、その値をコンソールに表示します。
 
-   MAC OS X の場合は、次の追加コマンドを実行して、HelloWorldTestClient フォルダーをコンテナー内の場所にコピーする必要があります。    
+   MAC OS X の場合は、次の追加コマンドを実行して、HelloWorldTestClient フォルダーをコンテナー内の場所にコピーする必要があります。
 
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -249,13 +249,13 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
 Service Fabric explorer で、アプリケーションとアプリケーションの種類が **[アプリケーション]** ノードに表示されていないことを確認します。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上の Service Fabric Java ライブラリ
-Service Fabric Java ライブラリは、Maven でホストされてきました。 **mavenCentral** から Service Fabric Java ライブラリを使用するために、プロジェクトの ``pom.xml`` または ``build.gradle`` に依存関係を追加することができます。 
+Service Fabric Java ライブラリは、Maven でホストされてきました。 **mavenCentral** から Service Fabric Java ライブラリを使用するために、プロジェクトの ``pom.xml`` または ``build.gradle`` に依存関係を追加することができます。
 
 ### <a name="actors"></a>アクター
 
 アプリケーションの Service Fabric Reliable Actors サポート。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-actors</artifactId>
@@ -276,7 +276,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
 
 アプリケーションの Service Fabric Reliable Services サポート。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-services</artifactId>
@@ -298,7 +298,7 @@ Service Fabric Java ライブラリは、Maven でホストされてきました
 
 Service Fabric Java アプリケーションのトランスポート層サポート。 トランスポート層でプログラムを作成する場合以外は、Reliable Actors または Service アプリケーションにこの依存関係を明示的に追加する必要はありません。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-transport</artifactId>
@@ -319,7 +319,7 @@ Service Fabric Java アプリケーションのトランスポート層サポー
 
 Service Fabric のシステム レベルのサポート。ネイティブの Service Fabric ランタイムと対話します。 Reliable Actors または Service アプリケーションにこの依存関係を明示的に追加する必要はありません。 上記の他の依存関係を取り込むときに、Maven から自動的にフェッチされます。
 
-  ```XML
+  ```xml
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf</artifactId>

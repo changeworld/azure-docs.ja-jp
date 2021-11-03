@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache ストレージ ターゲットを更新する
 description: Azure HPC Cache ストレージ ターゲットを編集する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 06/30/2021
-ms.author: v-erkel
-ms.openlocfilehash: 151186d3d42ad799707f4a352e76cd154d3443bb
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.author: femila
+ms.openlocfilehash: dd7c65e80df04172adb7b59d304ff8d616edf9cd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129276191"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082571"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 

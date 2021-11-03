@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/25/2021
 ms.author: tisande
-ms.openlocfilehash: abc81e54b2b3ce1a59d3026f3b0908b41559d1a4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: fc2772fe8435852fb8a6f6f33aa86cd0756df080
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206572"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005843"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -94,12 +94,12 @@ ORDER BY <sort_specification>
 ```json
     [
       {
-        "id": "WakefieldFamily",
-        "creationDate": 1431620462
-      },
-      {
         "id": "AndersenFamily",
         "creationDate": 1431620472
+      },
+      {
+        "id": "WakefieldFamily",
+        "creationDate": 1431620462
       }
     ]
 ```

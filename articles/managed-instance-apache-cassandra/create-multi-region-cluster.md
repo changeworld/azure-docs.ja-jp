@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 09/08/2021
-ms.openlocfilehash: b40a2a2a8aaff878fa514ddd0d5b56eb9d5e10a3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 236b2d1b34c04c387e8cc5dd83e886bcea0a8b52
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736239"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084977"
 ---
-# <a name="quickstart-create-a-multi-region-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>クイックスタート: Azure Managed Instance for Apache Cassandra (プレビュー) を使用してマルチリージョン クラスターを作成する
+# <a name="quickstart-create-a-multi-region-cluster-with-azure-managed-instance-for-apache-cassandra"></a>クイックスタート: Azure Managed Instance for Apache Cassandra を使用してマルチリージョン クラスターを作成する
 
-Azure Managed Instance for Apache Cassandra は、マネージドなオープンソースの Apache Cassandra データセンターのデプロイ操作とスケーリング操作を自動化します。 このサービスは、ハイブリッド シナリオの促進と継続的保守管理の削減に役立ちます。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターに対して、デプロイとスケーリングの自動化された操作を提供します。 このサービスは、ハイブリッド シナリオの促進と継続的保守管理の削減に役立ちます。
 
 このクイックスタートでは、Azure CLI のコマンドを使用して Azure にマルチリージョン クラスターを構成する方法について説明します。  
 

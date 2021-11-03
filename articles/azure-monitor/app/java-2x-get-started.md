@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 53dc6c6f757c65842512ab9c215161058d451962
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: a73bfa9ab247cafff4c99ed481134974fd1715ac
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134034"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079018"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -50,7 +50,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
-```XML
+```xml
     <dependencies>
       <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -92,7 +92,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
 
 インストルメンテーション キーを Azure portal から受け取ったものに置き換えます。
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
@@ -220,7 +220,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 ### <a name="customize-performance-counter-collection"></a>パフォーマンス カウンター コレクションをカスタマイズする
 パフォーマンス カウンターの標準セットのコレクションを無効にするには、*ApplicationInsights.xml* ファイルのルート ノードの下に次のコードを追加します。
 
-```XML
+```xml
     <PerformanceCounters>
        <UseBuiltIn>False</UseBuiltIn>
     </PerformanceCounters>
@@ -231,7 +231,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 
 #### <a name="jmx-counters-exposed-by-the-java-virtual-machine"></a>JMX カウンター (Java 仮想マシンによって公開されます)
 
-```XML
+```xml
     <PerformanceCounters>
       <Jmx>
         <Add objectName="java.lang:type=ClassLoading" attribute="TotalLoadedClassCount" displayName="Loaded Class Count"/>
@@ -251,7 +251,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 #### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
 それぞれの [Windows パフォーマンス カウンター](/windows/win32/perfctrs/performance-counters-portal) は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。 カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
 
-```XML
+```xml
     <PerformanceCounters>
       <Windows>
         <Add displayName="Process User Time" categoryName="Process" counterName="%User Time" instanceName="__SELF__" />

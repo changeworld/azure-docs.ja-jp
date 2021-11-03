@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 0b3dd8e10379e28a7bd988ec37dcd1943fcac2d3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: ae4daa5721d19fa1fa9a556781808cbca4b58b24
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222255"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006204"
 ---
 # <a name="update-azure-percept-dk-over-the-air"></a>Azure Percept DK を無線で更新する
 

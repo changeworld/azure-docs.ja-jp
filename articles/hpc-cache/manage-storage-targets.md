@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache のストレージ ターゲットを管理する
 description: Azure HPC Cache のストレージ ターゲットを中断、削除、強制削除、フラッシュする方法と、ストレージ ターゲットの状態を理解する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.author: v-erkel
-ms.openlocfilehash: 5b6127a43ebd93b89ea3a648533c2b739fc58691
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.author: femila
+ms.openlocfilehash: ebab51f480751e6a9d6c60cad09d6884c5d6cc7e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274308"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051061"
 ---
 # <a name="view-and-manage-storage-targets"></a>ストレージ ターゲットの表示と管理
 

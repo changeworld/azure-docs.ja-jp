@@ -32,6 +32,8 @@
       href: how-tos/local-mode-with-azure-client.md
     - name: '方法: Azure 関数を使用して TokenProvider を記述する'
       href: how-tos/azure-function-token-provider.md
+    - name: '方法: Azure Static Web Apps を使用して流動的なアプリケーションをデプロイする'
+      href: how-tos/deploy-fluid-static-web-apps.md
     - name: '方法: JWT トークンを使用する'
       href: how-tos/fluid-json-web-token.md
     - name: '方法: Azure Fluid Relay でテスト自動化を使用する'

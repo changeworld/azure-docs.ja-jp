@@ -4,16 +4,16 @@ description: Azure ディスク プール (プレビュー) について説明�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/23/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: ea06b3c4fdf9be626df99f4a06f4190ce86df4b3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: d6e2eda8fd7bc2ba3b41b911b5964c2a65e33c14
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433280"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074549"
 ---
 # <a name="azure-disk-pools-preview"></a>Azure ディスク プール (プレビュー)
 
@@ -31,7 +31,8 @@ Azure リソースである Azure ディスク プール (プレビュー) を�
 
 プレビューのディスク プールには、次の制限があります。
 
-- ディスク プールに追加できるのは、Premium SSD または Ultra Disk のみです。
+- ディスク プールに追加できるのは、Premium SSD と Standard SSD、または Ultra Disk のみです。
+    - Ultra Disk と Premium または Standard SSD の両方を含むようにディスク プールを構成することはできません。 Ultra Disk を使うように構成されたディスク プールは、Ultra Disk のみを格納できます。 同様に、Premium および Standard SSD を使うように構成されたディスク プールは、Premium と Standard の SSD のみを格納できます。
 - [ゾーン冗長ストレージ (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) を使用するディスクは現在サポートされていません。 
 
 ### <a name="regional-availability"></a>リージョン別の提供状況

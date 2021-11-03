@@ -7,15 +7,13 @@ ms.author: spelluru
 ms.date: 09/27/2021
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.custom:
-- devx-track-azurepowershell
-- mode-arm
-ms.openlocfilehash: 84fc6657026e3e07ede5250a8304b5d270a24d24
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.custom: devx-track-azurepowershell, mode-arm
+ms.openlocfilehash: 2f274f1d179e4e59f83f867b282c8aa96b8aaeab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155479"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054991"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 

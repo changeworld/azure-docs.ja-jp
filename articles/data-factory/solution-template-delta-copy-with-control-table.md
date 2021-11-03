@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8cf8ecaaafa9697286dcaa0ae61d00853d53a311
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b5bb939c787af16ca3affdf8ba131ea640f25ed4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743489"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040967"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -50,44 +50,44 @@ ms.locfileid: "124743489"
 
 1. 読み込むソース テーブルを調べて、新規行や更新行を識別するために使用できる高基準値列を定義します。 この列の型には *datetime* や *INT* などがあります。 この列の値は、新規行が追加されると増加します。 次のサンプル ソース テーブル (data_source_table) では、高基準値列として *LastModifytime* 列を使用できます。
 
-    ```sql
-            PersonID    Name    LastModifytime
-            1   aaaa    2017-09-01 00:56:00.000
-            2   bbbb    2017-09-02 05:23:00.000
-            3   cccc    2017-09-03 02:36:00.000
-            4   dddd    2017-09-04 03:21:00.000
-            5   eeee    2017-09-05 08:06:00.000
-            6   fffffff 2017-09-06 02:23:00.000
-            7   gggg    2017-09-07 09:01:00.000
-            8   hhhh    2017-09-08 09:01:00.000
-            9   iiiiiiiii   2017-09-09 09:01:00.000
+    ```output
+    PersonID    Name            LastModifytime
+    1           aaaa            2017-09-01 00:56:00.000
+    2           bbbb            2017-09-02 05:23:00.000
+    3           cccc            2017-09-03 02:36:00.000
+    4           dddd            2017-09-04 03:21:00.000
+    5           eeee            2017-09-05 08:06:00.000
+    6           fffffff         2017-09-06 02:23:00.000
+    7           gggg            2017-09-07 09:01:00.000
+    8           hhhh            2017-09-08 09:01:00.000
+    9           iiiiiiiii       2017-09-09 09:01:00.000
     ```
-    
+
 2. SQL Server か Azure SQL Database に、差分データの読み込みに使用される高基準値を格納する制御テーブルを作成します。 次の例では、制御テーブルの名前は *watermarktable* です。 このテーブルにある *WatermarkValue* が高基準値を格納する列で、その型は *datetime* です。
 
     ```sql
-            create table watermarktable
-            (
-            WatermarkValue datetime,
-            );
-            INSERT INTO watermarktable
-            VALUES ('1/1/2010 12:00:00 AM')
+    create table watermarktable
+    (
+    WatermarkValue datetime,
+    );
+    INSERT INTO watermarktable
+    VALUES ('1/1/2010 12:00:00 AM')
     ```
-    
+
 3. 制御テーブルを作成するために使用したのと同じ SQL Server か Azure SQL Database インスタンスに、ストアド プロシージャを作成します。 このストアド プロシージャは、次回差分データを読み込むのに必要な新しい高基準値を外部制御テーブルに書き込むために使用されます。
 
     ```sql
-            CREATE PROCEDURE update_watermark @LastModifiedtime datetime
-            AS
+    CREATE PROCEDURE update_watermark @LastModifiedtime datetime
+    AS
 
-            BEGIN
+    BEGIN
 
-                UPDATE watermarktable
-                SET [WatermarkValue] = @LastModifiedtime 
+        UPDATE watermarktable
+        SET [WatermarkValue] = @LastModifiedtime 
 
-            END
+    END
     ```
-    
+
 4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの **新しい** 接続を作成します。
 
     :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png" alt-text="ソース テーブルへの新しい接続の作成":::
@@ -125,11 +125,11 @@ ms.locfileid: "124743489"
 13. ソース テーブル内に新しい行を作成できます。 新規行を作成する SQL 言語の例を次に示します。
 
     ```sql
-            INSERT INTO data_source_table
-            VALUES (10, 'newdata','9/10/2017 2:23:00 AM')
+    INSERT INTO data_source_table
+    VALUES (10, 'newdata','9/10/2017 2:23:00 AM')
 
-            INSERT INTO data_source_table
-            VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
+    INSERT INTO data_source_table
+    VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
 
 14. パイプラインをもう一度実行するには、 **[デバッグ]** を選択し、 **[パラメーター]** に入力して、 **[完了]** を選択します。

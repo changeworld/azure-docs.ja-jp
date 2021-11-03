@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2021
 ms.author: yelevin
-ms.openlocfilehash: b6e38d6ce5944d09a089404ae1fe2ca81a951c18
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7d921c1b1d44f8378a51fa6a419378cd199cd57d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781305"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037295"
 ---
 # <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>Azure Functions を使用して Azure Sentinel をデータ ソースに接続する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Azure Functions](../azure-functions/functions-overview.md) を、[PowerShell](../azure-functions/functions-reference-powershell.md) や Python などのさまざまなコーディング言語と組み合わせて使用して、互換性のあるデータ ソースの REST API エンドポイントへのサーバーレス コネクタを作成することができます。 Azure 関数アプリにより、データ ソースの REST API に Azure Sentinel を接続してログをプルすることができます。
 

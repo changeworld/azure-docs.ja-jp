@@ -9,15 +9,15 @@ ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 9/01/2021
+ms.date: 10/26/2021
 ms.custom: devx-track-azurepowershell
 ms.reviewer: mathoma
-ms.openlocfilehash: 7fa68f13438069990b035b182dee0fd44ab65d32
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6a29c239b223c016d436136a225ca1bd8784b919
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262396"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071881"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能への自動登録
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,8 +41,13 @@ Azure portal で自動登録機能を有効にすると、Azure Virtual Machines
 
 サブスクリプションに対して自動登録を有効にすると、SQL Server が既にインストールされている、または今後インストールされる VM が、**軽量モードでダウンタイムがなく、また、SQL Server サービスを再起動することなく**、SQL IaaS Agent 拡張機能に登録されます。 完全な機能セットを使用するには、[完全管理モードに手動でアップグレードする](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)必要があります。 ライセンスの種類は、自動的に VM イメージの既定値に設定されます。 VM に従量課金イメージを使用する場合、ライセンスの種類は `PAYG` になります。それ以外の場合、ライセンスの種類は既定で `AHUB` になります。 
 
+既定では、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると自動的に SQL IaaS Agent 拡張機能に登録されます。  詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
+
 > [!IMPORTANT]
 > SQL IaaS Agent 拡張機能を使用すると、Azure 仮想マシン内で SQL Server を使用する際に、お客様に追加のメリットを提供するという明確な目的のためにデータが収集されます。 Microsoft は、お客様の事前の同意なく、ライセンスの監査にこのデータを使用することはありません。 詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
+
+
+
 
 ## <a name="prerequisites"></a>前提条件
 

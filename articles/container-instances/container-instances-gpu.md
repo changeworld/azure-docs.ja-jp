@@ -3,12 +3,12 @@ title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: fd9441f0ba92f4753271df4daba88ed690c9ee30
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8950858ff822a28272c17d18de8869d3e03d673d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108380"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057877"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -77,7 +77,7 @@ GPU リソースを追加するには、[YAML ファイル](container-instances-
  > [!NOTE]
   > 次の例では、パブリック コンテナー イメージを使用します。 信頼性を向上させるために、プライベート Azure Container Registry 内のイメージをインポートして管理し、プライベートのマネージド基本イメージを使用するように YAML を更新します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
 
-```YAML
+```yaml
 additional_properties: {}
 apiVersion: '2019-12-01'
 name: gpucontainergroup

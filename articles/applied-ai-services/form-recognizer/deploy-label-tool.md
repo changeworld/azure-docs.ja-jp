@@ -1,7 +1,7 @@
 ---
 title: Form Recognizer のサンプル ラベル付けツールのデプロイ方法
 titleSuffix: Azure Applied AI Services
-description: 監視された学習に役立てるため、Form Recognizer のサンプル ラベル付けツールをデプロイするさまざまな方法について説明します。
+description: 教師あり学習で役立つ、Form Recognizer のサンプル ラベル付けツールのさまざまなデプロイ方法について説明します。
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -9,30 +9,31 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: e0555050b6457cc25a3d66d902d7de9232247ae3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5c5a260a1f5c1ab6cd6232dbd0ea9c1035a110cf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326475"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027020"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
-Form Recognizer のサンプル ラベル付けツールは、教師あり学習向けに、フォーム (ドキュメント) に手動でラベルを付けることができる、簡単なユーザー インターフェイス (UI) のアプリケーションです。 この記事では、次の方法についてのリンクと説明を提供します。
+Form Recognizer のサンプル ラベル付けツールは、教師あり学習用にフォーム (ドキュメント) に手動でラベルを付けることができる、簡単なユーザー インターフェイス (UI) を備えたアプリケーションです。 この記事では、次の方法についてのリンクと説明を提供します。
 
-* [サンプル ラベル付けツールをローカル環境で実行する](#run-the-sample-labeling-tool-locally)
+* [サンプル ラベル付けツールをローカルで実行する](#run-the-sample-labeling-tool-locally)
 * [サンプル ラベル付けツールを Azure コンテナー インスタンス (ACI) にデプロイする](#deploy-with-azure-container-instances-aci)
 * [オープンソースの OCR Form Labeling Tool を使用して、それに貢献する](#open-source-on-github)
 
-## <a name="run-the-sample-labeling-tool-locally"></a>サンプル ラベル付けツールをローカル環境で実行する
+## <a name="run-the-sample-labeling-tool-locally"></a>サンプル ラベル付けツールをローカルで実行する
 
-データのラベル付けを最も簡単に始める方法は、サンプル ラベル付けツールをローカル環境で実行することです。 以下のクイックスタートでは、Form Recognizer REST API とサンプル ラベル付けツールを使用し、手動でラベル付けされたデータでカスタム モデルをトレーニングします。
+データのラベル付けを最も簡単に始めるには、サンプル ラベル付けツールをローカルで実行します。 以下のクイックスタートでは、Form Recognizer REST API とサンプル ラベル付けツールを使用し、手動でラベル付けされたデータでカスタム モデルをトレーニングします。
 
 * [Azure Form Recognizer の概要](label-tool.md)。
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Azure Container Instances (ACI) を使用してデプロイする
 
-始める前に、Azure コンテナー インスタンス (ACI) にサンプル ラベル付けツールをデプロイするには 2 つの方法があることに注意することが重要です。 どちらのオプションも、ACI でサンプル ラベル付けツールを実行するために使用されます。
+始める前に、Azure コンテナー インスタンス (ACI) には、2 つの方法でサンプル ラベル付けツールをデプロイできることを留意することが重要です。 いずれのオプションも、ACI を使用してサンプル ラベル付けツールを実行します。
 
 * [Azure Portal の使用](#azure-portal)
 * [Azure CLI の使用](#azure-cli)

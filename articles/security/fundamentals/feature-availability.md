@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 2c75831e31717b59b20b9a6e731189be0db9aa59
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 76d38f7f5aa2c62010e3c3c6680ff016d3dc518d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225512"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075564"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -142,7 +142,7 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 | - [脅威インテリジェンス プラットフォーム データ コネクタ](../../sentinel/understand-threat-intelligence.md)  | パブリック プレビュー | 利用不可 |
 | - [脅威インテリジェンスの調査ブレード](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | GA | GA |
 | - [URL デトネーション](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | パブリック プレビュー | 利用不可 |
-| - [脅威インテリジェンス ブック](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | GA | 利用不可 |
+| - [脅威インテリジェンス ブック](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | GA | GA |
 |**検出のサポート** | | |
 | - [異常な Windows ファイル共有アクセスの検出](../../sentinel/fusion.md)  | パブリック プレビュー | 利用不可 |
 | - [異常な RDP ログインの検出](../../sentinel/connect-windows-security-events.md#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)<br>組み込みの ML 検出 | パブリック プレビュー | 利用不可 |
@@ -227,8 +227,6 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 | - [Symantec ProxySG](../../sentinel/data-connectors-reference.md#symantec-proxysg-preview)                                | パブリック プレビュー | パブリック プレビュー |
 | - [Symantec VIP](../../sentinel/data-connectors-reference.md#symantec-vip-preview)                                     | パブリック プレビュー | パブリック プレビュー |
 | - [Syslog](../../sentinel/connect-syslog.md)                                           | GA             | GA             |
-| - [脅威インテリジェンス プラットフォーム](../../sentinel/connect-threat-intelligence-tip.md)                   | パブリック プレビュー | 利用不可      |
-| - [脅威インテリジェンス TAXII](../../sentinel/connect-threat-intelligence-tip.md)                       | GA | GA      |
 | - [Thycotic Secret Server](../../sentinel/data-connectors-reference.md#thycotic-secret-server-preview)                          | パブリック プレビュー | パブリック プレビュー |
 | - [Trend Micro Deep Security](../../sentinel/data-connectors-reference.md#trend-micro-deep-security)                       | GA             | GA             |
 | - [Trend Micro TippingPoint](../../sentinel/data-connectors-reference.md#trend-micro-tippingpoint-preview)                         | パブリック プレビュー | パブリック プレビュー |
