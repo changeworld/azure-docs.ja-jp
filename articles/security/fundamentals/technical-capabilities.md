@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 4894971fa6ac26cdfcbd65fb12c71d3ca73b6168
-ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
+ms.openlocfilehash: e0513ac3c4fdf4cfb01d9d0f879bfe06bf3bb601
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112422572"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037323"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -257,7 +257,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [標準的なサーバー ヘッダーを削除することによって、ツールがアプリにフィンガープリントを残すことを回避する](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 
-- [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](../../app-service/web-sites-integrate-with-vnet.md)
+- [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](../../app-service/overview-vnet-integration.md)
 
 - [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](../../app-service/app-service-hybrid-connections.md)
 

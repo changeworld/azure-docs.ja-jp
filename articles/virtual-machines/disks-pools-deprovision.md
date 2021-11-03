@@ -2,17 +2,18 @@
 title: Azure ディスク プールをプロビジョニング解除する (プレビュー)
 description: Azure ディスク プールをプロビジョニング解除、停止、および削除する方法について説明します。
 author: roygara
-ms.date: 07/19/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 823dd066e1751896b3f7986a18d18d80d68219a1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 36c301cb5575d7627a6179520aef79c01f8cd837
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469872"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022134"
 ---
 # <a name="deprovision-an-azure-disk-pool-preview"></a>Azure ディスク プールをプロビジョニング解除する (プレビュー)
 
@@ -23,43 +24,20 @@ ms.locfileid: "114469872"
 ディスク プールを停止してコストを節約し、すべての構成を保持できます。 ディスク プールを停止すると、iSCSI 経由でディスク プールに接続できなくなります。 ディスク プールをサポートするためにデプロイされたマネージド リソースは削除されません。 ディスク プールを停止する前に、ディスク プールへの iSCSI 接続があるすべてのクライアントを最初に切断する必要があります。 ディスク プールは、いつでも開始できます。 その場合、このディスク プールで公開されている iSCSI ターゲットが再アクティブ化されます。
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-現在、Azure portal ではサポートされていません。
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-```azurepowershell
-Stop-AzDiskPool -Name 'myDiskPool' -ResourceGroupName 'myResourceGroupt'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az disk-pool stop --name "myDiskPool" --resource-group "myResourceGroup"
-```
----
-
-## <a name="delete-a-disk-pool"></a>ディスク プールを削除する
-
-ディスク プールを削除すると、マネージド リソース グループ内のすべてのリソースも削除されます。 ディスク プールへの未処理の iSCSI 接続がある場合は、ディスク プールを削除できません。 ディスク プールへの iSCSI 接続があるすべてのクライアントを最初に切断する必要があります。 ディスク プールに追加されているディスクは削除されません。
-
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
-
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. "**ディスク プール**" を検索して選択し、削除するディスク プールを選択します。
-1. ペインの上部にある **[削除]** を選択します。
+1. ディスク プールに移動し、 **[停止]** を選びます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Remove-AzDiskPool -Name "myDiskpoolName" -ResourceGroupName "myRGName"
+Stop-AzDiskPool -Name '<yourDiskPool>' -ResourceGroupName '<yourResourceGroup>'
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az disk-pool delete --name "myDiskPool" --resource-group "myResourceGroup"
+az disk-pool stop --name "<yourDiskPool>" --resource-group "<yourResourceGroup>"
 ```
-
 ---
 
 ## <a name="disable-iscsi-support"></a>iSCSI サポートを無効にする
@@ -79,13 +57,39 @@ az disk-pool delete --name "myDiskPool" --resource-group "myResourceGroup"
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Remove-AzDiskPoolIscsiTarget -DiskPoolName "myDiskpoolName" -Name "myiSCSITargetName" -ResourceGroupName "myRGName"
+Remove-AzDiskPoolIscsiTarget -DiskPoolName "<yourDiskpoolName>" -Name "<youriSCSITargetName>" -ResourceGroupName "yourResourceGroup>"
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az disk-pool iscsi-target delete --disk-pool-name "myDiskPool" --name "myIscsiTarget" --resource-group "myResourceGroup"
+az disk-pool iscsi-target delete --disk-pool-name "<yourDiskPool>" --name "<yourIscsiTarget>" --resource-group "<yourResourceGroup>"
+```
+---
+
+## <a name="delete-a-disk-pool"></a>ディスク プールを削除する
+
+ディスク プールを削除すると、マネージド リソース グループ内のすべてのリソースも削除されます。 ディスク プールへの未処理の iSCSI 接続がある場合は、ディスク プールを削除できません。 ディスク プールへの iSCSI 接続があるすべてのクライアントを最初に切断する必要があります。 ディスク プールに追加されているディスクは削除されません。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. "**ディスク プール**" を検索して選択し、削除するディスク プールを選択します。
+1. ペインの上部にある **[削除]** を選択します。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Stop-AzDiskPool -Name "<yourDiskPoolName>" -ResourceGroupName "<yourResourceGroup>"
+
+Remove-AzDiskPool -Name "<yourDiskPoolName>" -ResourceGroupName "<yourResourceGroup>
+Remove-AzDiskPool -Name "<yourDiskpoolName>" -ResourceGroupName "<yourResourceGroup>"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az disk-pool delete --name "<yourDiskPool>" --resource-group "<yourResourceGroup>"
 ```
 
 ---

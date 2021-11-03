@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: d99785da00f277480505b417947781821df1caa2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 94dbcf84f705aef7e8d723c6516c8a2d36e010ee
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260930"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023414"
 ---
 # <a name="collect-data-in-custom-log-formats-to-azure-sentinel-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してカスタム ログ形式のデータを Azure Sentinel に収集する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
@@ -62,7 +65,6 @@ Syslog と同様に、カスタム ログ収集を構成するための手順は
     | **その他の Linux マシンの場合** | <ol><li>**[Choose where to install the Linux agent]\(Linux エージェントをインストールする場所を選択\)** の下で **[Install agent on non-Azure Linux Machine]\(Azure 以外の Linux マシンにエージェントをインストールする\)** を展開します。<br><br><li>**[Download & install agent for non-Azure Linux machines]\(Azure 以外の Linux マシン用のエージェントをダウンロードしてインストールする\) >** リンクを選択します。<br><br><li>**[エージェント管理]** ブレードで、 **[Linux サーバー]** タブを選択し、**Linux 用エージェントのダウンロードとオンボード** を行うコマンドをコピーして、Linux マシンで実行します。<br><br> Linux エージェントのインストール ファイルのローカル コピーを保持する場合は、"エージェントのダウンロードとオンボード" コマンドの上にある **[Linux エージェントのダウンロード]** リンクを選択します。|
     | **Azure Windows VM の場合** | <ol><li>**[Choose where to install the Windows agent]\(Windows エージェントをインストールする場所を選択\)** の下で **[Install agent on Azure Windows virtual machine]\(Azure Windows 仮想マシンにエージェントをインストールする\)** を展開します。<br><br><li>**[Download & install agent for Azure Windows Virtual machines]\(Azure Windows 仮想マシン用のエージェントをダウンロードしてインストールする\) >** リンクを選択します。<br><br><li>**[仮想マシン]** ブレードで、エージェントをインストールする仮想マシンを選択し、 **[接続]** を選択します。 接続する各 VM に対してこの手順を繰り返します。 |
     | **その他の Windows マシンの場合** | <ol><li>**[Choose where to install the Windows agent]\(Windows エージェントをインストールする場所を選択\)** の下で **[Install agent on non-Azure Windows Machine]\(Azure 以外の Windows マシンにエージェントをインストールする\)** を展開します。<br><br><li>**[Download & install agent for non-Azure Windows machines]\(Azure 以外の Windows マシン用のエージェントをダウンロードしてインストールする\) >** リンクを選択します。<br><br><li>**[エージェントの管理]** ブレードの **[Windows サーバー]** タブで、32 ビットまたは 64 ビット システム用の内、該当する方の **[Windows エージェントのダウンロード]** リンクを選択します。 |
-
 
 # <a name="other-data-sources"></a>[その他のデータ ソース](#tab/CUS)
 

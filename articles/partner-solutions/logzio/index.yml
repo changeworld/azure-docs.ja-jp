@@ -9,13 +9,13 @@ metadata:
   ms.collection: na
   author: tfitzmac
   ms.author: tomfitz
-  ms.date: 10/22/2021
-  ms.openlocfilehash: 2c032528416c2a9cef1d511cc2155af90b73dd61
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.date: 11/02/2021
+  ms.openlocfilehash: 391ab30266c962b55fb067a2d43ba6dab4847930
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130269140"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131422712"
 landingContent:
 - title: Logz.io と Azure について
   linkLists:
@@ -43,6 +43,8 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.logz/get-azlogzmonitor
     - text: Java
       url: /java/api/overview/azure/resourcemanager-logz-readme
     - text: Python

@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: dd9f0c69b610b54ae6f07661ba15d9f0cf22b3ea
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6525b6821c7107aa100c6ce79d606c2832f04b97
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407211"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036924"
 ---
 # <a name="azure-sentinel-process-event-normalization-schema-reference-public-preview"></a>Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 プロセス イベント正規化スキーマは、プロセスを実行および終了するオペレーティング システムのアクティビティを記述するために使用されます。 このようなイベントは、オペレーティング システムと、EDR (エンドポイント検出と応答) システムなどのセキュリティ システムによって報告されます。
 
@@ -104,7 +106,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 
 次のフィールドは、レコードごとに Log Analytics によって生成され、カスタム コネクタの作成時にオーバーライドできます。
 
-| フィールド         | Type     | 考察 (Discussion)      |
+| フィールド         | 型     | 考察 (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
@@ -119,7 +121,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 
 イベント フィールドは、すべてのスキーマに共通であり、アクティビティ自体とレポート デバイスを記述します。
 
-| フィールド               | クラス       | Type       |  説明        |
+| フィールド               | クラス       | 型       |  説明        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
 | **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
@@ -128,7 +130,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **EventType**           | Mandatory   | Enumerated |    レコードによって報告される操作を記述します。 <br><br>プロセス レコードの場合、次のような値がサポートされます。 <br>- `ProcessCreated` <br>- `ProcessTerminated` |
 | **EventResult**         | Mandatory   | Enumerated |  イベントの結果を記述し、次のサポートされている値の 1 つに正規化されます。 <br><br>- `Success`<br>- `Partial`<br>- `Failure`<br>- `NA` (適用外) <br><br>ソースから **EventResultDetails** フィールドの値のみが提供される場合があり、**EventResult** の値を取得するには分析が行われる必要があります。<br><br>**注**: プロセス イベントで報告されるのは一般に成功だけです。 |
 | **EventOriginalUid**    | オプション    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
-| **EventOriginalType**   | オプション    | String     |   ソースによって提供されている場合、元のイベントの種類または ID。<br><br>例: `4688`|
+| **EventOriginalType**   | オプション    | String     |   元のイベントの種類または ID (ソースによって提供されている場合)。<br><br>例: `4688`|
 | <a name ="eventproduct"></a>**EventProduct**        | Mandatory   | String     |             イベントを生成している製品。 <br><br>例: `Sysmon`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
 | **EventProductVersion** | オプション    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
 | **EventVendor**         | Mandatory   | String     |           イベントを生成している製品のベンダー。 <br><br>例: `Microsoft`  <br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。  |
@@ -156,12 +158,12 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 - **TargetUser**。 新しいプロセスを作成するために使用される資格情報を持つユーザー。
 - **ParentProcess**。 Actor プロセスを開始したプロセス。
 
-| フィールド          | クラス        | Type       | 説明   |
+| フィールド          | クラス        | 型       | 説明   |
 |---------------|--------------|------------|-----------------|
 | **User**           | エイリアス        |            | [TargetUsername](#targetusername) の別名。 <br><br>例: `CONTOSO\dadmin`     |
 | **Process**        | エイリアス        |            | [TargetProcessName](#targetprocessname) の別名 <br><br>例: `C:\Windows\System32\rundll32.exe`|
 | **CommandLine**    | エイリアス        |            |     [TargetProcessCommandLine](#targetprocesscommandline) の別名  |
-| **ハッシュ**           | エイリアス        |            |       利用可能な最善のハッシュの別名。 |
+| **Hash**           | エイリアス        |            |       利用可能な最善のハッシュの別名。 |
 | <a name="actorusername"></a>**ActorUsername**  | Mandatory    | String     | イベントを開始したユーザーのユーザー名。 <br><br>例: `CONTOSO\WIN-GG82ULGC9GO$`     |
 | **ActorUsernameType**              | Mandatory    | Enumerated |   [ActorUsername](#actorusername) フィールドに格納されているユーザー名の種類を指定します。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。 <br><br>例: `Windows`       |
 | <a name="actoruserid"></a>**ActorUserId**    | 推奨  | String     |   Actor の一意の ID。 具体的な ID は、イベントが生成されるシステムによって異なります。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。  <br><br>例: `S-1-5-18`    |
@@ -175,14 +177,14 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **ActingProcessFileVersion**       | オプション     | String     |               実行プロセス イメージ ファイルのバージョン情報からの製品バージョン。 <br><br>例: `7.9.5.0`   |
 | **ActingProcessFileInternalName**  | オプション     | String     |      実行プロセス イメージ ファイルのバージョン情報からの製品内部ファイル名。 |
 | **ActingProcessFileOriginalName** | オプション     | String     |実行プロセス イメージ ファイルのバージョン情報からの製品の元のファイル名。       <br><br> 例: `Notepad++.exe` |
-| **ActingProcessIsHidden**          | オプション     | ブール型    |      実行プロセスが非表示モードかどうかを示します。  |
+| **ActingProcessIsHidden**          | オプション     | Boolean    |      実行プロセスが非表示モードかどうかを示します。  |
 | **ActingProcessInjectedAddress**   | オプション     | String     |      責任ある実行プロセスが格納されているメモリ アドレス。           |
 | **ActingProcessId**| Mandatory    | String        | 実行プロセスのプロセス ID (PID)。<br><br>例: `48610176`           <br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows と Linux ではこの値は数値である必要があります。 <br><br>Windows または Linux のマシンを使用しており、かつ別の型を使用した場合は、必ず値を変換してください。 たとえば、16 進数の値を使用した場合は、10 進数の値に変換します。    |
 | **ActingProcessGuid**              | 省略可能     | string     |  実行プロセスの生成された一意識別子 (GUID)。 システム間でプロセスを識別できます。  <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
 | **ActingProcessIntegrityLevel**    | オプション     | String     |       すべてのプロセスには、トークンで表される整合性レベルがあります。 整合性レベルは、保護またはアクセスのプロセス レベルを決定します。 <br><br> Windows では、整合性レベルとして **low**、**medium**、**high**、**system** を定義します。 標準ユーザーには **medium** の整合性レベルが指定され、管理者特権ユーザーには **high** の整合性が指定されます。 <br><br> 詳細については、[必須の整合性コントロール - Win32 アプリ](/windows/win32/secauthz/mandatory-integrity-control)に関するページを参照してください。 |
 | **ActingProcessMD5**               | オプション     | String     |実行プロセス イメージ ファイルの MD5 ハッシュ。  <br><br>例: `75a599802f1fa166cdadb360960b1dd0`|
-| **ActingProcessSHA1**              | Optional     | SHA1       | 実行プロセス イメージ ファイルの SHA-1 ハッシュ。             <br><br>  例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`  |
-| **ActingProcessSHA256**            | Optional     | SHA256     | 実行プロセス イメージ ファイルの SHA-256 ハッシュ。    <br><br> 例: <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`   |
+| **ActingProcessSHA1**              | 省略可能     | SHA1       | 実行プロセス イメージ ファイルの SHA-1 ハッシュ。             <br><br>  例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`  |
+| **ActingProcessSHA256**            | 省略可能     | SHA256     | 実行プロセス イメージ ファイルの SHA-256 ハッシュ。    <br><br> 例: <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`   |
 | **ActingProcessSHA512**            | オプション     | SHA521     |       実行プロセス イメージ ファイルの SHA-512 ハッシュ。       |
 | **ActingProcessIMPHASH**           | オプション     | String     |       実行プロセスで使用されるすべてのライブラリ DLL のインポート ハッシュ。    |
 | **ActingProcessCreationTime**      | オプション     | DateTime   |       実行プロセスが開始された日時。 |
@@ -193,14 +195,14 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **ParentProcessFileDescription**   | オプション     | String     |  親プロセス イメージ ファイルのバージョン情報からの説明。    <br><br>例: `Notepad++ : a free (GPL) source code editor`|
 | **ParentProcessFileProduct**       | オプション     | String     |親プロセス イメージ ファイルのバージョン情報からの製品名。    <br><br>  例: `Notepad++`  |
 | **ParentProcessFileVersion**       | オプション     | String     | 親プロセス イメージ ファイルのバージョン情報からの製品バージョン。    <br><br> 例: `7.9.5.0` |
-| **ParentProcessIsHidden**          | オプション     | ブール型    |   親プロセスが非表示モードかどうかを示します。  |
+| **ParentProcessIsHidden**          | オプション     | Boolean    |   親プロセスが非表示モードかどうかを示します。  |
 | **ParentProcessInjectedAddress**   | オプション     | String     |    責任ある親プロセスが格納されているメモリ アドレス。           |
 | **ParentProcessId**| Mandatory    | String    | 親プロセスのプロセス ID (PID)。   <br><br>     例: `48610176`    |
 | **ParentProcessGuid**              | オプション     | String     |  親プロセスの生成された一意識別子 (GUID)。  システム間でプロセスを識別できます。    <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 | **ParentProcessIntegrityLevel**    | オプション     | String     |   すべてのプロセスには、トークンで表される整合性レベルがあります。 整合性レベルは、保護またはアクセスのプロセス レベルを決定します。 <br><br> Windows では、整合性レベルとして **low**、**medium**、**high**、**system** を定義します。 標準ユーザーには **medium** の整合性レベルが指定され、管理者特権ユーザーには **high** の整合性が指定されます。 <br><br> 詳細については、[必須の整合性コントロール - Win32 アプリ](/windows/win32/secauthz/mandatory-integrity-control)に関するページを参照してください。 |
 | **ParentProcessMD5**               | オプション     | MD5        | 親プロセス イメージ ファイルの MD5 ハッシュ。  <br><br>例: `75a599802f1fa166cdadb360960b1dd0`|
 | **ParentProcessSHA1**              | オプション     | SHA1       | 親プロセス イメージ ファイルの SHA-1 ハッシュ。       <br><br> 例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`   |
-| **ParentProcessSHA256**            | Optional     | SHA256     |親プロセス イメージ ファイルの SHA-256 ハッシュ。      <br><br>  例: <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
+| **ParentProcessSHA256**            | 省略可能     | SHA256     |親プロセス イメージ ファイルの SHA-256 ハッシュ。      <br><br>  例: <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
 | **ParentProcessSHA512**            | 省略可能     | SHA512     |    親プロセス イメージ ファイルの SHA-512 ハッシュ。       |
 | **ParentProcessIMPHASH**           | オプション     | String     |    親プロセスで使用されるすべてのライブラリ DLL のインポート ハッシュ。    |
 | **ParentProcessTokenElevation**    | オプション     | String     |親プロセスに適用されたユーザー アクセス制御 (UAC) 特権の昇格の有無を示すトークン。     <br><br>  例: `None` |
@@ -218,7 +220,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **TargetProcessFileVersion**       | オプション     | String     |ターゲット プロセス イメージ ファイルのバージョン情報の製品バージョン。   <br><br>  例: `7.9.5.0` |
 | **TargetProcessFileInternalName**  |    オプション          | String  |   ターゲット プロセスのイメージ ファイルのバージョン情報の製品内部ファイル名。 |
 | **TargetProcessFileOriginalName** |       オプション       | String   |   ターゲット プロセスのイメージ ファイルのバージョン情報からの製品の元のファイル名。 |
-| **TargetProcessIsHidden**          | オプション     | ブール型    |   ターゲット プロセスが非表示モードかどうかを示します。  |
+| **TargetProcessIsHidden**          | オプション     | Boolean    |   ターゲット プロセスが非表示モードかどうかを示します。  |
 | **TargetProcessInjectedAddress**   | オプション     | String     |    責任あるターゲット プロセスが格納されているメモリ アドレス。           |
 | **TargetProcessMD5**               | オプション     | MD5        | ターゲット プロセス イメージ ファイルの MD5 ハッシュ。   <br><br> 例: `75a599802f1fa166cdadb360960b1dd0`|
 | **TargetProcessSHA1**              | オプション     | SHA1       | ターゲット プロセス イメージ ファイルの SHA-1 ハッシュ。       <br><br>  例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`   |
@@ -244,5 +246,5 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 - [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)
 - [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
 - [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
-- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](normalization-schema.md)
+- [Azure Sentinel ネットワーク正規化スキーマ リファレンス](./network-normalization-schema.md)
 - [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
