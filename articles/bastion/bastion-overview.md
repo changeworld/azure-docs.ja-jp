@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 07/12/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.custom: contperf-fy2q1-portal
-ms.openlocfilehash: fe1cc48b3106d4874e151ed8be114e6a98e51720
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: contperf-fy2q1-portal, ignite-fall-2021
+ms.openlocfilehash: ea5fb6c17346059ab35467c654a17815e711d213
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434191"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087193"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
@@ -34,7 +34,7 @@ Bastion は、プロビジョニングされる仮想ネットワーク内のす
 
 ## <a name="skus"></a><a name="sku"></a>SKU
 
-Azure Bastion には、Basic と Standard の 2 つの使用可能な SKU が用意されています。 Standard SKU は現在プレビュー段階です。 SKU のアップグレード方法を含む詳細については、[構成設定](configuration-settings.md#skus)に関する記事を参照してください。 
+Azure Bastion には、Basic と Standard の 2 つの使用可能な SKU が用意されています。 SKU のアップグレード方法を含む詳細については、[構成設定](configuration-settings.md#skus)に関する記事を参照してください。
 
 次の表に、機能と対応する SKU を示します。
 

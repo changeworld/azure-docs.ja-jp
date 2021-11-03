@@ -36,7 +36,7 @@ items:
         href: using-rest-client.md
       - name: アプリケーションの登録
         href: register-application.md
-      - name: ログ記録
+      - name: ログの記録
         href: logging.md
   - name: 概念
     items:
@@ -45,6 +45,8 @@ items:
   - name: リソース
     expanded: true
     items:
+      - name: リリース ノート
+        href: release-notes.md
       - name: FAQ
         href: healthcare-apis-faqs.md
       - name: GitHub プロジェクト

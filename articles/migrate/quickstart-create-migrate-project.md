@@ -6,15 +6,13 @@ author: rahulg1190
 manager: bsiva
 ms.author: rahugup
 ms.topic: quickstart
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 4380b52489a483faf8063516cf2d3fd6af6b061d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: subject-armqs, mode-arm
+ms.openlocfilehash: e128a9dda0cbf6bfbda4a4918ce9a4538e5fcbdb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726241"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084579"
 ---
 # <a name="quickstart-create-an-azure-migrate-project-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Migrate プロジェクトを作成する
 

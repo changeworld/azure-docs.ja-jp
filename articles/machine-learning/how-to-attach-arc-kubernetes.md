@@ -1,102 +1,235 @@
 ---
 title: Azure Arc 対応機械学習 (プレビュー)
-description: Azure Machine Learning で機械学習モデルをトレーニングする Azure Arc 対応 Kubernetes クラスターを構成する
+description: Azure Machine Learning で機械学習モデルのトレーニングと推論を行う Azure Arc 対応 Kubernetes クラスターを構成する
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
 ms.subservice: mlops
-ms.date: 06/18/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.openlocfilehash: c3aea87e32aef24bfc17637720e81d30da0d30eb
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5e9d95f863e5107a71118da9fdc9b0c5329acbb0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713259"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084666"
 ---
 # <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Azure Arc 対応機械学習を構成する (プレビュー)
 
-トレーニング用に Azure Arc 対応機械学習を構成する方法について説明します。
+トレーニングと推論を行うための Azure Arc 対応機械学習を構成する方法について説明します。
 
 ## <a name="what-is-azure-arc-enabled-machine-learning"></a>Azure Arc 対応機械学習とは
 
 Azure Arc を使用することで、ユーザーはオンプレミス、マルチクラウド、エッジを問わず、あらゆる Kubernetes 環境で Azure サービスを実行することができます。
 
-Azure Arc 対応機械学習を使用すると、Azure Arc 対応 Kubernetes クラスターを構成し、Azure Machine Learning で機械学習モデルをトレーニングおよび管理することができます。
-
-Azure Arc 対応機械学習では、次のトレーニング シナリオがサポートされています。
-
-* CLI (v2) を使用したモデルのトレーニング
-  * 分散トレーニング
-  * ハイパーパラメーターのスイープ
-* Azure Machine Learning Python SDK を使用したモデルのトレーニング
-  * ハイパーパラメーターの調整
-* 機械学習パイプラインをビルドして使用する
-* 送信プロキシ サーバーを使用したオンプレミスでのモデルのトレーニング
-* NFS データストアを使用したオンプレミスでのモデルのトレーニング
+Azure Arc 対応機械学習を使用すると、Azure Arc 対応 Kubernetes クラスターを構成して、Azure Machine Learning で機械学習モデルをトレーニング、推論、管理することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free)してください。
 * Azure Arc 対応 Kubernetes クラスター。 詳細については、[既存の Kubernetes クラスターを Azure Arc に接続する方法に関するクイックスタート ガイド](../azure-arc/kubernetes/quickstart-connect-cluster.md)を参照してください。
+
+    > [!NOTE]
+    > Azure Kubernetes Service (AKS) クラスターについては、それらを Azure Arc に接続することは **省略可能です**。
+
 * [Azure Arc 対応 Kubernetes クラスターの拡張機能の前提条件](../azure-arc/kubernetes/extensions.md#prerequisites)を満たしていること。
   * Azure CLI バージョン >= 2.24.0
-  * Azure CLI k8s 拡張機能のバージョン >= 0.4.3
+  * Azure CLI k8s-extension 拡張機能のバージョン >= 1.0.0
+* [Azure Arc のネットワーク要件](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)を満たすこと
+
+    > [!IMPORTANT]
+    > 送信プロキシ サーバーまたはファイアウォールの内側で実行するクラスターには、追加のネットワーク構成が必要です。 詳細については、[ネットワークの着信トラフィックおよび送信トラフィックの構成](how-to-access-azureml-behind-firewall.md#arc-kubernetes)に関する記事を参照してください。
+
 * Azure Machine Learning ワークスペース。 まだお持ちでない場合は、開始する前に[ワークスペースを作成](how-to-manage-workspace.md?tabs=python)してください。
   * Azure Machine Learning Python SDK のバージョン >= 1.30
+* Azure CLI を使用して Azure にログインする
 
-## <a name="deploy-azure-machine-learning-extension"></a>Azure Machine Learning 拡張機能の展開
-
-Azure Arc 対応 Kubernetes には、Azure Policy 定義、監視、機械学習など、さまざまなエージェントをインストールできるクラスター拡張機能があります。 Azure Machine Learning では、Kubernetes クラスターに Azure Machine Learning エージェントを展開するために、*Microsoft.AzureML.Kubernetes* クラスター拡張機能を使用する必要があります。 Azure Machine Learning 拡張機能をインストールしたら、クラスターを Azure Machine Learning ワークスペースに接続し、トレーニングに使用できます。
-
-`k8s-extension` Azure CLI 拡張機能を使用して、Azure Arc 対応 Kubernetes クラスターに Azure Machine Learning 拡張機能を展開します。
-
-1. Azure にログインする
-    
     ```azurecli
     az login
     az account set --subscription <your-subscription-id>
-    ```
+    ```  
 
-1. Azure Machine Learning 拡張機能の展開
+* **Azure RedHat OpenShift Service (ARO) および OpenShift Container Platform (OCP) のみ**
+
+    * ARO または OCP Kubernetes クラスターが稼働している。 詳細については、[ARO Kubernetes クラスターの作成](/azure/openshift/tutorial-create-cluster)に関する記事と [OCP Kubernetes クラスターの作成](https://docs.openshift.com/container-platform/4.6/installing/installing_platform_agnostic/installing-platform-agnostic.html)に関するページを参照してください
+    * AzureML サービス アカウントへの特権アクセスを許可する。
+
+        `oc edit scc privileged` を実行し、次を追加します 
+
+        * ```system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa```
+        * ```system:serviceaccount:azureml:{EXTENSION NAME}-kube-state-metrics``` **(注:** ```{EXTENSION NAME}``` **は、** ```az k8s-extension create --name``` **のステップで使用した拡張機能名と一致している必要があります)**
+        * ```system:serviceaccount:azureml:cluster-status-reporter```
+        * ```system:serviceaccount:azureml:prom-admission```
+        * ```system:serviceaccount:azureml:default```
+        * ```system:serviceaccount:azureml:prom-operator```
+        * ```system:serviceaccount:azureml:csi-blob-node-sa```
+        * ```system:serviceaccount:azureml:csi-blob-controller-sa```
+        * ```system:serviceaccount:azureml:load-amlarc-selinux-policy-sa```
+        * ```system:serviceaccount:azureml:azureml-fe```
+        * ```system:serviceaccount:azureml:prom-prometheus```
+
+## <a name="deploy-azure-machine-learning-extension"></a>Azure Machine Learning 拡張機能の展開
+
+Azure Arc 対応 Kubernetes には、Azure Policy 定義、監視、機械学習など、さまざまなエージェントをインストールできるクラスター拡張機能があります。 Azure Machine Learning では、Kubernetes クラスターに Azure Machine Learning エージェントを展開するために、*Microsoft.AzureML.Kubernetes* クラスター拡張機能を使用する必要があります。 Azure Machine Learning 拡張機能をインストールしたら、クラスターを Azure Machine Learning ワークスペースに接続し、以下のシナリオ用に使用できます。
+
+* [トレーニング](#training)
+* [リアルタイム推論のみ](#inferencing)
+* [トレーニングと推論](#training-inferencing)
+
+> [!TIP]
+> クラスターのみのトレーニングでは、Azure Machine Learning パイプラインの一環としてバッチ推論もサポートされます。
+
+`k8s-extension` Azure CLI 拡張機能の [`create`](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) コマンドを使用して、Azure Arc 対応 Kubernetes クラスターに Azure Machine Learning 拡張機能を展開します。
+
+> [!IMPORTANT]
+> Azure Machine Learning 拡張機能を AKS クラスターに展開するには、`--cluster-type` パラメーターを `managedCluster` に設定します。
+
+Azure Machine Learning 拡張機能のさまざまな展開シナリオに使用できる構成設定の一覧を次に示します。
+
+```--config``` または ```--config-protected``` を使用して、Azure Machine Learning 展開構成のキーと値のペアのリストを指定できます。
+
+> [!TIP]
+> Azure Machine Learning 拡張機能を ARO および OCP Kubernetes クラスターに展開するには、`openshift` パラメーターを `True` に設定します。
+
+| 構成設定のキー名  | 説明  | トレーニング | 推論 | トレーニングと推論 |
+|---|---|---|---|---|
+| ```enableTraining``` | 既定値は `False` です。 機械学習モデルをトレーニングするための拡張機能インスタンスを作成するには、`True` に設定します。 |  **&check;** | 該当なし |  **&check;** |
+|```logAnalyticsWS```  | 既定値は `False` です。 Azure Machine Learning 拡張機能は、Azure LogAnalytics ワークスペースと統合されています。 LogAnalytics ワークスペースを使用してログの表示と分析機能を利用できるようにするには、`True` に設定します。 LogAnalytics ワークスペースのコストが適用される場合があります。 | 省略可能 | オプション | 省略可能 |
+|```installNvidiaDevicePlugin```  | 既定値は `True` です。 Nvidia GPU ハードウェアでトレーニングと推論を行うには、Nvidia デバイス プラグインが必要です。 Azure Machine Learning 拡張機能を使用すると、Kubernetes クラスターに GPU ハードウェアがあるかどうかに関係なく、Azure Machine Learning インスタンスの作成時に Nvidia デバイス プラグインが既定でインストールされます。 GPU を使用する予定がない場合、または Nvidia デバイス プラグインが既にインストールされている場合は、`False` に設定します。  | 省略可能 |オプション | 省略可能 |
+| ```enableInference``` | 既定値は `False` です。  機械学習モデルを推論するための拡張機能インスタンスを作成するには、`True` に設定します。 | 該当なし | **&check;** |  **&check;** |
+| ```allowInsecureConnections``` | 既定値は `False` です。 推論の HTTP エンドポイント サポートを含む Azure Machine Learning 拡張機能の展開で、```sslCertPemFile``` と ```sslKeyPemFile``` が指定されていない場合は、`True` に設定します。 | 該当なし | 省略可能 |  省略可能 |
+| ```sslCertPemFile``` & ```ssKeyPMFile``` | SSL 証明書とキー ファイルへのパス (PEM でエンコード)。 推論の HTTPS エンドポイント サポートを含む AzureML 拡張機能の展開に必要です。 | 該当なし | 省略可能 |  省略可能 |
+| ```privateEndpointNodeport``` | 既定値は `False` です。  NodePort を使った機械学習推論のプライベート エンドポイント サポートを含む Azure Machine Learning 拡張機能の展開では、`True` に設定します。 | 該当なし | 省略可能 |  省略可能 |
+| ```privateEndpointILB``` | 既定値は `False` です。  serviceType 内部ロード バランサーを使った機械学習推論のプライベート エンドポイント サポートを含む Azure Machine Learning 拡張機能の展開では、`True` に設定します | 該当なし| 省略可能 |  省略可能 |
+| ```inferenceLoadBalancerHA``` | 既定値は `True` です。 既定では、Azure Machine Learning 拡張機能により、高可用性を実現するために複数のイングレス コントローラー レプリカが展開されます。 クラスター リソースが限られている場合、または開発およびテスト用にのみ Azure Machine Learning 拡張機能を展開したい場合は、`False` に設定します。 高可用性のロードバランサーを使用しない場合、1 つのイングレス コントローラー レプリカのみが展開されます。 | 該当なし | 省略可能 |  省略可能 |
+|```openshift``` | 既定値は `False` です。 ARO または OCP クラスターでの Azure Machine Learning 拡張機能の展開では、`True` に設定します。 展開プロセスでは、Azure Machine Learning services の操作が正常に機能するように、自動的にポリシー パッケージがコンパイルされ、各ノードにポリシー パッケージが読み込まれます。 | 省略可能 | オプション |  省略可能 |
+
+> [!WARNING]
+> クラスターに Nvidia デバイス プラグインが既にインストールされている場合、これらを再インストールすると拡張機能のインストール エラーが発生する可能性があります。 展開エラーを防ぐには、`installNvidiaDevicePlugin` を `False` に設定します。
+
+### <a name="deploy-extension-for-training-workloads"></a>トレーニング ワークロード用の拡張機能を展開する <a id="training"></a>
+
+次の Azure CLI コマンドを使用して、Azure Machine Learning 拡張機能を展開し、Kubernetes クラスターでトレーニング ワークロードを有効にします。
+
+```azurecli
+az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --config enableTraining=True --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group> --scope cluster
+```
+
+### <a name="deploy-extension-for-real-time-inferencing-workloads"></a>リアルタイム推論ワークロード用の拡張機能を展開する <a id="inferencing"></a>
+
+ネットワーク設定、Kubernetes 分散の種類、および Kubernetes クラスターがホストされている場所 (オンプレミスまたはクラウド) に応じて、次のいずれかのオプションを選んで Azure Machine Learning 拡張機能を展開し、Kubernetes クラスターで推論ワークロードを有効にします。
+
+#### <a name="public-endpoints-support-with-public-load-balancer"></a>パブリック ロード バランサーを使用したパブリック エンドポイントのサポート
+
+* **HTTPS**
 
     ```azurecli
-    az k8s-extension create --name amlarc-compute --extension-type Microsoft.AzureML.Kubernetes --configuration-settings enableTraining=True  --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group> --scope cluster
+    az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file> --resource-group <resource-group> --scope cluster
     ```
 
-    >[!IMPORTANT]
-    > トレーニングのために Azure Arc 対応クラスターを有効にするには、`enableTraining` を **[True]** に設定する必要があります。 このコマンドを実行すると、Azure Service Bus と Azure Relay リソースが、Arc クラスターと同じリソース グループの下に作成されます。 これらのリソースは、クラスターとの通信に使用されます。 これらを変更すると、トレーニングのコンピューティング先として使用されている接続されたクラスターが切断されます。
-
-    モデル トレーニング用の Azure Machine Learning 拡張機能を展開する際には、次の設定を構成することもできます。
-
-    |構成設定のキー名  |説明  |
-    |--|--|
-    | ```enableTraining``` | 既定値は `False` です。 機械学習モデルをトレーニングするための拡張機能インスタンスを作成するには、`True` に設定します。  |
-    |```logAnalyticsWS```  | 既定値は `False` です。 Azure Machine Learning 拡張機能は、Azure LogAnalytics ワークスペースと統合されています。 LogAnalytics ワークスペースを使用してログの表示と分析機能を利用できるようにするには、`True` に設定します。 LogAnalytics ワークスペースのコストが適用される場合があります。   |
-    |```installNvidiaDevicePlugin```  | 既定値は `True` です。 Nvidia GPU ハードウェアでトレーニングを行うには、Nvidia デバイス プラグインが必要です。 Azure Machine Learning 拡張機能を使用すると、Kubernetes クラスターに GPU ハードウェアがあるかどうかに関係なく、Azure Machine Learning インスタンスの作成時に Nvidia デバイス プラグインが既定でインストールされます。 トレーニングに GPU を使用する予定がない場合、または Nvidia デバイス プラグインが既にインストールされている場合は、`False` に設定します。  |
-    |```installBlobfuseSysctl```  | "enableTraining=True" の場合、規定値は `True` です。 トレーニングを行うには、Blobfuse 1.3.7 が必要です。 拡張機能のインスタンスを作成すると、Azure Machine Learning によって既定で Blobfuse がインストールされます。 Kubernetes クラスターに Blobfuse 1.37 が既にインストールされている場合は、この構成設定を `False` に設定します。   |
-    |```installBlobfuseFlexvol```  | "enableTraining=True" の場合、規定値は `True` です。 トレーニングを行うには、Blobfuse Flexvolume が必要です。 Azure Machine Learning を使用すると、既定で Blobfuse Flexvolume が既定のパスにインストールされます。 Kubernetes クラスターに Blobfuse Flexvolume が既にインストールされている場合は、この構成設定を `False` に設定します。   |
-    |```volumePluginDir```  | Blobfuse Flexvolume をインストールするホスト パスです。 "enableTraining=True" の場合にのみ適用されます。 既定では、Azure Machine Learning によって Blobfuse Flexvolumeblobfuse は */etc/kubernetes/volumeplugins* の既定のパスの下にインストールされます。 カスタムのインストール場所を指定するには、この構成設定を指定してください。'''   |
+* **HTTP**
 
     > [!WARNING]
-    > クラスターに Nvidia デバイスプラグイン、Blobfuse、Blobfuse Flexvolume が既にインストールされている場合、これらを再インストールすると拡張機能のインストール エラーが発生する可能性があります。 インストール エラーを回避するには、`installNvidiaDevicePlugin`、`installBlobfuseSysctl`、および `installBlobfuseFlexvol` を `False` に設定してください。
-
-1. AzureML 拡張機能の展開を確認する
+    > パブリック ロード バランサーを使用したパブリック HTTP エンドポイントのサポートは、リアルタイム推論シナリオ用に Azure Machine Learning 拡張機能を展開するための最も安全性の低い方法であるため、推奨 **されません**。
 
     ```azurecli
-    az k8s-extension show --name amlarc-compute --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group>
+    az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name>  --configuration-settings enableInference=True allowInsecureConnections=True --resource-group <resource-group> --scope cluster
     ```
 
-    応答から `"extensionType": "amlarc-compute"` と `"installState": "Installed"` を見つけます。 最初の数分間は、`"installState": "Pending"` と表示されることがあります。
+#### <a name="private-endpoints-support-with-internal-load-balancer"></a>内部ロード バランサーを使用したプライベート エンドポイントのサポート
 
-    `installState` が **Installed** と表示されたら、kubeconfig ファイルが目的のクラスターを指している状態で、お使いのマシン上で次のコマンドを実行して、*azureml* 名前空間の下のすべてのポッドの状態が *Running* になっていることを確認します。
+* **HTTPS**
 
-   ```bash
-    kubectl get pods -n azureml
+    ```azurecli
+    az k8s-extension create --name amlarc-compute --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True privateEndpointILB=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file> --resource-group <resource-group> --scope cluster
+    ```
+
+* **HTTP**
+
+   ```azurecli
+   az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True privateEndpointILB=True allowInsecureConnections=True --resource-group <resource-group> --scope cluster
    ```
 
-## <a name="attach-arc-cluster-studio"></a>Arc クラスターの接続 (studio)
+#### <a name="endpoints-support-with-nodeport"></a>NodePort を使用したエンドポイントのサポート
+
+NodePort を使用すると、自由に独自の負荷分散ソリューションを設定したり、Kubernetes で完全にサポートされない環境を構成したり、1 つ以上のノードの IP を直接公開したりすることもできます。
+
+NodePort サービスを使用して展開すると、スコアリング URL (または Swagger URL) はいずれかの Node IP (例: ```http://<NodeIP><NodePort>/<scoring_path>```) に置き換えられ、Node を使用できない場合でも変更されません。 ただし、任意の他の Node IP に置き換えられます。
+
+* **HTTPS**
+
+    ```azurecli
+    az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group> --scope cluster --config enableInference=True privateEndpointNodeport=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file>
+    ```
+
+* **HTTP**
+
+   ```azurecli
+   az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True privateEndpointNodeport=True allowInsecureConnections=Ture --resource-group <resource-group> --scope cluster
+   ```
+
+### <a name="deploy-extension-for-training-and-inferencing-workloads"></a>トレーニング ワークロードと推論ワークロード用の拡張機能を展開する <a id="training-inferencing"></a>
+
+次の Azure CLI コマンドを使用して Azure Machine Learning 拡張機能を展開し、Kubernetes クラスターで、クラスターのリアルタイム推論、バッチ推論、およびトレーニング ワークロードを有効にします。
+
+```azurecli
+az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableTraining=True enableInference=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file>--resource-group <resource-group> --scope cluster
+```
+
+## <a name="resources-created-during-deployment"></a>展開中に作成されるリソース
+
+Azure Machine Learning 拡張機能が展開されると、クラスターで実行するワークロードに応じて、Azure と Kubernetes クラスターに次のリソースが作成されます。
+
+|リソース名  |リソースの種類 |トレーニング |推論 |トレーニングと推論|
+|---|---|---|---|---|
+|Azure ServiceBus|Azure リソース|**&check;**|**&check;**|**&check;**|
+|Azure Relay|Azure リソース|**&check;**|**&check;**|**&check;**|
+|{EXTENSION-NAME}|Azure リソース|**&check;**|**&check;**|**&check;**|
+|aml-operator|Kubernetes deployment|**&check;**|該当なし|**&check;**|
+|{EXTENSION-NAME}-kube-state-metrics|Kubernetes deployment|**&check;**|**&check;**|**&check;**|
+|{EXTENSION-NAME}-prometheus-operator|Kubernetes deployment|**&check;**|**&check;**|**&check;**|
+|amlarc-identity-controller|Kubernetes deployment|該当なし|**&check;**|**&check;**|
+|amlarc-identity-proxy|Kubernetes deployment|該当なし|**&check;**|**&check;**|
+|azureml-fe|Kubernetes deployment|該当なし|**&check;**|**&check;**|
+|inference-operator-controller-manager|Kubernetes deployment|該当なし|**&check;**|**&check;**|
+|metrics-controller-manager|Kubernetes deployment|**&check;**|**&check;**|**&check;**|
+|relayserver|Kubernetes deployment|**&check;**|**&check;**|**&check;**|
+|cluster-status-reporter|Kubernetes deployment|**&check;**|**&check;**|**&check;**|
+|nfd-master|Kubernetes deployment|**&check;**|該当なし|**&check;**|
+|gateway|Kubernetes deployment|**&check;**|**&check;**|**&check;**|
+|csi-blob-controller|Kubernetes deployment|**&check;**|該当なし|**&check;**|
+|csi-blob-node|Kubernetes daemonset|**&check;**|該当なし|**&check;**|
+|fluent-bit|Kubernetes daemonset|**&check;**|**&check;**|**&check;**|
+|k8s-host-device-plugin-daemonset|Kubernetes daemonset|**&check;**|**&check;**|**&check;**|
+|nfd-worker|Kubernetes daemonset|**&check;**|該当なし|**&check;**|
+|prometheus-prom-prometheus|Kubernetes statefulset|**&check;**|**&check;**|**&check;**|
+|frameworkcontroller|Kubernetes statefulset|**&check;**|該当なし|**&check;**|
+
+> [!IMPORTANT]
+> Azure ServiceBus と Azure Relay のリソースは、Arc クラスター リソースと同じリソース グループの下にあります。 これらのリソースは Kubernetes クラスターと通信するために使われ、変更すると接続されたコンピューティング先が破損します。
+
+> [!NOTE]
+> **{EXTENSION-NAME}** は、```az k8s-extension create --name``` Azure CLI コマンドによって指定される拡張機能名です。
+
+## <a name="verify-your-azureml-extension-deployment"></a>AzureML 拡張機能の展開を確認する
+
+```azurecli
+az k8s-extension show --name arcml-extension --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group>
+```
+
+応答から `"extensionType": "arcml-extension"` と `"installState": "Installed"` を見つけます。 最初の数分間は、`"installState": "Pending"` と表示されることがあります。
+
+`installState` が **Installed** と表示されたら、kubeconfig ファイルが目的のクラスターを指している状態で、お使いのマシン上で次のコマンドを実行して、*azureml* 名前空間の下のすべてのポッドの状態が *Running* になっていることを確認します。
+
+```bash
+kubectl get pods -n azureml
+```
+
+## <a name="attach-arc-cluster"></a>Arc クラスターの接続
+
+### <a name="studio"></a><bpt id="p1">[</bpt>スタジオ<ept id="p1">](#tab/azure-studio)</ept>
 
 Azure Arc 対応 Kubernetes クラスターを接続すると、ワークスペースでトレーニング用に使用できるようになります。
 
@@ -109,11 +242,9 @@ Azure Arc 対応 Kubernetes クラスターを接続すると、ワークスペ�
 
 1. コンピューティング名を入力し、ドロップダウンから Azure Arc 対応 Kubernetes クラスターを選択します。
 
-   ![Kubernetes クラスターを構成する](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster.png)
+   **(省略可能)** システム割り当てまたはユーザー割り当てのマネージド ID を割り当てます。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。
 
-1. (省略可能) 高度なシナリオでは、構成ファイルを参照してアップロードします。
-
-   ![構成ファイルをアップロードする](./media/how-to-attach-arc-kubernetes/upload-configuration-file.png)
+   ![Kubernetes クラスターを構成する](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster-2.png)
 
 1. **[接続]** を選択します
 
@@ -121,194 +252,88 @@ Azure Arc 対応 Kubernetes クラスターを接続すると、ワークスペ�
 
     ![リソースをプロビジョニングする](./media/how-to-attach-arc-kubernetes/provision-resources.png)
 
-### <a name="advanced-attach-scenario"></a>高度な接続シナリオ
+### <a name="python-sdk"></a>[Python SDK](#tab/sdk)
 
-JSON 構成ファイルを使用して、Azure Arc 対応 Kubernetes クラスターで高度なコンピューティング先の機能を構成します。
+Azure Machine Learning Python SDK を使い、[`attach_configuration`](/python/api/azureml-core/azureml.core.compute.kubernetescompute.kubernetescompute?view=azure-ml-py&preserve-view=true) メソッドを使って Azure Arc 対応 Kubernetes クラスターをコンピューティング先として接続できます。
 
-構成ファイルの例を次に示します。
+次の Python コードは、Azure Arc 対応 Kubernetes クラスターを接続し、それをコンピューティング先として、マネージド ID を有効にして使用する方法を示しています。
 
-```json
-{
-   "namespace": "amlarc-testing",
-   "defaultInstanceType": "gpu_instance",
-   "instanceTypes": {
-      "gpu_instance": {
-         "nodeSelector": {
-            "accelerator": "nvidia-tesla-k80"
-         },
-         "resources": {
-            "requests": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            },
-            "limits": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            }
-         }
-      },
-      "big_cpu_sku": {
-         "nodeSelector": {
-            "VMSizes": "VM-64vCPU-256GB"
-         },
-         "resources": {
-            "requests": {
-               "cpu": "4",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "0"
-            },
-            "limits": {
-               "cpu": "4",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "0"
-            }
-         }
-      }
-   }
-}
-```
-
-次のカスタム コンピューティング先プロパティは、構成ファイルを使用して構成できます。
-
-* `namespace` - 既定では、`default` 名前空間になります。 これは、ジョブとポッドが実行される名前空間です。 既定以外の名前空間を設定する場合は、その名前空間が既に存在している必要があることに注意してください。 名前空間を作成するには、クラスター管理者特権が必要です。
-
-* `defaultInstanceType` - トレーニング ジョブが既定で実行されるインスタンスの種類。 `instanceTypes` を指定した場合は `defaultInstanceType` が必須です。 `defaultInstanceType` の値は、`instanceTypes` プロパティで定義されている値のいずれかである必要があります。
-
-    > [!IMPORTANT]
-    > 現時点では、コンピューターのターゲット名を使用したジョブの送信のみがサポートされています。 したがって、構成は常に既定で defaultInstanceType に設定されます。
-
-* `instanceTypes` - トレーニング ジョブに使用されるインスタンスの種類の一覧。 インスタンスの種類は、それぞれ `nodeSelector` と `resources requests/limits` プロパティによって定義されます。
-
-  * `nodeSelector` - クラスター内のノードを識別するために使用される 1 つ以上のノード ラベル。 クラスター ノードのラベルを作成するには、クラスター管理者特権が必要です。 このプロパティを指定すると、トレーニング ジョブは指定されたノード ラベルを持つノード上で実行されるようにスケジュールされます。 `nodeSelector` を使用することで、ワークロードの配置をトレーニングするためにノードのサブセットを対象にできます。 これは、クラスターに異なる SKU がある場合や、CPU ノードや GPU ノードなどのさまざまな種類のノードがある場合に役立ちます。 たとえば、すべての GPU ノードのノード ラベルを作成し、GPU ノード プールの `instanceType` を定義できます。 これにより、トレーニング ジョブをスケジュールするときに GPU ノード プールが排他的に対象になります。 
-
-  * `resources requests/limits` - リソース要求を指定し、実行するトレーニング ジョブ ポッドを制限します。 既定値は 1 つの CPU と 4 GB のメモリです。
-
-    >[!IMPORTANT]
-    > 既定では、クラスター リソースは 1 つの CPU と 4 GB のメモリで展開されます。 クラスターが下位のリソースで構成されている場合、ジョブの実行は失敗します。 ジョブの完了を確実にするために、トレーニング ジョブのニーズに応じて、常にリソースの要求や制限を指定することをお勧めします。 既定の構成ファイルの例を次に示します。
-    >
-    > ```json
-    > {
-    >    "namespace": "default",
-    >    "defaultInstanceType": "defaultInstanceType",
-    >    "instanceTypes": {
-    >       "defaultInstanceType": {
-    >          "nodeSelector": null,
-    >          "resources": {
-    >             "requests": {
-    >                "cpu": "1",
-    >                "memory": "4Gi",
-    >                "nvidia.com/gpu": "0"
-    >             },
-    >             "limits": {
-    >                "cpu": "1",
-    >                "memory": "4Gi",
-    >                "nvidia.com/gpu": "0"
-    >             }
-    >          }
-    >       }
-    >    }
-    > }
-    > ```
-
-## <a name="attach-arc-cluster-python-sdk"></a>Arc クラスターの接続 (Python SDK)
-
-次の Python コードは、Azure Arc 対応 Kubernetes クラスターを接続し、それをトレーニングのコンピューティング先として使用する方法を示しています。
+マネージド ID により、開発者は資格情報を管理する必要がなくなります。 詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。
 
 ```python
 from azureml.core.compute import KubernetesCompute
 from azureml.core.compute import ComputeTarget
+from azureml.core.workspace import Workspace
 import os
 
 ws = Workspace.from_config()
 
-# choose a name for your Azure Arc-enabled Kubernetes compute
-amlarc_compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "amlarc-compute")
+# Specify a name for your Kubernetes compute
+amlarc_compute_name = "<COMPUTE_CLUSTER_NAME>"
 
-# resource ID for your Azure Arc-enabled Kubernetes cluster
-resource_id = "/subscriptions/123/resourceGroups/rg/providers/Microsoft.Kubernetes/connectedClusters/amlarc-cluster"
+# resource ID for the Kubernetes cluster and user-managed identity
+resource_id = "/subscriptions/<sub ID>/resourceGroups/<RG>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>"
+
+user_assigned_identity_resouce_id = ['subscriptions/<sub ID>/resourceGroups/<RG>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity name>']
+
+ns = "default" 
 
 if amlarc_compute_name in ws.compute_targets:
     amlarc_compute = ws.compute_targets[amlarc_compute_name]
     if amlarc_compute and type(amlarc_compute) is KubernetesCompute:
         print("found compute target: " + amlarc_compute_name)
 else:
-    print("creating new compute target...")
-
-    amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id) 
-    amlarc_compute = ComputeTarget.attach(ws, amlarc_compute_name, amlarc_attach_configuration)
-
- 
-    amlarc_compute.wait_for_completion(show_output=True)
-    
-     # For a more detailed view of current KubernetesCompute status, use get_status()
-    print(amlarc_compute.get_status().serialize())
-```
-
-### <a name="advanced-attach-scenario"></a>高度な接続シナリオ
-
-次のコードは、名前空間、nodeSelector、リソースの要求や制限など、高度なコンピューティング先プロパティを構成する方法を示しています。
-
-```python
-from azureml.core.compute import KubernetesCompute
-from azureml.core.compute import ComputeTarget
-import os
-
-ws = Workspace.from_config()
-
-# choose a name for your Azure Arc-enabled Kubernetes compute
-amlarc_compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "amlarc-compute")
-
-# resource ID for your Azure Arc-enabled Kubernetes cluster
-resource_id = "/subscriptions/123/resourceGroups/rg/providers/Microsoft.Kubernetes/connectedClusters/amlarc-cluster"
-
-if amlarc_compute_name in ws.compute_targets:
-   amlarc_compute = ws.compute_targets[amlarc_compute_name]
-   if amlarc_compute and type(amlarc_compute) is KubernetesCompute:
-      print("found compute target: " + amlarc_compute_name)
-else:
    print("creating new compute target...")
-   ns = "amlarc-testing"
-    
-   instance_types = {
-      "gpu_instance": {
-         "nodeSelector": {
-            "accelerator": "nvidia-tesla-k80"
-         },
-         "resources": {
-            "requests": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            },
-            "limits": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            }
-        }
-      },
-      "big_cpu_sku": {
-         "nodeSelector": {
-            "VMSizes": "VM-64vCPU-256GB"
-         }
-      }
-   }
 
-   amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id = resource_id, namespace = ns, default_instance_type="gpu_instance", instance_types = instance_types)
- 
-   amlarc_compute = ComputeTarget.attach(ws, amlarc_compute_name, amlarc_attach_configuration)
 
- 
-   amlarc_compute.wait_for_completion(show_output=True)
-    
-   # For a more detailed view of current KubernetesCompute status, use get_status()
-   print(amlarc_compute.get_status().serialize())
+# assign user-assigned managed identity
+amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id = resource_id, namespace = ns,  identity_type ='UserAssigned',identity_ids = user_assigned_identity_resouce_id) 
+
+# assign system-assigned managed identity
+# amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id = resource_id, namespace = ns,  identity_type ='SystemAssigned') 
+
+amlarc_compute = ComputeTarget.attach(ws, amlarc_compute_name, amlarc_attach_configuration)
+amlarc_compute.wait_for_completion(show_output=True)
+
+# get detailed compute description containing managed identity principle ID, used for permission access. 
+print(amlarc_compute.get_status().serialize())
 ```
+
+`identity_type` パラメーターを使って、`SystemAssigned` または `UserAssigned` マネージド ID を有効にします。
+
+### <a name="cli"></a>[CLI](#tab/cli)
+
+Azure Machine Learning 2.0 CLI (プレビュー) を使って、AKS または Azure Arc 対応 Kubernetes クラスターを接続できます。
+
+Azure Machine Learning CLI [`attach`](/cli/azure/ml/compute?view=azure-cli-latest&preserve-view=true) コマンドを使い、`--type` 引数を `kubernetes` に設定して、Azure Machine Learning 2.0 CLI を使って Kubernetes クラスターを接続します。
+
+> [!NOTE]
+> AKS または Azure Arc 対応 Kubernetes クラスターのコンピューティング接続サポートには、Azure CLI `ml` 拡張機能のバージョン 2.0.1a4 以上が必要です。 詳細については、「[CLI (v2) のインストールと設定](how-to-configure-cli.md)」を参照してください。
+
+次のコマンドは、Azure Arc 対応 Kubernetes クラスターを接続し、それをコンピューティング先として、マネージド ID を有効にして使用する方法を示しています。
+
+**AKS**
+
+```azurecli
+az ml compute attach --resource-group <resource-group-name> --workspace-name <workspace-name> --name amlarc-compute --resource-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Kubernetes/managedclusters/<cluster-name>" --type kubernetes --identity-type UserAssigned --user-assigned-identities "subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>" --no-wait
+```
+
+**Azure Arc 対応 Kubernetes**
+
+```azurecli
+az ml compute attach --resource-group <resource-group-name> --workspace-name <workspace-name> --name amlarc-compute --resource-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Kubernetes/connectedClusters/<cluster-name>" --type kubernetes --user-assigned-identities "subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>" --no-wait
+```
+
+`identity_type` 引数を使って、`SystemAssigned` または `UserAssigned` マネージド ID を有効にします。
+
+> [!IMPORTANT]
+> `--user-assigned-identities` は `UserAssigned` マネージド ID にのみ必要です。 コンマ区切りのユーザー マネージド ID のリストを指定することもできますが、クラスターを接続するときに使われるのは最初の ID のみです。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 
+- [トレーニング ワークロードと推論ワークロード用に異なるインスタンスの種類を作成および選択する](how-to-kubernetes-instance-type.md)
 - [CLI (v2) を使用したモデルのトレーニング](how-to-train-cli.md)
 - [トレーニングの実行を構成して送信する](how-to-set-up-training-targets.md)
 - [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)

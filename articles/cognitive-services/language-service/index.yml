@@ -1,0 +1,93 @@
+### YamlMime:Hub
+title: Azure Cognitive Service for Language のドキュメント
+summary: 情報の抽出、テキストの分類、会話言語の理解、質問への回答などを行うことができる AI をアプリケーションに統合する方法について説明します。
+brand: azure
+metadata:
+  title: Azure Cognitive Service for Language のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: 書き表されたテキストを処理する AI をアプリケーションに統合する方法について説明します。
+  author: aahill
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 09/13/2021
+  ms.author: aahi
+highlightedContent:
+  items:
+    - title: Azure Cognitive Service for Language とは
+      itemType: overview
+      url: overview.md
+    - title: 新機能
+      itemType: whats-new
+      url: whats-new.md
+    - title: Language Studio を使い始める
+      itemType: get-started
+      url: language-studio.md
+    - title: AI の責任ある使用
+      itemType: concept
+      url: /legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context
+conceptualContent:
+  items:
+    - title: 情報を抽出する
+      links:
+        - itemType: overview
+          text: キー フレーズ抽出
+          url: key-phrase-extraction/overview.md
+        - itemType: overview
+          text: リンクされたエンティティを検索する
+          url: entity-linking/overview.md
+        - itemType: overview
+          text: 名前付きエンティティの認識 (NER)
+          url: named-entity-recognition/overview.md
+        - itemType: overview
+          text: 個人を特定できる情報 (PII) の検出
+          url: personally-identifiable-information/overview.md
+        - itemType: overview
+          text: カスタム固有表現認識 (カスタム NER)
+          url: custom-named-entity-recognition/overview.md
+        - itemType: overview
+          text: Text Analytics for Health
+          url: text-analytics-for-health/overview.md
+    - title: テキストを分類する
+      links:
+        - itemType: overview
+          text: センチメントを分析し、テキストからオピニオンをマイニングする
+          url: sentiment-opinion-mining/overview.md
+        - itemType: overview
+          text: 言語を検出する
+          url: language-detection/overview.md
+        - itemType: overview
+          text: カスタム テキスト分類
+          url: custom-classification/overview.md
+    - title: 会話を理解し、質問に回答する
+      links:
+        - itemType: overview
+          text: 会話言語理解
+          url: conversational-language-understanding/overview.md
+        - itemType: overview
+          text: 質問と回答
+          url: question-answering/overview.md
+    - title: テキストを翻訳する
+      links:
+        - itemType: overview
+          text: テキストで機械翻訳を使用する
+          url: ../translator/translator-overview.md
+    - title: テキストの概要を作成する
+      links:
+        - itemType: overview
+          text: テキストの概要作成
+          url: text-summarization/overview.md
+additionalContent:
+  sections:
+    - items:
+        - title: リソース
+          links:
+            - text: 価格
+              url: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+            - text: 学習する
+              url: /learn/browse/?products=azure-cognitive-services&term=Speech
+        - title: サポート
+          links:
+            - text: サポートとヘルプ
+              url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

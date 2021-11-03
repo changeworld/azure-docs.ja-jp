@@ -3,13 +3,14 @@ title: Azure Video Analyzer で再生するためのビデオを記録する
 description: この記事では、Azure Video Analyzer で再生するためのビデオの記録について説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 4c5d0121df90791d8eb77782fb6d949548a0185e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/30/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 94ac0847b4cb4783ad16044514960b88c67d2a03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604358"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073721"
 ---
 # <a name="record-video-for-playback"></a>再生用のビデオの記録
 
@@ -17,8 +18,7 @@ CCTV カメラ用のビデオ管理システムのコンテキストでは、ビ
 
 ## <a name="continuous-video-recording"></a>継続的なビデオ記録
 
-継続的なビデオ記録 (CVR) とは、ビデオ ソースからキャプチャされるすべてのビデオを継続的に記録するプロセスのことを言います。 CVR を使用すると、ビデオの目的の部分 ( **[記録ポリシー](#recording-policy)** で規定) を後で確実に分析または監査できます。
-
+継続的なビデオ記録 (CVR) とは、ビデオ ソースからキャプチャされるすべてのビデオを継続的に記録するプロセスのことを言います。 CVR を使用すると、ビデオの目的の部分 ( **[アイテム保持ポリシー](#retention-policy)** で規定) を後で確実に分析または監査できます。
 
 ## <a name="event-based-video-recording"></a>イベントベースのビデオ記録
 
@@ -28,9 +28,9 @@ CCTV カメラ用のビデオ管理システムのコンテキストでは、ビ
 
 CVR と EVR のどちらを使用するかは、ビジネス目標によって異なります。 Azure Video Analyzer (AVA) には、CVR と EVR の両方に対応するプラットフォーム機能が用意されています。 詳細については、 **[CVR](continuous-video-recording.md)** と **[EVR](event-based-video-recording-concept.md)** のシナリオに関する記事をご覧ください。
 
-## <a name="recording-policy"></a>記録ポリシー
+## <a name="retention-policy"></a>Retention ポリシー
 
-記録ポリシーとは、保存されるビデオ記録の長さまたは期間を規定したポリシーを指します。 記録ポリシーを使用すると、ストレージ コストとビジネス要件のバランスを取ることができます。 CVR の場合、記録ポリシーは、ビデオを保存する日数を定義します (たとえば、過去 7 日間)。 詳細については、 **[CVR](continuous-video-recording.md)** のシナリオに関する記事をご覧ください。
+アイテム保持ポリシーとは、保持されるビデオ記録の長さまたは期間を規定したポリシーを指します。 アイテム保持ポリシーを使用すると、ストレージ コストとビジネス要件のバランスを取ることができます。 CVR の場合、アイテム保持ポリシーは、ビデオを保存する日数を定義します (たとえば、過去 7 日間)。 詳細については、 **[アイテム保持ポリシーの管理](manage-retention-policy.md)** に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

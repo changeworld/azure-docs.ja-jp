@@ -1,18 +1,18 @@
 ---
 title: インクルード ファイル
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/09/2020
-ms.author: erhopf
+ms.author: pafarley
 ms.custom: include
-ms.openlocfilehash: a339a3ea7eeafd3b8e6a740614ff4ca10aba38fd
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d3ef24f7e28b69c82eae8fe857d611f46c01d998
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122336261"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253122"
 ---
 ## <a name="service-specific-updates"></a>サービス固有の更新 
 

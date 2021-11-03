@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: rifox
-ms.openlocfilehash: c2d280de30997996902def6f04eb1d35c956999a
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: f2006869868a94b36078734756fd5e6992cd08b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966021"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253279"
 ---
 Communication Services Calling SDK を使用して 1 対 1 のビデオ通話をアプリに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、iOS 用の Azure Communication Services Calling SDK を使用して、ビデオ通話を開始および応答する方法について説明します。
 
@@ -56,7 +56,7 @@ end
 
 プロジェクト ツリーの `Info.plist` のエントリを右クリックし、[Open As]\(形式を指定して開く\) > [Source Code]\(ソース コード \) の順に選択します。 最上位の `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
 
-```XML
+```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>Need microphone access for VOIP calling.</string>
 <key>NSCameraUsageDescription</key>

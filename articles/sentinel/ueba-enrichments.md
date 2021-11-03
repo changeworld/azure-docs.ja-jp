@@ -8,14 +8,17 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6420ef1345e20c2aec511a0a0284753a78895020
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 944c2b155a0cfa48d98876aa463c27cf5c47d40c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627351"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083709"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA エンリッチメント リファレンス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、 **[ログ]** 内にあり、[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)に言及される Azure Sentinel **BehaviorAnalytics** テーブルについて説明します。また、そのテーブル内のエンティティ エンリッチメント フィールドの詳細についても説明します。この内容を活用することにより、セキュリティ インシデントの調査の対象を絞って明確にすることができます。
 
