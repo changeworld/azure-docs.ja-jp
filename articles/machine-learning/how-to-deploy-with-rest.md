@@ -11,12 +11,12 @@ ms.author: seramasu
 ms.date: 08/05/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: f4f6cb9941bfa9bd1a2711a25222fcbfe036951e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9cb3718a0e4ac8ef322fafd16236dfab0fa6f6fc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232387"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087592"
 ---
 # <a name="deploy-models-with-rest-preview"></a>REST を使用してモデルをデプロイする (プレビュー)
 
@@ -157,7 +157,7 @@ export AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_ST
 
 * [Azure CLI を使用して](how-to-deploy-managed-online-endpoints.md)モデルをデプロイする方法について説明します。
 * [Studio を使用して](how-to-use-managed-online-endpoint-studio.md)モデルをデプロイする方法について説明します。
-* [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md) について説明します
+* [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](./how-to-troubleshoot-online-endpoints.md) について説明します
 * [マネージド オンライン エンドポイントとシステム マネージド ID (プレビュー) を使用して Azure リソースにアクセスする](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)方法について説明します
 * [オンライン エンドポイントを監視する](how-to-monitor-online-endpoints.md)方法について説明します。
 * [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md) について説明します。

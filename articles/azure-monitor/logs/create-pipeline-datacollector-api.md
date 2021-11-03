@@ -129,18 +129,18 @@ Logic Apps を使えば JSON データは簡単に取り込むことができ、
 
 ![Logic Apps ワークフロー全体の例](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
-## <a name="testing-the-pipeline&quot;></a>パイプラインのテスト
+## <a name="testing-the-pipeline"></a>パイプラインのテスト
 では、先ほど構成した BLOB に新しいファイルをアップロードし、ロジック アプリで監視してみましょう。 間もなく、ロジック アプリの新しいインスタンスが起動し、Azure 関数を呼び出した後、データを Azure Monitor に正常に送信したことを確認できます。 
 
 >[!NOTE]
 >新しい種類のデータを初めて送信するときは、Azure Monitor にデータが表示されるまでに最大 30 分程度かかる場合があります。
 
 
-## <a name=&quot;correlating-with-other-data-in-log-analytics-and-application-insights&quot;></a>Log Analytics と Application Insights 内の他のデータと関連付ける
+## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights 内の他のデータと関連付ける
 カスタム データ ソースから取り込んだ人口データに Application Insights のページ ビュー データを関連付けるという目標を達成するために、Application Insights の分析ウィンドウまたは Log Analytics ワークスペースから次のクエリを実行します。
 
 ``` KQL
-app(&quot;fabrikamprod").pageViews
+app("fabrikamprod").pageViews
 | summarize numUsers = count() by client_CountryOrRegion
 | join kind=leftouter (
    workspace("customdatademo").Population_CL

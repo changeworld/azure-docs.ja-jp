@@ -40,7 +40,7 @@ ms.locfileid: "131009189"
     
     ![SecurityInsights ソリューションを削除する](media/offboard/delete-solution.png)
 
-## <a name="what-happens-behind-the-scenes&quot;></a>舞台裏では何が起こっているのか?
+## <a name="what-happens-behind-the-scenes"></a>舞台裏では何が起こっているのか?
 
 Azure Sentinel の場合、ソリューションを削除するには、削除プロセスの最初の段階を完了するために最大 48 時間かかります。
 
@@ -51,7 +51,7 @@ Azure Sentinel の場合、ソリューションを削除するには、削除�
 
 -   AWS
 
--   Microsoft サービスのセキュリティ アラート: Microsoft Defender for Identity (&quot;*以前の Azure ATP*")、Cloud Discovery シャドウ IT レポートを含む Microsoft Cloud App Security、Azure AD Identity Protection、Microsoft Defender for Endpoint ("*以前の Microsoft Defender ATP*")、Azure Security Center からの Azure Defender アラート
+-   Microsoft サービスのセキュリティ アラート: Microsoft Defender for Identity ("*以前の Azure ATP*")、Cloud Discovery シャドウ IT レポートを含む Microsoft Cloud App Security、Azure AD Identity Protection、Microsoft Defender for Endpoint ("*以前の Microsoft Defender ATP*")、Azure Security Center からの Azure Defender アラート
 
 -   [脅威インテリジェンス]
 

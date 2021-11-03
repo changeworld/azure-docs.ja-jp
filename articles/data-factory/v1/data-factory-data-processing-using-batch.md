@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 631330195ec9f38f3a059b0515d4f6255cd23677
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a9dd37d74a12f262584f1cf41955b1444134a7ec
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262187"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065306"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. `customactivitycontainer` という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
 
-#### <a name="visual-studio"></a>Visual Studio
+#### <a name="visual-studio"></a>Visual Studio
 Visual Studio 2012 以降をインストールして、データ ファクトリ ソリューションで使用するカスタム Batch アクティビティを作成します。
 
 ### <a name="high-level-steps-to-create-the-solution"></a>ソリューションを作成する手順の概要
@@ -414,20 +414,19 @@ public IDictionary<string, string> Execute(
     {
     // Get the list of input blobs from the input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
-
-                         true,
-                                   BlobListingDetails.Metadata,
-                                   null,
-                                   continuationToken,
-                                   null,
-                                   null);
+                                    true,
+                                    BlobListingDetails.Metadata,
+                                    null,
+                                    continuationToken,
+                                    null,
+                                    null);
     // Return a string derived from parsing each blob.
 
      output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
 
     } while (continuationToken != null);
-
     ```
+
    詳細については、[ListBlobsSegmented](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) メソッドのドキュメントを参照してください。
 
 1. 論理的には、BLOB セットを操作するコードを do-while ループ内に配置します。 **Execute** メソッドの場合、do-while ループは BLOB の一覧を **Calculate** というメソッドに渡します。 Calculate メソッドは、セグメント内のすべての BLOB を反復処理した結果である **output** という文字列変数を返します。
@@ -448,7 +447,8 @@ public IDictionary<string, string> Execute(
     ```csharp
     folderPath = GetFolderPath(outputDataset);
     ```
-   GetFolderPath メソッドは、FolderPath というプロパティがある AzureBlobDataSet に DataSet オブジェクトをキャストします。
+
+    GetFolderPath メソッドは、FolderPath というプロパティがある AzureBlobDataSet に DataSet オブジェクトをキャストします。
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
@@ -735,8 +735,6 @@ test custom activity Microsoft test custom activity Microsoft
 
 > [!IMPORTANT]
 > BLOB コンテナー内の入力フォルダーに **file.txt** をまだアップロードしていない場合は、パイプラインを作成する前に行ってください。 **isPaused** プロパティがパイプラインの JSON で false に設定されているため、パイプラインは **start** の日を過ぎているので、すぐに実行されます。
->
->
 
 1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** を選択します。 コマンドが表示されない場合は、省略記号 (...) を選択して表示します。
 
@@ -785,6 +783,7 @@ test custom activity Microsoft test custom activity Microsoft
       }
     }
     ```
+
    以下の点に注意してください。
 
    * パイプラインには 1 つのアクティビティのみがあり、種類は **DotNetActivity** です。
@@ -830,9 +829,10 @@ test custom activity Microsoft test custom activity Microsoft
 
    5 個の出力ファイルが表示されます (各入力スライスに 1 つずつ)。 出力ファイルごとに、次の出力のようなコンテンツがあります。
 
-    ```
+    ```output
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
     ```
+
    次のダイアグラムでは、データ ファクトリのスライスを Batch のタスクにマップする方法を示します。 この例では、スライスごとに 1 つだけを実行します。
 
    :::image type="content" source="./media/data-factory-data-processing-using-batch/image16.png" alt-text="スライス マッピングのダイアグラム":::
