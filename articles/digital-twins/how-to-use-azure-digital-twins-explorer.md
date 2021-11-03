@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins Explorer の機能を使用する方法について理解します。
 author: baanders
 ms.author: baanders
-ms.date: 4/20/2021
+ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ad40dadf36b711bde4b7af7e8b24b09610ab89
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e17d6026f9b655c6a08bc7e91939482d734a911d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459506"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070947"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer を使用する (プレビュー)
 
-[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) は、Azure Digital Twins を視覚化して操作するためのツールです。 この記事では、Azure Digital Twins Explorer の機能と、それらを使用して Azure Digital Twins インスタンス内のデータを管理する方法について説明します。 
+[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) は、Azure Digital Twins を視覚化して操作するためのツールです。 この記事では、Azure Digital Twins Explorer の機能と、それらを使用して Azure Digital Twins インスタンス内のデータを管理する方法について説明します。 Azure Digital Twins Explorer は、クリックするか、[キーボード ショートカット](#accessibility-and-advanced-settings)を使用して操作することができます。
 
 >[!NOTE]
 >このツールは現在、**パブリック プレビュー** 段階にあります。
@@ -46,7 +46,7 @@ ms.locfileid: "114459506"
 実行するクエリを入力して、 **[クエリの実行]** ボタンを選択します。 これにより、 **[ツイン グラフ]** パネルにクエリ結果が読み込まれます。
 
 >[!NOTE]
-> リレーションシップを含むクエリ結果は、結果に少なくとも 1 つのツインが含まれている場合にのみ、 **[ツイン グラフ]** パネルにレンダリングされます。 Azure Digital Twins では、リレーションシップのみを返すクエリを実行できますが、それらを Azure Digital Twins Explorer で表示できるのは、[[出力] パネル](#advanced-settings)を使用した場合のみです。
+> リレーションシップを含むクエリ結果は、結果に少なくとも 1 つのツインが含まれている場合にのみ、 **[ツイン グラフ]** パネルにレンダリングされます。 Azure Digital Twins では、リレーションシップのみを返すクエリを実行できますが、それらを Azure Digital Twins Explorer で表示できるのは、[[出力] パネル](#accessibility-and-advanced-settings)を使用した場合のみです。
 
 ### <a name="overlay-query-results"></a>クエリ結果にオーバーレイを適用する
 
@@ -99,19 +99,19 @@ ms.locfileid: "114459506"
 
 #### <a name="view-twin-and-relationship-properties"></a>ツインとリレーションシップのプロパティを表示する
 
-ツインまたはリレーションシップのプロパティ値を表示するには、 **[ツイン グラフ]** でツインまたはリレーションシップを選択し、 **[プロパティ インスペクターの切り替え]** ボタンを使用して **[プロパティ]** パネルを展開します。 このパネルには、要素に関連付けられているすべてのプロパティとその値が表示されます。 また、まだ設定されていないプロパティの既定値も表示されます。
+ツインまたはリレーションシップのプロパティ値を表示するには、 **[ツイン グラフ]** でツインまたはリレーションシップを選択し、 **[プロパティ インスペクターの切り替え]** ボタンを使用して **[ツインのプロパティ]** または **[リレーションシップのプロパティ]** パネルをそれぞれ展開します。 このパネルには、要素に関連付けられているすべてのプロパティとその値が表示されます。 また、まだ設定されていないプロパティの既定値も表示されます。
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA ツインが選択され、[プロパティ] パネルが展開され、ツインのプロパティが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA ツインが選択され、[ツインのプロパティ] パネルは展開されてツインのプロパティが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-通常、プロパティは白色のテキストで表示されますが、追加情報を示すために次の色で表示されることもあります。
+ツインまたはそのプロパティの一部がモデルと一致しなくなった場合、[ツインのプロパティ] パネルにエラー メッセージが表示されます。 ツインのモデルが見つからない場合や、あるプロパティがツインで使用されているモデル定義に含まれていない場合、次のようなエラー メッセージが表示される場合があります。
 
-* **赤色のテキストのモデル**: ツインのモデルが見つからないことを示します。 これは、ツインの作成後にモデルが削除された場合に発生する可能性があります。
-
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-color-red.png" alt-text="サンプル ツインのプロパティが表示されている Azure Digital Twins Explorer の [プロパティ] パネルのスクリーンショット。$model フィールドとその値が赤色のテキストで表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/properties-color-red.png":::
-
-* **黄色のテキストのプロパティ**: プロパティがツインで使用されているモデル定義の一部ではないことを示します。 これは、プロパティの作成後にツインのモデルが置換または変更され、そのプロパティが最新バージョンのモデルに存在しなくなった場合に発生する可能性があります。 **古いプロパティを含むツインは、更新で古いプロパティを修正または削除する場合を除き、更新できません。**
-
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-color-yellow.png" alt-text="サンプル ツインのプロパティが表示されている Azure Digital Twins Explorer の [プロパティ] パネルのスクリーンショット。いくつかのプロパティ名が黄色のテキストで表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/properties-color-yellow.png":::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-errors.png" alt-text="2 つのエラー メッセージが表示されている、Azure Digital Twins Explorer のツインのプロパティ パネルのスクリーンショット。1 つのエラーはモデルがないことを示し、もう 1 つはプロパティにモデルがないことを示しています。" lightbox="media/how-to-use-azure-digital-twins-explorer/properties-errors.png":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 #### <a name="view-a-twins-relationships"></a>ツインのリレーションシップを表示する
 
@@ -125,9 +125,9 @@ ms.locfileid: "114459506"
 
 [ツイン グラフ] 画面でツインをクリックしてドラッグすると、さまざまな構成にツインを再配置することができます。
 
-また、 **[実行レイアウト]** メニューのオプションから、いくつかのレイアウト アルゴリズムのうちのいずれかをグラフに適用することもできます。 
+また、 **[レイアウトの選択]** メニューのオプションから、いくつかのレイアウト アルゴリズムのうちのいずれかをグラフに適用することもできます。 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。[実行レイアウト] ボタンが強調表示され、レイアウト オプション (Cola、Dagre、fCoSE、Klay) を含むメニューが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。[レイアウトの選択] ボタンが強調表示され、レイアウト オプション (Cola、Dagre、fCoSE、Klay) を含むメニューが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png":::
 
 ### <a name="control-twin-graph-expansion"></a>ツイン グラフの展開を制御する
 
@@ -137,9 +137,9 @@ ms.locfileid: "114459506"
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-level.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。[拡張レベル] ボタンが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-level.png":::
 
-展開時に対象とするリレーションシップの種類を指定するには、 **[展開モード]** ボタンを使用します。 これにより、受信のみ、発信のみ、または受信と発信のリレーションシップから選択できます。
+展開時に対象とするリレーションシップの種類を指定するには、 **[Expansion Direction]\(展開方向\)** ボタンを使用します。 これにより、受信のみ、発信のみ、または受信と発信のリレーションシップから選択できます。
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-mode.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。[展開モード] ボタンが強調表示され、[受信]、[発信]、[受信/発信] の各オプションを含むメニューが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-mode.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-direction.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。[Expansion Direction]\(展開方向\) ボタンが強調表示され、[受信]、[発信]、[受信/発信] の各オプションを含むメニューが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-direction.png":::
 
 ### <a name="show-and-hide-twin-graph-elements"></a>ツイン グラフの要素を表示または非表示にする
 
@@ -170,6 +170,7 @@ ms.locfileid: "114459506"
 Azure Digital Twins Explorer には、インスタンス内の[ツイン](concepts-twins-graph.md#digital-twins)と[リレーションシップ](concepts-twins-graph.md#relationships-a-graph-of-digital-twins)を管理するためのいくつかの方法が用意されています。
 
 このセクションでは、次の管理アクティビティを実行する方法について説明します。
+* [ツインとリレーションシップの単純なリストを表示する](#view-flat-list-of-twins-and-relationships)
 * [ツインを作成する](#create-twins) (初期プロパティありまたはなしで)
 * [リレーションシップの作成](#create-relationships) (ツイン間)
 * [ツインとリレーションシップを編集する](#edit-twins-and-relationships)
@@ -177,15 +178,21 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 
 ツインとリレーションシップの表示エクスペリエンスの詳細については、[ツインとツイン グラフの確認](#explore-the-twin-graph)に関するセクションを参照してください。
 
+### <a name="view-flat-list-of-twins-and-relationships"></a>ツインとリレーションシップの単純なリストを表示する
+
+**[ツイン]** パネルには、ツインとそれに関連付けられているリレーションシップの単純なリストが表示されます。 ツインを名前で検索したり、展開して受信と発信のリレーションシップの詳細を確認することができます。
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twins-panel.png" alt-text="Azure Digital Twins Explorer の [ツイン] パネルのスクリーンショット。ツインが強調表示され、そのリレーションシップが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twins-panel.png":::
+
 ### <a name="create-twins"></a>ツインを作成する
 
 新しいデジタル ツインは、 **[モデル]** パネルのモデルの定義から作成できます。
 
-モデルからツインを作成するには、一覧でそのモデルを見つけて、モデル名の横にある **ツインの作成** アイコンを選択します。 新しいツインの **名前** を入力するように求められます。この名前は一意である必要があります。 次にツインを保存します。これにより、グラフに追加されます。
+モデルからツインを作成するには、一覧でそのモデルを見つけて、モデル名の横にあるメニュー ドットを選択します。 その後、 **[Create a Twin]\(ツインの作成\)** を選択します。 新しいツインの **名前** を入力するように求められます。この名前は一意である必要があります。 次にツインを保存します。これにより、グラフに追加されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルでツインの作成アイコンが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルのメニュー ドットが強調表示され、ツインを作成するメニュー オプションも強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -197,7 +204,7 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 
 2 つのツイン間のリレーションシップを作成するには、まず **[ツイン グラフ]** ウィンドウでリレーションシップのソース ツインを選択します。 次に、CTRL/CMD キーまたは SHIFT キーを押しながら、リレーションシップのターゲットとなる 2 つ目のツインを選択します。
 
-2 つのツインが同時に選択されたら、いずれかのツインを右クリックします。 これにより、それらの間に **[リレーションシップの追加]** を行うためのオプションを含むメニューが表示されます。
+2 つのツインを同時に選択したら、ターゲットのツインを右クリックします。 これにより、それらの間に **[リレーションシップの追加]** を行うためのオプションを含むメニューが表示されます。
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-add-relationship.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA と Consumer ツインが選択され、メニューに [リレーションシップの追加] のオプションが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-add-relationship.png":::
 
@@ -205,11 +212,11 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 
 ### <a name="edit-twins-and-relationships"></a>ツインとリレーションシップを編集する
 
-ツインまたはリレーションシップのプロパティ値を表示するには、 **[ツイン グラフ]** で要素を選択し、 **[プロパティ インスペクターの切り替え]** ボタンを使用して **[プロパティ]** パネルを展開します。
+ツインまたはリレーションシップのプロパティ値を表示するには、 **[ツイン グラフ]** で要素を選択し、 **[プロパティ インスペクターの切り替え]** ボタンを使用して **[ツイン プロパティ]** または **[リレーションシップのプロパティ]** パネルをそれぞれ展開します。
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA ツインが選択され、[プロパティ] パネルが展開され、ツインのプロパティが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA ツインが選択され、[ツインのプロパティ] パネルは展開されてツインのプロパティが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-このパネルを使用すると、書き込み可能なプロパティを直接編集できます。 値をインラインで更新し、パネルの上部にある **[ツインにパッチを適用する]** (保存) ボタンをクリックして変更を保存します。 更新が保存されると、[更新 API](/rest/api/azure-digitaltwins/) によって適用された JSON パッチ操作を示すモーダル ウィンドウが画面に表示されます。
+このパネルを使用すると、書き込み可能なプロパティを直接編集できます。 値をインラインで更新し、パネルの上部にある **[変更を保存する]** ボタンをクリックして保存します。 更新が保存されると、[更新 API](/rest/api/azure-digitaltwins/) によって適用された JSON パッチ操作を示すモーダル ウィンドウが画面に表示されます。
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。画面の中央には、JSON パッチのコードを示す [パス情報] モーダルが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png":::
 
@@ -248,11 +255,11 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 
 #### <a name="view-model-definition"></a>モデルの定義を表示する
 
-モデルの完全な定義を表示するには、 **[モデル]** ペインでそのモデルを見つけて、モデル名の横にある **[モデルの表示]** アイコンを選択します。 これにより、モデルの生の DTDL 定義を示す **[モデル情報]** モーダルが表示されます。
+モデルの完全な定義を表示するには、 **[モデル]** ペインでそのモデルを見つけて、モデル名の横にあるメニュー ドットを選択します。 その後、 **[モデルの表示]** を選択します。 これにより、モデルの生の DTDL 定義を示す **[モデル情報]** モーダルが表示されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルでモデルの表示アイコンが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルのメニュー ドットが強調表示され、モデルを表示するメニュー オプションも強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -291,11 +298,11 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 >[!NOTE]
 >これらの画像は、ローカルのブラウザー ストレージに格納されます。 これは、画像を保存したものとは別のブラウザーでは画像を使用できないことを意味します。ローカル ストレージが消去されるまで、画像はブラウザー ストレージに無期限に残ります。
 
-1 つのモデルの画像をアップロードするには、 **[モデル]** パネルでモデルを見つけて、モデル名の横にある **[モデルの画像のアップロード]** アイコンを選択します。 表示されたファイル セレクター ボックスで、マシン上のそのモデルにアップロードする画像ファイルに移動します。 **[開く]** を選択してアップロードします。
+1 つのモデルの画像をアップロードするには、 **[モデル]** パネルでモデルを見つけて、モデル名の横にあるメニュー ドットを選択します。 次に、 **[Upload Model Image]\(モデル画像のアップロード\)** を選択します｡ 表示されたファイル セレクター ボックスで、マシン上のそのモデルにアップロードする画像ファイルに移動します。 **[開く]** を選択してアップロードします。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルでモデルの画像のアップロード アイコンが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルのメニュー ドットが強調表示され、モデル画像をアップロードするメニュー オプションも強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -339,7 +346,7 @@ Azure Digital Twins Explorer 画面の左側にある **[モデル]** パネル�
 
 モデルを個別に選択するか、モデルのフォルダー全体を一度にアップロードすることで、マシンからモデルをアップロードできます。
 
-個別に選択した 1 つ以上のモデルをアップロードするには、クラウドを指す上向きの矢印が示されている **モデルのアップロード** アイコンを選択します。
+個別に選択した 1 つ以上のモデルをアップロードするには、上向きの矢印が示されている **モデルのアップロード** アイコンを選択します。
 
 :::row:::
     :::column:::
@@ -370,11 +377,11 @@ Azure Digital Twins Explorer 画面の左側にある **[モデル]** パネル�
 
 [モデル] パネルを使用すると、個々のモデル、またはインスタンス内のすべてのモデルを一度に削除できます。
 
-1 つのモデルを削除するには、一覧でそのモデルを見つけて、モデル名の横にある **[モデルの削除]** アイコンを選択します。
+1 つのモデルを削除するには、そのモデルを一覧から見つけて、モデル名の横にあるメニュー ドットを選択します。 次に、 **[モデルの削除]** を選択します。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルで [モデルの削除] アイコンが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png" alt-text="Azure Digital Twins Explorer の [モデル] パネルのスクリーンショット。1 つのモデルのメニュー ドットが強調表示され、モデルを削除するメニュー オプションも強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -394,7 +401,7 @@ Azure Digital Twins Explorer 画面の左側にある **[モデル]** パネル�
 
 Azure Digital Twins Explorer を開くと、環境で使用可能なすべてのモデルが [モデル] パネルに自動的に表示されます。 
 
-ただし、いつでもパネルを手動で更新して、Azure Digital Twins インスタンス内のすべてのモデルの一覧を再度読み込むことができます。 これを行うには、クラウドから下向きの矢印が示されている **モデルの更新** アイコンを選択します。 
+ただし、いつでもパネルを手動で更新して、Azure Digital Twins インスタンス内のすべてのモデルの一覧を再度読み込むことができます。 これを行うには、**モデルの更新** アイコンを選択します。 
 
 :::row:::
     :::column:::
@@ -506,20 +513,26 @@ Azure Digital Twins で、インポートするグラフのプレビューが表
 
 その後、完全な URL を共有できます。
 
-## <a name="advanced-settings"></a>詳細設定
+## <a name="accessibility-and-advanced-settings"></a>アクセシビリティと詳細設定
 
-Azure Digital Twins Explorer のいくつかの高度な設定オプションを有効にすることができます。
+Azure Digital Twins Explorer のいくつかの詳細設定を有効にして、エクスペリエンスをカスタマイズしたり、よりアクセスしやすくすることができます。
 
-右上隅の [設定] 歯車をクリックすると、次の高度な機能を構成できます。
-* **一括読み込み**: *上部のツール バーの **[設定]** 歯車を使用してアクセスできます*。 クエリ結果に含まれて **いない** 他のツインとのリレーションシップを持つツインがクエリから返された場合、この機能によって、グラフをレンダリングする前に "含まれていない" ツインが読み込まれます。
-* **キャッシュ**: *上部のツール バーの **[設定]** 歯車を使用してアクセスできます*。 この機能を有効にすると、クエリのパフォーマンスを向上させるために、Azure Digital Twins Explorer によって、リレーションシップとモデルのローカル キャッシュがメモリ内に保持されます。 これらのキャッシュは、関連する要素に対する書き込み操作や、ブラウザーの更新時に消去されます。
-* **コンソール**: *上部のツール バーの **[設定]** 歯車を使用してアクセスできます*。 この機能を使用すると、コンソール ウィンドウが表示されます。このウィンドウでは、グラフを操作するための単純なシェル関数を使用できます。
-* **出力**: *上部のツール バーの **[設定]** 歯車を使用してアクセスできます*。 この機能を使用すると、操作の診断トレースを示す出力ウィンドウが表示されます。
-* **パネル レイアウトのカスタマイズ**: Azure Digital Twins Explorer を構成するパネルの位置を編集できます ([クエリ エクスプローラー]、[モデル]、[ツイン グラフ]、[モデル グラフ])。 パネルを別の位置に移動するには、パネル名をクリックしたままにして、新しい目的の位置にドラッグします。
+右上のツール バーにある **キーボード ショートカット** アイコンを使用すると、Azure Digital Twins Explorer の操作に使用できるキーボード ショートカットの一覧を表示することができます。
 
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/panels.png" alt-text="Azure Digital Twins Explorer のスクリーンショット。[クエリ エクスプローラー]、[モデル]、[ツイン グラフ]、[モデル グラフ] パネルの名前が強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/panels.png":::
+ :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/keyboard-shortcuts.png" alt-text="Azure Digital Twins Explorer のスクリーンショット。上部のツール バーにあるキーボード ショートカット アイコンが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/keyboard-shortcuts.png":::
 
-    パネルの位置は、ブラウザー ウィンドウの更新時にリセットされます。
+右上のツール バーにある設定の歯車アイコンからは、いくつかの高度な機能にアクセスすることができます。
+* **一括読み込み**: クエリ結果に含まれて **いない** 他のツインとのリレーションシップを持つツインがクエリから返された場合、この機能によって、グラフをレンダリングする前に "含まれていない" ツインが読み込まれます。
+* **キャッシュ**: この機能を有効にすると、クエリのパフォーマンスを向上させるために、Azure Digital Twins Explorer によって、リレーションシップとモデルのローカル キャッシュがメモリ内に保持されます。 これらのキャッシュは、関連する要素に対する書き込み操作や、ブラウザーの更新時に消去されます。
+* **コンソール**: この機能を使用すると、コンソール ウィンドウが表示されます。このウィンドウでは、グラフを操作するための単純なシェル関数を使用できます。
+* **出力**: この機能を使用すると、操作の診断トレースを示す出力ウィンドウが表示されます。
+* **ハイ コントラスト**: この機能を使用すると、Azure Digital Twins Explorer の色を変更し、コントラストを高めて表示することができます。
+
+Azure Digital Twins Explorer を構成するパネル ([クエリ エクスプローラー]、[ツイン]、[モデル]、[ツイン グラフ]、[モデル グラフ]) の位置を編集して、**パネル レイアウトをカスタマイズ** することができます。 パネルを別の位置に移動するには、パネル名をクリックしたままにして、新しい目的の位置にドラッグします。
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/panels.png" alt-text="Azure Digital Twins Explorer のスクリーンショット。[クエリ エクスプローラー]、[モデル]、[ツイン グラフ]、[モデル グラフ] パネルの名前が強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/panels.png":::
+
+パネルの位置は、ブラウザー ウィンドウの更新時にリセットされます。
 
 ## <a name="next-steps"></a>次の手順 
 

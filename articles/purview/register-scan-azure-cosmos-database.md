@@ -1,106 +1,196 @@
 ---
-title: Azure Cosmos (SQL API) データベースをスキャンする方法
-description: このハウツーガイドでは、Azure Cosmos Database (SQL API) をスキャンする方法の詳細について説明します。
-author: djpmsft
-ms.author: daperlov
+title: Azure Cosmos Database (SQL API) の登録とスキャン
+description: この記事では、Azure Purview に Azure Cosmos データ ソース (SQL API) を登録する手順について説明します。これには、Azure Cosmos データベースを認証し操作する手順が含まれます
+author: athenads
+ms.author: athenadsouza
 ms.service: purview
-ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: 14799d5a3ae5878461775e8f581fdda44c140d30
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 7d5556fcd040eaefe1078cddaf084089e471d496
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209967"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076955"
 ---
-# <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos Database (SQL API) の登録とスキャン
+# <a name="connect-to-azure-cosmos-database-sql-api-in-azure-purview"></a>Azure Purview で Azure Cosmos データベース (SQL API) に接続する
 
-この記事では、Azure Purview に Azure Cosmos Database (SQL API) アカウントを登録し、スキャンを設定する方法について説明します。
+この記事では、Azure Purview に Azure Cosmos データベース (SQL API) を登録する手順について説明します。これには、Azure Cosmos データベース ソースを認証し操作する手順が含まれます
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Cosmos Database (SQL API) では、フル スキャンと増分スキャンがサポートされ、メタデータとスキーマがキャプチャされます。 また、スキャンでは、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register) | [あり](#scan)|[あり](#scan) | [あり](#scan)|[あり](#scan)|いいえ|いいえ|
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
-- Azure Purview データ ソース管理者である必要があります
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけです。
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-- アカウント キー
- 
-### <a name="account-key"></a>アカウント キー
+## <a name="register"></a>登録
 
-選択した認証方法が **アカウント キー** の場合は、アクセス キーを取得して、キー コンテナーに格納する必要があります。
+このセクションでは、Azure Cosmos データベース (SQL API) を登録し、適切な認証メカニズムを設定して、データ ソースが正常にスキャンされるようにします。
 
-1. Azure Portal で Cosmos DB アカウントに移動します 
-1. **[設定]**  >  **[キー]** を選択します 
-1. "*読み取り/書き込みキー*" または "*読み取り専用キー*" からプライマリまたはセカンダリ キーをコピーし、次の手順のためにどこかに保存します。
+### <a name="steps-to-register"></a>登録する手順
+
+データ ソースのスキャンを設定する前に、Azure Purview にデータ ソースを登録することが重要です。
+
+1. [Azure portal](https://portal.azure.com) にアクセスし、 **[Purview アカウント]** ページに移動して、自分の _Purview アカウント_ をクリックします
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-purview-acct.png" alt-text="データ ソースの登録に使用する Purview アカウントを示すスクリーンショット":::
+
+1. **Purview Studio を開き**、 **[Data Map] > [コレクション]** の順に移動します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-open-purview-studio.png" alt-text="Data Map の [ソース] リンクへの移動を示すスクリーンショット":::
+
+1. **コレクション** メニューを使用して [コレクション階層](./quickstart-create-collection.md)を作成し、必要に応じて個々のサブコレクションへのアクセス許可を割り当てます
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-collections.png" alt-text="コレクション階層を作成するコレクション メニューを示すスクリーンショット":::
+
+1. **ソース** メニューの該当するコレクションに移動し、 **[登録]** アイコンをクリックして新しい Azure Cosmos データベースを登録します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-register-data-source.png" alt-text="データ ソースの登録に使用するコレクションを示すスクリーンショット":::
+
+1. **Azure Cosmos DB (SQL API)** データ ソースを選択し、 **[続行]** を選択します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-select-data-source.png" alt-text="データ ソースの選択を許可するスクリーンショット":::
+
+1. データ ソースに適切な **名前** を指定し、関連する **Azure サブスクリプション**、**Cosmos DB アカウント名**、**コレクション** を選択し、 **[適用]** を選択します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-data-source-details.png" alt-text="データ ソースを登録するために入力する詳細を示すスクリーンショット":::
+
+1. 選択したコレクションの下に _Azure Cosmos データベース_ ストレージ アカウントが表示されます
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-collection-mapping.png" alt-text="スキャンを開始するためにコレクションにマップされたデータ ソースを示すスクリーンショット":::
+
+## <a name="scan"></a>スキャン
+
+### <a name="authentication-for-a-scan"></a>スキャンの認証
+
+データ ソースをスキャンするアクセス権を得るには、Azure Cosmos データベース ストレージ アカウントの認証方法を構成する必要があります。
+
+Azure Cosmos Database の認証を設定する方法は 1 つだけです。
+
+**アカウント キー** - Azure Purview へのアクセスを有効にし、シークレットを使用してデータソースを安全にスキャンするために、Azure Key Vault 内にシークレットを作成して資格情報を格納できます。 シークレットには、ストレージ アカウント キー、SQL ログイン パスワード、またはパスワードを指定できます。
+
+> [!Note]
+> サブスクリプションに _Azure キー コンテナー_ リソースをデプロイし、_Azure キー コンテナー_ 内のシークレットへの必要なアクセス許可を持つ _Azure Purview アカウントの_ MSI を割り当てる必要があります。
+
+#### <a name="using-account-key-for-scanning"></a>スキャンにアカウント キーを使用する
+
+アクセス キーを取得し、キー コンテナーに格納する必要があります。
+
+1. Azure Cosmos データベース ストレージ アカウントに移動します
+1. **[設定]、[キー]** の順に選択します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-access-keys.png" alt-text="ストレージ アカウント内のアクセス キーを示すスクリーンショット":::
+
+1. *キー* をコピーし、次の手順のために個別に保存します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-key.png" alt-text="コピーするアクセス キーを示すスクリーンショット":::
+
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** の順に選択します。
-1. **[+ 生成/インポート]** を選択し、Azure Cosmos DB アカウントの "*キー*" として、 **[名前]** と **[値]** を入力します。
-1. **[作成]** を選択して完了します。
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-key-vault.png" alt-text="キー コンテナーを示すスクリーンショット":::
+
+1. **[設定 > シークレット]** を選択し、 **[+ 生成/インポート]** を選択します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-generate-secret.png" alt-text="シークレットを生成するキー コンテナー オプションを示すスクリーンショット":::
+
+1. **[名前]** と **[値]** にストレージ アカウントの *キー* を入力し、 **[作成]** を選択して完了します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-key-vault-options.png" alt-text="シークレット値を入力するキー コンテナー オプションを示すスクリーンショット":::
+
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します。
 
-## <a name="register-an-azure-cosmos-database-sql-api-account"></a>Azure Cosmos Database (SQL API) アカウントを登録する
+### <a name="creating-the-scan"></a>スキャンの作成
 
-新しい Azure Cosmos Database (SQL API) アカウントをデータ カタログに登録するには、次の手順を実行します。
+1. **Purview アカウント** を開き、 **[Purview Studio を開く]** を選択します
+1. **[データ マップ]**  -->  **[ソース]** に移動してコレクション階層を表示します
+1. 以前に登録した **Azure Cosmos データベース** の **[新しいスキャン]** アイコンを選択します
 
-1. Purview アカウントに移動します
-1. 左側のナビゲーションで **[Data Map]** を選択します。
-1. **[登録]** を選択します
-1. **[ソースの登録]** で、 **[Azure Cosmos DB (SQL API)]** を選択します
-1. **[続行]** を選択します
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-create-scan.png" alt-text="新しいスキャンを作成する画面を示すスクリーンショット":::
 
-:::image type="content" source="media/register-scan-azure-cosmos-database/register-new-data-source.png" alt-text="新しいデータ ソースの登録" border="true":::
+1. スキャンの **名前** を指定し、スキャンに適したコレクションを選択して、 **[資格情報]** で **[+ 新規]** を選択します
 
-**[ソースの登録 (Azure Cosmos DB (SQL API))]** 画面で、次の手順を実行します。
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-acct-key-option.png" alt-text="スキャン用の [アカウント キー] オプションを示すスクリーンショット":::
 
-1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-2. お使いの Azure サブスクリプションを選択して、Azure Cosmos DB をフィルター処理します。
-3. 該当する Cosmos DB アカウント名を選択します。
-4. コレクションを選択するか、新しいものを作成します (省略可能)。
-5. **[登録]** を選択してデータ ソースを登録します。
+1. _アカウント キー_ の作成時に使用した適切な **キー コンテナー接続** と **シークレット名** を選択します。 **認証方法** として _[アカウント キー]_ を選択します
 
-:::image type="content" source="media/register-scan-azure-cosmos-database/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-acct-key-details.png" alt-text="アカウント キー オプションを示すスクリーンショット":::
 
+1. **[接続テスト]** を選択します。 接続に成功したら **[続行]** をクリックします
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-test-connection.png" alt-text="接続テストの成功を示すスクリーンショット":::
 
-新しいスキャンを作成して実行するには、次の操作を行います。
+### <a name="scoping-and-running-the-scan"></a>スキャンの対象範囲と実行
 
-1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
+1. 特定のフォルダーおよびサブフォルダーをリストから選んで、スキャンのスコープに指定できます。
 
-1. 登録した Azure Cosmos DB データ ソースを選択します。
-
-1. **[新しいスキャン]** を選択します。
-
-1. 対象のデータ ソースに接続するための資格情報を選択します。 
-
-   :::image type="content" source="media/register-scan-azure-cosmos-database/set-up-scan-cosmos.png" alt-text="スキャンを設定する":::
-
-1. リストから適切な項目を選択することによって、特定のデータベースに対するスキャンの範囲を指定することができます。
-
-   :::image type="content" source="media/register-scan-azure-cosmos-database/cosmos-database-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-scope-scan.png" alt-text="スキャンの範囲を指定する":::
 
 1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
 
-   :::image type="content" source="media/register-scan-azure-cosmos-database/select-scan-rule-set.png" alt-text="スキャン ルール セット":::
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-new-scan-rule-set.png" alt-text="新しいスキャン ルール":::
+
+1. スキャン ルールに含める **分類ルール** を選択できます
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-classification.png" alt-text="スキャン ルール セットの分類ルール":::
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-select-scan-rule-set.png" alt-text="スキャン ルール セットの選択":::
 
 1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-   :::image type="content" source="media/register-scan-azure-cosmos-database/trigger-scan.png" alt-text="trigger":::
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-scan-trigger.png" alt-text="スキャン トリガー":::
 
 1. スキャンを確認し、 **[保存および実行]** を選択します。
 
-[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-review-scan.png" alt-text="スキャンの確認":::
+
+### <a name="viewing-scan"></a>スキャンの表示
+
+1. _[コレクション]_ 内の _[データ ソース]_ に移動し、 **[詳細の表示]** をクリックしてスキャンの状態を確認します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-view-scan.png" alt-text="スキャンの表示":::
+
+1. スキャンの詳細には、**最終実行状態** でのスキャンの進行状況と、_スキャン_ および _分類_ されたアセットの数が示されます
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-last-run-status.png" alt-text="スキャンの詳細の表示":::
+
+1. スキャン全体が正常に実行されると、**最後の実行状態** が **[進行中]** に更新され、その後 **[完了]** に更新されます
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-scan-in-progress.png" alt-text="進行中のスキャンの表示":::
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-scan-completed.png" alt-text="完了したスキャンの表示":::
+
+### <a name="managing-scan"></a>スキャンの管理
+
+スキャンは、完了時に管理したり、再度実行したりできます。
+
+1. **スキャン名** をクリックしてスキャンを管理します
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-manage-scan.png" alt-text="スキャンの管理":::
+
+1. _スキャンを再実行_ したり、_スキャンを編集_ したり、_スキャンを削除_ したりできます  
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-manage-scan-options.png" alt-text="スキャン オプションの管理":::
+
+1. _フル スキャン_ を再度実行することができます
+
+    :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-full-scan.png" alt-text="フル スキャン":::
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

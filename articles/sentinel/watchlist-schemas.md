@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 08/04/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e263c742ae31a665eb428ad2cbeca72f73562b8a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f531b18dfe94027948f1411372ff72e68b01c933
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779129"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054972"
 ---
 # <a name="azure-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Azure Sentinel 組み込みウォッチリストのテンプレートのスキーマ (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel が提供する各組み込みウォッチリストのテンプレート内で使用されるスキーマについて詳しく説明します。 詳細については、[テンプレートを使用した新しいウォッチリストの作成](watchlists.md#create-a-new-watchlist-using-a-template-public-preview)に関するページをご覧ください。
 

@@ -1,17 +1,17 @@
 ---
 title: チュートリアル:Azure FXT Edge Filer クラスターでネットワークを構成する
 description: Azure FXT Edge Filer クラスターを作成した後にネットワーク設定をカスタマイズする方法
-author: ekpgh
-ms.author: v-erkel
+author: femila
+ms.author: femila
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 10/07/2021
-ms.openlocfilehash: c723214962e67ef04f9cf7659f63d29af87a4732
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 2af1e6308cd572115c43d3dfd27b25499ae590ed
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670056"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086039"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 

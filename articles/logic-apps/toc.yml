@@ -75,6 +75,8 @@
           href: create-single-tenant-workflows-azure-portal.md
         - name: シングルテナント ワークフローの作成 - Visual Studio Code
           href: create-single-tenant-workflows-visual-studio-code.md
+        - name: シングルテナント ワークフロー用の SQL ストレージの設定
+          href: set-up-sql-db-storage-single-tenant-standard-workflows.md
         - name: シングルテナントでロジック アプリのホストとアプリの設定を編集する
           href: edit-app-settings-host-settings.md
         - name: シングルテナント ワークフローのパラメーターを作成する
@@ -247,8 +249,6 @@
               href: logic-apps-enterprise-integration-liquid-transform.md
         - name: B2B エラーのトラブルシューティング
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
-        - name: ディザスター リカバリー プランの構築
-          href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: コネクタ - 詳細のトピック
       items:
         - name: AS2
@@ -257,6 +257,8 @@
           href: ../connectors/connectors-create-api-azureblobstorage.md
         - name: Azure Container Instances
           href: ../connectors/connectors-create-api-container-instances.md
+        - name: Azure Cosmos DB
+          href: ../connectors/connectors-create-api-cosmos-db.md
         - name: Azure Event Grid
           href: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md
         - name: Azure Event Hubs
@@ -401,6 +403,12 @@
           href: monitor-b2b-messages-log-analytics.md
         - name: 監視と追跡クエリを作成する
           href: create-monitoring-tracking-queries.md
+    - name: 事業継続とディザスター リカバリー
+      items:
+        - name: 事業継続とディザスター リカバリーのために Azure リソースをレプリケートする
+          href: create-replication-tasks-azure-resources.md
+        - name: B2B の事業継続とディザスター リカバリー プランを作成する
+          href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: 例、シナリオ、チュートリアル
       href: logic-apps-examples-and-scenarios.md
       items:

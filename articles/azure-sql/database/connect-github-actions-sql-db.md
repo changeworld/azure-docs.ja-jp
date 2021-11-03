@@ -10,12 +10,12 @@ ms.author: jukullam
 ms.date: 05/05/2021
 ms.custom: github-actions-azure
 ms.reviewer: mathoma
-ms.openlocfilehash: 54ef930cbc194f51fc9460da2aa3e4a553910849
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5da39e966165dea12934d0e2da6077a135feb554
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632521"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087288"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する
 
@@ -151,7 +151,7 @@ Azure portal でご自分の Azure SQL データベースにアクセスし、 *
 1. Azure のログアウトにアクションを追加して、ワークフローを完成させます。 完成したワークフローを次に示します。 このファイルは、リポジトリの `.github/workflows` フォルダー内に表示されます。
 
     ```yaml
-   name: SQL for GitHub Actions
+    name: SQL for GitHub Actions
 
     on:
     push:

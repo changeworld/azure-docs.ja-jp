@@ -76,6 +76,10 @@ items:
         href: concept-insights.md
       - name: アップグレードされた Azure Purview アカウント
         href: concept-account-upgrade.md
+      - name: アクセス ポリシー
+        href: concept-data-policies.md
+      - name: セルフサービス アクセス
+        href: concept-self-service.md
   - name: 操作方法ガイド
     items:
       - name: コレクションの作成と管理
@@ -89,6 +93,8 @@ items:
           - name: 資格情報を管理する
             href: manage-credentials.md
             displayName: Create and manage credentials
+          - name: サービス プリンシパルを作成する
+            href: create-service-principal-azure.md
       - name: 変換元
         items:
           - name: Azure Multiple Source
@@ -149,6 +155,8 @@ items:
             href: register-scan-saps4hana-source.md
           - name: Teradata
             href: register-scan-teradata-source.md
+          - name: Amazon RDS
+            href: register-scan-amazon-rds.md
           - name: Amazon S3
             href: register-scan-amazon-s3.md
       - name: スキャン
@@ -259,6 +267,10 @@ items:
         href: disaster-recovery.md
       - name: Azure Monitor による監視
         href: how-to-monitor-with-azure-monitor.md
+      - name: データ所有者のアクセス ポリシー
+        items:
+          - name: データ アクセス ポリシー Azure Storage
+            href: how-to-access-policies-storage.md
   - name: リファレンス
     items:
       - name: Azure Purview 製品用語集

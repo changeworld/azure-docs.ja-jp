@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache に対するクライアント接続の負荷分散
 description: Azure HPC Cache 用のラウンドロビン負荷分散のために DNS サーバーを構成する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: v-erkel
-ms.openlocfilehash: 2a8c35db125b80223cbb4f07e8c01ca45428a3a8
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.author: femila
+ms.openlocfilehash: d1346a6060fe1093d7dec37f6fbefb43bee800ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004941"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019972"
 ---
 # <a name="load-balance-hpc-cache-client-traffic"></a>HPC Cache のクライアント トラフィックの負荷分散
 

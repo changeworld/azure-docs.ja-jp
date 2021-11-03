@@ -3,15 +3,16 @@ title: Azure Arc 対応 Logic Apps を使用してワークフローを作成し
 description: Kubernetes が実行できる任意の場所で実行されるシングルテナント ベ」ースのロジック アプリ ワークフローを作成してデプロイします。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
+ms.reviewer: estfan, reylons, archidda, sopai, azla
 ms.topic: how-to
-ms.date: 06/03/2021
-ms.openlocfilehash: 17c9eb020d62207910008fb032872bd609df553f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ca9458581468ea359ae1ca2f7e034c7459f87fea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129712302"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082438"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリ ワークフローを作成してデプロイする (プレビュー)
 
@@ -183,7 +184,7 @@ az logicapp create --name MyLogicAppName
    --storage-account MyStorageAccount --custom-location MyCustomLocation
 ```
 
-プライベート Azure Container Registry イメージを使用して Azure Arc 対応ロジック アプリを作成するには、次の必須パラメーターを指定してコマンド `az logicapp create` を実行します。
+プライベート Azure Container Registry (ACR) イメージを使用して Azure Arc 対応ロジック アプリを作成するには、次の必須パラメーターを指定してコマンド `az logicapp create` を実行します。
 
 ```azurecli
 az logicapp create --name MyLogicAppName 
@@ -390,7 +391,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) には、マ�
 }
 ```
 
-詳細については、[Microsoft.Web/connections/accesspolicies (ARM テンプレート)](/azure/templates/microsoft.web/connections?tabs=json) のドキュメントを参照してください。 
+詳細については、[Microsoft.Web/connections/accesspolicies (ARM テンプレート)](/azure/templates/microsoft.web/connections?tabs=json) のドキュメントを参照してください。
 
 #### <a name="azure-portal"></a>Azure portal
 
@@ -488,8 +489,25 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
 コンテナー ツールとデプロイ プロセスを使用する場合は、ロジック アプリをコンテナー化し、Azure Arc 対応 Logic Apps にデプロイできます。 このシナリオの場合は、インフラストラクチャを設定するときに次の高度なタスクを実行します。
 
 - コンテナー イメージをホストするための Docker レジストリを設定します。
+
+- ロジック アプリをコンテナー化するには、たとえば、ロジック アプリ プロジェクトのルート フォルダーに次の Dockerfile を追加し、Docker レジストリにイメージをビルドして発行する手順に従います。「[チュートリアル: Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする」](../container-registry/container-registry-tutorial-quick-task.md)を参照してください。
+
+  > [!NOTE]
+  > [ストレージ プロバイダーとして SQL を使用する](set-up-sql-db-storage-single-tenant-standard-workflows.md)場合は、Azure Functions イメージ バージョン 3.3.1 以降を使用してください。
+
+  ```text
+  FROM mcr.microsoft.com/azure-functions/node:3.3.1
+  ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+  AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+  FUNCTIONS_V2_COMPATIBILITY_MODE=true
+  COPY . /home/site/wwwroot
+  RUN cd /home/site/wwwroot
+  ```
+
 - Kubernetes でロジック アプリを作成しているリソース プロバイダーに通知します。
+
 - デプロイ テンプレートで、デプロイを計画している Docker レジストリとコンテナー イメージをポイントします。 シングルテナントの Azure Logic Apps は、この情報を使用して、Docker レジストリからコンテナー イメージを取得します。
+
 - デプロイに App Service プランを含めます。 詳細については、「[デプロイに App Service プランを含める](#include-app-service-plan)」を参照してください。
 
 [Azure Resource Manager テンプレート (ARM テンプレート)](../azure-resource-manager/templates/overview.md) に、次の値を含めます。

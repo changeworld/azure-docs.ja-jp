@@ -10,12 +10,12 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b1754060a84914fca9b9c7d22ee85e32717d002
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: de703ea3f85025657b4c71089f158b7d1db2189d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178761"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013607"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse ノートブックを作成、開発、管理する
 
@@ -30,22 +30,7 @@ Synapse ノートブックでは、次のことができます。
 
 この記事では、Synapse Studio でノートブックを使用する方法について説明します。
 
-## <a name="preview-of-the-new-notebook-experience"></a>新しいノートブック エクスペリエンスのプレビュー
-Synapse チームは、Microsoft のお客様に一貫したノートブック エクスペリエンスを提供し、検出可能性、生産性、共有、コラボレーションを最大化するための新しいノートブック コンポーネントを Synapse Studio に導入しました。 この新しいノートブック エクスペリエンスのプレビュー版が利用可能になりました。 ノートブック ツールバーの **[プレビュー機能]** ボタンをオンにしてください。 次の表では、既存のノートブック ("従来のノートブック") と新しいプレビュー版の機能を比較します。  
 
-|特徴量|従来のノートブック|プレビュー版ノートブック|
-|--|--|--|
-|%run| サポートされていません | &#9745;|
-|%history| サポートされていません |&#9745;|
-|%load| サポートされていません |&#9745;|
-|%%html| サポートされていません |&#9745;|
-|ドラッグ アンド ドロップでセルを移動する| サポートされていません |&#9745;|
-|アウトライン (目次)| サポートされていません |&#9745;|
-|変数エクスプローラー| サポートされていません |&#9745;|
-|コード セルのコメント化| サポートされていません | &#9745;|
-
-> [!NOTE]
-> 変数エクスプローラーは Python にのみ対応しています。
 ## <a name="create-a-notebook"></a>ノートブックを作成する
 
 ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを **オブジェクト エクスプローラー** から Synapse ワークスペースにインポートすることもできます。 Synapse ノートブックでは、標準の Jupyter Notebook IPYNB ファイルが認識されます。
@@ -75,21 +60,6 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 <h3 id="add-a-cell">セルを追加する</h3>
 
 ノートブックに新しいセルを追加するには、複数の方法があります。
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-1. 左上の **[+ セル]** ボタンを展開し、 **[コード セルの追加]** または **[テキスト セルの追加]** を選択します。
-
-    ![セル ボタンとセルの追加のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
-
-2. 2 つのセル間のスペースをポイントし、 **[コードの追加]** または **[テキストの追加]** を選択します。
-
-    ![セル間のスペースの追加のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
-
-3. [コマンド モードのショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルの上にセルを挿入するには、**A** キーを押します。 現在のセルの下にセルを挿入するには、**B** キーを押します。
-
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 1. 2 つのセル間のスペースをポイントし、 **[コード]** または **[Markdown]** を選択します。
     ![add-azure-notebook-cell-with-cell-button のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
@@ -128,7 +98,7 @@ Synapse ノートブックでは、次の 4 つの Apache Spark 言語がサポ�
    ![Synapse spark マジック コマンドのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 
-<h3 id="use-temp-tables-to-reference-data-across-languages&quot;>一時テーブルを使用して言語間でデータを参照する</h3>
+<h3 id="use-temp-tables-to-reference-data-across-languages">一時テーブルを使用して言語間でデータを参照する</h3>
 
 Synapse ノートブックでは、異なる言語間でデータや変数を直接参照することはできません。 Spark では、複数の言語間で一時テーブルを参照することができます。 以下は、回避策として Spark の一時テーブルを使用して、`PySpark` および `SparkSQL` で `Scala` DataFrame を読み取る方法の例です。
 
@@ -136,7 +106,7 @@ Synapse ノートブックでは、異なる言語間でデータや変数を直
 
    ```scala
    %%spark
-   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
@@ -181,14 +151,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 <h3 id="format-text-cell-with-toolbar-buttons">ツールバー ボタンを使用してテキスト セルを書式設定する</h3>
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-テキスト セル ツールバーの書式ボタンを使用して、一般的なマークダウン アクションを実行することができます。 これには、テキストを太字にする、テキストを斜体にする、コード スニペットを挿入する、順序指定されていないリストを挿入する、順序指定されているリストを挿入する、URL からイメージを挿入するなどが含まれます。
-
-  ![Synapse テキスト セル ツール バーのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
 テキスト セル ツールバーの書式ボタンを使用して、一般的なマークダウン アクションを実行することができます。 たとえば、テキストの太字設定、テキストの斜体設定、ドロップダウンを使用した段落と見出し、コードの挿入、順序指定されていないリストの挿入、順序指定済みリストの挿入、ハイパーリンクの挿入、URL からの画像の挿入などです。
 
   ![Synapse テキスト セル ツール バーのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar-preview.png)
@@ -196,14 +158,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 ---
 
 <h3 id="undo-redo-cell-operation">セル操作を元に戻す/やり直す</h3>
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-**[元に戻す]**  /  **[やり直す]** ボタンを選択するか、**Ctrl + Z** / **Ctrl + Y** キーを押して、最新のセル操作を取り消します。 これで、最大で 20 個の最新の過去のセル操作を元に戻すかやり直すことができます。 
-
-   ![Synapse のセルを元に戻すのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 **[元に戻す]**  /  **[やり直す]** ボタンを選択するか、**Z** / **Shift+Z** キーを押して、最新のセル操作を取り消します。 これで、最大で 10 個の最新の過去のセル操作を元に戻すかやり直すことができます。
 
@@ -224,14 +178,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 <h3 id="Code-cell-commenting">コード セルのコメント化</h3>
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-サポートされていません。
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
-現在、プレビュー版ノートブックではコード セルでのコメント化がサポートされています。
-
 1. ノートブックのツール バーの **[コメント]** ボタンを選択して、 **[コメント]** ペインを開きます。
 
    ![Synapse のコメント ボタンのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-comments-button.png)
@@ -246,18 +192,7 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 ---
 
-
 <h3 id="move-a-cell">セルを移動する</h3>
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-省略記号 (...) を選択して、右端にある別のセル アクション メニューにアクセスします。 その後、 **[Move cell up]\(セルを上に移動\)** または **[Move cell down]\(セルを下に移動\)** を選択して、現在のセルを移動します。 
-
-[コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを上に移動するには、**Ctrl + Alt + ↑** キーを押します。 現在のセルを下に移動するには、**Ctrl + Alt + ↓** キーを押します。
-
-   ![セルの移動のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 セルの左側をクリックし、目的の位置までドラッグします。 
     ![Synapse のセルの移動のアニメーション GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-drag-drop-cell.gif)
@@ -265,16 +200,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 ---
 
 <h3 id="delete-a-cell">セルを削除する</h3>
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-セルを削除するには、省略記号 (...) を選択して、右端にある別のセル アクション メニューにアクセスし、 **[セルの削除]** を選択します。 
-
-[コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを削除するには、**D、D** キーを押します。
-  
-   ![セルの削除のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 セルを削除するには、セルの右側にある削除ボタンを選択します。 
 
@@ -286,14 +211,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 <h3 id="collapse-a-cell-input">セル入力を折りたたむ</h3>
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-現在のセルの下部にある矢印ボタンを選択して、折りたたみます。 これを展開するには、セルが折りたたまれている状態で矢印ボタンを選択します。
-
-   ![セル入力の折りたたみのアニメーション GIF](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
 セル ツールバーで **[More commands]\(その他のコマンド\)** 省略記号 (...) を選択し、 **[入力の非表示]** を選択して、現在のセルの入力を折りたたみます。 これを展開するには、セルが折りたたまれている状態で **[Show input]\(入力を表示する\)** を選択します。
 
    ![Azure ノートブックのセル入力の折りたたみのアニメーション GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
@@ -301,14 +218,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 ---
 
 <h3 id="collapse-a-cell-output">セル出力を折りたたむ</h3>
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-現在のセル出力の左上にある **出力の折りたたみ** ボタンを選択して、折りたたみます。 これを展開するには、セル出力が折りたたまれている状態で **[Show cell output]\(セル出力の表示\)** を選択します。
-
-   ![セル出力の折りたたみのアニメーション GIF](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 セル ツールバーで **[More commands]\(その他のコマンド\)** 省略記号 (...) を選択し、 **[出力の非表示]** を選択して、現在のセルの出力を折りたたみます。 これを展開するには、セルの出力が非表示になっている状態で **[出力の表示]** を選択します。
 
@@ -318,12 +227,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 ---
 
 <h3 id="notebook-outline">ノートブックのアウトライン</h3>
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-サポートされていません。
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 アウトライン (目次) では、素早くナビゲーションできるようにサイドバー ウィンドウ内に任意の Markdown セルの最初の Markdown ヘッダーが表示されます。 アウトラインのサイドバーは、最適な方法で画面に合わせてサイズを変更したり折りたたんだりすることができます。 ノートブックのコマンド バーにある **[アウトライン]** ボタンを選択すると、サイドバーを開いたり非表示にしたりできます。
 
@@ -356,14 +259,6 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 ### <a name="run-all-cells-above-or-below"></a>上または下のすべてのセルを実行する
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-右端にある別のセル アクション メニューにアクセスするには、省略記号 ( **...** ) を選択します。次に、 **[Run cells above]\(上のセルの実行\)** を選択して、現在のセルの上にあるものをすべて順に実行します。 現在のセルの下にあるものをすべて実行するには、 **[Run cells below]\(下のセルの実行\)** を選択します。
-
-   ![上または下のセルの実行のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
 **[すべて実行]** ボタンからドロップダウン リストを展開し、 **[Run cells above]\(上のセルの実行\)** を選択して、現在のセルの上にあるものをすべて順に実行します。 現在のセルの下にあるものをすべて実行するには、 **[Run cells below]\(下のセルの実行\)** を選択します。
 
    ![Azure ノートブックの上または下のセルの実行のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
@@ -372,26 +267,12 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 ### <a name="cancel-all-running-cells"></a>実行中のすべてのセルを取り消す
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンを選択します。 
-   ![すべてのセルの取り消しのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
 実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンを選択します。 
    ![Azure ノートブックのすべてのセルの取り消しのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
-
-
 ### <a name="notebook-reference"></a>ノートブック参照
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-サポートされていません。
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 ```%run <notebook path>``` マジック コマンドを使用して、現在のノートブックのコンテキスト内で別のノートブックを参照することができます。 参照ノートブックで定義されているすべての変数を、現在のノートブックで使用できます。 ```%run``` マジック コマンドでは、入れ子になった呼び出しはサポートされますが、再帰呼び出しはサポートされません。 ステートメントの深さが **5** を超えると、例外が発生します。  
 
@@ -410,18 +291,14 @@ Notebook リファレンスは、対話モードと Synapse パイプライン�
 
 ### <a name="variable-explorer"></a>変数エクスプローラー
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-サポートされていません。
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
 Synapse ノートブックは、PySpark (Python) セルの現在の Spark セッションでの変数の名前、型、長さ、値の一覧を表示するための、組み込み変数エクスプローラーを提供します。 コード セルに定義されている変数が増えると、自動的に表示される変数も増えます。 各列ヘッダーをクリックすると、テーブル内の変数が並べ替えられます。
 
 ノートブックのコマンド バーの **[変数]** ボタンを選択して、変数エクスプローラーを開いたり非表示にしたりできます。
 
 ![Azure ノートブックの変数エクスプローラーのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
 
+> [!NOTE]
+> 変数エクスプローラーは Python にのみ対応しています。
 
 ---
 
@@ -527,13 +404,6 @@ df = spark.read.option("header", "true") \
 
 ## <a name="ipython-widgets"></a>IPython ウィジェット
 
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-サポートされていません。
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
-
 ウィジェットは、多くの場合、スライダーやテキストボックスなどのコントロールとして、ブラウザーに表示されるイベントフルな Python オブジェクトです。IPython ウィジェットは Python 環境でのみ動作し、他の言語 (Scala、SQL、C# など) ではまだサポートされていません。 
 
 ### <a name="to-use-ipython-widget"></a>IPython ウィジェットを使用するには
@@ -619,23 +489,26 @@ df = spark.read.option("header", "true") \
 
    ![ノートブックのプロパティのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
+<!--
+## Export a notebook
+You can Export your notebook to other standard formats. Synapse notebook supports to be exported into: 
+
++ Standard Notebook file(.ipynb) that is usually used for Jupyter notebooks. 
++ HTML file(.html) that can be opened from browser directly.  
++ Python file(.py).  
++ Latex file(.tex).  
+
+   ![Screenshot of notebook-export](./media/apache-spark-development-using-notebooks/synapse-notebook-export.png)
+
+-->
+
 ## <a name="magic-commands"></a>マジック コマンド
 Synapse ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ユーザーのニーズに合ったマジック コマンドを引き続き作成できるよう、[GitHub でユース ケース](https://github.com/MicrosoftDocs/azure-docs/issues/new)についてお知らせください。
 
 > [!NOTE]
 > Synapse パイプラインでは、次のマジック コマンドのみがサポートされています: %%pyspark、%%spark、%%csharp、%%sql。 
 >
->
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
-
-使用可能なセル マジック: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)、[%%configure](#spark-session-config-magic-command)
-
-
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)、[%run](#notebook-reference)、[%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
@@ -652,14 +525,6 @@ Synapse ノートブックでは、使い慣れた Jupyter マジック コマ�
 ![パイプラインへのノートブックの追加のスクリーンショット](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>パラメーター セルを指定する
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-ノートブックをパラメーター化するには、省略記号 (...) を選択して、右端にある別のセル アクション メニューにアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
-
-![パラメーターの切り替えのスクリーンショット](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 ノートブックをパラメーター化するには、省略記号 (...) を選択して、セル ツールバーの **[more commands]\(その他のコマンド\)** にアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
 
@@ -693,27 +558,6 @@ Jupyter Notebook と同様に、Synapse ノートブックにはモーダル ユ
    ![編集モードのスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>コマンド モードのショートカット キー
-
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
-次のキーストローク ショートカットを使用すると、Synapse ノートブックのコードをより簡単に移動して実行できます。
-
-| アクション |Synapse ノートブックのショートカット  |
-|--|--|
-|現在のセルを実行して下のものを選択する | Shift + Enter |
-|現在のセルを実行して下に挿入する | Alt + Enter |
-|上のセルを選択する| 上へ |
-|下のセルを選択する| [下へ] |
-|上にセルを挿入する| A |
-|下にセルを挿入する| B |
-|選択されたセルを上に拡張する| Shift + Up |
-|選択されたセルを下に拡張する| Shift + Down|
-|セルを上に移動する| Ctrl + Alt + ↑ |
-|セルを下に移動する| Ctrl + Alt + ↓ |
-|選択されたセルを削除する| D、D |
-|編集モードに切り替える| 次に、 |
-
-# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 | アクション |Synapse ノートブックのショートカット  |
 |--|--|

@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 10244038ca2dee9551def5e0abcd102d42daa235
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 03c5d976010e136ab5b91efc632594253eedca1c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729721"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054668"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>ワークスペースのマネージド ID にアクセス許可を付与する
 
@@ -22,14 +22,6 @@ ms.locfileid: "121729721"
 
 >[!NOTE]
 >このドキュメントの残りの部分では、このワークスペース マネージド ID をマネージド ID と呼びます。
-
-## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>マネージド ID に専用 SQL プールへのアクセス許可を付与する
-
-マネージド ID によって、ワークスペース内の専用 SQL プールへのアクセス許可が付与されます。 アクセス許可が付与されていると、専用 SQL プール関連のアクティビティを実行するパイプラインを調整できます。 Azure portal を使用して Azure Synapse ワークスペースを作成するときに、専用 SQL プールに対する CONTROL アクセス許可をマネージド ID に付与できます。
-
-Azure Synapse ワークスペースの作成時に、 **[セキュリティ]** を選択します。 次に、 **[Allow pipelines (running as workspace's system assigned identity) to access SQL pools]\((ワークスペースのシステム割り当て ID として実行されている) パイプラインに SQL プールへのアクセスを許可する\)** を選択します。
-
-![専用 SQL プールに対する CONTROL アクセス許可](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>マネージド ID に ADLS Gen2 ストレージ アカウントへのアクセス許可を付与する
 
@@ -83,7 +75,7 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
     
     | 設定 | 値 |
     | --- | --- |
-    | Role | ストレージ BLOB データ共同作成者 |
+    | Role | ストレージ BLOB 共同作成者 |
     | アクセスの割り当て先 | マネージド ID |
     | メンバー | マネージド ID 名  |
 

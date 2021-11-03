@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 08/01/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: cdc576951702c8d381ebd3ae0661b0d40be98a09
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: fcc46884c470b2baa282bf00b8b9e735d8a0db41
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019687"
 ---
 # <a name="deploy-the-azure-sentinel-sap-data-connector-with-snc"></a>SNC を使用して Azure Sentinel SAP データ コネクタを展開する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、NetWeaver/ABAP インターフェイス ベースのログのための、セキュリティで保護されたネットワーク通信 (SNC) を介した SAP への安全な接続がある場合に、Azure Sentinel SAP データ コネクタを展開する方法について説明します。
 
@@ -55,6 +57,7 @@ spname=<sp-name>
 
 kvname=<keyvaultname>
 # Optional when Azure MI not enabled - Create sp user for AZ cli connection, save details for env.list file
+
 az ad sp create-for-rbac –name $spname
 
 SpID=$(az ad sp list –display-name $spname –query “[].appId” --output tsv
@@ -295,4 +298,3 @@ SAP データ コネクタがアクティブになったら、**Azure Sentinel -
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
 - [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)
-

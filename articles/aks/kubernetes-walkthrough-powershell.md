@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e8121a3031de8fd7fdb8dc3db0ef1f4be1902e3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f9556d1169180bd55ac5ff646ee920f630ad96d0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728149"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058694"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -65,8 +65,9 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-1. `ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。
-    * 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)」を参照してください。
+1. `ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 詳細については、次のリンクを参照してください。
+    * [簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)
+    * [Azure 上の Windows で SSH キーを使用する方法](../virtual-machines/linux/ssh-from-windows.md)
 
 1. [New-AzAksCluster][new-azakscluster] コマンドレットを使用して AKS クラスターを作成します。 Azure Monitor for containers は既定で有効になっています。
 

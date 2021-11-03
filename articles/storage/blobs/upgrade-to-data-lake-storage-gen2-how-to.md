@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: normesta
-ms.openlocfilehash: 3f6b82e447fec4ce4e1c2e9b1f700f9b976d6a3d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ecf0988069bf023225354b4ad864537737999094
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994393"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008710"
 ---
 #  <a name="upgrade-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする
 
@@ -269,7 +269,7 @@ az storage account hns-migration stop -n <storage-account-name> -g <resource-gro
 
 ## <a name="migrate-data-workloads-and-applications"></a>データ、ワークロード、アプリケーションを移行する 
 
-1. **Blob service** エンドポイントまたは **Data Lake Storage** エンドポイントを指し示すように、[ワークロード内のサービス](data-lake-storage-integrate-with-azure-services.md)を構成します。
+1. **Blob service** エンドポイントまたは **Data Lake Storage** エンドポイントを指し示すように、[ワークロード内のサービス](./data-lake-storage-supported-azure-services.md)を構成します。
 
    > [!div class="mx-imgBorder"]
    > ![アカウントのエンドポイント](./media/upgrade-to-data-lake-storage-gen2-how-to/storage-endpoints.png)

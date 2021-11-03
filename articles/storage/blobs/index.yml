@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 4da41103cc040a0d7dd1f4e7731990aa2779ce82
-  ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+  ms.openlocfilehash: 70d9e9872c84af3a61613f17572b8f216e144fae
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/12/2021
-  ms.locfileid: "129855918"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131083348"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: ビッグ データの処理
-      url: data-lake-storage-data-scenarios.md
+      url: ./data-lake-storage-best-practices.md
     - text: マルチプロトコル アクセス
       url: data-lake-storage-multi-protocol-access.md
     - text: ベスト プラクティス

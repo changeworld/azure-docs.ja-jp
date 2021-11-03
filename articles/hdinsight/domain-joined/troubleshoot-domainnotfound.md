@@ -4,12 +4,12 @@ description: Azure HDInsight クラスターと対話するときの問題のト
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 0f5734197c0c00bb43584215f8eb26ad85e823c0
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 953feca9542d73776aee749eff416ba3f2e04921
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284187"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079968"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>シナリオ: Azure HDInsight でクラスターの作成が DomainNotFound エラーで失敗する
 
@@ -37,7 +37,7 @@ HDI Secure (Enterprise セキュリティ パッケージ) クラスターの作
 
 * 同じサブネットに Windows VM をデプロイし、ユーザー名とパスワードを使用してマシンをドメインに参加させます (これはコントロール パネル UI で行うことができます)。または、
 
-* 同じサブネットに ubuntu VM をデプロイし、マシンをドメインに参加させます
+* 同じサブネットに Ubuntu VM をデプロイし、マシンにドメインを参加させる
   * マシンに SSH 接続します
   * sudo su
   * ユーザー名とパスワードを使用してスクリプトを実行します

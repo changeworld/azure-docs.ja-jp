@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 045178a30088ccfd8b76d70d210e29c5a9253ac1
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 093db947b30444b4d7c3614126c83977fd45e3de
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294373"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083956"
 ---
 # <a name="use-triggers-and-actions-in-azure-sentinel-playbooks"></a>Azure Sentinel のプレイブックでトリガーとアクションを使用する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 このドキュメントでは、[Logic Apps Azure Sentinel コネクタ](/connectors/azuresentinel/)のトリガーとアクションの種類について、プレイブックが Azure Sentinel とワークスペースのテーブルの情報をやり取りするために使用できることを説明しています。 さらに、必要となる可能性のある特定の種類の Microsoft Azure Sentinel 情報へのアクセス方法も示しています。
 
@@ -33,7 +36,7 @@ Azure Sentinel コネクタの完全な仕様については、[Azure Logic Apps
 
 ## <a name="permissions-required"></a>必要なアクセス許可
 
-| ロールまたはコネクタ コンポーネント | トリガー | 「Get」アクション | インシデントの更新、<br>コメントの追加 |
+| ロールまたはコネクタ コンポーネント | トリガー | "Get" アクション | インシデントの更新、<br>コメントの追加 |
 | ------------- | :-----------: | :------------: | :-----------: |
 | **[Azure Sentinel 閲覧者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
 | **Azure Sentinel [レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)/[共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
@@ -148,7 +151,7 @@ Azure Sentinel コネクタはさまざまな方法で使用できます。コ�
 
 - [**フィルター配列**](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)を使用して要求された型でエンティティの配列をフィルター処理します。
 
-- [**Parse JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) を使用したアクションで動的フィールドとして使用できるように、この型の特定のフィールドを解析します。
+- [**Parse JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) を使用したアクションで動的フィールドとして使用できるように、この型の特定のフィールドを解析します。
 
 ## <a name="work-with-custom-details"></a>カスタム詳細を操作する
 

@@ -2,17 +2,17 @@
 title: マネージド ID を使用して、Cosmos DB アカウントへの接続を設定する
 titleSuffix: Azure Cognitive Search
 description: マネージド ID を使用して Cosmos DB アカウントへのインデクサー接続を設定する方法を学ぶ
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/02/2021
-ms.openlocfilehash: 38709d7799d09e38fdebc8eebd7484504ce4ebd2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0815f9c039a77c3589cb5bab0265288202f4b3d3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178949"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010633"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する
 
@@ -45,14 +45,14 @@ ms.locfileid: "122178949"
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[+ リソースの作成]** を選択します。
-1. [サービスとマーケットプレースを検索してください] 検索バーで、[ユーザー割り当てマネージド ID] を検索し、 **[作成]** を選択します。
+1. [サービスとマーケットプレース] の検索バーで、[ユーザー割り当てマネージド ID] を検索し、 **[作成]** を選択します。
 1. ID にわかりやすい名前を付けます。
 
-次に、ユーザー割り当てマネージド ID を検索サービスに割り当てます。 これは、[2021-04-01-preview management API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を使用して行うことができます。
+次に、ユーザー割り当てマネージド ID を検索サービスに割り当てます。 これは、[2021-04-01-preview 管理 API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を使用して行うことができます。
 
 ID プロパティは、型と 1 つ以上の完全修飾ユーザー割り当て ID を受け取ります。
 
-* **type** は ID の型です。 有効な値は "SystemAssigned"、"UserAssigned"、または "SystemAssigned, UserAssigned" (両方を使用する場合) です。 値 "None" を指定すると、以前に割り当てられた ID が検索サービスからクリアされます。
+* **type** は ID の型です。 有効な値は "SystemAssigned"、"UserAssigned"、または "SystemAssigned, UserAssigned" (両方を使用する場合) です。 値 "None" を指定すると、検索サービスから以前に割り当てられた ID がクリアされます。
 * **userAssignedIdentities** には、ユーザー割り当てマネージド ID の詳細が含まれます。
     * ユーザー割り当てマネージド ID の形式: 
         * /subscriptions/**サブスクリプション ID**/resourcegroups/**リソース グループ名**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**マネージド ID の名前**
@@ -102,7 +102,7 @@ Content-Type: application/json
 
 ## <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
-データ ソースを作成し、システム割り当てマネージド ID またはユーザー割り当てマネージド ID (プレビュー) のいずれかを指定します。 以下の手順では Management REST API を使用しなくなったことに注意してください。
+データ ソースを作成し、システム割り当てマネージド ID またはユーザー割り当てマネージド ID (プレビュー) のいずれかを指定します。 以下の手順では管理 REST API を使用しなくなったことに注意してください。
 
 ### <a name="option-1---create-the-data-source-with-a-system-assigned-managed-identity"></a>オプション 1 - システム割り当てマネージド ID を使用してデータ ソースを作成する
 

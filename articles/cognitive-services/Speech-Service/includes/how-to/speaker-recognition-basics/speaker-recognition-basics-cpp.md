@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: 655c5d80f1fb4e047a3cd9cc751a853815a70a68
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 68e088b088c461b29311a1289e1867c4df9e5b1a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114671159"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069153"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -18,7 +18,7 @@ ms.locfileid: "114671159"
 * 音声のグループから音声サンプルを識別する話者識別
 * 音声プロファイルの削除
 
-Speech Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。
+Speaker Recognition の概念の概要については、[概要](../../../speaker-recognition-overview.md)に関する記事を参照してください。 サポートされているプラットフォームの一覧については、左側のナビゲーションの参照ノードを参照してください。
 
 ## <a name="skip-to-samples-on-github"></a>記事をスキップして GitHub 上のサンプルにアクセスする
 
@@ -29,7 +29,7 @@ Speech Recognition の概念の概要については、[概要](../../../speaker
 この記事は、Azure アカウントと Speech Service サブスクリプションをお持ちであることを前提としています。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](../../../overview.md#try-the-speech-service-for-free)。
 
 > [!IMPORTANT]
-> 現在、Speaker Recognition は、`westus` リージョンで作成された Azure Speech リソース "*のみ*" でサポートされています。
+> Microsoft では、Speaker Recognition へのアクセスを制限しています。 [Azure Cognitive Services Speaker Recognition 制限付きアクセス レビュー](https://aka.ms/azure-speaker-recognition)を通じて使用する場合に該当します。 承認後、Speaker Recognition API にアクセスできます。 
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -91,10 +91,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 ## <a name="text-independent-verification"></a>テキストに依存しない認証
 
-**テキストに依存する** 認証とは対照的に、**テキストに依存しない** 認証は次のようになります。
-
-* 特定のパスフレーズを読み上げる必要はなく、何を話してもかまいません
-* 3 つのオーディオ サンプルは必要ありませんが、合計 20 秒のオーディオが "*必要*" になります
+**テキスト依存** 検証、**テキスト非依存** 検証と異なり、3 つのオーディオ サンプルは必要ありませんが、合計 20 秒のオーディオが必要です。
 
 ### <a name="textindependentverification-function"></a>TextIndependentVerification 関数
 

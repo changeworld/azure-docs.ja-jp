@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: spring-cloud
 ms.date: 09/17/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a65a6ea1fb2070b6a1879521b257c2738930bf3a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f3b0aec801598faea2fd741177d34ecdc127a9a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367765"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083386"
 ---
 # <a name="how-to-configure-palo-alto-for-azure-spring-cloud"></a>Azure Spring Cloud 用に Palo Alto を構成する方法
 
@@ -20,9 +20,9 @@ ms.locfileid: "129367765"
 
 この記事では、Palo Alto ファイアウォールで Azure Spring Cloud を使用する方法について説明します。
 
-たとえば、[Azure Spring Cloud リファレンス アーキテクチャ](/azure/spring-cloud/reference-architecture)には、アプリケーションをセキュリティで保護するための Azure Firewall が含まれています。 ただし、現在のデプロイに Palo Alto ファイアウォールが含まれている場合は、この記事で説明されているように、Azure Spring Cloud デプロイから Azure Firewall を省略し、代わりに Palo Alto を使用することができます。
+たとえば、[Azure Spring Cloud リファレンス アーキテクチャ](./reference-architecture.md)には、アプリケーションをセキュリティで保護するための Azure Firewall が含まれています。 ただし、現在のデプロイに Palo Alto ファイアウォールが含まれている場合は、この記事で説明されているように、Azure Spring Cloud デプロイから Azure Firewall を省略し、代わりに Palo Alto を使用することができます。
 
-ルールやワイルドカードなどの構成情報は、Git リポジトリの CSV ファイルに保持する必要があります。 この記事では、オートメーションを使用してこれらのファイルを Palo Alto に適用する方法について説明します。 Palo Alto に適用される構成を理解するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](/azure/spring-cloud/vnet-customer-responsibilities)」を参照してください。 
+ルールやワイルドカードなどの構成情報は、Git リポジトリの CSV ファイルに保持する必要があります。 この記事では、オートメーションを使用してこれらのファイルを Palo Alto に適用する方法について説明します。 Palo Alto に適用される構成を理解するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](./vnet-customer-responsibilities.md)」を参照してください。 
 
 > [!Note]
 > この記事では、REST API の使用について説明する際に、ユーザーの裁量に任されている名前と値を示すために PowerShell 変数構文を使用しています。 すべての手順で同じ値を使用してください。
@@ -53,7 +53,7 @@ ms.locfileid: "129367765"
 
 次に、3 つの CSV ファイルを作成します。
 
-1 つ目のファイルに *AzureSpringCloudServices.csv* という名前を付けます。 このファイルには、Azure Spring Cloud 用のイングレス ポートが含まれている必要があります。 次の例の値は、デモ目的でのみ提供されています。 必要なすべての値については、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](/azure/spring-cloud/vnet-customer-responsibilities)」の「[Azure Spring Cloud のネットワーク要件](/azure/spring-cloud/vnet-customer-responsibilities#azure-spring-cloud-network-requirements)」セクションを参照してください。
+1 つ目のファイルに *AzureSpringCloudServices.csv* という名前を付けます。 このファイルには、Azure Spring Cloud 用のイングレス ポートが含まれている必要があります。 次の例の値は、デモ目的でのみ提供されています。 必要なすべての値については、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](./vnet-customer-responsibilities.md)」の「[Azure Spring Cloud のネットワーク要件](./vnet-customer-responsibilities.md#azure-spring-cloud-network-requirements)」セクションを参照してください。
 
 ```CSV
 name,protocol,port,tag
@@ -64,7 +64,7 @@ ASC_445,tcp,445,AzureSpringCloud
 ASC_123,udp,123,AzureSpringCloud
 ```
 
-2 つ目のファイルに *AzureSpringCloudUrlCategories.csv* という名前を付けます。 このファイルには、Azure Spring Cloud からのエグレスに使用できるアドレス (ワイルドカードを含む) が含まれている必要があります。 次の例の値は、デモ目的でのみ提供されています。 最新の値については、「[Azure Spring Cloud の FQDN 要件またはアプリケーション ルール](/azure/spring-cloud/vnet-customer-responsibilities#azure-spring-cloud-fqdn-requirementsapplication-rules)」を参照してください。
+2 つ目のファイルに *AzureSpringCloudUrlCategories.csv* という名前を付けます。 このファイルには、Azure Spring Cloud からのエグレスに使用できるアドレス (ワイルドカードを含む) が含まれている必要があります。 次の例の値は、デモ目的でのみ提供されています。 最新の値については、「[Azure Spring Cloud の FQDN 要件またはアプリケーション ルール](./vnet-customer-responsibilities.md#azure-spring-cloud-fqdn-requirementsapplication-rules)」を参照してください。
 
 ```CSV
 name,description
@@ -82,7 +82,7 @@ crl.microsoft.com,
 crl3.digicert.com
 ```
 
-3 つ目のファイルに *AzureMonitorAddresses.csv*  という名前を付けます。 このファイルには、Azure Monitor を使用している場合に Azure Monitor でメトリックと監視に使用できるようにするために、すべてのアドレスと IP 範囲を含める必要があります。 次の例の値は、デモ目的でのみ提供されています。 最新の値については、「[Azure Monitor で使用される IP アドレス](/azure/azure-monitor/app/ip-addresses)」を参照してください。
+3 つ目のファイルに *AzureMonitorAddresses.csv*  という名前を付けます。 このファイルには、Azure Monitor を使用している場合に Azure Monitor でメトリックと監視に使用できるようにするために、すべてのアドレスと IP 範囲を含める必要があります。 次の例の値は、デモ目的でのみ提供されています。 最新の値については、「[Azure Monitor で使用される IP アドレス](../azure-monitor/app/ip-addresses.md)」を参照してください。
 
 ```CSV
 name,type,address,tag
@@ -429,6 +429,6 @@ az network route-table route create `
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する](/azure/spring-cloud/how-to-log-streaming)
-* [Azure Spring Cloud での Application Insights Java In-Process Agent](/azure/spring-cloud/how-to-application-insights)
-* [Azure Spring Cloud へのアプリケーション デプロイを自動化する](/azure/spring-cloud/how-to-cicd)
+* [Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する](./how-to-log-streaming.md)
+* [Azure Spring Cloud での Application Insights Java In-Process Agent](./how-to-application-insights.md)
+* [Azure Spring Cloud へのアプリケーション デプロイを自動化する](./how-to-cicd.md)
