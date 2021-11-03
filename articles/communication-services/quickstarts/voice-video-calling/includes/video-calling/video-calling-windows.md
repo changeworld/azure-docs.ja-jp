@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 91ed308ecbeeb839dfddb78c0151e2c8aafd0d3b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e90438e0987f26aa57264825cd2b2bae24f1c12e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123123175"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253498"
 ---
 このクイックスタートでは、Windows 用の Azure Communication Services Calling SDK を使用して、1:1 のビデオ通話を開始する方法について説明します。
 
@@ -35,7 +35,7 @@ Visual Studio の **[空白のアプリ (ユニバーサル Windows)]** テン�
 インターネットへのインバウンド アクセスとアウトバウンド アクセスを取得するには、[`Internet (Client & Server)`]\(インターネット (クライアント & サーバー)\) チェック ボックスをオンにします。 マイクの音声フィードにアクセスするには、[`Microphone`]\(マイク\) チェック ボックスをオンにします。 デバイスのカメラにアクセスするには、[`WebCam`]\(Web カメラ\) チェック ボックスをオンにします。 
 
 右クリックして [コードの表示] を選択し、`Package.appxmanifest` に次のコードを追加します。 
-```XML
+```xml
 <Extensions>
 <Extension Category="windows.activatableClass.inProcessServer">
 <InProcessServer>

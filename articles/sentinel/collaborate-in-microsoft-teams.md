@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: 3aefed370606b80249eabeac35123223b2ad5255
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 20bc5a35aa9afc3aced8818809a701f2080c245c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729752"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075450"
 ---
 # <a name="collaborate-in-microsoft-teams-public-preview"></a>Microsoft Teams での共同作業 (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel では、[Microsoft Teams](/microsoftteams/) との直接統合がサポートされているため、特定のインシデントでの共同作業に直接参加することができます。
 

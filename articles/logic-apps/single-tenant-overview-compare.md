@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: 46b5503e6c2c99c2c99f5cd18dc695ecb16275d1
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8e7c77093ba3ddd2496d2e8ac8a78481d71fd1f6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166842"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088162"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較
 
@@ -252,7 +253,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
     * 組み込みアクションである [[Azure Logic Apps - Choose a Logic App workflow]\([Azure Logic Apps] - [ロジック アプリ ワークフローを選択する]\)](logic-apps-http-endpoint.md) は、 **[Workflow Operations - Invoke a workflow in this workflow app]\([ワークフロー操作] - [このワークフロー アプリでワークフローを呼び出す]\)** になりました。
 
-    * フラット ファイル アクション、AS2 (V2) アクション、RosettaNet アクションなどの一部の[統合アカウント用トリガーとアクション](../connectors/managed.md#integration-account-connectors)は使用できません。
+    * AS2 (V2) アクション、RosettaNet アクションなどの一部の[統合アカウント用トリガーとアクション](../connectors/managed.md#integration-account-connectors)は使用できません。
 
     * 現在、[カスタムのマネージド コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)はサポートされていません。 ただし、Visual Studio Code を使用する場合は、"*カスタムの組み込み操作*" を作成できます。 詳細については、[Visual Studio Code を使用したシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring)に関するページを参照してください。
 

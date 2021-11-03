@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache の集約された名前空間について
 description: Azure HPC Cache の仮想名前空間を計画する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
-ms.author: v-erkel
-ms.openlocfilehash: 500cc23f2091c38006f7e58e150fb246f2a9ca64
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.author: femila
+ms.openlocfilehash: de93648ab6304f42b2650eb6bba80e7224d2d57f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586907"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087763"
 ---
 # <a name="plan-the-aggregated-namespace"></a>集約された名前空間を計画する
 

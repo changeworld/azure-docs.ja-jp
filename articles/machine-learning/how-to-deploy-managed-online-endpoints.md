@@ -1,26 +1,26 @@
 ---
-title: マネージド オンライン エンドポイントを使用して ML モデルをデプロイする
+title: オンライン エンドポイントを使用して ML モデルをデプロイする (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure によって自動的に管理される Web サービスとして機械学習モデルをデプロイする方法について説明します。
+description: Azure に対する Web サービスとして機械学習モデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 08/05/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.custom: how-to, devplatv2
-ms.openlocfilehash: 882f0d8d140d7394e82aa23bf9a5b72b477940e5
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: how-to, devplatv2, ignite-fall-2021
+ms.openlocfilehash: c086523feb73ee6571776b825420c4375ae48da9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423616"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088143"
 ---
-# <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)
+# <a name="deploy-and-score-a-machine-learning-model-by-using-an-online-endpoint-preview"></a>オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)
 
-基になるインフラストラクチャを作成して管理する必要をなくすために、マネージド オンライン エンドポイント (プレビュー) を使用してモデルをデプロイする方法について説明します。 まずローカル コンピューターにモデルをデプロイして、発生するエラーをデバッグした後、それを Azure にデプロイしてテストします。 
+基になるインフラストラクチャを作成して管理する必要をなくすために、オンライン エンドポイント (プレビュー) を使用してモデルをデプロイする方法について説明します。 まずローカル コンピューターにモデルをデプロイして、発生するエラーをデバッグした後、それを Azure にデプロイしてテストします。
 
 ログを確認して、サービス レベル アグリーメント (SLA) を監視する方法についても説明します。 最初はモデルから開始し、最終的には、オンラインおよびリアルタイム スコアリングで使用できるスケーラブルな HTTPS/REST エンドポイントを完成させます。 
 
@@ -116,11 +116,11 @@ set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 YAML スキーマの詳細については、[オンライン エンドポイント YAML リファレンス](reference-yaml-endpoint-managed-online.md)に関するドキュメントを参照してください。
 
 > [!NOTE]
-> コンピューティング先として、マネージド エンドポイントの代わりに Azure Kubernetes Service (AKS) を使用するには:
-> 1. [Azure ML スタジオ](how-to-create-attach-compute-studio.md#whats-a-compute-target)を使用して、AKS クラスターを作成し、Azure Machine Learning ワークスペースにコンピューティング先としてアタッチします
-> 1. AKS をターゲットにするには、マネージド エンドポイントの YAML の代わりに、[エンドポイント YAML](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/aks/simple-flow/1-create-aks-endpoint-with-blue.yml) を使用します。 `target` の値を、登録済みのコンピューティング先の名前に変更するには、YAML を編集する必要があります。
+> コンピューティング先として、マネージド エンドポイントの代わりに Kubernetes を使用するには:
+> 1. [Azure Machine Learning スタジオ](how-to-attach-arc-kubernetes.md?&tabs=studio#attach-arc-cluster)を使用して、Kubernetes クラスターを作成し、Azure Machine Learning ワークスペースにコンピューティング先としてアタッチします。
+> 1. Kubernetes をターゲットにするには、マネージド エンドポイント YAML の代わりに、[エンドポイント YAML](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/aks/simple-flow/1-create-aks-endpoint-with-blue.yml) を使用します。 `target` の値を、登録済みのコンピューティング先の名前に変更するには、YAML を編集する必要があります。
 >
-> この記事で使用されているコマンド (オプションの SLA 監視と Azure Log Analytics 統合を除く) はすべて、マネージド エンドポイントまたは AKS エンドポイントで使用できます。
+> この記事で使用されているコマンド (オプションの SLA 監視と Azure Log Analytics 統合を除く) はすべて、マネージド エンドポイントまたは Kubernetes エンドポイントで使用できます。
 
 ### <a name="register-your-model-and-environment-separately"></a>モデルと環境を別々に登録する
 
@@ -141,7 +141,7 @@ YAML スキーマの詳細については、[オンライン エンドポイン�
 ## <a name="understand-the-scoring-script"></a>スコアリング スクリプトを理解する
 
 > [!TIP]
-> マネージド オンライン エンドポイントのスコアリング スクリプトの形式は、前のバージョンの CLI や Python SDK で使用されている形式と同じです。
+> オンライン エンドポイントのスコアリング スクリプトの形式は、前のバージョンの CLI や Python SDK で使用されている形式と同じです。
 
 前述のように、`code_configuration.scoring_script` には `init()` 関数と `run()` 関数が含まれている必要があります。 この例では、[score.py ファイル](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/model-1/onlinescoring/score.py)を使用します。 `init()` 関数は、コンテナーが初期化または起動された時に呼び出されます。 初期化は、通常、デプロイが作成または更新された直後に実行されます。 モデルをメモリにキャッシュするなど (この例のように)、グローバルな初期化処理を実行するロジックをここに記述します。 `run()` 関数は、エンドポイントが呼び出されるたびに呼び出され、実際のスコアリングと予測を実行します。 この例では、JSON 入力からデータを抽出し、scikit-learn モデルの `predict()` メソッドを呼び出し、結果を返します。
 
@@ -212,7 +212,7 @@ YAML 構成をクラウドにデプロイするには、次のコードを実行
 > [!TIP]
 > * CLI コンソールをブロックしたくない場合は、コマンドに `--no-wait` フラグを追加してください。 ただし、この場合、デプロイ状態が対話的に表示されなくなります。
 >
-> * エラーのデバッグについては、[マネージド オンライン エンドポイントのデプロイのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md) に関するページを参照してください。
+> * エラーのデバッグについては、[マネージド オンライン エンドポイントのデプロイのトラブルシューティング (プレビュー)](./how-to-troubleshoot-online-endpoints.md) に関するページを参照してください。
 
 ### <a name="check-the-status-of-the-deployment"></a>デプロイの状態を確認する
 
@@ -335,4 +335,4 @@ az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
 - [バッチ エンドポイント (プレビュー) を使用したバッチ スコアリング](how-to-use-batch-endpoint.md)
 - [Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)
 - [チュートリアル: マネージド オンライン エンドポイントとシステム マネージド ID を使用して Azure リソースにアクセスする (プレビュー)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
-- [マネージド オンライン エンドポイントのデプロイトをラブルシューティングする](how-to-troubleshoot-managed-online-endpoints.md)
+- [マネージド オンライン エンドポイントのデプロイトをラブルシューティングする](./how-to-troubleshoot-online-endpoints.md)

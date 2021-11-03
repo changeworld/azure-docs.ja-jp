@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,20 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: dabb12e5c0e6bd95ebe1a8025b431ec57e42745b
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c57b1db016ded00f813bd947d8b4226b751c3666
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615374"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075371"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 情報モデル (ASIM) スキーマ (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [ASIM](normalization.md) スキーマは、アクティビティを表すフィールドのセットです。 クエリで正規化されたスキーマのフィールドを使用すると、クエリがすべての正規化されたソースで確実に動作します。
 
 スキーマ参照では、各スキーマを構成するフィールドの概要が示されます。 現在、ASIM では次のスキーマが定義されています。
 
- - [ネットワーク セッション](normalization-schema.md)
+ - [ネットワーク セッション](./network-normalization-schema.md)
  - [DNS アクティビティ](dns-normalization-schema.md)
  - [DHCP アクティビティ](dhcp-normalization-schema.md)
  - [プロセス イベント](process-events-normalization-schema.md)

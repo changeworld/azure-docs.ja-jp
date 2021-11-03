@@ -201,11 +201,11 @@ display(entityv2.transform(df).select("if", "text", col("replies")[0].getItem("e
 ![Entity Detector v2 の予想される結果](./media/tutorial-text-analytics-use-mmlspark/expected-output-entity-detector-v-2.png)
 
 
-### <a name="v31&quot;></a>V3.1
+### <a name="v31"></a>V3.1
 
 ```python
 df = spark.createDataFrame([
-    (&quot;1&quot;, &quot;Microsoft released Windows 10"),
+    ("1", "Microsoft released Windows 10"),
     ("2", "In 1975, Bill Gates III and Paul Allen founded the company.")
 ], ["if", "text"])
 
@@ -302,11 +302,11 @@ display(nerv2.transform(df).select("text", col("replies")[0].getItem("entities")
 ### <a name="expected-results"></a>予想される結果
 ![名前付きエンティティ認識 v2 の予想される結果](./media/tutorial-text-analytics-use-mmlspark/expected-output-ner-v-2.png)
 
-### <a name="v31&quot;></a>V3.1
+### <a name="v31"></a>V3.1
 
 ```python
 df = spark.createDataFrame([
-    (&quot;1&quot;, &quot;en&quot;, &quot;I had a wonderful trip to Seattle last week."),
+    ("1", "en", "I had a wonderful trip to Seattle last week."),
     ("2", "en", "I visited Space Needle 2 times.")
 ], ["id", "language", "text"])
 

@@ -8,12 +8,12 @@ ms.service: powerbi
 ms.subservice: powerbi-custom-visuals
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: eca02cf776eb1f6fa690ecefd865dadbc3d9be78
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 916013d7bde10e63985324d736a755183200bf3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080068"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079360"
 ---
 # <a name="create-a-power-bi-visual-offer"></a>Power BI ビジュアル オファーを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "129080068"
 
 #### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
 
 1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "129080068"
 
 #### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
 1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
 1. [概要] ページで、 **[+ 新しいオファー]**  >  **[Power BI 視覚エフェクト]** を選択します。
 
@@ -73,7 +73,7 @@ ms.locfileid: "129080068"
 
 **追加購入** では、オファーでサービスの購入や追加のアプリ内課金が必要かどうかを選択します。
 
-**Power BI 証明書** (任意) については、説明を注意深く読んだ上で、Power BI 証明書を要求する場合は、このチェック ボックスをオンにしてください。 [認定済み](https://aka.ms/PBIvisualcertification)の Power BI ビジュアルは、Microsoft Power BI チームによってテストおよび承認された特定のコード要件を満たしています。 認証プロセスには追加で時間がかかり、オファーの公開が遅れる可能性があるため、認証を申請する "*前に*"、Power BI ビジュアルの申請と公開することをお勧めします。
+**Power BI 証明書** (任意) については、説明を注意深く読んだ上で、Power BI 証明書を要求する場合は、このチェック ボックスをオンにしてください。 [認定済み](/power-bi/developer/visuals/power-bi-custom-visuals-certified)の Power BI ビジュアルは、Microsoft Power BI チームによってテストおよび承認された特定のコード要件を満たしています。 認証プロセスには追加で時間がかかり、オファーの公開が遅れる可能性があるため、認証を申請する "*前に*"、Power BI ビジュアルの申請と公開することをお勧めします。
 
 ## <a name="customer-leads"></a>潜在顧客
 

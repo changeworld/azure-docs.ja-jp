@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: c9dd8bdfb9af1d20433a083b48ee1b7e14658438
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105103995"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253600"
 ---
 このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。このクライアント ライブラリは、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Python アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示します。
 
@@ -52,14 +52,16 @@ ms.locfileid: "105103995"
     ```python
     client = ImageSearchClient(endpoint=subscription_endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
+
 1. Bing Image Search API に検索クエリを送信します。
+
     ```python
     image_results = client.images.search(query=search_term)
     ```
-   ## <a name="process-and-view-the-results"></a>結果の処理と表示
+
+## <a name="process-and-view-the-results"></a>結果の処理と表示
 
 応答で返された画像の結果を解析します。
-
 
 応答に検索結果が含まれている場合は、最初の結果を格納して、返された URL の合計数と共にサムネイルの URL などの詳細を出力します。  
 

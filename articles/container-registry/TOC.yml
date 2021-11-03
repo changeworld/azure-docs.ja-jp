@@ -253,6 +253,37 @@
           href: container-registry-tasks-pack-build.md
         - name: タスク ログを表示する
           href: container-registry-tasks-logs.md
+- name: 接続されたレジストリ
+  expanded: true
+  items:
+    - name: 概要
+      expanded: false
+      items:
+        - name: 接続されたレジストリについて
+          href: intro-connected-registry.md
+        - name: IoT Edge での使用
+          href: overview-connected-registry-and-iot-edge.md
+    - name: クイックスタート
+      expanded: true
+      items:
+        - name: 接続されたレジストリを作成する - CLI
+          href: quickstart-connected-registry-cli.md
+        - name: 接続されたレジストリを作成する - ポータル
+          href: quickstart-connected-registry-portal.md
+        - name: 接続されたレジストリを IoT Edge にデプロイする
+          href: quickstart-deploy-connected-registry-iot-edge-cli.md
+    - name: チュートリアル
+      items:
+        - name: 接続されたレジストリを入れ子になった IoT Edge にデプロイする
+          href: tutorial-deploy-connected-registry-nested-iot-edge-cli.md
+    - name: 概念
+      items:
+        - name: 接続されているレジストリにアクセスする
+          href: overview-connected-registry-access.md
+    - name: 使い方ガイド
+      items:
+        - name: 接続されているレジストリからイメージをプルする
+          href: pull-images-from-connected-registry.md
 - name: リファレンス
   expanded: false
   items:
