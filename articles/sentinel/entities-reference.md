@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 5b1fc91868f420b2f156fbb4d219d08cf5ad2ab6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 44f8eb527901f5457a4eddfab0bfdd8191f60d0f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726058"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046833"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel エンティティ型リファレンス
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="entity-types-and-identifiers"></a>エンティティ型と識別子
 

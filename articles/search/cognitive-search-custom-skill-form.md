@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: b5074e3d07a1df199e189dfb906190c82bde6905
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 466e01a874e75221beeb12624199911136b9d5e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796592"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048142"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "124796592"
 
 ## <a name="train-your-model"></a>モデルをトレーニングする
 
-このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../applied-ai-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
+このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../applied-ai-services/form-recognizer/quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
 
 ## <a name="set-up-the-custom-skill"></a>カスタム スキルを設定する
 

@@ -10,25 +10,27 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2021
 ms.author: yelevin
-ms.openlocfilehash: 4efc7411fe3755e7cbe14769ff061d2a2b6efa98
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 46a5bcf0db580d652f045efa0c4a381bdbd7143a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252400"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075469"
 ---
 # <a name="azure-sentinel-data-connectors"></a>Azure Sentinel データ コネクタ
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ワークスペースに Azure Sentinel をオンボードしたら、データ ソースを接続して Azure Sentinel へのデータの取り込みを開始します。 Azure Sentinel には、すぐに使用できる Microsoft 製品用コネクタが多数用意されているため、リアルタイムの統合が提供されます。 たとえば、サービス間コネクタには、Microsoft 365 Defender コネクタと、Office 365、Azure Active Directory (Azure AD)、Microsoft Defender for Identity、Microsoft Cloud App Security などの Microsoft 365 ソースが含まれます。
 
-Microsoft 以外の製品用のより広範なセキュリティ エコシステムへの組み込みコネクタを有効にすることもできます。 たとえば、[Syslog](#syslog)、[Common Event Format (CEF)](#common-event-format-cef)、または [REST API](#rest-api-integration) を使用して、お使いのデータ ソースを Azure Sentinel に接続することもできます。
+Microsoft 以外の製品用のより広範なセキュリティ エコシステムに対して、既定のコネクタを有効にすることもできます。 たとえば、[Syslog](#syslog)、[Common Event Format (CEF)](#common-event-format-cef)、または [REST API](#rest-api-integration) を使用して、お使いのデータ ソースを Azure Sentinel に接続することもできます。
 
 Azure Sentinel のナビゲーション メニューからアクセスできる **[データ コネクタ]** ページには、Azure Sentinel によって提供されるコネクタの全一覧と、ワークスペース内での状態が表示されています。 接続するコネクタを選択し、 **[コネクタ ページを開く]** を選択します。
 
@@ -125,7 +127,7 @@ Azure Sentinel は、Azure 基盤を使用して、Microsoft サービスとア�
 
 [Azure Sentinel ソリューション](sentinel-solutions.md)は、データ コネクタ、ブック、分析ルール、プレイブックなど、セキュリティ コンテンツのパッケージを提供します。 データ コネクタを使用してソリューションをデプロイすると、同じデプロイ内の関連コンテンツと共にデータ コネクタが取得されます。 
 
-詳細については、「[Azure Sentinel ソリューションを見つけてデプロイする](sentinel-solutions-deploy.md)」および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
+詳細については、[Azure Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする](sentinel-solutions-deploy.md)方法に関するページと [Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)を参照してください。
 ## <a name="data-connector-support"></a>データ コネクタのサポート
 
 Microsoft と他の組織の両方が Azure Sentinel データ コネクタを作成しています。 各データ コネクタには、次のいずれかのサポートの種類があります。

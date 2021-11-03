@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 09/14/2021
-ms.custom: devx-track-python
-ms.openlocfilehash: 50c8a38a5acbfea119770a5ea81a21d51fd4ea83
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.custom: devx-track-python, ignite-fall-2021
+ms.openlocfilehash: 075c6404acbb4e2d74967873e3a8359076c1a228
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424542"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056530"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>ネットワークの着信トラフィックおよび送信トラフィックを構成する
 
@@ -222,6 +222,45 @@ Azure Machine Learning で Azure Kubernetes Service を使用する場合は、�
 * mcr.microsoft.com への __送信__。
 * AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md#connectivity)」記事のガイダンスを使用してください。
 
+### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes <a id="arc-kubernetes"></a>
+
+Azure Arc 対応 Kubernetes クラスターは、Azure Arc の接続に依存します。 [Azure Arc ネットワークの要件](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)を満たしていることを確認してください。
+
+このセクションのホストは、Azure Machine Learning 拡張機能を Kubernetes クラスターにデプロイし、トレーニングと推論のワークロードをクラスターに送信するために使われます。
+
+**Azure Machine Learning 拡張機能のデプロイ**
+
+Azure Machine Learning 拡張機能をクラスターにデプロイするときは、次のエンドポイントへの送信アクセスを有効にします。
+
+| 送信先エンドポイント| Port | 用途 |
+|--|--|--|
+|  *.data.mcr.microsoft.com| https:443 | Azure Content Delivery Network (CDN) によってサポートされる MCR ストレージに必要です。 |
+| quay.io、*.quay.io | https:443 | Quay.io レジストリ。AML 拡張コンポーネントのコンテナー イメージをプルするために必要です |
+| gcr.io| https:443 | Google クラウド リポジトリ。AML 拡張コンポーネントのコンテナー イメージをプルするために必要です |
+| storage.googleapis.com | https:443 | Google クラウド ストレージ。gcr イメージがにホストされています |
+| registry-1.docker.io、production.cloudflare.docker.com  | https:443 | Docker Hub レジストリ。AML 拡張コンポーネントのコンテナー イメージをプルするために必要です |
+| auth.docker.io| https:443 | Docker リポジトリ認証。Docker Hub レジストリにアクセスするために必要です |
+| *.kusto.windows.net、*.table.core.windows.net、*.queue.core.windows.net | https:443 | Kusto でシステム ログをアップロードして分析するために必要です |
+
+**トレーニング ワークロードのみ**
+
+トレーニング ワークロードをクラスターに送信するには、次のエンドポイントへの送信アクセスを有効にします。
+
+| 送信先エンドポイント| Port | 用途 |
+|--|--|--|
+| pypi.org | https:443 | Python パッケージ インデックス。ジョブ環境の初期化に使用する pip パッケージをインストールするため |
+| archive.ubuntu.com、security.ubuntu.com、ppa.launchpad.net | http:80 | このアドレスを使うと、init コンテナーで必要なセキュリティ パッチと更新プログラムをダウンロードできます |
+
+**トレーニングと推論ワークロード**
+
+トレーニング ワークロード用のエンドポイントに加えて、トレーニングと推論のワークロードを送信するため、次のエンドポイントへの送信アクセスを有効にします。
+
+| 送信先エンドポイント| Port | 用途 |
+|--|--|--|
+| *.azurecr.io | https:443 | Azure コンテナー レジストリ。トレーニングまたは推論のジョブをホストするためのコンテナー イメージをプルするために必要です|
+| *.blob.core.windows.net | https:443 | Azure Blob Storage。機械学習プロジェクト スクリプト、コンテナー イメージ、ジョブのログとメトリックをフェッチするために必要です |
+| *.workspace.\<region\>.api.azureml.ms、\<region\>.experiments.azureml.net、\<region\>.api.azureml.ms | https:443 | Azure Machine Learning Service API。AML との通信に必要です |
+
 ### <a name="visual-studio-code-hosts"></a>Visual Studio Code のホスト
 
 このセクションのホストは、Visual Studio Code のパッケージをインストールして、Visual Studio Code と Azure Machine Learning ワークスペースのコンピューティング インスタンス間のリモート通信を確立するために使用されます。
@@ -234,7 +273,7 @@ Azure Machine Learning で Azure Kubernetes Service を使用する場合は、�
 |  **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | セットアップ スクリプトを通じてコンピューティング インスタンスにインストールされている VS Code サーバー ビットを取得するために使用されます。|
 | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** |コンピューティング インスタンスにインストールされている Websocket サーバー ビットを取得するために使用されます。 Websocket サーバーは、Visual Studio Code クライアント (デスクトップ アプリケーション) から、コンピューティング インスタンスで実行されている Visual Studio Code サーバーに要求を送信するために使用されます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 

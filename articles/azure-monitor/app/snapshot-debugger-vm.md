@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4bccc2922cf20262149ef54fbe2a1a821d9551ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99a0c2e765d725731e24b680a135b1ecab1a9bad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673503"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006698"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Service Fabric、クラウド サービス、および Virtual Machines で .NET アプリのスナップショット デバッガーを有効にする
 
@@ -156,11 +156,12 @@ ASP.NET または ASP.NET Core アプリケーションが Azure App Service で
 2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに追加します。
 
 3. スナップショットは、Application Insights にレポートされる例外についてのみ収集されます。 例外をレポートするようにコードを変更する必要があります。 例外処理コードは、アプリケーションの構造によって異なります。次に例を示します。
-    ```csharp
-   TelemetryClient _telemetryClient = new TelemetryClient();
 
-   void ExampleRequest()
-   {
+    ```csharp
+    TelemetryClient _telemetryClient = new TelemetryClient();
+
+    void ExampleRequest()
+    {
         try
         {
             // TODO: Handle the request.
@@ -172,7 +173,7 @@ ASP.NET または ASP.NET Core アプリケーションが Azure App Service で
 
             // TODO: Rethrow the exception if desired.
         }
-   }
+    }
     ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,60 +1,68 @@
 ---
-title: Erwin Mart を登録してスキャンを設定する
-description: この記事では、Azure Purview に Erwin Mart を登録し、スキャンを設定する方法について、概要を説明します。
+title: erwin Mart サーバーに接続して管理する
+description: このガイドでは、Azure Purview で erwin Mart サーバーに接続する方法と、Purview の機能を使用して erwin Mart サーバー ソースをスキャンおよび管理する方法について説明します。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 8077658b644853f9ce0789a1d0863b3bde902818
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 0d8e19a1f416a162d1a1c37b5403ea38c721e508
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211533"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056245"
 ---
-# <a name="register-and-scan-erwin-mart-server-preview"></a>Erwin Mart サーバーの登録とスキャン (プレビュー)
+# <a name="connect-to-and-manage-erwin-mart-servers-in-azure-purview-preview"></a>Azure Purview で erwin Mart サーバーに接続して管理する (プレビュー)
 
-この記事では、Azure Purview に Erwin Mart サーバーを登録し、スキャンを設定する方法について、概要を説明します。
+この記事では、Azure Purview で、erwin Mart サーバーを登録する方法と、erwin Mart サーバーを認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
+
+> [!IMPORTANT]
+> ソースとしての erwin Mart サーバーは現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-erwin ソースを使用すると、Erwin Mart サーバーからメタデータを抽出するためのフル スキャンがサポートされます。 メタデータの内容は次のとおりです。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [はい](how-to-lineage-erwin.md)|
 
-1.  エンティティ、属性、ドメインを持つ論理限定モデル、または
-2.  テーブル、列、データ型を持つ物理限定モデル、または
-3.  論理または物理モデル
+erwin ソースを使用すると、erwin Mart サーバーからメタデータを抽出するためのフル スキャンがサポートされます。 メタデータには次のものが含まれます。
 
-このデータ ソースにより、データ資産間の系列も取得されます。
+1. エンティティ、属性、ドメインを持つ論理限定モデル、または
+1. テーブル、列、データ型を持つ物理限定モデル、または
+1. 論理または物理モデル
 
-> [!Note]
-> ソースとしての Erwin は、現在プレビューでサポートされています。 このソースを登録し、非運用環境の Purview アカウントにスキャンを設定して、フィードバックをお寄せください。
+> [!Important]
+> サポートされている erwin Mart のバージョンは 9.x から 2021 までです。
 
 ## <a name="prerequisites"></a>前提条件
 
-1.  最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。
-    詳細については、「  
-    [セルフホステッド統合ランタイムを作成して構成する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+* アクティブな [Purview リソース](create-catalog-portal.md)。
+
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
+
+* 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
 
     > [!Note]
     > セルフホステッド統合ランタイムは、必ず erwin Mart インスタンスが実行されている VM で実行してください。
 
-2.  セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
+* セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 
-3.  セルフホステッド統合ランタイムが実行されている VM に \"Visual C++ 再頒布可能パッケージ 2012 Update 4\" がインストールされていることを確認します。 インストールされていない場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=30679)からダウンロードしてください。
+* セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
 
-4.  サポートされている erwin Mart のバージョンは 9.x から 2021 までです
+## <a name="register"></a>登録
 
-## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に erwin Mart サーバーを登録する方法について説明します。
 
-erwin Mart ソースでサポートされている認証は、ユーザー名とパスワードの形式での **サーバー認証** のみです
+erwin Mart ソースでサポートされている認証は、ユーザー名とパスワードの形式での **サーバー認証** のみです。
 
-## <a name="register-an-erwin-mart"></a>erwin Mart を登録する
+### <a name="steps-to-register"></a>登録する手順
 
-新しい erwin Mart をデータ カタログに登録するには、次のようにします。
-
-1. ご自分の Purview アカウントに移動します。
+1. [Purview Studio](https://web.purview.azure.com/) で Purview アカウントに移動します。
 1. 左側のナビゲーションで **[Data Map]** を選択します。
 1. **[登録]** を選択します
 1. [Register sources]\(ソースの登録\) で、 **[erwin]** を選択します。 **[続行]** を選択します。
@@ -62,97 +70,81 @@ erwin Mart ソースでサポートされている認証は、ユーザー名と
 
 ソースの登録 (erwin) 画面で、次のようにします。
 
-1.  データ ソースがカタログに一覧表示されるときの **名前** を入力します。
-
-2.  erwin Mart の **サーバー名** を入力します。 これは、erwin Mart サーバーへの接続に使用されるネットワーク ホスト名です。 たとえば、localhost です
-
-3.  erwin Mart に接続するときに使用される **ポート** 番号を入力します。 この値は既定では 18170 です。
-
-4.  **アプリケーション名** を入力します
+1. データ ソースがカタログに一覧表示されるときの **名前** を入力します。
+1. erwin Mart の **サーバー名** を入力します。 これは、erwin Mart サーバーへの接続に使用されるネットワーク ホスト名です。 たとえば、localhost です
+1. erwin Mart に接続するときに使用される **ポート** 番号を入力します。 この値は既定では 18170 です。
+1. **アプリケーション名** を入力します
 
     >[!Note]
     > 上記の詳細は、erwin Data Modeler に移動することで確認できます。 [Mart]、[接続] の順にクリックし、サーバー名、ポート、アプリケーション名に関連した詳細を確認します。
 
     :::image type="content" source="media/register-scan-erwin-source/erwin-details.png" alt-text="erwin の詳細の確認" border="true":::
-    
-5.  コレクションを選択するか、新しいものを作成します (省略可能)
 
-6.  データ ソースの登録を終了します。
+1. コレクションを選択するか、新しいものを作成します (省略可能)
+
+1. データ ソースの登録を終了します。
 
     :::image type="content" source="media/register-scan-erwin-source/register-erwin.png" alt-text="ソースの登録" border="true":::
-    
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="scan"></a>スキャン
+
+次の手順に従って、erwin Mart サーバーをスキャンし、自動的に資産を識別してデータを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
+
+### <a name="create-and-run-scan"></a>スキャンの作成と実行
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、[統合ランタイム] を選択します。 erwin Mart インスタンスが実行されている VM にセルフホステッド統合ランタイムが設定されている必要があります。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1. 管理センターで、[統合ランタイム] を選択します。 erwin Mart インスタンスが実行されている VM にセルフホステッド統合ランタイムが設定されている必要があります。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順に従って、セルフホステッド統合ランタイムを設定します。
+1. **[ソース]** に移動します。
 
-2.  **[ソース]** に移動します。
+1. 登録した **erwin** Mart を選択します。
 
-3.  登録した **erwin** Mart を選択します。
+1. **[+ 新しいスキャン]** を選択します。
 
-4.  **[+ 新しいスキャン]** を選択します。
+1. 次の詳細を指定します。
 
-5.  次の詳細を指定します。
+    1. **[名前]** : スキャンの名前
 
-    a.  **[名前]** : スキャンの名前
+    1. **[統合ランタイム経由で接続]** : 構成済みのセルフホステッド統合ランタイムを選択します。
 
-    b.  **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
+    1. **[サーバー名]、[ポート]** および **[アプリケーション名]** は、登録時に入力した値に基づいて自動的に設定されます。
 
-    c.  **[サーバー名]、[ポート]** および **[アプリケーション名]** は、登録時に入力した値に基づいて自動的に設定されます。
+    1. **資格情報:** erwin Mart サーバーに接続するように構成された資格情報を選択します。 資格情報を作成する際は、次の点にご注意ください。
+        * 認証方法として **[基本認証]** を選択します
+        * [ユーザー名] フィールドに、erwin Mart サーバーのユーザー名を入力します。
+        * サーバー認証用のユーザー パスワードをキー コンテナーのシークレットに保存します。
 
-    d.  **資格情報:** erwin Mart サーバーに接続するように構成された資格情報を選択します。 資格情報を作成する際は、次の点にご注意ください。
-    - 認証方法として **[基本認証]** を選択します
-    - [ユーザー名] フィールドに、erwin Mart サーバーのユーザー名を入力します。
-    - サーバー認証用のユーザー パスワードをキー コンテナーのシークレットに保存します。
+        資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。
 
-    資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。
+    1. **インターネット インフォメーション サービス (IIS) を使用する** - erwin Mart サーバーに接続するときに Microsoft インターネット インフォメーション サービス (IIS) を使用する必要があるかどうかを通知するために、[True] または [False] を選択します。 既定では、この値は False に設定されます。
 
-    e.  **インターネット インフォメーション サービス (IIS) を使用する** - erwin Mart サーバーに接続するときに Microsoft インターネット インフォメーション サービス (IIS) を使用する必要があるかどうかを通知するために、[True] または [False] を選択します。 既定では、この値は Falseに設定されます。
+    1. **Secure Sockets Layer (SSL) を使用する** - erwin Mart サーバーに接続するときに Secure Sockets Layer (SSL) を使用する必要があるかどうかを通知するために、[True] または [False] を選択します。 既定では、この値は Falseに設定されます。
 
-    f.  **Secure Sockets Layer (SSL) を使用する** - erwin Mart サーバーに接続するときに Secure Sockets Layer (SSL) を使用する必要があるかどうかを通知するために、[True] または [False] を選択します。 既定では、この値は Falseに設定されます。
+        > [!Note]
+        > このパラメーターは、erwin Mart バージョン 9.1 以降にのみ適用されます。
 
-    > [!Note]
-    > このパラメーターは、erwin Mart バージョン 9.1 以降にのみ適用されます。
+    1. **ブラウズ モード** - erwin Mart を参照するモードを選択します。 使用できるオプションは、"ライブラリとモデル" または "ライブラリのみ" です。
 
-    g.  **ブラウズ モード** - erwin Mart を参照するモードを選択します。 使用できるオプションは、"ライブラリとモデル" または "ライブラリのみ" です。
+    1. **モデル** - セミコロンで区切られた erwin モデル ロケーター文字列のリストを指定して、スキャンのスコープを設定します。 例: mart://Mart/Samples/eMovies;mart://Mart/Erwin_Tutorial/AP_Physical
 
-    h.  **モデル** - セミコロンで区切られた erwin モデル ロケーター文字列のリストを指定して、スキャンのスコープを設定します。 例: mart://Mart/Samples/eMovies;mart://Mart/Erwin_Tutorial/AP_Physical
+    1. **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする erwin Mart のサイズによって異なります。
 
-    i.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする erwin Mart のサイズによって異なります。
     :::image type="content" source="media/register-scan-erwin-source/setup-scan.png" alt-text="スキャンのトリガー" border="true":::
-   
 
-6.  **[テスト接続]** を選択します。
+1. **[テスト接続]** を選択します。
 
-7.  **[続行]** を選択します。
+1. **[続行]** を選択します。
 
-8.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+1. **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-9.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
+1. 自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
-## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
-
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択します。
-
-2. 目的のデータ ソースを選択します。 そのデータ ソースに対する既存のスキャンの一覧が表示されます。
-
-3. 結果を表示するスキャンを選択します。
-
-4. このページには、前回のすべてのスキャン実行と、各スキャン実行のメトリックと状態が表示されます。 また、そのスキャンがスケジュールされたスキャンと手動スキャンのどちらかであるか、分類が適用された資産の数、検出された資産の合計数、スキャンの開始時刻と終了時刻、スキャンの実行時間の合計も表示されます。
-
-## <a name="manage-your-scans"></a>スキャンを管理する
-
-スキャンを管理または削除するには、次の操作を行います。
-
-1. 管理センターに移動します。 **[Sources and scanning]\(ソースとスキャン\)** セクションの **[データ ソース]** を選択し、目的のデータ ソースを選択します。
-
-2. 管理するスキャンを選択します。 スキャンを編集するには、 **[編集]** を選択します。
-
-3. スキャンを削除するには、 **[削除]** を選択します。
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

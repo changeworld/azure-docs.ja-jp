@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/11/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: da62c081a79211eb6eb56229eab856c89841746c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: a930b5234f13d7e53bc50b6dc3f7b3d959df2e0e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533704"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131024594"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -666,7 +666,7 @@ speech_config.set_service_property(
 
 このコンテナーと、別の Azure Cognitive Services コンテナーを HOST 上で同時に実行することができます。 同じ Cognitive Services コンテナーの複数のコンテナーを実行することもできます。
 
-[!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+[!INCLUDE [Validate container is running - Container API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
@@ -677,6 +677,9 @@ speech_config.set_service_property(
 コンテナーを起動または実行するとき、問題が発生することがあります。 出力[マウント](speech-container-configuration.md#mount-settings)を使用し、ログ記録を有効にします。 これにより、問題の解決時に役立つログ ファイルをコンテナーで生成できます。
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
+
+[!INCLUDE [Diagnostic container](../containers/includes/diagnostics-container.md)]
+
 
 ## <a name="billing"></a>課金
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 115b0c01fd80b3c0542ee9ef1ce152b06c880599
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 228eab10c0c9db81b1cf1327d6746f96faa64d05
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993475"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057118"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -106,7 +106,7 @@ AD Domain Services と AD FS または類似の ID プロバイダーを使用�
         | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448"
         ```
         
-         ```kusto
+        ```kusto
         // Search for multiple Object IDs (UserIds)
         SigninLogs
         | project UserId 
