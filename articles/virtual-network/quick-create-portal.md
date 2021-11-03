@@ -10,16 +10,14 @@ ms.service: virtual-network
 ms.workload: infrastructure
 ms.tgt_pltfrm: virtual-network
 ms.devlang: na
-tags:
-- azure-resource-manager
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 43c45b43084656a45d2509ee2c7a4376cdc7c052
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+tags: azure-resource-manager
+ms.custom: mode-portal
+ms.openlocfilehash: 1ba52ed17f5eddafe4489ddf9d4277ac301c3e15
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531181"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074253"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用した仮想ネットワークの作成
 
@@ -31,7 +29,7 @@ ms.locfileid: "107531181"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -86,7 +84,7 @@ ms.locfileid: "107531181"
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | 値                                          |
+    | 設定 | [値]                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -110,7 +108,7 @@ ms.locfileid: "107531181"
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |
@@ -129,7 +127,7 @@ ms.locfileid: "107531181"
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | 値                                          |
+    | 設定 | [値]                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -153,7 +151,7 @@ ms.locfileid: "107531181"
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |

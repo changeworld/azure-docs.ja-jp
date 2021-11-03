@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 196500eb70a559339bd237670434ad8f562eda8c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8b965d54eab6f979b67382c91e09b23732278732
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551172"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040211"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -29,7 +29,7 @@ ms.locfileid: "128551172"
 
 このサンプルを実行するには、以下が必要です。
 
-- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 以降。 
+- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 以降。
 - [Maven](https://maven.apache.org/)。
 
 > [!div renderon="docs"]
@@ -138,7 +138,6 @@ ms.locfileid: "128551172"
 >      ```
 >   1. 生成されたキーストア ファイルを *resources* フォルダーに配置します。
 
-
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-run-the-code-sample"></a>手順 3:コード サンプルの実行
 > [!div renderon="docs"]
@@ -146,7 +145,7 @@ ms.locfileid: "128551172"
 
 プロジェクトを実行するには、次のいずれかの手順を実行します。
 
-- 埋め込みの Spring Boot サーバーを使用して IDE から直接実行する。 
+- 埋め込みの Spring Boot サーバーを使用して IDE から直接実行する。
 - [Maven](https://maven.apache.org/plugins/maven-war-plugin/usage.html) を使用して WAR ファイルにパッケージ化したうえで、[Apache Tomcat](http://tomcat.apache.org/) などの J2EE コンテナー ソリューションにデプロイする。
 
 ##### <a name="running-the-project-from-an-ide"></a>IDE からのプロジェクトの実行
@@ -210,7 +209,6 @@ Web サンプルを Tomcat にデプロイする場合は、ソース コード�
 
 4. ファイルがデプロイされたら、ブラウザーを使用して https://localhost:8443/msal4jsample に移動します。
 
-
 > [!IMPORTANT]
 > このクイックスタート アプリケーションでは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプレーンテキストとしてプロジェクト ファイルに追加されるため、セキュリティ上の理由から、アプリケーションを運用環境で使用する前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、「[アプリケーションを認証するための証明書資格情報](./active-directory-certificate-credentials.md)」を参照してください。
 
@@ -227,7 +225,7 @@ Maven または Gradle を使用して、アプリケーションに MSAL4J を�
 
 pom.xml 内:
 
-```XML
+```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>

@@ -6,14 +6,13 @@ ms.author: hophan
 ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
-ms.custom:
-- mode-api
-ms.openlocfilehash: 0e3cb8399e42dc651a48ada6018c58cb4f48e5d8
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: mode-api
+ms.openlocfilehash: b4bcd427508f3ecf66b0cca4bdade023c3f87d61
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217355"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037817"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>クイックスタート: Azure PowerShell または Azure CLI を使用して Azure Purview アカウントを作成する
 

@@ -7,13 +7,13 @@ ms.reviewer: minewiskan
 ms.date: 10/12/2021
 ms.topic: quickstart
 ms.service: azure-analysis-services
-ms.custom: devx-track-azurepowershell - references_regions - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 13eaddb60d6f7811d11f3fac42c4d8b384645820
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: references_regions, devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 6bbf32d7a33588bdc247857a7c700599cd7acb9e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006643"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060138"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーを作成する - PowerShell
 

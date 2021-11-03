@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 5a50a51d68154654d204149a5e76e5aa94e57683
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1118fb9d41ace11adb55adedc4b3700c3c34e50a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697743"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003449"
 ---
 # <a name="deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -147,7 +147,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 **starter** テンプレートを選択し、Java プロジェクトをビルドして Apache Maven でテストを実行する次の YAML スニペットをコピーします。
 
-```YAML
+```yaml
 jobs:
 - job: Build
   displayName: Build Maven Project
@@ -172,7 +172,7 @@ jobs:
 
 **starter** テンプレートを選択し、npm で一般的な Node.js プロジェクトをビルドする次の YAML スニペットをコピーします。
 
-```YAML
+```yaml
 - stage: Build
   displayName: Build stage
   jobs:  
@@ -213,7 +213,7 @@ jobs:
 
 1. 上記のパイプラインの YAML ファイルを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
 
-   ```YAML
+   ```yaml
    jobs:  
    - deployment: VMDeploy
      displayName: web
@@ -230,7 +230,7 @@ jobs:
    `runOnce` は最も簡単なデプロイ方法であり、すべてのライフ サイクル フック (つまり、`preDeploy` `deploy`、`routeTraffic`、`postRouteTraffic`) が 1 回実行されます。 その後、`on:` `success` または `on:` `failure` が実行されます。
 
    `runOnce` の YAML スニペットの例を次に示します。
-   ```YAML
+   ```yaml
    jobs:
    - deployment: VMDeploy
      displayName: web
@@ -248,7 +248,7 @@ jobs:
 
 4. 次に示す YAML スニペットの例を使用すると、各反復で最大 5 つのターゲット仮想マシンを更新するローリング戦略を定義できます。 `maxParallel` によって、同時にデプロイできるターゲットの数が決まります。 選択するときは、デプロイされているターゲットを除いて、常に使用可能な状態にしておく必要があるターゲットの絶対数または割合を考慮します。 それはまた、デプロイの間に成功と失敗の条件を判断するためにも使用されます。
 
-   ```YAML
+   ```yaml
    jobs: 
    - deployment: VMDeploy
      displayName: web

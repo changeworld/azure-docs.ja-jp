@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 888f5d195cde3b226e4a25c5e46ed916e654c0b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4b333a8910277236c4d4f5f7f044f21f6ee03f74
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809224"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>チュートリアル: Azure Active Directory と itslearning の統合
 
@@ -78,24 +78,21 @@ itslearning に対して Azure AD SSO を構成してテストするには、次
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    
-    a. **[識別子 (エンティティ ID)]** ボックスに `urn:mace:saml2v2.no:services:com.itslearning` という URL を入力します。
+    1. **[識別子 (エンティティ ID)]** ボックスに `urn:mace:saml2v2.no:services:com.itslearning` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のいずれかの URL を入力します。
-    
-    | [応答 URL] |
-    |-------------|
-    | `https://www.itsltest.com/elogin/AssertionConsumerService.aspx` |
-    | `https://www.itslearning.com/elogin/AssertionConsumerService.aspx` |
-    | 
-    
-    c. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
-    
-    | サインオン URL |
-    |-------------|
-    | `https://www.itslearning.com/index.aspx` |
-    | `https://us1.itslearning.com/index.aspx` |
-    |
+    1. **[応答 URL]** ボックスに、次のいずれかの URL を入力します。
+
+       | [応答 URL] |
+       |-------------|
+       | `https://www.itsltest.com/elogin/AssertionConsumerService.aspx` |
+       | `https://www.itslearning.com/elogin/AssertionConsumerService.aspx` |
+
+    1. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
+
+       | サインオン URL |
+       |-------------|
+       | `https://www.itslearning.com/index.aspx` |
+       | `https://us1.itslearning.com/index.aspx` |
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

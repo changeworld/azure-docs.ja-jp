@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: be4aa228ff5882f0068bb0a7ffb436359e62f80a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8c7235336f00e681ecd2d35a80afb9f0d1db0609
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771614"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086350"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>PowerShell を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -151,13 +151,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
+
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+
 2. データ ファクトリの場所の変数を定義します。
 
     ```powershell

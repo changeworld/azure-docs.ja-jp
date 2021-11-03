@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 222f54157732013309532a1ab38f3f2f8747908e
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: cf5377c872c086675136f5b1a52ceb15c8b3b461
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326527"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039147"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
 
@@ -89,20 +89,20 @@ ms.locfileid: "108326527"
 
 3. `GetMap` 関数に、次の JavaScript コードを追加します。 `<Your Azure Maps Key>` という文字列は、Maps アカウントからコピーした主キーに置き換えてください。
 
-    ```JavaScript
-   //Instantiate a map object
-   var map = new atlas.Map("myMap", {
+    ```javascript
+    //Instantiate a map object
+    var map = new atlas.Map("myMap", {
         //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
         authOptions: {
            authType: 'subscriptionKey',
            subscriptionKey: '<Your Azure Maps Key>'
         }
-   });
-   ```
+    });
+    ```
 
 4. ファイルを保存し、ブラウザーで開きます。 サンプルが表示されます。
 
-     :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
+    :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
 
 ## <a name="define-route-display-rendering"></a>ルート表示レンダリングを定義する
 

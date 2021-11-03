@@ -14,14 +14,17 @@ items:
         items:
           - name: ポータルの使用
             href: deploy-iot-connector-in-azure.md
+  - name: 概念
+    expanded: true
+    items:
+      - name: IoT データ フロー
+        href: iot-data-flow.md
   - name: 操作方法ガイド
     expanded: true
     items:
       - name: Azure IoT Hub を通じてデバイス データを受信する
         href: device-data-through-iot-hub.md
-      - name: IoT データ フロー
-        href: iot-data-flow.md
-      - name: デバイスマッピングを使用する
+      - name: デバイス マッピングを使用する
         href: how-to-use-device-mapping-iot.md
       - name: FHIR 変換先マッピングを使用する
         href: how-to-use-fhir-mapping-iot.md

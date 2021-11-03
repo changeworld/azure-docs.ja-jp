@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52b467401cfffeef4908750caea9c6d3ee88eb1b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93393134"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075032"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 
@@ -81,7 +81,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 
     - [ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
     - [ロード バランサー](../load-balancer/index.yml)
-    - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
+    - [パブリック IP](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     
    その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](../index.yml?pivot=products&panel=network)を参照してください。
 

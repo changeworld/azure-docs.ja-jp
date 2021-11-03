@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 9/23/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: e0380c4d1b4fe9c82d6e9b82922b1a509f7dcdf4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c5057290f21a87a2a8c599de7d3fdd2c8b76ebb6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545605"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046548"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -400,6 +401,10 @@ FROM
     AS [result]
 ```
 
+### <a name="incorrect-syntax-near-not"></a>'NOT' 付近に不適切な構文があります。
+
+このエラーは、列定義に `NOT NULL` 制約を含む列を含む外部テーブルがいくつかあることを示します。 テーブルを更新して、列定義から `NOT NULL` を削除します。
+
 ## <a name="configuration"></a>構成
 
 ### <a name="query-fails-with-please-create-a-master-key-in-the-database-or-open-the-master-key-in-the-session-before-performing-this-operation"></a>クエリが次のエラーで失敗する: この操作を実行するには、マスター キーをデータベースに作成するか、またはセッション内のマスター キーを開いてください。
@@ -492,6 +497,10 @@ Azure Synapse SQL では、次の場合、トランザクション ストアに�
 
 `WITH` 句で指定されている値が分析ストレージ内の基になる Cosmos DB の型と一致せず、暗黙的に変換できません。 スキーマで `VARCHAR` 型を使用してください。
 
+### <a name="resolving-cosmosdb-path-has-failed"></a>CosmosDB パスの解決に失敗しました
+
+エラーが発生した場合: `Resolving CosmosDB path has failed with error 'This request is not authorized to perform this operation.'`、Cosmos DB で [プライベート エンドポイントを使用します] チェックボックスをオンにします。 プライベート エンドポイントを使用して SQL サーバーレスで分析ストアにアクセスできるようにするには、[Azure Cosmos DB 分析ストアのプライベート エンドポイントを構成する](../../cosmos-db/analytical-store-private-endpoints.md#using-synapse-serverless-sql-pools)必要があります。
+
 ### <a name="cosmosdb-performance-issues"></a>Cosmos DB のパフォーマンスの問題
 
 予期しないパフォーマンスの問題が発生している場合は、次のようなベスト プラクティスを適用していることを確認してください。
@@ -502,7 +511,7 @@ Azure Synapse SQL では、次の場合、トランザクション ストアに�
 
 ## <a name="delta-lake"></a>Delta Lake
 
-Delta Lake のサポートは、現在、サーバーレス SQL プールでのパブリック プレビュー中です。 プレビュー中に発生する可能性がある既知の問題があります。
+サーバーレス SQL プールでの Delta Lake のサポートに関して、いくつかの制限事項と既知の問題があります。
 - [OPENROWSET](./develop-openrowset.md) 関数または外部テーブルの場所で、ルート Delta Lake フォルダーを参照していることを確認します。
   - ルート フォルダーには、`_delta_log` という名前のサブフォルダーが必要です。 `_delta_log` フォルダーがない場合、クエリは失敗します。 そのフォルダーがない場合は、Apache Spark プールを使用して [Delta Lake に変換する](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)必要があるプレーンな Parquet ファイルを参照しています。
   - パーティション スキーマを記述するためにワイルドカードを指定しないでください。 Delta Lake パーティションは、Delta Lake クエリによって自動的に識別されます。 
@@ -732,7 +741,7 @@ from sys.server_principals where type in ('E', 'X')
 | データベースあたりのデータベース オブジェクトの最大数 | データベース内のすべてのオブジェクトの合計数は 2,147,483,647 を超えることはできません ([SQL Server データベース エンジンでの制限事項](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)に関するページを参照) |
 | 識別子の最大長 (文字数) | 128 ([SQL Server データベース エンジンでの制限事項](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)に関するページを参照)|
 | 最大クエリ期間 | 30 分 |
-| 結果セットの最大サイズ | 80 GB (現在実行中のすべての同時クエリ間で共有) |
+| 結果セットの最大サイズ | 最大 200 GB (同時実行クエリ間で共有) |
 | 最大コンカレンシー | 制限はなく、クエリの複雑さとスキャンされたデータの量によって異なります。 1 つのサーバーレス SQL プールで、軽量クエリを実行している 1,000 個のアクティブ セッションを同時に処理できますが、クエリがより複雑な場合、または大量のデータをスキャンする場合は数が減少します。 |
 
 ## <a name="next-steps"></a>次のステップ

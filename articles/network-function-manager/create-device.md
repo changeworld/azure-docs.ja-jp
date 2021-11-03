@@ -1,36 +1,30 @@
 ---
-title: 'チュートリアル: Azure Network Function Manager のデバイス リソースを作成する'
-description: このチュートリアルでは、Azure Network Function Manager のデバイス リソースを作成する方法について説明します。
+title: 'クイックスタート: Azure Network Function Manager のデバイス リソースを作成する'
+description: このクイックスタートでは、Azure Network Function Manager のデバイス リソースを作成する方法について説明します。
 author: prmitt
 ms.service: network-function-manager
-ms.topic: tutorial
-ms.date: 06/30/2021
+ms.topic: quickstart
+ms.date: 11/02/2021
 ms.author: prmitt
-ms.openlocfilehash: 41347c5afe8664955fd5b298330f4299244edb6a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2ab440166ba7e5b27f07880c5ac0cb7fef27466a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130263327"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070255"
 ---
-# <a name="tutorial-create-a-network-function-manager-device-resource-preview"></a>チュートリアル: Network Function Manager のデバイス リソースを作成する (プレビュー)
+# <a name="quickstart-create-a-network-function-manager-device-resource"></a>クイックスタート: Network Function Manager のデバイス リソースを作成する
 
-このチュートリアルでは、Azure Network Function Manager (NFM) の **デバイス** リソースを作成する方法について説明します。 Network Function Manager のデバイス リソースは、Azure Stack Edge リソースにリンクされています。 デバイス リソースにより、Azure Stack Edge デバイスに展開されたすべてのネットワーク関数が集計され、Azure Stack Edge に展開されたすべてのネットワーク関数の展開、監視、トラブルシューティング、および一貫した管理操作のための共通サービスが提供されます。 Azure Stack Edge デバイスにネットワーク関数を展開する前に、Network Function Manager のデバイス リソースを作成する必要があります。
-
-このチュートリアルでは、次の作業を行いました。
-
-> [!div class="checklist"]
-> * 前提条件を確認する
-> * デバイス リソースを作成する
-> * 登録キーを取得する
-> * デバイスの登録
+このクイックスタートでは、Azure Network Function Manager (NFM) の **デバイス** リソースを作成する方法について説明します。 Network Function Manager のデバイス リソースは、Azure Stack Edge リソースにリンクされています。 デバイス リソースにより、Azure Stack Edge デバイスに展開されたすべてのネットワーク関数が集計され、Azure Stack Edge に展開されたすべてのネットワーク関数の展開、監視、トラブルシューティング、および一貫した管理操作のための共通サービスが提供されます。 Azure Stack Edge デバイスにネットワーク関数を展開する前に、Network Function Manager のデバイス リソースを作成する必要があります。
 
 ## <a name="prerequisites"></a><a name="pre"></a>前提条件
 
 次の前提条件を確認します。
 
-* [概要](overview.md#prereq)の記事に記載されている前提条件をすべて満たしています。
-* 適切なアクセス許可が割り当てられています。 詳細については、「[リソース プロバイダーの登録とアクセス許可](overview.md#permissions)」を参照してください。
+* アクティブなサブスクリプションが含まれる Azure アカウントがあることを確認します。 アカウントが必要な場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)します。
+* [前提条件と要件](requirements.md)に関する記事に記載されている前提条件がすべて満たされています。
+* 適切なアクセス許可が割り当てられています。 詳細については、「[リソース プロバイダーの登録とアクセス許可](resources-permissions.md)」を参照してください。
 * デバイス リソースを作成する前に「 [リージョンの可用性](overview.md#regions) 」セクションを確認します。
 * Windows クライアントから PowerShell を介して Azure Stack Edge Pro GPU デバイスにリモートで接続できることを確認します。 詳細については、「[PowerShell インターフェイスに接続する](../databox-online/azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)」を参照してください。
 
@@ -40,7 +34,7 @@ ms.locfileid: "130263327"
 
 **デバイス** リソースを作成するには、次の手順を実行します。
 
-1. Microsoft Azure の資格情報を使用して、Azure [プレビュー ポータル](https://aka.ms/AzureNetworkFunctionManager)にサインインします。
+1. Microsoft Azure の資格情報を使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[基本]** タブで、 **[プロジェクトの詳細]** と **[インスタンスの詳細]** にデバイスの設定を構成します。
    :::image type="content" source="./media/create-device/device-settings.png" alt-text="デバイス設定のスクリーンショット。":::
@@ -62,7 +56,7 @@ ms.locfileid: "130263327"
 ## <a name="get-the-registration-key"></a><a name="key"></a>登録キーを取得する
 
 1. デバイスのプロビジョニングに成功したら、デバイス リソースが展開されているリソース グループに移動します。
-1. **デバイス** リソースをクリックします。 登録キーを取得するには、 **[Get registration key]\(登録キーの取得\)** をクリックします。 登録キーを生成するための適切なアクセス許可を持っていることを確認してください。 詳細については、[アクセス許可](overview.md#permissions)に関する記事を参照してください。
+1. **デバイス** リソースをクリックします。 登録キーを取得するには、 **[Get registration key]\(登録キーの取得\)** をクリックします。 登録キーを生成するための適切なアクセス許可を持っていることを確認してください。 詳細については、「[リソース プロバイダーの登録とアクセス許可](resources-permissions.md)」の記事を参照してください。
 
    :::image type="content" source="./media/create-device/register-device.png" alt-text="登録キーのスクリーンショット。" lightbox="./media/create-device/register-device.png":::
 1. 次の手順で使用するデバイス登録キーをメモしておきます。

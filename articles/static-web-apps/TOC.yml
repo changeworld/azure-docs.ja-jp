@@ -130,3 +130,5 @@
       href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
     - name: Quotas (クォータ)
       href: quotas.md
+    - name: よく寄せられる質問
+      href: faq.yml

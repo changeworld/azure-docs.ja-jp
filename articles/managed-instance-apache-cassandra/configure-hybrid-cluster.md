@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 09/08/2021
-ms.openlocfilehash: 00fcf15f94b14b7f16d65fd008ae89b2320c49ba
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0d558330f3c1c5c70fc67b9656beff8eca6dcb40
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775089"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032527"
 ---
-# <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>クイックスタート: Azure Managed Instance for Apache Cassandra (プレビュー) を使用してハイブリッド クラスターを構成する
+# <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra"></a>クイックスタート: Azure Managed Instance for Apache Cassandra を使用してハイブリッド クラスターを構成する
 
 Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターに対して、デプロイとスケーリングの自動化された操作を提供します。 このサービスは、ハイブリッド シナリオの促進と継続的保守管理の削減に役立ちます。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このクイックスタートでは、Azure CLI のコマンドを使用してハイブリッド クラスターを構成する方法について説明します。 既にオンプレミスまたはセルフホステッド環境にデータセンターがある場合は、Azure Managed Instance for Apache Cassandra を使用して、そのクラスターに他のデータセンターを追加して管理することができます。
 

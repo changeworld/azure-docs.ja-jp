@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 07/23/2021
 ms.author: maburd
 ms.reviewer: wiassaf
-ms.openlocfilehash: a229bd769afa30b93cae9ca0f2073ad8a0621cdd
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 14341d2c623ab465e054c83b7b47a100a52f8ece
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001392"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054630"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -290,7 +291,7 @@ CREATE EXTERNAL TABLE コマンドでは、Azure Blob Storage または Azure Da
 
 ### <a name="syntax-for-create-external-table"></a>CREATE EXTERNAL TABLE の構文
 
-```sql
+```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
     ( <column_definition> [ ,...n ] )  
     WITH (
@@ -298,12 +299,21 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
         DATA_SOURCE = external_data_source_name,  
         FILE_FORMAT = external_file_format_name
         [, TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
-    )  
-[;]  
+        [, <reject_options> [ ,...n ] ] 
+    )
+[;] 
 
 <column_definition> ::=
 column_name <data_type>
     [ COLLATE collation_name ]
+
+<reject_options> ::=  
+{  
+    | REJECT_TYPE = value,  
+    | REJECT_VALUE = reject_value,  
+    | REJECT_SAMPLE_VALUE = reject_sample_value,
+    | REJECTED_ROW_LOCATION = '/REJECT_Directory'
+}   
 ```
 
 ### <a name="arguments-create-external-table"></a>CREATE EXTERNAL TABLE の引数
@@ -317,11 +327,10 @@ column_name <data_type>
 CREATE EXTERNAL TABLE では、列名、データ型、照合順序を構成できます。 外部テーブルに対して DEFAULT CONSTRAINT を使用することはできません。
 
 >[!IMPORTANT]
->データ型と列の数を含む列の定義は、外部ファイルのデータと一致している必要があります。 不一致がある場合、実際のデータに対してクエリを実行するときに、ファイルの行が拒否されます。
+>データ型と列の数を含む列の定義は、外部ファイルのデータと一致している必要があります。 不一致がある場合、実際のデータに対してクエリを実行するときに、ファイルの行が拒否されます。 拒否する行の動作を制御するには、「拒否オプション」を参照してください。
 
 Parquet ファイルからの読み取りの場合は、読み取りたい列だけを指定して、残りをスキップすることができます。
 
-#### <a name="location"></a>LOCATION
 
 LOCATION = '*folder_or_filepath*'
 
@@ -330,14 +339,61 @@ Azure Blob Storage にある実際のデータのフォルダーまたはファ�
 ![外部テーブルの再帰型データ](./media/develop-tables-external-tables/folder-traversal.png)
 
 Hadoop 外部テーブルとは異なり、ネイティブ外部テーブルでは、パスの最後に /** を指定しない限り、サブフォルダーが返されません。 この例では、LOCATION='/webdata/' である場合、サーバーレス SQL プールのクエリで mydata.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。 Hadoop テーブルでは、サブフォルダー内のすべてのファイルが返されます。
- 
+
 Hadoop 外部テーブルとネイティブ外部テーブルではどちらも、名前が下線 (_) またはピリオド (.) で始まるファイルはスキップされます。
 
-#### <a name="data_source"></a>DATA_SOURCE
 
-DATA_SOURCE = *external_data_source_name*: 外部データの場所が含まれている外部データ ソースの名前を指定します。 外部データ ソースを作成するには、[CREATE EXTERNAL DATA SOURCE](#create-external-data-source) を使用します。
+DATA_SOURCE = *external_data_source_name*
 
-FILE_FORMAT = *external_file_format_name*: 外部データのファイルの種類と圧縮方法を格納する外部ファイル形式のオブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT](#create-external-file-format) を使用します。
+外部データの場所が含まれている外部データ ソースの名前を指定します。 外部データ ソースを作成するには、[CREATE EXTERNAL DATA SOURCE](#create-external-data-source) を使用します。
+
+
+FILE_FORMAT = *external_file_format_name*
+
+外部データのファイル形式や圧縮方法を格納する外部ファイル形式オブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT](#create-external-file-format) を使用します。
+
+拒否オプション 
+
+> [!NOTE]
+> 拒否された行機能はパブリック プレビュー段階にあります。
+> 拒否された行機能は、区切られたテキスト ファイルと PARSER_VERSION 1.0 で動作することに注意してください。
+
+外部データ ソースから取得したダーティ レコードがどのように処理されるかを決める reject パラメーターを指定できます。 データ レコードが "ダーティ" と見なされるのは、実際のデータ型が外部テーブルの列の定義と一致しない場合です。
+
+拒否オプションを指定も変更もしないと、既定値が使用されます。 reject パラメーターに関するこの情報は、CREATE EXTERNAL TABLE ステートメントを使用して外部テーブルを作成するときに、追加メタデータとして格納されます。 以降の SELECT ステートメントまたは SELECT INTO SELECT ステートメントで外部テーブルからデータを選択するとき、実際のクエリが失敗するまでに拒否できる行数は、拒否オプションを使用して決定されます。 拒否のしきい値を超えるまで、クエリの (部分的な) 結果が返されます。 その後、適切なエラー メッセージと共に失敗します。
+
+
+REJECT_TYPE = **value** 
+
+現時点で唯一サポートされている値です。 REJECT_VALUE オプションがリテラル値として指定されていることを明確にします。
+
+value 
+
+REJECT_VALUE はリテラル値です。 拒否された行が *reject_value* を超えると、クエリは失敗します。
+
+たとえば、REJECT_VALUE = 5 で REJECT_TYPE = value の場合、SELECT クエリは、5 行を拒否した後に失敗します。
+
+
+REJECT_VALUE = *reject_value* 
+
+クエリが失敗するまでに拒否できる行数を指定します。
+
+REJECT_TYPE = value の場合、*reject_value* は 0 から 2,147, 483,647 の範囲の整数にする必要があります。
+
+
+REJECTED_ROW_LOCATION = *<ディレクトリの場所>*
+
+外部データ ソース内のディレクトリを指定します。拒否された行と該当エラー ファイルをそこに書き込みます。 指定したパスが存在しない場合、そのパスが自動的に作成されます。 "_rejectedrows" という名前で子ディレクトリが作成されます。"_ " 文字があることで、場所パラメーターで明示的に指定されない限り、他のデータ処理ではこのディレクトリがエスケープされます。 このディレクトリ内には、読み込み送信時刻に基づいて作成されたフォルダーが存在し、これは次の形式になっています。YearMonthDay_HourMinuteSecond_StatementID (例: 20180330-173205-559EE7D2-196D-400A-806D-3BF5D007F891)。 ステートメント id を使用して、フォルダーをその生成元のクエリと関連付けることができます。 このフォルダーには、2 つのファイルが書き込まれます。具体的には、error.json ファイルとデータ ファイルです。 
+
+error.json ファイルには、拒否された行に関連する、発生したエラーの json 配列が含まれています。 エラーを表す各要素には、次の属性が含まれています。
+
+| 属性 | 説明                                                  |
+| --------- | ------------------------------------------------------------ |
+| エラー     | 行が拒否された理由。                                  |
+| 行       | ファイル内の拒否された行の序数。                         |
+| 列    | 拒否された列の序数。                              |
+| 値     | 拒否された列の値。 値が 100 文字を超える場合は、最初の 100 文字のみが表示されます。 |
+| File      | 行が属しているファイルのパス。                            |
 
 #### <a name="table_options"></a>TABLE_OPTIONS
 

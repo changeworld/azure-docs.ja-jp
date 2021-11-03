@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
+ms.reviewer: nhoyadx@gmail.com, v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: a4f13f7b01ffac1aa481f6b3d56b7ecd1cce3011
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b15542db12ea260f6cf3e1af6627867887f038d4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350587"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039052"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>クイック スタート:Bing Web Search REST API と Go を使用して Web を検索する
 

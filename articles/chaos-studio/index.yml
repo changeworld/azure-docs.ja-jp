@@ -1,0 +1,46 @@
+### YamlMime:Landing
+title: Azure Chaos Studio のドキュメント
+summary: Azure Chaos Studio は、リージョンがダウンした場合やアプリケーションの障害によって VM で100% の CPU 使用率が発生した場合など、実際のインシデントに対するアプリケーションとサービスの回復性を測定、理解、構築するのに役立つ Azure サービスです。 Chaos Studio を使用すると、サービスに対してフォールトを挿入し、そのサービスが中断にどのように対応するかを監視するカオス エンジニアリング実験を実行できます。 Chaos の実験は、アーキテクチャの選択を検証し、サービスの信頼性を向上させるのに役立ちます。 Chaos の実験は、手動の BCDR ドリルや "ゲームの日" を実行するためにアドホックで実行することも、プログラムでコード フローをゲートするための CI/CD パイプラインの一部として実行することもできます。
+metadata:
+  title: Azure Chaos Studio のドキュメント - チュートリアル、API リファレンス
+  description: Azure でカオス エンジニアリングとフォールト挿入を使用して、サービスの回復性を構築するためのソリューションである Azure Chaos Studio について説明します。
+  ms.service: chaos-studio
+  ms.topic: landing-page
+  author: johnkemnetz
+  ms.author: johnkem
+  ms.date: 08/24/2021
+  ms.openlocfilehash: 8ae0b6d778d71b05b45cdc23d27be26bd6b0cfa9
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088360"
+landingContent:
+- title: Azure Chaos Studio について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Chaos Studio とは
+      url: chaos-studio-overview.md
+    - text: カオス エンジニアリングとは
+      url: chaos-studio-chaos-engineering-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: サービスダイレクト フォールトを使用するカオス実験を作成して、Azure Cosmos DB インスタンスをフェールオーバーする
+      url: chaos-studio-tutorial-service-direct.md
+    - text: Azure Chaos Studio でエージェントベース フォールトを使用する実験を作成する
+      url: chaos-studio-tutorial-agent-based.md
+    - text: Azure Chaos Studio で AKS Chaos Mesh フォールトを使用する実験を作成する
+      url: chaos-studio-tutorial-aks.md
+- title: 関連項目
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 障害ライブラリ
+      url: chaos-studio-fault-library.md
+    - text: フォールト プロバイダー
+      url: chaos-studio-fault-providers.md
+    - text: REST API のドキュメント
+      url: https://docs.microsoft.com/rest/api/chaosstudio

@@ -1,52 +1,59 @@
 ---
-title: Azure database for PostgreSQL の登録とスキャン
-description: このチュートリアルでは、Azure Purview で Azure database for PostgreSQL データベースをスキャンする方法について説明します。
+title: Azure Database for PostgreSQL に接続して管理する
+description: このガイドでは、Azure Purview で Azure Database for PostgreSQL に接続し、Azure Purview の機能を使用して Azure Database for PostgreSQL ソースをスキャンおよび管理する方法について説明します。
 author: evwhite
 ms.author: evwhite
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: tutorial
-ms.date: 06/30/2021
-ms.openlocfilehash: abc676fbff551781f720db5937a9c35c7c8f81ea
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 723a0121c57d0601c77c2337f6ab6a57feb92fe7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209807"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037874"
 ---
-# <a name="register-and-scan-an-azure-database-for-postgresql"></a>Azure database for PostgreSQL の登録とスキャン
+# <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Azure Purview で Azure Database for PostgreSQL に接続して管理する
 
-この記事では、Azure database for PostgreSQL を登録してスキャンする方法について説明します。
-
+この記事では、Azure Database for PostgreSQL を登録する方法と、Azure Purview で Azure Database for PostgreSQL を認証して操作する方法の概要を説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
-- Azure databases for PostgreSQL のメタデータと分類をキャプチャする **完全および増分スキャン**。
 
-- ADF コピーとデータフロー アクティビティのためのデータ アセット間の **系列**。
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | [Data Factory のデータ系列](how-to-link-azure-data-factory.md) |
 
-### <a name="known-limitations"></a>既知の制限事項
+## <a name="prerequisites"></a>前提条件
 
-Purview では、Azure database for PostgreSQL の SQL 認証のみをサポートしています。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+* アクティブな [Purview リソース](create-catalog-portal.md)。
 
-## <a name="prerequisites"></a>必須コンポーネント
+* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
-1. Purview アカウントをまだお持ちでない場合は、新たに作成します。
+## <a name="register"></a>登録
 
-2. Purview アカウントと Azure database for PostgreSQL の間のネットワーク アクセス。
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に Azure Database for PostgreSQL を登録する方法について説明します。
 
-#### <a name="sql-authentication-for-an-azure-database-for-postgresql"></a>Azure database for PostgreSQL の SQL 認証
+### <a name="authentication-for-registration"></a>登録の認証
+
+現時点では、Azure Database for PostgreSQL を管理および操作するためには、SQL 認証のみがサポートされています。
+
+#### <a name="sql-authentication"></a>SQL 認証
 
 Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 Azure database for PostgreSQL のログインが使用可能になっていない場合は、「[接続とクエリ](../postgresql/connect-python.md)」に関するページの手順に従って、ログイン情報を作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
 
+1. Azure Key Vault をまだお持ちではない場合は、[このガイドに従って Azure Key Vault を作成](../key-vault/certificates/quick-create-portal.md)してください。
 1. Azure portal で、キー コンテナーに移動します
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[+ 生成/インポート]** を選択し、**名前** と **値** を Azure PostgreSQL Database の "*パスワード*" として入力します
 1. **[作成]** を選択して完了します。
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、**ユーザー名** と **パスワード** を使用して、SQL 認証型の [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+1. 最後に、**ユーザー名** と **パスワード** を使用して、SQL 認証型の [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、ご自分のスキャンを設定します。
 
-## <a name="register-an-azure-database-for-postgresql-data-source"></a>Azure database for PostgreSQL データ ソースの登録
+### <a name="steps-to-register"></a>登録する手順
 
 新しい Azure database for PostgreSQL をデータ カタログに登録するには、次の手順を実行します。
 
@@ -64,12 +71,15 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 
 1. データ ソースの **名前** を入力します。 これがご自分のカタログのこのデータ ソースの表示名になります。
 1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択し、 **[Azure subscription]\(Azure サブスクリプション\)** ドロップダウン ボックスから適切なサブスクリプション、 **[Server name]\(サーバー名\)** ドロップダウン ボックスから適切なサーバーを選択します。
-1. **[登録]** を選択してデータ ソースを登録します。 
- 
+1. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-azure-postgresql/02-register-source-azure-postgres.png" alt-text="ソースの登録のオプション" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="scan"></a>スキャン
+
+次の手順に従って、Azure Database for PostgreSQL データベースをスキャンして、資産を自動的に識別し、データを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
+
+### <a name="create-and-run-scan"></a>スキャンの作成と実行
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
@@ -99,11 +109,10 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 
 [!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
-> [!NOTE]
-> * スキャンを削除しても、以前のスキャンから作成されたカタログ アセットは削除されません。
-> * Purview の [スキーマ] タブの説明を編集した後に、ソース テーブルが変更され、ソース テーブルを再スキャンした場合、アセットはスキーマの変更によって更新されなくなります。
-
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)
+ソースの登録が完了したので、以下のガイドに従って Azure Purview とご利用のデータの詳細について学習します。
+
+- [Azure Purview のデータ分析情報](concept-insights.md)
+- [Azure Purview のデータ系列](catalog-lineage-user-guide.md)
+- [Data Catalog の検索](how-to-search-catalog.md)

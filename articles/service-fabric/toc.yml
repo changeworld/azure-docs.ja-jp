@@ -402,6 +402,12 @@
       items:
         - name: 管理対象クラスターの構成
           href: how-to-managed-cluster-configuration.md
+        - name: 管理対象クラスターへの接続
+          href: how-to-managed-cluster-connect.md
+        - name: 管理対象クラスターで自動スケールを構成する
+          href: how-to-managed-cluster-autoscale.md
+        - name: 管理対象クラスターでのノードの種類を構成する
+          href: how-to-managed-cluster-modify-node-type.md
         - name: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する
           href: how-to-managed-cluster-vmss-extension.md
         - name: 管理対象クラスターのネットワーク設定を構成する
@@ -498,6 +504,8 @@
                   href: service-fabric-cross-availability-zones.md
                 - name: ステートレス ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
                   href: service-fabric-stateless-node-types.md
+                - name: 管理対象データ ディスクを使用した Azure Service Fabric クラスターのデプロイ
+                  href: service-fabric-managed-disk.md
                 - name: Azure Active Directory 認証を設定する
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: カスタム クラスター テンプレートの作成

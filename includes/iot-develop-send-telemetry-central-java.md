@@ -7,32 +7,32 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: bade266f219acfbd1636ba6650b2554383b5a4c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b62bba14bd2a83e3776cfdde5ca8ef8c96fe08f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128910187"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032762"
 ---
-[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それを IoT Central に安全に接続して、テレメトリを送信します。
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に Azure IoT device SDK サンプルを使用して、温度コントローラーを作成し、それを IoT Central に安全に接続し、テレメトリを送信します。 温度コントローラーのサンプル アプリケーションはローカル コンピューター上で動作し、センサー データをシミュレートして IoT Central に送信します。
 
 ## <a name="prerequisites"></a>前提条件
 - Java SE Development Kit 8 以降がインストールされた開発マシン。 複数のプラットフォーム用の Java 8 (LTS) JDK は、「[OpenJDK の Zulu ビルドのダウンロード](https://www.azul.com/downloads/zulu-community/)」からダウンロードできます。 インストーラーで、 **[Add to Path]\(パスに追加\)** オプションを選択します。
 - [Apache Maven 3](https://maven.apache.org/download.cgi)。 ダウンロードをローカル フォルダーに抽出した後、Maven */bin* フォルダーへの完全なパスを Windows PATH 変数に追加します。
-- [Java 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) GitHub リポジトリのローカル コピー。 リポジトリのコピーをダウンロードして展開します: [ZIP をダウンロード](https://github.com/Azure/azure-iot-sdk-java/archive/refs/heads/master.zip)します。
+- [Java 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) GitHub リポジトリのローカル コピー。 リポジトリのコピーをダウンロードして展開します: [ZIP をダウンロード](https://github.com/Azure/azure-iot-sdk-java/archive/refs/heads/main.zip)します。
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-simulated-device"></a>シミュレートされたデバイスを実行する
-このセクションでは、ローカル環境を構成し、Azure IoT Java device SDK をインストールし、シミュレートされた温度コントローラーを作成するサンプルを実行します。
+## <a name="run-a-device"></a>デバイスを実行する
+このセクションでは、ローカル環境を設定し、Azure IoT Java device SDK をインストールし、温度コントローラーを作成するサンプルを実行します。
 
 ### <a name="configure-your-environment"></a>環境を構成する
 
 1. Windows CMD、PowerShell、または Bash などのコンソールを開きます。
 
-1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 シミュレートされたデバイスは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
+1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 このデバイスでは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
 
     **Windows CMD**
 
@@ -81,12 +81,12 @@ ms.locfileid: "128910187"
     cd device/iot-device-samples/pnp-device-sample/temperature-controller-device-sample
     ```
 
-1. コンソールで、次のコード サンプルを実行します。 このサンプルは、サーモスタット センサーを備えたシミュレートされた温度コントローラーを作成します。
+1. コンソールで、次のコード サンプルを実行します。 このサンプルでは、サーモスタット センサーを備えた温度コントローラーを作成します。
     ```console
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
     ```
 
-    シミュレートされたデバイスは、IoT Central アプリケーションに接続した後、アプリケーション内で作成されたデバイス インスタンスに接続して、テレメトリの送信を開始します。 最初のプロビジョニングの詳細が完了すると、コンソールで温度コントローラーのテレメトリの出力が開始されます。
+    デバイスを IoT Central アプリケーションに接続すると、そのアプリケーションで作成したデバイス インスタンスにデバイスが接続され、テレメトリの送信を開始します。 最初のプロビジョニングの詳細が完了すると、コンソールで温度コントローラーのテレメトリの出力が開始されます。
     
     ```output
     2021-05-13 15:39:26.411 DEBUG Mqtt:253 - Sending MQTT SUBSCRIBE packet for topic $iothub/twin/res/#

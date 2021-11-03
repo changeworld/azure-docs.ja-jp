@@ -3,14 +3,17 @@ title: デバイス ビルダーのサービス概要
 description: Defender for IoT の機能とサービスについて詳しく学習し、Defender for IoT によって包括的な IoT セキュリティがどのように実現されるかを理解します。
 ms.topic: overview
 ms.date: 07/08/2021
-ms.openlocfilehash: 03601eebde5a4da400f760cbdcbe44afb45c202e
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fe233733a217ff4294e72b67406eed3f7f2addce
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113516557"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080005"
 ---
 # <a name="welcome-to-azure-defender-for-iot-for-device-builders"></a>デバイス ビルダー向け Azure Defender for IoT へようこそ
+
+[!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
 セキュリティは、IoT 実装者にとってほぼ普遍的な問題です。 IoT デバイスには、エンドポイント監視、セキュリティ体制管理、および脅威検出 (これらすべてに非常に独特なパフォーマンス要件があります) に対する固有のニーズがあります。 
 

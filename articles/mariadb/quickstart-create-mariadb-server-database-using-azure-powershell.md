@@ -7,13 +7,13 @@ ms.date: 05/26/2020
 ms.topic: quickstart
 ms.service: mariadb
 ms.devlang: azurepowershell
-ms.custom: devx-track-azurepowershell - mvc - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 24b4c9540756b1dff503fec969511d866e7ac75d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.custom: devx-track-azurepowershell, mvc, mode-api
+ms.openlocfilehash: 30e405f5372b18e787cfefc86fe84a4c061f5bf9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692413"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082514"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>クイック スタート:PowerShell を使用した Azure Database for MariaDB サーバーの作成
 
