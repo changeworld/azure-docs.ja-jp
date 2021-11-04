@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: d55c178456336c5a1c81845ae3eee611e8d9ee33
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 432e65d3d2f3dc3d4bc71157f165311e7fad87e9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092341"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476663"
 ---
 # <a name="precise-answering"></a>正確な回答
 
@@ -38,7 +38,3 @@ ms.locfileid: "131092341"
 ## <a name="deploying-a-bot"></a>ボットのデプロイ
 
 ボットを発行すると、自分のアプリケーションで既定で正確な回答を、回答文章と共に短い回答を表示して提供できるようになります。 応答で正確な回答を使用する (AnswerSpan) 方法については、API リファレンスの「REST API」を参照してください。 Bot アプリ サービスを使用してテンプレートを更新すると、ユーザーは他のエクスペリエンスも柔軟に選択できるようになります。
-
-## <a name="language-support"></a>言語のサポート
-
-現時点では、正確な回答機能は、英語のみでサポートされています。

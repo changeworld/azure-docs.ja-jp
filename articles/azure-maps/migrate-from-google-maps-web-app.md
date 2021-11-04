@@ -252,9 +252,9 @@ Google マップをローカライズするには、言語と地域のパラメ�
 
 ![Google Maps のローカライズ](media/migrate-google-maps-web-app/google-maps-localization.png)
 
-#### <a name="after-azure-maps"></a>後: Azure Maps
+#### <a name="after-azure-maps&quot;></a>後: Azure Maps
 
-Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバル *atlas* 名前空間に追加します。 これにより、アプリ内のすべてのマップ コントロール インスタンスが、既定でこれらの設定になります。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定します。
+Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバル *atlas* 名前空間に追加します。 これにより、アプリ内のすべてのマップ コントロール インスタンスが、既定でこれらの設定になります。 以下では、言語をフランス語 (&quot;fr-FR") に、地域ビューを "auto" に設定します。
 
 ```javascript
 atlas.setLanguage('fr-FR');

@@ -1,17 +1,17 @@
 ---
 title: クライアントを Microsoft Azure FXT Edge Filer クラスターにマウントする
 description: NFS クライアント マシンを Azure FXT Edge Filer ハイブリッド ストレージ キャッシュにマウントする方法
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkel
-ms.openlocfilehash: 77663500c6a3e4c432506a5859892506f8995de1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: femila
+ms.openlocfilehash: 831d023251d4de4d56d35eeb8f81f8d321d143dc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552606"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070643"
 ---
 # <a name="tutorial-mount-the-cluster"></a>チュートリアル:クラスターのマウント
 

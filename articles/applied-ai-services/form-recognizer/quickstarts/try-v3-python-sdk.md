@@ -7,46 +7,35 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 261b0d20ae5e5f2438b559bc79c271b717606083
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ced6bd08895993c18a305418bd68ae8a0557301f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161152"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026678"
 ---
-# <a name="quickstart-form-recognizer-python-client-library-sdks-v30--preview"></a>クイックスタート: Form Recognizer Python クライアント ライブラリ SDK v3.0 | プレビュー
-
-Python プログラミング言語を使用して、Azure Form Recognizer の使用を開始します。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築することができる [Azure Applied AI Services](../../../applied-ai-services/index.yml) クラウド サービスです。 Form Recognizer は、REST API または SDK を介して使用できます。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
+# <a name="quickstart-python-client-library-sdk-v30--preview"></a>クイックスタート: Python クライアント ライブラリ SDK v3.0 | プレビュー
 
 >[!NOTE]
-> Form Recognizer v3.0 は現在、パブリック プレビュー段階です。 一部の機能がサポートされなかったり、機能が制限されたりすることがあります。
+> Form Recognizer v3.0 は現在、パブリック プレビュー段階です。 一部の機能がサポートされなかったり、機能が制限されたりすることがあります。 
 
 [リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-formrecognizer/latest/azure.ai.formrecognizer.html) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-Azure Cognitive Services Form Recognizer は、機械学習を使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウド サービスです。 お使いのワークフローとアプリケーションに Microsoft のクライアント ライブラリ SDK を統合して、Form Recognizer モデルを簡単に呼び出すことができます。
+ Python プログラミング言語を使用して、Azure Form Recognizer の使用を開始します。 Azure Form Recognizer は、機械学習を使用してドキュメントからフォーム フィールド、テキスト、テーブルを抽出して分析するクラウドベースの Azure Applied AI Service です。 お使いのワークフローとアプリケーションに Microsoft のクライアント ライブラリ SDK を統合して、Form Recognizer モデルを簡単に呼び出すことができます。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
 
-### <a name="form-recognizer-models"></a>Form Recognizer モデル
-
-Python SDK では、次のモデルと機能がサポートされています。
-
-* 🆕一般的なドキュメント - テキスト、テーブル、構造、キーと値のペア、名前付きエンティティを分析および抽出します。|
-* レイアウト - モデルをトレーニングすることなく、フォーム ドキュメント内のラジオ ボタンやチェック ボックスなどのテーブル、行、単語、選択マークを分析および抽出します。
-* カスタム - 独自のフォームの種類でトレーニングしたモデルを使用して、カスタム フォームからフォーム フィールドや他のコンテンツを分析および抽出します。
-* 請求書 - 事前トレーニング済みの請求書モデルを使用して、請求書から共通フィールドを分析および抽出します。
-* レシート - 事前トレーニング済みのレシート モデルを使用して、レシートから共通フィールドを分析および抽出します。
-* 身分証明書 - 事前トレーニング済みの身分証明書モデルを使用して、パスポートや運転免許証などの身分証明書から共通フィールドを分析および抽出します。
-* 名刺 - 事前トレーニング済みの名刺モデルを使用して、名刺から共通フィールドを分析および抽出します。
+Azure Form Recognizer の機能と開発オプションの詳細については、「[概要](../overview.md#form-recognizer-features-and-development-options)」ページを参照してください。
 
 このクイックスタートでは、次の機能を使用して、フォームとドキュメントからデータと値を分析および抽出します。
 
-* [**一般的なドキュメント**](#try-it-general-document-model)
+* [🆕**一般的なドキュメント**](#try-it-general-document-model): テキスト、テーブル、構造、キーと値のペア、名前付きエンティティを分析および抽出します。
 
-* [**Layout**](#try-it-layout-model)
+* [**レイアウト**](#try-it-layout-model): モデルをトレーニングすることなく、フォーム ドキュメント内のテーブル、行、単語、およびラジオ ボタンやチェック ボックスなどの選択マークを分析および抽出します。
 
-* [**事前構築済みの請求書**](#try-it-prebuilt-invoice-model)
+* [**事前構築済みの請求書**](#try-it-prebuilt-model): 事前トレーニング済みの請求書モデルを使用して、請求書から共通フィールドを分析および抽出します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,9 +48,9 @@ Python SDK では、次のモデルと機能がサポートされています。
 * Cognitive Services または Form Recognizer リソース。 Azure サブスクリプションを用意できたら、Azure portal で[単一サービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)または[マルチサービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)の Form Recognizer リソースを作成し、キーとエンドポイントを取得します。 Free 価格レベル (<ph id="ph1">`F0`</ph>) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 > [!TIP]
-> 1 つのエンドポイント/キーで複数の Cognitive Services にアクセスする予定の場合は、Cognitive Services リソースを作成します。 Form Recognizer アクセスのみの場合は、Form Recognizer リソースを作成します。 [Azure Active Directory 認証](/azure/active-directory/authentication/overview-authentication)を使用する場合は、単一サービス リソースが必要になることに注意してください。
+> 1 つのエンドポイント/キーで複数の Cognitive Services にアクセスする予定の場合は、Cognitive Services リソースを作成します。 Form Recognizer アクセスのみの場合は、Form Recognizer リソースを作成します。 [Azure Active Directory 認証](../../../active-directory/authentication/overview-authentication.md)を使用する場合は、単一サービス リソースが必要になることに注意してください。
 
-* リソースがデプロイされたら、 **[リソースに移動]** をクリックします。 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+* リソースがデプロイされたら、 **[リソースに移動]** を選択します。 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
 
   :::image type="content" source="../media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
 
@@ -105,12 +94,26 @@ key = "YOUR_FORM_RECOGNIZER_SUBSCRIPTION_KEY"
 
 ```
 
+### <a name="select-a-code-sample-to-copy-and-paste-into-your-application"></a>コピーしてアプリケーションに貼り付けるコード サンプルを選択します。
+
+* [**一般的なドキュメント**](#try-it-general-document-model)
+
+* [**Layout**](#try-it-layout-model)
+
+* [**事前構築済みの請求書**](#try-it-prebuilt-model)
+
+> [!IMPORTANT]
+>
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、セキュリティで保護された方法を使用して資格情報を格納し、アクセスします。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services/cognitive-services-security.md)に関するページを参照してください。
+
 ## <a name="try-it-general-document-model"></a>**試してみる**: 一般的なドキュメント モデル
 
 > [!div class="checklist"]
 >
 > * この例では、**URI にフォーム ドキュメント ファイル** が必要になります。 このクイックスタートでは、Microsoft の[サンプル フォーム ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf)を使用できます。
-> * ファイルの先頭付近にある `formUrl` 変数にファイル URI 値を追加します。
+> * URI で特定のファイルを分析するには、`begin_analyze_document` メソッドを使用して、モデル ID として `prebuilt-document` を渡します。返される値は、送信されたドキュメントに関するデータを含む `result` オブジェクトです。
+> * ファイルの先頭付近にある `formUrl` 変数にファイル URI 値が追加されています。
+> * わかりやすくするために、サービスから返されるエンティティ フィールドはすべてここには表示されません。 サポートされているすべてのフィールドと対応する型の一覧については、[一般ドキュメント](../concept-general-document.md#named-entity-recognition-ner-categories)の概念に関するページを参照してください。
 
 ### <a name="add-the-following-code-to-your-general-document-application-on-the-line-below-the-key-variable"></a>一般的なドキュメント アプリケーションの `key` 変数の下の行に、次のコードを追加する
 
@@ -242,7 +245,8 @@ if __name__ == "__main__":
 > [!div class="checklist"]
 >
 > * この例では、**URI にフォーム ドキュメント ファイル** が必要になります。 このクイックスタートでは、Microsoft の[サンプル フォーム ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf)を使用できます。
-> * ファイルの先頭付近にある `formUrl` 変数にファイル URI 値を追加します。
+> * ファイルの先頭付近にある `formUrl` 変数にファイル URI 値が追加されています。
+> * URI で特定のファイルを分析するには、`begin_analyze_document` メソッドを使用して、モデル ID として `prebuilt-layout` を渡します。返される値は、送信されたドキュメントに関するデータを含む `result` オブジェクトです。
 
 ### <a name="add-the-following-code-to-your-layout-application-on-the-line-below-the-key-variable"></a>レイアウト アプリケーションの `key` 変数の下の行に、次のコードを追加する
 
@@ -275,25 +279,27 @@ def analyze_layout():
 
 ```
 
-## <a name="try-it-prebuilt-invoice-model"></a>**試してみる**: 事前構築済みの請求書モデル
+## <a name="try-it-prebuilt-model"></a>**試してみる**: 事前構築済みのモデル
 
-このサンプルでは、請求書を例に、事前トレーニング済みのモデルを使用して、特定の種類の共通ドキュメントのデータを分析する方法を示します。 [**請求書のキーと値のペア**](../concept-invoice.md#key-value-pair-extraction)の一覧については、事前構築済みの概念のページを "*参照してください*"
+このサンプルでは、請求書を例に、事前トレーニング済みのモデルを使用して、特定の種類の共通ドキュメントのデータを分析する方法を示します。
 
 > [!div class="checklist"]
 >
-> * この例では、**URI に請求書ドキュメント ファイル** が必要になります。 このクイックスタートでは、Microsoft の[サンプル請求書ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf)を使用できます。
-> * Main メソッドの上部にある `string fileUri` 変数にファイル URI 値を追加します。
+> * この例では、事前構築済みモデルを使用して請求書ドキュメントを分析します。 このクイックスタートでは、Microsoft の[サンプル請求書ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf)を使用できます。
+> * ファイルの先頭にある `string fileUri` 変数にファイル URI 値が追加されています。
+> * URI で特定のファイルを分析するには、`begin_analyze_document` メソッドを使用して、モデル ID として `prebuilt-invoice` を渡します。返される値は、送信されたドキュメントに関するデータを含む `result` オブジェクトです。
+> * わかりやすくするために、サービスから返されるキーと値のペアはすべてここには表示されません。 サポートされているフィールドと対応する型の一覧については、[請求書](../concept-invoice.md#field-extraction)の概念に関するページを参照してください。
 
 ### <a name="choose-the-invoice-prebuilt-model-id"></a>請求書の事前構築済みモデル ID を選択する
 
 請求書に限らず、複数の事前構築済みモデルから選択できます。各モデルには、独自のサポートされているフィールドのセットが含まれます。 分析操作に使用するモデルは、分析するドキュメントの種類によって異なります。 Form Recognizer サービスで現在サポートされている事前構築済みモデルのモデル ID を次に示します。
 
-* **prebuilt-invoice**: 請求書からテキスト、選択マーク、テーブル、キーと値のペア、キー情報を抽出します。
-* **prebuilt-businessCard**: 名刺からテキストとキー情報を抽出します。
-* **prebuilt-idDocument**: 運転免許証と国際パスポートからテキストとキー情報を抽出します。
-* **prebuilt-receipt**: レシートからテキストとキー情報を抽出します。
+* [**prebuilt-invoice**](../concept-invoice.md): 請求書からテキスト、選択マーク、テーブル、キーと値のペア、キー情報を抽出します。
+* [**prebuilt-receipt**](../concept-receipt.md): レシートからテキストとキー情報を抽出します。
+* [**prebuilt-idDocument**](../concept-id-document.md): 運転免許証と国際パスポートからテキストとキー情報を抽出します。
+* [**prebuilt-businessCard**](../concept-business-card.md): 名刺からテキストとキー情報を抽出します。
 
-### <a name="add-the-following-code-to-your-prebuilt-invoice-application-below-the-document_analysis_client-variable"></a>事前構築済みの請求書アプリケーションの `document_analysis_client` 変数の下に、次のコードを追加する
+### <a name="add-the-following-code-to-your-prebuilt-invoice-application-below-the-key-variable"></a>事前構築済みの請求書アプリケーションの `key` 変数の下に、次のコードを追加する
 
 ```python
 
@@ -575,9 +581,9 @@ if __name__ == "__main__":
 
 1. **form_recognizer_quickstart.py** ファイルがあるフォルダーに移動します。
 
-1. ターミナルで次のように入力します。
+1. ご利用のターミナルで、次のコマンドを入力します。
 
-```python
+```console
 python form_recognizer_quickstart.py
 ```
 
@@ -587,3 +593,6 @@ python form_recognizer_quickstart.py
 
 > [!div class="nextstepaction"]
 > [REST API v3.0 リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)
+
+> [!div class="nextstepaction"]
+> [Azure Form Recognizer Python リファレンス ライブラリ](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-formrecognizer/3.2.0b1/index.html)

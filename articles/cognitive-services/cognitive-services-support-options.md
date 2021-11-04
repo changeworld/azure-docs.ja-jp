@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/28/2021
+ms.date: 10/8/2021
 ms.author: pafarley
-ms.openlocfilehash: 4673d15b9e64e8e4bb54a71f9d2383da78080380
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fa9a1391b6f222156c94a829586309220838ea89
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131434448"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058352"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
 
@@ -22,7 +22,7 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 今ま
 ## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
 <div class='icon is-large'>
-    <img alt='Azure support' src='/media/logos/logo_azure.svg'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
 </div>
 
 クラウドへの移行を始めたばかりの開発者の方も、ビジネスクリティカルで戦略的なアプリケーションの展開を行う大企業のお客様も、さまざな [Azure サポート オプションをご確認し、最適なプランをお選びください](https://azure.microsoft.com/support/plans)。 Azure ユーザーは、Azure portal でサポート要求を作成し、管理できます。
@@ -52,7 +52,7 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 今ま
 * [Immersive Reader](/answers/topics/azure-immersive-reader.html)
 * [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
 * [QnA Maker](/answers/topics/azure-qna-maker.html)
-* [言語サービス](/answers/topics/azure-text-analytics.html)
+* [Text Analytics](/answers/topics/azure-text-analytics.html)
 * [Translator](/answers/topics/azure-translator.html)
 
 **Speech**
@@ -70,7 +70,7 @@ Azure Cognitive Services の機能を調べ始めたばかりですか。 今ま
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する
 
 <div class='icon is-large'>
-    <img alt='Stack Overflow' src='/media/logos/logo_stackoverflow.svg'>
+    <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
 開発に関する質問について、最大のコミュニティ開発者エコシステムから回答を得るには、Stack Overflow に質問を投稿してください。
@@ -92,7 +92,7 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
 * [Immersive Reader](https://stackoverflow.com/search?q=azure+immersive+reader)
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
-* [言語サービス](https://stackoverflow.com/search?q=azure+text+analytics)
+* [Text Analytics](https://stackoverflow.com/search?q=azure+text+analytics)
 * [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Speech**
@@ -126,7 +126,7 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
 * [Immersive Reader](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 * [Language Understanding (LUIS)](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 * [QnA Maker](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
-* [言語サービス](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
+* [Text Analytics](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 * [Translator](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 
 **Speech**

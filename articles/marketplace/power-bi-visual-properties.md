@@ -8,20 +8,20 @@ ms.service: powerbi
 ms.subservice: powerbi-custom-visuals
 ms.topic: how-to
 ms.date: 09/21/2021
-ms.openlocfilehash: a1426d8ed0a97c2ec1715f4b0c368b9b9b9770f7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c0a683cbca2f29c7c4f8250b07ebcb5937400723
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699787"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079326"
 ---
 # <a name="configure-power-bi-visual-offer-properties"></a>Power BI ビジュアル オファーのプロパティを構成する
 
-このページでは、Microsoft AppSource でのオファーのグループ化に使用される[カテゴリ](/azure/marketplace/categories)、オファーをサポートする法的契約、およびサポート ドキュメントを定義できます。
+このページでは、Microsoft AppSource でのオファーのグループ化に使用される[カテゴリ](./categories.md)、オファーをサポートする法的契約、およびサポート ドキュメントを定義できます。
 
 ## <a name="general-info"></a>一般情報
 
-- オファーを適切なマーケットプレース検索領域にグループ化するには、最大 3 つの **[カテゴリ](/azure/marketplace/categories)** を選択します。
+- オファーを適切なマーケットプレース検索領域にグループ化するには、最大 3 つの **[カテゴリ](./categories.md)** を選択します。
 - お客様がオンライン ストアで検索を業界で絞り込むときに、オファーを表示するために使用される **業界** を、最大 2 つまで選択します。
 
 ## <a name="legal-and-support-info"></a>法的およびサポートに関する情報

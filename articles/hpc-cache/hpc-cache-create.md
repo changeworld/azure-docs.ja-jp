@@ -1,18 +1,18 @@
 ---
 title: Azure HPC キャッシュを作成する
 description: Azure HPC Cache インスタンスを作成する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
-ms.author: v-erkel
+ms.author: femila
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b7789af76572eeaa3dfdfe4c6ff379889341033e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6f457dcf69b0f38173a3816ea1ac16c2cc7c5935
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557462"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015335"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -178,11 +178,11 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | Ｘ          | Ｘ          |
+  | 3,072 GB    | 可         | no          | no          |
   | 6144 GB    | はい         | はい         | no          |
   | 12288 GB   | 可         | はい         | 可         |
   | 24576 GB   | Ｘ          | はい         | 可         |
-  | 49152 GB   | Ｘ          | Ｘ          | はい         |
+  | 49152 GB   | Ｘ          | no          | はい         |
 
   キャッシュで 10 を超えるストレージ ターゲットを使用する場合は、SKU に対して使用可能なキャッシュの最大サイズ値を選択します。 これらの構成は、最大 20 のストレージ ターゲットをサポートします。
 
@@ -282,11 +282,11 @@ Install-Module -Name Az.HPCCache
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | Ｘ          | Ｘ          |
+  | 3,072 GB    | 可         | no          | no          |
   | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |
-  | 49,152 GB   | no          | Ｘ          | 可         |
+  | 49,152 GB   | no          | no          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 

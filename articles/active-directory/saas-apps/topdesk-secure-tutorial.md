@@ -97,7 +97,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -109,7 +109,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に TOPdesk - Secure へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -121,13 +121,13 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-topdesk---secure-sso"></a>TOPdesk - Secure の SSO の構成
+## <a name=&quot;configure-topdesk---secure-sso&quot;></a>TOPdesk - Secure の SSO の構成
 
 1. **TOPdesk - Secure** 会社サイトに管理者としてサインインします。
 
 2. [**TOPdesk**] メニューで、[**設定**] をクリックします。
 
-    ![[設定]](./media/topdesk-secure-tutorial/menu.png "設定")
+    ![[設定]](./media/topdesk-secure-tutorial/menu.png &quot;設定")
 
 3. [**ログイン設定**] をクリックします。
 

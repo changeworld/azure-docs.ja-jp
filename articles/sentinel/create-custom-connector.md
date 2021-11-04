@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 7d69235d1d7131df8b5abcb1c9073defab8f2354
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: df33492b544a9d8875d6996b89acf225f3ace4f4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023350"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449281"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -177,7 +177,7 @@ RESTful エンドポイントを直接呼び出すには、より多くのプロ
 詳細については、[Log Analytics Data Collector API](../azure-monitor/logs/data-collector-api.md) に関するページの、特に次の例を参照してください。
 
 - [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
-- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
+- [Python](../azure-monitor/logs/data-collector-api.md#python-sample)
 
 ## <a name="connect-with-azure-functions"></a>Azure Functions を使用して接続する
 
@@ -210,7 +210,7 @@ Azure Sentinel は、クエリ時の解析に対応しています。 クエリ�
 
 > [!NOTE]
 > パーサーの更新は、Azure Sentinel に既に取り込んだデータにも適用されます。
-> 
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Sentinel に取り込まれたデータを使用して、次のいずれかのプロセスで環境をセキュリティ保護します。

@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q4
 ms.date: 08/18/2021
-ms.openlocfilehash: 3b327472304874bc91879a21c2ec6adac49fc987
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: a5b1b0f6d4d51874dd330c2336e5f342aaedeec9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066815"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085869"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 
@@ -28,7 +28,7 @@ ms.locfileid: "130066815"
 
 * ツイートを監視したり、そのセンチメントを分析したり、確認が必要な項目についてアラートやタスクを作成したりする。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Go-serverless-Enterprise-integration-with-Azure-Logic-Apps/player]
 
 選択および作成するロジック アプリのリソースの種類に応じて、Azure の仮想ネットワークにアクセスするときに、ロジック アプリは、マルチテナント型の Azure Logic Apps、[シングルテナント型の Azure Logic Apps](single-tenant-overview-compare.md)、または専用の[統合サービス環境](connect-virtual-network-vnet-isolated-environment-overview.md)のいずれかで実行されます。 ロジック アプリをコンテナー内で実行する場合は、[Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリを作成します](azure-arc-enabled-logic-apps-create-deploy-workflows.md)。 詳細については、「[Azure Arc 対応 Logic Apps とは](azure-arc-enabled-logic-apps-overview.md)」および[ロジック アプリのリソースの種類とホスト環境の違い](#resource-environment-differences)に関するセクションを参照してください。
 
@@ -222,8 +222,6 @@ Azure Logic Apps の他のクイックスタート ガイドもお勧めです�
 
 Azure Logic Apps プラットフォームの詳細については、これらの紹介ビデオをご覧ください。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Go-serverless-Enterprise-integration-with-Azure-Logic-Apps/player]
->
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Connect-and-extend-your-mainframe-to-the-cloud-with-Logic-Apps/player]
 
 ## <a name="next-steps"></a>次のステップ

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 1d9b5e861b35ade3cf391e2a0ace52722821a158
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 72484bad390f642dae1c5ce5f94c303c55da616f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113650625"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503963"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows の音声アシスタントの概要
 

@@ -25,7 +25,7 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: security.md
@@ -89,7 +89,7 @@
     - name: Microsoft Tech Community
       href: 'https://techcommunity.microsoft.com/'
     - name: 製品フィードバック
-      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+      href: 'https://feedback.azure.com/d365community/forum/4444c9d4-ed24-ec11-b6e6-000d3a4f0da0'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-share/'
     - name: サービスの更新情報

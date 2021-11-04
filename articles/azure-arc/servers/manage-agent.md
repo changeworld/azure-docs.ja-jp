@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 10/14/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: d0b4d32100a8063346d9a6f7bd2b4bd70156d868
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 707e264b2abac0d9f3ba8418cc2eebd25b53b4a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041179"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423833"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -50,7 +50,7 @@ Azure Arc 対応サーバーの場合、マシンの名前を変更する前に�
 
 1. マシンにインストールされている VM 拡張機能を監査し、それらの構成をメモしておきます。そのためには、[Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed) を使用します。
 
-2. [Azure portal](manage-vm-extensions-portal.md#uninstall-extensions) から、または [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、インストールされた VM 拡張機能を削除します。
+2. [Azure portal](manage-vm-extensions-portal.md#remove-extensions) から、または [Azure CLI](manage-vm-extensions-cli.md#remove-extensions) を使用するか [Azure PowerShell](manage-vm-extensions-powershell.md#remove-extensions) を使用して、インストールされた VM 拡張機能を削除します。
 
 3. **azcmagent** ツールと [Disconnect](manage-agent.md#disconnect) パラメーターを使用して、Azure Arc からマシンを切断し、Azure からマシン リソースを削除します。 マシンを Azure Arc 対応サーバーから切断しても、Connected Machine エージェントは削除されないので、このプロセスの一環としてエージェントを削除する必要はありません。 azcmagent は、対話形式でログオンしているときに手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォームの[アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化できます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
 
@@ -236,7 +236,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Azure Arc 対応サーバーでマシンの登録が解除されたり、インストールしている Azure VM 拡張機能が削除されたりすることはありません。 Azure Arc 対応サーバーで管理する必要がなくなったサーバーまたはマシンについては、次の手順に従って管理を停止する必要があります。 
 
-1. [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、コンピューターに残してきたくない、[Azure portal ](manage-vm-extensions-portal.md#uninstall-extensions) からインストールされた VM 拡張機能を削除します。
+1. [Azure CLI](manage-vm-extensions-cli.md#remove-extensions) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#remove-extensions) を使用して、コンピューターに残してきたくない、[Azure portal ](manage-vm-extensions-portal.md#remove-extensions) からインストールされた VM 拡張機能を削除します。
 1. `azcmagent disconnect` を実行してコンピューターの登録を解除し、Azure で Azure Arc 対応のサーバー リソースを削除します。 それでも失敗する場合は、Azure でリソースを手動で削除できます。 そうでない場合、Azure でリソースが削除された場合は、サーバー上で `azcmagent disconnect --force-local-only` を実行してローカル構成を削除する必要があります。
 
 ### <a name="windows-agent"></a>Windows エージェント

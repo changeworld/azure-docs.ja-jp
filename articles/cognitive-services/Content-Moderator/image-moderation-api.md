@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63273fc1d4da85d34bdad22f2c83890dbd137f4e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85800997"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458439"
 ---
 # <a name="learn-image-moderation-concepts"></a>画像モデレーションの概念を確認する
 

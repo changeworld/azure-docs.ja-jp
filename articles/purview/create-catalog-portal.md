@@ -6,14 +6,13 @@ ms.author: nayenama
 ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
-ms.custom:
-- mode-portal
-ms.openlocfilehash: c1a8b47df487cb3159ee1ac7492cf5eb04c1dec6
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: mode-portal
+ms.openlocfilehash: a84af112016ea4775f19234e89551f5f69b059bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217431"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037855"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Purview アカウントを作成する
 

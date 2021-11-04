@@ -1,26 +1,27 @@
 ---
 title: チュートリアル:Bing 地図から Web アプリを移行する | Microsoft Azure Maps
 description: Bing 地図から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアルです。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 9/10/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: adec0b04e82d0a00b2f95b6b4f7980f628b93a7a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 519eb22a7b8108d87970367db489d891fc47e593
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439634"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435341"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>チュートリアル:Bing 地図から Web アプリを移行する
 
 Bing 地図が使用される Web アプリでは、多くの場合、Bing 地図 V8 JavaScript SDK が使用されます。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。 このチュートリアルでは、次の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * マップを読み込む
 > * マップをローカライズする
 > * 画鋲、ポリライン、およびポリゴンを追加する。
@@ -77,7 +78,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 | GeoJSON サポート          | ✓                                                                                      |
 | GeoXML サポート           | ✓ [空間 IO モジュール](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known Text サポート  | ✓                                                                                      |
-| カスタム マップ スタイル        | 一部サポート                                                                                |
+| カスタム マップ スタイル        | Partial                                                                                |
 
 Azure Maps には、その機能を拡張する [Web SDK 用のオープンソース モジュール](open-source-projects.md#open-web-sdk-modules)が他にも数多く存在します。
 
@@ -260,7 +261,7 @@ Web アプリで Azure Maps マップ コントロールを設定して使用す
 Bing 地図をローカライズするために、API の `<script>` タグ参照には `UR` パラメーターが追加され、`setLang` を使用して言語と地域が指定されています。 Bing 地図の一部の機能は、特定の市場でのみ利用できす。たとえば、ユーザーの市場は、`setMkt` パラメーターを使用して指定します。
 
 ```html
-<script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=initMap&setLang=[language_code]&setMkt=[market]&UR=[region_code]" async defer></script>
+<script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=initMap&setLang={language-code}&setMkt={market}&UR={region-code}" async defer></script>
 ```
 
 以下に、言語が "fr-FR" に設定されている Bing 地図の例を示します。
@@ -337,8 +338,8 @@ map.setStyle({
 
 **その他のリソース**
 
--   [マップ スタイルを選択する](./choose-map-style.md)
--   [サポートされているマップ スタイル](./supported-map-styles.md)
+* [マップ スタイルを選択する](./choose-map-style.md)
+* [サポートされているマップ スタイル](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>画鋲の追加
 
@@ -460,16 +461,16 @@ map.markers.add(new atlas.HtmlMarker({
 
 **その他のリソース**
 
--   [データ ソースを作成する](./create-data-source-web-sdk.md)
--   [シンボル レイヤーを追加する](./map-add-pin.md)
--   [バブル レイヤーを追加する](./map-add-bubble-layer.md)
--   [ポイント データをクラスタリングする](./clustering-point-data-web-sdk.md)
--   [HTML マーカーを追加する](./map-add-custom-html.md)
--   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
--   [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
--   [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+* [データ ソースを作成する](./create-data-source-web-sdk.md)
+* [シンボル レイヤーを追加する](./map-add-pin.md)
+* [バブル レイヤーを追加する](./map-add-bubble-layer.md)
+* [ポイント データをクラスタリングする](./clustering-point-data-web-sdk.md)
+* [HTML マーカーを追加する](./map-add-custom-html.md)
+* [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+* [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
+* [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
+* [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
+* [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>カスタム画鋲の追加
 
@@ -584,14 +585,14 @@ Azure Maps のシンボル レイヤーでもカスタム イメージがサポ�
 
 **その他のリソース**
 
--   [データ ソースを作成する](./create-data-source-web-sdk.md)
--   [シンボル レイヤーを追加する](./map-add-pin.md)
--   [HTML マーカーを追加する](./map-add-custom-html.md)
--   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
--   [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
--   [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+* [データ ソースを作成する](./create-data-source-web-sdk.md)
+* [シンボル レイヤーを追加する](./map-add-pin.md)
+* [HTML マーカーを追加する](./map-add-custom-html.md)
+* [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+* [シンボル レイヤーのアイコン オプション](/javascript/api/azure-maps-control/atlas.iconoptions)
+* [シンボル レイヤーのテキスト オプション](/javascript/api/azure-maps-control/atlas.textoptions)
+* [HTML マーカーのクラス](/javascript/api/azure-maps-control/atlas.htmlmarker)
+* [HTML マーカーのオプション](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>ポリラインの追加
 
@@ -655,9 +656,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **その他のリソース**
 
--   [マップに線を追加する](./map-add-line-layer.md)
--   [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+* [マップに線を追加する](./map-add-line-layer.md)
+* [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+* [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>多角形の追加
 
@@ -727,11 +728,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **その他のリソース**
 
--   [マップに多角形を追加する](./map-add-shape.md#use-a-polygon-layer)
--   [マップに円を追加する](./map-add-shape.md#add-a-circle-to-the-map)
--   [多角形レイヤーのオプション](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+* [マップに多角形を追加する](./map-add-shape.md#use-a-polygon-layer)
+* [マップに円を追加する](./map-add-shape.md#add-a-circle-to-the-map)
+* [多角形レイヤーのオプション](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+* [線レイヤーのオプション](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+* [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>情報ボックスの表示
 
@@ -799,12 +800,12 @@ map.events.add('click', marker, function () {
 
 **その他のリソース**
 
--   [ポップアップを追加する](./map-add-popup.md)
--   [メディア コンテンツを含むポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
--   [図形のポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
--   [複数のピンでのポップアップの再利用](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [ポップアップのクラス](/javascript/api/azure-maps-control/atlas.popup)
--   [ポップアップのオプション](/javascript/api/azure-maps-control/atlas.popupoptions)
+* [ポップアップを追加する](./map-add-popup.md)
+* [メディア コンテンツを含むポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
+* [図形のポップアップ](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
+* [複数のピンでのポップアップの再利用](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
+* [ポップアップのクラス](/javascript/api/azure-maps-control/atlas.popup)
+* [ポップアップのオプション](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>画鋲クラスタリング
 
@@ -1026,10 +1027,10 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
 
 **その他のリソース**
 
--   [シンボル レイヤーを追加する](./map-add-pin.md)
--   [バブル レイヤーを追加する](./map-add-bubble-layer.md)
--   [ポイント データをクラスタリングする](./clustering-point-data-web-sdk.md)
--   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+* [シンボル レイヤーを追加する](./map-add-pin.md)
+* [バブル レイヤーを追加する](./map-add-bubble-layer.md)
+* [ポイント データをクラスタリングする](./clustering-point-data-web-sdk.md)
+* [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>ヒート マップを追加する
 
@@ -1154,10 +1155,10 @@ Azure Maps で、GeoJSON データをデータ ソースに読み込み、その
 
 **その他のリソース**
 
--   [ヒート マップ レイヤーを追加する](./map-add-heat-map-layer.md)
--   [ヒート マップ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [ヒート マップ レイヤーのオプション](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
+* [ヒート マップ レイヤーを追加する](./map-add-heat-map-layer.md)
+* [ヒート マップ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+* [ヒート マップ レイヤーのオプション](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+* [データドリブンのスタイルの式を使用する](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>タイル レイヤーをオーバーレイする
 
@@ -1205,9 +1206,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **その他のリソース**
 
--   [タイル レイヤーを追加する](./map-add-tile-layer.md)
--   [タイル レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [タイル レイヤーのオプション](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+* [タイル レイヤーを追加する](./map-add-tile-layer.md)
+* [タイル レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+* [タイル レイヤーのオプション](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>トラフィック データを表示する
 
@@ -1245,9 +1246,9 @@ Azure Maps の交通アイコンのいずれかをクリックすると、ポッ
 
 **その他のリソース**
 
--   [マップ上にトラフィックを表示する](./map-show-traffic.md)
--   [交通情報オーバーレイのオプション](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
--   [トラフィック コントロール](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
+* [マップ上にトラフィックを表示する](./map-show-traffic.md)
+* [交通情報オーバーレイのオプション](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
+* [トラフィック コントロール](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
 ### <a name="add-a-ground-overlay"></a>グラウンド オーバーレイを追加する
 
@@ -1361,8 +1362,8 @@ Azure Maps では、`atlas.layer.ImageLayer` クラスを使用して、ジオ�
 
 **その他のリソース**
 
--   [イメージをオーバーレイする](./map-add-image-layer.md)
--   [イメージ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+* [イメージをオーバーレイする](./map-add-image-layer.md)
+* [イメージ レイヤーのクラス](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>マップへの KML データの追加
 
@@ -1517,9 +1518,9 @@ Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式�
 
 **その他のリソース**
 
--   [atlas.io.read 関数](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+* [atlas.io.read 関数](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+* [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+* [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>描画ツールの追加
 
@@ -1632,8 +1633,8 @@ Azure Maps では、アプリで参照する必要のある JavaScript ファイ
 
 **その他のリソース**
 
--   [ドキュメント](./set-drawing-options.md)
--   [コード サンプル](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
+* [ドキュメント](./set-drawing-options.md)
+* [コード サンプル](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="additional-resources"></a>その他のリソース
 

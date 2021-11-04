@@ -3,19 +3,19 @@ title: 'クイックスタート: Node.js コンソール アプリから Micros
 titleSuffix: Microsoft identity platform
 description: このクイックスタートでは、Node.js コンソール アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を、アプリ自体の ID を使用して呼び出す方法を示すコード サンプルをダウンロードして実行します
 services: active-directory
-author: KarenH444
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.date: 02/17/2021
-ms.author: karenhoran
-ms.openlocfilehash: 84dcc9861bd7b7288e0feefbc32ce1bf820eef7f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.author: marsma
+ms.openlocfilehash: 9a75435ca75e5d6638315f3c96716c091048694f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163805"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502070"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>クイックスタート: トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 

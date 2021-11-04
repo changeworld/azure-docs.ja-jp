@@ -12,12 +12,12 @@ ms.date: 05/06/2021
 ms.author: kenwith
 ms.reviewer: ashishj
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8ecf329b80324ac282b79ba443b02bdb0e4ce1d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: eb2036976e9e73e7ad466974f9885b9035152851
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129988793"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059492"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してオンプレミス API に安全にアクセスする
 
@@ -139,13 +139,13 @@ AppProxyNativeAppSample ネイティブ アプリを登録するには、次の�
 
 最後の手順では、ネイティブ アプリを構成します。 NativeClient サンプル アプリの *Form1.cs* ファイルからのものである次のスニペットによって、MSAL ライブラリは、API 呼び出しを要求するためのトークンを取得し、それをベアラーとしてアプリのヘッダーに添付します。
 
-   ```
-   // Acquire Access Token from AAD for Proxy Application
- IPublicClientApplication clientApp = PublicClientApplicationBuilder
-.Create(<App ID of the Native app>)
-.WithDefaultRedirectUri() // will automatically use the default Uri for native app
-.WithAuthority("https://login.microsoftonline.com/{<Tenant ID>}")
-.Build();
+```csharp
+// Acquire Access Token from AAD for Proxy Application
+IPublicClientApplication clientApp = PublicClientApplicationBuilder
+    .Create(<App ID of the Native app>)
+    .WithDefaultRedirectUri() // Will automatically use the default Uri for native app
+    .WithAuthority("https://login.microsoftonline.com/{<Tenant ID>}")
+    .Build();
 
 AuthenticationResult authResult = null;
 var accounts = await clientApp.GetAccountsAsync();
@@ -154,22 +154,22 @@ IAccount account = accounts.FirstOrDefault();
 IEnumerable<string> scopes = new string[] {"<Scope>"};
 
 try
- {
+{
     authResult = await clientApp.AcquireTokenSilent(scopes, account).ExecuteAsync();
- }
-    catch (MsalUiRequiredException ex)
- {
-     authResult = await clientApp.AcquireTokenInteractive(scopes).ExecuteAsync();                
- }
- 
+}
+catch (MsalUiRequiredException ex)
+{
+    authResult = await clientApp.AcquireTokenInteractive(scopes).ExecuteAsync();
+}
+
 if (authResult != null)
- {
-  //Use the Access Token to access the Proxy Application
-  
-  HttpClient httpClient = new HttpClient();
-  HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
-  HttpResponseMessage response = await httpClient.GetAsync("<Proxy App Url>");
- }
+{
+    // Use the Access Token to access the Proxy Application
+
+    HttpClient httpClient = new HttpClient();
+    HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+    HttpResponseMessage response = await httpClient.GetAsync("<Proxy App Url>");
+}
 ```
 
 ネイティブ アプリが Azure Active Directory に接続し、API アプリのプロキシを呼び出すように構成するには、NativeClient サンプル アプリの *App.config* ファイルにあるプレース ホルダーの値を Azure AD からの値で更新します。

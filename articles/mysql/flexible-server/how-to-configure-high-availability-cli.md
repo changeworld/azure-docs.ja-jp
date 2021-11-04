@@ -7,26 +7,24 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b6a430c70d59ff980063139e71daf76d1ede220a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3ed931d0f972caa2e4a49012ad09afe9df9d3233
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610146"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422769"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーでゾーン冗長による高可用性を管理する
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!NOTE]
-> Azure Database for MySQL フレキシブル サーバーは、パブリック プレビュー段階です。
 
 この記事では、フレキシブル サーバーでサーバーの作成時にゾーン冗長による高可用性構成を有効または無効にする方法について説明します。 サーバーの作成後にゾーン冗長による高可用性を無効にすることもできます。 サーバーの作成後にゾーン冗長による高可用性を有効にすることはサポートされていません。
 
 高可用性機能では、別々のゾーンに物理的に分けられたプライマリ レプリカとスタンバイ レプリカをプロビジョニングします。 詳細については、[高可用性の概念に関するドキュメント](./concepts/../concepts-high-availability.md)を参照してください。 高可用性の有効化または無効化によって、VNET 構成、ファイアウォール設定、バックアップ保有期間などの他の設定は変更されません。 高可用性を無効にしても、アプリケーションの接続と操作には影響しません。
 
 > [!IMPORTANT]
-> ゾーン冗長による高可用性は、限定された一連のリージョンで利用できます。 サポートされているリージョンは[こちら](./overview.md#azure-regions)で確認してください。 
+> ゾーン冗長による高可用性は、限定された一連のリージョンで利用できます。 サポートされているリージョンは[こちら](./overview.md#azure-regions)で確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +67,7 @@ ms.locfileid: "128610146"
 
 ## <a name="disable-high-availability"></a>高可用性を無効にする
 
-高可用性を無効にするには、[az mysql flexible-server update](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) コマンドを使用します。 高可用性の無効化は、サーバーが高可用性を備えた状態で作成された場合にのみサポートされることに注意してください。 
+高可用性を無効にするには、[az mysql flexible-server update](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) コマンドを使用します。 高可用性の無効化は、サーバーが高可用性を備えた状態で作成された場合にのみサポートされることに注意してください。
 
 ```azurecli
 az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRedundant}]

@@ -3,15 +3,13 @@ title: 'クイックスタート: Azure PowerShell を使用して共有クエ�
 description: このクイックスタートでは、手順に従い、Azure PowerShell を使用して Resource Graph 共有クエリを作成します。
 ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 95057d0c1016bf030f21c9cab9281e9fe51dd897
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 8281e2bb2ff53fea28ff43a69e8b16cf9d1f7ddf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122325079"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016128"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Resource Graph 共有クエリを作成する
 

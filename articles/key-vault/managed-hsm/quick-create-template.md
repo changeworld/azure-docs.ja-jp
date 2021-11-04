@@ -8,18 +8,14 @@ ms.date: 09/15/2020
 ms.topic: quickstart
 ms.service: key-vault
 ms.subservice: managed-hsm
-tags:
-- azure-resource-manager
-ms.custom:
-- mvc
-- devx-track-azurecli
-- mode-arm
-ms.openlocfilehash: da540d63c78e9029addf098b76ec24773e63a782
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+tags: azure-resource-manager
+ms.custom: mvc, devx-track-azurecli, mode-arm
+ms.openlocfilehash: 33fa6a83e88511c8ab9d7bea739a85cf9092453a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131070"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040602"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Key Vault Managed HSM を作成する
 

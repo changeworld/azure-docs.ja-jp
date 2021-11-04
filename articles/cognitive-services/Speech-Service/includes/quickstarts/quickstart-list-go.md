@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c49fc5748e2234aa870dad79fd0d5842d120e117
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 98efbcde79b7ccfc5cd2f0fc86d91ec36698823c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188482"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502560"
 ---
 - [クイック スタート: マイクから音声を認識する](../../get-started-speech-to-text.md)
 - [クイック スタート: ファイルから音声を認識する](../../get-started-speech-to-text.md)

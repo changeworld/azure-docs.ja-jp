@@ -3,18 +3,18 @@ title: カスタム サブドメイン
 titleSuffix: Azure Cognitive Services
 description: 各 Cognitive Services リソースのカスタム サブドメイン名は、Azure portal、Azure Cloud Shell、または Azure CLI を使用して作成します。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/04/2020
-ms.author: erhopf
-ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: pafarley
+ms.openlocfilehash: 7eb2fe58ba9258da1bc2e9b75deafe09323228f0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97032968"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086737"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名
 

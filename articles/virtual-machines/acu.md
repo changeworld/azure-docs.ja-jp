@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: cfcad9ed109e6f12ca5e15b75e41b842c330dc8a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 1eb356243fcc0a5bfc2e005703391edc308c222c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216464"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437317"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 

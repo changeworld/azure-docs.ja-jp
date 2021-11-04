@@ -3,20 +3,20 @@ title: 会話の文字起こし (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 会話の文字起こしは、会議のためのソリューションであり、認識、スピーカー ID、ダイアライゼーションを組み合わせて、会話の文字起こしが提供されます。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 993cc1105c476f3581fd996be5c1aa6aa7c0c590
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f72af708beff4e44b4fca6347eb17aca0ac54c0b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056703"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502732"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
 

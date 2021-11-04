@@ -6,18 +6,19 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 08/30/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: d5087994a72b52ce091dac98987b8e0bc60e287e
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c5ab750319ffdad58269c909bd14d660d8bdc252
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224742"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087176"
 ---
-# <a name="configure-host-scaling-preview"></a>ホストのスケーリングの構成 (プレビュー)
+# <a name="configure-host-scaling"></a>ホストのスケーリングの構成
 
-この記事は、追加の同時クライアント接続に対応するために、Azure Bastion にスケール ユニット (インスタンス) を追加するために役立ちます。 プレビュー期間中、この設定は、Azure portal のみで構成できます。 詳細については、[構成設定](configuration-settings.md#instance)に関するページを参照してください。 
+この記事は、追加の同時クライアント接続に対応するために、Azure Bastion にスケール ユニット (インスタンス) を追加するために役立ちます。 プレビュー期間中、この設定は、Azure portal のみで構成できます。 詳細については、[構成設定](configuration-settings.md#instance)に関するページを参照してください。
 
 ## <a name="configuration-steps"></a>構成の手順
 

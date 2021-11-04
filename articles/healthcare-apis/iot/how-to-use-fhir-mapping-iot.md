@@ -1,36 +1,36 @@
 ---
-title: IoT コネクタでの FHIR の宛先マッピング-Azure の医療 Api
-description: この記事では、IoT コネクタで FHIR 変換先マッピングテンプレートを使用する方法について説明します。
+title: IoT コネクタでの FHIR 変換先マッピング - Azure Healthcare API
+description: この記事では、IoT コネクタで FHIR 変換先マッピング テンプレートを使用する方法について説明します。
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 10/26/2021
 ms.author: jasteppe
-ms.openlocfilehash: dec9cd45fd4f581a4a041dba090c53fd4ecd8233
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 856355f2f511a9fecdce586e3b7ef4b176366f68
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068534"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468821"
 ---
-# <a name="how-to-use-the-fhir-destination-mappings"></a>FHIR 変換先マッピングの使用方法
+# <a name="how-to-use-the-fhir-destination-mappings"></a>FHIR 変換先マッピングを使用する方法
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-この記事では、高速医療相互運用性リソース (FHIR&#174;) の変換先マッピングを使用して IoT コネクタを構成する方法について説明します。
+この記事では、高速ヘルスケア相互運用性リソース (FHIR&#174;) 変換先マッピングを使用して IoT コネクタを構成する方法について説明します。
 
 > [!TIP]
-> IoT コネクタデバイスと FHIR の宛先マッピングの編集、テスト、トラブルシューティングについては、 [IoMT コネクタデータマッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) ツールをご覧ください。 Azure portal で IoT コネクタにアップロードするか、 [オープンソースバージョン](https://github.com/microsoft/iomt-fhir) の iot コネクタで使用するためのマッピングをエクスポートします。
+> IoT コネクタの Device と FHIR の変換先マッピングの編集、テスト、トラブルシューティングを行う [IoMT](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) コネクタ データ マッパー ツールを確認してください。 Azure portal で IoT コネクタにアップロードしたり、オープン ソース バージョンの IoT コネクタで使用したりするために [マッピングをエクスポート](https://github.com/microsoft/iomt-fhir) します。
 
 ## <a name="fhir-destination-mappings"></a>FHIR 宛先マッピング
 
-デバイス コンテンツが正規化されたモデルに抽出されると、デバイス識別子、測定の種類、期間に従ってデータが収集され、グループ化されます。 このグループの出力は、FHIR リソース (現在は [Observation](https://www.hl7.org/fhir/observation.html)) に変換するために送信されます。 FHIR 変換先マッピングテンプレートは、データを FHIR 監視にマップする方法を制御します。 特定の時点または 1 時間という期間にわたって観察を作成する必要がありますか。 観察にどのようなコードを追加する必要がありますか。 値を [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) として、または [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity) として表す必要がありますか。 これらのデータ型は、FHIR 変換先のマッピング構成コントロールのすべてのオプションです。
+デバイス コンテンツが正規化されたモデルに抽出されると、デバイス識別子、測定の種類、期間に従ってデータが収集され、グループ化されます。 このグループの出力は、FHIR リソース (現在は [Observation](https://www.hl7.org/fhir/observation.html)) に変換するために送信されます。 FHIR 変換先マッピング テンプレートは、データを FHIR 観察にマップする方法を制御します。 特定の時点または 1 時間という期間にわたって観察を作成する必要がありますか。 観察にどのようなコードを追加する必要がありますか。 値を [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) として、または [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity) として表す必要がありますか。 これらのデータ型はすべて、FHIR 変換先マッピング構成コントロールのオプションです。
 
 ### <a name="codevaluefhirtemplate"></a>CodeValueFhirTemplate
 
-現在、CodeValueFhirTemplate は、現時点では FHIR 変換先マッピングでサポートされている唯一のテンプレートです。  これを使用すると、コード、有効期間、観察の値を定義できます。 複数の値の種類がサポートされています: [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData)、[CodeableConcept](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)、[Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity)。 これらの構成可能な値と共に、Observation リソースの識別子と、適切な Device および Patient リソースへのリンクが自動的に処理されます。
+現在、CodeValueFhirTemplate は、現時点で FHIR 変換先マッピングでサポートされている唯一のテンプレートです。  これを使用すると、コード、有効期間、観察の値を定義できます。 複数の値の種類がサポートされています: [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData)、[CodeableConcept](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)、[Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity)。 これらの構成可能な値と共に、Observation リソースの識別子と、適切な Device および Patient リソースへのリンクが自動的に処理されます。
 
 | プロパティ | 説明 
 | --- | ---
@@ -52,7 +52,7 @@ ms.locfileid: "131068534"
 
 #### <a name="sampleddata"></a>SampledData
 
-[Sampleddata](http://hl7.org/fhir/datatypes.html#SampledData) fhir データ型を表します。 監視測定値は、特定の時点から開始し、定義された期間を使用してインクリメントする値ストリームに書き込まれます。 値が存在しない場合、`E` はデータ ストリームに書き込まれます。 この期間が、さらに 2 つの値がデータ ストリーム内の同じ位置を占めている場合は、最新の値が使用されます。 SampledData を使用した観察が更新されるときは、同じロジックが適用されます。
+[SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR データ型を表します。 観測測定値は、ある時点から始まる値ストリームに書き込み、定義された期間を使用して前方にインクリメントされます。 値が存在しない場合、`E` はデータ ストリームに書き込まれます。 この期間が、さらに 2 つの値がデータ ストリーム内の同じ位置を占めている場合は、最新の値が使用されます。 SampledData を使用した観察が更新されるときは、同じロジックが適用されます。
 
 | プロパティ | 説明 
 | --- | ---
@@ -267,6 +267,6 @@ FHIR データ型 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableC
 ## <a name="next-steps"></a>次のステップ
 
 >[!div class="nextstepaction"]
->[デバイスマッピングの使用方法](how-to-use-device-mapping-iot.md)
+>[デバイス マッピングを使用する方法](how-to-use-device-mapping-iot.md)
 
-(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。
+(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。

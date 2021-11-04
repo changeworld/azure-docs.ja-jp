@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1b134fd3d09eeda340e7323638a36b68336242c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ef79c841fcbaecb2b70ad0a95ce04c9628e4709
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91362029"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508290"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>音声テキスト変換のソース言語を指定する
 

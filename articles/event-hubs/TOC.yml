@@ -48,6 +48,12 @@
           href: event-hubs-capture-python.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+    - name: スキーマ レジストリを使用する
+      items:
+        - name: スキーマ レジストリの作成
+          href: create-schema-registry.md
+        - name: スキーマを使用してイベントを検証する (.NET と AMQP)
+          href: schema-registry-dotnet-send-receive-quickstart.md
     - name: 専用クラスターを作成する
       href: event-hubs-dedicated-cluster-create-portal.md
 - name: チュートリアル
@@ -157,8 +163,6 @@
           href: configure-processing-units-premium-namespace.md
         - name: イベントにカスタム データを追加する
           href: add-custom-data-event.md
-        - name: スキーマ レジストリの作成
-          href: create-schema-registry.md
         - name: パーティションを動的に追加する
           href: dynamically-add-partitions.md
         - name: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する

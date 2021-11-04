@@ -394,7 +394,7 @@ kubectl --namespace <promNamespace> port-forward $PROM_POD_NAME 9090
 
 ![OSM Prometheus ターゲット メトリックの UI イメージ](./media/aks-osm-addon/osm-prometheus-smi-metrics-target-scrape.png)
 
-## <a name="deploy-and-configure-a-grafana-instance-for-osm"></a>OSM の Grafana インスタンスをデプロイして構成する
+## <a name="deploy-and-configure-a-grafana-instance-for-osm&quot;></a>OSM の Grafana インスタンスをデプロイして構成する
 
 Helm を使用して Grafana インスタンスをデプロイします。 次のコマンドを実行して、Helm を介して Grafana をインストールします。
 
@@ -407,7 +407,7 @@ helm install osm-grafana grafana/grafana
 次に、Grafana サイトにログインするための既定の Grafana パスワードを取得します。
 
 ```azurecli-interactive
-kubectl get secret --namespace default osm-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+kubectl get secret --namespace default osm-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
 ```
 
 Grafana のパスワードを書き留めます。
@@ -415,7 +415,7 @@ Grafana のパスワードを書き留めます。
 次に、Grafana ポッドを取得して、Grafana ダッシュボードをポート転送してログインします。
 
 ```azurecli-interactive
-GRAF_POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=grafana" -o jsonpath="{.items[0].metadata.name}")
+GRAF_POD_NAME=$(kubectl get pods -l &quot;app.kubernetes.io/name=grafana&quot; -o jsonpath=&quot;{.items[0].metadata.name}")
 kubectl port-forward $GRAF_POD_NAME 3000
 ```
 

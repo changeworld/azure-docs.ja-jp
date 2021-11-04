@@ -4,19 +4,19 @@ description: Azure リソースのマネージド ID と Azure AD 認証をサ�
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 07/13/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: c9167111a1799575b5dc0d06cb26bf7cc20002e9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ca43e9d1e54566da374ccbae011e66ae54297af4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826796"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432569"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -28,7 +28,6 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 ## <a name="azure-services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートする Azure サービス
 
 次の Azure サービスが、Azure リソースのマネージド ID をサポートしています。
-
 
 ### <a name="azure-api-management"></a>Azure API Management
 
@@ -102,12 +101,12 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
-| ユーザー割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
+| システム割り当て済み | ![利用可能][Check]| ![利用可能][Check] | 使用不可 | ![利用可能][Check] |
+| ユーザー割り当て済み | ![利用可能][Check] | ![利用可能][Check] | 使用不可 | ![利用可能][Check] |
 
 [Azure Automation](../../automation/automation-intro.md) でマネージド ID を使用するには、次のドキュメントを参照してください。
 
-* [Automation アカウントの認証の概要 - マネージド ID](../../automation/automation-security-overview.md#managed-identities-preview)
+* [Automation アカウントの認証の概要 - マネージド ID](../../automation/automation-security-overview.md#managed-identities)
 * [自動化のためのマネージド ID の有効化と使用](../../automation/enable-managed-identity-for-automation.md)
 
 ### <a name="azure-blueprints"></a>Azure Blueprint

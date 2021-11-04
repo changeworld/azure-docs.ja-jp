@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8480598cc872a051b6b81f928e92740e39353598
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 02e903c876a2e4cdec29006090ed8ddfbe9e4b45
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621244"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452606"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -165,7 +165,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
 
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
 
 ### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>どのようにすれば初期レプリケーションまたは同期の進捗状況を追跡できますか?
 
@@ -173,7 +173,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
 
-オフライン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
+オフライン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
 
 ### <a name="what-is-asrseeddisk"></a>asrseeddisk とは何ですか?
 

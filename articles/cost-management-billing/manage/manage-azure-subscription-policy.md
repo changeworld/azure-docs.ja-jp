@@ -1,19 +1,19 @@
 ---
 title: Azure サブスクリプションのポリシーを管理する
 description: ディレクトリからの Azure サブスクリプションの移動とディレクトリへの Azure サブスクリプションの移動を制御する Azure サブスクリプション ポリシーの管理方法について説明します。
-author: anuragdalmia
+author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/10/2021
-ms.reviewer: banders
-ms.author: andalmia
-ms.openlocfilehash: 4d0ebd73065c538a78c950ab48254cb06d113897
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.date: 10/28/2021
+ms.reviewer: andalmia
+ms.author: banders
+ms.openlocfilehash: 2530cdd36a2844c5b311e97d9747c8734d808206
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804522"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464929"
 ---
 # <a name="manage-azure-subscription-policies"></a>Azure サブスクリプションのポリシーを管理する
 

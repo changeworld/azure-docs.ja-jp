@@ -1148,7 +1148,7 @@ productDirectory:
       url: virtual-network/index.yml
     - title: Azure Virtual Network Manager (プレビュー)
       summary: 仮想ネットワーク接続を一元的に管理し、サブスクリプション間でセキュリティ規則を適用します。
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/azure-virtual-network-manager.svg'
+      imageSrc: ./media/index/azure-virtual-network-manager.svg
       azureCategories:
         - networking
       url: virtual-network-manager/index.yml

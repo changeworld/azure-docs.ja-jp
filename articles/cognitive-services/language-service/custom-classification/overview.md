@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: c31a348376f41bf61a4632d991fc02f08b360be7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 729cf1ed5d17345c530bd78f9c5c75c15990ab12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131450250"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131091491"
 ---
 # <a name="what-is-custom-text-classification-preview"></a>カスタム テキスト分類 (プレビュー) の概要
 
@@ -27,13 +27,7 @@ ms.locfileid: "131450250"
 カスタム テキスト分類では、次の 2 種類のプロジェクトがサポートされています。 
 
 * **単一ラベル分類** - データセットの各ファイルに 1 つのクラスを割り当てることができます。 たとえば、1 本の映画の脚本は、"アクション" または "スリラー" にのみ分類できます。 
-* **複数ラベル分類** - データセットの各ファイルに複数のクラスを割り当てることができます。 たとえば、1 本の映画の脚本は、"アクション" または "アクションとスリラー" に分類できます。
-
-このドキュメントには、次の種類の記事が含まれています。
-
-* [クイックスタート](quickstart.md)は、サービスへの要求の実行方法を説明する概要手順です。
-* [概念](concepts/evaluation.md)では、サービスの機能と特徴について説明します。
-* [攻略ガイド](how-to/tag-data.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* **複数ラベル分類** - データセットの各ファイルに複数のクラスを割り当てることができます。 たとえば、1 本の映画の脚本は、"アクション" または "アクションとスリラー" に分類できます。 
 
 ## <a name="example-usage-scenarios"></a>使用シナリオの例
 

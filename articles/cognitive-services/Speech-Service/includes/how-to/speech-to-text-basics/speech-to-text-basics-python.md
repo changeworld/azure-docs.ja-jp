@@ -1,15 +1,15 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
-ms.author: pafarley
-ms.openlocfilehash: 797d2cc40dfc10de1ce8c8d6bdb623eff56a375f
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.author: eur
+ms.openlocfilehash: 178609e7292c02d863329c0a4da513f6cbc0b846
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129377942"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501973"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 

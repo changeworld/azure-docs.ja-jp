@@ -9,12 +9,12 @@ metadata:
   ms.date: 11/20/2020
   ms.topic: overview
   ms.service: azure-spatial-anchors
-  ms.openlocfilehash: 718ff0b147b55801d9b54b66e7218452db0de0b6
-  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+  ms.openlocfilehash: 952f468b0bbe0387cc7fbdf3cf65d42c966eb749
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/19/2021
-  ms.locfileid: "112384338"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131474915"
 title: Azure Spatial Anchors についてよく寄せられる質問
 summary: >
   Azure Spatial Anchors はマネージド クラウド サービスの開発者プラットフォームであり、HoloLens、iOS、Android デバイスにおいてマルチユーザー対応の空間認識機能を備えた複合現実エクスペリエンスを可能にします。
@@ -31,7 +31,7 @@ sections:
   - question: >
       Azure Spatial Anchors を使用するにはクラウドに接続する必要がありますか?
     answer: >
-      現在、Azure Spatial Anchors を使用するにはインターネットへのネットワーク接続が必要です。 [フィードバック サイト](https://feedback.azure.com/forums/919252-azure-spatial-anchors)でご意見をお待ちしています。
+      現在、Azure Spatial Anchors を使用するにはインターネットへのネットワーク接続が必要です。 [フィードバック サイト](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8)でご意見をお待ちしています。
   - question: >
       Azure Spatial Anchors の接続に関してはどのような要件がありますか?
     answer: >
@@ -108,7 +108,7 @@ sections:
   - question: >
       Azure Spatial Anchors を使用している自分のアプリをアプリ ストアに公開することができますですか?  ミッション クリティカルな運用シナリオに Azure Spatial Anchors を使用できますか?
     answer: >
-      はい。Azure Spatial Anchors は一般提供段階にあり、標準の Azure サービス SLA が提供されます。 お使いの運用デプロイ用にアプリを開発し、製品に関する[フィードバックを Microsoft と共有](https://feedback.azure.com/forums/919252-azure-spatial-anchors)してください。
+      はい。Azure Spatial Anchors は一般提供段階にあり、標準の Azure サービス SLA が提供されます。 お使いの運用デプロイ用にアプリを開発し、製品に関する[フィードバックを Microsoft と共有](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8)してください。
   - question: >
       何らかのスロットリング制限が適用されますか?
     answer: >

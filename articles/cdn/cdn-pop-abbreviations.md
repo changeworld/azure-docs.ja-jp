@@ -3,7 +3,7 @@ title: Azure CDN の POP の場所 (略称順) | Microsoft Docs
 description: この記事では、Azure CDN from Verizon に対する Azure CDN の POP の場所を、POP の略称順に示します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 088d9b5b5067876d7ff284e6f27f696692847432
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: f45214242968055ab045f2030919cb5d8fcc369b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538189"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450523"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN の略称別の POP の場所
 > [!div class="op_single_selector"]
