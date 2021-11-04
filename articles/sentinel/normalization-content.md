@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: deb5377aef61736a14ce8110e96c16e5352096cd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 49711b1d056ecc57b64544374461c1f2963b88d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552257"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064456"
 ---
 # <a name="azure-sentinel-information-model-asim-security-content--public-preview"></a>Azure Sentinel 情報モデル (ASIM) セキュリティ コンテンツ (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel の正規化されたセキュリティ コンテンツには、ソースに依存しない正規化パーサーで使用できる分析ルール、検索クエリ、ブックが含まれています。
 
@@ -198,7 +200,7 @@ imDns
 
 詳細については次を参照してください:
 
-- Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する[こちらの詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[こちらのスライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)をご確認ください。
+- [Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)を確認してください。
 - [Azure Sentinel 情報モデルの概要](normalization.md)
 - [Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)
 - [Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)

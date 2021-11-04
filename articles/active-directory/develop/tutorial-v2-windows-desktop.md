@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 182fa929b5edf1486d0e8d2372db71ea1ee9747f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 40bfd1fe5614f194aae4feb40e48739a77f5c5ec
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637876"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050301"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>チュートリアル:Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -130,7 +130,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
     ```csharp
     using Microsoft.Identity.Client;
     ```
-   <!-- Workaround for Docs conversion bug -->
+    <!-- Workaround for Docs conversion bug -->
 
 2. App クラスを以下のように更新します。
 

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 09/20/2021
 ms.author: alkohli
-ms.openlocfilehash: 4afe7235cb4122e4c4fe7e26fff4b34504663892
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4f37d453072277da4cb4ecade03cf3f58f28460e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460601"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005672"
 ---
 # <a name="reset-and-reactivate-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスをリセットして再アクティブ化する
 

@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 49e6ca8cf0fc3121aba3c3216d2a1dd5936b56d7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: aefb039e17ee75b92829feb9e2f0b06fb5bef99a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449528"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076208"
 ---
 # <a name="connect-to-and-manage-multiple-azure-sources-in-azure-purview"></a>Azure Purview で複数の Azure ソースに接続して管理する
 
@@ -114,7 +114,7 @@ Azure で複数のソースの認証を設定するには、次の 2 つの方�
     - オプションを **[すべて]** のままにすると、その種類の将来のリソースも、将来のスキャンの実行でスキャンされます。
     - 特定のストレージ アカウントまたは SQL データベースを選択した場合、将来スキャンが明示的に編集されない限り、このサブスクリプションまたはリソース グループ内に将来作成されるその種類のリソースはスキャンの対象に含まれません。
 
-1. **[接続テスト]** を選択します。 これにより、サブスクリプションまたはリソース グループの閲覧者として Azure Purview MSI ファイルを適用したかどうかを確認するために、まずアクセスがテストされます。 エラー メッセージが表示された場合は、[これらの手順](#prerequisites-for-registration)に従って解決してください。 次に、選択した各ソースに対する認証と接続がテストされ、レポートが生成されます。 選択したソースの数は、このレポートの生成にかかる時間に影響します。 一部のリソースでエラーが発生した場合は、 **[X]** アイコンの上にカーソルを合わせると、詳細なエラー メッセージが表示されます。
+1. **[接続テスト]** を選択します。 これにより、サブスクリプションまたはリソース グループの閲覧者として Azure Purview MSI ファイルを適用したかどうかを確認するために、まずアクセスがテストされます。 エラー メッセージが表示された場合は、[これらの手順](#prerequisites-for-registration)に従って解決してください。 次に、選択した各ソースに対する認証と接続がテストされ、レポートが生成されます。 選択したソースの数は、このレポートの生成にかかる時間に影響します。 テスト接続では最初に、サブスクリプション/リソース グループ/synapse ワークスペース レベルで接続とアクセスがテストされます。 続いて、個々のリソースへのアクセスと接続がテストされ、その結果がレポートに表示されます。 一部のリソースでエラーが発生した場合は、 **[X]** アイコンの上にカーソルを合わせると、詳細なエラー メッセージが表示されます。
 
     :::image type="content" source="media/register-scan-azure-multiple-sources/test-connection.png" alt-text="[テスト接続] ボタンが強調表示されたスキャン設定スライダーのスクリーンショット。":::
     :::image type="content" source="media/register-scan-azure-multiple-sources/test-connection-report.png" alt-text="テスト接続レポートの例を示すスクリーンショット。接続が成功しているものと失敗しているものがあります。失敗した接続のいずれかにカーソルを合わせると、詳細なエラー レポートが表示されます。":::

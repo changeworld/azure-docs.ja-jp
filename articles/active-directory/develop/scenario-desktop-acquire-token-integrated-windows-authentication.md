@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/25/2021
 ms.author: sahmalik
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 67b2c1ac6b9a73444639bb174eacfbf5d685ce92
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: f589603fc5a7bb1b9e3a62d997cf9e64efebf5af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234834"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017941"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-integrated-windows-authentication"></a>Web API を呼び出すデスクトップ アプリ: 統合 Windows 認証でトークンを取得する
 
@@ -127,7 +127,7 @@ static async Task GetATokenForGraph()
       // AcquireTokenByIntegratedWindowsAuth form that takes in the username
 
       // Error Code: integrated_windows_auth_not_supported_managed_user
-      // Explanation: This method relies on an a protocol exposed by Active Directory (AD). If a user was created in Azure
+      // Explanation: This method relies on a protocol exposed by Active Directory (AD). If a user was created in Azure
       // Active Directory without AD backing ("managed" user), this method will fail. Users created in AD and backed by
       // AAD ("federated" users) can benefit from this non-interactive method of authentication.
       // Mitigation: Use interactive authentication

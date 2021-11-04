@@ -3,21 +3,21 @@ title: Speaker Recognition の概要 - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speaker Recognition は、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 この記事は、Speaker Recognition サービスの利点と機能の概要です。
 services: cognitive-services
-author: eric-urban
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.author: eur
+ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 keywords: Speaker Recognition, 音声生物測定学
-ms.openlocfilehash: 4096e04678c3ce0b10ac54a190f3074525469b54
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 44772137d9b9e3366a2a04fded34fa81dafe8886
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509462"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058390"
 ---
 # <a name="what-is-speaker-recognition"></a>Speaker Recognition とは
 

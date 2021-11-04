@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 10/05/2021
+ms.date: 10/25/2021
 ms.author: tisande
-ms.openlocfilehash: 13d667327fde6f55072f40dd6d1f9b7eb07d1214
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: ed60ce6586947f59d9a6c32b08f1c50082db5077
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615204"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056690"
 ---
 # <a name="indexing-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のインデックス作成メトリック
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -29,36 +29,23 @@ Azure Cosmos DB には、使用されたインデックス付きパスと推奨�
 ### <a name="net-sdk-example"></a>.NET SDK の例
 
 ```csharp
-    string sqlQuery = "SELECT TOP 10 c.id FROM c WHERE c.Item = 'value1234' AND c.Price > 2";
+    string sqlQueryText = "SELECT TOP 10 c.id FROM c WHERE c.Item = 'value1234' AND c.Price > 2";
 
-    List<Result> results = new List<Result>(); //Individual Benchmark results
+    QueryDefinition query = new QueryDefinition(sqlQueryText);
 
-    QueryDefinition query = new QueryDefinition(sqlQuery);
-
-    FeedIterator<Item> resultSetIterator = exampleApp.container.GetItemQueryIterator<Item>(
+    FeedIterator<Item> resultSetIterator = container.GetItemQueryIterator<Item>(
                 query, requestOptions: new QueryRequestOptions
         {
             PopulateIndexMetrics = true
         });
 
-    double requestCharge = 0;
-    tring indexMetrics = "";
-
     FeedResponse<Item> response = null;
 
     while (resultSetIterator.HasMoreResults)
         {
-            response = await resultSetIterator.ReadNextAsync();
-            requestCharge = requestCharge + response.RequestCharge;
-
-            if (indexMetrics != "")
-                {
-                    indexMetrics = response.IndexMetrics;
-                }
+          response = await resultSetIterator.ReadNextAsync();
+          Console.WriteLine(response.IndexMetrics);
         }
-
-    Console.WriteLine(response.IndexMetrics);
-    Console.WriteLine($"RU charge: " + response.RequestCharge);
 ```
 
 ### <a name="example-output"></a>出力例

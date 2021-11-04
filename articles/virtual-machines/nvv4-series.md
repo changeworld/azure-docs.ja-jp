@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 92fa6f5e2c1b4850696def464bfb0f96e3ce11f8
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 7c2b2edf30b4377ca90b65bb099ab3ceacc5f871
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069821"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008448"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
 
@@ -30,7 +30,7 @@ NVv4 シリーズの仮想マシンにパワーを与えるのは [AMD Radeon In
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md): サポートされています ([プレビュー段階](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています<br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |

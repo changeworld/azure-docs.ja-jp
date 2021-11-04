@@ -12,12 +12,12 @@ metadata:
   author: yelevin
   ms.author: yelevin
   ms.date: 06/25/2020
-  ms.openlocfilehash: 32935f55897e54836ce60ddae69c4f708053c9e0
-  ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+  ms.openlocfilehash: 30589e2d2f7c1ceb0d5492983e7b189a410000b6
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/23/2021
-  ms.locfileid: "122662444"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131046795"
 landingContent:
 - title: Azure Sentinel について
   linkLists:
@@ -84,7 +84,7 @@ landingContent:
     - text: CEF ログ フィールドのマッピング
       url: cef-name-mapping.md
     - text: ネットワーク正規化スキーマ
-      url: normalization-schema.md
+      url: ./network-normalization-schema.md
 - title: 脅威インテリジェンス
   linkLists:
   - linkListType: concept

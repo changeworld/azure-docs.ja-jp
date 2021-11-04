@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 765eb53098f757d29072d736d50086f31bb11dc3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 70eaa03f3a10e01e9e3f17963f355117890a510d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649758"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066807"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-using-azure-application-gateway-ingress-aks-add-on"></a>Azure Application Gateway イングレス AKS アドオンを使用して、Open Service Mesh (OSM) によって管理されるアプリケーションをデプロイする
 
@@ -34,11 +34,8 @@ ms.locfileid: "128649758"
 次のリソースがインストールされている必要があります。
 
 - Azure CLI バージョン 2.20.0 以降
-- `aks-preview` 拡張機能バージョン 0.5.5 以降
-- OSM バージョン v0.8.0 以降
+- OSMバージョンバージョン v 0.11.1 以降
 - JSON プロセッサ "jq" バージョン 1.6 以上
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="view-and-verify-the-current-osm-cluster-configuration"></a>現在の OSM クラスター構成を表示して確認する
 

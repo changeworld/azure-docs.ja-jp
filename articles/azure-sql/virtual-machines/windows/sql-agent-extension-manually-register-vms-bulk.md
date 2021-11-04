@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc4bfc48c9b8f6891c45730215f2c49e84467a42
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8c0e4e5c0c12284bd3cc2f777f6951e04cc06926
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161896"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071859"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,6 +38,8 @@ ms.locfileid: "130161896"
 `Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットが、仮想マシンを[ライトウェイト管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)で登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
 
 登録プロセスにはリスクがなく、ダウンタイムは発生せず、SQL Server サービスも仮想マシンも再起動されません。 
+
+既定では、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると自動的に SQL IaaS Agent 拡張機能に登録されます。  詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

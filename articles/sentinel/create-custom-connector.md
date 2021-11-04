@@ -10,19 +10,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 3b578ffbb734c738aa3f082d192eae8557f4e307
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d69235d1d7131df8b5abcb1c9073defab8f2354
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755098"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023350"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Sentinel を使用すると、[Azure サービスと外部ソリューション用のさまざまな組み込みコネクタ](connect-data-sources.md)が提供され、一部のソースからの専用コネクタを使用しないデータの取り込みもサポートされます。
 

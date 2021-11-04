@@ -4,15 +4,19 @@ description: このクイックスタートでは、照明やアプライアン�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/14/2021
-ms.openlocfilehash: 3de83151aa00d589c470eb7ac772f4c9b5f7eda2
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 70972607788568fbc06f9efe06fe083fd8d8ac01
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073626"
 ---
 # <a name="quickstart-build-your-app-in-luis-portal"></a>クイックスタート: LUIS ポータルでアプリをビルドする
+
+> [!NOTE]
+> 新しいバージョンの Language Understanding 機能が、Azure Cognitive Service for Language の一部として使用できるようになりました。 詳しくは、[Azure Cognitive Service for Language のドキュメント](../language-service/index.yml)参照してください。 Language Service 内の言語理解機能については、「[会話言語の理解](../language-service/conversational-language-understanding/overview.md)」、「[カスタム固有表現認識](../language-service/custom-named-entity-recognition/overview.md)」、「[カスタム分類](../language-service/custom-classification/overview.md)」を参照してください。
 
 このクイックスタートでは、照明や家電製品のオンとオフを切り替えるために、あらかじめ構築されたホーム オートメーション ドメインを使用して LUIS アプリを作成します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 次に、さらに意図とエンティティを追加することで、アプリをカスタマイズしてみます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 
@@ -30,7 +34,7 @@ ms.locfileid: "107948377"
 
 表示されたウィンドウで、次の情報を入力します。
 
-|名前  |Description  |
+|名前  |説明  |
 |---------|---------|
 |名前     | アプリの名前。 たとえば、"home automation"。        |
 |カルチャ     | アプリによって認識され、話される言語。   |

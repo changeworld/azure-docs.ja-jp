@@ -5,17 +5,19 @@ services: sentinel
 author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, ignite-fall-2021
 ms.topic: how-to
-ms.date: 09/02/2021
-ms.openlocfilehash: bd3ff870952701901f432660ec0069afa5151916
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/17/2021
+ms.openlocfilehash: 8997a8a3d06fb14c4ad76fe01517a7f59c0944eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275356"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060860"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>Azure Sentinel のコストを計画および管理する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel のコストを計画して管理する方法について説明します。 サービスにリソースを追加する前に、まず、Azure Sentinel のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。
 
@@ -62,7 +64,7 @@ Azure Sentinel サービスには、**従量課金制レベル** と **コミッ
 
 - Log Analytics と Azure Sentinel には **コミットメント レベル** の価格 (旧称、容量予約) も用意されています。これは、予測可能であり、従量課金制の価格と比較して最大で 65% も節約されます。
 
-    コミットメント レベルの価格では、100 GB/日からコミットメントを購入できます。 コミットメント レベルを超える使用量には、お客様が選択したコミットメント レベル レートで課金されます。 たとえば、コミットメント レベルが 100 GB/日の場合、コミットされた 100 GB/日のデータ量に加えて、そのレベルの割引料金で GB/日の追加分が請求されます。
+    コミットメント レベルの価格では、100 GB/日からコミットメントを購入できます。 コミットメント レベルを超える使用量には、お客様が選択したコミットメント レベル レートで課金されます。 たとえば、コミットメント レベルが 100 GB の場合、コミットされた 100 GB のデータ量に加えて、そのレベルの割引料金で GB/日の追加分が請求されます。
 
     コミットメント レベルは、増やすのはいつでも、減らすのは 31 日ごとに可能で、データ量の増減に合わせてコストを最適化できます。 Azure Sentinel の現在の価格レベルを確認するには、Azure Sentinel の左側のナビゲーションで **[設定]** を選択してから、 **[価格]** タブを選択します。現在の価格レベルには、 **[現在のレベル]** と表示されます。
 
@@ -94,7 +96,7 @@ Azure 請求書の表示とダウンロードの詳細については、[Azure �
 
 ### <a name="costs-for-other-services"></a>その他のサービスのコスト
 
-Azure Sentinel は、強化された機能を提供するため、他の多くの Azure サービスと統合されます。 これらのサービスには、Azure Logic Apps、Azure Notebooks、機械学習持ち込み (BYOML) モデルが含まれます。 これらのサービスの一部には、追加料金が発生する場合があります。 Azure Sentinel のデータ コネクタとソリューションの一部では、データ インジェストに Azure Functions が使用され、それに関連して別途コストがかかります。
+Azure Sentinel は、強化された機能を提供するため、他の多くの Azure サービスと統合されます。 これらのサービスには、Azure Logic Apps、Azure Notebooks、機械学習持ち込み (BYOML) モデルが含まれます。 一部のサービスには追加料金がかかる場合があります。 Azure Sentinel のデータ コネクタとソリューションの一部では、データ インジェストに Azure Functions が使用され、それに関連して別途コストがかかります。
 
 これらのサービスの価格の詳細については、以下を参照してください。
 
@@ -123,8 +125,23 @@ Azure Sentinel を削除しても、Azure Sentinel がデプロイされた Log 
 
 ### <a name="free-trial"></a>無料試用版
 
-新規または既存の Log Analytics ワークスペースで Azure Sentinel を有効にすると、最初の 31 日間は追加コストがかかりません。 Log Analytics、Automation、BYOML に関連する料金は、無料試用中も引き続き適用されます。 最初の 31 日を超えて使用すると、[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel)に従って課金されます。 
+最初の 31 日間無料で Azure Sentinel をお試しください。 Azure Sentinel は、Azure Monitor Log Analytics ワークスペースで、以下に示す制限に従って、追加コストなしで有効にできます。
 
+- **新しい Log Analytics ワークスペース** では、最初の 31 日間、最大で 1 日 10 GB のログ データを無料で取り込むことができます。 新しいワークスペースには、3 日を経過していないワークスペースが含まれます。
+
+   31 日間の評価期間中、Log Analytics のデータ インジェストと Azure Sentinel の料金が免除されます。 この無料試用版には、Azure テナントごとに 20 個のワークスペースという制限が適用されます。
+
+- **既存の Log Analytics ワークスペース** では、追加のコストなしで Azure Sentinel を有効にすることができます。 既存のワークスペースには、作成後の経過時間が 3 日を超えているワークスペースが含まれます。
+
+   31 日間の試用期間中、Azure Sentinel の料金のみが免除されます。
+
+これらの制限を超える使用量については、[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel)に関するページに記載されている価格に従って課金されます。 [自動化](automation-in-azure-sentinel.md)と[独自の機械学習](bring-your-own-ml.md)用の追加機能に関連する料金は、無料試用中であっても適用されます。
+
+> [!TIP]
+> 無料試用中は、Azure Sentinel の **[ニュースとガイド] > [無料試用版]** タブで、コスト管理やトレーニングなどのリソースを利用できます。
+>
+> このタブには、無料試用版の日付と、有効期限が切れるまでの残り日数に関する詳細も表示されます。
+>
 ### <a name="free-data-sources"></a>無料データ ソース
 
 次のデータ ソースは、Azure Sentinel では無料です。
@@ -259,7 +276,7 @@ Usage
 
 ## <a name="export-cost-data"></a>コスト データのエクスポート
 
-また、ストレージ アカウントに[コスト データをエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することもできます。 これは、自分や他のユーザーがコストに関する追加のデータ分析を行う必要がある場合に便利です。 たとえば、財務チームは、Excel や Power BI を使用してデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
+また、ストレージ アカウントに[コスト データをエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することもできます。 コスト データのエクスポートは、自分や他のユーザーがコストに関する追加のデータ分析を行う必要がある場合に便利です。 たとえば、財務チームは、Excel や Power BI を使用してデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
 
 ## <a name="create-budgets"></a>予算を作成する
 
@@ -321,7 +338,7 @@ Azure Sentinel で脅威をハンティングまたは調査するときは、�
 
 ### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>専用クラスターを使用して Log Analytics のコストを最適化する
 
-少なくとも 500 GB/日を Azure Sentinel ワークスペースまたは同じリージョン内のワークスペースに取り込む場合は、コストを削減するために Log Analytics 専用クラスターへの移行を検討してください。 Log Analytics 専用クラスターのコミットメント レベルにより、まとめると合計 500 GB/日以上を取り込むすべてのワークスペースのデータ量が集約されます。
+少なくとも 500 GB を Azure Sentinel ワークスペースまたは同じリージョン内のワークスペースに取り込む場合は、コストを削減するために Log Analytics 専用クラスターへの移行を検討してください。 Log Analytics 専用クラスターのコミットメント レベルにより、まとめると合計 500 GB 以上を取り込むすべてのワークスペースのデータ量が集約されます。
 
 Log Analytics 専用クラスターは、Azure Sentinel のコミットメント レベルには適用されません。 Azure Sentinel のコストは、専用クラスター内のワークスペースごとに引き続き適用されます。
 

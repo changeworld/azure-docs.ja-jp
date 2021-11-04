@@ -7,15 +7,13 @@ ms.date: 06/09/2021
 ms.topic: quickstart
 ms.service: signalr
 ms.devlang: python
-ms.custom:
-- devx-track-python
-- mode-api
-ms.openlocfilehash: 99d2f7a67ede762f84e5f6d9abf5af78c5751d22
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.custom: devx-track-python, mode-api
+ms.openlocfilehash: 0d6066e5305cf3acda350dcaef4572d6564395f2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444970"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069598"
 ---
 # <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート: Azure Functions と SignalR Service で Python を使用して、GitHub のスターの数を表示するアプリを作成する
 

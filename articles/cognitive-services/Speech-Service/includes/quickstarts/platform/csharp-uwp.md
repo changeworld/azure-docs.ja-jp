@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
-ms.author: eur
+ms.author: pafarley
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 320fc32439b8e22ef3ebee91d470eb37e3c37bf1
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 087ff15a2dc8aeabf538b0878ea5b117d4b68e36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502437"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253227"
 ---
 このガイドでは、C# ユニバーサル Windows プラットフォーム (UWP) 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、NuGet コンソールで `Install-Package Microsoft.CognitiveServices.Speech` を実行します。
 

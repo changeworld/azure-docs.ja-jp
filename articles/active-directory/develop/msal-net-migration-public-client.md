@@ -13,12 +13,12 @@ ms.date: 08/31/2021
 ms.author: sahmalik
 ms.reviewer: saeeda, shermanouko, jmprieur
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 1ccd2acaaec8c49de761511ebd3d4a5ad86f4095
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 0bb1dc80d9bebf0488bfa2a272f5f7fa5303b31b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233656"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018017"
 ---
 # <a name="migrate-public-client-applications-from-adalnet-to-msalnet"></a>パブリック クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する
 
@@ -55,7 +55,7 @@ ms.locfileid: "129233656"
 対話型認証を使用するパブリック クライアント アプリケーションの場合、アプリの ADAL コードで `AuthenticationContext` のインスタンスを作成し、次のパラメーターを使用した `AcquireTokenAsync` の呼び出しを含めます。
  - アプリケーションの登録を表す GUID である `clientId`
  - トークンを要求している対象のリソースを示す `resourceUrl`
- - 応答 URL である URI
+ - 応答 URLであるURI
  - `PlatformParameters` オブジェクト。 
 
  #### <a name="update-the-code-for-interactive-scenarios"></a>対話型シナリオ用にコードを更新する
@@ -224,7 +224,7 @@ result = await context.AcquireTokenAsync(resource, clientId,
       // AcquireTokenByIntegratedWindowsAuth form that takes in the username
 
       // Error Code: integrated_windows_auth_not_supported_managed_user
-      // Explanation: This method relies on an a protocol exposed by Active Directory (AD). If a user was created in Azure
+      // Explanation: This method relies on a protocol exposed by Active Directory (AD). If a user was created in Azure
       // Active Directory without AD backing ("managed" user), this method will fail. Users created in AD and backed by
       // AAD ("federated" users) can benefit from this non-interactive method of authentication.
       // Mitigation: Use interactive authentication
@@ -494,7 +494,7 @@ private static async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublic
 1. 最新バージョンの MSAL.NET を使用していることを確認します。
 1. 機密クライアント アプリケーションを構築するときに設定した証明機関ホストと、ADAL で使用した証明機関ホストが類似していることを確認します。 特に、同じ[クラウド](msal-national-cloud.md) (Azure Government、Azure China 21Vianet、または Azure Germany) を使用していることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ADAL.NET と MSAL.NET アプリの違い](msal-net-differences-adal-net.md)についての詳細を確認してください。
 [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)の詳細を確認してください。

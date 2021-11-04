@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2021
 ms.author: yelevin
-ms.openlocfilehash: ecb8559af1d2aaf70bee0031930a748ff534f1c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8d93c98da0144d7081803abad174aa09a0087ccb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622533"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014051"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel で脅威を検出する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
@@ -242,4 +244,3 @@ MSTICPy には、クエリ時間の境界の設定、リストからの項目の
 - [ブックマークを使用して検出中に関心のある情報を保存する](bookmarks.md)
 
 [カスタム コネクタ](create-custom-connector.md)で [Zoom を監視](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)するときのカスタム分析ルールの使用例をご覧ください。
-

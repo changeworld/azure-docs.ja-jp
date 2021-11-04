@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4c45c127710ff5a572a68531a1a5b3836d505e39
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6c89ad519489892cf2965054d0c331a6f5d9f8e6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749510"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067701"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -238,7 +238,7 @@ Azure Functions で実行されているアプリに対してアダプティブ 
 
 2. **固定レート サンプリング モジュールを有効にします。** 次のスニペットを [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) に追加します。
    
-    ```XML
+    ```xml
     <TelemetryProcessors>
         <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
             <!-- Set a percentage close to 100/N where N is an integer. -->
@@ -323,7 +323,7 @@ Azure Functions で実行されているアプリに対してアダプティブ 
 
 2. `ApplicationInsights.xml` ファイルに次のスニペットを追加することによって、**固定レート サンプリング モジュールを有効にします**。
 
-    ```XML
+    ```xml
     <TelemetryProcessors>
         <BuiltInProcessors>
             <Processor type="FixedRateSamplingTelemetryProcessor">
@@ -337,7 +337,7 @@ Azure Functions で実行されているアプリに対してアダプティブ 
 
 3. `Processor` タグの `FixedRateSamplingTelemetryProcessor` 内の次のタグを使用して、特定の種類のテレメトリをサンプリングに含めたり、サンプリングから除外したりできます。
    
-    ```XML
+    ```xml
     <ExcludedTypes>
         <ExcludedType>Request</ExcludedType>
     </ExcludedTypes>

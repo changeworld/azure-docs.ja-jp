@@ -1,15 +1,16 @@
 ---
-title: Azure Video Analyzer プレーヤー ウィジェットを使用する
-description: この参照記事では、Video Analyzer プレーヤー ウィジェットをアプリケーションに追加する方法について説明します。
+title: Video Analyzer プレーヤー ウィジェットの使用
+description: この記事では、Video Analyzer プレーヤー ウィジェットをアプリケーションに追加する方法について説明します。
 ms.service: azure-video-analyzer
-ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: ffc17e756a303723fe1d21c6ba221fed31147eaa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.topic: how-to
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 4617d7db16d674ff74419fc43744ff04b9e239cb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620575"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012057"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Azure Video Analyzer プレーヤー ウィジェットを使用する
 
@@ -18,11 +19,11 @@ ms.locfileid: "128620575"
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * トークンを作成する
-> * ビデオのリストを作成する
-> * [ビデオ アプリケーション リソース](./terminology.md#video)を再生するためのベース URL を取得する
 > * プレーヤーでページを作成する
+> * ビデオのリストを作成する
 > * ストリーミング エンドポイントとトークンをプレーヤーに渡す
+> * ゾーン ドロアー プレーヤーを追加する
+> * 指定した開始時刻と終了時刻にクリップされたビデオを表示する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,15 +31,39 @@ ms.locfileid: "128620575"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * HTML ファイル用の [Visual Studio Code](https://code.visualstudio.com/) またはその他のエディター。
-* [継続的なビデオ記録と再生](./use-continuous-video-recording.md)または[モーションの検出とエッジ デバイス上でのビデオの記録](./detect-motion-record-video-clips-cloud.md)
+* [継続的なビデオ記録と再生](edge/use-continuous-video-recording.md)または[モーションの検出とエッジ デバイス上でのビデオの記録](./detect-motion-record-video-clips-cloud.md)のいずれかからトポロジを実行します
 * [トークン](./access-policies.md#creating-a-token)の作成
 * [アクセス ポリシー](./access-policies.md#creating-an-access-policy)の作成
 
+
+## <a name="create-a-web-page-with-a-video-player"></a>ビデオ プレーヤーを使用して Web ページを作成する
+
+Web ページを作成するには、次のサンプル コードを使用します。
+
+```html
+<html>
+<head>
+<title>Video Analyzer Player Widget Demo</title>
+</head>
+<script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets"></script>
+<body>
+Client API endpoint URL: <input type="text" id="clientApiEndpointUrl" /><br><br>
+JWT Auth Token for Client API: <input type="text" id="token" /><br><br>
+<button type="submit" onclick="getVideos()">Get Videos</button><br><br>
+<textarea rows="20" cols="100" id="videoList"></textarea><br><br>
+Video name: <input type="text" id="videoName" /><br><br>
+<button type="submit" onclick="playVideo()">Play Video</button><br><br>
+</body>
+</body>
+</html>
+```
 ## <a name="list-video-resources"></a>ビデオ リソースの一覧
 
 次は、ビデオ リソースの一覧を生成します。 以前に使用したアカウント エンドポイントへの REST 呼び出しを行い、生成したトークンを使用して認証します。
 
 GET 要求を REST API に送信する方法は多数ありますが、ここでは JavaScript 関数を使用します。 次のコードでは [XMLHttpRequest](https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp) が、ページの `clientApiEndpointUrl` フィールドと `token` フィールドに保管する値と共に使用され、同期 `GET` 要求が送信されます。 次に、ビデオの結果リストが取得され、ページに設定した `videoList` テキスト領域に保管されます。
+
+次のコード スニペットは、ビデオ リストの要求時に役立ちます。
 
 ```javascript
 function getVideos()
@@ -52,7 +77,7 @@ function getVideos()
 }
 ```
    > [!NOTE]
-   >`clientApiEndPoint` とトークンは、「[トークンを作成する](./access-policies.md#creating-a-token)」で収集されます
+   >`clientApiEndPoint` と `token` は、「[トークンを作成する](./access-policies.md#creating-a-token)」で収集されます
 
 ## <a name="add-the-video-analyzer-player-component"></a>Video Analyzer プレーヤー コンポーネントを追加する
 
@@ -68,7 +93,7 @@ function getVideos()
    ```
 1. ページ上の Video Analyzer プレーヤー ウィジェットへのリンクを取得します。
    ```javascript
-   const avaPlayer = document.getElementById("avaPlayer");
+   const avaPlayer = document.getElementById("videoPlayer");
    ```
 1. 使用している値でプレーヤーを構成するには、次に示すように、それらをオブジェクトとして設定する必要があります。
    ```javascript
@@ -85,11 +110,31 @@ function getVideos()
    
 ## <a name="add-the-zone-drawer-component"></a>ゾーン ドロワー コンポーネントを追加する
 
+ゾーン ドロアー コンポーネントを使用すると、Video Analyzer プレーヤーの上に線と多角形を描画できます。 
+
 1. ドキュメントに AVA-Zone-Drawer 要素を追加します。
    ```html
-   <ava-zone-drawer width="720px" id="zoneDrawer"></ava-zone-drawer>
+   <ava-zone-drawer width="720px" id="zoneDrawer">
+        <ava-player id="videoPlayer2"></ava-player>
+   </ava-zone-drawer>
    ```
-1. ページ上の Video Analyzer ゾーン ドロワーへのリンクを取得します。
+1. ゾーン ドロワー内で再生する Video Analyzer プレーヤー ウィジェットへのリンクを取得します。
+   ```javascript
+   const avaPlayer2 = document.getElementById("videoPlayer2");
+   ```
+1. ゾーン ドロワー内で再生するプレーヤーを構成します。
+   ```javascript
+   avaPlayer2.configure( {
+      token: document.getElementById("token").value,
+      clientApiEndpointUrl: document.getElementById("clientApiEndpointUrl").value,
+      videoName: document.getElementById("videoName").value
+   } );
+   ```
+1. ゾーン ドロワー内のプレーヤーにビデオを読み込みます。
+   ```javascript
+   avaPlayer2.load();
+   ```
+1. ページ内にあるゾーン ドロワーへのリンクを取得します。
    ```javascript
    const zoneDrawer = document.getElementById("zoneDrawer");
    ```
@@ -132,13 +177,21 @@ function getVideos()
         document.getElementById("videoList").value = xhttp.responseText.toString();
     }
     function playVideo() {
-        const avaPlayer = document.getElementById("avaPlayer");
+        const avaPlayer = document.getElementById("videoPlayer");
         avaPlayer.configure( {
             token: document.getElementById("token").value,
             clientApiEndpointUrl: document.getElementById("clientApiEndpointUrl").value,
             videoName: document.getElementById("videoName").value
         } );
         avaPlayer.load();
+        
+        const avaPlayer2 = document.getElementById("videoPlayer2");
+        avaPlayer2.configure( {
+            token: document.getElementById("token").value,
+            clientApiEndpointUrl: document.getElementById("clientApiEndpointUrl").value,
+            videoName: document.getElementById("videoName").value
+        } );
+        avaPlayer2.load();
     
         const zoneDrawer = document.getElementById("zoneDrawer");
         zoneDrawer.load();
@@ -155,14 +208,17 @@ function getVideos()
     }
 </script>
 Client API endpoint URL: <input type="text" id="clientApiEndpointUrl" /><br><br>
-Token: <input type="text" id="token" /><br><br>
+JWT Auth Token for Client API: <input type="text" id="token" /><br><br>
 <button type="submit" onclick="getVideos()">Get Videos</button><br><br>
 <textarea rows="20" cols="100" id="videoList"></textarea><br><br>
-Video name: <input type="text" id="videoName" /><br><br>
 <button type="submit" onclick="playVideo()">Play Video</button><br><br>
+Video name: <input type="text" id="videoName" /><br><br>
+<div id="container" style="width:720px" class="widget-container">
+    <ava-player width="720px" id="videoPlayer"></ava-player>
+</div>
 <textarea rows="5" cols="100" id="zoneList"></textarea><br><br>
 <ava-zone-drawer width="720px" id="zoneDrawer">
-    <ava-player id="avaPlayer"></ava-player>
+    <ava-player id="videoPlayer2"></ava-player>
 </ava-zone-drawer>
 </body>
 </html>
@@ -182,7 +238,7 @@ Video name: <input type="text" id="videoName" /><br><br>
 1. **[プライマリ エンドポイント]** の上で、 **[$web]** を選択します。
 1. 上部にある **[アップロード]** ボタンを使用して、静的 HTML ページを **index.html** としてアップロードします。
 
-## <a name="play-a-video"></a>ビデオを再生する
+### <a name="play-a-video"></a>ビデオを再生する
 
 これでページがホストされたので、そこに移動し、ビデオを再生する手順を実行できるようになりました。
 
@@ -191,10 +247,47 @@ Video name: <input type="text" id="videoName" /><br><br>
 1. ビデオの一覧からビデオ名を選択し、それを **[ビデオ名]** フィールドに入力します。
 1. **[ビデオを再生する]** を選択します。
 
+### <a name="live-video-playback"></a>ライブ ビデオ再生
+
+livePipeline が `activated` 状態で、ビデオが記録されている場合、プレーヤーでは自動的に **ライブ** ビューを読み込みます。 このビデオ再生はほぼリアルタイムであり、約 2 秒の短い待機時間があります。
+
+**ライブ** ビューでは、次のことを行います。
+1. ビデオ再生をほぼリアルタイムで表示します。
+1. タイムラインは表示されません。
+1. **[ボックス]** アイコンをクリックすると、境界ボックスが存在する場合は表示されます。
+
+> [!Tip]
+> 前に記録したクリップをすべて表示できるビューに切り替えるには、 **[ライブ]** ボタンをクリックします。
+ 
+### <a name="capture-lines-and-zones"></a>行とゾーンをキャプチャする
+
+1. **ゾーン ドロワー** プレーヤーに移動します
+1. 左上隅の最初のアイコンをクリックしてゾーンを描画します。
+1. ゾーンと線を描画するために必要なのは、エンド ポイントを含めるポイントをクリックすることだけです。 ゾーンと線を描画するドラッグ機能はありません。
+1. プレーヤーの右側のセクションに作成されたゾーンと線が表示されます。
+1. 線とゾーンの座標を取得するには、 **[保存]** ボタンをクリックします。
+1. こうすると、適切なトポロジを使用できるポイント座標を含む JSON 応答が表示されます。
+
+### <a name="video-clips"></a>ビデオ クリップ
+開始時刻と終了時刻を選択してビデオ クリップを作成できます。
+
+Video Analyzer ビデオ プレーヤー ウィジェットでは、次に示すように開始日時と終了日時を指定すると、ビデオ クリップの再生がサポートされます。
+
+> [!Note] 
+> Video Analyzer ビデオ プレーヤー ウィジェットでは UTC 標準時を使用するため、選択した開始時刻と終了時刻をこの形式に変換する必要があります。
+
+HTML ファイルで次のコードを使用して、指定する startTime と endTime からビデオを読み込むビデオ プレーヤーを開きます。
+
+```javascript
+    const avaPlayer = document.getElementById("videoPlayer");
+    const startUTCDate = new Date(Date.UTC(selectedClip.start.getFullYear(), selectedClip.start.getMonth(), selectedClip.start.getDate(), selectedClip.start.getHours(), selectedClip.start.getMinutes(), selectedClip.start.getSeconds()));
+    const endUTCDate = new Date(Date.UTC(selectedClip.end.getFullYear(), selectedClip.end.getMonth(), selectedClip.end.getDate(), selectedClip.end.getHours(), selectedClip.end.getMinutes(), selectedClip.end.getSeconds()));
+    avaPlayer.load({ startTime: startUTCDate, endTime: endUTCDate });
+``` 
+
 ## <a name="additional-details"></a>追加情報
 
 次のセクションには、注意する必要がある重要な追加の詳細がいくつか含まれています。
-
 ### <a name="refresh-the-access-token"></a>アクセス トークンを更新する
 
 プレーヤーでは、以前に生成したアクセス トークンを使用して、再生承認トークンを取得します。 トークンは定期的に期限切れになり、更新する必要があります。 新しいプレーヤーのアクセス トークンを生成した後、アクセス トークンを更新する方法は 2 つあります。
@@ -216,7 +309,7 @@ Video name: <input type="text" id="videoName" /><br><br>
 
 前述のプレーヤーの構成はシンプルですが、構成値に対してより幅広いオプションを使用できます。 サポートされているフィールドを次に示します。
 
-| 名前   | 種類             | 説明                         |
+| 名前   | 型             | 説明                         |
 | ------ | ---------------- | ----------------------------------- |
 | `token`  | string | ウィジェットの JWT トークン |
 | `videoName` | string | ビデオ リソースの名前  |
@@ -269,4 +362,5 @@ zoneDrawer.appendChild(playerWidget);
 
 ## <a name="next-steps"></a>次の手順
 
-* [ウィジェット API](https://github.com/Azure/video-analyzer/tree/main/widgets) の詳細を確認します。
+* [ウィジェットを使用したサンプル再生](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/video-player)を試してみてください。
+* [ウィジェット リポジトリ](https://github.com/Azure/video-analyzer-widgets)にアクセスして、さまざまなウィジェット機能を実装する方法について説明します。

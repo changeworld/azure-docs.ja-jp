@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/18/2021
-ms.openlocfilehash: 930194c3a415a39edacd9ad8c680a872e1760e03
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2744552b358fa90180ed085c50b23404473d1745
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178300"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037247"
 ---
 # <a name="design-your-azure-sentinel-workspace-architecture"></a>Azure Sentinel ワークスペース アーキテクチャを設計する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel ワークスペース アーキテクチャの設計方法に関する重要な決定を下す際に役立つデシジョン ツリーを提供します。 詳細については、「[Azure Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)」および「[Azure Sentinel アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)」を参照してください。
 
@@ -185,7 +188,7 @@ Azure Sentinel に使用できる既存のワークスペースがあります�
 
 - **ソースまたはテーブルごとにデータアクセスを制御する必要が "*ない*" 場合** は、1 つの Azure Sentinel ワークスペースを使用します。
 
-- **ソースまたはテーブルごとにデータアクセスを制御する必要が "*ある*" 場合** は、次の状況で[リソースコンテキスト RBAC](resource-context-rbac.md) を使用することを検討します。
+- **ソースまたはテーブルごとにデータアクセスを制御する必要が "*ある*" 場合** は、次の状況で [リソースコンテキスト RBAC](resource-context-rbac.md) を使用することを検討します。
 
     - 行レベルでアクセスを制御する必要がある場合 (各データ ソースまたはテーブルに複数の所有者を設定する場合など)
 

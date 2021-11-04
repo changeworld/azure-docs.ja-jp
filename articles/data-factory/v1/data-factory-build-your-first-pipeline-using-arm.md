@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: tutorial
 ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e7964a0251b7ecc958e8eb60a48c6fb63574a9c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 25309de23f1a819dc26a21e486fb96c0beac5b7b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218828"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040815"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
@@ -305,31 +305,38 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
 ```
 
 > [!IMPORTANT]
-> 開発環境、テスト環境、運用環境用にそれぞれ別の parameter JSON ファイルを作成して、同じ Data Factory JSON テンプレートで使用できます。 PowerShell スクリプトを使用して、これらの環境への Data Factory エンティティのデプロイを自動化できます。 
-> 
-> 
+> 開発環境、テスト環境、運用環境用にそれぞれ別の parameter JSON ファイルを作成して、同じ Data Factory JSON テンプレートで使用できます。 PowerShell スクリプトを使用して、これらの環境への Data Factory エンティティのデプロイを自動化できます。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
-1. **Azure PowerShell** を起動し、次のコマンドを実行します。 
+
+1. **Azure PowerShell** を起動し、次のコマンドを実行します。
+
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
-     ```PowerShell
+
+     ```powershell
      Connect-AzAccount
-     ```  
-   * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
-     ```PowerShell
-     Get-AzSubscription
-     ``` 
-   * 次のコマンドを実行して、使用するサブスクリプションを選択します。 このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
      ```
+
+   * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+
+     ```powershell
+     Get-AzSubscription
+     ```
+
+   * 次のコマンドを実行して、使用するサブスクリプションを選択します。 このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
+
+     ```powershell
      Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
-     ```   
+     ```
+
 2. 次のコマンドを実行し、手順 1. で作成した Resource Manager テンプレートを使用して Data Factory エンティティをデプロイします。 
 
-    ```PowerShell
-    New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
-    ```
+   ```powershell
+   New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
+   ```
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
+
 1. [Azure Portal](https://portal.azure.com/) にログインした後、 **[参照]** をクリックして **[データ ファクトリ]** を選択します。
      :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png" alt-text="[参照] > [データ ファクトリ]":::
 2. **[データ ファクトリ]** ブレードで、作成したデータ ファクトリ (**TutorialFactoryARM**) をクリックします。    
@@ -564,17 +571,18 @@ HDInsight のオンデマンドのリンクされたサービスを定義する�
 ```
 
 ## <a name="reuse-the-template"></a>テンプレートの再利用
-このチュートリアルでは、Data Factory エンティティを定義するためのテンプレートと、パラメーターの値を渡すためのテンプレートを作成しました。 同じテンプレートを使用して、Data Factory エンティティをさまざまな環境にデプロイするには、環境ごとにパラメーター ファイルを作成し、その環境にデプロイするときに使用します。     
+このチュートリアルでは、Data Factory エンティティを定義するためのテンプレートと、パラメーターの値を渡すためのテンプレートを作成しました。 同じテンプレートを使用して、Data Factory エンティティをさまざまな環境にデプロイするには、環境ごとにパラメーター ファイルを作成し、その環境にデプロイするときに使用します。
 
-例:  
+例:
 
-```PowerShell
+```powershell
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
 
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
 
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
+
 最初のコマンドでは開発環境用、2 番目のコマンドではテスト環境用、3 番目のコマンドでは運用環境用のパラメーター ファイルをそれぞれ使用していることに注意してください。  
 
 テンプレートを再利用して、繰り返されるタスクを実行することもできます。 たとえば、1 つ以上のパイプラインを持つ多数のデータ ファクトリを作成する必要があるとします。各データ ファクトリは同じロジックを実装しますが、それぞれ異なる Azure Storage アカウントと Azure SQL Database アカウントを使用します。 このシナリオでは、1 つの環境 (開発、テスト、または運用) で同じテンプレートと異なるパラメーター ファイルを使用してデータ ファクトリを作成します。 

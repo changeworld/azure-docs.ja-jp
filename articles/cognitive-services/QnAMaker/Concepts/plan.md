@@ -4,13 +4,14 @@ description: QnA Maker アプリを計画する方法について説明します
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 1f3db34f477e228157cfa8378f171adf7a239811
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b5810d7d69322793afea76bfbe29fb49b5dc13a3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828835"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086775"
 ---
 # <a name="plan-your-qna-maker-app"></a>QnA Maker アプリの計画
 
@@ -20,8 +21,6 @@ QnA Maker アプリを計画するには QnA Maker がどのように動作し�
 
 QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource-purposes)には特定の目的があります。 各リソースには、独自の目的、制限、および[価格レベル](azure-resources.md#pricing-tier-considerations)があります。 これらのリソースの機能を理解し、その知識を計画プロセスに使用できるようにすることが重要です。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 | リソース | 目的 |
 |--|--|
 | [QnA Maker](azure-resources.md#qna-maker-resource) リソース | 作成とクエリ予測 |
@@ -29,30 +28,9 @@ QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource
 | [App Service のリソースと App Plan サービス](azure-resources.md#app-service-and-app-service-plan)のリソース | 予測エンドポイントに対するクエリの実行 |
 | [Application Insights](azure-resources.md#application-insights) リソース | クエリ予測テレメトリ |
 
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-| リソース | 目的 |
-|--|--|
-| [Text Analytics](azure-resources.md#qna-maker-resource) リソース | 作成、クエリ予測エンドポイントおよびテレメトリ|
-| [Cognitive Search](azure-resources.md#cognitive-search-resource) リソース | データ ストレージと検索 |
-
----
 ### <a name="resource-planning"></a>リソースの計画
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 各リソースの Free レベルである `F0` を利用できます。また、作成とクエリ予測の両方のエクスペリエンスが用意されています。 このレベルを使用して作成とクエリ予測を学習することができます。 運用またはライブのシナリオに移行するときは、リソースの選択を再評価してください。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答 (プレビュー) は無料の機能であり、現在のスループットは、管理 API と予測 API の両方について 10 トランザクション/秒に制限されています。 サービスの目標を 10 トランザクション/秒にするには、Azure Cognitive Search の S1 (1 つのインスタンス) SKU をお勧めします。
-
-### <a name="text-analytics-resource"></a>Text Analytics リソース
-
-カスタム質問と回答機能が有効になっている単一の Text Analytics リソースでは、複数のナレッジ ベースをホストできます。 ナレッジ ベースの数は、Cognitive Search 価格レベルのサポートされているインデックスの数量によって決まります。 詳細については、[ナレッジ ベースとのインデックスの関係](azure-resources.md#index-usage)に関するページを参照してください。
-
----
 
 ### <a name="knowledge-base-size-and-throughput"></a>ナレッジ ベースのサイズとスループット
 
@@ -84,40 +62,17 @@ QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource
 
 ### <a name="language-considerations"></a>言語に関する注意点
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 QnA Maker リソースに作成された 1 つ目のナレッジ ベースによって、リソースの言語が設定されます。 1 つの QnA Maker リソースには 1 つの言語のみを使用できます。
 
 クエリをクエリ予測エンドポイントに送信する前に、QnA Maker リソースを言語ごとに構築するか、[Translator](../../translator/translator-overview.md) を使用してクエリを別の言語からナレッジ ベースの言語に変更することができます。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答機能が有効になっている同じ Text Analytics リソース内に異なる言語のナレッジ ベースを作成できます。 最初のナレッジ ベースを作成するとき、1 つの言語か複数の言語でナレッジ ベースのリソースを使用することを選択できます。
-
-![QnA Maker マネージド (プレビュー) 多言語ナレッジ ベース選択](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png)
-
-> [!NOTE]
-> ナレッジ ベースごとに複数の言語を有効にする場合、Text Analytics リソースで作成するナレッジ ベースの数に制限があります。 言語設定の制限については、[こちら](./azure-resources.md)をご覧ください。
-
----
-
 ### <a name="ingest-data-sources"></a>データ ソースを取り込む
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 取り込まれた次の[データ ソース](../Concepts/data-sources-and-content.md)のいずれかを使用して、ナレッジ ベースを作成することができます。
 
 * パブリック URL
 * SharePoint のプライベート URL
 * ファイル
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問の回答では、非構造化コンテンツもサポートされています。 非構造化コンテンツを含むファイルをアップロードできます。
-
-現時点では、非構造化コンテンツの URL はサポートされていません。
-
----
 
 インジェスト プロセスでは、[サポートされているコンテンツの種類](../reference-document-format-guidelines.md)がマークダウンに変換されます。 *回答* のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
 
@@ -194,15 +149,7 @@ QnA Maker では、_アクティブ ラーニング_ を使用して、回答に
 
 ### <a name="service-updates"></a>サービスの更新情報
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 サービス更新プログラムを自動的に管理するには、[最新のランタイム更新プログラム](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)を適用します。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答 (プレビュー) では、ランタイムは QnA Maker サービス自体によって管理されます。 そのため、サービス更新プログラムは適用されません。
-
----
 
 ### <a name="scaling-throughput-and-resiliency"></a>スケーリング、スループット、および回復性
 
@@ -210,16 +157,7 @@ QnA Maker では、_アクティブ ラーニング_ を使用して、回答に
 
 ### <a name="analytics-with-application-insights"></a>Application Insights による分析
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 ナレッジ ベースに対するすべてのクエリは Application Insights に格納されます。 [上位のクエリ](../how-to/get-analytics-knowledge-base.md)を使用して、メトリックを理解します。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答の場合、テレメトリは [Azure Monitor サービス](../../../azure-monitor/index.yml)を通じて提供されます。 [上位のクエリ](../how-to/get-analytics-knowledge-base.md)を使用して、メトリックを理解します。
-
-
----
 
 ## <a name="development-lifecycle"></a>開発ライフサイクル
 

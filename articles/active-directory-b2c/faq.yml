@@ -8,15 +8,15 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: conceptual
-  ms.date: 09/16/2021
+  ms.date: 10/26/2021
   ms.author: kengaderdus
   ms.subservice: B2C
-  ms.openlocfilehash: 1a40ae657ae3aa93e12c6c3a828783b84d8c9b2d
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: a60d5e15f08ad845e2c0eaa8644b6ee2521458b3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130041369"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131007317"
 title: Azure AD B2C:よく寄せられる質問 (FAQ)
 summary: このページには、Azure Active Directory B2C (Azure AD B2C) に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 sections:
@@ -163,6 +163,15 @@ sections:
       Enterprise Mobility Suite の一部として Azure AD B2C を取得できますか。
     answer: >
       いいえ。Azure AD B2C は従量課金制の Azure サービスであり、Enterprise Mobility Suite には含まれていません。
+  - question: >
+      Microsoft Azure Governmentで利用できないAzure AD B2Cの機能はありますか？
+    answer: >
+      次の AD B2C 機能は、現在 Microsoft Azure Government では利用できません。
+
+
+      * API コネクタ
+
+      * 条件付きアクセス
   - question: >
       Azure AD B2C に関する問題を報告するにはどのようにすればいいですか。
     answer: '[Azure Active Directory B2C のサポート要求の提出](support-options.md)に関するページを参照してください。'

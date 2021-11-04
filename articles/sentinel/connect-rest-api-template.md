@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 3b268d95eed0456b858ab5d8d93b895faca1ee7b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ed50304d02026a9cb0eafc818116fcd32035488d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038424"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046966"
 ---
 # <a name="connect-your-data-source-to-the-azure-sentinel-data-collector-api-to-ingest-data"></a>データ ソースを Azure Sentinel のデータ コレクター API に接続してデータを取り込む
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 

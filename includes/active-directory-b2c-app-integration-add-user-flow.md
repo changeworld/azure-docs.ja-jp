@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 06/11/2021
-ms.author: mimart
-ms.openlocfilehash: b6b0808f01cc47397c4f2585033733fa7b6ce05a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.author: kengaderdus
+ms.openlocfilehash: f2d96d8babc11034769258b5ea63b8a3d23fdc5b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227670"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007569"
 ---
 ユーザーがアプリにサインインしようとすると、[ユーザー フロー](../articles/active-directory-b2c/user-flow-overview.md)を介した承認エンドポイントへの認証要求がアプリによって開始されます。 ユーザー フローによって、ユーザーのエクスペリエンスが定義および制御されます。 ユーザーがユーザー フローを完了すると、Azure AD B2C によってトークンが生成され、ユーザーはアプリケーションにリダイレクトされます。
 

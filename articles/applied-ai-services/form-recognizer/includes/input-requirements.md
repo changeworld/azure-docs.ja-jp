@@ -5,12 +5,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 09/22/2021
 ms.author: lajanuar
-ms.openlocfilehash: e3296ee84928256e399891b9f8a29318c565e5de
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c93a34308e235ba487cc1ffa3f668f2b179b8055
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725819"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027697"
 ---
 * 最適な結果を得るには、ドキュメントごとに 1 つの鮮明な写真または高品質のスキャンを提供してください。
 * サポートされているファイル形式: JPEG、PNG、BMP、TIFF、および PDF (テキスト埋め込みまたはスキャン済み)。 文字の抽出と位置に関するエラーが発生する可能性を排除するには、テキストが埋め込まれている PDF が最適です。
@@ -22,4 +23,4 @@ ms.locfileid: "129725819"
 * PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
 * 教師なし学習の場合 (ラベルの付いたデータなし):
   * データには、キーと値を含める必要があります。
-  * キーは値の上または左に配置されている必要があり、下または右に配置されていてはいけません。
+  * キーは値の上または左に表示され、下または右に表示することはできません。

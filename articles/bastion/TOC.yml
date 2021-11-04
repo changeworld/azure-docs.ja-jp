@@ -57,8 +57,6 @@
       href: upgrade-sku.md
     - name: ホストのスケーリングの構成
       href: configure-host-scaling.md
-    - name: ネイティブ Windows クライアントを使用した VM への接続
-      href: connect-native-client-windows.md
     - name: 仮想マシン スケール セットへの接続
       href: bastion-connect-vm-scale-set.md
     - name: DevTest Labs 仮想マシンへの接続

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3c41a7b8efad5ab0235adb396d0170f5385e21c6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 50958765e0ff582e630d5a78b3d17f871a0c41aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437816"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072486"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>チュートリアル:Google Maps から Android アプリを移行する
 
@@ -261,14 +261,14 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
         implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
-        > [!Note]
+        > [!NOTE]
         > バージョン番号を "0+" に設定して、コードが常に最新バージョンを指すようにすることができます。
 
     4. ツール バーの **[ファイル]** に移動し、 **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** をクリックします。
 
 3. メイン アクティビティにマップ フラグメントを追加します (resources pwd\> layout \> activity\_main.xml)。
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -546,7 +546,7 @@ baseContext.resources.updateConfiguration(
 
 Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域のビューが設定されます。 この例では、&quot;fr-FR&quot; 言語コードを使用してフランス語を設定しています。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 static {

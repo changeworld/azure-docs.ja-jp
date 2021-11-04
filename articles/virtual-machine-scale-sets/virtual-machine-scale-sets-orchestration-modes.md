@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, devx-track-azurepowershell
-ms.openlocfilehash: eac0244393bb3fe8ef2291d27e9dab33563523b2
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 834fcd1732435d99d63d16efc3d867ba58fe4844
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166743"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074576"
 ---
 # <a name="orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Azure の仮想マシン スケール セットのオーケストレーション モード
 
@@ -115,7 +115,7 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 | マネージド ID  | ユーザー割り当て ID のみ  | システム割り当てまたはユーザー割り当て  | N/A (個々のインスタンスでマネージド ID を指定できます) |
 | グループに対する既存の VM の追加/削除  | いいえ  | いいえ  | いいえ |
 | Service Fabric  | いいえ  | はい  | いいえ |
-| Azure Kubernetes Service (AKS)/AKE/k8s ノード プール  | いいえ  | はい  | いいえ |
+| Azure Kubernetes Service (AKS) / AKE  | いいえ  | はい  | いいえ |
 | UserData  | Partial、UserData を個々の VM に指定できます。 | はい  | UserData を個々の VM に指定できます。 |
 
 

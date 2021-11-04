@@ -46,7 +46,7 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/dns-security-baseline?toc=/azure/dns/TOC.json
@@ -175,7 +175,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 機能のリクエスト
-      href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
+      href: 'https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c429912-8326-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-virtual-network.html
     - name: ネットワークのブログ

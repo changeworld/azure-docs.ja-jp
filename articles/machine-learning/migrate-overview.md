@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/23/2021
-ms.openlocfilehash: 4f4b0cd13095c83f84c96e57e73f255caf4fcdc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 95e95e3c6eaa3a2e1738dd3a9dea9afd5e56e008
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736337"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088124"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning への移行 
 
@@ -26,7 +26,7 @@ ms.locfileid: "124736337"
 
 Studio (クラシック) から Azure Machine Learning に移行する方法について学習します。 Azure Machine Learning によって、ノーコードとコードファーストのアプローチを組み合わせた最新のデータ サイエンス プラットフォームが提供されます。
 
-これは、基本的な「リフト アンド シフト」移行のガイドです。 既存の機械学習ワークフローを最適化する場合、または ML プラットフォームを最新化する場合、デジタル調査ツール、ワークシート、計画テンプレートなどの追加リソースについては、[Azure Machine Learning 導入フレームワーク](https://aka.ms/mlstudio-classic-migration-repo)を参照してください。
+これは、基本的な「リフト アンド シフト」移行のガイドです。 既存の機械学習ワークフローを最適化する場合、または機械学習プラットフォームを最新化する場合の、デジタル調査ツール、ワークシート、計画テンプレートなどの追加リソースについては、[Azure Machine Learning 導入フレームワーク](https://aka.ms/mlstudio-classic-migration-repo)を参照してください。
 
 ![Azure ML 導入フレームワーク](./media/migrate-overview/aml-adoption-framework.png)
 
