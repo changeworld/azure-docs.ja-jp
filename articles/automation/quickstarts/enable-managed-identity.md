@@ -5,16 +5,16 @@ services: automation
 ms.date: 09/07/2021
 ms.topic: quickstart
 ms.subservice: process-automation
-ms.openlocfilehash: 14fc0af0b75639ae79c417645912a868a0df34f6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 13b314e5f73a0c970e28dfdd87551d713d60175b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544632"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462123"
 ---
 # <a name="quickstart-enable-managed-identities-for-your-automation-account-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Automation アカウントのマネージド ID を有効にする
 
-このクイックスタートでは、Azure Automation アカウントのマネージド ID を有効にする方法について説明します。 マネージド ID と Azure Automation の連携方法の詳細については、[マネージド ID](../automation-security-overview.md#managed-identities-preview) に関する記事を参照してください。
+このクイックスタートでは、Azure Automation アカウントのマネージド ID を有効にする方法について説明します。 マネージド ID と Azure Automation の連携方法の詳細については、[マネージド ID](../automation-security-overview.md#managed-identities) に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +53,6 @@ ms.locfileid: "123544632"
 1. **[ユーザー割り当てマネージド ID]** で、既存のユーザー割り当てマネージド ID を選択し、 **[追加]** を選択します。 **[ユーザー割り当て]** タブに自動的に戻ります。
 
    :::image type="content" source="media/enable-managed-identity/added-user-identity-portal.png" alt-text="ポータルでユーザー割り当てのものが追加されています。":::
-
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

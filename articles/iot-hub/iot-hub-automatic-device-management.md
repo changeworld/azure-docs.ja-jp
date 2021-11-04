@@ -5,17 +5,17 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 10/26/2021
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02be8a37814eb37e50425b7593b7717b1f0a292e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92545397"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068355"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portal を使用した IoT デバイスおよびモジュールの自動管理
 
@@ -56,13 +56,13 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 ## <a name="create-a-configuration"></a>構成を作成する
 
-1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。 
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。
 
-2. **[IoT device configuration]\(IoT デバイス構成\)** を選択します。
+2. 左側 **のナビゲーション ウィンドウで** [構成] を選択します。
 
 3. **[デバイス構成の追加]** または **[モジュール構成の追加]** を選択します。
 
-   ![デバイス構成またはモジュール構成を追加する](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
+   :::image type="content" source="./media/iot-hub-automatic-device-management/create-automatic-configuration.png" alt-text="構成を追加する方法を示すスクリーンショット。" border="true":::
 
 構成を作成するには、5 つの手順があります。 次のセクションで、手順ごとに説明します。 
 

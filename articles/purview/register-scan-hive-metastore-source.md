@@ -1,19 +1,19 @@
 ---
 title: Hive メタストア データベースに接続して管理する
 description: このガイドでは、Azure Purview で Hive メタストア データベースに接続する方法と、Purview の機能を使用して Hive メタストア データベース ソースをスキャンおよび管理する方法について説明します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9fc76402393e32f018454569a087ec69074d444a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 074a2cbef5a19185f2e817f9cedd4ea509a3d966
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076189"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457280"
 ---
 # <a name="connect-to-and-manage-hive-metastore-databases-in-azure-purview"></a>Azure Purview で Hive メタストア データベースに接続して管理する
 

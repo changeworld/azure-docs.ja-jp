@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - Azure CDN プロファイルとエンドポイントの作成
 description: このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure CDN を有効にする方法を紹介しています。
-author: asudbring
+author: duongau
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: azure-cdn
 ms.topic: quickstart
 ms.date: 04/30/2020
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: e045a7df3389dc58fe8ac2298f2f51b0337a5f94
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: de24b2e9676082da6980c59e696781fc6939f29f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775514"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423510"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート:Azure CDN プロファイルとエンドポイントの作成
 

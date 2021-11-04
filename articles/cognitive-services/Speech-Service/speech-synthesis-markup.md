@@ -3,20 +3,20 @@ title: 音声合成マークアップ言語 (SSML) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 音声合成マークアップ言語を使用して、テキスト読み上げの発音と韻律を制御します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d6a4278c1d44a0b2bf6b67b1b375169fefd2913b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dbb9f42f7f0b58b14ae9a5c8824475c0fc15fd05
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048484"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505083"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 

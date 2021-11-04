@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4cea156f52538a58ba5eea86ace6272848a05ae9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c408a0a8b0f278ea75462a9c006b64b9d5601c8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467172"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425332"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>チュートリアル:Azure Database for PostgreSQL - フレキシブル サーバーを使用して Django アプリを AKS にデプロイする
 
@@ -242,7 +242,7 @@ spec:
         env:
         - name: DATABASE_HOST
           value: "SERVERNAME.postgres.database.azure.com"
-        - name: DATABASE_USERNAME
+        - name: DATABASE_USER
           value: "YOUR-DATABASE-USERNAME"
         - name: DATABASE_PASSWORD
           value: "YOUR-DATABASE-PASSWORD"
@@ -294,7 +294,7 @@ service "python-svc" created
 進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
-kubectl get service django-app --watch
+kubectl get service python-svc --watch
 ```
 
 最初は、*django-app* サービスの *EXTERNAL-IP* が *pending* (保留中) として表示されます。

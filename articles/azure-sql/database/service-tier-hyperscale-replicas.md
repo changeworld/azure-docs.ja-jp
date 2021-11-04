@@ -9,12 +9,12 @@ author: yorek
 ms.author: damauri
 ms.reviewer: ''
 ms.date: 9/24/2021
-ms.openlocfilehash: 38dd0f42b8c318d94c266b4837f2b67eda1f9ed9
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: b87c8dcfab561a010019a71f59307bdc8943761d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667860"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439521"
 ---
 # <a name="hyperscale-secondary-replicas"></a>Hyperscale セカンダリ レプリカ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -88,7 +88,7 @@ WITH (SERVICE_OBJECTIVE = 'HS_Gen5_2', SECONDARY_TYPE = Named, DATABASE_NAME = [
 ```
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
-New-AzSqlDatabaseSecondary -ResourceGroupName "MyResourceGroup" -ServerName "MyServer" -DatabaseName "WideWorldImporters" -PartnerResourceGroupName "MyResourceGroup" -PartnerServerName "MyServer" -PartnerDatabaseName "WideWorldImporters_NR" -SecondaryServiceObjectiveName HS_Gen5_2
+New-AzSqlDatabaseSecondary -ResourceGroupName "MyResourceGroup" -ServerName "MyServer" -DatabaseName "WideWorldImporters" -PartnerResourceGroupName "MyResourceGroup" -PartnerServerName "MyServer" -PartnerDatabaseName "WideWorldImporters_NR" -SecondaryType Named -SecondaryServiceObjectiveName HS_Gen5_2
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli

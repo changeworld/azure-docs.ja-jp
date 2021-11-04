@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache のサポート チケットを開く
 description: Azure HPC Cache のサポート リクエストを開く方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 08/19/2021
-ms.author: v-erkel
-ms.openlocfilehash: 43b2189eb5c782a980db186781f64ea8a540bb3b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.author: femila
+ms.openlocfilehash: f4fc30d84c8c0beb21f3e690d8b755a4af226694
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770529"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078581"
 ---
 # <a name="contact-support-for-help-with-azure-hpc-cache"></a>Azure HPC Cache に関してサポートに問い合わせる
 

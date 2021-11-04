@@ -3,15 +3,13 @@ title: クイック スタート:初めての Python クエリ
 description: このクイックスタートでは、手順に従って、Python 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
 ms.date: 10/01/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-python
-- mode-api
-ms.openlocfilehash: 0dfe97eda8244eb0926709d3ed39a514fbb984e9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: devx-track-python, mode-api
+ms.openlocfilehash: 722816052c14ce154ae69d1ec7c1df59da250d18
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355455"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070662"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する
 

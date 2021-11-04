@@ -4,12 +4,12 @@ description: Azure VMware Solution のホスト クォータまたは容量を�
 ms.topic: how-to
 ms.custom: contperf-fy21q3
 ms.date: 09/27/2021
-ms.openlocfilehash: 985b17183d8e3373f03f156857ee0697c769e28d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a95f152c5e55b1750aa34c9a4093e311eb27df29
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044821"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504495"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>Azure VMware Solution のホスト クォータを要求する
 
@@ -40,8 +40,7 @@ Azure VMware Solution の既存のプライベート クラウドがあり、さ
    - <bpt id="p1">**</bpt>問題のサブタイプ:<ept id="p1">**</ept> 追加のホストクォータおよび容量に関する顧客の要求
 
 1. サポート チケットの <bpt id="p1">**</bpt>[詳細]<ept id="p1">**</ept> タブの <bpt id="p2">**</bpt>[説明]<ept id="p2">**</ept> に、次の情報を入力します。
-
-   - Production 
+ 
    - リージョン名
    - ホストの数
    - その他の詳細
@@ -94,7 +93,6 @@ CSP は <bpt id="p1">[</bpt>Microsoft パートナー センター<ept id="p1">]
    
    1. サポート チケットの <bpt id="p1">**</bpt>[詳細]<ept id="p1">**</ept> タブの <bpt id="p2">**</bpt>[説明]<ept id="p2">**</ept> に、次の情報を入力します。
    
-      - Production 
       - リージョン名
       - ホストの数
       - その他の詳細

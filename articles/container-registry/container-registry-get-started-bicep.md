@@ -7,12 +7,12 @@ ms.author: jgao
 ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: azure-resource-manager
-ms.openlocfilehash: 689048afd913cf081f993a5238c42f0914119acb
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: a945540dc44b0ed5fd19b721424cfacee4fb924d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095178"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430602"
 ---
 # <a name="quickstart-create-a-container-registry-by-using-a-bicep-file"></a>クイック スタート: Bicep ファイルを使用したコンテナー レジストリの作成
 
@@ -50,6 +50,10 @@ resource acrResource 'Microsoft.ContainerRegistry/registries@2021-06-01-preview'
     adminUserEnabled: false
   }
 }
+
+@description('Output the login server property for later use')
+output loginServer string = acrResource.properties.loginServer
+
 ```
 
 Bicep ファイルには、次のリソースが定義されています。

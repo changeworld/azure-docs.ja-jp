@@ -7,19 +7,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: d3ac694134ada7a5dcb5ef4226d9de7eb6492f56
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 355f4d2d352bb343ab01805a82e9703771c22436
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122653130"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467779"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL への接続の問題のトラブルシューティング - フレキシブル サーバー
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 接続の問題は、次をはじめとするさまざまなにことよって発生する可能性があります。
 

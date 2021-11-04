@@ -3,20 +3,20 @@ title: 言語識別の使用方法
 titleSuffix: Azure Cognitive Services
 description: 言語識別を音声認識と組み合わせることで、認識中の会話音声で話されている言語を特定できます。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.author: pafarley
+ms.author: eur
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 917dd55035ecca40c0a8a25a8f70d79d6a7e6e37
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6d5d88ba1629dce89acb0345d727896c49680cbe
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806643"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505008"
 ---
 # <a name="how-to-use-language-identification"></a>言語識別の使用方法
 
