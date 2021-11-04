@@ -98,8 +98,10 @@
       items:
         - name: アプリの開始、停止、および削除
           href: how-to-start-stop-delete.md
-        - name: 永続的ストレージを使用する
-          href: how-to-persistent-storage.md
+        - name: 組み込みの永続的ストレージを使用する
+          href: how-to-built-in-persistent-storage.md
+        - name: カスタムの永続的ストレージを使用する
+          href: how-to-custom-persistent-storage.md
         - name: 送信パブリック IP アドレスの識別
           href: how-to-outbound-public-ip.md
     - name: スケール
@@ -176,8 +178,6 @@
           href: how-to-github-actions.md
         - name: GitHub Actions での Key Vault を使用した認証
           href: github-actions-key-vault.md
-        - name: Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
-          href: how-to-provision-azure-spring-cloud-instance-terraform.md
     - name: トラブルシューティング
       items:
         - name: 問題の自己診断と解決

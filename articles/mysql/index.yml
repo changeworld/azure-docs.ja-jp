@@ -1,19 +1,19 @@
 ### YamlMime:Landing
 title: Azure Database for MySQL のドキュメント
-summary: Azure Database for MySQL は、MySQL Community Edition を基盤としたリレーショナル データベース サービスです。シングル サーバーまたはフレキシブル サーバー (プレビュー) を使用して Azure に MySQL データベースをホストすることができます。 フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。
+summary: Azure Database for MySQL は、MySQL Community Edition を基盤としたリレーショナル データベース サービスです。シングル サーバーまたはフレキシブル サーバーを使用して Azure で MySQL データベースをホストすることができます。 フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。
 metadata:
-  description: Azure Database for MySQL は、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。 シングル サーバーまたはフレキシブル サーバー (プレビュー) を選んで Azure に MySQL データベースをデプロイすることができます。
+  description: Azure Database for MySQL は、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。 シングル サーバーまたはフレキシブル サーバーを選んで Azure に MySQL データベースをデプロイすることができます。
   author: savjani
   ms.author: pariks
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 08db77b71a6dfe8a3618b1ad875afeeeedb4575a
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 7dc67d91f41915c4f570639bb04fb9fb9cc1c579
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130241765"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131442181"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
     links:
     - text: シングル サーバーとは
       url: single-server-overview.md
+    - text: シングル サーバーの新機能
+      url: single-server-whats-new.md
     - text: すべてのシングル サーバーのドキュメントを見る
       url: single-server/index.yml
   - linkListType: whats-new
@@ -57,7 +59,7 @@ landingContent:
       url: quickstart-create-mysql-server-database-using-azure-portal.md
     - text: Azure CLI を使用してサーバーを作成する
       url: quickstart-create-mysql-server-database-using-azure-cli.md
-- title: フレキシブル サーバー (プレビュー)
+- title: フレキシブル サーバー
   linkLists:
   - linkListType: overview
     links:
@@ -131,7 +133,7 @@ landingContent:
     links:
     - text: Azure portal を使用してシングル サーバーを管理する
       url: howto-create-manage-server-portal.md
-    - text: Azure portal を使用してフレキシブル サーバー (プレビュー) を管理する
+    - text: Azure portal を使用してフレキシブル サーバーを管理する
       url: flexible-server/how-to-manage-server-portal.md
     - text: ダンプと復元を使用して移行する
       url: concepts-migrate-dump-restore.md

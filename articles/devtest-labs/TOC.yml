@@ -9,6 +9,8 @@
     - name: ラボの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
+    - name: ラボの作成 - REST API
+      href: quickstarts/create-lab-rest.md
 - name: チュートリアル
   items:
     - name: ラボを設定する

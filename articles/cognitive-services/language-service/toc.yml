@@ -8,6 +8,8 @@ items:
         href: overview.md
       - name: 新機能
         href: whats-new.md
+      - name: LUIS、QnA Maker、Text Analytics からの移行
+        href: concepts/migrate.md
       - name: 価格
         href: 'https://aka.ms/unifiedLanguagePricing'
       - name: Language Studio のクイックスタート
@@ -67,9 +69,9 @@ items:
           - name: REST API (v3.2 プレビュー 2)
             items:
               - name: オーサリング API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2176818'
+                href: 'https://aka.ms/ct-authoring-swagger'
               - name: ランタイム予測 API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+                href: 'https://aka.ms/ct-runtime-swagger'
   - name: カスタム固有表現認識 (NER) (プレビュー)
     items:
       - name: 概要
@@ -115,9 +117,9 @@ items:
           - name: REST API (v3.2 プレビュー 2)
             items:
               - name: オーサリング API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2176711'
+                href: 'https://aka.ms/ct-authoring-swagger'
               - name: ランタイム予測 API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+                href: 'https://aka.ms/ct-runtime-swagger'
   - name: Conversational Language Understanding (プレビュー)
     items:
       - name: 概要
@@ -138,8 +140,6 @@ items:
             href: conversational-language-understanding/how-to/tag-utterances.md
           - name: モデルをトレーニングする
             href: conversational-language-understanding/how-to/train-model.md
-          - name: モデルの評価とスコア付けを表示する
-            href: custom-named-entity-recognition/how-to/view-model-evaluation.md
           - name: モデルをデプロイし、ランタイム API に対してクエリを実行する
             href: conversational-language-understanding/how-to/deploy-query-model.md
       - name: 概念
@@ -174,9 +174,6 @@ items:
         href: entity-linking/language-support.md
       - name: AI の責任ある使用
         items:
-          - name: エンティティ リンクの透明性に関するメモ
-            href: /legal/cognitive-services/language-service/transparency-note-entity-linking?context=/azure/cognitive-services/language-service/context/context
-            displayName: 'Transparency note for entity linking, entity linking transparency, Responsible AI, Responsible use of AI'
           - name: 統合と責任ある使用
             href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
             displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
@@ -504,20 +501,26 @@ items:
             href: question-answering/how-to/analytics.md
           - name: ナレッジ ベースの管理
             href: question-answering/how-to/manage-knowledge-base.md
-          - name: 応答をフィルター処理する
-            href: ../qnamaker/how-to/query-knowledge-base-with-metadata.md?context=/azure/cognitive-services/language-service/context/context
           - name: ネットワーク分離とプライベート エンドポイント
             href: question-answering/how-to/network-isolation.md
+          - name: トラブルシューティング
+            href: question-answering/how-to/troubleshooting.md
       - name: 概念
         items:
+          - name: 開発ライフサイクル
+            href: question-answering/concepts/project-development-lifecycle.md
           - name: リソースの計画
             href: question-answering/concepts/azure-resources.md
+          - name: アプリの計画
+            href: question-answering/concepts/plan.md
           - name: 正確な回答
             href: question-answering/concepts/precise-answering.md
           - name: 信頼度スコア
             href: question-answering/concepts/confidence-score.md
           - name: ベスト プラクティス
             href: question-answering/concepts/best-practices.md
+          - name: 制限
+            href: question-answering/concepts/limits.md
       - name: チュートリアル
         items:
           - name: FAQ ボットを作成する
@@ -717,8 +720,6 @@ items:
     items:
       - name: 多言語と絵文字のサポート
         href: concepts/multilingual-emoji-support.md
-      - name: LUIS、QnA Maker、Text Analytics からの移行
-        href: concepts/migrate.md
   - name: チュートリアル
     items:
       - name: キャンバス アプリで Cognitive Services を使用する

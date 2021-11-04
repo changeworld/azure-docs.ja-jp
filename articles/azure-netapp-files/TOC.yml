@@ -305,3 +305,5 @@
       href: ../storage/common/nfs-comparison.md?toc=%2fazure%2fazure-netapp-files%2ftoc.json
     - name: Azure Files と Azure NetApp Files の比較
       href: ../storage/files/storage-files-netapp-comparison.md
+    - name: Microsoft Q&A の Azure NetApp Files
+      href: 'https://docs.microsoft.com/answers/topics/25532/azure-netapp-files.html'

@@ -166,6 +166,8 @@
               href: expressroute-howto-reset-peering-portal.md
             - name: Azure PowerShell
               href: expressroute-howto-reset-peering.md
+        - name: VNet の BGP コミュニティ値を構成する
+          href: how-to-configure-custom-bgp-communities.md
         - name: パブリック ピアリングから Microsoft ピアリングに移行する
           href: how-to-move-peering.md
     - name: 回線を介したトラフィックの暗号化

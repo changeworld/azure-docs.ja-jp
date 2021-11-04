@@ -210,7 +210,7 @@ items:
             items:
               - name: 概要
                 href: access-tiers-overview.md
-              - name: アーカイブ層からの BLOB のリハイドレート
+              - name: Archive レベルからの BLOB のリハイドレート
                 href: archive-rehydrate-overview.md
               - name: ライフサイクル管理ポリシー
                 href: lifecycle-management-overview.md

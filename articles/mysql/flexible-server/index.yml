@@ -8,14 +8,14 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 81c0d46d58b39b0d4b6698da1f1b39d5c36eb587
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: f42ba987469024be69e67215e78ed6b28e6a4652
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130246194"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131438039"
 landingContent:
-- title: フレキシブル サーバー (プレビュー) について
+- title: フレキシブル サーバーについて
   linkLists:
   - linkListType: overview
     links:
@@ -57,8 +57,8 @@ landingContent:
       url: how-to-manage-server-portal.md
     - text: サーバーを停止または起動する
       url: how-to-stop-start-server-portal.md
-    - text: クエリ パフォーマンスの分析情報
-      url: tutorial-query-performance-insights.md
+    - text: ログの構成とアクセス
+      url: how-to-configure-slow-query-logs-portal.md
     - text: メンテナンスのスケジュール
       url: how-to-maintenance-portal.md
 - title: ビジネス継続性

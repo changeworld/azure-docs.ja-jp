@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Virtual Network Manager のドキュメント
-summary: Azure Virtual Network Manager を使ってネットワーク仮想アプライアンスと仮想ネットワークの間の動的ルーティングを簡単にする方法について説明します。
+summary: Azure Virtual Network Manager を使用して仮想ネットワーク接続を管理し、Azure サブスクリプション全体にセキュリティ規則を適用する方法を説明します。
 metadata:
   title: Azure Virtual Network Manager のドキュメント
   description: Azure Virtual Network Manager について学習する
@@ -10,12 +10,12 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 11/02/2021
-  ms.openlocfilehash: 7b61df1521d2e80ff4c4e4847f54eff84669e4e6
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: a573a44075ecc5263f5533967194393ca78970ed
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131088405"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131444480"
 landingContent:
 - title: Azure Virtual Network Manager について
   linkLists:

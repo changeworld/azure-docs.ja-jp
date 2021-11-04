@@ -12,12 +12,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 04/05/2021
-  ms.openlocfilehash: cb818fd91d9777a8579a6dd31189511b4ff472b2
-  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+  ms.openlocfilehash: 86a8371d5adbb377aeea7c0748f0ba787be27a95
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113438717"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131466452"
 landingContent:
 - title: Azure Virtual Network NAT について
   linkLists:
@@ -41,3 +41,7 @@ landingContent:
       url: tutorial-nat-gateway-load-balancer-public-portal.md
     - text: NAT ゲートウェイを内部ロード バランサーを統合する
       url: tutorial-nat-gateway-load-balancer-internal-portal.md
+  - linkListType: video
+    links:
+    - text: Azure NAT Gateway を使用してよりよいアウトバウンド接続を実現する方法
+      url: https://www.youtube.com/watch?v=2Ng_uM0ZaB4

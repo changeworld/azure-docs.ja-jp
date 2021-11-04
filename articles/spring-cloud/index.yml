@@ -11,12 +11,12 @@ metadata:
   author: karlerickson
   ms.author: karler
   ms.date: 09/26/2019
-  ms.openlocfilehash: 1c5fbd1314d4296efb42afa8fecc94acb87b2a39
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: e184eae50cf7aaecbb5a9713652776319ec0a461
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130245836"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131463280"
 landingContent:
 - title: Azure Spring Cloud について
   linkLists:
@@ -52,8 +52,8 @@ landingContent:
       url: how-to-cicd.md
     - text: Azure Spring Cloud を使用してブルー グリーン デプロイを有効にする
       url: how-to-staging-environment.md
-    - text: Azure Spring Cloud で永続ストレージを使用する
-      url: how-to-persistent-storage.md
+    - text: 組み込みの永続的ストレージを使用する
+      url: how-to-built-in-persistent-storage.md
 - title: アプリケーションを監視する
   linkLists:
   - linkListType: tutorial

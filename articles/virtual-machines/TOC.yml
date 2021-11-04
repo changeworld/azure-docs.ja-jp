@@ -169,12 +169,18 @@
               href: dv2-dsv2-series.md
             - name: Dv3 および DSv3 シリーズ
               href: dv3-dsv3-series.md
+            - name: Dv4 および Dsv4 シリーズ
+              href: dv4-dsv4-series.md
             - name: Dav4 および Dasv4 シリーズ
               href: dav4-dasv4-series.md
             - name: Ddv4 および Ddsv4 シリーズ
               href: ddv4-ddsv4-series.md
-            - name: Dv4 および Dsv4 シリーズ
-              href: dv4-dsv4-series.md
+            - name: Dv5 および Dsv5 シリーズ
+              href: dv5-dsv5-series.md
+            - name: Ddv5 および Ddsv5 シリーズ
+              href: ddv5-ddsv5-series.md
+            - name: Dasv5 および Dadsv5 シリーズ
+              href: dasv5-dadsv5-series.md
         - name: コンピューティング最適化
           items:
             - name: 概要
@@ -199,6 +205,12 @@
               href: edv4-edsv4-series.md
             - name: Ev4 および Esv4 シリーズ
               href: ev4-esv4-series.md
+            - name: Ev5 および Esv5 シリーズ
+              href: ev5-esv5-series.md
+            - name: Edv5 および Edsv5 シリーズ
+              href: edv5-edsv5-series.md
+            - name: Easv5 および Eadsv5 シリーズ
+              href: easv5-eadsv5-series.md
             - name: M シリーズ
               href: m-series.md
             - name: Msv2 および Mdsv2 ミディアム メモリ シリーズ
@@ -237,6 +249,8 @@
               href: nct4-v3-series.md
             - name: NDasrA100_v4 シリーズ
               href: nda100-v4-series.md
+            - name: NDm_A100_v4 シリーズ
+              href: ndm-a100-v4-series.md
             - name: ND シリーズ
               href: nd-series.md
             - name: NDv2 シリーズ
@@ -336,6 +350,248 @@
           href: azure-vms-no-temp-disk.yml
         - name: Azure VM のサイズの名前付け規則
           href: vm-naming-conventions.md
+    - name: Azure Compute Gallery
+      items:
+        - name: 概要
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ./shared-image-galleries.md
+        - name: ギャラリーの作成
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: create-gallery.md
+        - name: ギャラリーを共有する
+          href: share-gallery.md
+        - name: 画像
+          items:
+            - name: ポータルで VM をキャプチャする
+              href: capture-image-portal.md
+            - name: イメージを作成する
+              displayName: 'VM, image, VHD, storage account'
+              href: image-version.md
+            - name: VM の作成
+              items:
+                - name: 一般化されたイメージ
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+                  href: vm-generalized-image-version.md
+                - name: 専用イメージ
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+                  href: vm-specialized-image-version.md
+            - name: イメージ リソースを更新する
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+              href: update-image-resources.md
+            - name: 共有のためのアプリの登録
+              items:
+                - name: Linux
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+                  href: ./windows/share-images-across-tenants.md
+            - name: リソース マネージャーのテンプレート
+              items:
+                - name: Azure Compute Gallery の作成
+                  href: 'https://azure.microsoft.com/resources/templates/sig-create/'
+                - name: Azure Compute Gallery でのイメージ定義の作成
+                  href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
+                - name: Azure Compute Gallery でのイメージ バージョンの作成
+                  href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
+            - name: 共有イメージのトラブルシューティングを行う
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting, Azure Compute Gallery'
+              href: troubleshooting-shared-images.md
+            - name: カスタマー マネージド キーの使用
+              displayName: 'SSE, CMK, encrypt'
+              href: image-version-encryption.md
+            - name: イメージ バージョンからのマネージド ディスク
+              href: managed-disk-from-image-version.md
+            - name: 購入プラン情報
+              href: marketplace-images.md
+        - name: VM アプリケーション
+          items:
+            - name: 概要
+              href: vm-applications.md
+            - name: VM アプリケーションのデプロイ
+              href: vm-applications-how-to.md
+    - name: 画像
+      items:
+        - name: Azure Marketplace イメージの検索
+          items:
+            - name: CLI
+              displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
+              href: ./windows/cli-ps-findimage.md
+            - name: Windows クライアント イメージ
+              displayName: 'Images, imaging, marketplace, Windows, Client'
+              href: ./windows/client-images.md
+            - name: Windows 10 のマルチテナント ホスティング権限
+              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Linux カスタム イメージ
+          items:
+            - name: 概要
+              displayName: 'Linux custom images, custom, image'
+              href: ./linux/imaging.md
+            - name: Linux のプロビジョニング
+              href: ./linux/provisioning.md
+            - name: Linux ディストリビューション固有の要件
+              items:
+                - name: 一般的な手順
+                  displayName: 'Linux distribution specific requirements, generic'
+                  href: ./linux/create-upload-generic.md
+                - name: CentOS
+                  displayName: 'Linux distribution specific requirements, CentOS'
+                  href: ./linux/create-upload-centos.md
+                - name: Debian
+                  displayName: 'Linux distribution specific requirements, Debian'
+                  href: ./linux/debian-create-upload-vhd.md
+                - name: Flatcar Container Linux
+                  displayName: 'Linux distribution specific requirements, Flatcar, Container'
+                  href: ./linux/flatcar-create-upload-vhd.md
+                - name: FreeBSD
+                  displayName: 'Linux distribution specific requirements, FreeBSD'
+                  href: ./linux/freebsd-intro-on-azure.md
+                - name: Oracle Linux
+                  displayName: 'Linux distribution specific requirements, Oracle'
+                  href: ./linux/oracle-create-upload-vhd.md
+                - name: OpenBSD
+                  displayName: 'Linux distribution specific requirements, OpenBSD'
+                  href: ./linux/create-upload-openbsd.md
+                - name: Red Hat
+                  displayName: 'Linux distribution specific requirements, Redhat'
+                  href: ./linux/redhat-create-upload-vhd.md
+                - name: SUSE
+                  displayName: 'Linux distribution specific requirements, SUSE'
+                  href: ./linux/suse-create-upload-vhd.md
+                - name: Ubuntu
+                  displayName: 'Linux distribution specific requirements, Ubuntu'
+                  href: ./linux/create-upload-ubuntu.md
+            - name: cloud-init を使用する
+              items:
+                - name: cloud-init の概要
+                  href: ./linux/using-cloud-init.md
+                - name: 詳細情報
+                  href: ./linux/cloud-init-deep-dive.md
+                  displayname: cloud-init
+                - name: トラブルシューティング
+                  href: ./linux/cloud-init-troubleshooting.md
+                  displayname: cloud-init
+                - name: VM のホスト名の構成
+                  href: ./linux/cloudinit-update-vm-hostname.md
+                  displayname: cloud-init
+                - name: VM 内のパッケージの更新
+                  href: ./linux/cloudinit-update-vm.md
+                  displayname: cloud-init
+                - name: VM へのユーザーの追加
+                  href: ./linux/cloudinit-add-user.md
+                  displayname: cloud-init
+                - name: スワップ ファイルの構成
+                  href: ./linux/cloudinit-configure-swapfile.md
+                  displayname: cloud-init
+                - name: 既存の Bash スクリプトの実行
+                  href: ./linux/cloudinit-bash-script.md
+                  displayname: cloud-init
+            - name: プロビジョニング エージェントを使用せずに Linux イメージを作成する
+              href: ./linux/no-agent.md
+            - name: Linux エージェントのプロビジョニングを無効にする
+              href: ./linux/disable-provisioning.md
+        - name: Windows カスタム イメージ
+          items:
+            - name: アップロードする VHD を準備する
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
+              href: ./windows/prepare-for-upload-vhd-image.md
+            - name: VM の一般化
+              href: generalize.md
+            - name: VHD をアップロードして マネージド イメージを作成する
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
+              href: ./windows/upload-generalized-managed.md
+            - name: マネージド イメージをキャプチャする
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
+              href: ./windows/capture-image-resource.md
+            - name: 管理イメージから VM を作成する
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, create, managed'
+              href: ./windows/create-vm-generalized-managed.md
+            - name: "Visual\_Studio"
+              href: ./windows/using-visual-studio-vm.md
+        - name: Image Builder
+          items:
+            - name: 概要
+              displayName: 'Image builder, images, building'
+              href: image-builder-overview.md
+            - name: CLI
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building, cli, Linux'
+                  href: ./linux/image-builder.md
+                - name: Windows
+                  displayName: 'Image builder, images, building, cli, Windows'
+                  href: ./windows/image-builder.md
+            - name: PowerShell
+              items:
+                - name: Windows
+                  displayName: 'Image builder, images, building, PowerShell'
+                  href: ./windows/image-builder-powershell.md
+                - name: Windows Virtual Desktop
+                  href: ./windows/image-builder-virtual-desktop.md
+            - name: セキュリティ
+              items:
+                - name: Azure Policy によるセキュリティ制御
+                  displayName: 'Image builder, images, building'
+                  href: ./security-controls-policy-image-builder.md
+            - name: VNET を使用する
+              items:
+                - name: CLI
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-vnet.md
+                - name: PowerShell
+                  displayName: 'Image builder, images, building'
+                  href: ./windows/image-builder-vnet.md
+            - name: ネットワーク オプション
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-networking.md
+            - name: 権限の構成
+              items:
+                - name: CLI
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-permissions-cli.md
+                - name: PowerShell
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-permissions-powershell.md
+            - name: DevOps タスク
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-devops-task.md
+            - name: Image Builder テンプレート リファレンス
+              displayName: 'Image builder, images, building, json, ARM, template'
+              href: ./linux/image-builder-json.md
+            - name: イメージ ギャラリー用のビルド
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-gallery.md
+                - name: Windows
+                  displayName: 'Image builder, images, building'
+                  href: ./windows/image-builder-gallery.md
+            - name: 既存のイメージの更新
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building, update'
+                  href: ./linux/image-builder-gallery-update-image-version.md
+                - name: Windows
+                  displayName: 'Image builder, images, building, update'
+                  href: ./windows/image-builder-gallery-update-image-version.md
+            - name: スクリプトの格納
+              displayName: 'Image builder, images, building, scripts'
+              href: ./linux/image-builder-user-assigned-identity.md
+            - name: トラブルシューティング
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-troubleshoot.md
+        - name: Packer でイメージを作成する
+          items:
+            - name: Linux
+              displayName: 'Image builder, images, building, packer'
+              href: ./linux/build-image-with-packer.md
+            - name: Windows
+              displayName: 'Image builder, images, building, packer'
+              href: ./windows/build-image-with-packer.md
     - name: 専用ホスト
       displayName: 'sole-tenant, sole tenant, isolated, isolation'
       items:
@@ -345,6 +601,9 @@
         - name: 操作方法
           displayName: dedicated adh
           href: dedicated-hosts-how-to.md
+        - name: VM パッキング
+          displayName: 'dedicated, packing, dedicated host'
+          href: dedicated-host-packing.md
     - name: Azure スポット仮想マシン
       items:
         - name: 概要
@@ -485,12 +744,17 @@
           href: ./windows/time-sync.md
     - name: 実行コマンド
       items:
-        - name: Linux
+        - name: 概要
           displayName: Run command
+          href: run-command-overview.md
+        - name: Linux 用のアクション実行コマンド
           href: ./linux/run-command.md
-        - name: Windows
-          displayName: Run command
+        - name: Windows 用のアクション実行コマンド
           href: ./windows/run-command.md
+        - name: Linux 用のマネージド実行コマンド (プレビュー)
+          href: ./linux/run-command-managed.md
+        - name: Windows 用のマネージド実行コマンド (プレビュー)
+          href: ./windows/run-command-managed.md
     - name: Extensions
       items:
         - name: 概要
@@ -672,242 +936,6 @@
         - name: よく寄せられる質問
           displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.yml
-- name: 画像
-  items:
-    - name: Azure Marketplace イメージの検索
-      items:
-        - name: CLI
-          displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
-          href: ./linux/cli-ps-findimage.md
-        - name: PowerShell
-          displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
-          href: ./windows/cli-ps-findimage.md
-        - name: Windows クライアント イメージ
-          displayName: 'Images, imaging, marketplace, Windows, Client'
-          href: ./windows/client-images.md
-        - name: Windows 10 のマルチテナント ホスティング権限
-          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
-          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-    - name: Linux カスタム イメージ
-      items:
-        - name: 概要
-          displayName: 'Linux custom images, custom, image'
-          href: ./linux/imaging.md
-        - name: Linux のプロビジョニング
-          href: ./linux/provisioning.md
-        - name: Linux ディストリビューション固有の要件
-          items:
-            - name: 一般的な手順
-              displayName: 'Linux distribution specific requirements, generic'
-              href: ./linux/create-upload-generic.md
-            - name: CentOS
-              displayName: 'Linux distribution specific requirements, CentOS'
-              href: ./linux/create-upload-centos.md
-            - name: Debian
-              displayName: 'Linux distribution specific requirements, Debian'
-              href: ./linux/debian-create-upload-vhd.md
-            - name: Flatcar Container Linux
-              displayName: 'Linux distribution specific requirements, Flatcar, Container'
-              href: ./linux/flatcar-create-upload-vhd.md
-            - name: FreeBSD
-              displayName: 'Linux distribution specific requirements, FreeBSD'
-              href: ./linux/freebsd-intro-on-azure.md
-            - name: Oracle Linux
-              displayName: 'Linux distribution specific requirements, Oracle'
-              href: ./linux/oracle-create-upload-vhd.md
-            - name: OpenBSD
-              displayName: 'Linux distribution specific requirements, OpenBSD'
-              href: ./linux/create-upload-openbsd.md
-            - name: Red Hat
-              displayName: 'Linux distribution specific requirements, Redhat'
-              href: ./linux/redhat-create-upload-vhd.md
-            - name: SUSE
-              displayName: 'Linux distribution specific requirements, SUSE'
-              href: ./linux/suse-create-upload-vhd.md
-            - name: Ubuntu
-              displayName: 'Linux distribution specific requirements, Ubuntu'
-              href: ./linux/create-upload-ubuntu.md
-        - name: cloud-init を使用する
-          items:
-            - name: cloud-init の概要
-              href: ./linux/using-cloud-init.md
-            - name: 詳細情報
-              href: ./linux/cloud-init-deep-dive.md
-              displayname: cloud-init
-            - name: トラブルシューティング
-              href: ./linux/cloud-init-troubleshooting.md
-              displayname: cloud-init
-            - name: VM のホスト名の構成
-              href: ./linux/cloudinit-update-vm-hostname.md
-              displayname: cloud-init
-            - name: VM 内のパッケージの更新
-              href: ./linux/cloudinit-update-vm.md
-              displayname: cloud-init
-            - name: VM へのユーザーの追加
-              href: ./linux/cloudinit-add-user.md
-              displayname: cloud-init
-            - name: スワップ ファイルの構成
-              href: ./linux/cloudinit-configure-swapfile.md
-              displayname: cloud-init
-            - name: 既存の Bash スクリプトの実行
-              href: ./linux/cloudinit-bash-script.md
-              displayname: cloud-init
-        - name: プロビジョニング エージェントを使用せずに Linux イメージを作成する
-          href: ./linux/no-agent.md
-        - name: Linux エージェントのプロビジョニングを無効にする
-          href: ./linux/disable-provisioning.md
-    - name: Windows カスタム イメージ
-      items:
-        - name: アップロードする VHD を準備する
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
-          href: ./windows/prepare-for-upload-vhd-image.md
-        - name: VM の一般化
-          href: generalize.md
-        - name: VHD をアップロードして マネージド イメージを作成する
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
-          href: ./windows/upload-generalized-managed.md
-        - name: マネージド イメージをキャプチャする
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
-          href: ./windows/capture-image-resource.md
-        - name: 管理イメージから VM を作成する
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, create, managed'
-          href: ./windows/create-vm-generalized-managed.md
-        - name: "Visual\_Studio"
-          href: ./windows/using-visual-studio-vm.md
-    - name: Shared Image Gallery
-      items:
-        - name: 概要
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-          href: ./shared-image-galleries.md
-        - name: ギャラリーの作成
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-          href: create-gallery.md
-        - name: ギャラリーを共有する
-          href: share-gallery.md
-        - name: ポータルで VM をキャプチャする
-          href: capture-image-portal.md
-        - name: イメージを作成する
-          displayName: 'VM, image, VHD, storage account'
-          href: image-version.md
-        - name: VM の作成
-          items:
-            - name: 一般化されたイメージ
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: vm-generalized-image-version.md
-            - name: 専用イメージ
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: vm-specialized-image-version.md
-        - name: イメージ リソースを更新する
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-          href: update-image-resources.md
-        - name: 共有のためのアプリの登録
-          items:
-            - name: Linux
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-              href: ./linux/share-images-across-tenants.md
-            - name: Windows
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-              href: ./windows/share-images-across-tenants.md
-        - name: リソース マネージャーのテンプレート
-          items:
-            - name: Shared Image Gallery を作成する
-              href: 'https://azure.microsoft.com/resources/templates/sig-create/'
-            - name: Shared Image Gallery にイメージ定義を作成する
-              href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
-            - name: Shared Image Gallery にイメージのバージョンを作成する
-              href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
-        - name: Ansible
-          href: /azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible
-        - name: 共有イメージのトラブルシューティングを行う
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting'
-          href: troubleshooting-shared-images.md
-        - name: カスタマー マネージド キーの使用
-          displayName: 'SSE, CMK, encrypt'
-          href: image-version-encryption.md
-        - name: イメージ バージョンからのマネージド ディスク
-          href: managed-disk-from-image-version.md
-        - name: 購入プラン情報
-          href: marketplace-images.md
-    - name: Image Builder
-      items:
-        - name: 概要
-          displayName: 'Image builder, images, building'
-          href: image-builder-overview.md
-        - name: CLI
-          items:
-            - name: Linux
-              displayName: 'Image builder, images, building, cli, Linux'
-              href: ./linux/image-builder.md
-            - name: Windows
-              displayName: 'Image builder, images, building, cli, Windows'
-              href: ./windows/image-builder.md
-        - name: PowerShell
-          items:
-            - name: Windows
-              displayName: 'Image builder, images, building, PowerShell'
-              href: ./windows/image-builder-powershell.md
-            - name: Windows Virtual Desktop
-              href: ./windows/image-builder-virtual-desktop.md
-        - name: セキュリティ
-          items:
-            - name: Azure Policy によるセキュリティ制御
-              displayName: 'Image builder, images, building'
-              href: ./security-controls-policy-image-builder.md
-        - name: VNET を使用する
-          items:
-            - name: CLI
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-vnet.md
-            - name: PowerShell
-              displayName: 'Image builder, images, building'
-              href: ./windows/image-builder-vnet.md
-        - name: ネットワーク オプション
-          displayName: 'Image builder, images, building'
-          href: ./linux/image-builder-networking.md
-        - name: 権限の構成
-          items:
-            - name: CLI
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-permissions-cli.md
-            - name: PowerShell
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-permissions-powershell.md
-        - name: DevOps タスク
-          displayName: 'Image builder, images, building'
-          href: ./linux/image-builder-devops-task.md
-        - name: Image Builder テンプレート リファレンス
-          displayName: 'Image builder, images, building, json, ARM, template'
-          href: ./linux/image-builder-json.md
-        - name: イメージ ギャラリー用のビルド
-          items:
-            - name: Linux
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-gallery.md
-            - name: Windows
-              displayName: 'Image builder, images, building'
-              href: ./windows/image-builder-gallery.md
-        - name: 既存のイメージの更新
-          items:
-            - name: Linux
-              displayName: 'Image builder, images, building, update'
-              href: ./linux/image-builder-gallery-update-image-version.md
-            - name: Windows
-              displayName: 'Image builder, images, building, update'
-              href: ./windows/image-builder-gallery-update-image-version.md
-        - name: スクリプトの格納
-          displayName: 'Image builder, images, building, scripts'
-          href: ./linux/image-builder-user-assigned-identity.md
-        - name: トラブルシューティング
-          displayName: 'Image builder, images, building'
-          href: ./linux/image-builder-troubleshoot.md
-    - name: Packer でイメージを作成する
-      items:
-        - name: Linux
-          displayName: 'Image builder, images, building, packer'
-          href: ./linux/build-image-with-packer.md
-        - name: Windows
-          displayName: 'Image builder, images, building, packer'
-          href: ./windows/build-image-with-packer.md
 - name: 可用性とスケール
   items:
     - name: 概要
@@ -1600,7 +1628,7 @@
             - name: ポータル
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control-portal.md
-    - name: VM ゲストの自動パッチ適用 (プレビュー)
+    - name: VM ゲストの自動パッチ適用
       items:
         - name: 概要
           displayName: 'Automatic VM guest patching, guest, OS, patching'

@@ -58,18 +58,6 @@
       items:
         - name: アプリ サーバーを適切にシャットダウンします。
           href: server-graceful-shutdown.md
-    - name: Security
-      items:
-        - name: 承認
-          items:
-            - name: Azure Active Directory を使用したアクセスを承認する
-              href: authorize-access-azure-active-directory.md
-        - name: 認証
-          items:
-            - name: アプリケーションからの認証
-              href: authenticate-application.md
-            - name: マネージド ID による認証
-              href: authenticate-managed-identity.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
@@ -80,6 +68,10 @@
       href: signalr-concept-performance.md
     - name: 認証
       href: signalr-concept-authenticate-oauth.md
+    - name: Azure AD での承認
+      items:
+        - name: Azure SignalR Service の Azure AD の概要
+          href: signalr-concept-authorize-azure-active-directory.md
     - name: イベント処理
       href: signalr-concept-event-grid-integration.md
     - name: セキュリティ
@@ -110,6 +102,10 @@
           href: howto-shared-private-endpoints.md
         - name: マネージド ID の使用
           href: howto-use-managed-identity.md
+        - name: Azure アプリケーションからの承認
+          href: signalr-howto-authorize-application.md
+        - name: マネージド ID からの承認
+          href: signalr-howto-authorize-managed-identity.md
     - name: 統合
       items:
         - name: Azure Functions のバインド

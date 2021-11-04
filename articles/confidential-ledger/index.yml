@@ -10,12 +10,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/15/2021
-  ms.openlocfilehash: 9ba47997232d3eb8b6b99d5608c382ba6b8f7039
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 22cb71eef4bcf46461ac0ed3802dec010dc370c9
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110383478"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131476378"
 landingContent:
 - title: Azure Confidential Ledger について
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
       url: create-client-certificate.md
     - text: Ledger サービス プリンシパルを登録する
       url: register-ledger-service-principal.md
-    - text: Confidential Ledger リソース プロバイダーを登録する
+    - text: Azure Confidential Ledger リソース プロバイダーを登録する
       url: register-ledger-resource-provider.md
 - title: References
   linkLists:

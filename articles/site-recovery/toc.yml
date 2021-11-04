@@ -112,6 +112,8 @@
           href: azure-to-azure-support-matrix.md
         - name: Azure Site Recovery と Azure Backup の使用
           href: site-recovery-backup-interoperability.md
+        - name: 複数の IP アドレスにフェールオーバーを構成する
+          href: concepts-multiple-ip-address-failover.md
         - name: Azure VM ディザスター リカバリーのための高速ネットワーク
           href: azure-vm-disaster-recovery-with-accelerated-networking.md
         - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する

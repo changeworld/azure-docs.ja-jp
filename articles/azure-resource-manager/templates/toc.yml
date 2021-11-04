@@ -53,6 +53,9 @@
         - name: リンク済みテンプレートとしてデプロイする
           displayName: template specs
           href: template-specs-deploy-linked-template.md
+        - name: ポータル フォームを作成する
+          href: template-specs-create-portal-forms.md
+          displayName: 'UI,form,blade'
     - name: 高度なテンプレート
       items:
         - name: テンプレート リファレンスの使用
@@ -439,7 +442,7 @@
           href: deploy-github-actions.md
     - name: オーサリング ツールを使用する
       items:
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           href: create-visual-studio-deployment-project.md
         - name: VS デプロイ スクリプトを Az モジュールに更新する
           href: update-visual-studio-deployment-script.md

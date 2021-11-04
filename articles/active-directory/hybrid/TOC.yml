@@ -260,6 +260,8 @@
           href: how-to-connect-health-adfs.md
         - name: AD FS での Azure AD Connect Health の危険な IP のレポート
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: Azure AD Connect Health の危険な IP レポート ブック
+          href: how-to-connect-health-adfs-risky-ip-workbook.md
         - name: Connect Health を使用した Azure AD での AD FS サインイン
           href: how-to-connect-health-ad-fs-sign-in.md
         - name: Azure AD Connect Health for Sync の使用

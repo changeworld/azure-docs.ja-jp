@@ -18,7 +18,7 @@
       href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル
       href: /azure/active-directory/saas-apps
-    - name: Azure AD ECMA Connector Host 汎用 SQL コネクタ
+    - name: SQL ベースのアプリへのプロビジョニング
       href: tutorial-ecma-sql-connector.md
 - name: 概念
   expanded: true
@@ -35,6 +35,10 @@
       href: on-premises-application-provisioning-architecture.md
     - name: 式ビルダーについて
       href: expression-builder.md
+    - name: SuccessFactors 統合について
+      href: sap-successfactors-integration-reference.md
+    - name: Workday の統合について
+      href: workday-integration-reference.md
 - name: 操作方法ガイド
   expanded: true
   items:
@@ -74,13 +78,13 @@
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: ECMA Connector Host のトラブルシューティング
+        - name: オンプレミスのプロビジョニングのトラブルシューティング
           href: on-premises-ecma-troubleshoot.md
         - name: プロビジョニング ログ
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: オンプレミス アプリのプロビジョニング
       items:
-        - name: 汎用 SQL コネクタの構成
+        - name: SQL ベースのアプリへのプロビジョニング
           href: on-premises-sql-connector-configure.md
         - name: Generic LDAP コネクタ構成
           href: on-premises-ldap-connector-configure.md
@@ -88,6 +92,18 @@
           href: on-premises-scim-provisioning.md
         - name: MIM Sync からコネクタを移行する
           href: on-premises-migrate-microsoft-identity-manager.md
+    - name: HR プロビジョニングのトラブルシューティング
+      items:
+        - name: 属性の取得に関する問題
+          href: hr-attribute-retrieval-issues.md
+        - name: ユーザーの作成に関する問題
+          href: hr-user-creation-issues.md
+        - name: ユーザーの更新に関する問題
+          href: hr-user-update-issues.md
+        - name: マネージャーの更新に関する問題
+          href: hr-manager-update-issues.md
+        - name: HR の書き戻しに関する問題
+          href: hr-writeback-issues.md
 - name: リファレンス
   items:
     - name: SCIM 2.0 プロトコルへの準拠
@@ -98,12 +114,8 @@
       href: functions-for-customizing-application-data.md
     - name: クラウド HR のプロビジョニング
       items:
-        - name: SuccessFactors の統合
-          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors 属性のリファレンス
           href: sap-successfactors-attribute-reference.md
-        - name: Workday の統合
-          href: workday-integration-reference.md
         - name: Workday 属性のリファレンス
           href: workday-attribute-reference.md
         - name: プロビジョニング エージェントのバージョン履歴
