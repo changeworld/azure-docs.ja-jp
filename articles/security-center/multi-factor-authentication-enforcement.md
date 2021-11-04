@@ -7,12 +7,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: fb99a7b29650662dec9dce0bdd4f2ff81f837f1a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3ba741d97e3a9537b64957ce419b06208fd2a528
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433234"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131091931"
 ---
 # <a name="manage-multi-factor-authentication-mfa-enforcement-on-your-subscriptions"></a>サブスクリプションでの 多要素認証 (MFA) の実施を管理する
 
