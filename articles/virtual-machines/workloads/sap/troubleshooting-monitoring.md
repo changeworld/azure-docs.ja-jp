@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.topic: article
@@ -13,15 +12,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/23/2021
 ms.author: madhukan
-ms.custom:
-- H1Hack27Feb2017
-- contperf-fy21q4
-ms.openlocfilehash: 4d0977cd408c0a8fdcff16ad01c4c72203e72c40
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.custom: H1Hack27Feb2017, contperf-fy21q4
+ms.openlocfilehash: d8325a9b5a3b8adaf3f39cde791e9a00f3f897e3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969716"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036601"
 ---
 # <a name="monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (Large Instances) を監視する
 

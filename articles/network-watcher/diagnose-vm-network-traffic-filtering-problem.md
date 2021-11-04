@@ -14,17 +14,14 @@ ms.service: network-watcher
 ms.workload: infrastructure
 ms.tgt_pltfrm: network-watcher
 ms.devlang: na
-tags:
-- azure-resource-manager
-ms.custom:
-- mvc
-- mode-portal
-ms.openlocfilehash: e8a9ce38e29f743fd40a6998d8bdc300080b2cee
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+tags: azure-resource-manager
+ms.custom: mvc, mode-portal
+ms.openlocfilehash: c95beb02c88f74546cc549cf1607d9717232bd85
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537751"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084523"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -42,7 +39,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 2. **[Compute]** を選択し、 **[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |設定|値|
+    |設定|[値]|
     |---|---|
     |名前|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|

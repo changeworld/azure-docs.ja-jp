@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a1c9bcec2a9aec2673e29a3f578146cad7de5d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4f691f2c6cff0abec7454282a239e8ede47277c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730761"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068115"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -240,4 +240,4 @@ macOS および他の Windows 以外のプラットフォームの Chromium に�
 - [技術的な詳細](how-to-connect-sso-how-it-works.md): シームレス シングル サインオン機能のしくみを理解します。
 - [よく寄せられる質問](how-to-connect-sso-faq.yml): シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。
 - [トラブルシューティング](tshoot-connect-sso.md): シームレス シングル サインオン機能に関する一般的な問題の解決方法を説明します。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。
+- [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。

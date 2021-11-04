@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.topic: how-to
 ms.date: 08/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01fd517be7e60a5ab16e7844d8c149ddac2dcb3e
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 60425a0915921632874620ef5a1faf0d3ba22115
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862444"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013120"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>Synapse パイプラインを使用して専用 SQL プールを一時停止および再開する
 
@@ -226,6 +226,3 @@ Azure Synapse のマネージド ID と、専用 SQL プールにマネージド
 [Azure Synapse ワークスペース マネージド ID](../security/synapse-workspace-managed-identity.md)
 
 [ワークスペースのマネージド ID にアクセス許可を付与する](../security/how-to-grant-workspace-managed-identity-permissions.md)
-
-[Synapse のパイプラインの実行に対する SQL アクセス制御](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-azure-synapse-pipeline-runs)
-

@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer の仕様 | Microsoft Docs
 description: Microsoft Azure FXT Edge Filer ハードウェアの物理仕様と環境仕様について説明します。
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkel
-ms.openlocfilehash: 5cfc83bb844048edfb2c3d18161562c2263c1b31
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: femila
+ms.openlocfilehash: ee6cf9f85843edbd7bece70039adaa61373b6737
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415106"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011146"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer の仕様
 

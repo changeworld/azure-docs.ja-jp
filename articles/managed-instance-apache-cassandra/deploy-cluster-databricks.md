@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 06/02/2021
-ms.openlocfilehash: 7075b7efd871d3f226faa593e0730d22c8913fd1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fb33196d95f21041cf2657bdd27f203ad3f860ea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124797086"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084939"
 ---
-# <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>クイックスタート - Azure Databricks でマネージド Apache Spark クラスター (プレビュー) をデプロイする
+# <a name="quickstart-deploy-a-managed-apache-spark-cluster-with-azure-databricks"></a>クイックスタート: Azure Databricks でマネージド Apache Spark クラスターをデプロイする
 
-Azure Managed Instance for Apache Cassandra は、マネージド オープンソースの Apache Cassandra データセンターのデプロイおよびスケーリング操作を自動化し、ハイブリッド シナリオを推進して継続的なメンテナンスを削減します。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングの自動操作が提供されます。これにより、ハイブリッド シナリオが推進され、継続的なメンテナンスが削減されます。
 
 このクイックスタートでは、Azure portal を使用して、Azure Managed Instance for Apache Cassandra クラスターの Azure 仮想ネットワーク内にフル マネージド Apache Spark クラスターを作成する方法を紹介します。 Spark クラスターは Azure Databricks で作成します。 その後、そのクラスターにノートブックを作成 (アタッチ) し、さまざまなデータ ソースのデータを読み取って分析情報を得ます。
 
@@ -113,4 +109,3 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
 
 > [!div class="nextstepaction"]
 > [Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する](manage-resources-cli.md)
-

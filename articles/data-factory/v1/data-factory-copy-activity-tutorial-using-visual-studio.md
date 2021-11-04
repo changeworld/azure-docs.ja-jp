@@ -6,15 +6,15 @@ ms.service: data-factory
 ms.subservice: v1
 ms.custom: vs-azure, devx-track-azurepowershell
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5bd8bef3b45ef634577de90656c9452c44399386
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ea8720baf7de28dbe9f36f51b7687528e6c2a460
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629523"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067624"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -245,52 +245,53 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 3. JSON テキストを次の JSON テキストで置き換え、 **CopyActivity1.json** ファイルを保存します。
 
    ```json
-  {
-   "name": "ADFTutorialPipeline",
-   "properties": {
-     "description": "Copy data from a blob to Azure SQL table",
-     "activities": [
-       {
-         "name": "CopyFromBlobToSQL",
-         "type": "Copy",
-         "inputs": [
-           {
-             "name": "InputDataset"
-           }
-         ],
-         "outputs": [
-           {
-             "name": "OutputDataset"
-           }
-         ],
-         "typeProperties": {
-           "source": {
-             "type": "BlobSource"
+   {
+     "name": "ADFTutorialPipeline",
+     "properties": {
+       "description": "Copy data from a blob to Azure SQL table",
+       "activities": [
+         {
+           "name": "CopyFromBlobToSQL",
+           "type": "Copy",
+           "inputs": [
+             {
+               "name": "InputDataset"
+             }
+           ],
+           "outputs": [
+             {
+               "name": "OutputDataset"
+             }
+           ],
+           "typeProperties": {
+             "source": {
+               "type": "BlobSource"
+             },
+             "sink": {
+               "type": "SqlSink",
+               "writeBatchSize": 10000,
+               "writeBatchTimeout": "60:00:00"
+             }
            },
-           "sink": {
-             "type": "SqlSink",
-             "writeBatchSize": 10000,
-             "writeBatchTimeout": "60:00:00"
+           "Policy": {
+             "concurrency": 1,
+             "executionPriorityOrder": "NewestFirst",
+             "style": "StartOfInterval",
+             "retry": 0,
+             "timeout": "01:00:00"
            }
-         },
-         "Policy": {
-           "concurrency": 1,
-           "executionPriorityOrder": "NewestFirst",
-           "style": "StartOfInterval",
-           "retry": 0,
-           "timeout": "01:00:00"
          }
-       }
-     ],
-     "start": "2017-05-11T00:00:00Z",
-     "end": "2017-05-12T00:00:00Z",
-     "isPaused": false
+       ],
+       "start": "2017-05-11T00:00:00Z",
+       "end": "2017-05-12T00:00:00Z",
+       "isPaused": false
+     }
    }
-  }
-    ```   
+   ```
+
    - activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 Data Factory ソリューションでは、[データ変換アクティビティ](data-factory-data-transformation-activities.md)を使用することもできます。
-   - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 
-   - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの完全な一覧については、[サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 サポートされているデータ ストアをソースおよびシンクとして使用する方法については、表内のリンクをクリックしてください。  
+   - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。
+   - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの完全な一覧については、[サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 サポートされているデータ ストアをソースおよびシンクとして使用する方法については、表内のリンクをクリックしてください。
      
      **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
      

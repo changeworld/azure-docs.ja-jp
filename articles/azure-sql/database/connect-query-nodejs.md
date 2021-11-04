@@ -12,12 +12,12 @@ ms.author: drskwier
 ms.reviewer: mathoma, v-masebo
 ms.date: 05/19/2021
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
-ms.openlocfilehash: 65b4d70d9b88ec3c4275c5154bf5977bdf5dd59b
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: d9d6ea8cd3ef13fe38ca67caffb01beb64fbb982
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112554678"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012285"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Node.js を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -186,7 +186,7 @@ Azure SQL Database のデータベースに接続するために必要な接続�
     ```
 
 > [!NOTE]
-> 認証にマネージド ID を使用する方法の詳細については、[マネージド ID を使用してデータにアクセスする](../../app-service/app-service-web-tutorial-connect-msi.md)ためのチュートリアルを参照してください。
+> 認証にマネージド ID を使用する方法の詳細については、[マネージド ID を使用してデータにアクセスする](../../app-service/tutorial-connect-msi-sql-database.md)ためのチュートリアルを参照してください。
 
 > [!NOTE]
 > このコード例では、Azure SQL Database で **AdventureWorksLT** サンプル データベースを使用します。

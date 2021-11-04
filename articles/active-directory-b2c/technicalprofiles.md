@@ -3,20 +3,20 @@ title: 技術プロファイル
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でカスタム ポリシーの TechnicalProfiles 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 05/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: c555f86113b9a4557e3b5ebc356f63a5e5dc1eb1
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: f9a85604825cc87fa0b77121502bf0901135ab67
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664368"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131036354"
 ---
 # <a name="technical-profiles"></a>技術プロファイル
 

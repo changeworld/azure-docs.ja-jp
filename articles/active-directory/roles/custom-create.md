@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81ec76717ef1e79f2e29bbe54b7d85d006ab00c6
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8425c85f74e5540094be4dab12eb3e3e7c931d1b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615659"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057326"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
@@ -148,18 +148,18 @@ $roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $resourceScope -
 
     POST
 
-    ``` HTTP
+    ```http
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
     Body
 
-    ``` HTTP
-   {
-       "principalId":"<GUID OF USER>",
-       "roleDefinitionId":"<GUID OF ROLE DEFINITION>",
-       "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
-   }
+    ```http
+    {
+        "principalId":"<GUID OF USER>",
+        "roleDefinitionId":"<GUID OF ROLE DEFINITION>",
+        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
+    }
     ```
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>カスタム ロールをスコープ指定してリソースに割り当てる
@@ -182,6 +182,6 @@ $roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $resourceScope -
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
+- [Azure AD 管理ロール フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)でご意見をお寄せください。
 - ロールのアクセス許可の詳細については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください。
 - 既定のユーザー アクセス許可については、[既定のゲストとメンバー ユーザーのアクセス許可の比較](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context)を参照してください。

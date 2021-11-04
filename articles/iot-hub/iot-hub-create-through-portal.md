@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 801d073642114addeed87c4ee2073774f7888fa5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: fac663053b964cad2bbfc069fdf2e21efa761c61
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487621"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072923"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -30,11 +30,7 @@ ms.locfileid: "109487621"
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>IoT Hub の設定変更
 
-IoT Hub ウィンドウから IoT Hub を作成したら、既存の IoT Hub の設定を変更できます。
-
-![IoT Hub の設定を示すスクリーンショット](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
-
-IoT Hub に対して設定できるプロパティをいくつか以下に示します。
+IoT Hub ウィンドウから IoT Hub を作成したら、既存の IoT Hub の設定を変更できます。 IoT Hub に対して設定できるプロパティをいくつか以下に示します。
 
 **価格とスケール**:このプロパティを使用して、別のレベルに移行したり、IoT Hub ユニットの数を設定したりすることができます。 
 

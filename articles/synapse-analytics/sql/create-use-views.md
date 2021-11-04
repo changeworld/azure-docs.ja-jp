@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94fee0aa5582f76e6d97568a5535d3626d94515b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f6bfda53dc1e15488960dd72e8e71c88a82ab64
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535223"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013139"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してビューを作成および使用する
 
@@ -81,7 +82,7 @@ from openrowset(
            ) as rows
 ```
 
-Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
 
 ## <a name="partitioned-views"></a>パーティション ビュー
 
@@ -122,7 +123,7 @@ FROM
 > [!div class="mx-imgBorder"]
 >![Yellow Taxi Delta Lake フォルダー](./media/shared/yellow-taxi-delta-lake.png)
 
-Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
 
 ## <a name="json-views"></a>JSON ビュー
 

@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: yelevin
-ms.openlocfilehash: a2d9bdce1294a42487529c959f26eeee497d5046
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7fc9f373c93fb6741c07fd1bbdfd39007c91d959
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754738"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055086"
 ---
 # <a name="create-and-customize-azure-sentinel-playbooks-from-built-in-templates"></a>組み込みテンプレートから Azure Sentinel プレイブックを作成してカスタマイズする
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >

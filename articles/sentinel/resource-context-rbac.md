@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 95ff033ab83fee6e9dacbf15b12db33f8b36c3c0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: cd0b10f4dccf9d989aaf93e472306f3283afb7a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723503"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055162"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>リソースによる Azure Sentinel データへのアクセスを管理する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 通常、Azure Sentinel ワークスペースにアクセスできるユーザーは、セキュリティ コンテンツを含め、すべてのワークスペース データにもアクセスできます。 管理者は、[Azure ロール](roles.md) を使用することにより、チームのアクセス要件に応じて、Azure Sentinel の特定の機能に対するアクセスを構成できます。
 
@@ -67,7 +69,7 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 |---------|---------|
 |**子会社に、完全な Azure Sentinel エクスペリエンスを必要とする SOC チームがある**。     |  この場合は、マルチワークスペース アーキテクチャを使用して、データのアクセス許可を分離します。 <br><br>詳細については、次を参照してください。 <br>- [ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)<br>    - [多くのワークスペースのインシデントを一度に操作する](multiple-workspace-view.md)          |
 |**特定の種類のイベントへのアクセスを提供する必要がある**。     |  たとえば、Windows 管理者に対して、すべてのシステムで Windows セキュリティ イベントにアクセスできるようにします。 <br><br>このような場合は、[テーブルレベルの RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) を使用して、各テーブルのアクセス許可を定義します。       |
-| **リソースに基づくのではなく、アクセスをより詳細なレベルに制限するか、またはイベント内のフィールドのサブセットのみに制限する**   |   たとえば、ユーザーの子会社に基づいて Office 365 ログへのアクセスを制限することができます。 <br><br>この場合、[Power BI のダッシュボードおよびレポート](../azure-monitor/visualize/powerbi.md)で組み込みの統合を使用して、データへのアクセスを提供します。      |
+| **リソースに基づくのではなく、アクセスをより詳細なレベルに制限するか、またはイベント内のフィールドのサブセットのみに制限する**   |   たとえば、ユーザーの子会社に基づいて Office 365 ログへのアクセスを制限することができます。 <br><br>この場合、[Power BI のダッシュボードおよびレポート](../azure-monitor/logs/log-powerbi.md)で組み込みの統合を使用して、データへのアクセスを提供します。      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>ソースコンテキスト RBAC を明示的に構成する

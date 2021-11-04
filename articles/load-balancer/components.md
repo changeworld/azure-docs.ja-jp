@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/04/2020
+ms.date: 10/26/2021
 ms.author: allensu
-ms.openlocfilehash: 32cac3156a020beebf046fff9c429a75a348ebcd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 576965485de7bd3c193beae219af74139bffb827
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215280"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068324"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -50,7 +50,9 @@ IP アドレスの特質によって、作成されるロード バランサー�
 
 受信要求を処理する仮想マシンのグループまたは仮想マシン スケール セット内のインスタンスのグループ。 コスト効果に優れた方法でスケーリングして大量の受信トラフィックに対処するために、コンピューティングのガイドラインでは通常、バックエンド プールにインスタンスを追加することが推奨されます。
 
-ロード バランサーは、インスタンスがスケールアップまたはスケールダウンされると、自動再構成を通じてすぐに自身を再構成します。 バックエンド プールの VM を追加または削除すると、追加操作なしに、ロード バランサーが再構成されます。 バックエンド プールのスコープは、1 つの仮想ネットワーク内の任意の仮想マシンです。
+ロード バランサーは、インスタンスがスケールアップまたはスケールダウンされると、自動再構成を通じてすぐに自身を再構成します。 バックエンド プールの VM を追加または削除すると、追加操作なしに、ロード バランサーが再構成されます。 バックエンド プールのスコープは、1 つの仮想ネットワーク内の任意の仮想マシンです。 
+
+バックエンド プールでは、[ネットワーク インターフェイスまたは IP アドレス](backend-pool-management.md)を使用したインスタンスの追加がサポートされています。
 
 バックエンド プールの設計方法を検討するときは、個々のバックエンド プール リソースを最小限の数に設計して、管理操作の期間を最適化します。 データ プレーンのパフォーマンスやスケールに違いはありません。
 

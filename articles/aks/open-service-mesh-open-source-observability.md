@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: ce03fc4007ad55485150feb715242d4cc216433e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5b8e056cd360a66c42324292d7e40e8fb25ce668
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440095"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066883"
 ---
 # <a name="manually-deploy-prometheus-grafana-and-jaeger-to-view-open-service-mesh-osm-metrics-for-observability"></a>Prometheus、Grafana、Jaeger を手動でデプロイして、監視のために Open Service Mesh (OSM) メトリックを表示する
 
@@ -33,23 +33,20 @@ OSM では Prometheus を使用して、メッシュ内で実行されている�
 > [!div class="checklist"]
 >
 > - Prometheus インスタンスを作成してデプロイする
-> - Prometheus スクレイピングを許可するように OSM を構成する
 > - Prometheus `Configmap` を更新する
 > - Grafana インスタンスを作成してデプロイする
 > - Prometheus データ ソースで Grafana を構成する
+> - ユーザー名前空間の Prometheus メトリックを有効にする
 > - Grafana の OSM ダッシュボードをインポートする
 > - Jaeger インスタンスを作成してデプロイする
 > - OSM の Jaeger トレースを構成する
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
 次のリソースがインストールされている必要があります。
 
 - Azure CLI バージョン 2.20.0 以降
-- `aks-preview` 拡張機能バージョン 0.5.5 以降
-- OSM バージョン v0.8.0 以降
+- OSMバージョンバージョン v 0.11.1 以降
 - JSON プロセッサ "jq" バージョン 1.6 以上
 
 ## <a name="deploy-and-configure-a-prometheus-instance-for-osm"></a>OSM の Prometheus インスタンスをデプロイして構成する
@@ -108,29 +105,9 @@ For more information on running Prometheus, visit:
 https://prometheus.io/
 ```
 
-### <a name="configure-osm-to-allow-prometheus-scraping"></a>Prometheus スクレイピングを許可するように OSM を構成する
-
-OSM コンポーネントが Prometheus スクレイピング用に構成されていることを確認するには、osm-config 構成ファイルにある **prometheus_scraping** 構成を確認します。 次のコマンドを使用して構成を表示します。
-
-```azurecli-interactive
-kubectl get configmap -n kube-system osm-config -o json | jq '.data.prometheus_scraping'
-```
-
-OSM が Prometheus スクレイピング用に構成されている場合、前のコマンドの出力では `true` が返されます。 戻り値が `false` の場合は、構成を `true` に更新する必要があります。 次のコマンドを実行して、OSM Prometheus スクレイピングを **オン** にします。
-
-```azurecli-interactive
-kubectl patch configmap -n kube-system osm-config --type merge --patch '{"data":{"prometheus_scraping":"true"}}'
-```
-
-次の出力が表示されます。
-
-```Output
-configmap/osm-config patched
-```
-
 ### <a name="update-the-prometheus-configmap"></a>Prometheus の Configmap を更新する
 
-Prometheus の既定のインストールには、2 つの Kubernetes `configmaps` が含まれています。 次のコマンドを使用して、Prometheus `configmaps` の一覧を表示できます。
+既定では、Prometheus は、OSM コンポーネントをスクレイピングするように設定されています。 Prometheus の既定のインストールには、2 つの Kubernetes `configmaps` が含まれています。 次のコマンドを使用して、Prometheus `configmaps` の一覧を表示できます。
 
 ```azurecli-interactive
 kubectl get configmap | grep prometheus
@@ -417,7 +394,7 @@ kubectl --namespace <promNamespace> port-forward $PROM_POD_NAME 9090
 
 ![OSM Prometheus ターゲット メトリックの UI イメージ](./media/aks-osm-addon/osm-prometheus-smi-metrics-target-scrape.png)
 
-## <a name="deploy-and-configure-a-grafana-instance-for-osm&quot;></a>OSM の Grafana インスタンスをデプロイして構成する
+## <a name="deploy-and-configure-a-grafana-instance-for-osm"></a>OSM の Grafana インスタンスをデプロイして構成する
 
 Helm を使用して Grafana インスタンスをデプロイします。 次のコマンドを実行して、Helm を介して Grafana をインストールします。
 
@@ -430,7 +407,7 @@ helm install osm-grafana grafana/grafana
 次に、Grafana サイトにログインするための既定の Grafana パスワードを取得します。
 
 ```azurecli-interactive
-kubectl get secret --namespace default osm-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
+kubectl get secret --namespace default osm-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 
 Grafana のパスワードを書き留めます。
@@ -438,7 +415,7 @@ Grafana のパスワードを書き留めます。
 次に、Grafana ポッドを取得して、Grafana ダッシュボードをポート転送してログインします。
 
 ```azurecli-interactive
-GRAF_POD_NAME=$(kubectl get pods -l &quot;app.kubernetes.io/name=grafana&quot; -o jsonpath=&quot;{.items[0].metadata.name}")
+GRAF_POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=grafana" -o jsonpath="{.items[0].metadata.name}")
 kubectl port-forward $GRAF_POD_NAME 3000
 ```
 
@@ -460,11 +437,17 @@ Grafana に正常にログインしたら、次の手順では、Grafana のデ�
 
 **[下の Prometheus データ ソースの構成]** ページで、[HTTP URL] 設定の Prometheus サービスについて Kubernetes クラスター FQDN を入力します。 既定の FQDN は `stable-prometheus-server.default.svc.cluster.local` である必要があります。 Prometheus サービス エンドポイントを入力したら、ページの下部までスクロールして、 **[保存 & テスト]** を選択します。 データ ソースが機能していることを示す緑色のチェック ボックスが表示されます。
 
+### <a name="enable-prometheus-metrics-for-a-user-namespace"></a>ユーザー名前空間の Prometheus メトリックを有効にする
+アプリケーションの名前空間からメトリックをスクレイピングするように Prometheus を構成するには、次のコマンドを実行します。
+```azurecli-interactive
+osm metrics enable --namespace <app-namespace>
+```
+
 ### <a name="importing-osm-dashboards"></a>OSM ダッシュボードのインポート
 
 OSM ダッシュボードは、次のどちらを使用しても利用できます。
 
-- [リポジトリ](https://github.com/grafana/grafana)。Web 管理ポータルを使用して json blob としてインポートできます
+- [リポジトリ](https://github.com/openservicemesh/osm/tree/release-v0.11/charts/osm/grafana/dashboards)。Web 管理ポータルを使用して json blob としてインポートできます
 - または [Grafana.com からオンラインで](https://grafana.com/grafana/dashboards/14145)
 
 ダッシュボードをインポートするには、左側のメニューの `+` 記号を探し、[`import`] を選択します。
@@ -481,6 +464,12 @@ OSM ダッシュボードは、次のどちらを使用しても利用できま�
 [Jaeger](https://www.jaegertracing.io/) は、分散システムの監視とトラブルシューティングに使用されるオープンソースのトレース システムです。 OSM を新しいインスタンスとして使用してこれをデプロイすることも、独自のインスタンスを使用することもできます。 次の手順では、Jaeger の新しいインスタンスを AKS クラスターの `jaeger` 名前空間にデプロイします。
 
 ### <a name="deploy-jaeger-to-the-aks-cluster"></a>Jaeger を AKS クラスターにデプロイする
+
+最初に、jaeger 名前空間を作成します。
+
+```azurecli-interactive
+kubectl create namespace jaeger
+```
 
 Jaeger をインストールするには、次のマニフェストを適用します。
 
@@ -543,6 +532,42 @@ deployment.apps/jaeger created
 service/jaeger created
 ```
 
+### <a name="add-rbac-for-jaeger-sa"></a>Jaeger SA の RBAC を追加する
+
+次の RBAC を適用して、Jaeger サービス アカウントに指定されたクラスター役割を付与します。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: jaeger
+  name: jaeger
+  namespace: jaeger
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app: jaeger
+  name: jaeger
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jaeger
+  labels:
+    app: jaeger
+subjects:
+  - kind: ServiceAccount
+    name: jaeger
+    namespace: jaeger
+roleRef:
+  kind: ClusterRole
+  name: jaeger
+  apiGroup: rbac.authorization.k8s.io
+```
+
 ### <a name="enable-tracing-for-the-osm-add-on"></a>OSM アドオンのトレースを有効にする
 
 次に、OSM アドオンのトレースを有効にする必要があります。
@@ -550,7 +575,7 @@ service/jaeger created
 OSM アドオンのトレースを有効にするには、次のコマンドを使用します。
 
 ```azurecli-interactive
-kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"enable":true}}}}' --type=merge
+kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"enable":true, "address": "jaeger.jaeger.svc.cluster.local"}}}}' --type=merge
 ```
 
 ```Output

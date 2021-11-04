@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: a4d451233277b76106f3176a68d451bd0c5847ff
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bddf6510b5763a592be6cf44ba3668568bfc0964
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433025"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054554"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure Virtual Desktop の最新情報
 
@@ -75,27 +75,27 @@ FSLogix に対して行われた最新の更新については、 [FSLogix の�
 
 2021 年 10 月に実施する変更
 
-### <a name="azure-virtual-desktop-support-for-windows-11"></a>Azure Virtual Desktop の Windows 11 サポート
+## <a name="azure-virtual-desktop-support-for-windows-11"></a>Azure Virtual Desktop の Windows 11 サポート
 
 Azure Virtual Desktop では、シングルおよびマルチ セッションのデプロイで、Windows 11 のサポートの一般提供を開始しました。 Azure portal でホスト プールを作成するときに、Windows 11 のイメージを使用できます。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-is-now-generally-available-on-azure-virtual-desktop/ba-p/2810545)を参照してください。
 
-### <a name="rdp-shortpath-now-generally-available"></a>RDP Shortpath の一般提供開始
+## <a name="rdp-shortpath-now-generally-available"></a>RDP Shortpath の一般提供開始
 
 マネージド ネットワーク用の Remote Desktop Protocol (RDP) Shortpath の一般提供を開始しました。 RDP Shortpath では、Remote Desktop クライアントとセッション ホストを直接接続します。 この直接接続により、ゲートウェイへの依存が減り、接続の安定性が向上し、各ユーザー セッションで利用できる帯域幅が増えます。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/rdp-shortpath-for-managed-networks-is-generally-available/m-p/2861468)を参照してください。
 
-### <a name="screen-capture-protection-updates"></a>画面キャプチャ保護の更新
+## <a name="screen-capture-protection-updates"></a>画面キャプチャ保護の更新
 
 macOS クライアント、Azure Government および Azure China クラウドで、画面キャプチャ保護をサポートしました。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/screen-capture-protection-for-macos-client-and-support-for/m-p/2840089#M7940)を参照してください。
 
-### <a name="azure-active-directory-domain-join"></a>Azure Active Directory ドメイン参加 
+## <a name="azure-active-directory-domain-join"></a>Azure Active Directory ドメイン参加 
 
 Azure Government および Azure China クラウドにおいて、Azure Active Directory で Azure Virtual Desktop VM のドメイン参加ができるようになりました。 Microsoft エンドポイント マネージャー (Intune) は現在、Azure Public クラウドでのみサポートしています。 詳しくは「[Azure Virtual Desktop で Azure AD 参加済み仮想マシンをデプロイする](deploy-azure-ad-joined-vm.md)」をご覧ください。
 
-### <a name="breaking-change-in-azure-virtual-desktop-azure-resource-manager-template"></a>Azure Virtual Desktop Azure Resource Manager テンプレートの破壊的変更
+## <a name="breaking-change-in-azure-virtual-desktop-azure-resource-manager-template"></a>Azure Virtual Desktop Azure Resource Manager テンプレートの破壊的変更
 
 Azure Virtual Desktop の Azure Resource Manager テンプレートに対し破壊的変更を行いました。 この変更に依存するコードを使用している場合は、この[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/azure-virtual-desktop-arm-template-change-removal-of-script/m-p/2851538#M7971)の説明に従って問題に対処する必要があります。
 
-### <a name="autoscale-preview-public-preview"></a>自動スケーリング (プレビュー) のパブリック プレビュー
+## <a name="autoscale-preview-public-preview"></a>自動スケーリング (プレビュー) のパブリック プレビュー
 
 Azure Virtual Desktop の自動スケーリングのパブリック プレビューをリリースしました。 これは、可用性のニーズに応じて、ホスト プールにある仮想マシン (VM) をネイティブにオン/オフする機能です。 VM をオン/オフするタイミングをスケジュールすれば、デプロイのコストを最適化できます。この機能では、ニーズに対応する柔軟なスケジュール方法も用意しています。 必要なカスタム RBAK ロール (ロールベースのアクセス制御ロール) を設定したら、スケーリングの計画を設定できるようになります。 詳しくは「[Azure Virtual Desktop ホスト プールの自動スケーリング (プレビュー)](autoscale-scaling-plan.md)」をご覧ください。
 

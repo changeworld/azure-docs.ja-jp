@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: b288a826a0911e73f516fa13a00d3e26b25d2ace
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dee5f9257e586a13e733f700daf9068a34573446
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178617"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075361"
 ---
 # <a name="pre-deployment-activities-and-prerequisites-for-deploying-azure-sentinel"></a>Azure Sentinel のデプロイ前のアクティビティとデプロイの前提条件
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel のデプロイ前のアクティビティとデプロイの前提条件を紹介します。
 
@@ -30,7 +33,7 @@ Azure Sentinel をデプロイする前に、できるだけ早く次の手順�
 1. Azure Sentinel ワークスペースを設計します。 次のようなパラメーターを検討します。
 
     - 1 つのテナントと複数のテナントのどちらを使用するか
-    - データの収集と格納に関するコンプライアンス要件
+    - データの収集と保存に関するコンプライアンス要件
     - Azure Sentinel データへのアクセスを制御する方法
 
     詳細については、[ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)および[サンプル ワークスペースの設計](sample-workspace-designs.md)に関する記事を参照してください。

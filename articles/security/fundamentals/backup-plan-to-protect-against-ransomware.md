@@ -8,12 +8,13 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
-ms.openlocfilehash: 83caa5e93a8a9fd9df13646f867b176208655450
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2c75b1ae5112b758282941efb20be245fed4d22d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763350"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014241"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>ランサムウェアから保護するためのバックアップと復元の計画
 
@@ -172,7 +173,7 @@ Microsoft Azure:
 
 - [Microsoft Azure Backup を使用してランサムウェアからの保護を支援](https://www.youtube.com/watch?v=VhLOr2_1MCg) (26 分のビデオ)
 - [システムの ID 侵害からの復旧](./recover-from-identity-compromise.md)
-- [Azure Sentinel の高度なマルチステージ攻撃の検出](../../sentinel/fusion.md#ransomware)
+- [Azure Sentinel の高度なマルチステージ攻撃の検出](../../sentinel/fusion.md#fusion-for-ransomware)
 
 Microsoft 365:
 

@@ -3,18 +3,18 @@ title: 認証
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services リソースへの要求を認証する方法には、サブスクリプション キー、ベアラー トークン、またはマルチサービス サブスクリプションの 3 つがあります。 この記事では、それぞれの方法と、要求を実行する方法について学習します。
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/22/2021
-ms.author: erhopf
-ms.openlocfilehash: e81b2121e8b4f71040014d3e211177dc8656b556
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: pafarley
+ms.openlocfilehash: cce37298303e97c986475368a713352069baffa6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447620"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011866"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 05/24/2021
 ms.author: pepogors
-ms.openlocfilehash: aaf5be101320a5b8cccb24b89908c788996fc494
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 76232db15084f587181c7ff20821ebb0d5bdf362
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075089"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 
@@ -66,46 +66,46 @@ Service Fabric ロード バランサーにより、ターゲット レプリカ
 
 ```json
 {
-    "apiVersion": "2018-11-01",
-    "type": "Microsoft.Network/publicIPAddresses",
-    "name": "[concat('LB','-', parameters('clusterName')]",
-    "location": "[parameters('computeLocation')]",
-    "sku": {
-        "name": "Standard"
-    }
+  "apiVersion": "2018-11-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "[concat('LB','-', parameters('clusterName')]",
+  "location": "[parameters('computeLocation')]",
+  "sku": {
+    "name": "Standard"
+  }
 }
 ```
 
 ```json
 {
-    "apiVersion": "2018-11-01",
-    "type": "Microsoft.Network/loadBalancers",
-    "name": "[concat('LB','-', parameters('clusterName')]", 
-    "location": "[parameters('computeLocation')]",
-    "dependsOn": [
-        "[concat('Microsoft.Network/networkSecurityGroups/', concat('nsg', parameters('subnet0Name')))]"
-    ],
-    "properties": {
-        "addressSpace": {
-            "addressPrefixes": [
-                "[parameters('addressPrefix')]"
-            ]
-        },
-        "subnets": [
-        {
-            "name": "[parameters('subnet0Name')]",
-            "properties": {
-                "addressPrefix": "[parameters('subnet0Prefix')]",
-                "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg', parameters('subnet0Name')))]"
-              }
-            }
-          }
-        ]
+  "apiVersion": "2018-11-01",
+  "type": "Microsoft.Network/loadBalancers",
+  "name": "[concat('LB','-', parameters('clusterName')]",
+  "location": "[parameters('computeLocation')]",
+  "dependsOn": [
+    "[concat('Microsoft.Network/networkSecurityGroups/', concat('nsg', parameters('subnet0Name')))]"
+  ],
+  "properties": {
+    "addressSpace": {
+      "addressPrefixes": [
+        "[parameters('addressPrefix')]"
+      ]
     },
-    "sku": {
-        "name": "Standard"
-    }
+    "subnets": [
+      {
+        "name": "[parameters('subnet0Name')]",
+        "properties": {
+          "addressPrefix": "[parameters('subnet0Prefix')]",
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg', parameters('subnet0Name')))]"
+          }
+        }
+      }
+    ]
+  },
+  "sku": {
+    "name": "Standard"
+  }
 }
 ```
 
@@ -118,44 +118,44 @@ Service Fabric ロード バランサーにより、ターゲット レプリカ
 
 ```json
 {
-"inboundNatPools": [
+  "inboundNatPools": [
     {
-        "name": "LoadBalancerBEAddressNatPool0",
-        "properties": {
-            "backendPort": "3389",
-            "frontendIPConfiguration": {
-                "id": "[variables('lbIPConfig0')]"
-            },
-            "frontendPortRangeEnd": "50999",
-            "frontendPortRangeStart": "50000",
-            "protocol": "tcp"
-        }
+      "name": "LoadBalancerBEAddressNatPool0",
+      "properties": {
+        "backendPort": "3389",
+        "frontendIPConfiguration": {
+          "id": "[variables('lbIPConfig0')]"
+        },
+        "frontendPortRangeEnd": "50999",
+        "frontendPortRangeStart": "50000",
+        "protocol": "tcp"
+      }
     },
     {
-        "name": "LoadBalancerBEAddressNatPool1",
-        "properties": {
-            "backendPort": "3389",
-            "frontendIPConfiguration": {
-                "id": "[variables('lbIPConfig0')]"
-            },
-            "frontendPortRangeEnd": "51999",
-            "frontendPortRangeStart": "51000",
-            "protocol": "tcp"
-        }
+      "name": "LoadBalancerBEAddressNatPool1",
+      "properties": {
+        "backendPort": "3389",
+        "frontendIPConfiguration": {
+          "id": "[variables('lbIPConfig0')]"
+        },
+        "frontendPortRangeEnd": "51999",
+        "frontendPortRangeStart": "51000",
+        "protocol": "tcp"
+      }
     },
     {
-        "name": "LoadBalancerBEAddressNatPool2",
-        "properties": {
-            "backendPort": "3389",
-            "frontendIPConfiguration": {
-                "id": "[variables('lbIPConfig0')]"
-            },
-            "frontendPortRangeEnd": "52999",
-            "frontendPortRangeStart": "52000",
-            "protocol": "tcp"
-        }
+      "name": "LoadBalancerBEAddressNatPool2",
+      "properties": {
+        "backendPort": "3389",
+        "frontendIPConfiguration": {
+          "id": "[variables('lbIPConfig0')]"
+        },
+        "frontendPortRangeEnd": "52999",
+        "frontendPortRangeStart": "52000",
+        "protocol": "tcp"
+      }
     }
-    ]
+  ]
 }
 ```
 
@@ -195,15 +195,15 @@ Standard SKU ロード バランサーおよびパブリック IP では、Basic
 
 ```json
 {
-    "apiVersion": "2018-10-01",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    "name": "[parameters('vmNodeType1Name')]",
-    "location": "[parameters('computeLocation')]",
-    "zones": ["1", "2", "3"],
-    "properties": {
-        "singlePlacementGroup": "true",
-        "zoneBalance": true
-    }
+  "apiVersion": "2018-10-01",
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "name": "[parameters('vmNodeType1Name')]",
+  "location": "[parameters('computeLocation')]",
+  "zones": [ "1", "2", "3" ],
+  "properties": {
+    "singlePlacementGroup": true,
+    "zoneBalance": true
+  }
 }
 ```
 
@@ -237,23 +237,24 @@ Standard SKU ロード バランサーおよびパブリック IP では、Basic
 
 ```json
 {
-    "apiVersion": "2020-12-01-preview",
-    "type": "Microsoft.ServiceFabric/clusters",
-    "name": "[parameters('clusterName')]",
-    "location": "[parameters('clusterLocation')]",
-    "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-    ],
-    "properties": {
-        "reliabilityLevel": "Platinum",
-        "SFZonalUpgradeMode": "Hierarchical",
-        "VMSSZonalUpgradeMode": "Parallel",
-        "nodeTypes": [
-          {
-                "name": "[parameters('vmNodeType0Name')]",
-                "multipleAvailabilityZones": true,
-          }
-        ]
+  "apiVersion": "2020-12-01-preview",
+  "type": "Microsoft.ServiceFabric/clusters",
+  "name": "[parameters('clusterName')]",
+  "location": "[parameters('clusterLocation')]",
+  "dependsOn": [
+    "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+  ],
+  "properties": {
+    "reliabilityLevel": "Platinum",
+    "sfZonalUpgradeMode": "Hierarchical",
+    "vmssZonalUpgradeMode": "Parallel",
+    "nodeTypes": [
+      {
+        "name": "[parameters('vmNodeType0Name')]",
+        "multipleAvailabilityZones": true
+      }
+    ]
+  }
 }
 ```
 
@@ -303,39 +304,45 @@ Service Fabric クラスターを可用性ゾーン間にまたがらせるに�
 
 ```json
 {
-    "apiVersion": "2018-10-01",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    "name": "[parameters('vmNodeType1Name')]",
-    "location": "[parameters('computeLocation')]",
-    "zones": ["1"],
-    "properties": {
-        "singlePlacementGroup": "true",
-    },
-    "virtualMachineProfile": {
+  "apiVersion": "2018-10-01",
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "name": "[parameters('vmNodeType1Name')]",
+  "location": "[parameters('computeLocation')]",
+  "zones": [
+    "1"
+  ],
+  "properties": {
+    "singlePlacementGroup": true
+  },
+  "virtualMachineProfile": {
     "extensionProfile": {
-    "extensions": [
-    {
-    "name": "[concat(parameters('vmNodeType1Name'),'_ServiceFabricNode')]",
-    "properties": {
-        "type": "ServiceFabricNode",
-        "autoUpgradeMinorVersion": false,
-        "publisher": "Microsoft.Azure.ServiceFabric",
-        "settings": {
-            "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-            "nodeTypeRef": "[parameters('vmNodeType1Name')]",
-            "dataPath": "D:\\\\SvcFab",
-            "durabilityLevel": "Silver",
-            "certificate": {
+      "extensions": [
+        {
+          "name": "[concat(parameters('vmNodeType1Name'),'_ServiceFabricNode')]",
+          "properties": {
+            "type": "ServiceFabricNode",
+            "autoUpgradeMinorVersion": false,
+            "publisher": "Microsoft.Azure.ServiceFabric",
+            "settings": {
+              "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+              "nodeTypeRef": "[parameters('vmNodeType1Name')]",
+              "dataPath": "D:\\\\SvcFab",
+              "durabilityLevel": "Silver",
+              "certificate": {
                 "thumbprint": "[parameters('certificateThumbprint')]",
                 "x509StoreName": "[parameters('certificateStoreValue')]"
-            },
-            "systemLogUploadSettings": {
+              },
+              "systemLogUploadSettings": {
                 "Enabled": true
+              },
+              "faultDomainOverride": "az1"
             },
-            "faultDomainOverride": "az1"
-        },
-        "typeHandlerVersion": "1.0"
+            "typeHandlerVersion": "1.0"
+          }
+        }
+      ]
     }
+  }
 }
 ```
 
@@ -345,57 +352,57 @@ Service Fabric クラスターを可用性ゾーン間にまたがらせるに�
 
 ```json
 {
-    "reliabilityLevel": "Platinum",
-    "nodeTypes": [
+  "reliabilityLevel": "Platinum",
+  "nodeTypes": [
     {
-        "name": "[parameters('vmNodeType0Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt0applicationEndPort')]",
-            "startPort": "[parameters('nt0applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt0ephemeralEndPort')]",
-            "startPort": "[parameters('nt0ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+      "name": "[parameters('vmNodeType0Name')]",
+      "applicationPorts": {
+        "endPort": "[parameters('nt0applicationEndPort')]",
+        "startPort": "[parameters('nt0applicationStartPort')]"
+      },
+      "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+      "durabilityLevel": "Silver",
+      "ephemeralPorts": {
+        "endPort": "[parameters('nt0ephemeralEndPort')]",
+        "startPort": "[parameters('nt0ephemeralStartPort')]"
+      },
+      "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+      "isPrimary": true,
+      "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
-        "name": "[parameters('vmNodeType1Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt1applicationEndPort')]",
-            "startPort": "[parameters('nt1applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt1fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt1ephemeralEndPort')]",
-            "startPort": "[parameters('nt1ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt1fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt1InstanceCount')]"
+      "name": "[parameters('vmNodeType1Name')]",
+      "applicationPorts": {
+        "endPort": "[parameters('nt1applicationEndPort')]",
+        "startPort": "[parameters('nt1applicationStartPort')]"
+      },
+      "clientConnectionEndpointPort": "[parameters('nt1fabricTcpGatewayPort')]",
+      "durabilityLevel": "Silver",
+      "ephemeralPorts": {
+        "endPort": "[parameters('nt1ephemeralEndPort')]",
+        "startPort": "[parameters('nt1ephemeralStartPort')]"
+      },
+      "httpGatewayEndpointPort": "[parameters('nt1fabricHttpGatewayPort')]",
+      "isPrimary": true,
+      "vmInstanceCount": "[parameters('nt1InstanceCount')]"
     },
     {
-        "name": "[parameters('vmNodeType2Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt2applicationEndPort')]",
-            "startPort": "[parameters('nt2applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt2fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt2ephemeralEndPort')]",
-            "startPort": "[parameters('nt2ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt2fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt2InstanceCount')]"
+      "name": "[parameters('vmNodeType2Name')]",
+      "applicationPorts": {
+        "endPort": "[parameters('nt2applicationEndPort')]",
+        "startPort": "[parameters('nt2applicationStartPort')]"
+      },
+      "clientConnectionEndpointPort": "[parameters('nt2fabricTcpGatewayPort')]",
+      "durabilityLevel": "Silver",
+      "ephemeralPorts": {
+        "endPort": "[parameters('nt2ephemeralEndPort')]",
+        "startPort": "[parameters('nt2ephemeralStartPort')]"
+      },
+      "httpGatewayEndpointPort": "[parameters('nt2fabricHttpGatewayPort')]",
+      "isPrimary": true,
+      "vmInstanceCount": "[parameters('nt2InstanceCount')]"
     }
-    ],
+  ]
 }
 ```
 
@@ -469,20 +476,19 @@ Basic SKU でロード バランサーと IP を使用しているクラスタ�
 
 1. 最後に、DNS 名とパブリック IP を更新します。
 
-   ```powershell
-   $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname
-   $primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
-   $primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
+ ```powershell
+ $oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname
+ $primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
+ $primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
 
-   Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
-   Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+ Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
+ Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 
-   $PublicIP = Get-AzureRmPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
-   $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
-   $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
-   Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
- 
-   ```
+ $PublicIP = Get-AzureRmPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
+ $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
+ $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
+ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
+ ```
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

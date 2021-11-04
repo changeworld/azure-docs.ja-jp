@@ -10,13 +10,13 @@ ms.date: 4/11/2019
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom: devx-track-azurepowershell - seo-lt-2019 - azure-synapse - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 9fa65cb9d52a2e79fb9d9e1f2c6602d21a2f6820
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurepowershell, seo-lt-2019, azure-synapse, mode-api
+ms.openlocfilehash: 261d8cfe1264b793d68574c5050ef6dcceacb7f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676893"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013386"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell で専用 SQL プール (以前の SQL DW) を作成する
 
