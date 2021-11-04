@@ -44,6 +44,8 @@
       href: chaos-studio-fault-library.md
     - name: 障害プロバイダー
       href: chaos-studio-fault-providers.md
+    - name: プレビューの制限事項と既知の問題
+      href: chaos-studio-limitations.md
     - name: サービスの制限
       href: chaos-studio-service-limits.md
     - name: REST API のドキュメント

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 85c51be3b8434aadd254b0274e22b756c667832f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0930b1a2589fde0dce4a38077d2449bff48816b9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750786"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131511146"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>カスタム コマンドの概念と定義
 

@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
-ms.author: pafarley
-ms.openlocfilehash: 1f588231ad903730826b8235a52983aee60cf8f1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.author: eur
+ms.openlocfilehash: ad0804db936e04ee7f54e5420bc44d3121142e71
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129378379"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501955"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -31,7 +31,7 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) を作成する必要があります。 このクラスには、キーとそれに関連付けられた場所/リージョン、エンドポイント、ホスト、認証トークンなど、サブスクリプションに関する情報が含まれています。 キーと場所/リージョンを使用して [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) を作成します。 キーと場所/リージョンのペアを見つけるには、「[キーと場所/リージョンを見つける](../../../overview.md#find-keys-and-locationregion)」ページを参照してください。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) を作成する必要があります。 このクラスには、キーとそれに関連付けられた場所またはリージョン、エンドポイント、ホスト、認証トークンなど、サブスクリプションに関する情報が含まれています。 キーと場所/リージョンを使用して [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) を作成します。 キーと場所またはリージョンのペアを見つけるには、「[キーと場所/リージョンを見つける](../../../overview.md#find-keys-and-locationregion)」ページを参照してください。
 
 ```java
 import com.microsoft.cognitiveservices.speech.*;

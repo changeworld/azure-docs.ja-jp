@@ -3,7 +3,7 @@ title: クイック スタート:プロファイルとエンドポイントを�
 titleSuffix: Azure Content Delivery Network
 description: このクイックスタートでは、Resource Manager テンプレートを使用して Azure Content Delivery Network のプロファイルとエンドポイントを作成する方法について説明します
 services: cdn
-author: asudbring
+author: duongau
 manager: KumudD
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/10/2021
-ms.author: allensu
-ms.openlocfilehash: ee199aaf13763f735607943eb51b848aecde54ff
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.author: duau
+ms.openlocfilehash: d0f160a068e8f9205a9659e34de6033b6690f520
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005539"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426356"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>クイック スタート:Azure CDN のプロファイルとエンドポイントの作成 - ARM テンプレート
 

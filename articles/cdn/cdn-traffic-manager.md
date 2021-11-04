@@ -3,18 +3,18 @@ title: Traffic Manager を使用した複数のエンドポイント間でのフ
 titleSuffix: Azure Content Delivery Network
 description: Azure Traffic Manager を使用して、複数の Azure Content Delivery Network エンドポイントでフェールオーバーを構成する方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.author: allensu
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 3eea73559fdf00e8c74f58ea51b1efce5eac694d
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 97acf57c4b00b795339a68ce87c7d2020839e384
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651295"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446754"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数のエンドポイント間でのフェールオーバー
 

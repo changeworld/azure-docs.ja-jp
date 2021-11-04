@@ -1,18 +1,19 @@
 ---
 title: Azure の予約のセルフサービスによる交換と払戻
 description: Azure の予約を交換または払い戻す方法について説明します。 予約の交換または払戻を行うには、予約注文の所有者アクセス権を持っている必要があります。
-author: yashesvi
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/14/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 56ebba760defcb47d336874294255e2e97e5a151
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3a750e41ec5d422107dc091fb0965ed07da6a88b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469485"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 

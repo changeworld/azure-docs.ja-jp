@@ -4,12 +4,12 @@ ms.service: azure-web-pubsub
 ms.topic: include
 ms.date: 08/06/2021
 ms.author: lianwei
-ms.openlocfilehash: 785114c797fba5c84e97f5a0d0cc1a34dc14d540
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3671a5d221afa89c776dca1bc3a17b965b621c5b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785581"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423996"
 ---
 次の情報を指定した Azure CLI の [az webpubsub create](/cli/azure/webpubsub#az_webpubsub_create) コマンドを使用して、前の手順のリソース グループに Web PubSub を作成します。
 
@@ -25,9 +25,6 @@ ms.locfileid: "121785581"
 ```azurecli-interactive
 az webpubsub create --name "<your-unique-resource-name>" --resource-group "myResourceGroup" --location "EastUS" --sku Free_F1
 ```
-
-> [!Note]
-> Web PubSub サービスはまだプレビュー段階であるため、CLI コンソールに次のような警告が表示される場合があります。 "The command requires the extension webpubsub. (このコマンドには、拡張機能 webpubsub が必要です。) Do you want to install it now? (今すぐインストールしますか?) The command will continue to run after the extension is installed. (この拡張機能をインストールした後も、コマンドは継続して実行されます。) (Y/n)" Y を押して、この拡張機能をインストールしてください。
 
 このコマンドの出力では、新しく作成したリソースのプロパティが表示されます。 次の 2 つのプロパティをメモしておきます。
 

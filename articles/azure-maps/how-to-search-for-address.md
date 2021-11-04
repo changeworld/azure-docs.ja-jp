@@ -1,23 +1,22 @@
 ---
 title: Azure Maps Search Service を使用して場所を検索する
 description: Azure Maps Search Service について説明します。 この一連の API を使用して、ジオコーディング、逆ジオコーディング、あいまい検索、および交差点住所の逆引き検索を行う方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 01/19/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: ec92bb8bbfdc0f1598148b674f8e5de17e69afe3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 65bb5e9ee9e4001aee73e8ac3c73af8aff702ccf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031434"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450820"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
 [Azure Maps Search Service](/rest/api/maps/search) は、開発者が住所、場所、名前またはカテゴリ別の事業の一覧、およびその他の地理情報を検索できるように設計された RESTful API のセットです。 サービスでは、従来のジオコーディングをサポートするだけでなく、緯度と経度に基づいて住所や交差道路の逆ジオコーディングを行うこともできます。 検索で返された緯度と経度の値は、[Route](/rest/api/maps/route) サービスや [Weather](/rest/api/maps/weather) サービスなどの他の Azure Maps サービスでパラメーターとして使用できます。
-
 
 この記事では、次の方法について学習します。
 
@@ -45,7 +44,7 @@ ms.locfileid: "131031434"
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求では、特定の住所 (`400 Braod St, Seattle, WA 98109`) を検索します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
+    https://atlas.microsoft.com/search/address/json?&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 応答本文には、1 つの場所のデータが含まれます。
@@ -77,7 +76,7 @@ Azure Maps [Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy) では、標
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
+    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
     ```
 
     >[!NOTE]
@@ -125,7 +124,7 @@ Azure Maps [Get Search Address Reverse API](/rest/api/maps/search/getsearchaddre
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
 
     ```http
-    https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
+    https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
     ```
 
 3. **[送信]** をクリックして、応答の本体を確認します。 1 つのクエリ結果が表示されます。 応答には、セーフコ フィールドのキー アドレス情報が含まれます。
@@ -161,7 +160,7 @@ Azure Maps [Get Search Address Reverse API](/rest/api/maps/search/getsearchaddre
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
   
     ```http
-    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
+    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
     :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="交差道路の検索":::

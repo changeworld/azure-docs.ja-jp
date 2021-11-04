@@ -6,15 +6,15 @@ metadata:
   description: Azure または他の任意の場所にホストできる、高帯域幅コンテンツを配信するためのソリューションである Azure Content Delivery Network について説明します。
   ms.service: azure-cdn
   ms.topic: landing-page
-  author: asudbring
-  ms.author: allensu
+  author: duongau
+  ms.author: duau
   ms.date: 02/24/2020
-  ms.openlocfilehash: 194b89058b68b73ff651e9fef85717fcc578d66a
-  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+  ms.openlocfilehash: c6a346872114a61506e26cd3bdf2b9819b7b4ac1
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92777778"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131461363"
 landingContent:
 - title: Azure CDN について
   linkLists:

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/27/2021
 ms.author: lajanuar
 zone_pivot_groups: programming-languages-cs-cpp-py
-ms.openlocfilehash: 6830ded4b6a074a29de9741eee957b0a4a1ff4b3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d840ddce060e2ada6a0a237a896201dafdc90fac
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588126"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131511249"
 ---
 # <a name="language-identification-preview"></a>言語識別 (プレビュー)
 

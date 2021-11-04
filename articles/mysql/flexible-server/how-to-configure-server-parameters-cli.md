@@ -8,21 +8,18 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd1be8c63e295aedead72fdd5c6ce407179dc660
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 02a58891ebe39d0dab4156c18e594cc0785dba86
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122652599"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438115"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL Flexible Server のサーバー パラメータを構成する
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
-
-Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL フレキシブル サーバーのパラメーターを一覧表示、表示、および更新できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
+Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL フレキシブル サーバーのパラメーターを一覧表示、表示、および更新できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。
 
 この記事では、Azure CLI を使用して、サーバー パラメーターの一覧表示、表示、および更新を行う方法について説明します。
 
@@ -55,8 +52,7 @@ az mysql flexible-server parameter list --resource-group myresourcegroup --serve
 az mysql flexible-server parameter show --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
 ## <a name="modify-a-server-parameter-value"></a>サーバー パラメーター値を変更する
-
-特定のサーバー パラメーターの値を変更することもできます。これによって MySQL サーバー エンジンの基盤となる構成値が更新されます。 サーバー パラメーターを更新するには、[az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) コマンドを使用します。 
+特定のサーバー パラメーターの値を変更することもできます。これによって MySQL サーバー エンジンの基盤となる構成値が更新されます。 サーバー パラメーターを更新するには、[az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) コマンドを使用します。
 
 リソース グループ **myresourcegroup** 以下のサーバー **mydemoserver.mysql.database.azure.com** の **slow\_query\_log** サーバー パラメーターを更新します。
 ```azurecli-interactive
@@ -66,7 +62,7 @@ az mysql flexible-server parameter set --name slow_query_log --resource-group my
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
-このコードを使用すると、**slow\_query\_log** が既定値の **OFF** にリセットされます。 
+このコードを使用すると、**slow\_query\_log** が既定値の **OFF** にリセットされます。
 
 ## <a name="setting-non-modifiable-server-parameters"></a>変更不可のサーバー パラメーターの設定
 
@@ -113,7 +109,7 @@ az mysql flexible-server parameter set --name time_zone --resource-group myresou
 
 ### <a name="setting-the-session-level-time-zone"></a>セッション レベルのタイム ゾーンを設定する
 
-セッション レベルのタイム ゾーンは、MySQL コマンド ラインや MySQL Workbench などのツールから `SET time_zone` コマンドを実行することで設定できます。 下の例では、タイム ゾーンが **US/Pacific** タイム ゾーンに設定されます。  
+セッション レベルのタイム ゾーンは、MySQL コマンド ラインや MySQL Workbench などのツールから `SET time_zone` コマンドを実行することで設定できます。 下の例では、タイム ゾーンが **US/Pacific** タイム ゾーンに設定されます。
 
 ```sql
 SET time_zone = 'US/Pacific';

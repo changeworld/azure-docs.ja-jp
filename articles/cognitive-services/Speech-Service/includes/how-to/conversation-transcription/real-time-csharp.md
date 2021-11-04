@@ -1,15 +1,15 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
-ms.author: pafarley
-ms.openlocfilehash: b1765c6f3627a694e46698f5fd512ade4ebc35d8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.author: eur
+ms.openlocfilehash: 4f396aa1a3ac1b5b02039f5ae525c4a8581780bc
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725770"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508935"
 ---
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 

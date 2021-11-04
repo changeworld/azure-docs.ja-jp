@@ -1,18 +1,18 @@
 ---
 title: SAP S/4HANA のメタデータと系列
 description: この記事では、SAP S/4HANA ソースからのデータ系列の抽出について説明します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 08/12/2021
-ms.openlocfilehash: 52ae0f629bc863f604133e3c0f0e3c6256556a89
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 122b7a0b826c43f43b5e43d4ba2cb5e42fd52a16
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014949"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422484"
 ---
 # <a name="how-to-get-lineage-from-sap-s4hana-into-azure-purview"></a>SAP S/4HANA から Azure Purview に系列を取得する方法
 

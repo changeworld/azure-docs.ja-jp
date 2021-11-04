@@ -9,12 +9,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: msangapu
   ms.custom: seodec18
-  ms.openlocfilehash: 7d061a32032fd1edcbe0e2b8dc38290db2664f9d
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.openlocfilehash: 737fcf42e351822da58e5e4c493f120cdfd6c4dd
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123542581"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131462406"
 title: Azure App Service on Linux の FAQ
 summary: >
   App Service on Linux のリリースでは、機能の追加とプラットフォームの品質向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
@@ -144,7 +144,7 @@ sections:
   - question: >
       プライベート レジストリ オプションのイメージ名の形式は何ですか。
     answer: >
-      プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](/cli/azure/webapp/config/container#az_webapp_config_container_set)を使用します。
+      プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/d365community/)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](/cli/azure/webapp/config/container#az_webapp_config_container_set)を使用します。
   - question: >
       カスタム コンテナー イメージで複数のポートを公開できますか。
     answer: >

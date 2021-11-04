@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8f54e1f74c5f4f6a8502285f5e4c36c09892ec71
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: f9d38bdbbd21d2bc1d54e74c9fd413bbfc38e93a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082609"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448951"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
@@ -33,11 +33,7 @@ VM の割り当てを解除せずに、マネージド ディスクのサイズ�
 
 このプレビューには、次の制限事項があります。
 
-- 現在米国西部でのみご利用いただけます。
-- データ ディスクでのみサポートされます。
-- 4 TiB 未満のディスクは、ダウンタイムなしでは 4 TiB 以上に拡張できません。
-    - ディスクのサイズを 4 TiB 以上に増やした後は、ダウンタイムなしで拡張できます。
-- [最新の Azure CLI](/cli/azure/install-azure-cli)、[最新の Azure PowerShell モジュール](/powershell/azure/install-az-ps)、[https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) を経由してアクセスする場合は Azure portal、または 2021-04-01 以降の API バージョンの Azure Resource Manager テンプレートのいずれかをインストールして使用する必要があります。
+[!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../../../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
 
 この機能に登録するには、次のコマンドを使用します。
 

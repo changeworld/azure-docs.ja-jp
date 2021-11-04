@@ -1,19 +1,20 @@
 ---
 title: Microsoft 顧客契約の請求先の設定 - Azure
 description: Microsoft 顧客契約の請求先アカウントの設定方法について説明します。 設定の前提条件を参照して、使用可能なその他のリソースを確認してください。
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 982bb3719de66d880f635dbb7c95e9ae2c4590c2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 74f49b2df909c157555390fedd280d1d51615530
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711164"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433954"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 

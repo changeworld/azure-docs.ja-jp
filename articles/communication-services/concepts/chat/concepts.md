@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: chat
-ms.openlocfilehash: 54a04db65c94adb1200000d027cdd9177c228297
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 49fb9db94ceeaef94dc6c255002f392232ca820c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672136"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434163"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念 
 
@@ -35,8 +35,6 @@ Azure Communication Services Chat SDK を使用して、アプリケーション
 
 ### <a name="user-access"></a>ユーザー アクセス
 通常、スレッドの作成者と参加者は、スレッドに対して同じレベルのアクセス権限を持っており、SDK で利用可能なすべての関連する操作 (スレッドの削除を含む) を実行できます。 参加者には、他の参加者が送信したメッセージに対する書き込みアクセス権限がありません。つまり、送信済みメッセージを更新または削除できるのは、そのメッセージの送信者だけです。 別の参加者がその操作を行おうとすると、エラーが発生します。 
-
-一連のユーザーのチャット機能へのアクセスを制限する場合は、信頼されたサービスの一環としてアクセスを構成することができます。 信頼されたサービスとは、チャット参加者の認証と承認を調整するサービスです。 これについては、以下で詳しく説明します。  
 
 ### <a name="chat-data"></a>チャット データ 
 Communication Services は、明示的に削除されるまで、チャットの履歴を保存します。 チャット スレッドの参加者は、`ListMessages` を使用して、特定のスレッドのメッセージの履歴を表示できます。 チャット スレッドから削除されたユーザーは、以前のメッセージの履歴を表示することはできますが、新しいメッセージをそのチャット スレッドの一部として送受信することはできません。 参加者のいない、完全にアイドル状態のスレッドは、30 日後に自動的に削除されます。 Communication Services で格納されるデータの詳細については、[プライバシー](../privacy.md)に関するドキュメントを参照してください。  

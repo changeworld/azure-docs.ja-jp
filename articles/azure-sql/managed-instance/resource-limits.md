@@ -12,12 +12,12 @@ author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp, wiassaf
 ms.date: 10/18/2021
-ms.openlocfilehash: 77548bc86c98815174b2319a58554d4beee894c3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5014c0b22d14f43baa99ad9eac3eb27ed6526c5b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072189"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473568"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,11 +55,12 @@ Premium シリーズ ハードウェア世代 (パブリック プレビュー) 
 
 | リージョン | **Premium シリーズ** | **メモリ最適化 Premium シリーズ** | 
 |:--- |:--- |:--- |
-| 米国中部 | はい | はい | 
+| 米国中部 | はい |  | 
+| East US  | はい |  | 
 | 米国東部 2 | はい | はい | 
-| 北ヨーロッパ | はい | はい | 
+| 北ヨーロッパ |  | はい | 
 | 西ヨーロッパ | はい | はい | 
-| 米国西部 | はい | はい | 
+| 米国西部 |  | はい |  
 | 米国西部 2 | はい | はい | 
 
 
@@ -76,7 +77,7 @@ Premium シリーズ ハードウェア世代 (パブリック プレビュー) 
 | 32 仮想コア | 37.94 GB | 53.09 GB | 128.61 GB |
 | 40 仮想コア | 52.23 GB | 73.09 GB | 164.13 GB |
 | 64 仮想コア | 99.9 GB | 139.82 GB | 288.61 GB |
-| 80 仮想コア | 131.68 GB| 184.30 GB | - |
+| 80 仮想コア | 131.68 GB| 184.30 GB | 該当なし |
 
 ## <a name="service-tier-characteristics"></a>サービス レベルの特性
 

@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 05/12/2021
 ms.author: cephalin
-ms.openlocfilehash: f400c7dbfcf3307ccc283a8e11c5d905dd152b85
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 549104e9a0721d8edb58ad57cede0e4790cad4cf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371984"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455866"
 ---
 ## <a name="add-azure-cli-extensions"></a>Azure CLI の拡張機能を追加する
 
@@ -22,5 +22,5 @@ ms.locfileid: "110371984"
 ```azurecli-interactive
 az extension add --upgrade --yes --name customlocation
 az extension remove --name appservice-kube
-az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
+az extension add --upgrade --yes --name appservice-kube
 ```

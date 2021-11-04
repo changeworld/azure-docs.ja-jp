@@ -5,18 +5,18 @@ metadata:
   title: テキスト読み上げのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: PatrickFarley
+  author: eric-urban
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: pafarley
-  ms.openlocfilehash: 9aeb502ce80ef0a008646850710327ec616259b3
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.author: eur
+  ms.openlocfilehash: b51806e0f4a2828523e9cba71110b8d0114aedde
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123537775"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131508382"
 landingContent:
 - title: テキスト読み上げについて
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
       url: how-to-custom-voice.md
     - text: Custom Voice モデルを作成して使用する
       url: how-to-custom-voice-create-voice.md
-- title: リファレンス
+- title: 参照先
   linkLists:
   - linkListType: reference
     links:

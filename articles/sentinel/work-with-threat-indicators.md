@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 10/17/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cfa9d14d13270a038586d5c0949a510ccd5ad44b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a00a0c0d3507323314adb3dbb1052051f8caf184
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019527"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422104"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>Azure Sentinel で脅威インジケーターを操作する
 
@@ -204,12 +204,12 @@ Azure Sentinel では、分析ルールから生成されたアラートでも�
 
 **Microsoft 脅威インテリジェンス照合分析** ルールは、現在、次のログ ソースでサポートされています。
 
-|ログ ソース  |説明  |
-|---------|---------|
-|[CEF](connect-common-event-format.md)     |  Log Analytics の **CommonSecurityLog** テーブルに取り込まれたすべての CEF ログに対して照合が行われます (`DeviceVendor` が `Cisco` である場所はすべて除く)。 <br><br>Microsoft で生成された脅威インテリジェンスを CEF ログと照合するには、必ず、CEF ログの `RequestURL` フィールドにドメインをマップしてください。      |
-|[DNS](./data-connectors-reference.md#domain-name-server)     | クライアントから DNS サービスへの参照 DNS クエリ (`SubType == "LookupQuery"`) であるすべての DNS ログに対して照合が行われます。 DNS クエリは、IPv4 (`QueryType=”A”`) と IPv6 クエリ (`QueryType=” AAAA”`) に対してのみ処理されます。<br><br>Microsoft で生成された脅威インテリジェンスを DNS ログと照合するために、手動での列のマッピングは必要ありません。これは、すべての列は Windows DNS サーバーからの標準であり、ドメインは既定で `Name` 列に含まれるからです。   |
-|[Syslog](connect-syslog.md)     |  現在、照合は、`Facility` が `cron` である Syslog イベントに対してのみ実行されます。 <br><br>Microsoft で生成された脅威インテリジェンスを Syslog と照合するために、手動で列をマッピングする必要ありません。 詳細は、既定で Syslog の `SyslogMessage` フィールドに表示され、ルールによって SyslogMessage から直接ドメインの解析が行われます。     |
-|     |         |
+| ログ ソース | 説明 |
+| --------- | --------- |
+| [CEF](connect-common-event-format.md) | Log Analytics の **CommonSecurityLog** テーブルに取り込まれたすべての CEF ログに対して照合が行われます (`DeviceVendor` に `Cisco` と示されているものを除く)。 <br><br>Microsoft で生成された脅威インテリジェンスを CEF ログと照合するには、必ず、CEF ログの `RequestURL` フィールドにドメインをマップしてください。 |
+| [DNS](./data-connectors-reference.md#windows-dns-server-preview) | クライアントから DNS サービスへの参照 DNS クエリ (`SubType == "LookupQuery"`) であるすべての DNS ログに対して照合が行われます。 DNS クエリは、IPv4 (`QueryType=”A”`) と IPv6 クエリ (`QueryType=” AAAA”`) に対してのみ処理されます。<br><br>Microsoft で生成された脅威インテリジェンスを DNS ログと照合するために、手動での列のマッピングは必要ありません。これは、すべての列は Windows DNS サーバーからの標準であり、ドメインは既定で `Name` 列に含まれるからです。 |
+| [Syslog](connect-syslog.md) | 現在、照合は、`Facility` が `cron` である Syslog イベントに対してのみ実行されます。 <br><br>Microsoft で生成された脅威インテリジェンスを Syslog と照合するために、手動で列をマッピングする必要ありません。 詳細は、既定で Syslog の `SyslogMessage` フィールドに表示され、ルールによって SyslogMessage から直接ドメインの解析が行われます。 |
+|  |  |
 
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>ブックによって脅威インテリジェンスに関する分析情報を提供する

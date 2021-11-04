@@ -1,18 +1,19 @@
 ---
 title: Azure Dedicated Host 予約インスタンスの割引について
 description: Azure 予約 VM インスタンスの割引が、Azure Dedicated Host にどのように適用されるのかを説明します。
-author: yashesvi
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 3e0f6bc30ca86653ff7a05f2874236a51d359955
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c6b4f4fbb37cf360dc235408e0ff54925492fade
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631098"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453822"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Azure Dedicated Host への Azure 予約割引の適用
 

@@ -1,23 +1,23 @@
 ---
 title: チュートリアル:Microsoft Azure Maps でジオフェンスを作成してデバイスを追跡する
 description: ジオフェンスを設定する方法に関するチュートリアルです。 Azure Maps 空間サービスを使用して、ジオフェンスを基準にデバイスを追跡する方法を確認します
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 7/06/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: f9b2c74f25d5f27385b604d53530edbdb57a91fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b3f98990a34ada3d832498a892d289323f485a28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750201"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455342"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
-このチュートリアルでは、Azure Maps ジオフェンス サービスの作成と使用の基礎を確認します。 
+このチュートリアルでは、Azure Maps ジオフェンス サービスの作成と使用の基礎を確認します。
 
 以下のシナリオについて考えてみます。
 
@@ -26,6 +26,7 @@ ms.locfileid: "121750201"
 建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](/rest/api/maps/data-v2/upload-preview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
 > * 機材がジオフェンス領域を出入りしたときにトリガーされ、メール通知を建設現場の作業管理者に送信する 2 つの[ロジック アプリ](../event-grid/handler-webhooks.md#logic-apps)を設定する。
 > * [Azure Event Grid](../event-grid/overview.md) を使用して Azure Maps ジオフェンスの enter イベントと exit イベントをサブスクライブする。 ここでは、2 つのロジック アプリに定義された HTTP エンドポイントを呼び出す Webhook イベントのサブスクリプションを 2 つ設定します。 これらのロジック アプリから、ジオフェンスを出入りする機材に関する適切なメール通知が送信されます。
@@ -58,7 +59,7 @@ ms.locfileid: "121750201"
 5. 次の URL を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` をお使いのプライマリ サブスクリプション キーに置き換えます)。
 
     ```HTTP
-    https://us.atlas.microsoft.com/mapData?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     URL パス内の `geojson` パラメーターは、アップロードするデータの形式を表します。
@@ -162,7 +163,7 @@ ms.locfileid: "121750201"
 11. **Operation-Location** キーの値である `status URL` をコピーします。 `status URL` を使用して、GeoJSON データのアップロード状態を確認します。
 
     ```http
-    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
+    https://us.atlas.microsoft.com/mapData/operations/{operationId}?api-version=2.0
     ```
 
 ### <a name="check-the-geojson-data-upload-status"></a>GeoJSON データのアップロード状態を確認する
@@ -180,7 +181,7 @@ GeoJSON データの状態を確認し、その一意の ID (`udid`) を取得�
 5. 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」でコピーした `status URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` をお使いのプライマリ サブスクリプション キーに置き換えます)。
 
    ```HTTP
-   https://us.atlas.microsoft.com/mapData/<operationId>?api-version=2.0&subscription-key={Subscription-key}
+   https://us.atlas.microsoft.com/mapData/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
    ```
 
 6. **[Send]** を選択します。
@@ -208,7 +209,7 @@ GeoJSON データの状態を確認し、その一意の ID (`udid`) を取得�
 5. 「[GeoJSON データのアップロード状態を確認する](#check-the-geojson-data-upload-status)」でコピーした `resource Location URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` をお使いのプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. 応答ウィンドウで、 **[本文]** タブを選択します。メタデータは、次の JSON フラグメントのようになるはずです。
@@ -226,7 +227,7 @@ GeoJSON データの状態を確認し、その一意の ID (`udid`) を取得�
 
 ## <a name="create-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフローを作成する
 
-次に、メール通知をトリガーする 2 つの[ロジック アプリ](../event-grid/handler-webhooks.md#logic-apps) エンドポイントを作成します。 
+次に、メール通知をトリガーする 2 つの[ロジック アプリ](../event-grid/handler-webhooks.md#logic-apps) エンドポイントを作成します。
 
 ロジック アプリを作成するには、次の手順を実行します。
 
@@ -338,7 +339,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
 5. 次の URL を入力します。 要求は、次の URL のようになるはずです (`{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます)。
 
    ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
 6. **[Send]** を選択します。
@@ -386,7 +387,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
 5. 次の URL を入力します。 要求は、次の URL のようになるはずです (`{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます)。
 
    ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
 6. **[Send]** を選択します。
@@ -434,7 +435,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
 5. 次の URL を入力します。 要求は、次の URL のようになるはずです (`{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます)。
 
     ```HTTP
-      https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+      https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
 6. **[Send]** を選択します。
@@ -485,7 +486,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
 5. 次の URL を入力します。 要求は、次の URL のようになるはずです (`{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます)。
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 6. **[Send]** を選択します。
@@ -527,7 +528,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
 5. 次の URL を入力します。 要求は、次の URL のようになるはずです (`{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます)。
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 6. **[Send]** を選択します。
