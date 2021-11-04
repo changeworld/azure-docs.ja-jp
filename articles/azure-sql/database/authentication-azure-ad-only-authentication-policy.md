@@ -8,20 +8,17 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/19/2021
-ms.openlocfilehash: 7f95dc74c4346e1053e963ba6d4ad458881df727
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+ms.openlocfilehash: 7315b27fccf261dcf25ffe347a22fbb41e0d52cb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255859"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458800"
 ---
 # <a name="azure-policy-for-azure-active-directory-only-authentication-with-azure-sql"></a>Azure SQL を使用した Azure Active Directory 専用認証の Azure Policy
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
-> [!NOTE]
-> この記事で説明している **Azure AD 専用認証** と、関連付けられている Azure Policy 機能は、**パブリック プレビュー** 段階です。 
 
 Azure Policy は、プロビジョニング中、[Azure AD 専用認証](authentication-azure-ad-only-authentication.md)を有効にして、Azure SQL Database または Azure SQL Managed Instance の作成を強制することができます。 このポリシーが適用されていると、[Azure 内で論理サーバー](logical-servers.md)を、またはマネージド インスタンスを作成しようとしても、Azure AD 専用認証を有効にして作成されていない場合は失敗します。
 

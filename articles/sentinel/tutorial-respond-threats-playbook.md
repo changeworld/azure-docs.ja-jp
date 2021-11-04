@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152b034fe5fd5571ec58c001a8befc98c84f4107
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 903a0ae946a60ff4b1dd2fec7789fa38986d3bcb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737549"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083785"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 このチュートリアルでは、オートメーション ルールとプレイブックを組み合わせてインシデント対応を自動化し、Azure Sentinel によって検出されたセキュリティ上の脅威を修復する方法について説明します。 このチュートリアルを終えると、次のことができるようになります。
 

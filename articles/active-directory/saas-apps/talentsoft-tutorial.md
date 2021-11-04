@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: d17ae5e0f8f506a1ab7e72dfe1905a23f68ba1fe
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a31516f2907cf123f74a3d6e57b563b0688dce45
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772393"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510482"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-talentsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Talentsoft の統合
 
@@ -81,7 +81,7 @@ Talentsoft に対して Azure AD SSO を構成してテストするには、次�
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<tenant>.talentsoft.com` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<tenant>.talent-soft.com` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Talentsoft クライアント サポート チーム](mailto:advancedservices@talentsoft.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

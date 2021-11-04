@@ -3,7 +3,7 @@ title: Azure CDN エンドポイントの作成 | Microsoft Docs
 description: この記事では、高度な設定を含む、新しい Azure Content Delivery Network (CDN) エンドポイントを作成する方法を説明します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 09/09/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 18f4276c3013f50ceacf74f4c8cec068f0de88cb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e7ca38a7d4a7965b99b7392a3543dc4d28455e6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775533"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454981"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの作成
 この記事では、既存の CDN プロファイルに [Azure Content Delivery Network (CDN)](cdn-overview.md) エンドポイントを作成するためのすべての設定について説明します。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツ配信を開始することができます。 プロファイルとエンドポイント作成のクイック スタートについては、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。

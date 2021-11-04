@@ -4,12 +4,12 @@ description: ライブ Web アプリケーションのアプリケーション �
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 361c48af9ada73bd717aa375302ddc97a62f424f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: cdd0a32da1ad49cfa8c75de7e5c1ac32e1ead89d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133768"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462161"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java、Python などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -132,7 +132,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [Microsoft Q&A 質問ページ](/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * ご提案:
-  * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
+  * [UserVoice](https://feedback.azure.com/d365community/forum/8849e04d-1325-ec11-b6e6-000d3a4f09d0)
 * ブログ:
   * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
 

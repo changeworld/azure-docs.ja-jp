@@ -5,12 +5,12 @@ keywords: アプリ サービス, azure app service, 診断, サポート, web �
 ms.topic: article
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf044baf233c159ff271221522f0f9faf15cc1ed
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e912e1794f789ff2b670f512c3d575e95715d0ae
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451590"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465841"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
 
@@ -111,4 +111,4 @@ Application Insights の例外と依存関係を表示するには、 **[Web App
 
 アプリの変更の変更分析には、 **[Availability and Performance]\(可用性とパフォーマンス\)** のタイル ショートカット **[Application Changes]\(アプリケーションの変更\)** および **[Application Crashes]\(アプリケーションのクラッシュ\)** を通じてアクセスできるので、他のメトリックと同時に使用できます。 機能を使用する前に、最初に有効にする必要があります。 詳しくは、「[App Service 診断での新しい変更分析エクスペリエンスの告知](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html)」をご覧ください。
 
-質問またはフィードバックは、[UserVoice](https://feedback.azure.com/forums/169385-web-apps) でタイトルに "[Diag]" を付けて投稿してください。
+質問またはフィードバックは、[UserVoice](https://feedback.azure.com/d365community/forum/b09330d1-c625-ec11-b6e6-000d3a4f0f1c) でタイトルに "[Diag]" を付けて投稿してください。

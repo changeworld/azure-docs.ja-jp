@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: 785008633318ee6670170d66cba96bd5853f9ed9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b40ba648cc35cf4c4900c6c0c504afdcd05fcd29
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188467"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502520"
 ---
 ## <a name="install-speech-sdk"></a>Speech SDK をインストールする
 

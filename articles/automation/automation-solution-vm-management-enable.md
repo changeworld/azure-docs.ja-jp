@@ -5,20 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0db68a72b3b44f9febb7cdef546545b5b549ddae
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 70b58b689798b6651a88674668497a27a2780429
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069384"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450934"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を有効にする
 
 このトピックの手順を順に行って、新規または既存の Automation アカウントおよびリンクされた Log Analytics ワークスペースを使用して、VM の Start/Stop VMs during off-hours 機能を有効にします。 セットアップ プロセスが完了したら、機能をカスタマイズする変数を構成します。
-
->[!NOTE]
->クラシック VM でこの機能を使用するには、既定では作成されないクラシック実行アカウントが必要です。 「[クラシック実行アカウントを作成する](automation-create-standalone-account.md#create-a-classic-run-as-account)」を参照してください。
->
 
 ## <a name="enable-and-configure"></a>有効化と構成 
 

@@ -11,21 +11,18 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/18/2021
-ms.author: gunnarc
-ms.openlocfilehash: 194e425ca62cbe36fa163efaf88a75fb7e1f09f9
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/01/2021
+ms.author: ibthampy
+ms.openlocfilehash: 77f6eaf0cbd9478df6659310c61fa4616c17c749
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130175885"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458496"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
->[!NOTE] 
-
->10 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 10 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。 
 
 ## <a name="october-2021-guest-os"></a>2021 年 10 月のゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |

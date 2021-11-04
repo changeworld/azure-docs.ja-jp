@@ -9,12 +9,12 @@ metadata:
   author: whhender
   ms.author: whhender
   ms.date: 09/27/2021
-  ms.openlocfilehash: d5d523ea0473e6f4e292ca73d97b463e705a0b08
-  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  ms.openlocfilehash: 52e7f0fd5eb50e211bf35097c2b57ed31972740b
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129214847"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131023730"
 landingContent:
 - title: Azure Purview について
   linkLists:
@@ -132,6 +132,8 @@ landingContent:
       url: register-scan-google-bigquery-source.md
     - text: Amazon S3 のスキャン
       url: register-scan-amazon-s3.md
+    - text: Amazon RDS のスキャン
+      url: register-scan-amazon-rds.md
     - text: Oracle のスキャン
       url: register-scan-oracle-source.md
     - text: Hive メタストア データベースのスキャン

@@ -5,17 +5,20 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: fc5de9ff694c1c5a3841c206334fb87d240a568c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 973a1d100fb8182565628aab8cef66364e57a378
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378773"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038805"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker アプリの管理
 
 QnA Maker では共同作成者の役割に基づいて共同作成者のアクセスを制限できるため、さまざまな作成者やコンテンツ エディターと共同作業できます。
 [QnA Maker コラボレーター認証の概念](../Concepts/role-based-access-control.md)に関する詳細を参照してください。
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御を追加する (Azure RBAC)
 
@@ -23,29 +26,13 @@ QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソー�
 
 ## <a name="access-at-the-cognitive-resource-level"></a>コグニティブ リソース レベルでのアクセス
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 1 つの QnA Maker サービスにある特定のナレッジ ベースの共有はできません。 より詳細なアクセス制御が必要な場合は、さまざまな QnA Maker リソースにわたってナレッジ ベースを配布することを検討した上で、各リソースにロールを追加してください。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-1 つの Text Analytics サービスにある特定のナレッジ ベースの共有はできません。 より詳細なアクセス制御が必要な場合は、さまざまな Text Analytics リソースにわたってナレッジ ベースを配布することを検討した上で、各リソースにロールを追加してください。
-
----
 
 ## <a name="add-a-role-to-a-resource"></a>リソースにロールを追加する
 
 ### <a name="add-a-user-account-to-the-cognitive-resource"></a>コグニティブ リソースにユーザー アカウントを追加する
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
-QnA Maker リソースに RBAC コントロールを適用する必要があります。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と応答を機能として持つ Text Analytics リソースに、RBAC コントロールを適用する必要があります。
-
----
+QnA Maker リソースに RBAC 制御を適用する必要があります。
 
 次の手順では、コラボレーター ロールを使用しますが、これらの手順を使用して、いずれかのロールを追加することができます。
 

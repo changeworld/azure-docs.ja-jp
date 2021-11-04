@@ -5,16 +5,14 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: 0637b2b02032b87b9c51aa171868b50164ce5c69
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d18172751bb58d6a21115dd482024bdfcc47bea1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448844"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060442"
 ---
 # <a name="nd-a100-v4-series"></a>ND A100 v4-シリーズ
-
-**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 ND A100 v4 シリーズの仮想マシンは、ハイエンドのディープ ラーニング トレーニングと密結合のスケールアップおよびスケールアウトの HPC ワークロード向けに設計された、Azure GPU ファミリに新たに追加された主力製品です。 
 

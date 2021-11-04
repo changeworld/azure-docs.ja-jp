@@ -1,21 +1,21 @@
 ---
-title: UserJourneys | Microsoft Docs
+title: UserJourneys
 description: Azure Active Directory B2C でカスタム ポリシーの UserJourneys 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/31/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 2a935e88f1127f27e3f779fb88447466c470fd32
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: d297f2c9e32de22beba8c8bf63d4b62e73e8690c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123271919"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131057497"
 ---
 # <a name="userjourneys"></a>UserJourneys
 

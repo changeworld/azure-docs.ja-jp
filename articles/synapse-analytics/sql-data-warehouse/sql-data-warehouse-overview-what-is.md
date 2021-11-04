@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 01/22/2021
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 4323f41cbc7440c79b2842bb3f128705a22d1dd4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 6d4c11db5fd2367fa29475e46b4afa23dc540035
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435368"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433063"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) とは
 
@@ -57,7 +57,7 @@ Azure Synapse Analytics は、エンタープライズ データ ウェアハウ
 または、次の Azure Synapse リソースも確認できます。
 
 - [ブログ](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)を検索する
-- [機能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)を送信する
+- [機能要求](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8)を送信する
 - [サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)
 - [Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)を検索する
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)を検索する

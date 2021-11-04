@@ -3,19 +3,19 @@ title: Speech CLI クイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Azure Speech CLI の概要。 コードを記述しなくても、音声テキスト変換、テキスト読み上げ、音声翻訳などの音声サービスを操作できます。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/28/2021
-ms.author: pafarley
-ms.openlocfilehash: 55d84da6f7ebdbf45bbf6c90b5cb881319a62aa9
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: cd953953e927472a822b0f1031081a212d6339f6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540814"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510168"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>Azure Speech CLI の概要
 

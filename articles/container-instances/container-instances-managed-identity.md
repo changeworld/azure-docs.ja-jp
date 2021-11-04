@@ -3,12 +3,12 @@ title: コンテナー グループでマネージド ID を有効にする
 description: ここでは、他のサービスで認証できるマネージド ID を Azure Container Instances で有効にする方法を説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 44f4e15e6e11fac884c2d117aae351615420ba43
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 03b129b3aa986bb9858280e08c2532ef73806e91
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114219282"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057858"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -358,7 +358,7 @@ az keyvault secret show \
 
 1 つまたは複数のユーザー割り当て ID を有効にすることができます。
 
-```YAML
+```yaml
 identity:
   type: UserAssigned
   userAssignedIdentities:
@@ -367,7 +367,7 @@ identity:
 
 ### <a name="system-assigned-identity"></a>システム割り当て ID
 
-```YAML
+```yaml
 identity:
   type: SystemAssigned
 ```
@@ -376,7 +376,7 @@ identity:
 
 各コンテナー グループで、1 つのシステム割り当て ID と、1 つまたは複数のユーザー割り当て ID の両方を有効化できます。
 
-```YAML
+```yml
 identity:
   type: SystemAssigned, UserAssigned
   userAssignedIdentities:

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29896c026b65859448f923bc542ea7198e8f848b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98541192"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083462"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>ターゲット Azure VM のネットワーク構成をカスタマイズする
 
@@ -28,7 +28,7 @@ ms.locfileid: "98541192"
 Azure VM のレプリケート中に、フェールオーバー VM に対して次の主要なリソース構成を提供できます。
 
 - [内部ロード バランサー](../load-balancer/load-balancer-overview.md)
-- [パブリック IP](../virtual-network/public-ip-addresses.md)
+- [パブリック IP](../virtual-network/ip-services/public-ip-addresses.md)
 - サブネットと NIC の両方の[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
 
 ## <a name="prerequisites"></a>前提条件

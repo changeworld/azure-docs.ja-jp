@@ -1,18 +1,19 @@
 ---
 title: Azure Reservation の購入と払戻のトランザクションを表示する
 description: Azure Reservation の購入と払戻のトランザクションを表示する方法について学習します。
-author: yashesvi
+author: bandersmsft
+ms.reviwer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 0c9e247b4006fd22c7e820dd2f6d68362a12eea8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: a821ef123e8690bffc9645a23175618928e55d19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705887"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425692"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>予約購入と払戻のトランザクションの表示
 

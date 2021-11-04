@@ -1,18 +1,18 @@
 ---
 title: Azure Maps Elevation Service を使用して標高データを要求する
 description: Azure Maps Elevation Service を使用して標高データを要求する方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/18/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: 6562af274455297e12084353926478f1954c2407
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a9920d3b512bda0b2710ad9c0c6daf5c5801602a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031406"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432170"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>Azure Maps Elevation Service を使用して標高データを要求する
 
@@ -45,7 +45,7 @@ Postman アプリを使用してラスター タイル形式の標高データ�
 4. **[ビルダー]** タブで **GET** HTTP メソッドを選択し、次の URL を入力してラスター タイルを要求します。
 
     ```http
-    https://atlas.microsoft.com/map/tile?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&tilesetId=microsoft.dem&zoom=13&x=6074&y=3432
+    https://atlas.microsoft.com/map/tile?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&tilesetId=microsoft.dem&zoom=13&x=6074&y=3432
     ```
 
     >[!Important]
@@ -86,7 +86,7 @@ GeoJSON 形式で標高データを要求するには、Elevation Service API �
 4. **[ビルダー]** タブで **GET** HTTP メソッドを選択し、次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をご自分のプライマリ サブスクリプション キーに置き換えてください)。
 
     ```http
-    https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&points=-73.998672,40.714728|150.644,-34.397
+    https://atlas.microsoft.com/elevation/point/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&points=-73.998672,40.714728|150.644,-34.397
     ```
 
 5. **[送信]** ボタンを選択します。  次の JSON 応答が返されます。
@@ -115,7 +115,7 @@ GeoJSON 形式で標高データを要求するには、Elevation Service API �
 6. 次に、[Post Data for Points API](/rest/api/maps/elevation/postdataforpoints) を呼び出して、同じ 2 つの地点の標高データを取得します。 **[ビルダー]** タブで **POST** HTTP メソッドを選択し、次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をご自分のプライマリ サブスクリプション キーに置き換えてください)。
 
     ```http
-    https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
+    https://atlas.microsoft.com/elevation/point/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
 7. **POST** 要求の **Headers** フィールドで、`Content-Type` を `application/json` に設定します。 
@@ -161,7 +161,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 4. **[ビルダー]** タブで **GET** HTTP メソッドを選択し、次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をご自分のプライマリ サブスクリプション キーに置き換えてください)。
 
    ```http
-    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&lines=-73.998672,40.714728|150.644,-34.397&samples=5
+    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&lines=-73.998672,40.714728|150.644,-34.397&samples=5
     ```
 
 5. **[送信]** ボタンを選択します。  次の JSON 応答が返されます。
@@ -251,7 +251,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 9. 次に、[Post Data For Polyline API](/rest/api/maps/elevation/postdataforpolyline) を呼び出して、同じ 3 つの地点の標高データを取得します。  **[ビルダー]** タブで **POST** HTTP メソッドを選択し、次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をご自分のプライマリ サブスクリプション キーに置き換えてください)。
 
     ```http
-    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
+    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&samples=5
     ```
 
 10. **POST** 要求の **Headers** フィールドで、`Content-Type` を `application/json` に設定します。 
@@ -296,7 +296,7 @@ URL の緯度と経度は、10 進法の WGS84 (世界測地系) 数が想定さ
 4. **[ビルダー]** タブで **GET** HTTP メソッドを選択し、次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をご自分のプライマリ サブスクリプション キーに置き換えてください)。
 
     ```http
-    https://atlas.microsoft.com/elevation/lattice/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&bounds=-121.66853362143818, 46.84646479863713,-121.65853362143818, 46.85646479863713&rows=2&columns=3
+    https://atlas.microsoft.com/elevation/lattice/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&bounds=-121.66853362143818, 46.84646479863713,-121.65853362143818, 46.85646479863713&rows=2&columns=3
     ```
 
 5. **[Send]** を選択します。  応答では、グリッドの各頂点に 1 つずつ、18 の標高データ サンプルが返されます。

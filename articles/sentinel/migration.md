@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/04/2021
 ms.author: bagol
-ms.openlocfilehash: dc2c1b6ed2d40e7d1af82b3c62f378bfd046a94c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 38dd71ac717dc5f3aea7d41bb08cb3c2bed671da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254112"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037057"
 ---
 # <a name="migrate-to-azure-sentinel-from-an-existing-siem"></a>既存の SIEM から Azure Sentinel に移行する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 セキュリティ オペレーション センター (SOC) チームは、一元化されたセキュリティ情報およびイベント管理 (SIEM) とセキュリティ オーケストレーション、オートメーション、および応答 (SOAR) ソリューションを使用して、次第に分散型になっているデジタル資産を保護します。
 
@@ -178,7 +181,7 @@ Azure Sentinel でクラウド データなどのデータを分析し、生成�
 
 1. 次のリソースのいずれかを使用してデータを取り込みます。
 
-    - **Azure Sentinel の[組み込みのデータ コネクタ](connect-data-sources.md)** を使用して、データの取り込みを開始します。 たとえば、クラウド データを使用して[無料試用版](azure-sentinel-billing.md#free-trial)を開始したり、[無料のデータ コネクタ](azure-sentinel-billing.md#free-data-sources)を使用して他の Microsoft 製品からデータを取り込んだりすることができます。
+    - **Azure Sentinel の [組み込みのデータ コネクタ](connect-data-sources.md)** を使用して、データの取り込みを開始します。 たとえば、クラウド データを使用して[無料試用版](azure-sentinel-billing.md#free-trial)を開始したり、[無料のデータ コネクタ](azure-sentinel-billing.md#free-data-sources)を使用して他の Microsoft 製品からデータを取り込んだりすることができます。
 
     - **[Syslog](connect-data-sources.md#syslog)、[Common Event Format (CEF)](connect-data-sources.md#common-event-format-cef)、または [REST API](connect-data-sources.md#rest-api-integration)** を使用して、他のデータ ソースを接続します。
 
@@ -250,7 +253,7 @@ Azure Sentinel では、機械学習分析を使用して忠実で実用的な�
 - [**脅威を検出するためのカスタム分析規則を作成します**](detect-threats-custom.md)。 [アラートのグループ化](detect-threats-custom.md#alert-grouping)を使用して、特定の期間内に発生したアラートをグループ化することで、アラートの疲労を減らすことができます。
 - [**データ フィールドを Azure Sentinel のエンティティにマップして**](map-data-fields-to-entities.md)、SOC エンジニアが調査中に追跡する証拠の一部としてエンティティを定義できるようにします。 また、エンティティ マッピングを使用すると、SOC アナリストは、時間と労力を削減するのに役立つ、直感的な調査グラフ (investigate-cases.md#use-the-investigation-graph-to-deep-dive) を活用することができます。
 - 証拠を使用して、インシデントのプレビュー ウィンドウで特定のインシデントに関連付けられているイベント、アラート、ブックマークを表示する方法の例として、[**UEBA データを使用してインシデントを調査します**](investigate-with-ueba.md)。
-- [**Kusto クエリ言語 (KQL)** ](/azure/data-explorer/kusto/query/)。データを処理して結果を返すために、[Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) データベースに読み取り専用の要求を送信するために使用できます。 KQL は、[Microsoft Defender for Endpoint](https://www.microsoft.com/microsoft-365/security/endpoint-defender) や [Application Insights](../azure-monitor/app/app-insights-overview.md) など、他の Microsoft サービスでも使用されます。
+- [**Kusto クエリ言語 (KQL)**](/azure/data-explorer/kusto/query/)。データを処理して結果を返すために、[Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) データベースに読み取り専用の要求を送信するために使用できます。 KQL は、[Microsoft Defender for Endpoint](https://www.microsoft.com/microsoft-365/security/endpoint-defender) や [Application Insights](../azure-monitor/app/app-insights-overview.md) など、他の Microsoft サービスでも使用されます。
 
 ## <a name="use-automation-to-streamline-processes"></a>自動化を使用してプロセスを効率化する
 

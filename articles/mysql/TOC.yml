@@ -388,7 +388,7 @@
           href: sample-scripts-azure-cli.md
         - name: Java での接続プールの構成
           href: sample-scripts-java-connection-pooling.md
-- name: フレキシブル サーバー (プレビュー)
+- name: フレキシブル サーバー
   items:
     - name: フレキシブル サーバーのドキュメント
       href: flexible-server/index.yml
@@ -681,7 +681,7 @@
             - name: Web アプリをビルドしてデプロイする
               href: 'https://aka.ms/mysql-webapps-vid'
     - name: 機能をリクエストする
-      href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
+      href: 'https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
     - name: サポート オプション

@@ -6,14 +6,13 @@ ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 72596521850ba3b3b10ef572aa768672869ec7ec
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: mode-portal
+ms.openlocfilehash: c3660724208118cd0fcb50589b84664a759de74c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620922"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039793"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>クイックスタート: Azure portal を使用して Azure Cache for Redis のイベントを Web エンドポイントにルーティングする
 

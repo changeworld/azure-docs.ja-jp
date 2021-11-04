@@ -2,25 +2,28 @@
 title: デバイス ビルダー向け Azure Defender for IoT の新機能
 description: 最新リリースとデバイス ビルダー向け Defender for IoT の最新機能について説明します。
 ms.topic: overview
-ms.date: 06/06/2021
-ms.openlocfilehash: cde850ba6e5dedddea9d74a8232bc20e8a634c59
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c420fddad0332b2a83907dd564bf977c31ea6d4d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011260"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086286"
 ---
 # <a name="whats-new-in-azure-defender-for-iot-for-device-builders"></a>デバイス ビルダー向け Azure Defender for IoT の新機能とは何か。  
+
+[!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
 この記事では、Defender for IoT の新機能と機能強化の一覧を示します。
 
 記載されている機能はプレビュー段階です。 [Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはその他のまだ一般提供されていない Azure 機能に適用される他の法律条項が含まれています。
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート 
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート
 
-以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンを示しています。 
+以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンを示しています。
 
-### <a name="servicing-information-and-timelines"></a>サービスの情報とタイムライン 
+### <a name="servicing-information-and-timelines"></a>サービスの情報とタイムライン
 
 Microsoft では、Azure Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Azure Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
 
@@ -30,6 +33,7 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 |--|--|--|
 | 10.0 | 2021 年 1 月 | 2021 年 10 月 |
 | 10.3 | 2021 年 4 月 | 2022 年 2 月 |
+| 10.5.2 | 2021 年 11 月 | 2022 年 7 月 |
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -37,7 +41,9 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 
 新しい脅威インテリジェンス パッケージが Microsoft Defender for IoT によってリリースされると、クラウド接続センサーに自動的にプッシュされるようになりました。 これは、脅威インテリジェンス パッケージをダウンロードしてからセンサーにアップロードする操作に追加されるものです。
 
-自動更新を使用すると、運用作業を減らし、セキュリティを強化することができます。 **[Automatic Threat Intelligence Updates]\(脅威インテリジェンスの自動更新\)** の切り替えが有効になっている Defender for IoT ポータルで、クラウド接続センサーをオンボードすることで、自動更新を有効にします。
+自動更新を使用すると、運用作業を減らし、セキュリティを強化することができます。
+
+**[Automatic Threat Intelligence Updates]\(脅威インテリジェンスの自動更新\)** の切り替えが有効になっている Defender for IoT ポータルで、クラウド接続センサーをオンボードすることで、自動更新を有効にします。
 
 必要と思われるときに限り、従来の方法を使用して脅威インテリジェンスのデータを更新する場合は、Azure Defender for IoT ポータルからクラウド接続センサーに手動でパッケージをプッシュできます。
 これにより、パッケージをインストールするタイミングを制御できます。この場合、パッケージをダウンロードしてからセンサーにアップロードする必要はありません。 Defender for IoT の **[サイトとセンサー]** ページからセンサーに、手動で更新プログラムをプッシュします。
@@ -65,7 +71,7 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 - 送信元と送信先のアドレス
 - 修復ステップ
 - ユーザーが定義したセンサーの名前
-- センサーに関連付けられているゾーンの名前 
+- センサーに関連付けられているゾーンの名前
 - センサーに関連付けられているサイトの名前
 
 **センサー**
@@ -124,6 +130,7 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 - [オンボード](#onboarding)
 - [使いやすさ](#usability)
 - [他の更新プログラム](#other-updates)
+
 ### <a name="security"></a>セキュリティ
 
 このリリースでは、証明書とパスワードの回復で機能強化が行われました。

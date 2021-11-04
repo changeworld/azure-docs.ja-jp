@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 3784c7b022a807c86805187fbdffb61167970443
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 34d5d0f7daabce877b025c81e9268119e1d3e1e2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128679113"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459199"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-topdesk---secure"></a>チュートリアル: Azure AD SSO と TOPdesk - Secure の統合
 
@@ -87,7 +87,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
     c. **[サインオン URL]** ボックスに、`https://<companyname>.topdesk.net` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[TOPdesk - Secure クライアント サポート チーム](https://www.topdesk.com/us/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[TOPdesk - Secure クライアント サポート チーム](https://www.topdesk.com/en/services/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -97,7 +97,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -109,7 +109,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に TOPdesk - Secure へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -121,13 +121,13 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-topdesk---secure-sso&quot;></a>TOPdesk - Secure の SSO の構成
+## <a name="configure-topdesk---secure-sso"></a>TOPdesk - Secure の SSO の構成
 
 1. **TOPdesk - Secure** 会社サイトに管理者としてサインインします。
 
 2. [**TOPdesk**] メニューで、[**設定**] をクリックします。
 
-    ![[設定]](./media/topdesk-secure-tutorial/menu.png &quot;設定")
+    ![[設定]](./media/topdesk-secure-tutorial/menu.png "設定")
 
 3. [**ログイン設定**] をクリックします。
 
@@ -173,7 +173,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     b. 証明書ファイルをアップロードするには、[**証明書 (RSA)**] の下の [**参照**] をクリックします。
 
-    c. **[Private key(RSA, PKCS8, DER)]** では、独自の秘密キーをアップロードするか、[TOPdesk - Secure Client サポート チーム](https://www.topdesk.com/us/support)に問い合わせて秘密キーを取得できます。
+    c. **[Private key(RSA, PKCS8, DER)]** では、独自の秘密キーをアップロードするか、[TOPdesk - Secure Client サポート チーム](https://www.topdesk.com/en/services/support/)に問い合わせて秘密キーを取得できます。
 
     d. TOPdesk サポート チームから取得したロゴ ファイルをアップロードするには、[**ロゴ アイコン**] の下の [**参照**] をクリックします。
 

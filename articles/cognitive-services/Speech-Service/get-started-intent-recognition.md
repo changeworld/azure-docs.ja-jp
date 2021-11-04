@@ -3,22 +3,22 @@ title: 意図認識のクイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、意図認識を使用し、マイクからキャプチャされたオーディオ データから意図を対話形式で認識します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/04/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
 keywords: 意図認識
-ms.openlocfilehash: a556fa79b0ed9144dfd6a39420de26413e88554f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6627a8758aba4575abf3a977076a3e781807552a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543343"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507426"
 ---
 # <a name="get-started-with-intent-recognition"></a>意図認識の使用を開始する
 

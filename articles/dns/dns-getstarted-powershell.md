@@ -8,13 +8,13 @@ ms.author: rohink
 ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: dns
-ms.custom: devx-track-azurepowershell - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 9ee09663466faae5745a1b888b3d5d5bbde15e8d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: f30fd154f3998166381f4cf3a0341c023480bd5e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110705114"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080044"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure DNS ゾーンとレコードを作成する
 

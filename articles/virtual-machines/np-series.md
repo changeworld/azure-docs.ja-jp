@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 12bbaeddadb925cc6057c902a528121c16e05cd7
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f40ac573e8abb20e7d4eb4b11a0d9e09f251d9c8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546794"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022020"
 ---
 # <a name="np-series"></a>NP シリーズ 
 
@@ -26,7 +26,7 @@ NP シリーズの仮想マシンでは、機械学習の推論、ビデオの�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 VM 世代サポート: 第 1 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md): サポートされています ([プレビュー段階](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています<br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | FPGA | FPGA メモリ:GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 

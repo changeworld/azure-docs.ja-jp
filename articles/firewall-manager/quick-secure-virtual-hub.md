@@ -7,13 +7,13 @@ ms.author: victorh
 ms.date: 08/28/2020
 ms.topic: quickstart
 ms.service: firewall-manager
-ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 01b42b78a8ecb1746bad8aae8adbd8131ec6c80d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm
+ms.openlocfilehash: eeb1750613f322c3360d746fd080e40df9e67b12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461442"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068661"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>クイック スタート:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する - Resource Manager テンプレート
 

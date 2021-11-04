@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/28/2021
-  ms.openlocfilehash: 382c085eadaf421b50420bec1aed8ac9ba68ec50
-  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  ms.openlocfilehash: 7357df313089d93785c3f17f558a6da122128bab
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129207323"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131078486"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -128,4 +128,4 @@ landingContent:
     - text: Azure Lighthouse 用の Microsoft Q&A
       url: /answers/topics/azure-lighthouse.html
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/922753
+      url: https://feedback.azure.com/d365community/forum/cd8dfdcb-f824-ec11-b6e6-000d3a4f0da0

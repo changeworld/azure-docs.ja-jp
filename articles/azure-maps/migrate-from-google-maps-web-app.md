@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: f3eba06b40ef9f96dc5b94b6d21b43e6fecccce1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 92d879f0ed4d7252624f0d825fc50892d3d5851e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358079"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474157"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>チュートリアル:Google Maps から Web アプリを移行する
 
@@ -158,7 +158,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -245,16 +245,16 @@ Web アプリで Azure Maps マップ コントロールを設定して使用す
 Google マップをローカライズするには、言語と地域のパラメーターを追加します。
 
 ```html
-<script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key=[api_key]& language=[language_code]&region=[region_code]" async defer></script>
+<script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key={api-Key}& language={language-code}&region={region-code}" async defer></script>
 ```
 
 以下に、言語が "fr-fr" に設定されている Google Maps の例を示します。
 
 ![Google Maps のローカライズ](media/migrate-google-maps-web-app/google-maps-localization.png)
 
-#### <a name="after-azure-maps&quot;></a>後: Azure Maps
+#### <a name="after-azure-maps"></a>後: Azure Maps
 
-Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバル *atlas* 名前空間に追加します。 これにより、アプリ内のすべてのマップ コントロール インスタンスが、既定でこれらの設定になります。 以下では、言語をフランス語 (&quot;fr-FR") に、地域ビューを "auto" に設定します。
+Azure Maps には、マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバル *atlas* 名前空間に追加します。 これにより、アプリ内のすべてのマップ コントロール インスタンスが、既定でこれらの設定になります。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定します。
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -854,7 +854,7 @@ Google Maps では、`google.maps.Data` クラスを使用した GeoJSON デー�
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1008,7 +1008,7 @@ GeoJSON は、Azure Maps の基本データ型です。 `datasource.importFromUr
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1214,7 +1214,7 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]&libraries=visualization" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}&libraries=visualization" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1424,7 +1424,7 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
@@ -1534,7 +1534,7 @@ Azure と Google のどちらのマップも、KML、KMZ、GeoRSS のデータ�
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>

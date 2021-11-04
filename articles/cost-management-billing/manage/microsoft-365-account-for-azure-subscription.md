@@ -1,7 +1,7 @@
 ---
 title: Microsoft 365 アカウントを使用して Azure にサインアップする
 description: Microsoft 365 アカウントを使用して、Azure サブスクリプションを作成する方法について説明します。 また、既存の Azure と Microsoft 365 のアカウントを相互に関連付けることもできます。
-author: JiangChen79
+author: bandersmsft
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 26e2fec712d5ad249ffc548bed414b3d866894a0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e70cdf3c99de8bf45b73eb741bcd28813e99d02
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651258"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438780"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Microsoft 365 アカウントを使用して Azure のサブスクリプションにサインアップする
 

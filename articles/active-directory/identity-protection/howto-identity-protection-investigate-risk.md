@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0151f4de30c3bf96fa8c0dca77c90282115c70d7
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: b15ccb564fe2c3551103e71b8c1ca2a901ec03e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864373"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440759"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
@@ -93,7 +93,6 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 
 > [!NOTE] 
 > 当社のシステムでは、リスクのあるユーザーのリスク スコアに影響を与えたリスク イベントが誤検知であること、または MFA プロンプトの実行やセキュリティで保護されたパスワードの変更など、ポリシーを適用することによってユーザーのリスクが修復されたことが検出される場合があります。 その場合、リスクの状態は無視され、「AI によってサインインが安全であることが確認されました」というリスクの詳細が表示されます。また、ユーザーのリスクには影響しなくなります。 
-
 
 ## <a name="next-steps"></a>次のステップ
 

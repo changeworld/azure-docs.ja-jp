@@ -6,26 +6,23 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: bf3aa8b675e242952f32678059b8b2c89d5b95e0
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 15757c3a7e394dcc52c83e8eeef54d8b44b97a34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612429"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468197"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーの低速クエリ ログ (プレビュー)
+# <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーの低速クエリ ログ
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL フレキシブル サーバーでは、ユーザーは低速クエリ ログを構成してアクセスできます。 低速クエリ ログは既定で無効にされていますが、トラブルシューティング時に、パフォーマンスのボトルネックの特定で役立てるために有効にすることができます。
 
 MySQL の低速クエリ ログの詳細については、MySQL エンジンのドキュメントの[低速クエリ ログに関するセクション](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
-## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する 
-既定で、低速クエリ ログは無効です。 ログを有効にするには、`slow_query_log` サーバー パラメーターを *ON* に設定します。 これは、Azure portal または Azure CLI を使用して構成できます <!-- add link to server parameter-->. 
+## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する
+既定で、低速クエリ ログは無効です。 ログを有効にするには、`slow_query_log` サーバー パラメーターを *ON* に設定します。 これは、Azure portal または Azure CLI を使用して構成できます <!-- add link to server parameter-->.
 
 低速クエリ ログの動作を制御するために調整できるその他のパラメーターには、次のようなものがあります。
 
@@ -86,7 +83,7 @@ MySQL の低速クエリ ログの詳細については、MySQL エンジンの�
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | where query_time_d > 10
     ```
 
@@ -96,7 +93,7 @@ MySQL の低速クエリ ログの詳細については、MySQL エンジンの�
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | order by query_time_d desc
     | take 5
     ```
@@ -107,7 +104,7 @@ MySQL の低速クエリ ログの詳細については、MySQL エンジンの�
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
     ```
 
@@ -117,7 +114,7 @@ MySQL の低速クエリ ログの詳細については、MySQL エンジンの�
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
     | render timechart
     ```
@@ -127,10 +124,10 @@ MySQL の低速クエリ ログの詳細については、MySQL エンジンの�
     ```Kusto
     AzureDiagnostics
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | where query_time_d > 10
-    ```    
-    
+    ```
+
 ## <a name="next-steps"></a>次のステップ
 - [監査ログ](concepts-audit-logs.md)の詳細を確認する
 - [クエリ パフォーマンスの分析情報](tutorial-query-performance-insights.md)

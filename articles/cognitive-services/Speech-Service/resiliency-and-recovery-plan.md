@@ -3,7 +3,7 @@ title: 顧客の音声リソースをバックアップおよび復旧する方�
 titleSuffix: Azure Cognitive Services
 description: Custom Speech と Custom Voice を使用してサービスの停止に備える方法について説明します。
 services: cognitive-services
-author: masaki-itagaki
+author: masakiitagaki
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: aff4093863b1813e22fc6050ff4050cf4133bdd6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 860e70f567742a418e8de75c68793b29fb691df2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508366"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058371"
 ---
 # <a name="back-up-and-recover-speech-customer-resources"></a>顧客の音声リソースをバックアップおよび復旧する
 

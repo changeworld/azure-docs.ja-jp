@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edfef9a2c78758c2df60ece70c50ddb974cc1b55
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026029"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507704"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Speech SDK を使用してクライアント アプリケーションと統合する
 

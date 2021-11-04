@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: abhishgu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2fd4b082d5c09cb9329451e9f4f165a1699c85a9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7f5925ffa70977d13a2eefb25dc48898ac513f6e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092596"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434087"
 ---
 # <a name="partial-document-update-in-azure-cosmos-db"></a>Azure Cosmos DB の部分的ドキュメント更新
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -112,7 +112,7 @@ Azure Cosmos DB に次のようなドキュメントがあるとします。
       "12345",
       "67890"
    ], 
-   "level":"gold",
+   "level":"gold"
 } 
 ```
 

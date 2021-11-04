@@ -3,21 +3,21 @@ title: リアルタイムでの会話の文字起こしのクイックスター�
 titleSuffix: Azure Cognitive Services
 description: リアルタイムでの会話の文字起こしを Speech SDK とともに使用する方法を説明します。 会話の文字起こしを使用すると、会議やその他の会話を文字起こしして、音声を Speech サービスにストリーミングすることによって、複数の参加者を追加、削除、または識別することができます。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: pafarley
+ms.author: eur
 zone_pivot_groups: acs-js-csharp
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a30065bf58b2afa9d6e8411c3844071596ebc823
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 00cfb66da3b3e233e703e74b039be9d6a7d02c4b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086813"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508936"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>リアルタイムの会話の文字起こしの概要
 

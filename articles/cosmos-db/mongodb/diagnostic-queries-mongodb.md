@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/12/2021
 ms.author: esarroyo
 author: StefArroyo
-ms.openlocfilehash: 07d0942be40cf2834399db198d0c56e9485161c0
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 73dba970aea4171a99ff499300d15c63c3bbb380
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605196"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430612"
 ---
 # <a name="troubleshoot-issues-with-advanced-diagnostics-queries-for-the-mongodb-api"></a>MongoDB API の高度な診断クエリに関する問題のトラブルシューティング
 
@@ -43,27 +43,20 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
    ```Kusto
-   let topRequestsByRUcharge = CDBDataPlaneRequests 
-   | where TimeGenerated > ago(24h)
-   | project  RequestCharge , TimeGenerated, ActivityId;
+   //Enable full-text query to view entire query text
    CDBMongoRequests
-   | project PIICommandText, ActivityId, DatabaseName , CollectionName
-   | join kind=inner topRequestsByRUcharge on ActivityId
-   | project DatabaseName , CollectionName , PIICommandText , RequestCharge, TimeGenerated
+   | where TimeGenerated > ago(24h)
+   | project PIICommandText, ActivityId, DatabaseName , CollectionName, RequestCharge
    | order by RequestCharge desc
    | take 10
    ```
 
 # <a name="azure-diagnostics"></a>[Azure Diagnostics](#tab/azure-diagnostics)
    ```Kusto
-   let topRequestsByRUcharge = AzureDiagnostics
-   | where Category == "DataPlaneRequests" and TimeGenerated > ago(1h)
-   | project  requestCharge_s , TimeGenerated, activityId_g;
    AzureDiagnostics
    | where Category == "MongoRequests"
-   | project piiCommandText_s, activityId_g, databaseName_s , collectionName_s
-   | join kind=inner topRequestsByRUcharge on activityId_g
-   | project databaseName_s , collectionName_s , piiCommandText_s , requestCharge_s, TimeGenerated
+   | where TimeGenerated > ago(24h)
+   | project piiCommandText_s, activityId_g, databaseName_s , collectionName_s, requestCharge_s
    | order by requestCharge_s desc
    | take 10
    ```    
@@ -73,25 +66,17 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
    ```Kusto
-   let throttledRequests = CDBDataPlaneRequests
-   | where StatusCode == "429" or StatusCode == "16500"
-    | project  OperationName , TimeGenerated, ActivityId;
    CDBMongoRequests
-   | project PIICommandText, ActivityId, DatabaseName , CollectionName
-   | join kind=inner throttledRequests on ActivityId
-   | project DatabaseName , CollectionName , PIICommandText , OperationName, TimeGenerated
+   | where TimeGenerated > ago(24h)
+   | where ErrorCode == "429" or ErrorCode == "16500"
+   | project DatabaseName, CollectionName, PIICommandText, OperationName, TimeGenerated
    ```
 
 # <a name="azure-diagnostics"></a>[Azure Diagnostics](#tab/azure-diagnostics)
    ```Kusto
-   let throttledRequests = AzureDiagnostics
-   | where Category == "DataPlaneRequests"
-   | where statusCode_s == "429" or statusCode_s == "16500" 
-   | project  OperationName , TimeGenerated, activityId_g;
    AzureDiagnostics
-   | where Category == "MongoRequests"
-   | project piiCommandText_s, activityId_g, databaseName_s , collectionName_s
-   | join kind=inner throttledRequests on activityId_g
+   | where Category == "MongoRequests" and TimeGenerated > ago(24h)
+   | where ErrorCode == "429" or ErrorCode == "16500"
    | project databaseName_s , collectionName_s , piiCommandText_s , OperationName, TimeGenerated
    ```    
 ---
@@ -100,24 +85,16 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
    ```Kusto
-   let throttledRequests = CDBDataPlaneRequests
-   | where StatusCode == "50"
-   | project  OperationName , TimeGenerated, ActivityId;
    CDBMongoRequests
-   | project PIICommandText, ActivityId, DatabaseName , CollectionName
-   | join kind=inner throttledRequests on ActivityId
-   | project DatabaseName , CollectionName , PIICommandText , OperationName, TimeGenerated
+   | where TimeGenerated > ago(24h)
+   | where ErrorCode == "50"
+   | project DatabaseName, CollectionName, PIICommandText, OperationName, TimeGenerated
    ```
 # <a name="azure-diagnostics"></a>[Azure Diagnostics](#tab/azure-diagnostics)
    ```Kusto
-   let throttledRequests = AzureDiagnostics
-   | where Category == "DataPlaneRequests"
-   | where statusCode_s == "50"
-   | project  OperationName , TimeGenerated, activityId_g;
    AzureDiagnostics
-   | where Category == "MongoRequests"
-   | project piiCommandText_s, activityId_g, databaseName_s , collectionName_s
-   | join kind=inner throttledRequests on activityId_g
+   | where Category == "MongoRequests" and TimeGenerated > ago(24h)
+   | where ErrorCode == "50"
    | project databaseName_s , collectionName_s , piiCommandText_s , OperationName, TimeGenerated
    ```    
 ---
@@ -126,27 +103,20 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
    ```Kusto
-   let operationsbyUserAgent = CDBDataPlaneRequests
-   | project OperationName, DurationMs, RequestCharge, ResponseLength, ActivityId;
    CDBMongoRequests
    //specify collection and database
    //| where DatabaseName == "DBNAME" and CollectionName == "COLLECTIONNAME"
-   | join kind=inner operationsbyUserAgent on ActivityId
-   | summarize max(ResponseLength) by PIICommandText
+   | summarize max(ResponseLength) by PIICommandText, RequestCharge, DurationMs, OperationName, TimeGenerated
    | order by max_ResponseLength desc
    ```
 # <a name="azure-diagnostics"></a>[Azure Diagnostics](#tab/azure-diagnostics)
    ```Kusto
-   let operationsbyUserAgent = AzureDiagnostics
-   | where Category=="DataPlaneRequests"
-   | project OperationName, duration_s, requestCharge_s, responseLength_s, activityId_g;
    AzureDiagnostics
    | where Category == "MongoRequests"
    //specify collection and database
    //| where databaseName_s == "DBNAME" and collectionName_s == "COLLECTIONNAME"
-   | join kind=inner operationsbyUserAgent on activityId_g
-   | summarize max(responseLength_s1) by piiCommandText_s
-   | order by max_responseLength_s1 desc
+   | summarize max(responseLength_s) by piiCommandText_s, OperationName, duration_s, requestCharge_s
+   | order by max_responseLength_s desc
    ```    
 ---
 

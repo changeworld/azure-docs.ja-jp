@@ -4,16 +4,16 @@ description: Windows Server の Azure ファイル共有の高速キャッシュ
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 8/24/2021
+ms.date: 11/2/2021
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ba4fe4968a54be0ee9f19e2df6db242c149a7ee
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 3069ffa1fc7e32d2ac683ecbc90f14f39625ddf4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080570"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424819"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -257,7 +257,7 @@ Set-AzStorageSyncServerEndpoint `
 
 ![Azure portal のスクリーンショット](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="server"></a>[サーバー](#tab/server)
+# <a name="server"></a>[[サーバー]](#tab/server)
 イベント ビューアーの `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` にあるテレメトリ ログに移動します。 イベント 9102 は、完了した同期セッションに該当します。同期の最新の状態を調べるには、ID 9102 の最新のイベントを探します。 SyncDirection は、このセッションがアップロードとダウンロードのどちらだったかを示しています。 `HResult` が 0 の場合、同期セッションは成功しています。 `HResult` が 0 以外の場合は、同期中にエラーが発生したことを意味します。以下に示す一般的なエラーの一覧を参照してください。 PerItemErrorCount が 0 より大きい場合は、一部のファイルまたはフォルダーが正しく同期されていません。 `HResult` が 0 であるのに、PerItemErrorCount が 0 より大きい場合もあります。
 
 成功したアップロードの例を次に示します。 簡潔にするために、下の一覧では、各 9102 イベントに含まれる一部の値のみを示しています。 
@@ -314,7 +314,7 @@ PerItemErrorCount: 1006.
 - [同期アクティビティ] フィールドに表示された残りの同期ファイル数が非常に少ないか、0 であること。
 - アップロードとダウンロードの両方で、[Files Not Syncing]\(同期していないファイル数\) フィールドが 0 であること。
 
-# <a name="server"></a>[サーバー](#tab/server)
+# <a name="server"></a>[[サーバー]](#tab/server)
 完了した同期セッションを調べます。これは、各サーバーのテレメトリ イベント ログ (イベント ビューアーで `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` に移動) で 9102 イベントとマークされています。 
 
 1. 特定のサーバー上で、アップロード セッションとダウンロード セッションが正常に完了したことを確認します。 そのためには、アップロードとダウンロードの両方で `HResult` と PerItemErrorCount が 0 であることを確認します (SyncDirection フィールドは、そのセッションがアップロード セッションとダウンロード セッションのどちらであるかを示します)。 最近完了した同期セッションが表示されていない場合は、同期セッションが現在進行中である可能性があります。この状況は、大量のデータを追加または変更した直後に発生することがあります。
@@ -506,6 +506,9 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
     ```
 2. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
 3. [ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します (有効な場合)](file-sync-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+> [!Note]  
+> Azure File Sync サービスへのネットワーク接続が復元されたとき、同期が直ちに再開されない可能性があります。 既定では、サーバー エンドポイントの場所で変更が検出されなかった場合、Azure File Sync は 30 分ごとに同期セッションを開始します。 同期セッションを強制的に実行するには、ストレージ同期エージェント (FileSyncSvc) サービスを再起動するか、サーバー エンドポイントの場所にあるファイルまたはディレクトリに変更を加えます。
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**ストレージ アカウントへのアクセス中に不明なエラーが発生しました。**  
 

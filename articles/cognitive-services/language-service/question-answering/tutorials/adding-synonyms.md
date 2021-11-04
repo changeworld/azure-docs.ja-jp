@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 6e5c6bb17c4b31126b05af32a8b1582c7f025c2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0ba6e7a0a336a5fbcb560a07a7731c8cdcc66e9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092066"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439027"
 ---
 # <a name="improve-quality-of-response-with-synonyms"></a>同意語で応答の品質を向上させる
 
@@ -80,8 +80,7 @@ ms.locfileid: "131092066"
 
 > [!NOTE]
 > 同意語は大文字と小文字を区別されません。 また、同意語としてストップ ワードを追加した場合も、同意語が意図したとおりに機能しないことがあります。 ストップ ワードの一覧は、[ストップ ワードの一覧](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md)に関するページで確認できます。
-
-たとえば、Information Technology (情報技術) の略語である **IT** を追加すると、システムで Information Technology を認識できなくなる場合があります。**IT** はストップ ワードなので、クエリを処理するときにフィルターにかけられるからです。
+> たとえば、Information Technology (情報技術) の略語である **IT** を追加すると、システムで Information Technology を認識できなくなる場合があります。**IT** はストップ ワードなので、クエリを処理するときにフィルターにかけられるからです。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,21 +3,21 @@ title: キーワード作成クイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: デバイスは常にキーワード (またはフレーズ) をリッスンしています。 ユーザーがキーワードを読み上げると、ユーザーが読み上げを止めるまで、デバイスは後続のすべての音声をクラウドに送信します。 キーワードをカスタマイズすることは、デバイスを差別化し、ブランドを強化する上で効果的な方法です。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-csharp, ignite-fall-2021
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 6604bdfc155d3369c1e17a92d928cc46d7f36cf5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 99c6b58950fa7b40328ff85a07db90104ba17531
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056758"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508627"
 ---
 # <a name="get-started-with-custom-keyword"></a>Custom Keyword の概要
 

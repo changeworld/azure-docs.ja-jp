@@ -1,16 +1,17 @@
 items:
-  - name: Azure Healthcare API (プレビュー) のドキュメント
+  - name: Azure の医療 Api (プレビュー) のドキュメント
     href: ../index.yml
-  - name: Azure API for FHIRドキュメント
+  - name: FHIR 用 Azure API のドキュメント
     href: index.yml
   - name: 概要
+    expanded: true
     items:
       - name: Azure API for FHIR について
         href: overview.md
       - name: Azure IoT Connector for FHIR (プレビュー) について
         href: overview.md#azure-iot-connector-for-fhir-preview
   - name: クイックスタート
-    expanded: false
+    expanded: true
     items:
       - name: Azure API for FHIR をデプロイする
         expanded: false
@@ -32,7 +33,7 @@ items:
           - name: ARM テンプレートの使用
             href: iot-azure-resource-manager-template-quickstart.md
   - name: チュートリアル
-    expanded: false
+    expanded: true
     items:
       - name: JavaScript アプリケーションをデプロイする
         expanded: false
@@ -66,7 +67,7 @@ items:
           - name: Da Vinci Plan Net
             href: ../fhir/davinci-plan-net.md
   - name: 操作方法ガイド
-    expanded: false
+    expanded: true
     items:
       - name: アプリケーションの登録
         expanded: false
@@ -84,7 +85,7 @@ items:
       - name: 設定の構成
         expanded: false
         items:
-          - name: その他の設定Azure API for FHIR構成する
+          - name: FHIR 設定用に他の Azure API を構成する
             href: azure-api-for-fhir-additional-settings.md
           - name: Azure RBAC を構成する
             href: configure-azure-rbac.md
@@ -152,7 +153,7 @@ items:
       - name: Azure API for FHIR のディザスター リカバリー
         href: disaster-recovery.md
   - name: 概念
-    expanded: false
+    expanded: true
     items:
       - name: Azure AD と Azure API for FHIR の概要
         href: azure-active-directory-identity-configuration.md
@@ -174,14 +175,18 @@ items:
           - name: Azure Policy によるセキュリティ制御
             href: ./security-controls-policy.md
   - name: リソース
+    expanded: true
     items:
-      - name: よく寄せられる質問
-        href: fhir-faq.yml
       - name: サポートされている機能
         href: fhir-features-supported.md
+      - name: リリース ノート
+        href: release-notes.md
+      - name: FAQ
+        href: fhir-faq.yml
       - name: GitHub プロジェクト
         href: fhir-github-projects.md
   - name: リファレンス
+    expanded: true
     items:
       - name: Azure CLI
         href: /cli/azure/healthcareapis

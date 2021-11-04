@@ -10,12 +10,12 @@ metadata:
   author: JYOTHIRMAISURI
   ms.author: v-jysur
   ms.date: 11/19/2019
-  ms.openlocfilehash: bd947ba63e513a5e4f823bbd820db9acfe5e4480
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: a1f020d9bebfbebfccce887b03da801698be4ce1
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779968"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131452587"
 landingContent:
 - title: Site Recovery について
   linkLists:
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: サービス機能のリクエスト
-      url: https://feedback.azure.com/forums/256299-site-recovery
+      url: https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84
     - text: Microsoft Q&A に質問をする
       url: /answers/topics/azure-site-recovery.html
     - text: Azure Tech Community

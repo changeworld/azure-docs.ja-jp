@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/24/2021
+ms.date: 10/28/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: 0057888a85acc2356660fecbf8a77071401e8e3c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b81d190aa7b565f40dd73fa5054253a46ae7041
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033477"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439255"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
@@ -90,7 +90,7 @@ Azure Cognitive Services のコンテナーでは、次の Docker コンテナ�
 * Computer Vision
 * Face
 * LUIS
-* Text Analytics
+* 言語サービス
 
 ## <a name="prerequisites"></a>前提条件
 

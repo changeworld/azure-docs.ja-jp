@@ -4,19 +4,20 @@ description: このドキュメントでは、QnA Maker リソースの詳細な
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/04/2021
-ms.openlocfilehash: 0eaff84368327da7ebef11d53338f13ee6f8cdb4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/25/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e8e6cf62e2d6c09059af00fc7fa3d5f2c447ae2a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376370"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069218"
 ---
 # <a name="configure-qna-maker-resources"></a>QnA Maker のリソースを構成する
 
 ユーザーは、別の Cognitive Search リソースを使用するように QnA Maker を構成できます。 また、QnA Maker GA を使用している場合は、App Service の設定を構成することもできます。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 ## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker を構成する
 
@@ -50,30 +51,7 @@ Azure Resource Manager テンプレートを使用して QnA サービスを作�
 
 詳しくは、App Service の[アプリケーションの設定](../../../app-service/configure-common.md#configure-app-settings)を構成する方法をご覧ください。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-### <a name="configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource"></a>Custom question answering 機能を利用している Text Analytics リソースを、異なる Cognitive Search リソースを使用するように構成する
-
-> [!NOTE]
-> Text Analytics に関連付けている Azure Search サービスを変更すると、このサービスに存在するすべてのナレッジ ベースにアクセスできなくなります。 Azure Search サービスを変更する前に、既存のナレッジ ベースがエクスポートされていることを確認してください。
-
-
-Text Analytics リソースと、依存関係上これに必要なもの (Search など) を portal で作成する場合、そのユーザーに対して Search サービスが作成され Text Analytics リソースにリンクされます。 これらのリソースの作成後は、 **[Features]\(機能\)** タブで Search リソースを更新できます。
-
-1.  Azure portal で Text Analytics リソースに移動します。
-
-2.  **[Features]\(機能\)** を選択し、Text Analytics リソースにリンクしたい Azure Cognitive Search サービスを選択します。
-
-> [!div class="mx-imgBorder"]
-> ![[Add QnA to TA]\(TA に QnA を追加する\)](../media/qnamaker-how-to-upgrade-qnamaker/update-custom-qna-feature.png)
-
-3.  **[保存]** をクリックします。
-
----
-
 ## <a name="get-the-latest-runtime-updates"></a>最新のランタイム更新プログラムを取得する
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service インスタンスの一部です。 ランタイムの更新は定期的に行われます。 QnA Maker App Service インスタンスは、2019 年 4 月のサイト拡張リリース (バージョン 5+) 以降は自動更新モードになります。 この更新は、アップグレード中のダウンタイムがゼロになるように設計されています。
 
@@ -93,16 +71,8 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 1. App Service を再起動します。 更新プロセスは数秒で完了します。 この再起動中、エンド ユーザーは、この QnA Maker サービスを使用する依存アプリケーションやボットを使用できなくなります。
 
     ![QnA Maker App Service インスタンスの再起動](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
-    
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-App Service の展開に Custom question answering は含まれません。
-
----
 
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>タイムアウトを回避するように App Service のアイドル設定を構成する
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 公開されたナレッジ ベースの QnA Maker 予測ランタイムを提供するアプリ サービスにはアイドル タイムアウトの構成があり、サービスがアイドル状態の場合、既定では自動的にタイムアウトします。 QnA Maker の場合、これは、予測ランタイム GenerateAnswer API は、一定期間トラフィックがないとタイムアウトする場合があることを意味します。
 
@@ -121,15 +91,7 @@ App Service の展開に Custom question answering は含まれません。
 
 詳しくは、App Service の[一般設定](../../../app-service/configure-common.md#configure-general-settings)を構成する方法をご覧ください。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-App Service の展開に Custom question answering は含まれません。
-
----
-
 ## <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 ビジネス継続性計画の主な目的は、回復性に優れたナレッジ ベース エンドポイントを作成し、そのナレッジ ベース エンドポイントを使用するボットまたはアプリケーションにダウン タイムが発生しないようにすることです。
 
@@ -151,9 +113,3 @@ App Service の展開に Custom question answering は含まれません。
 1. トラフィック マネージャーのエンドポイント向けに Transport Layer Security (TLS) (旧称は Secure Sockets Layer (SSL)) 証明書を作成する必要があります。 アプリ サービスで [TLS/SSL 証明書](../../../app-service/configure-ssl-bindings.md)をバインドします。
 
 1. 最後に、ボットまたはアプリでトラフィック マネージャー エンドポイントを使用します。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-App Service の展開に Custom question answering は含まれません。
-
----

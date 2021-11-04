@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 5ea3b24cbdbd4a4c9a1f11883e8a2231467a7ee3
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 11/01/2021
+ms.openlocfilehash: f939d397db80e303ec2ed36d4112df0d38d090aa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278576"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464050"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -73,7 +73,7 @@ ms.locfileid: "129278576"
 
 - **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
-- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、お使いの Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)** ](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
+- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、お使いの Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
 
 ### <a name="remove-data-factory-connections"></a>Data Factory 接続を削除する
 

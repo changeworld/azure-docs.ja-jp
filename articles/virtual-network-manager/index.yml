@@ -1,0 +1,69 @@
+### YamlMime:Landing
+title: Azure Virtual Network Manager のドキュメント
+summary: Azure Virtual Network Manager を使ってネットワーク仮想アプライアンスと仮想ネットワークの間の動的ルーティングを簡単にする方法について説明します。
+metadata:
+  title: Azure Virtual Network Manager のドキュメント
+  description: Azure Virtual Network Manager について学習する
+  services: virtual-network-manager
+  ms.service: virtual-network-manager
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 11/02/2021
+  ms.openlocfilehash: 7b61df1521d2e80ff4c4e4847f54eff84669e4e6
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088405"
+landingContent:
+- title: Azure Virtual Network Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Virtual Network Manager とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: よく寄せられる質問
+      url: faq.md
+- title: はじめに
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: スコープ
+      url: concept-network-manager-scope.md
+    - text: ネットワーク グループ
+      url: concept-network-groups.md
+    - text: 展開
+      url: concept-deployments.md
+  - linkListType: quickstart
+    links:
+    - text: 仮想ネットワーク マネージャーを作成して構成する - ポータル
+      url: create-virtual-network-manager-portal.md
+    - text: 仮想ネットワーク マネージャーを作成して構成する - PowerShell
+      url: create-virtual-network-manager-powershell.md
+  - linkListType: tutorial
+    links:
+    - text: セキュリティで保護されたハブ アンド スポーク ネットワークを作成する
+      url: tutorial-create-secured-hub-and-spoke.md
+- title: 接続性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 接続の構成
+      url: concept-connectivity-configuration.md
+  - linkListType: how-to-guide
+    links:
+    - text: ハブ アンド スポーク トポロジを作成する
+      url: how-to-create-hub-and-spoke.md
+- title: セキュリティ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ管理者の構成
+      url: concept-security-admins.md
+  - linkListType: how-to-guide
+    links:
+    - text: セキュリティ管理規則でネットワーク トラフィックをブロックする
+      url: how-to-block-network-traffic-portal.md

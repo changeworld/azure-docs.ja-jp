@@ -1,12 +1,12 @@
-- name: Security Center のドキュメント
+- name: Microsoft Defender for Cloud のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Azure Security Center とは
-      href: security-center-introduction.md
-    - name: Azure Defender とは
-      href: azure-defender.md
+    - name: Microsoft Defender for Cloud とは
+      href: defender-for-cloud-introduction.md
+    - name: 強化されたセキュリティ機能とは
+      href: enhanced-security-features-overview.md
     - name: 新機能
       displayName: 'changelog, news, release notes'
       href: release-notes.md
@@ -17,26 +17,24 @@
       items:
         - name: サポートされているプラットフォーム
           displayName: coverage
-          href: security-center-os-coverage.md
+          href: os-coverage.md
         - name: OS、マシンの種類、クラウド別のカバレッジ
-          href: security-center-services.md
+          href: supported-machines-endpoint-solutions-clouds.md
         - name: Azure PaaS リソースを対象とする機能
           href: features-paas.md
         - name: ユーザーのロールとアクセス許可
           displayName: RBAC
-          href: security-center-permissions.md
-        - name: Security Center (無料) と有効化された Azure Defender
-          href: security-center-pricing.md
+          href: permissions.md
 - name: クイックスタート
   items:
-    - name: 1. サブスクリプションで Security Center を有効にする
-      href: security-center-get-started.md
-    - name: 2. Azure Defender を有効にする
-      href: enable-azure-defender.md
+    - name: 1. サブスクリプションで Defender for Cloud を有効にする
+      href: get-started.md
+    - name: 2. 強化された保護を有効にする
+      href: enable-enhanced-security.md
     - name: 3. 自動プロビジョニングを構成する
-      href: security-center-enable-data-collection.md
+      href: enable-data-collection.md
     - name: 4. メール通知の設定
-      href: security-center-provide-security-contact-details.md
+      href: configure-email-notifications.md
     - name: 5. ハイブリッド コンピューターとマルチクラウド コンピューターの接続
       items:
         - name: Azure 以外のマシンを接続する
@@ -63,7 +61,7 @@
     - name: セキュリティ アラートの調査と対応
       href: tutorial-security-incident.md
     - name: 規制に対するコンプライアンスの向上
-      href: security-center-compliance-dashboard.md
+      href: regulatory-compliance-dashboard.md
     - name: セキュリティ ポリシーの管理
       href: tutorial-security-policy.md
     - name: リソースの正常性を調査する
@@ -85,7 +83,7 @@
     - name: クラウド ワークロード保護の概念
       items:
         - name: セキュリティのアラートとインシデント
-          href: security-center-alerts-overview.md
+          href: alerts-overview.md
         - name: アラートの参照リスト
           href: alerts-reference.md
 - name: 操作方法ガイド
@@ -93,21 +91,21 @@
     - name: 概要ダッシュボードを使用する
       displayName: 'overview, compliance, inventory'
       href: overview-page.md
-    - name: Azure Defender ダッシュボードを使用する
-      href: azure-defender-dashboard.md
+    - name: ワークロード保護のダッシュボードを使用する
+      href: workload-protections-dashboard.md
     - name: セキュリティで保護されたスコアにアクセスして追跡する
       href: secure-score-access-and-track.md
     - name: Asset Inventory によるリソースの管理
       href: asset-inventory.md
-    - name: Security Center データの対話型レポートを作成する
+    - name: 対話型のレポートをビルドする
       displayName: 'workbooks, Secure Score Over Time, Vulnerability Assessment Findings'
       href: custom-dashboards-azure-workbooks.md
     - name: セキュリティのレコメンデーションを使用してセキュリティを強化する
       items:
         - name: セキュリティの推奨事項を確認する
-          href: security-center-recommendations.md
+          href: review-security-recommendations.md
         - name: 推奨事項の修復
-          href: security-center-remediate-recommendations.md
+          href: implement-security-recommendations.md
         - name: 適用/拒否を使用した構成ミスの防止
           displayName: recommendations
           href: prevent-misconfigurations.md
@@ -124,7 +122,7 @@
     - name: マシンを保護する
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
-        - name: サーバー用 Azure Defender の概要
+        - name: サーバー用 Defender の概要
           displayName: VM
           href: defender-for-servers-introduction.md
         - name: Azure セキュリティ ベースラインを適用する
@@ -154,16 +152,16 @@
           items:
             - name: Just-In-Time VM アクセスの概要
               displayName: 'jit, management'
-              href: just-in-time-explained.md
+              href: just-in-time-access-overview.md
             - name: Just-In-Time アクセスの管理
               displayName: 'jit, management, ports'
-              href: security-center-just-in-time.md
+              href: just-in-time-access-usage.md
         - name: 統合された Microsoft Defender for Endpoint ライセンスを使用する
           displayName: 'ATP, mdatp, wdatp, mde, mdfe'
-          href: security-center-wdatp.md
+          href: integration-defender-for-endpoint.md
         - name: コンピューターの安全なアプリケーションの一覧を定義する
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
-          href: security-center-adaptive-application.md
+          href: adaptive-application-controls.md
         - name: マシンにインストールされているアプリケーションとソフトウェアを確認する
           displayName: 'inventory, apps, software inventory, mde, tvm'
           href: asset-inventory.md#access-a-software-inventory
@@ -171,28 +169,28 @@
           items:
             - name: ファイルの整合性の監視の概要
               displayName: 'fim, change'
-              href: security-center-file-integrity-monitoring.md
+              href: file-integrity-monitoring-overview.md
             - name: ファイルの整合性の監視を使用してベースラインを比較する
               displayName: 'fim, change'
-              href: security-center-file-integrity-monitoring-baselines.md
+              href: file-integrity-monitoring-usage.md
         - name: ネットワークのセキュリティ体制を向上させる
           displayName: 'anh, adaptive network hardening'
-          href: security-center-adaptive-network-hardening.md
+          href: adaptive-network-hardening.md
         - name: Docker ホストのセキュリティを強化する
           displayName: containers
           href: harden-docker-hosts.md
     - name: データベースを保護する
       items:
-        - name: Azure Defender for SQL の概要
+        - name: SQL 用 Defender の概要
           displayName: database
           href: defender-for-sql-introduction.md
         - name: コンピューター上で SQL サーバー用 Defender を有効にする
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc, Azure Defender'
-        - name: オープンソースのリレーショナル データベース用 Azure Defender の概要
+        - name: オープンソースのリレーショナル データベース用 Defender の概要
           displayName: 'PG, PostgreSQL, MySQL, MariaDB, Azure Defender, OS RDBs, OSRDB'
           href: defender-for-databases-introduction.md
-        - name: Defender for OS RDB を有効にしてアラートに応答する
+        - name: OS RDB 用 Defender を有効にしてアラートに応答する
           displayName: 'PG, PostgreSQL, MySQL, MariaDB, open-source relational databases, Azure Defender, OS RDBs, OSRDB'
           href: defender-for-databases-usage.md
         - name: SQL リソースの脆弱性をスキャンする
@@ -200,11 +198,11 @@
           displayName: 'hybrid, arc, Azure Defender, VA, registry, vulnerabilities'
         - name: SQL 情報の保護ポリシーをカスタマイズする
           displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
+          href: sql-information-protection-policy.md
     - name: コンテナー化された環境を保護する
       displayName: Azure Defender
       items:
-        - name: Security Center のコンテナー セキュリティ機能
+        - name: Defender for Cloud のコンテナー セキュリティ機能
           displayName: 'kubernetes, aks, acr, registries, k8s'
           href: container-security.md
         - name: Kubernetes 用 Defender の概要
@@ -222,7 +220,7 @@
         - name: 特定のイメージの脆弱性の検出結果を無効にする (プレビュー)
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
-        - name: Azure Arc 対応 Kubernetes クラスターを防御する
+        - name: Azure Arc 対応 Kubernetes クラスターを保護する
           displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
           href: defender-for-kubernetes-azure-arc.md
         - name: Kubernetes ワークロードを保護する
@@ -232,19 +230,19 @@
       displayName: 'Azure Defender for App Service, defender for app'
       href: defender-for-app-service-introduction.md
     - name: Azure Storage アカウントを保護する
-      displayName: 'blob, adls, files, Azure Defender for Storage, Defender for Storage'
+      displayName: 'blob, adls, files, Microsoft Defender for Storage, Defender for Storage'
       href: defender-for-storage-introduction.md
     - name: Key Vault キーとシークレットを保護する
       items:
-        - name: Key Vault 用 Azure Defender の概要
+        - name: Key Vault 用 Defender の概要
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Key Vault 用 Defender のアラートに対応する
           displayName: 'akv, kv'
-          href: defender-for-key-vault-usage.md
+          href: defender-for-key-vault-introduction.md#respond-to-microsoft-defender-for-key-vault-alerts
     - name: リソース管理操作の監視
       items:
-        - name: Resource Manager 用 Azure Defender の概要
+        - name: Resource Manager 用 Defender の概要
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
         - name: Resource Manager 用 Defender のアラートに対応する
@@ -252,39 +250,39 @@
           href: defender-for-resource-manager-usage.md
     - name: Azure リソースからの DNS クエリの監視
       items:
-        - name: DNS 用 Azure Defender の概要
+        - name: DNS 用 Defender の概要
           displayName: 'domain, Defender for DNS'
           href: defender-for-dns-introduction.md
-        - name: Azure Defender for DNS アラートに対応する
-          href: defender-for-dns-usage.md
+        - name: DNS アラート用 Defender に応答する
+          href: defender-for-dns-introduction.md#respond-to-microsoft-defender-for-dns-alerts
     - name: Windows Admin Center サーバーの保護
       href: windows-admin-center-integration.md
     - name: セキュリティ ソリューションとデータ ソースの統合
-      href: security-center-partner-integration.md
+      href: partner-integration.md
     - name: ネットワーク リソースの保護
-      href: security-center-network-recommendations.md
+      href: protect-network-resources.md
     - name: MFA の適用と管理
       displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
-      href: security-center-identity-access.md
-    - name: Security Center の追加の脅威保護を使用する
+      href: multi-factor-authentication-enforcement.md
+    - name: その他の脅威の防止
       href: other-threat-protections.md
     - name: サブスクリプション、ユーザー、およびアクセス許可の管理
       items:
         - name: 管理グループとサブスクリプションを整理する
-          href: security-center-management-groups.md
+          href: management-groups-roles.md
         - name: テナント全体のアクセス許可を付与および要求する
           displayName: 'global admin, Azure Active Directory (AD), AAD'
           href: tenant-wide-permissions-management.md
-        - name: 管理グループに対して Security Center を有効にする
+        - name: 管理グループのクラウド用 Defender を有効にする
           href: onboard-management-group.md
         - name: テナント間管理の設定
-          href: security-center-cross-tenant-management.md
+          href: cross-tenant-management.md
         - name: PowerShell を使用したオンボードの自動化
-          href: security-center-powershell-onboarding.md
+          href: powershell-onboarding.md
     - name: アラート、インシデント、および脅威レポートの管理
       items:
         - name: セキュリティの警告への対応
-          href: security-center-managing-and-responding-alerts.md
+          href: managing-and-responding-alerts.md
         - name: アラート抑制ルールの作成および管理
           href: alerts-suppression-rules.md
         - name: アラートと推奨事項のエクスポート
@@ -300,12 +298,12 @@
             - name: アラートのスキーマ
               href: alerts-schemas.md
         - name: セキュリティ インシデントを管理する
-          href: security-center-incident.md
+          href: incidents.md
         - name: 脅威インテリジェンス レポートを生成する
-          href: security-center-threat-report.md
+          href: threat-intelligence-reports.md
         - name: アラート構成を検証する
           displayname: 'eicar, Kubernetes, Linux'
-          href: security-center-alert-validation.md
+          href: alert-validation.md
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
@@ -315,12 +313,12 @@
       displayName: 'changelog, news'
       href: release-notes-archive.md
     - name: Microsoft が顧客データの安全性を確保する方法
-      href: security-center-data-security.md
+      href: data-security.md
     - name: REST API ドキュメント
       href: /rest/api/securitycenter/
     - name: セキュリティ ベースライン
       href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/security-center/TOC.json
-    - name: Azure Security Center の FAQ
+    - name: Microsoft Defender for Cloud のよくあるご質問
       items:
         - name: 一般的な質問
           href: faq-general.yml
@@ -338,7 +336,7 @@
     - name: Azure ロードマップのブログ
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: エンドポイント保護の評価および推奨事項
-      href: security-center-endpoint-protection.md
+      href: endpoint-protection-recommendations-technical.md
     - name: Azure CLI
       href: /cli/azure/security
     - name: Azure PowerShell
@@ -348,8 +346,8 @@
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?term=securityS
     - name: ユーザー データを管理する
-      href: security-center-privacy.md
-    - name: Azure Defender for IoT のドキュメント
+      href: privacy.md
+    - name: Microsoft Defender for IoT のドキュメント
       href: /azure/asc-for-iot/
     - name: Azure のセキュリティのドキュメント
       href: ../security/index.yml
@@ -357,9 +355,9 @@
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 準備のロードマップ
       href: security-center-readiness-roadmap.md
-    - name: Azure Security Center のテクニカル コミュニティ ブログ
+    - name: Microsoft Defender for Cloud Tech Community ブログ
       href: 'https://techcommunity.microsoft.com/t5/azure-security-center/bg-p/AzureSecurityCenterBlog'
-    - name: Stack Overflow の Azure Security Center
+    - name: Stack Overflow 上の Microsoft Defender for Cloud
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: ASCinTheField の YouTube 動画
       href: 'https://www.youtube.com/results?search_query=%23ASCInTheField'
@@ -368,4 +366,4 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: トラブルシューティング ガイド
-      href: security-center-troubleshooting-guide.md
+      href: troubleshooting-guide.md

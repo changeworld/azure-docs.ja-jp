@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 1a3d99a0befd336d37b02b448a65df406d3a8e6e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fff03859cb41226e068380dd485d6b5d372aa6b9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059016"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510071"
 ---
 # <a name="what-is-a-voice-assistant"></a>音声アシスタントとは
 

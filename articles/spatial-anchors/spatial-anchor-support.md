@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9c5b35e84d0e16b70b4abba8f784ba9c779c0169
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 077ab48fd75b48afc5f08f95ccaf48eb7ccc1988
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112380124"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474934"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure Spatial Anchors のサポート オプション
 
@@ -46,7 +46,7 @@ Azure portal 内で Azure Spatial Anchors のテクニカル サポート チケ
 
 ## <a name="provide-product-feedback"></a>製品フィードバックの提供
 
-フィードバックを提供するには、Azure Spatial Anchors サービスに関するアイデアや提案を共有したり、他のユーザーが送信したアイデアに投票したり、[Azure Spatial Anchors Feedback Forum](https://feedback.azure.com/forums/919252-azure-spatial-anchors) にアクセスしたりすることができます。
+フィードバックを提供するには、Azure Spatial Anchors サービスに関するアイデアや提案を共有したり、他のユーザーが送信したアイデアに投票したり、[Azure Spatial Anchors Feedback Forum](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8) にアクセスしたりすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

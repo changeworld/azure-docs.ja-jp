@@ -10,19 +10,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2021
 ms.author: bagol
-ms.openlocfilehash: 483a228dc172acc3ce0cb44e5f9ac0eba1da807c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 223fa4bf0e62790e31ae8d872ef47c72a15b4634
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481898"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083875"
 ---
 # <a name="enrich-entities-in-azure-sentinel-with-geolocation-data-via-rest-api-public-preview"></a>Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel において REST API を使用して位置情報データでエンティティをエンリッチする方法について説明します。
 

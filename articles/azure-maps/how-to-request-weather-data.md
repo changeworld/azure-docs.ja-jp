@@ -1,19 +1,19 @@
 ---
 title: Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
 description: Microsoft Azure Maps Weather Service を使用して、リアルタイム (現在) と予測 (分ごと、時間ごと、日ごと) の気象データを要求する方法について説明します
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 04/26/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: ed0985778f27f17292428dddadaf4d0dedc9cd46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6ee9fefcb0675f35eebfe78b980d6e04d44f5a72
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738511"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435265"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure Maps Weather Service を使用して、リアルタイムと予測の気象データを要求する
 
@@ -54,7 +54,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、現在の気象情報が含まれます。
@@ -244,7 +244,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/severe/alerts/json?api-version=1.0&query=41.161079,-104.805450&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/severe/alerts/json?api-version=1.0&query=41.161079,-104.805450&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 悪天候のアラートがない場合、応答本文には空の `results[]` 配列が含まれます。 悪天候のアラートがある場合、応答本文には次のような JSON 応答が含まれます。
@@ -296,10 +296,11 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/forecast/daily/json?api-version=1.0&query=47.60357,-122.32945&duration=5&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/forecast/daily/json?api-version=1.0&query=47.60357,-122.32945&duration=5&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、5 日間の気象予測データが含まれます。 簡潔にするために、下の JSON 応答は最初の日の予測を示しています。
+
     ```json
     {
     "summary": {
@@ -544,7 +545,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/forecast/hourly/json?api-version=1.0&query=47.60357,-122.32945&duration=12&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/forecast/hourly/json?api-version=1.0&query=47.60357,-122.32945&duration=12&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、今後 12 時間の気象予測データが含まれます。 簡潔にするために、下の JSON 応答は最初の 1 時間の予測を示しています。
@@ -652,7 +653,7 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
-    https://atlas.microsoft.com/weather/forecast/minute/json?api-version=1.0&query=47.60357,-122.32945&interval=15&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/weather/forecast/minute/json?api-version=1.0&query=47.60357,-122.32945&interval=15&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 3. 青い **[送信]** ボタンをクリックします。 この応答本文には、15 分間隔での、今後 120 分間の気象予測データが含まれます。

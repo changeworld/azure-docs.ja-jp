@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c49e0f07c05e89907e54a78e02ba1de520091a2
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434629"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505121"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 

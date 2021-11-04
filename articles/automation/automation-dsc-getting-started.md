@@ -5,16 +5,19 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ff365200828b786b4cf770508e5a811983abd58
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 4d7a0a92d538db30ac0de9d0c5c97cb546517088
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732742"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026508"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用を開始する
 
 この記事では、Azure Automation State Configuration を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する手順について説明します。 State Configuration の概要については、[State Configuration の概要](automation-dsc-overview.md)に関するページを参照してください。 Desired State Configuration (DSC) のドキュメントについては、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」を参照してください。
+
+> [!NOTE]
+> Automation State Configuration を有効にする前に、[ゲスト構成](../governance/policy/concepts/guest-configuration.md)という名前の Azure Policy の機能によって管理された、新しいバージョンの DSC が現在プレビューで利用可能なことに注意する必要があります。 ゲスト構成サービスでは、DSC 拡張機能と Azure Automation State Configuration の機能のほか、顧客のフィードバックで最も一般的に要求されている機能が組み合わされています。 ゲスト構成にはまた、[Arc 対応サーバー](../azure-arc/servers/overview.md)によるハイブリッド マシンのサポートも含まれています。
 
 この記事で説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、[Azure Automation マネージド ノード テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration)を使用できます。 このテンプレートを使用すると、State Configuration (DSC) で管理される Azure VM を含む、完全な State Configuration (DSC) 環境が設定されます。
 

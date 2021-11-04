@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した Hyper-V のディザスター リカ�
 description: この記事では、Azure Site Recovery サイトを使用したオンプレミス Hyper-V VM の Azure へのディザスター リカバリーを設定する場合によくある質問をまとめます。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46061013844ecc6e41a0329641fd5d81b68656c4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879446"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475086"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -170,10 +170,10 @@ Hyper-V VM は 30 秒 (Premium Storage を除く) または 5 分ごとにレプ
 はい、Azure Site Recovery と Hyper-V レプリカを 1 台のマシンでまとめて構成できます。 ただし、マシンは物理マシンとして保護される必要があり、構成/プロセス サーバーを使用して Azure にレプリケートされます。 物理マシンの保護の詳細については[こちら](./physical-azure-architecture.md)を参照してください。
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
-これはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
+これはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
 はい、レプリケーションからディスクを除外できます。 

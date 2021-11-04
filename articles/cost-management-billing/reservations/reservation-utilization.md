@@ -1,19 +1,19 @@
 ---
 title: Azure の予約使用率を確認する
 description: 予約の使用率とその詳細を取得する方法について説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 15726451525d3ffcaf2d059b9e6c9dee86058591
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: f69c39205ddc465ee4634ec621905fed2d701682
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710206"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446241"
 ---
 # <a name="view-reservation-utilization-after-purchase"></a>購入後に予約の使用率を確認する
 

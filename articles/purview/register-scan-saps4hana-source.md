@@ -1,19 +1,19 @@
 ---
 title: SAP S/4HANA ソースに接続して管理する
 description: このガイドでは、Azure Purview で SAP S/4HANA に接続する方法と、Purview の機能を使用して SAP S/4HANA ソースをスキャンおよび管理する方法について説明します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 8c08c76ebfe624be3f6724dfdebabc277a3a3795
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c3497b39699d66cc665ea2c217dea5e016ca42df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010956"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472411"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Azure Purview での SAP S/4HANA への接続と管理
 

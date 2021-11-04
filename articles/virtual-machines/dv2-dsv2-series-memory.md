@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 93335dfe5b6cf5cb84975f332585060b07d8ca43
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c248d001387cb6cf5bf97aae05db9b8e27889699
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071247"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456672"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>メモリが最適化された Dv2 と Dsv2 シリーズ
 
@@ -34,7 +34,7 @@ Dv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)�
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br> 
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数| 必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D11_v2 | 2  | 14  | 100 | 6000/93/46    | 8/8x500   | 2|1500  |
 | Standard_D12_v2 | 4  | 28  | 200 | 12000/187/93  | 16/16x500 | 4|3000  |
@@ -59,7 +59,7 @@ DSv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br> 
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数| 必要なネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |---|
 | Standard_DS11_v2 <sup>3</sup> | 2  | 14  | 28  | 8  | 8000/64 (72)    | 6400/96   | 2|1500  |
 | Standard_DS12_v2 <sup>3</sup> | 4  | 28  | 56  | 16 | 16000/128 (144) | 12800/192 | 4|3000  |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 3a0b645acd7c21ff0416c748cdd2caf7041be508
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6778a892cdc9e112c6550fab71cc635ea17938fa
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101730815"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510400"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成音声テクノロジの責任あるデプロイのためのガイドライン
 

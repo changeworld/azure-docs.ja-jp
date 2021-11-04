@@ -3,12 +3,12 @@ title: Windows のシステム状態を Azure にバックアップする
 description: Windows Server コンピューターのシステム状態を Azure にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9ff10749991bd5fe425172046fe7ed5915ce5c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332893"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473682"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows のシステム状態を Azure にバックアップする
 
@@ -183,7 +183,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 ## <a name="questions"></a>疑問がある場合
 
-ご質問がある場合は、[フィードバックをお送り](https://feedback.azure.com/forums/258995-azure-backup)ください。
+ご質問がある場合は、[フィードバックをお送り](https://feedback.azure.com/d365community/forum/153aa817-0725-ec11-b6e6-000d3a4f0858)ください。
 
 ## <a name="next-steps"></a>次のステップ
 

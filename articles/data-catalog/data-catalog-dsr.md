@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 966a56f20b64dd52dea08c668e9960d5cf47b3d9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104674633"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473207"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
@@ -442,7 +442,7 @@ ms.locfileid: "104674633"
     </tr>
 </table>
 
-サポートされている具体的なデータ ソースを確認する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
+サポートされている具体的なデータ ソースを確認する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/d365community/forum/3bedd14b-6b26-ec11-b6e6-000d3a4f032c) に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
 
 
 ## <a name="data-source-reference-specification"></a>データ ソース参照の仕様
