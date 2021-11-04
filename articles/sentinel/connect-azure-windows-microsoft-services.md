@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6f8a4d8c7d049241354a5cdeaf1613edfbe71b19
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fab632ae17f71829ddfb36ced149253e124c9851
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131047575"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456900"
 ---
 # <a name="connect-azure-sentinel-to-azure-windows-microsoft-and-amazon-services"></a>Azure Sentinel を Azure、Windows、Microsoft、および Amazon サービスに接続する
 
@@ -136,7 +136,125 @@ Azure Sentinel にデータを取り込むには
 
 [データ コネクタのリファレンス](data-connectors-reference.md) ページで、リソースのコネクタのセクションに表示されるテーブル名を使用することで、各リソースの種類のデータを検索してクエリを実行できます。
 
-## <a name="log-analytics-agent-based-connections"></a>Log Analytics エージェントベースの接続
+## <a name="windows-agent-based-connections"></a>Windows エージェントベースの接続
+
+# <a name="azure-monitor-agent"></a>[Azure Monitor エージェント](#tab/AMA)
+
+> [!IMPORTANT]
+>
+> - Azure Monitor エージェント (AMA) に基づくコネクタの一部は現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[Azure Monitor エージェント](../azure-monitor/agents/azure-monitor-agent-overview.md)では、**データ収集ルール (DCR)** を使用して、各エージェントから収集するデータが定義されます。 データ収集ルールには、次の 2 つの明確な利点があります。
+
+- **大規模に収集設定を管理** しながら、コンピューターのサブセットの一意の範囲指定された構成も可能になります。 それらはワークスペースから独立し、仮想マシンからも独立しているため、一度定義すると、コンピューターや環境間で再利用できます。 「[Azure Monitor エージェント用のデータ収集の構成](../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md)」をご覧ください。
+
+- **カスタム フィルターを作成** して、取り込むイベントを正確に選択できます。 Azure Monitor エージェントは、これらのルールを使用して *ソースの* データをフィルター処理し、必要なイベントだけを取り込み、その他のすべてを残します。 これにより、データ インジェストのコストを削減できます。
+
+データ収集ルールを作成する方法については、以下を参照してください。
+
+### <a name="prerequisites"></a>前提条件
+
+- Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
+
+- Azure 仮想マシン以外からイベントを収集するには、Azure Monitor エージェントベースのコネクタを有効にする前に、システムに [**Azure Arc**](../azure-monitor/agents/azure-monitor-agent-install.md) をインストールし、有効にしておく必要があります。
+
+   これには次のものが含まれます
+   
+    - 物理マシンにインストールされている Windows サーバー
+    - オンプレミスの仮想マシンにインストールされている Windows サーバー
+    - Azure 以外のクラウドの仮想マシンにインストールされている Windows サーバー
+
+### <a name="instructions"></a>Instructions
+
+1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 一覧からコネクタを選び、詳細ペインの **[コネクタ ページを開く]** を選びます。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
+
+1. コネクタ ページの **[前提条件]** セクションに記載された適切なアクセス許可があることを確認します。
+
+1. **[構成]** の下の **[+ データ収集ルールの追加]** を選択します。 右に **[データ収集ルールの作成]** ウィザードが表示されます。
+
+1. **[基本]** の下の **[規則名]** を入力し、データ収集ルール (DCR) を作成する **[サブスクリプション]** および **[リソース グループ]** を指定します。 監視対象のマシンとその関連付けが同じテナント内にある限り、同じリソース グループまたはサブスクリプションである必要は *ありません*。
+
+1. **[リソース]** タブで **[+ リソースの追加]** を選択し、データ収集ルールが適用されるマシンを追加します。 **[スコープの選択]** ダイアログが開き、使用可能なサブスクリプションの一覧が表示されます。 サブスクリプションを展開してそのリソース グループを表示し、リソース グループを展開して使用可能なマシンを表示します。 一覧に、Azure 仮想マシンと Azure Arc 対応サーバーが表示されます。 サブスクリプションまたはリソース グループのチェック ボックスをオンにして、含まれるすべてのマシンを選択するか、個々のマシンを選択できます。 すべてのマシンを選択したら、 **[適用]** を選択します。 このプロセスの最後で、選択した未インストールのマシンに Azure Monitor エージェントがインストールされます。
+
+1. **[収集]** タブで、収集するイベントを選びます。**[すべてのイベント]** または **[カスタム]** を選んで他のログを指定するか、[XPath クエリ](../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)を使用してイベントをフィルター処理します。 収集するイベントの特定の XML 条件を評価する式をボックスに入力し、 **[追加]** を選択します。 1 つのボックスには最大 20 個の式を、ルールには最大 100 個のボックスを入力できます。
+
+    [データ収集ルール](../azure-monitor/agents/data-collection-rule-overview.md#create-a-dcr)の詳細については、Azure Monitoring のドキュメントを参照してください。
+
+    > [!NOTE]
+    > - Windows セキュリティ イベント コネクタには、収集できる他の 2 つの [**事前構築済みイベント セット**](windows-security-event-id-reference.md) (**Common** と **Minimal**) が用意されています。
+    >
+    > - Azure Monitor エージェントは、 **[XPath バージョン 1.0](/windows/win32/wes/consuming-events#xpath-10-limitations) のみ** の XPath クエリをサポートしています。
+
+1. 必要なすべてのフィルター式を追加した後、 **[次へ: 確認および作成]** を選択します。
+
+1. "検証に成功しました" というメッセージが表示されたら、 **[作成]** を選択します。 
+
+コネクタ ページの **[構成]** に、すべてのデータ収集ルール (API を使用して作成されたルールを含む) が表示されます。 そこから既存のルールを編集または削除することができます。
+
+> [!TIP]
+> XPath クエリの有効性をテストするには、 *-FilterXPath* パラメーターを指定した PowerShell コマンドレット **Get-WinEvent** を使用します。 次のスクリプトは、一例を示しています。
+> ```powershell
+> $XPath = '*[System[EventID=1035]]'
+> Get-WinEvent -LogName 'Application' -FilterXPath $XPath
+> ```
+> - イベントが返されたら、クエリは有効です。
+> - [No events were found that match the specified selection criteria]\(指定した選択条件に一致するイベントは見つかりませんでした\) というメッセージが表示された場合は、クエリはおそらく有効ですが、一致するイベントがローカル コンピューターにありません。
+> - [The specified query is invalid]\(指定したクエリは無効です\) というメッセージが表示された場合は、クエリ構文が無効です。
+
+### <a name="create-data-collection-rules-using-the-api"></a>API を使用してデータ収集ルールを作成する
+
+また、API ([スキーマ](/rest/api/monitor/data-collection-rules)を参照) を使用してデータ収集ルールを作成することもできます。これは、多くのルールを作成する場合 (たとえば、MSSP の場合) の作業が容易になる可能性があります。 ルールを作成するためのテンプレートとして使用できる ([AMA コネクタ経由の Windows セキュリティ イベント](data-connectors-reference.md#windows-security-events-via-ama)用) の例を次に示します。
+
+**要求 URL とヘッダー**
+
+```http
+PUT https://management.azure.com/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule?api-version=2019-11-01-preview
+```
+
+**要求本文**
+
+```json
+{
+    "location": "eastus",
+    "properties": {
+        "dataSources": {
+            "windowsEventLogs": [
+                {
+                    "streams": [
+                        "Microsoft-SecurityEvent"
+                    ],
+                    "xPathQueries": [
+                        "Security!*[System[(EventID=) or (EventID=4688) or (EventID=4663) or (EventID=4624) or (EventID=4657) or (EventID=4100) or (EventID=4104) or (EventID=5140) or (EventID=5145) or (EventID=5156)]]"
+                    ],
+                    "name": "eventLogsDataSource"
+                }
+            ]
+        },
+        "destinations": {
+            "logAnalytics": [
+                {
+                    "workspaceResourceId": "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/centralTeamWorkspace",
+                    "name": "centralWorkspace"
+                }
+            ]
+        },
+        "dataFlows": [
+            {
+                "streams": [
+                    "Microsoft-SecurityEvent"
+                ],
+                "destinations": [
+                    "centralWorkspace"
+                ]
+            }
+        ]
+    }
+}
+```
+Azure Monitor のドキュメントのこちらの[データ収集ルールの完全な説明](../azure-monitor/agents/data-collection-rule-overview.md)を参照してください。
+
+
+# <a name="log-analytics-agent-legacy"></a>[Log Analytics エージェント (レガシ)](#tab/LAA)
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -144,6 +262,8 @@ Azure Sentinel にデータを取り込むには
 - Azure Sentinel ロールに加えて、それらのワークスペースの SecurityInsights (Azure Sentinel) ソリューションに対する **Log Analytics 共同作成者** ロールが必要です。
 
 ### <a name="instructions"></a>Instructions
+
+#### <a name="install-the-agent"></a>エージェントをインストールする
 
 1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
 
@@ -154,12 +274,25 @@ Azure Sentinel にデータを取り込むには
     | マシンの種類  | Instructions  |
     | --------- | --------- |
     | **Azure Windows VM の場合** | 1. **[エージェントのインストール先を選択してください]** で、 **[Azure Windows 仮想マシンにエージェントをインストールする]** を展開します。 <br><br>2. **[Download & install agent for Azure Windows Virtual machines >]\(Azure Windows 仮想マシン用のエージェントをダウンロードしてインストールする >\)** リンクを選択します。 <br><br>3. **[仮想マシン]** ブレードで、エージェントのインストール先となる仮想マシンを選んでから、 **[接続]** を選択します。 接続する各 VM に対してこの手順を繰り返します。 |
-    | **その他の Windows マシンの場合** | 1. **[エージェントのインストール先を選択してください]** で、 **[Azure 以外の Windows マシンにエージェントをインストールする]** を展開します <br><br>2. **[Download & install agent for non-Azure Windows machines >]\(Azure 以外の Windows マシン用のエージェントをダウンロードしてインストールする >\)** リンクを選択します。  <br><br>3. **[エージェントの管理]** ブレードの **[Windows サーバー]** タブで、32 ビットまたは 64 ビット システム用の **[Windows エージェントのダウンロード]** リンクを適宜選択します。      |
+    | **その他の Windows マシンの場合** | 1. **[エージェントのインストール先を選択してください]** で、 **[Azure 以外の Windows マシンにエージェントをインストールする]** を展開します <br><br>2. **[Download & install agent for non-Azure Windows machines >]\(Azure 以外の Windows マシン用のエージェントをダウンロードしてインストールする >\)** リンクを選択します。  <br><br>3. **[エージェントの管理]** ブレードの **[Windows サーバー]** タブで、32 ビットまたは 64 ビット システム用の **[Windows エージェントのダウンロード]** リンクを適宜選択します。  <br><br>4. ダウンロードした実行可能ファイルを使用して、目的の Windows システムにエージェントをインストールし、前の手順のダウンロード リンクの下に表示される **[ワークスペース ID とキー]** を使用してその構成を行います。 |
+    | | |
 
-1. DNS または Windows ファイアウォールのいずれかの **[ソリューションのインストール]** ボタンを選択します。
+> [!NOTE]
+>
+> 必要なインターネット接続を備えていない Windows システムでも Azure Sentinel にイベントをストリーム配信できるようにする場合は、プロキシとして機能する **Log Analytics ゲートウェイ** を別のマシンにインストールします。それには、**[エージェントの管理]** ページの **[Log Analytics ゲートウェイのダウンロード]** リンクを使用します。  その場合でも、イベントを収集する個々の Windows システムに Log Analytics エージェントをインストールする必要があります。
+>
+> このシナリオの詳細については、[**Log Analytics ゲートウェイ** のドキュメント](../azure-monitor/agents/gateway.md)を参照してください。
 
-**DnsEvents**、**DnsInventory**、および **WindowsFirewall** のテーブル名をそれぞれ使用して、DNS と Windows ファイアウォールのデータを検索してクエリを実行できます。 これら 2 つのサービス コネクタに関するこれとその他の情報については、[データ コネクタのリファレンス](data-connectors-reference.md) ページのそれぞれのセクションを参照してください。
+その他のインストール オプションとさらに詳しい情報については、[**Log Analytics エージェント** のドキュメント](../azure-monitor/agents/agent-windows.md)を参照してください。
 
+
+#### <a name="determine-the-logs-to-send"></a>送信するログを決定する
+
+Windows DNS サーバーと Windowsファイアウォール コネクタに対して、**[ソリューションのインストール]** ボタンを選びます。 レガシ セキュリティ イベント コネクタについては、送信する [**イベント セット**](windows-security-event-id-reference.md)を選択し、**[更新]** を選びます。
+
+[データ コネクタ リファレンス](data-connectors-reference.md) ページの各セクションのテーブル名を使用して、これらのサービスのデータを検索してクエリを実行できます。
+
+---
 
 ## <a name="next-steps"></a>次の手順
 
