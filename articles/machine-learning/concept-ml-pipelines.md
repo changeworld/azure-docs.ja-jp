@@ -8,14 +8,14 @@ ms.subservice: mlops
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 02/26/2021
+ms.date: 10/21/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 3eca5b1b70661ef47dfc156a4e4925b45aca1c9b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 80c31cc0675be216e21010daaee32964f1969fab
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429188"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555193"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 

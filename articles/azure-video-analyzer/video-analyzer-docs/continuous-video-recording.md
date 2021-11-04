@@ -3,14 +3,14 @@ title: エッジからの継続的なビデオ記録 - Azure Video Analyzer
 description: 継続的なビデオ記録 (CVR) とは、ライブ ビデオ ソースから連続して記録するプロセスを指します。 このトピックでは、CVR について、また Azure Video Analyzer で CVR を使用する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 830727c530d71e3700799ae296af6a124010a921
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7d737536cca3e014b0412a00a99ce034f6d28e36
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031178"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556561"
 ---
 # <a name="continuous-video-recording"></a>継続的なビデオ記録    
 
