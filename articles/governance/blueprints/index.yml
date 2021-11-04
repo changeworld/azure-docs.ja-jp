@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 08/27/2020
-  ms.openlocfilehash: 37098495b0cafe3fc839b18f48844f18fc4fe176
-  ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+  ms.openlocfilehash: f854fbb7fc6df48e3fba242b49d924b8650fd15e
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "107865893"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131423035"
 landingContent:
 - title: Azure Blueprints について
   linkLists:
@@ -88,7 +88,7 @@ landingContent:
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345058
+      url: https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0?c=775ae472-f324-ec11-b6e6-000d3a4f0da0
     - text: Azure のガバナンスの Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: リファレンス

@@ -56,6 +56,8 @@
       href: front-door-health-probes.md
     - name: Front Door が要求のルーティングと一致する仕組み
       href: front-door-route-matching.md
+    - name: エンド ツー エンド TLS 暗号化
+      href: concept-end-to-end-tls.md
     - name: HTTP/2 のサポート
       href: front-door-http2.md
     - name: HTTP ヘッダー プロトコルのサポート
