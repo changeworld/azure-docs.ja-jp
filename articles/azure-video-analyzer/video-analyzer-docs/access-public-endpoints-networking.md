@@ -2,13 +2,13 @@
 title: パブリック エンドポイントとネットワーク
 description: Azure Video Analyzer では、管理、インジェスト、再生など、さまざまな製品シナリオを可能にする一連のパブリック ネットワーク エンドポイントを公開します。 この記事では、パブリック エンドポイントとネットワークにアクセスする方法について説明します。
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: ad02a9ddd0ff2893e14d48f6698c83108f1acd63
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 11/04/2021
+ms.openlocfilehash: 2285408cbdc6fd9f633e8c34c253c2d5921bc4db
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659604"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552907"
 ---
 # <a name="public-endpoints-and-networking"></a>パブリック エンドポイントとネットワーク
 
@@ -20,7 +20,7 @@ Azure Video Analyzer では、管理、インジェスト、再生など、さ�
 
 このセクションでは、Video Analyzer エンドポイントのリストを示します。
 
-### <a name="streaming"></a>ストリーミング
+### <a name="streaming"></a>ストリーム
 
 * **目的**: オーディオ、ビデオ、推論のデータを公開します。これらは、[Video Analyzer プレーヤー ウィジェット](player-widget.md)または互換性のある DASH/HLS プレーヤーで使用できます。
 * **認証と認可**: エンドポイントの認可は、Video Analyzer サービスによって発行されたトークンを通じて実施されます。 トークンは 1 つのビデオに制限され、ビデオごとにクライアントおよび管理 API に適用される承認規則に基づいて暗黙的に発行されます。 承認フローは、Video Analyzer プレーヤー ウィジェットによって自動的に処理されます。
@@ -41,7 +41,7 @@ Azure Video Analyzer では、管理、インジェスト、再生など、さ�
 * **認証と認可**: 初期認証は、Video Analyzer 管理 API によって発行される、有効期限の短いプロビジョニング トークンを使用して行われます。 初期ハンドシェイクが完了すると、モジュールとサービスは、この時点以降に使用される、自動的にローテーションされる承認キーのセットを交換します。
 * **要件**: Video Analyzer Edge モジュールが正しく機能するには、このエンドポイントへのアクセスが必要です。 このエンドポイントに 36 時間以内に到達できない場合、Edge モジュールは機能を停止します。
 
-## <a name="telemetry"></a>製品利用統計情報
+## <a name="telemetry"></a>テレメトリ
 
 * **目的**: オプションでテレメトリ データを定期的に送信すると、Microsoft では Video Analyzer Edge モジュールの使用状況をよりよく把握し、互換性、パフォーマンス、その他の製品分野で行える将来の改善を事前に特定できます。
 * **認証と認可**: 認可は、事前に確立されたキーに基づいて行います。
@@ -54,7 +54,7 @@ Azure Video Analyzer では、管理、インジェスト、再生など、さ�
 
 ## <a name="azure-storage"></a>Azure Storage
 
-* **目的** : [ビデオ シンク](pipeline.md#video-sink) ノードを介してクラウド上にビデオを格納するように[パイプライン](pipeline.md)が構成されている場合、音声、ビデオ、および推論データを記録します。
+* **目的** : [ビデオ シンク](pipeline.md#video-sink) ノードを介してクラウド上にビデオを格納するように [パイプライン](pipeline.md)が構成されている場合、音声、ビデオ、および推論データを記録します。
 * **認証と承認**: 承認は、標準の Azure Storage サービスの認証と承認の実施によって行われます。 この場合、ストレージにはコンテナー固有の SAS URL を介してアクセスします。
 * **要件**: このエンドポイントへのアクセスは、ビデオをクラウドにアーカイブするように Video Analyzer エッジ パイプラインが構成されている場合にのみ必要です。
 

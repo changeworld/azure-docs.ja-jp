@@ -8,14 +8,14 @@ ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 02/25/2021
+ms.date: 10/21/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: aea475773ce7b283a0c11333f01f4228a1bcbe30
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: b5ef9878eaaa07a255789ab1338b3fd1fd7ee122
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424656"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555022"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>信頼できる機械学習とは (プレビュー)
 

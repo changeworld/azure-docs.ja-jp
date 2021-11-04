@@ -2,14 +2,14 @@
 title: 推論メタデータ スキーマ - Azure
 description: Azure Video Analyzer では、HTTP ベースのコントラクトを使用するか、gRPC ベースのコントラクトを使用するかに関係なく、各推論オブジェクトは、このトピックで説明するオブジェクト モデルに従います。
 ms.topic: reference
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9d22e4b05a19b7d0c120f02f4a97017865563314
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a9447623f369b62cd5578bab2bd234ba7af1eca0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090030"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554281"
 ---
 # <a name="inference-metadata-schema"></a>推論メタデータ スキーマ 
 

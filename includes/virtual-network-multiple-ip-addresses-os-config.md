@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 769c3c5e720486c2c6d590f6feea55de5e0f4b88
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f76408314f65409d21d163f34efc7da3d6e86f68
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130288068"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131570685"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>VM オペレーティング システムに IP アドレスを追加する
 
@@ -34,10 +34,10 @@ ms.locfileid: "130288068"
     * **[サブネット マスク]** : 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
     * **[デフォルト ゲートウェイ]** : サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
     * **[次の DNS サーバーのアドレスを使う]** を選択して、次の値を入力します。
-        * **[優先 DNS サーバー]** : 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。  (代替 DNS サーバーの場合、任意の無料パブリック DNS サーバー アドレスを選択できます)
+      * **[優先 DNS サーバー]** : 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。  (代替 DNS サーバーの場合、任意の無料パブリック DNS サーバー アドレスを選択できます)
     * **[詳細]** ボタンを選択して、他の IP アドレスを追加します。 前の手順で Azure ネットワーク インターフェイスに追加した、各セカンダリ プライベート IP アドレスを、Azure ネットワーク インターフェイスに割り当てられたプライマリ IP アドレスが割り当てられている Windows ネットワーク インターフェイスに追加します。
 
-        仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。 オペレーティング システム内で IP アドレスを手動で設定する場合は、Azure [ネットワーク インターフェイス](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであることを確認してください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。 オペレーティング システム内で Azure パブリック IP アドレスを割り当てないでください。
+      仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。 オペレーティング システム内で IP アドレスを手動で設定する場合は、Azure [ネットワーク インターフェイス](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであることを確認してください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。 オペレーティング システム内で Azure パブリック IP アドレスを割り当てないでください。
 
     * **[OK]** をクリックして TCP/IP 設定を閉じ、もう一度 **[OK]** をクリックしてアダプター設定を閉じます。 これで RDP 接続が再確立されます。
 
@@ -142,9 +142,9 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 ```
 
 - 必ず以下の置き換えを行ってください。
-    - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
-    - **10.0.0.1** をデフォルト ゲートウェイに
-    - **eth2** をセカンダリ NIC の名前に 
+  - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
+  - **10.0.0.1** をデフォルト ゲートウェイに
+  - **eth2** をセカンダリ NIC の名前に 
 
 </details>
 
@@ -246,9 +246,9 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 ```
 
 - 必ず以下の置き換えを行ってください。
-    - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
-    - **10.0.0.1** をデフォルト ゲートウェイに
-    - **eth2** をセカンダリ NIC の名前に 
+  - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
+  - **10.0.0.1** をデフォルト ゲートウェイに
+  - **eth2** をセカンダリ NIC の名前に 
 
 </details>
 
@@ -335,9 +335,9 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 ```
 
 - 必ず以下の置き換えを行ってください。
-    - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
-    - **10.0.0.1** をデフォルト ゲートウェイに
-    - **eth2** をセカンダリ NIC の名前に 
+  - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
+  - **10.0.0.1** をデフォルト ゲートウェイに
+  - **eth2** をセカンダリ NIC の名前に 
 
 
 </details>
@@ -357,18 +357,18 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 1. ネットワーク インターフェイスの構成ファイルを更新します (‘eth0’ と仮定)。
 
    * 次のコマンドを使用して、ネットワーク インターフェイス ファイルを開きます。
-     
+
      ```bash
      vi /etc/network/interfaces
      ```
-    
+
    * ファイルの末尾に次の行が表示されます。
-    
+
       ```bash
       auth eth0
       iface eth0 inet dhcp
       ```
-    
+
    * dhcp の既存の行項目はそのままにします。 プライマリ IP アドレスが以前と同じ構成のまま維持されます。
    * このファイルの行の最後に、次の行を追加します。
 
@@ -390,7 +390,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
    systemctl restart networking
    ```
    Debian の以前のバージョンでは、以下のコマンドを使用できます。
-    
+
    ```bash
    service networking restart
    ```

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/21/2021
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: cde3cb0a32807d35e899a04616b9f300a19ab17c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b4d704f404df361e0f0a58c9c5bf033c5e6c067
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085718"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560969"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 

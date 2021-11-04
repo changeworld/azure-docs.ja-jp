@@ -3,14 +3,14 @@ title: Power BI での AI 推論イベントのリアルタイム視覚化
 description: Azure Video Analyzer を使用して、継続的なビデオ記録やイベントベースの記録を行うことができます。 このチュートリアルでは、Microsoft Power BI の IoT Hub から AI 推論イベントをリアルタイムで視覚化する手順について説明します。
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 09/08/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9359d51e1767793e1d838777cb76a3af04f30c6d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 571e89e1616f8e7ab2ee0eca021ea1020dea9140
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073694"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564074"
 ---
 # <a name="tutorial-real-time-visualization-of-ai-inference-events-with-power-bi"></a>チュートリアル: Power BI での AI 推論イベントのリアルタイム視覚化
 

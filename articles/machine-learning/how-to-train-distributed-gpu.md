@@ -8,13 +8,13 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/19/2021
-ms.openlocfilehash: fdc357900f0111f338af0d758f4aef913c00706d
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.date: 10/21/2021
+ms.openlocfilehash: 7c4d85f1f1c2d0c628b3e724f1af0297888504d5
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728154"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557283"
 ---
 # <a name="distributed-gpu-training-guide"></a>分散 GPU トレーニング ガイド
 

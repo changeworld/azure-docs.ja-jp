@@ -2,14 +2,14 @@
 title: 監視とログ記録 - Azure Video Analyzer サービス
 description: この記事では、Azure Video Analyzer サービスでの監視とログ記録の概要について説明します。
 ms.topic: how-to
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ee7e0367dadcc328c90fc3005688992831716c7a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 370904873a3f86ebee1cd530f349c55306588d08
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090047"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564007"
 ---
 # <a name="monitor-and-log"></a>監視とログ記録
 

@@ -3,14 +3,14 @@ title: Azure Video Analyzer プレーヤー ウィジェットのサンプル
 description: この参照記事では、Video Analyzer プレーヤー ウィジェットのサンプル アプリケーションの概要について簡単に説明します
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6ef3333c6e3f9aec083bbb050d677a1acba93847
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 842ffa07a956c2bb90bd039f25c49bf72467ecee
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087110"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557777"
 ---
 # <a name="azure-video-analyzer-player-widget-sample"></a>Azure Video Analyzer プレーヤー ウィジェットのサンプル
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 10/01/2021
+ms.date: 10/21/2021
 ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 13440b0d504effa4faf231cc181731cca7053dc3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: caa8f387debbc5afa9f53f76c100268312d7b9b3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130234393"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555820"
 ---
 # <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする
 

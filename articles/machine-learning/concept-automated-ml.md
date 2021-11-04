@@ -8,14 +8,14 @@ ms.subservice: automl
 ms.topic: conceptual
 author: cartacioS
 ms.author: sacartac
-ms.date: 07/01/2021
+ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: c08eae9654e01fda15889ac6fe65f99de2d73bb6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 32847e60114e86eb8d8571aff4d31c436a2fbd42
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261807"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563399"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 

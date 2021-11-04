@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/18/2019
+ms.date: 11/03/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 81ac59ce54f77b8462198ed8532abe8b62f2cb61
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 47d0862eefd713aa814ab7da2737565c33160cd3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503754"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559297"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]

@@ -7,14 +7,14 @@ ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.author: jhirono
 author: jhirono
-ms.date: 07/07/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.openlocfilehash: dcc46e36f85642380cb1c3d2a773698e9807e0f9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 23a6e849c08183744eddb74d6e2b8ed775d0daf9
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438324"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558442"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 

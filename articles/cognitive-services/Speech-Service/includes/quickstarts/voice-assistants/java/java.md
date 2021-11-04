@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.custom: devx-track-java
 ms.author: travisw
-ms.openlocfilehash: f2a4f7881eaaac5093200f130c360bfb6b8c64d7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ff6484ce425228966f5f0e6968699133b1c2fe3c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187647"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520824"
 ---
 **ターゲット環境を選択してください**
 

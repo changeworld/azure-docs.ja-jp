@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.topic: how-to
-ms.date: 10/13/2021
-ms.openlocfilehash: 38d9487c5f0cd31c732a855de1008bae74df7e3f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 10/21/2021
+ms.openlocfilehash: 493ca7789d47f642025c34779c8895084bf28acd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163270"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558271"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning"></a>Azure Machine Learning でマネージド ID を使用する
 

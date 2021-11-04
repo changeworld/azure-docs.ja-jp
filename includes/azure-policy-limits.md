@@ -6,15 +6,14 @@ ms.service: azure-policy
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: dacoulte
-ms.openlocfilehash: e9ba8efefd2238b1aadc2fbeaf17a286e0714bcd
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1c63d79c82f667fbd7cfc9a62a741eab275757dd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123483756"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571034"
 ---
-Azure Policy では、オブジェクトの種類ごとに最大数があります。 定義について、_Scope_ というエントリは [管理グループ](../articles/governance/management-groups/overview.md)またはサブスクリプションを意味します。
-割り当てと除外の場合、_スコープ_ というエントリは [管理グループ](../articles/governance/management-groups/overview.md)、サブスクリプション、リソース グループ、または個々のリソースを意味します。
+Azure Policy では、オブジェクトの種類ごとに最大数があります。 定義について、_Scope_ というエントリは [管理グループ](../articles/governance/management-groups/overview.md)またはサブスクリプションを意味します。 割り当てと除外の場合、_スコープ_ というエントリは [管理グループ](../articles/governance/management-groups/overview.md)、サブスクリプション、リソース グループ、または個々のリソースを意味します。
 
 | Where | 対象 | 最大数 |
 |---|---|---|

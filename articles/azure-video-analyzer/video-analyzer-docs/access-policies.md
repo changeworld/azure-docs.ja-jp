@@ -2,13 +2,13 @@
 title: Azure Video Analyzer のアクセス ポリシー
 description: この記事では、Azure Video Analyzer のアクセス ポリシーで JWT トークンを使用してビデオをセキュリティで保護する方法について説明します。
 ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: fe421e429357000bf6380cdf18f3a029fea4f7c9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/04/2021
+ms.openlocfilehash: a6a1a455c1c105d9deaabbe6a3d57eef3398ed51
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128670483"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563684"
 ---
 # <a name="access-policies"></a>アクセス ポリシー
 

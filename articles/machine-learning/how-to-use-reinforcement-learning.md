@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: peterlu
 author: peterclu
-ms.date: 05/05/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q2
-ms.openlocfilehash: ca8f0349692b8a72d8a8b5953723249934a6f672
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 126293b2416637b9775b9203144c3bc22b96758b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428618"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557397"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 

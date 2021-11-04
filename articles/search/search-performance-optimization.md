@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 60dd14be7d420d5aac5da5ba85d3e78e72a5ba42
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 22f037751c913e05dde84395ed18252b16d01a6e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002531"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554376"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure Cognitive Search の可用性とビジネス継続性
 
@@ -125,11 +125,6 @@ Azure Cognitive Search は主要なデータ ストレージ ソリューショ�
 ## <a name="next-steps"></a>次のステップ
 
 価格レベルと各レベルのサービスの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページをご覧ください。 パーティションとレプリカの組み合わせの詳細については、[キャパシティ プランニング](search-capacity-planning.md)に関する記事をご覧ください。また、実践で使えるヒントについては、[ケース スタディ: Cognitive Search を使用して複雑な AI シナリオに対応する](https://techcommunity.microsoft.com/t5/azure-ai/case-study-effectively-using-cognitive-search-to-support-complex/ba-p/2804078)方法に関するページを参照してください。
-
-この記事で説明された手法のパフォーマンスとデモについて、次の動画をご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
->
 
 <!--Image references-->
 [1]: ./media/search-performance-optimization/geo-redundancy.png

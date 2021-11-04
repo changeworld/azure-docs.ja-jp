@@ -3,14 +3,14 @@ title: AI コンポジションを使用した複数の AI モデルによるラ
 description: この記事では、Azure Video Analyzer の AI コンポジション機能を使用した、複数の AI モデルによるライブ ビデオ ストリーム分析の方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 04/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b86cf60f51913c883bdc1fa62a6d8b1bb3f073e9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 63df94e51b53dde61fd7863ece33b2a9baac2908
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090039"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554566"
 ---
 # <a name="analyze-live-video-streams-with-multiple-ai-models-using-ai-composition"></a>AI コンポジションを使用した複数の AI モデルによるライブ ビデオ ストリームの分析
 

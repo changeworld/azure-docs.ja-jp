@@ -2,14 +2,14 @@
 author: sgilley
 ms.service: machine-learning
 ms.topic: include
-ms.date: 09/23/2021
+ms.date: 10/21/2021
 ms.author: sdgilley
-ms.openlocfilehash: 08f45c41cd0edd4886ebeb124c91d0655562c543
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 122d8c73948641ead5b859c5ac670d4c4c1a3cfe
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367445"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571562"
 ---
 ラベル付けタスクをわかりやすく説明することが重要です。 **[ラベル付けの手順]** ページで、ラベル付けの手順に関する外部サイトへのリンクを追加できます。または、ページ上のエディット ボックスに手順を入力することもできます。 指示は、タスク指向で、対象ユーザーに適したものにします。 次の質問を考慮してください。
 

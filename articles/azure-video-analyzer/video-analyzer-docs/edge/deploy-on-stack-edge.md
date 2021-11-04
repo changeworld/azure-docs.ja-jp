@@ -2,14 +2,14 @@
 title: Azure Video Analyzer を Azure Stack Edge にデプロイする
 description: この記事では、Azure Video Analyzer を Azure Stack Edge に配置する方法について説明します。
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a8aa2523303b64d47f7386ea23b714cce6c644b1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b03935028fec1cce2ea5794abf95ecfa70ea2921
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091965"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554585"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>Azure Video Analyzer を Azure Stack Edge にデプロイする
 

@@ -8,14 +8,14 @@ ms.subservice: mldata
 ms.reviewer: sgilley
 author: kvijaykannan
 ms.author: vkann
-ms.date: 09/30/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.openlocfilehash: 2937be805d82abde1125c8c8b23162d7eedec015
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 449a6de24b9b02d64e1bda66f24afaa683868a56
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429549"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558556"
 ---
 # <a name="work-with-a-data-labeling-vendor-company"></a>データのラベル付けベンダー会社と連携する
 

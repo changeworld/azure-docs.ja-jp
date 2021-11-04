@@ -2,14 +2,14 @@
 title: Azure Video Analyzer を使用してライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 description: このクイックスタートでは、Azure Video Analyzer 使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトが線を越えたことを検出する方法を示します。
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db1db2166816ab9b2f523aa14af37868bd0b1a1a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: faa8053ed2d6dbc2b1df0917fcb08dd308fb1910
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091154"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552603"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>チュートリアル: ライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 

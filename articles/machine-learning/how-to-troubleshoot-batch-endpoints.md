@@ -10,13 +10,13 @@ ms.custom: troubleshooting, devplatv2
 ms.reviewer: laobri
 ms.author: tracych
 author: tracych
-ms.date: 05/05/2021
-ms.openlocfilehash: ba0dfb7c86250a55de5967bbffafd40823709dce
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 97b235e45e1f988fde94272252e738d38b0a53e6
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425792"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564672"
 ---
 # <a name="troubleshooting-batch-endpoints-preview"></a>バッチ エンドポイントのトラブルシューティング (プレビュー)
 
@@ -29,22 +29,8 @@ ms.locfileid: "129425792"
 | 問題 | 考えられる解決策 |
 |--|--|
 | コードの構成または環境がない。 | MLflow 以外のモデルを使用する場合は、スコアリング スクリプトと環境の定義を必ず指定してください。 ノー コード デプロイがサポートされるのは MLflow モデルのみです。 詳細については、[MLflow と Azure Machine Learning を使用して ML モデルを追跡する](how-to-use-mlflow.md)方法に関するページを参照してください|
-| 既存のバッチ エンドポイントのモデル、コード、環境、コンピューティングの更新に失敗する。 | 新しい名前で新しいバッチ エンドポイントを作成します。 既存のバッチ エンドポイントに関してこれらのアセットを更新する機能は、まだサポートされていません。 |
-| リソースが見つかりませんでした。 | CLI コマンドで `--type batch` を使用していることを確認します。 この引数を指定しなかった場合、既定の `online` タイプが使用されます。|
 | サポートされない入力データ。 | バッチ エンドポイントに渡すことができる入力データの形式は、1) 登録データ、2) クラウドのデータ、3) ローカルのデータの 3 つです。 適切な形式を使用していることを確認してください。 詳細については、「[バッチ エンドポイント (プレビュー) を使用したバッチ スコアリング](how-to-use-batch-endpoint.md)」を参照してください|
-| 指定されたエンドポイント名が存在するか、削除中である。 | 新しい名前で新しいバッチ エンドポイントを作成します。 `endpoint delete` コマンドは、エンドポイントを削除対象としてマークします。 同じ名前を再利用して、同じリージョンに新しいエンドポイントを作成することはできません。 |
 | 出力が既に存在する。 | 独自の出力場所を構成した場合、エンドポイントを呼び出すたびに、必ず新しい出力を指定してください。 |
-
-##  <a name="scoring-script-requirements"></a>スコアリング スクリプトの要件
-
-MLflow 以外のモデルを使用している場合、スコアリング スクリプトを指定する必要があります。 スコアリング スクリプトには 2 つの関数が必要です。
-
-- `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。 この関数は、プロセスの開始時に 1 回だけ呼び出されます。
--  `run(mini_batch)`: この関数は、`mini_batch` インスタンスごとに実行されます。
-    -  `mini_batch`: `mini_batch` の値は、ファイル パスのリストです。
-    -  `response`: `run()` メソッドは、Pandas の DataFrame または配列を返す必要があります。 その返された要素は、共通の出力ファイルに追加されます。 返された出力要素はそれぞれ、入力ミニバッチ内で成功した 1 つの入力要素の実行を示します。 1 つの入力を実行出力結果にマップできるだけの十分なデータが実行結果に含まれていることを確認してください。 実行の出力は出力ファイルに書き込まれますが、順序どおりの書き込みは保証されません。出力でいずれかのキーを使って、正しい入力にマップする必要があります。
-
-:::code language="python" source="~/azureml-examples-cli-preview/cli/endpoints/batch/mnist/code/digit_identification.py" :::
 
 ## <a name="understanding-logs-of-a-batch-scoring-job"></a>バッチ スコアリング ジョブのログについて
 

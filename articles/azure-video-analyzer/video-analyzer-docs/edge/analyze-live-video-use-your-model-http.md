@@ -3,15 +3,15 @@ title: 独自のモデルを使用してライブ ビデオを分析する - HTT
 description: このクイック スタートでは、Video Analyzer を使用して独自のモデル (HTTP) でライブ ビデオを分析する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 09/10/2021
+ms.date: 11/04/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7ec8b1215a835c70d72ca7ff23b76c47f65634c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42845d87a8c1679a9b186cf71a9b82a9413fb005
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092001"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563589"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>クイック スタート:独自のモデルを使用してライブ ビデオを分析する - HTTP
 

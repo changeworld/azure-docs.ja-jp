@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
-ms.date: 09/30/2021
+ms.date: 10/21/2021
 ms.custom: data4ml
-ms.openlocfilehash: 89d3a569a8e202ff2fbe43f697de3598b9b767ad
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a6e47fb02256056f104473769f3917a215ca789c
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423936"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555801"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
 
@@ -37,7 +37,7 @@ ms.locfileid: "129423936"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、<bpt id="p1">[</bpt>無料アカウント<ept id="p1">](https://azure.microsoft.com/free/)</ept>を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
@@ -51,7 +51,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 
 次に、Azure Machine Learning Studio でデータ ラベル付けプロジェクトを管理します。これは、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合インターフェイスです。 Internet Explorer ブラウザーでは、Studio はサポートされません。
 
-1. <bpt id="p1">[</bpt>Azure Machine Learning Studio<ept id="p1">](https://ml.azure.com)</ept> にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
 1. お使いのサブスクリプションと、作成したワークスペースを選択します。
 
@@ -107,7 +107,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. <bpt id="p1">**</bpt>[Create dataset from datastore]\(データストアからデータセットを作成\)<ept id="p1">**</ept> フォームで次の情報を入力します。
 
-    1. <bpt id="p1">**</bpt>[基本情報]<ept id="p1">**</ept> フォームで名前を追加します。ここでは <bpt id="p2">**</bpt>images-for-tutorial<ept id="p2">**</ept> を使用します。  必要に応じて説明を追加します。  <bpt id="p1">**</bpt>[次へ]<ept id="p1">**</ept> を選択します。
+    1. <bpt id="p1">**</bpt>[基本情報]<ept id="p1">**</ept> フォームで名前を追加します。ここでは <bpt id="p2">**</bpt>images-for-tutorial<ept id="p2">**</ept> を使用します。  必要に応じて説明を追加します。  **[次へ]** を選択します。
     1. <bpt id="p1">**</bpt>[データストアの選択]<ept id="p1">**</ept> フォームの <bpt id="p2">**</bpt>[以前に作成されたデータストア]<ept id="p2">**</ept> を選択してデータストア名をクリックし、 <bpt id="p3">**</bpt>[データストアの選択]<ept id="p3">**</ept> を選択します。
     1. 次のページで、現在選択されているデータストアが正しいことを確認します。 正しくない場合は、 <bpt id="p1">**</bpt>[以前に作成されたデータストア]<ept id="p1">**</ept> を選択して、前の手順を繰り返します。
     1. 引き続き <bpt id="p1">**</bpt>[データストアの選択]<ept id="p1">**</ept> フォームで、 <bpt id="p2">**</bpt>[参照]<ept id="p2">**</ept> を選択し、 <bpt id="p3">**</bpt>[MultiClass - DogsCats]<ept id="p3">**</ept> を選択します。  <bpt id="p1">**</bpt>[保存]<ept id="p1">**</ept> を選択して <bpt id="p2">**</bpt>/MultiClass - DogsCats<ept id="p2">**</ept> をパスとして使用します。
@@ -120,7 +120,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 新しい画像をデータセットに追加する予定がある場合、増分更新によって、それらの新しい画像が検出されてプロジェクトに追加されます。  この機能を有効にすると、新しい画像がないかプロジェクトによって定期的にチェックされます。  このチュートリアルでは新しい画像をデータストアに追加する予定はないので、この機能はオフにしておきます。
 
-<bpt id="p1">**</bpt>[次へ]<ept id="p1">**</ept> をクリックして続行します。
+**[次へ]** をクリックして続行します。
 
 ### <a name="label-classes"></a>ラベル クラス
 
@@ -134,7 +134,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. タスクの簡単な説明をフォームに直接追加することもできます。  「<bpt id="p1">**</bpt>ラベル付けのチュートリアル - 猫と犬<ept id="p1">**</ept>」と入力します。
 
-1. <bpt id="p1">**</bpt>[次へ]<ept id="p1">**</ept> を選択します。
+1. **[次へ]** を選択します。
 
 1. <bpt id="p1">**</bpt>[ML によるラベル付け]<ept id="p1">**</ept> セクションで、チェックボックスをオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
 

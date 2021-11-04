@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: Juliako
   ms.author: juliako
-  ms.date: 06/01/2021
-  ms.openlocfilehash: a7d339bf7fe92a177c301227d417c1accb11a3c9
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.date: 11/04/2021
+  ms.openlocfilehash: 96e23616d867d5e45a5063b06e29bbe9b96eb198
+  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131039014"
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "131554262"
 landingContent:
 - title: Azure Video Analyzer の概要
   linkLists:

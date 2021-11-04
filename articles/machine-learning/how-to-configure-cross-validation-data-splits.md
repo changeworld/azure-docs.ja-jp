@@ -10,13 +10,13 @@ ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 02/23/2021
-ms.openlocfilehash: e6a5893fd6c6fab3dc1631065d63315fe2c6fd84
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: be945319a81165137b890277372ba625ad200cd2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427649"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559677"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
 

@@ -9,13 +9,13 @@ ms.reviewer: laobri
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: f9767fd35241804c511c3e3fa19051b04ad7c098
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: a70178ef42a784aaf6398593ddb385a4b7e06ff2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428751"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560247"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning で非公開の Python パッケージを使用する
 

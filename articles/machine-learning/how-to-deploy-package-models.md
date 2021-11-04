@@ -5,16 +5,16 @@ description: モデルをパッケージ化します。 モデルは、後でダ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/31/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 05af03c7ac60e2f98471ace4d57a296a54cf8ce6
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 2a44f9150fd9d1b46a8f3ce7cfd44606f4382eac
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707353"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557530"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker を使用して登録済みモデルをパッケージ化する方法
 

@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 02/28/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: bb110a12c3ca84905ea7907675fc10261c641f39
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a3b1adb3a60b40b027b844230d7c6fca64d8cbe4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428808"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553306"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 

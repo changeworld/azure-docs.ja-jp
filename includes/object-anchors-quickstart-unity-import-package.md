@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 11/19/2020
 ms.author: crtreasu
-ms.openlocfilehash: a7c50ad6b60e3f3c372d16ecde54573109c50df2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 162bac7d14e2639514bcd06e4e3279787784ba03
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796995"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571520"
 ---
 # <a name="web-download"></a>[Web ダウンロード](#tab/unity-package-web-ui)
 
