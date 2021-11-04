@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 852506b024939fdbdde6fa4d3ffebbe1c08b38fa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 075e52647137841539e8db72a4c9fdae90bd8447
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092613"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577025"
 ---
 # <a name="monitor-an-app-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリを監視する
 

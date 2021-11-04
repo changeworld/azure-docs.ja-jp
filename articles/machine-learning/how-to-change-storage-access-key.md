@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/19/2020
-ms.openlocfilehash: 4108c905148eba0bb718fe372be87e5ec6a342d2
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 5d05741afbb33ea331ae223eb7bf047642ab3328
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425660"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561690"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 

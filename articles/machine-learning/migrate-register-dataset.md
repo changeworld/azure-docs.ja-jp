@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 02/04/2021
-ms.openlocfilehash: f6ad2a2120d998a89ebb59fc6f70779487f7c275
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 410ffe44ac260ffe9208895ddac0da07a93c4a1d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429511"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552736"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>スタジオ (クラシック) のデータセットを Azure Machine Learning に移行する
 

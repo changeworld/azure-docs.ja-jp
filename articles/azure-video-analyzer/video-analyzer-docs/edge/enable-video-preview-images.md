@@ -2,14 +2,14 @@
 title: プレビュー イメージを有効にする
 description: この記事では、Azure Video Analyzer を使用してビデオを記録するときにプレビュー イメージを有効にし、アクセスする方法について説明します
 ms.topic: how-to
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ed3ebeffb70b592c1a81e8ec7871a662f7b856bd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dd78a3753f61fe5615f15a41d1b1493556d0dafc
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089900"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559430"
 ---
 # <a name="enable-preview-images-when-recording-video"></a>ビデオを記録するときにプレビュー イメージを有効にする
 

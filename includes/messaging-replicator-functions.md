@@ -8,17 +8,16 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38a2f3cd5f1b391b651c89801e4ab3abe92ed448
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3cb87b130b0dd7888664f0bcc1522c99c1c56a4b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112255265"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131570872"
 ---
 ## <a name="what-is-a-replication-task"></a>レプリケーション タスクとは
 
-ソースからのイベントは、レプリケーション タスクによって受信されて、ターゲットに転送されます。
-ほとんどのレプリケーション タスクで、イベントは変更されずに転送され、変更されるとしても、ソースとターゲットのプロトコルが異なる場合のメタデータ構造間のマッピング程度です。 
+ソースからのイベントは、レプリケーション タスクによって受信されて、ターゲットに転送されます。 ほとんどのレプリケーション タスクで、イベントは変更されずに転送され、変更されるとしても、ソースとターゲットのプロトコルが異なる場合のメタデータ構造間のマッピング程度です。 
 
 レプリケーション タスクは一般にステートレスであり、タスクの順次実行または並列実行の間に状態や他の副作用が共有されないことを意味します。 これは、バッチ処理とチェーン化にも当てはまり、どちらもストリームの既存の状態の上に実装できます。 
 

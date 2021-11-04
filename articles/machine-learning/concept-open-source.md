@@ -8,13 +8,13 @@ ms.subservice: mlops
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/14/2020
-ms.openlocfilehash: d8c765bbf006d02ec2c5bdf87a621119c922b02b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: cf0a7f78de5a79440876630278faab8e581eeb33
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430119"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559088"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>オープンソースと Azure Machine Learning プロジェクトとの統合
 

@@ -10,11 +10,11 @@ metadata:
   ms.subservice: azure-video-analyzer-media
   ms.date: 05/25/2021
   ms.author: juliako
-  ms.openlocfilehash: 8776f899a21639162448e681fdf8b32247b16fc4
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: b6b28c84c8a46df55394a026c0998be8bbc2c7bb
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
+  ms.lasthandoff: 11/04/2021
   ms.locfileid: "130044196"
 title: Video Analyzer for Media についてよく寄せられる質問
 summary: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) に関してよく寄せられる質問に回答します。
@@ -118,10 +118,10 @@ sections:
   questions:
   - question: Video Analyzer for Media ではどのような API が提供されていますか?
     answer: >
-      Video Analyzer for Media API を使用すると、インデックス作成、メタデータの抽出、アセット管理、翻訳、埋め込み、モデルのカスタマイズなどができます。 Video Analyzer for Media API の使用方法の詳細については、[Video Analyzer for Media 開発者ポータル](https://api-portal.videoindexer.ai/)を参照してください。
+      Video Analyzer for Media の API では、インデックス作成、メタデータの抽出、アセット管理、翻訳、埋め込み、モデルのカスタマイズなどができます。 Video Analyzer for Media API の使用方法の詳細については、[Video Analyzer for Media 開発者ポータル](https://api-portal.videoindexer.ai/)を参照してください。
   - question: Video Analyzer for Media ではどのようなクライアント SDK が提供されていますか?
     answer: 現在のところ、クライアント SDK は提供されていません。 Video Analyzer for Media チームは SDK に取り組んでいる最中で、まもなく提供開始の予定です。
-  - question: Video Analyzer for Media API の使用を開始するにはどうすればよいですか?
+  - question: Video Analyzer for Media の API の使用を開始するにはどうすればよいですか?
     answer: >
       [チュートリアル: Video Analyzer for Media API の使用を開始する](video-indexer-use-apis.md)に従ってください。
   - question: Video Analyzer for Media API と Azure Media Service v3 API の違いは何ですか?

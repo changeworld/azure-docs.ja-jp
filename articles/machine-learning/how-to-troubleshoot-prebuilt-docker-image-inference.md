@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
-ms.date: 10/07/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: 59a3709ef6145fa723d1919429fec4bf62a0998b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: f57a59ffa9ad316e0ae1da76efb843673303541f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705328"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556162"
 ---
 # <a name="troubleshooting-prebuilt-docker-images-for-inference"></a>推論用の事前構築済み Docker イメージに関するトラブルシューティング
 

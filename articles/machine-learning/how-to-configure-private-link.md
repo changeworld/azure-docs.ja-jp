@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/07/2021
-ms.openlocfilehash: cd08a4cb752ede0f958adde438cb516791f4ae76
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 10/21/2021
+ms.openlocfilehash: 134eeff68debe0faa799d5fb5bfa4b477deef7f0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215142"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562563"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する
 

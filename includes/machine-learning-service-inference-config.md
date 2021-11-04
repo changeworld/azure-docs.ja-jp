@@ -4,20 +4,20 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
-ms.openlocfilehash: a03f71adc99063fee4374b1436b08adf5bab783d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72ccb933db6b4524ecdd45a9f74f4a1f399171da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102511034"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520691"
 ---
 `inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
 | JSON エンティティ | メソッド パラメーター | 説明 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | イメージに対して実行するコードを含むローカル ファイルのパス。 |
-| `sourceDirectory` | `source_directory` | 任意。 イメージを作成するためのすべてのファイルを含むフォルダーへのパス。パスにより、このフォルダーまたはサブ フォルダー内の任意のファイルへのアクセスが簡単になります。 ローカル コンピューターから Webservice の依存関係として、フォルダー全体をアップロードできます。 注: entry_script、conda_file、および extra_docker_file_steps パスは、source_directory パスへの相対パスです。 |
-| `environment` | `environment` | 任意。  Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment)。|
+| `sourceDirectory` | `source_directory` | 省略可能。 イメージを作成するためのすべてのファイルを含むフォルダーへのパス。パスにより、このフォルダーまたはサブ フォルダー内の任意のファイルへのアクセスが簡単になります。 ローカル コンピューターから Webservice の依存関係として、フォルダー全体をアップロードできます。 注: entry_script、conda_file、および extra_docker_file_steps パスは、source_directory パスへの相対パスです。 |
+| `environment` | `environment` | 省略可能。  Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment)。|
 
 Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment)の完全な仕様を、推論構成ファイルに含めることができます。 この環境がワークスペースに存在しない場合は、Azure Machine Learning によって作成されます。 それ以外の場合は、必要に応じて Azure Machine Learning によって環境が更新されます。 次の JSON は例です。
 
@@ -28,7 +28,7 @@ Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environmen
         "docker": {
             "arguments": [],
             "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseImage": "mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu18.04",
             "enabled": false,
             "sharedVolumes": true,
             "shmSize": null

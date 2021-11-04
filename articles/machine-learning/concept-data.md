@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 08/31/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 1b439f65f2807d2d076363938169631651b85d20
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 537fe72423e7ab4052f2a4bad32784a541228296
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430157"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553958"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 

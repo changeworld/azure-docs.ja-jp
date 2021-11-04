@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a471f0026140f5d2b3a559788422e92447e14cb8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9fc40b46ce2fbe93d64013ea4e3e7b7e36ef7bf3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092064"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576303"
 ---
 # <a name="containers-in-azure-container-apps-preview"></a>Azure Container Apps プレビューのコンテナー
 

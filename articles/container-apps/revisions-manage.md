@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5f90deaa5e3b8e2aaf067f218638390a089142b4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 099f7ff73f74ac93affbf24bbe6ff548ce5a9c35
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092607"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577291"
 ---
 # <a name="manage-revisions-azure-container-apps-preview"></a>Azure Container Apps プレビューのリビジョンを管理する
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory External Identities の新機能
 description: Azure Active Directory External Identities の新規および更新されたドキュメント。
-ms.date: 10/05/2021
+ms.date: 11/04/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,25 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 3247f9e13e50a9fb7b4792be518af5b85767822a
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: cb90a1525f53c2a36a666ec5b37104eb4f48bae9
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533641"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579189"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory External Identities:新機能
 
 Azure Active Directory External Identities のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 External Identities サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [電子メール ワンタイム パスコード認証](one-time-passcode.md)
+- [Azure Active Directory B2B コラボレーションの FAQ](faq.yml)
+- [ゲスト ユーザーの引き換え状態をリセットする (プレビュー)](reset-redemption-status.md)
+- [Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](google-federation.md)
 
 ## <a name="september-2021"></a>2021 年 9 月
 

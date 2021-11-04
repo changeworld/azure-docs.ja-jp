@@ -6,16 +6,19 @@ author: msjasteppe
 ms.custom: references_regions
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/22/2021
+ms.date: 11/03/2021
 ms.author: jasteppe
-ms.openlocfilehash: d1a02502a13d2702b8965cebefe6935b4e457891
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 00f3153981a07e436b714dadfd2785aac61dd8ab
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130268428"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578896"
 ---
 # <a name="frequently-asked-questions-about-iot-connector"></a>IoT コネクタについてよく寄せられる質問
+
+> [!IMPORTANT]
+> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 ここでは、IoT コネクタに関してよく寄せられる質問をいくつか紹介します。
 

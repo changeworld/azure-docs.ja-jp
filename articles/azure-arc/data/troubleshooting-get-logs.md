@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 82152756b5caf5bfbe0301a14185d8ffed1d1afe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4b61faba9abd2f4c1af5db559dd28fa5a8e7c013
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727996"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555250"
 ---
 # <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>ログを取得して Azure Arc 対応データ サービスのトラブルシューティングを行う
 
@@ -33,13 +33,13 @@ ms.locfileid: "121727996"
 次のコマンドを実行して、ログをダンプします。
 
    ```azurecli
-   az arcdata dc debug copy-logs --exclude-dumps --skip-compress
+   az arcdata dc debug copy-logs --exclude-dumps --skip-compress --use-k8s
    ```
 
    次に例を示します。
 
    ```azurecli
-   #az arcdata dc debug copy-logs --exclude-dumps --skip-compress
+   #az arcdata dc debug copy-logs --exclude-dumps --skip-compress --use-k8s
    ```
 
 データ コントローラーによって、現在の作業ディレクトリの `logs` という名前のサブディレクトリにログ ファイルが作成されます。 
@@ -186,4 +186,3 @@ az arcdata dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
             ├───journal
             └───openvpn
 ```
-

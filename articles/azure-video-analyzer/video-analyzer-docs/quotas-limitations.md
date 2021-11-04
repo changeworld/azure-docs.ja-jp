@@ -3,14 +3,14 @@ title: Azure Video Analyzer のクォータと制限事項 - Azure
 description: この記事では、Azure Video Analyzer のクォータと制限事項について説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 45c867d3420c51e931b1cc9a0a8e1b54836f7494
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cad4ed3ffac3d9b8617150070579bd9bee5ad6b3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012019"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563133"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Azure Video Analyzer のクォータと制限事項
 

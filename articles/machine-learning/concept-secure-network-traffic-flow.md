@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 09/22/2021
-ms.openlocfilehash: 9e35609a6e6d450b2938dfbb4feab319f5a3c9c2
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 10/21/2021
+ms.openlocfilehash: 119405dc4db6d31aaf2ac5b704af7798ce41837a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660256"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564406"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>セキュリティで保護されたワークスペースを使用する場合のネットワーク トラフィック フロー
 

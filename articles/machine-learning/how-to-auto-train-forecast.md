@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
-ms.date: 06/11/2021
-ms.openlocfilehash: f8e036a77603c1e0833117a4562ad9dfd93c7ac9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 3469b316b48c876965fb1aaec9bfd5feed33909e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427193"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561785"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Python で時系列予測モデルをトレーニングするために、AutoML を設定する
 

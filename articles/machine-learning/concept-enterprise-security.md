@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/22/2021
-ms.openlocfilehash: 1675cd187942c582fbe85c1642a6d4e0176f37a4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 10/21/2021
+ms.openlocfilehash: cc403561784deea26e238063f585873c24cd39d3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475713"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562734"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティとガバナンス
 

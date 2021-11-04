@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: 4af576587d5d0e87053fb31cdd2c1d073d1ea97e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 244b7070d73eb96f584a1a50b49e24b44ba41a7e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714773"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561406"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 
@@ -134,10 +134,6 @@ ms.locfileid: "129714773"
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
 
 **Search エクスプローラー** は、[REST API 要求](/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)と [完全な Lucene クエリ パーサー](/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
-
-> [!TIP]
-> [Azure Cognitive Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から次の手順のデモをご覧いただけます。
->
 
 1. コマンド バーの **[Search エクスプローラー]** をクリックします。
 

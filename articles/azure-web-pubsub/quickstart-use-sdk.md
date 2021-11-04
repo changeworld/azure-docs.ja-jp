@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: quickstart
-ms.date: 08/06/2021
-ms.openlocfilehash: 42bcaa9697733662b3a5b890461b917fc466c492
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/01/2021
+ms.openlocfilehash: 39a451b241952d40467e75f5a463baa3b76ab2b9
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445176"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576474"
 ---
 # <a name="quickstart-publish-messages-using-the-service-sdk-for-the-azure-web-pubsub-instance"></a>クイックスタート: Azure Web PubSub インスタンスのサービス SDK を使用してメッセージを発行する
 
@@ -74,7 +74,7 @@ ms.locfileid: "122445176"
     mkdir publisher
     cd publisher
     dotnet new console
-    dotnet add package Azure.Messaging.WebPubSub --prerelease
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
     ```
 
 2. `Program.cs` ファイルを更新し、`WebPubSubServiceClient` クラスを使用してクライアントにメッセージを送信します。
@@ -130,23 +130,22 @@ ms.locfileid: "122445176"
     mkdir publisher
     cd publisher
     npm init -y
-    npm install --save @azure/web-pubsub
-
+    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
     ```
+
 2. 次に、Azure Web PubSub SDK を使用して、サービスにメッセージを発行しましょう。 下のコードを使用して `publish.js` ファイルを作成します。
 
     ```javascript
     const { WebPubSubServiceClient } = require('@azure/web-pubsub');
 
-    if (process.argv.length !== 5) {
-    console.log('Usage: node publish <connection-string> <hub-name> <message>');
-    return 1;
+    if (process.argv.length !== 3) {
+      console.log('Usage: node publish <message>');
+      return 1;
     }
-
-    let serviceClient = new WebPubSubServiceClient(process.argv[2], process.argv[3]);
-
+    const hub = "pubsub";
+    let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
     // by default it uses `application/json`, specify contentType as `text/plain` if you want plain-text
-    serviceClient.sendToAll(process.argv[4], { contentType: "text/plain" });
+    serviceClient.sendToAll(process.argv[2], { contentType: "text/plain" });
     ```
 
     `sendToAll()` の呼び出しでは、単純にハブ内の接続されているすべてのクライアントにメッセージが送信されます。
@@ -154,7 +153,8 @@ ms.locfileid: "122445176"
 3. `<connection_string>` を、[前の手順](#get-the-connectionstring-for-future-use)でフェッチされた **ConnectionString** で置き換えて、次のコマンドを実行します。
 
     ```bash
-    node publish "<connection_string>" "myHub1" "Hello World"
+    export WebPubSubConnectionString="<connection-string>"
+    node publish "Hello World"
     ```
 
 4. 前の CLI クライアントがメッセージを受信したことを確認できます。
@@ -178,7 +178,7 @@ ms.locfileid: "122445176"
 
         # Or call .\env\Scripts\activate when you are using CMD
 
-        pip install azure-messaging-webpubsubservice
+        pip install azure-messaging-webpubsubservice==1.0.0b1
 
         ```
 2. 次に、Azure Web PubSub SDK を使用して、サービスにメッセージを発行しましょう。 下のコードを使用して `publish.py` ファイルを作成します。

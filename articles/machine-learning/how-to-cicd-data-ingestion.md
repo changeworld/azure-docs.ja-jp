@@ -11,13 +11,13 @@ ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
-ms.date: 06/23/2020
-ms.openlocfilehash: 2c1a2c5372b6ba0875e9da645accb69f2979e85e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: ce025bb924e20d59d312594091944bb0b263f587
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425679"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559715"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 

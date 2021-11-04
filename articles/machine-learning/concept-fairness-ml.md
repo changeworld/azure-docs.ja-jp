@@ -8,14 +8,14 @@ ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 04/02/2021
+ms.date: 10/21/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 34c8a18d842ac9e362bd81a522522ea9e845b06e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 80eac2c705582ca210ad6eb35e7a3fab08896fba
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426889"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559905"
 ---
 # <a name="machine-learning-fairness-preview"></a>機械学習の公平性 (プレビュー)
 

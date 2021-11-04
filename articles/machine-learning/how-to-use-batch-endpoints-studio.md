@@ -9,14 +9,14 @@ ms.topic: how-to
 author: shivanissambare
 ms.author: ssambare
 ms.reviewer: larryfr
-ms.date: 08/16/2021
+ms.date: 10/21/2021
 ms.custom: how-to, studio, managed-batch-endpoints
-ms.openlocfilehash: 290d13c050a624c660174e3d8e272c67e90a9207
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: d9d6287903466283e0b94e246a17a75a77929c8a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424144"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560589"
 ---
 # <a name="how-to-use-batch-endpoints-preview-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでバッチ エンドポイント (プレビュー) を使用する方法
 
@@ -85,7 +85,7 @@ Azure Machine Learning スタジオでバッチ エンドポイントを作成�
 
 ### <a name="overwrite-settings"></a>設定を上書きする
 
-一部の設定は、バッチ スコアリング ジョブを開始するときに上書きすることができます。 たとえば、設定を上書きして、コンピューティング リソースを有効活用し、パフォーマンスを高めることができます。 設定をオーバーライドするには、 __[Override deployment settings]\(デプロイ設定のオーバーライド\)__ を選択し、設定を指定します。 詳細については、[バッチ エンドポイントの使用](how-to-use-batch-endpoint.md#overwrite-settings)に関するページを参照してください。
+一部の設定は、バッチ スコアリング ジョブを開始するときに上書きすることができます。 たとえば、設定を上書きして、コンピューティング リソースを有効活用し、パフォーマンスを高めることができます。 設定をオーバーライドするには、 __[Override deployment settings]\(デプロイ設定のオーバーライド\)__ を選択し、設定を指定します。 詳細については、[バッチ エンドポイントの使用](how-to-use-batch-endpoint.md#configure-the-output-location-and-overwrite-settings)に関するページを参照してください。
 
 :::image type="content" source="media/how-to-use-batch-endpoints-studio/overwrite-setting.png" alt-text="バッチ ジョブの開始時の上書き設定のスクリーンショット":::
 

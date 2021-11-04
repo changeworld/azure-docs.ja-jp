@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/26/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e62f2a07b4266671bb055e6a672e13f69e2a0bab
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 084768eec7863e7983fa4c552586deba8fb1b23b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982818"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578032"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -64,7 +64,7 @@ ms.locfileid: "112982818"
 | [IP ファイアウォール アクセス](service-configure-firewall.md) | Free レベルでは使用できません。 |
 | [プライベート エンドポイント (Azure Private Link との統合)](service-create-private-endpoint.md) | 検索サービスへの受信接続の場合、Free レベルでは利用できません。 インデクサーによる他の Azure リソースへの送信接続の場合は、Free または S3 HD では使用できません。 スキルセットを使用するインデクサーの場合、Free、Basic、S1、S3 HD では使用できません。| 
 | [可用性ゾーン](search-performance-optimization.md) | Free レベルと Basic レベルでは使用できません。 |
-| [セマンティック検索 (プレビュー)] | Free レベルと Basic レベルでは使用できません。 |
+| [セマンティック検索 (プレビュー)](semantic-search-overview.md) | Free レベルと Basic レベルでは使用できません。 |
 
 リソース集中型の機能は、十分な容量を与えない限り、うまくいかない場合があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 

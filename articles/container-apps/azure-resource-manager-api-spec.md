@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: reference
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f59046a431e872c11f7b03ffff30240beb330f37
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a0bc640e046074af94462c9e429102dc43ad442f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089994"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578237"
 ---
 # <a name="container-apps-preview-arm-template-api-specification"></a>Container Apps プレビューの ARM テンプレートの API 仕様
 

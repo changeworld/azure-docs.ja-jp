@@ -6,12 +6,12 @@ ms.author: aurighet
 ms.date: 05/13/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 42735d13eb4a251a702bd486e21f56981e63326f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 62a13298e62a9c7f1cfe7a0643f9db2a1dfc9d15
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112535720"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520945"
 ---
 このクイックスタートでは、Windows 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 
@@ -69,10 +69,13 @@ namespace CallingQuickstart
         string user_token_ = "<User_Access_Token>";
 
         Call call_;
+        CallClient call_client;
+        CallAgent call_agent;        
 
         public MainPage()
         {
             this.InitializeComponent();
+            call_client = new CallClient();
         }
 
         private async void JoinButton_ClickAsync(object sender, RoutedEventArgs e)
@@ -83,20 +86,12 @@ namespace CallingQuickstart
             }
 
             //
-            //  Create CallClient
-            //
-            CallClient call_client = new CallClient();
-
-            //
             //  Create CallAgent
             //
             CommunicationTokenCredential token_credential;
-            CallAgent call_agent;
-
             try
             {
                 token_credential = new CommunicationTokenCredential(user_token_);
-
                 CallAgentOptions call_agent_options = new CallAgentOptions();
                 call_agent = await call_client.CreateCallAgent(token_credential, call_agent_options);
             }

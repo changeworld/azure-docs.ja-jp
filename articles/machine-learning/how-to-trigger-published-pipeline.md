@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: laobri
 author: lobrien
-ms.date: 01/29/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 3c9343cad720ca240b4bed29e8ad9a265c07ee8e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 50706fe2ef2a4c2697ca55503c5b3f372d9d9816
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426020"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564900"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>機械学習パイプラインをトリガーする
 

@@ -8,14 +8,14 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
-ms.date: 08/24/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.openlocfilehash: 0966d85fcab33752359c5174f6205c5556f2a137
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: af61ce1fbea14b6c872916ecf9b501ad074bda9b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427934"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556998"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning トレーニングの実行で認証資格情報シークレットを使用する
 

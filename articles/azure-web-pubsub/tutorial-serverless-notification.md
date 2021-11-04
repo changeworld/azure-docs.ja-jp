@@ -5,13 +5,13 @@ author: JialinXin
 ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/24/2021
-ms.openlocfilehash: f0811776692bcb12e25fa9757c13d7a0fb75c7fa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/01/2021
+ms.openlocfilehash: 8e565d31de0943b592db0bafff3e9a55e15c0fee
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080937"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578670"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレス通知アプリを作成する
 

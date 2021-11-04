@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 60b4e1ac82574cab16feee9c436d9521eaf58ad4
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f61c01c05412ea79aa955c599bd4dacd1eea7297
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130173291"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131570916"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -1398,7 +1398,7 @@ IMDS を使用すると、スケジュールされたイベントの状態を取
 
 ## <a name="product-feedback"></a>製品フィードバック
 
-製品のフィードバックとアイデアは、[Virtual Machines] > [Instance Metadata Service] にあるユーザー フィードバック チャネル ([こちら](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627)) にお寄せください。
+製品のフィードバックとアイデアは、[Virtual Machines] > [Instance Metadata Service] にあるユーザー フィードバック チャネル ([こちら](https://feedback.azure.com/d365community/forum/ec2f1827-be25-ec11-b6e6-000d3a4f0f1c?c=a60ebac8-c125-ec11-b6e6-000d3a4f0f1c)) にお寄せください。
 
 ## <a name="next-steps"></a>次のステップ
 

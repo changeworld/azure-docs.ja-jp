@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 72800baf7faf5807f21c827879036f33e1f0d356
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c432623cccbb41f8bca51a7846128a2a531d745d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092609"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576284"
 ---
 # <a name="quotas-for-azure-container-apps-preview"></a>Azure Container Apps プレビューのクォータ
 

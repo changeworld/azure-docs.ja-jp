@@ -2,14 +2,14 @@
 title: Azure Video Analyzer を使用してライブ ビデオでオブジェクトを追跡する
 description: このクイックスタートでは、Azure Video Analyzer エッジ モジュールを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトを追跡する方法を示します。 コンピューター ビジョン モデルを適用して、ライブ ビデオ フィードのフレームのサブセット内でオブジェクトを検出する方法を示します。 その後、オブジェクト トラッカー ノードを使用して、他のフレーム内でそれらのオブジェクトを追跡できます。
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ceda70a3fa0ced3c64eed041ef65600c1cf37563
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ad6e963e28521f595a64e427230e4fd55e2f3d4b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092787"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564425"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>クイックスタート: ライブ ビデオでオブジェクトを追跡する
 

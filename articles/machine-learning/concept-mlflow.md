@@ -8,15 +8,15 @@ ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: mlops
 ms.reviewer: nibaccam
-ms.date: 05/25/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 87c1bd275c2b407d1afe96c9e225c29edb42060a
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 4900e66afa994b97a479e377e300c13ff29ae8e4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424618"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555117"
 ---
 # <a name="mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning
 

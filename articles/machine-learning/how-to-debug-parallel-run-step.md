@@ -10,13 +10,13 @@ ms.custom: troubleshooting
 ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
-ms.date: 09/23/2020
-ms.openlocfilehash: 30a23150fc3d3de18cdde48c9ab07743613c5a15
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 47ad08328588ca3b380298b6e796cc05d3af29fe
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426266"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564330"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep のトラブルシューティング
 

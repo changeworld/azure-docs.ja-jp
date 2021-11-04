@@ -8,15 +8,15 @@ ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
 ms.reviewer: larryfr
-ms.date: 06/23/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 86bfb3343ebbd756a5386d268537e0ace6083431
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d4628dde4e8b0090b7c815ea50415b8a54524db2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707379"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557739"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 

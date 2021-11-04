@@ -3,14 +3,14 @@ title: Azure Video Analyzer で再生するためのビデオを記録する
 description: この記事では、Azure Video Analyzer で再生するためのビデオの記録について説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 09/30/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 94ac0847b4cb4783ad16044514960b88c67d2a03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 253db9fe0ad067f00647cb195995eaee4951a38a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073721"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563950"
 ---
 # <a name="record-video-for-playback"></a>再生用のビデオの記録
 

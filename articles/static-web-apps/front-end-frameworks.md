@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: be5415658de782c362eca0f40a17a4578932aafa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bbcf14012f7e237538e20d8219d278c4322607d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777224"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575790"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Azure Static Web Apps を使用してフロントエンド フレームワークとライブラリを構成する
 
@@ -31,7 +31,7 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 | フレームワーク | App artifact location (アプリ成果物の場所) | カスタム ビルド コマンド |
 |--|--|--|
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | 該当なし <sup>2</sup> |
-| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
+| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --configuration production` |
 | [Angular Universal](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
 | [Aurelia](https://aurelia.io/) | `dist` | 該当なし |
 | [Backbone.js](https://backbonejs.org/) | `/` | 該当なし |

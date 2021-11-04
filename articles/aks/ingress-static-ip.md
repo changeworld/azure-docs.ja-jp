@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで自動的に TLS �
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: d56332cecc5938c8f4406f4c36ec16b9516a08b3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7d05e1f8878c2315d2b3966354baff8e592250f1
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323935"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578366"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
@@ -35,7 +35,7 @@ Helm の構成および使用方法の詳細については、「[Azure Kubernet
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-また、この記事では、ACR が統合された既存の AKS クラスターがあることを前提としています。 ACR が統合された AKS クラスターを作成する方法の詳細については、「[Azure Kubernetes サービスから Azure Container Registry の認証を受ける][aks-integrated-acr]」を参照してください。
+また、この記事では、ACR が統合された既存の AKS クラスターがあることを前提としています。 ACR が統合された AKS クラスターを作成する方法の詳細については、[Azure Kubernetes Service からの Azure Container Registry による認証][aks-integrated-acr]に関する記事を参照してください。
 
 ## <a name="import-the-images-used-by-the-helm-chart-into-your-acr"></a>Helm Chart で使用されるイメージを ACR にインポートする
 
@@ -99,7 +99,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間を作成し、その名前空間内での動作を想定しています。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが Kubernetes RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
+> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成され、その名前空間内で動作することを想定しています。 必要に応じて、ご自身の環境の名前空間を指定できます。 AKS クラスターが Kubernetes RBAC 対応でない場合は、Helm コマンドに `--set rbac.create=false` を追加してください。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。
@@ -503,9 +503,9 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 <!-- LINKS - external -->
 [helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
-[cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
-[cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
-[cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
+[cert-manager-certificates]: https://cert-manager.io/docs/concepts/certificate/
+[cert-manager-cluster-issuer]: https://cert-manager.io/docs/concepts/issuer/
+[cert-manager-issuer]: https://cert-manager.io/docs/concepts/issuer/
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 [helm]: https://helm.sh/

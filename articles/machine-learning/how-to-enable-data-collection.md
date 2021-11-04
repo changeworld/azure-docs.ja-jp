@@ -8,15 +8,15 @@ ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 07/14/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: data4ml
-ms.openlocfilehash: a629b2ca07b9b807ba42e4e071b7f9430ace2108
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 698f912fde1ca4abbffdc4015ae1dce1feade5c1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427573"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557435"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 

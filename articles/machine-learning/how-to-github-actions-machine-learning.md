@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 author: juliakm
 ms.author: jukullam
-ms.date: 10/19/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: github-actions-azure
-ms.openlocfilehash: d040b613e11065aaf3a1ad457184ca5afdec1aa4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: e8648cb302da6c4659276d36dad4120b3a01c1f1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074249"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553401"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning で GitHub Actions を使用する
 

@@ -8,15 +8,15 @@ ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: laobri
 author: lobrien
-ms.date: 8/25/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: be7c64940466d3e1379c407970e5bd71645d882b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a28a9b5cc6241c36e6dfdca253a4e56af480b9d8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429625"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557511"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>機械学習パイプラインを発行して追跡する
 
@@ -350,13 +350,13 @@ Studio から発行されたパイプラインを実行することもできま�
 
 1. 実行または使用する、またはパイプライン エンドポイントの以前の実行の結果を確認する、特定のパイプラインを選択します。
 
-## <a name="disable-a-published-pipeline&quot;></a>発行されたパイプラインを無効にする
+## <a name="disable-a-published-pipeline"></a>発行されたパイプラインを無効にする
 
 発行済みパイプラインの一覧にパイプラインが表示されないようにするには、Studio または SDK でそれを無効にします。
 
 ```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
-p = PublishedPipeline.get(ws, id=&quot;068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 

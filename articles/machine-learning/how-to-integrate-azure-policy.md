@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: ワークスペースが要件に準拠していることを確認するために、Azure Machine Learning の組み込みポリシーを使用するように、Azure Policy を使用する方法について説明します。
 author: aashishb
 ms.author: aashishb
-ms.date: 05/10/2021
+ms.date: 10/21/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e9a532ca4a4bf87bfb4569c03d367cb4d3d2ea2d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 7c9b8d5ef1126d204d4f418bc70100760468bc33
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428238"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562373"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Azure Machine Learning の監査と管理
 

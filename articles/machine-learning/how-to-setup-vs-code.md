@@ -7,15 +7,15 @@ author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 05/25/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 2b175d209c6506cb802e0105dff03c7c0f6e6ad9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: bb4035d1757a68cce1bcb57abedb6c805c47a3a2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425033"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558385"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>Visual Studio Code Azure Machine Learning 拡張機能をセットアップする (プレビュー)
 

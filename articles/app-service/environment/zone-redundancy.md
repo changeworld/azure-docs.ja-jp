@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/05/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 117fe7d8c624c0776c6ec6f61296101a2f844f1b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: a60ab8498076eb6380657b9cd57a3f8d0db31da2
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432808"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576417"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境での可用性ゾーンのサポート
 
@@ -58,29 +58,29 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 次の Resource Manager テンプレートのスニペットの例は、新しい ***zones*** プロパティを示しており、ILB ASE をゾーン 2 に固定する必要があることを指定しています。
 
 ```
-   "resources": [
-      {
-         "type": "Microsoft.Web/hostingEnvironments",
-         "kind": "ASEV2",
-         "name": "yourASENameHere",
-         "apiVersion": "2015-08-01",
-         "location": "your location here",
-         "zones": [
+"resources": [
+    {
+        "type": "Microsoft.Web/hostingEnvironments",
+        "kind": "ASEV2",
+        "name": "yourASENameHere",
+        "apiVersion": "2015-08-01",
+        "location": "your location here",
+        "zones": [
             "2"
-         ],
-         "properties": {
-         "name": "yourASENameHere",
-         "location": "your location here",
-         "ipSslAddressCount": 0,
-         "internalLoadBalancingMode": "3",
-         "dnsSuffix": "contoso-internal.com",
-         "virtualNetwork": {
-             "Id": "/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here",
-             "Subnet": "yourSubnetNameHere"
-          }
-         }
-      }
-    ]
+        ],
+        "properties": {
+            "name": "yourASENameHere",
+            "location": "your location here",
+            "ipSslAddressCount": 0,
+            "internalLoadBalancingMode": "3",
+            "dnsSuffix": "contoso-internal.com",
+            "virtualNetwork": {
+                "Id": "/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here",
+                "Subnet": "yourSubnetNameHere"
+            }
+        }
+    }
+]
 ```
 
 アプリがゾーン冗長になるようにするには、2 つのゾーン ILB ASE をデプロイする必要があります。 2 つのゾーン ILB ASE は、別々の可用性ゾーンに存在する必要があります。 次に、それぞれの ILB ASE にアプリをデプロイする必要があります。 アプリが作成されたら、負荷分散ソリューションを構成する必要があります。 推奨されるソリューションは、ゾーン ILB ASE の[ゾーン冗長 Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) アップストリームをデプロイすることです。 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: wenxwei
 ms.author: wenxwei
-ms.date: 05/25/2021
+ms.date: 10/21/2021
 ms.reviewer: peterlu
 ms.custom: devplatv2
-ms.openlocfilehash: 89fb2c08aa76b88110bb5832f297d08d5891dda4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f411d33baea7863b9139069f1eefd1282cf7b730
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448321"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562088"
 ---
 # <a name="train-models-with-rest-preview"></a>REST を使用してモデルをトレーニングする (プレビュー)
 
@@ -92,7 +92,7 @@ LightGBM の例は、LightGBM 環境で実行する必要があります。 PUT 
 
 `Docker` を使用して Docker イメージを構成し、`condaFile` を使用して conda の依存関係を追加できます。 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_environment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_environment":::
 
 ### <a name="datastore"></a>データストア
 
@@ -114,7 +114,7 @@ AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_A
 
 データストアを用意できたら、データセットを作成できます。 この例では、共通のデータセット `iris.csv` を使用し、`path` でそれをポイントします。 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_data":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_data":::
 
 ### <a name="code"></a>コード
 
@@ -128,7 +128,7 @@ az storage blob upload-batch -d $AZUREML_DEFAULT_CONTAINER/src \
 
 コードをアップロードしたら、PUT 要求を使用してコードを指定し、`datastoreId` を使用してデータストアを参照することができます。 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_code":::
 
 ## <a name="submit-a-training-job"></a>トレーニング ジョブの送信
 
@@ -145,7 +145,7 @@ az storage blob upload-batch -d $AZUREML_DEFAULT_CONTAINER/src \
 
 次のコマンドを使用して、トレーニング ジョブを送信します。
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_job":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_job":::
 
 ## <a name="submit-a-hyperparameter-sweep-job"></a>ハイパーパラメーター スイープ ジョブを送信する
 
@@ -162,7 +162,7 @@ Azure Machine Learning では、トレーニング ハイパーパラメータ�
 
 同じ LightGBM の例でスイープ ジョブを作成するには、次のコマンドを使用します。 
 
-:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_a_sweep_job":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/train-rest.sh" id="create_a_sweep_job":::
 
 ## <a name="next-steps"></a>次の手順
 

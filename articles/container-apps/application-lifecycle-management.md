@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: be6070817a8d0b419ba73788b2cde48b02d56af3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8ee2acbfeca4c5f15817b988fb1375fad014eb2a
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089995"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577101"
 ---
 # <a name="application-lifecycle-management-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでのアプリケーション ライフサイクル管理
 

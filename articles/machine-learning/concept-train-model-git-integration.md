@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning をローカルの Git リポジトリと統合して、トレーニング実行の一環として、リポジトリ、ブランチ、現在のコミット情報を追跡する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 04/08/2021
-ms.openlocfilehash: 37c7d94bfb645e444b4fb937823dcb8d56bcb9c7
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.date: 10/21/2021
+ms.openlocfilehash: 8c228cf930f89eab06977dc2565c6355894576a8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112457735"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559050"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 

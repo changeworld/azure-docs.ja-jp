@@ -2,14 +2,14 @@
 author: sgilley
 ms.service: machine-learning
 ms.topic: include
-ms.date: 09/23/2021
+ms.date: 10/21/2021
 ms.author: sdgilley
-ms.openlocfilehash: f09abdf270e9c7790e1b1106e1a66990eb3b0ea9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8364dc07ef0e850cf7924e1ab8820cd8f921e7fc
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367450"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571370"
 ---
 ラベル付けプロジェクトは、Azure Machine Learning から管理します。 **[データのラベル付け]** ページを使用して、プロジェクトを管理します。
 

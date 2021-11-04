@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.custom: automl,contperf-fy21q2
-ms.date: 12/18/2020
-ms.openlocfilehash: 4931b6a1b13390813cee09e906ceaea64205bd70
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 5dcd0f5fffd485f49225bae31ad81a74bdb1cde3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426399"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559107"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動機械学習でのデータの特徴量化
 

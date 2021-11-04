@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 03/30/2021
 ms.author: parkerra
-ms.openlocfilehash: efdbd67a6e43c53edf510091e3c28788338de44b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7b6d57a1e0f3ed579231200fa1a77dfb717fb020
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721802"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571323"
 ---
 # <a name="web-download"></a>[Web ダウンロード](#tab/unity-package-web-ui)
 

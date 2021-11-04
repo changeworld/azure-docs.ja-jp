@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7ff5f10097fcac78596d8b32ed7a5a72d331486a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e4b465b593fadcacce59a14c9fbced0780c252a9
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092059"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578294"
 ---
 # <a name="set-up-https-ingress-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでの HTTPS イングレスの設定
 

@@ -10,13 +10,13 @@ ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 02/25/2021
-ms.openlocfilehash: e4298daf41d63ee9d0f90c171c29502806681070
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/21/2021
+ms.openlocfilehash: 37eb558e755860fc2130965fa5faacfe0d4fe804
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534790"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564824"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 

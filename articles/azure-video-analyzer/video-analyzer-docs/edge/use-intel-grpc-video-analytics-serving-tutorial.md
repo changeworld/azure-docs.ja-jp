@@ -3,14 +3,14 @@ title: Azure Video Analyzer とともに gRPC 経由で Intel OpenVINO™ DL Str
 description: このチュートリアルでは、Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.service: azure-video-analyzer
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 55ce6a7afc47e614bf080a21106f1a26388126f8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ebdbc116e106ab03a9b4ca7b2a56eb4ce19444f9
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030298"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554300"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
