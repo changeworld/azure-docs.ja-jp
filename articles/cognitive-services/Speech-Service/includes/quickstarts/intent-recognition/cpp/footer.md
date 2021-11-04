@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 65a3132625f708380256d79c766c6aa3afdfecac
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: f9d583f2b10a44cfbcf374a491ec23ec78a9da18
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543329"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507415"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で C++ サンプルを探索する](https://aka.ms/speech/github-cpp)

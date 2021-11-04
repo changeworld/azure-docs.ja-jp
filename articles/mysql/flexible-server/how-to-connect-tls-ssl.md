@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 46a451fd41f460165435305f2abf5d56fca4837d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2f73d6c8969cd6915c1a571eb6196bcf8f901bd6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779408"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468140"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>暗号化された接続を使用して Azure Database for MySQL - フレキシブル サーバーに接続する
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL フレキシブル サーバーでは、Secure Sockets Layer (SSL) とトランスポート層セキュリティ (TLS) の暗号化を使用した MySQL サーバーへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルであり、ユーザーがコンプライアンス要件に準拠できるようにします。
 
@@ -58,7 +55,7 @@ Azure Database for MySQL フレキシブル サーバーでは、トランスポ
 次の例は、mysql コマンド ライン インターフェイスを使用してサーバーに接続する方法を示しています。 `--ssl-mode=DISABLED` 接続文字列設定を使用して、mysql クライアントからの TLS/SSL 接続を無効にします。 値を実際のサーバー名とパスワードに置き換えてください。
 
 ```bash
- mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED 
+ mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED
 ```
 
 require_secure_transport を OFF に設定しても、暗号化された接続がサーバー側でサポートされなくなるということではないので注意してださい。 フレキシブル サーバーに対して require_secure_transport を OFF に設定した場合でも、クライアントが暗号化された接続を使用して接続すると、それはそのまま受け入れられます。 次に示す、require_secure_transport=OFF で構成されたフレキシブル サーバーへの mysql クライアントを使用した接続も、下のように正常に機能します。

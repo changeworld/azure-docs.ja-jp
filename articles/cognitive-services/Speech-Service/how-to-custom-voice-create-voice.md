@@ -3,19 +3,19 @@ title: Custom Voice を作成する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: 実際のデータをアップロードする準備ができたら、Custom Voice ポータルに移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語またはロケールと性別プロパティを共有する必要があります。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: pafarley
-ms.openlocfilehash: 1f444ca13224c27918812c12f0a9e86a50e0b994
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: eur
+ms.openlocfilehash: 16f9d66b669e792d0bccc2676bdc1db327de3229
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644678"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507210"
 ---
 # <a name="create-and-use-your-voice-model"></a>音声モデルを作成して使用する
 

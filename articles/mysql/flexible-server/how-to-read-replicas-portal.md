@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
-ms.openlocfilehash: 711b35ec11d42ae16a4b4db08d17e85b5217d41f
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 26e93c85a6968a994a7f4e3a14df1e0910442def
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387519"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429503"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
 
@@ -24,9 +24,8 @@ ms.locfileid: "129387519"
 
 > [!Note]
 >
-> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
-> 
-> * 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL - フレキシブル サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
+> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。
+>
 > * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -70,7 +69,7 @@ ms.locfileid: "129387519"
 
 Azure Portal からソースとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
 
-1. Azure portal で、ソースの Azure Database for MySQL フレキシブル サーバーを選択します。 
+1. Azure portal で、ソースの Azure Database for MySQL フレキシブル サーバーを選択します。
 
 2. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 
@@ -102,7 +101,7 @@ Azure Portal からソースとレプリカ サーバー間のレプリケーシ
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL - レプリカの削除":::
 
-5. レプリカの名前を入力して、 **[削除]** をクリックし、レプリカの削除を確定します。  
+5. レプリカの名前を入力して、 **[削除]** をクリックし、レプリカの削除を確定します。
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL - レプリカ確定の削除":::
 
@@ -119,7 +118,7 @@ Azure Portal からソースとレプリカ サーバー間のレプリケーシ
 
    [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL - ソースの削除":::](./media/how-to-read-replica-portal/delete-master-overview.png#lightbox)
 
-3. ソース サーバーの名前を入力して、 **[削除]** をクリックし、ソース サーバーの削除を確定します。  
+3. ソース サーバーの名前を入力して、 **[削除]** をクリックし、ソース サーバーの削除を確定します。
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL - ソースの削除の確認":::
 

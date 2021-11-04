@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: bd0fb0720218b938b8c10454afeafba85887fa2c
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 5cb27140e38fa264973bb29d8137b270297a3b0e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779126"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462085"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -295,7 +295,7 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 
 ## <a name="provide-feedback"></a>フィードバックの提供 
 
-* **UserVoice:** Network Performance Monitor の機能について皆さんのアイデアを投稿できます。 [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)をご覧ください。 
+* **UserVoice:** Network Performance Monitor の機能について皆さんのアイデアを投稿できます。 [UserVoice ページ](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=611733d4-1b25-ec11-b6e6-000d3a4f09d0)をご覧ください。 
 
 * **コーホートへの参加:** Microsoft が実施しているコーホートにぜひご参加ください。 その一環として、新機能にいち早く触れることができます。ネットワーク パフォーマンス モニターの機能向上にぜひご協力ください。 参加にご興味がある方は、こちらの[簡単なアンケート](https://aka.ms/npmcohort)にご回答ください。 
 

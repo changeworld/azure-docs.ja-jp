@@ -1,0 +1,109 @@
+---
+title: Azure Container Apps プレビューでアプリを監視する
+description: Azure Container Apps でアプリケーションが監視およびログ記録される方法について説明します。
+services: app-service
+author: craigshoemaker
+ms.service: app-service
+ms.topic: conceptual
+ms.date: 10/21/2021
+ms.author: cshoe
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 852506b024939fdbdde6fa4d3ffebbe1c08b38fa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131092613"
+---
+# <a name="monitor-an-app-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリを監視する
+
+Azure Container Apps により、コンテナー アプリに関する広範なデータのセットが収集され、[Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) を使って格納されます。 この記事では、利用できるログと、ログを書き込み、表示する方法について説明します。
+
+## <a name="writing-to-a-log"></a>ログへの書き込み
+
+[標準出力 (stdout) または標準エラー (stderr) ストリーム](https://wikipedia.org/wiki/Standard_streams)に書き込むと、Container Apps のログ エージェントによって各メッセージのログが書き込まれます。
+
+メッセージがログに記録されると、ログ テーブルに次の情報が収集されます。
+
+| プロパティ | Remarks |
+|---|---|
+| `RevisionName` | |
+| `ContainerAppName` | |
+| `ContainerGroupID` | |
+| `ContainerGroupName` | |
+| `ContainerImage` | |
+| `ContainerID` | コンテナーの一意識別子。 この値を使って、コンテナーのクラッシュを特定できます。 |
+| `Stream` | ログ記録に `stdout` または `stderr` が使われているかどうかを示します。 |
+| `EnvironmentName` | |
+
+### <a name="simple-text-vs-structured-data"></a>単純なテキストと構造化データ
+
+1 つのテキスト文字列またはシリアル化された JSON データの行をログに記録できます。 情報の表示方法は、ログに記録されたデータの種類によって異なります。
+
+| データの種類 | 説明 |
+|---|---|
+| 1 行のテキスト | `Log_s` 列にテキストが表示されます。 |
+| シリアル化された JSON | ログ エージェントによってデータが解析され、JSON オブジェクトのプロパティ名と一致する列に表示されます。 |
+
+## <a name="viewing-logs"></a>ログの表示
+
+コンテナー アプリを使用してログされたデータは、Log Analytics ワークスペースの `ContainerAppConsoleLogs_CL` カスタム テーブルに格納されます。 Azure portal または CLI を使用してログを表示できます。
+
+リソース グループと Log Analytics ワークスペースの名前を設定した後、次のコマンドを使って `LOG_ANALYTICS_WORKSPACE_CLIENT_ID` を取得します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
+RESOURCE_GROUP="my-containerapps"
+LOG_ANALYTICS_WORKSPACE="containerapps-logs"
+
+LOG_ANALYTICS_WORKSPACE_CLIENT_ID=`az monitor log-analytics workspace show --query customerId -g $RESOURCE_GROUP -n $LOG_ANALYTICS_WORKSPACE --out tsv`
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+$RESOURCE_GROUP="my-containerapps"
+$LOG_ANALYTICS_WORKSPACE="containerapps-logs"
+
+$LOG_ANALYTICS_WORKSPACE_CLIENT_ID=az monitor log-analytics workspace show --query customerId -g $RESOURCE_GROUP -n $LOG_ANALYTICS_WORKSPACE --out tsv
+```
+
+---
+
+次の CLI コマンドを使用して、コマンド ラインでログを表示します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az monitor log-analytics query \
+  --workspace $LOG_ANALYTICS_WORKSPACE_CLIENT_ID \
+  --analytics-query "ContainerAppConsoleLogs_CL | where ContainerAppName_s == 'my-container-app' | project ContainerAppName_s, Log_s, TimeGenerated | take 3" \
+  --out table
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az monitor log-analytics query `
+  --workspace $LOG_ANALYTICS_WORKSPACE_CLIENT_ID `
+  --analytics-query "ContainerAppConsoleLogs_CL | where ContainerAppName_s == 'my-container-app' | project ContainerAppName_s, Log_s, TimeGenerated | take 3" `
+  --out table
+```
+
+---
+
+次の出力は、CLI コマンドから返される応答の種類を示しています。
+
+```console
+ContainerAppName_s    Log_s                 TableName      TimeGenerated
+--------------------  --------------------  -------------  ------------------------
+my-container-app      listening on port 80  PrimaryResult  2021-10-23T02:09:00.168Z
+my-container-app      listening on port 80  PrimaryResult  2021-10-23T02:11:36.197Z
+my-container-app      listening on port 80  PrimaryResult  2021-10-23T02:11:43.171Z
+```
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [コンテナー アプリをセキュリティで保護する](secure-app.md)

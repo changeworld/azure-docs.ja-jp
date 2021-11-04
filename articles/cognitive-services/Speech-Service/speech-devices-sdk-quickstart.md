@@ -3,20 +3,20 @@ title: クイック スタート:Windows、Linux、または Android 上で Spee
 titleSuffix: Azure Cognitive Services
 description: この記事には、Windows、Linux、または Android 上で Speech Devices SDK の使用を開始するための前提条件と手順が記載されています。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
-ms.author: pafarley
+ms.author: eur
 zone_pivot_groups: platforms-set-of-three
-ms.openlocfilehash: a5f58eb49c076845bf70bb6c1d2084e7493190b7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: d81dc8cbf7eba8c4e73a66d400828c1bdb95d884
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540615"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509789"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>クイック スタート:Windows、Linux、または Android 上で Speech Devices SDK サンプル アプリを実行する
 

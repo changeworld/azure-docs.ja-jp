@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f94a21268625adf3df4dda2f022868f7cc40f72f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 19101cea8f435f09cb37aa2340f0bc02788442f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060322"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459066"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
@@ -45,7 +45,7 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
-|プロパティ  |種類 |説明  |
+|プロパティ  |Type |説明  |
 |---------|---------|---------|
 |SoftwareUpdateConfigurationName     |String | ソフトウェア更新構成の名前。        |
 |SoftwareUpdateConfigurationRunId     |GUID | 実行の一意の ID。        |
@@ -181,7 +181,7 @@ Python 2 では、例外処理は [try](https://www.python-course.eu/exception_h
 
 事前タスクと事後タスクは、Runbook として実行され、デプロイ内の Azure VM でネイティブに実行されることはありません。 Azure VM と対話するには、次のものが必要です。
 
-* [マネージド ID](../automation-security-overview.md#managed-identities-preview) または実行アカウント
+* [マネージド ID](../automation-security-overview.md#managed-identities) または実行アカウント
 * 実行する Runbook
 
 Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - スクリプトを実行コマンドで実行する](https://github.com/azureautomation/update-management-run-script-with-run-command)」にある Runbook の例を参照してください。
@@ -190,7 +190,7 @@ Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/modul
 
 事前タスクと事後タスクは Azure コンテキストで実行され、Azure 以外のマシンにはアクセスできません。 Azure 以外のマシンと対話するには、次のものが必要です。
 
-* [マネージド ID](../automation-security-overview.md#managed-identities-preview) または実行アカウント
+* [マネージド ID](../automation-security-overview.md#managed-identities) または実行アカウント
 * コンピューターにインストールされた Hybrid Runbook Worker
 * ローカルで実行する Runbook
 * 親 Runbook

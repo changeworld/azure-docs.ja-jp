@@ -1,18 +1,18 @@
 ---
 title: SAP R3 のメタデータ抽出 ABAP 関数モジュール - Azure Purview
 description: この記事では、SAP サーバーに ABAP 関数モジュールをデプロイする手順の概要について説明します
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: f235e4b293c47c9d2833732fa6333a350a1fd272
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: b8d67c3c5b596627fc1795cf97d807d7f582e326
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442162"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>SAP R3 ブリッジ ファミリ用のメタデータ抽出 ABAP 関数モジュールをデプロイする
 

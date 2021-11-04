@@ -1,17 +1,17 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.topic: include
-ms.author: pafarley
+ms.author: eur
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7fed5159398604d95da9c2dca6cee0555897386f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5e1f14918c9163a62d2deffa3c257bb9e940657b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543379"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507475"
 ---
 ## <a name="prerequisites"></a>前提条件
 

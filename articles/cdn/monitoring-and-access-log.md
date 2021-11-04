@@ -2,7 +2,7 @@
 title: Azure CDNの監視、メトリック、生ログ
 description: この記事では、Azure CDN の監視、メトリック、生ログを設定して使用する方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 manager: KumudD
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fd117532267672e152b6fd6f6ce382c4bda39687
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3c169a63a39f26174cf6c39ef73c95ae5e545b2c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693970"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450478"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Azure CDN にのリアルタイムの監視、メトリック、アクセス ログ
 Microsoft Azure CDN を使用すると、次の方法でリソースを監視して、問題のトラブルシューティング、追跡、デバッグに役立てることができます。 

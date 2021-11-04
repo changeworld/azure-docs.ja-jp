@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 2557292af835f13792673c2cfbb1eb82542b7725
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 084e0b9b0b42bbe2ba3632d54811e738197899f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994482"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441478"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -29,7 +29,7 @@ VMware VM のディザスター リカバリー | オンプレミス VMware VM �
 
 ## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
-**サーバー** | **必要条件** | **詳細**
+**[サーバー]** | **必要条件** | **詳細**
 --- | --- | ---
 vCenter Server | バージョン 7.0 およびバージョン 6.7、6.5、6.0、または 5.5 での後続の更新プログラム | ディザスター リカバリーのデプロイでは vCenter サーバーを使用することをお勧めします。
 vSphere ホスト | バージョン 7.0 およびバージョン 6.7、6.5、6.0、または 5.5 での後続の更新プログラム | vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバーは構成サーバーで実行されます。 [詳細については、こちらを参照してください](vmware-physical-azure-config-process-server-overview.md)。
@@ -251,7 +251,7 @@ FIPS 暗号化 | いいえ
 ゲスト/サーバー iSCSI | 移行の場合 - はい<br/>ディザスター リカバリーの場合 - いいえ、iSCSI は接続されたディスクとして VM にフェールバックされます
 ゲスト/サーバー SMB 3.0 | いいえ
 ゲスト/サーバー RDM | はい<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 8,192 GB (9.26 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
+ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 32,767 GB (9.41 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
 4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | いいえ
 4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | いいえ
 ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB | はい

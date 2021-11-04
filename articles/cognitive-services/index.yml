@@ -55,18 +55,18 @@ conceptualContent:
     - title: Language
       summary: お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。
       links:
+        - url: ./language-service/index.yml
+          itemType: overview
+          text: Azure Cognitive Service for Language
         - url: ./luis/index.yml
           itemType: overview
           text: Language Understanding (LUIS)
         - url: ./qnamaker/index.yml
           itemType: overview
           text: QnA Maker
-        - url: ./text-analytics/index.yml
-          itemType: overview
-          text: Text Analytics
         - url: ./translator/index.yml
           itemType: overview
-          text: Translator
+          text: '[変換者]'
     - title: 音声
       summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
       links:

@@ -7,15 +7,15 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 10/28/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a44eb178b3e664af73d4e15474bae64aa92f704f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fce378ce24075a96d0b110a1386520649ff3b0bf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020219"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434220"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -38,7 +38,7 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 
 * [Language Understanding (LUIS)](./luis/luis-language-support.md)
 * [QnA Maker](./qnamaker/overview/language-support.md)
-* [Text Analytics](./text-analytics/language-support.md)
+* [言語サービス](./text-analytics/language-support.md)
 * [Translator](./translator/language-support.md)
 
 ## <a name="speech"></a>音声

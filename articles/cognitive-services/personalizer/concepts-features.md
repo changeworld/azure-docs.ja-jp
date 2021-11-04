@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: fb276979530fccfb95fd9d34655573a04391e524
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8faae773e2ca3e1da51c23967ad6d9ba3fa2c1b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219175"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426071"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -165,7 +165,7 @@ Artificial Intelligence や、すぐに実行できる Cognitive Services は Pe
 他にも次のような [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) を利用できます。
 
 * [Entity Linking](../text-analytics/index.yml)
-* [Text Analytics](../text-analytics/overview.md)
+* [言語サービス](../language-service/index.yml)
 * [感情](../face/overview.md)
 * [Computer Vision](../computer-vision/overview.md)
 

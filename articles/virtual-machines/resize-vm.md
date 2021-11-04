@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 09/13/2021
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 80387608b8c8ab7069ed989078472102e3d9afe8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a95331f1b5cd0110cc38e60870ad9bfd5e4a16bd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699831"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466810"
 ---
 # <a name="change-the-size-of-a-virtual-machine"></a>仮想マシンのサイズの変更 
 
-**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、VM を別の [VM サイズ](sizes.md)に移行する方法について説明します。
 

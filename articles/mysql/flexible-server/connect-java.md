@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 01/16/2021
-ms.openlocfilehash: bb78b1ec37541d96d6ad5440ec0e0f3624d90de6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fa7d76b1abcef11155ee81be687d8135ea6aecc1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604824"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445656"
 ---
-# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql-flexible-server"></a>クイックスタート: Azure Database for MySQL フレキシブル サーバーで Java と JDBC を使用する
+# <a name="use-java-and-jdbc-with-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで Java と JDBC を使用する
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 

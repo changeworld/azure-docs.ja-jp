@@ -9,12 +9,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 8194b5c170186c5498e181e00f27c91156ae4ada
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: dcc46e36f85642380cb1c3d2a773698e9807e0f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428181"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438324"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -112,9 +112,6 @@ Microsoft 証明書または CA から購入したカスタム証明書を使用
     ```
     > [!IMPORTANT]
     > Microsoft 提供の証明書を使用する場合、独自の証明書またはドメイン名を購入する必要はありません。
-
-    > [!WARNING]
-    > AKS クラスターが内部ロード バランサーを使用して構成されている場合、Microsoft 提供の証明書を使用することは __サポートされていません__。TLS を有効にするにはカスタム証明書を使用する必要があります。
 
 * **購入したカスタム証明書** を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 .pem ファイルを使用して、購入した TLS/SSL 証明書を使用する構成を作成する方法を示します。
  

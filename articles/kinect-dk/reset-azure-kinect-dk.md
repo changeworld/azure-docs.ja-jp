@@ -8,18 +8,16 @@ ms.prod: kinect-dk
 ms.date: 02/11/2020
 ms.topic: how-to
 keywords: kinect, リセット
-ms.custom:
-- CI 113492
-- CSSTroubleshooting
+ms.custom: CI 113492, CSSTroubleshooting
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: 71579ba69852dd3f5359526a70f8b99d266344e4
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 821b9e5b82f5fe3a227e3806c29917c06ebca51e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808879"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079531"
 ---
 # <a name="reset-azure-kinect-dk"></a>Azure Kinect DK をリセットする
 

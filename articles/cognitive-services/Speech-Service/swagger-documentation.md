@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 02/16/2021
 ms.author: alexeyo
-ms.openlocfilehash: 3b27bd16168f4949081f3f399f7f8f8293d2aa0b
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: baab45ee4fe3d65c51ce40e6be202980815eb9a6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292576"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507191"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 

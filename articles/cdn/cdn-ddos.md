@@ -3,7 +3,7 @@ title: Azure CDN DDoS Protection の機能 | Microsoft Docs
 description: Microsoft からの Azure CDN が追加コストなしの基本的な DDoS Protection によって保護されています
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
-ms.author: allensu
-ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 78e1282006c9798d85d38b286a60c6acde2d180d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96351692"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461496"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
 

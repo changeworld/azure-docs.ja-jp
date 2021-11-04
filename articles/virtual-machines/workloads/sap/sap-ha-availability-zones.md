@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/29/2020
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 120936f3d2b76fd1e66fc12bfad9bf2f0959de5a
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: e84bd6b69c19a40fe660f17d8b41c38e66bd28d8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070168"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448996"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 Azure 可用性セットでのさまざまな SAP アーキテクチャ レイヤーのデプロイに加えて、最近導入された [Azure Availability Zones](../../../availability-zones/az-overview.md) を SAP ワークロードのデプロイに使用することもできます。 Azure 可用性ゾーンは次のように定義されます。"リージョン内の一意の物理的な場所。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。" Azure Availability Zones は、すべてのリージョンで使用できるわけではありません。 Availability Zones が提供される Azure リージョンについては、[Azure リージョン マップ](https://azure.microsoft.com/global-infrastructure/geographies/)を確認してください。 このマップでは、Availability Zones が提供されているか、または提供予定と発表されているリージョンが示されます。 
@@ -112,6 +112,7 @@ SAP アーキテクチャの性質として、異なる方法で構成しない�
 - 米国東部 (3 つのゾーンのうち 2 つ)
 - 米国中南部 (3 つのゾーンのうち 2 つ)
 - 英国南部 (3 つのゾーンのうち 2 つ)
+- 東南アジア
 
 複数のゾーンにまたがるこの SAP デプロイ アーキテクチャが推奨されない Azure リージョンは次のとおりです。
 
@@ -153,7 +154,6 @@ SAP アーキテクチャの性質として、異なる方法で構成しない�
 
 異なるゾーンにわたるこの種類のデプロイ アーキテクチャが適している Azure リージョンは次のとおりです。
 
-- 東南アジア
 - オーストラリア東部
 - ブラジル南部
 - ドイツ中西部

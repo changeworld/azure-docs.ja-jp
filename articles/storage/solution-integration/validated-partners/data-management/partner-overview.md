@@ -8,12 +8,12 @@ ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 09d888f5102ca085c9f3ddba2e5276ee9b6c9eda
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a6cb65e1f5cc2654b7df245a3f6c88609498d000
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620181"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456938"
 ---
 # <a name="azure-storage-data-governance-management-and-migration-partners"></a>Azure Storage のデータのガバナンス、管理、移行パートナー
 
@@ -24,7 +24,7 @@ ms.locfileid: "128620181"
 | Partner | 説明 | Web サイト/製品リンク |
 | ------- | ----------- | -------------------- |
 |![Atempo](./media/atempo-logo.png) |**Atempo**<br>Atempo Miria を使用すると、異種環境内での移行、バックアップ、アーカイブ、同期などの複雑なファイル ワークフローを管理できます。 Atempo Miria には、NAS、並列 FS、オブジェクト、テープ、光学ディスク間の効率的なデータ ワークフローを実装できるようにする互換性ガイドが含まれます。 Azure と Atempo Miria を関連付けることで、顧客が任意のファイル ワークフローを、オンプレミスまたはクラウドから Azure にデプロイできます。 |[パートナー ページ](https://www.atempo.com/products/miria-for-archiving-large-file-sets/)|
-|![Cirrus 社のロゴ](./media/cirrus-logo.jpg) |**Cirrus Data**<br>Cirrus Data Solutions は、オンプレミスとクラウドの両方の環境用のブロック ストレージ データ移行ソリューションです。 エンドツーエンドのアプローチを使用することで、オンプレミスからクラウドに、クラウド内のストレージ層の間で、パブリック クラウド間でシームレスに、データを移行できます。 |[パートナー ページ](https://go.cirrusdata.com/Get-Azure-Cloud-Migration)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/cirrusdatasolutionsinc1618222951068.cirrusdata?tab=Overview)|
+|![Cirrus 社のロゴ](./media/cirrus-logo.jpg) |**Cirrus Data**<br>Cirrus Data Solutions は、オンプレミスとクラウドの両方の環境用のブロック ストレージ データ移行ソリューションです。 エンドツーエンドのアプローチを使用することで、オンプレミスからクラウドに、クラウド内のストレージ層の間で、パブリック クラウド間でシームレスに、データを移行できます。 |[パートナー ページ](https://www.cirrusdata.com/cloud-migration/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/cirrusdatasolutionsinc1618222951068.cirrusdata?tab=Overview)|
 |![Commvault 社のロゴ](./media/commvault-logo.jpg) |**Commvault**<br>Microsoft のインフラストラクチャと Commvault を使用して、データの最適化、保護、移行、インデックス作成を行ってください。 Microsoft 中心および Azure 中心のデータ管理ソリューションである Commvault Complete Data Protection を使用して、データを制御してください。 Commvault には、コストとリスクを軽減しながら、データの場所に関係なくその管理、移行、アクセス、回復を行うために必要なツールが用意されています。|[パートナー ページ](https://www.commvault.com/complete-data-protection)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)|
 |![Data Dynamics 社のロゴ](./media/datadyn-logo.png) |**Data Dynamics**<br>Data Dynamics は、ハイブリッドおよびマルチクラウド環境用の非構造化データを管理するためのエンタープライズ ソリューションを提供します。 その統合非構造化データ管理プラットフォームは、分析と自動化を使用して、お客様が異種ストレージ環境 (SMB、NFS、S3 オブジェクト) から Azure にデータをインテリジェントかつ効率的に移動するのを支援します。 このプラットフォームにより、ハイブリッド環境とマルチクラウド環境のデータを効率的に管理できる、シームレスな統合、エンタープライズ スケール、およびパフォーマンスが提供されます。 ユース ケースとしては、インテリジェントなクラウド移行、ディザスター リカバリー、アーカイブ、バックアップ、インフラストラクチャの最適化とデータ管理などがあります。 |[パートナー ページ](https://www.datadynamicsinc.com/partners-2/)|
 ![Datadobi 社のロゴ](./media/datadob-logo.png) |**Datadobi**<br> Datadobi を使用すると、非構造化ストレージ環境を最適化できます。 DobiMigrate は、安全に、迅速に、簡単に、コスト効率よくファイルとオブジェクトのデータを Azure に取り込む、エンタープライズ クラスのソフトウェアです。 時間のかかる移行タスクにではなく、付加価値のある活動に力を注ぐことができます。 CAPEX の投資なしでストレージのフットプリントを拡大できます。|[パートナー ページ](https://datadobi.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)|

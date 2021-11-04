@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 06/02/2021
-  ms.openlocfilehash: 1efbad4bf3d35bab919dd564926fe5cbcf3e1202
-  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+  ms.openlocfilehash: 6232e7623ef154702feac80dd0575c63f74ed1ec
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/04/2021
-  ms.locfileid: "111411793"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131425522"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -122,7 +122,7 @@ landingContent:
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345055
+      url: https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0?c=5b220886-f324-ec11-b6e6-000d3a4f0da0
     - text: Azure のガバナンスの Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: リファレンス

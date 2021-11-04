@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8094fc0eaf646a026371db3726706f92c763f6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517191"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460548"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上にデプロイする
 この記事では、クラウド向けのアプリケーションをデプロイするときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) のリリースと対応のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションのデプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -29,8 +29,7 @@ ms.locfileid: "94517191"
 - Response
 
 ## <a name="release"></a>Release
-リリース フェーズの焦点は、公開リリース用のプロジェクトを準備することです。
-これには、リリース後のサービス タスクを効果的に実行し、後で発生する可能性のあるセキュリティの脆弱性に対処する方法を計画することが含まれます。
+リリース フェーズの焦点は、公開リリース用のプロジェクトを準備することです。 これには、リリース後のサービス タスクを効果的に実行し、後で発生する可能性のあるセキュリティの脆弱性に対処する方法を計画することが含まれます。
 
 ### <a name="check-your-applications-performance-before-you-launch"></a>起動前にアプリケーションのパフォーマンスを確認する
 
@@ -55,6 +54,7 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 リリース前にソフトウェアを認定することで、セキュリティとプライバシーの要件が満たされていることを保証することができます。 すべての関連データをアーカイブすることは、リリース後のサービス タスクの実行には不可欠です。 また、アーカイブにより、持続的なソフトウェア エンジニアリングに関連する長期的なコストを削減することもできます。
 
 ## <a name="response"></a>Response
+
 リリース後の対応フェーズは、ソフトウェアに対する新種の脅威や脆弱性の報告に対して開発チームが適切に対応できるようにすることに重点を置いています。
 
 ### <a name="execute-the-incident-response-plan"></a>インシデント対応計画を実行する
@@ -64,6 +64,7 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 ### <a name="monitor-application-performance"></a>アプリケーション パフォーマンスを監視する
 
 アプリケーションのデプロイ後の継続的な監視により、パフォーマンスの問題とセキュリティの脆弱性を検出できる可能性があります。
+
 アプリケーションの監視を支援する Azure サービスは次のとおりです。
 
   - Azure Application Insights

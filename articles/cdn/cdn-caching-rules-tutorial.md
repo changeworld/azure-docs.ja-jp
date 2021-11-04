@@ -3,7 +3,7 @@ title: チュートリアル - Azure CDN キャッシュ規則の設定 | Micros
 description: このチュートリアルでは、Azure CDN のグローバル キャッシュ規則およびカスタム キャッシュ規則を設定します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 27c04533f4a2c0bdfafaae1a3e182e9b01e35437
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a95888225d1b8e695f8950081fbf4247e7959fc9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058937"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430954"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル:Azure CDN キャッシュ規則の設定
 

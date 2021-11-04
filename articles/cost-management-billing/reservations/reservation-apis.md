@@ -1,20 +1,20 @@
 ---
 title: Azure の予約の自動化に関する API | Microsoft Docs
 description: 予約の情報をプログラムで取得するために使用できる Azure API について説明します。
-author: yashesvi
-ms.reviewer: yashesvi
+author: bandersmsft
+ms.reviewer: primittal
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 74539bc58e3b0b7261792f492a6ea2cc151b8964
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a82c0ffa8f4396af409624083a945e8b53847a96
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666611"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430517"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 

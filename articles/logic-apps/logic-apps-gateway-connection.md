@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, azla
 ms.topic: conceptual
 ms.date: 07/14/2021
-ms.openlocfilehash: 4f49e0fbbfa4c2a98b86c96dc3b0e650d6ff6bc9
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 30fa05a4aad2108ac96de820ac2ea86357cd17b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204828"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457527"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -63,7 +63,7 @@ REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ
   * ロジック アプリとゲートウェイ リソースは、同じ Azure サブスクリプション内に存在する必要はありません。 ゲートウェイ リソースを使用できるトリガーとアクションでは、ゲートウェイ リソースがある別の Azure サブスクリプションを選択できます。ただし、そのサブスクリプションがロジック アプリと同じ Azure AD テナントまたはディレクトリに存在する場合に限ります。 また、別の管理者が設定できるゲートウェイに対する管理者権限も必要です。 詳細については、[データ ゲートウェイ: PowerShell を使用した Automation - パート 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) および [PowerShell: データ ゲートウェイ - Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser) に関する記事を参照してください。
 
     > [!NOTE]
-    > 現時点では、複数のサブスクリプション間でゲートウェイ リソースやインストールを共有することはできません。 製品のフィードバックを送信するには、[Microsoft Azure フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)を参照してください。
+    > 現時点では、複数のサブスクリプション間でゲートウェイ リソースやインストールを共有することはできません。 製品のフィードバックを送信するには、[Microsoft Azure フィードバック フォーラム](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)を参照してください。
 
 <a name="create-gateway-resource"></a>
 

@@ -5,18 +5,18 @@ metadata:
   title: 意図認識のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: PatrickFarley
+  author: eric-urban
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: pafarley
-  ms.openlocfilehash: 16936e8f53419409a428884683875c63926aa655
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.author: eur
+  ms.openlocfilehash: 2b2cf4fd4918c7fbfac6571cbfd5c684509fb50c
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123540549"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131503641"
 landingContent:
 - title: 意図認識について
   linkLists:

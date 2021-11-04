@@ -1,17 +1,17 @@
 ---
-author: v-demjoh
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
-ms.author: v-demjoh
+ms.author: eric-urban
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 153276c1f3ccc63bbca0f286d3ae18c9e4de1b18
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 197c186f87eacfb19412c12bc171b46fd59b0ef2
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131253912"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501976"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
