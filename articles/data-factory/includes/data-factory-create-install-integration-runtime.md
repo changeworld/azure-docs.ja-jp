@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 6bf40202908aa68345fabd2b6fe55d501e8325ff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2fb845291697a2aee1d317c700a9a912d57565a5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733015"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051148"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "124733015"
 
 1. 統合ランタイムの名前に使用する変数を作成します。 一意の名前を使用し、その名前をメモしておきます。 このチュートリアルの後の方で、それを使用します。 
 
-    ```powershell
+   ```powershell
    $integrationRuntimeName = "ADFTutorialIR"
     ```
 2. セルフホステッド統合ランタイムを作成します。 

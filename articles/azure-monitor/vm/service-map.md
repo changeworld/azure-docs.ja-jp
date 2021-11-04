@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f4b706c296c6f6d4f5921675dd87ec8f4052b9a5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f759308a32d3f1455c7147be512e7280810e1abe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256669"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427040"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -570,7 +570,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解像度 |
+| コード | 説明 | 解決方法 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 
@@ -601,4 +601,4 @@ Service Map にマシンは表示されるがプロセスまたは接続デー�
 
 ## <a name="suggestions"></a>検索候補
 
-サービス マップやこのドキュメントについてフィードバックはありますか。  [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)では、機能を提案したり、既存の提案に投票することができます。
+サービス マップやこのドキュメントについてフィードバックはありますか。  [UserVoice ページ](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=ad4304e4-1925-ec11-b6e6-000d3a4f09d0)では、機能を提案したり、既存の提案に投票することができます。

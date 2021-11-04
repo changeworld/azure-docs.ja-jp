@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/02/2021
+ms.date: 11/02/2021
 ms.author: timlt
-ms.openlocfilehash: 439522011734a31f818494956bd51f079b1f6113
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 37b00e79c77e81b2d94dea23dc46d342b2094e74
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743257"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441402"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 
@@ -31,10 +31,6 @@ Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミス
 StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を使用し、さまざまなストレージ メディアに格納されているデータを管理します。 現在作業中のセットは、ソリッド ステート ドライブ (SSD) にオンプレミスで格納されています。 使用頻度の低いデータはハード ディスク ドライブ (HDD) に格納され、アーカイブ データはクラウドにプッシュされます。 また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。 詳細については、「 [重複除去と圧縮](#deduplication-and-compression)」を参照してください。 StorSimple 8000 シリーズの文書で使用されている他の用語と概念の定義については、本記事の終わりに収録されている「[StorSimple 用語集](#storsimple-terminology)」を参照してください。
 
 ストレージ管理に加えて、StorSimple データ保護機能を使用すると、オンデマンド バックアップやスケジュールされたバックアップを作成して、ローカルやクラウドに格納できるようになります。 バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。 クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
-
-![動画アイコン](./media/storsimple-overview/video_icon.png) この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 
 ## <a name="why-use-storsimple"></a>StorSimple を使用する理由
 次の表には、Microsoft Azure StorSimple の長所をいくつかまとめてあります。

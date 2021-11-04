@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 04/30/2021
-ms.openlocfilehash: 626afa6926dea10a633a5c7d5438ec8b8c578b6a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/01/2021
+ms.openlocfilehash: 033d2d188f2e5ef9d2a72428e088ea302908e7c9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798657"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457926"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -121,7 +121,7 @@ ADF UI で高速カスタム セットアップを使用して Azure-SSIS IR を
 
 #### <a name="running-cmdkey-command"></a>cmdkey コマンドを実行する
 
-高速カスタム セットアップで種類として **[cmdkey コマンドの実行]** を選択した場合は、Azure-SSIS IR で Windows cmdkey コマンドを実行できます。 これを行うには、対象のコンピューター名またはドメイン名、ユーザー名またはアカウント名、およびパスワードまたはアカウント キーを、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** の各テキスト ボックスにそれぞれ入力します。 これにより、SQL Server、ファイル共有、または Azure Files のアクセス資格情報を Azure-SSIS IR に保持できます。 たとえば、Azure Files にアクセスするには、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** にそれぞれ、`YourAzureStorageAccountName.file.core.windows.net`、`azure\YourAzureStorageAccountName`、および `YourAzureStorageAccountKey` を入力します。 これは、ローカル コンピューターで Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) コマンドを実行する場合と似ています。 現在のところ、cmdkey コマンドを実行する高速カスタム セットアップ 1 つだけがサポートされます。 複数の cmdkey コマンドを実行するには、代わりに標準カスタム セットアップを使用します。
+高速カスタム セットアップで種類として **[cmdkey コマンドの実行]** を選択した場合は、Azure-SSIS IR で Windows cmdkey コマンドを実行できます。 これを行うには、対象のコンピューター名またはドメイン名、ユーザー名またはアカウント名、およびパスワードまたはアカウント キーを、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** の各テキスト ボックスにそれぞれ入力します。 これにより、SQL Server、ファイル共有、または Azure Files のアクセス資格情報を Azure-SSIS IR に保持できます。 たとえば、Azure Files にアクセスするには、 **[/追加]** 、 **[/ユーザー]** 、および **[/パスワード]** にそれぞれ、`YourAzureStorageAccountName.file.core.windows.net`、`azure\YourAzureStorageAccountName`、および `YourAzureStorageAccountKey` を入力します。 これは、ローカル コンピューターで Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) コマンドを実行する場合と似ています。 
 
 #### <a name="adding-environment-variables"></a>環境変数を追加する
 

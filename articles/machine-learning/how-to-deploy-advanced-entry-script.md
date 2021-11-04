@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 446b6bc0ba715106dc6a727e5b5e5b7e07528e01
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: cde3cb0a32807d35e899a04616b9f300a19ab17c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535936"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085718"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 
@@ -194,21 +194,35 @@ def run(request):
     print("This is run()")
     print("Request: [{0}]".format(request))
     if request.method == 'GET':
-        # For this example, just return the URL for GETs.
+        # For this example, just return the URL for GET.
+        # For a real-world solution, you would load the data from URL params or headers
+        # and send it to the model. Then return the response.
         respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
+        resp = AMLResponse(respBody, 200)
+        resp.headers["Allow"] = "OPTIONS, GET, POST"
+        resp.headers["Access-Control-Allow-Methods"] = "OPTIONS, GET, POST"
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        resp.headers['Access-Control-Allow-Headers'] = "*"
+        return resp
     elif request.method == 'POST':
         reqBody = request.get_data(False)
         # For a real-world solution, you would load the data from reqBody
         # and send it to the model. Then return the response.
-
-        # For demonstration purposes, this example
-        # adds a header and returns the request body.
         resp = AMLResponse(reqBody, 200)
+        resp.headers["Allow"] = "OPTIONS, GET, POST"
+        resp.headers["Access-Control-Allow-Methods"] = "OPTIONS, GET, POST"
         resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        resp.headers['Access-Control-Allow-Headers'] = "*"
+        return resp
+    elif request.method == 'OPTIONS':
+        resp = AMLResponse("", 200)
+        resp.headers["Allow"] = "OPTIONS, GET, POST"
+        resp.headers["Access-Control-Allow-Methods"] = "OPTIONS, GET, POST"
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        resp.headers['Access-Control-Allow-Headers'] = "*"
         return resp
     else:
-        return AMLResponse("bad request", 500)
+        return AMLResponse("bad request", 400)
 ```
 
 > [!IMPORTANT]

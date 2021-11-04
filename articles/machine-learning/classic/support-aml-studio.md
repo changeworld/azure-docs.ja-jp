@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 5418671373b1b95f1c9ac4f1131016e51b58ba2f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 0540f61f80b79af6566acf9707af9b858b628a6f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688801"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449509"
 ---
 # <a name="get-support-and-training-for-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
 
@@ -43,4 +43,4 @@ ms.locfileid: "122688801"
 
 + **Stack Overflow**:"Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 
-+ **Azure Machine Learning のフィードバック チャネル** から [製品のご提案や機能に対するご要望をお寄せください](https://feedback.azure.com/forums/257792-machine-learning)。 フィードバックをお送りいただくには、各記事の末尾にある **[製品のフィードバック]** ボタンを選択してください。
++ **Azure Machine Learning のフィードバック チャネル** から [製品のご提案や機能に対するご要望をお寄せください](https://feedback.azure.com/d365community/forum/b9a0c624-ad25-ec11-b6e6-000d3a4f09d0)。 フィードバックをお送りいただくには、各記事の末尾にある **[製品のフィードバック]** ボタンを選択してください。

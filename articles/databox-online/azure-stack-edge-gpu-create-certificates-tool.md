@@ -5,14 +5,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 10/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 08201fafa3f69803e15a02c1535159101a1ecfea
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5c6782c3b4644607f292587beafccb86fd7b8119
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660996"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057801"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-gpu-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro GPU の証明書を作成する 
 
@@ -128,7 +128,7 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
 
 - 証明書をインポートするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法に関する手順に従います。
 
-- 証明書をエクスポートするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントからの証明書のエクスポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)の手順に従います。
+- 証明書をエクスポートするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントからの証明書のエクスポート](azure-stack-edge-gpu-prepare-certificates-device-upload.md#export-certificates-as-pfx-format-with-private-key)の手順に従います。
 
 
 ## <a name="validate-certificates"></a>証明書を検証する

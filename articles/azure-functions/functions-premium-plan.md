@@ -5,16 +5,13 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: cachai
-ms.custom:
-- references_regions
-- fasttrack-edit
-- devx-track-azurecli
-ms.openlocfilehash: c549f29e729eec4403f2943f51e8acb4a9f21b37
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: references_regions, fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: 583b1545adbc8542923104eb96dd33b744c43c06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130248395"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039185"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -202,10 +199,6 @@ Functions のリージョン別の可用性の完全な情報については、[
 |USGov アリゾナ| 100 | 20 |
 |USGov テキサス| 100 | 利用不可 |
 |USGov バージニア州| 100 | 20 |
-|USNat 東部| 100 | 利用不可 |
-|USNat 西部| 100 | 利用不可 |
-|USSec 東部| 100 | 20 |
-|USSec 西部| 100 | 20 |
 |米国中西部| 100 | 20 |
 |西ヨーロッパ| 100 | 20 |
 |インド西部| 100 | 20 |

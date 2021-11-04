@@ -10,15 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rhurey
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, ignite-fall-2021
 zone_pivot_groups: programming-languages-set-two
 ROBOTS: NOINDEX
-ms.openlocfilehash: 42c52363c9c5f50503d17d79b056f28d6d9434d7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: ca6bfb9dbbc087e4fd9f1ec1d3d83f59f8af943f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540867"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086756"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>Speech SDK でメモリ使用量を追跡する方法
 
@@ -96,7 +96,7 @@ Speech SDK を使用して、特定の時点で許可されるオブジェクト
 ```terminal
 Runtime error: The maximum object count of 500 has been exceeded.
 The threshold can be adjusted by setting the SPEECH-ObjectCountErrorThreshold property on the SpeechConfig object.
-See http://https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-object-tracking-speech-sdk for more detailed information.
+See https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-object-tracking-speech-sdk for more detailed information.
 Handle table dump by ojbect type:
 class Microsoft::CognitiveServices::Speech::Impl::ISpxRecognitionResult 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxRecognizer 0

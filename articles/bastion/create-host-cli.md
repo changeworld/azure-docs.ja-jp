@@ -7,12 +7,13 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3646fad2900d7efe8e3f0a0c5cca3e746e71a1b3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d855327b67d9918b62ab451259dd2c7025c885b9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219226"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087155"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLI を使用して Azure Bastion ホストを作成する
 
@@ -22,7 +23,7 @@ ms.locfileid: "130219226"
 * [Azure Portal](./tutorial-create-host-portal.md)
 * [Azure PowerShell](bastion-create-host-powershell.md)
 
-[!INCLUDE [Note about SKU limitations for preview.](../../includes/bastion-preview-sku-note.md)]
+[!INCLUDE [About skus](../../includes/bastion-sku-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

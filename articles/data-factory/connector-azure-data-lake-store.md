@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 10/11/2021
-ms.openlocfilehash: 68f3bb388f003162786a6ce4f50e0f2dd00d48d0
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: e70970336a5e32d1edef9f336cf31e48f71aff9f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856659"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033249"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Azure Data Lake Storage Gen1 との間でデータをコピーします
 
@@ -187,7 +187,7 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
     - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも **実行** アクセス許可を与えると共に、コピーするファイルの **読み取り** アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
     - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに **書き込み** アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。
     
-2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](data-factory-service-identity.md#credentials)します。 
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](credentials.md)します。 
 
 次のプロパティがサポートされています。
 

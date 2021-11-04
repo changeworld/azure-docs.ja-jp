@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: mathoma, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 2f5791b96b0b921175c0b6c2c7db7c8cdabf825c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cee0c010101c132cb8c4f105ccfd46a5cb8afcf6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735592"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "131465309"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell を使用して SQL Database の監査と Advanced Threat Protection を構成する
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -45,14 +45,14 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | サーバーを作成します。 |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | データベースまたはエラスティック プールを作成します。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | ストレージ アカウントを作成します。 |
-| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | データベースの監査ポリシーを設定します。 |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | データベースに Advanced Threat Protection ポリシーを設定します。 |
+| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseaudit) | データベースの監査ポリシーを設定します。 |
+| Set-AzSqlDatabaseThreatDetectionPolicy | データベースに Advanced Threat Protection ポリシーを設定します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 

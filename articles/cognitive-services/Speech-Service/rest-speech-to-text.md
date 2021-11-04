@@ -3,20 +3,20 @@ title: Speech to Text API リファレンス (REST) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech to Text REST API の使用方法について説明します。 この記事では、認可のオプションとクエリのオプション、さらに要求を構築する方法と応答を受信する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 31759756a886093c53d1537db609bfc58fb4af8b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: af20b5893c9cd22edc81234a28c9db780c7eae3b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610467"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509562"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 6d24154c7cbe9e5e17a78b52e5e0117e27b8d026
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c7d1c51bfe56f6fc5b9109f38019f902deff8b27
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359678"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461458"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]

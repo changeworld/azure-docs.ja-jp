@@ -1,15 +1,15 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 8dc6eaf634ab41bb4f86ce79974a7d498b52945e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: 0867050b4b2fba581a3dd467bc79ce463a8c9b3c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543384"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507435"
 ---
 GitHub で、すべての <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ サンプル</a>を表示またはダウンロードできます。 

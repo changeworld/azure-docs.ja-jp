@@ -4,20 +4,20 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Speech コンテナーをインストールして実行します。 テキスト読み上げでは、オーディオストリームをテキストにリアルタイムで書き起こし、アプリケーション、ツール、デバイスで使用したり写すことが可能です。 テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。
   services: cognitive-services
-  author: PatrickFarley
+  author: eric-urban
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: speech-service
   ms.topic: conceptual
   ms.date: 03/11/2021
-  ms.author: pafarley
+  ms.author: eur
   ms.custom: devx-track-csharp
-  ms.openlocfilehash: e2dbd29686dad5416a6bd148d2bcccc37fca5107
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.openlocfilehash: 5b896e3f4bbd6cf00d4ee9b7eb2723cc75d07a5b
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123537836"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131508170"
 title: 音声サービスコンテナーの良くある質問(FAQ)
 summary: 音声サービスコンテナーを利用するにあたって、サポートへのお問い合わせ前に、こちらの良くある質問をご覧ください。 この記事は、一般的なものから専門的な質問を載せております。 回答の詳細を見るには、質問をクリックして下さい。
 sections:

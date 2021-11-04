@@ -2,18 +2,18 @@
 title: チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 description: このチュートリアルでは、Azure CDN エンドポイント カスタム ドメインで HTTPS を有効および無効にする方法について説明します。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: tutorial
 ms.date: 03/26/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: d9520f3a6c6ffadf7186b0b3c5c83fe872711316
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: d6a56aecaf8110118081e8c79e86bae5c277d992
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007789"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458686"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -211,7 +211,7 @@ CNAME レコードは、次の形式にする必要があります。
 * "*名前*" はカスタム ドメイン名です。
 * "*値*" は CDN エンドポイントのホスト名です。
 
-| 名前            | 種類  | 値                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

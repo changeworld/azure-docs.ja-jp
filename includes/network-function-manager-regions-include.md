@@ -1,16 +1,17 @@
 ---
-author: cherylmc
-ms.service: vnf-manager
+author: prmitt
+ms.service: network-function-manager
 ms.topic: include
-ms.date: 06/09/2021
-ms.author: cherylmc
+ms.date: 10/19/2021
+ms.author: prmitt
 ms.custom: references_regions
-ms.openlocfilehash: 616ba439f5bf5782205b3e9274b5d46a37ff16fc
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 6f399bb5012462215efc350d71e2cf833476099a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112240940"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004943"
 ---
 * 米国東部
 * 西ヨーロッパ
+* 東南アジア

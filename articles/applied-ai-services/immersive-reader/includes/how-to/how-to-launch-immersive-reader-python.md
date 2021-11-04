@@ -1,17 +1,17 @@
 ---
-author: erhopf
+author: nitinme
 manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 03/04/2021
-ms.author: erhopf
-ms.openlocfilehash: 33583a82a42185b09d44c58b4f249eaed49b0aa0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: nitinme
+ms.openlocfilehash: cb2f79cec51a5aea6b905ee7bac8447e135a5f8c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779181"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131254061"
 ---
 ## <a name="prerequisites"></a>前提条件
 

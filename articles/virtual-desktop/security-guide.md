@@ -8,12 +8,12 @@ ms.date: 12/15/2020
 ms.author: helohr
 ms.service: virtual-desktop
 manager: femila
-ms.openlocfilehash: b6161ab2b6c07e0da9a5f676a15598ca1bb103e9
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: e26a4b60edc413080a34687dbeb136c07ec0f412
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402112"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467057"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -196,6 +196,7 @@ Windows Defender Credential Guard では、VBS を使用してシークレット
 
 - Windows Server 2016
 - Windows Server 2019
+- Windows Server 2022
 - Windows 10 Enterprise
 - Windows 10 (Enterprise マルチセッション)
 
@@ -205,6 +206,7 @@ Windows Defender Credential Guard では、VBS を使用してシークレット
 
 - Windows Server 2016
 - Windows Server 2019
+- Windows Server 2022
 - Windows 10 Enterprise
 - Windows 10 (Enterprise マルチセッション)
 

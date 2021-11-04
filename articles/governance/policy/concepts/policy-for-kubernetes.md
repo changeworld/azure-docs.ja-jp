@@ -4,12 +4,12 @@ description: Azure Policy で Rego および Open Policy Agent を使用して�
 ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55a8f2f1cbb67c80c82e367a870cd61d76178518
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 75f93320e3cb051ec05008146fec08ada4b3a3cb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556329"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460965"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -150,7 +150,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-最後に、`<rg>` をリソース グループ名に置き換え、`<cluster-name>` を AKS クラスターの名前に置き換えて Azure CLI コマンド `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>` を実行することにより、最新のアドオンがインストールされていることを確認します。 結果は次の出力のようになります。
+最後に、`<rg>` をリソース グループ名に置き換え、`<cluster-name>` を AKS クラスターの名前に置き換えて Azure CLI コマンド `az aks show --query addonProfiles.azurePolicy -g <rg> -n <cluster-name>` を実行することにより、最新のアドオンがインストールされていることを確認します。 結果は次の出力のようになります。
 
 ```output
 {

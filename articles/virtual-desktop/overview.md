@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9025b32aa2ea6fd8fefa91d89b608c0e5d26b45e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c0e61760b130631c4f688b06f2cebdb163ea3910
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129992907"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452150"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Azure Virtual Desktop とは
 
@@ -67,7 +67,7 @@ Azure Virtual Desktop を設定し、ユーザーを Windows のデスクトッ�
 |---|---|
 |Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F3、Business Premium<br>Windows E3、E5、A3、A5|
 |Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F3、Business Premium<br>Windows E3、E5、A3、A5|
-|Windows Server 2012 R2、2016、2019|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
+|Windows Server 2012 R2、2016、2019、2022|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
 
 インフラストラクチャが Azure Virtual Desktop をサポートするために必要なものは次のとおりです。
 
@@ -128,6 +128,7 @@ Azure Virtual Desktop は、[Microsoft ライフサイクル ポリシー](/life
 * Windows 10 (Enterprise マルチセッション)
 * Windows 10 Enterprise
 * Windows 7 Enterprise
+* Windows Server 2022
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
@@ -143,6 +144,7 @@ Azure Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、Wi
 |Windows 10 Enterprise マルチセッション、バージョン 1909 以降|はい|はい|はい|はい|
 |Windows 10 Enterprise、バージョン 1909 以降|はい|はい|はい|はい|
 |Windows 7 Enterprise|はい|はい|いいえ|いいえ|
+|Windows Server 2022|はい|はい|いいえ|いいえ|
 |Windows Server 2019|はい|はい|いいえ|いいえ|
 |Windows Server 2016|はい|はい|はい|はい|
 |Windows Server 2012 R2|はい|はい|いいえ|いいえ|

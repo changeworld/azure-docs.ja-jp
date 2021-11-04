@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/26/2021
 ms.author: daberry
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13ac1d3d72a28538a2bdbdc149017848105562c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 3a815fe51815a967c23de9b0d95a0411e70dbd35
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619673"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423320"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする
 
@@ -298,7 +298,7 @@ public TablesService(TableClient tableClient)
 
 [TableClient](/dotnet/api/azure.data.tables.tableclient) クラスに含まれている [Query](/dotnet/api/azure.data.tables.tableclient.query) メソッドにより、テーブルから行を選択できるようになります。  この例では、このメソッドにパラメーターが渡されないため、テーブルからすべての行が選択されます。
 
-このメソッドは、返されるモデル クラス データを指定する [ITableEntity](/dotnet/api/azure.data.tables.itableentity) 型のジェネリック パラメーターも取ります。 このケースでは、組み込みの [TableEntity](/dotnet/api/azure.data.tables.itableentity) クラスが使用されます。つまり、`Query` メソッドは結果として `Pageable\<TableEntity\>` コレクションを返します。
+このメソッドは、返されるモデル クラス データを指定する [ITableEntity](/dotnet/api/azure.data.tables.itableentity) 型のジェネリック パラメーターも取ります。 このケースでは、組み込みの [TableEntity](/dotnet/api/azure.data.tables.itableentity) クラスが使用されます。つまり、`Query` メソッドは結果として `Pageable<TableEntity>` コレクションを返します。
 
 ```csharp
 public IEnumerable<WeatherDataModel> GetAllRows()

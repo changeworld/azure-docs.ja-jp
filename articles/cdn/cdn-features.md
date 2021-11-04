@@ -3,18 +3,18 @@ title: Azure Content Delivery Network (CDN) 製品の機能の比較
 description: 各 Azure Content Delivery Network (CDN) 製品がサポートする機能について説明します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: overview
 ms.date: 11/15/2019
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: cce999ad4a66428d69cd88f72e88d049af6301b7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 84a3361d7962ffa57e3b8f9a015e15a96218c13a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600781"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434847"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 製品の機能比較
 

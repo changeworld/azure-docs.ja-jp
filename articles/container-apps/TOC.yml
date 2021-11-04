@@ -1,0 +1,55 @@
+- name: Azure Container Apps プレビューのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Container Apps について
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: 初めてのコンテナー アプリをデプロイする
+      href: get-started.md
+- name: 概念
+  items:
+    - name: 環境
+      href: environment.md
+    - name: Containers
+      href: containers.md
+    - name: リビジョン
+      href: revisions.md
+    - name: アプリケーション ライフサイクル管理
+      href: application-lifecycle-management.md
+    - name: マイクロサービス
+      href: microservices.md
+- name: 使い方ガイド
+  items:
+    - name: アプリのスケーリング
+      href: scale-app.md
+    - name: アプリをセキュリティで保護する
+      href: secure-app.md
+    - name: アプリを監視する
+      href: monitor.md
+    - name: リビジョンを管理する
+      href: revisions-manage.md
+    - name: HTTPS イングレスを設定する
+      href: ingress.md
+    - name: 複数のアプリを接続する
+      href: connect-apps.md
+- name: チュートリアル
+  items:
+    - name: CLI を使用した Dapr を使用したマイクロサービス
+      href: microservices-dapr.md
+    - name: ARM を使用した Dapr を使用したマイクロサービス
+      href: microservices-dapr-azure-resource-manager.md
+    - name: バックグラウンド処理
+      href: background-processing.md
+- name: リファレンス
+  items:
+    - name: ARM API の仕様
+      href: azure-resource-manager-api-spec.md
+- name: リソース
+  items:
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-apps/'
+    - name: Quotas (クォータ)
+      href: quotas.md

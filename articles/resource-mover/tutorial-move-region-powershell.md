@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/21/2021
+ms.date: 10/04/2021
 ms.author: raynew
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca79be770784771bd77eae6c2419e5473f30c6e4
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 57d08ea3997dac79f680881d3adb096afd8c9ea2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129418900"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433462"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>PowerShell でリソースをリージョン間で移動する
 
@@ -288,7 +288,7 @@ New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -R
 2. ソース リソース グループの移動を開始します。
 
     ```azurepowershell-interactive
-    "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource “PSDemoRM”
+    Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource “PSDemoRM”
     ```
     ![ソース リソース グループの移動を開始した後の出力テキスト](./media/tutorial-move-region-powershell/initiate-move-source-resource-group.png)
 

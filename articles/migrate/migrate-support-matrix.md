@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 0429c7a8308db9acecd4600d4925493222375ced
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 02e6e3566f76b279d1911cdaba4b0f474c9cfe9b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857875"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509353"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -95,12 +95,12 @@ Africa | アフリカ南部またはアフリカ北部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
 JIO インド | JIO インド西部 
-韓国 | 韓国中部または韓国南部
+韓国 | 韓国中部
 ノルウェー | ノルウェー東部
 スイス | スイス北部
 アラブ首長国連邦 | アラブ首長国連邦北部
 イギリス | 英国南部または英国西部
-United States | 米国中部または米国西部 2
+アメリカ | 米国中部または米国西部 2
 
 > [!NOTE]
 > スイス地域については、REST API ユーザーに限りスイス西部が利用でき、承認済みのサブスクリプションが必要となります。

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: tutorial
 ms.date: 10/15/2021
-ms.openlocfilehash: d024f68b68fd381641c0dc7aaf5aedefd3930119
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 1ae844b4778f8a117bd8ae8807fa28849d9d310d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130075163"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056350"
 ---
 # <a name="create-server-group-with-private-access-preview-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL でプライベート アクセス (プレビュー) を使用するサーバー グループを作成する - Hyperscale (Citus)
 
@@ -154,6 +154,6 @@ az group delete --resource-group link-demo
 ## <a name="next-steps"></a>次のステップ
 
 * [プライベート アクセス](concepts-hyperscale-private-access.md) (プレビュー) の詳細を学習する
-* [プライベート エンドポイント](/azure/private-link/private-endpoint-overview)について学習する
-* [仮想ネットワーク](/azure/virtual-network/concepts-and-best-practices)について学習する
-* [プライベート DNS ゾーン](/azure/dns/private-dns-overview)について学習する
+* [プライベート エンドポイント](../private-link/private-endpoint-overview.md)について学習する
+* [仮想ネットワーク](../virtual-network/concepts-and-best-practices.md)について学習する
+* [プライベート DNS ゾーン](../dns/private-dns-overview.md)について学習する

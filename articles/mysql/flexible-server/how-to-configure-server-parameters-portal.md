@@ -6,21 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 2d02a4e0e63bd0861c0a414f3d56e9c62e19dc8a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 107d210cb046f87e9afcb112b1dd482f7dc0221a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651682"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429624"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのサーバー パラメータを構成する
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-サーバー パラメーターを使用して Azure Database for MySQL フレキシブル サーバー構成を管理できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
+サーバー パラメーターを使用して Azure Database for MySQL フレキシブル サーバー構成を管理できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。
 
 この記事では、Azure portal を使用してサーバー パラメーターを表示および構成する方法について説明します。 Azure portal の [サーバー パラメーター] ブレードには、変更可能および変更不可のサーバー パラメーターの両方が表示されます。 変更不可のサーバー パラメーターはグレーで表示されます。
 
@@ -43,7 +41,7 @@ ms.locfileid: "122651682"
 
 ## <a name="setting-non-modifiable-server-parameters"></a>変更不可のサーバー パラメーターの設定
 
-更新するサーバー パラメーターが変更不可である場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
+更新するサーバー パラメーターが変更不可である場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。
 
 1. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL サーバーの [サーバー パラメーター] ページを開きます。
 2. `init_connect` を検索します

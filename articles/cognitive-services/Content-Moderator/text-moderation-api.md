@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: e001e268a5e805fbab7cc84e7248750bd58e911e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: dd2cc6d6d64f3d593c8f069a9938124a05e209c6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822862"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454696"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 

@@ -125,7 +125,7 @@
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格

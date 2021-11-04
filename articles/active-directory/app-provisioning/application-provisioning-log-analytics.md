@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 918267b9dc2d7d8548d5406d590a03db13870749
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5ac16491a03b783020e1d8898eb50f30eef98eea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991833"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050909"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>プロビジョニングを Azure Monitor ログと統合する方法の概要
 
@@ -34,7 +34,7 @@ Azure Monitoring を構成すると、アプリケーションのプロビジョ
 
 > [!NOTE]
 > 最近ワークスペースをプロビジョニングしたばかりの場合は、ログを送信できるようになるまでに時間がかかることがあります。 サブスクリプションが  *microsoft.insights* を使用するように登録されていないというエラーを受け取った場合は、数分後にもう一度確認してください。
- 
+
 ## <a name="understanding-the-data"></a>データの説明
 プロビジョニングからログ ビューアーに送信される基のデータ ストリームはほぼ同じです。 Azure Monitor ログには、Azure portal UI および Azure API とほぼ同じストリームが取得されます。 次の表に示すように、ログ フィールドにはわずかな **違い** しかありません。 これらのフィールドの詳細については、「[provisioningObjectSummary を一覧表示する](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta)」を参照してください。
 

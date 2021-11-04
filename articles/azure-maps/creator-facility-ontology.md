@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 zone_pivot_groups: facility-ontology-schema
-ms.openlocfilehash: c08faefc795fd65c71163bd9f8c24a1f8cd939f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3ef3d9dd9d992e17c66516de8d13978e6c7c4821
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725613"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450801"
 ---
 # <a name="facility-ontology"></a>施設オントロジー
 
@@ -78,7 +78,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。 許容される最大の長さは 1,000 です。 |
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。 許容される最大の長さは 1,000 です。 |
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -98,7 +98,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。  許容される最大の長さは 1,000 です。|
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。  許容される最大の長さは 1,000 です。|
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -119,7 +119,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。 許容される最大の長さは 1,000 です。 |
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。 許容される最大の長さは 1,000 です。 |
 |`nameAlt` |    string |    false |   地物に使用される代替名。  許容される最大の長さは 1,000 です。|
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -139,7 +139,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。  許容される最大の長さは 1,000 です。|
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。 許容される最大の長さは 1,000 です。 |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 ## <a name="level"></a>レベル
 
@@ -159,7 +159,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。  許容される最大の長さは 1,000 です。|
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。  許容される最大の長さは 1,000 です。|
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 ## <a name="facility"></a>facility
 
@@ -177,7 +177,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。 許容される最大の長さは 1,000 です。 |
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。 許容される最大の長さは 1,000 です。 |
 |`nameAlt` |    string |    false |   地物に使用される代替名。  許容される最大の長さは 1,000 です。|
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 |`anchorHeightAboveSeaLevel` |  double | false | 海面より上のアンカー ポイントの高さ (メートル)。 海面は、EGM 2008 で定義されています。|
 |`defaultLevelVerticalExtent` |  double| false | レベルの垂直範囲の既定値 (メートル)。|
 
@@ -202,7 +202,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。  許容される最大の長さは 1,000 です。|
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。 許容される最大の長さは 1,000 です。 |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -219,7 +219,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。  許容される最大の長さは 1,000 です。|
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。 許容される最大の長さは 1,000 です。 |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -242,7 +242,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 | `accessRightToLeft`| enum [ "prohibited", "digitalKey", "physicalKey", "keyPad", "guard", "ticket", "fingerprint", "retina", "voice", "face", "palm", "iris", "signature", "handGeometry", "time", "ticketChecker", "other"] | false | 開口部を右から左に通過する際のアクセス方法。 左および右は、地物ジオメトリの頂点によって決定され、最初の頂点に立ち、2 番目の頂点に向かいます。 このプロパティを省略すると、アクセス制限がないことを意味します。|
 | `accessLeftToRight`| enum [ "prohibited", "digitalKey", "physicalKey", "keyPad", "guard", "ticket", "fingerprint", "retina", "voice", "face", "palm", "iris", "signature", "handGeometry", "time", "ticketChecker", "other"] | false | 開口部を左から右に通過する際のアクセス方法。 左および右は、地物ジオメトリの頂点によって決定され、最初の頂点に立ち、2 番目の頂点に向かいます。 このプロパティを省略すると、アクセス制限がないことを意味します。|
 | `isEmergency` | boolean | false | `true` の場合、開口部は緊急時にのみナビゲートできます。 既定値は `false` です |
-|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -254,7 +254,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
 |`categoryId`        |[category.Id](#category)     |true      | category 地物の ID。|
 | `levelId`          | [level.Id](#level)        | true     | level 地物の ID。 |
-|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 :::zone-end
 
@@ -313,8 +313,8 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。 許容される最大の長さは 1,000 です。 |
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。 許容される最大の長さは 1,000 です。 |
 |`nameAlt` |    string |    false |   地物に使用される代替名。 許容される最大の長さは 1,000 です。 |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
-|`obstructionArea` |   [Polygon](/rest/api/maps/wfs/get-feature-preview#featuregeojson)| false | ルーティング中に回避される地物の簡略化されたジオメトリ (ライン ジオメトリが複雑な場合)。 `isObstruction` を true に設定する必要があります。|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`obstructionArea` |   [Polygon](/rest/api/maps/wfs/get-feature#featuregeojson)| false | ルーティング中に回避される地物の簡略化されたジオメトリ (ライン ジオメトリが複雑な場合)。 `isObstruction` を true に設定する必要があります。|
 
 ## <a name="areaelement"></a>areaElement
 
@@ -333,7 +333,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。 許容される最大の長さは 1,000 です。 |
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。  許容される最大の長さは 1,000 です。|
 |`nameAlt` |    string |    false |   地物に使用される代替名。  許容される最大の長さは 1,000 です。|
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature-preview#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | 地物をポイントとして表す [GeoJSON Point ジオメトリ](/rest/api/maps/wfs/get-feature#featuregeojson)。 地物のラベルを位置付けるために使用できます。|
 
 ## <a name="category"></a>category
 

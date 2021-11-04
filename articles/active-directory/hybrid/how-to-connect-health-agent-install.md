@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 963c2d997bd75dadbeb6a37ea80d4237ea46cc35
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bec934ec67d952d037a3f06758cb8c3f272b21a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240663"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059188"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -47,7 +47,6 @@ ms.locfileid: "130240663"
 
 > [!IMPORTANT]
 > Windows Server Core では、Azure AD Connect Health エージェントのインストールがサポートされていません。
-
 
 > [!NOTE]
 > ロックダウンが頻繁で、非常に制限されている環境がある場合は、Internet Explorer のセキュリティ強化のために、表に記載されたものだけではなく、さらに URL を追加する必要があります。 また、次のセクションの表に記載されている URL も追加してください。  
@@ -264,7 +263,6 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
     import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
      
     Register-AzureADConnectHealthADDSAgent -Credential $myCreds
-    
     ```
 
 完了したら、次のタスクのうち 1 つ以上を行うことでローカル アカウントのアクセスを削除できます。 
@@ -278,10 +276,9 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
 適切なエージェントの *setup.exe* ファイルをインストールしたら、ロールに応じて次の PowerShell コマンドを使用して、エージェントを登録できます。 PowerShell ウィンドウを開き、適切なコマンドを実行します。
 
 ```powershell
-    Register-AzureADConnectHealthADFSAgent
-    Register-AzureADConnectHealthADDSAgent
-    Register-AzureADConnectHealthSyncAgent
-
+Register-AzureADConnectHealthADFSAgent
+Register-AzureADConnectHealthADDSAgent
+Register-AzureADConnectHealthSyncAgent
 ```
 
 > [!NOTE]
@@ -292,8 +289,6 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
 > Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
 > Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
 > ```
->
-
 
 これらのコマンドは、`Credential` をパラメーターとして受け入れて非対話的に登録を完了するか、Server Core を実行しているマシンで登録を完了します。 次の点に留意します。
 * `Credential` は、パラメーターとして渡される PowerShell 変数内で取得できます。

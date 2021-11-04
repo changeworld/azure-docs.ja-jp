@@ -3,7 +3,7 @@ title: Azure CDN の現在の POP IP リストの取得 | Microsoft Docs
 description: REST API を使用して、POP サーバーを取得する方法について説明します。 POP サーバーは、Azure Content Delivery Network エンドポイントに関連付けられている配信元サーバーに対して要求を行います。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 65bb0649f5fed3615887d750b95d2b4ce91216fb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2a471b16460ca92c43dda1c916840a56cb2a3808
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626059"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470074"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
 

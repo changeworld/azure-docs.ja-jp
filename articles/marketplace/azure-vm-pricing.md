@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshah
 ms.author: iqshah
 ms.date: 09/28/2021
-ms.openlocfilehash: 6c08319037a06ff7bb1051fd41b40dc20ec37fb6
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 38eecfefab8bbb8690b8125ad034ca3c3b076a1a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219319"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076530"
 ---
 # <a name="configure-prices-for-usage-based-monthly-billing"></a>使用量ベースの月次請求の価格を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "129219319"
 
 - 最初の 4 つのオプションでは、Microsoft が通貨換算を行います。
 - Microsoft としては、ソフトウェア ソリューションに対して定額料金を使用することをお勧めします。
-- 価格は固定されているため、公開されると調整できません。 ただし、VM プランの価格を減額する場合は、[サポート チケット](/azure/marketplace/support)を開くことができます。
+- 価格は固定されているため、公開されると調整できません。 ただし、VM プランの価格を減額する場合は、[サポート チケット](./support.md)を開くことができます。
 
 ## <a name="new-offering-pricing"></a>新しく提供される価格
 
@@ -41,4 +41,4 @@ Microsoft Azure には、定期的に新しい VM インフラストラクチャ
 
 ## <a name="next-steps"></a>次のステップ
 
-- ご質問がある場合は、[サポート](/azure/marketplace/support)でチケットを開いてください。
+- ご質問がある場合は、[サポート](./support.md)でチケットを開いてください。

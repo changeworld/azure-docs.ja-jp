@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: ecac56034c78cba09133fc12ca4ac8827afb0ea2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 462b71170bbd0534a15a54f0eacc53ff08e09f69
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806733"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439388"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -225,7 +225,7 @@ Azure Backup サービスの機能には、コストを効果的に管理しな�
 
 ### <a name="monitoring"></a>監視
 
-* Azure Backup では、バックアップの構成、バックアップ、復元、バックアップの削除などの操作について、**組み込みのジョブ監視** を提供しています。 これはコンテナーを対象としており、1 つのコンテナーの監視に最適です。 [こちら](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)を参照してください。
+* Azure Backup では、バックアップの構成、バックアップ、復元、バックアップの削除などの操作について、**組み込みのジョブ監視** を提供しています。 これはコンテナーを対象としており、1 つのコンテナーの監視に最適です。 [こちら](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center)を参照してください。
 
 * 操作アクティビティを大規模に監視する必要がある場合は、**バックアップ エクスプローラー** によってバックアップ資産全体の集約ビューが提供され、詳細なドリルダウン分析やトラブルシューティングが可能になります。 これは、単一の一元化された場所を提供する組み込み型の Azure Monitor ブックであり、テナント、場所、サブスクリプション、リソース グループ、コンテナーにわたる Azure 上のバックアップ資産全体で操作アクティビティを監視するのに役立ちます。 [こちら](monitor-azure-backup-with-backup-explorer.md)を参照してください。
   * これを使用すると、バックアップ用に構成されていないリソースを特定し、増大する資産に含まれている重要なデータの保護を欠かさずに実行できるようになります。

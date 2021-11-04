@@ -1,18 +1,18 @@
 ---
 title: Teradata のメタデータと系列
 description: この記事では、Teradata ソースからのデータ系列の抽出について説明します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 08/12/2021
-ms.openlocfilehash: 39965089cdd838e12ac324737e977dbeee17b40b
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 047405fea177cb8ba1365a1329dd6a682f1662fb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014940"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428769"
 ---
 # <a name="how-to-get-lineage-from-teradata-into-azure-purview"></a>Teradata から Azure Purview に系列を取得する方法
 

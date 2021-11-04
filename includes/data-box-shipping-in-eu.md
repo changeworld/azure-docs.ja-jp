@@ -3,22 +3,22 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/21/2021
+ms.date: 10/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bd845eef3e2f41bc9f14303430e3e44ab68c1b68
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 20476e26d9120b883fcc577d68f5e8455ee88988
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247299"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005580"
 ---
 ヨーロッパでデバイスを返送するには、次の手順を実行します。
 
 1. 必ずデバイスの電源をオフにてケーブルを取り外します。
 2. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-3. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。
+3. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 電子インク ディスプレイのラベルが破損している、なくなっている、または表示されない場合は、[Microsoft サポートに](..\articles\databox\data-box-disk-contact-microsoft-support.md)ご連絡ください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。
 1. **ドイツまたはスイスから発送する場合**、Azure データセンターでは、すべてのデバイスの返却に事前通知が必要です。
-    1. 次のテンプレートを使用して Azure Data Box Operations に電子メールを送信し、入荷 ID を受け取ります。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。
+    1. Azure Data Box Operations のアドレス [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送って、Inbound ID を受け取ります。 [adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールを送信します。 次に示すテンプレートを使用します。
 
        ```
        To: adbops@microsoft.com

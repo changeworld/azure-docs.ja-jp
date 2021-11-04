@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 89548cf1c98e360569255b9028b26230fedf5ed2
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: e67bdd11fc07c20d9f9dd660fa6aab936853015f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092340"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037912"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
@@ -199,7 +199,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 
-4. 次のコマンドを実行して、`AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
+4. 次のコマンドを実行して `AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
 
    `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
@@ -301,7 +301,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 検出が開始されたら、追加されたサーバーをアプライアンス構成マネージャーから削除できます。このためには、 **[Add discovery source]\(検出ソースの追加\)** テーブルでサーバー名を検索し、 **[削除]** をクリックします。
 
 >[!NOTE]
-> 検出が開始されているサーバーの削除を選択すると、実行中の検索と評価が停止し、このサーバーを含む評価の信頼度評価に影響する可能性があります。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2171565)
+> 検出が開始されているサーバーの削除を選択すると、実行中の検索と評価が停止し、このサーバーを含む評価の信頼度評価に影響する可能性があります。 [詳細情報](/azure/migrate/common-questions-discovery-assessment#why-is-the-confidence-rating-of-my-assessment-low)
 
 ## <a name="next-steps"></a>次のステップ
 

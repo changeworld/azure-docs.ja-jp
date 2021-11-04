@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.custom: template-how-to
-ms.openlocfilehash: d2ca288240d9f361f305c026e611140cba941e47
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 0f8b56aef3a3e141c80b09e97101f1d78a2c761b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224085"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006262"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>Azure Percept DK のモデル推論のテレメトリを表示する
 

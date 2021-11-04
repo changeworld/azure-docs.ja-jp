@@ -1,19 +1,19 @@
 ---
 title: Looker に接続して管理する
 description: このガイドでは、Azure Purview で Looker に接続し、Azure Purview の機能を使用して Looker ソースをスキャンおよび管理する方法について説明します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: a420923ed3d1ef57b8d0d3abdcb688e5412bafd6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 27a21f7cb9c04cdb03138540aa10aadf0f94cb57
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048161"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475542"
 ---
 # <a name="connect-to-and-manage-looker-in-azure-purview"></a>Azure Purview で Looker に接続して管理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "131048161"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [はい](#scan)| いいえ | いいえ | いいえ | いいえ| [はい](how-to-lineage-looker.md)|
+| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [はい](how-to-lineage-looker.md)|
 
 > [!Important]
 > サポートされている Looker サーバーのバージョンは 7.2 です

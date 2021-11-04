@@ -4,12 +4,12 @@ description: Azure Monitor を使用して、Azure Backup ワークロードを�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2e1466d3f7f8130cfe8b12ad23f2bf1f9dd61b54
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: f1c729a9a724bb397b01a74c2f5853c1b2a74e25
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565520"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455019"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -18,7 +18,7 @@ Azure Backup では、Recovery Services コンテナーに[組み込みの監視
 - サブスクリプションにまたがる複数の Recovery Services コンテナーのデータを監視する場合
 - 優先通知チャネルが "*電子メールではない*" 場合
 - ユーザーがより多くのシナリオでのアラートを希望する場合
-- Azure で System Center Data Protection Manager などのオンプレミス コンポーネントの情報を表示しようとする場合 (ポータルの [ **[バックアップ ジョブ]**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) または [ **[バックアップ アラート]**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) には表示されない)
+- Azure で System Center Data Protection Manager などのオンプレミス コンポーネントの情報を表示しようとする場合 (ポータルの [ **[バックアップ ジョブ]**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center) または [ **[バックアップ アラート]**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) には表示されない)
 
 ## <a name="using-log-analytics-workspace"></a>Log Analytics ワークスペースを使用する
 

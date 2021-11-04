@@ -1,19 +1,19 @@
 ---
 title: Azure Marketplace から Azure Data Factory Analytics ソリューションをインストールする
 description: Azure Marketplace から Azure Data Factory Analytics ソリューションをインストールする方法について説明します。
-author: minhe-msft
-ms.author: hemin
+author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 7c93ae2808629bf7b4413e6cb703e2c42863c0f7
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: cbb45c793ee0f4167d6ba706c144c5c46445ec90
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400555"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011392"
 ---
 # <a name="install-azure-data-factory-analytics-solution-from-azure-marketplace"></a>Azure Marketplace から Azure Data Factory Analytics ソリューションをインストールする
 

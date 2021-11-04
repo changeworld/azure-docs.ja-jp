@@ -4,15 +4,16 @@ description: データベース テンプレートについて学習する
 author: gsaurer
 ms.author: gesaur
 ms.service: synapse-analytics
+ms.subservice: database-editor
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: template-overview, ignite-fall-2021
-ms.openlocfilehash: 121e1a105bc2d2d01d4069b8a791443de25a8dc3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f34ce2b785aa1515db39cb0266963d8da5c85558
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017411"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437430"
 ---
 # <a name="what-is-azure-synapse-database-templates"></a>Azure Synapse データベース テンプレートとは
 

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 8a979fa56a7a75785220747dc1ee43696e8897d4
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: dd0328314cbe1f93565a421e0ff4f68f410b10dc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710520"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459978"
 ---
 # <a name="understanding-azure-virtual-desktop-network-connectivity"></a>Azure Virtual Desktop のネットワーク接続について
 
@@ -50,7 +50,7 @@ Azure Virtual Desktop セッション ホストのスタートアップ時に、
 
 ## <a name="connection-security"></a>接続のセキュリティ
 
-TLS 1.2 が、クライアントおよびセッション ホストから Azure Virtual Desktop インフラストラクチャ コンポーネントに開始されるすべての接続に使用されます。 Azure Virtual Desktop では、[Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-) と同じ TLS 1.2 暗号化を使用します。 クライアント コンピューターとセッション ホストの両方でこれらの暗号を使用できるようにすることが重要です。
+TLS 1.2 が、クライアントおよびセッション ホストから Azure Virtual Desktop インフラストラクチャ コンポーネントに開始されるすべての接続に使用されます。 Azure Virtual Desktop では、[Azure Front Door](../frontdoor/concept-end-to-end-tls.md#supported-cipher-suites) と同じ TLS 1.2 暗号化を使用します。 クライアント コンピューターとセッション ホストの両方でこれらの暗号を使用できるようにすることが重要です。
 リバース接続トランスポートの場合、クライアントとセッションの両方のホストが、Azure Virtual Desktop ゲートウェイに接続します。 TCP 接続を確立すると、クライアントまたはセッション ホストは、Azure Virtual Desktop ゲートウェイの証明書を検証します。
 ベース トランスポートを確立すると、RDP は、セッション ホストの証明書を使用して、クライアントとセッション ホストの間に入れ子になった TLS 接続を確立します。 既定では、RDP 暗号化に使用される証明書は、デプロイ中に OS によって自己生成されます。 必要に応じて、顧客は企業の証明機関によって発行され、一元管理された証明書を展開できます。 証明書の構成の詳細については、[Windows Server ドキュメント](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)を参照してください。
 

@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c08b346e5ab6dad939b441d60f9f68908568c840
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 27e6a78ec66b3427aa911abba5d7f4cdda20d876
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730538"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023084"
 ---
 # <a name="manage-template-versions-for-your-scheduled-analytics-rules-in-azure-sentinel"></a>Azure Sentinel でスケジュール化された分析ルールのテンプレート バージョンを管理する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >

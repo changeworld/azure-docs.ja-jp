@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: BustosMSFT
-ms.author: robustos
+author: rothja
+ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: c9735cdf0fbed640a451dd4195634fe4061dd947
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1bc56483f329c2884fd11f21c5453bbe29857e6e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690573"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083405"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL Database のプールされたデータベースに対して CLI を使用してアクティブ geo レプリケーションを構成する
 

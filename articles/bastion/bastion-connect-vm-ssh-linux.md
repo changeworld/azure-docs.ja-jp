@@ -6,14 +6,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 96edce1434665a5b49c35f8cc305ab4d2c417f8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d0c852cf6df97619f7a319da4e13a406c572d4e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594458"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069294"
 ---
 # <a name="create-an-ssh-connection-to-a-linux-vm-using-azure-bastion"></a>Azure Bastion を使用して Linux VM への SSH 接続を作成する
 
@@ -48,7 +49,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 * 受信ポート: カスタム値 (Azure Bastion 経由で VM に接続するときに、このカスタム ポートを指定する必要がある)
 
    > [!NOTE]
-   > カスタム ポート値を指定する場合、Standard SKU を使用して Azure Bastion を構成する必要があります。 Basic SKU では、カスタム ポートを指定できません。 Standard SKU は現在プレビュー段階です。
+   > カスタム ポート値を指定する場合、Standard SKU を使用して Azure Bastion を構成する必要があります。 Basic SKU では、カスタム ポートを指定できません。
    >
 
 ## <a name="connect-using-username-and-password"></a><a name="username"></a>接続: ユーザー名とパスワードを使用する

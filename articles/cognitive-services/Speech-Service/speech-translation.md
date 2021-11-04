@@ -3,21 +3,21 @@ title: 音声翻訳の概要 - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 音声翻訳を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。 この記事は、音声翻訳サービスの利点と機能の概要になっています。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 音声翻訳
-ms.openlocfilehash: 0d58185b5df333ca8066648294f43a81209fbf2e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 19332b801493359dc0cf8a8f1d5bab951b9be983
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537447"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502751"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2734bc7c02df4f9bbd84d1681d606b3ea92f2ce0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4af1ae8edc94abe3a7bd640ce7562fc86a0655f1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680112"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448616"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 

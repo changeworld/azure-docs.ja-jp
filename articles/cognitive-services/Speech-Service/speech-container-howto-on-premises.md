@@ -3,19 +3,19 @@ title: Kubernetes および Helm と共に Speech サービス コンテナー�
 titleSuffix: Azure Cognitive Services
 description: Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/22/2021
-ms.author: aahi
-ms.openlocfilehash: 636ab6e2353c2268c75dfa961987d3e0e79e189c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: eur
+ms.openlocfilehash: 80e734581982f0c33cda07fbf28cb3e35c9610c5
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454184"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500770"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 

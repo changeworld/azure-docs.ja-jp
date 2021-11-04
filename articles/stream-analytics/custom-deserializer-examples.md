@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d66879a4f3aac37bb08cfcf916c0cb44027c3729
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: eb275a2cced1a16bd1c5d05aed84d2cb7fd0da5b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295455"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463185"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers-preview"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る (プレビュー)
 
@@ -242,7 +242,7 @@ Standard SKU を使用する場合、この機能は次のリージョンで利�
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue 関数と同様の入力から MetadataPropertyValue にアクセスすることはできますか?
 
-この機能はサポートされていません。 この機能が必要な場合は、[UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese) でこの要求に投票することができます。
+この機能はサポートされていません。 この機能が必要な場合は、[UserVoice](https://feedback.azure.com/d365community/idea/b4517302-b925-ec11-b6e6-000d3a4f0f1c) でこの要求に投票することができます。
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>他のユーザーが利用できるように、逆シリアライザーの実装をコミュニティと共有できますか?
 

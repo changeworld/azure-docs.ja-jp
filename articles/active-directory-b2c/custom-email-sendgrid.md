@@ -3,21 +3,21 @@ title: SendGrid を使用するカスタム メール確認
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 対応アプリケーションを使用する目的で新規登録した顧客に送信される確認メールをカスタマイズするために、SendGrid と統合する方法について学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 67c5c15b81bf2007494cb78496a655e4e0d833fb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 304b7056fda06e017be445b57a4b75aef6a17ffc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128568489"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007420"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -147,7 +147,6 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
                        <td width="24" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
                        <td id="PageFooterContainer" width="585" valign="top" colspan="6" style="border-bottom:1px solid #e3e3e3;padding:0px;">
 
-
                        </td>
 
                        <td width="29" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
@@ -206,7 +205,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 次の要求変換を `<BuildingBlocks>` 内の `<ClaimsTransformations>` 要素に追加します。 要求変換 XML を次のように更新します。
 
 * 「[SendGrid テンプレートの作成](#create-sendgrid-template)」で先に作成した SendGrid トランザクション テンプレートの ID で `template_id` InputParameter 値を更新します。
-* `from.email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。 
+* `from.email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。
    > [!NOTE]
    > このメール アドレスは、SendGrid でドメイン認証か Single Sender Authentication のいずれかを使用した Sender Authentication で検証する必要があります。
 * `personalizations.0.dynamic_template_data.subject` 件名入力パラメーターの値を組織に適切な件名で更新します。
@@ -502,7 +501,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 1. [ContentDefinitions](contentdefinitions.md) 要素を更新し、LocalizedResources 要素への参照を追加します。
 
-    ```XML
+    ```xml
     <!--
     <BuildingBlocks> -->
       <ContentDefinitions>
@@ -527,17 +526,17 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 1. 最後に、次の入力要求変換を `LocalAccountSignUpWithLogonEmail` および `LocalAccountDiscoveryUsingEmailAddress` 技術プロファイルに追加します。
 
-    ```XML
+    ```xml
     <InputClaimsTransformations>
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
-    
+
 ## <a name="optional-localize-the-ui"></a>[オプション] UI をローカライズする
 
-Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。 
+Localization 要素を使用すると、ユーザー体験に関するポリシーで複数のロケールや言語をサポートすることができます。 ポリシーでのローカライズのサポートにより、[検証表示コントロールのユーザー インターフェイス要素](localization-string-ids.md#verification-display-control-user-interface-elements)と[ワンタイム パスワードのエラー メッセージ](localization-string-ids.md#one-time-password-error-messages)の両方に言語固有の文字列を使用できます。 次の LocalizedString を LocalizedResources に追加します。
 
-```XML
+```xml
 <LocalizedResources Id="api.custom-email.en">
   <LocalizedStrings>
     ...

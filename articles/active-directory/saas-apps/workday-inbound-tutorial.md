@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: eb6f3c6a1463e2a3b71057145a6df770ea880b9d
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: b32978b3674217ce2b4b91cd031989c6478dedd0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181168"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040059"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -501,7 +501,7 @@ Workday プロビジョニング アプリの構成が完了し、[オンデマ�
 
 #### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>Workday と Azure AD の統合に関連した改善を提案したり、新しい機能を依頼したりするにはどうすればよいですか。
 
-今後のリリースや機能強化の方向性を決める上でお客様のフィードバックはとても貴重です。 どのようなフィードバックでもお待ちしております。[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)にアイデアや改善の提案をご投稿ください。 Workday の統合に固有のフィードバックについては、カテゴリ *[SaaS アプリケーション]* を選択し、キーワード「*Workday*」を使用して検索すると、Workday に関連する既存のフィードバックが見つかります。
+今後のリリースや機能強化の方向性を決める上でお客様のフィードバックはとても貴重です。 どのようなフィードバックでもお待ちしております。[Azure AD のフィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)にアイデアや改善の提案をご投稿ください。 Workday の統合に固有のフィードバックについては、カテゴリ *[SaaS アプリケーション]* を選択し、キーワード「*Workday*」を使用して検索すると、Workday に関連する既存のフィードバックが見つかります。
 
 > [!div class="mx-imgBorder"]
 > ![UserVoice SaaS アプリ](media/workday-inbound-tutorial/uservoice_saas_apps.png)
@@ -683,17 +683,18 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
 
 * 上の例を拡張して、Workday に由来する市区町村名を短縮値に変換し、それを使用して *Smith、John (CHI)* や *Doe, Jane (NYC)* などの表示名を作成するとします。この結果は、決定変数として Workday の *Municipality* 属性を含む Switch 式を使用して実現できます。
 
-     ```
-    Switch
-    (
-      [Municipality],
-      Join(", ", [PreferredLastName], [PreferredFirstName]),  
-           "Chicago", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(CHI)"),
-           "New York", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(NYC)"),
-           "Phoenix", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(PHX)")
-    )
-     ```
-    関連項目:
+  ```
+  Switch
+  (
+    [Municipality],
+    Join(", ", [PreferredLastName], [PreferredFirstName]),  
+         "Chicago", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(CHI)"),
+         "New York", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(NYC)"),
+         "Phoenix", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(PHX)")
+  )
+  ```
+
+  関連項目:
   * [Switch 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#switch)
   * [Join 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#join)
   * [Append 関数の構文](../app-provisioning/functions-for-customizing-application-data.md#append)

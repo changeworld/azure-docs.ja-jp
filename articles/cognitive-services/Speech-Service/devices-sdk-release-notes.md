@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 5214d914c104fdf6df302c7879230bba2b3d2928
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ac7009cd1b7d2135bcc71dfba097639018bfdcfb
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891844"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507874"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 

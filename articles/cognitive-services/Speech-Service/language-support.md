@@ -3,20 +3,20 @@ title: 言語サポート - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスでは、音声翻訳に加え、音声からテキストへの変換とテキストから音声への変換のためのさまざまな言語がサポートされます。 この記事では、サービス機能によってサポートされている言語の包括的な一覧を示します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 84841dff43fa827a942eee28cb9cbcc1499e1fcc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: da7d2acfe48d4d598e2bbbfddccb55e2a7d20241
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011809"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505367"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -62,7 +62,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 中国語 (標準、簡体字)     | `zh-CN` | オーディオ (20200910)<br>Text                 |     はい                      | はい                         |
 | 中国語 (台湾標準中国語)       | `zh-TW` | オーディオ (20190701、20201015)<br>Text                 |           はい                |                          |
 | クロアチア語 (クロアチア)                 | `hr-HR` | テキスト<br>発音                  |                           |                          |
-| チェコ語 (チェコ共和国)             | `cs-CZ` | テキスト<br>発音                  |                           |                          |
+| チェコ語 (チェコ)             | `cs-CZ` | Text<br>発音                  |                           |                          |
 | デンマーク語 (デンマーク)                   | `da-DK` | Text<br>発音                  | はい                          |                          |
 | オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>Text<br>発音|    はい                       |                          |
 | 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>Text<br>発音| はい                          |                          |
@@ -483,7 +483,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Language | ロケール (BCP-47) | 性別 | 音声名 |
 |--|--|--|--|
-| アラビア語 (アラブ) | `ar-EG` | Female | `ar-EG-Hoda`|
+| アラビア語 (エジプト) | `ar-EG` | Female | `ar-EG-Hoda`|
 | アラビア語 (サウジアラビア) | `ar-SA` | Male | `ar-SA-Naayf`|
 | ブルガリア語 (ブルガリア) | `bg-BG` | Male | `bg-BG-Ivan`|
 | カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-HerenaRUS`|
@@ -496,7 +496,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 中国語 (台湾標準中国語) |  `zh-TW` | Female | `zh-TW-Yating`|
 | 中国語 (台湾標準中国語) |  `zh-TW` | Male | `zh-TW-Zhiwei`|
 | クロアチア語 (クロアチア) | `hr-HR` | Male | `hr-HR-Matej`|
-| チェコ語 (チェコ共和国) | `cs-CZ` | Male | `cs-CZ-Jakub`|
+| チェコ語 (チェコ) | `cs-CZ` | Male | `cs-CZ-Jakub`|
 | デンマーク語 (デンマーク) | `da-DK` | Female | `da-DK-HelleRUS`|
 | オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-HannaRUS`|
 | 英語 (オーストラリア) | `en-AU` | Female | `en-AU-Catherine`|
@@ -576,25 +576,36 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 
 | Language | Locale | ニューラル | クロス言語 |
 |--|--|--|--|
-| ブルガリア語 (ブルガリア)| `bg-BG` | はい | いいえ |
+| アラビア語 (エジプト) | `ar-EG` | はい | いいえ |
+| ブルガリア語 (ブルガリア) | `bg-BG` | はい | いいえ |
 | 中国語 (標準、簡体字) | `zh-CN` | はい | はい |
 | 中国語 (標準、簡体字)、英語バイリンガル | `zh-CN` バイリンガル | はい | はい |
-| オランダ語 (オランダ)   | `nl-NL` | はい | いいえ |
+| 中国語 (台湾標準中国語) | `zh-TW` | はい | いいえ |
+| チェコ語 (チェコ) | `cs-CZ` | はい | いいえ |
+| オランダ語 (オランダ) | `nl-NL` | はい | いいえ |
 | 英語 (オーストラリア) | `en-AU` | はい | はい |
+| 英語 (カナダ) | `en-CA` | はい | いいえ |
 | 英語 (インド) | `en-IN` | はい | いいえ |
+| 英語 (アイルランド) | `en-IE` | はい | いいえ |
 | 英語 (イギリス) | `en-GB` | はい | はい |
 | 英語 (米国) | `en-US` | はい | はい |
 | フランス語 (カナダ) | `fr-CA` | はい | はい |
 | フランス語 (フランス) | `fr-FR` | はい | はい |
+| ドイツ語 (オーストリア) | `de-AT` | はい | いいえ |
 | ドイツ語 (ドイツ) | `de-DE` | はい | はい |
+| ハンガリー語 (ハンガリー) | `hu-HU` | はい | いいえ |
 | イタリア語 (イタリア) | `it-IT` | はい | はい |
 | 日本語 (日本) | `ja-JP` | はい | はい |
 | 韓国語 (韓国) | `ko-KR` | はい | はい |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | はい | いいえ |
 | ポルトガル語 (ブラジル) | `pt-BR` | はい | はい |
+| ポルトガル語 (ポルトガル) | `pt-PT` | はい | いいえ |
 | ロシア語 (ロシア) | `ru-RU` | はい | はい |
+| スロバキア語 (スロバキア) | `sk-SK` | はい | いいえ |
 | スペイン語 (メキシコ) | `es-MX` | はい | はい |
 | スペイン語 (スペイン) | `es-ES` | はい | はい |
+| トルコ語 (トルコ) | `tr-TR` | はい | いいえ |
+| ベトナム語 (ベトナム) | `vi-VN` | はい | いいえ |
 
 カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
 

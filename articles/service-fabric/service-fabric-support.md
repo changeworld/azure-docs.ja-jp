@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 5/17/2021
 ms.author: edoyle
 ms.custom: support-help-page
-ms.openlocfilehash: 3b84f85a01ebaff9c3901672d31a135586280e13
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 5228663dfa3a272d4d5aaa569d8a14689ddf7490
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633543"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467437"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -101,6 +101,6 @@ Service Fabric ランタイムおよび SDK の最新リリースと更新につ
 <!--references-->
 [Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
-[uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
+[uservoice-forum]: https://feedback.azure.com/d365community/forum/e622b37a-2225-ec11-b6e6-000d3a4f0f84
 [acom-docs]: ./index.yml
 [sample-repos]: /samples/browse/?products=azure

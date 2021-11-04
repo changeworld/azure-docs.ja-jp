@@ -1,24 +1,25 @@
 ---
 title: 'チュートリアル: Microsoft Azure Maps Creator を使用してフロア ガイドを作成する'
 description: Microsoft Azure Maps Creator を使用してフロア ガイドを作成する方法のチュートリアル
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 5/19/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: db5bebce41e8fd13cf0796e02fc0bfe91d63a6c9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ef1643f349fea853b15e0d8bcd2f07a0fd412188
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060017"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447153"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>チュートリアル:Creator を使用して屋内マップを作成する
 
 このチュートリアルでは、フロア ガイドを作成する方法を示します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
+>
 > * フロア ガイド Drawing パッケージをアップロードする。
 > * Drawing パッケージをマップ データに変換する。
 > * マップ データからデータセットを作成する。
@@ -58,12 +59,12 @@ Drawing パッケージをアップロードするには、次の手順を行い
 5. [Data Upload API](/rest/api/maps/data-v2/upload-preview) への次の URL を入力します。要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/mapData?api-version=2.0&dataFormat=dwgzippackage&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData?api-version=2.0&dataFormat=dwgzippackage&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Headers]\(ヘッダー\)** タブを選択します。
 
-7. **[キー]** フィールドで、`Content-Type` を選択します。 
+7. **[キー]** フィールドで、`Content-Type` を選択します。
 
 8. **[値]** フィールドで、`application/octet-stream` を選択します。
 
@@ -100,7 +101,7 @@ Drawing パッケージの状態を確認し、その一意の ID (`udid`) を�
 5. 「[Drawing パッケージをアップロードする](#upload-a-drawing-package)」でコピーした `status URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
@@ -128,7 +129,7 @@ Drawing パッケージ リソースからメタデータを取得できます�
 5. 「[Drawing パッケージのアップロードの状態を確認する](#check-the-drawing-package-upload-status)」でコピーした `resource Location URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
@@ -163,12 +164,12 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. [Conversion Service](/rest/api/maps/v2/conversion/convert) への次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`udid` はアップロードしたパッケージの `udid` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/conversions?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&udid={udid}&inputType=DWG&outputOntology=facility-2.0
+    https://us.atlas.microsoft.com/conversions?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&udid={udid}&inputType=DWG&outputOntology=facility-2.0
     ```
 
 6. **[Send]** を選択します。
 
-7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。 
+7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。
 
 8. **Operation-Location** キーの値である `status URL` をコピーします。 `status URL` を使用して、変換の状態を確認します。
 
@@ -191,12 +192,12 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. 「[Drawing パッケージを変換する](#convert-a-drawing-package)」でコピーした `status URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/conversions/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/conversions/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
 
-7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。 
+7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。
 
 8. **Resource-Location** キーの値である `resource location URL` をコピーします。 `resource location URL` には一意識別子 (`conversionId`) が含まれており、他の API から使用して、変換されたマップ データにアクセスできます。
 
@@ -208,7 +209,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 
 ```json
 {
-    "operationId": "<operationId>",
+    "operationId": "{operationId}",
     "created": "2021-05-19T18:24:28.7922905+00:00",
     "status": "Succeeded",
      "warning": {
@@ -248,7 +249,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. [Dataset API](/rest/api/maps/v2/dataset) への次の URL を入力します。 要求は、次の URL のようになります (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`{conversionId` は「[Drawing パッケージ変換の状態を確認する](#check-the-drawing-package-conversion-status)」で取得した `conversionId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/datasets?api-version=2.0&conversionId={conversionId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/datasets?api-version=2.0&conversionId={conversionId}&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
@@ -274,12 +275,12 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. 「[データセットを作成する](#create-a-dataset)」でコピーした `status URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/datasets/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/datasets/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
 
-7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。**Resource-Location** キーの値は `resource location URL` です。 `resource location URL` には、データセットの一意の識別子 (`datasetId`) が含まれています。 
+7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。**Resource-Location** キーの値は `resource location URL` です。 `resource location URL` には、データセットの一意の識別子 (`datasetId`) が含まれています。
 
 8. `datasetId` をコピーします。これは、このチュートリアルの次のセクションで使用します。
 
@@ -302,12 +303,12 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. [Tileset API](/rest/api/maps/v2/tileset) への次の URL を入力します。 要求は、次の URL のようになります (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`{datasetId`} は「[データセットの作成状態を確認する](#check-the-dataset-creation-status)」で取得した `datasetId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/tilesets?api-version=2.0&datasetID={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/tilesets?api-version=2.0&datasetID={datasetId}&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
 
-7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。 
+7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。
 
 8. **Operation-Location** キーの値である `status URL` をコピーします。 `status URL` を使用して、タイルセットの状態を確認します。
 
@@ -328,7 +329,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. 「[タイルセットを作成する](#create-a-tileset)」でコピーした `status URL` を入力します。 要求は次のような URL になります (`{Azure-Maps-Primary-Subscription-key}` は、ご自分のプライマリ サブスクリプション キーに置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/tilesets/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/tilesets/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Send]** を選択します。
@@ -356,7 +357,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. [WFS API](/rest/api/maps/v2/wfs) への次の URL を入力します。 要求は、次の URL のようになります (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`{datasetId`} は「[データセットの作成状態を確認する](#check-the-dataset-creation-status)」で取得した `datasetId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0
+    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0
     ```
 
 6. **[Send]** を選択します。
@@ -406,7 +407,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. 次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`{datasetId`} は「[データセットの作成状態を確認する](#check-the-dataset-creation-status)」で取得した `datasetId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections/unit/items?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0
+    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections/unit/items?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0
     ```
 
 6. **[Send]** を選択します。
@@ -460,7 +461,7 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. [Stateset API](/rest/api/maps/v2/feature-state/create-stateset) への次の URL を入力します。 要求は、次の URL のようになります (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`{datasetId`} は「[データセットの作成状態を確認する](#check-the-dataset-creation-status)」で取得した `datasetId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets?api-version=2.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets?api-version=2.0&datasetId={datasetId}&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Headers]\(ヘッダー\)** タブを選択します。
@@ -515,12 +516,12 @@ Drawing パッケージを変換するには、次の手順を行います。
 5. [Feature Statesets API](/rest/api/maps/v2/feature-state/create-stateset) への次の URL を入力します。 要求は、次の URL のようになります (`{Azure-Maps-Primary-Subscription-key}` はご自分のプライマリ サブスクリプション キーに、`{statesetId`} は「[地物状態セットを作成する](#create-a-feature-stateset)」で取得した `statesetId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. **[Headers]\(ヘッダー\)** タブを選択します。
 
-7. **[キー]** フィールドで、`Content-Type` を選択します。 
+7. **[キー]** フィールドで、`Content-Type` を選択します。
 
 8. **[値]** フィールドで、`application/json` を選択します。
 

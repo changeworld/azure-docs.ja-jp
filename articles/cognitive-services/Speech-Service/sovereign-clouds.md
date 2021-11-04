@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 08/24/2021
 ms.author: alexeyo
-ms.openlocfilehash: c7c140b1ff2d3d2151ad8ce01e3ad8f64660543d
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 2ebd9d6946996535f68b52f0093c2b3199c2e256
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777893"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509524"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>ソブリン クラウドの Speech Services
 

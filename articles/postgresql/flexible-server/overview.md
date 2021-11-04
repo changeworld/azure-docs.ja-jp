@@ -5,20 +5,20 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 10/04/2021
+ms.date: 10/07/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: d1d33a526ef2dfff4709b994c77396a4db1b2a5e
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: b5f82dd6b822a1a8c138ce08dcc0f689594150f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425370"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
 PostgreSQL コミュニティ エディションを使用する <bpt id="p1">[</bpt>Azure Database for PostgreSQL<ept id="p1">](../overview.md)</ept> は、次の 3 つのデプロイ モードで利用できます。
 
-- <bpt id="p1">[</bpt>単一サーバー<ept id="p1">](../overview-single-server.md)</ept>
+- [単一サーバー](../overview-single-server.md)
 - フレキシブル サーバー (プレビュー)
 - Hyperscale (Citus)
 
@@ -56,7 +56,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 ゾーン冗長の高可用性が構成されている場合は、サービスによって同じ Azure リージョン内の可用性ゾーンにホット スタンバイ サーバーがプロビジョニングされ、管理されます。 データ損失をゼロにするために、ソース サーバー上でのデータの変更は、スタンバイ サーバーに同期的にレプリケートされます。 ゾーン冗長の高可用性により、計画済みまたは計画外のフェールオーバー イベントがトリガーされると、スタンバイ サーバーが直ちにオンラインになり、受信トランザクションを処理できるようになります。 これにより、次の図に示すように、複数の可用性ゾーンをサポートする Azure リージョン内の可用性ゾーンの障害からサービスを回復できます。
 
- <bpt id="p1">:::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="</bpt>ゾーン冗長の高可用性<ept id=&quot;p1&quot;>":::</ept>
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="ゾーン冗長の高可用性":::
 
  詳細については、<bpt id="p1">[</bpt>高可用性のドキュメント<ept id="p1">](./concepts-high-availability.md)</ept>を参照してください。
 
@@ -138,8 +138,8 @@ Azure Database for PostgreSQL フレキシブル サーバーについての質�
 
 さらに、適切な連絡先について次の点を考慮してください。
 
-- Azure サポートに問い合わせる場合は、<bpt id="p1">[</bpt>Azure portal からチケットを申請します<ept id="p1">](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)</ept>。
-- アカウントを使用して問題を修正するには、Azure Portal で<bpt id="p1">[</bpt>サポート要求<ept id="p1">](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)</ept>を提出します。
+- Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 - フィードバックを提供したり、新しい機能を要求したりするには、<bpt id="p1">[</bpt>UserVoice<ept id="p1">](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)</ept> でエントリを作成します。
   
 

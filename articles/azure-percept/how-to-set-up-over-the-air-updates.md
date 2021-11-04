@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 26e53511cfab9444a9d5a9c4dcd868be07b40e16
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 19161ea1e89cf4917442e607903a7c8f0b7c2860
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224354"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006299"
 ---
 # <a name="set-up-azure-iot-hub-to-deploy-over-the-air-updates"></a>更新を無線でデプロイするように Azure IoT Hub を設定する
 

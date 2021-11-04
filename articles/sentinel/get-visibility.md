@@ -7,17 +7,19 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: mvc, fasttrack-edit
+ms.custom: mvc, fasttrack-edit, ignite-fall-2021
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4fb3b30a35d8f6d22668024a5fa08dbc7358c0ed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb01d57a7801b940ba9de2e8c939743070c57eaa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121787132"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004095"
 ---
 # <a name="visualize-collected-data"></a>収集されたデータを視覚化する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel を使用して、環境全体で何が発生しているのかを素早く表示および監視できるようにする方法について説明します。 データ ソースを Azure Sentinel に接続すると、すぐにデータを視覚化して分析できるため、接続されているすべてのデータ ソースで発生していることを把握できます。 Azure Sentinel には、Azure で既に使用できるツールをフルに活用できるブックと、ログとクエリの分析機能を提供するために組み込まれているテーブルとグラフが用意されています。 組み込みのブックを使用するか、最初から、または既存のブックに基づいて新しいブックを簡単に作成できます。 
 

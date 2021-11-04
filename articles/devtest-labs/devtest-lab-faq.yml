@@ -6,12 +6,12 @@ metadata:
   ms.service: azure
   ms.date: 07/17/2020
   ms.custom: devx-track-azurepowershell, references_regions
-  ms.openlocfilehash: 1bd63686c5dc726a238723991132e93c1b13863c
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: f8ef53c79632091644365836000d719055852674
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130226416"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131453803"
 title: Azure DevTest Labs に関する FAQ
 summary: "\nAzure DevTest Labs について特に多く寄せられる質問にお答えします。\n\n## <a name=\"blog-post\"></a>ブログ記事\nDevTest Labs チームのブログは 2019 年 3 月 20 日時点で廃止されました。 \n\n### <a name=\"where-can-i-track-feature-updates-from-now-on\"></a>今後の機能更新はどこで追跡できるのでしょうか。\n今後、Azure ブログと Azure の更新情報で、機能更新や情報ブログ記事を投稿していきます。 これらのブログ記事は、必要に応じて、Microsoft のドキュメントにもリンクされます。\n        \n[DevTest Labs Azure ブログ](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)と [DevTest Labs Azure の更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)をご覧になり、DevTest Labs の新機能に関する情報を入手するようにしてください。\n        \n### <a name=\"what-happens-to-the-existing-blog-posts\"></a>既存のブログ記事はどうなりますか。\n現在、既存のブログ記事 (障害更新情報を除く) の [DevTest Labs ドキュメント](devtest-lab-overview.md)への移行を進めています。 MSDN ブログが非推奨になると、DevTest Labs のドキュメントの概要にリダイレクトされます。 リダイレクトされたら、タイトルの 'フィルター条件' で探している記事を検索できます。 まだすべての記事を移行していませんが、今月末までに完了するはずです。 \n        \n### <a name=\"where-do-i-see-outage-updates\"></a>障害更新情報はどこで確認できますか。\n今後、Twitter ハンドルを使用して、障害更新情報を投稿する予定です。 Twitter でフォローして、障害と既知のバグに関する最新の更新情報を取得してください。\n\n### <a name=\"twitter\"></a>Twitter\nTwitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)\n"
 sections:
@@ -27,7 +27,7 @@ sections:
 
       - さらに多くの人と情報交換するには、[Azure DevTest Labs に関する Microsoft Q&A 質問ページ](/answers/topics/azure-devtestlabs.html)に質問を投稿してください。 Azure DevTest Labs チームや他のコミュニティ メンバーと情報交換できます。
 
-      - 機能を要求する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/forums/320373-azure-devtest-labs)に送信してください。
+      - 機能を要求する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/d365community/forum/502dba10-7726-ec11-b6e6-000d3a4f032c)に送信してください。
   - question: >
       Microsoft アカウントとは何ですか。
     answer: >

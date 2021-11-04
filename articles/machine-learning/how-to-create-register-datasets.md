@@ -11,12 +11,12 @@ ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
-ms.openlocfilehash: a125ee289f9f3ea87f1015136b07ec2ad76cef32
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 423dae8f84e43900ad84a49423b7d2ff00fb8c76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003044"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429795"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -245,12 +245,9 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
 ```
 
-### <a name="partition-data-preview"></a>データのパーティション分割 (プレビュー)
+### <a name="partition-data"></a>データのパーティション分割
 
 TabularDataset または FileDataset を作成するときに、`partitions_format` パラメーターを含めることにより、データセットをパーティション分割できます。 
-
-> [!IMPORTANT]
-> データセット パーティションの作成は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
 
 データセットをパーティション分割すると、各ファイル パスのパーティション情報が、指定された形式に基づいて列に抽出されます。 形式は、最初のパーティション キーの位置から始まり、ファイル パスの末尾までになります。 
 
