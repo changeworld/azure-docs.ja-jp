@@ -3,19 +3,19 @@ title: Speech Devices SDK を取得する
 titleSuffix: Azure Cognitive Services
 description: 音声サービスは、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 この記事では、Speech Devices SDK を利用して開発を始める方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2019
-ms.author: pafarley
-ms.openlocfilehash: fe91a9d288b6fb512693b909098d2e2d5130d9e4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.author: eur
+ms.openlocfilehash: 76ef359ea125ccd17de1ff0670390eb7e89d4290
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771937"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509300"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK を取得する
 

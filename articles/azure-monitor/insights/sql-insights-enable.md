@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d2872d2293802c435eb4bbd67078e6d1e973a6b9
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: bbef6233a82e85ea849d3b637b5c0b83caddcd04
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004599"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447096"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL insights を有効にする (プレビュー)
 この記事では、[SQL insights](sql-insights-overview.md) を有効にして SQL のデプロイを監視する方法について説明します。 監視は、お使いの SQL デプロイに接続し、動的管理ビュー (DMV) を使用して監視データを収集する Azure 仮想マシンから実行されます。 監視プロファイルを使用して、どのようなデータセットを収集するかと、収集の頻度を制御できます。
@@ -209,9 +209,9 @@ Azure portal で、 **[Azure Monitor]** メニューの **[Insights]** セクシ
 接続文字列を次の形式で入力します。
 
 ```
-sqlAzureConnections": [ 
+sqlAzureConnections": [
    "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
-}
+]
 ```
 
 データベースの **[接続文字列]** メニュー項目から詳細を取得します。
@@ -224,9 +224,9 @@ sqlAzureConnections": [
 接続文字列を次の形式で入力します。
 
 ```
-"sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;" 
-    ] 
+"sqlManagedInstanceConnections": [
+   "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;" 
+] 
 ```
 マネージド インスタンスの **[接続文字列]** メニュー項目から詳細を取得します。
 
@@ -239,7 +239,7 @@ sqlAzureConnections": [
 接続文字列を次の形式で入力します。
 
 ```
-"sqlVmConnections": [ 
+"sqlVmConnections": [
    "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
 ] 
 ```

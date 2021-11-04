@@ -5,12 +5,12 @@ services: automation
 ms.date: 09/16/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 436282ad8a2816e3307d2ad270209980b2fa0427
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 3813fa79fb6eaba5c61500d11d9b160c88d668d4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058439"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435398"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -266,7 +266,7 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 
 ### <a name="resolution"></a>解像度
 
-クラシック実行アカウントを Azure クラシック デプロイ モデルのコマンドレットと共に使用するには、[クラシック実行アカウントを作成して Azure サービスを管理する](../automation-create-standalone-account.md#create-a-classic-run-as-account)方法に関する記事を参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
+Azure Resource Manager コマンドレットでサービス プリンシパルを使用する場合は、[Azure portal を使用するサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)および [Azure Resource Manager でのサービス プリンシパルの認証](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページを参照してください。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>シナリオ:Runbook が "A task was canceled" (タスクが取り消されました) というエラー メッセージで失敗する
 

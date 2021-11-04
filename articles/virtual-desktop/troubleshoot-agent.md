@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 12132e5143546abc2b12a83e3e6cd92a43069e1e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3bb81f3fd29e68e04607e4f0252ccd8f0308dc67
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130263043"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471803"
 ---
 # <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -106,7 +106,7 @@ Azure Virtual Desktop エージェントでは、次の複数の要因のため�
    > ![失敗した読み込まれたブローカー グローバルへのアクセスのスクリーンショット](media/unsuccessful-broker-global.png)
 
 8. ネットワークによってこれらの URL がブロックされている場合は、必要な URL のブロックを解除する必要があります。 詳細については、「[必要な URL リスト](safe-url-list.md)」を参照してください。
-9. これで問題が解決されない場合は、エージェントからブローカーへの接続をブロックする、暗号化されたグループ ポリシーが存在しないことを確認します。 Azure Virtual Desktop では、[Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-) と同じ TLS 1.2 暗号化を使用します。 詳細については、「[接続のセキュリティ](network-connectivity.md#connection-security)」を参照してください。
+9. これで問題が解決されない場合は、エージェントからブローカーへの接続をブロックする、暗号化されたグループ ポリシーが存在しないことを確認します。 Azure Virtual Desktop では、[Azure Front Door](../frontdoor/concept-end-to-end-tls.md#supported-cipher-suites) と同じ TLS 1.2 暗号化を使用します。 詳細については、「[接続のセキュリティ](network-connectivity.md#connection-security)」を参照してください。
 
 ## <a name="error-3703"></a>エラー: 3703
 

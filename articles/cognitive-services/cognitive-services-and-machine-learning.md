@@ -6,13 +6,13 @@ services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: e723089b0e248b3bab167b985bc410b3e00d4dc6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/28/2021
+ms.openlocfilehash: 58025ba9bd0fb8a90395de48c8ab9d24e8746438
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788270"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439236"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -102,7 +102,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Speech のテキスト読み上げ (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Speech の音声テキスト変換 (STT)](speech-service/speech-to-text.md)|x|x||
 |[音声翻訳](speech-service/speech-translation.md)|x|||
-|[Text Analytics](./text-analytics/overview.md)|x|||
+|[言語サービス](./language-service/overview.md)|x|||
 |[Translator](./translator/translator-overview.md)|x|||
 |[Translator - Custom Translator](./translator/custom-translator/overview.md)||x||
 

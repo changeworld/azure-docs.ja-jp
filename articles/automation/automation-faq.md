@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dfe04bb2fcb7022934ac699bb5c3bd90005bf3b3
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 9a245c858c15a8a33b6347c86124a7b45f0c4290
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356602"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450896"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation についてよく寄せられる質問
 
@@ -84,4 +84,4 @@ Python モジュールの検索は、前述のように環境変数によって�
 こちらでご質問の回答が見つからない場合は、次のソースでさらに質問と回答を参照できます。
 
 - [Azure Automation](/answers/topics/azure-automation.html)
-- [フィードバック フォーラム](https://feedback.azure.com/forums/905242-update-management)
+- [フィードバック フォーラム](https://feedback.azure.com/d365community/forum/721a322e-bd25-ec11-b6e6-000d3a4f0f1c)

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/03/2021
 ms.author: rortloff
-ms.reviewer: jrasnick
+ms.reviewer: wiassaf
 ms.custom: azure-synapse
-ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0dc05f32ca3f2fec1e19106e93178dcc40e4d0b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96454541"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501345"
 ---
 # <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールのワークロードを分析する
 
@@ -103,8 +103,7 @@ SELECT  w.[wait_id]
 FROM    sys.dm_pdw_waits w
 JOIN    sys.dm_pdw_exec_sessions s  ON w.[session_id] = s.[session_id]
 JOIN    sys.dm_pdw_exec_requests r  ON w.[request_id] = r.[request_id]
-WHERE    w.[session_id] <> SESSION_ID()
-;
+WHERE    w.[session_id] <> SESSION_ID();
 ```
 
 `sys.dm_pdw_resource_waits` DMV には特定のクエリに対する待機情報が表示されます。 リソース待機時間は、提供されるリソースを待機する時間を測定します。 シグナルの待機時間は、基になる SQL Server によりクエリが CPU にスケジュール設定されるまでの時間です。
@@ -122,8 +121,7 @@ SELECT  [session_id]
 ,       [resource_class]
 ,       [wait_id]                                   AS queue_position
 FROM    sys.dm_pdw_resource_waits
-WHERE    [session_id] <> SESSION_ID()
-;
+WHERE    [session_id] <> SESSION_ID();
 ```
 
 `sys.dm_pdw_resource_waits` DMV を使用して、許可されたコンカレンシー スロットの数を計算することもできます。
@@ -133,8 +131,7 @@ SELECT  SUM([concurrency_slots_used]) as total_granted_slots
 FROM    sys.[dm_pdw_resource_waits]
 WHERE   [state]           = 'Granted'
 AND     [resource_class] is not null
-AND     [session_id]     <> session_id()
-;
+AND     [session_id]     <> session_id();
 ```
 
 `sys.dm_pdw_wait_stats` DMV を使用すると、待機のこれまでの傾向を分析できます。
@@ -147,10 +144,9 @@ SELECT   w.[pdw_node_id]
 ,        w.[signal_time]
 ,        w.[completed_count]
 ,        w.[wait_time]
-FROM    sys.dm_pdw_wait_stats w
-;
+FROM    sys.dm_pdw_wait_stats w;
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-データベース ユーザーの管理とセキュリティの詳細については、[専用 SQL プール (以前の SQL DW) のセキュリティ保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「[セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、[専用 SQL プール (以前の SQL DW) のセキュリティ保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuild-indexes-to-improve-segment-quality)」を参照してください。

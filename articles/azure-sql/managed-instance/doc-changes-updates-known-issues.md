@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: e66333fa1174eb9a614f2028641a83a8391e39e0
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 97cf7977d6e867d0c3bbc106f599bc69db4d987b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047941"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465233"
 ---
 # <a name="known-issues-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance に関する既知の問題
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "130047941"
 |[接続の種類の変更が、フェールオーバー グループ エンドポイント経由の接続に影響しない](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|2021 年 1 月|回避策あり||
 |[@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|回避策あり||
 |[サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|回避策あり||
-|[マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|回避策あり||
+|[マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|解決済み|2021 年 5 月|
 |[以前に削除された論理サーバーと同じ名前の SQL Managed Instance を作成できない](#cannot-create-sql-managed-instance-with-the-same-name-as-logical-server-previously-deleted)|2020 年 8 月|回避策あり||
 |Azure SQL の [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)、および SQL Managed Instance の `BACKUP`/`RESTORE` ステートメントで、Azure AD Manage Identity を使用して Azure Storage に対する認証を実行できない|2020 年 9 月|回避策あり||
 |[サービス プリンシパルから Azure AD および AKV にアクセスできません](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|回避策あり||

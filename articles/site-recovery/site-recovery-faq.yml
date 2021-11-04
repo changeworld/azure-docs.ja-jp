@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: azure
   ms.date: 05/27/2021
-  ms.openlocfilehash: 82d4003e13cf68d9777e2bcdfd57551d9ef478f4
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: c43e0e17884025904d56cb5b24badc3972f93937
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122254122"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131422028"
 title: Azure Site Recovery に関する一般的な質問
 summary: >
   この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。 特定のシナリオについては、次の記事をご覧ください
@@ -232,11 +232,11 @@ sections:
   - question: >
       既存の復旧サイトから第 3 のサイトにレプリケーションを拡張することができますか。
     answer: >
-      拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+      拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
   - question: >
       Azure に初めてレプリケートする際に、オフライン レプリケーションを行うことができますか。
     answer: >
-      これはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
+      これはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84)でこの機能を要求してください。
   - question: >
       レプリケーションから特定のディスクを除外することはできますか。
     answer: >

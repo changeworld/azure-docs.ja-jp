@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82f860b78a8c0c4114a2250912fb6ec22e040d71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ffa380ec55dfcf96368782a3345ce3d13fe5f4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606078"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474839"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -385,9 +385,6 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 > [!NOTE]
 > この機能はパブリック プレビュー段階であり、すべてのパブリック クラウド リージョンで利用できます。
-
-> [!NOTE]
-> 現在、リソース インスタンス ルールは Azure Synapse でのみサポートされています。 この記事の「[システム割り当てマネージド ID に基づく信頼されたアクセス](#trusted-access-system-assigned-managed-identity)」セクションに掲載されている他の Azure サービスは、今後数週間以内にサポートされる予定です。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 

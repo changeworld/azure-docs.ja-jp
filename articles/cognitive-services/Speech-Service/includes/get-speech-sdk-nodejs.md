@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-js
-ms.openlocfilehash: 9a22117c47032ed931077b601ce24216bdbf3f88
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: effa486d1007ce941123209c54d9f2b82e566443
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540033"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506551"
 ---
 :::row:::
     :::column span="3":::

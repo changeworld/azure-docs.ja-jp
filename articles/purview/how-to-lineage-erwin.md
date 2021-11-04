@@ -1,18 +1,18 @@
 ---
 title: Erwin のメタデータと系列
 description: この記事では Erwin ソースからのデータ系列の抽出について説明します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 08/11/2021
-ms.openlocfilehash: d1821ca94d8f5329ca4c08f65438a3d0ba6e4d48
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 5a2a3e786b8aeb6411061f7df0993fe33dd2b77b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862773"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475618"
 ---
 # <a name="how-to-get-lineage-from-erwin-into-azure-purview"></a>Erwin から Azure Purview に系列を取得する方法
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 074335f9ccf9030a83354355a483ef5cbe0b58d3
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90987393"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500186"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Windows の音声アシスタントのプライバシー ガイドライン
 

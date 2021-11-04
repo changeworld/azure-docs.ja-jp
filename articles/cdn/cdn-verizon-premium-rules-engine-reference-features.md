@@ -2,17 +2,17 @@
 title: Azure CDN from Verizon Premium ルール エンジンの機能
 description: Azure CDN from Verizon Premium ルール エンジン機能に関するリファレンス ドキュメント。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 06/02/2020
-ms.author: allensu
-ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: c1f77903378cdced27497893638b03a03279adfb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020417"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423339"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN from Verizon Premium ルール エンジンの機能
 

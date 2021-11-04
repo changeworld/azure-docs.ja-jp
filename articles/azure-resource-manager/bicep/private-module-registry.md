@@ -3,12 +3,12 @@ title: Bicep モジュール用のプライベート レジストリを作成す
 description: プライベート Bicep モジュール用に Azure コンテナー レジストリを設定する方法について説明します
 ms.topic: conceptual
 ms.date: 10/22/2021
-ms.openlocfilehash: 1f14b29fb9d6740d661f74328c82758a74427355
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f09b4d65c43cbd0f73543322488e56985a16aa9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224070"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470321"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Bicep モジュール用のプライベート レジストリを作成する (プレビュー)
 
@@ -29,13 +29,13 @@ Bicep レジストリは [Azure Container Registry (ACR)](../../container-regist
    ログイン サーバー名を取得するには、[Get-AzContainerRegistry](/powershell/module/az.containerregistry/get-azcontainerregistry) を使用します。
 
    ```azurepowershell
-   Get-AzContainerRegistry -ResourceGroupName "<resource-group-name>" -Name "<registry-name>"
+   Get-AzContainerRegistry -ResourceGroupName "<resource-group-name>" -Name "<registry-name>"  | Select-Object LoginServer
    ```
 
    または、[az acr show](/cli/azure/acr#az_acr_show) を使用します。
 
    ```azurecli
-   az acr show --resource-group <resource-group-name> --name <registry-name>
+   az acr show --resource-group <resource-group-name> --name <registry-name> --query loginServer
    ```
 
    ログイン サーバー名の形式は `<registry-name>.azurecr.io` です。

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: 8f9fa57a160871ba88b080ac7599e1781202fb84
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: b8f609e8e6a12647b929938c97ea974885dc72d2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123306248"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423700"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
@@ -145,7 +145,7 @@ az sql server firewall-rule create \
 
 ## <a name="create-a-single-database-with-azure-cli"></a>Azure CLI を使用して単一データベースを作成する
 
-[az sql db create](/cli/azure/sql/db) コマンドを使用してデータベースを作成します。 次のコードを使用して作成します。
+[az sql db create](/cli/azure/sql/db) コマンドを使用してデータベースを作成します。
 
 
 ```azurecli-interactive
@@ -167,6 +167,27 @@ az sql db create \
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けます。その後、**Enter** キーを押してそれを実行します。
+
+## <a name="set-parameter-values"></a>パラメーターの値を設定する
+
+次の値は、データベースと必要なリソースを作成するために、後続のコマンドで使用されます。 サーバー名は、すべての Azure でグローバルに一意である必要があるため、サーバー名の作成に $RANDOM 関数が使用されます。 IP アドレス範囲の 0.0.0.0 の値を、お使いの環境に合わせて置き換えます。
+
+```azurecli-interactive
+# Set the resource group name and location for your server
+resourceGroupName=myResourceGroup
+location=eastus
+
+# Set an admin login and password for your database
+adminlogin=azureuser
+password=Azure1234567!
+
+# Set a server name that is unique to Azure DNS (<server_name>.database.windows.net)
+serverName=server-$RANDOM
+
+# Set the ip address range that can access your database
+startip=0.0.0.0
+endip=0.0.0.0
+```
 
 ## <a name="create-a-database-and-resources"></a>データベースとリソースを作成する
 
@@ -371,4 +392,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> <bpt id="p1">[</bpt>Cost Management を使用してコスト分析を開始する<ept id="p1">](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)</ept>

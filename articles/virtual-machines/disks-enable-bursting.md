@@ -3,17 +3,17 @@ title: オンデマンドのディスク バーストを有効にする
 description: マネージド ディスクでオンデマンドのディスク バーストを有効にします。
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1546ac2317f66bc0e09f674b98b129bd4f623d27
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: f02bab9dc9a2561aeb605d91388151f41fb9a243
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358550"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501497"
 ---
 # <a name="enable-on-demand-bursting"></a>オンデマンドのバーストを有効にする
 

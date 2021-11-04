@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: 9dcbd1bf789d199b0561587949a5381027518ca3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 83fbb17baf63d51b9f7ef29d369924294aa7c262
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436412"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447476"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Azure API Management 診断の概要
 
@@ -88,4 +88,4 @@ API の可用性とパフォーマンスの問題については、こちらの�
 * さらに [API 分析](howto-use-analytics.md)を使用して、API の使用状況とパフォーマンスを分析します。 
 * 診断を使用して Web アプリの問題をトラブルシューティングする場合は、 [こちら](../app-service/overview-diagnostics.md)を参照
 * 診断を活用して、Azure Kubernetes Services の問題をチェックします。 [AKS での診断](../aks/concepts-diagnostics.md)に関するページを参照
-* 質問またはフィードバックは、[UserVoice](https://feedback.azure.com/forums/248703-api-management) でタイトルに "[Diag]" を付けて投稿してください。
+* 質問またはフィードバックは、[UserVoice](https://feedback.azure.com/d365community/forum/e808a70c-ff24-ec11-b6e6-000d3a4f0858) でタイトルに "[Diag]" を付けて投稿してください。

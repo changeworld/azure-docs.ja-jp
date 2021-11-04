@@ -1,15 +1,15 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
-ms.author: pafarley
-ms.openlocfilehash: 28707f7f0f779b6c4cebc522be90c038e2d3c8fd
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.author: eur
+ms.openlocfilehash: c15f92a86aa9b9bf0da64f93ad5bb42bf8fff5ac
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130143687"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510797"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 

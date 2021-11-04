@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:IoT 空間分析を実装する | Microsoft Azure Maps
 description: IoT Hub を Microsoft Azure Maps サービス API に統合する方法に関するチュートリアルです
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/21/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: 6fd1592e1f0b7d5da44fac15e20b03b8f237ad0a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7ab98fa40ddc2321f9640d2e7451fc5c55064580
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455361"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -22,6 +22,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * 車の追跡データをログに記録するための Azure ストレージ アカウントを作成します。
 > * Data Upload API を使用して Azure Maps Data Service にジオフェンスをアップロードします。
 > * Azure IoT Hub でハブを作成して、デバイスを登録します。
@@ -120,10 +121,10 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 
 1. Postman アプリを開き、もう一度 **[新規]** を選択します。 **[新規作成]** ウィンドウで、 **[HTTP 要求]** を選択し、要求の名前を入力します。
 
-2. ビルダー タブで **POST** HTTP メソッドを選択し、次の URL を入力して、ジオフェンスを Data Upload API にアップロードします。 `{subscription-key}` を実際のプライマリ サブスクリプション キーに必ず置き換えてください。
+2. ビルダー タブで **POST** HTTP メソッドを選択し、次の URL を入力して、ジオフェンスを Data Upload API にアップロードします。 `{Your-Azure-Maps-Primary-Subscription-key}` を実際のプライマリ サブスクリプション キーに必ず置き換えてください。
 
     ```HTTP
-    https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     URL パス内の `dataFormat` パラメーターに対する `geojson` 値は、アップロードするデータの形式を表します。
@@ -133,13 +134,13 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 4. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Operation-Location** キーの値である `status URL` をコピーします。
 
     ```http
-    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
+    https://us.atlas.microsoft.com/mapData/operations/{operationId}?api-version=2.0
     ```
 
 5. API 呼び出しの状態を確認するには、`status URL` に対して **GET** HTTP 要求を作成します。 認証のために、プライマリ サブスクリプション キーを URL に追加する必要があります。 **GET** 要求は次の URL のようになります。
 
    ```HTTP
-   https://us.atlas.microsoft.com/mapData/<operationId>/status?api-version=2.0&subscription-key={subscription-key}
+   https://us.atlas.microsoft.com/mapData/{operationId}/status?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
    ```
 
 6. 要求が正常に完了したら、応答ウィンドウの **[Headers]\(ヘッダー\)** タブを選択します。 **Resource-Location** キーの値である `resource location URL` をコピーします。  `resource location URL` には、アップロードされたデータの一意の識別子 (`udid`) が含まれています。 このチュートリアルで後から使用するので、`udid`をコピーしておきます。
@@ -149,9 +150,6 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 ## <a name="create-an-iot-hub"></a>IoT ハブを作成する
 
 IoT ハブを使用すると、IoT アプリケーションとそれが管理するデバイスの間で、セキュリティで保護された信頼性の高い双方向通信を実現できます。 このチュートリアルでは、車載デバイスから情報を取得して、レンタカーの位置を特定する必要があります。 このセクションでは、*ContosoRental* リソース グループ内に IoT ハブを作成します。 このハブは、デバイス テレメトリ イベントを発行する役割を担います。
-
-> [!NOTE]
-> Event Grid でデバイス テレメトリ イベントを発行する機能は、現在、パブリック プレビュー段階です。 この機能は、以下を除くすべての Logic Apps リージョンで利用できます。米国東部、米国西部、西ヨーロッパ、Azure Government、Azure China 21Vianet、Azure Germany。
 
 *ContosoRental* リソース グループに IoT ハブを作成するには、[IoT ハブの作成](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp#create-an-iot-hub)に関するセクションの手順に従います。
 

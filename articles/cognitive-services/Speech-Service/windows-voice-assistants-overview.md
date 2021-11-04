@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 1d961831094bf377acef910572be459ed18db4cb
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 4d8013bd8eccf990ad98f24ab720fb5ecb40af9c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113652427"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508667"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows の音声アシスタント
 

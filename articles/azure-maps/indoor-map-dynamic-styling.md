@@ -1,18 +1,18 @@
 ---
 title: Azure Maps Creator 屋内マップの動的スタイル設定を実装する
 description: Creator の屋内マップに動的スタイル設定を実装する方法について説明します
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/20/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 05e169667067033428d5fc995af4d866dc46d20b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9089ff5adda1eedd441fc221ae1d5a0d3401ae12
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751433"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462066"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
 
@@ -67,14 +67,14 @@ map.events.add("click", function(e){
 
 1. Postman アプリ内で **[新規]** を選択します。
 
-2. **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。
+2. **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。
 
 3. 要求の **[要求名]** を入力します (*POST Data Upload* など)。
 
 4. [Feature Update States API](/rest/api/maps/v2/feature-state/update-states) に対する次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換え、`statesetId` を `statesetId` に置き換えます)。
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 5. **[Headers]\(ヘッダー\)** タブを選択します。
@@ -107,7 +107,7 @@ map.events.add("click", function(e){
 10. ステップ 7 で使用した URL を変更し、`UNIT26` を `UNIT27` に置き換えます。
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 11. 次の JSON スタイルをコピーして、 **[本文]** ウィンドウに貼り付けます。
@@ -127,8 +127,9 @@ map.events.add("click", function(e){
 ### <a name="visualize-dynamic-styles-on-a-map"></a>マップ上で動的スタイルを視覚化する
 
 以前にブラウザーで開いた Web アプリケーションには、マップ地物の更新された状態が反映されているはずです。
-- オフィス `UNIT27`(142) が緑で表示されます。
-- オフィス `UNIT26`(143) が赤で表示されます。
+
+* オフィス `UNIT27`(142) が緑で表示されます。
+* オフィス `UNIT26`(143) が赤で表示されます。
 
 ![緑の空き部屋と赤の空いていない部屋](./media/indoor-map-dynamic-styling/room-state.png)
 

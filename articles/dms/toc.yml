@@ -110,7 +110,7 @@
     - name: よく寄せられる質問
       href: faq.yml
     - name: フィードバック
-      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
+      href: 'https://feedback.azure.com/d365community/forum/2dd7eb75-ef24-ec11-b6e6-000d3a4f0da0'
     - name: 価格
       href: 'https://aka.ms/dms-pricing'
     - name: サービスの更新情報

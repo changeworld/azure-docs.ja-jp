@@ -1,19 +1,19 @@
 ---
 title: Azure SQL Database に対する予約割引について | Microsoft Docs
 description: 実行中の Azure SQL Database に予約割引がどのように適用されるかについて説明します。 割引は、これらのデータベースに時間単位で適用されます。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 7d163e1958ee97e8032edc0a42bc160dd234d3c1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c583ec4403763f0969b5c70d80e7d05a9862964e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628479"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430479"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Azure SQL Database に対する予約割引の適用方法
 

@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 06/29/2020
-  ms.openlocfilehash: 12711df7515e3b1aff07f6599d90b2754986eac3
-  ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+  ms.openlocfilehash: 3274bbdd0e3f67875a24359c74e7e79f85f35a67
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "107870519"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131449661"
 landingContent:
 - title: Azure Resource Graph について
   linkLists:
@@ -84,7 +84,7 @@ landingContent:
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345061
+      url: https://feedback.azure.com/d365community/forum/675ae472-f324-ec11-b6e6-000d3a4f0da0?c=9def8579-f324-ec11-b6e6-000d3a4f0da0
     - text: Azure のガバナンスの Tech Community
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: リファレンス - ダウンロード

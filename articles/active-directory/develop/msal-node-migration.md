@@ -3,21 +3,21 @@ title: Node.js アプリケーションを ADAL から MSAL に移行する | Az
 titleSuffix: Microsoft identity platform
 description: 認証と認可に Active Directory 認証ライブラリ (ADAL) ではなく、Microsoft 認証ライブラリ (MSAL) を使用するために既存の Node.js アプリケーションを更新する方法。
 services: active-directory
-author: KarenH444
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 04/26/2021
-ms.author: karenhoran
+ms.author: marsma
 ms.custom: has-adal-ref
-ms.openlocfilehash: 79fbcde40289cf04d45edb9bcf1b249e88408544
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 33dd6efdbd03ce14beaf392e7bc24e051381903e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163854"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503017"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>Node.js アプリを ADAL から MSAL に移行する方法
 
@@ -126,7 +126,7 @@ const msalConfig = {
         clientId: "YOUR_CLIENT_ID",
         authority: "https://login.microsoftonline.com/YOUR_TENANT_ID",
         clientSecret: "YOUR_CLIENT_SECRET",
-        knownAuthorities: [], 
+        knownAuthorities: [],
     },
     cache: {
         // your implementation of caching
@@ -312,13 +312,13 @@ const msal = require('@azure/msal-node');
 
 const msalConfig = {
     auth: {
-        // authentication related parameters 
+        // authentication related parameters
     },
     cache: {
         cachePlugin // your implementation of cache plugin
     },
     system: {
-        // logging related options 
+        // logging related options
     }
 }
 
@@ -438,9 +438,9 @@ adal.Logging.setLoggingOptions({
 });
 
 // Auth code request URL template
-var templateAuthzUrl = 'https://login.microsoftonline.com/' 
-    + tenant + '/oauth2/authorize?response_type=code&client_id=' 
-    + clientId + '&redirect_uri=' + redirectUri 
+var templateAuthzUrl = 'https://login.microsoftonline.com/'
+    + tenant + '/oauth2/authorize?response_type=code&client_id='
+    + clientId + '&redirect_uri=' + redirectUri
     + '&state=<state>&resource=' + resource;
 
 // Initialize express
@@ -456,7 +456,7 @@ app.get('/auth', function(req, res) {
         app.locals.state = buf.toString('base64')
             .replace(/\//g, '_')
             .replace(/\+/g, '-');
-        
+
         // Construct auth code request URL
         var authorizationUrl = templateAuthzUrl
             .replace('<state>', app.locals.state);
@@ -472,15 +472,15 @@ app.get('/redirect', function(req, res) {
     }
 
     // Initialize an AuthenticationContext object
-    var authenticationContext = 
+    var authenticationContext =
         new adal.AuthenticationContext(authorityUrl);
-    
+
     // Exchange auth code for tokens
     authenticationContext.acquireTokenWithAuthorizationCode(
-        req.query.code, 
-        redirectUri, 
-        resource, 
-        clientId, 
+        req.query.code,
+        redirectUri,
+        resource,
+        clientId,
         clientSecret,
         function(err, response) {
             res.send(response);
@@ -488,8 +488,8 @@ app.get('/redirect', function(req, res) {
     );
 });
 
-app.listen(3000, function() { 
-    console.log(`listening on port 3000!`); 
+app.listen(3000, function() {
+    console.log(`listening on port 3000!`);
 });
 ```
 
@@ -528,7 +528,7 @@ const cca = new msal.ConfidentialClientApplication(config);
 const app = express();
 
 app.get('/auth', (req, res) => {
-    
+
     // Construct a request object for auth code
     const authCodeUrlParameters = {
         scopes: ["user.read"],
@@ -543,7 +543,7 @@ app.get('/auth', (req, res) => {
 });
 
 app.get('/redirect', (req, res) => {
-    
+
     // Use the auth code in redirect request to construct
     // a token request object
     const tokenRequest = {
@@ -559,7 +559,7 @@ app.get('/redirect', (req, res) => {
         }).catch((error) => res.status(500).send(error));
 });
 
-app.listen(3000, () => 
+app.listen(3000, () =>
     console.log(`listening on port 3000!`));
 ```
 

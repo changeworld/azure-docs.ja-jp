@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e60ff826d3ebff65d0b74e54e211d9bdc0af7625
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "84310310"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454753"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Content Moderator API の言語サポート
 

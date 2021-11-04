@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 5/21/2021
-ms.openlocfilehash: ff038a585d1c11c318c3d3225ef6cc45a8865659
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: e66940b74110e5870acfffb255e7de4942ad1b71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088550"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453404"
 ---
 # <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql"></a>Azure Database for MySQL への移行中または移行後によく発生するエラー
 
@@ -127,4 +127,4 @@ Azure Database for MySQL サーバーが作成されると、サーバー管理�
 * [Microsoft Q&A 質問ページ](/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) で質問を投稿する。
 * Azure Database for MySQL チーム [@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com) に電子メールを送信する。 このメール アドレスはテクニカル サポートのエイリアスではありません。
 * Azure サポートに連絡し、[Azure portal からチケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-* フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
+* フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0) でエントリを作成します。

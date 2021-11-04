@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30e8d0234014e710506e0a6897edd218b93b442b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 4f9e12d8d112bd9c3d9ea44b29803bc475baa9e4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178939"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500262"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -107,26 +107,6 @@ FIDO2 セキュリティ キーを使用して、Azure AD またはハイブリ�
 7. 署名された nonce を含むプライマリ更新トークン (PRT) トークン要求が Azure AD に送信されます。
 8. Azure AD で、FIDO2 公開キーを使用して署名済みの nonce が検証されます。
 9. Azure AD から PRT が返され、オンプレミスのリソースにアクセスできるようになります。
-
-FIDO Alliance によって FIDO2 認定されたキーが多数存在する場合、Microsoft では、最大限のセキュリティと最適なエクスペリエンスを保証するために、ベンダーによって実装される FIDO2 Client-to-Authenticator Protocol (CTAP) 仕様の一部の省略可能な拡張機能が必要になります。
-
-セキュリティ キーでは、Microsoft との互換性を維持するために、FIDO2 CTAP プロトコルの以下の機能と拡張機能を実装する必要があります。 Authenticator ベンダーは、仕様の FIDO_2_0 と FIDO_2_1 の両バージョンを実装する必要があります。詳細については、[Client to Authenticator Protocol](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html) に関するページを参照してください。
-
-| # | 機能 / 拡張機能 (信頼) | この機能または拡張機能が必要な理由 |
-| --- | --- | --- |
-| 1 | 常駐または検出可能キー | この機能により、セキュリティ キーを移植可能にし、資格情報がセキュリティ キーに格納され、検出可能になり、ユーザー名のないフローを実現します。 |
-| 2 | Client pin | この機能では、2 番目の認証要素で資格情報を保護できます。これは、ユーザー インターフェイスがないセキュリティ キーに適用されます。<br>[PIN プロトコル 1](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#pinProto1) と [PIN プロトコル 2](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#pinProto2) の両方を実装する必要があります。 |
-| 3 | hmac-secret | この拡張機能では、オフライン時または機内モード時に確実にデバイスにサインインできます。 |
-| 4 | RP あたりの複数のアカウント | この機能を利用すれば、Microsoft アカウントや Azure Active Directory などの複数のサービスで同じセキュリティ キーを使用できるようになります。 |
-| 5 | 資格情報の管理    | この機能を使用すると、ユーザーはプラットフォーム上のセキュリティ キーの資格情報を管理し、この機能が組み込されていないセキュリティ キーに適用できます。<br>Authenticator では、この機能に対して [authenticatorCredentialManagement](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#authenticatorCredentialManagement) および [credentialMgmtPreview](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#prototypeAuthenticatorCredentialManagement) コマンドを実装する必要があります。  |
-| 6 | 生体情報登録           | この機能を使用すると、ユーザーは Authenticator に生体情報を登録でき、この機能が組み込されていないセキュリティ キーに適用できます。<br> Authenticator では、この機能に対して [authenicatorBioEnrollment](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#authenticatorBioEnrollment) および [userVerificationMgmtPreview](https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#prototypeAuthenticatorBioEnrollment) コマンドを実装する必要があります。 |
-| 7 | pinUvAuthToken           | この機能を使用すると、プラットフォームで PIN または BIO の一致を使用して認証トークンを取得できます。これにより、Authenticator に複数の資格情報が存在する場合のユーザー エクスペリエンスが向上します。  |
-| 8 | forcePinChange           | この機能を使用すると、企業はリモート デプロイで PIN の変更をユーザーに求めることができます。  |
-| 9 | setMinPINLength          | この機能により、企業はユーザーに対してカスタムの最小 PIN 長を設定できます。 Authenticator では、minPinLength 拡張機能を実装し、maxRPIDsForSetMinPINLength の値を 1 以上にする必要があります。  |
-| 10 | alwaysUV                | この機能を使用すると、企業またはユーザーは、このセキュリティ キーを使用するときに常にユーザー検証を要求できます。 Authenticator には toggleAlwaysUv サブコマンドを実装する必要があります。 alwaysUV の既定値を決定するかどうかは、ベンダー次第です。 この時点では、さまざまな RP の導入と OS のバージョンの性質により、生体認証ベースの認証子の場合の推奨値は true、非生体認証ベースの認証子の場合は false です。  |
-| 11 | credBlob                | この拡張機能を使用すると、Web サイトはセキュリティ キーに小さな情報を格納できます。 maxCredBlobLength は、32 バイト以上である必要があります。  |
-| 12 | largeBlob               | この拡張機能を使用すると、Web サイトでは、セキュリティ キーに証明書などのより大きな情報を格納できます。 maxSerializedLargeBlobArray は、1024 バイト以上である必要があります。  |
-
 
 ### <a name="fido2-security-key-providers"></a>FIDO2 セキュリティ キーのプロバイダー
 

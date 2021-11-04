@@ -7,14 +7,14 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/02/2021
+ms.date: 10/28/2021
 ms.author: nitinme
-ms.openlocfilehash: 29336a19906d36fb8fea7f0b8fceeb55e97e15cf
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 4cde95784aced0c117f968102c7dd48d5ff9dff1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728648"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469504"
 ---
 # <a name="responsible-use-of-ai-with-cognitive-services"></a>Cognitive Services における AI の責任ある使用
 
@@ -43,11 +43,11 @@ Azure Cognitive Services は、アプリケーションで人工知能を責任�
 * [統合と責任ある使用](/legal/cognitive-services/qnamaker/guidance-integration-responsible-use-qnamaker?context=/azure/cognitive-services/qnamaker/context/context)
 * [データ、プライバシー、セキュリティ](/legal/cognitive-services/qnamaker/data-privacy-security-qnamaker?context=/azure/cognitive-services/qnamaker/context/context)
 
-## <a name="text-analytics"></a>Text Analytics
+## <a name="language-service"></a>言語サービス
 
-* [透過性に関するメモとユースケース](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)
-* [統合と責任ある使用](/legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context)
-* [データ、プライバシー、セキュリティ](/legal/cognitive-services/text-analytics/data-privacy?context=/azure/cognitive-services/text-analytics/context/context)
+* [透過性に関するメモとユースケース](/legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context)
+* [統合と責任ある使用](/legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context)
+* [データ、プライバシー、セキュリティ](/legal/cognitive-services/language-service/data-privacy?context=/azure/cognitive-services/language-service/context/context)
 
 ## <a name="speech---pronunciation-assessment"></a>Speech - 発音評価を使用する
 

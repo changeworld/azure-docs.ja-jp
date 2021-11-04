@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 46c629ead4f86d71974ba26426177ca2d9093609
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b5ed1cd49ac4117dac6ff0a6e3bdb916299ec44
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032432"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457413"
 ---
 # <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問
 
@@ -72,7 +72,7 @@ Azure Managed Instance for Apache Cassandra は、データセンター間での
 
 ### <a name="where-can-i-give-feedback-on-azure-managed-instance-for-apache-cassandra-features"></a>Azure Managed Instance for Apache Cassandra の機能に関するフィードバックはどこに送ればよいですか?
 
-フィードバックは、[UserVoice のフィードバック](https://feedback.azure.com/forums/263030-azure-cosmos-db?category_id=398548)から、"Managed Apache Cassandra" カテゴリを使用してお寄せください。
+フィードバックは、[UserVoice のフィードバック](https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858?c=e6e5c7c4-0d25-ec11-b6e6-000d3a4f0858#)から、"Managed Apache Cassandra" カテゴリを使用してお寄せください。
 
 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 

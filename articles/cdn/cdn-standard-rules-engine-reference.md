@@ -2,17 +2,17 @@
 title: Azure CDN の Standard ルール エンジン リファレンス | Microsoft Docs
 description: Azure Content Delivery Network (Azure CDN) の Standard ルール エンジンの一致条件とアクションに関するリファレンス ドキュメント。
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 07/31/2021
-ms.author: allensu
-ms.openlocfilehash: 4fcb16f44aed90f483be80c64d31781f54203de6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: duau
+ms.openlocfilehash: d3baf29ce8b5e452ed3c9ec22a5136188bac1d4e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733256"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446811"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN の Standard ルール エンジン リファレンス
 

@@ -1,19 +1,20 @@
 ---
 title: Azure サブスクリプションの課金所有権を Microsoft 顧客契約で使用するために譲渡する
 description: Azure サブスクリプションの課金所有権を譲渡する方法について説明します。
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 6654098b7fe2b212ac87d4ae52feaed128579dc5
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: af3b4eabfb47fb64e9e3912c8edcf939d17e04f2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711348"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476245"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Azure サブスクリプションの課金所有権を Microsoft 顧客契約で使用するために譲渡する
 

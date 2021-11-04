@@ -7,6 +7,7 @@
       href: overview.md
     - name: 技術と機能の概要
       href: technical-overview.md
+      displayName: 'Azure AD B2C architecture, SLA, Azure AD B2C high availability, Azure AD B2C SLA, HA'
     - name: サポートされる Azure AD の機能
       href: supported-azure-ad-features.md
     - name: ドキュメントの最新情報
@@ -81,7 +82,7 @@
           href: custom-policy-overview.md
     - name: API コネクタ
       href: api-connectors-overview.md
-      displayName: 'REST API, web API, API connectors'
+      displayName: 'REST API, web API, API connectors, Dynamic data retrieval, external data sources, external identity data source, outbound webhooks, third-party integration'
     - name: ユーザー アカウント
       href: user-overview.md
     - name: ユーザー プロファイルの属性
@@ -222,7 +223,7 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
-        - name: Apple (プレビュー)
+        - name: Apple
           href: identity-provider-apple-id.md
         - name: Azure AD (シングルテナント)
           href: identity-provider-azure-ad-single-tenant.md
@@ -396,12 +397,13 @@
       items:
         - name: サインアップ エクスペリエンスを変更する
           href: add-api-connector.md
-          displayName: 'rest claims validation, validate'
+          displayName: 'rest claims validation, validate, third-party integration, outbound webhook, third-party integration'
         - name: 外部要求を使用してトークンを強化する
           href: add-api-connector-token-enrichment.md
-          displayName: rest claims exchange
+          displayName: 'rest claims exchange, API connectors, Dynamic data retrieval, external data sources, external identity data source, outbound webhooks, third-party integration'
         - name: API コネクタをセキュリティで保護する
           href: secure-rest-api.md
+          displayName: 'API connectors, Dynamic data retrieval, external data sources, external identity data source, outbound webhooks, third-party integration'
     - name: トラブルシューティング
       items:
         - name: Application Insights を使用したログの収集
@@ -607,6 +609,7 @@
       displayName: Page version
     - name: 利用可能なリージョンとデータの保存場所
       href: data-residency.md
+      displayName: 'SLA, Azure AD B2C high availability, Azure AD B2C SLA, high availability, HA'
     - name: 回復性のための構築
       items:
         - name: 回復性に関する Azure AD B2C の概要
@@ -630,6 +633,7 @@
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: よく寄せられる質問
       href: ./faq.yml
+      displayName: FAQ
     - name: ヘルプの表示
       href: ../active-directory/develop/developer-support-help-options.md
     - name: 価格

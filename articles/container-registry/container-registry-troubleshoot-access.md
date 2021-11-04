@@ -3,12 +3,12 @@ title: レジストリに関するネットワークの問題のトラブルシ�
 description: 仮想ネットワークまたはファイアウォールの内側で Azure Container Registry にアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: 7ea4eb698f855a98df22e2e0426a0004c890290c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f5c51f14eb5ed5a950272e43e701ec7bcc44b901
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722441"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446488"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -124,7 +124,7 @@ Azure Firewall または同様のソリューションがネットワークに�
 関連リンク:
 
 * [Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)
-* [フィードバック](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)の提供
+* [フィードバック](https://feedback.azure.com/d365community/idea/cbe6351a-0525-ec11-b6e6-000d3a4f07b8)の提供
 * [信頼されたサービスがネットワーク制限付きコンテナー レジストリに安全にアクセスできるようにする](allow-access-trusted-services.md)
 
 

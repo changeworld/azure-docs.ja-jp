@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 769f178a65ac096446cd98015050ad1a35b3ef09
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8dc495f16fe205350f5eeeae7a8aee1e933c6a1c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612448"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468235"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで監査ログを使用してデータベース アクティビティを追跡する
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
 
 Azure Database for MySQL フレキシブル サーバーでは、ユーザーが監査ログを構成することができます。 監査ログは、接続、管理、DDL、DML の各イベントなど、データベースレベルのアクティビティを追跡するために使用できます。 これらの種類のログは、通常、コンプライアンスのために使用されます。
 
@@ -27,7 +24,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
 >[!IMPORTANT]
 > サーバーのパフォーマンスに大きな影響を与えないように、監査のために必要なイベントの種類とユーザーのみをログに記録することをお勧めします。
 
-監査ログは、既定では無効になっています。 有効にするには、`audit_log_enabled` サーバー パラメーターを "*ON*" に設定します。 これは、Azure portal または Azure CLI を使用して構成することができます <!-- add link to server parameter-->. 
+監査ログは、既定では無効になっています。 有効にするには、`audit_log_enabled` サーバー パラメーターを "*ON*" に設定します。 これは、Azure portal または Azure CLI を使用して構成することができます <!-- add link to server parameter-->.
 
 監査ログの動作を制御するために調整できるその他のパラメーターには、次のようなものがあります。
 
@@ -153,8 +150,8 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
-    | order by TimeGenerated asc nulls last 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | order by TimeGenerated asc nulls last
     ```
 
 - 特定のサーバーの CONNECTION イベントを一覧表示する
@@ -163,7 +160,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | order by TimeGenerated asc nulls last
     ```
 
@@ -173,7 +170,7 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
     ```
 
@@ -183,9 +180,9 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
-    | render timechart 
+    | render timechart
     ```
 
 - 監査ログに対して診断ログが有効になっているすべての MySQL サーバーで監査されたイベントを一覧表示する
@@ -193,9 +190,9 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
     ```kusto
     AzureDiagnostics
     | where Category == 'MySqlAuditLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | order by TimeGenerated asc nulls last
-    ``` 
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 - [低速クエリ ログ](concepts-slow-query-logs.md)の詳細情報

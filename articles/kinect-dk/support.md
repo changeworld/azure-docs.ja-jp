@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, 記録, センサー, SDK, アクセス, 深度, ビデオ, カメラ, IMU, モーション, センサー, オーディオ, マイク, Matroska, センサー SDK, ダウンロード, 体, トラッキング, サポート
-ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a79519ec70ca85aa1e9c59559298cc27aa6df56a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97587096"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472961"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect のサポート オプションとリソース
 
@@ -24,7 +24,7 @@ ms.locfileid: "97587096"
 
 - [StackOverflow](https://stackoverflow.com/search?q=azurekinect&s=3b855ed0-8564-4961-856f-9614aeab4c0d&s=fd9ea920-622c-4d8e-b908-ec996e1f1403)。質問を投稿したり、既存の質問のライブラリを検索したりすることができます。
 - [GitHub](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK)。質問をしたり、新しいバグについて投稿したり、Azure Kinect センサー SDK の開発に貢献したりすることができます。
-- [フィードバックの提供](https://feedback.azure.com/forums/920053-azure-kinect-dk)。製品の将来に関するアイデアを共有したり、既存のアイデアに投票したりすることができます。
+- [フィードバックの提供](https://feedback.azure.com/d365community/forum/fdaad9c5-f624-ec11-b6e6-000d3a4f0da0)。製品の将来に関するアイデアを共有したり、既存のアイデアに投票したりすることができます。
 
 ## <a name="assisted-support"></a>支援付きサポート
 

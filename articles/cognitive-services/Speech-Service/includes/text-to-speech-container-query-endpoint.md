@@ -1,19 +1,19 @@
 ---
 title: テキスト読み上げコンテナーのエンドポイントに対してクエリを実行する
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/31/2020
-ms.author: aahi
-ms.openlocfilehash: 4571acfc46d9b336be23eaa3287dce5696c707b2
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.author: eur
+ms.openlocfilehash: e81b2bfb8781b3c8d14d182d8d6da14b48484953
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501082"
 ---
 コンテナーには、[REST ベースのエンドポイント API](../rest-text-to-speech.md) が用意されています。 各種のプラットフォーム、フレームワーク、言語向けに、多数の[サンプル ソース コード プロジェクト](https://github.com/Azure-Samples/Cognitive-Speech-TTS)が提供されています。
 

@@ -2,13 +2,13 @@
 title: 'クイック スタート: Azure Arc で Web アプリを作成する'
 description: Azure Arc 上の App Service の使用を開始して最初の Web アプリをデプロイします。
 ms.topic: quickstart
-ms.date: 06/02/2021
-ms.openlocfilehash: 30d310aa1170cf4c28d76e0299b23a90a3f599d9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.openlocfilehash: 356e1b5f13d2a4b7e00c3e1c11b5dcbf295d6fd3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709804"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455867"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>Azure Arc で App Service アプリを作成する (プレビュー)
 
@@ -33,30 +33,19 @@ az group create --name myResourceGroup --location eastus
 [!INCLUDE [app-service-arc-get-custom-location](../../includes/app-service-arc-get-custom-location.md)]
 
 
-## <a name="3-create-an-app-service-plan"></a>3. App Service プランを作成する
-
-前の手順で取得した `$customLocationId` を置き換えて、次のコマンドを実行します。
-
-```azurecli-interactive
-az appservice plan create -g myResourceGroup -n myPlan \
-    --custom-location $customLocationId \
-    --per-site-scaling --is-linux --sku K1
-``` 
-
-## <a name="4-create-an-app"></a>4. アプリを作成する
+## <a name="3-create-an-app"></a>3. アプリを作成する
 
 次の例では Node.js アプリを作成します。 `<app-name>` をクラスター内で一意の名前で置き換えます (有効な文字は、`a-z`、`0-9`、および `-` です)。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes --linux`](/cli/azure/webapp) を実行します。
 
 ```azurecli-interactive
  az webapp create \
-    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \
     --runtime 'NODE|12-lts'
 ```
 
-## <a name="5-deploy-some-code"></a>5. コードをデプロイする
+## <a name="4-deploy-some-code"></a>4. コードをデプロイする
 
 > [!NOTE]
 > `az webapp up` は、パブリック プレビュー期間中はサポートされていません。
@@ -70,7 +59,7 @@ zip -r package.zip .
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app-name> --src package.zip
 ```
 
-## <a name="6-get-diagnostic-logs-using-log-analytics"></a>6. Log Analytics を使用して診断ログを取得する
+## <a name="5-get-diagnostic-logs-using-log-analytics"></a>5. Log Analytics を使用して診断ログを取得する
 
 > [!NOTE]
 > Log Analytics を使用するには、[App Service 拡張機能 をインストールする](manage-create-arc-environment.md#install-the-app-service-extension)ときに有効にしておく必要があります。 Log Analytics なしで拡張機能をインストールした場合は、この手順をスキップします。
@@ -99,7 +88,6 @@ Kubernetes クラスターでホストされているすべてのアプリのア
 
 ```azurecli-interactive
 az webapp create \
-    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \

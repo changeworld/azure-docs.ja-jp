@@ -5,14 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 10/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 77e9d66af8a03f9d1a55a59d9a355499a3019f29
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7188cb16d6718fddb049a518b56b32c84ea66ec1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233903"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422750"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
 
@@ -25,8 +25,7 @@ ms.locfileid: "129233903"
 
 > [!Note]
 >
-> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
->* 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL - フレキシブル サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
+> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。
 >
 > * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
@@ -48,7 +47,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 ```azurecli-interactive
 az mysql flexible-server replica create --replica-name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
-``` 
+```
 
 > [!NOTE]
 > ソースと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカ サーバーは、ソース サーバーと同じリソース グループ、同じ場所、および同じサブスクリプションに常に作成されます。 レプリカ サーバーを別のリソース グループや別のサブスクリプションに作成したい場合は、作成後に[レプリカ サーバーを移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)します。 レプリカが確実にソースに追随できるように、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。
@@ -56,7 +55,7 @@ az mysql flexible-server replica create --replica-name mydemoreplicaserver --sou
 
 ### <a name="list-replicas-for-a-source-server"></a>ソース サーバーのレプリカを一覧表示する
 
-特定のソース サーバーのレプリカをすべて表示するには、次のコマンドを実行します。 
+特定のソース サーバーのレプリカをすべて表示するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az mysql flexible-server replica list --server-name mydemoserver --resource-group myresourcegroup

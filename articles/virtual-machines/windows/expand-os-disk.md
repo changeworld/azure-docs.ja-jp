@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 11/02/2021
 ms.author: kirpas
 ms.subservice: disks
-ms.custom: devx-track-azurepowershell, ignite-fall-2021
-ms.openlocfilehash: 4588627fdfe64c4ba005b6b3c7defadd5994e3d6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: devx-track-azurepowershell, references_regions, ignite-fall-2021
+ms.openlocfilehash: d744bf5ec5619985aaa899183657504c7e3afeff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046567"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466677"
 ---
 # <a name="how-to-expand-virtual-hard-disks-attached-to-a-windows-virtual-machine"></a>Windows 仮想マシンに接続されている仮想ハード ディスクを拡張する方法
 
@@ -37,14 +37,9 @@ ms.locfileid: "131046567"
 
 VM の割り当てを解除せずに、マネージド ディスクのサイズを変更できるようになりました。
 
-このためのプレビューには、次の制限事項があります。
+このプレビューには、次の制限事項があります。
 
-- 現在米国中西部でのみご利用いただけます。
-
-- データ ディスクでのみサポートされます。
-- 4 TiB 未満のディスクは、ダウンタイムなしでは 4 TiB 以上に拡張できません。
-    - ディスクのサイズを 4 TiB 以上に増やした後は、ダウンタイムなしで拡張できます。
-- [最新の Azure CLI](/cli/azure/install-azure-cli)、[最新の Azure PowerShell モジュール](/powershell/azure/install-az-ps)、[https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) を経由してアクセスする場合は Azure portal、または 2021-04-01 以降の API バージョンの Azure Resource Manager テンプレートのいずれかをインストールして使用する必要があります。
+[!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../../../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
 
 この機能に登録するには、次のコマンドを使用します。
 

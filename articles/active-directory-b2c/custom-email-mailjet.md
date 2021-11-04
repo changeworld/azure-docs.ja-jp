@@ -12,12 +12,12 @@ ms.date: 09/15/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a0a7f91b540e06ba0b973bf5aeb9f790a58410ad
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 43949ff051357868e6a291436d343332bfec71d3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131007427"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424517"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -410,13 +410,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -427,13 +420,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       </DisplayClaims>
     </TechnicalProfile>
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
       </DisplayClaims>
@@ -570,10 +556,11 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
     <!-- Email validation error messages-->
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
@@ -581,7 +568,6 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 </LocalizedResources>
 ```
 
-ローカライズされた文字列を追加した後に、LocalAccountSignUpWithLogonEmail と LocalAccountDiscoveryUsingEmailAddress の技術プロファイルから OTP 検証エラー メッセージのメタデータを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

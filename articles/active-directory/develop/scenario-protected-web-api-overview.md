@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 10/26/2021
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 434c255f0b9634e0d17bad1627ddd92af9498bfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d34d8a361e22f25e82daf0576e65e35af192bdcd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582436"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462767"
 ---
 # <a name="scenario-protected-web-api"></a>シナリオ:保護された Web API
 
@@ -29,7 +29,7 @@ Web API を使用するには、職場または学校アカウントの両方で
 
 ここでは、Web API を保護するために必要な特定の情報について説明します。
 
-- お使いのアプリの登録では、少なくとも 1 つの *スコープ*、または 1 つの *アプリケーション ロール* を公開する必要があります。
+- お使いのアプリの登録では、少なくとも 1 つの _スコープ_、または 1 つの _アプリケーション ロール_ を公開する必要があります。
   - スコープは、ユーザーの代わりに呼び出される Web API によって公開されます。
   - アプリケーション ロールは、(独自の方法で Web API を呼び出す) デーモン アプリケーションによって呼び出される Web API によって公開されます。
 - 新しい Web API アプリの登録を作成する場合は、Web API で受け入れられる[アクセス トークンのバージョン](reference-app-manifest.md#accesstokenacceptedversion-attribute)を `2` に設定します。 レガシ Web API の場合、受け入れられるトークンのバージョンを `null` にできますが、この値により、サインイン対象ユーザーは組織のみに制限されます。個人の Microsoft アカウント (MSA) はサポートされなくなります。

@@ -8,12 +8,12 @@ metadata:
   ms.topic: article
   ms.date: 01/11/2021
   ms.author: rohink
-  ms.openlocfilehash: c596fadd972503311859f2561365cd4e56dff98f
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: bf8a2639887336349bbedd380a8e94a4ed4b3247
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "111907519"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131442770"
 title: Azure DNS に関する FAQ
 summary: ''
 sections:
@@ -79,28 +79,28 @@ sections:
       いいえ。 現在、Azure DNS では、ドメイン名を購入するというオプションはサポートされていません。 ドメインを購入するには、サード パーティのドメイン名レジストラーを使用する必要があります。 レジストラーは、通常、少額の年間料金がかかります。 購入後、ドメインを Azure DNS でホストして DNS レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 
-      ドメインの購入は Azure バックログで追跡される機能です。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)してください。
+      ドメインの購入は Azure バックログで追跡される機能です。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/d365community/idea/9e9f97ea-8526-ec11-b6e6-000d3a4f0789)してください。
   - question: >
       Azure DNS では DNSSEC はサポートされますか。
     answer: >
       いいえ。 現在、Azure DNS では、ドメイン ネーム システム セキュリティ拡張機能 (DNSSEC) はサポートされていません。
 
 
-      DNSSEC 機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)してください。
+      DNSSEC 機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/d365community/idea/d403899e-8526-ec11-b6e6-000d3a4f0789)してください。
   - question: >
       Azure DNS ではゾーン転送 (IXFR AXFR/) はサポートされますか。
     answer: >
       いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
 
 
-      ゾーン転送機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)してください。
+      ゾーン転送機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/d365community/idea/7992f535-8726-ec11-b6e6-000d3a4f0789)してください。
   - question: >
       Azure DNS では URL リダイレクトはサポートされますか。
     answer: >
       いいえ。 URL リダイレクト サービスは DNS サービスではありません。 それらは、DNS レベルではなく、HTTP レベルで機能します。 DNS プロバイダーによっては、総合的なオファーの一部として、URL リダイレクト サービスをバンドルしています。 現在、このサービスは、Azure DNS ではサポートされていません。
 
 
-      URL リダイレクト機能は Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)してください。
+      URL リダイレクト機能は Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/d365community/idea/d8c8ab1c-8926-ec11-b6e6-000d3a4f0789)してください。
   - question: >
       Azure DNS では、TXT レコードセットの拡張 ASCII エンコード (8 ビット) セットはサポートされますか。
     answer: "はい。 Azure DNS では、TXT レコードセットの拡張 ASCII エンコード セットがサポートされています。 ただし、最新バージョンの Azure REST API、SDK、PowerShell、CLI を使用する必要があります。 2017 年 10 月 1 日より前のバージョンまたは SDK 2.1 では、拡張 ASCII セットはサポートされません。 \n\nたとえば、TXT レコードの値として、拡張 ASCII 文字 \\128 を含む文字列が指定されたとします。 たとえば \"abcd \\128efgh\" です。 Azure DNS では、この文字のバイト値 (128) を内部表現で使用します。 DNS 解決時には、応答でこのバイト値が返されます。 また、解決に関する限り、\"abc\" と \"\\097\\098\\099\" は代替可能です。 \n\nTXT レコードについては、[RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) のゾーン ファイルのマスター形式のエスケープ規則に従います。 たとえば、RFC に従い、`\\` は実際にはあらゆるものをエスケープします。 TXT レコード値として `A\\B` を指定した場合、単に `AB` と表現され、解決されます。 解決時に TXT レコードに `A\\B` を含める必要がある場合は、`\\` を再度エスケープする必要があります。 たとえば、`A\\\\B` と指定します。\n\n現在、このサポートは、Azure portal から作成された TXT レコードでは利用できません。\n"

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: db0f78f2f3aef3295837d921d7d70866ed8b8769
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: d7d71c5a42f93edd833effed90dcbe80a1861ec2
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455813"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510702"
 ---
 # <a name="what-is-custom-commands"></a>カスタム コマンドとは
 

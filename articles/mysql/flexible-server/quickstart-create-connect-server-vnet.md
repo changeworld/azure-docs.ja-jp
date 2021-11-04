@@ -7,19 +7,17 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/18/2021
-ms.openlocfilehash: 70acef205aea35439e9b88e193c65a6e34ac0b7f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8d32c97014e9e38f2ad5a3c6d6a1b96d4e190f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761481"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425476"
 ---
 # <a name="connect-azure-database-for-mysql-flexible-server-with-private-access-connectivity-method"></a>プライベート アクセスの接続方法を使用して Azure Database for MySQL フレキシブル サーバーに接続する
 
 Azure Database for MySQL フレキシブル サーバーは、高可用性 MySQL サーバーをクラウドで実行、管理、スケーリングするために使用できる管理サービスです。 このクイックスタートでは、Azure portal を使用して仮想ネットワークにフレキシブル サーバーを作成する方法について説明します。
 
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
@@ -70,13 +68,13 @@ Azure Database for MySQL フレキシブル サーバーは、高可用性 MySQL
 
 ## <a name="create-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンを作成する
 
-サーバーは仮想ネットワーク内にあるので、サーバーと同じ仮想ネットワーク内にある他の Azure サービスからしかサーバーに接続できません。 サーバーに接続して管理するために、Linux 仮想マシンを作成してみましょう。 仮想マシンは、**同じリージョン** と **同じサブスクリプション** に作成する必要があります。 この Linux 仮想マシンは、データベース サーバーを管理するための SSH トンネルとして使用できます。 
+サーバーは仮想ネットワーク内にあるので、サーバーと同じ仮想ネットワーク内にある他の Azure サービスからしかサーバーに接続できません。 サーバーに接続して管理するために、Linux 仮想マシンを作成してみましょう。 仮想マシンは、**同じリージョン** と **同じサブスクリプション** に作成する必要があります。 この Linux 仮想マシンは、データベース サーバーを管理するための SSH トンネルとして使用できます。
 
 1. サーバーが作成されたリソース グループに移動します。 **[追加]** を選択します。
 2. **[Ubuntu Server 18.04 LTS]** を選択します
 3. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。
 
-   > :::image type="content" source="../../virtual-machines/linux/media/quick-create-portal/project-details.png" alt-text="仮想マシンの Azure サブスクリプションとリソース グループを選択する場所が示されている [プロジェクトの詳細] セクションのスクリーンショット" lightbox="../../virtual-machines/linux/media/quick-create-portal/project-details.png"::: 
+   > :::image type="content" source="../../virtual-machines/linux/media/quick-create-portal/project-details.png" alt-text="仮想マシンの Azure サブスクリプションとリソース グループを選択する場所が示されている [プロジェクトの詳細] セクションのスクリーンショット" lightbox="../../virtual-machines/linux/media/quick-create-portal/project-details.png":::
 
 2. **[インスタンスの詳細]** で、 **[仮想マシン名]** に「*myVM*」と入力し、データベース サーバーと同じ **[リージョン]** を選択します。
 
@@ -104,7 +102,7 @@ Azure Database for MySQL フレキシブル サーバーは、高可用性 MySQL
 
 9. 仮想マシンの新しいサブネットを追加します。
 
-   > :::image type="content" source="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png" alt-text="仮想マシンの新しいサブネットの追加のスクリーンショット" lightbox="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png"::: 
+   > :::image type="content" source="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png" alt-text="仮想マシンの新しいサブネットの追加のスクリーンショット" lightbox="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png":::
 
 10. サブネットが正常に作成されたら、ページを閉じます。
    > :::image type="content" source="./media/quickstart-create-connect-server-vnet/subnetcreate-success.png" alt-text="仮想マシンの新しいサブネットの追加に成功したスクリーンショット" lightbox="./media/quickstart-create-connect-server-vnet/subnetcreate-success.png":::

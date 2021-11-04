@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ac3a2dccecf50b53917d878535ce62e124f8f8e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 68283077d63b7a796b51da45ef005584c6c792a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479550"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477271"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -81,7 +81,6 @@ VM の Start/Stop VMs during off-hours 機能を有効にするには、特定�
 
 VM の Start/Stop VMs during off-hours 機能は Automation アカウントと Log Analytics ワークスペースを利用して有効にできます。 この場合、前のセクションで定義されたアクセス許可と、このセクションで定義されているアクセス許可が必要です。 次のロールも必要です。
 
-- サブスクリプションの共同管理者。 クラシック VM を管理する場合は、クラシック実行アカウントを作成するためにこのロールが必要です。 [クラシック実行アカウント](automation-create-standalone-account.md#create-a-classic-run-as-account)は、既定では作成されなくなりました。
 - [Azure AD](../active-directory/roles/permissions-reference.md) アプリケーション開発者ロールのメンバーシップ。 実行アカウントの構成の詳細については、「[実行アカウントを構成するためのアクセス許可](automation-security-overview.md#permissions)」を参照してください。
 - サブスクリプションまたは次のアクセス許可の共同作成者。
 
@@ -140,7 +139,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |External_AutoStop_Threshold | 変数 `External_AutoStop_MetricName` に指定された Azure 警告ルールのしきい値。 パーセント値の範囲は 1 から 100 です。|
 |External_AutoStop_TimeAggregationOperator | 条件を評価するために選択した時間枠のサイズに適用される時間の集計演算子。 使用できる値は、`Average`、`Minimum`、`Maximum`、`Total`、および `Last` です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure で分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
-|External_EnableClassicVMs| クラシック VM が機能の対象であるかどうかを指定する値。 既定値は True です。 Azure クラウド ソリューション プロバイダー (CSP) サブスクリプションの場合は、この変数を False に設定します。 クラシック VM には[クラシック実行アカウント](automation-create-standalone-account.md#create-a-classic-run-as-account)が必要です。|
+|External_EnableClassicVMs| クラシック VM が機能の対象であるかどうかを指定する値。 既定値は True です。 Azure クラウド ソリューション プロバイダー (CSP) サブスクリプションの場合は、この変数を False に設定します。|
 |External_ExcludeVMNames | 除外する VM 名のコンマ区切りリスト。上限は 140 VM です。 一覧に 140 個を超える VM を追加すると、除外を指定した VM が誤って開始または停止される可能性があります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つまたは複数のリソース グループのコンマ区切りリスト。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つまたは複数のリソース グループのコンマ区切りリスト。|
@@ -173,8 +172,6 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 ## <a name="use-the-feature-with-classic-vms"></a>クラシック VM で機能を使用する
 
 クラシック VM に Start/Stop VMs during off-hours 機能を使用している場合、Automation によってクラウド サービスごとにすべての VM が順番に処理されます。 VM は、異なる複数のクラウド サービスでまだ並列に処理されています。 
-
-クラシック VM でこの機能を使用するには、既定では作成されないクラシック実行アカウントが必要です。 クラシック実行アカウントの作成手順については、「[クラシック実行アカウントの作成](automation-create-standalone-account.md#create-a-classic-run-as-account)」を参照してください。
 
 クラウド サービスあたり 20 個を超える VM がある場合は、次のような推奨事項があります。
 

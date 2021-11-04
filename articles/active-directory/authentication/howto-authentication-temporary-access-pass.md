@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/23/2021
+ms.date: 10/22/2021
 ms.author: justinha
-author: justinha
+author: inbarckMS
 manager: daveba
-ms.reviewer: inbarckms
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b0279e0f97f3440bdef04046c2cb6eb35b6573
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ef246412a172b6f5fcafcd409e4b6e29eb12c847
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605793"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471442"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>パスワードレスの認証方法を登録するように Azure AD で一時アクセス パスを構成する (プレビュー)
 

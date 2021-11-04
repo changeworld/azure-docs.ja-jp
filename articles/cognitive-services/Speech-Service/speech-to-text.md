@@ -3,21 +3,21 @@ title: 音声テキスト変換の概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換ソフトウェアを使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。 アプリケーション、ツール、またはデバイスで、このテキスト入力を使用、表示することや、このテキスト入力に基づきアクションを実行することができます。 この記事は、音声テキスト変換サービスの利点と機能の概要になっています。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 7da34e76d760b8f29a90112c00a1f8f05655d940
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 78db7165e44eb53a6d34c9095f70185874d0d8ce
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543983"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509885"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 

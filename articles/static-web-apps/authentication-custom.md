@@ -7,12 +7,12 @@ ms.author: aapowell
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.openlocfilehash: 49921eba1a7f4c6c898eaadf1d8743d8d210057a
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 8b7fe1fc5c291f02abff88cb3e5ace2607cf32f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729807"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428142"
 ---
 # <a name="custom-authentication-in-azure-static-web-apps"></a>Azure Static Web Apps でのカスタム認証
 
@@ -29,11 +29,11 @@ Azure Static Web Apps が提供する[マネージド認証](authentication-auth
 
 カスタム ID プロバイダーは、[構成ファイル](configuration.md)の `auth` セクションで構成されます。
 
-ソース管理にシークレットが入り込まないようにするため、構成では[アプリケーション設定](application-settings.md)が調べられ、構成ファイルに一致する名前があるかどうかが確認されます。 また、[Azure Key Vault](./key-vault-secrets.md) にシークレットを格納することも選択できます。
+ソース管理にシークレットが入り込まないようにするため、構成では[アプリケーション設定](application-settings.md#configure-application-settings)が調べられ、構成ファイルに一致する名前があるかどうかが確認されます。 また、[Azure Key Vault](./key-vault-secrets.md) にシークレットを格納することも選択できます。
 
 # <a name="azure-active-directory"></a>[Azure Active Directory](#tab/aad)
 
-登録を作成するには、以下の[アプリケーション設定](application-settings.md)の作成から始めます。
+登録を作成するには、以下の[アプリケーション設定](application-settings.md#configure-application-settings)の作成から始めます。
 
 | 設定名 | 値 |
 | --- | --- |

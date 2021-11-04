@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9ef84b1ac1a1d7f1b1c9c629c4e6eb2606f2441c
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: cc30f39d20235bf33cfcaa49f9a98e14ab29aee0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854848"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471367"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 

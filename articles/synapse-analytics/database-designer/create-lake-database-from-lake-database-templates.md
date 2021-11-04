@@ -4,15 +4,16 @@ description: データベース テンプレートから lake データベース
 author: aamerril
 ms.author: aamerril
 ms.service: synapse-analytics
+ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 6051b8d36067846429a20b396ba39cabd70c1774
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b657ed3d840345e36c38ef1a97723e67bfc5a38b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017414"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456824"
 ---
 # <a name="how-to-create-a-lake-database-from-database-templates"></a>方法: データベース テンプレートから lake データベースを作成する
 

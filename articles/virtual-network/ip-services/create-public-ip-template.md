@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: quickstart
 ms.date: 10/01/2021
 ms.author: allensu
-ms.openlocfilehash: 017e782b322eb069f43fff399b0d6bc76f981ed1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: cb90b716351802271a12fc72c1ead9e4fac2968e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130231915"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456425"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-a-resource-manager-template"></a>クイックスタート: Resource Manager テンプレートを使用してパブリック IP アドレスを作成する
 
@@ -41,23 +41,23 @@ IPv6 アドレスを作成するには、 **`publicIPAddressVersion`** パラメ
 追加するテンプレートのセクション:
 
 ```JSON
-    {
-      "apiVersion": "2020-08-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "myStandardPublicIP",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard"
-      },
-      "zones": [
-                "1",
-                "2",
-                "3"
-      ],
-      "properties": {
-        "publicIPAllocationMethod": "Static",
-        "publicIPAddressVersion": "IPv4"
-      }
+{
+  "apiVersion": "2020-08-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "myStandardPublicIP",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "Standard"
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
+  "properties": {
+    "publicIPAllocationMethod": "Static",
+    "publicIPAddressVersion": "IPv4"
+  }
 ```
 > [!IMPORTANT]
 > 2020-08-01 より前の API のバージョンでは、Standard SKU のゾーン パラメーターを指定せずに上記のコードを使用して、ゾーン冗長 IP アドレスを作成します。 
@@ -75,21 +75,21 @@ IPv6 アドレスを作成するには、 **`publicIPAddressVersion`** パラメ
 追加するテンプレートのセクション:
 
 ```JSON
-    {
-      "apiVersion": "2020-08-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "myStandardPublicIP-zonal",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard"
-      },
-      "zones": [
-                "2"
-      ],
-      "properties": {
-        "publicIPAllocationMethod": "Static",
-        "publicIPAddressVersion": "IPv4"
-      }
+{
+  "apiVersion": "2020-08-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "myStandardPublicIP-zonal",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "Standard"
+  },
+  "zones": [
+    "2"
+  ],
+  "properties": {
+    "publicIPAllocationMethod": "Static",
+    "publicIPAddressVersion": "IPv4"
+  }
 ```
 
 >[!NOTE]
@@ -106,18 +106,18 @@ IPv6 アドレスを作成するには、**publicIPAddressVersion** パラメー
 追加するテンプレートのセクション:
 
 ```JSON
-    {
-      "apiVersion": "2020-08-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "myStandardPublicIP-nozone",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard"
-      },
-      "properties": {
-        "publicIPAllocationMethod": "Static",
-        "publicIPAddressVersion": "IPv4"
-      }
+{
+  "apiVersion": "2020-08-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "myStandardPublicIP-nozone",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "Standard"
+  },
+  "properties": {
+    "publicIPAllocationMethod": "Static",
+    "publicIPAddressVersion": "IPv4"
+  }
 ```
 > [!IMPORTANT]
 > 2020-08-01 より前の API のバージョンでは、Standard SKU にゾーン パラメーターを指定しないと、ゾーン冗長 IP アドレスが作成されます。 
@@ -135,18 +135,18 @@ IPv6 アドレスを作成するには、**publicIPAddressVersion** パラメー
 追加するテンプレートのセクション:
 
 ```JSON
-    {
-      "apiVersion": "2020-08-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "myBasicPublicIP",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Basic"
-      },
-      "properties": {
-        "publicIPAllocationMethod": "Static",
-        "publicIPAddressVersion": 'IPv4'
-      }
+{
+  "apiVersion": "2020-08-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "myBasicPublicIP",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "Basic"
+  },
+  "properties": {
+    "publicIPAllocationMethod": "Static",
+    "publicIPAddressVersion": "IPv4"
+  }
 ```
 
 時間の経過と共に IP アドレスが変更されても問題ない場合は、AllocationMethod を **Dynamic** に変更することで **publicIPAllocationMethod** の IP の割り当てを選択できます。 
@@ -169,30 +169,30 @@ Standard SKU の静的パブリック IPv4 アドレスでは、ルーティン�
 Standard ゾーン冗長パブリック IPv4 アドレスにインターネット ルーティング設定を使用するためのテンプレート セクションは、次のようになります。
 
 ```JSON
-    {
-      "apiVersion": "2020-08-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "myStandardZRPublicIP-RP",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard"
-      },
-      "zones": [
-                "1",
-                "2",
-                "3"
-      ],
-      "properties": {
-        "publicIPAllocationMethod": "Static",
-        "publicIPAddressVersion": "IPv4",
-            "ipTags": [
-          {
-           "ipTagType": "RoutingPreference",
-            "tag": "Internet"
-           }
-         ]
+{
+  "apiVersion": "2020-08-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "myStandardZRPublicIP-RP",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "Standard"
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
+  "properties": {
+    "publicIPAllocationMethod": "Static",
+    "publicIPAddressVersion": "IPv4",
+    "ipTags": [
+      {
+        "ipTagType": "RoutingPreference",
+        "tag": "Internet"
       }
-    }
+    ]
+  }
+}
 ```
 
 ### <a name="tier"></a>階層
@@ -204,19 +204,19 @@ Standard ゾーン冗長パブリック IPv4 アドレスにインターネッ�
 Standard グローバル パブリック IPv4 アドレスを使用するためのテンプレート セクションは、次のようになります。
 
 ```JSON
-    {
-      "apiVersion": "2020-08-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "myStandardPublicIP-Global",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard",
-            "tier": "Global"
-      },
-      "properties": {
-        "publicIPAllocationMethod": "Static",
-        "publicIPAddressVersion": "IPv4"
-      }
+{
+  "apiVersion": "2020-08-01",
+  "type": "Microsoft.Network/publicIPAddresses",
+  "name": "myStandardPublicIP-Global",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "Standard",
+    "tier": "Global"
+  },
+  "properties": {
+    "publicIPAllocationMethod": "Static",
+    "publicIPAddressVersion": "IPv4"
+  }
 ```
 
 ## <a name="additional-information"></a>関連情報 

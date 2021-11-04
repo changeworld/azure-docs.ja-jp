@@ -11,12 +11,12 @@ author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
 ms.date: 1/14/2021
-ms.openlocfilehash: e4120b151957d8bb7360d7313000269e1ef51b03
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 5ae1bfde67d2fed9147ffe8a18203f3dc1d80c19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592342"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431980"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database での検出可能なクエリ パフォーマンス ボトルネックの種類
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -79,7 +79,6 @@ PSP 問題の解決方法について詳しくは、これらのブログ記事�
 
 - 「[パラメーターのスニッフィング](/archive/blogs/queryoptteam/i-smell-a-parameter)」
 - 「[パラメーター化クエリに対する Conor、動的 SQL、プロシージャ、プランの品質の比較](/archive/blogs/conor_cunningham_msft/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries)」
-- 「[SQL Server での SQL クエリの最適化技法:パラメーター スニッフィング](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)」
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>不適切なパラメーター化によって発生するコンパイル アクティビティ
 

@@ -3,7 +3,7 @@ title: Azure CDN を使用した中国へのコンテンツ配信 | Microsoft Do
 description: Azure Content Delivery Network (CDN) を使用して、中国のユーザーにコンテンツを配信する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 599ec041837460c30b4655531b822eab5f0eafa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ff41255b5e06684cbaff2aa87e1adf4429af42d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92778916"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439350"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Azure CDN を使用した中国へのコンテンツ配信
 

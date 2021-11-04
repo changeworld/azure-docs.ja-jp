@@ -1,27 +1,28 @@
 ---
-title: 音声カスタマイズ リソースをバックアップおよび復旧する方法
+title: 顧客の音声リソースをバックアップおよび復旧する方法
 titleSuffix: Azure Cognitive Services
 description: Custom Speech と Custom Voice を使用してサービスの停止に備える方法について説明します。
 services: cognitive-services
-author: masakiitagaki
+author: masaki-itagaki
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
-ms.openlocfilehash: 0f540025561b6e452371a74093133bf3e1183b1b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: aff4093863b1813e22fc6050ff4050cf4133bdd6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744128"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508366"
 ---
-# <a name="back-up-and-recover-speech-customization-resources"></a>音声カスタマイズ リソースをバックアップおよび復旧する
+# <a name="back-up-and-recover-speech-customer-resources"></a>顧客の音声リソースをバックアップおよび復旧する
 
 Speech サービスは[さまざまなリージョンで使用できます](./regions.md)。 サービス サブスクリプション キーは、1 つのリージョンに関連付けられています。 キーを取得するときは、データ、モデル、およびデプロイが存在する特定のリージョンを選択します。
 
-カスタマイズされた音声モデルやカスタム音声フォントなど、顧客が作成したデータ資産のデータセットも、**サービスによってデプロイされたリージョン内でのみ使用できます**。 このような資産は次のとおりです。
+カスタマイズされた音声モデル、カスタム音声フォント、話者認識の音声プロファイルなど、顧客が作成したデータ資産のデータセットも、**サービスによってデプロイされたリージョン内でのみ使用できます**。 このような資産は次のとおりです。
 
 **カスタム音声**
 -   トレーニング オーディオ データまたはトレーニング テキスト データ
@@ -33,6 +34,10 @@ Speech サービスは[さまざまなリージョンで使用できます](./re
 -   トレーニング オーディオ データまたはトレーニング テキスト データ
 -   テスト オーディオ データまたはテスト テキスト データ
 -   カスタム音声フォント
+
+**Speaker Recognition**
+- 話者登録オーディオ
+- 話者の声紋
 
 お客様によっては、既定のエンドポイントを使用して音声合成用にオーディオまたは標準の音声を文字起こしする場合と、カスタマイズ用に資産を作成する場合があります。
 
@@ -114,3 +119,9 @@ Custom Voice では自動フェールオーバーはサポートされていま�
     -   注: 追加のエンドポイントには追加料金がかかります。 [モデル ホスティングの価格については、こちらをご覧ください](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 4.  セカンダリ リージョンにフェールオーバーするようにクライアントを構成します。 [GitHub: セカンダリ リージョンへのカスタム音声フェールオーバー](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_samples.cs#L920)に関する C# のサンプル コードを参照してください。
+
+### <a name="speaker-recognition"></a>Speaker Recognition
+
+Speaker Recognition では、[Azure のペアになっているリージョン](/azure/best-practices-availability-paired-regions)を使用して、自動的にフェールオーバー操作を行います。 話者の登録と声紋は定期的にバックアップされ、データの損失を防ぎ、障害が発生した場合に使用することができます。
+
+障害が発生すると、Speaker Recognition サービスはペアになっているリージョンに自動的にフェールオーバーし、メイン リージョンがオンラインに戻るまで、バックアップされたデータを使用して要求の処理を続行します。

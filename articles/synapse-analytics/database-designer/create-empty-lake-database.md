@@ -4,16 +4,16 @@ description: 簡単に追加できる空の Lake データベースを Azure Syn
 author: aamerril
 ms.author: aamerril
 ms.service: synapse-analytics
-ms: 'subservice:'
+ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 8717168532f84c8a3ed8735b5298eb0bb8065d20
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9612fabc94e3425c42bb30e3075a56fb3f789626
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091582"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510445"
 ---
 # <a name="how-to-create-an-empty-lake-database"></a>方法: 空の Lake データベースを作成する
 
@@ -62,7 +62,7 @@ ms.locfileid: "131091582"
     - データベースをパブリッシュする前に、エラーが検証されます。 エラーが見つかると、[通知] タブに表示されます。このタブには、エラーを解決する方法が表示されます。
     
        ![データベースの検証エラーを示す [検証] ペインのスクリーンショット](./media/create-empty-lake-database/validation-error.png)
-    - パブリッシュすると、データベース スキーマが Azure Synapse メタストアに作成されます。 パブリッシュすると、データベース スキーマが Azure Synapse メタストアに作成されます。 パブリッシュ後、データベースおよびテーブル オブジェクトが他の Azure サービスに表示され、データベースのメタデータを Power BI や Purview などのアプリにフローできます。
+    - パブリッシュすると、データベース スキーマが Azure Synapse メタストアに作成されます。 パブリッシュ後、データベースおよびテーブル オブジェクトが他の Azure サービスに表示され、データベースのメタデータを Power BI や Purview などのアプリにフローできます。
 
 11. これで、空の Lake データベースが Azure Synapse に作成され、 **[カスタム]** オプションと **[データ レイクから]** オプションを使用してテーブルが追加されました。
 
