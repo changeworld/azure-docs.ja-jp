@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: eca68b90756f0da4d34a5ceff6d3194b57297dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42179895f60e56f33b41097375c583c3b272c038
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017543"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469618"
 ---
 # <a name="create-projects-in-multiple-languages"></a>プロジェクトを複数の言語で作成する
 
@@ -21,7 +21,6 @@ ms.locfileid: "131017543"
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 複数の言語をサポートするプロジェクトを作成する
 > * 英語をサポートするプロジェクトを作成する
 > * ドイツ語をサポートするプロジェクトを作成する
 
@@ -34,11 +33,11 @@ ms.locfileid: "131017543"
 > [!div class="mx-imgBorder"]
 > [ ![[I want to select the language when I create a project in this resource]\(このリソースでプロジェクトを作成するときに言語を選択する\) が選択されたプロジェクトの作成のための UI のスクリーンショット。]( ../media/multiple-languages/multiple-languages.png) ](../media/multiple-languages/multiple-languages.png#lightbox)
 
-1. [[Language Studio]](https://aka.ms/languageStudio) で、質問と回答のページを開きます。 **[Create new project]\(新しいプロジェクトの作成\)**  >  **[I want to select the language when I create a project in this resource]\(このリソースでプロジェクトを作成するときに言語を選択する\)**  >  **[Next]\(次へ\)** を選びます。
+1. [[Language Studio]](https://aka.ms/languageStudio) ホーム ページで、カスタムの質問と回答を開きます。 **[Create new project]\(新しいプロジェクトの作成\)**  >  **[I want to select the language when I create a project in this resource]\(このリソースでプロジェクトを作成するときに言語を選択する\)**  >  **[Next]\(次へ\)** を選びます。
 
 2. 基本情報の入力ページに入力し、 **[Next]\(次へ\)**  >  **[Create project]\(プロジェクトの作成\)** を選びます。
 
-    |設定| [値]|
+    |設定| 値|
     |---|----|
     |名前 | プロジェクトの一意の名前|
     |説明 | プロジェクトを識別するための一意の説明 |
@@ -69,7 +68,7 @@ ms.locfileid: "131017543"
 
 2. 基本情報の入力ページに入力し、 **[Next]\(次へ\)**  >  **[Create project]\(プロジェクトの作成\)** を選びます。
 
-    |設定| [値]|
+    |設定| 値|
     |---|----|
     |名前 | プロジェクトの一意の名前|
     |説明 | プロジェクトを識別するための一意の説明 |

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: contperf-fy2q1-portal, ignite-fall-2021
-ms.openlocfilehash: ea5fb6c17346059ab35467c654a17815e711d213
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6fbfd04283e5bf89be32c89294ad5d26fb6e5af2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087193"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426698"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
@@ -50,7 +50,7 @@ RDP および SSH は、Azure で実行されているワークロードに接�
 
 この図は、Azure Bastion のデプロイのアーキテクチャを示しています。 この図の内容は次のとおりです。
 
-* bastion ホストは、プレフィックスが /27 以上の AzureBastionSubnet サブネットを含む仮想ネットワーク内にデプロイされます。
+* bastion ホストは、プレフィックスが /26 以上の AzureBastionSubnet サブネットを含む仮想ネットワーク内にデプロイされます。
 * ユーザーは任意の HTML5 ブラウザーを使用して Azure portal に接続します。
 * ユーザーは、接続先の仮想マシンを選択します。
 * 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。

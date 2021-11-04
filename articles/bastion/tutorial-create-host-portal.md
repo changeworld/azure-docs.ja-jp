@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3765b1abb6996e364ed3f7004e56f323fe256450
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7d2e071fd7dc368df867b17a53f9e994ee5c16a6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017043"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430973"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>チュートリアル:Bastion を構成し、Windows VM に接続する
 
@@ -65,7 +65,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 | --- | --- |
 | 名前 | VNet1-bastion |
 | + サブネット名 | AzureBastionSubnet |
-| AzureBastionSubnet アドレス | サブネット マスクが /27 以上の VNet アドレス空間内のサブネット。<br> 例: 10.1.1.0/26。  |
+| AzureBastionSubnet アドレス | サブネット マスクが /26 以上の VNet アドレス空間内のサブネット。<br> 例: 10.1.1.0/26。  |
 | 価格レベルまたは SKU | Standard |
 | インスタンス数 (ホスト スケーリング)| 3 以上 |
 | パブリック IP アドレス |  新規作成 |
@@ -119,7 +119,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. 次のガイドラインに従ってサブネットを作成します。
 
    * サブネットの名前は「**AzureBastionSubnet**」とする必要があります。
-   * サブネットは、少なくとも /27 以上である必要があります。 Standard SKU では、今後追加のホスト スケーリング インスタンスに対応するために、/26 以上をお勧めします。
+   * サブネットは、少なくとも /26 以上である必要があります。 Standard SKU では、今後追加のホスト スケーリング インスタンスに対応するために、/26 以上をお勧めします。
 
    :::image type="content" source="./media/tutorial-create-host-portal/bastion-subnet.png" alt-text="AzureBastionSubnet サブネットのスクリーンショット。":::
 
