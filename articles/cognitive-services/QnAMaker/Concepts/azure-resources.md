@@ -4,21 +4,22 @@ description: QnA Maker では、それぞれ異なる目的で複数の Azure �
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: e69b39415ea90deb6ce4477569d372f9bd8f2134
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 10/11/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e421c2e799e7eeb002cffab2748f099f21f81199
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368666"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012000"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
 QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使用します。 それらが個別にどのように使用されるかを理解すると、正しい価格レベルを計画して選択し、価格レベルを変更する時期を把握できるようになります。 これらを "_組み合わせて_" 使用する方法を理解すると、発生した問題を見つけて修正できるようになります。
 
-## <a name="resource-planning"></a>リソースの計画
+[!INCLUDE [Info on question answering GA](../includes/new-version.md)]
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+## <a name="resource-planning"></a>リソースの計画
 
 プロトタイプ フェーズで初めて QnA Maker ナレッジ ベースを開発する場合は、テストと運用の両方で 1 つの QnA Maker リソースを使用することが一般的です。
 
@@ -30,21 +31,7 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 
 1 つの QnA Maker リソースでは、同じ言語、同じリージョン、同じ主題の領域の組み合わせを持つすべてのナレッジ ベースを保持する計画を立てます。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-プロトタイプ フェーズで初めてナレッジ ベースを開発する場合は、テストと運用の両方で 1 つのリソースを使用することが一般的です。
-
-プロジェクトの開発フェーズに移行するときは、次のことを考慮する必要があります。
-
-* ナレッジ ベース システムで保持される言語の数
-* ナレッジ ベースを使用できるようにする必要があるリージョンの数
-* システムによって各ドメイン内に保持されるドキュメントの数
-
----
-
 ## <a name="pricing-tier-considerations"></a>価格レベルに関する考慮事項
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 通常、次の 3 つのパラメーターを考慮する必要があります。
 
@@ -71,59 +58,17 @@ Azure Search サービス リソースは 2019 年 1 月以降に作成されて
 | **Dev/Test 環境**   | Standard SKU         | 共有      | Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |
 | **運用環境** | Standard SKU         | Basic       | Standard     | 発行できる KB は 49 個まで (最大サイズ 25 GB) |
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-通常、次の 3 つのパラメーターを考慮する必要があります。
-
-* **必要なスループット**:
-    * カスタム質問と回答 (プレビュー) は無料の機能であり、現在のスループットは、Management API と Prediction API の両方について 10 TPS に制限されています。
-    * この点は、Azure **Cognitive Search** の SKU の選択にも影響します。詳細については、[こちら](../../../search/search-sku-tier.md)を参照してください。 さらに、レプリカで Cognitive Search の[容量](../../../search/search-capacity-planning.md)を調整することが必要になる場合があります。
-
-* **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) を選択してください。 通常は、さまざまな主題の領域の数に基づいて必要なナレッジ ベースの数を決定します。 (1 つの言語の) 主題の領域を 1 つのナレッジ ベースに含めるようにします。
-
-    カスタム質問と回答 (プレビュー) を使用するときは、KB 用の Text Analytics サービスを 1 つの言語または複数の言語のどちらで設定するかを選択できます。 これは、カスタム質問と回答 (プレビュー) 機能で最初のナレッジ ベースを作成するときに選択することができます。
-
-> [!div class="mx-imgBorder"]
-> ![多言語ナレッジ ベースの選択](../media/qnamaker-create-publish-knowledge-base/select-language-custom-qna.png)
-
-> [!IMPORTANT]
-> 特定のレベルで発行できるナレッジ ベースの数は、単一言語の場合は N-1 件、複数言語の場合は N/2 件です。N は、そのレベルで許容される最大インデックスです。 レベルごとに許容されるドキュメントの最大サイズと最大数もチェックしてください。
-
-たとえば、レベルで 15 個のインデックスが許可されている場合、同じ言語で 14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックスは、作成およびテスト用にすべてのナレッジ ベースで使用されます。 異なる言語でナレッジ ベースを作成することを選択した場合は、発行できるナレッジ ベースの数は 7 個だけです。
-
-* **ソースとしてのドキュメントの数**: カスタム質問と回答 (プレビュー) は無料の機能であり、ソースとして追加できるドキュメントの数に制限はありません。 詳細については、[こちら](https://aka.ms/qnamaker-pricing)を参照してください。
-
-次の表は、いくつかの基本的なガイドラインを示したものです。
-
-|                            |Azure Cognitive Search | 制限事項                      |
-| -------------------------- |------------ | -------------------------------- |
-| **実験**        |Free レベル    | 発行できる KB は 2 つまで (最大サイズ 50 MB)  |
-| **Dev/Test 環境**   |Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |
-| **運用環境** |Standard     | 発行できる KB は 49 個まで (最大サイズ 25 GB) |
-
----
-
 ## <a name="recommended-settings"></a>推奨設定
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 |ターゲット QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
-| 3             | S1、1 個のレプリカ   | S1、1 個のレプリカ    |
+| 3             | S1、1 つのレプリカ   | S1、1 つのレプリカ    |
 | 50         | S3、10 個のレプリカ       | S1、12 個のレプリカ         |
 | 80         | S3、10 個のレプリカ      |  S3、12 個のレプリカ  |
 | 100         | P3V2、10 個のレプリカ  | S3、12 個のレプリカ、3 つのパーティション   |
 | 200 - 250         | P3V2、20 個のレプリカ | S3、12 個のレプリカ、3 つのパーティション    |
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答 (プレビュー) は無料の機能であり、現在のスループットは、Management API と Prediction API の両方について 10 トランザクション/秒に制限されています。 サービスの目標を 10 トランザクション/秒にするには、Azure Cognitive Search の S1 (1 インスタンス) SKU をお勧めします。
-
----
-
 ## <a name="when-to-change-a-pricing-tier"></a>価格レベルを変更する場合
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 |アップグレード|理由|
 |--|--|
@@ -133,15 +78,7 @@ Azure Search サービス リソースは 2019 年 1 月以降に作成されて
 
 [Azure portal で App Service を更新](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)して、最新のランタイム更新プログラムを取得します。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-多数のナレッジ ベースを使用する予定の場合は、Azure Cognitive Search サービスを[アップグレードします](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)。
-
----
-
 ## <a name="keys-in-qna-maker"></a>QnA Maker のキー
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 QnA Maker サービスでは、App Service でホストされるランタイムと共に使用される **オーサリング キー** と **クエリ エンドポイント キー** の 2 種類のキーが扱われます。
 
@@ -184,55 +121,11 @@ QnA Maker リソースを作成した Azure portal で、オーサリング キ�
     >[!NOTE]
     >キーが漏えいしていると思われる場合は、キーを更新してください。 それに合わせて、クライアント アプリまたはボットのコードの変更が必要になることがあります。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答 (プレビュー) 機能により、顧客のサブスクリプションのサービスにアクセスするために、**オーサリング キー** と **Azure Cognitive Search キー** の 2 種類のキーが処理されます。
-
-これらのキーは、API を介してサービスに要求を行うときに使用します。
-
-> [!div class="mx-imgBorder"]
-> ![キー管理マネージド プレビュー](../media/qnamaker-how-to-key-management/custom-question-answering-key-management.png)
-
-|名前|場所|目的|
-|--|--|--|
-|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しいサービスを作成するときに作成されます。<br><br>これらのキーは、 **[キーとエンドポイント]** ページの **Cognitive Services** リソースで確認できます。|
-|Azure Cognitive Search の管理者キー|[Azure Portal](../../../search/search-security-api-keys.md)|これらのキーは、ユーザーの Azure サブスクリプションにデプロイされている Azure Cognitive Search サービスとの通信に使用されます。 Azure Cognitive Search をカスタム質問と回答 (プレビュー) 機能に関連付けると、管理者キーが QnA Maker サービスに自動的に渡されます。 <br><br>これらのキーは、**Azure Cognitive Search** リソースの **[キー]** ページで確認できます。|
-
-### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
-
-オーサリング キーの表示とリセットは、Text Analytics リソースのカスタム質問応答 (プレビュー) 機能を追加した Azure portal から行うことができます。
-
-1. Azure portal で Text Analytics リソースに移動し、種類が *Cognitive Services* であるリソースを選択します。
-
-> [!div class="mx-imgBorder"]
-> ![カスタム QnA (プレビュー) リソース リスト](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
-
-2. **[キーとエンドポイント]** に移動します。
-
-> [!div class="mx-imgBorder"]
-> ![カスタム QnA (プレビュー) サブスクリプション キー](../media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
-
-### <a name="update-the-resources"></a>リソースを更新する
-
-ナレッジ ベースによって使用されるリソースをアップグレードする方法について説明します。 カスタム質問と回答 (プレビュー) 機能は、プレビュー期間中は **無料** です。 
-
----
-
 ## <a name="management-service-region"></a>管理サービスのリージョン
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 QnA Maker の管理サービスは、QnA Maker ポータルと初期データ処理でのみ使用されます。 このサービスは、**米国西部** リージョンでのみ利用できます。 この米国西部のサービスでは、顧客データは保存されません。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答 (プレビュー) 機能では、管理サービスと予測サービスの両方が同じリージョンに併置されます。 現在カスタム質問と回答 (プレビュー) は、**米国中南部、北ヨーロッパ、オーストラリア東部** で利用できます。
-
----
-
 ## <a name="resource-naming-considerations"></a>リソースの名前付けに関する考慮事項
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 `qna-westus-f0-b` などの QnA Maker リソースのリソース名は、他のリソースの名前付けにも使用されます。
 
@@ -252,29 +145,7 @@ Azure portal の作成ウィンドウを使うと、QnA Maker リソースを作
 > [!TIP]
 > 名前付け規則を使用して、リソースまたはリソース グループの名前内の価格レベルを示します。 新しいナレッジ ベースの作成または新しいドキュメントの追加でエラーが発生する場合、Cognitive Search の価格レベルの制限が一般的な問題です。
 
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-`qna-westus-f0-b` などの Text Analytics リソースのリソース名は、他のリソースの名前付けにも使用されます。
-
-Azure portal の作成ウィンドウを使うと、Text Analytics リソースを作成し、他のリソースの価格レベルを選択できます。
-
-> [!div class="mx-imgBorder"]
-> ![QnA Maker マネージド (プレビュー) リソース作成用の Azure portal のスクリーンショット](../media/qnamaker-how-to-setup-service/custom-qna-create-button.png) リソースは同じ名前で作成されます。
-
-> [!div class="mx-imgBorder"]
-> ![Azure portal の QnA Maker マネージド (プレビュー) リソース一覧のスクリーンショット](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
-
-> [!TIP]
-> Text Analytics リソースを作成するときに新しいリソース グループを作成します。 これで、リソース グループで検索するときに、Text Analytics リソースに関連付けられているすべてのリソースを表示できるようになります。
-
-> [!TIP]
-> 名前付け規則を使用して、リソースまたはリソース グループの名前内の価格レベルを示します。 新しいナレッジ ベースの作成または新しいドキュメントの追加でエラーが発生する場合、Cognitive Search の価格レベルの制限が一般的な問題です。
-
----
-
 ## <a name="resource-purposes"></a>リソースの目的
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 QnA Maker で作成される各 Azure リソースには特定の目的があります。
 
@@ -340,36 +211,6 @@ QnA Maker はいくつかの Azure リソースを作成します。 管理を�
 |App Service|X|仕様により不可能|
 |Application Insights|✔|共有できます|
 |検索サービス|✔|1. `testkb` は QnA Maker サービス用の予約された名前です。他のサービスで使用することはできません。<br>2.`synonym-map` という名前のシノニム マップは、QnA Maker サービス用に予約されています。<br>3.公開されるナレッジ ベースの数は、Search サービスのレベルによって制限されます。 使用可能な空きインデックスがある場合は、他のサービスでそれらを使用できます。|
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-カスタム質問と回答 (プレビュー) 機能を使用して作成された各 Azure リソースには、特定の目的があります。
-
-* Text Analytics リソース
-* Cognitive Search リソース
-
-### <a name="text-analytics-resource"></a>Text Analytics リソース
-
-カスタム質問と回答 (プレビュー) 機能を備えた Text Analytics リソースにより、Authoring および Publishing API へのアクセスが提供され、ランク付けランタイムがホストされ、テレメトリが提供されます。
-
-### <a name="azure-cognitive-search-resource"></a>Azure Cognitive Search リソース
-
-[Cognitive Search](../../../search/index.yml) リソースは次の目的で使用されます。
-
-* QnA ペアを格納する
-* 実行時に QnA ペアの初期順位 (ランカー #1) を指定する
-
-#### <a name="index-usage"></a>インデックスの使用量
-
-特定のレベルで発行できるナレッジ ベースの数は、単一言語の場合は N-1 件、複数言語の場合は N/2 件です。N は、Azure Cognitive Search レベルで許容される最大インデックスです。 レベルごとに許容されるドキュメントの最大サイズと最大数もチェックしてください。
-
-たとえば、レベルで 15 個のインデックスが許可されている場合、同じ言語で 14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックスは、作成およびテスト用にすべてのナレッジ ベースで使用されます。 異なる言語でナレッジ ベースを作成することを選択した場合は、発行できるナレッジ ベースの数は 7 個だけです。
-
-#### <a name="language-usage"></a>言語の使用方法
-
-カスタム質問と回答 (プレビュー) を使用するときは、ナレッジ ベース用のサービスを 1 つの言語または複数の言語のどちらで設定するかを選択できます。 この選択は、Text Analytics サービスで最初のナレッジ ベースを作成するときに行います。 ナレッジ ベースごとに言語の設定を有効にする方法については、[こちら](#pricing-tier-considerations)を参照してください。
-
----
 
 ## <a name="next-steps"></a>次のステップ
 

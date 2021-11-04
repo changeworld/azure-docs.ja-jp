@@ -6,24 +6,22 @@ ms.service: api-management
 author: dlepow
 ms.author: danlep
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.custom: template-how-to
-ms.openlocfilehash: b3eb368184eceeabc6af46bac8ca08254560e252
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 11/2/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 027a87a7502f551b7fb97d52a732a90bc0b8aa45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123097872"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065686"
 ---
-# <a name="import-a-websocket-api-preview"></a>WebSocket API をインポートする (プレビュー)
+# <a name="import-a-websocket-api"></a>Websocket API のインポート
 
 API Management の WebSocket API ソリューションを使用すると、API Management を使用して WebSocket API と REST API の両方を管理、保護、監視、公開し、すべての API を検出して使用するための中央ハブを提供できます。 API 発行元は、API Management で以下を介して WebSocket API を素早く追加できます。
 * Azure portal での単純なジェスチャ、および、 
 * Management API と Azure Resource Manager。 
 
 [JWT 検証](./api-management-access-restriction-policies.md#ValidateJWT)など、既存のアクセス制御ポリシーを適用することで、WebSocket API をセキュリティで保護できます。 Azure portal と開発者ポータルの両方で API テスト コンソールを使用して WebSocket API をテストすることもできます。 既存の監視機能を基に構築された API Management により、WebSocket API の監視とトラブルシューティングを行うメトリックとログが得られます。 
-
-[!INCLUDE [preview](./includes/preview/preview-callout-websocket-api.md)]
 
 この記事では、次のことについて説明します。
 > [!div class="checklist"]
@@ -115,11 +113,11 @@ API Management と Azure Monitor の標準機能を使用して、WebSocket API 
 
 ## <a name="limitations"></a>制限事項
 
-WebSocket API は、Azure portal、Management API、Azure Resource Manager を通じてパブリック プレビューで使用およびサポートされています。 以下に示すのは、API Management での WebSocket サポートの現在の制限です。
+以下に示すのは、API Management での WebSocket サポートの現在の制限です。
 
-* WebSocket API は、従量課金レベルではサポートされていません。
-* WebSocket API は、[セルフホステッド ゲートウェイ](./how-to-deploy-self-hosted-gateway-azure-arc.md)ではサポートされていません。
-* Azure CLI、PowerShell、SDK では、WebSocket API の管理操作はサポートされていません。
+* WebSocket API は、従量課金レベルではまだサポートされていません。
+* WebSocket API は、[セルフホステッド ゲートウェイ](./self-hosted-gateway-overview.md)ではまだサポートされていません。
+* Azure CLI、PowerShell、SDK では、現在 WebSocket API の管理操作はサポートされていません。
 
 ### <a name="unsupported-policies"></a>サポートされていないポリシー
 

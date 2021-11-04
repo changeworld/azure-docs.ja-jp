@@ -6,14 +6,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: include
-ms.custom: include file
-ms.date: 11/09/2020
-ms.openlocfilehash: 2219eca3be83aa955d761b333c66c4ade3bd4999
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.custom: include file, ignite-fall-2021
+ms.date: 09/13/2021
+ms.openlocfilehash: 42150afd167ea55e6e4a27114f512b01e5e992fa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129300222"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043736"
 ---
 この cURL ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -23,15 +23,7 @@ ms.locfileid: "129300222"
     * 最新の [**cURL**](https://curl.haxx.se/)。
     * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 > * Azure portal で作成された [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-> * Azure portal でカスタム質問と回答機能が有効になっている [Text Analytics リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、Text Analytics リソース名を覚えておいてください。
-
----
 
    * メタデータとおしゃべりで構成され、質問と回答を持つトレーニングおよび発行済みのナレッジ ベース (前の[クイックスタート](../Quickstarts/add-question-metadata-portal.md)で作成)。
 
@@ -46,17 +38,9 @@ ms.locfileid: "129300222"
 1. ナレッジ ベースの **[Settings]\(設定\)** ページで **[CURL]** タブを選択し、ナレッジ ベースからの回答を生成するために使用される cURL の例を表示します。
 1. このコマンドを編集できるように、編集可能な環境 (テキスト ファイルなど) にコピーします。 次のように質問の値を編集して、`service:qna_maker` のメタデータが QnA ペアのフィルターとして使用されるようにします。
 
-   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
-   # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-    
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H   "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
-    ```
-    ---
 
     質問はたったの 1 単語 (`size`) です。これにより、2 つの QnA ペアのいずれかを返すことができます。 `strictFilters` 配列の指定により、`qna_maker` の回答のみに応答が限定されます。
 
@@ -109,15 +93,9 @@ Debug: {Enable:true}
 
 1. cURL コマンドを編集して debug プロパティを含め、詳細を表示します。
 
-   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
     ```
-   # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
-    ```
-    ---
 
 1. 応答には、回答に関する関連情報が含まれます。 簡潔にするために、次の JSON 出力では、一部のデバッグの詳細が省略記号に置き換えられています。
 
@@ -220,16 +198,11 @@ isTest:true
 ```
 
 cURL コマンドは次のようになります。
-# <a name="qna-maker-ga"></a>[QnA Maker GA](#tab/v1)
+
 ```bash
 curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
 ```
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-```bash
-curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
-```
 
----
 JSON 応答では、発行されたナレッジ ベース クエリと同じスキーマが使用されます。
 
 > [!NOTE]
@@ -238,18 +211,10 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>cURL を使用しておしゃべりの回答を照会する
 
 1. cURL 対応のターミナルで、ユーザーからのボットの会話を終了する文言 (`Thank you` など) を質問として使用します。 他に設定するプロパティはありません。
-    
-   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
     ```
-   # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'thank you'}"
-    ```
-    ---
 
 1. cURL コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。
 
@@ -333,7 +298,7 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
     }
     ```
 
-    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータ プロパティも返されました。
+    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータ プロパティも返されました。
 
 ## <a name="use-threshold-and-default-answer"></a>しきい値と既定の回答を使用する
 
@@ -341,15 +306,9 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
 
 1. `threshold` プロパティを追加し、しきい値 80% 以上を指定して `size` に対する回答を要求します。 ナレッジ ベースでは、質問のスコアが 71% であるためその回答が見つかりません。 結果では、ナレッジ ベースの作成時に指定した既定の回答が返されます。
 
-   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
     ```
-   # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
-    ```
-    ---
 
 1. cURL コマンドを実行し、JSON 応答を受け取ります。
 
@@ -374,15 +333,9 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
 
 1. しきい値を60% に変更し、クエリを再度要求します。
     
-   # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
     ```
-   # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
-    ```
-    ---
 
     返された JSON で回答が見つかりました。
 
@@ -421,49 +374,4 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
     ```
 ## <a name="use-unstructured-data-sources"></a>非構造化データ ソースを使用する
     
-質問と回答の抽出に使用できない非構造化ドキュメントを追加する機能がサポートされるようになりました。ユーザーは、クエリに対する応答をフェッチするとき GenerateAnswer API に非構造化データセットを含めるか除外するかを選択できます。
-     
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-GA サービスでは非構造化データ セットをサポートしていません。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-1. Generate Answer API に対する応答を評価するとき非構造化データ ソースを含める場合は、*includeUnstructuredResources* パラメーター を true に設定します。逆の場合も同じです。
-
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" -H "Content-type: application/json" -d "{'question': 'what is Surface Headphones 2+ priced at?', 'includeUnstructuredSources':true,'top': 2}"
-    ```
-
-2. 応答には、回答のソースが含まれます。 
-    
-    ```json
-    {
-       "answers": [{
-               "questions": [],
-               "answer": "Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.\n\nMicrosoft Modern USB and Wireless Headsets:\n\nCertified for Microsoft Teams, these Microsoft Modern headsets enable greater focus and call privacy, especially in shared workspaces.",
-               "score": 82.11,
-               "id": 0,
-               "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
-               "isDocumentText": false,
-               "metadata": [],
-               "answerSpan": {
-                   "text": "$299.99 USD",
-                   "score": 0.0,
-                   "startIndex": 34,
-                   "endIndex": 45
-               }
-           },
-           {
-               "questions": [],
-               "answer": "Now certified for Microsoft Teams with the included dongle, Surface Headphones 2+ provides an even more robust meeting experience with on‐ear Teams controls and improved remote calling. Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.",
-               "score": 81.95,
-               "id": 0,
-               "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
-               "isDocumentText": false,
-               "metadata": []
-           }
-       ],
-       "activeLearningEnabled": true
-   }
-    ```
----
+QnA の抽出に使用できない非構造化ドキュメントを追加する機能がサポートされるようになりました。 クエリへの応答をフェッチするときに、GenerateAnswer API に非構造化データ セットを含めるか除外するかを選択できます。 GA サービスでは非構造化データ セットはサポートされていません。これは、カスタムの質問と回答にのみ含まれています。

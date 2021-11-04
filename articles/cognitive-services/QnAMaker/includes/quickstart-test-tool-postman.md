@@ -6,14 +6,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: include
-ms.custom: include file
-ms.date: 11/09/2020
-ms.openlocfilehash: d1b0877bf93b18aa60903388a10419833fe6cf35
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.custom: include file, ignite-fall-2021
+ms.date: 09/13/2021
+ms.openlocfilehash: cc9b4dc8d6471699c72a24017ef855caf3470971
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129300465"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043739"
 ---
 この Postman ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -23,15 +23,7 @@ ms.locfileid: "129300465"
     * 最新の [**Postman**](https://www.getpostman.com/)。
     * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-
 > * Azure portal で作成された [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-> * Azure portal でカスタム質問と回答機能が有効になっている [Text Analytics リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、Text Analytics リソース名を覚えておいてください。
-
----
 
    * メタデータとおしゃべりで構成され、質問と回答を持つトレーニングおよび発行済みのナレッジ ベース (前の[クイックスタート](../Quickstarts/add-question-metadata-portal.md)で作成)。
 
@@ -40,8 +32,6 @@ ms.locfileid: "129300465"
 > ナレッジ ベースからの質問への回答を生成する準備ができたら、ナレッジ ベースを[トレーニング](../Quickstarts/create-publish-knowledge-base.md#save-and-train)して[発行](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)する必要があります。 ナレッジ ベースが発行されると、 **[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 **[Postman]** タブには、回答の生成に必要な設定が表示されます。
 
 ## <a name="set-up-postman-for-requests"></a>要求に対して Postman を設定する
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 このクイックスタートでは、Postman の **POST** 要求と同じ設定を使用し、照会する内容に基づいて、サービスに送信される本文の JSON を POST するように構成します。
 
@@ -58,25 +48,6 @@ ms.locfileid: "129300465"
     ||`{"question":"<Your question>"}`|JSON オブジェクトとしての POST 要求の本文。 この値は、クエリ実行の目的に応じて、次の各セクションで異なります。|
 
 1. Postman を開き、発行済みのナレッジ ベース設定を使用して、新しい基本的な **POST** 要求を作成します。 以降のセクションでは、POST 本文の JSON を変更して、ナレッジ ベースに対するクエリを変更します。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-このクイックスタートでは、Postman の **POST** 要求と同じ設定を使用し、照会する内容に基づいて、サービスに送信される本文の JSON を POST するように構成します。
-
-この手順を使用して Postman を構成し、次に、後続の各セクションを読んで POST 本文の JSON を構成します。
-
-1. ナレッジ ベースの **[Settings]\(設定\)** ページで **[Postman]** タブを選択し、ナレッジ ベースからの回答を生成するために使用される構成を表示します。 Postman で使用する次の情報をコピーします。
-
-    |名前|設定|目的と値|
-    |--|--|--|
-    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|これは、URL の HTTP メソッドとルートです。|
-    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|これは URL のホストです。 Host と Post の値を連結して、完全な generateAnswer URL を取得します。|
-    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|要求を承認するためのヘッダー値。 |
-    |`Content-type`|`application/json`|コンテンツのヘッダー値。|
-    ||`{"question":"<Your question>"}`|JSON オブジェクトとしての POST 要求の本文。 この値は、クエリ実行の目的に応じて、次の各セクションで異なります。|
-
-1. Postman を開き、発行済みのナレッジ ベース設定を使用して、新しい基本的な **POST** 要求を作成します。 以降のセクションでは、POST 本文の JSON を変更して、ナレッジ ベースに対するクエリを変更します。
----
 
 ## <a name="use-metadata-to-filter-answer"></a>メタデータを使用して回答をフィルター処理する
 
@@ -355,7 +326,7 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
     }
     ```
 
-    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータ プロパティも返されました。
+    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータ プロパティも返されました。
 
 ## <a name="use-threshold-and-default-answer"></a>しきい値と既定の回答を使用する
 
@@ -439,51 +410,4 @@ JSON 応答では、発行されたナレッジ ベース クエリと同じス�
     ```
 ## <a name="use-unstructured-data-sources"></a>非構造化データ ソースを使用します。
     
-質問と回答の抽出に使用できない非構造化ドキュメントを追加する機能がサポートされるようになりました。ユーザーは、クエリに対する応答をフェッチするとき GenerateAnswer API に非構造化データセットを含めるか除外するかを選択できます。
-     
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
-GA サービスでは非構造化データ セットをサポートしていません。
-
-# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
-
-1. Generate Answer API に対する応答を評価するとき非構造化データ ソースを含める場合は、*includeUnstructuredResources* パラメーター を true に設定します。逆の場合も同じです。
-   ```json
-    {
-       "question": "what is Surface Headphones 2+ priced at?",
-       "includeUnstructuredSources":true,
-       "top": 2
-    }
-    ```
-2. 応答には、回答のソースが含まれます。 
-    ```json
-       {
-     "answers": [
-       {
-         "questions": [],
-         "answer": "Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.\n\nMicrosoft Modern USB and Wireless Headsets:\n\nCertified for Microsoft Teams, these Microsoft Modern headsets enable greater focus and call privacy, especially in shared workspaces.",
-         "score": 82.11,
-         "id": 0,
-         "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
-         "isDocumentText": false,
-         "metadata": [],
-         "answerSpan": {
-           "text": "$299.99 USD",
-           "score": 0.0,
-           "startIndex": 34,
-           "endIndex": 45
-         }
-       },
-       {
-         "questions": [],
-         "answer": "Now certified for Microsoft Teams with the included dongle, Surface Headphones 2+ provides an even more robust meeting experience with on‐ear Teams controls and improved remote calling. Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.",
-         "score": 81.95,
-         "id": 0,
-         "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
-         "isDocumentText": false,
-         "metadata": []
-       }
-     ],
-     "activeLearningEnabled": true
-   }
-    ```
----
+QnA の抽出に使用できない非構造化ドキュメントを追加する機能がサポートされるようになりました。 クエリへの応答をフェッチするときに、GenerateAnswer API に非構造化データ セットを含めるか除外するかを選択できます。 GA サービスでは非構造化データ セットをサポートしていません。 これは、カスタムの質問と回答でのみサポートされます。
