@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 0b6d64167451b3c7363d6bd80c5fafcd67b6fc5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b6cdd8bcc9bf3a472cda990a2b4013bdb7a709f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740183"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060746"
 ---
 # <a name="customize-alert-details-in-azure-sentinel"></a>Azure Sentinel でアラートの詳細をカスタマイズする 
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >

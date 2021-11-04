@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: hasshah
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ab2fb283428f494ca52d769622df4b7a7a7ad1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: d1fd3bd30b0778065101fb1d223c63421b5e8d67
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116683"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043682"
 ---
 # <a name="keyword-recognition"></a>キーワード認識
 

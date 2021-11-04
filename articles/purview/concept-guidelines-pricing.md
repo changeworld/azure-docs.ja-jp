@@ -6,12 +6,13 @@ ms.author: athenadsouza
 ms.service: purview
 ms.topic: conceptual
 ms.date: 10/03/2021
-ms.openlocfilehash: 393414ad1d2c50f2a3bb76ce045614e19b50f928
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ee7364637e79b2603c6eca31d986dbcc3e153db3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534051"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084314"
 ---
 # <a name="azure-purview-pricing"></a>Azure Purview の価格   
 
@@ -123,7 +124,7 @@ Azure Purview の価格に影響する考慮すべき間接コストとして、
 - [セルフホステッド統合ランタイムに関するコスト](./manage-integration-runtimes.md) 
     - セルフホステッド統合ランタイムにはインフラストラクチャが必要なため、追加コストがかかります
     - Azure Purview インジェスト プライベート エンドポイントがデプロイされているのと同じ仮想ネットワーク内にセルフホステッド統合ランタイム (SHIR) をデプロイして登録する必要があります
-    - [スキャンのために必要な追加のメモリ要件](./register-scan-sapecc-source.md#creating-and-running-a-scan)
+    - [スキャンのために必要な追加のメモリ要件](./register-scan-sapecc-source.md#create-and-run-scan)
         - SAP などの特定のデータ ソースには、スキャンのために SHIR マシンに追加のメモリが必要です
 
 

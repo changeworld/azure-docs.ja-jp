@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/17/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 388f7b0d3ed26c10ad91e17ccbbeabf705b3894c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bca951ee50a503aa91a0dec680a787a5c2f95ad8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560699"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083871"
 ---
 # <a name="azure-sentinel-network-session-normalization-schema-reference-public-preview"></a>Azure Sentinel ネットワーク セッション正規化スキーマ リファレンス (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ネットワーク セッション正規化スキーマは、IP ネットワークのアクティビティを記述するために使用されます。 これには、ネットワーク接続とネットワーク セッションが含まれます。 そのようなイベントは、オペレーティング システム、ルーター、ファイアウォール、侵入防止システム、Web セキュリティ ゲートウェイなどによって報告されます。
 
@@ -146,7 +148,7 @@ Azure Sentinel には、以下に示す組み込みの製品固有のネット�
 次のフィールドは、レコードごとに Log Analytics によって生成され、[カスタム コネクタを作成する](create-custom-connector.md)ときにオーバーライドできます。
 
 
-| フィールド | Type | 考察 (Discussion) |
+| フィールド | 型 | 考察 (Discussion) |
 |-------|------|------------|
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。 |
 | **\_ResourceId** | guid | レポート デバイスまたはサービスの Azure リソース ID、または Syslog、CEF、または WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
@@ -161,7 +163,7 @@ Azure Sentinel には、以下に示す組み込みの製品固有のネット�
 
 イベント フィールドは、すべてのスキーマに共通であり、アクティビティ自体とレポート デバイスを記述します。
 
-| フィールド | クラス | Type | 説明 |
+| フィールド | クラス | 型 | 説明 |
 |-------|-------|------|-------------|
 | **EventMessage** | オプション | String | レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。 |
 | **EventCount** | Mandatory | Integer | レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>**注**: Netflow ソースでは集計がサポートされており、**EventCount** フィールドには Netflow の **FLOWS** フィールドの値が設定されている必要があります。 他のソースの場合は、通常、この値は `1` に設定されます。 |
@@ -175,14 +177,14 @@ Azure Sentinel には、以下に示す組み込みの製品固有のネット�
 | **EventSeverity** | Mandatory | Enumerated | 検出された脅威または警告を表す場合は、イベントの重大度。 指定できる値は、`Informational`、`Low`、`Medium`、`High` です。 <br><br>イベントが脅威を表していない場合は、値 `Informational` を使用します。<br><br>**注**: 値は、異なる用語を使用してソース レコードに提供されている場合があり、これらの値に正規化する必要があります。 元の値は [EventOriginalSeverity](#eventoriginalseverity) フィールドに格納します。 |
 | <a name="eventoriginalseverity"></a>**EventOriginalSeverity** | オプション | String | ソース レコードで提供された元の重大度の値。 |
 | **EventOriginalUid** | オプション | String | 元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b` |
-| **EventOriginalType** | オプション | String | ソースによって提供されている場合、元のイベントの種類または ID。 <br><br>例: `5031` |
+| **EventOriginalType** | オプション | String | 元のイベントの種類または ID (ソースによって提供されている場合)。 <br><br>例: `5031` |
 | <a name="eventproduct"></a>**EventProduct** | Mandatory | String | イベントを生成している製品。<br><br>例: `Sysmon`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。 |
 | **EventProductVersion** | オプション | String | イベントを生成している製品のバージョン。<br><br>例: `12.1` |
 | **EventVendor** | Mandatory | String | イベントを生成している製品のベンダー。<br><br>例: `Microsoft`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。 |
 | **EventSchema** | Mandatory | String | スキーマの名前です。 ここに記載されているスキーマの名前は `NetworkSession` です。 |
 | **EventSchemaVersion** | Mandatory | String | スキーマのバージョン。 ここに記載されているスキーマのバージョンは `0.2` です。 |
 | **EventReportUrl** | オプション | String | あるリソースのイベントに指定された、そのイベントに関する追加情報を提供する URL。 |
-| **Dvc** | エイリアス | String | レポートまたは中間デバイスの一意識別子。<br><br>例: `ContosoDc.Contoso.Azure`<br><br>このフィールドは、[DvcFQDN](#dvcfqdn)、[DvcId](#dvcid)、[DvcHostname](#dvchostname)、または [DvcIpAddr](#dvcipaddr) フィールドのエイリアスである可能性があります。 明確なデバイスがないクラウド ソースの場合は、[EventProduct](#eventproduct) フィールドと同じ値を使用します。 |
+| **Dvc** | エイリアス | String | レポートまたは中間デバイスの一意識別子。<br><br>例: `ContosoDc.Contoso.Azure`<br><br>このフィールドは、[DvcFQDN](#dvcfqdn)、[DvcId](#dvcid)、[DvcHostname](#dvchostname)、または [DvcIpAddr](#dvcipaddr) フィールドの別名である可能性があります。 明確なデバイスがないクラウド ソースの場合は、[EventProduct](#eventproduct) フィールドと同じ値を使用します。 |
 | <a name="dvcipaddr"></a>**DvcIpAddr** | 推奨 | IP アドレス | レポートまたは中間デバイスの IP アドレス。<br><br>例: `2001:db8::ff00:42:8329` |
 | <a name="dvchostname"></a>**DvcHostname** | Mandatory | String | ドメイン情報を除外した、レポートまたは中間デバイスのホスト名。 デバイス名を使用できない場合は、関連する IP アドレスをこのフィールドに格納します。<br><br>例: `DESKTOP-1282V4D` |
 | <a name="dvcdomain"></a>**DvcDomain** | 推奨 | String | レポートまたは中間デバイスのドメイン。<br><br>例: `Contoso` |
@@ -197,7 +199,7 @@ Azure Sentinel には、以下に示す組み込みの製品固有のネット�
 
 次のフィールドは、すべてのネットワーク セッションのアクティビティ ログに共通です。
 
-| フィールド | クラス | Type | 説明 |
+| フィールド | クラス | 型 | 説明 |
 |-------|-------|------|-------------|
 |<a name="dstipaddr"></a> **DstIpAddr** | 推奨 | IP アドレス | 接続またはセッションのターゲットの IP アドレス。 <br><br>例: `2001:db8::ff00:42:8329`<br><br>**注**: [DstHostname](#dsthostname) が指定されている場合、この値は必須です。 |
 | <a name="dstportnumber"></a>**DstPortNumber** | オプション | Integer | 送信先 IP ポート。<br><br>例: `443` |
@@ -279,7 +281,7 @@ Azure Sentinel には、以下に示す組み込みの製品固有のネット�
 
 次のフィールドは、ネットワーク セッションを中継するファイアウォールやプロキシなどの中間デバイスに関する情報がレコードに含まれる場合に便利です。
 
-| フィールド | クラス | Type | 説明 |
+| フィールド | クラス | 型 | 説明 |
 | --- | --- | --- | --- |
 | **DstNatIpAddr** | オプション | IP アドレス | 中間 NAT デバイスによって報告された場合は、その NAT デバイスがソースとの通信に使用する IP アドレス。<br><br>例: `2::1` |
 | **DstNatPortNumber** | オプション | Integer | 中間 NAT デバイスによって報告された場合は、その NAT デバイスがソースとの通信に使用するポート。<br><br>例: `443` |
@@ -293,7 +295,7 @@ Azure Sentinel には、以下に示す組み込みの製品固有のネット�
 
 HTTP セッションは、HTTP プロトコルを使用するネットワーク セッションです。 このようなセッションは、多くの場合、Web サーバー、Web プロキシ、Web セキュリティ ゲートウェイによって報告されます。 HTTP セッションに固有の追加フィールドを次に示します。
 
-| フィールド | クラス | Type | 説明 |
+| フィールド | クラス | 型 | 説明 |
 | --- | --- | --- | --- |
 | **Url** | 推奨 | String | HTTP/HTTPS ネットワーク セッションの場合、パラメーターを含む完全な HTTP 要求 URL。 イベントが HTTP セッションを表す場合、このフィールドは必須です。<br><br>例: `https://contoso.com/fo/?k=v&amp;q=u#f` |
 | **UrlCategory** | オプション | String | URL または URL のドメイン部分の定義されたグループ。 カテゴリは一般に Web セキュリティ ゲートウェイによって提供され、URL が示すサイトの内容に基づきます。<br><br>例: 検索エンジン、成人向け、ニュース、広告、パーク ドメイン。 |
@@ -328,7 +330,7 @@ HTTP セッションは、HTTP プロトコルを使用するネットワーク 
 
 次のフィールドは、ファイアウォール、IPS、Web セキュリティ ゲートウェイなどのセキュリティ デバイスによって実行された検査を表すために使用されます。
 
-| フィールド | クラス | Type | 説明 |
+| フィールド | クラス | 型 | 説明 |
 | --- | --- | --- | --- |
 | **NetworkRuleName** | オプション | String | [DvcAction](#dvcaction) が決定されたときに使用されたルールの名前または ID。<br><br> 例: `AnyAnyDrop` |
 | **NetworkRuleNumber** | オプション | Integer | [DvcAction](#dvcaction) が決定されたときに使用されたルールの番号。<br><br>例: `23` |
@@ -356,4 +358,3 @@ HTTP セッションは、HTTP プロトコルを使用するネットワーク 
 - [Azure Sentinel DNS 正規化スキーマ リファレンス](dns-normalization-schema.md)
 - [Azure Sentinel プロセス イベント正規化スキーマ リファレンス](process-events-normalization-schema.md)
 - [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)
-

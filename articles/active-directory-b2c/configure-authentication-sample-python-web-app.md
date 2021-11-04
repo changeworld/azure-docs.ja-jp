@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使ってサンプル Python Web アプリケーションで認証を構成する
 description: この記事では、Azure Active Directory B2C を使用して Python Web アプリケーションでサインインしたりユーザーをサインアップしたりする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 1b315343b524dc165fb6464728a5a9700d4e22c8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1466e62e50cac9d24616c9662f73ad23f3f6eea7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572637"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007919"
 ---
 # <a name="configure-authentication-in-a-sample-python-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使ってサンプル Python Web アプリケーションで認証を構成する
 

@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 07/28/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 234de4f2f93a9c35126c0f7be7d8feeb3a244044
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: dabfc84a21e7ded8ce3d3e338ffbb03395ef88db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681497"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009056"
 ---
 # <a name="azure-sentinel-sap-solution-security-content-reference-public-preview"></a>Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、[Azure Sentinel SAP ソリューション](sap-deploy-solution.md#deploy-sap-security-content)で使用できるセキュリティ コンテンツについて詳しく説明します。
 

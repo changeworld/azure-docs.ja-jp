@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: yelevin
-ms.openlocfilehash: d6afd8e1d4c70d818257007993aedfe3a48ce4f4
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e7fa9ec18c39ff3c58c45dde445f4b10fbd198fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129752115"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009455"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Azure Sentinel のプレイブックを使用して脅威への対応を自動化する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel プレイブックの概要と、それを使ってセキュリティ オーケストレーション、自動化、および対応 (SOAR: Security Orchestration, Automation and Response) 操作を実装し、時間とリソースを節約しながらより良い結果を実現する方法について説明します。
 

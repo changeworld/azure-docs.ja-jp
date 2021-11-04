@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: pafarley
-ms.openlocfilehash: 73076c141f28bc22450c87491053130ace6b5793
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e45c5badecfe97cb0be75e3e30f9442bf71beb69
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540759"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080576"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech モデルのトレーニングとデプロイ
 
@@ -27,8 +28,8 @@ ms.locfileid: "123540759"
 
 | 使用事例 | データ型 |
 | -------- | --------- |
-| 医療用語や IT 用語のような業界固有の語彙や文法に対する認識精度を向上させる。 | 関連テキスト (文/発話) |
-| 製品名や頭字語のような、発音が標準ではない単語または用語の表音および表示形式を定義する。 | 関連テキスト (発音) |
+| 医療用語や IT 用語のような業界固有の語彙や文法に対する認識精度を向上させる。 | プレーンテキストまたは構造化テキスト データ |
+| 製品名や頭字語のような、発音が標準ではない単語または用語の表音および表示形式を定義する。 | 構造化テキスト内の発音データまたは音声発音 |
 | 読み上げのスタイル、アクセント、または特定の背景ノイズの認識精度を向上させる | "オーディオ + 人間" とラベルが付いたトランスクリプト |
 
 ## <a name="train-and-evaluate-a-model"></a>モデルのトレーニングと評価

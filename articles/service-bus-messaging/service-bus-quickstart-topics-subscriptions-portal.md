@@ -5,14 +5,13 @@ author: spelluru
 ms.author: spelluru
 ms.date: 09/15/2021
 ms.topic: quickstart
-ms.custom:
-- mode-portal
-ms.openlocfilehash: f4a4e0ab9803ea12922e264888930c4f199bfefb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: mode-portal
+ms.openlocfilehash: c76c152c48500de4cf6b9ab381fa2fd5ccbbb848
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128565727"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083633"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する
 このクイック スタートでは、Azure portal を使用して Service Bus トピックを作成した後、そのトピックのサブスクリプションを作成します。 

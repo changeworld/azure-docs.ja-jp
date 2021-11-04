@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 6953ffb5542e2a0d8acb9e404b2df0f923a08145
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 46c629ead4f86d71974ba26426177ca2d9093609
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744019"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032432"
 ---
-# <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra-preview"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問 (プレビュー)
+# <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問
 
 この記事では、Azure Managed Instance for Apache Cassandra についてよく寄せられる質問について取り上げます。 マネージド インスタンスを使用すべき場面とその利点、スループットの制限、サポート対象のリージョン、構成の詳細について説明します。
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="general-faq"></a>一般的な FAQ
 
@@ -40,7 +36,7 @@ Azure Managed Instance for Apache Cassandra は、Azure Cosmos DB チームに�
 
 #### <a name="can-i-deploy-azure-managed-instance-for-apache-cassandra-in-any-region"></a>Azure Managed Instance for Apache Cassandra はどのリージョンにでもデプロイできますか?
 
-プレビュー期間中、マネージド インスタンスを利用できるのは限られたリージョンのみとなります。
+現在、マネージド インスタンスは限られた数のリージョンで使用できます。
 
 ### <a name="what-are-the-storage-and-throughput-limits-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra のストレージとスループットの制限を教えてください
 

@@ -1,12 +1,11 @@
 ---
 title: 一般的に使用される Azure Sentinel ブック | Microsoft Docs
-description: 人気のある組み込みの Azure Sentinel リソースを使用できるように、最も一般的に使用されるブックについて説明します。
+description: 追加設定なしで利用できる、人気の Azure Sentinel リソースを使用できるように、最も一般的に使用されるブックについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: 76800b0f7a90dacd1447b87fdc1f1d23300873ec
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a8e96969dc4edd5a79e1ca85ac32529c10b8a343
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784396"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019554"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>一般的に使用される Azure Sentinel ブック
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 次の表は、最も一般的に使用される組み込みの Azure Sentinel ブックを示しています。
 
@@ -31,7 +33,7 @@ ms.locfileid: "124784396"
 > [!TIP]
 > 取り込みしているデータに関連しているブックをデプロイすることをお勧めします。 ブックによって、収集したデータに基づいたより広範な監視と調査が可能になります。
 >
-> 詳細については、「[データ ソースの接続](connect-data-sources.md)」と「[Azure Sentinel ソリューションの検出とデプロイ](sentinel-solutions-deploy.md)」を参照してください。
+> 詳細については、「[データ ソースの接続](connect-data-sources.md)」と「[Azure Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする](sentinel-solutions-deploy.md)」を参照してください。
 >
 
 |ブック名  |説明  |

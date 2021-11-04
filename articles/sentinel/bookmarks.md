@@ -8,16 +8,18 @@ ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 10/24/2019
-ms.openlocfilehash: 0fecd1fca22b003892817f8fd33db88b1eea6127
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 661a02a15b7acb53ab496c1f5fcf9a9ab8c04205
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729764"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060765"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel でハンティング中にデータを追跡する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 脅威検出では、通常、山のようなログ データを調べて、悪意のある動作の証拠を探す必要があります。 このプロセス中に調査担当者は、可能性のある仮説の実証と、侵害の詳細の把握の一環として、記憶し、再考し、分析する必要のあるイベントを探します。
 

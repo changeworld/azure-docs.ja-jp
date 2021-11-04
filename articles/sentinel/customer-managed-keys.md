@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2021
 ms.author: yelevin
-ms.openlocfilehash: d9f6ce8b85aae451fbab318b85f50fb0da7919a6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 17ff2b2910b81c29f88f70e9a3de31433f965668
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541299"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064565"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 この記事では、Azure Sentinel 用の[カスタマー マネージド キー (CMK)](../azure-monitor/logs/customer-managed-keys.md) を構成するための背景情報と手順について説明します。 CMK では、Azure Sentinel に格納されているすべてのデータ (関連するすべてのストレージ リソースで Microsoft によって既に暗号化されている) をさらに保護することができます。このために使用する暗号化キーは、自ら作成して所有し、[Azure Key Vault](../key-vault/general/overview.md) に格納しておきます。
 

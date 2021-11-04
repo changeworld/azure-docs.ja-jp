@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/24/2021
-ms.openlocfilehash: 9d425ce352472755729b34b750a19ce0c3e48c0c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 01d3832d8c643a6870239534377cd282feef01f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362187"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082476"
 ---
 # <a name="migrate-amazon-rds-for-mysql-to-azure-database-for-mysql-using-data-in-replication"></a>データイン レプリケーションを使用して Amazon RDS for MySQL を Azure Database for MySQL に移行する
 
@@ -82,7 +82,7 @@ MySQL データベースを Azure Database for MySQL に移行するには、MyS
 
 - ターゲット Azure Database for MySQL サーバーがポート 3306 経由でソース Amazon RDS for MySQL サーバーに接続できることを確認します。
 - ソース Amazon RDS for MySQL サーバーのポート 3306 で受信と送信の両方のトラフィックが許可されていることを確認します。
-- [Azure ExpressRoute](../expressroute/expressroute-introduction.md) または [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) のどちらかを使用して、ソース サーバーへの[サイト間接続](../vpn-gateway/tutorial-site-to-site-portal.md)が提供されていることを確認します。 仮想ネットワークの作成の詳細については、[Azure Virtual Network のドキュメント](/azure/virtual-network/)を参照してください。 詳細な手順については、クイックスタートの記事も参照してください。
+- [Azure ExpressRoute](../expressroute/expressroute-introduction.md) または [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) のどちらかを使用して、ソース サーバーへの[サイト間接続](../vpn-gateway/tutorial-site-to-site-portal.md)が提供されていることを確認します。 仮想ネットワークの作成の詳細については、[Azure Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。 詳細な手順については、クイックスタートの記事も参照してください。
 - ターゲット Azure Database for MySQL サーバーの IP アドレスを許可するようにソース データベース サーバーのネットワーク セキュリティ グループを構成します。
 
 > [!IMPORTANT]

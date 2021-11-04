@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 6e816919d41dbae62c33028c5d35c996654d7f26
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 39ca13ebaea9469dbbfa21cc8ded20b36dc2ed3d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258309"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050662"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
@@ -143,7 +143,7 @@ Azure portal では、アプリケーションの **[認証]** ページで登�
 
 ASP.NET では、アプリケーションは [Web.Config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) ファイルの 12 から 15 行目で構成されます。
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   For more information on how to configure your ASP.NET application, visit
@@ -249,7 +249,7 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
 >
 > Visual Studio 内で現在の既定 ASP.NET Core Web プロジェクトを使用するか、`dotnet new mvc --auth SingleOrg` または `dotnet new webapp --auth SingleOrg` を使用してプロジェクトを開始すると、次のようなコードが表示されます。
 >
->```c#
+> ```c#
 >  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
 >          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
 > ```
@@ -372,7 +372,6 @@ from flask import Flask, render_template, session, request, redirect, url_for
 from flask_session import Session  # https://pythonhosted.org/Flask-Session
 import msal
 import app_config
-
 
 app = Flask(__name__)
 app.config.from_object(app_config)

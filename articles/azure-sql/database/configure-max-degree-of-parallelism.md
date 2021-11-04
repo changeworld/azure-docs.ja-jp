@@ -14,12 +14,12 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.openlocfilehash: 774114a27e5bcb23bc3cdddc08f5d42b3c43bb36
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 64eaa7d70d32ce88a98a12a38a5c59e13de58059
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132037"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020884"
 ---
 # <a name="configure-the-max-degree-of-parallelism-maxdop-in-azure-sql-database"></a>Azure SQL Database での並列処理の最大限度 (MAXDOP) の構成
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -140,7 +140,7 @@ $params = @{
     'username' = $serveradminLogin
     'password' = $serveradminPassword
     'outputSqlErrors' = $true
-    'query' = 'ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = ' + $desiredMAXDOP + ';
+    'query' = 'ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = ' + $desiredMAXDOP_primary + ';
     ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = ' + $desiredMAXDOP_secondary_readonly + ';
     SELECT [value], value_for_secondary FROM sys.database_scoped_configurations WHERE [name] = ''MAXDOP'';'
   }

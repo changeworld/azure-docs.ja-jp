@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: c5f64fa958d8f4e4750518ed0ff4eaa691f9cbd8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 823c01dc3c6f6856bfc8cac2249da6bc1ddc411f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786904"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054326"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
@@ -133,7 +133,7 @@ URL スキームでは、`BundleId` によってアプリが一意に識別さ�
 > [!NOTE]
 > この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
 
-```XML
+```xml
  <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -155,7 +155,7 @@ MSAL では、`–canOpenURL:` を使用してブローカーがデバイスに�
 
 次の例のように、*Info.plist* ファイルの `LSApplicationQueriesSchemes` セクションに `msauthv2` を追加します。
 
-```XML
+```xml
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>

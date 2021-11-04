@@ -5,12 +5,13 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 53baa580d2f2c68fa32f38bddb07b5d9e362d190
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 875987a881e8e370d99530bfa975a73964d7d80c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787751"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080659"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>インポートされたドキュメントおよび URL の形式のガイドライン
 
@@ -69,7 +70,7 @@ QnA Maker では、次のような視覚的な手がかりに基づいて、フ�
  現在、この機能は PDF および DOC ファイル形式のドキュメントのアップロードでのみ使用できます。
 
 > [!IMPORTANT]
-> 非構造化ファイルまたはコンテンツのサポートは、カスタム質問と回答 (プレビュー) でのみご利用いただけます
+> 非構造化ファイルまたはコンテンツのサポートは、質問応答でのみご利用いただけます。
 
 ### <a name="structured-qna-document"></a>構造化 QnA ドキュメント
 

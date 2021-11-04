@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/04/2021
 ms.author: bagol
-ms.openlocfilehash: f8ad30e833e7b400c7d308b1f99dd457af438fa0
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: aa633024754c82e1a9879f79c9410e6948405eeb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620924"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004011"
 ---
 # <a name="azure-sentinel-dhcp-normalization-schema-reference-public-preview"></a>Azure Sentinel の DHCP 正規化スキーマ リファレンス (パブリック プレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 DHCP 情報モデルは、DHCP サーバーによって報告されるイベントを記述するために使用され、ソースに依存しない分析を有効にするために Azure Sentinel によって使用されます。
 
@@ -80,7 +82,7 @@ OSSEM には、ASIM DHCP スキーマに相当する DHCP スキーマがあり�
 | <a name="eventresultdetails"></a>**EventResultDetails** | エイリアス | | [EventResult](#eventresult) フィールドでレポートされた結果の理由または詳細。 <br><Br> 指定できる値は、`Exhausted`、`Quarantined`、`Denied` です。 <br><br>例: `Exhausted` |
 | **EventOriginalResultDetails**    | オプション    | String     |  ソースによって提供されている場合、[EventResultDetails](#eventresultdetails) の元のレコードに提供された値。 Windows の DHCP サーバー ログの場合、ここに QResult フィールド値を格納します。 |
 | **EventOriginalUid** | オプション | String | ソースによって提供されている場合、元のレコードの一意の ID。 |
-| **EventOriginalType**   | オプション    | String  |  ソースによって提供されている場合、元のイベントの種類または ID。<br><br>例: `DNS Assign Failed` |
+| **EventOriginalType**   | オプション    | String  |  元のイベントの種類または ID (ソースによって提供されている場合)。<br><br>例: `DNS Assign Failed` |
 | <a name ="eventproduct"></a>**EventProduct** | Mandatory | String | イベントを生成している製品。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。 <br><br>例: `DHCP Server` |
 | **EventProductVersion** | オプション | String | イベントを生成している製品のバージョン。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。 <br><br>例: `12.1` |
 | <a name="eventvendor"></a>**EventVendor** | Mandatory | String | イベントを生成している製品のベンダー。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。<br><br>例: `Microsoft`|

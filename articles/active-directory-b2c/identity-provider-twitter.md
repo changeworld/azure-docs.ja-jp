@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11cc9a7e58001b515e3332717bc4ccdc4f9832f6
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: dc7e2a22e07f131019e701b54ca24b978454b9ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130227791"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007155"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
@@ -35,7 +35,7 @@ ms.locfileid: "130227791"
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-Azure AD B2C で Twitter アカウントを持つユーザーのサインインを有効にするには、Twitter アプリケーションを作成する必要があります。 まだ Twitter アカウントを持っていない場合は、[https://twitter.com/signup](https://twitter.com/signup) でサインアップできます。 また、[開発者アカウントの申請](https://developer.twitter.com/en/apply/user.html)も必要です。 詳細については、[アクセスの申請](https://developer.twitter.com/en/apply-for-access)に関するページを参照してください。
+Azure AD B2C で Twitter アカウントを持つユーザーのサインインを有効にするには、Twitter アプリケーションを作成する必要があります。 まだ Twitter アカウントを持っていない場合は、[`https://twitter.com/signup`](https://twitter.com/signup) でサインアップできます。 また、[開発者アカウントの申請](https://developer.twitter.com/en/apply/user.html)も必要です。 詳細については、[アクセスの申請](https://developer.twitter.com/en/apply-for-access)に関するページを参照してください。
 
 1. Twitter アカウント資格情報を使用して [Twitter の開発者ポータル](https://developer.twitter.com/portal/projects-and-apps)にサインインします。
 1. **[スタンドアロン アプリ]** で、 **[+ アプリの作成]** を選択します。

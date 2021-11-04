@@ -9,12 +9,12 @@ ms.date: 10/22/2021
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: cb827e3603bb00e1c1aa435847dc58fe03d0a389
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ae9dd04f2bacdbe6a45b11e3d9c535b01953c90b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255488"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065344"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -277,6 +277,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 次の手順で、自動更新機能を無効/有効にすることができます。
 
 [シングル ノード ゲートウェイ]
+
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
 2. *C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
@@ -284,20 +285,26 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
+
 4. オンに戻すには、次のコマンドを実行します。
 
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
-   [高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
+[高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
+
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
+
 2. *C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* フォルダーに切り替えます。
+
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
     高可用性機能を備えたゲートウェイについては、別途 AuthKey パラメーターが必要となります。
+
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
+
 4. オンに戻すには、次のコマンドを実行します。
 
     ```powershell
@@ -305,6 +312,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
     ```
 
 ## <a name="configuration-manager"></a>構成マネージャー
+
 ゲートウェイをインストールした後、次のどれかの方法で Data Management Gateway 構成マネージャーを起動できます。
 
 1. **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。
@@ -452,7 +460,7 @@ Data Factory エディターで資格情報を暗号化するには、以下の�
    4. **[OK]** をクリックすると、資格情報が暗号化され、ダイアログ ボックスが閉じます。
 8. これで、**connectionString** 内に **encryptedCredential** プロパティが表示されます。
 
-    ```JSON
+    ```json
     {
         "name": "SqlServerLinkedService",
         "properties": {
@@ -465,7 +473,8 @@ Data Factory エディターで資格情報を暗号化するには、以下の�
         }
     }
     ```
-   ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。 アプリケーションがゲートウェイ コンピューターに到達できない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
+
+    ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。 アプリケーションがゲートウェイ コンピューターに到達できない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
 
 **資格情報の設定** アプリケーションを使用すると、ポータルでは、ゲートウェイ コンピューターの **Gateway 構成マネージャー** の **[証明書]** タブで指定された証明書を使用して、資格情報が暗号化されます。
 
@@ -524,10 +533,11 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     ```
 2. **Get-AzDataFactoryGateway** コマンドレットを使用して、データ ファクトリ内のゲートウェイの一覧を取得できます。 **[状態]** に **[オンライン]** と表示されている場合、ゲートウェイをいつでも使用できることを意味します。
 
-    ```powershell        
+    ```powershell
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-   **Remove-AzDataFactoryGateway** コマンドレットを使用して、ゲートウェイを削除できます。また、**Set-AzDataFactoryGateway** コマンドレットを使用して、ゲートウェイの記述を更新できます。 これらのコマンドレットの文法やその他の詳細については「Data Factory Cmdlet Reference (Data Factory コマンドレット リファレンス)」を参照してください。  
+
+    **Remove-AzDataFactoryGateway** コマンドレットを使用して、ゲートウェイを削除できます。また、**Set-AzDataFactoryGateway** コマンドレットを使用して、ゲートウェイの記述を更新できます。 これらのコマンドレットの文法やその他の詳細については「Data Factory Cmdlet Reference (Data Factory コマンドレット リファレンス)」を参照してください。  
 
 ### <a name="list-gateways-using-powershell"></a>PowerShell を使用したゲートウェイの一覧表示
 

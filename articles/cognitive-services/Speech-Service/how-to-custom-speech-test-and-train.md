@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.author: pafarley
-ms.openlocfilehash: fa62d0e7c24c6a63c63f082333823b5e74a24cf0
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d73f17d3e3eb8d5511dcb98c6a074a73120eaf06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132283"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080614"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -51,12 +52,13 @@ ms.locfileid: "130132283"
 | [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-trainingtesting) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [プレーンテキスト](#plain-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
+| [構造化テキスト](#structured-text-data-for-training-public-preview) (パブリック プレビュー) | いいえ | 該当なし | はい | 最大 2000 の項目、最大 50,000 のトレーニング文を含む最大 20 個のクラス |
 | [発音](#pronunciation-data-for-training) | いいえ | 該当なし | はい | 1 KB - 1 MB の発音テキスト |
 
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 > [!TIP]
-> 新しいモデルをトレーニングするときには、プレーン テキストから開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
+> 新しいモデルをトレーニングする場合は、プレーンテキスト データまたは構造化テキスト データから始めます。 このデータによって、特殊な用語や語句の認識が改善されます。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
 
 > [!NOTE]
 > すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。 基本モデルでオーディオ データを使用したトレーニングがサポートされている場合でも、サービスによってオーディオの一部しか使用されないことがあります。 その場合も、すべてのトランスクリプトが使用されます。
@@ -66,6 +68,11 @@ ms.locfileid: "130132283"
 > 上の段落で説明されている問題が発生した場合、データセット内のオーディオの量を減らすか、完全に削除してテキストのみを残すことで、トレーニング時間を簡単に短縮できます。 音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合、後者のオプションを強くお勧めします。
 >
 > トレーニング用の専用ハードウェアがあるリージョンでは、音声サービスは最大 20 時間のオーディオをトレーニングに使用します。 他のリージョンでは、最大 8 時間のオーディオのみが使用されます。
+
+> [!NOTE]
+> 構造化テキストを使用したトレーニングは、en-US、en-UK、en-IN、de-DE、fr-FR、fr-CA、es-ES、es-MX の各ロケールでのみサポートされ、これらのロケールの最新の基本モデルを使用する必要があります。 
+>
+> 構造化テキストを使用したトレーニングをサポートしないロケールでは、プレーンテキスト データを使用したトレーニングの一環として、クラスを参照しないトレーニング文がサービスによって取られます。
 
 ## <a name="upload-data"></a>データをアップロードする
 
@@ -183,12 +190,79 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 * URI は拒否されます。
 * 一部の言語 (日本語や韓国語など) では、大量のテキスト データをインポートする際に非常に時間がかかったり、タイム アウトしたりすることがあります。その場合は、データをそれぞれ最大 20,000 行のテキスト ファイルに分割してアップロードすることをご検討ください。
 
+## <a name="structured-text-data-for-training-public-preview"></a>トレーニング用の構造化テキスト データ (パブリック プレビュー)
+
+多くの場合、予想される発話では特定のパターンに従います。 一般的なパターンの 1 つとして、発話では、リストの単語や語句だけが異なることが挙げられます。 例として、"私は `product` について質問があります。" では、`product` は、可能な製品のリストです。 または、"その `object` を `color` にします" では、`object` はジオメトリック形状のリストで、`color` は色のリストです。 トレーニング データの作成を簡略化し、カスタム言語モデル内でのモデリングを改善できるようにするには、マークダウン形式の構造化テキストを使用して項目のリストを定義してから、トレーニング発話内でそれらを参照できます。 また、マークダウン形式では、単語の発音の指定もサポートされます。 マークダウン形式では、Language Understanding モデル (特に、リスト エンティティと発話の例) のトレーニングに使用される _.lu_ マークダウンとその形式を共有します。 完全な _.lu_ マークダウンの詳細については、「<a href="https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0" target="_blank">.lu ファイル形式</a>」のドキュメントを参照してください。 
+
+マークダウン形式の例を次に示します。
+
+```markdown
+// This is a comment
+
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 20 of these
+@ list food =
+- pizza
+- burger
+- ice cream
+- soda
+
+@ list pet =
+- cat
+- dog
+
+@ list sports =
+- soccer
+- tennis
+- cricket
+- basketball
+- baseball
+- football
+
+// This is a list of phonetic pronunciations. 
+// This adjusts the pronunciation of every instance of these word in both a list or example training sentences 
+@ speech:phoneticlexicon
+- cat/k ae t
+- cat/f i l ai n
+
+// Here are example training sentences. They are grouped into two sections to help organize the example training sentences.
+// You can refer to one of the lists we declared above by using {@listname} and you can refer to multiple lists in the same training sentence
+// A training sentence does not have to refer to a list.
+# SomeTrainingSentence
+- you can include sentences without a class reference
+- what {@pet} do you have
+- I like eating {@food} and playing {@sports}
+- my {@pet} likes {@food}
+
+# SomeMoreSentence
+- you can include more sentences without a class reference
+- or more sentences that have a class reference like {@pet} 
+```
+
+プレーンテキストと同様に、構造化されたテキストを使用したトレーニングには通常数分かかります。 また、例文やリストには、実稼働環境で期待される音声入力の種類が反映されている必要があります。
+発音エントリについては、「[汎用音素セット](phone-sets.md)」の説明を参照してください。
+
+次の表は、マークダウン形式の制限と他のプロパティを示しています。
+
+| プロパティ | 値 |
+|----------|-------|
+| テキストのエンコード | UTF-8 BOM |
+| ファイルの最大サイズ | 200 MB |
+| 例文の最大数 | 50,000 |
+| リスト クラスの最大数 | 10 |
+| リスト クラス内の項目の最大数 | 4,000 |
+| speech:phoneticlexicon エントリの最大数 | 15000 |
+| 単語あたりの発音の最大数 | 2 |
+
+
 ## <a name="pronunciation-data-for-training"></a>トレーニング用の発音データ
 
 ユーザー側で発生するまたは使用する可能性がある、標準の発音がない一般的でない用語がある場合は、カスタム発音ファイルを提供して認識を向上させることができます。 カスタム発音をサポートしている言語のリストは、「[音声テキスト変換表](language-support.md#speech-to-text)」の **カスタマイズ** 列の **発音** をご覧ください。
 
 > [!IMPORTANT]
 > カスタムの発音ファイルを使用して、共通単語の発音を変更することはお勧めしません。
+
+> [!NOTE]
+> この種類の発音ファイルを構造化テキスト トレーニング データと組み合わせることはできません。 構造化テキスト データには、構造化テキスト マークダウン形式に含まれる発音機能を使用します。
 
 発音は、1 つのテキスト ファイルで指定してください。 これには、音声発話の例と、それぞれのカスタム発音が含まれます。
 

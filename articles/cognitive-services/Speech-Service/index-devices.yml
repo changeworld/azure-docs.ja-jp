@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: pafarley
-  ms.openlocfilehash: 4d1f1b0644fbc8e951893183be75c3996995e1f1
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.openlocfilehash: 5d580525e747e87d7e61a80b38f08ca9d5e2bcf9
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123544039"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131016739"
 landingContent:
 - title: Speech Devices SDK について
   linkLists:
@@ -37,7 +37,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: マイク配列を設計する
-      url: speech-devices-sdk-microphone.md
+      url: speech-sdk-microphone.md
     - text: Roobo v1 キットをセットアップする
       url: speech-devices-sdk-roobo-v1.md
 - title: リファレンス

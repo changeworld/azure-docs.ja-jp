@@ -5,16 +5,16 @@ author: dlepow
 ms.topic: how-to
 ms.service: api-management
 ms.author: danlep
-ms.date: 07/12/2021
-ms.custom: ''
-ms.openlocfilehash: 9e81fbe26c8b98a0694789567cef9126d5ca02fc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/2/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b98e958869b30a90d7006020768cdc7d8c1d62c7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063064"
 ---
-# <a name="send-events-from-api-management-to-event-grid-preview"></a>API Management から Event Grid にイベントを送信する (プレビュー)
+# <a name="send-events-from-api-management-to-event-grid"></a>API Management から Event Grid にイベントを送信する
 
 他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、API Management は [Azure Event Grid](../event-grid/overview.md) と統合されています。 Event Grid は、パブリッシュ/サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-overview.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。
 
@@ -63,7 +63,7 @@ az deployment group create \
 Event Grid では、"*トピック*" をサブスクライブすることで、どのイベントを追跡し、どこにイベントを送信するかをその Event Grid に伝えます。 ここでは、API Management インスタンス内のイベントのサブスクリプションを作成します。
 
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
-1. **[イベント (プレビュー)] > [+ イベント サブスクリプション]** を選択します。 
+1. **[イベント] > [+ イベント サブスクリプション]** を選択します。 
 1. **[基本]** タブで次の操作を行います。
     * イベント サブスクリプションのわかりやすい **[名前]** を入力します。
     * **[イベントの種類]** で、Event Grid に送信する 1 つ以上の API Management イベントの種類を選択します。 この記事の例では、少なくとも **Microsoft.APIManagement.ProductCreated** を選択します。 

@@ -5,26 +5,28 @@ description: このチュートリアルでは、ネットワーク機能をマ�
 author: prmitt
 ms.service: network-function-manager
 ms.topic: tutorial
-ms.date: 06/16/2021
+ms.date: 11/02/2021
 ms.author: prmitt
-ms.openlocfilehash: 0e45f8db150505b323f45cd79eed40215b3a44f8
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3ac4c4e0654e1d5f22c128c45106079916676a4f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223331"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005083"
 ---
-# <a name="tutorial-deploy-network-functions-on-azure-stack-edge-preview"></a>チュートリアル: Azure Stack Edge にネットワーク機能をデプロイする (プレビュー)
+# <a name="tutorial-deploy-network-functions-on-azure-stack-edge"></a>チュートリアル: Azure Stack Edge にネットワーク機能をデプロイする
 
 このチュートリアルでは、Azure Marketplace を使用して Azure Stack Edge にネットワーク機能をデプロイする方法について説明します。 Network Function Manager を使用すると、Azure Stack Edge 上でのシンプルなデプロイのための Azure Managed Applications エクスペリエンスを実現します。
 
 > [!div class="checklist"]
-> * [前提条件](overview.md#prereq)を確認する
+> * [前提条件](#prereq)を確認する
 > * ネットワーク機能を作成する
 > * ネットワーク機能の詳細を確認する
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a><a name="prereq"></a>前提条件
 
+* [前提条件と要件](requirements.md)に関する記事に記載されている前提条件がすべて満たされています。
 * Network Function Manager のデバイス リソースを作成していること。 これらの手順を完了していない場合は、[デバイス リソースの作成方法](create-device.md)に関するページを参照してください。
 * デバイスの **[概要]** タブに、次の値が表示されていることを確認します。
   * プロビジョニングの状態 = 成功
@@ -32,7 +34,7 @@ ms.locfileid: "130223331"
 
 ## <a name="create-a-network-function"></a><a name="create"></a>ネットワーク機能を作成する
 
-1. [Azure プレビュー ポータル](https://aka.ms/AzureNetworkFunctionManager)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. ネットワーク機能をデプロイする **デバイス** リソースに移動し、 **[+ ネットワーク機能の作成]** を選択します。
 
    :::image type="content" source="./media/deploy-functions/create-network-function.png" alt-text="[+ ネットワーク機能の作成] のスクリーンショット。" lightbox="./media/deploy-functions/create-network-function.png":::
@@ -57,7 +59,7 @@ ms.locfileid: "130223331"
 1. 基本設定を構成します。
 
    :::image type="content" source="./media/deploy-functions/basics-blade.png" alt-text="基本設定のスクリーンショット。" lightbox="./media/deploy-functions/basics-blade.png":::
-1. マネージド ID を適用します。 詳細については、[マネージド ID](overview.md#managed-identity) に関するセクションを参照してください。
+1. マネージド ID を適用します。 詳細については、[マネージド ID](resources-permissions.md) に関するセクションを参照してください。
 
    :::image type="content" source="./media/deploy-functions/managed-identity.png" alt-text="マネージド ID のスクリーンショット。" lightbox="./media/deploy-functions/managed-identity.png":::
 1. Fusion Core VM の管理、LAN、および WAN インターフェイスの IP アドレス情報を入力します。

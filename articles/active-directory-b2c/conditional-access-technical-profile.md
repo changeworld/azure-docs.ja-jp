@@ -3,20 +3,20 @@ title: カスタム ポリシーでの条件付きアクセス技術プロファ
 titleSuffix: Azure AD B2C
 description: Azure AD B2C での条件付きアクセス技術プロファイルのカスタム ポリシー リファレンス。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/18/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 902d9251c7393d3f6e693ba37c587398136493e6
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: d44ae627279131004bdac2f755eb26b59e375381
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112368950"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007954"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで条件付きアクセス技術プロファイルを定義する
 
@@ -34,7 +34,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 条件付きアクセス技術プロファイルの例を次に示します。
 
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessEvaluation">
   <DisplayName>Conditional Access Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -64,7 +64,6 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 | IsFederated | はい |boolean | フェデレーション アカウントを使用してユーザーがサインインしたかどうかを示します。 値は `false` である必要があります。 |
 | IsMfaRegistered | はい |boolean | ユーザーが多要素認証用に電話番号を既に登録しているかどうかを示します。 |
 
-
 **InputClaimsTransformations** 要素には、入力要求を条件付きアクセス サービスに送信する前に、その入力要求を変更するか新しい入力要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 
 ### <a name="output-claims"></a>出力クレーム
@@ -82,7 +81,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 サインインの脅威を評価するために使用される条件付きアクセス技術プロファイルの例を次に示します。
 
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessEvaluation">
   <DisplayName>Conditional Access Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -122,7 +121,6 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 | ClaimReferenceId | 必須 | データ型 | 説明 |
 | --------- | -------- | ----------- |----------- |
 | ChallengesSatisfied | はい | stringCollection| 評価モードからの戻り値として特定された脅威を修復するための満たされたチャレンジの一覧。チャレンジ要求。|
-
 
 **InputClaimsTransformations** 要素には、条件付きアクセス サービスを呼び出す前に、その入力要求を変更するか新しい入力要求を生成するために使用される、**InputClaimsTransformation** 要素のコレクションが含まれる場合があります。
 

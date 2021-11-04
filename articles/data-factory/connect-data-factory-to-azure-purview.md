@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
-ms.date: 09/27/2021
-ms.openlocfilehash: 6ec86ff575e4848f79dfe8c6e444e47ed6d1f8f1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/25/2021
+ms.openlocfilehash: 1875b32d5a5f964b3a602b60d820ca377e0ee927
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277899"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040910"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory を Azure Purview に接続する (プレビュー)
 
@@ -59,7 +59,7 @@ Purview の接続情報は、次のようなデータ ファクトリ リソー�
     ...
     "identity": {...},
     "tags": {
-        "catalogUri": "<PurviewAccountName>.catalog.purview.azure.com //Note: used for SSIS lineage only"
+        "catalogUri": "<PurviewAccountName>.purview.azure.com/catalog //Note: used for SSIS lineage only"
     }
 }
 ```
@@ -76,7 +76,7 @@ Azure Purview に Data Factory を登録する方法については、「[Azure 
 
     作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
 
-- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)** ](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
+- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
 
     作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview アカウントに Azure 組み込みの **所有者** ロールまたは **ユーザー アクセス管理者** ロールがある場合、この操作は成功します。
 

@@ -170,6 +170,8 @@
           href: start-virtual-machine-connect-faq.md
     - name: ドレイン モードを設定する
       href: drain-mode.md
+    - name: Azure Stack HCI 用 Azure Virtual Desktop (プレビュー)
+      href: azure-stack-hci.md
 - name: 概念
   items:
     - name: 管理に関する推奨事項
@@ -228,6 +230,12 @@
           href: /security/benchmark/azure/baselines/virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
         - name: 画面キャプチャ保護
           href: screen-capture-protection.md
+    - name: Azure Stack HCI 用 Azure Virtual Desktop (プレビュー)
+      items:
+        - name: 概要 (プレビュー)
+          href: azure-stack-hci-overview.md
+        - name: Azure Stack HCI の FAQ (プレビュー)
+          href: azure-stack-hci-faq.yml
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

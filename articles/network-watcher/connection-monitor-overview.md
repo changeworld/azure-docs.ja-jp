@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 6f891ea0e05148d893a226ec1d6243b5d5224954
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6b62da14473797653da17b28b5366e26e7c18357
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258527"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082533"
 ---
 # <a name="monitor-network-connectivity-by-using-connection-monitor"></a>接続モニターを使用してネットワーク接続を監視する
 
@@ -76,7 +76,7 @@ ms.locfileid: "130258527"
 
 ### <a name="agents-for-on-premises-machines"></a>オンプレミス コンピューター用のエージェント
 
-接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。 その後、[Network Performance Monitor ソリューション](/azure/network-watcher/connection-monitor-overview#enable-the-npm-solution-for-on-premises-machines)を有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
+接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。 その後、[Network Performance Monitor ソリューション](../network-watcher/connection-monitor-overview.md#enable-the-npm-solution-for-on-premises-machines)を有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
 
 Windows コンピューター用の Log Analytics エージェントをインストールするには、[Windows への Log Analytics エージェントのインストール](../azure-monitor/agents/agent-windows.md)に関する記事を参照してください。
 

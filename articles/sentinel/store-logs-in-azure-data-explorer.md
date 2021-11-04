@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 1f9d0a146c557f50c0cea776c6e3ae6853377df5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f906502ce03ffcad42f07cd951c5944eb3e55501
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748075"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009094"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>長期的なログ保持のために Azure Data Explorer を統合する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 既定では、Azure Sentinel に取り込まれたログは Azure Monitor Log Analytics に格納されます。 この記事では、長期保持のために Azure Data Explorer に送信することで Azure Sentinel の保持コストを削減する方法について説明します。
 

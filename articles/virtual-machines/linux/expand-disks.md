@@ -5,15 +5,16 @@ author: roygara
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 10/15/2018
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c8c8881de696143be60c9ff61c1649eb31fe59b3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8f54e1f74c5f4f6a8502285f5e4c36c09892ec71
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695612"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082609"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
@@ -25,11 +26,41 @@ ms.locfileid: "122695612"
 > ディスクのサイズ変更操作を実行する前に、ファイル システムが正常な状態であること、ディスク パーティション テーブルの種類で新しいサイズがサポートされていること、およびデータがバックアップされていることを、常に確認します。 詳細については、[Azure Backup のクイックスタート](../../backup/quick-backup-vm-portal.md)に関する記事を参照してください。 
 
 ## <a name="expand-an-azure-managed-disk"></a>Azure マネージド ディスクの拡張
+
+### <a name="resize-without-downtime-preview"></a>ダウンタイムなしでサイズを変更する (プレビュー)
+
+VM の割り当てを解除せずに、マネージド ディスクのサイズを変更できるようになりました。
+
+このプレビューには、次の制限事項があります。
+
+- 現在米国西部でのみご利用いただけます。
+- データ ディスクでのみサポートされます。
+- 4 TiB 未満のディスクは、ダウンタイムなしでは 4 TiB 以上に拡張できません。
+    - ディスクのサイズを 4 TiB 以上に増やした後は、ダウンタイムなしで拡張できます。
+- [最新の Azure CLI](/cli/azure/install-azure-cli)、[最新の Azure PowerShell モジュール](/powershell/azure/install-az-ps)、[https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) を経由してアクセスする場合は Azure portal、または 2021-04-01 以降の API バージョンの Azure Resource Manager テンプレートのいずれかをインストールして使用する必要があります。
+
+この機能に登録するには、次のコマンドを使用します。
+
+```azurecli
+az feature register --namespace Microsoft.Compute --name LiveResize
+```
+
+登録が完了するまでに数分かかることがあります。 登録を確認するには、次のコマンドを使用します。
+
+```azurecli
+az feature show --namespace Microsoft.Compute --name LiveResize
+```
+
+### <a name="get-started"></a>はじめに
+
 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにサインインしていることを確認します。
 
 この記事では、少なくとも 1 つのデータ ディスクが接続され、準備ができている Azure の既存の VM が必要です。 使用できる VM をまだ用意していない場合は、[データ ディスク付きの VM の作成と準備](tutorial-manage-disks.md#create-and-attach-disks)に関するページを参照してください。
 
 以下のサンプルでは、*myResourceGroup* や *myVM* などのパラメーター名を各自の値に置き換えてください。
+
+> [!IMPORTANT]
+> **LiveResize** を有効にし、「[ダウンタイムなしでサイズを変更する (プレビュー)](#resize-without-downtime-preview)」の要件をディスクが満たしている場合は、手順 1 と 3 を省略できます。 
 
 1. 仮想ハード ディスクに対する操作は、実行中の VM では実行できません。 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
 

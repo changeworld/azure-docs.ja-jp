@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: 作業開始
+        - name: はじめに
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
@@ -176,7 +176,7 @@
           href: azure-stack-edge-gpu-manage-certificates.md
         - name: 証明書エラーのトラブルシューティングを行う
           href: azure-stack-edge-gpu-certificate-troubleshooting.md
-    - name: 仮想マシン
+    - name: 仮想マシン (プレビュー)
       items:
         - name: VM とは
           href: azure-stack-edge-gpu-virtual-machine-overview.md
@@ -206,6 +206,8 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
             - name: VM - GPU
               href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
+            - name: VM - HPN
+              href: azure-stack-edge-gpu-deploy-virtual-machine-high-performance-network.md
             - name: VM - Azure PowerShell コマンドレット
               href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: VM - Azure PowerShell スクリプト
@@ -288,7 +290,7 @@
                   href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: C# モジュールの開発
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
-            - name: Azure Arc (プレビュー) 経由
+            - name: Azure Arc を使用
               items:
                 - name: Kubernetes クラスターで Arc を有効にする
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
@@ -296,6 +298,10 @@
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
                 - name: Azure Arc データ コントローラーをデプロイする
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
+        - name: 方法
+          items:
+            - name: MetalLB を構成する
+              href: azure-stack-edge-gpu-configure-metallb-bgp-mode.md
     - name: IoT Edge
       items:
         - name: IoT Edge サンプルをデプロイする
@@ -340,8 +346,6 @@
           href: azure-stack-edge-gpu-data-residency.md
         - name: キー コンテナーの統合を表示する
           href: azure-stack-edge-gpu-activation-key-vault.md
-        - name: プロアクティブ ログ記録を有効にする
-          href: azure-stack-edge-gpu-proactive-log-collection.md
     - name: 共有セキュリティ
       items:
         - name: セキュリティの概要
@@ -392,11 +396,17 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: デバイス ログと診断
               href: azure-stack-edge-gpu-troubleshoot.md
+            - name: プロアクティブ ログ記録を有効にする
+              href: azure-stack-edge-gpu-proactive-log-collection.md
+            - name: リモート サポートを有効にする
+              href: azure-stack-edge-gpu-remote-support-diagnostics-repair.md
             - name: Microsoft サポートに問い合わせる
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共有のリリース ノート
       items:
-        - name: 2106 - 最新
+        - name: 2110 - 最新
+          href: azure-stack-edge-gpu-2110-release-notes.md
+        - name: 2106
           href: azure-stack-edge-gpu-2106-release-notes.md
         - name: 2105
           href: azure-stack-edge-gpu-2105-release-notes.md
