@@ -7,13 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9925fcb9f6a4d4284c7c6784a45e896ea825abc0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a91bebdca3b3db570761a47de5a26b88a526aee9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056093"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463850"
 ---
 # <a name="use-microsoft-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Microsoft Defender for container registries を使用してイメージの脆弱性をスキャンします
 
