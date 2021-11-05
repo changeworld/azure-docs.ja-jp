@@ -1,29 +1,32 @@
 ---
-title: Azure Security Center のリリース ノート
-description: Azure Security Center の新機能と変更点の説明
+title: Microsoft Defender for Cloud のリリース ノート
+description: Microsoft Defender for Cloud の新機能と変更内容の説明
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
 ms.date: 10/17/2021
 ms.author: memildin
-ms.openlocfilehash: bd75b5fff78c213bc9d0541fb1824969b7a798a3
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a287709d7fb84bece1a0b8777f13297c963f3ace
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129151"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004677"
 ---
-# <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
+# <a name="whats-new-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloudの新機能
 
-Security Center のセキュリティは精力的な開発の下、継続的に改善されています。 常に最新の開発情報を把握していただけるよう、このページでは新しい機能、バグの修正、非推奨になった機能に関する情報を提供します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Defender for Cloud はアクティブな開発中であり、継続的に改善を受けています。 常に最新の開発情報を把握していただけるよう、このページでは新しい機能、バグの修正、非推奨になった機能に関する情報を提供します。
 
 このページは頻繁に更新されるため、定期的にアクセスしてご確認ください。 
 
-Security Center で近日中に公開を "*予定されている*" 変更については、「[Azure Security Center への今後予定されている重要な変更](upcoming-changes.md)」を参照してください。 
+Defender for Cloud に間もなく公開される *計画中* の変更については、[Microsoft Defender for Cloud の今後の重要な変更](upcoming-changes.md)を参照してください。 
 
 > [!TIP]
-> 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
+> 6 か月以上前の項目をお探しの場合は、「[Microsoft Defender for Cloud の最新情報のアーカイブ](release-notes-archive.md)」を参照してください。
 
 
 ## <a name="october-2021"></a>2021 年 10 月
@@ -34,6 +37,7 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [脆弱性評価ソリューションを自動で有効化できるようになりました (プレビュー段階)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)
 - [資産インベントリにソフトウェア インベントリ フィルターが追加されました (プレビュー段階)](#software-inventory-filters-added-to-asset-inventory-in-preview)
 - [一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+- [Kubernetes クラスターのセキュリティに関する推奨事項のロジックの変更](#changes-to-the-logic-of-a-security-recommendation-for-kubernetes-clusters)
 - [推奨事項の詳細ページに、関連する推奨事項が表示されるようになりました](#recommendations-details-pages-now-show-related-recommendations)
 
 
@@ -41,7 +45,7 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 [Microsoft 脅威と脆弱性の管理](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt)という新しい脆弱性評価のマシンへの提供をサポートするように、[Azure Defender for servers](defender-for-servers-introduction.md) と Microsoft Defender for Endpoint 間の統合を拡張しました。 
 
-**脅威と脆弱性の管理** を使用し、[Microsoft Defender for Endpoint との統合](security-center-wdatp.md)を有効にして、準リアルタイムで脆弱性と構成の誤りを発見します。追加のエージェントや定期的なスキャンは必要ありません。 脅威と脆弱性の管理により、組織内の脅威の状況と検出結果に基づいて、脆弱性に優先順位が付けられます。
+**脅威と脆弱性の管理** を使用し、[Microsoft Defender for Endpoint との統合](integration-defender-for-endpoint.md)を有効にして、準リアルタイムで脆弱性と構成の誤りを発見します。追加のエージェントや定期的なスキャンは必要ありません。 脅威と脆弱性の管理により、組織内の脅威の状況と検出結果に基づいて、脆弱性に優先順位が付けられます。
 
 セキュリティに関する推奨事項の [[A vulnerability assessment solution should be enabled on your virtual machines]\(脆弱性評価ソリューションを仮想マシンで有効にする必要がある\)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/ffff0522-1e88-47fc-8382-2a80ba848f5d) を使用して、脅威と脆弱性の管理によって検出された[サポート対象マシン](/microsoft-365/security/defender-endpoint/tvm-supported-os?view=o365-worldwide&preserve-view=true)の脆弱性を表示します。 
 
@@ -53,7 +57,7 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 Security Center の自動プロビジョニング ページに、[Azure Defender for servers](defender-for-servers-introduction.md) で保護されたサブスクリプションの Azure 仮想マシンと Azure Arc マシンに対して、脆弱性評価ソリューションを自動的に有効にするオプションが追加されました。
 
-また、[Microsoft Defender for Endpoint との統合](security-center-wdatp.md)を有効にすると、次の脆弱性評価ソリューションを選択できるようになります。
+また、[Microsoft Defender for Endpoint との統合](integration-defender-for-endpoint.md)を有効にすると、次の脆弱性評価ソリューションを選択できるようになります。
 
 - (**新規**) Microsoft Defender for Endpoint の Microsoft 脅威と脆弱性の管理モジュール ([リリース ノート](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview)を参照してください)
 - 統合された Qualys エージェント
@@ -70,7 +74,7 @@ Security Center の自動プロビジョニング ページに、[Azure Defender
 
 また、**Azure Resource Graph Explorer** でソフトウェア インベントリ データのクエリを実行することができます。
 
-これらの新機能を使用するには、[Microsoft Defender for Endpoint](security-center-wdatp.md) との統合を有効にする必要があります。 
+これらの新機能を使用するには、[Microsoft Defender for Endpoint](integration-defender-for-endpoint.md) との統合を有効にする必要があります。 
 
 Azure Resource Graph 用のサンプル Kusto クエリなどの詳細については、「[ソフトウェア インベントリにアクセスする](asset-inventory.md#access-a-software-inventory)」を参照してください。
 
@@ -111,6 +115,12 @@ Azure Defender プランの論理的な再編成の一環として、21 個の�
 
 [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) プランと [Azure Defender for servers](defender-for-servers-introduction.md) プランの詳細を参照してください。
 
+### <a name="changes-to-the-logic-of-a-security-recommendation-for-kubernetes-clusters"></a>Kubernetes クラスターのセキュリティに関する推奨事項のロジックの変更
+
+「Kubernetesクラスターはデフォルトの名前空間を使用しないでください」という推奨事項により、さまざまなリソースタイプでデフォルトの名前空間を使用できません。 この推奨事項に含まれる2 つのリソースの種類が削除されました:ConfigMap と Secret。 
+
+この推奨事項の詳細と Kubernetes クラスターの強化については [「Kubernetes クラスターのAzure Policyについて」を参照してください。](../governance/policy/concepts/policy-for-kubernetes.md)
+
 ### <a name="recommendations-details-pages-now-show-related-recommendations"></a>推奨事項の詳細ページに、関連する推奨事項が表示されるようになりました
 
 さまざまな推奨事項の関係を明確にするため、**関連する推奨事項** 領域を多くの推奨事項の詳細ページに追加しました。 
@@ -118,10 +128,10 @@ Azure Defender プランの論理的な再編成の一環として、21 個の�
 これらのページに表示される 3 種類の関係は次のとおりです。
 
 - **前提条件** - 選択した推奨事項の前に完了する必要がある推奨事項
-- **代替** - 選択した推奨事項の目的を達成する別の方法を提供する別の推奨事項
+- **代替** - 選択した推奨事項の目的を別の方法で達成する、異なる推奨事項
 - **依存** - 選択した推奨事項が前提条件となる推奨事項
 
-それぞれの関連推奨事項に対して、"影響を受けるリソース" 列に異常なリソースの数が表示されます。
+それぞれの関連推奨事項に対して、[影響を受けるリソース] 列に異常なリソースの数が表示されます。
 
 > [!TIP]
 > 関連推奨事項が淡色表示されている場合、その依存関係はまだ完了していないため、使用できません。
@@ -185,10 +195,10 @@ Defender for Endpoint で脅威が検出されると、アラートがトリガ�
 
 プレビュー期間中は、既に Windows マシンにデプロイしたかどうかに応じて 2 つの方法のいずれかで、サポートされる Linux マシンに [Defender for Endpoint for Linux](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux) センサーをデプロイします。
 
-- [Azure Defender および Microsoft Defender for Endpoint for Windows の既存ユーザー](security-center-wdatp.md?tabs=linux#existing-users-of-azure-defender-and-microsoft-defender-for-endpoint-for-windows)
-- [Microsoft Defender for Endpoint for Windows との統合を有効にしたことがない新規ユーザー](security-center-wdatp.md?tabs=linux#new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows)
+- [Defender for Cloud の強化されたセキュリティ機能を有効にし、Microsoft Defender for Endpoint for Windows を使用している既存のユーザー](integration-defender-for-endpoint.md#existing-users-with-defender-for-clouds-enhanced-security-features-enabled-and-microsoft-defender-for-endpoint-for-windows)
+- [Microsoft Defender for Endpoint for Windows との統合を有効にしたことがない新規ユーザー](integration-defender-for-endpoint.md?tabs=linux#new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows)
 
-詳細については、「[Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint](security-center-wdatp.md)」を参照してください。
+詳細については、「[Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint](integration-defender-for-endpoint.md)」を参照してください。
 
 ### <a name="two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview"></a>エンドポイント保護ソリューションを管理するための 2 つの新しい推奨事項 (プレビュー)
 
@@ -196,8 +206,8 @@ Defender for Endpoint で脅威が検出されると、アラートがトリガ�
 
 |推奨 |Description |重大度 |
 |---|---|---|
-|[エンドポイント保護をマシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439) |脅威と脆弱性からマシンを保護するには、サポートされているエンドポイント保護ソリューションをインストールします。  <br> <a href="/azure/security-center/security-center-endpoint-protection">マシンのエンドポイント保護を評価する方法の詳細をご覧ください。</a><br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |高 |
-|[Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000) |仮想マシンでエンドポイント保護の正常性の問題を解決して、それらを最新の脅威と脆弱性から保護します。 Azure Security Center でサポートされているエンドポイント保護ソリューションについては、[こちら](./security-center-services.md?tabs=features-windows)を参照してください。 エンドポイント保護の評価については、<a href='/azure/security-center/security-center-endpoint-protection'>こちら</a>を参照してください。<br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |中 |
+|[エンドポイント保護をマシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439) |脅威と脆弱性からマシンを保護するには、サポートされているエンドポイント保護ソリューションをインストールします。  <br> <a href="/azure/security-center/endpoint-protection-recommendations-technical">マシンのエンドポイント保護を評価する方法の詳細をご覧ください。</a><br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |高 |
+|[Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000) |仮想マシンでエンドポイント保護の正常性の問題を解決して、それらを最新の脅威と脆弱性から保護します。 Azure Security Center でサポートされているエンドポイント保護ソリューションについては、[こちら](./supported-machines-endpoint-solutions-clouds.md?tabs=features-windows)を参照してください。 エンドポイント保護の評価については、<a href='/azure/security-center/endpoint-protection-recommendations-technical'>こちら</a>を参照してください。<br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |中 |
 |||
 
 > [!NOTE]
@@ -222,7 +232,7 @@ Azure portal の Azure Security Center ページの新しい専用領域は、Az
 
 関連するレポートの種類 (PCI、SOC、ISO など) のタブを選択し、フィルターを使用すると、必要なレポートを見つけることができます。
 
-詳細については、[コンプライアンス状態レポートと証明書の生成](security-center-compliance-dashboard.md#generate-compliance-status-reports-and-certificates)に関するページを参照してください。
+詳細については、[コンプライアンス状態レポートと証明書の生成](regulatory-compliance-dashboard.md#generate-compliance-status-reports-and-certificates)に関するページを参照してください。
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard-ga.png" alt-text="使用可能な Azure 監査レポートのタブ リスト。ISO レポート、SOC レポート、PCI などのタブが表示されています。":::
 
@@ -257,7 +267,7 @@ Azure Policy では、Azure 内で実行するマシンと Arc に接続され�
 
 :::image type="content" source="media/release-notes/auto-provisioning-guest-configuration.png" alt-text="ゲスト構成拡張の自動デプロイを有効にします。":::
 
-自動プロビジョニングのしくみの詳細については、[エージェントと拡張機能の自動プロビジョニングの構成](security-center-enable-data-collection.md)に関する記事を参照してください。
+自動プロビジョニングのしくみの詳細については、[エージェントと拡張機能の自動プロビジョニングの構成](enable-data-collection.md)に関する記事を参照してください。
 
 ### <a name="recommendations-to-enable-azure-defender-plans-now-support-enforce"></a>Azure Defender プランを有効にする推奨事項での "強制" のサポート
 Security Center には、新しく作成されたリソースが安全な方法でプロビジョニングされるために役立つ、**強制** と **拒否** という 2 つの機能があります。 推奨事項によってこれらのオプションが提供されると、だれかがリソースを作成しようとするとき常に、セキュリティ要件が満たされていることを保証できます。
@@ -308,7 +318,7 @@ Security Center の推奨事項データをエクスポートする際に 20 MB 
 
 Security Center には、[Azure Sentinel](../sentinel/index.yml)(Azure のクラウドネイティブな SIEM および SOAR ソリューション) がネイティブに統合されています。 
 
-Azure Sentinel には、サブスクリプションとテナントのレベルで Azure Security Center 用の組み込みコネクタが含まれています。 詳細については、「[Azure Sentinel にアラートをストリーミングする](export-to-siem.md#stream-alerts-to-azure-sentinel)」を参照してください。
+Azure Sentinel には、サブスクリプションとテナントのレベルで Azure Security Center 用の組み込みコネクタが含まれています。 詳細については、「[Azure Sentinel にアラートをストリーミングする](export-to-siem.md#stream-alerts-to-microsoft-sentinel)」を参照してください。
 
 Azure Defender を Azure Sentinel に接続すると、Azure Defender アラートの状態が Azure Sentinel に取り込まれる、2 つのサービス間で同期されます。 たとえば、Azure Defender でアラートが閉じられた場合、そのアラートは Azure Sentinel でも閉じられたと表示されます。 Azure Defender でアラートの状態を変更しても、同期された Azure Sentinel アラートを含む Azure Sentinel **インシデント** の状態には影響せず、同期されたアラートそのものの状態のみに影響します。
 
@@ -578,7 +588,7 @@ Trivy を利用した、コンテナー イメージのための新しい脆弱�
 
 ### <a name="more-resource-graph-queries-available-for-some-recommendations"></a>一部の推奨事項に使用できる Resource Graph クエリを増加
 
-Security Center のすべての推奨事項には、 **[クエリを開く]** から Azure Resource Graph を使用して、影響を受けるリソースの状態に関する情報を表示するためのオプションがあります。 この強力な機能の詳細については、「[Azure Resource Graph Explorer (ARG) で推奨事項データを確認する](security-center-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg)」を参照してください。
+Security Center のすべての推奨事項には、 **[クエリを開く]** から Azure Resource Graph を使用して、影響を受けるリソースの状態に関する情報を表示するためのオプションがあります。 この強力な機能の詳細については、「[Azure Resource Graph Explorer (ARG) で推奨事項データを確認する](review-security-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg)」を参照してください。
 
 Security Center には、VM、SQL サーバーとそのホスト、コンテナー レジストリでセキュリティ上の脆弱性をスキャンするための脆弱性スキャンが組み込まれています。 結果は、各リソースの種類ごとに個別のすべての結果が単一のビューに収集され、推奨事項として返されます。 推奨事項は次のとおりです。
 

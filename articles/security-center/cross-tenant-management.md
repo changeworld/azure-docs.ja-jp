@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9db4a9b47de9e8977d994afd5f2d48cb1e0f52af
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 939fabdd58ddc8d20d8e17b98fdc1626d15b295b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092494"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445257"
 ---
 # <a name="cross-tenant-management-in-defender-for-cloud"></a>Defender for Cloud でのテナント間の管理
 

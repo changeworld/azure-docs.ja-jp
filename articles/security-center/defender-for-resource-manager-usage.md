@@ -1,22 +1,25 @@
 ---
 title: Azure Defender for Resource Manager アラートに対応する方法
-description: Azure Defender for Resource Manager のアラートに対応するために必要な手順について説明します
+description: Azure DefenderのResource Manager のアラートに対応するために必要な手順について説明します
 author: memildin
 ms.author: memildin
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 54790795aab8aac247e17198159130d7139dd38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7aa0dda56474b33175823cd2db331d136551760b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754531"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009702"
 ---
-# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Azure Defender for Resource Manager アラートに対応する
+# <a name="respond-to-microsoft-defender-for-resource-manager-alerts"></a>Resource ManagerアラートのMicrosoft Defenderに応答する
 
-Azure Defender for Resource Manager からアラートを受け取った場合は、下の説明に従って調査し、アラートに対応することをお勧めします。 Azure Defender for Resource Manager によってすべての接続されたリソースが保護されているため、アラートをトリガーしたアプリケーションまたはユーザーを熟知している場合でも、すべてのアラートを取り巻く状況を確認することが重要です。  
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Azure DefenderのResource Manager からアラートを受け取った場合は、下の説明に従って調査し、アラートに対応することをお勧めします。 Azure Defender for Resource Manager によってすべての接続されたリソースが保護されているため、アラートをトリガーしたアプリケーションまたはユーザーを熟知している場合でも、すべてのアラートを取り巻く状況を確認することが重要です。  
 
 
 ## <a name="step-1-contact"></a>手順 1. Contact
@@ -36,7 +39,7 @@ Azure Defender for Resource Manager からアラートを受け取った場合�
     - 侵害された Automation アカウントから見慣れない Runbook を削除します
     - サブスクリプションの IAM アクセス許可を確認し、見慣れないすべてのユーザー アカウントのアクセス許可を削除します
     - サブスクリプション内のすべての Azure リソースを確認し、見慣れないものをすべて削除します
-    - Azure Security Center でサブスクリプションのセキュリティ アラートを確認し、調査します
+    - CloudのMicrosoft Defender でサブスクリプションのセキュリティ アラートを確認し、調査します
     - Azure アクティビティ ログを使用して、サブスクリプション内で実行されるすべてのアクティビティを確認し、疑わしいものをすべて特定します
 
 1. 侵害された仮想マシンを修復します
@@ -47,8 +50,8 @@ Azure Defender for Resource Manager からアラートを受け取った場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-このページでは、Azure Defender for Resource Manager のアラートに対応するプロセスについて説明しました。 関連情報については、次のページを参照してください。
+このページではResource ManagerのMicrosoft Defender からのアラートに対応するプロセスについて説明します 関連情報については、次のページを参照してください。
 
-- [Azure Defender for Resource Manager の概要](defender-for-resource-manager-introduction.md)
-- [Azure Defender のアラートの抑制](alerts-suppression-rules.md)
-- [継続的に Security Center データをエクスポートする](continuous-export.md)
+- [Resource ManagerのMicrosoft Defender の概要](defender-for-resource-manager-introduction.md)
+- [セキュリティ アラートを抑制する](alerts-suppression-rules.md)
+- [Defender for Cloud のデータを継続的にエクスポートする](continuous-export.md)

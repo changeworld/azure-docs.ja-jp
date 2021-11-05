@@ -9,12 +9,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 5446bf3c2271fd31fc99e5fadb2f3ab92ca38e26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0f7c3c85e07bb2a17685e283b5212432864a4818
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806293"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005786"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>Azure Data Factory または Azure Synapse Analytics のパイプラインでカスタム アクティビティを使用する
 
@@ -26,7 +26,7 @@ ms.locfileid: "124806293"
 Azure Data Factory または Synapse のパイプラインでは、2 種類のアクティビティを使用できます。
 
 - [サポートされるソース データ ストアとシンク データ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の間でデータを移動する[データ移動アクティビティ](copy-activity-overview.md)。
-- Azure HDInsight、Azure Batch、ML Studio (クラシック) などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](transform-data.md)。
+- Azure HDInsightやAzure Batch などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](transform-data.md)。
 
 サービスでサポートされていないデータ ストアとの間でデータを移動する場合や、サービスでサポートされていない方法でデータを変換または処理する場合は、独自のデータ移動ロジックまたはデータ変換ロジックで **カスタム アクティビティ** を作成して、パイプラインでそのアクティビティを使用できます。 カスタム アクティビティでは、仮想マシンの **Azure Batch** プールでカスタマイズされたコード ロジックを実行します。
 
@@ -389,5 +389,4 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [MapReduce アクティビティ](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
-* [ML Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

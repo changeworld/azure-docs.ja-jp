@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 10/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 6c7ec83fcf7ea03dcacc92137f1ef63a6cce1f2f
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 7d6b9a81f5e5e948704b4597a7283cd976b124c2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399529"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847202"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>クイック スタート:Synapse で Azure Machine Learning のリンクされたサービスを新規作成する
 
@@ -43,7 +43,7 @@ Azure Synapse で Azure Machine Learning リンク サービスを作成する�
 
 ## <a name="create-a-linked-service-using-the-synapse-workspace-managed-identity"></a>Synapse ワークスペース マネージド ID を使用してリンク サービスを作成する
 
-このセクションでは、[Azure Synapse ワークスペース マネージド ID](../security/synapse-workspace-managed-identity.md) を使用して、Azure Synapse で Azure Machine Learning リンク サービスを作成する方法について説明します
+このセクションでは、[Azure Synapse ワークスペース マネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) を使用して、Azure Synapse で Azure Machine Learning リンク サービスを作成する方法について説明します
 
 ### <a name="give-msi-permission-to-the-azure-ml-workspace"></a>Azure ML ワークスペースに MSI アクセス許可を付与する
 

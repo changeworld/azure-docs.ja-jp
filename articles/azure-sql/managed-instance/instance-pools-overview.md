@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
-ms.date: 09/05/2019
-ms.openlocfilehash: b84ff58517d413be884b81b6498f5b626ba02016
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/25/2021
+ms.openlocfilehash: 3812be11d53b8a9c70e871b88ee61c474312c872
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697243"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031387"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL Managed Instance プール (プレビュー) とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ ms.locfileid: "110697243"
     - 8 個の仮想コアのプールでは、最大 200 個のデータベースがサポートされます。
     - 16 個の仮想コアのプールでは、最大 400 個のデータベースがサポートされます。
     - 24 個以上の仮想コアのプールでは、最大 500 個のデータベースがサポートされます。
-- AAD 管理者は、インスタンス プール内にデプロイされたインスタンスに対して設定できないため、AAD 認証は使用できません。
+- Azure AD 認証は、フラグを使用してマネージインスタンスを作成または設定した後に使用でき `-AssignIdentity` ます。 詳細については、「 [AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) and [AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)」を参照してください。 その後、ユーザーは、 [Azure AD 管理者のプロビジョニング (SQL Managed Instance)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance)に従って、インスタンスの Azure AD 管理者を設定できます。
 
 すべてのインスタンスのストレージの割り当てとデータベースの数の合計は、インスタンス プールによってさらされる制限以下にする必要があります。
 
@@ -104,6 +104,7 @@ ms.locfileid: "110697243"
 - Azure portal では、インスタンス プールの作成および構成のサポートはまだ利用できません。 インスタンス プールに対するすべての操作は、PowerShell でのみサポートされています。 また、事前に作成されたプールでの初回のインスタンス デプロイも、PowerShell でのみサポートされています。 プールにデプロイされると、Azure portal を使用してマネージド インスタンスを更新できます。
 - プールの外部で作成されたマネージド インスタンスを既存のプールに移動することはできません。さらに、プール内に作成されたインスタンスを、単一インスタンスとしてプールの外側に移動することも、別のプールに移動することもできません。
 - [予約容量](../database/reserved-capacity-overview.md)インスタンスの価格については、提供されていません。
+- フェールオーバーグループは、プール内のインスタンスではサポートされていません。
 
 ## <a name="sql-features-supported"></a>サポートされている SQL 機能
 

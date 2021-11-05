@@ -2,14 +2,14 @@
 title: Azure Video Analyzer モジュール ツイン JSON スキーマ
 description: この記事では、Azure Video Analyzer edge モジュールのモジュールツイン JSON スキーマの概要について説明します。
 ms.topic: how-to
-ms.date: 10/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6dd3ae2e188e8179fde0cd3a684e647cbf92fe3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 360102a551ea6321a4b40063123176fc13672929
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091543"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559392"
 ---
 # <a name="module-twin-configuration-schema"></a>モジュール ツインの構成スキーマ
 

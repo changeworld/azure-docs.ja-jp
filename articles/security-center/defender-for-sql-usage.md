@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9a7e817df5e938756ca9fe331f82136505515451
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f48acfc942e40b4316a72b2626c29900d1a9cd6f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009740"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428845"
 ---
 # <a name="enable-microsoft-defender-for-sql-servers-on-machines"></a>コンピューターの SQL サーバーに対して Microsoft Defender を有効にする 
 

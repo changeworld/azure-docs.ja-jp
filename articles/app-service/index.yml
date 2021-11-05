@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: c77ec3cc1abd0f27efc6720d007118346b3def03
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: b4771486e8f64df5005a6cc3a29d5b7c960cde3d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130253347"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131045788"
 landingContent:
 - title: App Service について
   linkLists:
@@ -56,8 +56,6 @@ landingContent:
       url: configure-ssl-bindings.md
     - text: ステージング環境でアプリを実行する
       url: deploy-staging-slots.md
-    - text: ストレージと Microsoft Graph に安全にアクセスする
-      url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
     - text: SSH 経由で Linux コンテナーに接続する
@@ -102,6 +100,24 @@ landingContent:
       url: tutorial-python-postgresql-app.md
     - text: PostgreSQL を使用する Ruby (Rails) アプリ
       url: tutorial-ruby-postgres-app.md
+- title: セキュリティで保護
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure App Service のセキュリティ
+      url: overview-security.md
+  - linkListType: tutorial
+    links:
+    - text: シークレットを使用せずマネージド ID を使用した SQL Database へのアクセス
+      url: tutorial-connect-msi-sql-database.md
+    - text: シークレットを使用せずマネージド ID を使用したストレージと Microsoft Graph へのアクセス
+      url: scenario-secure-app-overview.md
+    - text: Key Vault のシークレットを使用して安全にサービスに接続する
+      url: tutorial-connect-msi-key-vault.md
+    - text: ネットワーク トラフィックを分離してバック エンド接続を行う
+      url: tutorial-networking-isolate-vnet.md
+    - text: ユーザーを認証する
+      url: tutorial-auth-aad.md
 - title: 管理と統合
   linkLists:
   - linkListType: concept
@@ -110,10 +126,6 @@ landingContent:
       url: app-service-plan-manage.md
   - linkListType: tutorial
     links:
-    - text: マネージド ID を利用してリソースへのアクセスを保護する
-      url: app-service-web-tutorial-connect-msi.md
-    - text: ユーザーを認証する
-      url: tutorial-auth-aad.md
     - text: CORS を使用して RESTful API をホストする
       url: app-service-web-tutorial-rest-api.md
     - text: CDN をアプリケーションに追加する

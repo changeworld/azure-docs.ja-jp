@@ -14,79 +14,79 @@ metadata:
   ms.reviewer: vincesm
   ms.custom: it-pro
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2682ed48d5da440e36fe560e7b47dab8f9fa20ed
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: c09bcdde3713f3ab93814cc67b23ded5cc49c17d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121741657"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131057136"
 title: グループに割り当てられている Azure AD ロールをトラブルシューティングする
 summary: ここでは、Azure AD グループへの Azure Active Directory (Azure AD) ロールの割り当てに関する一般的な質問とトラブルシューティングのヒントについて説明します。
 sections:
 - name: 無視
   questions:
   - question: >
-      I'm a Groups Administrator but I can't see the 'Azure AD roles can be assigned to the group' switch.
+      グループ管理者ですが、[グループに Azure AD ロールを割り当てることができる] スイッチが表示されません。
     answer: >
-      Only Privileged Role Administrators or Global Administrators can create a group that's eligible for role assignment. Only users in those roles see this control.
+      特権ロール管理者かグローバル管理者のみが、ロールの割り当ての対象となるグループを作成できます。 これらのロールのユーザーにのみ、このコントロールは表示されます。
   - question: >
-      Who can modify the membership of groups that are assigned to Azure AD roles?
+      Azure AD ロールに割り当てられているグループのメンバーシップは、誰が変更できますか?
     answer: >
-      By default, only Privileged Role Administrator and Global Administrator manage the membership of a role-assignable group, but you can delegate the management of role-assignable groups by adding group owners.
+      既定では、ロールを割り当て可能なグループのメンバーシップを管理するのは特権ロール管理者とグローバル管理者のみですが、グループ所有者を追加して、ロールを割り当て可能なグループの管理を委任することができます。
   - question: >
-      I am a Helpdesk Administrator in my organization but I can't update password of a user who is a Directory Readers. Why does that happen?
+      組織のヘルプデスク管理者ですが、ディレクトリ閲覧者であるユーザーのパスワードを更新できません。 なぜですか?
     answer: >
-      The user might have gotten Directory Readers by way of a role-assignable group. All members and owners of a role-assignable groups are protected. Only users in the Privileged Authentication Administrator or Global Administrator roles can reset credentials for a protected user.
+      そのユーザーは、ロールを割り当て可能なグループ経由でディレクトリ閲覧者となった可能性があります。 ロールを割り当て可能なグループのすべてのメンバーと所有者は保護されています。 特権認証管理者または全体管理者のロールのユーザーのみが、保護されたユーザーの資格情報をリセットできます。
   - question: >
-      I can't update password of a user. They don't have any higher privileged role assigned. Why is it happening?
-    answer: "The user could be an owner of a role-assignable group. We protect owners of role-assignable groups to avoid elevation of privilege. An example might be if a group Contoso_Security_Admins is assigned to Security Administrator role, where Bob is the group owner and Alice is Password Administrator in the organization. If this protection weren't present, Alice could reset Bob's credentials and take over his identity. After that, Alice could add herself or anyone to the group Contoso_Security_Admins group to become a Security Administrator in the organization. To find out if a user is a group owner, get the list of owned objects of that user and see if any of the groups have isAssignableToRole set to true. If yes, then that user is protected and the behavior is by design. Refer to these documentations for getting owned objects:\n\n- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  \n- [List ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)\n"
-  - question: "Can I create an access review on groups that can be assigned to Azure AD roles (specifically, groups with isAssignableToRole property set to true)?  \n"
+      あるユーザーのパスワードを更新できません。 そのユーザーには、高い特権ロールは一切割り当てられていません。 更新できないのはなぜですか?
+    answer: "そのユーザーは、ロールを割り当て可能なグループの所有者である可能性があります。 特権の昇格を避けるため、ロールを割り当て可能なグループの所有者は保護されています。 たとえば、Contoso_Security_Admins というグループがセキュリティ管理者ロールに割り当てられており、Bob がそのグループの所有者で、Alice は組織内のパスワード管理者であるとします。 この保護が存在しないとすれば、Alice が Bob の資格情報をリセットして、Bob の ID を引き継ぐことが可能になります。 そうなると、Alice は自身や他のユーザーを Contoso_Security_Admins グループに追加して、その組織のセキュリティ管理者になることができてしまいます。 あるユーザーがグループの所有者であるかどうかを確認するには、そのユーザーの所有オブジェクトの一覧を取得し、そのグループのいずれかで isAssignableToRole が true に設定されているかどうかを確認します。 設定されている場合、そのユーザーは保護対象であり、この動作は仕様によるものです。 所有オブジェクトの取得については、次のドキュメントを参照してください。\n\n- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  \n- [List ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)\n"
+  - question: "Azure AD ロールに割り当てることができるグループ (具体的には、isAssignableToRole プロパティが true に設定されているグループ) にアクセス レビューを作成できますか?  \n"
     answer: >
-      Yes, you can. If you are on newest version of Access Review, then your reviewers are directed to My Access by default, and only Global Administrators can create access reviews on role-assignable groups. However, if you are on the older version of Access Review, then your reviewers are directed to the Access Panel by default, and both Global Administrators and User Administrator can create access reviews on role-assignable groups. The new experience will be rolled out to all customers on July 28, 2020 but if you’d like to upgrade sooner, make a request to [Azure AD Access Reviews - Updated reviewer experience in My Access Signup](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
+      はい、できます。 グローバル管理者と特権ロール管理者だけが、ロール割り当て可能なグループを作成できます。
   - question: >
-      Can I create an access package and put groups that can be assigned to Azure AD roles in it?
-    answer: "Yes, you can. Global Administrator and User Administrator have the power to put any group in an access package. Nothing changes for Global Administrator, but there's a slight change in User Administrator role permissions. To put a role-assignable group into an access package, you must be a User Administrator and also owner of the role-assignable group. Here's the full table showing who can create access package in Enterprise License Management:\n\nAzure AD directory role | Entitlement management role | Can add security group\\* | Can add Microsoft 365 group\\* | Can add app | Can add SharePoint Online site\n----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------\nGlobal Administrator | n/a | ✔️ | ✔️ | ✔️  | ✔️\nUser Administrator  | n/a  | ✔️  | ✔️  | ✔️\nIntune Administrator | Catalog owner | ✔️  | ✔️  | &nbsp;  | &nbsp;\nExchange Administrator  | Catalog owner  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nTeams service Administrator | Catalog owner  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nSharePoint Administrator | Catalog owner | &nbsp; | ✔️  | &nbsp;  | ✔️ \nApplication Administrator | Catalog owner  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nCloud application Administrator | Catalog owner  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nUser | Catalog owner | Only if group owner | Only if group owner | Only if app owner  | &nbsp;\n\n\\*Group isn't role-assignable; that is, isAssignableToRole = false. If a group is role-assignable, then the person creating the access package must also be owner of the role-assignable group.\n"
+      アクセス パッケージを作成して、Azure AD ロールに割り当てることができるグループをその中に配置することはできますか?
+    answer: "はい、できます。 グローバル管理者とユーザー管理者には、任意のグループをアクセス パッケージに配置する権限があります。 グローバル管理者には何も変更はありませんが、ユーザー管理者ロールのアクセス許可には若干の変更が加えられています。 ロールを割り当て可能なグループをアクセス パッケージに配置するには、ユーザー管理者であると同時に、ロールを割り当て可能なそのグループの所有者でもある必要があります。 エンタープライズ ライセンス管理でアクセス パッケージを作成できるユーザーの完全な表を次に示します。\n\nAzure AD ディレクトリ ロール | エンタイトルメント管理ロール | セキュリティ グループの追加\\* | Microsoft 365 グループの追加\\* | アプリの追加 | SharePoint Online サイトの追加\n----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------\nグローバル管理者 | 該当なし | ✔️ | ✔️ | ✔️  | ✔️\nユーザー管理者  | 該当なし  | ✔️  | ✔️  | ✔️\nIntune 管理者 | カタログ所有者 | ✔️  | ✔️  | &nbsp;  | &nbsp;\nExchange 管理者  | カタログ所有者  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nTeams サービス管理者 | カタログ所有者  | &nbsp; | ✔️  | &nbsp;  | &nbsp;\nSharePoint 管理者 | カタログ所有者 | &nbsp; | ✔️  | &nbsp;  | ✔️ \nアプリケーション管理者 | カタログ所有者  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nクラウドアプリケーション管理者 | カタログ所有者  | &nbsp;  | &nbsp; | ✔️  | &nbsp;\nUser | カタログ所有者 | グループ所有者の場合のみ | グループ所有者の場合のみ | アプリ所有者の場合のみ  | &nbsp;\n\n\\*グループはロールを割り当て可能ではありません。つまり、isAssignableToRole = false です。 グループがロールを割り当て可能な場合は、アクセス パッケージを作成するユーザーは、ロールを割り当て可能なそのグループの所有者でもある必要があります。\n"
   - question: >
-      I can't find "Remove assignment" option in "Assigned Roles". How do I delete role assignment to a user?
+      [割り当てられたロール] に [割り当ての削除] オプションが見つかりません。 ユーザーへのロールの割り当てをどうすれば削除できますか?
     answer: >
-      This answer is applicable only to Azure AD Premium P1 organizations.
+      この回答は、Azure AD Premium P1 組織にのみ適用されます。
 
 
-      1. Sign in to the [Azure portal](https://portal.azure.com) or [Azure AD admin center](https://aad.portal.azure.com) and open **Azure Active Directory**.
+      1. [Azure portal](https://portal.azure.com)または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインし、 **Azure Active Directory** を開きます。
 
-      1. Select users and open a user profile.
+      1. ユーザーを選択して、ユーザー プロファイルを開きます。
 
-      1. Select **Assigned roles**.
+      1. **[割り当てられたロール]** を選択します。
 
-      1. Select the gear icon. A pane opens that can give this information. There's a "Remove" button beside direct assignments. To remove indirect role assignment, remove the user from the group that has been assigned the role.
+      1. 歯車アイコンを選択します。 この情報を提供するペインが開きます。 直接割り当ての横に [削除] ボタンがあります。 間接的なロールの割り当てを削除するには、そのロールに割り当てられているグループからユーザーを削除します。
   - question: >
-      How do I see all groups that are role-assignable?
+      ロールを割り当て可能なすべてのグループを表示するにはどうすればよいですか?
     answer: >
-      Follow these steps:
+      次の手順に従います。
 
 
-      1. Sign in to the [Azure portal](https://portal.azure.com) or [Azure AD admin center](https://aad.portal.azure.com) and open **Azure Active Directory**.
+      1. [Azure portal](https://portal.azure.com)または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインし、 **Azure Active Directory** を開きます。
 
-      1. Select **Groups** > **All groups**.
+      1. **[グループ]**  >  **[すべてのグループ]** の順に選択します。
 
-      1. Select **Add filters**.
+      1. **[フィルターの追加]** を選択します。
 
-      1. Filter to **Role assignable**.
+      1. **[ロールを割り当て可能]** でフィルター処理を実行します。
   - question: >
-      How do I know which role are assigned to a principal directly and indirectly?
+      プリンシパルに直接または間接的に割り当てられているロールを確認するにはどうすればよいですか?
     answer: >
-      Follow these steps:
+      次の手順に従います。
 
 
-      1. Sign in to the [Azure portal](https://portal.azure.com) or [Azure AD admin center](https://aad.portal.azure.com) and open **Azure Active Directory**.
+      1. [Azure portal](https://portal.azure.com)または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインし、 **Azure Active Directory** を開きます。
 
-      1. Select users and open a user profile.
+      1. ユーザーを選択して、ユーザー プロファイルを開きます。
 
-      1. Select **Assigned roles**, and then:
+      1. **[割り当てられたロール]** を選択し、次の操作を実行します。
 
-          - In Azure AD Premium P1 licensed organizations: Select the gear icon. A pane opens that can give this information.
-          - In Azure AD Premium P2 licensed organizations: You'll find direct and inherited license information in the **Membership** column.
-  - question: "Why do we enforce creating a new group for assigning it to role?  \n"
+          - Azure AD Premium P1 ライセンスを持つ組織の場合:歯車アイコンを選択します。 この情報を提供するペインが開きます。
+          - Azure AD Premium P2 ライセンスを持つ組織の場合:直接および継承されたライセンス情報は、 **[メンバーシップ]** 列に表示されます。
+  - question: "役割に割り当てるための新しいグループを作成する必要があるのはなぜですか。  \n"
     answer: >
-      If you assign an existing group to a role, the existing group owner could add other members to this group without the new members realizing that they'll have the role. Because role-assignable groups are powerful, we're putting lots of restrictions to protect them. You don't want changes to the group that would be surprising to the person managing the group.
-additionalContent: "\n## Next steps\n\n- [Use Azure AD groups to manage role assignments](groups-concept.md)\n- [Create a role-assignable group](groups-create-eligible.md)"
+      既存のグループをロールに割り当てると、その既存のグループの所有者がこのグループに他のメンバーを追加し、それらの新しいメンバーが自分はロールを持つことになるということを認識しない事態が起こり得ます。 ロールを割り当て可能なグループは強力なので、それを保護するために多くの制限が設けられています。 グループを管理しているユーザーが驚くような変更をグループに加えることは望ましくありません。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)\n- [ロールを割り当て可能なグループを作成する](groups-create-eligible.md)"

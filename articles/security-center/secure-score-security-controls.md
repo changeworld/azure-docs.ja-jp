@@ -1,37 +1,40 @@
 ---
-title: Azure Security Center 内のセキュリティ スコア
-description: Azure Security Center のセキュリティ スコアとそのセキュリティ コントロールの説明
+title: Microsoft Defender for Cloud のセキュリティ スコア
+description: Microsoft Defender for Cloud のセキュリティ スコアとそのセキュリティ コントロールの説明
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: article
 ms.date: 09/01/2021
 ms.author: memildin
-ms.openlocfilehash: 4bfacebc9961cdbac89252783f47267002a69a66
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6cc1cf4aac9b8f363770495d976ad65b6ff79b49
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597248"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014329"
 ---
-# <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
+# <a name="secure-score-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud のセキュリティ スコア
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="introduction-to-secure-score"></a>セキュリティ スコアの概要
 
-Azure Security Center には主に次の 2 つの目標があります。 
+Microsoft Defender for Cloud には、主に次の 2 つの目標があります。 
 
 - 現在のセキュリティ状況を把握すること
 - セキュリティを効率的かつ効果的に向上させること
 
-これらの目標を達成できるようにする Security Center の中心となる機能が、**セキュリティ スコア** です。
+これらの目標を達成できるようにする Defender for Cloud の中心となる機能が、**セキュリティ スコア** です。
 
-Security Center は、セキュリティの問題について、リソース、サブスクリプション、および組織を継続的に評価します。 その後、すべての結果を 1 つのスコアに集約して、現在のセキュリティの状況を一目で確認できるようにします。スコアが高くなるほど、識別されたリスク レベルが低下します。
+Defender for Cloud は、セキュリティの問題について、リソース、サブスクリプション、組織を継続的に評価します。 その後、すべての結果を 1 つのスコアに集約して、現在のセキュリティの状況を一目で確認できるようにします。スコアが高くなるほど、識別されたリスク レベルが低下します。
 
 セキュリティ スコアは、Azure portal のページにパーセント値として表示されますが、基になる値も明確に示されます。
 
 :::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="ポータルに表示された全体的なセキュリティ スコア。":::
 
-セキュリティを強化するには、スコアを上げるために必要な未処理のアクションについて Security Center の推奨事項に関するページを参照してください。 各推奨事項には、特定の問題を修復するための手順が含まれています。
+セキュリティを強化するには、Defender for Cloud の推奨事項に関するページで、スコアを上げるのに必要な未処理のアクションをレビューします。 各推奨事項には、特定の問題を修復するための手順が含まれています。
 
 推奨事項は、**セキュリティ コントロール** にグループ化されています。 各コントロールは、関連するセキュリティの推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 コントロール内の 1 つのリソースに関する推奨事項を "*すべて*" 修復した場合にのみ、スコアが向上します。 組織が個々の攻撃面をどの程度セキュリティで保護できているかを確認するには、各セキュリティ コントロールのスコアを確認します。
 
@@ -41,9 +44,9 @@ Security Center は、セキュリティの問題について、リソース、�
 
 総合的なセキュリティ スコアに対する各セキュリティ コントロールの影響は、[推奨事項] ページで明確に示されています。
 
-:::image type="content" source="./media/secure-score-security-controls/security-controls.png" alt-text="Azure Security Center のセキュリティ制御とセキュリティ スコアへの影響" lightbox="./media/secure-score-security-controls/security-controls.png":::
+:::image type="content" source="./media/secure-score-security-controls/security-controls.png" alt-text="Microsoft Defender for Cloud のセキュリティ コントロールと、セキュリティ スコアへの影響" lightbox="./media/secure-score-security-controls/security-controls.png":::
 
-セキュリティ コントロールで取得可能なポイントをすべて取得するには、すべてのリソースがセキュリティ コントロール内のすべてのセキュリティの推奨事項に準拠している必要があります。 たとえば、Security Center には、管理ポートをセキュリティで保護する方法に関する推奨事項が複数あります。 今後は、セキュリティ スコアを改善するには、これらをすべて修復する必要があります。
+セキュリティ コントロールで取得可能なポイントをすべて取得するには、すべてのリソースがセキュリティ コントロール内のすべてのセキュリティの推奨事項に準拠している必要があります。 たとえば、Defender for Cloud には、管理ポートをセキュリティで保護する方法に関する複数の推奨事項があります。 今後は、セキュリティ スコアを改善するには、これらをすべて修復する必要があります。
 
 ### <a name="example-scores-for-a-control"></a>コントロールのスコアの例
 
@@ -84,22 +87,22 @@ Security Center は、セキュリティの問題について、リソース、�
 
 ## <a name="improve-your-secure-score"></a>セキュリティ スコアを向上させる
 
-セキュリティ スコアを向上させるには、推奨事項リストのセキュリティの推奨事項を修復してください。 各推奨事項は、リソースごとに手動で修復することも、 **[修正]** オプション (利用可能な場合) を使用して、複数のリソースの問題を迅速に解決することもできます。 詳細については、「[推奨事項の修復](security-center-remediate-recommendations.md)」を参照してください。
+セキュリティ スコアを向上させるには、推奨事項リストのセキュリティの推奨事項を修復してください。 各推奨事項は、リソースごとに手動で修復することも、 **[修正]** オプション (利用可能な場合) を使用して、複数のリソースの問題を迅速に解決することもできます。 詳細については、「[推奨事項の修復](implement-security-recommendations.md)」を参照してください。
 
 関連する推奨事項に対して強制と拒否のオプションを構成することで、スコアを向上させ、ユーザーがスコアに悪影響を与えるリソースを作成しないようにすることもできます。 詳細については、「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照してください。
 
 ## <a name="security-controls-and-their-recommendations"></a>セキュリティ コントロールとその推奨事項
 
-次の表に、Azure Security Center のセキュリティ コントロールを示します。 コントロールごとに、"*すべて*" のリソースにおいて、コントロールに示されている "*すべて*" の推奨事項を修復した場合に取得できるセキュリティ スコアのポイントの最大数が表示されます。 
+次の表に、Microsoft Defender for Cloud のセキュリティコントロールを示します。 コントロールごとに、"*すべて*" のリソースにおいて、コントロールに示されている "*すべて*" の推奨事項を修復した場合に取得できるセキュリティ スコアのポイントの最大数が表示されます。 
 
-Security Center で用意されている一連のセキュリティ推奨事項は、各組織の環境で使用可能なリソースに合わせて調整されています。 推奨事項は、[ポリシーを無効にしたり](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)、[推奨事項から特定のリソースを除外したり](exempt-resource.md)して、さらにカスタマイズできます。 
+Defender for Cloud で提供される一連のセキュリティ推奨事項は、各組織の環境で使用可能なリソースに合わせて調整されています。 推奨事項は、[ポリシーを無効にしたり](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)、[推奨事項から特定のリソースを除外したり](exempt-resource.md)して、さらにカスタマイズできます。 
  
 どの組織でも、割り当てられている Azure Policy イニシアティブを慎重に確認することをお勧めします。 
 
 > [!TIP]
 > イニシアティブのレビューと編集の詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。 
 
-Security Center の既定のセキュリティ イニシアティブは業界のベスト プラクティスと標準に基づいていますが、下に示す組み込みの推奨事項が組織に完全には適合しない場合があります。 したがって、場合によっては、既定のイニシアティブを、満たす必要がある組織独自のポリシー、業界標準、規制標準、ベンチマークに合わせて (セキュリティを損なわずに) 調整する必要があります。<br><br>
+Defender for Cloudのデフォルトのセキュリティイニシアチブは業界のベストプラクティスと標準に基づいていますが、以下にリストされている組み込みの推奨事項が組織に完全に適合しない場合があるシナリオがあります。 したがって、場合によっては、既定のイニシアティブを、満たす必要がある組織独自のポリシー、業界標準、規制標準、ベンチマークに合わせて (セキュリティを損なわずに) 調整する必要があります。<br><br>
 
 [!INCLUDE [security-center-controls-and-recommendations](../../includes/asc/security-control-recommendations.md)]
 
@@ -125,6 +128,6 @@ Security Center の既定のセキュリティ イニシアティブは業界の
 
 関連資料については、次の記事をご覧ください。
 
-- [推奨事項のさまざまな要素に関する詳細](security-center-recommendations.md)
-- [推奨事項を修復する方法を確認する](security-center-remediate-recommendations.md)
+- [推奨事項のさまざまな要素に関する詳細](review-security-recommendations.md)
+- [推奨事項を修復する方法を確認する](implement-security-recommendations.md)
 - [セキュリティ スコアを使用してプログラムで作業するための GitHub ベースのツールを表示する](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

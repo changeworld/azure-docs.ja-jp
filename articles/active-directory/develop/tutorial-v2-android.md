@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: marsma
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40, has-adal-ref
-ms.openlocfilehash: 0c79ad939a28913a13193b2743c6fda98f553663
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 44afa745df2799b18e67e43fe4a24b09089636d5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587083"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050396"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -141,12 +141,12 @@ Android アプリケーションがまだない場合は、次の手順に従っ
     ```
 
     `android:host=` は、Azure portal で登録したパッケージ名に置き換えます。
-    `android:path=` は、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL で **エンコードしない** でください。 署名ハッシュの先頭に `/` があることを確認します。
+    `android:path=` は、Azure portal で登録したキー ハッシュに置き換えます。 署名ハッシュは、URL にエンコードしては **いけません**。 署名ハッシュの先頭に `/` があることを確認します。
     
-    `android:host` 値を置き換える "パッケージ名" は、"com.azuresamples.msalandroidapp" のようになります。
-    `android:path` 値を置き換える "署名ハッシュ" は、"/1wIqXSqBj7w+h11ZifsnqwgyKrY=" のようになります。
+    `android:host` 値を置き換える "パッケージ名" は、`com.azuresamples.msalandroidapp` のようになります。
+    `android:path` 値を置き換える "署名ハッシュ" は、`/1wIqXSqBj7w+h11ZifsnqwgyKrY=` のようになります。
     
-    これらの値は、アプリの登録の [認証] ブレードでも確認できます。 リダイレクト URI は次のようになります: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D"。 この値の最後にある署名ハッシュは URL でエンコードされていますが、`android:path` の値では署名ハッシュは URL でエンコードされていては **なりません**。
+    これらの値は、アプリの登録の [認証] ブレードでも確認できます。 リダイレクト URI は、`msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D` のようになります。 この値では署名ハッシュが URL の最後にエンコードされていますが、`android:path` の値では署名ハッシュを URL にエンコードしては **いけません**。
 
 ## <a name="use-msal"></a>MSAL の使用
 

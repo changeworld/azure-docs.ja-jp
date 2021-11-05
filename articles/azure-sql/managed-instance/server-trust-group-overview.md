@@ -12,12 +12,12 @@ ms.author: sasapopo
 ms.reviewer: mathoma
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ad3d7c45fb621d3f12146548bdb9e5ac5693a622
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 857af87fac233ff15bad924746c87e0856f90b1f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072024"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431049"
 ---
 # <a name="set-up-trust-between-instances-with-server-trust-group-azure-sql-managed-instance"></a>サーバー信頼グループを持つインスタンス間の信頼を設定する (Azure SQL Managed Instance)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,4 +99,4 @@ Azure portal を使用してカスタム ドメイン名を作成するには、
 
 * Azure SQL Managed Instance での分散トランザクションの詳細については、[分散トランザクション](../database/elastic-transactions-overview.md)に関するページを参照してください。
 * リリースの更新情報や既知の問題の状態については、「[最新情報](doc-changes-updates-release-notes-whats-new.md)」を参照してください。
-* 機能要求がある場合は、フォーラム に[SQL Managed Instanceします](https://feedback.azure.com/forums/915676-sql-managed-instance)。
+* 機能に関するご要望がある場合は、[Managed Instance フォーラム](https://feedback.azure.com/d365community/forum/a99f7006-3425-ec11-b6e6-000d3a4f0f84)に追加してください。

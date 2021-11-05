@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: tutorial
 ms.custom: vs-azure, devx-track-azurepowershell
 ms.date: 10/22/2021
-ms.openlocfilehash: 37ebe53f72841141171cb463b53d4de7c1e1d705
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 51c421fbb6dc38dbf4de26e95b82bb455e0b35bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130229505"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051175"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -98,7 +98,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 2. **[HDInsight のオンデマンドのリンクされたサービス]** を選択し、 **[追加]** をクリックします。
 3. **JSON** を次の JSON に置き換えます。
 
-     ```json
+    ```json
     {
         "name": "HDInsightOnDemandLinkedService",
         "properties": {
@@ -299,17 +299,17 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
     :::image type="content" source="media/data-factory-build-your-first-pipeline-using-vs/publish-new-data-factory.png" alt-text="発行 - 新しいデータ ファクトリの設定":::
 
-   1. **[Data Factory の新規作成]** オプションを選択します。
+   1. **[Create New Data Factory]\(Data Factory の新規作成\)** オプションを選択します。
    2. データ ファクトリの一意の **名前** を入力します。 たとえば、**DataFactoryUsingVS09152016** と指定します。 名前はグローバルに一意である必要があります。
    3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
-        > [!IMPORTANT]
-        > サブスクリプションが表示されない場合は、サブスクリプションの管理者または共同管理者のアカウントを使用してログインしたことを確認します。
+      > [!IMPORTANT]
+      > サブスクリプションが表示されない場合は、サブスクリプションの管理者または共同管理者のアカウントを使用してログインしたことを確認します。
    4. 作成するデータ ファクトリの **リソース グループ** を選択します。
    5. データ ファクトリの **リージョン** を選択します。
    6. **[次へ]** をクリックし、 **[項目の発行]** ページに切り替えます。 (**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します。)
-
       > [!IMPORTANT]
       > 発行時に "**Data factory 名 "DataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameDataFactoryUsingVS など)。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。   
+
 1. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、 **[次へ]** をクリックして **[概要]** ページに切り替えます。
 
     :::image type="content" source="media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png" alt-text="Publish items page":::     
@@ -321,20 +321,27 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 注意すべき重要な点は、次のとおりです。
 
 - "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
-    - Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
-        ```powershell   
-        Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-        ```
-        Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
 
-        ```powershell
-        Get-AzResourceProvider
-        ```
-    - Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
+  - Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
+
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
+
+    Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
+
+    ```powershell
+    Get-AzResourceProvider
+    ```
+
+  - Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
+
 - データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+
 - Data Factory インスタンスを作成するには、Azure サブスクリプションの管理者または共同管理者である必要があります。
 
 ### <a name="monitor-pipeline"></a>パイプラインを監視する
+
 この手順では、データ ファクトリの [ダイアグラム] ビューを使用してパイプラインを監視します。 
 
 #### <a name="monitor-pipeline-using-diagram-view"></a>ダイアグラム ビューを使用してパイプラインを監視する
@@ -489,7 +496,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
             "name": "LastName",
             "type": "String"
         }
-    ],
+    ]
     ```
 
     次の構成ファイルのように、プロパティを構成します (0 から始まるインデックスを使用)。
@@ -498,15 +505,15 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
     {
         "name": "$.properties.structure[0].name",
         "value": "FirstName"
-    }
+    },
     {
         "name": "$.properties.structure[0].type",
         "value": "String"
-    }
+    },
     {
         "name": "$.properties.structure[1].name",
         "value": "LastName"
-    }
+    },
     {
         "name": "$.properties.structure[1].type",
         "value": "String"
@@ -514,13 +521,14 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
     ```
 
 ### <a name="property-names-with-spaces"></a>スペースが含まれているプロパティ名
+
 プロパティ名にスペースが含まれている場合は、次の例 (Database server name) のように、角かっこを使用します。
 
 ```json
- {
-     "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
-     "value": "MyAsqlServer.database.windows.net"
- }
+{
+    "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
+    "value": "MyAsqlServer.database.windows.net"
+}
 ```
 
 ### <a name="deploy-solution-using-a-configuration"></a>構成を指定してソリューションをデプロイする

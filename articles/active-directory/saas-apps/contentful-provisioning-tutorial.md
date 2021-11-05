@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/11/2020
 ms.author: thwimmer
-ms.openlocfilehash: bb87222737e4c85eebb2869a812f44d9e703c8d4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 60647cbceed7b7917daa18e8b8c7ed6531ebe0c9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322438"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059121"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>チュートリアル:Contentful を構成して自動ユーザー プロビジョニングに対応させる
 
@@ -62,7 +62,7 @@ ms.locfileid: "122322438"
 
 5. **[個人用アクセス トークンの生成]** を選択します。
 
-    ![url](media/contentful-provisioning-tutorial/generate.png)
+    ![個人用アクセス トークンを生成するための SCIM URL を示すスクリーンショット。](media/contentful-provisioning-tutorial/generate.png)
 
 6. モーダル ウィンドウで、個人用アクセス トークンの名前を入力し、 **[生成]** を選択します。
 

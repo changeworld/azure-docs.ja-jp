@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cfa2c8b029a8c8267249907d3f67582a2a38c139
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4344d8c12c139c428f44d417ccde2c5e950ed307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272099"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477169"
 ---
 # <a name="update-azure-powershell-modules-in-automation"></a>Automation で Azure PowerShell モジュールを更新する
 
@@ -36,11 +36,12 @@ Automation アカウントの[システム割り当てマネージド ID また�
 現在、AZ モジュールはポータルからのみ更新できます。 PowerShell と ARM テンプレートからの更新は、今後できるようになる予定です。 次の手順では、既定の Az モジュールのみが更新されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、お使いの Automation アカウントに移動します。
-1.  **[共有リソース]** で、 **[PowerShell モジュール]** を選択します。
+1.  **[共有リソース]** で、 **[モジュール]** を選択します。
 1.  **[Update Az modules]** \(Az モジュールを更新する\) を選択します。
 1. **[Module to Update]** \(更新するモジュール\) を選択します。 既定では、Az モジュールが表示されます。  
-1. ドロップダウン リストから **[モジュール バージョン]** を選択します。
+1. ドロップダウン リストから **[モジュール バージョン]** と **[ランタイム バージョン]** を選択します
 1. **[更新]** を選択し、選択したバージョンに Az モジュールを更新します。
+   **[モジュール]** ページでは、次のように一覧を表示できます。
 
    :::image type="content" source="./media/automation-update-azure-modules/update-az-modules-portal.png" alt-text="[Az モジュールを更新する] ページと選択。":::
 

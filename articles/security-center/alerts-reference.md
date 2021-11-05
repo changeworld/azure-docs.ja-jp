@@ -1,28 +1,35 @@
 ---
-title: Azure Security Center のすべてのセキュリティ アラートの参照テーブル
-description: この記事では、Azure Security Center の Azure Defender ダッシュボードで表示されるセキュリティ アラートの一覧を示します
+title: Microsoft Defender for Cloud のすべてのセキュリティ アラートのリファレンス テーブル
+description: この記事では、Microsoft Defender for Cloud に表示されるセキュリティ アラートの一覧を示します
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 10/18/2021
 ms.author: memildin
-ms.openlocfilehash: 3ebcf82d59262bf36eb7dfb9f2cf6910263517f9
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3c26bf3cd5b5b6e130f89c3e3b593112e2853d1c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138746"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014825"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
-この記事では、Azure Security Center から発せられることがあるセキュリティ アラートと、Azure Defender プランを有効にしている場合はそれもリストアップします。 お使いの環境で示されるアラートは、保護対象のリソースとサービスおよびカスタマイズした構成によって異なります。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-このページの下部には、[MITRE ATT&CK マトリックス](https://attack.mitre.org/versions/v7/)のバージョン 7 に対応した Azure Security Center のキル チェーンについて説明した表があります。
+この記事では、Microsoft Defender for Cloud と、有効にした Microsoft Defender プランから取得できるセキュリティ アラートの一覧を示します。 お使いの環境で示されるアラートは、保護対象のリソースとサービスおよびカスタマイズした構成によって異なります。
 
-これらのアラートに対応する方法については、[こちら](security-center-managing-and-responding-alerts.md)を参照してください。
+このページの下部には [、MITRE ATT](https://attack.mitre.org/versions/v7/)&CK マトリックス のバージョン 7 に合わせて配置された Microsoft Defender for Cloud キル チェーンを説明する表があります。
+
+これらのアラートに対応する方法については、[こちら](managing-and-responding-alerts.md)を参照してください。
 
 アラートをエクスポートする方法については、[こちら](continuous-export.md)を参照してください。
+
+> [!NOTE]
+> アラートの出力元によって、表示されるまでの時間が変わる場合があります。 たとえば、ネットワーク トラフィックの分析を必要とするアラートは、仮想マシンで実行されている疑わしいプロセスに関連するアラートよりも、表示されるまでより長い時間がかかる可能性があります。
+
 
 ## <a name="alerts-for-windows-machines"></a><a name="alerts-windows"></a>Windows マシンのアラート
 
@@ -451,7 +458,7 @@ ms.locfileid: "130138746"
 | **PREVIEW - Storage account with potentially sensitive data has been detected with a publicly exposed container (プレビュー - 潜在的な機密データが含まれているストレージ アカウントが、一般に公開されているコンテナーで検出されました)**<br>(Storage.Blob_OpenACL)                                                                                                                                           | ストレージ アカウント内のコンテナーのアクセス ポリシーが、匿名アクセスを許可するように変更されました。 コンテナーに機密データが保持されている場合、これはデータ侵害につながる可能性があります。 このアラートは、Azure アクティビティ ログの分析に基づいています。<br>適用対象:Azure Blob Storage、Azure Data Lake Storage Gen2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Privilege Escalation (特権昇格)                         | Medium        |
 | **Access from a Tor exit node to a storage account (Tor 出口ノードからストレージ アカウントへのアクセス)**<br>(Storage.Blob_TorAnomaly<br>Storage.Files_TorAnomaly)                                                                                                                                                                         | このアカウントが Tor (匿名化プロキシ) のアクティブな出口ノードとして知られている IP アドレスから正常にアクセスされていることを示します。 このアラートの重大度では、使用された認証の種類 (ある場合) と、これがそのようなアクセスの最初のケースであるかどうかが考慮されます。 原因として考えられるのは、攻撃者が Tor を使用して、ご自分のストレージ アカウントにアクセスした、あるいは正当なユーザーが Tor を使用して、ご利用のストレージ アカウントにアクセスしたことです。<br>適用対象:Azure Blob Storage、Azure Files、Azure Data Lake Storage Gen2                                                                                                                                                                                                                                                                                                         | プローブ、悪用                        | 高          |
 | **Access from an unusual location to a storage account (ストレージ アカウントへの通常とは異なる場所からのアクセス)**<br>(Storage.Blob_GeoAnomaly<br>Storage.Files_GeoAnomaly)                                                                                                                                                                     | Azure Storage アカウントへのアクセス パターンに変化があったことを示しています。 最近のアクティビティと比較して見慣れない IP アドレスから誰かがこのアカウントにアクセスしました。 攻撃者がアカウントへのアクセス権を取得したか、あるいは正当なユーザーが新しい、または通常とは異なる地理的場所から接続しました。 後者の例には、新しいアプリケーションまたは開発者からのリモート メンテナンスがあります。<br>適用対象:Azure Blob Storage、Azure Files、Azure Data Lake Storage Gen2                                                                                                                                                                                                                                                                                                                                | 悪用                                 | 低           |
-| **Anonymous access to a storage account (ストレージ アカウントに対する匿名アクセス)**<br>(Storage.Blob_AnonymousAccessAnomaly)                                                                                                                                                                                                    | Azure Storage アカウントへのアクセス パターンに変化があったことを示しています。 誰かがこのストレージ アカウントのコンテナーに、認証せずにアクセスしました。 このコンテナーへのアクセスは、通常は SAS トークン、ストレージ アカウント キー、または AAD によって認証されます。 これは、攻撃者がストレージ アカウントへのパブリック読み取りアクセスを悪用したことを示している可能性があります。<br>適用対象:Azure Blob Storage                                                                                                                                                                                                                                                                                                                                                                                                                                          | 悪用                                 | 高          |
+| **Anonymous access to a storage account (ストレージ アカウントに対する匿名アクセス)**<br>(Storage.Blob_AnonymousAccessAnomaly)                                                                                                                                                                                                    | Azure Storage アカウントへのアクセス パターンに変化があったことを示しています。 誰かが認証を行わずに、このストレージ アカウント内のコンテナーにアクセスしました。 このコンテナーへのアクセスは、通常は SAS トークン、ストレージ アカウント キー、または AAD によって認証されます。 これは、攻撃者がストレージ アカウントへのパブリック読み取りアクセスを悪用したことを示している可能性があります。<br>適用対象:Azure Blob Storage                                                                                                                                                                                                                                                                                                                                                                                                                                          | 悪用                                 | 高          |
 | **Potential malware uploaded to a storage account (マルウェアがストレージ アカウントにアップロードされた可能性)**<br>(Storage.Blob_MalwareHashReputation<br>Storage.Files_MalwareHashReputation)                                                                                                                                                    | マルウェアを含んだ BLOB が、ストレージ アカウント内の BLOB コンテナーまたはファイル共有にアップロードされた可能性があることを示します。 このアラートは、ウイルス、トロイの木馬、スパイウェア、ランサムウェアのハッシュなど、Microsoft の脅威インテリジェンスの機能を活用したハッシュ評価分析に基づいています。 原因としては、攻撃者が意図的にマルウェアをアップロードするケースと、正当なユーザーが意図せず悪意のある BLOB をアップロードしてしまうケースが考えられます。<br>適用対象:Azure Blob Storage、Azure Files (REST API によるトランザクションについてのみ)<br>[Azure におけるマルウェアのハッシュ評価分析](defender-for-storage-introduction.md#what-is-hash-reputation-analysis-for-malware)の詳細に関するページを参照してください。<br>[Microsoft の脅威インテリジェンス機能](https://go.microsoft.com/fwlink/?linkid=2128684)の詳細に関するページを参照してください。 | 侵入の拡大                             | 高          |
 | **Unusual access inspection in a storage account (ストレージ アカウントでの通常と異なるアクセスの検査)**<br>(Storage.Blob_AccessInspectionAnomaly<br>Storage.Files_AccessInspectionAnomaly)                                                                                                                                                 | ストレージ アカウントのアクセス許可が、このアカウントでの最近のアクティビティと比較して、通常とは異なる方法で検査されたことを示します。 原因として考えられるのは、攻撃者が将来の攻撃のための偵察を実行したことです。<br>適用対象:Azure Blob Storage、Azure Files                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | コレクション                                   | Medium        |
 | **Unusual amount of data extracted from a storage account (通常とは異なる量のデータがストレージ アカウントから抽出されました)**<br>(Storage.Blob_DataExfiltration.AmountOfDataAnomaly<br>Storage.Blob_DataExfiltration.NumberOfBlobsAnomaly<br>Storage.Files_DataExfiltration.AmountOfDataAnomaly<br>Storage.Files_DataExfiltration.NumberOfFilesAnomaly) | このストレージ コンテナーの最近のアクティビティと比較して、異常に大量のデータが抽出されたことを示します。 原因として考えられるのは、攻撃者が Blob Storage を保持するコンテナーから大量のデータを抽出したことです。<br>適用対象:Azure Blob Storage、Azure Files、Azure Data Lake Storage Gen2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 窃盗                                 | Medium        |
@@ -531,7 +538,7 @@ ms.locfileid: "130138746"
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>セキュリティ インシデント アラート
 
-[詳細な説明と注意](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
+[詳細な説明と注意](alerts-overview.md#cloud-smart-alert-correlation-incidents)
 
 | アラート:                                                | 説明                                                                                                                                                                         | MITRE の方針<br>([詳細はこちら](#intentions)) | 重大度 |
 |------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
@@ -544,11 +551,11 @@ ms.locfileid: "130138746"
 
 ## <a name="mitre-attck-tactics"></a>MITRE ATT&CK の方針 <a name="intentions"></a>
 
-攻撃の意図を理解することは、イベントをより簡単に調査して報告するのに役立ちます。 これらの作業に役立つように、Azure Security Center のアラートには、多くのアラートを含む MITRE の方針が含まれています。
+攻撃の意図を理解することは、イベントをより簡単に調査して報告するのに役立ちます。 これらの作業を支援するために、Microsoft Defender for Cloud alerts には多くのアラートがある MITRE 戦術が含まれています。
 
 偵察からデータ窃盗までのサイバー攻撃の流れを説明する一連の手順は、"キル チェーン" と呼ばれることがよくあります。 
 
-Security Center でサポートされているキル チェーンの意図は、次の表で説明されているように、[MITRE ATT&CK マトリックスのバージョン 7](https://attack.mitre.org/versions/v7/) に基づいています。
+クラウドのサポートされている強制終了チェーンインテントは、次の表で説明する [MITRE ATT&のマトリックスのバージョン 7](https://attack.mitre.org/versions/v7/) に基づいています。
 
 | 方針                   | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -573,6 +580,6 @@ Security Center でサポートされているキル チェーンの意図は、
 ## <a name="next-steps"></a>次のステップ
 Azure Defender セキュリティ アラートの詳細については、以下を参照してください。
 
-- [Security alerts in Azure Security Center](security-center-alerts-overview.md)
-- [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
-- [継続的に Security Center データをエクスポートする](continuous-export.md)
+- [Microsoft Defender for Cloud のセキュリティアラート](alerts-overview.md)
+- [Microsoft Defender for Cloud でのセキュリティの警告の管理と対応](managing-and-responding-alerts.md)
+- [クラウドデータに対して Defender を継続的にエクスポートする](continuous-export.md)

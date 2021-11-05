@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 2e3e13f0db5b96d8d1cd8ca3eaa7b900dacb0d72
-  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+  ms.openlocfilehash: f65f03a35d744b3131b89c2e973abd1cd6b7e3ef
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113358315"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131018509"
 title: Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 summary: この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 sections:
@@ -46,7 +46,7 @@ sections:
   - question: >
       Azure ストレージ アカウントの VHD ファイルを使用して、別のサブスクリプションのマネージド ディスクを作成できますか?
     answer: >
-      はい。
+      正解です。
   - question: >
       Azure ストレージ アカウントの VHD ファイルを使用して、別のリージョンにマネージド ディスクを作成できますか?
     answer: >
@@ -62,7 +62,7 @@ sections:
   - question: >
       Managed Disks は Azure Portal の既定オプションですか?
     answer: >
-      はい。
+      正解です。
   - question: >
       空のマネージド ディスクを作成できますか?
     answer: >
@@ -105,7 +105,7 @@ sections:
   - question: >
       128 GB のディスクを作成した後でサイズを 130 ギビバイト (GiB) に増やした場合は、1 つ上のディスク サイズ (256 GiB) として課金されますか?
     answer: >
-      はい。
+      正解です。
   - question: >
       ローカル冗長ストレージ、geo 冗長ストレージ、およびゾーン冗長ストレージ マネージド ディスクを作成できますか?
     answer: >
@@ -143,10 +143,6 @@ sections:
 
       [第 2 世代のイメージ](./generation-2.md)では、データ ディスクだけでなく、OS ディスクでも GPT パーティション分割を使用できます。
   - question: >
-      どのような種類のディスクでスナップショットがサポートされますか。
-    answer: >
-      Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra ディスクでは、スナップショットはサポートされません。
-  - question: >
       Azure ディスク予約とは
     answer: >
       ディスク予約は、1 年分のディスク ストレージを事前に購入し、総コストを削減するオプションです。 Azure ディスク予約の詳細については、次の記事を参照してください。[Azure Disk に予約割引が適用されるしくみについて](../cost-management-billing/reservations/understand-disk-reservations.md)。
@@ -163,6 +159,39 @@ sections:
       Standard SSD ディスクは "単一インスタンス VM SLA" をサポートしますか?
     answer: >
       はい。すべてのディスクの種類で単一インスタンスの VM SLA がサポートされています。
+- name: スナップショット
+  questions:
+  - question: >
+      暗号化された増分スナップショットを複数のリージョンにコピーできますか。
+    answer: >
+      正解です。
+  - question: >
+      同じディスクの複数の増分スナップショットを1つのリージョンから別のリージョンに並列にコピーできますか。
+    answer: >
+      いいえ、前のコピーが終了するまで待つ必要があります。
+  - question: >
+      複数のディスクの増分スナップショットを同時にコピーできますか。
+    answer: >
+      現在、はい。
+  - question: >
+      増分スナップショットが別のリージョンへのコピーを完了したことを検査するにはどうすればよいですか。
+    answer: >
+      **"実行可能パーセント** " プロパティをチェックすることで、コピーの状態を確認できます。 このプロパティが100の場合、スナップショットの準備ができています。
+  - question: >
+      別のリージョンへの作成順序以外の順序でスナップショットをコピーできますか。
+    answer: >
+      いいえ、スナップショットは、作成順に他のリージョンにコピーする必要があります。
+  - question: >
+      リージョン間のコピーが完了する前にソースの増分スナップショットが削除された場合、どうなりますか。
+    answer: >
+      コピーは失敗します。
+  - question: >
+      管理スナップショットおよびイメージは、暗号化されますか?
+    answer: "はい。 すべての管理スナップショットおよびイメージは、自動的に暗号化されます。 \n"
+  - question: >
+      どのような種類のディスクでスナップショットがサポートされますか。
+    answer: >
+      Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra ディスクでは、スナップショットはサポートされません。
 - name: Azure 共有ディスク
   questions:
   - question: >
@@ -192,7 +221,7 @@ sections:
   - question: >
       共有ディスクをサイズ変更できますか?
     answer: >
-      はい。
+      正解です。
   - question: >
       共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にできますか?
     answer: >
@@ -341,14 +370,11 @@ sections:
     answer: "いいえ。 プラットフォーム マネージド キーとカスタマー マネージド キーの両方でのサーバー側の暗号化は、マネージド ディスクを利用できるあらゆるリージョンで利用できます。 \n"
   - question: >
       Azure Site Recovery では、障害時にオンプレミスから Azure に復旧するシナリオと Azure から Azure に復旧するシナリオで、カスタマー マネージド キーによるサーバー側の暗号化をサポートしていますか?
-    answer: "はい。 \n"
+    answer: "正解です。 \n"
   - question: >
       カスタマー マネージド キーとサーバー側の暗号化で暗号化したマネージド ディスクを Azure Backup サービスを利用してバックアップできますか?
     answer: >
-      はい。
-  - question: >
-      管理スナップショットおよびイメージは、暗号化されますか?
-    answer: "はい。 すべての管理スナップショットおよびイメージは、自動的に暗号化されます。 \n"
+      正解です。
   - question: >
       暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに変換できますか?
     answer: >
@@ -361,7 +387,7 @@ sections:
   questions:
   - question: "VM が使用するサイズ シリーズが Premium SSD ディスク (DSv2 など) をサポートしている場合、Premium データ ディスクと Standard データ ディスクの両方をアタッチできますか? \n"
     answer: >
-      はい。
+      正解です。
   - question: >
       Premium と Standard 両方のデータ ディスクを、Premium SSD ディスクをサポートしないサイズ シリーズ (D、Dv2、G、F シリーズなど) にアタッチできますか?
     answer: >
@@ -450,17 +476,17 @@ sections:
   - question: >
       既存のマネージド ディスクのサイズを 4 テビバイト (TiB) 未満から新しく導入された最大 32 TiB のディスク サイズに変更することはできますか?
     answer: >
-      はい。
+      正解です。
   - question: >
       Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズはどれくらいですか?
     answer: >
       Azure Backup でサポートされる最大のディスク サイズは、32 TiB (暗号化されたディスクの場合は 4 TiB) です。 Azure Site Recovery によってサポートされる最大のディスク サイズは 8 TiB です。 Azure Site Recovery では、最大 32 TiB の大きなディスクのサポートをまだ利用できません。
   - question: >
-      大容量ディスク サイズ (> 4 TiB) の Standard SSD と Standard HDD ディスクで最適化されたディスク IOPS と帯域幅を実現するために推奨される VM サイズはどれくらいですか?
+      最適化されたディスク IOPS と帯域幅を実現するために、Standard SSD および Standard HDD ディスクに対して、より大きなディスク サイズ (>4 TiB) に対して推奨される VM サイズは何ですか?
     answer: >
       大容量ディスク サイズ (> 4 TiB) の Standard SSD と Standard HDD で、500 IOPS と 60 MiB/秒を超えるディスク スループットを実現するには、次のいずれかの VM サイズの新しい VM をデプロイしてパフォーマンスを最適化することをお勧めします。B シリーズ、DSv2 シリーズ、Dsv3 シリーズ、ESv3 シリーズ、Fs シリーズ、Fsv2 シリーズ、M シリーズ、GS シリーズ、NCv2 シリーズ、NCv3 シリーズ、または Ls シリーズの VM。 既存の VM、または上記の推奨サイズ以外のサイズの VMに大容量ディスクをアタッチすると、パフォーマンスが低下する可能性があります。
   - question: >
-      大容量ディスク サイズのディスクのプレビュー中にデプロイしたディスク (>4 TiB) を、GA で得られる IOPS と帯域幅を実現するためにアップグレードするにはどうすればよいですか?
+      GAでより高いIOPSと帯域幅を取得するために、より大きなディスク サイズのプレビュー中にデプロイされたディスク (>4 TiB) をアップグレードするにはどうすればよいですか？
     answer: >
       ディスクがアタッチされている VM を停止して起動するか、ディスクをデタッチして再びアタッチします。 GA では、Premium SSD と Standard SSD の両方で、大容量ディスク サイズのディスクのパフォーマンス目標が高められています。
   - question: >
@@ -498,7 +524,7 @@ sections:
   - question: >
       ディスクまたはスナップショットの SAS URI を使用して、ディスクに関連付けられているプライベート エンドポイントのサブネットと同じサブネットにある VM の基になる VHD をダウンロードすることはできますか?
     answer: >
-      はい。
+      正解です。
   - question: >
       ディスクまたはスナップショットの SAS URI を使用して、ディスクに関連付けられていないプライベート エンドポイントのサブネットと同じサブネットにない VM の基になる VHD をダウンロードすることはできますか?
     answer: >-

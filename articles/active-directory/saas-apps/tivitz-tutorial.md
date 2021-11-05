@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a9a9bd0c48eda6ab218fa4b8245c4a6b415e16c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3d833e341f6adf50f1f9dd2c5d141daf16db2d76
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783047"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>チュートリアル: Azure Active Directory と TiViTz の統合
 

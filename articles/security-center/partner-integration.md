@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: b5b6869cf1d61f89ce9ac072411b0786da552a46
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b57e9c83ffee4d3458599edd65bc944970728a8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091926"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437811"
 ---
 # <a name="integrate-security-solutions-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud でセキュリティ ソリューションを統合します。
 

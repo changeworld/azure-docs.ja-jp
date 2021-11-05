@@ -7,13 +7,12 @@ ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6a507f16918bfbba1e31f52889af9b1c16c839e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 35567d7e52259095a04be2fbfd1d865d267949c2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009683"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422446"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker ホストのセキュリティを強化する
 
@@ -33,7 +32,7 @@ Defender for Cloud には、CI Docker ベンチマークのルールセット全
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|[Microsoft Defender for servers が必要](defender-for-servers-introduction.md)|
+|価格:|[Microsoft Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|ホストが接続するワークスペースの **閲覧者**|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png":::国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||

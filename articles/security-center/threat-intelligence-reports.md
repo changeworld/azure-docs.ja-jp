@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 31a3a123356e3417aa80672c305d516651c9e23c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 190cc14274b8e96434ab82fe7ff1df486d1b608b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092691"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472088"
 ---
 # <a name="microsoft-defender-for-cloud-threat-intelligence-report"></a>Microsoft Defender for Cloud の脅威インテリジェンス レポート。
 

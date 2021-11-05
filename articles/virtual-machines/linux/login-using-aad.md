@@ -4,24 +4,24 @@ description: Azure Active Directory 認証を使用してサインインする�
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/11/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7679c10a5b40edb163974c246fe7fb219ec8effa
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 5ad78f50685aeb7a5b2133173ae726980012878b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274636"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074470"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>非推奨: デバイス コード フロー認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする
 
 > [!CAUTION]
-> **この記事で説明されているパブリック プレビュー機能は、2021 年 8 月 15 日に非推奨となります。**
+> **この記事で説明するパブリック プレビュー機能は、2021 年 8 月 15 日に非推奨とされました。**
 > 
 > この機能は、証明書ベースの認証を使用して Azure AD と SSH を使用する機能に置き換えられています。 詳細については、[プレビュー: SSH 証明書ベースの認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md)方法に関する記事を参照してください。 古いバージョンからこのバージョンに移行するには、[以前のプレビューからの移行](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md#migration-from-previous-preview)に関するセクションを参照してください
 
@@ -211,7 +211,7 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 
 ## <a name="preview-feedback"></a>プレビューのフィードバック
 
-[Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、このプレビュー機能に関するフィードバックを共有するか、その使用に関する問題を報告してください
+[Azure AD フィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)で、このプレビュー機能に関するフィードバックを共有するか、その使用に関する問題を報告してください
 
 ## <a name="next-steps"></a>次のステップ
 

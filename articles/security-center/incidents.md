@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3977d95358c20b98551170394bcd846d0b4e8358
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 739c7264a3a7199ad5dfd36a20267d86fd582a23
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017466"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452967"
 ---
 # <a name="manage-security-incidents-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud でセキュリティ インシデントを管理する
 

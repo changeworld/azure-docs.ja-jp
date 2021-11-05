@@ -4,12 +4,12 @@ description: メトリックをエクスポートするときの NULL とゼロ�
 services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
-ms.openlocfilehash: 47b98fe46ac1f2a3e2f3f1a8078ad9ca6f867554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53c5aad7061afb0479e9678a188fe99779893fef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048847"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017884"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポート可能な Azure Monitor プラットフォーム メトリック
 
@@ -17,11 +17,11 @@ Azure Monitor には、構成なしの[プラットフォーム メトリック]
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>診断設定を使用してエクスポートできないメトリック
 
-この場所にあったコンテンツは、[Azure Monitor メトリックのサポート リスト](./metrics-supported.md#exporting-platform-metrics-to-other-locations)に移動されました。
+「exportable?」を参照してください。 [サポートされているメトリック [] の一覧Azure Monitor列](./metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
-診断設定を使用してメトリックをエクスポートする場合は、制限があります。 メトリックはすべて、REST API を使用してエクスポートできます。 
+診断設定を使用してメトリックをエクスポートする場合は、制限があります。 ただし、すべてのメトリックは、 を使用してエクスポートREST API。
 
-## <a name="exported-zero-vs-null-values"></a>エクスポートされるゼロ値と NULL 値の比較 
+## <a name="exported-zero-vs-null-values"></a>エクスポートされるゼロ値と NULL 値の比較
 
 0 または NULL 値を処理する場合、メトリックの動作は異なります。  メトリックの中には、データが取得されない場合に 0 を報告するものがあります (たとえば、http エラーに関するメトリック)。 他には、データが取得されない場合に NULL を格納するメトリックもあります。それによって、リソースがオフラインであることを示すことができるからです。 これらのメトリックをグラフ化する場合は、NULL 値を[破線](metrics-troubleshoot.md#chart-shows-dashed-line)として表示することで、違いを確認できます。 
 
@@ -36,7 +36,7 @@ Azure Monitor には、構成なしの[プラットフォーム メトリック]
 すべてのパブリックおよびプライベート クラウドで変更が行われました。
 
 この変更は、次のいずれのエクスペリエンスの動作にも影響しませんでした。 
-   - 診断設定を使用してエクスポートされるプラットフォーム リソース ログ
+   - 診断ログを使用してエクスポートされたプラットフォーム リソース ログ設定
    - メトリックス エクスプローラーのメトリック グラフ
    - プラットフォーム メトリックに関するアラート
  

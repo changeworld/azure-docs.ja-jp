@@ -2,21 +2,21 @@
 title: トークン エンリッチメント - Azure Active Directory B2C
 description: API を使用して、外部ソースからの要求でトークンを強化します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/29/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 20473d6a5dcbdc826605d46928a7bfbb90792e0e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 8f5bf34424754106c6d86195c37d23c3c9060c1c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186067"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008353"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>API コネクタを使用して外部ソースからの要求でトークンを強化する
 
@@ -105,7 +105,7 @@ API に送信される要求は、ユーザーに定義した情報によって�
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、[Azure AD B2C でカスタム属性を定義する方法](user-flow-custom-attributes.md)に関するページを参照してください。
 
 また、これらの要求は通常、この手順のすべての要求で送信されます。
-- **UI ロケール ('ui_locales')** - デバイスに構成されているエンドユーザーのロケール。 これを API で使用して、国際化された応答を返すことができます。
+- **UI ロケール ('ui_locales')** - デバイスで構成されているエンド ユーザーのロケール。 これを API で使用して、国際化された応答を返すことができます。
 - **ステップ ('step')** - API コネクタが呼び出されたユーザー フロー上のステップまたはポイント。 この手順の値は ` です。
 - **クライアント ID ('client_id')** - エンド ユーザーがユーザー フローで認証しているアプリケーションの `appId` 値。 これは、アクセス トークンのリソース アプリケーションの `appId` では *ありません*。
 - **objectId** - ユーザーの識別子。 これを使用して、ダウンストリーム サービスに対して、ユーザーに関する情報のクエリを実行できます。
@@ -149,7 +149,7 @@ Content-type: application/json
 | version     | String | はい      | API のバージョン。                                                    |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | **アプリケーション要求** として選択されている場合は、トークンで返すことができます。                                        |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | `_<extensions-app-id>_` は "*省略可能*" であり、要求に含める必要はありません。 **アプリケーション要求** として選択されている場合は、トークンで返すことができます。  |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | `_<extensions-app-id>_` は *省略可能* であり、要求に含める必要はありません。 **アプリケーション要求** として選択されている場合は、トークンで返すことができます。  |
 
 ::: zone-end
 
@@ -397,7 +397,7 @@ REST API をデプロイした後、`REST-GetProfile` 技術プロファイル�
 
 ::: zone-end
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ::: zone pivot="b2c-user-flow"
 
@@ -415,5 +415,3 @@ API をセキュリティで保護する方法については、次の記事を�
 - [リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
 
 ::: zone-end
-
-

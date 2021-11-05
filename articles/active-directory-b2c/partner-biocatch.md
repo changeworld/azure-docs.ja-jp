@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d090d6c97a26b78799adf8c5927e6e680c43938a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 173ef82e77e44f3b7e2a664d613b1810995fee21
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596507"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044800"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C と共に BioCatch を構成する
 
@@ -84,7 +84,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 2. 拡張機能ファイルを継承する新しいファイルを作成します。
 
-    ```XML
+    ```xml
     <BasePolicy> 
 
         <TenantId>tenant.onmicrosoft.com</TenantId> 
@@ -96,7 +96,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 3. BuildingBlocks リソースの下に、入力ボックスを非表示にするカスタム UI への参照を作成します。
 
-    ```XML
+    ```xml
     <ContentDefinitions> 
 
         <ContentDefinition Id="api.selfasserted"> 
@@ -112,7 +112,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. BuildingBlocks リソースの下に次のクレームを追加します。
 
-    ```XML
+    ```xml
     <ClaimsSchema> 
 
           <ClaimType Id="riskLevel"> 
@@ -146,7 +146,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 5. クライアント セッション ID フィールドに対して、セルフアサート クレーム プロバイダーを構成します。
 
-    ```XML
+    ```xml
     <ClaimsProvider> 
 
           <DisplayName>Client Session ID Claims Provider</DisplayName> 
@@ -190,7 +190,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 6. BioCatch に対して REST API クレーム プロバイダーを構成します。 
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="BioCatch-API-GETSCORE"> 
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
@@ -236,8 +236,8 @@ document.getElementById("clientSessionId").style.display = 'none';
       </TechnicalProfiles>
     ```
 
-    > [!Note]
-    > BioCatch により、構成する URL、顧客 ID、一意のユーザー ID (uuID) が提供されます。 顧客の SessionID クレームは、BioCatch に querystring パラメーターとして渡されます。 アクティビティの種類 (*MAKE_PAYMENT* など) を選択できます。
+    > [!NOTE]
+    > BioCatch により、構成する URL、顧客 ID、一意のユーザー ID (uuID) が提供されます。 顧客の セッションID クレームは、BioCatch に クエリ文字列パラメーターとして渡されます。 アクティビティの種類 (*MAKE_PAYMENT* など) を選択できます。
 
 7. userjourney を構成します。例に従ってください
 
@@ -247,7 +247,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
    1. 返されたクレームの "*リスク*" が "*低い*" 場合は、MFA の手順をスキップします。それ以外の場合は、MFA をユーザーに強制します
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
           <ClaimsExchanges> 
@@ -295,7 +295,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
     BioCatch から返された情報 (特に *risklevel* と *score*) をトークン内のクレームとしてアプリケーションに渡すと役立ちます。
 
-    ```XML
+    ```xml
     <RelyingParty> 
 
     <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 

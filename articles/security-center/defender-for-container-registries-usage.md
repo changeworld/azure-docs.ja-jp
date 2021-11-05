@@ -1,26 +1,29 @@
 ---
-title: コンテナー レジストリ用の Azure Defender を使用する方法
-description: コンテナー レジストリ用の Azure Defender を使用して、Linux でホストされたレジストリ内の Linux イメージをスキャンする方法について説明します
+title: Microsoft Defender for container registries を使用する方法
+description: コンテナー レジストリ用のMicrosoft Defender を使用して、Linux でホストされたレジストリ内の Linux イメージをスキャンする方法について説明します
 author: memildin
 ms.author: memildin
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 195e47ce7165a02c5bb7126521432d448e2199a9
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9925fcb9f6a4d4284c7c6784a45e896ea825abc0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238800"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056093"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
+# <a name="use-microsoft-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Microsoft Defender for container registries を使用してイメージの脆弱性をスキャンします
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 このページでは、組み込みの脆弱性スキャナーを使用して、Azure Resource Manager ベースの Azure Container Registry に格納されているコンテナー イメージをスキャンする方法について説明します。
 
-**コンテナー レジストリ用の Azure Defender** が有効になっている場合、ご利用のレジストリにプッシュしたイメージは直ちにスキャンされます。 さらに、過去 30 日以内にプルされたイメージもスキャンされます。 
+**Microsoft Defender for container registries** が有効になっている場合、ご利用のレジストリにプッシュしたイメージは直ちにスキャンされます。 さらに、過去 30 日以内にプルされたイメージもスキャンされます。 
 
-スキャナーから Security Center に脆弱性が報告されると、その結果と関連情報が推奨事項として Security Center によって表示されます。 さらに、結果には関連情報 (修復の手順、関連する CVE、CVES スコアなど) も含まれています。 1 つまたは複数のサブスクリプション、あるいは特定のレジストリで識別された脆弱性を表示することができます。
+スキャナーが Defender for Cloud に脆弱性を報告すると、Defender for Cloud によって結果と関連情報が推奨事項として提示されます。 さらに、結果には関連情報 (修復の手順、関連する CVE、CVES スコアなど) も含まれています。 1 つまたは複数のサブスクリプション、あるいは特定のレジストリで識別された脆弱性を表示することができます。
 
 > [!TIP]
 > イメージは CI/CD GitHub ワークフローに組み込まれているため、コンテナー イメージの脆弱性をスキャンすることもできます。 詳細については、「[CI/CD ワークフローで脆弱なコンテナー イメージを特定する](defender-for-container-registries-cicd.md)」を参照してください。
@@ -30,24 +33,24 @@ ms.locfileid: "112238800"
 
 Azure Resource Manager ベースの Azure Container Registry に格納されているイメージの脆弱性のスキャンを有効にするには、次のようにします。
 
-1. ご利用のサブスクリプションで **コンテナー レジストリ用の Azure Defender** を有効にします。 これで、Security Center でレジストリ内のイメージをスキャンする準備が整いました。
+1. ご利用のサブスクリプションで **Microsoft Defender for container registries** を有効にします。 Defender for Cloud は、レジストリ内のイメージをスキャンする準備が整います。
 
     >[!NOTE]
     > この機能では、イメージごとに課金されます。
 
 1. イメージ スキャンは、プッシュまたはインポートが行われるたびに、およびイメージが過去 30 日以内にプルされている場合にトリガーされます。 
 
-    スキャンが完了すると (通常は約 2 分後ですが、最大で 15 分かかることもあります)、結果が Security Center の推奨事項として表示されます。
+    スキャンが完了すると (通常は約 2 分後ですが、最大 15 分)、Defender for Cloud の推奨事項として結果を利用できます。
 
 1. [以下で説明するように結果を表示して修復します](#view-and-remediate-findings)。
 
 ## <a name="identify-vulnerabilities-in-images-in-other-container-registries"></a>他のコンテナー レジストリでイメージの脆弱性を識別する 
 
-1. ACR ツールを使用すれば、Docker Hub または Microsoft Container Registry からイメージをご利用のレジストリに取り込むことができます。  インポートが完了すると、インポートされたイメージが Azure Defender によってスキャンされます。 
+1. ACR ツールを使用すれば、Docker Hub または Microsoft Container Registry からイメージをご利用のレジストリに取り込むことができます。  インポートが完了すると、組み込みの脆弱性評価ソリューションによってインポートされたイメージがスキャンされます。
 
     詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
 
-    スキャンが完了すると (通常は約 2 分後ですが、最大で 15 分かかることもあります)、結果が Security Center の推奨事項として表示されます。
+    スキャンが完了すると (通常は約 2 分後ですが、最大 15 分)、Defender for Cloud の推奨事項として結果を利用できます。
 
 1. [以下で説明するように結果を表示して修復します](#view-and-remediate-findings)。
 
@@ -149,5 +152,4 @@ Azure Resource Manager ベースの Azure Container Registry に格納されて�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Azure Defender に関する詳細情報](azure-defender.md)
+[Microsoft Defender の高度な保護プラン](defender-for-cloud-introduction.md)の詳細をご覧ください。

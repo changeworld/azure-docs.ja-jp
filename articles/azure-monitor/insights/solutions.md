@@ -2,18 +2,21 @@
 title: Azure Monitor での監視ソリューション | Microsoft Docs
 description: さまざまな問題領域のロジック、視覚化、データ取得の規則の事前パッケージ化コレクションに関する情報を取得します。
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 10/16/2020
+author: rboucher
+ms.author: robb
+ms.date: 10/16/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a9f1cb05a87af95272624a4a0406deac5bc0c411
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57f5c3f3dace57b42ed5ac32e48c5d070517e03a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594087"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059948"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
+
+> [!CAUTION]
+> 監視ソリューションは、アクティブな開発ではなくなりました。  交換テクノロジは、[Azure Monitor 分析情報](/azure/azure-monitor/monitor-reference#insights)です。 分析情報を使用し、ソリューションの新しいインスタンスをデプロイしないことをお勧めします。  
 
 Azure Monitor の監視ソリューションでは、ある Azure アプリケーションまたはサービスの操作が分析されます。 この記事では、Azure の監視ソリューションの簡単な概要と、これの使用とインストールに関する詳細について説明します。 
 

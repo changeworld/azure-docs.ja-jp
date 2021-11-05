@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f12e0d99a2444510d9a26c2bebb4147614f871a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 14b9ae4733773c45650f2efae8ad72d41f17aff2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164275"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018226"
 ---
 # <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>MS Graph API を使用してクラウドの同期をプログラムで構成する方法
 
@@ -54,7 +54,7 @@ Connect-MsolService ('-AzureEnvironment <AzureEnvironmnet>')
 
 次に、[AD2AAD アプリケーションまたはサービス プリンシパル](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http&preserve-view=true)を作成する必要があります
 
-このアプリケーション ID 1a4721b3-e57f-4451-ae87-ef078703ec94 を使用する必要があります。 displayName は、ポータルで使用されている場合は AD ドメインの URL (例えば contoso.com) ですが、他の名前を付けても構いません。
+このアプリケーション ID 1a4721b3-e57f-4451-ae87-ef078703ec94 を使用する必要があります。 displayName は、ポータルで使用されている場合は AD ドメインの URL (たとえば contoso.com) ですが、他の名前を付けても構いません。
 
 ```
 POST https://graph.microsoft.com/beta/applicationTemplates/1a4721b3-e57f-4451-ae87-ef078703ec94/instantiate
@@ -136,7 +136,7 @@ ObjectId:8895955e-2e6c-4d79-8943-4d72ca36878f AppId:00000014-0000-0000-c000-0000
 
 この構成の対象となるドメインを更新する必要があります。そのため、このドメインのシークレットを更新してください。
 
-使用するドメイン名が、オンプレミスのドメイン コントローラーに設定した URL と同じであることを確認します
+使用するドメイン名が、オンプレミスのドメイン コントローラーに設定した URL と同じであることを確認します。
 
 ```
 PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets

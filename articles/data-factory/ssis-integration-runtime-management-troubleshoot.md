@@ -8,13 +8,13 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
-ms.date: 07/08/2019
-ms.openlocfilehash: 5736e893242f1e24837132dc11b4b7607d22bbf9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/22/2021
+ms.openlocfilehash: fe685754b9385162896929cad18da606f8a61207
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086464"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849142"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 

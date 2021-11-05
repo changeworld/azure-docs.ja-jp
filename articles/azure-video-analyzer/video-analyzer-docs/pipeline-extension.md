@@ -3,14 +3,14 @@ title: パイプライン拡張機能 - Azure Video Analyzer
 description: Azure Video Analyzer を使用すると、パイプライン拡張ノードを通じてパイプライン処理機能を拡張できます。 この記事では、パイプライン拡張ノードについて説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 70c5ab2f2bc3a82889501496d23eb8a681c7ec68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7641524fb712d9564fca46ef40e8949f4dd9bad1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020591"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851586"
 ---
 # <a name="pipeline-extension"></a>パイプライン拡張機能
 

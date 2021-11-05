@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 045dbd56f1177f334916850f481c7fa4f9f48f4c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 345b1373371cc8643cb6d9c82e8a98e2eee42def
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009512"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457147"
 ---
 # <a name="defender-for-cloud-readiness-roadmap"></a>Defender for Cloud 対応性のロードマップ
 
@@ -98,7 +97,7 @@ Azure VM は、Defender for Cloud にある高度なクラウド防御機能を�
 * [Defender for Cloud の Web アプリケーション ファイアウォール (WAF) 推奨プレイブック](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Defender for Cloud プレイブック: セキュリティ アラート](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他の技術情報
 * [Defender for Cloud のドキュメントページ](./index.yml)
 * [Defender for Cloud REST API のドキュメントページ](/previous-versions/azure/reference/mt704034(v=azure.100))
 * [Defender for Cloud についてよく寄せられる質問](./faq-general.yml)

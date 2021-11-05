@@ -1,23 +1,25 @@
 ---
 title: Azure Resource Manager テンプレート (ARM テンプレート) を使用して特定のセキュリティ アラートに対するセキュリティ自動化を作成する
-description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、特定の Security Center アラートによってトリガーされる、ロジック アプリをトリガーする Azure Security Center の自動化を作成する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、特定の Defender for Cloud アラートによってトリガーされるロジック アプリをトリガーする Microsoft Defender for Cloud の自動化を作成する方法について説明します。
 services: azure-resource-manager
 author: memildin
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, ignite-fall-2021
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 856cef0da55b12e808565d25ffe2ac92db4762eb
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 9fa7ae478352846e2f2c256988fb6109f9ae25a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238128"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047750"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して特定のセキュリティ アラートへの自動応答を作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Security Center が特定のセキュリティ アラートを受信したときにロジック アプリをトリガーするワークフローの自動化を作成する方法について説明します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Microsoft Defender for Cloud が特定のセキュリティ アラートを受信したときにロジック アプリをトリガーするワークフローの自動化を作成する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,7 +31,7 @@ ms.locfileid: "112238128"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-Azure Security Center のワークフロー自動化機能を使用するために必要なロールとアクセス許可の一覧については、「[ワークフローの自動化](workflow-automation.md)」をご覧ください。
+Microsoft Defender for Cloud のワークフロー自動化機能を使用するために必要なロールとアクセス許可の一覧については、[ワークフローの自動化](workflow-automation.md)に関するページを参照してください。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
@@ -39,10 +41,10 @@ Azure Security Center のワークフロー自動化機能を使用するため�
 
 ### <a name="relevant-resources"></a>関連リソース
 
-- [**Microsoft.Security/automations**](/azure/templates/microsoft.security/automations): 特定の文字列を含む Azure Security Center アラートを受信したときにロジック アプリをトリガーする自動化。
+- [**Microsoft.Security/automations**](/azure/templates/microsoft.security/automations): 特定の文字列を含む Microsoft Defender for Cloud のアラートを受信したときにロジック アプリをトリガーする自動化。
 - [**Microsoft.Logic/workflows**](/azure/templates/microsoft.logic/workflows): トリガー可能な空のロジック アプリ。
 
-その他の Security Center クイックスタート テンプレートについては、[コミュニティ提供のテンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Security&pageNumber=1&sort=Popular)を参照してください。
+その他の Defender for Cloud クイックスタート テンプレートについては、[コミュニティ提供のテンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Security&pageNumber=1&sort=Popular)を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -70,9 +72,9 @@ Azure Security Center のワークフロー自動化機能を使用するため�
 
 Azure portal を使用して、ワークフローの自動化がデプロイされていることを確認します。
 
-1. [Azure portal](https://portal.azure.com) から **Security Center** を開きます。
+1. [Azure portal](https://portal.azure.com) から、**Defender for Cloud** を開きます。
 1. 上部のメニュー バーからフィルター アイコンを選択し、新しいワークフロー自動化をデプロイした特定のサブスクリプションを選択します。
-1. Security Center のサイドバーから **[ワークフローの自動化]** を開き、新しい自動化を確認します。
+1. Defender for Cloud のメニューから **[ワークフローの自動化]** を開き、新しい自動化を確認します。
     :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="構成済みの自動化の一覧。" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > サブスクリプションに多数のワークフロー自動化がある場合は、 **[名前でフィルター]** オプションを使用します。
@@ -81,9 +83,9 @@ Azure portal を使用して、ワークフローの自動化がデプロイさ�
 
 ワークフローの自動化が不要になったら、Azure portal を使用して削除します。
 
-1. [Azure portal](https://portal.azure.com) から **Security Center** を開きます。
+1. [Azure portal](https://portal.azure.com) から、**Defender for Cloud** を開きます。
 1. 上部のメニュー バーからフィルター アイコンを選択し、新しいワークフロー自動化をデプロイした特定のサブスクリプションを選択します。
-1. Security Center のサイドバーから **[ワークフローの自動化]** を開き、削除する自動化を見つけます。
+1. Defender for Cloud のメニューから **[ワークフローの自動化]** を開き、削除する自動化を見つけます。
     :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="ワークフローの自動化を削除する手順。" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 削除する項目のチェック ボックスをオンにします。
 1. ツール バーから **[削除]** を選択します。

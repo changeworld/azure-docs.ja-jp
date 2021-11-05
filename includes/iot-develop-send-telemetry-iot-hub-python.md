@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d1d68f43f380f0cf85ece7a015ef44974c145e05
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8791b9d78e4d31b228ed0db34002b9b36714fbb2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077546"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860924"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
 
@@ -37,7 +37,7 @@ Raspberry Pi に関する説明がある場合を除き、開発マシンに次�
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>デバイスを実行する
+## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 このセクションでは、Python SDK を使用して、デバイスから IoT hub にメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
 
 1. Windows CMD、PowerShell、または Bash などの新しいコンソールを開きます。 以降の手順では、このコンソールを使用して Python SDK をインストールし、Python のサンプル コードを操作します。

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: e2cdcf3b42fbb71751644efbaa394c51d2f861fc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 730b7344a213922bd87d5efa3a659d352ff8624f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258320"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019147"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Azure NFS ファイル共有に関する問題のトラブルシューティングを行います
 
@@ -40,7 +40,7 @@ idmapping が無効になっており、再度有効にするものがないこ�
 - 共有のマウントを解除します
 - # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping を使用して idmapping を無効にします。
 - 共有を再度マウントします。
-- rsync を実行する場合は、無効なディレクトリ名やファイル名が使用されていないディレクトリから、"—numeric-ids" 引数を指定して rsync を実行します。
+- rsyncを実行している場合は、ディレクトリ/ファイル名が正しくないディレクトリから「—numeric-ids」引数を指定してrsyncを実行します。
 
 ## <a name="unable-to-create-an-nfs-share"></a>NFS 共有を作成できない
 
@@ -122,7 +122,7 @@ NFS 共有では、二重暗号化がまだサポートされていません。 
 
 ストレージ アカウントの構成ブレードで [安全な転送が必須] を無効にします。
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="[安全な転送が必須] を無効にしている、ストレージ アカウントの構成ブレードのスクリーンショット。":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="[安全な転送が必須] を無効にしている、ストレージ アカウントの構成ブレードのスクリーンショット。":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>原因 3: nfs-common パッケージがインストールされていない
 マウント コマンドを実行する前に、以下に示すディストリビューション固有のコマンドを実行して、このパッケージをインストールします。
@@ -157,43 +157,14 @@ NFS プロトコルは、ポート 2049 経由でそのサーバーと通信し�
 
 次のコマンドを実行して、ポート 2049 がご使用のクライアントで開いていることを確認します: `telnet <storageaccountnamehere>.file.core.windows.net 2049`。 ポートが開いていない場合は開きます。
 
-## <a name="ls-list-files-command-shows-incorrectinconsistent-results"></a>ls (list files) コマンドの結果が正しくない、または一貫性がない
-
-### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>原因:ファイル ハンドルが開いているときのキャッシュ値とサーバー ファイル メタデータ値の間に不整合がある
-"list files" コマンドや "df" コマンド、"find" コマンドにより、想定どおりにゼロではないサイズが表示され、そのすぐ後に実行した list files コマンドでは、代わりにサイズ 0 または古いタイム スタンプが表示される場合があります。 これは、ファイルが開いている間、ファイル メタデータ値のキャッシュに一貫性がないために発生する既知の問題です。 これを解決するには、次の回避策のいずれかを使用できます。
-
-#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>対処法 1:ファイル サイズをフェッチする場合は、ls -l ではなく wc -c を使用する
-wc -c を使用すると、常にサーバーから最新の値がフェッチされ、不整合が発生することはありません。
-
-#### <a name="workaround-2-use-noac-mount-flag"></a>対処法 2:"noac" マウント フラグを使用する
-mount コマンドで "noac" フラグを使用して、ファイル システムを再マウントします。 これにより、常にサーバーからすべてのメタデータ値がフェッチされます。 この回避策を使用すると、すべてのメタデータ操作に関するわずかなパフォーマンス オーバーヘッドが発生する可能性があります。
-
-
-## <a name="unable-to-mount-an-nfs-share-that-is-restored-back-from-soft-deleted-state"></a>論理的に削除された状態から復元された NFS 共有をマウントできない
-プレビュー期間中、プラットフォームで完全にサポートされていないにもかかわらず NFS 共有が論理的に削除されるという既知の問題があります。 これらの共有は、有効期限が切れると定期的に削除されます。 "共有の削除を取り消して、論理的な削除を無効にして、共有を削除する" フローによって早期に削除することもできます。 ただし、共有の復旧と使用を試みると、アクセスが拒否されるか、アクセス許可が拒否されるか、クライアントで NFS I/O エラーが発生します。
-
-## <a name="ls-la-throws-io-error"></a>ls –la が I/O エラーをスローする
-
-### <a name="cause-a-known-bug-that-has-been-fixed-in-newer-linux-kernel"></a>原因: 新しい Linux カーネルで修正された既知のバグ
-以前のカーネルでは、NFS4ERR_NOT_SAME が原因でクライアントが (ディレクトリの再起動ではなく) 列挙を停止します。 新しいカーネルはすぐにブロック解除されますが、残念ながら、SUSE のようなディストリビューションの場合、SUSE Enterprise Linux Server 12 や 15 には、この修正プログラムに対してカーネルを最新の状態にするパッチは存在しません。  このパッチは、カーネル 5.12 以上で使用できます。  クライアント側の修正プログラムのパッチについては、「[PATCH v3 15/17 NFS: readdir 呼び出しからの NFS4ERR_NOT_SAME および NFSERR_BADCOOKIE の処理](https://www.spinics.net/lists/linux-nfs/msg80096.html)」に説明されています。
-
-#### <a name="workaround-use-latest-kernel-workaround-while-the-fix-reaches-the-region-hosting-your-storage-account"></a>回避策: ストレージ アカウントをホストしているリージョンに修正プログラムが到達する間は、最新のカーネル回避策を使用する
-このパッチは、カーネル 5.12 以上で使用できます。
-
 ## <a name="ls-hangs-for-large-directory-enumeration-on-some-kernels"></a>一部のカーネルで、大きなディレクトリ列挙に対して ls がハングする
 
 ### <a name="cause-a-bug-was-introduced-in-linux-kernel-v511-and-was-fixed-in-v5125"></a>原因: Linux kernel v5.11 でバグが確認され、v5.12.5 で修正されました。  
-一部のカーネル バージョンには、ディレクトリの一覧が無限の READDIR シーケンスを引き起こすバグがあります。 すべてのエントリを 1 回の呼び出しで呼び出すことができる非常に小さなディレクトリには、この問題はありません。
+一部のカーネルバージョンには、ディレクトリの一覧が無限の READDIR シーケンスを引き起こすバグがあります。 すべてのエントリを 1 回の呼び出しで呼び出すことができる非常に小さなディレクトリには、この問題はありません。
 このバグは、Linux kernel v5.11 で確認され、v5.12.5 で修正されました。 したがって、その間のバージョンにはこのバグが存在します。 RHEL 8.4 には、このカーネル バージョンが含まれることが知られています。
 
 #### <a name="workaround-downgrading-or-upgrading-the-kernel"></a>回避策: カーネルのダウングレードまたはアップグレード
 影響を受けるカーネル以外のカーネルにダウングレードまたはアップグレードすると、この問題は解決します。
-
-## <a name="df-and-find-command-shows-inconsistent-results-on-clients-other-than-where-the-writes-happen"></a>df と find コマンドで、書き込みの発生場所以外のクライアントで一貫性のない結果が表示される
-これは既知の問題です。 Microsoft では、この問題の解決に積極的に取り組んでいます。
-
-## <a name="application-fails-with-error-underlying-file-changed-by-an-external-force-when-using-exclusive-open"></a>排他 OPEN を使用すると、"Underlying file changed by an external force" というエラーでアプリケーションが失敗する 
-これは既知の問題です。 Microsoft では、この問題の解決に積極的に取り組んでいます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

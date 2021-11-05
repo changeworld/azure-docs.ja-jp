@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 10/20/2021
 ms.author: miwithro
-ms.openlocfilehash: 488b5a6736e308abc78d53b3e9bdbf14af488ca3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 03d6b2e101103607ec1c699ebdf814d6f41cdb76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067868"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427401"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -27,7 +27,6 @@ AKS マネージド Azure AD 統合は、Azure AD の統合プロセスを簡素
 * AKS マネージド Azure AD 統合は無効にできません
 * AKS マネージド Azure AD 統合クラスターをレガシ AAD に変更することはできません
 * AKS マネージド Azure AD 統合では、Kubernetes RBAC に対応していないクラスターはサポートされません
-* AKS マネージド Azue AD 統合に関連付けられている Azure AD テナントの変更はサポートされません
 
 ## <a name="prerequisites"></a>前提条件
 

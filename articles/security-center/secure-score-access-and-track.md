@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 11/02/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: b4942dd35591839440814e5aa8862632faf1ce36
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 61cd7dd97f0b563d5bcb1030830edfa073ab0571
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084027"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452834"
 ---
 # <a name="access-and-track-your-secure-score"></a>セキュリティで保護されたスコアにアクセスして追跡する
 

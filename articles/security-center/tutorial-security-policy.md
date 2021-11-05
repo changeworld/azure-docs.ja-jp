@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 600d2bd187d3814d994893285ba19457bdfb2339
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ac92e330c9d511337bc2d6cafa08da7ba455f180
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009493"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425009"
 ---
 # <a name="manage-security-policies"></a>セキュリティ ポリシーの管理
 

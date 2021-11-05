@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 77e6704808cf54f84f0261c07236bfa27d17a1f6
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 594c8f48a51b386c687feda5d46a2423dd4e973b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122868738"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064033"
 ---
 # <a name="monitor-app-lifecycle-events-using-azure-activity-log-and-azure-service-health"></a>Azure Activity ログと Azure Service Health で、アプリのライフサイクル イベントを監視する
 
@@ -23,7 +23,7 @@ Azure Spring Cloud では、アプリケーションの状態と正常性を監�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- Azure Spring Cloud サービスのインスタンスをデプロイし、少なくとも 1 つのアプリケーションをサービスのインスタンスに作成済みである。 詳しくは「[クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする](quickstart.md)」をご覧ください。 
+- Azure Spring Cloud サービスのインスタンスをデプロイし、少なくとも 1 つのアプリケーションをサービスのインスタンスに作成済みである。 詳細については、「 [クイックスタート: Azure Spring Cloud での最初の Spring Boot アプリのデプロイ](quickstart.md)」を参照してください。 
 
 ## <a name="monitor-app-lifecycle-events-triggered-by-users-in-azure-activity-logs"></a>ユーザーのトリガーにより発生するアプリのライフサイクル イベントを Azure Activity ログで監視する
 
@@ -63,6 +63,9 @@ Azure Spring Cloud では、アプリケーションの状態と正常性を監�
 プラットフォームのメンテナンス実行時には、Azure Spring Cloud のインスタンスにより、**degraded** (悪化) の状態も表示されます。 プラットフォームのメンテナンス時に再起動が必要な場合は、Azure Spring Cloud によって、アプリケーションの差分更新を行うローリング アップデートを実行します。 ローリング アップデートでは、ダウンタイムなしでワークロードを更新します。 正常性の履歴ページで最新の状態を確認できます。
 
 :::image type="content" source="media/monitor-app-lifecycle-events/planned-maintenance-in-progress.png" lightbox="media/monitor-app-lifecycle-events/planned-maintenance-in-progress.png" alt-text="実行中の計画メンテナンスのログの例のスクリーンショット":::
+
+>[!NOTE]
+> 現時点では、Azure Spring Cloud は、2-4 か月ごとに基になる Kubernetes バージョンをアップグレードする定期的なメンテナンスを1つ実行します。 詳細なメンテナンスタイムラインについては、[Azure Service Health] ページで通知を確認してください。
 
 ## <a name="set-up-alerts"></a>アラートを設定する
 

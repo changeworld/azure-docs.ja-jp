@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
-ms.openlocfilehash: a25f5bf28feb8fcb3903094f45568e96388ec0bd
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 16b2a041dc384e8c04df077638a51db1a7823da2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162150"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072117"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Azure portal を使用して SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -124,8 +125,15 @@ SQL 仮想マシン リソースの **[Security Center]** ページを使用し�
 
 ![SQL 仮想マシン リソースを使用して Azure portal の SQL Server Security Center 設定を構成する](./media/manage-sql-vm-portal/sql-vm-security-center.png)
 
+## <a name="sql-assessment-preview"></a>SQL評価 (プレビュー)
 
-## <a name="next-steps"></a>次のステップ
+SQL 仮想マシンリソースの **[SQL Assessment]** ページを使用して、SQL Server VM の正常性を評価します。 この機能を有効にすると、SQL Server インスタンスとデータベースがスキャンされ、パフォーマンス (インデックス、統計、トレースフラグなど) を向上させ、不足しているベストプラクティス構成を特定するための推奨事項が表示されます。 SQL評価は現在プレビューの段階です。 
+
+:::image type="content" source="./media/manage-sql-vm-portal/sql-vm-assessment-workbook.png" alt-text="[SQL 仮想マシンリソース] ページの Azure portal で SQL 評価を表示します。" lightbox="./media/manage-sql-vm-portal/sql-vm-assessment-workbook.png":::
+
+詳細については、 [Azure vm での SQL Server の SQL Assessment に関する](sql-assessment-for-sql-vm.md)ページを参照してください。
+
+## <a name="next-steps"></a>次の手順
 
 詳細については、次の記事を参照してください。 
 
@@ -133,5 +141,3 @@ SQL 仮想マシン リソースの **[Security Center]** ページを使用し�
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 * [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)
-
-

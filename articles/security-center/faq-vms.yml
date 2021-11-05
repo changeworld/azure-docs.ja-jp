@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Security Center FAQ - 仮想マシンに関する質問
-  description: 脅威の防御、検出、対応を可能にする製品である Azure Security Center での仮想マシンに関してよく寄せられる質問
+  title: Microsoft Defender for Cloud に関する FAQ - 仮想マシンについての質問
+  description: Microsoft Defender for Cloud に関してよく寄せられる質問(脅威の防止、検出、対応に役立つ製品)
   services: security-center
   documentationcenter: na
   author: memildin
@@ -14,12 +14,12 @@ metadata:
   ms.workload: na
   ms.date: 02/25/2020
   ms.author: memildin
-  ms.openlocfilehash: 099ff550f215a6f16ed0ddf8f845419131d5ebda
-  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+  ms.openlocfilehash: 29ba2f85fa06bdbdd2251a72742ccbcda778e8e3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/07/2021
-  ms.locfileid: "111907824"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131014695"
 title: FAQ - 仮想マシンに関する質問
 summary: ''
 sections:
@@ -31,17 +31,17 @@ sections:
       監視と推奨事項は、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)のどちらで作成された仮想マシン (VM) でも利用できます。
 
 
-      サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
+      サポートされるプラットフォームの一覧については、「[Microsoft Defender for Cloud でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
   - question: >
-      Azure VM で実行しているマルウェア対策ソリューションが、Azure Security Center で認識されないのはなぜですか。
+      Microsoft Defender for Cloud が Azure VM で実行されているマルウェア対策ソリューションを認識しないのはなぜですか?
     answer: >
-      Azure Security Center では、Azure 拡張機能によりインストールされたマルウェア対策ソリューションを可視化できます。 たとえば、Azure Security Center では、お客様のイメージにプレインストールされていたマルウェア対策ソリューションや、お客様が独自のプロセス (構成管理システムなど) で仮想マシンにインストールしたマルウェア対策ソリューションは検出できません。
+      Microsoft Defender for Cloud では、Azure 拡張機能によりインストールされたマルウェア対策ソリューションを可視化できます。 たとえば、Defender for Cloud では、お客様のイメージにプレインストールされていたマルウェア対策ソリューションや、お客様が独自のプロセス (構成管理システムなど) で仮想マシンにインストールしたマルウェア対策ソリューションは検出できません。
   - question: >
       VM で "スキャン データがありません" というメッセージが表示されるのはなぜですか。
     answer: >
-      このメッセージが表示されるのは、VM のスキャン データがない場合です。 Azure Security Center でデータ収集が有効になると、スキャン データが取り込まれるまでにある程度の時間 (1 時間未満) がかかる場合があります。 スキャン データの初回作成以降でも、スキャン データが存在しなかったり、最近のスキャン データがなかったりする場合にはこのメッセージが表示される可能性があります。 停止状態の VM のスキャン データは取り込まれません。 スキャン データが最近取り込まれていない場合 (Windows エージェントの保持ポリシーに従い、既定値は 30 日間) にも、このメッセージが表示されることがあります。
+      このメッセージが表示されるのは、VM のスキャン データがない場合です。 Microsoft Defender for Cloud でデータ収集が有効になると、スキャン データが取り込まれるまでにある程度の時間 (1 時間未満) がかかる場合があります。 スキャン データの初回作成以降でも、スキャン データが存在しなかったり、最近のスキャン データがなかったりする場合にはこのメッセージが表示される可能性があります。 停止状態の VM のスキャン データは取り込まれません。 スキャン データが最近取り込まれていない場合 (Windows エージェントの保持ポリシーに従い、既定値は 30 日間) にも、このメッセージが表示されることがあります。
   - question: >
-      Security Center は、オペレーティング システムの脆弱性、システムの更新、およびエンドポイントの保護の問題をどのくらいの頻度でスキャンしますか。
-    answer: "脆弱性、更新プログラム、その他の問題を Security Center がスキャンするときの待ち時間は次の通りです。\n\n- オペレーティング システムのセキュリティ構成 - データは 48 時間以内に更新されます\n- システムの更新プログラム - 24 時間以内にデータを更新\n- Endpoint Protection の問題 - 8 時間以内にデータを更新\n\nSecurity Center は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 \n\n> [!NOTE]\n> Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](./security-center-enable-data-collection.md)」を参照してください。\n"
+      Defender for Cloud  は、オペレーティング システムの脆弱性、システムの更新、およびエンドポイントの保護の問題をどのくらいの頻度でスキャンしますか。
+    answer: "脆弱性、更新プログラム、その他の問題を Defender for Cloud  がスキャンするときの待ち時間は次の通りです。\n\n- オペレーティング システムのセキュリティ構成 - データは 48 時間以内に更新されます\n- システムの更新プログラム - 24 時間以内にデータを更新\n- Endpoint Protection の問題 - 8 時間以内にデータを更新\n\nDefender for Cloud は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 \n\n> [!NOTE]\n> Defender for Cloud では、Log Analytics エージェントを使用してデータを収集して格納します。 詳細については、[クラウドプラットフォームへの移行に関する Microsoft Defenderを参照してください。](./enable-data-collection.md)\n"
   - question: "\"VM Agent is Missing? (VM エージェントが見つかりません)\" というメッセージが表示されるのはなぜですか。\n"
     answer: データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。
