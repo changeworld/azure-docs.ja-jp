@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 07/30/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: d46a4f812d9fd6a4de89bb2e0e0f82fdaf48dca6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3f865d28452c6930ef53f5882e59570b07ef551
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779530"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016608"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -221,7 +221,7 @@ db.runCommand({customAction: "GetDatabase"});
 | `offerThroughput` | `int` | 省略可能 | データベースに設定するプロビジョニング済みスループット。 このパラメーターが指定されていない場合、既定値は 400 RU/秒に設定されます。 * 10,000 RU/秒を超えるスループットを指定するには、`shardKey` パラメーターが必要です。|
 | `shardKey` | `string` | スループットの高いコレクションの場合は必須です | シャード コレクション用シャード キーへのパス。 `offerThroughput` で 10,000 RU/秒を超える値を設定する場合、このパラメーターは必須です。  この値が指定されている場合は、挿入されたすべてのドキュメントでこのキーと値が必要になります。 |
 | `autoScaleSettings` | `Object` | [自動スケーリング モード](../provision-throughput-autoscale.md)の場合は必須です | このオブジェクトには、自動スケーリング容量モードに関連付けられている設定が含まれています。 `maxThroughput` の値を設定できます。これにより、コレクションがその量まで動的に増加する、要求ユニットの最大量が示されます。 |
-| `indexes` | `Array` | 必要に応じてインデックスを構成します。 このパラメーターは、3.6 以降のアカウントでのみサポートされています。 | 存在する場合は、_id にインデックスが必要です。 配列内の各エントリには、1 つ以上のフィールドのキーと名前を含める必要があります。また、インデックス オプションを含めることもできます。 たとえば、フィールド a と b に複合一意インデックスを作成するには、`{key: {a: 1, b: 1}, name:"a_1_b_1", unique: true}` というエントリを使用します。
+| `indexes` | `Array` | 必要に応じてインデックスを構成します。 このパラメーターは、3.6 以降のアカウントでのみサポートされています。 | 存在する場合は、_id にインデックスが必要です。 配列内の各エントリには、1 つ以上のフィールドのキーと名前を含める必要があります。また、インデックス オプションを含めることもできます。 たとえば、フィールドに複合一意インデックスを作成し、`a`と`b` というエントリを使用します `{key: {a: 1, b: 1}, name:"a_1_b_1", unique: true}`。
 
 ### <a name="output"></a>出力
 
@@ -316,7 +316,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", s
 | `autoScaleSettings` | `Object` | [自動スケーリング モード](../provision-throughput-autoscale.md)の場合は必須です。 このオブジェクトには、自動スケーリング容量モードに関連付けられている設定が含まれています。 `maxThroughput` の値は、コレクションがその量まで動的に増加する、要求ユニットの最大量が示されます。 |
 | `indexes` | `Array` | 必要に応じてインデックスを構成します。 このパラメーターは、3.6 以降のアカウントでのみサポートされています。 存在する場合、コレクションの既存のインデックスは、指定されたインデックスのセットに置き換えられます (インデックスの削除を含む)。 _id にインデックスが必要です。 配列内の各エントリには、1 つ以上のフィールドのキーと名前を含める必要があります。また、インデックス オプションを含めることもできます。 たとえば、フィールド a と b に複合一意インデックスを作成するには、`{key: {a: 1, b: 1}, name: "a_1_b_1", unique: true}` というエントリを使用します。
 
-## <a name="output"></a>出力
+### <a name="output"></a>出力
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 

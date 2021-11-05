@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 09/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: c478744bc960a90d8d84d3e51bd1cd9d8bb3719e
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: ef84fea20ce59af11abf2f76de409f1363db94c9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657875"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051080"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
@@ -37,7 +37,7 @@ ms.locfileid: "129657875"
 
 この記事では、次のトピックについて理解していることを前提としています。
 + [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)
-+ [IP ネットワーク](../virtual-network/public-ip-addresses.md)
++ [IP ネットワーク](../virtual-network/ip-services/public-ip-addresses.md)
 + [プライベート エンドポイントを持つ Azure Machine Learning ワークスペース](how-to-configure-private-link.md)
 + [ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md)
 + [ネットワーク ファイアウォール](../firewall/overview.md)
@@ -50,13 +50,15 @@ ms.locfileid: "129657875"
 | シナリオ | ワークスペース | 関連付けられているリソース | トレーニングのコンピューティング環境 | 推論のコンピューティング環境 |
 |-|-|-|-|-|-|
 |**仮想ネットワークなし**| パブリック IP | パブリック IP | パブリック IP | パブリック IP |
-|**仮想ネットワーク内のリソースをセキュリティで保護**| プライベート IP (プライベート エンドポイント) | パブリック IP (サービス エンドポイント) <br> **または** <br> プライベート IP (プライベート エンドポイント) | パブリック IP | プライベート IP  | 
+|**パブリックワークスペース、仮想ネットワーク内の他のすべてのリソース** | パブリック IP | パブリック IP (サービス エンドポイント) <br> **または** <br> プライベート IP (プライベート エンドポイント) | プライベート IP | プライベート IP  |
+|**仮想ネットワーク内のリソースをセキュリティで保護**| プライベート IP (プライベート エンドポイント) | パブリック IP (サービス エンドポイント) <br> **または** <br> プライベート IP (プライベート エンドポイント) | プライベート IP | プライベート IP  | 
 
 * **ワークスペース** - ワークスペースのプライベート エンドポイントを作成します。 プライベート エンドポイントは、複数のプライベート IP アドレスを使用してワークスペースを VNet に接続します。
+    * **パブリックアクセス** -必要に応じて、セキュリティで保護されたワークスペースのパブリックアクセスを有効にすることができます。
 * **関連するリソース** - サービス エンドポイントまたはプライベート エンドポイントを使用して、Azure storage、Azure Key Vault などのワークスペース リソースに接続します。 Azure Container Services の場合は、プライベート エンドポイントを使用します。
     * **サービス エンドポイント** は、仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントを有効にしたら、仮想ネットワーク規則を追加して、Azure サービス リソースへのアクセスを仮想ネットワークに限定することができます。 サービス エンドポイントは、パブリック IP アドレスを使用します。
     * **プライベート エンドポイント** は、Azure Private Link を使用するサービスに安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。
-* **トレーニングのコンピューティング アクセス** - パブリック IP アドレスを使用して、Azure Machine Learning コンピューティング インスタンスや Azure Machine Learning コンピューティング クラスターのようなトレーニングのコンピューティング ターゲットに安全に接続します。 
+* **トレーニングのコンピューティング アクセス** - パブリック IP アドレス (プレビュー) を使用して、Azure Machine Learning コンピューティング インスタンスや Azure Machine Learning コンピューティング クラスターのようなトレーニングのコンピューティング ターゲットに安全に接続します。
 * **推論のコンピューティング アクセス** - プライベート IP アドレスを使用して、Azure Kubernetes Services (AKS) コンピューティング クラスターにアクセスします。
 
 
@@ -67,11 +69,31 @@ ms.locfileid: "129657875"
 1. [**推論環境**](#secure-the-inferencing-environment)をセキュリティで保護します。
 1. 必要に応じて、[**Studio の機能を有効にします**](#optional-enable-studio-functionality)。
 1. [**ファイアウォール設定**](#configure-firewall-settings)を構成します。
-1. [DNS 名前解決](#custom-dns)を構成します。
+1. [**DNS 名前解決**](#custom-dns)を構成します。
+
+## <a name="public-workspace-and-secured-resources"></a>パブリックワークスペースとセキュリティで保護されたリソース
+
+仮想ネットワークですべての関連リソースを保護したまま、パブリックインターネット経由でワークスペースにアクセスする場合は、次の手順を実行します。
+
+1. ワークスペースによって使用されるリソースを含む [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)を作成します。
+1. パブリックにアクセス可能なワークスペースを作成するには、次の __いずれか__ のオプションを使用します。
+
+    * 仮想ネットワークを使用しない __Azure Machine Learning ワークスペース__ を作成します。 詳細については、[Azure Machine Learning ワークスペースの管理](how-to-manage-workspace.md)に関するページを参照してください。
+    * [Private Link が有効なワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)を作成し、VNet とワークスペース間の通信を有効にします。 [ワークスペースへのパブリック アクセスを有効にします。](#optional-enable-public-access)
+
+1. __サービス エンドポイント__ または __プライベート エンドポイント__ の "_どちらか_" を使用して、次のサービスを仮想ネットワークに追加します。 また、信頼された Microsoft サービスによるこれらのサービスへのアクセスを許可します。
+
+    | サービス | エンドポイント情報 | 信頼できる情報を許可する |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)</br>[プライベート エンドポイント](../key-vault/general/private-link-service.md) | [信頼された Microsoft サービスを許可して、このファイアウォールをバイパスする](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Azure Storage アカウント__ | [サービスとプライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[プライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [信頼された Azure サービスにアクセスを許可する](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [プライベート エンドポイント](../container-registry/container-registry-private-link.md) | [信頼されたサービスを許可する](../container-registry/allow-access-trusted-services.md) |
+
 ## <a name="secure-the-workspace-and-associated-resources"></a>ワークスペースと関連するリソースをセキュリティで保護する
 
 ワークスペースと関連するリソースをセキュリティで保護するには、次の手順に従います。 これらの手順により、サービスが仮想ネットワークで通信できるようになります。
 
+1. ワークスペースとその他のリソースを含む [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)を作成します。
 1. [Private Link が有効なワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)を作成し、VNet とワークスペース間の通信を有効にします。
 1. __サービス エンドポイント__ または __プライベート エンドポイント__ の "_どちらか_" を使用して、次のサービスを仮想ネットワークに追加します。 また、信頼された Microsoft サービスによるこれらのサービスへのアクセスを許可します。
 
@@ -141,17 +163,18 @@ ms.locfileid: "129657875"
 ![プライベート AKS クラスターを仮想ネットワークにアタッチする方法を示すアーキテクチャ図。 AKS コントロール プレーンは顧客 VNet の外側に配置されます](./media/how-to-network-security-overview/secure-inferencing-environment.png)
 
 ### <a name="limitations"></a>制限事項
-- AKS クラスターは、ワークスペースおよび関連するリソースと同じ VNet に属している必要があります。 
+
+- ワークスペースには、AKS クラスターと同じ VNet 内にプライベートエンドポイントが必要です。 たとえば、ワークスペースで複数のプライベートエンドポイントを使用する場合、1つのプライベートエンドポイントを AKS VNet に配置し、そのワークスペースの依存サービスを含む VNet に別のエンドポイントを配置できます。
 
 ## <a name="optional-enable-public-access"></a>省略可能:パブリック アクセスを有効にする
 
 プライベート エンドポイントを使用して VNet の背後にあるワークスペースをセキュリティで保護しながら、パブリック インターネット経由のアクセスを許可することができます。 初期構成は、[ワークスペースと関連するリソースをセキュリティで保護する](#secure-the-workspace-and-associated-resources)場合と同じです。 
 
-プライベート エンドポイントを使用してワークスペースをセキュリティで保護した後、[パブリック アクセスを有効](how-to-configure-private-link.md#enable-public-access)にします。 その後、パブリック インターネットと VNet の両方からこのワークスペースにアクセスできます。
+プライベートエンドポイントを使用してワークスペースをセキュリティで保護した後、次の手順を使用して、SDK または Azure Machine Learning studio を使用してクライアントをリモートで開発できるようにします。
 
-### <a name="limitations"></a>制限事項
+1. ワークスペースへの[パブリック アクセスを有効にします。](how-to-configure-private-link.md#enable-public-access)
+1. パブリックインターネット経由で接続するクライアントの IP アドレスとの通信を許可するように[Azure Storage ファイアウォールを構成](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#grant-access-from-an-internet-ip-range)します。
 
-- パブリック インターネット経由で Azure Machine Learning スタジオを使用する場合、デザイナーなどの一部の機能から自分のデータにアクセスできないことがあります。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。
 ## <a name="optional-enable-studio-functionality"></a>省略可能: Studio の機能を有効にする
 
 [ワークスペースをセキュリティで保護する](#secure-the-workspace-and-associated-resources) > [トレーニング環境をセキュリティで保護する](#secure-the-training-environment) > [推論環境をセキュリティで保護する](#secure-the-inferencing-environment) > **Studio の機能を有効にする** > [ファイアウォール設定を構成する](#configure-firewall-settings)

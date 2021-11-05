@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 10/18/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3c26bf3cd5b5b6e130f89c3e3b593112e2853d1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f79c7ebad7b7bffd223825b783c260181df605eb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014825"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464019"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 

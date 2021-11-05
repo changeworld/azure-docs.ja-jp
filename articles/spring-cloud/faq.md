@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5cc02d09efda462a2feaaa77ff74dff9dedd2041
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 79ff649d9710d4f114b7d8de85d275896f26a729
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860807"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003563"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -35,6 +35,12 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 * Azure Spring Cloud には、TLS/SSL と証明書の包括的な管理機能が用意されています。
 * OpenJDK と Spring Cloud のランタイムに重要なセキュリティ パッチがあるときは、可能な限り早期に Azure Spring Cloud に適用されます。
 
+### <a name="how-does-azure-spring-cloud-host-my-applications"></a>Azure Spring Cloud はアプリケーションをホストするにはどうすればよいですか。
+
+Azure Spring Cloud の各サービスインスタンスは、複数のワーカーノードを持つ完全に専用の Kubernetes クラスターによって支えられています。 Azure Spring Cloud は、高可用性やスケーラビリティやKubernetes バージョンのアップグレードなど基になる Kubernetes クラスターを管理します。
+
+Azure Spring Cloud は、基になる Kubernetes worker ノードでアプリケーションをインテリジェントにスケジュールします。 高可用性を実現するために、Azure Spring Cloud は異なるノードに2つ以上のインスタンスを持つアプリケーションを配布します。
+
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
 米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、東日本、南アフリカ北部、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
@@ -49,13 +55,16 @@ Azure Spring Cloud には、次の既知の制限があります。
 
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
 * `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は上書きされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
-* Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
+* Azure portal、Azure Resource Manager テンプレート、および Terraform は、アプリケーションパッケージのアップロードをサポートしていません。 アプリケーションパッケージをアップロードするには、Azure CLI、Azure DevOps、azure Spirng Cloud 用の Maven プラグイン、Azure Toolkit for IntelliJ、azure Spring cloud の Visual Studio Code 拡張機能を使用してアプリケーションをデプロイします。
 
 ### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。
 
 どれを使用すればよいでしょうか? また、各レベルにはどのような制限がありますか?
 
 * Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 Basic レベルは、Dev/Test、および Azure Spring Cloud の試用を目的としています。 Standard レベルは、汎用の運用トラフィックを実行するために最適化されています。 制限と機能レベルの比較については、[Azure Spring Cloud の価格の詳細](https://azure.microsoft.com/pricing/details/spring-cloud/)に関する記事を参照してください。
+
+### <a name="whats-the-difference-between-service-binding-and-service-connector"></a>サービスバインドと Service Connector の違いは何ですか?
+Service Connector という新しい Azure を優先するソリューションを使用して、サービスバインドの追加機能を積極的に開発していません。 一方、新しいソリューションでは、App Service のように、Azure 上のアプリホスティングサービス間に一貫性のある統合エクスペリエンスを提供します。 これに対して、MySQLやSQL DBやCosmos DB、Postgres DBやRedisやStorage など使用されている対象の Azure サービスのうち、最も多くのものを10⁺サポートすることから始めて、ニーズにも対応できます。 Service Connector は現在パブリックプレビュー中です。新しいエクスペリエンスをお試し頂き、どうぞよろしくお願いいたします。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
@@ -201,20 +210,23 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 
-はい。  詳細については、[自動スケーリングの設定](./how-to-setup-autoscale.md)に関するページを参照してください。
+はい。 詳細については、[マイクロサービスアプリケーションの自動スケールの設定](./how-to-setup-autoscale.md)を参照してください。
+
+### <a name="how-does-azure-spring-cloud-monitor-the-health-status-of-my-application"></a>Azure Spring Cloud はアプリケーションの正常性状態をどのように監視しますか。
+
+Azure Spring Cloud は、お客様のアプリケーションのポート1025を継続的に調査します。 これのプローブは、アプリケーションコンテナーがトラフィックの受け入れを開始する準備ができているかどうか、および Azure Spring Cloud でアプリケーションコンテナーを再起動する必要があるかどうかを判断します。 内部的には、Azure Spring Cloud は Kubernetes の活性および準備プローブを使用して、状態の監視を実現します。
+
+>[!NOTE]
+> これらのプローブにより、現在、ポート1025を公開せずに Azure Spring Cloud でアプリケーションを起動することはできません。
+
+### <a name="whether-and-when-will-my-application-be-restarted"></a>アプリケーションを再起動するかどうかを指定します。
+
+正解です。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
-既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行しようとしている場合は、次のベスト プラクティスを確認することをお勧めします。
-
-* アプリケーションの依存関係をすべて解決しておく必要があります。
-* 構成エントリ、環境変数、および JVM パラメーターを準備しておき、それらを Azure Spring Cloud でのデプロイと比較できるようにします。
-* サービス バインドを使用する場合は、Azure サービスをチェックし、適切なアクセス許可を設定していることを確認してください。
-* Azure Spring Cloud によって管理されるサービスと競合する可能性のある組み込みサービス (サービス検出サービスや構成サーバーなど) をすべて削除するか、または無効にすることをお勧めします。
-* 公式の、安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式版、ベータ版、またはフォーク済みバージョンの Pivotal Spring ライブラリにはサービス レベル アグリーメント (SLA) のサポートがありません。
-
-移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
+詳細については、[アプリケーションの移行をSpring Cloudを参照Azure Spring Cloud](/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-cloud)。
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"

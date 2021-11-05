@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: b29ae41d85d243e64fea777dcb0cf9ee5ccff581
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 94760d7029c74cb5669a1275c4d670f1b89b6c12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130137370"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048781"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -103,13 +103,13 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 接続名が 1 つの正確な値に解決されると、ランタイムでは、値を _接続文字列_ として識別します。これには通常、シークレットが含まれます。 接続文字列の詳細は、接続先のサービスによって定義されます。
 
-ただし、接続名では複数の構成アイテムのコレクションを参照することもできます。 2 つのアンダースコア `__` で終わる共有プレフィックスを使用して、環境変数をコレクションとして扱うことができます。 このプレフィックスに接続名を設定することによって、グループを参照できます。
+ただし、接続名は複数の構成アイテムのコレクションを参照することもでき、これは [IDベースの接続](#configure-an-identity-based-connection)を構成するのに便利です。 2 つのアンダースコア `__` で終わる共有プレフィックスを使用して、環境変数をコレクションとして扱うことができます。 このプレフィックスに接続名を設定することによって、グループを参照できます。
 
 たとえば、Azure BLOB トリガー定義の `connection` プロパティが "Storage1" であるとします。 "Storage1" という名前の環境変数で構成された単一の文字列値がない限り、`Storage1__blobServiceUri` という名前の環境変数を使用して、接続の `blobServiceUri` プロパティを通知できます。 接続のプロパティはサービスによって異なります。 接続を使用するコンポーネントのドキュメントを参照してください。
 
 ### <a name="configure-an-identity-based-connection"></a>ID ベースの接続を構成する
 
-Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成できます。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。
+Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成できます。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。 マネージド ID を使用して関数アプリを構成するチュートリアルについては、ID ベースの接続を使用した関数アプリの作成に関 [するチュートリアルを参照してください](./functions-identity-based-connections-tutorial.md)。
 
 ID ベースの接続は、次のコンポーネントでサポートされています。
 
@@ -168,6 +168,9 @@ Azure サービスの ID ベース接続では、次の共通プロパティが�
 
 ##### <a name="local-development-with-identity-based-connections"></a>ID ベースの接続によるローカル開発
 
+> [!NOTE]
+> IDベースの接続を使用したローカル開発には、 [Azure Functions Core Tools](./functions-run-local.md)の更新バージョンが必要です。 `func -v` コマンドを入力することによって、現在インストールされているバージョンを確認できます。 Functions v3 の場合は、バージョン以降を使用 `3.0.3904` します。 Functions v4 の場合は、バージョン以降を使用 `4.0.3904` します。 
+
 ローカルで実行している場合、上記の構成によって、ローカルの開発者 ID を使用するようにランタイムに指示します。 接続では次の場所から順番にトークンを取得しようとします。
 
 - Microsoft アプリケーション間で共有されるローカル キャッシュ
@@ -207,8 +210,8 @@ Azure BLOB への ID ベース接続に必要な `local.settings.json` プロパ
 Azure Functions では、タイマー トリガーのシングルトン実行の調整や既定のアプリ キー ストレージなどのコア動作に "AzureWebJobsStorage" 接続が既定で使用されます。 これは、ID を利用するように構成することもできます。
 
 > [!CAUTION]
-> Functions の他のコンポーネントは、既定の動作では "AzureWebJobsStorage" に依存します。 この種の接続をサポートしていない古いバージョンの拡張機能 (Azure BLOB および Event Hubs のトリガーとバインディングを含む) を使用している場合は、それを ID ベースの接続に移動させないでください。
-> 
+> Functions の他のコンポーネントは、既定の動作では "AzureWebJobsStorage" に依存します。 この種の接続をサポートしていない古いバージョンの拡張機能 (Azure BLOB および Event Hubs のトリガーとバインディングを含む) を使用している場合は、それを ID ベースの接続に移動させないでください。 同様に、 `AzureWebJobsStorage` は、Linux でのサーバー側ビルドの使用時に配置アーティファクトに使用されます。これを有効にする場合は、 [外部デプロイパッケージ](/run-functions-from-deployment-package)を使用してデプロイする必要があります。
+>
 > また、一部のアプリでは、トリガー、バインディング、関数コード内の他のストレージ接続に "AzureWebJobsStorage" が再利用されます。 接続文字列からこの接続を変更する前に、"AzureWebJobsStorage" のすべての用途で ID ベースの接続形式を使用できるようにしてください。
 
 "AzureWebJobsStorage" に ID ベース接続を使用するには、次のアプリ設定を構成します。

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.openlocfilehash: 8a0e7ab7fad8b0da025f143ab2401e5740972ec7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549874"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078258"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する
 
@@ -46,7 +46,9 @@ ms.locfileid: "102549874"
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
 
-コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 マーケットプレースにアクセスした購入者は、[Azure AD アカウントまたは Microsoft アカウント (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology) で認証されています。 購入後、購入者はコマーシャル マーケットプレースからランディング ページ URL に移動し、SaaS アプリケーションのサブスクリプションをアクティブにして管理します。 購入者が Azure AD SSO を使用してアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、そのオファーの [[技術的な構成]](plan-saas-offer.md#technical-information) ページで指定されます)。
+コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 マーケットプレースにアクセスした購入者は、[Azure AD アカウントまたは Microsoft アカウント (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology) で認証されています。 購入後、購入者はコマーシャル マーケットプレースからランディング ページ URL に移動し、SaaS アプリケーションのサブスクリプションをアクティブにして管理します。 購入者が Azure AD SSO を使用してアプリケーションにサインインできるようにする必要があります。 (ランディングページの URL は、プランの  [技術構成](plan-saas-offer.md#technical-information) ページで指定します。)
+
+[!INCLUDE [pound-sign-note](./includes/pound-sign-note.md)]
 
 ID を使用するための最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認します。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証したり、ユーザー リソースへのアクセスを要求したりできるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリの設定に基づいてアプリにトークンを発行する方法を認識できるようになります。
 

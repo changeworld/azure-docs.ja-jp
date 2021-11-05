@@ -9,14 +9,14 @@ ms.date: 06/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb
+ms.reviewer: calebb, sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c0bf5ac063fbf300cf43cd46a22e8904cb6bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 36d6283bd8304a33b80797e502edde45c952e06a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548789"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067396"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -62,11 +62,25 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 デバイスを準拠としてマークするには、あらかじめそのデバイスが Azure AD に登録されている必要があります。 デバイス登録の詳細については、「[デバイス ID とは](../devices/overview.md)」を参照してください。
 
+**解説**
+
+- [ **デバイスを準拠としてマークする必要があります]** 要件 :
+   - 現在の Windows Windows (Windows 10+)、iOS、Android、macOS デバイスのみをサポートすだけ、Azure AD Intune に登録します。
+   - サード パーティの MDM システムに登録されているデバイスについては 、[「Intune でサード パーティのデバイスコンプライアンス パートナーをサポートする」](/mem/intune/protect/device-compliance-partners)を参照してください。
+   - 条件付きアクセスでは、Microsoft Edgeとして InPrivate モードでのアクセスを考慮することはできません。
+
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みのデバイスを必要とする
 
 組織は、条件付きアクセス ポリシーの一部としてデバイス ID を使用することを選択できます。 組織は、このチェックボックスを使用して、デバイスがハイブリッド Azure AD 参加済みであることを必須にすることができます。 デバイス ID の詳細については、「[デバイス ID とは](../devices/overview.md)」の記事を参照してください。
 
 [デバイスコードの OAuth フロー](../develop/v2-oauth2-device-code.md)を使用する場合、マネージド デバイスを要求する許可コントロールや、デバイスの状態の条件は、サポートされません。 これは、認証を実行するデバイスがそのデバイスの状態を、コードを提供するデバイスに提供できず、トークン内のデバイスの状態が、認証を行うデバイスにロックされるためです。 代わりに、多要素認証を要求する許可コントロールを使用してください。
+
+**解説**
+
+- **Hybrid Azure AD Join を使用したデバイスが必要** 要件：
+   - ドメイン参加済みデバイスWindowsダウンレベル (Windows 10)、Windows (Windows 10+) デバイスのみをサポートします。
+   - 条件付きアクセスではMicrosoft Edge参加しているハイブリッド デバイスとして InPrivate Azure ADを考慮することはできません。
 
 ### <a name="require-approved-client-app"></a>承認済みクライアント アプリを必須にする
 
@@ -146,7 +160,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Nine Mail - Email & Calendar
 
 > [!NOTE]
-> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする** 許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする** 許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
+> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする** 許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする** 許可を明示的に使用してください。 `or`2 つの許可間で句を使用しても、これら3つのアプリケーションでは機能しません。
 
 **解説**
 

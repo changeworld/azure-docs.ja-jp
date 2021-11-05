@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/01/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6cc1cf4aac9b8f363770495d976ad65b6ff79b49
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0c710db98df6c377ba2ce3c5b43044533e3cc135
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014329"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441915"
 ---
 # <a name="secure-score-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud のセキュリティ スコア
 

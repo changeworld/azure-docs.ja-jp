@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: 25572c32eff7fcdaffe3bad2bbf349bc8ca885f7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4a98b229497aa3b11692fff044bb0f0347ada9d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045808"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039527"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Private Link を使用した Azure Cache for Redis
 
@@ -208,6 +208,116 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 > `publicNetworkAccess` フラグは既定で `Disabled` に設定されています。
 > 値を `Disabled` または `Enabled` に設定できます。 有効に設定すると、このフラグにより、パブリック エンドポイントとプライベート エンドポイントの両方がキャッシュにアクセスできます。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 値を変更する方法の詳細については、「[よくあるご質問](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)」を参照してください。
 >
+## <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
+
+既存のインスタンスに対して *MyPrivateEndpoint* という名前のプライベート エンドポイントAzure Cache for Redis、次の PowerShell スクリプトを実行します。 変数の値を環境の詳細に置き換えます：
+
+```azurepowershell-interactive
+
+$SubscriptionId = "<your Azure subscription ID>"
+# Resource group where the Azure Cache for Redis instance and virtual network resources are located
+$ResourceGroupName = "myResourceGroup"
+# Name of the Azure Cache for Redis instance
+$redisCacheName = "mycacheInstance"
+
+# Name of the existing virtual network
+$VNetName = "myVnet"
+# Name of the target subnet in the virtual network
+$SubnetName = "mySubnet"
+# Name of the private endpoint to create
+$PrivateEndpointName = "MyPrivateEndpoint"
+# Location where the private endpoint can be created. The private endpoint should be created in the same location where your subnet or the virtual network exists
+$Location = "westcentralus"
+
+$redisCacheResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Cache/Redis/$($redisCacheName)"
+
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnectionPS" -PrivateLinkServiceId $redisCacheResourceId -GroupId "redisCache"
+ 
+$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  $ResourceGroupName -Name $VNetName  
+ 
+$subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $SubnetName}  
+ 
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
+```
+
+## <a name="retrieve-a-private-endpoint-using-azure-powershell"></a>Azure PowerShellを使用してプライベート エンドポイントを取得する
+
+プライベートエンドポイントの詳細を取得するには、次の PowerShell コマンドを使用します：
+
+```azurepowershell-interactive
+Get-AzPrivateEndpoint -Name $PrivateEndpointName -ResourceGroupName $ResourceGroupName
+```
+
+## <a name="remove-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベートエンドポイントを削除する
+
+プライベートエンドポイントを削除するには、次の PowerShell コマンドを使用します。
+
+```azurepowershell-interactive
+Remove-AzPrivateEndpoint -Name $PrivateEndpointName -ResourceGroupName $ResourceGroupName
+```
+
+## <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベート エンドポイントを作成する
+
+Redis インスタンス用の既存の Azure キャッシュ用に *myPrivateEndpoint* という名前のプライベートエンドポイントを作成するには、次の Azure CLI スクリプトを実行します。 変数の値を環境の詳細に置き換えます：
+
+```azurecli-interactive
+# Resource group where the Azure Cache for Redis and virtual network resources are located
+ResourceGroupName="myResourceGroup"
+
+# Subscription ID where the Azure Cache for Redis and virtual network resources are located
+SubscriptionId="<your Azure subscription ID>"
+
+# Name of the existing Azure Cache for Redis instance
+redisCacheName="mycacheInstance"
+
+# Name of the virtual network to create
+VNetName="myVnet"
+
+# Name of the subnet to create
+SubnetName="mySubnet"
+
+# Name of the private endpoint to create
+PrivateEndpointName="myPrivateEndpoint"
+
+# Name of the private endpoint connection to create
+PrivateConnectionName="myConnection"
+
+az network vnet create \
+    --name $VNetName \
+    --resource-group $ResourceGroupName \
+    --subnet-name $SubnetName
+
+az network vnet subnet update \
+    --name $SubnetName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName \
+    --disable-private-endpoint-network-policies true
+
+az network private-endpoint create \
+    --name $PrivateEndpointName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName  \
+    --subnet $SubnetName \
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Cache/Redis/$redisCacheName" \
+    --group-ids "redisCache" \
+    --connection-name $PrivateConnectionName
+```
+
+## <a name="retrieve-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベートエンドポイントを取得する
+
+プライベートエンドポイントの詳細を取得するには、次の CLI コマンドを使用します。
+
+```azurecli-interactive
+az network private-endpoint show --name MyPrivateEndpoint --resource-group MyResourceGroup
+```
+
+## <a name="remove-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベートエンドポイントを削除する
+
+プライベートエンドポイントを削除するには、次の CLI コマンドを使用します。
+
+```azurecli-interactive
+az network private-endpoint delete --name MyPrivateEndpoint --resource-group MyResourceGroup
+```
 
 ## <a name="faq"></a>よく寄せられる質問
 
@@ -223,11 +333,14 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>プライベート エンドポイントに接続できないのはなぜですか。
 
-キャッシュが既に VNet インジェクションされたキャッシュである場合、プライベート エンドポイントをそのキャッシュ インスタンスで使用できません。 キャッシュ インスタンスが以下のサポートされていない機能を使用している場合は、プライベート エンドポイント インスタンスに接続できません。
+- キャッシュが既 VNet に挿入されたキャッシュである場合は、プライベートエンドポイントをキャッシュインスタンスで使用することはできません。
+- クラスター化されたキャッシュのプライベートリンクは1つに制限されています。 その他のすべてのキャッシュでは、制限は100プライベートリンクです。
+- ファイアウォール規則が適用されている [ストレージアカウント](cache-how-to-premium-persistence.md) にデータを永続化しようとすると、プライベートリンクを作成できなくなる可能性があります。
+- キャッシュインスタンスが [サポートされていない機能](#what-features-arent-supported-with-private-endpoints)を使用している場合、プライベートエンドポイントに接続することはできません。
 
 ### <a name="what-features-arent-supported-with-private-endpoints"></a>プライベート エンドポイントでサポートされていない機能は何ですか?
 
-現時点では、ポータル コンソールのサポートとファイアウォール ストレージ アカウントへの永続化はサポートされていません。
+Azure portal コンソールから接続しようとすると、サポートされていないシナリオで接続エラーが表示されます。
 
 ### <a name="how-do-i-verify-if-my-private-endpoint-is-configured-correctly"></a>どうすれば、プライベート エンドポイントが正しく構成されていることを確認できますか。
 

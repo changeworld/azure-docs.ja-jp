@@ -7,21 +7,21 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: ece84cc15c9945d8f39e3163ab0da2941d4f1349
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0dcc729ea622c42592d1f118f58a831d3a637aea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161997"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056188"
 ---
 # <a name="authorize-search-requests-using-azure-ad-preview"></a>Azure AD を使用して検索要求を承認する (プレビュー)
 
 > [!IMPORTANT]
 > インデックスの作成やインデックスのクエリなどのデータ プレーン操作のためのロールベースのアクセス制御は、現在、パブリック プレビュー段階であり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で使用できます。 この機能はパブリック クラウドでのみ使用でき、機能がプレビュー段階の間は、操作の待機時間に影響を与える可能性があります。 
 
-Azure Active Directory (Azure AD) では、ロールベースのアクセス制御 (RBAC) を使用して、Azure Cognitive Search サービスへのアクセス権を付与できます。 Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Cognitive Search への要求を承認できます。 アプリケーションで Azure AD を使用する利点の詳細については、[Azure Active Directory との統合](/azure/active-directory/develop/active-directory-how-to-integrate#benefits-of-integration)に関する記事を参照してください。
+Azure Active Directory (Azure AD) では、ロールベースのアクセス制御 (RBAC) を使用して、Azure Cognitive Search サービスへのアクセス権を付与できます。 Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Cognitive Search への要求を承認できます。 アプリケーションで Azure AD を使用する利点の詳細については、[Azure Active Directory との統合](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration)に関する記事を参照してください。
 
-この記事では、Microsoft ID プラットフォームでの認証用にアプリケーションを構成する方法について説明します。 Microsoft ID プラットフォームの詳細については、「[Microsoft ID プラットフォームの概要](/azure/active-directory/develop/v2-overview)」を参照してください。 Azure AD によって使用される OAuth 2.0 コード付与フローの概要については、[OAuth 2.0 コード付与フローを使用した Azure Active Directory Web アプリケーションへのアクセスの承認](/azure/active-directory/develop/v2-oauth2-auth-code-flow)に関する記事を参照してください。
+この記事では、Microsoft ID プラットフォームでの認証用にアプリケーションを構成する方法について説明します。 Microsoft ID プラットフォームの詳細については、「[Microsoft ID プラットフォームの概要](../active-directory/develop/v2-overview.md)」を参照してください。 Azure AD によって使用される OAuth 2.0 コード付与フローの概要については、[OAuth 2.0 コード付与フローを使用した Azure Active Directory Web アプリケーションへのアクセスの承認](../active-directory/develop/v2-oauth2-auth-code-flow.md)に関する記事を参照してください。
 
 ## <a name="prepare-your-search-service"></a>検索サービスを準備する
 
@@ -29,11 +29,20 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 
 ### <a name="sign-up-for-the-preview"></a>プレビューのサインアップ
 
-検索サービスのクエリに Azure AD を使用するために必要な Azure Cognitive Search の RBAC 機能の部分は、まだ限定的なプレビュー段階です。 
+検索サービスのクエリに Azure AD を使用するために必要な Azure Cognitive Search の RBAC 機能の部分は、まだ限定的なプレビュー段階です。 これらの機能を使用するには、プレビュー機能を Azure サブスクリプションに追加する必要があります。
 
-プレビューに登録するには、[こちらのフォームに記入してください](https://aka.ms/azure-cognitive-search/rbac-preview)。
+サブスクリプションをプレビューに追加するには、次のようにします。
 
-要求の処理には、数営業日がかかる場合があります。 
+1. [Azure portal](https://portal.azure.com/)の **[サブスクリプション]** ページに移動します。
+1. 使用するサブスクリプションを選択します。
+1. サブスクリプション ページの左側で、 **プレビュー機能** を選択します。
+1. 検索バーまたはフィルターを使用して **Search Service のロールベースの Access Control** を検索して選択する (プレビュー)
+1. **[登録]** を選択して、サブスクリプションに機能を追加します。
+
+![afec での rbac へのサインアップ](media/search-howto-aad/rbac-signup-afec.png)
+
+プレビュー機能の追加の詳細については、「 [Azure サブスクリプションでプレビュー機能を設定](../azure-resource-manager/management/preview-features.md?tabs=azure-portal)する」を参照してください。
+
 
 ### <a name="enable-rbac-for-data-plane-operations"></a>データ プレーン操作で RBAC を有効にする
 
@@ -42,16 +51,16 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 ロールベースのアクセス制御を有効にするには:
 
 1. 次のプレビュー リンクを使用して、Azure portal に移動します: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true)。 
-1. 左側のナビゲーション ウィンドウで、**[キー]** を選択します
+1. 左側のナビゲーション ウィンドウで、 **[キー]** を選択します
 1. キーベースとロールベースの両方のアクセス制御を許可するか、またはロールベースのアクセス制御のみを許可するかを決定します。
 
 ![ポータルでの Azure Cognitive Search に対する認証オプション](media/search-howto-aad/portal-api-access-control.png)
 
-[Azure Cognitive Search の RBAC のドキュメント](/azure/search/search-security-rbac?tabs=config-svc-rest%2Croles-powershell%2Ctest-rest#step-2-preview-configuration)で説明されているように、これらの設定をプログラムで変更することもできます。
+[Azure Cognitive Search の RBAC のドキュメント](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-2-preview-configuration)で説明されているように、これらの設定をプログラムで変更することもできます。
 
 ## <a name="register-an-application-with-azure-ad"></a>アプリケーションを Azure AD に登録する
 
-認証に Azure AD を使用するための次のステップは、[Microsoft ID プラットフォーム](/azure/active-directory/develop/quickstart-register-app)にアプリケーションを登録することです。 アプリケーションの作成で問題が発生する場合は、[アプリケーションの登録に必要なアクセス許可](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)があることを確認してください。
+認証に Azure AD を使用するための次のステップは、[Microsoft ID プラットフォーム](../active-directory/develop/quickstart-register-app.md)にアプリケーションを登録することです。 アプリケーションの作成で問題が発生する場合は、[アプリケーションの登録に必要なアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)があることを確認してください。
 
 アプリケーションを Azure AD に登録するには:
 
@@ -80,9 +89,9 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 
 ## <a name="grant-your-application-permissions-to-azure-cognitive-search"></a>アプリケーションに Azure Cognitive Search へのアクセス許可を付与する
 
-次に、検索サービスへのアクセスを Azure AD アプリケーションに許可する必要があります。 Azure Cognitive Search に用意されているさまざまな[組み込みのロール](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#built-in-roles-used-in-search)を、アプリケーションで必要なアクセス権に応じて使用できます。
+次に、検索サービスへのアクセスを Azure AD アプリケーションに許可する必要があります。 Azure Cognitive Search に用意されているさまざまな[組み込みのロール](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#built-in-roles-used-in-search)を、アプリケーションで必要なアクセス権に応じて使用できます。
 
-一般に、必要なアクセス権のみをアプリケーションに付与するのが最善です。 たとえば、アプリケーションで検索インデックスのクエリを実行できることだけが必要な場合は、[検索インデックス データ閲覧者 (プレビュー)](/azure/role-based-access-control/built-in-roles#search-index-data-reader) ロールを付与することができます。 または、検索インデックスの読み取りと書き込みができる必要がある場合は、[検索インデックス データ共同作成者 (プレビュー)](/azure/role-based-access-control/built-in-roles#search-index-data-contributor) ロールを使用できます。
+一般に、必要なアクセス権のみをアプリケーションに付与するのが最善です。 たとえば、アプリケーションで検索インデックスのクエリを実行できることだけが必要な場合は、[検索インデックス データ閲覧者 (プレビュー)](../role-based-access-control/built-in-roles.md#search-index-data-reader) ロールを付与することができます。 または、検索インデックスの読み取りと書き込みができる必要がある場合は、[検索インデックス データ共同作成者 (プレビュー)](../role-based-access-control/built-in-roles.md#search-index-data-contributor) ロールを使用できます。
 
 アプリの登録にロールを割り当てるには:
 
@@ -91,15 +100,15 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 1. 右側の **[Grant access to this resource]\(このリソースへのアクセスを許可する\)** で、**[ロールの割り当てを追加]** を選択します。
 1. 使用するロールを選択して、**[次へ]** をクリックします。
 1. 次のページで、**[メンバーの選択]** をクリックして、前に作成したアプリケーションを検索します。 
-1. 最後に、**[Review + assign]\(確認と割り当て\)** をクリックします
+1. 最後に、 **[確認 + 割り当て]** をクリックします。
 
 ![Azure portal の [ロールの割り当てを追加]](media/search-howto-aad/role-assignment.png)
 
-[PowerShell を使用してロールを割り当てる](/azure/search/search-security-rbac?tabs=config-svc-rest%2Croles-powershell%2Ctest-rest#step-3-assign-roles)こともできます。
+[PowerShell を使用してロールを割り当てる](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-3-assign-roles)こともできます。
 
 ### <a name="create-a-custom-role"></a>カスタム ロールを作成する
 
-[組み込みのロール](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#built-in-roles-used-in-search)を使用するだけでなく、[カスタム ロール](/azure/role-based-access-control/custom-roles)を作成して、アプリケーションで実行できる操作を正確に定義することもできます。
+[組み込みのロール](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#built-in-roles-used-in-search)を使用するだけでなく、[カスタム ロール](../role-based-access-control/custom-roles.md)を作成して、アプリケーションで実行できる操作を正確に定義することもできます。
 
 たとえば、インデックスを作成し、そこからデータを読み取る機能を備えた、インデックスを完全に管理できるロールが必要な場合は、次に示すロールを定義できます。
 
@@ -124,9 +133,9 @@ Azure Active Directory (Azure AD) では、ロールベースのアクセス制�
 }
 ```
 
-カスタム ロールは、[Azure portal](/azure/role-based-access-control/custom-roles-portal)、[Azure PowerShell](/azure/role-based-access-control/custom-roles-powershell)、[Azure CLI](/azure/role-based-access-control/custom-roles-cli)、または [REST API](/azure/role-based-access-control/custom-roles-rest) を使用して作成できます。 上記の JSON では、PowerShell でカスタム ロールを作成するための構文が示されています。
+カスタム ロールは、[Azure portal](../role-based-access-control/custom-roles-portal.md)、[Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md)、または [REST API](../role-based-access-control/custom-roles-rest.md) を使用して作成できます。 上記の JSON では、PowerShell でカスタム ロールを作成するための構文が示されています。
 
-使用できる操作の完全な一覧については、[Microsoft.Search リソース プロバイダーの操作](/azure/role-based-access-control/resource-provider-operations#microsoftsearch)に関する記事を参照してください。
+使用できる操作の完全な一覧については、[Microsoft.Search リソース プロバイダーの操作](../role-based-access-control/resource-provider-operations.md#microsoftsearch)に関する記事を参照してください。
 
 
 ### <a name="grant-access-to-only-a-single-index"></a>1 つのインデックスだけへのアクセスを許可する
@@ -190,11 +199,11 @@ Azure.Identity のドキュメントには、[Azure SDK for .NET での Azure AD
 
 ### <a name="azure-ad-authentication-with-the-rest-api"></a>REST API を使用した Azure AD 認証
 
-Azure SDK を使用すると OAuth 2.0 のフローが簡素化されますが、プロトコルに対して直接アプリケーションをプログラムすることもできます。 詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)」を参照してください。
+Azure SDK を使用すると OAuth 2.0 のフローが簡素化されますが、プロトコルに対して直接アプリケーションをプログラムすることもできます。 詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」を参照してください。
 
 #### <a name="get-a-token"></a>トークンを取得する
 
-最初に、Microsoft ID プラットフォームから[トークンを取得](/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#get-a-token)します。
+最初に、Microsoft ID プラットフォームから[トークンを取得](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)します。
 
 ```
 POST /[tenant id]/oauth2/v2.0/token HTTP/1.1
@@ -222,7 +231,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search でロールベースの承認を使用する](search-security-rbac.md)
-+ [OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-+ [Azure Active Directory との統合](/azure/active-directory/develop/active-directory-how-to-integrate#benefits-of-integration)
-+ [Azure カスタム ロール](/azure/role-based-access-control/custom-roles)
-
++ [OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../active-directory/develop/v2-oauth2-auth-code-flow.md)
++ [Azure Active Directory との統合](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration)
++ [Azure カスタム ロール](../role-based-access-control/custom-roles.md)

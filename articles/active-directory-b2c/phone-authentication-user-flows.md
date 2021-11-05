@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 414884fe0ef72b7628c99dd4b6ca39d4e851f9fe
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 5c63cb4f4e2ce41fa488e49201ba90bfc4b16222
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035811"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012835"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>ユーザー フローの電話でのサインアップとサインインを設定する
 
@@ -75,10 +75,10 @@ ms.locfileid: "130035811"
 
     ![ユーザー フローの作成ボタン](./media/phone-authentication-user-flows/select-version.png)
 
-1. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
+1. ユーザー フローの **[名前]** (*signupsignin1* など) を入力します。
 1. **[ID プロバイダー]** セクションの **[ローカル アカウント]** の下にある **[Phone signup]\(電話でのサインアップ\)** を選択します。
 
-   ![ユーザー フローの電話でのサインアップ オプションの選択](media/phone-authentication-user-flows/user-flow-phone-signup.png)
+   ![ユーザー フロー **電話でのサインアップ** オプションの選択](media/phone-authentication-user-flows/user-flow-phone-signup.png)
 
 1. **[ソーシャル ID プロバイダー]** で、このユーザー フローに対して許可するその他の ID プロバイダーを選択します。
 

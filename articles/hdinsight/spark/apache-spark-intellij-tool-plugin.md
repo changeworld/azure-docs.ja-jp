@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: aeb6c9e266bdb663b9a664c8509e9cafab8a5128
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 77bfb5c0197ba64c71e142f9b21c0e6d57f5ac20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743008"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068724"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "124743008"
 * Azure HDInsight Spark クラスター リソースにアクセスする。
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 > * Azure Toolkit for IntelliJ プラグインを使用する
 > * Apache Spark アプリケーションを開発する
@@ -34,7 +34,7 @@ ms.locfileid: "124743008"
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  この記事では、Java バージョン 8.0.202 を使用します。
 
-* IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
+* IntelliJ IDEA。 この記事では、 [IntelliJ のアイデア Community 2018.3.4](https://www.jetbrains.com/idea/download/)を使用します。
 
 * Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/)」を参照してください。
 

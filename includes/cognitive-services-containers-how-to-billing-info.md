@@ -1,17 +1,17 @@
 ---
 author: aahill
 ms.author: aahi
-ms.date: 03/02/2021
+ms.date: 07/27/2021
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1013fc4746a858445ce8df6a451f05632a46aad4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102032936"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024595"
 ---
-コンテナーへのクエリは、`ApiKey` に使用される Azure リソースの価格レベルで課金されます。
+コンテナーへのクエリは、 `ApiKey`パラメーターに使用される Azure リソースの価格レベルで課金 されます。
 
 Azure Cognitive Services コンテナーは、計測または課金エンドポイントに接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に課金エンドポイントに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーによって、お客様のデータ (解析対象の画像やテキストなど) が Microsoft に送信されることはありません。
 

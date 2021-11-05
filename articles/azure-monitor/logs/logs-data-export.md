@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: 25d1d07edabdc8ee3d46175a51d8a20c5d9cc9eb
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: f5dc1ad57b745ee26f9edb1b9c31091a1aaec42c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133114"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069978"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -173,7 +173,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
     | namespaces-name | Event Hub の標準メトリック | クォータ超過エラー数 | Count | 要求の 1% から 5% |
 
 1. アラートの修復アクション
-   - ユニット数を増やす (TU または PU)
+   - [自動インフレ](../../event-hubs/event-hubs-auto-inflate.md)機能を構成して自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たします。
+   - 負荷に合わせてスループットユニットの増加を確認する
    - 追加の名前空間の間でテーブルを分割します
    - スループットを高めるために 'Premium' または 'Dedicated' レベルを使用します
 
@@ -653,6 +654,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ABSBotRequests |  |
 | ACSAuthIncomingOperations |  |
 | ACSBillingUsage |  |
+| ACRConnectedClientList |  |
+| ACRConnectedClientList |  |
+| ACSCallDiagnostics |  |
+| ACSCallSummary |  |
 | ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
 | ADAssessmentRecommendation |  |
@@ -674,7 +679,19 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
 | AEWAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmOperationLogs |  |
+| AgriFoodInsightLogs |  |
+| AgriFoodJobProcessedLogs |  |
+| AgriFoodModelInferenceLogs |  |
+| AgriFoodProviderAuthLogs |  |
+| AgriFoodSatelliteLogs |  |
+| AgriFoodWeatherLogs |  |
 | アラート: |  |
+| AlertEvidence |  |
 | AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
@@ -685,6 +702,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AppServiceFileAuditLogs |  |
 | AppServiceHTTPLogs |  |
 | AppServicePlatformLogs |  |
+| ATCExpressRouteCircuitIpfix |  |
 | AuditLogs |  |
 | AutoscaleEvaluationsLog |  |
 | AutoscaleScaleActionsLog |  |
@@ -704,9 +722,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | CDBPartitionKeyRUConsumption |  |
 | CDBPartitionKeyStatistics |  |
 | CDBQueryRuntimeStatistics |  |
+| CloudAppEvents |  |
 | CommonSecurityLog |  |
 | ComputerGroup |  |
-| ConfigurationData | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| ConfigurationData | 部分的なサポート – データの一部は、エクスポートでサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | ContainerImageInventory |  |
 | ContainerInventory |  |
 | ContainerLog |  |
@@ -747,9 +766,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | HDInsightHiveAndLLAPMetrics |  |
 | HDInsightHiveTezAppStats |  |
 | HDInsightJupyterNotebookEvents |  |
-| HDInsightKafkaLogs |  |
 | HDInsightKafkaMetrics |  |
 | HDInsightOozieLogs |  |
+| HDInsightRangerAuditLogs |  |
 | HDInsightSecurityLogs |  |
 | HDInsightSparkApplicationEvents |  |
 | HDInsightSparkBlockManagerEvents |  |
@@ -763,7 +782,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | HDInsightSparkTaskEvents |  |
 | Heartbeat |  |
 | HuntingBookmark |  |
-| InsightsMetrics | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| InsightsMetrics | 部分的なサポート – データの一部は、エクスポートでサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | IntuneAuditLogs |  |
 | IntuneDevices |  |
 | IntuneOperationalLogs |  |
@@ -784,18 +803,18 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | NWConnectionMonitorPathResult |  |
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | 政府機関向けクラウドでの部分的なサポート – データの一部は、Webhook を介して O365 から LA に取り込まれます。 現在、この部分はエクスポートに含まれません。 |
-| Operation | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| Operation | 部分的なサポート – データの一部は、エクスポートでサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | Perf | 部分的なサポート – 現在、Windows のパフォーマンス データのみがサポートされています。 現在、Linux のパフォーマンス データはエクスポートに含まれません。 |
 | PowerBIDatasetsWorkspace |  |
+| HDInsightRangerAuditLogs |  |
 | PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |
 | SCOMAssessmentRecommendation |  |
 | SecurityAlert |  |
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
-| SecurityCef |  |
 | SecurityDetection |  |
-| SecurityEvent | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータはストレージを使用して収集されますが、このパスはエクスポートではサポートされていません。2 |
+| SecurityEvent | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。 |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -822,9 +841,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータはストレージを使用して収集されますが、このパスはエクスポートではサポートされていません。2 |
+| syslog | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。 |
 | ThreatIntelligenceIndicator |  |
-| 更新 | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| 更新 | 部分的なサポート – データの一部は、エクスポートでサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | UpdateRunProgress |  |
 | UpdateSummary |  |
 | 使用方法 |  |
@@ -833,7 +852,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | Watchlist |  |
 | WindowsEvent |  |
 | WindowsFirewall |  |
-| WireData | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| WireData | 部分的なサポート – データの一部は、エクスポートでサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | WorkloadDiagnosticLogs |  |
 | WVDAgentHealthStatus |  |
 | WVDCheckpoints |  |

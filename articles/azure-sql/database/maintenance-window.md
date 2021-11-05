@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
 ms.date: 10/15/2021
-ms.openlocfilehash: 123ea592e46c270830bccef1dc06f9caa3e8fd6e
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c73ee217fd802a839b565cd1174c94f8da288a0e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071893"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026053"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,8 +42,10 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 
 次の 2 つの追加メンテナンス期間スロットから選択することにより、メンテナンスの更新を Azure SQL リソースに適した時間に調整できます。
  
-* 平日期間、月曜日から木曜日の現地時刻で午後 10 時から午前 6 時
-* 週末期間、金曜日から日曜日の現地時刻で午後 10 時から午前 6 時
+* **平日** のウィンドウ: 現地時間の午後 10:00 から午前 6:00、月曜日から木曜日
+* **週末** のウィンドウ: 現地時間の午後 10:00 から午前 6:00、金曜日から日曜日
+
+一覧リストされているメンテナンスウィンドウの日数は、各 8 時間のメンテナンス時間の開始日を示します。 たとえば、"10:00 PM to 6:00 AM local time, Monday – Thursday" は、メンテナンス期間が毎日 (月曜日から木曜日) の現地時刻の午後 10:00 に開始され、次の日 (火曜日から金曜日) の現地時刻の午前 6 時に完了します。
 
 メンテナンス期間を選択し、サービスの構成が完了すると、計画メンテナンスは、選択した期間中のみ行われます。 通常、メンテナンス イベントは 1 つの期間内で完了しますが、一部のイベントは 2 つ以上の隣接する期間にまたがる場合があります。   
 

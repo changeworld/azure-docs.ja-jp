@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: 593858009c59c782119f9389bd36dcf894977a70
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6c71f912da153ae41b261e639cf99e6554927cdf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129989876"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068172"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 

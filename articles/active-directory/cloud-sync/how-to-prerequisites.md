@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59edce425720c08f2d973e7e61d35c851aa36fd1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 31850f855cdf109e2337898736d273237ff65058
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633452"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018203"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド同期を選択して使用する方法に関するガイダンスを示します。
@@ -26,7 +26,8 @@ Azure AD Connect クラウド同期を使用するには、次のものが必要
 
 - エージェント サービスを実行する Azure AD Connect Cloud Sync gMSA (グループ管理サービス アカウント) を作成するためのドメイン管理者またはエンタープライズ管理者の資格情報。 
 - ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
-- Windows 2016 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー。  このサーバーは、[Active Directory 管理層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
+- Windows 2016 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー。  このサーバーは、[Active Directory 管理層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。  ドメイン コントローラーへのエージェントのインストールがサポートされています。
+- 高可用性とは、クラウド同期Azure AD Connectクラウド同期長時間障害なく継続的に動作する機能を指します。  複数のアクティブなエージェントをインストールして実行することで、1つのエージェントで障害が発生した場合でも、Azure AD Connect クラウド同期を引き続き機能させることができます。  Microsoft では、高可用性のために3つのアクティブなエージェントをインストールすることをお勧めします。
 - オンプレミスのファイアウォールの構成
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
@@ -53,6 +54,45 @@ Azure AD Connect クラウド同期を使用するには、次のものが必要
 |Allow |gMSA アカウント |ユーザー オブジェクトの作成または削除|このオブジェクトとすべての子孫オブジェクト| 
 
 gMSA アカウントを使用するように既存のエージェントをアップグレードする手順については、「[グループ管理サービス アカウント](how-to-install.md#group-managed-service-accounts)」を参照してください。
+
+#### <a name="create-gmsa-account-with-powershell"></a>PowerShell と アカウントgMSAを作成する
+次の PowerShell スクリプトを使用して、カスタム gMSA アカウントを作成できます。  その後、 [cloud sync の gMSA コマンドレット](how-to-gmsa-cmdlets.md) を使用して、より詳細なアクセス許可を適用できます。
+
+```powershell
+# Filename:    1_SetupgMSA.ps1
+# Description: Creates and installs a custom gMSA account for use with Azure AD Connect cloud sync.
+#
+# DISCLAIMER:
+# Copyright (c) Microsoft Corporation. All rights reserved. This 
+# script is made available to you without any express, implied or 
+# statutory warranty, not even the implied warranty of 
+# merchantability or fitness for a particular purpose, or the 
+# warranty of title or non-infringement. The entire risk of the 
+# use or the results from the use of this script remains with you.
+#
+#
+#
+#
+# Declare variables
+$Name = 'provAPP1gMSA'
+$Description = "Azure AD Cloud Sync service account for APP1 server"
+$Server = "APP1.contoso.com"
+$Principal = Get-ADGroup 'Domain Computers'
+
+# Create service account in Active Directory
+New-ADServiceAccount -Name $Name `
+-Description $Description `
+-DNSHostName $Server `
+-ManagedPasswordIntervalInDays 30 `
+-PrincipalsAllowedToRetrieveManagedPassword $Principal `
+-Enabled $True `
+-PassThru
+
+# Install the new service account on Azure AD Cloud Sync server
+Install-ADServiceAccount -Identity $Name
+```
+
+上記のコマンドレットの詳細については、「グループの管理され [たサービスアカウントを使用したはじめに](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)?redirectedfrom=MSDN)」を参照してください。
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 

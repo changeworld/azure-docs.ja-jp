@@ -8,12 +8,13 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 34fcb3b4a8771f9c2b635a0f8e2c5a43ddf896a3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7235fc2fe3fb06cf342408e9aa99bf6db2e13393
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131428617"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075752"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする
 

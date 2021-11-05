@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5e3804ae4fd386668f4c34d11172e7f3dd1ae62
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 71a1e5f8ee6bb3641fce243233a654d15363e254
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595403"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012626"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -144,7 +144,7 @@ CAE 対応クライアントを使用していない場合、既定のアクセ�
 このページで、必要に応じて、プレビューの対象となるユーザーとグループを制限できます。
 
 > [!NOTE]
-> [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) を使用して Microsoft Graph のクエリを実行し、テナント内の CAE の構成を確認できます。 HTTP 200 応答と関連する応答の本文を見ると、テナント内で CAE が有効か無効かがわかります。 Microsoft Graph から HTTP 404 応答が返される場合、CAE は構成されていません。
+> [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) を使用して Microsoft Graph のクエリを実行し、テナント内の CAE の構成を確認できます。 HTTP 200 応答と関連する応答の本文を見ると、テナント内で CAE が有効か無効かがわかります。 Microsoft Graph から HTTP 404 応答が返される場合、CAE は構成されていません。
 
 ![Azure portal で CAE プレビューを有効にする](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
@@ -155,6 +155,23 @@ CAE 対応クライアントを使用していない場合、既定のアクセ�
 1. **[一般提供の後に自動で有効にする]** を既定値をとして選択したままにしておくと、CAE が一般提供されている場合に機能が有効になります。
 1. **[プレビューの有効化]** を選択したお客様は、すぐに新しい機能を利用でき、一般提供時に変更を行う必要はありません。 
 1. **[プレビューの無効化]** を選択したお客様は、組織独自のペースで CAE を採用する時間があります。 この設定は、一般提供時に **[無効]** として保持されます。
+
+#### <a name="migration"></a>移行
+
+CAE 設定が条件付きアクセスの下に移動されました。 以前にセキュリティの CAE 設定を構成しているお客様は、これらの設定を条件付きアクセスポリシーに移行する必要があります。 設定を条件付きアクセスポリシーに移行するには、次の手順を移行します。
+
+:::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="条件付きアクセス ポリシーに継続的アクセス評価を移行するオプションを示すポータル ビュー。" lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
+
+1. **Azure portal** に、条件付きアクセス管理者、セキュリティ管理者、または全体管理者としてサインインします。 
+1.  **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[継続的アクセス評価]** (プレビュー) を参照します。 
+1.  その後、ポリシーを移行するオプション **が** 表示されます。 この操作はアクセスできる唯一のアクションです。
+1. [条件付 **きアクセス] を** 参照すると、設定が構成された **CAE** 設定から作成された CA ポリシーという名前の新しいポリシーが表示されます。 管理者は、このポリシーをカスタマイズするか、独自のポリシーを作成して置き換える方法を選択できます。
+
+セッション制御としての継続的アクセス評価の詳細については、「継続的アクセス評価のカスタマイズ」 [セクションを参照してください](concept-conditional-access-session.md#customize-continuous-access-evaluation)。
+
+### <a name="strict-enforcement"></a>厳密な強制 
+
+[条件付きアクセス] の [最新の CAE] 設定では、厳密な強制は、IP アドレスのバリエーションとクライアントの機能の2つの要素に基づいてセキュリティを強化できる新機能です。 この関数は、特定のポリシーの CAE オプションのカスタマイズ中に有効にできます。 厳密な強制を有効にすることで [、CAE は、IP](#ip-address-variation) アドレスのバリエーションまたは CAE クライアント機能の欠如のいずれかのインスタンスを検出すると、アクセスを [取り消します](#client-capabilities)。
 
 ## <a name="limitations"></a>制限事項
 
@@ -206,7 +223,7 @@ Office 更新プログラム チャネルの詳細については、[Microsoft 3
 - Office アプリを閉じる
 - 10 時間の期間後
 
-この時間を短縮するために、SharePoint 管理者は、[SharePoint Online でネットワークの場所のポリシーを構成する](/sharepoint/control-access-based-on-network-location)ことで、SharePoint Online および OneDrive for Business に保存されているドキュメントの共同編集セッションの最大有効期間を短縮できます。 この構成が変更されると、共同編集セッションの最長有効期間は 15 分に短縮されます。また、SharePoint Online の PowerShell コマンド "[Set-SPOTenant –IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)" を使用してさらに調整できます。
+この時間を短縮するために、SharePoint 管理者は、[SharePoint Online でネットワークの場所のポリシーを構成する](/sharepoint/control-access-based-on-network-location)ことで、SharePoint Online および OneDrive for Business に保存されているドキュメントの共同編集セッションの最大有効期間を短縮できます。 この構成が変更されると、共同編集セッションの最長有効期間は 15 分に短縮されます。また、SharePoint Online の PowerShell コマンド "[Set-SPOTenant –IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant)" を使用してさらに調整できます。
 
 ### <a name="enable-after-a-user-is-disabled"></a>ユーザーが無効になった後にそのユーザーを有効にする
 
@@ -229,4 +246,5 @@ IP アドレス ポリシーは、プッシュ通知が発行されるまで評�
 
 - [継続的アクセス評価が有効になった API をアプリケーションで使用する方法](../develop/app-resilience-continuous-access-evaluation.md)
 - [要求のチャレンジ、クレーム要求、およびクライアントの能力](../develop/claims-challenge.md)
+- [条件付きアクセス:Session](concept-conditional-access-session.md)
 - [継続的アクセス評価の監視とトラブルシューティング](howto-continuous-access-evaluation-troubleshoot.md)

@@ -7,19 +7,21 @@ ms.service: azure-redhat-openshift
 keywords: 暗号化, BYOK, ARO, デプロイ, OpenShift, Red Hat
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.custom: template-how-to
-ms.openlocfilehash: f9b60767f929f8fc9d40836daa6435d0c69d110f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: b4df39040ac3cfbab2ecfa8cb24c72ff19ee5bdc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134290"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048237"
 ---
 # <a name="encrypt-os-disks-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Azure Red Hat OpenShift (ARO) でカスタマー マネージド キー (CMK) を使用して OS ディスクを暗号化する (プレビュー)
 
 既定では、Azure Red Hat OpenShift クラスター内の仮想マシンの OS ディスクは、Microsoft Azure によって管理される自動生成キーで暗号化されます。 セキュリティを強化するため、お客様は ARO クラスターをデプロイするときに、自己管理型キーを使用して OS ディスクを暗号化できます。 この機能を使用すると、カスタマー マネージド キーで機密データを暗号化することにより、いっそう詳細に制御できます。
 
 カスタマー マネージド キーを使用して作成されたクラスターの既定のストレージ クラスは、そのキーで有効になります。 そのため、OS ディスクとデータ ディスクの両方が、これらのキーによって暗号化されます。 カスタマー マネージド キーは、Azure Key Vault に格納されます。 Azure Key Vault を使用してキーを作成および保守する方法の詳細については、Microsoft Azure ドキュメントの [Azure Disk Storage のサーバー側暗号化](../key-vault/general/basic-concepts.md)に関する記事を参照してください。
+
+ホスト ベースの暗号化では、ARO エージェント ノードの VM の VM ホストに格納されているデータは保存時に暗号化され、Storage サービスに対してフローが暗号化されます。 つまり、一時ディスクは、プラットフォーム マネージド キーを使用して保存時に暗号化されます。 OS ディスクとデータ ディスクのキャッシュは、ディスクに設定された暗号化のタイプに応じて、プラットフォーム マネージド キーまたはカスタマー マネージド キーのどちらかを使用して保存時に暗号化されます。 既定では、ARO を使用する場合、OS ディスクとデータ ディスクは、プラットフォーム マネージド キーを使用して保存時に暗号化されます。つまり、これらのディスクのキャッシュも、プラットフォーム マネージド キーを使用して保存時に暗号化されます。 次の暗号化手順に従って、独自のマネージド キーを指定できます。 以後、これらのディスクのキャッシュも、この手順で指定するキーを使用して暗号化されるようになります。
 
 > [!IMPORTANT]
 > ARO のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビュー機能は、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル アグリーメントおよび限定保証からは除外されます。 プレビュー機能は、カスタマー サポートによりベストエフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。

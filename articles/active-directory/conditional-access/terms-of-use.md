@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f34d031bafd801cf068d19a4885bb9a818885c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 754520be35cbac4321fb7fbb65135016642a7ee1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561919"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018321"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -44,7 +44,7 @@ Azure AD 利用規約ポリシーを使用すると、以下のことができ�
 - 従業員やゲストに、Azure AD 多要素認証 (MFA) でセキュリティ情報を登録する前に利用規約ポリシーへの同意を求める。
 - 従業員やゲストに、Azure AD のセルフサービス パスワード リセット (SSPR) でセキュリティ情報を登録する前に利用規約ポリシーへの同意を求める。
 - 組織内のすべてのユーザーに一般的な利用規約ポリシーを提示する。
-- ユーザーの属性 (例: [動的グループ](../enterprise-users/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
+- [ダイナミックグループ](../enterprise-users/groups-dynamic-membership.md)を使用して、ユーザー属性 (医師、看護師、国内、国際従業員など) に基づいて特定の使用条件ポリシーを提示します。
 - ビジネスへの影響が大きいアプリケーション (Salesforce など) にアクセスする場合に特定の利用規約ポリシーを提示する。
 - 利用規約ポリシーを異なる言語で提示する。
 - 利用規約ポリシーに同意したユーザーと同意していないユーザーを一覧表示する。

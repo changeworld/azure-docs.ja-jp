@@ -7,12 +7,12 @@ ms.author: hickeys
 ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
-ms.openlocfilehash: 934122f4cb952a4be915c55c2555e336705a71c2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 38999f706cdec3b27f41b9408c1ffcf5c689c41b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039490"
 ---
 # <a name="managing-fluid-containers"></a>Fluid コンテナーの管理
 
@@ -46,7 +46,23 @@ Fluid Framework を使用してアプリケーションを構築するときは�
 
 ユーザーが既存のコンテナーを検出するためのエクスペリエンスとビジネス ロジックは、開発者側の担当です。 これは、Fluid セッションへのユーザーの参加に基づいた閲覧可能なコンテナー一覧、ユーザー間でのコンテナーの直接共有、既存の成果物またはプロセスにプログラムでコンテナーを割り当てるという形式の場合があります。
 
-## <a name="see-also"></a>こちらもご覧ください
+## <a name="example-container-creation-flow"></a>コンテナー作成フローの例
+
+:::image type="content" source="../images/container-creation-flow.jpg" lightbox="../images/container-creation-flow-lightbox.jpg" alt-text="コンテナー作成プロセスのデータ フローを説明する図":::
+
+この例では、アプリ/ページに汎用JWT（特定のコンテナーにバインドされていない）が負荷され、新しいコンテナーを作成するときにクライアントアプリが使用します。
+
+クライアント側アプリでは、流動フレームワーク API を使用して Azure Fluid Relay サービスに新しいコンテナーを作成します。その結果、コンテナー オブジェクトに新しく割り当てられたコンテナー ID が作成されます。 コンテナーとのやり取りをさらに行う場合は、コンテナー ID を含む新しい JWT が必要です。
+
+クライアントは新しいコンテナーを作成すると、コンテナーとユーザーをマップしてアクセス許可を管理する一部のシステムにコンテナー ID を保存します。 このシステムは、開発者がユーザー用に作成するコンテナーの検出/閲覧エクスペリエンスを駆動します。
+
+コンテナーと対話する前に、クライアントは、Fluidフレームワーク ランタイムから Azure Fluid Relay サービスへの後続の呼び出しに使用されるコンテナー固有の JWT を要求します。 
+
+## <a name="exporting-container-content"></a>コンテナー コンテンツのエクスポート
+
+アプリケーションがエンド ユーザーがエクスポートする必要がある可能性があるデータを格納する場合、アプリケーション開発者は、コンテナーで定義されている分散データ構造で表される Fluid コンテナーの現在の状態を使用して、アプリケーションにエクスポート機能を構築する責任を負います。 Fluid コンテナーへの接続と開く方法の詳細については、「[Containers (fluidframework.com)](https://fluidframework.com/docs/build/containers/)」を参照してください。 コントロール プレーン API を使用したコンテナーの一覧と削除の詳細については、「[Microsoft Azure Fluid Relay Server での Fluid コンテナーの削除](../how-tos/container-deletion.md)」を参照してください。
+
+## <a name="see-also"></a>関連項目
 
 - [Azure Fluid Relay アーキテクチャの概要](architecture.md)
 - [分散データ構造](data-structures.md)

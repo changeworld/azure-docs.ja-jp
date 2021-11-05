@@ -10,12 +10,12 @@ ms.subservice: B2C
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 1db63555d2bf0ad8cfedcdfe90ba2ebae14292ee
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ca0d912c837a4c3fb218d1bb3fb8b07b43100119
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130253920"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044629"
 ---
 # <a name="tutorial-extend-azure-active-directory-b2c-to-protect-on-premises-applications-using-f5-big-ip"></a>チュートリアル: F5 BIG-IP を使用してオンプレミスのアプリケーションを保護するように Azure Active Directory B2C を拡張する
 
@@ -64,7 +64,7 @@ F5 の BIG-IP Application Delivery Controller (ADC) は、多くの場合、プ�
 
 - **アプリケーション** - Azure AD B2C と BIG-IP のセキュリティ保護されたハイブリッド アクセスによって保護されているバックエンド サービス
 
-- **Azure AD B2C** - ユーザーの資格情報の検証、多要素認証 (MFA)、BIG-IP APM への SSO が行われる IdP および Open ID Connect (OIDC) 承認サーバー。
+- **Azure AD B2C** - ユーザーの資格情報、多要素認証 (MFA)、および BIG-IP APM への SSO の検証を担当する IdP および Open ID Connect (OIDC) 承認サーバー。
 
 - **BIG-IP** - アプリケーション用のリバース プロキシとして、BIG-IP APM は OIDC クライアントにもなり、バックエンド サービスへのヘッダー ベースの SSO を実行する前に、OIDC 承認サーバーに認証を委任します。
 
@@ -222,9 +222,9 @@ BIG-IP APM は OIDC クライアントとして機能するので、[Client]\(�
 
   |Properties | 説明|
   |:---------|:---------|
-  | クライアント ID | Azure AD B2C テナント内で BIG-IP を表すアプリケーションのクライアント ID。|
+  | クライアント ID | Azure AD B2C テナント内で BIG-IP を表すアプリケーションのクライアント ID。 |
   | クライアント シークレット | アプリケーションの対応するクライアント シークレット。 |
-  |Client-server SSL profile (クライアント サーバー SSL プロファイル) | SSL プロファイルを設定すると、APM と Azure AD B2C IdP が TLS 経由で通信できるようになります。 既定の serverssl オプションを選択します。|
+  |Client-server SSL profile (クライアント サーバー SSL プロファイル) | SSL プロファイルを設定すると、APM と Azure AD B2C IdP が TLS 経由で通信できるようになります。 既定のオプションを `serverssl` 選択します。 |
 
 - **OAuth 要求の設定**
 
@@ -234,38 +234,38 @@ BIG-IP APM は OIDC クライアントとして機能するので、[Client]\(�
 
   | Properties | 説明 |
   |:-----------|:------------|
-  |Choose OAuth request (OAuth 要求の選択) | 新規作成 |
+  | Choose OAuth request (OAuth 要求の選択) | 新規作成 |
   | HTTP メソッド | POST |
-  |Enable headers (ヘッダーを有効にする)| オフ |
+  | Enable headers (ヘッダーを有効にする)| オフ |
   | Enable parameters (パラメーターを有効にする) | オン |
 
   | パラメーターのタイプ | パラメーター名 | パラメーター値|
   |:---------|:---------------|:----------------|
-  | client-id| client-id | |
-  |nonce |nonce| |
+  | client-id | client-id | |
+  | nonce | nonce| |
   | redirect-uri | redirect-uri | |
   | scope | scope | |
-  | response-type |response-type | |
-  |client-secret| client-secret| |
+  | response-type | response-type | |
+  | client-secret | client-secret | |
   | custom | grant_type | authorization_code |
 
 - **認証リダイレクト要求 - 有効**
 
   | Properties | 説明 |
   |:-----------|:------------|
-  |Choose OAuth request (OAuth 要求の選択) | 新規作成 |
-  |HTTP メソッド | GET |
-  |プロンプトの種類 | なし |
-  |Enable headers (ヘッダーを有効にする) | オフ |
-  |Enable parameters (パラメーターを有効にする) | オン |
+  | Choose OAuth request (OAuth 要求の選択) | 新規作成 |
+  | HTTP メソッド | GET |
+  | プロンプトの種類 | なし |
+  | Enable headers (ヘッダーを有効にする) | オフ |
+  | Enable parameters (パラメーターを有効にする) | オン |
 
   | パラメーターのタイプ | パラメーター名 | パラメーター値|
   |:---------|:---------------|:----------------|
-  | client-id| client-id | |
+  | client-id | client-id | |
   | redirect-uri | redirect-uri | |
   | response-type |response-type | |
   | scope | scope | |
-  |nonce| nonce| |
+  | nonce | nonce | |
 
 - **トークン更新要求** - **無効** - 必要な場合は、有効にして構成できます。
 
@@ -281,7 +281,7 @@ BIG-IP APM は OIDC クライアントとして機能するので、[Client]\(�
   | サービス ポート | HTTPS |
   | Enable redirect port (リダイレクト ポートを有効にする) | ユーザーを http から https に自動的にリダイレクトするにはオンにします |
   | Redirect port (リダイレクト ポート) | HTTP |
-  | Client SSL profile (クライアント SSL プロファイル) | 事前に定義されている clientssl プロファイルと、自分の SSL 証明書が含まれるものを入れ替えます。 既定のプロファイルでテストしてもかまいませんが、ブラウザーでアラートが発生する可能性があります。|
+  | Client SSL profile (クライアント SSL プロファイル) | 定義済みのプロファイルを `clientssl` SSL 証明書を含むプロファイルに入れ替えします。 既定のプロファイルでテストしてもかまいませんが、ブラウザーでアラートが発生する可能性があります。 |
 
 - **プールのプロパティ**
 

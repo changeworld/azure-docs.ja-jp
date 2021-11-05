@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 863d043bc3185b5fd7f44056ba13bca5ed700f30
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530312"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018245"
 ---
 # <a name="cloud-sync-troubleshooting"></a>クラウド同期のトラブルシューティング
 
@@ -167,21 +167,22 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 ![検疫に関する詳細を示すスクリーンショット。](media/how-to-troubleshoot/quarantine-2.png)
 
 状態を右クリックすると、追加のオプションが表示されます。
-    
-   - プロビジョニング ログの表示
-   - エージェントの表示
-   - 検疫のクリア
+
+- プロビジョニング ログの表示
+- エージェントの表示
+- 検疫のクリア
 
 ![右クリック メニュー オプションを示すスクリーンショット。](media/how-to-troubleshoot/quarantine-4.png)
 
-
 ### <a name="resolve-a-quarantine"></a>検疫を解決する
-検疫を解決するには、2 つの異なる方法があります。  これらは次のとおりです。
 
-  - 検疫のクリア - 透かしをクリアし、差分同期を実行します
-  - プロビジョニング ジョブを再起動する - 透かしをクリアし、初期同期を実行します
+検疫を解決するには、2 つの異なる方法があります。 これらは次のとおりです。
+
+- 検疫のクリア - 透かしをクリアし、差分同期を実行します
+- プロビジョニング ジョブを再起動する - 透かしをクリアし、初期同期を実行します
 
 #### <a name="clear-quarantine"></a>検疫のクリア
+
 透かしをクリアし、確認後にプロビジョニング ジョブで差分同期を実行するには、状態を右クリックし、 **[clear quarantine]\(検疫のクリア\)** を選択します。
 
 検疫がクリアされていることを示す通知が表示されます。
@@ -193,11 +194,13 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 ![検疫状態の情報](media/how-to-troubleshoot/quarantine-6.png)
 
 #### <a name="restart-the-provisioning-job"></a>プロビジョニング ジョブを再起動する
+
 Azure portal を使用して、プロビジョニング ジョブを再起動します。 エージェントの構成ページで **[プロビジョニングを再開する]** を選択します。
 
   ![プロビジョニングを再開する](media/how-to-troubleshoot/quarantine-3.png)
 
 - Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
+
   - エスクロー。検疫状態を発生させるエスクロー カウンターを再起動します。
   - 検疫。アプリケーションを検疫から削除します。
   - ウォーターマーク。 
@@ -207,19 +210,25 @@ Azure portal を使用して、プロビジョニング ジョブを再起動し
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
 ## <a name="repairing-the-the-cloud-sync-service-account"></a>クラウド同期サービス アカウントの修復
-クラウド同期サービス アカウントを修復する必要がある場合は、`Repair-AADCloudSyncToolsAccount` を使用できます。  
 
+クラウド同期サービス アカウントを修復する必要がある場合は、`Repair-AADCloudSyncToolsAccount` を使用できます。
 
-   1.  [こちら](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)に記載されているインストール手順を使用して開始し、残りの手順を続行します。
-   2.  管理者特権を持つ Windows PowerShell セッションから、次を入力するかコピーして貼り付けます。 
-    ```
-    Connect-AADCloudSyncTools
-    ```  
-   3. ご自分の Azure AD グローバル管理者の資格情報を入力します。
-   4. 次を入力するか、コピーして貼り付けます。 
-    ```
-    Repair-AADCloudSyncToolsAccount
-    ```  
+   1. [こちら](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)に記載されているインストール手順を使用して開始し、残りの手順を続行します。
+
+   2. 管理者特権を持つPowerShell セッションから、次のように入力するかコピーして貼り付けます。
+
+      ```powershell
+      Connect-AADCloudSyncTools
+      ```
+
+   3. AzureADのグローバル管理者の資格情報を入力します。
+
+   4. 次を入力するか、コピーして貼り付けます。
+
+      ```powershell
+      Repair-AADCloudSyncToolsAccount
+      ```
+
    5. これを完了すると、アカウントが正常に修復されたことが示されます。
 
 ## <a name="next-steps"></a>次のステップ 

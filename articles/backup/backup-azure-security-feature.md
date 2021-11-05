@@ -4,12 +4,12 @@ description: Azure Backup のセキュリティ機能を使用してバックア
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 04/26/2021
-ms.openlocfilehash: 6cf2af6016df358243b36d47766eab38dacc5db4
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 10a3420003197fc76f9baefbfd4c58c40a6dacfc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064199"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073664"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 
@@ -51,13 +51,13 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
 5. **[Have you configured Azure AD Multi-Factor Authentication?]\(Azure AD Multi-Factor Authentication を構成しましたか?\)]** ドロップダウン リストから値を選択して、[Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしたかどうかを確認します。 有効にした場合は、Azure portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
 
    Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure AD Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
-6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** を選択します。 **有効** を選択できるのは、前の手順で **Have you configured Azure AD Multi-Factor Authentication?\(Azure AD Multi-Factor Authentication を構成しましたか?\)** リストから値を選択した場合のみです。
+6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** を選択します。
 
     ![セキュリティ設定のスクリーンショット](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>削除されたバックアップ データの復旧
 
-Backup では、削除されたバックアップ データが 14 日間保持され、**バックアップの停止 (バックアップ データの削除を含む)** 操作を実行した場合でも、データがすぐに削除されることはありません。 14 日以内にこのデータを復元するには、使用しているものに応じて次の手順を実行します。
+セキュリティ機能の設定が有効になっている場合、Azure Backup は削除されたバックアップ データを 14 日間保持し、バックアップ データの削除操作によるバックアップの停止操作が実行された場合は直ちに削除しません。 14 日以内にこのデータを復元するには、使用しているものに応じて次の手順を実行します。
 
 **Azure Recovery Services エージェント** ユーザーの場合:
 

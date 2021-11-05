@@ -7,13 +7,12 @@ ms.date: 11/02/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: db2f01d390cc9503abd0b0a26650e2861dc059c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bd34ab6aed35ab9798552837112830e77595795a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017226"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463546"
 ---
 # <a name="the-workload-protections-dashboard"></a>ワークロード保護のダッシュボード
 

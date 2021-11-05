@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 513b2edd432a274f155e79362e715fbc426a9f9e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 3e90ab30e8eb916ef70248af32b7b95ff0a48428
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081512"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003544"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Azure Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -181,16 +181,15 @@ SQL プール、Apache Spark プールと統合ランタイムを作成するに
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>手順 7:SQL プールへのアクセス権を付与する
 
-既定では、"Synapse 管理者" ロールが割り当てられているすべてのユーザーには、ワークスペース内の専用のサーバーレス SQL プール (組み込み) に対する SQL `db_owner` ロールも割り当てられます。
+既定では、Synapse 管理者ロールが割り当てられているすべてのユーザーには、ワークスペース内のサーバーレス SQL プールに対する SQL `db_owner` ロールも割り当てられます。
 
-他のユーザーおよびワークスペース MSI については、SQL プールへのアクセスは SQL アクセス許可を使用して制御されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL データベースで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
+他のユーザーの SQLプールへのアクセスは、SQLアクセス許可を使用されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL データベースで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
 1. サーバーレス SQL プール (組み込み) およびそのデータベースへのアクセス権を他のユーザーに付与する
 2. 専用 SQL プール データベースへのアクセス権を任意のユーザーに付与する
-3. 正常な実行に SQL プールへのアクセスを必要とするパイプラインを有効にするために、SQL プール データベースへのアクセス権をワークスペース MSI に付与する。
 
 SQL スクリプトの例を以下に示します。
 
-専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SQLAdmins` グループまたは `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。  
+専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。  
 
 サーバーレス SQL プール (組み込み) へのアクセス権を付与するには、 `workspace1_SQLAdmins` グループまたは `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。 
 
@@ -268,36 +267,6 @@ ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 
 ユーザーを作成した後、クエリを実行して、サーバーレス SQL プールでストレージ アカウントにクエリを実行できることを検証します。
 
-### <a name="step-73-sql-access-control-for-azure-synapse-pipeline-runs"></a>手順 7.3: Azure Synapse のパイプラインの実行に対する SQL アクセス制御
-
-### <a name="workspace-managed-identity"></a>ワークスペースのマネージド ID
-
-> [!IMPORTANT]
-> SQL プールを参照するデータセットまたはアクティビティを含むパイプラインを正常に実行するには、ワークスペース ID に SQL プールへのアクセス権が付与されている必要があります。
-
-ワークスペース マネージド ID の詳細については、「[Azure Synapse ワークスペース マネージド ID](synapse-workspace-managed-identity.md)」を参照してください。 各 SQL プールで次のコマンドを実行して、ワークスペース マネージド システム ID が SQL プール データベースでパイプラインを実行できるようにします。  
-
->[!note]
->下のスクリプトでは、専用の SQL プール データベースの場合、`<databasename>` はプール名と同じです。  サーバーレス SQL プール (組み込み) 内のデータベースの場合、`<databasename>` はデータベースの名前です。
-
-```sql
---Create a SQL user for the workspace MSI in database
-CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
-
---Granting permission to the identity
-GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
-```
-
-このアクセス許可を削除するには、同じ SQL プールで次のスクリプトを実行します。
-
-```sql
---Revoke permission granted to the workspace MSI
-REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
-
---Delete the workspace MSI user in the database
-DROP USER [<workspacename>];
-```
-
 ## <a name="step-8-add-users-to-security-groups"></a>手順 8:セキュリティ グループにユーザーを追加する
 
 アクセス制御システムの初期構成が完了しました。
@@ -320,7 +289,7 @@ DROP USER [<workspacename>];
 
 このガイドでは、基本的なアクセス制御システムのセットアップに重点を置いてきました。 より高度なシナリオをサポートするには、追加のセキュリティ グループを作成し、よりきめ細かいロールをより具体的なスコープでそれらのグループに割り当てます。 次のケースについて考えてみましょう。
 
-CI/CD を含む高度な開発シナリオのためにワークスペースの **Git サポートを有効にする**。  Git モードでは、Git アクセス許可によって、ユーザーが各自の作業ブランチに変更をコミットできるかどうかが決定されます。  サービスへの発行は、コラボレーション ブランチからのみ行われます。  作業ブランチで更新プログラムの開発とデバッグを行う必要はあっても、ライブ サービスに変更を発行する必要はない開発者向けに、セキュリティ グループの作成を検討してください。
+CI/CD を含む高度な開発シナリオのためにワークスペースの **Git サポートを有効にする**。  Git モードでは、Git のアクセス許可と Synapse RBAC によって、ユーザーが作業ブランチに変更をコミットできるかどうかが決定されます。  サービスへの発行は、コラボレーション ブランチからのみ行われます。  作業ブランチで更新プログラムの開発とデバッグを行う必要はあっても、ライブ サービスに変更を発行する必要はない開発者向けに、セキュリティ グループの作成を検討してください。
 
 **開発者のアクセスを特定のリソースに限定する**。  特定のリソースへのアクセスのみを必要とする開発者向けに、より細分化されたセキュリティ グループを作成してください。  これらのグループに、特定の Spark プール、統合ランタイム、または資格情報をスコープとする適切な Azure Synapse ロールを割り当てます。
 

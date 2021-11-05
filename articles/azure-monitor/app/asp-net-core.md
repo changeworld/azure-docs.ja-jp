@@ -3,19 +3,22 @@ title: ASP.NET Core アプリケーション用の Azure Application Insights | 
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 04/30/2020
-ms.openlocfilehash: f12385d5514d999785980622530861cd1f714ac3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/12/2021
+ms.openlocfilehash: 521cebd9117c1150e8c2abc2f5ff752e195a1808
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741325"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070054"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
 この記事では、[ASP.NET Core](/aspnet/core) アプリケーションで Application Insights を有効にする方法について説明します。 この記事の手順を完了すると、Application Insights で、ASP.NET Core アプリケーションから要求、依存関係、例外、パフォーマンス カウンター、ハートビート、ログが収集されます。
 
 ここで使用する例は、`netcoreapp3.0` を対象とする [MVC アプリケーション](/aspnet/core/tutorials/first-mvc-app)です。 これらの手順は、すべての ASP.NET Core アプリケーションに適用できます。 [ワーカー サービス](/aspnet/core/fundamentals/host/hosted-services#worker-service-template)を使っている場合は、[こちら](./worker-service.md)の手順を使用してください。
+
+> [!NOTE]
+> プレビューの [OpenTelemetry ベースの .NET オファリングを](opentelemetry-enable.md?tabs=net) 利用できます。 [詳細については、こちらを参照してください](opentelemetry-overview.md)。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -488,7 +491,7 @@ Application Insights でのカスタム データ レポートについては、
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-azure-monitor-application-insights-agent-formerly-status-monitor-v2"></a>Azure Monitor Application Insights エージェント (旧名 Status Monitor v2) のようなツールを使用して、Application Insights 監視を有効にできますか?
 
-いいえ、[Azure Monitor Application Insights エージェント](./status-monitor-v2-overview.md)では、現在、ASP.NET 4.x だけがサポートされています。
+ 正解です。 [Application Insights Agent 2.0.0-beta1](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/2.0.0-beta1) から、IIS でホストされている ASP.NET Coreアプリケーションがサポートされています。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Linux でアプリケーションを実行する場合、すべての機能がサポートされますか?
 

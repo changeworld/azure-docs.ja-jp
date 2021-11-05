@@ -4,18 +4,16 @@ services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: conceptual
-author: tcare
-ms.author: tcare
 description: この記事では、GitOps を使用した CI/CD ワークフローの概念の概要を説明します
 keywords: GitOps、Kubernetes、K8、Azure、Helm、Arc、AKS、Azure Kubernetes Service、コンテナー、CI、CD、Azure DevOps
-ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 837c0124739fa6659fc4c7652fcb9ca7be4fbf85
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025868"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039660"
 ---
-# <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes
+# <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>GitOps を使用した CI/CD ワークフロー-Azure Arc 対応 Kubernetes
 
 最近の Kubernetes のデプロイには、複数のアプリケーション、クラスター、環境が収容されています。 GitOps を使用すると、これらの複雑な設定をより簡単に管理でき、Git を使用して宣言によって Kubernetes 環境の望ましい状態を追跡できます。 共通の Git ツールを使用してクラスターの状態を追跡することにより、アカウンタビリティが向上し、障害の調査が容易になり、環境の管理を自動化することができます。
 
@@ -42,7 +40,7 @@ CD パイプラインは、正常な CI ビルドによって自動的にトリ�
 ### <a name="gitops-repo"></a>GitOps リポジトリ
 GitOps リポジトリは、クラスター内のすべての環境の現在の望ましい状態を表します。 このリポジトリに対する変更は、各クラスターの Flux サービスによって取得されてデプロイされます。 PR は、望ましい状態への変更を使用して作成され、レビューおよびマージされます。 これらの PR には、展開テンプレートと、結果としてレンダリングされる Kubernetes マニフェストの両方に対する変更が含まれています。 マニフェストを詳細にレンダリングすると、テンプレートレベルでは通常見られない変更を一層注意深く調べることができます。
 ### <a name="kubernetes-clusters"></a>Kubernetes クラスター
-少なくとも 1 つの Azure Arc 対応 Kubernetes クラスターによって、アプリケーションで必要とされるさまざまな環境が提供されます。 たとえば、1 つのクラスターで異なる名前空間を使用して、開発環境と QA 環境の両方を提供できます。 2 つ目のクラスターを使用すると、環境の分離が容易になり、よりきめ細かい制御が可能になります。
+少なくとも1つの Azure Arc 対応 Kubernetes クラスターで、アプリケーションで必要とされるさまざまな環境が提供されます。 たとえば、1 つのクラスターで異なる名前空間を使用して、開発環境と QA 環境の両方を提供できます。 2 つ目のクラスターを使用すると、環境の分離が容易になり、よりきめ細かい制御が可能になります。
 ## <a name="example-workflow"></a>ワークフローの例
 アプリケーション開発者として、アリスは次のことを行います。
 * アプリケーション コードを記述します。

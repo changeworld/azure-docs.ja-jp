@@ -1,24 +1,27 @@
 ---
-title: Azure Security Center のワークフローの自動化 | Microsoft Docs
-description: Azure Security Center でワークフローを作成して自動化する方法について説明します。
+title: Microsoft Defender for Cloud でのワークフローの自動化 |Microsoft Docs
+description: Microsoft Defender for Cloud でワークフローを作成および自動化する方法について説明します
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.openlocfilehash: ecedf0854d7d670cf88a8dcb729a01adaa88b646
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 4cf12721cc691f4719cc4442b4092b44f6d8e1b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750671"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004570"
 ---
-# <a name="automate-responses-to-security-center-triggers"></a>Security Center のトリガーへの応答を自動化する
+# <a name="automate-responses-to-microsoft-defender-for-cloud-triggers"></a>クラウドトリガーに対する Microsoft Defender への応答を自動化する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 すべてのセキュリティ プログラムには、インシデント対応のための複数のワークフローが含まれています。 これらのプロセスには、直接の利害関係者への通知、変更管理プロセスの開始、および特定の修復手順の適用が含まれます。 これらのプロシージャの手順をできるだけ多く自動化することがセキュリティの専門家によって推奨されています。 自動化によってオーバーヘッドが削減されます。 また、迅速かつ一貫した方法で、定義済みの要件に従ってプロセスの手順が実行されるようにすることで、セキュリティを向上させることもできます。
 
-この記事では、Azure Security Center のワークフローの自動化機能について説明します。 この機能を使用すると、セキュリティ アラートや推奨事項、および規制コンプライアンスへの変更があったときに Logic Apps をトリガーできます。 たとえば、アラートが発生したときに Security Center から特定のユーザーに電子メールが送信されるようにすることができます。 また、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してロジック アプリを作成する方法についても説明します。
+この記事では、Microsoft Defender for Cloud のワークフロー自動化機能について説明します。 この機能を使用すると、セキュリティ アラートや推奨事項、および規制コンプライアンスへの変更があったときに Logic Apps をトリガーできます。 例えば、アラートが発生したときに、ユーザーに特定のユーザーを電子メールで送信することができます。 また、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してロジック アプリを作成する方法についても説明します。
 
 
 ## <a name="availability"></a>可用性
@@ -35,7 +38,7 @@ ms.locfileid: "121750671"
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>ロジック アプリを作成し、自動的に実行するタイミングを定義する 
 
-1. Security Center のサイドバーで、 **[ワークフローの自動化]** を選択します。
+1. [Defender for Cloud] サイドバーで、[ **ワークフロー自動化**] を選択します。
 
     :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="ワークフローの自動化の一覧。":::
 
@@ -54,26 +57,30 @@ ms.locfileid: "121750671"
 
         :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="ワークフロー自動化ウィンドウの追加。":::
 
-1. [Actions]\(アクション\) セクションで、 **[Create a new one]\(新規作成する\)** をクリックして、ロジック アプリの作成プロセスを開始します。
+1. [アクション] セクションで [ **ロジックアプリにアクセス** ] を選択して、ロジックアプリの作成プロセスを開始します。
 
     Azure Logic Apps が表示されます。
 
+1. **[追加]** を選択します。 
+
     [![新しいロジック アプリの作成。](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. 名前、リソース グループ、および場所を入力し、 **[Create]\(作成\)** をクリックします。
+1. 名前、リソースグループ、および場所を入力し、[**レビューと** 作成] を選択し ます。
+
+    「 **展開が進行** 中です」というメッセージが表示されます。 デプロイの完了通知が表示されるまで待ってから、「通知から **リソースへのアクセス** 」 を選択します。
 
 1. 新しいロジック アプリでは、セキュリティ カテゴリの組み込みの定義済みテンプレートから選択できます。 または、このプロセスがトリガーされたときに発生するイベントのカスタム フローを定義することもできます。
 
     > [!TIP]
-    > ロジック アプリでは、パラメーターは、独自のフィールドではなく、文字列の一部としてコネクタに含まれることがあります。 パラメーターを抽出する方法の例については、「[Azure Security Center のワークフロー自動化の構築時にロジック アプリのパラメーターを操作する](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)」の手順 #14 を参照してください。
+    > ロジック アプリでは、パラメーターは、独自のフィールドではなく、文字列の一部としてコネクタに含まれることがあります。 パラメーターを抽出する方法の例については、「 [クラウドワークフロー用に Microsoft Defender を構築する自動化](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)」の「ロジックアプリのパラメーターの使用」の手順 #14 を参照してください。
 
-    ロジック アプリ デザイナーでは、Security Center の次のトリガーがサポートされています。
+    ロジックアプリデザイナーでは、次のような Defender for Cloud トリガーがサポートされています。
 
-    - **Azure Security Center 推奨事項が作成またはトリガーされたとき** - ロジック アプリが非推奨または置換された推奨事項に依存している場合、自動化の動作は停止し、トリガーの更新が必要となります。 推奨事項の変更を追跡するには、[Azure Security Center リリース ノート](release-notes.md)に関するページを参照してください。
+    - **Microsoft Defender For Cloud の推奨事項が作成またはトリガーされたとき**：ロジックアプリが非推奨または置換された推奨事項に依存している場合は、自動化が動作を停止し、トリガーを更新する必要があります。 推奨事項の変更を追跡するには、 [リリースノート](release-notes.md)を使用します。
 
-    - **Azure Security Center アラートが作成またはトリガーされたとき** - トリガーをカスタマイズして、対象となる重大度レベルのアラートのみが関連付けられるようにすることができます。
+    - **クラウドの Defender アラートが作成またはトリガーされたとき** に、対象となる重大度レベルのアラートのみに関連するようにトリガーをカスタマイズできます。
     
-    - **Security Center の規制コンプライアンス評価が作成またはトリガーされたとき** - 規制コンプライアンス評価の更新に基づくトリガーの自動化。
+    - **クラウドの規制遵守評価のための Defender が作成またはトリガーされたとき**：規制遵守評価の更新に基づいて自動化をトリガーします。
 
     > [!NOTE]
     > レガシ トリガーである [Azure Security Center アラートへの応答がトリガーされるとき] を使用している場合、ロジック アプリはワークフローの自動化機能では起動されません。 代わりに、前述のいずれかのトリガーを使用してください。 
@@ -84,7 +91,7 @@ ms.locfileid: "121750671"
 
     ![[更新]](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. ロジック アプリを選択し、自動化を保存します。 ロジック アプリ ドロップダウンには、Logic Apps とそれをサポートする前述の Security Center コネクタのみが表示されることにご注意ください。
+1. ロジック アプリを選択し、自動化を保存します。 ロジックアプリのドロップダウンリストには、前述のクラウドコネクタのサポート Defender に関するロジックアプリのみが表示されます。
 
 
 ## <a name="manually-trigger-a-logic-app"></a>ロジック アプリを手動でトリガーする
@@ -110,9 +117,9 @@ ms.locfileid: "121750671"
 
     |目標  |ポリシー  |ポリシー ID  |
     |---------|---------|---------|
-    |セキュリティ アラートのワークフローの自動化              |[Azure Security Center アラートに対してワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
-    |セキュリティに関する推奨事項のワークフローの自動化     |[Azure Security Center 推奨事項に対してワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
-    |規制コンプライアンスの変化に関するワークフローの自動化|[Azure Security Center の法令遵守のためにワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+    |セキュリティ アラートのワークフローの自動化              |[クラウドアラート用に Microsoft Defender のワークフロー自動化を展開する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+    |セキュリティに関する推奨事項のワークフローの自動化     |[クラウドに関する推奨事項に対する Microsoft Defender のワークフロー自動化のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+    |規制コンプライアンスの変化に関するワークフローの自動化|[クラウドの規制遵守のために Microsoft Defender のワークフロー自動化を展開する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
     ||||
 
     > [!TIP]
@@ -130,7 +137,7 @@ ms.locfileid: "121750671"
         > [!TIP]
         > 各パラメーターには、使用可能なオプションを説明するツールヒントがあります。
         >
-        > Azure Policy のパラメーター タブ (1) には、Security Center のワークフローの自動化ページ (2) に似た構成オプションへのアクセスが提供されています。
+        > Azure Policy の [パラメーター] タブ (1) を使用すると、クラウドのワークフロー自動化ページ (2) の Defender と同様の構成オプションにアクセスできます。
         > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="ワークフローの自動化のパラメーターを Azure Policy と比較します。" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. 必要に応じて、この割り当てを既存のサブスクリプションに適用するには、 **[修復]** タブを開き、修復タスクを作成するためのオプションを選択します。
@@ -140,7 +147,7 @@ ms.locfileid: "121750671"
 
 ## <a name="data-types-schemas"></a>データ型のスキーマ
 
-ロジック アプリ インスタンスに渡されたセキュリティアラートまたはおすすめ候補イベントの未加工イベントスキーマを表示するには、[ワークフロー オートメーション データ型スキーマ](https://aka.ms/ASCAutomationSchemas) を参照してください。 これは、上記で説明した、 Security Center の組み込みロジック アプリ コネクタを使用していない場合に便利です。この場合には、ロジックアプリの汎用 HTTP コネクタを使用します。すなわち、イベントの JSON スキーマを使用して、必要に応じて手動で解析することができます。
+ロジック アプリ インスタンスに渡されたセキュリティアラートまたはおすすめ候補イベントの未加工イベントスキーマを表示するには、[ワークフロー オートメーション データ型スキーマ](https://aka.ms/ASCAutomationSchemas) を参照してください。 これは、上記のDefender for Cloudのロジックアプリ内蔵コネクタを使用せず、ロジックアプリの汎用HTTPコネクタを使用している場合に便利です。イベントのJSONスキーマを使用して、必要に応じて手動で解析することができます。
 
 
 ## <a name="faq---workflow-automation"></a>FAQ - ワークフロー自動化
@@ -155,13 +162,13 @@ ms.locfileid: "121750671"
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、ロジック アプリの作成、Security Center での実行の自動化、および手動実行について学習しました。
+この記事では、ロジックアプリの作成、クラウドの Defender での実行の自動化、および手動での実行について説明しました。
 
 関連資料については、以下を参照してください。 
 
 - [ワークフローの自動化を使用してセキュリティ対応を自動化する方法に関する Microsoft Learn モジュール](/learn/modules/resolve-threats-with-azure-security-center/)
-- [Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)
-- [Security alerts in Azure Security Center](security-center-alerts-overview.md)
+- [Microsoft Defender for Cloud のセキュリティに関する推奨事項](review-security-recommendations.md)
+- [Microsoft Defender for Cloud のセキュリティアラート](alerts-overview.md)
 - [Azure Logic Apps の概要](../logic-apps/logic-apps-overview.md)
 - [Azure Logic Apps のコネクタ](../connectors/apis-list.md)
 - [ワークフロー オートメーション データ型スキーマ](https://aka.ms/ASCAutomationSchemas)

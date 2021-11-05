@@ -7,13 +7,12 @@ ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7aa0dda56474b33175823cd2db331d136551760b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 913f1f07a588842d1cc2b4a845d5e9ff025b77fb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009702"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453119"
 ---
 # <a name="respond-to-microsoft-defender-for-resource-manager-alerts"></a>Resource ManagerアラートのMicrosoft Defenderに応答する
 

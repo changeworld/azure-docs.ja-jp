@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 1f4682f616ce09d59e26c578fd6d21e480fae6ef
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 8406f9b551d80959db983a3837b441dc9f965782
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069541"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005273"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) の新機能
 
@@ -24,7 +24,11 @@ ms.locfileid: "130069541"
 
 ## <a name="october-2021"></a>2021 年 10 月
 
-- **読み取りレプリカの作成時の Availability Zones の選択**
+- **DR シナリオ用の Geo 冗長バックアップの Geo ペア リージョンへの復元**
+
+    このサービスにより、Geo 冗長バックアップ ストレージを選択して、データの回復性を高め、柔軟性が向上しました。 Geo 冗長性を有効にすると、お客様は、プライマリ リージョンのサーバーにアクセスできない場合に、地理的な障害やリージョンの障害から復旧できます。 この機能を有効にすると、お客様は Geo リストアを実行し、元のサーバーで利用可能な最新の Geo 冗長バックアップを利用して、Geo ペアの地理的リージョンに新しいサーバーをデプロイできます [詳細については、こちらを参照してください](../flexible-server/concepts-backup-restore.md)。 
+
+-  **読み取りレプリカの作成時の Availability Zones の選択**
 
     読み取りレプリカを作成するときには、任意の Availability Zones の場所を選択するためのオプションがあります。 Availability Zones とは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 [詳細については、こちらを参照してください](../flexible-server/concepts-read-replicas.md)。
 
@@ -49,6 +53,9 @@ ms.locfileid: "130069541"
 - **MySQL フレキシブル サーバーの Terraform サポート**
     
     MySQL フレキシブル サーバーの Terraform サポートが [azurerm の最新 v2.81.0 リリース](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md)でリリースされました。 MySQL フレキシブル サーバーのプロビジョニングと管理に関する詳しいリファレンス ドキュメントは[こちら](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server)にあります。 バグや既知の問題は[こちら](https://github.com/hashicorp/terraform-provider-azurerm/issues)にあります。報告することもできます。
+
+- **既知の問題**
+    - プライマリ Azure リージョンがダウンしている場合、プライマリ Azure リージョンにストレージをプロビジョニングできないので、Geo 冗長サーバーを geo ペア リージョンに作成することはできません。 geo ペア リージョンで geo 冗長サーバーをプロビジョニングするには、プライマリ リージョンが稼働するまで待機する必要があります。 
 
 ## <a name="september-2021"></a>2021 年 9 月
 
@@ -78,11 +85,11 @@ Azure Database for MySQL - フレキシブル サーバーのこのリリース�
 
 - **同一ゾーン高可用性を使用した 1 つのゾーン内での高可用性**
 
-  このサービスでは、お客様が高可用性を有効にするときに、スタンバイ サーバーに適した可用性ゾーンを選択できる柔軟性が提供されるようになりました。 この機能により、お客様はプライマリ サーバーと同じゾーンにスタンバイ サーバーを配置できるため、プライマリとスタンバイの間のレプリケーションの遅延が削減されます。 また、同じ Azure ゾーン内に配置されている場合、アプリケーション サーバーとデータベース サーバーの間の待機時間も短くなります。 [詳細については、こちらを参照してください](/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability)。
+  このサービスでは、お客様が高可用性を有効にするときに、スタンバイ サーバーに適した可用性ゾーンを選択できる柔軟性が提供されるようになりました。 この機能により、お客様はプライマリ サーバーと同じゾーンにスタンバイ サーバーを配置できるため、プライマリとスタンバイの間のレプリケーションの遅延が削減されます。 また、同じ Azure ゾーン内に配置されている場合、アプリケーション サーバーとデータベース サーバーの間の待機時間も短くなります。 [詳細については、こちらを参照してください](./concepts-high-availability.md)。
 
 - **ゾーン冗長高可用性を使用したスタンバイ ゾーンの選択**
 
-  このサービスでは、スタンバイ サーバーのゾーン場所をお客様が選択できるようになりました。 この機能を使用すると、お客様はスタンバイ サーバーを任意のゾーンに配置できます。 スタンバイ データベース サーバーとスタンバイ アプリケーションを同じゾーンに配置すると、待機時間が短縮され、お客様はディザスター リカバリーの状況や "ゾーンダウン" シナリオに対してより適切に準備できます。 [詳細については、こちらを参照してください](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)。
+  このサービスでは、スタンバイ サーバーのゾーン場所をお客様が選択できるようになりました。 この機能を使用すると、お客様はスタンバイ サーバーを任意のゾーンに配置できます。 スタンバイ データベース サーバーとスタンバイ アプリケーションを同じゾーンに配置すると、待機時間が短縮され、お客様はディザスター リカバリーの状況や "ゾーンダウン" シナリオに対してより適切に準備できます。 [詳細については、こちらを参照してください](./concepts-high-availability.md)。
 
 - **プライベート DNS ゾーンの統合**
 
@@ -94,7 +101,7 @@ Azure Database for MySQL - フレキシブル サーバーのこのリリース�
 
 - **可用性ゾーン内のサーバーのポイントインタイム リストア**
 
-  サービスのポイントインタイム リストア エクスペリエンスにより、お客様は可用性ゾーンを構成できるようになりました。データベース サーバーとスタンバイ アプリケーションを同じゾーンに併置することで、待機時間が短縮され、お客様はディザスター リカバリーの状況や "ゾーンダウン" シナリオに対してより適切に準備できるようになりました。 [詳細については、こちらを参照してください](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)。
+  サービスのポイントインタイム リストア エクスペリエンスにより、お客様は可用性ゾーンを構成できるようになりました。データベース サーバーとスタンバイ アプリケーションを同じゾーンに併置することで、待機時間が短縮され、お客様はディザスター リカバリーの状況や "ゾーンダウン" シナリオに対してより適切に準備できるようになりました。 [詳細については、こちらを参照してください](./concepts-high-availability.md)。
 
 - **プライベート プレビューで使用可能な validate_password と caching_sha2_password プラグイン**
 
