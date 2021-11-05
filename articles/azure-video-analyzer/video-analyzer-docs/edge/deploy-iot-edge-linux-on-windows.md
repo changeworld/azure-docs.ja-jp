@@ -2,14 +2,14 @@
 title: EFLOW を使用して Windows デバイスにデプロイする
 description: この記事では、IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
-ms.date: 11/04/2021
+ms.date: 10/21/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cc1dcfe36fd811c57f047695f5d63b7bff3848f6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3e2e045a72700b7e2c2e96cf63f344a84173b0f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556504"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131091982"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
 

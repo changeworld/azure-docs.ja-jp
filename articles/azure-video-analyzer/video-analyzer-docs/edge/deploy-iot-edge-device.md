@@ -2,14 +2,14 @@
 title: Azure Video Analyzer を IoT Edge デバイスにデプロイする - Azure
 description: この記事では、IoT Edge デバイスに Azure Video Analyzer をデプロイする際に役立つ手順を示します。 たとえば、ローカルの Linux マシンにアクセスできる場合にこれを行います。
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4b2bb0cac613ec4b6a5bac1020e572c991a54a68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6bd045a6cbc1d85790119564a00783b74f759b97
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091975"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556599"
 ---
 # <a name="deploy-azure-video-analyzer-to-an-iot-edge-device"></a>Azure Video Analyzer を IoT Edge デバイスにデプロイする
 
