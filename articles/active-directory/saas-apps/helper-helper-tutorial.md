@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/13/2021
 ms.author: jeedes
-ms.openlocfilehash: fd69e7e16913a6d2adce8f70a77227a907858237
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f5650ad60922636f8430ff2ce132f10b57cda0b8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004257"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039831"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-helper-helper"></a>チュートリアル: Azure AD SSO と Helper Helper の統合
 

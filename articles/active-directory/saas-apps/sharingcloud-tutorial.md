@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: d42394cec8653266f8f9e53ee9ec48f517d83186
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d507a57ce68376524f0c445b00bc1c956cbbc8a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124741193"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067887"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SharingCloud の統合
 

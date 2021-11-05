@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: 7efbb49565027ed7b982d37e99a27e1d66c59bf5
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.date: 10/25/2021
+ms.openlocfilehash: 6a0b7494d5ce33527640c144faf8630d523ab941
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728097"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061373"
 ---
 # <a name="add-technical-details-for-a-saas-offer"></a>SaaS オファーの技術的な詳細を追加する
 
@@ -24,17 +24,17 @@ ms.locfileid: "129728097"
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-コマーシャル マーケットプレースが貴社の SaaS アプリケーションまたはソリューションとの通信に使用する技術的な詳細は、 **[技術的な構成]** タブに定義します。 
+コマーシャル マーケットプレースが貴社の SaaS アプリケーションまたはソリューションとの通信に使用する技術的な詳細は、 **[技術的な構成]** タブに定義します。
 
 - **[ランディング ページの URL]** (必須) – 顧客が貴社のオファーをコマーシャル マーケットプレースから取得し、新しく作成された SaaS サブスクリプションから構成プロセスをトリガーした後に表示される、SaaS Web サイトの URL (例: `https://contoso.com/signup`) を定義します。
 
   > [!IMPORTANT]
-  > 貴社のランディング ページは、24 時間 365 日稼働している必要があります。 これは、顧客のコマーシャル マーケットプレースからの貴社の SaaS オファーの新規購入、またはオファーのアクティブなサブスクリプションの構成要求の通知を受ける唯一の方法です。
+  > 貴社のランディング ページは、24 時間 365 日稼働している必要があります。 これは、顧客のコマーシャル マーケットプレースからの貴社の SaaS オファーの新規購入、またはオファーのアクティブなサブスクリプションの構成要求の通知を受ける唯一の方法です。 ランディング ページの URL にはシャープ記号 (#) を含めないでください。 そうしないと、顧客はランディング ページにアクセスできません。
 
-- **[接続 Webhook]** (必須) – Microsoft からお客様に送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションが取り消された) のために、お客様は[接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)必要があります。 イベントは、この URL を呼び出して通知します。
+- **[接続 Webhook]** (必須) – Microsoft からお客様に送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションが取り消された) のために、お客様は [接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)必要があります。 イベントは、この URL を呼び出して通知します。
 
   > [!IMPORTANT]
-  > これは、コマーシャル マーケットプレース経由で購入された貴社の顧客の SaaS サブスクリプションに関する更新の通知を受け取る唯一の方法であるため、貴社は Webhook を、24 時間 365 日稼働している必要があります。
+  > これは、コマーシャル マーケットプレース経由で購入された顧客の SaaS サブスクリプションに関する更新の通知を受け取る唯一の方法なので、Webhook を 24 時間 365 日稼働させておく必要があります。
 
 - **[Azure Active Directory テナント ID]** (必須) – 貴社の Azure Active Directory (Azure AD) アプリのテナント ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次いで、一覧から **ディレクトリ (テナント) ID** 番号 (例: `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
 

@@ -1,45 +1,48 @@
 ---
-title: Azure Security Center に対する今後の重要な変更
-description: 知っておく必要があり、計画する必要がある Azure Security Center の今後の変更
+title: Microsoft Defender for Cloud に予定されている重要な変更
+description: 知っておく必要があり、計画する必要がある Microsoft Defender for Cloud の今後の変更
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 10/13/2021
 ms.author: memildin
-ms.openlocfilehash: e019e0acefe8acb8bf56f829fad38c6ac2a3c1c2
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7f5cedfbb5b5003c968559112b9557696c7e09e3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129018"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064699"
 ---
-# <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
+# <a name="important-upcoming-changes-to-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud に対する今後の重要な変更
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 > このページの情報は、販売を開始する前に大幅に変更される可能性があるプレリリース製品または機能に関連しています。 Microsoft は、ここで提供される情報に対して、明示または黙示を問わず、一切の確約または保証を行わないものとします。
 
-このページでは、Security Center に対して計画されている変更について説明します。 このページでは、セキュリティ スコアやワークフローなどに影響する可能性がある、製品に対して計画されている変更について説明します。
+このページでは、Defender for Cloud に対して計画されている変更について説明します。 ここでは、セキュリティ スコアやワークフローなどに影響する可能性がある、製品に対して計画されている変更について説明します。
 
-最新のリリース ノートをお探しの場合は、「<bpt id="p1">[</bpt>Azure Security Center の最新情報<ept id="p1">](release-notes.md)</ept>」をご覧ください。
+最新のリリース ノートをお探しの場合は、「[Microsoft Defender for Cloud の最新情報](release-notes.md)」をご覧ください。
 
 
 ## <a name="planned-changes"></a>計画されている変更
 
 | 計画されている変更       | 変更予定日 |
 |----------------------|---------------------------|
-| [プレビュー アラートの非推奨: ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | 2021 年 10 月|
-| <bpt id="p1">[</bpt>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定<ept id="p1">](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)</ept>| 2021 年 10 月|
+| [プレビュー アラートの非推奨: ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | 2021 年 11 月|
+| <bpt id="p1">[</bpt>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定<ept id="p1">](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)</ept>| 2021 年 11 月|
 | <bpt id="p1">[</bpt>エンドポイント保護ソリューションを管理するための推奨事項の変更<ept id="p1">](#changes-to-recommendations-for-managing-endpoint-protection-solutions)</ept>             | 2021 年 11 月| 
 | [オンプレミスのマシンのインベントリ表示で、リソース名に別のテンプレートが使用されるようになります](#inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name)    | 2021 年 11 月    |
 | [ID の推奨事項に対する複数の変更](#multiple-changes-to-identity-recommendations)                                                                                          | 2021 年 11 月    |
-| [Azure Defender for Storage からのセキュリティ アラートに対する変更](#changes-to-a-security-alert-from-azure-defender-for-storage)  | 2021 年 11 月    |
+| [Microsoft Defender for Storage からのセキュリティ アラートに対する変更](#changes-to-a-security-alert-from-microsoft-defender-for-storage)  | 2021 年 11 月    |
 | <bpt id="p1">[</bpt>SQL データベースで機密データを分類するための推奨事項の強化<ept id="p1">](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)</ept>                              | Q1 2022    |
 |||
 
 ### <a name="deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses"></a>プレビュー アラートの非推奨: ARM.MCAS_ActivityFromAnonymousIPAddresses
 
-<bpt id="p1">**</bpt>変更予定日:<ept id="p1">**</ept> 2021 年 10 月
+**変更予定日:** 2021 年 11 月
 
 次のプレビュー アラートが非推奨になる予定です。
 
@@ -48,15 +51,15 @@ ms.locfileid: "130129018"
 |<bpt id="p1">**</bpt>PREVIEW - Activity from a risky IP address (プレビュー - 危険な IP アドレスからのアクティビティ)<ept id="p1">**</ept><br>(ARM.MCAS_ActivityFromAnonymousIPAddresses)|匿名プロキシ IP アドレスとして識別されている IP アドレスからのユーザー アクティビティが検出されました。<br>このようなプロキシは、自分のデバイスの IP アドレスを隠したいユーザーによって使用され、悪意のある目的で使用される恐れがあります。 この検出では、組織内の他のユーザーがよく使用する IP アドレスのタグ付けが間違っているなどの誤検知を低減する機械学習アルゴリズムが活用されます。<br>アクティブな Microsoft Cloud App Security ライセンスが必要です。|
 |||
 
-この情報を提供する新しいアラートを作成し、それを追加しました。 また、新しいアラート (ARM_OperationFromSuspiciousIP、ARM_OperationFromSuspiciousProxyIP) には、Microsoft Cloud App Security のライセンスは必要ありません。
+この情報を提供する新しいアラートを作成し、それを追加しました。 また、新しいアラート (ARM_OperationFromSuspiciousIP、ARM_OperationFromSuspiciousProxyIP) には、Microsoft Defender for Cloud Apps (旧称 Microsoft Cloud App Security) のライセンスは必要ありません。
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定
 
-<bpt id="p1">**</bpt>変更予定日:<ept id="p1">**</ept> 2021 年 10 月
+**変更予定日:** 2021 年 11 月
 
-ISO 27001 のレガシ実装は Security Center の規制コンプライアンス ダッシュボードから削除されます。 Security Center で ISO 27001 へのコンプライアンスを追跡している場合は、関連するすべての管理グループまたはサブスクリプションに対して新しい ISO 27001:2013 標準をオンボードすると、現在のレガシ ISO 27001 が間もなくダッシュボードから削除されます。
+ISO 27001 のレガシ実装は Defender for Cloud の規制コンプライアンス ダッシュボードから削除されます。 Defender for Cloud で ISO 27001 へのコンプライアンスを追跡している場合は、関連するすべての管理グループまたはサブスクリプションに対して新しい ISO 27001:2013 標準をオンボードすると、現在のレガシ ISO 27001 が間もなくダッシュボードから削除されます。
 
-<bpt id="p1">:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="</bpt>ISO 27001 のレガシ実装の削除に関するメッセージが表示されている Security Center の規制コンプライアンス ダッシュボード。<ept id=&quot;p1&quot;>" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::</ept>
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="ISO 27001 のレガシ実装の削除に関するメッセージが表示されている Defender for Cloud の規制コンプライアンス ダッシュボード。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
 ### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>エンドポイント保護ソリューションを管理するための推奨事項の変更
 
@@ -75,7 +78,7 @@ ISO 27001 のレガシ実装は Security Center の規制コンプライアン�
     - <bpt id="p1">**</bpt>GA<ept id="p1">**</ept> 推奨事項の評価キー: 3bcd234d-c9c7-c2a2-89e0-c01f419c1a8a
 
 詳細情報:
-- <bpt id="p1">[</bpt>Security Center でサポートされているエンドポイント保護ソリューション<ept id="p1">](security-center-services.md#endpoint-supported)</ept>
+- [Defender for Cloud でサポートされているエンドポイント保護ソリューション](supported-machines-endpoint-solutions-clouds.md#endpoint-supported)
 - <bpt id="p1">[</bpt>これらの推奨事項で、デプロイされたソリューションの状態を評価する方法<ept id="p1">](security-center-endpoint-protection.md)</ept>
 
 
@@ -94,11 +97,11 @@ ISO 27001 のレガシ実装は Security Center の規制コンプライアン�
 
 **変更予定日:** 2021 年 11 月
 
-Security Center には、ユーザーとアカウントの管理を向上させるための複数の推奨事項が含まれています。 11 月に、次のような変更を行います。
+Defender for Cloud には、ユーザーとアカウントの管理を向上させるための複数の推奨事項が含まれています。 11 月に、次のような変更を行います。
 
 - **更新間隔の改善** - 現在、ID の推奨事項の更新間隔は 24 時間です。 この更新の間隔が 12 時間に短縮されます。
 
-- **アカウント除外機能** - Security Center には、エクスペリエンスをカスタマイズし、セキュリティ スコアが組織のセキュリティの優先順位を反映していることを確認するための多くの機能があります。 セキュリティの推奨事項に対する除外オプションは、このような機能の 1 つです。 完全な概要と手順については、「[セキュリティ スコアからのリソースと推奨事項の除外](exempt-resource.md)」を参照してください。 この更新により、次の表に示されている 8 つの推奨事項による評価から特定のアカウントを除外できるようになります。
+- **アカウント除外機能** - Defender for Cloud には、エクスペリエンスをカスタマイズし、セキュリティ スコアが組織のセキュリティの優先順位を反映していることを確認するための多くの機能があります。 セキュリティの推奨事項に対する除外オプションは、このような機能の 1 つです。 完全な概要と手順については、「[セキュリティ スコアからのリソースと推奨事項の除外](exempt-resource.md)」を参照してください。 この更新により、次の表に示されている 8 つの推奨事項による評価から特定のアカウントを除外できるようになります。
 
     通常、緊急アクセス用の "break glass" アカウントは、MFA の推奨事項から除外されます。これは、そのようなアカウントは組織の MFA 要件から意図的に除外されることが多いためです。 または、アクセスを許可したいが MFA が有効になっていない外部アカウントがある場合があります。
 
@@ -124,7 +127,7 @@ Security Center には、ユーザーとアカウントの管理を向上させ�
     |---------|---------|---------|
     |評価キー     | e52064aa-6853-e252-a11e-dffc675689c2        | 変更なし|
     |名前     |<bpt id="p1">[</bpt>所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad)</ept>         |Active Directory でブロックされていて、所有者のアクセス許可を持つアカウントをサブスクリプションから削除する必要がある        |
-    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](/azure/security/fundamentals/identity-management-best-practices)」を参照してください。|
+    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](../security/fundamentals/identity-management-best-practices.md)」を参照してください。|
     |関連ポリシー     |<bpt id="p1">[</bpt>所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Febb62a0c-3560-49e1-89ed-27e074e9f8ad)</ept>         |Active Directory でブロックされていて、所有者のアクセス許可を持つアカウントをサブスクリプションから削除する必要がある |
     |||
 
@@ -132,7 +135,7 @@ Security Center には、ユーザーとアカウントの管理を向上させ�
     |---------|---------|---------|
     |評価キー     | 00c6d40b-e990-6acf-d4f3-471e747a27c4        | 変更なし|
     |名前     |<bpt id="p1">[</bpt>非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474)</ept>|Active Directory でブロックされていて、読み取りおよび書き込みアクセス許可を持つアカウントをサブスクリプションから削除する必要がある|
-    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](/azure/security/fundamentals/identity-management-best-practices)」を参照してください。|
+    |説明     |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。|Active Directory へのサインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br>ID 境界を保護する方法の詳細については、「[Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](../security/fundamentals/identity-management-best-practices.md)」を参照してください。|
     |関連ポリシー     |<bpt id="p1">[</bpt>非推奨のアカウントをサブスクリプションから削除する必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6b1cbf55-e8b6-442f-ba4c-7246b6381474)</ept>|Active Directory でブロックされていて、読み取りおよび書き込みアクセス許可を持つアカウントをサブスクリプションから削除する必要がある|
     |||
  
@@ -140,11 +143,11 @@ Security Center には、ユーザーとアカウントの管理を向上させ�
 
 
 
-### <a name="changes-to-a-security-alert-from-azure-defender-for-storage"></a>Azure Defender for Storage からのセキュリティ アラートに対する変更
+### <a name="changes-to-a-security-alert-from-microsoft-defender-for-storage"></a>Microsoft Defender for Storage からのセキュリティ アラートに対する変更
 
 **変更予定日:** 2021 年 11 月
 
-Azure Defender for Storage によって提供されるプレビュー アラートの 1 つを、2 つの新しい推奨事項に分けます。これにより、検出された疑わしいイベントをより明確にします。 このアラートは、Azure Blob Storage にのみ関連します。
+Microsoft Defender for Storage によって提供されるプレビュー アラートの 1 つを、2 つの新しい推奨事項に分けます。これにより、検出された疑わしいイベントをより明確にします。 このアラートは、Azure Blob Storage にのみ関連します。
 
 **アラートの種類も変更されます。**
 
@@ -168,4 +171,4 @@ Azure Defender for Storage によって提供されるプレビュー アラー�
 
 ## <a name="next-steps"></a>次のステップ
 
-Security Center に対する最近のすべての変更については、「<bpt id="p1">[</bpt>Azure Security Center の最新情報<ept id="p1">](release-notes.md)</ept>」を参照してください。
+Defender for Cloud に対する最近のすべての変更については、「[Microsoft Defender for Cloud の最新情報](release-notes.md)」を参照してください。

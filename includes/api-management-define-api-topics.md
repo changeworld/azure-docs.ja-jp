@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 03/18/2021
 ms.author: vlvinogr
-ms.openlocfilehash: a245cd3c92ad7371ac096e82d981d582ecffa0f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba3bb99854fe1ffe1493f644e3a263403970587d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110452258"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048952"
 ---
 ## <a name="related-topics"></a>関連トピック
 
@@ -18,7 +18,8 @@ ms.locfileid: "110452258"
 * [SOAP API のインポート](../articles/api-management/import-soap-api.md)
 * [SOAP API のインポートと REST への変換](../articles/api-management/restify-soap-api.md)
 * [App Service API をインポートする](../articles/api-management/import-app-service-as-api.md)
-* [WebSocket API をインポートする (プレビュー)](../articles/api-management/websocket-api.md)
+* [Websocket API のインポート](../articles/api-management/websocket-api.md)
+* [GraphQL API をインポートする (プレビュー)](../articles/api-management/graphql-api.md)
 * [Azure 関数アプリをインポートする](../articles/api-management/import-function-app-as-api.md)
 * [Azure ロジック アプリをインポートする](../articles/api-management/import-logic-app-as-api.md)
 * [Service Fabric サービスをインポートする](../articles/service-fabric/service-fabric-tutorial-deploy-api-management.md)

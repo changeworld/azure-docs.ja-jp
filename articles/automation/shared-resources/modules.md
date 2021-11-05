@@ -3,15 +3,15 @@ title: Azure Automation でモジュールを管理する
 description: この記事では、PowerShell モジュールを使用して、Runbook と DSC 構成の DSC リソースでコマンドレットを有効にする方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 04/28/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f10c1f70026b905521193a0dd511ba1e65de6849
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 733cc6cb4b783a379c20328f0a31a4373ee3e372
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274028"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427235"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -152,19 +152,29 @@ Automation アカウントに Az モジュールをインポートしても、Ru
 
 Az モジュールを Automation アカウントにインポートするには、Azure portal を使用します。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。
 
+> [!NOTE]
+>  **PowerShell 7.1 (プレビュー)** のサポートの導入に伴い、 **[ギャラリーの参照]** オプションが次のように変更されました。
+
+-  **[プロセス オートメーション]**  >  **[モジュール]** ブレードで **[ギャラリーの参照]** を使用できます。 
+-  **[モジュール]** ページには、 **[モジュール バージョン]** と **[ランタイム バージョン]** という 2 つの新しい列が表示されます
+
 1. Azure [Portal](https://portal.azure.com) にサインインします。
 1. **Automation アカウント** を検索して選択します。
 1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
 1. Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。
-1. **[ギャラリーの参照]** を選択します。  
-1. 検索バーにモジュール名を入力します (`Az.Accounts` など)。
-1. [PowerShell Module]\(PowerShell モジュール\) ページで、 **[インポート]** を選択してモジュールを Automation アカウントにインポートします。
+1. **[モジュールの追加]** を選択します。 **[モジュールの追加]** ページでは、次のいずれかのオプションを選択できます。
+      1. **[ファイルの参照]** - ローカル コンピューターからファイルを選択します。
+      1. **[ギャラリーで参照]** - ギャラリーから既存のモジュールを参照して選択できます。
+1. **[選択]** をクリックしてモジュールを選択します。
+1. **[ランタイム バージョン]** を選択し、 **[インポート]** をクリックします。
 
-    ![Automation アカウントにモジュールをインポートする画面のスクリーンショット](../media/modules/import-module.png)
+      :::image type="content" source="../media/modules/import-module.png" alt-text="Automation アカウントにモジュールをインポートする画面のスクリーンショット。":::
+
+1. **[モジュール]** ページの Automation アカウントの下で、インポートされたモジュールを表示することができます。
 
 このインポートは、インポートするモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com)で検索して行うこともできます。 モジュールが見つかったら、それを選択し、 **[Azure Automation]** タブを選択します。 **[Azure Automation にデプロイする]** を選択します。
 
-![PowerShell ギャラリーから直接モジュールをインポートする画面のスクリーンショット](../media/modules/import-gallery.png)
+:::image type="content" source="../media/modules/import-gallery.png" alt-text="PowerShell ギャラリーからモジュールを直接インポートする画面のスクリーンショット。":::
 
 ### <a name="test-your-runbooks"></a>Runbook をテストする
 

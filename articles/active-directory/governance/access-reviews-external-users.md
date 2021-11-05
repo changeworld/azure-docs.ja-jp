@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: ajburnle
-ms.openlocfilehash: c976562224d4a0caca8921e46d8f8566800027ee
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: eef4702b7166dabb81cd2391d4acb8d8211b9648
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532240"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051916"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Azure Active Directory (Azure AD) Identity Governance を使用して、リソースへのアクセス権がなくなった外部ユーザーを確認および削除する
 

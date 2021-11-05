@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 439248f37075f7cbc91af0e15dcdf6b029e95b92
-  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+  ms.openlocfilehash: 45e86a925c83f32ab4f704ea7ffc4f83ff3089ae
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130066701"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131059929"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -74,6 +74,15 @@ sections:
       Azure Monitor によって収集されたデータにアクセスするにはどうすればよいですか?
     answer: >
       分析情報とソリューションにより、Azure Monitor に格納されているデータを操作するためのカスタム エクスペリエンスが提供されます。 Kusto クエリ言語 (KQL) で記述たログ クエリを使用して、ログ データを直接操作できます。 Azure portal では、Log Analytics を使用してクエリを記述して実行し、対話形式でデータを分析できます。 Azure portal では、メトリックス エクスプローラーを使用してメトリックを分析します。 [Azure Monitor でログ データを分析する](logs/log-query-overview.md)方法に関するページ、および「[Azure メトリックス エクスプローラーの概要](essentials/metrics-getting-started.md)」のページをご覧ください。
+  - question: >
+      Azure Monitor ログに重複するレコードが表示されるのはなぜですか?
+    answer: >
+      場合によっては、Azure Monitor ログに重複するレコードが表示されることがあります。 通常、これは次の 2 つの条件のいずれかが原因となっています。
+
+
+      - パイプライン内のコンポーネントは、配信先に確実に配信されるように再試行を行います。 場合によっては、このことが原因で、ごくわずかながらテレメトリ項目が重複する可能性があります。
+
+      - 重複するレコードが仮想マシンから配信される場合、Log Analytics エージェントと Azure Monitor エージェントの両方がインストールされている可能性があります。 今後も Log Analytics エージェントをインストールしておく必要がある場合は、Azure Monitor エージェントが使用しているデータ収集ルールによっても収集されているデータが今後は収集されないように、Log Analytics ワークスペースを構成します。
 - name: ソリューションと分析情報
   questions:
   - question: >

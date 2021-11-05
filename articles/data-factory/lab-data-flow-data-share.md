@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: 4194c277a8472f8834362de462d804db2a3b406d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4d99139e708f0b69b3ddacd40e380853dabf8b2b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798866"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077954"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -97,7 +97,7 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 「*マッピング データ フローを使用してデータを変換する*」セクションでは、マッピング データ フローを作成します。 マッピング データ フローを作成する前に、デバッグ モードを有効にしておくことをお勧めします。これにより、アクティブな Spark クラスターで変換ロジックを数秒でテストできます。
 
-デバッグを有効にするには、 **[データ フロー]** アクティビティがある状態で、データ フロー キャンバスまたはパイプライン キャンバスの上部のバーにある **[データ フローのデバッグ]** スライダーをクリックします。 確認のダイアログがポップアップ表示されたら [OK] をクリックします。 クラスターの起動には、5 分から 7 分程度かかります。 初期化されている間に、"*コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む*" 方法に関するセクションに進んでください。
+デバッグを有効にするには、 **[データ フロー]** アクティビティがある状態で、データ フロー キャンバスまたはパイプライン キャンバスの上部のバーにある **[データ フローのデバッグ]** スライダーをクリックします。 確認のダイアログが表示されたら **[OK]** をクリックします。 クラスターは約 5 分から 7 分で起動します。 初期化されている間に、"*コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む*" 方法に関するセクションに進んでください。
 
 :::image type="content" source="media/lab-data-flow-data-share/configure10.png" alt-text="ポータルの構成 10":::
 

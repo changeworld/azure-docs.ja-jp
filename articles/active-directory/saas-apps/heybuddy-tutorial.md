@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 415e397ff9e8ef1a2194f081cd9e854335725a93
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5d5e3f51d7b50ae57d6e627d97ba4e07dd40ec1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761013"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032033"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と HeyBuddy の統合
 

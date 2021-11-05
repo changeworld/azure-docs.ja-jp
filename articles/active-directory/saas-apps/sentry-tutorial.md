@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 5a8cbdc77a7570037645b350b62787aeaea7374f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dac1c67868fb99c59ee4bae73209132669188ae1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821508"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443967"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sentry の統合
 

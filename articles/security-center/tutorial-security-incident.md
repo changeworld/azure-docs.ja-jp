@@ -1,28 +1,27 @@
 ---
-title: アラート対応チュートリアル - Azure Security Center
+title: アラートへの対応のチュートリアル - Microsoft Defender for Cloud
 description: このチュートリアルでは、セキュリティ アラートをトリアージし、アラートの根本原因と影響範囲の特定する方法について説明します。
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.assetid: 181e3695-cbb8-4b4e-96e9-c4396754862f
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 6d11384a3a1cab1ef5145a8e29a64e26552862da
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ac1a72efe9d71725e27162ee19fc3b8b02645023
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236879"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014295"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応
-Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、クラウド リソースでの潜在的な悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合することもできます。 アラートが発生したら、潜在的なセキュリティの問題の調査と修復を行うために、迅速なアクションが必要になります。 
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender for Cloud では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、クラウド リソースでの潜在的な悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Defender for Cloud に統合することもできます。 アラートが発生したら、潜在的なセキュリティの問題の調査と修復を行うために、迅速なアクションが必要になります。 
 
 このチュートリアルでは、次の内容を学習します。
 
@@ -34,22 +33,22 @@ Security Center では、高度な分析および脅威インテリジェンス�
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルで説明されている機能を実行するには、Azure Defender が有効になっている必要があります。 Azure Defender は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 アップグレード方法については、[Security Center 入門](security-center-get-started.md)のクイックスタートを参照してください。
+このチュートリアルで説明する機能を手順に従って実行するには、Defender for Cloud の強化されたセキュリティ機能を有効にする必要があります。 これらは無料で試すことができます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 アップグレード方法については、[Defender for Cloud の概要](get-started.md)のクイックスタートを参照してください。
 
 
 ## <a name="triage-security-alerts"></a>セキュリティ アラートのトリアージ
-Security Center では、すべてのセキュリティ アラートを統合された 1 つのビューで確認できます。 セキュリティ アラートは、検出されたアクティビティの重要度に基づいて優先度が付けられます。 
+Defender for Cloud では、すべてのセキュリティ アラートを統合された 1 つのビューで確認できます。 セキュリティ アラートは、検出されたアクティビティの重要度に基づいて優先度が付けられます。 
 
 **[セキュリティ アラート]** ページからアラートをトリアージします。
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
+:::image type="content" source="media/managing-and-responding-alerts/alerts-page.png" alt-text="Microsoft Defender for Cloud のセキュリティ アラート一覧":::
 
 このページを使用して、自分の環境内で発生しているセキュリティ アラートを確認し、最初に調査するアラートを決めます。
 
-セキュリティ アラートをトリアージする際は、アラートにその重要度に基づく優先順位を付けます。重要度が高いアラートから先に対応します。 アラートの重要度の詳細については、「[アラートはどのように分類されますか](security-center-alerts-overview.md#how-are-alerts-classified)」を参照してください。
+セキュリティ アラートをトリアージする際は、アラートにその重要度に基づく優先順位を付けます。重要度が高いアラートから先に対応します。 アラートの重要度の詳細については、「[アラートはどのように分類されますか](alerts-overview.md#how-are-alerts-classified)」を参照してください。
 
 > [!TIP]
-> Azure Sentinel など、広く使われている SIEM ソリューションに Azure Security Center を接続し、任意のツールからアラートを取り込むことができます。 詳細については、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
+> Microsoft Defender for Cloud を Microsoft Sentinel を含む最も一般的な SIEM ソリューションに接続し、選択したツールからアラートを利用できます。 詳細については、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
 
 
 ## <a name="investigate-a-security-alert"></a>セキュリティ アラートの調査
@@ -76,7 +75,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
     - 攻撃されたリソースによって生成された生のログを調査します。
 
 ## <a name="respond-to-a-security-alert"></a>セキュリティ アラートへの対応
-アラートを調査し、その範囲を把握したら、Azure Security Center 内からセキュリティ アラートに対応することができます。
+セキュリティのアラートを調査し、そのスコープを理解したら、Microsoft Defender for Cloud 内からアラートに対応できます。
 
 1.  **[アクションの実行]** タブを開いて推奨される対応を確認します。
 
@@ -104,23 +103,32 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
 ## <a name="end-the-tutorial"></a>チュートリアルの終了
 
-このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き後続のクイックスタートとチュートリアルに取り組む予定の場合、自動プロビジョニングと Azure Defender を有効のままにしてください。 
+このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き後続のクイックスタートとチュートリアルに取り組む予定の場合、自動プロビジョニングと Defender for Cloud の強化されたセキュリティ機能を有効のままにしてください。 
 
 続ける予定がない場合や、これらの機能をいずれも無効にしたい場合は、次を実行します。
 
-1. Security Center のメイン メニューに戻り、 **[Pricing and settings]\(価格と設定\)** を選択します。
+1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
 1. 関連するサブスクリプションを選択します。
-1. ダウングレードする場合は、 **[Azure Defender off]\(Azure Defender のオフ\)** を選択します。
-1. 自動プロビジョニングを無効にする場合は、 **[データ収集]** ページを開き、 **[自動プロビジョニング]** を **[オフ]** に設定します。
+1. **[Defender プラン]** を選択し、 **[強化されたセキュリティ無効]** を選択します。
+
+    :::image type="content" source="./media/enable-enhanced-security/disable-plans.png" alt-text="Defender for Cloud の強化されたセキュリティ機能を有効または有効にします。":::
+
 1. **[保存]** を選択します。
 
->[!NOTE]
-> 自動プロビジョニングを無効にしても、既に Azure VM に存在する Log Analytics エージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
->
+    > [!NOTE]
+    > 強化されたセキュリティ機能を無効にすると、1 つのプランを無効にしたか、すべてのプランを一度に無効にしたかどうかに関係なく、データ収集が短時間継続される場合があります。 
+
+1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+1. 関連するサブスクリプションを選択します。
+1. **[自動プロビジョニング]** を選択します。
+1. 関連する拡張機能を無効にします。
+
+    >[!NOTE]
+    > 自動プロビジョニングを無効にしても、既に Azure VM に存在する Log Analytics エージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、セキュリティ アラートへの対応時に使用される Security Center の機能について説明しました。 関連資料については、以下を参照してください。
+このチュートリアルでは、セキュリティ アラートへの対応時に使用される Defender for Cloud の機能について説明しました。 関連資料については、以下を参照してください。
 
-- [Azure Defender の Key Vault アラートに対応する](defender-for-key-vault-usage.md)
+- [Microsoft Defender for Key Vault のアラートに対応する](defender-for-key-vault-usage.md)
 - [セキュリティ アラート - リファレンス ガイド](alerts-reference.md)
-- [Azure Defender の概要](azure-defender.md)
+- [Defender for Cloud の概要](defender-for-cloud-introduction.md)

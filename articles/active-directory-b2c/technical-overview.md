@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 5a01eb29caee02874cf828d1b2dd6b2df7440b4d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ca637cec58531de65847d5f1e7d19e81ed45318d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043056"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036430"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -212,13 +212,13 @@ Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使�
 
 たとえば、アプリケーションへのサインインの場合は、アプリケーションでは "*サインアップまたはサインイン*" のユーザー フローが使用されます。 ユーザーは、サインインした後で、自分のプロファイルを編集したい場合があります。そのため、アプリケーションでは、今度は "*プロファイル編集*" のユーザー フローを使用して、別の認可要求が開始されます。
 
-## <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+## <a name="multifactor-authentication-mfa"></a>多要素認証 (MFA)
 
 Azure AD B2C の多要素認証 (MFA) を利用すれば、データやアプリケーションへのアクセスを保護し、ユーザーには簡単なサインイン プロセスを提供できます。 第 2 の認証方式を要求することでセキュリティが強化され、簡単に使用できるさまざまな認証方法を提供することによって強力な認証が実現されます。 
 
 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。
 
-ユーザー フローで MFA を有効にする方法については、「[Azure Active Directory B2C の多要素認証 | Microsoft Docs](multi-factor-authentication.md)」をご覧ください。
+ユーザー フローで MFA を有効にする方法については、[Azure Active Directory B2C での多要素認証](multi-factor-authentication.md)に関する記事を参照してください。
 
 ## <a name="conditional-access"></a>条件付きアクセス
 
@@ -226,7 +226,7 @@ Azure AD B2C の多要素認証 (MFA) を利用すれば、データやアプリ
 
 ![条件付きアクセスのフロー](media/technical-overview/conditional-access-flow.png)
 
-Azure AD B2C では、各サインイン イベントが評価され、すべてのポリシーの要件が満たされていることを確認したうえで、ユーザー アクセスが許可されます。 危険なユーザーまたはサインインをブロックしたり、多要素認証 (MFA) のような特定の修復でチャレンジしたりすることができます。 詳細については、「[Identity Protection と条件付きアクセス](conditional-access-identity-protection-overview.md)」を参照してください。
+Azure AD B2C では、各サインイン イベントが評価され、すべてのポリシーの要件が満たされていることを確認したうえで、ユーザー アクセスが許可されます。 多要素認証 (MFA) などの具体的な改善によって、危険なユーザーや危険なサインインをブロックしたりチャレンジしたりすることができます。 詳細については、「[Identity Protection と条件付きアクセス](conditional-access-identity-protection-overview.md)」を参照してください。
 
 ## <a name="password-complexity"></a>パスワードの複雑さ
 
@@ -299,6 +299,11 @@ Azure AD B2C では、ユーザーが Web アプリにいつサインアップ�
 Azure Application Insights を Azure AD B2C カスタム ポリシーに統合することにより、ユーザーによるサインアップ、サインイン、パスワードのリセット、プロファイルの編集の状況に関する分析情報を取得できます。 この知識により、将来の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
 
 詳細については、「[Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する](analytics-with-application-insights.md)」をご覧ください。
+
+## <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
+Azure AD B2C サービスは世界中で一般提供されており、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」に示されているリージョンをデータ所在地として選択することができます。 データ所在地は、[テナントの作成](tutorial-create-tenant.md)時に選択した国または地域によって決まります。 
+
+詳細については、[Azure Active Directory B2C サービスで利用可能なリージョンとデータ所在地](data-residency.md)に関する記事を参照してください。
 
 ## <a name="automation-using-microsoft-graph-api"></a>Microsoft Graph API を使用した自動化
 

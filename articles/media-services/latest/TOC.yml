@@ -371,9 +371,10 @@
               displayName: 'trusted storage, storage, access, storage access, security'
         - name: ネットワークのセキュリティ
           items:
-            - name: プライベート リンクを使用して Media Services とストレージ アカウントを作成する
-              href: security-private-link-how-to.md
-              displayName: 'security, private link, links, firewall, storage account, storage, private, links, secure'
+            - name: プライベート エンドポイント接続
+              href: security-private-link-connect-private-endpoint-concept.md
+            - name: Azure Media Services を使用した Private Link
+              href: security-private-link-concept.md
             - name: キー配信 IP 許可リスト
               href: drm-content-protection-key-delivery-ip-allow.md
               displayName: 'DRM, AES, content key, allow list, IP, whitelist, access control, IP allow list, IP restriction, key delivery, license delivery, AES Key, AES-128, common encryption, security, secure, protect, encrypt'
@@ -621,8 +622,10 @@
               href: ../../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md
         - name: ネットワークのセキュリティ
           items:
-            - name: メディアおよびストレージ アカウントで Private Link を使用する方法
-              href: security-private-link-how-to.md
+            - name: ストリーミング エンドポイントでプライベート リンクを使用する
+              href: security-private-link-streaming-endpoint-how-to.md
+            - name: ARM テンプレートで Private Link を使用する方法
+              href: security-private-link-arm-how-to.md
               displayName: 'security, private link, links, firewall, storage account, storage, private, links, secure'
         - name: 安全なストリーミング
           items:

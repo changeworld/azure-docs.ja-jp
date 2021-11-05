@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と WAN-Sign の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と WAN-Sign の統合'
 description: Azure Active Directory と WAN-Sign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 10/21/2021
 ms.author: jeedes
-ms.openlocfilehash: b7df43c394d3df20f4d423fde6cf680432c80337
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 82438827cc09b4f0fc40f71a514a21884f732c33
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731485"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066985"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wan-sign"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と WAN-Sign の統合
+# <a name="tutorial-azure-ad-sso-integration-with-wan-sign"></a>チュートリアル: Azure AD SSO と WAN-Sign の統合
 
 このチュートリアルでは、WAN-Sign と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と WAN-Sign を統合すると、次のことができます。
 
@@ -37,10 +37,9 @@ ms.locfileid: "124731485"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
+* WAN-Sign では、**SP Initiated SSO** と **IDP Initiated SSO** の両方がサポートされます。
 
-* WAN-Sign では、**IDP** Initiated SSO がサポートされます。
-
-## <a name="adding-wan-sign-from-the-gallery"></a>ギャラリーから WAN-Sign を追加する
+## <a name="add-wan-sign-from-the-gallery"></a>ギャラリーからの WAN-Sign の追加
 
 Azure AD への WAN-Sign の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に WAN-Sign を追加する必要があります。
 
@@ -50,7 +49,6 @@ Azure AD への WAN-Sign の統合を構成するには、ギャラリーから�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**WAN-Sign**」と入力します。
 1. 結果のパネルから **[WAN-Sign]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-wan-sign"></a>WAN-Sign の Azure AD SSO の構成とテスト
 
@@ -75,14 +73,18 @@ WAN-Sign に対して Azure AD SSO を構成してテストするには、次の
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`https://service10.wanbishi.ne.jp/saml/metadata/azuread/<CUSTOMER_ID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://service10.wanbishi.ne.jp/saml/metadata/azuread/<CustomerID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://service10.wanbishi.ne.jp/saml/azuread/<CUSTOMER_ID>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://service10.wanbishi.ne.jp/saml/azuread/<CustomerID>` のパターンを使用して URL を入力します
+
+1. アプリケーションを SP 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+
+    **[サインオン URL]** ボックスに、`https://service10.wanbishi.ne.jp/saml/login/azuread/<CustomerID>` のパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[WAN-Sign クライアント サポート チーム](mailto:wansign-help@wanbishi.ne.jp)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[WAN-Sign クライアント サポート チーム](mailto:wansign-help@wanbishi.ne.jp)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -126,12 +128,19 @@ WAN-Sign に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した WAN-Sign に自動的にサインインされます
+#### <a name="sp-initiated"></a>SP Initiated:
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [WAN-Sign] タイルをクリックすると、SSO を設定した WAN-Sign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる WAN-Sign のサインオン URL にリダイレクトされます。  
 
+* WAN-Sign のサインオン URL に直接移動し、そこからログイン フローを開始します。
+
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した WAN-Sign に自動的にサインインされます。 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [WAN-Sign] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した WAN-Sign に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

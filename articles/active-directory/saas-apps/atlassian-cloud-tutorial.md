@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 0a38e05c85da247fdc7a4471d3fbb5d1a99281bc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6126cbeec479a1f815fa09cae32e03dc8759a11c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734466"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063364"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 

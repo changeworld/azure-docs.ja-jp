@@ -1,23 +1,26 @@
 ---
-title: アクセスとアプリケーションの制御に関するチュートリアル - Azure Security Center
+title: アクセスとアプリケーションの制御に関するチュートリアル - Microsoft Defender for Cloud
 description: このチュートリアルでは、Just-In-Time VM アクセス ポリシーとアプリケーション制御ポリシーを構成する方法を示します。
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 399fa371de57bbd8899a7c22686196a0a54be0ee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ebbe0e03f7bd701ce83e0edb816a7308f9ff766
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726110"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037361"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル:Azure Security Center でリソースを保護する
-Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just-In-Time (JIT) 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様が許可リスト登録に関する規則を適用するのを支援します。
+# <a name="tutorial-protect-your-resources-with-microsoft-defender-for-cloud"></a>チュートリアル: Microsoft Defender for Cloud を使用してリソースを保護する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Defender for Cloud では、アクセスとアプリケーションの制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態が軽減されます。 Just-In-Time (JIT) 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Defender for Cloud は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様が許可リスト登録に関する規則を適用するのを支援します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -26,19 +29,19 @@ Security Center は、アクセスおよびアプリケーション制御を使�
 > * アプリケーション制御ポリシーの構成
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルで説明されている機能を実行するには、Azure Defender が有効になっている必要があります。 無料試用版が提供されています。 アップグレードするには、「[Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
+このチュートリアルで説明する機能を手順に従って実行するには、Defender for Cloud の強化されたセキュリティ機能を有効にする必要があります。 無料試用版が提供されています。 アップグレードするには、[強化された保護の有効化](enable-enhanced-security.md)に関するページをご覧ください。
 
 ## <a name="manage-vm-access"></a>VM アクセスの管理
 JIT VM アクセスを使用すると、Azure VM へのインバウンド トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。
 
-管理ポートを常に開放しておく必要はありません。 管理ポートを開放しておく必要があるのは、管理タスクやメンテナンス タスクを実行する場合など、VM に接続している間だけです。 Just-In-Time が有効になっている場合、Security Center ではネットワーク セキュリティ グループ (NSG) ルールが使用されます。このルールにより管理ポートへのアクセスが制限されるため、攻撃者は管理ポートをターゲットにすることができなくなります。
+管理ポートを常に開放しておく必要はありません。 管理ポートを開放しておく必要があるのは、管理タスクやメンテナンス タスクを実行する場合など、VM に接続している間だけです。 Just-In-Time が有効になっている場合、Defender for Cloud ではネットワーク セキュリティ グループ (NSG) ルールが使用されます。このルールにより管理ポートへのアクセスが制限されるため、攻撃者は管理ポートをターゲットにすることができなくなります。
 
-[Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する](security-center-just-in-time.md)方法に関するページのガイダンスに従ってください。
+[Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する](just-in-time-access-usage.md)方法に関するページのガイダンスに従ってください。
 
 ## <a name="harden-vms-against-malware"></a>マルウェアに対する VM の保護の強化
-適応型アプリケーション制御では、構成済みリソース グループに対する実行が許可される一連のアプリケーションを定義できます。これにはさまざまな利点がありますが、たとえばマルウェアに対する VM の保護の強化に役立ちます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様が許可リスト登録に関する規則を適用するのを支援します。
+適応型アプリケーション制御では、構成済みリソース グループに対する実行が許可される一連のアプリケーションを定義できます。これにはさまざまな利点がありますが、たとえばマルウェアに対する VM の保護の強化に役立ちます。 Defender for Cloud は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様が許可リスト登録に関する規則を適用するのを支援します。
 
-[適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす](security-center-adaptive-application.md)方法に関するページのガイダンスに従ってください。
+[適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす](adaptive-application-controls.md)方法に関するページのガイダンスに従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、脅威にさらされる状態を以下の方法で軽減する方法について説明しました。

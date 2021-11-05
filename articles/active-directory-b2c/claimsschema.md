@@ -1,21 +1,21 @@
 ---
-title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
+title: ClaimsSchema  - Azure Active Directory B2C
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsSchema 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/05/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8930ceceb3b4f55bf579e110c15f58893bbfa6d2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654032"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131008049"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 

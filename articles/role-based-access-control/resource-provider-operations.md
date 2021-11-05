@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: 710905390f9da5e38b8459a5faa36306461bed52
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: a4ac1b31688fe1ac37fe52fd38da338848d3cd07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709279"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037798"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 

@@ -8,13 +8,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54bd889d4c6a82b911441b83fb76fe432bc8665c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: 8885bafbe94665fd7dcbb265383c87b0f4e6cc08
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265928"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253714"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -27,7 +27,7 @@ ms.locfileid: "130265928"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Node.js](https://nodejs.org/)
-* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
+* トレーニング データのセットを含む Azure Storage Blob。 [カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md) を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
 * Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
   * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
   * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -90,8 +90,8 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 `FormTrainingClient` には、以下を目的とした操作が用意されています。
 
-* カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。 モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。 詳細については、[ラベル付けなしのモデル トレーニングに関するサービスのドキュメント](#train-a-model-without-labels)を "_参照_" してください。
-* 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を分析するように、カスタム モデルをトレーニングする。 モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。 トレーニング データセットへのラベルの適用について詳しくは、[ラベル付けを使用したモデル トレーニングに関するサービス ドキュメント](#train-a-model-with-labels)を参照してください。
+* カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。 モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。 [ラベル付けなしのモデル トレーニングに関するサービスのドキュメント](#train-a-model-without-labels) を _参照_ してください。
+* 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を分析するように、カスタム モデルをトレーニングする。 モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。 [ラベル付きモデルのトレーニングに関するサービスのドキュメント](#train-a-model-with-labels) を参照してください。
 * アカウントに作成されたモデルを管理する。
 * Form Recognizer リソース間でカスタム モデルをコピーする。
 
@@ -177,7 +177,7 @@ First receipt:
 
 ## <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
 
-このセクションでは、独自のデータを使用してモデルをトレーニングする方法を示します。 トレーニング済みのモデルは、元のフォーム ドキュメント内のキー/値の関係を含む構造化データを出力できます。 モデルをトレーニングした後、モデルをテストおよび再トレーニングでき、最終的にはモデルを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
+このセクションでは、独自のデータを使用してモデルをトレーニングする方法を示します。 トレーニング済みのモデルは、元のフォーム ドキュメント内のキー/値の関係を含む構造化データを出力できます。 モデルのトレーニングが完了したら、必要に応じてテストと再トレーニングを行います。 最終的にはそれを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
 
 > [!NOTE]
 > また、[Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
@@ -192,7 +192,7 @@ First receipt:
 
 ### <a name="output"></a>出力
 
-これは、[JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) から入手できるトレーニング データを使用してトレーニングされたモデルの出力です。 このサンプル出力は、読みやすくするために一部が省略されています。
+トレーニング データでトレーニングされたモデルの出力を次に示します。 このコードは [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) から入手可能です。 このサンプル出力は、読みやすくするために一部が省略されています。
 
 ```console
 training status: creating
@@ -328,7 +328,7 @@ Field Total has value 'undefined' with a confidence score of undefined
 
 ### <a name="get-list-of-models-in-account"></a>アカウントにあるモデルの一覧を取得する
 
-次のコード ブロックを使用すると、モデルが作成された時期とモデルの現在の状態に関する情報を含め、自分のアカウントにある利用可能なモデルの全一覧を出力できます。
+次のコード ブロックでは、ご使用のアカウントで使用可能なモデルの完全な一覧が提供されます。 これには、モデルが作成された時間と、それらの現在の状態に関する情報が含まれます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
 
@@ -426,7 +426,7 @@ export DEBUG=azure*
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Form Recognizer JavaScript クライアント ライブラリを使用してモデルをトレーニングし、さまざまな方法でフォームを分析しました。 次に、より適切なトレーニング データ セットを作成し、より正確なモデルを生成するためのヒントについて学習します。
+このクイックスタートでは、Form Recognizer JavaScript SDK を使用してモデルをトレーニングし、さまざまな方法でフォームを分析しました。 次に、より適切なトレーニング データ セットを作成し、より正確なモデルを生成するためのヒントについて学習します。
 
 > [!div class="nextstepaction"]
 > [トレーニング データ セットの作成](../../build-training-data-set.md)

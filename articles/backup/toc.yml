@@ -198,12 +198,34 @@
       items:
         - name: 概要
           href: backup-azure-database-postgresql-overview.md
-        - name: バックアップ
-          href: backup-azure-database-postgresql.md
-        - name: 復元
-          href: restore-azure-database-postgresql.md
-        - name: 管理する
-          href: manage-azure-database-postgresql.md
+        - name: Azure portal から
+          items:
+            - name: バックアップ
+              href: backup-azure-database-postgresql.md
+            - name: 復元
+              href: restore-azure-database-postgresql.md
+            - name: 管理する
+              href: manage-azure-database-postgresql.md
+        - name: PowerShell の場合
+          items:
+            - name: バックアップ
+              href: backup-postgresql-ps.md
+            - name: 復元
+              href: restore-postgresql-database-ps.md
+        - name: CLI の場合
+          items:
+            - name: バックアップ
+              href: backup-postgresql-cli.md
+            - name: 復元
+              href: restore-postgresql-database-cli.md
+        - name: REST API を使用する
+          items:
+            - name: ポリシー
+              href: backup-azure-data-protection-use-rest-api-create-update-postgresql-policy.md
+            - name: バックアップ
+              href: backup-azure-data-protection-use-rest-api-backup-postgresql.md
+            - name: 復元
+              href: restore-postgresql-database-use-rest-api.md
     - name: MARS エージェントを使用した Windows バックアップ
       items:
         - name: 概要
@@ -436,6 +458,8 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Azure ポータルの使用
           href: backup-azure-monitoring-built-in-monitor.md
+        - name: Azure Monitor のメトリックの使用
+          href: metrics-overview.md
         - name: Azure Monitor ログの使用
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Reports
@@ -458,13 +482,15 @@
               href: backup-azure-diagnostics-mode-data-model.md
     - name: オートメーション
       items:
+        - name: Azure Backup オートメーションの使用
+          href: automation-backup.md
         - name: Azure Backup 用に組み込まれた Azure Policy
           items:
             - name: Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
               href: backup-azure-auto-enable-backup.md
             - name: 大規模なコンテナーの診断設定を構成する
               href: azure-policy-configure-diagnostics.md
-        - name: PowerShell
+        - name: PowerShell の使用
           items:
             - name: Azure VM
               href: backup-azure-vms-automation.md
@@ -504,6 +530,8 @@
           href: security-overview.md
         - name: Azure ロールベースのアクセス制御
           href: backup-rbac-rs-vault.md
+        - name: リソース ガードを使用したマルチユーザー承認
+          href: multi-user-authorization.md
         - name: 論理的な削除
           items:
             - name: 概要
@@ -533,10 +561,12 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/backup-security-baseline?toc=/azure/backup/toc.json
-    - name: アクセス層
+    - name: アーカイブ層
       items:
-        - name: アーカイブ層
+        - name: 概要
           href: archive-tier-support.md
+        - name: Archive レベルを使用する
+          href: use-archive-tier-support.md
     - name: トラブルシューティング
       items:
         - name: Azure VM
@@ -565,6 +595,8 @@
           href: backup-azure-sap-hana-database-troubleshoot.md
         - name: システム状態
           href: backup-azure-system-state-troubleshoot.md
+        - name: アーカイブ層
+          href: troubleshoot-archive-tier.md
 - name: リファレンス
   items:
     - name: .NET

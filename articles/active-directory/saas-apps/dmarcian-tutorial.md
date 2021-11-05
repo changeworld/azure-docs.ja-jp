@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 67dfcb774faf966dc54c150dbaf60e6cebf719ac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a7bc336c84c1f992482dc8b8b6a841533a9dd58e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124770341"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068039"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>チュートリアル: dmarcian と Azure Active Directory の統合
 
@@ -68,45 +68,45 @@ dmarcian に対して Azure AD SSO を構成してテストするには、次の
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **dmarcian** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。
+    1. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | **Identifier** |
-    |-----|
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    
+       | **Identifier** |
+       |-----|
+       | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+       | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+       | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    1. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | **応答 URL** |
-    |----|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
-   
+       | **応答 URL** |
+       |----|
+       | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
+       | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
+       | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-    
+
     | **サインオン URL** |
     |-----|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
     | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
     | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
-     
+
     > [!NOTE] 
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、およびサインオン URL に更新します。実際の値については、このチュートリアルの後の方で説明します。
 
-4. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
+1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
@@ -158,20 +158,22 @@ dmarcian に対して Azure AD SSO を構成してテストするには、次の
 
     ![認証](./media/dmarcian-tutorial/status.png)
 
-    a。 **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[Assertion Consumer Service URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション** にある **[応答 URL]** テキスト ボックスに貼り付けます。
+    1. **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[Assertion Consumer Service URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション** にある **[応答 URL]** テキスト ボックスに貼り付けます。
 
-    b. **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[エンティティ ID]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション** にある **[識別子]** テキスト ボックスに貼り付けます。
+    1. **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[エンティティ ID]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション** にある **[識別子]** テキスト ボックスに貼り付けます。
 
-    c. **[Set up Authentication] (認証の設定)** セクションの **[Identity Provider Metadata] (ID プロバイダーのメタデータ)** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** を貼り付けます。
+    1. **[Set up Authentication]\(認証の設定\)** セクションの **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** を貼り付けます。
 
-    d. **[Set up Authentication]\(認証の設定\)** セクションの **[Attribute Statements]\(属性ステートメント\)** テキスト ボックスに、URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます。
+    1. **[Set up Authentication]\(認証の設定\)** セクションの **[Attribute Statements]\(属性ステートメント\)** テキスト ボックスに、次の URL を貼り付けます。
+    
+       `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    e. **[Set up Login URL]\(ログイン URL の設定\)** セクションで、インスタンスの **[ログイン URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション** にある **[サインオン URL]** テキスト ボックスに貼り付けます。
+    1. **[Set up Login URL]\(ログイン URL の設定\)** セクションで、インスタンスの **[ログイン URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション** にある **[サインオン URL]** テキスト ボックスに貼り付けます。
 
-    > [!Note]
-    > **[ログイン URL]** は、組織に応じて変更できます。
+       > [!NOTE]
+       > **[ログイン URL]** は、組織に応じて変更できます。
 
-    f. **[保存]** をクリックします。
+    1. **[保存]** をクリックします。
 
 ### <a name="create-dmarcian-test-user"></a>dmarcian のテスト ユーザーの作成
 
@@ -189,15 +191,15 @@ Azure AD ユーザーが dmarcian にサインインできるようにするに�
 
     ![ユーザーの追加](./media/dmarcian-tutorial/new-user.png)
 
-4. **[新しいユーザーの追加]** ポップアップで、次の手順を実行します。
+4. **[Add New User]\(新しいユーザーの追加\)** ポップアップで、次の手順を実行します。
 
     ![新しいユーザー](./media/dmarcian-tutorial/save-user.png)
 
-    a. **[New User Email]\(新しいユーザーの電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
+    1. **[New User Email]\(新しいユーザーのメールアドレス\)** テキスト ボックスに、ユーザーのメールアドレス (`brittasimon@contoso.com` など) を入力します。
 
-    b. そのユーザーに管理者権限を付与する場合は、**[Make User an Admin] (ユーザーを管理者にする)** を選択します。
+    1. そのユーザーに管理者権限を付与する場合は、**[Make User an Admin] (ユーザーを管理者にする)** を選択します。
 
-    c. **[ユーザーの追加]** をクリックします。
+    1. **[ユーザーの追加]** をクリックします。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

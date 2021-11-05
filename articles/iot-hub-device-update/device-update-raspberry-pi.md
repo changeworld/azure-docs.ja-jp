@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f1b5196d422d2bc4a961c2b45ed814ee5555f2c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7d6cb25d553e5215ae3d06810b7c0087dd433ef3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643842"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019934"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -29,6 +29,8 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 > * デバイス グループを作成する
 > * イメージの更新プログラムをデプロイする
 > * 更新プログラムのデプロイを監視する
+
+注: このチュートリアルで取り上げるイメージ更新プログラムは、Raspberry Pi B3 ボードで検証されています。
 
 ## <a name="prerequisites"></a>前提条件
 * まだ [Device Update アカウントとインスタンス](create-device-update-account.md)を作成していない場合は作成します (IoT ハブの構成も含む)。

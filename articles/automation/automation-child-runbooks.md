@@ -3,15 +3,15 @@ title: Azure Automation でモジュラー Runbook を作成する
 description: この記事では、別の Runbook から呼び出す Runbook を作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 11bd439b511f6ae60078f5006a1ff4571b5908e9
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4eff80637886901644b36b19f74d79ae83e7cfe3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617266"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455494"
 ---
 # <a name="create-modular-runbooks-in-automation"></a>Automation でモジュラー Runbook を作成する
 
@@ -42,7 +42,7 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 
 ### <a name="runbook-types"></a>Runbook の種類
 
-特定の Runbook の種類からのみ相互に呼び出すことができます。
+現時点では、PowerShell 5.1 と 7.1 (プレビュー) がサポートされており、次のような特定の種類の Runbook のみが相互に呼び出すことができます。
 
 * [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) と[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) は、どちらも PowerShell ベースであるため、相互にインラインで呼び出すことができます。
 * [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) とグラフィカル PowerShell ワークフロー Runbook は、どちらも PowerShell ワークフロー ベースであるため、相互にインラインで呼び出すことができます。

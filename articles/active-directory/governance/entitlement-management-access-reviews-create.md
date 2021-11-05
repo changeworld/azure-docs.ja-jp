@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 10/26/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2497e47078f91c1649db107dd105227e219ae2
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: d8e4b08f407417136462ff066d0f0e81312662ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565736"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051711"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのアクセス レビューを作成する
 
@@ -40,9 +40,33 @@ ms.locfileid: "113565736"
 
 アクセス レビューを有効にできるのは、[新しいアクセス パッケージの作成時](entitlement-management-access-package-create.md)、または[既存アクセス パッケージの編集時](entitlement-management-access-package-lifecycle-policy.md)です。 次の手順に従って、アクセス パッケージのアクセス レビューを有効にします。
 
-1. アクセス パッケージの **[ライフサイクル]** タブを開き、**[アクセス レビュー]** まで下にスクロールします。
+1. アクセス パッケージの **[ライフサイクル]** タブを開いて、アクセス パッケージへのユーザーの割り当ての有効期限を指定します。 ユーザーが割り当てを延長できるかどうかを指定することもできます。
 
-1. **[アクセスレビューが必要]** トグルを **[はい]** に移動します。
+1. **[有効期限]** セクションで、[Access package assignments expires]\(アクセス パッケージ割り当ての有効期限\) を **[日付]**、**[日数]**、**[時間数]** または **[無期限]** に設定します。
+
+    **[日付]** の場合、将来の有効期限の日付を選択します。
+
+    **[日数]** の場合、0 日から 3660 日までの数値を指定します。
+
+    **[時間数]** には、時間数を指定します。
+
+    選択内容に基づき、アクセス パッケージに対するユーザーの割り当ては、特定の日付または承認された後の特定の日数に期限切れになるか、または期限切れになりません。
+    
+    ![アクセス パッケージ - ライフサイクル有効期限の設定](./media/entitlement-management-access-reviews/expiration.png)
+
+1. [Show advanced expiration settings]\(高度な有効期限設定の表示\) をクリックして、追加設定を表示します。
+
+1. ユーザーが割り当てを延長できるようにするには、 **[Allow users to extend access]\(ユーザーがアクセスを延長できるようにする\)** を **[はい]** に設定します。
+
+    ポリシーで延長が許可されている場合、アクセス パッケージの割り当ての有効期限が切れる 14 日前と 1 日前にユーザーに電子メールが送信され、割り当ての延長を求めるメッセージが表示されます。 ユーザーは、延長を求めるときに、引き続きポリシーのスコープ内にいる必要があります。 また、ポリシーで割り当ての明示的な終了日が設定されていて、ユーザーがアクセス権の延長を求める要求を送信する場合、アクセス パッケージへのアクセス権をユーザーに付与する際に使用したポリシーに定義されているように、要求内の延長の日付は割り当ての有効期限が切れる日か、それより前とする必要があります。 たとえば、割り当ての有効期限が 6 月 30 日に切れることがポリシーで示されている場合、ユーザーが要求できる最大の延長は 6 月 30 日です。
+
+    ユーザーのアクセスが延長された場合、そのユーザーは、指定された延長日付 (ポリシーを作成したユーザーのタイムゾーンで設定された日付) より後にアクセス パッケージを要求することはできません。
+
+1. 延長を許可するための承認を要求するには、**[Require approval to grant extension]\(延長許可の承認を要求する\)** を **[はい]** に設定します。
+
+    [要求] タブに指定されたのと同じ承認設定が使用されます。
+
+1. 次に、 **[アクセス レビューが必要]** を **[はい]** に切り替えます。
 
     ![アクセス レビューを追加する](./media/entitlement-management-access-reviews/access-reviews-pane.png)
 

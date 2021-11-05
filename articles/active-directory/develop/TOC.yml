@@ -156,6 +156,8 @@
       href: authentication-flows-app-scenarios.md
     - name: アプリケーションとサービス プリンシパル
       href: app-objects-and-service-principals.md
+    - name: ワークロード ID フェデレーション
+      href: workload-identity-federation.md
     - name: ID プラットフォームのベスト プラクティス
       href: identity-platform-integration-checklist.md
     - name: アプリのセキュリティ
@@ -545,6 +547,10 @@
           href: howto-authenticate-service-principal-powershell.md
         - name: Azure Portal を使用してサービス プリンシパルを作成する
           href: howto-create-service-principal-portal.md
+        - name: GitHub リポジトリを信頼するようにアプリを構成する
+          href: workload-identity-federation-create-trust-github.md
+        - name: 外部 ID プロバイダーを信頼するようにアプリを構成する
+          href: workload-identity-federation-create-trust.md
     - name: 複数のテナントからのサインインを受け入れる
       items:
         - name: アプリでサポートされるアカウントを変更する

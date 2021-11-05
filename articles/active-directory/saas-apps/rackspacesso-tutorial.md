@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 50b0a6bdb58559f5b0ca5c22991f6f6611269932
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d2f10de5e0410ee687213ca828528cad43ad0018
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758942"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067963"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル: Azure Active Directory と Rackspace SSO の統合
 

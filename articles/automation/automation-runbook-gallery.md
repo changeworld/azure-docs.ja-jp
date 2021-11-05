@@ -3,14 +3,14 @@ title: PowerShell ギャラリーの Azure Automation Runbook とモジュール
 description: この記事では、Microsoft GitHub リポジトリおよび PowerShell ギャラリーからの Runbook とモジュールを使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/07/2021
+ms.date: 10/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 203900e225700055c581ce4c7a100e055d9526b7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1f6b3a47d7d8bcab77c80b71fcbc06c3381509c9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837444"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504204"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>既存の Runbook とモジュールを使用する
 
@@ -21,22 +21,40 @@ Azure Automation で独自の Runbook およびモジュールを作成するの
 
 ## <a name="import-runbooks-from-github-with-the-azure-portal"></a>Azure portal を使用して GitHub から Runbook をインポートする
 
+> [!NOTE]
+>- Azure portal の **[ギャラリーの参照]** オプションでは、ユーザー エクスペリエンスが強化されています。
+>- **[プロセス オートメーション]**  >  **[Runbook]** ブレードでは、 **[Runbook のインポート]** または **[ギャラリーの参照]** オプションを使用して Runbook をインポートできます。 **[Runbook]** ページには、 **[ランタイム バージョン]** と **[Runbook の種類]** という 2 つの新しい列が表示されます。
+ 
 1. Azure ポータルで、Automation アカウントを開きます。
-2. **[プロセス オートメーション]** の下の **[Runbook ギャラリー]** を選択します。
-3. **[ソース: GitHub]** を選択します。
-4. リストの上にあるフィルターを使用して、発行元や種類で表示を絞り込んだり、並べ替えたりすることができます。 必要なギャラリー アイテムを探し、選択して詳細を表示します。
+1. **[プロセス オートメーション]** の **[Runbook]** ブレードを選択します。
+1. **[Runbook]** ページで **[Runbook のインポート]** をクリックします。
+
+   :::image type="content" source="./media/automation-runbook-gallery/import-runbook.png" alt-text="[Runbook のインポート] オプションから Runbook を選択しているスクリーンショット。":::
+
+1. **[Runbook のインポート]** ページでは、 **[ファイルの参照]** を使用してローカル コンピューターに格納されているファイルをインポートするか、または **[ギャラリーで参照]** を使用して GitHub からファイルをインポートすることができます。
+1. ファイルを選択します。
+1. **[名前]** 、 **[ランタイム バージョン]** 、 **[説明]** を入力します。
+1. **[インポート]** をクリックします。
+   
+   :::image type="content" source="./media/automation-runbook-gallery/import-runbook-upload-runbook-file.png" alt-text="ファイルまたはギャラリーから Runbook を選択しているスクリーンショット。":::
+
+1. または、 **[Runbook]** ページで **[ギャラリーの参照]** を選択して、使用可能な Runbook を参照します。
+
+   :::image type="content" source="./media/automation-runbook-gallery/browse-gallery-option.png" alt-text="Runbook ブレードから [ギャラリーの参照] オプションを選択しているスクリーンショット。":::
+
+1. リストの上にあるフィルターを使用して、発行元や種類で表示を絞り込んだり、並べ替えたりすることができます。 必要なギャラリー アイテムを探し、選択して詳細を表示します。
 
    :::image type="content" source="./media/automation-runbook-gallery/browse-gallery-github.png" alt-text="Runbook ギャラリーの参照。" lightbox="./media/automation-runbook-gallery/browse-gallery-github-expanded.png":::
 
-5. アイテムをインポートするには、詳細ページの **[インポート]** をクリックします。
+1. **[選択]** をクリックして、選んだ Runbook を選択します。 
+1. **[Runbook のインポート]** ページで、 **[名前]** を入力し、 **[ランタイム バージョン]** を選択します。
+1. **[Runbook の種類]** と **[説明]** は自動的に設定されます。
+1. **[インポート]** をクリックします。
 
    :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import.png" alt-text="ギャラリー アイテムのインポート。":::
 
-6. 必要に応じて、インポート ブレードで Runbook の名前を変更し、 **[OK]** をクリックして Runbook をインポートします。
-
-   :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import-blade.png" alt-text="ギャラリー アイテムのインポート ブレード。":::
-
 7. Automation アカウントの **[Runbook]** タブに Runbook が表示されます。
+
  
 ## <a name="runbooks-in-the-powershell-gallery"></a>PowerShell ギャラリーの Runbook
 
@@ -56,7 +74,7 @@ PowerShell ギャラリーから直接インポートできるのは、Azure por
 
 PowerShell モジュールには、Runbook で使用できるコマンドレットが含まれています。 Azure Automation でインストールできる既存のモジュールは [PowerShell ギャラリー](https://www.powershellgallery.com)から入手できます。 このギャラリーは Azure portal から起動できます。また、モジュールを Azure Automation に直接インストールするか、手動でダウンロードしてインストールすることができます。
 
-インポートするモジュールを Azure portal で探すこともできます。 Automation Account 用のモジュールは、 **[共有リソース]** の下の **[モジュール ギャラリー]** に表示されます。
+インポートするモジュールを Azure portal で探すこともできます。 Automation アカウント用のモジュールは、 **[共有リソース]** の下の **[モジュール]** に一覧表示されます。
 
 > [!IMPORTANT] 
 > Az モジュールを使用して実行するように設計されたスクリプトには、キーワード "AzureRm" を含めないでください。 たとえコメントであっても、このキーワードを含めると、AzureRm が読み込まれ、Az モジュールと競合する可能性があります。
@@ -99,7 +117,8 @@ Azure Automation コミュニティに貢献し、成長を支援することを
 ## <a name="import-a-module-from-the-modules-gallery-in-the-azure-portal"></a>Azure portal でモジュール ギャラリーからモジュールをインポートする
 
 1. Azure ポータルで、Automation アカウントを開きます。
-1. **[共有リソース]** の **[モジュール ギャラリー]** を選択して、モジュールの一覧を開きます。
+1. **[共有リソース]** の下にある **[モジュール]** を選択します。
+1. **[モジュール]** ページで、 **[ギャラリーの参照]** を選択して、モジュールの一覧を開きます。
 
       :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="モジュール ギャラリーのビュー。" lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
@@ -127,7 +146,7 @@ Azure Automation コミュニティに貢献し、成長を支援することを
 
 ## <a name="request-a-runbook-or-module"></a>Runbook またはモジュールを要求する
 
-[ユーザーの声](https://feedback.azure.com/forums/246290-azure-automation/)に要求を送信できます。  Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[Microsoft Q&A 質問ページ](/answers/topics/azure-automation.html)に質問を投稿してください。
+[ユーザーの声](https://feedback.azure.com/d365community/forum/8ddd03a2-0225-ec11-b6e6-000d3a4f0858)に要求を送信できます。  Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[Microsoft Q&A 質問ページ](/answers/topics/azure-automation.html)に質問を投稿してください。
 
 ## <a name="next-steps"></a>次のステップ
 

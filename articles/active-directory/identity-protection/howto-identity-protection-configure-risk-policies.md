@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11751323d1341cbcde19451bc101197c7d714368
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c9e3bfc88442f495d49116e01cc06e876be95787
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739979"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051593"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする
 
@@ -41,7 +41,7 @@ Identity Protection で構成済みのセキュリティで保護された[ネ�
 
 ### <a name="risk-remediation"></a>リスク修復
 
-組織は、リスクが検出された場合にアクセスをブロックすることを選択できます。 ブロックすると、正当なユーザーが必要な操作を実行できなくなる場合があります。 より適切な解決策は、Azure AD Multi-Factor Authentication (MFA) およびセルフサービス パスワード リセット (SSPR) を使用して、自己修復を許可することです。 
+組織は、リスクが検出された場合にアクセスをブロックすることを選択できます。 ブロックすると、正当なユーザーが必要な操作を実行できなくなる場合があります。 より適切な解決策は、Azure AD Multi-Factor Authentication (MFA) およびセルフサービス パスワード リセット (SSPR) を使用して、自己修復を許可することです。
 
 - ユーザー リスク ポリシーがトリガーされた場合: 
    - 管理者は、セキュリティで保護されたパスワード リセットを要求できます。この場合、ユーザーが SSPR を使用して新しいパスワードを作成する前に、Azure AD MFA が実行されるよう要求して、ユーザー リスクをリセットします。 
@@ -67,6 +67,8 @@ Identity Protection で構成済みのセキュリティで保護された[ネ�
    - ポリシーでのより多くの条件付きアクセス属性の使用
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+修復ポリシーを有効にする前に、組織でアクティブなリスクを[調査](howto-identity-protection-investigate-risk.md)して[修復](howto-identity-protection-remediate-unblock.md)することが必要になる場合があります。
 
 ### <a name="user-risk-with-conditional-access"></a>条件付きアクセスによるユーザー リスク
 

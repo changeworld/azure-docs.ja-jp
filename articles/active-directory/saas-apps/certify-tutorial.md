@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2021
 ms.author: jeedes
-ms.openlocfilehash: bce0a36a33598a76e666806f5c2622924e307854
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7e6a85bf02ba4a3fa133fb9b87c40f82c8ce94f8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809721"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057026"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>チュートリアル: Azure Active Directory と Certify の統合
 

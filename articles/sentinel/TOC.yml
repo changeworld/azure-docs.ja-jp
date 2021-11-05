@@ -45,6 +45,12 @@
           href: extend-sentinel-across-workspaces-tenants.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
+    - name: Azure Sentinel のコンテンツ
+      items:
+        - name: Sentinel のコンテンツについて
+          href: sentinel-solutions.md
+        - name: コンテンツ ハブ カタログ
+          href: sentinel-solutions-catalog.md
     - name: データの収集と分析
       items:
         - name: データ収集方法
@@ -61,12 +67,6 @@
               href: normalization-content.md
         - name: エンティティを使用したデータの分類
           href: entities-in-azure-sentinel.md
-    - name: Azure Sentinel ソリューション
-      items:
-        - name: Sentinel ソリューションについて
-          href: sentinel-solutions.md
-        - name: ソリューション カタログ
-          href: sentinel-solutions-catalog.md
     - name: 脅威インテリジェンス
       items:
         - name: Azure Sentinel の脅威インテリジェンスについて
@@ -75,9 +75,13 @@
           href: threat-intelligence-integration.md
     - name: 脅威の検出
       items:
+        - name: 組み込みの脅威検出ルール
+          href: detect-threats-built-in.md
+        - name: ほぼリアルタイム (NRT) の分析ルール
+          href: near-real-time-rules.md
         - name: ユーザーとエンティティの行動分析 (UEBA)
           href: identify-threats-with-entity-behavior-analytics.md
-        - name: SOC-ML 異常検知
+        - name: 異常検出ルール
           href: soc-ml-anomalies.md
         - name: マルチステージ攻撃 (Fusion)
           href: fusion.md
@@ -109,6 +113,12 @@
           href: resource-context-rbac.md
     - name: Azure Sentinel に移行する
       href: migration.md
+    - name: Azure Sentinel のコンテンツを管理する
+      items:
+        - name: すぐに使えるコンテンツを検出してデプロイする
+          href: sentinel-solutions-deploy.md
+        - name: リポジトリからカスタム コンテンツをデプロイする
+          href: ci-cd.md
     - name: データを収集する
       items:
         - name: データ ソースを接続する
@@ -154,8 +164,6 @@
           href: monitor-data-connector-health.md
         - name: Azure Data Explorer を統合する
           href: store-logs-in-azure-data-explorer.md
-    - name: ソリューションの検出とデプロイ
-      href: sentinel-solutions-deploy.md
     - name: 脅威インテリジェンスの使用
       items:
         - name: 脅威インテリジェンス プラットフォームの接続
@@ -172,11 +180,9 @@
           href: ./monitor-your-data.md
     - name: 脅威の検出とデータの分析
       items:
-        - name: 組み込み規則を使用する
-          href: detect-threats-built-in.md
-        - name: カスタム規則の作成
+        - name: 脅威検出ルールを作成する
           items:
-            - name: 規則を作成する
+            - name: スケジュール済みのクエリ ルールを作成する
               href: detect-threats-custom.md
             - name: データ フィールドをエンティティにマップする
               href: map-data-fields-to-entities.md
@@ -186,14 +192,20 @@
               href: customize-alert-details.md
             - name: 分析ルールのエクスポートとインポート
               href: import-export-analytics-rules.md
-            - name: SOC-ML 異常規則の使用
+            - name: ほぼリアルタイム (NRT) の分析ルールを作成する
+              href: create-nrt-rules.md
+            - name: 異常検出ルールを操作する
               href: work-with-anomaly-rules.md
             - name: 分析ルールのテンプレート バージョンを管理する
               href: manage-analytics-rule-templates.md
+            - name: 微調整に関する推奨事項を取得する
+              href: detection-tuning.md
         - name: ユーザーとエンティティの行動分析 (UEBA) を有効にする
           href: enable-entity-behavior-analytics.md
-        - name: SOC-ML 異常規則の使用
+        - name: すぐに使用できる異常ルールを使用する
           href: work-with-anomaly-rules.md
+        - name: マルチステージ攻撃 (Fusion) ルールを構成する
+          href: configure-fusion-rules.md
         - name: 擬陽性の処理
           href: false-positives.md
         - name: Microsoft セキュリティ アラートからインシデントを作成する
@@ -203,9 +215,13 @@
     - name: 脅威の探索
       items:
         - name: Jupyter Notebook を使用して追求する
-          href: notebooks.md
-        - name: Jupyter Notebook 用の高度な MSTICPy 設定
-          href: notebooks-msticpy-advanced.md
+          items:
+            - name: 概要
+              href: notebooks.md
+            - name: Jupyter Notebook 用の高度な MSTICPy 設定
+              href: notebooks-msticpy-advanced.md
+            - name: Azure Synapse での大規模なセキュリティ分析
+              href: notebooks-with-synapse.md
         - name: ブックマークを使用して追求する
           href: bookmarks.md
         - name: ライブストリームを使用して追求する
@@ -308,6 +324,8 @@
           href: entities-reference.md
         - name: UEBA エンリッチメント
           href: ueba-enrichments.md
+        - name: マルチステージ攻撃の検出のシナリオ
+          href: fusion-scenario-reference.md
         - name: ウォッチリスト テンプレートのスキーマ
           href: watchlist-schemas.md
         - name: Kusto クエリ言語

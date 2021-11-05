@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 10/07/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.reviewer: abhijeetsinha
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cbd4732513b9c9bcc40f6eafb0a792b2d3ca06
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 768814932b54dab3a8d761d5502310b6b7315f2d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667879"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245464"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD の組み込みロール
 
@@ -107,6 +107,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | [Teams デバイス管理者](#teams-devices-administrator) | Teams 認定デバイスで管理関連タスクを実行できます。 | 3d762c5a-1b6c-493f-843e-55a3b42923d4 |
 > | [使用状況の概要のレポート閲覧者](#usage-summary-reports-reader) | Microsoft 365 利用状況分析および生産性スコアのテナント レベルの集計のみを表示できます。 | 75934031-6c7e-415a-99d7-48dbd49e875e |
 > | [ユーザー管理者](#user-administrator) | ユーザーとグループのすべての側面を、制限付きの管理者のパスワードをリセットすることも含めて、管理できます。 | fe930be7-5e62-47db-91af-98c3a49a38b1 |
+> | [Windows 365 管理者](#windows-365-administrator) | クラウド PC のすべての側面をプロビジョニングして管理できます。 | 11451d60-acb2-45eb-a7d6-43d0f0125c13 |
 > | [Windows Update デプロイ管理者](#windows-update-deployment-administrator) | Windows Update for Business 展開サービスを使用して、Windows Update の展開のすべての側面を作成および管理できます。 | 32696413-001a-46ae-978c-ce0f6b3620d2 |
 
 ## <a name="application-administrator"></a>アプリケーション管理者
@@ -2028,6 +2029,50 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 > | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットを作成および管理する |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 管理センターで Service Health を読み取り、構成する |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
+> | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
+
+## <a name="windows-365-administrator"></a>Windows 365 管理者
+
+このロールのユーザーには Windows 365 リソースに対するグローバル アクセス許可があります (そのサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。
+
+このロールはセキュリティ グループを作成および管理できますが、Microsoft 365 グループに対する管理者権限はありません。 つまり、管理者は、組織内の Microsoft 365 グループの所有者およびメンバーシップを更新することはできません。 ただし、自分で作成した Microsoft 365 グループを管理することはできます。これは、エンドユーザーの特権の一部です。 そのため、自分で作成したすべての Microsoft 365 グループ (セキュリティ グループではない) は、自分の 250 のクォータに対してカウントされます。
+
+次のタスクを行う必要があるユーザーに、Windows 365 管理者ロールを割り当てます。
+
+- Microsoft エンドポイント マネージャーで Windows 365 クラウド PC を管理する
+- Azure AD でデバイスを登録および管理する (ユーザーとポリシーの割り当てを含む)
+- セキュリティ グループを作成および管理する (ロールを割り当て可能なグループを除く)
+- Microsoft 365 管理センターで基本プロパティを表示する
+- Microsoft 365 管理センターで使用状況レポートを読み取る
+- Azure AD と Microsoft 365 管理センターでサポート チケットを作成および管理する
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | microsoft.directory/devices/create | デバイスを作成する (Azure AD に登録する) |
+> | microsoft.directory/devices/delete | Azure AD からデバイスを削除する |
+> | microsoft.directory/devices/disable | Azure AD でデバイスを無効にする |
+> | microsoft.directory/devices/enable | Azure AD でデバイスを有効にする |
+> | microsoft.directory/devices/basic/update | デバイスの基本プロパティを更新する |
+> | microsoft.directory/devices/extensionAttributeSet1/update | デバイスの extensionAttribute1 から extensionAttribute5 プロパティを更新する |
+> | microsoft.directory/devices/extensionAttributeSet2/update | デバイスの extensionAttribute6 から extensionAttribute10 プロパティを更新する |
+> | microsoft.directory/devices/extensionAttributeSet3/update | デバイスの extensionAttribute11 から extensionAttribute15 プロパティを更新する |
+> | microsoft.directory/devices/registeredOwners/update | デバイスの登録済み所有者を更新する |
+> | microsoft.directory/devices/registeredUsers/update | デバイスの登録済みユーザーを更新する |
+> | microsoft.directory/groups.security/create | ロールを割り当て可能なグループを除き、セキュリティ グループを作成する |
+> | microsoft.directory/groups.security/delete | ロールを割り当て可能なグループを除き、セキュリティ グループを削除する |
+> | microsoft.directory/groups.security/basic/update | ロールを割り当て可能なグループを除き、セキュリティ グループの基本プロパティを更新する |
+> | microsoft.directory/groups.security/classification/update | ロールを割り当て可能なグループを除き、セキュリティ グループの分類プロパティを更新する |
+> | microsoft.directory/groups.security/dynamicMembershipRule/update | ロール割り当て可能なグループを除き、セキュリティ グループの動的メンバーシップ規則を更新する |
+> | microsoft.directory/groups.security/members/update | ロールを割り当て可能なグループを除き、セキュリティ グループのメンバーを更新する |
+> | microsoft.directory/groups.security/owners/update | ロールを割り当て可能なグループを除き、セキュリティ グループの所有者を更新する |
+> | microsoft.directory/groups.security/visibility/update | ロールを割り当て可能なグループを除き、セキュリティ グループの可視性プロパティを更新する |
+> | microsoft.directory/deviceManagementPolicies/standard/read | デバイス管理アプリケーション ポリシーの標準プロパティの読み取り |
+> | microsoft.directory/deviceRegistrationPolicy/standard/read | デバイス登録ポリシーの標準プロパティの読み取り |
+> | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットを作成および管理する |
+> | microsoft.cloudPC/allEntities/allProperties/allTasks | Windows 365 のすべての側面を管理する |
+> | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
+> | microsoft.office365.usageReports/allEntities/allProperties/read | Office 365 の使用状況レポートを読み取る |
 > | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
 
 ## <a name="windows-update-deployment-administrator"></a>Windows Update デプロイ管理者

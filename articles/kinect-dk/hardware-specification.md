@@ -7,18 +7,16 @@ ms.prod: kinect-dk
 ms.date: 03/18/2021
 ms.topic: article
 keywords: Azure, Kinect, 仕様, ハードウェア, DK, 機能, 深度, 色, RGB, IMU, マイク, 配列, 深度
-ms.custom:
-- CI 114092
-- CSSTroubleshooting
+ms.custom: CI 114092, CSSTroubleshooting
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: b5ec67537fe0bd8732b4068c0ed52861ed8f2c1a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 45941395864bde4442748671c6b5c33da81b319d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "116986088"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082495"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK のハードウェアの仕様
 
@@ -52,7 +50,7 @@ Azure Kinect デバイスの STEP ファイルについては、[こちら](http
 
 Azure Kinect DK は、次の環境条件下で活動する開発者および営利企業を対象としています。
 
-- **温度**: 10 から 25<sup>0</sup>C
+- **温度**: 10 から 25 <sup>0</sup>C
 - **湿度**: 8 から 90% の相対湿度 (結露がないこと)
 
 > [!NOTE]
@@ -155,7 +153,7 @@ Azure Kinect DK は、次のハードウェア エンドポイントをオペレ
 
 |    USB インターフェイス        |    PNP IP    |     Notes            |
 |-------------------------|--------------|----------------------|
-|    USB 3.1 Gen1 ハブ    |    0x097A    |    メイン ハブ    |
+|    USB 3.1 Gen2 ハブ    |    0x097A    |    メイン ハブ    |
 |    USB 2.0 ハブ         |    0x097B    |    HS USB          |
 |    深度カメラ       |    0x097C    |    USB 3.0            |
 |    カラー カメラ       |    0x097D    |    USB 3.0            |

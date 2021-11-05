@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: thwimmer
-ms.openlocfilehash: ab5550c9e89d1cd755e376a1aaae8db9564ae484
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7341d833ad1ddf00379c6d8a4e780a54456a8d73
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322732"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046017"
 ---
 # <a name="tutorial-configure-thrive-lxp-for-automatic-user-provisioning"></a>チュートリアル: Thrive LXP を構成し、自動ユーザー プロビジョニングに対応させる
 

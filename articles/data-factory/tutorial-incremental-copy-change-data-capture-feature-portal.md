@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 6297956cb77898c26beaa617a59b1b43cc111e80
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1c0e6e052b9e65f02ab57a7a2c165c9ba67be0a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771766"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031045"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
@@ -230,7 +230,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-name.png" alt-text="検索アクティビティ - 名前":::
 4. **[プロパティ]** ウィンドウで **[設定]** に切り替えます。
+
    1. **[Source Dataset]\(コピー元データセット\)** フィールドで SQL MI データセットの名前を指定します。
+
    2. クエリ オプションを選択し、クエリ ボックスに次のように入力します。
     ```sql
     DECLARE  @from_lsn binary(10), @to_lsn binary(10);  
@@ -238,9 +240,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal',  GETDATE());
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
     ```
+
    3. **[First row only]\(先頭行のみ\)** を有効にします
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-settings.png" alt-text="検索アクティビティ - 設定":::
+
 5. **[データのプレビュー]** ボタンをクリックし、検索アクティビティによって確実に有効な出力が取得されるようにします
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-preview.png" alt-text="検索アクティビティ - プレビュー":::
@@ -337,31 +341,38 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    1. データセットのプロパティの **[接続]** タブをクリックし、 **[ディレクトリ]** と **[ファイル]** の両方のセクションに動的なコンテンツを追加します。 
    2. テキスト ボックスの下にある動的コンテンツ リンクをクリックして、 **[ディレクトリ]** セクションに次の式を入力します。
     
-    ```sql
-    @concat('customers/incremental/',formatDateTime(dataset().triggerStart,'yyyy/MM/dd'))
-    ```
+      ```sql
+      @concat('customers/incremental/',formatDateTime(dataset().triggerStart,'yyyy/MM/dd'))
+      ```
    3. **[ファイル]** セクションに次の式を入力します。 これにより、トリガーの開始日時を基にしてファイル名が作成され、csv 拡張子がサフィックスとして付けられます。
     
-    ```sql
-    @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
-    ```
-    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="コピー先データセットの構成 - 3":::
+      ```sql
+      @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
+      ```
+
+      :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="コピー先データセットの構成 - 3":::
 
    4. **IncrementalCopyPipeline** タブをクリックして **コピー** アクティビティの **[Sink]\(コピー先\)** 設定に戻ります。 
    5. データセットのプロパティを展開し、次の式を使用して、triggerStart パラメーター値に動的コンテンツを入力します。
-     ```sql
-     @pipeline().parameters.triggerStartTime
-     ```
-    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="コピー先データセットの構成 - 4":::
+
+      ```sql
+      @pipeline().parameters.triggerStartTime
+      ```
+
+     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="コピー先データセットの構成 - 4":::
 
 6. [デバッグ] をクリックしてパイプラインをテストし、確実にフォルダー構造と出力ファイルが想定どおりに生成されるようにします。 ファイルをダウンロードして開き、内容を確認します。 
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-3.png" alt-text="増分コピーのデバッグ - 3":::
+
 7. パイプライン実行の入力パラメーターを調べて、パラメーターがクエリに確実に挿入されているようにします。
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-4.png" alt-text="増分コピーのデバッグ - 4":::
+
 8. **[すべて公開]** ボタンをクリックして、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Data Factory サービスに発行します。 **[発行は成功しました]** というメッセージが表示されるまで待機します。
+
 9. 最後に、一定の間隔でパイプラインが実行されるようにタンブリング ウィンドウ トリガーを構成し、開始時刻と終了時刻のパラメーターを設定します。 
+
    1. **[トリガーの追加]** ボタンをクリックし、 **[New/Edit]\(新規作成/編集\)** を選択します
 
    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/add-trigger.png" alt-text="新しいトリガーを追加する":::
@@ -371,17 +382,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png" alt-text="タンブリング ウィンドウ トリガー":::
 
    3. 次の画面で、開始および終了パラメーターにそれぞれ次の値を指定します。
-    ```sql
-    @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
-    @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
-    ```
 
-   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="タンブリング ウィンドウ トリガー - 2":::
+      ```sql
+      @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
+      @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
+      ```
+
+      :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="タンブリング ウィンドウ トリガー - 2":::
 
 > [!NOTE]
-> トリガーは、公開された後でのみ実行されることにご注意ください。 さらに、タンブリング ウィンドウの予想される動作では、開始日から現在までのすべての履歴間隔が実行されます。 タンブリング ウィンドウ トリガーに関する詳細については、[こちら](./how-to-create-tumbling-window-trigger.md)を参照してください。 
-  
+> トリガーは、公開された後でのみ実行されます。 さらに、タンブリング ウィンドウの予想される動作では、開始日から現在までのすべての履歴間隔が実行されます。 タンブリング ウィンドウ トリガーに関する詳細については、[こちら](./how-to-create-tumbling-window-trigger.md)を参照してください。 
+
 10. **SQL Server Management Studio** を使用し、次の SQL を実行して、customer テーブルにいくつかの追加の変更を行います。
+
     ```sql
     insert into customers (customer_id, first_name, last_name, email, city) values (4, 'Farlie', 'Hadigate', 'fhadigate3@zdnet.com', 'Reading');
     insert into customers (customer_id, first_name, last_name, email, city) values (5, 'Anet', 'MacColm', 'amaccolm4@yellowbook.com', 'Portsmouth');
@@ -390,10 +403,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     delete from customers where customer_id=5;
     ```
 11. **[すべて公開]** ボタンをクリックします。 **[発行は成功しました]** というメッセージが表示されるまで待機します。  
+
 12. 数分後にパイプラインがトリガーされ、新しいファイルが Azure Storage に読み込まれます
 
-
 ### <a name="monitor-the-incremental-copy-pipeline"></a>増分コピー パイプラインを監視する
+
 1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、 **[最新の情報に更新]** をクリックします。 再実行アクションと消費量レポートにアクセスするには、パイプラインの名前の近くをポイントします。
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-pipeline-runs.png" alt-text="パイプライン実行":::

@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 86d6fa3c7c5552c0bb48844e543c20dc3493b15e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 89a65c133a2478b38755b05a8c2fe5d1bb6623a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361487"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081298"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Azure Germany の移行ガイダンスの概要
 
@@ -95,7 +95,7 @@ Azure Germany の移行に関する記事では、以下の用語が使用され
 - **ターゲット リージョン**: グローバル Azure ではほとんどすべてのリージョンを使用できます。 西ヨーロッパ (**westeurope**) または北ヨーロッパ (**northeurope**) にリソースを移行する可能性もあります。
 
 > [!NOTE]
-> ターゲット リージョンで、移行する Azure サービスが提供されていることを確認します。 Azure Germany で使用できるすべての Azure サービスは、西ヨーロッパで使用できます。 Azure Germany で使用できるすべての Azure サービスは、Azure Machine Learning Studio (クラシック) と Azure Virtual Machines の G/GS VM シリーズを除き、北ヨーロッパで使用できます。
+> ターゲット リージョンで、移行する Azure サービスが提供されていることを確認します。 Azure Germany で使用できるすべての Azure サービスは、西ヨーロッパで使用できます。 Azure Germany で使用できるすべての Azure サービスは、Machine Learning Studio (クラシック) と Azure Virtual Machines の G/GS VM シリーズを除き、北ヨーロッパで使用できます。
 
 お使いのブラウザーでソースおよびターゲット ポータルをブックマークすることをお勧めします。
 

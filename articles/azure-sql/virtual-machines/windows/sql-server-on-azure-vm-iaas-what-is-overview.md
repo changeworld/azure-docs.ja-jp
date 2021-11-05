@@ -1,5 +1,5 @@
 ---
-title: Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs
+title: Azure Windows Virtual Machines 上の SQL Server の概要
 description: クラウド内の Azure Virtual Machines 上の SQL Server の全エディションを、オンプレミスのハードウェアを一切管理することなく実行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3f426af6719b821373a565c58e27919e7f6082f7
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 168f0bb17a63dea874f782fdb04906526822de81
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247912"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071897"
 ---
-# <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
+# <a name="what-is-sql-server-on-windows-azure-virtual-machines"></a>Azure Windows Virtual Machines 上の SQL Server とは
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]

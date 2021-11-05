@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: ca2f0ffa8384cd908d479ec8f68a14459e4d4d9b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0fc2b11f924a5ae50cf1f6ae96f0ed82ab1813ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786517"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131041079"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -40,7 +40,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[Gremlin コンソール](https://tinkerpop.apache.org/downloads.html)もインストールする必要があります。 **推奨されるバージョンは、v3.4.3** 以前です (Windows で Gremlin コンソールを使用する場合は、[Java ランタイム](https://www.oracle.com/technetwork/java/javase/overview/index.html)をインストールする必要があります)。
+[Gremlin コンソール](https://tinkerpop.apache.org/downloads.html)もインストールする必要があります。 **推奨されるバージョンは、v3.4.3** 以前です (Windows で Gremlin コンソールを使用するには [Java ランタイム](https://www.oracle.com/technetwork/java/javase/overview/index.html)をインストールする必要があります。最低でも Java 8 が必須ですが、Java 11 を使用することをお勧めします)。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 

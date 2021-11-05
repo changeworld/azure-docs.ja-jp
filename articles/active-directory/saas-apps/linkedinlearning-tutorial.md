@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 1a80caceb0edbb5e297ff70726843d838d0937df
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6b64b2db7b10b203d5c22903a108a2efa696fd78
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832979"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056974"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-linkedin-learning"></a>チュートリアル: Azure AD SSO と LinkedIn Learning の統合
 

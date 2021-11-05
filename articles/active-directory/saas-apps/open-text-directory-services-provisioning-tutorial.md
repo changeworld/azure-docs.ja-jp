@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: thwimmer
-ms.openlocfilehash: f82c46c6853f33e2137cd54c03b2bfa1df9dca8a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 2dc6d75a816ab40eb66dad46307c5f24bb2685b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760254"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060176"
 ---
 # <a name="tutorial-configure-opentext-directory-services-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に OpenText Directory Services を構成する
 
@@ -122,8 +122,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
     ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションで、OpenText Directory Services のテナント URL を入力します。
-   * 特定でないテナント URL : {OTDS URL}/scim/{partitionName}
-   * 特定のテナント URL :  {OTDS URL}/otdstenant/{tenantID}/scim/{partitionName}
+   * 特定でないテナント URL: {OTDS URL}/scim/{partitionName}
+   * 特定のテナント URL: {OTDS URL}/otdstenant/{tenantID}/scim/{partitionName}
 
 6. 手順 2 で取得したシークレット トークンを入力します。 **[接続テスト]** をクリックして、Azure AD から OpenText Directory Services に接続できることを確認します。 接続できない場合は、OpenText Directory Services アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

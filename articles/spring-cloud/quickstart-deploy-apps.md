@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 67984beeb3cff6dbb68d440f432684971fa930a7
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3fa8c1cef251e9eef1e8e4256dfd654302714743
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003082"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008771"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -318,7 +318,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 
 ## <a name="verify-the-services"></a>サービスを確認する
 
-デプロイ コマンドが成功すると、`https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io` の形式で URL が返されます。 これを使用して、実行中のサービスに移動します。
+正常に実行されたデプロイ コマンドからは、`https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io` という形式の URL が返されます。 これを使用して、実行中のサービスに移動します。
 
 ![PetClinic にアクセスする](media/build-and-deploy/access-customers-service.png)
 

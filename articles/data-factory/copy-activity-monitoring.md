@@ -9,18 +9,18 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: ed65bb5bcde37bf4ad18d9650697d51640ac1e4a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 14607231fd68cf78f33a21abdb26dd68e2ef6871
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767586"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062190"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティの監視
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory と Synapse パイプラインでのコピー アクティビティの実行を監視する方法の概要について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory と Synapse パイプラインでのコピー アクティビティの実行を監視する方法の概要について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。  同じ方法を使用して、[データ コピー ツール](copy-data-tool.md)で生成されたコピー アクティビティや、[削除アクティビティ](delete-activity.md)を監視することもできます。
 
 ## <a name="monitor-visually"></a>視覚的な監視
 

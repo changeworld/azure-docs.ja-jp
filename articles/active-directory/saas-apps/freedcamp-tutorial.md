@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9653e837350f1149a19eed52283187a356cf9efc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7178d525a1f38083fe732a1e2b7a0183dd16d39e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791120"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058181"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>チュートリアル:Freedcamp と Azure Active Directory の統合
 
@@ -87,7 +87,7 @@ Freedcamp 用に Azure AD SSO を構成してテストするには、次のス�
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.freedcamp.com/login` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 ユーザーの顧客のドメインの URL 値を入力することも可能です。これは必ずしも `freedcamp.com` のパターンに従っている必要はなく、顧客のアプリケーション インスタンスに固有の顧客ドメインに固有な任意の値を入力できます。 URL のパターンの詳細については、[Freedcamp クライアント サポート チーム](mailto:devops@freedcamp.com)にお問い合わせいただくことも可能です。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 ユーザーは、顧客ドメインについては URL 値を入力することもできます。これは必ずしも `freedcamp.com` のパターンに従っている必要はなく、顧客のアプリケーション インスタンスに固有の顧客ドメインに固有な任意の値を入力できます。 URL のパターンの詳細については、[Freedcamp クライアント サポート チーム](mailto:devops@freedcamp.com)にお問い合わせいただくことも可能です。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

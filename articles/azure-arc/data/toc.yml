@@ -85,6 +85,10 @@ items:
             href: retrieve-the-username-password-for-data-controller.md
           - name: サービス プリンシパルの資格情報を更新
             href: update-service-principal-credentials.md
+      - name: アップグレード
+        items:
+          - name: 間接のデータ コントローラー - CLI
+            href: upgrade-data-controller-indirect-cli.md
       - name: トラブルシューティング
         items:
           - name: ガイド
@@ -193,6 +197,10 @@ items:
                 href: reserved-capacity-overview.md
               - name: 削除
                 href: delete-managed-instance.md
+          - name: アップグレード
+            items:
+              - name: CLI を使用したアップグレード
+                href: upgrade-sql-managed-instance-cli.md
           - name: 移行
             items:
               - name: SQL マネージド インスタンスへの移行 (Azure Arc)

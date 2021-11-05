@@ -1,6 +1,6 @@
 ---
 title: Azure CLI または PowerShell から IoT Central を管理する | Microsoft Docs
-description: この記事では、Azure CLI または PowerShell を使用して IoT Central アプリケーションを作成し、管理する方法について説明します。 これらのツールを使用して、アプリケーションを表示、変更、および削除できます。
+description: この記事では、Azure CLI または PowerShell を使用して IoT Central アプリケーションを作成し、管理する方法について説明します。 これらのツールを使用して、アプリケーションを表示、変更、および削除できます。 また、セキュリティで保護されたデータのエクスポートを設定するために使用できるマネージド システム ID を構成することもできます。
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: 05eca5bb95906ebb34e51f79d70a33cc003f2220
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 979da680c3a5a9b70973fa7da00613f7ffbcf86b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091637"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088078"
 ---
 # <a name="manage-iot-central-from-azure-cli-or-powershell"></a>Azure CLI または PowerShell から IoT Central を管理する
 
@@ -180,6 +180,30 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 ```
 
 ---
+
+## <a name="configure-a-managed-identity"></a>マネージド ID の構成
+
+IoT Central アプリケーションでは、システムに割り当てられた[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用して、[データ エクスポート先](howto-export-data.md#connection-options)への接続をセキュリティで保護することができます。
+
+マネージド ID を有効にするには、[Azure portal - マネージド ID の構成](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)または [REST API](howto-manage-iot-central-with-rest-api.md) のいずれかを使用します。
+
+:::image type="content" source="media/howto-manage-iot-central-from-cli/managed-identity.png" alt-text="Azure portal のマネージド ID を示すスクリーンショット。":::
+
+マネージド ID を有効にした後、CLI を使用してロールの割り当てを構成できます。
+
+ロールの割り当てを作成するには、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使用します。 たとえば、次のコマンドでは、最初にマネージド ID のプリンシパル ID が取得されます。 2 番目のコマンドでは、`MyIoTCentralResourceGroup` リソース グループのスコープで、`Azure Event Hubs Data Sender` のロールがプリンシパル ID に割り当てられます。
+
+```azurecli-interactive
+spID=$(az resource list -n myiotcentralapp --query [*].identity.principalId --out tsv)
+az role assignment create --assignee $spID --role "Azure Event Hubs Data Sender" \
+  --scope /subscriptions/<your subscription id>/resourceGroups/MyIoTCentralResourceGroup
+```
+
+ロールの割り当ての詳細については、以下を参照してください。
+
+- [Azure Event Hubs の組み込みのロール](../../event-hubs/authenticate-application.md#built-in-roles-for-azure-event-hubs)
+- [Azure Service Bus 用の組み込みロール](../../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
+- [Azure Storage Services の組み込みロール](/rest/api/storageservices/authorize-with-azure-active-directory#manage-access-rights-with-rbac)
 
 ## <a name="next-steps"></a>次のステップ
 

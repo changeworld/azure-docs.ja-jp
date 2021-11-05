@@ -11,12 +11,12 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
-ms.openlocfilehash: 90a2b656d66c15eed10d68be8e5af5c35f35d135
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 25e79bb8ab2d37c5b32a6519158cd53d79c1d94b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005693"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071422"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
@@ -34,7 +34,7 @@ Azure Face サービスは、画像に含まれている人の顔の検出、認
 顔編集: プライバシーを保護するため、ビデオに記録された人の顔を編集またはぼかします。
 
 このドキュメントには、次のような記事が記載されています。
-* <bpt id="p1">[</bpt>クイックスタート<ept id="p1">](./quickstarts-sdk/client-library.md)</ept>は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
 * [攻略ガイド](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 * [概念の記事](./concepts/face-detection.md)では、サービスの機能と特長について詳しく説明します。
 * [チュートリアル](./enrollment-overview.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
@@ -86,9 +86,9 @@ Find Similar 操作では、ターゲットの顔と候補となる一連の顔�
 
 そして候補となる顔の画像は次のとおりです。
 
-![笑っている人々の 5 つの画像。 画像 a と画像 b は同一人物を示しています。](./Images/FaceFindSimilar.Candidates.jpg)
+![笑っている人々の 5 つの画像。 A と B の画像は同じ人を示しています。](./Images/FaceFindSimilar.Candidates.jpg)
 
-4 つの似た顔を検索する場合、**matchPerson** モードではターゲットの顔と同じ人を表す a と b が返されます。 **matchFace** モードでは、ターゲットと同一人物ではない、あるいは類似性が低くとも厳密に 4 つの候補が返されるので、a、b、c、d が返されます。 詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) リファレンス ドキュメントを参照してください。
+4 つの似た顔を検索する場合、**matchPerson** モードではターゲットの顔と同じ人を表す A とB が返されます。 **matchFace** モードでは、ターゲットと同一人物ではない場合や類似性が低い場合でも、厳密に 4 つの候補が返されるので、A、B、C、D が返されます。 詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Find Similar API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) リファレンス ドキュメントを参照してください。
 
 ## <a name="group-faces"></a>顔をグループ化する
 

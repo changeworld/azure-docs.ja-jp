@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: dc1cf6a9a250b64b84cacbcf300183b913144b45
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4d5b00526219b0a4ade24b7522ea4826236fd70e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180167"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057763"
 ---
 # <a name="tutorial-deploy-and-walkthrough-the-continuous-patient-monitoring-app-template"></a>チュートリアル: 患者の継続的なモニタリング アプリ テンプレートをデプロイして利用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "122180167"
 
 ## <a name="mobile-phone-gateway"></a>携帯電話ゲートウェイ
 
-携帯電話アプリケーションの主な機能は、医療機器から BLE データを収集し、それを IoT Central に伝達することです。 また、患者は、このアプリの指示に従ってデバイスのセットアップを行ったり、個人の健康データを閲覧したりします。 ソリューションによっては、タブレット ゲートウェイや、病院の部屋に据え付けられた静的ゲートウェイが使用される場合もあります。 アプリケーション開発作業を開始するための出発点としては、Android および iOS 用のオープンソースのサンプル モバイル アプリケーションを使用できます。 詳細については、[IoT Central CPM (Continuous Patient Monitoring) モバイル アプリ](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)に関するページを参照してください。
+携帯電話アプリケーションの主な機能は、医療機器から BLE データを収集し、それを IoT Central に伝達することです。 また、患者は、このアプリの指示に従ってデバイスのセットアップを行ったり、個人の健康データを閲覧したりします。 ソリューションによっては、タブレット ゲートウェイや、病院の部屋に据え付けられた静的ゲートウェイが使用される場合もあります。 アプリケーション開発作業を開始するための出発点としては、Android および iOS 用のオープンソースのサンプル モバイル アプリケーションを使用できます。 詳細については、[GitHub の Continuous Patient Monitoring サンプル モバイル アプリ](https://github.com/iot-for-all/iotc-cpm-sample)に関するページを参照してください。
 
 ## <a name="export-to-azure-api-for-fhirreg"></a>Azure API for FHIR にエクスポートする&reg;
 

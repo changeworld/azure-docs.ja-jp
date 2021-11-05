@@ -3,19 +3,22 @@ title: チュートリアル - Azure Automation で PowerShell ワークフロ�
 description: このチュートリアルでは、PowerShell ワークフロー Runbook を作成、テスト、発行する方法を説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e1550caff2fbd28a08e89c3fa570216ff8002430
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 2c677d7690acc3ab05c5d8df2ab516d396be2eb4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057702"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465617"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook-in-automation"></a>チュートリアル: Automation で PowerShell ワークフロー Runbook を作成する
 
-このチュートリアルでは、Azure Automation で [PowerShell Workflow Runbook](../automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 PowerShell ワークフロー Runbook は、Windows PowerShell ワークフローに基づくテキスト Runbook です。 Azure portal のテキスト エディターを使用して、Runbook のコードを作成したり編集したりすることができます。 
+このチュートリアルでは、Azure Automation で [PowerShell Workflow Runbook](../automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 PowerShell ワークフロー Runbook は、Windows PowerShell ワークフローに基づくテキスト Runbook です。 Azure portal のテキスト エディターを使用して、Runbook のコードを作成したり編集したりすることができます。
+
+>[!NOTE]
+>  この記事は PowerShell 5.1 に適用されます。PowerShell 7.1 (プレビュー) ではワークフローはサポートされていません。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="assign-permissions-to-managed-identities"></a>マネージド ID にアクセス許可を割り当てる
 
-適切な[マネージド ID](../automation-security-overview.md#managed-identities-preview) にアクセス許可を割り当てて、仮想マシンを停止できるようにします。 Runbook では、Automation アカウントのシステム割り当てマネージド ID またはユーザー割り当てマネージド ID のいずれかを使用できます。 以下に、各 ID にアクセス許可を割り当てる手順を示します。 以下の手順では、Azure portal を使用します。 PowerShell を使用する場合は、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+適切な[マネージド ID](../automation-security-overview.md#managed-identities) にアクセス許可を割り当てて、仮想マシンを停止できるようにします。 Runbook では、Automation アカウントのシステム割り当てマネージド ID またはユーザー割り当てマネージド ID のいずれかを使用できます。 以下に、各 ID にアクセス許可を割り当てる手順を示します。 以下の手順では、Azure portal を使用します。 PowerShell を使用する場合は、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、お使いの Automation アカウントに移動します。
 
@@ -89,16 +92,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-new-runbook"></a>新しい Runbook を作成する
 
-まず、単純な [PowerShell ワークフロー Runbook](../automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 Windows PowerShell ワークフローの利点の 1 つは、一連のコマンドを一般的なスクリプトと同様に順次実行するのではなく、並行して実行できることです
+まず、単純な [PowerShell ワークフロー Runbook](../automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
-1. 開いている [Automation アカウント] ページの **[プロセス オートメーション]** で、 **[Runbook]** を選択します
+>[!NOTE]
+> このリリースでは、Azure portal での Runbook の作成エクスペリエンスが新しくなりました。 **[Runbook]** ブレード > **[Runbook の作成]** を選択すると、新しいページ **[Runbook の作成]** が開き、適用可能なオプションが表示されます。 
 
-1. **[+ Runbook の作成]** を選択します。
-    1. Runbook に `MyFirstRunbook-Workflow` という名前を付けます。
-    1. **[Runbook の種類]** ドロップダウン メニューから、 **[PowerShell ワークフロー]** を選択します。
-    1. **［作成］** を選択します
+1. 開いている [Automation アカウント] ページの **[プロセス オートメーション]** で、 **[Runbook]** を選択します。
 
    :::image type="content" source="../media/automation-tutorial-runbook-textual/create-powershell-workflow-runbook.png" alt-text="portal から PowerShell ワークフロー Runbook を作成する":::
+
+1. **[+ Runbook の作成]** を選択します。
+    1. Runbook に名前を付けます。 例: test。
+    1. **[Runbook の種類]** ドロップダウン メニューから、 **[PowerShell]** を選択します。
+    1. **[ランタイム バージョン]** ドロップダウンから、 **[5.1]** を選択します。
+    1. 該当する **[説明]** を入力します。
+    1. **［作成］** を選択します
+   
+    :::image type="content" source="../media/automation-tutorial-runbook-textual/create-powershell-workflow-runbook-options.png" alt-text="portal での PowerShell ワークフロー Runbook のオプション":::
+   
 
 ## <a name="add-code-to-the-runbook"></a>Runbook にコードを追加する
 

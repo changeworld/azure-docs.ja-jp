@@ -7,23 +7,23 @@ ms.topic: include
 ms.date: 10/08/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9d4dc20f2cebc25032f0d5ca07dd06169b2715ef
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: ab1618125ba42545702571629e7242871ecec4f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855026"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032777"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples)
 
-このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それを IoT Central に安全に接続して、テレメトリを送信します。
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に Azure IoT device SDK サンプルを使用して、温度コントローラーを作成し、それを IoT Central に安全に接続し、テレメトリを送信します。 温度コントローラーのサンプル アプリケーションはローカル コンピューター上で動作し、センサー データをシミュレートして IoT Central に送信します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイックスタートは、Windows、Linux、Raspberry Pi で実行できます。 これは、次の OS およびデバイス バージョンでテストされています。
 
 - Windows 10
-- Linux 用 Windows サブシステム (WSL) で実行されている Ubuntu 20.04 LTS
+- Ubuntu 20.04 LTS
 - Raspberry Pi 3 Model B+ で実行されている Raspberry Pi OS バージョン 10 (Raspian)
 
 次に示す前提条件を開発マシンにインストールします。
@@ -37,14 +37,14 @@ ms.locfileid: "129855026"
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-simulated-device"></a>シミュレートされたデバイスを実行する
-このセクションでは、ローカル環境を構成し、Azure IoT C# のサンプルをインストールし、シミュレートされた温度コントローラーを作成するサンプルを実行します。
+## <a name="run-a-device"></a>デバイスを実行する
+このセクションでは、ローカル環境を構成し、Azure IoT C# のサンプルをインストールして、温度コントローラーを作成するサンプルを実行します。
 
 ### <a name="configure-your-environment"></a>環境を構成する
 
 1. Windows CMD、PowerShell、または Bash などのコンソールを開きます。
 
-1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 シミュレートされたデバイスは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
+1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 このデバイスでは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
 
     **CMD (Windows)**
 
@@ -111,13 +111,13 @@ ms.locfileid: "129855026"
 
 ### <a name="run-the-code"></a>コードの実行
 
-1. コンソールで、コード サンプルを実行します。 このサンプルは、サーモスタット センサーを備えたシミュレートされた温度コントローラーを作成します。
+1. コンソールで、コード サンプルを実行します。 このサンプルでは、サーモスタット センサーを備えた温度コントローラーを作成します。
 
     ```console
     dotnet run
     ```
 
-    シミュレートされたデバイスは、IoT Central アプリケーションに接続した後、アプリケーション内で作成されたデバイス インスタンスに接続して、テレメトリの送信を開始します。 接続の詳細とテレメトリの出力がコンソールに表示されます。
+    デバイスを IoT Central アプリケーションに接続すると、そのアプリケーションで作成したデバイス インスタンスにデバイスが接続され、テレメトリの送信を開始します。 接続の詳細とテレメトリの出力がコンソールに表示されます。
 
     ```output
     [10/09/2021 00:29:18]info: Microsoft.Azure.Devices.Client.Samples.TemperatureControllerSample[0]

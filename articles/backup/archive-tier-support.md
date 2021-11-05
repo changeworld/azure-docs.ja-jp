@@ -1,331 +1,92 @@
 ---
-title: アーカイブ層のサポート
-description: Azure Backup のアーカイブ層のサポートについて説明します
-ms.topic: conceptual
-ms.date: 09/29/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc3ea68353f7e6cc3bb16a11e8a7868df2b02310
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+title: Archive レベルのサポートの概要
+description: Azure Backup の Archive レベルのサポートについて説明します。
+ms.topic: overview
+ms.date: 10/23/2021
+ms.custom: references_regions
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 3c28d99c066bf71ea3970ce8a01eb68989e11123
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534923"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080899"
 ---
-# <a name="archive-tier-support"></a>アーカイブ層のサポート
+# <a name="about-archive-tier-support"></a>Archive レベルのサポートについて
 
-お客様は、組織のコンプライアンス ルールによって定義されたデータ保有のニーズがある長期保有 (LTR) バックアップ データを含むバックアップ データを保存するために Azure Backup を使用しています。 ほとんどの場合、古いバックアップ データにアクセスすることはめったになく、コンプライアンスのニーズのためだけに保存されています。
+お客様は、組織のコンプライアンス ルールによって定義されたデータ保有ニーズに従って長期保有 (LTR) バックアップ データを含むバックアップ データを保存するために Azure Backup を使用しています。 ほとんどの場合、古いバックアップ データにアクセスすることはめったになく、コンプライアンスのニーズのためだけに保存されています。
 
-Azure Backup は、スナップショットと Standard 層に加えて、アーカイブ層での長期保有ポイントのバックアップをサポートしています。
+Azure Backup では、スナップショットと Standard レベルに加えて、Archive レベルでの長期保有ポイントのバックアップがサポートされています。
 
-## <a name="scope"></a>Scope
+## <a name="supported-workloads"></a>サポートされるワークロード
 
-サポートされているワークロード:
+Archive レベルでは、次のワークロードがサポートされます。
 
-- Azure の仮想マシン
-  - 月単位および年単位の復旧ポイントトのみ。 日単位および週単位の復旧ポイントはサポートされていません。
-  - 期間 >= 3 か月 (Vault-Standard 層)
-  - 保有期間 >= 6 か月
-  - アクティブな日単位および週単位の依存関係なし
-- Azure 仮想マシンにおける SQL Server
-  - 完全復旧ポイントのみ。 ログと差分はサポートされていません。
-  - 期間 >= 45 日 (Vault-Standard 層)
-  - 保有期間 >= 6 か月
-  - 依存関係なし
-
-サポートされるクライアント:
-
-- この機能は PowerShell を使用して提供されます。
+| ワークロード | オペレーション |
+| --- | --- |
+| Azure の仮想マシン | <ul><li>月単位および年単位の復旧ポイントトのみ。 日単位および週単位の復旧ポイントはサポートされていません。  </li><li>期間 >= 3 か月 (Vault-Standard 層) </li><li>保有期間 >= 6 か月 </li><li>アクティブな日単位および週単位の依存関係なし。 </li></ul> |
+| Azure 仮想マシン内の SQL Server または Azure 仮想マシン内の SAP HANA | <ul><li>完全復旧ポイントのみ。 ログと差分はサポートされていません。 </li><li>期間 >= 45 日 (Vault-Standard レベル)。 </li><li>保有期間 >= 6 か月 </li><li>依存関係なし </li></ul> |
 
 >[!Note]
->Azure VM 内の SQL Server のアーカイブ層のサポートが複数のリージョンで一般提供されています。 サポートされているリージョンの詳細な一覧については、[サポート マトリックス](#support-matrix)を参照してください。    <br><br>    Azure VM の SQL Server の残りのリージョンについては、アーカイブ アクセス層のサポートは限定パブリック プレビュー段階です。 Azure Virtual Machines のアーカイブ アクセス層のサポートも、限定パブリック プレビュー段階です。 限定パブリック プレビューにサインアップするには、この[リンク](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)を使用します。
+>- Azure VM 内の SQL Server または Azure VM 内の SAP HANA に対する Archive レベルのサポートは、現在複数のリージョンで一般提供されています。 サポートされているリージョンの詳細な一覧については、[サポート マトリックス](#support-matrix)を参照してください。
+>- Azure Virtual Machines のアーカイブ アクセス層のサポートも、限定パブリック プレビュー段階です。 制限付きのパブリック プレビューにサインアップするには、こちらの[フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)に入力してください。
 
-## <a name="get-started-with-powershell"></a>PowerShell の使用を開始する
+## <a name="supported-clients"></a>サポートされるクライアント
 
-1. [最新](https://github.com/PowerShell/PowerShell/releases)バージョンの PowerShell を GitHub からダウンロードします。
+Archive レベルでは、次のクライアントがサポートされます。
 
-1. PowerShell で次のコマンドを実行します。
-  
-    ```azurepowershell
-    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.4.0 -AllowPrerelease -force
-    ```
+- [PowerShell](/azure/backup/use-archive-tier-support?pivots=client-powershelltier)
+- [CLI](/azure/backup/use-archive-tier-support?pivots=client-clitier)
+- [Azure Portal](/azure/backup/use-archive-tier-support?pivots=client-portaltier)
 
-1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure に接続します。
-1. サブスクリプションにサインインします。
+## <a name="how-azure-backup-moves-recovery-points-to-the-vault-archive-tier"></a>Azure Backup で復旧ポイントを Vault-Archive レベルに移動する方法
 
-   `Set-AzContext -Subscription "SubscriptionName"`
+> [!VIDEO https://www.youtube.com/embed/nQnH5mpiz60?start=416]
 
-1. コンテナーの取得:
+## <a name="archive-recommendations-only-for-azure-virtual-machines"></a>アーカイブに関する推奨事項 (Azure 仮想マシンのみ)
 
-    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+Azure 仮想マシンの復旧ポイントは増分です。 復旧ポイントを Archive レベルに移動すると、復旧ポイントは完全復旧ポイントに変換されます。これは、Archive レベル内のすべての復旧ポイントが独立し、互いに分離されていることを保証するためです。 そのため、バックアップ ストレージ全体 (Vault-Standard + Vault-Archive) が増加する可能性があります。
 
-1. バックアップ項目の一覧の取得:
+ストレージの増加量は、仮想マシンのチャーン パターンによって異なります。
 
-    - Azure 仮想マシンの場合:
+- 仮想マシンのチャーンが多いほど、復旧ポイントを Archive レベルに移動したときにバックアップ ストレージ全体が小さくなります。
+- 仮想マシンのチャーンが少ない場合、アーカイブ層に移行すると、バックアップ ストレージが増加する可能性があります。これによって、Vault-Standard レベルと Vault-Archive レベルの価格差が相殺される可能性があります。 そのため、全体的なコストが増加する場合があります。
 
-        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+これを解決するために、Azure Backup には推奨設定が用意されています。 この推奨設定によって復旧ポイントの一覧が返されます。これをまとめて Archive レベルに移動すると、コストを削減することができます。
 
-    - Azure 仮想マシン内の SQL Server の場合:
+>[!Note]
+>コストの節約額はさまざまな原因によって左右されるため、インスタンスごとに異なる場合があります。
 
-        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
+## <a name="modify-protection"></a>保護を変更する
 
-1. バックアップ項目を取得します。
-
-    - Azure 仮想マシンの場合:
-
-        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
-
-    - Azure 仮想マシン内の SQL Server の場合:
-
-        `$bckItm = $BackupItemList | Where-Object {$_.FriendlyName -eq '<dbName>' -and $_.ContainerName -match '<vmName>'}`
-
-1. 表示する復旧ポイントの日付範囲を追加します。 たとえば、過去 124 日から過去 95 日の間の復旧ポイントを表示する場合は、次のコマンドを使用します。
-
-   ```azurepowershell
-    $startDate = (Get-Date).AddDays(-124)
-    $endDate = (Get-Date).AddDays(-95) 
-
-    ```
-    >[!NOTE]
-    >異なる時間範囲の復旧ポイントを表示するには、必要に応じて開始日と終了日を変更します。
-## <a name="use-powershell"></a>PowerShell の使用
-
-### <a name="check-the-archivable-status-of-all-the-recovery-points"></a>すべての復旧ポイントのアーカイブ可能な状態を確認する
-
-次のコマンドレットを使用して、バックアップ項目のすべての復旧ポイントのアーカイブ可能な状態を確認できます。
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() 
-
-$rp | select RecoveryPointId, @{ Label="IsArchivable";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].IsReadyForMove}}, @{ Label="ArchivableInfo";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].AdditionalInfo}}
-```
-
-### <a name="check-archivable-recovery-points"></a>アーカイブ可能な復旧ポイントを確認する
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $true -TargetTier VaultArchive
-```
-
-これにより、アーカイブに移動する準備ができている特定のバックアップ項目に関連するすべての復旧ポイントが一覧表示されます (開始日から終了日まで)。 また、開始日と終了日を変更することもできます。
-
-### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>復旧ポイントをアーカイブに移動できない理由を確認する
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $false -TargetTier VaultArchive
-$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
-```
-
-ここで `$rp[0]` は、アーカイブ可能でない理由を確認する復旧ポイントです。
-
-サンプル出力:
-
-```output
-IsReadyForMove  AdditionalInfo
---------------  --------------
-False           Recovery-Point Type is not eligible for archive move as it is already moved to archive tier
-```
-
-### <a name="check-recommended-set-of-archivable-points-only-for-azure-vms"></a>アーカイブ可能ポイントの推奨セットを確認する (Azure VM の場合のみ)
-
-仮想マシンに関連付けられている復旧ポイントは、本質的には増分です。 特定の復旧ポイントがアーカイブに移動されるときは、完全バックアップに変換されてからアーカイブに移動されます。 そのため、アーカイブへの移動に伴うコスト節約は、データ ソースのチャーンに応じて異なります。
-
-そのため Azure Backup には、まとめて移動した場合にコストを節約できる可能性がある復旧ポイントの推奨セットが用意されています。
-
->[!NOTE]
->コスト節約はさまざまな理由に依存するため、どの 2 つのインスタンスでも同じになるとは限りません。
-
-```azurepowershell
-$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
-```
-
-### <a name="move-to-archive"></a>アーカイブに移動する
-
-```azurepowershell
-Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[0] -SourceTier VaultStandard -DestinationTier VaultArchive
-```
-
-ここで、`$rp[0]` は一覧の最初の復旧ポイントです。 他の復旧ポイントを移動する場合は、`$rp[1]`、`$rp[2]` などを使用します。
-
-このコマンドは、アーカイブ可能な復旧ポイントをアーカイブに移動します。 これによって返されるジョブを使用して、ポータルと PowerShell の両方から移動操作を追跡することができます。
-
-### <a name="view-archived-recovery-points"></a>アーカイブされた復旧ポイントを表示する
-
-このコマンドは、アーカイブされたすべての復旧ポイントを返します。
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-```
-
-### <a name="restore-with-powershell"></a>PowerShell で復元する
-
-アーカイブ内の復旧ポイントについては、Azure Backup には統合型の復元方法が用意されています。
-
-統合型の復元は、2 つのステップから成るプロセスです。 最初のステップでは、アーカイブに保管されている復旧ポイントをリハイドレートし、それを一時的に Vault-Standard 層に 10 日から 30 日の期間 (リハイドレート期間とも呼ばれます) 保管します。 既定は 15 日間です。 リハイドレートの優先度には、Standard と High の 2 種類があります。 [リハイドレートの優先度](../storage/blobs/archive-rehydrate-overview.md#rehydration-priority)に関する詳細をご覧ください。
-
->[!NOTE]
->
->- リハイドレート期間は、いったん選択したら変更できません。また、リハイドレートした復旧ポイントは、リハイドレート期間中は Standard 層にとどまります。
->- リハイドレートの追加ステップにはコストが発生します。
-
-Azure 仮想マシン用のさまざまな復元方法について詳しくは、[PowerShell を使用した Azure VVM の復元](backup-azure-vms-automation.md#restore-an-azure-vm)に関するページをご覧ください。
-
-```azurepowershell
-Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePriority "Standard" -RehydrateDuration 15 -RecoveryPoint $rp -StorageAccountName "SampleSA" -StorageAccountResourceGroupName "SArgName" -TargetResourceGroupName $vault.ResourceGroupName -VaultId $vault.ID
-```
-
-SQL Server を復元するには、[これらの手順](backup-azure-sql-automation.md#restore-sql-dbs)に従ってください。 `Restore-AzRecoveryServicesBackupItem` コマンドには、2 つの追加パラメーター **RehydrationDuration** および **RehydrationPriority** が必要です。
-
-### <a name="view-jobs-from-powershell"></a>ジョブを PowerShell から表示する
-
-移動と復元の各ジョブを表示するには、次の PowerShell コマンドレットを使用します。
-
-```azurepowershell
-Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
-```
-
-### <a name="move-recovery-points-to-archive-tier-at-scale"></a>復旧ポイントをアーカイブ層に大規模に移動する
-
-サンプル スクリプトを使用して、大規模に操作を実行できるようになりました。 サンプル スクリプトの実行方法については、[詳細](https://github.com/hiaga/Az.RecoveryServices/blob/master/README.md)を確認してください。 スクリプトは[ここ](https://github.com/hiaga/Az.RecoveryServices)からダウンロードできます。
-
-Azure Backup で提供されるサンプル スクリプトを使用して、次の操作を実行できます。
-
-- Azure VM 内の SQL Server の特定のデータベースまたはすべてのデータベースのすべての対象復旧ポイントをアーカイブ層に移動します。
-- 特定の Azure 仮想マシンに対して推奨されるすべての復旧ポイントをアーカイブ層に移動します。
- 
-また、要件に従ってスクリプトを記述し、上記のサンプル スクリプトを変更して必要なバックアップ項目をフェッチすることもできます。
-
-## <a name="use-the-portal"></a>ポータルの使用
-
-### <a name="check-archived-recovery-point"></a>アーカイブされた復旧ポイントを確認する
-
-これで、アーカイブに移動されたすべての復旧ポイントを表示できるようになりました。
-
-![すべての復旧ポイント。](./media/archive-tier-support/restore-points.png)
-
-### <a name="restore-in-the-portal"></a>ポータルで復元する
-
-アーカイブに移動された復旧ポイントの場合、復元するにはリハイドレート期間とリハイドレート優先度のパラメーターを追加する必要があります。
-
-![ポータルで復元します。](./media/archive-tier-support/restore-in-portal.png)
-
-### <a name="view-jobs-in-the-portal"></a>ポータルでジョブを表示する
-
-![ポータルでジョブを表示します。](./media/archive-tier-support/view-jobs-portal.png)
-
-### <a name="modify-protection"></a>保護を変更する
-
-データソースの保護を変更するには、2 つの方法があります。
+Azure Backup には、データソースの保護を変更する 2 つの方法が用意されています。
 
 - 既存のポリシーの変更
 - 新しいポリシーを使用したデータソースの保護
 
-どちらの場合も、新しいポリシーは、Standard 層とアーカイブ層にある古い復旧ポイントすべてに適用されます。 そのため、ポリシーに変更があった場合は古い復旧ポイントが削除される可能性があります。
+どちらのシナリオも、新しいポリシーは、Standard レベルと Archive レベルにあるすべての古い復旧ポイントに適用されます。 そのため、ポリシーに変更があった場合は、古い復旧ポイントが削除される可能性があります。
 
-復旧ポイントは、アーカイブに移動されると、180 日間の早期削除期間が適用されます。 料金は日割り計算されます。 アーカイブの期間が 180 日間を経過していなかった復旧ポイントを削除する場合は、180 から Standard 層で経過した日数を差し引いた日数に相当するコストが発生します。
+復旧ポイントをアーカイブに移動すると、180 日間の早期削除期間が適用されます。 料金は日割り計算されます。 アーカイブの期間が 180 日間を経過していない復旧ポイントを削除した場合は、180 から Standard レベルで経過した日数を差し引いた日数に相当するコストが発生します。
 
-アーカイブの期間が最低 6 か月間を経過していなかった復旧ポイントには、削除時に早期削除コストが発生します。
+アーカイブの期間が最低 180 日間を経過していない復旧ポイントを削除すると、早期削除コストが発生します。
 
 ## <a name="stop-protection-and-delete-data"></a>保護を停止してデータを削除する
 
-保護を停止してデータを削除すると、すべての復旧ポイントが削除されます。 アーカイブ層で 180 日間経過していないアーカイブ内の復旧ポイントについては、復旧ポイントを削除すると早期削除コストが発生します。
+保護を停止してデータを削除すると、すべての復旧ポイントが削除されます。 Archive レベルで 180 日間経過していないアーカイブ内の復旧ポイントについては、復旧ポイントを削除すると早期削除コストが発生します。
+
+## <a name="archive-tier-pricing"></a>Archive レベルの価格
+
+Archive レベルの価格は、[価格ページ](azure-backup-pricing.md)で確認できます。
 
 ## <a name="support-matrix"></a>サポート マトリックス
 
 | ワークロード | プレビュー | 一般公開 |
 | --- | --- | --- |
-| Azure VM の SQL Server | なし | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア、東アジア、オーストラリア東南部、カナダ中部、ブラジル南部、カナダ東部、フランス中部、フランス南部、東日本、西日本、韓国中部、韓国南部、インド南部、英国西部、英国南部、米国中部、米国東部 2、米国西部、米国西部 2、米国中西部、米国東部、米国中南部、米国中北部、西ヨーロッパ、US Gov バージニア、US Gov テキサス、US Gov アリゾナ。 |
+| Azure 仮想マシン内の SQL Server または Azure 仮想マシン内の SAP HANA | なし | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア、東アジア、オーストラリア東南部、カナダ中部、ブラジル南部、カナダ東部、フランス中部、フランス南部、東日本、西日本、韓国中部、韓国南部、インド南部、英国西部、英国南部、米国中部、米国東部 2、米国西部、米国西部 2、米国中西部、米国東部、米国中南部、米国中北部、西ヨーロッパ、US Gov バージニア、US Gov テキサス、US Gov アリゾナ。 |
 | Azure Virtual Machines | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部、東南アジア、オーストラリア東部、インド中部、北ヨーロッパ、オーストラリア東南部、フランス中部、フランス南部、西日本、韓国中部、韓国南部。 | なし |
 
-## <a name="error-codes-and-troubleshooting-steps"></a>エラー コードとトラブルシューティングの手順
-
-復旧ポイントをアーカイブに移動できないときに発生するいくつかのエラー コードがあります。
-
-### <a name="recoverypointtypenoteligibleforarchive"></a>RecoveryPointTypeNotEligibleForArchive
-
-**エラー メッセージ** - 復旧ポイントの種類がアーカイブ移動の対象外です
-
-**説明** - このエラー コードは、選択した復旧ポイントの種類がアーカイブへの移動資格を持たないときに表示されます。
-
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
-
-### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
-
-**エラー メッセージ** - 復元のためのアクティブな依存関係がある復旧ポイントが、アーカイブ移動の対象外です
-
-**説明 –** 選択した復旧ポイントにはアクティブな依存関係があるため、アーカイブに移動できません。
-
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
-
-### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
-
-**エラー メッセージ** - Vault-Standard 層で経過した存続期間が必要最小値より短いため、復旧ポイントがアーカイブ移動の対象外です
-
-**説明** – 復旧ポイントは Standard 層で、Azure 仮想マシンの場合は最低 3 か月間、Azure 仮想マシンの SQL Server の場合は 45 日間を経過する必要があります。
-
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
-
-### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
-
-**エラー メッセージ** - 復旧ポイントの残りの存続期間が必要最小値より短いです
-
-**説明** – アーカイブ移動適格性に準拠するために復旧ポイントに必要な最小存続期間は 6 か月です。
-
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
-
-### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
-
-**エラー メッセージ** - 復旧ポイントは、既にアーカイブ層に移動しているため、アーカイブ移動の対象ではありません
-
-**説明** – 選択した復旧ポイントは既にアーカイブ中です。 そのため、アーカイブに移動する資格がありません。
-
-### <a name="usererrordatasourcetypeisnotsupportedforrecommendationapi"></a>UserErrorDatasourceTypeIsNotSupportedForRecommendationApi
-
-**エラー メッセージ** - データソースの種類が Recommendation API の対象ではありません。
-
-**説明** – Recommendation API が適用されるのは Azure 仮想マシンのみです。 選択したデータソースの種類には適用されません。
-
-### <a name="usererrorrecoverypointalreadyrehydrated"></a>UserErrorRecoveryPointAlreadyRehydrated
-
-**エラー メッセージ** - 復旧ポイントが既にリハイドレートされています。 リハイドレートがこの RP では許可されていません。
-
-**説明** – 選択した復旧ポイントは既にリハイドレートされています。
-
-### <a name="usererrorrecoverypointisnoteligibleforarchivemove"></a>UserErrorRecoveryPointIsNotEligibleForArchiveMove
-
-**エラー メッセージ** - 復旧ポイントがアーカイブ移動の対象外です
-
-**説明** - 選択した復旧ポイントはアーカイブ移動の対象ではありません。
-
-### <a name="usererrorrecoverypointnotrehydrated"></a>UserErrorRecoveryPointNotRehydrated
-
-**エラー** **メッセージ** - アーカイブ復旧ポイントがリハイドレートされていません。 アーカイブ RP でリハイドレートの完了後に復元を再試行してください。
-
-**説明** – 復旧ポイントはリハイドレートされていません。 復旧ポイントをリハイドレートした後で復元をお試しください。
-
-### <a name="usererrorrecoverypointrehydrationnotallowed"></a>UserErrorRecoveryPointRehydrationNotAllowed
-
-**エラー** **メッセージ** - リハイドレートは、アーカイブの復旧ポイントでのみサポートされています
-
-**説明** – 選択した復旧ポイントではリハイドレートは許可されていません。
-
-### <a name="usererrorrecoverypointrehydrationalreadyinprogress"></a>UserErrorRecoveryPointRehydrationAlreadyInProgress
-
-**エラー メッセージ** – リハイドレートがアーカイブの復旧ポイントで既に進行中です。
-
-**説明** – 選択した復旧ポイントのリハイドレートは既に進行中です。
-
-### <a name="rpmovenotsupportedduetoinsufficientretention"></a>RPMoveNotSupportedDueToInsufficientRetention
-
-**エラー メッセージ** - ポリシーで指定された保持期間が十分でないため、復旧ポイントをアーカイブ層に移動できません
-
-**推奨される操作** - 保護された項目のポリシーを適切な保持設定で更新してから、もう一度お試しください。
-
-### <a name="rpmovereadinesstobedetermined"></a>RPMoveReadinessToBeDetermined
-
-**エラー メッセージ** - この復旧ポイントを移動できるかどうかをまだ調べています。
-
-**説明** – 復旧ポイントの移動準備状況はまだ確認されていません。
-
-**推奨される操作** - しばらく待ってからもう一度確認してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -339,6 +100,15 @@ GRS コンテナー内のデータを Standard レベルから Archive レベル
 
 プライマリ リージョンの Archive レベルの復旧ポイントから復元している間、復旧ポイントは Standard レベルにコピーされ、プライマリ リージョンとセカンダリ リージョンの両方でリハイドレート期間に従って保持されます。 これらのリハイドレート復旧ポイントから、リージョンをまたがる復元を実行できます。
 
+### <a name="i-can-see-eligible-recovery-points-for-my-virtual-machine-but-i-cant-seeing-any-recommendation-what-can-be-the-reason"></a>仮想マシンの対象復旧ポイントは表示できますが、推奨事項が表示されません。 どのような理由が考えられますか。
+
+仮想マシンの復旧ポイントは、対象となる条件を満たしています。 そのため、アーカイブ可能な復旧ポイントがあります。 ただし、仮想マシンのチャーンが少ない可能性があります。そのため、推奨事項はありません。 このシナリオでは、アーカイブ可能な復旧ポイントを Archive レベルに移動できますが、バックアップ ストレージの全体的なコストが増加する可能性があります。
+
+### <a name="i-have-stopped-protection-and-retained-data-for-my-workload-can-i-move-the-recovery-points-to-archive-tier"></a>保護を停止し、ワークロードのデータを保持しました。 復旧ポイントを Archive レベル移動することは可能ですか。
+
+不正解です。 特定のワークロードの保護を停止すると、対応する復旧ポイントを Archive レベルに移動することはできなくなります。 復旧ポイントを Archive レベルに移動するには、データ ソースの保護を再開する必要があります。
+
 ## <a name="next-steps"></a>次のステップ
 
+- [Archive レベルを使用する](use-archive-tier-support.md)
 - [Azure Backup の価格](azure-backup-pricing.md)

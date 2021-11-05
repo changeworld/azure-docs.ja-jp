@@ -99,6 +99,23 @@ conceptualContent:
       footerLink:
         url: management/index.yml
         text: さらに詳しく
+    - title: デプロイのトラブルシューティング
+      links:
+        - url: troubleshooting/overview.md
+          itemType: overview
+          text: 概要
+        - url: troubleshooting/common-deployment-errors.md
+          itemType: how-to-guide
+          text: 一般的なデプロイのエラー
+        - url: troubleshooting/quickstart-troubleshoot-arm-deployment.md
+          itemType: quickstart
+          text: ARM テンプレートをトラブルシューティングする
+        - url: troubleshooting/quickstart-troubleshoot-bicep-deployment.md
+          itemType: quickstart
+          text: Bicep ファイルをトラブルシューティングする
+      footerLink:
+        url: troubleshooting/index.yml
+        text: さらに詳しく
     - title: Managed Applications
       links:
         - url: managed-applications/overview.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ba23a1bc5740eece8aa5e48d4f6cd81fab7b87e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e22f85a0e6e5bef133d60570f9eba519a7725670
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803445"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032223"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Creative Cloud の統合
 
@@ -161,7 +161,7 @@ Azure AD ユーザーが Adobe Creative Cloud にサインインできるよう�
 
 2. Adobe のコンソール内でフェデレーション ID としてユーザーを追加し、製品のプロファイルに割り当てます。 ユーザーの追加の詳細については、「[Add users in Adobe Admin Console (Adobe Admin Console でのユーザーの追加)](https://helpx.adobe.com/enterprise/using/users.html#Addusers)」を参照してください。
 
-3. ここで、Adobe サインイン フォームにメール アドレス/UPN を入力し、Tab キーを押すと、Azure AD にフェデレーションされます。
+3. ここで、Adobe サインイン フォームにメール アドレスまたは UPN を入力し、Tab キーを押すと、Azure AD にフェデレーションされます。
    * Web アクセス: www\.adobe.com > サインイン
    * デスクトップ アプリ ユーティリティ内 > サインイン
    * アプリケーション内 > ヘルプ > サインイン

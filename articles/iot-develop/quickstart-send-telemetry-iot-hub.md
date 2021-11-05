@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub にデバイス テレメトリを送信するクイックスタート
-description: このクイックスタートでは、デバイス開発者がデバイスを Azure IoT Hub に安全に接続する方法について説明します。 C、C#、Python、Node.js、または Java 用の Azure IoT device SDK を使用し、Windows、Linux、Raspberry Pi OS (Raspian) 用のシミュレートされたデバイス クライアントを構築します。 最後に、デバイスを Azure IoT Hub に接続し、テレメトリを送信します。
+description: このクイックスタートでは、デバイス開発者がデバイスを Azure IoT Hub に安全に接続する方法について説明します。 C、C#、Python、Node.js、または Java 用の Azure IoT device SDK を使用し、Windows、Linux、Raspberry Pi OS (Raspian) 用のデバイス クライアントを構築します。 最後に、デバイスを Azure IoT Hub に接続し、テレメトリを送信します。
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: f7b1543b91d604b6640bf97877bf2c134deee866
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: d079fd2380aed72910f5b78e2e3135c077ac59d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094073"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077547"
 ---
 # <a name="quickstart-send-telemetry-from-an-iot-plug-and-play-device-to-azure-iot-hub"></a>クイックスタート: IoT プラグ アンド プレイ デバイスから Azure IoT Hub にテレメトリを送信する
 
@@ -69,7 +69,7 @@ ms.locfileid: "129094073"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、クラウドに対してデバイスを安全に接続し、device-to-cloud テレメトリを送信するための Azure IoT アプリケーションの基本的なワークフローについて説明しました。 Azure CLI を使用して、Azure IoT ハブとデバイス インスタンスを作成しました。 次に、Azure IoT device SDK を使用して、シミュレートされたデバイスを作成し、ハブに接続して、テレメトリを送信しました。 さらに、Azure portal を使用して、テレメトリを監視しました。
+このクイックスタートでは、クラウドに対してデバイスを安全に接続し、device-to-cloud テレメトリを送信するための Azure IoT アプリケーションの基本的なワークフローについて説明しました。 Azure CLI を使用して、Azure IoT ハブとデバイス インスタンスを作成しました。 次に、Azure IoT device SDK を使用して温度コントローラーを作成し、ハブに接続してテレメトリを送信しました。 さらに、Azure CLI を使用して、テレメトリを監視しました。
 
 次の手順では、次の記事を参照して、Azure IoT を使用してデバイス ソリューションを構築する方法について確認します。 
 

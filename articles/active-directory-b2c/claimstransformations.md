@@ -1,21 +1,21 @@
 ---
-title: ClaimsTransformations - Azure Active Directory B2C | Microsoft Docs
+title: ClaimsTransformations - Azure Active Directory B2C
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの ClaimsTransformations 要素の定義。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 426fe2bee411b5db40314ba6ff4087c37aad657c
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: d1b4aa49d6aecdf06ec445dd036be05805ffb128
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544851"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007992"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 

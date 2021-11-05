@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 82e21038b143e0e32a58c3aa24b227ebe850fd06
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e86ae7d2e168946c00690810749051f15587b438
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775015"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004874"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -75,6 +75,15 @@ ARO プル シークレットを使用することで、ARO の RH OpenShift ラ
     ```azurecli-interactive
     az provider register -n Microsoft.Authorization --wait
     ```
+    
+    1. Azure Red Hat Openshift は現在、Azure Government でパブリック プレビューとして提供されています。 デプロイを検討している場合は、次の手順に従ってください。 
+
+> [!IMPORTANT]
+> ARO のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビュー機能は、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル アグリーメントおよび限定保証からは除外されます。 プレビュー機能は、カスタマー サポートによりベストエフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.RedHatOpenShift --name preview
+```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
 

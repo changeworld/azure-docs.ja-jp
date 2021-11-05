@@ -113,6 +113,8 @@
   items:
     - name: アーキテクチャ
       href: core/concepts-architecture.md
+    - name: スケーラビリティと高可用性
+      href: core/concepts-scalability-availability.md
     - name: デバイス開発者ガイド
       href: core/overview-iot-central-developer.md
     - name: ソリューション ビルダーのガイド
@@ -187,12 +189,20 @@
       items:
         - name: REST API 呼び出しの認証と承認
           href: core/howto-authorize-rest-api.md
+        - name: デバイスのクエリ
+          href: core/howto-query-with-rest-api.md
         - name: ユーザーとロールを管理する
           href: core/howto-manage-users-roles-with-rest-api.md
+        - name: データのエクスポート
+          href: core/howto-manage-data-export-with-rest-api.md
+        - name: デバイス テンプレートを管理する
+          href: core/howto-manage-device-templates-with-rest-api.md
         - name: デバイスを制御する
           href: core/howto-control-devices-with-rest-api.md
         - name: ジョブの管理
           href: core/howto-manage-jobs-with-rest-api.md
+        - name: アプリケーションを管理する
+          href: core/howto-manage-iot-central-with-rest-api.md
     - name: デバイスを管理する
       items:
         - name: デバイスを個別に管理する
@@ -223,6 +233,8 @@
       items:
         - name: デバイスの接続
           href: core/troubleshoot-connection.md
+        - name: データのエクスポート
+          href: core/troubleshoot-data-export.md
     - name: よく寄せられる質問
       href: core/howto-faq.yml
     - name: 個人設定の管理

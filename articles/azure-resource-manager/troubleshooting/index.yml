@@ -1,0 +1,107 @@
+### YamlMime:Landing
+title: デプロイのトラブルシューティングに関するドキュメント
+summary: Azure Resource Manager テンプレートと Bicep ファイルの Azure デプロイのトラブルシューティングを行います。
+metadata:
+  title: デプロイのトラブルシューティングに関するドキュメント
+  description: Azure Resource Manager テンプレートと Bicep ファイルのデプロイのトラブルシューティングを行う方法について説明します。
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates, bicep
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 11/01/2021
+  ms.openlocfilehash: 04756d25bf54a560753f890e654fd13df349444a
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088453"
+landingContent:
+- title: 展開について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: デプロイのトラブルシューティングとは
+      url: overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ARM テンプレート デプロイのトラブルシューティング
+      url: quickstart-troubleshoot-arm-deployment.md
+    - text: Bicep ファイルのデプロイのトラブルシューティング
+      url: quickstart-troubleshoot-bicep-deployment.md
+- title: デプロイのトラブルシューティング
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 一般的なデプロイのエラー
+      url: common-deployment-errors.md
+    - text: ARM テンプレート ファイルの構文
+      url: ../templates/syntax.md
+    - text: ARM テンプレート テスト ツールキット
+      url: ../templates/test-toolkit.md
+    - text: Bicep ファイルの構文
+      url: ../bicep/file.md
+    - text: Bicep リンター
+      url: ../bicep/linter.md
+    - text: Azure クイック スタート テンプレート
+      url: https://azure.microsoft.com/resources/templates/
+- title: テンプレートのデプロイ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ARM テンプレートのデプロイ
+      url: ../templates/deployment-tutorial-local-template.md
+    - text: Bicep ファイルのデプロイ
+      url: ../bicep/deploy-powershell.md
+    - text: デプロイ履歴を表示する
+      url: ../templates/deployment-history.md
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: ../templates/deploy-powershell.md
+    - text: Azure CLI
+      url: ../templates/deploy-cli.md
+    - text: ポータル
+      url: ../templates/deploy-portal.md
+    - text: REST API
+      url: ../templates/deploy-rest.md
+    - text: '[Azure にデプロイ] ボタン'
+      url: ../templates/deploy-to-azure-button.md
+    - text: ARM テンプレート (Cloud Shell)
+      url: ../templates/deploy-cloud-shell.md
+    - text: Bicep ファイル (Cloud Shell)
+      url: ../bicep/deploy-cloud-shell.md
+    - text: ARM テンプレートの What-If デプロイ
+      url: ../templates/deploy-what-if.md
+    - text: Bicep ファイルの What-If デプロイ
+      url: ../bicep/deploy-what-if.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: テンプレート リファレンス
+      url: /azure/templates/
+    - text: REST API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources
+- title: テンプレートの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: テンプレートのエクスポート
+      url: ../templates/export-template-portal.md
+    - text: CI/CD
+      url: ../templates/add-template-to-azure-pipelines.md

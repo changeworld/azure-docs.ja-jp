@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1b06b52bfad748414f18787ae186094bdd53c7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e31624edd168b1fa5b1846b4c347b4915ba96c82
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826010"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068058"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>チュートリアル:Qlik Sense Enterprise と Azure Active Directory の統合
 
@@ -169,11 +169,11 @@ Qlik Sense Enterprise に対する Azure AD SSO を構成してテストする�
 
     ![[Edit virtual proxy]\(仮想プロキシの編集\) の [Authentication]\(認証\) セクションのスクリーンショット。ここで、説明されている値を入力できます。][qs10]
 
-    a. **[Anonymous access mode]** ドロップ ダウンで、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。  既定のオプションは、[No anonymous user (匿名ユーザーを許可しない)] です。
+    a. **[Anonymous access mode]\(匿名アクセス モード\)** ドロップダウン リストでは、匿名ユーザーによる仮想プロキシを介した Qlik Sense へのアクセスを許可するかどうかを設定します。 既定のオプションは、 **[No anonymous user (匿名ユーザーを許可しない)]** です。
 
-    b. **[Authentication method]** ドロップ ダウンで、仮想プロキシで使用する認証スキームを設定します。  ドロップダウン リストから SAML を選択してください。  その結果、さらにオプションが表示されます。
+    b. **[認証方法]** ドロップダウン リストでは、仮想プロキシで使用する認証スキームを設定します。 ドロップダウン リストから [SAML] を選択します。 その結果、さらにオプションが表示されます。
 
-    c. **[SAML host URI]** フィールドに、ユーザーが SAML 仮想プロキシを介して Qlik Sense にアクセスする際に入力するホスト名を入力します。  ホスト名は、Qlik Sense サーバーの URI です。
+    c. **[SAML host URI]** フィールドに、ユーザーがこの SAML 仮想プロキシを介して Qlik Sense にアクセスする際に入力するホスト名を入力します。 ホスト名は、Qlik Sense サーバーの URI です。
 
     d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
 
@@ -199,7 +199,7 @@ Qlik Sense Enterprise に対する Azure AD SSO を構成してテストする�
 
     ![[Edit virtual proxy]\(仮想プロキシの編集\) の [Advanced]\(詳細設定\) 画面のスクリーンショット。][qs13]
 
-    ホストの許可リストでは、Qlik Sense サーバーへの接続時に受け入れられるホスト名を指定します。  **ユーザーが Qlik Sense サーバーへ接続する際に指定するホスト名を入力します。** ホスト名は、[SAML host URI (SAML ホスト URI)] の値から "https://" を除いたものです。
+    ホストの許可リストでは、Qlik Sense サーバーへの接続時に受け入れられるホスト名を指定します。 **ユーザーが Qlik Sense サーバーへ接続する際に指定するホスト名を入力します。** ホスト名は、[SAML host URI (SAML ホスト URI)] の値から `https://` を除いたものです。
 
 11. **[適用]** をクリックします。
 

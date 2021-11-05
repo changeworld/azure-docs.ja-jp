@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: eccd83b7c29ec31c40271efc09d5318d35ba6d2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fd6979056859c9ed0d38413d9bd6713e8cb4fb62
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764908"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル: Azure Active Directory と Ziflow の統合
 
@@ -156,7 +156,7 @@ Azure AD ユーザーが Ziflow にサインインできるようにするには
 
     ![[ユーザーの追加] オプションが選択されていることを示すスクリーンショット。](./media/ziflow-tutorial/add-tab.png)
 
-4. **[ユーザーの追加]** ポップアップで、次の手順を実行します。
+4. **[Add User]\(ユーザーの追加\)** ポップアップで、次の手順を実行します。
 
     ![[ユーザーの追加] ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/ziflow-tutorial/add-user.png)
 

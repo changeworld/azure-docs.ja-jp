@@ -17,12 +17,12 @@ ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 187d6fbb8f398291325a04bb07f2ce31b7aca721
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b5940205b9a1a17a6d6d51d96a6ab792ac744d3f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997423"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051631"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
@@ -120,12 +120,12 @@ Azure portal でログにアクセスする方法はいくつかあります。 
 
 
 
-## <a name="filter-sign-in-activities&quot;></a>サインイン アクティビティのフィルター処理
+## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理
 
 
 ログのデータをフィルター処理して、必要な範囲まで絞り込めます。
 
-![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png &quot;サインイン アクティビティ")
+![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
 **要求 ID** - 確認したい要求の ID です。
 

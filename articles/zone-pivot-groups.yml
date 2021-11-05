@@ -168,6 +168,14 @@ groups:
     title: Java
   - id: rest-api
     title: REST API
+- id: usage-custom-language-features
+  title: 使用方法
+  prompt: 任意の使用方法を選択する
+  pivots:
+  - id: language-studio
+    title: Language Studio
+  - id: rest-api
+    title: REST API
 - id: programming-languages-set-ten
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -411,7 +419,7 @@ groups:
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-vs
-    title: Visual Studio
+    title: Visual Studio
   - id: development-environment-cli
     title: コマンド ライン
 - id: bring-third-party-dependency-programming-functions
@@ -1109,10 +1117,10 @@ groups:
   - id: azure-arc
     title: Azure Arc
   - id: azure-portal
-    title: Security Center のポータル ページ
+    title: Defender for Cloud のポータル ページ
 - id: manage-asc-initiatives
-  title: Security Center イニシアチブの管理
-  prompt: Security Center イニシアチブはどのように管理しますか?
+  title: Defender for Cloud のイニシアチブを管理する
+  prompt: Defender for Cloud のイニシアチブを管理する方法
   pivots:
   - id: azure-portal
     title: Azure Portal で次の操作を行います。
@@ -1196,6 +1204,18 @@ groups:
     title: Go
   - id: programming-language-ruby
     title: Ruby
+- id: custom-qna-quickstart
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: studio
+    title: Language Studio
+  - id: rest
+    title: REST
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: azure-maps-android
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -1342,10 +1362,20 @@ groups:
     title: IAR EWARM
   - id: iot-toolset-mplab
     title: MPLAB
+- id: backup-client-powershelltier-clitier-portaltier
+  title: クライアント
+  prompt: クライアントを選択する
+  pivots:
+  - id: client-powershelltier
+    title: PowerShell
+  - id: client-clitier
+    title: CLI
+  - id: client-portaltier
+    title: Azure portal
 metadata:
-  ms.openlocfilehash: 8f94e077e2983d0b3b8a71729d3d27522f3ee961
-  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+  ms.openlocfilehash: 68d5906853d11b7309b716cc7f04c8e6be664c2b
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129274749"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131046491"

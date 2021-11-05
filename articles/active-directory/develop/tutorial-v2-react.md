@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/16/2021
 ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e3481ee896e6caed33bdf7e59c64307a88136fde
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a42f4e5cd0b58c2078a4ba498b262efb804edcf8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993655"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050282"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>チュートリアル: 認証コード フローを使用して、ユーザーをサインインさせて React シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -163,7 +163,7 @@ npm start
 
 *src* に *components* というフォルダーを作成し、そのフォルダー内に *SignInButton.jsx* という名前のファイルを作成します。 次のいずれかのセクションからコードを追加し、ポップアップ ウィンドウまたはフルフレーム リダイレクトを使用したログインを呼び出します。
 
-### <a name="sign-in-using-popups"></a>ポップアップを使用したサインイン
+### <a name="sign-in-using-pop-ups"></a>ポップアップを使用したサインイン
 
 選択時にポップアップ ログインを呼び出すボタン コンポーネントを作成するには、次のコードを *src/components/SignInButton.jsx* に追加します。
 
@@ -277,7 +277,7 @@ export const SignInButton = () => {
 
 *src/components* に *SignOutButton.jsx* という名前のファイルを作成します。 次のいずれかのセクションからコードを追加し、ポップアップ ウィンドウまたはフルフレーム リダイレクトを使用したログアウトを呼び出します。
 
-### <a name="sign-out-using-popups"></a>ポップアップを使用したサインアウト
+### <a name="sign-out-using-pop-ups"></a>ポップアップを使用したサインアウト
 
 選択時にポップアップ ログアウトを呼び出すボタン コンポーネントを作成するには、次のコードを *src/components/SignOutButton.jsx* に追加します。
 

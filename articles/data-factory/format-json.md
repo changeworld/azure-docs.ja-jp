@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: dbee4a0c4aa82d34df6b5ea6e3e7274868be5d62
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 970778c36b426fd30af632ca56443c9fb240c389
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743842"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223747"
 ---
 # <a name="json-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での JSON 形式
 
@@ -22,7 +22,21 @@ ms.locfileid: "124743842"
 
 **JSON ファイルを解析する場合や、JSON 形式にデータを書き込む場合** は、この記事に従ってください。 
 
-JSON 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。
+JSON 形式は、以下のコネクタでサポートされています。 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md)、
+- [Azure BLOB](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [ファイル システム](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -198,7 +212,7 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで JSON 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+[マッピング データ フロー](concepts-data-flow-overview.md)では、次のデータ ストアで JSON 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で JSON 形式を読み取ることができます。
 
 ### <a name="source-properties"></a>ソース プロパティ
 
@@ -416,6 +430,15 @@ JSON 構造を手動で追加するには、新しい列を追加し、エディ
     ]
 )
 ```
+
+## <a name="related-connectors-and-formats"></a>関連するコネクタと形式
+
+JSON 形式に関連する一般的なコネクタと形式を次に示します。
+
+- Azure Blob Storage (connector-azure-blob-storage.md)
+- 区切りテキスト形式 (format-delimited-text.md)
+- OData コネクタ (connector-odata.md)
+- Parquet 形式 (format-parquet.md)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,0 +1,57 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Cosmos DB での部分的ドキュメント更新に関してよく寄せられる質問
+  description: Azure Cosmos DB の部分的ドキュメント更新に関してよく寄せられる質問
+  author: abhirockzz
+  ms.author: abhishgu
+  ms.service: cosmos-db
+  ms.topic: conceptual
+  ms.date: 09/16/2021
+  ms.openlocfilehash: 07a5a1daf0500938189ff79817a9d2a4ce058ae3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131089991"
+title: Azure Cosmos DB での部分的ドキュメント更新に関してよく寄せられる質問
+summary: >
+  [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+
+  部分的ドキュメント更新により、全ドキュメントの置き換え操作を行うことなく、項目の特定のプロパティまたはフィールドを変更できます。 この記事では、Azure Cosmos DB の部分的ドキュメント更新に関してよく寄せられる質問に回答します。
+sections:
+- name: 全般
+  questions:
+  - question: >
+      これは JSON Patch RFC 6902 の実装ですか?
+    answer: >
+      Azure Cosmos DB の部分的ドキュメント更新は、[JSON Patch RFC 6902](https://datatracker.ietf.org/doc/html/rfc6902) から "インスピレーション" を得ています。 JSON Patch RFC 6902 の一部の機能 (`Copy`、`Move`、`Test` など) は実装されていませんが、[条件付きパッチ](partial-document-update.md#supported-modes)などの他の機能があります。
+  - question: >
+      部分的ドキュメント更新は、サーバーレス、プロビジョニングされたスループット、および自動スケーリングの各課金モードと互換性がありますか?
+    answer: >
+      はい。部分的ドキュメント更新は、サーバーレス、プロビジョニングされたスループット、自動スケーリングのモードで利用できます。
+  - question: >
+      RU/秒の価格はどのように計算されますか?
+    answer: >
+      部分的ドキュメント更新は、[他のデータベース操作](how-pricing-works.md)と同様に要求ユニットの課金に正規化されます。 ユーザーは RU の大幅な削減を期待することはできません。
+  - question: >
+      部分的ドキュメント更新操作の数に制限はありますか?
+    answer: >
+      1 つのパッチの仕様に追加できるパッチ操作は 10 個までに制限されています。 この数を引き上げる必要がある場合は、[サポート チーム](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+  - question: >
+      部分的ドキュメント更新はシステムによって生成されるプロパティでサポートされていますか?
+    answer: >
+      `_id`、`_ts`、`_etag`、`_rid` などのシステムによって生成されるプロパティでは、部分的ドキュメント更新はサポートされていません。
+  - question: >
+      Time to Live (TTL) にパッチを適用できますか?
+    answer: >
+      はい。ドキュメントの [Time to Live](time-to-live.md) (`ttl`) プロパティにパッチを適用できます。
+  - question: >
+      複数リージョンの競合の解決は配列に対してどのように機能しますか?
+    answer: >
+      配列はアトミック単位として扱われます。 配列内の同じプロパティが、異なるリージョンで同時に更新される (これにより競合が生じる) と、一方の変更のみが保持されます。
+  - question: >
+      部分的ドキュメント更新は分析ストアまたは Synapse Link が有効になっているアカウントでサポートされていますか?
+    answer: >
+      はい。部分的ドキュメント更新は、分析ストアまたは Synapse Link が有効になっているアカウントで機能します。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n* [部分的ドキュメント更新](partial-document-update.md)の詳細を確認する。"

@@ -31,11 +31,7 @@
       href: get-started.md
     - name: 2. 強化された保護を有効にする
       href: enable-enhanced-security.md
-    - name: 3. 自動プロビジョニングを構成する
-      href: enable-data-collection.md
-    - name: 4. メール通知の設定
-      href: configure-email-notifications.md
-    - name: 5. ハイブリッド コンピューターとマルチクラウド コンピューターの接続
+    - name: 3. ハイブリッド コンピューターとマルチクラウド コンピューターの接続
       items:
         - name: Azure 以外のマシンを接続する
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
@@ -46,6 +42,10 @@
         - name: GCP アカウントを接続する
           displayName: 'hybrid, multicloud, multi-cloud, google'
           href: quickstart-onboard-gcp.md
+    - name: 4. 自動プロビジョニングを構成する
+      href: enable-data-collection.md
+    - name: 5. メール通知の設定
+      href: configure-email-notifications.md
     - name: 6. アラートへの自動応答の作成
       displayName: 'Resource Manager, ARM'
       href: quickstart-automation-alert.md
@@ -95,6 +95,9 @@
       href: workload-protections-dashboard.md
     - name: セキュリティで保護されたスコアにアクセスして追跡する
       href: secure-score-access-and-track.md
+    - name: データの機密性に応じた、セキュリティ アクションの優先順位付け
+      displayName: 'sensitivity, data, purview, inventory'
+      href: information-protection.md
     - name: Asset Inventory によるリソースの管理
       href: asset-inventory.md
     - name: 対話型のレポートをビルドする
@@ -307,7 +310,7 @@
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: アーカイブされたリリース ノート (6 か月以上前)
       displayName: 'changelog, news'

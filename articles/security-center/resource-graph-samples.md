@@ -1,22 +1,24 @@
 ---
-title: Azure Security Center 用の Azure Resource Graph サンプル クエリ
-description: Azure Security Center 用のサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用し、Azure Security Center 関連のリソースとプロパティにアクセスする方法を示します。
+title: Microsoft Defender for Cloud 用の Azure Resource Graph のサンプル クエリ
+description: Microsoft Defender for Cloud 用の Azure Resource Graph のサンプル クエリでは、リソースの種類とテーブルを使用して Microsoft Defender for Cloud に関連するリソースおよびプロパティにアクセスする方法を示します。
 ms.date: 09/03/2021
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
-ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 11955d140e8b0e6af219af1c62f1dfca54056749
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: subject-resourcegraph-sample, ignite-fall-2021
+ms.openlocfilehash: 16e116e558bc9870de89f2bbbbe5fc93d83cf648
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540309"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004608"
 ---
-# <a name="azure-resource-graph-sample-queries-for-azure-security-center"></a>Azure Security Center 用の Azure Resource Graph サンプル クエリ
+# <a name="azure-resource-graph-sample-queries-for-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud 用の Azure Resource Graph のサンプル クエリ
 
-このページは、Azure Security Center 向けの [Azure Resource Graph](../governance/resource-graph/overview.md) サンプル クエリのコレクションです。 Azure Resource Graph のサンプルの完全な一覧については、[カテゴリ別 Azure Resource Graph サンプル](../governance/resource-graph/samples/samples-by-category.md)と[テーブル別 Resource Graph サンプル](../governance/resource-graph/samples/samples-by-table.md)に関する記事を参照してください。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+このページは、Microsoft Defender for Cloud 用の [Azure Resource Graph](../governance/resource-graph/overview.md) のサンプル クエリのコレクションです。 Azure Resource Graph のサンプルの完全な一覧については、[カテゴリ別 Azure Resource Graph サンプル](../governance/resource-graph/samples/samples-by-category.md)と[テーブル別 Resource Graph サンプル](../governance/resource-graph/samples/samples-by-table.md)に関する記事を参照してください。
 
 ## <a name="sample-queries"></a>サンプル クエリ
 

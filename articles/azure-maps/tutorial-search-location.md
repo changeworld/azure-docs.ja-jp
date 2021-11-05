@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61ea9691e30fe401946a43d2ffd8488b905c0835
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624969"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072392"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 
@@ -145,18 +145,18 @@ ms.locfileid: "98624969"
 
 1. マップの `ready` イベント ハンドラーに次の JavaScript コードを追加して、検索サービスの URL を構築します。
 
-    ```JavaScript
-   // Use SubscriptionKeyCredential with a subscription key
-   var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
+    ```javascript
+    // Use SubscriptionKeyCredential with a subscription key
+    var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas. getSubscriptionKey());
+ 
+    // Use subscriptionKeyCredential to create a pipeline
+    var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
+ 
+    // Construct the SearchURL object
+    var searchURL = new atlas.service.SearchURL(pipeline); 
+    ```
 
-   // Use subscriptionKeyCredential to create a pipeline
-   var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
-
-   // Construct the SearchURL object
-   var searchURL = new atlas.service.SearchURL(pipeline); 
-   ```
-
-   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `searchURL` は、Azure Maps の [Search](/rest/api/maps/search) 操作の URL を表します。
+    サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `searchURL` は、Azure Maps の [Search](/rest/api/maps/search) 操作の URL を表します。
 
 2. 続けて次のスクリプト ブロックを追加して検索クエリを作成します。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、住所、場所、目的地 (POI) など、ほとんどのファジー入力を処理します。 このコードは、指定された緯度と経度の指定された半径内で、近くにあるガソリン スタンドを検索します。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。 スクリプトの最後の部分では、結果の境界ボックスとマップの [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用して、マップのカメラ ビューを設定しています。
 
@@ -203,8 +203,8 @@ ms.locfileid: "98624969"
 
 1. マップの `ready` イベントのハンドラーに次のコード行を追加します。ファジー検索サービスを照会するコードの後に追加してください。 このコードにより、Popup のインスタンスが作成され、mouseover イベントが記号レイヤーに追加されます。
 
-    ```JavaScript
-   //Create a popup but leave it closed so we can update it and display it later.
+    ```javascript
+    // Create a popup but leave it closed so we can update it and display it later.
     popup = new atlas.Popup();
 
     //Add a mouse over event to the result layer and display a popup when this event fires.

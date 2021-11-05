@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 26e3c3f5daded5feaaa9063592e772314939f90f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 1c2f8d327596c3f2d1ed3dde8611152b0bccd72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164612"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033059"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -34,7 +34,7 @@ ms.locfileid: "130164612"
 
 * [Oracle Java Development Kit](https://www.azul.com/downloads/azure-only/zulu/)。  このチュートリアルでは、Java バージョン 8.0.202 を使用します。
 
-* Java IDE。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
+* Java IDE。 この記事では、[IntelliJ IDEA Community 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
 
 * Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
@@ -226,7 +226,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
-:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="HDInsight Azure portal でクラスターを削除する" border="true":::
+:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="Azure portal を使用して HDInsight クラスターを削除する方法を示すスクリーンショット。" border="true":::
 
 ## <a name="next-step"></a>次のステップ
 

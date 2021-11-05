@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 1e08dc5c0dc0d8e427de9ae1ebc53f16cb8e015a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7f4c509b1f59db05db9bf6fca34960f7f2ab6b87
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043607"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054478"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -331,7 +331,7 @@ phoneNumbers や emails のように、一部の属性は複数の値を持ち�
 - Microsoft Azure AD では、同期プロセスの効率的な実装を提供します。 初期化された環境では、更新が必要なオブジェクトのみが同期サイクル中に処理されます。
 - 属性マッピングの更新は、同期サイクルのパフォーマンスに影響を与えます。 属性マッピングの構成を更新するには、すべての管理オブジェクトを再評価する必要があります。
 - 推奨されるベスト プラクティスとして、属性マッピングに対する連続的な変更の回数は最小限に抑えてください。
-- 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで機能の要求をお送りください
+- 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)に関するページで機能の要求をお送りください
 - IsSoftDeleted 属性は、多くの場合、アプリケーションの既定のマッピングに含まれます。 IsSoftDeleted は 4 つのシナリオ (アプリケーションから割り当てられていないためユーザーがスコープ外になっている、スコープ フィルターを満たしていないためユーザーがスコープ外になっている、Azure AD でユーザーが論理的に削除されている、AccountEnabled プロパティがユーザーに対して false に設定されている) のいずれかで true にすることができます。 IsSoftDeleted 属性を属性マッピングから削除することはお勧めしません。
 - Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません。
 - これらの主キー (通常は "ID") は、属性マッピングのターゲット属性として含めないでください。 

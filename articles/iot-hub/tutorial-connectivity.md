@@ -12,15 +12,15 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.date: 02/22/2019
+ms.date: 10/26/2021
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 43ec1680d0855ba70b084771e7e98f4285c0af58
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39f29933a8b4d9858ca12de8e79f29cbda55c1c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724422"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024443"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT Hub との接続をテストする
 
@@ -193,7 +193,7 @@ node SimulatedDevice-3.js "{your device connection string}"
 
 ポータルの **[メトリック]** を使用して、テレメトリ メッセージが IoT Hub に到達していることを確認できます。 **[リソース]** ドロップダウンで IoT Hub を選択し、メトリックとして **[Telemetry messages sent]\(送信されたテレメトリ メッセージ\)** を選択し、時間範囲を **[過去 1 時間]** に設定します。 グラフには、シミュレートしたデバイスから送信されたメッセージの総数が表示されます。
 
-![IoT Hub メトリックを表示する](media/tutorial-connectivity/metrics-portal.png)
+:::image type="content" source="media/tutorial-connectivity/metrics-portal.png" alt-text="左ペインのメトリックを示すスクリーンショット。" border="true":::
 
 シミュレートされたデバイスの起動後、メトリックが使用できるようになるまでには数分かかります。
 
@@ -257,7 +257,7 @@ az iot hub device-twin update --set properties.desired='{"mydesiredproperty":"pr
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-IoT Hub が必要でなくなった場合は、ポータルを使用して IoT Hub とリソース グループを削除します。 これを行うには、IoT Hub を含む **tutorials-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
+IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT Hub を含む **tutorials-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 62e963cdf3c0cdb60648e032a0520fdd71a90874
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d33c54bae01d6406e32a0a2c97ef7695df48da9a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856295"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058851"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure AD SSO と Perception United States (非 UltiPro) の統合
 
@@ -82,9 +82,9 @@ Perception United States (非 UltiPro) に対して Azure AD SSO を構成して
 
     b. **[応答 URL]** ボックスに、`https://perception.kanjoya.com/sso?idp=<entity_id>` のパターンを使用して URL を入力します
 
-    c. **Perception United States (非 UltiPro)** アプリケーションでは、 **[Perception United States (非 UltiPro) のセットアップ]** セクションから取得する **Azure AD ID** の値 <entity_id> を URI でエンコードする必要があります。 URI でエンコードされた値を取得するには、 **http://www.url-encode-decode.com/** リンクを使用してください。
+    c. **Perception United States (非 UltiPro)** アプリケーションでは、 **[Perception United States (非 UltiPro) のセットアップ]** セクションから取得する **Azure AD ID** の値 <entity_id> を URI にエンコードする必要があります。 URI にエンコードされた値を取得するには、 **http://www.url-encode-decode.com/** リンクを使用してください。
 
-    d. URI でエンコードされた値を取得した後に、次の説明に従って、その値を **応答 URL** と結合します。
+    d. URI にエンコードされた値を取得した後に、次の説明に従って、その値を **応答 URL** と結合します。
 
     `https://perception.kanjoya.com/sso?idp=<URI encooded entity_id>`
     

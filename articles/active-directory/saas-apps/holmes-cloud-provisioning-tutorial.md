@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: thwimmer
-ms.openlocfilehash: 82fdfb7621762828a32ad67774e9b0141c6b0464
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 462accaebda816fee959a5a586e331151badc269
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195319"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058861"
 ---
 # <a name="tutorial-configure-holmes-cloud-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Holmes Cloud を構成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "122195319"
 
 > [!NOTE]
 > * サブスクリプションを購入すると、**Holmes Cloud** サポート チーム (<cs@holmescloud.com>) から Holmes Cloud のテナント URL が届きます。
-> * シングル サインオンとユーザー プロビジョニング サービスをサブスクライブしていれば、 **[会社設定]** ページで、プロビジョニング サービスを設定するために必要な情報 (エンドポイント URL、トークンなど) を確認できます。
+> * シングル サインオンとユーザー プロビジョニング サービスをサブスクライブしていれば、 **[Company Settings]\(会社設定\)** ページで、プロビジョニング サービスを設定するために必要な情報 (エンドポイント URL、トークンなど) を確認できます。
  
 1. Holmes Cloud の資格情報を使用して Holmes Cloud アカウントにログインします。
 1. [会社設定] メニューを選択し、帽子の形をしたアイコンを選択します。

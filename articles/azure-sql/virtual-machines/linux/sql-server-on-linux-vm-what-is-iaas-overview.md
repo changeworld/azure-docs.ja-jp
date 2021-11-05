@@ -9,17 +9,17 @@ ms.service: virtual-machines-sql
 ms.subservice: service-overview
 ms.topic: overview
 ms.workload: iaas-sql-server
-ms.date: 04/10/2018
+ms.date: 10/26/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e303c886e1cecb0306849c96da966bc8614eccc2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7bcf2e64643d27822f2f58e56b054e25d3adaca5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264981"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080956"
 ---
-# <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
+# <a name="overview-of-sql-server-on-linux-azure-virtual-machines"></a>Azure Linux Virtual Machines 上の SQL Server の概要
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -61,6 +61,10 @@ SQL Server on Linux を構成するときには、データベース エンジ�
 | RHEL | ![RHEL とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
 | Ubuntu | ![Ubuntu とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+
+
+> [!NOTE]
+> Azure Linux Virtual Machines 上の SQL Server 用 IaaS Agent 拡張機能は、Ubuntu Linux ディストリビューションでのみ使用できます。
 
 ## <a name="related-products-and-services"></a>関連製品およびサービス
 

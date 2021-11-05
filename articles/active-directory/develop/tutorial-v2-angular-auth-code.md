@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/14/2021
 ms.author: joarroyo
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b116c7481dcbbdf05bf7aba476feeef853c0c87f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 398117120e560db00be97a344feed09351a26258
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993665"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050339"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa-using-auth-code-flow"></a>チュートリアル: 認証コード フローを使用して Angular シングルページ アプリケーション (SPA) からユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -265,7 +265,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
 
 次のセクションからコードを追加し、ポップアップ ウィンドウまたはフルフレーム リダイレクトを使用したログインを呼び出します。 
 
-### <a name="sign-in-using-popups"></a>ポップアップを使用したサインイン
+### <a name="sign-in-using-pop-ups"></a>ポップアップを使用したサインイン
 
 1. ポップアップ ウィンドウを使用してユーザーをサインインさせるよう、*src/app/app.component.ts* のコードを次のように変更します。
 
@@ -930,7 +930,7 @@ export class AppComponent implements OnInit, OnDestroy {
 }
 ```
 
-### <a name="sign-out-using-popups"></a>ポップアップを使用したサインアウト
+### <a name="sign-out-using-pop-ups"></a>ポップアップを使用したサインアウト
 
 ポップアウトを使用してユーザーをサインアウトさせるように、*src/app/app.component.ts* のコードを更新します。
 

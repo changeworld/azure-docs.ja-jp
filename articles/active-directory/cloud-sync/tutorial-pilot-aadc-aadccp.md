@@ -11,12 +11,12 @@ ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5053bd0c3d63b13b1021476a09dca39dd08f581
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff64e9778b035d43a7502fcf416ffe037ff54ffa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108759"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057611"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド同期のパイロットを実施する 
 
@@ -201,7 +201,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 >[!NOTE] 
 >Azure AD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを有効にしてください。 
 
-スケジューラが有効になると、参照属性 (例: manager) が更新されていない限り、Azure AD Connect によって、メタバースで `cloudNoFlow=true` が設定されたオブジェクトに対する変更のエクスポートが停止されます 。 オブジェクトに参照属性の更新がある場合、Azure AD Connect では `cloudNoFlow` シグナルを無視し、オブジェクトのすべての更新をエクスポートします。
+スケジューラが有効になると、参照属性 (`manager` など) が更新されていない限り、Azure AD Connect によって、メタバースで `cloudNoFlow=true` が設定されたオブジェクトに対する変更のエクスポートが停止されます。 オブジェクトに参照属性の更新がある場合、Azure AD Connect では `cloudNoFlow` シグナルを無視し、オブジェクトのすべての更新をエクスポートします。
 
 ## <a name="something-went-wrong"></a>問題が発生した場合
 パイロットが正しく機能しない場合は、次の手順に従って Azure AD Connect 同期の設定に戻ることができます。

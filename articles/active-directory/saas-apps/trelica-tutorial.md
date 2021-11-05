@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d7b2f01a9e90ca8a29b6ecbfc380cb138a3ad073
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7aead529824f487b73fc728dafd964567743d60d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800481"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045959"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Trelica の統合
 

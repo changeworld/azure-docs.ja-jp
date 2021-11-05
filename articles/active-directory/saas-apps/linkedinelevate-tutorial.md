@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: b14d9298e87c7868d9a12e91a4fddbbdf118b5ab
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ce3a05d517bf12e9efd130fb4694ac13484817f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832966"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Elevate の統合
 

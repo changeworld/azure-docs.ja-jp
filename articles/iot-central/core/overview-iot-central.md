@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2, contperf-fy22q1
-ms.openlocfilehash: eb61a41cb7c7425c336145130cc61c76173f4ceb
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 98de0994e430ccf8bc3ab5026e9ef739c603368a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652375"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024279"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -36,7 +36,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 - "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](quick-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
 - "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices-individually.md)します。
-- "_管理者_": 管理タスクを担います (アプリケーション内での [ユーザー ロールとアクセス許可](howto-administer.md)の管理など)。
+- "_管理者_": 管理タスク (アプリケーション内での[ユーザー ロールとアクセス許可](howto-administer.md)の管理など) および他のサービスへの接続を保護するための[マネージド ID の構成](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)を担います。
 - "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で [実行するコードを作成](concepts-telemetry-properties-commands.md)します。
 
 ## <a name="create-your-iot-central-application"></a>IoT Central アプリケーションを作成する

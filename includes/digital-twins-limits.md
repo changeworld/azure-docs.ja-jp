@@ -3,14 +3,14 @@ author: baanders
 description: Azure Digital Twins の制限のインクルード ファイル
 ms.service: digital-twins
 ms.topic: include
-ms.date: 4/8/2021
+ms.date: 10/20/2021
 ms.author: baanders
-ms.openlocfilehash: fae919afc12afd5a6169dd119b57ae72ae7c14f0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c64606f4816491da803d2c5116ff4ad248ec29a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472880"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287685"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -22,11 +22,13 @@ ms.locfileid: "114472880"
 | 領域 | 機能 | 既定の制限 | 調整可能? |
 | --- | --- | --- | --- |
 | Azure リソース | 1 リージョン内の Azure Digital Twins インスタンスの数 (サブスクリプションごと) | 10 | はい |
-| Digital Twins | Azure Digital Twins インスタンス内のツインの数 | 200,000 | はい |
+| Digital Twins | Azure Digital Twins インスタンス内のツインの数 | 500,000 | はい |
 | Digital Twins | 1 つのツインに対する着信リレーションシップの数 | 5,000 | いいえ |
 | Digital Twins | 1 つのツインからの発信リレーションシップの数 | 5,000 | いいえ |
 | Digital Twins | 1 つのツインの最大サイズ (PUT または PATCH 要求の JSON 本文) | 32 KB | いいえ |
 | Digital Twins | 要求ペイロードの最大サイズ | 32 KB | いいえ | 
+| Digital Twins | 文字列プロパティ値の最大サイズ (UTF-8) | 4 KB | いいえ|
+| Digital Twins | プロパティ名の最大サイズ | 1 KB | いいえ| 
 | ルーティング | 1 つの Azure Digital Twins インスタンスのエンドポイントの数 | 6 | いいえ |
 | ルーティング | 1 つの Azure Digital Twins インスタンスのルート数 | 6 | はい |
 | モデル | 1 つの Azure Digital Twins インスタンス内のモデルの数 | 10,000 | はい |

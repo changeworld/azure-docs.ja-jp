@@ -11,6 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: Azure AD の Multi-Factor Authentication を有効にする
       href: tutorial-enable-azure-mfa.md
+    - name: クラウド同期パスワード ライトバックを有効にする (プレビュー)
+      href: tutorial-enable-cloud-sync-sspr-writeback.md
     - name: オンプレミスへのパスワード ライトバックを有効にする
       href: tutorial-enable-sspr-writeback.md
     - name: カスタムの禁止パスワード リストを構成する
@@ -272,7 +274,7 @@
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格

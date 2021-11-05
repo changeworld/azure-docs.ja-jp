@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d809e2a93ad482e003afd7d9cbb6b3d372323d9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b82a569060fc5d9478f823f7613045a6a0168c03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768327"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Lesson.ly の統合
 

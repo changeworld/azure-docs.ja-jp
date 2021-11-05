@@ -9,13 +9,13 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 07/22/2021
-ms.openlocfilehash: 1a4fbbb84eb296acabd383461e01e90cbf570d9d
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 10/21/2021
+ms.openlocfilehash: f6ac69d8bd3049efc55844ddd562e18a2950ef2b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657380"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560874"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
@@ -150,6 +150,8 @@ VS Code でノートブックを開いたときにも、同じスニペットを
 * コンピューティング インスタンスが停止している場合は、[コンピューティング] ドロップダウンの右側にある **[コンピューティングの開始]** を選択します。 画面のサイズによっては、これは **[...]** メニューの下に配置されている場合があります。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="コンピューティング インスタンスを開始する":::
+    
+コンピューティング インスタンスに接続したら、ツール バーを使ってノートブック内のすべてのセルを実行するか、Ctrl + Enter キーを使って、選択した 1 つのセルを実行します。 
 
 作成したコンピューティング インスタンスを表示および使用できるのは自分のみです。  **ユーザー ファイル** は VM とは別に格納され、ワークスペース内のすべてのコンピューティング インスタンス間で共有されます。
 

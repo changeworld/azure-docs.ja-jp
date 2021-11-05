@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22de8b7775d6825d99afe8eb4f0dc043f8ec639c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724255"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031558"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>クイック スタート:Azure Functions アプリに機能フラグを追加する
 
@@ -81,7 +81,7 @@ ms.locfileid: "98724255"
 
 3. `AddAzureAppConfiguration()` を呼び出すことで、`ConfigureAppConfiguration` メソッドを更新し、Azure App Configuration プロバイダーを新しい構成ソースとして追加します。 
 
-   `UseFeatureFlags()` メソッドでは、機能フラグを読み込むようにプロバイダーに指示します。 すべての機能フラグには、変更を再確認するまでに 30 秒という既定のキャッシュ有効期限が設定されています。 有効期限の間隔は、`UseFeatureFlags` メソッドに渡される `FeatureFlagsOptions.CacheExpirationInterval` プロパティを設定することによって更新できます。 
+    `UseFeatureFlags()` メソッドでは、機能フラグを読み込むようにプロバイダーに指示します。 すべての機能フラグには、変更を再確認するまでに 30 秒という既定のキャッシュ有効期限が設定されています。 有効期限の間隔は、`UseFeatureFlags` メソッドに渡される `FeatureFlagsOptions.CacheExpirationInterval` プロパティを設定することによって更新できます。 
 
     ```csharp
     public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
@@ -94,8 +94,9 @@ ms.locfileid: "98724255"
         });
     }
     ```
-   > [!TIP]
-   > 機能フラグ以外の構成をアプリケーションに読み込む必要がない場合は、`Select("_")` を呼び出して、存在しないダミー キー "_" のみを読み込むことができます。 既定では、`Select` メソッドを呼び出さない場合、App Configuration ストア内のすべての構成キー値が読み込まれます。
+
+    > [!TIP]
+    > 機能フラグ以外の構成をアプリケーションに読み込む必要がない場合は、`Select("_")` を呼び出して、存在しないダミー キー `"_"` のみを読み込むことができます。 既定では、`Select` メソッドを呼び出さない場合、App Configuration ストア内のすべての構成キー値が読み込まれます。
 
 4. 依存関係の挿入を通じて Azure App Configuration サービスと機能マネージャーを利用できるように、`Configure` メソッドを更新します。
 

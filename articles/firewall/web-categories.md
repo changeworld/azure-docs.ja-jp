@@ -7,12 +7,12 @@ services: firewall
 ms.topic: overview
 ms.date: 07/19/2021
 ms.author: victorh
-ms.openlocfilehash: dba086ab0975fd710bb9d4356ddd442133d740a4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c8ca827495f9ccfdd2786ee3b2bbf33e939c6a16
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481642"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068629"
 ---
 # <a name="azure-firewall-web-categories"></a>Azure Firewall の Web カテゴリ
 

@@ -3,19 +3,23 @@ title: Azure Automation で Python 3 パッケージを管理する
 description: この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/25/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: d3ec338b6d6edac2c56c8b42f877a1095aace2a0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a33f4f9b6403d1f4aff88cadb57ae0f78f02038b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349616"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443753"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>Azure Automation で Python 3 パッケージ (プレビュー) を管理する
 
-Azure Automation を使用すると、Azure Sandbox 環境および Linux Hybrid Runbook Worker で Python 3 Runbook (プレビュー) を実行することができます。 Runbook の簡略化のために、Python パッケージを使用して必要なモジュールをインポートすることができます。 Azure パッケージ 4.0.0 が Python 3 Automation 環境に既定でインストールされます。 Automation アカウントに Python パッケージをインポートすることで、既定のバージョンをオーバーライドできます。 Automation アカウントにインポートされたバージョンが優先されます。 1 つのパッケージをインポートするには、「[パッケージのインポート](#import-a-package)」を参照してください。 複数のパッケージを含むパッケージをインポートするには、「[依存関係を含むパッケージのインポート](#import-a-package-with-dependencies)」を参照してください。 この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理および使用方法について説明します。
+この記事では、Azure サンドボックス環境と Hybrid Runbook Workers で実行されている Azure Automation で Python 3 (プレビュー) パッケージをインポート、管理、使用する方法について説明します。Runbook を簡略化するために、Python パッケージを使用して必要なモジュールをインポートすることができます。 
+
+Automation サービスで Python 3 Runbook をサポートするために、Automation アカウントには既定で Azure パッケージ 4.0.0 がインストールされています。 お使いの Automation アカウントに Python パッケージをインポートすることで、その既定のバージョンをオーバーライドできます。 お使いの Automation アカウントにインポートされたバージョンが優先されます。 1 つのパッケージをインポートするには、「[パッケージのインポート](#import-a-package)」を参照してください。 複数のパッケージを含むパッケージをインポートするには、「[依存関係を含むパッケージのインポート](#import-a-package-with-dependencies)」を参照してください。 
+
+Python 2 パッケージの管理については、「[Azure Automation で Python 2 パッケージを管理する](./python-packages.md)」をご覧ください。
 
 ## <a name="packages-as-source-files"></a>ソース ファイルとしてのパッケージ
 
@@ -35,17 +39,19 @@ PyPI で使用できる一部の Python パッケージでは、ホイール フ
 
 ## <a name="import-a-package"></a>パッケージのインポート
 
-Automation アカウントの **[共有リソース]** で **[Python パッケージ]** を選択します。 次に **[+ Python パッケージの追加]** を選択します。
+1. Automation アカウントの **[共有リソース]** で **[Python パッケージ]** を選択します。 次に **[+ Python パッケージの追加]** を選択します。
 
-:::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="左側のメニューに Python 3 パッケージが表示され、[Python 2 パッケージを追加する] が強調表示されている [Python 3 パッケージ] ページのスクリーンショット。":::
+   :::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="[Python パッケージ] ページのスクリーンショット。左側のメニューに [Python パッケージ] が表示され、[Python パッケージの追加] が強調表示されています。":::
 
-**[Python パッケージの追加]** ページで、**バージョン** として **Python 3** を選択し、アップロードするローカル パッケージを選択します。 パッケージは、 **.whl** または **.tar.gz** ファイルの場合があります。 パッケージを選択したら、 **[OK]** を選択してアップロードします。
+1. **[Python パッケージの追加]** ページで、アップロードするローカル パッケージを選択します。 パッケージは、 **.whl** または **.tar.gz** ファイルの場合があります。 
+1. 名前を入力し、 **[ランタイム バージョン]** として Python 3.8.x (プレビュー) を選択します
+1. **[インポート]** を選択します
 
-:::image type="content" source="media/python-3-packages/upload-package.png" alt-text="アップロードされた tar.gz ファイルが選択されている [Python 3 パッケージの追加] ページを示すスクリーンショット。":::
+   :::image type="content" source="media/python-3-packages/upload-package.png" alt-text="アップロードされた tar.gz ファイルが選択されている [Python 3.8.x パッケージの追加] ページを示すスクリーンショット。":::
 
-パッケージがインポートされると、Automation アカウントの [Python パッケージ] ページの **[Python 3 パッケージ (プレビュー)]** タブの下に一覧表示されます。パッケージを削除する必要がある場合は、パッケージを選択し、 **[削除]** を選択します。
+パッケージがインポートされた後、そのパッケージはお使いの Automation アカウントの [Python パッケージ] ページに一覧表示されます。 パッケージを削除するには、パッケージを選択し、 **[削除]** をクリックします。
 
-:::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="パッケージがインポートされた後の [Python 3 パッケージ] ページを示すスクリーンショット。":::
+:::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="パッケージがインポートされた後の [Python 3.8.x パッケージ] ページを示すスクリーンショット。":::
 
 ### <a name="import-a-package-with-dependencies"></a>依存関係を含むパッケージのインポート
 

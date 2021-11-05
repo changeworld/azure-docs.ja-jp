@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: thwimmer
-ms.openlocfilehash: 7524739575e4088b4d95266b2901b08efc2b3c07
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: e01d8584825e1e9a74c82ee34dd3b9c6a2457cf2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195460"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045921"
 ---
 # <a name="tutorial-configure-tribeloo-for-automatic-user-provisioning"></a>チュートリアル: Tribeloo を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -29,18 +29,8 @@
       href: gallery-how-to-use-contribute-publish.md
 - name: 概念
   items:
-    - name: 初心者向けデータ サイエンス解説
-      items:
-        - name: 1 - 5 つの質問
-          href: data-science-for-beginners-the-5-questions-data-science-answers.md
-        - name: 2 - データの準備はできていますか?
-          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
-        - name: 3 - 適切な質問を投稿する
-          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
-        - name: 4 - 回答を予測する
-          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
-        - name: 5 - 他のユーザーの作業をコピーする
-          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: '廃止: 初心者向けデータ サイエンス解説'
+      href: retired-data-science-for-beginners-videos.md
     - name: モデル管理
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md

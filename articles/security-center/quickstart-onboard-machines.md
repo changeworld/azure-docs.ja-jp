@@ -1,6 +1,6 @@
 ---
-title: Azure 以外のマシンを Azure Security Center に接続する
-description: Azure 以外のマシンを Azure Security Center に接続する方法について説明します
+title: Azure 以外のマシンを Microsoft Defender for Cloud に接続する
+description: Azure 以外のマシンを Microsoft Defender for Cloud に接続する方法について説明します
 author: memildin
 ms.author: memildin
 ms.date: 07/12/2021
@@ -8,21 +8,24 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 73384ff81ddbcc987bb07cd6e516921c32a4c296
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0e5c44033a5f03726dc7e1f1129287edef5350aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129712896"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014380"
 ---
-# <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
+# <a name="connect-your-non-azure-machines-to-microsoft-defender-for-cloud"></a>Azure 以外のマシンを Microsoft Defender for Cloud に接続する
 
-Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、最初にそれらを Azure に接続する必要があります。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Defender for Cloud では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、最初にそれらを Azure に接続する必要があります。
 
 Azure 以外のコンピューターは、次のいずれかの方法で接続できます。
 
 - Azure Arc 対応サーバーを使用する (**推奨**)
-- Azure portal の Security Center のページから ( **[作業の開始]** と **[インベントリ]** )
+- Azure portal の Defender for Cloud のページから ( **[作業の開始]** と **[インベントリ]** )
 
 このページではそれぞれについて説明します。
 
@@ -30,14 +33,14 @@ Azure 以外のコンピューターは、次のいずれかの方法で接続�
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc を使用して Azure 以外のマシンを追加する
 
-[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)は、Azure 以外のマシンを Azure Security Center に追加する方法として推奨されます。
+[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)は、Azure 以外のマシンを Microsoft Defender for Cloud に追加する方法として推奨されます。
 
-Azure Arc 対応サーバーがあるマシンは Azure リソースになり、その上に Log Analytics エージェントをインストールすると、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。
+Azure Arc 対応サーバーがあるマシンは Azure リソースになり、その上に Log Analytics エージェントをインストールすると、他の Azure リソースのような推奨事項と共に、Microsoft Defender for Cloud に表示されます。
 
 さらに、Azure Arc 対応サーバーには、マシンでゲスト構成ポリシーを有効にするオプション、他の Azure サービスを使用してデプロイを簡素化するオプションなど、強化された機能が用意されています。 利点の概要については、「[サポートされているクラウド操作](../azure-arc/servers/overview.md#supported-cloud-operations)」を参照してください。
 
 > [!NOTE]
-> Security Center の Log Analytics エージェント自動デプロイツールでは、Azure Arc を実行するマシンがサポートされません。Azure Arc を利用してマシンを接続した後、関連する Security Center 推奨事項を利用してエージェントをデプロイし、Security Center により提供される保護機能のベネフィットを得ることができます。
+> Defender for Cloud の Log Analytics エージェント自動デプロイツールでは、Azure Arc を実行するマシンがサポートされません。Azure Arc を利用してマシンを接続した後、関連する Defender for Cloud の推奨事項を利用してエージェントをデプロイし、Defender for Cloud により提供される保護機能のベネフィットを得ることができます。
 >
 > - [Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/720a3e77-0b9a-4fa9-98b6-ddf0fd7e32c1)
 > - [Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/27ac71b1-75c5-41c2-adc2-858f5db45b08)
@@ -50,7 +53,7 @@ Azure Arc 対応サーバーがあるマシンは Azure リソースになり、
 - 複数のマシンを大規模に Azure Arc 対応サーバーに接続するには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください
 
 > [!TIP]
-> Amazon Web Services (AWS) で実行されているマシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
+> Amazon Web Services (AWS) で実行されているマシンをオンボードしようとしている場合、Defender for Cloud の AWS 用コネクタにより、Azure Arc のデプロイは透過的に処理されます。 詳細については、「[AWS アカウントを Microsoft Defender for Cloud に接続する](quickstart-onboard-aws.md)」を参照してください。
 
 ::: zone-end
 
@@ -58,19 +61,18 @@ Azure Arc 対応サーバーがあるマシンは Azure リソースになり、
 
 ## <a name="add-non-azure-machines-from-the-azure-portal"></a>Azure portal から Azure 以外のコンピューターを追加する
 
-1. Security Center メニューから、 **[作業の開始]** ページを開きます。
+1. Defender for Cloud のメニューから **[概要]** ページを開きします。
 1. **[作業の開始]** タブを選択します。
-
-    :::image type="content" source="./media/security-center-onboarding/onboarding-get-started-tab.png" alt-text="[作業の開始] ページの [作業の開始] タブ。" lightbox="./media/security-center-onboarding/onboarding-get-started-tab.png":::
-
 1. **[非 Azure サーバーの追加]** の下で **[構成]** を選択します。
+
+    :::image type="content" source="./media/quickstart-onboard-machines/onboarding-get-started-tab.png" alt-text="[作業の開始] ページの [作業の開始] タブ。" lightbox="./media/quickstart-onboard-machines/onboarding-get-started-tab.png":::
 
     > [!TIP]
     > **[インベントリ]** ページの **[非 Azure サーバーの追加]** から、マシンを追加するページを開くこともできます。
     > 
-    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="資産インベントリのページから Azure 以外のマシンを追加する。":::
+    > :::image type="content" source="./media/quickstart-onboard-machines/onboard-inventory.png" alt-text="資産インベントリのページから Azure 以外のマシンを追加する。":::
 
-    Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
+    Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Defender for Cloud によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
     コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。
 
@@ -91,7 +93,7 @@ Azure Stack Hub VM を追加するには、 **[エージェント管理]** ペ�
 
 1. **[エージェント管理]** ページで、**ワークスペース ID** および **主キー** をメモ帳にコピーします。
 1. **Azure Stack Hub** ポータルにログインし、 **[仮想マシン]** ページを開きます。
-1. Security Center で保護する仮想マシンを選択します。
+1. Defender for Cloud で保護する仮想マシンを選択します。
     >[!TIP]
     > Azure Stack Hub 上に仮想マシンを作成する方法については、[Windows 仮想マシン用のこちらのクイック スタート](/azure-stack/user/azure-stack-quick-windows-portal)または [Linux 仮想マシン用のこちらのクイック スタート](/azure-stack/user/azure-stack-quick-linux-portal)を参照してください。
 1. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
@@ -100,7 +102,7 @@ Azure Stack Hub VM を追加するには、 **[エージェント管理]** ペ�
     >[!NOTE]
     > **Azure Monitor, Update and Configuration Management** 拡張機能がマーケットプレースに一覧表示されていない場合は、該当の Azure Stack Hub オペレーターに連絡して使用可能にしてください。
 1. **[拡張機能のインストール]** 構成ページに、前の手順でメモ帳にコピーしておいた **ワークスペース ID** と **ワークスペース キー (主キー)** を貼り付けます。
-1. 構成が完了したら、 **[OK]** を選択します。 拡張機能の状態は、**プロビジョニング成功** として表示されます。 Security Center に仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
+1. 構成が完了したら、 **[OK]** を選択します。 拡張機能の状態は、**プロビジョニング成功** として表示されます。 Defender for Cloud に仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
 ### <a name="onboard-your-linux-machines"></a>Linux マシンのオンボード
 
@@ -109,7 +111,7 @@ Linux マシンを追加するには、 **[エージェント管理]** ページ
 1. **[エージェント管理]** ページで、**WGET** コマンドをメモ帳にコピーします。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
 1. お使いの Linux コンピューターで、WGET コマンドを使用してファイルを開きます。 コンテンツ全体を選択してコピーし、ターミナル コンソールに貼り付けます。
 1. インストールの完了後、*omsagent* がインストールされていることを検証するには、*pgrep* コマンドを実行します。 コマンドによって、*omsagent* PID が返されます。
-    エージェントのログは、 */var/opt/microsoft/omsagent/\<workspace id>/log/* にあります。Security Center に新しい Linux マシンが表示されるまでに、最大で 30 分かかる場合があります。
+    エージェントのログは、 */var/opt/microsoft/omsagent/\<workspace id>/log/* にあります。Defender for Cloud に新しい Linux マシンが表示されるまでに、最大で 30 分かかる場合があります。
 
 ### <a name="onboard-your-windows-machines"></a>Windows マシンのオンボード
 
@@ -135,14 +137,14 @@ Windows マシンを追加するには、 **[エージェント管理]** ペー�
 
 おめでとうございます。 これで Azure と Azure 以外のマシンを 1 か所で確認できるようになりました。 [資産インベントリ](asset-inventory.md) ページを開いて、関連するリソースの種類にフィルターを適用します。 以下のアイコンで種類が区別されます。
 
-  ![Azure 以外のマシンを表す ASC アイコン。](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure 以外のマシン
+  ![Azure 以外のマシンを表す ASC アイコン。](./media/quickstart-onboard-machines/security-center-monitoring-icon1.png) Azure 以外のマシン
 
-  ![Azure のマシンを表す ASC アイコン。](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![Azure のマシンを表す ASC アイコン。](./media/quickstart-onboard-machines/security-center-monitoring-icon2.png) Azure VM
 
-  ![Azure Arc サーバーの ASC アイコン。](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc 対応サーバー
+  ![Azure Arc サーバーの ASC アイコン。](./media/quickstart-onboard-machines/arc-enabled-machine-icon.png) Azure Arc 対応サーバー
 
 ## <a name="next-steps"></a>次の手順
 
-このページでは、ご自身の Azure 以外のマシンを Azure Security Center に追加する方法について説明しました。 これらの状態を監視するには、次のページの説明に従って、インベントリ ツールを使用します。
+このページでは、Azure 以外のマシンを Microsoft Defender for Cloud に追加する方法について説明しました。 これらの状態を監視するには、次のページの説明に従って、インベントリ ツールを使用します。
 
 - [資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)

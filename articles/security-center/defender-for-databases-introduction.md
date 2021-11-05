@@ -1,57 +1,60 @@
 ---
-title: オープンソース リレーショナル データベース用 Azure Defender - 利点と機能
-description: PostgreSQL、MySQL、MariaDB などのオープンソース リレーショナル データベース用の Azure Defender の利点と機能について説明します
+title: Microsoft Defender for open-source relational databases - 利点と機能
+description: PostgreSQL、MySQL、MariaDB などのオープンソース リレーショナル データベース用の Microsoft Defender の利点と機能について説明します
 author: memildin
 ms.author: memildin
 ms.date: 05/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 209fdfd71b4e2c0a5d1d5ede3f411b6476c19570
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8fd35ef089ad581d596d2958191dd43816441841
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732575"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056047"
 ---
-# <a name="introduction-to-azure-defender-for-open-source-relational-databases"></a>オープンソース リレーショナル データベース用 Azure Defender の概要
+# <a name="introduction-to-microsoft-defender-for-open-source-relational-databases"></a>Microsoft Defender for open-source relational databases の概要
 
-この Azure Defender プランを使用すると、次のオープンソース リレーショナル データベースに脅威の保護が提供されます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+このプランを使用すると、次のオープンソース リレーショナル データベースに脅威の防止が提供されます。
 
 - [Azure Database for PostgreSQL](../postgresql/index.yml)
 - [Azure Database for MySQL](../mysql/index.yml)
 - [Azure Database for MariaDB](../mariadb/index.yml)
 
-Azure Defender により、データベースへのアクセスやその悪用を試みる、異常で有害と考えられる不自然な動作が検出されます。 このプランを使用すると、データベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+Defender for Cloud によって、通常とは異なる、害を及ぼす可能性のあるデータベースへのアクセスやその悪用の試みを示す不自然なアクティビティが検出されます。 このプランを使用すると、データベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
 
 ## <a name="availability"></a>可用性
 
 | 側面                             | 詳細                                                                                                                                    |
 |------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|
 | リリース状態:                     | 一般公開 (GA)                                                     |
-| 価格:                           | **オープンソース リレーショナル データベース用 Azure Defender** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)で示されているように課金されます   |
+| 価格:                           | **Microsoft Defender for open-source relational databases** の課金については、[課金に関するページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。   |
 | PostgreSQL の保護されたバージョン:  | 単一サーバー - 汎用とメモリ最適化。 詳細については、[PostgreSQL の価格レベル](../postgresql/concepts-pricing-tiers.md)に関する記事を参照してください。   |
 | MySQL の保護されたバージョン:       | 単一サーバー - 汎用とメモリ最適化。 詳細については、[MySQL の価格レベル](../mysql/concepts-pricing-tiers.md)に関する記事を参照してください。                        |
 | MariaDB の保護されたバージョン:     | 汎用とメモリ最適化。 詳細については、[MariaDB の価格レベル](../mariadb/concepts-pricing-tiers.md)に関する記事を参照してください。                      |
 | クラウド:                            | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet) |
 |                                    |                                                                                                                                            |
 
-## <a name="what-are-the-benefits-of-azure-defender-for-open-source-relational-databases"></a>オープンソース リレーショナル データベース用 Azure Defender の利点
+## <a name="what-are-the-benefits-of-microsoft-defender-for-open-source-relational-databases"></a>Microsoft Defender for open-source relational databases の利点
 
-Azure Defender を使用すると、異常なアクティビティに関するセキュリティ アラートが提供されるので、潜在的な脅威を検出し、発生した脅威に対応できます。
+Defender for Cloud では、異常なアクティビティに関するセキュリティ アラートが提供されているため、潜在的な脅威を検出し、発生した脅威に対応できます。
 
-このプランを有効にすると、Azure Defender により、異常なデータベース アクセスとクエリ パターン、および疑わしいデータベース アクティビティが検出されると、アラートが提供されます。
+このプランを有効にすると、Defender for Cloud により、異常なデータベース アクセスとクエリ パターン、および不審なデータベース アクティビティが検出されたときにアラートが提供されます。
 
-これらのアラートは、Azure Defender のセキュリティ アラート ページに表示され、次のものが含まれます。
+これらのアラートは、Defender for Cloud のセキュリティ アラート ページに表示され、次のものが含まれます。
 
 - それらをトリガーした疑わしいアクティビティの詳細
 - 関連付けられている MITRE ATT&CK 戦術
 - 脅威を調査して軽減する方法に関して推奨されるアクション
-- Azure Sentinel で調査を続けるためのオプション
+- Microsoft Sentinel で調査を続けるためのオプション
 
-:::image type="content" source="media/defender-for-databases-introduction/defender-alerts.png" alt-text="オープンソース リレーショナル データベース用 Azure Defender によって保護されているデータベースで表示される可能性があるいくつかのセキュリティ アラート。" lightbox="./media/defender-for-databases-introduction/defender-alerts.png":::
+:::image type="content" source="media/defender-for-databases-introduction/defender-alerts.png" alt-text="Microsoft Defender for open-source relational database sによって保護されているデータベースで表示される可能性があるいくつかのセキュリティ アラート。" lightbox="./media/defender-for-databases-introduction/defender-alerts.png":::
 
-## <a name="what-kind-of-alerts-does-azure-defender-for-open-source-relational-databases-provide"></a>オープンソース リレーショナル データベース用 Azure Defender によって提供されるアラートの種類
+## <a name="what-kind-of-alerts-does-microsoft-defender-for-open-source-relational-databases-provide"></a>Microsoft Defender for open-source relational databases によって提供されるアラートの種類
 
 脅威インテリジェンスによってエンリッチされたセキュリティ アラートは、次のような場合にトリガーされます。
 
@@ -66,7 +69,7 @@ Azure Defender を使用すると、異常なアクティビティに関する�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、オープンソース リレーショナル データベース用 Azure Defender について説明しました。
+この記事では、Microsoft Defender for open-source relational databases について説明しました。
 
 > [!div class="nextstepaction"]
-> [Azure Defender を有効にする](enable-azure-defender.md)
+> [強化された保護を有効にする](enable-enhanced-security.md)

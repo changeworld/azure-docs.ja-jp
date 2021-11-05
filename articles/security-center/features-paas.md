@@ -1,24 +1,27 @@
 ---
-title: サポートされている Azure PaaS リソース用の Azure Security Center 機能。
-description: このページでは、サポートされている Azure PaaS リソース用の Azure Security Center 機能の可用性について説明します。
+title: サポートされている Azure PaaS リソース用の Microsoft Defender for Cloud の機能。
+description: このページでは、サポートされている Azure PaaS リソース用の Microsoft Defender for Cloud の機能の可用性について説明します。
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 04/25/2021
 ms.author: memildin
-ms.openlocfilehash: 4ee6b02ad60ad08022cbe2428bb9fb52c3ac2194
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: acaefa655593a70caca049c536b0ed7cde9f90f2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992343"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055846"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a><a name="paas-services">Azure PaaS サービスを対象とする機能</a>
 
-次の表に、サポートされている Azure PaaS リソース用の Azure Security Center 機能の可用性を示します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-|サービス|推奨事項 (無料)|セキュリティ アラート (Azure Defender)|脆弱性評価 (Azure Defender)|
+下の表に、サポートされている Azure PaaS リソース用の Microsoft Defender for Cloud の機能の可用性を示します。
+
+|サービス|推奨事項 (無料)|セキュリティのアラート |脆弱性評価|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Automation アカウント|✔|-|-|
@@ -50,4 +53,4 @@ ms.locfileid: "107992343"
 
 \* 現在、これらの機能はプレビューでサポートされています。
 
-\*\* Azure Active Directory (Azure AD) の推奨事項は、Azure Defender が有効になっているサブスクリプションでのみ使用できます。
+\*\* Azure Active Directory (Azure AD) の推奨事項は、[強化された保護機能が有効](enable-enhanced-security.md)になっているサブスクリプションでのみ使用できます。

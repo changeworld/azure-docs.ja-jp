@@ -3,15 +3,15 @@ title: Hybrid Runbook Worker での Azure Automation Runbook の実行
 description: この記事では、Hybrid Runbook Worker を利用し、ローカル データセンターまたはその他のクラウド プロバイダーのコンピューターで Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/30/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 702fcc816bac95345fca8c701be504e4eaa3a1fe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 71f13679a1f19672368a7b72987e28813232f846
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354749"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465557"
 ---
 # <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker で Automation Runbook を実行する
 
@@ -32,8 +32,18 @@ Azure Automation による Hybrid Runbook Worker でのジョブの処理は、A
 ### <a name="windows"></a>Windows 
 
 Hybrid Runbook Worker のジョブは、ローカルの **システム** アカウントで実行されます。
+>[!NOTE]
+>  Windows Hybrid Runbook Worker で PowerShell 7.x を実行するには、「[Windows への PowerShell のインストール](/powershell/scripting/install/installing-powershell-on-windows)」をご覧ください。
+> 現時点では、[こちら](/azure/automation/extension-based-hybrid-runbook-worker-install)に記載されているハイブリッド worker 拡張機能ベースのオンボードのみがサポートされています。 
+
+*pwsh.exe* 実行可能ファイルのあるパスが PATH 環境変数に追加されていることを確認してください。 インストールが完了した後、Hybrid Runbook Worker を再起動してください。
 
 ### <a name="linux"></a>Linux
+
+>[!NOTE]
+> Linux Hybrid Runbook Worker で PowerShell 7.x を実行するには、「[Linux への PowerShell のインストール](/powershell/scripting/install/installing-powershell-on-linux)」をご覧ください。
+> 現時点では、[こちら](/azure/automation/extension-based-hybrid-runbook-worker-install)に記載されているハイブリッド worker 拡張機能ベースのオンボードのみがサポートされています。
+
 
 サービス アカウント **nxautomation** と **omsagent** が作成されます。 作成およびアクセス許可の割り当てスクリプトは、[https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data) で確認できます。 [Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中には、対応する sudo アクセス許可を持つアカウントが存在する必要があります。 ワーカーをインストールしようとしたときに、このアカウントが存在しないか、または適切なアクセス許可を持っていない場合、そのインストールは失敗します。 `sudoers.d` フォルダーまたはその所有権のアクセス許可は変更しないでください。 sudo アクセス許可はアカウントに必要であるため、アクセス許可を削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。 Update Management の一環として有効にされた **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook のみです。
 
@@ -98,7 +108,7 @@ Hybrid Runbook Worker 上の Azure リソースに対してマネージド ID �
     ```
 
     Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
-    1. 5 行目から、`$AzureContext = (Connect-AzAccount -Identity).context` を削除し、
+    1. 行 5 から `$AzureContext = (Connect-AzAccount -Identity).context` を削除します。
     1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
     1. クライアント ID を入力します。
 
@@ -225,6 +235,9 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 > [!IMPORTANT]
 > 署名された Runbook のみを実行するように Hybrid Runbook Worker を構成すると、署名されていない Runbook は worker で実行できなくなります。
 
+> [!NOTE]
+>  PowerShell 7.x では、Windows および Linux Hybrid Runbook Worker について、署名された Runbook はサポートされていません。  
+
 ### <a name="create-signing-certificate"></a>署名証明書の作成
 
 次の例では、Runbook の署名に使用できる自己署名証明書を作成します。 このコードでは、証明書が作成されてエクスポートされるので、後で Hybrid Runbook Worker にインポートできます。 後で証明書を参照するときに使用できるように、サムプリントも返されます。
@@ -293,6 +306,9 @@ Runbook が署名されたら、Automation アカウントにインポートし�
 * Hybrid Runbook Worker でキーリングを使用できるようにする
 * 署名の検証が有効であることを確認する
 * Runbook に署名する
+
+> [!NOTE]
+>  PowerShell 7.x では、Windows および Linux Hybrid Runbook Worker について、署名された Runbook はサポートされていません。
 
 ### <a name="create-a-gpg-keyring-and-keypair"></a>GPG キーリングとキー ペアを作成する
 
