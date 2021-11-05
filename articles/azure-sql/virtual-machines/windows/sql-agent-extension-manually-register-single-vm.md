@@ -1,6 +1,6 @@
 ---
-title: SQL IaaS Agent 拡張機能に登録する
-description: Azure SQL Server 仮想マシンを SQL IaaS Agent 拡張機能に登録して、Azure Marketplace の外部にデプロイされた SQL Server 仮想マシンの機能を有効にし、コンプライアンスと管理容易性を向上させます。
+title: SQL IaaS 拡張機能に登録する
+description: SQL IaaS Agent 拡張機能を使用して Windows azure VM に SQL Server を登録する方法について説明します。これにより、azure の機能が有効になり、コンプライアンスと管理の容易性も向上します。
 services: virtual-machines-windows
 documentationcenter: na
 author: adbadram
@@ -11,24 +11,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/01/2021
+ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: b66b7c86cf7ba6d23cb09c7feed1f3ced19fd531
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 20177246aa0b39dc7a7c254c4dfb964d0444b631
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130160967"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044021"
 ---
-# <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
-
+# <a name="register-windows-sql-server-vm-with-sql-iaas-extension"></a>SQL IaaS 拡張機能を使用して Windows SQL Server VM を登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-ご使用の SQL Server VM を [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に登録すると、Azure VM 上の SQL Server に対する数多くの機能面の利点を活用できるようになります。 既定では、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると、SQL IaaS Agent 拡張機能に自動的に登録されます。  詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
+> [!div class="op_single_selector"]
+> * [Windows](sql-agent-extension-manually-register-single-vm.md)
+> * [Linux](../linux/sql-iaas-agent-extension-register-vm-linux.md)
 
-この記事では、SQL IaaS Agent 拡張機能に 1 つの SQL Server VM を登録する方法について説明します。 また、サブスクリプションのすべての SQL Server VM を[自動的に](sql-agent-extension-automatic-registration-all-vms.md)登録することや、[複数の VM を一括でスクリプト化](sql-agent-extension-manually-register-vms-bulk.md)して登録することもできます。
+SQL Server VM を[SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に登録して、Windows Azure VM での SQL Server の豊富な機能の特典を解除します。 
+
+この記事では、SQL IaaS Agent 拡張機能に 1 つの SQL Server VM を登録する方法について説明します。 または、スクリプトを使用して、サブスクリプション内のすべての SQL Server vm を[自動的に](sql-agent-extension-automatic-registration-all-vms.md)登録することも、[複数の vm を一括で](sql-agent-extension-manually-register-vms-bulk.md)登録することもできます。
 
 > [!NOTE]
 > 2021 年 9 月以降は、SQL IaaS 拡張機能をフル モードで登録しても、SQL Server サービスを再起動する必要はありません。 
@@ -39,7 +42,9 @@ ms.locfileid: "130160967"
 
 Azure portal を介して SQL Server VM の Azure Marketplace イメージをデプロイすると、その SQL Server VM が自動的に拡張機能に登録されます。 ただし、Azure 仮想マシンに SQL Server を自分でインストールすること、またはカスタム VHD から Azure 仮想マシンをプロビジョニングすることを選択する場合は、機能面のすべての利点と管理の容易性を活用できるようにするために、SQL Server VM を SQL IaaS Agent 拡張機能に登録する必要があります。
 
-SQL IaaS Agent 拡張機能を利用するには、最初に [サブスクリプションを **Microsoft.SqlVirtualMachine** プロバイダーに登録する](#register-subscription-with-rp)必要があります。これにより、SQL IaaS 拡張機能は、その特定のサブスクリプション内にリソースを作成できます。
+SQL IaaS Agent 拡張機能を利用するには、最初に [サブスクリプションを **Microsoft.SqlVirtualMachine** プロバイダーに登録する](#register-subscription-with-rp)必要があります。これにより、SQL IaaS 拡張機能は、その特定のサブスクリプション内にリソースを作成できます。 その後、SQL Server VM を拡張機能に登録できます。 
+
+既定で、SQL Server 2016 以降がインストールされている Azure VM は、[CEIP サービス](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)によって検出されると、SQL IaaS Agent 拡張機能に自動的に登録されます。  詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
 
 > [!IMPORTANT]
 > SQL IaaS Agent 拡張機能を使用すると、Azure 仮想マシン内で SQL Server を使用する際に、お客様に追加のメリットを提供するという明確な目的のためにデータが収集されます。 Microsoft は、お客様の事前の同意なく、ライセンスの監査にこのデータを使用することはありません。 詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
@@ -59,6 +64,8 @@ SQL Server VM を SQL IaaS Agent 拡張機能に登録するには、最初に�
 
 ### <a name="azure-portal"></a>Azure portal
 
+Azure portal を使用して、サブスクリプションをリソース プロバイダーに登録します。
+
 1. Azure portal を開き、 **[すべてのサービス]** に移動します。
 1. **[サブスクリプション]** に移動し、目的のサブスクリプションを選択します。
 1. **[サブスクリプション]** ページで、 **[設定]** の **[リソース プロバイダー]** を選択します。
@@ -73,12 +80,16 @@ Azure CLI または Azure PowerShell を使用して、Azure サブスクリプ�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
+Azure CLI を使用して、サブスクリプションをリソース プロバイダーに登録します。
+
 ```azurecli-interactive
 # Register the SQL IaaS Agent extension to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Azure PowerShell を使用して、サブスクリプションをリソース プロバイダーに登録します。
 
 ```powershell-interactive
 # Register the SQL IaaS Agent extension to your subscription
@@ -89,18 +100,40 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ## <a name="full-mode"></a>フル モード
 
-SQL Server VM をフル モードで直接登録するには、次の Azure PowerShell コマンドを使用します。
+Azure CLI と Azure PowerShell を使用して、SQL Server VM を完全モードで直接登録することも、Azure portal、Azure CLI、または Azure PowerShell を使用して簡易モードからフルモードにアップグレードすることもできます。 _noagent_ モードでの vm のアップグレードは、OS が Windows 2008 R2 以降にアップグレードされるまではサポートされていません。  
 
-  ```powershell-interactive
-  # Get the existing  Compute VM
-  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Register with SQL IaaS Agent extension in full mode
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
-  
-  ```
+2021年9月以降、SQL Server VM をフルモードで登録するには、SQL Server サービスを再起動する必要がなくなりました。 
 
 フル モードの詳細については、「[管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)」を参照してください。
+
+### <a name="register-in-full-mode"></a>フルモードで登録する
+
+SQL Server のライセンスの種類として、使用した分を支払う従量課金制 (`PAYG`)、独自のライセンスを使用する Azure ハイブリッド特典 (`AHUB`)、または [無料の DR レプリカ ライセンス](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)をアクティブ化するディザスター リカバリー (`DR`) のいずれかを指定します。
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
+
+Azure CLI を使用して、SQL Server VM をフルモードで登録します。
+
+```azurecli-interactive
+# Register Enterprise or Standard self-installed VM in Lightweight mode
+az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> --sql-mgmt-type Full
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Azure PowerShell を使用して、SQL Server VM をフルモードで登録します。
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+-LicenseType <license_type> -SqlManagementType Full
+```
+
+---
+
 
 ### <a name="upgrade-to-full"></a>フルへのアップグレード
 
@@ -108,7 +141,7 @@ SQL Server VM をフル モードで直接登録するには、次の Azure Powe
 
 #### <a name="azure-portal"></a>Azure portal
 
-Azure portal を使用して拡張機能をフル モードにアップグレードするには、これらの手順に従います。
+Azure portal を使用して拡張機能をフルモードにアップグレードします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. [SQL 仮想マシン](manage-sql-vm-portal.md#access-the-resource) リソースに移動します。
@@ -119,30 +152,29 @@ Azure portal を使用して拡張機能をフル モードにアップグレー
 
 1. **[Confirm]\(確定\)** を選択して、SQL Server IaaS 拡張機能モードを "フル" にアップグレードします。
 
-    ![**[Confirm]\(確定\)** を選択して、SQL Server IaaS 拡張機能モードを "フル" にアップグレードします。](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
+  ![**[Confirm]\(確定\)** を選択して、SQL Server IaaS 拡張機能モードを "フル" にアップグレードします。](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
 
 #### <a name="command-line"></a>コマンド ライン
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
-拡張機能をフル モードにアップグレードするには、次の Azure CLI コード スニペットを実行します。
+Azure CLI を使用して拡張機能をフルモードにアップグレードします。
 
-  ```azurecli-interactive
-  # Update to full mode
-  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
-  ```
+```azurecli-interactive
+# Update to full mode
+az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+```
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-拡張機能をフル モードにアップグレードするには、次の Azure PowerShell コード スニペットを実行します。
+Azure PowerShell を使用して拡張機能をフルモードにアップグレードします。 
 
-  ```powershell-interactive
-  # Get the existing  Compute VM
-  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Register with SQL IaaS Agent extension in full mode
-  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full -Location $vm.Location
-  ```
+```powershell-interactive
+# Get the existing  Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+# Register with SQL IaaS Agent extension in full mode
+Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full -Location $vm.Location
+```
 
 ---
 
@@ -152,7 +184,7 @@ Azure portal を使用して拡張機能をフル モードにアップグレー
 
 SQL Server のライセンスの種類として、使用した分を支払う従量課金制 (`PAYG`)、独自のライセンスを使用する Azure ハイブリッド特典 (`AHUB`)、または [無料の DR レプリカ ライセンス](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)をアクティブ化するディザスター リカバリー (`DR`) のいずれかを指定します。
 
-フェールオーバー クラスター インスタンスとマルチインスタンス デプロイは、軽量モードでのみ SQL IaaS Agent 拡張機能に登録できます。
+複数のインスタンスを持つフェールオーバークラスターインスタンスと SQL Server vm は、簡易モードで SQL IaaS エージェント拡張機能にのみ登録できます。
 
 軽量モードの詳細については、「[管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)」を参照してください。
 
@@ -160,32 +192,33 @@ SQL Server のライセンスの種類として、使用した分を支払う従
 
 Azure CLI を使用して軽量モードで SQL Server VM を登録します。
 
-  ```azurecli-interactive
-  # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
-  ```
+```azurecli-interactive
+# Register Enterprise or Standard self-installed VM in Lightweight mode
+az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
+```
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
 Azure PowerShell を使用して軽量モードで SQL Server VM を登録します。
 
-  ```powershell-interactive
-  # Get the existing compute VM
-  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
 
-  # Register SQL VM with 'Lightweight' SQL IaaS agent
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType <license_type>  -SqlManagementType LightWeight  
-  ```
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType <license_type>  -SqlManagementType LightWeight  
+```
+
 ---
 
-## <a name="noagent-management-mode"></a>NoAgent 管理モード
+## <a name="noagent-mode"></a>NoAgent モード
 
 Windows Server 2008 ("_R2 ではない_") にインストールされている SQL Server 2008 および 2008 R2 は、[NoAgent モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)でのみ SQL IaaS Agent 拡張機能に登録できます。 このオプションにより、コンプライアンスが確保され、SQL Server VM を Azure portal の限られた機能で監視できるようになります。
 
 **[ライセンスの種類]** には、`AHUB`、`PAYG`、または `DR` を指定します。 **[image offer]\(イメージ オファー\)** には、`SQL2008-WS2008` または `SQL2008R2-WS2008` を指定します。
 
-Windows Server 2008 インスタンス上の SQL Server 2008 (`SQL2008-WS2008`) または 2008 R2 (`SQL2008R2-WS2008`) を登録するには、次の Azure CLI または Azure PowerShell のコード スニペットを使用します。
+Azure CLI または Azure PowerShell を使用して、SQL Server 2008 ( `SQL2008-WS2008` ) または 2008 R2 ( `SQL2008R2-WS2008` ) インスタンスを Windows Server 2008 VM に登録します。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
@@ -212,11 +245,11 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 ---
 
 
-## <a name="check-extension-mode"></a>拡張機能モードを確認する
+## <a name="check-management-mode"></a>管理モード
 
 Azure PowerShell を使用して、SQL Server IaaS エージェント拡張機能がどの管理モードにあるかを確認します。 
 
-拡張機能のモードを確認するには、次の Azure PowerShell コマンドレットを使用します。 
+Azure PowerShell の拡張機能のモードを確認します。  
 
 ```powershell-interactive
 # Get the SqlVirtualMachine
@@ -224,49 +257,6 @@ $sqlvm = Get-AzSqlVM -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName
 $sqlvm.SqlManagementType
 ```
 
-## <a name="upgrade-to-full"></a>フルへのアップグレード
-
-"*軽量*" モードで拡張機能に登録された SQL Server VM は、Azure portal、Azure CLI、または Azure PowerShell を使用して "_フル_" にアップグレードできます。 "_No-Agent_" モードの SQL Server VM は、OS が Windows 2008 R2 以上にアップグレードされた後、"_フル_" にアップグレードできます。 ダウングレードすることはできません。それを行うには、SQL Server VM を SQL IaaS Agent 拡張機能から[登録解除](#unregister-from-extension)する必要があります。 それにより、**SQL 仮想マシン** の "_リソース_" が削除されますが、実際の仮想マシンは削除されません。
-
-### <a name="azure-portal"></a>Azure portal
-
-Azure portal を使用して拡張機能をフル モードにアップグレードするには、これらの手順に従います。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. [SQL 仮想マシン](manage-sql-vm-portal.md#access-the-resource) リソースに移動します。
-1. ご利用の SQL Server VM を選択し、 **[概要]** を選択します。
-1. IaaS モードが NoAgent または軽量である SQL Server VM では、**SQL IaaS 拡張機能の現在のモードで利用できるのはライセンスの種類とエディションの更新のみ** という内容のメッセージを選択します。
-
-   ![ポータルでモードを変更するための選択](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
-
-1. **[Confirm]\(確定\)** を選択して、SQL Server IaaS 拡張機能モードを "フル" にアップグレードします。
-
-    ![**[Confirm]\(確定\)** を選択して、SQL Server IaaS 拡張機能モードを "フル" にアップグレードします](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
-
-### <a name="command-line"></a>コマンド ライン
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
-
-拡張機能をフル モードにアップグレードするには、次の Azure CLI コード スニペットを実行します。
-
-  ```azurecli-interactive
-  # Update to full mode
-  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
-  ```
-
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
-
-拡張機能をフル モードにアップグレードするには、次の Azure PowerShell コード スニペットを実行します。
-
-  ```powershell-interactive
-  # Get the existing  Compute VM
-  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Register with SQL IaaS Agent extension in full mode
-  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full -Location $vm.Location
-  ```
-
----
 
 ## <a name="verify-registration-status"></a>登録状態を確認する
 
@@ -274,7 +264,7 @@ Azure portal を使用して拡張機能をフル モードにアップグレー
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal を使用して登録状態を確認するには、これらの手順に従います。
+次の手順で登録の状態Azure portal。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の [SQL Server VM](manage-sql-vm-portal.md) にアクセスします。
@@ -291,7 +281,7 @@ Azure CLI または Azure PowerShell を使用して現在の SQL Server VM の�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
-Azure CLI を使用して登録状態を確認するには、次のコード スニペットを実行します。
+次の手順で登録の状態を確認Azure CLI。 
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
@@ -299,7 +289,7 @@ Azure CLI を使用して登録状態を確認するには、次のコード ス
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Azure PowerShell を使用して登録状態を確認するには、次のコード スニペットを実行します。
+次のコマンドを使用して、登録Azure PowerShell。 
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -311,7 +301,9 @@ Azure PowerShell を使用して登録状態を確認するには、次のコー
 
 ## <a name="repair-extension"></a>拡張機能の修復
 
-SQL IaaS エージェント拡張機能が失敗状態になる可能性があります。 SQL IaaS エージェント拡張機能を修復するには、Azure portal を使用を使用します。 これを行うには、次のステップに従います。 
+SQL IaaS エージェント拡張機能が失敗状態になる可能性があります。 SQL IaaS エージェント拡張機能を修復するには、Azure portal を使用を使用します。 
+
+次の方法で拡張機能を修復Azure portal。  
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の [SQL Server VM](manage-sql-vm-portal.md) にアクセスします。
@@ -327,13 +319,15 @@ SQL IaaS エージェント拡張機能が失敗状態になる可能性があ�
 
 ## <a name="unregister-from-extension"></a>拡張機能から登録を解除する
 
-SQL IaaS Agent 拡張機能との SQL Server VM の登録を解除するには、Azure portal または Azure CLI を使用して、SQL 仮想マシン "*リソース*" を削除します。 SQL 仮想マシン "*リソース*" を削除しても、SQL Server VM は削除されません。 ただし、"*リソース*" を削除しようとしたときに仮想マシンが誤って削除される可能性があるため、注意して慎重に手順に従ってください。
+SQL IaaS Agent 拡張機能との SQL Server VM の登録を解除するには、Azure portal または Azure CLI を使用して、SQL 仮想マシン "*リソース*" を削除します。 SQL 仮想マシン "*リソース*" を削除しても、SQL Server VM は削除されません。 SQL IaaS Agent 拡張機能との SQL 仮想マシンの登録を解除するには、管理モードをフルからダウングレードする必要があります。
 
-SQL IaaS Agent 拡張機能との SQL 仮想マシンの登録を解除するには、管理モードをフルからダウングレードする必要があります。
+>[!CAUTION]
+> **拡張機能から VM の** 登録を解除する場合SQL Server注意してください。 リソース を削除しようとするときに **仮想** マシンを誤って削除する可能性がある場合は、慎重に手順に従 *ってください*。
+
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal を使用して拡張機能から SQL Server VM の登録を解除するには、これらの手順に従います。
+拡張機能から SQL Server VM の登録を解除するには、次のコマンドをAzure portal。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. SQL VM リソースに移動します。
@@ -357,7 +351,9 @@ Azure portal を使用して拡張機能から SQL Server VM の登録を解除�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して拡張機能から SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm#az_sql_vm_delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。
+拡張機能から SQL Server VM の登録を解除するには、Azure CLI [az sql vm delete コマンドを使用](/cli/azure/sql/vm#az_sql_vm_delete)します。 これにより、VM SQL Serverが *削除されますが*、仮想マシンは削除されます。
+
+次のコマンドを使用SQL Server VM の登録を解除Azure CLI。 
 
 ```azurecli-interactive
 az sql vm delete 
@@ -368,19 +364,21 @@ az sql vm delete
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Azure PowerShell を使用して拡張機能から SQL Server VM の登録を解除するには、[Remove-AzSqlVM](/powershell/module/az.sqlvirtualmachine/remove-azsqlvm) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。
+拡張機能から SQL Server VM の登録を解除するにはAzure PowerShell [Remove-AzSqlVM コマンドを使用](/powershell/module/az.sqlvirtualmachine/remove-azsqlvm)します。 これにより、VM SQL Serverが *削除されますが*、仮想マシンは削除されます。
+
+VM の登録をSQL Serverするには、次のAzure PowerShell。 
 
 ```powershell-interactive
-Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
+Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <SQL VM resource name>
 ```
 
 ---
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、次の記事を参照してください。
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
-* [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
-* [Azure VM 上の SQL Server の新機能](doc-changes-updates-release-notes-whats-new.md)
+* [Azure VM でのSQL Serverの価格ガイダンス](../windows/pricing-guidance.md)
+* [Azure VM 上の SQL Server の新機能](../windows/doc-changes-updates-release-notes-whats-new.md)

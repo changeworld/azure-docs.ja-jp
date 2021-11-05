@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: Azure ストレージでは、使用方法に応じて最も低コストな方法で BLOB データを保存できるよう、複数のアクセス層を用意しています。 Blob Storage のホット、クールおよびアーカイブ アクセス層について説明します。
 author: tamram
 ms.author: tamram
-ms.date: 10/07/2021
+ms.date: 10/25/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 7af8e29890c63429a50c9818baa001bb5990c26b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 45f330ad2e40cce5b5fca0b6f6fd99d3271bea76
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709004"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063786"
 ---
 # <a name="hot-cool-and-archive-access-tiers-for-blob-data"></a>BLOB データのホット、クールおよびアーカイブ アクセス層
 
@@ -57,22 +57,21 @@ Azure ストレージの容量上限は、アクセス層によって決まる�
 
 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。 たとえば、BLOB をアーカイブに移動し、45 日後に削除するかホット層に移動した場合、その BLOB のアーカイブへの保存について、135 (180 - 45) 日分に相当する早期削除料金が適用されます。
 
-BLOB は、アーカイブ アクセス層にある間は、読み取りも変更もできません。 アーカイブ アクセス層の BLOB を読み取る、またはダウンロードするには、まずオンライン層 (ホットまたはクール アクセス層) にリハイドレートする必要があります。 アーカイブ アクセス層のデータをリハイドレートするには最大で 15 時間かかります。 BLOB のリハイドレートの詳しい情報は「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」をご覧ください。
+BLOB は、アーカイブ アクセス層にある間は、読み取りも変更もできません。 アーカイブ アクセス層の BLOB を読み取る、またはダウンロードするには、まずオンライン層 (ホットまたはクール アクセス層) にリハイドレートする必要があります。 アーカイブ層のデータは、再水和操作に指定した優先度に応じて、再水和するのに最大15時間かかる場合があります。 BLOB のリハイドレートの詳しい情報は「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」をご覧ください。
 
 アーカイブした BLOB のメタデータへの読み取りアクセスは引き続き可能であるため、BLOB とそのプロパティ、メタデータ、インデックス タグのリストを取得することができます。 アーカイブ アクセス層の BLOB のメタデータは読み取り専用ですが、BLOB インデックス タグは読み取りと書き込みができます。 アーカイブした BLOB のスナップショットはサポートしていません。
 
 アーカイブ アクセス層の BLOB では次の操作ができます。
 
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
-- [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)
-- [BLOB タグの設定](/rest/api/storageservices/set-blob-tags)
-- [BLOB タグの取得](/rest/api/storageservices/get-blob-tags)
-- [タグによる BLOB の検索](/rest/api/storageservices/find-blobs-by-tags)
-- [BLOB を一覧表示する](/rest/api/storageservices/list-blobs)
-- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 - [Copy Blob](/rest/api/storageservices/copy-blob)
-- [Copy Blob From URL](/rest/api/storageservices/copy-blob-from-url)
 - [Delete Blob](/rest/api/storageservices/delete-blob)
+- [タグによる BLOB の検索](/rest/api/storageservices/find-blobs-by-tags)
+- [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
+- [BLOB タグの取得](/rest/api/storageservices/get-blob-tags)
+- [BLOB を一覧表示する](/rest/api/storageservices/list-blobs)
+- [BLOB タグの設定](/rest/api/storageservices/set-blob-tags)
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 
 > [!NOTE]
 > アーカイブ層は、ZRS、GZRS、RA-GZRS アカウントではサポートされていません。 LRS から GRS への移行は、アカウントが LRS に設定されている間に、アーカイブ層に移動された BLOB がない限りサポートされます。 アカウントが LRS になってから 30 日未満の期間内に更新を行い、かつ、アカウントを LRS に設定している間に BLOB を 1 つもアーカイブ アクセス層に移動しなかった場合は、アカウントを GRS に戻せます。
@@ -107,6 +106,14 @@ BLOB 作成後は、次のいずれかの方法で層を変更できます。
 
 - BLOB がストレージ アカウントの既定のアクセス層に基づいてクールと推定され、BLOB がアーカイブに移動された場合、早期削除料金は発生しません。
 - BLOB が明示的にクール層に移動された後にアーカイブに移動された場合は、早期削除料金が適用されます。
+
+次の表は、BLOB をさまざまな層間で移動する方法をまとめたものです。
+
+| Origin/Destination | ホット層 | クール層 | アーカイブ層 |
+|--|--|--|--|
+| **ホット層** | 該当なし | **Set Blob tier** または **Copy blob** を使用して、Blob の層をホットからクールに変更します。 [詳細情報](manage-access-tier.md)<br /><br />ライフサイクル管理ポリシーを使用して BLOB をクール層に移動します。 [詳細情報](lifecycle-management-overview.md) | **Set Blob tier** または **Copy blob** を使用して、Blob の層をホットからクールに変更します。 [詳細情報](archive-blob.md) <br /><br />ライフサイクル管理ポリシーを使用して BLOB をアーカイブします。 [詳細情報](lifecycle-management-overview.md) |
+| **クール層** | **Set Blob tier** または **Copy blob** を使用して、Blob の層をホットからクールに変更します。 [詳細情報](manage-access-tier.md) <br /><br />ライフサイクル管理ポリシーを使用して BLOB をクール層に移動します。 [詳細情報](lifecycle-management-overview.md) | 該当なし | **Set Blob tier** または **Copy blob** を使用して、Blob の層をホットからクールに変更します。 [詳細情報](archive-blob.md) <br /><br />ライフサイクル管理ポリシーを使用して BLOB をアーカイブします。 [詳細情報](lifecycle-management-overview.md) |
+| **アーカイブ層** | **Set Blob tier** または **Copy blob** を使用して復元にホット層を設定します。 [詳細情報](archive-rehydrate-to-online-tier.md) | **Set Blob tier** または **Copy blob** を使用して復元にホット層を設定します。 [詳細情報](archive-rehydrate-to-online-tier.md) | 該当なし |
 
 ## <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
 

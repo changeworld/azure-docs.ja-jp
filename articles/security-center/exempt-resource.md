@@ -1,5 +1,5 @@
 ---
-title: リソース、サブスクリプション、管理グループ、セキュリティ スコアから Azure Security Center の推奨事項を除外する
+title: リソース、サブスクリプション、管理グループ、セキュリティ スコアから Microsoft Defender for Cloud の推奨事項を除外する
 description: サブスクリプションまたは管理グループからのセキュリティの推奨事項を除外する規則を作成し、セキュリティ スコアに対する影響を防ぐ方法について説明します。
 author: memildin
 ms.author: memildin
@@ -7,20 +7,23 @@ ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f69b7174ec37a38fd972f53daaaf09776a279cea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2adced83b238e471027bb7c1bf86f1fb13c64239
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745094"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075847"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>セキュリティ スコアからのリソースと推奨事項の除外 
 
-すべてのセキュリティ チームの最優先事項として重要なのは、組織にとって重要なタスクとインシデントにアナリストが集中できるようにすることです。 Security Center には、エクスペリエンスをカスタマイズし、セキュリティ スコアが組織のセキュリティの優先順位を反映していることを確認するための多くの機能があります。 **除外** オプションは、このような機能の 1 つです。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Security Center でセキュリティに関する推奨事項を調査するとき、最初にレビューする情報の 1 つが、影響を受けたリソースの一覧です。
+すべてのセキュリティ チームの最優先事項として重要なのは、組織にとって重要なタスクとインシデントにアナリストが集中できるようにすることです。 Defender for Cloud には、エクスペリエンスをカスタマイズし、セキュリティ スコアが組織のセキュリティの優先順位を反映するようにするための多くの機能があります。 **除外** オプションは、このような機能の 1 つです。
 
-この一覧には、含まれるべきではないと思われるリソースが含まれていることがあります。 または、推奨事項が属していないと思われるスコープに表示されます。 リソースは、Security Center によって追跡されていないプロセスによって修復された可能性があります。 この推奨事項は、特定のサブスクリプションに適していない可能性があります。 または、組織が特定のリソースまたは推奨事項に関連するリスクに同意することを決定した場合もあります。
+Microsoft Defender for Cloud でセキュリティに関する推奨事項を調査する場合、最初に確認する情報の 1 つは、影響を受けるリソースの一覧です。
+
+この一覧には、含まれるべきではないと思われるリソースが含まれていることがあります。 または、推奨事項が属していないと思われるスコープに表示されます。 リソースは、Defender for Cloud によって追跡されないプロセスによって修復された可能性があります。 この推奨事項は、特定のサブスクリプションに適していない可能性があります。 または、組織が特定のリソースまたは推奨事項に関連するリスクに同意することを決定した場合もあります。
 
 このような場合は、次のような推奨事項の除外を作成できます。
 
@@ -33,21 +36,21 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 | 側面                          | 詳細                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | リリース状態:                  | プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| 価格:                        | これは、Azure Defender のお客様が追加コストなしで利用できる Azure Policy の Premium 機能です。 他のユーザーについては、将来、料金が適用されることがあります。                                                                                                                                                                 |
+| 価格:                        | これは、Microsoft Defender for Cloud Azure Policy強化されたセキュリティ機能が有効になっているお客様に追加コストで提供される Premium Azure Policy 機能です。 他のユーザーについては、将来、料金が適用されることがあります。                                                                                                                                                                 |
 | 必要なロールとアクセス許可: | **所有者** または **リソース ポリシーの共同作成者** (除外対象を作成するため)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。                                            |
-| 制限事項:                    | 除外は、Security Center の既定のイニシアチブ、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 カスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。 |
+| 制限事項:                    | 除外は、Defender for Cloud の既定のイニシアチブ 、[Azure セキュリティベンチマーク](/security/benchmark/azure/introduction)、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 カスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。 |
 | クラウド:                         | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: ナショナル/ソブリン (Azure Government、Azure China 21Vianet)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>除外対象の定義
 
-サブスクリプション、管理グループ、またはリソースに対して Security Center が行うセキュリティの推奨事項を微調整するには、次のような除外規則を作成します。
+Defender for Cloud がサブスクリプション、管理グループ、またはリソースに対して行うセキュリティに関する推奨事項を微調整するには、次の除外規則を作成できます：
 
 - 特定の **推奨事項** をマークするか、"軽減済み" または "リスク承認済み" としてマークします。 サブスクリプション、複数のサブスクリプション、または管理グループ全体に対して推奨設定の除外を作成することができます。
 - 特定の推奨事項について、**1 つまたは複数のリソース** を "軽減済み" または "リスク承認済み" としてマークします。
 
 > [!NOTE]
-> 除外は、Security Center の既定のイニシアチブ、Azure セキュリティ ベンチマーク、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 サブスクリプションに割り当てられているカスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。
+> 除外は、Defender for Cloud の既定のイニシアチブ、Azure セキュリティ ベンチマーク、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 サブスクリプションに割り当てられているカスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。
 
 > [!TIP]
 > API を使用して除外を作成することもできます。 JSON の例と関連する構造の説明については、「[Azure Policy 適用除外の構造](../governance/policy/concepts/exemption-structure.md)」を参照してください。
@@ -82,9 +85,9 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
     除外対象が有効になるタイミング (最大で 30 分かかる場合がある):
     - 推奨事項またはリソースは、セキュリティ スコアには影響しません。
     - 特定のリソースを除外した場合は、推奨事項の詳細ページの **[適用外]** タブに表示されます。
-    - 推奨事項を除外した場合、Security Center の推奨事項ページでは既定で非表示になります。 これは、そのページの **推奨事項のステータス** フィルターの既定のオプションが、 **[適用外]** 推奨事項を除外するためのオプションではないからです。 セキュリティ コントロールのすべての推奨事項を除外する場合も同様です。
+    - 推奨事項を除外した場合は、Defender for Cloud の [推奨事項] ページで既定で非表示になります。 これは、そのページの **推奨事項のステータス** フィルターの既定のオプションが、 **[適用外]** 推奨事項を除外するためのオプションではないからです。 セキュリティ コントロールのすべての推奨事項を除外する場合も同様です。
 
-        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Azure Security Center の推奨事項ページの既定のフィルターで、適用外推奨事項とセキュリティ コントロールが非表示になります。":::
+        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Microsoft Defender for Cloud の [推奨事項] ページの既定のフィルターでは、該当しない推奨事項とセキュリティコントロールが非表示になります":::
 
     - 推奨事項の詳細ページの上部にある情報ストリップには、除外されたリソースの数が更新されます。
         
@@ -114,17 +117,17 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 ユーザーがこの機能をどのように使用しているかを追跡するために、Logic App Playbook をデプロイする Azure Resource Manager (ARM) テンプレートと、除外の作成時に通知するために必要なすべての API 接続を作成しました。
 
-- プレイブックの詳細については、テクニカル コミュニティのブログ投稿「[How to keep track of Resource Exemptions in Azure Security Center (Azure Security Center でリソースの除外を追跡する方法)](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)」を参照してください
-- ARM テンプレートは、[Azure Security Center GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)にあります。
+- プレイブックの詳細については、[Microsoft Defender for Cloud でリソースの除外を追跡する方法](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)に関するテクニカル コミュニティのブログ記事 を参照しくださいか。
+- ARM テンプレートは[Microsoft Defender for Cloud GitHub にあります](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)
 - 必要なすべてのコンポーネントをデプロイするには、[こちらの自動化されたプロセス](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)を使用してください
 
 ## <a name="use-the-inventory-to-find-resources-that-have-exemptions-applied"></a>インベントリを使用して除外が適用されているリソースを検索する
 
-Azure Security Center の資産インベントリ ページを使用すると、Security Center に接続したリソースのセキュリティ態勢が 1 つのページに表示されます。 詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
+Microsoft Defender for Cloud の資産インベントリ ページには、Defender for Cloud に接続したリソースのセキュリティ態勢を表示する 1 つのページが表示されます。 詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
 
 インベントリ ページにある多くのフィルターを使用して、リソースの一覧を、特定のシナリオに最も関係が深いものに絞り込むことができます。 そのようなフィルターの 1 つに **[適用除外を含む]** があります。 1 つまたは複数の推奨から除外されたすべてのリソースを検索するには、このフィルターを使用します。
 
-:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Security Center のアセット インベントリ ページと、適用除外されたリソースを検索するためのフィルター":::
+:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Defender for Cloud の資産インベントリ ページと、除外対象のリソースを検索するフィルター":::
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Azure Resource Graph を使用して除外対象の推奨事項を検索する
@@ -135,7 +138,7 @@ Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理�
 
 1. **Azure Resource Graph エクスプローラー** を開きます。
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
 
 1. 次のクエリを入力し、 **[クエリの実行]** を選択します。
 
@@ -182,15 +185,15 @@ Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理�
 
 場合によっては、複数のポリシー イニシアチブにセキュリティの推奨事項が表示されることがあります。 同じ推奨事項の複数のインスタンスが同じサブスクリプションに割り当てられていて、その推奨設定の除外対象を作成した場合は、編集権限があるすべてのイニシアチブに影響します。 
 
-たとえば、**** という推奨事項は、Azure Security Center によってすべての Azure サブスクリプションに割り当てられた既定のポリシー イニシアチブの一部だとします。 これが XXXXX にもあります。
+たとえば、推奨事項 **** は、Microsoft Defender for Cloud によってすべての Azure サブスクリプションに割り当てられる既定のポリシー イニシアチブの一部です。 XXXXX にも含があります。
 
 この推奨設定の除外を作成しようとすると、次の 2 つのメッセージのいずれかが表示されます。
 
-- 両方のイニシアチブを編集するために必要なアクセス許可がある場合は、次のように表示されます。
+- 両方の **イニシアティブ** を編集するために必要なアクセス許可がある場合は、次の内容が表示される：
 
     *この推奨事項は、「コンマで区切られたイニシアチブ名」といういくつかのポリシー イニシアチブに含まれています。除外はすべてのユーザーに対して作成されます。*  
 
-- 両方のイニシアチブに対する十分なアクセス許可がない場合は、代わりに次のメッセージが表示されます。
+- 両方の **イニシアチブに対して** 十分なアクセス許可がない場合は、代わりに次のメッセージが表示される：
 
     *すべてのポリシー イニシアチブに適用の除外を適用するにはアクセス許可が制限されているために、除外は十分なアクセス許可を持つイニシアチブに対してのみ作成されます。*
 
@@ -217,4 +220,4 @@ Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理�
 
 この記事では、セキュリティ スコアに影響しないように、リソースを推奨事項から除外する方法を学習しました。 セキュリティ スコアの詳細については、以下を参照してください。
 
-- [Azure Security Center 内のセキュリティ スコア](secure-score-security-controls.md)
+- [Microsoft Defender for Cloud のセキュリティで保護されたスコア](secure-score-security-controls.md)

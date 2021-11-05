@@ -3,12 +3,12 @@ title: ラボ作成チュートリアル
 description: このチュートリアルでは、Azure portal を使って Azure DevTest Labs のラボを作成します。 ラボの管理者は、ラボを設定し、ラボに VM を作成して、ポリシーを構成します。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 52640469ff02fd167b0add4210ddec11db05af97
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 239f92aa172e4239403869e488ec7c9348623009
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655602"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073124"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
 このチュートリアルでは、Azure portal を使ってラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 
@@ -73,18 +73,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>ユーザーをラボのユーザー ロールに追加する
 
-1. 左側のメニューで、 **[構成とポリシー]** を選びます。 
+1. [ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)または[所有者](../role-based-access-control/built-in-roles.md#owner)として、[Azure portal](https://portal.azure.com) にサインインします。
 
-    ![構成とポリシー](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. メニューから **[アクセス制御 (IAM)]** を選択し、ツール バーの **[+ ロール割り当ての追加]** を選択します。 
+1. 作成したラボを含むリソース グループを開きます
 
-    ![[ロール割り当ての追加] ボタン](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
-1. **[アクセス許可の追加]** ページで、次のようにします。
-    1. **[ロール]** で、 **[DevTest Labs ユーザー]** を選びます。 
-    2. 追加する **ユーザー** を選びます。 
-    3. **[保存]** を選択します。
+1. ナビゲーション メニューで **[アクセス制御 (IAM)]** を選択します。
 
-        ![ユーザーの追加](./media/tutorial-create-custom-lab/add-user.png)
+1. **[追加]**  >  **[ロール割り当ての追加]** の順に選択します。
+
+    ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. **[ロール]** タブで、 **[DevTest Labs ユーザー]** ロールを選択します。
+
+    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. **[メンバー]** タブで、目的のロールを割り当てるユーザーを選択します。
+
+1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 次のチュートリアルでは、ラボ ユーザーがラボ内の VM を要求して接続する方法を説明します。 そのチュートリアルを行わず、このチュートリアルで作成したリソースをクリーンアップする場合は、次の手順のようにします。 

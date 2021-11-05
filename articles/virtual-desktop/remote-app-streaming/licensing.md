@@ -1,5 +1,5 @@
 ---
-title: 'ユーザーごとのライセンスのアクセス料金: リモート アプリ ストリーミング用の Azure Virtual Desktop - Azure'
+title: リモート アプリ ストリーミングの Azure Virtual Desktop のユーザーごとのアクセス価格について - Azure
 description: リモート アプリ ストリーミングの Azure Virtual Desktop ライセンスに関する考慮事項を概説します。
 services: virtual-desktop
 author: Heidilohr
@@ -8,24 +8,29 @@ ms.topic: conceptual
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2fb4ec6ebe5960a6a782b3d76fe2aaec91603302
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 563d49ff66bdcd81a37a0bf1b12e910f16f2f5ff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798947"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036696"
 ---
 # <a name="understanding-licensing-and-per-user-access-pricing"></a>ライセンスとユーザーごとのアクセス価格について
 
 このアーティクルでは、Azure Virtual Desktop を使用して外部ユーザーにリモート アプリケーションをストリーミングするためのライセンス要件について説明します。 このアーティクルでは、外部ユーザー向け Azure Virtual Desktop のライセンスが内部ユーザー向けとどのように違うのか、ユーザーごとのアクセス料金の仕組みを詳しく説明し、Azure Virtual Desktop で使用する予定の他の製品のライセンスを取得する方法についても説明します。
 
-## <a name="licensing-azure-virtual-desktop-for-external-users"></a>外部ユーザー向け Azure Virtual Desktop のライセンス
+## <a name="internal-users-and-external-users"></a>内部ユーザーと外部ユーザー
 
-Azure Virtual Desktop を使用するには、2つの方法があります。 それぞれの方法には、さまざまなライセンス要件があります。
+Azure Virtual Desktop を使用した仮想化インフラストラクチャ提供のコンテキストでは、**内部ユーザー** は、企業の従業員や学校の学生など、自分の組織のメンバーであるユーザーを指します。 **外部ユーザー** は、組織のメンバーではありません (例: 企業の顧客など)。
 
-- RemoteApp とデスクトップを内部ユーザーにストリーミングします。 たとえば、製造会社 Fabrikam, Inc. は、Azure Virtual Desktop を使用して、Fabrikam の従業員に仮想ワークステーションや基幹業務アプリへのアクセスを提供する場合があります。 この場合、Fabrikam は、Azure Virtual Desktop にアクセスする各従業員について、[Azure Virtual desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)に記載されている対象ライセンスのいずれかを購入する必要があります。
+>[!NOTE]
+>外部 "*ユーザー*" と外部 "*ID*" を混同しないでください。 現在、Azure Virtual Desktop では、ゲスト アカウントまたは企業間 (B2B) ID を含む外部 ID はサポートされていません。 Azure Virtual Desktop を使用して内部ユーザーまたは外部ユーザーにサービスを提供する場合でも、それらのユーザーの ID を自分で作成して管理する必要があります。 ユーザーごとのアクセス価格は、Azure Virtual Desktop でゲスト ユーザー アカウントを有効にする方法ではありません。 詳細については、「[アーキテクチャの推奨事項](architecture-recs.md)」を参照してください。
 
-- Remoteapp とデスクトップを内部ユーザーにストリーミングします。 たとえば、Contoso というソフトウェア ベンダーが、Azure Virtual Desktop を使用して Contoso 社の顧客 (Contoso 社以外のユーザー) に対して Contoso の生産性アプリのリモート ストリームを提供する場合があります。 この場合、Contoso は Azure Virtual Desktop のユーザーごとのアクセス料金に登録する必要があります。 この種類のライセンスを使用すると、Contoso は、毎月 Azure Virtual Desktop にアクセスしたユーザー数に基づく Azure メーターを介して、それらのユーザーに代わって Azure Virtual Desktop のアクセス権を支払うことができます。 デプロイ内のユーザーには、Azure Virtual Desktop にアクセスするための Microsoft 365 のような別のライセンスは必要ありません。
+Azure Virtual Desktop のライセンスは、内部ユーザーと外部ユーザーで異なります。 次に例を示します。
+
+- Fabrikam, Inc. という製造会社は、Azure Virtual Desktop を使用して、Fabrikam の従業員 (内部ユーザー) に仮想ワークステーションや基幹業務アプリへのアクセスを提供する場合があります。 Fabrikam は内部ユーザーにサービスを提供しているため、Fabrikam は Azure Virtual Desktop にアクセスする各従業員について、「[Azure Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」に記載されている対象ライセンスのいずれかを購入する必要があります。
+
+- Contoso というソフトウェア ベンダーが、Azure Virtual Desktop を使用して Contoso 社の顧客 (外部ユーザー) に対して Contoso の生産性アプリのリモート ストリームを販売する場合があります。 Contoso 社が外部ユーザーにサービスを提供しているため、Contoso は Azure Virtual Desktop のユーザーごとのアクセス価格に登録する必要があります。 これにより Contoso は、Contoso のデプロイに接続する外部ユーザーの代わりに Azure Virtual Desktop アクセス権の支払いを行うことができます。 ユーザーには、Azure Virtual Desktop にアクセスするための Microsoft 365 のような別のライセンスは必要ありません。 ただ、Contoso は、これらの外部ユーザーの ID を作成および管理する必要があります。
 
 ## <a name="per-user-access-pricing-for-azure-virtual-desktop"></a>Azure Virtual Desktop のユーザーごとのアクセス価格に登録する方法
 
@@ -49,19 +54,19 @@ Azure Virtual Desktop では、特定の請求期間に、特定のユーザー�
 
 ## <a name="comparing-licensing-options"></a>ライセンスオプションの比較
 
-[Azure Virtual Desktop のユーザーごとのアクセス料金](#per-user-access-pricing-for-azure-virtual-desktop)で説明したように、Azure Virtual Desktop では次の 2 種類のライセンスを選択できます。
+Azure Virtual Desktop で選択できる 2 種類のライセンスの概要を次に示します。
 
-- Windows または Microsoft 365 ライセンス:
-   - 内部ユーザーのみに Azure Virtual Desktop アクセス権を付与します。
-   - サブスクリプションにより前払いされます。
-   - ユーザーの行動に関係なく、ユーザーごとに毎月同じコスト
-   - 他の Microsoft 製品およびサービスに対する権利を含む
+- Windows または Microsoft 365 の対象ライセンス:
+  - 内部ユーザーのみに Azure Virtual Desktop アクセス権を付与
+  - サブスクリプションを通じて前払い
+  - ユーザーの行動に関係なく、ユーザーごとに毎月同じコスト
+  - 他の Microsoft 製品およびサービスに対する権利を含む
 
 - ユーザーごとのアクセス料金:
-   - 内部ユーザーのみに Azure Virtual Desktop アクセス権を付与
-   - Azure メーターを使用した従量課金制
-   - ユーザーの行動に基づく毎月のユーザーあたりの動的コスト
-   - Azure Virtual Desktop へのアクセス権のみを含む
+  - 内部ユーザーのみに Azure Virtual Desktop アクセス権を付与
+  - Azure メーターを使用した従量課金制
+  - 毎月のユーザーごとのコストはユーザーの行動によって異なる
+  - Azure Virtual Desktop へのアクセス権のみを含む
 
 ## <a name="licensing-other-products-and-services-for-use-with-azure-virtual-desktop"></a>Azure Virtual Desktop で使用する他の製品とサービスのライセンス
 

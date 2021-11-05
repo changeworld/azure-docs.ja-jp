@@ -4,12 +4,12 @@ description: Azure Database for PostgreSQL のバックアップを復元する�
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: df48d37f61b910dd9e8396fb8460d98479186f9c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2eb0d8bd462c50a0da09b4da059d8c0d185dbd3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224032"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020523"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Azure Database for PostgreSQL のバックアップを復元する (プレビュー)
 
@@ -17,8 +17,7 @@ ms.locfileid: "130224032"
 
 ターゲット サーバーに対する適切な[一連のアクセス許可](backup-azure-database-postgresql-overview.md#azure-backup-authentication-with-the-postgresql-server)がサービスにある場合は、同じサブスクリプション内の任意の Azure PostgreSQL サーバーにデータベースを復元できます。
 
-## <a name="restore-a-database-on-the-target-storage-account"></a>ターゲット ストレージ アカウントにデータベースを復元する
-
+## <a name="restore-azure-postgresql-database"></a>Azure PostgreSQL データベースを復元する
 
 1. **[バックアップ コンテナー]**  ->  **[Backup Instances]\(バックアップ インスタンス\)** に移動します。 データベースを選択し、 **[復元]** をクリックします。
 

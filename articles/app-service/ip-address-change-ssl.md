@@ -4,16 +4,20 @@ description: TLS または SSL IP アドレスの変更が予定されている�
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3712931f73463ec1a799f003b82197752a735136
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: a370a2f1ad07b6f2ce4ea2e23f9132d46aadd044
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895285"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045655"
 ---
 # <a name="how-to-prepare-for-a-tlsssl-ip-address-change"></a>TLS または SSL IP アドレスの変更に備える方法
 
 お使いの Azure App Service アプリの TLS または SSL IP アドレスが変更されるという通知を受け取った場合は、この記事の手順に従って既存の TLS または SSL IP アドレスを解放し、新しいアドレスを割り当てます。
+
+> [!NOTE] 
+> 現在、サービス エンドポイントは、TLS/SSL バインディングで IP ベースの SSL を有効App Serviceサポートされていません。 
+
 
 ## <a name="release-tlsssl-ip-addresses-and-assign-new-ones"></a>TLS または SSL IP アドレスを解放し、新しいアドレスを割り当てる
 

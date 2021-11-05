@@ -1,30 +1,33 @@
 ---
-title: アラート抑制ルールを使用することにより、Azure Security Center で擬陽性や、その他の不要なセキュリティ アラートが発生するのを抑制できます。
-description: この記事では、Azure Security Center の抑制ルールを使用して、不要なセキュリティ アラートが表示されないようにする方法を説明します
+title: Microsoft Defender for Cloud の警告抑制ルールを使用して誤検知やその他の望ましくないセキュリティアラートを抑制する
+description: この記事では、クラウドの抑制規則に Microsoft Defender を使用して、不要なセキュリティ警告を非表示にする方法について説明します
 author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 02/17/2021
+ms.date: 10/18/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 6bf722279462c1f9b6d08830af19577ec218f756
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 03b1c1be820691fccb94a659e298d235874ad6ea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039146"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010595"
 ---
-# <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
+# <a name="suppress-alerts-from-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud からのアラートを抑制する
 
-このページでは、アラート抑制ルールを使用することにより、Azure Defender で擬陽性や他の不要なセキュリティ アラートが発生するのを抑制する方法について説明します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+このページでは、アラート抑制ルールを使用して、クラウドの Defender からの誤検知や望ましくないセキュリティアラートを抑制する方法について説明します。
 
 ## <a name="availability"></a>可用性
 
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|Free<br>(セキュリティ アラートのほとんどが Azure Defender でのみ使用できます)|
+|価格:|Free<br>(ほとんどのセキュリティアラートは、 [セキュリティが強化](enable-enhanced-security.md)された機能でのみ使用できます)|
 |必要なロールとアクセス許可:|**セキュリティ管理者** および **所有者** は、ルールを作成および削除できます。<br>**セキュリティ閲覧者** および **閲覧者** は、ルールを表示できます。|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
@@ -32,7 +35,7 @@ ms.locfileid: "130039146"
 
 ## <a name="what-are-suppression-rules"></a>抑制ルールとは
 
-さまざまな Azure Defender プランによって、ご自身の環境のあらゆる領域で脅威が検出され、セキュリティ アラートが生成されます。
+さまざまな Microsoft Defender プランによって、環境のあらゆる分野で脅威が検出され、セキュリティアラートが生成されます。
 
 1 つのアラートが特に注意する必要がないか無関係である場合は、手動で無視することもできます。 そうする代わりに、抑制ルール機能を使用して、今後は同様のアラートを自動的に無視することもできます。 通常は、次のような場合に抑制ルールを使用します。
 
@@ -43,7 +46,7 @@ ms.locfileid: "130039146"
 抑制ルールは、アラートが自動的に無視される条件を定義します。
 
 > [!CAUTION]
-> セキュリティ アラートを抑制すると、Azure Defender の脅威防止の効果が低下します。 抑制ルールを使用する場合は、その潜在的な影響を慎重に確認し、長期的に監視する必要があります。
+> セキュリティアラートを抑制すると、クラウドの脅威保護に対する Defender の有効性が低下します。 抑制ルールを使用する場合は、その潜在的な影響を慎重に確認し、長期的に監視する必要があります。
 
 :::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="アラート抑制ルールの作成。":::
 
@@ -58,7 +61,7 @@ ms.locfileid: "130039146"
 
 Azure portal で直接ルールを作成するには:
 
-1. Security Center の [セキュリティ アラート] ページから:
+1. [Defender for Cloud のセキュリティ警告] ページ:
 
     - 今後表示しない特定のアラートを選択し、詳細ウィンドウで **[アクションの実行]** を選択します。
 
@@ -87,7 +90,7 @@ Azure portal で直接ルールを作成するには:
 
 作成したルールを編集する場合は、[抑制ルール] ページを使用します。
 
-1. Security Center の [セキュリティ アラート] ページから、そのページの上部の **[抑制ルール]** リンクを選択します。
+1. Defender for Cloud のセキュリティ警告 ページで、ページの上部にある  **抑制規則** リンクを選択します。
 1. [抑制ルール] ページが開き、選択したサブスクリプションのすべてのルールが表示されます。
 
     [![抑制ルールの一覧。](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
@@ -99,7 +102,7 @@ Azure portal で直接ルールを作成するには:
 
 作成した 1 つまたは複数のルールを削除する場合は、[抑制ルール] ページを使用します。
 
-1. Security Center の [セキュリティ アラート] ページから、そのページの上部の **[抑制ルール]** リンクを選択します。
+1. Defender for Cloud のセキュリティ警告 ページで、ページの上部にある  **抑制規則** リンクを選択します。
 1. [抑制ルール] ページが開き、選択したサブスクリプションのすべてのルールが表示されます。
 1. 1 つのルールを削除する場合は、そのルールの省略記号メニュー (...) を開き、 **[削除]** を選択します。
 1. 複数のルールを削除する場合は、削除するルールのチェック ボックスを選択し、 **[削除]** を選択します。
@@ -107,7 +110,7 @@ Azure portal で直接ルールを作成するには:
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>API を使用して抑制ルールの作成および管理を行う
 
-Security Center REST API を使用して、アラート抑制ルールを作成、表示、または削除することができます。 
+クラウドの REST API に対して Defender を使用して、アラート抑制ルールを作成、表示、または削除することができます。 
 
 抑制ルールに関連する REST API の HTTP メソッドは次のとおりです。
 
@@ -128,8 +131,8 @@ Security Center REST API を使用して、アラート抑制ルールを作成�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、不要なアラートを自動的に無視する、Azure Security Center の抑制ルールについて説明しました。
+この記事では、不要なアラートを自動的に消去する Microsoft Defender for Cloud の抑制規則について説明します。
 
-Azure Defender セキュリティ アラートの詳細については、次のページを参照してください。
+セキュリティの警告の詳細については、次のページを参照してください。
 
-- [セキュリティ アラートと意図のキル チェーン](alerts-reference.md) - Azure Defender から取得する可能性があるセキュリティ アラートのリファレンス ガイドです。
+- [セキュリティの警告とインテントの強制終了チェーン](alerts-reference.md) -Defender for Cloud から得られるセキュリティの警告のリファレンスガイドです。

@@ -2,14 +2,14 @@
 author: russell-cooks
 ms.topic: include
 ms.service: azure-video-analyzer
-ms.date: 05/03/2021
+ms.date: 11/04/2021
 ms.author: juliako
-ms.openlocfilehash: 0847bff1925e465c076048db924ee80f5d976b0c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 50bc0dc30b14685747e24afc7bda2964e8fd2d37
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030114"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861124"
 ---
 ### <a name="get-the-sample-code"></a>サンプル コードを入手する
 

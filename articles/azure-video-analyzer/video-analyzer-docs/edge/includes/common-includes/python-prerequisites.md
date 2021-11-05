@@ -2,14 +2,14 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 11/04/2021
 ms.author: juliako
-ms.openlocfilehash: 080818b1007331172b3b5b2216bbad29742da44c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 81786caa2737fe2e5eed25ee4afa3d1e9ec06516
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030085"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861516"
 ---
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

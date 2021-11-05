@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 25e0b4d072f797ad7263c71645b30cbe1fa75131
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bf21fbec454dc16e00c67bb9885e5694ad73ed57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124817558"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
 

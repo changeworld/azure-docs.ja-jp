@@ -1,18 +1,18 @@
 ---
 title: Azure portal で IoT Central を管理して監視する | Microsoft Docs
-description: この記事では、Azure portal から IoT Central アプリケーションを作成、管理、監視する方法について説明します。
+description: この記事では、IoT Central アプリケーションを作成、管理、監視し、Azure portal からマネージド ID を有効にする方法について説明します。
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 57486312b380fc18cfdb399343535e5e12245bff
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 2d8ab101b39412d9345fa470d3b6584036990581
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091603"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084969"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理して監視する
 
@@ -71,6 +71,25 @@ Azure IoT Central アプリケーションが既にある場合は、それを�
 アプリケーションを別のサブスクリプションに移動するには、サブスクリプションの横にある **[変更]** を選択します。 **[リソースの移動]** ページで、このアプリケーションの移動先となるサブスクリプションを選択します。
 
 ![管理ポータル: リソースの管理](media/howto-manage-iot-central-from-portal/highlight-subscription.png)
+
+## <a name="configure-a-managed-identity"></a>マネージド ID の構成
+
+IoT Central アプリケーションでデータ エクスポートを構成する場合は、接続文字列またはマネージド ID を使用して、宛先への接続[を構成できます](../../active-directory/managed-identities-azure-resources/overview.md)。 マネージド ID を使用すると、宛先の資格情報をアプリケーションに格納する必要がなIoT Centralされます。 IoT Central は [、現在、システムによって割り当てられたマネージド id](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を使用します。 アプリケーションのマネージド ID を作成するには、アプリケーションまたはアプリケーションのAzure portalを使用REST API。
+
+> [!NOTE]
+> マネージド ID は、リージョン内に作成IoT Centralアプリケーションにのみ追加できます。 すべての新しいアプリケーションがリージョンに作成されます。 詳細については、「更新プログラム」を [参照してください](https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/)。
+
+管理対象 id を構成すると、その構成には *スコープ* と *ロール* が含まれます。
+
+* スコープでは、マネージド id を使用できる場所を定義します。 たとえば、Azure リソースグループをスコープとして使用できます。 この場合、IoT Central アプリケーションと宛先の両方が同じリソースグループに存在する必要があります。
+* ロールは、IoT Central アプリケーションが宛先サービスで付与するアクセス許可を定義します。 たとえば、IoT Central アプリケーションでイベントハブにデータを送信するには、 **Azure Event Hubs データ送信者** のロールの割り当てが必要です。
+
+[!INCLUDE [iot-central-managed-identity](../../../includes/iot-central-managed-identity.md)]
+
+ロールの割り当ては、次のAzure portal使用して構成Azure CLI。
+
+* 特定の宛先に対して Azure portal でロールの割り当てを構成する方法の詳細については、「データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする」 [を参照してください](howto-export-data.md)。
+* Azure CLI を使用してロールの割り当てを構成する方法の詳細については、「IoT Central または PowerShell からAzure CLI [を参照してください](howto-manage-iot-central-from-cli.md)。
 
 ## <a name="monitor-application-health"></a>アプリケーションの正常性を監視する
 

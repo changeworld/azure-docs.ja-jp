@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ec3ba6a71ea1430dc060d431776a31bc6c5e1b81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a82d67cf0bb1644e31ff3d87d315cd920a92749a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128547506"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074595"
 ---
 # <a name="migrate-automatically-from-azure-virtual-desktop-classic-preview"></a>Azure Virtual Desktop (クラシック) から自動的に移行する (プレビュー)
 
@@ -234,7 +234,7 @@ Azure Virtual Desktop (クラシック) リソースを Azure Resource Manager �
 
    ただし、このコマンドレットでは、このモジュールが作成したワークスペースやそれに関連付けられているリソース グループは削除されません。 それを削除するには、これらの項目を手動で削除する必要があります。
 
-6. Azure Virtual Desktop (クラシック) サービス オブジェクトはまだ削除しないが、移行をテストしたい場合は、**Set-RdsHostPoolHidden** を実行できます。
+6. Azure Virtual Desktop (クラシック) サービス オブジェクトをまだ削除しないが、移行をテストする場合は **、Set-RdsHostPoolHidden を実行できます**。
 
     次に例を示します。
 

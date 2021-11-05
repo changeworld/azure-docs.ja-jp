@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c6396eab9cb7a2224d660e0e034f8592a879510d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 408f55592ee7a192172c85e7a417db0b277f0f46
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688460"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054516"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
 
@@ -91,14 +91,14 @@ $ gfortran [gFortran flags]
 ```
    
 ### <a name="pgi-compiler"></a>PGI コンパイラ
-PGI Community Edition バージョン 17 は AMD EPYC で動作することが確認されています。 PGI コンパイル バージョンの STREAM は、プラットフォームの全メモリ帯域幅を提供します。 新しい Community Edition 18.10 (2018 年 11 月) も同様に機能するはずです。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
+PGI Community Edition 17 は、AMD EPYC と連携して動作することが確認されています。 PGI コンパイル バージョンの STREAM は、プラットフォームの全メモリ帯域幅を提供します。 新しい Community Edition 18.10 (2018 年 11 月) も同様に機能するはずです。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
 ### <a name="intel-compiler"></a>Intel コンパイラ
-Intel コンパイラ バージョン 18 は AMD EPYC で動作することが確認されています。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
+Intel Compiler 18 は、AMD EPYC で動作することが確認されています。 以下は Intel コンパイラで最適にコンパイルすることができるサンプル CLI です。
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp

@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 07/04/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: d274c06774377c7b70f3ba81fb1bacbaa2c837ea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9f22f21f5358dd6cdf798e64727fee510abed105
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091925"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437792"
 ---
 # <a name="permissions-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud のアクセス許可
 

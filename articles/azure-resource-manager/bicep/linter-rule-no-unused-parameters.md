@@ -3,16 +3,16 @@ title: リンター ルール - 未使用のパラメーターがない
 description: リンター ルール - 未使用のパラメーターがない
 ms.topic: conceptual
 ms.date: 10/14/2021
-ms.openlocfilehash: d02d13c44fd6cc6a174f629c8f3e32777bd643af
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 2e9c602a28b2ba19d8c0a38b1bba3ecc521e6d77
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161543"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017846"
 ---
 # <a name="linter-rule---no-unused-parameters"></a>リンター ルール - 未使用のパラメーターがない
 
-このルールでは、Bicep ファイル内のどこも参照していないパラメーターが検出されます。
+このルールは、Bicep ファイル内のどこにも参照されていないパラメーターを検索します。
 
 ## <a name="returned-code"></a>返されるコード
 

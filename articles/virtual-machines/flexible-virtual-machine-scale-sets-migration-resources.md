@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/14/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: b6cdeff69c1d9a919651d68b937af1c7b328edbe
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b4662c2fd6c5a0950bc3b2b6f336fabab12fc1aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257957"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008481"
 ---
 # <a name="migrate-deployments-and-resources-to-virtual-machine-scale-sets-in-flexible-orchestration"></a>フレキシブル オーケストレーションでデプロイとリソースを仮想マシン スケール セットに移行する 
 
@@ -86,23 +86,31 @@ ms.locfileid: "130257957"
 
 フレキシブル オーケストレーションを使用した仮想マシン スケール セットでは、[均一オーケストレーションの仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)のスケーラビリティと可用性セットのリージョンの可用性の保証を組み合わせることができます。 フレキシブル オーケストレーション モードを使用することを決定する際の主な考慮事項を次に示します。 
 
-### <a name="explicit-network-outbound-connectivity-required"></a>明示的なネットワーク送信接続が必要 
+### <a name="create-scalable-network-connectivity"></a>スケーラブルなネットワーク接続を作成する 
+<!-- the following is an important link to use in FLEX documentation to reference this section:
+/virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity
+-->
 
-既定のネットワーク セキュリティを強化するために、フレキシブル オーケストレーションを使用した仮想マシン スケール セットでは、自動スケール プロファイルを使用して暗黙的に作成されたインスタンスで、次のいずれかの方法を使用して送信接続を明示的に定義する必要があります。 
+ネットワーク送信アクセスの動作は、スケール セット内での仮想マシンの作成方法によって異なります。 **手動で追加された VM インスタンス** には、既定の送信接続アクセスがあります。 **暗黙的に作成された VM インスタンス** には、既定のアクセスがあります。 
+
+既定のネットワーク セキュリティを強化するために、**自動スケール プロファイルを使用して暗黙的に作成された仮想マシン インスタンスには、既定の送信アクセスはありません**。 暗黙的に作成された VM インスタンスで仮想マシン スケール セットを使用するには、次のいずれかの方法で送信アクセスを明示的に定義する必要があります。 
 
 - ほとんどのシナリオでは、[NAT Gateway をサブネットに接続する](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md)ことをお勧めします。
 - 高度なセキュリティ要件を持つシナリオの場合や、Azure Firewall またはネットワーク仮想アプライアンス (NVA) を使用する場合は、カスタムのユーザー定義ルートをファイアウォール経由のネクスト ホップとして指定できます。 
 - インスタンスは、Standard SKU Azure Load Balancer のバックエンド プールにあります。 
 - インスタンス ネットワーク インターフェイスにパブリック IP アドレスを接続します。 
 
-単一インスタンス VM と仮想マシン スケール セットを均一オーケストレーションで使用すると、送信接続が自動的に提供されます。 
-
 明示的な送信接続を必要とする一般的なシナリオには、次のものがあります。 
 
 - Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
 - ストレージ アカウントまたは Key Vault にアクセスする。 Azure サービスへの接続は、[プライベート リンク](../private-link/private-link-overview.md)を使用して確立することもできます。 
+- Windows の更新プログラム。
+- Linux パッケージ マネージャーへのアクセス。 
 
-セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](../virtual-network/ip-services/default-outbound-access.md)」を参照してください。
+送信接続の定義付けに関する詳細については、「[Azure での既定の送信アクセス](../virtual-network/ip-services/default-outbound-access.md)」を参照してください。
+
+NIC を明示的に作成する単一インスタンス VM では、既定の送信アクセスが提供されます。 統一オーケストレーション モードの仮想マシン スケール セットには、既定の送信接続も含まれます。 
+
 
 > [!IMPORTANT]
 > 明示的な送信ネットワーク接続があることを確認します。 詳細については、「[Azure の仮想ネットワークと仮想マシン](../virtual-network/network-overview.md)」を参照し、Azure のネットワークの[ベスト プラクティス](../virtual-network/concepts-and-best-practices.md)に従っていることを確認してください。 
@@ -155,17 +163,9 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 均一オーケストレーション モードのインスタンス向けの拡張機能でなく、標準の仮想マシン向けの拡張機能を使用します。
 
 
+### <a name="protect-instances-from-delete"></a>インスタンスを削除から保護する
 
-
-
-
-
-
-
-
-
-
-
+フレキシブル オーケストレーション モードの仮想マシン スケール セットには、現在、インスタンス保護オプションが設定されていません。 仮想マシン スケール セットで自動スケーリングを有効にしている場合、一部の VM は、スケールイン プロセス中に削除される危険性があります。 特定の VM インスタンスを削除から保護する場合は、[Azure Resource Manager ロック](../azure-resource-manager/management/lock-resources.md)を使用してください。
 
 
 

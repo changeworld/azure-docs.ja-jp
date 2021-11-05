@@ -7,12 +7,12 @@ ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 54917fced3fb561add82d8e1f78078e7562858e1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d9892efecf010ea698e9f628cd92308e9ac8608b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680454"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078505"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>IoT Central REST API を使用してユーザーとロールを管理する方法
 
@@ -233,4 +233,4 @@ DELETE https://{your app subdomain}.azureiotcentral.com/api/users/user-001?api-v
 
 ## <a name="next-steps"></a>次のステップ
 
-これで REST API を使用してユーザーとロールを管理する方法を学習したので、推奨される次のステップは「[IoT Central REST API を使用してデバイスを制御する方法](howto-control-devices-with-rest-api.md)」です。
+これで REST API を使用してユーザーとロールを管理する方法を学習したので、推奨される次のステップは「[IoT Central REST API を使用してデータのエクスポートを管理する方法](howto-manage-data-export-with-rest-api.md)」です。

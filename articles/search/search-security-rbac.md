@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: ceb65226c30d6ee9768388bb18807dd7cf6d6f85
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5318ee205c66757409b9e0ffd8de864bcb69689a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070586"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064983"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Azure Cognitive Search でロールベースの承認を使用する
 
@@ -21,10 +21,10 @@ Azure では、プラットフォームで実行されるすべてのサービ�
 
 + 一般提供のロールをサービス管理に使用する。
 
-+ [**要求によって入手できる**](https://aka.ms/azure-cognitive-search/rbac-preview)新しいプレビュー ロールをコンテンツ管理 (インデックスや他のトップレベル オブジェクトの作成と管理) に使用する。
++ コンテンツ管理 (インデックスおよびその他の最上位レベルのオブジェクトの作成と管理) に新しいプレビューロールを使用します。 [**プレビューで利用でき**](#step-1-preview-sign-up)ます。
 
 > [!NOTE]
-> Search サービス共同作成者は、"プレビュー" 機能を持つ "一般提供" のロールです。 これは、サービスとコンテンツ管理タスクの真のハイブリッドをサポートする唯一のロールであり、これにより、特定の検索サービスですべての操作を実行できます。 このロールのコンテンツ管理のプレビュー機能を入手するには、[**プレビューにサインアップ**](https://aka.ms/azure-cognitive-search/rbac-preview)します。
+> Search サービス共同作成者は、"プレビュー" 機能を持つ "一般提供" のロールです。 これは、サービスとコンテンツ管理タスクの真のハイブリッドをサポートする唯一のロールであり、これにより、特定の検索サービスですべての操作を実行できます。 このロールのコンテンツ管理のプレビュー機能を入手するには、[**プレビューにサインアップ**](#step-1-preview-sign-up)します。
 
 一部の RBAC シナリオは、サポートされて **いない** か、この記事で説明されていません。
 
@@ -47,7 +47,7 @@ Azure Cognitive Search で RBAC を使用する場合、リージョン、レベ
 | [所有者](../role-based-access-control/built-in-roles.md#owner) | サービス操作 (一般提供) | Azure ロールを割り当てる機能を含む、リソースへのフル アクセス。 サブスクリプション管理者は既定でメンバーになります。 |
 | [Contributor](../role-based-access-control/built-in-roles.md#contributor) | サービス操作 (一般提供) | ロールの割り当て、承認オプションの変更を除いて、所有者と同じアクセス レベル。 |
 | [Reader](../role-based-access-control/built-in-roles.md#reader) | サービス操作 (一般提供) | 一部のサービス情報へのアクセスが制限されています。 ポータルでは、閲覧者ロールはサービスの [概要] ページの [要点] セクションと [監視] タブで情報にアクセスできます。他のすべてのタブとページにはアクセスできません。 </br></br>このロールは、サービス情報 (リソース グループ、サービスの状態、場所、サブスクリプションの名前と ID、タグ、URL、価格レベル、レプリカ、パーティション、検索単位) にアクセスできます。 </br></br>また、このロールは、サービス メトリック (検索の待ち時間、調整された要求の割合、1 秒あたりの平均クエリ数) にもアクセスできます。 </br></br>API キー、ロールの割り当て、コンテンツ (インデックスまたは同意語マップ)、コンテンツ メトリック (使用されているストレージ、オブジェクトの数) にはアクセスできません。 |
-| [Search Service Contributor](../role-based-access-control/built-in-roles.md#search-service-contributor) | サービス操作 (一般提供)、およびトップレベルのオブジェクト (プレビュー) | このロールは、サービス レベルでの共同作成者の組み合わせですが、[`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) を介して、インデックス、同意語マップ、インデクサー、データソース、スキルセットですべてのアクションにフル アクセスできます。 このロールは、サービスを完全に管理する必要がある検索サービス管理者用です。 </br></br>共同作成者と同様、この役割のメンバーは、ロール割り当ての作成または管理を作成することも、承認オプションを変更することもできません。 |
+| [Search Service Contributor](../role-based-access-control/built-in-roles.md#search-service-contributor) | サービス操作 (一般提供)、およびトップレベルのオブジェクト (プレビュー) | このロールは、サービス レベルでの共同作成者の組み合わせですが、[`Microsoft.Search/searchServices/*`](../role-based-access-control/resource-provider-operations.md#microsoftsearch) を介して、インデックス、同意語マップ、インデクサー、データソース、スキルセットですべてのアクションにフル アクセスできます。 このロールは、サービスを完全に管理する必要がある検索サービス管理者用です。 </br></br>共同作成者と同様、この役割のメンバーは、ロール割り当ての作成または管理を作成することも、承認オプションを変更することもできません。 |
 | [検索インデックス データ共同作成者](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | ドキュメント コレクション (プレビュー) | 検索サービスですべてのインデックス内のコンテンツに対するフル アクセスを提供します。 このロールは、インデックスのドキュメント コレクションのインポート、更新、またはクエリを行う必要がある開発者またはインデックス所有者向けです。 |
 | [検索インデックス データ閲覧者](../role-based-access-control/built-in-roles.md#search-index-data-reader) | ドキュメント コレクション (プレビュー) | 検索サービスで検索インデックスへの読み取り専用アクセスを提供します。 このロールは、クエリを実行するアプリおよびユーザー向けです。 |
 
@@ -62,11 +62,18 @@ Azure Cognitive Search で RBAC を使用する場合、リージョン、レベ
 
 新しい組み込みプレビュー ロールを使用すると、検索サービスのコンテンツ全体に対するアクセス許可の詳細なセットが提供されます。 組み込みロールは Azure portal に常に表示されますが、これらを運用するには、サービス登録が必要です。
 
-プレビュー プログラムに登録するには、
+サブスクリプションをプレビューに追加するには、次のようにします：
 
-+ [このフォームに入力してください](https://aka.ms/azure-cognitive-search/rbac-preview)
+1. [Azure portal](https://portal.azure.com/)の **[サブスクリプション]** ページに移動します。
+1. 使用するサブスクリプションを選択します。
+1. サブスクリプション ページの左側で、 **プレビュー機能** を選択します。
+1. 検索バーまたはフィルターを使用して **Search Service のロールベースの Access Control** を検索して選択する (プレビュー)
+1. **[登録]** を選択して、サブスクリプションに機能を追加します。
 
-登録要求の処理には、最大で 2 営業日かかります。 サービスの準備ができたら、メールを受け取ります。
+![afec での rbac へのサインアップ](media/search-howto-aad/rbac-signup-afec.png)
+
+プレビュー機能の追加の詳細については、「 [Azure サブスクリプションでプレビュー機能を設定](../azure-resource-manager/management/preview-features.md?tabs=azure-portal)する」を参照してください。
+
 
 ## <a name="step-2-preview-configuration"></a>手順 2: プレビューの構成
 
@@ -218,7 +225,7 @@ New-AzRoleAssignment -SignInName <email> `
 
   :::image type="content" source="media/search-security-rbac/rest-authorization-header.png" alt-text="Authorization ヘッダーを含む HTTP 要求のスクリーンショット" border="true":::
 
-特定の環境のトークンを取得する方法の詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](/azure/active-directory/develop/reference-v2-libraries)」を参照してください。
+特定の環境のトークンを取得する方法の詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](../active-directory/develop/reference-v2-libraries.md)」を参照してください。
 
 ### <a name="net-sdk"></a>[ **.NET SDK**](#tab/test-dotnet)
 

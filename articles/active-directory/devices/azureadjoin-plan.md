@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3eb56d9de903fc6013600908e3b44e8e0f547ed
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28a6ca16de88df5bde2b003879814c032ed0c519
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618117"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049959"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -84,7 +84,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 スマートカードまたは証明書ベースの認証を使用して、Azure AD にデバイスを参加させることはできません。 ただし、AD FS を構成してある場合は、スマートカードを使用して Azure AD 参加済みデバイスにサインインすることができます。
 
-**推奨事項:** Windows 10 デバイスに対する強力なパスワードなしの認証用に Windows Hello for Business を実装してください。
+**推奨事項:** Windows 10 以上のデバイスに対する強力なパスワードなしの認証用に Windows Hello for Business を実装してください。
 
 ### <a name="user-configuration"></a>ユーザー構成
 
@@ -103,8 +103,8 @@ UPN の変更は、Windows 10 2004 Update 以降でのみサポートされま�
 
 Azure AD 参加:
 
-- Windows 10 デバイスに対してのみ適用されます。 
-- 以前のバージョンの Windows や他のオペレーティング システムには適用されません。 Windows 7/8.1 デバイスを使用している場合は、Windows 10 にアップグレードして Azure AD 参加をデプロイする必要があります。
+- Windows 10 と Windows 11 のデバイスに適用されます。 
+- 以前のバージョンの Windows や他のオペレーティング システムには適用されません。 Windows 7 または 8.1 のデバイスを使用している場合は、Windows 10 以上にアップグレードして Azure AD 参加をデプロイする必要があります。
 - FIPS 準拠の TPM 2.0 でサポートされていますが、TPM 1.2 ではサポートされていません。 FIPS 準拠の TPM 1.2 がデバイスにある場合は、Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
  
 **推奨事項:** 更新された機能を利用するために、常に最新の Windows 10 リリースを使用してください。

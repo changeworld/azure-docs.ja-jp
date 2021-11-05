@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc123b47ed10252b050743955015b89d434a42b0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1899da83ff4e963c6fecf371f6d888b5bb120e7a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218075"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070472"
 ---
 # <a name="update-iot-edge"></a>IoT Edge を更新する
 
@@ -125,6 +125,8 @@ IoT Edge の最新バージョンに更新する場合は、次のコマンド�
 
 >[!NOTE]
 >現在、Linux for Windows 仮想マシン上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+>
+>Windows 上の Linux 用の IoT Edgeを更新する手順については、「IoT Edge [1.1 」を参照してください](?view=iotedge-2018-06&preserve-view=true&tabs=linuxonwindows)。
 
 :::moniker-end
 <!-- end 1.2 -->
@@ -162,6 +164,8 @@ IoT Edge for Linux on Windows の更新プログラムを受信するには、�
 
 >[!NOTE]
 >現在、Windows デバイス上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+>
+>Windows 上の Linux 用の IoT Edgeを更新する手順については、「IoT Edge [1.1 」を参照してください](?view=iotedge-2018-06&preserve-view=true&tabs=windows)。
 
 :::moniker-end
 <!-- end 1.2 -->

@@ -1,5 +1,5 @@
 ---
-title: Key Vault への Azure Policy の実装に関する問題のトラブルシューティング
+title: Key Vault での Azure Policy の実装に関する問題のトラブルシューティング
 description: Key Vault への Azure Policy の実装に関する問題のトラブルシューティング
 author: sebansal
 ms.author: sebansal
@@ -7,14 +7,14 @@ ms.date: 08/17/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8b6084f411ec948eb7655c5c7c6b54bf7d2e2c30
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 380077339920071fa56d385e6de8f7e7a9e84321
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858983"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072543"
 ---
-# <a name="troubleshooting-issues-with-implementing-azure-policy-on-key-vault"></a>Key Vault への Azure Policy の実装に関する問題のトラブルシューティング
+# <a name="troubleshoot-issues-with-implementing-azure-policy-on-key-vault"></a>Key Vault での Azure Policy の実装に関する問題のトラブルシューティング
 
 この記事では、[Key Vault 用の Azure Policy](./azure-policy.md) を設定するときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明し、それらを解決する方法を提案します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "129858983"
 > 
 > 
 
-個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 キー ポリシーのログ エントリの例として、"[キーには有効期限が設定されている必要がある](azure-policy.md?tabs=keys#secrets-should-have-expiration-date-set-preview)" を使用します。 このポリシーによって、キー コンテナー内のすべてのキーが評価され、有効期限が設定されていないキーには非準拠というフラグが設定されます。
+個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 キー ポリシーのログ エントリの例として、"[キーには有効期限が設定されている必要がある](azure-policy.md?tabs=keys#secrets-should-have-expiration-date-set)" を使用します。 このポリシーによって、キー コンテナー内のすべてのキーが評価され、有効期限が設定されていないキーには非準拠というフラグが設定されます。
 
 ```json
 {
@@ -77,8 +77,14 @@ ms.locfileid: "129858983"
 | **ObjectName** |オブジェクトの名前 |
 | **ObjectType** |キー コンテナー オブジェクトの種類 (つまり、証明書、シークレット、またはキー) |
 | **IsComplianceCheck** |夜間監査中に評価が発生した場合は true、リソースの作成または更新中に評価が発生した場合は false |
-| **Outcome** | ポリシーの評価を返します |
-| **ExpressionEvaluationDetails** | 評価フィールド、式の値の詳細 |
+| **AssignmentId** | ポリシー割り当ての ID |
+| **AssignmentDisplayName** | ポリシー割り当てのフレンドリ名 |
+| **DefinitionId** | 割り当てのポリシー定義の ID |
+| **DefinitionDisplayName** | 割り当てのポリシー定義のフレンドリ名 |
+| **Outcome** | ポリシー評価の結果 |
+| **ExpressionEvaluationDetails** | ポリシーの評価中に実行される評価の詳細 |
+| **ExpressionValue** | ポリシー評価中の指定されたフィールドの実際の値 |
+| **TargetValue** | 指定されたフィールドの予期される値 |
 
 
 ### <a name="frequently-asked-questions"></a>よく寄せられる質問

@@ -8,16 +8,19 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/25/2021
 ms.custom: devx-track-java, subject-rbac-steps
-ms.openlocfilehash: ce5905b43d37faf3b1a6965ae04efb9f8f73c2ff
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 9c4a5715af9fe98f5e577410219a54368c27b6df
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835882"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054877"
 ---
 # <a name="access-config-server-and-service-registry"></a>Config Server とサービス レジストリにアクセスする
 
 この記事では、Azure Active Directory (Azure AD) のロールベースのアクセス制御 (RBAC) を使用して、Azure Spring Cloud によって管理されている Spring Cloud Config Server と Spring Cloud サービス レジストリ にアクセスする方法について説明します。
+
+> [!NOTE]
+> Azure Spring Cloudサービス内にデプロイおよび実行されているアプリケーションは、管理対象のSpring Cloud Configサーバーおよびサービスレジストリにアクセスするときに、証明書ベースの認証と承認に自動的に接続されます。 これらのアプリケーションについては、このガイダンスに従う必要があります。 関連する証明書は Azure Spring Cloud プラットフォームによって完全に管理され、Config Server および Service Registry に接続すると、アプリケーションに自動的に挿入されます。
 
 ## <a name="assign-role-to-azure-ad-usergroup-msi-or-service-principal"></a>Azure AD ユーザーまたはグループ、MSI、またはサービス プリンシパルにロールを割り当てる
 

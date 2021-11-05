@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/17/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1713d3091794ed95438a5e9d7944b3f5ee41f5ee
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 650ccc08d5cec7e037a6203f71ac8429f1bc2bf0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131792"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078999"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -201,7 +201,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 
 ワークスペースベースの Application Insights のリソース (`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents`、`AppTraces`) のデータの種類も既定では無料で 90 日間保持されます。 保持期間は、データの種類別のリテンション期間によって調整できます。 
 
-Log Analytics [消去 API](/rest/api/loganalytics/workspacepurge/purge) はデータ保有の課金に影響せず、非常に限られたケースでの使用が意図されています。 データ保有の課金を減らすには、ワークスペースか特定のデータ型に対してリテンション期間を短縮する必要があります。 
+Log Analytics [消去 API](/rest/api/loganalytics/workspacepurge/purge) はデータ保有の課金に影響せず、非常に限られたケースでの使用が意図されています。 データ保有の課金を減らすには、ワークスペースか特定のデータ型に対してリテンション期間を短縮する必要があります。 Log Analytics と Application インサイト に格納されている個人データの管理[の詳細を確認してください](./personal-data-mgmt.md)。
 
 ### <a name="retention-by-data-type"></a>データの種類別のリテンション期間
 

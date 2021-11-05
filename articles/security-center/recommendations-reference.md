@@ -1,28 +1,30 @@
 ---
-title: Azure Security Center のすべての推奨事項の参照テーブル
-description: この記事では、お使いのリソースを堅牢化および保護するのに役立つ Azure Security Center のセキュリティに関する推奨事項の一覧を示します。
+title: Microsoft Defender for Cloud に関するすべての推奨事項のリファレンス表
+description: この記事では、リソースの強化と保護に役立つ Microsoft Defender for Cloud のセキュリティに関する推奨事項を示します。
 author: memildin
 ms.service: security-center
 ms.topic: reference
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: a1fd045bebf4a5821d9f411f409d301b5d2c453d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 34f970884c97105a3831734cf672376e17f43a98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536931"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014469"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
-この記事では、Azure Security Center に表示される可能性のある推奨事項の一覧を示します。 お使いの環境に示される推奨事項は、保護しているリソースとご自分でカスタマイズした構成によって異なります。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Security Center の推奨事項は、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)に基づいています。 Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
+この記事では、Microsoft Defender for Cloud に表示される推奨事項の一覧を示します。 お使いの環境に示される推奨事項は、保護しているリソースとご自分でカスタマイズした構成によって異なります。
 
-これらの推奨事項に対応する方法については、[Azure Security Center での推奨事項の修復](security-center-remediate-recommendations.md)に関するページを参照してください。
+Defender for Cloud の推奨事項は、 [Azure のセキュリティベンチマーク](../security/benchmarks/introduction.md)に基づいています。 Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 
-ご自身のセキュア スコアは、完了した Security Center の推奨事項の数に基づきます。 最初に解決すべき推奨事項を決定するには、それぞれの重大度と、セキュア スコアに対する潜在的な影響を確認します。
+これらの推奨事項に対応する方法については、「 [Microsoft Defender For Cloud での推奨事項の修復](implement-security-recommendations.md)」を参照してください。
+
+セキュリティで保護されたスコアは、完了したクラウドの推奨事項に対する Defender の数に基づいています。 最初に解決すべき推奨事項を決定するには、それぞれの重大度と、セキュア スコアに対する潜在的な影響を確認します。
 
 > [!TIP]
 > 推奨事項の説明に "関連ポリシーなし" と表示されている場合、その理由は通常、その推奨事項が別の推奨事項と _その_ ポリシーに依存しているためです。 たとえば、「…で Endpoint Protection の正常性エラーを修復する必要があります」という推奨事項は、エンドポイント保護ソリューションが _インストール済み_ であるかどうかを確認する推奨事項 (「エンドポイント保護ソリューションを...インストールする必要がある」) に依存しています。 基になる推奨事項にはポリシーが _存在します_。
@@ -73,4 +75,4 @@ Security Center の推奨事項は、[Azure セキュリティ ベンチマー�
 推奨事項の詳細については、以下を参照してください。
 
 - [セキュリティ ポリシー、イニシアティブ、および推奨事項とは](security-policy-concept.md)
-- [セキュリティの推奨事項を確認する](security-center-recommendations.md)
+- [セキュリティの推奨事項を確認する](review-security-recommendations.md)

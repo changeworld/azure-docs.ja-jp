@@ -4,14 +4,14 @@ description: Azure Cosmos DB がデータベースの保護とデータのセキ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/25/2021
 ms.author: mjbrown
-ms.openlocfilehash: 818c380d1ec2b3d7095eccec94b8e6f324cb45d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f6851fa1e129522afbf59b6d1035029e72b231b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615011"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086528"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "128615011"
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。|
 |ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、US Gov など) に対するデータ ガバナンスを保証します。|
 |施設の保護|Azure Cosmos DB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
-|HTTPS/SSL/TLS の暗号化|Azure Cosmos DB へのすべての接続で HTTPS がサポートされます。 Azure Cosmos DB では TLS 1.2 もサポートされます。<br>サーバー側で最低限の TLS バージョンを強制できます。 それを行うには、[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) にお問い合わせください。|
+|HTTPS/SSL/TLS の暗号化|Azure Cosmos DB へのすべての接続で HTTPS がサポートされます。 Azure Cosmos DB では TLS 1.2 もサポートされます。<br>サーバー側で最低限の TLS バージョンを強制できます。 これを行うには、 [Azure サポートチケット](https://azure.microsoft.com/support/options/)を開きます。|
 |保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](./database-encryption-at-rest.md)に関するページを参照してください。|
 |サーバーへの修正プログラムの適用|管理されたデータベースとして、Azure Cosmos DB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって Azure Cosmos DB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> TLS と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|

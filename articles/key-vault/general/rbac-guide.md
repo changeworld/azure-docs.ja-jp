@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34938a6d5e52912db8d82b39bed3fdbad9f4814c
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: c92b17158beee9d1f6c60becb858564555bf56bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859022"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048446"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
@@ -35,9 +35,8 @@ Azure RBAC モデルには、さまざまなスコープ レベル (管理グル
 
 個々のキー、シークレット、および証明書のアクセス許可は、次のように特定のシナリオにのみ使用するようにします。
 
--   レイヤー間でアクセス制御を分離する必要があるマルチレイヤー アプリケーション
-
--   複数のアプリケーション間での個々のシークレットの共有
+-   複数のアプリケーションなど間に個々のシークレットを共有するアプリケーションが他のアプリケーションのデータにアクセスする必要がある
+-   顧客キーを使用したテナント間の暗号化  にーコンテナーのキー顧客キやISVなどを使用してデータを暗号化する
 
 Azure Key Vault 管理ガイドラインの詳細については、以下を参照してください。
 

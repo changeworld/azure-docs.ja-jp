@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/01/2019
+ms.date: 10/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9d1ef18a0cd7852227e50b116ec6ff9c1b1250
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dc56bcf1407180aefa5ac888669f1eb2db37fbad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732694"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032194"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -118,6 +119,10 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティの状態**:
   * _成功_:管理者がユーザーのパスワードのリセットに成功したことを示します。
   * _失敗_:管理者がユーザーのパスワードの変更に失敗したことを示します。 この行を選択すると、 **[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+- **アクティビティの追加詳細 OnPremisesAgent**:
+  - _None_: クラウドのみのリセットを示します。
+  - _AAD Connect_: Azure AD Connect 書き戻しエージェントを介してオンプレミスでパスワードがリセットされたことを示します。
+  - _cloudsync_: Azure AD cloudsync 書き戻しエージェントを介してオンプレミスでパスワードがリセットされたことを示します。
 
 ### <a name="activity-type-reset-password-self-service"></a>アクティビティの種類: パスワードのリセット (セルフサービス)
 

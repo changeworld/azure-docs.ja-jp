@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe41b61a21aea87a35446f1b5c7052f62595b29
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 1a139ffb47ad9f92cdb275191fc3eb983523c72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046622"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046334"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>アプリケーション向けの Azure Active Directory セキュリティ運用ガイド
 
@@ -181,7 +181,7 @@ Azure Key Vault を設定した後、必ず[ログ記録を有効](../../key-vau
 | [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | ダングリング URI| 高| Azure AD ログとアプリケーションの登録| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションの更新<br>成功 – プロパティ名 AppAddress| 存在しなくなったドメイン名や明示的に所有していないドメイン名を指すなど、宙ぶらりんの URI を探します。 |
-| リダイレクト URI 構成の変更| 高| Azure AD ログ| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションの更新<br>成功 – プロパティ名 AppAddress| HTTPS* を使用していない URI、URL の末尾またはドメインにワイルドカードを含む URI、アプリケーションに固有ではない URI、ご自分が制御していないドメインを指す URI を探します。 |
+| リダイレクト URI 構成の変更| 高| Azure AD ログ| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションの更新<br>成功 – プロパティ名 AppAddress| HTTPS * を使用しない Uri、末尾または URL のドメインにワイルドカードを含む URIs、アプリケーションに固有ではない URIs、制御しないドメインを指す URIs などを検索します。 |
 
 これらの変更が検出されたときは常にアラートを生成します。
 

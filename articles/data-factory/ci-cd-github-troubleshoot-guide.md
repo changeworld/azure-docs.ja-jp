@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
-ms.openlocfilehash: afba2903fc01a8f6e866f91074bdefa427dff7aa
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/25/2021
+ms.openlocfilehash: 1c73346cde1eb20f17973b65e43a8d1c4148b41c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217971"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073246"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での CI-CD、Azure DevOps、GitHub に関する問題のトラブルシューティング 
 
@@ -298,6 +298,29 @@ DevOps を使用して発行すると、"[" が余分にもう 1 つ表示され
 #### <a name="resolution"></a>解決策
 
 親パイプラインの新しい実行は自動的に成功し始めるため、通常、特に対処する必要はありません。 ただし、このようなエラーを防ぐには、お客様が作成やデプロイを計画するときに、破壊的変更が発生しないように依存関係を考慮する必要があります。 
+
+### <a name="cannot-parameterize-integration-run-time-in-linked-service"></a>リンクされたサービスで統合ランタイムをパラメーター化できない
+
+#### <a name="issue"></a>問題
+リンクされたサービス統合のランタイムをパラメーター化する必要がある
+
+#### <a name="cause"></a>原因
+この機能はサポートされていません。 
+
+#### <a name="resolution"></a>解決方法
+手動で選択し、統合ランタイムを設定する必要があります。 PowerShell API を使用して変更することもできます。  この変更は、ダウンストリームに影響を与える可能性があります。 
+
+### <a name="updatechange-integration-runtime-during-cicd"></a>CI/CD 中に統合ランタイムを更新/変更します。 
+ 
+#### <a name="issue"></a>問題
+CI/CD のデプロイ中に統合ランタイム名を変更する。  
+ 
+#### <a name="cause"></a>原因
+エンティティ参照のパラメーター化 (リンクされたサービスの統合ランタイム、アクティビティ内のデータセット、データセット内のリンクされたサービス) はサポートされていません。  デプロイ中にランタイム名を変更すると、依存リソース (統合ランタイムを参照するリソース) の形式が無効な参照で無効になります。  
+ 
+#### <a name="resolution"></a>解決方法
+Data Factory、CI/CD のすべてのステージで同じ名前と種類の統合ランタイムを使用する必要があります。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

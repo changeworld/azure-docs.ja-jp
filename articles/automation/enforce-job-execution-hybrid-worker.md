@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36ead3f16a04055e7056c702b0600265dd8e61ce
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ced119e7835f6c7fd7bf6aea34a10ebea4af3fc5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483584"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026281"
 ---
 # <a name="use-azure-policy-to-enforce-job-execution-on-hybrid-runbook-worker"></a>Azure Policy を使用して Hybrid Runbook Worker でジョブの実行を適用する
 
@@ -140,15 +140,15 @@ Azure Policy リソースへのアクセス許可を得るには、サブスク�
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-   az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
-   ```
+    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
+    ```
 
-   `az policy assignment create` の **scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの **リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+    `az policy assignment create` の **scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの **リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
-   - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - リソース グループ - `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - サブスクリプション - `/subscriptions/{subID}`
-   - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
+    - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+    - リソース グループ - `/subscriptions/{subID}/resourceGroups/{rgName}`
+    - サブスクリプション - `/subscriptions/{subID}`
+    - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
     Azure Policy の定義 ID は、PowerShell で次のコマンドを実行して取得できます。
     

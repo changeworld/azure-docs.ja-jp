@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: 67eeae96e7965db1eb92f34f23ca6d8745aaac3a
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 07ce4db1e3cca141ccbddde61f9dc196da801698
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707980"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044457"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインのグループ ポリシーを管理する
 
@@ -24,6 +24,8 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 ハイブリッド環境では、オンプレミスの AD DS 環境内で構成されているグループ ポリシーは、Azure AD DS に同期されません。 Azure AD DS のユーザーまたはコンピューターの構成設定を定義するには、既定のいずれかの Gpo を編集するか、カスタム GPO を作成します。
 
 この記事では、グループ ポリシーの管理ツールをインストールし、組み込みの GPO を編集して、カスタム GPO を作成する方法について説明します。
+
+Azure のマシンやハイブリッド接続を含むサーバー[管理](../governance/policy/how-to/guest-configuration-create-group-policy.md)戦略に関心がある場合は、[グループ ポリシー コンテンツを](../azure-arc/servers/overview.md) Azure Policy [のゲスト構成](../governance/policy/concepts/guest-configuration.md)機能に変換する方法を参照[してください](../governance/policy/overview.md)。
 
 ## <a name="before-you-begin"></a>開始する前に
 

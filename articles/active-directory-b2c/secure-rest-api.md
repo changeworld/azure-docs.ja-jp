@@ -3,21 +3,21 @@ title: Azure AD B2C で API コネクタとして使用される API をセキ�
 titleSuffix: Azure AD B2C
 description: Azure AD B2C で API コネクタとして使用されるカスタム RESTful API をセキュリティで保護します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/25/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f77c099425aac4f6484db8745e036a6dd1833ed4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2166b2c730a6101c59dddc38ad9a09c809f4eab2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578947"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040492"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Azure AD B2C で API コネクタとして使用される API をセキュリティで保護する 
 
@@ -43,7 +43,7 @@ HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義�
 HTTP 基本認証を使用して API コネクタを構成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
+2. **[Azure サービス] で** **、B2C Azure AD選択するか、B2C** を検索 **Azure AD選択します**。
 3. **[API コネクタ]** を選択し、構成する **[API コネクタ]** を選択します。
 4. **[認証の種類]** で、 **[基本]** を選択します。
 5. REST API エンドポイントの **[ユーザー名]** と **[パスワード]** を指定します。

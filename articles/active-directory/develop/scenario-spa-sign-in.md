@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 858234982aa4a148fe6af71ba8993923e80044dd
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2fa29b8cfd15ccee133ef416d729c1807aa0a400
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230189"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017922"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -456,7 +456,7 @@ function App() {
 
 ## <a name="sign-out-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してサインアウトする
 
-MSAL.js v2 には `logoutPopup` メソッドが用意されています。このメソッドでは、ブラウザー ストレージのキャッシュをクリアし、Azure Active Directory (Azure AD) サインアウト ページへのリンクを含むポップアップ ウィンドウを開くことができます。 サインアウトすると、Azure AD によってポップアップが元のアプリケーションにリダイレクトされ、MSAL.js によってポップアップが閉じられます。
+MSAL.js v2 には `logoutPopup` メソッドが用意されています。このメソッドでは、ブラウザー ストレージのキャッシュをクリアし、Azure Active Directory (Azure AD) サインアウト ページへのリンクを含むポップアップ ウィンドウを開くことができます。 サインアウト後、Azure AD によってアプリケーションにポップアップがリダイレクトされ、MSAL.js がポップアップを閉じます。
 
 `postLogoutRedirectUri` を設定すると、サインアウト後に Azure AD によってリダイレクトされる URI を構成することができます。 この URI は、アプリケーションの登録でリダイレクト URI として登録する必要があります。
 

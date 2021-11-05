@@ -2,18 +2,21 @@
 title: Azure Application Insights を使用して ASP.NET に監視を構成する | Microsoft Docs
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/12/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a0a262564306448fd587a699b24982595506df50
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: c1609e40d83e7064f7a840e178333a229d12083f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740704"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070016"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を構成する
 
 この手順では、Azure Monitor サービスの [Application Insights](./app-insights-overview.md) 機能にテレメトリを送信するように、ASP.NET Web アプリを構成します。 これは、オンプレミスの独自の IIS サーバーまたはクラウドでホストされている ASP.NET アプリに対して機能します。 
+
+> [!NOTE]
+> プレビューの [OpenTelemetry ベースの .NET オファリングを](opentelemetry-enable.md?tabs=net) 利用できます。 [詳細については、こちらを参照してください](opentelemetry-overview.md)。
 
 ## <a name="prerequisites"></a>前提条件
 ASP.NET Web サイトに Application Insights を追加するうえで必要なことは次のとおりです。
@@ -51,6 +54,7 @@ ASP.NET Web サイトに Application Insights を追加するうえで必要な�
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
+
 4. **[プロジェクト]**  >  **[NuGet パッケージの管理]**  >  **[更新]** を選択します。 次に、各 `Microsoft.ApplicationInsights` NuGet パッケージを最新の安定版リリースに更新します。   
 5. **[IIS Express]** を選択してアプリケーションを実行します。 基本的な ASP.NET アプリが開きます。 サイトでページを移動して閲覧すると、テレメトリが Application Insights に送信されます。
 

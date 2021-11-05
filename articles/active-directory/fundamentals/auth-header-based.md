@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72651ac47ebf3f67a8ee3aae9f71a533ded53a83
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 99cf28c88b3c94fad5e9abe7eaee1e11bcfacbe6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954978"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052372"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory を使用したヘッダーベースの認証
 
-一般に、レガシ アプリケーションではヘッダーベースの認証が使用されます。 このシナリオでは、ユーザー (またはメッセージの発信者) が中間 ID ソリューションへの認証を行います。 中間ソリューションでは、ユーザーが認証され、必要なハイパーテキスト転送プロトコル (HTTP) ヘッダーが宛先 Web サービスに伝達されます。 Azure Active Directory (AD) では、このパターンがアプリケーション プロキシ サービスを使用してサポートされ、他のネットワーク コントローラー ソリューションに統合されます。 
+一般に、レガシ アプリケーションではヘッダーベースの認証が使用されます。 このシナリオでは、ユーザー (またはメッセージの発信者) が中間 id ソリューションに対して認証を行います。 中間ソリューションでは、ユーザーが認証され、必要なハイパーテキスト転送プロトコル (HTTP) ヘッダーが宛先 Web サービスに伝達されます。 Azure Active Directory (AD) では、このパターンがアプリケーション プロキシ サービスを使用してサポートされ、他のネットワーク コントローラー ソリューションに統合されます。
 
 このソリューションでは、アプリケーション プロキシからアプリケーションへのリモート アクセスが提供され、ユーザーが認証されると、アプリケーションに必要なヘッダーが渡されます。 
 

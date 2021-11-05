@@ -3,22 +3,22 @@ title: Azure Active Directory B2C を SAML IdP としてアプリケーション
 title-suffix: Azure Active Directory B2C
 description: アプリケーション (サービス プロバイダー) に SAML プロトコル アサーションを提供するように Azure Active Directory B2C を構成する方法について学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/05/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 673835a3e3112bf433faeba815e65c6203dd9ce8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d0bc55f909fe019dedb92d20cce0584ea5d33768
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603811"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012816"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -179,7 +179,7 @@ SAML トークン発行者の技術プロファイルで、`IssuerUri` メタデ
 
 1. 任意のエディターで *SignUpOrSigninSAML* ファイルを開きます。
 
-1. ポリシーの `PolicyId` および `PublicPolicyUri` の値を `_B2C_1A_signup_signin_saml_` および `http://<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin_saml` に変更します。
+1. ポリシーの `PolicyId` および `PublicPolicyUri` の値を `B2C_1A_signup_signin_saml` および `http://<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin_saml` に変更します。
 
     ```xml
     <TrustFrameworkPolicy
@@ -317,7 +317,10 @@ SAML アプリの場合、アプリケーションの登録のマニフェスト
 
 SAML アプリケーションで Azure AD B2C に対して要求が行われると、SAML AuthN 要求に `Issuer` 属性が含まれます。 この属性の値は、通常、アプリケーションのメタデータ `entityID` 値と同じです。 Azure AD B2C では、この値を使用して、ディレクトリ内でアプリケーションの登録を検索し、構成を読み取ります。 この検索を成功させるには、アプリケーションの登録内の `identifierUri` に、`Issuer` 属性と一致する値を設定する必要があります。
 
-登録マニフェストで、`identifierURIs` パラメーターを見つけて、適切な値を追加します。 この値は、アプリケーションで `EntityId` の SAML AuthN 要求内に構成されたのと同じ値であり、アプリケーションのメタデータ内の `entityID` 値となります。
+登録マニフェストで、`identifierURIs` パラメーターを見つけて、適切な値を追加します。 この値は、アプリケーションで `EntityId` の SAML AuthN 要求内に構成されたのと同じ値であり、アプリケーションのメタデータ内の `entityID` 値となります。 また、`accessTokenAcceptedVersion` パラメーターを検索し、値を `2` に設定する必要があります。
+
+> [!IMPORTANT]
+> `accessTokenAcceptedVersion` を `2` に更新しない場合は、検証済みドメインを求めるエラー メッセージが表示されます。
 
 次の例は、SAML メタデータ内の `entityID` 値を示しています。
 
@@ -349,7 +352,7 @@ SAML テスト アプリケーションを例として使用すると、アプ�
 
 Azure AD B2C が SAML 応答を送信する応答 URL を構成することができます。 応答 URL はアプリケーション マニフェストで構成できます。 この構成は、アプリケーションで、パブリックにアクセスできるメタデータ エンドポイントを公開しない場合に役立ちます。
 
-SAML アプリケーションの応答 URL は、アプリケーションが SAML 応答の受信を想定するエンドポイントです。 この例に示すように、アプリケーションでは、通常、メタデータ ドキュメント内の `AssertionConsumerServiceUrl` 属性で、この URL を指定します。
+SAML アプリケーションの応答 URL は、アプリケーションが SAML 応答の受信を想定するエンドポイントです。 この例に示すように、アプリケーションでは、通常、メタデータ ドキュメント内の `AssertionConsumerService` 要素の `Location` 属性として、この URL を指定します。
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -358,7 +361,7 @@ SAML アプリケーションの応答 URL は、アプリケーションが SAM
 </SPSSODescriptor>
 ```
 
-`AssertionConsumerServiceUrl` 属性で指定されたメタデータをオーバーライドする場合、または URL がメタデータ ドキュメント内にない場合、マニフェスト内の `replyUrlsWithType` プロパティで URL を構成できます。 `BindingType` 値は `HTTP POST` に設定されます。
+アプリケーションのメタデータ `AssertionConsumerService` 要素が見つからない場合、またはオーバーライドする場合は、アプリケーション登録マニフェスト `replyUrlsWithType` プロパティを構成します。 Azure AD B2C では、バインドの種類 `HTTP-POST` を使って、サインイン後に `replyUrlsWithType` を使用してユーザーをリダイレクトします。
 
 SAML テスト アプリケーションを例として使用して、`replyUrlsWithType` の `url` プロパティを、次の JSON スニペットに示す値に設定します。
 
@@ -373,20 +376,18 @@ SAML テスト アプリケーションを例として使用して、`replyUrlsW
 
 #### <a name="override-or-set-the-logout-url-optional"></a>ログアウト URL をオーバーライドまたは設定する (省略可能)
 
-ログアウト要求後に Azure AD B2C によってユーザーに送信されるログアウト URL を構成することができます。 応答 URL はアプリケーション マニフェストで構成できます。
-
-`SingleLogoutService` 属性で指定されたメタデータをオーバーライドする場合、または URL がメタデータ ドキュメント内にない場合、マニフェスト内の `Logout` プロパティで URL を構成できます。 `BindingType` 値は `Http-Redirect` に設定されます。
-
-以下の例に示すように、アプリケーションでは、通常、メタデータ ドキュメント内の `AssertionConsumerServiceUrl` 属性で、この URL を指定します。
+ログアウト URL によって、ログアウト要求後のユーザーのリダイレクト先が定義されます。 次の例に示すように、アプリケーションでは、通常、メタデータ ドキュメント内の `SingleLogoutService` 要素の `Location` 属性として、この URL を指定します。
 
 ```xml
-<IDPSSODescriptor WantAuthnRequestsSigned="false" WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+<SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
     <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://samltestapp2.azurewebsites.net/logout" ResponseLocation="https://samltestapp2.azurewebsites.net/logout" />
 
-</IDPSSODescriptor>
+</SPSSODescriptor>
 ```
 
-SAML テスト アプリケーションを例として使用して、`logoutUrl` を `https://samltestapp2.azurewebsites.net/logout` に設定したままにします。
+アプリケーションのメタデータ `SingleLogoutService` 要素が見つからない場合は、アプリケーション登録マニフェスト `logoutUrl` プロパティを構成します。 Azure AD B2C では、バインドの種類 `HTTP-Redirect` を使って、サインアウト後に `logoutURL` を使用してユーザーをリダイレクトします。
+
+SAML テスト アプリケーションを例として使用して、`logoutUrl` プロパティを `https://samltestapp2.azurewebsites.net/logout` に設定します。
 
 ```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

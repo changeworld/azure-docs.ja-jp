@@ -1,22 +1,25 @@
 ---
-title: Azure Security Center の最新情報のアーカイブ
-description: 6 か月前以前の、Azure Security Center の新機能と変更点の説明。
+title: クラウドの Defender の新機能のアーカイブ
+description: 6か月前以前のクラウドの Defender での新機能と変更点について説明します。
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
 ms.date: 10/03/2021
 ms.author: memildin
-ms.openlocfilehash: 516fa13a24c9cb5376bc6e8d38eeb1fc077f1d57
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5bf77a3c5e2803ea6a89c460136f3630630065d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713951"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014605"
 ---
-# <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
+# <a name="archive-for-whats-new-in-defender-for-cloud"></a>クラウドの Defender の新機能のアーカイブ
 
-「[What's new in Azure Security Center? (Azure Security Center の最新情報)](release-notes.md)」という主要リリース ノート ページには、過去 6 か月間の更新情報が含まれていますが、このページにはそれ以前の項目が含まれています。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+「 [Defender For Cloud の新機能」に](release-notes.md) は、過去6か月間の更新プログラムが含まれていますが、このページには古い項目が含まれています。
 
 このページでは、以下に関する情報を提供します。
 
@@ -45,7 +48,7 @@ ms.locfileid: "129713951"
 
 Security Center のリソース正常性が拡張、強化、改善され、1 つのリソースの全体的な正常性のスナップショット ビューが提供されるようになりました。 
 
-リソースに関する詳細情報と、そのリソースに適用されるすべての推奨事項を確認できます。 また、[Azure Defender](azure-defender.md) を使用している場合は、その特定のリソースに関する未処理のセキュリティ アラートも表示されます。
+リソースに関する詳細情報と、そのリソースに適用されるすべての推奨事項を確認できます。 また、 [Microsoft Defender の高度な保護プラン](defender-for-cloud-introduction.md)を使用している場合は、その特定のリソースの未処理のセキュリティアラートも表示されます。
 
 リソースの [リソース正常性] ページを開くには、[資産インベントリ ページ](asset-inventory.md)でリソースを選択します。
 
@@ -95,14 +98,14 @@ Azure Security Center、Azure Defender、および Azure Arc 対応 Kubernetes �
 
 ### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga"></a>Azure Defender と Microsoft Defender for Endpoint の統合で、Windows Server 2019 および Windows 10 Virtual Desktop (WVD) をサポート (一般提供 (GA) リリース)
 
-Microsoft Defender for Endpoint は、クラウドで提供される包括的なエンドポイント セキュリティ ソリューションです。 リスクベースによる脆弱性の管理と評価、およびエンドポイントでの検出と対応 (EDR) を提供します。 Defender for Endpoint を Azure Security Center と併用するメリットの全容については、「[Security Center に統合された EDR ソリューション Microsoft Defender for Endpoint でエンドポイントを保護する](security-center-wdatp.md)」を参照してください。
+Microsoft Defender for Endpoint は、クラウドで提供される包括的なエンドポイント セキュリティ ソリューションです。 リスクベースによる脆弱性の管理と評価、およびエンドポイントでの検出と対応 (EDR) を提供します。 Defender for Endpoint を Azure Security Center と併用するメリットの全容については、「[Security Center に統合された EDR ソリューション Microsoft Defender for Endpoint でエンドポイントを保護する](integration-defender-for-endpoint.md)」を参照してください。
 
 Windows サーバー上のサーバーに Azure Defender を有効にした場合、プランに Defender for Endpoint のライセンスが含まれています。 サーバーに対して既に Azure Defender を有効にしており、サブスクリプションに Windows 2019 サーバーが存在する場合には、今回の更新により自動的に Defender for Endpoint が追加されます。 特に何か操作をする必要はありません。 
 
 このたびサポートが拡張され、Windows Server 2019 と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) が含まれるようになりました。
 
 > [!NOTE]
-> Windows Server 2019 のマシンで Defender for Endpoint を有効にする場合には、マシンが「[Microsoft Defender for Endpoint 統合を有効にする](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)」に記載されている前提条件を満たしていることを確認してください。
+> Windows Server 2019 のマシンで Defender for Endpoint を有効にする場合には、マシンが「[Microsoft Defender for Endpoint 統合を有効にする](integration-defender-for-endpoint.md#enable-the-microsoft-defender-for-endpoint-integration)」に記載されている前提条件を満たしていることを確認してください。
 
 
 ### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview"></a>Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)
@@ -115,7 +118,7 @@ Windows サーバー上のサーバーに Azure Defender を有効にした場�
 Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページ https://aka.ms/pricing-security-center を参照してください。
 
 > [!TIP]
-> プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
+> プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](implement-security-recommendations.md)」を参照してください。
 
 
 ### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>追加された 3 つの規制コンプライアンス標準: Azure CIS 1.3.0、CMMC レベル 3、New Zealand ISM Restricted
@@ -132,8 +135,8 @@ Azure Security Center で使用するための 3 つの標準が追加されま�
 
 詳細情報:
 - [規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)
-- [チュートリアル:規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)
-- [FAQ - 規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
+- [チュートリアル:規制に対するコンプライアンスの向上](regulatory-compliance-dashboard.md)
+- [FAQ - 規制コンプライアンス ダッシュボード](regulatory-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-in-preview"></a>ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)
 
@@ -358,7 +361,7 @@ Security Center によって、ほぼすべてのセキュリティに関する�
 
 :::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Azure Security Center の推奨事項の &quot;フラット&quot; リストの機能強化 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
 
-詳細については、[Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)を参照してください。
+詳細については、[Azure Security Center でのセキュリティに関する推奨事項](review-security-recommendations.md)を参照してください。
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -384,9 +387,9 @@ Azure Security Center のセキュリティ アラート ページは、次の�
 - 長大なアラート一覧の **パフォーマンス向上**
 - アラート一覧の **キーボードによるナビゲーション**
 - **Azure Resource Graph のアラート** - Azure Resource Graph (すべてのリソースを対象とする、Kusto に似た API) のアラートにクエリを実行できます。 これは、独自のアラート ダッシュボードを作成している場合にも役立ちます。 [Azure Resource Graph の詳細についてさらに学習します](../governance/resource-graph/index.yml)。
-- **サンプルのアラート機能の作成** - 新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender アラートのサンプルを生成する](security-center-alert-validation.md#generate-sample-azure-defender-alerts)」を参照してください。
+- **サンプルのアラート機能の作成** - 新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender アラートのサンプルを生成する](alert-validation.md#generate-sample-security-alerts)」を参照してください。
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
+:::image type="content" source="media/managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
 
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes ワークロード保護の推奨事項が一般提供 (GA) リリース
@@ -402,19 +405,19 @@ Azure Kubernetes Service (AKS) クラスターに Kubernetes 用 Azure Policy �
 詳細については、[Kubernetes 受付制御を使用したワークロード保護のベスト プラクティス](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)に関するページを参照してください。
 
 > [!NOTE]
-> 推奨事項がプレビュー段階の間、これらによって AKS クラスター リソースが異常な状態にあると表示されることはありませんでした。これらの推奨事項は、セキュリティ スコアの計算には含まれていませんでした。 このたびの GA の発表により、これらがスコア計算に含まれるようになります。 その修復がまだ済んでいない場合、これが原因でセキュア スコアに若干の影響が生じる可能性があります。 「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」の説明に従って、可能な限りそれらを修復してください。
+> 推奨事項がプレビュー段階の間、これらによって AKS クラスター リソースが異常な状態にあると表示されることはありませんでした。これらの推奨事項は、セキュリティ スコアの計算には含まれていませんでした。 このたびの GA の発表により、これらがスコア計算に含まれるようになります。 その修復がまだ済んでいない場合、これが原因でセキュア スコアに若干の影響が生じる可能性があります。 「[Azure Security Center の修復レコメンデーション](implement-security-recommendations.md)」の説明に従って、可能な限りそれらを修復してください。
 
 
 ### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>Azure Defender に統合した Microsoft Defender for Endpoint が、Windows Server 2019 および Windows 10 Virtual Desktop (WVD) をサポート (プレビュー)
 
-Microsoft Defender for Endpoint は、クラウドで提供される包括的なエンドポイント セキュリティ ソリューションです。 リスクベースによる脆弱性の管理と評価、およびエンドポイントでの検出と対応 (EDR) を提供します。 Defender for Endpoint を Azure Security Center と併用するメリットの全容については、「[Security Center に統合された EDR ソリューション Microsoft Defender for Endpoint でエンドポイントを保護する](security-center-wdatp.md)」を参照してください。
+Microsoft Defender for Endpoint は、クラウドで提供される包括的なエンドポイント セキュリティ ソリューションです。 リスクベースによる脆弱性の管理と評価、およびエンドポイントでの検出と対応 (EDR) を提供します。 Defender for Endpoint を Azure Security Center と併用するメリットの全容については、「[Security Center に統合された EDR ソリューション Microsoft Defender for Endpoint でエンドポイントを保護する](integration-defender-for-endpoint.md)」を参照してください。
 
 Windows サーバー上のサーバーに Azure Defender を有効にした場合、プランに Defender for Endpoint のライセンスが含まれています。 サーバーに対して既に Azure Defender を有効にしており、サブスクリプションに Windows 2019 サーバーが存在する場合には、今回の更新により自動的に Defender for Endpoint が追加されます。 特に何か操作をする必要はありません。 
 
 このたびサポートが拡張され、Windows Server 2019 と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) が含まれるようになりました。
 
 > [!NOTE]
-> Windows Server 2019 のマシンで Defender for Endpoint を有効にする場合には、マシンが「[Microsoft Defender for Endpoint 統合を有効にする](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)」に記載されている前提条件を満たしていることを確認してください。
+> Windows Server 2019 のマシンで Defender for Endpoint を有効にする場合には、マシンが「[Microsoft Defender for Endpoint 統合を有効にする](integration-defender-for-endpoint.md#enable-the-microsoft-defender-for-endpoint-integration)」に記載されている前提条件を満たしていることを確認してください。
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>[推奨事項の詳細] ページからポリシーへの直接リンク
 
@@ -578,9 +581,9 @@ AWS アカウントまたは GCP アカウントを接続すると、そのネ�
 - Security Center のセキュリティ スコアの計算へのすべてのリソースの組み込み
 - AWS リソースと GCP リソースの規制コンプライアンスの評価
 
-Security Center のメニューから、 **[マルチ クラウド コネクタ]** を選択すると、新しいコネクタを作成するためのオプションが表示されます。
+Defender for Cloud のメニューから [マルチクラウド コネクタ] **を** 選択すると、新しいコネクタを作成するためのオプションが表示されます：
 
-:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Security Center のマルチ クラウド コネクタ ページの [Add AWS account]\(AWS アカウントの追加\) ボタン":::
+:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="アプリのマルチクラウド コネクタ Security Center AWS アカウントの追加 ボタン":::
 
 詳細情報:
 - [Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)
@@ -607,7 +610,7 @@ Security Center のメニューから、 **[マルチ クラウド コネクタ]
 
 Security Center のデータを表示するアクセス許可がないユーザーには、その組織のグローバル管理者にアクセス許可をリクエストするためのリンクが表示されるようになりました。 リクエストには、希望するロールとそれが必要な理由を添えることになります。
 
-:::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="テナント全体のアクセス許可を要求できることをユーザーに通知するバナー。":::
+:::image type="content" source="media/management-groups-roles/request-tenant-permissions.png" alt-text="テナント全体のアクセス許可を要求できることをユーザーに通知するバナー。":::
 
 詳細については、「[テナント全体のアクセス許可が不十分な場合に要求する](tenant-wide-permissions-management.md#request-tenant-wide-permissions-when-yours-are-insufficient)」を参照してください。
 
@@ -619,7 +622,7 @@ Security Center のデータを表示するアクセス許可がないユーザ�
 このベンチマークのカバー範囲を拡大するために、次の 35 個のプレビュー推奨事項が Security Center に追加されています。
 
 > [!TIP]
-> プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
+> プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](implement-security-recommendations.md)」を参照してください。
 
 | セキュリティ コントロール                     | 新しい推奨事項                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -648,9 +651,9 @@ Security Center のデータを表示するアクセス許可がないユーザ�
 
 たとえば、以下の画像を見ると、一覧がフィルター処理されて 2 つの推奨事項が表示されていることがわかります。 生成された CSV ファイルには、それらの 2 つの推奨事項に関係する各リソースの状態情報が含まれています。   
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="フィルター処理された推奨事項を CSV ファイルにエクスポートする。":::
+:::image type="content" source="media/managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="フィルター処理された推奨事項を CSV ファイルにエクスポートする。":::
 
-詳細については、[Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)を参照してください。
+詳細については、[Azure Security Center でのセキュリティに関する推奨事項](review-security-recommendations.md)を参照してください。
 
 
 ### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>Azure Policy の評価で "適用除外" であったリソースが "準拠" とレポートされるように
@@ -759,9 +762,9 @@ Azure Security Center のセキュリティ アラート ページは、次の�
 
 新しいエクスペリエンスにアクセスするには、セキュリティ アラート ページの上部にあるバナーの "今すぐ試す" リンクを使用します。
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー。":::
+:::image type="content" source="media/managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー。":::
 
-新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender のサンプル アラートを生成する](security-center-alert-validation.md#generate-sample-azure-defender-alerts)」を参照してください。
+新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender のサンプル アラートを生成する](alert-validation.md#generate-sample-security-alerts)」を参照してください。
 
 
 ### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance における Security Center エクスペリエンスの刷新 
@@ -818,7 +821,7 @@ Security Center のカバレッジと機能が拡張されるにつれて、セ�
     > 応答アクション フィルターは、 **[Quick fix available (Yes/No)]\(クイック修正を使用できます (はい/いいえ)\)** フィルターに置き換わるものです。 
     > 
     > これらの応答オプションの詳細については、次を参照してください。
-    > - [修正ボタン](security-center-remediate-recommendations.md#fix-button)
+    > - [修正ボタン](implement-security-recommendations.md#fix-button)
     > - [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)
 
 :::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="セキュリティ コントロールにグループ化された推奨事項。" lightbox="./media/release-notes/added-recommendations-filters.png":::
@@ -861,7 +864,7 @@ Azure セキュリティ ベンチマークは Microsoft が作成したもの�
 
 ベンチマークのカバレッジを拡大するために、次の 29 個のプレビュー推奨事項が Security Center に追加されています。
 
-プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
+プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](implement-security-recommendations.md)」を参照してください。
 
 | セキュリティ コントロール                     | 新しい推奨事項                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -917,7 +920,7 @@ Azure Security Center の拡大に伴って、より多くの拡張機能が開�
 - (新) Kubernetes 用の Azure Policy アドオン
 - (新) Microsoft Dependency Agent
 
-詳細については、「[Azure Security Center からのエージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)」をご覧ください。
+詳細については、「[Azure Security Center からのエージェントと拡張機能の自動プロビジョニング](enable-data-collection.md)」をご覧ください。
 
 
 ### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>連続エクスポートでセキュア スコアが利用可能に (プレビュー)
@@ -1023,7 +1026,7 @@ Azure Resource Graph は、効率的なリソース探索を提供するよう�
 Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) を使用して、幅広いセキュリティ態勢データに対してクエリを実行できます。 次に例を示します。
 
 - 資産インベントリが使用します (ARG)
-- [多要素認証 (MFA) が有効になっていないアカウントを識別する](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)方法を示すために、サンプル ARG クエリのドキュメントを作成しました
+- [多要素認証 (MFA) が有効になっていないアカウントを識別する](multi-factor-authentication-enforcement.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)方法を示すために、サンプル ARG クエリのドキュメントを作成しました
 
 ARG 内には、クエリで使用できるデータのテーブルがあります。
 
@@ -1305,7 +1308,7 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 - (本当の侵害である可能性が高い) 重大度が高いアラートについては、サブスクリプションの所有者に事前に送信されます
 - 電子メール通知の構成ページから電話番号フィールドが削除されました
 
-詳細については、「[セキュリティ アラートのメール通知を設定する](security-center-provide-security-contact-details.md)」を参照してください。
+詳細については、「[セキュリティ アラートのメール通知を設定する](configure-email-notifications.md)」を参照してください。
 
 
 ### <a name="secure-score-doesnt-include-preview-recommendations"></a>セキュリティ スコアからのプレビューの推奨事項の除外 
@@ -1537,7 +1540,7 @@ Security Center でのコンテナー セキュリティの詳細については
     * パスの途中でワイルドカードを使用し、変化するフォルダー名を備えた既知の実行可能ファイルの名前 (既知の実行可能ファイルを含む個人ユーザー フォルダー、自動生成されたフォルダー名など) を有効にします。
 
 
-適応型アプリケーション制御の詳細については、[こちら](security-center-adaptive-application.md)をご覧ください。
+適応型アプリケーション制御の詳細については、[こちら](adaptive-application-controls.md)をご覧ください。
 
 
 
@@ -1722,7 +1725,7 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 - この推奨事項は、オープンな管理ポートがある場合にのみトリガーされます。
 
-詳しくは、[JIT アクセス機能](security-center-just-in-time.md)に関するページを参照してください。
+詳しくは、[JIT アクセス機能](just-in-time-access-usage.md)に関するページを参照してください。
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>別のセキュリティ コントロールへのカスタム推奨事項の移動
@@ -1788,7 +1791,7 @@ Azure Policy でカスタム イニシアチブを作成し、それにポリシ
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>ファイルレス攻撃検出へのクラッシュ ダンプ分析機能の移行 
 
-Microsoft は Windows クラッシュ ダンプ (CDA) 検出機能を[ファイルレス攻撃検出](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)に移行しています。 ファイルレス攻撃検出分析では、Windows マシンで次のセキュリティ アラートの高度なバージョンを利用できます。コード インジェクションの検出、Windows モジュールの偽装の検出、シェル コードの検出、疑わしいコード セグメントの検出。
+Microsoft は Windows クラッシュ ダンプ (CDA) 検出機能を[ファイルレス攻撃検出](defender-for-servers-introduction.md#what-are-the-benefits-of-microsoft-defender-for-servers)に移行しています。 ファイルレス攻撃検出分析では、Windows マシンで次のセキュリティ アラートの高度なバージョンを利用できます。コード インジェクションの検出、Windows モジュールの偽装の検出、シェル コードの検出、疑わしいコード セグメントの検出。
 
 この移行のメリットをいくつか紹介します。
 
@@ -1845,7 +1848,7 @@ Free 価格レベルのサブスクリプションをお持ちのお客様は、
 
 詳しくは、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identityandaccess)」を参照してください。
 
-詳細については、「[サブスクリプションでの多要素認証 (MFA) の実施を管理する](security-center-identity-access.md)」を参照してください。
+詳細については、「[サブスクリプションでの多要素認証 (MFA) の実施を管理する](multi-factor-authentication-enforcement.md)」を参照してください。
 
 
 
@@ -1907,7 +1910,7 @@ Security Center には以下の防御機能があります。
 - **理由のフィールド** - Azure portal の Just-In-Time ページを使用して仮想マシン (VM) へのアクセスを要求する際に、要求の理由を入力するためにオプションの新しいフィールドを使用できます。 このフィールドに入力された情報は、アクティビティ ログで追跡できます。 
 - **冗長な Just-In-Time (JIT) 規則の自動クリーンアップ** - JIT ポリシーを更新するたびに、クリーンアップ ツールが自動的に実行され、規則セット全体の有効性がチェックされます。 このツールでは、ポリシー内の規則と NSG 内の規則の不一致が検索されます。 クリーンアップ ツールで不一致が検出されると、原因が特定され、削除した方が安全と見なされる場合には不要な組み込み規則が削除されます。 ユーザーが作成した規則がこのツールによって削除されることはありません。 
 
-詳しくは、[JIT アクセス機能](security-center-just-in-time.md)に関するページを参照してください。
+詳しくは、[JIT アクセス機能](just-in-time-access-usage.md)に関するページを参照してください。
 
 
 ### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Web アプリケーションに関する 2 つのセキュリティ推奨事項の非推奨化
@@ -2093,7 +2096,7 @@ Windows Admin Center は、Azure にデプロイされていない Windows サ�
 
 適応型アプリケーション制御を使用した仮想マシンのルール管理のエクスペリエンスが改善されました。 Azure Security Center の適応型アプリケーション制御を使用すると、仮想マシン上で実行できるアプリケーションを制御できます。 ルール管理の全般的な改善に加え、新たに追加される機能により、新しいルールを追加するときに保護するファイルの種類を制御できるようになります。
 
-適応型アプリケーション制御の詳細については、[こちら](security-center-adaptive-application.md)をご覧ください。
+適応型アプリケーション制御の詳細については、[こちら](adaptive-application-controls.md)をご覧ください。
 
 
 ### <a name="control-container-security-recommendation-using-azure-policy"></a>Azure Policy を使用してコンテナーのセキュリティの推奨事項を制御
@@ -2139,7 +2142,7 @@ Azure Firewall の詳細については、[こちら](../firewall/overview.md)�
 
 Security Center では、Azure Lighthouse の一部として、テナント間の管理のシナリオがサポートされるようになりました。 これにより、Security Center で複数のテナントのセキュリティ体制を可視化し、管理できるようになります。 
 
-テナント間の管理エクスペリエンスの詳細については、[こちら](security-center-cross-tenant-management.md)をご覧ください。
+テナント間の管理エクスペリエンスの詳細については、[こちら](cross-tenant-management.md)をご覧ください。
 
 
 ## <a name="july-2019"></a>2019 年 7 月
@@ -2157,4 +2160,4 @@ Azure Security Center (ASC) で新しいネットワークの推奨事項が導�
 
 パブリック クラウドで実行されているワークロードの最大の攻撃対象領域の 1 つは、パブリック インターネットとの間の接続です。 Azure ワークロードを必要なソース範囲でのみ利用できるようにするために、どのネットワーク セキュリティ グループ (NSG) 規則を設定すればよいかをお客様が把握するのは困難です。 この機能を使用すると、Security Center が Azure ワークロードのネットワーク トラフィックと接続のパターンを学習し、インターネットに接続する仮想マシンに対して、NSG 規則の推奨事項を提供します。 これにより、お客様は、ネットワーク アクセス ポリシーをより適切に構成し、攻撃にさらされるリスクを抑えることができます。 
 
-アダプティブ ネットワークのセキュリティ強化機能の詳細については、[こちら](security-center-adaptive-network-hardening.md)をご覧ください。
+アダプティブ ネットワークのセキュリティ強化機能の詳細については、[こちら](adaptive-network-hardening.md)をご覧ください。

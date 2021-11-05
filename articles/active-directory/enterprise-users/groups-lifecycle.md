@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/02/2021
+ms.date: 10/22/2021
 ms.author: curtand
-ms.reviewer: krbain
+ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834893a35c8284012f61d228bf44385cb9eb5549
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7bde4362580ebfd04f67b5311c79cb8c64e85ddc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986456"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052657"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -42,7 +42,9 @@ Azure AD PowerShell コマンドレットをダウンロードしてインスト
 
 ## <a name="activity-based-automatic-renewal"></a>アクティビティベースの自動更新
 
-Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams などの Microsoft 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループはその有効期限が終了する 35 日前くらいに自動的に更新され、所有者には更新通知が送信されません。
+Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams などの Microsoft 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーがドキュメントを SharePoint にアップロードしたり、Teams チャネルにアクセスしたり、Outlook のグループに電子メールを送信したりした場合、グループの有効期限が切れる約 35 日前にグループが自動的に更新され、所有者は更新通知を受け取らないとします。 Yammer ネイティブ モードで Microsoft 365 グループに変換された "All Company" グループでは、現在、この種類の自動更新はサポートされていません。そのグループの Yammer アクティビティはアクティビティとしてカウントされません。
+
+たとえば、30 日間非アクティブになった後にグループの有効期限が切れる有効期限ポリシーを設定するとします。 ただし、グループの有効期限が有効になっている日に有効期限の電子メールを送信し続けるには (まだレコード アクティビティが存在しないので)、Azure AD は最初に 5 日間待機します。 この 5 日間にアクティビティがある場合、有効期限ポリシーは期待した通り動作します。 5 日以内にアクティビティがない場合は、有効期限/更新メールを送信します。 もちろん、グループが 5 日間非アクティブで、電子メールが送信された後、グループがアクティブだった場合は、自動的に再び削除され、有効期限が再び開始されます。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>グループの有効期限を自動的に更新するアクティビティ
 
@@ -100,6 +102,9 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 ![有効期限に関する電子メール通知](./media/groups-lifecycle/expiration-notification.png)
 
 グループの所有者は、**グループの更新** 通知電子メールから、[アクセス パネル](https://account.activedirectory.windowsazure.com/r#/applications)のグループ詳細ページに直接アクセスできます。 そこで、ユーザーは、グループについての詳細 (グループの説明、最終更新日時、有効期限が切れる日時など) や、グループを更新する機能についても知ることができます。 グループの詳細ページには、現在、Microsoft 365 グループ リソースへのリンクも含まれているので、グループの所有者がそのグループの内容とアクティビティを簡単に確認できます。
+
+>[!Important]
+> 通知メールに問題が発生し、送信されない場合、または遅延している場合は、最後の電子メールが送信される前に Microsoft がグループを削除したことがないことを確認してください。
 
 グループが有効期限切れになると、有効期限日の 1 日後にグループが削除されます。 次のような電子メール通知が Microsoft 365 グループの所有者に送信され、その Microsoft 365 グループの有効期限とその後の削除について通知されます。
 

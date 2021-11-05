@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 3861d5d9dde33e54d523cb6b379cab7ccc73d2f1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 21a81714f977054530daa0b486b7bf6cd126fb87
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559899"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031475"
 ---
-# <a name="in-process"></a>[インプロセス](#tab/in-process)    
+# <a name="in-process"></a>[インプロセス](#tab/in-process)
 
 + [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
 
@@ -16,7 +16,7 @@ ms.locfileid: "128559899"
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+    + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 
 # <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
 
@@ -30,5 +30,5 @@ ms.locfileid: "128559899"
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+    + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 ---

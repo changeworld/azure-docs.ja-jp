@@ -4,6 +4,8 @@
   items:
     - name: Azure Monitor とは
       href: overview.md
+    - name: 何を監視できるか
+      href: monitor-reference.md
     - name: よく寄せられる質問
       href: faq.yml
     - name: 新機能
@@ -111,8 +113,6 @@
       href: azure-cli-metrics-alert-sample.md
 - name: 概念
   items:
-    - name: 何を監視できるか
-      href: monitor-reference.md
     - name: 継続的な監視
       href: continuous-monitoring.md
     - name: データ ソース
@@ -1214,61 +1214,6 @@
           href: insights/resource-group-insights.md
         - name: 分析情報のトラブルシューティング
           href: insights/troubleshoot-workbooks.md
-        - name: ソリューション
-          items:
-            - name: 概要
-              href: insights/solutions.md
-              displayName: 'Azure CLI, az monitor log-analytics'
-            - name: ターゲット ソリューション
-              href: insights/solution-targeting.md
-            - name: 使用可能なソリューション
-              items:
-                - name: AD の正常性評価
-                  href: insights/ad-assessment.md
-                - name: AD レプリケーションの状態
-                  href: insights/ad-replication-status.md
-                - name: 容量とパフォーマンス ソリューション
-                  href: insights/capacity-performance.md
-                - name: Docker および Windows コンテナーの監視
-                  href: containers/containers.md
-                - name: ネットワーク
-                  items:
-                    - name: ネットワーク分析
-                      href: insights/azure-networking-analytics.md
-                    - name: DNS
-                      href: insights/dns-analytics.md
-                    - name: ネットワーク パフォーマンス監視
-                      items:
-                        - name: ソリューションの概要
-                          href: insights/network-performance-monitor.md
-                        - name: パフォーマンス モニター
-                          href: insights/network-performance-monitor-performance-monitor.md
-                        - name: サービス接続モニター
-                          href: insights/network-performance-monitor-service-connectivity.md
-                        - name: ExpressRoute
-                          href: insights/network-performance-monitor-expressroute.md
-                        - name: 価格
-                          href: insights/network-performance-monitor-pricing-faq.yml
-                        - name: よく寄せられる質問
-                          href: insights/network-performance-monitor-faq.yml
-                - name: Office 365
-                  href: insights/solution-office-365.md
-                - name: Service Map ソリューション
-                  href: vm/service-map.md
-                - name: Service Map と Operations Manager
-                  href: vm/service-map-scom.md
-                - name: Azure SQL
-                  href: insights/azure-sql.md
-                - name: SQL Server
-                  href: insights/sql-assessment.md
-                - name: Surface Hub
-                  href: insights/surface-hubs.md
-                - name: VMware 分析ソリューション
-                  href: insights/vmware.md
-                - name: Wire Data ソリューション
-                  href: insights/wire-data.md
-                - name: Alert Management ソリューション
-                  href: insights/alert-management-solution.md
     - name: Workbooks
       items:
         - name: 概要
@@ -1346,6 +1291,61 @@
               href: visualize/view-designer-conversion-examples.md
     - name: その他の視覚化
       items:
+        - name: 監視ソリューション
+          items:
+            - name: 概要
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: ターゲット ソリューション
+              href: insights/solution-targeting.md
+            - name: 使用可能なソリューション
+              items:
+                - name: AD の正常性評価
+                  href: insights/ad-assessment.md
+                - name: AD レプリケーションの状態
+                  href: insights/ad-replication-status.md
+                - name: 容量とパフォーマンス ソリューション
+                  href: insights/capacity-performance.md
+                - name: Docker および Windows コンテナーの監視
+                  href: containers/containers.md
+                - name: ネットワーク
+                  items:
+                    - name: ネットワーク分析
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: ネットワーク パフォーマンス監視
+                      items:
+                        - name: ソリューションの概要
+                          href: insights/network-performance-monitor.md
+                        - name: パフォーマンス モニター
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: サービス接続モニター
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: 価格
+                          href: insights/network-performance-monitor-pricing-faq.yml
+                        - name: よく寄せられる質問
+                          href: insights/network-performance-monitor-faq.yml
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: Service Map ソリューション
+                  href: vm/service-map.md
+                - name: Service Map と Operations Manager
+                  href: vm/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: VMware 分析ソリューション
+                  href: insights/vmware.md
+                - name: Wire Data ソリューション
+                  href: insights/wire-data.md
+                - name: Alert Management ソリューション
+                  href: insights/alert-management-solution.md
         - name: Power BI
           items:
             - name: ログ データをエクスポートする
@@ -1382,18 +1382,18 @@
       items:
         - name: プラットフォームのメトリック
           href: essentials/metrics-supported.md
-        - name: 診断設定のメトリック
+        - name: 診断設定を使用したエクスポート
           href: essentials/metrics-supported-export-diagnostic-settings.md
         - name: アラートのメトリック
           href: alerts/alerts-metric-near-real-time.md
     - name: プラットフォーム ログ
       items:
-        - name: アクティビティ ログのスキーマ
-          href: essentials/activity-log-schema.md
-        - name: リソース ログ スキーマ
-          href: essentials/resource-logs-schema.md
         - name: サポートされているリソース ログのカテゴリ
           href: essentials/resource-logs-categories.md
+        - name: リソース ログ スキーマ
+          href: essentials/resource-logs-schema.md
+        - name: アクティビティ ログのスキーマ
+          href: essentials/activity-log-schema.md
     - name: 診断の拡張機能のスキーマ
       items:
         - name: Windows Diagnostics 拡張機能

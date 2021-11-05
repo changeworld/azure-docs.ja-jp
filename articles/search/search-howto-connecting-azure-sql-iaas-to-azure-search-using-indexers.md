@@ -2,17 +2,17 @@
 title: Azure VM 上の SQL Server へのインデクサー接続
 titleSuffix: Azure Cognitive Search
 description: 暗号化された接続を有効にして、Azure Cognitive Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 11dbe95a63ce22602985cb7ff9b4db11f5e8f8dc
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d405b28acfcac8270b0e2ec4b3493f151108e4cf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856754"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076113"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server へのインデクサー接続
 
@@ -89,7 +89,7 @@ IP アドレスは、Search サービスの FQDN (`<your-search-service-name>.se
 
 Azure portal を使用してインデクサーを作成する場合は、ポータルに SQL Azure 仮想マシンへの受信アクセスを付与する必要があります。 ファイアウォールの受信規則では、ポータルの IP アドレスを指定する必要があります。
 
-ポータルの IP アドレスを取得するには、ping `stamp2.ext.search.windows.net` を使用します。これはトラフィック マネージャーのドメインです。 要求はタイムアウトになりますが、IP アドレスはステータス メッセージに表示されます。 たとえば、"Pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" というメッセージでは、IP アドレスは "52.252.175.48" になります。
+ポータルの IP アドレスを取得するには、ping `stamp2.ext.search.windows.net` を使用します。これはトラフィック マネージャーのドメインです。 要求はタイムアウトになりますが、IP アドレスはステータス メッセージに表示されます。 たとえば、"Ping azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" というメッセージでは、IP アドレスは "52.252.175.48" になります。
 
 > [!NOTE]
 > 異なるリージョンのクラスターは、異なるトラフィック マネージャーに接続します。 ドメイン名に関係なく、ping から返された IP アドレスは正しいもので、リージョン内の Azure portal で受信ファイアウォール規則を定義するときに使用します。

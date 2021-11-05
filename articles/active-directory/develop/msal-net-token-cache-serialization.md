@@ -13,12 +13,12 @@ ms.date: 09/30/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 896e52bf70229358a25055a23403ab2a5a2d7963
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351825"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054307"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 
@@ -39,7 +39,7 @@ Microsoft Authentication Library (MSAL) によって<bpt id="p1">[</bpt>取得�
 
 | 拡張メソッド | 説明  |
 | ---------------- | ------------ |
-| `AddInMemoryTokenCaches` | メモリ内トークン キャッシュのシリアル化。 この実装は、サンプルにおいて非常に有用です。 また、Web アプリの再起動時にトークン キャッシュが失われても構わない場合は、実稼働アプリケーションにも適しています。 <ph id="ph1">`AddInMemoryTokenCaches`</ph> は <ph id="ph2">`MsalMemoryTokenCacheOptions`</ph> 型の省略可能なパラメーターを受け取ります。これにより、キャッシュ エントリが使用されていない場合に限り、期限切れになるまでの期間を指定できます。
+| `AddInMemoryTokenCaches` | メモリ内トークン キャッシュのシリアル化。 この実装は、サンプルとデーモン アプリケーション (アプリからアプリへのトークン/ `AcquireTokenForClient` ) に最適です 。 また、Web アプリの再起動時にトークン キャッシュが失われても構わない場合は、実稼働アプリケーションにも適しています。 Microsoft.Identity.Web 1.19.0 より、すべてのアプリ インスタンスで静的 (共有) キャッシュを利用する MSAL が構成され、他のキャッシュ メカニズムよりも大幅に高速になります。
 | `AddSessionTokenCaches` | トークン キャッシュは、ユーザー セッションにバインドされています。 このオプションは、ID トークンに多くの要求が含まれている場合は、Cookie が大きくなりすぎるため適していません。
 | `AddDistributedTokenCaches` | トークン キャッシュは ASP.NET Core <ph id="ph1">`IDistributedCache`</ph> 実装に対するアダプターであるため、分散メモリ キャッシュ、Redis キャッシュ、分散 NCache、または SQL Server キャッシュから選択できます。 <ph id="ph1">`IDistributedCache`</ph> の実装の詳細については、「<bpt id="p1">[</bpt>分散メモリ キャッシュ<ept id="p1">](/aspnet/core/performance/caching/distributed)</ept>」を参照してください。
 

@@ -10,12 +10,12 @@ ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: d9b6695824b5fc19d2cd2ee40aec929a372750f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ce62577dd73d6c6318c5358e4cff3ada4f4bc0a5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812025"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068867"
 ---
 # <a name="linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics のリンクされたサービス
 
@@ -108,6 +108,8 @@ connectVia | データ ストアに接続するために使用される[統合�
 ご利用のサービスから接続できるさまざまなコンピューティング環境と構成の詳細については、「[サポートされるコンピューティング環境](compute-linked-services.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
+- [リンクされたサービスでユーザー割り当てマネージド ID の資格情報を使用する方法について説明します](credentials.md)。
 
 これらのツールや SDK のいずれかを使用してパイプラインとデータセットを作成する詳しい手順については、次のチュートリアルを参照してください。
 

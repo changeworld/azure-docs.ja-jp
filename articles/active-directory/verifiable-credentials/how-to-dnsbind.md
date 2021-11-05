@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: d1a74d0019c931c8d52dccdc14ddd11a5ed7a1f3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c0449ce5682460e683772b5f33442efa0b979998
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006871"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049123"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did-preview"></a>ドメインを分散識別子 (DID) (プレビュー) にリンクする
 
@@ -48,19 +48,20 @@ DID をドメインにリンクすることで、最初の信頼問題が解決�
 1. Azure AD により、組織のセットアップ時に指定されたドメイン情報を使用して、DID ドキュメント内にサービス エンドポイントを書き込まれます。 DID を操作するすべてのパーティは、DID により宣言されるドメインが関連付けられることを確認できます。  
 
     ```json
-        "service": [
-          {
-            "id": "#linkeddomains",
-            "type": "LinkedDomains",
-            "serviceEndpoint": {
-              "origins": [
-                "https://www.contoso.com/"
-              ]
-            }
-          }
+    "service": [
+      {
+        "id": "#linkeddomains",
+        "type": "LinkedDomains",
+        "serviceEndpoint": {
+          "origins": [
+            "https://www.contoso.com/"
+          ]
+        }
+      }
+    ]
     ```
 
-2. Azure AD の Verifiable Credentials サービスによって、ドメインでホストできる準拠している既知の構成リソースが生成されます。 構成ファイルには、ドメインの原点がある DID で署名された credentialType ''DomainLinkageCredential'' の自己発行された検証可能な資格情報が含まれています。 ルート ドメインの URL に格納されている構成ドキュメントの例を以下に示します。
+2. Azure AD の Verifiable Credentials サービスによって、ドメインでホストできる準拠している既知の構成リソースが生成されます。 構成ファイルには、ドメインの原点がある DID で署名された credentialType ''DomainLinkageCredential'' の自己発行された検証可能な資格情報が含まれています。 ルートドメインの URL に格納されている構成ドキュメントの例を次に示します。
 
 
     ```json
@@ -118,7 +119,7 @@ Microsoft Authenticator で **[検証済み]** アイコンが表示される前
 
    ![既知の構成をダウンロードする](media/how-to-dnsbind/verify-download.png) 
 
-3. JWT をコピーし、[jwt.ms](https://www.jwt.ms) を開いて、ドメインが正しいことを検証します。
+3. Linked_did 値 (JWT) をコピーし、 [https://jwt.ms/](https://www.jwt.ms) jwt を開いて貼り付け、ドメインが正しいことを検証します。
 
 4. DID をコピーし、[ION Network Explorer](https://identity.foundation/ion/explorer) を開いて、同じドメインが DID ドキュメントに含まれていることを検証します。 
 

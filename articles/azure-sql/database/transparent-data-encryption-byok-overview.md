@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: c3f6046617458606d13aab243c96ef24246714fd
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 290065bb7410c42695cf2b0062cdd11cb02c9580
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090315"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065534"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -82,15 +82,21 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キー コンテナーと SQL Database/マネージド インスタンスは、同じ Azure Active Directory テナントに属している必要があります。 キー コンテナーとサーバーのテナント間の対話はサポートされていません。 後でリソースを移動するには、AKV を使用して TDE を再構成する必要があります。 リソースの移動の詳細については、[こちら](../../azure-resource-manager/management/move-resource-group-and-subscription.md)をご覧ください。
 
-- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](../../key-vault/general/soft-delete-overview.md)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧* と *消去* アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) または [CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
+- [キー (または](../../key-vault/general/soft-delete-overview.md)[キー](../../key-vault/general/soft-delete-overview.md#purge-protection)コンテナー) の誤削除によるデータ損失から保護するには、キー コンテナーでソフト削除と消去保護機能を有効にする必要があります。 
+    - お客様が復旧または消去しない限り、ソフト削除されたリソースは 90 日間保持されます。 *復旧* と *消去* アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 [ソフト削除] 機能は、Azure portal、[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell)、または を使用して[Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)。
+    - 消去保護は、 または[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell)を使用[Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)有効にできます。 消去保護を有効にすると、保持期間が経過するまで、削除された状態のコンテナーまたはオブジェクトを消去できません。 既定の保有期間は 90 日ですが、7 日から 90 日の間に構成Azure portal。   
 
-- Azure Active Directory ID を使用して、サーバーまたはマネージド インスタンスにキー コンテナーへのアクセス権 (get、wrapKey、unwrapKey) を付与します。 Azure portal を使用すると、Azure AD ID が自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
+> [!IMPORTANT]
+> カスタマー マネージド TDE で構成されているサーバーのキー コンテナーと、カスタマー マネージド TDE を使用する既存のサーバーでは、ソフト削除と消去保護の両方を有効にする必要があります。 ユーザーが管理する TDE を使用しているサーバーの場合、関連付けられているキーコンテナーで論理的な削除と削除の保護が有効になっていないと、データベースの作成、geo レプリケーションのセットアップ、データベースの復元、TDE プロテクターの更新などのアクションの実行が失敗 *し、"指定された Key Vault uri が無効です。キーコンテナーが論理的な削除と消去による保護で構成されていることを確認してください。 "*
+
+- サーバーまたはマネージド インスタンスに、そのキー コンテナー ID を使用してキー コンテナー (*get*、*wrapKey*、*unwrapKey*) へのアクセス権を付与Azure Active Directoryします。 サーバーを使用Azure portal、Azure ADが自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
+    - Key vault のアクセス許可モデル (アクセスポリシーまたは Azure RBAC) に応じて、key vault にアクセスポリシーを作成するか、ロール {1}Key Vault Crypto Service 暗号化ユーザー{2}を使用して新しい Azure RBAC ロールの割り当てを作成することによって、[key vault のアクセス権を付与できます](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations)。
 
 - AKV を使用してファイアウォールを使用する場合は、 *[Allow trusted Microsoft services to bypass the firewall]\(信頼された Microsoft サービスがファイアウォールをバイパスすることを許可する\)* オプションを有効にする必要があります。
 
 ### <a name="requirements-for-configuring-tde-protector"></a>TDE 保護機能を構成するための要件
 
-- TDE 保護機能には、非対称、RSA、または RSA HSM の各キーのみを指定できます。 サポートされているキーの長さは 2048 バイトと 3072 バイトです。
+- TDE 保護機能には、非対称、RSA、または RSA HSM の各キーのみを指定できます。 サポートされているキーの長さは、2048 ビットと 3072 ビットです。
 
 - キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限の日時 (設定する場合) は、将来の日付と時刻にする必要があります。
 
@@ -113,6 +119,9 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 - すべての暗号化キーの監査およびレポートを有効にします。キー コンテナーで提供されるログは、他のセキュリティ情報およびイベント管理ツールに簡単に挿入できます。 Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) は、既に統合されているサービスの一例です。
 
 - 暗号化されたデータベースの高可用性を確保するため、各サーバーを異なるリージョンに存在する 2 つのキー コンテナーとリンクします。 TDE 保護機能と同じリージョン内のキー コンテナーのキーのみをマークします。 同じリージョン内のキーコンテナーに影響を与える障害が発生した場合には、リモート リージョンのキー コンテナーに自動的に切り替えられます。
+
+> [!NOTE]
+> カスタマー マネージド TDE の構成の柔軟性を高め、1 つのリージョンの Azure SQL Database サーバーと Managed Instance を他のリージョンのキー コンテナーにリンクできます。 サーバーとキーコンテナーが同じリージョンに併置されている必要はありません。 
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>TDE 保護機能を構成する際の推奨事項
 
@@ -210,6 +219,8 @@ SQL Database のバックアップ回復の詳細については、[SQL Database
 ![フェールオーバー グループと Geo-DR](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
 フェールオーバーをテストするには、[アクティブ geo レプリケーションの概要](active-geo-replication-overview.md)の手順に従います。 フェールオーバーのテストを定期的に行い、SQL Database で両方のキー コンテナーへのアクセス許可が保持されていることを検証する必要があります。
+
+**1つのリージョンの Azure SQL Database サーバーと Managed Instance を、他のリージョンの key vault にリンクできるようになりました。** サーバーとキーコンテナーが同じリージョンに併置されている必要はありません。 これにより、わかりやすくするために、プライマリサーバーとセカンダリサーバーを同じ key vault (任意のリージョン) に接続できます。 これは、両方のサーバーで個別のキーコンテナーが使用されている場合にキーマテリアルが同期されないシナリオを回避するのに役立ちます。 Azure Key Vault には、サービスまたはリージョンで障害が発生した場合でもキーとキーコンテナーを確実に使用できるようにするために、複数の層の冗長性があります。 [Azure Key Vault の可用性と冗長性](../../key-vault/general/disaster-recovery-guidance.md)
 
 ## <a name="next-steps"></a>次のステップ
 

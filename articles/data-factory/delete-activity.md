@@ -9,12 +9,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: c3e5dc6c0a45d8db64d697232d7a5d3f0c212317
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 30aa69b414770a1d787767f0be4b1e27b50d86d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782629"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084920"
 ---
 # <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics の Delete アクティビティ
 
@@ -365,10 +365,10 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Copy アクティビティと Delete アクティビティを連鎖させてファイルを移動する
 
-パイプラインでコピー アクティビティを使用してファイルをコピーし、次に削除アクティビティを使用してファイルを削除することにより、ファイルを移動することができます。  複数のファイルを移動する場合は、次の例に示すように、GetMetadata アクティビティ、Filter アクティビティ、Foreach アクティビティ、Copy アクティビティ、および Delete アクティビティを使用できます。
+ファイルを移動するには、Copy アクティビティを使用してファイルをコピーし、Delete アクティビティを使用してパイプライン内のファイルを削除します。  複数のファイルを移動する場合は、次の例のように、GetMetadata アクティビティ + フィルター アクティビティ + Foreach アクティビティ + Copy アクティビティ + Delete アクティビティを使用できます。
 
 > [!NOTE]
-> フォルダー パスのみを含むデータセットを定義し、次に Copy アクティビティと Delete アクティビティを使用して、フォルダーを表す同じデータセットを参照することによりフォルダー全体を移動する場合は、十分注意する必要があります。 その理由は、コピー操作と削除操作の間にそのフォルダーに新しいファイルが到着しないようにする必要があるからです。  Copy アクティビティがコピー ジョブを完了したが、Delete アクティビティがまだ開始されていないときにフォルダーに新しいファイルが到着すると、Delete アクティビティがフォルダー全体を削除することにより、まだ宛先にコピーされていない新しく到着したファイルを削除する可能性があります。 
+> フォルダー パスのみを含むデータセットを定義し、Copy アクティビティ と Delete アクティビティを使用してフォルダーを表す同じデータセットを参照することで、フォルダー全体を移動する場合は、十分に注意する必要があります。 コピー操作と削除操作の間にフォルダーに到着する新しいファイルが **ない** ことを確認する必要があります。 コピーアクティビティがコピージョブを完了した直後に、削除アクティビティが開始されていないときに新しいファイルがフォルダーに到達した場合、削除アクティビティは、フォルダー全体を削除しても、コピー先にコピーされていない新しく到着したファイルを削除する可能性があります。 
 
 #### <a name="sample-pipeline"></a>サンプル パイプライン
 

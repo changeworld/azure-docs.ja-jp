@@ -1,6 +1,6 @@
 ---
 title: Kubernetes ワークロードのワークロード保護
-description: Azure Security Center の、Kubernetes ワークロード保護のセキュリティの推奨事項を使用する方法について説明します。
+description: Microsoft Defender for Cloud の Kubernetes ワークロード保護のセキュリティに関する推奨事項を使用する方法について説明します。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,23 +8,26 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: a1581742e599c24f69e6aa56bf7caf694726ae66
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5b8aa02e2c8ada5213d6e16659008b048ec293a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225645"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075771"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
-このページでは、Azure Security Center の、Kubernetes ワークロード保護専用のセキュリティの推奨事項を使用する方法について説明します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+このページでは、Kubernetes ワークロード保護に特化した、クラウドのセキュリティに関する推奨事項について、Microsoft Defender を使用する方法について説明します。
 
 これらの機能の詳細については、[Kubernetes 受付制御を使用したワークロード保護のベスト プラクティス](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)に関する記事をご覧ください。
 
-Azure Defender を有効にすると、Security Center でより多くのコンテナー セキュリティ機能が提供されます。 具体的な内容は次のとおりです。
+Microsoft Defender for Kubernetes を有効にした場合、クラウドの defender により多くのコンテナーのセキュリティ機能が提供されます。 具体的には、次のとおりです。
 
-- [Azure Defender for container registries](defender-for-container-registries-introduction.md) を使用して、コンテナー レジストリの脆弱性をスキャンする
-- [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) を使用して、K8s クラスターのリアルタイムの脅威検出アラートを取得する
+- コンテナーレジストリをスキャンして、[コンテナーレジストリの Microsoft Defender](defender-for-container-registries-introduction.md)の脆弱性を確認します。
+- K8s クラスターのリアルタイムの脅威検出アラートを取得する [Microsoft Defender For Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
 > 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の [コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
@@ -45,15 +48,15 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 
 ## <a name="set-up-your-workload-protection"></a>ワークロード保護を設定する
 
-Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** がインストールされている場合に使用できる推奨事項のバンドルが含まれています。
+Microsoft Defender for Cloud には **Azure Policy、Kubernetes 用のアドオン** をインストールしたときに使用できる推奨事項のバンドルが含まれています。
 
 ### <a name="step-1-deploy-the-add-on"></a>手順 1:アドオンをデプロイする
 
 推奨設定を構成するために、**Kubernetes 用の Azure Policy アドオン** をインストールします。 
 
-- 「[Log Analytics エージェントと拡張機能の自動プロビジョニングを有効にする](security-center-enable-data-collection.md#auto-provision-mma)」で説明されているように、このアドオンは自動的にデプロイできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
+- 「[Log Analytics エージェントと拡張機能の自動プロビジョニングを有効にする](enable-data-collection.md#auto-provision-mma)」で説明されているように、このアドオンは自動的にデプロイできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
 
-    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Security Center の自動プロビジョニング ツールを使用して Kubernetes 用の Policy アドオンをインストールする":::
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="クラウドの自動プロビジョニングツールで Defender を使用して Kubernetes 用のポリシーアドオンをインストールする":::
 
 - アドオンを手動でデプロイするには:
 
@@ -71,7 +74,10 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
 ### <a name="step-2-view-and-configure-the-bundle-of-recommendations"></a>ステップ 2: 推奨事項のバンドルを確認、構成する
 
-1. アドオンのインストールが完了してから約 30 分後に、Security Center は、関連する各セキュリティ コントロールに、次の推奨事項についてのクラスターの正常性状態を表示します。
+1. アドオンのインストールが完了してから約30分後、Defender for Cloudは、図のように関連するセキュリティコントロールで、それぞれ以下の推奨事項に対するクラスターの健康状態を表示します：
+
+    > [!NOTE]
+    > アドオンを初めてインストールする場合、これらの推奨事項は、推奨事項の一覧に新しく追加されたものとして表示されます。 
 
     > [!TIP]
     > 一部の推奨事項にはパラメーターが含まれており、それらを効果的に使用するために、Azure Policy を使用してカスタマイズする必要があります。 たとえば、**コンテナー イメージは信頼されたレジストリからのみデプロイする必要があります** という推奨事項のメリットを得るには、信頼されたレジストリを定義する必要があります。
@@ -91,6 +97,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
     | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
     | Kubernetes クラスターで API 資格情報の自動マウントを無効にする必要がある             | アクセスおよびアクセス許可の管理            | No                     |
     | コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある     | アクセスおよびアクセス許可の管理            | No                     |
+    | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
     | コンテナーをルート ユーザーとして実行しない                           | アクセスおよびアクセス許可の管理            | No                     |
     | 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある              | アクセスおよびアクセス許可の管理            | No                     |
     | コンテナーの CPU とメモリの制限を強制する必要がある                          | DDoS 攻撃からのアプリケーションの保護 | No                     |
@@ -101,9 +108,9 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
 1. カスタマイズする必要があるパラメーターが含まれた推奨事項では、次のようにパラメーターを設定します。
 
-    1. Security Center のメニューから、 **[セキュリティ ポリシー]** を選択します。
+    1. Defender for Cloud のメニューから、[セキュリティ ポリシー] **を選択します**。
     1. 関連するサブスクリプションを選択します。
-    1. **[Security Center の既定のポリシー]** セクションで、 **[有効なポリシーの表示]** を選択します。
+    1. [Defender **for Cloud の既定のポリシー] セクションで** 、[有効なポリシー **の表示] を選択します**。
     1. 更新するスコープの既定のポリシーを選択します。
     1. **[パラメーター]** タブを開き、必要に応じて値を変更します。
 
@@ -125,7 +132,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
 1. クラスターに適用される推奨事項を確認するには、次の手順に従います。
 
-    1. Security Center の [資産インベントリ](asset-inventory.md) ページを開き、リソースの種類のフィルターを使用して **Kubernetes サービス** を選択します。
+    1. Defender for Cloud の資産インベントリ [ページを開](asset-inventory.md) き **、Kubernetes** サービス に対してリソースの種類フィルターを使用します。
 
     1. 調査するクラスターを選択し、クラスターで利用可能な推奨事項を確認します。 
 
@@ -258,6 +265,6 @@ spec:
 
 その他の関連資料については、次のページを参照してください。 
 
-- [コンピューティングに関する Security Center の推奨事項](recommendations-reference.md#recs-compute)
+- [コンピューティングに関する Defender for Cloud の推奨事項](recommendations-reference.md#recs-compute)
 - [AKS クラスター レベルのアラート](alerts-reference.md#alerts-k8scluster)
 - [コンテナー ホスト レベルのアラート](alerts-reference.md#alerts-containerhost)

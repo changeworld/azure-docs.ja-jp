@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a782a2194b64fa82163c8c4df14e78de7e83a57f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a766415eab11a0486b4609d181e5f01dcf4ef2a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612550"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049693"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -29,6 +29,10 @@ ms.locfileid: "128612550"
 Azure AD にデバイスを設定して、クラウドとオンプレミスのリソースでのシングル サインオン (SSO) を実現することで、ユーザーの生産性を最大化できます。 同時に、[条件付きアクセス](../conditional-access/overview.md)を使用して、クラウドとオンプレミスのリソースへのアクセスを保護することもできます。
 
 オンプレミスの Active Directory (AD) 環境があるときに、AD ドメイン参加済みコンピューターを Azure AD に参加させたい場合は、ハイブリッド Azure AD 参加を実行してこれを実現できます。 この記事では、ご使用の環境でハイブリッド Azure AD 参加を実装するための関連する手順について説明します。 
+
+> [!TIP]
+> オンプレミスのリソースへの SSO アクセスは、参加して Azure AD デバイスでも使用できます。 詳しくは、「[How SSO to on-premises resources works on Azure AD joined devices](azuread-join-sso.md)」(Azure AD 参加済みデバイス上でのオンプレミスのリソースへの SSO の動作) をご覧ください。
+>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,6 +67,7 @@ Hybrid Azure AD Join を使用したデバイスには、ドメイン コント�
 ### <a name="windows-current-devices"></a>最新の Windows デバイス
 
 - Windows 10
+- Windows 11
 - Windows Server 2016
   - **注**:Azure 国内クラウドのお客様にはバージョン 1803 が必要です
 - Windows Server 2019

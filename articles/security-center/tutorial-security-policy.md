@@ -1,39 +1,42 @@
 ---
 title: セキュリティ ポリシーの操作 | Microsoft Docs
-description: この記事では、Azure Security Center でセキュリティ ポリシーを操作する方法について説明します。
+description: Microsoft Defender for Cloud でセキュリティポリシーを使用する方法について説明します。
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: b7c8003bd40df21fb749fcb576afeaec5dacead9
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 600d2bd187d3814d994893285ba19457bdfb2339
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236843"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009493"
 ---
 # <a name="manage-security-policies"></a>セキュリティ ポリシーの管理
 
-この記事では、セキュリティ ポリシーの構成方法と、それの Security Center での表示方法について説明します。 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+このページでは、セキュリティポリシーの構成方法と、Microsoft Defender for Cloud でそれらを表示する方法について説明します。 
 
 イニシアティブ、ポリシー、および推奨事項の関係を理解するには、「[セキュリティ ポリシー、イニシアチブ、および推奨事項とは](security-policy-concept.md)」を参照してください
 
 ## <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
 
-Security Center では Azure ロールベースのアクセス制御 (Azure RBAC) が使用されています。RBAC が提供する組み込みのロールは、Azure ユーザー、グループ、およびサービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセスできるリソースに関する情報のみが表示されます。 これは、リソースのサブスクリプションに対して、"*所有者*"、"*共同作成者*"、または "*閲覧者*" のロールがユーザーに割り当てられていることを意味します。 次の 2 つの固有の Security Center ロールもあります。
+Defender for Cloud は azure のロールベースのアクセス制御 (Azure RBAC) を使用します。これには、Azure のユーザー、グループ、およびサービスに割り当てることができる組み込みのロールが用意されています。 ユーザーがクラウドに対して Defender を開くと、アクセスできるリソースに関連する情報のみが表示されます。 これは、リソースのサブスクリプションに対して、"*所有者*"、"*共同作成者*"、または "*閲覧者*" のロールがユーザーに割り当てられていることを意味します。 クラウドの役割には、次の2つの特定の Defender もあります。
 
-- **セキュリティ閲覧者**: 推奨事項、アラート、ポリシー、正常性などの Security Center 項目を表示する権利を持っています。 変更は行えません。
+- **セキュリティ閲覧** 者: 推奨事項、アラート、ポリシー、正常性などのクラウド項目の Defender を表示する権限があります。 変更は行えません。
 - **セキュリティ管理者**:*セキュリティ閲覧者* と同じ表示権利を持っています。 セキュリティポリシーを更新し、アラートを無視することもできます。
 
 REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。
 
 ## <a name="manage-your-security-policies"></a>セキュリティ ポリシーの管理
 
-Security Center でセキュリティ ポリシーを表示するには:
+クラウドの Defender でセキュリティポリシーを表示するには、次のようにします。
 
-1. **Security Center** ダッシュボードで **[セキュリティ ポリシー]** を選択します。
+1. **[Defender For Cloud]** メニューで、 **[セキュリティポリシー]** を選択します。
 
     :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="[ポリシー管理] ページ。":::
 
@@ -43,7 +46,7 @@ Security Center でセキュリティ ポリシーを表示するには:
 
 1. そのサブスクリプションまたは管理グループのセキュリティ ポリシー ページが表示されます。 利用可能な割り当て済みのポリシーが表示されます。
 
-    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Security Center のセキュリティ ポリシー ページ" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="クラウドの [セキュリティポリシー] ページの Defender" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > 既定のポリシーの横に "MG 継承済み" というラベルがある場合、そのポリシーが管理グループに割り当てられており、表示しているサブスクリプションに継承されていることを意味します。
@@ -74,20 +77,20 @@ Security Center でセキュリティ ポリシーを表示するには:
 
 環境に関係のない推奨事項がセキュリティ イニシアチブによってトリガーされる場合、その推奨事項が再び表示されるのを防ぐことができます。 推奨事項を無効にするには、推奨設定を生成する特定のポリシーを無効にします。
 
-Security Center の規制コンプライアンス ツールで適用した規制標準のために必要な場合、無効にする推奨事項は引き続き表示されます。 組み込みのイニシアチブでポリシーを無効にした場合でも、コンプライアンスのために必要な場合は、規制標準のイニシアチブのポリシーによって推奨事項は引き続きトリガーされます。 規制標準イニシアチブのポリシーを無効にすることはできません。
+無効にする推奨事項は、クラウドの規制遵守ツールに対して Defender に適用した規制標準に必要な場合にも表示されます。 組み込みのイニシアチブでポリシーを無効にした場合でも、コンプライアンスのために必要な場合は、規制標準のイニシアチブのポリシーによって推奨事項は引き続きトリガーされます。 規制標準イニシアチブのポリシーを無効にすることはできません。
 
-推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
+推奨事項の詳細については、[セキュリティに関する推奨事項の管理](review-security-recommendations.md)についてのページを参照してください。
 
-1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** を選択します。
+1. Defender for Cloud のメニューから、[セキュリティ ポリシー] **を選択します**。
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でのポリシー管理プロセスの開始。":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Microsoft Defender for Cloud でポリシー管理プロセスを開始しています。":::
 
 1. 推奨事項 (およびポリシー) を無効にするサブスクリプションまたは管理グループを選択します。
 
    > [!NOTE]
    > 管理グループがそのポリシーをそのサブスクリプションに適用することに注意してください。 そのため、サブスクリプションのポリシーを無効にしても、そのサブスクリプションが同じポリシーを使用する管理グループに属している場合は、そのポリシーの推奨事項は引き続き表示されます。 ポリシーは管理レベルから引き続き適用され、推奨事項は引き続き生成されます。
 
-1. **[Security Center の既定のポリシー]** 、 **[業界および規制の基準]** 、または **[カスタム イニシアティブ]** セクションで、無効にするポリシーが含まれている関連イニシアティブを選択します。
+1. 既定の **ポリシー**、 **業界 & 規制標準**、または **カスタムイニシアチブ** のセクションから、無効にするポリシーを含む関連イニシアチブを選択します。
 
 1. **[パラメーター]** セクションを開き、無効にする推奨事項を呼び出すポリシーを検索します。
 
@@ -107,13 +110,13 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 無効にしたポリシーを有効にし、リソースに対して評価されるようにするには、次のようにします。
 
-1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** を選択します。
+1. Defender for Cloud のメニューから、[セキュリティ ポリシー] **を選択します**。
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でのポリシー管理プロセスの開始。":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Microsoft Defender for Cloud でポリシー管理プロセスを開始しています。":::
 
 1. 推奨事項 (およびポリシー) を有効にするサブスクリプションまたは管理グループを選択します。
 
-1. **[Security Center の既定のポリシー]** 、 **[業界および規制の基準]** 、または **[カスタム イニシアティブ]** セクションで、有効にするポリシーが含まれている関連イニシアティブを選択します。
+1. 既定の **ポリシー**、 **業界 & 規制標準**、または **カスタムイニシアチブ** のセクションから、有効にするポリシーに関連するイニシアチブを選択します。
 
 1. **[パラメーター]** セクションを開き、無効にする推奨事項を呼び出すポリシーを検索します。
 
@@ -131,4 +134,4 @@ Security Center の規制コンプライアンス ツールで適用した規制
 - [PowerShell を使用してポリシーを設定する方法を確認する](../governance/policy/assign-policy-powershell.md)
 - [Azure Policy でセキュリティ ポリシーを編集する方法を確認する](../governance/policy/tutorials/create-and-manage.md)
 - [Azure Policy を使用して、サブスクリプションまたは管理グループにポリシーを設定する方法を確認する](../governance/policy/overview.md)
-- [管理グループ内のすべてのサブスクリプションで Security Center を有効にする方法を確認する](onboard-management-group.md)
+- [管理グループ内のすべてのサブスクリプションで、Defender をクラウドに対して有効にする方法について説明します。](onboard-management-group.md)

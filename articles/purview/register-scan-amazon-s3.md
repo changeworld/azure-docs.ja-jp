@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: b57e8f4725e1f6d97cd86406f95c26fbbf7b47e7
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 754f3671734125a47f633876e31e39f72dcbaa7d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358597"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076682"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Azure Purview 用 Amazon S3 Multi-Cloud Scanning Connector
 
@@ -29,11 +29,12 @@ Azure Purview 用 Multi-Cloud Scanning Connector を使用すると、Azure ス�
 
 ## <a name="purview-scope-for-amazon-s3"></a>Purview の Amazon S3 のスコープ
 
-Purview の制限については、以下を参照してください。
+AWS ソースに対応するインジェスト プライベート エンドポイントは、現時点ではサポートされていません。
+
+Purview の制限の詳細については、以下を参照してください。
 
 - [Azure Purview を使用する、リソースのクォータの管理と引き上げ](how-to-manage-quotas.md)
 - [Azure Purview でサポートされているデータ ソースとファイルの種類](sources-and-scans.md)
-- [Purview アカウントのプライベート エンドポイントを使用する](catalog-private-link.md)
 
 ### <a name="storage-and-scanning-regions"></a>ストレージとスキャンのリージョン
 
@@ -445,7 +446,7 @@ S3 バケットをスキャンするときに使用する、[Purview 用の AWS 
 - `GetObject`
 - `ListBucket`
 
-必ず特定のバケット名を使用してリソースを定義してください。 例:
+必ず特定のバケット名を使用してリソースを定義してください。 次に例を示します。
 
 ```json
 {

@@ -5,15 +5,15 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 10/04/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: a7a520ba1b95b412cbc068ad045a6b022e15306f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 7615c7d3d0556aef2bd2f73148ac986709082ce0
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535433"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845724"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 

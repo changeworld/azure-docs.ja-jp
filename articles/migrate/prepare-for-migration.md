@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 288a78ee3b3e8c0a3d32d72d289c2b3e4c3d4aff
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9504d37c631116e041aa07b7044cfb69a86c7027
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619017"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084617"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -90,7 +90,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 **Windows Azure ゲスト エージェントをインストールする** <br/><br/> 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントの主要な役割は、Azure 仮想マシン拡張機能を有効にして実行することであり、これにより、ソフトウェアのインストールや構成など、VM のデプロイ後の構成が可能になります。 |  Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。 <br/> それより前のオペレーティング システムでは、手動で構成します。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。
 **移行後に接続する**<br/><br/> 移行後に接続するためには、移行前に行うべき手順が数多くあります。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。
 
-エージェントレスの VMware 移行について Windows サーバーで行われた変更の詳細については、[こちら](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-windows-servers)を参照してください。
+エージェントレスの VMware 移行について Windows サーバーで行われた変更の詳細については、[こちら](./prepare-for-agentless-migration.md#changes-performed-on-windows-servers)を参照してください。
 
 #### <a name="configure-san-policy"></a>SAN のポリシーを構成する
 
@@ -113,8 +113,8 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 
 次のバージョンについては、各アクションが Azure Migrate によって自動的に実行されます。
 
-- Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
-- Cent OS 8、7.7、7.6、7.5、7.4、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
+- Red Hat Enterprise Linux 8.x、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x (移行中にAzure Linux VM エージェントも自動的にインストールされます。)
+- Cent OS 8. x、7.7、7.6、7.5、7.4、6.x (移行中にAzure Linux VM エージェントも自動的にインストールされます。)
 - SUSE Linux Enterprise Server 15 SP0、15 SP1、12
 - Ubuntu 20.04、19.04、19.10、18.04LTS、16.04LTS、14.04LTS (移行中に Azure Linux VM エージェントも自動的にインストールされます)
 - Debian 9、8、7
@@ -152,7 +152,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 
 詳細については、[Azure 上で Linux VM を稼働させる](../virtual-machines/linux/create-upload-generic.md)ための手順のページを参照してください。同ページでは、一部の人気 Linux ディストリビューションを対象とした手順も紹介しています。
 
-Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 エージェントレスの VMware 移行方法を使用する場合、Azure Migrate では、RHEL 8/7/6、CentOS 8/7/6、Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04、SUSE 15 SP0/15 SP1/12、Debian 9/8/7、および Oracle 7 に対して Linux VM エージェントを自動的にインストールします。
+Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 VMware 移行エージェントレス方法を使用している時に、Azure Migrateで は、RHEL 8.x/7.x/6.x、 CentOS 8.x/7.x/6.x、Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04、SUSE 15 SP0/15 SP1/12、Debian 9/8/7、およびOracle 7について、 Linux VM エージェントを自動的にインストールします。
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM の要件を確認する
 
@@ -189,7 +189,7 @@ Azure への移行中には、Azure VM が作成されます。 移行後に、�
 
 移行後は、作成された Azure VM で次の手順を実行します。
 
-1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 Azure VM には、オンプレミスのマシンとは異なるパブリック IP アドレスを使用する必要があります。 [詳細については、こちらを参照してください](../virtual-network/virtual-network-public-ip-address.md)。
+1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 Azure VM には、オンプレミスのマシンとは異なるパブリック IP アドレスを使用する必要があります。 [詳細については、こちらを参照してください](../virtual-network/ip-services/virtual-network-public-ip-address.md)。
 2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの受信接続が許可されていることを確認します。
 3. [[ブート診断]](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
 

@@ -1,22 +1,25 @@
 ---
-title: 連続エクスポートによって、Azure Security Center のアラートと推奨事項を Log Analytics ワークスペースまたは Azure Event Hubs に送信できます
+title: 連続エクスポートでは、Microsoft Defender for Cloud のアラートと推奨事項を Log Analytics ワークスペースまたはクラウド に送信Azure Event Hubs
 description: セキュリティ アラートと推奨事項の Log Analytics ワークスペースまたは Azure Event Hubs への連続エクスポートの構成方法について説明します
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/05/2021
+ms.date: 10/18/2021
 ms.author: memildin
-ms.openlocfilehash: e2b1b238e7f893df5eb56818f256eb324c5be6aa
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1557503699a47e471abee173733007cb3d0b5380
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536048"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010158"
 ---
-# <a name="continuously-export-security-center-data"></a>Security Center のデータを連続的にエクスポートする
+# <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Microsoft Defender for Cloud データを継続的にエクスポートする
 
-Azure Security Center では、詳細なセキュリティ アラートと推奨事項が生成されます。 これらは、ポータル内またはプログラム ツールで表示できます。 場合によっては、環境内の他の監視ツールでの追跡のために、この情報の一部または全部をエクスポートする必要があります。 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender for Cloud では、詳細なセキュリティ アラートと推奨事項が生成されます。 これらは、ポータル内またはプログラム ツールで表示できます。 場合によっては、環境内の他の監視ツールでの追跡のために、この情報の一部または全部をエクスポートする必要があります。 
 
 **連続エクスポート** を使用して、エクスポートする "*内容*" とエクスポート先の "*場所*" を完全にカスタマイズできます。 たとえば、次のように構成できます。
 
@@ -30,10 +33,10 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 この記事では、Log Analytics ワークスペースまたは Azure Event Hubs への連続エクスポートの構成方法について説明します。
 
 > [!NOTE]
-> Security Center と SIEM を統合する必要がある場合は、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
+> Defender for Cloud と SIEM を統合する必要がある場合は [、「SIEM、SOAR、または IT サービス](export-to-siem.md)管理ソリューションへのアラートのストリーム配信」を参照してください。
 
 > [!TIP]
-> Security Center には、CSV への 1 回限りの手動エクスポートを実行するオプションも用意されています。 詳細については、[アラートと推奨事項の手動によるエクスポート](#manual-one-time-export-of-alerts-and-recommendations)に関する記事を参照してください。
+> Defender for Cloud には、CSV への 1 回の手動エクスポートを実行するオプションも用意されています。 詳細については、[アラートと推奨事項の手動によるエクスポート](#manual-one-time-export-of-alerts-and-recommendations)に関する記事を参照してください。
 
 
 ## <a name="availability"></a>可用性
@@ -64,21 +67,21 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 ## <a name="set-up-a-continuous-export"></a>連続エクスポートを設定する 
 
-連続エクスポートは、Azure portal で Security Center のページから構成する、Security Center REST API を使用して構成する、または提供されている Azure Policy テンプレートを使用して大規模に構成することができます。 それぞれの詳細については、下の適切なタブを選択してください。
+Azure portal の Microsoft Defender for Cloud ページから、REST API を介して、または指定された Azure Policy テンプレートを使用して大規模に連続エクスポートを構成できます。 それぞれの詳細については、下の適切なタブを選択してください。
 
 ### <a name="use-the-azure-portal"></a>[**Azure portal を使用する**](#tab/azure-portal)
 
-### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Azure portal で Security Center のページから連続エクスポートを構成する
+### <a name="configure-continuous-export-from-the-defender-for-cloud-pages-in-azure-portal"></a>Azure portal の Defender for Cloud ページから連続エクスポートを構成する
 
 連続エクスポート先として Log Analytics ワークスペースまたは Azure Event Hubs のどちらを設定する場合でも、次の手順を実行する必要があります。
 
-1. Security Center のサイドバーで、 **[価格と設定]** を選択します。
+1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
 
 1. データのエクスポートを構成する特定のサブスクリプションを選択します。
 
 1. そのサブスクリプションの設定ページのサイドバーで、 **[連続エクスポート]** を選択します。
 
-    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Azure Security Center のエクスポート オプション。":::
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Microsoft Defender for Cloud のエクスポート オプション。":::
 
     ご覧のようにエクスポート オプションが表示されます。 使用可能なエクスポート ターゲットごとにタブがあります。 
 
@@ -106,7 +109,7 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>REST API を使用して連続エクスポートを構成する
 
-連続エクスポートは、Azure Security Center の[自動化 API](/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の可能な宛先のいずれかにエクスポートするためのルールを作成または更新します。
+継続的エクスポートは、Microsoft Defender for Cloud Automations API を使用して [構成および管理できます](/rest/api/securitycenter/automations)。 この API を使用して、以下の可能な宛先のいずれかにエクスポートするためのルールを作成または更新します。
 
 - Azure Event Hub
 - Log Analytics ワークスペース
@@ -114,14 +117,14 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 API には、Azure portal からは使用できない追加の機能が用意されています。以下に例を示します。
 
-* **より大きなボリューム** - API を使用すると、1 つのサブスクリプションに複数のエクスポート構成を作成できます。 Security Center のポータル UI の **[連続エクスポート]** ページでは、サブスクリプションごとに 1 つのエクスポート構成のみがサポートされます。
+* **より大きなボリューム** - API を使用すると、1 つのサブスクリプションに複数のエクスポート構成を作成できます。 Defender for **Cloud の** ポータル UI の [連続エクスポート] ページでは、サブスクリプションごとに 1 つのエクスポート構成しかサポートされません。
 
-* **追加の機能** - API には、UI には表示されない追加のパラメーターが用意されています。 たとえば、自動化リソースにタグを追加したり、Security Center のポータル UI の **[連続エクスポート]** ページで提供されているよりも幅広い一連のアラートと推奨設定のプロパティに基づいて、エクスポートを定義したりすることができます。
+* **追加の機能** - API には、UI には表示されない追加のパラメーターが用意されています。 たとえば、Automation リソースにタグを追加し、Defender for Cloud のポータル UI の [連続エクスポート] ページで提供されるプロパティよりも広範なアラートと推奨事項のプロパティセットに基づいてエクスポートを定義できます。
 
-* **より焦点を絞ったスコープ** - API では、エクスポート構成のスコープに対してよりきめ細かなレベルが提供されます。 API を使用してエクスポートを定義するときには、リソース グループ レベルで定義できます。 Security Center のポータル UI の **[連続エクスポート]** ページを使用している場合は、サブスクリプション レベルで定義する必要があります。
+* **より焦点を絞ったスコープ** - API では、エクスポート構成のスコープに対してよりきめ細かなレベルが提供されます。 API を使用してエクスポートを定義するときには、リソース グループ レベルで定義できます。 Defender for Cloudのポータル UI で [連続エクスポート] ページを使用している場合は、サブスクリプション レベルで定義する必要があります。
 
     > [!TIP]
-    > API を使用して複数のエクスポート構成を設定した場合や、API のみのパラメーターを使用した場合、それらの追加機能は Security Center UI に表示されません。 代わりに、他の構成が存在することを通知するバナーが表示されます。
+    > API を使用して複数のエクスポート構成を設定した場合、または API 専用パラメーターを使用した場合、これらの追加機能は Defender for Cloud UI に表示されません。 代わりに、他の構成が存在することを通知するバナーが表示されます。
 
 自動化 API の詳細については、[REST API のドキュメント](/rest/api/securitycenter/automations)を参照してください。
 
@@ -139,8 +142,8 @@ API には、Azure portal からは使用できない追加の機能が用意さ
 
     |目標  |ポリシー  |ポリシー ID  |
     |---------|---------|---------|
-    |イベント ハブへの連続エクスポート|[Azure Security Center アラートおよび推奨事項についてイベント ハブへのエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-    |Log Analytics ワークスペースへの連続エクスポート|[Azure Security Center アラートおよび推奨事項について Log Analytics ワークスペースへのエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    |イベント ハブへの連続エクスポート|[Microsoft Defender for Cloud のアラートと推奨事項のために Event Hub にエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Log Analytics ワークスペースへの連続エクスポート|[Microsoft Defender for Cloud のアラートと推奨事項のために Log Analytics ワークスペースにエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
     ||||
 
     > [!TIP]
@@ -158,7 +161,7 @@ API には、Azure portal からは使用できない追加の機能が用意さ
         > [!TIP]
         > 各パラメーターには、使用可能なオプションを説明するツールヒントがあります。
         >
-        > Azure Policy のパラメーター タブ (1) には、Security Center の連続エクスポート ページ (2) に似た構成オプションへのアクセスが提供されています。
+        > Azure Policyの [パラメーター] タブ (1) を使用すると、Defender for Cloud の連続エクスポート ページ (2) と同様の構成オプションにアクセスできます。
         > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="連続エクスポートのパラメーターを Azure Policy と比較する。" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. 必要に応じて、この割り当てを既存のサブスクリプションに適用するには、 **[修復]** タブを開き、修復タスクを作成するためのオプションを選択します。
 1. 概要ページを確認し、 **[作成]** を選択します。
@@ -167,13 +170,13 @@ API には、Azure portal からは使用できない追加の機能が用意さ
 
 ## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースへのエクスポートについての情報
 
-Azure Security Center のデータを Log Analytics ワークスペースの内部で分析したり、Azure アラートを Security Center アラートと一緒に使用したりする場合は、Log Analytics ワークスペースへの連続エクスポートを設定します。
+Log Analytics ワークスペース内の Microsoft Defender for Cloud データを分析する場合、または Defender for Cloud アラートと共に Azure アラートを使用する場合は、Log Analytics ワークスペースへの連続エクスポートを設定します。
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics のテーブルとスキーマ
 
 セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendation* テーブルに格納されます。 
 
-これらのテーブルを含む Log Analytics ソリューションの名前は、Azure Defender を有効にしたかどうかによって異なります。Security ("Security and Audit") または SecurityCenterFree。 
+これらのテーブルを含む Log Analytics ソリューションの名前は、セキュリティ ('Security and Audit') または SecurityCenterFree の強化されたセキュリティ機能を有効にしたかどうかによって異なります。 
 
 > [!TIP]
 > 宛先ワークスペースのデータを表示するには、**Security and Audit** または **SecurityCenterFree** ソリューションのいずれかを有効にする必要があります。
@@ -189,7 +192,7 @@ Azure Security Center のデータを Log Analytics ワークスペースの内�
 
 Azure Monitor は、診断ログ、メトリック アラート、および Log Analytics ワークスペース クエリに基づくカスタム アラートなど、さまざまな Azure アラートの統合されたアラート エクスペリエンスを提供します。
 
-Azure Monitor の Security Center からアラートと推奨事項を表示するには、Log Analytics クエリ (ログ アラート) に基づいてアラート ルールを構成します。
+Azure Monitor で Defender for Cloud からのアラートと推奨事項を表示するには、Log Analytics クエリ (ログ アラート) に基づいてアラート ルールを構成します。
 
 1. Azure Monitor の **[アラート]** ページから、 **[新しいアラート ルール]** を選択します。
 
@@ -199,12 +202,12 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
     * **[リソース]** には、セキュリティ アラートと推奨事項のエクスポート先の Log Analytics ワークスペースを選択します。
 
-    * **[条件]** には、 **[Custom log search]\(カスタム ログ検索\)** を選択します。 表示されたページで、クエリ、ルックバック期間、および頻度の期間を構成します。 検索クエリでは、「*SecurityAlert*」または「*Securityalert*」と入力して、Log Analytics への連続エクスポート機能を有効にしたときに Security Center が連続してエクスポートするデータ型に対してクエリを実行できます。 
+    * **[条件]** には、 **[Custom log search]\(カスタム ログ検索\)** を選択します。 表示されたページで、クエリ、ルックバック期間、および頻度の期間を構成します。 検索クエリでは *、「SecurityAlert」* または *「SecurityRecommendation」* と入力して、Log Analytics への連続エクスポート機能を有効にした場合に、Defender for Cloud が継続的にエクスポートするデータ型に対してクエリを実行できます。 
     
     * 必要に応じて、トリガーする[アクション グループ](../azure-monitor/alerts/action-groups.md)を構成します。 アクション グループは、メール送信、ITSM チケット、Webhook などをトリガーできます。
     ![Azure Monitor のアラート ルール。](./media/continuous-export/azure-monitor-alert-rule.png)
 
-これで、アクション グループの自動トリガーが設定された (指定されている場合)、新しい Azure Security Center アラートまたは推奨事項 (構成されている連続エクスポート ルールと Azure Monitor アラート ルールに定義されている条件によって決まります) が Azure Monitor アラートに表示されるようになります。
+Azure Monitor アラートに新しい Microsoft Defender for Cloud アラートまたは推奨事項 (構成済みの連続エクスポート ルールと Azure Monitor アラート ルールで定義した条件に応じて) が表示され、アクション グループが自動的にトリガーされます (指定されている場合)。
 
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>アラートと推奨事項の手動による 1 回限りのエクスポート
 
@@ -252,9 +255,9 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 詳細については、「[Azure Event Hubs - geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md)」を参照してください。
 
 
-### <a name="is-continuous-export-available-with-azure-security-center-free"></a>Azure Security Center では連続エクスポートを無料で利用できますか?
+### <a name="is-continuous-export-available-for-free"></a>連続エクスポートは無料で使用できますか?
 
-はい、ご利用いただけます。 Security Center アラートの多くは、Azure Defender を有効にした場合にのみ提供されることに注意してください。 エクスポートされたデータに表示されるアラートをプレビューするには、Azure portal の Security Center のページに示されているアラートを確認することをお勧めします。
+はい、ご利用いただけます。 多くのアラートは、高度な保護を有効にした場合にのみ提供されます。 エクスポートされたデータに表示されるアラートをプレビューする良い方法は、Defender for Cloud のページに表示されるアラートを Azure portal に表示することです。
 
 
 
@@ -266,6 +269,6 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
 - [ワークフローの自動化テンプレート](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)の詳細を確認します。
 - [Azure Event Hubs のドキュメント](../event-hubs/index.yml)
-- [Azure Sentinel のドキュメント](../sentinel/index.yml)
+- [Microsoft Sentinel のドキュメント](../sentinel/index.yml)
 - [Azure Monitor のドキュメント](../azure-monitor/index.yml)
 - [データ型スキーマをエクスポートする](https://aka.ms/ASCAutomationSchemas)

@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 178f60c43d24489a80a4fc5424212df762160652
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 643d8aa51c3d676232f2dee748a4627c21be0c83
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249915"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067472"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory バージョン 1 パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -27,7 +27,7 @@ ms.locfileid: "130249915"
 Azure Data Factory パイプラインでは、2 種類のアクティビティを使用できます。
 
 - [サポートされるソース データ ストアとシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の間でデータを移動する[データ移動アクティビティ](data-factory-data-movement-activities.md)。
-- Azure HDInsight、Azure Batch、Azure Machine Learning Studio (classic) などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](data-factory-data-transformation-activities.md)
+- Azure HDInsight、Azure Batch、ML Studio (クラシック) などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](data-factory-data-transformation-activities.md)。
 
 Data Factory でサポートされていないデータ ストアとの間でデータを移動するには、独自のデータ移動ロジックで **カスタム アクティビティ** を作成し、パイプラインでそのアクティビティを使用します。 同じように、Data Factory でサポートされていない方法でデータを変換/処理するには、独自のデータ変換ロジックでカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用します。
 
@@ -1033,7 +1033,6 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 | サンプル | カスタム アクティビティの動作 |
 | --- | --- |
 | [HTTP データ ダウンローダー](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Data Factory のカスタム C# アクティビティを使用して、HTTP エンドポイントから Azure Blob Storage にデータをダウンロードします。 |
-| [Twitter センチメント分析のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Azure Machine Learning Studio (classic) モデルを呼び出し、センチメント分析、スコア付け、予測などを行います。 |
 | [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 |
 | [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します。 |
 | [Azure Analysis Services でモデルを再処理する](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Azure Analysis Services でモデルを再処理します。 |

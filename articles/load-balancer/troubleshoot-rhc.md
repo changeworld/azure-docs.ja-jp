@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: kumud
-ms.openlocfilehash: 8c43a0125dac9931e68ae9567f47d63b3409f878
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: f3f0e1d714c5edef75f0f042edce1749b8f01bcf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357231"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056511"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>リソース正常性と受信の可用性に関する問題をトラブルシューティングする 
 
@@ -62,8 +62,8 @@ ms.locfileid: "113357231"
 * バックエンド リソースに適用されているネットワーク セキュリティ グループを確認します。 正常性プローブをブロックする AllowAzureLoadBalancerInBound よりも優先順位の高い規則がないことを確認します
   * これを行うには、バックエンド VM または Virtual Machine Scale Sets の [ネットワーク] ブレードにアクセスします
   * この NSG の問題が見つかった場合は、既存の許可規則を移動するか、優先度の高い新しい規則を作成して AzureLoadBalancer トラフィックを許可します
-* OS を確認します。 VM がプローブ ポートでリッスンしていることを確認し、OS のファイアウォール規則を確認して、IP アドレス 168.63.129.16 から送信されるプローブ トラフィックをブロックしていないことを確認します
-  * Windows コマンド プロンプトで netstat -a を実行するか、Linux ターミナルで netstat -l を実行することで、リスニング ポートを確認できます
+* OS を確認します。 Vm がプローブポートでリッスンしていることを確認し、OS のファイアウォール規則を確認して、IP アドレスから発信されたプローブトラフィックをブロックしていないことを確認します。 `168.63.129.16`
+  * `netstat -a`Windows のコマンドプロンプトまたは Linux ターミナルからを実行して、リスニングポートを確認できます。 `netstat -l`
 * ファイアウォール NVA VM をロード バランサーのバックエンド プールに配置しないでください。[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#user-defined)を使用して、ファイアウォール経由でバックエンド インスタンスにトラフィックをルーティングします
 * 適切なプロトコルを使用していることを確認します。HTTP を使用して、HTTP 以外のアプリケーションをリッスンしているポートをプローブする場合、プローブは失敗します
 

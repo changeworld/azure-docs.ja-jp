@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ff2ea374768189881c9e1ff28511bc403dd6306
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: b91a9c451c0160523029cd8688dfa9a91f433b37
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015559"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085926"
 ---
 # <a name="iot-central-administrator-guide"></a>IoT Central 管理者ガイド
 
@@ -22,6 +22,7 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 IoT Central では、管理者は次のことを行います。
 
 - アプリケーションのユーザーとロールを管理します。
+- 組織を作成および管理します。
 - デバイス認証などのセキュリティを管理します。
 - アプリケーション設定を構成します。
 - アプリケーションをアップグレードします。
@@ -34,6 +35,12 @@ IoT Central は、ロールベースのアクセス制御システムを使用�
 
 詳細については、「[IoT Central アプリケーションでユーザーとロールを管理する](howto-manage-users-roles.md)」を参照してください。
 
+## <a name="organizations"></a>組織
+
+組織では、IoT Central アプリケーション内でどのユーザーがどのデバイスを表示できるかを管理するために使用する階層を定義できます。 ユーザーのロールによって、表示されるデバイスに対するアクセス許可と、ユーザーがアクセスできるエクスペリエンスが決まります。
+
+詳細については、 [「組織の作成」をIoT Centralしてください](howto-create-organizations.md)。
+
 ## <a name="application-security"></a>アプリケーションのセキュリティ
 
 IoT Central アプリケーションに接続するデバイスは、通常、資格情報として x.509 証明書または Shared Access Signature (SAS) を使用します。 管理者は、デバイスの資格情報の派生元であるグループ証明書またはキーを管理します。
@@ -41,6 +48,12 @@ IoT Central アプリケーションに接続するデバイスは、通常、�
 詳細については、「[x.509 グループの登録](concepts-get-connected.md#x509-group-enrollment)」、「[SAS グループの登録](concepts-get-connected.md#sas-group-enrollment)」、および「[x.509 デバイス証明書の登録方法](how-to-roll-x509-certificates.md)」を参照してください。
 
 管理者は、クライアント アプリケーションが IoT Central アプリケーションでの認証に使用する API トークンを作成および管理することもできます。 クライアント アプリケーションは、REST API を使用して IoT Central を操作します。
+
+データ エクスポートの場合、管理者は、エクスポート先 への接続をセキュリティで保護するために[マネージド ID ](../../active-directory/managed-identities-azure-resources/overview.md)を[構成できます](howto-export-data.md)。 詳細については、次を参照してください。
+
+- [マネージド ID を構成する (Azure portal)](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)
+- [マネージド ID を構成する (REST API)](howto-manage-iot-central-with-rest-api.md)
+- [マネージド ID を構成する (Azure CLI)](howto-manage-iot-central-from-cli.md#configure-a-managed-identity)
 
 ## <a name="configure-an-application"></a>アプリケーションの構成
 

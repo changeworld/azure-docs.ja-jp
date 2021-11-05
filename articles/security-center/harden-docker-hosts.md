@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center を使用して Docker ホストをセキュリティ強化し、コンテナーを保護する
+title: Microsoft Defender for Cloud を使用して Docker ホストを強化し、コンテナーを保護する
 description: Docker ホストを保護し、CIS Docker ベンチマークに準拠していることを確認する方法
 author: memildin
 ms.author: memildin
@@ -7,18 +7,21 @@ ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2e421815fd962a62760c4d16106daa7f85fb1599
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f6a507f16918bfbba1e31f52889af9b1c16c839e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732554"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009683"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker ホストのセキュリティを強化する
 
-Azure Security Center では、IaaS Linux VM 上、または Docker コンテナーを実行している他の Linux マシン上でホストされているアンマネージド コンテナーが識別されます。 Security Center によって、こうしたコンテナーの構成が継続的に評価されます。 その後、[Center for Internet Security (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/) と比較されます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Security Center によってセキュリティの推奨事項が生成されます。 Security Center の **推奨事項ページ** を使用して、推奨事項を表示したり、問題を修復したりします。
+Microsoft Defender for Cloud は、IaaS Linux Vm でホストされているアンマネージコンテナー、または Docker コンテナーを実行している他の Linux コンピューターを識別します。 Defender for Cloud は、これらのコンテナーの構成を継続的に評価します。 その後、[Center for Internet Security (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/) と比較されます。
+
+Defender for Cloud には、CI Docker ベンチマークのルールセット全体が含まれており、コンテナーがどのコントロールも満たさない場合は警告が表示されます。 誤った設定が検出されると、Defender for Cloud によってセキュリティの推奨事項が生成されます。 クラウドの [ **推奨事項] ページ** で Defender を使用して、推奨事項を表示し、問題を修復します。
 
 脆弱性が見つかった場合、1 つの推奨事項内にグループ化されます。
 
@@ -30,14 +33,14 @@ Security Center には CIS Docker Benchmark のルールセット全体が含ま
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
+|価格:|[Microsoft Defender for servers が必要](defender-for-servers-introduction.md)|
 |必要なロールとアクセス許可:|ホストが接続するワークスペースの **閲覧者**|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png":::国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Docker 構成のセキュリティの脆弱性を特定して修復する
 
-1. Azure Security Center メニューから、 **[推奨事項]** ページを開きます。
+1. Defender for Cloud のメニューから、[推奨事項] ページ **を開** きます。
 
 1. 推奨事項を **[コンテナーのセキュリティ構成の脆弱性を修復する必要があります]** でフィルター処理して、推奨事項を選択します。
 
@@ -66,6 +69,6 @@ Security Center には CIS Docker Benchmark のルールセット全体が含ま
 
 ## <a name="next-steps"></a>次のステップ
 
-Docker のセキュリティ強化は、Security Center のコンテナーのセキュリティ機能の 1 つの側面にすぎません。 
+Docker のセキュリティ強化は、Defender for Cloud のコンテナー セキュリティ機能の 1 つの側面にす簡易です。 
 
-[Security Center のコンテナーのセキュリティ](container-security.md)について詳しく確認します。
+詳細については [、「Defender for Cloud のコンテナー セキュリティ」を参照してください](container-security.md)。

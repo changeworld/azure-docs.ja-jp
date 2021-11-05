@@ -1,23 +1,23 @@
 ---
-title: Azure PowerShell を使用して統合ランタイムを作成する
-description: Azure 内で SSIS パッケージをデプロイして実行できるように、Azure PowerShell を使用して、Azure-SSIS 統合ランタイムを Azure Data Factory 内に作成する方法について説明します。
+title: Azure PowerShell を使用した Azure SSIS 統合ランタイムの作成
+description: Azure PowerShell を介して Azure Data Factory で azure ssis 統合ランタイムを作成し、azure で ssis パッケージをデプロイして実行できるようにする方法について説明します。
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/27/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5c46d9188c95ec493593ec51d5561902e1fc43cb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8d05d50aa368c715c62de8e4e8a494cb7a83a3ba
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219315"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073189"
 ---
-# <a name="use-azure-powershell-to-create-an-integration-runtime"></a>Azure PowerShell を使用して統合ランタイムを作成する
+# <a name="create-an-azure-ssis-integration-runtime-via-azure-powershell"></a>Azure PowerShell を使用した Azure SSIS 統合ランタイムの作成 
 
-このセクションでは、Azure PowerShell を使用して、Azure-SSIS IR を作成します。
+この記事では、Azure PowerShell を使用して Azure Data Factory (ADF) で Azure SQL Server Integration Services (SSIS) 統合ランタイム (IR) を作成する方法について説明します。
 
 ## <a name="create-variables"></a>変数の作成
 
@@ -51,9 +51,12 @@ $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
-# Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use an Azure SQL Database server with IP firewall rules/virtual network service endpoints or a managed instance with private endpoint to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend an Azure Resource Manager virtual network, because classic virtual networks will be deprecated soon.
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for your Azure SQL Database server with virtual network service endpoints, or a different subnet from the one used for your managed instance with a private endpoint
+# Virtual network info: Azure Resource Manager or Classic
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database server configured with a private endpoint/IP firewall rule/virtual network service endpoint or Azure SQL Managed Instance that joins a virtual network to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend Azure Resource Manager virtual network, because classic virtual network will be deprecated soon.
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for Azure SQL Database server configured with a virtual network service endpoint or a different subnet from the one used for Azure SQL Managed Instance that joins a virtual network
+$SubnetId = $VnetId + '/subnets/' + $SubnetName 
+# Virtual network injection method: Standard or Express. For comparison, see https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-virtual-network-configuration.
+$VnetInjectionMethod = "Standard" # Standard by default, whereas Express lets you use the express virtual network injection method
 # Public IP address info: OPTIONAL to provide two standard static public IP addresses with DNS name under the same subscription and in the same region as your virtual network
 $FirstPublicIP = "[your first public IP address resource ID or leave it empty]"
 $SecondPublicIP = "[your second public IP address resource ID or leave it empty]"
@@ -114,7 +117,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 }
 ```
 
-## <a name="configure-the-virtual-network"></a>仮想ネットワークの構成
+## <a name="configure-a-virtual-network"></a>仮想ネットワークを構成する
 
 Azure-SSIS 統合ランタイムが参加するための仮想ネットワークのアクセス許可と設定を自動的に構成するには、次のスクリプトを追加します。
 
@@ -182,8 +185,8 @@ Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
     -Edition $AzureSSISEdition `
     -LicenseType $AzureSSISLicenseType `
     -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-    -VnetId $VnetId `
-    -Subnet $SubnetName
+    -SubnetId $SubnetId `
+    -VNetInjectionMethod $VnetInjectionMethod
        
 # Add the CatalogServerEndpoint, CatalogPricingTier, and CatalogAdminCredential parameters if you use SSISDB
 if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
@@ -309,14 +312,17 @@ if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::Is
     }
 }
 
-# Add public IP address parameters if you bring your own static public IP addresses
-if(![string]::IsNullOrEmpty($FirstPublicIP) -and ![string]::IsNullOrEmpty($SecondPublicIP))
+# Add public IP address parameters if you use the standard virtual network injection method and bring your own static public IP addresses
+if($VnetInjectionMethod -eq "Standard")
 {
-    $publicIPs = @($FirstPublicIP, $SecondPublicIP)
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
-        -DataFactoryName $DataFactoryName `
-        -Name $AzureSSISName `
-        -PublicIPs $publicIPs
+    if(![string]::IsNullOrEmpty($FirstPublicIP) -and ![string]::IsNullOrEmpty($SecondPublicIP))
+    {
+        $publicIPs = @($FirstPublicIP, $SecondPublicIP)
+        Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+            -DataFactoryName $DataFactoryName `
+            -Name $AzureSSISName `
+            -PublicIPs $publicIPs
+    }
 }
 ```
 
@@ -336,7 +342,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 > [!NOTE]
-> この処理は、カスタムのセットアップ時間があればそれを除くと、5 分以内で完了するはずです。 ただし、Azure-SSIS IR を仮想ネットワークに参加させるには 20 分から 30 分かかることがあります。
+> この処理は、カスタムのセットアップ時間があればそれを除くと、5 分以内で完了するはずです。 ただし、標準の挿入方法を使用して仮想ネットワークAzure-SSIS IR接続するには、20 ~ 30 分かかる場合があります。
 >
 > SSISDB を使用する場合、Data Factory サービスは、SSISDB を準備するためにデータベース サーバーに接続します。 また、仮想ネットワーク (指定されている場合) に必要なアクセス許可と設定を構成し、Azure-SSIS IR を仮想ネットワークに参加させます。
 > 
@@ -374,9 +380,12 @@ $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
-# Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use an Azure SQL Database server with IP firewall rules/virtual network service endpoints or a managed instance with private endpoint to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend an Azure Resource Manager virtual network, because classic virtual networks will be deprecated soon.
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for your Azure SQL Database server with virtual network service endpoints, or a different subnet from the one used for your managed instance with a private endpoint
+# Virtual network info: Azure Resource Manager or Classic
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database server configured with a private endpoint/IP firewall rule/virtual network service endpoint or Azure SQL Managed Instance that joins a virtual network to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend Azure Resource Manager virtual network, because classic virtual network will be deprecated soon.
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for Azure SQL Database server configured with a virtual network service endpoint or a different subnet from the one used for Azure SQL Managed Instance that joins a virtual network
+$SubnetId = $VnetId + '/subnets/' + $SubnetName 
+# Virtual network injection method: Standard or Express. For comparison, see https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-virtual-network-configuration.
+$VnetInjectionMethod = "Standard" # Standard by default, whereas Express lets you use the express virtual network injection method
 # Public IP address info: OPTIONAL to provide two standard static public IP addresses with DNS name under the same subscription and in the same region as your virtual network
 $FirstPublicIP = "[your first public IP address resource ID or leave it empty]"
 $SecondPublicIP = "[your second public IP address resource ID or leave it empty]"
@@ -462,8 +471,8 @@ Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
     -Edition $AzureSSISEdition `
     -LicenseType $AzureSSISLicenseType `
     -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-    -VnetId $VnetId `
-    -Subnet $SubnetName
+    -SubnetId $SubnetId `
+    -VNetInjectionMethod $VnetInjectionMethod
        
 # Add CatalogServerEndpoint, CatalogPricingTier, and CatalogAdminCredential parameters if you use SSISDB
 if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
@@ -589,14 +598,17 @@ if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::Is
     }
 }
 
-# Add public IP address parameters if you bring your own static public IP addresses
-if(![string]::IsNullOrEmpty($FirstPublicIP) -and ![string]::IsNullOrEmpty($SecondPublicIP))
+# Add public IP address parameters if you use the standard virtual network injection method and bring your own static public IP addresses
+if($VnetInjectionMethod -eq "Standard")
 {
-    $publicIPs = @($FirstPublicIP, $SecondPublicIP)
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
-        -DataFactoryName $DataFactoryName `
-        -Name $AzureSSISName `
-        -PublicIPs $publicIPs
+    if(![string]::IsNullOrEmpty($FirstPublicIP) -and ![string]::IsNullOrEmpty($SecondPublicIP))
+    {
+        $publicIPs = @($FirstPublicIP, $SecondPublicIP)
+        Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+            -DataFactoryName $DataFactoryName `
+            -Name $AzureSSISName `
+            -PublicIPs $publicIPs
+    }
 }
 
 ### Start the integration runtime
@@ -609,18 +621,19 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 write-host("##### Completed #####")
 write-host("If any cmdlet is unsuccessful, please consider using -Debug option for diagnostics.")
 ```
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用して Azure-SSIS IR をプロビジョニングする方法を学習する](create-azure-ssis-integration-runtime-portal.md)。
-- [Azure Resource Manager テンプレートを使用して Azure-SSIS IR をプロビジョニングする方法を学習する](create-azure-ssis-integration-runtime-resource-manager-template.md)。
-- [Azure Data Factory 内に SSIS パッケージをデプロイして実行する](create-azure-ssis-integration-runtime-deploy-packages.md)。
+- [Azure portal を使用して Azure-SSIS IR を作成](create-azure-ssis-integration-runtime-portal.md)します。
+- [テンプレート を使用Azure-SSIS IRをAzure Resource Managerします](create-azure-ssis-integration-runtime-resource-manager-template.md)。
+- [SSIS パッケージをデプロイし、 で実行Azure-SSIS IR。](create-azure-ssis-integration-runtime-deploy-packages.md)
 
-このドキュメントでは、Azure SSIS IR に関する、次のような他のトピックも参照してください。
+Azure-SSIS IR の詳細については、次の記事を参照してください。 
 
-- [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR など、統合ランタイムに関する一般的な情報が説明されています。
+- 「[Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime)」。 この記事では、Azure-SSIS IR を含め、IR に関する全般的な概念情報が説明されています。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR についての情報を取得して理解するための方法を示します。
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、または削除する方法を示しています。 また、ノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。
 - [Azure での SSIS パッケージのデプロイ、実行、監視](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
 - [Azure での SSISDB への接続](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
-- [Windows 認証を使用したオンプレミス データ ソースへの接続](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
-- [Azure でのパッケージ実行のスケジュール設定](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
+- [Windows 認証を使用したオンプレミスデータストアへの Connect](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
+- [Azure で SSIS パッケージの実行スケジュールを設定する](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)

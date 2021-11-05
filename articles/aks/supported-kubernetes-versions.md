@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2e3a51430ef2f57f3d9ea095dee8b297d01187a2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ea1112f614e9c08bde1ff0427af706aae4c14896
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758391"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063126"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -173,7 +173,7 @@ Get-AzAksVersion -Location eastus
 | 1.19  | 2020 年 8 月 4 日  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA |
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
 | 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 7 月  | 1.24 GA |
-| 1.22  | 2021 年 8 月 4 日 | 2021 年 9 月   | 2021 年 10 月  | 1.25 GA |
+| 1.22  | 2021 年 8 月 4 日 | 2021 年 9 月   | 2021 年 11 月  | 1.25 GA |
 | 1.23  | 2021 年 12 月 | 2022 年 1 月   | 2022 年 2 月  | 1.26 GA |
 
 ## <a name="faq"></a>よく寄せられる質問

@@ -8,24 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/20/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ecbb461e45b19630319622e978ad3bd49a376e74
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 62e4557b003c0347c6ecbf8a39102260abb66386
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092739"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050244"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
-RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、 *"デーモン"* または *"サービス アカウント"* と呼ばれます。
+[RFC 6749](https://tools.ietf.org/html/rfc6749#section-4.4)で指定された OAuth 2.0 クライアント資格情報付与 (2 本足の *OAuth* とも呼ばれる) を使用して、アプリケーションの ID を使用して Web でホストされるリソースにアクセスできます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、 *"デーモン"* または *"サービス アカウント"* と呼ばれます。
 
 この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。 可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
-OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。  アプリケーション独自の資格情報が使用されているため、これらの資格情報を安全に保つ必要があります。この資格情報をソース コードで公開したり、Web ページに埋め込んだり、広く分散したネイティブ アプリケーションで使用したり "_しないで_" ください。 
+OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 より高いレベルの保証のために、Microsoft ID プラットフォーム呼び出し元のサービスが共有シークレットではなく[証明書](#second-case-access-token-request-with-a-certificate)またはフェデレーション資格情報を使用して認証することもできます。  アプリケーション独自の資格情報が使用されているため、これらの資格情報を安全に保つ必要があります。この資格情報をソース コードで公開したり、Web ページに埋め込んだり、広く分散したネイティブ アプリケーションで使用したり "_しないで_" ください。 
 
 クライアント資格情報フローでは、アクセス許可は管理者によってアプリケーション自体に直接付与されます。 アプリがリソースにトークンを提示するとき、リソースはアプリ自体がアクションの実行を承認されていることを求めます。これは、認証に関与しているユーザーが存在しないためです。  この記事では、[API の呼び出しをアプリケーションに承認する](#application-permissions)ために必要な手順と、[その API を呼び出すために必要なトークンを取得する方法](#get-a-token)の両方について説明します。
 
@@ -104,7 +104,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | --- | --- | --- |
 | `tenant` | 必須 | アクセス許可を要求するディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 ユーザーが所属するテナントがわからず、任意のテナントでサインインを行う場合は、`common` を使用します。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
-| `redirect_uri` | 必須 | 処理するアプリの応答の送信先となるリダイレクト URI。 ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります (ただし、URL エンコードが必要であり、またその他のパスのセグメントがある場合があります)。 |
+| `redirect_uri` | 必須 | 処理するアプリの応答の送信先となるリダイレクト URI。 ポータルで登録したリダイレクト URI の 1 つと完全に一致する必要があります。ただし、URL でエンコードする必要がある点と、追加のパス セグメントを持つ場合があります。 |
 | `state` | 推奨 | トークンの応答でも返される要求に含まれる値。 任意の文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
 
 現時点で、Azure AD では、テナント管理者のみがサインインして、要求を完了することができます。 管理者は、アプリケーション登録ポータルでユーザーがアプリに要求したすべての直接のアプリケーション アクセス許可への承認を求められます。
@@ -193,9 +193,29 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 証明書ベースの要求のパラメーターが共有シークレット ベースの要求と異なるのは 1 箇所だけであり、`client_secret` パラメーターが `client_assertion_type` パラメーターと `client_assertion` パラメーターに置き換えられています。
 
+### <a name="third-case-access-token-request-with-a-federated-credential"></a>3 番目のケース: フェデレーション資格情報を使用したアクセス トークン要求
+
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
+
+scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+&grant_type=client_credentials
+```
+
+| パラメーター | 条件 | 説明 |
+| --- | --- | --- |
+| `client_assertion` | 必須 | アプリケーションが Kubernetes など、外部の別の ID プロバイダーから取得するアサーション (JWT Microsoft ID プラットフォーム JSON Web トークン)。 この JWT の詳細は、フェデレーション ID 資格情報 としてアプリケーション [に登録する必要があります](workload-identity-federation-create-trust.md)。 他の ID [プロバイダーから生成](workload-identity-federation.md) されたアサーションを設定して使用する方法については、ワークロード ID フェデレーションに関するページを参照してください。|
+
+要求内のすべてが、上記の証明書ベースのフローと同じですが、1 つの重要な例外(のソース)があります`client_assertion`。 このフローでは、アプリケーションは JWT アサーション自体を作成しません。  代わりに、アプリは別の ID プロバイダーによって作成された JWT を使用します。  これは"ワークロード ID[フェデレーション"](workload-identity-federation.md)と呼ばれ、別の ID プラットフォーム内のアプリ ID を使用して、アプリケーション内のトークンを取得Microsoft ID プラットフォーム。  これは、Azure の外部でコンピューティングをホストするが、azure によって保護されている API にアクセスするなどのクラウド間のシナリオにMicrosoft ID プラットフォーム。 
+
 ### <a name="successful-response"></a>成功応答
 
-どちらの方法でも成功した応答は次のようになります。
+任意のメソッドからの正常な応答は次のように表示されます：
 
 ```json
 {

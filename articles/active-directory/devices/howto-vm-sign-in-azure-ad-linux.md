@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996c82b428c01ce9f598fbf8e35e2fb664ef8763
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aeca09f5763cf11edc13cecd2df0c267fad8a23d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601959"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049750"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>プレビュー: SSH 証明書ベースの認証を使用した Azure Active Directory で Azure の Linux 仮想マシンにログインする
 
@@ -46,17 +46,15 @@ SSH 証明書ベースの認証による Azure AD を使用して、Azure の Li
 | --- | --- |
 | CentOS | CentOS 7、CentOS 8.3 |
 | Debian | Debian 9、Debian 10 |
-| openSUSE | openSUSE Leap 42.3 |
-| RedHat Enterprise Linux | RHEL 7.4 から RHEL 7.10、RHEL 8.3 |
-| SUSE Linux Enterprise Server | SLES 12 |
+| openSUSE | openSUSE Leap 42.3、openSUSE Leap 15.1+ |
+| RedHat Enterprise Linux | RHEL 7.4 ～ RHEL 7.10、RHEL 8.3 |
+| SUSE Linux Enterprise Server | SLES 12, SLES 15.1+ |
 | Ubuntu Server | Ubuntu Server 16.04 から Ubuntu Server 20.04 |
 
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 
 - Azure Global
 
-> [!Note]
-> この機能のプレビューは、2021 年 6 月まで、Azure Government および Azure China でサポートされる予定です。
  
 Azure Kubernetes Service (AKS) クラスターでは、この拡張機能の使用はサポートされていません。 詳細については、[AKS のポリシーのサポート](../../aks/support-policies.md)に関するページを参照してください。
 
@@ -96,7 +94,7 @@ Azure China の場合
 次の機能で VM が構成されていることを確認します。
 
 - システム割り当てマネージド ID。 Azure portal を使用して VM を作成し、Azure AD ログイン オプションを選択すると、このオプションが自動的に選択されます。 Azure CLI を使用して、新規または既存の VM でシステム割り当てマネージド ID を有効にすることもできます。
-- aadsshlogin と aadsshlogin-selinux (該当する場合)。 これらのパッケージは、AADSSHLoginForLinux VM 拡張機能によってインストールされます。 この拡張機能は、Azure portal を使用して VM を作成し、Azure AD ログインを有効にした ([管理] タブ) とき、または Azure CLI 経由でインストールされます。
+- `aadsshlogin` と`aadsshlogin-selinux` (必要に応じて) これらのパッケージは、AADSSHLoginForLinux VM 拡張機能によってインストールされます。 この拡張機能は、Azure portal を使用して VM を作成し、Azure AD ログインを有効にした ([管理] タブ) とき、または Azure CLI 経由でインストールされます。
 
 ### <a name="client"></a>クライアント
 
@@ -340,13 +338,13 @@ VM 管理者ロールが割り当てられたユーザーが、Linux VM への S
 
 仮想マシン スケール セットはサポートされていますが、仮想マシン スケールセット VM の有効化と接続の手順は若干異なります。
 
-まず、仮想マシン スケール セットを作成するか、既に存在するものを選択します。 Azure 仮想マシン スケール セットのシステム割り当てマネージド ID を有効にします。
+1. まず、仮想マシン スケール セットを作成するか、既に存在するものを選択します。 Azure 仮想マシン スケール セットのシステム割り当てマネージド ID を有効にします。
 
 ```azurecli
 az vmss identity assign --vmss-name myVMSS --resource-group AzureADLinuxVMPreview
 ```
 
-仮想マシン スケールセット に Azure AD 拡張機能をインストールします。
+2. 仮想マシン スケールセット に Azure AD 拡張機能をインストールします。
 
 ```azurecli
 az vmss extension set --publisher Microsoft.Azure.ActiveDirectory --name Azure ADSSHLoginForLinux --resource-group AzureADLinuxVMPreview --vmss-name myVMSS
@@ -366,18 +364,27 @@ az ssh vm --ip 10.11.123.456
 デバイス コード フローに基づいた以前のバージョンの Linux 用 Azure AD ログインを使用しているお客様は、次の手順を実行してください。
 
 1. VM の AADLoginForLinux 拡張機能をアンインストールします。
-   1. Azure CLI の使用: `az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux`
+   
+   ```azurecli
+   az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux
+   ```
+
 1. VM でシステム割り当てマネージド ID を有効にします。
-   1. Azure CLI の使用: `az vm identity assign -g myResourceGroup -n myVm`
+
+   ```azurecli
+   az vm identity assign -g myResourceGroup -n myVm
+   ```
+
 1. VM に AADLoginForLinux 拡張機能をインストールします
-   1. Azure CLI の使用:
-      ```azurecli
-      az vm extension set \
-                --publisher Microsoft.Azure.ActiveDirectory \
-                --name AADSSHLoginForLinux \
-                --resource-group myResourceGroup \
-                --vm-name myVM
-      ```
+
+    ```azurecli
+    az vm extension set \
+        --publisher Microsoft.Azure.ActiveDirectory \
+        --name AADSSHLoginForLinux \
+        --resource-group myResourceGroup \
+        --vm-name myVM
+    ```
+
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Azure Policy を使用して、標準および評価コンプライアンスを確保する
 
 Azure Policy を使用して、新規および既存の Linux 仮想マシンに対して Azure AD ログインが確実に有効にされるようにし、Azure Policy コンプライアンス ダッシュボードで大規模に環境のコンプライアンスを評価します。 この機能により、さまざまな適用のレベルを使用できます。Azure AD ログインが有効になっていない環境内の新規および既存の Linux VM にフラグを設定できます。 さらに、Azure Policy を使用して、Azure AD ログインが有効になっていない新しい Linux VM に Azure AD 拡張機能をデプロイするほか、既存の Linux VM を同じ標準に修復することもできます。 これらの機能に加えて、Azure Policy を使用して、マシン上に承認されていないローカル アカウントが作成されている Linux VM を検出してフラグを設定することもできます。 詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページを確認してください。
@@ -447,6 +454,6 @@ az login を使用して正常にサインインした後、`az ssh vm -ip <addr
 
 ## <a name="preview-feedback"></a>プレビューのフィードバック
 
-[Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、このプレビュー機能に関するフィードバックを共有するか、プレビュー機能の使用に関する問題を報告してください。
+[Azure AD フィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)で、このプレビュー機能に関するフィードバックを共有するか、プレビュー機能の使用に関する問題を報告してください。
 
 ## <a name="next-steps"></a>次のステップ

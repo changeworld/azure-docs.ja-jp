@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム プロトコルを使�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2b1e7f17445fe2b24b19acf4669637ef4c47c196
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f146d51cdd43b8c4a52285476e47d0c6237efe0f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728497"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046605"
 ---
 # <a name="how-to-create-an-nfs-share-preview"></a>NFS 共有を作成する方法 (プレビュー)
 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 この記事では、NFS プロトコルを使用するファイル共有の作成について説明します (プレビュー)。
@@ -111,7 +111,7 @@ az feature show \
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 FileStorage ストレージ アカウントを作成するには、Azure portal に移動します。
 
-1. Azure portal の左側のメニューで **[ストレージ アカウント]** を選択します。
+1. [アカウント] [Azure portal](https://portal.azure.com/)左側の **Storage [アカウント]** を選択します。
 
     ![Azure portal のメイン ページでストレージ アカウントを選択します。](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
@@ -164,6 +164,32 @@ az storage account create \
     --location $location \
     --sku Premium_LRS \
     --kind FileStorage
+```
+---
+
+## <a name="disable-secure-transfer"></a>セキュリティで保護された転送を無効にする
+
+安全な転送を無効にしない限り、NFS ファイル共有をマウントできない。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. 作成したストレージ アカウントに移動します。
+1. **[構成]** を選択します。
+1. **[安全な転送が必須]** には **[無効]** を選択します。
+1. **[保存]** を選択します。
+
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="安全な転送が無効になっているストレージ アカウントの構成画面のスクリーンショット。" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $False
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only false
 ```
 ---
 

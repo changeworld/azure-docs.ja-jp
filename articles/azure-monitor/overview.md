@@ -4,13 +4,13 @@ description: Azure のサービスおよびアプリケーションの包括的�
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/01/2021
-ms.openlocfilehash: 35ffbe3a329aae483b4da841ba4dfe34c1a07f9a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 10/14/2021
+ms.openlocfilehash: a47c26f2b600d7ed2ffd67877ab7202a763a4054
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435132"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036316"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -55,7 +55,7 @@ Azure Monitor は[さまざまなソース](monitor-reference.md)からデータ
 
 - **アプリケーション監視データ:** プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
 - **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
-- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 メトリックまたはログのあるリソースの詳細な一覧については、[Azure Monitor で監視できる内容](monitor-reference.md#azure-supported-services)に関するページを参照してください。
+- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 メトリックまたはログのあるリソースの詳細な一覧については、[Azure Monitor で監視できる内容](monitor-reference.md#list-of-azure monitor-supported-services)に関するページを参照してください。
 - **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
 - **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 

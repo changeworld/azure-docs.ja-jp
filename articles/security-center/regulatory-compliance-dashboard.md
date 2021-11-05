@@ -7,12 +7,13 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: memildin
-ms.openlocfilehash: 6051f0625408345b0e8665bb3ddcccf97e940367
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: df3d4171684ea6a45331d6a5fbf7758d860d5035
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452853"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131092174"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 

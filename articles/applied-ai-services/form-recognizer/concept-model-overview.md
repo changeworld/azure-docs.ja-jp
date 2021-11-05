@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: f2e2ef59d4c3608065edab4ffd1d1ec55122f2ad
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0ac003f812078f2bb3b27710068b7350468ad8fb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754617"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027195"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -37,35 +38,41 @@ ms.locfileid: "129754617"
 
 ### <a name="general-document-preview"></a>一般ドキュメント (プレビュー)
 
+:::image type="content" source="media/studio/general-document.png" alt-text="スクリーンショット: Studio の一般ドキュメントアイコン。":::
+
 * 一般ドキュメントの API では、ほとんどの種類のフォームがサポートされており、ドキュメントが分析されて、検出されたキーの値とテーブルのエントリが関連付けられます。 これは、ドキュメントから一般的なキーと値のペアを抽出するのに最適です。 一般ドキュメント モデルは、[ラベルなしのカスタム モデルのトレーニング](compose-custom-models.md#train-without-labels)の代わりに使用できます。
 
 * 一般ドキュメントは事前トレーニング済みのモデルであり、REST API を使用して直接呼び出すことができます。
 
 * 一般ドキュメントでは、いくつかのエンティティ カテゴリに対する固有表現認識 (NER) がサポートされています。 NER とは、人、場所、イベント、製品や組織などの事前に定義されているさまざまなテキスト形式のエンティティを、クラスまたは種類に分類する機能です。 エンティティの抽出は、抽出された値を検証する必要があるシナリオで役に立ちます。 エンティティは、コンテンツ全体から抽出されます。
 
-##### <a name="sample-document-processed-in-the-form-recognizer-studio"></a>[Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=document) で処理されたサンプル ドキュメント:
+***[フォームレコグナイザー Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=document)で処理されるサンプルドキュメント***:
 
-:::image type="content" source="media/general-document-analyze.png" alt-text="スクリーンショット: Form Recognizer Studio での一般ドキュメントの分析。":::
+:::image type="content" source="media/studio/general-document-analyze.png" alt-text="スクリーンショット: Form Recognizer Studio での一般ドキュメントの分析。":::
 
 > [!div class="nextstepaction"]
 > [詳細情報: 一般ドキュメント モデル](concept-general-document.md)
 
 ### <a name="layout"></a>Layout
 
-Layout API では、ドキュメントからテキスト、テーブルとヘッダー、選択マーク、構造情報が分析されて抽出され、構造化された JSON データ表現が返されます。
+:::image type="content" source="media/studio/layout.png" alt-text="スクリーンショット: Studio レイアウトアイコン。":::
 
-##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)のレイアウト機能を使用して処理されたサンプル フォーム:
+レイアウト API は、フォームとドキュメントからテキスト、テーブル、ヘッダー、選択マーク、および構造情報を分析して抽出します。
 
-:::image type="content" source="media/overview-layout.png" alt-text="{alt-text}":::
+***[フォームレコグナイザーサンプルラベルツール](https://fott-2-1.azurewebsites.net/)のレイアウト機能を使用して処理されるサンプルフォーム***:
+
+:::image type="content" source="media/overview-layout.png" alt-text="スクリーンショット: フォームレコグナイザー studio で処理されたサンプルドキュメントを分析する":::
 
 > [!div class="nextstepaction"]
 > [詳細情報: レイアウト モデル](concept-layout.md)
 
 ### <a name="invoice"></a>請求書
 
-請求書モデルは、販売請求書から主要な情報が分析されて抽出されます。 API によって、さまざまな形式の請求書が分析され、顧客名、請求先住所、期限、支払金額などの主要な情報が抽出されて、構造化された JSON データ表現が返されます。
+:::image type="content" source="media/studio/invoice.png" alt-text="スクリーンショット: Studio 請求書アイコン。":::
 
-##### <a name="sample-invoice-processed-with-form-recognizer-sample-labeling-tool"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)で処理された請求書のサンプル:
+請求書モデルは、販売請求書から主要な情報が分析されて抽出されます。 この API は、さまざまな形式で請求書を分析し、顧客名、請求先住所、期日、および支払金額などの重要な情報を抽出します。
+
+***[フォームレコグナイザーサンプルラベルツール](https://fott-2-1.azurewebsites.net/)を使用して処理されるサンプル請求書*** は次のとおりです：
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="サンプル請求書" lightbox="./media/overview-invoices.jpg":::
 
@@ -74,9 +81,11 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 
 ### <a name="receipt"></a>Receipt
 
-領収書モデルは、販売領収書から主要な情報が分析されて抽出されます。 API によって、印刷された領収書や手書きの領収書が分析され、業者名、業者の電話番号、取引日、税金、取引合計などの主要な情報が抽出されて、構造化された JSON データ表現が返されます。
+:::image type="content" source="media/studio/receipt.png" alt-text="スクリーンショット: Studio の受信確認アイコン。":::
 
-##### <a name="sample-receipt-processed-with-form-recognizer-sample-labeling-tool"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)で処理された領収書のサンプル:
+領収書モデルは、販売領収書から主要な情報が分析されて抽出されます。 この API は、印刷された領収書を分析し、マーチャント名、マーチャント電話番号、取引日、税金、取引合計などの重要な情報を抽出します。 
+
+***Form Recognizer サンプル ラベル付けツール [で処理された領収書のサンプル:](https://fott-2-1.azurewebsites.net/)***
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="サンプルのレシート" lightbox="./media/overview-receipt.jpg":::
 
@@ -85,9 +94,11 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 
 ### <a name="id-document"></a>身分証明書
 
-身分証明書モデルでは、米国の運転免許証 (50 州すべてとコロンビア特別区) および国際パスポートの個人情報ページ (ビザや他の旅行文書を除く) から主要な情報が分析されて抽出されます。 API により、身分証明書が分析され、名、姓、住所、生年月日などの主要な情報が抽出されて、構造化された JSON データ表現が返されます。
+:::image type="content" source="media/studio/id-document.png" alt-text="スクリーンショット: Studio id ドキュメントアイコン。":::
 
-##### <a name="sample-us-drivers-license-processed-with-form-recognizer-sample-labeling-tool"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)で処理された米国の運転免許証のサンプル:
+身分証明書モデルでは、米国の運転免許証 (50 州すべてとコロンビア特別区) および国際パスポートの個人情報ページ (ビザや他の旅行文書を除く) から主要な情報が分析されて抽出されます。 API は、id ドキュメントを分析し、名、姓、住所、生年月日などの重要な情報を抽出します。
+
+***[フォームレコグナイザーサンプルラベルツール](https://fott-2-1.azurewebsites.net/)で処理された U.S. ドライバーのライセンスの*** サンプル:
 
 :::image type="content" source="./media/id-example-drivers-license.jpg" alt-text="ID カードのサンプル" lightbox="./media/overview-id.jpg":::
 
@@ -96,9 +107,11 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 
 ### <a name="business-card"></a>名刺
 
-名刺モデルでは、名刺の画像から主要な情報が分析されて抽出されます。 API により、印刷された名刺が分析され、名、姓、会社名、メール アドレス、電話番号などの主要な情報が抽出されて、構造化された JSON データ表現が返されます。
+:::image type="content" source="media/studio/business-card.png" alt-text="スクリーンショット: Studio のビジネスカードアイコン。":::
 
-##### <a name="sample-business-card-processed-with-form-recognizer-sample-labeling-tool"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)で処理された名刺のサンプル:
+名刺モデルでは、名刺の画像から主要な情報が分析されて抽出されます。 API は、印刷された名刺画像を分析し、名、姓、会社名、電子メールアドレス、電話番号などの重要な情報を抽出します。
+
+***[フォームレコグナイザーサンプルラベルツール](https://fott-2-1.azurewebsites.net/)で処理されるサンプルのビジネスカード***:
 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="サンプルの名刺" lightbox="./media/overview-business-card.jpg":::
 
@@ -107,9 +120,11 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 
 ### <a name="custom"></a>Custom
 
+ :::image type="content" source="media/studio/custom.png" alt-text="スクリーンショット: Studiocustom アイコン。":::
+
 カスタム モデルでは、ビジネスに固有のフォームやドキュメントからデータが分析されて抽出されます。 この API は、特定のコンテンツ内のフォーム フィールドを認識し、キーと値のペアおよびテーブル データを抽出するようにトレーニングされた、機械学習プログラムです。 始めるために必要なのは同じフォームの種類の 5 つの例だけであり、カスタム モデルのトレーニングは、ラベル付けされたデータセットがあってもなくても実行できます。
 
-##### <a name="sample-custom-form-processed-with-form-recognizer-sample-labeling-tool"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)で処理されたカスタム フォームのサンプル:
+***[フォームレコグナイザーサンプルラベルツール](https://fott-2-1.azurewebsites.net/)で処理されるサンプルカスタムフォーム***:
 
 :::image type="content" source="media/analyze.png" alt-text="スクリーンショット: Form Recognizer ツールのカスタム フォーム分析ウィンドウ。":::
 
@@ -118,15 +133,15 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 
 ## <a name="data-extraction"></a>データの抽出
 
- | **Model**   | **テキストの抽出** |**キーと値のペア** |**選択マーク**   | **テーブル**   |**エンティティ** |
-  | --- | :---: |:---:| :---: | :---: |:---: |
-  |🆕一般的なドキュメント  | ✓  |  ✓ | ✓  | ✓  | ✓  |
-  | Layout  | ✓  |   | ✓  | ✓  |   |
-  | 請求書  | ✓ | ✓  | ✓  | ✓ ||
-  |Receipt  | ✓  |   ✓ |   |  ||
-  | 身分証明書 | ✓  |   ✓  |   |   ||
-  | 名刺    | ✓  |   ✓ |   |   ||
-  | Custom             |✓  |  ✓ | ✓  | ✓  | ✓  |
+ | **Model**   | **テキストの抽出** |**キーと値のペア** |**Fields**|**選択マーク**   | **テーブル**   |**エンティティ** |
+  | --- | :---: |:---:| :---: | :---: |:---: |:---: |
+  |🆕一般的なドキュメント  | ✓  |  ✓ || ✓  | ✓  | ✓  |
+  | Layout  | ✓  |   || ✓  | ✓  |   |
+  | 請求書  | ✓ | ✓  |✓| ✓  | ✓ ||
+  |Receipt  | ✓  |   ✓ |✓|   |  ||
+  | 身分証明書 | ✓  |   ✓  |✓|   |   ||
+  | 名刺    | ✓  |   ✓ | ✓|  |   ||
+  | Custom             |✓  |  ✓ || ✓  | ✓  | ✓  |
 
 ## <a name="input-requirements"></a>入力の要件
 
@@ -140,7 +155,7 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 * PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
 * 教師なし学習の場合 (ラベルの付いたデータなし):
   * データには、キーと値を含める必要があります。
-  * キーは値の上または左に配置されている必要があり、下または右に配置されていてはいけません。
+  * キーは値の上または左に表示され、下または右に表示することはできません。
 
 > [!NOTE]
 > [サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)では、BMP ファイル形式はサポートされていません。 これは、Form Recognizer サービスではなく、ツールの制限です。
@@ -149,10 +164,10 @@ Layout API では、ドキュメントからテキスト、テーブルとヘッ
 
   Form Recognizer v3.0 (プレビュー) では、いくつかの新機能が導入されています。
 
-* [**一般ドキュメント (プレビュー)** ](concept-general-document.md) モデルは新しい API であり、事前トレーニング済みのモデルを使用して、テキスト、テーブル、構造、キーと値のペア、名前付きエンティティがフォームとドキュメントから抽出されます。
-* [**領収書 (プレビュー)** ](concept-receipt.md) モデルでは、単一ページのホテルの領収書の処理がサポートされます。
-* [**身分証明書 (プレビュー)** ](concept-id-document.md) モデルでは、米国の運転免許証からの署名、制限、車両分類の抽出がサポートされています。
-* [**カスタム モデル API (プレビュー)** ](concept-custom.md) では、カスタム フォームの署名の検出がサポートされています。
+* [**一般ドキュメント (プレビュー)**](concept-general-document.md) モデルは新しい API であり、事前トレーニング済みのモデルを使用して、テキスト、テーブル、構造、キーと値のペア、名前付きエンティティがフォームとドキュメントから抽出されます。
+* [**領収書 (プレビュー)**](concept-receipt.md) モデルでは、単一ページのホテルの領収書の処理がサポートされます。
+* [**身分証明書 (プレビュー)**](concept-id-document.md) モデルでは、米国の運転免許証からの署名、制限、車両分類の抽出がサポートされています。
+* [**カスタム モデル API (プレビュー)**](concept-custom.md) では、カスタム フォームの署名の検出がサポートされています。
 
 ### <a name="version-migration"></a>バージョンの移行
 

@@ -13,12 +13,12 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 77d564cb54910391b0a0eb9f2492bfa74a044512
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f4ef55cd1a780612647e5e39eb13eed84fdead42
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619030"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032171"
 ---
 # <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -141,7 +141,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | **IfEmpty()** | 入力が null または空の場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの従業員 ID が空の場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1<br/>Parameter 3 (一致しない場合の出力): user.employeeid |
 | **IfNotEmpty()** | 入力が null または空ではない場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの従業員 ID が空ではない場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1 |
 
-他の変換が必要な場合は、[Azure AD のフィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
+他の変換が必要な場合は、[Azure AD のフィードバック フォーラム](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)の *SaaS アプリケーション* カテゴリで、アイデアをお送りください。
 
 ## <a name="add-the-upn-claim-to-saml-tokens"></a>SAML トークンへの UPN 要求の追加
 

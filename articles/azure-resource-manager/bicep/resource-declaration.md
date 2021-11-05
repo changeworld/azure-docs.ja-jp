@@ -4,35 +4,67 @@ description: デプロイするリソースを Bicep で宣言する方法につ
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/07/2021
-ms.openlocfilehash: 4b3b355016057af00c361a118aed2728948768dd
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 10/25/2021
+ms.openlocfilehash: 28f61a3fb3a40cb4db0a06f3c59fe6b07ec7d5bc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659623"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074215"
 ---
 # <a name="resource-declaration-in-bicep"></a>リソースの Bicep を使った宣言
 
-Bicep ファイルを介してリソースをデプロイするには、`resource` キーワードを使用してリソース宣言を追加します。
+この記事では、Bicep ファイルにリソースを追加するために使用する構文について説明します。
 
-## <a name="set-resource-type-and-version"></a>リソースの種類とバージョンの設定
+## <a name="declaration"></a>宣言
 
-Bicep ファイルにリソースを追加する際には、まずリソースの種類と API バージョンを設定します。 これらの値によって、リソースで使用できるその他のプロパティが決まります。
-
-次の例は、ストレージ アカウントのリソースの種類と API バージョンを設定する方法を示したものです。 この例は、リソース宣言の内容を完全に示したものではありません。
+キーワードを使用してリソース宣言を追加 `resource` します。 リソースのシンボリック名を設定します。 シンボリック名はリソース名と同じものではありません。 シンボリック名は、Bicep ファイルの他の部分にあるリソースを参照するために使用します。
 
 ```bicep
-resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource <symbolic-name> '<full-type-name>@<api-version>' = {
+  <resource-properties>
+}
+```
+
+そのため、ストレージ アカウントの宣言は次の方法で開始できます。
+
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   ...
 }
 ```
 
-リソースのシンボリック名を設定します。 前の例では、シンボリック名は `stg` です。  シンボリック名はリソース名と同じものではありません。 シンボリック名は、Bicep ファイルの他の部分にあるリソースを参照するために使用します。 シンボリック名は大文字と小文字が区別されます。  文字、数字、および _ を含めることができますが、数字で始めることはできません。
+シンボリック名は大文字と小文字が区別されます。  文字、数字、および _ を含めることができますが、数字で始めることはできません。
 
-Bicep では、[Azure Resource Manager テンプレート (ARM テンプレート) JSON](../templates/syntax.md) で利用できる `apiProfile` はサポートされていません。
+使用可能なリソースの種類とバージョンについては [、Bicep リソース リファレンスに関するページを参照してください](/azure/templates/)。 Bicep では、[Azure Resource Manager テンプレート (ARM テンプレート) JSON](../templates/syntax.md) で利用できる `apiProfile` はサポートされていません。
 
-## <a name="set-resource-name"></a>リソース名を設定する
+リソースを条件付きでデプロイするには、 構文を使用 `if` します。 詳細については [、「Bicep での条件付きデプロイ」を参照してください](conditional-resource-deployment.md)。
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = if (condition) {
+  <resource-properties>
+}
+```
+
+リソースの複数のインスタンスをデプロイするには、 構文を使用 `for` します。 詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = [for <item> in <collection>: {
+  <properties-to-repeat>
+}]
+```
+
+リソース プロパティの `for` 構文を使用して、配列を作成することもできます。
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = {
+  properties: {
+    <array-property>: [for <item> in <collection>: <value-to-repeat>]
+  }
+}
+```
+
+## <a name="resource-name"></a>リソース名
 
 各リソースには名前があります。 リソース名を設定する際には、[リソース名の規則と制限事項](../management/resource-name-rules.md)に注意してください。
 
@@ -56,7 +88,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-## <a name="set-location"></a>場所の設定
+## <a name="location"></a>場所
 
 多くのリソースには場所が必要です。 リソースに場所が必要かどうかは、Intellisense または[テンプレート参照](/azure/templates/)を使用して判断できます。 次の例では、ストレージ アカウントに使用される location パラメーターを追加しています。
 
@@ -100,11 +132,11 @@ az provider show \
 
 ---
 
-## <a name="set-tags"></a>タグを設定する
+## <a name="tags"></a>タグ
 
 デプロイ時には、リソースにタグを適用することができます。 タグは、デプロイされたリソースを論理的に整理するために役立ちます。 タグを指定するさまざまな方法の例については、[ARM テンプレートのタグ](../management/tag-resources.md#arm-templates)に関する記事を参照してください。
 
-## <a name="set-managed-identities-for-azure-resources"></a>Azure リソース用マネージド ID を設定する
+## <a name="managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID
 
 一部のリソースでは、[Azure リソース用マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がサポートされます。 これらのリソースには、リソース宣言のルート レベルに ID オブジェクトがあります。
 
@@ -138,11 +170,11 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
   }
 ```
 
-## <a name="set-resource-specific-properties"></a>リソース固有のプロパティを設定する
+## <a name="resource-specific-properties"></a>リソース固有のプロパティ
 
 上記のプロパティは、ほとんどの種類のリソースに共通するものです。 これらの値を設定した後、デプロイするリソースの種類に固有のプロパティを設定する必要があります。
 
-使用可能なプロパティと必要なプロパティを特定するには、Intellisense または[テンプレート参照](/azure/templates/)を使用します。 次の例では、ストレージ アカウントの残りのプロパティを設定しています。
+Intellisense または [Bicep リソース](/azure/templates/) リファレンスを使用して、使用可能なプロパティと必要なプロパティを決定します。 次の例では、ストレージ アカウントの残りのプロパティを設定しています。
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
@@ -159,7 +191,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-## <a name="set-resource-dependencies"></a>リソースの依存関係を設定する
+## <a name="dependencies"></a>依存関係
 
 リソースをデプロイするときに、一部のリソースが他のリソースの前に存在することを確認しなければならない場合があります。 たとえば、データベースをデプロイする前に論理 SQL サーバーが必要です。 このリレーションシップは、あるリソースが他のリソースに依存しているとマークすることで確立します。 リソースのデプロイ順序は、[暗黙的な依存関係](#implicit-dependency)と[明示的な依存関係](#explicit-dependency)の 2 つの方法で影響を受ける可能性があります。
 
@@ -233,7 +265,7 @@ Visual Studio Code には、依存関係を視覚化するためのツールが�
 
 :::image type="content" source="./media/resource-declaration/bicep-resource-visualizer.png" alt-text="Visual Studio Code の Bicep リソース ビジュアライザーのスクリーンショット":::
 
-## <a name="reference-existing-resources"></a>既存のリソースを参照する
+## <a name="existing-resources"></a>既存のリソース
 
 現在の Bicep ファイルの外部にあるリソースを参照するには、リソース宣言で `existing` キーワードを使用します。
 
@@ -257,6 +289,8 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 
 output blobEndpoint string = stg.properties.primaryEndpoints.blob
 ```
+
+存在しないリソースを参照しようとすると、エラーが発生し、 `NotFound` デプロイは失敗します。
 
 スコープの設定の詳細については、「[Bicep のスコープ関数](bicep-functions-scope.md)」を参照してください。
 

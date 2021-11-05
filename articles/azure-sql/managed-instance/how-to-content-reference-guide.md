@@ -5,18 +5,18 @@ description: Azure SQL Managed Instance を構成および管理する方法を�
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, ignite-fall-2021
 ms.devlang: ''
 ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: 2b64353da7de0b7f7d29502695c9d7ea22d6a19f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 86511b0cb494ecd5cb9f60fb8aa825a11fe48065
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130244682"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045636"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,8 @@ ms.locfileid: "130244682"
 
 - [サブネットのサイズを決める](vnet-subnet-determine-size.md): SQL Managed Instance をデプロイした後ではサブネットのサイズを変更することができないため、サブネットにデプロイする予定のマネージド インスタンスの数と種類に対して必要なアドレスの IP 範囲を計算する必要があります。 
 - [新しい VNet とサブネットを作成する](virtual-network-subnet-create-arm-template.md): [ネットワーク要件](connectivity-architecture-overview.md#network-requirements)に従って、仮想ネットワークとサブネットを構成します。 
-- [既存の VNet とサブネットを構成する](vnet-existing-add-subnet.md): ネットワーク要件を確認し、SQL Managed Instance をデプロイする既存の仮想ネットワークとサブネットを構成します。 
+- [既存の VNet とサブネットを構成する](vnet-existing-add-subnet.md): ネットワーク要件を確認し、SQL Managed Instance をデプロイする既存の仮想ネットワークとサブネットを構成します。
+- [Azure Storage (プレビュー) のサービスエンドポイントポリシーを構成する](service-endpoint-policies-configure.md): 不正なデータまたは悪意のあるデータに対して、承認されていない Azure Storage アカウントにサブネットをセキュリティで保護します。
 - [カスタム DNS を構成する](custom-dns-configure.md): データベース メール プロファイルのリンク サーバー経由で SQL Managed Instance からカスタム ドメインにアクセスする権限を外部リソースに付与するようにカスタム DNS を構成します。 
 - [ネットワーク構成を同期する](azure-app-sync-network-configuration.md): [ご利用のアプリを Azure 仮想ネットワークに統合](../../app-service/overview-vnet-integration.md)してから接続を確立できなくなった場合に、ネットワーク構成計画を更新します。
 - [管理エンドポイント IP アドレスを検索する](management-endpoint-find-ip-address.md): SQL Managed Instance が管理目的で使用するパブリック エンドポイントを特定します。 

@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 27353b62255e22f342ce0648a3a9ebde4bd5eb30
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 81067c8c1b24897d88f3d8da4d21329b030cbd03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130227851"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036449"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -51,10 +51,10 @@ Azure Active Directory B2C (Azure AD B2C) で、特定の Azure AD 組織の Azu
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 組織の Azure AD テナント (Contoso など) が含まれているディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
 1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
-1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
+1. **[Azure サービス]** で、 **[アプリの登録]** を選択するか、検索して **[アプリの登録]** を選択します。
 1. **[新規登録]** を選択します。
 1. アプリケーションの **[名前]** を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
-1. このアプリケーションには、 **[この組織のディレクトリ内のアカウントのみ]** という既定の選択をそのまま使用します。
+1. このアプリケーションには、 **[この組織ディレクトリのみに含まれるアカウント (既定のディレクトリのみ - シングル テナント)]** という既定の選択をそのまま使用します。
 1. **[リダイレクト URL]** では、値 **[Web]** をそのまま使用し、次の URL をすべて小文字で入力します。`your-B2C-tenant-name` は、お使いの Azure AD B2C テナントの名前に置き換えます。
 
     ```

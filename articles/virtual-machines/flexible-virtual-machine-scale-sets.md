@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: b5c52d2ab3b788a1f06edbc59d8dab05cc8285dd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 56ba42b3aca7d48a62edd264a8ec867fcda5107c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257995"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074519"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Azure の仮想マシン スケール セットのフレキシブル オーケストレーション
 
@@ -98,6 +98,10 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
 ```
 
+> [!IMPORTANT]
+> ネットワークの動作は、スケールセット内で仮想マシンを作成する方法によって異なります。 詳細については、「 [スケーラブルなネットワーク接続](../virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity)」を参照してください。
+
+
 ## <a name="features"></a>特徴
 次の表に、フレキシブル オーケストレーション モードの機能と、該当するドキュメントへのリンクを示します。
 
@@ -120,7 +124,7 @@ az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[nam
 | マネージド ID  | ユーザー割り当て ID のみ  |
 | グループに対する既存の VM の追加/削除  | いいえ  |
 | Service Fabric  | いいえ  |
-| Azure Kubernetes Service (AKS)/AKE/k8s ノード プール  | いいえ  |
+| Azure Kubernetes Service (AKS) / AKE  | いいえ  |
 | UserData  | Partial、UserData を個々の VM に指定できます。 |
 
 

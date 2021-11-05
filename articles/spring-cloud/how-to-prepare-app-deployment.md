@@ -8,19 +8,19 @@ ms.date: 07/06/2021
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9def9f39e28851498c7bf87d5b6b2e7d0a26f2c2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 913d750353053398015da9939ec35f0f9b0de1c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599413"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013709"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
 ::: zone pivot="programming-language-csharp"
 Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール、更新するための堅牢なサービスを提供しています。 この記事では、Azure Spring Cloud にデプロイするために既存の Steeltoe アプリケーションを準備する方法について説明します。
 
-この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)」を参照してください。
+この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[Azure Spring Cloud での初めての Spring Boot アプリケーションをデプロイする](./quickstart.md)」を参照してください。
 
 >[!Note]
 > Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
@@ -136,9 +136,7 @@ POM ファイルが構成されているときにアプリケーションを Azu
 
 ## <a name="java-runtime-version"></a>Java ランタイム バージョン
 
-Azure Spring Cloud で稼働できるのは、Spring または Java アプリケーションのみです。
-
-Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
+Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 一般に、Azure PaaS は Java LTS バージョンのみをサポートし、Azure Spring Cloud は Java 17 LTS をサポートします。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot と Spring Cloud のバージョン
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2021
 ms.author: Zhchia
-ms.openlocfilehash: 0a4961a23c8ea9a894028af0fc596d399c0f3e8f
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 0ed2d0378562e8706c860040f6a033fdd189a849
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661625"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032123"
 ---
 # <a name="tutorial-configure-netpresenter-for-automatic-user-provisioning"></a>チュートリアル: Netpresenter を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -9,13 +9,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d0a46016c054e698f144b2eb058f8019f31183c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: 79568dc04d8c5bce95eaa15d207f7caecfff2f5d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696014"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080823"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -112,11 +112,11 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-また、最初に `VirtualMachines` ディレクトリに移動して、次のように `Enter-AzVM` を実行することもできます
+`VirtualMachines`最初にディレクトリに移動して、次のように実行する`Enter-AzVM`こともでき ます：
 
-  ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
- ```
+```azurepowershell-interactive
+PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
+```
 
 ### <a name="discover-webapps"></a>WebApps を検出する
 
@@ -242,9 +242,9 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
 
 「`exit`」と入力してセッションを終了します。
 
-[bashqs]:quickstart.md
-[gallery]:https://www.powershellgallery.com/
-[customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
+[bashqs]: quickstart.md
+[gallery]: https://www.powershellgallery.com/
+[customex]: /azure/virtual-machines/extensions/custom-script-windows
 [profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
 [azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

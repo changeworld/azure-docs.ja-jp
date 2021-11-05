@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache の集約された名前空間を構成する
 description: Azure HPC Cache を使用してバックエンド ストレージのクライアント側パスを作成する方法
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/22/2021
-ms.author: v-erkel
-ms.openlocfilehash: 0374c2da7cda001da779c42cacaf11db6f797356
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.author: femila
+ms.openlocfilehash: 903ed4b3d17b0fc7290e5ce2755518cf768ac342
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587393"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015373"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>集約された名前空間を設定する
 
@@ -101,7 +101,7 @@ Azure portal から **[名前空間]** 設定ページを読み込みます。 �
 
 * **[エクスポート サブディレクトリ]** - このパスにエクスポートの特定のサブディレクトリをマウントしたい場合は、ここに入力します。 それ以外の場合、このフィールドは空白のままにしてください。
 
-![右側に編集ページが開いているポータルの名前空間ページのスクリーンショット。 編集フォームには、nfs ストレージ ターゲットの名前空間パスの設定が表示されます](media/namespace-edit-nfs.png)
+![右側に編集ページが開いている、ポータルの名前空間ページのスクリーンショット。 編集フォームには、N F S ストレージ ターゲット名前空間パスの設定が表示されます。](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

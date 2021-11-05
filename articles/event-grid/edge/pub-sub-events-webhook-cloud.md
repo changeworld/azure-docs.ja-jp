@@ -9,12 +9,12 @@ ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6263a58aebcb7e6eb9d50d18e63257a3deb2cff5
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: f4402cac05520e8e3dd76b8894335d314ec87d64
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416544"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080025"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル: クラウドでイベントを発行してサブスクライブする
 

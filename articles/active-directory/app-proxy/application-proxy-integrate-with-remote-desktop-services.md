@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: ed708ab2f796008dcd98a9e395dffaa7645690b2
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b178c5370326bcb4dad2eefefbea0d6eb3cde662
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129989363"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063406"
 ---
 # <a name="publish-remote-desktop-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用したリモート デスクトップの公開
 
@@ -42,7 +42,7 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 ## <a name="requirements"></a>必要条件
 
 - RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイはアプリケーション プロキシで単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
-- [RDS をデプロイ](/windows-server/remote/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](../app-proxy/application-proxy-add-on-premises-application.md)必要があります。 コネクタをインストールする、必要なポートと URL を開く、サーバーで TLS 1.2 を有効にするなど、アプリケーション プロキシを有効にするための前提条件を満たしていることを確認します。 開く必要があるポート、およびその他の詳細については、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)」を参照してください。
+- [RDS をデプロイ](/windows-server/remote/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](../app-proxy/application-proxy-add-on-premises-application.md)必要があります。 コネクタのインストール、必要なポートと Url のオープン、サーバーでの TLS 1.2 の有効化など、アプリケーションプロキシを有効にするための前提条件を満たしていることを確認します。 開く必要があるポート、およびその他の詳細については、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)」を参照してください。
 - エンド ユーザーは、RD Web または RD Web クライアントに接続するために、互換性のあるブラウザーを使用する必要があります。 詳細については、[クライアント構成のサポート](#support-for-other-client-configurations)に関するセクションをご覧ください。
 - RD Web を発行するときは、内部 FQDN と外部 FQDN を同じにすることをお勧めします。 内部 FQDN と外部 FQDN が異なる場合は、クライアントが無効なリンクを受け取るのを避けるため、要求ヘッダー変換を無効にする必要があります。
 - Internet Explorer で RDS Web を使用する場合は、RDS ActiveX アドオンを有効にする必要があります。

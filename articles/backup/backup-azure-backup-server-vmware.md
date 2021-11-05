@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: d734b9852da54c13d498cfd4a60caf007735d2f6
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: f8ab0de1a1fb126d8aabd536a596c4e73f66d4af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722576"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026072"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -468,9 +468,9 @@ MABS V3 UR1 (以降) では、VMware VM のバックアップから特定のデ�
   1. VMware コンソールで、ディスクを除外する VM 設定に移動します。
   2. 除外するディスクを選択し、そのディスクのパスをメモします。
 
-        たとえば、TestVM4 からハード ディスク 2 を除外するためのハード ディスク 2 のパスは **[datastore1] TestVM4/TestVM4\_1.vmdk** です。
+     たとえば、TestVM4 からハード ディスク 2 を除外するためのハード ディスク 2 のパスは **[datastore1] TestVM4/TestVM4\_1.vmdk** です。
 
-        ![除外するハード ディスク](./media/backup-azure-backup-server-vmware/test-vm.png)
+     ![除外するハード ディスク](./media/backup-azure-backup-server-vmware/test-vm.png)
 
 ### <a name="configure-mabs-server"></a>MABS サーバーを構成する
 
@@ -478,93 +478,93 @@ VMware VM が保護対象として構成されている MABS サーバーに移�
 
   1. MABS サーバーで保護されている VMware ホストの詳細を取得します。
 
-        ```powershell
-        $psInfo = get-DPMProductionServer
-        $psInfo
-        ```
+     ```powershell
+     $psInfo = get-DPMProductionServer
+     $psInfo
+     ```
 
-        ```output
-        ServerName   ClusterName     Domain            ServerProtectionState
-        ----------   -----------     ------            ---------------------
-        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
-        ```
+     ```output
+     ServerName   ClusterName     Domain            ServerProtectionState
+     ----------   -----------     ------            ---------------------
+     Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+     ```
 
   2. VMware ホストを選択し、VMware ホストに対する VM の保護を一覧表示します。
 
-        ```powershell
-        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
-        $vmDsInfo
-        ```
+     ```powershell
+     $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+     $vmDsInfo
+     ```
 
-        ```output
-        Computer     Name     ObjectType
-        --------     ----     ----------
-        Vcentervm1  TestVM2      VMware
-        Vcentervm1  TestVM1      VMware
-        Vcentervm1  TestVM4      VMware
-        ```
+     ```output
+     Computer     Name     ObjectType
+     --------     ----     ----------
+     Vcentervm1  TestVM2      VMware
+     Vcentervm1  TestVM1      VMware
+     Vcentervm1  TestVM4      VMware
+     ```
 
   3. ディスクを除外する VM を選択します。
 
-        ```powershell
-        $vmDsInfo[2]
-        ```
+     ```powershell
+     $vmDsInfo[2]
+     ```
 
-        ```output
-        Computer     Name      ObjectType
-        --------     ----      ----------
-        Vcentervm1   TestVM4   VMware
-        ```
+     ```output
+     Computer     Name      ObjectType
+     --------     ----      ----------
+     Vcentervm1   TestVM4   VMware
+     ```
 
   4. ディスクを除外するには、`Bin` フォルダーに移動し、次のパラメーターを使用して *ExcludeDisk.ps1* スクリプトを実行します。
 
-        > [!NOTE]
-        > このコマンドを実行する前に、MABS サーバー上の DPMRA サービスを停止します。 そうしないと、スクリプトで成功が返されますが、除外リストは更新されません。 サービスを停止する前に、進行中のジョブがないことを確認してください。
+     > [!NOTE]
+     > このコマンドを実行する前に、MABS サーバー上の DPMRA サービスを停止します。 そうしないと、スクリプトで成功が返されますが、除外リストは更新されません。 サービスを停止する前に、進行中のジョブがないことを確認してください。
 
      **除外対象にディスクを追加するか削除するには、次のコマンドを実行します。**
 
-      ```powershell
-      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
-      ```
+     ```powershell
+     ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+     ```
 
      **例**:
 
      TestVM4 に対するディスクの除外を追加するには、次のコマンドを実行します。
 
-       ```powershell
-      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
-       ```
+     ```powershell
+     C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+     ```
 
-      ```output
-       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
-       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
-      ```
+     ```output
+     Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+     Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+     ```
 
   5. ディスクが除外対象として追加されていることを確認します。
 
      **特定の VM に対する既存の除外を表示するには、次のコマンドを実行します。**
 
-        ```powershell
-        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
-        ```
+     ```powershell
+     ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+     ```
 
      **例**
 
-        ```powershell
-        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
-        ```
+     ```powershell
+     C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+     ```
 
-        ```output
-        <VirtualMachine>
-        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
-        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
-        </VirtualMachine>
-        ```
+     ```output
+     <VirtualMachine>
+       <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+       <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+     </VirtualMachine>
+     ```
 
      この VM の保護を構成すると、保護中は除外されたディスクは表示されません。
 
-        > [!NOTE]
-        > 既に保護されている VM に対してこれらの手順を実行する場合は、除外するディスクを追加した後、手動で整合性チェックを実行する必要があります。
+     > [!NOTE]
+     > 既に保護されている VM に対してこれらの手順を実行する場合は、除外するディスクを追加した後、手動で整合性チェックを実行する必要があります。
 
 ### <a name="remove-the-disk-from-exclusion"></a>除外対象からディスクを削除する
 

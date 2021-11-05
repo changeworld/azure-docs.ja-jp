@@ -3,14 +3,14 @@ title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
 ms.topic: article
-ms.date: 02/1/2021
+ms.date: 10/20/2021
 ms.author: miwithro
-ms.openlocfilehash: c78c48bc86c999ab85c02f0ba596d425b516ac5a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 488b5a6736e308abc78d53b3e9bdbf14af488ca3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984974"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067868"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -31,7 +31,7 @@ AKS マネージド Azure AD 統合は、Azure AD の統合プロセスを簡素
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI バージョン 2.11.0 以降
+* バージョン 2.29.0 以降Azure CLIバージョン 2.29.0 以降
 * バージョン [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) 以降の kubectl、または [kubelogin](https://github.com/Azure/kubelogin)
 * [helm](https://github.com/helm/helm) を使用している場合は、helm 3.3 以降
 
@@ -188,36 +188,15 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 継続的インテグレーション パイプラインなど、現在 kubectl で使用できない非対話型シナリオがいくつかあります。 [`kubelogin`](https://github.com/Azure/kubelogin) を使用して、非対話型サービス プリンシパル サインインでクラスターにアクセスできます。
 
-## <a name="disable-local-accounts-preview"></a>ローカル アカウントを無効にする (プレビュー)
+## <a name="disable-local-accounts"></a>ローカル アカウントを無効にする
 
 AKS クラスターをデプロイすると、既定でローカル アカウントが有効になります。 RBAC または Azure Active Directory 統合を有効にしている場合でも、監査できないバックドア オプションとして、`--admin` アクセスが原則的に存在します。 これを踏まえて、AKS には、`disable-local-accounts` フラグを使用してローカル アカウントを無効にする機能が用意されています。 また、機能がクラスターで有効になっているかどうかを示すために、マネージド クラスター API に `properties.disableLocalAccounts` フィールドが追加されています。
 
 > [!NOTE]
 > Azure AD 統合が有効になっているクラスターであっても、`aad-admin-group-object-ids` によって指定されたグループに属するユーザーは、管理者以外の資格情報を使用して引き続きアクセスできます。 Azure AD 統合が有効になっておらず、かつ `properties.disableLocalAccounts` が true に設定されていないクラスターでは、ユーザーの資格情報も管理者の資格情報も取得することはできません。
 
-### <a name="register-the-disablelocalaccountspreview-preview-feature"></a>`DisableLocalAccountsPreview` プレビュー機能を登録する
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-ローカル アカウントを使用せずに AKS クラスターを使用するには、サブスクリプションで `DisableLocalAccountsPreview` 機能フラグを有効にする必要があります。 最新バージョンの Azure CLI および `aks-preview` 拡張機能を使用していることを確認してください。
-
-次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`DisableLocalAccountsPreview` 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "DisableLocalAccountsPreview"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/DisableLocalAccountsPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+> [!NOTE]
+> ユーザーがローカル アカウントを使用している可能性がある既存の AKS クラスターでローカル アカウント ユーザーを無効にした後、管理者は[クラスター証明書 をローテーションして](certificate-rotation.md#rotate-your-cluster-certificates)、それらのユーザーがアクセスできる可能性がある証明書を取り消す必要があります。  これが新しいクラスターの場合、アクションは必要ありません。
 
 ### <a name="create-a-new-cluster-without-local-accounts"></a>ローカル アカウントを使用せずに新しいクラスターを作成する
 

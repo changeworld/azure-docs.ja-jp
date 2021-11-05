@@ -1,30 +1,30 @@
 ---
-title: Azure Security Center のアラートのスキーマ
-description: この記事では、Azure Security Center のセキュリティ アラートに使用されるさまざまなスキーマについて説明します。
+title: クラウドアラート用の Microsoft Defender のスキーマ
+description: この記事では、セキュリティアラート用に Microsoft Defender for Cloud で使用されるさまざまなスキーマについて説明します。
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/18/2021
+ms.date: 10/18/2021
 ms.author: memildin
-ms.openlocfilehash: e65fd5a0c672e500a0a4bc08f45e9ced32d89047
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 335f20150490d9f792f9ba552b13b01e64e95673
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463506"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010614"
 ---
 # <a name="security-alerts-schemas"></a>セキュリティ アラートのスキーマ
 
-ご自身のサブスクリプションで Azure Defender が有効になっている場合、Security Center によってのリソースに対する脅威が検出されたときに、セキュリティ アラートが届きます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-こうしたセキュリティ アラートは、Azure Security Center の **[脅威に対する保護]** ページで確認できるほか、次のような外部ツールを使用して確認することができます。
+サブスクリプションで拡張セキュリティ機能が有効になっている場合は、Defender for Cloud がリソースに対する脅威を検出したときにセキュリティの警告が表示されます。
 
-- [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM です。 Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [[Log Analytics ワークスペース]](../azure-monitor/logs/quick-create-workspace.md) に送信します。
+これらのセキュリティアラートは、Microsoft Defender for Cloud のページ- [概要ダッシュボード](overview-page.md)、 [アラート](tutorial-security-incident.md)、 [リソース正常性ページ](investigate-resource-health.md)、 [ワークロードの保護のダッシュボード](workload-protections-dashboard.md) 、および次のような外部ツールで表示できます。
+
+- [Microsoft Sentinel](../sentinel/index.yml)：Microsoft のクラウドネイティブ SIEM。 Sentinel コネクタは、Microsoft Defender for Cloud からアラートを取得し、Microsoft Sentinel の [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md) に送信します。
 - サードパーティの SIEM - [Azure Event Hubs](../event-hubs/index.yml) にデータを送信します。 その後、Event Hub のデータをサードパーティの SIEM に統合します。 詳細については、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
 - [REST API](/rest/api/securitycenter/) - REST API を使用してアラートにアクセスする場合は、[Alerts API のオンライン ドキュメント](/rest/api/securitycenter/alerts)を参照してください。
 
@@ -37,20 +37,20 @@ ms.locfileid: "114463506"
 ## <a name="the-schemas"></a>スキーマ 
 
 
-### <a name="azure-sentinel"></a>[Azure Sentinel](#tab/schema-sentinel)
+### <a name="microsoft-sentinel"></a>[Microsoft Sentinel](#tab/schema-sentinel)
 
-Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [Log Analytics ワークスペース] に送信します。
+Sentinel コネクタは、Microsoft Defender for Cloud からアラートを取得し、Microsoft Sentinel の Log Analytics ワークスペースに送信します。
 
-Security Center のアラートを使用して Sentinel のサポート案件またはインシデントを作成するには、以下に示した、それらのアラートのスキーマが必要となります。 
+クラウドアラートに Defender を使用して Microsoft Sentinel ケースまたはインシデントを作成するには、以下に示すアラートのスキーマが必要です。 
 
-Azure Sentinel の詳細については、[こちらのドキュメント](../sentinel/index.yml)を参照してください。
+Microsoft Sentinel の詳細については、 [のドキュメント](../sentinel/index.yml)を参照してください。
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
 
 ### <a name="azure-activity-log"></a>[Azure アクティビティ ログ](#tab/schema-activitylog)
 
-Azure Security Center は、Azure のアクティビティ ログ内のイベントとして生成されたセキュリティ アラートを監査します。
+Microsoft Defender for Cloud は、生成されたセキュリティアラートを Azure アクティビティログのイベントとして監査します。
 
 セキュリティ アラートのイベントは、アクティビティ ログで Activate Alert (アラートのアクティブ化) イベントを検索することによって確認できます。
 
@@ -123,7 +123,7 @@ Azure Security Center は、Azure のアクティビティ ログ内のイベン
 |フィールド|説明|
 |----|----|
 |**channels**|定数 ("Operation")|
-|**correlationId**|Azure Security Center のアラート ID|
+|**correlationId**|Microsoft Defender for Cloud のアラート ID|
 |**description**|アラートの説明|
 |**eventDataId**|correlationId を参照してください。|
 |**eventName**|サブフィールドの value と localizedValue にアラートの表示名が格納されます。|
@@ -153,7 +153,7 @@ Azure Security Center は、Azure のアクティビティ ログ内のイベン
 
 ### <a name="continuous-export"></a>[連続エクスポート](#tab/schema-continuousexport)
 
-Security Center の連続エクスポート機能では、アラート データを以下に渡します。
+クラウドの連続エクスポート機能の Defender は、アラートデータを次のように渡します。
 
 - Azure Event Hub。その際、[アラート API](/rest/api/securitycenter/alerts) と同じスキーマを使用します。
 - Log Analytics ワークスペース。その際、Azure Monitor データ リファレンス ドキュメントの [SecurityAlert スキーマ](/azure/azure-monitor/reference/tables/SecurityAlert)に従います。
@@ -172,11 +172,11 @@ MS Graph に送信されるセキュリティ アラートのスキーマと JSO
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Security Center の脅威に対する保護ツールがセキュリティ アラート情報を送信する際に使用されるスキーマについて説明しました。
+この記事では、Microsoft Defender for Cloud の脅威保護ツールがセキュリティ警告情報を送信するときに使用するスキーマについて説明します。
 
-Security Center の外部からセキュリティ アラートにアクセスする方法の詳細については、次のページを参照してください。
+クラウドの外部 Defender からセキュリティアラートにアクセスする方法の詳細については、次のページを参照してください。
 
-- [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM
+- [Microsoft Sentinel](../sentinel/index.yml)：Microsoft のクラウドネイティブ SIEM
 - [Azure Event Hubs](../event-hubs/index.yml) - Microsoft のフル マネージドのリアルタイム データ インジェスト サービス
-- [継続的に Security Center データをエクスポートする](continuous-export.md)
+- [クラウドデータに対して Defender を継続的にエクスポートする](continuous-export.md)
 - [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md) - Azure Monitor のログ データは、Log Analytics ワークスペースという、データと構成情報を含んだコンテナーに格納されます。

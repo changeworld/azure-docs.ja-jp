@@ -13,16 +13,16 @@ ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e03b288934ce01a25a8ee7b4ad3569af6507b8a6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7fbe4e45e48d3416f530b6845faf702959f92463
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734764"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067339"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > この機能[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 *Apple デバイス用の Microsoft Enterprise SSO プラグイン* は、Apple の [エンタープライズ シングル サインオン](https://developer.apple.com/documentation/authenticationservices)機能をサポートするすべてのアプリケーションで、macOS、iOS、iPadOS 上の Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) を提供します。 このプラグインにより、業務に必要だが、最新の ID ライブラリやプロトコルはまだサポートしていない古いアプリケーションにも SSO が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、利用可能な最高の保護を提供しています。
@@ -52,12 +52,12 @@ Apple デバイス用の Microsoft Enterprise SSO プラグインを使用する
 - Microsoft Intune を使用するなどして、デバイスが *MDM に登録* されている必要があります。
 - 構成を *デバイスにプッシュ* して、Enterprise SSO プラグインを有効にする必要があります。 このセキュリティ制約は Apple の要件です。
 
-### <a name="ios-requirements"></a>iOS の要件:
+### <a name="ios-requirements"></a>iOS の要件
 - iOS 13.0 以降がデバイスにインストールされている必要があります。
 - Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)です。
 
 
-### <a name="macos-requirements"></a>macOS の要件:
+### <a name="macos-requirements"></a>macOS の要件
 - macOS 10.15 以降がデバイスにインストールされている必要があります。 
 - Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションには [Intune ポータル サイト アプリ](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)が含まれます。
 
@@ -171,7 +171,7 @@ Safari または Safari View Service の SSO を"*無効*"にするには、バ�
 
 #### <a name="summary-of-keys"></a>キーの概要
 
-| キー | 種類 | 値 |
+| キー | Type | 値 |
 |--|--|--|
 | `Enable_SSO_On_All_ManagedApps` | Integer | `1` はすべてのマネージド アプリで SSO を有効にします。`0` はすべてのマネージド アプリで SSO を無効にします。 |
 | `AppAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているアプリケーションのバンドル ID。 |
@@ -193,7 +193,7 @@ Safari または Safari View Service の SSO を"*無効*"にするには、バ�
     | キー | 値 |
     | -------- | ----------------- |
     | `Enable_SSO_On_All_ManagedApps` | `1` |
-    | `AppBlockList` | SSO に参加できないようにしたい Safari アプリのバンドル ID (コンマ区切りリスト)。<br/><li>iOS の場合: `com.apple.mobilesafari`、`com.apple.SafariViewService`<br/><li>macOS の場合: `com.apple.Safari` |
+    | `AppBlockList` | SSO に参加できないようにしたい Safari アプリのバンドル ID (コンマ区切りリスト)。<ul><li>iOS の場合: `com.apple.mobilesafari`、`com.apple.SafariViewService`</li><li>macOS の場合: `com.apple.Safari`</li></ul> |
 
 - *シナリオ*: SSO をすべてのマネージド アプリといくつかの非マネージド アプリで有効にしたいが、SSO を他のいくつかのアプリで無効にしたい。
 
@@ -251,15 +251,23 @@ macOS では、すべてのアプリで一貫したエクスペリエンスを�
 
 #### <a name="disable-oauth-2-application-prompts"></a>OAuth 2 アプリケーションのプロンプトを無効にする
 
-Microsoft Enterprise SSO プラグインでは、許可されたアプリケーションからのネットワーク要求に共有資格情報を追加することで SSO を提供します。 ただし、OAuth 2 アプリケーションによっては、プロトコル レイヤーでエンドユーザーのプロンプトが誤って強制されることがあります。 この問題が発生した場合、それらのアプリに対しては共有資格情報が無視されることもわかります。 Microsoft Enterprise SSO プラグインが他のアプリケーションに対して機能する場合でも、ユーザーにはサインインのプロンプトが表示されます。  
+Microsoft Enterprise SSO プラグインがデバイス上の他のアプリケーションに対して機能している場合でも、アプリケーションからユーザーにサインインを求めるメッセージが表示される場合、アプリはプロトコル層で SSO をバイパスしている可能性があります。  このようなアプリケーションでは共有資格情報も無視されます。このプラグインでは、許可されたアプリケーションによって行われたネットワーク要求に資格情報を追加することで SSO が提供されます。
 
-`disable_explicit_app_prompt` フラグを有効にすると、ネイティブ アプリケーションと Web アプリケーションの両方の機能が制限され、プロトコル レイヤーに対するエンドユーザー プロンプトが強制され、SSO をバイパスされます。 フラグを有効にするには、次のパラメーターを使用します。
+これらのパラメーターは、ネイティブアプリケーションと Web アプリケーションがプロトコル層で SSO をバイパスし、ユーザーにサインイン プロンプトを表示するように SSO 拡張機能を使用しないかどうかを指定します。
+
+デバイス上のすべてのアプリで一貫した SSO エクスペリエンスを得る場合は、既定で無効になっているこれらの設定のいずれかを有効にすることをお勧めします。
+  
+アプリ プロンプトを無効にして、アカウント ピッカーを表示します。
 
 - **キー**: `disable_explicit_app_prompt`
 - **型**: `Integer`
 - **値**: 1 または 0
+  
+アプリ プロンプトを無効にし、一致する SSO アカウントの一覧からアカウントを自動的に選択します。
+- **キー**: `disable_explicit_app_prompt_and_autologin`
+- **型**: `Integer`
+- **値**: 1 または 0
 
-すべてのアプリで一貫したエクスペリエンスを得るには、このフラグを有効にすることをお勧めします。 既定では無効になっています。 
 
 #### <a name="use-intune-for-simplified-configuration"></a>Intune を使用して構成を簡略化する
 

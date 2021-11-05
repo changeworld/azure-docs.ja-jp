@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 285fea57252c23776c9d7bc3b172889311356909
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c55a1fd185e9ff730ad55b046d4b843e0d1264da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768479"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046225"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>チュートリアル:iLMS と Azure Active Directory の統合
 
@@ -93,7 +93,7 @@ iLMS に対して Azure AD SSO を構成してテストするには、次の手�
 
 1. その他に、iLMS アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     | --------|------------- |
     | division | user.department |
     | region | user.state |

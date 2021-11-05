@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 8f8daa67c22f8a505014ff326ca3961fa86f21f5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 3961f7233de1fcd09dc8a2199dfa424b505add27
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130160821"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058105"
 ---
 # <a name="enable-azure-monitor-opentelemetry-exporter-for-net-nodejs-and-python-applications-preview"></a>.NET、Node.js、Python アプリケーション用の Azure Monitor OpenTelemetry エクスポーターを有効にする (プレビュー)
 
-この記事では、OpenTelemetry ベースの Azure Monitor プレビュー オファリングを有効にして構成する方法について説明します。 この記事の手順を完了すると、OpenTelemetry トレースを Azure Monitor Application Insights に送信できるようになります。
+この記事では、OpenTelemetry ベースの Azure Monitor プレビュー オファリングを有効にして構成する方法について説明します。 この記事の手順を完了すると、OpenTelemetry トレースを Azure Monitor Application Insights に送信できるようになります。 OpenTelemetry の詳細については [、OpenTelemetry](opentelemetry-overview.md) の概要に関するページまたは [OpenTelemetry に](/azure/azure-monitor/faq#opentelemetry)関する FAQ をご覧ください。
 
 > [!IMPORTANT]
 > .NET、Node.js、Python アプリケーション用の Azure Monitor OpenTelemetry エクスポーターは現在、プレビュー段階です。
@@ -31,7 +31,7 @@ ms.locfileid: "130160821"
  - ハンドルされない例外の自動キャプチャ
  - [Profiler](profiler-overview.md)
  - [スナップショット デバッガー](snapshot-debugger.md)
- - オフライン ディスク ストレージ
+ - [オフライン ディスク ストレージと再試行ロジック](telemetry-channels.md#built-in-telemetry-channels)
  - [Azure AD 認証](azure-ad-authentication.md)
  - [サンプリング](sampling.md)
  - Azure 環境でのクラウド ロール名とクラウド ロール インスタンスの自動入力
@@ -72,7 +72,7 @@ ms.locfileid: "130160821"
  - [ライブ メトリック](live-stream.md)
  - ログ API (コンソール ログやログ ライブラリなど)
  - ハンドルされない例外の自動キャプチャ
- - オフライン ディスク ストレージ
+ - オフラインのディスクストレージと再試行ロジック
  - [Azure AD 認証](azure-ad-authentication.md)
  - [サンプリング](sampling.md)
  - Azure 環境でのクラウド ロール名とクラウド ロール インスタンスの自動入力
@@ -175,17 +175,7 @@ pip install azure-monitor-opentelemetry-exporter
 
 ##### <a name="net"></a>[.NET](#tab/net)
 
-> [!NOTE]
-> 次のガイダンスは、C# コンソール アプリケーション用の Azure Monitor Application Insights を有効にする方法を示しています。
-> 
-> 他のアプリケーションの種類に関するガイダンスについては、OpenTelemetry GitHub Readme を確認してください。
-> - [ASP.NET](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.AspNet/README.md)
-> - [ASP.NET Core](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.AspNetCore/README.md)
-> - [HttpClient および HttpWebRequest](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Instrumentation.Http/README.md)
-> 
-> Application Insights にデータを送信するための拡張メソッド `AddAzureMonitorTraceExporter` は、一覧表示されているすべてのアプリケーションの種類に適用できます。
-> 
-> その他のリソースについては、[GitHub 上の OpenTelemetry の例](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples)を参照してください。 
+次のコードは、OpenTelemetry TracerProvider を設定することによって、C# コンソールアプリケーションで OpenTelemetry を有効にする方法を示しています このコードは、アプリケーションの起動時に存在する必要があります。 たとえば ASP.NET Core、通常はアプリケーション クラスの `ConfigureServices` メソッドで行 `Startup` われます。 アプリケーション ASP.NET、通常は で行われます `Global.aspx.cs` 。
 
 ```csharp
 using System.Diagnostics;
@@ -299,6 +289,9 @@ with tracer.start_as_current_span("hello"):
 ```
 
 ---
+
+> [!TIP]
+> イン [ストルメンテーション ライブラリを](#instrumentation-libraries) 追加して、一般的なフレームワーク/ライブラリ間でテレメトリを自動収集します。
 
 #### <a name="set-application-insights-connection-string"></a>Application Insights の接続文字列を設定する
 
@@ -431,9 +424,9 @@ trace.set_tracer_provider(
 
 #### <a name="python"></a>[Python](#tab/python)
 
-- [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django/README.md) バージョン: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-django/0.24b0/)
-- [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask/README.md) バージョン: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-flask/0.24b0/)
-- [要求](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests/README.md) バージョン: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-requests/0.24b0/)
+- [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django) バージョン: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-django/0.24b0/)
+- [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask) バージョン: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-flask/0.24b0/)
+- [要求](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests) バージョン: [0.24b0](https://pypi.org/project/opentelemetry-instrumentation-requests/0.24b0/)
 
 ---
 

@@ -1,28 +1,26 @@
 ---
-title: Azure Defender for SQL の設定方法
-description: Azure Security Center のオプションの Azure Defender for SQL プランを有効にする方法について説明します
+title: SQL 用に Microsoft Defender を設定する方法
+description: クラウドのオプションの Microsoft Defender for SQL プランに対して Microsoft Defender を有効にする方法について説明します
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: bbfd426c67d09ca8632c3ab665b1242d27c6ad58
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9a7e817df5e938756ca9fe331f82136505515451
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711696"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009740"
 ---
-# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines を有効にする 
+# <a name="enable-microsoft-defender-for-sql-servers-on-machines"></a>コンピューターの SQL サーバーに対して Microsoft Defender を有効にする 
 
-この Azure Defender プランにより、データベースへのアクセスやデータベースの悪用を試みる、異常で有害と考えられる不自然な動作が検出されます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+この Microsoft Defender プランでは、データベースへの不正なアクセスや、データベースの悪用を試みる可能性がある異常なアクティビティを検出します。
 
 疑わしいデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセスやクエリのパターンがある場合に、アラートが表示されます。
 
@@ -31,12 +29,12 @@ ms.locfileid: "129711696"
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|**Azure Defender for SQL servers on machines** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます|
+|価格:|**コンピューター上の SQL サーバー用の Microsoft Defender** は、料金に関する[ページ](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます。|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China 21Vianet|
 |||
 
-## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines の設定
+## <a name="set-up-microsoft-defender-for-sql-servers-on-machines"></a>コンピューターの SQL サーバー用に Microsoft Defender をセットアップする
 
 このプランを有効にするには:
 
@@ -44,7 +42,7 @@ ms.locfileid: "129711696"
 
 [手順 2. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする:](#step-2-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-[手順 3. Security Center の価格と設定ページで、オプションのプランを有効にする:](#step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
+[手順 3.[クラウドの価格と設定] ページで、Defender でオプションのプランを有効にします。](#step-3-enable-the-optional-plan-in-defender-for-clouds-pricing-and-settings-page)
 
 
 ### <a name="step-1-install-the-agent-extension"></a>手順 1. エージェント拡張機能をインストールする
@@ -55,29 +53,29 @@ ms.locfileid: "129711696"
 
 ### <a name="step-2-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 2. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
 
-- **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントの自動プロビジョニングを有効にする <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)ことができます。 または、手動の手順に従って [Azure Stack Hub VM をオンボードする](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)こともできます。
-- **Azure Arc 上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) 対応サーバーによって管理されている場合は、Security Center のレコメンデーション [Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)] (Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要があります (プレビュー)) を使用して、Log Analytics エージェントをデプロイできます。
+- **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントの自動プロビジョニングを有効にする <a name="auto-provision-mma"></a>](enable-data-collection.md#auto-provision-mma)ことができます。 または、手動の手順に従って [Azure Stack Hub VM をオンボードする](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)こともできます。
+- **Azure Arc上のSQL Server**: SQL Serverが[Azure Arc](../azure-arc/index.yml)対応サーバーで管理されている場合、Defender for Cloudの推奨事項「Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)」を利用してLog Analyticsエージェントを導入することができます。
 
 - **オンプレミスの SQL Server** - SQL Server が Azure Arc を使用しないオンプレミスの Windows マシンでホストされている場合は、Azure に接続するためのオプションが 2 つあります。
     
-    - **Azure Arc をデプロイする** - 任意の Windows マシンを Security Center に接続できます。 ただし、Azure Arc を使用すると、Azure 環境の *すべて* がより緊密に統合されます。 Azure Arc を設定すると、ポータルに **[SQL Server - Azure Arc]** ページが表示され、セキュリティ アラートはそのページの専用の **[セキュリティ]** タブに表示されます。 そのため、最初に推奨されるオプションは、[ホストで Azure Arc を設定](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows)し、前述の **Azure Arc 上の SQL Server** の手順に従うことです。
+    - **Azure Arc をデプロイする**：任意の Windows端末を、クラウドの Defender に接続できます。 ただし、Azure Arc を使用すると、Azure 環境の *すべて* がより緊密に統合されます。 Azure Arc を設定すると、ポータルに **[SQL Server - Azure Arc]** ページが表示され、セキュリティ アラートはそのページの専用の **[セキュリティ]** タブに表示されます。 そのため、最初に推奨されるオプションは、[ホストで Azure Arc を設定](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows)し、前述の **Azure Arc 上の SQL Server** の手順に従うことです。
         
     - **Azure Arc を使用せずに Windows マシンを接続する** - Azure Arc を使用せずに Windows マシンで実行されている SQL Server を接続する場合は、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/agents/agent-windows.md)」の手順に従ってください。
 
 
-### <a name="step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>手順 3. Security Center の価格と設定ページで、オプションのプランを有効にする
+### <a name="step-3-enable-the-optional-plan-in-defender-for-clouds-pricing-and-settings-page"></a>手順 3. [クラウドの料金と設定] ページで、Defender でオプションのプランを有効にします。
 
-1. Security Center のメニューで、 **[価格と設定]** ページを開きます。
+1. Defender for Cloud メニューで、 **環境設定** ページを開きます。
 
-    - **Azure Security Center の既定のワークスペース** (名前は "defaultworkspace-[サブスクリプション ID]-[リージョン]") を使用している場合は、該当する **サブスクリプション** を選択します。
+    - **Microsoft Defender for Cloudのデフォルトのワークスペース** として使用している場合(defaultworkspace-[your subscription ID]-[region]」というファイル）は、該当する **サブスクリプション** を選択します。
 
     - **既定以外のワークスペース** を使用している場合は、該当する **ワークスペース** を選択します (必要に応じて、フィルターにワークスペースの名前を入力します)。
 
         ![既定以外のワークスペースをタイトルで検索する。](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. **Azure Defender for SQL servers on machines** プランのオプションを **オン** に設定します。 
+1. [**端末上の SQL サーバー** プラン] の [Microsoft Defender] オプションを **[オン**] に設定します。 
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="オプションのプランを含む Security Center の価格ページ。":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="オプションのプランを含む [Defender for Cloud] 料金ページ。":::
 
     選択したワークスペースに接続されているすべての SQL サーバーでプランが有効になります。 この保護は、SQL Server インスタンスの最初の再起動後に完全にアクティブになります。
 
@@ -86,36 +84,37 @@ ms.locfileid: "129711696"
 
 
 1. 必要に応じて、セキュリティ アラートのメール通知を構成します。 
-    Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートの直接リンクと関連するすべての詳細が含まれます。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](security-center-provide-security-contact-details.md)に関する記事を参照してください。
+
+    受信者の一覧を設定して、Defender for Cloud alerts が生成されたときに電子メール通知を受け取ることができます。 この電子メールには、Microsoft Defender for Cloud のアラートへの直リンクが含まれており、すべての関連情報が記載されています。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](configure-email-notifications.md)に関する記事を参照してください。
 
 
-## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL のアラート
+## <a name="microsoft-defender-for-sql-alerts"></a>SQL アラート用 Microsoft Defender
 普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントにより、[アラートのリファレンス ページ](alerts-reference.md#alerts-sql-db-and-warehouse)に記載されているアラートがトリガーされる場合があります。
 
 ## <a name="explore-and-investigate-security-alerts"></a>セキュリティ通知について調査する
 
-Azure Defender for SQL のアラートは、Security Center のアラート ページ、マシンのセキュリティ ページ、[Azure Defender ダッシュボード](azure-defender-dashboard.md)、またはアラート メールの直接リンクで使用できます。
+Microsoft defender for SQL アラートは、クラウドの [アラート] ページ、コンピューターの [セキュリティ] ページ、[ワークロード保護ダッシュボード](workload-protections-dashboard.md)、またはアラートメールの直リンクを使用して、defender で利用できます。
 
-1. アラートを表示するには、Security Center のメニューで **[セキュリティ アラート]** を選択し、アラートを選択します。
+1. アラートを表示するには、[クラウド] メニューの [Defender からの **セキュリティアラート** ] を選択し、アラートを選択します。
 
-1. アラートは自己完結型であり、それぞれに詳細な修復の手順と調査情報が含まれています。 他の Azure Security Center と Azure Sentinel の機能を使用してさらに詳しく調べることができます。
+1. アラートは自己完結型であり、それぞれに詳細な修復の手順と調査情報が含まれています。 さらに詳しいビューを表示するには、他の Microsoft Defender for Cloud と Microsoft Sentinel の機能を使用して、さらに調査することができます。
 
-    * 詳しく調べるには SQL Server の監査機能を有効にします。 Azure Sentinel ユーザーの場合は、Windows セキュリティ ログのイベントから Sentinel に SQL 監査ログをアップロードして、豊富な調査機能を利用できます。 [SQL Server 監査の詳細についてはこちらを参照してください](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15)。
-    * セキュリティ体制を強化するには、各アラートに示されているホスト マシンに関する Security Center の推奨事項を使用します。 これにより、将来の攻撃のリスクが軽減されます。 
+    * 詳しく調べるには SQL Server の監査機能を有効にします。 Microsoft sentinel ユーザーの場合、Windows セキュリティログイベントから sentinel に SQL 監査ログをアップロードして、豊富な調査エクスペリエンスを享受できます。 [SQL Server 監査の詳細についてはこちらを参照してください](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15)。
+    * セキュリティ体制を向上させるには、各アラートに示されているホスト端末に対するクラウドの推奨事項に Defender を使用します。 これにより、将来の攻撃のリスクが軽減されます。 
 
-    [アラートの管理と応答の詳細についてはこちらを参照してください](security-center-managing-and-responding-alerts.md)。
+    [アラートの管理と応答の詳細についてはこちらを参照してください](managing-and-responding-alerts.md)。
 
 
-## <a name="faq---azure-defender-for-sql-servers-on-machines"></a>FAQ - Azure Defender for SQL servers on machines
+## <a name="faq---microsoft-defender-for-sql-servers-on-machines"></a>FAQ：端末上の SQL サーバー用 Microsoft Defender
 
-### <a name="if-i-enable-this-azure-defender-plan-on-my-subscription-are-all-sql-servers-on-the-subscription-protected"></a>サブスクリプションでこの Azure Defender プランを有効にした場合、サブスクリプションのすべての SQL Server が保護されますか? 
+### <a name="if-i-enable-this-microsoft-defender-plan-on-my-subscription-are-all-sql-servers-on-the-subscription-protected"></a>サブスクリプションでこの Microsoft Defender プランを有効にした場合、サブスクリプションのすべての SQL サーバーは保護されますか? 
 
-いいえ。 Azure 仮想マシン上の SQL Server デプロイ、または Azure Arc 対応マシンで実行されている SQL Server を保護するには、Azure Defender で次の両方が必要になります。
+いいえ。 Azure の仮想端末、または Azure の Arc 対応端末で実行されている SQL Server で SQL Server デプロイを防御するために、クラウドの Defender には次のものが必要です。
 
-- マシン上の Log Analytics エージェント 
-- Azure Defender for SQL ソリューションを有効にするための関連する Log Analytics ワークスペース 
+- マシン上の Log Analytics エージェント
+- 関連するLog AnalyticsワークスペースでMicrosoft Defender for SQLソリューションが有効になっていること。
 
-Azure portal の SQL Server ページに表示されるサブスクリプションの "*状態*" は、既定のワークスペースの状態を反映し、接続されているすべてのマシンに適用されます。 Azure Defender によって保護されるのは、そのワークスペースに報告する Log Analytics エージェントがあるホスト上の SQL Server のみです。 
+Azure portal の SQL Server ページに表示されるサブスクリプションの "*状態*" は、既定のワークスペースの状態を反映し、接続されているすべてのマシンに適用されます。 そのワークスペースにレポートするLog Analyticsエージェントがあるホスト上のSQLサーバーのみがDefender for Cloudで保護されます。
 
 
 
@@ -125,5 +124,5 @@ Azure portal の SQL Server ページに表示されるサブスクリプショ�
 関連資料については、次の記事をご覧ください。
 
 - [SQL Database と Azure Synapse Analytics のセキュリティ アラート](alerts-reference.md#alerts-sql-db-and-warehouse)
-- [セキュリティ アラートのメール通知を設定する](security-center-provide-security-contact-details.md)
-- [Azure Sentinel に関する詳細](../sentinel/index.yml)
+- [セキュリティ アラートのメール通知を設定する](configure-email-notifications.md)
+- [Microsoft Sentinel の詳細情報](../sentinel/index.yml)

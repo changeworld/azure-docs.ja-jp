@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 381cc0d1114e60cbb9678c0df9a66176f3b51e99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74341e9f4c2436768a73591878f29e7f392b1f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627598"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006831"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -88,7 +88,7 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 
 ## <a name="rotation"></a>回転
 
-参照でバージョンが指定されていない場合、アプリでは Key Vault に存在する最新バージョンを使用します。 回転イベントなどにより新しいバージョンが利用可能になると、アプリは自動的に更新され、1 日以内に最新バージョンの使用が開始されます。 アプリに対して行われた構成の変更により、参照されているすべてのシークレットの最新バージョンが即座に更新されます。
+参照でバージョンが指定されていない場合、アプリでは Key Vault に存在する最新バージョンが使用されます。 回転イベントなどにより新しいバージョンが利用できるようになると、アプリは自動的に更新され、24 時間以内に最新バージョンの使用が開始されます。 この遅延は、App Service によって Key Vault 参照の値がキャッシュされ、24 時間ごとに再フェッチされるためです。 アプリの構成を変更すると、参照されているシークレットがすべて直ちに再フェッチされます。
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault からのソース アプリケーション設定
 

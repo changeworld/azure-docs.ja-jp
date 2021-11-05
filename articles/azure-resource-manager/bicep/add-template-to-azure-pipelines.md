@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.author: jgao
 ms.date: 06/23/2021
-ms.openlocfilehash: 1c8817fcc6a0cf24a0983f2df60f02cc42b79200
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 30ab8481456dd03f4ecee597c9626c07772bbe3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764376"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059758"
 ---
 # <a name="integrate-bicep-with-azure-pipelines"></a>Bicep を Azure Pipelines に統合する
 
@@ -87,6 +87,6 @@ Azure CLI タスクでは、次の入力を受け取ります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Pipelines での Bicep の使用方法の詳細と、ハンズオン ガイダンスについては、**Microsoft Learn** で「[Azure Pipelines を使用して最初の Bicep デプロイ パイプラインを作成する](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/)」を参照してください。
+* Azure PipelinesでのBicepの使用の詳細と実践的なガイダンスについては、**Microsoft Learn** で[BicepとAzurePipeline を使用してAzureリソースをデプロイする](/learn/paths/bicep-azure-pipelines/)を参照してください。
 * パイプラインで What-If 操作を使用するには、「[Test ARM templates with What-If in a pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)」 (パイプラインで What-If を使用して ARM テンプレートをテストする) を参照してください。
 * GitHub Actions で Bicep ファイルを使用する方法については、「[GitHub Actions を使用した Bicep ファイルのデプロイ](./deploy-github-actions.md)」を参照してください。

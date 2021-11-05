@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: e129b596473784c72cab93568be88dd6dcb6fe2a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: dd97273c37f4707827f5706889152811745199ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697995"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063645"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 および Mdsv2 シリーズのミディアム メモリ
 
@@ -32,7 +32,7 @@ Msv2 および Mdsv2 ミディアム メモリ VM シリーズには、全コア
 [VM 世代サポート](generation-2.md): 第 2 世代<br>
 [書き込みアクセラレータ](./how-to-enable-write-accelerator.md): サポートされています<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md): Mdsv2 でサポートされています <br>
 <br>
  
 ## <a name="msv2-medium-memory-diskless"></a>Msv2 ミディアム メモリ (ディスクなし) 

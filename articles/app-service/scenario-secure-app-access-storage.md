@@ -11,12 +11,12 @@ ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: be170a07340fdea84b9b4af03bd329fcdf91483d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290026"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065553"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>チュートリアル:Web アプリから Azure Storage にアクセスする
 
@@ -301,4 +301,10 @@ static public async Task UploadBlob(string accountName, string containerName, st
 > * マネージド ID を使用して Web アプリからストレージにアクセスする。
 
 > [!div class="nextstepaction"]
+> [チュートリアル: 仮想ネットワーク統合を使用してバックエンド通信を分離する](tutorial-networking-isolate-vnet.md)
+
+> [!div class="nextstepaction"]
 > [ユーザーに代わって App Service から Microsoft Graph にアクセスする](scenario-secure-app-access-microsoft-graph-as-user.md)
+
+> [!div class="nextstepaction"]
+> [既存のカスタム DNS 名を Azure App Service にマップする](app-service-web-tutorial-custom-domain.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d3fa9b89cb1fa7b0f7fa33025f908ae8ba5af7a8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c6e31a9026e4598d12367d623cfb166663c6fe0a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734552"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044819"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Arkose Labs を構成する
 
@@ -149,7 +149,7 @@ Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visual
 
 3. Azure Functions 拡張機能によって、ローカル開発用にいくつかのファイルが自動的に生成され、依存関係がインストールされます。また、まだ存在しない場合は、Functions Core ツールがインストールされます。 これらのツールは、デバッグ エクスペリエンスに役立ちます。
 
-4. Functions Core ツールからの出力が Visual Studio Code の **[ターミナル]** パネルに表示されます。 ホストが起動したら、出力に表示されるローカル URL を **Alt を押しながらクリック** してブラウザーを開き、関数を実行します。 Azure Functions エクスプローラーで、関数を右クリックして、ローカルにホストされている関数の URL を表示します。
+4. Functions Core ツールからの出力が Visual Studio Code の **[ターミナル]** パネルに表示されます。 ホストが起動したら、出力に表示されるローカル URL を **Alt を押しながらクリック** してブラウザーを開き、関数を実行します。 Azure Functions エクスプローラーで、関数を右クリックして、ローカルでホストされている関数の URL を表示します。
 
 テスト中にローカル インスタンスを再デプロイするには、手順 1 から 4 を繰り返します。
 

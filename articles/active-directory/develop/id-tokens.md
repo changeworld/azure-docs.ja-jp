@@ -12,16 +12,13 @@ ms.topic: conceptual
 ms.date: 06/25/2021
 ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom:
-- aaddev
-- identityplatformtop40
-- fasttrack-edit
-ms.openlocfilehash: a6c2b3bb09160d60cfd03311329666d6e2b80487
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: fb20ed3a3a09c7bef7495d439ad2856f646e8a51
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657913"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067194"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -78,10 +75,10 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |-----|--------|-------------|
 |`aud` |  文字列、アプリケーション ID GUID | トークンの受信者を示します。 `id_tokens`では、対象の受信者は Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 この値は検証する必要があります。 アプリのアプリケーション ID と一致しない場合は、トークンを拒否する必要があります。 |
 |`iss` |  文字列、発行者 URI | トークンを作成して返す発行者、つまり "承認サーバー" を特定します。 また、ユーザーが認証された Azure AD テナントも識別します。 トークンが v2.0 エンドポイントによって発行された場合、URI の末尾は `/v2.0` になります。  ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
-|`iat` |  int、UNIX タイムスタンプ | "Issued At" は、このトークンの認証がいつ行われたのかを示します。  |
+|`iat` |  int、Unix タイムスタンプ | "Issued At" は、このトークンの認証がいつ行われたのかを示します。  |
 |`idp`|文字列 (通常は STS URI) | トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、発行者とテナントが異なるユーザー アカウント (たとえばゲスト) の場合を除いて、発行者クレームの値と同じです。 クレームが存在しない場合は、代わりに `iss` の値を使用できることを示しています。  個人用アカウントが組織のコンテキストで使用されている場合 (たとえば、個人用アカウントが Azure AD テナントに招待された場合)、`idp` 要求は 'live.com' または Microsoft アカウント テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を含む STS URI である可能性があります。 |
-|`nbf` |  int、UNIX タイムスタンプ | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。|
-|`exp` |  int、UNIX タイムスタンプ | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。  特定の状況下では、この時点より前にリソースによってトークンが拒否される可能性があることに注意することが重要です。 たとえば、認証の変更が必要な場合や、トークンの失効が検出された場合などです。 |
+|`nbf` |  int、Unix タイムスタンプ | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。|
+|`exp` |  int、Unix タイムスタンプ | "exp" (有効期限) 要求は、JWT が処理を受け入れ **てはならない**、またはその後の有効期限を示します。  特定の状況下では、この時点より前にリソースによってトークンが拒否される可能性があることに注意することが重要です。 たとえば、認証の変更が必要な場合や、トークンの失効が検出された場合などです。 |
 | `c_hash`| String |コード ハッシュは、ID トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証を実行する方法については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)を参照してください。 |
 |`at_hash`| String |アクセス トークン ハッシュは、ID トークンが `/authorize` エンドポイントから OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証を実行する方法については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)を参照してください。 これは、`/token` エンドポイントからの ID トークンでは返されません。 |
 |`aio` | 不透明な文字列 | Azure AD がトークン再利用のためにデータの記録に使用する内部の要求。 無視してください。|

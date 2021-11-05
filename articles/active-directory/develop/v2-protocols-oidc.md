@@ -13,12 +13,12 @@ ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a23fd4f764773dfa29e1abd20f4952cc86049c42
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7aab9abf57b94f07edda0e6f2c27c4720c747b20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464080"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050206"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
@@ -122,8 +122,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant` | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御できます。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、[プロトコルの基本](active-directory-v2-protocols.md#endpoints)に関するセクションを参照してください。 重要なこととして、あるテナントから別のテナントにユーザーをサインインさせるゲスト シナリオでは、ユーザーをリソース テナントに正しくサインインさせるためにテナント識別子を指定する "*必要があります*"。|
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `response_type` | 必須 | OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` などの他の `response_type` の値が含まれる場合もあります。 |
-| `redirect_uri` | 推奨 | アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 存在しない場合、エンドポイントでは登録されている redirect_uri がランダムに 1 つ選択され、ユーザーに返送されます。 |
-| `scope` | 必須 | スコープのスペース区切りリスト。 OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
+| `redirect_uri` | 推奨 | アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 存在しない場合、エンドポイントは、ランダムに登録`redirect_uri`されているユーザーを選択して、 そのユーザーをに送り返します。 |
+| `scope` | 必須 | スコープのスペース区切りリスト。 OpenID Connect には、同意 UI の **サインイン** アクセス許可に変換されるスコープ`openid`を含める必要があります。 同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
 | `nonce` | 必須 | 要求に追加する (アプリによって生成された) 値。この値が、最終的な id_token 値に要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 |
 | `response_mode` | 推奨 | 結果として得られた承認コードをアプリに返す際に使用するメソッドを指定します。 `form_post` または `fragment` を指定できます。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f59bd00e110fd281d44db68030e0ad0d7c07ddf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fd5bab28d73781339b959e5d8e51eb6d8c455a39
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761222"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>チュートリアル: Azure Active Directory と Novatus の統合
 

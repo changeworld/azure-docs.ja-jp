@@ -1,26 +1,29 @@
 ---
-title: CI/CD ワークフロー内のコンテナー イメージに対する Azure Defender の脆弱性スキャナー
-description: コンテナー レジストリ用の Azure Defender を使用して CI/CD ワークフロー内のコンテナー イメージをスキャンする方法について説明します
+title: CI/CD ワークフロー内のコンテナー イメージに対する Defender for Cloud の脆弱性スキャナー
+description: Microsoft Defender for container registries を使用して CI/CD ワークフローでコンテナー イメージをスキャンする方法について説明します。
 author: memildin
 ms.author: memildin
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: eb7309f067c350eac0d9455767b137377caf588b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 97fed8a7afce16a33497860cda70b12fc90bed2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736308"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014901"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>CI/CD ワークフロー内の脆弱なコンテナー イメージを特定する
 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
 このページでは、Azure Container Registry ベースのコンテナー イメージが GitHub ワークフローの一部として構築されている場合に、統合された脆弱性スキャナーを使用してスキャンする方法について説明します。
 
-スキャナーを設定するには、**コンテナー レジストリ用 Azure Defender** と CI/CD 統合を有効にする必要があります。 CI/CD ワークフローでイメージがレジストリにプッシュされると、レジストリ スキャンの結果と CI/CD スキャン結果の概要を表示できます。
+スキャナーを設定するには、**コンテナー レジストリ用 Microsoft Defender** と CI/CD 統合を有効にする必要があります。 CI/CD ワークフローでイメージがレジストリにプッシュされると、レジストリ スキャンの結果と CI/CD スキャン結果の概要を表示できます。
 
-CI/CD スキャンの結果は、Qualys による既存のレジストリ スキャン結果をエンリッチしたものです。 Azure Defender の CI/CD スキャンは、[Aqua Trivy](https://github.com/aquasecurity/trivy) を利用しています。
+CI/CD スキャンの結果は、Qualys による既存のレジストリ スキャン結果をエンリッチしたものです。 Defender for Cloud の CI/CD スキャンは、[Aqua Trivy](https://github.com/aquasecurity/trivy) を利用しています。
 
 脆弱性のあるイメージが発生しているワークフローを特定するのに役立てるため、GitHub ワークフローや GitHub の実行 URL などの追跡可能性情報を取得します。
 
@@ -32,25 +35,25 @@ CI/CD スキャンの結果は、Qualys による既存のレジストリ スキ
 |側面|詳細|
 |----|:----|
 |リリース状態:| **この CI/CD 統合はプレビュー段階です。**<br>非運用ワークフローでのみ試されることをお勧めします。<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
-|価格:|**コンテナー レジストリ用 Azure Defender** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)に表示されている通りに課金されます。|
+|価格:|**Microsoft Defender for container registries** の課金については、[価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)をご覧ください。|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: ナショナル/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 ## <a name="prerequisites"></a>前提条件
 
-CI/CD ワークフローによってレジストリにプッシュされたときにイメージをスキャンするには、サブスクリプションで **コンテナー レジストリ用 Azure Defender** を有効にする必要があります。 
+CI/CD ワークフローによってレジストリにプッシュされたときにイメージをスキャンするには、サブスクリプションで **コンテナー レジストリ用 Microsoft Defender**  を有効にする必要があります。 
 
 ## <a name="set-up-vulnerability-scanning-of-your-cicd-workflows"></a>CI/CD ワークフローの脆弱性スキャンを設定する
 
 GitHub ワークフローでイメージの脆弱性スキャンを有効にするには:
 
-[手順 1. Security Center で CI/CD 統合を有効にする](#step-1-enable-the-cicd-integration-in-security-center)
+[手順1.Defender for CloudでCI/CD 統合を有効にします。](#step-1-enable-the-cicd-integration-in-defender-for-cloud)
 
 [手順 2. 必要な行を GitHub ワークフローに追加する](#step-2-add-the-necessary-lines-to-your-github-workflow-and-perform-a-scan)
 
-### <a name="step-1-enable-the-cicd-integration-in-security-center"></a>手順 1. Security Center で CI/CD 統合を有効にする
+### <a name="step-1-enable-the-cicd-integration-in-defender-for-cloud"></a>手順 1. Defender for Cloudで CI/CD統合を有効にします。
 
-1. Security Center のサイドバーで、 **[価格と設定]** を選択します。
+1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
 1. 関連するサブスクリプションを選択します。
 1. そのサブスクリプションの設定ページのサイド バーで、 **[Integrations]\(統合\)** を選択します。
 1. 表示されたペインで、ワークフローから CI/CD スキャンの結果をプッシュする Application Insights アカウントを選択します。
@@ -67,6 +70,10 @@ GitHub ワークフローでイメージの脆弱性スキャンを有効にす�
 
     > [!TIP]
     > 次に示すように、YAML ファイルで参照するためにリポジトリに 2 つのシークレットを作成することをお勧めします。 シークレットには、独自の名前付け規則に従って名前を付けることができます。 この例では、シークレットは **AZ_APPINSIGHTS_CONNECTION_STRING** および **AZ_SUBSCRIPTION_TOKEN** として参照されています。
+
+    > [!IMPORTANT]
+    >  レジストリへのプッシュは、結果が発行される前に行う必要があります。
+
 
 
     ```yml
@@ -93,7 +100,7 @@ GitHub ワークフローでイメージの脆弱性スキャンを有効にす�
         subscription-token: ${{ secrets.AZ_SUBSCRIPTION_TOKEN }} 
     ```
 
-1. 選択したコンテナー レジストリにイメージをプッシュするワークフローを実行します。 イメージがレジストリにプッシュされると、レジストリのスキャンが実行され、CI/CD スキャンの結果とレジストリ スキャンの結果を Azure Security Center 内で表示できます。
+1. 選択したコンテナー レジストリにイメージをプッシュするワークフローを実行します。 イメージがレジストリにプッシュされると、レジストリのスキャンが実行され、CI/CD スキャンの結果とレジストリ スキャンの結果を Microsoft Defender for Cloud内で表示できます。
 
 1. [CI/CD スキャンの結果を表示します](#view-cicd-scan-results)。
 
@@ -135,5 +142,4 @@ GitHub ワークフローでイメージの脆弱性スキャンを有効にす�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Azure Defender に関する詳細情報](azure-defender.md)
+[Microsoft Defender の高度な保護プラン](defender-for-cloud-introduction.md)の詳細をご覧ください。

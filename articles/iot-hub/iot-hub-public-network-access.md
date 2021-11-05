@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: a729cd14c2f65b7ff4ab478f9efd25e13a1170b4
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: b77fa4d3e82114c4b52edca250aada9837157782
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515597"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068289"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT ハブのパブリック ネットワーク アクセスの管理
 
@@ -26,7 +26,7 @@ ms.locfileid: "113515597"
 4. [Allow public network access to]\(パブリック ネットワーク アクセスを許可する\) で、 **[無効]** を選択します
 5. **[保存]** を選択します。
 
-:::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="パブリック ネットワーク アクセスを無効にしている Azure portal を示す画像" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
+:::image type="content" source="./media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="パブリックネットワークアクセスを無効にする Azure portal を示すスクリーンショット。":::
 
 パブリック ネットワーク アクセスを有効にするには、 **[すべてのネットワーク]** 、 **[保存]** の順に選択します。
 
@@ -57,7 +57,7 @@ IoT Hub には、IoT Hub へのパブリック ネットワーク アクセス�
 5. 開いている **[IP フィルター]** ダイアログで、 **[クライアント IP アドレスを追加する]** を選択し、名前とアドレス範囲を入力します。
 6. **[保存]** を選択します。 ボタンが淡色表示されている場合は、お使いのクライアント IP アドレスが IP フィルターとして既に追加されていることをご確認ください。
 
-:::image type="content" source="media/iot-hub-publicnetworkaccess/turn-on-public-network-access.png" alt-text="Azure portal でパブリック ネットワーク アクセスが有効にされていることを示す画像":::
+:::image type="content" source="./media/iot-hub-publicnetworkaccess/turn-on-public-network-access.png" alt-text="パブリックネットワークアクセスを有効にする Azure portal を示すスクリーンショット。":::
 
 ### <a name="turn-on-all-network-ranges"></a>すべてのネットワーク範囲を有効にする
 

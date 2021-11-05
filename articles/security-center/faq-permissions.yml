@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Security Center に関する FAQ - アクセス許可に関する質問
+  title: Microsoft Defender for Cloud に関する FAQ - 仮想マシンについての質問
   description: この FAQ では、脅威の防御、検出、対応を可能にする製品である Azure Security Center のアクセス許可に関する質問に回答します。
   services: security-center
   documentationcenter: na
@@ -14,29 +14,29 @@ metadata:
   ms.workload: na
   ms.date: 02/25/2020
   ms.author: memildin
-  ms.openlocfilehash: ddd0b31834f6feda543e1f2c141155ea6754a37c
-  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+  ms.openlocfilehash: ca80ae2bfeeb896baca297e88f95298c1b54c027
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/07/2021
-  ms.locfileid: "111907829"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131084126"
 title: アクセス許可
 summary: ''
 sections:
 - name: 無視
   questions:
-  - question: Azure Security Center のアクセス許可はどのように機能しますか？
+  - question: Microsoft Defender for Cloud では、アクセス許可はどのように機能しますか。
     answer: >
-      Azure Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) が使用されており、これによって提供される[組み込みロール](../role-based-access-control/built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
+      Defender for Cloud では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) が使用されており、これによって提供される[組み込みのロール](../role-based-access-control/built-in-roles.md)は、Azure のユーザー、グループ、およびサービスに割り当てることができます。
 
 
-      Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
+      Defender for Cloud は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Defender for Cloud では、サブスクリプションまたはリソースのリソース グループに対する所有者、共同作業者、または閲覧者のロールが割り当てられているときに、リソースに関連した情報のみが表示されます。
 
 
-      Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
+      クラウドの Defender でのロールと許可されたアクションの詳細については、「 [Microsoft defender For cloud のアクセス許可](permissions.md) 」を参照してください。
   - question: セキュリティ ポリシーを変更できるのは誰ですか。
     answer: >-
       セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、そのサブスクリプションの所有者または共同作成者である必要があります。
 
 
-      セキュリティ ポリシーを構成する方法については、 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) を参照してください。
+      セキュリティポリシーを構成する方法については、「 [Microsoft Defender For Cloud でのセキュリティポリシーの設定](tutorial-security-policy.md)」を参照してください。

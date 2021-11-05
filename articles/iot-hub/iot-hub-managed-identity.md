@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: miag
-ms.openlocfilehash: 15cde0a434df9ac06e69bf0c589cdcab8a03d2dc
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b6f050c99d57e077e9e60aeb70d0acb11d200adb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129712395"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072753"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT Hub でのマネージド ID のサポート 
 
@@ -21,6 +21,7 @@ ms.locfileid: "129712395"
 IoT Hub では、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)、[ファイルのアップロード](iot-hub-devguide-file-upload.md)、[デバイスの一括インポートおよびエクスポート](iot-hub-bulk-identity-mgmt.md)などの機能のために、IoT Hub ハブから他の Azure サービスへのエグレス接続にマネージド ID を使用できます。 この記事では、IoT ハブでさまざまな機能にシステム割り当ておよびユーザー割り当てのマネージド ID を使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 - [Azure リソースのマネージド ID](./../active-directory/managed-identities-azure-resources/overview.md) に関するドキュメントを読み、システム割り当て ID とユーザー割り当てのマネージド ID の違いを理解しておいてください。
 
 - IoT ハブがない場合は、先に進む前に[作成](iot-hub-create-through-portal.md)してください。
@@ -28,12 +29,13 @@ IoT Hub では、[メッセージ ルーティング](iot-hub-devguide-messages-
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
 ### <a name="add-and-remove-a-system-assigned-managed-identity-in-azure-portal"></a>Azure portal でシステム割り当てマネージド ID を追加および削除する
-1.  Azure portal にサインインし、目的の IoT ハブに移動します。
-2.  IoT Hub ポータルで **[ID]** に移動します。
-3.  **[システム割り当て]** タブで **[オン]** を選択し、 **[保存]** をクリックします。
-4.  IoT ハブからシステム割り当てマネージド ID を削除するには、 **[オフ]** を選択し、 **[保存]** をクリックします。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/system-assigned.png" alt-text="IoT ハブのシステム割り当てマネージド ID を有効にする場所を示すスクリーンショット":::        
+1. Azure portal にサインインし、目的の IoT ハブに移動します。
+2. IoT Hub ポータルで **[ID]** に移動します。
+3. **[システム割り当て]** タブで **[オン]** を選択し、 **[保存]** をクリックします。
+4. IoT ハブからシステム割り当てマネージド ID を削除するには、 **[オフ]** を選択し、 **[保存]** をクリックします。
+
+    :::image type="content" source="./media/iot-hub-managed-identity/system-assigned.png" alt-text="I O T ハブに対してシステム割り当て済みマネージド id をオンにする場所を示すスクリーンショット。":::
 
 ### <a name="enable-system-assigned-managed-identity-at-hub-creation-time-using-arm-template"></a>ARM テンプレートを使用してハブの作成時にシステム割り当てマネージド ID を有効にする
 
@@ -117,14 +119,17 @@ az deployment group create --name <deployment-name> --resource-group <resource-g
 ```azurecli-interactive
 az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
 ```
-## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID 
-このセクションでは、Azure portal を使用して、IoT ハブとの間でユーザー割り当てマネージド ID を追加および削除する方法について説明します。
-1.  最初に、スタンドアロン リソースとしてユーザー割り当てマネージド ID を作成する必要があります。 それを行うには、「[ユーザー割り当てマネージド ID を作成する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#create-a-user-assigned-managed-identity)」の手順に従います。
-2.  IoT ハブにアクセスし、IoT Hub ポータルで **[ID]** に移動します。
-3.  **[ユーザー割り当て]** タブで、 **[ユーザー割り当てマネージド ID の関連付け]** をクリックします。 ハブに追加するユーザー割り当てマネージド ID を選択し、 **[選択]** をクリックします。 
-4.  IoT ハブからユーザー割り当て ID を削除できます。 削除するユーザー割り当て ID を選択し、 **[削除]** ボタンをクリックします。 この削除では、ユーザー割り当て ID は IoT ハブから削除されるだけで、リソースとしては削除されないことに注意してください。 リソースとしてのユーザー割り当て ID を削除するには、「[ユーザー割り当てマネージド ID を削除する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#delete-a-user-assigned-managed-identity)」の手順に従います。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/user-assigned.png" alt-text="IoT ハブのユーザー割り当てマネージド ID を追加する方法を示すスクリーンショット":::        
+## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
+
+このセクションでは、Azure portal を使用して、IoT ハブとの間でユーザー割り当てマネージド ID を追加および削除する方法について説明します。
+
+1. 最初に、スタンドアロン リソースとしてユーザー割り当てマネージド ID を作成する必要があります。 それを行うには、「[ユーザー割り当てマネージド ID を作成する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#create-a-user-assigned-managed-identity)」の手順に従います。
+2. IoT ハブにアクセスし、IoT Hub ポータルで **[ID]** に移動します。
+3. **[ユーザー割り当て]** タブで、 **[ユーザー割り当てマネージド ID の関連付け]** をクリックします。 ハブに追加するユーザー割り当てマネージド ID を選択し、 **[選択]** をクリックします。 
+4. IoT ハブからユーザー割り当て ID を削除できます。 削除するユーザー割り当て ID を選択し、 **[削除]** ボタンをクリックします。 この削除では、ユーザー割り当て ID は IoT ハブから削除されるだけで、リソースとしては削除されないことに注意してください。 リソースとしてのユーザー割り当て ID を削除するには、「[ユーザー割り当てマネージド ID を削除する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#delete-a-user-assigned-managed-identity)」の手順に従います。
+
+    :::image type="content" source="./media/iot-hub-managed-identity/user-assigned.png" alt-text="I O T ハブのユーザー割り当てマネージド id を追加する方法を示すスクリーンショット。":::
 
 ### <a name="enable-user-assigned-managed-identity-at-hub-creation-time-using-arm-template"></a>ARM テンプレートを使用してハブの作成時にユーザー割り当てマネージド ID を有効にする
 
@@ -241,11 +246,11 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
 3. ユーザー割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー割り当てマネージド ID]** を選択します。 ドロップダウン リストで、ご使用のサブスクリプションとユーザー割り当てマネージド ID を選択します。 **[保存]** ボタンをクリックします。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-user-assigned.png" alt-text="ユーザー割り当てを使用した IoT Hub メッセージ ルーティング":::
+    :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-user-assigned.png" alt-text="ユーザーが割り当てられたメッセージルーティングを示すスクリーンショット。":::
 
 4. システム割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー、グループ、またはサービス プリンシパル]** を選択し、ドロップダウン リストで、ご使用の IoT Hub のリソース名を選択します。 **[保存]** をクリックします。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-system-assigned.png" alt-text="システム割り当てを使用した IoT Hub メッセージ ルーティング":::
+    :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-system-assigned.png" alt-text="システムが割り当てられたメッセージのルーティングを示すスクリーンショット。":::
 
     VNet を介したカスタム エンドポイントへの接続を制限する必要がある場合は、信頼できる Microsoft ファースト パーティの例外を有効にして、ご使用の IoT ハブに特定のエンドポイントへのアクセス権を付与する必要があります。 たとえば、イベント ハブ カスタムエンド ポイントを追加する場合、イベント ハブの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[選択したネットワークからのアクセスを許可する]** オプションを有効にします。 **[例外]** 一覧で、 **[Allow trusted Microsoft services to access event hubs]\(信頼された Microsoft サービスによる Event Hubs に対するアクセスを許可します\)** のボックスをオンにします。 **[保存]** ボタンをクリックします。 これは、ストレージ アカウントとサービス バスにも当てはまります。 詳細については、[IoT Hub での仮想ネットワークのサポート](./virtual-network-support.md)に関するページを参照してください。
 
@@ -256,12 +261,11 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
 6. ページの下部で、希望する **[認証の種類]** を選択します。 このセクションでは、例として、 **[ユーザー割り当て]** を使用します。 ドロップダウンで、優先するユーザー割り当てマネージド ID を選択し、 **[作成]** をクリックします。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/eventhub-routing-endpoint.png" alt-text="ユーザー割り当てを使用する IoT Hub イベント ハブ":::
+    :::image type="content" source="./media/iot-hub-managed-identity/eventhub-routing-endpoint.png" alt-text="ユーザーが割り当てられているイベントハブを示すスクリーンショット。":::
 
-7. カスタム エンドポイントが正常に作成されました。 
-8. 認証の種類は、作成した後でも変更できます。 認証の種類を変更するカスタム エンドポイントを選択し、 **[認証の種類の変更]** をクリックします。
+7. カスタム エンドポイントが正常に作成されました。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/change-authentication-type.png" alt-text="IoT Hub の認証の種類":::
+8. 認証の種類は、作成した後でも変更できます。 左側のナビゲーションウィンドウで **[メッセージのルーティング]** を選択し、次に **[カスタムエンドポイント]** を選択します。 認証の種類を変更するカスタムエンドポイントを選択し、[認証の **種類の変更**] をクリックします。
 
 9. このエンドポイントに対して更新する新しい認証の種類を選択し、 **[保存]** をクリックします。
 
@@ -281,7 +285,7 @@ IoT Hub の[ファイルのアップロード](iot-hub-devguide-file-upload.md)�
 5. ご使用の IoT Hub のリソース ページで、 **[ファイルのアップロード]** タブに移動します。
 6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、**すべてのネットワーク** からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
 
-    :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="msi を使用する IoT Hub のファイルのアップロード":::
+    :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="Msi を使用したファイルのアップロードを示すスクリーンショット。":::
 
     > [!NOTE]
     > ファイルのアップロードのシナリオでは、ハブとデバイスの両方がストレージ アカウントに接続する必要があります。 上記の手順は、必要な認証の種類を使用して、IoT ハブをストレージ アカウントに接続するためのものです。 その場合も、SAS URI を使用してデバイスをストレージに接続する必要があります。 現在、SAS URI は接続文字列を使用して生成されます。 マネージド ID を使用した SAS URI の生成のサポートが近日中に追加される予定です。 [ファイルのアップロード](iot-hub-devguide-file-upload.md)の手順に従ってください。

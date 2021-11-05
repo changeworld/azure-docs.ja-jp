@@ -3,12 +3,12 @@ title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
 ms.date: 06/21/2021
 ms.topic: overview
-ms.openlocfilehash: 445ecce12c9900dbae2eb4d7a3c1278c979d6cd9
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: be0f512d4aaad922bb91e64ded9c8a5e4a5af88e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112427866"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081241"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
@@ -30,7 +30,7 @@ Azure Blueprints サービスの背後には、グローバルに分散された
 
 このサービスは、"_環境の設定_" が容易になるように設計されています。 この設定は、多くの場合、一連のリソース グループ、ポリシー、ロールの割り当て、および ARM テンプレートのデプロイから成ります。 ブループリントは、これら個々の "_アーティファクト_" の種類をまとめたパッケージです。ブループリントにより、そのパッケージの作成とバージョン管理を行うことができます (CI/CD (継続的インテグレーションと継続的デリバリー) パイプラインを使用して行うこともできます)。 最終的には、それぞれが、監査と追跡が可能なサブスクリプションに 1 回の操作で割り当てられます。
 
-Azure Blueprints のデプロイに含めるものはほぼすべて、ARM テンプレートを使用して実現できます。 しかし、ARM テンプレートは Azure にネイティブに存在するドキュメントではありません。それぞれローカルに、またはソース コントロール内に格納されています。 テンプレートは 1 つ以上の Azure リソースのデプロイに使用されますが、それらのリソースがデプロイされると、テンプレートとのアクティブな結び付きや関係は失われます。
+Azure Blueprints のデプロイに含めるものはほぼすべて、ARM テンプレートを使用して実現できます。 しかし、ARM テンプレートは Azure にネイティブに存在するドキュメントではありません。それぞれローカル、ソース コントロール内、または[テンプレート (プレビュー)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems) に格納されています。 テンプレートは 1 つ以上の Azure リソースのデプロイに使用されますが、それらのリソースがデプロイされると、テンプレートとのアクティブな結び付きや関係は失われます。
 
 Azure Blueprints では、ブループリント定義 (何をデプロイする "_必要がある_" か) とブループリント割り当て (何がデプロイ "_された_" か) の間の関係が維持されます。 この結び付きによって、デプロイの追跡と監査が向上します。 また、Azure Blueprints は、同じブループリントで管理されている複数のサブスクリプションを一度にアップグレードすることもできます。
 

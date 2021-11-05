@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 07/30/2021
+ms.date: 10/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 6dccf76a99c183c9b3d148ee1c4574c560d877f3
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 01f1a0ca013dad76510df99b70a462b96bec07a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078657"
 ---
-# <a name="data-residency-and-resiliency-for-azure-stack-edge-preview"></a>Azure Stack Edge のデータ所在地と回復性 (プレビュー)
+# <a name="data-residency-and-resiliency-for-azure-stack-edge"></a>Azure Stack Edgeのデータ所在地と回復性 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 

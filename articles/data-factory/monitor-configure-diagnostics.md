@@ -1,19 +1,19 @@
 ---
 title: 診断設定とワークスペースを構成する
 description: Azure Data Factory を監視するように診断設定と Log Analytics ワークスペースを構成する方法について説明します。
-author: jasonwhowell
-ms.author: jasonh
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 124df7c29c1a8447420b6241f2d635f2ff46c304
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6637cd45f6c7dd9260eb3bb5af1601457213158f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078676"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845287"
 ---
 # <a name="configure-diagnostic-settings-and-a-workspace"></a>診断設定とワークスペースを構成する
 

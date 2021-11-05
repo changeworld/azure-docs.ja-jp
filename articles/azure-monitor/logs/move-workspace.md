@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0af9aeb9efe3b652f52b01e3b45307253e810742
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 392b9d5b753ff75ab64a2f21a87301ba17de24c3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418652"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058010"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -42,6 +42,7 @@ ms.locfileid: "122418652"
 > **Azure Sentinel のお客様**
 > - 現時点では、Azure Sentinel がワークスペースにデプロイされた後は、ワークスペースを別のリソース グループまたはサブスクリプションに移動することはできません。 
 > - ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的な解決策です。ただし、繰り返しますがこれはサポートされていないため、ご自身の責任で行ってください。
+> - 完了までに数時間 Azure Resource Manager かかることがあり、操作中にソリューションが応答しなくなる可能性があります。
 > 
 > **アラートを再作成する**
 > - 権限が、ワークスペースの移動またはリソース名の変更によって変わるワークスペースのリソース ID に基づいて設定されているため、すべてのアラートを再作成する必要があります。 2019 年 6 月 1 日より後に作成されたワークスペース、または[従来の Log Analytics アラート API から scheduledQueryRules API にアップグレードされた](../alerts/alerts-log-api-switch.md)ワークスペースのアラートは、テンプレートにエクスポートして移動後にデプロイできます。 [scheduledQueryRules API がワークスペースのアラートに使用されているかどうかを確認](../alerts/alerts-log-api-switch.md#check-switching-status-of-workspace)することができます。 または、ターゲット ワークスペースでアラートを手動で構成することもできます

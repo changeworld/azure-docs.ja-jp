@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf83185b5c36723621ad586839d6b92260e1a99a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a0e35c11a94e1c0c6e86964d68c784c5cb3e7741
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046204"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060195"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory セキュリティ運用ガイド
 
@@ -156,7 +156,7 @@ Azure ハイブリッド環境の一部として、次をベースラインと�
 
 * **PTA エージェント** – パススルー認証エージェントは、パススルー認証を有効にするために使用され、オンプレミスにインストールされます。 エージェントのバージョンの確認と次の手順の詳細については、「[Azure AD パススルー認証エージェント: バージョン リリース履歴](../hybrid/reference-connect-pta-version-history.md)」をご覧ください。 
 
-* **AD FS/WAP** – Azure Active Directory フェデレーション サービス (Azure AD FS) と Web アプリケーション プロキシ (WAP) を使用すると、セキュリティおよびエンタープライズの境界を越えてデジタル ID と権利を安全に共有できます。 セキュリティのベスト プラクティスについては、「[Active Directory フェデレーションサービスをセキュリティ保護するためのベスト プラクティス](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs)」をご覧ください。 
+* **AD FS/WAP** – Azure Active Directory フェデレーション サービス (Azure AD FS) と Web アプリケーション プロキシ (WAP) を使用すると、セキュリティおよびエンタープライズの境界を越えてデジタル ID と権利を安全に共有できます。 セキュリティのベストプラクティスについては、[Active Directoryフェデレーションサービスを保護するためのベストプラクティス](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs)を参照してください。 
 
 * **Azure AD Connect Health エージェント** – Azure AD Connect Health の通信リンクを提供するために使用されるエージェントです。 エージェントのインストールについては、「[Azure AD Connect Health エージェントのインストール](../hybrid/how-to-connect-health-agent-install.md)」をご覧ください。 
 

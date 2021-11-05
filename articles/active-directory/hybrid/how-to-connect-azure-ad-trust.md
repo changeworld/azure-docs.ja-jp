@@ -17,12 +17,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9200c43b76e3ee95618fe1667e4fe0b6a62b160
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: fb602f5ab56ee173683f8f17b741705b26c48e70
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231655"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046282"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
 
@@ -30,9 +30,9 @@ ms.locfileid: "129231655"
 
 オンプレミス環境と Azure AD をフェデレーションする際は、オンプレミスの ID プロバイダーと Azure AD との間に信頼関係を構築します。  Azure AD Connect では、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD との間のフェデレーションを管理することができます。 この記事では、次の項目について概説します。
 
-* Azure AD Connect によって処理される、信頼関連の各種構成
+* Azure ADConnect によって信頼に構成されたさまざまな設定。
 * Azure AD Connect によって設定される発行変換規則 (要求規則)
-* アップグレード時や構成の更新時における要求規則のバックアップ方法と復元方法。 
+* アップグレード時や構成の更新時における要求規則のバックアップ方法と復元方法。
 * AD FS と Azure AD との間の信頼関係にセキュリティを確保し、それを監視するためのベスト プラクティス
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Azure AD Connect によって制御される設定

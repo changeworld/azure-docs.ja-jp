@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: 9b50ef87ba6ea41d3ab983d1f93bcf94043064af
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1538c412d1b2caa895de68173dc2567286f3e814
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004808"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056966"
 ---
 # <a name="tutorial-configure-zero-for-automatic-user-provisioning"></a>チュートリアル: Zero を構成し、自動ユーザー プロビジョニングに対応させる
 

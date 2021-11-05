@@ -3,12 +3,12 @@ title: Bicep モジュール
 description: Bicep ファイルでモジュールを定義する方法と、モジュールのスコープを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 21dc273e506f0c0f148e8a220ca4ea160c7423a8
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: a8a0b9c1eeeb56c12926774a78d45bb58e7d8437
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074496"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087383"
 ---
 # <a name="bicep-modules"></a>Bicep モジュール
 
@@ -17,6 +17,10 @@ Bicep を使用すると、デプロイをモジュールにまとめること�
 組織内の他のユーザーとモジュールを共有するには、[プライベート レジストリを作成します](private-module-registry.md)。 レジストリ内のモジュールは、正しいアクセス許可を持つユーザーのみが使用できます。
 
 Bicep モジュールは、[入れ子になったテンプレート](../templates/linked-templates.md#nested-template)を持つ単一の Azure Resource Manager テンプレートに変換されます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+モジュールの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[モジュールを使用して構成可能な Bicepファイルを作成する](/learn/modules/create-composable-bicep-files-using-modules/)」を参照する。
 
 ## <a name="definition-syntax"></a>定義の構文
 
@@ -49,17 +53,17 @@ Bicep ファイルの別の部分にあるモジュールを参照するには�
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-モジュールの **複数のインスタンス** をデプロイするには、`for` 式を追加します。 詳細については、「[Bicep でのモジュールの反復処理](loop-modules.md)」を参照してください。
+モジュールの **複数のインスタンス** をデプロイするには、`for` 式を追加します。 詳細については [、「Bicep の反復ループ」を参照してください](loops.md)。
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 
-リソースと同様に、モジュールは、他のモジュールやリソースに依存しない限り、並列でデプロイされます。 通常、依存関係は暗黙的に決定されるので設定する必要はありません。 明示的な依存関係を設定する必要がある場合は、モジュールの定義に `dependsOn` を追加できます。 依存関係の詳細については、「[リソースの依存関係を設定する](resource-declaration.md#set-resource-dependencies)」を参照してください。
+リソースと同様に、モジュールは、他のモジュールやリソースに依存しない限り、並列でデプロイされます。 通常は、暗黙的に決定される依存関係を設定する必要はありません。 明示的な依存関係を設定する必要がある場合は、モジュールの定義に `dependsOn` を追加できます。 依存関係の詳細については、「 [リソースの依存関係](resource-declaration.md#dependencies)」を参照してください。
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/dependsOn-definition.bicep" highlight="6-8" :::
 
 ## <a name="path-to-module"></a>モジュールへのパス
 
-モジュールのファイルには、ローカル ファイルまたは Bicep モジュール レジストリ内の外部ファイルのいずれかを指定できます。 両方のオプションの構文を次に示します。
+モジュールのファイルには、ローカル ファイルまたは Bicep モジュール レジストリ内の外部ファイルのいずれかを指定できます。 次に両方の方法について説明します。
 
 ### <a name="local-file"></a>ローカル ファイル
 

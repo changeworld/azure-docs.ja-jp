@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/10/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 95e94f9d071465febf9877001d1096c448d55992
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a8d73103754d34156bd7609529a01ee38e5acf2b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077509"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860282"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
@@ -64,7 +64,7 @@ gcc --version
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>デバイスを実行する
+## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 このセクションでは、C SDK を使用して、デバイスから IoT ハブにメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
 
 ### <a name="build-the-sample"></a>サンプルをビルドする

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16def8c00db3702a77e261b71841aa7d2d3c3728
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 029202fa236f5a7be2e3b3cbc650f2e54a4d1015
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655507"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085756"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Azure CLI を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -104,7 +104,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
 
 # <a name="bring-existing-resources-10-cli"></a>[既存のリソースを持ち込む (1.0 CLI)](#tab/bringexistingresources1)
-既存のリソースを使用するワークスペースを作成するには、各リソースのリソース ID を指定する必要があります。 この ID を取得するには、Azure portal 経由で各リソースの [プロパティ] タブを使用するか、Azure CLI を使って次のコマンドを実行します。
+既存のリソースを使用するワークスペースを作成するには、各リソースのリソース ID を指定する必要があります。 この ID は、Azure portal を使用して各リソースの [プロパティ] タブを使用するか、Azure CLI を使用して次のコマンドを実行して取得できます。
 
   * **Azure Storage アカウント**:     `az storage account show --name <storage-account-name> --query "id"`
   * **Azure Application Insights**:     `az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"`
@@ -141,7 +141,7 @@ application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourceg
 az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
 ```
 
-既存のリソースをアタッチするには、そのリソースの ID を指定する必要があります。 この ID を取得するには、Azure portal 内で各リソースの [プロパティ] タブを使用するか、Azure CLI を使って次のコマンドを実行します。
+既存のリソースをアタッチするには、そのリソースの ID を指定する必要があります。 この ID は、Azure portal の各リソースの [プロパティ] タブを使用するか、次のコマンドを使用して Azure CLIだ。
 
 * **Azure Storage アカウント**:     `az storage account show --name <storage-account-name> --query "id"`
 * **Azure Application Insights**:     `az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"`
@@ -346,6 +346,8 @@ sync-keys コマンドの詳細については、[az ml workspace sync-keys](/cl
 
 ### <a name="delete-a-workspace"></a>ワークスペースを削除する
 
+[!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
+
 不要になったワークスペースを削除するには、次のコマンドを使用します。
 
 ```azurecli-interactive
@@ -362,6 +364,8 @@ az group delete -g <resource-group-name>
 ```
 
 詳細については、[az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete) のドキュメントをご覧ください。
+
+ワークスペースを誤って削除した場合でも、 ノートブックを取得できます。 [このドキュメント](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion)を 参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

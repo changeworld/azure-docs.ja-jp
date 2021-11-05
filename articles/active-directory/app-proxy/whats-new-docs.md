@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション プロキシの新機能
 description: Azure Active Directory アプリケーション プロキシの新規および更新されたドキュメント。
-ms.date: 10/05/2021
+ms.date: 11/04/2021
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: karenh444
-ms.openlocfilehash: cc0404f14a0c7014bb8bbec6e618480905d1f81e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7105f0e80f6467e149463e7d0ad55ed880cdc7dc
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129987748"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846503"
 ---
 # <a name="azure-active-directory-application-proxy-whats-new"></a>Azure Active Directory アプリケーション プロキシ: 新機能
 
 Azure Active Directory アプリケーション プロキシに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
+
 
 ## <a name="september-2021"></a>2021 年 9 月
 

@@ -841,6 +841,8 @@
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
         - name: トランザクション レプリケーション
           href: managed-instance/replication-transactional-overview.md
+        - name: SQL MI のリンク機能
+          href: managed-instance/link-feature.md
         - name: 管理操作
           items:
             - name: 概要
@@ -1047,19 +1049,23 @@
               href: managed-instance/timezones-overview.md
             - name: 接続の種類の構成
               href: managed-instance/connection-types-overview.md
-            - name: マネージド インスタンスでのアラートの作成
+            - name: SQL MI に関するアラートを作成する
               href: managed-instance/alerts-create.md
             - name: 脅威検出の構成
               href: managed-instance/threat-detection-configure.md
         - name: ネットワークを構成する
           items:
-            - name: マネージド インスタンス サブネットのサイズの決定
+            - name: SQL MI サブネットのサイズを決定する
               href: managed-instance/vnet-subnet-determine-size.md
-            - name: マネージド インスタンス用の新しい VNet とサブネットの作成
+            - name: SQL MI 用に新しい VNet とサブネットを作成する
               href: managed-instance/virtual-network-subnet-create-arm-template.md
-            - name: マネージド インスタンス用の既存の VNet とサブネットの構成
+            - name: SQL MI 用に既存の VNet とサブネットを構成する
               href: managed-instance/vnet-existing-add-subnet.md
-            - name: マネージド インスタンスの削除後のサブネットの削除
+            - name: SQL MI 用にサービス エンドポイント ポリシーを構成する
+              href: managed-instance/service-endpoint-policies-configure.md
+            - name: MI SQL を別のサブネットに移動する
+              href: managed-instance/vnet-subnet-move-instance.md
+            - name: SQL MI の削除後にサブネットを削除する
               href: managed-instance/virtual-cluster-delete.md
             - name: カスタム DNS の構成
               href: managed-instance/custom-dns-configure.md
@@ -1073,7 +1079,7 @@
               href: managed-instance/management-endpoint-verify-built-in-firewall.md
         - name: 移行
           items:
-            - name: SQL Server を Azure SQL Managed Instance に移行するガイド
+            - name: SQL Server から SQL MI への移行ガイド
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: ログ再生サービスを使用してデータベースを移行する
               href: managed-instance/log-replay-service-migrate.md
@@ -1101,14 +1107,14 @@
   items:
     - name: ドキュメント
       href: virtual-machines/index.yml
+    - name: 新機能
+      href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
     - name: Windows
       items:
         - name: 概要
           items:
             - name: SQL Server VM とは
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: 新機能
-              href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
         - name: クイックスタート
           items:
             - name: ポータル
@@ -1187,6 +1193,8 @@
                   href: virtual-machines/windows/storage-configuration.md
                 - name: 自動修正
                   href: virtual-machines/windows/automated-patching.md
+                - name: SQL の評価
+                  href: virtual-machines/windows/sql-assessment-for-sql-vm.md
                 - name: Azure Key Vault の統合
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 記憶域を UltraSSD に移行する
@@ -1315,6 +1323,14 @@
           items:
             - name: SQL VM の作成 - ポータル
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: 概念
+          items:
+            - name: SQL IaaS Agent 拡張機能
+              href: virtual-machines/linux/sql-server-iaas-agent-extension-linux.md
+        - name: 使い方ガイド
+          items:
+            - name: SQL IaaS 拡張機能に登録する
+              href: virtual-machines/linux/sql-iaas-agent-extension-register-vm-linux.md
         - name: チュートリアル
           items:
             - name: STONITH を使用した Azure RHEL VM 可用性グループの設定

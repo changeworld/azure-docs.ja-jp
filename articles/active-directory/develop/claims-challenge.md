@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: nichola
 ms.reviewer: kkrishna, kylemar
-ms.openlocfilehash: abce87c8d5c5d88c9edd1303f0a585aa773d2ec8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6d1998673b3295129c494b4568e1ba6313984898
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471383"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067255"
 ---
 # <a name="claims-challenges-claims-requests-and-client-capabilities"></a>クレーム チャレンジ、クレーム要求、およびクライアントの機能
 
@@ -78,7 +78,7 @@ claims=%7B%22access_token%22%3A%7B%22acrs%22%3A%7B%22essential%22%3Atrue%2C%22va
 クレーム パラメーターを設定するには、開発者は次のことを行う必要があります。
 
 1. 以前に受信した Base64 文字列をデコードします。
-2. 文字列を URL エンコードし、**claims** パラメーターに再度追加します。
+2. 文字列を URL エンコードし、claims パラメーターに **もう一度 を追加** します。
 
 このフローが完了すると、アプリケーションは、ユーザーが必要な条件を満たしていることを証明する追加のクレームを含むアクセス トークンを受け取ります。
 

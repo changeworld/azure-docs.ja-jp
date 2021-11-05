@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: c6e2491c5c57ca8ebbde287f58fad6d6429b5ee4
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2b52a22123a6ac0e4a8405f2413b11b6367eeff0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236711"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070928"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-and-synapse-pipelines"></a>Azure Data Factory と Synapse パイプラインでサポートされるコンピューティング環境
 
@@ -28,7 +28,7 @@ ms.locfileid: "129236711"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [On-demand HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Custom](transform-data-using-dotnet-custom-activity.md)     |
-| [ML Studio (クラシック)](#azure-machine-learning-studio-classic-linked-service) | [ML Studio (クラシック) のアクティビティ: Batch Execution と更新リソース](transform-data-using-machine-learning.md) |
+| [ML Studio (クラシック)](#machine-learning-studio-classic-linked-service) | [ML Studio (クラシック) のアクティビティ: Batch Execution と更新リソース](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
@@ -369,8 +369,8 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | linkedServiceName | この Azure Batch の「リンクされたサービス」に関連付けられている Azure Storage の「リンクされたサービス」の名前です。 この「リンクされたサービス」はアクティビティの実行に必要なファイルのステージングに利用されます。 | はい      |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
-Azure Machine Learning スタジオ (クラシック) のリンク サービスを作成し、Machine Learning スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリまたは Synapse ワークスペースに登録します。
+## <a name="machine-learning-studio-classic-linked-service"></a>Machine LearningStudio (クラシック) のリンクされたサービス
+Machine Learning Studio (クラシック) バッチ スコアリング エンドポイントをデータ ファクトリまたは Synapse ワークスペースに登録するには、Machine Learning Studio (クラシック) のリンクされたサービスを作成します。
 
 ### <a name="example"></a>例
 

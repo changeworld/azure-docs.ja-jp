@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 94174eeb943f4016fde8baf329fa6ba27768e486
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 02140728536e458c85e8c63a0fa1ca3c9663506b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039935"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050508"
 ---
 # <a name="configure-sso-on-macos-and-ios"></a>macOS と iOS で SSO を構成する
 
@@ -72,7 +72,7 @@ App2 のリダイレクト URI: `msauth.com.contoso.mytestapp2://auth`
 App3 のリダイレクト URI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> リダイレクト URI の形式は、MSAL がサポートする形式と互換性がある必要があります。これについては「[MSAL リダイレクト URI 形式の要件](redirect-uris-ios.md#msal-redirect-uri-format-requirements)」に記載されています。
+> リダイレクト URI の形式は、MSAL がサポートする形式と互換性がある必要があります。これは 、[MSAL リダイレクト URI](redirect-uris-ios.md#msal-redirect-uri-format-requirements)形式の要件に記載されています。
 
 ### <a name="setup-keychain-sharing-between-applications"></a>アプリケーション間のキーチェーン共有を設定する
 

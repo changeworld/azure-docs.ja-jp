@@ -1,17 +1,18 @@
 ---
-title: Azure Video Analyzer の Visual Studio Code 拡張機能をs使用する
+title: Azure Video Analyzer の Visual Studio Code 拡張機能を使用する
 description: このリファレンス記事では、Azure Video Analyzer のVisual Studio Code 拡張機能のさまざまな機能を使用する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: cec3b6549b854cf321390b7598d36b5a4b12378b
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 11/01/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0e69938b340d88a4e0002aaf9155d42ad0899189
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604335"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073645"
 ---
-# <a name="use-azure-video-analyzer-visual-studio-code-extension"></a>Azure Video Analyzer の Visual Studio Code 拡張機能をs使用する
+# <a name="visual-studio-code-extension-for-azure-video-analyzer"></a>Azure Video Analyzer の Visual Studio Code 拡張機能を使用する
 
 Azure Video Analyzer は、ビデオ解析プログラムを構築しやすくするプラットフォームであり、関連付けられている Visual Studio Code 拡張機能は、そのプラットフォームの学習を容易にするツールです。  この記事は、拡張機能によって提供されるさまざまな機能のリファレンスです。  以下の基本について説明します。
 
@@ -19,7 +20,7 @@ Azure Video Analyzer は、ビデオ解析プログラムを構築しやすく�
 * ライブ パイプライン – JSON の作成、アクティブ化、非アクティブ化、削除、表示
 * パイプライン トポロジの編集 - モジュール、パラメーター、システム変数、接続、検証
 
-エッジ デバイスに接続するように拡張機能を設定していない場合は、[Azure Video Analyzer の Visual Studio Code 拡張機能](./create-pipeline-vs-code-extension.md)のクイックスタートに従 います。
+エッジ デバイスに接続するように拡張機能を設定していない場合は、[Azure Video Analyzer の Visual Studio Code 拡張機能](./edge/use-visual-studio-code-extension.md)のクイックスタートに従 います。
 
 ## <a name="managing-pipelines-topology"></a>パイプライン トポロジの管理
 
@@ -47,7 +48,7 @@ Azure Video Analyzer は、ビデオ解析プログラムを構築しやすく�
 
 ## <a name="editing-a-topology"></a>トポロジの編集 
 
-パイプライン トポロジは、さまざまな要素で構成されています。  これらの要素の詳細については、 [パイプライン](./pipeline.md) の概念に関するドキュメントを参照してください。 このセクションでは、トポロジを構築または編集するためのインターフェイスの部分について説明します。
+パイプライン トポロジは、さまざまな要素で構成されています。 これらの要素の詳細については、 [パイプライン](pipeline.md) の概念に関するドキュメントを参照してください。 このセクションでは、トポロジを構築または編集するためのインターフェイスの部分について説明します。
 
 ### <a name="modules"></a>モジュール
 
@@ -81,4 +82,4 @@ Azure Video Analyzer は、ビデオ解析プログラムを構築しやすく�
 
 トポロジを作成する場合は、さまざまなモジュールを一緒に接続する必要があります。  これは、接続を使用して行います。  モジュールの端にある円から、データを流す次のモジュールの円にドラッグします。  これにより、接続が生成されます。
 
-既定では、接続は、あるモジュールから別のモジュールにすべてのデータを送信します。  特定の種類のデータのみを送信する場合は、接続を左クリックして、送信される出力の種類を編集できます。  選択可能な種類のデータには、ビデオ、オーディオ、アプリケーションなどがあります。
+既定では、接続は、あるモジュールから別のモジュールにすべてのデータを送信します。 オーディオ データまたはアプリケーション データのみを送信する場合は、接続を左クリックして出力の種類を編集できます。 選択可能な種類のデータには、ビデオ、オーディオ、アプリケーションなどがあります。 出力の種類を何も選択しないと、該当するすべてのデータが送信元ノードから送信されるものとして処理されます。

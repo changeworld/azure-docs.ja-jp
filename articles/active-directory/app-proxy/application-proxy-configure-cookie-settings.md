@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: c72ce281697b23092530571114dafb3aece5d0d1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b621616790394df54d312af86719b24ff90a59c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990085"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068153"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定
 
@@ -40,7 +40,7 @@ Chrome バージョン 80 以降、ひいては Chromium を利用している�
 
 アプリケーション プロキシ Cookie に対するこれらの変更は、Chrome 80 のリリース日の前に、今後数週間にわたってロールアウトされます。
 
-さらに、バックエンド アプリケーションに、サードパーティ コンテキストで使用できるようにする必要がある Cookie がある場合は、これらの Cookie に対して SameSite=None を使用するようにアプリケーションを変更することで、明示的にオプトインする必要があります。 アプリケーション プロキシは、Set-Cookie ヘッダーをその URL に変換し、バックエンド アプリケーションによって設定されたそれらの Cookie の設定を優先します。
+さらに、バックエンド アプリケーションに、サードパーティ コンテキストで使用できるようにする必要がある Cookie がある場合は、これらの Cookie に対して SameSite=None を使用するようにアプリケーションを変更することで、明示的にオプトインする必要があります。 アプリケーションプロキシは、Set-Cookie ヘッダーを Url に変換し、バックエンドアプリケーションによって設定された cookie の設定を尊重します。
 
 
 

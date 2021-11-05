@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 557977f3de6e59ff592af65b6ff0357cdc4bfa5d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8868c506ab80a2ece97882e080caa5abb5642c24
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036925"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007260"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで ID トークン ヒントの技術プロファイルを定義する
 
@@ -24,7 +24,7 @@ Azure AD B2C により、証明書利用者アプリケーションは OAuth2 �
 
 ## <a name="use-cases"></a>ユース ケース
 
-このソリューションを使用すると、データを 1 つの JWT トークンにカプセル化して Azure AD B2C に送信できます。 システム管理者が署名済み招待状をユーザーに送信できる[電子メール招待ソリューションによるサインアップ](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md)は、id_token_hint に基づきます。 招待メールにアクセスできるユーザーのみが、ディレクトリでアカウントを作成できます。
+このソリューションを使用すると、データを 1 つの JWT トークンにカプセル化して Azure AD B2C に送信できます。 システム管理者が署名済み招待状をユーザーに送信できる [`Signup with email invitation` ソリューション](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md)は、id_token_hint に基づきます。 招待メールにアクセスできるユーザーのみが、ディレクトリでアカウントを作成できます。
 
 ## <a name="token-signing-approach"></a>トークンの署名アプローチ
 
@@ -41,7 +41,7 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 | 期限切れ日時 | `exp` | `1600087315` | トークンが無効になる日時です。エポック時間で表されます。 Azure AD B2C によってこの値が検証され、期限切れになっている場合、トークンは拒否されます。|
 | 期間の開始時刻 | `nbf` | `1599482515` | トークンが有効になる日時です。エポック時間で表されます。 この日時は、通常、トークンが発行されたのと同じ日時です。 Azure AD B2C によってこの値が検証され、有効期間が有効でない場合、トークンは拒否されます。 |
 
- 次のトークンは、有効な ID トークンの例です。
+次のトークンは、有効な ID トークンの例です。
 
 ```json
 {
@@ -104,7 +104,6 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_secret | Yes | JWT トークンの署名を検証するために使用される暗号化キー。|
-
 
 ## <a name="how-to-guide"></a>ハウツー ガイド
 
@@ -188,7 +187,7 @@ $newClientSecret
 * `/.well-known/openid-configuration` - トークン発行者名、JWK エンドポイントへのリンクなど、トークンに関する関連情報を含む既知の構成エンドポイント。 
 * `/.well-known/keys` - (証明書の秘密キー部分を含む) キーに署名するために使用される公開キーを含む JSON Web キー (JWK) エンドポイント。
 
-[TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC コントローラーのサンプルを参照してください。
+[`TokenMetadataController.cs`](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC コントローラーのサンプルを参照してください。
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>手順 1. 自己署名証明書を準備する
 
@@ -196,7 +195,7 @@ $newClientSecret
 
 この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
 
-```PowerShell
+```powershell
 New-SelfSignedCertificate `
     -KeyExportPolicy Exportable `
     -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
@@ -210,7 +209,7 @@ New-SelfSignedCertificate `
 
 #### <a name="step-2-add-the-id-token-hint-technical-profile"></a>手順 2. ID トークン ヒントの技術プロファイルを追加する 
 
-次の技術プロファイルにより、トークンが検証され、要求が抽出されます。 メタデータ URI をトークン発行者の既知の構成エンドポイントに変更します。  
+次の技術プロファイルにより、トークンが検証され、要求が抽出されます。 メタデータ URI をトークン発行者の既知の構成エンドポイントに変更します。
 
 ```xml
 <ClaimsProvider>
@@ -253,24 +252,25 @@ New-SelfSignedCertificate `
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
 1. 証明書利用者ポリシーで、IdTokenHint_ExtractClaims 技術プロファイルで構成したのと同じ入力要求を繰り返します。 次に例を示します。
+
     ```xml
-   <RelyingParty>
-     <DefaultUserJourney ReferenceId="SignUp" />
-     <TechnicalProfile Id="PolicyProfile">
-       <DisplayName>PolicyProfile</DisplayName>
-       <Protocol Name="OpenIdConnect" />
-       <InputClaims>
-         <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="userId" />
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUp" />
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="userId" />
         </InputClaims>
-       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-        <OutputClaim ClaimTypeReferenceId="identityProvider" />
-       </OutputClaims>
-       <SubjectNamingInfo ClaimType="sub" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+          <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
       </TechnicalProfile>
     </RelyingParty>
     ```

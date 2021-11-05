@@ -2,14 +2,14 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 11/04/2021
 ms.author: juliako
-ms.openlocfilehash: 4f5117a7d2a46b2fe312992ae54dbc4868247d40
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ac9aae804d9ae32686dbe11eccbf9b0a972d9740
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092014"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861061"
 ---
 前提条件の一環として、サンプル コードをフォルダーにダウンロードしてあります。 サンプル ファイルを確認して編集するには、これらの手順に従います。
 

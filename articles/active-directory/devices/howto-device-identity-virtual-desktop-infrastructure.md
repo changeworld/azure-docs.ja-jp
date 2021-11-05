@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca70009eea6f8988fadd8f09a0460911fac299de
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b81bdc056bd56e96669bde7e6d0473ef3feb3402
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630321"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049845"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 

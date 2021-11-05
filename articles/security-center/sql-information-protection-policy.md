@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 83db40485e425618637b8dea75a7e3cae254637c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 82a16ff353261218859e01c6ea227dbca918d0f2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091915"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472126"
 ---
 # <a name="sql-information-protection-policy-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud での SQL 情報保護ポリシー
 

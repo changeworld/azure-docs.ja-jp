@@ -12,21 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 10/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 2a17ed67830dfcfc3f1c5c3cbd6cc06ceedc8028
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c6bbc11fc77de516d2e163d1463444f2a3c0210e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614184"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069940"
 ---
 # <a name="create-an-on-demand-snapshot-for-a-volume"></a>ボリュームのオンデマンド スナップショットを作成する
 
 Azure NetApp Files では、オンデマンド [スナップショット](snapshots-introduction.md)の作成と、スナップショット ポリシーを使用した自動スナップショット作成のスケジュール設定がサポートされています。 また、[新しいボリュームにスナップショットを復元](snapshots-restore-new-volume.md)したり、[クライアントを使用して 1 つのファイルを復元したり](snapshots-restore-file-client.md)、[スナップショットを使用して既存のボリュームを元に戻したり](snapshots-revert-volume.md)することもできます。 この記事では、ボリュームのオンデマンド スナップショットを作成する方法について説明します。 
 
 > [!NOTE] 
-> リージョン間レプリケーションでのスナップショット管理に関する考慮事項については、「[リージョン間レプリケーションを使用するための要件と考慮事項](cross-region-replication-requirements-considerations.md)」を参照してください。
+> * リージョン間レプリケーションでのスナップショット管理に関する考慮事項については、「[リージョン間レプリケーションを使用するための要件と考慮事項](cross-region-replication-requirements-considerations.md)」を参照してください。
+> * Azure アプリケーション整合スナップショットツール (AzAcSnap) を使用して、サードパーティのデータベースのデータ保護を有効にすることができます。 詳細については、「 [Azure アプリケーション整合性スナップショットツール](azacsnap-introduction.md)とは」を参照してください。
  
 ## <a name="steps"></a>手順
 

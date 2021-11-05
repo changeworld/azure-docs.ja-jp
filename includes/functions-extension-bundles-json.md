@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
-ms.openlocfilehash: 23e75e2cf2e097e08c0b6bf3c4b0b8c9842a9184
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: feabf1cfde0facc49694554094064ee7b54e816b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609758"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852340"
 ---
 ```json
 {
     "version": "2.0",
     "extensionBundle": {
         "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
+        "version": "[3.3.0, 4.0.0)"
     }
 }
 ```

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4c58a0550d35575721a1d27ce7a572ac0e00e90
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75774034"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024204"
 ---
 # <a name="internet-peering---faqs"></a>インターネット ピアリング - よくあるご質問
 
@@ -29,7 +29,7 @@ Azure PowerShell を使用して設定したピアリング接続は、Azure リ
 
 **New-AzPeeringDirectConnectionObject を呼び出すと、どの IP アドレスが Microsoft デバイスとピア デバイスに付与されますか?**
 
-New-AzPeeringDirectConnectionObject コマンドレットを呼び出すと、/31 アドレス (a.b.c.d/31) または /30 アドレス (a.b.c.d/30) が入力されます。 1 つ目の IP アドレス (a.b.c.d+0) はピアのデバイスに付与され、2 つ目の IP アドレス (a.b.c.d+1) は Microsoft デバイスに付与されます。
+New-AzPeeringDirectConnectionObject コマンドレットを呼び出すと、 `/31` アドレス ( `a.b.c.d/31` ) または `/30` アドレス ( `a.b.c.d/30` ) が入力されます。 最初の IP アドレス ( `a.b.c.d+0` ) は、ピアのデバイスに与えられ、2つ目の ip アドレス ( `a.b.c.d+1` ) が Microsoft デバイスに与えられます。
 
 **New-AzPeeringDirectConnectionObject コマンドレットの MaxPrefixesAdvertisedIPv4 パラメーターと MaxPrefixesAdvertisedIPv6 パラメーターは何ですか?**
 

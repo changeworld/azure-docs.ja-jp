@@ -12,12 +12,12 @@ ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7e2b1e02f63257a74d66a70531cfbf7ef56a1c65
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 73d1649881428047cf0c593335d66d9d3145ec2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043911"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021868"
 ---
 # <a name="user-flows-and-custom-policies-overview"></a>ユーザー フローとカスタム ポリシーの概要
 
@@ -82,9 +82,9 @@ Azure AD B2C では、次の 2 つの方法で ID ユーザーのエクスペリ
 |-|-------------------|-----------------|
 | 対象ユーザー | ID の専門知識を持つ、または持たないすべてのアプリケーション開発者。 | ID のプロフェッショナル、システム インテグレータ、コンサルタント、社内の ID チーム。 彼らは OpenID Connect のフローに慣れており、ID プロバイダーや要求ベースの認証を理解しています。 |
 | 構成方法 | ユーザー フレンドリなユーザー インターフェイス (UI) を備えた Azure portal。 | XML ファイルを直接編集して Azure portal にアップロードします。 |
-| UI のカスタマイズ | HTML、CSS、および [JavaScript](javascript-and-page-layout.md) を含む[完全な UI のカスタマイズ](customize-ui-with-html.md)。<br><br>カスタム文字列による[多言語サポート](language-customization.md)。 | 同じ |
-| 属性のカスタマイズ | 標準属性とカスタム属性。 | 同じ |
-| トークンおよびセッション管理 | [トークンのカスタマイズ](configure-tokens.md)と[セッションの動作](session-behavior.md)。 | 同じ |
+| UI のカスタマイズ | HTML、CSS、および [JavaScript](javascript-and-page-layout.md) を含む[完全な UI のカスタマイズ](customize-ui-with-html.md)。<br><br>カスタム文字列による[多言語サポート](language-customization.md)。 | ユーザー フローと同じ |
+| 属性のカスタマイズ | 標準属性とカスタム属性。 | ユーザー フローと同じ |
+| トークンおよびセッション管理 | [トークンのカスタマイズ](configure-tokens.md)と[セッションの動作](session-behavior.md)。 | ユーザー フローと同じ |
 | [ID プロバイダー] | [定義済みのローカル](identity-provider-local.md)または[ソーシャル プロバイダー](add-identity-provider.md) (Azure Active Directory テナントとのフェデレーションなど)。 | 標準ベースの OIDC、OAUTH、SAML。  REST API との統合を使用して認証を行うことも可能です。 |
 | ID タスク | ローカルまたはさまざまなソーシャル アカウントによる[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md)。<br><br>[セルフサービス パスワード リセット](add-password-reset-policy.md)。<br><br>[プロファイルの編集](add-profile-editing-policy.md)。<br><br>Multi-Factor Authentication。<br><br>アクセス トークンのフロー。 | カスタム ID プロバイダーを使用したユーザー フローと同じタスクの実行、またはカスタム スコープの使用。<br><br>登録時に別のシステムでユーザー アカウントをプロビジョニング。<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信。<br><br>Azure AD B2C の外部のユーザー ストアを使用。<br><br>ユーザーが指定した情報を信頼できるシステムで検証 (API を使用)。 |
 

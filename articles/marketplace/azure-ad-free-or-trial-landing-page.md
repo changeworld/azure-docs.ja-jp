@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/04/2020
-ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.openlocfilehash: 8e73947a45f06420cf94119892b19e77802f65bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559292"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056473"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する
 
@@ -43,7 +43,9 @@ ms.locfileid: "102559292"
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
 
-コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 ユーザーはマーケットプレースに到達し、[Azure AD アカウントまたは Microsoft アカウント (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology) で認証されます。 一覧表示のみのオファーから無料試用版サブスクリプションを取得した後、ユーザーはコマーシャル マーケットプレースからランディング ページの URL に移動して、SaaS アプリケーションへのサブスクリプションをアクティブ化して管理します。 ユーザーが Azure AD SSO でアプリケーションにサインインできるようにする必要があります。 ランディング ページの URL は、そのオファーの [[技術的な構成] ページ](plan-saas-offer.md#technical-information)で指定されます。
+コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 ユーザーはマーケットプレースに到達し、[Azure AD アカウントまたは Microsoft アカウント (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology) で認証されます。 一覧表示のみのオファーから無料試用版サブスクリプションを取得した後、ユーザーはコマーシャル マーケットプレースからランディング ページの URL に移動して、SaaS アプリケーションへのサブスクリプションをアクティブ化して管理します。 ユーザーが Azure AD SSO でアプリケーションにサインインできるようにする必要があります。 (ランディングページの URL は、プランの [ [技術構成](plan-saas-offer.md#technical-information) ] ページで指定します)。
+
+[!INCLUDE [pound-sign-note](./includes/pound-sign-note.md)]
 
 ID を使用するための最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認します。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証したり、ユーザー リソースへのアクセスを要求したりできるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリの設定に基づいてアプリにトークンを発行する方法を認識できるようになります。
 

@@ -1,12 +1,11 @@
 ---
-title: Azure Sentinel ソリューションをデプロイする | Microsoft Docs
-description: この記事では、データ コネクタ付属のデータ分析ツールを簡単に見つけ、デプロイする方法を説明します。
+title: Azure Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする |Microsoft Docs
+description: この記事では、データコネクタやその他のコンテンツと共にパッケージ化された、データ分析ツールを簡単に見つけてデプロイする方法について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,78 +14,88 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 5cb84ad912e5430948d0dedc71d94e69d1dd1a86
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8c2c749ff6b77d9d63778e6ff02e83fe40a0205f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251912"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064191"
 ---
-# <a name="discover-and-deploy-azure-sentinel-solutions"></a>Azure Sentinel ソリューションを見つけてデプロイする
+# <a name="centrally-discover-and-deploy-azure-sentinel-out-of-the-box-content-and-solutions-public-preview"></a>Azure Sentinel のすぐに使えるコンテンツとソリューションを一元的に検出してデプロイする (パブリックプレビュー)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
-> Azure Sentinel ソリューションは現在 **プレビュー版** です。個別のソリューション パッケージもすべてプレビュー版です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> Azure Sentinel ソリューションと Azure Sentinel コンテンツハブは、現在 **プレビュー** 段階にあり、すべての個別のソリューションパッケージとして扱われています。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Sentinel ソリューションでは、製品内検出機能、ワンステップのデプロイ方法、エンドツーエンド製品の実現手段、ドメイン、Azure Sentinel サービス間の垂直的利用を提供しています。 ソリューションの検索、デプロイ、有効化は [Azure Marketpace](https://azuremarketplace.microsoft.com/marketplace) で、ソリューションの作成と公開は [Microsoft パートナー センター](/partner-center/overview) で行います。
+Azure Sentinel コンテンツハブを使用すると、エンドツーエンドの製品、ドメイン、または業界のニーズに対応したコンテンツと共に、Azure Sentinel のすぐに使用できるコンテンツやソリューションにアクセスできます。
 
-ソリューションは次のコンポーネントの一部または全部で構成できます。
+この記事では、Azure Sentinel ワークスペースにソリューションをインストールし、その中のコンテンツを使用できるようにする方法について説明します。
 
-- **データ コネクタ** (一部は **パーサー** が付属します)
-- **ブック**
-- **分析ルール**
-- **ハンティング クエリ**
-- **プレイブック**
+- コンテンツハブの状態、含まれるコンテンツ、サポートなどに基づいて、ソリューションを検索します。
 
-## <a name="find-your-solution"></a>自分たちに適したソリューションを見つける
+- 組織のニーズに合ったソリューションが見つかったら、ワークスペースにソリューションをインストールします。 常に最新の変更内容で更新してください。
 
-1. Azure Sentinel のナビゲーション メニューで、 **[ソリューション (プレビュー)]** をクリックします。
+> [!TIP]
+> パートナーが独自のソリューションを作成する場合は、ソリューションの作成と発行に関する [Azure Sentinel ソリューションのビルドガイド](https://aka.ms/sentinelsolutionsbuildguide) を参照してください。
+>
+## <a name="find-a-solution"></a>ソリューションの検索
 
-1. **[ソリューション]** ブレードに、ソリューションの検索可能なリストが表示されます。
+1. Azure Sentinel ナビゲーションメニューの **[コンテンツ管理]** で、 **[コンテンツハブ (プレビュー)]** を選択します。
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/solutions-list.png" alt-text="ソリューションのリスト":::
+1. **コンテンツハブ** ページには、検索とフィルターが適用されたソリューションのグリッドが表示されます。
 
-    - リスト下部までスクロールしても望ましいソリューションが見つからない場合は、一番下の **[さらに読み込む]** リンクを選択して、リストを展開します。
+    フィルターから特定の値を選択するか、 **検索** フィールドにソリューション名または説明の一部を入力することによって、表示される一覧をフィルター処理します。
 
-        :::image type="content" source="./media/sentinel-solutions-deploy/load-more.png" alt-text="ソリューションをさらに読み込む":::
+    詳細については、「Azure Sentinel の既定の [コンテンツとソリューションカテゴリ](sentinel-solutions.md#azure-sentinel-out-of-the-box-content-and-solution-categories)」を参照してください。
 
-1. 選択肢を絞って求めるソリューションを見つけやすくするには、リストの上の **[検索]** 欄にソリューションの名前の一部を入力します。 (この検索エンジンでは、単語未満の文字は認識されせん。)
+    > [!TIP]
+    > デプロイしたソリューションに更新プログラムが配置されていた場合、そのソリューションは、展開する更新プログラムがあることを示しており、ページの上部にある青い三角形で示されます。
+    >
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/solutions-search-1.png" alt-text="ソリューションを検索する":::
+グリッド内の各ソリューションには、ソリューションに適用されるカテゴリと、ソリューションに含まれるコンテンツの種類が表示されます。
 
-1. 求めるソリューションをリストから選んでデプロイします。 ソリューションの詳細ページは、 **[概要]** タブに開きます。ここに、ソリューションに関する重要情報が表示されます。
+たとえば、次の図では、 **Cisco の包括的** なソリューションが **セキュリティ、その他** のカテゴリを示しています。このソリューションには、10の分析ルール、11個の検索クエリ、パーサー、3つのプレイブックなどが含まれています。
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/proofpoint-tap-solution.png" alt-text="Proofpoint Tap ソリューション":::
+:::image type="content" source="./media/sentinel-solutions-deploy/solutions-list.png" alt-text="Azure Sentinel コンテンツハブのスクリーンショット。" lightbox="./media/sentinel-solutions-deploy/solutions-list.png":::
 
-1. 他にも、ソリューションに関する役立つ情報を **[プラン]** タブと **[使用量情報 + サポート]** タブで見ることができます。また、 **[レビュー]** タブで他の顧客の感想も読めます。
+## <a name="install-or-update-a-solution"></a>ソリューションのインストールまたは更新
 
-## <a name="deploy-your-solution"></a>ソリューションのデプロイ
+1. コンテンツハブでソリューションを選択すると、右側に詳細な情報が表示されます。 更新プログラムが必要な場合は、 **[インストール]** または **[更新]** を選択します。 次に例を示します。
 
-1. **[作成]** をクリックしてソリューション デプロイ ウィザードを起動します。すると **[基本]** タブが開きます。
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/wizard-basics.png" alt-text="デプロイ ウィザードの [基本] タブ":::
+1. ソリューションの詳細ページで、 **[作成]** または **[更新]** を選択して、ソリューションウィザードを開始します。 ウィザードの **[基本]** タブで、ソリューションをデプロイするサブスクリプション、リソースグループ、およびワークスペースを入力します。 次に例を示します。
 
-1. ソリューションをデプロイするサブスクリプション、リソース グループ、ワークスペースを入力します。 
+    :::image type="content" source="media/sentinel-solutions-deploy/wizard-basics.png" alt-text="[基本] タブが表示されているソリューションインストールウィザードのスクリーンショット。":::
 
-1. **[次へ]** を選択して残りのタブ (ソリューションのコンポーネントに対応) を移動します。そこで各コンポーネントについて学習し、場合によってはそれらを構成することもできます。
+1. **[次へ]** を選択して、(ソリューションに含まれるコンポーネントに対応する) 残りのタブを順番に表示します。ここで、各コンテンツコンポーネントについて学習したり、構成したりすることができます。
 
     > [!NOTE]
-    > 下に挙げるタブは、対応するスクリーンショットに示されたソリューションのコンポーネントに対応しています。 コンポーネントの種類はソリューションによって異なるため、ソリューションにより表示されるタブが異なる場合があり、下に示していないタブが表示される場合もあります。
+    > 表示されるタブは、ソリューションによって提供されるコンテンツに対応しています。 ソリューションによってコンテンツの種類が異なる場合があるため、すべてのソリューションで同じタブが表示されないことがあります。
+    >
+    > Azure Sentinel がシステムに対して認証できるように、サードパーティのサービスに資格情報を入力するように求められる場合もあります。 たとえば、プレイブックでは、システムで規定されているように応答アクションを実行することができます。
+    >
 
-    1. **[分析]** タブ :::image type="content" source="./media/sentinel-solutions-deploy/wizard-analytics.png" alt-text="デプロイ ウィザードの [分析] タブ":::
+1. 最後に、 **[レビュー + 作成]** タブでメッセージを待機し、[ `Validation Passed`**作成** ] または **[更新]** を選択してソリューションをデプロイします。 **[自動化テンプレートのダウンロード]** リンクをクリックし、ソリューションをコードとしてデプロイすることもできます。
 
-    1. **[ブック]** タブ :::image type="content" source="./media/sentinel-solutions-deploy/wizard-workbooks.png" alt-text="デプロイ ウィザードの [ブック] タブ":::
+詳細については、「[Azure sentinel コンテンツハブカタログ](sentinel-solutions-catalog.md)」と「[azure sentinel Data connector の検索](data-connectors-reference.md)」を参照してください。
 
-    1. **[プレイブック]** タブ - ここでは Proofpoint TAP の有効なサインイン情報を入力する必要があります。そうすると、プレイブックで Proofpoint システムを認証し所定の応答を実行できます。
-        :::image type="content" source="./media/sentinel-solutions-deploy/wizard-playbooks.png" alt-text="デプロイ ウィザード の [プレイブック] タブ":::
 
-1. 最後に、 **[確認と作成] タブ** で、「検証に成功しました」メッセージが表示されるのを待ってから、 **[作成]** を選択してソリューションをデプロイします。 **[自動化テンプレートのダウンロード]** リンクをクリックし、ソリューションをコードとしてデプロイすることもできます。
+## <a name="find-the-support-model-for-your-solution"></a>ソリューションのサポートモデルを見つける
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/wizard-create.png" alt-text="デプロイ ウィザードの [確認 + 作成] タブ":::
+各ソリューションには、ソリューションの詳細ペインでサポートモデルの詳細が一覧表示されます。 **[サポート]** ボックスには、 **Microsoft** またはパートナーの名前が表示されます。 次に例を示します。
+
+:::image type="content" source="media/sentinel-solutions-deploy/find-support-details.png" alt-text="ソリューションのサポートモデルを見つけることができる場所のスクリーンショット。" lightbox="media/sentinel-solutions-deploy/find-support-details.png":::
+
+サポートに連絡する際には、発行元、プロバイダー、プラン ID の値など、ソリューションに関するその他の詳細情報が必要になる場合があります。 これらの各項目は、ソリューションの詳細ページの **[使用状況情報 & サポート]** タブで確認できます。例えば：
+
+:::image type="content" source="media/sentinel-solutions-deploy/usage-support.png" alt-text="ソリューションの使用状況とサポートの詳細のスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、Azure Sentinel ソリューションと、それを見つけてデプロイする方法について説明しました。
+このドキュメントでは、Azure Sentinel ソリューションと、組み込みコンテンツを検索してデプロイする方法について説明しました。
 
 - [Azure Sentinel ソリューション](sentinel-solutions.md)について知る。
-- すべての [Sentinel ソリューションのカタログ](sentinel-solutions-catalog.md)を見る。
+- 完全な [Azure Sentinel ソリューションカタログ](sentinel-solutions-catalog.md)を参照してください。

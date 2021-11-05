@@ -3,12 +3,12 @@ author: robinsh
 ms.author: robinsh
 ms.topic: include
 ms.date: 07/07/2021
-ms.openlocfilehash: eacee8b325317e98cd05093b71a21889f9a933ed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 090a7ae8e053b82e157d1e46e740d9b3911fef99
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739251"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077597"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub へのコンシューマー グループの追加
 
@@ -18,8 +18,8 @@ ms.locfileid: "121739251"
 
 1. [Azure Portal](https://portal.azure.com/) で、IoT ハブを開きます。
 
-1. 左側のペインで、 **[組み込みのエンドポイント]** を選択します。 **[コンシューマー グループ]** の下のテキスト ボックスに、新しいコンシューマー グループの名前を入力します。 
+1. 左側のペインで、 **[組み込みのエンドポイント]** を選択します。 **[コンシューマー グループ]** の下のテキスト ボックスに、新しいコンシューマー グループの名前を入力します。
 
-   :::image type="content" source="./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png" alt-text="IoT ハブのコンシューマー グループの作成":::
+   :::image type="content" source="./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png" alt-text="IoT ハブでコンシューマー グループを作成する方法を示すスクリーンショット。" border="true":::
 
 1. テキスト ボックスの外側のどこかをクリックして、コンシューマー グループを保存します。

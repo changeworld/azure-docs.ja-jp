@@ -1,23 +1,22 @@
 ---
 title: OSM クライアント ライブラリのダウンロード
-description: Open Service Mesh (OSM) クライアント ライブラリのダウンロード
+description: Open Service Mesh (OSM) クライアント ライブラリをダウンロードして構成する
 services: container-service
 ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: fb3619ed95f0636ae83829e1ee1c818545dc86c9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2524dca92126ac0fdd6c0ace502cc16d78b6d480
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227342"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066845"
 ---
-# <a name="download-the-open-service-mesh-osm-client-library"></a>Open Service Mesh (OSM) クライアント ライブラリのダウンロード
-この記事では、AKS 用の OSM アドオンの操作と構成に使用する OSM クライアント ライブラリをダウンロードする方法について説明します。
+# <a name="download-and-configure-the-open-service-mesh-osm-client-library"></a>Open Service Mesh (OSM) クライアント ライブラリをダウンロードして構成する
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+この記事では、AKS の OSM アドオンの操作と構成に使用する OSM クライアント ライブラリをダウンロードする方法と、環境のバイナリを構成する方法について説明します。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -40,5 +39,28 @@ ms.locfileid: "130227342"
 > [!WARNING]
 > `osm install` を使用してバイナリから OSM のインストールを試行しないでください。 こうすると、AKS のアドオンとして統合されていない OSM がインストールされます。
 
-> [!NOTE]
-> OSM CLI を使用する前に、バイナリのインストール後に OSM CLI を構成して [OSM AKS アドオン エクスペリエンスをカスタマイズ](./open-service-mesh-customize-add-on-experience.md)することをお勧めします。
+## <a name="configure-osm-cli-variables-with-an-osm_config-file"></a>OSM_CONFIG ファイルを使用して OSM CLI 変数を構成する
+
+ユーザーは、既定の OSM CLI 構成をオーバーライドしてアドオン エクスペリエンスを強化できます。 これは、`kubeconfig` のような構成ファイルを作成することで実行できます。 構成ファイルは、`$HOME/.osm/config.yaml` で作成するか、`OSM_CONFIG` 環境変数を使用してエクスポートされる別のパスで作成できます。
+
+このファイルには、次の YAML 形式のコンテンツが含まれている必要があります。
+
+```yaml
+install:
+  kind: managed
+  distribution: AKS
+  namespace: kube-system
+```
+
+ファイルが `$HOME/.osm/config.yaml` で作成されていない場合は、構成ファイルが作成されるパスを指す `OSM_CONFIG` 環境変数を必ず設定してください。
+
+OSM_CONFIG の設定後の `osm env` コマンドの出力は、次のようになります。
+
+```console
+$ osm env
+---
+install:
+  kind: managed
+  distribution: AKS
+  namespace: kube-system
+```

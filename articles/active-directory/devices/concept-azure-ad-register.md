@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 217663ae8dc1f2a0cba7bcd001ee12a20f1b6826
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 18bd3f6993c56187a64ba9db3397a659f9dea098
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618041"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049921"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 登録済みデバイス
 
@@ -29,8 +29,8 @@ Azure AD 登録済みデバイスの目標は、Bring Your Own Device (BYOD) ま
 |   | Bring Your Own Device |
 |   | モバイル デバイス |
 | **デバイスの所有権** | ユーザーまたは組織 |
-| **オペレーティング システム** | Windows 10、iOS、Android、macOS |
-| **プロビジョニング** | Windows 10 – 設定 |
+| **オペレーティング システム** | Windows 10 以上、iOS、Android、macOS |
+| **プロビジョニング** | Windows 10 以上–設定 |
 |   | iOS/Android – ポータル サイトまたは Microsoft Authenticator アプリ |
 |   | macOS – ポータル サイト |
 | **デバイスのサインイン オプション** | エンドユーザーのローカル資格情報 |
@@ -51,7 +51,7 @@ Azure AD 登録済みデバイスには、Windows 10 デバイスでの Microsof
 
 管理者は、Microsoft Intune などの Mobile Device Management (MDM) ツールを使用して、これらの Azure AD 登録済みデバイスをセキュリティで保護し、さらに制御することができます。 MDM では、ストレージの暗号化、パスワードの複雑さ、セキュリティ ソフトウェアを常に最新の状態に保つことを求めるなど、組織に必要な構成を適用する手段が提供されます。 
 
-Windows 10 の設定メニューを使用して手動でまたは初めて作業アプリケーションにアクセスするときに、Azure AD の登録を行うことができます。 
+Azure ADの登録は、作業アプリケーションに初めてアクセスするとき、またはWindows10またはWindows11の[設定]メニューを使用して手動で行うことができます。 
 
 ## <a name="scenarios"></a>シナリオ
 
