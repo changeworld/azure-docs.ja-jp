@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: edd43fc34a1b94c3d389670c7417ea9123d1586f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e3018a1b9d94ca1f750bf8d17b1ea6ba028ad07f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214733"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056150"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview でサポートされている分類
 
@@ -43,13 +43,16 @@ Person ブルーム フィルターは、以下の 2 つのデータセットを
 - [2010 年の米国国勢調査の姓に関するデータ (162-K エントリ)](https://www.census.gov/topics/population/genealogy/data/2010_surnames.html)
 - [一般的な赤ちゃんの名前 (SSN から)、1880 年から 2019 年のすべての年を使用 (98-K エントリ)](https://www.ssa.gov/oact/babynames/limits.html)
 
+> [!NOTE]
+> Azure Purview では、データに姓や名が含まれている場合にのみ、列が分類されます。 Azure Purview では、フル ネームが含まれている列は分類されません。
+
 ## <a name="regex-classifications"></a>RegEx の分類
 
 ## <a name="aba-routing-number"></a>ABA ルーティング ナンバー
 
 ### <a name="format"></a>フォーマット
 
-9 桁の数字 (書式設定されたパターンまたは書式設定されていないパターン)
+9 桁の数字 (書式設定されたパターンまたは書式設定されていないパターン)。
 
 ### <a name="pattern"></a>[パターン]
 

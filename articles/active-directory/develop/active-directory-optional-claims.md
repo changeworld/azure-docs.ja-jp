@@ -12,14 +12,14 @@ ms.date: 7/19/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: b3f92e5b0a526745ca2d9f87e76a0fcf77ed65e7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1d910871008bee6ba1a2820a68b3225c3fdfd67d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450552"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032261"
 ---
-# <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
+# <a name="provide-optional-claims-to-your-app"></a>アプリに省略可能な要求を提供する
 
 アプリケーション開発者は、Azure AD アプリケーションで省略可能な要求を使用して、アプリケーションに送信されるトークンに含めたい要求を指定できます。
 
@@ -60,7 +60,7 @@ ms.locfileid: "114450552"
 | `idtyp`                    | トークンの種類   | JWT のアクセス トークン | 特殊: アプリ専用アクセス トークンのみ |  トークンがアプリ専用トークンの場合、値は `app` です。 API を使用してトークンがアプリ トークンかアプリ + ユーザー トークンかを判断する場合、これが最も正確な方法です。|
 | `login_hint`               | ログイン ヒント   | JWT | MSA、Azure AD | 不透明で信頼性の高いログイン ヒント要求です。  この要求は、すべてのフロー内の `login_hint` OAuth パラメーターで SSO を取得するために使用するのに最適な値です。  アプリケーション間で渡すことにより、SSO をサイレントで実行するのにも役立ちます。アプリケーション A は、あるユーザーにサインインし、`login_hint` 要求を読み取ってから、アプリケーション B に移動するリンクをユーザーがクリックしたときに要求と現在のテナント コンテキストをクエリ文字列またはフラグメント内でアプリケーション B に送信できます。競合状態と信頼性の問題を回避するために、`login_hint` 要求にはユーザーの現在のテナントは含まれ "*ません*"。使用される場合、既定ではユーザーのホーム テナントになります。  ユーザーが別のテナントに属するゲスト シナリオで運用している場合は、サインイン要求内でテナント ID を指定し、パートナーのアプリに同じものを渡す必要があります。 この要求は、公開されている SDK の既存の `login_hint` 機能と共に使用することを目的としています。 |
 | `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |  個人用アカウントと Azure AD アカウント。   |         |
-| `tenant_ctry`              | リソース テナントの国 | JWT | | 管理者がテナント レベルを設定することを除き `ctry` と同じです。また、標準の 2 文字値にする必要があります。 |
+| `tenant_ctry`              | リソース テナントの国またはリージョン | JWT | | 管理者がテナント レベルを設定することを除き `ctry` と同じです。また、標準の 2 文字値にする必要があります。 |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 `login_hint` を使用するには `login_hint` 要求を使用する必要があります。ユーザーが判読できる識別子 (UPN など) は信頼できません。|
 | `verified_primary_email`   | ユーザーの PrimaryAuthoritativeEmail が送信元です      | JWT        |           |         |
@@ -163,7 +163,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 1. **[管理]** で、 **[マニフェスト]** を選択します。 Web ベースのマニフェスト エディターが開き、マニフェストを編集できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。 アプリケーションマニフェストの詳細については、「[Azure AD アプリケーションマニフェストについて](reference-app-manifest.md)」を参照してください。
 
-    次のアプリケーション マニフェストのエントリにより、auth_time、ipaddr、および upn の省略可能な要求が ID、アクセス、および SAML トークンに追加されます。
+    次のアプリケーション マニフェストのエントリにより、`auth_time`、`ipaddr`、`upn` の省略可能な要求が、ID、アクセス、および SAML トークンに追加されます。
 
     ```json
     "optionalClaims": {

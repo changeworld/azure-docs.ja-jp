@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2bec442ae5d80f2729ffb6b0c5c9768e01df2644
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: db9def4bc5092f94788de018c215cde604aee28f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124738554"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル:Azure Active Directory と Oneteam の統合
 

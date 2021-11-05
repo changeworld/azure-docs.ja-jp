@@ -3,12 +3,12 @@ title: プライベート エンドポイントを使用して Azure Functions �
 description: このチュートリアルでは、関数を Azure 仮想ネットワークに接続し、プライベート エンドポイントを使用してこれをロック ダウンする方法について説明します。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: ee6fb79176b0188533725347c3b47369ce050706
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8eaf46cdab44fcf4ebdb69564cd05f07f8f88f1b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252979"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850035"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>チュートリアル: プライベート エンドポイントを使用して Azure Functions を Azure 仮想ネットワークに統合する
 
@@ -313,8 +313,6 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 1. 関数アプリの左側のメニューで、 **[構成]** を選択します。
 
 1. 仮想ネットワークで関数アプリを使用するには、次の表に示すアプリ設定を更新します。 設定を追加または編集するには、 **[+ 新しいアプリケーション設定]** 、またはアプリ設定の表の右端の列にある **[編集]** アイコンを選択します。 終了したら、 **[保存]** を選択します。
-
-    :::image type="content" source="./media/functions-create-vnet/10-configure-app-settings.png" alt-text="プライベート エンドポイントの関数アプリ設定を構成する方法を示すスクリーンショット。":::
 
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |

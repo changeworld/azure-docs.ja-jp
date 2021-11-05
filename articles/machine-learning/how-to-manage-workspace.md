@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a8dd26019d94cbaeca620d4dbb6e1bdf9dabdb2d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8f18b4f7c39ba16fbd70301c36d08319c2e3fcf9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130246456"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065287"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -336,6 +336,8 @@ Workspace.list('<subscription-id>')
 ワークスペースが不要になったら、削除します。  
 
 [!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
+
+ワークスペースを誤って削除した場合も、ノートブックは引き続き取得することができます。 [こちらのドキュメントを参照してください](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion)。
 
 # <a name="python"></a>[Python](#tab/python)
 

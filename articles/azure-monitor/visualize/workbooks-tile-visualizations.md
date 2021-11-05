@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: fa486647f124e374087abab959ced16cbddad539
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: a2900b055f95372080d73b80e794b3b5d909db06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131640"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069959"
 ---
 # <a name="tile-visualizations"></a>タイルの視覚化
 
@@ -106,7 +106,7 @@ ms.locfileid: "130131640"
 
 * `fixed` (既定値)
 
-    タイルは既定で、同じ固定幅 (約 160 ピクセル幅) で表示され、タイルの周囲にスペースがあります。
+    タイルの既定の動作は、同じ固定幅、約160ピクセル幅、およびタイルの周囲のスペースになります。
 
     ![固定幅のタイルを表示するスクリーンショット](./media/workbooks-tile-visualizations/tiles-fixed.png)
 * `auto`

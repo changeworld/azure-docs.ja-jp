@@ -3,22 +3,22 @@ title: リソース所有者パスワード資格情報フローを設定する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でリソース所有者パスワード資格情報 (ROPC) フローを設定する方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/12/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a64c0e4a2c6ee080288bd0a700defc4adf598d2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 0acca4a87ea72157a11862ec448483008af87526
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708595"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008232"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソース所有者パスワード資格情報フローを設定する
 
@@ -41,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) では、次のオプションがサ�
 
 ROPC フローを使用する場合は、次の点を考慮してください。
 
-- ユーザーの操作が必要な認証フローが中断されている場合、ROPC は動作しません。 たとえば、パスワードの有効期限が切れた場合、パスワードを変更する必要がある場合、[多要素認証](multi-factor-authentication.md)が必要な場合、サインイン時に詳細情報を収集する必要がある (ユーザーの同意など) 場合です。
+- ユーザーの操作が必要な認証フローが中断されている場合、ROPC は動作しません。 これは、パスワードの有効期限が切れたり変更が必要な場合、[多要素認証](multi-factor-authentication.md)が必要な場合、サインイン時に詳細情報を収集する必要がある場合 (ユーザーの同意など) などです。
 - ROPC ではローカル アカウントのみがサポートされています。 ユーザーは、Microsoft、Google +、Twitter、AD FS、Facebook などの[フェデレーション ID プロバイダー](add-identity-provider.md)を使用してサインインすることはできません。
 - [[サインインしたままにする] (KMSI)](session-behavior.md#enable-keep-me-signed-in-kmsi) を含む[セッション管理](session-behavior.md) は適用されません。
 
@@ -70,6 +70,9 @@ ROPC フローを使用する場合は、次の点を考慮してください。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="pre-requisite"></a>前提条件 
+まだ行っていない場合は、[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md)に関する記事で、カスタム ポリシー スターター パックの詳細を確認してください。
 
 ##  <a name="create-a-resource-owner-policy"></a>リソース所有者のポリシーを作成する
 

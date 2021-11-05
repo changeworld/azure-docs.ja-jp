@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 01/09/2020
-ms.openlocfilehash: 4957a6052a19a35f5a85f75653b044c4dc9a48d4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0f0910f72685108db28cbbc43daa30610e584370
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122652319"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842095"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLI を使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -122,7 +122,7 @@ az network private-dns link vnet create --resource-group myResourceGroup \
    --registration-enabled false 
 
 # Query for the network interface ID  
-networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
+$networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
 
 az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
 # Copy the content for privateIPAddress and FQDN matching the Azure database for MySQL name 

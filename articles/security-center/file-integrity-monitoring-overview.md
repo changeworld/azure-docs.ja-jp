@@ -7,12 +7,13 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 08/19/2021
 ms.author: memildin
-ms.openlocfilehash: 72493aafed4256f5d494d1a111b9ac44c4e71868
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3cbe6b4c5cc4958eb471cb1b2d322cb73754a669
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131457249"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017486"
 ---
 # <a name="file-integrity-monitoring-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud でのファイルの整合性の監視
 

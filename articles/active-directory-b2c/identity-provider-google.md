@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4113f9743c92ab5809977f681e35d41b759fe599
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: faed36e348a8716e1023705ca077e892a24ac2d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130217337"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007241"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
@@ -41,7 +41,7 @@ ms.locfileid: "130217337"
 
 ## <a name="create-a-google-application"></a>Google アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユーザーのサインインを有効にするために、[Google Developers Console](https://console.developers.google.com/) でアプリケーションを作成する必要があります。 詳細については、「[OAuth 2.0 の設定](https://support.google.com/googleapi/answer/6158849)」を参照してください。 まだ Google アカウントを持っていない場合は、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユーザーのサインインを有効にするために、[Google Developers Console](https://console.developers.google.com/) でアプリケーションを作成する必要があります。 詳細については、「[OAuth 2.0 の設定](https://support.google.com/googleapi/answer/6158849)」を参照してください。 まだ Google アカウントを持っていない場合は、[`https://accounts.google.com/signup`](https://accounts.google.com/signup) でサインアップできます。
 
 1. Google アカウントの資格情報で [Google Developers Console](https://console.developers.google.com/) にサインインします。
 1. ページの左上隅にあるプロジェクトの一覧を選択し、**[新しいプロジェクト]** を選択します。

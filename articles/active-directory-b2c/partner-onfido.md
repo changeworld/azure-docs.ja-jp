@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 1441210303984bf777c6b580f6f7ab0c67ce6f21
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 25d24c6f9d1f8346ad088308badca181a5bf1944
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257859"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012797"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Onfido を構成するためのチュートリアル
 
@@ -110,9 +110,9 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 2. 各 html ファイルを開きます。
 
-3. {your-ui-blob-container-url} を見つけて、ご自分の UI の **ocean_blue**、**dist**、**assets** フォルダーがある場所の URL に置き換えます。
+3. `{your-ui-blob-container-url}` を見つけて、ご自分の UI の **ocean_blue** フォルダー、**dist** フォルダー、および **assets** フォルダーがある場所の URL に置き換えます
 
-4. {your-intermediate-api-url} を見つけて、中間 API App Service の URL に置き換えます。
+4. `{your-intermediate-api-url}` を見つけて、中間 API App Service の URL に置き換えます。
 
 #### <a name="upload-your-files"></a>ファイルをアップロードする
 

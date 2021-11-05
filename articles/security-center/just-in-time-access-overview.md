@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 20475db8bd2ca96ee95d4a1011ad8bdb1bec47cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8e54419761d823396387c3b6106f694e4277702d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092481"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437849"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 

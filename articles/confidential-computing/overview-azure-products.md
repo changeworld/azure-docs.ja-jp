@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.author: JenCook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6c91bfeaf32dba2f40e321f1c8fbf093351d39cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d3e395ac1eb16ccf499793d51b58db998a87294c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029727"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848509"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング
 
@@ -22,15 +22,13 @@ ms.locfileid: "131029727"
 
 Intel [Software Guard Extensions](https://www.intel.com.au/content/www/au/en/architecture-and-technology/software-guard-extensions-enhanced-data-protection.html) (Intel SGX) や [AMD Secure Encrypted Virtualization](https://www.amd.com/en/processors/amd-secure-encrypted-virtualization) (SEV-SNP) などのテクノロジは、コンフィデンシャル コンピューティングの実装をサポートする最近の CPU の機能強化です。 これらのテクノロジは仮想化拡張機能として設計され、コンフィデンシャル コンピューティング脅威モデルを構築するために、メモリの暗号化と整合性、CPU 状態の機密性と整合性、構成証明などの機能セットを提供します。
 
-![データ保護の 3 つの状態のグラフィック。コンフィデンシャル コンピューティングの使用中データが強調表示されています。](media/overview-azure-products/three-states.jpg)
+:::image type="content" source="media/overview-azure-products/three-states.png" alt-text="データ保護の 3 つの状態のグラフィック。コンフィデンシャル コンピューティングの使用中データが強調表示されています。":::
 
 コンフィデンシャル コンピューティングを保存時および転送中のデータ暗号化と併用すると、使用中の暗号化という暗号化にとって最大の単一の障壁を打破できます。これは、機密性の高い、または高度に規制されたデータ セットとアプリケーション ワークロードを、セキュリティで保護されたパブリック クラウド プラットフォーム内で保護することによって可能になります。 コンフィデンシャル コンピューティングは、汎用的なデータ保護をはるかに超えるものです。 また、TEE は、独自のビジネス ロジック、分析機能、機械学習アルゴリズム、さらにはアプリケーション全体を保護するためにも使用されています。
 
 ## <a name="navigating-azure-confidential-computing"></a>Azure のコンフィデンシャル コンピューティングのご案内
 
 コンフィデンシャル コンピューティングのための [Microsoft のオファリング](https://aka.ms/azurecc)は、サービスとしてのインフラストラクチャ (IaaS) からサービスとしてのプラットフォーム (PaaS) や、クラウドでのデータとコードの機密性への移行をサポートする開発者ツールにまで及びます。
-
-![ツールとサービスを示す Azure のコンフィデンシャル コンピューティング スタックのスクリーンショット。](media/overview-azure-products/acc-stack.jpg)
 
 ## <a name="reducing-the-attack-surface"></a>攻撃対象領域を縮小する
 信頼済みのコンピューティング ベース (TCB) とは、セキュリティで保護された環境を提供する、システムのハードウェア、ファームウェア、およびソフトウェア コンポーネントのすべてのことです。 TCB 内のコンポーネントは、"クリティカル" と見なされます。 TCB 内の 1 つのコンポーネントが侵害された場合、システム全体のセキュリティが脅かされる可能性があります。 TCB が低いほど、セキュリティが高いことを意味します。 さまざまな脆弱性、マルウェア、攻撃、および悪意のある人物にさらされるリスクが低下します。 Azure のコンフィデンシャル コンピューティングは、TEE を提供することで、クラウド ワークロードの TCB を低くすることを目的としています。 

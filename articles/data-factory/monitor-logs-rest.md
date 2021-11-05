@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor REST API を使用して診断ログを設定する
 description: Azure Monitor REST API を使用して、Azure Data Factory の診断ログを設定する方法について説明します。
-author: jasonwhowell
-ms.author: jasonh
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 8407ed72f1bc3bbade51d19d27bd26ab15e7b49a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 41b7a817b35b15ad18d962f5fb073fac76118444
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020165"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842836"
 ---
 # <a name="set-up-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Azure Monitor REST API を使用して診断ログを設定する
 

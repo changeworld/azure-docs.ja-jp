@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 511f546437d12714ae77d1e3a99f15feda31e33f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ad00a74871373338a2b4e8b557297a808e8186fc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130228132"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007298"
 ---
 # <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して AD FS を OpenID Connect プロバイダーとして追加する
 
@@ -62,7 +62,7 @@ Azure Active Directory B2C (Azure AD B2C) で AD FS アカウントを持つユ�
 
     | LDAP 属性 | 出力方向の要求の種類 |
     | -------------- | ------------------- |
-    | User-Principal-Name | UPN |
+    | User-Principal-Name | upn |
     | Surname | family_name |
     | Given-Name | given_name |
     | Display-Name | name |
@@ -94,10 +94,10 @@ Azure Active Directory B2C (Azure AD B2C) で AD FS アカウントを持つユ�
 1. (省略可能) **[ドメインのヒント]** に、「`contoso.com`」と入力します。 詳しくは、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md#redirect-sign-in-to-a-social-provider)」をご覧ください。
 1. **[ID プロバイダー要求のマッピング]** で、次の要求を入力します。
 
-    - **[ユーザー ID]** : *upn*
-    - **[表示名]** : *unique_name*
-    - **[名]** : *given_name*
-    - **[姓]** : *family_name*
+    - **ユーザー ID**: `upn`
+    - **表示名**: `unique_name`
+    - **名**: `given_name`
+    - **姓**: `family_name`
 
 1. **[保存]** を選択します。
 

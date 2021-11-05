@@ -457,7 +457,7 @@
             - name: 仮想ネットワークに Web アプリを作成する
               href: flexible-server/tutorial-webapp-server-vnet.md
             - name: App Service で Django アプリをデプロイする
-              href: flexible-server/tutorial-django-app-service-postgres.md
+              href: ../app-service/tutorial-python-postgresql-app.md
     - name: 概念
       items:
         - name: サーバー

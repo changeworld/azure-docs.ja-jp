@@ -5,15 +5,15 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 07/19/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: fcd1349df07920ff0e7669face1bfa0e66343dfb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b6718ddcd4090708dd77e192832a04b4f2591751
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124737012"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850320"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 

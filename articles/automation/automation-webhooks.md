@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 07/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ccdbb04942e946d251008187693ee948b960178
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e79feb7b45500a53bc7e13557aedcd1c0410554b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836931"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026451"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 

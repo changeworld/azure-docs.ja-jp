@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a48cf9d6912fae91cd789ae16bb68e1d95a4a9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 442a2e4d5f88d9716b6cc197c503888edb314040
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128585429"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049978"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) に参加しているデバイスによって�
 
 Azure AD 参加済みデバイスには、オンプレミス AD 環境についての情報はありません (その環境に参加していないため)。 ただし、Azure AD Connect を使用して、ご利用のオンプレミス AD に関する追加情報をこれらのデバイスに提供することができます。
 
-Azure AD とオンプレミス AD の両方を使用するハイブリッド環境がある場合は、オンプレミスの ID 情報をクラウドに同期するために、Azure AD Connect を既にデプロイ済みである可能性があります。 同期プロセスの一部として、Azure AD Connect はオンプレミス ユーザーとドメイン情報を Azure AD に同期します。 ハイブリッド環境においてユーザーが Azure AD 参加済みデバイスにサインインしたとき:
+Azure AD とオンプレミス AD の両方を使用するハイブリッド環境がある場合は、オンプレミスの ID 情報をクラウドに同期するためにデプロイされた Azure AD Connect または Azure AD Connect クラウド同期が既に存在している可能性があります。 同期プロセスの一環として、オンプレミスのユーザーとドメインの情報は、Azure AD に同期されます。 ハイブリッド環境においてユーザーが Azure AD 参加済みデバイスにサインインしたとき:
 
 1. Azure AD は、ユーザーのオンプレミス ドメインの詳細を[プライマリ更新トークン](concept-primary-refresh-token.md)と共にデバイスに返送します。
 1. ローカル セキュリティ機関 (LSA) サービスによって、デバイス上の Kerberos および NTLM 認証が有効になります。
@@ -47,7 +47,7 @@ Azure AD とオンプレミス AD の両方を使用するハイブリッド環�
 ユーザーのオンプレミス環境で Kerberos または NTLM を要求しているリソースへのアクセスが試行されると、デバイスは次のようになります。
 
 1. ユーザーを認証するために、見つかった DC にオンプレミス ドメインの情報とユーザーの資格情報を送信します。
-1. オンプレミスのリソースまたはアプリケーションがサポートするプロトコルに基づいて、Kerberos の[チケット発行許諾チケット (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) または NTLM トークンを受信します。 ドメインの Kerberos TGT または NTLM トークンの取得の試行が失敗すると (関連する DCLocator タイムアウトにより遅延が発生する可能性があります)、資格情報マネージャー エントリが試行されるか、ターゲット リソースの資格情報を要求する認証ポップアップをユーザーが受信する場合があります。
+1. オンプレミスのリソースまたはアプリケーションがサポートするプロトコルに基づいて、Kerberos の[チケット発行許諾チケット (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) または NTLM トークンを受信します。 ドメインの Kerberos TGT または NTLM トークンを取得する試みが失敗した場合 (関連する DCLocator タイムアウトが遅延の原因である可能性があります)、資格情報マネージャー エントリが試みられるか、ユーザーがターゲット リソースの資格情報を要求する認証ポップアップを受け取る可能性があります。
 
 **Windows 統合認証** の対象として構成されているすべてのアプリでは、ユーザーからのアクセスが試みられたときに、SSO がシームレスに適用されます。
 

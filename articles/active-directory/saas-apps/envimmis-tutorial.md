@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: d6265163ad60b1ac057ccc3a08cc281b7b54ca5d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9be5d831afc5781c4951f76e72a332abd7be1e4c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835597"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059103"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>チュートリアル: Azure Active Directory と Envi MMIS の統合
 
@@ -75,9 +75,9 @@ Envi MMIS 用に Azure AD SSO を構成してテストするには、次の手�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account` の形式で URL を入力します。
+    1. **[識別子]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account/Acs` のパターンを使用して URL を入力します
+    1. **[応答 URL]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account/Acs` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -142,11 +142,11 @@ Envi MMIS 用に Azure AD SSO を構成してテストするには、次の手�
 
     ![[File]\(ファイル\) オプションが選択され、ファイルの選択アイコンと [OK] ボタンが強調表示されている [Upload Metadata]\(メタデータのアップロード\) ポップアップを示すスクリーンショット。](./media/envimmis-tutorial/file.png)
 
-    a. **[Upload From]\(アップロード元\)** ドロップダウンから **[File]\(ファイル\)** オプションを選びます。
+    1. **[Upload From]\(アップロード元\)** ドロップダウンから **[File]\(ファイル\)** オプションを選びます。
 
-    b. **ファイル選択アイコン** を選ぶことにより、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
+    1. **ファイル選択アイコン** を選ぶことにより、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
 
-    c. **[OK]** をクリックします。
+    1. **[OK]** をクリックします。
 
 7. ダウンロードしたメタデータ ファイルをアップロードした後、フィールドは自動的に設定されます。 **[Update]** をクリックします。
 
@@ -172,19 +172,19 @@ Azure AD ユーザーが Envi MMIS にサインインできるようにするに
 
     ![従業員の追加を示すスクリーンショット。](./media/envimmis-tutorial/add-user.png)
 
-    a. **[ユーザー名]** ボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon\@contoso.com**)。
+    1. **[ユーザー名]** ボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon\@contoso.com**)。
     
-    b. **[First Name]\(名\)** テキスト ボックスに、Britta Simon の名を入力します (**Britta**)。
+    1. **[First Name]\(名\)** テキスト ボックスに、Britta Simon の名を入力します (**Britta**)。
 
-    c. **[Last Name]\(姓\)** テキスト ボックスに、Britta Simon の名を入力します (**Simon**)。
+    1. **[Last Name]\(姓\)** テキスト ボックスに、Britta Simon の名を入力します (**Simon**)。
 
-    d. ユーザーの役職を **[Title]\(役職\)** テキスト ボックスに入力します。
-    
-    e. **[メール アドレス]** ボックスに、Britta Simon のアカウントのメール アドレスを入力します (例: **brittasimon\@contoso.com**)。
+    1. ユーザーの役職を **[Title]\(役職\)** テキスト ボックスに入力します。
 
-    f. **[SSO User Name]\(SSO ユーザー名\)** ボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon\@contoso.com**)。
+    1. **[メール アドレス]** ボックスに、Britta Simon のアカウントのメール アドレスを入力します (例: **brittasimon\@contoso.com**)。
 
-    g. **[保存]** をクリックします。
+    1. **[SSO User Name]\(SSO ユーザー名\)** ボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon\@contoso.com**)。
+
+    1. **[保存]** をクリックします。
 
 ## <a name="test-sso"></a>SSO のテスト
 

@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム共有をマウント�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 04d3174900ce5aa788f3793b39fa4d6c06222001
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225267"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036791"
 ---
 # <a name="how-to-mount-an-nfs-file-share-preview"></a>NFS ファイル共有 (プレビュー) をマウントする方法
 
@@ -42,12 +42,12 @@ ms.locfileid: "113225267"
 
 ## <a name="disable-secure-transfer"></a>セキュリティで保護された転送を無効にする
 
-1. Azure portal にサインインし、作成した NFS 共有を含むストレージ アカウントにアクセスします。
+1. [Azure portal](https://portal.azure.com/) にサインインし、作成した NFS 共有を含むストレージ アカウントにアクセスします。
 1. **[構成]** を選択します。
 1. **[安全な転送が必須]** には **[無効]** を選択します。
 1. **[保存]** を選択します。
 
-    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="安全な転送が無効になっているストレージ アカウントの構成画面のスクリーンショット。":::
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="安全な転送が無効になっているストレージ アカウントの構成画面のスクリーンショット。" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
 
 ## <a name="mount-an-nfs-share"></a>NFS 共有をマウントする
 

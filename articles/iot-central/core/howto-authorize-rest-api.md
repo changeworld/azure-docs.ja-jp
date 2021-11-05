@@ -7,12 +7,12 @@ ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 39c96be31a8a8be0cf1c2fc4f16fcbfa7468cb41
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28efc06f2d7c3b5a9fca8d96dda7fa885a98f088
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584239"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070339"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>IoT Central REST API 呼び出しを認証および承認する方法
 
@@ -164,4 +164,4 @@ REST API 呼び出しを行うときに API トークンを使用する場合、
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API の呼び出しを承認する方法を学習したので、お勧めする次のステップは、「[ユーザーとロールを 管理するために IoT Central REST API を使用する方法](howto-manage-users-roles-with-rest-api.md)」です。
+REST API の呼び出しを承認する方法を学習したので、次のステップには、「[IoT Central REST API を使用してデバイスのクエリを実行する方法](howto-query-with-rest-api.md)」をお勧めします。

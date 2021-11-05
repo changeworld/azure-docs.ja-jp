@@ -11,12 +11,12 @@ ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: de89199f3400b3d6e434916835411531f288747f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2d6aeddaaf2efc039150d7060f76f46045bd0efe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041122"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008315"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
@@ -66,7 +66,7 @@ OpenID Connect 標準では、いくつかの特別な scope 値が指定され�
 
 アクセス トークンを要求するには、承認コードが必要です。 `/authorize` エンドポイントに対する承認コード要求の例を次に示します。 カスタム ドメインとアクセス トークンの併用はサポートされていません。 要求 URL には、tenant-name.onmicrosoft.com ドメインを使用します。
 
-次の例では、これらの値を置き換えます。
+次の例では、クエリ文字列内のこれらの値を置き換えます。
 
 - `<tenant-name>` - Azure AD B2C テナントの名前。
 - `<policy-name>` - カスタム ポリシーまたはユーザー フローの名前。
@@ -90,7 +90,7 @@ client_id=<application-ID>
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
+承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。 パラメーターは、HTTP POST 要求の本文にあることに注意してください。
 
 ```http
 POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
@@ -104,7 +104,7 @@ grant_type=authorization_code
 &redirect_uri=https://jwt.ms
 &client_secret=2hMG2-_:y12n10vwH...
 ```
-
+ 
 次の応答に似た内容が表示されます。
 
 ```json

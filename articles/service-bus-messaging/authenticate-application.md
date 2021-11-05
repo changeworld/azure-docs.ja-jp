@@ -4,12 +4,12 @@ description: この記事では、Azure Service Bus エンティティ (キュ�
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: cf9e65468567764e5fe7c91455f010dd6d46831f
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3ca9284746460b3ab3369b4c9c00d7951784cff8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359956"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064014"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus エンティティにアクセスするために Azure Active Directory を使用してアプリケーションを認証および承認する
 Azure Service Bus では、Azure Active Directory (Azure AD) を使用して Service Bus エンティティ (キュー、トピック、サブスクリプション、またはフィルター) への要求を承認することがサポートされています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -102,9 +102,9 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
     ![クライアント シークレット](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Service Bus API のアクセス許可
-アプリケーションがコンソール アプリケーションである場合は、ネイティブ アプリケーションを登録し、**Microsoft.ServiceBus** に対する API アクセス許可を **必要なアクセス許可** セットに追加する必要があります。 また、ネイティブ アプリケーションには、識別子として機能する、Azure AD の **リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `https://servicebus.microsoft.com` を既に使っているため、この URI を使います。
+アプリケーションがコンソール アプリケーションである場合は、ネイティブ アプリケーションを登録し、**Microsoft.ServiceBus** に対する API アクセス許可を **必要なアクセス許可** セットに追加する必要があります。 ネイティブアプリケーションには、識別子として機能する Azure AD の **リダイレクト uri** も必要です。URI はネットワークの宛先である必要はありません。 この例では、サンプル コードが `https://servicebus.microsoft.com` を既に使っているため、この URI を使います。
 
-### <a name="authenticating-the-service-bus-client"></a>Service Bus クライアントを認証する   
+### <a name="authenticating-the-service-bus-client"></a>Service Bus クライアントを認証する
 アプリケーションを登録して、Azure Service Bus でデータを送受信するためのアクセス許可を付与したら、クライアントのシークレット資格情報を使用してクライアントを認証することで、Azure Service Bus に対して要求を行うことができるようになります。
 
 トークンの取得がサポートされるシナリオの一覧は、[Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub リポジトリの[シナリオ](https://aka.ms/msal-net-scenarios)のセクションを参照してください。

@@ -9,12 +9,12 @@ ms.date: 03/26/2019
 author: manishmsfte
 ms.author: mansha
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 52060633158c66e0cbf981b46b34347bdcece649
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 79b8c95a43d4e9d083c8021c1b0ec4d606cd80f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785965"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131041070"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>クイック スタート:Java SDK と Azure Cosmos DB Gremlin API を使ってグラフ データベースを作成する
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -35,6 +35,7 @@ ms.locfileid: "121785965"
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 JDK のインストール先フォルダーを指すように `JAVA_HOME` 環境変数を設定してください。
 - [Maven バイナリ アーカイブ](https://maven.apache.org/download.cgi)。 
 - [Git](https://www.git-scm.com/downloads). 
+- [Gremlin-driver 3.4.0](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver/3.4.0)。この依存関係は、クイックスタート サンプルの pom.xml に記載があります
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -48,7 +49,7 @@ ms.locfileid: "121785965"
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-次は、コードを使った作業に移りましょう。 GitHub から Gremlin API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。  
+次は、コードを使った作業に移りましょう。 GitHub から Gremlin API アプリのクローンを作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。  
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -62,7 +63,7 @@ ms.locfileid: "121785965"
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git

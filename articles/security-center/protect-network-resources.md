@@ -7,12 +7,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: be9597fd1ee8b9231ec2c41b214e233dd92e1aa0
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8830ff93a8f75109d9396bb3155c5edcb8343718
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131422294"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131091615"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 

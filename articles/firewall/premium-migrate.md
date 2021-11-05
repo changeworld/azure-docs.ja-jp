@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 10/26/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 580dcb11ae04aaae78d2c15f24c2c08d1df6158d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a27f2432ec309f6ff9203921122ddd9f6b1860eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061848"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086229"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Azure Firewall Premium への移行
 
@@ -34,6 +34,21 @@ Standard SKU から移行するとき、パフォーマンスが考慮事項に�
 ## <a name="downtime"></a>ダウンタイム
 
 移行中はダウンタイムが発生するため、計画メンテナンス中にファイアウォールを移行します。
+
+## <a name="migrate-classic-rules-to-standard-policy"></a>クラシックルールを標準ポリシーに移行する
+
+移行プロセス中に、従来のファイアウォール規則を標準ポリシーに移行することが必要になる場合があります。 これを行うには、Azure portal を使用します。
+
+1. Azure portal で、お使いの標準ファイアウォールを選択します。 **[概要]** ページで、 **[Migrate to firewall policy]\(ファイアウォール ポリシーへの移行\)** を選択します。
+
+   :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="ファイアウォール ポリシーへの移行":::
+
+1. **[Migrate to firewall policy]\(ファイアウォール ポリシーへの移行\)** ページで、 **[Review + create]\(確認と作成\)** を選択します。
+1. **［作成］** を選択します
+
+   デプロイが完了するまでに数分かかる場合があります。
+
+また、Azure PowerShell を使用して Azure Firewall から既存のクラシックルールを移行して、ポリシーを作成することもできます。 詳細については、「 [PowerShell を使用して Azure Firewall 構成を Azure Firewall ポリシーに移行する](../firewall-manager/migrate-to-policy.md)」を参照してください。
 
 ## <a name="migrate-an-existing-policy-using-azure-powershell"></a>Azure PowerShell を使用して既存のポリシーを移行する
 
@@ -169,45 +184,50 @@ TransformPolicyToPremium -Policy $policy
 
 ```
 
-## <a name="migrate-an-existing-standard-firewall-using-the-azure-portal"></a>Azure portal を使用して既存の標準ファイアウォールを移行する
+## <a name="migrate-azure-firewall-using-stopstart"></a>停止/開始を使用して Azure Firewall を移行する
 
-この例では、Azure portal を使用して、標準ファイアウォール (クラシック規則) を、Premium ポリシーを使用する Azure Firewall Premium に移行する方法を示します。
+Azure Firewall Standard SKU をファイアウォールポリシーと共に使用する場合は、割り当て/割り当て解除方法を使用して、ファイアウォール SKU をプレミアムに移行できます。 この移行アプローチは、VNet ハブとセキュリティで保護されたハブファイアウォールの両方でサポートされています。 セキュリティで保護されたハブの展開を移行すると、ファイアウォールのパブリック IP アドレスが保持されます。
+ 
+### <a name="migrate-a-vnet-hub-firewall"></a>VNET ハブファイアウォールを移行する
 
-1. Azure portal で、お使いの標準ファイアウォールを選択します。 **[概要]** ページで、 **[Migrate to firewall policy]\(ファイアウォール ポリシーへの移行\)** を選択します。
+- 標準のファイアウォールの割り当てを解除する 
 
-   :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="ファイアウォール ポリシーへの移行":::
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Deallocate()
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
-1. **[Migrate to firewall policy]\(ファイアウォール ポリシーへの移行\)** ページで、 **[Review + create]\(確認と作成\)** を選択します。
-1. **［作成］** を選択します
 
-   デプロイが完了するまでに数分かかる場合があります。
-1. `Transform-Policy.ps1` [Azure PowerShell スクリプト](#migrate-an-existing-policy-using-azure-powershell)を使用して、この新しい標準ポリシーを Premium ポリシーに変換します。
-1. ポータルで、お使いの標準ファイアウォール リソースを選択します。 
-1. **[オートメーション]** で、 **[テンプレートのエクスポート]** を選択します。 このブラウザー タブは開いたままにしておきます。 後で戻ってきます。
-   > [!TIP]
-   > ブラウザー タブが閉じられた場合や更新された場合に備えて、テンプレートが失われないよう、それをダウンロードして保存します。
-1. 新しいブラウザー タブを開き、Azure portal に移動し、お使いのファイアウォールを含むリソース グループを開きます。
-1. 既存の標準ファイアウォール インスタンスを削除します。
+- ファイアウォールプレミアムの割り当て
 
-   完了するまで数分かかります。
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Sku.Tier="Premium"
+   $azfw.Allocate($vnet,$pip, $mgmtpip)
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
-1. エクスポートされたテンプレートを含むブラウザー タブに戻ります。
-1. **[Deploy]\(デプロイ\)** を選択し、 **[カスタム デプロイ]** ページで **[テンプレートの編集]** を選択します。
-1. テンプレートのテキストを編集します。
-   
-   1. `Microsoft.Network/azureFirewalls` リソースの下の `Properties`、`sku` で、`tier` を "Standard" から "Premium" に変更します。
-   1. テンプレート `Parameters` の下で、`firewallPolicies_FirewallPolicy_,<your policy name>_externalid` の `defaultValue` を次のように変更します。
-      
-       `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>"`
+### <a name="migrate-a-secure-hub-firewall"></a>セキュリティで保護されたハブファイアウォールを移行する
 
-      この行を次のように変更します。
+Azure PowerShell バージョンの最小要件は6.5.0 です。 詳細については、「 [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0)」を参照してください。
 
-      `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>_premium"`
-1. **[保存]** を選択します。
-1. **[確認および作成]** を選択します。
-1. **［作成］** を選択します
+- 標準のファイアウォールの割り当てを解除する
 
-デプロイが完了したら、新しいすべての Azure Firewall Premium の機能を構成できるようになります。
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Deallocate()
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
+
+- ファイアウォールプレミアムの割り当て
+
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Sku.Tier="Premium"
+   $azfw.Allocate($hub.id)
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
 ## <a name="next-steps"></a>次のステップ
 

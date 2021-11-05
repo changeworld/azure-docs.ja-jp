@@ -11,12 +11,12 @@ ms.date: 05/28/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3b716cd754c26c0a3fe0b1f95183c86bac941f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 89a0f2bd6b48d195836303a89143593c4d959bfb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991206"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028008"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-architecture"></a>Azure AD オンプレミス アプリケーション プロビジョニングのアーキテクチャ
 
@@ -66,7 +66,7 @@ ECMA Connector Host には、オンプレミスのプロビジョニングを実
 
 Active Directory や LDAP などのための従来の形式の DN では、以下のようなものが想定されます。
 
-  CN=Lola Jacobson,CN=Users,DC=contoso,DC=com
+  `CN=Lola Jacobson,CN=Users,DC=contoso,DC=com`
 
 ただし、階層型ではなくフラットである SQL などのデータ ソースでは、DN はテーブルのいずれかに既に存在しているか、ECMA Connector Host に提供する情報から作成される必要があります。  
 

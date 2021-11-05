@@ -3,14 +3,14 @@ title: Azure Video Analyzer を使用してアイテム保持ポリシーを管�
 description: このトピックでは、Azure Video Analyzer を使用してアイテム保持ポリシーを管理する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 10/17/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0da96aa507db1f7514ee394be52a8ca7723562db
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0bb6ad0f3b9cb5ddea876969da3b6429e2f2ba32
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092301"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849389"
 ---
 # <a name="manage-retention-policy-with-video-analyzer"></a>Video Analyzer を使用してアイテム保持ポリシーを管理する
 

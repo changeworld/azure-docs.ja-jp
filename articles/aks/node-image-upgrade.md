@@ -2,15 +2,15 @@
 title: Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 description: AKS クラスター ノードとノード プールのイメージをアップグレードする方法について説明します。
 ms.service: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: 05d957fac23f1fd9d33a44fa74642eb162550880
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dba73de70d9e650aba780cf4552ecac7714cb99e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751512"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841811"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード
 

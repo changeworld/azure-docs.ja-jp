@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 431b19595fbe2f5bc1f989e712c9c104af8e839b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30715eee331547fe3747ff121797bb3e0939380f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711520"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012304"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -20,7 +20,7 @@ ms.locfileid: "101711520"
 
 **診断プラグイン (DiagnosticsPlugin.exe)** :監視エージェントの有効期間を構成、起動、管理します。 ランチャーによって起動されるメイン プロセスです。
 
-**監視エージェント (MonAgent\*.exe プロセス)** :診断データを監視、収集、転送します。  
+**監視エージェント (MonAgent\*.exe プロセス)** :診断データを監視、収集、転送します。
 
 ## <a name="logartifact-paths"></a>ログ/アーティファクトのパス
 以下は、いくつかの重要なログとアーティファクトのパスです。 以下の文章では、この情報を参照します。
@@ -77,13 +77,12 @@ Azure Diagnostics には、Azure ポータルに表示できるメトリック �
 
 構成は正しく設定されているがそれでもメトリック データが表示されない場合、次の方針に沿って問題解決をお試しください。
 
-
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics が起動しない
 Azure Diagnostics が起動しない理由については、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。
 
 これらのログで "`Monitoring Agent not reporting success after launch`" が示されている場合、MonAgentHost.exe の起動でエラーが発生したことを意味します。 前のセクションで `MonAgentHost log file` に対して指定されている場所でそのログを調べます。
 
-ログ ファイルの最後の行には、終了コードが含まれています。  
+ログ ファイルの最後の行には、終了コードが含まれています。
 
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
@@ -111,7 +110,6 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 2. ディレクトリ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics の削除
 3. エージェントの再インストール
 
-
 ### <a name="part-of-the-data-is-missing"></a>一部のデータが見つからない
 全部ではないが一部のデータが表示される場合、データ収集/転送のパイプラインは正しく設定されています。 以下、現象をさらに分類しています。これに基づいて問題を絞り込んでください。
 
@@ -121,7 +119,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 #### <a name="is-the-host-generating-data"></a>ホストはデータを生成しているか
 - **パフォーマンス カウンター**:perfmon を開き、カウンターを確認します。
 
-- **トレース ログ**:VM にリモート アクセスし、アプリの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 https://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
+- **トレース ログ**: VM にリモート アクセスし、アプリの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 https://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「トレース ログが見つからない場合 (詳細)」をご覧ください。
 
 - **ETW トレース**:VM にリモート アクセスし、PerfView をインストールします。  PerfView で、 **[ファイル]**  >  **[ユーザー コマンド]**  >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
@@ -166,7 +164,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 たとえば次のようになります。
 
-```XML
+```xml
         <EtwEventSourceProviderConfiguration provider="prov1">
           <Event id="1" />
           <Event id="2" eventDestination="dest1" />
@@ -257,12 +255,12 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ```
 対応する `.tsf` ファイルと同じパスに新しいファイル `<relevantLogFile>.csv` が作成されます。
 
->[!NOTE]
+> [!NOTE]
 > 必要なのは、メインの tsf ファイル (PerformanceCountersTable.tsf など) に対してこのユーティリティを実行することのみです。 付随するファイル (PerformanceCountersTables_\*\*001.tsf、PerformanceCountersTables_\*\*002.tsf など) は自動的に処理されます。
 
 ### <a name="more-about-missing-trace-logs"></a>トレース ログが見つからない場合 (詳細)
 
->[!NOTE]
+> [!NOTE]
 > 以下の情報は主に、IaaS VM で実行されているアプリケーションで DiagnosticsMonitorTraceListener を構成した場合を除き、Azure クラウド サービスに当てはまります。
 
 - **DiagnosticMonitorTraceListener** が web.config または app.config で構成されていることを確認します。これは既定でクラウド サービス プロジェクトで構成されます。 ただし、ユーザーがこれをコメントアウトすることもあります。その場合、診断でトレース ステートメントが収集されることはありません。
@@ -271,7 +269,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 - **Diagnostics.Debug.WriteXXX** ではなく **Diagnostics.Trace.TraceXXX** を使用していることを確認します。 デバッグ ステートメントはリリース ビルドから削除されます。
 
-- コンパイルしたコードに **Diagnostics.Trace 行** があることを確認します (Reflector、ildasm、または ILSpy を使用して確認してください)。 条件付きコンパイル シンボルである TRACE を使用しない限り、**Diagnostics.Trace** コマンドはコンパイルしたバイナリから削除されます。 これは msbuild でプロジェクトを構築するときに発生する一般的な問題です。   
+- コンパイルしたコードに **Diagnostics.Trace 行** があることを確認します (Reflector、ildasm、または ILSpy を使用して確認してください)。 条件付きコンパイル シンボルである TRACE を使用しない限り、**Diagnostics.Trace** コマンドはコンパイルしたバイナリから削除されます。 これは msbuild でプロジェクトを構築するときに発生する一般的な問題です。
 
 ## <a name="known-issues-and-mitigations"></a>既知の問題と軽減策
 既知の問題と軽減策の一覧を次に示します。

@@ -8,12 +8,12 @@ author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea70d25bae9b30e1170046a7a7d470b4fea1a08d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25e167f80ff209a60b30113ffe681e033cc612e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626629"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046529"
 ---
 # <a name="overview-of-the-guest-configuration-extension"></a>ゲスト構成拡張機能の概要
 
@@ -50,6 +50,10 @@ ms.locfileid: "128626629"
 
 既定では、すべてのデプロイが最新バージョンに更新されます。 プロパティ _autoUpgradeMinorVersion_ の値は、特に指定がない限り、既定で "true" に設定されます。 拡張機能の新しいバージョンがリリースされても、コードの更新について心配する必要はありません。
 
+## <a name="automatic-upgrade"></a>自動アップグレード
+
+ゲスト構成拡張では、プロパティ `enableAutomaticUpgrade` がサポートされています。 このプロパティが `true` に設定されている場合、Azure では、将来のリリースが利用可能になると、最新バージョンの拡張機能に自動的にアップグレードされます。 詳細については、「[Azure での VM とスケール セットの拡張機能の自動アップグレード](../automatic-extension-upgrade.md)」を参照してください
+
 ### <a name="azure-policy"></a>Azure Policy
 
 ID 要件を含め、最新バージョンの拡張機能を大規模にデプロイするには、以下の Azure Policy を[割り当てます](../../governance/policy/assign-policy-portal.md)。
@@ -62,13 +66,13 @@ Linux 用の拡張機能をデプロイするには、次のようにします�
 
 
 ```azurecli
-az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforLinux --extension-instance-name AzurePolicyforLinux --resource-group myResourceGroup --vm-name myVM
+az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforLinux --extension-instance-name AzurePolicyforLinux --resource-group myResourceGroup --vm-name myVM --enable-auto-upgrade true
 ```
 
 Windows 用の拡張機能をデプロイするには、次のようにします。
 
 ```azurecli
-az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforWindows --extension-instance-name AzurePolicyforWindows --resource-group myResourceGroup --vm-name myVM
+az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforWindows --extension-instance-name AzurePolicyforWindows --resource-group myResourceGroup --vm-name myVM --enable-auto-upgrade true
 ```
 
 ### <a name="powershell"></a>PowerShell
@@ -82,7 +86,7 @@ Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -Type 'Configuration
 Windows 用の拡張機能をデプロイするには、次のようにします。
 
 ```powershell
-Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -Type 'ConfigurationforWindows' -Name 'AzurePolicyforWindows' -TypeHandlerVersion 1.0 -ResourceGroupName 'myResourceGroup' -Location 'myLocation' -VMName 'myVM' --enable-auto-upgrade
+Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -Type 'ConfigurationforWindows' -Name 'AzurePolicyforWindows' -TypeHandlerVersion 1.0 -ResourceGroupName 'myResourceGroup' -Location 'myLocation' -VMName 'myVM' -EnableAutomaticUpgrade $true
 ```
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df3c243970709ad7ae4bc52f179117affc2d8613
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a1b237e8347a6a9238dfef505993410413537324
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776437"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057193"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -366,6 +366,7 @@ ms.locfileid: "124776437"
 > | ユーザーをグループに追加する | ユーザー管理者 |  |
 > | ライセンスの割り当て | ライセンス管理者 | ユーザー管理者 |
 > | ゲスト ユーザーを作成する | ゲスト招待元 | ユーザー管理者 |
+> | ゲスト ユーザーの招待をリセットする | ユーザー管理者 | グローバル管理者 |
 > | ユーザーの作成 | ユーザー管理者 |  |
 > | ユーザーを削除する | ユーザー管理者 |  |
 > | 制限付き管理者の更新トークンを無効にする (ドキュメントを参照) | ユーザー管理者 |  |

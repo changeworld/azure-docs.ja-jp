@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
 ms.author: robinsh
-ms.openlocfilehash: bf8bf9d1b472ff1986596f6cae7e1f7b415d3bc6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 64d0c6120b5e74b1693f4d7965bb780c62583b53
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729840"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015270"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -32,15 +32,13 @@ ms.locfileid: "121729840"
 
 1. [Azure portal](https://portal.azure.com) で、目的の IoT ハブに移動し、 **[ファイルのアップロード]** を選択して、ファイルのアップロード プロパティを表示します。 次に、 **[ストレージ コンテナー設定]** で **[Azure Storage コンテナー]** を選択します。
 
-    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-settings.png" alt-text="ポータルで IoT Hub ファイル アップロード設定を表示する":::
+    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-settings.png" alt-text="ポータルでファイルのアップロード設定を構成する方法を示すスクリーンショット。":::
 
-1. 現在のサブスクリプションで Azure Storage アカウントと BLOB コンテナーを選択して、IoT ハブに関連付けます。 必要に応じて、 **[ストレージ アカウント]** ペインで Azure Storage アカウントを作成し、 **[コンテナー]** ペインで BLOB コンテナーを作成できます。 
+1. 現在のサブスクリプションで Azure Storage アカウントと BLOB コンテナーを選択して、IoT ハブに関連付けます。 必要に応じて、 **[ストレージ アカウント]** ペインで Azure Storage アカウントを作成し、 **[コンテナー]** ペインで BLOB コンテナーを作成できます。
 
-   :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-container-selection.png" alt-text="ポータルでファイル アップロードのストレージ コンテナーを表示する":::
+   :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-container-selection.png" alt-text="ファイルのアップロード用のストレージ コンテナーを表示する方法を示すスクリーンショット。":::
 
-1. Azure Storage アカウントと BLOB コンテナーを選択したら、残りのファイルのアップロード プロパティを構成します。    
-
-    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-selected-container.png" alt-text="ポータルで IoT Hub ファイル アップロードを構成する":::
+1. Azure Storage アカウントと BLOB コンテナーを選択したら、残りのファイルのアップロード プロパティを構成します。
 
     * **Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)** : トグル ボタンを使用して、ファイルのアップロードに関する通知を有効または無効にします。
 
@@ -59,6 +57,6 @@ ms.locfileid: "121729840"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [デバイスからのファイルのアップロードの概要](iot-hub-devguide-file-upload.md)
+* [デバイス概要からファイルをアップロードする](iot-hub-devguide-file-upload.md)
 * [IoT Hub でのマネージド ID のサポート](./iot-hub-managed-identity.md)
 * [ファイル アップロードのハウツー ガイド](./iot-hub-csharp-csharp-file-upload.md)

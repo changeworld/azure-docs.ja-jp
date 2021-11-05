@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/16/2021
 ms.author: allensu
-ms.openlocfilehash: 024a523939e5f03cf01aec937a646f1159f6b79b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1911c3a97892a440d0819025c6f040732d03e6e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130254648"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079550"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer ポータルの設定
 
@@ -161,11 +161,11 @@ Azure Load Balancer のバックエンド プールに、仮想マシンまた�
 
 :::image type="content" source="./media/manage/add-health-probe.png" alt-text="[正常性プローブの追加] のスクリーンショット。" border="true":::
 
-[ロード バランサーの作成] ポータル ページの **[インバウンド規則]** タブで、 **+ [インバウンド NAT 規則の追加]** を選択して作成ページを開きます。
+ロード バランサーの作成ポータル ページの **[インバウンド規則]** タブで、 **[+ インバウンド NAT 規則の追加]** を選んで作成ページを開きます。
 
-#### <a name="-add-a-an-inbound-nat-rule"></a>**+ [インバウンド NAT 規則の追加]**
+#### <a name="-add-an-inbound-nat-rule"></a>**+ インバウンド NAT 規則の追加**
 
-**+ [インバウンド NAT 規則の追加]** 作成ページには、以下が表示されます。
+**[+ インバウンド NAT 規則の追加]** 作成ページには、以下が表示されます。
 
 | 設定 | 詳細 |
 | ---------- | ---------- |

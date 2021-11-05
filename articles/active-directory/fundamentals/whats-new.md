@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84c121788d3af6279ac2ef1ef4c149f803bf308
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 081451297e35eb76ebd8d5eecf8ea1833e91007a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245571"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052353"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -149,8 +149,6 @@ MS Graph v1.0 エンドポイントのロール管理用の新しい API が一�
 自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)に関するページをご覧ください。
  
 ---
- 
-[1585267](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1585267&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---september-2021"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになる - 2021 年 9 月
 
@@ -165,7 +163,6 @@ MS Graph v1.0 エンドポイントのロール管理用の新しい API が一�
 すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください。
 
 Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、次の詳細をお読みください: https://aka.ms/AzureADAppRequest
-
 
 ---
 
@@ -232,7 +229,7 @@ Azure AD アクセス レビュー用のベータ版 MS Graph API がリリー�
 **製品の機能:** ID のセキュリティ & 保護
  
 
-条件付きアクセスで、"デバイスの登録または参加" ユーザー操作が一般提供になりました。 このユーザー操作により、Azure Active Directory (AD) のデバイス登録に関する多要素認証 (MFA) ポリシーを制御できます。 現時点では、このユーザー操作は、ユーザーがデバイスを Azure AD に登録または参加させるときの制御として多要素認証 (MFA) を有効にできるだけです。 Azure AD デバイスの登録に依存している、または適用されないその他の制御は、このユーザー操作では引き続き無効になります。 [詳細については、こちらを参照してください](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)。
+条件付きアクセスで、"デバイスの登録または参加" ユーザー操作が一般提供になりました。 このユーザー操作を使用すると、Azure Active Directory (AD) のデバイス登録に関する多要素認証 (MFA) ポリシーを制御できます。 現時点では、このユーザー操作は、ユーザーがデバイスを Azure AD に登録または参加させるときの制御として多要素認証 (MFA) を有効にできるだけです。 Azure AD デバイスの登録に依存している、または適用されないその他の制御は、このユーザー操作では引き続き無効になります。 [詳細については、こちらを参照してください](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)。
 
 ---
 
@@ -290,7 +287,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
  
 ---
 
-### <a name="multi-factor-mfa-fraud-report--new-audit-event"></a>多要素認証 (MFA) の不正アクセス レポート - 新しい監査イベント
+### <a name="multifactor-mfa-fraud-report--new-audit-event"></a>多要素認証 (MFA) の不正アクセス レポート - 新しい監査イベント
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** MFA  
@@ -607,7 +604,7 @@ Identity Protection の危険なユーザー、危険なサインイン、リス
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** Identity Governance
  
-Azure AD のグループ所有者が、自分のグループの Azure AD アクセス レビューを作成および管理できるようになりました。 この機能は、テナント管理者であれば Azure AD のアクセス レビュー設定を通じて有効にすることができ、既定では無効になっています。 [詳細については、こちらを参照してください](../governance/create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)。
+Azure AD のグループ所有者が、自分のグループの Azure AD アクセス レビューを作成および管理できるようになりました。 この機能は、テナント管理者であれば Azure AD のアクセス レビュー設定を通じて有効にすることができ、既定では無効になっています。 [詳細については、こちらを参照してください](../governance/create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview)。
  
 ---
 

@@ -12,17 +12,32 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/01/2021
-ms.openlocfilehash: 69d709dc6d58e732f56ef28c9b2e69b2a5ad5594
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 592f2ae9b3d09ce84296dca31d68031b7d5fff84
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047932"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080918"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 SQL Server がインストールされた Azure 仮想マシン (VM) を手動で、または組み込みイメージを使用してデプロイする場合は、Azure の機能を活用してエクスペリエンスを向上させることができます。 この記事では、[Azure Virtual Machines (VM) 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化に関連するドキュメントの変更をまとめます。 Azure VM の SQL Server の詳細については、[概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページを参照してください。 
+
+## <a name="november-2021"></a>2021 年 11 月
+
+| [変更点] | 詳細 |
+| --- | --- |
+| **SQL の評価** | [SQL Assessment](sql-assessment-for-sql-vm.md)を使用して Azure portal 内の SQL Server VM の正常性を評価し、パフォーマンスを向上させる推奨事項を提示し、不足しているベストプラクティス構成を特定できるようになりました。 現在、この機能はプレビュー段階にあります。 |
+
+
+## <a name="october-2021"></a>2021 年 10 月
+
+| [変更点] | 詳細 |
+| --- | --- |
+| **SQL IaaS 拡張機能での Ubuntu のサポートの開始** | [SQL Server IaaS 拡張](../linux/sql-server-iaas-agent-extension-linux.md)機能を使用して Ubuntu Linux 上で実行されている SQL Server VM を[登録](../linux/sql-iaas-agent-extension-register-vm-linux.md)するためのサポートが追加されました。 | 
+
 
 ## <a name="september-2021"></a>2021 年 9 月
 

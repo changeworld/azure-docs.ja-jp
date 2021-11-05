@@ -2,14 +2,14 @@
 title: Azure Video Analyzer を使用して動きを検出し、ビデオを録画する
 description: このクイック スタートでは、Azure Video Analyzer エッジ モジュールを使用して、ライブ ビデオ ストリーム内の動きを検出し、Video Analyzer アカウントにビデオを録画する方法を示します。
 ms.topic: quickstart
-ms.date: 11/04/2021
+ms.date: 06/01/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5cc04dc9ce6a149a64a61fb9fabdeeaca6593f51
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: a62af8ee0ac3859a6d8f7e7d81d7115877afda35
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552888"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131030074"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>クイック スタート: 動きを検出し、Video Analyzer にビデオを録画する
 

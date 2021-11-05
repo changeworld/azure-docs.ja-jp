@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 8829da481abbddc61c1cc90da0984742775059ae
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: eb7d97b5e796ae9433b695c15ef809f7674f53f3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556516"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032137"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-pool-lms"></a>チュートリアル: Azure Active Directory と Learning Pool LMS の統合
 

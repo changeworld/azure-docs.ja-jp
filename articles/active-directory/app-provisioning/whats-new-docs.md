@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーションのプロビジョニングの新機能
 description: Azure Active Directory アプリケーションのプロビジョニングの新規および更新されたドキュメント。
-ms.date: 10/05/2021
+ms.date: 11/04/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,23 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: karenh444
-ms.openlocfilehash: 7404e91f9a5f71276749b704355a080f5c3cc29f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1eaccdcc6d8922f75ac9d00b060ebdb311485c98
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990522"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851384"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 
 Azure Active Directory アプリケーションのプロビジョニングに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 プロビジョニング サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [ユーザーを LDAP ディレクトリにプロビジョニングするための Azure AD の構成](on-premises-ldap-connector-configure.md)
+
 
 ## <a name="september-2021"></a>2021 年 9 月
 

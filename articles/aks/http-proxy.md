@@ -6,12 +6,12 @@ author: nickomang
 ms.topic: article
 ms.date: 09/09/2021
 ms.author: nickoman
-ms.openlocfilehash: 43ee8a41ad6c487f5998760396b05a3ec56206d7
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 871a2f97ab8b95cca46fea91f5613cb489cb19a3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004751"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066921"
 ---
 # <a name="http-proxy-support-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での HTTP プロキシのサポート (プレビュー)
 
@@ -40,6 +40,17 @@ ms.locfileid: "130004751"
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 * [Azure CLI がインストールされていること](/cli/azure/install-azure-cli)。
 
+### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview` Azure CLI をインストールする
+
+また、拡張機能バージョン 0.5.25 以降Azure CLI *aks-preview* が必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
 ### <a name="register-the-httpproxyconfigpreview-preview-feature"></a>`HTTPProxyConfigPreview` プレビュー機能を登録する
 
 この機能を使用するには、サブスクリプションで `HTTPProxyConfigPreview` 機能フラグも有効にする必要があります。
@@ -64,19 +75,17 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="configuring-an-http-proxy-using-azure-cli"></a>Azure CLI を使用した HTTP プロキシの構成 
 
-HTTP プロキシで AKS を使用するには、クラスターの作成時に [az aks create][az-aks-create] コマンドを使用して、構成を JSON または YAML ファイルとして渡します。
+HTTP プロキシでの AKS の使用は、クラスターの作成時に [az aks create][az-aks-create] コマンドを使用して行われ、JSON ファイルとして構成が渡されます。
 
 構成ファイルのスキーマは次のようになります。
 
 ```json
-"httpProxyConfig": {
-    "httpProxy": "string",
-    "httpsProxy": "string",
-    "noProxy": [
-        "string"
-    ],
-    "trustedCa": "string"
-}
+"httpProxy": "string",
+"httpsProxy": "string",
+"noProxy": [
+    "string"
+],
+"trustedCa": "string"
 ```
 
 `httpProxy`: クラスターの外部で HTTP 接続を作成するために使用するプロキシ URL。 URL スキームは `http` である必要があります。
@@ -87,15 +96,13 @@ HTTP プロキシで AKS を使用するには、クラスターの作成時に 
 入力例: CA 証明書は、PEM 形式の証明書コンテンツの base64 でエンコードされた文字列である必要があります。
 
 ```json
-"httpProxyConfig": { 
-     "httpProxy": "http://myproxy.server.com:8080/", 
-     "httpsProxy": "https://myproxy.server.com:8080/", 
-     "noProxy": [
-         "localhost",
-         "127.0.0.1"
-     ],
-     "trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
-}
+"httpProxy": "http://myproxy.server.com:8080/", 
+"httpsProxy": "https://myproxy.server.com:8080/", 
+"noProxy": [
+   "localhost",
+   "127.0.0.1"
+],
+"trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
 ```
 
 ファイルを作成し、*httpProxy*、*httpsProxy*、*noProxy* の値を指定します。 ご自身の環境で必要な場合は、*trustedCa* の値も指定します。 次に、`http-proxy-config` フラグを使ってファイル名を渡して、クラスターをデプロイします。
@@ -147,3 +154,5 @@ az aks update -n $clusterName -g $resourceGroup --http-proxy-config aks-proxy-co
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az-extension-update

@@ -6,18 +6,18 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: dd0328314cbe1f93565a421e0ff4f68f410b10dc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 409a86883cf010390b3d37c8d3af945ed3702eae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459978"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851851"
 ---
 # <a name="understanding-azure-virtual-desktop-network-connectivity"></a>Azure Virtual Desktop のネットワーク接続について
 
 Azure Virtual Desktop は、Azure で実行されているセッション ホスト上でクライアント セッションをホストする機能を提供します。 Microsoft は、お客様に代わってサービスの一部を管理し、クライアントおよびセッション ホストに接続するためのセキュリティで保護されたエンドポイントを提供します。 次の図は、Azure Virtual Desktop で使用されるネットワーク接続の概要を示しています。
 
-:::image type="content" source="media/windows-virtual-desktop-network-connections.svg" alt-text="Azure Virtual Desktop のネットワーク接続の図" lightbox="media/windows-virtual-desktop-network-connections.svg":::
+:::image type="content" source="media/azure-virtual-desktop-network-connections.svg" alt-text="Azure Virtual Desktop のネットワーク接続の図" lightbox="media/azure-virtual-desktop-network-connections.svg":::
 
 ## <a name="session-connectivity"></a>セッション接続
 

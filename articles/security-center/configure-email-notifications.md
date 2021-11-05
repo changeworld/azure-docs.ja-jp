@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 10/20/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6d95efcae62909fe483953308c3f1c60154b4e68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 51e54741de4a8319a6487c99ecff1104017a13a5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017506"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449338"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>セキュリティ アラートの電子メール通知を構成する 
 

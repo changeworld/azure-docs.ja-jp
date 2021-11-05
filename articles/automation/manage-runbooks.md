@@ -3,19 +3,19 @@ title: Azure Automation で Runbook を管理する
 description: この記事では、Azure Automation で Runbook を管理する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 88122af7da4472db497713b4f417092cca7e87df
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 99f86065b9a33125e3ca4cf72af5b8ec442e3cc0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351445"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455459"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
-Azure Automation には、新しい Runbook を作成するか、ファイルまたは [Runbook ギャラリー](automation-runbook-gallery.md)から既存の Runbook をインポートすることによって Runbook を追加することができます。 この記事では、ファイルからインポートした Runbook の管理について取り上げます。 コミュニティによって提供されている Runbook やモジュールの利用について詳しくは、[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)に関するページを参照してください。
+Azure Automation には、新しい Runbook を作成するか、ファイルまたは [Runbook ギャラリー](automation-runbook-gallery.md)から既存の Runbook をインポートすることによって Runbook を追加することができます。 この記事では、Runbook の管理に関する情報と、Runbook の設計に関する推奨パターンとベスト プラクティスについて説明します。 コミュニティによって提供されている Runbook やモジュールの利用について詳しくは、[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)に関するページを参照してください。
 
 ## <a name="create-a-runbook"></a>Runbook を作成する
 
@@ -33,8 +33,11 @@ Azure portal または PowerShell を使用して、Azure Automation に新し�
 1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
 1. Automation アカウントで **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
 1. **[Runbook の作成]** をクリックします。
-1. Runbook の名前を入力し、その [[種類]](automation-runbook-types.md) を選択します。 Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
-1. **[作成]** をクリックして Runbook を作成し、エディターを開きます。
+    1. Runbook に名前を付けます。
+    1. **[Runbook の種類]** ドロップダウンから [種類](automation-runbook-types.md)を選択します。 Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、ダッシュを使用できます
+    1. **[ランタイム バージョン]** を選択します
+    1. 該当する **[説明]** を入力します
+1. **[作成]** をクリックして、Runbook を作成します。
 
 ### <a name="create-a-runbook-with-powershell"></a>PowerShell で Runbook を作成する
 
@@ -74,11 +77,14 @@ PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト�
 1. Azure portal で **[Automation アカウント]** を検索して選択します。
 1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
 1. Automation アカウントで **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
-1. **[Runbook のインポート]** をクリックします。
-1. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
+1. **[Runbook のインポート]** をクリックします。 次のいずれかのオプションを選択できます。
+    1. **[ファイルの参照]** - ローカル コンピューターからファイルを選択します。
+    1. **[ギャラリーで参照]** - ギャラリーから既存の Runbook を参照して選択できます。
+1. ファイルを選択します。
 1. **[名前]** フィールドが有効になっている場合は、必要に応じて Runbook 名を変更することができます。 名前は文字で始める必要があり、文字、数字、アンダースコア、およびダッシュを含めることができます。
-1. [Runbook の種類](automation-runbook-types.md) は自動的に選択されますが、適切な制限を考慮して変更することもできます。
-1. **Create** をクリックしてください。 Automation アカウントの Runbook の一覧に新しい Runbook が表示されます。
+1. [ **[Runbook の種類]** ](automation-runbook-types.md) は自動的に設定されますが、該当する制限を考慮して種類を変更することもできます。
+1. **[ランタイム バージョン]** は、自動的に設定されるか、またはドロップダウン リストからバージョンを選択します。
+1. **[インポート]** をクリックします。 Automation アカウントの Runbook の一覧に新しい Runbook が表示されます。
 1. 実行する [Runbook は前もって発行しておく](#publish-a-runbook)必要があります。
 
 > [!NOTE]
@@ -201,7 +207,8 @@ if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Stat
 ```
 
 Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
-1. 5 行目から、`$AzureContext = (Connect-AzAccount -Identity).context` を削除し、
+
+1. 行 5 から `$AzureContext = (Connect-AzAccount -Identity).context` を削除します。
 1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
 1. クライアント ID を入力します。
 
@@ -243,7 +250,8 @@ Start-AzAutomationRunbook @startParams
 ```
 
 Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
-1. 5 行目から、`$AzureContext = (Connect-AzAccount -Identity).context` を削除し、
+
+1. 行 5 から `$AzureContext = (Connect-AzAccount -Identity).context` を削除します。
 1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
 1. クライアント ID を入力します。
 
@@ -255,8 +263,8 @@ Runbook をシステム割り当てマネージド ID で実行する場合は�
 カスタム スクリプトを使用するには、次の手順に従います。
 
 1. Automation アカウントを作成します。
-2. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ロールを展開します。 
-4. Linux コンピューターでは通常より高い権限が必要です。 サインインして[署名の確認を無効にします](automation-linux-hrw-install.md#turn-off-signature-validation)。
+2. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ロールを展開します。
+3. Linux コンピューターでは通常より高い権限が必要です。 サインインして[署名の確認を無効にします](automation-linux-hrw-install.md#turn-off-signature-validation)。
 
 ## <a name="test-a-runbook"></a>Runbook をテストする
 
@@ -280,9 +288,11 @@ Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook)
 
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>Azure portal で Runbook を発行する
 
-1. Azure portal の Automation アカウントで Runbook を開きます。
-2. **[編集]** をクリックします。
-3. **[発行]** をクリックしてから、確認メッセージに対して **[はい]** クリックします。
+1. Azure portal で **[Automation アカウント]** を検索して選択します。
+1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
+1. お使いの Automation アカウントで Runbook を開きます。
+1. **[編集]** をクリックします。
+1. **[発行]** をクリックしてから、確認メッセージに対して **[はい]** を選択します。
 
 ### <a name="publish-a-runbook-using-powershell"></a>PowerShell を使用して Runbook を発行する
 
@@ -305,14 +315,16 @@ Publish-AzAutomationRunbook @publishParams
 
 Runbook が発行済みであるときに、操作のスケジュールを設定できます。
 
-1. Azure portal の Automation アカウントで Runbook を開きます。
-2. **[リソース]** の下の **[スケジュール]** を選択します。
-3. **[スケジュールの追加]** を選択します。
-4. [Runbook のスケジュール] ウィンドウで、 **[スケジュールを Runbook にリンクします]** を選択します。
-5. [スケジュール] ウィンドウで、 **[新しいスケジュールを作成します]** をクリックします。
-6. [新しいスケジュール] ウィンドウで、名前、説明、およびその他のパラメーターを入力します。
-7. スケジュールを作成したら、それを強調表示し、 **[OK]** をクリックします。 これで、Runbook にリンクされるようになります。
-8. メールボックスの電子メールで、Runbook の状態通知を探します。
+1. Azure portal で **[Automation アカウント]** を検索して選択します。
+1. **[Automation アカウント]** ページで、一覧からお使いの Automation アカウントを選択します。
+1. Runbook の一覧から Runbook を選択します。
+1. **[リソース]** の下の **[スケジュール]** を選択します。
+1. **[スケジュールの追加]** を選択します。
+1. **[Runbook のスケジュール設定]** ウィンドウで、 **[スケジュールを Runbook にリンクします]** を選択します。
+1. **[スケジュール]** ウィンドウで、 **[新しいスケジュールを作成します]** を選択します。
+1. **[新しいスケジュール]** ウィンドウで、名前、説明、その他のパラメーターを入力します。
+1. スケジュールを作成したら、それを強調表示し、 **[OK]** をクリックします。 これで、Runbook にリンクされるようになります。
+1. メールボックスの電子メールで、Runbook の状態通知を探します。
 
 ## <a name="obtain-job-statuses"></a>ジョブの状態を取得する
 

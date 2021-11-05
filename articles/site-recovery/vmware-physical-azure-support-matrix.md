@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 084e0b9b0b42bbe2ba3632d54811e738197899f3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 869229cb3b5caa9e676e08e7c2957f71b968d856
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441478"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841736"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -292,6 +292,7 @@ Premium Storage | はい
 インポート/エクスポート サービス | いいえ
 VNet 用 Azure Storage ファイアウォール | はい。<br/> ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成されたもの。
 汎用目的 V2 ストレージ アカウント (ホット層とクール層) | はい (V1 に比べて V2 のトランザクション コストは非常に大きくなります)
+論理的な削除 | サポートされていません。
 
 ## <a name="azure-compute"></a>Azure コンピューティング
 

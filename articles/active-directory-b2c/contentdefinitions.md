@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でカスタム ポリシーの ContentDefinitions element 要素を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/12/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: bbe79082f63065ed73b573ab87f3299f7df79148
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: af77df3d3839a019e4977b32c6b8b138b375b4f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740237"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007450"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -79,7 +79,7 @@ ms.locfileid: "124740237"
 
 **LoadUri** 要素は、コンテンツ定義の HTML5 ページの URL を指定するために使用されます。 Azure AD B2C [カスタム ポリシー スターターパック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)には、Azure AD B2C HTML ページを使用するコンテンツ定義が付属しています。 **LoadUri** は、Azure AD B2C テナントへの相対パスである `~` で始まります。
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri>
   ...
@@ -88,12 +88,12 @@ ms.locfileid: "124740237"
 
 [HTML テンプレートを使用してユーザー インターフェイスをカスタマイズ](customize-ui-with-html.md)できます。 HTML テンプレートを使用する場合は、絶対 URL を指定します。 次の例は、HTML テンプレートを使用したコンテンツ定義を示しています。
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
   ...
 </ContentDefinition>
-``` 
+```
 
 ### <a name="datauri"></a>DataUri
 
@@ -103,7 +103,7 @@ ms.locfileid: "124740237"
 | ----- | ----------- |
 | `globalexception` | 例外またはエラーが発生したときにエラー ページを表示します。 |
 | `providerselection`, `idpselection` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。  |
-| `unifiedssp` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 またこの値は、「サインインしたままにする機能」および「パスワードを忘れた場合」 のリンクをクリックするように促します。 |
+| `unifiedssp` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 また、この値は、「サインインしたままにする機能」および「パスワードを忘れた場合」も示します。 のリンクをクリックするように促します。 |
 | `unifiedssd` | メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 このページ識別子は非推奨になっています。 代わりに `unifiedssp` ページ識別子を使用してください。  |
 | `multifactor` | サインアップ中またはサインイン中にテキストまたは音声を使用して電話番号を確認します。 |
 | `selfasserted` | ユーザーからデータを収集するためのフォームを表示します。 たとえば、ユーザーがプロファイルを作成または更新できるようにします。 |
@@ -150,7 +150,7 @@ ms.locfileid: "124740237"
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 
-次の例では、コンテンツ定義識別子と、対応する **DataUri** および [最新ページ バージョン](page-layout.md)を示します。 
+次の例では、コンテンツ定義識別子と、対応する **DataUri** および [最新ページ バージョン](page-layout.md)を示します。
 
 ```xml
 <!-- 

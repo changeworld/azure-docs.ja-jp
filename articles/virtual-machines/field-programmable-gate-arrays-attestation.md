@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: dba6962199f61eeb93dfb2f98e3e448c94ff633a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 110021730ecc91281f2c187a5ef6f1f989fbaf87
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567102"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018472"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP シリーズ VM の FPGA 構成証明 (プレビュー)
 
@@ -34,9 +34,9 @@ Azure サブスクリプションと Azure Storage アカウントが必要に�
 
 ## <a name="building-your-design-for-attestation"></a>構成証明の設計を構築する  
 
-設計を構築するための推奨される Xilinx ツールセットは、Vitis 2020.2 です。 netlist ファイルは、以前のバージョンのツールセットで作成され、引き続き 2020.2 と互換性がある場合、使用できます。 構築するのに適切なシェルが読み込まれていることを確認してください。 現在サポートされているバージョンは xilinx_u250_gen3x16_xdma_2_1_202010_1 です。 サポート ファイルは Xilinx Alveo ラウンジからダウンロードできます。 
+設計を構築するための推奨される Xilinx ツールセットは、Vitis 2020.2 です。 netlist ファイルは、以前のバージョンのツールセットで作成され、引き続き 2020.2 と互換性がある場合、使用できます。 構築するのに適切なシェルが読み込まれていることを確認してください。 現在サポートされているバージョンは `xilinx_u250_gen3x16_xdma_2_1_202010_1` です。 サポート ファイルは Xilinx Alveo ラウンジからダウンロードできます。
 
-ビットストリームの代わりに netlist を含む xclbin ファイルを構築するには、Vitis (v++ コマンド ライン) に次の引数を含める必要があります。   
+ビットストリームではなく netlist を含む `xclbin` ファイルをビルドするには、Vitis (v++ cmd line) に対する次の引数を含める必要があります。
 
 `--advanced.param compiler.acceleratorBinaryContent=dcp`
 

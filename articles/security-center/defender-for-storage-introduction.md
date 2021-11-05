@@ -1,48 +1,51 @@
 ---
-title: Azure Defender for Storage - 利点と機能
-description: Azure Defender for Storage の利点と機能について説明します。
+title: Microsoft Defender for Storage - 利点と機能
+description: Microsoft Defender for Storage の利点と機能について説明します。
 author: memildin
 ms.author: memildin
 ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3ba932632e87b87b08cdaf9ec69652dbb2ca3ff4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6bc972f1e548ba94d591d3c000a83f40b8c1c507
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750699"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009833"
 ---
-# <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage の概要
+# <a name="introduction-to-microsoft-defender-for-storage"></a>Microsoft Defender for Storage の概要
 
-**Azure Defender for Storage** は、ストレージ アカウントに対する通常とは異なる潜在的に有害なアクセスの試行、すなわちストレージ アカウントの悪用を検出する、Azure ネイティブのセキュリティ インテリジェンス レイヤーです。 セキュリティ AI の高度な機能と [Microsoft の脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)を利用して、コンテキストに応じたセキュリティ アラートと推奨事項を提供します。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのアラートは Azure Security Center と統合されます。また、アラートは不審なアクティビティの詳細や、脅威の調査および修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
+**Microsoft Defender for Storage** は、ストレージ アカウントに対する通常とは異なる潜在的に有害なアクセスの試行、すなわちストレージ アカウントの悪用を検出する、Azure ネイティブのセキュリティ インテリジェンス レイヤーです。 セキュリティ AI の高度な機能と [Microsoft の脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)を利用して、コンテキストに応じたセキュリティ アラートと推奨事項を提供します。
+
+セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのアラートは Microsoft Defender for Cloud に表示されます。また、アラートは不審なアクティビティの詳細や、脅威の調査および修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
 ## <a name="availability"></a>可用性
 
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|**Azure Defender for Storage** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
+|価格:|**Microsoft Defender for Storage** は、[価格ページ](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます|
 |保護されるストレージの種類:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China 21Vianet|
 |||
 
 
-## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>Azure Defender for Storage の利点
+## <a name="what-are-the-benefits-of-microsoft-defender-for-storage"></a>Microsoft Defender for Storage の利点
 
-Azure Defender for Storage の利点は次のとおりです。
+Microsoft Defender for Storage の利点は次のとおりです。
 
-- **Azure ネイティブのセキュリティ** - 1 回クリックして有効にすれば、Azure Blob、Azure Files、Data Lake に格納されているデータが Defender for Storage によって保護されます。 Defender for Storage は Azure ネイティブのサービスとして、Azure で管理されるすべてのデータ資産に一元的なセキュリティを提供し、Azure Sentinel など他の Azure セキュリティ サービスとも連携します。
+- **Azure ネイティブのセキュリティ** - 1 回クリックして有効にすれば、Azure Blob、Azure Files、Data Lake に格納されているデータが Defender for Storage によって保護されます。 Defender for Storage は Azure ネイティブのサービスとして、Azure で管理されるすべてのデータ資産に一元的なセキュリティを提供し、Microsoft Sentinel など他の Azure セキュリティ サービスとも連携します。
 - **豊富な検出スイート** - Microsoft の脅威インテリジェンスを利用した Defender for Storage の検出機能は、匿名アクセス、資格情報の漏洩、ソーシャル エンジニアリング、特権の乱用、悪意のあるコンテンツなど、ストレージに関する代表的な脅威をカバーしています。
-- **包括的な対応** - 特定された脅威は、Security Center のオートメーション ツールによって簡単に防止、対応できます。 詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
+- **包括的な対応** - 特定された脅威は、Defender for Cloud のオートメーション ツールによって簡単に防止、対応できます。 詳細については、「[Defender for Cloud のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
 
-:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Azure Defender for Storage の機能概要。":::
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Microsoft Defender for Storage の機能概要。":::
 
 
-## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Azure Defender for Storage で提供されるアラートの種類
+## <a name="what-kind-of-alerts-does-microsoft-defender-for-storage-provide"></a>Microsoft Defender for Storage で提供されるアラートの種類
 
 セキュリティ アラートは、次のような場合にトリガーされます。
 
@@ -50,28 +53,28 @@ Azure Defender for Storage の利点は次のとおりです。
 - **不審なアクティビティ** - 変則的なデータ抽出や、通常と異なるアクセス許可の変更など
 - **悪意のあるコンテンツのアップロード** (ハッシュ評価分析に基づく) 潜在的マルウェア ファイルやフィッシング コンテンツのホスティングなど
 
-アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。 アラートは、Azure Sentinel、他のサードパーティ製 SIEM、またはその他の外部ツールにエクスポートできます。
+アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。 アラートは、Microsoft Sentinel、他のサードパーティ製 SIEM、またはその他の外部ツールにエクスポートできます。
 
 > [!TIP]
-> サブスクリプション レベルで [Azure Defender for Storage を構成する](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)ことをお勧めしますが、[個別のストレージ アカウントで構成する](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal)こともできます。
+> サブスクリプション レベルで [Microsoft Defender for Storage を構成する](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)ことをお勧めしますが、[個別のストレージ アカウントで構成する](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal)こともできます。
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>マルウェアのハッシュ評価分析とは
 
-アップロードされたファイルが疑わしいかどうかを判断するため、Azure Defender for Storage では、[Microsoft 脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)でサポートされているハッシュ評価分析が使用されます。 脅威の防止ツールでは、アップロードされたファイルがスキャンされるのではなく、ストレージ ログが調べられ、新しくアップロードされたファイルのハッシュと、既知のウイルス、トロイの木馬、スパイウェア、ランサムウェアのハッシュが比較されます。 
+アップロードされたファイルが疑わしいかどうかを判断するため、Microsoft Defender for Storage では、[Microsoft 脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)でサポートされているハッシュ評価分析が使用されます。 脅威の防止ツールでは、アップロードされたファイルがスキャンされるのではなく、ストレージ ログが調べられ、新しくアップロードされたファイルのハッシュと、既知のウイルス、トロイの木馬、スパイウェア、ランサムウェアのハッシュが比較されます。 
 
-ファイルにマルウェアが含まれている疑いがある場合、Security Center ではアラートが表示されます。また、必要に応じて、疑わしいファイルの削除の承認を求めるメールをストレージの所有者に送信できます。 ハッシュ評価分析によってマルウェアが含まれることが示されているファイルの自動削除を設定するには、["マルウェアがストレージ アカウントにアップロードされた可能性" を含むアラートでトリガーするワークフローの自動化](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)をデプロイします。
+ファイルにマルウェアが含まれている疑いがある場合、Defender for Cloud ではアラートが表示されます。また、必要に応じて、疑わしいファイルの削除の承認を求めるメールをストレージの所有者に送信できます。 ハッシュ評価分析によってマルウェアが含まれることが示されているファイルの自動削除を設定するには、["マルウェアがストレージ アカウントにアップロードされた可能性" を含むアラートでトリガーするワークフローの自動化](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)をデプロイします。
 
 > [!NOTE]
-> Security Center の脅威防止機能を有効にするには、Azure Defender を、適用可能なワークロードを含むサブスクリプションで有効にする必要があります。
+> Defender for Cloud の脅威防止機能を有効にするには、Azure Defender を、該当するワークロードを含むサブスクリプションで強化されたセキュリティ機能を有効にする必要があります。
 >
-> **Azure Defender for Storage** は、サブスクリプション レベルまたはリソース レベルで有効にできます。
+> **Microsoft Defender for Storage** は、サブスクリプション レベルまたはリソース レベルで有効にできます。
 
-## <a name="trigger-a-test-alert-for-azure-defender-for-storage"></a>Azure Defender for Storage のテスト アラートをトリガーする
+## <a name="trigger-a-test-alert-for-microsoft-defender-for-storage"></a>Microsoft Defender for Storage のテスト アラートをトリガーする
 
-環境内の Azure Defender for Storage のセキュリティ アラートをテストするには、次の手順に従って、"Access from a Tor exit node to a storage account (Tor 出口ノードからストレージ アカウントへのアクセス)" というアラートを生成します。
+環境内の Microsoft Defender for Storage のセキュリティ アラートをテストするには、次の手順に従って、"Access from a Tor exit node to a storage account (Tor 出口ノードからストレージ アカウントへのアクセス)" というアラートを生成します。
 
-1. Azure Defender for Storage が有効になっているストレージ アカウントを開きます。
+1. Microsoft Defender for Storage が有効になっているストレージ アカウントを開きます。
 1. サイドバーから [コンテナー] を選択し、既存のコンテナーを開くか、新しいコンテナーを作成します。
 
     :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Azure Storage アカウントから BLOB コンテナーを開く。" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
@@ -98,17 +101,17 @@ Azure Defender for Storage の利点は次のとおりです。
 
 1. 手順 3. でアップロードしたファイルをダウンロードします。
 
-    2 時間以内に、Security Center に次のセキュリティ アラートが表示されます。
+    2 時間以内に、Defender for Cloud に次のセキュリティ アラートが表示されます。
 
     :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Tor 出口ノードからのアクセスに関するセキュリティ アラート。":::
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Defender for Storage について説明しました。
+この記事では、Microsoft Defender for Storage について説明しました。
 
 関連資料については、次の記事をご覧ください。 
 
-- アラートは、Security Center によって生成されたか、別のセキュリティ製品の Security Center によって受信されたかにかかわらず、エクスポートすることができます。 アラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
+- アラートが Defender for Cloud によって生成されたか、別のセキュリティ製品から Defender for Cloud によって受信されたかにかかわらず、アラートをエクスポートできます。 アラートを Microsoft Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
 - [Advanced Defender for Storage を有効にする方法](../storage/common/azure-defender-storage-configure.md)
-- [Azure Defender for Storage アラートの一覧](alerts-reference.md#alerts-azurestorage)
+- [Microsoft Defender for Storage アラートの一覧](alerts-reference.md#alerts-azurestorage)
 - [Microsoft の脅威インテリジェンスの機能](https://go.microsoft.com/fwlink/?linkid=2128684)

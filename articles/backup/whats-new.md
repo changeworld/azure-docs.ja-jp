@@ -2,13 +2,13 @@
 title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
-ms.date: 08/05/2021
-ms.openlocfilehash: e05b98e61a632ee494689eeb1cf013996150bcb3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 10/20/2021
+ms.openlocfilehash: 398833135c97d3d067e7e2b29704ffd6bad25bbd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130244231"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020428"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -18,6 +18,8 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 
 ## <a name="updates-summary"></a>更新の概要
 
+- 2021 年 10 月
+  - [Azure Backup のメトリックとメトリック アラート (プレビュー)](#azure-backup-metrics-and-metrics-alerts-in-preview)
 - 2021 年 7 月
   - [Azure VM 内の SQL Server の Azure Backup でのアーカイブ層のサポートが一般提供開始](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
 - 2021 年 5 月
@@ -46,6 +48,25 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-backup-metrics-and-metrics-alerts-in-preview"></a>Azure Backup のメトリックとメトリック アラート (プレビュー)
+
+Azure Backup では、[Azure Monitor](/azure/azure-monitor/essentials/data-platform-metrics) を介して、組み込みメトリックのセットが提供されるようになりました。これにより、バックアップの正常性を監視することができます。 また、定義されたしきい値をメトリックが超える場合は、アラートをトリガーするアラート ルールを構成することもできます。
+
+Azure Backup では、次の主な機能が提供されています。
+ 
+- バックアップ項目のバックアップと復元の正常性に関連する、すぐに使用できるメトリックおよびそれに関連付けられた傾向を表示する機能。
+- バックアップ項目の正常性を効率的に監視するために、これらのメトリックに対するカスタム アラート ルールを記述する機能。
+- メール、ITSM、Webhook、ロジック アプリなど、Azure Monitor によってサポートされるさまざまな通知チャネルに向けて、発生したメトリック アラートをルーティングする機能。
+ 
+現在、Azure Backup では、次のワークロードの種類の組み込みメトリックがサポートされています。
+
+- Azure VM
+- Azure VM 内の SQL データベース
+- Azure VM 内の SAP HANA データベース
+- Azure Files。
+
+詳細については、「[Azure Backup のメトリックを使用してバックアップの正常性を監視する (プレビュー)](metrics-overview.md)」を参照してください。
 
 ## <a name="archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available"></a>Azure VM 内の SQL Server の Azure Backup でのアーカイブ層のサポートが一般提供開始
 
@@ -197,6 +218,6 @@ Azure Backup では、カスタマー マネージド キーを使用して暗�
 
 詳細については、[カスタマー マネージド キーを使用した Azure Backup の暗号化](encryption-at-rest-with-cmk.md)に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

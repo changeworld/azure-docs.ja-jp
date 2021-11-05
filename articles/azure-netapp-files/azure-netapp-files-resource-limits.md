@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 4a97b89957a4f451aaa9c7305535f87980234db2
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 9404d6052093880ff25ded0492e4a3fb87202f09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094293"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252499"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -31,7 +31,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 
 |  リソース  |  既定の制限  |  サポート要求による調整の可否  |
 |----------------|---------------------|--------------------------------------|
-|  [リージョンごとのサブスクリプションあたり容量クォータ](#regional-capacity-quota)   |  25 TiB  |  はい  |
+|  [リージョンごとのサブスクリプションあたり容量クォータ](regional-capacity-quota.md)   |  25 TiB  |  はい  |
 |  サブスクリプションあたりの Azure リージョンごとの NetApp アカウント数  |  10    |  はい   |
 |  NetApp アカウントあたりの容量プールの数   |    25     |   はい   |
 |  サブスクリプションあたりのボリュームの数   |    500     |   はい   |
@@ -56,7 +56,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  サブスクリプションあたりのバックアップできるボリュームの最大数   |  5  |  Y  |
 |  1 日あたりのボリュームあたりの手動バックアップの最大数 |  5  |  Y  |
 
-詳細については、「[容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)」を参照してください。
+詳細については、「[容量管理に関する FAQ](faq-capacity-management.md)」を参照してください。
 
 ## <a name="determine-if-a-directory-is-approaching-the-limit-size"></a>ディレクトリのサイズが上限に近づいているかどうかの確認<a name="directory-limit"></a>  
 
@@ -98,21 +98,6 @@ Azure NetApp Files ボリュームには、*maxfiles* という制限があり�
 
 ボリューム クォータが 20 TiB 以上の場合は、maxfiles の制限を 5 億に増やすことができます。 <!-- ANF-11854 --> 
 
-## <a name="regional-capacity-quota"></a>リージョンごとの容量クォータ
-
-Azure NetApp Files の [設定] にある **[クォータ]** をクリックすると、リージョンの現在のクォータ サイズと既定のクォータ サイズを表示することができます。 
-
-例: 
-
-![クォータの情報を表示する方法を示すスクリーンショット。](../media/azure-netapp-files/quota-display.png) 
-
-[サポート リクエストを送信](#request-limit-increase)することで、追加コストをかけることなく、リージョンの容量クォータを引き上げることができます。 送信したサポート リクエストは、処理のために Azure 容量管理チームに送信されます。 通常、2 営業日以内に返信が届きます。 大規模なリクエストの場合は、Azure 容量管理チームから連絡が届く場合があります。  
-
-リージョンごとの容量クォータを増やしても、課金は増えません。 課金はこれまで通り、プロビジョニングされた容量プールに基づいて行われます。
-たとえば、現在 25 TiB のプロビジョニングされた容量がある場合は、35 TiB へのクォータの引き上げをリクエストできます。  2 営業日以内に、クォータの引き上げが要求されたリージョンに適用されます。 クォータの引き上げが適用された場合でも、現在プロビジョニングされている容量 (25 TiB) に対してのみ料金を支払います。 ただし、実際に追加の 10 TiB をプロビジョニングすると、35 TiB に対して請求されます。
-
-Azure NetApp Files の現在の[リソース制限](#resource-limits)は変わりません。 引き続き 500 TiB の容量プールをプロビジョニングできます。 しかし、その前に、リージョンの容量クォータを 500 TiB に増やす必要があります。
-
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する
 
 「[リソース制限](#resource-limits)」の表から調整可能な上限を引き上げるように、Azure サポート リクエストを作成できます。 
@@ -143,3 +128,4 @@ Azure NetApp Files の現在の[リソース制限](#resource-limits)は変わ�
 
 - [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
 - [Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)
+- [Azure NetApp Files のリージョンの容量クォータ](regional-capacity-quota.md)

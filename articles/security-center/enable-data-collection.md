@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 10/08/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e70c3abc258cb39da17755aea937d13cfaa77d2d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8d9fa0e724c20d0327d6b3907fee8e954deda41f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029654"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453100"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud からエージェントと拡張機能の自動プロビジョニングを構成する
 
@@ -68,7 +67,7 @@ Log Analytics エージェントの自動プロビジョニングがオンの場
 
 Log Analytics エージェントの自動プロビジョニングを有効にするには:
 
-1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 1. 関連するサブスクリプションを選択します。
 1. **[自動プロビジョニング]** ページで、Log Analytics エージェントの自動プロビジョニングの状態を **[オン]** に設定します。
 
@@ -211,7 +210,7 @@ Log Analytics エージェントを手動でインストールするには:
 
 1. Log Analytics エージェントをインストールしているワークスペースで Microsoft Defender を有効にします。
 
-    1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+    1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 
     1. エージェントをインストールするワークスペースを設定します。 ワークスペースが存在するサブスクリプションが Defender for Cloud で使用しているサブスクリプションと同じであること、また、そのワークスペースに対する読み取りおよび書き込みアクセス許可があることを確認します。
 

@@ -1,21 +1,21 @@
 ---
-title: ローカライズ文字列 ID - Azure Active Directory B2C |Microsoft Docs
+title: ローカライズ文字列 ID - Azure Active Directory B2C
 description: Azure Active Directory B2C のカスタム ポリシーに api.signuporsignin の ID を持つコンテンツ定義の ID を指定します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 88c320d8296972ee84776aa232d688cc9e981f83
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: eab029ea4640199b6ed1086c85cdf59fe92f45c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349650"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036408"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -57,9 +57,8 @@ ms.locfileid: "129349650"
 | **invalid_generic** | 有効な {0} を入力してください | `>= 2.1.1` |
 | **heading** | サインイン | `>= 2.1.1` |
 
-
 > [!NOTE]
-> * {0} のようなプレースホルダーには、`ClaimType` の `DisplayName` 値が自動的に入力されます。 
+> * {0} のようなプレースホルダーには、`ClaimType` の `DisplayName` 値が自動的に入力されます。
 > * `ClaimType` をローカライズする方法については、「[サインアップまたはサインインの例](#signupsigninexample)」を参照してください。
 
 次の例は、サインアップまたはサインインページでユーザー インターフェイス要素の一部を使用する方法を示しています。
@@ -373,7 +372,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |but_change_claims | 電子メールを変更します|
 
 注: `intro_msg` 要素は非表示になっており、セルフアサート ページには表示されません。 表示されるようにするには、カスケード スタイル シートで [[HTML のカスタマイズ]](customize-ui-with-html.md) を使用します。 次に例を示します。
-    
+
 ```css
 .verificationInfoText div{display: block!important}
 ```
@@ -438,7 +437,6 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |UserMessageIfDnsResolutionFailed | RESTful サービス エンドポイントのホスト名を解決できませんでした。 RESTful サービスの URL: {0} |
 |UserMessageIfRequestTimeout | タイムアウト制限の {0} 秒内に、RESTful サービス エンド ポイントへの接続を確立できませんでした。 RESTful サービスの URL: {1} |
 
-
 ### <a name="restful-service-example"></a>RESTful サービスの例
 
 ```xml
@@ -492,10 +490,9 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |UserMessageIfVerificationFailedNoRetry | 検証の試行の最大回数を超えました。|
 |UserMessageIfVerificationFailedRetryAllowed | 検証に失敗しました。もう一度お試しください。|
 
-
 ### <a name="azure-ad-sspr-example"></a>Azure AD SSPR の例
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInternalError">We are having trouble verifying your email address. Please try again later.</LocalizedString>
@@ -511,11 +508,11 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 [ワンタイム パスワードの技術プロファイル](one-time-password-technical-profile.md)のエラー メッセージ用 ID を次に示します
 
-| id | 既定値 | 説明 | 
+| id | 既定値 | 説明 |
 | --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
-| UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
-| UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
+| UserMessageIfMaxRetryAttempted | No | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfMaxNumberOfCodeGenerated | No | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
 | UserMessageIfInvalidCode | いいえ | 無効なコードが指定された場合にユーザーに表示するメッセージ。 |
 | UserMessageIfVerificationFailedRetryAllowed | いいえ | 無効なコードを指定した場合にユーザーに表示するメッセージ。ユーザーは正しいコードを指定できます。  |
 |UserMessageIfSessionConflict|いいえ| コードを確認できない場合にユーザーに表示するメッセージ。|
@@ -541,7 +538,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 | id | 要求の変換 | 既定値 |
 | --- | ------------- |------------- |
-|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 要求の種類 "inputClaim" のブール値の要求値の比較に失敗しました。| 
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 要求の種類 "inputClaim" のブール値の要求値の比較に失敗しました。|
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 要求値の比較に失敗しました。指定された左オペランドが右オペランドを超えています。|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | StringComparison "OrdinalIgnoreCase" を使用した要求値の比較に失敗しました。|
 

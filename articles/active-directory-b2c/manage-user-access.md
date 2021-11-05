@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C のユーザー アクセスの管理 | Microsoft Docs
+title: Azure Active Directory B2C でのユーザー アクセスの管理
 description: Azure AD B2C を使用して、未成年者の識別、生年月日および国/地域のデータの収集、アプリケーションの利用規約への承諾の取得を行う方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae1e0c55642865550d58a299041fff6445c67360
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518059"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007733"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -141,7 +141,7 @@ ms.locfileid: "102518059"
 
 1. Graph API と拡張属性を使用して、利用規約への同意と、同意した日付を記録します。 そのためには、組み込みユーザー フローとカスタム ユーザー フローの両方を使用します。 **extension_termsOfUseConsentDateTime** 属性および **extension_termsOfUseConsentVersion** 属性を作成して使用することをお勧めします。
 
-2. "利用規約に同意する" という必須のチェック ボックスを作成し、サインアップ中に結果を記録します。 そのためには、組み込みユーザー フローとカスタム ユーザー フローの両方を使用します。
+2. [利用規約に同意する] という必須のチェック ボックスを作成し、サインアップ中に結果を記録します。 そのためには、組み込みユーザー フローとカスタム ユーザー フローの両方を使用します。
 
 3. Azure AD B2C は、利用規約とユーザーの同意を格納します。 Graph API を使用して、応答の記録に使用した拡張属性 (たとえば、**termsOfUseTestUpdateDateTime**) を読み取ることで、任意のユーザーの状態を照会できます。 そのためには、組み込みユーザー フローとカスタム ユーザー フローの両方を使用します。
 

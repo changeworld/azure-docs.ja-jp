@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: c189fd8d77d33a2397e5a83f73dcdda759247a03
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 08bf1a57c4b7d4905693c3f11964feeb04c8beef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535241"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014863"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Azure Cognitive Search のスキルセットの概念
 
@@ -91,7 +91,7 @@ ms.locfileid: "123535241"
 
 エンリッチされたドキュメントは、最初は、"[*ドキュメント解析*](search-indexer-overview.md#document-cracking)" 中にデータ ソースから抽出されたコンテンツに過ぎません。ここでテキストやイメージがソースから抽出され、言語解析やイメージ解析に利用できるようになります。 
 
-最初のコンテンツは "*ルート ノード*" で、 通常、これはドキュメント全体または正規化イメージです。 強化ツリーでの表現方法は、データ ソースの種類によって異なります。 次の表は、サポートされているいくつかのデータ ソースについて、エンリッチメント パイプラインに入ったドキュメントの状態を示しています。
+最初のコンテンツは "*ルート ノード*" (`document\content`) であり、通常は、ドキュメント全体であるか、ドキュメントのクラッキング中にデータ ソースから抽出された正規化されたイメージです。 強化ツリーでの表現方法は、データ ソースの種類によって異なります。 次の表は、サポートされているいくつかのデータ ソースについて、エンリッチメント パイプラインに入ったドキュメントの状態を示しています。
 
 |データ ソース/解析モード|Default|JSON、JSON 行、CSV|
 |---|---|---|
@@ -99,7 +99,7 @@ ms.locfileid: "123535241"
 |Azure SQL|/document/{column1}<br>/document/{column2}<br>…|該当なし |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|該当なし|
 
-スキルが実行されると、出力が新しいノードとして強化ツリーに追加されます。 これらのノードは、ダウンストリーム スキルの入力として使用でき、最終的にナレッジ ストアに射影されるか、インデックス フィールドにマップされます。 出力は、翻訳された文字列などのコンテンツを作成するスキルによって、エンリッチされたドキュメントに書き込まれます。 同様に、アップストリーム スキルの出力を使用するスキルによって、エンリッチされたドキュメントから読み取られ、必要な入力が取得されます。 
+スキルが実行されると、出力が新しいノードとして強化ツリーに追加されます。 これらのノードは、ダウンストリーム スキルの入力として使用でき、最終的にナレッジ ストアに射影されるか、インデックス フィールドにマップされます。 出力は、翻訳された文字列などのコンテンツを作成するスキルによって、エンリッチされたドキュメントに書き込まれます。 同様に、アップストリーム スキルの出力を使用するスキルによって、エンリッチされたドキュメントから読み取られ、必要な入力が取得されます。
 
 :::image type="content" source="media/cognitive-search-working-with-skillsets/skillset-def-enrichment-tree.png" alt-text="強化ツリーからのスキルの読み取りと書き込み" border="false":::
 

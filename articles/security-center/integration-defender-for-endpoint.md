@@ -7,12 +7,13 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/08/2021
 ms.author: memildin
-ms.openlocfilehash: 4c414fcd568834205c9e213928af21ca14d4b1aa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9441d285a97ca4c3a1ee46ab40c49f71f5d405f3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441858"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017463"
 ---
 # <a name="protect-your-endpoints-with-defender-for-clouds-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Defender for Cloud の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 

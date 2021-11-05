@@ -3,14 +3,14 @@ title: Azure Video Analyzer を使用したマネージド ID
 description: このトピックでは、Azure Video Analyzer でマネージド ID を使用する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5a0352586279a7d3efe7c40c4e59bda9c9fad355
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 46d3936c1822b4409dad8ad373352b062c6c9b77
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131035752"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852771"
 ---
 # <a name="managed-identity"></a>マネージド ID
 

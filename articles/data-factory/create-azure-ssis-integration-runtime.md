@@ -4,16 +4,16 @@ description: Azure 上で SSIS パッケージをデプロイして実行でき�
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3a3e6c8318309959eb2a709837040db42575b91b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 70e745d18699c6a1acb707528ec38641a1fe7a02
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215379"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842893"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 
@@ -88,9 +88,9 @@ Data Factory と Azure-SSIS IR が使用可能な Azure リージョンの一覧
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用して Azure-SSIS IR をプロビジョニングする方法を学習します](create-azure-ssis-integration-runtime-portal.md)。
-- [Azure PowerShell を使用して Azure-SSIS IR をプロビジョニングする方法を学習します](create-azure-ssis-integration-runtime-powershell.md)。
-- [Azure Resource Manager テンプレート を使用して Azure-SSIS IR をプロビジョニングする方法を学習します](create-azure-ssis-integration-runtime-resource-manager-template.md)。
+- [Azure portal を使用して Azure-SSIS IR をプロビジョニングする方法を学習する](create-azure-ssis-integration-runtime-portal.md)。
+- [Azure PowerShell を使用して Azure-SSIS IR をプロビジョニングする方法を学習する](create-azure-ssis-integration-runtime-powershell.md)。
+- [Azure Resource Manager テンプレートを使用して Azure-SSIS IR をプロビジョニングする方法を学習する](create-azure-ssis-integration-runtime-resource-manager-template.md)。
 - [Azure Data Factory で SSIS パッケージをデプロイして実行します](create-azure-ssis-integration-runtime-deploy-packages.md)。
 
 このドキュメントでは、Azure SSIS IR に関する、次のような他のトピックも参照してください。

@@ -7,12 +7,12 @@ ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 724c7e65d04b635dcaa635d29483da756cf47bfc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 58c9f69b898a41a1d07ae41755f67d926b2ac74f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675872"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082457"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
@@ -57,6 +57,7 @@ IoT Central アプリケーションでは、ソリューションの、以下�
 
 - [デバイス接続](concepts-get-connected.md): アプリケーションへの接続を確立するためにデバイスで使用するセキュリティ キーを作成、取り消し、更新します。
 - [アプリの統合](howto-authorize-rest-api.md#get-an-api-token): アプリケーションとの安全な接続を確立するために、他のアプリケーションで使用するセキュリティ キーを作成、取り消し、更新します。
+- [データのエクスポート](howto-export-data.md#connection-options): マネージド ID を使用して、データのエクスポート先への接続をセキュリティで保護します。
 - [ユーザー管理](howto-manage-users-roles.md): アプリケーションにサインインできるユーザーと、それらのユーザーがどのようなアクセス許可を持つかを決定するロールを管理します。
 - [組織](howto-create-organizations.md): IoT Central アプリケーションで、どのユーザーがどのデバイスを表示できるかを管理するための階層を定義します。
 
@@ -106,4 +107,4 @@ IoT Central の[ルール](howto-configure-rules-advanced.md)を使用すると�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](concepts-get-connected.md)の学習です。
+ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[スケーラビリティと高可用性](concepts-scalability-availability.md)の学習です。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/14/2021
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 568117bf629117e42af177845c9444996853f6c2
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: be664a5bf29c95143e7706b2df2b49648959f584
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067214"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013671"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps に API を追加する
 
@@ -311,7 +311,7 @@ npm run build
 
 1. CLI プロセスが開始したら、`http://localhost:4280/` からアプリにアクセスします。 ページで API が呼び出され、その出力 (`Hello from the API`) が表示されていることを確認します。
 
-1. CLI を停止するには、「<kbd>Ctrl + C</kbd>」と入力します。
+1. CLI を停止するには、<kbd>Ctrl + C</kbd> キーを押します。
 
 ## <a name="add-api-location-to-workflow"></a>ワークフローに API の場所を追加する
 

@@ -1,6 +1,6 @@
 ---
 title: クイックスタート - デバイスを接続し、テレメトリを Azure IoT Central に送信する
-description: このクイックスタートでは、デバイス開発者がデバイスを Azure IoT Central に安全に接続する方法について説明します。 C、C#、Python、Node.js、または Java 用の Azure IoT device SDK を使用して、シミュレートされたデバイスでクライアント アプリを実行し、IoT Central に接続してテレメトリを送信します。
+description: このクイックスタートでは、デバイス開発者がデバイスを Azure IoT Central に安全に接続する方法について説明します。 C、C#、Python、Node.js、または Java 用の Azure IoT device SDK を使用して、デバイスでクライアント アプリを実行し、IoT Central に接続してテレメトリを送信します。
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/27/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 376d26a591fb2cbe0d33fb9bdc261bcb535203e5
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f6955c10aab9b21be43cc3b346e564cb9114979d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114712929"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032742"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central"></a>クイックスタート: デバイスから Azure IoT Central にテレメトリを送信する
 
@@ -50,7 +50,7 @@ ms.locfileid: "114712929"
 :::zone-end
 
 ## <a name="view-telemetry"></a>利用統計情報データを表示する
-シミュレートされたデバイスは、IoT Central に接続した後、テレメトリの送信を開始します。 IoT Central で接続されているデバイスに関するテレメトリとその他の詳細を表示できます。 
+デバイスは、IoT Central に接続した後、テレメトリの送信を開始します。 IoT Central で接続されているデバイスに関するテレメトリとその他の詳細を表示できます。 
 
 IoT Central で、 **[デバイス]** を選択し、デバイス名をクリックしてから、 **[概要]** タブを選択します。2 つのサーモスタット デバイスからの温度のグラフがこのビューに表示されます。
 
@@ -71,7 +71,7 @@ Azure IoT Central のサンプル アプリケーションとそのデバイス�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、クラウドに対してデバイスを安全に接続し、device-to-cloud テレメトリを送信するための Azure IoT アプリケーションの基本的なワークフローについて説明しました。 Azure IoT Central を使用して、アプリケーションとデバイス インスタンスを作成しました。 次に、Azure IoT device SDK を使用して、シミュレートされたデバイスを作成し、IoT Central に接続して、テレメトリを送信しました。 また、IoT Central を使用してテレメトリを監視しました。
+このクイックスタートでは、クラウドに対してデバイスを安全に接続し、device-to-cloud テレメトリを送信するための Azure IoT アプリケーションの基本的なワークフローについて説明しました。 Azure IoT Central を使用して、アプリケーションとデバイス インスタンスを作成しました。 次に、Azure IoT device SDK を使用して、温度コントローラーを作成し、IoT Central に接続して、テレメトリを送信しました。 また、IoT Central を使用してテレメトリを監視しました。
 
 次の手順では、次の記事を参照して、Azure IoT を使用してデバイス ソリューションを構築する方法について確認します。 
 

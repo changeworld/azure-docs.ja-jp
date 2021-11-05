@@ -2,14 +2,14 @@
 title: 連続録画と再生に関するチュートリアル - Azure Video Analyzer
 description: このチュートリアルでは、Azure Video Analyzer を使用してクラウドに連続録画し、その録画を再生する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/04/2021
+ms.date: 09/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6a86dac6b242139d406dd6513a70846c57fa1c05
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c7fb6e35b3fa4f06734ab5aedb4c7b8df6d8ba27
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559354"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131030337"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>チュートリアル: 連続録画と再生
 

@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: fc13ac868f2abb1ccd466b245c22682af79ba915
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 70429e7d9b1628f17672aaaa545c6c5bba3c30b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161274"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032690"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>事業継続とディザスター リカバリーのためのフェールオーバー
 
@@ -29,6 +29,8 @@ Microsoft は、Azure サービスを常に使用できるようにする作業�
 
 > [!NOTE]
 > Azure Machine Learning 自体では、自動フェールオーバーやディザスター リカバリーは提供されていません。
+
+ワークスペースまたは対応するコンポーネントを誤って削除した場合に備え、この記事では、現在サポートされている回復オプションについても説明します。
 
 ## <a name="understand-azure-services-for-azure-machine-learning"></a>Azure Machine Learning のための Azure サービスについて
 
@@ -186,6 +188,18 @@ Azure Machine Learning では、ワークスペース インスタンス間で�
 > [!TIP]
 > * "__登録済みのデータセット__" は、ダウンロードしたり移動したりすることができません。 これには中間パイプライン データセットなど、Azure ML によって生成されたデータセットが含まれます。 ただし、両方のワークスペースからアクセスできたり、基になるデータ ストレージがレプリケートされたりする共有ファイルの場所を参照するデータセットは、両方のワークスペースに登録できます。 データセットを登録するには、[az ml dataset register](/cli/azure/ml(v1)/dataset#ext_azure_cli_ml_az_ml_dataset_register) を使用します。
 > * "__実行の出力__" は、ワークスペースに関連付けられた既定のストレージ アカウントに格納されます。 サービス停止時にスタジオ UI から実行の出力にアクセスできなくなる可能性がありますが、このときストレージ アカウントを使用して、データに直接アクセスできます。 BLOB に格納されているデータの操作の詳細については、「[Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](../storage/blobs/storage-quickstart-blobs-cli.md)」を参照してください。
+
+## <a name="recovery-options"></a>Recovery options
+
+### <a name="workspace-deletion"></a>ワークスペースの削除
+
+ワークスペースを誤って削除した場合、現在、回復することはできません。 ただし、次の手順を実行する場合は、対応するストレージから既存のノートブックを取得できます。
+* [Azure portal](https://portal.azure.com) で、Azure Machine Learning ワークスペースにリンクされていたストレージ アカウントに移動します。
+* 左側の [データ ストレージ] セクションで、 **[ファイル共有]** をクリックします。
+* ノートブックは、ワークスペース ID を含む名前が付けられたファイル共有にあります。 
+
+![ノートブック ファイル共有の参照](./media/how-to-high-availability-machine-learning/notebook-file-share.png)
+
 ## <a name="next-steps"></a>次のステップ
 
 関連付けられたリソースを使用して高可用性設定で Azure Machine Learning をデプロイするには、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/)を使用します。

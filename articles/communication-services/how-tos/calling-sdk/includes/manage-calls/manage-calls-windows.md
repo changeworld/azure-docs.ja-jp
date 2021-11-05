@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: c2d11835a455cb0a8a9456aad95d5be4da423259
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9737c4e756e034c88800264e5cc56a4ca1f81741
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128699166"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253334"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-windows.md)]
 
@@ -65,7 +65,7 @@ Call call_;
 
 ## <a name="create-button-handlers"></a>ボタン ハンドラーを作成する
 
-前に、2 つの UI ボタンが XAML コードに追加されました。 次のコードでは、ユーザーがボタンをクリックすると実行されるハンドラーを追加します。
+前に、2 つの UI ボタンが XAML コードに追加されました。 次のコードでは、ユーザーがボタンを選択すると実行されるハンドラーを追加します。
 次のコードは、前のセクションのデータ メンバーの後に追加する必要があります。
 
 ```csharp
