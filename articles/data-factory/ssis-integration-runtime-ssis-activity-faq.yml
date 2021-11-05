@@ -9,13 +9,13 @@ metadata:
   author: swinarko
   ms.reviewer: sawinark
   ms.custom: seo-lt-2019
-  ms.date: 04/15/2019
-  ms.openlocfilehash: 64d2bc74f44bb566a99aa55fb164e546bdb13ad1
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.date: 10/22/2021
+  ms.openlocfilehash: 1f515165d7afe590d77dd7e16da2f70da99e1d0d
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124743150"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131849123"
 title: SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 summary: >
   [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]

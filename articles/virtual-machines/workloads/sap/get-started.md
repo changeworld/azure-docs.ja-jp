@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/08/2021
+ms.date: 10/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b38ef3fe940484cfa6abbfa1ba8ca5a28415bc5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 883c4a0b4abe05d563ff418e84b507051e20c14c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997499"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013063"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,6 +80,8 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 このセクションでは、SAP データ ソースへの Microsoft Power BI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
 ## <a name="change-log"></a>変更履歴
+- 2021 年 10 月 26 日: [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関するページに変更を加え、HANA スケールアウト アクティブ/アクティブ (読み取りが有効) 構成のリソース名を更新
+- 2021 年 10 月 19 日: [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関するページに変更を加え、HANA スケールアウト アクティブ/アクティブ (読み取りが有効) 構成の手順を追加
 - 2021 年 10 月 11 日: 「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」、「[SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する](./sap-high-availability-infrastructure-wsfc-shared-disk.md)」、「[Windows Server フェールオーバー クラスタリングと Azure 共有ディスクを使用した SAP ASCS/SCS インスタンスのマルチ SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)」に変更を加え、サポートされる Azure 共有ディスクでのゾーン冗長ストレージ (ZRS) の説明を追加。
 - 2021 年 10 月 08 日: [SLES 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-suse.md)、[RHEL 上の ANF を使用した SAP HANA スケールアップの HA](./sap-hana-high-availability-netapp-files-red-hat.md)、および [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関する記事を変更し、sudoers ファイルの既定値を追加し、HANA スケールアウトについて更新 (HANA srHook 用)
 - 2021 年 10 月 1 日: SAP HANA バックアップの新しい Azure Backup アーキテクチャに関するドキュメントへのリンクを目次に追加。 「[SAP ワークロードのための Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)」に、Oracle DBMS 用の Azure Backup サービスへのリンクを追加

@@ -2,14 +2,14 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/30/2021
+ms.date: 11/04/2021
 ms.author: juliako
-ms.openlocfilehash: 3c4a156f745b5c32e238a7865a9c26710baf7ed0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b67065704846591a832ee92c7720ecef276ad944
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092015"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861049"
 ---
 このチュートリアルの前提条件は次のとおりです。
 

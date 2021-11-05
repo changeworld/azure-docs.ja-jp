@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/08/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: ab1618125ba42545702571629e7242871ecec4f7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1a61f369d0987caac2cc821e37c1e5e1ed7cda40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032777"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861114"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples)
 
@@ -37,7 +37,7 @@ ms.locfileid: "131032777"
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>デバイスを実行する
+## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 このセクションでは、ローカル環境を構成し、Azure IoT C# のサンプルをインストールして、温度コントローラーを作成するサンプルを実行します。
 
 ### <a name="configure-your-environment"></a>環境を構成する

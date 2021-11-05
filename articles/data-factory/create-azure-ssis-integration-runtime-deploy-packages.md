@@ -4,16 +4,16 @@ description: Azure SSIS 統合ランタイムを使用して Azure Data Factory 
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e12968b993a68f8eb0da179c6b4de57256a0c63b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: d32025ab757698448f9d8a36467c09e9b501f206
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219316"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842950"
 ---
 # <a name="deploy-ssis-packages"></a>SSIS パッケージのデプロイ
 

@@ -6,15 +6,15 @@ ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 07/19/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 9722047ab339ff8b7feae624a7915e9455c4d2e1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d58341d79bc9c2090f89c1b929693ff545f98bb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750925"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850301"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell を使用して Azure Data Factory で Azure-SSIS IR を設定する
 

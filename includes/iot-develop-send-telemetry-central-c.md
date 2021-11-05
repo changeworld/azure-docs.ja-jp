@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/10/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: da7d554e695b70bab01e738c46ad3c977abcc3f9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7f02dba36ceee1d3acba9f359f26fc3bbe7aa1ae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032795"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860735"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
@@ -56,7 +56,7 @@ gcc --version
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>デバイスを実行する
+## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 このセクションでは、ローカル環境を構成し、Azure IoT C device SDK をインストールして、温度コントローラーを作成するサンプルを実行します。
 
 ### <a name="configure-your-environment"></a>環境を構成する

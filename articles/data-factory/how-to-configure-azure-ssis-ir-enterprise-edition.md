@@ -4,15 +4,15 @@ description: この記事では、Azure SSIS Integration Runtime の Enterprise 
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 82b004d6bf99528d45f7420777a5999f371babeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bf8c6cd68262d07109fc51657720f77f6be4a3e6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738202"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843655"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 

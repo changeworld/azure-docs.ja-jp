@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 0f57a5a30823b5d08afffafcff552121a34717bd
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: e5097e15affe5d3f4e0ed8e60273d7a48ada6556
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581756"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032850"
 ---
-# <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
+# <a name="deploy-an-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (クラシック) Web サービスをデプロイする
 
-**適用対象:**  ![これはチェック マークです。つまり、この記事は Machine Learning スタジオ (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning スタジオ (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Machine Learning Studio (クラシック) を使用すると、予測分析ソリューションを構築してテストできます。 その後、Web サービスとしてソリューションをデプロイできます。
 

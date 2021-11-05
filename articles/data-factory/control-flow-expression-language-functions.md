@@ -2,20 +2,20 @@
 title: 式と関数
 titleSuffix: Azure Data Factory & Azure Synapse
 description: この記事では、Azure Data Factory および Azure Synapse Analytics パイプライン エンティティの作成に使用できる式と関数に関する情報を提供します。
-author: jasonwhowell
-ms.author: jasonh
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: f9b056f680ad575d59b1aa6cf43ca7804bfe646a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9365387bbe4086294a2345b45d707af9806b7c97
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068838"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842988"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics の式と関数
 

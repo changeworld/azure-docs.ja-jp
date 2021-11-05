@@ -13,20 +13,20 @@ ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f73951e34ada242dd70b9e9f99839d3072a52f76
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 9f7cb3e5869070e8120e39b21c2708887505043c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223750"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050263"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
-デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Microsoft ID プラットフォームによる OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。
+デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Microsoft ID プラットフォームによる OAuth 2.0 と Open ID Connect (OIDC) の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。
 
 この記事では、任意の言語を使用して、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
-OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 これは、[シングル ページ アプリ](v2-app-types.md#single-page-apps-javascript)、[Web アプリ](v2-app-types.md#web-apps)、[ネイティブにインストールされるアプリ](v2-app-types.md#mobile-and-native-apps)など、大半のアプリ タイプで認証と承認を行う際に使用されます。 このフローにより、アプリは、Microsoft ID プラットフォームによって保護されたリソースにアクセスするために使用できる access_token を安全に取得でき、また、追加の access_token を取得するための更新トークンや、サインインしたユーザーの ID トークンも安全に取得できます。
+OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 OIDC は、[シングル ページ アプリ](v2-app-types.md#single-page-apps-javascript)、[Web アプリ](v2-app-types.md#web-apps)、[ネイティブにインストールされるアプリ](v2-app-types.md#mobile-and-native-apps)など、多くのアプリの種類で認証と承認を行う際に使用されます。 このフローにより、アプリは、Microsoft ID プラットフォームによって保護されたリソースにアクセスするために使用できる access_token を安全に取得でき、また、追加の access_token を取得するための更新トークンや、サインインしたユーザーの ID トークンも安全に取得できます。
 
 [!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | required    | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 重要なこととして、あるテナントから別のテナントにユーザーをサインインさせるゲスト シナリオでは、ユーザーをリソース テナントに正しくサインインさせるためにテナント識別子を指定する "*必要があります*"。|
 | `client_id`   | required    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。  |
 | `response_type` | required    | 承認コード フローでは `code` を指定する必要があります。 [ハイブリッド フロー](#request-an-id-token-as-well-hybrid-flow)を使用する場合は、`id_token` または `token` を含めることもできます。 |
-| `redirect_uri`  | 必須 | アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリやモバイル アプリの場合は、推奨される値 (埋め込みのブラウザーを使用するアプリの場合は `https://login.microsoftonline.com/common/oauth2/nativeclient`、システム ブラウザーを使用するアプリの場合は `http://localhost`) のいずれかを使用してください。 |
+| `redirect_uri` | 必須 | アプリの redirect_uri。ここでは、認証応答をアプリで送受信できます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (URL エンコードが必要な場合を除く)。 ネイティブ アプリやモバイル アプリの場合は、推奨される値 (埋め込みのブラウザーを使用するアプリの場合は `https://login.microsoftonline.com/common/oauth2/nativeclient`、システム ブラウザーを使用するアプリの場合は `http://localhost`) のいずれかを使用してください。 |
 | `scope`  | required    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  要求の `/authorize` の段階では、これに複数のリソースを含めることができ、ご利用のアプリが呼び出す必要がある複数の Web API に対して同意を取得することを許可します。 |
 | `response_mode`   | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 以下のいずれかを指定できます。<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 |
 | `state`                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
@@ -224,7 +224,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="request-an-access-token-with-a-certificate-credential"></a>証明書資格情報を使用してアクセス トークンを要求する
 
-```HTTP
+```http
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -335,7 +335,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。 アクセス トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。  更新トークンは、クライアントが既に同意を受け取っているすべてのアクセス許可に対して有効です。そのため、`scope=mail.read` に対する要求で発行された更新トークンを使用して、`scope=api://contoso.com/api/UseResource` に対する新しいアクセス トークンを要求できます。
 
-Web アプリとネイティブ アプリの更新トークンには、指定の有効期間はありません。 通常、更新トークンの有効期間は比較的長いです。 ただし、場合によっては、更新トークンの有効期限が切れる、失効する、または目的の操作のための十分な特権がないことがあります。 クライアント アプリケーションは、[トークン発行エンドポイントから返されるエラー](#error-codes-for-token-endpoint-errors)を予期して正しく処理する必要があります。 ただし、シングル ページ アプリでは有効期間が 24 時間のトークンを取得するため、新しい認証が毎日必要になります。  これは、サードパーティ Cookie が有効になっている場合は iframe で確認なしで実行できますが、サードパーティ Cookie なしのブラウザー (Safari など) では、最上位フレーム (ページ全体のナビゲーションまたはポップアップのどちらか) で実行する必要があります。
+Web アプリとネイティブ アプリの更新トークンには、指定の有効期間はありません。 通常、更新トークンの有効期間は比較的長いです。 ただし、場合によっては、更新トークンの有効期限が切れる、失効する、または目的の操作のための十分な特権がないことがあります。 クライアント アプリケーションは、[トークン発行エンドポイントから返されるエラー](#error-codes-for-token-endpoint-errors)を予期して正しく処理する必要があります。 ただし、シングル ページ アプリでは有効期間が 24 時間のトークンを取得するため、新しい認証が毎日必要になります。  これは、サードパーティ Cookie が有効になっている場合は iframe で確認なしで実行できますが、サードパーティ Cookie なしのブラウザー (Safari など) では、最上位フレーム (ページ全体のナビゲーションまたはポップアップ ウィンドウのどちらか) で実行する必要があります。
 
 新しいアクセス トークンを取得するために使用されたときに、更新トークンが失効していないにもかかわらず、古い更新トークンを破棄することを求められます。 [OAuth 2.0 仕様](https://tools.ietf.org/html/rfc6749#section-6)には次のようにあります。"承認サーバーで新しい更新トークンが発行される場合があります。この場合、クライアントは古い更新トークンを破棄し、新しい更新トークンに置き換える必要があります。 承認サーバーは新しい更新トークンをクライアントに発行した後に、古い更新トークンを取り消す場合があります。"
 

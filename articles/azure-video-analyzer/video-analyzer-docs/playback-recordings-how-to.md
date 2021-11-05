@@ -3,14 +3,14 @@ title: ビデオの表示 - Azure Video Analyzer
 description: Azure Video Analyzer を使用して、クラウドにビデオを数週間から数か月にわたって録画する継続的なビデオ記録を行うことができます。 また、イベントベースの録画を使用して、記録を必要なクリップに制限することもできます。 さらに、Video Analyzer サービスを使用してカメラからビデオをキャプチャする場合は、キャプチャ中にビデオをストリーミングできます。 この記事では、このようなビデオを表示する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b98d68024857322c591ee2dc77af22ebb1492183
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 552daea0a5a19c7c9e11aca9b47d61ea112a42b3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048573"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846978"
 ---
 # <a name="viewing-of-videos"></a>ビデオの表示
 

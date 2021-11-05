@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 03c5d976010e136ab5b91efc632594253eedca1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 009f611e1c80f4c4e0e7bafaa80036d809b3393d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054668"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853075"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>ワークスペースのマネージド ID にアクセス許可を付与する
 
@@ -97,4 +97,4 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ワークスペースのマネージド ID](./synapse-workspace-managed-identity.md) の詳細を確認する
+[ワークスペースのマネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) の詳細を確認する

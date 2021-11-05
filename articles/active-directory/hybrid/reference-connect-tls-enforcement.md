@@ -15,12 +15,12 @@ ms.date: 9/14/2021
 ms.subservice: hybrid
 ms.author: rodejo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5489769eebf62aa365ce1f39dfd807763f6e2862
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9a869d4265de95001098068791d8b2adffd10347
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669875"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057459"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Azure AD Connect に対する TLS 1.2 の強制
 
@@ -110,6 +110,9 @@ $regSettings += Get-ADSyncToolsTls12RegValue $regKey 'DisabledByDefault'
 $regSettings
 
 ```
+適切な TLS 1.2 構成を示す出力の例
+
+![image](https://user-images.githubusercontent.com/38323403/138769930-2cdd290b-8f18-4f52-8a80-c12e5f8a56ba.png)
 
 ### <a name="powershell-script-to-enable-tls-12"></a>TLS 1.2 を有効にする PowerShell スクリプト
 Azure AD Connect サーバーで TLS 1.2 を適用するには、次の PowerShell スクリプトを使用できます。

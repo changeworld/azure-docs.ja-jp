@@ -7,16 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: d1d15fb4ff3bc2d820311b4f847c21236d83b6f3
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 4e15f2813a0aea04f63cc11b3273c4a91d44afb2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708774"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845876"
 ---
 # <a name="understanding-resource-sets"></a>リソース セットについて
 
 この記事は、Azure Purview がリソース セットを使用してデータ資産を論理リソースにマップする方法を理解するのに役立ちます。
+
 ## <a name="background-info"></a>背景情報
 
 大規模なデータ処理システムでは、通常、1 つのテーブルが複数のファイルとしてストレージに格納されます。 Azure Purview データ カタログでは、この概念がリソース セットを使用して表されます。 リソース セットは、カタログにおいて、ストレージ内の多数の資産を表す単一のオブジェクトです。
@@ -67,9 +68,6 @@ Purview では意図的に、Word、Excel、PDF など、ほとんどの種類�
 ### <a name="turning-on-advanced-resource-sets"></a>高度なリソース セットを有効にする
 
 すべての新しい Azure Purview インスタンスで、高度なリソース セットは既定でオフになります。 高度なリソース セットは、管理ハブの **アカウント情報** から有効にすることができます。
-
-> [!NOTE]
-> 2021 年 8 月 19 日より前に作成されたすべての Purview インスタンスでは、高度なリソース セットが既定で有効になっています。
 
 :::image type="content" source="media/concept-resource-sets/advanced-resource-set-toggle.png" alt-text="高度なリソース セットを有効にします。" border="true":::
 
@@ -130,6 +128,7 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 - 資産をリソース セットではないとして誤ってマークする
 
 Azure Purview がリソース セットとしてグループ化される資産を検出する方法や、カタログ内でのそれらの表示方法をカスタマイズまたはオーバーライドするには、管理センターでパターン ルールを定義します。 詳細な手順と構文については、[リソース セットのパターン ルール](how-to-resource-set-pattern-rules.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Purview の使用を開始するには、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。

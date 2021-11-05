@@ -1,35 +1,38 @@
 ---
-title: Azure Security Center への GCP アカウントの接続
-description: Azure Security Center から GCP リソースを監視します。
+title: GCP アカウントを Microsoft Defender for Cloud に接続する
+description: Microsoft Defender for Cloud からの GCP リソースの監視
 author: memildin
 ms.author: memildin
 ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 087a9d39cf3e5d361a8a2ea33f330aef727ea7b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1b7d5e5a418fd776197cdbc6108fc4871668292c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741981"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064812"
 ---
-#  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
+#  <a name="connect-your-gcp-accounts-to-microsoft-defender-for-cloud"></a>GCP アカウントを Microsoft Defender for Cloud に接続する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 通常、クラウド ワークロードは複数のクラウド プラットフォームにまたがるため、クラウド セキュリティサービスもそうである必要があります。
 
-Azure Security Center は、Azure、Amazon Web Services (AWS)、および Google Cloud Platform (GCP) のワークロードを保護します。
+Microsoft Defender for Cloud は、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードを保護します。
 
-GCP アカウントを Security Center にオンボードすると、GCP Security Command Center と Azure Security Center が統合されます。 そのため、Security Center は、この両方のクラウド環境全体を可視化および保護することで、以下を実現します。
+GCP アカウントを Defender for Cloud にオンボードすると、 GCP Security Command と Microsoft Defender for Cloud が統合されます。 そのため、Defender for Cloud は、この両方のクラウド環境全体を可視化および保護することで、以下を実現します。
 
 - セキュリティ構成ミスの検出
-- Security Center の推奨事項と GCP Security Command Center の検出結果を 1 つのビューに表示する
-- Security Center のセキュリティ スコアの計算に GCP リソースを組み込む
-- CIS 標準に基づく GCP Security Command Center の推奨事項を、Security Center の規制コンプライアンス ダッシュボードに統合する
+- Defender for Cloud の推奨事項と GCP Security Command Center の検出結果を 1 つのビューに表示する
+- Defender for Cloud のセキュリティ スコアの計算に GCP リソースを組み込む
+- CIS 標準に基づく GCP Security Command Center の推奨事項を Defender for Cloud の規制コンプライアンス ダッシュボードに統合する
 
-次のスクリーンショットでは、Security Center の概要ダッシュボードに GCP プロジェクトが表示されていることがわかります。
+次のスクリーンショットでは、Defender for Cloud の概要ダッシュボードに GCP プロジェクトが表示されていることがわかります。
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-account-in-overview.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-account-in-overview.png" alt-text="Defender for Cloud の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 
 ## <a name="availability"></a>可用性
@@ -37,21 +40,21 @@ GCP アカウントを Security Center にオンボードすると、GCP Securit
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
+|価格:|[Microsoft Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP アカウントを接続する
 
-Security Center から監視する組織ごとにコネクタを作成します。
+Defender for Cloud から監視する組織ごとにコネクタを作成します。
 
 GCP アカウントを特定の Azure サブスクリプションに接続するときは、[Google Cloud リソース階層](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#resource-hierarchy-detail)と次のガイドラインを考慮してください。
 
-- GCP アカウントは、"*組織*" レベルで ASC に接続できます
+- GCP アカウントは、"*組織*" レベルで Defender for Cloud に接続できます
 - 複数の組織を 1 つの Azure サブスクリプションに接続できます
 - 複数の組織を複数の Azure サブスクリプションに接続できます
-- 組織を接続すると、その組織内のすべての "*プロジェクト*" が Security Center に追加されます
+- 組織を接続すると、その組織内のすべての "*プロジェク* ト" が Defender for Cloud に追加されます
 
 GCP クラウド コネクタを作成するには、次の手順に従います。 
 
@@ -70,7 +73,7 @@ Security Health Analytics を初めて有効にしたときは、データが使
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>手順 2. GCP Security Command Center API を有効にする
 
-1. Google の **Cloud Console API ライブラリ** から、Azure Security Center に接続する組織内の各プロジェクトを選択します。
+1. Google の **Cloud Console API ライブラリ** から、Microsoft Defender for Cloud に接続する組織内の各プロジェクトを選択します。
 1. API ライブラリで、**Security Command Center API** を見つけて選択します。
 1. API のページで、 **[有効にする]** を選択します。
 
@@ -87,14 +90,14 @@ Security Command Center API の詳細については、[こちら](https://cloud
 1. **ナビゲーション メニュー** の **[IAM と管理]** のオプションで、 **[サービス アカウント]** を選択します。
 1. **[サービス アカウントを作成]** を選択します。
 1. アカウント名を入力し、 **[作成]** を選択します。
-1. **役割** として **[Security Center Admin Viewer]\(Security Center 管理者ビューアー\)** を指定し、 **[続行]** を選択します。
+1. **ロール** として **[Defender for Cloud Admin Viewer]\(Defender for Cloud 管理者ビューアー\)** を指定し、 **[続行]** を選択します。
 1. **[ユーザーにこのサービス アカウントへのアクセスを許可]** セクションは省略可能です。 **[完了]** を選択します。
 1. 作成したサービス アカウントの **[メール] の値** をコピーし、後で使用できるように保存します。
 1. **ナビゲーション メニュー** の **[IAM と管理]** のオプションで、 **[IAM]** を選択します。
     1. 組織レベルに切り替えます。
     1. **[追加]** を選択します。
     1. **[新しいメンバー]** フィールドに、先ほどコピーした **[メール] の値** を貼り付けます。
-    1. ロールとして **[Security Center Admin Viewer]\(Security Center 管理閲覧者\)** を指定し、 **[保存]** を選択します。
+    1. ロールとして **[Defender for Cloud Admin Viewer]\(Defender for Cloud 管理者ビューアー\)** を指定し、 **[保存]** を選択します。
         :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="関連する GCP のアクセス許可の設定。":::
 
 
@@ -107,8 +110,8 @@ Security Command Center API の詳細については、[こちら](https://cloud
 1. 後で使用するために、この JSON ファイルを保存します。
 
 
-### <a name="step-5-connect-gcp-to-security-center"></a>手順 5. GCP を Security Center に接続する
-1. Security Center のメニューから、 **[クラウド コネクタ]** を選択します。
+### <a name="step-5-connect-gcp-to-defender-for-cloud"></a>手順 5. GCP から Defender for Cloud に接続する
+1. Defender for Cloud のメニューから、 **[クラウド コネクタ]** を選択します。
 1. [add GCP account]\(GCP アカウントの追加\) を選択します。
 1. オンボード ページで次の操作を行い、 **[次へ]** を選択します。
     1. 選択したサブスクリプションを検証します。
@@ -121,35 +124,35 @@ Security Command Center API の詳細については、[こちら](https://cloud
 
 コネクタが正常に作成され、GCP Security Command Center が正しく構成されたら、次のようになります。
 
-- Security Center の規制コンプライアンス ダッシュボードに GCP CIS 標準が表示されます。
-- オンボードが完了してから 5 から 10 分後に、Security Center ポータルと規制コンプライアンス ダッシュボードに、GCP リソースのセキュリティに関する推奨事項が表示されます。 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Security Center の推奨事項ページの GCP リソースと推奨事項":::
+- Defender for Cloud の規制コンプライアンス ダッシュボードに GCP CIS 標準が表示されます。
+- GCP リソースへのセキュリティに関する推奨事項は、オンボードの完了後 5 から 10 分経過すると Defender for Cloud ポータルと規制コンプライアンス ダッシュボードに表示されます。:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Defender for Cloud の推奨事項ページの GCP リソースと推奨事項":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>GCP リソースの監視
 
-上記のように、Azure Security Center のセキュリティに関する推奨事項ページには、Azure リソースおよび AWS リソースと共に GCP リソースが表示され、真のマルチクラウド ビューが実現します。
+上記のように、Microsoft Defender for Cloud のセキュリティに関する推奨事項ページには、Azure および AWS リソースと共に GCP リソースが表示され、真のマルチクラウド ビューが実現します。
 
-リソースの種類別に、リソースのアクティブな推奨事項をすべて表示するには、Security Center の資産インベントリ ページを使用し、関心のある GCP リソースの種類にフィルターを適用します。
+リソースの種類別に、リソースのアクティブな推奨事項をすべて表示するには、Defender for Cloud の資産インベントリ ページを使用し、関心のある GCP リソースの種類にフィルターを適用します。
 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="GCP オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
 
 
-## <a name="faq---connecting-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続に関する FAQ
+## <a name="faq---connecting-gcp-accounts-to-microsoft-defender-for-cloud"></a>FAQ - Microsoft Defender for Cloud への GCP アカウントの接続
 
-### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>複数の GCP 組織を Security Center に接続できますか?
-はい。 Security Center の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
+### <a name="can-i-connect-multiple-gcp-organizations-to-defender-for-cloud"></a>複数の GCP 組織を Defender for Cloud に接続できますか?
+正解です。 Defender for Cloud の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
 
-Security Center から監視する GCP 組織ごとにコネクタを作成します。 組織を接続すると、その組織内のすべてのプロジェクトが Security Center に追加されます。
+Defender for Cloud から監視する GCP 組織ごとにコネクタを作成します。 組織を接続すると、その組織内のすべてのプロジェクトが Defender for Cloud に追加されます。
 
 Google Cloud リソース階層については、[Google のオンライン ドキュメント](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)をご覧ください。
 
 
-### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>GCP リソースを Security Center に接続するための API はありますか?
-はい。 REST API を使用して Security Center クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-defender-for-cloud"></a>GCP リソースを Defender for Cloud に接続するための API はありますか?
+正解です。 REST API を使用して Defender for Cloud クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-GCP アカウントの接続は、Azure Security Center で利用できるマルチクラウド エクスペリエンスの一部です。 関連情報については、次のページを参照してください。
+GCP アカウントの接続は、Microsoft Defender for Cloud で利用できるマルチクラウド エクスペリエンスの一部です。 関連情報については、次のページを参照してください。
 
-- [Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)
+- [AWS アカウントを Microsoft Defender for Cloud に接続する](quickstart-onboard-aws.md)
 - [Google Cloud リソース階層](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) -- Google Cloud リソース階層については、Google のオンライン ドキュメントをご覧ください

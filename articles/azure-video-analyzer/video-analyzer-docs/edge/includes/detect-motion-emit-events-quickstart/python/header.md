@@ -2,13 +2,13 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 03/18/2021
+ms.date: 11/04/2021
 ms.author: faneerde
-ms.openlocfilehash: e97aa8e0f8d9dd056a186dca6f5d8c3fc71e0472
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4ef45ebbeb4b264ff415dcd2f4d3be18b22f906
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030169"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861024"
 ---
 この記事は、Python で記述された[サンプル コード](https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-python)に基づいています。

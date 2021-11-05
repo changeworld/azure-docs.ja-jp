@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center でのカスタム セキュリティ ポリシーの作成 | Microsoft Docs
-description: Azure Security Center で監視される Azure カスタム ポリシー定義。
+title: Microsoft Defender for Cloud でカスタムセキュリティポリシーを作成する |Microsoft Docs
+description: Microsoft Defender for Cloud によって監視される Azure カスタムポリシー定義。
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -8,18 +8,21 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: 828dd2cc5b83737a313156876c54c290a2a67d73
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e596312807e2f6d5292c4910a7e2c3e9e7d75b3f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238831"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009987"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>カスタム セキュリティ イニシアチブとポリシーを作成する
 
-システムと環境のセキュリティ保護を支援するために、Azure Security Center ではセキュリティに関する推奨事項が生成されます。 これらの推奨事項は業界のベスト プラクティスに基づいており、すべてのお客様に提供される既定の汎用セキュリティ ポリシーに組み込まれています。 また、業界標準と規制基準に関する Security Center のナレッジから提供される場合もあります。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-この機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明されている規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
+システムと環境をセキュリティで保護するために、Microsoft Defender for Cloud はセキュリティに関する推奨事項を生成します。 これらの推奨事項は業界のベスト プラクティスに基づいており、すべてのお客様に提供される既定の汎用セキュリティ ポリシーに組み込まれています。 また、業界および規制標準に関するクラウドの知識についても、Defender から入手できます。
+
+この機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](regulatory-compliance-dashboard.md)」チュートリアルで説明されている規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
 
 [Azure Policy のドキュメント](../governance/policy/concepts/definition-structure.md#definition-location)で説明されているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
 
@@ -30,14 +33,14 @@ ms.locfileid: "112238831"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>イニシアティブをサブスクリプションに追加するには 
 
-1. Security Center のサイドバーから、 **[セキュリティ ポリシー]** ページを開きます。
+1. Defender for Cloud のメニューから、[セキュリティ ポリシー] **を選択します**。
 
 1. カスタム イニシアティブを追加するサブスクリプションまたは管理グループを選択します。
 
     [![カスタム ポリシーを作成するサブスクリプションの選択。](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Security Center でカスタム イニシアティブを評価および表示するためには、サブスクリプション レベル (またはそれ以上) で追加する必要があります。 使用可能な最も広いスコープを選択することをお勧めします。
+    > カスタムイニシアチブをクラウドの Defender で評価して表示するには、サブスクリプションレベル (またはそれ以降) でカスタムイニシアチブを追加する必要があります。 使用可能な最も広いスコープを選択することをお勧めします。
 
 1. [セキュリティ ポリシー] ページの [Your custom initiatives]\(カスタム イニシアティブ\) で、 **[カスタム イニシアティブの追加]** をクリックします。
 
@@ -60,11 +63,11 @@ ms.locfileid: "112238831"
     1. **[追加]** をクリックして、サブスクリプションに割り当てます。
 
     > [!NOTE]
-    > 新しいイニシアティブを作成するには、サブスクリプション所有者の資格情報が必要です。 Azure ロールの詳細については、「[Azure Security Center におけるアクセス許可](security-center-permissions.md)」をご覧ください。
+    > 新しいイニシアティブを作成するには、サブスクリプション所有者の資格情報が必要です。 Azure ロールの詳細については、「 [Microsoft Defender For Cloud のアクセス許可](permissions.md)」を参照してください。
 
     新しいイニシアチブが有効になり、次の 2 つの方法で影響を確認できます。
 
-    * Security Center のサイドバーの [ポリシーとコンプライアンス] で、 **[規制コンプライアンス]** を選択します。 コンプライアンス ダッシュボードが開き、組み込みイニシアチブと一緒に新しいカスタム イニシアチブが表示されます。
+    * Defender for Cloud メニューの  **規制遵守** を選択します。 コンプライアンス ダッシュボードが開き、組み込みイニシアチブと一緒に新しいカスタム イニシアチブが表示されます。
     
     * 定義したポリシーに環境が従っていない場合は、推奨事項を受け取り始めます。
 
@@ -78,7 +81,7 @@ ms.locfileid: "112238831"
 
 ## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>REST API を使用して Azure Policy でセキュリティ ポリシーを構成する
 
-Azure Policy とのネイティブ統合の一環として、Azure Security Center では、Azure Policy の REST API を利用してポリシー割り当てを作成できます。 次の手順では、ポリシー割り当ての作成と既存の割り当てのカスタマイズの手順について説明します。 
+Microsoft Defender for Cloudでは、Azure Policyとのネイティブな統合の一環として、Azure PolicyのREST APIを利用してポリシー割り当てを作成することができます。 次の手順では、ポリシー割り当ての作成と既存の割り当てのカスタマイズの手順について説明します。 
 
 Azure Policy で重要な概念: 
 
@@ -88,9 +91,9 @@ Azure Policy で重要な概念:
 
 - **割り当て** は、特定のスコープ (管理グループ、サブスクリプションなど) にイニシアティブまたはポリシーを適用することです 
 
-Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアチブ ([Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)) があります。 Azure リソースに対する Security Center のポリシーを評価するには、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。
+Defender for Cloud には、すべてのセキュリティポリシーを含む組み込みのイニシアチブ、 [Azure セキュリティベンチマーク](/security/benchmark/azure/introduction)があります。 Azureリソースに対するDefender for Cloudのポリシーを評価するには、評価したい管理グループ、またはサブスクリプションに割り当てを作成する必要があります。
 
-組み込みイニシアティブでは、既定で Security Center のポリシーがすべて有効になっています。 組み込みのイニシアチブから特定のポリシーを無効にすることもできます。 たとえば、**Web アプリケーション ファイアウォール** を除くすべての Security Center のポリシーを適用するには、ポリシーの effect パラメーターの値を **Disabled** に変更します。
+ビルトインの取り組みでは、Defender for Cloudのすべてのポリシーがデフォルトで有効になっています。 組み込みのイニシアチブから特定のポリシーを無効にすることもできます。 たとえば、**Web アプリケーション ファイアウォール** を除くすべての Security Center のポリシーを適用するには、ポリシーの effect パラメーターの値を **Disabled** に変更します。
 
 ## <a name="api-examples"></a>API の例
 
@@ -100,7 +103,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 - **{poicyAssignmentName}** には、関連するポリシー割り当ての名前を入力します
 - **{name}** には、名前、またはポリシーの変更を承認した管理者の名前を入力します
 
-この例では、サブスクリプションまたは管理グループで組み込み Security Center イニシアティブを割り当てる方法を示します
+この例では、サブスクリプションまたは管理グループに組み込みの Defender for Cloud イニシアチブを割り当てる方法を示します。
  
  ```
     PUT  
@@ -112,7 +115,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 
       "properties":{ 
 
-    "displayName":"Enable Monitoring in Azure Security Center", 
+    "displayName":"Enable Monitoring in Microsoft Defender for Cloud", 
 
     "metadata":{ 
 
@@ -129,7 +132,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
     } 
  ```
 
-この例では、次のポリシーを無効にして、サブスクリプションで組み込み Security Center イニシアティブを割り当てる方法を示します。 
+この例では、次のポリシーを無効にして、サブスクリプションに組み込みの Defender for Cloud イニシアチブを割り当てる方法を示します。 
 
 - システムの更新プログラム ("systemUpdatesMonitoringEffect") 
 
@@ -146,7 +149,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
     
       "properties":{ 
     
-    "displayName":"Enable Monitoring in Azure Security Center", 
+    "displayName":"Enable Monitoring in Microsoft Defender for Cloud", 
     
     "metadata":{ 
     
@@ -181,7 +184,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>詳細情報でのカスタム推奨事項の拡張
 
-Azure Security Center で提供される組み込みの推奨事項には、重大度レベルや修復手順などの詳細が含まれます。 この種の情報をカスタム推奨事項に追加して、Azure portal や、推奨事項にアクセスする場所で表示されるようにする場合は、REST API を使用する必要があります。 
+Microsoft Defender for Cloud に用意されている組み込みの推奨事項には、重大度レベルや修復手順などの詳細が含まれています。 この種の情報をカスタム推奨事項に追加して、Azure portal や、推奨事項にアクセスする場所で表示されるようにする場合は、REST API を使用する必要があります。 
 
 追加できる情報は次の 2 種類です。
 

@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: aedfbb879b158c525ae435f3118c34cdd08ecd7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d96e331727c1c4d306746c35565f759fcd12a4c8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077510"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860505"
 ---
-[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
+[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript)
 
 このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI と IoT エクスプローラーを使用して、Azure IoT ハブとデバイスを作成します。 次に Azure IoT device SDK サンプルを使用して、温度コントローラーを実行し、それをハブに安全に接続し、テレメトリを送信します。 温度コントローラーのサンプル アプリケーションはローカル コンピューター上で動作し、センサー データをシミュレートして IoT Hub に送信します。
 
@@ -37,7 +37,7 @@ Raspberry Pi に関する説明がある場合を除き、開発マシンに次�
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>デバイスを実行する
+## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 このセクションでは、Node.js SDK を使用して、デバイスから IoT hub にメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
 
 1. Windows CMD、PowerShell、または Bash などの新しいコンソールを開きます。 以下の手順では、このコンソールを使用して Node.js SDK をインストールし、Node.js のサンプル コードを操作します。
@@ -55,12 +55,12 @@ Raspberry Pi に関する説明がある場合を除き、開発マシンに次�
 
     **Windows**
     ```console
-    cd azure-iot-sdk-node\device\samples\javascript\pnp
+    cd azure-iot-sdk-node\device\samples\javascript
     ```
 
     **Linux または Raspberry Pi OS**
     ```console
-    cd azure-iot-sdk-node/device/samples/javascript/pnp
+    cd azure-iot-sdk-node/device/samples/javascript
     ```
 
 1. Azure IoT Node.js SDK および必要な依存関係をインストールします。
@@ -101,7 +101,7 @@ Raspberry Pi に関する説明がある場合を除き、開発マシンに次�
 1. 次のサンプル コードを実行します。
 
     ```console
-    node pnpTemperatureController.js
+    node pnp_temperature_controller.js
     ```
     > [!NOTE]
     > このコード サンプルでは、Azure IoT プラグ アンド プレイを使用しており、手動構成なしでソリューションにスマート デバイスを統合できます。  既定では、このドキュメントのほとんどのサンプルで IoT プラグ アンド プレイが使用されています。 IoT PnP の利点と、それを使用するケースと使用しないケースについて詳しくは、「[IoT プラグ アンド プレイとは](../articles/iot-develop/overview-iot-plug-and-play.md)」を参照してください。

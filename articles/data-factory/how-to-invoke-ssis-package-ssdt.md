@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019
-ms.date: 09/06/2020
-ms.openlocfilehash: 7ca8eeda244a75d9fd189425270b2b5525e694f3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/22/2021
+ms.openlocfilehash: 863bb76e3b1b9d3ee48e7342e5da9dd8ef15dfc1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787738"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843691"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
 

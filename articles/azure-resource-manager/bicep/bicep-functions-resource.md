@@ -4,13 +4,13 @@ description: Bicep ファイルでリソースの値取得に使用する関数�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/30/2021
-ms.openlocfilehash: 4cfbac80e9783dd9424a4b2ee63607fb6f2a7f17
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/25/2021
+ms.openlocfilehash: a14019e3cdf595efe0a32a7021333aa5b4f6a6b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361911"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087421"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep のリソース関数
 
@@ -116,7 +116,7 @@ Azure Key Vault からシークレットを返します。 `getSecret` 関数は
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | secretName | はい | string | Key Vault に格納されているシークレットの名前。 |
 
@@ -182,7 +182,7 @@ module sql './sql.bicep' = {
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | apiVersion |いいえ |string |このパラメーターを指定しない場合は、リソースの API バージョンが使用されます。 特定のバージョンで関数を実行する必要がある場合にのみ、カスタム API バージョンを指定します。 **yyyy-mm-dd** の形式を使用します。 |
 | functionValues |いいえ |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 |
@@ -191,7 +191,7 @@ module sql './sql.bicep' = {
 
 リスト関数は、リソース定義のプロパティで使用できます。 Bicep ファイルの outputs セクションでは、機密情報を公開するリスト関数を使用しないでください。 出力値はデプロイ履歴に格納されるため、悪意のあるユーザーによって取得される可能性があります。
 
-[プロパティ ループ](./loop-properties.md)で使用すると、リソース プロパティに式が代入されるため、`input` のリスト関数を使うことができます。 これらを `count` と一緒に使用することはできません。カウントは、list 関数が解決される前に決定される必要があるためです。
+[反復ループ](loops.md)と一緒に使用する場合は、 のリスト関数を使用できます。これは、式がリソース プロパティ`input` に割り当てられるためです。 これらを `count` と一緒に使用することはできません。カウントは、list 関数が解決される前に決定される必要があるためです。
 
 **list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 [条件式 **?:** 演算子](./operators-logical.md#conditional-expression--)を使用して、リソースがデプロイされているときにのみ関数が評価されるようにします。
 
@@ -421,7 +421,7 @@ list* の使用例を次の表にまとめています。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | はい | string | ゾーンのサポートについて確認するためのリソースの種類のリソース プロバイダーの名前空間。 |
 | resourceType | はい | string | ゾーンのサポートについて確認するためのリソースの種類。 |
@@ -468,7 +468,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 前の例からの出力は、3 つの配列を返します。
 
-| 名前 | Type | 値 |
+| 名前 | 型 | 値 |
 | ---- | ---- | ----- |
 | サポート対象 | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -522,8 +522,9 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 output blobAddress string = stg.properties.primaryEndpoints.blob
 ```
 
-詳細については、「[Reference resources](./compare-template-syntax.md#reference-resources) (参照リソース)」と「[JSON template reference function](../templates/template-functions-resource.md#reference) (JSON テンプレート reference 関数)」を参照してください。
+存在しないリソースを参照しようとすると、`NotFound`エラーが発生し、デプロイは失敗します。
 
+詳細については、「[Reference resources](./compare-template-syntax.md#reference-resources) (参照リソース)」と「[JSON template reference function](../templates/template-functions-resource.md#reference) (JSON テンプレート reference 関数)」を参照してください。
 
 ## <a name="resourceid"></a>resourceId
 
@@ -675,4 +676,4 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 ## <a name="next-steps"></a>次のステップ
 
 * 現在のデプロイから値を取得するには、「[Deployment value functions](./bicep-functions-deployment.md) (デプロイ値関数)」を参照してください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
+* リソースの種類を作成するときに指定した回数反復処理を行う場合は [Bicep での反復ループ](loops.md)を参照してください。

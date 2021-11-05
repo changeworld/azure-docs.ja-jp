@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 90e1600c54bb7bf7a405ca3748f15edc29ad53a6
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 0cd0b976ec511070432538e99b7a8e20001a0156
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043835"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058152"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
@@ -88,7 +88,7 @@ ms.locfileid: "130043835"
   - クレジット カード番号、社会保障番号 (SSN)、医療記録、あるいは政府機関または業界のコンプライアンス対応団体によって規制されているその他のデータなどの機密データ。
   - マーケティングまたはコミュニケーション設定、ユーザーの行動、および分析情報。
 
-### <a name="directory-clean-up"></a>ディレクトリのクリーンアップ
+### <a name="directory-cleanup"></a>ディレクトリのクリーンアップ
 
 移行プロセスを開始する前に、この機会を利用してディレクトリをクリーンアップしてください。
 

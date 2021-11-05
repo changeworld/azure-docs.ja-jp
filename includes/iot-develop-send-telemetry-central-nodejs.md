@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: e93f9ddddaf892cb23560b3bcc7b5f45d4821e44
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 23970d887c1e3d2523c69ae0ace25fdc7b0094ff
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032745"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860653"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
 
@@ -32,7 +32,7 @@ ms.locfileid: "131032745"
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>デバイスを実行する
+## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 このセクションでは、ローカル環境を構成し、Azure IoT Node.js device SDK をインストールして、温度コントローラーを作成するサンプルを実行します。
 
 ### <a name="configure-your-environment"></a>環境を構成する

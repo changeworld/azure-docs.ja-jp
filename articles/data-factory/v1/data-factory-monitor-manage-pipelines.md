@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31c8d885f5139f26cf2fb72ea0ceb0624c8945bf
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 44bbb2e9d5a599aad3e8f705dcc3ba4602e262ca
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264372"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073284"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -214,19 +214,22 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png" alt-text="エラーのあるアクティビティ実行詳細ブレード":::     
 
 #### <a name="use-powershell-to-debug-an-error"></a>PowerShell を使用してエラーをデバッグする
+
 1. **PowerShell** を起動します。
-2. **Get-AzDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。        
+2. **Get-AzDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。
 
-    ```powershell   
+    ```powershell
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
-    ```   
-   次に例を示します。
+    ```
 
-    ```powershell   
+    次に例を示します。
+
+    ```powershell
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    **StartDateTime** を、ご使用のパイプラインの開始時刻で置き換えます。 
+
 3. **Get-AzDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
 
     ```powershell   
@@ -236,14 +239,15 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
     次に例を示します。
 
-    ```powershell   
+    ```powershell
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     StartDateTime の値は、前の手順でメモしたエラーまたは問題のあるスライスの開始日時です。 日時は二重引用符で囲む必要があります。
+
 4. エラーの詳細を含む以下のような出力結果が表示されます。
 
-    ```   
+    ```output
     Id                      : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
     ResourceGroupName       : ADF
     DataFactoryName         : LogProcessingFactory3
@@ -265,6 +269,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
+
 5. 出力結果の ID 値を使用して **Save-AzDataFactoryLog** コマンドレットを実行し、このコマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
     ```powershell

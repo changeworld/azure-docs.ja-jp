@@ -8,12 +8,12 @@ ms.date: 10/14/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 2ed6da37d1e0e2cd61a6954903f7233f851c75bc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: b2999019ce991ef8a8bbb9e1087b22190a6c54bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047944"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022457"
 ---
 # <a name="premium-block-blob-storage-accounts"></a>Premium ブロック BLOB ストレージ アカウント
 
@@ -156,7 +156,7 @@ Spark クラスターにデータ処理パイプラインをデプロイして�
 
 ### <a name="check-for-blob-storage-feature-compatibility"></a>Blob ストレージ機能の互換性を確認する
 
-一部の BLOB ストレージ機能はまだサポートされていないか、Premium ブロック BLOB ストレージ アカウントでは部分的にしかサポートされていません。 Premium を選択する前に、「[Azure ストレージ アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」の記事を参照し、使用する予定の機能がお使いのアカウントで完全にサポートされているかどうかを判断してください。 機能のサポートは常に拡張されているため、この記事の更新について定期的に確認してください。
+一部の BLOB ストレージ機能はまだサポートされていないか、Premium ブロック BLOB ストレージ アカウントでは部分的にしかサポートされていません。 Premium を選択する前に、「[Azure ストレージ アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」という記事を確認し、使用する予定の機能がお使いのアカウントで完全にサポートされているかどうかを判断してください。 機能のサポートは常に拡張されているため、この記事の更新について定期的に確認してください。
 
 ### <a name="create-a-new-storage-account"></a>新しいストレージ アカウントを作成する
 
@@ -166,7 +166,7 @@ Premium ブロック BLOB ストレージ アカウントを作成するには�
 > ![BlockBlobStorage アカウントの作成](./media/storage-blob-block-blob-premium/create-block-blob-storage-account.png)
 
 > [!NOTE]
-> 一部の BLOB ストレージ機能はまだサポートされていないか、Premium ブロック BLOB ストレージ アカウントでは部分的にしかサポートされていません。 Premium を選択する前に、「[Azure ストレージ アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」の記事を参照し、使用する予定の機能がお使いのアカウントで完全にサポートされているかどうかを判断してください。 機能のサポートは常に拡張されているため、この記事の更新について定期的に確認してください。
+> 一部の BLOB ストレージ機能はまだサポートされていないか、Premium ブロック BLOB ストレージ アカウントでは部分的にしかサポートされていません。 Premium を選択する前に、「[Azure ストレージ アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」という記事を確認し、使用する予定の機能がお使いのアカウントで完全にサポートされているかどうかを判断してください。 機能のサポートは常に拡張されているため、この記事の更新について定期的に確認してください。
 
 ストレージ アカウントを分析に使用する場合は、Premium ブロック BLOB ストレージ アカウントと共に Azure Data Lake Storage Gen2 を使用することが強く推奨されます。 Azure Data Lake Storage Gen2 の機能をロック解除するには、**[ストレージ アカウントの作成]** ページの **[詳細設定]** タブで **[階層型名前空間]** 設定を有効にします。 
 

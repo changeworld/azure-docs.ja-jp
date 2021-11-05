@@ -5,14 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0f73cc08b2e6e44508a6535ba0d6c420e998a011
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d1cf4c18c4722c327d9d74569e7709d11068dc7c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732028"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087071"
 ---
 # <a name="about-bastion-configuration-settings"></a>Bastion の構成設定について
 
@@ -22,8 +23,8 @@ ms.locfileid: "113732028"
 
 SKU はサービス レベルとも呼ばれます。 Azure Bastion では、Basic と Standard の 2 種類の SKU がサポートされています。 SKU は、Bastion を構成するときのワークフロー中に Azure portal 内で構成されます。 [Basic SKU は Standard SKU にアップグレード](#upgradesku)できます。
 
-* **Basic SKU** は基本機能を備えています。この機能により、Azure Bastion は、ターゲット アプリケーションの VM 上でパブリック IP アドレスを公開することなく、Virtual Machines (VM) への RDP/SSH 接続を管理できます。 
-* **Standard SKU** は、**プレビュー段階** にあります。 Standard SKU を使用すると、Premium の機能により、Azure Bastion によるさらに大規模なリモート接続が可能になります。 
+* **Basic SKU** は基本機能を備えています。この機能により、Azure Bastion は、ターゲット アプリケーションの VM 上でパブリック IP アドレスを公開することなく、Virtual Machines (VM) への RDP/SSH 接続を管理できます。
+* Standard SKU を使用すると、Premium の機能により、Azure Bastion によるさらに大規模なリモート接続が可能になります。
 
 次の表に、機能と対応する SKU を示します。 
 
@@ -31,17 +32,17 @@ SKU はサービス レベルとも呼ばれます。 Azure Bastion では、Bas
 
 ### <a name="configuration-methods"></a>構成方法
 
-プレビュー期間中に Standard SKU を指定するには、Azure portal を使用する必要があります。 Azure CLI または Azure PowerShell を使用して Bastion を構成する場合、SKU を指定することはできません。既定値は Basic SKU です。
+現時点では、Standard SKU を指定する場合は、Azure portal を使用する必要があります。 Azure CLI または Azure PowerShell を使用して Bastion を構成する場合、SKU を指定することはできません。既定値は Basic SKU です。
 
 | 方法 | 値 | リンク |
 | --- | --- | --- |
-| Azure portal | サービス レベル: Basic <br>Standard (プレビュー) | [クイックスタート: VM 設定から Bastion を構成する](quickstart-host-portal.md)<br>[チュートリアル - Bastion を構成する](tutorial-create-host-portal.md) |
+| Azure portal | サービス レベル: Basic <br>Standard | [クイックスタート: VM 設定から Bastion を構成する](quickstart-host-portal.md)<br>[チュートリアル - Bastion を構成する](tutorial-create-host-portal.md) |
 | Azure PowerShell | Basic のみ - 設定なし |[Bastion を構成する - PowerShell](bastion-create-host-powershell.md) |
 | Azure CLI |  Basic のみ - 設定なし | [Bastion を構成する - CLI](create-host-cli.md) |
 
 ### <a name="upgrade-a-sku"></a><a name="upgradesku"></a>SKU のアップグレード
 
-Azure Bastion では、Basic SKU から Standard SKU へのアップグレードがサポートされています。 Standard SKU は、プレビュー段階にあります。 
+Azure Bastion では、Basic SKU から Standard SKU へのアップグレードがサポートされています。
 
 > [!NOTE]
 > Standard SKU から Basic SKU へのダウングレードはサポートされていません。 ダウングレードするには、Azure Bastion を削除して再作成する必要があります。
@@ -53,9 +54,9 @@ Azure Bastion では、Basic SKU から Standard SKU へのアップグレード
 
 | 方法 | 値 | リンク |
 | --- | --- | --- |
-| Azure portal |階層  | [SKU をアップグレードする - プレビュー](upgrade-sku.md)|
+| Azure portal |階層  | [SKU のアップグレード](upgrade-sku.md)|
 
-## <a name="instances-and-host-scaling-preview"></a><a name="instance"></a>インスタンスとホストのスケーリング (プレビュー)
+## <a name="instances-and-host-scaling"></a><a name="instance"></a>インスタンスとホストのスケーリング
 
 インスタンスとは、Azure Bastion を構成するときに作成される、最適化された Azure VM のことです。 これは Azure によって完全に管理され、Azure Bastion に必要なすべてのプロセスを実行します。 インスタンスは、スケール ユニットとも呼ばれます。 クライアント VM には、Azure Bastion インスタンス経由で接続します。 Basic SKU を使用して Azure Bastion を構成すると、2 つのインスタンスが作成されます。 Standard SKU を使用する場合は、インスタンスの数を指定できます。 これは **ホストのスケーリング** と呼ばれます。 
 
@@ -69,7 +70,7 @@ Azure Bastion では、Basic SKU から Standard SKU へのアップグレード
 
 | 方法 | 値 | リンク |
 | --- | --- | --- |
-| Azure portal |インスタンス数  | [ホストのスケーリングを構成する - プレビュー](configure-host-scaling.md)|
+| Azure portal |インスタンス数  | [ホストのスケーリングの構成](configure-host-scaling.md)|
 
 
 ## <a name="azure-bastion-subnet"></a><a name="subnet"></a>Azure Bastion サブネット

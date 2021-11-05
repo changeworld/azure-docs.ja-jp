@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/11/2021
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 5a76287385e3e24485d9ec76126eafd3c818a57c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: fae859e0b762a36378819d48325dda0077407628
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130248623"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012380"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 

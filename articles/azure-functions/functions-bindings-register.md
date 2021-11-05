@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 7267e733971b2abed258ca815a010b13938bc2a6
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: b847243543eb8667a38d253e7eaad215af29e7b2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613474"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852341"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -51,6 +51,7 @@ Java、JavaScript、PowerShell、Python、およびカスタム ハンドラー�
 | --- | --- | --- |
 | 1.x | `[1.*, 2.0.0)` | バンドルを生成するために使用される [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) を参照してください |
 | 2.x | `[2.*, 3.0.0)` | バンドルを生成するために使用される [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) を参照してください |
+| 3.x | `[3.3.0, 4.0.0)` | バンドルを生成するために使用される [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v3.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) を参照してください |
 
 > [!NOTE]
 > host.json でカスタムのバージョン範囲を指定することもできますが、この表にあるバージョンの値を使用することをお勧めします。
@@ -92,7 +93,7 @@ Core Tools で認識されないバインドが関数アプリで使用されて
 次のコマンドを使用し、特定のバージョンの特定の拡張機能パッケージをインストールします。今回は、Storage 拡張機能です。
 
 ```command
-func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 4.0.2
+func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 5.0.0
 ```
 
 詳細については、[`func extensions install` コマンド](functions-core-tools-reference.md#func-extensions-install)を参照してください。
@@ -129,6 +130,6 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 例の中の `<TARGET_VERSION>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバンドの例](./functions-bindings-example.md)

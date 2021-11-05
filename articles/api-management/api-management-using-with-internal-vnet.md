@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee5d0ac639cbd36215df5545d684909af3acd748
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6dc297736403b6124b27f34462ffaee0bfa4cf4a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563840"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845781"
 ---
 # <a name="connect-to-a-virtual-network-in-internal-mode-using-azure-api-management"></a>Azure API Management を使用して内部モデルで仮想ネットワークに接続する 
 Azure Virtual Network (VNET) では、Azure API Management からさまざまな VPN テクノロジを使用して接続を確立することで、インターネットからはアクセスできない API を管理することができます。 API Management は、[外部](./api-management-using-with-vnet.md)モードまたは内部モードでデプロイすることができます。 VNET 接続のオプション、要件、および考慮事項については、[Azure API Management での仮想ネットワークの使用](virtual-network-concepts.md)に関するページを参照してください。
@@ -152,7 +152,6 @@ API Management サービス (たとえば `contosointernalvnet`) を作成する
 
 これで、すべてのサービス エンドポイントに、作成した仮想マシンからアクセスできるようになります。
 
-また、VNET 内でカスタム DNS サーバーを使用している場合は、DNS A レコードを作成して、VNET 内のどこからでもこれらのエンドポイントにアクセスできます。
 
 ### <a name="access-on-custom-domain-names"></a>カスタム ドメイン名でのアクセス
 

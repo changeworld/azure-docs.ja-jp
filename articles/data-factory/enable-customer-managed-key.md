@@ -6,14 +6,14 @@ ms.author: weetok
 ms.service: data-factory
 ms.subservice: security
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/22/2021
 ms.reviewer: mariozi
-ms.openlocfilehash: 725ebc0dbb8b037dcfcde8d154353fd7cf0a1a59
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: b2af772d4f61f933fc6801827233038f8c8919ad
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208100"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849335"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>カスタマー マネージド キーを使用した Azure Data Factory の暗号化
 

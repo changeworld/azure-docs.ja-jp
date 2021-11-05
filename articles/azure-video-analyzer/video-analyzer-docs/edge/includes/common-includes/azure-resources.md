@@ -2,15 +2,15 @@
 author: naiteeks
 ms.topic: include
 ms.service: azure-video-analyzer
-ms.date: 04/20/2021
+ms.date: 11/04/2021
 ms.author: juliako
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f3fe037ab3b3f976536f7f0563cfc16bdfa5ce71
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5a834a4c33ebbffcf4b335e7116b134164941231
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030051"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861449"
 ---
 デプロイには約 **20 分** かかります。 完了すると、次のような特定の Azure リソースが Azure サブスクリプションにデプロイされます。
 

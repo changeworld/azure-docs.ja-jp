@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 6c295a5148f4821e3bd395a95c5b98e298da5077
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ffe45b62cbd0d6d83ad58cd1f4aef82407b2735b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610225"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077507"
 ---
-[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI と IoT エクスプローラーを使用して、Azure IoT ハブとデバイスを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それをハブに安全に接続して、テレメトリを送信します。
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI と IoT エクスプローラーを使用して、Azure IoT ハブとデバイスを作成します。 次に Azure IoT device SDK サンプルを使用して、温度コントローラーを実行し、それをハブに安全に接続し、テレメトリを送信します。 温度コントローラーのサンプル アプリケーションはローカル コンピューター上で動作し、センサー データをシミュレートして IoT Hub に送信します。
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
@@ -30,8 +30,8 @@ ms.locfileid: "128610225"
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-simulated-device"></a>シミュレートされたデバイスを実行する
-このセクションでは、Java SDK を使用して、シミュレートされたデバイスから対象の IoT ハブにメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
+## <a name="run-a-device"></a>デバイスを実行する
+このセクションでは、Java SDK を使用して、デバイスから対象のIoTハブにメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
 
 ### <a name="configure-your-environment"></a>環境を構成する
 1. コンソールを開き、Azure IoT Java device SDK をインストールし、コード サンプルをビルドして実行します。 このコンソールは次の手順で使用します。
@@ -39,7 +39,7 @@ ms.locfileid: "128610225"
     > [!NOTE]
     > Azure CLI のローカル インストールを使用している場合は、次の 2 つのコンソール ウィンドウが開きます。 このセクションのコマンドは、CLI で使用していたものではなく、必ずこの開いたコンソールに入力してください。
 
-1. シミュレートされたデバイスを Azure IoT に接続できるよう、次の環境変数を設定します。
+1. 以下の環境変数を設定し、デバイスがAzure IoTに接続できるようにします。
     * `IOTHUB_DEVICE_CONNECTION_STRING` という環境変数を設定します。 変数の値には、前のセクションで保存したデバイス接続文字列を使用します。
     * `IOTHUB_DEVICE_SECURITY_TYPE` という環境変数を設定します。 変数には、リテラル文字列値 `connectionString` を使用します。
 
@@ -111,7 +111,7 @@ Azure IoT エクスプローラーでテレメトリを表示するには:
 
 Azure CLI を使用してデバイス テレメトリを表示するには:
 
-1. [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) コマンドを実行して、シミュレートされたデバイスから IoT ハブに送信されるイベントを監視します。 Azure IoT で以前に作成した、デバイスと IoT ハブの名前を使用します。
+1. [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) コマンドを実行して、デバイスから IoT ハブに送信するイベントをモニターします。 Azure IoT で以前に作成した、デバイスと IoT ハブの名前を使用します。
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

@@ -19,12 +19,12 @@ items:
     items:
       - name: IoT データ フロー
         href: iot-data-flow.md
-  - name: 操作方法ガイド
+  - name: 使い方ガイド
     expanded: true
     items:
       - name: Azure IoT Hub を通じてデバイス データを受信する
         href: device-data-through-iot-hub.md
-      - name: デバイス マッピングを使用する
+      - name: デバイスマッピングを使用する
         href: how-to-use-device-mapping-iot.md
       - name: FHIR 変換先マッピングを使用する
         href: how-to-use-fhir-mapping-iot.md

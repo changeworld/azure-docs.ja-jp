@@ -3,14 +3,14 @@ title: Video Analyzer プレーヤー ウィジェットの使用
 description: この記事では、Video Analyzer プレーヤー ウィジェットをアプリケーションに追加する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4617d7db16d674ff74419fc43744ff04b9e239cb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 44d14f7dc2977f39276e4c57a4d35d5e28b31a3d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012057"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845455"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Azure Video Analyzer プレーヤー ウィジェットを使用する
 

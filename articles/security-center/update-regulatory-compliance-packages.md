@@ -1,29 +1,32 @@
 ---
-title: Azure Security Center の規制コンプライアンス ダッシュボードの使用
-description: Security Center の規制コンプライアンス ダッシュボードで規制基準を追加および削除する方法について説明します
+title: Microsoft Defender for Cloud の法令遵守ダッシュボード
+description: Defender for Cloud の法令遵守ダッシュボードで規制基準を追加および削除する方法について説明します
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: 523375ff69d6139a1e910b9253a6816235bfecc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d5d54fe73c417f3d79c518ec1e78bade71135cfb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741971"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037391"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
-Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 **規制コンプライアンス ダッシュボード** では、特定のコンプライアンス要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender for Cloud では、リソースの構成と業界標準、規制、ベンチマークの要件が継続的に比較されます。 **規制コンプライアンス ダッシュボード** では、特定のコンプライアンス要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
 
 > [!TIP]
-> Security Center の規制コンプライアンス ダッシュボードの詳細については、[よくあるご質問](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)を参照してください。
+> [よく寄せられる質問](regulatory-compliance-dashboard.md#faq---regulatory-compliance-dashboard)については、「Defender for Cloud の法令順守ダッシュボード」を参照してください。
 
-## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Security Center では、規制コンプライアンス標準はどのように表されますか?
+## <a name="how-are-regulatory-compliance-standards-represented-in-defender-for-cloud"></a>Defender では、規制遵守の基準はどのようにして Defender で表されますか?
 
-Security Center の規制コンプライアンス ダッシュボードでは、業界標準、規制基準、ベンチマークが表されます。 各標準は、Azure Policy で定義されたイニシアチブです。
+業界標準、規制標準、およびベンチマークは、クラウドの規制遵守ダッシュボードの Defender で表現されています。 各標準は、Azure Policy で定義されたイニシアチブです。
 
 評価としてマップされたコンプライアンス データをダッシュボードに表示するには、**Security Policy** ページ内から管理グループまたはサブスクリプションにコンプライアンス標準を追加します。 Azure Policy とイニシアチブの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
 
@@ -32,7 +35,7 @@ Security Center の規制コンプライアンス ダッシュボードでは、
 Microsoft では規制基準自体を追跡し、一部のパッケージの適用範囲を経時的かつ自動的に改善しています。 Microsoft がイニシアティブの新しいコンテンツをリリースすると、そのコンテンツは、標準のコントロールにマップされた新しいポリシーとしてダッシュボードに自動的に表示されます。
 
 
-## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Security Center では、どのような規制コンプライアンス標準を使用できますか?
+## <a name="what-regulatory-compliance-standards-are-available-in-defender-for-cloud"></a>Defender for Cloud では、どのような規制遵守基準を利用できますか?
 
 既定で、すべてのサブスクリプションに **Azure セキュリティ ベンチマーク** が割り当てられています。 これは、Microsoft が作成した、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 [Azure セキュリティ ベンチマークの詳細を確認してください](/security/benchmark/azure/introduction)。
 
@@ -53,10 +56,15 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 次の手順は、サポートされている規制基準のいずれかへの準拠を監視するためのパッケージを追加する方法を示しています。
 
-> [!NOTE]
-> ダッシュボードに標準を追加するには、サブスクリプションで Azure Defender が有効になっている必要があります。 また、所有者またはポリシーの共同作成者であるユーザーのみが、コンプライアンス標準を追加するために必要なアクセス許可を持っています。 
+### <a name="prerequisites"></a>前提条件
+ダッシュボードに標準を追加するには:
 
-1. Security Center のサイドバーで、 **[規制コンプライアンス]** を選択して、規制コンプライアンス ダッシュボードを開きます。 ここで、現在選択されているサブスクリプションに割り当てられているコンプライアンス標準を確認できます。   
+- サブスクリプションでは、クラウドの強化されたセキュリティ機能について Defender が有効になっている必要があります
+- ユーザーには、所有者またはポリシーの共同作成者のアクセス許可が必要です。
+
+### <a name="add-a-standard"></a>標準の追加
+
+1. Defender for Cloud メニューで、 **規制遵守** を選択して法令遵守ダッシュボードを開きます。 ここで、現在選択されているサブスクリプションに割り当てられているコンプライアンス標準を確認できます。   
 
 1. ページの上部から、 **[コンプライアンス ポリシーの管理]** を選択します。 [ポリシー管理] ページが表示されます。
 
@@ -79,18 +87,18 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
     - **CMMC レベル 3**
     - **New Zealand ISM Restricted**
     
-    ![Azure Security Center の規制コンプライアンス ダッシュボードへの規制基準の追加。](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Microsoft Defender for Cloud の法令順守ダッシュボードに規制標準を追加します。](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. **[追加]** を選択し、スコープ、パラメーター、修復など、特定のイニシアチブに関して必要な詳細をすべて入力します。
 
-1. Security Center のサイドバーで、再度 **[規制コンプライアンス]** を選択して、規制コンプライアンス ダッシュボードに戻ります。
+1. Defender for Cloud のメニューで、 **[規制遵守]** をもう一度選択して、法令遵守ダッシュボードに戻ります。
 
     業界標準および規制基準の一覧に新しい標準が表示されます。 
 
     > [!NOTE]
     > 新しく追加された標準がコンプライアンス ダッシュボードに表示されるまでに数時間かかることがあります。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード。" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/regulatory-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード。" lightbox="./media/regulatory-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>ダッシュボードから標準を削除する
 
@@ -98,7 +106,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 標準を削除するには:
 
-1. Security Center のメニューから、 **[セキュリティ ポリシー]** を選択します。
+1. Defender for Cloud のメニューから、[セキュリティ ポリシー] **を選択します**。
 
 1. 標準を削除する、該当するサブスクリプションを選択します。
 
@@ -107,7 +115,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
     [セキュリティ ポリシー] ページが開きます。 選択したサブスクリプションの、既定のポリシー、業界標準と規制基準、および作成したカスタム イニシアチブが表示されます。
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Azure Security Center の規制コンプライアンス ダッシュボードから規制基準を削除する。":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Microsoft Defender for Cloud の法令遵守ダッシュボードから規制標準を削除します。":::
 
 1. 削除する標準に対応する **[無効]** を選択します。 確認ウィンドウが表示されます。
 
@@ -123,5 +131,5 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 関連資料については、次のページを参照してください。
 
 - [Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)
-- [Security Center の規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md) - Security Center および外部のツールを使用して規制コンプライアンス データを追跡およびエクスポートする方法について説明します。
+- [クラウドの法令遵守ダッシュボードの defender](regulatory-compliance-dashboard.md) -クラウドおよび外部ツールの defender を使用して規制遵守データを追跡およびエクスポートする方法について説明します
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)

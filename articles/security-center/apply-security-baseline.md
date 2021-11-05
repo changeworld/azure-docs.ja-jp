@@ -1,20 +1,23 @@
 ---
-title: Azure セキュリティ ベースラインと Azure Security Center を使用して Windows と Linux OS のセキュリティを強化する
-description: Azure Security Center において、ユーザーによる OS のセキュリティ強化と Azure セキュリティ ベンチマークのガイダンスを比較する際にゲスト構成がどのように使用されているのかについて説明します
+title: Azure のセキュリティベースラインと Microsoft Defender for Cloud を使用して、Windows と Linux OS を強化する
+description: Microsoft Defender for Cloud がゲスト構成を使用して、Azure セキュリティベンチマークのガイダンスと OS のセキュリティ強化を比較する方法について説明します
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: memildin
-ms.openlocfilehash: 9a15a87eb5f00316f88109e05e069032de795807
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a48f95c3bedd291a3639f7aabc97eb92c25d735f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129435969"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010405"
 ---
 # <a name="apply-azure-security-baselines-to-machines"></a>マシンに Azure セキュリティ ベースラインを適用する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 マシンの攻撃面を減らし、既知のリスクを回避するには、オペレーティング システム (OS) を可能な限り安全に構成することが重要です。
 
@@ -37,7 +40,7 @@ Azure セキュリティ ベンチマークには、OS のセキュリティ強�
 
 ## <a name="what-are-the-hardening-recommendations"></a>セキュリティ強化の推奨事項は何ですか?
 
-Azure Security Center には、環境内の Windows マシンと Linux マシンの構成が Azure セキュリティ ベースラインの構成を満たしているかどうかを確認する 2 つの推奨事項が含まれています。
+Microsoft Defender for Cloud には、環境内の Windows と Linux マシンの構成が Azure のセキュリティベースライン構成を満たしているかどうかを確認する2つの推奨事項が含まれています。
 
 - **Windows** マシンの場合、[Windows マシンのセキュリティ構成の脆弱性を修復する必要がある (Powered by ゲスト構成)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1f655fb7-63ca-4980-91a3-56dbc2b715c6) によって、構成と [Windows セキュリティ ベースライン](../governance/policy/samples/guest-configuration-baseline-windows.md)の比較が行われます。
 - **Linux** マシンの場合、[Linux マシンのセキュリティ構成の脆弱性を修復する必要がある (Powered by ゲスト構成)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/8c3d9ad0-3639-4686-9cd2-2b2ab2609bda) によって、構成と [Linux セキュリティ ベースライン](../governance/policy/samples/guest-configuration-baseline-linux.md)の比較が行われます。
@@ -98,7 +101,7 @@ Azure Security Center には、環境内の Windows マシンと Linux マシン
 |                                                                   |                                                                                                                                                                                |
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Security Center のゲスト構成に関する推奨事項を使用して、OS のセキュリティ強化と Azure セキュリティ ベースラインを比較する方法について説明しました。
+このドキュメントでは、クラウドのゲスト構成に関する推奨事項に Defender を使用して、OS のセキュリティ強化と Azure のセキュリティベースラインを比較する方法について説明しました。
 
 これらの構成設定に関する詳細については、以下を参照してください。
 

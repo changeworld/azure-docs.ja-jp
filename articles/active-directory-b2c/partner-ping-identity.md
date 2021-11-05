@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 04aa6f6a7f99eed32c12cf5459c7a7e49089ce6c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5c7938e9c80cbce1128981516ccac2adcbcb8949
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962313"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044534"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>チュートリアル:セキュリティで保護されたハイブリッド アクセスのために Azure Active Directory B2C で Ping Identity を構成する
 
@@ -182,12 +182,12 @@ PingFederate を PingAccess のトークン プロバイダーとして構成す
 5. **属性マッピング** のテーブルで、必要なマッピングを指定します。 たとえば、次のように入力します。
 
    属性名 | ヘッダー名 |
-   |-------|--------|
-   |upn | x-userprinciplename |
-   |email   |    x-email  |
-   |oid   | x-oid  |
-   |scp   |     x-scope |
-   |amr    |    x-amr    |
+   |---|---|
+   | 'upn' | x-userprincipalname |
+   | 'email' | x-email |
+   | 'oid' | x-oid |
+   | 'scp' | x-scope |
+   | 'amr' | x-amr |
 
 6. **[保存]** を選びます。
 

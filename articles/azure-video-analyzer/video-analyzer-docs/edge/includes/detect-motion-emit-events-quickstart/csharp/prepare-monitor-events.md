@@ -2,14 +2,14 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 05/05/2021
+ms.date: 11/04/2021
 ms.author: faneerde
-ms.openlocfilehash: 5f8fd87a6eaa04cde7f5edde20b5debbe872c2f8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2bb305673897daa264dafc9b766061a01717099a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030097"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860489"
 ---
 Video Analyzer エッジ モジュールを使用して、受信したライブ ビデオ ストリーム内で動きを検出し、イベントを IoT Hub に送信します。 それらのイベントを確認するには、次の手順に従います。
 

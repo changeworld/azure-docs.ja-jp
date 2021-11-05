@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 2385bfead10efc82e0a1f3c8f0f02f1cd8d9f2f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275508"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019269"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>BLOB リハイドレート イベントに応答して Azure 関数を実行する
 
@@ -253,7 +253,7 @@ Azure 関数のコードに変更を加えるたびに、更新された関数�
 
 イベントに応答して実行できる Azure 関数を含む関数アプリが完成しました。 次の手順では、ストレージ アカウントからイベント サブスクリプションを作成します。 イベント サブスクリプションでは、ストレージ アカウント内の BLOB に対する操作への応答として Event Grid を通じてイベントを発行するようにストレージ アカウントを構成します。 Event Grid により、指定したイベント ハンドラー エンドポイントにイベントが送信されます。 この場合、イベント ハンドラーは、前のセクションで作成した Azure 関数です。
 
-イベント サブスクリプションを作成するときに、イベント ハンドラーに送信されるイベントをフィルター処理できます。 アーカイブ層から BLOB をリハイドレートするときにキャプチャするイベントは、[BLOB 層の設定](/rest/api/storageservices/set-blob-tier)操作に対応する **Microsoft.Storage.BlobTierChanged** と、[BLOB のコピー](/rest/api/storageservices/copy-blob)または [URL からの BLOB のコピー](/rest/api/storageservices/copy-blob-from-url) 操作に対応する **Microsoft.Storage.BlobCreated** イベントです。 シナリオに応じて、これらのイベントのうち 1 つだけを処理します。
+イベント サブスクリプションを作成するときに、イベント ハンドラーに送信されるイベントをフィルター処理できます。 アーカイブ層から BLOB をリハイドレートするときにキャプチャするイベントは、[BLOB 層の設定](/rest/api/storageservices/set-blob-tier)操作に対応する **Microsoft.Storage.BlobTierChanged** と、[BLOB のコピー](/rest/api/storageservices/copy-blob)操作に対応する **Microsoft.Storage.BlobCreated** イベントです。 シナリオに応じて、これらのイベントのうち 1 つだけを処理します。
 
 イベント サブスクリプションを作成するには、次の手順に従います。
 

@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 27e17fd6cc9f50a5a46bf3de9bf2603209894bf3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1fbb9ead768c20f4630629f5afd1be51c985d0d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368250"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045687"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -525,8 +525,9 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>次のステップ
 
-- [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+- [マネージド ID を使用して SQL データベースに安全にアクセスする](tutorial-connect-msi-sql-database.md)
 - [マネージド ID を使用して Azure Storage に安全にアクセスする](scenario-secure-app-access-storage.md)
 - [マネージド ID を使用して Microsoft Graph を安全に呼び出す](scenario-secure-app-access-microsoft-graph-as-app.md)
+- [Key Vault のシークレットを使用して安全にサービスに接続する](tutorial-connect-msi-key-vault.md)
 
 [Microsoft.Azure.Services.AppAuthentication のリファレンス]: /dotnet/api/overview/azure/service-to-service-authentication

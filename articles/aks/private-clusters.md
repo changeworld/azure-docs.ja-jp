@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: fd91a848a2da7ca503f74def67c0fab268d253c7
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 3cb83bd9b3aded2ab167afb39b024266a76163ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387983"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049085"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -81,14 +81,61 @@ az aks create \
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
 ```
+### <a name="create-a-private-aks-cluster-with-a-byo-private-dns-subzone-preview"></a>BYO プライベート DNS サブゾーンを持つプライベート AKS クラスターを作成する (プレビュー)
 
-### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone"></a>カスタム プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
+前提条件:
+
+* 2\.29.0 以上の Azure CLI、または aks-preview 拡張機能バージョン 0.5.34 以降を備えた Azure CLI。
+
+### <a name="register-the-enableprivateclustersubzone-preview-feature"></a>`EnablePrivateClusterSubZone` プレビュー機能を登録する
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+シークレット ストア CSI ドライバーを使用できる AKS クラスターを作成するには、サブスクリプションで `EnablePrivateClusterSubZone` 機能フラグを有効にする必要があります。
+
+`EnablePrivateClusterSubZone` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterSubZone"
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterSubZone')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="install-the-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
+
+"*aks-preview*" Azure CLI 拡張機能バージョン 0.5.34 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 この拡張機能が既にインストールされている場合は、[az extension update][az-extension-update] コマンドを使用して、最新の使用可能なバージョンに更新します。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="private-aks-cluster-with-byo-private-dns-subzone"></a>BYO プライベート DNS サブゾーンを持つプライベート AKS クラスター
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <BYO private dns zone ResourceId>
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-subzone"></a>カスタム プライベート DNS サブゾーンを持つプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 
-## <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>パブリック FQDN があるプライベート AKS クラスターを作成する
+### <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>パブリック FQDN があるプライベート AKS クラスターを作成する
 
 前提条件:
 

@@ -3,20 +3,20 @@ title: カスタムポリシーでセルフアサ―ト技術プロファイル�
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のカスタム ポリシーでは、セルフ アサート技術プロファイルを定義します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 8d3343838216522abfc11ec3f202ae2da1c0e38f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 031b7b1ae4d776ce08a18da5e292d83206c4c3b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611880"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040154"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -204,7 +204,7 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 | ContentDefinitionReferenceId | はい | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
 | EnforceEmailVerification | いいえ | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.retryLimit | いいえ | ユーザーが検証技術プロファイルに対してチェックされたデータを提供しようとする回数を制御します。 たとえば、ユーザーは既に存在するアカウントでサインアップしようとし、制限に達するまで試行し続けます。
-| SignUpTarget <sup>1</sup>| いいえ | サインアップ対象交換識別子。 ユーザーがサインアップ ボタンをクリックすると、Azure AD B2C は、指定された交換識別子を実行します。 |
+| SignUpTarget <sup>1</sup>| いいえ | サインアップターゲットの交換識別子。 ユーザーがサインアップ ボタンをクリックすると、Azure AD B2C は、指定された交換識別子を実行します。 |
 | setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showSignupLink <sup>2</sup>| いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |

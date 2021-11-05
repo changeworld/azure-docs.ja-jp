@@ -3,19 +3,17 @@ title: Azure Policy のゲスト構成機能について
 description: Azure Policy によりゲスト構成機能を使用して仮想マシン内の設定が監査または構成されるしくみについて説明します。
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d562842da341394247a02516c08b062ee12a01cc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6a40469b6cd391672ba953bac37402285ac4a097
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042638"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040418"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Azure Policy のゲスト構成機能について
 
 Azure Policy のゲスト構成機能を使用すると、Azure で実行されているコンピューターとハイブリッド [Arc 対応のコンピューター](../../../azure-arc/servers/overview.md)の両方で、オペレーティングシステムの設定をコードとして監査または構成することができます。
 この機能は、コンピューターごとに直接使用することも、Azure Policy によって調整することもできます。
-
-構成は、ポリシー定義とは別です。 ゲスト構成では Azure Policy を利用して、構成をコンピューターに動的に割り当てます。 [手動](/guest-configuration-assignments.md#manually-creating-guest-configuration-assignments)で、あるいは [AutoManage](../../../automanage/automanage-virtual-machines.md) など他の Azure サービスを利用して、コンピューターに設定を割り当てることもできます。
 
 Azure の構成リソースは、[拡張リソース](../../../azure-resource-manager/management/extension-resource-types.md)として設計されています。
 各構成は、コンピューターのプロパティの追加のセットと考えることができます。 構成には、次のような設定を含めることができます。
@@ -24,9 +22,18 @@ Azure の構成リソースは、[拡張リソース](../../../azure-resource-ma
 - アプリケーションの構成または存在
 - 環境設定
 
-各構成の結果は、[ゲスト割り当て] ページで、または構成が Azure Policy の割り当てによってオーケストレーションされている場合には [[コンプライアンスの詳細]](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale) ページの [[前回の評価済みリソース]](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) リンクをクリックして確認できます。
+構成は、ポリシー定義とは別です。 ゲスト構成では Azure Policy を利用して、構成をコンピューターに動的に割り当てます。 [手動](guest-configuration-assignments.md#manually-creating-guest-configuration-assignments)で、あるいは [AutoManage](../../../automanage/automanage-virtual-machines.md) など他の Azure サービスを利用して、コンピューターに設定を割り当てることもできます。
 
-[このドキュメントのビデオ チュートリアルを利用できます](https://youtu.be/t9L8COY-BkM)。
+各シナリオの例を次の表に示します。
+
+| 型 | 説明 | ストーリーの例 |
+| - | - | - |
+| [構成管理](guest-configuration-assignments.md) | ソース管理のコードとして、サーバーの完全な表現が必要です。 展開には、サーバーのプロパティ (サイズ、ネットワーク、記憶域) とオペレーティングシステムとアプリケーションの設定の構成が含まれている必要があります。 | "このコンピューターは、web サイトをホストするように構成された web サーバーである必要があります。" |
+| [コンプライアンス](../assign-policy-portal.md) | スコープ内のすべてのコンピューターの設定を、既存のコンピューターにリアクティブに適用するか、展開時に新しいコンピューターに事前に展開することをお勧めします。 | "すべてのコンピューターは TLS 1.2 を使用する必要があります。 既存のマシンを監査して、必要に応じて大規模な変更を行うことができます。 新しいコンピューターの場合は、展開時に設定を適用します。 |
+
+構成による設定の結果は、[ [ゲストの割り当て] ページ](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) で確認できます。または、構成が Azure Policy 割り当てによって調整されている場合は、[ [対応の詳細] ページ](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale)の [最後に評価されたリソース] リンクをクリックすると表示されます。
+
+[このドキュメントのビデオ チュートリアルを利用できます](https://youtu.be/t9L8COY-BkM)。 (近日公開予定)
 
 ## <a name="enable-guest-configuration"></a>ゲスト構成を有効にする
 

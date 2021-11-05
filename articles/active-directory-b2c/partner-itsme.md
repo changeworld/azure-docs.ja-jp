@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4d33746fb39d54fdeb9ed6a6754f22aea14a2a7c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 73802a0d429d2eb71ec24be8b18d635eb5c2f003
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035906"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044572"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して itsme OpenID Connect を構成する
 
@@ -52,7 +52,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 |8     |  itsme 環境が、Azure AD B2C に OAuth 承認コードを返します。 |
 |9     |  Azure AD B2C が、承認コードを使用して、トークン要求を行います。 |
 | 10 | itsme 環境が、トークン要求を確認し、まだ有効である場合は、OAuth アクセス トークンと、要求されたユーザー情報を含む ID トークンを返します。 |
-| 11 | 最後に、ユーザーが認証済みユーザーとしてリダイレクト URL にリダイレクトされます。  |
+| 11 | 最後に、ユーザーは、認証済みユーザーとしてリダイレクト URL にリダイレクトされます。  |
 |   |   |
 
 ## <a name="onboard-with-itsme"></a>itsme を使用してオンボードする

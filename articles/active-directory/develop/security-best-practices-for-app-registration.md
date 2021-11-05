@@ -12,12 +12,12 @@ ms.date: 07/8/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: saumadan, marsma
-ms.openlocfilehash: 7c3398b6f7a2f4de99adfbdf137886278e69a007
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: cd03531e35d51bafeceb2df913e17fc4814e911c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071719"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050578"
 ---
 # <a name="azure-ad-application-registration-security-best-practices"></a>Azure AD アプリケーションの登録に関するセキュリティのベスト プラクティス
 
@@ -96,7 +96,7 @@ AppId URI は API のコードで参照されるスコープのプレフィッ�
 | 有効な URI 形式を使用して競合を回避する。 | ワイルドカード AppId URI を使用する |
 | 基幹業務 (LoB) アプリで確認済みドメインを使用する | 形式に誤りがある URI    |
 | AppId URI のインベントリを作成する                    |      -----             |
-| AppId URI を使用し、組織内で WebApi を公開する| AppId URI を使用してアプリケーションを識別する。(代わりに appId プロパティを使用します)|
+| AppId URI を使用して組織内で WebApi を公開する| AppId URI を使用してアプリケーションを識別する (代わりに appId プロパティを使用します)|
 
 ## <a name="app-ownership-configuration"></a>アプリの所有権の構成
 

@@ -1,20 +1,23 @@
 ---
-title: Azure Security Center でセキュア スコアを追跡する
-description: Azure Security Center でセキュア スコアにアクセスして追跡する複数の方法について説明します。
+title: Microsoft Defender for Cloudでのセキュリティスコアの追跡
+description: Microsoft Defender for Cloudでセキュリティスコアにアクセスして追跡するための複数の方法について説明します。
 author: memildin
 ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: 9373806b87144005407861b2043799f0c62ce982
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b4942dd35591839440814e5aa8862632faf1ce36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237907"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084027"
 ---
 # <a name="access-and-track-your-secure-score"></a>セキュリティで保護されたスコアにアクセスして追跡する
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 次のセクションで説明するように、Azure portal またはプログラムによって、全体的なセキュリティ スコアとサブスクリプションごとのスコアを確認できます。
 
@@ -23,26 +26,26 @@ ms.locfileid: "112237907"
 
 ## <a name="get-your-secure-score-from-the-portal"></a>ポータルからセキュリティ スコアを取得する
 
-ポータルで、Security Center にはスコアが目立つように表示されます。これは、Security Center の [概要] ページの最初の主なタイルです。 このタイルを選択すると、スコアがサブスクリプション別に分類されている専用のセキュリティ スコア ページに移動ます。 サブスクリプションを 1 つ選択すると、優先度が設定された推奨事項と、修復によるスコアへの影響を示す詳細な一覧が表示されます。 
+Defender for Cloudでは、ポータルでスコアが目立つように表示されます。これは、最初のメインタイルで、クラウドの概要 ページです。 このタイルを選択すると、スコアがサブスクリプション別に分類されている専用のセキュリティ スコア ページに移動ます。 サブスクリプションを 1 つ選択すると、優先度が設定された推奨事項と、修復によるスコアへの影響を示す詳細な一覧が表示されます。 
 
-要約すると、Security Center のポータル ページの次の場所に、セキュリティ スコアが表示されます。
+要約すると、セキュリティスコアは、クラウドのポータルページの Defender の次の場所に表示されます。
 
-- Security Center の **[概要]** にあるタイル (メイン ダッシュボード):
+- クラウドの **概要** に関する Defender のタイル (メインダッシュボード):
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Security Center のダッシュボード上のセキュリティ スコア":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="クラウドのダッシュボードの Defenderでのセキュリティで保護されたスコア":::
 
 - 専用の **[セキュリティ スコア]** ページで、サブスクリプションと管理グループのセキュリティ スコアを確認できます。
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Security Center の [セキュリティ スコア] ページのサブスクリプションのセキュリティ スコア":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Security Centerのセキュリティ スコアページのサブスクリプションのセキュリティ スコア":::
 
-    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Security Center の [セキュリティ スコア] ページの管理グループのセキュリティ スコア":::
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Defender on Cloudの セキュリティスコア ページの管理グループのセキュリティスコア":::
 
     > [!NOTE]
     > 十分なアクセス許可を持っていない管理グループについては、スコアが "制限付き" として表示されます。 
 
 - **[推奨事項]** ページの上部:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Security Center の [推奨事項] ページのセキュリティ スコア":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="クラウドの推奨事項 ページでの Defender のセキュリティスコア":::
 
 ## <a name="get-your-secure-score-from-the-rest-api"></a>REST API からセキュリティ スコアを取得する
 
@@ -60,7 +63,7 @@ Azure Resource Graph を使用し、複数のサブスクリプションのセ�
 
 1. Azure portal から **Azure Resource Graph Explorer** を開きます。
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
 
 1. Kusto クエリを入力します (詳細については、次の例を参照してください)。
 
@@ -89,16 +92,16 @@ Azure Resource Graph を使用し、複数のサブスクリプションのセ�
 
 ### <a name="secure-score-over-time-report-in-workbooks-page"></a>ブック ページのセキュア スコア推移レポート
 
-Security Center のブック ページには、サブスクリプションやセキュリティ コントロールなどのスコアを視覚的に追跡する目的で作成されたレポートが含まれています。 詳細については、「[Security Center データの豊富な対話型レポートを作成する](custom-dashboards-azure-workbooks.md)」を参照してください。
+Defender for Cloud のブックページには、サブスクリプション、セキュリティ制御などのスコアを視覚的に追跡するための既製のレポートが含まれています。 詳細につい [ては、「クラウドデータに対して Defender の豊富で対話型のレポートを作成する](custom-dashboards-azure-workbooks.md)」を参照してください。
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Azure Security Center のブック ギャラリーからのセキュア スコア推移レポートのセクション":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Microsoft Defender for Cloudのブックギャラリーからの一定期間内のセキュリティスコアレポートのセクション":::
 
 ### <a name="power-bi-pro-dashboards"></a>Power BI Pro ダッシュボード
 
 Pro アカウントを使用している Power BI ユーザーの場合は、 **[Secure Score Over Time]\(経時的なセキュリティ スコア\)** Power BI ダッシュボードを使用して、セキュリティ スコアを経時的に追跡し、変更がないか調査できます。
 
 > [!TIP]
-> このダッシュボードや、セキュリティ スコアをプログラムで操作する他のツールは、GitHub の Azure Security Center コミュニティの専用領域を参照してください: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+> このダッシュボードと、プログラムを使用してセキュリティで保護されたスコアで作業するその他のツールについては、GitHub の Microsoft Defender for Cloudコミュニティの専用領域にあります。 https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
 
 ダッシュボードには、セキュリティの状態を分析するために役立つ次の 2 つのレポートが含まれています。
 
@@ -112,6 +115,6 @@ Pro アカウントを使用している Power BI ユーザーの場合は、 **
 
 この記事では、セキュア スコアにアクセスし、追跡する方法について説明しました。 関連資料については、次の記事をご覧ください。
 
-- [推奨事項のさまざまな要素に関する詳細](security-center-recommendations.md)
-- [推奨事項を修復する方法を確認する](security-center-remediate-recommendations.md)
+- [推奨事項のさまざまな要素に関する詳細](review-security-recommendations.md)
+- [推奨事項を修復する方法を確認する](implement-security-recommendations.md)
 - [セキュリティ スコアを使用してプログラムで作業するための GitHub ベースのツールを表示する](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

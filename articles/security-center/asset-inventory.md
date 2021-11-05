@@ -1,39 +1,42 @@
 ---
-title: Azure Security Center の資産インベントリ
-description: Security Center で監視されているすべてのリソースを完全に可視化する Azure Security Center の資産管理エクスペリエンスについて説明します。
+title: クラウドの資産インベントリ用 Microsoft Defender
+description: クラウドの監視対象リソースのすべての Defender を完全に可視化する、クラウドの資産管理エクスペリエンスに関する Microsoft Defender について説明します。
 author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 10/07/2021
+ms.date: 10/18/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 4175476bc655aa0be1a5377f3fada83cb30ac37e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: cca9811423449692f0e71cdb62ade1447cba86f2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715915"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010524"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
+# <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>資産インベントリを使用してリソースのセキュリティ態勢を管理する
 
-Azure Security Center の資産インベントリ ページを使用すると、Security Center に接続したリソースのセキュリティ態勢が 1 つのページに表示されます。 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
+Microsoft Defender for Cloud の [資産インベントリ] ページでは、Microsoft Defender for Cloud に接続したリソースのセキュリティ対策を表示するための1ページが提供されています。 
+
+Defender for Cloud は、サブスクリプションに接続されているリソースのセキュリティの状態を定期的に分析して、潜在的なセキュリティの脆弱性を特定します。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
 
 いずれかのリソースに未処理のレコメンデーションがある場合は、インベントリに表示されます。
 
 このビューとそのフィルターを使用して、次のような質問に対処できます。
 
-- Azure Defender が有効なサブスクリプションのうち、未処理の推奨事項があるものはどれか
+- 強化されたセキュリティ機能が有効になっているサブスクリプションのうち、推奨されるものはありますか?
 - 「Production」というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれか
 - 特定のタグが付いているマシンのうち、未処理の推奨事項があるマシンは何台か
-- 特定のリソース グループ内のリソースのうち、何個のリソースに脆弱性評価サービスによるセキュリティの調査結果があるか
+- (CVE 番号を使用して) 既知の脆弱性を持つ特定のリソース グループ内のマシンは何ですか?
 
 このツールによる資産管理には大きな可能性があり、その範囲は拡大し続けています。 
 
 > [!TIP]
-> 資産インベントリ ページのセキュリティに関する推奨事項は、**推奨事項** に関するページのセキュリティに関する推奨事項と同じですが、ここでは影響を受けるリソースに応じて示しています。 推奨事項の解決方法の詳細については、[Azure Security Center でのセキュリティに関する推奨事項の実装](security-center-recommendations.md)に関するページを参照してください。
+> 資産インベントリ ページのセキュリティに関する推奨事項は、**推奨事項** に関するページのセキュリティに関する推奨事項と同じですが、ここでは影響を受けるリソースに応じて示しています。 推奨事項を解決する方法の詳細については、「 [Microsoft Defender For Cloud でのセキュリティに関する推奨事項の実装](review-security-recommendations.md)」を参照してください。
 
 
 ## <a name="availability"></a>可用性
@@ -49,16 +52,16 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>資産インベントリの主な機能
 インベントリ ページには次のツールが含まれています。
 
-:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure Security Center の資産インベントリ ページの主な機能" lightbox="media/asset-inventory/highlights-of-inventory.png":::。
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Microsoft Defender for Cloud の資産インベントリページの主な機能。" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
 
 ### <a name="1---summaries"></a>1 - 概要
 フィルターを定義する前に、インベントリ ビューの上部に以下の値のストリップが目立つように表示されます。
 
-- **リソースの合計**:Security Center に接続されているリソースの合計数。
-- **異常なリソース**:アクティブなセキュリティのレコメンデーションがあるリソース。 セキュリティのレコメンデーションの詳細については、[こちら](security-center-recommendations.md)をご覧ください。
+- **リソースの合計**: クラウドの Defender に接続されているリソースの合計数。
+- **異常なリソース**:アクティブなセキュリティのレコメンデーションがあるリソース。 セキュリティのレコメンデーションの詳細については、[こちら](review-security-recommendations.md)をご覧ください。
 - **監視されていないリソース**:エージェントの監視に関して問題があるリソースです。Log Analytics エージェントがデプロイされていますが、エージェントがデータを送信していないか、正常性に関する他の問題が発生しています。
-- **未登録のサブスクリプション**: Azure Security Center にまだ接続されていない選択したスコープ内のサブスクリプション。
+- **登録** されていないサブスクリプション: 選択したスコープ内のサブスクリプションのうち、Microsoft Defender for Cloud にまだ接続されていないものがあります。
 
 ### <a name="2---filters"></a>2 - フィルター
 ページの上部にある複数のフィルターを使用すると、質問に回答しようとすることによって、リソースの一覧をすばやく絞り込むことができます。 たとえば、" *'Production' というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれですか?* " という質問に回答する場合は、 **[エージェント監視]** フィルターと **[タグ]** フィルターを組み合わせることができます。
@@ -75,22 +78,22 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 **[資産管理オプション]** - インベントリでは、複雑な検出クエリを実行できます。 クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
 
 - フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします。
-- Security Center に新しいサーバーをオンボードする - **[非 Azure サーバーの追加]** ツールバー ボタンを使用します。
+- クラウドの Defender に新しいサーバーを追加する- **[Azure 以外のサーバーの追加]** ツールバーボタンを使用します。
 - Azure Logic Apps を使用してワークロードを自動化する - **[ロジック アプリのトリガー]** ボタンを使用して、1 つ以上のリソースでロジック アプリを実行します。 ロジック アプリを事前に準備し、関連するトリガーの種類 (HTTP 要求) を受け入れる必要があります。 [Logic Apps の詳細をご覧ください](../logic-apps/logic-apps-overview.md)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>資産インベントリのしくみ
 
-資産インベントリは、[Azure Resource Graph (ARG)](../governance/resource-graph/index.yml) を利用しています。ARG は、複数のサブスクリプションにまたがって Security Center のセキュリティ態勢データのクエリを実行できる Azure サービスです。
+資産インベントリでは、 [azure Resource Graph (ARG)](../governance/resource-graph/index.yml)を利用しています。これは、複数のサブスクリプションでクラウドのセキュリティ体制データを Defender に照会する機能を提供する azure サービスです。
 
 ARG は、大規模なクエリの実行機能によってリソースを効率的に探索できるように設計されています。
 
-資産インベントリで [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) を使用すると、他のリソース プロパティで ASC データを相互参照して詳細な分析情報をすばやく作成できます。
+[Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/)を使用すると、資産インベントリは、他のリソースプロパティを使用してクラウドデータに対して相互参照 Defender を使用することによって、詳細な洞察を迅速に生み出すことができます。
 
 
 ## <a name="how-to-use-asset-inventory"></a>資産インベントリの使用方法
 
-1. Security Center のサイドバーで、 **[インベントリ]** を選択します。
+1. Defender for Cloud のサイドバーから、 **[インベントリ]** を選択します。
 
 1. **[名前でフィルター]** ボックスを使用して特定のリソースを表示するか、下記のようにフィルターを使用します。
 
@@ -103,7 +106,7 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
     >
     > たとえば、サブスクリプションを 1 つだけ選択していて、そのサブスクリプションに、修復すべき未処理のセキュリティの推奨事項があるリソースがない場合 (異常なリソースが 0 の場合)、 **[推奨事項]** フィルターにオプションは表示されません。 
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Azure Security Center の資産インベントリのフィルター オプションを使用して、監視されていない運用リソースにリソースをフィルター処理する":::
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="クラウドの資産インベントリに Microsoft Defender のフィルターオプションを使用して、監視されていない運用リソースに対してリソースをフィルター処理する":::
 
 1. **[セキュリティの調査結果に含まれる内容]** フィルターを使用するには、脆弱性の検出結果の ID、セキュリティ チェック、または CVE 名からフリー テキストを入力して、影響を受けるリソースをフィルター処理します。
 
@@ -112,16 +115,16 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
     > [!TIP]
     > **[セキュリティの調査結果に含まれる内容]** と **[タグ]** フィルターには、1 つの値のみ指定できます。 複数のフィルターを使用してフィルター処理を行うには **[フィルターの追加]** を使用します。
 
-1. **Azure Defender** フィルターを使用するには、1 つ以上のオプション (オフ、オン、一部) を選択します。
+1. **クラウドフィルターに Defender** を使用するには、1つまたは複数のオプション (Off、On、または Partial) を選択します。
 
-    - **[オフ]** - Azure Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
+    - **オフ** -Microsoft Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックでリソースを Azure Defender にアップグレードする" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::。
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックして、リソースを Microsoft Defender にアップグレードします。" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
-    - **[オン]** - Azure Defender プランによって保護されているリソース。
-    - **[一部]** - これは、Azure Defender プランのすべてではなく一部が無効になっている **サブスクリプション** に適用されます。 たとえば、次のサブスクリプションでは、5 つの Azure Defender プランが無効になっています。 
+    - Microsoft Defender プランによって保護さ **れている** リソース
+    - **Partial** -一部の Microsoft Defender プランが無効になっている **サブスクリプション** に適用されます。 たとえば、次のサブスクリプションでは、7つの Microsoft Defender プランが無効になっています。
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender が部分的に有効なサブスクリプション":::。
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="サブスクリプションは Microsoft Defender プランによって部分的に保護されています。":::
 
 1. クエリの結果をさらに調べるには、該当するリソースを選択します。
 
@@ -129,16 +132,16 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
     ![ARG でのインベントリ クエリ。](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
-1. フィルターを定義してページを開いたままにしておくと、Security Center で結果が自動的に更新されません。 ページを手動で再読み込みするか、 **[更新]** を選択しない限り、リソースを変更しても表示される結果には影響しません。
+1. 一部のフィルターを定義し、ページを開いたままにした場合、Defender for Cloud は結果を自動的に更新しません。 ページを手動で再読み込みするか、 **[更新]** を選択しない限り、リソースを変更しても表示される結果には影響しません。
 
 ## <a name="access-a-software-inventory"></a>ソフトウェア インベントリにアクセスする
 
-Microsoft Defender for Endpoint との統合を有効にし、Azure Defender for servers を有効にしてある場合は、ソフトウェア インベントリにアクセスできます。
+Microsoft Defender for Endpoint との統合を有効にし、サーバーに対して Microsoft Defender を有効にした場合は、ソフトウェアインベントリにアクセスできます。
 
-:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="脅威と脆弱性のソリューションを有効にした場合、Security Center の資産インベントリにより、インストールされているソフトウェアによってリソースを選択するフィルターが提供されます。":::
+:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="脅威と脆弱性の解決策を有効にした場合、クラウドの資産インベントリの Defender は、インストールされているソフトウェアによってリソースを選択するためのフィルターを提供します。":::
 
 > [!NOTE]
-> "ブランク" オプションを選択すると、Microsoft Defender for Endpoint (または Azure Defender for servers) が有効になっていないコンピューターが表示されます。
+> "Blank" オプションを選択すると、エンドポイントに Microsoft Defender がないコンピューターが表示されます (または、Microsoft Defender for server は使用できません)。
 
 資産インベントリ ページのフィルターと同様に、Azure Resource Graph エクスプローラーからソフトウェア インベントリ データを探索することができます。
 
@@ -146,7 +149,7 @@ Azure Resource Graph エクスプローラーを使用してソフトウェア �
 
 1. **Azure Resource Graph エクスプローラー** を開きます。
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
 
 1. 次のサブスクリプション スコープを選択します: securityresources/softwareinventories
 
@@ -203,23 +206,23 @@ Azure Resource Graph エクスプローラーを使用してソフトウェア �
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>一部のサブスクリプション、マシン、ストレージ アカウントなどが表示されないのはなぜですか。
 
-インベントリ ビューには、クラウド セキュリティ態勢管理 (CSPM) の観点から、Security Center に接続されたリソースの一覧が表示されます。 フィルター処理によって返されるのは、環境内のすべてのリソースではなく、未処理の (または「アクティブな」) レコメンデーションを含むリソースだけです。 
+[インベントリ] ビューには、クラウドに接続されているリソースの Defender がクラウドセキュリティ対策管理 (CSPM) の観点から一覧表示されます。 フィルター処理によって返されるのは、環境内のすべてのリソースではなく、未処理の (または「アクティブな」) レコメンデーションを含むリソースだけです。 
 
-たとえば、次のスクリーンショットは、38 個のサブスクリプションにアクセスできるユーザーを示しています。現在、10 個にのみ推奨事項があります。 そのため、**リソースの種類 = サブスクリプション** でフィルター処理すると、アクティブな推奨事項がある 10 個のサブスクリプションだけがインベントリに表示されます。
+たとえば、次のスクリーンショットは、8 つのサブスクリプションにアクセスできるユーザーを示していますが、現在推奨事項を持っているのは 7 人のみです。 そのため、リソースの種類 **= サブスクリプション** でフィルター処理すると、アクティブな推奨事項を持つ 7 つのサブスクリプションだけがインベントリに表示されます。
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="アクティブなレコメンデーションがない場合、一部のサブスクリプションは返されません。":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="アクティブなレコメンデーションがない場合、一部のサブスクリプションは返されません。" lightbox="./media/asset-inventory/filtered-subscriptions-some.png":::
 
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>一部のリソースで、Azure Defender 列またはエージェントの監視列に空白の値が表示されるのはなぜですか。
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-defender-for-cloud-or-monitoring-agent-columns"></a>一部のリソースで Defender for Cloud または監視エージェントの列に空白の値が表示される理由
 
-Security Center で監視されているすべてのリソースにエージェントがあるわけではありません。 ディスク、Logic Apps、Data Lake Analytics、イベント ハブなどの Azure Storage アカウントや PaaS リソースがその例です。
+すべての Defender for Cloud で監視されるリソースにエージェントがあるというのではありません。 たとえば、Azure Storage、ディスク、Logic Apps、Data Lake Analysis、Event Hub などの PaaS リソースを使用する場合、Defender for Cloud でエージェントを監視する必要はありません。
 
 価格やエージェントの監視がリソースに関係しない場合、インベントリのこれらの列には何も表示されません。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでエージェントの監視列または Azure Defender 列に空白の情報が表示される":::。
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでは、監視エージェントまたは Defender for Cloud 列に空白の情報が表示されます。" lightbox="./media/asset-inventory/agent-pricing-blanks.png":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Security Center の資産インベントリ ページについて説明しました。
+この記事では、Microsoft Defender for Cloud の資産インベントリ ページについて説明しました。
 
 関連するツールの詳細については、以下のページをご覧ください。
 

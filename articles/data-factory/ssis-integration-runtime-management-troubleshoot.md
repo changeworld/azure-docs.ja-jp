@@ -9,12 +9,12 @@ ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b7d6605f1a387a917c9d106078ead404842ea02c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5736e893242f1e24837132dc11b4b7607d22bbf9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251929"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086464"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -186,8 +186,14 @@ Azure-SSIS IR を停止すると、パブリック IP アドレスが含まれ�
 
 ### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
 
-Azure-SSIS IR は、定期的に自動更新されます。 アップグレード中に新しい IR ノードが作成され、古いノードは削除されます。 また、古いノードで作成済みのネットワーク リソース (ロード バランサー、ネットワーク セキュリティ グループなど) が削除され、自分のサブスクリプション下に新しいネットワーク リソースが作成されます。 このエラーは、サブスクリプション レベルまたは (静的パブリック IP アドレスが含まれる) リソース グループ レベルのリソース削除ロックがあることが原因で、古いノードのネットワーク リソースを削除できなかったことを意味します。 古いノードをクリーンアップしてこれらのノード用の静的パブリック IP アドレスを解放できるように、削除ロックを解除してください。 そうしないと、静的パブリック IP アドレスを解放できないので、IR のアップグレードを進めることができません。
+Azure-SSIS IR は、定期的に自動更新されます。 アップグレード中に新しい IR ノードが作成され、古いノードは削除されます。 また、古いノードで作成済みのネットワーク リソース (ロード バランサー、ネットワーク セキュリティ グループなど) が削除され、自分のサブスクリプション下に新しいネットワーク リソースが作成されます。 このエラーは、サブスクリプション レベルまたは (静的パブリック IP アドレスが含まれる) リソース グループ レベルのリソース削除ロックがあることが原因で、古いノードのネットワーク リソースを削除できなかったことを意味します。 古いノードをクリーンアップし、古いノードの静的パブリック IP アドレスを解放できるよう、削除ロックを削除します。 そうしないと、静的パブリック IP アドレスを解放できないので、IR のアップグレードを進めることができません。
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 
-独自の静的パブリック IP アドレスを使用する場合、パブリック IP アドレスを 2 つ指定する必要があります。 これらのうち 1 つは直ちに IR ノードの作成に使用され、もう 1 つは IR のアップグレード中に使用されます。 このエラーは、アップグレード中に後者のパブリック IP アドレスを使用できないときに発生する可能性があります。 考えられる原因については、「[InvalidPublicIPSpecified](#InvalidPublicIPSpecified)」を参照してください。
+独自の静的パブリック IP アドレスを使用する場合、パブリック IP アドレスを 2 つ指定する必要があります。 これらのうち 1 つは直ちに IR ノードの作成に使用され、もう 1 つは IR のアップグレード中に使用されます。 このエラーは、アップグレード中に後者のパブリック IP アドレスを使用できないときに発生する可能性があります。 考えられる原因については、[「InvalidPublicIPSpecified」](#InvalidPublicIPSpecified) を参照してください。
+
+## <a name="resource-management"></a>リソース管理
+
+### <a name="resource-tag-not-updated"></a>リソースタグが更新されません。
+
+タグをAzure [リソース](../azure-resource-manager/management/tag-resources.md) に適用して、分類に論理的に整理することができます。 SSIS IRの実行中、SSIS IRの親データ ファクトリ タグへの変更は、SSIS IR が再起動されるまで有効ではありません。

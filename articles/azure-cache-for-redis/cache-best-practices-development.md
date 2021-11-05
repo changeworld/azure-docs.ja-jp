@@ -5,14 +5,14 @@ description: Azure Cache for Redis のコードを開発する方法について
 author: shpathak-msft
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 11/3/2021
 ms.author: shpathak
-ms.openlocfilehash: 4d10af1d6f7b56c578d201c51b4c706eae0e8bf6
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 1c0c6b5f79e38dbd400dc048e2cd14cd2f52d35a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808755"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850985"
 ---
 # <a name="development"></a>開発
 
@@ -88,7 +88,7 @@ Azure Cache for Redis では、TLS で暗号化された通信が既定で必要
 
 ## <a name="client-library-specific-guidance"></a>クライアント ライブラリ固有のガイダンス
 
-- [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+- [StackExchange.Redis (.NET)](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis)
 - [Java - どちらのクライアントを使用すべきか](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
 - [Lettuce (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
 - [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)

@@ -4,15 +4,15 @@ description: Azure で Logz.io リソースを作成する方法について説�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 08/17/2021
+ms.date: 10/25/2021
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 55b5057542af2812a6d5c21acf3d4a9e1f64c293
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: d97339251888b522fd31d30b3ce77d1bb4241f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429346"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070073"
 ---
 # <a name="quickstart-create-a-logzio-resource-in-azure-portal"></a>クイックスタート: Azure portal で Logz.io リソースを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "122429346"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **サブスクリプションの所有者**: Logz.io を設定するには、Azure サブスクリプションで[所有者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)が割り当てられている必要があります。 この統合を開始する前に、[アクセス権を確認](../../role-based-access-control/check-access.md)してください。
+- **サブスクリプションの所有者**: Logz.io を設定するには、Azure サブスクリプションで [所有者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)が割り当てられている必要があります。 この統合を開始する前に、[アクセス権を確認](../../role-based-access-control/check-access.md)してください。
 - **リソース プロバイダーの登録**: `Microsoft.Insights` がまだサブスクリプションに登録されていない場合は、登録します。 詳細については、「[リソース プロバイダーを登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」 を参照してください。
 
 ## <a name="find-offer"></a>プランを探す
@@ -44,10 +44,10 @@ Azure portal を使用して、Azure Marketplace で Logz.io を見つけます�
 
 | プロパティ | 説明 |
 | ---- | ---- |
-| **[サブスクリプション]** | ドロップダウン メニューから、所有者アクセス権を持っている Azure サブスクリプションを選択します。 |
+| **サブスクリプション** | ドロップダウン メニューから、所有者アクセス権を持っている Azure サブスクリプションを選択します。 |
 | **リソース グループ** | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 [リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)は、Azure ソリューションの関連するリソースを保持するコンテナーです。 |
 | **Logz アカウント名** | 作成する Logz.io アカウントの名前を指定します。 |
-| **場所** | **[米国西部 2]** または **[西ヨーロッパ]** を選択します。 プレビュー期間中は、これらの Azure リージョンのみが Logz.io でサポートされます。 |
+| **場所** | **[米国西部 2]** または **[西ヨーロッパ]** を選択します。 Logz.io は、これらの Azure リージョンのみをサポートしています。 |
 | **[料金プラン]** | 使用できる Logz.io プランの一覧から選択します。 |
 | **請求期間** | **[Monthly]\(月単位\)** が既定値です。 |
 | **価格** | 選択した Logz.io プランに基づいて指定されます。 |

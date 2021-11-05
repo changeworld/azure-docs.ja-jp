@@ -1,6 +1,6 @@
 ---
-title: Image Builder - Windows Virtual Desktop イメージを作成する
-description: PowerShell で Azure Image Builder を使用して、Windows Virtual Desktop の Azure VM イメージを作成します。
+title: Image Builder - Azure Virtual Desktop イメージを作成する
+description: PowerShell で Azure Image Builder を使用して、Azure Virtual Desktop の Azure VM イメージを作成します。
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: cynthn
@@ -10,21 +10,21 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fdda25ecc9d111d626b7c9836757c31d4972c25f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 046bec93d3a9ae0ffef8b189470f412ab357943d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692451"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018491"
 ---
-# <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Windows Virtual Desktop イメージを作成する
+# <a name="create-a-azure-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Azure Virtual Desktop イメージを作成する
 
 **適用対象:** :heavy_check_mark: Windows VM 
 
-この記事では、次のようなカスタマイズを行って Windows Virtual Desktop イメージを作成する方法について説明します。
+この記事では、次のようなカスタマイズを行って Azure Virtual Desktop イメージを作成する方法について示します。
 
 * [Fslogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1) をインストールする。
-* コミュニティ リポジトリから [Windows Virtual Desktop の最適化スクリプト](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)を実行する。
+* コミュニティ リポジトリから [Azure Virtual Desktop の最適化スクリプト](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)を実行する。
 * [Microsoft Teams](../../virtual-desktop/teams-on-avd.md) をインストールする。
 * [Restart](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer) を実行する。
@@ -276,7 +276,7 @@ $getStatus.LastRunStatusRunSubState
 ## <a name="create-a-vm"></a>VM の作成
 これでビルドが完了したしたので、イメージから VM を作成できます。[New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) の例を使用してください。
 
-## <a name="clean-up"></a>クリーンアップする
+## <a name="clean-up"></a>クリーンアップ
 
 まず、リソース グループ テンプレートを削除します (リソース グループ全体は削除しないでください)。そうしないと、AIB で使用されているステージング リソース グループ (*IT_* ) が消去されません。
 

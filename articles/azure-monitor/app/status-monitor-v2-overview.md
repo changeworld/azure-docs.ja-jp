@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 1fcdca5aaedb9d3b0e86e02e931eb7e38c16cc25
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 3337cf0eb5bfff686f9047d0f5ffea6dde670f3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731858"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078201"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -71,6 +71,18 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
+
+
+## <a name="release-notes"></a>リリース ノート
+
+### <a name="200-beta2"></a>2.0.0-beta2
+
+- ApplicationInsights .NET/.NET Core SDK 2.18.1-redfieldに更新されました。
+
+### <a name="200-beta1"></a>2.0.0-beta1
+
+- 自動インASP.NET Core機能を追加しました。
+
 
 ## <a name="next-steps"></a>次のステップ
 

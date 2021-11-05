@@ -9,17 +9,17 @@ ms.date: 10/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 115876aab202c550d694267294345b5472ad1f2a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: b33e80ad409c20be36a4c743573ea959525f82e8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811729"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045171"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でのインデックス作成を管理する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
 
-Azure Cosmos DB の MongoDB 用 API では、Azure Cosmos DB のコア インデックス管理機能を利用します。 この記事では、Azure Cosmos DB の MongoDB 用 API を使用してインデックスを追加する方法を重点的に取り上げます。 また、すべての API に関連する [Azure Cosmos DB のインデックス作成の概要](../index-overview.md)もご一読ください。
+Azure Cosmos DB の MongoDB 用 API では、Azure Cosmos DB のコア インデックス管理機能を利用します。 この記事では、Azure Cosmos DB の MongoDB 用 API を使用してインデックスを追加する方法を重点的に取り上げます。 インデックスは特殊なデータ構造で、データのクエリをおよそ 1 桁速くすることができます。
 
 ## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>MongoDB サーバー バージョン 3.6 以降のインデックス作成
 
@@ -439,5 +439,5 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降では、デー
 * [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../time-to-live.md)
 * パーティション分割とインデックス作成の関係の詳細については、「[Azure Cosmos コンテナーを照会する](../how-to-query-container.md)」の記事を参照してください。
 * Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

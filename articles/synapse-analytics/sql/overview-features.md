@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73f1eaebb60d02e27be5585a0287a702abf6df2a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 074f6dffae5067676e073916018126c5c2f07d85
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860965"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850567"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -85,7 +85,7 @@ Synapse SQL プールを使用すると、組み込みのセキュリティ機�
 | **Storage の Azure Active Directory (Azure AD) パススルー認証** | はい | はい |
 | **Storage の SAS トークン認証** | いいえ | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) またはインスタンスレベルの [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用。 |
 | **Storage のアクセス キー認証** | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用 | いいえ |
-| **Storage の [マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest&preserve-view=true)を使用 | はい。`Managed Identity` 資格情報を使用。 |
+| **Storage の [マネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) 認証** | はい。[マネージド サービス ID 資格情報](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest&preserve-view=true)を使用 | はい。`Managed Identity` 資格情報を使用。 |
 | **Storage のアプリケーション ID 認証** | [はい](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) | いいえ |
 | **サーバー レベルのロール** | いいえ | はい。sysadmin、public、およびその他のサーバー ロールがサポートされています |
 | **サーバー スコープの資格情報** | いいえ | はい |

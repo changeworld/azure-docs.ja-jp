@@ -4,16 +4,16 @@ description: Azure Data Factory 環境ごとにグローバル パラメータ�
 ms.service: data-factory
 ms.subservice: authoring
 ms.topic: conceptual
-author: jasonwhowell
-ms.author: jasonh
+author: joshuha-msft
+ms.author: joowen
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25c63c51278a747206b0b2dab90f967ebd9248e6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e19e3eba40d843ae27a3d0817525f7ed65394d10
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024410"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844603"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 

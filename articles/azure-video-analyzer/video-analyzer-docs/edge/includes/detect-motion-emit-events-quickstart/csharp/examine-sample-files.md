@@ -2,14 +2,14 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 03/18/2021
+ms.date: 11/04/2021
 ms.author: faneerde
-ms.openlocfilehash: 2c877f9c809d6c1c55686c4fb9a6f616ae24da4c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 00b9451edfc7016fb8a3d4dcfc7c5adc1b95c880
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030091"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861565"
 ---
 1. Visual Studio Code で、*src/edge* に移動します。 *.env* ファイルと、いくつかの展開テンプレート ファイルがあります。
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.topic: how-to
 ms.date: 08/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 60425a0915921632874620ef5a1faf0d3ba22115
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d31cb6d07958c5f14ac5e45f0094e772b168a535
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013120"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847928"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>Synapse パイプラインを使用して専用 SQL プールを一時停止および再開する
 
@@ -223,6 +223,6 @@ ForEach アクティビティを作成して、各専用 SQL プールをルー�
 
 Azure Synapse のマネージド ID と、専用 SQL プールにマネージド ID を追加する方法の詳細については、以下を参照してください。
 
-[Azure Synapse ワークスペース マネージド ID](../security/synapse-workspace-managed-identity.md)
+[Azure Synapse ワークスペース マネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics)
 
 [ワークスペースのマネージド ID にアクセス許可を付与する](../security/how-to-grant-workspace-managed-identity-permissions.md)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/21/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7fc9731769f568107a1ce6dacb5658fe164bd616
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 058d80b85a9a669612c64de6f0f705f6d605e419
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657521"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065021"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>自動生成されたビットレート ラダーでエンコードする
 
@@ -37,7 +37,7 @@ ms.locfileid: "128657521"
 
 ## <a name="output"></a>出力
 
-このセクションでは、**AdaptiveStreaming** (H.264) または **H265AdaptiveStreaming** (HEVC) プリセットによるエンコードの結果として Media Services エンコーダーによって生成される出力ビデオ レイヤーの 3 つの例を示します。 どの場合でも、出力には、128 kbps でエンコードされたステレオ音声を含む音声のみの MP4 ファイルが含まれます。
+このセクションでは **、AdaptiveStreaming**(H.264) または **H265AdaptiveStreaming** (HEVC) プリセットを使用したエンコードの結果として、Media Services エンコーダーによって生成される出力ビデオ レイヤーの 3 つの例を示します。 どの場合でも、出力には、128 kbps でエンコードされたステレオ音声を含む音声のみの MP4 ファイルが含まれます。
 
 ### <a name="example-1"></a>例 1
 高さが "1080" でフレーム レートが "29.970" のソースからは、6 層のビデオ レイヤーが生成されます。

@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 09/29/2020
-ms.openlocfilehash: ee29630c0f990a7a6342d0027bbf9f36cbf13b91
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/22/2021
+ms.openlocfilehash: fcddeabd5ebd920cb1cb73c8b2fde502da87da27
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778288"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844584"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 

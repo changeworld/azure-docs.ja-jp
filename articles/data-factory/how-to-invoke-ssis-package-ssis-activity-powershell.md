@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 10/01/2021
-ms.openlocfilehash: 8ef01b0e07e208e32fcbebe1b29aa0b86f2ee41d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/22/2021
+ms.openlocfilehash: ab67509d2b9c9eda90268c19bce081d1bb11e942
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367767"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843463"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory-with-powershell"></a>PowerShell を使用して Azure Data Factory の SSIS パッケージの実行アクティビティで SSIS パッケージを実行する
 

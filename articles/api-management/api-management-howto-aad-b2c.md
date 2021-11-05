@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 09/28/2021
 ms.author: danlep
-ms.openlocfilehash: 3fa10f238b3047b97e5d4d4c8c472010cfff883b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e286cbb64078a2568d2aa3d0c523d782445470d4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130222535"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049142"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -129,7 +129,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 1. 前のセクションで構成したサインアップ ポリシーにリダイレクトされます。 サインアップの方法として、電子メール アドレスか既存のソーシャル アカウントを選択します。
 
    > [!NOTE]
-   > 発行者ポータルの **[ID]** タブで有効になっているオプションが Azure Active Directory B2C のみの場合は、サインアップ ポリシーに直接リダイレクトされます。
+   > Azure Active Directory B2C が Azure portal の **[id]** タブで有効になっている唯一のオプションである場合は、サインアップポリシーに直接リダイレクトされます。
 
    :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-options.png" alt-text="レガシ開発者ポータルのサインアップ オプション":::
 

@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.subservice: security
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/03/2021
-ms.openlocfilehash: 2b39017bb8d1a7e8527f8302190921463247f721
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/22/2021
+ms.openlocfilehash: 51d6d496bbc982a37e37e731d743307cb1036c5b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779694"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847738"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 

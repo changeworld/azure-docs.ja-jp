@@ -12,13 +12,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/05/2021
-ms.openlocfilehash: 2da56452a8674940b3d81ffd06c722886fd07ed7
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/22/2021
+ms.openlocfilehash: 4ed454ae92fff2a0a5bfd6437b0ee1ef10d194c0
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218011"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846237"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>事業継続とディザスター リカバリー (BCDR) のために Azure-SSIS 統合ランタイムを構成する 
 

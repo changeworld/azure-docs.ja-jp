@@ -2,14 +2,14 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 05/05/2021
+ms.date: 11/04/2021
 ms.author: faneerde
-ms.openlocfilehash: 841582cd1d876f3dedb087b6bf93f0c59fafe8c0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3fafa99807c9148cbae962fb4eba89814bc979bf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030161"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860848"
 ---
 エッジ デバイスにデプロイされるモジュールは、配置マニフェストによって定義されます。 また、これらのモジュールの構成設定も定義されます。
 

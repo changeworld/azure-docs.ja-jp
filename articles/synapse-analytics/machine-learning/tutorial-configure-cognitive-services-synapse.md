@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 04d9b7ab0255212ed1b753d0bf6f31abfe1db03d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d72db64026ff3d4d4cee759b34047662248737a6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131018952"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845135"
 ---
 # <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>クイック スタート: Azure Synapse Analytics で Cognitive Services を使用するための前提条件を構成する
 
@@ -75,7 +75,7 @@ Azure portal で、[音声](https://ms.portal.azure.com/#create/Microsoft.Cognit
 ## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>キー コンテナーを作成してシークレットとアクセスを構成する
 
 1. Azure portal で[キー コンテナー](https://ms.portal.azure.com/#create/Microsoft.KeyVault)を作成します。
-2. **[Key Vault]**  >  **[アクセス ポリシー]** の順に移動し、[Azure Synapse ワークスペースの MSI](../security/synapse-workspace-managed-identity.md) に、Azure Key Vault からシークレットを読み取るためのアクセス許可を付与します。
+2. **[Key Vault]**  >  **[アクセス ポリシー]** の順に移動し、[Azure Synapse ワークスペースの MSI](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) に、Azure Key Vault からシークレットを読み取るためのアクセス許可を付与します。
 
    > [!NOTE]
    > ポリシーの変更を必ず保存します。 これは見逃されやすい手順です。

@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c71ae3378c1d5d6304b506f2d5a4dbaa9b15e8e
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 671c9f9eadb7a272e718587417e78ff85d182b07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855028"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049370"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Microsoft 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -65,7 +65,7 @@ bmfabrikam.com ドメインの設定は、以下のようになっています�
 
 `-SupportMultipleDomain` は、adfs.bmcontoso.com 上のフェデレーション サービスをポイントするように構成されている他のエンドポイントを変更しません。
 
-また、 `-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。 この値は、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで設定されます (つまり、 https://{upn suffix}/adfs/services/trust)。
+`-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な発行者の値を確実に含めることもできます。 この値は、ユーザーの UPN のドメイン部分を取得し、それを IssuerUri のドメインとして使用することによって設定されます。つまり、`https://{upn suffix}/adfs/services/trust` です。
 
 そのため、Azure AD または Microsoft 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。 一致するものが見つからなければ、認証は失敗します。
 

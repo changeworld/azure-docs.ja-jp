@@ -1,19 +1,19 @@
 ---
 title: ログとイベントのスキーマ
 description: 監視のために Azure Data Factory のログとイベントによって使用されるスキーマについて説明します。
-author: minhe-msft
-ms.author: hemin
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 4b64818b505863ad7f7e2878640eeb28224af2f1
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 0245d988ab9b116a515ec76ecb9d7031936918be
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400194"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853930"
 ---
 # <a name="schema-of-logs-and-events"></a>ログとイベントのスキーマ
 
