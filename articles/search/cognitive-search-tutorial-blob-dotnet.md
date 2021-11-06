@@ -2,19 +2,19 @@
 title: Azure BLOB で AI を使用する C# チュートリアル
 titleSuffix: Azure Cognitive Search
 description: C# と Azure Cognitive Search .NET SDK を使用した、Blob Storage のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b483279322510939af420d25f189435449ec3462
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a50f367d39b990a6bf30cf4b7f85ad53b4d784b0
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014844"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131891947"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル: .NET と AI を使用して Azure BLOB から検索可能なコンテンツを生成する
 

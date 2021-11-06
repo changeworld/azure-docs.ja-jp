@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 099f7ff73f74ac93affbf24bbe6ff548ce5a9c35
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 97270075f7ca7e33dabb23a6aa21ed746518ed65
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577291"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131891871"
 ---
 # <a name="manage-revisions-azure-container-apps-preview"></a>Azure Container Apps プレビューのリビジョンを管理する
 
@@ -34,7 +34,7 @@ az containerapp revision list \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision list `
   --name <APPLICATION_NAME> `
   --resource-group <RESOURCE_GROUP_NAME> `
@@ -60,7 +60,7 @@ az containerapp revision show \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision show `
   --name <REVISION_NAME> `
   --app <CONTAINER_APP_NAME> `
@@ -86,7 +86,7 @@ az containerapp update \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp update `
   --name <APPLICATION_NAME> `
   --resource-group <RESOURCE_GROUP_NAME> `
@@ -138,7 +138,7 @@ az containerapp revision deactivate \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision deactivate `
   --name <REVISION_NAME> `
   --app <CONTAINER_APP_NAME> `
@@ -164,7 +164,7 @@ az containerapp revision restart \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp revision restart `
   --name <REVISION_NAME> `
   --app <APPLICATION_NAME> `

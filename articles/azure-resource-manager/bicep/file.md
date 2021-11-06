@@ -3,12 +3,12 @@ title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 10/07/2021
-ms.openlocfilehash: 7fa9126326bc1bc3922379c52a937013a33abd13
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f890f625abc4a6839cd090a49aa7e641ecef9145
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216316"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892023"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -240,7 +240,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 }
 ```
 
-リソースの種類から[複数のインスタンスをデプロイ](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)するには、`for` 式を追加します。 この式では、配列のメンバーに対して反復処理を行うことができます。
+リソースの種類から[複数のインスタンスをデプロイ](loops.md)するには、`for` 式を追加します。 この式では、配列のメンバーに対して反復処理を行うことができます。
 
 ```bicep
 resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = [for storageName in storageAccounts: {

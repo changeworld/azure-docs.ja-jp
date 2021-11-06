@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
 ms.date: 08/20/2021
-ms.openlocfilehash: a1cb62bce41ce0003628ce4223fe06e6587317f5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d4c86b555502d662e681fcb5904426a7a891883d
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130250502"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893464"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -143,7 +143,7 @@ Azure App Service を SQL Managed Instance に接続する場合の特殊なケ�
 
 - 仮想ネットワーク ピアリングを使用している場合、[ゲートウェイ転送を許可し、リモート ゲートウェイを使用する方法](#connect-from-on-premises)に関する設定の手順に必ず従ってください。
 
-- 仮想ネットワーク ピアリングを使用して Azure App Service ホスト アプリケーションに接続していて、SQL Managed Instance 仮想ネットワークにパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョンでの仮想ネットワーク統合](../../app-service/overview-vnet-integration.md#regional-vnet-integration)」の手順に従います。
+- 仮想ネットワーク ピアリングを使用して Azure App Service ホスト アプリケーションに接続していて、SQL Managed Instance 仮想ネットワークにパブリック IP アドレス範囲がある場合は、ホストされるアプリケーションの設定で送信トラフィックをパブリック IP ネットワークにルーティングできるようにしてください。 「[リージョンでの仮想ネットワーク統合](../../app-service/overview-vnet-integration.md#regional-virtual-network-integration)」の手順に従います。
 
 ## <a name="required-versions-of-drivers-and-tools"></a>ドライバーとツールの必要なバージョン
 

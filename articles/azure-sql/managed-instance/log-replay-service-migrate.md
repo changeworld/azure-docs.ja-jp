@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: mathoma
 ms.date: 09/21/2021
-ms.openlocfilehash: 2928ce1f58ddefce368a361b32fe65f9c79994cc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8dbe12ec428820f14cce427e4780ec4d5d4fd5c8
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630245"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893312"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

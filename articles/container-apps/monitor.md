@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 075e52647137841539e8db72a4c9fdae90bd8447
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: b956fa5847cce3f5fe85e91ea8e3846c47eabde7
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577025"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894034"
 ---
 # <a name="monitor-an-app-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリを監視する
 
@@ -84,7 +84,7 @@ az monitor log-analytics query \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az monitor log-analytics query `
   --workspace $LOG_ANALYTICS_WORKSPACE_CLIENT_ID `
   --analytics-query "ContainerAppConsoleLogs_CL | where ContainerAppName_s == 'my-container-app' | project ContainerAppName_s, Log_s, TimeGenerated | take 3" `

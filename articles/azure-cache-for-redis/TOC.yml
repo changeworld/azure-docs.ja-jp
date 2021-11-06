@@ -156,6 +156,8 @@
           href: cache-administration.md#schedule-updates
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
+        - name: リージョン間の移動
+          href: cache-moving-resources.md
         - name: Azure Cache for Redis イベントの発行
           href: cache-event-grid.md
         - name: TLS 1.0 および 1.1 の削除

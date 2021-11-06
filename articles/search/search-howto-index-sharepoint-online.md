@@ -2,17 +2,18 @@
 title: SharePoint Online からのデータのインデックスを作成する (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でドキュメント ライブラリのコンテンツのインデックス作成を自動化するように SharePoint Online インデクサーを設定します。
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
+manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1494d0e5b6a3879d926b7d7a96979ca148806ec1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 840520f83a3c90a6c63c366e0e56a98d5ab71551
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076018"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892952"
 ---
 # <a name="index-data-from-sharepoint-online"></a>SharePoint Online からのデータのインデックスを作成する
 

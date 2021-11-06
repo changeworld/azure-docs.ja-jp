@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3de81d40065a37f3d8443594621a2dec99120017
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 6c5fe92da4eb891ab1d5b264ff1585730352db36
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578938"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894167"
 ---
 # <a name="secure-an-app-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリをセキュリティ保護する
 
@@ -83,7 +83,7 @@ az containerapp create \
 - パラメーターは、名前と値のペアのコンマで区切られたセットを受け入れます。
 - 各ペアを区切るには、等号 (`=`) を使います。
 
-```powershell
+```azurecli
 az containerapp create `
   --resource-group "my-resource-group" `
   --name queuereader `
@@ -134,7 +134,7 @@ az containerapp create \
 
 この例では、環境変数で参照されるシークレットを使うアプリケーションを、Azure CLI を使って作成します。
 
-```powershell
+```azurecli
 az containerapp create `
   --resource-group "my-resource-group" `
   --name myQueueApp `

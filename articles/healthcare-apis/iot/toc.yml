@@ -17,8 +17,14 @@ items:
   - name: 概念
     expanded: true
     items:
-      - name: IoT データ フロー
+      - name: IoT コネクタのデータ フロー
         href: iot-data-flow.md
+      - name: IoT コネクタと Azure Machine Learning サービス
+        href: iot-connector-machine-learning.md
+      - name: IoT コネクタと Microsoft Power BI
+        href: iot-connector-power-bi.md
+      - name: IoT コネクタと Microsoft Teams
+        href: iot-connector-teams.md
   - name: 使い方ガイド
     expanded: true
     items:

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: b6e78329c4f45baffd779202ebfa37da3c6cf7c9
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 856845022e63a96b9e5d56d1e869dec55a2511be
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105437"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892174"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
@@ -39,7 +39,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
     | フィールド | 値の例 | 説明 |
     |---|---|---|
-    | [ルート テンプレート] | /hello | この関数の呼び出しに使用するルートを決定します |
+    | [ルート テンプレート] | hello | この関数の呼び出しに使用するルートを決定します |
     | 承認レベル | Anonymous | 省略可能:API キーを使用せずに関数にアクセスできるようにします |
     | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
 

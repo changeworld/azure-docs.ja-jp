@@ -143,6 +143,8 @@ items:
         href: concepts/identity-model.md
       - name: 認証
         href: concepts/authentication.md
+      - name: ネットワーク トラバーサル
+        href: concepts/network-traversal.md
       - name: プライバシー
         href: concepts/privacy.md
       - name: 価格

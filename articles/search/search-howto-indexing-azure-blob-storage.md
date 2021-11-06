@@ -2,19 +2,19 @@
 title: Azure Blob Storage にあるデータのインデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でのフルテキスト検索操作とナレッジ マイニング用に BLOB コンテンツのインデックス付けを自動化するように Azure Blob インデクサーを設定します。
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 13753918ba850dcb9e62c0d54c1f23259eb92ba4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f4f90b83a21eb85a9ccc3ae11de4582d50ab2363
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010709"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892212"
 ---
 # <a name="index-data-from-azure-blob-storage"></a>Azure Blob Storage にあるデータのインデックスを作成する
 
