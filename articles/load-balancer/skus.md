@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/2020
+ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: fc474bf8a6df613a8dc1e95169b4730251ff22b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5000ac68cc0e00cdbe9d0ebd430f8cd88fe49e98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472852"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057706"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer の SKU
 
@@ -34,6 +34,7 @@ Load Balancer では、Standard SKU と Basic SKU の両方がサポートされ
 
 | | Standard Load Balancer | Basic Load Balancer |
 | --- | --- | --- |
+| **バックエンドの種類** | IP ベース、NIC ベース | NIC ベース |
 | **[バックエンド プールのサイズ](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | 最大 1,000 インスタンスをサポート。 | 最大 300 インスタンスをサポート。 |
 | **バックエンド プール エンドポイント** | 単一の仮想ネットワーク内の任意の仮想マシンまたは仮想マシン スケール セット。 | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン。 |
 | **[正常性プローブ](./load-balancer-custom-probe-overview.md#types)** | TCP、HTTP、HTTPS | TCP、HTTP |
@@ -53,7 +54,7 @@ Load Balancer では、Standard SKU と Basic SKU の両方がサポートされ
 
 ## <a name="limitations"></a>制限事項
 
-- SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
+- SKU[をLoad Balancerアップグレードできます](upgrade-basic-standard.md)。
 - スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。
 - [移動操作](../azure-resource-manager/management/move-resource-group-and-subscription.md):
   - リソース グループの移動操作 (同じサブスクリプション内) は、Standard Load Balancer および Standard パブリック IP で **サポートされています**。 

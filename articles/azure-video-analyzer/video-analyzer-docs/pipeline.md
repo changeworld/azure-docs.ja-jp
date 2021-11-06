@@ -2,14 +2,14 @@
 title: Azure Video Analyzer パイプライン
 description: Azure Video Analyzer のエッジとクラウド内でビデオを取り込み、プロセスし、発行する Azure Video Analyzer パイプライン。 パイプラインは、目的のデータ フローを実現するために接続されているノードで構成されます。
 ms.topic: conceptual
-ms.date: 10/31/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 53ac9631155d35972546f937d872d1f48b476b52
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2e1eefc30140d56b1f4d7970e59f235d04799d67
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073895"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552546"
 ---
 # <a name="pipeline"></a>パイプライン
 
@@ -149,7 +149,7 @@ IoT Hub メッセージ シンク ノードを使用すると IoT Edge ハブに
 
 次の表では、ライブ トポロジとバッチ トポロジ、および Video Analyzer エッジ モジュールとサービスでノードが許可されている現在の規則について説明します。
 
-| ノード名                              | トポロジの種類  |  展開       |
+| ノード名                              | トポロジの種類  |  デプロイ       |
 | -------------------------------------- | ---------------|-------------------|
 | RTSP ソース                            | ライブ           |  エッジとクラウド   |
 | IoT Hub メッセージ のソース                 | ライブ           |  Edge             |

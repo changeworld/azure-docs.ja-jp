@@ -1,23 +1,23 @@
 ---
-title: セッションの動作を構成する - Azure Active Directory B2C | Microsoft Docs
+title: セッションの動作の構成-B2C Azure Active Directory
 description: Azure Active Directory B2C でセッションの動作を構成する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/05/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8c6e1e1e22f8d694a020174af15ee8f12c6838d7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59d14afdbe6f4949f2761ddccb3a48a4770c3bd1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594728"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028179"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -63,7 +63,7 @@ Azure AD B2C との統合には、次の 3 種類の SSO セッションが含�
 
 ### <a name="application-session"></a>アプリケーション セッション
 
-Web アプリケーション、モバイル アプリケーション、またはシングル ページ アプリケーションは、OAuth アクセス、ID トークン、または SAML トークンによって保護できます。 ユーザーがアプリの保護されたリソースにアクセスしようとすると、アプリケーション側にアクティブなセッションがあるかどうかが、アプリによって確認されます。 アプリのセッションがない場合、またはセッションの有効期限が切れている場合、アプリによりユーザーは Azure AD B2C のサインイン ページに移動されます。
+Web、モバイル、または単一ページアプリケーションは、OAuth2 アクセストークン、ID トークン、または SAML トークンによって保護できます。 ユーザーがアプリの保護されたリソースにアクセスしようとすると、アプリケーション側にアクティブなセッションがあるかどうかが、アプリによって確認されます。 アプリセッションがない場合、またはセッションが期限切れになった場合、アプリはユーザーを Azure AD B2C サインインページに移動します。
 
 アプリケーションのセッションは、アプリケーション ドメイン名 (`https://contoso.com` など) の下に格納されている Cookie ベースのセッションでもかまいません。 モバイル アプリケーションでは、セッションの格納方法が異なる場合がありますが、同様のアプローチが使用されます。
 
@@ -246,7 +246,7 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を [�
 
 ::: zone pivot="b2c-user-flow"
 1. Azure AD B2C の Cookie ベースのセッションが無効にされます。
-1. フェデレーション ID プロバイダーからのサインアウトが試みられます
+1. フェデレーション ID プロバイダーからのサインアウトを試みる。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -265,11 +265,13 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を [�
 
 ::: zone pivot="b2c-custom-policy"
 
-### <a name="single-sign-out"></a>シングル サインアウト 
+## <a name="single-sign-out"></a>シングル サインアウト 
 
-Azure AD B2C のサインアウト エンドポイントにユーザーをリダイレクトすると (OAuth2 と SAML プロトコルの両方)、Azure AD B2C によってユーザーのセッションがブラウザーからクリアされます。 ただし、ユーザーは認証に Azure AD B2C を使用する他のアプリケーションにサインインしたままになることがあります。 それらのアプリケーションでユーザーを同時にサインアウトできるように、Azure AD B2C では、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に、HTTP GET 要求が送信されます。
+ユーザーを[Azure AD B2C](openid-connect.md#send-a-sign-out-request)サインアウト エンドポイント (OAuth2 と OpenID Connect の両方) にリダイレクトするか、(SAML の場合) を送信すると、Azure AD B2C はブラウザーからユーザーのセッションをクリアします。 `LogoutRequest` ただし、ユーザーは認証に Azure AD B2C を使用する他のアプリケーションにサインインしたままになることがあります。 アクティブなセッションを持つすべてのアプリケーションからユーザーをサインアウトするために、Azure AD B2 Log-Out Cではシングル サインアウト (シングル サインオン *(SLO)* とも呼ばれる) がサポートされています。
 
-アプリケーションは、ユーザーを識別するすべてのセッションを消去し、`200` 応答を返すことで、この要求に応答する必要があります。 アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` を実装する必要があります。 
+サインアウト中に、Azure AD B2C は同時に、ユーザーが現在サインインしているすべてのアプリケーションの登録済みログアウト URL に HTTP 要求を送信します。
+
+### <a name="configure-your-custom-policy"></a>カスタム ポリシーを構成する
 
 シングル サインアウトをサポートするには、JWT と SAML の両方のトークン発行者技術プロファイルで次を指定する必要があります。
 
@@ -314,6 +316,29 @@ Azure AD B2C のサインアウト エンドポイントにユーザーをリダ
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
+
+### <a name="configure-your-application"></a>アプリケーションの作成
+
+アプリケーションがシングル サインアウトに参加するには、
+
+- [SAML サービス プロバイダーの場合は](saml-service-provider.md)、SAML メタデータ ドキュメント の SingleLogoutService の場所を使用[してアプリケーションを構成します](saml-service-provider.md#override-or-set-the-logout-url-optional)。 アプリの登録 を構成することもできます `logoutUrl` 。 詳細については、ログアウト URL の [設定に関するページを参照してください](saml-service-provider.md#override-or-set-the-logout-url-optional)。
+- OpenID Connect OAuth2 アプリケーションの場合は、アプリ登録マニフェスト `logoutUrl` の 属性を設定します。 ログアウト URL を構成するには:
+    1. [B2C Azure ADメニューから、[**を選択** アプリの登録。
+    1. アプリケーションの登録を選択します。
+    1. **[管理]** で、 **[認証]** を選択します。
+    1. [フロント **チャネルログアウト URL] で**、ログアウト URL を構成します。
+
+### <a name="handling-single-sign-out-requests"></a>シングル サインアウト要求の処理
+
+B2C Azure ADがログアウト要求を受信すると、フロントチャネル HTML iframe を使用して、ユーザーが現在サインインしている参加している各アプリケーションの登録済みログアウト URL に HTTP 要求を送信します。 サインアウト要求をトリガーするアプリケーションでは、このログアウト メッセージが表示されません。 アプリケーションは、ユーザーを識別するアプリケーション セッションをクリアしてサインアウト要求に応答する必要があります。
+
+- OpenID Connect OAuth2 アプリケーションの場合、Azure AD B2C は登録されたログアウト URL に HTTP GET 要求を送信します。
+- SAML アプリケーションの場合、Azure AD B2C は登録されたログアウト URL に SAML ログアウト要求を送信します。
+
+すべてのアプリケーションがログアウトの通知を受け取Azure AD B2C は次のいずれかを実行します。
+
+- OpenID Connect OAuth2 アプリケーションの場合、ユーザーは、最初の要求で指定された (省略可能) パラメーターを含め、要求に `post_logout_redirect_uri``state` リダイレクトされます。 たとえば、「 `https://contoso.com/logout?state=foo` 」のように指定します。
+- SAML アプリケーションの場合、SAML ログアウト応答は、最初にログアウト要求を送信したアプリケーションに HTTP POST を介して送信されます。
 
 ::: zone-end
 

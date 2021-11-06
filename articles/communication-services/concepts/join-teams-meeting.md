@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 88025243a379b18b5b24cb3c47caee4713b47585
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: c0713588eadebbd1d9376faec8e61cf5a88dfd1d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131545"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068914"
 ---
 # <a name="join-a-teams-meeting"></a>Teams 会議に参加する
 
@@ -51,6 +51,7 @@ Azure Communication Services と Microsoft Teams の間の相互運用性によ�
 
 - BYOI ユーザーは、Teams チャネルでスケジュールされている Teams 会議に参加し、音声と動画を使用できますが、チャネルのメンバーではないため、チャット メッセージを送受信することはできません。
 - Microsoft Graph を使用して [Teams ミーティングの参加者の一覧を表示する](/graph/api/call-list-participants)と、Communication Services のユーザーに関する詳細は現在は含まれません。
+- PowerPointユーザーに対して、プレゼンテーションCommunication Servicesされません。
 - Teams の会議では最大 1,000 人の参加者がサポートされますが、現在の Azure Communication Services Calling SDK でサポートされる参加者は 350 人のみです。
 - [Microsoft Teams のクラウド ビデオ相互運用性](/microsoftteams/cloud-video-interop)を使用すると、Communication Services のユーザーが画面を共有するときにいくつかのデバイスで問題が発生しています。
 - 挙手、集合モード、ブレイクアウト ルームなどの機能は、Teams ユーザーのみが使用できます。
@@ -60,6 +61,6 @@ Azure Communication Services と Microsoft Teams の間の相互運用性によ�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [BYOI 通話アプリを Teams 会議に参加させる](../quickstarts/voice-video-calling/get-started-teams-interop.md)
-> [BYOI チャット アプリを Teams 会議に参加させる](../quickstarts/chat/meeting-interop.md)
+- [方法: Teams 会議に参加する](../how-tos/calling-sdk/teams-interoperability.md)
+- [クイックスタート: BYOIと 呼び出しアプリを Teams 会議に参加させる](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+- [クイックスタート: byoi chat アプリを Teams 会議に参加させる](../quickstarts/chat/meeting-interop.md)

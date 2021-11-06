@@ -8,12 +8,12 @@ ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: expressroute
 ms.custom: mode-portal
-ms.openlocfilehash: c1bcbd91ae960eb8fb690b04b09445183d787e94
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 449925c1588ad05fccf2d5d5509ad621b6041956
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005444"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867135"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>クイックスタート: ExpressRoute 回線の作成と変更
 
@@ -25,7 +25,7 @@ ms.locfileid: "131005444"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
-* 手順をより理解するため、開始する前に[ビデオを参照](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
+* 手順をより理解するため、開始する前に[ビデオを参照](https://channel9.msdn.com/Blogs/Azure/Azure-ExpressRoute-How-to-create-an-ExpressRoute-circuit)できます。
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 

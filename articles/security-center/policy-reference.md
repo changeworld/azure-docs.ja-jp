@@ -6,13 +6,13 @@ ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
-ms.custom: subject-policy-reference
-ms.openlocfilehash: 61bcd4428c00e5500fbceda77a5f38e98bfc0253
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: subject-policy-reference, ignite-fall-2021
+ms.openlocfilehash: ba2e38daf84d370d0d8d20e50cf2a1fcc271a8a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131422389"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004646"
 ---
 # <a name="azure-policy-built-in-definitions-for-microsoft-defender-for-cloud"></a>Microsoft Defender for CloudのAzure Policy組み込み定義
 

@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: c1d9c88825dc8460c619131b8f69b5e802a8758b
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 03926f656bd96205057703e610bfab17c144dd5e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080752"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059378"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>v1.0 トークンを受け入れる Web API のスコープ
 
@@ -65,7 +65,7 @@ Azure AD で使用されるロジックは次のとおりです。
 
 - v1.0 アクセス トークン (使用可能な場合のみ) を使用する ADAL (Azure AD v1.0) エンドポイントの場合、aud=resource となります
 - v2.0 トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (Microsoft ID プラットフォーム) の場合は、`aud=resource.AppId` となります
-- v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、https:\//database.windows.net で "https:\//database.windows.net/" の対象ユーザーを必要とする場合、"https:\//database.windows.net//.default" のスコープを要求する必要があります。 GitHub の問題「[#747:リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)」も参照してください。
+- v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、`https://database.windows.net` で "`https://database.windows.net`" の対象ユーザーが予期される場合、"`https://database.windows.net//.default`" のスコープを要求する必要があります。 GitHub の問題「[#747`Resource url's trailing slash is omitted, which caused sql auth failure`](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>v1.0 アプリケーションのすべてのアクセス許可へのアクセス権を要求するスコープ
 

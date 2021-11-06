@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 10/18/2021
 ms.author: dukek
-ms.openlocfilehash: 7a2efe5a47e88fd8ad8e9a382d522271d8ab4c3b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: af5742cc4b6c6fc218b1fd5597d5ff2c1e5ef3fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017903"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440072"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 アクション グループは、アラートがトリガーされたことをユーザーに通知するために Azure Monitor、Service Health、Azure Advisor のアラートで使用されます。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -280,7 +280,7 @@ Write-Host $myApp.AppRoles
 アクション グループには、限られた数の SMS アクションを保持できます。
 
 > [!NOTE]
-> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、SMS はお住まいの国/地域ではサポートされていません。  国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国/地域を追加するように投票できます。 当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの SMS プロバイダーに対して、アクション グループで Webhook を呼び出します。  
+> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、SMS はお住まいの国/地域ではサポートされていません。  国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/d365community/idea/e527eaa6-2025-ec11-b6e6-000d3a4f09d0)でお住まいの国/地域を追加するように投票できます。 当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの SMS プロバイダーに対して、アクション グループで Webhook を呼び出します。  
 
 サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
@@ -333,7 +333,7 @@ Write-Host $myApp.AppRoles
 アクション グループには、限られた数の音声アクションを保持できます。
 
 > [!NOTE]
-> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、音声通話はお住まいの国/地域ではサポートされていません。 国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)でお住まいの国/地域を追加するように投票できます。  当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの音声通話プロバイダーに対して、アクション グループで Webhook を呼び出します。  
+> Azure portal アクション グループのユーザー インターフェイスで国/地域コードを選択できない場合、音声通話はお住まいの国/地域ではサポートされていません。 国/地域コードが利用できない場合は、[ユーザーの声](https://feedback.azure.com/d365community/idea/e527eaa6-2025-ec11-b6e6-000d3a4f09d0)でお住まいの国/地域を追加するように投票できます。  当面の回避策としては、お住まいの国/地域でサポートされているサードパーティの音声通話プロバイダーに対して、アクション グループで Webhook を呼び出します。  
 > 音声通知について Azure portal アクション グループで現在サポートされている国番号は +1 (米国) のみです。 
 
 サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。

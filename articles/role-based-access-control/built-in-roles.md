@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/28/2021
+ms.date: 10/23/2021
 ms.custom: generated
-ms.openlocfilehash: 3f9154a2ec6c7900ffa15fd19e9910c89649be2d
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b8e3fe1f29650feebe5a666a60d37c4a09a4e363
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709304"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023749"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -98,8 +98,8 @@ ms.locfileid: "129709304"
 > | [SignalR REST API 閲覧者](#signalr-rest-api-reader) | Azure SignalR Service REST API への読み取り専用アクセス | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [SignalR Service 所有者](#signalr-service-owner) | Azure SignalR Service REST API へのフル アクセス | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
 > | [SignalR/Web PubSub 共同作成者](#signalrweb-pubsub-contributor) | SignalR のサービス リソースの作成、読み取り、更新、削除を行います | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
-> | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-> | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理します。 Azure RBAC でロールを割り当て許可しない。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | [Website Contributor](#website-contributor) | Web プランではなく、Web サイトを管理します。 Azure RBAC でロールを割り当て許可しない。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Containers** |  |  |
 > | [AcrDelete](#acrdelete) | コンテナー レジストリからリポジトリ、タグ、またはマニフェストを削除します。 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | コンテンツの信頼が有効になっているコンテナー レジストリに信頼済みのイメージをプッシュしたり、信頼済みのイメージをプルしたりします。 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
@@ -236,6 +236,7 @@ ms.locfileid: "129709304"
 > | [Workbook Contributor](#workbook-contributor) | 共有ブックを保存できます。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Workbook Reader](#workbook-reader) | ブックの読み取りが可能です。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **管理 + ガバナンス** |  |  |
+> | [Automation 共同作成者](#automation-contributor) | Azure automation を使用して azure automation リソースとその他のリソースを管理します。 | f353d9bd-d4a6-484e-a77a-8050b599b867 |
 > | [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Automation Operator](#automation-operator) | Automation オペレーターはジョブを開始、停止、中断、再開することができます | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
@@ -608,10 +609,10 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | コンピューティング可用性セットの作成と管理 |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* | Cloud Services の作成と管理 (延長サポート) |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | コンピューティングの場所の作成と管理 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 仮想マシンの作成、更新、削除、起動、再起動、電源オフを含む、すべての仮想マシン操作を実行します。 仮想マシンでスクリプトを実行します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 仮想マシン スケールセットの作成と管理 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 新しいディスクを作成するか、既存のディスクを更新します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | ディスクのプロパティを取得します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/delete | ディスクを削除します。 |
@@ -672,6 +673,7 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
         "Microsoft.Compute/locations/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/virtualMachineScaleSets/*",
+        "Microsoft.Compute/cloudServices/*",
         "Microsoft.Compute/disks/write",
         "Microsoft.Compute/disks/read",
         "Microsoft.Compute/disks/delete",
@@ -2930,6 +2932,7 @@ Azure Maps アカウントからのマップ関連データへの読み取り、
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/write |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/delete |  |
+> | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/action |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -2948,7 +2951,8 @@ Azure Maps アカウントからのマップ関連データへの読み取り、
       "dataActions": [
         "Microsoft.Maps/accounts/*/read",
         "Microsoft.Maps/accounts/*/write",
-        "Microsoft.Maps/accounts/*/delete"
+        "Microsoft.Maps/accounts/*/delete",
+        "Microsoft.Maps/accounts/*/action"
       ],
       "notDataActions": []
     }
@@ -3955,7 +3959,7 @@ SignalR のサービス リソースの作成、読み取り、更新、削除�
 
 ### <a name="web-plan-contributor"></a>Web Plan Contributor
 
-Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。
+Web サイトの Web プランを管理します。 Azure RBAC でロールを割り当て許可しない。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -4008,7 +4012,7 @@ Web サイトの Web プランを管理できます。ただし、それらへ�
 
 ### <a name="website-contributor"></a>Website Contributor
 
-Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。
+Web プランではなく、Web サイトを管理します。 Azure RBAC でロールを割り当て許可しない。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -10750,6 +10754,65 @@ Azure リソースに対するメトリックの公開を有効にします。[�
 
 ## <a name="management--governance"></a>管理 + ガバナンス
 
+
+### <a name="automation-contributor"></a>Automation 共同作成者
+
+Azure automation を使用して azure automation リソースとその他のリソースを管理します。 [詳細情報](../automation/automation-role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/actiongroups/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricalerts/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/scheduledqueryrules/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Manage azure automation resources and other resources using azure automation.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f353d9bd-d4a6-484e-a77a-8050b599b867",
+  "name": "f353d9bd-d4a6-484e-a77a-8050b599b867",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Automation/automationAccounts/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/ActionGroups/*",
+        "Microsoft.Insights/ActivityLogAlerts/*",
+        "Microsoft.Insights/MetricAlerts/*",
+        "Microsoft.Insights/ScheduledQueryRules/*",
+        "Microsoft.Insights/diagnosticSettings/*",
+        "Microsoft.OperationalInsights/workspaces/sharedKeys/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Automation Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
 
 ### <a name="automation-job-operator"></a>Automation ジョブ オペレーター
 

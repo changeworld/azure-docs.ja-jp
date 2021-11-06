@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6f263de696ea23d0502a98b0ca85f4413a7020cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 23bb5771923b3a15ed58ed3e3189b3edf46b4664
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004446"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424990"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>テナント全体の可視性を付与および要求する
 

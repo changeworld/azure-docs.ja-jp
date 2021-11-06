@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 6/4/2021
+ms.date: 10/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 606d1d06a76a1783b38841f2344f2e5273add915
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 04dffd4dcebee3cee9023cf445fda6e3fd05b008
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069571"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050681"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
@@ -35,7 +35,27 @@ ms.locfileid: "130069571"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
+今後の変更に注意する必要はありません。 
+
 ## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="error-50105-has-been-fixed-to-not-return-interaction_required-during-interactive-authentication"></a>対話型認証中にエラー 50105 が`interaction_required`返されない問題を修正しました
+
+**発効日**: 2021 年 10 月
+
+**影響を受けるエンドポイント**: v2.0 および v1.0
+
+**影響を受け取るプロトコル**: ユーザー割り当て [を必要とするアプリのすべてのユーザー フロー](../manage-apps/what-is-access-management.md#requiring-user-assignment-for-an-app)
+
+**変更**
+
+割り当てられていないユーザーが、管理者がユーザー割り当てを要求するとマークしたアプリにサインインしようとすると、エラー 50105 (現在の指定) が生成されます。  これは一般的なアクセス制御パターンであり、ユーザーは多くの場合、アクセスのブロックを解除するために割り当てを要求する管理者を見つける必要があります。  エラーには、`interaction_required`エラー応答を正しく処理する適切にコード化されたアプリケーションで無限ループを引き起こすバグが存在しました。 `interaction_required`はアプリに対話型認証を実行するように指示しますが、実行した後でも、AzureADは`interaction_required`エラー応答を返します。  
+
+エラー シナリオが更新されたので、非対話型認証 (`prompt=none`はUX を非表示にする場合) に、`interaction_required`エラー応答を使用して対話型認証を実行するようにアプリに指示されます。 その後の対話型認証では、Azure ADがユーザーを保持し、エラーメッセージを直接表示して、ループが発生しないようにします。 
+
+注意として、Azure ADは、`AADSTS50105`の文字列の検査など、個々のエラーコードを検出するアプリケーションをサポートしていません。 代わりに、[Azure ADガイダンス](reference-aadsts-error-codes.md#handling-error-codes-in-your-application)は、標準に従い、`interaction_required`や`login_required`などの[標準化された認証応答](https://openid.net/specs/openid-connect-core-1_0.html#AuthError)を使用することです。 これらは、応答の標準`error`フィールドに含まれています。他のフィールドは、トラブルシューティング中に人間が使用するためのフィールドです。 
+
+エラー参照サービスの 50105 エラーの現在のテキストを確認できます： https://login.microsoftonline.com/error?code=50105 。 
 
 ### <a name="appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains"></a>シングル テナント アプリケーションの AppId URI には、既定のスキームまたは検証済みドメインを使用する必要があります
 
@@ -57,21 +77,7 @@ ms.locfileid: "130069571"
 
 [!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
 
-## <a name="june-2021"></a>2021 年 6 月
-
-### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>デバイス コード フロー UX にアプリの確認プロンプトが含まれるようになります
-
-**発効日**: 2021 年 6 月。
-
-**影響を受けるエンドポイント**: v2.0 および v1.0
-
-**影響を受けるプロトコル**: [デバイス コード フロー](v2-oauth2-device-code.md)
-
-セキュリティを強化するために、デバイス コード フローが更新され、ユーザーが期待するアプリにサインインしているという検証を行うプロンプトが追加されました。 これは、フィッシング攻撃を防ぐために追加されます。
-
-表示されるプロンプトは次のように表示されます。
-
-:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="&quot;Azure CLI にサインインしようとしていますか?&quot; という新しいプロンプト。":::
+## <a name="august-2021"></a>2021 年 8 月
 
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>条件付きアクセスは、明示的に要求されたスコープに対してのみトリガーされる
 
@@ -97,6 +103,23 @@ ms.locfileid: "130069571"
 
 次に、アプリがその 3 つのスコープのいずれか (たとえば、`scope=tasks.read`) に対して最後の要求を行うと、Azure AD では、ユーザーが `files.readwrite` に必要な条件付きアクセス ポリシーを既に完了していることを確認し、3 つすべてのアクセス許可が含まれたトークンを再び発行します。 
 
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>デバイス コード フロー UX にアプリの確認プロンプトが含まれるようになります
+
+**発効日**: 2021 年 6 月。
+
+**影響を受けるエンドポイント**: v2.0 および v1.0
+
+**影響を受けるプロトコル**: [デバイス コード フロー](v2-oauth2-device-code.md)
+
+セキュリティを強化するために、デバイス コード フローが更新され、ユーザーが期待するアプリにサインインしているという検証を行うプロンプトが追加されました。 これは、フィッシング攻撃を防ぐために追加されます。
+
+表示されるプロンプトは次のように表示されます。
+
+:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="&quot;Azure CLI にサインインしようとしていますか?&quot; という新しいプロンプト。":::
+
 ## <a name="may-2020"></a>2020 年 5 月
 
 ### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>バグの修正: Azure AD によって、state パラメーターが 2 回 URL エンコードされることはなくなりました
@@ -107,7 +130,7 @@ ms.locfileid: "130069571"
 
 **影響を受けるプロトコル**: `/authorize` エンドポイントにアクセスするすべてのフロー (暗黙のフローおよび承認コードフロー)
 
-Azure AD の承認応答でバグが見つかり、修正されました。 認証の `/authorize` 段階では、応答に要求からの `state` パラメーターが含まれます。これにより、アプリの状態が維持され、CSRF 攻撃を防ぐことができます。 `state` パラメーターがエンコードされた応答に、このパラメーターを挿入する前に、Azure AD により、誤ってこのパラメーターがもう一度 URL エンコードされます。  これにより、アプリケーションが Azure AD からの応答を誤って拒否する可能性があります。 
+Azure AD の承認応答でバグが見つかり、修正されました。 認証の `/authorize` 段階では、応答に要求からの `state` パラメーターが含まれます。これにより、アプリの状態が維持され、CSRF 攻撃を防ぐことができます。 `state`パラメーターがエンコードされた応答に、このパラメーターを挿入する前に、Azure AD により、誤ってこのパラメーターがもう一度 URL エンコードされます。  これにより、アプリケーションが Azure AD からの応答を誤って拒否する可能性があります。
 
 Azure AD によるこのパラメーターのダブルエンコードがなくなり、アプリで結果を正しく解析できるようになります。 この変更はすべてのアプリケーションに対して行われます。 
 

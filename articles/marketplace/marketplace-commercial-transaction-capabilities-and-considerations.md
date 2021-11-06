@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 77ec7a7dad4b215ae22bf3766172f1e92e932593
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 344b3aeba1c10e3a66d01458800d771ca31dd3a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736196"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056436"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -165,7 +165,7 @@ SaaS サブスクリプションは、月または年単位で、定額あるい
 
 ### <a name="publisher-payout-and-reporting"></a>公開元への支払いとレポート作成
 
-エージェントとしての Microsoft によって収集されたソフトウェア ライセンス料金は、別途指定されない限り、3% のストア サービス料金が適用され、公開元への支払い時に差し引かれます。
+エージェントとしての Microsoft によって収集されたソフトウェア ライセンス料金は、別途指定されない限り、3% のストア サービス料金が適用され、[公開元への支払い](/partner-center/payout-policy-details)時に差し引かれます。
 
 顧客は一般的に、エンタープライズ契約またはクレジット カードが有効な従量課金契約を使用して購入します。 契約の種類によって、課金、請求、回収、支払いのタイミングが決まります。
 
@@ -203,8 +203,8 @@ Microsoft を介した取引を利用できるのは、次のコマーシャル 
 
 プライベート プランを使用すると、特定の顧客向けに、一般提供されているオファリングよりも高いまたは低い価格を提示できます。 プライベート プランは、あるオファーに対する割引や特典の追加を行うために使用できます。 プライベート プランは、単一または複数の顧客の Azure サブスクリプションをプランレベルでリスト登録することによって、それらの顧客に対して使用可能にすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- オンライン ショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認します。
+- オンライン ストア別の一覧と価格オプションについては、「登録リスト オプションの [概要」を参照してください](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。
 - [オファーの種類別の公開ガイド](publisher-guide-by-offer-type.md)。
 - [コマーシャル マーケットプレース オファーのプランと価格](./plans-pricing.md)

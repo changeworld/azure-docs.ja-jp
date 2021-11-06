@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: c3d328732f35a35c663f04c7bfed9209adbcb7f7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5a0e5fb157d978c84eb8315b77f9474a51cdf418
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009923"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422503"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>オンプレミスおよびマルチクラウド環境で実行されている Azure Arc 対応 Kubernetes クラスターを防御する
 
@@ -153,7 +152,7 @@ Defender 拡張機能REST APIを使用するには、サブスクリプション
 
     各値の説明:
 
-    | 名前            | /   | 必須 | 型   | 説明                                  |
+    | 名前            | /   | 必須 | Type   | 説明                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | サブスクリプション ID | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースのサブスクリプション ID |
     | リソース グループ  | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースを含むリソース グループの名前 |
@@ -337,7 +336,7 @@ REST API を使用して拡張機能を削除するには、次の DELETE コマ
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名前            | /   | 必須 | 型   | 説明                                           |
+| 名前            | /   | 必須 | Type   | 説明                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | サブスクリプション ID | path | True     | string | ご自分の Azure Arc 対応 Kubernetes クラスターのサブスクリプション ID |
 | リソース グループ  | path | True     | string | ご自分の Azure Arc 対応 Kubernetes クラスターのリソース グループ  |

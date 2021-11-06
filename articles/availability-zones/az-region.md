@@ -8,12 +8,12 @@ ms.date: 10/01/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 8fecd71f9b7d248e4452a708e0125f7d810ca7d1
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 58d483c56f27dd346c672f2ec2013dce934993ee
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848783"
+ms.locfileid: "131866527"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>可用性ゾーンをサポートする Azure サービス
 
@@ -35,7 +35,7 @@ Azure は、クラウド プロバイダーの中でも最も広範なグロー�
 | 米国東部 | ノルウェー東部 | | 韓国中部 |
 | 米国東部 2 | 英国南部 | | 東南アジア |
 | 米国中南部 | 西ヨーロッパ | | 東アジア |
-| US Gov バージニア州 | スウェーデン* | | |
+| US Gov バージニア州 | スウェーデン | | |
 | 米国西部 2 | | | |
 | 米国西部 3 | | | |
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: bf6afd93833bb8e81046f4bc84d53203920d4733
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: de40ab35343a096f8259c446289f549528f2bcab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129989895"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068191"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
@@ -111,7 +111,7 @@ if (authResult != null)
 | \<Tenant ID> | **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** |
 | \<App ID of the Native app> | **[アプリケーションの登録]**  > *ネイティブ アプリケーション* >  **[概要]**  >  **[アプリケーション ID]** |
 | \<Scope> | **[アプリケーション 登録]**  > *ネイティブ アプリケーション* >  **[API 権限]** > Permisson API (user_impersonation) をクリックします > 右側に、**user_impersonation** というキャプション付きのパネルが表示されます。 > スコープは、編集ボックスの URL です。
-| \<Proxy App Url> | API への外部 URL とパス
+| \<Proxy App URL> | API への外部 URL とパス
 
 これらのパラメーターで MSAL コードを編集した後は、会社のネットワークの外部のユーザーであっても、ネイティブ クライアント アプリケーションに対して認証を行うことができるようになります。
 

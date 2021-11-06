@@ -9,14 +9,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/08/2021
+ms.date: 10/26/2021
 ms.author: radeltch
-ms.openlocfilehash: d2b65fa273a7901c5c40b1c31d0ef399936542cd
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 884c108f8730a378cbd276467562bfe49bfdf86f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708646"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074333"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -80,6 +80,7 @@ ms.locfileid: "129708646"
   * [高可用性アドオンの参照](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux ネットワーク ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
   * [NFS 共有上の HANA ファイル システムを使用して、Pacemaker クラスターで SAP HANA スケールアウト システム レプリケーションを構成する方法](https://access.redhat.com/solutions/5423971)
+  * [アクティブ/アクティブ (読み取り対応): SAP HANAのスケールアウトとシステムレプリケーション用RHEL HAソリューション](https://access.redhat.com/sites/default/files/attachments/v8_ha_solution_for_sap_hana_scale_out_system_replication_1.pdf)
 * Azure 固有の RHEL ドキュメント:
   * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/public-cloud/microsoft-azure)
   * [SAP HANA のスケールアウトとシステム レプリケーションのための Red Hat Enterprise Linux ソリューション](https://access.redhat.com/solutions/4386601)
@@ -876,7 +877,7 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
     ```
 
    > [!TIP]
-   > 構成に NFS でマウントされている /`hana/shared` 以外の他のファイル システムが含まれている場合は、ファイル システム間に順序の依存関係がなくなるよう、`sequential=false` オプションを含めます。 NFS でマウントされたすべてのファイル システムは、対応する属性リソースの前に起動する必要がありますが、互いに決まった順序で起動する必要はありません。 詳細については、[HANA ファイル システムが NFS 共有である場合の、Pacemaker クラスターでの SAP HANA スケールアウト HSR の構成方法](https://access.redhat.com/solutions/5423971)に関するページを参照してください。  
+   > 構成に NFS でマウントされている /`hana/shared` 以外の他のファイル システムが含まれている場合は、ファイル システム間に順序の依存関係がなくなるよう、`sequential=false` オプションを含めます。 NFS でマウントされたすべてのファイル システムは、対応する属性リソースの前に起動する必要がありますが、互いに決まった順序で起動する必要はありません。 詳細については、[ HANAファイルシステムがNFS共有である場合に、ペースメーカークラスターでSAP HANAスケールアウトHSRを構成する方法を参照してください](https://access.redhat.com/solutions/5423971)。  
 
 8. **[1]** HANA クラスター リソースの作成準備として、pacemaker をメンテナンス モードにします。  
     ```bash
@@ -998,7 +999,7 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
        meta master-max="1" clone-node-max=1 interleave=true
       ```
       > [!IMPORTANT]
-      > 失敗したプライマリ インスタンスが自動的にセカンダリとして登録されるのを防ぐために、完全なフェールオーバー テストを実行している間、AUTOMATED_REGISTER を **no** に設定することをベスト プラクティスとしてお勧めします。 フェールオーバー テストが正常に完了したら、AUTOMATED_REGISTER を **yes** に設定します。こうすることで、引き継ぎ後のシステム レプリケーションが自動的に再開されるようになります。 
+      > フェールオーバーテストの実行中に AUTOMATED_REGISTER を **false** に設定して、失敗したプライマリインスタンスがセカンダリとして自動的に登録されないようにすることをお勧めします。 テスト後、ベスト プラクティスとして、引きAUTOMATED_REGISTERシステム レプリケーションを自動的に再開できるよう、 を {1}true{2}に設定します。 
 
    4. 仮想 IP と関連するリソースを作成します。  
       ```bash
@@ -1038,6 +1039,126 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
    > [!NOTE]
    > 上記の構成のタイムアウトはほんの一例であり、特定の HANA のセットアップに適合させる必要がある場合があります。 たとえば、SAP HANA データベースの起動により時間がかかる場合は、開始タイムアウトを長くする必要がある可能性があります。
   
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Pacemaker クラスターで HANA アクティブ/読み取り可能のシステム レプリケーションを構成する
+
+SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーションでアクティブ/読み取り可能のセットアップを使用できます。この場合、読み取り処理の多いワークロードに対して SAP HANA システム レプリケーションのセカンダリ システムを積極的に活用できます。 クラスターでこのような設定をサポートするには、2 番目の仮想 IP アドレスが必要です。これにより、セカンダリ読み取りが有効な SAP HANA データベースにクライアントからアクセスできます。 引き継ぎの実行後もセカンダリ レプリケーション サイトにアクセスできるようにするには、SAPHana リソースのセカンダリを使用して、クラスターで仮想 IP アドレスを移動する必要があります。
+
+
+このセクションでは、2 番目の仮想 IP を使用して Red Hat 高可用性クラスターで HANA のアクティブ/読み取り可能のシステム レプリケーションを管理するために必要な追加の手順について説明します。  
+
+先に進む前に、上に記載したドキュメントを参照して、SAP HANA データベースを管理する Red Hat 高可用性クラスターの構成が完了していることを確認してください。  
+
+![読み取り可能なセカンダリを使用した高可用性のスケールアウトSAP HANA](./media/sap-hana-high-availability-rhel/sap-hana-high-avalability-scale-out-hsr-rhel-read-enabled.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>アクティブ/読み取り可能のセットアップ用の Azure Load Balancer の追加設定
+
+2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](#deploy-azure-load-balancer)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
+
+**標準** ロード バランサーの場合は、前のセクションで作成したのと同じロード バランサーで、下の追加手順に従います。
+
+1. 2 番目のフロントエンド IP プールを作成する: 
+
+   1. ロード バランサーを開き、 **[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
+   1. この 2 番目のフロントエンド IP プールの名前を入力します (例: **hana-secondaryIP**)。
+   1. **[割り当て]** を **[静的]** に設定し、IP アドレスを入力します (例: **10.23.0.27**)。
+   1. **[OK]** を選択します。
+   1. 新しいフロントエンド IP プールが作成されたら、プールの IP アドレスを書き留めます。
+
+1. 次に、正常性プローブを作成します。
+
+   1. ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
+   1. 新しい正常性プローブの名前を入力します (例: **hana-secondaryhp**)。
+   1. プロトコルとして **[TCP]** を、ポートは **62603** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+   1. **[OK]** を選択します。
+
+1. 次に、負荷分散規則を作成します。
+
+   1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
+   1. 新しいロード バランサー規則の名前を入力します (例: **hana-secondarylb**)。
+   1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-secondaryIP**、**hana-backend**、**hana-secondaryhp**)。
+   1. **[HA ポート]** を選択します。
+   1. **Floating IP を有効にします**。
+   1. **[OK]** を選択します。
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>HANA アクティブ/読み取り可能のシステム レプリケーションの構成
+
+HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>アクティブ/読み取り可能のセットアップ用のセカンダリ仮想 IP アドレス リソースの追加
+
+2 番目の仮想 IP と適切なコロケーション制約は、次のコマンドを使用して構成できます。
+セカンダリインスタンスがダウンしている場合は、セカンダリ仮想 IP がプライマリに切り替わります。   
+
+```
+pcs property set maintenance-mode=true
+
+pcs resource create secvip_HN1_03 ocf:heartbeat:IPaddr2 ip="10.23.0.19"
+pcs resource create secnc_HN1_03 ocf:heartbeat:azure-lb port=62603
+pcs resource group add g_secip_HN1_03 secnc_HN1_03 secvip_HN1_03
+
+# RHEL 8.x: 
+pcs constraint location g_ip_HN1_03 rule score=500 role=master hana_hn1_roles eq "master1:master:worker:master" and hana_hn1_clone_state eq PROMOTED
+pcs constraint location g_secip_HN1_03 rule score=50  hana_hn1_roles eq 'master1:master:worker:master'
+pcs constraint order promote  SAPHana_HN1_HDB03-clone then start g_ip_HN1_03
+pcs constraint order start g_ip_HN1_03 then start g_secip_HN1_03
+pcs constraint colocation add g_secip_HN1_03 with Slave SAPHana_HN1_HDB03-clone 5
+
+# RHEL 7.x:
+pcs constraint location g_ip_HN1_03 rule score=500 role=master hana_hn1_roles eq "master1:master:worker:master" and hana_hn1_clone_state eq PROMOTED
+pcs constraint location g_secip_HN1_03 rule score=50  hana_hn1_roles eq 'master1:master:worker:master'
+pcs constraint order promote  msl_SAPHana_HN1_HDB03 then start g_ip_HN1_03
+pcs constraint order start g_ip_HN1_03 then start g_secip_HN1_03
+pcs constraint colocation add g_secip_HN1_03 with Slave msl_SAPHana_HN1_HDB03 5
+
+pcs property set maintenance-mode=false
+```
+クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。 2 番目の仮想 IP は、セカンダリ サイトで SAPHana セカンダリ リソースと共に実行されます。
+
+```
+# Example output from crm_mon
+#Online: [ hana-s-mm hana-s1-db1 hana-s1-db2 hana-s1-db3 hana-s2-db1 hana-s2-db2 hana-s2-db3 ]
+#
+#Active resources:
+#
+#rsc_st_azure    (stonith:fence_azure_arm):      Started hana-s-mm
+#Clone Set: fs_hana_shared_s1-clone [fs_hana_shared_s1]
+#    Started: [ hana--s1-db1 hana-s1-db2 hana-s1-db3 ]
+#Clone Set: fs_hana_shared_s2-clone [fs_hana_shared_s2]
+#    Started: [ hana-s2-db1 hana-s2-db2 hana-s2-db3 ]
+#Clone Set: hana_nfs_s1_active-clone [hana_nfs_s1_active]
+#    Started: [ hana-s1-db1 hana-s1-db2 hana-s1-db3 ]
+#Clone Set: hana_nfs_s2_active-clone [hana_nfs_s2_active]
+#    Started: [ hana-s2-db1 hana-s2-db2 hana-s2-db3 ]
+#Clone Set: SAPHanaTopology_HN1_HDB03-clone [SAPHanaTopology_HN1_HDB03]
+#    Started: [ hana-s1-db1 hana-s1-db2 hana-s1-db3 hana-s2-db1 hana-s2-db2 hana-s2-db3 ]
+#Master/Slave Set: msl_SAPHana_HN1_HDB03 [SAPHana_HN1_HDB03]
+#    Masters: [ hana-s1-db1 ]
+#    Slaves: [ hana-s1-db2 hana-s1-db3 hana-s2-db1 hana-s2-db2 hana-s2-db3 ]
+#Resource Group: g_ip_HN1_03
+#    nc_HN1_03  (ocf::heartbeat:azure-lb):      Started hana-s1-db1
+#    vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hana-s1-db1
+#Resource Group: g_secip_HN1_03
+#    secnc_HN1_03       (ocf::heartbeat:azure-lb):      Started hana-s2-db1
+#    secvip_HN1_03      (ocf::heartbeat:IPaddr2):       Started hana-s2-db1
+
+```
+
+次のセクションでは、実行する典型的なフェールオーバー テストのセットを示します。
+
+読み取り可能なセカンダリが構成されている HANA クラスターをテストするときに、2 番目の仮想 IP の動作に注意してください。
+
+-  **SAPHana_HN1_HDB03のクラスターリソース** がセカンダリサイト (**S2**) に移動すると、2番目の仮想 IP がもう一方のサイト (  **hana-s1-db1**) に移動します。 AUTOMATED_REGISTER = "false" に設定していて、HANA システム レプリケーションが自動的に登録されていない場合は、2 番目の仮想 IP が **hana-s2-db1** で実行されます。  
+
+- サーバーのクラッシュをテストする場合、2 番目の仮想 IP リソース (**rsc_secvip_HN1_03**) と Azure Load Balancer のポート リソース (**secnc_HN1_03**) は、プライマリ仮想 IP リソースと共にプライマリ サーバー上で実行されます。  セカンダリ サーバーが停止している間、読み取り可能な HANA データベースに接続されているアプリケーションは、プライマリ HANA データベースに接続します。 動作は想定されています。セカンダリサーバーが使用できなくても、読み取りが有効な HANA データベースに接続されているアプリケーションは動作することができます。   
+  
+- フェールオーバーとフォールバックの間は、2 番目の仮想 IP を使用して HANA データベースに接続するアプリケーションの既存の接続が中断される場合があります。  
+
 ## <a name="test-sap-hana-failover"></a>SAP HANA フェールオーバーのテスト 
 
 1. テストを開始する前に、クラスターと SAP HANA システムのレプリケーション状態を確認します。  

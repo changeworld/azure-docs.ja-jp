@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 2bae7f2466363861afe99d37748e7ea41fc0e1c9
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: da2f6977890f7b1d6537cb557635733a7fcb1c5a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046641"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058238"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -74,25 +74,26 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
 4. `index.js` ファイルに依存関係をインポートします。
 
-    ```JavaScript
+   ```javascript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
 5. Cosmos DB の接続文字列と Cosmos DB の名前を ```.env``` ファイルに追加します。 プレースホルダー {cosmos-account-name} および {dbname} を独自の Cosmos アカウント名およびデータベース名に置き換えます。このとき、中かっこ記号は入力しません。
 
-    ```JavaScript
-   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+   ```javascript
+   // You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
    COSMOSDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
    COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
-    ```
+   ```
 
 6. index.js の最後に次のコードを追加することによって、Mongoose フレームワークを使用して Cosmos DB に接続します。
-    ```JavaScript
+
+   ```javascript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
         username: process.env.COSMOSDB_USER,
@@ -105,8 +106,9 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
     .then(() => console.log('Connection to CosmosDB successful'))
     .catch((err) => console.error(err));
     ```
-    >[!Note]
-    > ここで、環境変数は、'dotenv' npm パッケージを使用して process.env.{variableName} によって読み込まれます。
+
+    >[!NOTE]
+    > ここで、環境変数は、 npm パッケージを使用して process.env.{variableName} によって読み込まれます。
 
     Azure Cosmos DB に接続したら、Mongoose でのオブジェクト モデルのセットアップを開始できます。
 
@@ -329,7 +331,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 - Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](connect-using-robomongo.md)方法を学びます。
 - Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](nodejs-console-app.md)を調査します。
 - Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 
 [dbleveltp]: ./media/connect-using-mongoose/db-level-throughput.png

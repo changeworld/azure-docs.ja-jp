@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: db141f863389d724cc1437beeed3b00b44020098
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 65f3ea7217930b680cfb197092533989a3206894
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161839"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054573"
 ---
 # <a name="orchestration-modes-api-comparison"></a>オーケストレーション モードの API の比較 
 
@@ -31,7 +31,6 @@ ms.locfileid: "130161839"
 
 | 均一 API | フレキシブルな代替手段 |
 |-|-|
-| 仮想マシン スケール セット VM ライフサイクル バッチ操作:  | 特定のインスタンスで単一 VM API を呼び出す: |
 | [割り当て解除](/rest/api/compute/virtualmachinescalesetvms/deallocate)  | [単一 VM API の呼び出し - 割り当て解除](/rest/api/compute/virtualmachines/deallocate)   |
 | [削除](/rest/api/compute/virtualmachinescalesetvms/delete)  | [単一 VM API の呼び出し - 削除](/rest/api/compute/virtualmachines/delete)  |
 | [インスタンス ビュー取得](/rest/api/compute/virtualmachinescalesetvms/getinstanceview)  | [単一 VM API の呼び出し - インスタンス ビュー](/rest/api/compute/virtualmachines/instanceview)  |
@@ -47,23 +46,42 @@ ms.locfileid: "130161839"
 
 ## <a name="get-or-update"></a>取得または更新 
 
-### <a name="uniform-api"></a>均一 API
+**Uniform API:**
+
 仮想マシン スケール セット VM インスタンスの取得または更新:
 - [Get](/rest/api/compute/virtualmachinescalesetvms/get) 
 - [アップデート](/rest/api/compute/virtualmachinescalesetvms/update)
 
-### <a name="flexible-alternative"></a>フレキシブルな代替手段 
+**フレキシブルな代替手段** 
+
 単一 VM API の呼び出し:
 - インスタンス保護の種類の動作に対する [ARM リソースのロック](../azure-resource-manager/management/lock-resources.md?tabs=json) 
+    
+
+## <a name="get-or-update-scale-set-vm-instances"></a>スケールセット VM インスタンスの取得または更新
+
+| 均一 API | フレキシブルな代替手段 |
+|-|-|
+| [スケールセット VM の詳細の取得](/rest/api/compute/virtualmachinescalesetvms/get) | [仮想マシンの取得](/rest/api/compute/virtualmachines/get) |
+| [スケールセット VM インスタンスの更新](/rest/api/compute/virtualmachinescalesetvms/update) | [バーチャルマシンの更新](/rest/api/compute/virtualmachines/update) |
+
+
+## <a name="instance-protection"></a>インスタンス保護 
+
+| 均一 API | フレキシブルな代替手段 |
+|-|-|
+| [インスタンスの保護](virtual-machine-scale-sets-instance-protection.md) | インスタンス保護の種類の動作に対する [ARM リソースのロック](../azure-resource-manager/management/lock-resources.md?tabs=json) | 
 
 
 ## <a name="list-instances"></a>インスタンスの一覧表示 
 
-### <a name="uniform-api"></a>均一 API
+**Uniform API:**
+
 `VMSS List Instances`: 
 - 各インスタンスに関連付けられているスケール セット ID を返します
 
-### <a name="flexible-alternative"></a>フレキシブルな代替手段
+**フレキシブルな代替手段**
+
 Azure Resource Graph: 
 
 ```armasm
@@ -72,9 +90,10 @@ resources
 | where properties.virtualMachineScaleSet.id contains "portalbb01" 
 ```
 
-## <a name="scale-set-operations"></a>スケール セットの操作 
+## <a name="scale-set-instance-operations"></a>スケールセットインスタンスの操作 
 
-### <a name="uniform-api"></a>均一 API
+**Uniform API:**
+
 仮想マシン スケール セットの操作:
 - [インスタンスの更新](/rest/api/compute/virtual-machine-scale-sets/update-instances)
 - [割り当て解除](/rest/api/compute/virtual-machine-scale-sets/deallocate)
@@ -87,7 +106,8 @@ resources
 - [オーケストレーション サービスの状態の設定](/rest/api/compute/virtual-machine-scale-sets/set-orchestration-service-state)
 - [スタート](/rest/api/compute/virtual-machine-scale-sets/start)
 
-### <a name="flexible-alternative"></a>フレキシブルな代替手段
+**フレキシブルな代替手段**
+
 個々の VM に対する操作を呼び出します。
 
 仮想マシンの操作:
@@ -95,7 +115,8 @@ resources
 
 ## <a name="vm-extension"></a>VM 拡張機能
 
-### <a name="uniform-api"></a>均一 API
+**Uniform API:**
+
 仮想マシン スケール セット VM 拡張機能:
 - [Create または Update](/rest/api/compute/virtual-machine-scale-set-vm-extensions/create-or-update)
 - [削除](/rest/api/compute/virtual-machine-scale-set-vm-extensions/delete)
@@ -103,28 +124,33 @@ resources
 - [リスト](/rest/api/compute/virtual-machine-scale-set-vm-extensions/list)
 - [アップデート](/rest/api/compute/virtual-machine-scale-set-vm-extensions/update) 
 
-### <a name="flexible-alternative"></a>フレキシブルな代替手段
+**フレキシブルな代替手段**
+
 個々の VM に対する操作を呼び出します。
 
 
 ## <a name="networking"></a>ネットワーク 
 
-### <a name="uniform-api"></a>均一 API
-- NAT プール / ポート フォワーディング 
-- フレキシブル スケール セットでは NAT プールはサポートされません  
+| 均一 API | フレキシブルな代替手段 |
+|-|-|
+| ロードバランサーの NAT プール | 特定のインスタンスに NAT 規則を指定する | 
 
-### <a name="flexible-alternative"></a>フレキシブルな代替手段
-- 各 VM で個々の NAT 規則を設定する
+> [!IMPORTANT]
+> ネットワークの動作は、スケールセット内で仮想マシンを作成する方法によって異なります。 **手動で追加された VM インスタンスには、** 既定の送信接続アクセス権があります。 **暗黙的に作成された VM インスタンスには** 、既定のアクセス権が設定されません。
+>
+> 柔軟なスケールセットのネットワークの詳細については、「 [スケーラブルなネットワーク接続](../virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity)」を参照してください。
 
 
 ## <a name="scale-set-apis"></a>スケール セット API
 
-### <a name="uniform-api"></a>均一 API
+**Uniform API:**
+
 均一仮想マシン スケール セット API:
 - [1 つの配置グループに変換](/rest/api/compute/virtual-machine-scale-sets/convert-to-single-placement-group)
 - [強制的に回復 Service Fabric プラットフォーム更新ドメイン ウォーク](/rest/api/compute/virtual-machine-scale-sets/force-recovery-service-fabric-platform-update-domain-walk)
 
-### <a name="flexible-alternative"></a>フレキシブルな代替手段
+**フレキシブルな代替手段**
+
 フレキシブル仮想マシン スケール セットではサポートされていません。
 
 

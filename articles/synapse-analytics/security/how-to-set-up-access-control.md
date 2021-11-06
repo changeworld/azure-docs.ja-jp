@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 3e90ab30e8eb916ef70248af32b7b95ff0a48428
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d80b12e807e6c6f0999927bc373fe64c1feb1b40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131003544"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846598"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Azure Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -129,7 +129,7 @@ Azure portal で、Azure Synapse ワークスペースを作成します。
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>手順 4:既定のストレージ コンテナーに対するワークスペース MSI アクセスを許可する
 
-Azure Synapse では、パイプラインを実行してシステム タスクを実行するために、ワークスペース マネージド サービス ID (MSI) に既定の ADLS Gen2 アカウントの `container1` に対するアクセス権が必要です。 詳細については、「[Azure Synapse ワークスペース マネージド ID](synapse-workspace-managed-identity.md)」を参照してください。
+Azure Synapse では、パイプラインを実行してシステム タスクを実行するために、ワークスペース マネージド サービス ID (MSI) に既定の ADLS Gen2 アカウントの `container1` に対するアクセス権が必要です。 詳細については、「[Azure Synapse ワークスペース マネージド ID](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics)」を参照してください。
 
 - Azure ポータルを開きます
 - ストレージ アカウント `storage1`、次に `container1` を見つけます
