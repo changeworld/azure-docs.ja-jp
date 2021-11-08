@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 832ae975a19fa7765666acd791c7dfec05a55c3c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d2840b5e8386801411a759d1b00f026bfbacad68
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130235036"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027700"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>Azure Data Studio 用 Azure SQL Migration 拡張機能を使用してデータベースを移行する (プレビュー)
 
@@ -110,27 +110,6 @@ DMS では、Azure Data Factory のセルフホステッド統合ランタイム
 - DMS を使用したデータベースの移行には、Azure Data Factory から作成された既存のセルフホステッド統合ランタイムを使用することはできません。 最初は、Azure Data Studio の Azure SQL Migration 拡張機能を使用してセルフホステッド統合ランタイムを作成する必要があります。これを今後のデータベース移行に再利用できます。
 > [!IMPORTANT]
 > **Azure VM 上の SQL Server に複数のデータベースを移行するときの既知の問題:** Azure VM 上の同じ SQL Server に複数のデータベースを同時に移行すると、ほとんどのデータベースで移行が失敗します。 Azure VM 上の SQL Server には、データベースを 1 つずつ移行してください。  
-
-### <a name="regions"></a>リージョン
-プレビュー期間中は、次のいずれかのリージョンにあるターゲットの Azure SQL Managed Instance または Azure 仮想マシン上の SQL Server に SQL Server データベースを移行します。
-- オーストラリア東部
-- オーストラリア南東部
-- カナダ中部
-- カナダ東部
-- インド中部
-- 米国中部
-- 米国東部
-- 米国東部 2
-- フランス中部
-- 東日本
-- 米国中北部
-- 米国中南部
-- 東南アジア
-- インド南部
-- 英国南部
-- 西ヨーロッパ
-- 米国西部
-- 米国西部 2
 
 ## <a name="pricing"></a>価格
 - Azure Database Migration Service は、Azure Data Studio の Azure SQL Migration 拡張機能で無料で使用できます。 Azure Database Migration Service または Azure SQL Migration 拡張機能を使用すると、無料でこのサービスを使用して複数の SQL Server データベースを移行できます。

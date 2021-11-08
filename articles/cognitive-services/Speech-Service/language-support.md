@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: da7d2acfe48d4d598e2bbbfddccb55e2a7d20241
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 67ac8e5cc3f7d555086ad6f643b82e8615168fa3
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505367"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028118"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -163,44 +163,44 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Language | Locale | 性別 | 音声名 | スタイルのサポート |
 |---|---|---|---|---|
-| アフリカーンス語 (南アフリカ) | af-ZA | Female | `af-ZA-AdriNeural` <sup>[新規作成]</sup>  | 全般 |
-| アフリカーンス語 (南アフリカ) | af-ZA | Male | `af-ZA-WillemNeural` <sup>[新規作成]</sup>  | 全般 |
-| アムハラ語 (エチオピア) | am-ET | Female | `am-ET-MekdesNeural` <sup>[新規作成]</sup>  | 全般 |
-| アムハラ語 (エチオピア) | am-ET | Male | `am-ET-AmehaNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (アルジェリア) | ar-DZ | Female | `ar-DZ-AminaNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (アルジェリア) | ar-DZ | Male | `ar-DZ-IsmaelNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (バーレーン) | ar-BH | Female | `ar-BH-LailaNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (バーレーン) | ar-BH | Male | `ar-BH-AliNeural` <sup>[新規作成]</sup>  | 全般 |
+| アフリカーンス語 (南アフリカ) | `af-ZA` | Female | `af-ZA-AdriNeural` <sup>[新規作成]</sup>  | 全般 |
+| アフリカーンス語 (南アフリカ) | `af-ZA` | Male | `af-ZA-WillemNeural` <sup>[新規作成]</sup>  | 全般 |
+| アムハラ語 (エチオピア) | `am-ET` | Female | `am-ET-MekdesNeural` <sup>[新規作成]</sup>  | 全般 |
+| アムハラ語 (エチオピア) | `am-ET` | Male | `am-ET-AmehaNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (アルジェリア) | `ar-DZ` | Female | `ar-DZ-AminaNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (アルジェリア) | `ar-DZ` | Male | `ar-DZ-IsmaelNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (バーレーン) | `ar-BH` | Female | `ar-BH-LailaNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (バーレーン) | `ar-BH` | Male | `ar-BH-AliNeural` <sup>[新規作成]</sup>  | 全般 |
 | アラビア語 (エジプト) | `ar-EG` | Female | `ar-EG-SalmaNeural` | 全般 |
 | アラビア語 (エジプト) | `ar-EG` | Male | `ar-EG-ShakirNeural` | 全般 |
-| アラビア語 (イラク) | ar-IQ | Female | `ar-IQ-RanaNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (イラク) | ar-IQ | Male | `ar-IQ-BasselNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (ヨルダン) | ar-JO | Female | `ar-JO-Sana Neural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (ヨルダン) | ar-JO | Male | `ar-JO-Taim Neural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (クウェート) | ar-KW | Female | `ar-KW-NouraNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (クウェート) | ar-KW | Male | `ar-KW-FahedNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (リビア) | ar-LY | Female | `ar-LY-ImanNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (リビア) | ar-LY | Male | `ar-LY-OmarNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (モロッコ) | ar-MA | Female | `ar-MA-MounaNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (モロッコ) | ar-MA | Male | `ar-MA-JamalNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (カタール) | ar-QA | Female | `ar-QA-AmalNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (カタール) | ar-QA | Male | `ar-QA-MoazNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (イラク) | `ar-IQ` | Female | `ar-IQ-RanaNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (イラク) | `ar-IQ` | Male | `ar-IQ-BasselNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (ヨルダン) | `ar-JO` | Female | `ar-JO-Sana Neural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (ヨルダン) | `ar-JO` | Male | `ar-JO-Taim Neural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (クウェート) | `ar-KW` | Female | `ar-KW-NouraNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (クウェート) | `ar-KW` | Male | `ar-KW-FahedNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (リビア) | `ar-LY` | Female | `ar-LY-ImanNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (リビア) | `ar-LY` | Male | `ar-LY-OmarNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (モロッコ) | `ar-MA` | Female | `ar-MA-MounaNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (モロッコ) | `ar-MA` | Male | `ar-MA-JamalNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (カタール) | `ar-QA` | Female | `ar-QA-AmalNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (カタール) | `ar-QA` | Male | `ar-QA-MoazNeural` <sup>[新規作成]</sup>  | 全般 |
 | アラビア語 (サウジアラビア) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | 全般 |
 | アラビア語 (サウジアラビア) | `ar-SA` | Male | `ar-SA-HamedNeural` | 全般 |
-| アラビア語 (シリア) | ar-SY | Female | `ar-SY-AmanyNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (シリア) | ar-SY | Male | `ar-SY-LaithNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (チュニジア) | ar-TN | Female | `ar-TN-ReemNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (チュニジア) | ar-TN | Male | `ar-TN-HediNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (アラブ首長国連邦) | ar-AE | Female | `ar-AE-FatimaNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (アラブ首長国連邦) | ar-AE | Male | `ar-AE-HamdanNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (イエメン) | ar-YE | Female | `ar-YE-MaryamNeural` <sup>[新規作成]</sup>  | 全般 |
-| アラビア語 (イエメン) | ar-YE | Male | `ar-YE-SalehNeural` <sup>[新規作成]</sup>  | 全般 |
-| ベンガル語 (バングラデシュ) | bn-BD | Female | `bn-BD-NabanitaNeural` <sup>[新規作成]</sup>  | 全般 |
-| ベンガル語 (バングラデシュ) | bn-BD | Male | `bn-BD-PradeepNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (シリア) | `ar-SY` | Female | `ar-SY-AmanyNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (シリア) | `ar-SY` | Male | `ar-SY-LaithNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (チュニジア) | `ar-TN` | Female | `ar-TN-ReemNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (チュニジア) | `ar-TN` | Male | `ar-TN-HediNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (アラブ首長国連邦) | `ar-AE` | Female | `ar-AE-FatimaNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (アラブ首長国連邦) | `ar-AE` | Male | `ar-AE-HamdanNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (イエメン) | `ar-YE` | Female | `ar-YE-MaryamNeural` <sup>[新規作成]</sup>  | 全般 |
+| アラビア語 (イエメン) | `ar-YE` | Male | `ar-YE-SalehNeural` <sup>[新規作成]</sup>  | 全般 |
+| ベンガル語 (バングラデシュ) | `bn-BD` | Female | `bn-BD-NabanitaNeural` <sup>[新規作成]</sup>  | 全般 |
+| ベンガル語 (バングラデシュ) | `bn-BD` | Male | `bn-BD-PradeepNeural` <sup>[新規作成]</sup>  | 全般 |
 | ブルガリア語 (ブルガリア) | `bg-BG` | Female | `bg-BG-KalinaNeural` | 全般 |
 | ブルガリア語 (ブルガリア) | `bg-BG` | Male | `bg-BG-BorislavNeural` | 全般 |
-| ビルマ語 (ミャンマー) | my-MM | Female | `my-MM-NilarNeural` <sup>[新規作成]</sup>  | 全般 |
-| ビルマ語 (ミャンマー) | my-MM | Male | `my-MM-ThihaNeural` <sup>[新規作成]</sup>  | 全般 |
+| ビルマ語 (ミャンマー) | `my-MM` | Female | `my-MM-NilarNeural` <sup>[新規作成]</sup>  | 全般 |
+| ビルマ語 (ミャンマー) | `my-MM` | Male | `my-MM-ThihaNeural` <sup>[新規作成]</sup>  | 全般 |
 | カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-AlbaNeural` | 全般 |
 | カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-JoanaNeural` | 全般 |
 | カタルニア語 (スペイン) | `ca-ES` | Male | `ca-ES-EnricNeural` | 全般 |
@@ -240,20 +240,20 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (インド) | `en-IN` | Male | `en-IN-PrabhatNeural` | 全般 |
 | 英語 (アイルランド) | `en-IE` | Female | `en-IE-EmilyNeural` | 全般 |
 | 英語 (アイルランド) | `en-IE` | Male | `en-IE-ConnorNeural` | 全般 |
-| 英語 (ケニア) | en-KE | Female | `en-KE-AsiliaNeural` <sup>[新規作成]</sup>  | 全般 |
-| 英語 (ケニア) | en-KE | Male | `en-KE-ChilembaNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (ケニア) | `en-KE` | Female | `en-KE-AsiliaNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (ケニア) | `en-KE` | Male | `en-KE-ChilembaNeural` <sup>[新規作成]</sup>  | 全般 |
 | 英語 (ニュージーランド) | `en-NZ` | Female | `en-NZ-MollyNeural` | 全般 |
 | 英語 (ニュージーランド) | `en-NZ` | Male | `en-NZ-MitchellNeural` | 全般 |
-| 英語 (ナイジェリア) | en-NG | Female | `en-NG-EzinneNeural` <sup>[新規作成]</sup>  | 全般 |
-| 英語 (ナイジェリア) | en-NG | Male | `en-NG-AbeoNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (ナイジェリア) | `en-NG` | Female | `en-NG-EzinneNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (ナイジェリア) | `en-NG` | Male | `en-NG-AbeoNeural` <sup>[新規作成]</sup>  | 全般 |
 | 英語 (フィリピン) | `en-PH` | Female | `en-PH-RosaNeural` | 全般 | 
 | 英語 (フィリピン) | `en-PH` | Male | `en-PH-JamesNeural` | 全般 | 
 | 英語 (シンガポール) | `en-SG` | Female | `en-SG-LunaNeural` | 全般 |
 | 英語 (シンガポール) | `en-SG` | Male | `en-SG-WayneNeural` | 全般 |
 | 英語 (南アフリカ) | `en-ZA` | Female | `en-ZA-LeahNeural` | 全般 |
 | 英語 (南アフリカ) | `en-ZA` | Male | `en-ZA-LukeNeural` | 全般 |
-| 英語 (タンザニア) | en-TZ | Female | `en-TZ-ImaniNeural` <sup>[新規作成]</sup>  | 全般 |
-| 英語 (タンザニア) | en-TZ | Male | `en-TZ-ElimuNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (タンザニア) | `en-TZ` | Female | `en-TZ-ImaniNeural` <sup>[新規作成]</sup>  | 全般 |
+| 英語 (タンザニア) | `en-TZ` | Male | `en-TZ-ElimuNeural` <sup>[新規作成]</sup>  | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-LibbyNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` <sup>10 月 30 日に廃止予定。詳しくは以下を参照</sup> | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-SoniaNeural` | 全般 |
@@ -275,8 +275,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (米国) | `en-US` | Male | `en-US-JacobNeural` | 全般 |
 | エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` | 全般 |
 | エストニア語 (エストニア) | `et-EE` | Male | `et-EE-KertNeural` | 全般 |
-| フィリピノ語 (フィリピン) | fil-PH | Female | `fil-PH-BlessicaNeural` <sup>[新規作成]</sup>  | 全般 |
-| フィリピノ語 (フィリピン) | fil-PH | Male | `fil-PH-AngeloNeural` <sup>[新規作成]</sup>  | 全般 |
+| フィリピノ語 (フィリピン) | `fil-PH` | Female | `fil-PH-BlessicaNeural` <sup>[新規作成]</sup>  | 全般 |
+| フィリピノ語 (フィリピン) | `fil-PH` | Male | `fil-PH-AngeloNeural` <sup>[新規作成]</sup>  | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` | 全般 |
@@ -289,8 +289,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | フランス語 (フランス) | `fr-FR` | Male | `fr-FR-HenriNeural` | 全般 |
 | フランス語 (スイス) | `fr-CH` | Female | `fr-CH-ArianeNeural` | 全般 |
 | フランス語 (スイス) | `fr-CH` | Male | `fr-CH-FabriceNeural` | 全般 |
-| ガリシア語 (スペイン) | gl-ES | Female | `gl-ES-SabelaNeural` <sup>[新規作成]</sup>  | 全般 |
-| ガリシア語 (スペイン) | gl-ES | Male | `gl-ES-RoiNeural` <sup>[新規作成]</sup>  | 全般 |
+| ガリシア語 (スペイン) | `gl-ES` | Female | `gl-ES-SabelaNeural` <sup>[新規作成]</sup>  | 全般 |
+| ガリシア語 (スペイン) | `gl-ES` | Male | `gl-ES-RoiNeural` <sup>[新規作成]</sup>  | 全般 |
 | ドイツ語 (オーストリア) | `de-AT` | Female | `de-AT-IngridNeural` | 全般 |
 | ドイツ語 (オーストリア) | `de-AT` | Male | `de-AT-JonasNeural` | 全般 |
 | ドイツ語 (ドイツ) | `de-DE` | Female | `de-DE-KatjaNeural` | 全般 |
@@ -316,10 +316,10 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | イタリア語 (イタリア) | `it-IT` | Male | `it-IT-DiegoNeural` | 全般 |
 | 日本語 (日本) | `ja-JP` | Female | `ja-JP-NanamiNeural` | 全般 |
 | 日本語 (日本) | `ja-JP` | Male | `ja-JP-KeitaNeural` | 全般 |
-| ジャワ語 (インドネシア) | jv-ID | Female | `jv-ID-SitiNeural` <sup>[新規作成]</sup>  | 全般 |
-| ジャワ語 (インドネシア) | jv-ID | Male | `jv-ID-DimasNeural` <sup>[新規作成]</sup>  | 全般 |
-| クメール語 (カンボジア) | km-KH | Female | `km-KH-SreymomNeural` <sup>[新規作成]</sup>  | 全般 |
-| クメール語 (カンボジア) | km-KH | Male | `km-KH-PisethNeural` <sup>[新規作成]</sup>  | 全般 |
+| ジャワ語 (インドネシア) | `jv-ID` | Female | `jv-ID-SitiNeural` <sup>[新規作成]</sup>  | 全般 |
+| ジャワ語 (インドネシア) | `jv-ID` | Male | `jv-ID-DimasNeural` <sup>[新規作成]</sup>  | 全般 |
+| クメール語 (カンボジア) | `km-KH` | Female | `km-KH-SreymomNeural` <sup>[新規作成]</sup>  | 全般 |
+| クメール語 (カンボジア) | `km-KH` | Male | `km-KH-PisethNeural` <sup>[新規作成]</sup>  | 全般 |
 | 韓国語 (韓国) | `ko-KR` | Female | `ko-KR-SunHiNeural` | 全般 |
 | 韓国語 (韓国) | `ko-KR` | Male | `ko-KR-InJoonNeural` | 全般 |
 | ラトビア語 (ラトビア) | `lv-LV` | Female | `lv-LV-EveritaNeural` | 全般 |
@@ -335,8 +335,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-IselinNeural` | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-PernilleNeural` | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Male | `nb-NO-FinnNeural` | 全般 |
-| ペルシア語 (イラン) | fa-IR | Female | `fa-IR-DilaraNeural` <sup>[新規作成]</sup>  | 全般 |
-| ペルシア語 (イラン) | fa-IR | Male | `fa-IR-FaridNeural` <sup>[新規作成]</sup>  | 全般 |
+| ペルシア語 (イラン) | `fa-IR` | Female | `fa-IR-DilaraNeural` <sup>[新規作成]</sup>  | 全般 |
+| ペルシア語 (イラン) | `fa-IR` | Male | `fa-IR-FaridNeural` <sup>[新規作成]</sup>  | 全般 |
 | ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` | 全般 |
 | ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | 全般 |
 | ポーランド語 (ポーランド) | `pl-PL` | Male | `pl-PL-MarekNeural` | 全般 |
@@ -354,67 +354,67 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | スロバキア語 (スロバキア) | `sk-SK` | Male | `sk-SK-LukasNeural` | 全般 |
 | スロベニア語 (スロベニア) | `sl-SI` | Female | `sl-SI-PetraNeural` | 全般 |
 | スロベニア語 (スロベニア) | `sl-SI` | Male | `sl-SI-RokNeural` | 全般 |
-| ソマリ語 (ソマリア) | so-SO | Female | `so-SO-UbaxNeural` <sup>[新規作成]</sup>  | 全般 |
-| ソマリ語 (ソマリア) | so-SO | Male | `so-SO-MuuseNeural` <sup>[新規作成]</sup>  | 全般 |
+| ソマリ語 (ソマリア) | `so-SO` | Female | `so-SO-UbaxNeural` <sup>[新規作成]</sup>  | 全般 |
+| ソマリ語 (ソマリア) | `so-SO`| Male | `so-SO-MuuseNeural` <sup>[新規作成]</sup>  | 全般 |
 | スペイン語 (アルゼンチン) | `es-AR` | Female | `es-AR-ElenaNeural` | 全般 |
 | スペイン語 (アルゼンチン) | `es-AR` | Male | `es-AR-TomasNeural` | 全般 |
-| スペイン語 (ボリビア) | es-BO | Female | `es-BO-SofiaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ボリビア) | es-BO | Male | `es-BO-MarceloNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (チリ) | es-CL | Female | `es-CL-CatalinaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (チリ) | es-CL | Male | `es-CL-LorenzoNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ボリビア) | `es-BO` | Female | `es-BO-SofiaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ボリビア) | `es-BO` | Male | `es-BO-MarceloNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (チリ) | `es-CL` | Female | `es-CL-CatalinaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (チリ) | `es-CL` | Male | `es-CL-LorenzoNeural` <sup>[新規作成]</sup>  | 全般 |
 | スペイン語 (コロンビア) | `es-CO` | Female | `es-CO-SalomeNeural` | 全般 |
 | スペイン語 (コロンビア) | `es-CO` | Male | `es-CO-GonzaloNeural` | 全般 |
-| スペイン語 (コスタリカ) | es-CR | Female | `es-CR-MariaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (コスタリカ) | es-CR | Male | `es-CR-JuanNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (キューバ) | es-CU | Female | `es-CU-BelkysNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (キューバ) | es-CU | Male | `es-CU-ManuelNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ドミニカ共和国) | es-DO | Female | `es-DO-RamonaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ドミニカ共和国) | es-DO | Male | `es-DO-EmilioNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (エクアドル) | es-EC | Female | `es-EC-AndreaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (エクアドル) | es-EC | Male | `es-EC-LuisNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (エルサルバドル) | es-SV | Female | `es-SV-LorenaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (エルサルバドル) | es-SV | Male | `es-SV-RodrigoNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (赤道ギニア) | es-GQ | Female | `es-GQ-TeresaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (赤道ギニア) | es-GQ | Male | `es-GQ-JavierNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (グアテマラ) | es-GT | Female | `es-GT-MartaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (グアテマラ) | es-GT | Male | `es-GT-AndresNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ホンジュラス) | es-HN | Female | `es-HN-KarlaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ホンジュラス) | es-HN | Male | `es-HN-CarlosNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (コスタリカ) | `es-CR` | Female | `es-CR-MariaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (コスタリカ) | `es-CR` | Male | `es-CR-JuanNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (キューバ) | `es-CU` | Female | `es-CU-BelkysNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (キューバ) | `es-CU` | Male | `es-CU-ManuelNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ドミニカ共和国) | `es-DO` | Female | `es-DO-RamonaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ドミニカ共和国) | `es-DO` | Male | `es-DO-EmilioNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (エクアドル) | `es-EC` | Female | `es-EC-AndreaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (エクアドル) | `es-EC` | Male | `es-EC-LuisNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (エルサルバドル) | `es-SV` | Female | `es-SV-LorenaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (エルサルバドル) | `es-SV` | Male | `es-SV-RodrigoNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (赤道ギニア) | `es-GQ` | Female | `es-GQ-TeresaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (赤道ギニア) | `es-GQ` | Male | `es-GQ-JavierNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (グアテマラ) | `es-GT` | Female | `es-GT-MartaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (グアテマラ) | `es-GT` | Male | `es-GT-AndresNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ホンジュラス) | `es-HN` | Female | `es-HN-KarlaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ホンジュラス) | `es-HN` | Male | `es-HN-CarlosNeural` <sup>[新規作成]</sup>  | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Female | `es-MX-DaliaNeural` | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Male | `es-MX-JorgeNeural` | 全般 |
-| スペイン語 (ニカラグア) | es-NI | Female | `es-NI-YolandaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ニカラグア) | es-NI | Male | `es-NI-FedericoNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (パナマ) | es-PA | Female | `es-PA-MargaritaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (パナマ) | es-PA | Male | `es-PA-RobertoNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (パラグアイ) | es-PY | Female | `es-PY-TaniaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (パラグアイ) | es-PY | Male | `es-PY-MarioNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ペルー) | es-PE | Female | `es-PE-CamilaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ペルー) | es-PE | Male | `es-PE-AlexNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (プエルトリコ) | es-PR | Female | `es-PR-Karina Neural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (プエルトリコ) | es-PR | Male | `es-PR-Victor Neural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ニカラグア) | `es-NI` | Female | `es-NI-YolandaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ニカラグア) | `es-NI` | Male | `es-NI-FedericoNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (パナマ) | `es-PA` | Female | `es-PA-MargaritaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (パナマ) | `es-PA` | Male | `es-PA-RobertoNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (パラグアイ) | `es-PY` | Female | `es-PY-TaniaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (パラグアイ) | `es-PY` | Male | `es-PY-MarioNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ペルー) | `es-PE` | Female | `es-PE-CamilaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ペルー) | `es-PE` | Male | `es-PE-AlexNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (プエルトリコ) | `es-PR` | Female | `es-PR-Karina Neural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (プエルトリコ) | `es-PR` | Male | `es-PR-Victor Neural` <sup>[新規作成]</sup>  | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Female | `es-ES-ElviraNeural` | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Male | `es-ES-AlvaroNeural` | 全般 |
-| スペイン語 (ウルグアイ) | es-UY | Female | `es-UY-ValentinaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ウルグアイ) | es-UY | Male | `es-UY-MateoNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ウルグアイ) | `es-UY` | Female | `es-UY-ValentinaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ウルグアイ) | `es-UY` | Male | `es-UY-MateoNeural` <sup>[新規作成]</sup>  | 全般 |
 | スペイン語 (米国) | `es-US` | Female | `es-US-PalomaNeural` | 全般 |
 | スペイン語 (米国) | `es-US` | Male | `es-US-AlonsoNeural` | 全般 |
-| スペイン語 (ベネズエラ) | es-VE | Female | `es-VE-PaolaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スペイン語 (ベネズエラ) | es-VE | Male | `es-VE-SebastianNeural` <sup>[新規作成]</sup>  | 全般 |
-| スンダ語 (インドネシア) | su-ID | Female | `su-ID-TutiNeural` <sup>[新規作成]</sup>  | 全般 |
-| スンダ語 (インドネシア) | su-ID | Male | `su-ID-JajangNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ベネズエラ) | `es-VE` | Female | `es-VE-PaolaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スペイン語 (ベネズエラ) | `es-VE` | Male | `es-VE-SebastianNeural` <sup>[新規作成]</sup>  | 全般 |
+| スンダ語 (インドネシア) | `su-ID` | Female | `su-ID-TutiNeural` <sup>[新規作成]</sup>  | 全般 |
+| スンダ語 (インドネシア) | `su-ID` | Male | `su-ID-JajangNeural` <sup>[新規作成]</sup>  | 全般 |
 | スワヒリ語 (ケニア) | `sw-KE` | Female | `sw-KE-ZuriNeural` | 全般 |
 | スワヒリ語 (ケニア) | `sw-KE` | Male | `sw-KE-RafikiNeural` | 全般 |
-| スワヒリ語 (タンザニア) | sw-TZ | Female | `sw-TZ-RehemaNeural` <sup>[新規作成]</sup>  | 全般 |
-| スワヒリ語 (タンザニア) | sw-TZ | Male | `sw-TZ-DaudiNeural` <sup>[新規作成]</sup>  | 全般 |
+| スワヒリ語 (タンザニア) | `sw-TZ` | Female | `sw-TZ-RehemaNeural` <sup>[新規作成]</sup>  | 全般 |
+| スワヒリ語 (タンザニア) | `sw-TZ` | Male | `sw-TZ-DaudiNeural` <sup>[新規作成]</sup>  | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-HilleviNeural` | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-SofieNeural` | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Male | `sv-SE-MattiasNeural` | 全般 |
 | タミール語 (インド) | `ta-IN` | Female | `ta-IN-PallaviNeural` | 全般 |
 | タミール語 (インド) | `ta-IN` | Male | `ta-IN-ValluvarNeural` | 全般 |
-| タミル語 (シンガポール) | ta-SG | Female | `ta-SG-VenbaNeural` <sup>[新規作成]</sup>  | 全般 |
-| タミル語 (シンガポール) | ta-SG | Male | `ta-SG-AnbuNeural` <sup>[新規作成]</sup>  | 全般 |
-| タミル語 (スリランカ) | ta-LK | Female | `ta-LK-SaranyaNeural` <sup>[新規作成]</sup>  | 全般 |
-| タミル語 (スリランカ) | ta-LK | Male | `ta-LK-KumarNeural` <sup>[新規作成]</sup>  | 全般 |
+| タミル語 (シンガポール) | `ta-SG` | Female | `ta-SG-VenbaNeural` <sup>[新規作成]</sup>  | 全般 |
+| タミル語 (シンガポール) | `ta-SG` | Male | `ta-SG-AnbuNeural` <sup>[新規作成]</sup>  | 全般 |
+| タミル語 (スリランカ) | `ta-LK` | Female | `ta-LK-SaranyaNeural` <sup>[新規作成]</sup>  | 全般 |
+| タミル語 (スリランカ) | `ta-LK` | Male | `ta-LK-KumarNeural` <sup>[新規作成]</sup>  | 全般 |
 | テルグ語 (インド) | `te-IN` | Female | `te-IN-ShrutiNeural` | 全般 |
 | テルグ語 (インド) | `te-IN` | Male | `te-IN-MohanNeural` | 全般 |
 | タイ語 (タイ) | `th-TH` | Female | `th-TH-AcharaNeural` | 全般 |
@@ -424,18 +424,18 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | トルコ語 (トルコ) | `tr-TR` | Male | `tr-TR-AhmetNeural` | 全般 |
 | ウクライナ語 (ウクライナ) | `uk-UA` | Female | `uk-UA-PolinaNeural` | 全般 | 
 | ウクライナ語 (ウクライナ) | `uk-UA` | Male | `uk-UA-OstapNeural` | 全般 | 
-| ウルドゥー語 (インド) | ur-IN | Female | `ur-IN-GulNeural` <sup>[新規作成]</sup>  | 全般 |
-| ウルドゥー語 (インド) | ur-IN | Male | `ur-IN-SalmanNeural` <sup>[新規作成]</sup>  | 全般 |
+| ウルドゥー語 (インド) | `ur-IN` | Female | `ur-IN-GulNeural` <sup>[新規作成]</sup>  | 全般 |
+| ウルドゥー語 (インド) | `ur-IN` | Male | `ur-IN-SalmanNeural` <sup>[新規作成]</sup>  | 全般 |
 | ウルドゥー語 (パキスタン) | `ur-PK` | Female | `ur-PK-UzmaNeural`  | 全般 | 
 | ウルドゥー語 (パキスタン) | `ur-PK` | Male | `ur-PK-AsadNeural` | 全般 | 
-| ウズベク語 (ウズベキスタン) | uz-UZ | Female | `uz-UZ-MadinaNeural` <sup>[新規作成]</sup>  | 全般 |
-| ウズベク語 (ウズベキスタン) | uz-UZ | Male | `uz-UZ-SardorNeural` <sup>[新規作成]</sup>  | 全般 |
+| ウズベク語 (ウズベキスタン) | `uz-UZ` | Female | `uz-UZ-MadinaNeural` <sup>[新規作成]</sup>  | 全般 |
+| ウズベク語 (ウズベキスタン) | `uz-UZ` | Male | `uz-UZ-SardorNeural` <sup>[新規作成]</sup>  | 全般 |
 | ベトナム語 (ベトナム) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | 全般 |
 | ベトナム語 (ベトナム) | `vi-VN` | Male | `vi-VN-NamMinhNeural` | 全般 |
 | ウェールズ語 (イギリス) | `cy-GB` | Female | `cy-GB-NiaNeural` | 全般 | 
 | ウェールズ語 (イギリス) | `cy-GB` | Male | `cy-GB-AledNeural` | 全般 | 
-| ズールー語 (南アフリカ) | zu-ZA | Female | `zu-ZA-ThandoNeural` <sup>[新規作成]</sup>  | 全般 |
-| ズールー語 (南アフリカ) | zu-ZA | Male | `zu-ZA-ThembaNeural` <sup>[新規作成]</sup>  | 全般 |
+| ズールー語 (南アフリカ) | `zu-ZA` | Female | `zu-ZA-ThandoNeural` <sup>[新規作成]</sup>  | 全般 |
+| ズールー語 (南アフリカ) | `zu-ZA` | Male | `zu-ZA-ThembaNeural` <sup>[新規作成]</sup>  | 全般 |
 
 > [!IMPORTANT]
 > 英語 (イギリス) 音声の `en-GB-MiaNeural` は、**2021 年 10 月 30 日** に廃止される予定です。 `en-GB-MiaNeural` へのサービス要求は、**2021 年 10 月 30 日** 以降、自動的に `en-GB-SoniaNeural` にリダイレクトされます。
@@ -744,7 +744,7 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 | 日本語 (日本) | ja-JP | いいえ | はい |
 | ポルトガル語 (ブラジル) | pt-BR | いいえ | はい |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

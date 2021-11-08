@@ -5,16 +5,16 @@ metadata:
   title: Azure Container Apps のドキュメント
   description: Azure Container Apps を使うと、オーケストレーションやインフラストラクチャを気にすることなく、コンテナー化されたアプリケーションを実行できます。
   ms.topic: landing-page
-  ms.service: app-service
+  ms.service: container-apps
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 10/22/2021
-  ms.openlocfilehash: 75e0b19f44ff8ec83ecfc0b4ef6c931d8b160a0b
-  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+  ms.openlocfilehash: fd7d39ec39cb266f690930d092f0dddcce6650a7
+  ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/05/2021
-  ms.locfileid: "131846161"
+  ms.lasthandoff: 11/08/2021
+  ms.locfileid: "132028303"
 landingContent:
 - title: Azure Container Apps について
   linkLists:

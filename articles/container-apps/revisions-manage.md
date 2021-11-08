@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps プレビューのリビジョンを管理する
 description: Azure Container Apps でリビジョンとトラフィックの分割を管理します。
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 97270075f7ca7e33dabb23a6aa21ed746518ed65
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: a1818ba143e05656cb94f70f0c849fc2dd39ba96
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131891871"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026370"
 ---
 # <a name="manage-revisions-azure-container-apps-preview"></a>Azure Container Apps プレビューのリビジョンを管理する
 

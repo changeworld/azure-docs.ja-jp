@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 10/05/2021
-ms.openlocfilehash: 4ee20be013ab2771709a3b8d4e508d9689f1c456
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 67937f35449915a313b5958009573d9bf33139b5
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547116"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027415"
 ---
 # <a name="tutorial-migrate-sql-server-to-sql-server-on-azure-virtual-machine-online-using-azure-data-studio-with-dms-preview"></a>チュートリアル: Azure Data Studio と DMS を使用してオンラインで SQL Server を Azure Virtual Machine 上の SQL Server に移行する (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Data Studio の Azure SQL Migration 拡張機能を使用して、デー�
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 >
-> * Azure Data Studio で [Azure SQL への移行] ウィザードを起動します。
+> * Azure Data Studio で Azure SQL への移行ウィザードを起動します。
 > * ソース SQL Server データベースの評価を実行します
 > * ソース SQL Server、バックアップ場所、Azure Virtual Machine 上のターゲット SQL Server の詳細を指定します
 > * 新しい Azure Database Migration Service を作成し、セルフホステッド統合ランタイムをインストールしてソース サーバーとバックアップにアクセスします。
@@ -56,7 +56,6 @@ Azure Data Studio の Azure SQL Migration 拡張機能を使用して、デー�
     > [!IMPORTANT]
     > - データベース バックアップ ファイルが SMB ネットワーク共有で提供されている場合は、DMS サービスがデータベース バックアップ ファイルをアップロードできる [Azure ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。  Azure Storage アカウントは、Azure Database Migration Service インスタンスの作成先と同じリージョンに作成してください。
     > - Azure Database Migration Service によってバックアップが開始されることはなく、移行には既存のバックアップが使用されます。これは、ディザスター リカバリー計画の一部として既に作成されている場合があります。
-    > - [`WITH CHECKSUM` オプションを使用してバックアップ](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)を作成する必要があります。 
     > - 各バックアップは、独立したバックアップ ファイルまたは複数のバックアップ ファイルに書き込まれます。 ただし、1 つのバックアップ メディアに複数のバックアップ (完全バックアップとトランザクション ログなど) を追加することはサポートされていません。 
     > - 大きなバックアップの移行に関連する潜在的な問題が発生する可能性を低減するには、圧縮されたバックアップを使用します。
 * ソース SQL Server インスタンスを実行しているサービス アカウントに、データベース バックアップ ファイルが格納されている SMB ネットワーク共有に対する読み取りおよび書き込みアクセス許可があることを確認します。
@@ -102,14 +101,14 @@ Azure Data Studio の Azure SQL Migration 拡張機能を使用して、デー�
     > オンライン移行モードでは、データベース バックアップが Azure Virtual Machine 上のターゲット SQL Server に継続的に復元されている間、ソース SQL Server データベースは読み取りと書き込みのアクティビティに使用できます。 アプリケーションのダウンタイムは、移行の最後の切り替えの期間に限定されます。
 1. 手順 5 では、データベース バックアップの場所を選択します。 データベース バックアップは、オンプレミスのネットワーク共有または Azure Storage Blob コンテナーに置くことができます。
     > [!NOTE]
-    > データベース バックアップがオンプレミスのネットワーク共有内に用意されている場合、DMS により、ウィザードの次の手順でセルフホステッド統合ランタイムを設定することが求められます。 セルフホステッド統合ランタイムは、ソース データベースのバックアップにアクセスし、バックアップ セットの有効性を確認して Azure ストレージ アカウントにアップロードするために必要です。<br/> データベース バックアップが既に Azure Storage Blob コンテナー上にある場合は、セルフホステッド統合ランタイムをセットアップする必要はありません。
+    > データベース バックアップがオンプレミスのネットワーク共有で提供される場合、DMS により、ウィザードの次の手順でセルフホステッド統合ランタイムを設定することが求められます。 セルフホステッド統合ランタイムは、ソース データベースのバックアップにアクセスし、バックアップ セットの有効性を確認して Azure ストレージ アカウントにアップロードするために必要です。<br/> データベース バックアップが既に Azure Storage Blob コンテナー上にある場合は、セルフホステッド統合ランタイムをセットアップする必要はありません。
 1. バックアップの場所を選択したら、ソース SQL Server とソース バックアップ場所の詳細を指定します。
 
     |フィールド    |説明  |
     |---------|-------------|
     |**ソースの資格情報 - ユーザー名**    |ソース SQL Server インスタンスに接続し、バックアップ ファイルを検証するための資格情報 (Windows/SQL 認証)。         |
-    |**ソースの資格情報 – パスワード**    |ソース SQL Server インスタンスに接続し、バックアップ ファイルを検証するための資格情報 (Windows/SQL 認証)。         |
-    |**Network share location that contains backups (バックアップを含むネットワーク共有の場所)**     |完全およびトランザクション ログ バックアップ ファイルを含むネットワーク共有の場所。 有効なバックアップ セットに属していないネットワーク共有内の無効なファイルまたはバックアップ ファイルは、移行プロセス中に自動的に無視されます。        |
+    |**ソースの資格情報 - パスワード**    |ソース SQL Server インスタンスに接続し、バックアップ ファイルを検証するための資格情報 (Windows/SQL 認証)。         |
+    |**バックアップを含むネットワーク共有の場所**     |完全およびトランザクション ログのバックアップ ファイルを含むネットワーク共有の場所。 有効なバックアップ セットに属していないネットワーク共有内の無効なファイルまたはバックアップ ファイルは、移行プロセス中に自動的に無視されます。        |
     |**ネットワーク共有の場所への読み取り権限のある Windows ユーザー アカウント**     |バックアップ ファイルを取得するためのネットワーク共有への読み取りアクセス権を持つ Windows 資格情報 (ユーザー名)。       |
     |**パスワード**     |バックアップ ファイルを取得するためのネットワーク共有への読み取りアクセス権を持つ Windows 資格情報 (パスワード)。         |
     |**ターゲット データベース名** |ターゲット データベース名は、移行プロセス中にターゲットのデータベース名を変更する場合は変更できます。            |
@@ -131,7 +130,7 @@ Azure Data Studio の Azure SQL Migration 拡張機能を使用して、デー�
 1. DMS の作成が正常に完了すると、**統合ランタイムをセットアップ** するための詳細が表示されます。
 1. **[統合ランタイムのダウンロードとインストール]** を選択して、Web ブラウザーでダウンロード リンクを開きます。 ダウンロードを完了します。 ソース SQL Server への、およびソース バックアップを含む場所への接続の前提条件を満たすマシンに統合ランタイムをインストールします。
 1. インストールが完了すると、**Microsoft Integration Runtime Configuration Manager** が自動的に起動して登録プロセスが開始されます。
-1. Azure Data Studio のウィザード画面に表示された認証キーの 1 つをコピーして貼り付けます。 認証キーが有効であれば、Integration Runtime Configuration Manager に緑色のチェック マーク アイコンが表示され、引き続き **登録** できることを示します。
+1. Azure Data Studio のウィザード画面に表示された認証キーの 1 つをコピーして貼り付けます。 認証キーが有効であれば、Integration Runtime Configuration Manager に緑色のチェック マーク アイコンが表示され、引き続き **登録** できることが示されます。
 1. セルフホステッド統合ランタイムの登録が正常に完了したら、**Microsoft Integration Runtime Configuration Manager** を閉じ、Azure Data Studio の移行ウィザードに戻ります。
 1. Azure Data Studio の **[Azure Database Migration Service の作成]** 画面で **[接続のテスト]** を選択して、新しく作成された DMS が新しく登録されたセルフホステッド統合ランタイムに接続されていることを確認し、 **[完了]** を選択します。
     :::image type="content" source="media/tutorial-sql-server-to-virtual-machine-online-ads/test-connection-integration-runtime-complete.png" alt-text="統合ランタイムの [接続のテスト]":::
@@ -149,7 +148,7 @@ Azure Data Studio の Azure SQL Migration 拡張機能を使用して、デー�
     |--------|-------------|
     | [受信] | バックアップ ファイルがソース バックアップ場所に到着し、検証されました |
     | アップロード | 統合ランタイムで現在、バックアップ ファイルが Azure Storage にアップロードされています|
-    | アップロード完了 | バックアップ ファイルが Azure Storage にアップロードされています |
+    | アップロード完了 | バックアップ ファイルが Azure Storage にアップロードされました |
     | Restoring | Azure Database Migration Service で現在バックアップ ファイルが Azure SQL Managed Instance に復元されています|
     | 復元 | バックアップ ファイルが Azure SQL Managed Instance に正常に復元されました |
     | Canceled | 移行プロセスが取り消されました |

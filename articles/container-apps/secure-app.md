@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps プレビューでアプリをセキュリティ保護する
 description: Azure Container Apps でのアプリケーションのセキュリティ保護について説明します。
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6c5fe92da4eb891ab1d5b264ff1585730352db36
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: aca235582babedaa9bf6a7c44a835734ba4cb5dc
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894167"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026997"
 ---
 # <a name="secure-an-app-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリをセキュリティ保護する
 

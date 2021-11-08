@@ -73,6 +73,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Resource Manager テンプレートを使用して拡張機能をデプロイする
               href: manage-vm-extensions-template.md
+            - name: 拡張機能の自動アップグレード
+              href: manage-automatic-vm-extension-upgrade.md
         - name: サーバーでマネージド ID を使用する
           href: managed-identity-authentication.md
         - name: エージェントの管理

@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: 1fe59e3541760eb00c1c520004a2076cfc9a2c97
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 18d7cba9fe92f2021757fdb58c9e76cd0c413e70
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779360"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026833"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -31,15 +31,20 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 * オーストラリア東部
 * ブラジル南部
 * カナダ中部
+* インド中部
 * 米国中部
+* 東アジア
 * 米国東部 
 * 米国東部 2
 * フランス中部
 * ドイツ中西部
 * 東日本
+* 韓国中部
 * 北ヨーロッパ
+* ノルウェー東部
 * 東南アジア
 * 米国中南部
+* スウェーデン中部
 * 英国南部
 * US Gov バージニア州
 * 西ヨーロッパ

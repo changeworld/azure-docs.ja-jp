@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e87105a05cde1a32a89d3e4fd404ad222245dce0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 4f210077fd5a2cc4155b9123b33f4638e63c1ee4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129996515"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026862"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Azure Active Directory Verifiable Credentials (プレビュー) の概要
 
@@ -121,6 +121,6 @@ VC のしくみを説明するために使用するシナリオには、以下�
 
 DID と検証可能な資格情報について確認したところで、スタート ガイド記事か、検証可能な資格情報の概念について詳しく説明している Microsoft のいずれかの記事に従って、それらを自分で試してみてください。
 
-- [検証可能な資格情報のスタート ガイド](get-started-verifiable-credentials.md)
+- [検証可能な資格情報のスタート ガイド](verifiable-credentials-configure-tenant.md)
 - [資格情報をカスタマイズする方法](credential-design.md)
 - [検証可能な資格情報に関する FAQ](verifiable-credentials-faq.md)

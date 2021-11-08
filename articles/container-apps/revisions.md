@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps プレビューのリビジョン
 description: Azure Container Apps でリビジョンがどのように作成されるかについて説明します
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8b77ae0e43078b17c83de43ebc516bfeab9c5c13
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 543d0465e4fe16aafa911d486d2099259ac8a769
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579033"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026655"
 ---
 # <a name="revisions-in-azure-container-apps-preview"></a>Azure Container Apps プレビューのリビジョン
 

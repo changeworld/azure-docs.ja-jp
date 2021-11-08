@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps プレビューでの HTTPS イングレスの設定
 description: Azure Container Apps を使用してアプリでパブリックとプライベートのエンドポイントを有効にする
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e4b465b593fadcacce59a14c9fbced0780c252a9
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 5979588ec977ef7655fab21ef30e4fd233c12b43
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578294"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026427"
 ---
 # <a name="set-up-https-ingress-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでの HTTPS イングレスの設定
 

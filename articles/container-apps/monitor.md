@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps プレビューでアプリを監視する
 description: Azure Container Apps でアプリケーションが監視およびログ記録される方法について説明します。
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b956fa5847cce3f5fe85e91ea8e3846c47eabde7
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: c9c324c90ad401d43be1e2d6768ea82121fc1ae8
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894034"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027839"
 ---
 # <a name="monitor-an-app-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリを監視する
 
