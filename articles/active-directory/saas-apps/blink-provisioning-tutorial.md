@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: 65ab6560d8a48849fb078a5fb7c1685ae0c9aed6
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d715a1e91ca07f27c1be243e930fe7fdb21df7f3
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764753"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988959"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>チュートリアル:Blink を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -34,6 +34,9 @@ ms.locfileid: "113764753"
 * Azure AD テナント
 * [Blink テナント](https://joinblink.com/pricing)
 * Admin アクセス許可がある Blink のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="assigning-users-to-blink"></a>Blink へのユーザーの割り当て
 

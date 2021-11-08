@@ -7,12 +7,13 @@ ms.date: 06/17/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 97b4cc4264ad835862ffce288852cb39356b1b03
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f7d34663e9c83e74ea25ce501a89a5a34b38677e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131428826"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056009"
 ---
 # <a name="enable-microsoft-defender-for-open-source-relational-databases-and-respond-to-alerts"></a>オープンソース リレーショナル データベース用 Microsoft Defender を有効にしてアラートに応答する
 

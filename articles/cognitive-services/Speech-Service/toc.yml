@@ -374,8 +374,6 @@ items:
         href: keyword-recognition-guidelines.md
       - name: リージョンのサポート
         href: keyword-recognition-region-support.md
-  - name: 言語識別
-    href: language-identification.md
   - name: シナリオの詳細
     items:
       - name: 会話のシナリオ

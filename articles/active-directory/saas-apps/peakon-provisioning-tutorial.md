@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: thwimmer
-ms.openlocfilehash: 65416e8e0117f91d97374ae10fbc633d1783b823
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: e1fd9d3d00c083e448755176f42b2493999e604c
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766505"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989519"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>チュートリアル:Peakon を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -33,6 +33,9 @@ ms.locfileid: "113766505"
 * Azure AD テナント。
 * [Peakon テナント](https://peakon.com/us/pricing/)。
 * 管理者アクセス許可がある Peakon のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="assigning-users-to-peakon"></a>Peakon にユーザーを割り当てる
 

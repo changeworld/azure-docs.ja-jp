@@ -6,14 +6,14 @@ author: ginalee-dotcom
 ms.custom: references_regions
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/21/2021
+ms.date: 11/05/2021
 ms.author: ginle
-ms.openlocfilehash: 6debd85f084a68cc96133cc7128f97beefa2dfcb
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6ce51e4cf916baaa22d14e902872185901b4d5da
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259377"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988617"
 ---
 # <a name="frequently-asked-questions-about-azure-healthcare-apis-preview"></a>Azure Healthcare APIs についてよく寄せられる質問 (プレビュー)
 
@@ -49,26 +49,26 @@ Azure Healthcare APIs を使用すると、以下を行うことができます�
 #### <a name="workspace-logical-container"></a>ワークスペース (論理コンテナー):
 * サブスクリプションあたり 200 インスタンス (調整不可)
 
-#### <a name="dicom-server"></a>DICOM サーバー:
+#### <a name="dicom-service"></a>DICOM サービス:
 * サブスクリプションあたり 800 インスタンス (調整不可)
 * ワークスペースあたり 10 DICOM インスタンス (調整不可)
 
-#### <a name="fhir-server"></a>FHIR サーバー:
+#### <a name="fhir-service"></a>FHIR サービス:
 * サブスクリプションあたり 25 インスタンス (調整不可)
 * ワークスペースあたり 10 FHIR インスタンス (調整不可)
 
 #### <a name="iot-connector"></a>IoT コネクタ:
-* サブスクリプションあたり 25 の IoT コネクタ (Azure サポート リクエストで調整可能)
-* ワークスペースあたり 10 の IoT コネクタ (Azure サポート リクエストで調整可能)
-* IoT コネクタごとに 1 つの FHIR Destination* (調整不可)
+* サブスクリプションあたり25個の IoT コネクタ (調整不可)
+* ワークスペースごとに10個の IoT コネクタ (調整不可)
+* IoT コネクタごとに1つの FHIR 宛先 * (調整不可)
 
-(* - FHIR Destination は IoT コネクタの子リソースです)
+(*-FHIR ターゲットは IoT コネクタの子リソースです)
 
 ## <a name="more-frequently-asked-questions"></a>その他のよく寄せられる質問
 [Azure Healthcare APIs の FHIR サービスに関する FAQ](./fhir/fhir-faq.md)
 
 [Azure Healthcare APIs の DICOM サービスに関する FAQ](./dicom/dicom-services-faqs.yml)
 
-[Azure Healthcare API IoT コネクタに関する FAQ](./iot/iot-connector-faqs.md)
+[Azure の医療 Api IoT コネクタに関する Faq](./iot/iot-connector-faqs.md)
 
-(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。
+(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

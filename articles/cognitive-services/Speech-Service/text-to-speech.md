@@ -12,16 +12,14 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: テキスト読み上げ
-ms.openlocfilehash: a086ebf1d7e9da9f8394a6cdde411e5ee55a5f28
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: c3a4caa638debfa32fa6d571b473b2bf5bd0cf09
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511060"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990378"
 ---
 # <a name="what-is-neural-text-to-speech"></a>ニューラル テキスト読み上げとは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Microsoft のニューラル テキスト読み上げでは、ディープ ニューラル ネットワークを使用することで、人間の録音とほとんど区別できないようなコンピューターの音声を生成します。 ニューラル テキスト読み上げでは、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。
 

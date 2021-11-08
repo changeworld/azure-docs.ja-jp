@@ -9,16 +9,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/13/2020
 keywords: 意図認識
-ms.openlocfilehash: bf84d9309974f645c2fb5011b82d2fb8159adca1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 221f5f0f022cba85df72979ed47b4033b2c3fdd1
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024526"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988485"
 ---
 # <a name="what-is-intent-recognition"></a>意図認識とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 この概要では、意図認識の利点と機能について説明します。 Cognitive Services Speech SDK には意図を認識する 2 つの方法があり、以下ではその両方について説明します。 意図は、航空機の予約や天気のチェック、あるいは電話を掛けるなどのユーザーが実行したい行動です。 意図認識を使用すると、アプリケーション、ツール、デバイスで、意図認識エンジンまたは LUIS で定義されているオプションに基づいて、ユーザーが始めたいことや行いたいことを特定できます。
 

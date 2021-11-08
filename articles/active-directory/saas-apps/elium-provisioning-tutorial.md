@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: 6c97bd16978295b34e671a0af2598869f0218993
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fd99228da135e8a0a2eb2c1413243537efe7efc8
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767965"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990426"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>チュートリアル:Elium を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -34,6 +34,9 @@ ms.locfileid: "113767965"
 * Azure AD テナント
 * [Elium テナント](https://www.elium.com/pricing/)
 * 管理者アクセス許可がある Elium のユーザー アカウント
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="assigning-users-to-elium"></a>Elium へのユーザーの割り当て
 

@@ -19,19 +19,21 @@ items:
     items:
       - name: IoT コネクタのデータ フロー
         href: iot-data-flow.md
-      - name: IoT コネクタと Azure Machine Learning サービス
+      - name: IoT コネクタと Azure Machine Learning Service
         href: iot-connector-machine-learning.md
       - name: IoT コネクタと Microsoft Power BI
         href: iot-connector-power-bi.md
-      - name: IoT コネクタと Microsoft Teams
+      - name: IoT コネクタとMicrosoft Teams通知
         href: iot-connector-teams.md
   - name: 使い方ガイド
     expanded: true
     items:
       - name: Azure IoT Hub を通じてデバイス データを受信する
         href: device-data-through-iot-hub.md
-      - name: デバイスマッピングを使用する
+      - name: デバイス マッピングを使用する
         href: how-to-use-device-mapping-iot.md
+      - name: カスタム関数を使用する
+        href: iot-connector-custom-functions.md
       - name: FHIR 変換先マッピングを使用する
         href: how-to-use-fhir-mapping-iot.md
       - name: 診断設定を使用して IoT コネクタのメトリックをエクスポートする

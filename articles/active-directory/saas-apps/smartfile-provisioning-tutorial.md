@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: thwimmer
-ms.openlocfilehash: 0cd0dcf0bece7c145bdfddbad7b069c7d7d43f19
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7132a8c5a0ce951328aa3d1d21130ed9e968db7c
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759488"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989833"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>チュートリアル:SmartFile を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -34,6 +34,10 @@ ms.locfileid: "113759488"
 * Azure AD テナント。
 * [SmartFile テナント](https://www.SmartFile.com/pricing/)。
 * 管理者アクセス許可がある SmartFile のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 
 ## <a name="assigning-users-to-smartfile"></a>SmartFile へのユーザーの割り当て
 

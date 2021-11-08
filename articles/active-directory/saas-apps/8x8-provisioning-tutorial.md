@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: c055b8a0bd11d6f1e1a28e053d64aaf574ca2880
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 5572fff94ff7eb86b2458b37ba54d0d67004ce12
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765168"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989263"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -38,6 +38,9 @@ ms.locfileid: "113765168"
 * 任意のレベルの 8x8 X シリーズ サブスクリプション。
 * [Admin Console](https://vo-cm.8x8.com) の管理者権限を備えた 8x8 ユーザー アカウント。
 * [Azure AD でのシングル サインオン](./8x8virtualoffice-tutorial.md)は既に構成されています。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。

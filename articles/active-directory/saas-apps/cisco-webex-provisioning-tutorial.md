@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: thwimmer
-ms.openlocfilehash: 311b147648c8a7eccda889769a60ea8fa15fa1ad
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1d7c7092dc0bf44093390e9cd41b9ca8f62f247e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764380"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988447"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするための Cisco Webex の構成
 
@@ -34,6 +34,9 @@ ms.locfileid: "113764380"
 * Azure AD テナント。
 * [Cisco Webex テナント](https://www.webex.com/pricing/index.html)。
 * Admin アクセス許可がある Cisco Webex のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>ギャラリーからの Cisco Webex の追加
 

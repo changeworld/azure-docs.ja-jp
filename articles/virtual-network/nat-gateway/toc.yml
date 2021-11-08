@@ -30,7 +30,7 @@ items:
       - name: セキュリティ
         items:
           - name: Virtual Network NAT のセキュリティ ベースライン
-            href: nat-security-baseline.md
+            href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline
   - name: 操作方法
     items:
       - name: トラブルシューティング
