@@ -419,7 +419,7 @@ groups:
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-vs
-    title: Visual Studio
+    title: Visual Studio
   - id: development-environment-cli
     title: コマンド ライン
 - id: bring-third-party-dependency-programming-functions
@@ -826,16 +826,28 @@ groups:
     title: C#
   - id: programming-language-python
     title: Python
-- id: app-service-ide
+- id: app-service-vscode-cli-portal
   title: 開発環境
   prompt: 開発環境を選択する
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: コマンド ライン インターフェイス
+  - id: development-environment-azure-portal
+    title: Azure portal
+- id: app-service-ide
+  title: 開発環境
+  prompt: デプロイメント環境の選択
   pivots:
   - id: development-environment-vs
     title: Visual Studio
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-cli
-    title: コマンド ライン インターフェイス
+    title: Azure CLI
+  - id: development-environment-ps
+    title: Azure PowerShell
 - id: app-service-ide-oss
   title: 開発環境
   prompt: 開発環境を選択する
@@ -1126,6 +1138,14 @@ groups:
     title: Azure Portal で次の操作を行います。
   - id: rest-api
     title: REST API を使用した場合
+- id: connect-aws-accounts
+  title: AWS アカウントを Azure サブスクリプションに接続する
+  prompt: AWS アカウントの接続方法
+  pivots:
+  - id: env-settings
+    title: 環境設定ページ
+  - id: classic-connector
+    title: クラシック クラウド コネクタ
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: オペレーティング システム/コンソール
   prompt: オペレーティング システムとコンソールの選択
@@ -1373,9 +1393,9 @@ groups:
   - id: client-portaltier
     title: Azure portal
 metadata:
-  ms.openlocfilehash: 68d5906853d11b7309b716cc7f04c8e6be664c2b
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 871fbc4fe1242f30d1fcb141e8be97be3cb02787
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131046491"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131466354"

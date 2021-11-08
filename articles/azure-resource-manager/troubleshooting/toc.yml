@@ -12,9 +12,15 @@
       href: quickstart-troubleshoot-bicep-deployment.md
 - name: 方法
   items:
-    - name: デプロイのトラブルシューティング
+    - name: エラー コードを見つける
+      href: find-error-code.md
+    - name: デバッグ ログの有効化
+      href: enable-debug-logging.md
+    - name: トラブルシューティング テンプレートを作成する
+      href: create-troubleshooting-template.md
+    - name: エラー コードで解決策を見つける
       items:
-        - name: デプロイ エラーのトラブルシューティング
+        - name: 一般的なデプロイのエラー
           href: common-deployment-errors.md
         - name: AccountNameInvalid
           href: error-storage-account-name.md
@@ -42,7 +48,7 @@
           href: error-resource-quota.md
         - name: SkuNotAvailable
           href: error-sku-not-available.md
-- name: リファレンス
+- name: 参照先
   items:
     - name: Bicep および ARM テンプレート参照
       href: /azure/templates/

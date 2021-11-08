@@ -8,13 +8,12 @@ ms.author: memildin
 ms.date: 10/18/2021
 ms.service: security-center
 ms.topic: how-to
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 03b1c1be820691fccb94a659e298d235874ad6ea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 088ab21964b71da7d12f905d10403d03a6c332e8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010595"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453309"
 ---
 # <a name="suppress-alerts-from-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud からのアラートを抑制する
 

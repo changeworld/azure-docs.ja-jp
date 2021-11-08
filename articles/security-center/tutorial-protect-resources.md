@@ -6,15 +6,15 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.custom: mvc, ignite-fall-2021
+ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 9ebbe0e03f7bd701ce83e0edb816a7308f9ff766
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e8656730d0edf3fe08a217b5acd5c94d886dadea
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037361"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475257"
 ---
 # <a name="tutorial-protect-your-resources-with-microsoft-defender-for-cloud"></a>チュートリアル: Microsoft Defender for Cloud を使用してリソースを保護する
 

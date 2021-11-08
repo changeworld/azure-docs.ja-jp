@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 30f42a41584c7897a288da22f11245608a7efbb8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3f4f174594e7aa10369ed1d822b51df6c22e33b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009550"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445068"
 ---
 # <a name="planning-and-operations-guide"></a>計画と運用のガイド
 
@@ -232,7 +231,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Defender
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Defender for Cloud の導入を計画する方法について説明しました。 Defender for Cloud の詳細については、次を参照してください。
 
 * [Defender for Cloud でのセキュリティ アラートの管理と対応](managing-and-responding-alerts.md)

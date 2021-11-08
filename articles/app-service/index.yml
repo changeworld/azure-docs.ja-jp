@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: b4771486e8f64df5005a6cc3a29d5b7c960cde3d
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 388a2a9766b5079b263556f52b29c551e03b34f4
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131045788"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131435664"
 landingContent:
 - title: App Service について
   linkLists:
@@ -160,13 +160,13 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: App Service と Azure Monitor の統合 (プレビュー)
+    - text: App Service と Azure Monitor の統合
       url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
-    - text: Azure Monitor の統合のログの種類 (プレビュー)
+    - text: Azure Monitor 統合のログの種類
       url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
   - linkListType: tutorial
     links:
-    - text: Azure Monitor を使用したエラーのトラブルシューティング (プレビュー)
+    - text: Azure Monitor を使用したエラーのトラブルシューティング
       url: tutorial-troubleshoot-monitor.md
   - linkListType: how-to-guide
     links:

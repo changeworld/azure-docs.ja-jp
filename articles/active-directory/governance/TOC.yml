@@ -74,6 +74,8 @@
           items:
             - name: リソースのカタログを作成する
               href: entitlement-management-catalog-create.md
+            - name: カタログのカスタム拡張機能 (ロジック アプリ) を作成する
+              href: entitlement-management-logic-apps-integration.md
             - name: アクセス パッケージ管理者への委任
               href: entitlement-management-delegate-managers.md
         - name: アクセス パッケージ マネージャーとアクセス パッケージ割り当てマネージャー

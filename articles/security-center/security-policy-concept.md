@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 00d73987acd0e5137913872138d6f78ac18e9bdf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7da824610b76a1bfa652db7b6c077f4825acf5d3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083975"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425028"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>セキュリティ ポリシー、イニシアチブ、および推奨事項とは
 

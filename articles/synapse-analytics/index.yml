@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: 1457bfcee61ba019a2b9009e734688d44117c349
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: d1cecd0ae685e7a55b4b9069ed4c3afb2aa80c40
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131008543"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131502675"
 landingContent:
 - title: Azure Synapse Analytics について
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Azure Synapse とは
       url: overview-what-is.md
+    - text: 新機能
+      url: whats-new.md
     - text: 用語
       url: overview-terminology.md
     - text: よく寄せられる質問
@@ -75,6 +77,16 @@ landingContent:
     links:
     - text: Synapse Studio を使用して Data Explorer プールを作成する
       url: data-explorer/data-explorer-create-pool-studio.md
+- title: データベース テンプレート
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Analytics のデータベース テンプレート
+      url: database-designer/overview-database-templates.md
+  - linkListType: quickstart
+    links:
+    - text: データベース テンプレートを利用して新しい Lake データベースを作成する
+      url: database-designer/quick-start-create-lake-database.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview

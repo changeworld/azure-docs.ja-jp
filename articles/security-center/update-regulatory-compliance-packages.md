@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: d5d54fe73c417f3d79c518ec1e78bade71135cfb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bbbdd3591363e613e4eefb253c96cd8915d8c5cb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037391"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449357"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 

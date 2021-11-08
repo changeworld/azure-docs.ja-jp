@@ -10,7 +10,7 @@
   items:
     - name: 最初のアプリを起動する
       href: quickstart.md
-    - name: マイクロサービスをビルドして実行する
+    - name: アプリをビルドして実行する
       expanded: true
       items:
         - name: サンプル アプリの概要
@@ -96,6 +96,8 @@
           href: how-to-deploy-powershell.md
     - name: 管理する
       items:
+        - name: サービスの開始または停止
+          href: how-to-start-stop-service.md
         - name: アプリの開始、停止、および削除
           href: how-to-start-stop-delete.md
         - name: 組み込みの永続的ストレージを使用する

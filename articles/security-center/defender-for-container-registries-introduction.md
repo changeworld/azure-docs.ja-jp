@@ -7,13 +7,12 @@ ms.date: 10/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 19c15600e97439201a7eceb605d6cb23339a8dc5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 627ac6bacbd9d6f1c3649229bd29bbcd27d3e93b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056074"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463831"
 ---
 # <a name="introduction-to-microsoft-defender-for-container-registries"></a>Microsoft Defender for container registries の概要
 

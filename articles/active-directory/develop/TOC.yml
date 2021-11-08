@@ -738,9 +738,9 @@
   items:
     - name: ビデオ
       href: identity-videos.md
-    - name: Microsoft の ID プラットフォーム開発者ブログ
-      href: 'https://developer.microsoft.com/identity/blogs/'
-    - name: Azure AD BLOG
+    - name: Microsoft ID プラットフォーム - Microsoft 365 開発者ブログ
+      href: 'https://devblogs.microsoft.com/microsoft365dev/category/microsoft-identity-platform/'
+    - name: Azure Active Directory ID ブログ
       href: 'https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

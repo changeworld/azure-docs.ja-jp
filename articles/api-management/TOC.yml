@@ -112,9 +112,11 @@
           href: websocket-api.md
         - name: GraphQL API のインポート
           href: graphql-api.md
-        - name: Web アプリのインポート
+        - name: App Service Web API をインポートする
           href: import-app-service-as-api.md
-        - name: 関数アプリのインポート
+        - name: コンテナー アプリ Web API をインポートする
+          href: import-container-app-with-oas.md
+        - name: 関数アプリ Web API をインポートする
           href: import-function-app-as-api.md
         - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md

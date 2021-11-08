@@ -175,7 +175,9 @@
           href: core/howto-export-data.md
         - name: クラウドの宛先にデータをエクスポートする (レガシ)
           href: core/howto-export-data-legacy.md
-        - name: データを変換する
+        - name: エクスポートのためにデータを内部変換する
+          href: core/howto-transform-data-internally.md
+        - name: 外部でデータを変換する
           href: core/howto-transform-data.md
         - name: ワークフローを使用して他のサービスと統合する
           href: core/howto-configure-rules-advanced.md

@@ -406,7 +406,7 @@
               href: knowledge-store-projections-examples.md
             - name: プロジェクションの例
               href: knowledge-store-projection-example-long.md
-            - name: Storage Explorer を使用した表示
+            - name: ストレージ ブラウザーを使用して表示する
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI を使用した接続
               href: knowledge-store-connect-power-bi.md

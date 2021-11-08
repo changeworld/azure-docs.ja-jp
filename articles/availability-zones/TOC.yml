@@ -1,7 +1,9 @@
 - name: Azure の回復性
   items:
     - name: Azure の回復性の機能に関するページ
-      href: 'https://azure.microsoft.com/features/resiliency'
+      href: 'https://azure.microsoft.com/features/'
+    - name: Azure の回復性
+      href: overview.md
     - name: 回復性に優れた Azure 用アプリケーションの設計
       href: /azure/architecture/framework/resiliency/app-design
 - name: Availability Zones の基礎
@@ -97,21 +99,25 @@
           items:
             - name: Azure Active Directory Domain Services インスタンスの作成
               href: ../active-directory-domain-services/tutorial-create-instance.md
-    - name: Azure Orbital のドキュメント
-      items:
-        - name: Azure Orbital とは
-          href: ../networking/azure-orbital-overview.md
 - name: ディザスター リカバリー
   items:
+    - name: Azure でのビジネス継続性管理
+      href: business-continuity-management-program.md
+    - name: Azure でのリージョン間レプリケーション
+      href: cross-region-replication-azure.md
     - name: Azure Site Recovery を使用する
       href: ../site-recovery/index.yml
-- name: Azure Backup
-  items:
     - name: Azure Backup の使用
       href: ../backup/index.yml
+    - name: Microsoft Azure Well-Architected Framework
+      href: /azure/architecture/framework/
 - name: リソース
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure リージョン
       href: 'https://azure.microsoft.com/regions/'
+- name: Azure Orbital のドキュメント
+  items:
+    - name: Azure Orbital とは
+      href: ../networking/azure-orbital-overview.md

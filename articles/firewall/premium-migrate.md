@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 10/26/2021
+ms.date: 11/02/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a27f2432ec309f6ff9203921122ddd9f6b1860eb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1aeb31ff49389235d54950b76c68deb882e13797
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086229"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438495"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Azure Firewall Premium への移行
 
@@ -187,6 +187,9 @@ TransformPolicyToPremium -Policy $policy
 ## <a name="migrate-azure-firewall-using-stopstart"></a>停止/開始を使用して Azure Firewall を移行する
 
 Azure Firewall Standard SKU をファイアウォールポリシーと共に使用する場合は、割り当て/割り当て解除方法を使用して、ファイアウォール SKU をプレミアムに移行できます。 この移行アプローチは、VNet ハブとセキュリティで保護されたハブファイアウォールの両方でサポートされています。 セキュリティで保護されたハブの展開を移行すると、ファイアウォールのパブリック IP アドレスが保持されます。
+
+Azure PowerShell バージョンの最小要件は6.5.0 です。 詳細については、「 [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0)」を参照してください。
+
  
 ### <a name="migrate-a-vnet-hub-firewall"></a>VNET ハブファイアウォールを移行する
 
@@ -210,7 +213,6 @@ Azure Firewall Standard SKU をファイアウォールポリシーと共に使�
 
 ### <a name="migrate-a-secure-hub-firewall"></a>セキュリティで保護されたハブファイアウォールを移行する
 
-Azure PowerShell バージョンの最小要件は6.5.0 です。 詳細については、「 [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0)」を参照してください。
 
 - 標準のファイアウォールの割り当てを解除する
 

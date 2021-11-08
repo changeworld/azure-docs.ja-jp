@@ -6,13 +6,13 @@ ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
-ms.custom: subject-resourcegraph-sample, ignite-fall-2021
-ms.openlocfilehash: 16e116e558bc9870de89f2bbbbe5fc93d83cf648
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: subject-resourcegraph-sample
+ms.openlocfilehash: b1d6db3a62f1e83b507973d1423353f9c11fb930
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004608"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428389"
 ---
 # <a name="azure-resource-graph-sample-queries-for-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud 用の Azure Resource Graph のサンプル クエリ
 

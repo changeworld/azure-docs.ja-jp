@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: a48f95c3bedd291a3639f7aabc97eb92c25d735f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2516d95ddf8a74ce11239666b647ee2a666422dd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010405"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453214"
 ---
 # <a name="apply-azure-security-baselines-to-machines"></a>マシンに Azure セキュリティ ベースラインを適用する
 

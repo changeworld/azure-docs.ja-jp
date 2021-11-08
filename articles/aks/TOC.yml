@@ -26,6 +26,8 @@
       items:
         - name: Helm を使用した開発
           href: quickstart-helm.md
+        - name: Dapr を使用した開発 (プレビュー)
+          href: quickstart-dapr.md
     - name: Event Grid で AKS イベントをサブスクライブする (プレビュー)
       href: quickstart-event-grid.md
 - name: チュートリアル
@@ -184,6 +186,8 @@
           href: availability-zones.md
         - name: ノード プールの使用
           items:
+            - name: ノード プールのスナップショット
+              href: node-pool-snapshot.md
             - name: 複数のノード プールを使用する
               href: use-multiple-node-pools.md
             - name: スポット ノード プールを使用する
@@ -270,6 +274,8 @@
               href: egress-outboundtype.md
             - name: 基本的なロード バランサーと静的 IP アドレスを使用する
               href: egress.md
+            - name: 管理された NAT Gateway (プレビュー)
+              href: nat-gateway.md
         - name: CoreDNS のカスタマイズ
           href: coredns-custom.md
     - name: セキュリティと認証
@@ -300,6 +306,8 @@
               href: managed-aad.md
             - name: Azure AD 統合 (レガシ)
               href: azure-ad-integration-cli.md
+            - name: GMSA 統合を有効にする (プレビュー)
+              href: use-group-managed-service-accounts.md
         - name: Kubernetes 認可に Azure RBAC を使用する
           href: manage-azure-rbac.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
@@ -313,8 +321,16 @@
           href: azure-disk-customer-managed-keys.md
         - name: ホストベースの暗号化の有効化
           href: enable-host-encryption.md
-        - name: CSI シークレット ストア ドライバー (プレビュー)
-          href: csi-secrets-store-driver.md
+        - name: シークレット ストア CSI ドライバー
+          items:
+            - name: シークレット ストア CSI ドライバー構成
+              href: csi-secrets-store-driver.md
+            - name: Azure Key Vault のアクセスを指定する
+              href: csi-secrets-store-identity-access.md
+            - name: NGINX イングレス コントローラーの TLS の構成
+              href: csi-secrets-store-nginx-tls.md
+            - name: トラブルシューティング
+              href: csi-secrets-store-troubleshooting.md
     - name: 監視およびログ記録
       items:
         - name: AKS の監視
@@ -365,14 +381,14 @@
           href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md
-        - name: Dapr を使用する
+        - name: Dapr を使用する (プレビュー)
           href: dapr.md
           maintainContext: true
     - name: サービス メッシュのデプロイ
       items:
         - name: サービス メッシュについて
           href: servicemesh-about.md
-        - name: Open Service Mesh AKS アドオン (プレビュー)
+        - name: Open Service Mesh AKS アドオン
           items:
             - name: OSM の概要
               href: open-service-mesh-about.md

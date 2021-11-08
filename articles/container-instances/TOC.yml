@@ -78,6 +78,8 @@
           href: container-instances-encrypt-data.md
         - name: 専用ホストへのデプロイ
           href: container-instances-dedicated-hosts.md
+        - name: Availability Zones (プレビュー) でデプロイする
+          href: availability-zones.md
         - name: Logic Apps コネクタの使用
           href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: コンテナーのシナリオ

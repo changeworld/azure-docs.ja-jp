@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 10/21/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9435ba38ead8799a8628b0a888d074f2432ffd2e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7cd13ebef2e548d9596823f829041e48c99e532e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092488"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441839"
 ---
 # <a name="microsoft-defender-for-clouds-enhanced-security-features"></a>Microsoft Defender for Cloud の強化されたセキュリティ機能
 
@@ -85,7 +84,7 @@ Microsoft Defender for Cloud の無料プランでは、セキュリティ ス�
 |                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-microsoft-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>自分のサブスクリプションで、サーバーのサブセットに対して Microsoft Defender for servers を有効にすることはできますか?
-不正解です。 サブスクリプションで [Microsoft Defender for servers](defender-for-servers-introduction.md) を有効にすると、サブスクリプション内のすべてのマシンが Defender for servers によって保護されます。
+いいえ。 サブスクリプションで [Microsoft Defender for servers](defender-for-servers-introduction.md) を有効にすると、サブスクリプション内のすべてのマシンが Defender for servers によって保護されます。
 
 また、Log Analytics ワークスペース レベルで Microsoft Defender for servers を有効にする方法もあります。 この場合、そのワークスペースにレポートするサーバーだけが保護され、課金されるようになります。 ただし、いくつかの機能が利用できなくなります。 それらの例としては、Just-in-Time VM アクセス、ネットワーク検出、規制コンプライアンス、アダプティブ ネットワークのセキュリティ強化機能、適応型アプリケーション制御などが挙げられます。 
 
@@ -97,7 +96,7 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 割引は承認日から有効となり、さかのぼって適用されることはありません。
 
 ### <a name="my-subscription-has-microsoft-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>自分のサブスクリプションで Microsoft Defender for servers が有効になっています。実行していないサーバーは課金されますか? 
-不正解です。 サブスクリプションで [Microsoft Defender for servers](defender-for-servers-introduction.md) を有効にしても、割り当て解除済みの電源状態のマシンは、その状態である間は課金されません。 マシンは電源の状態に基づいて課金されます。次の表を参照してください。
+いいえ。 サブスクリプションで [Microsoft Defender for servers](defender-for-servers-introduction.md) を有効にしても、割り当て解除済みの電源状態のマシンは、その状態である間は課金されません。 マシンは電源の状態に基づいて課金されます。次の表を参照してください。
 
 | State        | 説明                                                                                                                                      | 課金されたインスタンスの使用 |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
@@ -111,13 +110,13 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 :::image type="content" source="media/enhanced-security-features-overview/deallocated-virtual-machines.png" alt-text="割り当て解除状態のマシンを示す Azure Virtual Machines。":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Log Analytics エージェントがインストールされていないマシンは課金されますか?
-正解です。 サブスクリプションで [Microsoft Defender for servers](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。 これは、Azure 仮想マシン、Azure 仮想マシン スケール セット インスタンス、Azure Arc 対応サーバーに適用されます。
+はい。 サブスクリプションで [Microsoft Defender for servers](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。 これは、Azure 仮想マシン、Azure 仮想マシン スケール セット インスタンス、Azure Arc 対応サーバーに適用されます。
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、二重に課金されるのですか? 
 はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、"セキュリティ" または "マルウェア対策" ソリューションがインストールされている各ワークスペースが課金の対象となります。 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、それらすべてで 500 MB 無料のデータ インジェストが利用できるのですか?
-正解です。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB の制限を超えて取り込まれたデータについては課金の対象となります。
+はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB の制限を超えて取り込まれたデータについては課金の対象となります。
 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>500 MB 無料のデータ インジェストの計算対象は、ワークスペース全体ですか、それとも厳密にマシン単位ですか?
 ワークスペースに接続されている各マシンについて、1 日あたり 500 MB のデータ インジェストが無料で提供されます。 具体的には、Defender for Cloud によって直接収集されたセキュリティ データのタイプが対象となります。
@@ -140,7 +139,7 @@ Defender for Cloud の課金は、Log Analytics の課金と密接に関連し�
 
 ワークスペースが従来のノードごとの価格レベルである場合、Defender for Cloud と Log Analytics の割り当てが結合されて、取り込まれたすべての課金対象データにまとめて適用されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Defender for Cloud の価格オプションについて説明しました。 関連資料については、以下を参照してください。
 
 - [Azure ワークロードのコストを最適化する方法](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)

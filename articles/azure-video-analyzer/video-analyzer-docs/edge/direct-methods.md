@@ -2,14 +2,14 @@
 title: Azure Video Analyzer でダイレクト メソッドを使用する - Azure
 description: Azure Video Analyzer エッジ モジュールでは、このトピックで説明するいくつかのダイレクト メソッドが公開されています。
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8ccf325164705e9b375cb4fa1c32af2228dcbed5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 39a1ddaeca42240e3f37f8e70679d5bd3d24957b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089904"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556466"
 ---
 # <a name="azure-video-analyzer-direct-methods"></a>Azure Video Analyzer のダイレクト メソッド
 
@@ -538,7 +538,7 @@ Pipeline validation Errors  |400    |PipelineValidationError|
 
 すべてのリモート デバイス アダプターを一覧表示します。 Video Analyzer エッジ モジュールはビデオの透過的なゲートウェイとして機能し、IoT デバイスがファイアウォールの背後からクラウドにビデオを送信できるようになります。 このような IoT デバイスごとに、リモート デバイス アダプターを作成する必要があります。 その後、クラウドと IoT デバイス間の通信は、Video Analyzer エッジ モジュールを介して行われます。
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>要求
 
 ```
   {
@@ -581,7 +581,7 @@ Pipeline validation Errors  |400    |PipelineValidationError|
 指定された名前のリモート デバイス アダプターが存在しない場合は、そのアダプターを作成します。または、その名前を持つ既存のアダプターを更新します。 応答ペイロードで、および `remoteDeviceAdapterList` または `remoteDeviceAdapterGet` の呼び出しで、資格情報またはシークレットは省略されます。
 
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>要求
 
 ```
   {
@@ -625,7 +625,7 @@ Pipeline validation Errors  |400    |PipelineValidationError|
 
 これは `livePipelineTopologyGet` に似ています。 指定した名前のリモート デバイス アダプターが存在する場合は、そのアダプターを取得します (資格情報またはシークレットは省略されます)。
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>要求
 
 ```
   {
@@ -665,7 +665,7 @@ Pipeline validation Errors  |400    |PipelineValidationError|
 
 1 つのリモート デバイス アダプターが存在する場合は、アダプターを削除します。
 
-#### <a name="request"></a>Request
+#### <a name="request"></a>要求
 
 ```
   {

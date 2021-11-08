@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 04/28/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f156b8f1102e55ca56085aec7b63a1fdb2716450
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d368ca1c8268913bcb8240f542f7bc3af2c59cff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075814"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437887"
 ---
 # <a name="tutorial-investigate-the-health-of-your-resources"></a>チュートリアル: リソースの正常性を調査する
 

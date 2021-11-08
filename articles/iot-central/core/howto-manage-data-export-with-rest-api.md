@@ -7,12 +7,12 @@ ms.date: 10/18/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0816cb3a7662b62804a1864f3c0579387ded7ca0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cb538b6c8777a9aeb1d02fe705a87831f7aaf5b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092640"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433783"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-data-exports"></a>IoT Central REST API を使用してデータ エクスポートを管理する方法
 
@@ -33,7 +33,7 @@ IoT Central のデータ エクスポート機能を使用すると、テレメ�
 次の要求を使用して、宛先定義を作成または更新します。
 
 ```http
-PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 * destinationId - 宛先の一意の ID。
@@ -74,7 +74,7 @@ PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}
 アプリケーションから宛先の詳細を取得するには、次の要求を使用します。
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 この要求に対する応答は、次の例のようになります。
@@ -95,7 +95,7 @@ GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}
 アプリケーションから宛先のリストを取得するには、次の要求を使用します。
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.1-preview
 ```
 
 この要求に対する応答は、次の例のようになります。 
@@ -130,7 +130,7 @@ GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.0
 ### <a name="patch-a-destination"></a>宛先の修正
 
 ```http
-PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 これを使用して、エクスポートへの増分更新を実行できます。 サンプル要求本文は、次の例のようになります。ここでは、`displayName` が宛先に更新されます。
@@ -162,7 +162,7 @@ PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationI
 宛先を削除するには、次の要求を使用します。
 
 ```http
-DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 ### <a name="create-or-update-an-export-definition"></a>エクスポート定義を作成または更新する
@@ -170,7 +170,7 @@ DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destination
 次の要求を使用して、データ エクスポート定義を作成または更新します。
 
 ```http
-PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.0
+PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 次の例は、デバイス テレメトリ用のエクスポート定義を作成する要求本文を示しています。
@@ -232,7 +232,7 @@ PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-versi
 アプリケーションからエクスポート定義の詳細を取得するには、次の要求を使用します。
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 この要求に対する応答は、次の例のようになります。
@@ -253,7 +253,7 @@ GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-versi
 アプリケーションからエクスポート定義のリストを取得するには、次の要求を使用します。
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.1-preview
 ```
 
 この要求に対する応答は、次の例のようになります。 
@@ -302,7 +302,7 @@ GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.0
 ### <a name="patch-an-export-definition"></a>エクスポート定義を更新する
 
 ```http
-PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version=1.0
+PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 これを使用して、エクスポートへの増分更新を実行できます。 サンプル要求本文は、次の例のようになります。ここでは、エクスポートへの `enrichments` が更新されます。
@@ -352,7 +352,7 @@ PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version
 エクスポート定義を削除するには、次の要求を使用します。
 
 ```http
-DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 ## <a name="next-steps"></a>次の手順

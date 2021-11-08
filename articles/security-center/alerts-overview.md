@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5159779352ffdda4c06e03936a136d375b3583f1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a22cc027e8abd631cb0c5b1a40e722d37225900
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092710"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475390"
 ---
 # <a name="security-alerts-and-incidents-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud のセキュリティ アラートとインシデント
 

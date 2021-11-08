@@ -5,14 +5,14 @@ author: Juliako
 ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f492272e2365d242859357e86056fd3d5095e88b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b3de27af4dab9dd8968f97487cb120dbcd0d08c8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091989"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554490"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>チュートリアル: 空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -416,7 +416,7 @@ F5 を選択してデバッグ セッションを実行し、**ターミナル**
 
 [!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 `spatialAnalysis` モジュールが提供するさまざまな操作を試してください。次のパイプライン トポロジを参照してください。
 

@@ -8,13 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e596312807e2f6d5292c4910a7e2c3e9e7d75b3f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b63529ca18f1b0bc09a173c814ede9cc71a5a7ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009987"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422541"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>カスタム セキュリティ イニシアチブとポリシーを作成する
 

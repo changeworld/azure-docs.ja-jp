@@ -6,14 +6,14 @@ ms.author: memildin
 ms.date: 05/27/2021
 ms.topic: overview
 ms.service: security-center
-ms.custom: references_regions, ignite-fall-2021
+ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 3f2694cbde7148b3a90895e83f2f209c4a553ccf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e98c135d93e3dad247571af6b9c8ad35302252ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131061069"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445238"
 ---
 # <a name="introduction-to-microsoft-defender-for-sql"></a>Microsoft Defender for SQL の概要
 

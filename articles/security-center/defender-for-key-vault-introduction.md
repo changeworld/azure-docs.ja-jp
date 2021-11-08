@@ -6,14 +6,14 @@ ms.author: memildin
 ms.date: 10/20/2021
 ms.topic: overview
 ms.service: security-center
-ms.custom: references_regions, ignite-fall-2021
+ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: bec034539b7969a7552952eddd6d7673e35ebcaf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cf3aa4510c29ecc45fe5217e727fa0efc15a1809
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055915"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425085"
 ---
 # <a name="introduction-to-microsoft-defender-for-key-vault"></a>Microsoft Defender for Key Vault の概要
 

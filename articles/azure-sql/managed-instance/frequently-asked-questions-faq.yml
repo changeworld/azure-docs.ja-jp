@@ -13,12 +13,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 589480bfe32a5fb995623f48b158a82bae8b7713
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 9a082102f7f71bf987b6a959145f77617014baca
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131074283"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131423681"
 title: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -371,7 +371,7 @@ sections:
       ### <a name="where-can-i-leave-my-ideas-for-sql-managed-instance-improvements"></a>SQL Managed Instance の改善案はどこに提出すればよいですか?
 
 
-      新しい Managed Instance 機能に投票したり、[SQL Managed Instance フィードバック フォーラム](https://feedback.azure.com/forums/915676-sql-managed-instance)で新しい改善案を投票にかけることができます。 これにより、製品開発に貢献いただくことができ、これは今後の改善の優先順位を決める上で役立ちます。
+      新しい Managed Instance 機能に投票したり、[SQL Managed Instance フィードバック フォーラム](https://feedback.azure.com/d365community/forum/a99f7006-3425-ec11-b6e6-000d3a4f0f84)で新しい改善案を投票にかけることができます。 これにより、製品開発に貢献いただくことができ、これは今後の改善の優先順位を決める上で役立ちます。
 
 
       ### <a name="how-can-i-create-azure-support-request"></a>Azure サポート リクエストを作成するにはどうすればよいですか?

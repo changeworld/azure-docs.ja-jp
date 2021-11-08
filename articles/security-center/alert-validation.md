@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0070bf9a071de8108fff21e0a1816c9d73f9a226
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b5acd38ec3885fab3d1de9d70a80fa76cd9c60b0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092712"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453290"
 ---
 # <a name="alert-validation-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud でのアラートの検証
 

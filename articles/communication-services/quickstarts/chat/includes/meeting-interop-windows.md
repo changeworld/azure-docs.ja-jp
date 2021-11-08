@@ -5,12 +5,12 @@ ms.author: juramir
 ms.date: 10/15/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: fd559b8f393f7dca88bfb64fa24e9ba17e6b3832
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: acab57f774d97c2cd9710b77f6a0ebabf73e4fdb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131253332"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520094"
 ---
 このクイックスタートでは、C# 用 Azure Communication Services Chat SDK を使用して Teams 会議でチャットする方法について説明します。
 
@@ -67,7 +67,7 @@ private const string connectionString_ = "";
 
 ```csharp
         /// <summary>
-        /// Backgroung task that keeps polling for chat messages while the call connection is stablished
+        /// Background task that keeps polling for chat messages while the call connection is stablished
         /// </summary>
         private async Task StartPollingForChatMessages()
         {
@@ -114,7 +114,7 @@ private const string connectionString_ = "";
                         }
 
                         await SetInCallState(true);
-                        Thread.Sleep(3000);
+                        await Task.Delay(3000);
                     }
                     catch (Exception e)
                     {

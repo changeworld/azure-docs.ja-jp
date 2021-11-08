@@ -7,14 +7,14 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 06/11/2021
-ms.custom: subject-rbac-steps, ignite-fall-2021
+ms.custom: subject-rbac-steps
 ms.author: memildin
-ms.openlocfilehash: 9c53c626685b0035c659687454b7ad1f49acd81d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ffb6e78ffd0b4214f0751686dba695e8d35e3160
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092465"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425123"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>サブスクリプションを管理グループに整理し、ユーザーにロールを割り当てる
 

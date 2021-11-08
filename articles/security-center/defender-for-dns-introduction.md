@@ -7,13 +7,12 @@ ms.date: 10/20/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 00f783b82b9a5b1aa8e6152e513fa91ab3213929
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5e9c316576187db360c2db9d5c6f51929d7c7c3f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055865"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467646"
 ---
 # <a name="introduction-to-microsoft-defender-for-dns"></a>Microsoft Defender for DNS の概要
 
@@ -70,7 +69,7 @@ Microsoft Defender for DNS からアラートを受け取った場合は、下�
 1. マシンに対する Microsoft Defender for DNS の推奨事項をすべて解決し、今後の侵害を防ぐために強調表示されたセキュリティ上の問題を修復します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Microsoft Defender for DNS について説明しました。 
 

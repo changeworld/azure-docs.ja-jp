@@ -7,13 +7,12 @@ ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6bc972f1e548ba94d591d3c000a83f40b8c1c507
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b6bf15e416d64d283f834bc9f91f15715d4fa7a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009833"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428750"
 ---
 # <a name="introduction-to-microsoft-defender-for-storage"></a>Microsoft Defender for Storage の概要
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: eab029ea4640199b6ed1086c85cdf59fe92f45c2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 26c1287dba6dc88530ec268fe278d0fbfafba1ed
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036408"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501003"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -511,8 +511,8 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | id | 既定値 | 説明 |
 | --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
-| UserMessageIfMaxRetryAttempted | No | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
-| UserMessageIfMaxNumberOfCodeGenerated | No | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
+| UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
 | UserMessageIfInvalidCode | いいえ | 無効なコードが指定された場合にユーザーに表示するメッセージ。 |
 | UserMessageIfVerificationFailedRetryAllowed | いいえ | 無効なコードを指定した場合にユーザーに表示するメッセージ。ユーザーは正しいコードを指定できます。  |
 |UserMessageIfSessionConflict|いいえ| コードを確認できない場合にユーザーに表示するメッセージ。|
@@ -524,7 +524,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>

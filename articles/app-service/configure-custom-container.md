@@ -5,12 +5,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bfcd178a43e7a21ea6ef35d4462956bd49037e6f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7e4d861418739660eb948e289af32d673a269b91
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131006869"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435759"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -126,10 +126,10 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 
 ## <a name="use-an-image-from-a-network-protected-registry"></a>ネットワークで保護されたレジストリからイメージを使用する
 
-仮想ネットワークまたはオンプレミス内のレジストリに接続してプルするには、VNet 統合機能を使用して、アプリを仮想ネットワークに接続する必要があります。 これは、プライベート エンドポイントを使用する Azure Container Registry の場合にも必要です。 ネットワークと DNS 解決が構成されている場合は、アプリ設定 `WEBISTE_PULL_IMAGE_OVER_VNET=true` を設定して、VNet を介したイメージ プルのルーティングを有効にします。
+仮想ネットワークまたはオンプレミス内のレジストリに接続してプルするには、VNet 統合機能を使用して、アプリを仮想ネットワークに接続する必要があります。 これは、プライベート エンドポイントを使用する Azure Container Registry の場合にも必要です。 ネットワークと DNS 解決が構成されている場合は、アプリ設定 `WEBSITE_PULL_IMAGE_OVER_VNET=true` を設定して、VNet を介したイメージ プルのルーティングを有効にします。
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBISTE_PULL_IMAGE_OVER_VNET=true
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_PULL_IMAGE_OVER_VNET=true
 ```
 
 ::: zone-end
@@ -261,7 +261,7 @@ Docker ログにアクセスするには、いくつかの方法があります�
 - [Azure Portal](#in-azure-portal)
 - [Kudu コンソールから](#from-the-kudu-console)
 - [Kudu API を使用する](#with-the-kudu-api)
-- [ログを Azure Monitor に送信する](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
+- [ログを Azure Monitor に送信する](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor)
 
 ### <a name="in-azure-portal"></a>Azure Portal
 

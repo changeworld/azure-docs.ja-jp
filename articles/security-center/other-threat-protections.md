@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 10/12/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2ed570448661ff9c39d963f35d4593d6ac35f10a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e240294c82e283e74f0b8c0ed24432be3ffa8506
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055827"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460586"
 ---
 # <a name="additional-threat-protections-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud の追加の脅威の防止
 

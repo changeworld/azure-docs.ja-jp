@@ -209,6 +209,8 @@
           items:
             - name: クエリ パフォーマンスの問題の特定
               href: identify-query-performance-issues.md
+            - name: パフォーマンスに関する問題のトラブルシューティング
+              href: database/intelligent-insights-troubleshoot-performance.md
             - name: パフォーマンスを高めるためのバッチ処理
               href: performance-improve-use-batching.md
             - name: BCP を使用したデータの読み込み
@@ -1450,6 +1452,8 @@
           href: database/troubleshoot-common-errors-issues.md
         - name: 一般的な接続に関する問題
           href: database/troubleshoot-common-connectivity-issues.md
+        - name: メモリ不足のエラーのトラブルシューティング
+          href: database/troubleshoot-memory-errors-issues.md
         - name: Import/Export サービスがハングする
           href: database/database-import-export-hang.md
         - name: トランザクション ログ エラー

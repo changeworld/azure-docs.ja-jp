@@ -7,13 +7,12 @@ ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: b08ffb4e19a74f04ef597c03881f2eb8246826bb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ea1f2259d34389498bcdf144a463973baeb3919d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084276"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453176"
 ---
 # <a name="introduction-to-microsoft-defender-for-resource-manager"></a>Microsoft Defender for Resource Manager の概要
 
@@ -28,7 +27,7 @@ ms.locfileid: "131084276"
 >[!NOTE]
 > これらの分析の一部には、[Microsoft Defender For Cloud Apps (旧称 Microsoft Cloud App Security)](/cloud-app-security/what-is-cloud-app-security) が使用されています。 これらの分析を活用するには、Cloud App Security ライセンスをアクティブにする必要があります。 Cloud App Security ライセンスをお持ちの場合、これらのアラートは既定で有効になります。 アラートを無効にするには、次のようにします。
 >
-> 1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+> 1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 > 1. 変更するサブスクリプションを選択します。
 > 1. **[Integrations]\(統合\)** を選択します。
 > 1. **[Allow Microsoft Defender for Cloud Apps to access my data]\(Microsoft Defender for Cloud Apps がデータにアクセスすることを許可する\)** をクリアし、 **[保存]** を選択します。
@@ -80,7 +79,7 @@ Microsoft Defender for Resource Manager からのセキュリティ アラート
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Microsoft Defender for Resource Manager について学習しました。 
 

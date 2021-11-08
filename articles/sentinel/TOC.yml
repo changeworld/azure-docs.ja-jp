@@ -23,6 +23,8 @@
       href: notebook-get-started.md
     - name: Azure Sentinel から Power BI レポートを作成する
       href: powerbi.md
+    - name: おとりのハニートークンをデプロイおよび監視する
+      href: monitor-key-vault-honeytokens.md
 - name: 概念
   items:
     - name: Azure Sentinel の前提条件
@@ -135,7 +137,7 @@
             - name: Microsoft 365 Defender
               href: connect-microsoft-365-defender.md
             - name: Windows セキュリティ イベント
-              href: connect-windows-security-events.md
+              href: data-connectors-reference.md#windows-security-events-via-ama
         - name: 種類別の接続手順
           items:
             - name: Azure、Windows、Microsoft コネクタ
@@ -316,6 +318,8 @@
               href: registry-event-normalization-schema.md
             - name: レガシ ネットワーク正規化スキーマ
               href: normalization-schema-v1.md
+        - name: Windows セキュリティ イベント セット
+          href: windows-security-event-id-reference.md
     - name: 検出と分析リファレンス
       items:
         - name: 上位の Azure Sentinel ブック

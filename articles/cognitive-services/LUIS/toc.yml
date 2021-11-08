@@ -191,6 +191,12 @@ items:
             displayName: roles
           - name: データ ストレージ
             href: luis-concept-data-storage.md
+      - name: セキュリティ
+        items:
+          - name: ロールベースのアクセス制御
+            href: role-based-access-control.md
+          - name: Azure Active Directory での認証
+            href: ../authentication.md#authenticate-with-azure-active-directory
       - name: LUIS と QnA Maker の使用
         href: choose-natural-language-processing-service.md
         displayName: 'nlp, qna maker'

@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/18/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: a54517057c6ffb7915c58cf6bfa0b328037c7dcc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 50070c59c99e40e0d4d40577119f7f1d9805ecf9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010209"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445314"
 ---
 # <a name="create-rich-interactive-reports-of-defender-for-cloud-data"></a>Defender for Cloud データの豊富な対話型レポートを作成する
 

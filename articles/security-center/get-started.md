@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 10/21/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f194a0326f4caa90fc57bfd9af2991a9f4e1fbeb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0d623789b1f99e6e7728fd5d3f80bb7ca2be7218
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017483"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441782"
 ---
 # <a name="quickstart-set-up-microsoft-defender-for-cloud"></a>クイックスタート: Microsoft Defender for Cloud を設定する
 
@@ -40,7 +39,7 @@ Defender for Cloud を使用するには、Microsoft Azure のサブスクリプ
 > [!TIP]
 > 管理グループ内のすべてのサブスクリプションで Defender for Cloud を有効にするには、[複数の Azure サブスクリプションの Defender for Cloud を有効にする](onboard-management-group.md)方法に関するページを参照してください。
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 
 1. ポータルのメニューから **[Defender for Cloud]** を選択します。 
 
@@ -63,7 +62,7 @@ Defender for Cloud を最大限に活用するには、クイックスタート 
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイックスタートでは、Defender for Cloud を有効にしました。 次のステップでは、強化されたセキュリティ機能を有効にして、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威の防止を実現します。
 
 > [!div class="nextstepaction"]

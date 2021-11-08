@@ -42,12 +42,6 @@
           href: tutorial-1st-experiment-sdk-train.md
         - name: 3. 独自のデータを使用する
           href: tutorial-1st-experiment-bring-data.md
-    - name: CLI (v2)
-      items:
-        - name: CLI (v2) を使用したモデルのトレーニング
-          href: how-to-train-cli.md
-        - name: マネージド エンドポイントを使用してリソースにアクセスする
-          href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
     - name: Jupyter Notebooks
       items:
         - name: 画像の分類 (MNIST データ)
@@ -115,16 +109,14 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: リポジトリの例
+    - name: サンプル リポジトリ
       displayName: 'example, examples, jupyter, python, notebook, github'
       href: 'https://github.com/Azure/azureml-examples'
     - name: デザイナーの例とデータセット
-      displayName: 'example, examples, studio, pipelines, data sets, modules'
+      displayName: 'example, examples, studio, pipelines, data sets, modules, components'
       href: samples-designer.md
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
-    - name: Open Datasets (パブリック)
-      href: ../open-datasets/samples.md?context=azure%2fmachine-learning%2fcontext%2fml-context
 - name: 概念
   items:
     - name: モデルをトレーニングする
@@ -172,6 +164,8 @@
           href: concept-open-source.md
         - name: ML パイプライン
           href: concept-ml-pipelines.md
+        - name: ML コンポーネント
+          href: concept-component.md
         - name: MLflow
           href: concept-mlflow.md
         - name: 信頼できる ML
@@ -327,12 +321,12 @@
               href: how-to-create-attach-compute-studio.md
     - name: 環境を設定する
       items:
-        - name: CLI (v2) のインストールと設定
-          displayName: 'azurecli, mlops'
-          href: how-to-configure-cli.md
         - name: 開発環境をセットアップする
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: CLI (v2) のインストールと設定
+          displayName: 'azurecli, mlops'
+          href: how-to-configure-cli.md
         - name: スタジオ環境の設定
           items:
             - name: スタジオで環境を管理する
@@ -365,7 +359,7 @@
           displayName: github gitlab
           href: concept-train-model-git-integration.md
         - name: 環境のトラブルシューティングの方法
-          displayName: 'troubleshoot, envrionment, debug, image'
+          displayName: 'troubleshoot, environment, debug, image'
           href: how-to-troubleshoot-environments.md
     - name: データの処理
       items:
@@ -434,10 +428,6 @@
               href: how-to-export-delete-data.md
     - name: モデルをトレーニングする
       items:
-        - name: CLI (v2) を使用したトレーニング
-          href: how-to-train-cli.md
-        - name: REST API を使用したトレーニング
-          href: how-to-train-with-rest.md
         - name: ジョブの作成 UI を使用したトレーニング
           href: how-to-train-with-ui.md
         - name: Python SDK でトレーニングする
@@ -493,14 +483,21 @@
             - name: トレーニング時に Key Vault を使用する
               displayName: secrets keyvault
               href: how-to-use-secrets-in-runs.md
+        - name: CLI (v2) を使用したトレーニング
+          href: how-to-train-cli.md
+        - name: REST API を使用したトレーニング
+          href: how-to-train-with-rest.md
+        - name: CLI (v2) を使用して環境を管理する
+          displayName: environment
+          href: how-to-manage-environments-v2.md
         - name: モデルの解釈と説明
           displayName: interpretability
           items:
             - name: ML モデルを解釈する
-              displayName: 'SDK, interpret, explain, explanability, interpretability'
+              displayName: 'SDK, interpret, explain, explainability, interpretability'
               href: how-to-machine-learning-interpretability-aml.md
             - name: 自動化された ML モデルの説明
-              displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
+              displayName: 'SDK, interpret, interpret, explain, explainability, interpretability, automated ML, automl, auto ml'
               href: how-to-machine-learning-interpretability-automl.md
         - name: モデルの公平性を評価して軽減する
           href: how-to-machine-learning-fairness-aml.md
@@ -552,20 +549,34 @@
               items:
                 - name: オンライン エンドポイントを使用して ML モデルをデプロイする
                   href: how-to-deploy-managed-online-endpoints.md
+                - name: マネージド オンライン エンドポイントを使用して MLflow モデルをデプロイする
+                  href: how-to-deploy-mlflow-models-online-endpoints.md
                 - name: マネージド オンライン エンドポイントを使用してカスタム コンテナーをデプロイする
                   href: how-to-deploy-custom-container.md
                 - name: オンライン エンドポイントの安全なロールアウト
                   href: how-to-safely-rollout-managed-endpoints.md
                 - name: Studio でマネージド オンライン エンドポイントを使用する
                   href: how-to-use-managed-online-endpoint-studio.md
+                - name: Triton を使用した高パフォーマンスのサービス
+                  href: how-to-deploy-with-triton.md
+                - name: マネージド オンライン エンドポイントとマネージド ID を使用してストレージにアクセスする
+                  href: how-to-access-resources-from-endpoints-managed-identities.md
                 - name: マネージド オンライン エンドポイントのコストを確認する
                   href: how-to-view-online-endpoints-costs.md
                 - name: REST を使用してマネージド オンライン エンドポイントとしてモデルをデプロイする
                   href: how-to-deploy-with-rest.md
+                - name: マネージド オンライン エンドポイントを使用して AutoML モデルをデプロイする
+                  href: how-to-deploy-automl-endpoint.md
+                - name: マネージド エンドポイントの自動スケーリング
+                  href: how-to-autoscale-endpoints.md
+                - name: マネージド オンライン エンドポイントのコストを確認する
+                  href: how-to-view-online-endpoints-costs.md
                 - name: マネージド オンライン エンドポイント VM SKU の一覧
                   href: reference-managed-online-endpoints-vm-sku-list.md
                 - name: マネージド オンライン エンドポイントの監視
                   href: how-to-monitor-online-endpoints.md
+                - name: マネージド オンライン エンドポイントをローカルでデバッグする (VS Code)
+                  href: how-to-debug-managed-online-endpoints-visual-studio-code.md
                 - name: マネージド オンライン エンドポイントのトラブルシューティング
                   href: how-to-troubleshoot-online-endpoints.md
             - name: Batch
@@ -574,6 +585,8 @@
                   href: how-to-use-batch-endpoint.md
                 - name: スタジオのバッチ エンドポイント
                   href: how-to-use-batch-endpoints-studio.md
+                - name: REST を使用してモデルをバッチ エンドポイントとしてデプロイする
+                  href: how-to-deploy-batch-with-rest.md
                 - name: バッチ エンドポイントのトラブルシューティング
                   href: how-to-troubleshoot-batch-endpoints.md
         - name: 展開ターゲット
@@ -626,10 +639,8 @@
               href: how-to-enable-data-collection.md
             - name: Application Insights での監視
               href: how-to-enable-app-insights.md
-        - name: Triton を使用した高パフォーマンスのサービス
-          href: how-to-deploy-with-triton.md
         - name: 暗号化された推論サービスをデプロイする
-          displayName: 'homomorhic,encryption,deployment'
+          displayName: 'homomorphic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
         - name: モデルのプロファイル
           displayName: profile resource requirement
@@ -660,6 +671,8 @@
           items:
             - name: ML パイプラインを作成する (Python)
               href: how-to-create-machine-learning-pipelines.md
+            - name: コンポーネントを使用して ML パイプラインを作成する (CLI v2)
+              href: how-to-create-component-pipelines-cli.md
             - name: ML パイプラインのステップ間でのデータの移動 (Python)
               href: how-to-move-data-in-out-of-pipelines.md
             - name: ML パイプラインでの自動 ML の使用 (Python)
@@ -717,11 +730,11 @@
           href: how-to-debug-parallel-run-step.md
 - name: リファレンス
   items:
-    - name: REST API
-      href: /rest/api/azureml/
     - name: Python SDK
       displayName: 'api, core, package, python, class'
       href: /python/api/overview/azure/ml/intro
+    - name: REST API
+      href: /rest/api/azureml/
     - name: CLI (v2)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: /cli/azure/ml/
@@ -729,18 +742,34 @@
       items:
         - name: 概要
           href: reference-yaml-overview.md
-        - name: アセット
+        - name: コア構文
+          href: reference-yaml-core-syntax.md
+        - name: ワークスペース
+          href: reference-yaml-workspace.md
+        - name: 環境
+          href: reference-yaml-environment.md
+        - name: データセット
+          href: reference-yaml-dataset.md
+        - name: モデル
+          href: reference-yaml-model.md
+        - name: Compute
           items:
-            - name: ワークスペース
-              href: reference-yaml-workspace.md
-            - name: Compute
-              href: reference-yaml-compute.md
-            - name: 環境
-              href: reference-yaml-environment.md
-            - name: データセット
-              href: reference-yaml-dataset.md
-            - name: モデル
-              href: reference-yaml-model.md
+            - name: コンピューティング クラスター (AmlCompute)
+              href: reference-yaml-compute-aml.md
+            - name: コンピューティング インスタンス
+              href: reference-yaml-compute-instance.md
+            - name: 接続された仮想マシン
+              href: reference-yaml-compute-vm.md
+        - name: ジョブ
+          items:
+            - name: コマンド
+              href: reference-yaml-job-command.md
+            - name: スイープ
+              href: reference-yaml-job-sweep.md
+            - name: パイプライン
+              href: reference-yaml-job-pipeline.md
+            - name: コンポーネント
+              href: reference-yaml-job-component.md
         - name: データストア
           items:
             - name: Azure BLOB
@@ -751,28 +780,22 @@
               href: reference-yaml-datastore-data-lake-gen1.md
             - name: Azure Data Lake Gen2
               href: reference-yaml-datastore-data-lake-gen2.md
-        - name: ジョブ
-          items:
-            - name: コマンド
-              href: reference-yaml-job-command.md
-            - name: スイープ
-              href: reference-yaml-job-sweep.md
         - name: エンドポイント
           items:
             - name: マネージド オンライン (リアルタイム)
               href: reference-yaml-endpoint-managed-online.md
-            - name: マネージド バッチ
-              href: reference-yaml-endpoint-managed-batch.md
-            - name: Kubernetes (k8s) オンライン
-              href: reference-yaml-endpoint-k8s-online.md
+            - name: Batch
+              href: reference-yaml-endpoint-batch.md
         - name: デプロイ
           items:
             - name: マネージド オンライン (リアルタイム)
               href: reference-yaml-deployment-managed-online.md
-            - name: マネージド バッチ
-              href: reference-yaml-deployment-managed-batch.md
-            - name: Kubernetes (k8s) オンライン
-              href: reference-yaml-deployment-k8s-online.md
+            - name: Batch
+              href: reference-yaml-deployment-batch.md
+        - name: コンポーネント
+          items:
+            - name: command
+              href: reference-yaml-component-command.md
     - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
@@ -796,9 +819,12 @@
       href: /cli/azure/ml
 - name: リソース
   items:
-    - name: リリース ノート
+    - name: Python SDK リリース ノート
       displayName: 'what''s, new, issues, bugs'
       href: azure-machine-learning-release-notes.md
+    - name: CLI (v2) リリース ノート
+      displayName: 'what''s, new, issues, bugs'
+      href: azure-machine-learning-release-notes-cli-v2.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格

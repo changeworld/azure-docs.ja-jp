@@ -4,13 +4,13 @@ metadata:
   description: この記事では、Azure Video Analyzer についてよく寄せられる質問に回答します。
   ms.service: azure-video-analyzer
   ms.topic: conceptual
-  ms.date: 10/21/2021
-  ms.openlocfilehash: 89350ab9e102f9c937fea005977a46ba2f3a4c9e
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.date: 11/04/2021
+  ms.openlocfilehash: cc09610dec51c63bc825dff97249689061a44e4a
+  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131091359"
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "131563646"
 title: Azure Video Analyzer に関する FAQ
 summary: この記事では、Azure Video Analyzer についてよく寄せられる質問に回答します。
 sections:

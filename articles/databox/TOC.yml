@@ -260,3 +260,5 @@
           href: 'https://azure.microsoft.com/pricing/details/databox/'
         - name: Data Box Disk の価格
           href: 'https://azure.microsoft.com/pricing/details/databox/disk/'
+        - name: Data Box パートナー
+          href: 'https://cloudchampions.blob.core.windows.net/db-partners/PartnersTable.pdf'

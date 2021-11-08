@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: a57f13b9dc54c69e079e652be94f4b08b716a079
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 81803facdff8012ee01b6cca0c408755c81f5233
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112523062"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853911"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -45,10 +45,10 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | 移行先  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL | X |  |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | X |  |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | X |   |
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
@@ -76,7 +76,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 |   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | X |  |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |

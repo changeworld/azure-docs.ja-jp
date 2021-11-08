@@ -94,6 +94,8 @@
           href: howto-mfa-mfasettings.md
         - name: ユーザーの構成
           href: howto-mfa-userdevicesettings.md
+        - name: カバレッジ ギャップの検索
+          href: how-to-authentication-find-coverage-gaps.md
         - name: ユーザーごとの MFA の有効化
           href: howto-mfa-userstates.md
         - name: 認証プロバイダーの構成
@@ -162,6 +164,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Microsoft Authenticator セットアップの微調整 (プレビュー)
       href: how-to-nudge-authenticator-app.md
+    - name: Microsoft によって管理される設定を使用する
+      href: how-to-mfa-microsoft-managed.md
     - name: 一時アクセス パス (プレビュー) の使用
       href: howto-authentication-temporary-access-pass.md
     - name: SMS ベースの認証を使用する

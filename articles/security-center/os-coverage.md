@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/31/2020
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f3c8538ca327c031bed7ca0a17098af07fc5bfd9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4cf49562119503e7b0c54cb0691cbb520c6a0f9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092704"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428351"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -56,8 +55,8 @@ Windows および Linux で使用できる特定の Defender for Cloud 機能の
 
 Azure Stack Hub に存在する VM の保護もサポートされています。 Defender for Cloud と Azure Stack Hub との統合の詳細については、[Azure Stack Hub 仮想マシンの Defender for Cloud へのオンボード](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)に関するページを参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [Defender for Cloud による Log Analytics エージェントを使用したデータの収集](enable-data-collection.md)について学習します。
+- [Defender for Cloud による Log Analytics エージェントを使用したデータの収集](enable-data-collection.md)方法について学習します。
 - [Defender for Cloud でデータを管理および保護する方法](data-security.md)について学習します。
 - [Microsoft Defender for Cloud を導入するための計画と設計上の考慮事項](security-center-planning-and-operations-guide.md)について学習します。

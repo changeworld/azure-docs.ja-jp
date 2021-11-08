@@ -9,13 +9,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: ac1a72efe9d71725e27162ee19fc3b8b02645023
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7053bcc1e28eeb262dda8833ddf98806aae770b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014295"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472107"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応
 
@@ -107,7 +106,7 @@ Defender for Cloud では、すべてのセキュリティ アラートを統合
 
 続ける予定がない場合や、これらの機能をいずれも無効にしたい場合は、次を実行します。
 
-1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 1. 関連するサブスクリプションを選択します。
 1. **[Defender プラン]** を選択し、 **[強化されたセキュリティ無効]** を選択します。
 
@@ -118,7 +117,7 @@ Defender for Cloud では、すべてのセキュリティ アラートを統合
     > [!NOTE]
     > 強化されたセキュリティ機能を無効にすると、1 つのプランを無効にしたか、すべてのプランを一度に無効にしたかどうかに関係なく、データ収集が短時間継続される場合があります。 
 
-1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 1. 関連するサブスクリプションを選択します。
 1. **[自動プロビジョニング]** を選択します。
 1. 関連する拡張機能を無効にします。

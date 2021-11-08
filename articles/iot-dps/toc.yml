@@ -96,6 +96,8 @@
           href: how-to-control-access.md
         - name: IP フィルター処理を構成する
           href: iot-dps-ip-filtering.md
+        - name: 公衆ネットワーク アクセスを管理しています
+          href: public-network-access.md
     - name: IoT Edge デバイスのプロビジョニング
       items:
         - name: Linux

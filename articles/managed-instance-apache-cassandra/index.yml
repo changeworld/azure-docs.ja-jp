@@ -10,12 +10,12 @@ metadata:
   author: TheovanKraay
   ms.author: thvankra
   ms.date: 11/02/2021
-  ms.openlocfilehash: a81b79347a48ad0cfd7c7aa5876cc385b995b3f0
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 4529009e1e35b2367d43c96410557cf3aa8c7598
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131061316"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131844470"
 landingContent:
 - title: Azure Managed Instance for Apache Cassandra について
   linkLists:
@@ -47,6 +47,8 @@ landingContent:
       url: deploy-cluster-databricks.md
   - linkListType: concept
     links:
+    - text: セキュリティの概要
+      url: security.md
     - text: よく寄せられる質問
       url: faq.md
 - title: クラスター リソースを構成および管理する
@@ -59,5 +61,11 @@ landingContent:
     links:
     - text: Azure CLI を使用してリソースを管理する
       url: manage-resources-cli.md
+    - text: クラスター リソースの監視
+      url: monitor-clusters.md
+    - text: カスタマー マネージド キーを構成する
+      url: customer-managed-keys.md
     - text: Grafana を使用して Prometheus のメトリックを視覚化する
       url: visualize-prometheus-grafana.md
+    - text: ネットワーク構成
+      url: network-rules.md

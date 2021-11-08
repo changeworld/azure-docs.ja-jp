@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 06/07/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44acbc3ace06af2e741b3daf5c6afe9a50a2efe0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 689fe8336594e26c283a75b5f4dfb0026c73ef32
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029638"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441878"
 ---
 # <a name="quickstart-enable-enhanced-security-features"></a>クイックスタート: 強化されたセキュリティ機能を有効にする
 
@@ -71,7 +70,7 @@ Defender for Cloud の強化されたセキュリティ機能を使用して Azu
 
 サブスクリプションに対して強化されたセキュリティ機能を無効にする必要がある場合、手順は同じですが、 **[強化されたセキュリティ無効]** を選択します。
  
-1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 1. 関連するサブスクリプションを選択します。
 1. **[Defender プラン]** を選択し、 **[強化されたセキュリティ無効]** を選択します。
 
@@ -82,6 +81,6 @@ Defender for Cloud の強化されたセキュリティ機能を使用して Azu
 > [!NOTE]
 > 強化されたセキュリティ機能を無効にすると、1 つのプランを無効にしたか、すべてのプランを一度に無効にしたかどうかに関係なく、データ収集が短時間継続される場合があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 強化されたセキュリティ機能を有効にした後は、[自動プロビジョニング エージェントと拡張機能](enable-data-collection.md)に関するページに説明されているように、必要なエージェントと拡張機能を有効にして自動データ収集を行います。

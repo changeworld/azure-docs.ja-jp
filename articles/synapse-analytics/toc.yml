@@ -1430,6 +1430,8 @@ items:
     items:
       - name: コストの計画と管理
         href: plan-manage-costs.md
+      - name: ACL を使用して ADLS Gen2 フォルダーを参照する
+        href: how-to-access-container-with-access-control-lists.md
   - name: リファレンス
     items:
       - name: Azure CLI

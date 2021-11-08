@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 10/13/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7f5cedfbb5b5003c968559112b9557696c7e09e3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 275dfc8d33be95db1d6712157686ee5dc89bd0be
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064699"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449319"
 ---
 # <a name="important-upcoming-changes-to-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud に対する今後の重要な変更
 

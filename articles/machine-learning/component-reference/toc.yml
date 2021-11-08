@@ -1,0 +1,196 @@
+- name: デザイナーのアルゴリズムとコンポーネント
+  href: component-reference.md
+- name: データの入力と出力
+  items:
+    - name: データのインポート
+      href: import-data.md
+    - name: データの手動入力
+      href: enter-data-manually.md
+    - name: データのエクスポート
+      href: export-data.md
+- name: データの変換
+  items:
+    - name: 列の追加
+      href: add-columns.md
+    - name: 行の追加
+      href: add-rows.md
+    - name: 算術演算の適用
+      href: apply-math-operation.md
+    - name: SQL 変換の適用
+      href: apply-sql-transformation.md
+    - name: 見つからないデータのクリーンアップ
+      href: clean-missing-data.md
+    - name: クリップの値
+      href: clip-values.md
+    - name: CSV への変換
+      href: convert-to-csv.md
+    - name: データセットへの変換
+      href: convert-to-dataset.md
+    - name: インジケーター値への変換
+      href: convert-to-indicator-values.md
+    - name: メタデータの編集
+      href: edit-metadata.md
+    - name: データをビンにグループ化する
+      href: group-data-into-bins.md
+    - name: データの結合
+      href: join-data.md
+    - name: データの正規化
+      href: normalize-data.md
+    - name: パーティションとサンプル
+      href: partition-and-sample.md
+    - name: 重複する行の削除
+      href: remove-duplicate-rows.md
+    - name: SMOTE
+      href: smote.md
+    - name: Select Columns Transform (列変換の選択)
+      href: select-columns-transform.md
+    - name: データセット内の列の選択
+      href: select-columns-in-dataset.md
+    - name: データの分割
+      href: split-data.md
+- name: 特徴選択
+  items:
+    - name: フィルターに基づく特徴選択
+      href: filter-based-feature-selection.md
+    - name: 順列の特徴量の重要度
+      href: permutation-feature-importance.md
+- name: 統計関数
+  items:
+    - name: データの集計
+      href: summarize-data.md
+- name: 機械学習のアルゴリズム
+  items:
+    - name: 回帰
+      items:
+        - name: 増幅デシジョン ツリーの回帰
+          href: boosted-decision-tree-regression.md
+        - name: デシジョン フォレスト回帰
+          href: decision-forest-regression.md
+        - name: 高速フォレスト分位点回帰
+          href: fast-forest-quantile-regression.md
+        - name: 線形回帰
+          href: linear-regression.md
+        - name: ニューラル ネットワーク回帰
+          href: neural-network-regression.md
+        - name: ポワソン回帰
+          href: poisson-regression.md
+    - name: クラスタリング
+      items:
+        - name: K-Means クラスタリング
+          href: k-means-clustering.md
+    - name: 分類
+      items:
+        - name: 多クラスのブースト デシジョン ツリー
+          href: multiclass-boosted-decision-tree.md
+        - name: 多クラス デシジョン フォレスト
+          href: multiclass-decision-forest.md
+        - name: 多クラスのロジスティック回帰
+          href: multiclass-logistic-regression.md
+        - name: 多クラス ニューラル ネットワーク
+          href: multiclass-neural-network.md
+        - name: One vs.All Multiclass
+          href: one-vs-all-multiclass.md
+        - name: One vs.One Multiclass
+          href: one-vs-one-multiclass.md
+        - name: 2 クラス平均化パーセプトロン
+          href: two-class-averaged-perceptron.md
+        - name: 2 クラス ブースト デシジョン ツリー
+          href: two-class-boosted-decision-tree.md
+        - name: 2 クラス デシジョン フォレスト
+          href: two-class-decision-forest.md
+        - name: 2 クラスのロジスティック回帰
+          href: two-class-logistic-regression.md
+        - name: 2 クラス ニューラル ネットワーク
+          href: two-class-neural-network.md
+        - name: 2 クラス サポート ベクター マシン
+          href: two-class-support-vector-machine.md
+- name: モデル トレーニング
+  items:
+    - name: クラスタリング モデルのトレーニング
+      href: train-clustering-model.md
+    - name: モデルのトレーニング
+      href: train-model.md
+    - name: PyTorch モデルのトレーニング
+      href: train-pytorch-model.md
+    - name: モデルのハイパーパラメーターの調整
+      href: tune-model-hyperparameters.md
+- name: モデルのスコアリングと評価
+  items:
+    - name: 変換の適用
+      href: apply-transformation.md
+    - name: クラスターへのデータの割り当て
+      href: assign-data-to-clusters.md
+    - name: モデルのクロス検証
+      href: cross-validate-model.md
+    - name: モデルの評価
+      href: evaluate-model.md
+    - name: 画像モデルのスコア付け
+      href: score-image-model.md
+    - name: モデルのスコア付け
+      href: score-model.md
+- name: Python 言語
+  items:
+    - name: Python モデルの作成
+      href: create-python-model.md
+    - name: Python スクリプトの実行
+      href: execute-python-script.md
+- name: R 言語
+  items:
+    - name: R スクリプトの実行
+      href: execute-r-script.md
+- name: テキスト分析
+  items:
+    - name: 単語からベクトルへの変換
+      href: convert-word-to-vector.md
+    - name: テキストからの N-gram 特徴抽出
+      href: extract-n-gram-features-from-text.md
+    - name: 特徴ハッシュ
+      href: feature-hashing.md
+    - name: Preprocess Text (テキストの前処理)
+      href: preprocess-text.md
+    - name: Latent Dirichlet Allocation
+      href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit モデルのスコアリング
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit モデルのトレーニング
+      href: train-vowpal-wabbit-model.md
+- name: Computer Vision
+  items:
+    - name: イメージ変換の適用
+      href: apply-image-transformation.md
+    - name: イメージ ディレクトリへの変換
+      href: convert-to-image-directory.md
+    - name: イメージ変換の初期化
+      href: init-image-transformation.md
+    - name: イメージ ディレクトリの分割
+      href: split-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
+- name: 推奨
+  items:
+    - name: レコメンダーの評価
+      href: evaluate-recommender.md
+    - name: Score SVD Recommender
+      href: score-svd-recommender.md
+    - name: ワイドかつディープなレコメンダーのスコア付け
+      href: score-wide-and-deep-recommender.md
+    - name: SVD レコメンダーのトレーニング
+      href: train-svd-recommender.md
+    - name: ワイドかつディープなレコメンダーのトレーニング
+      href: train-wide-and-deep-recommender.md
+- name: 異常検出
+  items:
+    - name: PCA ベースの異常検出
+      href: pca-based-anomaly-detection.md
+    - name: 異常検出モデルのトレーニング
+      href: train-anomaly-detection-model.md
+- name: Web サービス
+  items:
+    - name: Web サービスの入出力
+      href: web-service-input-output.md
+- name: コンポーネントのエラーとトラブルシューティング
+  href: designer-error-codes.md
+- name: グラフ検索のクエリ構文
+  href: graph-search-syntax.md

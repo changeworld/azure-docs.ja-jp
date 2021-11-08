@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 05/05/2021
-ms.openlocfilehash: 70429e7d9b1628f17672aaaa545c6c5bba3c30b1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.openlocfilehash: 0a18a2bb7efd673ff6e2d6460890e80d52609b02
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032690"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564843"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>事業継続とディザスター リカバリーのためのフェールオーバー
 

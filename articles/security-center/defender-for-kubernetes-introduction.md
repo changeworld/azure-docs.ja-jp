@@ -7,13 +7,12 @@ ms.date: 07/20/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8de5687d645dce485514957d7be490bbd502b85a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b75bf09ffce366ce593d450ffcdfa8993f3ae5b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055884"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463793"
 ---
 # <a name="introduction-to-microsoft-defender-for-kubernetes"></a>Microsoft Defender for Kubernetes の概要
 
@@ -93,7 +92,7 @@ Defender for Cloud でノードを監視するには、それらのノードで 
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Microsoft Defender for Kubernetes を含む Defender for Cloud の Kubernetes 保護について説明しました。 
 
