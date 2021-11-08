@@ -4,7 +4,7 @@ description: Azure Portal で Azure Active Directory レポートを使用して
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e35d3ffa98c2713f86bb56974670832e9fd416a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fcbe0727c655b06212551b9c4cb155679a7aa9d3
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137853"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995012"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 2. **[Azure Active Directory]** を選択し、**[監視]** セクションの **[サインイン]** を選択します。 
 3. ユーザー名またはオブジェクト識別子、アプリケーション名または日付のいずれかで指定されたフィルターを使って、エラーを絞り込みます。 さらに、**[状態]** ドロップダウンから **[失敗]** を選択して、失敗したサインインのみを表示します。 
 
-    ![結果をフィルター](./media/howto-troubleshoot-sign-in-errors/filters.png)
+    ![結果のフィルター処理](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
 4. 調査する必要がある失敗したサインインを特定します。 そのサインインを選択し、追加の詳細ウィンドウを開いて、失敗したサインインに関する詳細情報を確認します。 **[サインインのエラー コード]** と **[エラーの理由]** をメモします。 
 

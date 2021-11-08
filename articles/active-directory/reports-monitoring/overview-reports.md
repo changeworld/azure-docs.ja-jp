@@ -4,7 +4,7 @@ description: Azure Active Directory レポートの概要について説明し�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 09/30/2020
 ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b67e8f7ae06f9cb3becb849df41210cb6e7791d0
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 1e2f83a6b59c8f71ddd8a56a618bfad653f3b792
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113731722"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995031"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
 

@@ -3,15 +3,15 @@ title: Azure Web PubSub サービスのパフォーマンス ガイド
 description: Azure Web PubSub のパフォーマンスとベンチマークの概要。 容量を計画するときに考慮する必要がある主要メトリック。
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 5/12/2021
+ms.date: 11/08/2021
 ms.author: biqian
 author: bjqian
-ms.openlocfilehash: b27fa03f999e8f50f4f14c4ce1debd330c305d75
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: bfdba230408a25d7e463cf7c70ab84d0d5f8cf0f
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598301"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997554"
 ---
 # <a name="performance-guide-for-azure-web-pubsub-service"></a>Azure Web PubSub サービスのパフォーマンス ガイド
 

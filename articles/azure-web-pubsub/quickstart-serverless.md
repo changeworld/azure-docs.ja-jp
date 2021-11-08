@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 03/11/2021
-ms.openlocfilehash: 476b77cd2f319e5c082235ade3468ddb2fd34d44
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/08/2021
+ms.openlocfilehash: 14642eda290049d02cac18d967808b534516e1a4
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131069446"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131998046"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレスのリアルタイム チャット アプリを作成する
 

@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.author: markvi
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c684db974dfd939287cd15d63079693b4cf1d668
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 51bc001c5f6984e855adb11b1bdb7c938d2d5783
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008172"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995504"
 ---
 # <a name="quickstart-filter-your-azure-ad-audit-log"></a>クイックスタート: Azure AD 監査ログをフィルター処理する 
 

@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: 43fcc70bf88b7e037167a936ebd655b8877b394d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/08/2021
+ms.openlocfilehash: 981160fe8d0778d122dd7dbd92c0c27c468ff34a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820379"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997896"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>Azure Functions での Azure Web PubSub のトリガーとバインド
 
@@ -35,7 +35,7 @@ Web PubSub は、開発者がリアルタイムの機能と発行-サブスク�
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン プレリリースをインストールする | |
 | C# スクリプト、JavaScript、Python、PowerShell       | [拡張機能を明示的にインストールする]                    | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
@@ -533,6 +533,6 @@ module.exports = async function (context) {
 [azure_sub]: https://azure.microsoft.com/free/
 [samples_ref]: https://github.com/Azure/azure-webpubsub/tree/main/samples/functions
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [next step](includes/include-next-step.md)]

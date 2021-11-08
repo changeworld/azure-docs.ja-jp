@@ -4,7 +4,7 @@ description: Azure Active Directory ポータルの使用状況と分析情報�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 54bce5e839786862a6dac9aeb685dd364547a09a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9c7011a142f521b33fa8faea830cde90e1ae70a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685032"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995808"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの使用状況と分析情報のレポート
 

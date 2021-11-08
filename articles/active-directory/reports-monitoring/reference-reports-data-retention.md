@@ -4,7 +4,7 @@ description: Azure でさまざまな種類のレポート データが保存さ
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b53333ff9d61e6ee5bbc98bb4756199ca07486d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dc9658cddb17bf948fe562d806916d20bd28ba31
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630074"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995371"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD にレポート データが保存される期間
 
@@ -63,8 +63,8 @@ ms.locfileid: "128630074"
 
 | レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
-| 監査ログ             | 7 日        | 30 日             | 30 日             |
-| サインイン               | 7 日        | 30 日             | 30 日             |
+| 監査ログ             | 7 日間        | 30 日             | 30 日             |
+| サインイン               | 7 日間        | 30 日             | 30 日             |
 | Azure AD MFA の使用状況        | 30 日       | 30 日             | 30 日             |
 
 監査およびサインイン アクティビティ データは、Azure Monitor を使用して Azure ストレージ アカウントにルーティングすることで、上記で説明した既定の保有期間よりも長く保持することができます。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。

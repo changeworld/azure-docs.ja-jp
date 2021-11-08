@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
-ms.date: 03/23/2021
-ms.openlocfilehash: 58268750b1189552a31e2dc0b455bdd3eff4f5f0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 11/08/2021
+ms.openlocfilehash: c05112ec35197f8a17220b31e5032ae5d2469cf8
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166998"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995050"
 ---
 # <a name="use-private-endpoints-for-azure-web-pubsub-service"></a>Azure Web PubSub サービスでプライベート エンドポイントを使用する
 
@@ -55,7 +55,7 @@ Azure Web PubSub サービスの所有者は、[Azure portal](https://portal.azu
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、Azure Web PubSub サービスの 'foobar' の DNS リソース レコードは次のようになります。
 
-| 名前                                                  | Type  | 値                                                 |
+| 名前                                                  | 種類  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``foobar.webpubsub.azure.com``                        | CNAME | ``foobar.privatelink.webpubsub.azure.com``            |
 | ``foobar.privatelink.webpubsub.azure.com``            | A     | \<Azure Web PubSub service public IP address\>           |
@@ -64,7 +64,7 @@ Azure Web PubSub サービスの所有者は、[Azure portal](https://portal.azu
 
 'foobar' の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内のクライアントによって解決されると、次のようになります。
 
-| 名前                                                  | Type  | 値                                                 |
+| 名前                                                  | 種類  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``foobar.webpubsub.azure.com``                        | CNAME | ``foobar.privatelink.webpubsub.azure.com``            |
 | ``foobar.privatelink.webpubsub.azure.com``            | A     | 10.1.1.5                                              |

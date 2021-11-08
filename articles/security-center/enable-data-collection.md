@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 10/08/2021
+ms.date: 11/08/2021
 ms.author: memildin
-ms.openlocfilehash: 8d9fa0e724c20d0327d6b3907fee8e954deda41f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: de36239b769434fb9d3a61c70f0f79ed922687db
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131453100"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997535"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud からエージェントと拡張機能の自動プロビジョニングを構成する
 
@@ -29,7 +29,7 @@ Defender for Cloud を使用するには、Microsoft Azure のサブスクリプ
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | リリース状態:          | **機能**:自動プロビジョニングが一般提供 (GA)<br>**エージェントと拡張機能**: Azure VM 用 Log Analytics エージェントは GA、Microsoft Dependency エージェントはプレビュー、Kubernetes 用のポリシー アドオンは GA、ゲスト構成エージェントはプレビューです  |
 | 価格:                | Free                                                                                                                                                                                                                         |
-| サポートされる宛先: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure Arc マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes ノード<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
+| サポートされる宛先: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure マシン<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Arc マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes ノード<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
 | クラウド:                 | **機能**:<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government、Azure China 21Vianet<br>**エージェントと拡張機能**:<br>Azure VM 用 Log Analytics エージェントはすべてのクラウドで利用でき、 Kubernetes 用のポリシー アドオンはすべてのクラウドで利用でき、ゲスト構成エージェントは商用クラウドでのみ利用できます  |
 |                         |                                                                                                                                                                                                                              |
 

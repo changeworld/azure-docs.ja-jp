@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: quickstart
-ms.date: 08/06/2021
-ms.openlocfilehash: ac81c3422036abafc5e2d034e06e81e1f35d2e02
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/08/2021
+ms.openlocfilehash: 99045ab4675527f4f0a821025bf6f870d63bb296
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445393"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131998069"
 ---
 # <a name="quickstart-connect-to-the-azure-web-pubsub-instance-from-cli"></a>クイックスタート: CLI から Azure Web PubSub インスタンスに接続する
 

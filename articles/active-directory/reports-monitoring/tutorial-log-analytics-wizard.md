@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: markvi
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47df90a3f4948e69206a34dbeac187c2a67074f1
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 128e19d53f4083b8a37f42c1c70b79226eb6f15e
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514626"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997288"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 

@@ -482,7 +482,7 @@
               href: backup-azure-diagnostics-mode-data-model.md
     - name: オートメーション
       items:
-        - name: Azure Backup オートメーションの使用
+        - name: 概要
           href: automation-backup.md
         - name: Azure Backup 用に組み込まれた Azure Policy
           items:
@@ -524,7 +524,7 @@
           href: query-backups-using-azure-resource-graph.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: security-overview.md

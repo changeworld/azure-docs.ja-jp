@@ -4,7 +4,7 @@ description: ユーザーの確認済みドメインを変更したときに Azu
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.subservice: report-monitor
 ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18c25f183d996ceb0829cad6d16633be98aa0707
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87117416"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995713"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>トラブルシューティング:検証済みドメインの変更に関する監査データ 
 

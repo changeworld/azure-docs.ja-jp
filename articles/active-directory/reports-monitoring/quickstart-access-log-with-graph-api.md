@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.date: 06/03/2021
 ms.author: markvi
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 267c7ae20f9d424d03897e0ee31b7ad990ed261d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5bf12b1fd54ee8d3a7461418c2b8828070dfc926
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754089"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997307"
 ---
 # <a name="quickstart-access-azure-ad-logs-with-the-microsoft-graph-api"></a>クイック スタート: Microsoft Azure AD API を使用して Azure AD ログにアクセスする 
 

@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: quickstart
-ms.date: 08/06/2021
-ms.openlocfilehash: ebe8f22c5a77da0a09b69926e6a4b881b823a513
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/08/2021
+ms.openlocfilehash: 426b77d1e1a79c3a9818e028edcc79bcad5ef2ec
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444282"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131998084"
 ---
 # <a name="quickstart-create-a-web-pubsub-instance-with-the-azure-cli"></a>クイックスタート: Azure CLI を使用して Web PubSub インスタンスを作成する
 
@@ -43,7 +43,7 @@ ms.locfileid: "122444282"
 
 [!INCLUDE [Clean up resource](includes/cli-delete-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 実際のアプリケーションでは、さまざまな言語の SDK を使用して独自のアプリケーションを構築できます。 また、サーバーレス アプリケーションを簡単に構築するための関数の拡張機能も用意しています。
 

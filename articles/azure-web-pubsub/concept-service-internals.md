@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: a7adef1e705d14578cdec9bec7a947cc9be0db20
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 11/08/2021
+ms.openlocfilehash: ec1a0bfcc883e9434c8c80264c574c3630e395b0
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598330"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995088"
 ---
 #  <a name="azure-web-pubsub-service-internals"></a>Azure Web PubSub サービスの内部構造
 
@@ -248,7 +248,7 @@ Azure portal または CLI を使用して、アップストリームにイベ�
 - `code` が構成済みの Webhook URL を介して提供される単純認証。
 - AAD 認証。 
    - ポータル/CLI を介して、AAD の [アプリの登録] にクライアント シークレットを追加し、[クライアント シークレット] を Azure Web PubSub に提供します。
-   - ポータル/CLI を介して Azure Web PubSub に [ID](/azure/app-service/overview-managed-identity?tabs=dotnet) を提供します
+   - ポータル/CLI を介して Azure Web PubSub に [ID](../app-service/overview-managed-identity.md?tabs=dotnet) を提供します
 
 <a name="connection_manager"></a>
 

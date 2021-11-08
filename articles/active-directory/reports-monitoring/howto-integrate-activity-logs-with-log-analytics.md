@@ -4,7 +4,7 @@ description: Azure Active Directory のログを Azure Monitor ログと統合�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44599666f6da3fddcd6c3df36daf25faac807e6e
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 6e171720b3cf36d7ad2b074adadaa0e514779c3b
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429314"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995390"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 

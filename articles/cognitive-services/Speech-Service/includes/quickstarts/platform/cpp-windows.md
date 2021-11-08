@@ -11,14 +11,16 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a4af84611a43ef5520b48df8e8f5ddeefb30a1a2
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: e44b5f5c6a6e194d71b7495b6259f2e77810c35a
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502418"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131994619"
 ---
 このガイドでは、Windows デスクトップに C++ 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
+
+[!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

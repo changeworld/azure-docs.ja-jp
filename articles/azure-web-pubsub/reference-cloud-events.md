@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: 6503433f164e0b8153aa8832473fd06ad3959bae
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/08/2021
+ms.openlocfilehash: 52c9d3f303b657a437beba31e6e6945346397e54
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434864"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997364"
 ---
 #  <a name="cloudevents-extension-for-azure-web-pubsub"></a>Azure Web PubSub の CloudEvents 拡張機能
 
@@ -55,7 +55,7 @@ Webhook の検証は、[CloudEvents](https://github.com/cloudevents/spec/blob/v1
 
 ### <a name="attributes"></a>属性
 
-| 名前 | Type | 説明 | 例|
+| 名前 | 種類 | 説明 | 例|
 |--|--|--|--|
 | `userId` | `string` | 接続が認証されるユーザー | |
 | `hub` | `string` | 接続が属しているハブ | |
@@ -352,7 +352,7 @@ text data
 
 ```
 
-#### <a name="case-2-send-event-with-json-data"></a>ケース 2: JSON データを含むイベントを送信する:
+#### <a name="case-2-send-event-with-json-data"></a>ケース 2: JSON データでイベントを送信する:
 ```json
 {
     "type": "event",

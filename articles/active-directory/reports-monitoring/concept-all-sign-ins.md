@@ -4,7 +4,7 @@ description: プレビュー版の新機能を含む、Azure Active Directory �
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9455883bea37602e572a538862eaf5de9c17bbbc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 209b9f66a9d7d8d004162e465c85311886b423fa
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669419"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997212"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Azure Active Directory のサインイン ログ - プレビュー
 

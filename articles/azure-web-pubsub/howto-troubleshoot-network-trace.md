@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
-ms.date: 03/22/2021
-ms.openlocfilehash: f9c86cdf09e99d3cf5fc14ad6f6b72b8f36d9133
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 11/08/2021
+ms.openlocfilehash: 48209fc5f4876c097d30ce6bcf464ba40ee94a7a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963109"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997611"
 ---
 # <a name="how-to-collect-a-network-trace"></a>ネットワーク トレースの収集方法
 

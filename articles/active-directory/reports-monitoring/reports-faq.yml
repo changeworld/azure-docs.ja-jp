@@ -13,101 +13,91 @@ metadata:
   ms.devlang: na
   ms.topic: conceptual
   ms.subservice: report-monitor
-  ms.date: 05/12/2020
+  ms.date: 11/08/2021
   ms.author: markvi
-  ms.reviewer: dhanyahk
+  ms.reviewer: besiler
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: f74612097e1ad6edc059625c89f22003d15884af
-  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+  ms.openlocfilehash: 3fc47efc8fafc23d71b87e44c910d71533b1757d
+  ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130162880"
+  ms.lasthandoff: 11/08/2021
+  ms.locfileid: "131995333"
 title: Azure Active Directory レポートに関するよく寄せられる質問
 summary: "この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](overview-reports.md)」をご覧ください。 \n"
 sections:
 - name: 作業の開始
   questions:
   - question: >
-      現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。 何に切り替える必要がありますか。
+      I currently use the `https://graph.windows.net/<tenant-name>/reports/` endpoint APIs to pull Azure AD audit and integrated application usage reports into our reporting systems programmatically. What should I switch to?
     answer: >
-      [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と** と **サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
+      Look up the [API reference](https://developer.microsoft.com/graph/) to see how you can [use the APIs to access activity reports](concept-reporting-api.md). This endpoint has two reports (**Audit** and **Sign-ins**) which provide all the data you got in the old API endpoint. This new endpoint also has a sign-ins report with the Azure AD Premium license that you can use to get app usage, device usage, and user sign-in information.
   - question: >
-      現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。 何に切り替える必要がありますか。
-    answer: " [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityprotection-root) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。\n"
-  - question: >
-      Premium ライセンスはどうすれば取得できますか。
+      I currently use the `https://graph.windows.net/<tenant-name>/reports/` endpoint APIs to pull Azure AD security reports (specific types of detections, such as leaked credentials or sign-ins from anonymous IP addresses) into our reporting systems programmatically. What should I switch to?
     answer: >
-      Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
+      You can use the [Identity Protection risk detections API](../identity-protection/howto-identity-protection-graph-api.md) to access security detections through Microsoft Graph. This new format gives greater flexibility in how you can query data, with advanced filtering, field selection, and more, and standardizes risk detections into one type for easier integration into SIEMs and other data collection tools. Because the data is in a different format, you can't substitute a new query for your old queries. However, [the new API uses Microsoft Graph](/graph/api/resources/identityprotection-root), which is the Microsoft standard for such APIs as Microsoft 365 or Azure AD. So the work required can either extend your current Microsoft Graph investments or help you begin your transition to this new standard platform.
   - question: >
-      Premium ライセンスを取得した後、どのぐらいの期間でアクティビティ データが表示されるようになりますか。
+      How do I get a premium license?
     answer: >
-      無料ライセンスでのアクティビティ データが既にある場合、そのデータがすぐに表示されます。 データが何もなかった場合は、レポートにデータが表示されるまでに最大 3 日かかります。
+      See [Getting started with Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) to upgrade your Azure Active Directory edition.
   - question: >
-      Azure AD Premium ライセンスの取得後、前月のデータを確認可能か
+      How soon should I see activities data after getting a premium license?
     answer: >
-      最近 Premium バージョン (試用版を含む) に切り替えた場合、初めは 7 日間分までのデータを見ることができます。 データが蓄積されると、過去 30 日間のデータを確認できます。
+      If you already have activities data as a free license, then you can see it immediately. If you don’t have any data, then it will take up to 3 days for the data to show up in the reports.
   - question: >
-      Azure portal へのアクティビティ サインインを確認したり、API を通じてデータを取得したりするには、グローバル管理者である必要がありますか。
+      Can I see last month's data after getting an Azure AD premium license?
     answer: >
-      いいえ、テナントの **セキュリティ閲覧者** または **セキュリティ管理者** であっても、ポータルまたは API を通じてレポート データにアクセスできます。 もちろん、**グローバル管理者** でも、このデータにアクセスすることが可能です。
+      If you have recently switched to a Premium version (including a trial version), you can see data up to 7 days initially. When data accumulates, you can see data for the past 30 days.
+  - question: >
+      Do I need to be a global administrator to see the activity sign-ins to the Azure portal or to get data through the API?
+    answer: >
+      No, you can also access the reporting data through the portal or through the API if you are a **Security Reader** or **Security Administrator** for the tenant. Of course, **Global Administrators** will also have access to this data.
 - name: アクティビティ ログ
   questions:
-  - question: "Azure portal でのアクティビティ ログ (監査およびサインイン) のデータ保持期間はどのぐらいですか。 \n"
+  - question: "What is the data retention for activity logs (Audit and Sign-ins) in the Azure portal? \n"
     answer: >
-      詳細については、[Azure AD レポートのデータ保持ポリシー](reference-reports-data-retention.md)に関するページを参照してください。
+      For more information, see [data retention policies for Azure AD reports](reference-reports-data-retention.md).
   - question: >
-      自分のタスクを完了した後、アクティビティ データが表示されるまでどのぐらい時間がかかりますか。
+      How long does it take until I can see the activity data after I have completed my task?
     answer: >
-      監査ログの待機時間は 15 分から 1 時間です。 サインイン アクティビティ ログは 15 分から、一部のレコードについては最大で 2 時間かかることがあります。
+      Audit logs have a latency ranging from 15 minutes to an hour. Sign-in activity logs can take from 15 minutes to up to 2 hours for some records.
   - question: >
-      Azure portal を通じて Microsoft 365 のアクティビティ ログ情報を取得できますか。
+      Can I get Microsoft 365 activity log information through the Azure portal?
     answer: >
-      Microsoft 365 のアクティビティ ログと Azure AD アクティビティ ログではディレクトリ リソースの大部分が共有されていますが、Microsoft 365 のアクティビティ ログをすべて閲覧する場合は、[Microsoft 365 管理センター](https://admin.microsoft.com) にアクセスして Office 365 アクティビティ ログ情報を取得する必要があります。
+      Even though Microsoft 365 activity and Azure AD activity logs share a lot of the directory resources, if you want a full view of the Microsoft 365 activity logs, you should go to the [Microsoft 365 admin center](https://admin.microsoft.com) to get Office 365 Activity log information.
   - question: >
-      Microsoft 365 のアクティビティ ログの情報を取得するには、どの API を使えばよいですか。
+      Which APIs do I use to get information about Microsoft 365 Activity logs?
     answer: >
-      API を通じて Microsoft 365 アクティビティ ログにアクセスするには、[Microsoft 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用します。
+      Use the [Microsoft 365 Management APIs](/office/office-365-management-api/office-365-management-apis-overview) to access the Microsoft 365 Activity logs through an API.
   - question: >
-      Azure portal からレコードをいくつまでダウンロードすることができますか。
+      How many records I can download from Azure portal?
     answer: >
-      レコードは Azure portal から 5000 個までダウンロードできます。 レコードは *最新の順* に並べ替えられており、既定では最新の 5000 個のレコードを取得します。
-- name: リスクの高いサインイン
+      You can download up to 5000 records from the Azure portal. The records are sorted by *most recent* and by default, you get the most recent 5000 records.
+- name: サインイン ログ
   questions:
   - question: >
-      Identity Protection にリスク検出がありますが、サインイン レポートの中に該当するサインインが見つかりません。 これは想定される動作ですか。
+      I see .XXX in part of the IP address from a user in my sign in logs. Why is that happening?
     answer: >
-      はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
-  - question: >
-      Azure portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。
-    answer: >
-      **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク検出に関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になるリスク検出情報は確認できません。
-  - question: >
-      サインインとリスクの高いサインイン レポートでは、IP アドレスはどのように計算されていますか。
-    answer: "IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから IP アドレスを発行するモバイル プロバイダーや VPN などの要因によって、さらに複雑になります。 現在の Azure AD レポートでは、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。 \n"
-  - question: >
-      リスク検出 "追加のリスクが検出されたサインイン" は何を意味していますか。
-    answer: >
-      環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバー限定の検出で、サインインに対するプレースホルダーとして機能します。
+      Azure AD may redact part of an IP address in the sign in logs to protect user privacy when a user may not belong to the tenant viewing the logs. This happens in two cases: first, during cross tenant sign ins, such as when a CSP technician signs into a tenant that CSP manages. Second, when our service was not able to determine the user's identity with sufficient confidence to be sure the user belongs to the tenant viewing the logs.
 - name: 条件付きアクセス
   questions:
   - question: >
-      この機能の更新点を教えてください。
+      What's new with this feature?
     answer: >
-      すべてのサインイン レポートで、条件付きアクセス ポリシーのトラブルシューティングを実行できるようになりました。 条件付きアクセスの状態を確認し、サインインに適用されたポリシーの詳細と各ポリシーの結果を調べることができます。
+      Customers can now troubleshoot Conditional Access policies through all sign-ins report. Customers can review the Conditional Access status and dive into the details of the policies that applied to the sign-in and the result for each policy.
   - question: >
-      開始するには?
-    answer: "作業を開始するには:\n\n* [Azure portal](https://portal.azure.com) でサインイン レポートに移動します。\n* トラブルシューティングを行うサインインをクリックします。\n* **[条件付きアクセス]** タブに移動します。このタブでは、サインインに影響を与えたすべてのポリシーと各ポリシーの結果を確認できます。 \n    \n"
+      How do I get started?
+    answer: "To get started:\n\n* Navigate to the sign-ins report in the [Azure portal](https://portal.azure.com).\n* Click on the sign-in that you want to troubleshoot.\n* Navigate to the **Conditional Access** tab.\nHere, you can view all the policies that impacted the sign-in and the result for each policy. \n    \n"
   - question: >
-      条件付きアクセスの状態として表示されるすべての値を教えてください。
-    answer: "条件付きアクセスの状態には、次の値が表示される可能性があります。\n\n* **適用されていません**:スコープ内にユーザーとアプリがある条件付きアクセス ポリシーがなかったことを意味します。 \n* **成功**:スコープ内にユーザーとアプリがある条件付きアクセス ポリシーがあり、条件付きアクセス ポリシーが正常に満たされたことを意味します。 \n* **失敗**:サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。\n    \n"
+      What are all possible values for the Conditional Access status?
+    answer: "Conditional Access status can have the following values:\n\n* **Not Applied**: This means that there was no Conditional Access policy with the user and app in scope. \n* **Success**: This means that there was a Conditional Access policy with the user and app in scope and Conditional Access policies were successfully satisfied. \n* **Failure**: The sign-in satisfied the user and application condition of at least one Conditional Access policy and grant controls are either not satisfied or set to block access.\n    \n"
   - question: >
-      条件付きアクセス ポリシーの結果として表示されるすべての値を教えてください。
-    answer: "条件付きアクセス ポリシーには、次の結果が表示される可能性があります。\n\n* **成功**:ポリシーは正常に満たされました。\n* **失敗**:ポリシーは満たされませんでした。\n* **適用されていません**:ポリシー条件が満たされていなかった可能性があります。\n* **無効**:無効状態のポリシーのためです。 \n    \n"
+      What are all possible values for the Conditional Access policy result?
+    answer: "A Conditional Access policy can have the following results:\n\n* **Success**: The policy was successfully satisfied.\n* **Failure**: The policy was not satisfied.\n* **Not applied**: This might be because the policy conditions did not meet.\n* **Not enabled**: This is due to the policy in disabled state. \n    \n"
   - question: >
-      すべてのサインイン レポートのポリシー名が CA のポリシー名と一致しません。 なぜでしょうか。
+      The policy name in the all sign-in report does not match the policy name in CA. Why?
     answer: >
-      すべてのサインイン レポートのポリシー名は、サインイン時の条件付きアクセス ポリシー名に基づいています。 後で (つまりサインイン後に) ポリシー名を更新した場合、CA のポリシー名と一致しなくなることがあります。
+      The policy name in the all sign-in report is based on the Conditional Access policy name at the time of the sign-in. This can be inconsistent with the policy name in CA if you updated the policy name later, that is, after the sign-in.
   - question: >
-      条件付きアクセス ポリシーのためにサインインがブロックされましたが、サインイン アクティビティ レポートにはサインインは成功したと表示されます。 なぜでしょうか。
-    answer: 現在、条件付きアクセスが適用されている場合、サインイン レポートに Exchange ActiveSync シナリオの正確な結果が表示されないことがあります。 レポートのサインイン結果にサインインの成功と表示されても、条件付きアクセス ポリシーのために実際にはサインインが失敗している場合があります。
+      My sign-in was blocked due to a Conditional Access policy, but the sign-in activity report shows that the sign-in succeeded. Why?
+    answer: Currently the sign-in report may not show accurate results for Exchange ActiveSync scenarios when Conditional Access is applied. There can be cases when the sign-in result in the report shows a successful sign-in, but the sign-in actually failed due to a Conditional Access policy.

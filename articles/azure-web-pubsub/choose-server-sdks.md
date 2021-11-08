@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: reference
-ms.date: 03/11/2021
-ms.openlocfilehash: 7a586af353b4812195ec90c0fa21fddbec77d91d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 11/08/2021
+ms.openlocfilehash: fada4d4a6f2c66f4a247734b5601a80ed96989d4
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110066"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997269"
 ---
 # <a name="choose-the-server-sdks"></a>サーバー SDK を選択する
 

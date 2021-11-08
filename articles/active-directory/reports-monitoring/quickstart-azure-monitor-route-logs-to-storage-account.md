@@ -4,7 +4,7 @@ description: Azure Active Directory のログをストレージ アカウント�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/05/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50ef779dd65696ae62b6b08b04e65ca19291944
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: f170cd4f3530ea7391d2fbd039263c29540321f8
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113233424"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995466"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>チュートリアル:Azure AD のログを Azure ストレージ アカウントにアーカイブする
 

@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
-ms.date: 03/23/2021
-ms.openlocfilehash: 73c31051a177dc16711048bec984a90c786a28f2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 11/08/2021
+ms.openlocfilehash: e89366e924ae7f079816980e6fcbefd6366eb3b0
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166995"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997763"
 ---
 # <a name="how-to-rotate-access-key-for-azure-web-pubsub-service"></a>Azure Web PubSub サービスのアクセス キーのローテーション方法
 

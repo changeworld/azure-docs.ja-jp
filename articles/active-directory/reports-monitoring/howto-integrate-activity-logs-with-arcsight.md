@@ -4,7 +4,7 @@ description: Azure Monitor を使用して Azure Active Directory のログを A
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3eab54c00b94f4a7f076bb94d517f7c558f9dc31
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89230519"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131996302"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する
 
@@ -33,7 +33,7 @@ ms.locfileid: "89230519"
 ## <a name="prerequisites"></a>前提条件
 
 この機能を使用するには、次が必要です。
-* Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
+* Azure AD のアクティビティ ログを含む Azure Event Hub。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 * ArcSight Syslog NG Daemon SmartConnector (SmartConnector) または ArcSight Load Balancer の構成済みインスタンス。 イベントが ArcSight Load Balancer に送信されると、その結果、Load Balancer によってイベントは SmartConnector に送信されます。
 
 [ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)をダウンロードして開いてください。 このガイドには、ArcSight SmartConnector for Azure Monitor のインストールと構成に必要な手順が記載されています。 

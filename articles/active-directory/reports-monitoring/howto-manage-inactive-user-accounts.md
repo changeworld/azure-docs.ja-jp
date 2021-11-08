@@ -4,7 +4,7 @@ description: 使われなくなった Azure AD のユーザー アカウント�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fbc6789fe83f07e0a22239e93a08eb9bd8cf4f
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: efc82f409c6d05ea6441747e718ec2ea3c1429a6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830767"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131994974"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 

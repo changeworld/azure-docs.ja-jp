@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
-ms.date: 01/27/2021
-ms.openlocfilehash: ed48335b0417cacce9a1e408de06c0c2a9ec9b44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/08/2021
+ms.openlocfilehash: 85ccd066fb51331575cc17cbeabbe3eb0c0ba4ec
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751115"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997402"
 ---
 # <a name="what-is-azure-web-pubsub-service"></a>Azure Web PubSub サービスとは 
 
@@ -63,3 +63,7 @@ Azure Web PubSub サービスを使用してプログラミングを行うには
 - **WebSocket サブプロトコルを使用してクライアント側のみで Pub/Sub を実行する** - Azure Web PubSub サービスは、承認されたクライアントが便利な方法で他のクライアントにパブリッシュできるようにする WebSocket サブプロトコルを提供します。
 - **提供された SDK を使用して、セルフホスト アプリ サーバーで WebSocket 接続を管理する** - Azure Web PubSub サービスが提供する C#、JavaScript、Java、Python の SDK により、接続へのメッセージのブロードキャスト、いくつかのグループへの接続の追加、接続の終了など、WebSocket 接続を容易に管理できます。
 - **REST API を介してサーバーからクライアントにメッセージを送信する** - Azure Web PubSub サービスに用意されている REST API を通じて、アプリケーションは、接続されているクライアントに対し、REST 対応の任意のプログラミング言語でメッセージをポストすることができます。
+
+## <a name="next-steps"></a>次のステップ
+
+[!INCLUDE [next step](includes/include-next-step.md)]

@@ -4,7 +4,7 @@ description: ダウンロードした Azure Active Directory アクティビテ�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5003d7b644a0c75401a17ed6a37f31acd8180aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9084d30ad8fe978defa7f336030535f7b4a97a1a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85608077"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995409"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>ダウンロードした Azure Active Directory アクティビティ ログにすべてのデータが表示されません。
 
@@ -42,5 +42,5 @@ Azure portal でアクティビティ ログをダウンロードする場合は
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Active Directory レポートの FAQ](reports-faq.md)
+* [Azure Active Directory レポートの FAQ](reports-faq.yml)
 
