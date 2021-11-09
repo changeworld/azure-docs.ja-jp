@@ -1,15 +1,15 @@
 ---
-author: hrasheed-msft
+author: jasonwhowell
 ms.service: hdinsight
 ms.topic: include
-ms.date: 11/02/2020
-ms.author: hrasheed
-ms.openlocfilehash: 8e2b0cacdeb44b1b3ff90fdc9525d910892b4dfe
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 11/07/2021
+ms.author: jasonh
+ms.openlocfilehash: f256836cb2e1fc0d0d5734b95bca4eec718b4483
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280381"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132040368"
 ---
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
