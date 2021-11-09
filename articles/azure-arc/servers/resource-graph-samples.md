@@ -1,15 +1,15 @@
 ---
 title: Azure Arc 対応 サーバー用の Azure Resource Graph サンプル クエリ
 description: Azure Arc 対応サーバー用のサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用して、Azure Arc 対応サーバー関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 5e73647300e29650d31b6cb4dae08d99488fc32e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 7e630fc7c931e835a1f8f9ec154192ca1a13b704
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541209"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132052983"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-arc-enabled-servers"></a>Azure Arc 対応 サーバー用の Azure Resource Graph サンプル クエリ
 

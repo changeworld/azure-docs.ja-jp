@@ -1,24 +1,24 @@
 ---
 title: Azure Spring Cloud におけるブルーグリーン デプロイ戦略
 description: このトピックでは、Azure Spring Cloud におけるブルーグリーン デプロイへの 2 つのアプローチについて説明します。
-author: yevster
-ms.author: yebronsh
+author: barbkess
+ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 3ed83d0bcc1998b63738eb586acaf83b3a281ee6
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 194529a03a493ec22d22260576a678ab07401f4c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838791"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056570"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Azure Spring Cloud におけるブルーグリーン デプロイ戦略
 
 この記事では、Azure Spring Cloud でのブルーグリーン デプロイのサポートについて説明します。
 
-Azure Spring Cloud (Standard レベル以上) では、すべてのアプリについて 2 つのデプロイが許可されており、いずれか 1 つのみが運用環境のトラフィックを受信します。 このパターンは、通常、「ブルーグリーン デプロイ」と呼ばれます。 Azure Spring Cloud では、ブルーグリーン デプロイが、[継続的デリバリー (CD)](/azure/devops/learn/what-is-continuous-delivery) パイプラインおよび厳格な自動テストと共にサポートされているため、信頼性の高いアジャイル アプリケーション デプロイが可能になります。
+Azure Spring Cloud (Standard レベル以上) では、すべてのアプリについて 2 つのデプロイが許可されており、いずれか 1 つのみが運用環境のトラフィックを受信します。 このパターンは、通常、「ブルーグリーン デプロイ」と呼ばれます。 Azure Spring Cloud では、ブルーグリーン デプロイが、[継続的デリバリー (CD)](/devops/deliver/what-is-continuous-delivery) パイプラインおよび厳格な自動テストと共にサポートされているため、信頼性の高いアジャイル アプリケーション デプロイが可能になります。
 
 ## <a name="alternating-deployments"></a>交互のデプロイ
 

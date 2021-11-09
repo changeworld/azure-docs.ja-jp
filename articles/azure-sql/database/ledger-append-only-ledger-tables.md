@@ -1,27 +1,26 @@
 ---
 title: Azure SQL Database 追加専用台帳テーブル
 description: この記事では、Azure SQL Database における追加専用台帳テーブルのスキーマとビューに関する情報を提供します。
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: a23190552239af387fa2af362592347c0c46b900
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 595b42bb924d67a5db3a21d44c670dbcd25c61d7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666733"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055797"
 ---
 # <a name="azure-sql-database-append-only-ledger-tables"></a>Azure SQL Database 追加専用台帳テーブル
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階にあります。
 
 追加専用台帳テーブルでは、テーブルに対する `INSERT` 操作のみを許可し、データベース管理者などの特権ユーザーが従来の[データ操作言語](/sql/t-sql/queries/queries)操作でデータを変更することができないように保証されています。 追加専用台帳テーブルは、セキュリティ情報イベント管理システムや、ブロックチェーンからデータベースにデータを複製する必要があるブロックチェーン システムなど、レコードの更新と削除を行わないシステムに最適です。 追加専用テーブルに対する `UPDATE` と `DELETE` の操作がないため、[更新可能な台帳テーブル](ledger-updatable-ledger-tables.md)の場合のように、対応する履歴テーブルは必要ありません。
 
