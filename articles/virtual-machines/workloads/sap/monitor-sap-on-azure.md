@@ -1,19 +1,19 @@
 ---
 title: SAP on Azure の監視 (プレビュー) | Microsoft Docs
 description: SAP on Azure を監視する方法については、こちらでご確認ください。
-author: Ajayan1008
+author: mamccrea
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.topic: article
 ms.custom: subject-monitoring
 ms.date: 10/13/2021
-ms.author: v-hborys
-ms.openlocfilehash: 4f90fc00dc895617796cc478835690c931a55f51
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.author: mamccrea
+ms.openlocfilehash: cf68247c9d259aff6ffe6d2e7cd9be76eea6f237
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004865"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063272"
 ---
 # <a name="monitor-sap-on-azure-preview"></a>SAP on Azure の監視 (プレビュー)
 

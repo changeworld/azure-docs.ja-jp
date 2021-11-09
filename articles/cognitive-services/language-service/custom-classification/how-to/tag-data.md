@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: bcfa81dc4cf65252179ecb6411ce67f2ba9bdce7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 390e5fabe5c23c3b258e898eab0691f88c1828c0
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092202"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057178"
 ---
 # <a name="tag-text-data-for-training-your-model"></a>モデルをトレーニングするためにテキスト データにタグを付ける 
 
@@ -28,7 +28,7 @@ ms.locfileid: "131092202"
 * 構成済みの Azure Blob Storage アカウントで[正常に作成されたプロジェクト](create-project.md) 
 * ストレージ アカウントに[アップロードされた](create-project.md#prepare-training-data)テキスト データ。
 
-詳しくは、[アプリケーション開発ライフサイクル](../overview.md#application-development-lifecycle)に関する記事をご覧ください。
+詳しくは、[アプリケーション開発ライフサイクル](../overview.md#project-development-lifecycle)に関する記事をご覧ください。
 
 <!--Tagging your data will let you [train your model](train-model.md), [evaluate it](train-model.md), and use it to [classify text](call-api.md).-->
 

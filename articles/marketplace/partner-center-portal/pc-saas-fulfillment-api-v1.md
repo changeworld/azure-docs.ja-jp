@@ -7,20 +7,18 @@ ms.topic: reference
 ms.date: 05/04/2020
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 1216db7fc81fd990a0a582549c2bb1f8fcc502fc
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 3a7e56f70a27b44ecaace86cf48cb7c2faafab65
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070924"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060056"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment API バージョン 1 (非推奨)
 
 > [!WARNING]
-> この最初のバージョンの SaaS Fulfillment API は非推奨になっています。代わりに [SaaS Fulfillment API V2](./pc-saas-fulfillment-api-v2.md) をご利用ください。  この最初のバージョンの API は、既存のパブリッシャーにサービスを提供するためにのみ、現在も維持されています。 
+> この最初のバージョンの SaaS Fulfillment API は非推奨になっています。代わりに [SaaS Fulfillment API V2](./pc-saas-fulfillment-apis.md) をご利用ください。  この最初のバージョンの API は、既存のパブリッシャーにサービスを提供するためにのみ、現在も維持されています。
 
 このバージョンの API のドキュメントは使用できなくなりました。 アクセスする必要があると思われる場合は、saas-api-v1@microsoft.com にお問い合わせください。
 
-新しく開発する場合は常に、V1 を既に使用している場合であっても、[V2 バージョンの API](./pc-saas-fulfillment-api-v2.md) に移行してください。 このバージョンは、今後完全に非推奨となる予定です。
-
-
+新しく開発する場合は常に、V1 を既に使用している場合であっても、[V2 バージョンの API](./pc-saas-fulfillment-apis.md) に移行してください。 このバージョンは、今後完全に非推奨となる予定です。

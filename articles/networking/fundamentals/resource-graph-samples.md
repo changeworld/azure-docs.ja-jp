@@ -1,18 +1,18 @@
 ---
 title: Azure ネットワーク用の Azure Resource Graph サンプル クエリ
 description: Azureネットワークのサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure ネットワーク関連のリソースとプロパティにアクセスする方法を示してます。
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 3a0fce06e97cba1e4ca5b786ac1842212b306912
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: eb8d54096dca7a4cd53379654c40c7a17f2449cd
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535161"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062569"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-networking"></a>Azure ネットワーク用の Azure Resource Graph サンプル クエリ
 

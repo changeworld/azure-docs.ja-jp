@@ -3,19 +3,17 @@ title: 翻訳状態の取得
 titleSuffix: Azure Cognitive Services
 description: 翻訳状態の取得メソッドは、ドキュメント翻訳要求の状態を返します。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: e6ec2289b272ae4c9d7d0c8eaca84b05d718908c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f892f9d5e681b7895f7e3d9dc053a9abf0ff00e1
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451143"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061984"
 ---
 # <a name="get-translation-status"></a>翻訳状態の取得
 
@@ -70,7 +68,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 成功した応答では、次の情報が返されます。
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |id|string|操作の ID。|
 |createdDateTimeUtc|string|操作が作成された日時。|
@@ -87,7 +85,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

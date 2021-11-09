@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 8a0e7ab7fad8b0da025f143ab2401e5740972ec7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cd03abdf01d11fa3b6de869a7d95feafff0ca393
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078258"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060360"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する
 
@@ -81,7 +81,7 @@ Azure AD ログインが有効化されているシンプルな Web サイトを
 
 ## <a name="resolve-the-marketplace-purchase-identification-token"></a>マーケットプレース購入 ID トークンを解決する
 
-購入者がランディング ページにリダイレクトされると、URL パラメーターにトークンが追加されます。 このトークンは、Azure AD によって発行されたトークンやサービス間認証に使用されるアクセス トークンとは別のもので、[SaaS Fulfillment API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) 解決呼び出しによってサブスクリプションの詳細を取得するための入力として使用されます。 SaaS Fulfillment API へのすべての呼び出しと同様に、サービス間の要求の認証は、アプリのサービス間認証用 Azure AD アプリケーション ID ユーザーに基づくアクセス トークンを使用して行われます。
+購入者がランディング ページにリダイレクトされると、URL パラメーターにトークンが追加されます。 このトークンは、Azure AD によって発行されたトークンやサービス間認証に使用されるアクセス トークンとは別のもので、[SaaS Fulfillment API](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) 解決呼び出しによってサブスクリプションの詳細を取得するための入力として使用されます。 SaaS Fulfillment API へのすべての呼び出しと同様に、サービス間の要求の認証は、アプリのサービス間認証用 Azure AD アプリケーション ID ユーザーに基づくアクセス トークンを使用して行われます。
 
 > [!NOTE]
 > ほとんどの場合、2 つ目のシングル テナント アプリケーションからこの呼び出しを行うことをお勧めします。 この記事で前に紹介した「[2 つの Azure AD アプリを使用して、運用環境のセキュリティを向上する](#use-two-azure-ad-apps-to-improve-security-in-production)」を参照してください。
@@ -92,7 +92,7 @@ SaaS Fulfillment API を使用してアプリケーションを認証するに�
 
 ### <a name="call-the-resolve-endpoint"></a>解決エンドポイントを呼び出す
 
-SaaS Fulfillment API では、[解決](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)エンドポイントを実装します。これを呼び出すことで、マーケットプレース トークンの有効性を確認することや、サブスクリプションに関する情報を返すことができます。
+SaaS Fulfillment API では、[解決](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription)エンドポイントを実装します。これを呼び出すことで、マーケットプレース トークンの有効性を確認することや、サブスクリプションに関する情報を返すことができます。
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>ID トークンにエンコードされている要求から情報を読み取る
 

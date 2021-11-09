@@ -5,24 +5,23 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
+author: rothja
+ms.author: jroth
 ms.reviewer: vanto
-ms.date: 07/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: 7684cc6ecff0d4e36fec0d7df54edd8602aa145f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/09/2021
+ms.openlocfilehash: 272138471499cbd62085301df8e518ea47a7ddc3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665496"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058848"
 ---
 # <a name="verify-a-ledger-table-to-detect-tampering"></a>台帳テーブルを検証して改ざんを検出する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階にあります。
 
 この記事では、Azure SQL Database 台帳テーブル内のデータの整合性を検証します。 [SQL Database でデータベースを作成](ledger-create-a-single-database-with-ledger-enabled.md)するときに **[自動ダイジェスト ストレージを有効にする]** を選択していた場合、Azure portal の指示に従って、[Query Editor](connect-query-portal.md) 内のデータベース台帳を検証するために必要な Transact-SQL (T-SQL) スクリプトを自動的に生成してください。 それ以外の場合、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) を使用して、T-SQL の指示に従ってください。
 

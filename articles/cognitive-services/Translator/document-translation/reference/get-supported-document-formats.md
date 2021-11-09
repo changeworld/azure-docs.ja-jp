@@ -3,19 +3,17 @@ title: サポートされるドキュメント形式の取得メソッド
 titleSuffix: Azure Cognitive Services
 description: サポートされるドキュメント形式の取得メソッドでは、サポートされているドキュメント形式の一覧が返されます。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: 8100bca5d3628e571dc088de9d47a42e4035f109
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 24ae8fe4ab215f6037726c8c88680f96b47ad99b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583610"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056722"
 ---
 # <a name="get-supported-document-formats"></a>サポートされるドキュメントの形式の取得
 
@@ -59,7 +57,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 成功した応答では、次の情報が返されます。
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |value|FileFormat []|FileFormat [] には、下に示す詳細が含まれます。|
 |value.contentTypes|string[]|この形式がサポートされているコンテンツの種類。|
@@ -70,7 +68,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
  |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: eae333dfd399e33063b2b18777c45ea2c1b89a54
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 73513e90f37a3d003351604d119612306ba66277
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091498"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062740"
 ---
 # <a name="improve-model-performance"></a>モデルのパフォーマンスを向上させる
 
@@ -32,7 +32,7 @@ ms.locfileid: "131091498"
 * [モデルの評価の詳細](view-model-evaluation.md)を調べて、モデルのパフォーマンスを確認した。
 * 評価に使われる[評価メトリック](../concepts/evaluation.md)を十分理解した
 
-詳しくは、[アプリケーション開発ライフサイクル](../overview.md#application-development-lifecycle)に関する記事をご覧ください。
+詳しくは、[アプリケーション開発ライフサイクル](../overview.md#project-development-lifecycle)に関する記事をご覧ください。
 
 ## <a name="review-test-set-predictions"></a>テスト セットの予測を確認する
 

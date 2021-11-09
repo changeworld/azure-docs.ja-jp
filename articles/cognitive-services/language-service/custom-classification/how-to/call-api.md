@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 16779224c26e45abe4960463a958085275bb2bfb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ba640d5d0177c812ad25a76353bd89f2e696d81
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090016"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054716"
 ---
 # <a name="deploy-a-model-and-classify-text-using-the-runtime-api"></a>モデルをデプロイし、ランタイム API を使ってテキストを分類する
 
@@ -30,7 +30,7 @@ ms.locfileid: "131090016"
 * [モデルの評価の詳細](view-model-evaluation.md)を調べて、モデルのパフォーマンスを確認した。
 * (省略可能) パフォーマンスが十分でない場合、モデルを[改善した](improve-model.md)。 
 
-詳しくは、[アプリケーション開発ライフサイクル](../overview.md#application-development-lifecycle)に関する記事をご覧ください。
+詳しくは、[アプリケーション開発ライフサイクル](../overview.md#project-development-lifecycle)に関する記事をご覧ください。
 
 ## <a name="deploy-your-model"></a>モデルをデプロイする
 

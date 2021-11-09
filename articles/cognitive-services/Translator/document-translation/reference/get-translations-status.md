@@ -3,19 +3,17 @@ title: 翻訳状態の取得
 titleSuffix: Azure Cognitive Services
 description: 翻訳状態の取得メソッドは、送信されたバッチ要求の一覧と各要求の状態を返します。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/22/2021
-ms.author: v-jansk
-ms.openlocfilehash: 5ed4c565ad784bb50ebbc464d4229bfcabb7a5d7
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: d16de5ccc4beddef8296211d7e5f0c154f10776d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540696"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059017"
 ---
 # <a name="get-translations-status"></a>翻訳状態の取得
 
@@ -54,7 +52,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-|Query parameter (クエリ パラメーター)|/|必須|型|説明|
+|Query parameter (クエリ パラメーター)|/|必須|Type|説明|
 |--- |--- |--- |---|---|
 |$maxpagesize|query|×|integer int32|$maxpagesize は、1 つのページで返される項目の最大数です。 $top 経由で要求された項目が多い場合 (または $top が指定されていない場合に返される項目が多い場合)、次のページへのリンク @nextLink が含まれます。 クライアントは、$maxpagesize の設定を指定することによって、特定のページ サイズのサーバー駆動のページングを要求できます。 指定したページ サイズがサーバーの既定のページ サイズよりも小さい場合、サーバーでは、この設定を優先する必要があります。|
 |$orderBy|query|×|array|コレクションの並べ替えクエリ (例: ' CreatedDateTimeUtc asc '、' CreatedDateTimeUtc desc ')|
@@ -91,7 +89,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 成功した応答では、次の情報が返されます。
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |@nextLink|string|次のページの URL。 追加のページがない場合は Null。|
 |value|TranslationStatus[]|TranslationStatus [] 配列を以下に示します。|
@@ -110,7 +108,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

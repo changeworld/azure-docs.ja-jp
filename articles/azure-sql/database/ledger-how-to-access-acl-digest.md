@@ -1,27 +1,26 @@
 ---
 title: Azure Confidential Ledger に格納されているダイジェストにアクセスする
 description: Azure SQL Database 台帳で、Azure Confidential Ledger に格納されているダイジェストにアクセスします。
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 7a5253879daf3aaa9551b91a91c38135d29be10e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: f011494412b6f9cf1ac186f171b62fe82d02aaaa
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730361"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061741"
 ---
 # <a name="access-the-digests-stored-in-confidential-ledger"></a>Confidential Ledger に格納されているダイジェストにアクセスする
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階にあります。
 
 この記事では、[Azure Confidential Ledger](../../confidential-ledger/index.yml) に格納された [Azure SQL Database 台帳](ledger-overview.md)のダイジェストにアクセスし、エンドツーエンドのセキュリティと整合性を保証する方法について説明します。 この記事を通して、格納された情報にアクセスし、その整合性を確認する方法について説明します。
 

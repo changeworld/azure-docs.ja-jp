@@ -3,19 +3,17 @@ title: ドキュメント状態の取得
 titleSuffix: Azure Cognitive Services
 description: ドキュメント状態の取得メソッドは、バッチ ドキュメント翻訳要求内のすべてのドキュメントの状態を返します。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: 355e692d6091cee443608c2239173c873bb8e1a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4da15c603028524c0501819c0ecbc3884080ca6f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453547"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053464"
 ---
 # <a name="get-documents-status"></a>ドキュメント状態の取得
 
@@ -50,12 +48,12 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-|Query parameter (クエリ パラメーター)|/|必須|型|説明|
+|Query parameter (クエリ パラメーター)|/|必須|Type|説明|
 |--- |--- |--- |--- |--- |
 |id|path|True|string|操作 ID。|
 |$maxpagesize|query|×|integer int32|$maxpagesize は、1 つのページで返される項目の最大数です。 $top 経由で要求された項目が多い場合 (または $top が指定されていない場合に返される項目が多い場合)、次のページへのリンク @nextLink が含まれます。 クライアントは、$maxpagesize の設定を指定することによって、特定のページ サイズのサーバー駆動のページングを要求できます。 指定したページ サイズがサーバーの既定のページ サイズよりも小さい場合、サーバーでは、この設定を優先する必要があります。|
 |$orderBy|query|×|array|コレクションの並べ替えクエリです (例: ' CreatedDateTimeUtc asc '、' CreatedDateTimeUtc desc ')。|
-|$skip|query|×|integer int32|$skip は、指定した並べ替え方法に基づいて、サーバーによって保持されているレコードの一覧からスキップするレコードの数を示します。 既定では、降順の開始時刻で並べ替えを行います。 クライアントは $top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。 クライアントによって $top と $skip の両方が指定されている場合き、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 注: サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。|
+|$skip|query|×|integer int32|$skip は、指定した並べ替え方法に基づいて、サーバーによって保持されているレコードの一覧からスキップするレコードの数を示します。 既定では、降順の開始時刻で並べ替えを行います。 クライアントは $top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。 クライアントによって $top と $skip の両方が指定されている場合、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 注: サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。|
 |$top|query|×|integer int32|$top は、ユーザーがすべてのページで返すレコードの総数を示します。 クライアントは $top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。 クライアントによって $top と $skip の両方が指定されている場合、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 注: サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。|
 |createdDateTimeUtcEnd|query|×|string date-time|項目を取得する終了日時。|
 |createdDateTimeUtcStart|query|×|string date-time|項目を取得する開始日時。|
@@ -90,7 +88,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 成功した応答では、次の情報が返されます。
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |@nextLink|string|次のページの URL。 追加のページがない場合は Null。|
 |value|DocumentStatus []|下に一覧表示されている個々のドキュメントの詳細な状態。|
@@ -106,7 +104,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

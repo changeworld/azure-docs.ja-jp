@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9db002f50675c45a0eeb7bb7e213d0dc65b64ab8
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 00d00c8dc5419b524eb71172adfb5271905d668f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006624"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057786"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する
 
@@ -79,7 +79,11 @@ API Management にキー コンテナー証明書を追加するには、次の�
     > ID には、キー コンテナーから証明書を取得および一覧表示するためのアクセス許可が必要です。 キー コンテナーへのアクセスをまだ構成していない場合は、必要なアクセス許可を使用して ID を自動的に構成できるように、API Management によってプロンプトが表示されます。
 1. **[追加]** を選択します。
 
+
+
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="キー コンテナー証明書の追加":::
+    
+1. **[保存]** を選択します。
 
 ## <a name="upload-a-certificate"></a>証明書のアップロード
 
@@ -95,6 +99,9 @@ API Management にクライアント証明書をアップロードするには�
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="クライアント証明書のアップロード":::
 
+
+1. **[保存]** を選択します。
+
 証明書がアップロードされると、 **[証明書]** ウィンドウに表示されます。 証明書が多数ある場合は、[ゲートウェイ認証](#configure-an-api-to-use-client-certificate-for-gateway-authentication)にクライアント証明書を使用するように API を構成するために、必要な証明書の拇印をメモします。
 
 > [!NOTE]
@@ -105,8 +112,8 @@ API Management にクライアント証明書をアップロードするには�
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. **[API]** で **[API]** を選択します。
 1. 一覧から API を選びます。 
-2. **[デザイン]** タブで、 **[バックエンド]** セクションのエディター アイコンを選択します。
-3. **[ゲートウェイ資格情報]** で **[クライアント証明書]** を選択し、ドロップダウンから証明書を選択します。
+1. **[デザイン]** タブで、 **[バックエンド]** セクションのエディター アイコンを選択します。
+1. **[ゲートウェイ資格情報]** で **[クライアント証明書]** を選択し、ドロップダウンから証明書を選択します。
 1. **[保存]** を選択します。
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="ゲートウェイ認証にクライアント証明書を使用する":::

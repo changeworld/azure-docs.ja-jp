@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.date: 10/08/2021
 ms.custom: template-tutorial, devx-track-azurepowershell
-ms.openlocfilehash: 52c5f10b0a41ec2362af09c972f29ed079ae70d7
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: a1ea898dd246977bbb7284a18349a265efd7655d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808079"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063120"
 ---
 # <a name="tutorial-manage-disks-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用してディスクを管理する
 
@@ -450,14 +450,6 @@ OS ディスクまたはデータ ディスクのサイズを変更するには�
 1. まず、`Get-AzVM` コマンドレットを使用してディスクがアタッチされている VM を選択します。
 
     ```azurepowershell-interactive
-    $vm = Get-AzVM `
-       -ResourceGroupName $azResourceGroup `
-       -Name $azVMName
-    ```
-
-1. `Get-AzDisk` コマンドレットを使用して、削除するディスクを選択します。
-
-     ```azurepowershell-interactive
     $vm = Get-AzVM `
        -ResourceGroupName $azResourceGroup `
        -Name $azVMName

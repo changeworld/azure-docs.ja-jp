@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996a3f5f48685630a6946a5708c26cfecaf3b0a0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7a2d152e18f039b88957a0dab32f5d451642d6bd
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724843"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058716"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリケーションの登録のアクセス許可
 
@@ -46,7 +46,7 @@ ms.locfileid: "121724843"
 
 #### <a name="microsoftdirectoryapplicationscreate"></a>microsoft.directory/applications/create
 
-このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
+このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。
 
 両方のアクセス許可が割り当てられている場合、/create アクセス許可が優先されます。 /createAsOwner アクセス許可では作成者を最初の所有者として自動的に追加しませんが、Graph API または PowerShell コマンドレットを使用する場合は、アプリの登録の作成時に所有者を指定できます。
 

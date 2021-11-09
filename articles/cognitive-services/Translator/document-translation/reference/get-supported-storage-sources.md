@@ -3,19 +3,17 @@ title: サポートされるストレージ ソースの取得メソッド
 titleSuffix: Azure Cognitive Services
 description: サポートされるストレージ ソースの取得メソッドでは、サポートされているストレージ ソースの一覧が返されます。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: b0cd1c179de36147169239ab50785a9d93dfa5bb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4dae58196bda8978d503593241f3e74c9ef14c69
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458761"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056779"
 ---
 # <a name="get-supported-storage-sources"></a>サポートされるストレージ ソースの取得
 
@@ -58,14 +56,14 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 ### <a name="successful-get-supported-storage-sources-response"></a>サポートされるストレージ ソースの取得の成功した応答
 一覧の基本データ型が、サポートされるストレージ ソースの取得 API で返されます。
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |value|string []|オブジェクトの一覧です。|
 
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

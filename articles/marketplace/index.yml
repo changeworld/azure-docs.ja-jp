@@ -10,12 +10,12 @@ metadata:
   author: mingshen-ms
   ms.author: mingshen
   ms.date: 06/01/2021
-  ms.openlocfilehash: dd346b0bed5ea7ecbc8be848c525d63c1ea3e96c
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 6b7a93faca9a6515f97ffbcf9aef7d22c14fcc13
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131442409"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132055039"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -116,7 +116,7 @@ landingContent:
     - text: API 前提条件
       url: cloud-partner-portal-api-prerequisites.md
     - text: SaaS Fulfillment API
-      url: partner-center-portal/pc-saas-fulfillment-api-v2.md
+      url: partner-center-portal/pc-saas-fulfillment-apis.md
     - text: Marketplace の測定サービス API
       url: marketplace-metering-service-apis-faq.yml
     - text: Reporting API (PDF)

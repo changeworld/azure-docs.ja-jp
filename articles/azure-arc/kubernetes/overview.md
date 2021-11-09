@@ -4,16 +4,14 @@ services: azure-arc
 ms.service: azure-arc
 ms.date: 05/25/2021
 ms.topic: overview
-author: mlearned
-ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 7a3d2c4465961984371abf17bff98d33f7b185a8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ff4a2c74e34dad29287e32dd33be5133d735c67
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812568"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056361"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes とは
 

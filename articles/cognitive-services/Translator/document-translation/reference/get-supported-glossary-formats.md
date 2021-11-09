@@ -3,19 +3,17 @@ title: サポートされる用語集の形式の取得メソッド
 titleSuffix: Azure Cognitive Services
 description: サポートされる用語集の形式の取得メソッドでは、サポートされている用語集の形式の一覧が返されます。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: ae21b4e510dc7e1f95303c562f58032758717d56
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 7e81f333b9291d58bd014f91a9d22b38d844466b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540709"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057254"
 ---
 # <a name="get-supported-glossary-formats"></a>サポートされる用語集の形式の取得
 
@@ -62,7 +60,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 一覧の基本データ型が、サポートされる用語集の形式 API で返されます。
 
-|Name|型|説明|
+|Name|Type|説明|
 |--- |--- |--- |
 |value|FileFormat []|FileFormat [] には、下に示す詳細が含まれます。|
 |value.contentTypes|string []|この形式がサポートされているコンテンツの種類。|
@@ -73,7 +71,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

@@ -3,8 +3,8 @@ title: クイック スタート:Azure DevOps Starter を使用して Python 用
 description: DevOps Starter を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 services: vsts
 documentationcenter: vs-devops-build
-author: mlearned
-ms.author: mlearned
+author: georgewallace
+ms.author: gwallace
 manager: gwallace
 ms.date: 03/24/2020
 ms.prod: devops
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.custom: mvc, devx-track-python, mode-api
-ms.openlocfilehash: d2c739c78b4cbbc39cc41653972238f42f509708
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3f6fda9367ba27acbd47fcb316541d1b3d50aafc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131016475"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061646"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Azure DevOps Starter を使用して Python 用の CI/CD パイプラインを作成する
 

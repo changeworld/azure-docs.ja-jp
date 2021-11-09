@@ -5,20 +5,20 @@ ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
-author: mlearned
+author: georgewallace
 manager: gwallace
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: mlearned
+ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 3da2e116f1f58ca7a5c75da49f64bb8fc046e3ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ada4087555504d7bef052c85053e2815b1d77a6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548497"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061572"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Azure DevOps Starter を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
 

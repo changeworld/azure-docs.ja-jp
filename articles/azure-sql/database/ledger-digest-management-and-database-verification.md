@@ -1,27 +1,26 @@
 ---
 title: ダイジェストの管理とデータベースの検証
 description: この記事では、Azure SQL Database での台帳データベースのダイジェスト管理とデータベース検証について説明します。
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 8e6fbbdcb4b6db8ed7e9549b8776010cf01894e4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: df0b87543c213b77a3cf47a7e9020f7f3c0e1866
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744867"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059585"
 ---
 # <a name="digest-management-and-database-verification"></a>ダイジェストの管理とデータベースの検証
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階にあります。
 
 Azure SQL Database 台帳では、*前方整合性* と呼ばれるデータ整合性の形式が提供されており、台帳テーブルのデータに対するデータ改ざんに関する証拠が示されます。 たとえば、残高が `x` の値に更新された台帳テーブルで銀行取引が発生し、攻撃者が後でデータを変更して `x` から `y` に残高を変えた場合、データベースの検証によって、この改ざんアクティビティが検出されます。  
 

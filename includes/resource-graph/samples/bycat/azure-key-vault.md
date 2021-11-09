@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: 74451e0c2e969d458676edc236325207449948f9
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: c4dc18831709b384386792d80fb3263c03a5f54b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536271"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060196"
 ---
 ### <a name="count-key-vault-resources"></a>Key Vault リソースの数
 

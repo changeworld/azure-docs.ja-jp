@@ -1,27 +1,26 @@
 ---
 title: 台帳が有効化されたテーブルを使用した Azure SQL Database 監査イベント
 description: Azure SQL Database 台帳監査機能の概要
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: d032b311809449d35a017fdd053fb97447b8479c
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 18e3c5ef5d9cb0316118e38f2ffb8dccc8c06fd7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666745"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061872"
 ---
 # <a name="azure-sql-database-audit-events-with-ledger-enabled-tables"></a>台帳が有効化されたテーブルを使用した Azure SQL Database 監査イベント
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階にあります。
 
 台帳が有効になっているテーブルを使用してフォレンジック アクティビティを実行すると、データが台帳ビューとデータベース台帳にキャプチャされます。 その他のアクション ID も SQL 監査ログに追加されます。 次の表は、これらの新しい監査ログ イベントの概要を示しています。 イベントがトリガーされる条件は、各表の後にあります。
 

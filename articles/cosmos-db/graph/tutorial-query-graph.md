@@ -6,15 +6,15 @@ ms.author: mansha
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 11/08/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11bc5a7f0880930e5680289a013c68dd2d04ee6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac6aef98b06c485bc16777b130c39f9006e6ffff
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121788163"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060605"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>チュートリアル: Gremlin を使って Azure Cosmos DB Gremlin API を照会する
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -26,7 +26,7 @@ Azure Cosmos DB [Gremlin API](graph-introduction.md) は [Gremlin](https://githu
 > [!div class="checklist"]
 > * Gremlin を使用してデータのクエリを実行する
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
 クエリを実行するには、Azure Cosmos DB アカウントがあり、コンテナーにグラフ データがあることが必要です。 どちらもない場合には、 [5 分でできるクイックスタート](create-graph-dotnet.md)か[開発者向けチュートリアル](tutorial-query-graph.md)を実行して、アカウントを作成し、データベースにデータを設定します。 次のクエリを実行するには、[Gremlin コンソール](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)、またはお気に入りの Gremlin ドライバーを使用します。
 
@@ -46,12 +46,12 @@ Gremlin の `has` ステップと `hasLabel` ステップを使用してフィ�
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
-## <a name="projection"></a>プロジェクション
+## <a name="projection"></a>Projection
 
 `values` ステップを使用してクエリ結果の特定のプロパティを投影できます。
 
 ```
-g.V().hasLabel('person').values('firstName')
+g.V().hasLabel('person').values('name')
 ```
 
 ## <a name="find-related-edges-and-vertices"></a>関連するエッジと頂点を検索する

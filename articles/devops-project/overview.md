@@ -3,7 +3,7 @@ title: Azure 用 DevOps Starter の概要 | Microsoft Docs
 description: DevOps Starter の価値について説明します
 services: devops-project
 documentationcenter: ''
-author: mlearned
+author: georgewallace
 manager: gwallace
 editor: mlearned
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/24/2020
-ms.author: mlearned
-ms.openlocfilehash: 7c36539ef5be503b2cb7e14047e596522ef8e962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: gwallace
+ms.openlocfilehash: 04fe33686d640ab84c0bdb532486a15b5582a612
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330650"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057140"
 ---
 # <a name="overview-of-devops-starter"></a>DevOps Starter の概要
 

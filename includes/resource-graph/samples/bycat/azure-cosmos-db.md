@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: bb5da3ac6ae5b0b1ccd6105049321df12c65ec3e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 80a57afb104a9f77221d9e4143c85a472e2f2877
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536284"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058424"
 ---
 ### <a name="list-azure-cosmos-db-with-specific-write-locations"></a>特定の書き込み場所を含む Azure Cosmos DB を一覧表示する
 

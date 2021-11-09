@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/27/2021
-ms.openlocfilehash: 7836792245a9618e2ac8168af697c0151f8e123b
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 21bb6df47c255da5ffc463d3d7f42e61da6de1cc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080771"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063139"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>SaaS オファーをテストしてコマーシャル マーケットプレースに公開する方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "129080771"
 
 #### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
 
-1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
 
 1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
 
@@ -83,7 +83,7 @@ ms.locfileid: "129080771"
 
 1. SaaS オファーでコマーシャル マーケットプレースの測定サービスを使用した[従量制課金](./partner-center-portal/saas-metered-billing.md)がサポートされている場合は、「[マーケットプレースの従量制課金 API](marketplace-metering-service-apis.md#development-and-testing-best-practices)」で詳しく説明されているテストのベスト プラクティスをレビューして、それに従ってください。
 
-1. オファーを公開する前に、「[Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing)」のテスト手順をレビューして従って、オファーが正常に統合されていることを確認してください。
+1. オファーを公開する前に、「[Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2](./partner-center-portal/pc-saas-fulfillment-webhook.md#development-and-testing)」のテスト手順をレビューして従って、オファーが正常に統合されていることを確認してください。
 
 1. オファー検証手順によって警告が表示された場合は、 **[オファーの概要]** ページに **[検証レポートの表示]** リンクが表示されます。 **[公開]** ボタンを選択する前に、レポートを確認し、問題があれば解決してください。 そうしないと、認定されず、オファーの公開が遅延する可能性があります。
 

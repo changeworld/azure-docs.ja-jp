@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 用の Azure Resource Graph サンプル クエリ
 description: Azure Cosmos DB のサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用し、Azure Cosmos DB 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: f8b54e2cd612073187f8b9ffa6e68af7f0dcdc57
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 44e774c19b5faff368557ec0875e2cea59a5a752
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538383"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058425"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Resource Graph サンプル クエリ
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

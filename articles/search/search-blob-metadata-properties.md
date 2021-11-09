@@ -2,18 +2,18 @@
 title: コンテンツ メタデータ プロパティ
 titleSuffix: Azure Cognitive Search
 description: ドキュメントのメタデータ プロパティを使用すると、検索インデックス内のフィールドにコンテンツを提供したり、実行時にインデックス作成動作を通知する情報を提供したりすることができます。 この記事では、Azure Cognitive Search でサポートされているメタデータ プロパティの一覧を示します。
+author: nitinme
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/22/2021
-ms.openlocfilehash: d77a0b53d14705d73b83d25ffe3355925355fdf1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: c6f02a50160d650f44e9793dbfa59e0dbf58ebbc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556624"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055571"
 ---
 # <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Azure Cognitive Search で使用されるコンテンツ メタデータ プロパティ
 

@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 08/24/2021
+ms.date: 11/09/2021
 ms.author: kengaderdus
 author: kengaderdus
 manager: CelesteDG
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 661801e8eb184e8368cb5156d7f7b7f71612f8f2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 665f914d19f0ab73c8ed6ab6af75ba485c1d35bf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040153"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053372"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 
@@ -58,8 +58,8 @@ API エンドポイントは、[サンプル](api-connector-samples.md#api-conne
 
 1. **[保存]** を選択します。
 
-## <a name="the-request-sent-to-your-api&quot;></a>API に送信される要求
-API コネクタによってユーザー属性 (&quot;要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
+## <a name="the-request-sent-to-your-api"></a>API に送信される要求
+API コネクタによってユーザー属性 ("要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
 
 **要求の例**
 ```http
@@ -76,6 +76,7 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
+ "objectId": "11111111-0000-0000-0000-000000000000"
  "givenName":"John",
  "surname":"Smith",
  "jobTitle":"Supplier",
@@ -146,6 +147,7 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
+ "objectId": "11111111-0000-0000-0000-000000000000",
  "givenName":"John",
  "lastName":"Smith",
  "step": "PostFederationSignup",
@@ -199,6 +201,7 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
+ "objectId": "11111111-0000-0000-0000-000000000000",
  "givenName":"John",
  "surname":"Smith",
  "jobTitle":"Supplier",
@@ -681,7 +684,7 @@ REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイ
 
 ::: zone-end
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ::: zone pivot="b2c-user-flow"
 

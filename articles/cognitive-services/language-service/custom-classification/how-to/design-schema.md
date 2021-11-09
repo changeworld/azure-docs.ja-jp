@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 69846496c05716cc00ca782c979bc3c970537b0b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 220995b286824b2daf2eb79c6b0ec917c5549263
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017552"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061965"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema"></a>データを準備してスキーマを定義する方法
 
-カスタム分類モデルを作成するには、それをトレーニングするための高品質なデータが必要です。 この記事では、スキーマの定義と共に、データの選択と準備を行う方法について説明します。 スキーマは、モデルの実行時にテキストを分類するために必要なクラスを定義するものであり、[カスタム分類アプリケーションを開発する](../overview.md#application-development-lifecycle)最初の手順です。
+カスタム分類モデルを作成するには、それをトレーニングするための高品質なデータが必要です。 この記事では、スキーマの定義と共に、データの選択と準備を行う方法について説明します。 スキーマは、モデルの実行時にテキストを分類するために必要なクラスを定義するものであり、[カスタム分類アプリケーションを開発する](../overview.md#project-development-lifecycle)最初の手順です。
 
 
 ## <a name="data-selection"></a>データの選択

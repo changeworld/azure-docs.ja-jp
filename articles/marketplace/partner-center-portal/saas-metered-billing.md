@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 104d8665a1a7754475e0bcad14546775335c389f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 7021f75bb63e7cb7e7467cf7827a365d81b09bd6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131260"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059621"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>コマーシャル マーケットプレースの測定サービスを使用した SaaS の従量制課金
 
@@ -23,7 +23,7 @@ ms.locfileid: "130131260"
 従量制課金を使用するには、まず SaaS オファーが次の条件を満たすことが必要です。
 
 - [コマーシャル マーケットプレースでの SaaS オファーの作成](../create-new-saas-offer.md)に関する記事に記載されているように、[Microsoft オファーを通じた販売](../plan-saas-offer.md#listing-options)のオファー要件をすべて満たしていること。
-- お客様がプロビジョニングしてオファーに接続するための [SaaS Fulfillment API](./pc-saas-fulfillment-api-v2.md) と統合していること。  
+- お客様がプロビジョニングしてオファーに接続するための [SaaS Fulfillment API](./pc-saas-fulfillment-apis.md) と統合していること。  
 - お客様に対してサービスの課金を行う際、**定額** 料金モデルが構成されていること。  ディメンションは、定額料金モデルに対するオプションの拡張機能です。 
 
 次に、SaaS オファーは、[コマーシャル マーケットプレースの測定サービス API](../marketplace-metering-service-apis.md) と統合して、Microsoft に請求対象のイベントを通知することができます。

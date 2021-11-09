@@ -3,19 +3,17 @@ title: 翻訳取り消しメソッド
 titleSuffix: Azure Cognitive Services
 description: 翻訳取り消しメソッドでは、現在処理中またはキューに入っている操作がキャンセルされます。
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/20/2021
-ms.author: v-jansk
-ms.openlocfilehash: eb8411717d0229b13571284176da7ccc113cf828
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 8bf718da42dbd29c864736209cf441b03f3c9e1b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540742"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059262"
 ---
 # <a name="cancel-translation"></a>翻訳の取り消し
 
@@ -70,7 +68,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 成功した応答では、次の情報が返されます。
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |id|string|操作の ID。|
 |createdDateTimeUtc|string|操作が作成された日時。|
@@ -87,7 +85,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|型|説明|
+|名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

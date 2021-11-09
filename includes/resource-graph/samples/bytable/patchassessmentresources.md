@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: fc6cbc6a257c4fd70f7cd3696b00a4b110bc42ec
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 2e32d477a71a820c37f2cfbb848bd50a9ba3e263
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535972"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058128"
 ---
 ### <a name="count-of-os-update-installation-done"></a>OS 更新プログラムのインストールが完了した回数
 

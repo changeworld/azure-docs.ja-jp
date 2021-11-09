@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: 698120a0609e1c070348e5b0a6cf3c447bd0b16c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 13d21b6c31de377be11891e0b4aee93509926f66
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308848"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058164"
 ---
 ### <a name="combine-results-from-two-queries-into-a-single-result"></a>2 つのクエリの結果を結合して 1 つの結果にする
 

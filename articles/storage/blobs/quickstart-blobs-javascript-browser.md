@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: bea5af6656aacd18805627f471d7227c2d1077bd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4fdcb48783a586baffe9bdeeec74c4d0a055a3e7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616842"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060985"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -73,10 +73,10 @@ Azure portal で、自分のストレージ アカウントを選択します。
 
 |設定  |値  | 説明 |
 |---------|---------|---------|
-| **許可されたオリジン** | **\** _ | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `_` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
+| **許可されたオリジン** | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | **許可されたメソッド** | **DELETE**、**GET**、**HEAD**、**MERGE**、**POST**、**OPTIONS**、**PUT** | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |
-| **許可されたヘッダー** | **\** _ | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `_` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
-| **公開されるヘッダー** | **\** _ | アカウントによって許可される応答ヘッダーの一覧です。 値を `_` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
+| **許可されたヘッダー** | * | ストレージ アカウントによって許可される要求ヘッダー (プレフィックス付きヘッダーを含む) の一覧を定義します。 値を `*` に設定すると、すべてのヘッダーがアクセスできるようになります。 |
+| **公開されるヘッダー** | * | アカウントによって許可される応答ヘッダーの一覧です。 値を `*` に設定すると、アカウントは任意のヘッダーを送信できるようになります。 |
 | **最長有効期間** | **86400** | ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間 (秒)。 値を *86,400* にすると、キャッシュが丸 1 日保持されます。 |
 
 この表の値を各フィールドに入力したら、 **[保存]** ボタンをクリックします。

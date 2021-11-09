@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: cd314cc4da6a8b9eba7009b4bb17b653bbac6fc5
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ac58d96461e6c03b45b1cdf5a990355ff1b7efb6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308896"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058155"
 ---
 ### <a name="controls-secure-score-per-subscription"></a>サブスクリプションに基づきセキュリティ スコアを制御する
 

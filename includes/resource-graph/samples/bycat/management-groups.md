@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: ee681f05ada3c850863004f6375c726e8b1d6b19
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: f635ddb4951e6d1d013bf3530bbd808b15307e6b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305854"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056809"
 ---
 ### <a name="count-of-subscriptions-per-management-group"></a>管理グループあたりのサブスクリプションの数
 

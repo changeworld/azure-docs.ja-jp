@@ -1,20 +1,20 @@
 ---
 title: 'チュートリアル: Azure DevOps Starter を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする'
 description: Azure DevOps Starter を利用すると、Azure を使い始めるのが簡単になります。 DevOps Starter を使用すると、Azure Cosmos DB を使用する Node.js アプリを簡単な手順で Windows Web アプリにデプロイできます。
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
+author: georgewallace
 ms.custom: devx-track-js
-ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff811be8f4651bde7059fe1d575c0ac703570830
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548701"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060455"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
 

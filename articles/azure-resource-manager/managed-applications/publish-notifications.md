@@ -2,15 +2,13 @@
 title: マネージド アプリと通知
 description: マネージド アプリケーション インスタンスでの作成、更新、削除、およびエラーに関する通知を受け取るように、Webhook エンドポイントを使用して Managed Application を構成します。
 ms.topic: conceptual
-ms.author: ilahat
-author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 229abeb71a580444525a314f648ee09452585336
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ef87fc014b2870602aa05b758afaffdde046f659
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971927"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060852"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
 

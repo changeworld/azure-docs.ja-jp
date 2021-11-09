@@ -1,27 +1,26 @@
 ---
 title: Azure SQL Database 台帳の制約
 description: Azure SQL Database の台帳機能の制約
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 94bb5c606527cec34afc978323eb456ff4a8753e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 684ca40f1469b826029f1b0bcc51e33ae0d9c9a5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727070"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053692"
 ---
 # <a name="limitations-for-azure-sql-database-ledger"></a>Azure SQL Database 台帳の制約
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階にあります。
 
 この記事では、Azure SQL Database で使用される元帳テーブルの制限を概説します。
 

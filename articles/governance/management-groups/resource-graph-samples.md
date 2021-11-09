@@ -1,15 +1,15 @@
 ---
 title: 管理グループ用の Azure Resource Graph のサンプル クエリ
 description: 管理グループ用の サンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して管理グループの詳細にアクセスする方法を示します。
-ms.date: 08/31/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: cdb6c31b2c4adada2862766e11ee1c7907850417
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 1f02341fdea3ffbaf88da46bdb27df90774a27f9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305855"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056810"
 ---
 # <a name="azure-resource-graph-sample-queries-for-management-groups"></a>管理グループ用の Azure Resource Graph のサンプル クエリ
 

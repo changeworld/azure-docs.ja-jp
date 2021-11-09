@@ -8,12 +8,12 @@ metadata:
   ms.date: 03/19/2021
   author: saasguide
   ms.author: souchak
-  ms.openlocfilehash: 4092ad53e67cc7ed526f66b4e5214a9bb9a1aeda
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: b16e1b8e014e28b1ec02f93a23a48aa6df57dbde
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130043303"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132056173"
 title: SaaS Fulfillment API についてよく寄せられる質問
 summary: この記事では、Azure ユーザーが SaaS オファーにサブスクライブできるようにするための Microsoft コマーシャル マーケットプレースの統合要件をいくつか説明します。
 sections:
@@ -58,7 +58,7 @@ sections:
       ![ユーザーのサブスクリプション フロー](media/saas-metering-service-integration-flow-a.png)
 
 
-      SaaS オファーのライフサイクルでトランザクション シナリオを処理するための API コントラクトの詳細については、[SaaS Fulfillment API](pc-saas-fulfillment-api-v2.md) に関するページを参照してください。
+      SaaS オファーのライフサイクルでトランザクション シナリオを処理するための API コントラクトの詳細については、[SaaS Fulfillment API](pc-saas-fulfillment-apis.md) に関するページを参照してください。
   - question: >
       ユーザーが Azure でサブスクライブする SaaS オファーはどのように確認しますか?
     answer: >

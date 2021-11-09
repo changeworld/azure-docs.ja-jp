@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 84e55aa971eae4c67bc6ec2dcaa4618b55c8f737
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: f420934489c6e5e65b050ce30ded8fb922dfdfe8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134110"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061364"
 ---
 # <a name="marketplace-metered-billing-apis"></a>マーケットプレースの従量制課金 API
 
@@ -72,7 +72,7 @@ TLS バージョン 1.2 バージョンは、HTTPS 通信の最小バージョ�
 
 Azure Application Managed Apps プランの場合、`resourceId` は、マネージド アプリの `resource group Id`です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
 
-SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)」をご覧ください。
+SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions)」をご覧ください。
 
 ### <a name="responses"></a>Responses
 
@@ -170,7 +170,7 @@ Forbidden. 認証トークンが指定されていない、無効である、ま
 >[!NOTE]
 >要求本文では、リソース ID の意味がカスタム メーターを発行する SaaS アプリと Azure マネージド アプリで異なります。 SaaS アプリのリソース ID は `resourceID` です。 Azure Application Managed Apps プランのリソース ID は `resourceUri` です。
 
-SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)」をご覧ください。
+SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions)」をご覧ください。
 
 *SaaS アプリの要求本文の例:*
 

@@ -6,14 +6,14 @@ ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 5651981c663ba5d119a5ae4089ab3f693dad1552
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 07e999f70effc7141d66e01c8fea8686c6c133c7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646458"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056988"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL Database 台帳
 

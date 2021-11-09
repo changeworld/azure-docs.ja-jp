@@ -1,15 +1,15 @@
 ---
 title: Azure Service Health 用の Azure Resource Graph サンプル クエリ
 description: Azure Service Health のサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure Service Health 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 9d7e039ee1429f86fdb610eeea6bc6ffc40a81a9
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: af38e4ef9ad392197f0fa4215cc8a65609256cce
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535529"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053047"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-service-health"></a>Azure Service Health 用の Azure Resource Graph サンプル クエリ
 
@@ -19,7 +19,7 @@ ms.locfileid: "123535529"
 
 [!INCLUDE [azure-resource-graph-samples-cat-servicehealth](../../includes/resource-graph/samples/bycat/azure-service-health.md)]
 
-## <a name="resource-health"></a>リソース ヘルス
+## <a name="resource-health"></a>リソース正常性
 
 [!INCLUDE [azure-resource-graph-samples-cat-resourcehealth](../../includes/resource-graph/samples/bycat/resource-health.md)]
 

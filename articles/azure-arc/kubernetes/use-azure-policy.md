@@ -4,16 +4,14 @@ services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: article
-author: mlearned
-ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: 986af919b4cd61f6f180232598a74561c00a6954
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9713f57207942c9fed5613b298ea83865ef685bd
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799797"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059433"
 ---
 # <a name="use-azure-policy-to-apply-gitops-configurations-at-scale"></a>Azure Policy を使用して GitOps 構成を大規模に適用する
 
