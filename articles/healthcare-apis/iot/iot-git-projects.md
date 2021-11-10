@@ -1,57 +1,57 @@
 ---
-title: IoT GitHub関連するプロジェクト - Azure Healthcare API
-description: IoT コネクタのすべてのオープン ソース (GitHub) リポジトリを一覧表示する
+title: IoT コネクタの関連 GitHub プロジェクト-Azure の医療 api
+description: IoT コネクタのすべてのオープンソース (GitHub) リポジトリの一覧表示
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 10/28/2021
 ms.author: jasteppe
-ms.openlocfilehash: f82e1f2bacd0ae863b4ddac19a16a45e52ff173a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 85fa6aff2e9c1702813c1c865d7f5e85c315c343
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445953"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156469"
 ---
 # <a name="open-source-projects"></a>オープンソース プロジェクト
 
-IoT コネクタを使用してさまざまな用途にサービスをデプロイするソース コードと手順を提供する、GitHub 上のオープンソース プロジェクトを確認してください。 
+ソースコードを提供し、IoT コネクタを使用したさまざまな用途のためにサービスをデプロイするための手順を示す GitHub で、オープンソースプロジェクトを確認してください。 
 
-## <a name="iot-connector-github-projects"></a>IoT コネクタとGitHubプロジェクト
+## <a name="iot-connector-github-projects"></a>IoT コネクタ GitHub プロジェクト
 
-#### <a name="fhir-integration"></a>FHIR 統合
+#### <a name="fhir-integration"></a>FHIR の統合
 
-* [microsoft/iomt-fhir:](https://github.com/microsoft/iomt-fhir)Azure Healthcare API IoT コネクタマネージド サービスのオープンソース バージョン。 [FHIR R7](https://https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)をサポート高速ヘルスケア相互運用性リソース (FHIR&#174;) サービスで使用&#174;
+* [microsoft/iomt-fhir](https://github.com/microsoft/iomt-fhir): Azure の医療 api IoT コネクタで管理されているサービスのオープンソースバージョン。 [Fhir R7](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)をサポートする高速の医療相互運用性リソース (fhir&#174;) サービスで使用でき&#174;
 
-#### <a name="device-and-fhir-destination-mappings"></a>デバイスと FHIR の宛先マッピング
+#### <a name="device-and-fhir-destination-mappings"></a>デバイスおよび FHIR の宛先マッピング
 
-* [IoMT コネクタ データ マッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper): IoT コネクタデバイスと FHIR 変換先マッピングの編集、テスト、トラブルシューティングを行うツールです。 アプリケーションで IoT コネクタにアップロードしたり、Azure portalバージョンで使用したりするためにマッピングをエクスポートします。
+* [IoMT Connector Data マッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper): IoT コネクタデバイスと FHIR の宛先マッピングの編集、テスト、トラブルシューティングを行うためのツールです。 Azure portal の IoT コネクタにアップロードするためのマッピングをエクスポートするか、オープンソースのバージョンと共に使用します。
 
-#### <a name="wearables-integration"></a>しつらえの統合
+#### <a name="wearables-integration"></a>ウェアラブルの統合
 
 Fitbit
 
-* [microsoft/fitbit-on-fhir:](https://github.com/microsoft/FitbitOnFHIR)Fitbit のデータ&#174; FHIR サービスに取り込む。
+* [microsoft/fitbit-fhir](https://github.com/microsoft/FitbitOnFHIR): fitbit&#174; データを fhir サービスに取り込みます。
 
 HealthKit
 
-* [microsoft/healthkit-on-fhir:](https://github.com/microsoft/healthkit-on-fhir)Apple&#174; HealthKit&#174; FHIR サービスにデータを取り込む。
+* [microsoft/healthkit](https://github.com/microsoft/healthkit-on-fhir): Apple&#174; healthkit&#174; データを fhir サービスに移動します。
 
-* [microsoft/healthkit-to-fhir:](https://github.com/microsoft/healthkit-to-fhir)HKObjects から FHIR リソースを作成する簡単な方法を提供します
+* [microsoft/healthkit](https://github.com/microsoft/healthkit-to-fhir): hkobjects から Fhir リソースを簡単に作成する方法を提供します。
 
-Google Fit on FHIR
+FHIR の Google Fit
 
-* [microsoft/googlefit-on-fhir:](https://github.com/microsoft/googlefit-on-fhir)FHIR サービスGoogle Fit&#174;データを取り込む。
+* [microsoft/googlefit](https://github.com/microsoft/googlefit-on-fhir): fhir サービスに Google Fit&#174; データを取り込みます。
 
 正常性データ同期
 
-* [microsoft/health-data-sync:](https://github.com/microsoft/health-data-sync)HealthKit データの外部ストアへのエクスポートを簡略化および自動化する Swift ライブラリ。
+* [microsoft/health-データ同期](https://github.com/microsoft/health-data-sync): 外部ストアへの HealthKit データのエクスポートを簡略化および自動化する Swift ライブラリ。
 
 ## <a name="next-steps"></a>次のステップ
-デバイスに IoT コネクタをデプロイする方法についてAzure portal
+Azure portal に IoT コネクタをデプロイする方法について説明します
 
 >[!div class="nextstepaction"]
->[IoT コネクタマネージド サービスをデプロイする](deploy-iot-connector-in-azure.md)
+>[IoT コネクタの管理されたサービスのデプロイ](deploy-iot-connector-in-azure.md)
 
-(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。
+(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

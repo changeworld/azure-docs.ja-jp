@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 10/13/2021
+ms.date: 10/21/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c633d162803b6c0f617c3bcaafc9907a559ef32
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 12d37973813fe2eee4972d2063d40df9e46b9b08
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070358"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222478"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) の企業間 (B2B) コラボレーションは
 >
 > - **2021 年 7 月 12 日以降**、Azure AD の B2B のお客様が、カスタムまたは基幹業務アプリケーションのセルフサービス サインアップで使用するために新しい Google の統合をセットアップした場合、認証がシステム Web ビューに移動されるまで、Google ID を使用した認証が機能しなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
 > - **2021 年の 9 月 30 日より**、Google は [埋め込みの Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
-> - **2021 年 11 月 1 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 その時点で、既存のすべてのテナントに対して電子メール ワンタイム パスコード機能を有効にし、新しいテナントに対してはこれを既定で有効にする変更のロールアウトを開始します。 この機能が自動的に有効にならないようにしたい場合は、これを[無効](one-time-passcode.md#disable-email-one-time-passcode)にできます。
+> - **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) 新しい Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントに 2022 年 1 月に変更が公開されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能を自動的に有効にしたくない場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>パートナーの ID を使用してパートナーとコラボレーションする
 

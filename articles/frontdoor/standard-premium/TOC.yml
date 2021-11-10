@@ -44,7 +44,7 @@
         - name: ルール エンジンのアーキテクチャ
           href: concept-rule-set.md
         - name: ルール一致条件
-          href: concept-rule-set-match-conditions.md
+          href: ../rules-match-conditions.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
         - name: ルール アクション
           href: concept-rule-set-actions.md
     - name: URL リダイレクトと URL 書き換え

@@ -3,12 +3,12 @@ title: Bicep 関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Bicep ファイルで使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 429dca8bd4544e1dd8b22406811e53d0ed2ea623
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 4a4f057fe7c29b3ee9b76aa03992ff1efd70079c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070567"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226912"
 ---
 # <a name="bicep-functions"></a>Bicep 関数
 
@@ -167,5 +167,5 @@ Bicep には、文字列を操作するための次の関数が用意されて�
 ## <a name="next-steps"></a>次のステップ
 
 * Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
+* リソースの種類を作成するときに指定した回数反復処理を行う場合は、[Bicep での反復ループ](loops.md)に関する記事を参照してください。
 * 作成した Bicep ファイルをデプロイする方法については、「[Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする](./deploy-powershell.md)」を参照してください。

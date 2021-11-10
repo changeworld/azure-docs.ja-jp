@@ -2,13 +2,13 @@
 title: 拡張リソースの種類
 description: 他の種類のリソースの機能を拡張する際に使用される Azure リソースの種類一覧です。
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: 7085c0894fbf3bd56b56e4187d56f9af54916962
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.date: 10/20/2021
+ms.openlocfilehash: af72233f9e9f6dcbfb15a8b9ffc97b737bf5b924
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363990"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229939"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>他のリソースの機能を拡張するリソースの種類
 
@@ -26,7 +26,9 @@ ms.locfileid: "107363990"
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
+- Microsoft.Authorization/batchResourceCheckAccess
 - Microsoft.Authorization/denyAssignments
+- Microsoft.Authorization/eligibleChildResources
 - Microsoft.Authorization/locks
 - Microsoft.Authorization/policyAssignments
 - Microsoft.Authorization/policyDefinitions
@@ -47,6 +49,7 @@ ms.locfileid: "107363990"
 
 ## <a name="microsoftautomanage"></a>Microsoft.Automanage
 
+- Microsoft.Automanage/configurationProfileAssignmentIntents
 - Microsoft.Automanage/configurationProfileAssignments
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
@@ -69,6 +72,8 @@ ms.locfileid: "107363990"
 ## <a name="microsoftchangeanalysis"></a>Microsoft.ChangeAnalysis
 
 - Microsoft.ChangeAnalysis/changes
+- Microsoft.ChangeAnalysis/changeSnapshots
+- Microsoft.ChangeAnalysis/computeChanges
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
@@ -121,6 +126,11 @@ ms.locfileid: "107363990"
 
 - Microsoft.DataMigration/DatabaseMigrations
 
+## <a name="microsoftdiagnostics"></a>Microsoft.Diagnostics
+
+- Microsoft.Diagnostics/InsightDiagnostics
+- Microsoft.Diagnostics/solutions
+
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 - Microsoft.EventGrid/eventSubscriptions
@@ -131,6 +141,10 @@ ms.locfileid: "107363990"
 - Microsoft.GuestConfiguration/configurationProfileAssignments
 - Microsoft.GuestConfiguration/guestConfigurationAssignments
 - Microsoft.GuestConfiguration/software
+
+## <a name="microsofthybridconnectivity"></a>Microsoft.HybridConnectivity
+
+- Microsoft.HybridConnectivity/endpoints
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
@@ -151,9 +165,15 @@ ms.locfileid: "107363990"
 - microsoft.insights/topology
 - microsoft.insights/transactions
 
+## <a name="microsoftiotsecurity"></a>Microsoft.IoTSecurity
+
+- Microsoft.IoTSecurity/sensors
+- Microsoft.IoTSecurity/sites
+
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration
 
 - Microsoft.KubernetesConfiguration/extensions
+- Microsoft.KubernetesConfiguration/fluxConfigurations
 - Microsoft.KubernetesConfiguration/sourceControlConfigurations
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
@@ -188,6 +208,13 @@ ms.locfileid: "107363990"
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 
+## <a name="microsoftquota"></a>Microsoft.Quota
+
+- Microsoft.Quota/operationsStatus
+- Microsoft.Quota/quotaRequests
+- Microsoft.Quota/quotas
+- Microsoft.Quota/usages
+
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 - Microsoft.RecoveryServices/backupProtectedItems
@@ -208,18 +235,14 @@ ms.locfileid: "107363990"
 
 - Microsoft.Security/adaptiveNetworkHardenings
 - Microsoft.Security/advancedThreatProtectionSettings
+- Microsoft.Security/antiMalwareSettings
 - Microsoft.Security/assessmentMetadata
 - Microsoft.Security/assessments
 - Microsoft.Security/Compliances
 - Microsoft.Security/dataCollectionAgents
-- Microsoft.Security/devices
 - Microsoft.Security/deviceSecurityGroups
 - Microsoft.Security/InformationProtectionPolicies
 - Microsoft.Security/insights
-- Microsoft.Security/iotAlerts
-- Microsoft.Security/iotRecommendations
-- Microsoft.Security/iotSensors
-- Microsoft.Security/iotSites
 - Microsoft.Security/jitPolicies
 - Microsoft.Security/serverVulnerabilityAssessments
 - Microsoft.Security/sqlVulnerabilityAssessments
@@ -238,7 +261,11 @@ ms.locfileid: "107363990"
 - Microsoft.SecurityInsights/entities
 - Microsoft.SecurityInsights/entityQueryTemplates
 - Microsoft.SecurityInsights/incidents
+- Microsoft.SecurityInsights/listrepositories
+- Microsoft.SecurityInsights/metadata
+- Microsoft.SecurityInsights/onboardingStates
 - Microsoft.SecurityInsights/settings
+- Microsoft.SecurityInsights/sourceControls
 - Microsoft.SecurityInsights/threatIntelligence
 - Microsoft.SecurityInsights/watchlists
 

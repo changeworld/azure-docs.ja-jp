@@ -6,19 +6,19 @@ metadata:
   ms.service: active-directory
   ms.subservice: B2B
   ms.topic: reference
-  ms.date: 10/13/2021
+  ms.date: 10/21/2021
   ms.author: mimart
   author: msmimart
   manager: celestedg
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: a714fbb9f5483c8b52480d5fbe41229d655609c8
-  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+  ms.openlocfilehash: dd15c9412cc9f7b0bed2ac4e0f622c827aaafe17
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130072559"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130227654"
 title: Azure Active Directory B2B コラボレーションの FAQ
 summary: >
   Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関するよく寄せられる質問 (FAQ) は、新しいトピックを追加して定期的に更新されています。
@@ -28,7 +28,7 @@ summary: >
 
   > - **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-web-view-sign-in-support)必要があります。
 
-  > - **2021 年 11 月 1 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 その時点で、既存のすべてのテナントに対して電子メール ワンタイム パスコード機能を有効にし、新しいテナントに対しては既定で有効にする変更のロールアウトを開始します。 この機能が自動的に有効にならないようにしたい場合は、これを[無効](one-time-passcode.md#disable-email-one-time-passcode)にできます。
+  > - **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、アカウントとテナントの作成を停止します。B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントは 2022 年 1 月に変更が表示されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにする場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
 sections:
 - name: 全般
   questions:

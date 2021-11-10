@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 9/30/2021
+ms.date: 10/30/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbd82f4ccf25231b3831ae49c3053b0255459e2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 57d64e8173d969b677faa7a0e4c3dd9d1bf45726
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046358"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132159132"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -31,6 +31,135 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="bug-fixed---azure-ad-will-no-longer-double-encode-the-state-parameter-in-responses"></a>バグの修正 - Azure AD の応答で状態パラメーターが二重エンコードされなくなりました
+
+**種類:** 固定  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+Azure AD で、クライアント アプリケーションへの `/authorize` 応答におけるバグを特定し、修正プログラムをテストしてリリースしました。  Azure AD でクライアントへの応答の送信時に `state` パラメーターの URL エンコードを間違って 2 回行っていました。  これにより、状態パラメーターの不一致によってクライアント アプリケーションで要求が拒否される可能性があります。 [詳細については、こちらを参照してください](../develop/reference-breaking-changes.md#bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice)。 
+
+---
+
+### <a name="users-can-only-create-security-and-microsoft-365-groups-in-azure-portal-being-deprecated"></a>ユーザーがセキュリティおよび Microsoft 365 グループを Azure portal でのみ作成できることの廃止
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** ディレクトリ
+ 
+ユーザーは、Azure portal でのみセキュリティおよび Microsoft 365 グループを作成するように制限されなくなります。 新しい設定を使用すると、ユーザーは Azure portal、PowerShell、および API でセキュリティ グループを作成できます。 ユーザーは、新しい設定を確認して更新することを求められます。 [詳細については、こちらを参照してください](../enterprise-users/groups-self-service-management.md)。
+
+---
+
+### <a name="public-preview----external-identities-self-service-sign-up-in-aad-using-email-one-time-passcode-accounts"></a>パブリック プレビュー - ワンタイム パスコードの電子メール送信アカウントを使用した AAD での External Identities セルフサービス サインアップ
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+ 
+外部ユーザーは、ワンタイム パスコードの電子メール送信アカウントを使用して、Azure AD のファースト パーティおよび LOB アプリケーションにサインアップまたはサインインできるようになりました。 [詳細については、こちらを参照してください](../external-identities/one-time-passcode.md)。
+
+---
+
+### <a name="general-availability---external-identities-self-service-sign-up"></a>一般提供 - External Identities セルフサービス サインアップ
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+ 
+外部ユーザーのセルフサービス サインアップが一般提供になりました。 この新機能により、外部ユーザーはアプリケーションにセルフサービスでサインアップできるようになりました。 
+
+これらの外部ユーザー向けにカスタマイズされたエクスペリエンスを作成できます。これには、登録プロセス中にユーザーに関する情報を収集することや、Facebook や Google などの外部 ID プロバイダーを許可することが含まれます。 また、ID の検証やユーザーの承認など、さまざまな機能のためにサードパーティのクラウド プロバイダーと連携できます。 [詳細については、こちらを参照してください](../external-identities/self-service-sign-up-overview.md)。
+ 
+---
+
+### <a name="general-availability---azure-ad-b2c-phone-sign-up-and-sign-in-using-built-in-policy"></a>一般提供 - Azure AD B2C の組み込みポリシーを使用した電話でのサインアップとサインイン
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2C - コンシューマー ID 管理  
+**製品の機能:** B2B/B2C
+ 
+組み込みポリシーを使用した B2C の電話でのサインアップとサインインを使用すると、組織の IT 管理者や開発者は、エンド ユーザーが電話番号を使用してサインインおよびサインアップできるユーザー フローを提供できます。 この機能を使用すると、プライバシー ポリシーや使用条件などの免責事項リンクをカスタマイズして、エンド ユーザーがテキスト メッセージでのワンタイム パスコードの受信に進む前にページに表示できます。 [詳細については、こちらを参照してください](../../active-directory-b2c/phone-authentication-user-flows.md)。
+ 
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---april-2021"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになりました - 2021 年 4 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2021 年 4 月、フェデレーションをサポートする次の 31 個の新しいアプリケーションがアプリ ギャラリーに追加されました
+
+[Zii Travel Azure AD Connect](http://ziitravel.com/)、[Cerby](../saas-apps/cerby-tutorial.md)、[Selflessly](https://app.selflessly.io/sign-in)、[Apollo CX](https://apollo.cxlabs.de/sso/aad)、[Pedagoo](https://account.pedagoo.com/)、[Measureup](https://account.measureup.com/)、[Wistec Education](https://wisteceducation.fi/login/index.php)、[ProcessUnity](../saas-apps/processunity-tutorial.md)、[Cisco Intersight](../saas-apps/cisco-intersight-tutorial.md)、[Codility](../saas-apps/codility-tutorial.md)、[H5mag](https://account.h5mag.com/auth/request-access/ms365)、[Check Point Identity Awareness](../saas-apps/check-point-identity-awareness-tutorial.md)、[Jarvis](https://jarvis.live/login)、[desknet's NEO](../saas-apps/desknets-neo-tutorial.md)、[SDS & Chemical Information Management](../saas-apps/sds-chemical-information-management-tutorial.md)、[Wúru App](../saas-apps/wuru-app-tutorial.md)、[Holmes](../saas-apps/holmes-tutorial.md)、[Tide Multi Tenant](https://gallery.tideapp.co.uk/)、[Telenor](https://admin.smartansatt.telenor.no/)、[Yooz US](https://us1.getyooz.com/?kc_idp_hint=microsoft)、[Mooncamp](https://app.mooncamp.com/#/login)、[inwise SSO](https://app.inwise.com/defaultsso.aspx)、[Ecolab Digital Solutions](https://ecolabb2c.b2clogin.com/account.ecolab.com/oauth2/v2.0/authorize?p=B2C_1A_Connect_OIDC_SignIn&client_id=01281626-dbed-4405-a430-66457825d361&nonce=defaultNonce&redirect_uri=https://jwt.ms&scope=openid&response_type=id_token&prompt=login)、[Taguchi Digital Marketing System](https://login.taguchi.com.au/)、[XpressDox EU Cloud](https://test.xpressdox.com/Authentication/Login.aspx)、[EZSSH](https://docs.keytos.io/getting-started/registering-a-new-tenant/registering_app_in_tenant/)、[EZSSH Client](https://portal.ezssh.io/signup)、[Verto 365](https://www.vertocloud.com/Login/)、[KPN Grip](https://www.grip-on-it.com/)、[AddressLook](https://portal.bbsonlineservices.net/Manage/AddressLook)、[Cornerstone Single Sign-On](../saas-apps/cornerstone-ondemand-tutorial.md)
+
+すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください。
+
+Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、次の詳細をお読みください: https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---april-2021"></a>Azure AD アプリケーション ギャラリーの新しいプロビジョニング コネクタ - 2021 年 4 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+ 
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [Bentley - Automatic User Provisioning](../saas-apps/bentley-automatic-user-provisioning-tutorial.md)
+- [Boxcryptor](../saas-apps/boxcryptor-provisioning-tutorial.md)
+- [BrowserStack シングル サインオン](../saas-apps/browserstack-single-sign-on-provisioning-tutorial.md)
+- [Eletive](../saas-apps/eletive-provisioning-tutorial.md)
+- [Jostle](../saas-apps/jostle-provisioning-tutorial.md)
+- [Olfeo SAAS](../saas-apps/olfeo-saas-provisioning-tutorial.md)
+- [Proware](../saas-apps/proware-provisioning-tutorial.md)
+- [Segment](../saas-apps/segment-provisioning-tutorial.md)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD での SaaS アプリケーションへのユーザー プロビジョニングの自動化](../app-provisioning/user-provisioning.md)に関するページを参照してください。
+ 
+---
+
+### <a name="introducing-new-versions-of-page-layouts-for-b2c"></a>B2C 用の新しいバージョンのページ レイアウトの導入
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** B2C - コンシューマー ID 管理  
+**製品の機能:** B2B/B2C
+ 
+Azure AD B2C での B2C シナリオ用の[ページ レイアウト](../../active-directory-b2c/page-layout.md)が更新され、jQuery と Handlebars JS の新しいバージョンを導入することによって、セキュリティ リスクを軽減しています。
+ 
+---
+
+### <a name="updates-to-sign-in-diagnostic"></a>サインイン診断の更新
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** 監視とレポート
+ 
+サインイン診断ツールが対応するシナリオの範囲が広がりました。 
+
+この更新により、次のイベント関連のシナリオがサインイン診断結果に含まれるようになりました。 
+- エンタープライズ アプリケーション構成の問題イベント。
+- エンタープライズ アプリケーション サービス プロバイダー (アプリケーション側) イベント。
+- 間違った資格情報イベント。 
+
+これらの結果には、イベントのコンテキストおよび関連する詳細と、これらの問題を解決するために実行するアクションが示されます。 また、詳細なコンテキスト診断がないシナリオに対しては、サインイン診断によって、エラー イベントに関するより説明的な内容が示されます。
+
+詳細については、「[Azure AD におけるサインイン診断とは](../reports-monitoring/overview-sign-in-diagnostics.md)」を参照してください。
+
+---
+### <a name="azure-ad-connect-cloud-sync-general-availability-refresh"></a>Azure AD Connect クラウド同期の一般提供の更新 
+**種類:** 変更された機能  
+**サービス カテゴリ:** Azure AD Connect クラウド同期 **製品の機能:** ディレクトリ
+
+Azure AD Connect クラウド同期でエージェントが更新されました (バージョン番号 - 1.1.359)。 バグの修正など、エージェントの更新の詳細については、[バージョン履歴](../cloud-sync/reference-version-history.md)を確認してください。 更新されたエージェントを使用すると、クラウド同期のお客様は GMSA コマンドレットを使用して、gMSA アクセス許可をきめ細かいレベルで設定およびリセットできます。 さらに、グループ スコープのフィルター処理を使用したメンバーの同期の制限を 1499 から 50,000 (50K) メンバーに変更しました。 
+
+クラウド同期用に新しく使用可能になった[式ビルダー](../cloud-sync/how-to-expression-builder.md#deploy-the-expression)を確認してください。これは、属性マッピングを使用して AD から Azure AD への属性値の変換を行う場合に、単純な式だけでなく複雑な式を構築するのに役立ちます。
 
 ---
 

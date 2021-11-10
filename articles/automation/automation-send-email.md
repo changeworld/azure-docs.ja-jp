@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/21/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3f781b32c000ec42c876fa61a90d9ef70c3eb01c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5f89a755cecd2dcf36d3a8a41711fe941108ffa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354556"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427268"
 ---
 # <a name="send-an-email-from-am-automation-runbook"></a>Automation Runbook からメールを送信する
 
@@ -103,7 +103,7 @@ Azure Key Vault と、指定されたキー コンテナー内のキー コン�
 
 ## <a name="assign-permissions-to-managed-identities"></a>マネージド ID にアクセス許可を割り当てる
 
-適切な[マネージド ID](./automation-security-overview.md#managed-identities-preview) にアクセス許可を割り当てます。 Runbook では、Automation アカウントのシステム割り当てマネージド ID またはユーザー割り当てマネージド ID のいずれかを使用できます。 以下に、各 ID にアクセス許可を割り当てる手順を示します。 この手順では PowerShell を使用します。 ポータルを使用する場合は、「[Azure portal を使用して Azure ロールを割り当てる](./../role-based-access-control/role-assignments-portal.md)」を参照してください。
+適切な[マネージド ID](./automation-security-overview.md#managed-identities) にアクセス許可を割り当てます。 Runbook では、Automation アカウントのシステム割り当てマネージド ID またはユーザー割り当てマネージド ID のいずれかを使用できます。 以下に、各 ID にアクセス許可を割り当てる手順を示します。 この手順では PowerShell を使用します。 ポータルを使用する場合は、「[Azure portal を使用して Azure ロールを割り当てる](./../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 1. PowerShell コマンドレット [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して、システム割り当てマネージド ID にロールを割り当てます。
 
@@ -131,7 +131,7 @@ Azure Key Vault と、指定されたキー コンテナー内のキー コン�
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Runbook を作成してメールを送信する
 
-Key Vault を作成し、`SendGrid` API キーを格納したら、次に、API キーを取得してメールを送信する Runbook を作成します。 Azure Key Vault からシークレットを取得するために、[システム割り当てマネージド ID](./automation-security-overview.md#managed-identities-preview) を使用して Azure に対して認証する Runbook を使用しましょう。 **Send-GridMailMessage** Runbook を呼び出します。 さまざまなシナリオに使用される PowerShell スクリプトを変更できます。
+Key Vault を作成し、`SendGrid` API キーを格納したら、次に、API キーを取得してメールを送信する Runbook を作成します。 Azure Key Vault からシークレットを取得するために、[システム割り当てマネージド ID](./automation-security-overview.md#managed-identities) を使用して Azure に対して認証する Runbook を使用しましょう。 **Send-GridMailMessage** Runbook を呼び出します。 さまざまなシナリオに使用される PowerShell スクリプトを変更できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、お使いの Automation アカウントに移動します。
 

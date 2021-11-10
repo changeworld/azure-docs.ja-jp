@@ -7,18 +7,18 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b67239a973f3ba435aeeb7021d8d4f2faea9c98f
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 7370413d792cbabf1b18db5b70da6260417c04d4
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015637"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157919"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
 この記事では、Azure Migrate サービスの概要を簡単に説明します。
 
-Azure Migrate では、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データを評価し、Azure への移行を行うための一元化されたハブが提供されます。 以下が提供されます。
+Azure Migrate では、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データの評価および Azure への移行を行うための一元的なハブが提供されています。 以下が提供されます。
 
 - **統合された移行プラットフォーム**:Azure への移行を開始、実行、追跡するための単一のポータル。
 - **ツールの範囲**:評価と移行のためのさまざまなツール。 Azure Migrate ツールには、Azure Migrate: Discovery and Assessment と Azure Migrate: Server Migration が含まれます。 また、Azure Migrate は、他の Azure サービスやツール、さらに独立系ソフトウェア ベンダー (ISV) オファリングと統合されています。

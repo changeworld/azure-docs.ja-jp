@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/22/2020
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc895f399afbf9fdeff23b0ffc1950ffa6c9adfc
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e9022db23ac425cd958180954373ff4a924e9818
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671791"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507134"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure Front Door 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 
@@ -58,7 +58,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |規則の種類     |一致したもの|
    |Priority    |100|
    |一致の種類     |IP アドレス|
-   |一致変数|RemoteAddr|
+   |一致変数|SocketAddr|
    |操作|[次の値を含まない]|
    |IP アドレスまたは範囲|10.10.10.0/24|
    |THEN|トラフィックを拒否する|
@@ -130,7 +130,7 @@ az network front-door waf-policy rule create \
 
 ```azurecli
 az network front-door waf-policy rule match-condition add \
---match-variable RemoteAddr \
+--match-variable SocketAddr \
 --operator IPMatch \
 --values "ip-address-range-1" "ip-address-range-2" \
 --negate true \
@@ -195,7 +195,7 @@ IP の一致条件を定義するには、[New-AzFrontDoorWafMatchConditionObjec
 次の例で、*ip-address-range-1* と *ip-address-range-2* を独自の範囲に置き換えます。
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
--MatchVariable  RemoteAddr `
+-MatchVariable  SocketAddr `
 -OperatorProperty IPMatch `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1

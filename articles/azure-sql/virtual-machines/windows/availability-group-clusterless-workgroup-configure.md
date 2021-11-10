@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 6eb8af995b733fb796827d508ee003d83e46c67f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 29037a52284bb8af8adb68090f484061db6b9100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167300"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157032"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -136,7 +136,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="enable-the-availability-group-feature"></a>可用性グループ機能を有効にする 
 
-この手順では、可用性グループ機能を有効にします。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial.md#enable-availability-groups)を参照してください。 
+この手順では、可用性グループ機能を有効にします。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial-single-subnet.md#enable-availability-groups)を参照してください。 
 
 ## <a name="create-keys-and-certificates"></a>キーと証明書を作成する
 
@@ -281,7 +281,7 @@ GO
 
 ## <a name="configure-an-availability-group"></a>可用性グループを構成する
 
-この手順では、可用性グループを構成して、そこにデータベースを追加します。 この時点ではリスナーを作成しないでください。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial.md#create-the-availability-group)を参照してください。 フェールオーバーとフェールバックを開始して、すべてが正常に動作していることを確認します。 
+この手順では、可用性グループを構成して、そこにデータベースを追加します。 この時点ではリスナーを作成しないでください。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial-single-subnet.md#create-the-availability-group)を参照してください。 フェールオーバーとフェールバックを開始して、すべてが正常に動作していることを確認します。 
 
    > [!NOTE]
    > 同期プロセス中にエラーが発生した場合は、最初のノード (`AGNode1` など) 上にクラスター リソースを作成するために `NT AUTHORITY\SYSTEM` sysadmin 権限を一時的に付与することが必要になる場合があります。 

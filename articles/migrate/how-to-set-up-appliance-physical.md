@@ -5,13 +5,13 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 03/13/2021
-ms.openlocfilehash: 4c770899c2673926b9db7a676958db56a8ae71be
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.date: 11/02/2021
+ms.openlocfilehash: 171b03e53266949f1ceae79dd0bbeae7ab146eda
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092568"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500452"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -62,7 +62,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 > [!NOTE]
 > 同じスクリプトを使用して、Azure パブリックまたは Azure Government クラウドに物理アプライアンスを設定できます。

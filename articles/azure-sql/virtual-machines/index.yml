@@ -11,12 +11,12 @@ metadata:
   author: MashaMSFT
   ms.author: mathoma
   ms.date: 05/27/2020
-  ms.openlocfilehash: 6d1bc2c0c67836e9d4de9d699d5fc6c5e66fff0d
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: c7b24d1f0fb89baece1a00f71f2d0c61452a95cc
+  ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130042072"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132157810"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 可用性グループ (手動)
-      url: windows/availability-group-manually-configure-prerequisites-tutorial.md
+      url: windows/availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md
     - text: Stonith 可用性グループ (RHEL)
       url: linux/rhel-high-availability-stonith-tutorial.md
     - text: 可用性グループ リスナー (RHEL)

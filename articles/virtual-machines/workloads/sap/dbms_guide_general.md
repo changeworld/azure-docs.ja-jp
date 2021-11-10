@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 6d7a391bcd90d54c7024da6deeef74849c178039
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bc9a29e97e32ba798b516901d01aea968c93eab1
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232077"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157643"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -325,7 +325,7 @@ SQL Server Always On または HANA システム レプリケーションなど�
 
 Azure では 2 つの異なる[ロード バランサーの SKU](../../../load-balancer/load-balancer-overview.md) を提供します。Basic SKU と Standard SKU です。 セットアップと機能の利点に基づいて、Azure ロード バランサーの Standard SKU を使用する必要があります。 Standard バージョンのロード バランサーの大きな利点の 1 つは、データ トラフィックがロード バランサー自体を経由してルーティングされないことです。
 
-内部ロード バランサーを構成する方法の例については、[チュートリアル: Azure Virtual Machines での SQL Server 可用性グループの手動構成](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)に関するページを参照してください。
+内部ロード バランサーを構成する方法の例については、[チュートリアル: Azure Virtual Machines での SQL Server 可用性グループの手動構成](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial-single-subnet.md#create-an-azure-load-balancer)に関するページを参照してください。
 
 > [!NOTE]
 > パブリック IP アドレスのアクセスに関連する Basic SKU と Standard SKU の動作には違いがあります。 パブリック IP アドレスにアクセスするために Standard SKU の制限事項を回避する方法については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」のドキュメントを参照してください。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/28/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: 0b81d190aa7b565f40dd73fa5054253a46ae7041
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 8758a4688e66a1000c142ab775e563ff829bc79b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131439255"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158282"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
@@ -72,14 +72,11 @@ Azure Cognitive Services のコンテナーでは、次の Docker コンテナ�
 
 ### <a name="vision-containers"></a>ビジョン コンテナー
 
-> [!WARNING]
-> 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。
 
 | サービス |  コンテナー | 説明 | 可用性 |
 |--|--|--|--|
 | [Computer Vision][cv-containers] | **Read OCR** ([イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Read OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](./computer-vision/overview-ocr.md)に関する記事を参照してください。 | 限定的なプレビュー。 [アクセスを要求][request-access]してください。 |
 | [空間分析][spa-containers] | **空間分析** ([イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | リアルタイム ストリーミング ビデオを分析して、ユーザーとその動きの間の空間関係、および物理的な環境内のオブジェクトの相互作用を把握します。 | プレビュー |
-| [Face][fa-containers] | **Face** | Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。 | 利用不可 |
 
 <!--
 |[Personalizer](./personalizer/what-is-personalizer.md) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -88,7 +85,6 @@ Azure Cognitive Services のコンテナーでは、次の Docker コンテナ�
 さらに、一部のコンテナーは、Cognitive Services [マルチサービス リソース](cognitive-services-apis-create-account.md) オファリング内でサポートされています。 単一の Cognitive Services オールインワン リソースを作成し、次のサービスに対してサポートされているサービス全体で同じ課金キーを使用できます。
 
 * Computer Vision
-* Face
 * LUIS
 * 言語サービス
 
@@ -120,7 +116,6 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 
 * [Anomaly Detector コンテナー][ad-containers]
 * [Computer Vision コンテナー][cv-containers]
-* [Face コンテナー][fa-containers]
 * [Language Understanding (LUIS) コンテナー][lu-containers]
 * [Speech Service API コンテナー][sp-containers]
 * [言語サービス コンテナー][ta-containers]
@@ -131,7 +126,6 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 
 [ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
-[fa-containers]: ./face/overview.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
 [spa-containers]: ./computer-vision/spatial-analysis-container.md

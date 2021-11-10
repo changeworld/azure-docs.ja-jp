@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 10/21/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15fa618f7195dee15a071b11735b1cfc7276003
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b5f819cbffc04d79ef053d89af3ea865d3dd244c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069675"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251112"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B のベスト プラクティス
 この記事には、Azure Active Directory (Azure AD) での企業間 (B2B) コラボレーションに関する推奨事項とベストプラクティスが含まれています。
 
 > [!IMPORTANT]
-> **2021 年 11 月 1 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド ("バイラル" または "Just-In-Time") Azure AD アカウントおよびテナントを作成することによる招待の引き換えをサポートしなくなります。 その時点で、既存のすべてのテナントに対して電子メール ワンタイム パスコード機能を有効にし、新しいテナントに対してはこれを既定で有効にする変更のロールアウトを開始します。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能が自動的に有効にならないようにしたい場合は、[これを無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
+> **2021 年 11 月 1 日以降**、既存のすべてのテナントに対して電子メールのワンタイム パスコード機能をオンにし、新しいテナントに対して既定で有効にするように、変更の展開を開始します。 この変更の一環として、B2B コラボレーションの招待の引き換え中に、Microsoft は、管理されていない (「バイラル」) 新しい Azure AD アカウントとテナントの作成を停止します。 休暇中の中断およびデプロイ ロックダウンを最小限に抑えるために、大多数のテナントに 2022 年 1 月に変更が公開されます。 電子メール ワンタイム パスコード機能を有効にするのは、これによりゲスト ユーザーにシームレスなフォールバック認証方法が提供されるからです。 ただし、この機能を自動的に有効にしたくない場合は、[無効にする](one-time-passcode.md#disable-email-one-time-passcode)ことができます。
 
 
 ## <a name="b2b-recommendations"></a>B2B の推奨事項

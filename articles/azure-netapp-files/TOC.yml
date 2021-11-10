@@ -131,6 +131,8 @@
           href: azure-netapp-files-create-netapp-account.md
         - name: サブネットを Azure NetApp Files に委任する
           href: azure-netapp-files-delegate-subnet.md
+        - name: リージョン アクセスの要求
+          href: request-region-access.md
     - name: Active Directory の管理
       items:
         - name: Active Directory 接続の作成と管理
