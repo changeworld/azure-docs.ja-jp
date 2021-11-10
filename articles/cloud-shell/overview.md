@@ -33,7 +33,7 @@ Cloud Shell には、次の 3 つの方法でアクセスできます。
 
     ![Azure portal から Cloud Shell を起動するアイコン](media/overview/portal-launch-icon.png)
 
-- **コード スニペット**:[docs.microsoft.com]() と [Microsoft Learn](/learn/)で、Azure CLI と Azure PowerShell のコード スニペットに表示されている **[試してみる]** ボタンを選択します。
+- **コード スニペット**:[docs.microsoft.com]() と [Microsoft Learn](/learn/)で、Azure CLI と Azure PowerShell のコード スニペットに表示されている **[使ってみる]** ボタンを選択します。
 
     ```azurecli-interactive
     az account show
@@ -43,7 +43,7 @@ Cloud Shell には、次の 3 つの方法でアクセスできます。
     Get-AzSubscription
     ```
 
-    **[試してみる]** ボタンにより、Bash (Azure CLI スニペットの場合) または PowerShell (Azure PowerShell スニペットの場合) を使用して、ドキュメントと共に Cloud Shell が直接開きます。
+    **[使ってみる]** ボタンにより、Bash (Azure CLI スニペットの場合) または PowerShell (Azure PowerShell スニペットの場合) を使用して、ドキュメントと共に Cloud Shell が直接開きます。
 
     コマンドを実行するには、コード スニペットで **[コピー]** を使用し、**Ctrl**+**Shift**+**V** (Windows/Linux) または **Cmd**+**Shift**+**V** (macOS) を使用してコマンドを貼り付け、**Enter** キーを押します。
 

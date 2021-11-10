@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: 6c589f3f0913609640ac14534c170c741c16a084
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fc02862b6d980854d20e90724d9192e33693b5db
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048172"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137117"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
@@ -39,7 +39,7 @@ ms.locfileid: "105048172"
 - [Python](https://www.python.org/downloads/) 2.7 または 3.6 以降。
 
 - 最新の [pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラー。
-- ターミナルまたはコマンド プロンプト ウィンドウで `pip install psycopg2` を使用して [psycopg2](https://pypi.python.org/pypi/psycopg2/) をインストールします。 詳細については、[`psycopg2` のインストール方法](http://initd.org/psycopg/docs/install.html)を参照してください。
+- ターミナルまたはコマンド プロンプト ウィンドウで `pip install psycopg2-binary` を使用して [psycopg2](https://pypi.python.org/pypi/psycopg2-binary/) をインストールします。 詳細については、[`psycopg2` のインストール方法](https://www.psycopg.org/docs/install.html)を参照してください。
 
 ## <a name="get-database-connection-information"></a>データベース接続情報を取得する
 Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 この情報は Azure portal から取得できます。
@@ -55,12 +55,12 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 >  次の値を置き換えます。
 >   - `<server-name>` および `<admin-username>` を、Azure portal からコピーした値に指定します。
 >   - `<admin-password>` をサーバー パスワードに指定します。
->   - `<database-name>`: サーバーの作成時に、*postgres* という名前の既定のデータベースが自動的に作成されています。 このデータベースの名前を変更することも、SQL コマンドを使用して[新しいデータベースを作成する](https://www.postgresql.org/docs/9.0/sql-createdatabase.html)こともできます。
+>   - `<database-name>`: サーバーの作成時に、*postgres* という名前の既定のデータベースが自動的に作成されています。 このデータベースの名前を変更することも、SQL コマンドを使用して[新しいデータベースを作成する](https://www.postgresql.org/docs/current/sql-createdatabase.html)こともできます。
 
 ## <a name="step-1-connect-and-insert-data"></a>手順 1: データの接続と挿入
 次のコード例では、以下を使用して Azure Database for PostgreSQL データベースに接続します
--  [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 関数。次に、SQL **INSERT** ステートメントを使用してデータを読み込みます。
-- [cursor. execute](http://initd.org/psycopg/docs/cursor.html#execute) 関数は、データベースに対して SQL クエリを実行します。
+-  [psycopg2.connect](https://www.psycopg.org/docs/connection.html) 関数。次に、SQL **INSERT** ステートメントを使用してデータを読み込みます。
+- [cursor. execute](https://www.psycopg.org/docs/cursor.html#execute) 関数は、データベースに対して SQL クエリを実行します。
 
 ```Python
 import psycopg2
@@ -108,8 +108,8 @@ conn.close()
 
 ## <a name="step-2-read-data"></a>手順 2:データの読み取り
 次のコード例では、Azure Database for PostgreSQL データベースに接続して、以下を使用します
-- [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **SELECT** ステートメントを使用してデータを読み取ります。
-- [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) は、クエリを受け取り、反復処理する結果セットを返します
+- [cursor.execute](https://www.psycopg.org/docs/cursor.html#execute) と SQL **SELECT** ステートメントを使用してデータを読み取ります。
+- [cursor.fetchall()](https://www.psycopg.org/docs/cursor.html#cursor.fetchall) は、クエリを受け取り、反復処理する結果セットを返します
 
 ```Python
 
@@ -126,7 +126,7 @@ for row in rows:
 [問題がある場合は、お知らせください](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-3-update-data"></a>手順 3:データの更新
-次のコード例では、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **UPDATE** ステートメントを使用してデータを更新します。
+次のコード例では、[cursor.execute](https://www.psycopg.org/docs/cursor.html#execute) と SQL **UPDATE** ステートメントを使用してデータを更新します。
 
 ```Python
 
@@ -138,7 +138,7 @@ print("Updated 1 row of data")
 [問題がある場合は、お知らせください](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-5-delete-data"></a>手順 5: データの削除
-次のコード例では、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と **DELETE** SQL ステートメントを実行して、先ほど挿入した inventory 項目を削除します。
+次のコード例では、[cursor.execute](https://www.psycopg.org/docs/cursor.html#execute) と **DELETE** SQL ステートメントを実行して、先ほど挿入した inventory 項目を削除します。
 
 ```Python
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: 167d6a2fbe6ec782a83c8dc3cb7f3ea57832a594
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: a7b7504a99be6784e2767abe0daf9ba64066d0c1
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275907"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134609"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
@@ -79,9 +79,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    Angular プリセットはありますが、このアプリケーションの適切な出力場所を指定できるように、 **[カスタム]** オプションを選択します。
-
-    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーションプ リセット: Angular":::
+    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="アプリケーションプ リセット: Angular":::
 
     アプリケーション ファイルの場所として「 **/** 」と入力します。
 

@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp, subject-rbac-steps
-ms.openlocfilehash: ef49c6ebd356c97466b9b5a744cc58584c42bcb7
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 7006cbf78e7a1a122837e7e2f294b161c230ee29
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126034"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137066"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -112,7 +112,7 @@ Azure Active Directory ユーザーを対象とするアプリケーションで
         1.    自分のアプリケーションで **[所属する組織のみ]** がサポートされる場合は、この値を自分の **テナント ID** または **テナント名** に置き換えます。 例: contoso.microsoft.com。
         2.    自分のアプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を **organizations** に置き換えます。
         3.    自分のアプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を **Common** に置き換えます。
-3.    トークン要求で **[スコープ]** を **"`https://sts.<account-domain>//.default`"** に設定します。`<account-domain>` は Azure Spatial Anchors アカウントの **アカウント ドメイン** に置換されます。 米国東部 2 アカウント ドメインの Azure Spatial Anchors アカウントのスコープ例は **"`https://sts.mixedreality.azure.com//.default`"** です。 このスコープでは、アプリケーション上で Mixed Reality セキュリティ トークン サービス (STS) に対してトークンを要求していることを Azure AD に示します。
+3.    トークン要求で、**スコープ** を **`https://sts.mixedreality.azure.com//.default`** に設定します。 このスコープでは、アプリケーション上で Mixed Reality セキュリティ トークン サービス (STS) に対してトークンを要求していることを Azure AD に示します。
 
 これらの手順を完了すると、アプリケーションで MSAL から Azure AD トークンを取得できるようになります。 その Azure AD トークンを、`authenticationToken` としてクラウド セッション構成オブジェクトに設定できます。
 
@@ -181,7 +181,7 @@ Azure AD アクセス トークンは、[MSAL](../../active-directory/develop/ms
 
 1.    自分の Azure AD アプリケーションのアプリケーション ID、アプリケーション シークレット、およびリダイレクト URI を、MSAL の **client ID**、**secret**、および **RedirectUri** の各パラメーターとして使用することを確認します。
 2.    自分の Azure AD テナント ID に対する tenant ID を、MSAL の **authority** パラメーターに設定します。
-3.    トークン要求で **[スコープ]** を **"`https://sts.<account-domain>//.default`"** に設定します。`<account-domain>` は Azure Spatial Anchors アカウントの **アカウント ドメイン** に置換されます。 米国東部 2 アカウント ドメインの Azure Spatial Anchors アカウントのスコープ例は **"`https://sts.mixedreality.azure.com//.default`"** です。
+3.    トークン要求で、**スコープ** を **`https://sts.mixedreality.azure.com//.default`** に設定します。
 
 これらの手順を完了すると、バックエンド サービスによって Azure AD トークンを取得できます。 その後、クライアントに返される MR トークンに交換できます。 Azure AD トークンを使用した MR トークンの取得は、REST 呼び出しで行われます。 呼び出しの例を次に示します。
 

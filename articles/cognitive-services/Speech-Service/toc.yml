@@ -619,6 +619,8 @@ items:
             href: speech-sdk.md
           - name: Speech SDK を設定する
             href: quickstarts/setup-platform.md
+          - name: Speech SDK のトラブルシューティング
+            href: troubleshooting.md
           - name: Speech SDK リリース ノート
             href: releasenotes.md
           - name: リファレンス

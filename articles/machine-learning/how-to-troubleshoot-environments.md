@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 環境イメージのビルドとパッケージのインストールに関する問題のトラブルシューティングを行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: saachigopal
 ms.author: sagopal
 ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 37b95d4736546721642d88d85ad88ee09d55c394
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 75f79ca277a017cce8b506e423faaf2e49485686
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558309"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137561"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>環境イメージのビルドのトラブルシューティング
 

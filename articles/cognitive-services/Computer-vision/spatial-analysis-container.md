@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/14/2021
 ms.author: pafarley
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f866db833381b8dc6c75538265eefdc057445b3a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 31e712daa27a6fba0bdb834f57e6d6573cfba325
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057896"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137311"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -433,7 +433,7 @@ sudo az group create --name "<resource-group-name>" --location "<your-region>"
 ```
 利用可能なリージョンについては、[リージョン サポート](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)に関する記事を参照してください。
 ```bash
-sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<resource-group-name>"
+sudo az iot hub create --name "<iothub-name>" --sku S1 --resource-group "<resource-group-name>"
 ```
 ```bash
 sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled

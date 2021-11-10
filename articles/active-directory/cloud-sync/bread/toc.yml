@@ -3,18 +3,7 @@
   topicHref: /azure/index
   items:
     - name: Active Directory
-      tocHref: /azure/active-directory/manage-apps/
-      topicHref: /azure/active-directory/index
-      items:
-        - name: クラウドの同期
-          tocHref: /azure/active-directory/manage-apps/
-          topicHref: /azure/active-directory/cloud-sync/index
-- name: Azure
-  tocHref: /azure/
-  topicHref: /azure/index
-  items:
-    - name: Active Directory
-      tocHref: /azure/active-directory/hybrid/
+      tocHref: /azure/active-directory/
       topicHref: /azure/active-directory/index
       items:
         - name: クラウドの同期

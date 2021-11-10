@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: 12d589088f17e3eeb3bda0fecbb2c1fc24b65203
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 868fa30779048447014fa0e7b048d6de8051931c
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084096"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137549"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -23,8 +23,8 @@ ms.locfileid: "129084096"
 
 以降の表では、英数字という用語は次を指しています。
 
-* <bpt id="p1">**</bpt>a<ept id="p1">**</ept> から <bpt id="p2">**</bpt>z<ept id="p2">**</ept> (小文字)
-* <bpt id="p1">**</bpt>A<ept id="p1">**</ept> から <bpt id="p2">**</bpt>Z<ept id="p2">**</ept> (大文字)
+* **a** から **z** (小文字)
+* **A** から **Z** (大文字)
 * <bpt id="p1">**</bpt>0<ept id="p1">**</ept> から <bpt id="p2">**</bpt>9<ept id="p2">**</ept> (数字)
 
 > [!NOTE]
@@ -175,7 +175,7 @@ ms.locfileid: "129084096"
 > | --- | --- | --- | --- |
 > | availabilitySets | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | cloudservices | resource group | 1 ～ 15 <br><br>下記の「注意」を参照。 | スペース、制御文字、または次の文字は使用できません:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
-> | diskEncryptionSets | resource group | 1 ～ 80 | 英数字とアンダースコア。 |
+> | diskEncryptionSets | resource group | 1 ～ 80 | 英数字、アンダースコア、およびハイフン。 |
 > | disks | resource group | 1 ～ 80 | 英数字、アンダースコア、およびハイフン。 |
 > | galleries | resource group | 1 ～ 80 | 英数字とピリオド。<br><br>先頭と末尾には英数字を使用します。 |
 > | galleries / applications | ギャラリー | 1 ～ 80 | 英数字、ハイフン、およびピリオド。<br><br>先頭と末尾には英数字を使用します。 |
@@ -257,8 +257,8 @@ ms.locfileid: "129084096"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | associations | resource group | 1-180 | 次は使用できません:<br><ph id="ph1">`%&\\?/`</ph> または制御文字<br><br>末尾をピリオドまたはスペースにすることはできません。 |
-> | resourceProviders | resource group | 3-64 | 次は使用できません:<br><ph id="ph1">`%&\\?/`</ph> または制御文字<br><br>末尾をピリオドまたはスペースにすることはできません。 |
+> | associations | resource group | 1-180 | 次は使用できません:<br><ph id="ph1">`<>*%&:\/?`</ph> または制御文字<br><br>末尾をピリオドまたはスペースにすることはできません。 |
+> | resourceProviders | resource group | 3-64 | 次は使用できません:<br><ph id="ph1">`<>*%&:\/?`</ph> または制御文字<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -417,10 +417,10 @@ ms.locfileid: "129084096"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | actionGroups | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`:<>+/&%\?`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
-> | components | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`%&\?/`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
-> | scheduledQueryRules | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`*<>%{}&:\\?/#`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
-> | metricAlerts | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`*#&+:<>?@%{}\/`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
-> | activityLogAlerts | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`<>*%{}&:\\?+/#`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | components | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`:<>+/&%\?`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | scheduledQueryRules | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`:<>+/&%\?`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | metricAlerts | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`:<>+/&%\?`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | activityLogAlerts | resource group | 1-260 | 次は使用できません:<br><ph id="ph1">`:<>+/&%\?`</ph> または制御文字 <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 

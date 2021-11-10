@@ -401,6 +401,8 @@
           href: configure-networking-how-to.md
         - name: geo ディザスター リカバリー
           href: functions-geo-disaster-recovery.md
+        - name: リージョン間で移動する
+          href: functions-move-across-regions.md
     - name: モニター
       items:
         - name: 監視の構成

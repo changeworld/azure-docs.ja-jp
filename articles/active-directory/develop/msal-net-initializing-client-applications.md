@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7ff61811e8b736f8f6d104a253cfe5dc5e76c428
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 437de129cec6b8ef6f8d9ca572b18c2a181295b3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771364"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133656"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET を使用してクライアント アプリケーションを初期化する
 この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類の詳細については、[パブリック クライアント アプリケーションと機密クライアント アプリケーション](msal-client-applications.md)に関するページを参照してください。
@@ -100,7 +100,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 |修飾子 | 説明|
 |--------- | --------- |
-|`.WithAuthority()` 7 overrides | アプリケーションの既定の機関を Azure AD 機関に設定します。可能な選択肢は、Azure Cloud、対象ユーザー、テナント (テナント ID、またはドメイン名)、または機関 URI を直接提供する、のいずれかです。|
+|[`.WithAuthority()`](/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority)  | アプリケーションの既定の機関を Azure AD 機関に設定します。可能な選択肢は、Azure Cloud、対象ユーザー、テナント (テナント ID、またはドメイン名)、または機関 URI を直接提供する、のいずれかです。|
 |`.WithAdfsAuthority(string)` | アプリケーションの既定の機関が ADFS 機関になるように設定します。|
 |`.WithB2CAuthority(string)` | アプリケーションの既定の機関が Azure AD B2C 機関になるように設定します。|
 |`.WithClientId(string)` | クライアント ID をオーバーライドします。|
