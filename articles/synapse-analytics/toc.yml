@@ -484,6 +484,8 @@ items:
                 href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context
               - name: ワークロードの監視 - ポータル
                 href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?context=/azure/synapse-analytics/context/context
+              - name: クエリ履歴と分析
+                href: ./sql/query-history-storage-analysis.md
               - name: ワークロードの管理
                 items:
                   - name: ワークロードの分析

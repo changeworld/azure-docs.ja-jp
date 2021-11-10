@@ -741,6 +741,8 @@ items:
                 href: monitor-install-analytics.md
           - name: SDK を使用した監視
             href: monitor-programmatically.md
+          - name: パイプラインのエラーとエラー処理
+            href: tutorial-pipeline-failure-error-handling.md
           - name: メール通知を使用してパイプラインを監視する
             href: how-to-send-email.md
           - name: Microsoft Teams 通知を使用してパイプラインを監視する

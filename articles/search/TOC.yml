@@ -126,6 +126,8 @@
       href: samples-rest.md
 - name: 概念
   items:
+    - name: インデックスの検索
+      href: search-what-is-an-index.md
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
     - name: アナライザー
@@ -257,7 +259,7 @@
     - name: インデックス
       items:
         - name: インデックスを作成する
-          href: search-what-is-an-index.md
+          href: search-how-to-create-search-index.md
         - name: 複数言語インデックスの作成
           href: search-language-support.md
         - name: シノニム

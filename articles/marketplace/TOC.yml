@@ -576,11 +576,19 @@
         - name: SaaS アプリケーションを登録する
           href: partner-center-portal/pc-saas-registration.md
         - name: SaaS Fulfillment API v2
-          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-        - name: SaaS Fulfillment API v1 (非推奨)
-          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+          items:
+            - name: SaaS サブスクリプション ライフサイクル
+              href: partner-center-portal/pc-saas-fulfillment-life-cycle.md
+            - name: Subscription API
+              href: partner-center-portal/pc-saas-fulfillment-subscription-api.md
+            - name: Operations API
+              href: partner-center-portal/pc-saas-fulfillment-operations-api.md
+        - name: Webhook を実装する
+          href: partner-center-portal/pc-saas-fulfillment-webhook.md
         - name: SaaS Fulfillment API - FAQ
           href: partner-center-portal/saas-fulfillment-apis-faq.yml
+        - name: SaaS Fulfillment API v1 (非推奨)
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
 - name: リソース
   items:
     - name: コマーシャル マーケットプレースの FAQ

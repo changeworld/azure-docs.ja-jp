@@ -278,6 +278,10 @@
           href: license-users-groups.md
         - name: 削除済みユーザーの復元
           href: active-directory-users-restore.md
+    - name: シナリオ
+      items:
+        - name: Azure Active Directory を使用して SAP プラットフォームおよびアプリケーションへのアクセスをセキュリティで保護する
+          href: scenario-azure-first-sap-identity-integration.md
 - name: トラブルシューティング
   expanded: true
   items:
