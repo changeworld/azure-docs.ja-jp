@@ -41,7 +41,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md
@@ -121,8 +121,6 @@
           href: virtual-wan-site-to-site-portal.md
         - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
           href: connect-virtual-network-gateway-vwan.md
-        - name: パケット キャプチャを実行する
-          href: virtual-wan-site-to-site-packet-capture.md
         - name: カスタム IPsec ポリシーを構成する
           href: virtual-wan-custom-ipsec-portal.md
         - name: NAT 規則を構成する
@@ -201,6 +199,8 @@
           href: monitor-virtual-wan.md
         - name: Azure Monitor Insights
           href: azure-monitor-insights.md
+        - name: サイト間 VPN パケット キャプチャを構成する
+          href: packet-capture-site-to-site-powershell.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

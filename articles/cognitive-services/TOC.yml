@@ -20,6 +20,8 @@
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+    - name: コミットメント レベルの価格で新しいリソースを作成する
+      href: commitment-tier.md
 - name: 操作方法
   items:
     - name: コストの計画と管理

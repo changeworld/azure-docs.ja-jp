@@ -188,6 +188,10 @@
           href: how-to-self-diagnose-running-in-vnet.md
         - name: トラブルシューティング ガイド
           href: troubleshoot.md
+        - name: ヒープ ダンプ/スレッド ダンプ/JFR を手動でキャプチャする
+          href: how-to-capture-dumps.md
+        - name: JVM オプション ベースのトラブルシューティング
+          href: tutorial-dump-jvm-options.md
     - name: Migrate
       items:
         - name: Spring Cloud

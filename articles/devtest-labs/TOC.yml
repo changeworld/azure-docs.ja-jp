@@ -6,6 +6,8 @@
       href: devtest-lab-overview.md
 - name: クイック スタート
   items:
+    - name: ラボの作成 - ポータル
+      href: devtest-lab-create-lab.md
     - name: ラボの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
@@ -73,8 +75,6 @@
   items:
     - name: ラボの構成
       items:
-        - name: ラボを作成する
-          href: devtest-lab-create-lab.md
         - name: ネットワークが分離されたラボを作成する
           href: network-isolation.md
         - name: Resource Manager テンプレートを使ってラボを作成または変更する

@@ -62,8 +62,6 @@
           href: howto-find-activity-reports.md
         - name: ユーザーのサインイン エラーのトラブルシューティング
           href: howto-troubleshoot-sign-in-errors.md
-        - name: リスクのフラグ付きユーザーの修復
-          href: howto-remediate-users-flagged-for-risk.md
         - name: レポート API の構成の前提条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Azure AD ブックの使用方法
@@ -95,6 +93,8 @@
 - name: リファレンス
   expanded: true
   items:
+    - name: サインイン ログの基本情報識別子
+      href: reference-basic-info-identifiers.md
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス
@@ -111,3 +111,9 @@
       href: reports-faq.yml
     - name: サインイン ログのスキーマ
       href: reference-azure-monitor-sign-ins-log-schema.md
+    - name: Workbooks
+      items:
+        - name: 条件付きアクセス ギャップ アナライザー
+          href: workbook-conditional-access-gap-analyzer.md
+        - name: 機密性の高い操作のレポート
+          href: workbook-sensitive-operations-report.md

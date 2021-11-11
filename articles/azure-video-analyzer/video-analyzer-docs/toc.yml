@@ -205,19 +205,23 @@
           href: edge/production-readiness.md
 - name: リソース
   items:
-    - name: Azure サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
     - name: 対応リージョン
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
+    - name: Azure サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: よくあるご質問
       items:
         - name: Edge モジュールに関する FAQ
           href: edge/faq.yml
         - name: サービスに関する FAQ
           href: cloud/faq.yml
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
     - name: クォータと制限
       href: quotas-limitations.md
     - name: Terraform リソース
       href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/video_analyzer'
+    - name: Video Analyzer エッジ
+      href: 'https://aka.ms/ava-marketplace'
+    - name: Video Analyzer サービス
+      href: 'https://aka.ms/ava-service'

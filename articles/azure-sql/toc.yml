@@ -1227,39 +1227,56 @@
                     - name: 自動バックアップ (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: 可用性グループ (AG)
+                  displayName: 'Always On, alwayson, availability group'
                   items:
-                    - name: AG を作成する
+                    - name: AG の構成 (マルチサブネット)
+                      displayName: 'Always On, alwayson, availability group'
+                      items:
+                        - name: '[前提条件]'
+                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md
+                          displayName: 'Always On, alwayson, availability group'
+                        - name: 可用性グループを作成する
+                          href: virtual-machines/windows/availability-group-manually-configure-tutorial-multi-subnet.md
+                          displayName: 'Always On, alwayson, availability group'
+                    - name: AG の構成 (単一サブネット)
+                      displayName: 'Always On, alwayson, availability group'
                       items:
                         - name: Azure portal
                           href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: PowerShell または Az CLI
                           href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: Azure クイック スタート テンプレート
                           href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: 複数のリージョン
                           href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: ドメイン非依存 (ワークグループ)
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                        - name: 手動で構成
+                          displayName: 'Always On, alwayson, availability group'
+                        - name: 手動
                           items:
-                            - name: 前提条件
-                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                            - name: チュートリアル
-                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: '[前提条件]'
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial-single-subnet.md
+                              displayName: 'Always On, alwayson, availability group'
+                            - name: 可用性グループを作成する
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial-single-subnet.md
                             - name: ロード バランサー - Azure portal
                               href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                             - name: ロード バランサー - Azure PowerShell
                               href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                    - name: 接続の構成
-                      items:
-                        - name: VNN リスナー
-                          displayName: virtual network name
-                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
-                        - name: DNN リスナー
-                          displayName: distributed network name
-                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
-                        - name: DNN の相互運用性
-                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
+                        - name: 接続の構成
+                          items:
+                            - name: VNN リスナー
+                              displayName: virtual network name
+                              href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                            - name: DNN リスナー
+                              displayName: distributed network name
+                              href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                            - name: DNN の相互運用性
+                              href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: フェールオーバー クラスター インスタンス (FCI)
                   items:
                     - name: FCI 用に VM を準備する
@@ -1272,7 +1289,7 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Premium ファイル共有 (Win2012 以降)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: 接続の構成
+                    - name: 接続の構成 (単一サブネット)
                       items:
                         - name: 仮想ネットワーク名 (VNN)
                           href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md

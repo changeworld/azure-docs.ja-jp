@@ -501,6 +501,8 @@ items:
             href: question-answering/how-to/manage-knowledge-base.md
           - name: ネットワーク分離とプライベート エンドポイント
             href: question-answering/how-to/network-isolation.md
+          - name: 事前構築済み API
+            href: question-answering/how-to/prebuilt.md
           - name: トラブルシューティング
             href: question-answering/how-to/troubleshooting.md
       - name: 概念

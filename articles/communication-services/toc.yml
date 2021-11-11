@@ -135,6 +135,16 @@ items:
             href: concepts/ui-library/ui-library-overview.md
           - name: UI ライブラリのユース ケース
             href: concepts/ui-library/ui-library-use-cases.md
+      - name: 監視と分析
+        items:
+          - name: 診断設定でのログ記録を有効にする
+            href: concepts/analytics/enable-logging.md
+          - name: 通話概要と通話診断のログ
+            href: concepts/analytics/call-logs-azure-monitor.md
+          - name: Log Analytics
+            href: concepts/analytics/log-analytics.md
+          - name: 洞察
+            href: concepts/analytics/insights.md
       - name: SDK と REST API
         href: concepts/sdk-options.md
       - name: クライアントとサーバーのアーキテクチャ

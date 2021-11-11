@@ -423,6 +423,12 @@ productDirectory:
         - compute
         - featured
       url: /azure/quantum/
+    - title: Azure スポット仮想マシン
+      summary: 割り込み可能なワークロードを実行するために、未使用のコンピューティング容量を大幅な割引でプロビジョニングする
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - compute
+      url: ./virtual-machines/spot-vms.md
     - title: Azure Spring Cloud
       summary: Pivotal で構築および運用する、フル マネージドの Spring Cloud サービス
       imageSrc: 'https://static.docs.com/ui/media/product/azure/spring-cloud.svg'

@@ -30,7 +30,7 @@
       href: sample-powershell.md
 - name: 概念
   items:
-    - name: Azure Firewall の機能
+    - name: Azure Firewall 標準機能
       href: features.md
     - name: Azure Firewall Premium の機能
       href: premium-features.md
@@ -48,6 +48,8 @@
       href: logs-and-metrics.md
     - name: 脅威インテリジェンス
       href: threat-intel.md
+    - name: ポリシー規則セット
+      href: policy-rule-sets.md
     - name: ルール処理ロジック
       href: rule-processing.md
     - name: サービス タグ
