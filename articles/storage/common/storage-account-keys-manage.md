@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a0f95f78b8ca84175be185088316209ea5eb1e97
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: b7a6e23ae5f1dde2feab830a484cd33107bd7212
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546824"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180191"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -199,7 +199,7 @@ StorageBlobLogs | where KeyExpiryStatus startsWith "Policy Violated".
 有効期限が近づいているかどうかを調べることのできるクエリを作成することもできます。 この情報を取得するクエリは次のとおりです。
 
 ```kusto
-resources 
+StorageBlobLogs 
 | where type =~ 'microsoft.storage/storageAccounts'
 | extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime))
 | extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "")
