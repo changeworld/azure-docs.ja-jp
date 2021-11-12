@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.openlocfilehash: 336f7ff589cdc9b2df3f8e447294719869ca0c2f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 2d30630e9c860f3a6cb5ea7808822f1c1ac850ab
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445232"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290573"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -26,40 +26,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 > [!NOTE]  
 > カスタム メトリックは、すべてのリージョンでサポートされているわけではありません。 サポートされているリージョンについては、[こちら](./metrics-custom-overview.md#supported-regions)の一覧を参照してください
 
-## <a name="send-custom-metrics"></a>カスタム メトリックを送信する 
 
-このチュートリアルでは、Ubuntu 18.04 LTS オペレーティング システムを実行する Linux VM をデプロイします。 Telegraf エージェントは、ほとんどの Linux オペレーティング システムでサポートされます。 [InfluxData ダウンロード ポータル](https://portal.influxdata.com/downloads)で、Debian パッケージと RPM パッケージの両方と、パッケージ化されていない Linux バイナリを入手できます。 詳細なインストール手順とオプションについては、この[Telegraf インストール ガイド](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)を参照してください。 
-
-[Azure portal](https://portal.azure.com) にサインインします。
-
-> [!NOTE]  
-> 従来のアラート ルールを移行し、既存の Linux 仮想マシンを使用する場合は、仮想マシンにシステムによって割り当てられた ID が **オン** に設定されていることを確認します。
-
-新しい Linux VM を作成するには、次の手順を実行します。 
-
-1. 左側のナビゲーション ウィンドウの **[リソースの作成]** オプションを選択します。 
-1. 「**仮想マシン**」を検索します。  
-1. **[Ubuntu 18.04 LTS]** を選択し、 **[作成]** を選択します。 
-1. VM 名 (**MyTelegrafVM** など) を指定します。  
-1. ディスクの種類を **SSD** のままにしておきます。 次に、**azureuser** のように、**ユーザー名** を指定します。 
-1. **[認証の種類]** で、 **[パスワード]** を選択します。 次に、この VM への SSH に後から使用する予定のパスワードを入力します。 
-1. **[新しいリソース グループの作成]** を選択します。 **myResourceGroup** のように、名前を指定します。 **[場所]** を選択します。 **[OK]** をクリックします。 
-
-    ![Ubuntu VM を作成する](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
-
-1. VM のサイズを選択します。 たとえば、"**計算の種類**" または "**ディスクの種類**" でフィルター処理することができます。 
-
-    ![Telegraph エージェントの概要の仮想マシンのサイズ](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
-
-1. **[設定]** ページの **[ネットワーク]**  >  **[ネットワーク セキュリティ グループ]**  >  **[Select public inbound ports]\(パブリック受信ポートの選択\)** の順に移動し、 **[HTTP]** と **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、 **[OK]** を選択します。 
-
-1. 概要ページで、 **[作成]** を選択して、VM のデプロイを開始します。 
-
-1. 対応する VM が、Azure portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。 
-
-1. [VM] ウィンドウで、 **[ID]** タブに移動します。お使いの VM で、システム割り当て ID が **[オン]** に設定されていることを確認します。 
- 
-    ![Telegraf VM の ID プレビュー](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
 ## <a name="connect-to-the-vm"></a>VM に接続します 
 

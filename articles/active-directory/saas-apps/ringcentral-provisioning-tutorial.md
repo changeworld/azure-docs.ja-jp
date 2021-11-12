@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: b7e10c4606c26f9d340437305a49e1ae236eecb9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4999669aee35b9e0d7303ae1156f10318c775562
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456083"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989776"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -38,6 +38,10 @@ ms.locfileid: "131456083"
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * [RingCentral テナント](https://www.ringcentral.com/office/plansandpricing.html)
 * 管理者アクセス許可がある RingCentral のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。

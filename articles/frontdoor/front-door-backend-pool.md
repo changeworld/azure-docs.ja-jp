@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68feb1c2df14c3325ae74ef36874e7008bf9d108
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449294"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371032"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure Front Door のバックエンドとバックエンド プール
 この記事では、Azure Front Door で Web アプリのデプロイがマップされる方法に関する概念について説明します。 また、アプリケーション バックエンドに関する Front Door 構成で使用されるさまざまな用語についても説明します。
@@ -45,7 +45,7 @@ Front Door によりバックエンドに転送された要求には、対象の
 
 たとえば、`www.contoso.com` に対する要求には、ホスト ヘッダー www.contoso.com が含まれます。 Azure portal を使用してバックエンドを構成する場合、このフィールドの既定値はバックエンドのホスト名です。 バックエンドが contoso-westus.azurewebsites.net である場合、Azure portal 内でバックエンド ホスト ヘッダーに自動的に設定される値は contoso-westus.azurewebsites.net です。 ただし、このフィールドを明示的に設定せずに Azure Resource Manager テンプレートまたは別の方法を使用すると、Front Door ではホスト ヘッダーの値として受信ホスト名が送信されます。 www\.contoso.com に対して要求が行われ、バックエンドが空のヘッダー フィールドを持つ contoso-westus.azurewebsites.net である場合、Front Door ではホスト ヘッダーが www\.contoso.com として設定されます。
 
-ほとんどのアプリ バックエンド (Azure Web Apps、Blob Storage、Cloud Services など) では、ホスト ヘッダーがバックエンドのドメインと一致している必要があります。 ただし、バックエンドにルーティングするフロントエンド ホストでは、 www.contoso.net などの別のホスト名が使用されます。
+ほとんどのアプリ バックエンド (Azure Web Apps、Blob Storage、Cloud Services など) では、ホスト ヘッダーがバックエンドのドメインと一致している必要があります。 ただし、バックエンドにルーティングするフロントエンド ホストでは、`www.contoso.net` などの別のホスト名が使用されます。
 
 バックエンドでホスト ヘッダーがバックエンド ホスト名と一致している必要がある場合は、バックエンドのホスト ヘッダーにバックエンドのホスト名が含まれていることを確認します。
 

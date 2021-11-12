@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f7a6f02a3ac37a1b19558fece7e710f5df6767aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a301e57563d7a496ea4a0c0a6fbf17da165b9357
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128670426"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370557"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 認証 - REST API リファレンス
 
@@ -179,8 +179,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 
 *前提条件*:[Crypto-JS](https://code.google.com/archive/p/crypto-js/)
 
-```js
-function signRequest(host, 
+```javascript
+function signRequest(host,
                      method,      // GET, PUT, POST, DELETE
                      url,         // path+query
                      body,        // request body (undefined of none)
@@ -197,7 +197,7 @@ function signRequest(host,
 
         //
         // String-To-Sign
-        var stringToSign = 
+        var stringToSign =
             verb + '\n' +                              // VERB
             url + '\n' +                               // path_and_query
             utcNow + ';' + host + ';' + contentHash;   // Semicolon separated SignedHeaders values
@@ -302,7 +302,7 @@ public CloseableHttpResponse signRequest(HttpUriRequest request, String credenti
     return httpClient.execute(request);
 }
 
-private static Map<String, String> generateHeader(HttpUriRequest request, String credential, String secret) 
+private static Map<String, String> generateHeader(HttpUriRequest request, String credential, String secret)
         throws URISyntaxException, IOException {
     String requestTime = GMT_DATE_FORMAT.format(new Date());
 
@@ -425,7 +425,7 @@ import six
 def sign_request(host,
                 method,     # GET, PUT, POST, DELETE
                 url,        # Path + Query
-                body,       # Request body 
+                body,       # Request body
                 credential, # Access Key ID
                 secret):    # Access Key Value
     verb = method.upper()

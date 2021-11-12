@@ -11,12 +11,12 @@ ms.author: tracych
 ms.reviewer: laobri
 ms.date: 10/21/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 966b8abf60e0569a683932824045253ac32c724e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 481227a747fca327f107049734a69008aa3c3bcf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560492"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063781"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>バッチ エンドポイント (プレビュー) を使用したバッチ スコアリング
 
@@ -34,7 +34,7 @@ ms.locfileid: "131560492"
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
 * Azure Machine Learning を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
@@ -64,7 +64,7 @@ cd azureml-examples/cli
 
 Unix の場合、次のコマンドを実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="set_variables" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="set_variables" :::
 
 Windows の場合、次のコマンドを実行します。
 
@@ -79,7 +79,7 @@ set ENDPOINT_NAME="<YOUR_ENDPOINT_NAME>"
 
 バッチ エンドポイントは、クラウド コンピューティング リソースでのみ動作し、ローカルでは動作しません。 クラウド コンピューティング リソースは再利用可能な仮想コンピューター クラスターです。 次のコードを実行して、Azure Machine Learning コンピューティング クラスターを作成します。 この記事の以降の例では、ここで作成した `batch-cluster` という名前のコンピューティングを使用しています。 必要に応じて調整し、`azureml:<your-compute-name>` を使用して自分のコンピューティングを参照します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_compute" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_compute" :::
 
 > [!NOTE]
 > この時点では、コンピューティングに課金はされません。バッチ エンドポイントが呼び出されてバッチ スコアリング ジョブが送信されるまで、クラスターは 0 ノードのままだからです。 [AmlCompute のコストの管理および最適化](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)について確認してください。
@@ -93,7 +93,7 @@ set ENDPOINT_NAME="<YOUR_ENDPOINT_NAME>"
 
 次の YAML ファイルは、バッチ エンドポイントを定義しています。それを[バッチ エンドポイント作成](#create-a-batch-endpoint)のための CLI コマンドに含めることができます。 リポジトリでは、このファイルは `/cli/endpoints/batch/batch-endpoint.yml` にあります。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/batch-endpoint.yml":::
 
 次の表では、エンドポイント YAML の主要なプロパティについて説明します。 完全なバッチ エンドポイントの YAML スキーマについては、「[CLI (v2) バッチ エンドポイントの YAML スキーマ](./reference-yaml-endpoint-batch.md)」を参照してください。
 
@@ -114,7 +114,7 @@ Azure ML エンティティを参照する方法の詳細については、「[A
 
 サンプル リポジトリには、必要なすべてのファイルが含まれています。 次の YAML ファイルでは、必要なすべての入力とオプションの設定を使用してバッチ デプロイを定義しています。 このファイルを CLI コマンドに含めて、[バッチ デプロイを作成する](#create-a-batch-deployment)ことができます。 リポジトリでは、このファイルは `/cli/endpoints/batch/nonmlflow-deployment.yml` にあります。 
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/nonmlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/nonmlflow-deployment.yml":::
 
 次の表では、デプロイ YAML の主要なプロパティについて説明します。 完全なバッチ デプロイの YAML スキーマについては、「[CLI (v2) バッチ デプロイの YAML スキーマ](./reference-yaml-deployment-batch.md)」を参照してください。
 
@@ -157,7 +157,7 @@ Azure ML エンティティを参照する方法の詳細については、「[A
 
 バッチ エンドポイントを作成する最も簡単な方法は、`--name` のみを提供する次のコードを実行することです。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_batch_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_endpoint" :::
 
 YAML ファイルを使用してバッチ エンドポイントを作成することもできます。 上記のコマンドに `--file` パラメーターを追加し、YAML ファイルのパスを指定します。
 
@@ -165,7 +165,7 @@ YAML ファイルを使用してバッチ エンドポイントを作成する�
 
 次のコードを実行して、バッチ エンドポイントに `nonmlflowdp` という名前のバッチ デプロイを作成し、それを既定のデプロイとして設定します。 
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_batch_deployment_set_default" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_deployment_set_default" :::
 
 > [!TIP]
 > `--set-default` は、新しく作成したデプロイをエンドポイントの既定のデプロイとして設定するパラメーターです。 これは、特に最初のデプロイを作成する場合に、エンドポイントの新しい既定のデプロイを作成する便利な方法です。 運用シナリオのベスト プラクティスとして、新しいデプロイを作成し、それを既定として設定せずに検証して、後で既定のデプロイを更新することをお勧めします。 詳細については、「[新しいモデルをデプロイする](#deploy-a-new-model)」セクションを参照してください。
@@ -176,11 +176,11 @@ YAML ファイルを使用してバッチ エンドポイントを作成する�
 
 バッチ デプロイを確認するには、次のコードを実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_batch_deployment_detail" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_deployment_detail" :::
 
 バッチ エンドポイントを確認するには、次のコードを実行します。 新しく作成したデプロイを既定のデプロイとして設定してあるので、応答の `defaults.deployment_name` に `nonmlflowdp` が表示されます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 ### <a name="invoke-the-batch-endpoint-to-start-a-batch-scoring-job"></a>バッチ エンドポイントを呼び出してバッチ スコアリング ジョブを開始する
 
@@ -198,7 +198,7 @@ CLI の `invoke` でデータ入力を指定するには、3 つの方法があ�
 
     この例では、`https://pipelinedata.blob.core.windows.net/sampledata/mnist` のフォルダー内に一般公開されているデータを使用します。これには、何千もの手書きの数字が含まれています。 バッチ スコアリング ジョブの名前は、呼び出し応答から返されます。 次のコードを実行し、このデータを使用してバッチ エンドポイントを呼び出します。 `--query name` は、呼び出し応答からジョブ名だけを返すために追加され、後で[バッチ スコアリング ジョブ実行の進行状況の監視](#monitor-batch-scoring-job-execution-progress)と[バッチ スコアリング結果の確認](#check-batch-scoring-results)に使用されます。 完全な呼び出し応答を表示する場合は、`--query name -o tsv` を削除します。 `--query` パラメーターの詳細については、「[Azure CLI コマンドの出力のクエリ](/cli/azure/query-azure-cli)」を参照してください。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="start_batch_scoring_job" :::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job" :::
 
 * __方法 2: 登録済みデータセット__
 
@@ -234,7 +234,7 @@ CLI の `invoke` でデータ入力を指定するには、3 つの方法があ�
 
 出力場所を指定し、呼び出し時に設定を上書きするには、次のコードを実行します。 この例では、ワークスペースの既定の BLOB ストレージ内のエンドポイントと同じ名前のフォルダーに出力を格納し、また、ランダムなファイル名を使用して出力場所の一意性を確保しています。 このコードは Unix で動作します。 ご自身の一意のフォルダーおよびファイル名に置き換えてください。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="start_batch_scoring_job_configure_output_settings" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_configure_output_settings" :::
 
 ### <a name="monitor-batch-scoring-job-execution-progress"></a>バッチ スコアリング ジョブ実行の進行状況を監視する
 
@@ -242,7 +242,7 @@ CLI の `invoke` でデータ入力を指定するには、3 つの方法があ�
 
 CLI の `job show` を使用してジョブを表示できます。 次のコードを実行して、前回のエンドポイント呼び出し以降のジョブの状態を確認します。 ジョブ コマンドの詳細を確認するには、`az ml job -h` を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_job_status" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_job_status" :::
 
 ### <a name="check-batch-scoring-results"></a>バッチ スコアリングの結果を確認する
 
@@ -250,7 +250,7 @@ CLI の `job show` を使用してジョブを表示できます。 次のコー
 
 1. 次のコードを実行して、Azure Machine Learning スタジオでバッチ スコアリング ジョブを開きます。 ジョブのスタジオ リンクは、`invoke` の応答にも `interactionEndpoints.Studio.endpoint` の値として含まれています。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="show_job_in_studio" :::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="show_job_in_studio" :::
 
 1. 実行のグラフで、`batchscoring` ステップを選択します。
 1. __[出力 + ログ]__ タブを選択し、 **[Show data outputs]\(データ出力の表示\)** を選択します。
@@ -270,7 +270,7 @@ Storage Explorer のスコアリング結果は、次のサンプル ページ�
 
 既存のバッチ エンドポイントに新しいバッチ デプロイを作成し、既定のデプロイとして設定しない場合は、次のコードを実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_new_deployment_not_default" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_new_deployment_not_default" :::
 
 `--set-default` は使用されないことに注意してください。 バッチ エンドポイントの `show` を再度実行すると、`defaults.deployment_name` に変更がないことがわかります。 
 
@@ -278,7 +278,7 @@ Storage Explorer のスコアリング結果は、次のサンプル ページ�
 
 MLflow モデルをデプロイするために例で使用している YAML ファイルを次に示します。これには、最低限必要なプロパティだけが含まれています。 リポジトリ内のソース ファイルは `/cli/endpoints/batch/mlflow-deployment.yml` です。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/mlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/mlflow-deployment.yml":::
 
 > [!NOTE]
 > `scoring_script` と `environment` の自動生成でサポートされているのは、Python 関数モデルのフレーバーと列ベースのモデル シグネチャだけです。
@@ -287,7 +287,7 @@ MLflow モデルをデプロイするために例で使用している YAML フ�
 
 新しい既定以外のデプロイをテストするには、次のコードを実行します。 この例では、一般公開されている csv ファイル (`https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv`) を受け入れる別のモデルを使用しています。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="test_new_deployment" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="test_new_deployment" :::
 
 新しいデプロイ名を指定するために `--deployment-name` が使用されていることに注意してください。 このパラメーターを使用すると、既定以外のデプロイを `invoke` で呼び出すことができます。バッチ エンドポイントの既定のデプロイは更新されません。
 
@@ -295,7 +295,7 @@ MLflow モデルをデプロイするために例で使用している YAML フ�
 
 エンドポイントの既定のバッチ デプロイを更新するには、次のコードを実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="update_default_deployment" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="update_default_deployment" :::
 
 バッチ エンドポイントを再度 `show` で表示すると、今度は `defaults.deployment_name` が `mlflowdp` に設定されていることがわかります。 `--deployment-name` パラメーターを使用せずに、バッチ エンドポイントを `invoke` で直接呼び出すことができます。
 
@@ -307,11 +307,11 @@ MLflow モデルをデプロイするために例で使用している YAML フ�
 
 古いバッチ デプロイを今後使用しない場合は、次のコードを実行して削除する必要があります。 `--yes` は、削除を確認するために使用します。
 
-::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="delete_deployment" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="delete_deployment" :::
 
 次のコードを実行して、バッチ エンドポイントと基になるすべてのデプロイを削除します。 バッチ スコアリング ジョブは削除されません。
 
-::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>次の手順
 

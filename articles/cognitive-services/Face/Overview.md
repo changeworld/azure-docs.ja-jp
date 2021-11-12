@@ -11,19 +11,17 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
-ms.openlocfilehash: 25e79bb8ab2d37c5b32a6519158cd53d79c1d94b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 370d6c17dfaf2d3544506e4e2ab4218f1a48d1fa
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071422"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370804"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
 > [!WARNING]
 > 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。 新しい Face リソースを作成する際には、Azure portal で、サービスを米国の警察で、もしくは警察のために使用しないこと、および[責任ある AI (RAI) のドキュメント](../cognitive-services-apis-create-account-cli.md#prerequisites)を確認し、それに従ってこのサービスを使用することに同意する必要があります。
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Face サービスは、画像に含まれている人の顔の検出、認識、分析する AI アルゴリズムを提供します。 顔認識ソフトウェアは、本人確認、タッチレス アクセス制御、プライバシーのための顔ぼかしなど、さまざまなシナリオで重要です。
 

@@ -3,12 +3,12 @@ title: カスタム イベントを Web エンドポイントに送信する - E
 description: クイック スタート:Azure Event Grid と Azure portal を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
 ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: a2d259707e6bfbcc5216b345107507413da71523
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 461d43e2a0210dfd5844beb844c7ae2a48e936f3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113232450"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310074"
 ---
 # <a name="route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 Event Grid は、Azure のさまざまなサービスおよびアプリケーション全体でイベントの管理を簡単にするフル マネージド サービスです。 イベント駆動型でサーバーレスのアプリケーションの作成を簡単にします。 サービスの概要については、[Event Grid の概要](overview.md)に関するページを参照してください。
@@ -54,7 +54,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
 1. この記事ページで **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションを自分のサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to deploy to Azure."></a>
 2. **[カスタム デプロイ]** ページで、次の手順を実行します。 
     1. **[リソース グループ]** で、ストレージ アカウントの作成時に作成したリソース グループを選択します。 チュートリアルの完了後は、リソース グループを削除して容易にクリーンアップすることができます。  
     2. **[サイト名]** に、Web アプリの名前を入力します。

@@ -4,12 +4,12 @@ description: イベント ドメインを使用して、Azure Event Grid で大�
 ms.topic: conceptual
 ms.date: 09/28/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1e8187f43da38d7986c62a2c154c89f3576cf1ae
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8fd32086adb853380a63c24bc5055ac39e187942
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047798"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343403"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -122,7 +122,7 @@ New-AzEventGridSubscription `
 
 イベントをサブスクライブするテスト エンドポイントが必要な場合は、受信イベントを表示する[ビルド済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をいつでもデプロイすることができます。 `https://<your-site-name>.azurewebsites.net/api/updates` のテスト Web サイトにイベントを送信できます。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to deploy to Azure."></a>
 
 トピックに設定されているアクセス許可は Azure Active Directory で格納され、明示的に削除する必要があります。 ユーザーにトピックへの書き込みアクセス権がある場合、イベント サブスクリプションを削除しても、イベント サブスクリプションを作成するためのアクセス権は取り消されません。
 

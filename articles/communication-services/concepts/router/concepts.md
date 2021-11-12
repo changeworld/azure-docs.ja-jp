@@ -9,12 +9,12 @@ ms.author: jassha
 ms.date: 10/14/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 1178eaa37170228c58f044a616a2bfe230bd3f4c
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 86902147b68272fb0ff2ef5873ad6cca80654843
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166696"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312402"
 ---
 # <a name="job-router-concepts"></a>Job Router の概念
 

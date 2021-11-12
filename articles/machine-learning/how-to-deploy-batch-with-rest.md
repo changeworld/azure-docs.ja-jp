@@ -11,12 +11,12 @@ ms.author: tracych
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: ad4c69509430fc448e5432237a3d9c6af6fd5c18
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 351855c870f3f3658488c66c401cef1c3c4b17c4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565599"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059811"
 ---
 # <a name="deploy-models-with-rest-preview-for-batch-scoring"></a>REST を使用してバッチ スコアリング用のモデルをデプロイする (プレビュー) 
 
@@ -52,7 +52,7 @@ REST API では、標準の HTTP 動詞を使用して、リソースの作成�
 > [!NOTE]
 > バッチ エンドポイントの名前は、Azure リージョン レベルで一意である必要があります。 たとえば、westus2 に存在することができる、mybatchendpoint という名前のバッチ エンドポイントは 1 つだけです。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="set_endpoint_name":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="set_endpoint_name":::
 
 ## <a name="azure-machine-learning-batch-endpoints"></a>Azure Machine Learning バッチ エンドポイント
 
@@ -68,18 +68,18 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 
 管理 REST により、[サービス プリンシパル認証トークン](how-to-manage-rest.md#retrieve-a-service-principal-authentication-token)が要求されます。 `TOKEN` は、実際の値に置き換えてください。 このトークンは、次のコマンドを使用して取得できます。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" range="13":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" range="13":::
 
 サービス プロバイダーは、`api-version` 引数を使用して互換性を保証します。 `api-version` 引数はサービスによって異なります。 将来のバージョンに対応するために、API バージョンを変数として設定します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" range="11":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" range="11":::
 
 ### <a name="create-compute"></a>コンピューティングを作成する
 バッチ スコアリングは、クラウド コンピューティング リソースでのみ動作し、ローカルでは動作しません。 クラウド コンピューティング リソースとは、バッチ スコアリング ワークフローを実行できる再利用可能な仮想コンピューター クラスターです。
 
 次のようにコンピューティング クラスターを作成します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_compute":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_compute":::
 
 > [!TIP]
 > 代わりに既存のコンピューティングを使用する場合は、[バッチ デプロイの作成](#create-batch-deployment)時に、完全な Azure Resource Manager ID を指定する必要があります。 完全な ID には、形式 `/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/computes/<your-compute-name>` が使用されます。
@@ -90,41 +90,41 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 
 [jq](https://stedolan.github.io/jq/) ツールを使用して、JSON の結果を解析し、必要な値を取得できます。 Azure portal を使用しても同じ情報を取得することができます。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="get_storage_details":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="get_storage_details":::
 
 ### <a name="upload--register-code"></a>コードをアップロードして登録する
 
 データストアを用意できたら、スコアリング スクリプトをアップロードできます。 Azure Storage CLI を使用して、BLOB を既定のコンテナーにアップロードします。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="upload_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="upload_code":::
 
 > [!TIP]
 > また、Azure portal や [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など、他の方法でアップロードすることもできます。
 
 自分のコードをアップロードしたら、PUT 要求を使用してそのコードを指定できます。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_code":::
 
 ### <a name="upload-and-register-model"></a>モデルをアップロードして登録する
 
 コードと同様に、モデル ファイルをアップロードします。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="upload_model":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="upload_model":::
 
 モデルを登録します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_model":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_model":::
 
 ### <a name="create-environment"></a>環境を作成する
 デプロイは、必要な依存関係がある環境で実行する必要があります。 PUT 要求を使用して環境を作成します。 Microsoft Container Registry の Docker イメージを使用します。 `image` を使用して Docker イメージを構成し、`condaFile` を使用して conda の依存関係を追加できます。
 
 次のコードを実行して、json で定義されている `condaFile` を読み取ります。 ソース ファイルは、サンプル リポジトリの `/cli/endpoints/batch/mnist/environment/conda.json` にあります。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="read_condafile":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="read_condafile":::
 
 ここで、次のスニペットを実行して環境を作成します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_environment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_environment":::
 
 ## <a name="deploy-with-batch-endpoints"></a>バッチ エンドポイントを使用してデプロイする
 
@@ -134,19 +134,19 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 
 次のようにバッチ エンドポイントを作成します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_endpoint":::
 
 ### <a name="create-batch-deployment"></a>バッチ デプロイを作成する
 
 次のようにエンドポイントの下にバッチ デプロイを作成します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_deployment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_deployment":::
 
 ### <a name="set-the-default-batch-deployment-under-the-endpoint"></a>エンドポイントの下に既定のバッチ デプロイを設定する
 
 1 つのエンドポイントの下に既定のバッチ デプロイは 1 つだけあります。これは、バッチス コアリング ジョブを実行するための呼び出し時に使用されます。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="set_endpoint_defaults":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="set_endpoint_defaults":::
 
 ## <a name="run-batch-scoring"></a>バッチ スコアリングを実行する
 
@@ -156,23 +156,23 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 
 バッチ エンドポイントを呼び出すには、スコアリング URI とアクセス トークンを取得します。 最初にスコアリング URI を取得します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="get_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="get_endpoint":::
 
 バッチ エンドポイントのアクセス トークンを取得します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="get_access_token":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="get_access_token":::
 
 次に、バッチ エンドポイントを呼び出して、バッチ スコアリング ジョブを開始します。 次の例では、クラウドで一般公開されているデータにスコア付けします。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="score_endpoint_with_data_in_cloud":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="score_endpoint_with_data_in_cloud":::
 
 ご利用のデータが、Azure Machine Learning に登録されたデータ ストアに保存されている場合は、データセットを使用してバッチ エンドポイントを呼び出すことができます。 次のコードでは、新しいデータセットを作成します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_dataset":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_dataset":::
 
 次に、バッチ エンドポイントの呼び出し時にそのデータセットを参照します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="score_endpoint_with_dataset":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="score_endpoint_with_dataset":::
 
 前のコード スニペットで、カスタム出力の場所は `datastoreId`、`outputFileName`、および `path` を使用して指定されています。 これらの設定を使用すると、バッチ スコアリング結果を格納する場所を構成できます。
 
@@ -181,7 +181,7 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 
 この例では、出力はワークスペースの既定の BLOB ストレージに格納されます。 フォルダー名はエンドポイント名と同じであり、ファイル名は次のコードによってランダムに生成されます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" ID="unique_output" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score-rest.sh" ID="unique_output" :::
 
 ### <a name="check-the-batch-scoring-job"></a>バッチ スコアリング ジョブを確認する
 
@@ -190,7 +190,7 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 > [!TIP]
 > この例では、バッチ エンドポイントの既定のデプロイが呼び出されます。 既定以外のデプロイを呼び出すには、`azureml-model-deployment` HTTP ヘッダーを使用し、値をデプロイ名に設定します。 たとえば、curl で `--header "azureml-model-deployment: $DEPLOYMENT_NAME"` というパラメーターを使用します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="check_job":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="check_job":::
 
 ### <a name="check-batch-scoring-results"></a>バッチ スコアリングの結果を確認する
 
@@ -200,7 +200,7 @@ Azure Machine Learning バッチ エンドポイントを作成するには、[A
 
 今後使用する予定がない場合、以下のコマンドでバッチ エンドポイントを削除してください (バッチ エンドポイントとそこにあるすべてのデプロイが削除されます)。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="delete_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="delete_endpoint":::
 
 ## <a name="next-steps"></a>次の手順
 

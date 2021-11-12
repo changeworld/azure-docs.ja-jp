@@ -2,13 +2,13 @@
 title: エージェント ベースの推奨事項
 description: セキュリティに関する推奨事項の概念と Defender for IoT デバイスでの使用方法について説明します。
 ms.topic: conceptual
-ms.date: 09/26/2021
-ms.openlocfilehash: 41a983f1c5d4e647d83751ea00e444f34e608559
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 4e0266d06f5be7937c056430aadd2d49f2f6a86d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083108"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343764"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>IoT デバイスのセキュリティに関する推奨事項
 
@@ -41,6 +41,6 @@ Defender for IoT では、Azure リソースと IoT デバイスがスキャン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Defender for IoT サービスの[概要](overview.md)
-- [セキュリティ データにアクセスする](how-to-security-data-access.md)方法を学習ぶ
-- [デバイスの調査](how-to-investigate-device.md)について学ぶ
+- Defender for IoT サービスの<bpt id="p1">[</bpt>概要<ept id="p1">](overview.md)</ept>
+- <bpt id="p1">[</bpt>セキュリティ データにアクセスする<ept id="p1">](how-to-security-data-access.md)</ept>方法を学習ぶ
+- <bpt id="p1">[</bpt>デバイスの調査<ept id="p1">](how-to-investigate-device.md)</ept>について学ぶ

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: bb32a407813ba7e85f55fc39790fba81ca452c50
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: bb777c952e4166b764032317f859419ebc3c94dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693400"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312022"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>HBv3 シリーズの仮想マシンのパフォーマンス
 
@@ -38,9 +38,10 @@ ms.locfileid: "122693400"
 
 OSU マイクロベンチマーク スイートの MPI 待機時間テストは、次のように実行できます。 サンプル スクリプトは [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) にあります。
 
-```bash 
+```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency
-``` 
+```
+
 ## <a name="mpi-bandwidth"></a>MPI 帯域幅
 OSU マイクロベンチマーク スイートの MPI 帯域幅テストは、次のように実行できます。 サンプル スクリプトは [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) にあります。
 ```bash

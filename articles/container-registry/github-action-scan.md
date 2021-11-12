@@ -8,12 +8,12 @@ ms.reviewer: jukullam
 ms.service: azure
 ms.date: 05/20/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: c7782349fb467ef34169f46843b3c91d182c0995
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a16c858008ce2233d0382e8a8f2a8e6224bbb6b8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741088"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315807"
 ---
 # <a name="scan-container-images-using-github-actions"></a>GitHub Actions を使用してコンテナー イメージをスキャンする
 

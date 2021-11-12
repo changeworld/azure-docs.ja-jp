@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 0b8d9b3beaf965cc8c5c745d243da429c0de10e4
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c175c0340c954aa86f35cf808031b08130db7036
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131561026"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286300"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -100,7 +100,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |**20,000&nbsp;行&nbsp;より&nbsp;多い**| トレーニング/検証データの分割が適用されます。 既定では、初期トレーニング データ セットの 10% が検証セットとして取得されます。 次に、その検証セットがメトリックの計算に使用されます。
 |**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
 
-現時点では、モデルの評価用に独自の **テストデータ** を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、[この Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の **テスト** に関するセクションを参照してください。
+現時点では、モデルの評価用に独自の **テストデータ** を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、[この Jupyter ノートブック](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の **テスト** に関するセクションを参照してください。
 
 ### <a name="large-data"></a>大きなデータ 
 
@@ -122,11 +122,11 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 次に、モデルをトレーニングする場所を決定します。 自動 ML トレーニングの実験は、次のコンピューティング オプションで実行できます。 [ローカルおよびリモートのコンピューティングの長所と短所](concept-automated-ml.md#local-remote)のオプションについて説明します。 
 
-* ローカル デスクトップやノート PC などの **ローカル** コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。 ローカル コンピューティングの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)を参照してください。 
+* ローカル デスクトップやノート PC などの **ローカル** コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。 ローカル コンピューティングの例については、[このノートブック](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)を参照してください。 
  
 * クラウド上の **リモート** マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。 コンピューティング インスタンスは、コンピューティング先としてもサポートされます。
 
-    Azure Machine Learning Managed Compute を使用したリモートの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 
+    Azure Machine Learning Managed Compute を使用したリモートの例については、[このノートブック](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 
 
 * Azure サブスクリプション内の **Azure Databricks クラスター**。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-databricks-automl-environment.md)に関する記事を参照してください。 Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
 

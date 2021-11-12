@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: CLI (v2) スイープ ジョブ YAML スキーマのリファレンス ドキュメント。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: reference
 author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b0b82b36126e063c68c595736c1e0ea18260dd5f
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 90a69fceb96067ad92cc4d68f8b3e0929d2622a6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560171"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135102"
 ---
 # <a name="cli-v2-sweep-job-yaml-schema"></a>CLI (v2) スイープ ジョブ YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131560171"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | const | **必須。** ジョブの種類。 | `sweep` | `sweep` |
@@ -53,68 +53,68 @@ ms.locfileid: "131560171"
 
 #### <a name="banditpolicy"></a>BanditPolicy
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** ポリシーの種類。 | `bandit` | |
 | `slack_factor` | number | 最高パフォーマンスのトライアルからの許容される距離を計算するために使用される比率。 **`slack_factor` または `slack_amount` のいずれかが必須です。** | | |
 | `slack_amount` | number | 最高パフォーマンスのトライアルからの許容される絶対距離。 **`slack_factor` または `slack_amount` のいずれかが必須です。** | | |
-| `evaluation_interval` | 整数 | ポリシーを適用する頻度。 | | `1` |
-| `delay_evaluation` | 整数 | 最初のポリシー評価を遅延する間隔の数。 指定した場合、`delay_evaluation` 以上の `evaluation_interval` の倍数ごとにポリシーが適用されます。 | | `0` |
+| `evaluation_interval` | 整数 (integer) | ポリシーを適用する頻度。 | | `1` |
+| `delay_evaluation` | 整数 (integer) | 最初のポリシー評価を遅延する間隔の数。 指定した場合、`delay_evaluation` 以上の `evaluation_interval` の倍数ごとにポリシーが適用されます。 | | `0` |
 
 #### <a name="medianstoppingpolicy"></a>MedianStoppingPolicy
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** ポリシーの種類。 | `median_stopping` | |
-| `evaluation_interval` | 整数 | ポリシーを適用する頻度。 | | `1` |
-| `delay_evaluation` | 整数 | 最初のポリシー評価を遅延する間隔の数。 指定した場合、`delay_evaluation` 以上の `evaluation_interval` の倍数ごとにポリシーが適用されます。 | | `0` |
+| `evaluation_interval` | 整数 (integer) | ポリシーを適用する頻度。 | | `1` |
+| `delay_evaluation` | 整数 (integer) | 最初のポリシー評価を遅延する間隔の数。 指定した場合、`delay_evaluation` 以上の `evaluation_interval` の倍数ごとにポリシーが適用されます。 | | `0` |
 
 #### <a name="truncationselectionpolicy"></a>TruncationSelectionPolicy
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** ポリシーの種類。 | `truncation_selection` | |
-| `truncation_percentage` | 整数 | **必須。** 各評価期間にキャンセルされるトライアル ジョブの割合。 | | |
-| `evaluation_interval` | 整数 | ポリシーを適用する頻度。 | | `1` |
-| `delay_evaluation` | 整数 | 最初のポリシー評価を遅延する間隔の数。 指定した場合、`delay_evaluation` 以上の `evaluation_interval` の倍数ごとにポリシーが適用されます。 | | `0` |
+| `truncation_percentage` | 整数 (integer) | **必須。** 各評価期間にキャンセルされるトライアル ジョブの割合。 | | |
+| `evaluation_interval` | 整数 (integer) | ポリシーを適用する頻度。 | | `1` |
+| `delay_evaluation` | 整数 (integer) | 最初のポリシー評価を遅延する間隔の数。 指定した場合、`delay_evaluation` 以上の `evaluation_interval` の倍数ごとにポリシーが適用されます。 | | `0` |
 
 ### <a name="parameter-expressions"></a>パラメーター式
 
 #### <a name="choice"></a>choice
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `choice` |
 | `values` | array | **必須。** 選択する不連続値の一覧。 | |
 
 #### <a name="randint"></a>randint
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `randint` |
-| `upper` | 整数 | **必須。** 整数の範囲の排他的な上限。 | |
+| `upper` | 整数 (integer) | **必須。** 整数の範囲の排他的な上限。 | |
 
 #### <a name="qlognormal-qnormal"></a>qlognormal、qnormal
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `qlognormal`, `qnormal` |
 | `mu` | number | **必須。** 正規分布の平均。 | |
 | `sigma` | number | **必須。** 正規分布の標準偏差。 | |
-| `q` | 整数 | **必須。** スムージング係数。 | |
+| `q` | 整数 (integer) | **必須。** スムージング係数。 | |
 
 #### <a name="qloguniform-quniform"></a>qloguniform、quniform
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `qloguniform`, `quniform` |
 | `min_value` | number | **必須。** 範囲内の最小値 (包含的)。 | |
 | `max_value` | number | **必須。** 範囲内の最大値 (包含的)。 | |
-| `q` | 整数 | **必須。** スムージング係数。 | |
+| `q` | 整数 (integer) | **必須。** スムージング係数。 | |
 
 #### <a name="lognormal-normal"></a>lognormal、normal
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `lognormal`, `normal` |
 | `mu` | number | **必須。** 正規分布の平均。 | |
@@ -122,7 +122,7 @@ ms.locfileid: "131560171"
 
 #### <a name="loguniform"></a>loguniform
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `loguniform` |
 | `min_value` | number | **必須。** 範囲内の最小値は `exp(min_value)` (包含的) になります。 | |
@@ -130,7 +130,7 @@ ms.locfileid: "131560171"
 
 #### <a name="uniform"></a>uniform
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 式の型。 | `uniform` |
 | `min_value` | number | **必須。** 範囲内の最小値 (包含的)。 | |
@@ -138,53 +138,53 @@ ms.locfileid: "131560171"
 
 ### <a name="attributes-of-the-limits-key"></a>`limits` キーの属性
 
-| キー | 種類 | 説明 | 既定値 |
+| キー | Type | 説明 | 既定値 |
 | --- | ---- | ----------- | ------------- |
-| `max_total_trials` | 整数 | ジョブを実行できる最大時間 (秒単位)。 この制限に達すると、システムによってジョブがキャンセルされます。 | `1000` |
-| `max_concurrent_trials` | 整数 | | 既定値は `max_total_trials` です。 |
-| `timeout` | 整数 | スイープ ジョブ全体を実行できる最大時間 (分単位)。 この制限に達すると、システムにより、すべてのトライアルを含めてスイープ ジョブがキャンセルされます。 | `10080` |
-| `trial_timeout` | 整数 | 各トライアル ジョブを実行できる最大時間 (秒単位)。 この制限に達すると、システムによってトライアルがキャンセルされます。 | |
+| `max_total_trials` | 整数 (integer) | ジョブを実行できる最大時間 (秒単位)。 この制限に達すると、システムによってジョブがキャンセルされます。 | `1000` |
+| `max_concurrent_trials` | 整数 (integer) | | 既定値は `max_total_trials` です。 |
+| `timeout` | 整数 (integer) | スイープ ジョブ全体を実行できる最大時間 (分単位)。 この制限に達すると、システムにより、すべてのトライアルを含めてスイープ ジョブがキャンセルされます。 | `10080` |
+| `trial_timeout` | 整数 (integer) | 各トライアル ジョブを実行できる最大時間 (秒単位)。 この制限に達すると、システムによってトライアルがキャンセルされます。 | |
 
 ### <a name="attributes-of-the-trial-key"></a>`trial` キーの属性
 
-| キー | 種類 | 説明 | 既定値 |
+| キー | Type | 説明 | 既定値 |
 | --- | ---- | ----------- | ------------- |
 | `command` | string | **必須。** 実行するコマンドです。 | |
 | `code.local_path` | string | アップロードしてジョブに使用するソース コード ディレクトリへのローカル パス。 | |
 | `environment` | 文字列またはオブジェクト | **必須。** ジョブに使用する環境。 これは、ワークスペース内のバージョン管理される既存の環境への参照、またはインライン環境仕様のいずれかになります。 <br> <br> 既存の環境を参照するには、`azureml:<environment-name>:<environment-version>` 構文を使用します。 <br><br> 環境のインラインを定義するには、[環境スキーマ](reference-yaml-environment.md#yaml-syntax)に従います。 `name` プロパティと `version` プロパティは、インライン環境ではサポートされていないため、除外します。 | |
 | `environment_variables` | object | コマンドが実行されるプロセスに設定する環境変数の名前と値のペアの辞書。 | |
 | `distribution` | object | 分散トレーニング シナリオの配布構成。 [MpiConfiguration](#mpiconfiguration)、[PyTorchConfiguration](#pytorchconfiguration)、[TensorFlowConfiguration](#tensorflowconfiguration) のいずれか。 | |
-| `resources.instance_count` | 整数 | ジョブに使用するノードの数。 | `1` |
+| `resources.instance_count` | 整数 (integer) | ジョブに使用するノードの数。 | `1` |
 
 #### <a name="distribution-configurations"></a>配布構成
 
 ##### <a name="mpiconfiguration"></a>MpiConfiguration
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** 配布の種類。  | `mpi` |
-| `process_count_per_instance` | 整数 | **必須。** ジョブに対して起動するノードあたりのプロセスの数。  | |
+| `process_count_per_instance` | 整数 (integer) | **必須。** ジョブに対して起動するノードあたりのプロセスの数。  | |
 
 ##### <a name="pytorchconfiguration"></a>PyTorchConfiguration
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** 配布の種類。  | `pytorch` | |
-| `process_count_per_instance` | 整数 | ジョブに対して起動するノードあたりのプロセスの数。 | |  `1` |
+| `process_count_per_instance` | 整数 (integer) | ジョブに対して起動するノードあたりのプロセスの数。 | |  `1` |
 
 ##### <a name="tensorflowconfiguration"></a>TensorFlowConfiguration
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** 配布の種類。  | `tensorflow` |
-| `worker_count` | 整数 | ジョブに対して起動するワーカーの数。 | | 既定値は `resources.instance_count` です。 |
-| `parameter_server_count` | 整数 | ジョブに対して起動するパラメーター サーバーの数。 | | `0` |
+| `worker_count` | 整数 (integer) | ジョブに対して起動するワーカーの数。 | | 既定値は `resources.instance_count` です。 |
+| `parameter_server_count` | 整数 (integer) | ジョブに対して起動するパラメーター サーバーの数。 | | `0` |
 
 ### <a name="job-inputs"></a>ジョブの入力
 
 #### <a name="jobinputuri"></a>JobInputUri
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `file` | string | 入力として使用する 1 つのファイルへの URI。 サポートされる URI の種類は `azureml`、`https`、`wasbs`、`abfss`、`adl` です。 `azureml://` URI 形式の使用方法の詳細については、[コア yaml 構文](reference-yaml-core-syntax.md)に関するページを参照してください。 **`file` または `folder` のいずれかが必須です。**  | | |
 | `folder` | string | 入力として使用するフォルダーの URI。 サポートされる URI の種類は `azureml`、`wasbs`、`abfss`、`adl` です。 `azureml://` URI 形式の使用方法の詳細については、[コア yaml 構文](reference-yaml-core-syntax.md)に関するページを参照してください。 **`file` または `folder` のいずれかが必須です。**   | | |
@@ -192,7 +192,7 @@ ms.locfileid: "131560171"
 
 #### <a name="jobinputdataset"></a>JobInputDataset
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `dataset` | 文字列またはオブジェクト | **必須。** 入力として使用するデータセット。 これは、ワークスペース内のバージョン管理される既存のデータセットへの参照、またはインライン データセット仕様のいずれかです。 <br><br> 既存のデータセットを参照するには、`azureml:<dataset_name>:<dataset_version>` 構文を使用します。 <br><br> データセットをインラインで定義するには、[データセット スキーマ](reference-yaml-dataset.md#yaml-syntax)に従います。 `name` プロパティおよび `version` プロパティはインライン データセットではサポートされていないので、除外します。 | | |
 | `mode` | string | データセットをコンピューティング先に配信する方法のモード。 読み取り専用マウントの場合、データセットはマウント パスとして使用されます。 フォルダーはフォルダーとしてマウントされ、ファイルは親フォルダーとしてマウントされます。 ダウンロード モードの場合、データセットはダウンロードされたパスとして使用されます。 | `ro_mount`, `download` | `ro_mount` |
@@ -207,12 +207,12 @@ ms.locfileid: "131560171"
 
 ## <a name="yaml-hello-sweep"></a>YAML: hello sweep
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-sweep.yml":::
 
 ## <a name="yaml-basic-python-model-hyperparameter-tuning"></a>YAML: 基本的な Python モデルのハイパーパラメーター調整
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [CLI (v2) をインストールして使用する](how-to-configure-cli.md)

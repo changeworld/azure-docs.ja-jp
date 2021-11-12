@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9913bf8e576af5de6f6cb2e558188aa8517a26e3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85505496"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335995"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
@@ -65,11 +65,11 @@ Avere コントロール パネルには Web ブラウザーからアクセス�
 > [!NOTE]
 > アクティブ ノード数が変更されたときに IP アドレスがクラスター ノード間で移動することがあります。
 
-詳細については、Avere クラスター設定ガイドの[[クラスター] > [FXT Nodes]\(FXT ノード)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) をお読みください。
+詳細については、Avere クラスター設定ガイドの[[クラスター] > [FXT Nodes]\(FXT ノード)](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes) をお読みください。
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Avere コントロール パネルでクラスターを停止または再起動する
 
-**[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (Avere クラスター設定ガイド) をお読みください。
+**[System Maintenance]\(システム メンテナンス)** 設定ページには、クラスター サービスの再起動、クラスターの再起動、またはクラスターの安全な電源停止のためのコマンドがあります。 詳細については、[[管理] > [System Maintenance]\(システム メンテナンス)](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance) (Avere クラスター設定ガイド) をお読みください。
 
 クラスターのシャットダウンが開始されると、状態メッセージが **[ダッシュボード]** タブに表示されます。しばらくすると、メッセージが停止して Avere コントロール パネル セッションが応答を停止します。これは、クラスターがシャットダウンしたことを意味します。
 
@@ -143,7 +143,7 @@ vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNA
 
 変更されたデータをクラスター キャッシュから保存しない場合、オプション ``--quick-destroy`` を使用できます。
 
-追加情報については、 [vfxt.py 使用ガイド](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>)をお読みください。
+追加情報については、 [vfxt.py 使用ガイド](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)をお読みください。
 
 ## <a name="manage-cluster-vms-from-the-azure-portal"></a>Azure portal からのクラスター VM の管理
 

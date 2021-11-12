@@ -7,12 +7,12 @@ ms.date: 09/3/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 manager: dikamath
-ms.openlocfilehash: ae9c1ba5259e95ed030d7099e5dafe2d4f7935b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eea32da3da1748fb1049fb32e6af8dd2467b4f60
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89447688"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339221"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple-september-2020-update"></a>Azure VMware Solution by CloudSimple (2020 年 9 月の更新プログラム)
 

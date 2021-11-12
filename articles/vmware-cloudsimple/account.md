@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e93b445d54fd181aa173f8179911c69195659f4c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c68b23108743a28ac794acaed3da29f4466c191c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129618311"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315101"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Azure VMware Solution by CloudSimple ポータルでアカウントを管理する
 

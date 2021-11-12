@@ -7,12 +7,12 @@ ms.service: chaos-studio
 ms.topic: conceptual
 ms.date: 11/01/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 2c84b9908eb361b4dfb57bb87d2d6fe2f828982d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ef71d6d09d1965eefd7008dd8c3d020c0a8ae1ae
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091887"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371545"
 ---
 # <a name="chaos-experiments"></a>カオス実験
 
@@ -31,4 +31,4 @@ Chaos Studio で、カオス実験を作成して実行します。 カオス実
 ## <a name="next-steps"></a>次のステップ
 カオス実験について理解したので、次の準備が整いました。
 - [障害とアクションについて](chaos-studio-faults-actions.md)
-- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct.md)
+- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct-portal.md)

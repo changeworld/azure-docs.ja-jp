@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020, devx-track-azurecli
 ms.date: 04/27/2020
-ms.openlocfilehash: 20f99d020f61186341e938208aeb819895118d73
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a01c1059259d958f9a9d573872c010b6d0ab0372
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824371"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337530"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 

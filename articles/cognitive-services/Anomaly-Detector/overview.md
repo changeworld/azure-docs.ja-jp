@@ -12,16 +12,14 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 24d30a475071667fa9f701776302aa81c652fbe2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 75a040b8c2b480d0c82ef2cab6a953d230f6ffb7
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045049"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371108"
 ---
 # <a name="what-is-the-anomaly-detector-univariate-api"></a>Anomaly Detector 一変量 API とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Anomaly Detector API では、時系列データを監視し、その中の異常を検出できます。機械学習の知識は必要ありません。 Anomaly Detector API のアルゴリズムでは、産業、シナリオ、データ量に関係なく、データに最適なモデルが自動的に特定され、適用されます。 この API では、時系列データを使用し、異常検出の境界、予想される値、異常となるデータ ポイントが判断されます。
 
@@ -30,7 +28,7 @@ Anomaly Detector API では、時系列データを監視し、その中の異�
 Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。REST API によってサービスをアプリケーションやプロセスに簡単に統合できます。
 
 このドキュメントには、次のような記事が記載されています。
-* <bpt id="p1">[</bpt>クイックスタート<ept id="p1">](./quickstarts-sdk/client-library.md)</ept>は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
 * [攻略ガイド](./how-to/identify-anomalies.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 * [概念の記事](./concepts/anomaly-detection-best-practices.md)では、サービスの機能と特長について詳しく説明します。
 * [チュートリアル](./tutorials/batch-anomaly-detection-powerbi.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。

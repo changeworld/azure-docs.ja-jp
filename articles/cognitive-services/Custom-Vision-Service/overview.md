@@ -12,16 +12,14 @@ ms.date: 08/25/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像識別子、画像認識アプリ、Custom Vision
-ms.openlocfilehash: febd4b5921beff8f810b411dd1da96ac82b9a64d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 6bf2f9de103416bc9dd35216bf85c609be966a23
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309861"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372513"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Custom Vision は、独自の画像識別子モデルを構築、デプロイ、改良できるようにする画像認識サービスです。 画像識別子は、検出された視覚特性に従って画像に (分類またはオブジェクトを表す) ラベルを適用します。 [Computer Vision](../computer-vision/overview.md) サービスとは異なり、Custom Vision ではユーザーが独自ラベルを指定し、それらを検出するためのカスタム モデルをトレーニングできます。
 

@@ -1,14 +1,14 @@
 ---
 title: アラート イベントの管理
 description: ネットワークで検出されたアラート イベントを管理します。
-ms.date: 05/26/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 57d6a2225cc5380d8c1bf4be0955c1b728501cc1
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 64f8abc405b80c86107b8e90503d148286a1ea8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019814"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339803"
 ---
 # <a name="manage-alert-events"></a>アラート イベントの管理
 

@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 10/28/2021
 ms.author: jasteppe
-ms.openlocfilehash: 85fa6aff2e9c1702813c1c865d7f5e85c315c343
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: 76bf145ea76ea44d65e2c5dc3873cb51707840a5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132156469"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309849"
 ---
 # <a name="open-source-projects"></a>オープンソース プロジェクト
 
@@ -46,7 +46,7 @@ FHIR の Google Fit
 
 正常性データ同期
 
-* [microsoft/health-データ同期](https://github.com/microsoft/health-data-sync): 外部ストアへの HealthKit データのエクスポートを簡略化および自動化する Swift ライブラリ。
+* [microsoft/health-data sync](https://github.com/microsoft/health-data-sync): HealthKit データの外部ストアへのエクスポートを簡略化および自動化する Swift&#174; ライブラリです。
 
 ## <a name="next-steps"></a>次のステップ
 Azure portal に IoT コネクタをデプロイする方法について説明します

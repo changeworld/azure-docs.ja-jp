@@ -9,12 +9,12 @@ metadata:
   author: johnkemnetz
   ms.author: johnkem
   ms.date: 08/24/2021
-  ms.openlocfilehash: 540fb41d74babdda1e36c7fcb77c877d23043c80
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: 5d4f68ac59b001886636f9a2ddb4214e17ffebe9
+  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132293784"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132372532"
 landingContent:
 - title: Azure Chaos Studio について
   linkLists:
@@ -29,11 +29,11 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: サービスダイレクト フォールトを使用するカオス実験を作成して、Azure Cosmos DB インスタンスをフェールオーバーする
-      url: chaos-studio-tutorial-service-direct.md
+      url: chaos-studio-tutorial-service-direct-portal.md
     - text: Azure Chaos Studio でエージェントベース フォールトを使用する実験を作成する
       url: chaos-studio-tutorial-agent-based-portal.md
     - text: Azure Chaos Studio で AKS Chaos Mesh フォールトを使用する実験を作成する
-      url: chaos-studio-tutorial-aks.md
+      url: chaos-studio-tutorial-aks-portal.md
 - title: 関連項目
   linkLists:
   - linkListType: reference

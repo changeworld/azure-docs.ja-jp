@@ -1,21 +1,21 @@
 ---
 title: Azure で使用するための Red Hat Enterprise Linux VHD の作成とアップロード
 description: Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 12/01/2020
-ms.author: danis
-ms.openlocfilehash: 24cccbbd1bed0fc4e1fbe357832095455dae7df8
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 11/10/2021
+ms.author: srijangupta
+ms.openlocfilehash: 11a7931126d451b2fbeff301a337f15fd6aecbf3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219991"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301231"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 
@@ -349,12 +349,13 @@ ms.locfileid: "123219991"
     次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     > [!CAUTION]
-    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、プロビジョニング解除手順はスキップしてください。 コマンド `waagent -force -deprovision` を実行すると、ソース マシンが使用できなくなります。この手順は一般化されたイメージを作成することのみを目的としています。
+    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、プロビジョニング解除手順はスキップしてください。 コマンド `waagent -force -deprovision+user` を実行すると、ソース マシンが使用できなくなります。この手順は一般化されたイメージを作成することのみを目的としています。
     ```console
-    # sudo waagent -force -deprovision
-
+    # sudo rm -f /var/log/waagent.log
+    # sudo cloud-init clean
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
     # export HISTSIZE=0
-
     # logout
     ```
     
@@ -536,14 +537,15 @@ ms.locfileid: "123219991"
     次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     ```console
-    # sudo waagent -force -deprovision
-
+    # sudo cloud-init clean
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    # sudo rm -f /var/log/waagent.log
     # export HISTSIZE=0
-
     # logout
     ```
     > [!CAUTION]
-    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、プロビジョニング解除手順はスキップしてください。 コマンド `waagent -force -deprovision` を実行すると、ソース マシンが使用できなくなります。この手順は一般化されたイメージを作成することのみを目的としています。
+    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、プロビジョニング解除手順はスキップしてください。 コマンド `waagent -force -deprovision+user` を実行すると、ソース マシンが使用できなくなります。この手順は一般化されたイメージを作成することのみを目的としています。
 
 
 1. Hyper-V マネージャーで **[アクション]**  >  **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。

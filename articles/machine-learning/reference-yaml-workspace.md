@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: e14e46d2301f8a87ca59ab09f4d4deb29d8c16a6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ea641b24b43c7ad1d22e497f9d2558ccb163e81b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131561330"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060020"
 ---
 # <a name="cli-v2-workspace-yaml-schema"></a>CLI (v2) ワークスペース YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131561330"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使って YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `name` | string | **必須。** ワークスペースの名前。 | | |
@@ -55,23 +55,23 @@ ms.locfileid: "131561330"
 
 ## <a name="yaml-basic"></a>YAML: 基本
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/basic.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/basic.yml":::
 
 ## <a name="yaml-with-existing-resources"></a>YAML: 既存のリソースで動作します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/with-existing-resources.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/with-existing-resources.yml":::
 
 ## <a name="yaml-customer-managed-key"></a>YAML: カスタマー マネージド キー
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/cmk.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/cmk.yml":::
 
 ## <a name="yaml-private-link"></a>Private Link: プライベート リンク
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/privatelink.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/privatelink.yml":::
 
 ## <a name="yaml-high-business-impact"></a>YAML: High Business Impact
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/hbi.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/hbi.yml":::
 
 ## <a name="next-steps"></a>次の手順
 
