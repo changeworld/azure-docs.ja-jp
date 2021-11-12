@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics を使用して Apache Spark アプリケーションを監視する (プレビュー)
+title: Azure Log Analytics を使用して Apache Spark アプリケーションを監視する
 description: Apache Spark アプリケーションのメトリックとログを収集して Log Analytics ワークスペースに送信するために、Synapse Studio コネクタを有効にする方法について説明します。
 services: synapse-analytics
 author: jejiang
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: a455eb81a804c9eff9dcd84142eccbdfc3ac376c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dcf09885dab6ba41d545e4105a86c99535786c62
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804186"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223141"
 ---
-# <a name="monitor-apache-spark-applications-with-azure-log-analytics-preview"></a>Azure Log Analytics を使用して Apache Spark アプリケーションを監視する (プレビュー)
+# <a name="monitor-apache-spark-applications-with-azure-log-analytics"></a>Azure Log Analytics を使用して Apache Spark アプリケーションを監視する
 
 このチュートリアルでは、Log Analytics に組み込まれている Synapse Studio コネクタを有効にする方法について説明します。 その後、Apache Spark アプリケーションのメトリックとログを収集し、[Log Analytics ワークスペース](../../azure-monitor/logs/quick-create-workspace.md)に送信できます。 最後に、Azure Monitor ブックを利用してメトリックとログを視覚化できます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "124804186"
 - [Azure CLI を使用してワークスペースを作成する](../../azure-monitor/logs/resource-manager-workspace.md)
 - [PowerShell を使用して Azure Monitor でワークスペースを作成して構成する](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
-### <a name="step-2-prepare-a-apache-spark-configuration-file"></a>手順 2: Apache Spark 構成ファイルを準備する
+### <a name="step-2-prepare-an-apache-spark-configuration-file"></a>手順 2: Apache Spark 構成ファイルを準備する
 
 次のいずれかのオプションを使用して、ファイルを準備します。
 
@@ -130,7 +130,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 [uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
 
-### <a name="step-3-upload-your-apache-spark-configuration-to-a-apache-spark-pool"></a>手順 3: Apache Spark 構成を Apache Spark プールにアップロードする
+### <a name="step-3-upload-your-apache-spark-configuration-to-an-apache-spark-pool"></a>手順 3: Apache Spark 構成を Apache Spark プールにアップロードする
 構成ファイルは、Azure Synapse Analytics Apache Spark プールにアップロードできます。 Synapse Studio で次のようにします。
 
    1. **[管理]**  >  **[Apache Spark プール]** を選択します
@@ -146,7 +146,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 >
 > Apache Spark プールに送信されたすべての Apache Spark アプリケーションでは、この構成設定を使用して、指定したワークスペースに Apache Spark アプリケーションのメトリックとログがプッシュされます。
 
-## <a name="submit-a-apache-spark-application-and-view-the-logs-and-metrics&quot;></a>Apache Spark アプリケーションを送信してログとメトリックを表示する
+## <a name="submit-an-apache-spark-application-and-view-the-logs-and-metrics"></a>Apache Spark アプリケーションを送信してログとメトリックを表示する
 
 その方法は次のとおりです。
 
@@ -157,7 +157,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 
 1. 指定した Log Analytics ワークスペースに移動し、Apache Spark アプリケーションの実行が開始されたときにアプリケーションのメトリックとログを表示します。
 
-## <a name=&quot;write-custom-application-logs&quot;></a>カスタム アプリケーション ログを書き込む
+## <a name="write-custom-application-logs"></a>カスタム アプリケーション ログを書き込む
 
 Apache Log4j ライブラリを使用して、カスタム ログを書き込むことができます。
 
@@ -165,7 +165,7 @@ Scala の例:
 
 ```scala
 %%spark
-val logger = org.apache.log4j.LogManager.getLogger(&quot;com.contoso.LoggerExample")
+val logger = org.apache.log4j.LogManager.getLogger("com.contoso.LoggerExample")
 logger.info("info message")
 logger.warn("warn message")
 logger.error("error message")
@@ -246,11 +246,11 @@ SparkMetrics_CL
 
 [データ流出の防止](../security/workspace-data-exfiltration-protection.md)が有効になっている Synapse ワークスペースが作成された後。
 
-この機能を有効にする場合は、ワークスペースの承認された Azure AD テナント内の [Azure Monitor プライべート リンク スコープ (AMPLS)](../../azure-monitor/logs/private-link-security.md) に対して、マネージド プライベート エンドポイント接続要求を作成する必要があります。
+この機能を有効にする場合は、ワークスペースの承認された Azure AD テナント内の [Azure Monitor プライベート リンク スコープ (AMPLS)](../../azure-monitor/logs/private-link-security.md) に対して、マネージド プライベート エンドポイント接続要求を作成する必要があります。
 
 下の手順に従って、Azure Monitor プライベート リンク スコープ (AMPLS) に対するマネージド プライベート エンドポイント接続を作成できます。
 
-1. 既存の AMPLS がない場合は、[Azure Monitor Private Link 接続の設定](../../azure-monitor/logs/private-link-security.md)に関する記事に従って作成してください。
+1. 既存の AMPLS がない場合は、[Azure Monitor Private Link 接続の設定](../../azure-monitor/logs/private-link-security.md)に関する記事に従って作成します。
 2. Azure portal で AMPLS に移動し、 **[Azure Monitor Resources]\(Azure Monitor リソース\)** ページで、 **[追加]** をクリックして Azure Log Analytics ワークスペースに接続を追加します。
 3. **[Synapse Studio] > [管理] > [Managed private endpoints]\(マネージド プライベート エンドポイント\)** に移動し、 **[新規]** ボタンをクリックし、 **[Azure Monitor プライベート リンク スコープ]** 、 **[続行]** の順に選択します。
    > [!div class="mx-imgBorder"]
@@ -259,7 +259,7 @@ SparkMetrics_CL
    > [!div class="mx-imgBorder"]
    > ![AMPLS マネージド プライベート エンドポイントの作成 2](./media/apache-spark-azure-log-analytics/create-ampls-private-endpoint-2.png)
 5. プライベート エンドポイントのプロビジョニングが完了するまで数分待ちます。
-6. Azure portal で再度 AMPLS に移動し、 **[プライベート エンドポイント接続]** ページで、先ほどプロビジョニングした接続と **[承認]** を選択します。
+6. Azure portal で再び AMPLS に移動し、 **[プライベート エンドポイント接続]** ページで、先ほどプロビジョニングした接続と **[承認]** を選択します。
 
 > [!NOTE] 
 >  - AMPLS オブジェクトには、Private Link の構成を計画するときに考慮に入れる必要のある制限がいくつかあります。 これらの制限の詳細については、[AMPLS の制限](../../azure-monitor/logs/private-link-security.md)に関する記事を参照してください。 

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: tutorial
-ms.date: 05/18/2021
-ms.openlocfilehash: 85e652a5619ebbdae8503f77cb4699ec95848906
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.date: 10/27/2021
+ms.openlocfilehash: ebc0b5e3bc73bed000d5a30935a670f3e2e2b024
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619461"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464625"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -191,6 +191,8 @@ ms.locfileid: "129619461"
 [データ品質の式](https://www.youtube.com/watch?v=O8gmv5-lXhs)
 
 [収集の集計関数](https://www.youtube.com/watch?v=zneE18EHJSE)
+
+[パラメーターとしての動的な式](https://www.youtube.com/watch?v=q7W6J-DUuJY)
 
 ## <a name="metadata"></a>Metadata
 

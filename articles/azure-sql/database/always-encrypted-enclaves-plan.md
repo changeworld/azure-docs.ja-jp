@@ -10,12 +10,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 07/14/2021
-ms.openlocfilehash: bed170c4dbf61006c7d2aca14117f8946563f357
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 18700a89b94a1fb739e279230ab6f2b172ab6671
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727294"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306512"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Azure SQL Database で Intel SGX エンクレーブと構成証明を計画する
 

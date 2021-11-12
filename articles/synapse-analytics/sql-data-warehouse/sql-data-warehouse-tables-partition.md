@@ -1,22 +1,22 @@
 ---
 title: 専用 SQL プールでのテーブルのパーティション分割
-description: 専用 SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例
+description: 専用 SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例。
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 08/19/2021
-ms.author: xiaoyul
-ms.reviewer: igorstan, wiassaf
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ea941ae782e7da33cc07932d4b0c79613790b2e8
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: af068f531a07be05da8ff8911ffff68242f7f4cf
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515039"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504742"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>専用 SQL プールでのテーブルのパーティション分割
 
@@ -42,7 +42,7 @@ ms.locfileid: "122515039"
 
 たとえば、売上のファクト テーブルが販売日フィールドを使用して 36 か月にパーティション分割されている場合は、販売日をフィルター処理するクエリによって、フィルターと一致しないパーティションの検索を省略できます。
 
-## <a name="sizing-partitions"></a>パーティションのサイズ変更
+## <a name="partition-sizing"></a>パーティションのサイズ設定
 
 パーティション分割を使用すると一部のシナリオのパフォーマンスが向上する可能性がありますが、パーティションが **多すぎる** テーブルを作成すると、特定の状況でパフォーマンスが低下する可能性があります。  これらの問題は、特にクラスター化列ストア テーブルに当てはまります。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "122515039"
 
 パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。 SQL Server および専用 SQL プールでは、テーブルごとに 1 つのパーティション列がサポートされます。このパーティション列で、範囲指定によるパーティションを指定することができます。 パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
-次の例では、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、FactInternetSales テーブルを OrderDateKey 列でパーティション分割します。
+次の例では、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して、`FactInternetSales` テーブルを `OrderDateKey` 列でパーティション分割します。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -86,7 +86,7 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>SQL Server からのパーティション分割の移行
+## <a name="migrate-partitions-from-sql-server"></a>SQL Server からパーティションを移行する
 
 SQL Server のパーティション定義を専用 SQL プールに移行するには、次の操作を行います。
 
@@ -194,7 +194,10 @@ WHERE t.[name] = 'FactInternetSales'
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-パーティションが空でないため、ALTER PARTITION ステートメントの Msg 35346, Level 15, State 1, Line 44 SPLIT 句が失敗しました。 テーブルに列ストア インデックスが存在するときは、空のパーティションのみを分割できます。 ALTER PARTITION ステートメントを発行する前に列ストア インデックスを無効にし、ALTER PARTITION が完了したら列ストア インデックスを再構築することを検討します。
+```
+Msg 35346, Level 15, State 1, Line 44
+SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.
+```
 
 ただし、`CTAS` を使用して、データを保持する新しいテーブルを作成できます。
 

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 09/23/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 332552d361c4c8c43b7b4bfa981050c829a79762
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b20ae4e6cec7ad3ce710c6e9670ff580b30f2638
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624522"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462312"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>チュートリアル:セキュリティで保護されたアプリからユーザーとして Microsoft Graph にアクセスする
 
@@ -122,9 +122,12 @@ az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
 ```
 ---
 
-## <a name="call-microsoft-graph-net"></a>Microsoft Graph を呼び出す (.NET)
+## <a name="call-microsoft-graph"></a>Microsoft Graph の呼び出し
 
-Web アプリに必要なアクセス許可が付与され、さらに Microsoft Graph のクライアント ID がログイン パラメーターに追加されました。 Web アプリは、[Microsoft.Identity.Web ライブラリ](https://github.com/AzureAD/microsoft-identity-web/)を使用して、Microsoft Graph による認証のためにアクセス トークンを取得します。 バージョン 1.2.0 以降の Microsoft.Identity.Web ライブラリは、App Service 認証および承認モジュールと統合され、一緒に実行できます。 Microsoft.Identity.Web は、この Web アプリが App Service でホストされていることを検出すると、App Service の認証および承認モジュールからアクセス トークンを取得します。 その後、このアクセス トークンは、Microsoft Graph API を使用して、認証された要求に渡されます。
+Web アプリに必要なアクセス許可が付与され、さらに Microsoft Graph のクライアント ID がログイン パラメーターに追加されました。
+
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
+Web アプリは、[Microsoft.Identity.Web ライブラリ](https://github.com/AzureAD/microsoft-identity-web/)を使用して、Microsoft Graph による認証のためにアクセス トークンを取得します。 バージョン 1.2.0 以降の Microsoft.Identity.Web ライブラリは、App Service 認証および承認モジュールと統合され、一緒に実行できます。 Microsoft.Identity.Web は、この Web アプリが App Service でホストされていることを検出すると、App Service の認証および承認モジュールからアクセス トークンを取得します。 その後、このアクセス トークンは、Microsoft Graph API を使用して、認証された要求に渡されます。
 
 このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf)を参照してください。
 
@@ -137,7 +140,7 @@ Web アプリに必要なアクセス許可が付与され、さらに Microsoft
 
 .NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用して、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) および [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet パッケージをプロジェクトにインストールします。
 
-# <a name="command-line"></a>[コマンド ライン](#tab/command-line)
+#### <a name="net-core-command-line"></a>.NET Core コマンド ライン
 
 コマンド ラインを開き、プロジェクト ファイルが含まれているディレクトリに切り替えます。
 
@@ -149,7 +152,7 @@ dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 dotnet add package Microsoft.Identity.Web
 ```
 
-# <a name="package-manager"></a>[パッケージ マネージャー](#tab/package-manager)
+#### <a name="package-manager-console"></a>パッケージ マネージャー コンソール
 
 Visual Studio でプロジェクトまたはソリューションを開き、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** コマンドを使用してコンソールを開きます。
 
@@ -159,8 +162,6 @@ Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```
-
----
 
 ### <a name="startupcs"></a>Startup.cs
 
@@ -274,11 +275,59 @@ public class IndexModel : PageModel
 }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+
+Web アプリでは、受信した要求のヘッダーからユーザーのアクセス トークンを取得して Microsoft Graph クライアントに渡し、認証された要求を `/me` エンドポイントに行います。
+
+このコードをサンプル アプリケーションの一部として見る場合は、[GitHub のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf)で *graphController.js* をご覧ください。
+
+```nodejs
+const graphHelper = require('../utils/graphHelper');
+
+// Some code omitted for brevity.
+
+exports.getProfilePage = async(req, res, next) => {
+
+    try {
+        const graphClient = graphHelper.getAuthenticatedClient(req.session.protectedResources["graphAPI"].accessToken);
+
+        const profile = await graphClient
+            .api('/me')
+            .get();
+
+        res.render('profile', { isAuthenticated: req.session.isAuthenticated, profile: profile, appServiceName: appServiceName });   
+    } catch (error) {
+        next(error);
+    }
+}
+```
+
+Microsoft Graph に対してクエリを実行するには、[Microsoft Graph JavaScript SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript) を使用します。 このコードは [utils/graphHelper.js](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/blob/main/2-WebApp-graphapi-on-behalf/utils/graphHelper.js) にあります。
+
+```nodejs
+const graph = require('@microsoft/microsoft-graph-client');
+
+// Some code omitted for brevity.
+
+getAuthenticatedClient = (accessToken) => {
+    // Initialize Graph client
+    const client = graph.Client.init({
+        // Use the provided access token to authenticate requests
+        authProvider: (done) => {
+            done(null, accessToken);
+        }
+    });
+
+    return client;
+}
+```
+---
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

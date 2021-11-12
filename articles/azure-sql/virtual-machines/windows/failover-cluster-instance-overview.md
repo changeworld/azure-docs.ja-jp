@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: rsetlem
-ms.openlocfilehash: 317c02a71f555328dfd4d646eb294541df11a0b7
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: d86b7b59e05aa923efd3e4d9228d8ac422fc863d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161540"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219534"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,6 +75,8 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 - FileStream がサポートされます。
 - Premium SSD では、可用性セットがサポートされています。 
 
+> [!NOTE]
+> Azure 共有ディスクは [Standard SSD サイズ](../../../virtual-machines/disks-shared.md#disk-sizes) もサポートしますが、パフォーマンスの制限事項があるため、SQL Server ワークロードに Standard SSD を使用することはお勧めしません。
 
 **制限事項**: 
 - 仮想マシンは、同じ可用性セットおよび同じ近接配置グループに配置することをお勧めします。

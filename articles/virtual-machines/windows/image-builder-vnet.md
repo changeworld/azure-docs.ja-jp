@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb089d643953848e1441bc3b1d6707e7e5f9d6fa
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: df258f347fb615c3ee95932f0ed17c1a24b1955c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690676"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436994"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Windows VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 
@@ -231,7 +231,7 @@ $buildJsonStatus
 ```
 
 ### <a name="query-the-distribution-properties"></a>配布プロパティのクエリ
-VHD の場所に配布している場合、マネージド イメージの場所のプロパティまたは Shared Image Gallery のレプリケーション状態が必要な場合、配布ターゲットがあるたびに "runOutput" のクエリを実行する必要がある場合は、一意の runOutput で配布の種類のプロパティを記述します。
+VHD の場所に配布している場合、マネージド イメージの場所のプロパティまたは Azure Compute Gallery (旧称 Shared Image Gallery) のレプリケーション状態が必要な場合、配布ターゲットがあるたびに "runOutput" のクエリを実行する必要がある場合は、一意の runOutput で配布の種類のプロパティを記述します。
 
 ```powerShell
 $managementEp = $currentAzureContext.Environment.ResourceManagerUrl
@@ -281,4 +281,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure 共有イメージ ギャラリー](../shared-image-galleries.md)に関するページを参照してください。
+[Azure Compute Gallery の詳細](../shared-image-galleries.md)を確認してください。

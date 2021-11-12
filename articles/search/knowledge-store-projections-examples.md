@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 3414e3d5b339334bf0762427c99020ff3a3170ad
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 0aa980d2268f6d055f3aa05a8e30d57712c022df
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134186"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563627"
 ---
 # <a name="define-projections-in-a-knowledge-store"></a>ナレッジ ストアでのプロジェクションを定義する
 
@@ -272,7 +272,7 @@ Power BI では、これらの生成されたキーを利用して、テーブ�
 
 1. [インデクサーの実行を監視](search-howto-monitor-indexers.md)して進行状況を確認し、エラーを検出します。
 
-1. [Storage Explorer を使用](knowledge-store-view-storage-explorer.md)して、Azure Storage でのオブジェクトの作成を確認します。
+1. [ストレージ ブラウザーを使用](knowledge-store-view-storage-explorer.md)して、Azure Storage でオブジェクトが作成されたことを確認します。
 
 1. テーブルを投影する場合は、テーブルの操作と可視化を行うために [Power BI にインポート](knowledge-store-connect-power-bi.md)します。 ほとんどの場合、Power BI によってテーブル間のリレーションシップが自動的に検出されます。
 

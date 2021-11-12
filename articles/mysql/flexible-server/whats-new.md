@@ -7,22 +7,26 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 8406f9b551d80959db983a3837b441dc9f965782
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 36a890298fe87fee7d5ba060c97f31c2e8cfcc6d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005273"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853189"
 ---
-# <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) の新機能
+# <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Azure Database for MySQL - フレキシブル サーバーの新機能
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[Azure Database for MySQL - フレキシブル サーバー](./overview.md#azure-database-for-mysql---flexible-server-preview)は、データベース管理機能と構成設定において、単一サーバー デプロイ モードよりもさらにきめ細かな制御と柔軟性を提供するように設計されたデプロイ モードです。 現在、このサービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。
+[Azure Database for MySQL - フレキシブル サーバー](./overview.md)は、データベース管理機能と構成設定において、単一サーバー デプロイ モードよりもさらにきめ細かな制御と柔軟性を提供するように設計されたデプロイ モードです。 現在、このサービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。
 
 この記事では、2021 年 1 月に利用開始されている Azure Database for MySQL - フレキシブル サーバーの新しいリリースと機能について説明します。 リストは新しい順に記載されており、最新の更新が最初に示されています。
 
 ## <a name="october-2021"></a>2021 年 10 月
+
+- **スレッド プールは現在、Azure Database for MySQL – フレキシブル サーバーで利用できます**
+ 
+    スレッド プールによって、Azure Database for MySQL – フレキシブル サーバーの拡張性が強化されます。 スレッド プールを使用することで、ユーザーはパフォーマンスを最適化し、スループットを向上させ、高い同時実行ワークロードの待機時間を短縮できるようになりました。 [詳細については、こちらを参照してください](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/achieve-up-to-a-50-performance-boost-in-azure-database-for-mysql/ba-p/2909691)。
 
 - **DR シナリオ用の Geo 冗長バックアップの Geo ペア リージョンへの復元**
 
@@ -54,8 +58,20 @@ ms.locfileid: "131005273"
     
     MySQL フレキシブル サーバーの Terraform サポートが [azurerm の最新 v2.81.0 リリース](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md)でリリースされました。 MySQL フレキシブル サーバーのプロビジョニングと管理に関する詳しいリファレンス ドキュメントは[こちら](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server)にあります。 バグや既知の問題は[こちら](https://github.com/hashicorp/terraform-provider-azurerm/issues)にあります。報告することもできます。
 
+- **静的パラメーター innodb_log_file_size が構成可能になりました**
+
+    - [innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) が 256MB、512MB、1GB、2GB に設定できるようになりました。 静的パラメーターであるため、サーバーの再起動が必要になります。 innodb_log_file_size パラメーターを既定値から変更した場合は、再起動の遅延を回避するため、"show global status like 'innodb_buffer_pool_pages_dirty'" の値が 30 秒間 0 のままであるかどうかを確認してください。 詳細については、[Azure Database for MySQL のサーバー パラメーター](./concepts-server-parameters.md)に関するページを参照してください。
+
+- **2 つの追加の Azure リージョンで利用可能**
+
+   Azure Database for MySQL - フレキシブル サーバーが、次の Azure リージョンでご利用いただけるようになりました。
+
+   - 米国西部 3
+   - 米国中北部 [詳細情報](overview.md#azure-regions)。
+
 - **既知の問題**
-    - プライマリ Azure リージョンがダウンしている場合、プライマリ Azure リージョンにストレージをプロビジョニングできないので、Geo 冗長サーバーを geo ペア リージョンに作成することはできません。 geo ペア リージョンで geo 冗長サーバーをプロビジョニングするには、プライマリ リージョンが稼働するまで待機する必要があります。 
+    - プライマリ Azure リージョンがダウンしている場合、プライマリ Azure リージョンにストレージをプロビジョニングできないので、Geo 冗長サーバーを geo ペア リージョンに作成することはできません。 geo ペア リージョンで geo 冗長サーバーをプロビジョニングするには、プライマリ リージョンが稼働するまで待機する必要があります。
+    
 
 ## <a name="september-2021"></a>2021 年 9 月
 
@@ -214,7 +230,7 @@ Azure Database for MySQL - フレキシブル サーバーのこのリリース�
 
 - **プライベート アクセスを使用した仮想ネットワークでのサーバー作成のプロビジョニング エラーの修正**
 
-  仮想ネットワークにサーバーを作成するときに発生するすべてのプロビジョニング エラーが修正されました。 このリリースでは、ユーザーは毎回プライベート アクセスでフレキシブル サーバーを正常に作成できます。  
+  仮想ネットワークにサーバーを作成するときに発生するすべてのプロビジョニング エラーが修正されました。 このリリースでは、ユーザーは毎回プライベート アクセスでフレキシブル サーバーを正常に作成できます。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

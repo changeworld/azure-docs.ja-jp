@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 195325ff9bad726ed62c5955b393d31e4c457f2e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 836ca4cca73b71f98415c05fd89227f53332a265
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836779"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555383"
 ---
 # <a name="create-azure-arc-data-controller-using-the-cli"></a>CLI を使用した Azure Arc データ コントローラーの作成
 
@@ -29,27 +29,31 @@ CLI を使用してデータ コントローラーを作成するには、Azure 
 
 [[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] をインストールする](install-client-tools.md)
 
-選択するターゲット プラットフォームに関係なく、データ コントローラー管理者ユーザーの作成の前に、次の環境変数を設定する必要があります。 これらの資格情報は、必要に応じて、データ コントローラーへの管理者アクセス権を持つ必要がある他のユーザーに提供できます。
+選択するターゲット プラットフォームに関係なく、データ コントローラーの作成の前に、次の環境変数を設定する必要があります。 これらの環境変数は、データ コントローラーの作成後にメトリックとログ ダッシュボードにアクセスするために使用される資格情報になります。
+
 
 ### <a name="set-environment-variables"></a>環境変数の設定
 
-**AZDATA_USERNAME** - Kibana/Grafana 管理者ユーザーの任意のユーザー名。 例: `arcadmin`
+メトリックとログ ダッシュボードにアクセスするために必要な 2 つの環境変数のセットを次に示します。
 
-**AZDATA_PASSWORD** - Kibana/Grafana 管理者ユーザーの任意のパスワード。 パスワードの長さは少なくとも 8 文字で、英大文字、英小文字、数字、記号の 4 種類のうち 3 種類を含んでいる必要があります。
+#### <a name="windows-powershell"></a>Windows PowerShell
+
+```powershell
+$ENV:AZDATA_LOGSUI_USERNAME="<username for Kibana dashboard>"
+$ENV:AZDATA_LOGSUI_PASSWORD="<password for Kibana dashboard>"
+$ENV:AZDATA_METRICSUI_USERNAME="<username for Grafana dashboard>"
+$ENV:AZDATA_METRICSUI_PASSWORD="<password for Grafana dashboard>"
+```
 
 #### <a name="linux-or-macos"></a>Linux または macOS
 
 ```console
-export AZDATA_USERNAME="<your username of choice>"
-export AZDATA_PASSWORD="<your password of choice>"
+export AZDATA_LOGSUI_USERNAME="<username for Kibana dashboard>"
+export AZDATA_LOGSUI_PASSWORD="<password for Kibana dashboard>"
+export AZDATA_METRICSUI_USERNAME="<username for Grafana dashboard>"
+export AZDATA_METRICSUI_PASSWORD="<password for Grafana dashboard>"
 ```
 
-#### <a name="windows-powershell"></a>Windows PowerShell
-
-```console
-$ENV:AZDATA_USERNAME="<your username of choice>"
-$ENV:AZDATA_PASSWORD="<your password of choice>"
-```
 
 Azure Arc データ コントローラーの作成を開始する前に、Kubernetes クラスターに接続して認証し、既存の Kubernetes コンテキストを選択しておく必要があります。 Kubernetes クラスターまたはサービスへの接続方法はさまざまです。 Kubernetes API サーバーへの接続方法については、使用している Kubernetes ディストリビューションまたはサービスのドキュメントを参照してください。
 

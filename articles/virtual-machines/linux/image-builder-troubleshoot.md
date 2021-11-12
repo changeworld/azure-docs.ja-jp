@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ef288e776daaf7aa266d13068647bea1c5a4c27
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4117926fe8de79a295fa3c0a52c1ca54816496ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691889"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427990"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
 
@@ -91,8 +91,8 @@ Microsoft.VirtualMachineImages/imageTemplates 'helloImageTemplateforSIG01' faile
 #### <a name="solution"></a>解決策
 
 シナリオによっては、Azure Image Builder で次のものに対するアクセス許可が必要になる場合があります。
-- ソース イメージまたは Shared Image Gallery リソース グループ
-- ディストリビューション イメージまたは Shared Image Gallery リソース
+- ソース イメージまたは Azure Compute Gallery (旧称 Shared Image Gallery) リソース グループ
+- 配布イメージまたは Azure Compute Gallery リソース
 - ファイル カスタマイザーがアクセスしているストレージ アカウント、コンテナー、または BLOB。 
 
 アクセス許可の構成の詳細については、「[Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する](image-builder-permissions-cli.md)」または「[PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する](image-builder-permissions-powershell.md)」を参照してください
@@ -113,8 +113,8 @@ Status=403 Code="AuthorizationFailed" Message="The client '......' with object i
 #### <a name="solution"></a>解決策
 
 シナリオによっては、Azure Image Builder で次のものに対するアクセス許可が必要になる場合があります。
-* ソース イメージまたは Shared Image Gallery リソース グループ
-* ディストリビューション イメージまたは Shared Image Gallery リソース
+* ソース イメージまたは Azure Compute Gallery リソース グループ
+* 配布イメージまたは Azure Compute Gallery リソース
 * ファイル カスタマイザーがアクセスしているストレージ アカウント、コンテナー、または BLOB。 
 
 アクセス許可の構成の詳細については、「[Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する](image-builder-permissions-cli.md)」または「[PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する](image-builder-permissions-powershell.md)」を参照してください
@@ -176,7 +176,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 ### <a name="understanding-the-customization-log"></a>カスタマイズ ログの概要
 
-ログは詳細です。 イメージ ビルドの、イメージ ディストリビューション (Shared Image Gallery レプリケーションなど) に関する問題などが含まれます。 これらのエラーは、イメージ テンプレートの状態のエラー メッセージで表示されます。
+ログは詳細です。 イメージ ビルドの、イメージ ディストリビューション (Azure Compute Gallery レプリケーションなど) に関する問題などが含まれます。 これらのエラーは、イメージ テンプレートの状態のエラー メッセージで表示されます。
 
 customization.log には次のステージが含まれます。
 
@@ -325,17 +325,17 @@ myBigFile.zip 826000 B / 826000 B  100.00%
 
 ファイル カスタマイザーは、20 MB 未満の小さいファイルのダウンロードにのみ適しています。 それより大きいファイルのダウンロードには、スクリプトまたはインライン コマンドを使用します。 たとえば、Linux では、`wget` や `curl` を使用できます。 Windows では、`Invoke-WebRequest` を使用できます。
 
-### <a name="error-waiting-on-shared-image-gallery"></a>Shared Image Gallery での待機中のエラー
+### <a name="error-waiting-on-azure-compute-gallery"></a>Azure Compute Gallery での待機中のエラー
 
 #### <a name="error"></a>エラー
 
 ```text
-Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in distributing 1 images out of total 1: {[Error 0] [Distribute 0] Error publishing MDI to shared image gallery:/subscriptions/<subId>/resourceGroups/xxxxxx/providers/Microsoft.Compute/galleries/xxxxx/images/xxxxxx, Location:eastus. Error: Error returned from SIG client while publishing MDI to shared image gallery for dstImageLocation: eastus, dstSubscription: <subId>, dstResourceGroupName: XXXXXX, dstGalleryName: XXXXXX, dstGalleryImageName: XXXXXX. Error: Error waiting on shared image gallery future for resource group: XXXXXX, gallery name: XXXXXX, gallery image name: XXXXXX.Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded}
+Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in distributing 1 images out of total 1: {[Error 0] [Distribute 0] Error publishing MDI to Azure Compute Gallery:/subscriptions/<subId>/resourceGroups/xxxxxx/providers/Microsoft.Compute/galleries/xxxxx/images/xxxxxx, Location:eastus. Error: Error returned from SIG client while publishing MDI to Azure Compute Gallery for dstImageLocation: eastus, dstSubscription: <subId>, dstResourceGroupName: XXXXXX, dstGalleryName: XXXXXX, dstGalleryImageName: XXXXXX. Error: Error waiting on Azure Compute Gallery future for resource group: XXXXXX, gallery name: XXXXXX, gallery image name: XXXXXX.Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded}
 ```
 
 #### <a name="cause"></a>原因
 
-イメージが追加されて、Shared Image Gallery (SIG) にレプリケートされるのを待っている間に、Azure VM Image Builder がタイムアウトしました。 イメージが SIG に挿入されている場合は、イメージのビルドは成功したものと見なすことができます。 ただし、Azure VM Image Builder は共有イメージ ギャラリーでのレプリケーションが完了するのを待っていたため、プロセス全体は失敗しました。 ビルドが失敗した場合でも、レプリケーションは続行されます。 ディストリビューションの *runOutput* を調べることで、イメージ バージョンのプロパティを取得できます。
+イメージが追加されて、Azure Compute Gallery にレプリケートされるのを待っている間に、Azure VM Image Builder がタイムアウトしました。 イメージが SIG に挿入されている場合は、イメージのビルドは成功したものと見なすことができます。 ただし、Azure VM Image Builder は Azure Compute Gallery でのレプリケーションが完了するのを待っていたため、プロセス全体は失敗しました。 ビルドが失敗した場合でも、レプリケーションは続行されます。 ディストリビューションの *runOutput* を調べることで、イメージ バージョンのプロパティを取得できます。
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -624,7 +624,7 @@ Azure DevOps の機能と制限事項の詳細については、「[Microsoft �
  
 #### <a name="solution"></a>解決策
 
-独自の DevOps エージェントをホストするか、ビルドの時間を短縮することができます。 たとえば、Shared Image Gallery に配布している場合は、1 つのリージョンにレプリケートします。 非同期的にレプリケートする場合。 
+独自の DevOps エージェントをホストするか、ビルドの時間を短縮することができます。 たとえば、Azure Compute Gallery に配布している場合は、1 つのリージョンにレプリケートします。 非同期的にレプリケートする場合。 
 
 ### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Windows ログオンが遅い:'Windows モジュール インストーラーの処理が完了するのをお待ちください'
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7e10c4606c26f9d340437305a49e1ae236eecb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589171"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456083"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -152,6 +152,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 * 2020 年 9 月 10 日 - "displayName" および "manager" 属性のサポートを削除しました。
 * 03/15/2021 - 承認方法を永続的なベアラー トークンから OAuth コード付与フローに更新しました。
+* 10/28/2021 - 既定のマッピングを **mail-> emails[type eq “work”].value** に更新しました。
+* 10/28/2021 - レート制限が読み取りで毎分 300、書き込みで毎分 1000 に更新されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

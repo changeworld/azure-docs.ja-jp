@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 56ba42b3aca7d48a62edd264a8ec867fcda5107c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3403cebab79b49f3a22353bec0a03b68b5a24f0f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074519"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432835"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Azure の仮想マシン スケール セットのフレキシブル オーケストレーション
 
@@ -64,7 +64,7 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
     - また、自動スケーリングを行うと、需要が少ないときに、アプリケーションを実行する不要な VM インスタンスの数を最小限に抑えることができます。その一方で、需要の増加に応じて VM インスタンスが自動的に追加されるため、顧客は満足できるレベルのパフォーマンスの提供を受け続けることができます。 この機能は、必要に応じてコストを削減し、Azure リソースを効率的に作成するのに役立ちます。
 
 - **大規模に動作する**
-    - スケール セットでは、共有イメージ ギャラリーを通して標準のマーケットプレース イメージとカスタム イメージ用の最大 1,000 個の VM インスタンスがサポートされます。 マネージド イメージを使用してスケール セットを作成する場合、制限は 600 個の VM インスタンスです。
+    - スケール セットでは、Azure Compute Gallery (以前の Shared Image Gallery) を通して標準のマーケットプレース イメージとカスタム イメージ用の最大 1,000 個の VM インスタンスがサポートされます。 マネージド イメージを使用してスケール セットを作成する場合、制限は 600 個の VM インスタンスです。
     - 運用環境のワークロードで最高のパフォーマンスを実現するには、[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) を使用してください。
 
 

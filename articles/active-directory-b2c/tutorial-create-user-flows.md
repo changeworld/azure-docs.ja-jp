@@ -11,12 +11,12 @@ ms.date: 10/18/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63af3b70ebfde53078d71955a95e55e03a6c591b
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5cdf2cfb9b530721a8de31501c2f763f0c61bd21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162494"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240891"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する
 
@@ -145,7 +145,7 @@ ms.locfileid: "130162494"
 > この記事では、テナントを手動で設定する方法について説明します。 この記事からプロセス全体を自動化できます。 自動化すると、Azure AD B2C [SocialAndLocalAccountsWithMFA スターター パック ](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) がデプロイされます。これにより、サインアップとサインイン、パスワードのリセット、プロファイル編集の体験が提供されます。 以下のチュートリアルを自動化するには、[IEF セットアップ アプリ](https://aka.ms/iefsetup)にアクセスし、指示に従います。
 
 
-## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
+## <a name="add-signing-and-encryption-keys-for-identity-experience-framework-applications"></a>Identity Experience Framework アプリケーションに署名および暗号化キーを追加する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
@@ -276,33 +276,6 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 1. ファイルを保存します。
 
-## <a name="upload-the-policies"></a>ポリシーをアップロードします。
-
-1. Azure portal で B2C テナントに移動し、 **[Identity Experience Framework]** を選択します。
-1. **[カスタム ポリシーのアップロード]** を選択します。
-1. 次の順序でポリシー ファイルをアップロードします。
-    1. *TrustFrameworkBase.xml*
-    2. *TrustFrameworkLocalization.xml*
-    3. *TrustFrameworkExtensions.xml*
-    4. *SignUpOrSignin.xml*
-    5. *ProfileEdit.xml*
-    6. *PasswordReset.xml*
-
-ファイルをアップロードすると、Azure によって、それぞれに `B2C_1A_` が追加されます。
-
-> [!TIP]
-> XML エディターで検証がサポートされている場合は、スターター パックのルート ディレクトリにある `TrustFrameworkPolicy_0.3.0.0.xsd` という XML スキーマに対してファイルを検証します。 XML スキーマ検証では、アップロードする前にエラーを識別します。
-
-## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
-
-1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
-1. カスタム ポリシーの概要ページの **[アプリケーションの選択]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。
-1. **[返信 URL]** が `https://jwt.ms` であることを確認します。
-1. **[今すぐ実行]** を選択します。
-1. メール アドレスを使用してサインアップします。 **[Facebook]** オプションはまだ使用しないでください。 
-1. もう一度 **[今すぐ実行]** を選択します。
-1. 同じアカウントでサインインし、構成が正しく行われていることを確認します。
-
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
 
 **SocialAndLocalAccounts** スターター パックには、Facebook のソーシャル サインインが含まれています。 Facebook はカスタム ポリシーを使用するための必須条件では "*ありません*" が、ここではカスタム ポリシーでソーシャル ログインを連携できることを示す目的で使用されています。
@@ -328,7 +301,7 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. **［作成］** を選択します
 
 ### <a name="update-trustframeworkextensionsxml-in-custom-policy-starter-pack"></a>カスタム ポリシー スターター パックの TrustFrameworkExtensions.xml を更新する
-1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
+`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで `client_id` の値を Facebook アプリケーションの ID と置き換え、変更を保存します。
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">
@@ -337,11 +310,34 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
        <Item Key="client_id">00000000000000</Item>
    ```
 
-1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
+
+## <a name="upload-the-policies"></a>ポリシーをアップロードします。
+
+1. Azure portal で B2C テナントに移動し、 **[Identity Experience Framework]** を選択します。
+1. **[カスタム ポリシーのアップロード]** を選択します。
+1. 次の順序でポリシー ファイルをアップロードします。
+    1. *TrustFrameworkBase.xml*
+    2. *TrustFrameworkLocalization.xml*
+    3. *TrustFrameworkExtensions.xml*
+    4. *SignUpOrSignin.xml*
+    5. *ProfileEdit.xml*
+    6. *PasswordReset.xml*
+
+ファイルをアップロードすると、Azure によって、それぞれに `B2C_1A_` が追加されます。
+
+> [!TIP]
+> XML エディターで検証がサポートされている場合は、スターター パックのルート ディレクトリにある `TrustFrameworkPolicy_0.3.0.0.xsd` という XML スキーマに対してファイルを検証します。 XML スキーマ検証では、アップロードする前にエラーを識別します。
+
+## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
+
 1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
-1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
-
-
+1. カスタム ポリシーの概要ページの **[アプリケーションの選択]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。
+1. **[返信 URL]** が `https://jwt.ms` であることを確認します。
+1. **[今すぐ実行]** を選択します。
+1. メール アドレスを使用してサインアップします。
+1. もう一度 **[今すぐ実行]** を選択します。
+1. 同じアカウントでサインインし、構成が正しく行われていることを確認します。
+1. 再び **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

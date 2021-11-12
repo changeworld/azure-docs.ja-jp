@@ -7,21 +7,18 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 310e3e4b4b4b00a4b3255cfd581b155c28ed7705
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a53c532d4f95edfea9aaa4ae96a9d0a92d9c9b10
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128609367"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425389"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成する
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server"></a>クイックスタート: ARM テンプレートを使用して Azure Database for MySQL - フレキシブル サーバーを作成する
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
-
-Azure Database for MySQL - フレキシブル サーバー (プレビュー) は、高可用性の MySQL データベースをクラウド内で実行、管理、スケーリングするために使用されるマネージド サービスです。 Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、複数のサーバー、または 1 つのサーバー上の複数のデータベースをデプロイするためのフレキシブル サーバーをプロビジョニングできます。
+Azure Database for MySQL - フレキシブル サーバーは、高可用性の MySQL データベースをクラウド内で実行、管理、スケーリングするために使用されるマネージド サービスです。 Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、複数のサーバー、または 1 つのサーバー上の複数のデータベースをデプロイするためのフレキシブル サーバーをプロビジョニングできます。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -87,7 +84,7 @@ _mysql-flexible-server-template.json_ ファイルを作成し、そこに次の
     }
   },
   "variables": {
-    "api": "2020-07-01-preview",
+    "api": "2021-05-01",
     "firewallRules": "[parameters('firewallRules').rules]",
     "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
     "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"subnetArmResourceId\": \"\" }'), parameters('vnetData'))]",

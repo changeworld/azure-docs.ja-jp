@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5f70febb77d61e9d797c618faa82c8275f37bfef
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/11/2021
+ms.openlocfilehash: b2119a4168dcc1addec0bff1d046ac90e9530a8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431386"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308278"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Azure アプリケーション オファーのソリューション テンプレートを計画する
 

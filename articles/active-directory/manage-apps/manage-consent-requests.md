@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: de4553fae64801ae029a01e218658e847d5acb03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 039461797d9b451703959f43977234278e87827d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066940"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424061"
 ---
 # <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
 
@@ -127,7 +127,7 @@ Microsoft では、ユーザーが検証された発行元からのアプリと�
 
 1. クライアント アプリケーションのサービス プリンシパルが作成されます (存在しない場合)。 サービス プリンシパルは、Azure ADテナント内にアプリケーションまたはサービスのインスタンスです。 アプリまたはサービスに許可されたアクセス権は、このサービス プリンシパル オブジェクトに関連付けられている。
 1. アプリケーションがアクセスを必要とする API ごとに、その API に対して、アプリケーションがユーザーに代わってアクセスするために必要なアクセス許可に対して委任されたアクセス許可が作成されます。 委任されたアクセス許可付与は、ユーザーがサインインした場合に、アプリケーションがユーザーに代わって API にアクセスする権限を許可します。
-1. ユーザーはクライアント アプリケーションを割り当てられます。 アプリケーションをユーザーに割り当てると、そのユーザーの [マイ アプリ](my-apps-deployment-plan.md) ポータルにアプリケーションがリストに表示され、ユーザーに代わって許可されたアクセス権のレビューと取り消しが可能になります。
+1. ユーザーはクライアント アプリケーションを割り当てられます。 アプリケーションをユーザーに割り当てると、そのユーザーの [マイ アプリ](my-apps-deployment-plan.md) ポータルにアプリケーションがリストに確実に表示され、ユーザーに代わって許可されたアクセス権の確認と取り消しが可能になります。
 
 1 人のユーザーに代わってアプリケーションに同意を許可するステップを手動で実行するには、以下の詳細が必要です。
 

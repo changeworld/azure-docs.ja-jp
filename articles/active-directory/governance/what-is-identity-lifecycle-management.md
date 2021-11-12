@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: compliance
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6eade29bea91a9ea4bf50835a050356991cfcf0
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: 692f2ca4e57644ff321bb47cdf4238360bf4bb68
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428133"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447989"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>ID ライフサイクル管理とは
 

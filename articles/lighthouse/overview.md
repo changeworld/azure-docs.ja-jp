@@ -1,22 +1,22 @@
 ---
 title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
-ms.date: 07/13/2021
+ms.date: 11/02/2021
 ms.topic: overview
-ms.openlocfilehash: 2da14a65f146a181af39a8c06a8089fee9010467
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 8130a88042678d277fd5fe727f0593e8805bb5b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113666566"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445787"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
 Azure Lighthouse により、マルチテナントの管理が実現し、リソース間でのスケーラビリティや自動化の向上と統制機能の強化が可能になります。
 
-Azure Lighthouse を使用すれば、[Azure プラットフォームに組み込まれた包括的かつ信頼性の高いツール](concepts/architecture.md)を使用して、サービス プロバイダーがマネージド サービスを提供できるようになります。 お客様は、自社のテナントにアクセスできるユーザー、そのユーザーがアクセスできるリソース、および実行可能な操作の制御を維持できます。 [企業の IT 組織](concepts/enterprise.md)が複数のテナントにまたがってリソースを管理する場合にも有益なオファリングとなっています。
+Azure Lighthouse を使用すれば、[Azure プラットフォームに組み込まれた包括的かつ信頼性の高いツール](concepts/architecture.md)を使用して、サービス プロバイダーがマネージド サービスを提供できるようになります。 お客様は、自社のテナントにアクセスできるユーザー、そのユーザーがアクセスできるリソース、および実行可能な操作の制御を維持できます。 複数のテナント間でリソースを管理する[エンタープライズ組織](concepts/enterprise.md)では、管理タスクを効率化するために Azure Lighthouse を使用することもできます。
 
-[テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)により、[Azure Policy](how-to/policy-at-scale.md)、[Azure Sentinel](how-to/manage-sentinel-workspaces.md)、[Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) などの Azure サービスで、より効率的に作業を行うことができます。 ユーザーは[アクティビティ ログ](how-to/view-service-provider-activity.md)から他のユーザーが加えた変更と誰が実行したかを参照できます。これらは顧客のテナントに格納されます (管理テナントのユーザーが表示できます)。
+[テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)により、[Azure Policy](how-to/policy-at-scale.md)、[Azure Sentinel](how-to/manage-sentinel-workspaces.md)、[Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) などの Azure サービスで、より効率的に作業を行うことができます。 ユーザーは[アクティビティ ログ](how-to/view-service-provider-activity.md)から他のユーザーが加えた変更と誰が実行したかを参照できます。これらは顧客のテナントに格納され、また、管理テナントのユーザーが表示できます。
 
 ![Azure Lighthouse の概要図](media/azure-lighthouse-overview.jpg)
 
@@ -24,9 +24,9 @@ Azure Lighthouse を使用すれば、[Azure プラットフォームに組み�
 
 Azure Lighthouse は、サービス プロバイダーがマネージド サービスを効率的に構築および提供するのに役立ちます。 利点は次のとおりです。
 
-- **大規模な管理**: 顧客エンゲージメントとライフサイクル操作によって顧客リソースの管理が容易になり、スケーラビリティが向上します。 既存の API、管理ツール、およびワークフローを、配置されているリージョンにかかわらず、Azure の外部でホストされているマシンを含む委任されたリソースと共に使用できます。
-- **顧客から見た可視性と制御の向上**: 顧客は、管理のために委任するスコープと許可されるアクセス許可を細かく制御できます。 顧客は、[サービス プロバイダーのアクションを監査](how-to/view-service-provider-activity.md)し、必要に応じてアクセス権を完全に削除できます。
-- **包括的で一元化されたプラットフォーム ツール**: Azure Lighthouse は、既存のツールと API、[Azure Managed Applications](concepts/managed-applications.md)、および[クラウド ソリューション プロバイダー プログラム (CSP)](concepts/cloud-solution-provider.md) などのパートナー プログラムと連動します。 この柔軟性によって、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応します。 Azure Lighthouse を既存のワークフローとアプリケーションに統合し、[パートナー ID をリンクする](how-to/partner-earned-credit.md)ことで、顧客エンゲージメントへの影響を追跡できます。
+- **大規模な管理**: 顧客エンゲージメントとライフサイクル操作によって顧客リソースの管理が容易になり、スケーラビリティが向上します。 既存の API、管理ツール、ワークフローを、配置されているリージョンにかかわらず、Azure の外部でホストされているマシンを含む委任されたリソースと共に使用できます。
+- **顧客から見た可視性と制御の向上**: 顧客は、管理のために委任するスコープと許可されるアクセス許可を細かく制御できます。 顧客は、[サービス プロバイダーのアクションを監査](how-to/view-service-provider-activity.md)し、アクセス権をいつでも完全に削除できます。
+- **包括的で一元化されたプラットフォーム ツール**: Azure Lighthouse は、既存のツールと API、[Azure Managed Applications](concepts/managed-applications.md)、[クラウド ソリューション プロバイダー プログラム (CSP)](concepts/cloud-solution-provider.md) などのパートナー プログラムと連動します。 この柔軟性によって、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応します。 Azure Lighthouse を既存のワークフローとアプリケーションに統合し、[パートナー ID をリンクする](how-to/partner-earned-credit.md)ことで、顧客エンゲージメントへの影響を追跡できます。
 
 ## <a name="capabilities"></a>機能
 

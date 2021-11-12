@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f5442c7ade736c4313812a4cb20e6535492acc3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: fb7604476fb323d829f0c70253dee1138c8bd7ee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693409"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277165"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 シリーズの仮想マシンの概要 
 

@@ -7,12 +7,12 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: b7403cec5df1ac5f7d5a313739f597494b7c48ee
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 855ad26422eb91c5c971d4525d419e5cee8b6606
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386663"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476416"
 ---
 # <a name="architecture"></a>アーキテクチャ
 

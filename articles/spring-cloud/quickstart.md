@@ -1,24 +1,24 @@
 ---
-title: クイックスタート - 初めての Azure Spring Cloud アプリケーションをデプロイする
-description: このクイックスタートでは、Spring Cloud アプリケーションを Azure Spring Cloud にデプロイします。
+title: クイックスタート - 初めてのアプリケーションを Azure Spring Cloud にデプロイする
+description: このクイックスタートでは、アプリケーションを Azure Spring Cloud にデプロイします。
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/12/2021
+ms.date: 10/18/2021
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 33718af136a6f9675e7cc9360f7f18dd79935e09
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: bdd778f9bad5bbafb48aa52c8059cdeadd3a0fc5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984512"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241269"
 ---
-# <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
+# <a name="quickstart-deploy-your-first-application-in-azure-spring-cloud"></a>クイックスタート - 初めてのアプリケーションを Azure Spring Cloud にデプロイする
 
 ::: zone pivot="programming-language-csharp"
-このクイックスタートでは、Azure で実行する単純な Azure Spring Cloud マイクロサービス アプリケーションをデプロイする方法について説明します。
+このクイックスタートでは、Azure Spring Cloud で実行する小規模なアプリケーションをデプロイする方法について説明します。
 
 >[!NOTE]
 > Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
@@ -245,7 +245,7 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
 
    `--main-entry` オプションにより、アプリケーションのエントリ ポイントを含む *.dll* ファイルを識別します。 サービスは、 *.zip* ファイルをアップロードした後、すべてのファイルとフォルダーを抽出し、`--main-entry` で指定された *.dll* ファイル内のエントリ ポイントを実行しようとします。
 
-   アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** ブレードに移動します。
+   アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** セクションに移動します。
 
 ## <a name="test-the-app"></a>アプリのテスト
 
@@ -314,7 +314,8 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-このクイックスタートでは、Azure で実行する単純な Azure Spring Cloud マイクロサービス アプリケーションをデプロイする方法について説明します。
+
+このクイックスタートでは、Azure Spring Cloud に小規模なアプリケーションをデプロイする方法について説明します。
 
 このチュートリアルで使用されるアプリケーション コードは、Spring Initializr を使用してビルドされる単純なアプリです。 この例を完了すると、アプリケーションにオンラインでアクセスし、Azure portal で管理できるようになります。
 
@@ -389,7 +390,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5
 5. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
 
     - **サブスクリプション**:このリソースに対する課金用のサブスクリプションを選択します。
-    - **[リソース グループ]** :新しいリソース用に新しいリソース グループを作成することをお勧めします。 これが、後の手順で **\<resource group name\>** として使用されます。
+    - **[リソース グループ]** :新しいリソース用に新しいリソース グループを作成することをお勧めします。 このリソース グループは、後の手順で **\<resource group name\>** として使用します。
     - **[サービスの詳細/名前]** : **\<service instance name\>** を指定します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
     - **[場所]** :自分のサービス インスタンスのリージョンを選択します。
 
@@ -426,7 +427,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5
     mvn clean package -DskipTests
     ```
 
-1. パブリック エンドポイントが割り当てられるアプリを作成します。 Spring Cloud プロジェクトの生成時に Java バージョン 11 を選択した場合、--runtime-version=Java_11 スイッチを含めます。
+1. パブリック エンドポイントが割り当てられるアプリを作成します。 Spring Cloud プロジェクトの生成時に Java バージョン 11 を選択した場合、`--runtime-version=Java_11` スイッチを含めます。
 
     ```azurecli
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
@@ -438,7 +439,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.5
     az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --artifact-path <jar file path>/hellospring-0.0.1-SNAPSHOT.jar
     ```
 
-1. アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** ブレードに移動します。 アプリケーションの状態が表示されるはずです。
+1. アプリケーションのデプロイが完了するまでに数分かかります。 デプロイが完了したことを確認するには、Azure portal で **[アプリ]** セクションに移動します。 アプリケーションの状態が表示されるはずです。
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
@@ -457,19 +458,32 @@ Azure にデプロイするには、Azure アカウントでサインインし�
 
 1. IntelliJ のプロジェクト エクスプローラーで対象のプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
 
-    [![Azure へのデプロイ 1](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png)](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
+    [ ![プロジェクトを Azure にデプロイする場所](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png) ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
 1. **[Name]\(名前\)** フィールドのアプリの名前はそのまま使用します。 **[Name]\(名前\)** は、アプリ名ではなく構成を参照します。 通常、ユーザーはこれを変更する必要はありません。
-1. **[Artifact]\(成果物\)** テキストボックスで、 *[Maven : com.example:hellospring-0.0.1-SNAPSHOT]* を選択します。
-1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションを確認します。
-1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
-1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
-1. **[App:]\(アプリ:\)** ボックスで、 **[Create app]\(アプリの作成\)** を選択します。
-1. 「*hellospring*」と入力し、 **[OK]** を選択します。
+1. **[Artifact]\(成果物\)** テキスト ボックスで、 **[Maven:com.example:hellospring-0.0.1-SNAPSHOT]** を選択します。
+1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションが正しいことを確認します。
+1. **[Service]\(サービス\)** テキスト ボックスで、「[Azure Spring Cloud のインスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
+1. **[App]\(アプリ\)** ボックスで、 **+** を選択して、新しいアプリを作成します。
 
-    [ ![Azure へのデプロイ [OK]](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png) ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
+    ![選択して新しい IntelliJ アプリを作成する場所](media/spring-cloud-quickstart-java/intellij-create-new-app.png)
 
-1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[実行]** ボタンを選択して、デプロイを開始します。 このプラグインは、`hellospring` アプリに対して `mvn package` コマンドを実行し、`package` コマンドによって生成された jar をデプロイします。
+1. **[App name:]\(アプリ名:\)** テキスト ボックスで、「*hellospring*」と入力して、 **[More settings]\(詳細設定\)** チェック ボックスをオンにします。
+1. **[Public endpoint]\(パブリック エンドポイント\)** の横にある **[Enable]\(有効\)** ボタンを選択します。 ボタンが *[Disable]\(無効\) \<to be enabled\>* に変わります。
+1. Java 11 を使用した場合は、 **[Runtime]\(ランタイム\)** で **[Java 11]** を選択します。
+1. **[OK]** を選択します。
+
+    ![パブリック エンドポイントの有効を選択後にどのように表示されるか](media/spring-cloud-quickstart-java/intellij-create-new-app-2.png)
+
+1. **[Before launch]\(起動前\)** で、 **[Run Maven Goal 'hellospring:package']\(Maven の目標 'hellospring:package' を実行\)** 行を選択し、鉛筆を選択してコマンド ラインを編集します。
+
+    ![Maven の目標を編集する](media/spring-cloud-quickstart-java/intellij-edit-maven-goal.png)
+
+1. **[Command line]\(コマンド ライン\)** テキスト ボックスの「*package*」の後に「 *-DskipTests*」と入力し、 **[OK]** を選択します。
+
+    ![Azure へのデプロイ [OK]](media/spring-cloud-quickstart-java/intellij-maven-goal-command-line.png)
+
+1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[Run]\(実行\)** ボタンを選択して、デプロイを開始します。 このプラグインは、`hellospring` アプリに対して `mvn package -DskipTests` コマンドを実行し、`package` コマンドによって生成された jar をデプロイします。
 
 ---
 
@@ -517,7 +531,7 @@ az spring-cloud app logs -n hellospring -s <service instance name> -g <resource 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-前の手順で作成した Azure リソースは、サブスクリプションに残っている間は課金され続けます。 これらのリソースが今後は必要ないと予想される場合は、ポータルから、または Azure CLI で次のコマンドを実行して、このリソース グループを削除してください。
+上記の手順で作成した Azure リソースは、サブスクリプションに残っている間は課金され続けます。 これらのリソースが今後は必要ないと予想される場合は、ポータルから、または Azure CLI で次のコマンドを実行して、このリソース グループを削除してください。
 
 ```azurecli
 az group delete --name <your resource group name> --yes

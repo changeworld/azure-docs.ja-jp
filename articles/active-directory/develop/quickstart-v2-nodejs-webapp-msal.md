@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 3421c519c4ab059cda1d413db3906b3f1ed76ca0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a593aef3ff99edb498e899b0d8db46c7b4636683
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594690"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427705"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -46,7 +46,7 @@ ms.locfileid: "128594690"
 > 1. **[リダイレクト URI]** の値を `http://localhost:3000/redirect` に設定します。
 > 1. **[登録]** を選択します。
 > 1. 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
-> 1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。  説明を空白のままにし、既定の有効期限をそのままにして、 **[追加]** を選択します。
+> 1. **[管理]** で、 **[証明書とシークレット]**  >  **[クライアント シークレット]**  >  **[新しいクライアント シークレット]** の順に選択します。  説明を空白のままにし、既定の有効期限をそのままにして、 **[追加]** を選択します。
 > 1. 後で使用するために、 **[クライアント シークレット]** の値を書き留めます。
 
 > [!div class="sxs-lookup" renderon="portal"]

@@ -10,17 +10,16 @@ ms.topic: reference
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 30da74a6d94f2460a980737670d65442c0ddb3ac
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c670f060e7849f844997c0feefd60229b90e5202
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984404"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474005"
 ---
 # <a name="request-service-rest-api-presentation-specification-preview"></a>Request Service REST API の提示の仕様 (プレビュー)
 
-Azure Active Directory (Azure AD) の検証可能な資格情報の Request Service REST API を使用すると、検証可能な資格情報の発行と検証を行うことができます。 この記事では、提示要求のための Request Service REST API を指定します。 提示要求を使用すると、ユーザーに検証可能な資格情報の提示を求め、その資格情報を検証することができます。
-
+Azure Active Directory (Azure AD) 検証可能な資格情報には、要求サービス REST API が含まれています。 この API を使用すると、資格情報を発行して検証できます。 この記事では、提示要求のための Request Service REST API を指定します。 提示要求を使用すると、ユーザーに検証可能な資格情報の提示を求め、その資格情報を検証することができます。
 
 ## <a name="http-request"></a>HTTP 要求
 
@@ -28,7 +27,7 @@ Request Service REST API の提示要求では、次の HTTP メソッドがサ�
 
 | メソッド |メモ  |
 |---------|---------|
-|POST | この記事で指定するように、JSON ペイロードを使用します。 |
+|POST | この記事で指定されているように、JSON ペイロードを使用します。 |
 
 Request Service REST API の提示要求では、次の HTTP ヘッダーが必要です。
 
@@ -37,7 +36,7 @@ Request Service REST API の提示要求では、次の HTTP ヘッダーが必�
 |`Authorization`| アクセス トークンをベアラー トークンとして HTTP 要求の Authorization ヘッダーにアタッチします。 たとえば、「 `Authorization: Bearer <token>` 」のように入力します。|
 |`Content-Type`| `Application/json`|
 
-Request Service REST API に対する HTTP POST 要求を作成します。 `{tenantID}` を実際の[テナント ID](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application) またはテナント名に置き換えます。
+Request Service REST API に対する HTTP POST 要求を作成します。 `{tenantID}` を実際のテナント ID またはテナント名に置き換えます。
 
 ```http
 https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -63,7 +62,7 @@ Authorization: Bearer  <token>
 } 
 ```  
 
-Request Service REST API を呼び出すには、次のアクセス許可が必要です。 詳細については、「[アクセス トークンを取得するためのアクセス許可を付与する](verifiable-credentials-configure-tenant.md#31-grant-permissions-to-get-access-tokens)」を参照してください。
+Request Service REST API を呼び出すには、次のアクセス許可が必要です。 詳細については、「[アクセス トークンを取得するためのアクセス許可を付与する](verifiable-credentials-configure-tenant.md#grant-permissions-to-get-access-tokens)」を参照してください。
 
 | アクセス許可の種類 | アクセス許可  |
 |---------|---------|
@@ -106,15 +105,15 @@ Request Service REST API を呼び出すには、次のアクセス許可が必�
 
 |パラメーター |Type  | 説明 |
 |---------|---------|---------|
-| `includeQRCode` |  boolean |   この要求の応答に QR コードを含まれるかどうかを決定します。 QR コードを提示し、ユーザーにそれをスキャンするよう指示します。 QR コードをスキャンすると、この提示要求で認証アプリが起動されます。 指定できる値 `true` (既定値)、または `false`。 `false` に設定したら、戻された `url` プロパティを使用してディープ リンクを表示します。  |
-| `authority` | string|  検証者の Azure AD テナントの分散型識別子です。 詳細については、「[テナントの詳細を収集してサンプル アプリケーションを設定する](verifiable-credentials-configure-verifier.md#gather-tenant-details-to-set-up-your-sample-application)」を参照してください。|
+| `includeQRCode` |  ブール型 |   この要求の応答に QR コードを含まれるかどうかを決定します。 QR コードを提示し、ユーザーにそれをスキャンするよう指示します。 QR コードをスキャンすると、この提示要求で認証アプリが起動されます。 指定できる値は、`true` (既定値) または `false`です。 値を `false` に設定したら、戻された `url` プロパティを使用してディープ リンクを表示します。  |
+| `authority` | string|  検証者の Azure AD テナントの分散型識別子 (DID) です。 詳細については、「[テナントの詳細を収集してサンプル アプリケーションを設定する](verifiable-credentials-configure-verifier.md#gather-tenant-details-to-set-up-your-sample-application)」を参照してください。|
 | `registration` | [RequestRegistration](#requestregistration-type)|  検証者に関する情報を提供します。 |
 | `presentation` | [RequestPresentation](#requestpresentation-type)| 検証可能な資格情報の提示要求に関する情報を提供します。  |
 |`callback`|  [Callback](#callback-type)| 検証可能な資格情報の提示プロセス中に、開発者が UI を更新できるようにします。 ユーザーがこのプロセスを完了して、結果がアプリケーションに返されたら、プロセスを続行します。|
 
 ### <a name="requestregistration-type"></a>RequestRegistration 型
 
-RequestRegistration 型により、発行者の情報登録が提供されます。 RequestRegistration 型には、次のプロパティが含まれています。
+`RequestRegistration` 型により、発行者の情報登録が提供されます。 `RequestRegistration` 型には次のプロパティが含まれます。
 
 |プロパティ |Type |説明 |
 |---------|---------|---------|
@@ -126,37 +125,36 @@ RequestRegistration 型により、発行者の情報登録が提供されます
 
 ### <a name="requestpresentation-type"></a>RequestPresentation 型
 
-RequestPresentation により、検証可能な資格情報の提示に必要な情報が提供されます。 RequestPresentation には、次のプロパティが含まれています。
+`RequestPresentation` 型は、検証可能な資格情報の提示に必要な情報を提供します。 `RequestPresentation` には次のプロパティが含まれます。
 
 |プロパティ |Type |説明 |
 |---------|---------|---------|
-| `includeReceipt` |  boolean | この要求の応答に受信確認を含めるかどうかを決定します。 指定できる値は `true`、または `false` (既定値) です。 受信確認には、認証子から検証可能な資格情報サービスに送信された元のペイロードが含まれます。  受信確認はトラブルシューティングに役立ちます。既定では設定しないでください。 OpenId Connect SIOP 要求の場合、受信確認には元の要求の ID トークンが含まれます。 |
+| `includeReceipt` |  ブール型 | この要求の応答に受信確認を含めるかどうかを決定します。 指定できる値は `true` または `false` (既定値) です。 受信確認には、認証子から検証可能な資格情報サービスに送信された元のペイロードが含まれます。 受信確認はトラブルシューティングに役立ちます。既定では設定しないでください。 `OpenId Connect SIOP` 要求の場合、受信確認には元の要求の ID トークンが含まれます。 |
 | `requestedCredentials` | collection| [RequestCredential](#requestcredential-type) オブジェクトのコレクション。|
 
 ### <a name="requestcredential-type"></a>RequestCredential 型
 
-RequestCredential により、ユーザーが指定する必要のある要求された資格情報に関する情報が提供されます。 RequestCredential には、次のプロパティが含まれています。
+`RequestCredential` により、ユーザーが指定する必要のある要求された資格情報に関する情報が提供されます。 `RequestCredential` には次のプロパティが含まれます。
 
 |プロパティ |Type |説明 |
 |---------|---------|---------|
-| `type`| string| 検証可能な資格情報の種類。 `type` は、**発行者** の検証可能な資格情報のマニフェストで定義されている種類と一致している必要があります。 たとえば、「 `VerifiedCredentialExpert` 」のように入力します。 発行者マニフェストを取得するには、ガイダンス「[資格情報と環境の詳細を収集してサンプル アプリケーションを設定する](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application)」に従います。 **[Issue credential URL]\(資格情報 URL の発行\)** をコピーして Web ブラウザーで開き、**id** プロパティを確認します。 |
+| `type`| string| 検証可能な資格情報の種類。 `type` は、`issuer` の検証可能な資格情報のマニフェスト (`VerifiedCredentialExpert` など) で定義されている種類と一致している必要があります。 発行者マニフェストを取得するには、「[資格情報と環境の詳細を収集してサンプル アプリケーションを設定する](verifiable-credentials-configure-issuer.md)」をご覧ください。 **[Issue credential URL]\(資格情報 URL の発行\)** をコピーして Web ブラウザーで開き、**id** プロパティを確認します。 |
 | `purpose`| string | この検証可能な資格情報を要求する目的についての情報を提供します。 |
-| `acceptedIssuers`| 文字列コレクション | サブジェクトで提示できる検証可能な資格情報の種類を発行できる発行者の DID のコレクション。 発行者 DID を取得するには、ガイダンス「[資格情報と環境の詳細を収集してサンプル アプリケーションを設定する](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application)」に従い、**分散型識別子 (DID)** の値をコピーします。 |
-
+| `acceptedIssuers`| 文字列コレクション | サブジェクトで提示できる検証可能な資格情報の種類を発行できる発行者の DID のコレクション。 発行者 DID を取得するには、「[資格情報と環境の詳細を収集してサンプル アプリケーションを設定する](verifiable-credentials-configure-issuer.md)」を参照し、**分散型識別子 (DID)** の値をコピーします。 |
 
 ### <a name="callback-type"></a>コールバックの種類
 
-Request Service REST API により、コールバック エンドポイントに対する複数のイベントが生成されます。 それらのイベントを使用すると、UI を更新し、結果がアプリケーションに返されたらプロセスを続行できます。 Callback 型には、次のプロパティが含まれます。
+Request Service REST API により、コールバック エンドポイントに対する複数のイベントが生成されます。 それらのイベントを使用すると、UI を更新し、結果がアプリケーションに返されたらプロセスを続行できます。 `Callback` 型には次のプロパティが含まれます。
 
 |プロパティ |Type |説明 |
 |---------|---------|---------|
 | `url` | string| アプリケーションのコールバック エンドポイントへの URI。 |
 | `state` | string| 元のペイロードで渡された状態と関連付けます。 |
-| `headers` | string| [省略可能] POST メッセージの受信側で必要な HTTP ヘッダーのコレクションを含めることができます。 ヘッダーには、api-key または承認に必要なヘッダーのみが含まれる必要があります。|
+| `headers` | string| 省略可能。 POST メッセージの受信側で必要な HTTP ヘッダーのコレクションを含めることができます。 ヘッダーには、`api-key` または承認に必要なヘッダーのみが含まれる必要があります。|
 
 ## <a name="successful-response"></a>成功応答
 
-成功した場合、このメソッドからは、HTTP 201 Created 応答コードと、応答本文内のイベント オブジェクトのコレクションが返されます。 次の JSON は、成功した応答を示しています。
+成功した場合、このメソッドからは、応答コード (HTTP 201 Created) と、応答本文内のイベント オブジェクトのコレクションが返されます。 次の JSON は、成功した応答を示しています。
 
 ```json
 {  
@@ -171,12 +169,12 @@ Request Service REST API により、コールバック エンドポイントに
 
 |プロパティ |Type |説明 |
 |---------|---------|---------|
-| `requestId`| string | 自動生成された関連付け ID。 [コールバック](#callback-events)では、同じ要求が使用されます。 提示要求とそのコールバックを追跡できます。 |
+| `requestId`| string | 自動生成された関連付け ID。 [コールバック](#callback-events)は同じ要求を使用し、提示要求とそのコールバックを追跡できるようにします。 |
 | `url`|  string| 認証アプリを起動し、提示プロセスを開始する URL。 ユーザーが QR コードをスキャンできない場合は、この URL を提示できます。 |
 | `expiry`| 整数 (integer)| 応答の有効期限がいつ切れるかを示します。 |
 | `qrCode`| string | ユーザーがスキャンして提示フローを開始することができる QR コード。 |
 
-アプリで応答を受信したら、QR コードをユーザーに提示する必要があります。 ユーザーが QR コードをスキャンすると、提示プロセスを開始する認証アプリが開きます。
+アプリで応答を受信したら、QR コードをユーザーに提示する必要があります。 ユーザーが QR コードをスキャンすると、認証アプリが開き、提示プロセスを開始されます。
 
 ## <a name="error-response"></a>エラー応答
 
@@ -199,9 +197,9 @@ Request Service REST API により、コールバック エンドポイントに
 |プロパティ |Type |説明 |
 |---------|---------|---------|
 | `requestId`| string | 自動生成された要求 ID。|
-| `date`| date| エラーの時刻。 |
-| `error.code` | string| 戻りエラー コード。 |
-| `error.message`| string| エラー メッセージ。 |
+| `date`| date | エラーの時刻。 |
+| `error.code` | string | 戻りエラー コード。 |
+| `error.message`| string | エラー メッセージ。 |
 
 ## <a name="callback-events"></a>コールバック イベント
 
@@ -210,13 +208,13 @@ Request Service REST API により、コールバック エンドポイントに
 |プロパティ |Type |説明 |
 |---------|---------|---------|
 | `requestId`| string | ペイロードが検証可能な資格情報サービスにポストされるときに、元の要求にマップされます。|
-| `code` |string |認証アプリによって要求が取得されたときに返されるコード。 指定できる値 <ul><li>`request_retrieved` ユーザーが QR コードをスキャンするか、提示フローを開始するリンクをクリックしました。</li><li>`presentation_verified` 検証可能な資格情報の検証が正常に完了しました。</li></ul>    |
-| `state` |string| 状態から、元のペイロードで渡した状態値が返されます。   |
+| `code` |string |認証アプリによって要求が取得されたときに返されるコード。 指定できる値 <ul><li>`request_retrieved`: ユーザーが QR コードをスキャンするか、提示フローを開始するリンクを選択しました。</li><li>`presentation_verified`: 検証可能な資格情報の検証が正常に完了しました。</li></ul>    |
+| `state` |string| 元のペイロードで渡した状態値が返されます。   |
 | `subject`|string | 検証可能な資格情報ユーザー DID。|
 | `issuers`| array |要求された検証可能な資格情報の配列を返します。 検証可能な資格情報ごとに、以下が提供されます。 </li><li>検証可能な資格情報の種類。</li><li>取得された要求。</li><li>検証可能な資格情報の発行者のドメイン。 </li><li>検証可能な資格情報の発行者のドメイン検証状態。 </li></ul> |
-| `receipt`| string | [省略可能] 受信確認には、認証子から検証可能な資格情報サービスに送信された元のペイロードが含まれます。  |
+| `receipt`| string | 省略可能。 受信確認には、認証子から検証可能な資格情報に送信された元のペイロードが含まれます。  |
 
-次の例は、認証アプリによって提示要求が開始された場合のコールバックのペイロードを示しています。
+次の例は、認証アプリがプレゼンテーション要求を開始するときのコールバック ペイロードを示しています。
 
 ```json
 {  
@@ -257,4 +255,4 @@ Request Service REST API により、コールバック エンドポイントに
 
 ## <a name="next-steps"></a>次の手順
 
-[Request Service REST API を呼び出す方法](get-started-request-api.md)を確認します
+[Request Service REST API を呼び出す方法](get-started-request-api.md)を確認します。

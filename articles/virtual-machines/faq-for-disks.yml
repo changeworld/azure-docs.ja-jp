@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: f65f03a35d744b3131b89c2e973abd1cd6b7e3ef
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 53af4de413739318a78f3ced65f64ffa89ba0545
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131018509"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131424686"
 title: Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 summary: この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 sections:
@@ -46,7 +46,7 @@ sections:
   - question: >
       Azure ストレージ アカウントの VHD ファイルを使用して、別のサブスクリプションのマネージド ディスクを作成できますか?
     answer: >
-      正解です。
+      はい。
   - question: >
       Azure ストレージ アカウントの VHD ファイルを使用して、別のリージョンにマネージド ディスクを作成できますか?
     answer: >
@@ -62,7 +62,7 @@ sections:
   - question: >
       Managed Disks は Azure Portal の既定オプションですか?
     answer: >
-      正解です。
+      はい。
   - question: >
       空のマネージド ディスクを作成できますか?
     answer: >
@@ -105,7 +105,7 @@ sections:
   - question: >
       128 GB のディスクを作成した後でサイズを 130 ギビバイト (GiB) に増やした場合は、1 つ上のディスク サイズ (256 GiB) として課金されますか?
     answer: >
-      正解です。
+      はい。
   - question: >
       ローカル冗長ストレージ、geo 冗長ストレージ、およびゾーン冗長ストレージ マネージド ディスクを作成できますか?
     answer: >
@@ -164,7 +164,7 @@ sections:
   - question: >
       暗号化された増分スナップショットを複数のリージョンにコピーできますか。
     answer: >
-      正解です。
+      はい。
   - question: >
       同じディスクの複数の増分スナップショットを1つのリージョンから別のリージョンに並列にコピーできますか。
     answer: >
@@ -176,7 +176,7 @@ sections:
   - question: >
       増分スナップショットが別のリージョンへのコピーを完了したことを検査するにはどうすればよいですか。
     answer: >
-      **"実行可能パーセント** " プロパティをチェックすることで、コピーの状態を確認できます。 このプロパティが100の場合、スナップショットの準備ができています。
+      **completionPercent** プロパティをチェックすると、コピーの状態を確認できます。 このプロパティが100の場合、スナップショットの準備ができています。
   - question: >
       別のリージョンへの作成順序以外の順序でスナップショットをコピーできますか。
     answer: >
@@ -221,7 +221,7 @@ sections:
   - question: >
       共有ディスクをサイズ変更できますか?
     answer: >
-      正解です。
+      はい。
   - question: >
       共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にできますか?
     answer: >
@@ -370,11 +370,11 @@ sections:
     answer: "いいえ。 プラットフォーム マネージド キーとカスタマー マネージド キーの両方でのサーバー側の暗号化は、マネージド ディスクを利用できるあらゆるリージョンで利用できます。 \n"
   - question: >
       Azure Site Recovery では、障害時にオンプレミスから Azure に復旧するシナリオと Azure から Azure に復旧するシナリオで、カスタマー マネージド キーによるサーバー側の暗号化をサポートしていますか?
-    answer: "正解です。 \n"
+    answer: "はい。 \n"
   - question: >
       カスタマー マネージド キーとサーバー側の暗号化で暗号化したマネージド ディスクを Azure Backup サービスを利用してバックアップできますか?
     answer: >
-      正解です。
+      はい。
   - question: >
       暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに変換できますか?
     answer: >
@@ -387,7 +387,7 @@ sections:
   questions:
   - question: "VM が使用するサイズ シリーズが Premium SSD ディスク (DSv2 など) をサポートしている場合、Premium データ ディスクと Standard データ ディスクの両方をアタッチできますか? \n"
     answer: >
-      正解です。
+      はい。
   - question: >
       Premium と Standard 両方のデータ ディスクを、Premium SSD ディスクをサポートしないサイズ シリーズ (D、Dv2、G、F シリーズなど) にアタッチできますか?
     answer: >
@@ -476,7 +476,7 @@ sections:
   - question: >
       既存のマネージド ディスクのサイズを 4 テビバイト (TiB) 未満から新しく導入された最大 32 TiB のディスク サイズに変更することはできますか?
     answer: >
-      正解です。
+      はい。
   - question: >
       Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズはどれくらいですか?
     answer: >
@@ -524,7 +524,7 @@ sections:
   - question: >
       ディスクまたはスナップショットの SAS URI を使用して、ディスクに関連付けられているプライベート エンドポイントのサブネットと同じサブネットにある VM の基になる VHD をダウンロードすることはできますか?
     answer: >
-      正解です。
+      はい。
   - question: >
       ディスクまたはスナップショットの SAS URI を使用して、ディスクに関連付けられていないプライベート エンドポイントのサブネットと同じサブネットにない VM の基になる VHD をダウンロードすることはできますか?
     answer: >-
@@ -537,4 +537,4 @@ sections:
       質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事の末尾のコメントに、質問を投稿することができます。 この記事に関して、Azure Storage チームやその他のコミュニティのメンバーとやり取りするには、[Azure Storage に関する Microsoft Q&A ページ](/answers/products/azure?product=storage)をご利用ください。
 
 
-      機能についてのご要望がある場合は、ご要望やアイデアを [Azure Storage フィードバック フォーラム](https://feedback.azure.com/forums/217298-storage)までお送りください。
+      機能についてのご要望がある場合は、ご要望やアイデアを [Azure Storage フィードバック フォーラム](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84)までお送りください。

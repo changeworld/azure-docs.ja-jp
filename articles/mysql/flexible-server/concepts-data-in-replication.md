@@ -6,14 +6,14 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 071672c5c2d3c741abd14dad94c8c150e427a3ce
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5c0a63d140bb06bb14bb9c81dd17b0b057c3c8f4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464776"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422788"
 ---
-# <a name="replicate-data-into-azure-database-for-mysql-flexible--server-preview"></a>データを Azure Database for MySQL フレキシブル サーバーにレプリケートする (プレビュー)
+# <a name="replicate-data-into-azure-database-for-mysql-flexible--server"></a>データを Azure Database for MySQL フレキシブル サーバーにレプリケートする
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
@@ -21,7 +21,7 @@ ms.locfileid: "114464776"
 
 > [!Note]
 > GTID ベースのレプリケーションは、現在、Azure Database for MySQL フレキシブル サーバーでサポートされていません。<br>
-> ゾーン冗長高可用性サーバーでのデータイン レプリケーションの構成は、サポートされていません 
+> ゾーン冗長高可用性サーバーでのデータイン レプリケーションの構成は、サポートされていません。
 
 ## <a name="when-to-use-data-in-replication"></a>いつデータイン レプリケーションを使用するか
 
@@ -29,7 +29,7 @@ ms.locfileid: "114464776"
 
 - **ハイブリッド データ同期:** データイン レプリケーションを使用して、オンプレミス サーバーと Azure Database for MySQL フレキシブル サーバー間のデータの同期を維持できます。 この同期は、ハイブリッド アプリケーションを作成するのに役立ちます。 この方法は、既存のローカル データベース サーバーがあるが、エンドユーザーに近いリージョンにデータを移動する場合に魅力的です。
 - **複数のクラウドの同期:** 複雑なクラウド ソリューションでは、データイン レプリケーションを使用して、Azure Database for MySQL フレキシブル サーバー と、別のクラウド プロバイダー 間でデータを同期します (これらのクラウドでホストされている仮想マシンとデータベース サービスが含まれます)。
-- **移行:** お客様は、[MyDumper/MyLoader](https://centminmod.com/mydumper.html) などのオープン ソース ツールとデータイン レプリケーションを使用して、最小限の時間の移行を実行できます。 データイン レプリケーションでは、ソースデータベースから宛先データベースへの実稼働負荷の選択的なカットオーバーが可能です。 
+- **移行:** お客様は、[MyDumper/MyLoader](https://centminmod.com/mydumper.html) などのオープン ソース ツールとデータイン レプリケーションを使用して、最小限の時間の移行を実行できます。 データイン レプリケーションでは、ソースデータベースから宛先データベースへの実稼働負荷の選択的なカットオーバーが可能です。
 
 移行シナリオについては、[Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) を使用してください。
 
@@ -39,12 +39,12 @@ ms.locfileid: "114464776"
 
 ソース サーバー上の ["*mysql システム データベース*"](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) はレプリケートされません。 さらに、ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバー上にアカウントを作成し、このアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー上に同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)を参照してください。
 
-### <a name="data-in-replication-not-supported-on-ha-enabled-servers"></a>HA 対応のサーバーではサポートされないデータイン レプリケーション 
-ゾーン冗長高可用性サーバーでのデータイン レプリケーションの構成は、サポートされていません。 HA が有効になっているサーバーでは、レプリケーション `mysql.az_replication_*` のストアド プロシージャを利用できません。 
+### <a name="data-in-replication-not-supported-on-ha-enabled-servers"></a>HA 対応のサーバーではサポートされないデータイン レプリケーション
+ゾーン冗長高可用性サーバーでのデータイン レプリケーションの構成は、サポートされていません。 HA が有効になっているサーバーでは、レプリケーション `mysql.az_replication_*` のストアド プロシージャを利用できません。
 
 ### <a name="filtering"></a>フィルター処理
 
-テーブルのレプリケーション フィルター作成に使用されたパラメーター `replicate_wild_ignore_table` の変更は、Azure Database for MySQL フレキシブル サーバーではサポートされていません。 
+テーブルのレプリケーション フィルター作成に使用されたパラメーター `replicate_wild_ignore_table` の変更は、Azure Database for MySQL フレキシブル サーバーではサポートされていません。
 
 ### <a name="requirements"></a>必要条件
 

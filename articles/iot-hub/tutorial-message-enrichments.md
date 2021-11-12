@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: aca884ebbfc10cc847bade34ea1a9bd73ada18c9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 764f0b8f8e78e41f20558f0a825d37cc8f118f6c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458399"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446101"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル: Azure IoT Hub のメッセージ エンリッチメントを使用する
 
@@ -251,7 +251,7 @@ az iot hub route create \
 
 1. **[リソース グループ]** を選択して、お使いの IoT ハブに移動します。 このチュートリアル用に設定されたリソース グループ (**ContosoResourcesMsgEn**) を選択します。 一覧で IoT ハブを探して選択します。 IoT ハブの **[メッセージ ルーティング]** を選択します。
 
-   ![メッセージのルーティングを選択する](./media/tutorial-message-enrichments/select-iot-hub.png)
+   :::image type="content" source="./media/tutorial-message-enrichments/select-iot-hub.png" alt-text="ルーティングの選択方法を示すスクリーンショット。" border="true":::
 
    メッセージ ルーティング ペインには、**[ルート]**、**[カスタム エンドポイント]**、**[メッセージのエンリッチ]** の 3 つのタブがあります。 スクリプトによって設定された構成を確認するには、最初の 2 つのタブを参照します。 メッセージ エンリッチメントは、3 つ目のタブを使用して追加します。 **enriched** というストレージ コンテナーのエンドポイントに向かうメッセージをエンリッチしてみましょう。 名前と値を入力した後、ドロップダウン リストからエンドポイント **ContosoStorageEndpointEnriched** を選択します。 IoT ハブの名前をメッセージに追加するエンリッチメントを設定する例を次に示します。
 

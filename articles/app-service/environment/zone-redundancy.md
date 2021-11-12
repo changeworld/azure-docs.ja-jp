@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/05/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a60ab8498076eb6380657b9cd57a3f8d0db31da2
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 551146d18fa17aac365d62dbd1f8cbaa2d23a389
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576417"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284762"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境での可用性ゾーンのサポート
 
@@ -49,7 +49,7 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 ゾーン ILB ASE にデプロイされたアプリケーションは、同じリージョン内の他のゾーンで障害が発生した場合でも、引き続き実行され、その ASE でトラフィックが処理されます。  非実行時の動作 (アプリケーション サービス プランのスケーリング、アプリケーションの作成、アプリケーションの構成、およびアプリケーションの発行を含む) では、他の可用性ゾーンの障害から影響を受ける可能性があります。 ゾーンに固定されたゾーン ILB ASE のデプロイでは、既にデプロイされているアプリケーションの継続的なアップタイムのみが保証されます。
 
-## <a name="how-to-deploy-an-app-service-environment-in-an-availability-zone"></a>可用性ゾーンに App Service Environment をデプロイする方法 ##
+## <a name="how-to-deploy-an-app-service-environment-in-an-availability-zone"></a>可用性ゾーンに App Service Environment をデプロイする方法
 
 ゾーン ILB ASE は、Resource Manager テンプレートを使用して作成する必要があります。 Resource Manager テンプレートを使用してゾーン ILB ASE が作成されたら、Azure portal と CLI を使用して表示および操作することができます。  Resource Manager テンプレートは、ゾーン ILB ASE を最初に作成するときにのみ必要となります。
 
@@ -57,7 +57,7 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 次の Resource Manager テンプレートのスニペットの例は、新しい ***zones*** プロパティを示しており、ILB ASE をゾーン 2 に固定する必要があることを指定しています。
 
-```
+```json
 "resources": [
     {
         "type": "Microsoft.Web/hostingEnvironments",
@@ -85,7 +85,7 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 アプリがゾーン冗長になるようにするには、2 つのゾーン ILB ASE をデプロイする必要があります。 2 つのゾーン ILB ASE は、別々の可用性ゾーンに存在する必要があります。 次に、それぞれの ILB ASE にアプリをデプロイする必要があります。 アプリが作成されたら、負荷分散ソリューションを構成する必要があります。 推奨されるソリューションは、ゾーン ILB ASE の[ゾーン冗長 Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) アップストリームをデプロイすることです。 
 
-## <a name="in-region-data-residency"></a>リージョンのデータの保存場所 ##
+## <a name="in-region-data-residency"></a>リージョンのデータ所在地
 
 可用性ゾーンにデプロイされた ILB ASE には、ゾーン ILB ASE がデプロイされているリージョン内のユーザー データのみが格納されます。 Web サイトのファイル コンテンツ、ユーザーが指定した設定、および App Service に格納されているシークレットは、いずれもゾーン ILB ASE がデプロイされているリージョン内に残ります。
 

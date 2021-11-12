@@ -6,16 +6,16 @@ ms.subservice: language-service
 ms.topic: tutorial
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: c49eb76f79ef48a5074a70b8bc6930f263486d85
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3478ab7b9a9d1920bcc5dc61b108b80514f60aba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091779"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439065"
 ---
 # <a name="tutorial-create-a-faq-bot"></a>チュートリアル: FAQ ボットを作成する
 
-質問と回答と Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) を使って、FAQ ボットをコーディングなしで作成します。
+カスタムの質問と回答と Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) を使用し、FAQ ボットをコーディングなしで作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 

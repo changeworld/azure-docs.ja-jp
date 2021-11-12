@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 10/11/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 69c44e8fe4ff1eeb77ce2efc1cf9ac11158d82ee
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 80a9701fb4d7ac3f93d7ba9c35cba2cc34dc7416
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811353"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258546"
 ---
 # <a name="get-started-with-azure-service-bus-queues-net"></a>Azure Service Bus キューの使用を開始する (.NET)
 このクイックスタートでは、次の手順を実行します。
@@ -450,12 +450,12 @@ ms.locfileid: "129811353"
 1. もう一度ポータルを確認します。 **[アクティブ]** メッセージ数に `0` と表示されていない場合は、数分待ってからページを最新の情報に更新します。 
 
     - **[アクティブ]** メッセージ数と **[現在のサイズ]** の値が **0** になりました。
-    - 下部の **[Metrics]\(メトリック\)** セクションの **[メッセージ]** グラフを見ると、このキューには 8 つの受信メッセージと 8 つの送信メッセージがあることがわかります。 
+    - 下部の **[メトリック]** セクションの **[メッセージ]** グラフを見ると、このキューには 3 つの受信メッセージと 3 つの送信メッセージがあることがわかります。 
     
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="受信後のアクティブなメッセージとサイズ" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のドキュメントおよびサンプルを参照してください。
 
 - [.NET 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)

@@ -85,9 +85,9 @@
       items:
         - name: Azure VM を使用して Arc 対応サーバーをテストする
           href: plan-evaluate-on-azure-virtual-machine.md
-        - name: Azure Sentinel にオンボードする
+        - name: Microsoft Sentinel にオンボードする
           href: scenario-onboard-azure-sentinel.md
-        - name: Azure Security Center にオンボードする
+        - name: Microsoft Defender for Cloud にオンボードする
           href: ../../security-center/quickstart-onboard-machines.md
     - name: トラブルシューティング
       items:

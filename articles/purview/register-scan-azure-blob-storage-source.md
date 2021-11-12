@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9f6f13805a1b93f415bd7398299ed5e4b2f27947
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d740ba049353a250468321741d90d1f8b7b88d2b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131062507"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848991"
 ---
 # <a name="connect-to-azure-blob-storage-in-azure-purview"></a>Connect Purview で Azure Blob Storage にアクセスする
 
@@ -22,7 +22,9 @@ ms.locfileid: "131062507"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)|[あり](#scan) | [あり](#scan)|[あり](#scan)| はい | いいえ|
+| [あり](#register) | [あり](#scan)|[あり](#scan) | [あり](#scan)|[あり](#scan)| はい | 制限あり** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 csv、tsv、psv、ssv などのファイルの種類では、次のロジックが適用されている場合にスキーマが抽出されます。
 

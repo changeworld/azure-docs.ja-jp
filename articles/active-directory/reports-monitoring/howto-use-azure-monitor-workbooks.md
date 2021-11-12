@@ -3,7 +3,7 @@ title: レポート用の Azure Monitor ブック | Microsoft Docs
 description: Azure Active Directory レポートに Azure Monitor ブックを使用する方法について説明します。
 services: active-directory
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
 ms.devlang: ''
@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3cbbfd54861cc926fe74b748e6b9a82b4457c9f9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fe9639049573f62dbd403ab39c3c2067355a60f6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131444214"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995884"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 

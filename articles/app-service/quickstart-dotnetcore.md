@@ -3,19 +3,19 @@ title: 'クイックスタート: ASP.NET Web アプリをデプロイする'
 description: 初めての ASP.NET アプリをデプロイして、Azure App Service で Web アプリを実行する方法について説明します。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 06/08/2021
+ms.date: 10/26/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-ide
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 3b3abdf40d5aa9d56421361237432ddf08c0c016
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 1f50ac2ef41186bc1799fce56ba6fd424f6fdd26
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746539"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455999"
 ---
 <!-- NOTES:
 
@@ -25,11 +25,10 @@ should be able to guide .NET devs, whether they're app is .NET Core, .NET, or .N
 
 As a .NET developer, when choosing an IDE and .NET TFM - you map to various OS requirements.
 For example, if you choose Visual Studio - you're developing the app on Windows, but you can still
-target cross-platform with .NET Core 3.1 or .NET 5.0.
+target cross-platform with .NET 5.0.
 
 | .NET / IDE         | Visual Studio | Visual Studio for Mac | Visual Studio Code | Command line   |
 |--------------------|---------------|-----------------------|--------------------|----------------|
-| .NET Core 3.1      | Windows       | macOS                 | Cross-platform     | Cross-platform |
 | .NET 5.0           | Windows       | macOS                 | Cross-platform     | Cross-platform |
 | .NET Framework 4.8 | Windows       | N/A                   | Windows            | Windows        |
 
@@ -38,6 +37,15 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 # <a name="quickstart-deploy-an-aspnet-web-app"></a>クイックスタート: ASP.NET Web アプリをデプロイする
 
 このクイックスタートでは、初めての ASP.NET Web アプリを作成し、[Azure App Service](overview.md) にデプロイする方法について説明します。 App Service はさまざまなバージョンの .NET アプリをサポートし、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 ASP.NET Web アプリはクロスプラットフォームであり、Linux でも Windows でもホストすることができます。 完了すると、App Service ホスティング プランと、デプロイされた Web アプリケーションを含む App Service とで構成される、Azure リソース グループを作成できます。
+
+<!-- markdownlint-disable MD044 -->
+:::zone target="docs" pivot="development-environment-ps"
+<!-- markdownlint-enable MD044 -->
+
+> [!NOTE]
+> Azure PowerShell は、Windows ホスティング プラットフォームでアプリを作成する場合に推奨されます。 Linux でアプリを作成するには、[Azure CLI](quickstart-dotnetcore.md?pivots=development-environment-cli) など、別のツールを使用します。
+
+:::zone-end
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,10 +66,6 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet)。
 - <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio Code</a>。
 - <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack" target="_blank">Azure Tools</a> 拡張機能。
-
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-<a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank"> 最新の .NET Core 3.1 SDK をインストールします。</a>
 
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -86,9 +90,28 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 - <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>。
 - .NET SDK (ランタイムと CLI を含む)。
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
+### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
-<a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank"> 最新の .NET Core 3.1 SDK をインストールします。</a>
+<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> 最新の .NET 5.0 SDK をインストールします。 </a>
+
+### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+
+<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> 最新の .NET 5.0 SDK </a>および <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank">.NET Framework 4.8 Developer Pack をインストールします。 </a>
+
+> [!NOTE]
+> [.NET CLI](/dotnet/core/tools) と .NET 5.0 は両方ともクロスプラットフォームですが、.NET Framework はクロスプラットフォームではありません。 .NET CLI を使用して .NET Framework アプリを開発する場合は、ビルドの依存関係を満たすために Windows マシンを使用することを検討してください。 .NET 5.0 はクロスプラットフォームです。
+
+---
+
+:::zone-end
+
+<!-- markdownlint-disable MD044 -->
+:::zone target="docs" pivot="development-environment-ps"
+<!-- markdownlint-enable MD044 -->
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet)。
+- <a href="/powershell/azure/install-az-ps" target="_blank">Azure PowerShell</a>。
+- .NET SDK (ランタイムと CLI を含む)。
 
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -99,7 +122,7 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank"> 最新の .NET 5.0 SDK </a>および <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank">.NET Framework 4.8 Developer Pack をインストールします。 </a>
 
 > [!NOTE]
-> [.NET CLI](/dotnet/core/tools) はクロスプラットフォームですが、.NET Framework は違います。 .NET CLI を使用して .NET Framework アプリを開発する場合は、ビルドの依存関係を満たすために Windows マシンを使用することを検討してください。
+> [Azure PowerShell](/powershell/azure/) と .NET 5.0 は両方ともクロスプラットフォームですが、.NET Framework はクロスプラットフォームではありません。 .NET CLI を使用して .NET Framework アプリを開発する場合は、ビルドの依存関係を満たすために Windows マシンを使用することを検討してください。
 
 ---
 
@@ -107,27 +130,7 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
-> [!TIP]
-> .NET Core 3.1 は、最新の長期サポート (LTS) リリースの .NET です。 詳細については、[.NET のサポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
-
 :::zone target="docs" pivot="development-environment-vs"
-
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
-1. **[新しいプロジェクトの作成]** で、 **[ASP.NET Core Web アプリ]** を検索して選択し、 **[次へ]** を選択します。
-1. **[新しいプロジェクトの構成]** で、アプリケーションに _MyFirstAzureWebApp_ という名前を付け、 **[次へ]** を選択します。
-
-   :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="ASP.NET Core 3.1 Web アプリを構成する" border="true":::
-
-1. **[.NET Core 3.1 (Long-term support)]\(.NET Core 3.1 (長期サポート)\)** を選択します。
-1. **[認証の種類]** が **[なし]** に設定されていることを確認します。 **[作成]** を選択します。
-
-   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-netcoreapp31.png" alt-text="Visual Studio - .NET Core 3.1 を選択し、[認証の種類] として [なし] を選択する。" border="true":::
-
-1. Visual Studio のメニューから **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、Web アプリをローカルで実行します。
-
-   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio - .NET Core 3.1 をローカルで参照" lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -171,12 +174,6 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 
 _MyFirstAzureWebApp_ という名前の新しいフォルダーを作成し、Visual Studio Code で開きます。 <a href="https://code.visualstudio.com/docs/editor/integrated-terminal" target="_blank">ターミナル</a> ウィンドウを開き、[`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options) コマンドを使用して新しい .NET Web アプリを作成します。
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-```dotnetcli
-dotnet new webapp -f netcoreapp3.1
-```
-
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 ```dotnetcli
@@ -203,12 +200,6 @@ dotnet run
 Web ブラウザーを開き、`https://localhost:5001` のアプリに移動します。
 
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-テンプレート ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code - .NET Core 3.1 をブラウザーからローカルで実行する。" lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
-
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 テンプレート ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
@@ -226,27 +217,25 @@ Web ブラウザーを開き、`https://localhost:5001` のアプリに移動し
 :::zone-end
 
 <!-- markdownlint-disable MD044 -->
-:::zone target="docs" pivot="development-environment-cli"
+:::zone target="docs" pivot="development-environment-cli,development-environment-ps"
 <!-- markdownlint-enable MD044 -->
 
 自分のマシンでターミナル ウィンドウを開き、作業ディレクトリに移動します。 [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options) コマンドを使用して新しい .NET Web アプリを作成し、新しく作成したアプリのディレクトリに移動します。
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-```dotnetcli
-dotnet new webapp -n MyFirstAzureWebApp -f netcoreapp3.1 && cd MyFirstAzureWebApp
-```
+<!-- Please keep the following commands in two lines instead of one && separated line. The latter doesn't work in PowerShell -->
 
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 ```dotnetcli
-dotnet new webapp -n MyFirstAzureWebApp -f net5.0 && cd MyFirstAzureWebApp
+dotnet new webapp -n MyFirstAzureWebApp --framework net5.0
+cd MyFirstAzureWebApp
 ```
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
 ```dotnetcli
-dotnet new webapp -n MyFirstAzureWebApp --target-framework-override net48 && cd MyFirstAzureWebApp
+dotnet new webapp -n MyFirstAzureWebApp --target-framework-override net48
+cd MyFirstAzureWebApp
 ```
 
 > [!IMPORTANT]
@@ -261,12 +250,6 @@ dotnet run
 ```
 
 Web ブラウザーを開き、`https://localhost:5001` のアプリに移動します。
-
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-テンプレート ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code - ローカル ブラウザーでの ASP.NET Core 3.1。" lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -338,12 +321,6 @@ App Service を作成して Web アプリを発行するには、次の手順に
 1. **[完了]** を選択して、ウィザードを終了します。
 1. **[発行]** ページで **[発行]** を選択します。 Visual Studio によってアプリのビルド、パッケージ化、および Azure への発行が行われた後、既定のブラウザーでアプリが起動されます。
 
-    ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-    ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio - Azure での ASP.NET Core 3.1 Web アプリ。":::
-
     ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
     ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
@@ -379,7 +356,6 @@ Visual Studio Azure Tools 拡張機能を使用して Web アプリをデプロ�
     - **[Enter a globally unique name]\(グローバルに一意の名前を入力する\)** には、Azure 全体で一意の名前を使用します ("*有効な文字は `a-z`、`0-9`、`-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
     - **[新しいリソース グループの作成]** を選択して、`myResourceGroup` のような名前を指定します。
     - "**ランタイム スタックを選択してください**" という確認を求められたら、次の操作を行います。
-      - *[.NET Core 3.1]* の場合は、 **[.NET Core 3.1 (LTS)]** を選択します
       - *[.NET 5.0]* の場合は、 **[.NET 5]** を選択します
       - *[.NET Framework 4.8]* の場合は、 **[ASP.NET V4.8]** を選択します
     - オペレーティング システム (Windows または Linux) を選択します。
@@ -389,12 +365,6 @@ Visual Studio Azure Tools 拡張機能を使用して Web アプリをデプロ�
     - お近くの場所を選択します。
 
 1. 発行が完了したら、通知の **[Web サイトの参照]** を選択し、確認を求められたら **[開く]** を選択します。
-
-    ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-    ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code - Azure での ASP.NET Core 3.1 Web アプリ。":::
 
     ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -416,45 +386,141 @@ Visual Studio Azure Tools 拡張機能を使用して Web アプリをデプロ�
 :::zone target="docs" pivot="development-environment-cli"
 <!-- markdownlint-enable MD044 -->
 
-[`az webapp up`](/cli/azure/webapp#az_webapp_up) コマンドを使用して、ローカルの *MyFirstAzureWebApp* ディレクトリにコードをデプロイします。
+1. [`az login`](/cli/reference-index#az_login) コマンドを使用し、プロンプトに従って Azure アカウントにサインインします。
 
-```azurecli
-az webapp up --sku F1 --name <app-name> --os-type <os>
-```
+    ```azurecli
+    az login
+    ```
+    
+1. [`az webapp up`](/cli/azure/webapp#az_webapp_up) コマンドを使用して、ローカルの *MyFirstAzureWebApp* ディレクトリにコードをデプロイします。
 
-- `az` コマンドが認識されない場合は、「[前提条件](#prerequisites)」の説明に従って Azure CLI がインストールされていることを確認してください。
-- `<app-name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
-- `--sku F1` 引数を使用すると、**Free** [価格レベル][app-service-pricing-tier]で Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
-- `<os>` を `linux` または `windows` に置き換えます。 *ASP.NET Framework 4.8* をターゲットにする場合は、`windows` を使用する必要があります。
-- 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location-name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az_appservice_list_locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
+    ```azurecli
+    az webapp up --sku F1 --name <app-name> --os-type <os>
+    ```
 
-コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 その後、アプリの URL を含むメッセージが出力されます。
+    - `az` コマンドが認識されない場合は、「[前提条件](#prerequisites)」の説明に従って Azure CLI がインストールされていることを確認してください。
+    - `<app-name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+    - `--sku F1` 引数を使用すると、**Free** [価格レベル][app-service-pricing-tier]で Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
+    - `<os>` を `linux` または `windows` に置き換えます。 *ASP.NET Framework 4.8* をターゲットにする場合は、`windows` を使用する必要があります。
+    - 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location-name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az_appservice_list_locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
+    
+    コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 その後、アプリの URL を含むメッセージが出力されます。
+    
+    ```azurecli
+    You can launch the app at http://<app-name>.azurewebsites.net
+    ```
 
-```azurecli
-You can launch the app at http://<app-name>.azurewebsites.net
-```
+1. Web ブラウザーを開き、URL に移動します。
 
-Web ブラウザーを開き、URL に移動します。
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    
+    ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
+    
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI - Azure での ASP.NET Core 5.0 Web アプリ。":::
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    ASP.NET Framework 4.8 Web アプリがページに表示されていることがわかります。
+    
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/Azure-webapp-net48.png" border="true" alt-text="CLI - Azure での ASP.NET Framework 4.8 Web アプリ。":::
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
+    -----
 
-ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
+:::zone-end
 
-:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI - Azure での ASP.NET Core 3.1 Web アプリ。":::
+<!-- markdownlint-disable MD044 -->
+:::zone target="docs" pivot="development-environment-ps"
+<!-- markdownlint-enable MD044 -->
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+> [!NOTE]
+> Azure PowerShell は、Windows ホスティング プラットフォームでアプリを作成する場合に推奨されます。 Linux でアプリを作成するには、[Azure CLI](quickstart-dotnetcore.md?pivots=development-environment-cli) など、別のツールを使用します。
 
-ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
+1. [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) コマンドを使用し、プロンプトに従って Azure アカウントにサインインします。
 
-:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI - Azure での ASP.NET Core 5.0 Web アプリ。":::
+    ```azurepowershell-interactive
+    Connect-AzAccount
+    ```
 
-### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+<!-- ### [Deploy to Windows](#tab/windows) -->
 
-ASP.NET Framework 4.8 Web アプリがページに表示されていることがわかります。
+2. [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) コマンドを使用して新しいアプリを作成します。
 
-:::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/Azure-webapp-net48.png" border="true" alt-text="CLI - Azure での ASP.NET Framework 4.8 Web アプリ。":::
+    ```azurepowershell-interactive
+    New-AzWebApp -Name <app-name> -Location westeurope
+    ```
 
----
+    - `<app-name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+    - 必要に応じて、`-Location <location-name>` パラメーターを含めることができます。ここで、`<location-name>` は利用可能な Azure リージョンです。 [`Get-AzLocation`](/powershell/module/az.resources/get-azlocation) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
+
+    コマンドが完了するまでに数分かかる場合があります。 実行中、リソース グループ、App Service プラン、App Service リソースが作成されます。
+
+    <!-- ### [Deploy to Linux](#tab/linux)
+    
+    2. Create the Azure resources you need:
+    
+        ```azurepowershell-interactive
+        New-AzResourceGroup -Name myResourceGroup -Location westeurope
+        New-AzAppServicePlan -ResourceGroupName myResourceGroup -Name myAppServicePlan -Location westeurope -Linux
+        New-AzWebApp -ResourceGroupName myResourceGroup -AppServicePlan myAppServicePlan -Name <app-name>
+        Set-AzWebApp -
+        ```
+    
+        - Replace `<app-name>` with a name that's unique across all of Azure (*valid characters are `a-z`, `0-9`, and `-`*). A good pattern is to use a combination of your company name and an app identifier.
+        - You can optionally specify a different location in the `-Location` parameter. You can retrieve a list of allowable regions for your Azure account by running the [`Get-AzLocation`](/powershell/module/az.resources/get-azlocation) command.
+        - [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) creates a resource group to contain the resources.
+        - [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) uses `-Linux` to create a Linux App Service plan, which hosts your app. The default pricing tier is `Free`, but you can change it with the `-Tier` parameter.
+        - [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) creates the app itself.
+    
+    --- -->
+    
+1. アプリケーション ルート フォルダーから [`dotnet publish`](/dotnet/core/tools/dotnet-publish) コマンドを使用して *MyFirstAzureWebApp* アプリケーションのデプロイを準備します。
+
+    ```dotnetcli
+    dotnet publish --configuration Release
+    ```
+
+1. リリース ディレクトリに移動し、コンテンツから zip ファイルを作成します。
+
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+
+    ```powershell-interactive
+    cd bin\Release\net5.0\publish
+    Compress-Archive -Path * -DestinationPath deploy.zip
+    ```
+
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+
+    ```powershell-interactive
+    cd bin\Release\net48\publish
+    Compress-Archive -Path * -DestinationPath deploy.zip
+    ```
+
+    -----
+
+1. [Publish-AzWebApp](/powershell/module/az.websites/publish-azwebapp) コマンドを使用し、Azure アプリに zip ファイルを発行します。
+
+    ```azurepowershell-interactive
+    Publish-AzWebApp -ResourceGroupName myResourceGroup -Name <app-name> -ArchivePath (Get-Item .\deploy.zip).FullName -Force
+    ```
+
+    > [!NOTE]
+    > `-ArchivePath` には、zip ファイルの完全なパスが必要です。
+
+1. Web ブラウザーを開き、URL に移動します。
+
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    
+    ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
+    
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI - Azure での ASP.NET Core 5.0 Web アプリ。":::
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    ASP.NET Framework 4.8 Web アプリがページに表示されていることがわかります。
+    
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/Azure-webapp-net48.png" border="true" alt-text="CLI - Azure での ASP.NET Framework 4.8 Web アプリ。":::
+
+    -----
 
 :::zone-end
 
@@ -480,12 +546,6 @@ Web アプリを更新して再デプロイするには、次の手順に従い�
 1. **発行** の概要ページで **[発行]** を選択します。
 
     発行が完了すると、Visual Studio で Web アプリの URL のブラウザーが起動されます。
-
-    ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-    更新された ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio - Azure での更新された ASP.NET Core 3.1 Web アプリ。":::
 
     ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -523,12 +583,6 @@ Web アプリを更新して再デプロイするには、次の手順に従い�
 1. 確認を求められたら **[デプロイ]** を選択します。
 1. 発行が完了したら、通知の **[Web サイトの参照]** を選択し、確認を求められたら **[開く]** を選択します。
 
-    ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-    更新された ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code - Azure での更新された ASP.NET Core 3.1 Web アプリ。":::
-
     ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
     更新された ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
@@ -560,14 +614,6 @@ Web アプリを更新して再デプロイするには、次の手順に従い�
 
 変更を保存してから、もう一度 `az webapp up` コマンドを使用してアプリを再デプロイします。
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-ASP.NET Core 3.1 はクロスプラットフォームです。前のデプロイに基づいて、`<os>` を `linux` または `windows` に置き換えてください。
-
-```azurecli
-az webapp up --os-type <os>
-```
-
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 ASP.NET Core 5.0 はクロスプラットフォームです。前のデプロイに基づいて、`<os>` を `linux` または `windows` に置き換えてください。
@@ -593,12 +639,6 @@ az webapp up --os-type windows
 
 デプロイが完了したら、「**アプリの参照**」の手順で開いた元のブラウザー ウィンドウに切り替えて、更新をクリックします。
 
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-更新された ASP.NET Core 3.1 Web アプリがページに表示されていることがわかります。
-
-:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI - Azure での更新された ASP.NET Core 3.1 Web アプリ。":::
-
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 更新された ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
@@ -613,6 +653,70 @@ az webapp up --os-type windows
 
 ---
 
+:::zone-end
+
+<!-- markdownlint-disable MD044 -->
+:::zone target="docs" pivot="development-environment-ps"
+<!-- markdownlint-enable MD044 -->
+
+1. ローカル ディレクトリの *Index.cshtml* ファイルを開きます。 最初の `<div>` 要素を置き換えます。
+
+    ```razor
+    <div class="jumbotron">
+        <h1>.NET 💜 Azure</h1>
+        <p class="lead">Example .NET app to Azure App Service.</p>
+    </div>
+    ```
+
+1. アプリケーション ルート フォルダーから [`dotnet publish`](/dotnet/core/tools/dotnet-publish) コマンドを使用して *MyFirstAzureWebApp* アプリケーションのデプロイを準備します。
+
+    ```dotnetcli
+    dotnet publish --configuration Release
+    ```
+
+1. リリース ディレクトリに移動し、コンテンツから zip ファイルを作成します。
+
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+
+    ```powershell-interactive
+    cd bin\Release\net5.0\publish
+    Compress-Archive -Path * -DestinationPath deploy.zip
+    ```
+
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+
+    ```powershell-interactive
+    cd bin\Release\net48\publish
+    Compress-Archive -Path * -DestinationPath deploy.zip
+    ```
+
+    -----
+
+1. [Publish-AzWebApp](/powershell/module/az.websites/publish-azwebapp) コマンドを使用し、Azure アプリに zip ファイルを発行します。
+
+    ```azurepowershell-interactive
+    Publish-AzWebApp -ResourceGroupName myResourceGroup -Name <app-name> -ArchivePath (Get-Item .\deploy.zip).FullName -Force
+    ```
+
+    > [!NOTE]
+    > `-ArchivePath` には、zip ファイルの完全なパスが必要です。
+
+1. デプロイが完了したら、「**アプリの参照**」の手順で開いた元のブラウザー ウィンドウに切り替えて、更新をクリックします。
+
+    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    
+    更新された ASP.NET Core 5.0 Web アプリがページに表示されていることがわかります。
+    
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI - Azure での更新された ASP.NET Core 5.0 Web アプリ。":::
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    更新された ASP.NET Framework 4.8 Web アプリがページに表示されていることがわかります。
+    
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net48.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net48.png" border="true" alt-text="CLI - Azure での更新された ASP.NET Framework 4.8 Web アプリ。":::
+    
+    ---
+    
 :::zone-end
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
@@ -646,19 +750,14 @@ Web アプリの **[概要]** ページには、参照、停止、開始、再�
 [!INCLUDE [Clean-up CLI resources](../../includes/cli-samples-clean-up.md)]
 :::zone-end
 
+:::zone target="docs" pivot="development-environment-ps"
+<!-- markdownlint-enable MD044 -->
+[!INCLUDE [Clean-up PowerShell resources](../../includes/powershell-samples-clean-up.md)]
+:::zone-end
+
 ## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、ASP.NET Web アプリを作成して Azure App Service にデプロイしました。
-
-### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
-
-次の記事に進み、.NET Core アプリを作成して SQL Database に接続する方法を学習してください。
-
-> [!div class="nextstepaction"]
-> [チュートリアル: ASP.NET Core アプリと SQL データベース](tutorial-dotnetcore-sqldb-app.md)
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core 3.1 アプリを構成する](configure-language-dotnetcore.md)
 
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
@@ -668,7 +767,7 @@ Web アプリの **[概要]** ページには、参照、停止、開始、再�
 > [チュートリアル: ASP.NET Core アプリと SQL データベース](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core 5.0 アプリを構成する](configure-language-dotnetcore.md)
+> [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 

@@ -7,29 +7,39 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 5a2b51573e4b639c80fd36b69cef667b9ea6eff5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad92c16b70fd2d9f2e137558db1e70c387815a8f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743855"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564140"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
-この記事では、Azure からリソースを削除する方法について説明します。
+この記事では、Azure から Azure Arc 対応データ サービス リソースを削除する方法について説明します。
 
 > [!WARNING]
 > この記事で説明されているように、リソースを削除すると、これらのアクションを元に戻すことはできません。
 
 ## <a name="before"></a>以前
 
-Azure Arc SQL マネージド インスタンスや Azure Arc データ コントローラーなどのリソースを削除する前に、「[Azure への課金データのアップロード](view-billing-data-in-azure.md#upload-billing-data-to-azure)」に記載されている手順に従って、使用状況情報をエクスポートし、Azure にアップロードして正確な課金計算を行う必要があります。
+Azure Arc SQL マネージド インスタンスや Azure Arc データ コントローラーなどのリソースを削除する前に、[Azure への課金データのアップロード (間接接続モード)](view-billing-data-in-azure.md#upload-billing-data-to-azure---indirectly-connected-mode) に関するページに記載されている手順に従って、使用状況情報をエクスポートし、Azure にアップロードして正確な課金計算が行われるようにする必要があります。
 
 ## <a name="direct-connectivity-mode"></a>直接接続モード
 
 クラスターが直接接続モードで Azure に接続されている場合は、Microsoft Azure portalを使用してリソースを管理します。 データ コントローラー、マネージド インスタンス、PostgreSQL グループのすべての作成、読み取り、更新、削除 (CRUD) 操作にポータルを使用します。
+
+Azure portal から次を行います。
+1. リソース グループを参照し、Azure Arc データ コントローラーを削除します
+2. Azure Arc 対応 Kubernetes クラスターを選択し、[概要] ページに進みます
+    - [設定] で **[拡張機能]** を選択します
+    - [拡張機能] ページで、Azure Arc データ サービス拡張機能 (microsoft.arcdataservice 型) を選択し、 **[アンインストール]** をクリックします
+3. 必要に応じて、Azure Arc データ コントローラーが配置されているカスタムの場所を削除します。
+4. 必要に応じて、名前空間にほかのリソースが作成されていない場合は、Kubernetes クラスターの名前空間を削除することもできます。
+
+
 
 「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../../azure-resource-manager/management/manage-resources-portal.md)」を参照してください。
 

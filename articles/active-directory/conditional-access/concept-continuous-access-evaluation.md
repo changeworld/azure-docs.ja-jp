@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a1e5f8ee6bb3641fce243233a654d15363e254
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a0eaee3c6e265063270d5cb3b2ea43d3c22fbb0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012626"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553078"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -172,6 +172,9 @@ CAE 設定が条件付きアクセスの下に移動されました。 以前に
 ### <a name="strict-enforcement"></a>厳密な強制 
 
 [条件付きアクセス] の [最新の CAE] 設定では、厳密な強制は、IP アドレスのバリエーションとクライアントの機能の2つの要素に基づいてセキュリティを強化できる新機能です。 この関数は、特定のポリシーの CAE オプションのカスタマイズ中に有効にできます。 厳密な強制を有効にすることで [、CAE は、IP](#ip-address-variation) アドレスのバリエーションまたは CAE クライアント機能の欠如のいずれかのインスタンスを検出すると、アクセスを [取り消します](#client-capabilities)。
+
+> [!NOTE] 
+> 厳格な強制は、すべてのクライアント アプリケーションが CAE をサポートし、Azure AD で検出されたすべての IP アドレスと、Exchange Online や Azure Resource Mananger などのリソース プロバイダーが条件付きアクセス下の場所ポリシーに含まれていることを確認した後でのみ有効にします。 そのようにしないと、ブロックされる可能性があります。
 
 ## <a name="limitations"></a>制限事項
 

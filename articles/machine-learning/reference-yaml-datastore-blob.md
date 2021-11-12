@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: CLI (v2) Azure BLOB データストア YAML スキーマのリファレンス ドキュメント。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: reference
 author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: dc2455212e2ab67d70dba5cce72a343f05fe2b81
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: a2eb42974b64cf3d70422b4fef8d4611639cf826
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557967"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134568"
 ---
 # <a name="cli-v2-azure-blob-datastore-yaml-schema"></a>CLI (v2) Azure BLOB データストア YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131557967"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | string | **必須。** データストアの種類。 | `azure_blob` | |
@@ -50,20 +50,20 @@ ms.locfileid: "131557967"
 
 ## <a name="yaml-identity-based-access"></a>YAML: ID ベースのアクセス
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/blob-credless.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/blob-credless.yml":::
 
 ## <a name="yaml-account-key"></a>YAML: アカウント キー
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/blob.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/blob.yml":::
 
 ## <a name="yaml-wasbs-protocol"></a>YAML: wasbs プロトコル
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/blob-protocol.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/blob-protocol.yml":::
 
 ## <a name="yaml-sas-token"></a>YAML: sas トークン
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/blob-sas.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/blob-sas.yml":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [CLI (v2) をインストールして使用する](how-to-configure-cli.md)

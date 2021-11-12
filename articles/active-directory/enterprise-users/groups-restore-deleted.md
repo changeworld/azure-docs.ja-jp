@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5508f3131ad44d1839167c57029619f5e7413e4d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3470296b0e969cc4fd6687db30e00f9a1f5cbbf6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986228"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448008"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Azure Active Directory で削除された Microsoft 365 グループを復元する
 

@@ -3,12 +3,12 @@ title: Azure Application Insights での Statsbeat | Microsoft Docs
 description: Application Insights SDK と自動インストルメンテーションに関する統計
 ms.topic: conceptual
 ms.date: 09/20/2021
-ms.openlocfilehash: 440f6651f759bce9340763ea141c8057d5a1e4b8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 55e727bc05007c69f0144c7f95e17e38f907742e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167772"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426888"
 ---
 # <a name="statsbeat-in-azure-application-insights"></a>Azure Application Insights での Statsbeat
 
@@ -57,10 +57,12 @@ Statsbeat によって収集されるメトリックには、重要なものと�
 
 ### <a name="non-essential-statsbeat"></a>重要でない Statsbeat
 
-- ディスクの永続化の成功と失敗を追跡する
-- ライブ メトリックの Network Statsbeat
-- Azure Metadata Service の Network Statsbeat
-- Profiler の Network Statsbeat
+再収集可能なテレメトリにディスク永続化を使用する場合のディスク I/O エラーを追跡する
+
+|メトリックの名前|ユニット|サポートされるディメンション|
+|-----|-----|-----|
+|読み取りエラー数|Count| `Resource Provider`, `Attach Type`, `Instrumentation Key`, `Runtime Version`, `Operating System`, `Language`, `Version`|
+|書き込みエラー数|Count| `Resource Provider`, `Attach Type`, `Instrumentation Key`, `Runtime Version`, `Operating System`, `Language`, `Version`|
 
 ### <a name="configure-statsbeat"></a>Statsbeat を構成する
 

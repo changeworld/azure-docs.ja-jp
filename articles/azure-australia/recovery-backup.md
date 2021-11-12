@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 22f6e970a0d5f73d975223b184979615aaa6d5ae
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c685de3050d35f568c8921b99a078e1b2bd68f74
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "117028980"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347997"
 ---
 # <a name="backup-and-disaster-recovery-in-azure-australia"></a>Azure Australia でのバックアップとディザスター リカバリー
 

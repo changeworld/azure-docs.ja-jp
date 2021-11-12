@@ -8,19 +8,17 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 9/21/2020
-ms.openlocfilehash: 268ab28c5f5aa500a110abf7cca650d7b7f14914
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3617546e1319617a2a333a2c358880812d8626b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779407"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468083"
 ---
-# <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を作成および管理する
+# <a name="manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を管理します。
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
 
 Azure Database for MySQL フレキシブル サーバーでは、フレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法をサポートしています。 次の 2 つのオプションがあります。
 
@@ -131,8 +129,8 @@ az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-add
 az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
 ```
 
-   > [!IMPORTANT]
-   > このオプションによって、他のお客様のサブスクリプションからの接続を含む、Azure サービスおよび Azure 内のリソースからこのサーバーへのパブリック アクセスを許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> [!IMPORTANT]
+> このオプションによって、他のお客様のサブスクリプションからの接続を含む、Azure サービスおよび Azure 内のリソースからこのサーバーへのパブリック アクセスを許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 
 正常に完了すると、各コマンドの出力として、作成したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Akamai の統合'
 description: Azure Active Directory と Akamai の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 38b0ea6b65c3fcb01e8a49cd3a416533bcab5688
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 46763926a03fc4cb58803bfb2c716f09ece1b71b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803376"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456398"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
+# <a name="tutorial-azure-ad-sso-integration-with-akamai"></a>チュートリアル: Azure AD SSO と Akamai の統合
 
 このチュートリアルでは、Akamai と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Akamai を統合すると、次のことができます。
 
@@ -519,7 +519,7 @@ ID プロバイダーを割り当てます。
 
 1. EAADelegation アカウントについては、[委任] タブをクリックします。
 
-    ![管理者コマンド プロンプトのスクリーンショット。SPN を構成するためのコマンドが表示されている。](./media/header-akamai-tutorial/spn.png)
+    ![管理者コマンド プロンプトのスクリーンショット。SPN を構成するためのコマンドが表示されている。](./media/header-akamai-tutorial/delegation.png)
 
     * [任意の認証プロトコルを使う] を選択します。
     * [追加] をクリックし、Kerberos Web サイトのアプリケーション プール アカウントを追加します。 正しく構成されていれば、自動的に正しい SPN に解決されます。

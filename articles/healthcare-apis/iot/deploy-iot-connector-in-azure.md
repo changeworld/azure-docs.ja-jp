@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 10/19/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 4b4a91f8c8e1e5207973e621e87c17f9bbadb807
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f4eaee6afb134513da55b7f39e2d1f6df6c547b7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259536"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345332"
 ---
 # <a name="deploy-iot-connector-in-the-azure-portal"></a>Azure portal に IoT コネクタをデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "130259536"
 
 このクイックスタートでは、Azure portal に IoT コネクタをデプロイする方法について説明します。 IoT コネクタを構成すると、デバイスメッセージ用の Azure Event Hub を使用して、モノのインターネット (IoT) から高速医療相互運用性リソース (FHIR&#174;) サービスにデータを取り込むことができます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
 Azure の医療 Api で IoT コネクタインスタンスを作成する手順を開始する前に、次の前提条件を完了しておくことが重要です。
 
@@ -30,7 +30,6 @@ Azure の医療 Api で IoT コネクタインスタンスを作成する手順�
 * [Azure portal にデプロイされた Event Hubs 名前空間とイベントハブ](../../event-hubs/event-hubs-create.md)
 * [Azure の医療 Api にデプロイされたワークスペース](../healthcare-apis-quickstart.md)  
 * [Azure の医療 Api にデプロイされた FHIR サービス](../fhir/fhir-portal-quickstart.md) 
-
 
 ## <a name="deploy-iot-connector"></a>IoT コネクタのデプロイ 
 

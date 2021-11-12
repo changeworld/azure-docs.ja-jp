@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
-ms.date: 09/27/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 59bf4007cad596b4d14c17a729c9da4e4cfb3957
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b8d9b3beaf965cc8c5c745d243da429c0de10e4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065268"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561026"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -211,7 +211,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 #### <a name="metrics-for-classification-scenarios"></a>分類シナリオのメトリック 
 
-`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、データセットが小さい場合や非常に大きいクラス傾斜 (クラスの不均衡) がある場合、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されないことがあります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動 ML が完了したら、業務上の必要に最も適したメトリックを基準にして、最適なモデルを選ぶことができます。
+`accuracy`、`recall_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値に依存するメトリックでは、データセットが小さい場合や非常に大きいクラス傾斜 (クラスの不均衡) がある場合、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されないことがあります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動 ML が完了したら、業務上の必要に最も適したメトリックを基準にして、最適なモデルを選ぶことができます。
 
 | メトリック | ユース ケースの例 |
 | ------ | ------- |
@@ -222,10 +222,16 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `precision_score_weighted` |  |
 
 #### <a name="metrics-for-regression-scenarios"></a>回帰シナリオのメトリック
- 
-`r2_score` や `spearman_correlation` などのメトリックは、予測する値の規模が多くの桁数に及ぶ場合に、モデルの品質をより適切に表すことができます。 たとえば、給与の推定では、多くの人の給与は 20,000 ドルから 100,000 ドルですが、一部の給与は 100,000,000 ドルの範囲になり、非常に規模が大きくなります。 
 
-この場合、`normalized_mean_absolute_error` と `normalized_root_mean_squared_error` では、給与が 30,000 ドルの人と、給与が 20,000,000 ドルの人に対して、同じように 20,000 ドルの予測誤差が処理されます。 実際には、20000 ドルと隔たった 20000000 ドルの給与のみ予測することは非常に近く (相対差異は 0.1% で小さい)、一方 20000 ドルと隔たった 30000 ドルを予測することは近くありません (相対差異は 67% で大きい)。 `normalized_mean_absolute_error` と `normalized_root_mean_squared_error` は、予測する値が同じ規模になる場合に便利です。
+`r2_score`、`normalized_mean_absolute_error`、`normalized_root_mean_squared_error` は、いずれも予測誤差を最小限に抑えるためのものです。 `r2_score` と `normalized_root_mean_squared_error` はどちらも平均二乗誤差を最小化するものですが、`normalized_mean_absolute_error` は誤差の平均絶対値を最小化するものです。 絶対値の場合、すべての大きさの誤差は同様に扱われ、二乗誤差は絶対値が大きい誤差に対してはるかに大きなペナルティがあります。 より大きな誤差をより罰する必要があるかどうかに応じて、二乗誤差と絶対値誤差のどちらを最適化するかを選ぶことができます。
+
+`r2_score` と `normalized_root_mean_squared_error` の主な違いは、正規化の方法とその意味です。 `normalized_root_mean_squared_error` は範囲で正規化された二乗平均平方根誤差であり、予測の平均誤差の大きさとして解釈できます。 `r2_score` はデータの分散の推定値で正規化された平均二乗誤差です。 これは、モデルでキャプチャできる変動の割合です。 
+
+> [! 注] `r2_score` と `normalized_root_mean_squared_error` はプライマリ メトリックと同様に動作します。 固定の検証セットが適用されている場合、これら 2 つのメトリックによって同じターゲットである平均二乗誤差が最適化され、同じモデルによって最適化されます。 トレーニング セットのみが使用可能であり、相互検証が適用される場合、`normalized_root_mean_squared_error` のノーマライザーはトレーニング セットの範囲として固定されていますが、`r2_score` のノーマライザーは各フォールドの変性であるため、フォールドごとに異なり、両者は若干異なります。
+
+正確な値ではなく順位に関心がある場合は、実際の値と予測値の順位相関を測定する `spearman_correlation` を選ぶことをお勧めします。
+
+ただし、現在のところ、相対的な差に対応する回帰の主要なメトリックはありません。 `r2_score`、`normalized_mean_absolute_error`、`normalized_root_mean_squared_error` のいずれでも、これらの 2 つのデータ ポイントが回帰用の同じデータセット、または時系列識別子で指定された同じ時系列に属している場合、給料が 3 万ドルのワーカーと 2,000 万ドルのワーカーの 2 万ドルの予測誤差が同様に処理されます。 実際には、20000 ドルと隔たった 20000000 ドルの給与のみ予測することは非常に近く (相対差異は 0.1% で小さい)、一方 20000 ドルと隔たった 30000 ドルを予測することは近くありません (相対差異は 67% で大きい)。 相対差の問題を解決するには、使用可能な主要メトリックを使ってモデルをトレーニングしてから、`mean_absolute_percentage_error` または `root_mean_squared_log_error` が最適なモデルを選ぶことができます。
 
 | メトリック | ユース ケースの例 |
 | ------ | ------- |

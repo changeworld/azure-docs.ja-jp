@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 19a3f0983a4c5b04ddff02c7ea796a4a8d87c07b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 952f6655720cf95b12dc0d18837b324ca48422b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092233"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434258"
 ---
 # <a name="whats-new-in-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language の新機能
 
@@ -36,11 +36,13 @@ Azure Cognitive Service for Language は継続的に更新されます。 常に
     * [カスタム テキスト分類プレビュー](custom-classification/overview.md)
     * [Conversational Language Understanding プレビュー](conversational-language-understanding/overview.md)
 
-* 次の機能を提供する[感情分析とオピニオン マイニング](sentiment-opinion-mining/overview.md)のモデル バージョン `2021-10-01`
+* 次の機能を提供する[感情分析とオピニオン マイニング](sentiment-opinion-mining/overview.md)のモデル バージョン `2021-10-01-preview` のプレビュー:
     * 予測品質の向上。
     * オピニオン マイニング機能用の[追加言語サポート](sentiment-opinion-mining/language-support.md?tabs=sentiment-analysis)。
     * 詳しくは、[プロジェクト z コードのサイト](https://www.microsoft.com/research/project/project-zcode/)をご覧ください。
-
+    > [!NOTE]
+    > この[モデル バージョン](sentiment-opinion-mining/how-to/call-api.md#specify-the-sentiment-analysis-model)を使用するには、モデル バージョン パラメーターを使用し、API 呼び出しで指定する必要があります。 
+ 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cognitive Service for Language とは](overview.md)  

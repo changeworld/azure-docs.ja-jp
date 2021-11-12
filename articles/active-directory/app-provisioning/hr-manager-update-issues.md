@@ -1,7 +1,6 @@
 ---
 title: HR プロビジョニングに関するマネージャーの更新に関する問題のトラブルシューティング
 description: HR プロビジョニングでのマネージャーの更新に関する問題をトラブルシューティングする方法について説明します
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: 21635b7c7df6639745916aecd207780e6ae5df52
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d67e528420b9907949202c1f597f933a74f7c801
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478383"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324557"
 ---
 # <a name="troubleshoot-hr-manager-update-issues"></a>HR マネージャーの更新に関する問題のトラブルシューティング
 
@@ -55,14 +54,14 @@ Azure AD プロビジョニング サービスでは、マネージャーの情�
 * プロビジョニング アプリは、ユーザー レコードを処理する前にマネージャー レコードを処理している必要があります。 
 
 ## <a name="provision-on-demand-does-not-update-manager-attribute"></a>オンデマンド プロビジョニングでマネージャー属性が更新されない
-| | |
+| トラブルシューティング | 詳細 |
 |--|--|
 | **問題点** | 受信プロビジョニング アプリが正常に構成されました。 プロビジョニング オンデマンドとの同期をテストしています。 マネージャー属性は更新されず、"無効な値" というエラー メッセージが表示されます。  |
 | **原因** | プロビジョニング ジョブが、[マネージャーの更新を成功するための前提条件](#prerequisites-for-successful-manager-update)の 1 つを満たしていません  |
 | **解像度** | * 既定のマネージャー属性マッピングを変更した場合は、既定のマッピングを復元します。 <br> * マネージャー レコードがスコープ内であり、マネージャー API 式が有効な値に解決されます。 <br> * 最初にマネージャー レコードに対して provision-on-demand を実行し、次にユーザー レコードに対して provision-on-demand を実行します。  |
 
 ## <a name="full-sync-does-not-update-manager-attribute"></a>完全同期でマネージャー属性が更新されない
-| | |
+| トラブルシューティング | 詳細 |
 |--|--|
 | **問題点** | 受信プロビジョニング アプリが正常に構成されました。 スコープ フィルターを使用して、特定の HR レコードのみを処理しています。 一部のユーザーに対してマネージャーの解決が行っていないことが確認されます。  |
 | **原因** | スコープ フィルターを使用している場合は、マネージャー レコードがスコープ内にはない可能性が高い。  |

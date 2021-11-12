@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 09/30/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83fb74673b5da94cc656b512886ce1ee5d772ac1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: e652b7c520345ad56a28a718448ac520af8237e3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064401"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447362"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -25,7 +25,7 @@ Azure Arc 対応サーバーを使用すると、Azure VM 拡張機能を Azure 
 > Azure Arc 対応サーバーでは、Azure 仮想マシンへの VM 拡張機能のデプロイと管理はサポートされていません。 Azure VM については、次の [VM 拡張機能の概要](../../virtual-machines/extensions/overview.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> 現時点では、拡張機能は Azure portal からのみ更新できます。 現時点では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使用してこの操作を実行することはサポートされていません。
+> 現時点では、拡張機能は Azure portal または Azure CLI からのみ更新できます。 現時点では、Azure PowerShell、または Azure Resource Manager テンプレートを使用してこの操作を実行することはサポートされていません。
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -92,7 +92,9 @@ Arc 対応サーバーでは、リソース グループまたは別の Azure �
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM 拡張機能
 
-Linux 用の Log Analytics エージェント VM 拡張機能を使用するには、ターゲット マシンに Python 2.x がインストールされている必要があります。
+Linux 用の Log Analytics エージェント VM 拡張機能を使用するには、ターゲット マシンに Python 2.x がインストールされている必要があります。 
+
+拡張機能をインストールする前に、[Log Analytics エージェントのデプロイ オプション](concept-log-analytics-extension-deployment.md)を確認して、使用可能なさまざまな方法と要件を満たす方法を理解してください。
 
 ### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault VM 拡張機能
 

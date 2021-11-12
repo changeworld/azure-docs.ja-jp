@@ -7,12 +7,12 @@ ms.date: 09/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f3ce223174bc92fefd9f31c53709665749eca112
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 717cafbfc3623e52b9d9a0d70e6a22c9e562616b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471841"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -21,7 +21,7 @@ ms.locfileid: "128627902"
 
 1. この記事のコメント セクション。
 2. [Azure Storage に関する Microsoft Q&A 質問ページ](/answers/topics/azure-file-storage.html)。
-3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
+3. [Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84)。 
 4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="general"></a>全般
@@ -84,7 +84,7 @@ ms.locfileid: "128627902"
 
 * <a id="give-us-feedback"></a>
   **Azure Files に追加してほしい機能があります。追加できますか。**  
-    Azure Files チームでは、サービスに関するあらゆるフィードバックをお待ちしています。 [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) で機能のリクエストにご投票ください。 多くの新しい機能を皆様に喜んでいただけることを楽しみにしています。
+    Azure Files チームでは、サービスに関するあらゆるフィードバックをお待ちしています。 [Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) で機能のリクエストにご投票ください。 多くの新しい機能を皆様に喜んでいただけることを楽しみにしています。
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
@@ -175,7 +175,7 @@ ms.locfileid: "128627902"
 
 * <a id="afs-os-support"></a>
   **Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
-    現在、Azure File Sync は Windows Server 2019、Windows Server 2016、および Windows Server 2012 R2 のみをサポートしています。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお寄せください。
+    現在、Azure File Sync は Windows Server 2019、Windows Server 2016、および Windows Server 2012 R2 のみをサポートしています。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) までお寄せください。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
@@ -345,7 +345,7 @@ ms.locfileid: "128627902"
     
        net use <drive-letter/share-path> /delete
 
-## <a name="network-file-system"></a>ネットワーク ファイル システム
+## <a name="network-file-system-nfs-v41"></a>Network File System (NFS v4.1)
 
 * <a id="when-to-use-nfs"></a>
 **Azure Files NFS を使用するタイミングは?**
@@ -416,7 +416,7 @@ ms.locfileid: "128627902"
 **個々のファイルの共有スナップショットを作成できますか。**  
     共有スナップショットは、ファイル共有レベルで作成されます。 ファイル共有スナップショットから個々のファイルを復元できますが、ファイルレベルの共有スナップショットは作成できません。 ただし、共有レベルの共有スナップショットを取得しており、特定のファイルが変更された共有スナップショットを一覧表示したい場合は、Windows にマウントされた共有で、**以前のバージョン** からこれを行うことができます。 
     
-    ファイル スナップショット機能が必要な場合は、[Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお知らせください。
+    ファイル スナップショット機能が必要な場合は、[Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) までお知らせください。
 
 * <a id="encrypted-snapshots"></a>
 **暗号化されたファイル共有の共有スナップショットを作成できますか。**  

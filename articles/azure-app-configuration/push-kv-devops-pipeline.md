@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: 61b50f8e3c5b32401b4f7339627b9b704a4b94fd
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 2f5ac3579489637e5adcdfaa40fac90b5ff6e8b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122969"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427154"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -24,6 +24,7 @@ ms.locfileid: "112122969"
 - App Configuration リソース - [Azure portal](https://portal.azure.com)で無料リソースを作成する。
 - Azure DevOps プロジェクト - [無料プロジェクトを作成する](https://go.microsoft.com/fwlink/?LinkId=2014881)
 - Azure App Configuration Push タスク - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) から無料でダウンロードする。
+- [ノード 10](https://nodejs.org/en/blog/release/v10.21.0/) - セルフホステッド エージェントでタスクを実行しているユーザーの場合。
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 

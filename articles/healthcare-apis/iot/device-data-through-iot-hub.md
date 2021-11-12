@@ -6,21 +6,21 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 10/12/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: fe478235897b855d079241192108f5d5ebd70fe0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f12c5efe25f48ae16e4f59159936627a27b47212
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129992981"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283469"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-IoT コネクタには、医療関連のインターネット (IoMT) デバイスから、高速な医療相互運用性リソース (FHIR&#174;) サービスにデータを取り込む機能が用意されています。 IoT コネクタは、Azure IoT Hub を介してプロビジョニングおよび管理されているデバイスでも使用できます。 このチュートリアルでは、Azure IoT Hub から IoT コネクタに接続し、デバイス データをルーティングする手順について説明します。
+IoT コネクタでは、さまざまな IoT health 関連または医療機器から、高速医療相互運用性リソース (FHIR®) サービスに正常性データを収集して取り込む機能が提供されます。 IoT コネクタは、Azure IoT hub を介して作成および管理されるデバイスとの相互運用性と応答性が向上し、ワークフローの強化と使いやすさを実現します。 このチュートリアルでは、Azure IoT Hub から IoT コネクタに接続し、デバイス データをルーティングする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -109,6 +109,6 @@ Postman を使用して、FHIR サービス上の IoT コネクタによって�
 IoT コネクタ内のデータフローのさまざまな段階を理解します。
 
 >[!div class="nextstepaction"]
->[IoT コネクタのデータフロー](iot-data-flow.md)
+>[IoT コネクタのデータ フロー](iot-data-flow.md)
 
 (FHIR&#174;) HL7 の登録商標であり、HL7 のアクセス許可と共に使用されます。

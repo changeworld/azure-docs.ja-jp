@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: 94760d7029c74cb5669a1275c4d670f1b89b6c12
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: db0fc469d7f4429d8a99c5869940dfc50b63e845
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048781"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477062"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -115,10 +115,10 @@ ID ベースの接続は、次のコンポーネントでサポートされて�
 
 | 接続元                                       | サポートされているプラン | 詳細情報                                                                                                         |
 |---------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
-| Azure BLOB のトリガーとバインディング - プレビュー              | All             | [拡張機能バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
-| Azure キューのトリガーとバインディング - プレビュー             | All             | [拡張機能バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
-| Azure Event Hubs のトリガーとバインディング - プレビュー        | All             | [拡張機能バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
-| Azure Service Bus のトリガーとバインディング - プレビュー       | All             | [拡張機能バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
+| Azure BLOB のトリガーとバインディング               | All             | [拡張機能バージョン 5.0.0 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
+| Azure キューのトリガーとバインディング            | All             | [拡張機能バージョン 5.0.0 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
+| Azure Event Hubs のトリガーとバインディング     | All             | [拡張機能バージョン 5.0.0 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
+| Azure Service Bus のトリガーとバインディング       | All             | [拡張機能バージョン 5.0.0 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
 | Azure Cosmos DB のトリガーとバインディング - プレビュー         | エラスティック Premium | [拡張機能バージョン 4.0.0-preview1 以降](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) |
 | ホスト (必須) ストレージ ("AzureWebJobsStorage") - プレビュー | All             | [ID を使用してホスト ストレージに接続する](#connecting-to-host-storage-with-an-identity-preview)                        |
 
@@ -145,11 +145,11 @@ ID ベースの接続は、次のコンポーネントでサポートされて�
 
 [!INCLUDE [functions-service-bus-permissions](../../includes/functions-service-bus-permissions.md)]
 
-# <a name="azure-cosmos-db-extension"></a>[Azure Cosmos DB の拡張機能](#tab/cosmos)
+# <a name="azure-cosmos-db-extension-preview"></a>[Azure Cosmos DB の拡張機能 (プレビュー)](#tab/cosmos)
 
 [!INCLUDE [functions-cosmos-permissions](../../includes/functions-cosmos-permissions.md)]
 
-# <a name="functions-host-storage"></a>[Functions ホスト ストレージ](#tab/azurewebjobsstorage)
+# <a name="functions-host-storage-preview"></a>[Functions ホスト ストレージ (プレビュー)](#tab/azurewebjobsstorage)
 
 [!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 

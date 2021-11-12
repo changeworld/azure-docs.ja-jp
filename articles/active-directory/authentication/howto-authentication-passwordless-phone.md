@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 10/21/2021
+ms.date: 10/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dadaa832e065163186ef590989c22c0f7e7700a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 19e4a99967e8fdc64eb7d10c66649cac59db048a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233906"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456253"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
@@ -28,15 +28,15 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 Microsoft Authenticator アプリから電話によるサインインを有効にしたユーザーには、自分のアプリで番号をタップするように求めるメッセージが表示されます。 ユーザー名またはパスワードの入力は求められません。 アプリでサインイン プロセスを完了するには、ユーザーはさらに次の操作を行う必要があります。
 
-1. 番号を一致させます。
-2. **[承認]** を選択します。
-3. 自分の PIN または生体認証を指定します。
+1. ログイン画面に表示される番号を、Microsoft Authenticator アプリのダイアログに入力します。
+1. **[承認]** を選択します。
+1. 自分の PIN または生体認証を指定します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Microsoft Authenticator アプリでパスワードなしの電話によるサインインを使用するには、次の前提条件を満たしている必要があります。
 
-- 検証方法としてプッシュ通知が許可されている Azure AD Multi-Factor Authentication。 スマートフォンまたはタブレットへのプッシュ通知は、Authenticator アプリでアカウントへの不正アクセスを防止したり、不正なトランザクションを停止させたりするのに役立ちます。 Authenticator アプリは、プッシュ通知を行うように設定されたときに自動的にコードを生成します。これにより、デバイスが接続されていない場合でも、ユーザーはバックアップのサインイン方法を保持できます。 
+- 推奨: 検証方法としてプッシュ通知が許可されている Azure AD Multi-Factor Authentication。 スマートフォンまたはタブレットへのプッシュ通知は、Authenticator アプリでアカウントへの不正アクセスを防止したり、不正なトランザクションを停止させたりするのに役立ちます。 Authenticator アプリは、プッシュ通知を行うように設定されたときに自動的にコードを生成します。これにより、デバイスが接続されていない場合でも、ユーザーはバックアップのサインイン方法を保持できます。 
 - iOS 8.0 以降、または Android 6.0 以降を実行しているデバイスにインストールされている最新バージョンの Microsoft Authenticator。
 - Microsoft Authenticator アプリがインストールされているデバイスを、Azure AD テナント内で個々のユーザーに登録する必要があります。 
 
@@ -68,7 +68,7 @@ Azure AD では、サインイン プロセス中に使用できる認証方法�
 Azure AD のパスワードなし認証方法にユーザーが自分自身を登録するには、次の手順を使用します。
 
 1. [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) にアクセスします。
-1. サインインし、次に **[方法の追加] > [認証アプリ]** を選択してから、 **[追加]** を選択し、Authenticator アプリを追加します。
+1. サインインし、次に **[Add メソッド]**  >  **[Authenticator アプリ]**  >  **[追加]** をクリックして Authenticator アプリを追加します。
 1. 指示に従って、お使いのデバイスに Microsoft Authenticator アプリをインストールして構成します。
 1. **[完了]** を選択して、Authenticator の構成を完了します。
 1. **Microsoft Authenticator** で、登録したアカウントのドロップダウン メニューから **[電話によるサインインを有効にする]** を選択します。
@@ -93,7 +93,7 @@ Azure AD のパスワードなし認証方法にユーザーが自分自身を�
 3. 必要に応じて、 **[その他のサインイン方法]** を選択します。
 4. **[Microsoft Authenticator アプリで要求を承認する]** を選択します。
 
-すると、ユーザーに番号が表示されます。 パスワードを入力するのではなく、適切な番号を選択することで認証を受けるようにユーザーはアプリから求められます。
+すると、ユーザーに番号が表示されます。 パスワードを入力するのではなく、適切な番号を入力することで認証を受けるようにユーザーはアプリから求められます。
 
 ユーザーがパスワードなしの電話によるサインインを利用すると、アプリではその後も引き続きユーザーにこの方法が案内されます。 ただし、ユーザーには別の方法を選択するためのオプションが表示されます。
 
@@ -122,7 +122,7 @@ Azure AD のパスワードなし認証方法にユーザーが自分自身を�
 
 ### <a name="azure-mfa-server"></a>Azure MFA サーバー
 
-オンプレミスの Azure MFA server を介して、エンド ユーザーが Multi-Factor Authentication (MFA) を利用できるようにすることができます。 そのユーザーは引き続き、パスワードなしの電話によるサインイン資格情報を作成して利用することができます。
+オンプレミスの Azure MFA server を介して、エンド ユーザーが多要素認証 (MFA) を利用できるようにすることができます。 そのユーザーは引き続き、パスワードなしの電話によるサインイン資格情報を作成して利用することができます。
 
 ユーザーが、パスワードなしの電話によるサインイン資格情報で Microsoft Authenticator アプリの複数のインストール (5 つ以上) をアップグレードしようとすると、この変更はエラーになることがあります。
 

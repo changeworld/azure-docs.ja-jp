@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: references_regions
 ms.date: 09/01/2021
-ms.openlocfilehash: 1b516db029c5769526f8345d5f6ecdb96c5fad6c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 37d15255e469c369086954f08a1401a82641d838
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440200"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281818"
 ---
 # <a name="create-an-hdinsight-cluster-that-uses-availability-zones-preview"></a>可用性ゾーンを使用する HDInsight クラスターを作成する (プレビュー)
 

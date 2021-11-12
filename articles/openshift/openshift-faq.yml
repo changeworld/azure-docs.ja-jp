@@ -7,12 +7,12 @@ metadata:
   ms.service: azure-redhat-openshift
   ms.topic: conceptual
   ms.date: 07/31/2020
-  ms.openlocfilehash: e7f38ea054214d4133f9b63a849b5be070e20dca
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: dbde5144fe44a9b92b06cbb8f226d04b4fe74489
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113095009"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130225569"
 title: Azure Red Hat OpenShift に関する FAQ
 summary: この記事では、Microsoft Azure Red Hat OpenShift に関するよくあるご質問 (FAQ) に回答します。
 sections:
@@ -35,7 +35,7 @@ sections:
       サポートされるポッドの実際の数は、アプリケーションのメモリ、CPU、ストレージの要件によって異なります。
 
 
-      Azure Red Hat OpenShift 4.x には、ノードあたり 250 のポッド制限と 100 の計算ノードの制限があります。 これにより、1 つのクラスターでサポートされるポッドの最大数が 250&times;100 = 25,000 に制限されます。
+      Azure Red Hat OpenShift 4.x には、ノードあたり 250 のポッド制限と 60 の計算ノードの制限があります。 これにより、1 つのクラスターでサポートされるポッドの最大数が 250&times;60 = 15,000 に制限されます。
 
 
       Azure Red Hat OpenShift 3.11 には、ノードあたり 50 のポッド制限と 20 の計算ノードの制限があります。 これにより、1 つのクラスターでサポートされるポッドの最大数が 50&times;20 = 1,000 に制限されます。

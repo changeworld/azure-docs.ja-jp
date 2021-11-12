@@ -7,18 +7,18 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 1baa1470bcaef8e447b19eb37580b21b94c02df6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2c5d6aab297fb357d94066a05dd7f6ff766b31df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386643"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458116"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-ledger"></a>Azure Confidential Ledger のよくある質問
 
 ## <a name="how-can-i-tell-if-the-acc-ledger-service-would-be-useful-to-my-organization"></a>ACC Ledger サービスが自分の組織で役立つかどうか、どうすれば判断できますか。
 
-Confidential Ledger が最も役に立つのは、記録や保存処理を実行しているシステムに対して攻撃者が意欲的に侵入を試みる価値のある記録が存在する組織です。こうした攻撃には、以前の記録を捏造、改変、削除しようとする悪意のある従業員、すなわち "内部犯" によるものも含まれます。
+Azure Confidential Ledger が最も役に立つのは、記録や保存処理を実行しているシステムに対して攻撃者が意欲的に侵入を試みる価値のある記録が存在する組織です。こうした攻撃には、以前の記録を捏造、改変、削除しようとする悪意のある従業員、すなわち "内部犯" によるものも含まれます。
 
 ## <a name="what-makes-acc-ledger-much-more-secure"></a>ACC Ledger の安全性が他のサービスよりも大幅に高いのはなぜですか。
 

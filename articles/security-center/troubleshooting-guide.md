@@ -5,26 +5,25 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/15/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: a1e957b7d7cc285c9f757106a9183573104e849d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4b6ac3c286302428544977cb725fc1ef1b9a53d4
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091238"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577766"
 ---
 # <a name="microsoft-defender-for-cloud-troubleshooting-guide"></a>Microsoft Defender for Cloud トラブルシューティングガイド |Microsoft Docs
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
+このガイドは、所属組織が Defender for Cloud に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
 Defender for Cloud では、Log Analytics エージェントを使用してデータを収集して格納します。 詳細については、[クラウドプラットフォームへの移行に関する Microsoft Defenderを参照してください。](./enable-data-collection.md) この記事の情報は、Log Analytics エージェントへの移行後の Security Center の機能を表しています。
 
 > [!TIP]
-> Azure portal の Azure Security Center ページの専用領域は、Azure Security Center と Azure Defender に関する一般的な課題を解決するための、拡大し続ける照合されたセルフヘルプ資料のセットを提供します。
+> Azure portal の Defender for Cloud ページの専用領域は、Defender for Cloud に関する一般的な課題を解決するための、拡大し続ける照合されたセルフヘルプ資料のセットを提供します。
 > 
 > 問題が発生している場合、またはサポート チームからのアドバイスを求めている場合は、 **[問題の診断と解決]** は、ソリューションを探すのに最適な場所です。
 > 
@@ -150,6 +149,6 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 このページでは、Microsoft Defender for Cloud でセキュリティポリシーを構成する方法について説明しました。 Defender for Cloud について詳しくは、次のページをご覧ください。
 
-* [Microsoft Defender for Cloud でのセキュリティ アラートの管理と対応](managing-and-responding-alerts.md) -- セキュリティ アラートの管理と対応の方法について説明しています。
-* [Microsoft Defender for Cloud でのアラートの検証](alert-validation.md)
-* [Defender for Cloud のよく寄せられる質問 (FAQ)](faq-general.yml) -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Microsoft Defender for Cloud でのセキュリティ アラートの管理と対応](managing-and-responding-alerts.md) -- セキュリティ アラートの管理と対応の方法について説明しています。
+- [Microsoft Defender for Cloud でのアラートの検証](alert-validation.md)
+- [Defender for Cloud のよく寄せられる質問 (FAQ)](faq-general.yml) -- このサービスの使用に関してよく寄せられる質問が記載されています。

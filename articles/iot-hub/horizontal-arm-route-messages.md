@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 366aa1737f0e72a1f250fc1d25ea77636955d674
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e40b714709aedbb643b2b2d65878a73618a7682f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034303"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445874"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure IoT Hub とストレージ アカウントをデプロイする
 
@@ -63,8 +63,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **ハブの名前** が必要です。 リソースの一覧でハブを選択します。 IoT Hub セクションの上部からハブの名前をコピーして Windows クリップボードに格納します。
 
-   ![ハブの名前をコピーする](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
-
     このコマンドのハブ名 (強調された部分) を実際のハブ名に置き換えて、コマンド ウィンドウで実行します。
 
     ```cmd
@@ -77,11 +75,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. 次の環境変数は、IoT デバイス キーです。 ハブの [IoT Hub] メニューから **[IoT デバイス]** を選択して、ハブに新しいデバイスを追加します。
+1. 次の環境変数は、IoT デバイス キーです。 ハブの [IoT Hub] メニューから **[デバイス]** を選択し、ハブに新しいデバイスを追加します。
 
-   ![[IoT デバイス] を選択する](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
+   :::image type="content" source="./media/horizontal-arm-route-messages/04-select-iot-devices.png" alt-text="左ウィンドウのデバイスのスクリーンショット。" border="true":::
 
-1. 画面の右側にある **[+ 新規]** を選択して新しいデバイスを追加します。
+1. 画面の右側にある **[+ デバイスの追加]** を選択して新しいデバイスを追加します。
 
    新しいデバイス名を入力します。 このクイックスタートでは、**Contoso-Test-Device** で始まる名前を使用します。 デバイスを保存し、その画面を再度開いてデバイス キーを取得します (このキーは、ペインを閉じたときに生成されます)。プライマリまたはセカンダリのキーを選択して Windows クリップボードにコピーします。 コマンド ウィンドウで、実行するコマンドを設定し、**Enter** キーを押します。 コマンドはこのようになっている必要があります。ただし、デバイス キーを貼り付けてください。
 

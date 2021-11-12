@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 10/21/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dd43c01cac8b0c0c24a3a17385c90d9630da35c5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95753a40c60e6b191b768fa3ac9cae3c5e9cb466
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019650"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433272"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -38,9 +38,24 @@ ms.locfileid: "131019650"
 
 ## <a name="november-2021"></a>2021 年 11 月
 
+### <a name="windows-forwarded-events-connector-now-available-public-preview"></a>Windows 転送イベント コネクタが利用可能に (パブリック プレビュー)
+
+この新しいデータ コネクタにより、Windows イベント コレクションまたは Windows イベント転送 (WEC/WEF) を使用して、Azure Sentinel ワークスペースに接続されている Windows Server からイベント ログをストリーミングできます。 コネクタは、新しい Azure Monitor エージェント (AMA) を使用します。これは、レガシ Log Analytics エージェント (MMA とも呼ばれる) に対して多くの利点を提供します。
+- **スケーラビリティ:** Windows イベント コレクション (WEC) を有効にしている場合は、WEC コンピューターに Azure Monitor エージェント (AMA) をインストールして、多くのサーバーから 1 つの接続ポイントを使用してログを収集できます。
+
+- **速度:** AMA は、5K EPS の向上した速度でデータを送信でき、データの更新を高速化できます。
+
+- **効率性:** AMA を使用すると、複雑なデータ収集ルール (DCR) を設計して、ソースのログをフィルター処理し、ワークスペースにストリーム配信する正確なイベントを選択できます。 DCR は、不要なイベントを除外して、ネットワーク トラフィックとインジェスト コストを削減するのに役立ちます。
+
+- **カバレッジ:** WEC/WEF を使用すると、レガシ (オンプレミスおよび物理) サーバーから、また、エージェントのインストールが望ましくないドメイン コントローラーなど、使用率の高い、または機密性の高いコンピューターからも Windows イベント ログを収集できます。 
+
+データ正規化の完全なサポートを保証するために、このコネクタに [Azure Sentinel Information Model (ASIM)](normalization.md) パーサーをインストールして使用することをお勧めします。
+
+詳細については、[Windows 転送イベント コネクタ](data-connectors-reference.md#windows-forwarded-events-preview)に関するページを参照してください。
+
 ### <a name="near-real-time-nrt-threat-detection-rules-now-available-public-preview"></a>ほぼリアルタイム (NRT) の脅威検出ルールが利用可能になりました (パブリック プレビュー)
 
-セキュリティ上の脅威に直面した場合、時間と速度が重要です。 脅威を封じ込めるために迅速に分析および対応できるように、脅威が発生するときに脅威に注意する必要があります。 Azure Sentinelのほぼリアルタイム (NRT)の 分析ルールを使用すると、オンプレミスの SIEM に近い脅威検出を高速化し、特定のシナリオで応答時間を短縮できます。
+セキュリティ上の脅威に直面した場合、時間と速度が重要です。 脅威を含め、迅速に分析して対応できるよう、脅威が実現する場合は、脅威に注意する必要があります。 Azure Sentinelのほぼリアルタイム (NRT) 分析ルールを使用すると、オンプレミスの SIEM に近い脅威検出を高速化し、特定のシナリオで応答時間を短縮できます。
 
 Azure Sentinelの[ニア・リアルタイム分析ルール](detect-threats-built-in.md#nrt)は、すぐに使用できる最新の脅威検出を提供します。 この種類のルールは、わずか1分間隔でクエリを実行することにより、応答性が高くなるように設計されています。
 
@@ -202,6 +217,20 @@ Azure Sentinel の **[ノートブック]** 領域にも、 **[概要]** タブ�
 :::image type="content" source="media/whats-new/notebooks-synapse.png" alt-text="[ノートブック] ページの新しい Azure Synapse 機能のスクリーンショット。" lightbox="media/whats-new/notebooks-synapse.png":::
 
 詳細については、「[Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)」を参照してください。
+
+
+### <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel"></a>Azure Sentinel を使用した Azure Key Vault ハニートークンのデプロイと監視
+
+新しい **Azure Sentinel 詐欺** ソリューションを使用すると、選択した Azure キー コンテナーに *ハニー* トークンと呼ばれる分離キーとシークレットをデプロイし、キー コンテナー内の悪意のあるアクティビティを監視できます。
+
+デプロイが完了すると、ハニートークン キーとシークレットを使用したアクセスまたは操作によってインシデントが生成され、Azure Sentinel でそのインシデントを調査できます。
+
+実際にハニートークン キーとシークレットを使用する理由は何もないため、ワークスペース内の同様のアクティビティは悪意のあるものになる可能性があり、調査する必要があります。
+
+**Azure Sentinel 詐欺** ソリューションには、大規模または一度に 1 つ、ハニートークンをデプロイするのに役立つブック、作成されたハニートークンを追跡するための監視リスト、必要に応じてインシデントを生成するための分析ルールが含まれています。
+
+詳細については、「[Azure Sentinel を使用した Azure Key Vault ハニートークンのデプロイと監視 (パブリック プレビュー)](monitor-key-vault-honeytokens.md)」を参照してください。
+
 
 ## <a name="october-2021"></a>2021 年 10 月
 
@@ -386,7 +415,7 @@ Azure Sentinel では、Microsoft が生成した脅威インテリジェンス 
 **Microsoft 脅威インテリジェンス照合分析** ルールは、現在、次のログ ソースに対するドメイン インジケーターと一致しています。
 
 - [CEF](connect-common-event-format.md)
-- [DNS](./data-connectors-reference.md#domain-name-server)
+- [DNS](./data-connectors-reference.md#windows-dns-server-preview)
 - [Syslog](connect-syslog.md)
 
 詳細については、「[照合分析を使用した脅威の検出 (パブリックプレビュー)](work-with-threat-indicators.md#detect-threats-using-matching-analytics-public-preview)」を参照してください。

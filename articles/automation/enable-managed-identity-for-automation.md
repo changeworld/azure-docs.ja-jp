@@ -1,21 +1,21 @@
 ---
-title: Azure Automation アカウントのシステム割り当てマネージド ID を使用する (プレビュー)
+title: Azure Automation アカウントのシステム割り当てマネージド ID を使用する
 description: この記事では、Azure Automation アカウントのマネージド ID を設定する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb883fafd7c738ca99fe2282edb67d1849b9b1af
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 685126603c302a02d56aff51873cd34340947494
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858160"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470758"
 ---
-# <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Azure Automation アカウントのシステム割り当てマネージド ID を使用する (プレビュー)
+# <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account"></a>Azure Automation アカウントのシステム割り当てマネージド ID を使用する
 
-この記事では、Azure Automation アカウントに対してシステム割り当てマネージド ID を有効にし、それを使用して他のリソースにアクセスする方法を説明します。 マネージド ID と Azure Automation の連携方法の詳細については、[マネージド ID](automation-security-overview.md#managed-identities-preview) に関する記事を参照してください。
+この記事では、Azure Automation アカウントに対してシステム割り当てマネージド ID を有効にし、それを使用して他のリソースにアクセスする方法を説明します。 マネージド ID と Azure Automation の連携方法の詳細については、[マネージド ID](automation-security-overview.md#managed-identities) に関する記事を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -101,7 +101,7 @@ $output
 
 :::image type="content" source="media/enable-managed-identity-for-automation/set-azautomationaccount-output.png" alt-text="set-azautomationaccount コマンドからの出力。":::
 
-その他の出力については、`$output.identity | ConvertTo-Json` を実行します。
+追加の出力については、`$output.identity | ConvertTo-Json` を指定するように例を変更します。
 
 ### <a name="enable-using-a-rest-api"></a>REST API を使用した有効化
 
@@ -257,9 +257,9 @@ Azure Key Vault など、Azure AD によって保護されているその他の�
 
 システム割り当てマネージド ID を認証に使用するには、その ID を使用する予定の Azure リソースに対する ID のアクセスを先に設定します。 このタスクを完了するには、ターゲットの Azure リソース上でその ID に適切な役割を割り当てます。
 
-最小特権の原則に従って、Runbook を実行するのに必要なアクセス許可のみを慎重に割り当てます。 たとえば、Automation アカウントが Azure VM の開始または停止を行うためにのみ必要な場合は、その実行アカウントまたはマネージド ID に割り当てられるアクセス許可は、VM の開始または停止のためのみのものである必要があります。 同様に、Runbook が BLOB ストレージから読み取りを行う場合は、読み取り専用アクセス許可を割り当てます。この例では、Azure PowerShell を使用して、共同作成者を割り当てる方法を示します
+最小特権の原則に従って、Runbook を実行するのに必要なアクセス許可のみを慎重に割り当てます。 たとえば、Automation アカウントが Azure VM の開始または停止を行うためにのみ必要な場合は、その実行アカウントまたはマネージド ID に割り当てられるアクセス許可は、VM の開始または停止のためのみのものである必要があります。 同様に、Runbook が BLOB ストレージから読み取りを行う場合は、読み取り専用アクセス許可を割り当てます。
 
-この例では、Azure PowerShell を使用して、サブスクリプションの共同作成者ロールをターゲットの Azure リソースに割り当てる方法を示します。 共同作成者ロールは例として使用されます。ご自身のケースに必要な場合と不要な場合があります。
+次の例では、Azure PowerShell を使用して、サブスクリプションの共同作成者ロールをターゲットの Azure リソースに割り当てる方法を示します。 共同作成者ロールは例として使用されます。ご自身のケースに必要な場合と不要な場合があります。
 
 ```powershell
 New-AzRoleAssignment `
@@ -295,7 +295,7 @@ HTTP エンドポイントに対して、次のことを確認してください
 - X-IDENTITY-HEADER は、Hybrid Runbook Worker の環境変数 IDENTITY_HEADER の値に設定する必要があります。
 - Post 要求のコンテンツの種類は 'application/x-www-form-urlencoded' である必要があります。
 
-### <a name="get-access-token-for-system-assigned-identity-using-http-get"></a>HTTP Get を使用してシステム割り当て ID のアクセストークンを取得する
+### <a name="get-access-token-for-system-assigned-managed-identity-using-http-get"></a>HTTP Get を使用してシステム割り当てマネージド ID のアクセス トークンを取得する
 
 ```powershell
 $resource= "?resource=https://management.azure.com/" 
@@ -307,7 +307,7 @@ $accessToken = Invoke-RestMethod -Uri $url -Method 'GET' -Headers $Headers
 Write-Output $accessToken.access_token
 ```
 
-### <a name="get-access-token-for-system-assigned-identity-using-http-post"></a>HTTP Post を使用してシステム割り当て ID のアクセストークンを取得する
+### <a name="get-access-token-for-system-assigned-identity-using-http-post"></a>HTTP Post を使用してシステム割り当て ID のアクセス トークンを取得する
 
 ```powershell
 $url = $env:IDENTITY_ENDPOINT  
@@ -388,10 +388,22 @@ $command.ExecuteNonQuery()
 $conn.Close()
 ```
 
+## <a name="migrate-from-existing-run-as-accounts-to-managed-identity"></a>既存の実行アカウントからマネージド ID に移行する
+
+Azure Automation を使用すると、実行アカウントを使用して、Azure Resource Manager リソースまたはクラシック デプロイ モデルにデプロイされたリソースを管理するための認証を行うことができるようになります。 Runbook 認証のマネージド ID に実行アカウントを切り替えるには、次の手順に従います。
+
+1. [システム割り当て](enable-managed-identity-for-automation.md)と[ユーザー割り当て](add-user-assigned-identity.md)、または両方の種類のマネージド ID を有効にします。
+1. 実行アカウントが割り当てられたものに一致する同じ特権をマネージド ID に Azure リソースに付与します。
+1. マネージド ID を使用して認証を行う Runbook を更新します。
+1. マネージド ID を使用するために Runbook を変更します。 ID のサポートのために、Az cmdlet コマンドレットの `Connect-AzAccount` コマンドレットを使用します。 PowerShell リファレンスの「[Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount)」を参照してください。
+
+   - AzureRM モジュールを使用している場合は、`AzureRM.Profile` を最新バージョンに更新し、`Add-AzureRMAccount` コマンドレットを使用して `Connect-AzureRMAccount –Identity` に置き換える必要があります。
+   - Az モジュールを使用している場合は、[Azure PowerShell モジュールの更新](automation-update-azure-modules.md#update-az-modules)に関する記事の手順に従って、最新バージョンに更新します。
+
 ## <a name="next-steps"></a>次の手順
 
-- Runbook が正常に完了しない場合は、「[Azure Automation マネージド ID に関する問題のトラブルシューティング (プレビュー)](troubleshoot/managed-identity.md)」を参照してください。
+- Runbook が正常に完了しない場合は、「[Azure Automation マネージド ID に関する問題のトラブルシューティング](troubleshoot/managed-identity.md)」を参照してください。
 
-- マネージド ID を無効にする必要がある場合は、「[Azure Automation アカウントのマネージド ID を無効にする (プレビュー)](disable-managed-identity-for-automation.md)」を参照してください。
+- マネージド ID を無効にする必要がある場合は、「[Azure Automation アカウントのマネージド ID を無効にする](disable-managed-identity-for-automation.md)」を参照してください。
 
 - Azure Automation アカウントのセキュリティの概要については、[Automation アカウントの認証の概要](automation-security-overview.md)に関する記事を参照してください。

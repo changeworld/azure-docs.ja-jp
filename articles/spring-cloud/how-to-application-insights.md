@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1886632101e7d453c2c7e4d4a5b84dbd57c2305a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5652c28f90c697bc2394e2bb018bff3d8a7ddc7a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075013"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324671"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud での Application Insights Java In-Process Agent
 
@@ -298,5 +298,5 @@ Azure Spring Cloud の名前 `App Instance` は、次のシナリオで変更ま
 * [ライブ メトリック](../azure-monitor/app/live-stream.md)
 * [パフォーマンス](../azure-monitor/app/tutorial-performance.md)
 * [エラー](../azure-monitor/app/tutorial-runtime-exceptions.md)
-* [メトリック](../azure-monitor/essentials/tutorial-metrics-explorer.md)
+* [メトリック](../azure-monitor/essentials/tutorial-metrics.md)
 * [ログ](../azure-monitor/logs/data-platform-logs.md)

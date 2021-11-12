@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 898cc8dcb634ed9beab26c0a0d5de9a9fdda068c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d38566db882bdc2094961cb83c9bd117a328589
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732871"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258900"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する
 
@@ -48,11 +48,11 @@ IoT Hub での手動フェールオーバーと Microsoft によって開始さ�
 > [!NOTE]
 > 1 つの IoT ハブに対して、1 日あたり 2 回のフェールオーバーと 2 回のフェールバックまでに制限されています。
 
-1. **[リソース グループ]** をクリックしてから、リソース グループを選びます。 このチュートリアルでは、**ManlFailRG** を使用します。 リソースの一覧で、対象のハブをクリックします。 
+1. **[リソース グループ]** をクリックしてから、リソース グループを選びます。 リソースの一覧で、対象のハブをクリックします。
 
-1. IoT Hub ウィンドウの **[設定]** の下で、 **[フェールオーバー]** をクリックします。
+1. IoT Hub ウィンドウの **[ハブ設定情報]** の下で、 **[フェールオーバー]** をクリックします。
 
-   ![IoT Hub のプロパティ ウィンドウを示すスクリーンショット](./media/tutorial-manual-failover/trigger-failover-01.png)
+:::image type="content" source="./media/tutorial-manual-failover/trigger-failover-01.png" alt-text="IoT Hub のプロパティ ウィンドウを示すスクリーンショット":::
 
 1. [手動フェールオーバー] ウィンドウに、 **[現在の場所]** と **[Failover location]\(フェールオーバーの場所\)** が表示されます。 現在の場所は常に、ハブが現在アクティブになっている場所を示します。 フェールオーバーの場所は、現在の場所とペアになっている標準の [Azure geo ペア リージョン](../best-practices-availability-paired-regions.md)です。 ロケーションの値は変更できません。 このチュートリアルでは、現在の場所は `West US 2` で、フェールオーバーの場所は `West Central US` です。
 

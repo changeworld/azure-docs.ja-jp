@@ -11,12 +11,12 @@ ms.author: seramasu
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: 05622e6300dc19e28efaba114aded16fc1a26788
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 724c7a3108f1b0bb699c81444a76e34d795f1705
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557359"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056135"
 ---
 # <a name="deploy-models-with-rest-preview"></a>REST を使用してモデルをデプロイする (プレビュー)
 
@@ -61,11 +61,11 @@ Azure Machine Learning オンライン エンドポイントを作成するに�
 
 管理 REST により、[サービス プリンシパル認証トークン](how-to-manage-rest.md#retrieve-a-service-principal-authentication-token)が要求されます。 `TOKEN` は、実際の値に置き換えてください。 このトークンは、次のコマンドを使用して取得できます。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="get_access_token":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_access_token":::
 
 サービス プロバイダーは、`api-version` 引数を使用して互換性を保証します。 `api-version` 引数はサービスによって異なります。 将来のバージョンに対応するために、API バージョンを変数として設定します。
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="api_version":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="api_version":::
 
 ### <a name="get-storage-account-details"></a>ストレージ アカウントの詳細を取得する
 

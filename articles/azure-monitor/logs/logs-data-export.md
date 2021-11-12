@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: f5dc1ad57b745ee26f9edb1b9c31091a1aaec42c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8088b85ceefef2d3ffb11e7713fefd115c84b781
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131069978"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435170"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -73,7 +73,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
     - 米国西部 2
 
 ## <a name="data-completeness"></a>データの完全性
-データ エクスポートでは、エクスポート先が使用できない場合に最大 30 分間、データ送信の再試行が続行されます。 30 分経ってもまだ使用できない場合、データは、エクスポート先が使用可能になるまで破棄されます。
+データ エクスポートでは、エクスポート先が使用できない場合、最大 30 分間、データ送信の再試行が続行されます。 エクスポート先が 30 分経ってもまだ使用できない場合、データは破棄されます。
 
 ## <a name="cost"></a>コスト
 現在、データ エクスポート機能に追加料金は発生しません。 データ エクスポートの価格は、後で発表され、課金が始まる前に通知されます。 通知期間後もデータ エクスポートを引き続き使用することを選択した場合は、該当する料金が適用されます。
@@ -144,38 +144,38 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 [![ストレージ アカウントの [ファイアウォールと仮想ネットワーク]](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
-データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 ワークスペースには有効な規則が 10 個ありますが、'無効' な状態の規則を追加することができます。 エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
+データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 ワークスペースには有効な規則が 10 個ありますが、"無効" な状態の規則を追加できます。 エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
 
 データのエクスポート先には制限があるため、エクスポートの調整、失敗、待機時間を最小限に抑えるために監視する必要があります。 [ストレージ アカウントのスケーラビリティ](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)と[イベント ハブの名前空間のクォータ](../../event-hubs/event-hubs-quotas.md)に関する記事を参照してください。
 
-#### <a name="recommendations-for-storage-account"></a>ストレージ アカウントに関する推奨事項 
+#### <a name="monitoring-storage-account"></a>ストレージ アカウントの監視
 
 1. エクスポートに個別のストレージ アカウントを使用します
-1. 次の設定を使用して、以下のメトリックに対するアラートを構成します。 
+1. 次のメトリックでアラートを構成します。 
 
     | Scope | メトリック名前空間 | メトリック | 集計 | Threshold |
     |:---|:---|:---|:---|:---|
-    | storage-name | Account | イングレス | SUM | 最大ストレージ イングレス レートの 80%。 たとえば、米国西部の汎用 v2 の場合は 60 Gbps です。 |
+    | storage-name | Account | イングレス | SUM | アラートの評価期間あたり最大イングレスの 80%。 たとえば、米国西部の汎用 v2 の場合、上限は 60 Gbps です。 しきい値は、5 分間の評価期間あたり 14400 Gb です |
   
 1. アラートの修復アクション
     - エクスポートに個別のストレージ アカウントを使用します
     - Azure Storage Standard アカウントでは、依頼により、さらに高いイングレス制限がサポートされます。 引き上げを依頼するには、[Azure サポート](https://azure.microsoft.com/support/faq/)にお問い合わせください。
     - 追加のストレージ アカウント間でテーブルを分割します
 
-#### <a name="recommendations-for-event-hub"></a>イベント ハブの推奨事項
+#### <a name="monitoring-event-hub"></a>監視イベント ハブ
 
-1. [メトリック アラート](../../event-hubs/monitor-event-hubs-reference.md)を構成します:
+1. 下の[メトリック](../../event-hubs/monitor-event-hubs-reference.md)にアラートを構成します。
   
     | Scope | メトリック名前空間 | メトリック | 集計 | Threshold |
     |:---|:---|:---|:---|:---|
-    | namespaces-name | Event Hub の標準メトリック | 着信バイト数 | SUM | 5 分あたりの最大イングレスの 80%。 たとえば、ユニットあたり 1 MB/秒 (TU または PU) です |
-    | namespaces-name | Event Hub の標準メトリック | 受信要求 | Count | 5 分あたりの最大イベントの 80%。 たとえば、ユニットあたり 1000/s (TU または PU) です |
-    | namespaces-name | Event Hub の標準メトリック | クォータ超過エラー数 | Count | 要求の 1% から 5% |
+    | namespaces-name | Event Hub の標準メトリック | 着信バイト数 | SUM | アラートの評価期間あたり最大イングレスの 80% たとえば、制限はユニットあたり 1 MB/秒 (TU または PU) で、使用ユニット数は 5 です。 しきい値は、5 分間の評価期間あたり 1200 MB です |
+    | namespaces-name | Event Hub の標準メトリック | 受信要求 | Count | アラートの評価期間あたり最大イベントの 80%。 たとえば、上限はユニットあたり 1000/秒 (TU または PU) で、使用ユニット数は 5 です。 しきい値は、5 分間の評価期間あたり 1200000 です |
+    | namespaces-name | Event Hub の標準メトリック | クォータ超過エラー数 | Count | 要求の 1% の間。 たとえば、5 分あたりの要求数は 600000 です。 しきい値は、5 分間の評価期間あたり 6000 です |
 
 1. アラートの修復アクション
    - [自動インフレ](../../event-hubs/event-hubs-auto-inflate.md)機能を構成して自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たします。
    - 負荷に合わせてスループットユニットの増加を確認する
-   - 追加の名前空間の間でテーブルを分割します
+   - 他の名前空間間でテーブルを分割する
    - スループットを高めるために 'Premium' または 'Dedicated' レベルを使用します
 
 エクスポート ルールには、ワークスペースにあるテーブルを含める必要があります。 ワークスペース内で使用できるテーブルの一覧を表示するには、このクエリを実行します。
@@ -633,7 +633,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 
 ## <a name="supported-tables"></a>サポート対象のテーブル
-サポート対象のテーブルは、現在、以下に記載されているものに限定されています。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、その他のテーブルのサポートが追加されると更新されます。
+サポート対象のテーブルは、現在、以下に記載されているものに限定されています。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、追加されるテーブルが増えると更新されます。
 
 | テーブル | 制限事項 |
 |:---|:---|

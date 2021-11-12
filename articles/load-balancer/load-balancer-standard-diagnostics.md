@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: c0502b880d23e9f0a63564f11473f48e1c01b096
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: f92d776239bccb457f6d9fe9b073ea64a56178a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236557"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286433"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -219,7 +219,7 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
 このグラフを見ることで、ユーザーは、他の問題が発生していたかどうかを推測したりサポートに問い合わせたりすることなく、独力でデプロイのトラブルシューティングを行うことができます。 このサービスは、誤った構成またはアプリケーションの障害によって正常性プローブが失敗したため、利用できませんでした。
 </details>
 
-## <a name="configure-alerts-for-multi-dimensional-metrics"></a>多次元メトリックのアラートを構成する ###
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>多次元メトリックのアラートを構成する
 
 Azure Standard Load Balancer では、多次元メトリックの簡単に構成できるアラートがサポートされています。 タッチレスのリソース監視エクスペリエンスを強化するには、特定のメトリックのカスタムしきい値を、さまざまなレベルの重大度でアラートをトリガーするように構成します。
 

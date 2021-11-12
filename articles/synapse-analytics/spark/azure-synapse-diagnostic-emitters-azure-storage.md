@@ -1,5 +1,5 @@
 ---
-title: Azure Storage アカウントを使用して Apache Spark アプリケーションのログとメトリックを収集する (プレビュー)
+title: Azure ストレージ アカウントを使用して Apache Spark アプリケーションのログとメトリックを収集する
 description: この記事では、Synapse Spark 診断エミッタ拡張機能を使用してログ、イベント ログ、メトリックを収集する方法、および Grafana ダッシュボードを統合する方法について説明します。
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: c29cdbd9879397b3e171160f93ccd0ac712467db
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 52d9c903cbd4aafe8799151663a37b09ed5676c2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544620"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241043"
 ---
-# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-accountpreview"></a>Azure Storage アカウントを使用して Apache Spark アプリケーションのログとメトリックを収集する (プレビュー)
+# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-account"></a>Azure ストレージ アカウントを使用して Apache Spark アプリケーションのログとメトリックを収集する
 
 Synapse Apache Spark 診断エミッタ拡張機能は、Apache Spark アプリケーションで 1 つ以上の宛先 (Azure Log Analytics、Azure Storage、Azure Event Hubs など) にログ、イベント ログ、メトリックを送信できるようにするライブラリです。 
 
@@ -42,7 +42,7 @@ spark.synapse.diagnostic.emitter.MyDestination1.secret <storage-access-key>
 ```
 
 構成ファイルで、パラメーター `<my-blob-storage>`、`<container-name>`、`<folder-name>`、`<storage-access-key>` を入力します。
-パラメーターの詳細については、[Azure Storage の構成](#available-configurations)に関する記事を参照してください
+パラメーターの詳細については、[Azure Storage の構成](#available-configurations)に関するセクションをご覧ください
 
 ### <a name="step-3-upload-the-apache-spark-configuration-file-to-spark-pool"></a>手順 3: Apache Spark 構成ファイルを Spark プールにアップロードする
 
@@ -55,7 +55,7 @@ spark.synapse.diagnostic.emitter.MyDestination1.secret <storage-access-key>
 
 構成された Apache Spark プールにジョブを送信すると、宛先のストレージ アカウントにログとメトリックのファイルが表示されるようになります。
 ログは、`<workspaceName>.<sparkPoolName>.<livySessionId>` によって、さまざまなアプリケーションに従って対応するパスに入れられます。
-すべてのログ ファイルは、データ処理に非常に便利な JSON 行形式 (改行区切りの JSON である ndjson とも呼ばれます) になります。
+すべてのログ ファイルは、データ処理に便利な JSON 行形式 (改行区切りの JSON である ndjson とも呼ばれます) になります。
 
 ## <a name="available-configurations"></a>利用可能な構成
 
@@ -111,6 +111,6 @@ Azure Synapse Analytics ワークスペースでは、ワークスペースの�
    > [!div class="mx-imgBorder"]
    > ![マネージド プライベート エンドポイントの作成 2](./media/azure-synapse-diagnostic-emitters-azure-storage/create-private-endpoint-2.png)
 3. プライベート エンドポイントのプロビジョニングが完了するまで数分待ちます。
-4. Azure portal でご自分のストレージ アカウントに移動し、 **[ネットワーク]**  >  **[プライベート エンドポイント接続]** ページで、先ほどプロビジョニングした接続と **[許可]** を選択します。
+4. Azure portal でご自分のストレージ アカウントに移動し、 **[ネットワーク]**  >  **[プライベート エンドポイント接続]** ページで、プロビジョニングした接続と **[許可]** を選択します。
 
 

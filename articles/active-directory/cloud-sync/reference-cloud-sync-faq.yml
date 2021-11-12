@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: reference
-  ms.date: 09/10/2021
+  ms.date: 10/18/2021
   ms.subservice: hybrid
   ms.author: billmath
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 45a4273ccdfa76eb158ca8fd2ce51161fc3993b1
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 6fec249a2bbd45c478fec4b35abcdc780ee9bdab
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124771348"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130240796"
 title: Azure Active Directory Connect クラウド同期の FAQ
 summary: >
   Azure Active Directory (Azure AD) Connect クラウド同期に関してよく寄せられる質問をお読みください。
@@ -93,4 +93,7 @@ sections:
   - question: >
       Azure AD Connect クラウド同期では大規模なグループはサポートされていますか?
     answer: "はい。 現在、OU スコープ フィルターを使用して同期された最大 50,000 人のグループ メンバーがサポートされています。 \n"
+  - question: >
+      複数のエージェントがインストールされている場合、クラウド プロビジョニング エージェントで負荷分散されますか?
+    answer: "不正解です。 1 つのエージェントがアクティブな場合のみです。 \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ \n\n- [プロビジョニングとは](what-is-provisioning.md)\n- [Azure AD Connect クラウド同期とは](what-is-cloud-sync.md)"

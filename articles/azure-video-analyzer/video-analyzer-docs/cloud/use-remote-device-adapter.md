@@ -2,14 +2,14 @@
 title: リモートデバイスアダプターを使用してカメラをクラウドに接続します。
 description: この記事では、リモートデバイスアダプターを使用してカメラをAzure Video Analyzerサービスに接続する方法について説明します。
 ms.topic: how-to
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 71bcf82420d9777158cbb878c4943b350d51353b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 74734444b33c6963097d4e23e3859aedbc9a91e7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090042"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563209"
 ---
 # <a name="connect-cameras-to-the-cloud-using-a-remote-device-adapter"></a>リモートデバイスアダプターを使用してカメラをクラウドに接続します。
 
@@ -23,16 +23,13 @@ Azure Video Analyzer サービスを使用すると、クラウドに接続さ�
 ## <a name="pre-reading"></a>事前読み取り
 
 * [カメラをクラウドに 接続します](connect-cameras-to-cloud.md)
+* [クイックスタート: Azure portal の Video Analyzer ライブ パイプラインの概要](get-started-livepipelines-portal.md)
 
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* IoT Hub
-* 関連付けられた[Video Analyzer アカウント](../create-video-analyzer-account.md)
-  * ストレージ アカウント
-  * ユーザー割り当てマネージドID(UAMI)
-  * [IoT Hub は、Video Analyzerアカウントにアタッチする必要があります](../create-video-analyzer-account.md#post-deployment-steps)
-* [Video Analyzer Edge モジュールがインストールおよび構成されている IoT Edge デバイス](../edge/deploy-iot-edge-device.md)
+* [Azure Video Analyzer を IoT Edge デバイスにデプロイする](../edge/deploy-iot-edge-device.md)
+* [IoT Hub は、Video Analyzerアカウントにアタッチする必要があります](../create-video-analyzer-account.md#post-deployment-steps)
 * [RTSP カメラ](../quotas-limitations.md#supported-cameras)
   * カメラがエッジデバイスと同じネットワーク上にあることを確認します。
   * ビデオを最大帯域幅 (kBpsまたはキロビット/秒) で送信するようにカメラを構成できることを確認します。
@@ -70,7 +67,7 @@ Video Analyzer edge モジュールがカメラと Video Analyzerサービス間
 Azure Portal で次の操作を行います。
 
 1. IoT Hubに移動します。
-1. **デバイスの自動管理** の下にある **IoT Edge** を選択します。
+1. **[デバイスの自動管理]** の下の **[IoT Edge]** ウィンドウを選択します。
 1. Video Analyzer Edge モジュールが配置されている IoT Edge デバイス (**ava-sample-device** など) を選択します。
 1. モジュールの下に、Video Analyzer edge モジュール(**avaedge** など) を選択します。
 1. **</>ダイレクトメソッド** を選択します。 
@@ -99,14 +96,20 @@ Azure Portal で次の操作を行います。
 
 成功した場合は、状態コード201の応答が返されます。
 
+設定されているすべてのリモート デバイス アダプターを一覧表示するには、次のペイロードを使用して **remoteDeviceAdapterList** ダイレクト メソッドを呼び出します。
+```
+ {
+   "@apiVersion" : "1.1"
+ }
+```
+
 
 ## <a name="create-pipeline-topology-in-the-video-analyzer-service"></a>Video Analyzer サービスでパイプライントポロジを作成します。
 
 ファイアウォールの背後にあるカメラから取り込むクラウドパイプライントポロジを作成する場合は、パイプライントポロジの RTSP ソースノードでトンネリングを有効にする必要があります。 このような [パイプライントポロジ](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/cloud-record-camera-behind-firewall)の例を参照してください。  
 
-[このクイックスタート](get-started-livepipelines-portal.md#deploy-a-live-pipeline) では、Azure portal でパイプライントポロジとライブパイプラインを作成する手順について概説します。 サンプルトポロジを使用します`Live capture, record, and stream from RTSP camera behind firewall`
 
-次の値は、前の手順でプロビジョニングされた IoT デバイスに基づいて、RTSPソースノードでトンネリングを有効にする必要があります。
+前の手順で作成した IoT デバイスに基づく次の値は、RTSP ソース ノードでトンネリングを有効にするために必要です。
 
 * IoT Hub 名
 * IoT Hub のデバイス ID
@@ -138,6 +141,8 @@ Azure Portal で次の操作を行います。
 * `Endpoint` が `UnsecuredEndpoint`
 * `Tunnel` が `SecureIotDeviceRemoteTunnel`
 
+[このクイックスタート](get-started-livepipelines-portal.md#deploy-a-live-pipeline)では、Azure portal でパイプライン トポロジとライブ パイプラインを作成する手順について概説します。 サンプルトポロジを使用します`Live capture, record, and stream from RTSP camera behind firewall` 
+
 ## <a name="create-and-activate-a-live-pipeline"></a>ライブパイプラインを作成してアクティブ化します。
 
 ライブパイプラインを作成するときに、RTSP URL、RTSP ユーザー名、RTSP パスワード、IoT Hub デバイス IDを定義する必要があります。 サンプルペイロードは次のとおりです。
@@ -152,7 +157,7 @@ Azure Portal で次の操作を行います。
         "parameters": [
             {
                 "name": "rtspUrlParameter",
-                "value": "rtsp://localhost:554/<camera-specific-suffix>"
+                "value": "<RTSP URL for building404-camera1 such as rtsp://localhost:554/media/video>"
             },
             {
                 "name": "rtspUsernameParameter",
@@ -174,7 +179,7 @@ Azure Portal で次の操作を行います。
        }
    }
 ```
-RTSP URLは **localhost** である必要があります。 `bitrateKbps`値が RTSP カメラからのビデオの最大ビットレート設定と一致していることを確認します。
+RTSP URL の IP アドレスは、**localhost** である必要があります。 `bitrateKbps`値が RTSP カメラからのビデオの最大ビットレート設定と一致していることを確認します。
 
 ライブパイプラインを作成したら、パイプラインをアクティブ化して、Video Analyzer video リソースへの記録を開始できます。 前の手順で説明した[クイックスタート](get-started-livepipelines-portal.md#deploy-a-live-pipeline)では、Azure portal でライブパイプラインをアクティブ化する方法についても説明します。
 

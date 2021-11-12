@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 4884730dc163b7720b5c2abb9c4f1fb529e5e2ca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a42b0ff8a23f3504b642ab79a1b85718aa0c62e1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748727"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557758"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio でデータ コントローラーを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "121748727"
 ## <a name="prerequisites"></a>前提条件
 
 - Kubernetes クラスターにアクセスし、デプロイ先の Kubernetes クラスターを示すように kubeconfig ファイルを構成しておく必要があります。
-- `arcdata` 拡張機能を使用して、[クライアント ツール](install-client-tools.md) (**Azure Data Studio** や **Azure Arc** と呼ばれる Azure Data Studio の拡張機能 など) と Azure CLI をインストールする必要があります。
+- `arcdata` 拡張機能を使用して、**Azure Data Studio**、**Azure Arc** という Azure Data Studio の拡張機能、および Azure CLI などの[クライアント ツールをインストール](install-client-tools.md)する必要があります。
 - Azure Data Studio で Azure にログインする必要があります。  これを行うには、「CTRL/Command + SHIFT + P」と入力してコマンド テキスト ウィンドウを開き、「**Azure**」と入力します。  **Azure:サインイン**」を検索して選びます。   パネルの右上にある [+] アイコンをクリックして、Azure アカウントを追加します。
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>展開ウィザードを使用して Azure Arc データ コントローラーをデプロイする
@@ -66,7 +66,7 @@ ms.locfileid: "121748727"
 >  次のコマンド例では、"arc" という名前のデータ コントローラーと Kubernetes 名前空間が作成されていることを前提としています。  異なる名前の名前空間/データ コントローラーを使用している場合は、"arc" をその名前で置き換えることができます。
 
 ```console
-kubectl get datacontroller/arc --namespace arc
+kubectl get datacontroller --namespace arc
 ```
 
 ```console
@@ -76,10 +76,10 @@ kubectl get pods --namespace arc
 次のようなコマンドを実行して、特定のポッドの作成状態を確認することもできます。  これは特に、何らの問題をトラブルシューティングするのに役立ちます。
 
 ```console
-kubectl describe po/<pod name> --namespace arc
+kubectl describe pod/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/control-2g7bl --namespace arc
+#kubectl describe pod/control-2g7bl --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>作成の問題のトラブルシューティング

@@ -5,20 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 09/17/2021
+ms.date: 10/29/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e0926dc0a211990a64812b00702e84acb0d1f140
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0f5bafd3bfa25691ee531c5e8aa60b4c70937815
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645497"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521446"
 ---
 | リソース | 制限 |
 | --- | --- |
 | データ スループット |30 Gbps|
 |ルールの上限|ネットワーク ルールとアプリケーション ルールに含まれる送信元と送信先の一意の組み合わせ 10,000 件|
+|1 つのルール コレクション グループ内のルールの合計サイズ| 2 Mb|
+|ファイアウォール ポリシー内の規則コレクション グループの数|50|
 |最大 DNAT ルール|298 (1 つのパブリック IP アドレスで構成されたファイアウォールの場合)<br><br> DNAT の制限は、基になるプラットフォームによるものです。 DNAT 規則の最大数は 298 です。 ただし、パブリック IP アドレスが追加されると、使用可能な DNAT 規則の数は少なくなります。 たとえば、2 つのパブリック IP アドレスの場合、297 個の DNAT 規則を使用できます。 規則のプロトコルが TCP と UDP の両方に対して構成されている場合は、2 つの規則としてカウントされます。|
 |AzureFirewallSubnet の最小サイズ |/26|
 |ネットワークおよびアプリケーション ルールのポート範囲|1 - 65535|

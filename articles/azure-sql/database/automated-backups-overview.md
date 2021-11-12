@@ -11,12 +11,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
 ms.date: 08/28/2021
-ms.openlocfilehash: 2a6213a0359daf58d0ef34986d1bf3edbd4e1c9a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 8eb49e4d17de5c546278f78e50454db02ee2cfbd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424419"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458876"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>自動バックアップ - Azure SQL Database および Azure SQL Managed Instance
 
@@ -61,7 +61,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 - **geo リストア** - [別の地理的リージョンにデータベースを復元します](recovery-using-backups.md#geo-restore)。 geo リストアを使用すると、プライマリ リージョンのデータベースまたはバックアップにアクセスできないときでも、地理的な災害から復旧できます。 任意の Azure リージョンの既存のサーバーまたはマネージド インスタンスに、新しいデータベースが作成されます。
    > [!IMPORTANT]
    > geo リストアは、geo 冗長バックアップ ストレージを使用して構成された SQL データベースまたはマネージド インスタンスでのみ利用できます。
-- **長期的バックアップからの復元** - データベースの長期保有ポリシー (LTR) が構成されている場合、単一データベースまたはプールされたデータベースの [特定の長期バックアップからデータベースを復元します](long-term-retention-overview.md)。 LTR により、[Azure portal](long-term-backup-retention-configure.md#using-the-azure-portal) または [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、以前のバージョンのデータベースを復元できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
+- **長期的バックアップからの復元** - データベースの長期保有ポリシー (LTR) が構成されている場合、単一データベースまたはプールされたデータベースの [特定の長期バックアップからデータベースを復元します](long-term-retention-overview.md)。 LTR により、Azure portal、Azure CLI、または Azure PowerShell を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、[以前のバージョンのデータベースを復元](long-term-backup-retention-configure.md)できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
 
 > [!NOTE]
 > Azure Storage では、"*レプリケーション*" とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、"*データベース レプリケーション*" とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
@@ -95,13 +95,13 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 
 復元を実行するには、[バックアップからのデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。 次の例を使用して、バックアップの構成と復元の操作を試すことができます。
 
-| 操作 | Azure portal | Azure PowerShell |
-|---|---|---|
-| **バックアップ保有期間を変更する** | [SQL Database](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-the-azure-portal) | [SQL Database](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL Managed Instance](#change-the-short-term-retention-policy-using-powershell) |
-| **長期的なバックアップ保有期間を変更する** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-the-azure-portal) | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-powershell)  |
-| **特定の時点からデータベースを復元する** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **削除されたデータベースの復元** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Azure Blob Storage からデータベースを復元する** | SQL Database - N/A <br/>SQL Managed Instance - N/A  | SQL Database - N/A <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
+| 操作 | Azure portal | Azure CLI | Azure PowerShell |
+|---|---|---|---|
+| **バックアップ保有期間を変更する** | [SQL Database](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-the-azure-portal) | [SQL Database](#change-the-short-term-retention-policy-using-azure-cli) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-azure-cli) | [SQL Database](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL Managed Instance](#change-the-short-term-retention-policy-using-powershell) |
+| **長期的なバックアップ保有期間を変更する** | [SQL Database](long-term-backup-retention-configure.md#create-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) | [SQL Database](long-term-backup-retention-configure.md) <br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **特定の時点からデータベースを復元する** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/cli/azure/sql/db#az_sql_db_restore) <br/> [SQL Managed Instance](/cli/azure/sql/midb#az_sql_midb_restore) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **削除されたデータベースの復元** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](long-term-backup-retention-configure.md#restore-from-ltr-backups) <br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#restore-from-ltr-backups) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Azure Blob Storage からデータベースを復元する** |  |  | <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
 
 ## <a name="backup-scheduling"></a>バックアップのスケジュール設定
 
@@ -151,7 +151,7 @@ Azure SQL Database および Azure SQL Managed Instance は、バックアップ
 
 ### <a name="short-term-retention"></a>短期保有
 
-新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 データベースまたはマネージド インスタンスに対して定義された保有期間内の任意の時点にデータベースを復元可能にするために、定期的な完全バックアップ、差分バックアップ、およびログ バックアップが作成されます。 さらに、Microsoft Azure SQL Database の場合、差分バックアップは 12 時間の頻度 (既定値) または 24 時間の頻度に構成できます。 
+新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 データベースまたはマネージド インスタンスに対して定義された保有期間内の任意の時点にデータベースを復元可能にするために、定期的な完全バックアップ、差分バックアップ、およびログ バックアップが作成されます。 さらに、Microsoft Azure SQL Database の場合、差分バックアップは 12 時間または 24 時間の頻度に構成できます。 
 
 > [!NOTE]
 > 24 時間の差分バックアップ頻度では、データベースの復元に必要な時間が増加する可能性があります。 
@@ -284,6 +284,55 @@ Azure portal を使用してアクティブなデータベースの PITR バッ�
 
 ---
 
+### <a name="change-the-short-term-retention-policy-using-azure-cli"></a>Azure CLI を使用して短期保有ポリシーを変更する
+
+Azure CLI の環境を準備します。
+
+[!INCLUDE[azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+アクティブな Microsoft Azure SQL Database の PITR バックアップ保持期間および差分バックアップ頻度を変更するには、次の例を使用します。
+
+```azurecli
+# Set new PITR differential backup frequency on an active individual database
+# Valid backup retention must be between 1 and 35 days
+# Valid differential backup frequency must be ether 12 or 24
+az sql db str-policy set \
+    --resource-group myresourcegroup \
+    --server myserver \
+    --name mydb \
+    --retention-days 28 \
+    --diffbackup-hours 24
+```
+
+#### <a name="sql-database"></a>[SQL Database](#tab/managed-instance)
+
+次の例を使用して、SQL Managed Instance の **単一のアクティブな** データベースの PITR バックアップ保有期間を変更します。
+
+```azurecli
+# Set new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+az sql midb short-term-retention-policy set \
+    --resource-group myresourcegroup \
+    --managed-instance myinstance \
+    --name mymanageddb \
+    --retention-days 1 \
+```
+
+次の例を使用して、SQL Managed Instance の **すべてのアクティブな** データベースの PITR バックアップ保有期間を変更します。
+
+```azurecli
+# Set new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+az sql midb short-term-retention-policy set \
+    --resource-group myresourcegroup \
+    --managed-instance myinstance \
+    --retention-days 1 \
+```
+
+---
+
 ### <a name="change-the-short-term-retention-policy-using-powershell"></a>PowerShell を使用して短期保有ポリシーを変更する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -301,7 +350,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 ```
 
 ```powershell
-# SET new PITR differental backup frequency on an active individual database
+# SET new PITR differential backup frequency on an active individual database
 # Valid differential backup frequency must be ether 12 or 24. 
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28 -DiffBackupIntervalInHours 24
 ```
@@ -447,6 +496,38 @@ Azure portal には、バックアップ ストレージの冗長性を変更す
 
 ---
 
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-cli"></a>Azure CLI を使用してバックアップ ストレージの冗長性を構成する
+
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+新しいデータベースを作成するときにバックアップ ストレージの冗長性を構成するには、`backup-storage-redundancy` パラメーターを指定します。 指定できる値は、Geo、Zone、Local です。 既定では、すべての SQL データベースでバックアップに geo 冗長ストレージが使用されます。 ローカルまたはゾーンの冗長バックアップ ストレージを使用してデータベースを作成または更新した場合、geo リストアは無効になります。
+
+```azurecli
+az sql db create \
+    --resource-group myresourcegroup \
+    --server myserver \
+    --name mydb \
+    --tier GeneralPurpose \
+    --backup-storage-redundancy Local
+```
+
+`backup-storage-redundancy` パラメーターを使用して既存のデータベースを更新することもできます。
+
+```azurecli
+az sql db update \
+    --resource-group myresourcegroup \
+    --server myserver \
+    --name mydb \
+    --backup-storage-redundancy Local
+```
+詳細については、「[az sql db create](/cli/azure/sql/db#az_sql_db_create)」および「[az sql db update](/cli/azure/sql/db#az_sql_db_update)」を参照してください。
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+
+Azure CLI を使用する場合、SQL Managed Instance では、バックアップ ストレージの冗長性の構成は使用できません。 詳しくは、[Azure portal](#configure-backup-storage-redundancy-by-using-the-azure-portal) オプションまたは [PowerShell](#configure-backup-storage-redundancy-by-using-powershell) オプションをご覧ください。
+
+---
+
 ### <a name="configure-backup-storage-redundancy-by-using-powershell"></a>PowerShell を使用してバックアップ ストレージの冗長性を構成する
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
@@ -512,7 +593,7 @@ SQL Database と Managed Instance に対する組み込みポリシーの定義�
 
 - データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 その他の SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関するページを参照してください。
 - Azure Blob Storage に長期保有される自動バックアップを Azure portal を使用して構成、管理、復元する方法の詳細については、[Azure portal を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。
-- Azure Blob Storage に長期保有される自動バックアップを PowerShell を使用して構成、管理、復元する方法については、[PowerShell を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md#using-powershell)に関する記事を参照してください。 
+- Azure Blob Storage に長期保有される自動バックアップを PowerShell を使用して構成、管理、復元する方法については、[PowerShell を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。 
 - [Azure portal を使用してデータベースを特定の時点に復元する](recovery-using-backups.md)方法について、詳細を確認してください。
 - [PowerShell を使用してデータベースを特定の時点に復元する](scripts/restore-database-powershell.md)方法について、詳細を確認してください。
 - Azure SQL Managed Instance でのバックアップ ストレージの消費に関する詳細については、「[説明されている Managed Instance でのバックアップ ストレージの消費](https://aka.ms/mi-backup-explained)」を参照してください。

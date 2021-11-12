@@ -1,26 +1,26 @@
 ---
-title: マネージド オンライン エンドポイントのデプロイのトラブルシューティング (プレビュー)
+title: オンライン エンドポイントのデプロイのトラブルシューティング (プレビュー)
 titleSuffix: Azure Machine Learning
-description: マネージド オンライン エンドポイントのデプロイとスコアリングに関する一般的なエラーをトラブルシューティングする方法について説明します。
+description: オンライン エンドポイントのデプロイとスコアリングの一般的なエラーをトラブルシューティングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 author: petrodeg
 ms.author: petrodeg
 ms.reviewer: laobri
-ms.date: 05/13/2021
+ms.date: 11/03/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: e4c4b611b4316f0e9a950c9f13144e37c9c1762b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 06c8c9c128528b3e50c49e9c29a0849c9640d7eb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425756"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560684"
 ---
-# <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
+# <a name="troubleshooting-online-endpoints-deployment-and-scoring-preview"></a>オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
-Azure Machine Learning のマネージド オンライン エンドポイントのデプロイとスコアリングに関する一般的な問題を解決する方法について説明します (プレビュー)。
+Azure Machine Learning のオンライン エンドポイントのデプロイとスコアリングの一般的な問題を解決する方法について説明します (プレビュー)。
 
 このドキュメントは、推奨されるトラブルシューティング方法別に構成されています。
 
@@ -42,11 +42,15 @@ Azure Machine Learning のマネージド オンライン エンドポイント�
 
 ローカル デプロイとは、ローカルの Docker 環境にモデルをデプロイすることです。 ローカル デプロイは、クラウドにデプロイする前にテストやデバッグを行う場合に便利です。
 
+> [!TIP]
+> お使いのエンドポイントをローカルでテストおよびデバッグするには、Visual Studio Code を使用します。 詳細については、[Visual Studio Code でオンライン エンドポイントをローカルでデバッグする](how-to-debug-managed-online-endpoints-visual-studio-code.md)方法に関する記事を参照してください。
+
 ローカル デプロイでは、ローカル エンドポイントの作成、更新、および削除がサポートされています。 また、エンドポイントを呼び出してログを取得することもできます。 ローカル デプロイを使用するには、適切な CLI コマンドに `--local` を追加します。
 
 ```azurecli
-az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
+az ml online-deployment create --endpoint-name <endpoint-name> -n <deployment-name> -f <spec_file.yaml> --local
 ```
+
 ローカル デプロイの一環として、次のステップが実行されます。
 
 - Docker では、新しいコンテナー イメージをビルドするか、ローカルの Docker キャッシュから既存のイメージをプルします。 仕様ファイルの環境部分に一致する既存のイメージがある場合は、それが使用されます。
@@ -61,13 +65,13 @@ az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
 コンテナーからのログ出力を表示するには、次の CLI コマンドを使用します。
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> -d <deployment-name> -l 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 または
 
 ```azurecli
-    az ml endpoint get-logs --name <endpoint-name> --deployment <deployment-name> --lines 100
+    az ml online-deployment get-logs --endpoint-name <endpoint-name> --name <deployment-name> --lines 100
 ```
 
 `az configure` を介して `--resource-group` と `--workspace-name` をまだ設定していない場合は、上記のコマンドにこれらのパラメーターを追加します。
@@ -75,7 +79,7 @@ az ml endpoint get-logs -n <endpoint-name> -d <deployment-name> -l 100
 これらのパラメーターを設定する方法について確認する場合、また現在の値が既に設定されている場合は、次を実行します。
 
 ```azurecli
-az ml endpoint get-logs -h
+az ml online-deployment get-logs -h
 ```
 
 既定では、ログが推論サーバーからプルされます。 ログには推論サーバーのコンソール ログが含まれています。ここには、"score.py" コードの print/log ステートメントが含まれています。
@@ -129,7 +133,7 @@ Azure Machine Learning の容量不足のため、指定された VM サイズ�
 このエラーに関する詳細を表示するには、次を実行します。
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --tail 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_1300-unable-to-download-user-modelcode-artifacts"></a>ERR_1300: Unable to download user model\code artifacts (ERR_1300: ユーザー モデルおよびコード成果物をダウンロードできません)
@@ -160,7 +164,7 @@ az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --tail
 このエラーに関する詳細を表示するには、次を実行します。
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --lines 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350: Unable to download user model, not enough space on the disk (ユーザー モデルをダウンロードできません。ディスクに十分な領域がありません)
@@ -176,7 +180,7 @@ az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --line
 エラーの正確な原因を取得するには、次を実行します。 
 
 ```azurecli
-az ml endpoint get-logs
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_2101-kubernetes-unschedulable"></a>ERR_2101: Kubernetes unschedulable (Kubernetes スケジュール不可)
@@ -203,9 +207,13 @@ az ml endpoint get-logs
 
 Microsoft では信頼性の高い、安定したサービスを提供するために最善を尽くしていますが、計画どおりに進まない場合があります。 このエラーが発生した場合、Microsoft 側で問題が発生しているため、当社で修正する必要があります。 すべての関連情報を記載のうえ、[カスタマー サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信していただけましたら、こちらで問題に対処します。  
 
+## <a name="autoscaling-issues"></a>自動スケールの問題
+
+自動スケールで問題が発生した場合は、「[Azure 自動スケーリングのトラブルシューティング](../azure-monitor/autoscale/autoscale-troubleshoot.md)」を参照してください。
+
 ## <a name="http-status-codes"></a>HTTP 状態コード
 
-REST 要求でマネージド オンライン エンドポイントにアクセスしたときに返される状態コードは、[HTTP 状態コード](https://aka.ms/http-status-codes)の標準に準拠しています。 マネージド エンドポイントの呼び出しと予測に関するエラーを、HTTP 状態コードにマップする方法の詳細を以下に示します。
+REST 要求でオンライン エンドポイントにアクセスしたときに返される状態コードは、[HTTP の状態コード](https://aka.ms/http-status-codes)の標準に準拠しています。 エンドポイントの呼び出しと予測エラーが HTTP 状態コードにマップされる方法の詳細を以下に示します。
 
 | status code| 理由の文字列 |  このコードが返される理由 |
 | --- | --- | --- |
@@ -214,10 +222,10 @@ REST 要求でマネージド オンライン エンドポイントにアクセ�
 | 404 | 見つかりません | URL が正しくありません。 |
 | 408 | 要求タイムアウト | モデルの実行にかかる時間が、モデル デプロイ構成の `request_settings` の `request_timeout_ms` で指定したタイムアウトよりも長くなっています。|
 | 413 | ペイロードが大きすぎます | 要求ペイロードが 1.5 メガバイトを超えています。 |
-| 424 | モデル エラー、元のコード =`<original code>` | モデル コンテナーから 200 以外の応答が返された場合、Azure は 424 を返します。 |
+| 424 | モデル エラー | モデル コンテナーから 200 以外の応答が返された場合、Azure は 424 を返します。 詳細については、`ms-azureml-model-error-statuscode` と `ms-azureml-model-error-reason` の応答ヘッダーをご確認ください。 |
 | 424 | 応答ペイロードが大きすぎます | コンテナーが 1.5 メガバイトを超えるペイロードを返した場合、Azure は 424 を返します。 |
 | 429 | レート制限 | 1 秒あたり 100 を超える要求をエンドポイントに送信しようとしました。 |
-| 429 | 保留中の要求が多すぎます | モデルで処理できる数よりも多くの要求が送られてきています。 いつでも 2 *`max_concurrent_requests_per_instance`* `instance_count` 個の要求が許可されます。 追加の要求は拒否されます。 これらの設定は、モデル デプロイ構成の `request_settings` および `scale_settings` で確認できます。 自動スケーリングを使用している場合、モデルはシステムでスケールアップできるよりも高速に要求を取得します。 自動スケーリングでは、[エクスポネンシャル バックオフ](https://aka.ms/exponential-backoff)を使用して要求の再送信を試行できます。 これにより、システムに調整時間が与えられます。 |
+| 429 | 保留中の要求が多すぎます | モデルで処理できる数よりも多くの要求が送られてきています。 常に 2 つの * `max_concurrent_requests_per_instance` * `instance_count` 要求が許可されます。 追加の要求は拒否されます。 これらの設定は、モデル デプロイ構成の `request_settings` および `scale_settings` で確認できます。 自動スケーリングを使用している場合、モデルはシステムでスケールアップできるよりも高速に要求を取得します。 自動スケーリングでは、[エクスポネンシャル バックオフ](https://aka.ms/exponential-backoff)を使用して要求の再送信を試行できます。 これにより、システムに調整時間が与えられます。 |
 | 500 | 内部サーバー エラー | Azure ML でプロビジョニングされたインフラストラクチャが失敗しています。 |
 
 ## <a name="next-steps"></a>次のステップ

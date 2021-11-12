@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: e91e435ca2d8050a0c6d9728c4d010f9e9c844c4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95abf27060748255f24b089cfc4fb9229f33bfa5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076265"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848061"
 ---
 # <a name="connect-to-and-manage-azure-files-in-azure-purview"></a>Azure 管理範囲での Azure Files の接続と管理
 
@@ -23,7 +23,9 @@ ms.locfileid: "131076265"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan) | [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | いいえ |
+| [あり](#register) | [あり](#scan) | [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | 制限あり** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 Azure Files では、システム既定とカスタムの分類ルールに基づいて、メタデータと分類をキャプチャするために、フル スキャンと増分スキャンがサポートされます。
 

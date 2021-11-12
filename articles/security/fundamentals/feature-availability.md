@@ -6,24 +6,26 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 76d38f7f5aa2c62010e3c3c6680ff016d3dc518d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 46d7b4d08a7181b56859c5639ccd5a187e526474
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131075564"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564349"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
 この記事では、次のセキュリティ サービスについての、Microsoft Azure および Azure Government クラウドの機能の利用可能性について説明します。
 
+- [Azure Information Protection](#azure-information-protection)
 - [Azure Security Center](#azure-security-center)
 - [Azure Sentinel](#azure-sentinel)
 - [Azure Defender for IoT](#azure-defender-for-iot)
+- [Azure Attestation](#azure-attestation)
 
 > [!NOTE]
 > 近日中に追加のセキュリティ サービスがこの記事に追加される予定です。
-> 
+>
 
 ## <a name="azure-government"></a>Azure Government
 
@@ -50,6 +52,88 @@ Office 365 US Government 環境の詳細については、以下を参照して�
 
 
 以下のセクションでは、サービスが Microsoft 365 と統合されたタイミング、および Office 365 GCC、Office 365 High、および Office 365 DoD の機能の利用可能性について説明します。
+
+## <a name="azure-information-protection"></a>Azure Information Protection
+
+Azure Information Protection (AIP) はクラウドベースのソリューションです。これにより、組織はコンテンツにラベルを適用してドキュメントや電子メールの検出、分類、および保護を行うことができます。
+
+AIP は、Microsoft Information Protection (MIP) ソリューションの一部です。これにより、Microsoft 365 で提供される[ラベル付け](/microsoft-365/compliance/sensitivity-labels)および[分類](/microsoft-365/compliance/data-classification-overview)の機能が拡張されます。
+
+詳細については、[Azure Information Protection 製品ドキュメント](/azure/information-protection/)に関するページをご覧ください。
+
+- Office 365 GCC は、Azure の Azure Active Directory (Azure AD) とペアになります。 Office 365 GCC High および Office 365 DoD は、Azure Government の Azure AD とペアになります。 [相互運用性が可能である](#microsoft-365-integration)箇所を理解するために、Azure 環境に注意を払ってください。 次の表では、*可能でない* 相互運用性をダッシュ (-) でマークし、サポートが関係しないことを示しています。
+
+- GCC-High および DoD のお客様の場合は、追加の構成が必要です。 詳細については、「[Azure Information Protection Premium Government サービスの説明](/enterprise-mobility-security/solutions/ems-aip-premium-govt-service-description)」を参照してください。
+
+> [!NOTE]
+> 政府機関のお客様に対するサポートの詳細については、表の下の脚注に記載されています。 
+> 
+> GCC High および DoD のお客様向けの Azure Information Protection を構成するには、追加の手順が必要です。 詳細については、「[Azure Information Protection Premium Government サービスの説明](/enterprise-mobility-security/solutions/ems-aip-premium-govt-service-description)」を参照してください。
+>
+
+|機能とサービス  |Azure  |Azure Government  |
+|---------|---------|---------|
+|**[Azure Information Protection スキャナー](/azure/information-protection/deploy-aip-scanner)** <sup>[1](#aipnote1)</sup>       |         |         |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+|**管理**     |         |         |
+|[スキャナー管理用の Azure Information Protection ポータル](/azure/information-protection/deploy-aip-scanner-configure-install?tabs=azure-portal-only)     |         |         |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+| **分類とラベル付け** <sup>[2](#aipnote2)</sup>   |         |         |
+| [オンプレミスのファイル サーバー/リポジトリ内のすべてのファイルに "*既定のラベル*" を適用する AIP スキャナー](/azure/information-protection/deploy-aip-scanner-configure-install?tabs=azure-portal-only)    |         |         |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+| [サポートされているオンプレミスのファイルの分類、ラベル付け、および保護を自動化するための AIP スキャナー](/azure/information-protection/deploy-aip-scanner)    |         |         |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+| |  |  |
+
+<sup><a name="aipnote1" /></a> 1</sup> スキャナーは Office 365 がなくてもファイルのみをスキャンするように機能します。 スキャナーでは、Office 365 なしで、ファイルにラベルを適用することはできません。
+
+<sup><a name="aipnote2" /></a>2</sup> 分類およびラベル付けアドインは、Professional Plus (ProPlus) および Click-to-Run (C2R) のバージョンを含む、Microsoft 365 Apps (バージョン 9126.1001 以降) を使用している政府機関のお客様に対してのみサポートされます。 Office 2010、Office 2013、その他の Office 2016 バージョンではサポートされていません。
+
+### <a name="office-365-features"></a>Office 365 の機能
+
+|機能とサービス  |Office 365 GCC  |Office 365 GCC High |Office 365 DoD  |
+|---------|---------|---------|---------|
+|**管理**     |         |         | |
+|- [RMS サービス管理用の PowerShell](/powershell/module/aipservice/)      |  GA       |    GA     |   GA      |
+|- [AIP UL クライアントの一括操作用の PowerShell](/powershell/module/azureinformationprotection/)      |         |         |         |
+|**SDK**     |         |         |         |
+|- [MIP および AIP ソフトウェア開発キット (SDK)](/information-protection/develop/)     |     GA       |    GA     |   GA  |
+|**カスタマイズ**     |         |         |         |
+|- [ドキュメントの追跡と取り消し](/azure/information-protection/rms-client/track-and-revoke-admin)      |   GA      |  使用不可       |     使用不可    |
+|**キー管理**      |         |         |         |
+|- [Bring Your Own Key (BYOK)](/azure/information-protection/byok-price-restrictions)      |   GA       |    GA     |   GA   |
+|- [二重キー暗号化 (DKE)](/azure/information-protection/plan-implement-tenant-key)     |    GA       |    GA     |   GA    |
+|**Office ファイル** <sup>[3](#aipnote6)</sup>      |         |         |         |
+|- [Protection for Microsoft Exchange Online、Microsoft SharePoint Online、Microsoft OneDrive for Business](/azure/information-protection/requirements-applications)      |     GA    |  GA <sup>[4](#aipnote3)</sup>       |   GA <sup>[4](#aipnote3)</sup>      |
+|- [Rights Management コネクタを介した Exchange と SharePoint コンテンツの保護](/azure/information-protection/deploy-rms-connector)     |    GA <sup>[5](#aipnote5)</sup>      |  使用不可       |     使用不可         |
+|- [Office 365 メッセージの暗号化](/microsoft-365/compliance/set-up-new-message-encryption-capabilities)      |     GA       |    GA     |   GA        |
+|- [Outlook で事前構成された M/MIME 保護を自動的に適用するようにラベルを設定します](/azure/information-protection/rms-client/clientv2-admin-guide-customizations)      |         GA       |    GA     |   GA        |
+|- [Outlook を使用する際の情報の過剰共有を制御します](/azure/information-protection/rms-client/clientv2-admin-guide-customizations)     |      GA   |  GA <sup>[6](#aipnote6)</sup>        |    GA <sup>[6](#aipnote6)</sup>      |
+|**分類とラベル付け** <sup>[2](#aipnote2) / [7](#aipnote7)</sup>      |         |         |         |
+|- 部門テンプレートを含むカスタム テンプレート     |     GA       |    GA     |   GA         |
+|- 手動による既定の必須のドキュメント分類     |       GA       |    GA     |   GA       |
+|- 自動的な推奨される分類の条件を構成する      GA       |    GA     |   GA        |
+|- [PTXT、PJPG、PFILE など、Microsoft Office 以外のファイル形式の保護 (一般的な保護)](/azure/information-protection/rms-client/clientv2-admin-guide-file-types)     |        GA       |    GA     |   GA       |
+|     |         |         |         |
+
+
+<sup><a name="aipnote3" /></a>3</sup> 現在、政府機関のお客様は AD RMS 用のモバイル デバイス拡張機能を利用できません。
+
+<sup><a name="aipnote4" /></a>4</sup> Information Rights Management と SharePoint Online (IRM で保護されたサイトとライブラリ) の組み合わせは現在使用できません。
+
+<sup><a name="aipnote5" /></a>5</sup> Information Rights Management (IRM) は、Professional Plus (ProPlus) および Click-to-Run (C2R) のバージョンを含む、Microsoft 365 Apps (バージョン 9126.1001 以降) に対してのみサポートされます。 Office 2010、Office 2013、その他の Office 2016 バージョンではサポートされていません。
+
+<sup><a name="aipnote6" /></a> 6</sup>政府機関のクラウドから商用クラウド内のユーザーへの保護されたドキュメントと電子メールを共有することは、現在できません。 商用クラウド内の Microsoft 365 Apps ユーザー、商用クラウド内の Microsoft 365 Apps 以外のユーザー、および個人向け RMS ライセンスを持つユーザーが含まれます。
+
+<sup><a name="aipnote7" /></a>7</sup> Microsoft 365 セキュリティ/コンプライアンス センターでの[機密情報の種類](/microsoft-365/compliance/sensitive-information-type-entity-definitions)の数は、リージョンによって異なる場合があります。
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
@@ -332,6 +416,26 @@ Azure Defender for IoT を使用すると、IoT/OT デバイス全体にわた�
 | [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | パブリック プレビュー | パブリック プレビュー |
 | **スタンドアロンのマイクロ エージェント for Linux** |  |  |
 | [スタンドアロン エージェントのバイナリ インストール](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | パブリック プレビュー | パブリック プレビュー |
+
+## <a name="azure-attestation"></a>Azure Attestation
+
+Microsoft Azure Attestation は、プラットフォームの信頼性とその内部で実行されているバイナリの整合性をリモートで検証するための統合ソリューションです。 このサービスでは、プラットフォームから証拠を受け取り、それをセキュリティ標準を使用して検証し、構成可能なポリシーに照らし合わせて評価し、クレームベースのアプリケーション (証明書利用者、監査機関など) 向けの構成証明トークンを生成します。 
+
+Azure Attestation は、現在、Azure Public および Government クラウドの複数のリージョンで利用できます。 Azure Government では、US Gov Virginia と US Gov Arizona の中でこのサービスをプレビュー状態で利用できます。 
+
+詳細については、Azure Attestation の[パブリック ドキュメント](/azure/attestation/overview)を参照してください。 
+
+| 機能 | Azure | Azure Government |
+|--|--|--|
+| コントロールプレーンおよびデータプレーンの操作を実行するための[ポータル エクスペリエンス](/azure/attestation/quickstart-portal) | GA | - |
+| コントロールプレーンおよびデータプレーンの操作を実行するための[PowerShell エクスペリエンス](/azure/attestation/quickstart-powershell)  | GA | GA |
+| TLS 1.2 の適用   | GA | GA |
+| BCDR のサポート   | GA | - |
+| [サービス タグの統合](/azure/virtual-network/service-tags-overview) | GA | GA |
+| [不変のログ ストレージ](/azure/attestation/audit-logs) | GA | GA |
+| プライベート リンクを使用したネットワーク分離 | パブリック プレビュー | - |
+| [FedRAMP High 認定](/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) | GA | - |
+| カスタマー ロックボックス | GA | - |
 
 ## <a name="next-steps"></a>次のステップ
 

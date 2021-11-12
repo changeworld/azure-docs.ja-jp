@@ -5,15 +5,15 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f96eeaaddbf49a0649cbec8737052b8d555b2681
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: ca7128cf360be3b102e7aa781afa8a270e1c3c9f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681249"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005225"
 ---
 # <a name="quickstart-provision-an-azure-spring-cloud-service"></a>クイックスタート: Azure Spring Cloud サービスをプロビジョニングする
 
@@ -88,14 +88,14 @@ az extension add --name spring-cloud
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Azure Spring Cloud のインスタンス化は、Azure portal または Azure CLI を使用して行うことができます。  以下の手順では、両方の方法を説明します。
+Azure portal または Azure CLI を使用して、Azure Spring Cloud サービスのインスタンスをプロビジョニングすることができます。  以下の手順では、両方の方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [JDK 8 をインストールする](/java/azure/jdk/)
+* [JDK 8 または JDK 11 をインストールする](/azure/developer/java/fundamentals/java-jdk-install)
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
-* (オプション) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
-* (オプション) [Azure Toolkit for IntelliJ をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する
+* (省略可能) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
+* (省略可能) [Azure Toolkit for IntelliJ IDEA をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Azure Spring Cloud のインスタンスをプロビジョニングする
 
@@ -118,11 +118,10 @@ Azure Spring Cloud のインスタンス化は、Azure portal または Azure CL
 5. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
 
     - **サブスクリプション**:このリソースに対する課金用のサブスクリプションを選択します。
-    - **[リソース グループ]** :新しいリソース用に新しいリソース グループを作成することをお勧めします。 これが後の手順で **\<resource group name\>** として使用されることに注意してください。
+    - **[リソース グループ]** :新しいリソース用に新しいリソース グループを作成することをお勧めします。 この値は、後の手順で **\<resource group name\>** として使用します。
     - **[サービスの詳細/名前]** : **\<service instance name\>** を指定します。  名前の長さは 4 文字から 32 文字で、小文字、数字、およびハイフンのみを使用できます。  サービス名の最初の文字は英字でなければならず、最後の文字は英字または数字でなければなりません。
     - **[場所]** :自分のサービス インスタンスの場所を選択します。
-    - **[価格レベル]** オプションで、 *[Standard]* を選択します。
-    - **[Application Insights]** タブの **[Java インプロセス エージェントを有効にする]** で *[はい]* を選択します。
+    - **[価格レベル]** オプションで、 **[Standard]** を選択します。
 
     ![ASC ポータルの起動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -155,7 +154,7 @@ Azure Spring Cloud のインスタンス化は、Azure portal または Azure CL
 
     ```azurecli
     az group create --name <resource group name>
-    az spring-cloud create -n <service instance name> -g <resource group name> --enable-java-agent
+    az spring-cloud create -n <service instance name> -g <resource group name>
     ```
 
     Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。

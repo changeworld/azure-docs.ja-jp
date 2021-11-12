@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.reviewer: mathoma
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 47b74190884f40e3d1e7504133758e35c1fb3ba7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0c163f3ea101ec47eda25bc81f78033893cad6a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091387"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500281"
 ---
 # <a name="sql-assessment-for-sql-server-on-azure-vms-preview"></a>SQLAzure VMs SQL Serverの評価 (プレビュー)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,9 +27,9 @@ Azure portalのSQL Assessment 機能は、考えられるパフォーマンス�
 SQL Assessment 機能が有効になると、SQL Serverインスタンスとデータベースがスキャンされ、インデックス、非推奨の機能、トレース フラグや統計の有効化または欠落などの推奨事項が提供されます。推奨事項は、[SQL VM管理ページ](manage-sql-vm-portal.md)に表示[Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 
 
 
-評価結果は、 [Microsoft Monitoring Agent(MMA)](../../../azure-monitor/agents/log-analytics-agent.md)を使用して[Log Analyticsワークスペース](../../../azure-monitor/logs/quick-create-workspace.md)にアップロードされます VMがLog Analytics を使用するように既に構成されている場合、SQL評価機能では既存の接続が使用されます。  それ以外の場合、MMA拡張機能はVMのSQL Serverインストールされ、指定されたLog Analyticsワークスペースに接続されます。
+評価結果は、 [Microsoft Monitoring Agent(MMA)](../../../azure-monitor/agents/log-analytics-agent.md)を使用して[Log Analyticsワークスペース](../../../azure-monitor/logs/quick-create-workspace.md)にアップロードされます VM が Log Analytics を使用するように既に構成されている場合、SQL 評価機能では既存の接続が使用されます。  それ以外の場合、MMA拡張機能はVMのSQL Serverインストールされ、指定されたLog Analyticsワークスペースに接続されます。
 
-評価の実行時間は、環境 (データベースやオブジェクトの数など) に依存し、数分から最大 1時間の期間があります。 同様に、評価結果のサイズも環境によって異なります。 
+評価の実行時間は、環境 (データベースやオブジェクトの数など) に依存し、数分から最大 1時間の期間があります。 同様に、評価結果のサイズも環境によって異なります。 評価は、インスタンスと、そのインスタンス上のすべてのデータベースに対して実行されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,6 +37,7 @@ SQL評価機能を使用するには、次の前提条件が必要です。
 
 - SQL Server VM は、[フルモードのSQL Server IaaS](sql-agent-extension-manually-register-single-vm.md#full-mode) 拡張機能に登録されている必要があります。 
 - 評価結果をアップロードするVMと同じサブスクリプションSQL Server [Log Analytics ワークスペース。](../../../azure-monitor/logs/quick-create-workspace.md) 
+- SQL Server は 2012 以上のバージョンにする必要があります。
 
 
 ## <a name="enable"></a>有効にする
@@ -100,20 +101,24 @@ VM SQL評価機能が有効SQL Server、必要に応じて評価を実行でき�
 
 評価の一部を使用すると、次の既知の問題SQLがあります。 
 
+### <a name="configuration-error-for-enable-assessment"></a>評価の有効化の構成エラー
+
+アクセスできないか別のサブスクリプションに含まれる Log Analytics ワークスペースに仮想マシンが既に関連付けられている場合、構成ブレードにエラーが表示されます。 前者の場合、そのワークスペースのアクセス許可を取得するか、[こちらの手順](../../../azure-monitor/agents/agent-manage.md)で Microsoft Monitoring Agent を削除し、VM を別の Log Analytics ワークスペースに切り替えることができます。 Microsoft は Log Analytics ワークスペースが別のサブスクリプションにあるシナリオを有効にするための作業に取り組んでいます。
+
 ### <a name="deployment-failure-for-enable-or-run-assessment"></a>評価の有効化または実行に関するデプロイエラー 
 
 失敗したアクションに関連付けられているエラー メッセージを表示するには、SQL VMを含むリソース グループの[デプロイ履歴](../../../azure-resource-manager/templates/deployment-history.md)を参照してください。 
  
 ### <a name="failed-assessments"></a>失敗した評価 
 
-**評価の実行に失敗しました** これは、評価の実行中SQL IaaS 拡張機能で問題が発生したかどうかを示します。 詳細なエラー メッセージは、VM内の拡張機能ログで使用できます。`C:\WindowsAzure\Logs\Plugins\Microsoft.SqlServer.Management.SqlIaaSAgent\2.0.X.Y`ここ`2.0.X.Y `では最新バージョンのフォルダーです。  
+**評価の実行に失敗しました** - これは、評価の実行中に SQL IaaS 拡張機能で問題が発生したかどうかを示します。 詳細なエラー メッセージは、VM内の拡張機能ログで使用できます。`C:\WindowsAzure\Logs\Plugins\Microsoft.SqlServer.Management.SqlIaaSAgent\2.0.X.Y`ここ`2.0.X.Y `では最新バージョンのフォルダーです。  
 
-**アップロード Log Analytics ワークスペースへの結果が失敗しました** これは、Microsoft Monitoring Agent (MMA) が時間にバインドされた方法で結果をアップロードできなかったかどうかを示します。 MMA 拡張機能が[正しくプロビジョニング](../../../azure-monitor/visualize/vmext-troubleshoot.md)されていることを確認し、MMA の[トラブルシューティングガイド](../../../azure-monitor/agents/agent-windows-troubleshoot.md)を参照して、ガイドに記載されている 「カスタム ログの問題」を特定します。 
+**アップロード Log Analytics ワークスペースへの結果が失敗しました** - これは、Microsoft Monitoring Agent (MMA) が時間にバインドされた方法で結果をアップロードできなかったかどうかを示します。 MMA 拡張機能が[正しくプロビジョニングされている](../../../azure-monitor/visualize/vmext-troubleshoot.md)ことを確認し、この[トラブルシューティング ガイド](../../../azure-monitor/agents/agent-windows-troubleshoot.md)に記載されている接続問題とデータ収集問題を参照してください。 
 
 >[!TIP]
 >WindowsでTLS 1.0 以降を適用し、[ここ](/troubleshoot/windows-server/windows-security/restrict-cryptographic-algorithms-protocols-schannel#schannel-specific-registry-keys)で説明するように古いSSLプロトコルを無効にした場合は、強力な暗号化を使用するように .NET Framework が[構成](../../../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)されていることを確認する必要があります。 
 
-**Log Analytics ワークスペースのデータ保有期間が原因で結果の有効期限が切れた** これは、結果が保持ポリシーに基づいて Log Analytics ワークスペースに保持されなくなった状態を示します。 ワークスペースの[保持期間](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) を変更できます
+**Log Analytics ワークスペースのデータ保有期間が原因で結果の有効期限が切れた** - これは、結果が保持ポリシーに基づいて Log Analytics ワークスペースに保持されなくなった状態を示します。 ワークスペースの[保持期間](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) を変更できます
 
 ## <a name="next-steps"></a>次の手順
 

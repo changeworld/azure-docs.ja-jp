@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: d994716f24c0a5dff4fd42f8152a08cabc4fe12c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bd98cd6a0317400bcae932d9f08f719cb8c7fc0f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130253423"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558917"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -115,7 +115,7 @@ mvn package azure-webapp:deploy
     ```
 
 1. Web アプリの詳細を構成します。対応する Azure リソースが存在しない場合は作成されます。
-構成例を次に示します。詳細については、この[ドキュメント](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration)をご覧ください。
+構成例を次に示します。詳細については、この[ドキュメント](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration)を参照してください。
     ```groovy
     azurewebapp {
         subscription = '<your subscription id>'
@@ -270,7 +270,7 @@ Azure portal または [Azure CLI](/cli/azure/webapp/log#az_webapp_log_config) �
 
 Azure portal または [Azure CLI](/cli/azure/webapp/log#az_webapp_log_config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
 
-Linux ベースの App Services の Azure Blob Storage のログ記録は [Azure Monitor (プレビュー) を使用してのみ構成できます](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) 
+Linux ベースの App Services の Azure Blob Storage のログ記録を構成するには、[Azure Monitor](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor) を使う必要があります。 
 
 ::: zone-end
 
@@ -278,7 +278,7 @@ Linux ベースの App Services の Azure Blob Storage のログ記録は [Azure
 
 ## <a name="customization-and-tuning"></a>カスタマイズとチューニング
 
-Azure App Service for Linux では、Azure portal および CLI を使用したチューニングとカスタマイズが追加設定なしでサポートされています。 Java 以外の特定の Web アプリの構成については、次の記事を確認してください。
+Azure App Service では、Azure portal および CLI を使用したチューニングとカスタマイズが追加設定なしでサポートされています。 Java 以外の特定の Web アプリの構成については、次の記事を確認してください。
 
 - [アプリケーションの設定の構成](configure-common.md#configure-app-settings)
 - [カスタム ドメインの設定](app-service-web-tutorial-custom-domain.md)
@@ -286,12 +286,11 @@ Azure App Service for Linux では、Azure portal および CLI を使用した�
 - [CDN の追加](../cdn/cdn-add-to-web-app.md)
 - [Kudu サイトを構成する](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
-
 ### <a name="set-java-runtime-options"></a>Java ランタイム オプションを設定する
 
 割り当てられたメモリまたはその他の JVM ランタイムのオプションを設定するには、[アプリ設定](configure-common.md#configure-app-settings)を作成して `JAVA_OPTS` と名付け、オプションを指定します。 App Service では、開始時にこの設定が環境変数として Java ランタイムに渡されます。
 
-Azure portal の Web アプリの **[アプリケーション設定]** で、`-Xms512m -Xmx1204m` などの追加設定が含まれる新しいアプリ設定 (Java SE の場合は `JAVA_OPTS` という名前、Tomcat の場合は `CATALINA_OPTS` という名前) を作成します。
+Azure portal の Web アプリの **[アプリケーション設定]** で、`-Xms512m -Xmx1204m` などの他の設定が含まれる新しいアプリ設定 (Java SE の場合は `JAVA_OPTS` という名前、Tomcat の場合は `CATALINA_OPTS` という名前) を作成します。
 
 Maven プラグインからアプリ設定を構成するには、Azure プラグイン セクションで設定/値のタグを追加します。 次の例では、特定の最小および最大の Java ヒープ サイズを設定します。
 
@@ -304,11 +303,30 @@ Maven プラグインからアプリ設定を構成するには、Azure プラ�
 </appSettings>
 ```
 
+::: zone pivot="platform-windows"
+
+> [!NOTE]
+> Windows App Service で Tomcat を使う場合は、Web.config ファイルを作成する必要はありません。 
+
+::: zone-end
+
 App Service プランで 1 つのデプロイ スロットを使用して 1 つのアプリケーションを実行している開発者は、次のオプションを使用できます。
 
 - B1 および S1 インスタンス: `-Xms1024m -Xmx1024m`
 - B2 および S2 インスタンス: `-Xms3072m -Xmx3072m`
 - B3 および S3 インスタンス: `-Xms6144m -Xmx6144m`
+- P1v2 インスタンス: `-Xms3072m -Xmx3072m`
+- P2v2 インスタンス: `-Xms6144m -Xmx6144m`
+- P3v2 インスタンス: `-Xms12800m -Xmx12800m`
+- P1v3 インスタンス: `-Xms6656m -Xmx6656m`
+- P2v3 インスタンス: `-Xms14848m -Xmx14848m`
+- P3v3 インスタンス: `-Xms30720m -Xmx30720m`
+- I1 インスタンス: `-Xms3072m -Xmx3072m`
+- I2 インスタンス: `-Xms6144m -Xmx6144m`
+- I3 インスタンス: `-Xms12800m -Xmx12800m`
+- I1v2 インスタンス: `-Xms6656m -Xmx6656m`
+- I2v2 インスタンス: `-Xms14848m -Xmx14848m`
+- I3v2 インスタンス: `-Xms30720m -Xmx30720m`
 
 アプリケーション ヒープ設定をチューニングする際には、App Service プランの詳細を確認し、複数のアプリケーションおよびデプロイ スロットのニーズを考慮して、メモリの最適な割り当てを特定する必要があります。
 
@@ -382,7 +400,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行するには、[サインインとサインアウトのカスタマイズ](configure-authentication-customize-sign-in-out.md)に関するドキュメントを参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
+ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使います。 他のアクションを実行するには、[サインインとサインアウトのカスタマイズ](configure-authentication-customize-sign-in-out.md)に関するドキュメントを参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
 
 ```java
 public boolean isSecure()
@@ -412,7 +430,7 @@ Spring または Tomcat 構成ファイルにこれらのシークレットを�
 
 既定では、[App Service Linux にアップロードされた](configure-ssl-certificate.md)パブリック証明書またはプライベート証明書は、コンテナーの起動時にそれぞれの Java キー ストアに読み込まれます。 証明書のアップロード後、証明書が Java キー ストアに読み込まれるようにするために、App Service を再起動する必要があります。 パブリック証明書は `$JAVA_HOME/jre/lib/security/cacerts` のキー ストアに読み込まれ、プライベート証明書は `$JAVA_HOME/lib/security/client.jks` に格納されます。
 
-Java キー ストアの証明書を使用して JDBC 接続を暗号化するために、追加の構成が必要になる場合があります。 選択した JDBC ドライバーのドキュメントを参照してください。
+Java キー ストアの証明書を使って JDBC 接続を暗号化するために、その他の構成が必要になる場合があります。 選択した JDBC ドライバーのドキュメントを参照してください。
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](/sql/connect/jdbc/connecting-with-ssl-encryption)
@@ -440,7 +458,7 @@ keyStore.load(
 
 キー ストアに証明書を手動で読み込むことができます。 アプリ設定 `SKIP_JAVA_KEYSTORE_LOAD` を作成し、値を `1` に設定して、証明書がキー ストアに自動的に読み込まれないように App Service を無効にします。 Azure portal 経由で App Service にアップロードされたすべてのパブリック証明書は `/var/ssl/certs/` に格納されます。 プライベート証明書は `/var/ssl/private/` に格納されます。
 
-App Service への [SSH 接続を開き](configure-linux-open-ssh-session.md)、コマンド `keytool` を実行することで、Java キー ツールと対話することやデバッグを行うことができます。 コマンドの一覧については、[キー ツールのドキュメント](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)を参照してください。 キー　ストア API の詳細については、[公式ドキュメント](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)を参照してください。
+App Service への [SSH 接続を開き](configure-linux-open-ssh-session.md)、コマンド `keytool` を実行することで、Java キー ツールと対話することやデバッグを行うことができます。 コマンドの一覧については、[キー ツールのドキュメント](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)を参照してください。 キー ストア API の詳細については、[公式ドキュメント](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)を参照してください。
 
 ::: zone-end
 
@@ -450,7 +468,7 @@ App Service への [SSH 接続を開き](configure-linux-open-ssh-session.md)、
 
 ### <a name="configure-application-insights"></a>Application Insights の構成
 
-Azure Monitor Application Insights は、クラウド ネイティブのアプリケーション監視サービスです。これを使用すると、障害、ボトルネック、および使用パターンを観察して、アプリケーションのパフォーマンスを向上させ、平均解決時間 (MTTR) を短縮できます。 数回のクリックまたは CLI コマンドで、Node.js または Java アプリを監視したり、ログ、メトリック、および分散トレースを自動収集したりすることができ、アプリに SDK を含める必要がなくなります。
+Azure Monitor Application Insights は、クラウド ネイティブのアプリケーション監視サービスです。これを使うと、障害、ボトルネック、および使用パターンを観察して、アプリケーションのパフォーマンスを向上させ、平均解決時間 (MTTR) を短縮できます。 数回のクリックまたは CLI コマンドで、Node.js または Java アプリを監視したり、ログ、メトリック、および分散トレースを自動収集したりすることができ、アプリに SDK を含める必要がなくなります。
 
 #### <a name="azure-portal"></a>Azure portal
 
@@ -892,11 +910,11 @@ PowerShell には、XSL 変換を使用して XML ファイルを変換するた
 
 これらの説明は、すべてのデータベース接続に適用されます。 プレースホルダーを、選択したデータベースのドライバーのクラス名と JAR ファイルに置き換える必要があります。 一般的なデータベースのクラス名とドライバーのダウンロードを含む表を次に示します。
 
-| データベース   | ドライバーのクラス名                             | JDBC ドライバー                                                                      |
+| データベース   | ドライバーのクラス名                             | JDBC ドライバー                                                                              |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)     |
 
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用するように Tomcat を構成するには、まず、起動時に Tomcat によって読み込まれる `CATALINA_OPTS` 環境変数をカスタマイズします。 [App Service Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)のアプリ設定を使用して、次の値を設定します。
 
@@ -1090,7 +1108,7 @@ xsl ファイルの例は次のとおりです。 この xsl ファイルの例�
 
 ## <a name="choosing-a-java-runtime-version"></a>Java ランタイム バージョンの選択
 
-App Service を使用すると、ユーザーは JVM のメジャー バージョン (Java 8 や Java 11 など) だけでなく、マイナー バージョン (1.8.0_232 や 11.0.5 など) も選択できます。 新しいマイナー バージョンが利用可能になったらマイナー バージョンを自動的に更新するように選択することもできます。 ほとんどの場合、運用サイトにおいては、固定されたマイナー JVM バージョンを使用する必要があります。 これにより、マイナー バージョンの自動更新の間に、予期しない停止が発生するのを防ぐことができます。 すべての Java Web アプリは、64 ビットの JVM を使用します。これは構成できません。
+App Service を使うと、ユーザーは JVM のメジャー バージョン (Java 8 や Java 11 など)、マイナー バージョン (1.8.0_232 や 11.0.5 など) を選択できます。 新しいマイナー バージョンが利用可能になったらマイナー バージョンを自動的に更新するように選択することもできます。 ほとんどの場合、運用サイトにおいては、固定されたマイナー JVM バージョンを使用する必要があります。 これにより、マイナー バージョンの自動更新の間に、予期しない停止が発生するのを防ぐことができます。 すべての Java Web アプリは、64 ビットの JVM を使用します。これは構成できません。
 
 マイナー バージョンの固定を選択した場合は、サイトの JVM のマイナー バージョンを定期的に更新する必要があります。 アプリケーションが新しいマイナー バージョンで確実に実行されるようにするには、ステージング スロットを作成し、ステージング サイトでマイナー バージョンをインクリメントします。 新しいマイナー バージョンでアプリケーションが正しく実行されることを確認したら、ステージング スロットと運用スロットを入れ替えることができます。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: duau
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 05c43d5e21c637fef321dc39cd341befedfba81e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 81603472d4a5a254fe86f2a6866d8a7edcbbef88
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017184"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459636"
 ---
 # <a name="what-is-azure-virtual-network-manager-preview"></a>Azure Virtual Network Manager (プレビュー) とは
 
@@ -28,7 +28,7 @@ Azure Virtual Network Manager は、サブスクリプション全体でグロ�
 
 :::image type="content" source="./media/overview/management-group.png" alt-text="Virtual Network Manager の管理グループの図。":::
 
-作成プロセスでは、Azure Virtual Network Manager が管理する対象のスコープを定義します。 スコープは、サブスクリプションまたは[管理グループ](../governance/management-groups/overview.md) レベルで定義できます。 スコープを定義したら、Virtual Network Manager の *接続性* や *SecurityAdmin* ロールなどの機能を有効にします。
+作成プロセスでは、Azure Virtual Network Manager が管理する対象のスコープを定義します。 スコープを定義するには、[管理グループ](../governance/management-groups/overview.md)を作成する必要があります。 スコープを定義したら、Virtual Network Manager の *接続性* や *SecurityAdmin* ロールなどの機能を有効にします。
 
 Virtual Network Manager インスタンスを展開した後、条件付きステートメントを使用して *ネットワーク グループ* を作成し、名前、タグ、または ID (動的メンバーシップ) 別に仮想ネットワークを選択します。 また、特定の仮想ネットワーク (静的メンバーシップ) を選択することもできます。 定義されたネットワーク グループ ルールは、カスタム イニシアチブ定義と、仮想ネットワーク メンバーシップ用に定義したルールを示す対応する割り当てとして Azure Policy に反映されます。 Azure Policy イニシアチブの詳細については、[Azure Policy イニシアチブの構造](../governance/policy/concepts/initiative-definition-structure.md)に関する記事を参照してください。 これらのポリシーは、現在、読み取り専用モードで使用できます。 これらのポリシーを作成、更新、削除する方法の詳細については、[ネットワーク グループと Azure Policy](concept-network-groups.md#network-group-and-azure-policy) に関する記事を参照してください。 次に、トポロジとセキュリティのニーズに基づいて、これらのネットワーク グループに適用される接続またはセキュリティ構成を作成します。 
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 79ff649d9710d4f114b7d8de85d275896f26a729
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a1653b9940f7b278d2d1a7e4b21bd2b9d57b9411
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131003563"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474820"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -47,7 +47,7 @@ Azure Spring Cloud は、基になる Kubernetes worker ノードでアプリケ
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>指定されたリージョン外に格納されている顧客データはありますか?
 
-Azure Spring Cloud はリージョン サービスです。 Azure Spring Cloud のすべての顧客データは、冗長性を確保するために、指定されたリージョンの同じ地域内の複数のリージョンに格納されます。 地域とリージョンの詳細については、「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
+Azure Spring Cloud はリージョン サービスです。 Azure Spring Cloud の顧客データは全て、指定された 1 つのリージョンに格納されます。 地域とリージョンの詳細については、「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照してください。
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制限事項はどのようなものですか?
 
@@ -64,11 +64,11 @@ Azure Spring Cloud には、次の既知の制限があります。
 * Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 Basic レベルは、Dev/Test、および Azure Spring Cloud の試用を目的としています。 Standard レベルは、汎用の運用トラフィックを実行するために最適化されています。 制限と機能レベルの比較については、[Azure Spring Cloud の価格の詳細](https://azure.microsoft.com/pricing/details/spring-cloud/)に関する記事を参照してください。
 
 ### <a name="whats-the-difference-between-service-binding-and-service-connector"></a>サービスバインドと Service Connector の違いは何ですか?
-Service Connector という新しい Azure を優先するソリューションを使用して、サービスバインドの追加機能を積極的に開発していません。 一方、新しいソリューションでは、App Service のように、Azure 上のアプリホスティングサービス間に一貫性のある統合エクスペリエンスを提供します。 これに対して、MySQLやSQL DBやCosmos DB、Postgres DBやRedisやStorage など使用されている対象の Azure サービスのうち、最も多くのものを10⁺サポートすることから始めて、ニーズにも対応できます。 Service Connector は現在パブリックプレビュー中です。新しいエクスペリエンスをお試し頂き、どうぞよろしくお願いいたします。
+[Service Connector](/azure/service-connector/overview) という新しい Azure を優先するソリューションを使用して、サービスバインドの追加機能を積極的に開発していません。 一方、新しいソリューションでは、App Service のように、Azure 上のアプリホスティングサービス間に一貫性のある統合エクスペリエンスを提供します。 これに対して、MySQLやSQL DBやCosmos DB、Postgres DBやRedisやStorage など使用されている対象の Azure サービスのうち、最も多くのものを10⁺サポートすることから始めて、ニーズにも対応できます。 Service Connector は現在パブリックプレビュー中です。新しいエクスペリエンスをお試し頂き、どうぞよろしくお願いいたします。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](../azure-portal/supportability/how-to-create-azure-support-request.md)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](../azure-portal/supportability/how-to-create-azure-support-request.md)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)に移動してください。
 
 ## <a name="development"></a>開発
 
@@ -221,7 +221,7 @@ Azure Spring Cloud は、お客様のアプリケーションのポート1025を
 
 ### <a name="whether-and-when-will-my-application-be-restarted"></a>アプリケーションを再起動するかどうかを指定します。
 
-正解です。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
+はい。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?

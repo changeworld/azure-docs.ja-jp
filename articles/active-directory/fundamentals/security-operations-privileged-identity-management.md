@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac4f2982166fabf7a49a92966ca783a260ca875a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: bdca219a352527114123cdf0179a5eb7fc486852
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038728"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435896"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Privileged Identity Management に対する Azure Active Directory (PIM) セキュリティ操作
 
@@ -26,7 +26,7 @@ ms.locfileid: "130038728"
 
 クラウド サービスの場合、防止と対応は、クラウド サービス プロバイダーと顧客の共同責任です。 
 
-従来、組織のセキュリティは、セキュリティ境界としてネットワークの入口と出口のポイントに重点を置いていました。 しかし、SaaS アプリと個人用デバイスでは、この方法があまり効果的ではありません。 Azure Active Directory (Azure AD) では、組織の ID レイヤーでネットワーク セキュリティ境界を認証に置き換えます。 ユーザーが特権管理者ロールに割り当てられている場合、そのユーザーのアクセスはオンプレミス、クラウド、およびハイブリッド環境で保護されている必要があります。 
+従来、組織のセキュリティは、セキュリティ境界としてネットワークの入口と出口のポイントに重点を置いていました。 しかし、SaaS アプリと個人用デバイスでは、この方法があまり効果的ではありません。 Azure Active Directory (Azure AD) では、組織の ID レイヤーでネットワーク セキュリティ境界を認証に置き換えます。 ユーザーが特権管理者ロールに割り当てられている場合、そのユーザーのアクセスはオンプレミス、クラウド、およびハイブリッド環境で保護されている必要があります。
 
 お客様は、オンプレミスの IT 環境におけるすべての層のセキュリティに全責任を負います。 Azure クラウド サービスを使用する場合、防止と対応は、Microsoft (クラウド サービス プロバイダー) とお客様 (あなた) の共同責任となります。 
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: eb66facb8d36884205bc9cd8e562ab97f92c3dd8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 819e3f911a769f870b792ed92b699f3356139565
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745039"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457699"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure プライベート DNS とは
 
@@ -47,7 +47,7 @@ Azure プライベート DNS には次のような利点があります。
 
 ## <a name="capabilities"></a>機能
 
-Azure DNS には次の機能があります。
+Azure プライベート DNS には次の機能があります。
 
 * **自動登録が有効にされたプライベート ゾーンにリンクされている仮想ネットワークからの仮想マシンの自動登録**。 仮想マシンは、各自のプライベート IP アドレスを指す A レコードとしてプライベート ゾーンに登録されます。 自動登録が有効にされた仮想ネットワーク リンク内の仮想マシンが削除されると、Azure DNS によって、リンクされたプライベート ゾーンから対応する DNS レコードの削除も自動的に実行されます。
 
@@ -57,7 +57,7 @@ Azure DNS には次の機能があります。
 
 ## <a name="other-considerations"></a>その他の考慮事項
 
-Azure DNS には次の制限事項があります。
+Azure プライベート DNS には次の制限事項があります。
 
 * 特定の仮想ネットワークは、VM DNS レコードの自動登録が有効になっている場合、1 つのプライベート ゾーンにのみリンク可能です。 ただし、複数の仮想ネットワークを 1 つの DNS ゾーンにリンクできます。
 * 逆引き DNS は、リンクされた仮想ネットワーク内のプライベート IP 空間に対してのみ機能します。

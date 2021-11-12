@@ -8,15 +8,15 @@ ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/29/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: ef84fea20ce59af11abf2f76de409f1363db94c9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b114077c9af72e9d57d80e783d26f54d0de91410
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051080"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429757"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
@@ -88,6 +88,8 @@ ms.locfileid: "131051080"
     | __Azure Key Vault__| [サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)</br>[プライベート エンドポイント](../key-vault/general/private-link-service.md) | [信頼された Microsoft サービスを許可して、このファイアウォールをバイパスする](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
     | __Azure Storage アカウント__ | [サービスとプライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[プライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [信頼された Azure サービスにアクセスを許可する](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure Container Registry__ | [プライベート エンドポイント](../container-registry/container-registry-private-link.md) | [信頼されたサービスを許可する](../container-registry/allow-access-trusted-services.md) |
+
+1. ワークスペースの Azure Storage アカウントのプロパティで、ファイアウォール設定の許可一覧にクライアント IP アドレスを追加します。 詳細については、[ファイアウォールと仮想ネットワークの構成](/azure/storage/common/storage-network-security#configuring-access-from-on-premises-networks)に関する記事を参照してください。
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>ワークスペースと関連するリソースをセキュリティで保護する
 

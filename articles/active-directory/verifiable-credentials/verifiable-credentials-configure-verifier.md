@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure AD の検証可能な資格情報の検証ツールを構成する (プレビュー)
-description: このチュートリアルでは、検証可能な資格情報を検証するようにテナントを構成する方法について説明します
+description: このチュートリアルでは、資格情報を検証するようにテナントを構成する方法について説明します。
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 author: barclayn
@@ -8,20 +8,20 @@ manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 10/08/2021
-ms.openlocfilehash: d2cc41dc21ebe9c18db5f920e49a21d9395349f3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 753d1d4d9d9ef78cebee69371f357ffa008453bc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993380"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477385"
 ---
 # <a name="configure-azure-ad-verifiable-credentials-verifier-preview"></a>Azure AD の検証可能な資格情報の検証ツールを構成する (プレビュー)
 
-[前のチュートリアル](verifiable-credentials-configure-issuer.md)では、同じ Azure Active Directory (Azure AD) テナントを使用して資格情報を発行して検証する方法について説明しました。 このチュートリアルでは、最初の検証可能な資格情報 (検証済み資格情報エキスパート カード) を提示して検証するために必要な手順について説明します。
+「[アプリケーションから Azure AD の検証可能な資格情報を発行する (プレビュー)](verifiable-credentials-configure-issuer.md)」では、同じ Azure Active Directory (Azure AD) テナントを使用して資格情報を発行および検証する方法について説明します。 このチュートリアルでは、最初の検証可能な資格情報 (検証済み資格情報エキスパート カード) を提示して検証するために必要な手順について説明します。
 
 検証者は、検証済み資格情報エキスパート カードを持つサブジェクトに対して特権のロックを解除します。 このチュートリアルでは、ローカル コンピューターからサンプル アプリケーションを実行します。検証済み資格情報エキスパート カードの提示が求められたら、それを検証します。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 >
@@ -32,12 +32,12 @@ ms.locfileid: "129993380"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 開始する前に、[Azure AD の検証可能な資格情報のテナントをセットアップする](verifiable-credentials-configure-tenant.md)ことが重要です。
-- サンプル アプリをホストするリポジトリをクローンしたい場合は [GIT](https://git-scm.com/downloads) のインストールが必要。
-- [Visual Studio Code](https://code.visualstudio.com/Download)、または同様のコード エディター
-- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
-- 無料の [NGROK](https://ngrok.com/)。
-- Microsoft Authenticator を備えたモバイル デバイス
+- [Azure AD の検証可能な資格情報にテナントを設定する](verifiable-credentials-configure-tenant.md)。
+- サンプル アプリをホストするリポジトリをクローンする場合、[Git](https://git-scm.com/downloads) をインストールする。
+- [Visual Studio Code](https://code.visualstudio.com/Download)、または同様のコード エディター。
+- [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)。
+- [ngrok](https://ngrok.com/) (無料)。
+- Microsoft Authenticator を備えたモバイル デバイス:
   - Android バージョン 6.2108.5654 以降がインストールされていること。
   - iOS バージョン 6.5.82 以降がインストールされていること。
 
@@ -45,9 +45,9 @@ ms.locfileid: "129993380"
 
 Azure AD の検証可能な資格情報サービスを設定したので、お使いの環境と設定した検証可能な資格情報に関する情報を収集します。 これらの情報は、サンプル アプリケーションを設定するときに使用します。
 
-1. 検証可能な資格情報から、 **[組織の設定]** を選択します。
-1. **テナント識別子** をコピーして、後で使うために記録します。
-1. **分散化識別子** をコピーして、後で使うために記録します。
+1. **[検証可能な資格情報 (プレビュー)]** から、 **[組織の設定]** を選択します。
+1. **テナント識別子** の値をコピーして、後で使うために記録します。
+1. **分散化識別子** の値をコピーして、後で使うために記録します。
 
 次のスクリーンショットは、必要な値をコピーする方法を示しています。
 
@@ -65,23 +65,23 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 作成した登録済みアプリケーションに対してクライアント シークレットを作成します。 このサンプル アプリケーションでは、トークンを要求するときに、このクライアント シークレットを使ってその ID を証明します。
 
-1. **Azure Active Directory** 内にある **[アプリの登録]** ページに移動します。
+1. Azure AD で、 **[アプリの登録]** に移動します。
 
-1. 前に作成した *verifiable-credentials-app* アプリケーションを選択します。
+1. 前に作成した **verifiable-credentials-app** アプリケーションを選択します。
 
 1. 名前を選択して、**アプリの登録の詳細** に移動します。
 
-1. **アプリケーション (クライアント) ID** をコピーして、後で使用できるように保存します。 
+1. **アプリケーション (クライアント) ID** の値をコピーして、後で使用できるように保存します。 
 
     ![アプリ ID を取得する方法を示すスクリーンショット。](media/verifiable-credentials-configure-verifier/get-app-id.png)
 
-1. アプリ登録の詳細で、メイン メニューの **[管理]** で **[Certificates & secrets]\(証明書とシークレット\)** を選択します。
+1. **アプリ登録の詳細** で、メイン メニューの **[管理]** から **[証明書とシークレット]** を選択します。
 
 1. **[新しいクライアント シークレット]** を選択します。
 
     1. **[説明]** ボックスにクライアント シークレットの説明を入力します (例: vc-sample-secret)。
 
-    1. **[有効期限]** で、シークレットが有効な期間 (6 か月など) を選択してから、 **[追加]** を選択します。
+    1. **[有効期限]** で、シークレットが有効な期間 (6 か月など) を選びます。 その後、 **[追加]** を選択します。
 
     1. シークレットの **値** を記録します。 この値は、後の手順での構成に使用します。 シークレットの値は、再度表示することも、その他の方法で取得することもできないため、表示されたらすぐに記録してください。
 
@@ -91,9 +91,9 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 次に、サンプル アプリの発行者コードに変更を加えて、検証可能な資格情報の URL でそれを更新します。 この手順により、独自のテナントを使用して、検証可能な資格情報を発行できます。
 
-1. *active-directory-verifiable-credentials-dotnet-main* ディレクトリで Visual Studio Code を開き、*1.asp-net-core-api-idtokenhint* ディレクトリ内のプロジェクトを選択します。
+1. *active-directory-verifiable-credentials-dotnet-main* ディレクトリで **Visual Studio Code** を開きます。 *1. asp-net-core-api-idtokenhint* ディレクトリ内のプロジェクトを選択します。
 
-1. プロジェクトのルート フォルダーで、appsettings.json ファイルを開きます。 このファイルには、ご自分の Azure AD の検証可能な資格情報が含まれています。 上記の手順で以前に記録した情報を使用して、次のプロパティを更新します。
+1. プロジェクトのルート フォルダーで、*appsettings.json* ファイルを開きます。 このファイルには、Azure AD の検証可能な資格情報の、ご自分の資格情報に関する情報が含まれています。 上記の手順で以前に記録した情報を使用して、次のプロパティを更新します。
 
     1. **Tenant ID**: ご自分のテナント ID
     1. **Client ID**: ご自分のクライアント ID
@@ -103,7 +103,7 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 1. *appsettings.json* ファイルを保存します。
 
-次の JSON は、完全な appsettings.json ファイルを示しています。
+次の JSON は、完全な *appsettings.json* ファイルを示しています。
 
 ```json
 {
@@ -123,9 +123,9 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 ## <a name="run-and-test-the-sample-app"></a>サンプル アプリを実行してテストする
 
-これで、サンプル アプリケーションを実行して、最初の検証済みエキスパート カードを提示して検証する準備ができました。
+これで、サンプル アプリケーションを実行して、最初の検証済み資格情報エキスパート カードを提示して検証する準備ができました。
 
-1. Visual Studio Code から、Verifiable_credentials_DotNet プロジェクトを実行します。 または、コマンド シェルから、次のコマンドを実行します。
+1. Visual Studio Code から、*Verifiable_credentials_DotNet* プロジェクトを実行します。 または、コマンド シェルから、次のコマンドを実行します。
 
     ```bash
     cd active-directory-verifiable-credentials-dotnet/1. asp-net-core-api-idtokenhint  dotnet build "asp-net-core-api-idtokenhint.csproj" -c Debug -o .\bin\Debug\netcoreapp3.1  
@@ -149,9 +149,9 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
     ![サンプル アプリから [Verify Credential]\(資格情報の検証\) を選択する方法を示すスクリーンショット。](media/verifiable-credentials-configure-verifier/verify-credential.png)
 
-1. Authenticator アプリを使用して QR コードをスキャンするか、お使いのモバイル カメラから直接スキャンします。
+1. Authenticator を使用して QR コードをスキャンするか、お使いのモバイル カメラから直接スキャンします。
 
-1. **[This app or website may be risky]\(このアプリまたは Web サイトは危険であるおそれがあります\)** という警告メッセージが表示されたら **[詳細設定]** を選択します。 この警告が表示されるのは、ドメインが検証されていないためです。 ドメインを検証するには、「ドメインを分散識別子 (DID) にリンクする」の記事のガイダンスに従います。 このチュートリアルでは、ドメインの登録を省略できます。  
+1. "*このアプリまたは Web サイトが危険である可能性がある*" という警告メッセージが表示されたら、 **[詳細設定]** を選択します。 この警告が表示されるのは、ドメインが検証されていないためです。 このチュートリアルでは、ドメインの登録を省略できます。  
 
     ![危険な認証アプリの警告で [詳細設定] を選択する方法を示すスクリーンショット。](media/verifiable-credentials-configure-verifier/at-risk.png)
     
@@ -166,7 +166,7 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 1. 要求を承認すると、要求が承認されたことを確認できます。 また、ログを確認することもできます。 ログを表示するには、検証可能な資格情報を選択します。
 
-    ![検証可能な資格情報エキスパート カードを示すスクリーンショット。](media/verifiable-credentials-configure-verifier/verifable-credential-info.png)
+    ![検証済み資格情報エキスパート カードを示すスクリーンショット。](media/verifiable-credentials-configure-verifier/verifable-credential-info.png)
 
 1. 次に、 **[最近のアクティビティ]** を選択します。  
 
@@ -182,4 +182,4 @@ git clone git@github.com:Azure-Samples/active-directory-verifiable-credentials-d
 
 ## <a name="next-steps"></a>次の手順
 
-[検証可能な資格情報をカスタマイズする方法](credential-design.md)について確認します
+[検証可能な資格情報をカスタマイズする方法](credential-design.md)について確認します。

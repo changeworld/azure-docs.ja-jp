@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088273ff23b28bd54a4a14ab9485a0e28ae42cef
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1a30e270b202989f041ea9e07dc69e67c33b8e87
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986551"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448274"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -52,19 +52,19 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 ![動的グループのメンバーシップのルールを追加する](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression&quot;></a>単一式のルール構文
+### <a name="rule-syntax-for-a-single-expression"></a>単一式のルール構文
 
 単一式は、メンバーシップ ルールの最もシンプルな形式であり、前述の 3 つの部分でのみ構成されます。 単一式のルールは `Property Operator Value` のようになります。プロパティの構文は object.property の名前です。
 
 次は、単一式で正しく構成されたメンバーシップ ルールの例です。
 
 ```
-user.department -eq &quot;Sales&quot;
+user.department -eq "Sales"
 ```
 
 単一式の場合、かっこは省略可能です。 メンバーシップ ルール本文の合計文字数が 3,072 文字を超えないようにしてください。
 
-## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>メンバーシップ ルールの本文の作成
+## <a name="constructing-the-body-of-a-membership-rule"></a>メンバーシップ ルールの本文の作成
 
 グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
@@ -74,7 +74,7 @@ user.department -eq &quot;Sales&quot;
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
 
-## <a name=&quot;supported-properties&quot;></a>サポートされているプロパティ
+## <a name="supported-properties"></a>サポートされているプロパティ
 
 メンバーシップ ルールを作成するとき、3 種類のプロパティを使用できます。
 
@@ -84,18 +84,18 @@ user.department -eq &quot;Sales&quot;
 
 次は、単一式の作成に使用できるユーザー プロパティです。
 
-### <a name=&quot;properties-of-type-boolean&quot;></a>ブール型のプロパティ
+### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
 
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
-### <a name=&quot;properties-of-type-string&quot;></a>文字列型のプロパティ
+### <a name="properties-of-type-string"></a>文字列型のプロパティ
 
 | Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
-| city |任意の文字列値または *null* |(user.city -eq &quot;value") |
+| city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
 | companyName | 任意の文字列値または *null* | (user.companyName -eq "value") |
 | department |任意の文字列値または *null* |(user.department -eq "value") |

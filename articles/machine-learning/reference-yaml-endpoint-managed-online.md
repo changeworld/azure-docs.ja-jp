@@ -1,84 +1,64 @@
 ---
-title: マネージド オンライン エンドポイント (プレビュー) YAML リファレンス
+title: オンライン エンドポイント (プレビュー) YAML リファレンス
 titleSuffix: Azure Machine Learning
-description: マネージド オンライン エンドポイントとしてモデルをデプロイするために使用される YAML ファイルについての説明
+description: オンライン エンドポイントとしてモデルをデプロイするために使用される YAML ファイルについての説明
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
-ms.date: 08/03/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: de4a9c78501fd74fa65a453b593701891e04d345
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5b7637f16885e2eed5281273f1acad866e38e39e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024260"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555858"
 ---
-# <a name="cli-v2-managed-online-endpoint-yaml-schema"></a>CLI (v2) マネージド オンライン エンドポイント YAML スキーマ
+# <a name="cli-v2-online-endpoint-yaml-schema"></a>CLI (v2) オンライン エンドポイント YAML スキーマ
+
+ソース JSON スキーマは https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json にあります。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 > [!NOTE]
 > マネージド オンライン エンドポイント用に詳細に指定されたサンプル YAML があるので、[ご参考](https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.template.yaml)ください
 
-## <a name="schema"></a>スキーマ
+## <a name="yaml-syntax"></a>YAML 構文
 
-ソース JSON スキーマは https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json にあります。 スキーマは、便宜上、以下の JSON 形式と YAML 形式で提供されています。
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| --- | ---- | ----------- | -------------- | ------------- |
+| `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
+| `name` | string | **必須。** エンドポイントの名前。 Azure リージョン レベルで一意である必要があります。 <br><br> 名前付け規則は[ここ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)で定義されています。| | |
+| `description` | string | エンドポイントの説明。 | | |
+| `tags` | object | エンドポイントのタグのディクショナリ。 | | |
+| `auth_mode` | string | エンドポイントの認証方法。 キーベースの認証と Azure ML トークンベースの認証がサポートされています。 キーベースの認証の有効期限が切れることはありませんが、Azure ML トークンベースの認証は期限切れになります。 | `key`, `aml_token` | `key` |
+| `allow_public_access` | boolean | Private Link が有効になっているときにパブリック アクセスするかどうか。 | | `true` |
+| `identity` | object | エンドポイントのプロビジョニングと推論のために Azure リソースにアクセスするマネージド ID 構成。 | | |
+| `identity.type` | string | マネージド ID の種類。 型が `user_assigned` の場合は、`identity.user_assigned_identities` プロパティも指定する必要があります。 | `system_assigned`, `user_assigned` | |
+| `identity.user_assigned_identities` | array | ユーザー割り当て ID の完全修飾リソース ID の一覧。 | | |
 
-# <a name="json"></a>[JSON](#tab/json)
+## <a name="remarks"></a>Remarks
 
-:::code language="json" source="~/azureml-examples-main/cli/.schemas/jsons/latest/managedOnlineEndpoint.schema.json":::
+`az ml online-endpoint` コマンドは、Azure Machine Learning オンライン エンドポイントを管理するために使用できます。
 
-# <a name="yaml"></a>[YAML](#tab/yaml)
+## <a name="examples"></a>例
 
-:::code language="yaml" source="~/azureml-examples-main/cli/.schemas/yamls/latest/managedOnlineEndpoint.schema.yml":::
+例は、[GitHub リポジトリの例](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/batch)にあります。 以下にいくつか示します。
 
----
+## <a name="yaml-basic"></a>YAML: basic
 
-## <a name="remarks"></a>解説
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/endpoint.yml":::
 
-| Key | 説明 |
-| --- | --- |
-| $schema    | \[__省略可能__\] YAML スキーマ。 上の例のスキーマをブラウザーで表示すると、YAML ファイルで使用可能なすべてのオプションを確認できます。|
-| name       | エンドポイントの名前。 Azure リージョン レベルで一意である必要があります。|
-| traffic | エンドポイントから各デプロイに転送するトラフィックの割合 (%)。 トラフィックの値は合計して 100 になる必要があります。 |
-| auth_mode | キー ベース認証には `key` を、Azure Machine Learning トークンベース認証には `aml_token` を使用します。 `key` には有効期限がありませんが、`aml_token` には有効期限があります。 `az ml endpoint list-keys` コマンドを使用して最新のトークンを取得してください。 |
-| ID | システム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するために使用されます。 |
-| app_insights_enabled | `True` によって、Azure Machine Learning ワークスペースに関連付けられている Azure AppInsights との統合を有効にします。 既定では `False` です。
-| tags | エンドポイントに関連付けられる Azure タグのディクショナリ。 |
-| description | エンドポイントの説明。 |
-| ターゲット (target) | このキーが定義されていない場合、エンドポイントはマネージド オンライン エンドポイントとしてデプロイされます。 AKS を使用するには、このキーの値を、登録されているコンピューティング先の名前 (例: `target:azureml:my-aks`) に設定します。 
-| deployments | エンドポイントに作成されるデプロイの一覧を含みます。 このケースでは、`blue` という名前のデプロイが 1 つあるだけです。 |
+## <a name="yaml-system-assigned-identity"></a>YAML: システム割り当て ID
 
-### <a name="attributes-of-the-deployments-key"></a>`deployments` キーの属性
- 
-| Key | 説明 |
-| --- | --- |
-| name  | デプロイの名前。 |
-| model | `model: azureml:my-model:1` 形式の登録されているモデル バージョンの名前。 モデルのプロパティには、インラインで `name`、`version`、`local_path` を指定できます。 モデル ファイルは自動的にアップロードされて登録されます。 インラインで指定することの欠点は、モデル ファイルを更新する場合に、バージョンを手動でインクリメントする必要がある点です。|
-| code_configuration.code.local_path | モデルのスコアリングに使用されるすべての Python ソース コードを格納するディレクトリ。 入れ子になったディレクトリまたはパッケージがサポートされます。 |
-| code_configuration.scoring_script | 上記のスコアリング ディレクトリ内の Python ファイル。 この Python コードには、`init()` 関数と `run()` 関数が含まれている必要があります。 `init()` 関数は、モデルの作成後または更新後に呼び出されます (この関数を使用して、モデルをメモリにキャッシュするなどの操作を実行できます)。 `run()` 関数は、実際のスコアリングまたは予測を実行するためにエンドポイントが呼び出されるたびに呼び出されます。 |
-| 環境 | モデルとコードをホスティングする Azure Machine Learning 環境の詳細を含みます。 運用環境ではベスト プラクティスとして、モデルと環境を別々に登録し、登録済みの名前とバージョンを YAML で指定することをお勧めします。 たとえば、「 `environment: azureml:my-env:1` 」のように入力します。 |
-| instance_type | デプロイ インスタンスのホストとなる VM の SKU。 詳細については、[マネージド オンライン エンドポイントでサポートされる VM SKU](reference-managed-online-endpoints-vm-sku-list.md) に関するページを参照してください。|
-| scale_settings.scale_type | 現在、この値は `manual` である必要があります。 エンドポイントとデプロイの作成後にスケールアップまたはスケールダウンするには、YAML で `instance_count` を更新し、`az ml endpoint update -n $ENDPOINT_NAME --file <yaml filepath>` コマンドを実行します。 |
-| scale_settings.instance_count | デプロイ内のインスタンスの数。 想定されるワークロードに基づく値を指定します。 高可用性を確保するために、Microsoft では `3` 以上に設定することを推奨しています。 |
-| scale_settings.min_instances | 常に存在するインスタンスの最小数。 |
-| scale_settings.max_instances | デプロイがスケールアウトできる最大のインスタンス数です。 クォータは、予約済みの max_instance になります。 |
-| request_settings.request_timeout_ms | スコアリングのタイムアウト (ミリ秒)。 マネージド オンライン エンドポイントの既定値は 5000 です。 |
-| request_settings.max_concurrent_requests_per_instance | デプロイごとに許可されるノードあたりの最大同時要求数。 既定値は 1 です。 __この設定は、マイクロソフト テクニカル サポートまたはマイクロソフトの Azure Machine Learning チームのメンバーの指示がない限り、既定値の 1 してください。__ |
-| request_settings.max_queue_wait_ms | 要求がキューに残る最大時間 (ミリ秒単位)。 既定値は 500 です。 |
-| liveness_probe | liveness probe は、コンテナーの正常性を定期的に監視します。 |
-| liveness_probe.period | liveness probe を実行する頻度 (秒単位)。 既定値は 10 秒です。 最大値は 1 です。 |
-| liveness_probe.initial_delay | コンテナーの起動後、liveness probe が開始するまでの秒数。 既定値は 10 です。 |
-| liveness_probe.timeout | liveness probe がタイムアウトするまでの秒数。既定値は 2 秒です。 最大値は 1 です。 |
-| liveness_probe.failure_threshold | システムは、failure_threshold 回数だけ試し、この後、中止されます。 既定値は 30 です。 最大値は 1 です。 |
-| liveness_probe.success_threshold | 失敗した後、liveness probe が成功と見なされるための最小連続成功数。 既定値は 1 です。 最大値は 1 です。 |
-| readiness_probe | readiness probe は、コンテナーがトラフィックを処理する準備ができている場合に検証します。 プロパティと既定値は、liveness probe と同じです。 |
-| tags | デプロイに関連付ける Azure タグのディクショナリ。 |
-| description | デプロイの説明。 |
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
+
+## <a name="yaml-user-assigned-identity"></a>YAML: ユーザー割り当て ID
+
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: d8058181ea56fdfc7465748f7ebf519c51422f64
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/11/2021
+ms.openlocfilehash: c107f3a22869c204691053662373b599489ffb4e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070890"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308259"
 ---
 # <a name="plan-an-azure-application-offer"></a>Azure アプリケーション オファーを計画する
 

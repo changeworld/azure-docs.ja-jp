@@ -4,16 +4,16 @@ description: データベース デザイナーを使用して Lake データベ
 author: aamerril
 ms.author: aamerril
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 69bb07492c5c69f569b04246441da0d5b47e67ab
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fbd84d3999b5aec4ea04139b1d2933a366edb5e7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091579"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433082"
 ---
 # <a name="how-to-modify-a-lake-database"></a>方法: Lake データベースを変更します。
 
@@ -93,7 +93,7 @@ ms.locfileid: "131091579"
    - **PK** または主キー。 列がテーブルの主キーかどうかを示します。 パーティション列には適用できません。
    - **説明** 列の説明。 列がデータベーステンプレートから作成された場合、この列で表される概念の説明が表示されます。 このフィールドは編集可能であり、ビジネス要件に一致する説明に合わせて変更できます。
    - **Null 値の許容** は、この列に null 値が含まれるかどうかを示します。 パーティション列には適用できません。
-   - **データ型は**、使用可能な Spark データ型の一覧に基づいて、列のデータ型を設定します。 
+   - **データ型** によって、使用可能な Spark データ型の一覧に基づいて列のデータ型が設定されます。 
    - **Format / Length を** 使用すると、データ型に応じて、列の形式または最大長をカスタマイズできます。 日付とタイムスタンプのデータ型には形式ドロップダウンがあります。文字列などの他の型には最大長フィールドがあります。 一部の型が固定長である場合、すべてのデータ型に値があるというのではありません。
 **[列]** タブ の上部 には、列の操作に使用できるコマンド バーがあります。
    - **[キーワードでフィルター]** を選択すると、列の一覧が、指定したキーワードに一致する項目にフィルター処理されます。

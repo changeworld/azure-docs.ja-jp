@@ -4,16 +4,16 @@ description: Azure SSIS 統合ランタイムのインジェクションに仮�
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 10/27/2021
+ms.date: 11/03/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32930edc0aa02fa537380ceadffb04a1fd5729da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e3683011794e89acbac6bbbb985c7cb85ebd9ebd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068803"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475990"
 ---
 # <a name="configure-a-virtual-network-for-injection-of-azure-ssis-integration-runtime"></a>Azure-SSIS統合ランタイムのインジェクションするための仮想ネットワークの設定
 
@@ -35,6 +35,8 @@ Azure Data Factory (ADF) で SQL Server Integration Services (SSIS) を使用す
 | **送信トラフィック** | 宛先として *Azurecloud* サービスタグを使用して TCP トラフィック用にポート *443* を開く必要があります。 | 宛先として *DataFactoryManagement* サービスタグを使用して TCP トラフィック用にポート *443* を開く必要があります。 | 
 | **リソース ロック** | リソースグループでは許可されていません。 | 仮想ネットワークでは許可されていません。 | 
 | **仮想ネットワークごとの Azure-SSIS IRs** | 無制限。 | 1つだけです。 | 
+
+:::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/standard-express-virtual-network-injection.png" alt-text="仮想ネットワークの標準および高速インジェクション方法のスクリーンショット" lightbox="media/join-azure-ssis-integration-runtime-virtual-network/standard-express-virtual-network-injection.png":::
 
 仮想ネットワークの設定は、インジェクション方法によって異なります。 高速方法を使用する場合は、 [高速仮想ネットワークのインジェクション方法](azure-ssis-integration-runtime-express-virtual-network-injection.md) に関する記事を参照してください。それ以外の場合は、 [標準仮想ネットワークインジェクション方法](azure-ssis-integration-runtime-standard-virtual-network-injection.md) に関する記事を参照してください。
   
@@ -89,7 +91,7 @@ Azure portal を使用すると、仮想ネットワーク/サブネットに参
 - [高速仮想ネットワーク インジェクション方法](azure-ssis-integration-runtime-express-virtual-network-injection.md)
 - [標準仮想ネットワーク インジェクション方法](azure-ssis-integration-runtime-standard-virtual-network-injection.md)
 - [ADF UI を使用して仮想ネットワークに Azure SSIS IR を参加させる](join-azure-ssis-integration-runtime-virtual-network-ui.md)
-- [Azure PowerShell を使用して仮想ネットワークに Azure-SSIS IR を参加する](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
+- [Azure PowerShell を使用して仮想ネットワークに Azure-SSIS IR を参加します](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
 
 Azure-SSIS IR の詳細については、次の記事を参照してください。 
 

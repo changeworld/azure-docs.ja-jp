@@ -5,16 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.service: security-center
 ms.topic: how-to
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: cca9811423449692f0e71cdb62ade1447cba86f2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 795d54406230dbc7ea6e9666cfef51c8f96219fe
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010524"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576189"
 ---
 # <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>資産インベントリを使用してリソースのセキュリティ態勢を管理する
 
@@ -119,7 +118,7 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
     - **オフ** -Microsoft Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックして、リソースを Microsoft Defender にアップグレードします。" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックし、関連 Microsoft Defender プランで保護されるようにリソースをアップグレードします。" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - Microsoft Defender プランによって保護さ **れている** リソース
     - **Partial** -一部の Microsoft Defender プランが無効になっている **サブスクリプション** に適用されます。 たとえば、次のサブスクリプションでは、7つの Microsoft Defender プランが無効になっています。
@@ -183,7 +182,7 @@ Azure Resource Graph エクスプローラーを使用してソフトウェア �
         | where count_ > 1
         ```
 
-    - ソフトウェア製品と別の ASC 推奨事項の組み合わせ:
+    - ソフトウェア製品と別のセキュリティ推奨事項の組み合わせ:
 
         (この例では、MySQL がインストールされ、管理ポートが公開されているコンピューター)
 
@@ -220,7 +219,7 @@ Azure Resource Graph エクスプローラーを使用してソフトウェア �
 
 :::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでは、監視エージェントまたは Defender for Cloud 列に空白の情報が表示されます。" lightbox="./media/asset-inventory/agent-pricing-blanks.png":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Microsoft Defender for Cloud の資産インベントリ ページについて説明しました。
 

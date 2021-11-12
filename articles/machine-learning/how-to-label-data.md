@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
-ms.date: 09/24/2021
-ms.custom: data4ml, ignite-fall-2021
-ms.openlocfilehash: 3fae9f8f6e5c0e54d42751456b693a4bc094771c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a811c63e29800fa7f79d620f358e06939168ce4c
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131079379"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563038"
 ---
 # <a name="labeling-images-and-text-documents"></a>画像とテキスト ドキュメントにラベルを付ける
 
@@ -67,6 +67,8 @@ ms.locfileid: "131079379"
     * ある時点で、プロジェクト名の横に "**Tasks prelabeled (事前ラベル付きのタスク)** " と表示されることがあります。  その場合、機械学習の分類モデルによって提案されたラベルと共に項目が表示されます。 100% の精度を持つ機械学習モデルはありません。 使用するのはモデルの信頼度が高いデータだけですが、それらのデータであっても、ラベル付けが正しくない可能性があります。  そうしたラベルを見つけたら、ページを送信する前に、間違ったラベルを修正してください。
 
 特に、ラベル付けプロジェクトの初期の段階では、機械学習モデルに、ほんの一部の画像に対して事前ラベル付けするだけの精度しかない、ということがあります。 これらの画像のラベル付けが完了すると、次のラウンドのモデル トレーニング用にさらに多くのデータを収集するため、ラベル付けプロジェクトは手動でのラベル付けに戻ります。 やがて、さらに多くの割合の画像について、モデルの信頼度が上がっていき、後でプロジェクトで行う事前ラベル付けタスクが蓄積されていきます。
+
+事前ラベル付けタスクがなくなったら、ラベルの確認または修正を停止して、項目の手動でのタグ付けに戻ります。
 
 ## <a name="image-tasks"></a><a name="image-tasks"></a> 画像タスク
 

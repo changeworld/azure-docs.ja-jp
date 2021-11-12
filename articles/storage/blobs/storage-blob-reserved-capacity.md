@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 14f8cc665ef1d7335116a2e5b68ea3f58424063a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 9d7740a1b5840674720bfc8e180b54334256e488
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274446"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441440"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -114,7 +114,7 @@ Azure の予約ポリシーの詳細については、「[Azure の予約のセ�
 
 ### <a name="refund-a-reservation"></a>予約を返金する
 
-Azure Storage 予約はいつでも取り消すことができます。 取り消しを行うと、予約の残りの期間に基づいて日割り計算された返金金額から 12% の早期終了料金を差し引いた金額を受け取ります。 1 年あたりの最大の返金は 5 万ドルです。
+Azure Storage 予約はいつでも取り消すことができます。 取り消しを行うと、予約の残りの期間に基づいて日割り計算された返金金額を受け取ります。 1 年あたりの最大の返金は 5 万ドルです。
 
 予約を取り消すと予約はすぐに終了し、残りの月が Microsoft に返されます。 なお、残りは日割りの払い戻し額から手数料を引いた額が当初の購入形式に戻されます。
 

@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 08/23/2021
-ms.openlocfilehash: 95e95e3c6eaa3a2e1738dd3a9dea9afd5e56e008
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.openlocfilehash: 384b1b11e272cab8386a5a4f3344c36e99959254
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131088124"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561936"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning への移行 
 
@@ -53,7 +53,7 @@ Azure Machine Learning に移行するには、次の方法をお勧めします
 
     [!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
-3. Azure Machine Learning デザイナーで、ご自分の重要なスタジオ (クラシック) モジュールがサポートされていることを確認します。 詳細については、後述の「[スタジオ (クラシック) とデザイナーのモジュールマッピング](#studio-classic-and-designer-module-mapping)」の表を参照してください。
+3. Azure Machine Learning デザイナーで、ご自分の重要なスタジオ (クラシック) モジュールがサポートされていることを確認します。 詳細については、後述の「[スタジオ (クラシック) とデザイナーのコンポーネントマッピング](#studio-classic-and-designer-component-mapping)」の表を参照してください。
 
 4. [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md?tabs=azure-portal)します。
 
@@ -90,16 +90,16 @@ Azure Machine Learning に移行するには、次の方法をお勧めします
 1. シナリオを展開し、追加のワークロードを Azure Machine Learning に移行します。
 
 
-## <a name="studio-classic-and-designer-module-mapping"></a>スタジオ (クラシック) とデザイナーのモジュールマッピング
+## <a name="studio-classic-and-designer-component-mapping"></a>スタジオ (クラシック) とデザイナーのコンポーネントマッピング
 
 スタジオ (クラシック) の実験をデザイナーで再構築するときに使用するモジュールを確認するには、次の表を参照してください。
 
 
 > [!IMPORTANT]
-> デザイナーのモジュール実装には、スタジオ (クラシック) のように C# パッケージではなく、オープンソースの Python パッケージが使われています。 この違いにより、デザイナー モジュールの出力は、対応するスタジオ (クラシック) とは若干異なる場合があります。
+> デザイナーのモジュール実装には、スタジオ (クラシック) のように C# パッケージではなく、オープンソースの Python パッケージが使われています。 この違いにより、デザイナー コンポーネントの出力は、対応するスタジオ (クラシック) とは若干異なる場合があります。
 
 
-|カテゴリ|スタジオ (クラシック) モジュール|後継のデザイナー モジュール|
+|カテゴリ|スタジオ (クラシック) モジュール|後継のデザイナー コンポーネント|
 |--------------|----------------|--------------------------------------|
 |データの入力と出力|- データの手動入力 </br> - データのエクスポート </br> - データのインポート </br> - トレーニング済みのモデルの読み込み </br> - zip 形式のデータセットのアンパック|- データの手動入力 </br> - データのエクスポート </br> - データのインポート|
 |データ形式の変換|- CSV への変換 </br> - データセットへの変換 </br> - ARFF への変換 </br> - SVMLight への変換 </br> - TSV への変換|- CSV への変換 </br> - データセットへの変換|
@@ -125,9 +125,9 @@ Azure Machine Learning に移行するには、次の方法をお勧めします
 | Web サービス | - 入力 </br> - 出力 | - 入力 </br>  - 出力|
 | Computer Vision| | - イメージ変換の適用 </br> - イメージ ディレクトリへの変換 </br> - イメージ変換の初期化 </br> - イメージ ディレクトリの分割  </br> - DenseNet 画像分類   </br>- ResNet 画像分類 |
 
-個々のデザイナー モジュールを使用する方法の詳細については、「[Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス](algorithm-module-reference/module-reference.md)」を参照してください。
+個々のデザイナー コンポーネントを使用する方法の詳細については、[デザイナー コンポーネントのリファレンス](./component-reference/component-reference.md)に関するページを参照してください。
 
-### <a name="what-if-a-designer-module-is-missing"></a>デザイナー モジュールが見つからない場合はどうすればよいですか
+### <a name="what-if-a-designer-component-is-missing"></a>デザイナー コンポーネントが見つからない場合はどうすればよいですか。
 
 Azure Machine Learning デザイナーには、スタジオ (クラシック) の最も人気のあるモジュールが含まれています。 また、最新の機械学習手法を利用する新しいモジュールも含まれています。 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/1/2021
 ms.author: JenCook
 ms.custom: mode-portal, ignite-fall-2021
-ms.openlocfilehash: 51a91b6bb5ff5991ad2d92a41f7f70ef39c2a0c2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ebb48c3c3b0f7273b7ceeebd8a615b19444dab5b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033281"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508402"
 ---
 # <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>クイック スタート - Azure portal で Intel SGX VM を作成する
 
@@ -140,9 +140,9 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 ## <a name="install-azure-dcap-client"></a>Azure DCAP クライアントをインストールする
 
 > [!NOTE]
-> Trusted Hardware Identity Management (THIM) は、さまざまな高信頼実行環境 (TEE) のハードウェア ID を管理するのに役立つ無料の Azure サービスです。 Intel Provisioning Certification Service (PCS) から関連情報をフェッチし、キャッシュします。 このサービスは、構成証明のために、Azure セキュリティ ベースラインとして最小の信頼されたコンピューティング ベース (TCB) レベルを適用します。
+> Trusted Hardware Identity Management (THIM) は、さまざまな高信頼実行環境 (TEE) のハードウェア ID を管理するのに役立つ無料の Azure サービスです。 Intel Provisioning Certification Service (PCS) から関連情報をフェッチし、キャッシュします。 このサービスは、構成証明のために、Azure セキュリティ ベースラインとして最小の信頼されたコンピューティング ベース (TCB) レベルを適用します。 DCsv3 シリーズと DCdsv3 シリーズの Azure VM の場合、Intel 証明書は THIM からのみフェッチできます。VM から Intel サービスを直接呼び出せないためです。 
 
-DCsv2、DCsv3、DCdsv3 シリーズの Azure VM ユーザーは、構成証明プロセス中に、Azure DCAP クライアントをインストールして、THIM と対話し、見積もり生成のために TEE 関連資料をフェッチすることをお勧めします。 構成証明の詳細については、「[Microsoft Azure Attestation](/azure/attestation/overview)」または [ECDSA Attestation](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html) に関する記事を参照してください。
+Intel® Xeon スケーラブル プロセッサのリリースによって、リモート構成証明サポートが変わります。 DCsv3 と DCdsv3 では [ECDSA ベースの構成証明](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html)のみがサポートされ、ユーザーは、THIM とやりとりし、TEE コラテラルをフェッチして構成証明プロセスの間にクォートを生成するには [Azure DCAP](https://github.com/Microsoft/Azure-DCAP-Client) クライアントをインストールする必要があります。 DCsv2 では引き続き、[EPID ベースの構成証明](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html)がサポートされます。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -158,3 +158,6 @@ DCsv2、DCsv3、DCdsv3 シリーズの Azure VM ユーザーは、構成証明�
 
 > [!div class="nextstepaction"]
 > [Open Enclave SDK サンプルを作成する](https://github.com/openenclave/openenclave/blob/master/samples/README.md)
+
+Microsoft Azure Attestation は無料であり、ECDSA ベースの構成証明フレームワークです。複数の TEE の信頼性とその中で実行されるバイナリの整合性をリモートで検証します。 [詳細情報](/azure/attestation/overview)
+

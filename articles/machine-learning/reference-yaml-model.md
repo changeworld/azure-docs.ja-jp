@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 51db45ecaac8be0679832dde29685a6ba2909f75
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: a9f3ac8ce87c3cec11c7bb5cb17e1004bce9f953
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132055759"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556885"
 ---
 # <a name="cli-v2-model-yaml-schema"></a>CLI (v2) モデル YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "132055759"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | Type | 説明 | 使用できる値 |
+| キー | 種類 | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `$schema` | string | YAML スキーマ。 | |
 | `name` | string | **必須。** モデルの名前。 | |
@@ -47,10 +47,10 @@ ms.locfileid: "132055759"
 
 ## <a name="yaml-local-file"></a>YAML: ローカル ファイル
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/model/local-file.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/model/local-file.yml":::
 
 ## <a name="yaml-local-folder-in-mlflow-format"></a>YAML: MLflow 形式のローカル フォルダー
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/model/local-mlflow.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/model/local-mlflow.yml":::
 
 - [CLI (v2) をインストールして使用する](how-to-configure-cli.md)

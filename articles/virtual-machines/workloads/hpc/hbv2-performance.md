@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: a15aaece5916ac9e9ff6129754b4f932878ac707
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 81ac751ca209c7741e3bf55082f7b041ff13022d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698637"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318163"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 シリーズの仮想マシンのサイズ
 
@@ -37,25 +37,21 @@ ms.locfileid: "122698637"
 
 OSU マイクロベンチマーク スイートからの MPI 待機時間テストが実行されます。 サンプル スクリプトは [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) にあります。
 
-
-```bash 
+```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency
-``` 
- 
-:::image type="content" source="./media/latency-hbv2.png" alt-text="Azure HB の MPI 待機時間。":::
+```
 
+:::image type="content" source="./media/latency-hbv2.png" alt-text="Azure HB の MPI 待機時間。":::
 
 ## <a name="mpi-bandwidth"></a>MPI 帯域幅
 
 OSU マイクロベンチマーク スイートからの MPI 帯域幅テストが実行されます。 サンプル スクリプトは [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) にあります。
 
-
 ```bash
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
-``` 
+```
 
 :::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB の MPI 帯域幅。":::
-
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
 

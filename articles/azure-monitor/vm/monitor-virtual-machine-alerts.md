@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: b272d4cb11ab948043f6c47b5be12fc0488d070f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b06d7c573514e0fe0471e13df3476bf5b13f20e3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444187"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252689"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-alerts"></a>Azure Monitor を使用して仮想マシンを監視する: アラート
 
@@ -48,7 +48,7 @@ Azure Monitor における最も一般的な種類のアラート ルールは�
 ### <a name="target-resource-and-impacted-resource"></a>ターゲット リソースと影響を受けるリソース
 
 > [!NOTE]
-> 現在パブリック プレビュー中のリソース中心のログ アラート ルールを使用すると、仮想マシンのログ クエリ アラートを簡素化し、メトリック測定クエリによって現在提供されている機能を置き換えることができます。 このコンピューターをルールのターゲットとして使用することで、影響を受けるリソースとして識別しやすくなります。 また、特定のリソース グループまたは説明に含まれるすべてのコンピューターに、1 つのアラート ルールを適用することもできます。 リソース中心のログ クエリ アラートが一般公開されると、このシナリオのガイダンスが更新されます。
+> 現在パブリック プレビュー中のリソース中心のログ アラート ルールを使用すると、仮想マシンのログ クエリ アラートを簡素化し、メトリック測定クエリによって現在提供されている機能を置き換えることができます。 このコンピューターをルールのターゲットとして使用することで、影響を受けるリソースとして識別しやすくなります。 また、特定のリソース グループまたはサブスクリプションに含まれるすべてのコンピューターに、1 つのアラート ルールを適用することもできます。 リソース中心のログ クエリ アラートが一般公開されると、このシナリオのガイダンスが更新されます。
 > 
 Azure Monitor 内の各アラートには、**影響を受けるリソース** プロパティがあります。これは、ルールのターゲットによって定義されます。 メトリック アラート ルールの場合、影響を受けるリソースはそのコンピューターです。これにより、標準のアラート ビューで簡単に識別できます。 ログ クエリ アラートは、コンピューターではなく、ワークスペース リソースに関連付けられます。これは、各コンピューターに対してアラートを作成するメトリック測定アラートを使用するときも同様です。 アラートの詳細を表示して、影響を受けたコンピューターを確認する必要があります。
 
@@ -133,7 +133,7 @@ InsightsMetrics
  InsightsMetrics
  | where Origin == "vm.azm.ms"
  | where _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" and (_ResourceId contains "/providers/Microsoft.Compute/virtualMachines/" or _ResourceId contains "/providers/Microsoft.Compute/virtualMachineScaleSets/") 
- | where Namespace == "Processor" and Name == "UtilizationPercentage"<br>\| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
+ | where Namespace == "Processor" and Name == "UtilizationPercentage" | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
 **リソース グループ内のすべてのコンピューティング リソースの CPU 使用率** 
@@ -142,7 +142,7 @@ InsightsMetrics
 InsightsMetrics
 | where Origin == "vm.azm.ms"
 | where _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/" or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachineScaleSets/"
-| where Namespace == "Processor" and Name == "UtilizationPercentage"<br>\| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId 
+| where Namespace == "Processor" and Name == "UtilizationPercentage" | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId 
 ```
 
 ### <a name="memory-alerts"></a>メモリのアラート
@@ -171,7 +171,7 @@ InsightsMetrics
 InsightsMetrics
 | where Origin == "vm.azm.ms"
 | where Namespace == "Memory" and Name == "AvailableMB"
-| extend TotalMemory = toreal(todynamic(Tags)["vm.azm.ms/memorySizeMB"])<br>\| extend AvailableMemoryPercentage = (toreal(Val) / TotalMemory) * 100.0
+| extend TotalMemory = toreal(todynamic(Tags)["vm.azm.ms/memorySizeMB"]) | extend AvailableMemoryPercentage = (toreal(Val) / TotalMemory) * 100.0
 | summarize AggregatedValue = avg(AvailableMemoryPercentage) by bin(TimeGenerated, 15m), Computer  
 ``` 
 

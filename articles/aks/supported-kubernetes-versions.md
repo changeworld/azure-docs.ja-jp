@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea1112f614e9c08bde1ff0427af706aae4c14896
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3c094a40cd0150fe4134bf1352dfbe418346d63b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131063126"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577709"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -217,7 +217,8 @@ AKS でサポートされていないマイナー バージョンについては
 
 **クラスターのアップグレード中に複数の AKS バージョンをスキップできますか。**
 
-サポートされている AKS クラスターをアップグレードする場合は、Kubernetes マイナー バージョンをスキップすることはできません。 以下の場合のアップグレードを例に挙げます。
+サポートされている AKS クラスターをアップグレードする場合は、Kubernetes マイナー バージョンをスキップすることはできません。 Kubernetes コントロール プレーンの[バージョン スキュー ポリシー](https://kubernetes.io/releases/version-skew-policy/) (バージョン差異に関する方針) では、マイナー バージョンをスキップできません。 以下の場合のアップグレードを例に挙げます。
+
   * *1.12.x* -> *1.13.x*: 許可されます。
   * *1.13.x* -> *1.14.x*: 許可されます。
   * *1.12.x* -> *1.14.x*: 許可されません。
@@ -226,7 +227,7 @@ AKS でサポートされていないマイナー バージョンについては
 1. *1.12.x* から *1.13.x* へアップグレードします。
 1. *1.13.x* から *1.14.x* へアップグレードします。
 
-複数のバージョンは、サポートされていないバージョンからサポートされているバージョンにアップグレードする場合にのみスキップできます。 たとえば、サポートされていない *1.10.x* からサポートされている *1.15.x* へアップグレードできます。
+複数のバージョンのスキップは、サポートされていないバージョンからサポートされている最小バージョンにアップグレードする場合にのみ可能です。 たとえば、*1.15* がサポートされている最小マイナー バージョンの場合、サポートされていない *1.10.x* からサポートされている *1.15.x* へアップグレードできます。
 
 **30 日間のサポート期間中に新しい 1.xx.x クラスターを作成できますか?**
 

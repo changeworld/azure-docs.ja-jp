@@ -9,12 +9,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 10/25/2021
-ms.openlocfilehash: 7738c6748c2f5a90d0e4aacbccf47f32484b5cf0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ca958a3e7a43864caa673cd31736b1e661e7f608
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072220"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465366"
 ---
 # <a name="active-geo-replication"></a>アクティブな地理的レプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -204,6 +204,8 @@ geo フェールオーバー後にアプリケーションが新しいプライ�
 > [!NOTE]
 > セットアップと geo フェールオーバーを含むサブスクリプション間 geo レプリケーション操作は、T-SQL コマンドを使用することでのみサポートされます。
 > 
+> プライマリまたはセカンダリのサーバーに[プライベート エンドポイント](private-endpoint-overview.md)が構成されているとき、[パブリック ネットワーク アクセスが拒否される](connectivity-settings.md#deny-public-network-access)場合、T-SQL で geo セカンダリを追加することはできません。 プライベート エンドポイントが構成されているが、パブリック ネットワーク アクセスが許可される場合、パブリック IP アドレスからプライマリ サーバーに接続するときに geo セカンダリを追加できます。 geo セカンダリを追加すると、パブリック アクセスを拒否できます。
+> 
 > プライマリまたはセカンダリのどちらかの論理サーバー上で Azure SQL に対する [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) 専用認証がアクティブ (有効) になっている場合、別の Azure テナント内の論理サーバー上での geo セカンダリの作成はサポートされていません。
 
 ## <a name="keep-credentials-and-firewall-rules-in-sync"></a><a name="keeping-credentials-and-firewall-rules-in-sync"></a>資格情報とファイアウォール規則の同期を保つ
@@ -250,7 +252,7 @@ RPO に関する遅延を監視するには、プライマリ データベース
 > [!IMPORTANT]
 > これらの T-SQL コマンドは、アクティブ geo レプリケーションにのみ適用され、フェールオーバー グループには適用されません。 また、フェールオーバーグループのみをサポートする SQL Managed Instance には適用されません。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |**ADD SECONDARY ON SERVER** 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |**FAILOVER** または **FORCE_FAILOVER_ALLOW_DATA_LOSS** を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |

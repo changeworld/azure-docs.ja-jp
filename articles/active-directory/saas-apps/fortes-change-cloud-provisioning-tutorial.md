@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: thwimmer
-ms.openlocfilehash: 5a4c3d697926f5b64548ec631761fb7c4e22277f
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 7a31240c6074be759033324a1abb447d98cc2355
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195526"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444043"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Fortes Change Cloud を構成する
 
@@ -140,6 +140,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 * [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 10/28/2021 - **スキーマ検出** が有効になりました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

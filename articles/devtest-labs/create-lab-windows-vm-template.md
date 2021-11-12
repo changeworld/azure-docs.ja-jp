@@ -1,32 +1,29 @@
 ---
-title: Azure DevTest Labs と Azure Resource Manager テンプレートを使用してラボを作成する
+title: Azure Resource Manager テンプレートを使用して Azure DevTest Labs のラボを作成する
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure DevTest Labs のラボを作成します。 ラボの管理者は、ラボを設定し、ラボに VM を作成して、ポリシーを構成します。
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/26/2020
-ms.openlocfilehash: 8a1bf27e9dc778bdf2e1e30ec21424f9f1b7a9cc
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 10/15/2021
+ms.openlocfilehash: 0cdc7db0f29a09040b7d40507cfad840b75f0c91
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006655"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246958"
 ---
-# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>クイック スタート:Azure DevTest Labs の ARM テンプレートを使用してラボを設定する
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Windows Server 2019 Datacenter VM を含むラボを作成します。 
+# <a name="quickstart-use-an-arm-template-to-create-a-lab-in-devtest-labs"></a>クイックスタート: ARM テンプレートを使用して DevTest Labs でラボを作成する
+
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure DevTest Labs のラボを作成します。 ラボには、Windows Server 2019 Datacenter 仮想マシン (VM) が含まれています。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 このクイックスタートでは、以下の操作を実行します。
 
 > [!div class="checklist"]
-> * テンプレートを確認する 
-> * テンプレートのデプロイ
-> * テンプレートを検証する
-> * リソースをクリーンアップする
-
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
-
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.devtestlab%2Fdtl-create-lab-windows-vm%2Fazuredeploy.json)
+> * テンプレートを確認します。
+> * テンプレートをデプロイします。
+> * デプロイを検証する。
+> * リソースをクリーンアップする。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,66 +31,82 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/dtl-create-lab-windows-vm/)からのものです。
+このクイックスタートでは、「[Windows Server VM を使用して Azure DevTest Labs でラボを作成する](https://azure.microsoft.com/resources/templates/dtl-create-lab-windows-vm/)」テンプレートを使用します。 このテンプレートでは、次のリソースを定義します。
+
+- [Microsoft.DevTestLab/labs](/azure/templates/microsoft.devtestlab/labs)
+- [Microsoft.DevTestLab labs/virtualnetworks](/azure/templates/microsoft.devtestlab/labs/virtualnetworks)
+- [Microsoft.DevTestLab labs/virtualmachines](/azure/templates/microsoft.devtestlab/labs/virtualmachines)
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devtestlab/dtl-create-lab-windows-vm/azuredeploy.json":::
 
-このテンプレートに定義されているリソースは次のとおりです。
-
-- [**Microsoft.DevTestLab/labs**](/azure/templates/microsoft.devtestlab/labs)
-- [**Microsoft.DevTestLab labs/virtualnetworks**](/azure/templates/microsoft.devtestlab/labs/virtualnetworks)
-- [**Microsoft.DevTestLab labs/virtualmachines**](/azure/templates/microsoft.devtestlab/labs/virtualmachines)
-
-テンプレートのその他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devtestlab)」をご覧ください。
+ARM テンプレートのその他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devtestlab)」を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
-デプロイメントを自動的に実行するには、次のボタンをクリックします。 
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.devtestlab%2Fdtl-create-lab-windows-vm%2Fazuredeploy.json)
+1. ARM テンプレートを使用するには、次の **[Azure へのデプロイ]** ボタンを選択します。 テンプレートによって、Azure portal でラボ作成画面が開かれます。
 
-1. 後でクリーンアップしやすいように **新しいリソース グループ** を作成します。
-1. リソース グループの **場所** を選びます。 
-1. **ラボの名前** を入力します。 
-1. **VM の名前** を入力します。 
-1. VM にアクセスできる **ユーザーの名前** を入力します。 
-1. **[パスワード]** に、そのユーザーのパスワードを入力します。 
-1. **[上記の使用条件に同意する]** を選択します。 
-1. **[購入]** を選択します。
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.devtestlab%2Fdtl-create-lab-windows-vm%2Fazuredeploy.json)
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="[テンプレートのデプロイ] ページ":::
+1. 「**Windows Server VM を使用して Azure DevTest Labs でラボを作成する**」テンプレートで、次の項目を入力します。
+
+   - **リソース グループ**: 後でクリーンアップしやすいように新しいリソース グループを作成します。
+   - **リージョン**: リソース グループの場所を選択します。
+   - **ラボ名**: 新しいラボ インスタンスの名前を入力します。
+   - **VM 名**: 作成する VM の名前を入力します。 
+   - **ユーザー名**: VM にアクセスできるユーザーの名前を入力します。 
+   - **パスワード**: ユーザーのパスワードを入力します。
+
+1. **[確認および作成]** を選択し、検証に成功したら **[作成]** を選択します。
+
+   :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="ラボの作成ページのスクリーンショット。":::
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
-1. 上部にある **[通知]** を選択して、デプロイの状態を確認し、 **[デプロイは進行中です]** リンクをクリックします。
+1. デプロイ時に、画面の上部にある **[通知]** を選択し、 **[デプロイは進行中です]** を選択して、デプロイの **[概要]** ページを表示することができます。 デプロイ (特に VM の作成) には時間がかかります。
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="デプロイの通知":::
-2. **デプロイの概要** ページで、デプロイが完了するまで待ちます。 この工程 (特に VM の作成) は、完了までにしばらく時間がかかります。 次に、 **[リソース グループに移動]** または **リソース グループの名前** を選択します (下図参照)。 
+   :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="[デプロイは進行中です] を示すスクリーンショット。":::
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="リソース グループに移動する":::
-3. **リソース グループ** ページで、リソース グループ内のリソースを一覧表示します。 リソースに `DevTest Lab` タイプのラボが表示されていることを確認します。 仮想ネットワークや仮想マシンなど、リソース グループ内の依存リソースも表示されます。 
+1. デプロイが完了したら、 **[リソース グループに移動]** を選択して、自分のラボの [リソース グループ] ページに移動します。
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="リソース グループのホーム ページ":::
-4. リソースの一覧から目的のラボを選択して、そのラボのホーム ページを表示します。 **[自分の仮想マシン]** の一覧に Windows Server 2019 Datacenter VM が表示されていることを確認します。 次の画像では、 **[基本]** セクションが最小化されています。 
+   :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="デプロイの完了と [リソース グループに移動] ボタンを示すスクリーンショット。":::
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="ラボのホーム ページ":::
+1. **[リソース グループ]** ページには、ラボとその依存リソース (仮想ネットワークや VM など) を含む、リソース グループ内のリソースが一覧表示されます。 自分のラボの **[概要]** ページに進むには、自分の **DevTest Lab** リソースを選択します。
 
-    > [!IMPORTANT] 
-    > このページ開いたままにしておいてください。Azure でラボと VM を実行するコストが課金されないよう、次のセクションの手順に従ってリソースをクリーンアップします。 次のチュートリアルに進んでラボの VM へのアクセス テストを行う場合は、そのチュートリアルを終えてからリソースをクリーンアップしてください。 
+1. 自分のラボの **[概要]** ページで、 **[要求可能な仮想マシン]** を選択します。
+
+   :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="[要求可能な仮想マシン] リンクが表示された、ラボの [概要] ページを示すスクリーンショット。":::
+
+1. **[要求可能な仮想マシン]** ページで、VM の横にある **[その他のオプション]** の省略記号を選択し、 **[マシンの要求]** を選択します。
+
+   :::image type="content" source="./media/create-lab-windows-vm-template/claim-vm.png" alt-text="[マシンの要求] オプションが表示された、[要求可能な仮想マシン] ページを示すスクリーンショット。":::
+
+1. ラボの **[概要]** ページで、 **[自分の仮想マシン]** の下に **[起動中]** 状態で VM が表示されていることを確認します。 状態が **[実行中]** に変わるのを待ちます。
+
+   :::image type="content" source="./media/create-lab-windows-vm-template/lab-vm.png" alt-text="VM 一覧付きのラボの [概要] ページを示すスクリーンショット。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-1. まず、リソース グループを削除できるようにラボを削除します。 ラボが含まれているとリソース グループを削除できません。 ラボを削除するには、ツール バーの **[削除]** を選択します。 
+クイックスタートのリソースを削除して、Azure でラボと VM を実行するための課金が生じないようにします。 ラボ内の VM にアクセスするために次のチュートリアルを実行する場合は、そのチュートリアルを完了した後にリソースをクリーンアップできます。
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="ラボの削除ボタン":::
- 2. 確認ページで **ラボ名** を入力し、 **[削除]** を選択します。 
- 3. ラボが削除されるまで待ちます。 **ベル** のアイコンを選択すると、削除操作からの通知が表示されます。 このプロセスには、ある程度時間がかかります。 ラボが削除されたのを確認して、階層リンク メニューの **[リソース グループ]** を選択します。 
+ラボが含まれているリソース グループを削除することはできません。 まず、リソース グループを削除できるようにラボを削除します。
+
+1. ラボのホーム ページで、ツール バーの **[削除]** を選択します。
+
+   :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="ラボのホーム ページの [削除] ボタンを示すスクリーンショット。":::
+
+1. 確認ページでラボ名を入力し、 **[削除]** を選択します。
+
+1. 削除中、画面の上部にある **[通知]** を選択すると進行状況を表示できます。 ラボの削除にはしばらく時間がかかります。
+
+1. ラボが削除されたら、ラボのホーム ページで **[リソース グループ]** を選択します。 ラボのホーム ページが使用できなくなった場合は、Azure 検索ボックスで **リソース グループ** を検索し、自分のラボが含まれているリソース グループを選択します。
+
+   :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="通知の削除の確認を示すスクリーンショット。":::
+
+1. **[リソース グループ]** ページで、ツール バーの **[リソース グループの削除]** を選択します。 確認ページでリソース グループ名を入力し、 **[削除]** を選択します。 通知をチェックして、リソース グループが削除されたことを確認できます。
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="VM が削除されたことを通知で確認する":::
- 1. **[リソース グループ]** ページで、ツール バーの **[リソース グループの削除]** を選択します。 確認ページで **リソース グループ名** を入力し、 **[削除]** を選択します。 通知をチェックして、リソース グループが削除されたことを確認します。
- 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="[リソース グループの削除] ボタン":::
+   :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="[リソース グループの削除] ボタンが表示されているスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
-このクイックスタートでは、VM を備えたラボを作成しました。 ラボにアクセスする方法を学習するには、次のチュートリアルに進んでください。
+このクイックスタートでは、VM を備えたラボを作成しました。 ラボと VM にアクセスする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:ラボにアクセスする](tutorial-use-custom-lab.md)
+> [チュートリアル: ラボにアクセスする](tutorial-use-custom-lab.md)

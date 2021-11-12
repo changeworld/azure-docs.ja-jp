@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/13/2021
+ms.date: 10/20/2021
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee31a8df6d94093565dbc6bb66c1774f0c34c249
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3b6763ba1b465a0689ab076da69b0efc40d6bd9f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129987026"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262624"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントを削除する
 
@@ -27,8 +27,9 @@ Azure AD 組織 (テナント) を削除すると、その組織に含まれる�
 
 ## <a name="prepare-the-organization"></a>組織を準備する
 
-いくつかのチェックに合格するまで、Azure AD の組織を削除することはできません。 これらのチェックにより、Azure AD 組織の削除がユーザーのアクセス (Microsoft 365 へのサインインや Azure のリソースへのアクセスなど) に悪影響を及ぼすリスクが軽減されます。 たとえば、サブスクリプションに関連付けられた組織が誤って削除された場合、ユーザーはそのサブスクリプションの Azure リソースにアクセスできなくなります。 次の条件がチェックされます。
+いくつかのチェックに合格するまで、Azure AD の組織を削除することはできません。 これらのチェックにより、Azure AD 組織の削除がユーザーのアクセス (Microsoft 365 へのサインインや Azure のリソースへのアクセスなど) に悪影響を及ぼすリスクが軽減されます。 たとえば、サブスクリプションに関連付けられた組織が誤って削除された場合、ユーザーはそのサブスクリプションの Azure リソースにアクセスできなくなります。 次の条件を確認する必要があります。
 
+* すべての未処理の請求書と、期限または期限切れの請求額を支払う必要があります。
 * 組織を削除する全体管理者 1 人を除き、ユーザーが Azure AD テナント内に存在しないこと。 組織を削除するには、他のすべてのユーザーを削除しておく必要があります。 ユーザーがオンプレミスから同期されている場合は、まず同期を無効にする必要があります。また、Azure portal または Azure PowerShell のコマンドレットを使用して、クラウド組織内のユーザーを削除する必要があります。
 * 組織内にアプリケーションが存在しないこと。 組織を削除できるようにするには、すべてのアプリケーションを削除しておく必要があります。
 * その組織にリンクされる多要素認証プロバイダーが存在しない。
