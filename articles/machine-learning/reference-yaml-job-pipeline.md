@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 73d5c79ac3e425039820101102ac91b3e3362d8e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 93c8f11fbfab8386e1083985399d8138e2b2b7d6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565658"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057083"
 ---
 # <a name="cli-v2-pipeline-job-yaml-schema"></a>CLI (v2) パイプライン ジョブの YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131565658"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | const | **必須。** ジョブの種類。 | `pipeline` | |
@@ -45,7 +45,7 @@ ms.locfileid: "131565658"
 
 ### <a name="attributes-of-the-settings-key"></a>`settings` キーの属性
 
-| キー | 種類 | 説明 |
+| キー | Type | 説明 |
 | --- | ---- | ----------- |
 | `datastore` | string | パイプライン ジョブの既定のデータストアとして使用するデータストアの名前。 この値は、`azureml:<datastore-name>` 構文を使用したワークスペース内の既存のコンピューティングへの参照である必要があります。 親パイプライン ジョブまたは子ステップ ジョブの `outputs` プロパティで定義されている出力は、このデータストアに格納されます。 省略した場合、出力はワークスペース BLOB データストアに格納されます。 |
 
@@ -53,7 +53,7 @@ ms.locfileid: "131565658"
 
 #### <a name="jobinputuri"></a>JobInputUri
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `file` | string | 入力として使用する 1 つのファイルへの URI。 サポートされる URI の種類は `azureml`、`https`、`wasbs`、`abfss`、`adl` です。 `azureml` URI 形式の使用方法の詳細については、[コア yaml 構文](reference-yaml-core-syntax.md)に関する記事を参照してください。 **`file` または `folder` のいずれかが必須です。**  | | |
 | `folder` | string | 入力として使用するフォルダーの URI。 サポートされる URI の種類は `azureml`、`wasbs`、`abfss`、`adl` です。 `azureml` URI 形式の使用方法の詳細については、[コア yaml 構文](reference-yaml-core-syntax.md)に関する記事を参照してください。 **`file` または `folder` のいずれかが必須です。**   | | |
@@ -61,7 +61,7 @@ ms.locfileid: "131565658"
 
 #### <a name="jobinputdataset"></a>JobInputDataset
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `dataset` | 文字列またはオブジェクト | **必須。** 入力として使用するデータセット。 この値は、ワークスペース内の既存のバージョン管理されたデータセットへの参照またはインライン データセットの仕様のいずれかです。 <br><br> 既存のデータセットを参照するには、`azureml:<dataset-name>:<dataset-version>` 構文を使用します。 <br><br> データセットをインラインで定義するには、[データセット スキーマ](reference-yaml-dataset.md#yaml-syntax)に従います。 `name` および `version` のプロパティはインライン データセットではサポートされていないので、除外します。 | | |
 | `mode` | string | データセットをコンピューティング先に配信する方法のモード。 読み取り専用マウントの場合、データセットはマウント パスとして使用されます。 フォルダーはフォルダーとしてマウントされ、ファイルは親フォルダーとしてマウントされます。 ダウンロード モードの場合、データセットはダウンロードされたパスとして使用されます。 | `ro_mount`, `download` | `ro_mount` |
@@ -76,23 +76,23 @@ ms.locfileid: "131565658"
 
 ## <a name="yaml-hello-pipeline"></a>YAML: hello パイプライン
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline.yml":::
 
 ## <a name="yaml-inputoutput-dependency"></a>YAML: 入力/出力の依存関係
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-io.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-io.yml":::
 
 ## <a name="yaml-common-pipeline-job-settings"></a>YAML: 一般的なパイプライン ジョブ設定
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-settings.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-settings.yml":::
 
 ## <a name="yaml-top-level-input-and-overriding-common-pipeline-job-settings"></a>YAML: 上位の入力と一般的なパイプライン ジョブ設定のオーバーライド
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-abc.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-abc.yml":::
 
 ## <a name="yaml-model-training-pipeline"></a>YAML: モデル トレーニング パイプライン
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines/cifar-10/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines/cifar-10/job.yml":::
 
 ## <a name="next-steps"></a>次の手順
 
