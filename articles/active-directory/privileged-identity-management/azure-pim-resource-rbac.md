@@ -14,12 +14,12 @@ ms.date: 04/20/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36f78327459c8bf6efc3a1cad9d4c5b306e4ba1f
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 45e8fb5d37d5fcfe5054a1eb4c677c2afe71b310
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668316"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451447"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 
@@ -70,7 +70,7 @@ ms.locfileid: "129668316"
 
     ![Excel に表示された CSV ファイルでエクスポートされたロールの割り当て](media/azure-pim-resource-rbac/export-csv.png)
 
-## <a name="view-resource-audit-history&quot;></a>リソースの監査履歴を表示する
+## <a name="view-resource-audit-history"></a>リソースの監査履歴を表示する
 
 リソースの監査では、リソースのすべてのロール アクティビティのビューが提供されます。
 
@@ -84,7 +84,7 @@ ms.locfileid: "129668316"
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    [![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png &quot;フィルターを使用したリソースの監査の一覧")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    [![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png "フィルターを使用したリソースの監査の一覧")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. **[監査の種類]** で **[アクティブ化 (割り当て済み + アクティブ化済み)]** を選択します。
 
@@ -94,7 +94,7 @@ ms.locfileid: "129668316"
 
     ![特定のアクションに対するユーザーのアクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-## <a name="view-my-audit&quot;></a>自分の監査を表示する
+## <a name="view-my-audit"></a>自分の監査を表示する
 
 自分の監査を使用すると、個人のロール アクティビティを表示できます。
 
@@ -108,7 +108,7 @@ ms.locfileid: "129668316"
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    [![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png &quot;現在のユーザーに対する監査の一覧")](media/azure-pim-resource-rbac/my-audit-time.png)
+    [![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png "現在のユーザーに対する監査の一覧")](media/azure-pim-resource-rbac/my-audit-time.png)
 
 > [!NOTE]
 > 監査履歴にアクセスするには、全体管理者ロールまたは特権ロールを持った管理者ロールが必要です。

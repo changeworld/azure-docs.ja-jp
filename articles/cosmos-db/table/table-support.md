@@ -4,16 +4,16 @@ description: 同じテーブル データ モデルと操作を共有して Azur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: how-to
-ms.date: 08/25/2021
+ms.date: 11/03/2021
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: f2d337f7154e2ae9412930aab9720a47bde4768e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0039773cc1ddf50d3c34466d3480ecbe753cf0e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762039"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555592"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Azure Cosmos DB Table API と Azure Table Storage を使用した開発
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -31,25 +31,25 @@ Azure Cosmos DB Table API と Azure Table Storage は同じテーブル デー�
 
 次の SDK パッケージが、Azure Cosmos Table API と Azure Table Storage の両方で機能します。
 
-* **.NET** - NuGet で入手できる[Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) を使用します。
+* **.NET** - NuGet で入手できる [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) を使用します。
 
-* **Python** - PyPi から入手できる[azure-data-tables](https://pypi.org/project/azure-data-tables/) を使用します。
+* **Python** - PyPi から入手できる [azure-data-tables](https://pypi.org/project/azure-data-tables/) を使用します。
 
 * **JavaScript/TypeScript** - npm.js で入手できる [@azure/data-tables](https://www.npmjs.com/package/@azure/data-tables) パッケージを使用します。  
 
-* **Java** - Maven で入手できる[azure-data-tables](https://mvnrepository.com/artifact/com.azure/azure-data-tables/12.0.0) パッケージを使用します。
+* **Java** - Maven で入手できる [azure-data-tables](https://mvnrepository.com/artifact/com.azure/azure-data-tables/12.0.0) パッケージを使用します。
 
 ### <a name="prior-releases"></a>以前のリリース
 
 次の SDK パッケージは、Azure Cosmos DB Table API でのみ動作します。
 
-* **.NET** - NuGet で入手できる [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。  このライブラリは、Cosmos DB Table API でのみ動作します。
+* **.NET** -  NuGet で入手できる [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/)。  Azure Tables クライアント ライブラリは、コードを変更しない Azure Table Storage または Azure Cosmos DB table service エンドポイントをシームレスにターゲットにできます。
 
 * **Python** - PyPi から入手できる [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/)。 この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
 
 * **JavaScript/TypeScript** - npm.js で入手できる [azure-storage](https://www.npmjs.com/package/azure-storage) パッケージ。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 
-* **Java** - Maven の[Java 用 Microsoft Azure Storage クライアント SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
+* **Java** - Maven の [Java 用 Microsoft Azure Storage クライアント SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)。 この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 
 * **C++**   - [C++ 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/)。 このライブラリでは、Azure Storage 用のアプリケーションを作成できます。
 

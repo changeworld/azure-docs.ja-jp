@@ -1,7 +1,7 @@
 ---
-title: ユーザーと管理者のアクセス許可を管理する
-description: Azure AD でアプリケーションのアクセス許可を確認および管理する方法について説明します。 たとえば、アプリケーションに付与されているすべてのアクセス許可を取り消します。
+title: アプリケーションに付与されるアクセス許可の確認
 titleSuffix: Azure AD
+description: Azure Active Directory でアプリケーションのアクセス許可を確認および管理する方法について説明します。
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -9,126 +9,48 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2021
+ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f58a7e03450d8aed26bfa164803529af12cba31
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 038955a1c7b4a15b2b0ae630c95c2833f32a3eab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617514"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471176"
 ---
-# <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
+# <a name="review-permissions-granted-to-applications-in-azure-active-directory"></a>Azure Active Directory でアプリケーションに付与されたアクセス許可を確認する
 
-アプリケーションのアクセス許可を確認および管理する方法について説明します。 この記事では、シナリオに従って、アプリケーションをセキュリティで保護するために実行できるさまざまなアクションについて説明します。 これらのアクションは、ユーザーまたは管理者の同意によって Azure Active Directory (Azure AD) テナントに追加されたすべてのアプリケーションに適用されます。
+この記事では、Azure Active Directory (Azure AD) テナントのアプリケーションに付与されているアクセス許可を確認する方法について説明します。 悪意のあるアプリケーションが検出された場合、またはアプリケーションに必要以上のアクセス許可が付与されている場合は、アクセス許可の確認が必要になることがあります。
 
-アプリケーションに同意する行為の詳細については、「[Azure Active Directory 同意フレームワーク](../develop/consent-framework.md)」を参照してください。
+この記事のこれらの手順は、ユーザーまたは管理者の同意によって Azure Active Directory (Azure AD) テナントに追加されたすべてのアプリケーションに適用されます。 アプリケーションに同意する行為の詳細については、「[Azure Active Directory 同意フレームワーク](../develop/consent-framework.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-次のアクションを実行するには、グローバル管理者、アプリケーション管理者、またはクラウド アプリケーション管理者としてサインインする必要があります。
+アプリケーションに付与されたアクセス許可を確認するには、次のものが必要です。
 
-- Azure AD PowerShell を設定します。 [Azure AD PowerShell](/powershell/azure/) に関するページを参照してください。
-
-アプリケーションへのアクセスを制限するには、ユーザーの割り当てが必要で、その後、アプリケーションにユーザーまたはグループを割り当てる必要があります。  詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 次のいずれかのロール: グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者。
 
 アクションを実行するためのコンテキスト PowerShell スクリプトを取得するには、Azure AD ポータルにアクセスします。
 
-1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-3. アクセスを制限するアプリケーションを選択します。
-4. **[アクセス許可]** を選択します。 コマンド バーで **[アクセス許可の確認]** を選択します。
+## <a name="review-application-permissions"></a>アプリケーションの許可をレビューする
 
+アプリケーションのアクセス許可を確認するには:
+
+1. 前提条件セクションに記載されているいずれかのロールを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
+1. アクセスを制限するアプリケーションを選択します。
+1. **[アクセス許可]** を選択します。 コマンド バーで **[アクセス許可の確認]** を選択します。
 ![[アクセス許可の確認] ウィンドウのスクリーンショット。](./media/manage-application-permissions/review-permissions.png)
+1. 「**このアプリケーションのアクセス許可を確認する理由を教えてください。** 」という質問の後に一覧表示されたオプションのいずれかを選択して、アプリケーションのアクセス許可を確認する理由を指定します。
 
-## <a name="control-access-to-an-application"></a>アプリケーションへのアクセスを制御する
+各オプションでは、アプリケーションへのユーザー アクセスを制御し、アプリケーションに付与されたアクセス許可を確認できる PowerShell スクリプトが生成されます。 アプリケーションへのユーザー アクセスを制御する方法については、「[アプリケーションへのユーザー アクセスの削除方法](methods-for-removing-user-access.md)」を参照してください。
 
-**[ユーザー割り当て]** の設定を有効にすることによってアプリケーションへのアクセスを制限することをお勧めします。
+## <a name="revoke-permissions-using-powershell-commands"></a>PowerShell コマンドを使用してアクセス許可を取り消す
 
-1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-3. アクセスを制限するアプリケーションを選択します。
-4. **[プロパティ]** を選択し、 **[User requirement required] (ユーザー要件が必須)** を **[はい]** に設定します。
-5. **[ユーザーとグループ]** を選択し、アプリケーションに割り当てられている不要なユーザーを削除します。
-6. アプリケーションにユーザーまたはグループを割り当てます。
-
-必要に応じて、PowerShell を使用して、アプリケーションに割り当てられているすべてのユーザーを削除できます。
-
-## <a name="revoke-all-permissions-for-an-application"></a>アプリケーションのすべてのアクセス許可を取り消す
-
-PowerShell スクリプトを使用すると、このアプリケーションに付与されているすべてのアクセス許可が取り消されます。
-
-> [!NOTE]
-> 現在の付与されているアクセス許可を取り消しても、ユーザーのアプリケーションへの再同意は停止されません。 ユーザーの同意をブロックしたい場合は、[ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)に関するページを参照してください。
-
-必要に応じて、アプリケーションを無効にして、ユーザーがアプリにアクセスしたり、アプリケーションがデータにアクセスしたりできないようにすることができます。
-
-1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-3. アクセスを制限するアプリケーションを選択します。
-4. **[プロパティ]** を選択し、 **[ユーザーのサインインが有効になっていますか?]** を **[いいえ]** に設定します。
-
-## <a name="investigate-a-suspicious-application"></a>疑わしいアプリケーションを調査する
-
-**[ユーザー割り当て]** の設定を有効にすることによってアプリケーションへのアクセスを制限することをお勧めします。 その後、ユーザーと管理者がアプリケーションに付与したアクセス許可を確認します。
-
-1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-3. アクセスを制限するアプリケーションを選択します。
-4. **[プロパティ]** を選択し、 **[User requirement required] (ユーザー要件が必須)** を **[はい]** に設定します。
-5. **[アクセス許可]** を選択し、管理者とユーザーによって同意されたアクセス許可を確認します。
-
-必要に応じて、PowerShell を使用して、次のことを実行できます。
-
-- 割り当てられているすべてのユーザーを削除して、アプリケーションにサインインできないようにします。
-- アプリケーションにアクセスできるユーザーの更新トークンを無効にします。
-- アプリケーションのすべてのアクセス許可を取り消します。
-
-または、アプリケーションを無効にして、ユーザーのアクセスをブロックし、アプリケーションのデータへのアクセスを停止します。
-
-## <a name="disable-a-malicious-application"></a>悪意のあるアプリケーションを無効にする
-
-アプリケーションを無効にして、ユーザーのアクセスをブロックし、アプリケーションがデータにアクセスできないようにすることをお勧めします。 代わりにアプリケーションを削除した場合、ユーザーはアプリケーションに再同意し、データへのアクセス権を付与できるようになります。
-
-1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-3. アクセスを制限するアプリケーションを選択します。
-4. **[プロパティ]** を選択し、オブジェクト ID をコピーします。
-
-### <a name="powershell-commands"></a>PowerShell コマンド
-
-サービス プリンシパル オブジェクト ID を取得します。
-
-   ```powershell
-   $app_name = "<Your App's display name>"
-   $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-   $sp.ObjectId
-   ```
-
-アプリケーションに割り当てられているすべてのユーザーを削除します。
-
-```powershell
-Connect-AzureAD
-
-# Get Service Principal using objectId
-$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
-
-# Get Azure AD App role assignments using objectId of the Service Principal
-$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
-
-# Remove all users and groups assigned to the application
-$assignments | ForEach-Object {
-    if ($_.PrincipalType -eq "User") {
-        Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-    } elseif ($_.PrincipalType -eq "Group") {
-        Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-    }
-}
-```
-
-アプリケーションに付与されているアクセス許可を取り消します。
+次の PowerShell スクリプトを使用すると、このアプリケーションに付与されているすべてのアクセス許可が取り消されます。
 
 ```powershell
 Connect-AzureAD
@@ -153,7 +75,10 @@ $spApplicationPermissions | ForEach-Object {
 }
 ```
 
-更新トークンを無効にします。
+> [!NOTE]
+> 現在の付与されているアクセス許可を取り消しても、ユーザーのアプリケーションへの再同意は停止されません。 ユーザーの同意をブロックしたい場合は、[ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)に関するページを参照してください。
+
+## <a name="invalidate-the-refresh-tokens"></a>更新トークンを無効にする
 
 ```powershell
 Connect-AzureAD
@@ -170,8 +95,6 @@ $assignments | ForEach-Object {
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [アプリケーションの同意の管理と同意要求の評価](manage-consent-requests.md)
-- [ユーザーの同意の構成](configure-user-consent.md)
 - [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)

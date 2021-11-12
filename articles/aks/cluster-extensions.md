@@ -6,12 +6,12 @@ ms.date: 10/13/2021
 ms.topic: article
 author: nickomang
 ms.author: nickoman
-ms.openlocfilehash: d9ef2efbd4b77f70bb43830e59b7dee0ae8ad26a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 80d6eb34e1b1e0bbce6a8a1f1d2de58dbec51b4c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092195"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447430"
 ---
 # <a name="deploy-and-manage-cluster-extensions-for-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) のクラスター拡張機能のデプロイと管理 (プレビュー)
 
@@ -121,12 +121,10 @@ az extension update --name k8s-extension
 >[!NOTE]
 > クラスター拡張機能は、さまざまな拡張機能を AKS クラスターにインストールして管理するプラットフォームを提供します。 これらの拡張機能の使用中に問題が発生した場合は、それぞれのサービスでサポート チケットを開きます。
 
-<!--
-| Extension | Description |
+| 拡張機能 | 説明 |
 | --------- | ----------- |
--->
-
-現時点では、使用できる拡張機能はありません。
+| [Dapr][dapr-overview] | Dapr は移植可能なイベント駆動型ランタイムであり、開発者はクラウドとエッジで実行される回復力のあるステートレスでステートフルなアプリケーションを簡単に構築できます。 |
+| [Azure ML][azure-ml-overview] | Azure Kubernetes Service クラスターを使用して、機械学習モデルを Azure Machine Learning でトレーニング、推論、管理します。 |
 
 ## <a name="supported-regions-and-kubernetes-versions"></a>サポートされているリージョンと Kubernetes のバージョン
 
@@ -227,23 +225,14 @@ az k8s-extension update --name azureml --extension-type Microsoft.AzureML.Kubern
 
 ### <a name="delete-extension-instance"></a>拡張機能インスタンスを削除する
 
+>[!NOTE]
+> この拡張機能を表す Azure リソースはただちに削除されます。 Kubernetes クラスターで実行されているエージェントがネットワークに接続していて、目的の状態を取得するために Azure サービスに再びアクセスできる場合にのみ、この拡張機能に関連するクラスターの Helm リリースが削除されます。
+
 `k8s-extension delete` を使用し、必須パラメーターの値を渡すことで、クラスター上の拡張機能インスタンスを削除します。
 
 ```azurecli
 az k8s-extension delete --name azureml --cluster-name <clusterName> --resource-group <resourceGroupName> --cluster-type managedClusters
 ```
-
->[!NOTE]
-> この拡張機能を表す Azure リソースはただちに削除されます。 Kubernetes クラスターで実行されているエージェントがネットワークに接続していて、目的の状態を取得するために Azure サービスに再びアクセスできる場合にのみ、この拡張機能に関連するクラスターの Helm リリースが削除されます。
-
-<!-- when extensions are available, add this section
-## Next steps
-
-Learn more about the cluster extensions currently available for AKS:
-
-> [!div class="nextstepaction"]
-
--->
 
 <!-- LINKS -->
 <!-- INTERNAL -->
@@ -251,8 +240,8 @@ Learn more about the cluster extensions currently available for AKS:
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
-[azure-ml-overview]:  <!-- need link -->
-[dapr-overview]: <!-- Not yet live -->
+[azure-ml-overview]: ../machine-learning/how-to-attach-arc-kubernetes.md
+[dapr-overview]: ./dapr.md
 [k8s-extension-reference]: /cli/azure/k8s-extension
 
 <!-- EXTERNAL -->

@@ -1,6 +1,6 @@
 ---
 title: イメージ バージョンをマネージド ディスクにエクスポートする
-description: 共有イメージ ギャラリーからマネージド ディスクにイメージ バージョンをエクスポートすることができます。
+description: Azure Compute Gallery からマネージド ディスクにイメージ バージョンをエクスポートすることができます。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -10,23 +10,23 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fd6a1cf2cae56bf2d10fe4075caed019e2e72b7e
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 7984cd086864d069363fa65ab7dbaecf4b62165f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452251"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448863"
 ---
 # <a name="export-an-image-version-to-a-managed-disk"></a>イメージ バージョンをマネージド ディスクにエクスポートする
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
-イメージ バージョンからの OS または単一のデータ ディスクを、Shared Image Gallery に格納されているイメージ バージョンからのマネージド ディスクとしてエクスポートすることができます。
+イメージ バージョンからの OS または単一のデータ ディスクを、Azure Compute Gallery (旧称 Shared Image Gallery) に格納されているイメージ バージョンからのマネージド ディスクとしてエクスポートすることができます。
 
 
 ## <a name="cli"></a>CLI
 
-[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、ギャラリーにあるイメージ バージョンを一覧表示します。 この例では、*myImageDefinition* イメージ定義の一部であるイメージ バージョンを、*myGallery* イメージ ギャラリーですべて検索しています。
+[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、ギャラリーにあるイメージ バージョンを一覧表示します。 この例では、*myImageDefinition* イメージ定義の一部であるイメージ バージョンを、*myGallery* ギャラリーですべて検索しています。
 
 ```azurecli-interactive
 az sig image-version list \

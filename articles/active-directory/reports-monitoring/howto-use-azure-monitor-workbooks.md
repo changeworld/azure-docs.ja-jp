@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9cde3940f09d3612ebe6411804fe4780e5bcfc18
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3cbbfd54861cc926fe74b748e6b9a82b4457c9f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469200"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444214"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -31,6 +31,8 @@ ms.locfileid: "110469200"
 - ユーザーのサインイン エクスペリエンスに与える[条件付きアクセス ポリシー](../conditional-access/overview.md)の影響を理解したい。
 
 - サインイン エラーのトラブルシューティングを行って、組織のサインインの正常性をより理解し、問題をすばやく解決したい。
+
+- テナント内の危険なユーザーとリスク検出の傾向を理解していますか?
 
 - レガシ認証を使用して環境にサインインしているユーザーを知りたい。 [レガシ認証をブロック](../conditional-access/block-legacy-authentication.md)することで、テナントの保護を向上させることができます。
 
@@ -292,9 +294,25 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
     ![ユーザー アクションを待機しているサインインの概要](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
+## <a name="identity-protection-risk-analysis"></a>Identity Protection リスク分析
 
+**[使用法]** セクションの **Identity Protection リスク分析** ブックを使用して、次の情報を確認します。
 
+- リスクの高いユーザーの分布と、レベルと種類別のリスク検出
+- リスクをより良く修復する機会
+- 世界のリスクが検出されている場所
 
+危険な検出の傾向は、次の方法でフィルター処理できます。
+- 検出のタイミングの種類
+- リスク レベル
+
+リアルタイムのリスク検出は、認証の時点で検出できるリスク検出です。 これらの検出は、条件付きアクセスを使用して多要素認証を要求する危険なサインイン ポリシーによって困難になる可能性があります。 
+
+危険なユーザーの傾向は、次の方法でフィルター処理できます。
+- リスクの詳細
+- リスク レベル
+
+"アクションなし" が実行されている危険なユーザーが多い場合は、ユーザーのリスクが高いときに、セキュリティで保護されたパスワード変更を要求する条件付きアクセス ポリシーを有効にしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

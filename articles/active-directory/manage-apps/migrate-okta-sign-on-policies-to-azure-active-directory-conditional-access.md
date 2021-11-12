@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 840d2cfd64f6384c8c503e472f7557ababd0d08e
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 5cca89b361152d3a4a5635f008f70f145d5d68a0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389193"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459438"
 ---
 # <a name="tutorial-migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access"></a>チュートリアル: Okta サインオン ポリシーを Azure Active Directory の条件付きアクセスに移行する
 
@@ -26,9 +26,9 @@ ms.locfileid: "129389193"
 
 ## <a name="prerequisites"></a>前提条件
 
-Okta サインオンから Azure AD の条件付きアクセスに切り替える場合は、ライセンス要件を理解しておくことが重要です。 Azure AD の条件付きアクセスで Azure AD Multi-Factor Authentication を登録するには、ユーザーに Azure AD Premium P1 ライセンスが割り当てられている必要があります。
+Okta サインオンから条件付きアクセスに切り替える場合は、ライセンス要件を理解しておくことが重要です。 条件付きアクセスで Azure AD Multi-Factor Authentication を登録するには、ユーザーに Azure AD Premium P1 ライセンスが割り当てられている必要があります。
 
-Hybrid Azure AD Join の手順を実行する前に、まずはサービス接続ポイント (SCP) レコードを構成するため、オンプレミス フォレストのエンタープライズ管理者の資格情報が必要になります。
+Hybrid Azure AD 結合の手順を実行する前に、まずはサービス接続ポイント (SCP) レコードを構成するため、オンプレミス フォレストのエンタープライズ管理者の資格情報が必要になります。
 
 ## <a name="catalog-current-okta-sign-on-policies"></a>現在の Okta サインオン ポリシーをカタログ化する
 
@@ -57,43 +57,42 @@ Hybrid Azure AD Join の手順を実行する前に、まずはサービス接�
 
 ## <a name="configure-condition-prerequisites"></a>条件の前提条件を構成する
 
-Azure AD の条件付きアクセス ポリシーは、ほとんどのシナリオで追加構成なしに Okta の条件に合わせて構成することができます。
+条件付きアクセス ポリシーは、ほとんどのシナリオで追加構成なしに Okta の条件に合わせて構成することができます。
 
 いくつかのシナリオでは、条件付きアクセス ポリシーを構成する前に追加の設定が必要な場合があります。 この記事の執筆時点では、以下の 2 つの既知のシナリオがあります。
 
 - **Azure AD 内の名前付きの場所への Okta ネットワークの場所**: 「[条件付きアクセス ポリシーでの場所の条件の使用](../conditional-access/location-condition.md#named-locations)」の手順に従って、Azure AD で名前付きの場所を構成します。
 - **Okta のデバイスの信頼からデバイスベースの CA へ**: 条件付きアクセスは、ユーザーのデバイスを評価する際に 2 つのオプションを提供します。
 
-  - [Hybrid Azure AD Join を使用します](#hybrid-azure-ad-join-configuration)。これは Azure AD Connect サーバー内で有効な機能で、Windows 10、Windows Server 2016、Windows Server 2019 などの Windows の現行デバイスを Azure AD に同期します。
-
+  - [Hybrid Azure AD 結合を使用します](#hybrid-azure-ad-join-configuration)。これは Azure AD Connect サーバー内で有効な機能で、Windows 10、Windows Server 2016、Windows Server 2019 などの Windows の現行デバイスを Azure AD に同期します。
   - [デバイスをエンドポイント マネージャーに登録](#configure-device-compliance)し、コンプライアンス ポリシーを割り当てます。
 
 ### <a name="hybrid-azure-ad-join-configuration"></a>Hybrid Azure AD 参加の構成
 
-Azure AD Connect サーバーで Hybrid Azure AD Join を有効にするには、構成ウィザードを実行します。 デバイスを自動的に登録するには、構成後の手順を実行する必要があります。
+Azure AD Connect サーバーで Hybrid Azure AD 結合を有効にするには、構成ウィザードを実行します。 デバイスを自動的に登録するには、構成後の手順を実行する必要があります。
 
 >[!NOTE]
->Hybrid Azure AD Join は、Azure AD Connect のクラウド プロビジョニング エージェントではサポートされていません。
+>Hybrid Azure AD 参加は、Azure AD Connect のクラウド プロビジョニング エージェントではサポートされていません。
 
-1. Hybrid Azure AD Join を有効にするには、これらの[手順](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join)に従ってください。
+1. Hybrid Azure AD 結合を有効にするには、これらの[手順](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join)に従ってください。
 
 1. **[SCP の構成]** ページで、 **[認証サービス]** ドロップダウンを選択します。 Okta フェデレーション プロバイダーの URL を選択し、 **[追加]** を選択します。 オンプレミスのエンタープライズ管理者の資格情報を入力してから、 **[次へ]** を選択します。
 
    ![SCP の構成を示すスクリーンショット。](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/scp-configuration.png)
 
-1. グローバルまたはアプリ レベルのサインオン ポリシーによって、Windows クライアントでレガシ認証がブロックされている場合は、Hybrid Azure AD Join プロセスの終了を許可する規則を作成します。
+1. グローバルまたはアプリ レベルのサインオン ポリシーによって、Windows クライアントでレガシ認証がブロックされている場合は、Hybrid Azure AD 結合プロセスの終了を許可する規則を作成します。
 
 1. すべての Windows クライアントのレガシ認証スタック全体を許可します。 また、Okta のサポートに連絡して、カスタム クライアント文字列を既存のアプリ ポリシーで有効にすることができます。
 
 ### <a name="configure-device-compliance"></a>デバイス コンプライアンスの構成
 
-Hybrid Azure AD Join は、Windows 上の Okta デバイスの信頼の直接的な置き換えです。 条件付きアクセス ポリシーでは、エンドポイント マネージャーに完全に登録されているデバイスのコンプライアンスを確認することもできます。
+Hybrid Azure AD 結合は、Windows 上の Okta デバイスの信頼の直接的な置き換えです。 条件付きアクセス ポリシーでは、エンドポイント マネージャーに完全に登録されているデバイスのコンプライアンスを確認することもできます。
 
 - **コンプライアンスの概要**: [Intune のデバイス コンプライアンス ポリシー](/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows)に関するページを参照してください。
 - **デバイス コンプライアンス**: [Intune でポリシー](/mem/intune/protect/create-compliance-policy)を作成します。
-- **Windows の登録**: Hybrid Azure AD Join を展開することを選択した場合は、別のグループ ポリシーを展開して、[これらのデバイスの Intune への自動登録プロセス](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy)を完了できます。
-- **iOS または iPadOS の登録**: iOS デバイスを登録する前に、エンドポイント管理コンソールで[追加の構成](/mem/intune/enrollment/ios-enroll)を行う必要があります。
-- **Android の登録**: Android デバイスを登録する前に、エンドポイント管理コンソールで[追加の構成](/mem/intune/enrollment/android-enroll)を行う必要があります。
+- **Windows の登録**: Hybrid Azure AD 結合を展開することを選択した場合は、別のグループ ポリシーを展開して、[これらのデバイスの Intune への自動登録プロセス](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy)を完了できます。
+- **iOS または iPadOS の登録**: iOS デバイスを登録する前に、エンドポイント管理コンソールで [追加の構成](/mem/intune/enrollment/ios-enroll)を行う必要があります。
+- **Android の登録**: Android デバイスを登録する前に、エンドポイント管理コンソールで [追加の構成](/mem/intune/enrollment/android-enroll)を行う必要があります。
 
 ## <a name="configure-azure-ad-multi-factor-authentication-tenant-settings"></a>Azure AD Multi-Factor Authentication のテナント設定を構成する
 
@@ -113,15 +112,16 @@ Hybrid Azure AD Join は、Windows 上の Okta デバイスの信頼の直接的
 
    **[適用済み]** フィールドも空にする必要があります。
 
-   ![レガシの Azure AD Multi-Factor Authentication ポータルの空の [適用済み] フィールドを示すスクリーンショット。](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enforced-empty-legacy-azure-ad-portal.png)
-
 1. **[サービスの設定]** オプションを選択します。 **[アプリ パスワード]** の選択を **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可しない]** に変更します。
+
+   ![ユーザーがアプリ パスワードを作成することを許可しないアプリケーションパスワード設定を示すスクリーンショット。](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/app-password-selection.png)
 
 1. **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** と **[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする (1 から 365 日)]** のチェックボックスがオフになっていることを確認してから、 **[保存]** を選択します。
 
   >[!NOTE]
    >詳細については、[MFA プロンプトの設定を構成するためのベスト プラクティス](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)に関するページを参照してください。
-   ![レガシの Azure AD Multi-Factor Authentication ポータルでオフになっているチェックボックスを示すスクリーンショット。](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
+
+![レガシの Azure AD Multi-Factor Authentication ポータルでオフになっているチェックボックスを示すスクリーンショット。](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
 
 ## <a name="configure-conditional-access-policies"></a>条件付きアクセス ポリシーを構成する
 
@@ -143,17 +143,17 @@ Hybrid Azure AD Join は、Windows 上の Okta デバイスの信頼の直接的
 
 1. 場所ベースのポリシーとデバイスの信頼ポリシーを構成したら、今度は同等の[ブロック レガシ認証](../conditional-access/howto-conditional-access-policy-block-legacy.md)ポリシーを構成します。
 
-これら 3 つの条件付きアクセス ポリシーにより、元の Okta サインオン ポリシーのエクスペリエンスが Azure AD にレプリケートされました。 次の手順では、Azure Multi-Factor Authentication を使用してユーザーを登録し、ポリシーをテストします。
+これら 3 つの条件付きアクセス ポリシーにより、元の Okta サインオン ポリシーのエクスペリエンスが Azure AD にレプリケートされました。 次の手順では、Azure AD Multi-Factor Authentication を使用してユーザーを登録し、ポリシーをテストします。
 
 ## <a name="enroll-pilot-members-in-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication にパイロット メンバーを登録する
 
-条件付きアクセス ポリシーを構成した後、ユーザーは Azure Multi-Factor Authentication 方法を登録する必要があります。 ユーザーには、いくつかの異なる方法で登録を要求することができます。
+条件付きアクセス ポリシーを構成した後、ユーザーは Azure AD Multi-Factor Authentication 方法を登録する必要があります。 ユーザーには、いくつかの異なる方法で登録を要求することができます。
 
 1. 個別に登録するには、ユーザーを [Microsoft サインイン ウィンドウ](https://aka.ms/mfasetup)に誘導して、登録情報を手動で入力してもらいます。
 
 1. ユーザーは、[Microsoft セキュリティ情報のページ](https://aka.ms/mysecurityinfo)にアクセスして、情報を入力したり、MFA 登録のフォームを管理したりできます。
 
-MFA の登録プロセスについてより詳しく理解するには、[こちらのガイド](../authentication/howto-registration-mfa-sspr-combined.md)を参照してください。  
+MFA の登録プロセスについてより詳しく理解するには、[こちらのガイド](../authentication/howto-registration-mfa-sspr-combined.md)を参照してください。
 
 [Microsoft サインイン ウィンドウ](https://aka.ms/mfasetup)に移動します。 Okta MFA でサインインした後、Azure AD で MFA を登録するように指示されます。
 
@@ -163,7 +163,7 @@ MFA の登録プロセスについてより詳しく理解するには、[こち
 
 ## <a name="enable-conditional-access-policies"></a>条件付きアクセス ポリシーを有効にする
 
-1. テストをロールアウトするには、前の例で作成したポリシーを、 **[Enabled test user login]\(テスト ユーザーによるログインを有効にする\)** に変更します。 
+1. テストをロールアウトするには、前の例で作成したポリシーを、 **[Enabled test user login]\(テスト ユーザーによるログインを有効にする\)** に変更します。
 
    ![テスト ユーザーの有効化を示すスクリーンショット。](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enable-test-user.png)
 
@@ -183,7 +183,7 @@ MFA の登録プロセスについてより詳しく理解するには、[こち
 
 パイロット メンバーに対して徹底的なテストを行い、条件付きアクセスが期待どおりに動作することを確認したら、登録完了後に残りの組織メンバーを条件付きアクセス ポリシーに追加することができます。
 
-Azure Multi-Factor Authentication と Okta MFA の間で二重にプロンプトが表示されるのを避けるために、サインオン ポリシーを変更して Okta MFA からオプトアウトします。
+Azure AD Multi-Factor Authentication と Okta MFA の間で二重にプロンプトが表示されるのを避けるために、サインオン ポリシーを変更して Okta MFA からオプトアウトします。
 
 条件付きアクセスへの移行の最後のステップは、段階的またはカットオーバー方式で行うことができます。
 

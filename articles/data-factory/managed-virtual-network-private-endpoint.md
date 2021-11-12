@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
 ms.date: 09/28/2021
-ms.openlocfilehash: f9c07abdfe512c2564fdfe1595f16db8a6372a8b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c4baf3ee8fdb26bd361dfafbaa29953f6d1d13f8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230238"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469554"
 ---
 # <a name="azure-data-factory-managed-virtual-network"></a>Azure Data Factory のマネージド仮想ネットワーク
 
@@ -38,7 +38,7 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 >現在、マネージド仮想ネットワークは、Azure Data Factory リージョンと同じリージョン内でのみサポートされます。
 
 > [!Note]
->既存のパブリック Azure 統合ランタイムを、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムに切り替えることはできません。また、その逆も同様です。
+>既存のグローバル Azure 統合ランタイムを、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムに切り替えることはできません。また、その逆も同様です。
  
 
 :::image type="content" source="./media/managed-vnet/managed-vnet-architecture-diagram.png" alt-text="ADF マネージド仮想ネットワークのアーキテクチャ":::
@@ -77,7 +77,7 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 :::image type="content" source="./media/managed-vnet/interactive-authoring.png" alt-text="インタラクティブな作成":::
 
 ## <a name="activity-execution-time-using-managed-virtual-network"></a>マネージド仮想ネットワークを使用したアクティビティの実行時間
-設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド仮想ネットワーク内の Azure 統合ランタイムは、パブリック Azure 統合ランタイムよりもキュー時間が長く、各アクティビティが開始されるまでにウォームアップがあります。これは、Azure 統合ランタイムではなく、主に仮想ネットワーク参加で発生します。 パイプライン アクティビティや外部アクティビティを含む非 Copy アクティビティの場合、初めてトリガーするときに、60 分の Time To Live (TTL) があります。 TTL 内では、ノードが既にウォームアップされているため、キュー時間が短くなります。 
+設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド仮想ネットワーク内の Azure 統合ランタイムは、グローバル Azure 統合ランタイムよりもキュー時間が長く、各アクティビティが開始されるまでにウォームアップがあります。これは、Azure 統合ランタイムではなく、主に仮想ネットワーク参加で発生します。 パイプライン アクティビティや外部アクティビティを含む非 Copy アクティビティの場合、初めてトリガーするときに、60 分の Time To Live (TTL) があります。 TTL 内では、ノードが既にウォームアップされているため、キュー時間が短くなります。 
 > [!NOTE]
 > Copy アクティビティでは、まだ TTL がサポートされていません。
 
@@ -129,8 +129,9 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ```
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
+
 ### <a name="supported-data-sources"></a>サポートされるデータ ソース
-以下のデータ ソースはネイティブ プライベート エンドポイントをサポートしており、ADF マネージド仮想ネットワークからプライベート リンクを介して接続できます。
+次のデータ ソースはネイティブ プライベート エンドポイントをサポートしており、ADF マネージド仮想ネットワークからプライベート リンクを介して接続できます。
 - Azure Blob Storage (ストレージ アカウント V1 は含まれません)
 - Azure Cognitive Search
 - Azure Cosmos DB SQL API
@@ -153,44 +154,12 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 > [!NOTE]
 > 現在、Azure SQL Managed Instance はネイティブ プライベート エンドポイントをサポートしていないため、Private Link サービスと Load Balancer を使用することで、マネージド仮想ネットワークからアクセスできます。 [プライベート エンドポイントを使用して、Data Factory マネージド VNET から SQL Managed Instance にアクセスする方法](tutorial-managed-virtual-network-sql-managed-instance.md)に関するページを参照してください。
 
-### <a name="on-premises-data-sources"></a>オンプレミスのデータ ソース
+### <a name="on-premises-data-sources"></a>オンプレミス データ ソース
 プライベート エンドポイントを使用して、マネージド仮想ネットワークからオンプレミスのデータ ソースにアクセスするには、[プライベート エンドポイントを使用して Data Factory マネージド VNET からオンプレミスの SQL Server にアクセスする方法](tutorial-managed-virtual-network-on-premise-sql-server.md)に関するチュートリアルを参照してください。
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory マネージド仮想ネットワークは次の Azure リージョンでご利用いただけます。
-- オーストラリア東部
-- オーストラリア南東部
-- ブラジル南部
-- カナダ中部
-- カナダ東部
-- インド中部
-- 米国中部
-- 中国東部 2
-- 中国北部 2
-- 東アジア
-- 米国東部
-- 米国東部 2
-- フランス中部
-- ドイツ中西部
-- 東日本
-- 西日本
-- 韓国中部
-- 米国中北部
-- 北ヨーロッパ
-- ノルウェー東部
-- 南アフリカ北部
-- 米国中南部
-- 東南アジア
-- スイス北部
-- アラブ首長国連邦北部
-- US Gov アリゾナ
-- US Gov テキサス
-- US Gov バージニア州
-- 英国南部
-- 英国西部
-- 米国中西部
-- 西ヨーロッパ
-- 米国西部
-- 米国西部 2
+一般に、マネージド仮想ネットワークは、次の点を除いて、すべての Azure Data Factory リージョンで利用できます。
+- インド南部
 
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF マネージド仮想ネットワークからのパブリック エンドポイントを介した送信方向の通信

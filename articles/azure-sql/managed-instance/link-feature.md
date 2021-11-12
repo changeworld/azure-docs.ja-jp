@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: mathoma, danil
 ms.date: 11/02/2021
-ms.openlocfilehash: fcae82f988ed019717f6693d0d3a63a025113fb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0d2a02510a70f35a9744370da8675636a7f296c5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091399"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465274"
 ---
 # <a name="link-feature-for-azure-sql-managed-instance-limited-preview"></a>Azure SQL Managed Instance のリンク機能 (制限付きプレビュー)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ SQL Managed Instance のリンク機能の背後にある基になるテクノ�
 
 リンク機能について詳しくは、以下をご覧ください。
 
-- [SQL Managed Instance のリンク機能 – 再考された SQL Server と Azure の間のデータ モビリティ](https://aka.ms/mi-link-techblog)。
+- [Managed Instance リンク – SQL Server を再仮定された Azure に接続します](https://aka.ms/mi-link-techblog)。
 
 他のレプリケーション シナリオについては、以下をご検討ください。 
 

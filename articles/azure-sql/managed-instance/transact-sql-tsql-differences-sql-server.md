@@ -9,14 +9,14 @@ ms.topic: reference
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, bonova, danil
-ms.date: 8/18/2021
+ms.date: 10/21/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1f8d848c87979419b4c2605560c3c371edfa5147
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: dad341c2d4323346619c20da105f7f50f21f67bc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045694"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431030"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -145,14 +145,14 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
     SQL Managed Instance は、<ph id="ph1">`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`</ph> 構文で Azure AD データベース プリンシパルをサポートします。 この機能は、Azure AD 包含データベース ユーザーとも呼ばれます。
 
 - <ph id="ph1">`CREATE LOGIN ... FROM WINDOWS`</ph> 構文を使用して作成された Windows ログインはサポートされていません。 Azure Active Directory のログインとユーザーを使用します。
-- インスタンスを作成した Azure AD ユーザーは、<bpt id="p1">[</bpt>無制限の管理特権<ept id="p1">](../database/logins-create-manage.md)</ept>を持ちます。
+- インスタンスの Azure AD 管理者は、[無制限の管理特権](../database/logins-create-manage.md)を持ちます。
 - 管理者以外の、データベース レベルの Azure AD ユーザーは、<ph id="ph1">`CREATE USER ... FROM EXTERNAL PROVIDER`</ph> 構文を使用して作成できます。 <bpt id="p1">[</bpt>CREATE USER ...FROM EXTERNAL PROVIDER<ept id="p1">](../database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)</ept> を参照してください。
 - Azure AD サーバー プリンシパル (ログイン) は、1 つの SQL Managed Instance 内のみで SQL 機能をサポートします。 同じ Azure AD テナント内か、または異なるテナント内かに関係なく、Azure AD ユーザーの場合、クロス インスタンス対話を必要とする機能はサポートされていません。 そのような機能の例として次のものがあります。
 
   - SQL トランザクション レプリケーション。
   - リンク サーバー。
 
-- Azure AD グループにマップされている Azure AD ログインをデータベース所有者として設定することはサポートされていません。
+- Azure AD グループにマップされている Azure AD ログインをデータベース所有者として設定することはサポートされていません。 Azure AD グループのメンバーは、データベースにログインが作成されていない場合でも、データベース所有者になることができます。
 - <bpt id="p1">[</bpt>EXECUTE AS<ept id="p1">](/sql/t-sql/statements/execute-as-transact-sql)</ept> 句など、他の Azure AD プリンシパルを使用することによる Azure AD サーバー レベル プリンシパルの権限の借用はサポートされています。 EXECUTE AS の制限事項は次のとおりです。
 
   - 名前がログイン名と異なる場合、EXECUTE AS USER は Azure AD ユーザーに対してサポートされません。 たとえば、CREATE USER [myAadUser] FROM LOGIN [<ph id="ph1">john@contoso.com</ph>] 構文を使用してユーザーが作成されて、EXEC AS USER = <bpt id="p1">_</bpt>myAadUser<ept id="p1">_</ept> を使用して権限借用が試行された場合などです。 Azure AD サーバー プリンシパル (ログイン) から <bpt id="p1">**</bpt>USER<ept id="p1">**</ept> を作成するときは、user_name を <bpt id="p2">**</bpt>LOGIN<ept id="p2">**</ept> と同じ login_name として指定します。
@@ -175,15 +175,13 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 - ログインが SQL プリンシパルの場合、作成コマンドを使用して Azure AD アカウントのログインを作成できるのは、<ph id="ph1">`sysadmin`</ph> ロールに属しているログインのみです。
 - Azure AD ログインは、Azure SQL Managed Instance に使用されるものと同じディレクトリ内の Azure AD のメンバーでなければなりません。
 - Azure AD サーバー プリンシパル (ログイン) は、SQL Server Management Studio 18.0 プレビュー 5 から、オブジェクト エクスプローラーに表示されます。
-- Azure AD サーバー プリンシパル (ログイン) と Azure AD 管理者アカウントとの重複は許可されます。 プリンシパルを解決してアクセス許可を SQL Managed Instance に適用するとき、Azure AD の管理者よりも Azure AD サーバー プリンシパル (ログイン) が優先されます。
+- *sysadmin* アクセス レベルのサーバー プリンシパルは、インスタンスで有効にされた後、Azure AD 管理者アカウントに対して自動的に作成されます。
 - 認証時、認証するプリンシパルを解決するために次の順序が適用されます。
 
     1. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) に直接マップされているものとして存在する (sys.server_principals に type "E" と指定されている) 場合、アクセスを許可し、Azure AD サーバー プリンシパル (ログイン) のアクセス権を適用する。
-    2. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) にマップされている Azure AD グループのメンバーである (sys.server_principals に type "X" と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス権を適用する。
-    3. Azure AD アカウントが SQL Managed Instance 用のポータル構成の特殊な Azure AD 管理者である (SQL Managed Instance システム ビューに存在しない) 場合は、SQL Managed Instance の Azure AD 管理者の特殊な固定アクセス許可を適用する (レガシー モード)。
-    4. Azure AD アカウントが、データベース内の Azure AD ユーザーに直接マップされたものとして存在する (sys.database_principals に type "E" と指定されている) 場合、アクセスを許可し、Azure AD データベース ユーザーのアクセス許可を適用する。
-    5. Azure AD アカウントが、データベース内の Azure AD ユーザーにマップされた Azure AD グループのメンバーである (sys.database_principals に type "X" と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス許可を適用する。
-    6. Azure AD ユーザー アカウントまたは Azure AD グループ アカウントのいずれかにマップされている Azure AD ログインがあり、認証しているユーザーを解決する場合、この Azure AD ログインのすべてのアクセス許可が適用される。
+    1. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) にマップされている Azure AD グループのメンバーである (sys.server_principals に type "X" と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス権を適用する。
+    1. Azure AD アカウントが、データベース内の Azure AD ユーザーに直接マップされたものとして存在する (sys.database_principals に type "E" と指定されている) 場合、アクセスを許可し、Azure AD データベース ユーザーのアクセス許可を適用する。
+    1. Azure AD アカウントが、データベース内の Azure AD ユーザーにマップされた Azure AD グループのメンバーである (sys.database_principals に type "X" と指定されている) 場合、アクセスを許可し、Azure AD グループ ユーザーのアクセス許可を適用する。
 
 ### <a name="service-key-and-service-master-key"></a>サービス キーとサービス マスター キー
 
@@ -393,7 +391,7 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 
 ### <a name="linked-servers"></a>リンク サーバー
 
-SQL Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
+SQL Managed Instance の[リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine)がサポートするターゲットの数は限られています。
 
 - サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の<bpt id="p1">[</bpt>サーバーレス<ept id="p1">](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)</ept>と専用プール、および SQL Server インスタンスです。 
 - 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、<bpt id="p1">[</bpt>分散トランザクション<ept id="p1">](../database/elastic-transactions-overview.md)</ept>に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
@@ -407,7 +405,7 @@ SQL Managed Instance のリンク サーバーがサポートするターゲッ�
 - SQL Server インスタンスでのみ、<ph id="ph1">`OPENDATASOURCE`</ph> 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、<ph id="ph1">`SQLNCLI`</ph>、<ph id="ph2">`SQLNCLI11`</ph>、<ph id="ph3">`SQLOLEDB`</ph> だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 <bpt id="p1">[</bpt>OPENDATASOURCE<ept id="p1">](/sql/t-sql/functions/opendatasource-transact-sql)</ept> に関する記事をご覧ください。
 - リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 <bpt id="p1">[</bpt>BULK INSERT<ept id="p1">](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)</ept>、<bpt id="p2">[</bpt>OPENROWSET<ept id="p2">](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file)</ept> (Azure Blob Storage から CSV ファイルを読み取る)、または <bpt id="p3">[</bpt>Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー<ept id="p3">](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)</ept>の使用を試行します。 この要求は、<bpt id="p1">[</bpt>SQL Managed Instance フィードバック項目<ept id="p1">](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)</ept><ph id="ph1">|</ph>で追跡します
 
-Azure SQL Managed Instance のリンク サーバーでは、SQL 認証のみがサポートされています。 AAD 認証はまだサポートされていません。
+Azure SQL Managed Instance のリンク サーバーでは、SQL 認証と [AAD 認証](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#linked-servers-with-azure-sql-managed-instance)の両方がサポートされています。
 
 ### <a name="polybase"></a>PolyBase
 

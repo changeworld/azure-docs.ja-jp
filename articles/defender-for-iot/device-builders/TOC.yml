@@ -1,4 +1,4 @@
-- name: デバイス ビルダー向け Azure Defender for IoT
+- name: デバイス ビルダー向け Microsoft Defender for IoT
   href: index.yml
   items: null
 - name: 概要
@@ -19,7 +19,7 @@
     - name: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
       displayName: 'package, authentication, methods, certificate, authenticate, version'
       href: quickstart-standalone-agent-binary-installation.md
-    - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
+    - name: Defender for Cloud IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
       href: quickstart-create-micro-agent-module-twin.md
     - name: Azure RTOS 用の Defender-IoT-micro-agent を構成する
       href: quickstart-azure-rtos-security-module.md
@@ -86,7 +86,7 @@
         - name: ベースライン
           displayName: 'custom, setting, properties'
           href: concept-baseline.md
-        - name: Azure Defender for IoT 用の Azure セキュリティ ベースライン
+        - name: Microsoft Defender for IoT の Azure セキュリティ ベースライン
           displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
           href: /security/benchmark/azure/baselines/defender-for-iot-security-baseline?toc=/azure/defender-for-iot/TOC.json
         - name: Defender-IoT-micro-agent クラシック イベントの集計
@@ -100,10 +100,10 @@
           href: agent-based-recommendations.md
 - name: 操作方法ガイド
   items:
-    - name: Azure Sentinel に接続する
+    - name: Microsoft Sentinel に接続する
       displayName: 'log analytics, service notes'
       href: how-to-configure-with-sentinel.md
-    - name: Azure Defender for IoT エージェントベースのソリューションを構成する
+    - name: Microsoft Defender for IoT エージェントベースのソリューションを構成する
       displayName: 'data, collection, geolocation, log analytics, raw events'
       href: how-to-configure-agent-based-solution.md
     - name: CIS ベンチマークの推奨事項を調査する
@@ -134,7 +134,7 @@
               href: how-to-deploy-linux-c.md
         - name: セキュリティ エージェントのトラブルシューティングを行う
           items:
-            - name: Azure Defender for IoT の Linux セキュリティ エージェントのトラブルシューティングを行う
+            - name: Microsoft Defender for IoT の Linux セキュリティ エージェントのトラブルシューティングを行う
               href: troubleshoot-agent.md
             - name: ローカル構成 C
               href: azure-iot-security-local-configuration-c.md
@@ -155,7 +155,7 @@
           href: how-to-investigate-device.md
     - name: トラブルシューティング
       items:
-        - name: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
+        - name: Defender for Cloud IoT マイクロ エージェントのトラブルシューティング (プレビュー)
           displayName: 'service status, review logs'
           href: troubleshoot-defender-micro-agent.md
 - name: リファレンス
@@ -179,8 +179,8 @@
   items:
     - name: Microsoft Learn でセキュリティ スキルを身に付ける
       href: /learn/browse/?term=securityS&terms=securityS
-    - name: Azure Security Center のドキュメント
-      href: ../../security-center/
+    - name: Microsoft Defender for Cloud のドキュメント
+      href: ../../defender-for-cloud/
     - name: Azure のセキュリティのドキュメント
       href: ../../security/index.yml
     - name: Azure IoT のセキュリティ、プライバシー、コンプライアンスのブログ

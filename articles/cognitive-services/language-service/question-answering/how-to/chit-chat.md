@@ -9,14 +9,14 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 2e46b7b877e3ce8e82782356339261ff5204bf26
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c925fdf1b5b53f703d7c996110fe1b6b5f52cde8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089795"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476587"
 ---
-# <a name="use-chitchat-with-a-knowledge-base"></a>ナレッジ ベースでおしゃべりを使う
+# <a name="use-chitchat-with-a-project"></a>プロジェクトでおしゃべりを使用する
 
 ボットにおしゃべりを追加すると、ボットがより会話的で魅力的なものになります。 カスタムの質問と回答のおしゃべり機能を使うと、定義済みのおしゃべりのセットを、ナレッジ ベース (KB) に簡単に追加することができます。 これを使ってボットのパーソナリティの作成を始めることができ、それにより最初から作成するよりもコストと時間が節約されます。
 

@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 501b431e86b19c8e6cf3aa7cfacb0758691eb93b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 41f12d9421a49cb926a666469beda97cd8f53eac
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735065"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559734"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning の CLI 拡張機能のインストールと使用
 
@@ -61,7 +61,10 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
-拡張機能は、`az ml` で始まるコマンドの使用を初めて試したときに自動的にインストールされます。
+CLI (v1) 拡張機能をインストールするには、次のようにします。
+```azurecli-interactive
+az extension add -n azure-cli-ml
+```
 
 ## <a name="update-the-extension"></a>拡張機能を更新する
 

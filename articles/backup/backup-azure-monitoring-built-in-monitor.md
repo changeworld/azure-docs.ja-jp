@@ -2,14 +2,17 @@
 title: Azure Backup で保護されたワークロードの監視
 description: この記事では、Azure portal を使用した Azure Backup ワークロードの監視機能と通知機能について説明します。
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 11/02/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f3d353f7d42baf1f9cc968cb37baac1077a35085
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: afc23090ce15621542ec6035c67d36b85a3414c1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231674"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439790"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -19,20 +22,20 @@ Azure Backup では、バックアップ要件とインフラストラクチャ 
 
 ## <a name="backup-items-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ項目
 
-Recovery Services コンテナーを使用して、すべてのバックアップ項目を監視できます。 コンテナーの **[バックアップ項目]** セクションに移動すると、コンテナーに関連付けられている各ワークロードの種類のバックアップ項目の数を示すビューが開きます。 任意の行をクリックすると、指定したワークロードの種類のすべてのバックアップ項目が一覧表示され、各項目の最後のバックアップの状態、利用可能な最新の復元ポイントなどの情報が表示されます。
+Recovery Services コンテナーを使用して、すべてのバックアップ項目を監視できます。 **バックアップ センター** の **[バックアップ インスタンス]** セクションに移動すると、指定されたワークロードの種類のすべてのバックアップ項目の詳細な一覧が表示され、各項目の最後のバックアップの状態、利用可能な最新の復元ポイントなどの情報が表示されます。
 
-![RS コンテナーのバックアップ項目を表示するためのスクリーンショット](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-instances-inline.png" alt-text="Recovery Services コンテナーのバックアップ項目を表示するスクリーンショット。" lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-instances-expanded.png":::
 
-> [!NOTE]
-> DPM を使用して Azure にバックアップされた項目については、DPM サーバーを使用して保護されているすべてのデータソース (ディスクとオンラインの両方) が一覧に表示されます。 バックアップ データが保持されているデータソースの保護が停止した場合、データソースはポータルに表示されたままになります。 データ ソースの詳細にアクセスして、回復ポイントがディスク、オンライン、またはその両方に存在するかどうかを確認できます。 また、オンラインのデータ保護が停止されていてデータが保持されたデータソースの場合、データが完全に削除されるまで、オンライン回復ポイントの課金が継続されます。
+>[!NOTE]
+>DPM を使用して Azure にバックアップされた項目については、DPM サーバーを使用して保護されているすべてのデータソース (ディスクとオンラインの両方) が一覧に表示されます。 バックアップ データが保持されているデータソースの保護が停止した場合、データソースはポータルに表示されたままになります。 データ ソースの詳細にアクセスして、回復ポイントがディスク、オンライン、またはその両方に存在するかどうかを確認できます。 また、オンラインのデータ保護が停止されていてデータが保持されたデータソースの場合、データが完全に削除されるまで、オンライン回復ポイントの課金が継続されます。
 >
 > バックアップ項目を Recovery Services コンテナー ポータルに表示するには、DPM のバージョンが DPM 1807 (5.1.378.0) または DPM 2019 (バージョン 10.19.58.0 以降) である必要があります。
 
-## <a name="backup-jobs-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ ジョブ
+## <a name="backup-jobs-in-backup-center"></a>バックアップ センターのバックアップ ジョブ
 
-Azure Backup では、Azure Backup で保護されているワークロード用の組み込みの監視とアラートの機能を提供します。 Recovery Services コンテナーの設定の **[監視]** セクションに、組み込みのジョブおよびアラートが提供されています。
+Azure Backup では、Azure Backup で保護されているワークロード用の組み込みの監視とアラートの機能を提供します。 **バックアップ センター** の **[バックアップ ジョブ]** ウィンドウに移動すると、コンテナー全体の最新のバックアップ ジョブと復元ジョブを表示できます。
 
-![RS コンテナーの組み込みの監視のスクリーンショット](media/backup-azure-monitoring-laworkspace/rs-vault-inbuilt-monitoring-menu.png)
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-jobs-inline.png" alt-text="Recovery Services コンテナーの組み込み監視を示すスクリーンショット。" lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-jobs-expanded.png":::
 
 ジョブは、バックアップの構成、バックアップ、復元、バックアップの削除などの操作が実行されるときに生成されます。
 

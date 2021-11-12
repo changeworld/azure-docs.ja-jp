@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/11/2021
-ms.openlocfilehash: 010fbfc3b6a2df9c8cdca1221fb4f25a5d288d70
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/02/2021
+ms.openlocfilehash: bfc901e3fa9c3a3f266f9cddffde84c4d1461c8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742185"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425503"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps 用に DevOps のデプロイを設定する
 
@@ -223,12 +223,17 @@ Azure DevOps デプロイの場合、Azure Pipelines で [Azure Function App Dep
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 
-最新の拡張機能 (バージョン 0.1.1) を取得するには、これらのコマンドを実行して既存の拡張機能を削除し、ソースから最新バージョンをインストールします。
+最新の拡張機能 (バージョン 0.1.2) を取得するには、これらのコマンドを実行して既存の拡張機能を削除し、ソースから最新バージョンをインストールします。
 
 ```azurecli-interactive
 az extension remove --name logicapp
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
+
+> [!NOTE]
+> 新しい拡張機能のバージョンを使用できる場合、現在のバージョンとそれ以降のバージョンにはメッセージが表示されます。 この拡張機能はプレビュー段階で、次のコマンドを使用して、手動で削除してから再度インストールすることなく、最新バージョンにアップグレードできます。
+>
+> `az logicapp upgrade`
 
 <a name="create-resource-group"></a>
 

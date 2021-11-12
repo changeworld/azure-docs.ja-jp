@@ -1,20 +1,20 @@
 ---
 title: Azure の支払いに関する問題のトラブルシューティング
-description: Microsoft Azure portal で支払い情報アカウントを更新しようとしたときに発生する問題を解決します。
-author: v-miegge
-ms.reviewerr: dcscontentpm
+description: Azure portal で支払い情報アカウントを更新しようとしたときに発生する問題を解決します。
+author: bandersmsft
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 05/13/2021
-ms.author: jaserano
-ms.openlocfilehash: 54aba8ecb56d3c96628c424522ca606a0b04273a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: banders
+ms.openlocfilehash: a8e2ddd11724b39f6439cc59de012c0a60ab0ff6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481173"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438742"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure の支払いに関する問題のトラブルシューティング
 

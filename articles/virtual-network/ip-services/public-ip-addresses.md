@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 5f24b2478acc0b305595b70b579d744320f0da3a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a57c4ea8d058f0f565b6dbec7fdb74b07ea7564e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261198"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471404"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -106,7 +106,7 @@ Standard パブリック IPv4、Basic パブリック IPv4、および Standard 
 * Azure のリソースが、IP アドレス ベースのセキュリティ モデルを使用する他のアプリまたはサービスと通信する。
 * IP アドレスにリンクされている TLS/SSL 証明書を使用する。
 
-Basic パブリック IPv4 および IPv6 アドレスでは、**動的** な割り当てがサポートされます。  "動的" を選択すると、IP アドレスは作成時にリソースに割り当てられ **ません**。  IP が割り当てられるのは、パブリック IP アドレスをリソースに関連付けるときです。 IP アドレスは、リソースを停止または削除すると解放されます。   たとえば、パブリック IP リソースが **リソース A** という名前のリソースから解放されます。**リソース A** は、パブリック IP リソースが再割り当てされる場合、起動時に別の IP アドレスを受信します。 関連付けられた IP アドレスは、割り当て方法が **静的** から **動的** に変更されると解放されます。 IP アドレスが変わらないようにするため、割り当て方法を **静的** に設定します。
+Basic パブリック IPv4 および IPv6 アドレスでは、**動的** な割り当てがサポートされます。  "動的" を選択すると、IP アドレスは作成時にリソースに割り当てられ **ません**。  IP が割り当てられるのは、パブリック IP アドレスをリソースに関連付けるときです。 IP アドレスは、リソースを停止または削除すると解放されます。   たとえば、パブリック IP リソースが **リソース A** という名前のリソースから解放されます。**リソース A** は、パブリック IP リソースが再割り当てされる場合、起動時に別の IP アドレスを受信します。 関連付けられた IP アドレスは、割り当て方法が **静的** から **動的** に変更されると解放されます。 関連付けられた IP アドレスは、割り当て方法が **動的** から **静的** に変更された場合、変更されません。 IP アドレスが変わらないようにするため、割り当て方法を **静的** に設定します。
 
 > [!NOTE]
 > Azure では、各 Azure クラウドの各リージョンに一意の範囲からパブリック IP アドレスが割り当てられます。 Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519)、[US Government](https://www.microsoft.com/download/details.aspx?id=57063)、[China](https://www.microsoft.com/download/details.aspx?id=57062)、および [Germany](https://www.microsoft.com/download/details.aspx?id=57064) クラウドの範囲 (プレフィックス) の一覧をダウンロードできます。

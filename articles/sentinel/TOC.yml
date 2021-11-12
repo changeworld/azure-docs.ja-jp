@@ -1,33 +1,33 @@
-- name: Azure Sentinel のドキュメント
+- name: Microsoft Sentinel のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Azure Sentinel について
+    - name: Microsoft Sentinel について
       href: overview.md
-    - name: Azure Sentinel の新着情報
+    - name: Microsoft Sentinel の新機能
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
   items:
-    - name: Azure Sentinel にオンボードする
+    - name: Microsoft Sentinel にオンボードする
       href: quickstart-onboard.md
 - name: チュートリアル
   items:
     - name: UEBA を使用して調査する
       href: investigate-with-ueba.md
-    - name: Azure Sentinel に対する KQL クエリを作成する (Learn モジュール)
+    - name: Microsoft Sentinel に対する KQL クエリを作成する (Learn モジュール)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
     - name: オートメーションを使用して脅威に対応する
       href: tutorial-respond-threats-playbook.md
     - name: ノートブックと MSTICPy の概要
       href: notebook-get-started.md
-    - name: Azure Sentinel から Power BI レポートを作成する
+    - name: Microsoft Sentinel から Power BI レポートを作成する
       href: powerbi.md
     - name: おとりのハニートークンをデプロイおよび監視する
       href: monitor-key-vault-honeytokens.md
 - name: 概念
   items:
-    - name: Azure Sentinel の前提条件
+    - name: Microsoft Sentinel の前提条件
       href: prerequisites.md
     - name: ベスト プラクティス
       items:
@@ -43,11 +43,11 @@
           href: roles.md
         - name: コストと課金
           href: azure-sentinel-billing.md
-        - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
+        - name: ワークスペースおよびテナント全体での Microsoft Sentinel の拡張
           href: extend-sentinel-across-workspaces-tenants.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
-    - name: Azure Sentinel のコンテンツ
+    - name: Microsoft Sentinel のコンテンツ
       items:
         - name: Sentinel のコンテンツについて
           href: sentinel-solutions.md
@@ -57,7 +57,7 @@
       items:
         - name: データ収集方法
           href: connect-data-sources.md
-        - name: 正規化と Azure Sentinel 情報モデル (ASIM)
+        - name: 正規化と Advanced SIEM Information Model (ASIM)
           items:
             - name: ASIM の概要
               href: normalization.md
@@ -71,7 +71,7 @@
           href: entities-in-azure-sentinel.md
     - name: 脅威インテリジェンス
       items:
-        - name: Azure Sentinel の脅威インテリジェンスについて
+        - name: Microsoft Sentinel の脅威インテリジェンスについて
           href: understand-threat-intelligence.md
         - name: 脅威インテリジェンスの統合
           href: threat-intelligence-integration.md
@@ -113,9 +113,9 @@
           href: azure-sentinel-billing.md
         - name: ワークスペース アクセスの管理
           href: resource-context-rbac.md
-    - name: Azure Sentinel に移行する
+    - name: Microsoft Sentinel に移行する
       href: migration.md
-    - name: Azure Sentinel のコンテンツを管理する
+    - name: Microsoft Sentinel のコンテンツを管理する
       items:
         - name: すぐに使えるコンテンツを検出してデプロイする
           href: sentinel-solutions-deploy.md
@@ -132,7 +132,7 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Azure Defender
+            - name: Microsoft Defender for Cloud
               href: connect-azure-security-center.md
             - name: Microsoft 365 Defender
               href: connect-microsoft-365-defender.md
@@ -146,7 +146,7 @@
               href: connect-common-event-format.md
             - name: Syslog (生) ソース
               href: connect-syslog.md
-            - name: Azure Sentinel Data Collector API
+            - name: Microsoft Sentinel データ コレクター API
               href: connect-rest-api-template.md
             - name: Azure Functions API の接続
               href: connect-azure-functions-template.md
@@ -236,31 +236,31 @@
           href: customize-entity-activities.md
         - name: Microsoft Teams で共同作業する
           href: collaborate-in-microsoft-teams.md
-        - name: Azure Sentinel に対してプレイブックを認証する
+        - name: Microsoft Sentinel へのプレイブックの認証
           href: authenticate-playbooks-to-sentinel.md
         - name: プレイブックでトリガーとアクションを使用する
           href: playbook-triggers-actions.md
         - name: テンプレートからプレイブックをカスタマイズする
           href: use-playbook-templates.md
-    - name: Azure Sentinel を管理する
+    - name: Microsoft Sentinel を管理する
       items:
-        - name: MSSP 用 Azure Sentinel
+        - name: MSSP 用 Microsoft Sentinel
           items:
             - name: 複数のテナントの管理 (MSSP)
               href: multiple-tenants-service-providers.md
             - name: 複数のワークスペースでインシデントを操作する
               href: multiple-workspace-view.md
-            - name: Azure Sentinel で知的財産を管理する
+            - name: Microsoft Sentinel で知的財産を管理する
               href: mssp-protect-intellectual-property.md
         - name: カスタマー マネージド キーを設定する
           href: customer-managed-keys.md
         - name: インシデント メトリックを使用して SOC を管理する
           href: manage-soc-with-incident-metrics.md
-        - name: Azure アクティビティ ログを使用した Azure Sentinel の監査
+        - name: Azure アクティビティ ログを使用した Microsoft Sentinel の監査
           href: audit-sentinel-data.md
-        - name: ワークスペースから Azure Sentinel を削除する
+        - name: ワークスペースから Microsoft Sentinel を削除する
           href: offboard.md
-- name: SAP と Azure Sentinel の統合
+- name: SAP と Microsoft Sentinel の統合
   items:
     - name: SAP の継続的な脅威監視のデプロイ
       href: sap-deploy-solution.md
@@ -278,21 +278,21 @@
       href: sap-deploy-troubleshoot.md
 - name: リファレンス
   items:
-    - name: Azure Sentinel REST-API
+    - name: Microsoft Sentinel REST-API
       href: /rest/api/securityinsights/
     - name: 管理リファレンス
       items:
-        - name: Azure Sentinel Logic Apps コネクタ
+        - name: Microsoft Sentinel Logic Apps コネクタ
           href: /connectors/azuresentinel/
         - name: Azure CLI
           href: /cli/azure/sentinel
-        - name: Azure Sentinel PowerShell
+        - name: Microsoft Sentinel PowerShell
           href: /powershell/module/az.securityinsights/
         - name: Azure RBAC ロール
           items:
             - name: すべての Azure ロール
               href: ../role-based-access-control/built-in-roles.md#all
-            - name: Azure Sentinel のロール
+            - name: Microsoft Sentinel ロール
               href: ../role-based-access-control/built-in-roles.md#security
     - name: データ収集のリファレンス
       items:
@@ -322,7 +322,7 @@
           href: windows-security-event-id-reference.md
     - name: 検出と分析リファレンス
       items:
-        - name: 上位の Azure Sentinel ブック
+        - name: 上位の Microsoft Sentinel ブック
           href: top-workbooks.md
         - name: エンティティのリファレンス
           href: entities-reference.md
@@ -348,15 +348,19 @@
               href: watchlist-with-rest-api.md
             - name: REST API を使用した地理位置情報データによるエンティティの強化
               href: geolocation-data-api.md
-        - name: Microsoft 365 Defender にオンボードされない MCAS アラート
+        - name: Microsoft 365 Defender にオンボードされない Defender for Cloud Apps アラート
           href: ./microsoft-365-defender-sentinel-integration.md#microsoft-365-defender-incidents-and-microsoft-incident-creation-rules
+    - name: オートメーションと応答の参照
+      items:
+        - name: SOAR コンテンツのカタログ
+          href: sentinel-soar-content.md
 - name: リソース
   items:
     - name: 有用なリソース
       href: resources.md
     - name: サンプル ワークスペース アーキテクチャ
       href: sample-workspace-designs.md
-    - name: Azure Sentinel ブログ
+    - name: Microsoft Sentinel のブログ
       href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 175b940995ed4e68e1358989e8c9b09c201f3ce4
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: ff4b23ffaf366ac9c1583b6fb9eb87f87b7db0e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711816"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428940"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -85,6 +85,7 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 | ------------ | ----------------| ------------| ----------------|
 | Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | GA </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)|
 |Azure Backup | すべてのパブリック リージョン<br/> すべての Government リージョン   |  | GA <br/> [Azure Backup のプライベート エンドポイントを作成する方法を確認します。](../backup/private-endpoints.md)   |
+|Azure Purview | 東南アジア、オーストラリア東部、ブラジル南部、北ヨーロッパ、西ヨーロッパ、カナダ中部、米国東部、米国東部 2、米国東部 2 EUAP、米国中南部、米国中西部、米国西部 2、インド中部、英国南部   | [既知の制限についてはこちらを選択してください](../purview/catalog-private-link-troubleshoot.md#known-limitations) | GA <br/> [Azure Purview のプライベート エンドポイントを作成する方法を確認します。](../purview/catalog-private-link.md)   |
 
 ### <a name="security"></a>セキュリティ
 

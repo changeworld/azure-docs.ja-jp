@@ -8,13 +8,13 @@ ms.subservice: mlops
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 09/16/2021
-ms.openlocfilehash: 88d7d9976e5b0eeecd656f5aaf68fa603425c3a9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: eb1f4fb0e3f833bdcc9631f72c6ffe127005a0e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424409"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556485"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -343,6 +343,9 @@ ip_address: 10.3.0.5
 ## <a name="debug-and-troubleshoot-deployments"></a>デプロイのデバッグとトラブルシューティング
 
 場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 VS Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。
+
+> [!TIP]
+> 管理されたオンライン エンドポイントとデプロイをローカルでデバッグして、時間を節約し、バグを早期に発見します。 詳細については、[Visual Studio Code でマネージド オンライン エンドポイントをローカルでデバッグする (プレビュー)](how-to-debug-managed-online-endpoints-visual-studio-code.md) 方法に関する記事を参照してください。
 
 > [!IMPORTANT]
 > このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。

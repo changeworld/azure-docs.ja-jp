@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 09/23/2021
+ms.date: 11/02/2021
 ms.author: duau
-ms.openlocfilehash: fa5ea8f191c0b2ea9c7db483eb4d7b9c5a679be0
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 47584994586e735647be4116fb49de610e5f97f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094369"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453271"
 ---
 # <a name="azure-route-server-faq"></a>Azure Route Server に関する FAQ
 
@@ -91,6 +91,12 @@ Azure Router Server では、Route Server の構成を管理するバックエ�
 ***トポロジ: NVA1 -> RouteServer1 -> (VNet ピアリング経由) -> RouteServer2 -> NVA2***
 
 いいえ。Azure Route Server では、データ トラフィックは転送されません。 NVA を介したトランジット接続を有効にするには、NVA 間の直接接続 (IPsec トンネルなど) を設定し、動的なルート伝達にルート サーバーを使用します。 
+
+### <a name="can-i-use-azure-route-server-to-direct-traffic-between-subnets-in-the-same-virtual-network-to-flow-inter-subnet-traffic-through-the-nva"></a>Azure Route Server を使用して、同じ仮想ネットワーク内のサブネット間でトラフィックを送信して、サブネット間のトラフィックを NVA 経由でフローさせることはできますか。
+
+いいえ。 仮想ネットワーク、仮想ネットワークのピアリング、または仮想ネットワーク サービス エンドポイントに関連したトラフィックに使用されるシステム ルートは、BGP のルートの方が具体的であったとしても、優先されるルートとなります。 Azure Route Server は BGP を使用してルートをアドバタイズしますが、現時点では、これは仕様ではサポートされていません。 引き続き、UDR を使用してルートを強制的に上書きする必要があります。また、BGP を利用してこれらのルートを迅速にフェールオーバーすることはできません。 フェールオーバーの場合には、サードパーティのソリューションを使用して、API 経由で UDR を更新するか、HA ポート モードで Azure Load Balancer を使用してトラフィックを送信する必要があります。
+
+Azure Route Server を使用して、異なる仮想ネットワーク内のサブネット間のトラフィックを、NVA を使用してフローするように誘導できます。 使用できる設計は、"スポーク" 仮想ネットワークごとに 1 つのサブネットであり、すべての仮想ネットワークが "ハブ" 仮想ネットワークとピアリングされていますが、これは非常に制限されており、仮想ネットワーク対サブネットへの Azure の最大制限についても考慮する必要があります。
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>Route Server の制限
 

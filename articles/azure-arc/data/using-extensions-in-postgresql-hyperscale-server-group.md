@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 831b3e220afe826b5190588b8855b72a8d648916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52e024043726c463c0bea5b9b16421a0674a2cd2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743837"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558841"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応の PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
@@ -25,7 +25,7 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 
 ## <a name="supported-extensions"></a>サポートされる拡張機能
 標準の [`contrib`](https://www.postgresql.org/docs/12/contrib.html) 拡張機能と以下の拡張機能は、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのコンテナーに既にデプロイされています。
-- [`citus`](https://github.com/citusdata/citus)、v: 10.0。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
+- [`citus`](https://github.com/citusdata/citus)、v: 10.2。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
 - [`pg_cron`](https://github.com/citusdata/pg_cron)、v: 1.3
 - [`pgaudit`](https://www.pgaudit.org/)、v: 1.4
 - plpgsql、v: 1.0
@@ -60,11 +60,11 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を追加する
 ```azurecli
-az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names>
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>既に存在するインスタンスに拡張機能を追加する
 ```azurecli
-az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names>
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 
 
@@ -75,31 +75,30 @@ az postgres arc-server server edit -n <name of your postgresql server group> --e
 
 ### <a name="with-cli-command"></a>CLI コマンドを使用する
 ```azurecli
-az postgres arc-server show -n <server group name>
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 出力をスクロールし、サーバー グループの仕様の engine\extensions セクションを確認します。 次に例を示します。
 ```console
-"engine": {
+  "spec": {
+    "dev": false,
+    "engine": {
       "extensions": [
         {
           "name": "citus"
-        },
-        {
-          "name": "pg_cron"
         }
-      ]
-    },
+      ],
 ```
 ### <a name="with-kubectl"></a>kubectl を使用する
 ```console
-kubectl describe postgresql-12s/postgres02
+kubectl describe postgresqls/<server group name> -n <namespace>
 ```
 出力をスクロールし、サーバー グループの仕様の engine\extensions セクションを確認します。 次に例を示します。
 ```console
-Engine:
+Spec:
+  Dev:  false
+  Engine:
     Extensions:
-      Name:  citus
-      Name:  pg_cron
+      Name:   citus
 ```
 
 

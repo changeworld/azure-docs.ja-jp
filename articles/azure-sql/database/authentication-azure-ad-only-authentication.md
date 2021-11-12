@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2021
+ms.date: 11/03/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 74b02577e6bb59481182afda881216ebff0544cf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 050a9690f22ef34b39d89a5cd0cf4d8a6c7d340b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044040"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503055"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Azure SQL を使用した Azure AD 専用認証
 
@@ -402,7 +402,7 @@ SQL Database に対して Azure AD 専用認証が有効になっている場合
 - [Azure SQL Database サーバーのロール](security-server-roles.md)
 - [エラスティック ジョブ](job-automation-overview.md)
 - [SQL データ同期](sql-data-sync-data-sql-server-sql-database.md)
-- [CDC (変更データ キャプチャ)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)
+- [変更データ キャプチャ (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) - Azure AD ユーザーとして Azure SQL Database でデータベースを作成し、その上で変更データ キャプチャを有効にした場合、SQL ユーザーは CDC 成果物を無効にしたり、変更したりすることはできません。 ただし、別の Azure AD ユーザーは、同じデータベースで CDC を有効または無効にできます。 同様に、SQL ユーザーとして Azure SQL Database を作成する場合、CDC を Azure AD ユーザーとして有効にしたり、無効にしたりできません。
 - [トランザクション レプリケーション](/azure/azure-sql/managed-instance/replication-transactional-overview) - レプリケーションの参加者間の接続には SQL 認証が必要なため、Azure AD 専用認証を有効にすると、以下のシナリオの SQL Database では、トランザクション レプリケーションはサポートされません。Azure SQL Managed Instance、オンプレミスの SQL Server、または Azure VM SQL Server インスタンスに加えられた変更を Azure SQL Database 内のデータベースにプッシュするためにトランザクションレプリケーションが使用される場合。
 - [SQL Insights](/azure/azure-monitor/insights/sql-insights-overview)
 - Azure AD グループ メンバー アカウントの EXEC AS ステートメント

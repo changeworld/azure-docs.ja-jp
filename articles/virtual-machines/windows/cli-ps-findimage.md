@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: f13c13ec30972c6129f794f831d3f937ca98c9dc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b445b52e1e4a3131f7830d6ea167046109d0e2af
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698340"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466753"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Azure PowerShell を使用して Azure Marketplace VM イメージを検索して使用する
 
@@ -239,4 +239,4 @@ $vmConfig = Set-AzVMPlan `
 
 基本イメージ情報を使用し、`New-AzVM` コマンドレットを使って仮想マシンをすばやく作成するには、「[PowerShell で Windows 仮想マシンを作成する](quick-create-powershell.md)」をご覧ください。
 
-Azure Marketplace イメージを使用して Shared Image Gallery にカスタム イメージを作成する方法の詳細については、[イメージ作成時に Azure Marketplace 購入プラン情報を提供する](../marketplace-images.md)方法に関する記事を参照してください。
+Azure Marketplace イメージを使用して Azure Compute Gallery (旧称 Shared Image Gallery) にカスタム イメージを作成する方法の詳細については、[イメージ作成時に Azure Marketplace 購入プラン情報を提供する](../marketplace-images.md)方法に関する記事を参照してください。

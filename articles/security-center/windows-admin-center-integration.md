@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5c1c5af62c723d207b9eb5bdfc3c38fa57e9b4e7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fed69e86658ffe15a353aa6a5863c4db32815926
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055941"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428408"
 ---
 # <a name="protect-windows-admin-center-resources-with-microsoft-defender-for-cloud"></a>Microsoft Defender forCloudを使用してWindowsAdminCenterサーバーを保護する方法
 
@@ -34,7 +33,7 @@ Windows AdminCenterからMicrosoftDefender for Cloudにサーバーを正常に�
 
 これら2つのツールを組み合わせることで、Defender for Cloudは、Windows Admin Centerで管理されているオンプレミスサーバー、VM、および追加のPaaSワークロードを保護するなど、リソースに関係なく、すべてのセキュリティ情報を表示する単一のペインになります。
 
-## <a name="onboard-windows-admin-center-managed-servers-into-defender-for-cloud"></a>Windows Admin Center で管理されているサーバーを Security Center にオンボードする
+## <a name="onboard-windows-admin-center-managed-servers-into-defender-for-cloud"></a>管理センターで管理されているサーバーの Windows を Defender for Cloud にオンボードする
 
 1. Windows Admin Center で、いずれかのサーバーを選択し、 **[ツール]** ウィンドウで Azure Security Center 拡張機能を選択します。
 

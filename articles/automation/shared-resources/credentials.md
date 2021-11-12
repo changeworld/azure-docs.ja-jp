@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 09/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2a78f9636a29c8e48c8d3e1c38d7127bd3ba84b7
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5a33bac9db69320df6e2e6d0e02361cb9aa0cdab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354044"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432512"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
@@ -116,7 +116,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-まず[マネージド ID](../automation-security-overview.md#managed-identities-preview) で接続した後、資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 この例では、[システム割り当てマネージド ID](../enable-managed-identity-for-automation.md) を使用しています。
+まず[マネージド ID](../automation-security-overview.md#managed-identities) で接続した後、資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 この例では、[システム割り当てマネージド ID](../enable-managed-identity-for-automation.md) を使用しています。
 
 ```powershell
 # Ensures you do not inherit an AzContext in your runbook

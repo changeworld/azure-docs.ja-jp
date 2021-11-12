@@ -7,13 +7,13 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.collection: linux
-ms.date: 02/18/2020
-ms.openlocfilehash: 352aea7f000082a2f978005d958b41669e191584
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 11/02/2021
+ms.openlocfilehash: 3c857f01ba5a706c8b20289221badbee3aa3dccf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181566"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471632"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -21,10 +21,8 @@ ms.locfileid: "122181566"
 
 Azure Monitor ログは、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 Linux 用の Log Analytics 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Linux 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
->[!NOTE]
->現在 Microsoft Operations Management Suite (OMS) から Azure Monitor への移行作業が進行していますが、その一環として、OMS エージェント for Windows と OMS エージェント for Linux は、それぞれ Log Analytics エージェント for Windows および Log Analytics エージェント for Linux という名称になります。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> Azure Arc 対応サーバーを使用すると、Log Analytics エージェント VM 拡張機能を Azure 以外の Windows や Linux マシンにデプロイ、削除、更新して、ハイブリッド マシンのライフサイクルを通じた管理を簡素化できます。 詳細については、「[Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理](../../azure-arc/servers/manage-vm-extensions.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,6 +31,7 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 サポートされる Linux ディストリビューションの詳細については、[Azure Monitor エージェントの概要](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
+
 次の表は、Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
@@ -65,11 +64,11 @@ Azure Security Center は自動的に Log Analytics エージェントをプロ�
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
+Linux 用の Log Analytics エージェント拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../azure-monitor/vm/monitor-virtual-machine.md)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
+次の JSON は、Log Analytics エージェント拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../azure-monitor/vm/monitor-virtual-machine.md)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
@@ -108,7 +107,6 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 | typeHandlerVersion | 1.13 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
-
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
@@ -171,7 +169,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
-Azure CLI を使用して、Log Analytics Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 下の *myWorkspaceKey* 値をワークスペース キーに、*myWorkspaceId* 値をワークスペース ID に置き換えます。 これらの値は、 *[詳細設定]* の下にある Azure portal の Log Analytics ワークスペースにあります。 
+Azure CLI を使用して、Log Analytics エージェント VM 拡張機能を既存の仮想マシンにデプロイすることができます。 下の *myWorkspaceKey* 値をワークスペース キーに、*myWorkspaceId* 値をワークスペース ID に置き換えます。 これらの値は、 *[詳細設定]* の下にある Azure portal の Log Analytics ワークスペースにあります。 
 
 ```azurecli
 az vm extension set \

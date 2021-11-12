@@ -11,12 +11,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2, ignite-fall-2021
 ms.date: 10/21/2021
-ms.openlocfilehash: 02c927b55812e4b309e53679cf3548d889bdc12f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 03d5c93d27587e88ae1f21e12b8a729fab042ac7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131079417"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554034"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 
@@ -36,29 +36,23 @@ Azure Machine Learning エンドポイント (プレビュー) を使用して�
 
 機械学習モデルをトレーニングした後、他のユーザーがそのモデルを使用して推論を実行できるようにするために、それをデプロイする必要があります。 Azure Machine Learning では、**エンドポイント** (プレビュー) と **デプロイ** (プレビュー) を使用して、そうすることができます。
 
-:::image type="content" source="media/concept-endpoints/endpoint-concept.png" alt-text="2 つのデプロイへのエンドポイント分割トラフィックを示す図":::
-
 **エンドポイント** は、トレーニング済みモデルの推論 (スコアリング) 出力を受信するためにクライアントが呼び出すことができる HTTPS エンドポイントです。 次の機能を提供します。 
 - "キーとトークン" ベースの認証を使用する認証 
 - SSL ターミネーション 
-- デプロイ間のトラフィック割り当て 
 - 安定したスコアリング URI (endpoint-name.region.inference.ml.azure.com)
 
 
-**デプロイ** は、実際の推論を実行するモデルをホストするコンピューティング リソースのセットです。 その構成要素を次に示します。 
-- モデルの詳細 (コード、モデル、環境) 
-- コンピューティング リソースとスケールの設定 
-- 詳細設定 (要求とプローブの設定など)
+**デプロイ** は、実際の推論を実行するモデルをホストするのに必要なリソースのセットです。 
 
-1 つのエンドポイントに複数のデプロイを含めることができます。 エンドポイントとデプロイは、Azure portal に表示される、独立した ARM リソースです。
+1 つのエンドポイントに複数のデプロイを含めることができます。 エンドポイントとデプロイは、Azure portal に表示される、独立した Azure Resource Manager リソースです。
 
-Azure Machine Learning では、エンドポイントとデプロイの概念を使用して、異なる種類のエンドポイント ([**オンライン エンドポイント**](#what-are-online-endpoints-preview)と [**バッチ エンドポイント**](#what-are-batch-endpoints-preview)) を実装します。
+Azure Machine Learning では、エンドポイントとデプロイの概念を使用して、異なる種類のエンドポイント ([オンライン エンドポイント](#what-are-online-endpoints-preview)と[バッチ エンドポイント](#what-are-batch-endpoints-preview)) を実装します。
 
 ### <a name="multiple-developer-interfaces"></a>複数の開発者インターフェイス
 
 複数の開発者ツールを使用して、バッチおよびオンライン エンドポイントを作成、管理します。
 - Azure CLI
-- ARM と REST API
+- Azure Resource Manager/REST API
 - Azure Machine Learning スタジオ Web ポータル
 - Azure portal (IT および管理者)
 - Azure CLI インターフェイスと REST および ARM インターフェイスを使用した、CI/CD MLOps パイプラインのサポート
@@ -67,9 +61,13 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 **オンライン エンドポイント** (プレビュー) は、オンライン (リアルタイム) の推論に使用されるエンドポイントです。 **バッチ エンドポイント** と比較すると、**オンライン エンドポイント** には、クライアントからデータを受信する準備が整い、リアルタイムで応答を返信できる **デプロイ** が含まれています。
 
+次の図は、"blue" と "green" の 2 つのデプロイを持つオンライン エンドポイントを示しています。 Blue デプロイでは、CPU SKU を持つ VM が使用され、モデルの v1 が実行されます。 緑のデプロイでは、GPU SKU を持つ VM が使用され、モデルの v2 が使用されます。 エンドポイントは、着信トラフィックの 90% を青色のデプロイにルーティングするように構成されていますが、緑は残りの 10% を受け取ります。
+
+:::image type="content" source="media/concept-endpoints/endpoint-concept.png" alt-text="2 つのデプロイへのエンドポイント分割トラフィックを示す図":::
+
 ### <a name="online-endpoints-requirements"></a>オンライン エンドポイントの要件
 
-オンライン エンドポイントを作成するには、以下を指定する必要があります。
+オンライン エンドポイントを作成するには、次の要素を指定する必要があります。
 - モデル ファイル (または自分のワークスペース内の登録済みモデルを指定) 
 - スコアリング スクリプト - スコアリングおよび推論を実行するために必要なコード
 - 環境 - Conda 依存関係がある Docker イメージ、または dockerfile 
@@ -83,9 +81,12 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 ### <a name="native-bluegreen-deployment"></a>ネイティブ ブルーグリーン デプロイ 
 
-1 つのエンドポイントに複数のデプロイを含めることができることを思い出してください。 オンライン エンドポイントでは、負荷分散を実行して、各デプロイに任意の割合のトラフィックを割り当てることができます。
+1 つのエンドポイントに複数のデプロイを含めることができることを思い出してください。 オンライン エンドポイントでは、負荷分散を実行して、各デプロイに任意の割合のトラフィックを与えられます。
 
 トラフィック割り当てを使用すると、異なるインスタンス間で要求を分散することによって、ブルーグリーン デプロイの安全なロールアウトを実施できます。
+
+> [!TIP]
+> 要求では、`azureml-model-deployment` の HTTP ヘッダーを含めることによって、構成されたトラフィックの負荷分散をバイパスできます。 ヘッダーの値を、要求のルーティング先のデプロイの名前に設定します。
 
 :::image type="content" source="media/concept-endpoints/traffic-allocation.png" alt-text="デプロイ間のトラフィック割り当てを設定するためのスライダー インターフェイスを示すスクリーンショット":::
 
@@ -103,6 +104,17 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 - マネージド ID: ユーザー割り当てとシステム割り当て (マネージド オンライン エンドポイントのみ)
 - エンドポイント呼び出しのための既定の SSL
 
+### <a name="autoscaling"></a>自動スケール
+
+自動スケールでは、アプリケーションの負荷を処理するために適切な量のリソースが自動的に実行されます。 マネージド エンドポイントは、[Azure Monitor 自動スケーリング](/azure/azure-monitor/autoscale/autoscale-overview.md)機能との統合によって、自動スケールをサポートします。 メトリックベースのスケーリング (たとえば、CPU 使用率 >70%)、スケジュールに基づくスケーリング (たとえば、営業時間のピーク時のルールのスケーリング)、またはその組み合わせを構成できます。
+
+:::image type="content" source="media/concept-endpoints/concept-autoscale.png" alt-text="ルールに応じて、最小インスタンスと最大インスタンスの間で自動スケールが柔軟に提供することを示すスクリーンショット":::
+
+### <a name="visual-studio-code-debugging"></a>Visual Studio Code のデバッグ
+
+Visual Studio Code を使用すると、エンドポイントを対話的にデバッグできます。
+
+:::image type="content" source="media/concept-endpoints/visual-studio-code-full.png" alt-text="VSCode でのエンドポイント デバッグのスクリーンショット。" lightbox="media/concept-endpoints/visual-studio-code-full.png" :::
 
 ## <a name="managed-online-endpoints-vs-kubernetes-online-endpoints-preview"></a>マネージド オンライン エンドポイントと Kubernetes オンライン エンドポイント (プレビュー)
 
@@ -116,7 +128,7 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 | **追加設定なしの監視** | [Azure 監視](how-to-monitor-online-endpoints.md) <br> (待ち時間やスループットなど、主要なメトリックが含まれます) | サポートされていない |
 | **追加設定なしのログ** | [エンドポイント レベルでの Azure ログと Log Analytics](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | サポートされています |
 | **Application Insights** | サポートされています | サポートされています |
-| **管理対象 ID** | [サポートされています](tutorial-deploy-managed-endpoints-using-system-managed-identity.md) | サポートされています |
+| **管理対象 ID** | [サポートされています](how-to-access-resources-from-endpoints-managed-identities.md) | サポートされています |
 | **仮想ネットワーク (VNET)** | サポートされていません (パブリック プレビュー) | サポートされています |
 | **コストを表示する** | [エンドポイントとデプロイのレベル](how-to-view-online-endpoints-costs.md) | クラスター レベル |
 
@@ -126,22 +138,22 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 - マネージド インフラストラクチャ
     - コンピューティングを自動的にプロビジョニングし、モデルをホストします (VM の種類とスケールの設定のみ指定する必要があります) 
-    - 基になるホスト OS イメージに対して更新プログラムとパッチを自動的に実行します
-    - システム障害が発生した場合のノードの自動復旧
-
-:::image type="content" source="media/concept-endpoints/log-analytics-and-azure-monitor.png" alt-text="エンドポイントの待ち時間の Azure Monitor グラフを示すスクリーンショット":::
+    - 基になるホスト OS イメージを自動的に更新しパッチを適用する
+    - システム障害が発生した場合のノードの自動回復
 
 - 監視とログ
     - [Azure Monitor とのネイティブ統合](how-to-monitor-online-endpoints.md)を使用して、モデルの可用性、パフォーマンス、および SLA を監視します。
     - ログと、Azure Log Analytics とのネイティブ統合を使用して、デプロイをデバッグします。
 
+    :::image type="content" source="media/concept-endpoints/log-analytics-and-azure-monitor.png" alt-text="エンドポイントの待ち時間の Azure Monitor グラフを示すスクリーンショット":::
+
 - マネージド ID
     -  [マネージド ID を使用して、スコアリング スクリプトからセキュリティで保護されたリソースにアクセス](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)します
 
-:::image type="content" source="media/concept-endpoints/endpoint-deployment-costs.png" alt-text="エンドポイントとデプロイのコスト グラフのスクリーンショット":::
-
 - コストを表示する 
     - マネージド オンライン エンドポイントを使用すると、[エンドポイントとデプロイのレベルでコストを監視](how-to-view-online-endpoints-costs.md)できます。
+    
+    :::image type="content" source="media/concept-endpoints/endpoint-deployment-costs.png" alt-text="エンドポイントとデプロイのコスト グラフのスクリーンショット":::
 
 ステップバイステップのチュートリアルについては、[マネージド オンライン エンドポイントをデプロイする方法](how-to-deploy-managed-online-endpoints.md)に関するページを参照してください。
 
@@ -149,26 +161,26 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 **バッチ エンドポイント** (プレビュー) は、一定期間に大量のデータに対してバッチ推論を実行するために使用されるエンドポイントです。  **バッチ エンドポイント** は、データへのポインターを受け取り、ジョブを非同期に実行して、複数のコンピューティング クラスターでデータを並列に処理します。 バッチ エンドポイントは、さらに詳細な分析のために、出力をデータ ストアに格納します。
 
-[Azure CLI を使用してバッチ エンドポイントをデプロイおよび使用する](how-to-use-batch-endpoint.md)方法について学習してください。
+:::image type="content" source="media/concept-endpoints/batch-endpoint.png" alt-text="1 つのバッチ エンドポイントで複数のデプロイ (そのうちの 1 つがデフォルト) に要求をルーティングできることを示す図。":::
 
-### <a name="no-code-mlflow-model-deployments"></a>コードなしの MLflow モデルのデプロイ
+### <a name="batch-deployment-requirements"></a>バッチ デプロイ要件
 
-スコアリング スクリプトと実行環境が自動的に作成されるようにするには、[MLflow モデル](how-to-use-mlflow.md)用のコードなしのバッチ エンドポイント作成エクスペリエンスを使用します。  
+バッチ デプロイを作成するには、次の要素を指定する必要があります。
 
-MLflow モデルを使用するバッチ エンドポイントの場合は、以下を指定する必要があります。
 - モデル ファイル (または自分のワークスペース内の登録済みモデルを指定)
-- コンピューティング ターゲット
-
-ただし、MLflow モデルをデプロイして **いない** 場合は、追加の要件を指定する必要があります。
+- Compute
 - スコアリング スクリプト - スコアリングおよび推論を実行するために必要なコード
 - 環境 - Conda 依存関係がある Docker イメージ
 
+[MLflow モデル](how-to-use-mlflow.md)を配置する場合は、両方が自動生成されるため、スコアリング スクリプトと実行環境を提供する必要はありません。
+
+[Azure CLI を使用してバッチ エンドポイントをデプロイおよび使用する](how-to-use-batch-endpoint.md)方法と[スタジオ Web ポータル](how-to-use-batch-endpoints-studio.md)について学習してください。
 
 ### <a name="managed-cost-with-autoscaling-compute"></a>自動スケーリング コンピューティングによって管理されるコスト
 
 バッチ エンドポイントを呼び出すと、非同期バッチ推論ジョブがトリガーされます。 コンピューティング リソースは、ジョブの開始時に自動的にプロビジョニングされ、ジョブの完了時に自動的に割り当て解除されます。 そのため、コンピューティングを使用しているときにのみ料金を支払うことになります。
 
-実行を高速化したり、コストを削減したりするために、個々のバッチ推論ジョブの[コンピューティング リソースの設定](how-to-use-batch-endpoint.md#overwrite-settings) (インスタンス数など) と詳細設定 (ミニ バッチ サイズ、エラーしきい値など) をオーバーライドできます。
+実行を高速化し、コストを削減するために、個々のバッチ推論ジョブの[コンピューティング リソースの設定](how-to-use-batch-endpoint.md#configure-the-output-location-and-overwrite-settings) (インスタンス数など) と詳細設定 (ミニ バッチ サイズ、エラーしきい値など) をオーバーライドできます。
 
 ### <a name="flexible-data-sources-and-storage"></a>柔軟なデータ ソースとストレージ
 

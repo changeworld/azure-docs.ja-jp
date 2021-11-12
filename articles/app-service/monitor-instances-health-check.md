@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 37b876b177b7879c57255619d3f5e7e113a2a284
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 59e3d0f8e71de6333b3978dd9d40b51206a8a2a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278069"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462350"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
@@ -24,7 +24,7 @@ ms.locfileid: "129278069"
 
 - アプリでパスを指定すると、正常性チェックによって、App Service アプリのすべてのインスタンスで 1 分間隔でこのパスに対する ping が実行されます。
 - インスタンスが 2 つ以上の要求の後に 200 ～ 299 (200 と 299 を含む) の状態コードで応答しない場合、または ping への応答に失敗した場合は、システムによって異常があると判断され、削除されます。
-- 削除後、正常性チェックによる異常なインスタンスへの ping が継続されます。 引き続き正常に応答しない場合、インスタンスを正常な状態に戻すために、基になる VM が App Service によって再起動されます。
+- 削除後、正常性チェックによる異常なインスタンスへの ping が継続されます。 インスタンスが正常な状態コード (200 - 299) で応答し始める場合、インスタンスはロード バランサーに返されます。
 - インスタンスが 1 時間、異常のままである場合、それは新しいインスタンスに置き換えられます。
 - さらに、スケール アップまたはスケール アウトする場合は、新しいインスタンスの準備ができていることを保証するために、App Service によって正常性チェック パスに対して ping が実行されます。
 
@@ -81,7 +81,7 @@ ms.locfileid: "129278069"
 
 ### <a name="are-the-health-check-requests-sent-over-http-or-https"></a>正常性チェック要求は、HTTP または HTTPS のどちらで送信されますか?
 
-サイトで [HTTPS のみ](configure-ssl-bindings.md#enforce-https)が有効になっている場合、正常性チェック要求は HTTPS で送信されます。 それ以外の場合は、HTTP で送信されます。
+Windows App Service では、サイトで [HTTPS のみ](configure-ssl-bindings.md#enforce-https)が有効になっている場合、正常性チェック要求は HTTPS で送信されます。 それ以外の場合は、HTTP で送信されます。 Linux App Service では、正常性チェック要求は HTTP を使用してのみ送信され、現時点では HTTP **S** を使用して送信することはできません。
 
 ### <a name="what-if-i-have-multiple-apps-on-the-same-app-service-plan"></a>同じ App Service プランで複数のアプリがある場合はどうなりますか?
 

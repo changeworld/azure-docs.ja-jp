@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 4b27e60776c459ed74bcf33c79a819f90722a0d0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5ead71fc6dd4fdbea8db6d4915c145c5a60a071f
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130239003"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135466"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -31,22 +31,16 @@ Translator のバージョン 3 には、最新の JSON ベースの Web API が
 
 ## <a name="base-urls"></a>ベース URL
 
-Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、10 の [Azure 地域](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
+Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 グローバル エンドポイントを使用するときにデータセンターで障害が発生した場合、要求は地理的な場所の外部にルーティングされる可能性があります。
 
-* **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2
-* **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
-* **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ
+特定の地域内で要求を強制的に処理するには、目的の地理的エンドポイントを使用します。 すべての要求は、地域内のデータセンター間で処理されます。 
 
-Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その地域以外に要求がルーティングされます。
-
-要求を特定の地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的の地域のエンドポイントに変更します。
-
-|[地理的な場所]|ベース URL (地域のエンドポイント)|
-|:--|:--|
-|グローバル (リージョンなし)|    api.cognitive.microsofttranslator.com|
-|United States|    api-nam.cognitive.microsofttranslator.com|
-|ヨーロッパ|    api-eur.cognitive.microsofttranslator.com|
-|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
+|[地理的な場所]|ベース URL (地域のエンドポイント)|データ センター|
+|:--|:--|:--|
+|グローバル (リージョンなし)|    api.cognitive.microsofttranslator.com|最も近い利用可能なデータセンター|
+|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|韓国南部、東日本、東南アジア、オーストラリア東部|
+|ヨーロッパ|    api-eur.cognitive.microsofttranslator.com|北ヨーロッパ、西ヨーロッパ|
+|米国|    api-nam.cognitive.microsofttranslator.com|米国東部、米国中南部、米国中西部、および米国西部 2|
 
 <sup>1</sup> スイス北部またはスイス西部にあるリソースを使用しているお客様は、彼らの Text API 要求が確実にスイス内で処理されるようにすることができます。 要求がスイスで処理されるようにするには、[リソース リージョン] の [Switzerland North]\(スイス北部\) または [Switzerland West]\(スイス西部\) で Translator リソースを作成し、API 要求でそのリソースのカスタム エンドポイントを使用します。 たとえば、Azure portal で [リソース リージョン] を [Switzerland North]\(スイス北部\) として Translator リソースを作成し、リソース名が "my-ch-n" である場合、カスタム エンドポイントは "https://my-ch-n.cognitiveservices.azure.com" です。 翻訳する要求の例を次に示します。
 ```curl
@@ -125,8 +119,6 @@ Cognitive Service のマルチサービス リソースを使用する場合。 
 |Ocp-Apim-Subscription-Region| 値は、マルチサービス リソースのリージョンです。 |
 
 マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
-
-使用可能なリージョンは、`australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`、`southafricanorth` です。
 
 クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
 

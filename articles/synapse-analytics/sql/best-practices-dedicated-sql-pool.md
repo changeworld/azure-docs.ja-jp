@@ -7,19 +7,19 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 03/17/2021
+ms.date: 11/02/2021
 ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: c0c436a2e36edbd6feb433074efc2d746ee38f18
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.reviewer: wiassaf
+ms.openlocfilehash: a6ebaa9f6afe9afe007c5ffb2eb0a164d3f2ac75
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091827"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500547"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プールのベスト プラクティス
 
-この記事には、Azure Synapse Analytics で専用 SQL プールの最適なパフォーマンスを実現するのに役立つベスト プラクティスがまとめられています。  サーバーレス SQL プールを使用している場合の具体的なガイダンスについては、[サーバーレス SQL プールのベスト プラクティス](best-practices-serverless-sql-pool.md)に関する記事を参照してください。ここでは、ソリューションを構築するときに重視すべき基本的なガイダンスと重要な領域について説明します。 各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
+この記事には、Azure Synapse Analytics で専用 SQL プールの最適なパフォーマンスを実現するのに役立つベスト プラクティスがまとめられています。 サーバーレス SQL プールを使用している場合は、[サーバーレス SQL プールのベスト プラクティス](best-practices-serverless-sql-pool.md)に関する記事で、具体的なガイダンスをご覧ください。 ここでは、ソリューションを構築するときに重視すべき基本的なガイダンスと重要な領域について説明します。 各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
 
 ## <a name="dedicated-sql-pools-loading"></a>専用 SQL プールの読み込み
 
@@ -60,7 +60,7 @@ ms.locfileid: "129091827"
 
 PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行できます。 CTAS を使用すると、トランザクション ログが最小限に抑えられ、データを最も高速に読み込むことができます。 Azure Data Factory では PolyBase の読み込みもサポートされており、CTAS と同様のパフォーマンスを実現できます。 PolyBase では、Gzip ファイルなど、さまざまなファイル形式をサポートしています。
 
-Gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。 全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。 このセクションに関連するトピックの追加情報については、次の記事をご覧ください。
+Gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。 全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。 このセクションに関連する追加情報については、次の記事をご覧ください。
 
 - [データの読み込み](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)
 - [PolyBase の使い方ガイド](data-loading-best-practices.md)
@@ -72,9 +72,9 @@ Gzip テキスト ファイルを使用する場合にスループットを最�
 
 ## <a name="load-then-query-external-tables"></a>外部テーブルを読み込んで、クエリを実行する
 
-Polybase はクエリには適していません。 専用 SQL プールの Polybase テーブルで現在サポートされているのは、Azure BLOB ファイルと Azure Data Lake ストレージのみです。 こうしたファイルには、それをバックアップするためのコンピューティング リソースがありません。 つまり、専用 SQL プールではこの作業をオフロードできないため、データを読み取れるように、ファイルを tempdb に読み込んで、ファイル全体を読み取る必要があります。
+PolyBase はクエリには適していません。 専用 SQL プールの PolyBase テーブルで現在サポートされているのは、Azure BLOB ファイルと Azure Data Lake ストレージのみです。 こうしたファイルには、それをバックアップするためのコンピューティング リソースがありません。 つまり、専用 SQL プールではこの作業をオフロードできないため、データを読み取れるように、ファイルを `tempdb` に読み込んで、ファイル全体を読み取る必要があります。
 
-このデータに対して複数のクエリを実行する場合は、データを一度読み込み、クエリでローカル テーブルが使用されるように指定することをお勧めします。 Polybase に関する詳細なガイダンスについては、[PolyBase を使用するためのガイド](data-loading-best-practices.md)に関する記事をご覧ください。
+このデータに対して複数のクエリを実行する場合は、データを一度読み込み、クエリでローカル テーブルが使用されるように指定することをお勧めします。 PolyBase に関する詳細なガイダンスについては、[PolyBase を使用するためのガイド](data-loading-best-practices.md)に関する記事をご覧ください。
 
 ## <a name="hash-distribute-large-tables"></a>ハッシュで大規模なテーブルを分散させる
 
@@ -141,7 +141,7 @@ DDL を定義するときは、データをサポートしている最小のデ�
 
 同様に、テーブルを永続ストレージに読み込むよりも、データを一時テーブルに読み込んだ方が読み込み速度が大幅に向上します。  一時テーブルは、"#" で始まり、作成元のセッションからしかアクセスできません。 そのため、一部のシナリオでしか機能しない可能性があります。 ヒープ テーブルは、CREATE TABLE の WITH 句で定義します。  一時テーブルを使用する場合は、その一時テーブルの統計も必ず作成してください。
 
-詳細なガイダンスについては、[一時テーブル](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。
+詳細については、[一時テーブル](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。
 
 ## <a name="optimize-clustered-columnstore-tables"></a>クラスター化列ストア テーブルを最適化する
 
@@ -163,7 +163,7 @@ DDL を定義するときは、データをサポートしている最小のデ�
 列ストア テーブルに対してクエリを実行する場合は、必要な列のみを選択すると、クエリの実行速度が向上します。  テーブルおよび列ストアのインデックスの詳細については、下の記事を参照してください。
 - [列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)
 - [列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)
-- [列ストア インデックスの再構築](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality) 
+- [列ストア インデックスの再構築](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuild-indexes-to-improve-segment-quality) 
 - [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](../sql-data-warehouse/performance-tuning-ordered-cci.md)
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>大きなリソース クラスを使用して、クエリのパフォーマンスを向上させる

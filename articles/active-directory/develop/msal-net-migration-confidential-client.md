@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 2148aa8deaa698c10918ee7a6b667c7d90286448
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 4e362812224f8e538d7a36dfa5378e23f6438d6e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355074"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462824"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する
 
@@ -149,6 +149,8 @@ public partial class AuthWrapper
 
   var authResult = await app.AcquireTokenForClient(
               new [] { $"{resourceId}/.default" })
+              // .WithTenantId(specificTenant)
+              // See https://aka.ms/msal.net/withTenantId
               .ExecuteAsync()
               .ConfigureAwait(false);
 
@@ -171,7 +173,7 @@ public partial class AuthWrapper
 
 ### <a name="migrate-a-web-api-that-calls-downstream-web-apis"></a>ダウンストリーム Web API を呼び出す Web API を移行する
 
-ダウンストリーム Web API を呼び出す Web API は、OAuth2.0 [on-behalf-of (OBO)](v2-oauth2-on-behalf-of-flow.md) フローを使用します。 Web API のコードでは、HTTP 承認ヘッダーから取得したトークンを使用し、それを検証します。 このトークンは、ダウンストリーム Web API を呼び出すトークンに対して交換されます。 このトークンは、ADAL.NET と MSAL.NET の両方で `UserAssertion` インスタンスとして使用されます。
+ダウンストリーム Web API を呼び出す Web API は、OAuth2.0 [on-behalf-of (OBO)](v2-oauth2-on-behalf-of-flow.md) フローを使用します。 Web API は、HTTP **承認** ヘッダーから取得したアクセス トークンを使用し、このトークンを検証します。 このトークンは、ダウンストリーム Web API を呼び出すトークンに対して交換されます。 このトークンは、ADAL.NET と MSAL.NET の両方で `UserAssertion` インスタンスとして使用されます。
 
 #### <a name="find-out-if-your-code-uses-obo"></a>コードで OBO を使用しているかどうかを確認する
 
@@ -272,6 +274,8 @@ public partial class AuthWrapper
   var authResult = await app.AcquireTokenOnBehalfOf(
               new string[] { $"{resourceId}/.default" },
               userAssertion)
+              // .WithTenantId(specificTenant) 
+              // See https://aka.ms/msal.net/withTenantId
               .ExecuteAsync()
               .ConfigureAwait(false);
   
@@ -300,9 +304,9 @@ app.UseInMemoryTokenCaches(); // or a distributed token cache.
 
 ユーザーのサインインを実行し、ユーザーの代わりに Web API を呼び出す Web アプリは、OAuth2.0 [承認コード フロー](v2-oauth2-auth-code-flow.md)を使用します。 通常の動作は次のとおりです。
 
-1. Web アプリは、承認コード フローの第一段階を実行して、ユーザーのサインインを実行します。 これを行うために、Azure Active Directory (Azure AD) の承認エンドポイントに移動します。 ユーザーはサインインし、必要に応じて多要素認証を実行します。 この操作の結果として、アプリは承認コードを受け取ります。 ここまでは、ADAL と MSAL は関係していません。
-2. アプリは、承認コード フローの第二段階を実行します。 承認コードを使用して、アクセス トークン、ID トークン、更新トークンを取得します。 アプリケーションで `redirectUri` の値を指定する必要があります。これは、Azure AD がセキュリティ トークンを提供する URI です。 アプリは、この URI を受信した後、通常は ADAL または MSAL の `AcquireTokenByAuthorizationCode` を呼び出してコードを引き換え、トークン キャッシュに格納されるトークンを取得します。
-3. アプリは ADAL または MSAL を使用して `AcquireTokenSilent` を呼び出し、必要な Web API を呼び出すためのトークンを取得できるようにします。 これは、Web アプリ コントローラーから実行されます。
+1. Web アプリは、承認コード フローの第一段階を実行して、ユーザーのサインインを実行します。 これを行うには、Microosft ID プラットフォームの承認エンドポイントにアクセスします。 ユーザーはサインインし、必要に応じて多要素認証を実行します。 この操作の結果として、アプリは承認コードを受け取ります。 この段階では、認証ライブラリは使用されません。
+1. アプリは、承認コード フローの第二段階を実行します。 承認コードを使用して、アクセス トークン、ID トークン、更新トークンを取得します。 アプリケーションでは、`redirectUri` 値を指定する必要があります。これは、Microsoft ID プラットフォーム エンドポイントがセキュリティ トークンを提供する URI です。 アプリは、この URI を受信した後、通常は ADAL または MSAL の `AcquireTokenByAuthorizationCode` を呼び出してコードを引き換え、トークン キャッシュに格納されるトークンを取得します。
+1. アプリは ADAL または MSAL を使用して `AcquireTokenSilent` を呼び出し、必要な Web API を呼び出すためのトークンを取得できるようにします。 これは、Web アプリ コントローラーから実行されます。
 
 #### <a name="find-out-if-your-code-uses-the-auth-code-flow"></a>コードが承認コード フローを使用しているかどうかを確認する
 
@@ -442,7 +446,8 @@ public partial class AuthWrapper
    authResult = await app.AcquireTokenSilent(
                scopes,
                account)
-                .WithAuthority(authority)
+                // .WithTenantId(specificTenantId) 
+                // See https://aka.ms/msal.net/withTenantId
                 .ExecuteAsync().ConfigureAwait(false);
   }
   catch (MsalUiRequiredException)
@@ -496,6 +501,8 @@ app.UseInMemoryTokenCaches(); // or a distributed token cache.
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+### <a name="msalserviceexception"></a>MsalServiceException
+
 以下のトラブルシューティング情報には、次の 2 つの前提条件があります。 
 
 - ADAL.NET コードが動作していた。
@@ -511,10 +518,19 @@ app.UseInMemoryTokenCaches(); // or a distributed token cache.
 
 以下の手順を使用して、例外をトラブルシューティングできます。
 
-1. 最新バージョンの MSAL.NET を使用していることを確認します。
+1. 最新バージョンの [MSAL.NET](https://www.nuget.org/packages/Microsoft.Identity.Client/) を使用していることを確認します。
 1. 機密クライアント アプリケーションを構築するときに設定した証明機関ホストと、ADAL で使用した証明機関ホストが類似していることを確認します。 特に、同じ[クラウド](msal-national-cloud.md) (Azure Government、Azure China 21Vianet、または Azure Germany) を使用していることを確認します。
+
+### <a name="msalclientexception"></a>MsalClientException
+
+マルチテナントアプリケーションでは、アプリケーションのビルド時に共通の権限を指定し、Web API を呼び出すときに特定のテナント (ユーザーのテナントなど) をターゲットにするシナリオを使用できます。 MSAL.NET 4.37.0 以降、アプリケーションの作成時に `.WithAzureRegion` を指定すると、トークン要求時に `.WithAuthority` を使用する機関を指定できなくなります。 この場合、以前のバージョンの MSAL.NET から更新すると、次のエラーが表示されます。
+
+  `MsalClientException - "You configured WithAuthority at the request level, and also WithAzureRegion. This is not supported when the environment changes from application to request. Use WithTenantId at the request level instead."`
+
+この問題を修復するには、AcquireTokenXXX 式の `.WithAuthority` を `.WithTenantId` に置き換えます。 GUID またはドメイン名を使用してテナントを指定します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[ADAL.NET と MSAL.NET アプリの違い](msal-net-differences-adal-net.md)についての詳細を確認してください。
-[MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)の詳細を確認してください。
+各項目の詳細情報
+- [ADAL.NET アプリと MSAL.NET アプリの違い](msal-net-differences-adal-net.md)。
+- [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)

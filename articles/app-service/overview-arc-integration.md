@@ -2,13 +2,13 @@
 title: Azure Arc 上の App Service
 description: App Service と Azure オペレーター向け Azure Arc との 統合の概要。
 ms.topic: article
-ms.date: 08/17/2021
-ms.openlocfilehash: cec1e7bb9dac43e33e85b6036910220a1fa287c2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.openlocfilehash: 74cf4063d92aa5d563df881f2210e2ca5d08543e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711655"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440357"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
 
@@ -32,6 +32,7 @@ App Service Kubernetes 環境には、次のパブリック プレビューの�
 |---------------------------------------------------------|---------------------------------------------------------------------------------------|
 | サポート対象の Azure リージョン                                 | 米国東部、西ヨーロッパ                                                                  |
 | クラスターのネットワーク要件                          | サービスの種類として `LoadBalancer` をサポートし、パブリックにアドレス指定可能な静的 IP を提供する必要がある |
+| クラスター ストレージの要件                             | 必要に応じて、コード ベースのアプリのデプロイとビルドをサポートするために、拡張機能で使用できるクラスター接続ストレージ クラスが必要です                      |
 | 機能: ネットワーク                                     | [使用不可 (クラスター ネットワークに依存)](#are-networking-features-supported)      |
 | 機能: マネージド ID                             | [使用不可](#are-managed-identities-supported)                                    |
 | 機能: Key Vault 参照                           | 使用不可 (マネージド ID によって異なる)                                         |
@@ -123,6 +124,31 @@ Kubernetes 環境リソースを作成するときに、一部のサブスクリ
 ### <a name="can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster"></a>ARM64 で動作しているクラスターに、Application のサービスの拡張機能をデプロイできますか。
 
 ARM64 で動作しているクラスターは現在サポートしていません。  
+
+## <a name="extension-release-notes"></a>拡張機能のリリース ノート
+
+### <a name="application-services-extension-v-090-may-2021"></a>アプリケーション サービス拡張機能 v 0.9.0 (2021 年 5 月)
+
+- アプリケーション サービス拡張の初期パブリック プレビュー リリース。
+- Web、関数、およびロジック アプリケーションのコードとコンテナーベースのデプロイのサポート。
+- Web アプリケーション ランタイム サポート -.NET 3.1 および 5.0 ノード JS 12 および 14。Python 3.6、3.7、3.8。PHP 7.3 および 7.4。Ruby 2.5、2.5.5、2.6、および 2.6.2。Java SE 8u232、8u242、8u252、11.05、11.06、11.07。Tomcat 8.5、8.5.41、8.5.53、8.5.57、9.0、9.0.20、9.0.33、9.0.37。
+
+### <a name="application-services-extension-v-0100-november-2021"></a>アプリケーション サービス拡張 v 0.10.0 (2021 年 11 月)
+
+拡張機能が安定したバージョンであり、自動アップグレード マイナー バージョンが有効に設定されている場合、拡張機能は自動的にアップグレードされます。  拡張機能を最新バージョンの拡張機能に手動でアップグレードするには、次のコマンドを実行します。
+
+- Envoy エンドポイントへの割り当てに必要な、事前割り当て済み静的 IP アドレスの要件を削除しました
+- Keda を v2.4.0 にアップグレードする
+- Envoy を v1.19.0 にアップグレードする
+- Azure Function runtime を v3.3.1 にアップグレードする
+- App Controller と Envoy Controller の既定のレプリカ数を 2 に設定して安定性をさらに向上させる
+
+拡張機能が安定したバージョンであり、auto-upgrade-minor-version が true に設定されている場合、拡張機能は自動的にアップグレードされます。  拡張機能を最新バージョンに手動でアップグレードするには、次のコマンドを実行します。
+
+```azurecli-interactive
+    az k8s-extension update --cluster-type connectedClusters -c <clustername> -g <resource group> -n <extension name> --release-train stable --version 0.10.0
+```
+
 
 ## <a name="next-steps"></a>次の手順
 

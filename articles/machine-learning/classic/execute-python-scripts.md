@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: b83cf9896c82b4821e38b0245a9330cbaab7fede
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 67187d7c472b385e7196cc8d8e3b5f61f5107c3e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689610"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315427"
 ---
 # <a name="execute-python-machine-learning-scripts-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
 

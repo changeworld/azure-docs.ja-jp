@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 10/11/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8f9a02149cb7229a201f8dfb9c11381b19d8e8ec
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9dddb8118cc0bd328e19d73f05d2dd0eb01ebd4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023331"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452758"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Azure Sentinel データ コネクタを見つける
 
@@ -653,14 +653,9 @@ TCP 経由で Log Analytics エージェントにデータをストリーミン�
 
 
 
-## <a name="domain-name-server"></a>ドメイン ネーム サーバー
+## <a name="dns-preview"></a>DNS (プレビュー)
 
-| コネクタ属性 | 説明 |
-| --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Log Analytics エージェントベースの接続](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
-| **Log Analytics テーブル** | DnsEvents<br>DnsInventory |
-| **サポートしているもの** | Microsoft |
-| | |
+**「[Windows DNS Server (プレビュー)](#windows-dns-server-preview)」を参照してください**。
 
 ## <a name="dynamics-365"></a>Dynamics 365
 
@@ -1396,14 +1391,17 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[セキュリティ イベントを収集するために Windows サーバーに接続する](connect-windows-security-events.md)** (上位のコネクタの記事) |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Log Analytics エージェントベースの接続](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Log Analytics テーブル** | SecurityEvents |
 | **サポートしているもの** | Microsoft |
 | | |
 
+
 詳細については、[セキュリティで保護されていないプロトコル ブックの設定](./get-visibility.md#use-built-in-workbooks)に関するページを参照してください。
 
 Azure Monitor エージェント (AMA) に基づく [**AMA コネクタを使用した Windows セキュリティ イベント**](#windows-security-events-via-ama)も参照
+
+[**異常な RDP ログイン検出** 用に **セキュリティ イベント/Windows セキュリティ イベント コネクタ** を構成する](#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)。
 
 ## <a name="sentinelone-preview"></a>SentinelOne (プレビュー)
 
@@ -1631,11 +1629,35 @@ Azure Monitor エージェント (AMA) に基づく [**AMA コネクタを使用
 | | |
 
 
+## <a name="windows-dns-server-preview"></a>Windows DNS Server (プレビュー)
+
+| コネクタ属性 | 説明 |
+| --- | --- |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Log Analytics エージェントベースの接続](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
+| **Log Analytics テーブル** | DnsEvents<br>DnsInventory |
+| **サポートしているもの** | Microsoft |
+| | |
+
+## <a name="windows-forwarded-events-preview"></a>Windows の転送済みイベント (プレビュー)
+
+| コネクタ属性 | 説明 |
+| --- | --- |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Azure Monitor エージェントベースの接続](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)**<br><br>[Windows の転送済みイベント コネクタをデプロイするための追加手順](#additional-instructions-for-deploying-the-windows-forwarded-events-connector) |
+| **前提条件** | Windows イベント コレクション (WEC) が有効になっていて、実行されている必要があります。<br>WEC マシンに、Azure Monitor エージェントをインストールします。 |
+| **xPath クエリ プレフィックス** | "ForwardedEvents!*" |
+| **Log Analytics テーブル** | WindowsEvents |
+| **サポートしているもの** | Microsoft |
+| | |
+
+### <a name="additional-instructions-for-deploying-the-windows-forwarded-events-connector"></a>Windows の転送済みイベント コネクタをデプロイするための追加手順
+
+データ正規化の完全なサポートを保証するために、[Azure Sentinel Information Model (ASIM)](normalization.md) パーサーをインストールすることをお勧めします。 これらのパーサーは、[Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers/ASim%20WindowsEvent)から、そこの **[Azure へのデプロイ]** ボタンを使用してデプロイできます。
+
 ## <a name="windows-firewall"></a>Windows ファイアウォール
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Log Analytics エージェントベースの接続](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Log Analytics エージェントベースの接続](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Log Analytics テーブル** | WindowsFirewall |
 | **サポートしているもの** | Microsoft |
 | | |
@@ -1644,12 +1666,38 @@ Azure Monitor エージェント (AMA) に基づく [**AMA コネクタを使用
 
 | コネクタ属性 | 説明 |
 | --- | --- |
-| **データ インジェスト方法** | **Azure サービス間の統合: <br>[セキュリティ イベントを収集するために Windows サーバーに接続する](connect-windows-security-events.md?tabs=AMA)** (上位のコネクタの記事) |
+| **データ インジェスト方法** | **Azure サービス間の統合: <br>[Azure Monitor エージェントベースの接続](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)** |
+| **xPath クエリ プレフィックス** | "Security!*" |
 | **Log Analytics テーブル** | SecurityEvents |
 | **サポートしているもの** | Microsoft |
 | | |
 
+
 [**レガシ エージェント コネクタを使用したセキュリティ イベント**](#security-events-via-legacy-agent-windows)も参照。
+
+### <a name="configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection"></a>異常な RDP ログイン検出用にセキュリティ イベント/Windows セキュリティ イベント コネクタを構成する
+
+> [!IMPORTANT]
+> 異常な RDP ログイン検出は現在、パブリック プレビュー段階です。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure Sentinel はセキュリティ イベント データに機械学習 (ML) を適用して、異常なリモート デスクトップ プロトコル (RDP) ログイン アクティビティを識別できます。 シナリオには以下が含まれます。
+
+- **通常とは異なる IP** - その IP アドレスが過去 30 日間にほとんどまたはまったく確認されていない
+
+- **通常とは異なる地理的な場所** - IP アドレス、市区町村、国、および ASN が過去 30 日間にほとんどまたはまったく確認されていない
+
+- **新しいユーザー** - 新しいユーザーが、過去 30 日間のデータに基づいて予期されないか確認されていない (またはその両方の) IP アドレスおよび地理的な場所からログインしている。
+
+**構成の手順**
+
+1. **セキュリティ イベント** または **Windows セキュリティ イベント** データ コネクタを使用して、RDP ログイン データ (イベント ID 4624) を収集している必要があります。 イベント セットを Azure Sentinel にストリーミングするには、"None" 以外の[イベント セット](windows-security-event-id-reference.md)を選択するか、このイベント ID を含むデータ収集ルールを作成します。
+
+1. Azure Sentinel ポータルで、 **[分析]** を選択した後、 **[規則のテンプレート]** タブを選択します。 **[(Preview) Anomalous RDP Login Detection]\((プレビュー) 異常な RDP ログイン検出\)** 規則を選択し、 **[状態]** スライダーを **[有効]** に移動します。
+
+    > [!NOTE]
+    > 機械学習アルゴリズムでは、ユーザー動作のベースライン プロファイルを作成するために 30 日間分のデータが必要であるため、インシデントを検出する前に、30 日間の Windows セキュリティ イベント データの収集を許可する必要があります。
 
 ## <a name="workplace-from-facebook-preview"></a>Workplace from Facebook (プレビュー)
 

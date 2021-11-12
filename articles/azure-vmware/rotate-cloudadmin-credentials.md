@@ -2,13 +2,13 @@
 title: Azure VMware Solution の cloudadmin 資格情報のローテーション
 description: Azure VMware Solution プライベート クラウドの vCenter Server の資格情報をローテーションする方法について説明します。
 ms.topic: how-to
-ms.date: 08/31/2021
-ms.openlocfilehash: 22a88feb7e7b8656666d82cdac4b4d02d546441e
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/10/2021
+ms.openlocfilehash: f8ab35888d2d298d1dcb6acd2abd6d659b782fd7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258067"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461773"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Azure VMware Solution の cloudadmin 資格情報のローテーション
 
@@ -18,7 +18,7 @@ ms.locfileid: "123258067"
 この記事では、Azure VMware Solution プライベート クラウドで、cloudadmin の資格情報 (vCenter の *CloudAdmin* 資格情報) をローテーションします。  このアカウントのパスワードの有効期限が切れることはありませんが、いつでも新しいパスワードを生成することができます。
 
 >[!CAUTION]
->cloudadmin ユーザーの資格情報を使用してプライベート クラウド内の vCenter にサービスを接続した場合、パスワードをローテーションすると、それらの接続は機能しなくなります。 これらの接続では、パスワードをローテーションする前にサービスを停止しない限り、cloudadmin アカウントもロックアウトされます。
+>cloudadmin 資格情報を使用してプライベート クラウド内の vCenter にサービスを接続した場合、パスワードをローテーションすると、それらの接続は機能しなくなります。 これらの接続では、パスワードをローテーションする前にサービスを停止しない限り、cloudadmin アカウントもロックアウトされます。
 
 ## <a name="prerequisites"></a>[前提条件]
 
@@ -30,13 +30,36 @@ cloudadmin ユーザーを使用してサービスを vCenter に接続するの
 
 ## <a name="reset-your-vcenter-credentials"></a>vCenter の資格情報をリセットする
 
-1. Azure portal から Azure Cloud Shell セッションを開きます。
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+ 
+1. Azure VMware Solution のプライベート クラウドから、 **[ID]** を選択します。
+
+1. **[新しいパスワードを生成]** を選択します。
+
+   :::image type="content" source="media/rotate-cloudadmin-credentials/reset-vcenter-credentials-1.png" alt-text="vCenter の資格情報と、それらをコピーまたは新しいパスワードを生成する方法を示すスクリーンショット。" lightbox="media/rotate-cloudadmin-credentials/reset-vcenter-credentials-1.png":::
+
+1. 確認チェック ボックスをオンにし、 **[パスワードの生成]** を選択します。
+
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+1. Azure VMware Solution プライベート クラウドで、Azure Cloud Shell セッションを開きます。
 
 2. vCenter *CloudAdmin* 資格情報を更新します。  **{SubscriptionID}** 、 **{ResourceGroup}** 、および **{PrivateCloudName}** は、実際のプライベート クラウドの情報に置き換える必要があることにご注意ください。 
 
    ```azurecli-interactive
    az resource invoke-action --action rotateVcenterPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
    ```
+
+---
+
+
+
+
  
 ## <a name="update-hcx-connector"></a>HCX コネクタを更新する 
 

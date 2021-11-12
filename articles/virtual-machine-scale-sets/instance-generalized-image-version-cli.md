@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用して一般化されたイメージからスケール セットを作成する
-description: Azure CLI を使用し、共有イメージ ギャラリー内の一般化されたイメージを使用してスケール セットを作成します。
+description: Azure CLI を使用し、Azure Compute Gallery 内の一般化されたイメージを使用してスケール セットを作成します。
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
-ms.openlocfilehash: a9ac2bd794ee4aa9f531ad9fcd2f07bb744d02c8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 3512a5e59cfa7f0f0bd9562498b4644454da7390
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691251"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459940"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Azure CLI を使用して一般化されたイメージからスケール セットを作成する
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
-Azure CLI を使用して、[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に格納されている一般化されたイメージ バージョンからスケール セットを作成します。 特殊化されたイメージ バージョンを使用してスケール セットを作成する場合は、[特殊化されたイメージからのスケール セット インスタンスの作成](instance-specialized-image-version-cli.md)に関する記事をご覧ください。
+Azure CLI を使用して、[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) に格納されている一般化されたイメージ バージョンからスケール セットを作成します。 特殊化されたイメージ バージョンを使用してスケール セットを作成する場合は、[特殊化されたイメージからのスケール セット インスタンスの作成](instance-specialized-image-version-cli.md)に関する記事をご覧ください。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -59,10 +59,10 @@ az vmss create \
 ## <a name="next-steps"></a>次のステップ
 [Azure Image Builder (プレビュー)](../virtual-machines/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
-共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
+Azure Compute Gallery リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
-- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
-- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Azure Compute Gallery の作成](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Azure Compute Gallery でのイメージ定義の作成](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Azure Compute Gallery でのイメージ バージョンの作成](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
 共有イメージ ギャラリーの詳細については、[概要](../virtual-machines/shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../virtual-machines/troubleshooting-shared-images.md)」を参照してください。

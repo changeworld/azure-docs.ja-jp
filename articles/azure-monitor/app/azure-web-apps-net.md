@@ -4,12 +4,12 @@ description: ASP.NET を使用した Azure App Services のアプリケーショ
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 5e85a12d017f5fc812ac4f910ce9517d73cc41c7
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 97c0d2710d14e523338ac7cd670383caa75c7cef
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154598"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443606"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet"></a>Azure App Service と ASP.NET のアプリケーション監視 
 
@@ -121,6 +121,9 @@ Application Insights を使用したテレメトリの収集を有効にする�
 2\.5.1 より前のバージョンからアップグレードする場合は、ApplicationInsigths dll がアプリケーションの bin フォルダーから削除されていることを確認します。[トラブルシューティングの手順](#troubleshooting)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+> [!NOTE]
+> Azure App Services で `ASP.NET` ランタイムを使用して Web アプリを作成すると、1 つの静的な HTML ページがスターター Web サイトとしてデプロイされます。 既定のテンプレートに関する問題のトラブルシューティングはお勧め **しません**。 問題のトラブルシューティングを行う前に、アプリケーションを展開します。
 
 以下は、Azure App Services 上で実行されている ASP.NET ベースのアプリケーションの拡張機能/エージェント ベースの監視について、手順を追って説明するトラブルシューティング ガイドです。
 

@@ -1,20 +1,22 @@
 ---
 title: IoT Hub からテレメトリを取り込む
 titleSuffix: Azure Digital Twins
-description: IoT Hub からデバイスのテレメトリ メッセージを取り込む方法について説明します。
+description: デバイス テレメトリ メッセージを Azure IoT Hub から Azure Digital Twins のインスタンスのデジタル ツインに取り込む方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 9/9/2021
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8fd5b6a046c53a34e41340250c8d6ac38fdf5706
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b10a87312fd7b27c22bbfa56a928a0357d4698e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128667352"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500941"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
+
+このガイドでは、IoT Hub からテレメトリを取り込み、それを Azure Digital Twins のインスタンスに送信できる関数を記述するプロセスについて説明します。
 
 Azure Digital Twins は、IoT デバイスやその他のソースからのデータに基づいています。 Azure Digital Twins で使用するデバイス データの一般的なソースは [IoT Hub](../iot-hub/about-iot-hub.md) です。
 
@@ -103,7 +105,7 @@ Azure Digital Twins にアクセスするために、関数アプリには、Azu
 
 ## <a name="connect-your-function-to-iot-hub"></a>関数の IoT Hub への接続
 
-このセクションでは、IoT Hub デバイス データのイベントの宛先として関数を設定します。 これにより、確実に IoT Hub のサーモスタット デバイスからのデータが Azure 関数に送信されて処理されます。
+このセクションでは、IoT Hub デバイス データのイベントの宛先として関数を設定します。 この方法で関数を設定すると、IoT Hub のサーモスタット デバイスからのデータが処理のために Azure 関数に送信されます。
 
 [Azure portal](https://portal.azure.com/) で、「[前提条件](#prerequisites)」セクションで作成した IoT Hub インスタンスに移動します。 **[イベント]** で、関数のサブスクリプションを作成します。
 

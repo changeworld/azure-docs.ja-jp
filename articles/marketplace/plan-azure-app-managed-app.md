@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/13/2021
-ms.openlocfilehash: 082b943aef3f82898b80d23d33a90d3f5ec3ebc6
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 11/02/2021
+ms.openlocfilehash: 76036b42693b17480f4e5ede8d93d981bf40d739
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515128"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429662"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -121,6 +121,10 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 ## <a name="notification-endpoint-url"></a>通知エンドポイント URL
 
 必要に応じて、プランのマネージド アプリケーション インスタンスでのすべての CRUD 操作に関する通知を受け取る、HTTPS Webhook エンドポイントを指定できます。
+
+Webhook URI を呼び出す前に、Azure によって末尾に `/resource` が追加されます。 そのため、Webhook URL は `/resource` で終わる必要があります。ただしこれは、パートナー センターの **[通知エンドポイント URL]** ボックスに入力された URI には含めません。 たとえば、通知エンドポイント URI として `https://contoso.com` を入力すると、`https://contoso.com/resource` が呼び出されます。
+
+マネージド アプリの通知からイベントをリッスンする場合は、`https://<url>/resource` をリッスンし、設定された URL だけではないことを確認します。 通知の例については、「[通知スキーマ](/azure/azure-resource-manager/managed-applications/publish-notifications#notification-schema)」を参照してください。
 
 ## <a name="customize-allowed-customer-actions-optional"></a>許可される顧客アクションをカスタマイズする (省略可能)
 

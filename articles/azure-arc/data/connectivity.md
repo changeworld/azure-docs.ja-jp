@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/08/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: fa34a8e5e801080f354e13b632917a1a05eabf43
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8e52c61db68aaf85af70b6bfb373bd7b331bd29
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832642"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555421"
 ---
 # <a name="connectivity-modes-and-requirements"></a>接続モードと要件
 
@@ -48,15 +48,15 @@ Azure Defender セキュリティ サービス、Container Insights、BLOB ス�
 |**機能**|**間接接続**|**直接接続**|
 |---|---|---|
 |**自動高可用性**|サポートされています|サポートされています|
-|**セルフサービス プロビジョニング**|サポートされています<br/>作成を行うには、Azure Data Studio、適切な CLI、Kubernetes ネイティブ ツール (helm、kubectl、oc など)、または Azure Arc 対応の Kubernetes GitOps プロビジョニングを使用します。|サポートされています<br/>間接接続モードの作成オプションに加えて、Azure portal、Azure Resource Manager API、Azure CLI、または ARM テンプレートを使用して作成することもできます。 **直接接続モードの保留中の可用性**
-|**柔軟なスケーラビリティ**|サポートされています|サポートされています<br/>**直接接続モードの保留中の可用性**|
-|**Billing**|サポートされています<br/>請求データは定期的にエクスポートされ、Azure に送信されます。|サポートされています<br/>請求データは自動的かつ継続的に Azure に送信され、ほぼリアルタイムで反映されます。 **直接接続モードの保留中の可用性**|
+|**セルフサービス プロビジョニング**|サポートされています<br/>作成を行うには、Azure Data Studio、適切な CLI、Kubernetes ネイティブ ツール (helm、kubectl、oc など)、または Azure Arc 対応の Kubernetes GitOps プロビジョニングを使用します。|サポートされています<br/>間接接続モードの作成オプションに加えて、Azure portal、Azure Resource Manager API、Azure CLI、または ARM テンプレートを使用して作成することもできます。 
+|**柔軟なスケーラビリティ**|サポートされています|サポートされています<br/>|
+|**Billing**|サポートされています<br/>請求データは定期的にエクスポートされ、Azure に送信されます。|サポートされています<br/>請求データは自動的かつ継続的に Azure に送信され、ほぼリアルタイムで反映されます。 |
 |**在庫管理**|サポートされています<br/>インベントリ データは定期的にエクスポートされ、Azure に送信されます。<br/><br/>Azure Data Studio、Azure Data CLI、 `kubectl` などのクライアント ツールを使用して、インベントリをローカルで表示および管理します。|サポートされています<br/>インベントリ データは自動的かつ継続的に Azure に送信され、ほぼリアルタイムで反映されます。 そのため、Azure portal から直接インベントリを管理できます。|
-|**自動アップグレードとパッチ適用**|サポートされています<br/>データ コントローラーから Microsoft Container Registry (MCR) に直接アクセスできる必要があります。または、コンテナー イメージを MCR からプルして、データ コントローラーからアクセスできるローカルのプライベート コンテナー レジストリにプッシュする必要があります。|サポートされています<br/>**直接接続モードの保留中の可用性**|
-|**自動バックアップと復元**|サポートされています<br/>自動ローカル バックアップと復元。|サポートされています<br/>自動化されたローカルバックアップと復元に加えて、_必要に応じて_、長期間のオフサイト保持のためにバックアップを Azure Backup に送信することができます。 **直接接続モードの保留中の可用性**|
-|**監視**|サポートされています<br/>Grafana と Kibana のダッシュボードを使用したローカル監視。|サポートされています<br/>ローカルの監視ダッシュボードに加えて、_必要に応じて_、複数のサイトを 1 か所でまとめて監視するために、監視データとログを Azure Monitor に送信することができます。 **直接接続モードの保留中の可用性**|
+|**自動アップグレードとパッチ適用**|サポートされています<br/>データ コントローラーから Microsoft Container Registry (MCR) に直接アクセスできる必要があります。または、コンテナー イメージを MCR からプルして、データ コントローラーからアクセスできるローカルのプライベート コンテナー レジストリにプッシュする必要があります。|サポートされています<br/>**直接接続の保留中の可用性**。|
+|**自動バックアップと復元**|サポートされています<br/>自動ローカル バックアップと復元。|サポートされています<br/>自動化されたローカルバックアップと復元に加えて、_必要に応じて_、長期間のオフサイト保持のためにバックアップを Azure Backup に送信することができます。 **直接接続モードの保留中の可用性**。|
+|**監視**|サポートされています<br/>Grafana と Kibana のダッシュボードを使用したローカル監視。|サポートされています<br/>ローカルの監視ダッシュボードに加えて、_必要に応じて_、複数のサイトを 1 か所でまとめて監視するために、監視データとログを Azure Monitor に送信することができます。 |
 |**認証**|データ コントローラーとダッシュボードの認証には、ローカルのユーザー名/パスワードを使用します。 データベース インスタンスへの接続には、SQL と Postgres ログインまたは Active Directory (AD は現時点ではサポートされていません。まもなくプレビュー段階になります) を使用します。  Kubernetes API に対する認証には、K8s 認証プロバイダーを使用します。|間接接続モードの認証方法に加えて、またはその代わりに、_必要に応じて_ Azure Active Directory を使用できます。 **直接接続モードの保留中の可用性**|
-|**ロールベースのアクセス制御 (RBAC)**|Kubernetes API では Kubernetes RBAC を使用します。 データベース インスタンスには SQL および Postgres RBAC を使用します。|Azure Active Directory と Azure RBAC を使用できます。|
+|**ロールベースのアクセス制御 (RBAC)**|Kubernetes API では Kubernetes RBAC を使用します。 データベース インスタンスには SQL および Postgres RBAC を使用します。|Azure Active Directory と Azure RBAC を使用できます。 **直接接続モードの保留中の可用性**|
 |**Azure Defender**|サポートされていません|将来的に予定されています|
 
 ## <a name="connectivity-requirements"></a>接続の要件
@@ -81,7 +81,7 @@ Azure Defender セキュリティ サービス、Container Insights、BLOB ス�
 
 ## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>インターネット アドレス、ポート、暗号化、プロキシ サーバー サポートの詳細
 
-現時点では、間接接続モードのみが一般提供されています。 このモードでは、インターネット上で利用可能なサービスに必要な接続は 3 つだけです。 接続の種類:
+インターネット上で利用可能なサービスに必要な接続は 3 つだけです。 接続の種類:
 
 - [Microsoft Container Registry (MCR)](#microsoft-container-registry-mcr)
 - [Azure Resource Manager API](#azure-resource-manager-apis)

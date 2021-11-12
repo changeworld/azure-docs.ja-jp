@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 11/05/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 014bf6fe316252536a14c15bad8255285226ce10
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: b099a085041664ed00788720eb3245dd9518c020
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894798"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315408"
 ---
 # <a name="iot-connector-and-microsoft-power-bi"></a>IoT コネクタと Microsoft Power BI
 

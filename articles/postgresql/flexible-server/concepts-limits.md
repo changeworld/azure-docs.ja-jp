@@ -5,16 +5,15 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/17/2021
-ms.openlocfilehash: 58e5f6f5646eb2dd75215a17349b053426b7c837
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 10/26/2021
+ms.openlocfilehash: c28e3b84251c645ff690098950066b3bb653f3df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133331"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467533"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
-
 
 
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) レベルの詳細については、[コンピューティングとストレージ](concepts-compute-storage.md)の記事を参照してください。
@@ -82,10 +81,7 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 
 ### <a name="high-availability-ha"></a>高可用性 (HA)
 
-- ゾーン冗長 HA は現在、バースト可能のサーバーについてはサポートされていません。
-- データベース サーバーの IP アドレスは、サーバーが HA スタンバイにフェールオーバーすると変更されます。 サーバーの IP アドレスではなく、DNS レコードを必ず使用してください。
-- 論理レプリケーションが HA で構成されたフレキシブル サーバーで構成されている場合、スタンバイ サーバーでのフェールオーバー発生時に、論理レプリケーション スロットがスタンバイ サーバーにコピーされることはありません。 
-- 制限事項を含むゾーン冗長 HA の詳細については、[HA の概念に関するドキュメント](concepts-high-availability.md)のページをご覧ください。
+- [ゾーン冗長 HA の制限事項に関するドキュメント](concepts-high-availability.md#zone-redundant-high-availability---limitations) ページを参照してください。
 
 ### <a name="availability-zones"></a>可用性ゾーン
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: aab3c66a76e22e17e5e5d6c0cd03ebca4562734d
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 6d51aa87232445e35533632d5071abd121a3fcfb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277653"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442200"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -375,6 +375,8 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
 
 **ExpressRoute ゲートウェイ サブネット上の NSG** - トラフィックが ExpressRoute ゲートウェイ (例: [FastPath](../expressroute/about-fastpath.md)) をバイパスする可能性があるため、ExpressRoute ゲートウェイ サブネット上のフローをログに記録することはお勧めしません。 したがって、NSG が ExpressRoute ゲートウェイ サブネットにリンクされ、NSG フロー ログが有効になっている場合、仮想マシンへの送信フローがキャプチャされない可能性があります。 このようなフローは、VM のサブネットまたは NIC でキャプチャする必要があります。 
+
+**プライベート リンクを介したトラフィック** - プライベート リンク経由で PaaS リソースにアクセスするときにトラフィックをログに記録するには、プライベート リンクを含むサブネット NSG で NSG フロー ログを有効にします。 プラットフォームの制限により、すべてのソース VM でのトラフィックはキャプチャできますが、送信先の PaaS リソースではキャプチャできません。
 
 **Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
 

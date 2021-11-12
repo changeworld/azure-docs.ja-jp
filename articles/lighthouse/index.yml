@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/28/2021
-  ms.openlocfilehash: 7357df313089d93785c3f17f558a6da122128bab
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: b37cbe833159340c3e5b655edbe7eafa30f694a7
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131078486"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132286319"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -83,7 +83,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Sentinel ワークスペースの管理
+    - text: Microsoft Sentinel ワークスペースの管理
       url: ./how-to/manage-sentinel-workspaces.md
     - text: Azure Monitor ログを使用する
       url: ./how-to/monitor-at-scale.md

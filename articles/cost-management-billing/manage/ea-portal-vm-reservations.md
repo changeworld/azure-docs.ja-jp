@@ -3,17 +3,17 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2021
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: 0378e05d8d606d04b90ca20aa3e0399132e9f0ef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: feac3cf4e2418fc7d85ab3cdebbba1d08b112e95
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095844"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250067"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -28,6 +28,8 @@ ms.locfileid: "110095844"
 EA のお客様が予約を返却した場合、Azure 前払い (旧称: 年額コミットメント) ではなく超過分を使用して購入金額の一部が返金されます。
 
 EA Portal には、前月における負の調整として、また今月における正の調整として返金が表示されます。 予約の交換についても同様に表示されます。 クレジット メモでは、元の請求書番号が引用されます。したがって、当初の購入額をクレジット メモで調整したければ、元の請求書番号を参照してください。
+
+直接 Enterprise のお客様は、Azure portal で返金の詳細を表示できます。 **予約トランザクション** メニューに移動し、予約の払い戻しを表示します。
 
 ## <a name="reservation-costs-and-usage"></a>予約のコストと使用状況
 

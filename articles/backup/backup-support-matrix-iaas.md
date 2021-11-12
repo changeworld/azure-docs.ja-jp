@@ -2,14 +2,14 @@
 title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 10/19/2021
 ms.custom: references_regions
-ms.openlocfilehash: 17cd2ca7d4b42e79d1b5012fa36e09a509fa28fe
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 50350c5fdb2904c0f562d79d1f9779d324da9108
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129090972"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455000"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -57,7 +57,7 @@ Windows Azure VM をバックアップする場合にサポートされるオペ
 
 **シナリオ** | **OS のサポート**
 --- | ---
-Azure VM エージェント拡張機能を使用したバックアップ | - Windows 10 クライアント (64 ビットのみ) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> Windows Server 2012 (Datacenter /Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)  <br/><br/> - Windows Server 2008 (64 ビットのみ)
+Azure VM エージェント拡張機能を使用したバックアップ | - Windows 10 クライアント (64 ビットのみ) <br/><br/>Windows Server 2022 (Datacenter、Datacenter Core、Standard)   <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> Windows Server 2012 (Datacenter /Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)  <br/><br/> - Windows Server 2008 (64 ビットのみ)
 MARS エージェントを使用したバックアップ | [サポートされている](backup-support-matrix-mars-agent.md#supported-operating-systems)オペレーティング システム。
 DPM/MABS を使用したバックアップ | [MABS](backup-mabs-protection-matrix.md) および [DPM](/system-center/dpm/dpm-protection-matrix) を使用したバックアップでサポートされるオペレーティング システム。
 
@@ -174,7 +174,7 @@ Azure VM のデータ ディスク数 | 最大 32 のディスクを使用した
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイルまたはフォルダー レベルで復旧することはできません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
-書き込みアクセラレータが有効になっているディスク | 現時点では、WA ディスク バックアップを使用する Azure VM は、すべての Azure パブリック リージョンでプレビュー段階です。 <br><br> (クォータを超過しており、GA までこれ以上承認済みリストは変更できません) <br><br> WA ディスクは除外されるので、スナップショットにはサポートされていないサブスクリプションの WA ディスクのスナップショットは含まれません。 <br><br>**重要** <br> WA ディスクを使用する仮想マシンは、正常なバックアップを行うためにインターネット接続を必要とします (これらのディスクがバックアップから除外されている場合でも)。
+書き込みアクセラレータが有効になっているディスク | 現時点では、WA ディスク バックアップを使用する Azure VM は、すべての Azure パブリック リージョンでプレビュー段階です。 <br><br> WA ディスクのサブスクリプションを登録するには、[askazurebackupteam@microsoft.com](mailto:askazurebackupteam@microsoft.com) に連絡してください。 <br><br> WA ディスクは除外されるので、スナップショットにはサポートされていないサブスクリプションの WA ディスクのスナップショットは含まれません。 <br><br>**重要** <br> WA ディスクを使用する仮想マシンは、正常なバックアップを行うためにインターネット接続を必要とします (これらのディスクがバックアップから除外されている場合でも)。
 重複除去された VM/ディスクのバックアップと復元 | Azure Backup では、重複除去はサポートされていません。 詳細については、こちらの[記事](./backup-support-matrix.md#disk-deduplication-support)を参照してください <br/> <br/>  - Azure Backup では、Recovery Services コンテナー内の VM 全体で重複除去されることはありません <br/> <br/>  - 復元中に重複除去状態の VM がある場合、コンテナーで形式が認識されないため、ファイルを復元することはできません。 ただし、完全な VM 復元は正常に実行できます。
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。

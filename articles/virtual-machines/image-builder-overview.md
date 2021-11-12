@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: af390012d2f433b580f66187889c680e3de01a86
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 07481838f5fca77d7e634003e04169a95d944117
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074287"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452074"
 ---
 # <a name="azure-image-builder-overview"></a>Azure Image Builder の概要
 
@@ -24,7 +24,7 @@ ms.locfileid: "130074287"
 
 Image Builder では、既存のスクリプト、コマンド、およびプロセスを使用してイメージをカスタマイズしながら、既存のイメージ カスタマイズ パイプラインを Azure に移行することができます。 Image Builder を使用すると、コア アプリケーションを VM イメージに統合し、VM で作成後にワークロードを一度に取得できるようになります。 また、構成を追加して、Azure Virtual Desktop のイメージを構築したり、Azure Stack で使用する、またはエクスポートを容易にするために VHD としてビルドしたりすることもできます。
 
-Image Builder では、Windows または Linux イメージから始めることができます。また、Azure Marketplace または既存のカスタムイメージから開始し、独自のカスタマイズを追加することもできます。 [Azure Shared Image Gallery](shared-image-galleries.md) では、イメージのホスト先として、生成されるマネージド イメージまたは VHD を指定することもできます。
+Image Builder では、Windows または Linux イメージから始めることができます。また、Azure Marketplace または既存のカスタムイメージから開始し、独自のカスタマイズを追加することもできます。 [Azure Compute Gallery](shared-image-galleries.md) (旧称 Shared Image Gallery) では、イメージのホスト先として、生成されるマネージド イメージまたは VHD を指定することもできます。
 
 ## <a name="features"></a>特徴
 
@@ -35,7 +35,7 @@ Image Builder では、Windows または Linux イメージから始めること
 - VM イメージを作成するための複雑なツール、プロセス、手動の手順を使用する必要がなくなります。 Image Builder は、これらの詳細をすべて抽出し、イメージ (sysprep) を一般化する必要があるなど Azure 固有の要件を隠蔽しつつ、より高度なユーザーには上書きも許可します。
 - Image Builder を既存のイメージ ビルド パイプラインと統合すれば、クリックアンドゴー操作を行うことができます。 パイプラインから Image Builder を呼び出すか、[Azure Image Builder Service DevOps Task (プレビュー)](./linux/image-builder-devops-task.md)を使用することができます。
 - Image Builder では、さまざまなソースからカスタマイズ データをフェッチできるため、VM イメージを構築するために 1 か所でまとめて収集する必要がありません。
-- Image Builder と Azure Shared Image Gallery を統合することで、グローバルにイメージを配布、複製、バージョン管理、拡張できるイメージ管理システムが実現します。 また、同じ結果のイメージを VHD として、または最初から再構築せずに 1 つ以上の管理対象イメージとして配布することもできます。
+- Image Builder と Azure Compute Gallery を統合することで、グローバルにイメージを配布、複製、バージョン管理、拡張できるイメージ管理システムが実現します。 また、同じ結果のイメージを VHD として、または最初から再構築せずに 1 つ以上の管理対象イメージとして配布することもできます。
 
 ### <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -89,7 +89,7 @@ Azure Image Builder は Azure Marketplace のベース OS イメージをサポ�
 
 Azure VM Image Builder は、Azure リソース プロバイダーからアクセスできるフル マネージド Azure サービスです。 ソース イメージ、実行するカスタマイズ、および新しいイメージの配布先を指定する構成をサービスに提供します。下の図は、大まかなのワークフローを示しています。
 
-![ソース (Windows/Linux)、カスタマイズ (シェル、PowerShell、Windows の [再起動して更新]、ファイルの追加)、および Azure Shared Image Gallery を使用したグローバル分散を示す、Azure Image Builder のプロセスの概念図](./media/image-builder-overview/image-builder-flow.png)
+![ソース (Windows/Linux)、カスタマイズ (シェル、PowerShell、Windows の [再起動して更新]、ファイルの追加)、および Azure Compute Gallery を使用したグローバル分散を示す、Azure Image Builder のプロセスの概念図](./media/image-builder-overview/image-builder-flow.png)
 
 テンプレート構成は、PowerShell、Azure CLI、Azure Resource Manager テンプレートを使用して、および Azure VM Image Builder DevOps タスクを使用して渡すことができ、それをサービスに送信すると、イメージ テンプレートのリソースが作成されます。 イメージ テンプレートのリソースが作成されると、サブスクリプションに作成されたステージング リソース グループが `IT_\<DestinationResourceGroup>_\<TemplateName>_\(GUID)` という形式で表示されます。 ステージング リソース グループには、ScriptURI プロパティの File、Shell、PowerShell カスタマイズで参照されるファイルとスクリプトが含まれています。
 
@@ -105,7 +105,7 @@ Azure VM Image Builder は、Azure リソース プロバイダーからアク�
 ## <a name="permissions"></a>アクセス許可
 (AIB) に登録すると、ステージング リソース グループ `(IT_*)` を作成、管理、削除するためのアクセス許可が AIB サービスに付与され、イメージのビルドに必要なリソースを追加する権限が与えられます。 これは、登録が成功したときに、AIB サービス プリンシパル名 (SPN) がサブスクリプションで使用可能になることによって行われます。
 
-Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートおよびパブリック コンテナーを読み取るためのアクセス許可が必要です。
+Azure VM Image Builder で、マネージド イメージまたは Azure Compute Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートおよびパブリック コンテナーを読み取るためのアクセス許可が必要です。
 
 アクセス許可の詳細については、[PowerShell](./linux/image-builder-permissions-powershell.md) および [AZ CLI](./linux/image-builder-permissions-cli.md) に関するページを参照してください。
 
@@ -119,7 +119,7 @@ Image Builder では、VM に必要な D1v2 VM サイズ、ストレージ、ネ
 Azure Image Builder によって、選択したリージョンにイメージが配布されます。これにより、ネットワークのエグレス料金が発生する可能性があります。
 
 ## <a name="hyper-v-generation"></a>Hyper-V の世代
-現在、Image Builder でネイティブにサポートされているのは、Azure Shared Image Gallery (SIG) の Hyper-V 第 1 世代 (Gen1) のイメージまたはマネージド イメージの作成のみです。 
+現在 Image Builder のみが、Azure Compute Gallery 内で Hyper-V ジェネレーション (Gen1) 1 イメージの作成をネイティブ サポートしています。 
  
 ## <a name="next-steps"></a>次のステップ 
  

@@ -1,20 +1,20 @@
 ---
-title: Azure Automation マネージド ID の問題のトラブルシューティング (プレビュー)
+title: Azure Automation マネージド ID の問題のトラブルシューティング
 description: この記事では、Automation アカウントでマネージド ID を使用した場合の問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.subservice: ''
-ms.date: 06/28/2021
+ms.date: 10/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 89d3785ef527eebc822eefbbae2c887dd40108ee
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: f26c10468322992a5b3fbc302739ff827e841bba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687499"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443663"
 ---
-# <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>Azure Automation マネージド ID の問題のトラブルシューティング (プレビュー)
+# <a name="troubleshoot-azure-automation-managed-identity-issues"></a>Azure Automation マネージド ID の問題のトラブルシューティング
 
-この記事では、Automation アカウントでマネージド ID を使用する際に発生する可能性がある問題の解決方法について説明します。 Automation アカウントでのマネージド ID の使用に関する一般的な情報については、[Azure Automation アカウントの認証の概要](../automation-security-overview.md#managed-identities-preview)に関する記事をご覧ください。
+この記事では、Automation アカウントでマネージド ID を使用する際に発生する可能性がある問題の解決方法について説明します。 Automation アカウントでのマネージド ID の使用に関する一般的な情報については、[Azure Automation アカウントの認証の概要](../automation-security-overview.md#managed-identities)に関する記事をご覧ください。
 
 ## <a name="scenario-fail-to-get-msi-token-for-account"></a>シナリオ: アカウントの MSI トークンを取得できません
 
@@ -73,7 +73,7 @@ catch
 
 ### <a name="resolution"></a>解決方法
 
-マネージド ID サービスを使用するには、事前に Automation アカウントの ID を有効にする必要があります。 「[Azure Automation アカウントのマネージド ID を有効にする (プレビュー)](../enable-managed-identity-for-automation.md)」を参照してください。
+マネージド ID サービスを使用するには、事前に Automation アカウントの ID を有効にする必要があります。 「[Azure Automation アカウントのマネージド ID を有効にする](../enable-managed-identity-for-automation.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

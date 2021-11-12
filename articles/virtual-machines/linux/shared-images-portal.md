@@ -9,24 +9,24 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/21/2021
 ms.author: cynthn
-ms.openlocfilehash: 908d4ae4a18ac75577ea567f6aba37c9ea2e49fe
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 515d836e9b36a1fb20a712ab30a561ff68e3f715
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450496"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424668"
 ---
-# <a name="create-a-shared-image-gallery-using-the-portal"></a>ポータルを使用して共有イメージ ギャラリーを作成する
+# <a name="create-an-azure-compute-gallery-using-the-portal"></a>ポータルを使用して Azure Compute Gallery を作成する
 
 **適用対象:** :heavy_check_mark: Linux VMs :heavy_check_mark: フレキシブル スケール セット **適用対象:** :heavy_check_mark: :heavy_check_mark: ユニフォーム スケール セット 
 
-[共有イメージ ギャラリー](../shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、デプロイ タスク (アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成など) のブートストラップを実行するために使用できます。 
+[Azure Compute Gallery](../shared-image-galleries.md) により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、デプロイ タスク (アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成など) のブートストラップを実行するために使用できます。 
 
-共有イメージ ギャラリーを使用すると、組織内、リージョン内またはリージョン間、Azure AD テナント内で、他のユーザーとご自身のカスタム VM イメージを共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 複数のギャラリーを作成することで、共有イメージを論理的にグループ化できます。 
+Azure Compute Gallery を使用すると、組織内、リージョン内またはリージョン間、Azure AD テナント内で、他のユーザーとご自身のカスタム VM イメージを共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 複数のギャラリーを作成することで、イメージを論理的にグループ化できます。 
 
 ギャラリーは最上位リソースで、完全な Azure ロールベースのアクセス制御 (Azure RBAC) が可能です。 イメージのバージョン管理もできるため、Azure リージョンの別のセットに各イメージのバージョンをレプリケートできます。 ギャラリーは、マネージド イメージでのみ機能します。
 
-共有イメージ ギャラリー機能には、リソースの種類が複数あります。 それらを、この記事の中で使用または作成していきます。
+Azure Compute Gallery 機能には、複数のリソースの種類があります。 それらを、この記事の中で使用または作成していきます。
 
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
@@ -70,10 +70,10 @@ ms.locfileid: "123450496"
 
 ## <a name="next-steps"></a>次のステップ
 
-共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
+Azure Compute Gallery リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
-- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
-- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Azure Compute Gallery の作成](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Azure Compute Gallery でのイメージ定義の作成](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Azure Compute Gallery でのイメージ バージョンの作成](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
-共有イメージ ギャラリーの詳細については、[概要](../shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../troubleshooting-shared-images.md)」を参照してください。
+Azure Compute Gallery の詳細については、[概要](../shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[ギャラリーのトラブルシューティング](../troubleshooting-shared-images.md)」を参照してください。

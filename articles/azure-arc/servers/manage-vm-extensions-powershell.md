@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell を使用して VM 拡張機能を有効にする
 description: この記事では、Azure PowerShell を使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 10/15/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c759510c3ab81b15b65315015a16507dadf2658a
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 03fb598989c7f308b3e481824e17d423f6d31824
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074572"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470625"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure PowerShell を使用して Azure VM 拡張機能を有効にする
 
-この記事では、Azure PowerShell を使用して、Azure Arc 対応サーバーでサポートされている Azure VM 拡張機能を Linux または Windows ハイブリッド マシンにデプロイおよびアンインストールする方法を示します。
+この記事では、Azure PowerShell を使用して、Azure Arc 対応サーバーでサポートされている Azure VM 拡張機能を Linux または Windows ハイブリッド マシンにデプロイ、更新、アンインストールする方法を示します。
 
 > [!NOTE]
 > Azure Arc 対応サーバーでは、Azure 仮想マシンへの VM 拡張機能のデプロイと管理はサポートされていません。 Azure VM については、次の [VM 拡張機能の概要](../../virtual-machines/extensions/overview.md) に関する記事をご覧ください。
@@ -105,7 +105,13 @@ Name    Location  PropertiesType        ProvisioningState
 custom  westus2   CustomScriptExtension Succeeded
 ```
 
-## <a name="remove-an-installed-extension"></a>インストールされている拡張機能を削除する
+## <a name="update-extensions"></a>拡張機能の更新
+
+インストールされた拡張機能を再構成するには、[Update-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/update-azconnectedmachineextension) コマンドレットを `-Name`、`-MachineName`、`-ResourceGroupName`、`-Settings` の各パラメーターと共に使用します。
+
+拡張機能に必要な変更を行うためのさまざまな方法については、コマンドレットのリファレンス記事を参照してください。
+
+## <a name="remove-extensions"></a>拡張機能を削除する
 
 Azure Arc 対応サーバー上にインストールされた VM 拡張機能を削除するには、[Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) と `-Name`、`-MachineName`、`-ResourceGroupName` の各パラメーターを使用します。
 

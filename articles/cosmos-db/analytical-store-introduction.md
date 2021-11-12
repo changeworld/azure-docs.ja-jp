@@ -4,15 +4,15 @@ description: Azure Cosmos DB のトランザクション (行ベース) スト�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/12/2021
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 09b5d7c1865020ba33a89e73b2ba39260f473e6a
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: fd9984d6db66413f3c53d20fa63ffb4e1a106f3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859344"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454544"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -324,6 +324,10 @@ salary: 1000000
 ## <a name="global-distribution"></a>グローバル分散
 
 グローバルに分散された Azure Cosmos DB アカウントがある場合、コンテナーの分析ストアを有効にした後、そのアカウントのすべてのリージョンでそれを使用できるようになります。  オペレーショナル データに対する変更はすべて、すべてのリージョンにグローバルにレプリケートされます。 Azure Cosmos DB のデータの最も近いリージョン コピーに対して、分析クエリを効率的に実行できます。
+
+## <a name="partitioning"></a>パーティション分割
+
+分析ストアのパーティション分割は、トランザクション ストアのパーティション分割にまったく依存しません。 既定では、分析ストア内のデータはパーティション分割されません。 分析クエリに頻繁に使用されるフィルターがある場合は、これらのフィールドに基づいてパーティション分割することで、クエリのパフォーマンスを向上させることができます。 詳細については、[カスタム パーティション分割の概要](custom-partitioning-analytical-store.md)および[カスタム パーティション分割を構成する方法](configure-custom-partitioning.md)に関する記事を参照してください。  
 
 ## <a name="security"></a>セキュリティ
 

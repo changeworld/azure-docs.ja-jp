@@ -8,16 +8,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/27/2019
-ms.openlocfilehash: 02a48c8d106795b970d573bb71f52ba92e0a90ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/28/2021
+ms.openlocfilehash: 0fd252c5be2f4c0a44eea998ed6ea5a83d4f2c7c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91541987"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454639"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの keyPhrase 作成済みエンティティ
-keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[テキスト分析](../text-analytics/overview.md)フィーチャーの一環として[多くのカルチャ](luis-language-support.md#languages-supported)でサポートされています。
+keyPhrase エンティティは、発話からさまざまなキー フレーズを抽出します。 keyPhrase が含まれている発話例をアプリケーションに追加する必要はありません。 keyPhrase エンティティは、[言語サービス](../language-service/overview.md) フィーチャーの一環として[多くのカルチャ](luis-language-support.md#languages-supported)でサポートされています。
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>作成済み keyPhrase エンティティの解決
 

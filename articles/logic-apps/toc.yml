@@ -397,7 +397,7 @@
           href: monitor-logic-apps.md
         - name: Azure Monitor ログでロジック アプリを監視する
           href: monitor-logic-apps-log-analytics.md
-        - name: Azure Security Center でロジック アプリを監視する
+        - name: Microsoft Defender for Cloud でロジックアプリを監視する
           href: healthy-unhealthy-resource.md
         - name: Azure Monitor ログで B2B メッセージを監視する
           href: monitor-b2b-messages-log-analytics.md

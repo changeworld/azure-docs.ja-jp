@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/12/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 9df07381d620c2176115636852c6ed912dd1fc38
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 19692739814a4db3ef2f981461254de415c9bdcc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786505"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444176"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
@@ -35,7 +35,11 @@ ms.locfileid: "124786505"
 
 Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得するための **2 つ** のオプションが提供されます。
 
-- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な **アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 PKCE (Proof Key for Code Exchange: コード交換のための証明鍵) は、複数の攻撃を防ぎ、パブリック クライアントから OAuth 交換を安全に実行するように設計されています。 PKCE は IETF 標準であり、RFC 7636 に記載されています。 また、ユーザーが操作しなくてもユーザーの代わりにリソースへの長期間アクセスを提供する **更新** トークンが返されます。 これが **推奨される** 方法です。
+- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な **アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 
+
+    コード交換の証明キー、または _PKCE_ は、承認コード インジェクション攻撃を防止するための承認コード フローの拡張機能です。 この IETF 標準は、[RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636) に記載されているように、パブリック クライアントからのセキュリティで保護された OAuth 交換をインターセプトして有効にする承認コードを持つ脅威を軽減します。 また、ユーザーが操作しなくてもこれらのユーザーの代わりにリソースへの長期間アクセスを提供する **更新** トークンが返されます。 
+
+    PKCE で承認コード フローを使用することは、ネイティブおよびブラウザーベースの JavaScript アプリだけでなく、他のすべての種類の OAuth クライアントに対して、より安全で **推奨** される承認方法です。
 
 ![シングルページ アプリケーション認証](./media/scenarios/spa-app-auth.svg)
 

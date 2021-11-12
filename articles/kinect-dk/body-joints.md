@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, ボディ, トラッキング, 関節, 階層, ボーン, 接続
-ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2616573d0474addb14abe5f6e932181b097bed46
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85276999"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223456"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect ボディ トラッキングの関節
 
@@ -25,12 +25,14 @@ Azure Kinect ボディ トラッキングでは、複数の人間の体を同時
 
 ## <a name="joint-coordinates"></a>関節の座標
 
-各関節の位置と向きによって、独自の関節座標系が形成されます。 すべての関節座標系は、深度カメラの 3D 座標系を基準とした絶対座標系です。
+各ジョイントの位置と向きによって、独自の右ジョイント座標系が形成されます。 すべてのジョイント座標系は、深度カメラの 3D 座標系の絶対座標系です。
 
 > [!NOTE]
-> 関節の座標は軸方向です。 軸の向きは、商用のアバター、ゲーム エンジン、およびレンダリング ソフトウェアで広く使用されています。 軸の向きを使用すると、ミラーリングされた動きが単純化されます。たとえば、両腕を 20 度ずつ上げるなどです。
+> 本文の両側にある対応するジョイントに対して軸の向きを反転させることは、両方のアームを 20 度上昇させるなどのミラー動作の動きを簡略化することを目的としています。これは、商用アバター、ゲーム エンジン、およびレンダリング ソフトウェアで一般的なものです。
 
 ![関節の座標](./media/concepts/joint-coordinates.png)
+
+凡例: |x 軸 = 赤 |y 軸 = 緑 |z 軸 = 青 |
 
 ## <a name="joint-hierarchy"></a>関節の階層
 

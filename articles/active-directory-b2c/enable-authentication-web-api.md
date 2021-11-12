@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/25/2021
+ms.date: 10/26/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 8bb890fb92352be9a0771cb0b80d2f1565dc664c
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 38a60dee9d4a5b7c0516b8e3278e848e0be26c2e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065694"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424441"
 ---
 # <a name="enable-authentication-in-your-own-web-api-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Web API で認証を有効にする
 
@@ -377,7 +377,7 @@ app.get('/hello',
 
 ## <a name="step-5-configure-the-web-server"></a>手順 5: Web サーバーを構成する
 
-開発環境で、受信 HTTP または HTTPS 要求のポート番号をリッスンするように Web API を設定します。 この例では、HTTP ポート 6000 と HTTPS ポート 6001 を使用します。 Web API のベース URI は、HTTP の場合は `http://localhost:6000`、HTTPS の場合は `https://localhost:6001` になります。 [Node アプリケーションに対して HTTP および HTTPS エンドポイントを設定](https://github.com/expressjs/express/wiki/Migrating-from-2.x-to-3.x#application-function)することもできます。
+開発環境で、受信 HTTP または HTTPS 要求のポート番号をリッスンするように Web API を設定します。 この例では、HTTP ポート 6000 と HTTPS ポート 6001 を使用します。 Web API のベース URI は、HTTP の場合は `http://localhost:6000`、HTTPS の場合は `https://localhost:6001` になります。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/csharpclient)
 
@@ -398,7 +398,7 @@ app.get('/hello',
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejsgeneric)
 
-*app.js* ファイルに次の JavaScript コードを追加します。 
+*app.js* ファイルに次の JavaScript コードを追加します。 [Node アプリケーションに対して HTTP および HTTPS エンドポイントを設定](https://github.com/expressjs/express/wiki/Migrating-from-2.x-to-3.x#application-function)できます。 
 
 ```javascript
 // Starts listening on port 6000
