@@ -2,20 +2,20 @@
 title: Fortanix Confidential Computing Manager によってアプリを実行する
 description: Fortanix Confidential Computing Manager を使用して、コンテナー化されたイメージを変換する方法について説明します。
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2f74c34f9c0b2e854a23753b755a9d83f93d6bf0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fcf3e3a1aab9114ceccc9eb32f96347ce3ed0fc2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024475"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306418"
 ---
 # <a name="run-an-application-by-using-fortanix-confidential-computing-manager"></a>Fortanix Confidential Computing Manager を使用してアプリケーションを実行する
 

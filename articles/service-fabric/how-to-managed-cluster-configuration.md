@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスターを構成する
 description: OS の自動アップグレード、NSG ルールなどのために Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 808b7e96778821c695ed5fca08648e95f4290959
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: aad982def0a1dd2e4b6f847a72e270337abcd460
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060632"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286034"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Service Fabric マネージド クラスターの構成オプション
 
@@ -19,7 +19,7 @@ ms.locfileid: "131060632"
 * クラスターの[ネットワーク設定](how-to-managed-cluster-networking.md)を構成する
 * [大規模な仮想マシン スケール セット](how-to-managed-cluster-large-virtual-machine-scale-sets.md)のノード タイプを構成する
 * クラスター ノードの種類で[マネージド ID](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) を構成する
-* クラスター ノードで [OS とデータ ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)を有効にする
+* クラスター ノードで [OS とデータ ディスクの暗号化](how-to-managed-cluster-enable-disk-encryption.md)を有効にする
 * セカンダリノードタイプで[自動スケール](how-to-managed-cluster-autoscale.md)を構成する
 * [ノードタイプを手動でスケーリングする](how-to-managed-cluster-modify-node-type.md#scale-a-node-type-manually-with-portal)
 * クラスターノードの種類で[自動OSイメージアップグレード](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades)を有効にする

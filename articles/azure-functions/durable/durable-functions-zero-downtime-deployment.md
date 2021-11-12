@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab3c9db7cc06add6019be7a92faf3f523e50f039
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 39f05737b84676fc4e993293c06a87d3b35a4ca5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368060"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332442"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
 
@@ -65,42 +65,42 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 
 ![デプロイ スロットとストレージ アカウント](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples&quot;></a>host.json の例
+### <a name="hostjson-examples"></a>host.json の例
 
 次の JSON フラグメントは、*host.json* ファイルでの接続文字列の設定の例です。
 
-#### <a name=&quot;functions-20&quot;></a>Functions 2.0
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
-  &quot;version&quot;: 2.0,
-  &quot;extensions&quot;: {
-    &quot;durableTask&quot;: {
-      &quot;hubName&quot;: &quot;MyTaskHub&quot;,
-      &quot;storageProvider&quot;: {
-        &quot;connectionStringName&quot;: &quot;DurableManagementStorage&quot;
+  "version": 2.0,
+  "extensions": {
+    "durableTask": {
+      "hubName": "MyTaskHub",
+      "storageProvider": {
+        "connectionStringName": "DurableManagementStorage"
       }
     }
   }
 }
 ```
 
-#### <a name=&quot;functions-1x&quot;></a>Functions 1.x
+#### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
-  &quot;durableTask&quot;: {
-    &quot;azureStorageConnectionStringName&quot;: &quot;DurableManagementStorage&quot;
+  "durableTask": {
+    "azureStorageConnectionStringName": "DurableManagementStorage"
   }
 }
 ```
 
-### <a name=&quot;cicd-pipeline-configuration&quot;></a>CI/CD パイプラインの構成
+### <a name="cicd-pipeline-configuration"></a>CI/CD パイプラインの構成
 
 関数アプリに保留中または実行中のオーケストレーション インスタンスがない場合にのみデプロイするように、CI/CD パイプラインを構成します。 Azure Pipelines を使用する場合は、次の例のように、これらの条件がチェックされる関数を作成できます。
 
 ```csharp
-[FunctionName(&quot;StatusCheck")]
+[FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,

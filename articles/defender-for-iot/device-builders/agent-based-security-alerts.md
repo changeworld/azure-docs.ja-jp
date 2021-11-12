@@ -2,13 +2,13 @@
 title: クラシック エージェント ベースのセキュリティ アラート
 description: Defender for IoT のセキュリティ アラートのクラシック バージョン、Defender for IoT device の機能、サービス使用時の推奨解決策について説明します。
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: c62a0216a68f685244c1e9ef4e14c4487c9f8b3e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 27e0cebd04ad2c8fbea6d9f42422840a695a184a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081968"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284153"
 ---
 # <a name="classic-defender-for-iot-devices-security-alerts"></a>クラシック Defender for IoT デバイスのセキュリティ アラート
 
@@ -24,7 +24,7 @@ Defender for IoT では、高度な分析と脅威インテリジェンスを使
 
 | 名前 | 重大度 | Data Source | 説明 | 推奨される修復手順 |
 |--|--|--|--|--|
-| 重要度レベル **高** |  |  |  |
+| 重要度レベル<bpt id="p1">**</bpt>高<ept id="p1">**</ept> |  |  |  |
 | バイナリ コマンド ライン | 高 | クラシック Defender-IoT-micro-agent | コマンド ラインからの LA Linux バイナリの呼び出しまたは実行が検出されました。 このプロセスは正当なアクティビティである場合もあれば、デバイスのセキュリティが侵害されたことを示している可能性もあります。 | コマンドについて、それを実行したユーザーに確認し、そのデバイス上での実行が見込まれる正当な行為であるかどうかを確認します。 そうではない場合、情報セキュリティ チームにアラートをエスカレートしてください。 |
 | ファイアウォールの無効化 | 高 | クラシック Defender-IoT-micro-agent | ホスト上のファイアウォールに対して操作が実行されている可能性が検出されました。 データの抜き取りを試みる悪意のあるアクターによって、ホスト上のファイアウォールが無効にされることは少なくありません。 | コマンドを実行したユーザーに、それがデバイス上で見込まれる正当なアクティビティであったかどうかを確認してください。 そうではない場合、情報セキュリティ チームにアラートをエスカレートしてください。 |
 | ポート フォワーディングの検出 | 高 | クラシック Defender-IoT-micro-agent | 外部 IP アドレスへのポート フォワーディングの開始が検出されました。 | コマンドを実行したユーザーに、それがデバイス上で見込まれる正当なアクティビティであったかどうかを確認してください。 そうではない場合、情報セキュリティ チームにアラートをエスカレートしてください。 |
@@ -69,6 +69,6 @@ Defender for IoT では、高度な分析と脅威インテリジェンスを使
 
 ## <a name="next-steps"></a>次のステップ
 
-- Defender for IoT サービスの[概要](overview.md)
-- [セキュリティ データにアクセスする](how-to-security-data-access.md)方法を学習ぶ
-- [デバイスの調査](how-to-investigate-device.md)について学ぶ
+- Defender for IoT サービスの<bpt id="p1">[</bpt>概要<ept id="p1">](overview.md)</ept>
+- <bpt id="p1">[</bpt>セキュリティ データにアクセスする<ept id="p1">](how-to-security-data-access.md)</ept>方法を学習ぶ
+- <bpt id="p1">[</bpt>デバイスの調査<ept id="p1">](how-to-investigate-device.md)</ept>について学ぶ

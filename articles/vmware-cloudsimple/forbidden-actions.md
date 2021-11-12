@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 author: divka78
 ms.author: dikamath
-ms.openlocfilehash: 81a09a9cfe749de56f7306a8d5e1ae5db01295fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 282484e4935e0a5fcc9e79351ffe2dd75b0b5f44
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92915375"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344810"
 ---
 # <a name="forbidden-actions-during-elevated-access"></a>昇格されたアクセス中に禁止されているアクション
 

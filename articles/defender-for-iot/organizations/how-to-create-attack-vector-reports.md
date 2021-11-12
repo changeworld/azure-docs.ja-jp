@@ -1,14 +1,14 @@
 ---
 title: 攻撃ベクトル レポートの作成
 description: 攻撃ベクトル レポートには、悪用可能なデバイスの脆弱性チェーンがグラフィカルに表示されています。
-ms.date: 12/17/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 6c178f379561ca4a572a7ae8f556ae6753d6e2be
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: a100363cd974bd820e859ca2456fcfa5c347e7eb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020693"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293290"
 ---
 # <a name="attack-vector-reporting"></a>攻撃ベクトル レポートの作成
 
@@ -68,5 +68,3 @@ ms.locfileid: "113020693"
 ## <a name="see-also"></a>関連項目
 
 [攻撃ベクトル レポートの作成](how-to-create-attack-vector-reports.md)
-
-

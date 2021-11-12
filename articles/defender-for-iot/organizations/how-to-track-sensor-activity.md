@@ -1,14 +1,14 @@
 ---
 title: センサー アクティビティを追跡する
 description: イベント タイムラインには、アラートとアラート管理アクション、ネットワーク イベント、ユーザーのサインインやユーザーの削除などのユーザー操作を含む、ネットワークで検出されたアクティビティのタイムラインが表示されます。
-ms.date: 12/10/2020
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: b70675ec16483b50a7207662b85fc6c65a2cf401
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019445"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278609"
 ---
 # <a name="track-sensor-activity"></a>センサー アクティビティを追跡する
 

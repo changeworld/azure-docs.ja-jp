@@ -2,13 +2,13 @@
 title: セキュリティ エージェントのローカル構成 (C)
 description: Defender での C のエージェント ローカル構成について説明します。
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 24445ce60b3a6d070805cf04a23d7834c24f01e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 9ffe4ae98cd745c4c9362f09a9a29258a8d48a2e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680504"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286661"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json ファイルについて - C エージェント
 

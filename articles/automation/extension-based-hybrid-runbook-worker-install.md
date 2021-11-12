@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/28/2021
 ms.topic: how-to
-ms.openlocfilehash: ef82f0f5c9a66eff32228b12d8f04e1ffa0d22e9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 9dcd0f6ec8935a0c5951421e64f747f3543df846
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356553"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346156"
 ---
 # <a name="deploy-an-extension-based-windows-or-linux-user-hybrid-runbook-worker-in-automation-preview"></a>拡張機能ベースの Windows または Linux ユーザー Hybrid Runbook Worker を Automation にデプロイする (プレビュー)
 

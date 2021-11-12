@@ -1,14 +1,14 @@
 ---
 title: '[アラート] ページからのアラートのフィルター処理と管理'
 description: さまざまなカテゴリに従ってアラートを表示し、検索機能を使用して目的のアラートを見つけることができます。
-ms.date: 05/31/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 616072a83df91e047a0105e7a5cac560dcf5e6fd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d7c8207a8dcd36fd52d9271bcc840ee6730f76da
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019374"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278628"
 ---
 # <a name="filter-and-manage-alerts-from-the-alerts-page"></a>[アラート] ページからのアラートのフィルター処理と管理 
 

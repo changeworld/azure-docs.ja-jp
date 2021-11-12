@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 021868f32f26e0ec2739c91a1830fd3671230e81
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 7dad712093e7fd102310107179c518a8f63755c3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613892"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305505"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの vSAN 暗号化の構成
 

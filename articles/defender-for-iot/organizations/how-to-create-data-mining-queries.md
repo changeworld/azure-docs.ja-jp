@@ -1,14 +1,14 @@
 ---
 title: データ マイニング レポートの作成
 description: さまざまなレイヤーのネットワーク デバイスに関する包括的で詳細な情報 (プロトコル、ファームウェア バージョン、プログラミング コマンドなど) を生成します。
-ms.date: 01/20/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 460edc5aa21461f37bbcdf35d070ef3674d509d3
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 4da8e9b25c700641f2e6ee49bf44f2e380386897
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138118"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284058"
 ---
 # <a name="sensor-data-mining-queries"></a>センサーのデータ マイニング クエリ
 

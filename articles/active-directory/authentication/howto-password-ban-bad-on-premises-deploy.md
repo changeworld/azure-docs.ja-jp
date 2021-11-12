@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb017cd4532d4739b563d4a22a50a731268407f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 15383c9ff24e8d5b9cec0f92f178f37df1618df5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759721"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330941"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -346,7 +346,7 @@ HTTP プロキシが承認ポリシーを使用するように構成されてい
 
 Azure AD パスワード保護 DC エージェント ソフトウェアは、TCP 経由の RPC を使用してプロキシ サービスと通信します。 既定では、Azure AD パスワード保護プロキシ サービスは、使用可能な動的 RPC エンドポイントでリッスンします。 ご使用の環境のネットワーク トポロジまたはファイアウォールの要件のために必要な場合には、特定の TCP ポート上でリッスンするようにサービスを構成できます。 静的ポートを構成する場合は、ポート 135 と、選択した静的ポートを開く必要があります。
 
-<a id="static" /></a>静的ポートで実行するようにサービスを構成するには、次のように `Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用します。
+<a id="static"></a>静的ポートで実行するようにサービスを構成するには、次のように `Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用します。
 
 ```powershell
 Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>

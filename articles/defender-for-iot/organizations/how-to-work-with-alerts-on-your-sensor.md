@@ -1,14 +1,14 @@
 ---
 title: センサー アラートについて
 description: アラートを使用して、ネットワークのセキュリティと操作を強化します。
-ms.date: 3/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 353f7fb0da85a0ffa737dc5c4afa70763b2fb185
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7f97ba63303c1dec4f8559a896748e9860e25060
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019261"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318866"
 ---
 # <a name="about-sensor-alerts"></a>センサー アラートについて
 

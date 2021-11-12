@@ -7,15 +7,15 @@ metadata:
   ms.service: virtual-machines
   ms.subservice: confidential-computing
   ms.topic: landing-page
-  author: JBCook
-  ms.author: jencook
+  author: stempesta
+  ms.author: stempesta
   ms.date: 09/22/2020
-  ms.openlocfilehash: e86e079fd0b6aabcb64f2b7504d7ea0347fcb35f
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: b2f1083dc5f34717f0b7eb69b50f374f8217f582
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131086502"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132279141"
 landingContent:
 - title: Azure のコンフィデンシャル コンピューティングについて
   linkLists:

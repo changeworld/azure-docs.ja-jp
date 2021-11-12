@@ -4,15 +4,15 @@ description: オンプレミスの管理コンソールを使用して、特定�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 03/21/2021
+ms.date: 11/09/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 685d7b1df4389c356ee7b531d179919025d298d0
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 511c3b5f66b84490380507c5106775cd6cc6b255
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019381"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318885"
 ---
 # <a name="view-information-per-zone"></a>ゾーンごとに情報を表示する
 

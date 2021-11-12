@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7ad465597d16dea1860ccd27a9610473bb9cecc1
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 047a764d78ae011c50f20f1ee5a12cac5080b497
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613911"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283299"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>CloudSimple ネットワーク上の VPN ゲートウェイを設定する
 

@@ -55,7 +55,7 @@
         - name: ルール一致条件
           href: rules-match-conditions.md
         - name: ルール アクション
-          href: front-door-rules-engine-actions.md
+          href: rules-actions.md
     - name: URL 書き換え
       href: front-door-url-rewrite.md
     - name: URL リダイレクト
@@ -131,7 +131,7 @@
         - name: リージョン別のエッジ ロケーション
           href: edge-locations-by-region.md
         - name: 略称別の エッジ ロケーション
-          href: edge-locations-abbreviation.md
+          href: edge-locations-by-abbreviation.md
     - name: Azure CLI
       href: /cli/azure/afd/
     - name: Azure PowerShell

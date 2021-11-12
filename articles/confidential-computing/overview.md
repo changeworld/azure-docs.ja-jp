@@ -2,19 +2,19 @@
 title: Azure Confidential Computing の概要
 description: Azure Confidential Computing (ACC) の概要
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 11/01/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b874bdb46ab7e8fbcf1cc16ed5658aae032d65a0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77c65a7c5418ebefd7b2414d04bec614eccdc5ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131016684"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284362"
 ---
 # <a name="what-is-confidential-computing"></a>コンフィデンシャル コンピューティングとは何ですか。
 

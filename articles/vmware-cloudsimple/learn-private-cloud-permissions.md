@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c49dcb4158785170d67742df5c8c797b139edbe5
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: df65f882ff99b4c40f0cffa49d3674f8c13ce1a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620300"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305638"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル
 

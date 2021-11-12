@@ -1,14 +1,14 @@
 ---
 title: 技術コミュニティ忍者トレーニング
 description: Defender for IoT トレーニング セッションをフォローする
-ms.date: 07/10/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: b476e5d0007948524864567b0a8c6061ad603618
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 52ab8ee9772d91354cfb1727a57d608e1747e7e0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481999"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278286"
 ---
 # <a name="view-tech-community-training-sessions"></a>技術コミュニティのトレーニング セッションを表示する
 

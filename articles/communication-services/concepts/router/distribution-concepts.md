@@ -9,12 +9,12 @@ ms.author: jassha
 ms.date: 10/14/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 97f954f3906b95fb530fba06ea09b5b0d171c9ed
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: fdc64b5d789d017e6fcb8aab2cd48103235535ec
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074943"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319246"
 ---
 # <a name="job-distribution-concepts"></a>ジョブ分散に関する概念
 

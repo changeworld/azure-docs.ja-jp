@@ -403,7 +403,7 @@
           href: functions-geo-disaster-recovery.md
         - name: リージョン間で移動する
           href: functions-move-across-regions.md
-    - name: モニター
+    - name: Monitor
       items:
         - name: 監視の構成
           href: configure-monitoring.md
@@ -571,6 +571,17 @@
                 - name: 出力
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Azure SQL
+          items:
+            - name: 概要
+              href: functions-bindings-azure-sql.md
+              displayName: Azure SQL
+            - name: 入力
+              href: functions-bindings-azure-sql-input.md
+              displayName: Azure SQL
+            - name: 出力
+              href: functions-bindings-azure-sql-output.md
+              displayName: Azure SQL
         - name: Dapr
           href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid

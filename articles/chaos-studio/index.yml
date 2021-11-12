@@ -9,12 +9,12 @@ metadata:
   author: johnkemnetz
   ms.author: johnkem
   ms.date: 08/24/2021
-  ms.openlocfilehash: 8ae0b6d778d71b05b45cdc23d27be26bd6b0cfa9
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 540fb41d74babdda1e36c7fcb77c877d23043c80
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131088360"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132293784"
 landingContent:
 - title: Azure Chaos Studio について
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
     - text: サービスダイレクト フォールトを使用するカオス実験を作成して、Azure Cosmos DB インスタンスをフェールオーバーする
       url: chaos-studio-tutorial-service-direct.md
     - text: Azure Chaos Studio でエージェントベース フォールトを使用する実験を作成する
-      url: chaos-studio-tutorial-agent-based.md
+      url: chaos-studio-tutorial-agent-based-portal.md
     - text: Azure Chaos Studio で AKS Chaos Mesh フォールトを使用する実験を作成する
       url: chaos-studio-tutorial-aks.md
 - title: 関連項目
@@ -44,3 +44,5 @@ landingContent:
       url: chaos-studio-fault-providers.md
     - text: REST API のドキュメント
       url: https://docs.microsoft.com/rest/api/chaosstudio
+    - text: Python SDK
+      url: https://docs.microsoft.com/python/api/azure-mgmt-chaos/?view=azure-python-preview
