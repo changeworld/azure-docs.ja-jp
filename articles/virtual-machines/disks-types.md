@@ -3,17 +3,17 @@ title: Azure IaaS VM 用のディスクの種類の選択 - マネージド デ�
 description: Ultra Disks、Premium SSD、Standard SSD、Standard HDD など、仮想マシンで使用できる Azure ディスクの種類について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 10/14/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 90612eecede80ae83247cb3727411db8c43e1eb2
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5e4eb581f8cf9b95e9a8ba4dffd442efc6c055ef
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074363"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505443"
 ---
 # <a name="azure-managed-disk-types"></a>Azure マネージド ディスクの種類
 
@@ -35,7 +35,7 @@ ms.locfileid: "130074363"
 | **ディスクの種類** | SSD | SSD | SSD | HDD |
 | **シナリオ**  | [SAP HANA](workloads/sap/hana-vm-operations-storage.md) やトップ レベルのデータベース (たとえば SQL や Oracle) などの I/O 集約型のワークロードと、その他のトランザクションが多いワークロード。 | 運用環境のワークロードやパフォーマンスに影響されやすいワークロード | Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト | バックアップ、重要ではない、不定期に起こるアクセス |
 | **最大ディスク サイズ** | 65,536 ギビバイト (GiB) | 32,767 GiB | 32,767 GiB | 32,767 GiB |
-| **最大スループット** | 2,000 MB/秒 | 900 MB/秒 | 750 MB/秒 | 500 MB/秒 |
+| **最大スループット** | 4,000 MB/秒 | 900 MB/秒 | 750 MB/秒 | 500 MB/秒 |
 | **最大 IOPS** | 160,000 | 20,000 | 6,000 | 2,000 |
 
 ## <a name="ultra-disks"></a>Ultra ディスク
@@ -55,12 +55,12 @@ Azure Ultra ディスクからは、既定でサブスクリプション別に�
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9,600         |2,000         |
-|64     |19,200         |2,000         |
-|128     |38,400         |2,000         |
-|256     |76,800         |2,000         |
-|512     |153,600         |2,000         |
-|1,024 - 65,536 (この範囲内のサイズは 1 TiB ずつ増えます)     |160,000         |2,000         |
+|32     |9,600         |2,400         |
+|64     |19,200         |4,000         |
+|128     |38,400         |4,000         |
+|256     |76,800         |4,000         |
+|512     |153,600         |4,000         |
+|1,024 - 65,536 (この範囲内のサイズは 1 TiB ずつ増えます)     |160,000         |4,000         |
 
 Ultra ディスク は、ミリ秒未満の遅延と、前出の表に示した目標 IOPS とスループットを 99.99% の時間で提供するように設計されています。
 
@@ -80,7 +80,7 @@ IOPS の詳細については、「[仮想マシンとディスクのパフォ�
 
 ### <a name="ultra-disk-throughput"></a>Ultra Disk のスループット
 
-1 つの Ultra Disk のスループットは、プロビジョニングされた IOPS ごとに 256 KiB/秒に制限され、ディスクあたり最大 2000 MBps に制限されます (MBps = 秒あたり 10^6 バイト)。 各ディスクで保証されている最小スループットは、プロビジョニングされた IOPS ごとに 4 KiB/秒で、全体のベースラインの最小値は 1 MBps です。
+1 つの Ultra Disk のスループットは、プロビジョニングされた IOPS ごとに 256 KiB/秒に制限され、ディスクあたり最大 4000 MBps に制限されます (MBps = 秒あたり 10^6 バイト)。 各ディスクで保証されている最小スループットは、プロビジョニングされた IOPS ごとに 4 KiB/秒で、全体のベースラインの最小値は 1 MBps です。
 
 実行時に、仮想マシンからディスクをデタッチすることなく、Ultra Disk の IOPS とスループット パフォーマンスを調整できます。 ディスクでパフォーマンス サイズ変更操作を実行した場合、変更が有効になるまでに最大で 1 時間かかることがあります。 24 時間の期間中、最大 4 回のパフォーマンス サイズ変更操作が許可されます。
 

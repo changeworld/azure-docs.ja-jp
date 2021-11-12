@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9716b9d7fc89ba789ef44f44bafbd64340256da1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359159"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300339"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -159,7 +159,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **Azure AD で "アプリが見つからない" というエラーが発生する**:適切な URL が Azure AD のアプリにマップされていることを確認します。
 
-* **サポートを必要とする**:[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)までお問い合わせください。 チームが 24 から 48 営業時間以内に応答します。
+* **サポートを必要とする**:[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)までお問い合わせください。 チームが 24 から 48 営業時間以内に応答します。
 
   Azure Portal チャネルを通じて Microsoft にサポート チケットを提出することもできます。
 
@@ -211,7 +211,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 ### <a name="how-do-i-get-support-for-the-plug-in"></a>プラグインのサポートを受けるにはどうすればよいですか。
 
-このプラグインに関するサポートが必要な場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)までお問い合わせください。 チームが 24 から 48 営業時間以内に応答します。
+このプラグインに関するサポートが必要な場合は、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)までお問い合わせください。 チームが 24 から 48 営業時間以内に応答します。
 
 Azure Portal チャネルを通じて Microsoft にサポート チケットを提出することもできます。
 

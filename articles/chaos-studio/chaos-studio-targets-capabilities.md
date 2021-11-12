@@ -7,12 +7,12 @@ ms.service: chaos-studio
 ms.topic: conceptual
 ms.date: 11/01/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: cccfcfa60ed0d527fe3bd0dac9db0a6206a95c2f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 74e3db42471fb4322a9c80cd63f30fee730d7a49
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091875"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371488"
 ---
 # <a name="targets-and-capabilities-in-azure-chaos-studio"></a>Azure Chaos Studio でのターゲットと機能
 
@@ -111,4 +111,4 @@ az rest --method get --url "https://schema-tc.eastus.chaos-prod.azure.com/target
 ## <a name="next-steps"></a>次のステップ
 ターゲットと機能について理解したので、次の理解に進んでください。
 - [エラーとアクションについて](chaos-studio-faults-actions.md)
-- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct.md)
+- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct-portal.md)

@@ -4,13 +4,13 @@ description: 意図とエンティティが含まれる発話テキストから�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 10/28/2021
+ms.openlocfilehash: e3618ae81b43402f533df268b4a6e3a7efded997
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500143"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434676"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -249,10 +249,10 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
 [Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。 パターンが適用されるためには、パターンで使用されるエンティティが必要です。
 
 ## <a name="sentiment-analysis"></a>センチメント分析
-[公開](luis-how-to-publish-app.md#sentiment-analysis)中にセンチメント分析が構成されている場合、LUIS の json 応答にはセンチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](../text-analytics/index.yml) のドキュメントを参照してください。
+[公開](luis-how-to-publish-app.md#sentiment-analysis)中にセンチメント分析が構成されている場合、LUIS の json 応答にはセンチメント分析が含まれます。 センチメント分析の詳細については、[言語サービス](../language-service/sentiment-opinion-mining/overview.md)のドキュメントを参照してください。
 
 ## <a name="key-phrase-extraction-entity-data"></a>キー フレーズ抽出エンティティ データ
-[キー フレーズ抽出エンティティ](luis-reference-prebuilt-keyphrase.md)では、[Text Analytics](../text-analytics/index.yml) によって提供される、発話内のキー フレーズを返します。
+[キー フレーズ抽出エンティティ](luis-reference-prebuilt-keyphrase.md)では、[言語サービス](../language-service/key-phrase-extraction/overview.md)によって提供される、発話内のキー フレーズを返します。
 
 ## <a name="data-matching-multiple-entities"></a>複数のエンティティに一致するデータ
 

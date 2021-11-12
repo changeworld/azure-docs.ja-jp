@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 622834d3e91303f55fd4adaf2187800b2b2ce765
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0faa0d97c1e1bb73e2a97aa3715efee58a589cd8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164372"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432626"
 ---
 # <a name="integrate-f5-big-ip-with-azure-active-directory"></a>F5 BIG-IP と Azure Active Directory の統合
 
@@ -32,7 +32,7 @@ Azure AD の事前認証によって BIG-IP の公開済みサービスにアク
 
 - [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)、[Fast Identity Online (FIDO) キー](../authentication/howto-authentication-passwordless-security-key.md)、および[証明書ベースの認証](../authentication/active-directory-certificate-based-authentication-get-started.md)を使用した、パスワードレス認証
 
-- プリエンプティブな[条件付きアクセス](../conditional-access/overview.md)および[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md)
+- プリエンプティブな[条件付きアクセス](../conditional-access/overview.md)および [Azure AD 多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md)
 
 - [Identity Protection](../identity-protection/overview-identity-protection.md) -ユーザーとセッションのリスクのプロファイルによる、アダプティブコントロール
 
@@ -146,6 +146,8 @@ SHA を実装するために事前の経験や F5 BIG-IP に関する知識は�
 - [Azure AD SHA による F5 BIG-IP SSL-VPN の保護](f5-aad-password-less-vpn.md)
 
 - [Azure AD B2C と F5 BIG-IP を構成する](../../active-directory-b2c/partner-f5.md)
+
+- [フォームベース認証 SSO 用の F5 BIG IP との Azure Active Directory 統合](f5-big-ip-forms-advanced.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -15,16 +15,14 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: c5aad28fc8b2052f9a5af1233085a93b6a25c479
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3165dc875c89618476284aaaff3e5884ab3fe6b1
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360153"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370747"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure の Computer Vision サービスを使用すると、関心のある視覚的特徴に基づいて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 
 
@@ -49,7 +47,7 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
-Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
+Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの <bpt id="p1">[</bpt>Cognitive Services のページ<ept id="p1">](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)</ept>を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

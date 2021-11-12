@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2021
 ms.author: duau
-ms.openlocfilehash: 1fb1aafed996fa79177157f6c20e6727ee532e7d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5dcc4c893be44c9ebb05139118e7936bbdf5b41d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563117"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223559"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure Front Door でのキャッシュ
 次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。 Front Door は最新の Content Delivery Network (CDN) であり、動的サイト アクセラレーションおよび負荷分散に加えて、他の CDN と同様にキャッシュの動作もサポートされています。
@@ -82,7 +82,7 @@ Front Door は、エッジのコンテンツを動的に圧縮するため、ク
 アセットの要求で圧縮が指定され、要求がキャッシュ ミスになった場合、Front Door は POP サーバー上で直接アセットの圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。 結果として得られる項目は、transfer-encoding: chunked 付きで返されます。
 
 > [!NOTE]
-> 範囲の要求は、さまざまなサイズに圧縮される場合があります。 Azure Front Door では、どの GET HTTP 要求に対しても content-length 値を同じにする必要があります。 クライアントが `accept-encoding` ヘッダーを使用してバイト範囲要求を送信し、その結果、配信元からさまざまなコンテンツの長さで応答があった場合、Azure Front Door は 503 エラーを返します。 配信元または Azure Front Door で圧縮を無効にするか、バイト範囲要求の要求から `accept-encoding` を削除するルール セット ルールを作成します。
+> 範囲の要求は、さまざまなサイズに圧縮される場合があります。 Azure Front Door では、どの GET HTTP 要求でも content-length 値を同じにする必要があります。 クライアントが `accept-encoding` ヘッダーを使用してバイト範囲要求を送信し、その結果、配信元からさまざまなコンテンツの長さで応答があった場合、Azure Front Door により 503 エラーが返されます。 配信元または Azure Front Door で圧縮を無効にするか、バイト範囲要求の要求から `accept-encoding` を削除するルール セット ルールを作成します。
 
 ## <a name="query-string-behavior"></a>クエリ文字列の動作
 Front Door を使用すると、クエリ文字列を含む Web 要求のためにファイルをキャッシュする方法を制御することができます。 クエリ文字列を含む Web 要求で、クエリ文字列は要求の疑問符 (?) の後に指定されます。 クエリ文字列には、フィールド名とその値を等号 (=) で区切って指定される、キーと値のペア (複数可) を含めることができます。 キーと値のペアはそれぞれ、アンパサンド (&) で区切られます。 たとえば、「 `http://www.contoso.com/content.mov?field1=value1&field2=value2` 」のように入力します。 要求のクエリ文字列にキーと値のペアを複数指定する場合、どのような順序で指定してもかまいません。
@@ -136,7 +136,7 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 
 > [!NOTE]
 > * Front Door デザイナー ルーティング規則で設定される "*キャッシュ期間*" は **最小キャッシュ期間** です。 配信元のキャッシュ制御ヘッダーの TTL がオーバーライド値より大きい場合、このオーバーライドは機能しません。
-> * キャッシュされたコンテンツは、より頻繁に要求されるコンテンツの領域を確保するために、それほど頻繁に要求されない場合、期限切れになる前に Azure Front Door から削除される可能性があります。
+> * Azure Front Door では、オブジェクトがキャッシュに格納される最小時間についての保証はありません。 キャッシュされたコンテンツは、より頻繁に要求されるコンテンツの領域を確保するために、それほど頻繁に要求されない場合、期限切れになる前に、エッジ キャッシュから削除される可能性があります。
 >
 
 ## <a name="next-steps"></a>次のステップ

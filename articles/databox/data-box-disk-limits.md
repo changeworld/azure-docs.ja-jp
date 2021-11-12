@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: ab759cf81ce95ca7cf61a3777092fd92040baf6c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ce8cc86727c92f8c0091abafa8f5d91ee1ab21ad
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208478"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347634"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -93,7 +93,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 | Entity | 規則                                             |
 |-------------------|-----------------------------------------------------------|
-| マネージド ディスク名       | <li> 名前は 1 文字から 80 文字で指定する必要があります。 </li><li> 名前の先頭は文字または数字であり、末尾は文字、数字、またはアンダースコアでなければなりません。 </li><li> 名前に使用できるのは、文字、数字、アンダースコア、ピリオド、およびハイフンのみです。 </li><li>   名前にはスペースまたは `/` は使用できません。                                              |
+| マネージド ディスク名       | <li> 名前は 1 文字から 80 文字で指定する必要があります。 </li><li> 名前の先頭は文字または数字であり、末尾は文字、数字、またはアンダースコアでなければなりません。 </li><li> 名前に使用できるのは、文字、数字、アンダースコア、ピリオド、およびハイフンのみです。 </li><li>     名前にはスペースまたは `/` は使用できません。                     |
 
 ## <a name="next-steps"></a>次のステップ
 

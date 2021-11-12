@@ -9,12 +9,12 @@ metadata:
   ms.author: brbell
   ms.reviewer: mimckitt
   ms.date: 06/15/2020
-  ms.openlocfilehash: 69fe7e2a56d5cdf487d195a067195c078cec074e
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: ef76c25c13ded4f9e7f23eac6b38f6c62963f478
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253482"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131474744"
 title: ローカル一時ディスクを持たない Azure VM のサイズ
 summary: >
   > [!TIP]
@@ -22,22 +22,20 @@ summary: >
   > **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使用して、ワークロードに最適な他のサイズをご確認いただけます。
 
 
-  この記事では、ローカル一時ディスクを持たない Azure VM のサイズについてよく寄せられる質問 (FAQ) に対する回答を示します。 これらの VM サイズの詳細については、[Dv4 および Dsv4 シリーズの仕様 (汎用ワークロード)](dv4-dsv4-series.md) または [Ev4 および Esv4 シリーズの仕様 (メモリ最適化ワークロード)](ev4-esv4-series.md) に関する記事を参照してください。
+  この記事では、ローカル一時ディスクを持たない Azure VM のサイズについてよく寄せられる質問 (FAQ) に対する回答を示します。
 sections:
 - name: 無視
   questions:
   - question: "ローカル一時ディスクがないとは何を意味しますか。 \n"
     answer: >
-      従来は、小規模なローカル ディスクを含む VM サイズ (Standard_D2s_v3、Standard_E48_v3 など) がありました (D: ドライブなど)。 これらの新しい VM サイズでは、小規模なローカル ディスクは存在しなくなりました。ただし、依然として Standard HDD、Premium SSD または Ultra SSD を接続することもできます。
+      従来は、小規模なローカル ディスクを含む VM サイズ (Standard_D2s_v3、Standard_E48_v3 など) がありました (D: ドライブなど)。 [Dasv5](dasv5-dadsv5-series.md) と [Easv5](easv5-eadsv5-series.md) などの VM シリーズでは、小さなローカル ディスクが存在しなくなりました。 ただし、リモート ストレージとして使用するために、Standard HDD、Premium SSD、Ultra SSD を接続できます。
   - question: >
       それでもローカル一時ディスクが必要な場合はどうすればよいですか。
-    answer: "ワークロードにローカル一時ディスクが必要な場合は、新しい [Ddv4 と Ddsv4](ddv4-ddsv4-series.md) または [Edv4 と Edsv4](edv4-edsv4-series.md) の VM サイズを使用することもできます。 これらのサイズは、前の v3 サイズと比較して 50% 大きい一時ディスクを提供します。\n\n> [!NOTE]\n> ローカル一時ディスクは永続的ではありません。データが永続的であるようにするには、Standard HDD、Premium SSD または Ultra SSD オプションを使用してください。 \n"
-  - question: "これらの新しい VM サイズと、以前の汎用の Dv3/Dsv3 またはメモリ最適化 Ev3/Esv3 の VM サイズの違いは何ですか。 \n"
-    answer: "| ローカル一時ディスクを使用する v3 VM ファミリ   | ローカル一時ディスクを使用する新しい v4 ファミリ | ローカル一時ディスクのない新しい v4 ファミリ |\n|---|---|---|\n| Dv3   | Ddv4 | Dv4 |\n| Dsv3 | Ddsv4  | Dsv4 |\n| Ev3   | Edv4  | Ev4 |\n| Esv3 | Edsv4 |    Esv4 | \n"
+    answer: "ワークロードにローカルの一時ディスクが必要な場合でも、[Dadsv5](dasv5-dadsv5-series.md) などのサイズが提供されます。 \n\n> [!NOTE]\n> ローカル一時ディスクは永続的ではありません。データが永続的であるようにするには、Standard HDD、Premium SSD または Ultra SSD オプションを使用してください。 \n"
   - question: "ローカル一時ディスクを持つ VM サイズを、ローカル一時ディスクのない VM サイズにサイズ変更できますか。  \n"
     answer: "いいえ。 サイズ変更に使用できる組み合わせは以下に限られます。 \n\n1. VM (ローカル一時ディスクあり) -> VM (ローカル一時ディスクあり) \n2. VM (ローカル一時ディスクなし) -> VM (ローカル一時ディスクなし) \n\n回避策に関心がある場合は、次の質問を参照してください。\n\n> [!NOTE]\n> イメージがリソース ディスクに依存している場合、またはページファイルやスワップファイルがローカル一時ディスクに存在する場合、ディスクレス イメージは機能しません。代わりに、\"ディスクあり\" の代替手段を使用します。 \n"
   - question: "ローカル一時ディスクを持つ VM サイズを、ローカル一時ディスクのない VM サイズに移行する方法を教えてください。  \n"
-    answer: "次の手順を実行することで移行できます。 \n\n1. ローカルの一時ディスク (D: ドライブなど) を持つ仮想マシンにローカル管理者として接続します。\n2. 「[Windows VM のデータ ドライブとしての D: ドライブの使用](./windows/change-drive-letter.md)」の「一時的に pagefile.sys を C ドライブに移動します。」セクションのガイドラインに従って、ページ ファイルをローカル一時ディスク (D: ドライブ) から C: ドライブに移動します。\n\n   > [!NOTE]\n   > 「Windows VM のデータ ドライブとしての D: ドライブの使用」の「一時的に pagefile.sys を C ドライブに移動します。」セクションのガイドラインに従って、ページ ファイルをローカル一時ディスク (D: ドライブ) から C: ドライブに移動します。 **ここに記載されている手順から逸脱すると、\"Unable to resize the VM since changing from resource disk to non-resource disk VM size and vice-versa is not allowed.\" (リソース ディスクからリソース ディスク以外の VM サイズへの変更またはその逆は許可されていないため、VM のサイズを変更できません) というエラー メッセージが表示されます。**\n\n3. 「[ポータルまたは Azure CLI を使用してスナップショットを作成する](./linux/snapshot-copy-managed-disk.md)」に記載されている手順に従って、VM のスナップショットを作成します。 \n4. スナップショットを使用して、「[CLI でスナップショットから仮想マシンを作成する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)」で説明されている手順に従って、新しいディスクレス VM (Dv4、Dsv4、Ev4、Esv4 シリーズなど) を作成します。 \n"
+    answer: "次の手順を実行することで移行できます。 \n\n1. ローカルの一時ディスク (D: ドライブなど) を持つ仮想マシンにローカル管理者として接続します。\n2. 「[Windows VM のデータ ドライブとしての D: ドライブの使用](./windows/change-drive-letter.md)」の「一時的に pagefile.sys を C ドライブに移動します。」セクションのガイドラインに従って、ページ ファイルをローカル一時ディスク (D: ドライブ) から C: ドライブに移動します。\n\n   > [!NOTE]\n   > 「Windows VM のデータ ドライブとしての D: ドライブの使用」の「一時的に pagefile.sys を C ドライブに移動します。」セクションのガイドラインに従って、ページ ファイルをローカル一時ディスク (D: ドライブ) から C: ドライブに移動します。 **ここに記載されている手順から逸脱すると、\"Unable to resize the VM since changing from resource disk to non-resource disk VM size and vice-versa is not allowed.\" (リソース ディスクからリソース ディスク以外の VM サイズへの変更またはその逆は許可されていないため、VM のサイズを変更できません) というエラー メッセージが表示されます。**\n\n3. 「[ポータルまたは Azure CLI を使用してスナップショットを作成する](./linux/snapshot-copy-managed-disk.md)」に記載されている手順に従って、VM のスナップショットを作成します。 \n4. スナップショットを使用して、「[CLI でスナップショットから仮想マシンを作成する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)」で概要が説明されている手順に従って、新しいディスクレス VM (Dv5, Dsv5、Dasv5、Ev5、Esv5、Easv5 シリーズなど) を作成します。 \n"
   - question: >
       これらの VM サイズは Linux と Windows の両方のオペレーティング システム (OS) をサポートしますか。
     answer: >
@@ -49,4 +47,4 @@ sections:
   - question: >
       質問やフィードバックがある場合や
     answer: "[フィードバック フォーム]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u)に記入してください。 \n"
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nこのドキュメントでは、ローカル一時ディスクのない Azure VM に関して最もよく寄せられるご質問について説明しました。 これらの VM サイズの詳細については、次の記事を参照してください。\n\n- [Dv4 および Dsv4 シリーズの仕様 (汎用ワークロード)](dv4-dsv4-series.md)\n- [Ev4 および Esv4 シリーズの仕様 (メモリ最適化ワークロード)](ev4-esv4-series.md)"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nこのドキュメントでは、ローカル一時ディスクのない Azure VM に関して最もよく寄せられるご質問について説明しました。 これらの VM サイズの詳細については、次の記事を参照してください。\n\n- [Dv5 および Dsv5 シリーズの仕様](dv5-dsv5-series.md)\n- [Dasv5 および Dadsv5 シリーズの仕様](dasv5-dadsv5-series.md)\n- [Ev5 および Esv5 シリーズの仕様](ev5-esv5-series.md)\n- [Easv5 および Eadsv5 シリーズの仕様](easv5-eadsv5-series.md)"

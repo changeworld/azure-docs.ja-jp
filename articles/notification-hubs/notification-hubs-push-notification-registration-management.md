@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a2e9d19c3847c5f2c7153580e463ce1e4d1d657
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: a9eb83289beaf3cafb80bda1b5c25bf6b4cb9528
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768771"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467741"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -39,7 +39,7 @@ Notification Hub にデバイスを登録するには、**登録** または **�
 
 ### <a name="installations"></a>インストール
 
-インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 これは、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) を使用してデバイスを登録するための最新の最適なアプローチです。  クライアント デバイス自体にインストールを登録するには、[Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) の方法を使用することもできます。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
 
 次に、インストールを使用する方法の主な利点について説明します。
 

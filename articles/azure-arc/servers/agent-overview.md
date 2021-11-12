@@ -1,15 +1,15 @@
 ---
 title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 10/12/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71446d57d5f73e81c859a0d8453a2017f4c5fd12
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c2fa68aedd837df2f7c573da8adaece3e4d16477
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984366"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462104"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -78,7 +78,13 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 ### <a name="supported-environments"></a>サポートされている環境
 
-Azure Arc 対応サーバーでは、Azure の "*外部*" でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 VMware、Azure Stack HCI、その他のクラウド環境などのプラットフォームで実行されている仮想マシンが含まれます。 Azure Arc 対応サーバーは、Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへのエージェントのインストールをサポートしていません。
+Azure Arc 対応サーバーでは、Azure の "外部" でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 これには、次のようなプラットフォームで実行されている仮想マシンのサポートが含まれます。
+
+* VMware
+* Azure Stack HCI
+* その他のクラウド環境
+
+Azure Arc 対応サーバーは、Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへのエージェントのインストールをサポートしていません。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 

@@ -70,10 +70,10 @@ items:
         href: choose-pricing-tier.md
       - name: 屋内マップ用の Creator
         items:
-          - name: Creator サービスの地理的スコープ
-            href: creator-geographic-scope.md
           - name: 屋内マップの概念
             href: creator-indoor-maps.md
+          - name: Creator サービスの地理的スコープ
+            href: creator-geographic-scope.md
           - name: 変換エラーと警告の描画
             href: drawing-conversion-error-codes.md
       - name: 保存データの暗号化

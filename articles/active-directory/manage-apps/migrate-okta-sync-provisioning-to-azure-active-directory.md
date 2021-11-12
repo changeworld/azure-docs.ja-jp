@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 588764e8eb1864dc702fa94b05fcd7bf32a57c79
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 0902fbd761cb66eb5dbee4a5e3406ecba688c0b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388078"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451485"
 ---
 # <a name="tutorial-migrate-okta-sync-provisioning-to-azure-ad-connect-based-synchronization"></a>チュートリアル: Okta 同期プロビジョニングを Azure AD Connect ベースの同期に移行する
 
@@ -39,6 +39,7 @@ Azure AD クラウド プロビジョニングは、ユニバーサル同期や�
 
 >[!NOTE]
 >Azure AD Connect や Azure AD クラウド プロビジョニングをインストールする場合は、すべての前提条件を考慮する必要があります。 インストールを続行する前に、「[Azure AD Connect の前提条件](../hybrid/how-to-connect-install-prerequisites.md)」で詳細を確認してください。
+
 ## <a name="confirm-immutableid-attribute-synchronized-by-okta"></a>Okta によって同期された ImmutableID 属性を確認する
 
 ImmutableID は、同期されるオブジェクトをオンプレミスの対応物に関連付けるために使用される主要な属性です。 オンプレミス オブジェクトの Active Directory objectGUID が Okta で受け取られると、それは Base64 でエンコードされた文字列に変換されます。 次に、既定でその文字列が Azure AD の ImmutableID フィールドにスタンプされます。
@@ -106,16 +107,18 @@ Azure AD Connect に一括移行する前に、Azure AD の ImmutableID 値が�
 
    >[!IMPORTANT]
    >クラウドの ImmutableID 値が objectGUID 値と一致しない場合は、Okta 同期の既定値が変更されています。ImmutableID 値を決定するために別の属性が選択されている可能性があります。 次のセクションに進む前に、どのソース属性が ImmutableID 値に設定されているかを特定することが重要です。 Okta 同期を無効にする前に、Okta が同期している属性を更新する必要があります。
+
 ## <a name="install-azure-ad-connect-in-staging-mode"></a>ステージング モードで Azure AD Connect をインストールする
 
 ソースと移行先ターゲットの一覧が準備できたら、Azure AD Connect サーバーをインストールします。 Azure AD Connect クラウド プロビジョニングを使用することを選択した場合は、このセクションをスキップしてください。
 
-1. 選択したサーバーへの [Azure AD Connect のダウンロードとインストール](../hybrid/how-to-connect-install-custom.md)を続行します。 
+1. 選択したサーバーへの [Azure AD Connect のダウンロードとインストール](../hybrid/how-to-connect-install-custom.md)を続行します。
 
 1. **[ユーザーの識別]** ページの **[Azure AD でのユーザーの識別方法を選択します]** で、 **[特定の属性を選択します]** オプションを選択します。 次に、Okta の既定値を変更していない場合は、 **[mS-DS-ConsistencyGUID]** を選択します。
 
    >[!WARNING]
    >これは、このページで最も重要な手順です。 **[次へ]** を選択する前に、ソース アンカーに対して選択している属性が、既存の Azure AD ユーザーに "*現在*" 設定されているものであることを確認する必要があります。 間違った属性を選択すると、このオプションをもう一度選択するために、Azure AD Connect をアンインストールしてから再インストールすることが必要になります。
+   
    ![mS-DS-ConsistencyGuid を示すスクリーンショット。](./media/migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization/consistency-guid.png)
 
 1. **[構成]** ページで、 **[ステージング モードを有効にする]** のチェックボックスをオンにしたことを確認します。 その後、 **[インストール]** を選択します。
@@ -162,6 +165,7 @@ Azure AD Connect に一括移行する前に、Azure AD の ImmutableID 値が�
 
    >[!NOTE]
    >次の手順に進む前に、すべてのユーザー属性が正しく同期されていることと、 **[保留中のエクスポート]** タブに想定どおりに表示されることを確認します。 それらが削除されている場合は、それらの ImmutableID の値が一致していることと、同期のために選択されている OU のいずれかにそのユーザーが含まれていることを確認します。
+
 ## <a name="install-azure-ad-cloud-sync-agents"></a>Azure AD クラウド同期エージェントをインストールする
 
 ソースと移行先ターゲットの一覧が準備できたら、[Azure AD クラウド同期エージェントをインストールして構成](../cloud-sync/tutorial-single-forest.md)します。 Azure AD Connect サーバーを使用することを選択した場合は、このセクションをスキップしてください。
@@ -180,6 +184,7 @@ Azure AD Connect のインストールを検証し終え、保留中のエクス
 
    >[!NOTE]
    >Azure AD へのプロビジョニングを処理する Office 365 アプリが複数ある場合は、すべてがオフになっていることを確認します。
+
 ## <a name="disable-staging-mode-in-azure-ad-connect"></a>Azure AD Connect でステージング モードを無効にする
 
 Okta プロビジョニングを無効にすると、Azure AD Connect サーバーでオブジェクトの同期を開始できる状態になります。 Azure AD クラウド同期エージェントを使用することを選択した場合は、このセクションをスキップしてください。
@@ -219,6 +224,7 @@ Okta プロビジョニングを無効にすると、Azure AD クラウド同期
 1. ユーザーが一致しない場合は、必要な更新を行って immutableID 値をバインドします。 その後、クラウド プロビジョニング同期を再開します。
 
 ## <a name="next-steps"></a>次のステップ
+
 Okta から Azure AD への移行の詳細については、以下を参照してください。
 
 - [Okta から Azure AD にアプリケーションを移行する](migrate-applications-from-okta-to-azure-active-directory.md)
