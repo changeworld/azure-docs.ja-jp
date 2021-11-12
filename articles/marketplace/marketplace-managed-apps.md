@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 09/04/2020
-ms.openlocfilehash: 73c8daf49ccdfeee1903a3c0ad823cdd3e52c141
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 11/11/2021
+ms.openlocfilehash: 3a0ebed6767666373095b9ec33d2f20228c9d373
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537860"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289663"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure マネージド アプリケーションの発行ガイド
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52215b4353fff540f5c1b1a7abd4dd3c6bd65584
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 2bebb09f144b36e5c9ac54d8e5a54dd0aac39e27
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616590"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322229"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>オンプレミスの vCenter からプライベートクラウドの vCenter 環境にワークロード VM を移行する
 

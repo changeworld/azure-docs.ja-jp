@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: f42ba987469024be69e67215e78ed6b28e6a4652
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: a875255b37e24686c4eb18b354e49c4f9436a2be
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131438039"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132297413"
 landingContent:
 - title: フレキシブル サーバーについて
   linkLists:
@@ -75,6 +75,8 @@ landingContent:
     links:
     - text: サーバーの復元
       url: how-to-restore-server-portal.md
+    - text: 削除済みサーバーを復元する
+      url: how-to-restore-dropped-server.md
 - title: ネットワークと接続性
   linkLists:
   - linkListType: concept

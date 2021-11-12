@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 6d6e5ca910bfd24a8d10952d92441fcc7fe6fcfa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c5b4f6611dc5ad5a514eaf1affd0517c14fcd353
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780706"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337114"
 ---
 # <a name="comparison-chart---azure-database-for-postgresql-single-server-and-flexible-server"></a>比較表 - Azure Database for PostgreSQL の単一サーバーとフレキシブル サーバー
 
@@ -109,8 +109,8 @@ ms.locfileid: "121780706"
 | pgAudit | プレビュー | はい |
 | **その他の機能** | | |
 | カスタマー マネージド キー (BYOK) | はい | いいえ |
-| アラート | はい | はい |
-| Azure Defender | はい | いいえ |
+| アラート | はい | Yes |
+| Microsoft Defender for Cloud | はい | いいえ |
 | リソース ヘルス | はい | いいえ |
 | サービス正常性 | はい | はい |
 | パフォーマンスの分析情報 (iPerf) | はい | はい (プレビュー) |

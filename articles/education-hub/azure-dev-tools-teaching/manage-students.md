@@ -7,14 +7,15 @@ ms.topic: overview
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 12dbd40731480a2fae294c7292112ecc5df5243b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa55d8d2d9a77191afd47c957c3ba60ecb84f01
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87101315"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337587"
 ---
 # <a name="enrolling-students-in-azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching に学生を登録する
+
 Azure Dev Tools for Teaching を購入すると、機関のドメインに配置されているすべての学生が、このオファーに自動的にアクセスできるようになります。 購入プロセス時に、サブスクリプション管理者の電子メール アドレスを入力するように求められます。 この大学で検証されたドメインでは、同じ電子メール ドメインを使用して学生のロックを解除し、ログインしてソフトウェアのダウンロード特典を引き換える機能を学生に許可します。 学生が Microsoft アカウント (MSA) をまだ所有していない場合、または大学の Active Directory に含まれていない場合は、大学の電子メールと一致するものを作成するよう求められます。 学生が Education Hub にアクセスするときに問題が発生する場合は、以下のトラブルシューティング ガイドを参照するか、[https://aka.ms/studentsupport](https://aka.ms/studentsupport) からお問い合わせください。
 
 ## <a name="managing-access-for-students"></a>学生用のアクセスの管理
@@ -22,7 +23,7 @@ Azure Dev Tools for Teaching を購入すると、機関のドメインに配置
 
 :::image type="content" source="media/manage-students/manage-student-access.png" alt-text="学生のアクセスの管理" border="false":::
 
-## <a name="next-steps"></a>次のステップ   
+## <a name="next-steps"></a>次のステップ
 - [ログインの問題をトラブルシューティングする方法を学習する](troubleshoot-login.md)
 
 - [サポート オプション](program-support.md)

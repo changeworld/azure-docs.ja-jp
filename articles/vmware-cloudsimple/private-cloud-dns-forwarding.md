@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d6107df467d3be35612ff3d2ac5c9a602022f26
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 96810b4653cc6ce2bff92e1fa8455d39f6f13fda
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616248"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322096"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>CloudSimple プライベート クラウドの DNS サーバーからオンプレミスのリソースの DNS 参照を DNS サーバーに転送できるようにする
 

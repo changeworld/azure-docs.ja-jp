@@ -2,19 +2,19 @@
 metadata:
   title: Azure Confidential Computing FAQ
   description: Confidential Computing についてよく寄せられる質問の回答です。
-  author: JBCook
+  author: stempesta
   ms.topic: troubleshooting
   ms.workload: infrastructure
   ms.service: virtual-machines
   ms.subservice: confidential-computing
   ms.date: 11/1/2021
-  ms.author: jencook
-  ms.openlocfilehash: be4d8b1b620dc5eeecbba0a3e9e430bc16d1141e
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.author: stempesta
+  ms.openlocfilehash: 26f08798cc0ab80bcf205bef8da91e97a5fb48d8
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131091954"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132309979"
 title: Intel SGX の機密 VM でのアプリケーション エンクレーブに関してよく寄せられる質問
 summary: >
   この記事では、[Intel SGX Azure 仮想マシンで Confidential Computing ワークロード](overview.md)を実行することに関して特に多く寄せられる質問への回答を示します。

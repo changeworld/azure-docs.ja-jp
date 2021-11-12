@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 9d40ea656f74df1083eadc276eea8a109abd44b0
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 0906c255c3fd77be4de670a980bdc0a2f108c121
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294563"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347106"
 ---
 # <a name="best-practices-for-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes Service と Azure Database for MySQL のベスト プラクティス
 
@@ -24,7 +24,7 @@ Azure Kubernetes Service (AKS) からは、Azure で使用できるマネージ�
 Azure Database for MySQL には、次の 2 つのデプロイ オプションがあります。
 
 - 単一サーバー
-- フレキシブル サーバー (プレビュー)
+- フレキシブル サーバー
 
 単一サーバーでは単一の可用性ゾーンがサポートされ、フレキシブル サーバーでは複数の可用性ゾーンがサポートされています。 一方、AKS でも、単一または複数の可用性ゾーンの有効化がサポートされています。  最初にデータベース サーバーを作成し、サーバーが配置されている可用性ゾーンを確認してから、同じ可用性ゾーンに AKS クラスターを作成します。 これにより、ネットワークの待機時間が短縮され、アプリケーションのパフォーマンスが向上します。
 

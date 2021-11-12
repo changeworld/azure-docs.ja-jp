@@ -12,12 +12,12 @@ ms.date: 06/23/2021
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev, contperf-fy21q4
-ms.openlocfilehash: 7938e8ffbaca3f069016a445775d9c669f1ad144
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 7602c510ee60b30189e399bd07d624980534dc39
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228070"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336546"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -224,7 +224,7 @@ Azure ADでアプリケーションの統合が作動するのをテストした
 
 ポータルに初めてサインインしようとすると、2 つの画面のいずれかが表示されます。 
 
-"失敗しました" というメッセージが表示される場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)に連絡する必要があります。 要求の送信に使用する電子メール アカウントを指定します。 `name@yourbusiness.com`などの会社の電子メールアドレスをお勧めします。 Azure AD チームにより、アカウントが Microsoft アプリケーション ネットワーク ポータルに追加されます。
+"失敗しました" というメッセージが表示される場合は、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)に連絡する必要があります。 要求の送信に使用する電子メール アカウントを指定します。 `name@yourbusiness.com`などの会社の電子メールアドレスをお勧めします。 Azure AD チームにより、アカウントが Microsoft アプリケーション ネットワーク ポータルに追加されます。
 
 [アクセス権の要求] ページが表示される場合は、業務上の正当な理由を入力し、 **[アクセス権の要求]** を選択します。
 
@@ -253,7 +253,7 @@ Azure ADでアプリケーションの統合が作動するのをテストした
 * ゲスト ユーザーは、管理者にリスクをクローズまたは無視してもらいます。 この場合も、Identity Protection は必要ありません。 管理者は https://aka.ms/RiskyUsers にアクセスして、[ユーザー リスクを無視する] をクリックできます。 ただし、管理者はユーザー リスクをクローズする前にデュー デリジェンスを行い、これが偽陽性のリスク評価であったことを確認する必要があります。 そうしない場合、調査なしでリスク評価を無視することで、自分と Microsoft のリソースをリスクにさらすことになります。
 
 > [!NOTE]
-> アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+> アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にお問い合わせください。
 
 ### <a name="implementation-specific-options"></a>実装固有のオプション
 OpenID Connect を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、上記のように **[OpenID Connect & OAuth 2.0]** を選択します。
@@ -279,7 +279,7 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 ![ギャラリーでの SAML アプリケーションの一覧表示](./media/howto-app-gallery-listing/updateorremove.png)
 
 > [!NOTE]
-> アクセスに問題がある場合は、アカウントの作成に関する前のセクションを確認してください。 それでもうまくいかない場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+> アクセスに問題がある場合は、アカウントの作成に関する前のセクションを確認してください。 それでもうまくいかない場合は、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にお問い合わせください。
 
 ### <a name="timelines"></a>タイムライン
 
@@ -312,7 +312,7 @@ Microsoft Partner Network では、排他的なリソース、プログラム、
 ![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request-2.png)
 
 > [!Note]
-> [アクセスに関して問題](#issues-on-logging-into-portal)がある場合は、[Azure AD アプリ統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にメールをお送りください。
+> [アクセスに関して問題](#issues-on-logging-into-portal)がある場合は、[Azure AD アプリ統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com)にメールをお送りください。
 
 ## <a name="next-steps"></a>次のステップ
 

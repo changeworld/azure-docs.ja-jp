@@ -1,20 +1,20 @@
 ---
 title: Azure Confidential Computing でオープンソース ソリューションを使用してアプリケーション エンクレーブを開発する
 description: ツールを使用して Azure Confidential Computing 用の Intel SGX アプリケーションを開発する方法について説明します。
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/01/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e056bc01b77bf94850fe0459b9d99cf5dc4a1c5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 71be688b3f69860468ce6c638e484caae0ba72f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091955"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290212"
 ---
 # <a name="open-source-solutions-to-build-enclave-applications"></a>エンクレーブ アプリケーションを構築するためのオープンソース ソリューション
 

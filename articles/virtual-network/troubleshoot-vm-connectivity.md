@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: virtual-network
 localization_priority: Normal
 ms.date: 08/29/2019
-ms.openlocfilehash: a2d2fc40417e1548a621e26bff70ac6028f8dda7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: ac29c46f9e7b1bdb3201e33bc35e35811d8adc98
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "116986096"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335349"
 ---
 # <a name="troubleshoot-azure-vm-connectivity-problems"></a>Azure VM の接続に関する問題のトラブルシューティング
 
@@ -48,9 +48,9 @@ ms.locfileid: "116986096"
 > [!TIP]
 > ping テストが成功した場合は、手順 3 に進みます。 使用できない場合は、次の手順に進みます。
 
-#### <a name="step-2-check-the-network-security-group-settings&quot;></a>手順 2: ネットワーク セキュリティ グループ設定を確認します。
+#### <a name="step-2-check-the-network-security-group-settings"></a>手順 2: ネットワーク セキュリティ グループ設定を確認します。
 
-各 VM で、既定の受信ポート規則 (&quot;AllowVnetInBound&quot; と &quot;AllowAzureLoadBalancerInBound") を確認します。 また、優先順位の低い規則の下に一致するブロッキング規則が一覧表示されていないことも確認してください。
+各 VM で、既定の受信ポート規則 ("AllowVnetInBound" と "AllowAzureLoadBalancerInBound") を確認します。 また、優先順位の低い規則の下に一致するブロッキング規則が一覧表示されていないことも確認してください。
 
 > [!NOTE]
 > 数値の小さい規則が先に照合されます。 たとえば、優先順位が 1000 および 6500 の規則がある場合、優先順位が 1000 の規則が先に照合されます。

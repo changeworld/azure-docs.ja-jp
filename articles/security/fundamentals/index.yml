@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/03/2021
-  ms.openlocfilehash: 7f0ac9bc80068830d02636ba85f1846b4e86c690
-  ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
+  ms.openlocfilehash: 5b3985223e5b2a45f48fe339cdaf562d7b695a4c
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/21/2021
-  ms.locfileid: "112422833"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132347030"
 landingContent:
 - title: Azure のセキュリティについて
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Security Center
+    - text: Microsoft Defender for Cloud
       url: ../../security-center/security-center-introduction.md
   - linkListType: concept
     links:

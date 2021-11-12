@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 0b936ecbd80ba0b258cea8b043f4bef789b67a35
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0183e56d9bdf0c995dbbcf273914790eb0909e7d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751303"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297547"
 ---
 # <a name="generate-maps"></a>マップの生成
 
@@ -43,7 +43,7 @@ FarmBeats のセンサー配置マップは、土壌水分センサーの配置�
 
 - 衛星画像のダウンロードは、Sentinel のパフォーマンスに依存します。 Sentinel のパフォーマンスの状態とメンテナンス [アクティビティ](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome)を確認してください。
 - Sentinel で許容されるコンカレント [ダウンロード スレッド数](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services)は、1 ユーザーにつき 2 スレッドまでです。
-- プレシジョン マップの生成は、[Sentinel のカバレッジと再通過頻度]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)によって左右されます。
+- プレシジョン マップの生成は、[Sentinel のカバレッジと再通過頻度](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)によって左右されます。
 
 ## <a name="create-a-sensor-placement-map"></a>センサー配置マップを作成する
 このセクションでは、センサー配置マップの作成手順を詳しく説明します。

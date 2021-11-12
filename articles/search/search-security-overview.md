@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: c3e6112c1bee8e42f411eaa8d12d873db2657142
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: a4ed9b5a7d33433a14bb7e6800ac54326184a808
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726462"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347087"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティの概要
 
@@ -201,4 +201,4 @@ Azure Cognitive Search には、現在 1 つの定義が組み込まれていま
 
 + [Azure セキュリティの基礎](../security/fundamentals/index.yml)
 + [Azure Security](https://azure.microsoft.com/overview/security)
-+ [Azure Security Center](../security-center/index.yml)
++ [Microsoft Defender for Cloud](../security-center/index.yml)

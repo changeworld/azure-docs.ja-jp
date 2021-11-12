@@ -76,8 +76,6 @@ items:
             href: concept-asset-normalization.md
       - name: データの分析情報
         href: concept-insights.md
-      - name: アップグレードされた Azure Purview アカウント
-        href: concept-account-upgrade.md
   - name: 操作方法ガイド
     items:
       - name: コレクションを管理する

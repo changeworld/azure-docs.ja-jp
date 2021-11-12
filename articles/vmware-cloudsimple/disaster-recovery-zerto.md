@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f9700b5d25a7d564c72bf959d48ad7cf1afce4e7
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 30792a1a2f01f22b3e2097c8762fd7ff6d234936
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612391"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322476"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー サイトとして設定する
 
@@ -35,7 +35,7 @@ CloudSimple ソリューション:
 
 次の図は、Zerto ソリューション用のアーキテクチャを示しています。
 
-![Architecture](media/cloudsimple-zerto-architecture.png)
+![アーキテクチャ](media/cloudsimple-zerto-architecture.png)
 
 ## <a name="how-to-deploy-the-solution"></a>ソリューションをデプロイする方法
 
@@ -46,7 +46,7 @@ CloudSimple ソリューション:
 3. [CloudSimple プライベート クラウド上での ZVM と VRA の設定](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [Zerto Virtual Protection Group の設定](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>必須コンポーネント
 
 オンプレミス環境からプライベート クラウドへの Zerto Virtual Replication を有効にするには、次の前提条件を満たす必要があります。
 
@@ -93,6 +93,6 @@ CloudSimple ソリューション:
 6. 必要に応じて個々の VM のネットワーク設定をカスタマイズし、VPG を作成します。
 7. レプリケーションが完了したら、フェールオーバーをテストします。
 
-## <a name="reference"></a>関連項目
+## <a name="reference"></a>リファレンス
 
 [Zerto のドキュメント](https://www.zerto.com/myzerto/technical-documentation/)
