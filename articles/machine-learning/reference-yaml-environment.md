@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 8f812b9c02ef14d7e098c7f50e3a1c3cfabe97a6
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d26f25f2a007d0488b515485be5cc3bf0c9d735d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132058356"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557948"
 ---
 # <a name="cli-v2-environment-yaml-schema"></a>CLI (v2) 環境 YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "132058356"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `name` | string | **必須。** 環境の名前。 | | |
@@ -42,17 +42,17 @@ ms.locfileid: "132058356"
 
 ### <a name="attributes-of-the-inference_config-key"></a>`inference_config` キーの属性
 
-| キー | Type | 説明 |
+| キー | 種類 | 説明 |
 | --- | ---- | ----------- |
 | `liveness_route` | object | サービス コンテナーの liveness ルート。 |
 | `liveness_route.path` | string | liveness 要求をルーティングするパス。 |
-| `liveness_route.port` | 整数 (integer) | liveness 要求をルーティングするポート。 |
+| `liveness_route.port` | 整数 | liveness 要求をルーティングするポート。 |
 | `readiness_route` | object | サービス コンテナーの準備ルート。 |
 | `readiness_route.path` | string | 準備要求をルーティングするパス。 |
-| `readiness_route.port` | 整数 (integer) | 準備要求をルーティングするポート。 |
+| `readiness_route.port` | 整数 | 準備要求をルーティングするポート。 |
 | `scoring_route` | object | サービス コンテナーのスコアリング ルート。 |
 | `scoring_route.path` | string | スコアリング要求をルーティングするパス。 |
-| `scoring_route.port` | 整数 (integer) | スコアリング要求をルーティングするポート。 |
+| `scoring_route.port` | 整数 | スコアリング要求をルーティングするポート。 |
 
 ## <a name="remarks"></a>解説
 
@@ -64,15 +64,15 @@ ms.locfileid: "132058356"
 
 ## <a name="yaml-local-docker-build-context"></a>YAML: ローカル Docker ビルド コンテキスト
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-context.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-context.yml":::
 
 ## <a name="yaml-docker-image"></a>YAML: Docker イメージ
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image.yml":::
 
 ## <a name="yaml-docker-image-plus-conda-file"></a>YAML: Docker イメージと conda ファイル
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image-plus-conda.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image-plus-conda.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

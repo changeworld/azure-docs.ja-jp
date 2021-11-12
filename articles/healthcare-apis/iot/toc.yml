@@ -25,7 +25,7 @@ items:
         href: iot-connector-power-bi.md
       - name: IoT コネクタとMicrosoft Teams通知
         href: iot-connector-teams.md
-  - name: 使い方ガイド
+  - name: 操作方法ガイド
     expanded: true
     items:
       - name: Azure IoT Hub を通じてデバイス データを受信する
@@ -36,8 +36,8 @@ items:
         href: iot-connector-custom-functions.md
       - name: FHIR 変換先マッピングを使用する
         href: how-to-use-fhir-mapping-iot.md
-      - name: 診断設定を使用して IoT コネクタのメトリックをエクスポートする
-        href: iot-metrics-diagnostics-export.md
+      - name: メトリックの表示
+        href: iot-display-metrics.md
   - name: リソース
     expanded: true
     items:

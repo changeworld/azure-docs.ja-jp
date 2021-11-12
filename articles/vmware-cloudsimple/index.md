@@ -10,12 +10,12 @@ ms.reviewer: cynthn
 manager: dikamath
 ms.custom: seo-azure-migrate
 keywords: vm サポート, azure vmware solution by cloudsimple, cloudsimple azure, vm ツール, vmware ドキュメント
-ms.openlocfilehash: 2a6c43e3000593af0726a472082be80fb2ac0b1c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 74d35d25f6d0f42ee4d8439ef0c187cf263816b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616400"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305657"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 

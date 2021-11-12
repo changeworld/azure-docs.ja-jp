@@ -1,14 +1,14 @@
 ---
 title: デバイス通知を操作する
 description: 通知により、このアクティビティの処理に関する推奨事項と共に、注意が必要な可能性があるネットワーク アクティビティに関する情報が提供されます。
-ms.date: 12/12/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 27f42f27920d41643f571efed1d5c033ebb47f40
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019102"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315390"
 ---
 # <a name="work-with-device-notifications"></a>デバイス通知を操作する
 

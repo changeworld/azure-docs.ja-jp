@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa06b7aa3210afc6ade1167ec86f449cc46ea6ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92676534"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343422"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Azure Dev tools のアクセスを設定する
 
@@ -22,7 +22,7 @@ ms.locfileid: "92676534"
 
 詳細については、[Azure for Education の Web サイト](https://azureforeducation.microsoft.com)を参照してください。
 
-## <a name="for-administrators-only"></a>管理者のみ  
+## <a name="for-administrators-only"></a>管理者のみ
 管理者は、[Visual Studio Subscription ポータル](https://my.visualstudio.com/)を通じて Azure Dev Tools にアクセスします。
 
 Visual Studio Subscription へのアクセスは、[管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)を通じて要求できます。 承認されると、Visual Studio Subscription ポータルにアクセスすることができます。 Visual Studio Subscription ポータルに初めてアクセスすると、登録時に支給されたメール アドレスに Microsoft アカウントをリンクさせるように求められます。 これらのアカウントをリンクさせるには、サブスクライバー ID (またはベネフィット アクセス番号)、管理者の姓と名、加入契約時に支給されたメールが必要となります。 アカウントのリンク後、Visual Studio サブスクライバー ポータルにアクセスできるようになります。

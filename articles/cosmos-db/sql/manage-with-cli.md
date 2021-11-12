@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: c2b383a64699d6e4b497d8653e69f401886db21a
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 10e802c21fb4d1f3ba0f693dd663ab22330be696
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114175"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443378"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos Core (SQL) API リソースの管理
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ az cosmosdb create \
 > [!NOTE]
 > このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更したり手動フェールオーバーをトリガーしたりすることはできません。 [フェールオーバーの優先度](#set-failover-priority)と[手動フェールオーバーのトリガー](#trigger-manual-failover)に関する説明を参照してください。
 > [!TIP]
-> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。
+> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。 [非同期スループット スケーリング操作](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)が進行中の場合、スループットのスケールアップ操作は一時停止され、リージョンの追加または削除操作が完了すると自動的に再開されます。 
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -143,6 +143,9 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 
 > [!CAUTION]
 > リージョンの優先度を = 0 に変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
+
+> [!NOTE]
+> [非同期スループット スケーリング操作](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)の進行中に手動フェールオーバー操作を実行すると、スループットのスケールアップ操作は一時停止されます。 フェールオーバー操作が完了すると、自動的に再開されます。
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account

@@ -3,12 +3,12 @@ title: クレーム可能 VM の作成と管理
 description: Azure portal を使用して、Azure DevTest Labs に要求可能な仮想マシンを追加する方法、および仮想マシンをリクエストまたは解放する手順を説明します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8fb89e77308751a1a40a849991740228a6c465f5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 68c82c359f5fe0a0c146756cd3a9e1f74e33f6b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660939"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218130"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs でのクレーム可能 VM の作成と管理
 要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から [標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
@@ -31,7 +31,9 @@ ms.locfileid: "128660939"
         最初にシークレットをキー コンテナーに保存してから、ラボで VM を作成するときにそれを使用することもできます。 詳細については、「[Azure DevTest Labs でキー コンテナーにシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)」を参照してください。 キー コンテナーに格納されているパスワードを使用するには、 **[保存されているシークレットを使用する]** を選択し、シークレット (パスワード) に対応するキー値を指定します。
     4. **[その他のオプション]** セクションで、 **[サイズの変更]** を選択します。 定義済みの項目のいずれかを選択して、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定します。
     5. **[成果物を追加または削除]** を選択します。 基本イメージに追加する成果物を選択して構成します。
-    **注:** DevTest Labs やアーティファクトの構成に関する経験がない場合は、「[既存のアーティファクトの VM への追加](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm)」セクションを参照し、終了してからここに戻ってください。
+    
+    >[!NOTE] 
+    >DevTest Labs やアーティファクトの構成に関する経験がない場合は、「[インストール後に成果物を追加する](./devtest-lab-add-vm.md#add-artifacts-after-installation)」セクションを参照し、終了してからここに戻ってください。
 2. 上部で **[詳細設定]** タブに切り替えて、次の操作を行います。
     1. VM が含まれる仮想ネットワークを変更するには、 **[Vnet の変更]** を選択します。
     2. サブネットを変更するには、 **[サブネットの変更]** を選択します。

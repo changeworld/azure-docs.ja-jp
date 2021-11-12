@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: eur
-ms.openlocfilehash: ae07075b91c21a56cd641d81319b863ced950139
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 34a45c4759954c0c0679dcafec13b5327a82cffd
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506548"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252520"
 ---
 :::row:::
     :::column span="3":::
-        音声 SDK は、Linux で使用する際、**Ubuntu 16.04** (9 月まで)、**Ubuntu 18.04/20.04**、**Debian 9/10**、**Red Hat Enterprise Linux (RHEL) 7/8**、**CentOS 7/8** のみをサポートしています。
+        音声 SDK は Linux で使用する際、次の対象アーキテクチャでは、**Ubuntu 16.04** (2021 年 9 月まで)、**Ubuntu 18.04/20.04**、**Debian 9/10**、**Red Hat Enterprise Linux (RHEL) 7/8**、**CentOS 7/8** のみをサポートしています。
     :::column-end:::
     :::column:::
         <br>
         <div class="icon is-large">
-            <img alt="Linux" src="/media/logos/logo_linux-color.svg" width="60px">
+            <img alt="Linux" src="https://docs.microsoft.com/media/logos/logo_linux.svg" width="60px">
         </div>
     :::column-end:::
 :::row-end:::
@@ -39,28 +39,22 @@ ms.locfileid: "131506548"
 ネイティブアプリケーションの場合、音声SDK は`libMicrosoft.CognitiveServices.Speech.core.so`に依存します。 ターゲットアーキテクチャ (x86、x64) がアプリケーションと一致していることを確認します。 Linux のバージョンによっては、追加の依存関係が必要になる場合があります。
 
 - GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
-- OpenSSL ライブラリ (`libssl.so.1.0.0` または `libssl.so.1.0.2`)
-- ALSA アプリケーションの共有ライブラリ (`libasound.so.2`)
+- OpenSSL ライブラリ (`libssl`)
+- ALSA アプリケーションの共有ライブラリ (`libasound`)
 
-# <a name="ubuntu-160418042004"></a>[Ubuntu 16.04/18.04/20.04](#tab/ubuntu)
+# <a name="ubuntu-18042004"></a>[Ubuntu 18.04/20.04](#tab/ubuntu)
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
+sudo apt-get install build-essential libssl-dev libasound2 wget
 ```
-
-> [!NOTE]
-> libssl1.0.x が利用できない場合、代わりに libssl1.1 をインストールしてください。
 
 # <a name="debian-910"></a>[Debian 9/10](#tab/debian)
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.2 libasound2 wget
+sudo apt-get install build-essential libssl-dev libasound2 wget
 ```
-
-> [!NOTE]
-> libssl1.0.x が利用できない場合、代わりに libssl1.1 をインストールしてください。
 
 # <a name="rhel-78-and-centos-78"></a>[RHEL 7/8 and CentOS 7/8](#tab/rhel-centos)
 

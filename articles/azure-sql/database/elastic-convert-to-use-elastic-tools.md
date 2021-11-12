@@ -11,12 +11,12 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: acb8a03f4cbd719f348ae5a65974b1c326b10604
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c6a2506ec92580c949deef98c53d42b06bc37054
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131006280"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473606"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,9 +156,9 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure SQL Database - Elastic Database ツール スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)に関するページから PowerShell スクリプトを取得します。
+[Azure Elastic Database ツール スクリプト](https://github.com/Azure/elastic-db-tools/tree/master/Samples/PowerShell)から PowerShell スクリプトを取得します。
 
-ツールは GitHub:[Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools) にもあります。
+Elastic Database Tools クライアント ライブラリは、GitHub の [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools) で入手できます。
 
 マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。 [分割/マージ ツール](elastic-scale-configure-deploy-split-and-merge.md)を参照してください。
 

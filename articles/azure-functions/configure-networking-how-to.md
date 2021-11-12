@@ -4,12 +4,12 @@ description: Azure Functions の特定の仮想ネットワーク タスクを�
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 91555099c7144d976b5f0b5ef2fe639912857bce
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: db0567456156f8ea74ba048e991000b57ae271b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048819"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332385"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>仮想ネットワークで Azure Functions を構成する方法
 
@@ -47,7 +47,7 @@ ms.locfileid: "131048819"
     | `AzureWebJobsStorage`| ストレージ接続文字列 | これは、セキュリティで保護されたストレージ アカウントの接続文字列です。 |
     | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` |  ストレージ接続文字列 | これは、セキュリティで保護されたストレージ アカウントの接続文字列です。 |
     | `WEBSITE_CONTENTSHARE` | ファイル共有 | プロジェクト配置ファイルが存在する、セキュリティで保護されたストレージ アカウントに作成されたファイル共有の名前。 |
-    | `WEBSITE_CONTENTOVERVNET` | 1 | 新しい設定 |
+    | `WEBSITE_CONTENTOVERVNET` | 1 | 値 1 を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 ストレージ アカウントを仮想ネットワークに制限する場合は、この設定を有効にする必要があります。 |
     | `WEBSITE_VNET_ROUTE_ALL` | 1 | すべての送信トラフィックが強制的に仮想ネットワーク経由になります。 ストレージ アカウントでプライベート エンドポイント接続を使用している場合は必須です。 |
 
 1. **[保存]** を選択して、アプリケーション設定を保存します。 アプリの設定を変更すると、アプリが再起動されます。  

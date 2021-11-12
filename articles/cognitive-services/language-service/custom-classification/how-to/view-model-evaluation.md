@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: d0b708f3b06eaeb458df4e4c9da73e86b451e137
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6b7d56ee6eb7280b285442a2c82001b100d1cf06
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469661"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054374"
 ---
 # <a name="view-the-model-evaluation"></a>モデルの評価を表示する
 
@@ -31,7 +31,7 @@ ms.locfileid: "131469661"
 * [タグ付けされたデータ](tag-data.md)
 * 正常に[トレーニングされたモデル](train-model.md)
 
-詳しくは、[アプリケーション開発ライフサイクル](../overview.md#application-development-lifecycle)に関する記事をご覧ください。
+詳しくは、[アプリケーション開発ライフサイクル](../overview.md#project-development-lifecycle)に関する記事をご覧ください。
 
 ## <a name="model-evaluation"></a>モデルの評価
 

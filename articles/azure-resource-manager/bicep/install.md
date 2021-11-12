@@ -2,14 +2,14 @@
 title: Bicep の開発およびデプロイ環境のセットアップ
 description: Bicep の開発環境とデプロイ環境の構成方法
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/20/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: db0fe243dea09a431adc47f064d87c5e9a2ee7a8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 7f590c0d0954ca4e3ccc3f4d894f55892b01a6ae
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363647"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443511"
 ---
 # <a name="install-bicep-tools"></a>Bicep ツールのインストール
 
@@ -31,6 +31,45 @@ Bicep ファイルを作成するには、適切な Bicep エディターが必�
 拡張機能がインストールされていることを確認するには、`.bicep` ファイル拡張子を持つ任意のファイルを開きます。 右下隅にある言語モードが **Bicep** に変更されていることを確認します。
 
 :::image type="content" source="./media/install/language-mode.png" alt-text="Bicep 言語モード":::
+
+### <a name="troubleshoot"></a>トラブルシューティング
+
+Visual Studio Code 用の Bicep 拡張機能をインストールするときに、次のエラー メッセージが表示される場合があります。
+
+```error
+Failed to install .NET runtime v5.0
+```
+
+```error
+Failed to download .NET 5.0.x ....... Error!
+```
+
+この問題を解決するには、[.NET Web サイト](https://aka.ms/dotnet-core-download)から .NET を手動でインストールし、.NET の既存のインストールを再利用するように Visual Studio Code を構成します。 次の設定を使用:
+
+**Windows**
+
+```json
+"dotnetAcquisitionExtension.existingDotnetPath": [
+  {
+    "extensionId": "ms-azuretools.vscode-bicep",
+    "path": "C:\\Program Files\\dotnet\\dotnet.exe"
+  }
+]
+
+```
+
+**macOS**
+
+```json
+"dotnetAcquisitionExtension.existingDotnetPath": [
+  {
+    "extensionId": "ms-azuretools.vscode-bicep",
+    "path": "/usr/local/share/dotnet/dotnet"
+  }
+]
+```
+
+Visual Studio Code 設定の構成については、「[ユーザーとワークスペースの設定](https://code.visualstudio.com/docs/getstarted/settings)」を参照してください。
 
 ## <a name="deployment-environment"></a>デプロイ環境
 
@@ -121,7 +160,7 @@ bicep --help
 
 ### <a name="macos"></a>macOS
 
-#### <a name="via-homebrew"></a>homebrew を使用
+#### <a name="via-homebrew"></a>homebrew 経由
 
 ```sh
 # Add the tap for bicep

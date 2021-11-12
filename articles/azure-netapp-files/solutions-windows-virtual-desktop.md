@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: dba2c43f0b146816fcbb07419efa7ff4cd926ebe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8d4d9b393c698b2b638a119b7eb4386e0099d514
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733362"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347919"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-azure-virtual-desktop"></a>Azure Virtual Desktop で Azure NetApp Files を利用するメリット 
 
@@ -29,7 +29,7 @@ Azure NetApp Files は、Azure の高パフォーマンスのファイル スト
 
 ## <a name="sample-blueprints"></a>サンプルのブループリント
 
-次のサンプルのブループリントでは、Azure Virtual Desktop と Azure NetApp Files の統合を示しています。 プールされたデスクトップのシナリオでは、ユーザーは[マルチセッション仮想マシン](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session)を使用して、プール内の使用可能な最適なセッション ([幅優先モード](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) ホストにリダイレクトされます。 一方、個人用デスクトップは、各ユーザーが独自の仮想マシンを持つシナリオ用に予約されています。
+次のサンプルのブループリントでは、Azure Virtual Desktop と Azure NetApp Files の統合を示しています。 プールされたデスクトップのシナリオでは、ユーザーは[マルチセッション仮想マシン](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session)を使用して、プール内の使用可能な最適なセッション ([幅優先モード](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-algorithm)) ホストにリダイレクトされます。 一方、個人用デスクトップは、各ユーザーが独自の仮想マシンを持つシナリオ用に予約されています。
 
 ### <a name="pooled-desktop-scenario"></a>プールされたデスクトップのシナリオ
 

@@ -31,11 +31,7 @@
 - name: 使い方ガイド
   items:
     - name: 実験を作成して実行する - サービス直接障害
-      items:
-        - name: ポータル
-          href: chaos-studio-tutorial-service-direct-portal.md
-        - name: CLI
-          href: chaos-studio-tutorial-service-direct-cli.md
+      href: chaos-studio-tutorial-service-direct.md
     - name: 実験を作成して実行する - エージェントベースの障害
       items:
         - name: ポータル
@@ -43,11 +39,7 @@
         - name: CLI
           href: chaos-studio-tutorial-agent-based-cli.md
     - name: 実験を作成して実行する - AKS での Chaos Mesh の障害
-      items:
-        - name: ポータル
-          href: chaos-studio-tutorial-aks-portal.md
-        - name: CLI
-          href: chaos-studio-tutorial-aks-cli.md
+      href: chaos-studio-tutorial-aks.md
     - name: 一般的な問題のトラブルシューティング
       href: troubleshooting.md
 - name: リファレンス
