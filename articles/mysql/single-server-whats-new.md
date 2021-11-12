@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: b324c6b536ae5038ed9eb1d31025d6e88cf21011
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f28b30be15ea4808490851b6fd29c642438a43f8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781062"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472658"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL 単一サーバーの新機能
 
@@ -21,6 +21,12 @@ ms.locfileid: "121781062"
 Azure Database for MySQL は、Microsoft クラウドのリレーショナル データベース サービスです。 このサービスは、[MySQL コミュニティ エディション](https://www.mysql.com/products/community/) (GPLv2 ライセンスで入手可能) のデータベース エンジンを基にしており、バージョン 5.6、5.7、および 8.0 をサポートしています。 [Azure Database for MySQL 単一サーバー](./overview.md#azure-database-for-mysql---single-server)は、最小限の要件でデータベースをカスタマイズできる、フル マネージド データベース サービスを提供するデプロイ モードです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、セキュリティなど、データベース管理機能のほとんどを、最小限のユーザー構成と制御ですべて処理するよう設計されています。
 
 この記事では、2021 年 1 月に利用開始される Azure Database for MySQL 単一サーバーの新しいリリースと機能について説明します。 リストは新しい順に記載されており、最新の更新が最初に示されています。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+- **既知の問題**
+
+MySQL 8.0.27 クライアントは Azure Database for MySQL - 単一サーバーと互換性がありません。 mysql.exe またはワークベンチ経由で作成された MySQL 8.0.27 クライアントからのすべての接続は失敗します。 回避策として、代わりに以前のバージョンのクライアント (MySQL 8.0.27 より前) を使用するか、[Azure Database for MySQL - フレキシブル サーバー](https://docs.microsoft.com/azure/mysql/flexible-server/overview)のインスタンスを作成することを検討してください。
 
 ## <a name="june-2021"></a>2021 年 6 月
   
@@ -85,7 +91,7 @@ Azure Database for MySQL についての質問や提案がある場合は、Azur
 
 - Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
+- フィードバックを提供したり、新しい機能を要求したりするには、<bpt id="p1">[</bpt>UserVoice<ept id="p1">](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)</ept> でエントリを作成します。
 
 ## <a name="next-steps"></a>次のステップ
 

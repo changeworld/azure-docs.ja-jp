@@ -9,12 +9,12 @@ metadata:
   ms.subservice: v1
   ms.topic: conceptual
   ms.date: 10/22/2021
-  ms.openlocfilehash: 1557693510b8db97fc942cdb864de6c9f9527827
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 0a85978ffd2fed13e441bc7109ca013c347b4373
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "131464568"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301667"
 title: Azure Data Factory - よく寄せられる質問
 summary: >
   > [!NOTE]
@@ -198,7 +198,7 @@ sections:
     answer: "**offset** プロパティを使用して、スライスを生成する時刻を指定します。 このプロパティの詳細については、「 [データセットの可用性](data-factory-create-datasets.md#dataset-availability) 」セクションをご覧ください。 以下に簡単な例を示します。\n\n```json\n\"availability\":\n{\n    \"frequency\": \"Day\",\n    \"interval\": 1,\n    \"offset\": \"06:00:00\"\n}\n```\n既定の設定である真夜中ではなく、毎日 **午前 6 時** にスライスを開始する例です。     \n"
   - question: >
       スライスを再実行するにはどうすればよいですか。
-    answer: "スライスを再実行するには、次のどちらかの方法を使用します。\n\n* 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。 「 [選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#perform-batch-actions) 」を参照してください。   \n* Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。\n* スライスの状態を **Waiting** に設定して、**Set-AzDataFactorySliceStatus** コマンドレットを実行します。   \n\n    ```powershell\n    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime \"02/26/2015 19:00:00\" -EndDateTime \"02/26/2015 20:00:00\"\n    ```\n  コマンドレットの詳細については、[Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-Azdatafactoryslicestatus) に関するページをご覧ください。\n"
+    answer: "スライスを再実行するには、次のどちらかの方法を使用します。\n\n* 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。 「 [選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#perform-batch-actions) 」を参照してください。   \n* Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。\n* スライスの状態を **Waiting** に設定して、**Set-AzDataFactorySliceStatus** コマンドレットを実行します。   \n\n  ```powershell\n  Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime \"02/26/2015 19:00:00\" -EndDateTime \"02/26/2015 20:00:00\"\n  ```\n  \n  コマンドレットの詳細については、[Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-Azdatafactoryslicestatus) に関するページをご覧ください。\n"
   - question: >
       スライスの処理にかかった時間を調べるにはどうすればよいですか。
     answer: "データ スライスの処理に要した時間は、監視と管理アプリのアクティビティ ウィンドウ エクスプローラーを使用して調べます。 詳細については、「 [アクティビティ ウィンドウ エクスプローラー](data-factory-monitor-manage-app.md#activity-window-explorer) 」を参照してください。\n\n同じことは、Azure ポータルから次の手順で行うこともできます。  \n\n1. データ ファクトリの **[データ ファクトリ]** ブレードの **[データセット]** タイルをクリックします。\n2. **[データセット]** ブレードの特定のデータセットをクリックします。\n3. **[テーブル]** ブレードの **[最近使用したスライス]** ボックスの一覧で、目的のスライスを選択します。\n4. **[データ スライス]** ブレードの **[アクティビティの実行]** ボックスの一覧で、[アクティビティの実行] をクリックします。\n5. **[アクティビティの実行の詳細]** ブレードで、 **[プロパティ]** タイルをクリックします。\n6. **[期間]** フィールドに表示されている値を確認します。 この値が、スライスの処理にかかった時間です。   \n"

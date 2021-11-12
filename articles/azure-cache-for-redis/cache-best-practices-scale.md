@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 7aa65bbddc03eaf7c80717aa83fe41054617d116
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b0d43e062db591600d1cbcc0cdb18b7ce6b8ebac
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598672"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323507"
 ---
 # <a name="scaling"></a>Scaling
 

@@ -6,17 +6,17 @@ ms.author: pafarley
 ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: df7d5264fd4620f50bb4848a4c52bfdc5f5b9100
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/28/2021
+ms.openlocfilehash: 2fa5a5867bc64da126e24c65b1b6d0c5d618ae18
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073341"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446545"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure Cognitive Services のコストを計画および管理する
 
-この記事では、Azure Cognitive Services のコストを計画および管理する方法について説明します。 コストを見積もるサービスに対してリソースを追加する前に、まず、Cognitive Services のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 Cognitive Services リソース (Computer Vision、LUIS、Text Analytics、Translator など) の使用を開始したら、Cost Management 機能を使用し、予算を設定し、コストを監視します。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Cognitive Services のコストは、Azure の請求に記載された月額料金の一部でしかありません。 この記事では、Cognitive Services のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
+この記事では、Azure Cognitive Services のコストを計画および管理する方法について説明します。 コストを見積もるサービスに対してリソースを追加する前に、まず、Cognitive Services のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 Cognitive Services リソース (音声、Computer Vision、LUIS、言語サービス、Translator など) の使用を開始したら、Cost Management 機能を使用し、予算を設定し、コストを監視します。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Cognitive Services のコストは、Azure の請求に記載された月額料金の一部でしかありません。 この記事では、Cognitive Services のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
 
 ## <a name="prerequisites"></a>[前提条件]
 
@@ -53,7 +53,7 @@ Cognitive Services リソースを作成または使用すると、使用する�
 | **Language** | | |
 | [Language Understanding (LUIS)](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) | 無料オーサリング、無料予測、Standard | トランザクションの数によって請求されます。 トランザクションあたりの料金は、機能 (音声要求、テキスト要求) によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)に関するページを参照してください。 |
 | [QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) | Free または Standard | サブスクリプション料金は月単位で請求されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。 | 
-| [Text Analytics](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Free または Standard | テキスト レコードの数によって請求されます。 | 
+| [言語サービス](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Free または Standard | テキスト レコードの数によって請求されます。 | 
 | [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/) | Free、従量課金制 (S1)、ボリューム割引 (S2、S3、S4、C2、C3、C4、D3) | 価格は測定と機能によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/translator/)に関するページを参照してください。 <li>テキスト翻訳は、翻訳された文字数によって請求されます。</li><li>ドキュメント翻訳は、翻訳された文字数によって請求されます。</li><li>カスタム翻訳は、ソースとターゲットのトレーニング データの文字によって請求されます。</li> |  
 | **Decision** | | |
 | [Anomaly Detector](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Free または Standard | トランザクションの数によって請求されます。 | 

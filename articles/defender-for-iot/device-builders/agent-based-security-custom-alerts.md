@@ -2,13 +2,13 @@
 title: エージェント ベースのセキュリティのカスタム アラート
 description: Defender for IoT デバイスの機能とサービスを使用したカスタマイズ可能なセキュリティ アラートと推奨される修復方法について説明します。
 ms.topic: conceptual
-ms.date: 2/16/2021
-ms.openlocfilehash: 2fb1385c12cbd9d0479d8528f54aad8816393ad1
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 8b1ea13ce6fef5a20c6e172a9de79bec2aa4a93e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018350"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289970"
 ---
 # <a name="defender-for-iot-devices-custom-security-alerts"></a>Defender for IoT デバイスのカスタム セキュリティ アラート
 
@@ -33,5 +33,5 @@ Defender for IoT では、高度な分析と脅威インテリジェンスを使
 
 - [アラートをカスタマイズする](quickstart-create-custom-alerts.md)方法を学ぶ
 - Defender for IoT サービスの[概要](overview.md)
-- [セキュリティ データにアクセスする](how-to-security-data-access.md)方法を学習ぶ
-- [デバイスの調査](how-to-investigate-device.md)について学ぶ
+- <bpt id="p1">[</bpt>セキュリティ データにアクセスする<ept id="p1">](how-to-security-data-access.md)</ept>方法を学習ぶ
+- <bpt id="p1">[</bpt>デバイスの調査<ept id="p1">](how-to-investigate-device.md)</ept>について学ぶ

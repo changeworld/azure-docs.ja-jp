@@ -10,12 +10,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 668d4791a19f77b71dbfc281363893f67f22737b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1c346255ea9817662dd314a2946efc3adaa2d8a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481463"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463166"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics データ管理パートナー
 
@@ -32,6 +32,7 @@ ms.locfileid: "123481463"
 | ![Infolibrarian](./media/data-management/infolibrarian-logo.png) |**Infolibrarian (メタデータ管理サーバー)**<br>InfoLibrarian は、メタデータをカタログ化、格納、および管理することにより、データ管理に関する重要課題の解決を支援します。 Infolibrarian は、メタデータ管理、データ ガバナンス、および資産管理のソリューションを提供することで、多種多様なツールとテクノロジの組み合わせによってメタデータを管理および公開できるようにします。 |[製品ページ](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/data-management/kyligence-logo.png) |**Kyligence**<br>Apache Kylin の作成者によって設立された Kyligence は、データの管理、検出、操作、および分析情報生成のすべてを制限なく自動化することによって顧客の生産性を向上させることを使命にしています。 Kyligence Cloud はクラスターのデプロイを可能にし、データ アクセスを拡張し、さらにデータ分析を大幅に高速化します。 Kyligence の AI で拡張されたビッグ データ分析管理プラットフォームは、エンタープライズ クラスのデータ レイクを構築するという、困難なことが多いタスクを高速かつ容易にします。|[製品ページ](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence-cloud-saas)<br> |
 | ![Redpoint Global](./media/data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>RedPoint Data Management を使用することで、マーケティング担当者はすべてのデータを適用してクロス チャネルでの顧客とのつながりを促進しながら、構造化および非構造化データの管理を行うことができます。 RedPoint を使用すれば、構造化データと非構造化データの価値を最大化することで、今日のオムニ チャネルの顧客を引き込むために必要な高度にパーソナライズされ、状況に応じたやり取りを実現できます。 ドラッグ アンド ドロップ インターフェイスにより、データ管理プロセスを容易に設計および実行できます。 |[製品ページ](https://www.redpointglobal.com/customer-data-management)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
+| ![SAS](./media/business-intelligence/sas-logo.jpg) |**SAS® Viya®**<br>SAS® Viya®は、スケーラブルなクラウドネイティブ アーキテクチャで実行される AI、分析、データ管理ソリューションです。 これにより、分析情報を運用化し、データ サイエンティストからビジネス ユーザーまで、すべてのユーザーが共同作業を行い、革新的な結果をより迅速に実現できるようになります。 オープン ソースまたは SAS モデルを使用すると、SAS® Viya® に API または対話型インターフェイスを介してアクセスして、生データをアクションに変換できます。 |[製品ページ](https://www.sas.com/microsoft)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/sas-institute-560503.sas-viya-saas?tab=Overview)<br> |
 | ![Sentry One](./media/data-management/sql-sentry-logo.png) |**SentryOne (DW Sentry)**<br>インテリジェントなデータ移動ダッシュボードやイベント カレンダーを使用して、ワークロードに影響を与えている原因を常時正確に把握できます。 データの読み込み、バックアップ、復元のために実行されているクエリやジョブを可視化できるように設計されているので、Azure リソースが最大限に活用されているかについての心配は不要です。 |[製品ページ](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM はクラウドベースのデータ モデリング ツールです。このツールを使用すると、任意のブラウザーでどこにいても簡単かつ便利な方法でデータベースを開発できます。 同時に、データベース キー、スキーマ、インデックス、列制約、リレーションシップなど、必要なデータベース ルールとオブジェクトを組み込むこともできます。 |[製品ページ](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Tamr](./media/data-management/tamr-logo.png) |**Tamr**<br>Tamr を使用すると、組織は、Azure Synapse にマスター データを提供することで、Azure Synapse の分析機能を最大限に活用できるようになります。 Tamr のクラウドネイティブなデータ マスタリング ソリューションは、データの結合、クレンジング、分類という負荷の高い作業に機械学習を使用し、これに直感的な人間によるフィードバック ワークフローを加えて、データとビジネス成果のギャップを解消します。 Tamr は、Azure の各種データ サービス (Azure Synapse Analytics、Azure Databricks、Azure HDInsight、Azure Data Catalog、Azure Data Lake Storage、Azure Data Factory など) と統合されています。 Azure の柔軟性と拡張性を活用することで、総保有コストを削減しながら大規模なデータ マスタリングを実現できます。 |[製品ページ](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |

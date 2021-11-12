@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: eab7c2d8468d3895f70d954ed3b1ef6dfdb25245
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d52d7bb4134c23192c083a61b2aa1d86d472f6ce
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288420"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448578"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure Portal を使用したローカル ネットワーク ゲートウェイの設定の変更
 
@@ -23,6 +23,10 @@ ms.locfileid: "108288420"
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+>
+
+>[!NOTE]
+> 接続があるローカル ネットワーク ゲートウェイを変更すると、トンネルの切断とダウンタイムが発生する可能性があります。
 >
 
 ## <a name="local-network-gateway-configuration"></a><a name="configure-lng"></a>ローカル ネットワーク ゲートウェイ構成

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 89cb476141544c136ac38abf996cf16d3ac4d002
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d0b708f3b06eaeb458df4e4c9da73e86b451e137
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092370"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469661"
 ---
 # <a name="view-the-model-evaluation"></a>モデルの評価を表示する
 
@@ -60,13 +60,16 @@ ms.locfileid: "131092370"
 
 モデルの混同行列は、 **[Test set confusion matrix]\(テスト セットの混同行列\)** にあります。
 
+> [!NOTE]
+> 現在、混同マトリックスは複数のラベル分類プロジェクトではサポートされていません。
+
 **単一ラベルの分類**
 
 :::image type="content" source="../media/conf-matrix-single.png" alt-text="単一クラス分類の混同行列" lightbox="../media/conf-matrix-single.png":::
 
-**複数ラベルの分類**
+<!-- **Multiple Label Classification**
 
-:::image type="content" source="../media/conf-matrix-multi.png" alt-text="複数クラス分類の混同行列" lightbox="../media/conf-matrix-multi.png":::
+:::image type="content" source="../media/conf-matrix-multi.png" alt-text="Confusion matrix for multiple class classification" lightbox="../media/conf-matrix-multi.png"::: -->
 
 ## <a name="next-steps"></a>次のステップ
 

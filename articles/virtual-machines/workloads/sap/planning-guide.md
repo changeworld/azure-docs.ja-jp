@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6a707f349d4153c7b7a5dca78e2a739625cc7db5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b6d31f3a55338a9a92549954dd8ae1a3367c3da4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232235"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428066"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -455,7 +455,7 @@ Azure では、デプロイ対象として選択できるさまざまな仮想�
 
 ![Positioning of Microsoft Azure Virtual Machine Services (Microsoft Azure Virtual Machine Services の配置)][planning-guide-figure-400]
 
-Azure 仮想マシン を使用すると、カスタム サーバー イメージを IaaS インスタンスとして Azure にデプロイできるようになります。 また、Azure イメージギャラリーには、オペレーティング システム イメージの豊富な選択肢が用意されています。
+Azure 仮想マシン を使用すると、カスタム サーバー イメージを IaaS インスタンスとして Azure にデプロイできるようになります。 また、Azure Marketplace には、オペレーティング システム イメージの豊富な選択肢が用意されています。
 
 運用の観点から言うと、Azure の仮想マシン サービスはオンプレミスにデプロイされた仮想マシンと同様の機能を提供します。 Azure VM とその VM のアプリケーションで実行されている特定のオペレーティング システムの管理、操作、およびパッチングは、お客様の責任において行われるものです。 Microsoft は、Azure インフラストラクチャ (Infrastructure as a Service - IaaS) 上でその VM をホストする以上のサービスは提供していません。 お客様の側がデプロイする SAP ワークロード向けとしては、Microsoft には IaaS 以外のプランはありません。
 

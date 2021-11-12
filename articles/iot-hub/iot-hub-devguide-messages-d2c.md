@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: cfa6865ee7facdc00303f725de78a3e523ff301d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5a405c50c94a16394a92ba7c4830ab3f3aee072f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595999"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449718"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -49,7 +49,7 @@ IoT Hub では現在、次のエンドポイントがサポートされていま
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>ルーティング エンドポイントとしての組み込みのエンドポイント
 
-標準的な [Event Hubs 統合と SDK](iot-hub-devguide-messages-read-builtin.md) を使用して、組み込みのエンドポイント (**messages/events**) から device-to-cloud メッセージを受信することができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。
+標準的な [Event Hubs 統合と SDK](iot-hub-devguide-messages-read-builtin.md) を使用して、組み込みのエンドポイント (**messages/events**) から device-to-cloud メッセージを受信することができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 ルートが作成されていない場合でも、組み込みのエンドポイントにメッセージをルーティングするために、フォールバック ルートを有効にする必要があります。 ポータルまたは CLI を使用してハブを作成した場合、フォールバックは既定で有効になります。
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>ルーティング エンドポイントとしての Azure Storage
 

@@ -1,24 +1,26 @@
 ---
 title: オントロジとは
 titleSuffix: Azure Digital Twins
-description: 特定分野でのモデリングのための DTDL 業界オントロジについて説明します
+description: デジタル ツインのオントロジ、Azure Digital Twins での使用方法、およびこれらの DTDL オントロジを使用して特定の業界のコンテキストでモデリングを行う方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f4beb002a1bfd8a885157099228747213e754253
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 56ce0815bdcb59e64f6a61cce4d4fb6172abea20
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772359"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501630"
 ---
 # <a name="what-is-an-ontology"></a>オントロジとは 
 
+この記事では、業界オントロジの概念と、Azure Digital Twins のコンテキスト内でそれらを使用する方法について説明します。
+
 Azure Digital Twins ソリューションのボキャブラリは、ご自身の環境内に存在するエンティティの種類を示す、[モデル](concepts-models.md)を使用して定義されます。
 
-自分のソリューションが特定の業界に関連している場合、独自のモデル セットをゼロから作成するよりも、既に存在するその業界用の一連のモデルから開始する方が簡単で効率的な場合があります。 これらの既存のモデル セットを **オントロジ** と呼びます。 
+自分のソリューションが特定の業界に関連している場合、独自のモデル セットをゼロから作成するよりも、既に存在するその業界用の一連のモデルから開始する方が簡単で効率的な場合があります。 これらの既存のモデル セットを **オントロジ** と呼びます。
 
 一般的に、オントロジとは、特定の分野 (建造物、IoT システム、スマート シティ、エネルギー グリッド、Web コンテンツなど) の一連のモデルです。 オントロジは、次のことを実現できるため、ツイン グラフのスキーマとしてよく使用されます。
 * ソフトウェア コンポーネント、ドキュメント、クエリ ライブラリなどの調和。
@@ -56,7 +58,7 @@ DTDL を使用した業界標準のオントロジを統合するための戦略
 1. モデルを[検証](how-to-parse-models.md)して、それが有効な DTDL ドキュメントであることを確認します。
 1. [API](how-to-manage-model.md#upload-models) または [Azure Digital Twins のモデル アップローダー](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels)のようなサンプルを使用して、完成したモデルを Azure Digital Twins にアップロードします。
 
-この一連の記事を読んだ後は、Azure Digital Twins インスタンスで自分のモデルを使用できるようになります。 
+この一連の記事を読むと、Azure Digital Twins インスタンスでモデルを使用する方法が手順を追って説明されています。 
 
 >[!TIP]
 > [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) または [Azure Digital Twins Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、オントロジ内のモデルを視覚化できます。

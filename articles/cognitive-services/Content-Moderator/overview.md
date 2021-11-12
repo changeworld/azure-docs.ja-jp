@@ -12,16 +12,14 @@ ms.date: 09/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: コンテンツ モデレーター, azure コンテンツ モデレーター, オンライン モデレーター, コンテンツ フィルター ソフトウェア, コンテンツ モデレーション サービス, コンテンツ モデレーション
-ms.openlocfilehash: ed674cd293681fd34d6ff53d25e136863f88ee6a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 0696e87e4e395896b0b0f57c2c5912264e19cd83
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356695"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373348"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 [!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 

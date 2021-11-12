@@ -2,20 +2,20 @@
 title: Microsoft Azure Maps でデーモン アプリケーションをセキュリティで保護する方法
 titleSuffix: Azure Maps
 description: この記事では、バックグラウンド プロセス、タイマー、ジョブなどのデーモン アプリケーションを Microsoft Azure Maps の信頼でき、セキュリティで保護された環境でホストする方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/21/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philema
+manager: eriklind
 custom.ms: subject-rbac-steps
-ms.openlocfilehash: b888dccbd7ce5cbf948b2da5494dd554b2d80649
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: e64645f7bdcbfb40cbee0fd29d1df2464a5d4f3e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541772"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450858"
 ---
 # <a name="secure-a-daemon-application"></a>デーモン アプリケーションをセキュリティで保護する
 
@@ -216,10 +216,10 @@ Azure 以外の環境で実行する場合、マネージド ID は使用でき�
 
 4. HTTP メソッドの **[POST]** を選択します。
 
-5. 次の URL をアドレスバーに入力し (`<Tenant ID>` をディレクトリ (テナント) ID に、`<Client ID>` をアプリケーション (クライアント) ID に置き換えます)、`<Client Secret>` をお使いのクライアント シークレットに置き換えます。
+5. 次の URL をアドレス バーに入力し (`{Tenant-ID}` をディレクトリ (テナント) ID に、`{Client-ID}` をアプリケーション (クライアント) ID に置き換えます)、`{Client-Secret}` をお使いのクライアント シークレットに置き換えます。
 
     ```http
-    https://login.microsoftonline.com/<Tenant ID>/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id=<Client ID>&client_secret=<Client Secret>%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
+    https://login.microsoftonline.com/{Tenant-ID}/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id={Client-ID}&client_secret={Client-Secret}%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
     ```
 
 6. **[送信]** を選択します。

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 45c96b1e0777dd42bd1a7175a057e5a48f691ff4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d8b3d862c358ee3521980fdbfae2689c17707b1e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779675"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223709"
 ---
 # <a name="avro-format-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics での Avro 形式
 
@@ -94,7 +94,7 @@ Azure Blob Storage の Avro データセットの例を次に示します。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアにおいて Avro 形式での読み取りと書き込みが可能です:[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+マッピング データ フローでは、次のデータ ストアで avro 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で avro 形式を読み取ることができます。
 
 ### <a name="source-properties"></a>ソース プロパティ
 

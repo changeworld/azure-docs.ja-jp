@@ -1,24 +1,24 @@
 ---
 title: Azure AD B2C の API コネクタについて
-description: Azure Active Directory (Azure AD) API コネクタを使用すれば、REST API を使用してユーザー フローをカスタマイズおよび拡張できます。
+description: Azure Active Directory (Azure AD) API コネクタを使用して、REST API または外部 ID データ ソースへの送信 Webhook を使用してユーザー フローをカスタマイズおよび拡張します。
 services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 07/05/2021
-ms.author: mimart
-author: msmimart
-manager: celestedg
+ms.date: 11/02/2021
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cade077501e499893686fcc856129deb61e8778e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b5d3c49019d1953dd0deb5d498291d92af4aba1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723317"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436937"
 ---
-# <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>API コネクタを使用してサインアップ ユーザー フローをカスタマイズおよび拡張する
+# <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows-with-external-identity-data-sources"></a>API コネクタを使用して、外部 ID データ ソースでサインアップ ユーザー フローをカスタマイズおよび拡張する 
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "121723317"
 開発者または IT 管理者は、API コネクタを使用し、サインアップ ユーザー フローと REST API を統合してサインアップ体験をカスタマイズしたり、外部システムと統合したりできます。 たとえば、API コネクタを使用すると、次のことができます。
 
 - **ユーザー入力データの検証**。 不正な、または無効なユーザー データに対する検証を行います。 たとえば、ユーザーが提供したデータを外部データ ストア内の既存のデータまたは許可されている値の一覧と照らし合わせて検証することができます。 無効な場合は、有効なデータを提供するようユーザーに求めることも、ユーザーがサインアップ フローを続行できないようにすることもできます。
-- **ユーザー ID を確認します**。 本人確認サービスを使用して、アカウント作成の決定のセキュリティ レベルを向上させます。
+- **ユーザー ID を確認します**。 本人確認サービスまたは外部 ID データ ソースを使用して、アカウント作成の決定のセキュリティ レベルを向上させます。
 - **カスタム承認ワークフローと統合します**。 アカウントの作成を管理したり、制限したりするには、カスタム承認システムに接続します。
 - **外部ソースの属性を使用してトークンを拡張します**。 Azure AD B2C の外部にある、クラウド システム、カスタム ユーザー ストア、カスタム アクセス許可システム、レガシ ID サービスなどを始めとしたソースのユーザーに関する属性を使用して、トークンを強化します。
 - **ユーザー属性を上書する** ユーザーから収集された属性を再フォーマットし、それに値を割り当てます。 たとえば、ユーザーが名をすべて小文字または大文字で入力する場合に、名の最初の文字だけを大文字にするように書式設定できます。 
@@ -78,9 +78,9 @@ Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience
 
 Azure AD B2C を使用すると、自分の RESTful サービスを呼び出すことで、独自のビジネス ロジックをユーザー体験に追加できます。 Identity Experience Framework は、RESTful サービスからデータを送受信して、要求を交換できます。 たとえば、次のように操作できます。
 
-- **ユーザー入力データの検証**。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。存在しない場合、エラーが表示されます。
-- **要求を処理します**。 ユーザーが名をすべて小文字または大文字で入力する場合に、お使いの REST API は名の最初の文字だけを大文字にするように書式設定でき、それを Azure AD B2C に返すことができます。
-- **企業の基幹業務アプリケーションとさらに緊密に統合することでユーザー データを拡充します**。 RESTful サービスでは、ユーザーのメール アドレスを受け取り、顧客のデータベースを照会し、ユーザーのロイヤルティ番号を Azure AD B2C に返すことができます。 返された要求は、ユーザーの Azure AD アカウントに保存するか、次のオーケストレーション手順で評価するか、アクセス トークンに含めることができます。
+- **外部 ID データ ソースを使用して、ユーザー入力データを検証します**。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。存在しない場合、エラーが表示されます。 API コネクタは、サインアップなどのイベントが発生したときに呼び出しが行われるため、送信 Webhook をサポートする手段としても考えることができます。
+- **要求を処理します**。 ユーザーが名をすべて小文字または大文字で入力する場合に、お使いの REST API は名の最初の文字だけを大文字にするように書式設定でき、それを Azure AD B2C に返すことができます。 ただし、カスタム ポリシーを使用する場合は、RESTful API の呼び出しよりも [ClaimsTransformations](claimstransformations.md) が優先されます。 
+- **企業の基幹業務アプリケーションとさらに緊密に統合することでユーザー データを動的に拡充します**。 RESTful サービスでは、ユーザーのメール アドレスを受け取り、顧客のデータベースを照会し、ユーザーのロイヤルティ番号を Azure AD B2C に返すことができます。 返された要求は、ユーザーの Azure AD アカウントに保存するか、次のオーケストレーション手順で評価するか、アクセス トークンに含めることができます。
 - **カスタム ビジネス ロジックを実行します**。 プッシュ通知の送信、企業データベースの更新、ユーザーの移行プロセスの実行、アクセス許可の管理、データベースの監査、およびその他のワークフローを実行できます。
 
 ![RESTful サービスの要求交換の図](media/api-connectors-overview/restful-service-claims-exchange.png)

@@ -10,12 +10,12 @@ author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ff49606e2f1a3877b6949d9ec0ae8a125c533484
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ecfd6d57d7f978e64bed0003253a05941effa910
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557929"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060966"
 ---
 # <a name="cli-v2-command-job-yaml-schema"></a>CLI (v2) コマンド ジョブ YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131557929"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | const | ジョブの種類。 | `command` | `command` |
@@ -40,8 +40,8 @@ ms.locfileid: "131557929"
 | `environment_variables` | object | コマンドが実行されるプロセスに設定する環境変数の名前と値のペアのディクショナリ。 | | |
 | `distribution` | object | 分散トレーニング シナリオの配布構成。 [MpiConfiguration](#mpiconfiguration)、[PyTorchConfiguration](#pytorchconfiguration)、[TensorFlowConfiguration](#tensorflowconfiguration) のいずれか。 | | |
 | `compute` | string | ジョブを実行するコンピューティング先の名前。 これは、ワークスペース内の既存のコンピューティングへの参照 (`azureml:<compute_name>` 構文を使用) または `local` でローカル実行を指定する場合があります。 | | `local` |
-| `resources.instance_count` | 整数 | ジョブに使用するノードの数。 | | `1` |
-| `limits.timeout` | 整数 | ジョブの実行が許可される最大時間 (秒単位)。 この制限に達すると、システムによってジョブが取り消されます。 | | |
+| `resources.instance_count` | 整数 (integer) | ジョブに使用するノードの数。 | | `1` |
+| `limits.timeout` | 整数 (integer) | ジョブの実行が許可される最大時間 (秒単位)。 この制限に達すると、システムによってジョブが取り消されます。 | | |
 | `inputs` | object | ジョブへの入力のディクショナリ。 キーは、ジョブのコンテキスト内の入力の名前であり、値は入力値です。 <br><br> 入力は、`command` 式を使用して `${{ inputs.<input_name> }}` で参照できます。 | | |
 | `inputs.<input_name>` | 数値、整数、ブール値、文字列、またはオブジェクト | リテラル値 (number、integer、boolean、または string 型)、[JobInputUri](#jobinputuri)、または [JobInputDataset](#jobinputdataset) のいずれか。 | | |
 | `outputs` | object | ジョブの出力構成のディクショナリ。 キーはジョブのコンテキスト内の出力の名前であり、値は出力構成です。 <br><br> 出力は、`command` 式を使用して `${{ outputs.<output_name> }}` で参照できます。 | |
@@ -52,31 +52,31 @@ ms.locfileid: "131557929"
 
 #### <a name="mpiconfiguration"></a>MpiConfiguration
 
-| キー | 種類 | 説明 | 使用できる値 |
+| キー | Type | 説明 | 使用できる値 |
 | --- | ---- | ----------- | -------------- |
 | `type` | const | **必須。** ディストリビューションの種類。  | `mpi` |
-| `process_count_per_instance` | 整数 | **必須。** ジョブに対して起動するノードあたりのプロセスの数。  | |
+| `process_count_per_instance` | 整数 (integer) | **必須。** ジョブに対して起動するノードあたりのプロセスの数。  | |
 
 #### <a name="pytorchconfiguration"></a>PyTorchConfiguration
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** ディストリビューションの種類。  | `pytorch` | |
-| `process_count_per_instance` | 整数 | ジョブに対して起動するノードあたりのプロセスの数。 | |  `1` |
+| `process_count_per_instance` | 整数 (integer) | ジョブに対して起動するノードあたりのプロセスの数。 | |  `1` |
 
 #### <a name="tensorflowconfiguration"></a>TensorFlowConfiguration
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `type` | const | **必須。** ディストリビューションの種類。  | `tensorflow` |
-| `worker_count` | 整数 | ジョブに対して起動するワーカーの数。 | | 既定値は `resources.instance_count` です。 |
-| `parameter_server_count` | 整数 | ジョブに対して起動するパラメーター サーバーの数。 | | `0` |
+| `worker_count` | 整数 (integer) | ジョブに対して起動するワーカーの数。 | | 既定値は `resources.instance_count` です。 |
+| `parameter_server_count` | 整数 (integer) | ジョブに対して起動するパラメーター サーバーの数。 | | `0` |
 
 ### <a name="job-inputs"></a>ジョブの入力
 
 #### <a name="jobinputuri"></a>JobInputUri
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `file` | string | 入力として使用する 1 つのファイルへの URI。 サポートされる URI の種類は `azureml`、`https`、`wasbs`、`abfss`、`adl` です。 `azureml://` URI 形式の使用方法の詳細については、[コア yaml 構文](reference-yaml-core-syntax.md)に関するページを参照してください。 **`file` または `folder` のいずれかが必須です。**  | | |
 | `folder` | string | 入力として使用するフォルダーの URI。 サポートされる URI の種類は `azureml`、`wasbs`、`abfss`、`adl` です。 `azureml://` URI 形式の使用方法の詳細については、[コア yaml 構文](reference-yaml-core-syntax.md)に関するページを参照してください。 **`file` または `folder` のいずれかが必須です。**   | | |
@@ -84,7 +84,7 @@ ms.locfileid: "131557929"
 
 #### <a name="jobinputdataset"></a>JobInputDataset
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
 | `dataset` | 文字列またはオブジェクト | **必須。** 入力として使用するデータセット。 これは、ワークスペース内の既存のバージョン管理されたデータセットへの参照またはインライン データセットの仕様のいずれかです。 <br><br> 既存のデータセットを参照するには、`azureml:<dataset_name>:<dataset_version>` 構文を使用します。 <br><br> データセットをインラインで定義するには、[データセット スキーマ](reference-yaml-dataset.md#yaml-syntax)に従います。 `name` プロパティおよび `version` プロパティはインライン データセットではサポートされていないので、除外します。 | | |
 | `mode` | string | データセットをコンピューティング先に配信する方法のモード。 読み取り専用マウントの場合、データセットはマウント パスとして使用されます。 フォルダーはフォルダーとしてマウントされ、ファイルは親フォルダーとしてマウントされます。 ダウンロード モードの場合、データセットはダウンロードされたパスとして使用されます。 | `ro_mount`, `download` | `ro_mount` |
@@ -99,71 +99,71 @@ ms.locfileid: "131557929"
 
 ## <a name="yaml-hello-world"></a>YAML: hello world
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world.yml":::
 
 ## <a name="yaml-display-name-experiment-name-description-and-tags"></a>YAML: 表示名、実験名、説明、タグ
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-org.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-org.yml":::
 
 ## <a name="yaml-environment-variables"></a>YAML: 環境変数
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-env-var.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-env-var.yml":::
 
 ## <a name="yaml-source-code"></a>YAML: ソース コード
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-code.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-code.yml":::
 
 ## <a name="yaml-literal-inputs"></a>YAML: リテラル入力
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-input.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-input.yml":::
 
 ## <a name="yaml-write-to-default-outputs"></a>YAML: 既定の出力への書き込み
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output.yml":::
 
 ## <a name="yaml-write-to-named-data-output"></a>YAML: 名前付きデータ出力に書き込む
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output-data.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output-data.yml":::
 
 ## <a name="yaml-datastore-uri-file-input"></a>YAML: データストア URI ファイルの入力
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-file.yml":::
 
 ## <a name="yaml-datastore-uri-folder-input"></a>YAML: データストア URI フォルダーの入力
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-folder.yml":::
 
 ## <a name="yaml-uri-file-input"></a>YAML: URI ファイルの入力
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-file.yml":::
 
 ## <a name="yaml-uri-folder-input"></a>YAML: URI フォルダーの入力
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-folder.yml":::
 
 ## <a name="yaml-notebook-via-papermill"></a>YAML: 紙を使用したノートブック
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-notebook.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-notebook.yml":::
 
 ## <a name="yaml-basic-python-model-training"></a>YAML: 基本的な Python モデル トレーニング
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job.yml":::
 
 ## <a name="yaml-basic-r-model-training-with-local-docker-build-context"></a>YAML: ローカル Docker ビルド コンテキストを使用した基本的な R モデル トレーニング
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/r/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/r/iris/job.yml":::
 
 ## <a name="yaml-distributed-pytorch"></a>YAML: 分散 PyTorch
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
 
 ## <a name="yaml-distributed-tensorflow"></a>YAML: 分散 TensorFlow
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/tensorflow/mnist-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/tensorflow/mnist-distributed/job.yml":::
 
 ## <a name="yaml-distributed-mpi"></a>YAML: 分散 MPI
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/tensorflow/mnist-distributed-horovod/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/tensorflow/mnist-distributed-horovod/job.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

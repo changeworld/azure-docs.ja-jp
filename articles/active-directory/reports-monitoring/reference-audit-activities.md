@@ -4,7 +4,7 @@ description: Azure Active Directory (Azure AD) で監査ログに記録できる
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: karenhoran
+manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cb1056afe58acb5b3fdc8aae45fedf32eb446a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 49e40ec9fd5b17ff740bd914d37cbac00c6a640a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131995751"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462748"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
 

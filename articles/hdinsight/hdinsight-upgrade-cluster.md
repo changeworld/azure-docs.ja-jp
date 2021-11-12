@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 4aa25368e156ce793e969f866490352e253559fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fa655092de1c3e103381ccd58bf840b70a3809e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871726"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249763"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight クラスターを新しいバージョンに移行する
 
@@ -50,6 +50,21 @@ HDInsight クラスターをアップグレードするワークフローは次�
 ## <a name="backup-and-restore"></a>バックアップと復元
 
 データベースのバックアップと復元の詳細については、[自動データベース バックアップを使用した Azure SQL Database 内のデータベースの復旧](../azure-sql/database/recovery-using-backups.md)に関する記事を参照してください。
+
+## <a name="upgrade-scenarios"></a>アップグレードのシナリオ
+
+前述のように、新しい機能と修正プログラムを活用するために、HDInsight クラスターを定期的に最新バージョンに移行することをお勧めします。 クラスターを削除して再デプロイすることを要求する理由を次の一覧で確認してください。
+
+* クラスターのバージョンが[インベントリから削除済み](hdinsight-retired-versions.md)か [Basic サポート](hdinsight-36-component-versioning.md)にあり、クラスターの問題が発生している場合、新しいバージョンで解決されます。
+* クラスターの問題の根本原因は、小さな VM に関連していると判断されます。 [Microsoft の推奨されるノード構成を表示します](hdinsight-supported-node-configuration.md#all-supported-regions-except-brazil-south-and-japan-west)。
+* お客様がサポートケースを開き、Microsoft のエンジニアリングチームが、新しいクラスター バージョンで既に問題が修正されていることを確認します。
+* 既定のメタストア データベース (Ambari、Hive、Oozie、Ranger) が使用率の上限に達しました。 Microsoft から、[カスタム メタストア](hdinsight-use-external-metadata-stores.md#custom-metastore) データベースを使用してクラスターを再作成するように求めるメッセージが表示されます。
+* クラスターの問題の根本原因は、**サポートされていない操作** が原因です。 サポートされていない一般的な操作の一部を次に示します。
+     * **Ambari でのサービスの移動または追加**。 Ambari のクラスター サービスの情報を表示するときに、[サービス アクション] メニューから実行できる操作の 1 つは、 **[サービス名] の移動** です。 別のアクションとして **[サービス名] を追加** します。 これらのオプションはどちらもサポートされていません。
+     * **Python パッケージが破損しています**。 HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Python 3.5) に依存しています。 これらの既定の組み込み環境にカスタム パッケージを直接インストールすると、予期しないライブラリ バージョンの変更が発生し、クラスターが壊れる可能性があります。 Spark アプリケーションの[カスタム外部 Python パッケージを安全にインストールする](./spark/apache-spark-python-package-installation.md#safely-install-external-python-packages)方法を参照してください。
+     * **サードパーティ製ソフトウェア**。 お客様は、HDInsight クラスターにサードパーティ製ソフトウェアをインストールすることができます。ただし、既存の機能が壊れている場合は、クラスターを再作成することをお勧めします。
+     * **同じクラスターに複数のワークロードがあります**。 HDInsight 4.0 では、Hive Warehouse Connector には、Spark ワークロードと Interactive Query ワークロード用に、個別のクラスターが必要です。 [次の手順に従って、Azure HDInsight に両方のクラスターを設定します。](interactive-query/apache-hive-warehouse-connector.md) 同様に、[Spark と HBASE](hdinsight-using-spark-query-hbase.md) を統合するには、2 つの異なるクラスターが必要です。
+     * **カスタム Ambari DB パスワードが変更されました**。 Ambari DB パスワードは、クラスターの作成時に設定され、更新するための現在のメカニズムはありません。 顧客が[カスタム Ambari DB](hdinsight-custom-ambari-db.md) を使用してクラスターをデプロイする場合、そのユーザーは SQL DB の DB パスワードを変更することができます。ただし、実行中の HDInsight クラスターに対してこのパスワードを更新する方法はありません。
 
 ## <a name="next-steps"></a>次のステップ
 
