@@ -11,16 +11,14 @@ ms.topic: overview
 ms.date: 06/21/2021
 ms.author: pafarley
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: eb7aba4367b7f8ce54141613e0d1f52ded1c26bb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 46e01af8fb0022e2e003565a07dca6e7e2713dda
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284786"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372570"
 ---
 # <a name="what-is-image-analysis"></a>画像分析とは
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Computer Vision Image Analysis サービスでは、画像からさまざまな視覚的特徴を抽出できます。 たとえば、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
@@ -111,7 +109,7 @@ Computer Vision を使用すると、画像内の[成人向けコンテンツを
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
-Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
+Cognitive Services 全般に言えることですが、Computer Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの <bpt id="p1">[</bpt>Cognitive Services のページ<ept id="p1">](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)</ept>を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

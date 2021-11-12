@@ -1,20 +1,20 @@
 ---
 title: 仮想マシンの Azure Confidential Computing
 description: 仮想マシンの Azure Confidential Computing ソリューションについて説明します。
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0a34994f6f7f97ddd3b97071dcb328d47b41cf61
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1805b153d33915c2ec252c0e4a932eceb710b59f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017521"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331901"
 ---
 # <a name="solutions-on-azure-for-intel-sgx"></a>Intel SGX 向けの Azure でのソリューション
 
@@ -42,7 +42,7 @@ az vm list-skus `
 
 - **Azure サブスクリプション** - Confidential Computing VM インスタンスをデプロイするには、従量課金制サブスクリプションまたは他の購入オプションを検討してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)をお使いの場合、適切な量の Azure コンピューティング コアに対するクォータが与えられません。
 
-- **価格とリージョン別の可用性** - DCsv2、DCsv3 および DCdsv3 VM の価格は[仮想マシンの価格ページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)で確認できます。 各 Azure リージョンで利用できるかどうかについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) 」を参照してください。
+- **価格とリージョン別の可用性** - DCsv2、DCsv3 および DCdsv3 VM の価格は [仮想マシンの価格ページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)で確認できます。 各 Azure リージョンで利用できるかどうかについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) 」を参照してください。
 
 - **コア クォータ** – 場合によっては、Azure サブスクリプションのコア クォータを既定値から増やす必要があります。 サブスクリプションによっては、DCsv2-Series を含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../azure-portal/supportability/per-vm-quota-requests.md) (無料) してください。 既定の制限は、サブスクリプション カテゴリによって異なる場合があります。
 

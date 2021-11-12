@@ -3,23 +3,19 @@ metadata:
   title: Microsoft Defender for Cloud に関してよく寄せられる質問-データ収集とエージェント
   description: Microsoft Defender for Cloud のデータ収集、エージェント、ワークスペースに関してよく寄せられる質問 (脅威の防止、検出、対応に役立つ製品)
   services: security-center
-  documentationcenter: na
   author: memildin
   manager: rkarlin
   ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
   ms.service: security-center
-  ms.devlang: na
   ms.topic: conceptual
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 11/15/2020
+  ms.date: 11/04/2021
   ms.author: memildin
-  ms.openlocfilehash: 8dfad55fff78e88aadd05f4fda64b37683dbde5d
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: ea151e241ea99ebbe3642961dc6256a4fa1c8c9d
+  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131084225"
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "131561917"
 title: FAQ - データ収集、エージェント、およびワークスペースに関する質問
 summary: >
   Defender for Cloud は、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシンスケールセット、IaaS コンテナー、および非 Azure コンピューター (オンプレミスコンピューターを含む) からデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
@@ -100,7 +96,7 @@ sections:
       復旧するには、削除したワークスペースに接続されている VM 上の Log Analytics エージェントを削除します。 Defender for Cloud によってエージェントが再インストールされ、新しい既定のワークスペースが作成されます。
   - question: >
       既存の Log Analytics ワークスペースを使用するにはどうすればよいですか?
-    answer: "Defender for Cloud によって収集されたデータを保存する既存の Log Analytics ワークスペースを選択できます。 既存の Log Analytics ワークスペースを使用する場合、次の要件があります。\n\n- 選択した Azure サブスクリプションにワークスペースを関連付ける必要があります。\n- ワークスペースにアクセスするには、少なくとも読み取りアクセス許可が必要です。\n\n> [!NOTE]\n> Log Analytics エージェントとそれが実行されているコンピューターは、両方とも同じテナント内の Log Analytics ワークスペースに報告する必要があります。 別のテナントにレポートしている場合、そのエージェントからのセキュリティの警告は表示されません。\n\n既存の Log Analytics ワークスペースを選択するには、次の手順に従います。\n\n1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。\n1. 関連するサブスクリプションを選択します。\n1. **[自動プロビジョニング]** ページを開きます。\n1. Log Analytics エージェントの場合は、 **[構成の編集]** を選択します。 \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"自動デプロイの使用時に使用する Log Analytics エージェントの構成\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. **[Connect Azure VMs to a different workspace]\\(Azure VM の別のワークスペースへの接続\\)** を選択し、既存のワークスペースを選択します。\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Log Analytics エージェントに対してレポート先の既定のワークスペース以外のワークスペースを選択する\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > このリストには、アクセス権を持っており、Azure サブスクリプション内にあるワークスペースのみが含められます。\n\n1. **[保存]** を選択します。 監視対象の VM を再構成するかどうかをたずねられます。\n\n    - 新しいワークスペース設定を **新しい VM にのみ適用** する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。\n    - 新しいワークスペース設定を **すべての VM に適用** する場合は、 **[はい]** を選択します。 この場合、Defender for Cloud によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。\n\n    > [!NOTE]\n    > **[はい]** を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Defender for Cloud によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。\n"
+    answer: "Defender for Cloud によって収集されたデータを保存する既存の Log Analytics ワークスペースを選択できます。 既存の Log Analytics ワークスペースを使用する場合、次の要件があります。\n\n- 選択した Azure サブスクリプションにワークスペースを関連付ける必要があります。\n- ワークスペースにアクセスするには、少なくとも読み取りアクセス許可が必要です。\n\n> [!NOTE]\n> Log Analytics エージェントとそれが実行されているコンピューターは、両方とも同じテナント内の Log Analytics ワークスペースに報告する必要があります。 別のテナントにレポートしている場合、そのエージェントからのセキュリティの警告は表示されません。\n\n既存の Log Analytics ワークスペースを選択するには、次の手順に従います。\n\n1. Defender for Cloud のメニューで、**[環境設定]** を開きます。\n1. 関連するサブスクリプションを選択します。\n1. **[自動プロビジョニング]** ページを開きます。\n1. Log Analytics エージェントの場合は、 **[構成の編集]** を選択します。 \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"自動デプロイの使用時に使用する Log Analytics エージェントの構成\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. **[Connect Azure VMs to a different workspace]\\(Azure VM の別のワークスペースへの接続\\)** を選択し、既存のワークスペースを選択します。\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Log Analytics エージェントに対してレポート先の既定のワークスペース以外のワークスペースを選択する\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > このリストには、アクセス権を持っており、Azure サブスクリプション内にあるワークスペースのみが含められます。\n\n1. **[保存]** を選択します。 監視対象の VM を再構成するかどうかをたずねられます。\n\n    - 新しいワークスペース設定を **新しい VM にのみ適用** する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。\n    - 新しいワークスペース設定を **すべての VM に適用** する場合は、 **[はい]** を選択します。 この場合、Defender for Cloud によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。\n\n    > [!NOTE]\n    > **[はい]** を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Defender for Cloud によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。\n"
   - question: >
       Log Analytics エージェントが拡張機能として VM に既にインストールされている場合はどうなりますか?
     answer: >
@@ -141,7 +137,7 @@ sections:
       セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Defender for Cloud のレコメンデーションとアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
 
 
-      1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+      1. Defender for Cloud のメニューで、**[環境設定]** を開きます。
 
       1. 関連するサブスクリプションを選択します。
 
@@ -184,7 +180,7 @@ sections:
       Log Analytics エージェントの拡張機能を手動でインストールし、Defender for Cloud がお使いになっている VM からセキュリティ データを収集して、推奨や通知を提示できるようにします。 インストールのガイダンスとして、[Windows VM 用のエージェントのインストール](../virtual-machines/extensions/oms-windows.md)または [Linux VM 用のエージェントのインストール](../virtual-machines/extensions/oms-linux.md)に関するページを参照してください。
 
 
-      エージェントをいずれかの既存のカスタム ワークスペースまたは Defender for Cloud が作成したワークスペースに接続できます。 カスタム ワークスペースの "Security" または "SecurityCenterFree" ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ページを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
+      エージェントをいずれかの既存のカスタム ワークスペースまたは Defender for Cloud が作成したワークスペースに接続できます。 カスタム ワークスペースの "Security" または "SecurityCenterFree" ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、**[セキュリティ ポリシー – 価格レベル]** ページを利用して、カスタム ワークスペースを選択して価格レベルを適用します。
 
 
       :::image type="content" source="./media/platform-migration-faq/pricing-tier.png" alt-text="Azure Defender を有効または無効にする":::

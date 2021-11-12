@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: eur
-ms.openlocfilehash: 11856bd2b26703b4f1001c1a5223c86f2d2d9a8a
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 07a992a18cf0cf2768a7bbb15dd4a8ad6bafa20a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509798"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252359"
 ---
 このクイックスタートでは、Speech Devices SDK for Linux を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription.md)デバイスとして使用する方法について説明します。 現在、[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。
 
-アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8) 上の Eclipse Java IDE (v4) によって構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8) 上の Eclipse Java IDE (v4) によって構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) アカウントが必要になります。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "131509798"
 
 このクイック スタートでは以下が必要です。
 
-* オペレーティング システム:64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8)
+* オペレーティング システム: 64 ビット Linux (Ubuntu Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) のみ。

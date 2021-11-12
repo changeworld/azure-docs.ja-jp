@@ -6,14 +6,14 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 09/28/2021
+  ms.date: 11/10/2021
   ms.author: victorh
-  ms.openlocfilehash: 98f226f85c9dac3d3ab17396e42759291e5a0007
-  ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+  ms.openlocfilehash: b2eed82256a5f937461944d634f146adc9ef0662
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/18/2021
-  ms.locfileid: "130138367"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132343213"
 title: Azure Firewall に関する FAQ
 summary: ''
 sections:
@@ -180,7 +180,7 @@ sections:
     answer: >
       いいえ。 NAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
   - question: アプリケーション ルールのターゲット URL とターゲット FQDN では、ワイルドカードはどのようにして機能しますか。
-    answer: "- **URL** - アスタリスクは、右端または左端に配置すると機能します。 左側にある場合、FQDN の一部にすることはできません。\n- **FQDN** - アスタリスクは、左端に配置すると機能します。\n\n例 :\n\n\n  |Type  |ルール  |サポート対象  |実際の例  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |はい|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |はい|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|はい         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|はい|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|はい|`www.contoso.com/test/anything`<br>注 - `www.contoso.com/test` は一致 **しません** (最後のスラッシュ)|\n  |TargetURL  |`www.contoso.*/test/*`|いいえ|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|いいえ|         |\n  |TargetURL  |`www.contoso.*`|いいえ|         |\n  |TargetURL  |`www.*contoso.com`|いいえ|         |\n  |TargetURL   |`www.contoso.com:8080`|いいえ|         |\n  |TargetURL   |`*.contoso.*`|いいえ|         |\n  |TargetFQDN    |`www.contoso.com`|はい|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|はい|`any.contoso.com`<br><br>注: `contoso.com` を具体的に許可する場合、ルールに contoso.com を含める必要があります。 そうしない場合、要求がルールと一致しないので、接続は既定で削除されます。|\n  |TargetFQDN    |`*contoso.com`|はい|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|いいえ|         |\n  |TargetFQDN    |`*.contoso.*`|いいえ|         |\n \n"
+    answer: "- **URL** - アスタリスクは、右端または左端に配置すると機能します。 左側にある場合、FQDN の一部にすることはできません。\n- **FQDN** - アスタリスクは、左端に配置すると機能します。\n\n例 :\n\n\n  |Type  |ルール  |サポート対象  |実際の例  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |はい|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |はい|`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|はい         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|はい|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|はい|`www.contoso.com/test/anything`<br>注 - `www.contoso.com/test` は一致 **しません** (最後のスラッシュ)|\n  |TargetURL  |`www.contoso.*/test/*`|いいえ|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|いいえ|         |\n  |TargetURL  |`www.contoso.*`|いいえ|         |\n  |TargetURL  |`www.*contoso.com`|いいえ|         |\n  |TargetURL   |`www.contoso.com:8080`|いいえ|         |\n  |TargetURL   |`*.contoso.*`|いいえ|         |\n  |TargetFQDN    |`www.contoso.com`|はい|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|はい|`any.contoso.com`<br><br>注: `contoso.com` を具体的に許可する場合、ルールに contoso.com を含める必要があります。 そうしない場合、要求がルールと一致しないので、接続は既定で削除されます。|\n  |TargetFQDN    |`*contoso.com`|はい|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|いいえ|         |\n  |TargetFQDN    |`*.contoso.*`|いいえ|         |\n \n"
   - question: "\"*プロビジョニング状態: 失敗*\" はどのような意味ですか。\n"
     answer: 構成の変更が適用されるたびに、Azure Firewall は、その基になるすべてのバックエンド インスタンスを更新しようとします。 まれに、これらのバックエンド インスタンスの 1 つが新しい構成での更新に失敗し、更新プロセスが停止して、失敗したプロビジョニングの状態になることがあります。 Azure Firewall はまだ操作可能ですが、適用された構成は矛盾した状態になっている可能性があります。この場合、一部のインスタンスは以前の構成であり、他のインスタンスはルール セットが更新されています。 このような場合は、操作が成功してファイアウォールが "*成功*" プロビジョニング状態になるまで、もう一度構成を更新してみてください。
   - question: Azure Firewall は計画メンテナンスや予期しない障害にどのように対処しますか。

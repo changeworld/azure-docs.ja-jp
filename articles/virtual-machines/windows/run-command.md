@@ -1,21 +1,23 @@
 ---
-title: Azure 内の Windows VM で PowerShell スクリプトを実行する
+title: アクション実行コマンドを使用して Azure Windows VM でスクリプトを実行する
 description: このトピックでは、実行コマンド機能を使用して Azure Windows 仮想マシン内で PowerShell スクリプトを実行する方法について説明します
+services: automation
 ms.service: virtual-machines
 ms.collection: windows
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/22/2021
+author: cynthn
+ms.author: cynthn
+ms.date: 10/28/2021
 ms.topic: how-to
+ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 81ffce59b1f99628580418836d690d650ea94a1c
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: b9501004578068f2c7841fd5f52091f50e97924b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566248"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441098"
 ---
-# <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
+# <a name="run-scripts-in-your-windows-vm-by-using-action-run-commands"></a>アクション実行コマンドを使用して、Windows VM でスクリプトを実行する
 
 実行コマンド機能は、仮想マシン (VM) エージェントを使用して Azure Windows VM 内で PowerShell スクリプトを実行します。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 

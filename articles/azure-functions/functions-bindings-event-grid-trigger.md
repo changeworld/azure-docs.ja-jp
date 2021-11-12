@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 9c007ddd8c5a463838dbe7e324f07a18d056ce4d
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 6b6efd823d8e89fd481c05d1c02affe8bb557b45
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132332366"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372626"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -196,10 +196,10 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
   public void logEvent(
     @EventGridTrigger(
       name = "event"
-    ) 
-    String content, 
+    )
+    String content,
     final ExecutionContext context) {
-      context.getLogger().info("Event content: " + content);      
+      context.getLogger().info("Event content: " + content);
   }
 ```
 
@@ -232,8 +232,8 @@ public class EventSchema {
   public void logEvent(
     @EventGridTrigger(
       name = "event"
-    ) 
-    EventSchema event, 
+    )
+    EventSchema event,
     final ExecutionContext context) {
       context.getLogger().info("Event content: ");
       context.getLogger().info("Subject: " + event.subject);
@@ -428,7 +428,8 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 > [!NOTE]
 > `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに "非推奨" メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` を使用するように推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。 C# スクリプト関数で NuGet パッケージを参照する方法については、「[NuGet パッケージを使用する](functions-reference-csharp.md#using-nuget-packages)」をご覧ください
 
-### <a name="additional-types"></a>その他の型 
+### <a name="additional-types"></a>その他の型
+
 3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。 また、[Azure. Messaging](/dotnet/api/azure.messaging.cloudevent) 名前空間の `CloudEvent` 型にバインドすることもできます。
 
 # <a name="java"></a>[Java](#tab/java)

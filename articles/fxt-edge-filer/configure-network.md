@@ -6,12 +6,12 @@ ms.author: femila
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 10/07/2021
-ms.openlocfilehash: 2af1e6308cd572115c43d3dfd27b25499ae590ed
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a51f6654c8e82a46c1a31f2dd030cd2d5af754cd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086039"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347306"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 
@@ -151,7 +151,7 @@ RRDNS システムが構成されたら、それを使用してマウント コ�
 * DNS ドメイン名
 * DNS 検索ドメイン
 
-詳細については、クラスター構成ガイドの [DNS 設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>)に関する項目をお読みください。
+詳細については、クラスター構成ガイドの [DNS 設定](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns)に関する項目をお読みください。
 
 ## <a name="next-steps"></a>次のステップ
 

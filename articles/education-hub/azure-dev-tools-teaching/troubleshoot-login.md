@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 5f6320b0af23dbb74f9ced7e0a9fe683861d6e96
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 937a321a0edb51f0bab9168706977d9b798429e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894976"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339689"
 ---
 # <a name="troubleshooting-student-login-issues"></a>学生のログインに関する問題のトラブルシューティング
 Azure Dev Tools for Teaching にアクセスするには、ユーザーが Microsoft アカウント (MSA) を持っている必要があります。 学生のアカウントがまだ MSA でない場合、または MSA にリンクされていない場合は、自動的に MSA を作成するように指示されます。 ドメインが Active Directory に関連付けられている場合、そのドメインのすべてのアカウントは既に MSA であると見なされます。

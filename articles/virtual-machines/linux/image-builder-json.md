@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec39fb3ec368d315d6d9fa4a17d2cb763e49bce6
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 47de9f252e70b7281b8499612718cbd4b23365a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137591"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444594"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
 
@@ -89,7 +89,7 @@ location は、カスタム イメージを作成するリージョンです。 
 Azure VM Image Builder サービスでは、顧客が単一リージョンのデータ所在地の要件が厳しいリージョンでの構築を要求した場合に、そのリージョンの外部に顧客のデータが保存されたり、外部で処理されたりすることはありません。 データ所在地の要件が設けられているリージョンでサービスが停止した場合は、別のリージョンや地域にテンプレートを作成する必要があります。
 
 ### <a name="zone-redundancy"></a>ゾーン冗長
-配布ではゾーン冗長がサポートされており、VHD は既定でゾーン冗長ストレージ アカウントに配布されます。Shared Image Gallery バージョンでは、[ZRS ストレージ](../disks-redundancy.md#zone-redundant-storage-for-managed-disks) がサポートされます (指定されている場合)。
+配布ではゾーン冗長がサポートされており、VHD は既定でゾーン冗長ストレージ アカウントに配布されます。Azure Compute Gallery (旧称 Shared Image Gallery) バージョンでは、[ZRS ストレージの種類](../disks-redundancy.md#zone-redundant-storage-for-managed-disks)がサポートされます (指定されている場合)。
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
@@ -159,12 +159,12 @@ Image Builder によるユーザー割り当て ID のサポート:
 
 ## <a name="properties-source"></a>プロパティ: source
 
-`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。 現在 Image Builder でネイティブにサポートされているのは、Azure Shared Image Gallery (SIG) への Hyper-V 第 1 世代 (Gen1) のイメージ、またはマネージド イメージの作成のみです。 Gen2 イメージを作成する場合は、ソース Gen2 イメージを使用し、VHD に配布する必要があります。 その後、VHD からマネージド イメージを作成し、これを Gen2 イメージとして SIG に挿入する必要があります。
+`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。 現在、Image Builder でネイティブにサポートされているのは、Azure Compute Gallery (SIG) の Hyper-V 第 1 世代 (Gen1) のイメージまたはマネージド イメージの作成のみです。 Gen2 イメージを作成する場合は、ソース Gen2 イメージを使用し、VHD に配布する必要があります。 その後、VHD からマネージド イメージを作成し、これを Gen2 イメージとして SIG に挿入する必要があります。
 
 API ではイメージ ビルド用のソースを定義する "SourceType" が必要であり、現在は次の 3 つの種類があります。
 - PlatformImage - ソース イメージが Marketplace イメージであることを示します。
 - ManagedImage - 標準のマネージド イメージから始めるときは、これを使います。
-- SharedImageVersion - ソースとして共有イメージ ギャラリー内のイメージのバージョンを使うときは、これを使います。
+- SharedImageVersion - ソースとして Azure Compute Gallery 内のイメージのバージョンを使うときは、これを使います。
 
 
 > [!NOTE]
@@ -190,7 +190,7 @@ Azure Image Builder では、Windows Server とクライアント、および Li
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-"最新" バージョンを使用できますが、バージョンは、テンプレートが送信されるときではなく、イメージのビルドが行われるときに評価されます。 Shared Image Gallery 送信先でこの機能を使用する場合、テンプレートを再送信するのは避け、間隔を置いてイメージ ビルドを再実行します。これにより、最新のイメージから、ご自身のイメージが再作成されます。
+"最新" バージョンを使用できますが、バージョンは、テンプレートが送信されるときではなく、イメージのビルドが行われるときに評価されます。 Azure Compute Gallery 送信先でこの機能を使用する場合、テンプレートを再送信するのは避け、間隔を置いてイメージ ビルドを再実行します。これにより、最新のイメージから、ご自身のイメージが再作成されます。
 
 #### <a name="support-for-market-place-plan-information"></a>マーケットプレース プラン情報のサポート
 次の例のように、プラン情報を指定することもできます。
@@ -225,7 +225,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion ソース
-ソース イメージを、共有イメージ ギャラリー内の既存のイメージ バージョンに設定します。
+ソース イメージを、Azure Compute Gallery 内の既存のイメージ バージョンに設定します。
 
 > [!NOTE]
 > ソース マネージド イメージは、サポート対象の OS のものでなければならず、このイメージは Azure Image Builder テンプレートと同じリージョンに存在する必要があります。それ以外の場合は、イメージ バージョンを Image Builder テンプレート リージョンにレプリケートしてください。
@@ -328,7 +328,7 @@ OS のサポート: Linux
     * Mac/Linux のターミナルを使用して sha256Checksum を生成するには、`sha256sum <fileName>` を実行します。
 
 > [!NOTE]
-> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらを確認できます。. 機密性の高いコマンドまたは値 (パスワード、SAS トークン、認証トークンなど) がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
+> インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらを確認できます。 機密性の高いコマンドまたは値 (パスワード、SAS トークン、認証トークンなど) がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
 
 #### <a name="super-user-privileges"></a>スーパー ユーザー特権
 先頭に `sudo` がある、スーパーユーザー特権で実行するコマンドは、スクリプトに追加したり、次の例のように inline コマンドで使用したりすることができます。
@@ -527,7 +527,7 @@ Image Builder では、これらのコマンドが読み取られて、AIB ロ�
 Azure Image Builder では、次の 3 つの配布ターゲットがサポートされています。 
 
 - **managedImage** - マネージド イメージ。
-- **sharedImage** - 共有イメージ ギャラリー。
+- **sharedImage** - Azure Compute Gallery。
 - **VHD** - ストレージ アカウント内の VHD。
 
 すべてのターゲットの種類に同じ構成でイメージを配布できます。
@@ -535,7 +535,7 @@ Azure Image Builder では、次の 3 つの配布ターゲットがサポート
 > [!NOTE]
 > 既定の AIB sysprep コマンドには、"/mode:vm" は含まれていませんが、HyperV ロールがインストールされるイメージを作成するときに必要になる場合があります。 このコマンド引数を追加する場合は、sysprep コマンドをオーバーライドする必要があります。
 
-複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所、イメージ バージョンがレプリケートされたリージョン、または作成された SIG イメージのバージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。 次に例を示します。これは、Shared Image Gallery の配布に対するクエリです。
+複数のターゲットに配布できるので、Image Builder ではすべての配布ターゲットの状態が維持されており、`runOutputName` のクエリを実行することによってアクセスできます。  配布の後で `runOutputName` オブジェクトのクエリを実行して、その配布に関する情報を取得できます。 たとえば、VHD の場所、イメージ バージョンがレプリケートされたリージョン、または作成された SIG イメージのバージョンのクエリを実行できます。 これは、すべての配布ターゲットのプロパティです。 `runOutputName` は配布ターゲットごとに一意である必要があります。 次に例を示します。これは、Azure Compute Gallery の配布に対するクエリです。
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -598,15 +598,15 @@ az resource show \
 > イメージが別のリージョンに配布されるようにする場合は、デプロイ時間が長くなります。 
 
 ### <a name="distribute-sharedimage"></a>配布: sharedImage 
-Azure 共有イメージ ギャラリーは新しいイメージ管理サービスであり、イメージのリージョン レプリケーションの管理、バージョン管理、カスタム イメージの共有を行うことができます。 Azure Image Builder ではこのサービスによる配布がサポートされているので、共有イメージ ギャラリーでサポートされているリージョンにイメージを配布できます。 
+Azure Compute Gallery は新しいイメージ管理サービスであり、イメージのリージョン レプリケーションの管理、バージョン管理、カスタム イメージの共有を行うことができます。 Azure Image Builder ではこのサービスによる配布がサポートされているので、Azure Compute Gallery でサポートされているリージョンにイメージを配布できます。 
  
-共有イメージ ギャラリーは次のもので構成されます。 
+Azure Compute Gallery は次のもので構成されています。 
  
-- ギャラリー - 複数の共有イメージ用のコンテナー。 ギャラリーは、1 つのリージョンにデプロイされます。
+- ギャラリー - 複数のイメージ用のコンテナー。 ギャラリーは、1 つのリージョンにデプロイされます。
 - イメージ定義 - イメージの概念的なグループ化。 
 - イメージ バージョン - VM またはスケール セットのデプロイに使われるイメージの種類。 イメージ バージョンは、VM をデプロイする必要がある他のリージョンにレプリケートできます。
  
-イメージ ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[共有イメージ](../create-gallery.md)に関する記事をご覧ください。 
+ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[ギャラリーの作成](../create-gallery.md)に関する記事をご覧ください。 
 
 ```json
 {
@@ -624,17 +624,17 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 }
 ``` 
 
-共有イメージ ギャラリーの配布プロパティ:
+ギャラリーのプロパティを配布する:
 
 - **type** - sharedImage  
-- **galleryImageId** – 共有イメージ ギャラリーの ID です。これは、次の 2 つの形式で指定できます。
+- **galleryImageId** – Azure Compute Gallery の ID です。これは、次の 2 つの形式で指定できます。
     * 自動バージョン管理 - Image Builder によって、モノトニックなバージョン番号が自動的に生成されます。これは、同じテンプレートからイメージを再構築し続ける場合に便利です。形式は `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` です。
     * 明示的なバージョン管理 - Image Builder で使用するバージョン番号を渡すことができます。 形式は `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>` です。
 
 - **runOutputName** – 配布を示す一意の名前。  
 - **artifactTags** -省略可能なユーザー指定のキー値ペアのタグ。
 - **replicationRegions** -レプリケーション用のリージョンの配列。 リージョンの 1 つは、ギャラリーがデプロイされているリージョンでなければなりません。 リージョンを追加すると、ビルド時間が長くなります。これは、レプリケーションが完了するまでビルドが完了しないためです。
-- **excludeFromLatest** (省略可能) これにより、作成したイメージ バージョンを SIG 定義で最新バージョンとして使用しないように設定できます。既定値は "false" です。
+- **excludeFromLatest** (省略可能) これにより、作成したイメージ バージョンをギャラリー定義で最新バージョンとして使用しないように設定できます。既定値は "false" です。
 - **storageAccountType** (省略可能) AIB では、作成されるイメージ バージョンに対して、次の種類のストレージを指定することがサポートされています。
     * "Standard_LRS"
     * "Standard_ZRS"

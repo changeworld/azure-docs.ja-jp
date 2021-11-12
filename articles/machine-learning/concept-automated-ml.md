@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: 32847e60114e86eb8d8571aff4d31c436a2fbd42
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: a6aebd1f3ca403a787d2d6e6f2d1f4aa76882143
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563399"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312440"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -99,7 +99,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 
 分類モデルの主な目的は、トレーニング データから学習した知識に基づいて、新しいデータがどのカテゴリに分類されるかを予測することです。 一般的な分類の例には、不正行為の検出、手書き認識、オブジェクトの検出などがあります。 詳細と例については、[Azure Machine Learning の自動 ML での分類モデルの作成](tutorial-first-experiment-automated-ml.md)に関するページで参照できます。
 
-分類と自動機械学習の例については、次の Python ノートブックを参照してください: [不正行為の検出](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[マーケティング予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)、[ニュースグループ データの分類](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+分類と自動機械学習の例については、次の Python ノートブックを参照してください: [不正行為の検出](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[マーケティング予測](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)、[ニュースグループ データの分類](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/classification-text-dnn)
 
 ### <a name="regression"></a>回帰
 
@@ -107,7 +107,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 
 予測される出力値がカテゴリである分類とは異なり、回帰モデルでは、独立した予測子に基づいて数値の出力値が予測されます。 回帰の目的は、1 つの変数が他の変数にどのように影響するかを推定することによって、独立した予測変数間の関係を確立することです。 たとえば、自動車の価格は、燃費効率や安全性の評価などの特徴に基づいています。 [自動機械学習を使用した回帰](tutorial-auto-train-models.md)に関する記事で、詳細と例を確認してください。
 
-予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [CPU パフォーマンスの予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb)。 
+予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [CPU パフォーマンスの予測](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/regression-explanation-featurization)。 
 
 ### <a name="time-series-forecasting"></a>時系列予測
 
@@ -124,7 +124,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 * ローリング ウィンドウの集計機能
 
 
-予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [売上予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需要予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)、[飲料生産の予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
+予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [売上予測](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需要予測](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)、[飲料生産の予測](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
 ### <a name="computer-vision-preview"></a>Computer Vision (プレビュー)
 
@@ -285,7 +285,7 @@ Azure Machine Learning には、自動 ML を使用するための次の 2 つ�
 
 Azure Machine Learning では、自動化された ML を使用して Python モデルを構築し、それを ONNX 形式に変換できます。 ONNX 形式になったモデルは、さまざまなプラットフォームやデバイスで実行することができます。 [ONNX での ML モデルの能率化](concept-onnx.md)に関する詳細をご覧ください。
 
-ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#supported-models)についてご確認ください。
+ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#supported-models)についてご確認ください。
 
 ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://onnxruntime.ai/docs/api/csharp-api.html)に関するページを参照してください。 
 
@@ -313,7 +313,7 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
    
 ### <a name="jupyter-notebook-samples"></a>Jupyter Notebook のサンプル 
 
-[GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)で詳しいコード サンプルやユース ケースを確認してください。
+[GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml)で詳しいコード サンプルやユース ケースを確認してください。
 
 ### <a name="python-sdk-reference"></a>Python SDK リファレンス
 

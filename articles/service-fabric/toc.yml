@@ -415,7 +415,7 @@
         - name: 管理対象クラスターの可用性ゾーン スパニングを構成する
           href: how-to-managed-cluster-availability-zones.md
         - name: 管理対象クラスター ノードでのディスク暗号化の有効化
-          href: how-to-enable-managed-cluster-disk-encryption.md
+          href: how-to-managed-cluster-enable-disk-encryption.md
         - name: 管理対象クラスター ノードでのマネージド ディスクの種類を選択する
           href: how-to-managed-cluster-managed-disk.md
         - name: 管理されたクラスターのアップグレード オプションを構成する

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c700170e59792dc6f782ded02960962c7b21d946
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 70a9b1da38f827da393164e4ab1da9928ea6e7b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696923"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428047"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>Azure Image Builder サービスの DevOps タスク (プレビュー)
 
@@ -78,7 +78,7 @@ Image Builder が実行されるサブスクリプションをドロップダウ
  
 ### <a name="location"></a>場所
 
-場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](../image-builder-overview.md#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Shared Image Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
+場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](../image-builder-overview.md#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Azure Compute Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
 
 ### <a name="managed-identity-required"></a>マネージド ID (必須)
 Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、「[Azure Image Builder の概要](../image-builder-overview.md#permissions)」を参照してください。
@@ -94,12 +94,12 @@ Image Builder には マネージド ID が必要です。ソース カスタム
     ```json
     /subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/images/<imageName>
     ```
-* Azure Shared Image Gallery - イメージ バージョンの resourceId を渡す必要があります。次に例を示します。
+* Azure Compute Gallery - イメージ バージョンの resourceId を渡す必要があります。次に例を示します。
     ```json
     /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/<versionNumber>
     ```
 
-    最新バージョンの Shared Image Gallery を取得する必要がある場合は、最新バージョンを取得する AZ PowerShell または AZ CLI タスクを先に実行してから、DevOps 変数を設定することができます。 その変数を AZ VM Image Builder の DevOps タスクで使用します。 詳細については、[例](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery)を参照してください。
+    最新バージョンの Azure Compute Gallery (旧称 Shared Image Gallery) を取得する必要がある場合は、最新バージョンを取得する AZ PowerShell または AZ CLI タスクを先に実行してから、DevOps 変数を設定することができます。 その変数を AZ VM Image Builder の DevOps タスクで使用します。 詳細については、[例](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery)を参照してください。
 
 * (Marketplace) 基本イメージ - よく使われるイメージのドロップダウン リストがあります。これらは、サポートされている OS の "最新" バージョンを常に使用します。 
 
@@ -233,9 +233,9 @@ DevOps パイプライン タスクでは合計時間をまだ変更できませ
 
 * 場所
 
-#### <a name="azure-shared-image-gallery"></a>Azure Shared Image Gallery
+#### <a name="azure-compute-gallery"></a>Azure Compute Gallery
 
-Shared Image Gallery は既に存在している **必要があります**。
+Azure Compute Gallery は既に存在している **必要があります**。
 
 * ResourceID: 
     ```bash

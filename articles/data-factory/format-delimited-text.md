@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4b21aa5d63f371749081d7bc71577c7d0f5a2d49
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3542ddd7a3276d0ba5b7aaac591f4d4ff936cd86
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787681"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238965"
 ---
 # <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での区切りテキスト形式
 
@@ -22,7 +22,21 @@ ms.locfileid: "124787681"
 
 **区切りテキスト ファイルの解析または区切りテキスト形式へのデータの書き込み** を行う場合は、この記事に従ってください。 
 
-区切りテキスト形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。
+区切りテキスト形式は次のコネクタでサポートされています。 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md)
+- [Azure BLOB](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [ファイル システム](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -143,7 +157,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで区切りテキスト形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+マッピング データ フローでは、次のデータ ストアで区切りテキスト形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で区切りテキスト形式を読み取ることができます。
 
 ### <a name="source-properties"></a>ソース プロパティ
 
@@ -208,6 +222,21 @@ CSVSource sink(allowSchemaDrift: true,
     skipDuplicateMapInputs: true,
     skipDuplicateMapOutputs: true) ~> CSVSink
 ```
+
+## <a name="related-connectors-and-formats"></a>関連するコネクタと形式
+
+区切られたテキスト形式に関連する一般的なコネクタと形式をいくつか次に示します。
+
+- Azure Blob Storage (connector-azure-blob-storage.md)
+- バイナリ形式 (format-binary.md)
+- Dataverse(connector-dynamics-crm-office-365.md)
+- Delta 形式 (format-delta.md)
+- Excel 形式 (format-excel.md)
+- ファイル システム (connector-file-system.md)
+- FTP(connector-ftp.md)
+- HTTP(connector-http.md)
+- JSON format(format-json.md)
+- Parquet 形式 (format-parquet.md)
 
 ## <a name="next-steps"></a>次のステップ
 

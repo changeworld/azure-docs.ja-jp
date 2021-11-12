@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
-ms.date: 11/08/2021
-ms.openlocfilehash: e8bf85166b0557f30909d8109ecdd36782a4adc1
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.date: 03/22/2021
+ms.openlocfilehash: 7e8d4c725c8e205f015774b8b5b01e26b5f89271
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131995105"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477846"
 ---
 # <a name="how-to-troubleshoot-with-resource-logs"></a>リソース ログを使用してトラブルシューティングを行う方法
 
@@ -68,7 +68,7 @@ Azure Web PubSub サービス ライブ トレース ツールは、リアルタ
 
 ライブ トレース ツールによってキャプチャされたリアルタイム リソース ログには、トラブルシューティングのための詳細情報が含まれています。 
 
-| 名前 | 説明 |
+| Name | 説明 |
 | ------------ |  ------------------------ | 
 | Time | ログ イベント時間 |
 | ログ レベル | ログ イベントのレベル (トレース/デバッグ/情報/警告/エラー) |

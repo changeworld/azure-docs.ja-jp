@@ -7,22 +7,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/06/2017
+ms.date: 11/02/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: eae21e8f7305f307a343e44145f6ed435c8ffcd1
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: f01a8a51f467d9a090847aeea5da0426fe66e163
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041388"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424403"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ
+# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ 
 
-Azure AD B2C ディレクトリが作成されるとき、`b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` というアプリがその新しいディレクトリ内に自動で作成されます。 このアプリは **b2c-extensions-app** と呼ばれ、 *[アプリの登録]* に表示されます。 Azure AD B2C はこのアプリを使用して、ユーザーとカスタム属性の情報を保存します。 このアプリを削除してしまうと、Azure AD B2C が正しく機能しなくなり、運用環境に影響が出ます。
+Azure AD B2C ディレクトリが作成されるとき、**b2c-extensions-app** というアプリがその新しいディレクトリ内に自動で作成されます。 このアプリは、 *[アプリの登録]* に表示されます。 Azure AD B2C はこのアプリを使用して、ユーザーとカスタム属性の情報を保存します。 このアプリを削除してしまうと、Azure AD B2C が正しく機能しなくなり、運用環境に影響が出ます。
 
 > [!IMPORTANT]
-> テナントをすぐに削除する予定がなければ、b2c-extensions-app を削除しないでください。 アプリが削除された状態で 30 日以上が経過すると、ユーザー情報が完全に失われます。
+> テナントをすぐに削除する予定がなければ、**b2c-extensions-app** を削除しないでください。 アプリが削除された状態で 30 日以上が経過すると、ユーザー情報が完全に失われます。
 
 ## <a name="verifying-that-the-extensions-app-is-present"></a>Extensions アプリがあることの確認
 

@@ -11,12 +11,12 @@ ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ced6bd08895993c18a305418bd68ae8a0557301f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b2383b52184d4cdd66aaeebe2ec34c1ed4b62a1d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131026678"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371697"
 ---
 # <a name="quickstart-python-client-library-sdk-v30--preview"></a>クイックスタート: Python クライアント ライブラリ SDK v3.0 | プレビュー
 
@@ -33,7 +33,7 @@ Azure Form Recognizer の機能と開発オプションの詳細については�
 
 * [🆕**一般的なドキュメント**](#try-it-general-document-model): テキスト、テーブル、構造、キーと値のペア、名前付きエンティティを分析および抽出します。
 
-* [**レイアウト**](#try-it-layout-model): モデルをトレーニングすることなく、フォーム ドキュメント内のテーブル、行、単語、およびラジオ ボタンやチェック ボックスなどの選択マークを分析および抽出します。
+* [**レイアウト**](#try-it-layout-model) - モデルをトレーニングすることなく、フォーム ドキュメント内のテーブル、行、単語、およびラジオ ボタンやチェック ボックスなどの選択マークを分析および抽出します。
 
 * [**事前構築済みの請求書**](#try-it-prebuilt-model): 事前トレーニング済みの請求書モデルを使用して、請求書から共通フィールドを分析および抽出します。
 
@@ -279,7 +279,7 @@ def analyze_layout():
 
 ```
 
-## <a name="try-it-prebuilt-model"></a>**試してみる**: 事前構築済みのモデル
+## <a name="try-it-prebuilt-model"></a>**試してみる**: 事前構築済みモデル
 
 このサンプルでは、請求書を例に、事前トレーニング済みのモデルを使用して、特定の種類の共通ドキュメントのデータを分析する方法を示します。
 
@@ -323,7 +323,7 @@ def analyze_invoice():
     )
 
     poller = document_analysis_client.begin_analyze_document_from_url(
-            "prebuilt-document", formUrl)
+            "prebuilt-invoice", formUrl)
     invoices = poller.result()
 
     for idx, invoice in enumerate(invoices.documents):

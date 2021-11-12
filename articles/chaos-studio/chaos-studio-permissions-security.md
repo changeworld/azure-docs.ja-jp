@@ -7,12 +7,12 @@ ms.service: chaos-studio
 ms.topic: conceptual
 ms.date: 11/01/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 8502000dde601f6b42a8f770513e13f171dcf5d2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa547771b125b17d05e6a615f01cecc899cba7e0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091687"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372210"
 ---
 # <a name="permissions-and-security-in-azure-chaos-studio"></a>Azure Chaos Studio でのアクセス許可とセキュリティ
 
@@ -65,5 +65,5 @@ Chaos Studio によって、既定ですべてのデータが暗号化されま�
 
 ## <a name="next-steps"></a>次のステップ
 これでカオス実験をセキュリティで保護する方法を理解できたので、次のことを行う準備が整いました。
-- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct.md)
-- [最初の Azure Kubernetes Service の実験を作成して実行する](chaos-studio-tutorial-aks.md)
+- [最初の実験を作成して実行する](chaos-studio-tutorial-service-direct-portal.md)
+- [最初の Azure Kubernetes Service の実験を作成して実行する](chaos-studio-tutorial-aks-portal.md)
