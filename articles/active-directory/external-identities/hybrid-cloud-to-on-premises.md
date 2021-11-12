@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 422a273f0bc5fbeccf61f3af1ddb4edc9b95e36b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7ebaa3c9b6a931a01eb65a28cd48cf29e74c13b3
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232479"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892402"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -46,10 +46,10 @@ B2B ユーザーに、統合 Windows 認証と Kerberos の制約付き委任を
    > [!NOTE]
    > Azure AD アプリケーション プロキシを構成する場合は、統合 Windows 認証 (IWA) のシングル サインオン構成で **[委任されたログオン ID]** が **[ユーザー プリンシパル名]** (既定値) に設定されていることを確認してください。
 
-   B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
+   B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトを作成できる方法が 2 つあります。
 
-   - Microsoft Identity Manager (MIM) と Microsoft Graph 用 MIM 管理エージェント。 
-   - [PowerShell スクリプト](#create-b2b-guest-user-objects-through-a-script-preview)。 スクリプトの使用は、MIM を必要としない、より軽い解決策です。 
+   - Microsoft Identity Manager (MIM) と Microsoft Graph 用 MIM 管理エージェント。
+   - PowerShell スクリプトは、MIM を必要としない、より軽量な解決策です。
 
 次の図は、Azure AD アプリケーション プロキシと、オンプレミス ディレクトリ内の B2B ユーザー オブジェクトの生成を連携して、B2B ユーザーにオンプレミス IWA および KCD アプリへのアクセス権を付与する方法の概要を示しています。 番号が付いた手順については、図の下の詳細な説明を参照してください。
 
@@ -74,20 +74,12 @@ B2B ユーザーに、統合 Windows 認証と Kerberos の制約付き委任を
 
 MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェントを使用してオンプレミス ディレクトリにゲスト ユーザー オブジェクトを作成する方法については、「[Azure AD business-to-business (B2B) collaboration with Microsoft Identity Manager(MIM) 2016 SP1 with Azure Application Proxy (Public Preview)](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)」(Azure アプリケーション プロキシを使用した Azure AD B2B (Business-to-Business) と Microsoft Identity Manager (MIM) 2016 SP1 のコラボレーション) をご覧ください。
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>スクリプトを介した B2B ゲスト ユーザー オブジェクトの作成 (プレビュー)
-
-オンプレミスの Active Directory にゲスト ユーザー オブジェクトを作成する場合の出発点として使用できる PowerShell サンプル スクリプトがあります。
-
-スクリプトと Readme ファイルは、「[Connector for Microsoft Identity Manager 2016 および Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495)」からダウンロードできます。 ダウンロード パッケージで、**スクリプトと Readme を選択して、Azure AD B2B ユーザーの on-prem.zip** ファイルを取得します。
-
-スクリプトを使用する前に、関連する Readme ファイルの前提条件と重要な考慮事項を確認してください。 また、スクリプトはサンプルとしてのみ提供されている点を理解してください。 開発チームまたはパートナーは、スクリプトを実行する前にカスタマイズして確認する必要があります。
-
 ## <a name="license-considerations"></a>ライセンスに関する考慮事項
 
 オンプレミス アプリにアクセスする外部ゲスト ユーザーに対して、正しいクライアント アクセス ライセンス (CAL) があることを確認してください。 詳細については、「[クライアント アクセス ライセンスと マネジメント ライセンス](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)」の「エクスターナル コネクタ」セクションを参照してください。 具体的なライセンス要件については、マイクロソフトの担当者または地域の販売代理店にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)
+- 「[ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)」も参照してください。
 
 - Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。

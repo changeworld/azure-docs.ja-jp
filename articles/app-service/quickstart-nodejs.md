@@ -5,17 +5,13 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 09/14/2021
 ms.custom: mvc, devcenter, seodec18
-zone_pivot_groups: app-service-ide-oss
-adobe-target: true
-adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
-adobe-target-experience: Experience B
-adobe-target-content: ./quickstart-nodejs-uiex
-ms.openlocfilehash: 6368e186e280262b7901fa3b2c259b44c40c460d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+zone_pivot_groups: app-service-vscode-cli-portal
+ms.openlocfilehash: 6eab9e5d144b4c52dff5a3bdd23c47ee3905e212
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657837"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455694"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -43,6 +39,14 @@ ms.locfileid: "128657837"
 
 ::: zone-end
 
+
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+- アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)。
+- [Node.js and npm](https://nodejs.org) をインストールします。 `node --version` コマンドを実行して、Node.js がインストールされていることを確認します。
+- ご自分のアプリに接続するには、FTP クライアント ([FileZilla](https://filezilla-project.org) など) を用意します。
+
+::: zone-end
 ## <a name="create-your-nodejs-application"></a>Node.js アプリケーションの作成
 
 この手順では、スターター Node.js アプリケーションを作成し、お使いのコンピューターで実行できることを確認します。
@@ -220,6 +224,65 @@ You can launch the app at http://&lt;app-name>.azurewebsites.net
 
 ::: zone-end
 
+:::zone target="docs" pivot="development-environment-azure-portal"
+### <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
+
+Azure Portal ( https://portal.azure.com ) にサインインします。
+
+### <a name="create-azure-resources"></a>Azure リソースを作成する
+
+1. 検索に「**app services**」と入力します。 **[サービス]** で、**[App Services]** を選択します。
+
+     :::image type="content" source="./media/quickstart-nodejs/portal-search.png?text=Azure portal search details" alt-text="ポータルでの検索のスクリーンショット":::
+
+1. **[App Services]** ページで、**[作成]** を選択します。
+1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。
+
+    :::image type="content" source="./media/quickstart-nodejs/project-details.png" alt-text="Azure サブスクリプションと Web アプリのリソース グループを選択する場所を示す [プロジェクトの詳細] セクションのスクリーンショット。":::
+
+1. **[インスタンスの詳細]** で、ご自分の Web アプリにグローバルに一意の名前を入力し、**[コード]** を選択します。 [*Node 14 LTS* **Runtime stack]\(ノード 14 LTS ランタイム スタック)**、**[オペレーティング システム]**、アプリを提供する **[リージョン]** を選択します。
+
+    :::image type="content" source="./media/quickstart-nodejs/instance-details.png" alt-text="[インスタンスの詳細] セクションのスクリーンショット。ここで、仮想マシンの名前を指定し、そのリージョン、イメージ、サイズを選択します。":::
+
+1. **[App Service プラン]** で、App Service プランの **[新規作成]** を選択します。 名前に「*myAppServicePlan*」と入力します。 Free レベルに変更するには、**[サイズの変更]** をクリックし、**[Dev/Test]** タブを選択し、**[F1]** を選択して、ページの下部にある **[適用]** ボタンを選択します。
+
+    :::image type="content" source="./media/quickstart-nodejs/app-service-plan-details.png" alt-text="管理者のユーザー名とパスワードを入力する [管理者アカウント] セクションのスクリーンショット":::
+
+1. ページの下部にある **[確認と作成]** ボタンを選択します。
+
+    :::image type="content" source="./media/quickstart-nodejs/review-create.png" alt-text="ページの下部にある [確認と作成] ボタンを示すスクリーンショット":::
+
+1. 検証の実行後、ページの下部にある **[作成]** ボタンを選択します。
+
+1. デプロイが完了したら、 **[リソースに移動]** を選択します。
+
+    :::image type="content" source="./media/quickstart-nodejs/next-steps.png" alt-text="リソースに移動する、次のステップを示すスクリーンショット":::
+
+### <a name="get-ftp-credentials"></a>FTP 資格情報を取得する
+
+Azure App Service では、FTP/S のデプロイに [**2 種類の資格情報**](deploy-configure-credentials.md)がサポートされています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。 このセクションでは、FileZilla で使用する "アプリケーション スコープの資格情報" を取得します。
+
+1. App Service のアプリ ページで左側のメニューの **[Deployment Center]\(デプロイ センター\)** をクリックし、**[FTPS credentials]\(FTPS 資格情報\)** タブを選択します。
+
+    :::image type="content" source="./media/quickstart-nodejs/ftps-deployment-credentials.png" alt-text="FTPS デプロイ資格情報":::
+
+1. **FileZilla** を開き、新しいサイトを作成します。
+
+1. **[FTPS credentials]\(FTPS 資格情報\)** タブから、**FTPS エンドポイント**、**ユーザー名**、**パスワード** を FileZilla にコピーします。
+
+    :::image type="content" source="./media/quickstart-nodejs/filezilla-ftps-connection.png" alt-text="FTPS 接続の詳細":::
+
+1. FileZilla で **[接続する]** をクリックします。
+ 
+### <a name="deploy-files-with-ftp"></a>FTP を使用してファイルをデプロイする
+
+1. すべてのファイルとディレクトリ ファイルを Azure の [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) ディレクトリにコピーします。
+    
+    :::image type="content" source="./media/quickstart-nodejs/filezilla-deploy-files.png" alt-text="FileZilla のデプロイ ファイル":::
+
+1. アプリの URL を参照して、アプリが正しく動作していることを確認します。
+
+::: zone-end
 ## <a name="redeploy-updates"></a>更新の再デプロイ
 
 このアプリに変更をデプロイするには、Visual Studio Code で編集を行い、ファイルを保存し、Azure アプリに再デプロイします。 次に例を示します。
@@ -258,6 +321,14 @@ You can launch the app at http://&lt;app-name>.azurewebsites.net
 
 ::: zone-end
 
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+2. 変更を保存し、FTP クライアントを使用してアプリを再デプロイします。
+    
+1. デプロイが完了したら、Web ページ `http://<app-name>.azurewebsites.net` を最新の情報に更新します。 `Welcome to Express` メッセージが `Welcome to Azure!` に変更されたことがわかります。
+
+::: zone-end
+
 ## <a name="stream-logs"></a>ストリーム ログ
 
 :::zone target="docs" pivot="development-environment-vscode"
@@ -266,9 +337,9 @@ Azure アプリからのログ出力 (`console.log()` の呼び出し) を Visua
 
 1. **App Service** エクスプローラーで、アプリ ノードを右クリックし、 **[Start Streaming Logs]\(ログのストリーム配信を開始する\)** を選択します。
 
-    ![[Start Streaming Logs]\(ログのストリーム配信を開始する\)](media/quickstart-nodejs/view-logs.png)
+    ![[Start Streaming Logs]\(ログのストリーム配信を開始する\)](./media/quickstart-nodejs/view-logs.png)
 
-1. アプリの再起動を求められたら、 **[はい]** をクリックします。 アプリが再起動すると、ログ ストリームへの接続と共に Visual Studio Code の出力ウィンドウが開きます。 
+1. アプリの再起動を求められたら、 **[はい]** をクリックします。 アプリが再起動すると、ログ ストリームへの接続と共に Visual Studio Code の出力ウィンドウが開きます。
 
 1. 数秒後、ログストリーミング サービスに接続されていることを示すメッセージが出力ウィンドウに表示されます。 ブラウザーでページを更新することにより、より多くの出力アクティビティを生成できます。
 
@@ -300,6 +371,36 @@ az webapp log tail
 ブラウザーでアプリを最新の情報に更新して、コンソール ログを生成します。これには、アプリに対する HTTP 要求に関するメッセージが含まれています。 すぐに出力が表示されない場合は、30 秒後に再試行してください。
 
 ログ ストリーミングを任意のタイミングで停止するには、ターミナルで **Ctrl** + **C** キーを押します。
+
+::: zone-end
+
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+アプリ、およびそれを実行するコンテナー内から生成されたコンソール ログに、アクセスすることができます。 Node.js アプリからのログ出力 (`console.log()` への呼び出し) は、Azure portal から直接ストリーミングできます。
+
+1. ご自分のアプリの同じ **[App Service]** ページで、左側のメニューを使用して [監視] セクションまでスクロールし、**[ログ ストリーム]** をクリックします。
+
+    :::image type="content" source="./media/quickstart-nodejs/log-stream.png" alt-text="Azure App Service 内のログ ストリームのスクリーンショット。":::
+
+1. 数秒後、ログストリーミング サービスに接続されていることを示すメッセージが出力ウィンドウに表示されます。 ブラウザーでページを更新することにより、より多くの出力アクティビティを生成できます。
+
+    <pre>
+    Connecting...
+    2021-10-26T21:04:14  Welcome, you are now connected to log-streaming service.
+    Starting Log Tail -n 10 of existing logs ----
+    /appsvctmp/volatile/logs/runtime/81b1b83b27ea1c3d598a1cdec28c71c4074ce66c735d0be57f15a8d07cb3178e.log
+    2021-10-26T21:04:08.614384810Z: [INFO]
+    2021-10-26T21:04:08.614393710Z: [INFO]  # Enter the source directory to make sure the script runs where the user expects
+    2021-10-26T21:04:08.614399010Z: [INFO]  cd "/home/site/wwwroot"
+    2021-10-26T21:04:08.614403210Z: [INFO]
+    2021-10-26T21:04:08.614407110Z: [INFO]  export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+    2021-10-26T21:04:08.614411210Z: [INFO]  if [ -z "$PORT" ]; then
+    2021-10-26T21:04:08.614415310Z: [INFO]          export PORT=8080
+    2021-10-26T21:04:08.614419610Z: [INFO]  fi
+    2021-10-26T21:04:08.614423411Z: [INFO]
+    2021-10-26T21:04:08.614427211Z: [INFO]  node /opt/startup/default-static-site.js
+    Ending Log Tail of existing logs ---
+    </pre>
 
 ::: zone-end
 
@@ -336,6 +437,20 @@ az group delete --no-wait
 このコマンドでは、 *azure/config* ファイルにキャッシュされているリソース グループ名を使用します。
 
 `--no-wait` 引数を使用すると、操作が完了する前にコマンドから戻ることができます。
+
+::: zone-end
+
+:::zone target="docs" pivot="development-environment-azure-portal"
+
+必要がなくなったら、リソース グループ、App Service、およびすべての関連リソースを削除できます。
+
+1. App Service の[概要] ページで、「[Azure リソースを作成する](#create-azure-resources)」の手順で作成した "リソース グループ" をクリックします。
+
+    :::image type="content" source="./media/quickstart-nodejs/resource-group.png" alt-text="App Service の [概要] ページのリソース グループ":::
+
+1. [リソース グループ] ページで、**[リソース グループの削除]** を選択します。 リソース グループの名前を確認してリソースの削除を終了します。
+
+    リソース グループの削除
 
 ::: zone-end
 

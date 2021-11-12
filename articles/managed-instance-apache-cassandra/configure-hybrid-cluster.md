@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0d558330f3c1c5c70fc67b9656beff8eca6dcb40
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 31b6f0459f2fb9b04646667abfda039760e5fcc0
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032527"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892440"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra"></a>クイックスタート: Azure Managed Instance for Apache Cassandra を使用してハイブリッド クラスターを構成する
 
@@ -22,10 +22,7 @@ Azure Managed Instance for Apache Cassandra では、マネージド オープ�
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* この記事では、Azure CLI バージョン 2.12.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
-  > [!NOTE]
-  > クラウド シェルで実行されている CLI モジュール `cosmosdb-preview` のバージョンが **0.9.0** (またはそれ以降) であることを確認してください。 これは、以下に示すすべてのコマンドが正常に機能するための要件です。 `az --version` を実行することにより、拡張機能のバージョンを確認できます。 必要に応じて、`az extension update --name cosmosdb-preview` を使用してアップグレードしてください。
+* この記事では、Azure CLI バージョン 2.30.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 * セルフホステッドまたはオンプレミス環境に接続された [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)。 オンプレミス環境を Azure に接続する方法の詳細については、「[オンプレミス ネットワークの Azure への接続](/azure/architecture/reference-architectures/hybrid-networking/)」の記事を参照してください。
 
@@ -191,9 +188,7 @@ Azure Managed Instance for Apache Cassandra では、マネージド オープ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Virtual Network にアクセス許可を適用するときにエラー (例えば、"*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合は、Azure portal から同じアクセス許可を手動で適用できます。 ポータルからアクセス許可を適用するには、既存の仮想ネットワークの **[アクセス制御 (IAM)]** ペインにアクセスし、"Azure Cosmos DB" のロール割り当てを "ネットワーク管理者" ロールに追加します。 "Azure Cosmos DB" を検索したときに 2 つのエントリが表示される場合は、次の図に示すように両方のエントリを追加します。 
-
-   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="アクセス許可を適用する" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+Azure CLI を使用して Virtual Network にアクセス許可を適用するときにエラー ("*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合、Azure portal から同じアクセス許可を手動で適用できます。 この方法については[こちら](add-service-principal.md)を参照してください。
 
 > [!NOTE] 
 > Azure Cosmos DB のロールの割り当ては、デプロイの目的にのみ使用されます。 Azure Managed Instance for Apache Cassandra には、Azure Cosmos DB に対するバックエンドの依存関係はありません。  

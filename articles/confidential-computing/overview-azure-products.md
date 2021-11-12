@@ -1,20 +1,20 @@
 ---
 title: Azure のコンフィデンシャル コンピューティング製品
 description: Azure が提供するすべてのコンフィデンシャル コンピューティング サービスについて説明します
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: overview
 ms.date: 11/04/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d3e395ac1eb16ccf499793d51b58db998a87294c
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 77cd51a87ba1f7ba7f17ed69c102a4020d7bae2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848509"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284400"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング
 

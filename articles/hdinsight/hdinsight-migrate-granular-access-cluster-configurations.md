@@ -4,12 +4,12 @@ description: HDInsight クラスター構成の詳細なロールベースのア
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 1ab7e8e9a85ebbb822e1b1a1d53298a48a85cb85
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cfaaf73751e188f88d06e6a12fc7e3e7613c7f81
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771003"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278210"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 

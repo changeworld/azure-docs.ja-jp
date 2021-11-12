@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/21/2021
-ms.openlocfilehash: 2b1d99beea620d0e88705d76df05f52af0c26f89
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/05/2021
+ms.openlocfilehash: a01d1e0da99da4b662b85e1774c201e9adc56cf1
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554870"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893066"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -47,6 +47,8 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 - __別の Azure サブスクリプション__ から AKS クラスターをアタッチするには、AKS クラスター上で、ご自身 (ご自身の Azure AD アカウント) に **共同作成者** ロールが許可されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
+
+- [パブリックの完全修飾ドメイン名 (FQDN) とプライベート AKS クラスター](/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-fqdn)を使用することは Azure Machine Learning では __サポートされていません__。 
 
 - AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。 アルファベット文字、数字、ダッシュを含めることができます。 先頭にはアルファベット文字、末尾にはアルファベット文字または数字を使用する必要があり、長さは 3 ～ 24 文字にする必要があります。
  

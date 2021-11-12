@@ -8,12 +8,12 @@ ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
 fluid.url: https://fluidframework.com/docs/build/auth/
-ms.openlocfilehash: fc3e55a91af1e7691d1d2677435c283914521dfe
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e2f24c5455548980318c4536b5c65f84ea6a7dfb
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661628"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893825"
 ---
 # <a name="authentication-and-authorization-in-your-app"></a>アプリの認証と承認
 
@@ -63,6 +63,26 @@ Azure Fluid Relay では [JSON Web Token (JWT)](https://jwt.io/) を使用して
   "ver": "1.0"
 }.[Signature]
 ```
+
+ユーザーのモードからは、接続が読み取りモードか、読み取り/書き込みモードかが示されます。 これは `AzureAudience` の `connections` フィールドで確認できます。 トークン スコープ アクセス許可は、サーバーレス Azure Function の `generateToken` 関数で更新できます。
+
+```ts
+const token = generateToken(
+  tenantId,
+  documentId,
+  key,
+  scopes ?? [ "Token Scope" ],
+  user
+);
+```
+
+トークン スコープ、コンテナーの動作、モードは次のようになります。
+
+| トークン スコープ | マイ ドキュメントの動作 | 対象ユーザー ドキュメントの動作 | 
+|-------------|----------------------|----------------------------|
+| DocRead     | ドキュメントを読み取り、ドキュメントに書き込みます。 ドキュメントに加えられた変更は、他の対象ユーザー ドキュメントには反映されません。 <br /> モード: 読み取り | ドキュメントを読み取り、ドキュメントに書き込みます。 変更は、他の対象ユーザー ドキュメントには反映されません。 <br /> モード: 書き込み | 
+| DocWrite    | ドキュメントを読み取り、ドキュメントに書き込みます。 加えられた変更は、他のすべての対象ユーザー ドキュメントに反映されます。 <br />モード: 書き込み | ドキュメントを読み取り、ドキュメントに書き込みます。 加えられた変更は、他のすべての対象ユーザー ドキュメントに反映されます。 <br />モード: 書き込み |
+| DocRead、DocWrite | ドキュメントを読み取り、ドキュメントに書き込みます。 加えられた変更は、他のすべての対象ユーザー ドキュメントに反映されます。 <br />モード: 書き込み | ドキュメントを読み取り、ドキュメントに書き込みます。 加えられた変更は、他のすべての対象ユーザー ドキュメントに反映されます。 <br />モード: 書き込み |
 
 > [!NOTE]
 > トークンにはユーザー情報も含まれていることに注意してください (上記の 7 行目から 9 行目を参照)。 これを使用すると、[対象ユーザー](../how-tos/connect-fluid-azure-service.md#getting-audience-details)機能を使って、Fluid コードで自動的に使用可能になるユーザー情報を拡張できます。 詳細については、「[トークンへのカスタム データの追加](../how-tos/connect-fluid-azure-service.md#adding-custom-data-to-tokens)」を参照してください。

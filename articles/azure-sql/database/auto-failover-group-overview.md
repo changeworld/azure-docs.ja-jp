@@ -11,12 +11,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 10/25/2021
-ms.openlocfilehash: 8977af3468ce861efb9a2e97048b681c2b41d76d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2d4aa937a29170ff1ebabc9b1e0bbe316b526189
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131069541"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894129"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-geo-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的かつ調整された geo フェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -172,7 +172,7 @@ ms.locfileid: "131069541"
   
 ### <a name="use-the-read-write-listener-to-connect-to-primary"></a><a name="using-read-write-listener-for-oltp-workload"></a> 読み取り/書き込みリスナーを使用してプライマリに接続する
 
-読み取り/書き込みワークロードの場合は、接続文字列 `<fog-name>.database.windows.net` のサーバー名として を使用します。 接続は自動的にプライマリに向けられる。 この名前はフェールオーバー後に変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
+読み取り/書き込みワークロードの場合は、接続文字列 `<fog-name>.database.windows.net` のサーバー名として を使用します。 接続は自動的にプライマリに向けられる。 この名前はフェールオーバー後に変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。 プライマリおよびセカンダリ リスナーの DNS レコードの有効期限 (TTL) は 30 秒です。
 
 ### <a name="use-the-read-only-listener-to-connect-to-geo-secondary"></a><a name="using-read-only-listener-for-read-only-workload"></a> 読み取り専用リスナーを使用して geo セカンダリに接続する
 

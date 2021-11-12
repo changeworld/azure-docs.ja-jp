@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e5576a557f8e2bacb5861e6a7f31c08357c2b679
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 795ad31b83f3a6f1acdd8bcc7561e6d75556b311
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032508"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892421"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Managed Instance for Apache Cassandra クラスターを作成する
 
@@ -27,7 +27,7 @@ Azure Managed Instance for Apache Cassandra では、マネージド オープ�
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!IMPORTANT]
-> この記事では、Azure CLI バージョン 2.17.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+> この記事では、Azure CLI バージョン 2.30.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>マネージド インスタンス クラスターを作成する
 
@@ -87,20 +87,43 @@ Azure Managed Instance for Apache Cassandra では、マネージド オープ�
      --debug
    ```
 
-1. 最後に、[az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) コマンドを使用して、3 つのノードを含むクラスターのデータセンターを作成します。
+1. 最後に [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) コマンドを使用し、各ノードに 4 つの P30 ディスクが接続された Standard D8s v4 VM SKU という 3 つのノードでクラスターのデータセンターを作成します。
 
    ```azurecli-interactive
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-    
+   virtualMachineSKU='Standard_D8s_v4'
+   noOfDisksPerNode=4
+     
    az managed-cassandra datacenter create \
      --resource-group $resourceGroupName \
      --cluster-name $clusterName \
      --data-center-name $dataCenterName \
      --data-center-location $dataCenterLocation \
      --delegated-subnet-id $delegatedManagementSubnetId \
-     --node-count 3 
+     --node-count 3 \
+     --sku $virtualMachineSKU \
+     --disk-capacity $noOfDisksPerNode \
+     --availability-zone false
    ```
+
+   > [!NOTE]
+   > `--sku` の値は、次の使用可能な SKU から選択できます。
+   >
+   > - Standard_E8s_v4
+   > - Standard_E16s_v4 
+   > - Standard_E20s_v4
+   > - Standard_E32s_v4 
+   > - Standard_DS13_v2
+   > - Standard_DS14_v2
+   > - Standard_D8s_v4
+   > - Standard_D16s_v4
+   > - Standard_D32s_v4 
+   > 
+   > `--availability-zone` が `false` に設定されていることにも注意してください。 可用性ゾーンを有効にするには、これを `true` に設定します。 
+
+   > [!WARNING]
+   > 可用性ゾーンは一部のリージョンでサポートされていません。 可用性ゾーンがサポートされていないリージョンを選択すると、デプロイは失敗します。 サポートされているリージョンについては、[こちら](/azure/availability-zones/az-overview#azure-regions-with-availability-zones)を参照してください。 可用性ゾーンの正常なデプロイは、特定のリージョン内のすべてのゾーンでコンピューティング リソースが使用可能であることにも左右されます。 選択した SKU、または容量が一部のゾーンで使用できない場合、デプロイは失敗する可能性があります。 
 
 1. データセンターの作成後、データセンター内のノードをスケールアップまたはスケールダウンしたい場合は、[az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) コマンドを実行します。 `node-count` パラメーターの値は、必要な値に変更してください。
 
@@ -143,9 +166,7 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Virtual Network にアクセス許可を適用するときにエラー (例えば、"*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合は、Azure portal から同じアクセス許可を手動で適用できます。 ポータルからアクセス許可を適用するには、既存の仮想ネットワークの **[アクセス制御 (IAM)]** ペインにアクセスし、"Azure Cosmos DB" のロール割り当てを "ネットワーク管理者" ロールに追加します。 "Azure Cosmos DB" を検索したときに 2 つのエントリが表示される場合は、次の図に示すように両方のエントリを追加します。 
-
-   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="アクセス許可を適用する" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+Azure CLI を使用して Virtual Network にアクセス許可を適用するときにエラー ("*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合、Azure portal から同じアクセス許可を手動で適用できます。 この方法については[こちら](add-service-principal.md)を参照してください。
 
 > [!NOTE] 
 > Azure Cosmos DB のロールの割り当ては、デプロイの目的にのみ使用されます。 Azure Managed Instance for Apache Cassandra には、Azure Cosmos DB に対するバックエンドの依存関係はありません。  

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb264da92eb47dd53b6b1900fcbdafcae0d4911
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8f83c7a9ac8a910a96a49c2ee354b68a18f4a774
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049731"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892155"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -74,7 +74,7 @@ Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバ�
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO を使用しているか、使用する予定の場合)
 
 > [!WARNING]
-> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、`https://device.login.microsoftonline.com` や `https://enterpriseregistration.windows.net` へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 これらの URL を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合、それらの URL へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 これらの URL を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
 
 組織がアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合は、Windows 10 コンピューターを Azure AD にデバイス登録できるように、[Web プロキシ自動発見 (WPAD) を実装](/previous-versions/tn-archive/cc995261(v=technet.10))することができます。 WPAD の構成と管理の問題に対処するには、「[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 更新プログラム 1709 より前の Windows 10 デバイスでは、Hybrid Azure AD Join と連携するようにプロキシを構成するためのオプションとして WPAD のみを選択できます。 
 

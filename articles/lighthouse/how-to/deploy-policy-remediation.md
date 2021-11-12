@@ -1,14 +1,14 @@
 ---
 title: 修復できるポリシーをデプロイする
 description: Azure Lighthouse を通して修復タスクを使用するポリシーをデプロイするには、顧客テナント内にマネージド ID を作成する必要があります。
-ms.date: 09/30/2021
+ms.date: 11/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 5783d753fabb7246914056139fb9a081b7684b9c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8255519f1c7229aaff1eee88d93c2b2ea73ae7ce
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362260"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892231"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
@@ -48,7 +48,7 @@ Azure Lighthouse に顧客をオンボードするときには、[Azure Resource
 
 たとえば、こちらの[サンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)にあるように、顧客テナント内にある Azure Key Vault リソースを対象とした診断を有効にしたい場合を考えてみましょう。 (上で説明したとおり) 管理主体となるテナント内で適切なアクセス許可の設定を済ませたユーザーが、このシナリオを実現するために [Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)をデプロイします。
 
-現時点では、委任されたサブスクリプションと一緒に使用するポリシーの割り当てを作成する操作に Azure portal ではなく、API を使用する必要があります。 これを行うときは、**apiVersion** を **2020-10-01-preview** に設定する必要があります。このバージョンには新しいプロパティ **delegatedManagedIdentityResourceId** が存在します。 このプロパティを使用すれば、(Azure Lighthouse にオンボードしたサブスクリプションまたはリソース グループにある) 顧客のテナントに存在するマネージド ID を対象に加えることができます。
+現時点では、委任されたサブスクリプションと一緒に使用するポリシーの割り当てを作成する操作に Azure portal ではなく、API を使用する必要があります。 これを行うときは、**apiVersion** を **2019-04-01-preview** 以降に設定し、新しいプロパティ **delegatedManagedIdentityResourceId** を含める必要があります。 このプロパティを使用すれば、(Azure Lighthouse にオンボードしたサブスクリプションまたはリソース グループにある) 顧客のテナントに存在するマネージド ID を対象に加えることができます。
 
 次の例は、**delegatedManagedIdentityResourceId** を使ったロール割り当てを示したものです。
 

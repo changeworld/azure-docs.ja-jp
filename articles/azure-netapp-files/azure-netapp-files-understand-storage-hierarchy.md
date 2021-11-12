@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 41ccd31a5e42b2765ffa778dc347cc848090ffee
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 49ad214c8851546cb2340d7ad413f9369e9b8a01
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407515"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219946"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files のストレージ階層
 
@@ -52,24 +52,27 @@ Azure NetApp Files のボリュームを作成する前に、プロビジョニ�
 
 ### <a name="quality-of-service-qos-types-for-capacity-pools"></a><bpt id="p1"><a name="qos_types"></bpt><ept id="p1"></a></ept>容量プールのサービス品質 (QoS) の種類
 
-QoS の種類は容量プールの属性です。 Azure NetApp Files は、2 種類の容量プールの QoS を提供しています。 
+QoS の種類は容量プールの属性です。 Azure NetApp Files では、"自動 (既定)" と "手動" の 2 種類の QoS 容量プールが提供されます。 
 
-- "<bpt id="p1">*</bpt>自動<ept id="p1">*</ept>" の種類の QoS  
+#### <a name="automatic-or-auto-qos-type"></a>"<bpt id="p1">*</bpt>自動<ept id="p1">*</ept>" の種類の QoS  
 
-    容量プールを作成する場合、既定の QoS の種類は [自動] になります。
+容量プールを作成する場合、既定の QoS の種類は [自動] になります。
 
-    自動 QoS 容量プールでは、ボリュームに割り当てられたサイズ クォータに比例して、スループットがプール内のボリュームに自動的に割り当てられます。 
+自動 QoS 容量プールでは、ボリュームに割り当てられたサイズ クォータに比例して、スループットがプール内のボリュームに自動的に割り当てられます。 
 
-    ボリュームに割り当てられる最大スループットは、容量プールのサービス レベルとボリュームのサイズ クォータによって異なります。 計算例については、「<bpt id="p1">[</bpt>Azure NetApp Files のサービス レベル<ept id="p1">](azure-netapp-files-service-levels.md)</ept>」を参照してください。
+ボリュームに割り当てられる最大スループットは、容量プールのサービス レベルとボリュームのサイズ クォータによって異なります。 計算例については、「<bpt id="p1">[</bpt>Azure NetApp Files のサービス レベル<ept id="p1">](azure-netapp-files-service-levels.md)</ept>」を参照してください。
 
-- <bpt id="p1"><a name="manual_qos_type"></bpt><ept id="p1"></a></ept>"<bpt id="p2">*</bpt>手動<ept id="p2">*</ept>" の種類の QoS  
+QoS の種類の考慮事項については、「[Azure NetApp Files のパフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)」をご覧ください。
 
-    容量プールには、手動の種類の QoS を使用するオプションがあります。
+#### <a name="manual-qos-type"></a>"手動" の QoS の種類  
 
-    手動 QoS 容量プールでは、ボリュームの容量とスループットを個別に割り当てることができます。 手動 QoS 容量プールで作成されたすべてのボリュームの合計スループットは、プールの合計スループットによって制限されます。  これは、プール サイズとサービスレベルのスループットの組み合わせによって決まります。 
+[容量プールを作成する](azure-netapp-files-set-up-capacity-pool.md)ときには、容量プールに対して、手動 QoS の種類を使用するように指定できます。 手動 QoS の種類を使用するように[既存の容量プールを変更する](manage-manual-qos-capacity-pool.md#change-to-qos)こともできます。 *容量の種類を手動 QoS に設定することは、永続的な変更です。* 種類が手動 QoS である容量プールを、自動 QoS 容量プール変換することはできません。 
 
-    たとえば、Ultra サービス レベルの 4 TiB の容量プールで、ボリュームに対して使用可能な合計スループット容量は 512 MiB/s (4 TiB x 128 MiB/s/TiB) です。
+手動 QoS 容量プールでは、ボリュームの容量とスループットを個別に割り当てることができます。 最小および最大のスループット レベルについては、「[Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md#resource-limits)」を参照してください。 手動 QoS 容量プールで作成されたすべてのボリュームの合計スループットは、プールの合計スループットによって制限されます。  これは、プール サイズとサービスレベルのスループットの組み合わせによって決まります。  たとえば、Ultra サービス レベルの 4 TiB の容量プールで、ボリュームに対して使用可能な合計スループット容量は 512 MiB/s (4 TiB x 128 MiB/s/TiB) です。
 
+##### <a name="example-of-using-manual-qos"></a>手動 QoS の使用例
+
+たとえば SAP HANA システム、Oracle データベース、または複数のボリュームを必要とするその他のワークロードと共に手動 QoS 容量プールを使用するときには、容量プールを使用してこれらのアプリケーションのボリュームを作成できます。  各ボリュームでは、アプリケーションの要件を満たすサイズとスループットを個々に提供できます。  メリットの詳細については、「[手動 QoS 容量プールのボリュームにおけるスループット制限の例](azure-netapp-files-service-levels.md#throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool)」を参照してください。  
 
 ## <a name="volumes"></a><bpt id="p1"><a name="volumes"></bpt><ept id="p1"></a></ept>ボリューム
 

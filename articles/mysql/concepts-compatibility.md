@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 269656068d01e2db1e222ec58e5f9b40f34f0d53
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/4/2021
+ms.openlocfilehash: 44b4c8e48c7e0edf4501915d3f801abc94b2f0ab
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781090"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893616"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 
@@ -20,10 +20,13 @@ ms.locfileid: "121781090"
 この記事では、Azure Database for MySQL Single Server との、ドライバーと管理ツールの互換性について説明します。
 
 > [!NOTE]
-> この記事は、ドライバーが Single Server サービスの[接続アーキテクチャ](concepts-connectivity-architecture.md)と互換性があることを確認する方法を説明しており、Azure Database for MySQL Single Server にのみ適用されます。 [Azure Database for MySQL フレキシブル サーバー](./flexible-server/overview.md)は、MySQL Community Edition と互換性がある、サポート対象のすべてのドライバーとツールと互換性があります。 
+> この記事は、ドライバーが Single Server サービスの[接続アーキテクチャ](concepts-connectivity-architecture.md)と互換性があることを確認する方法を説明しており、Azure Database for MySQL Single Server にのみ適用されます。 [Azure Database for MySQL フレキシブル サーバー](./flexible-server/overview.md)は、MySQL Community Edition と互換性がある、サポート対象のすべてのドライバーとツールと互換性があります。
 
 ## <a name="mysql-drivers"></a>MySQL ドライバー
 Azure Database for MySQL では、MySQL データベースの世界で最も人気のある Community Edition を使用しています。 そのため、さまざまな種類のプログラミング言語とドライバーと互換性があります。 目標は、MySQL ドライバーの 3 つの最新バージョンと、常に MySQL ドライバーの機能と使いやすさを向上させ続けているオープン ソース コミュニティの作成者の努力をサポートすることです。 テストによって Azure Database for MySQL 5.6 および 5.7 と互換性のあることがわかっているドライバーの一覧を次の表に示します。
+
+> [!WARNING]
+> MySQL 8.0.27 クライアントは Azure Database for MySQL - 単一サーバーと互換性がありません。 mysql.exe またはワークベンチ経由で作成された MySQL 8.0.27 クライアントからのすべての接続は失敗します。 回避策として、代わりに以前のバージョンのクライアント (MySQL 8.0.27 より前) を使用するか、[Azure Database for MySQL - フレキシブル サーバー](https://docs.microsoft.com/azure/mysql/flexible-server/overview)のインスタンスを作成することを検討してください。
 
 | **プログラミング言語** | **[ドライバー]** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |

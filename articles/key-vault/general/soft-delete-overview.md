@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 03/31/2021
-ms.openlocfilehash: 52cd7742f3c6961350f907cde8ffe19235cff9b8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 88541f8467edacb2e1f757ede82c00d70fea845d
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753256"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893863"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -44,7 +44,7 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 論理削除が有効になっている場合、削除されたリソースとしてマークされたリソースは、指定された期間 (既定では 90 日) 保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。
 
-新しいキー コンテナーを作成するときに、論理削除は既定でオンになっています。 [Azure CLI](./key-vault-recovery.md) または [Azure PowerShell](./key-vault-recovery.md)を使用すれば、論理削除を行わずにキー コンテナーを作成できます。 キー コンテナーで論理削除が有効になると、無効にすることはできません
+新しいキー コンテナーを作成するときに、論理削除は既定でオンになっています。 キー コンテナーで論理削除が有効になると、無効にすることはできません。
 
 既定の保有期間は 90 日ですが、キー コンテナーの作成時に、Azure portal を通じて、リテンション期間ポリシーの間隔を 7 から 90 日の値に設定することができます。 保護の削除のアイテム保持ポリシーでは、同じ間隔が使用されます。 設定した場合、保持ポリシーの間隔は変更できません。
 

@@ -8,12 +8,12 @@ ms.date: 11/02/2021
 ms.author: thvankra
 ms.custom: devx-track-azurecli, seo-azure-cli, ignite-fall-2021
 keywords: azure resource manager cli
-ms.openlocfilehash: 6f299601c013363965697b026a0f563fba4a7ae6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1cb28336c27a6f470a305917a267fc9c9320620a
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020114"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892478"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli"></a>Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する
 
@@ -22,7 +22,7 @@ ms.locfileid: "131020114"
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> この記事では、Azure CLI バージョン 2.17.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+> この記事では、Azure CLI バージョン 2.30.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 >
 > Azure Managed Instance for Apache Cassandra リソースの名前を変更することはできません。Azure Resource Manager におけるリソース URI の取り扱いに違反するためです。
 
@@ -94,7 +94,7 @@ az managed-cassandra cluster show \
 clusterName='cassandra-hybrid-cluster'
 resourceGroupName='MyResourceGroup'
 
-az managed-cassandra cluster node-status \
+az managed-cassandra cluster status \
     --cluster-name $clusterName \
     --resource-group $resourceGroupName
 ```
@@ -167,6 +167,9 @@ az managed-cassandra datacenter delete \
     --cluster-name $clusterName \
     --data-center-name $dataCenterName 
 ```
+
+> [!WARNING]
+> クラスターに複数のデータセンターがある場合、まず、[キースペース レプリケーション戦略の設定](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/operations/opsChangeKSStrategy.html)で、削除しようとしているデータセンターへの参照をすべて削除する必要があります。 クラスター内のキースペースにデータセンターへの参照がまだ残っている場合、このコマンドは失敗します。 
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>データセンターの詳細を取得する
 

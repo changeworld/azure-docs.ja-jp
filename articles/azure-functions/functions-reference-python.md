@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 940ad3d08069ee51a9d138585b6e7dca0af49996
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 78351934381ebd76e32041987a4534f64cf151bf
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129658911"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892743"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -307,6 +307,8 @@ def main(req, context):
         'ctx_invocation_id': context.invocation_id,
         'ctx_trace_context_Traceparent': context.trace_context.Traceparent,
         'ctx_trace_context_Tracestate': context.trace_context.Tracestate,
+        'ctx_retry_context_RetryCount': context.retry_context.retry_count,
+        'ctx_retry_context_MaxRetryCount': context.retry_context.max_retry_count,
     })
 ```
 
@@ -371,6 +373,10 @@ def main(req: azure.functions.HttpRequest,
 `function_name` 関数の名前です。
 
 `invocation_id` 現在の関数呼び出しの ID です。
+
+`trace_context` 分散トレース用のコンテキスト。 詳細については、[`Trace Context`](https://www.w3.org/TR/trace-context/) をご覧ください。
+
+`retry_context` 関数への再試行のコンテキスト。 詳細については、「[`retry-policies`](./functions-bindings-errors.md#retry-policies-preview)」を参照してください。
 
 ## <a name="global-variables"></a>グローバル変数
 

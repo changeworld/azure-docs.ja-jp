@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: c1759ba3bc4f9f516485f42f03d040bec5b4c78a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 455bad570c4b86c00933ffb1fd1f27f85871e6d9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636061"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426109"
 ---
 # <a name="sms-concepts"></a>SMS の概念
 
@@ -26,7 +26,7 @@ Azure Communication Services では、Communication Services SMS SDK を使用�
 Azure Communication Services SMS SDK の主な機能を次に示します。
 
 -  アプリケーションに SMS 機能を追加するための **シンプルな** セットアップ エクスペリエンス。
-- 米国内での A2P (アプリケーション対人) ユース ケースのフリー ダイヤル番号で **高速** メッセージをサポート。
+- 米国の A2P (Application to Person) ユースケースにおいて、無料電話番号とショートコード ("近日公開") での **高速** メッセージをサポート。
 - **一括メッセージング** をサポートしているため、一度に複数の受信者にメッセージを送信可能。
 - カスタマー サポート、アラート、予定リマインダーなどのシナリオをサポートする **双方向** の会話。
 - アプリケーションから送信されるメッセージのリアルタイム配信レポートを備えた **信頼性の高い配信**。

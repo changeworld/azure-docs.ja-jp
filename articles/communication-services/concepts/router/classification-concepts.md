@@ -9,12 +9,12 @@ ms.author: jassha
 ms.date: 10/14/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4511c26f7952f69e17ceefe99ff79f6439e5857b
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c31c0831f625f65075f3c1f5cde2647ebc73ce64
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074977"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308429"
 ---
 # <a name="job-classification-concepts"></a>ジョブ分類の概念
 

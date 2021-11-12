@@ -7,34 +7,37 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: 863281f85eac1d467e7935f47a90aacf1b3134dd
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 13d220dc0b168ade0bd6493025d858e01772a980
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129153446"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893957"
 ---
-# <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
+# <a name="azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバー 
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
 MySQL コミュニティ エディションを搭載した Azure Database for MySQL は、次の 2 つのデプロイ モードで利用できます。
 
+- フレキシブル サーバー
 - シングル サーバー
-- フレキシブル サーバー (プレビュー)
 
 この記事では、フレキシブル サーバー デプロイ モデルの概要を示し、主要概念について概説します。 ワークロードに適したデプロイ オプションを決定する方法については、「[Azure で適切な MySQL サーバー オプションを選択する](./../select-right-deployment-type.md)」をご覧ください。
 
 ## <a name="overview"></a>概要
 
-Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般に、サービスでは、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズが提供されます。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、サーバーを停止および開始する機能と、負荷の急増に対応できる SKU を備えた、優れたコスト最適化制御が提供され、完全なコンピューティング能力を継続的には必要としないワークロードに最適です。 現在、このサービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現在プレビュー段階にあり、現時点ではさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計された、運用環境対応のフル マネージド データベース サービスです。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、より優れたコスト最適化制御によって、サーバーを停止/起動する機能や、完全なコンピューティング能力を継続的には必要としないワークロードに最適な、バースト可能なコンピューティング層を実現できます。 フレキシブル サーバーでは、予約インスタンスもサポートされ、最大 63% のコストを削減できます。コンピューティング容量要件が予測できる運用環境ワークロードに最適です。 サービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](overview.md#azure-regions)で利用できます。
 
-フレキシブル サーバーは、以下の場合に最適です。
+フレキシブル サーバー デプロイ オプションには、バースト可能、汎用目的、メモリ最適化という 3 つのコンピューティング レベルが用意されています。 各レベルには、データベース ワークロードをサポートする異なるコンピューティング容量とメモリ容量が用意されています。 バースト可能レベルで月あたり数ドル払い、最初のアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[コンピューティングとストレージ](concepts-compute-storage.md)に関するページを参照してください。
 
-- より優れた制御とカスタマイズが必要なアプリケーション開発。
-- ゾーン冗長の高可用性
-- マネージド メンテナンス期間
+フレキシブル サーバーは、以下に適しています
+- バックアップ、高可用性、セキュリティ、監視などの機能の簡単なデプロイ、シンプルなスケーリング、データベース管理の安い経費
+- 制御とカスタマイズに優れた、MySQL のコミュニティ バージョンを必要とするアプリケーション開発
+- 同じゾーン、ゾーン冗長による高可用性、メンテナンス期間の管理機能のある運用環境ワークロード
+- シンプルな開発体験 
+- エンタープライズ グレードのセキュリティ、コンプライアンス、プライバシー
 
 フレキシブル サーバーの最新情報については、[Azure Database for MySQL - フレキシブル サーバーの新機能](whats-new.md)に関するページを参照してください。
 
@@ -50,7 +53,7 @@ Azure Database for MySQL フレキシブル サーバーは、データベース
 
 ## <a name="high-availability-within-and-across-availability-zones"></a>可用性ゾーン内および可用性ゾーン間での高可用性
 
-Azure Database for MySQL フレキシブル サーバー (プレビュー) では、自動フェールオーバーによる高可用性を構成できます。 高可用性ソリューションは、障害によってコミットされたデータが失われることがないように、またアプリケーションの全体的な稼働時間が増加するように設計されています。高可用性が構成されている場合、フレキシブル サーバーでは、スタンバイ レプリカが自動的にプロビジョニングされ、管理されます。 高可用性アーキテクチャ モデルには、次の 2 つがあります。 
+Azure Database for MySQL フレキシブル サーバーでは、自動フェールオーバーによる高可用性を構成できます。 高可用性ソリューションは、障害によってコミットされたデータが失われることがないように、またアプリケーションの全体的な稼働時間が増加するように設計されています。高可用性が構成されている場合、フレキシブル サーバーでは、スタンバイ レプリカが自動的にプロビジョニングされ、管理されます。 高可用性アーキテクチャ モデルには、次の 2 つがあります。 
 
 - **ゾーン冗長の高可用性 (HA):** このオプションは、複数の可用性ゾーンにわたってインフラストラクチャの完全な分離と冗長性を実現する場合に適しています。 最高レベルの可用性が提供されますが、複数のゾーンにわたってアプリケーションの冗長性を構成する必要があります。 ゾーン冗長 HA は、可用性ゾーン内のインフラストラクチャ障害に対して最高レベルの可用性を実現する必要があり、可用性ゾーン全体の待機時間を許容できる場合に推奨されます。 ゾーン冗長 HA は、リージョンが複数の Availability Zones をサポートし、ゾーン冗長 Premium ファイル共有を使用できる  [Azure リージョンのサブセット](overview.md#azure-regions) で使用できます。 
 
@@ -70,7 +73,7 @@ Azure Database for MySQL フレキシブル サーバー (プレビュー) で�
 
 ## <a name="automatic-backups"></a>自動バックアップ
 
-フレキシブル サーバー サービスにより、サーバーのバックアップが自動的に作成され、ユーザーが構成したローカル冗長または geo 冗長のストレージにそれが保存されます。 バックアップを使用すると、サーバーを、バックアップのリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 必要に応じて、リテンション期間を最大 35 日に構成できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+フレキシブル サーバー サービスにより、サーバーのバックアップが自動的に作成され、ユーザーが構成したローカル冗長または geo 冗長のストレージにそれが保存されます。 バックアップを使用すると、サーバーを、バックアップのリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 必要に応じて、リテンション期間を 1 日から 35 日までの範囲で構成できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
 
 詳細については、[バックアップの概念](concepts-backup-restore.md)に関する記事を参照してください。
 
@@ -118,11 +121,11 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 ## <a name="stopstart-server-to-optimize-cost"></a>サーバーを停止および開始してコストを最適化する
 
-フレキシブル サーバー サービスを使用すると、サーバーをオンデマンドで停止および開始して、コストを最適化することができます。 コンピューティング層の課金は、サーバーが停止すると直ちに停止されます。 これにより、開発、テスト、期限付きの予測可能な運用ワークロードにおいて、大幅なコスト削減を実現できます。 サーバーは、すぐに再起動しない限り 7 日間は停止状態のままになります。
+フレキシブル サーバー サービスを使用すると、サーバーをオンデマンドで停止および開始して、コストを最適化することができます。 コンピューティング層の課金は、サーバーが停止すると直ちに停止されます。 これにより、開発、テスト、期限付きの予測可能な運用ワークロードにおいて、大幅なコスト削減を実現できます。 サーバーは、すぐに再起動しない限り 30 日間は停止状態のままになります。
 
 詳細については、[サーバーの概念](concept-servers.md)に関する記事を参照してください。
 
-## <a name="enterprise-grade-security-and-privacy"></a>エンタープライズ グレードのセキュリティとプライバシー
+## <a name="enterprise-grade-security-compliance-and-privacy"></a>エンタープライズ グレードのセキュリティ、コンプライアンス、プライバシー
 
 フレキシブル サーバー サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 データ (バックアップを含む) と、クエリの実行中に作成される一時ファイルは暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます (既定)。
 
@@ -136,7 +139,13 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
-フレキシブル サーバー サービスには、組み込みのパフォーマンス監視機能とアラート機能が搭載されています。 すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 このサービスを使用すると、リソースの使用状況を監視するためのホスト サーバー メトリックが公開され、遅いクエリのログを構成できます。 これらのツールを使用すると、ワークロードをすばやく最適化し、最適なパフォーマンスが得られるようにサーバーを構成することができます。 さらに、コミュニティ監視ツール ([MySQL フレキシブル サーバーでの Percona Monitoring and Management](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545) など) を使用でき、これらのツールと統合することができます。 
+フレキシブル サーバー サービスには、組み込みのパフォーマンス監視機能とアラート機能が搭載されています。 すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 サービスにより、リソース使用率を監視し低速クエリ ログを構成できるようにするホスト サーバー メトリックが公開されます。 これらのツールを使用すると、ワークロードをすばやく最適化し、最適なパフォーマンスが得られるようにサーバーを構成することができます。 Azure Database for MySQL フレキシブル サーバーでは、Azure Monitor ブックを使用し、遅いクエリと監査ログ データを視覚化できます。 ブックを使用すると、データを分析し、Azure portal 内に豊富な視覚レポートを作成するための柔軟なキャンバスが得られます。 Azure Database for MySQL フレキシブル サーバーでは、Server Overview、[Auditing](tutorial-configure-audit.md)、[Query Performance Insights](tutorial-query-performance-insights.md) という 3 つのブック テンプレートを面倒な設定なしで利用できます。 [Query Performance Insight](tutorial-query-performance-insights.md) ブックは、次のような情報を提供することで、データベースのパフォーマンスのトラブルシューティングに費やす時間を短縮できるように設計されています。
+
+* 実行時間の長いクエリの上位 N 個とその傾向。
+* クエリの詳細: クエリ テキストと、クエリ時間の最小、最大、平均、および標準偏差を含む実行履歴の表示。
+* リソース使用率 (CPU、メモリ、ストレージ)。
+
+さらに、コミュニティ監視ツール ([MySQL フレキシブル サーバーでの Percona Monitoring and Management](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545) など) を使用でき、これらのツールと統合することができます。 
 
 詳細については、[監視の概念](concepts-monitoring.md)に関する記事を参照してください。
 
@@ -153,7 +162,7 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 5 つの簡単な手順で Azure Database for MySQL - 単一サーバーからフレキシブル サーバーに移行するには、[こちらのブログ](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057)を参照してください。
 
-詳細については、[Azure Database for MySQL の移行ガイド](../../mysql/migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md)に関する記事を参照してください
+詳細については、「[Azure Database for MySQL への移行に適切なツールを選択する](../../mysql/how-to-decide-on-right-migration-tools.md)」を参照してください。
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
@@ -163,7 +172,7 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | --- | --- | --- | --- |
 | オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | オーストラリア南東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Brazil South | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Brazil South | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | カナダ東部 | :heavy_check_mark: | :x: | :x: |
 | インド中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
@@ -177,19 +186,22 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | 西日本 | :heavy_check_mark: | :x: | :x: |
 | 韓国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 韓国南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国中北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 米国中北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | ノルウェー東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 米国中南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 南アフリカ北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国中南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | スイス北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| アラブ首長国連邦北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 英国南部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 英国西部 | :heavy_check_mark: | :x: | :x: |
-| アラブ首長国連邦北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 米国西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 米国中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国西部 3 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
 ## <a name="contacts"></a>連絡先
 
@@ -199,7 +211,7 @@ Azure Database for MySQL フレキシブル サーバーについてのご質問
 
 - Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
+- フィードバックを提供したり、新しい機能を要求したりするには、<bpt id="p1">[</bpt>UserVoice<ept id="p1">](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)</ept> でエントリを作成します。
 
 ## <a name="next-steps"></a>次のステップ
 

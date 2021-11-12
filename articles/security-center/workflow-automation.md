@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4cf12721cc691f4719cc4442b4092b44f6d8e1b7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cefeb17946f5723d7ea44ee89f8245eef01d28c3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004570"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445148"
 ---
 # <a name="automate-responses-to-microsoft-defender-for-cloud-triggers"></a>クラウドトリガーに対する Microsoft Defender への応答を自動化する
 
@@ -38,15 +37,17 @@ ms.locfileid: "131004570"
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>ロジック アプリを作成し、自動的に実行するタイミングを定義する 
 
-1. [Defender for Cloud] サイドバーで、[ **ワークフロー自動化**] を選択します。
+1. Defender for Cloud サイドバーで、 **ワークフロー自動化** を選択します。
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="ワークフローの自動化の一覧。":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="定義された自動化の一覧を示すワークフロー自動化ページのスクリーンショット。" lightbox="./media/workflow-automation/list-of-workflow-automations.png":::
 
     このページで、新しい自動化ルールを作成したり、既存のものを有効化、無効化、または削除したりすることができます。
 
-1. 新しいワークフローを定義するには、 **[Add workflow automation]\(ワークフローの自動化の追加\)** をクリックします。 
+1. 新しいワークフローを定義するには、 **[Add workflow automation]\(ワークフローの自動化の追加\)** をクリックします。 新しい自動化のオプション ウィンドウが開きます。
 
-    新しい自動化のオプションを含むウィンドウが表示されます。 ここで、以下を入力できます。
+    :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="ワークフロー自動化ウィンドウの追加。":::
+
+    ここで、以下を入力できます。
     1. 自動化の名前と説明。
     1. この自動ワークフローを開始するトリガー。 たとえば、"SQL" を含むセキュリティ警告が生成されたときにロジック アプリを実行することができます。
 
@@ -55,9 +56,7 @@ ms.locfileid: "131004570"
 
     1. トリガー条件が満たされたときに実行されるロジック アプリ。 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="ワークフロー自動化ウィンドウの追加。":::
-
-1. [アクション] セクションで [ **ロジックアプリにアクセス** ] を選択して、ロジックアプリの作成プロセスを開始します。
+1. アクション セクションで  **ロジックアプリにアクセス** を選択して、ロジックアプリの作成プロセスを開始します。
 
     Azure Logic Apps が表示されます。
 

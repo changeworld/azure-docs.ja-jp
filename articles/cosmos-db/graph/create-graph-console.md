@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: 0fc2b11f924a5ae50cf1f6ae96f0ed82ab1813ad
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 41dfcdf3a30084eafebcda70a4385508a432a3c0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131041079"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279521"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -77,7 +77,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
    ```yaml
    hosts: [your_database_server.gremlin.cosmos.azure.com] 
    port: 443
-   username: /dbs/your_database_account/colls/your_collection
+   username: /dbs/your_database/colls/your_collection
    password: your_primary_key
    connectionPool: {
      enableSsl: true
@@ -103,7 +103,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
 単純な count() コマンドを試します。 コンソールのプロンプトに次のように入力します。
 
-```java
+```console
 g.V().count()
 ```
 
@@ -113,7 +113,7 @@ g.V().count()
 
 入力 (Thomas):
 
-```java
+```console
 g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1).property('pk', 'pk')
 ```
 
@@ -125,7 +125,7 @@ g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen'
 
 入力 (Mary Kay):
 
-```java
+```console 
 g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2).property('pk', 'pk')
 
 ```
@@ -139,7 +139,7 @@ g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Anderse
 
 入力 (Robin):
 
-```java
+```console 
 g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3).property('pk', 'pk')
 ```
 
@@ -151,7 +151,7 @@ g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield'
 
 入力 (Ben):
 
-```java
+```console 
 g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4).property('pk', 'pk')
 
 ```
@@ -164,7 +164,7 @@ g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').pro
 
 入力 (Jack):
 
-```java
+```console
 g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5).property('pk', 'pk')
 ```
 
@@ -179,7 +179,7 @@ g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').pr
 
 入力 (Thomas -> Mary Kay):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
@@ -191,7 +191,7 @@ g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLa
 
 入力 (Thomas -> Robin):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
@@ -203,7 +203,7 @@ g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLa
 
 入力 (Robin -> Ben):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
@@ -218,7 +218,7 @@ g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLab
 *Thomas* の頂点を *45* の新しい年齢で更新しましょう。
 
 次の内容を入力します。
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 出力:
@@ -235,7 +235,7 @@ g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 
 入力 (フィルター クエリ):
 
-```java
+```console
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
@@ -249,7 +249,7 @@ g.V().hasLabel('person').has('age', gt(40))
 
 入力 (フィルター + プロジェクション クエリ):
 
-```java
+```console 
 g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
@@ -265,7 +265,7 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 
 入力 (Thomas の友人):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
@@ -280,7 +280,7 @@ g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel
 
 入力 (Thomas の友人の友人):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 出力:
@@ -295,7 +295,7 @@ g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel
 
 入力 (Jack 頂点を削除):
 
-```java
+```console 
 g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
@@ -305,7 +305,7 @@ g.V().hasLabel('person').has('firstName', 'Jack').drop()
 
 次の内容を入力します。
 
-```java
+```console
 g.E().drop()
 g.V().drop()
 ```

@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 6/16/2021
+ms.date: 11/11/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5db569349134bd63b0341cc7afb024cfad83b884
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: b6c170a7b2f46adeb4b287424601455bb078aba7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046147"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397302"
 ---
 # <a name="features"></a>特徴
 
@@ -27,65 +27,42 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
 ## <a name="rest-api"></a>REST API
 
-| API    | FHIR 用の Azure API | 医療 API の FHIR サービス | 解説 |
+サポートされている RESTful 機能の概要を次に示します。 これらの機能の実装の詳細については、「 [Fhir REST API 機能](fhir-rest-api-capabilities.md)」を参照してください。
+
+| API    | FHIR 用の Azure API | 医療 Api における FHIR サービス | 解説 |
 |--------|--------------------|---------------------------------|---------|
 | 読み取り   | はい                | はい                             |         |
 | vread  | はい                | はい                             |         |
 | update | はい                | はい                             |         | 
 | オプティミスティック ロック付きの update | はい       | はい       |
 | update (条件付き)           | はい       | はい       |
-| patch                          | はい       | はい       | JSON パッチ [のみサポート](https://www.hl7.org/fhir/http.html#patch) 。 この PR のバンドルで JSON パッチを使用するための回避策が [含まれています](https://github.com/microsoft/fhir-server/pull/2143)。|
+| patch                          | はい       | はい       | [JSON 修正プログラム](https://www.hl7.org/fhir/http.html#patch)のみのサポート。 [この PR](https://github.com/microsoft/fhir-server/pull/2143)のバンドルで JSON 修正プログラムを使用するための回避策が含まれています。|
 | patch (条件付き)            | はい       | はい       |
-| delete                         | はい       | はい       | 詳細については、以下の delete セクションを参照してください。 |
-| delete (条件付き)           | はい       | はい       | 詳細については、以下の delete セクションを参照してください。 |
 | history                        | はい       | はい       |
 | create                         | はい       | はい       | POST/PUT の両方をサポートします |
 | create (条件付き)           | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | 検索                         | Partial   | 部分的   | 「[FHIR 検索の概要](overview-of-search.md)」を参照してください。 |
-| chained search                 | はい       | はい       | 以下の「注」を参照してください。 |
-| reverse chained search         | はい       | はい       | 以下の「注」を参照してください。 |
+| chained search                 | はい       | はい       | 下記のメモを参照してください。 |
+| reverse chained search         | はい       | はい       | 下記のメモを参照してください。 |
 | batch (バッチ)                          | はい       | はい       |
 | transaction                    | いいえ        | はい       |
 | paging                         | 部分的   | 部分的   | `self` と `next` がサポートされています                     |
 | intermediaries                 | いいえ        | いいえ        |
 
 > [!Note] 
-> Azure API for FHIR と、Cosmos によってサポートされるオープンソースの FHIR サーバーでは、チェーン検索と逆チェーン検索は MVP 実装です。 Cosmos DB でチェーン検索を実現するために、この実装では、検索式を処理し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 1000 を超える結果を返すクエリがある場合は、エラーがスローされます。
-
-### <a name="delete-and-conditional-delete"></a>削除と条件付き削除
-
-FHIR 仕様で定義された削除では、削除後に、リソースのバージョン固有でない後続の読み取りで 410 HTTP 状態コードが返され、検索によってリソースが見つからない必要があります。 またAzure API for FHIR FHIR サービスを使用すると、リソースを完全に削除 (すべての履歴を含む) も可能です。 リソースを完全に削除するには、パラメーター設定 `hardDelete` を true (`DELETE {server}/{resource}/{id}?hardDelete=true`) にします。 このパラメーターを指定しなかった場合や、`hardDelete` を false に設定した場合は、その後もリソースの履歴バージョンを利用できます。
-
-削除に加えて、Azure API for FHIR FHIR サービスでは条件付き削除がサポートされています。条件付き削除を使用すると、検索条件を渡してリソースを削除できます。 既定では、条件付き削除を使用すると、一度に 1 つの項目を削除できます。 パラメーターを指定して `_count` 、一度に最大 100 項目を削除することもできます。 条件付き削除の使用例を次に示します。
-
-条件付き削除を使用して 1 つの項目を削除するには、1 つの項目を返す検索条件を指定する必要があります。
-``` JSON
-DELETE https://{{hostname}}/Patient?identifier=1032704
-```
-
-同じ検索を実行できますが、hardDelete=true を含め、すべての履歴も削除できます。
-```JSON 
-DELETE https://{{hostname}}/Patient?identifier=1032704&hardDelete=true
-```
-
-複数のリソースを削除する場合は、 を含め、検索条件に一致する最大 `_count=100` 100 のリソースを削除できます。 
-``` JSON
-DELETE https://{{hostname}}/Patient?identifier=1032704&_count=100
-```
+> Azure API for FHIR と、Cosmos によってサポートされるオープンソースの FHIR サーバーでは、チェーン検索と逆チェーン検索は MVP 実装です。 Cosmos DB でチェーン検索を実現するために、この実装では、検索式を処理し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリが1000を超える結果を返す場合は、エラーがスローされます。
 
 ## <a name="extended-operations"></a>拡張操作
 
-アプリケーションを拡張する、サポートREST API。
+REST API を拡張する、サポートされているすべての操作。
 
-| 検索パラメーターの種類 | FHIR 用の Azure API | 医療 API の FHIR サービス| 解説 |
+| 検索パラメーターの種類 | FHIR 用の Azure API | 医療 Api における FHIR サービス| 解説 |
 |------------------------|-----------|-----------|---------|
-| $export (システム全体) | はい       | はい       |         |
-| Patient/$export        | はい       | はい       |         |
-| Group/$export          | はい       | Yes       |         |
-| $convert-data          | Yes       | はい       |         |
-| $validate              | はい       | はい       |         |
-| $member-match          | はい       | はい       |         |
-| $patient-everything    | はい       | はい       |         |
+| [$export](../../healthcare-apis/data-transformation/export-data.md) (システム全体) | はい       | はい       | システム、グループ、および患者をサポートします。   |
+| [$convert-data](convert-data.md)          | はい       | はい       |         |
+| [$validate](validation-against-profiles.md)              | はい       | はい       |         |
+| [$member-match](tutorial-member-match.md)          | はい       | はい       |         |
+| [$patient-everything](patient-everything.md)    | はい       | はい       |         |
 | $purge履歴         | はい       | はい       |         |
 
 ## <a name="persistence"></a>永続化
@@ -116,7 +93,7 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure API for FHIR でサポートされる FHIR 機能について学習しました。 次は Azure API for FHIR をデプロイします。
+この記事では、Azure API for FHIR でサポートされる FHIR 機能について学習しました。 アプリケーションのデプロイの詳細についてはAzure API for FHIR参照してください。
  
 >[!div class="nextstepaction"]
 >[Azure API for FHIR をデプロイする](fhir-paas-portal-quickstart.md)

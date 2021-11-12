@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 10/12/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 51c5303c86c83c93e6ec38064a6b7eea74cc7bc6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 80de5c094175a4c2372befeaedddbe1ac56bba8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068479"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308332"
 ---
 # <a name="iot-connector-data-flow"></a>IoT コネクタのデータ フロー
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33f2c7393a9c7b91dcd6fd9188bd9a89f190215
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a4d902a3c5471455f6f2d6cc614544aeb4e0dc39
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131050722"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892080"
 ---
 # <a name="conditional-access-session"></a>条件付きアクセス:Session
 
@@ -76,10 +76,13 @@ ms.locfileid: "131050722"
 
 [継続的アクセス評価](concept-continuous-access-evaluation.md) は、組織の条件付きアクセスポリシーの一部として自動的に有効となります。 継続的なアクセス評価を無効にしたり、厳格に実施したりしたい組織のために、この設定が「条件付きアクセス」のセッションコントロール内のオプションとして追加されました。 継続的アクセス評価ポリシーは、すべてのユーザーまたは特定のユーザーとグループに予約範囲を設定できます。 管理者は、新しいポリシーを作成する際、または既存の条件付きアクセスポリシーを編集する際に、次の選択を行うことができます。
 
-- **[無効]** は、**すべてのクラウドアプリ** が選択されていて、条件が選択されていない **場合に実行** され ます
-- **厳密な** 適用とは、重要なイベントとポリシーがリアルタイムで適用されるという意味です。 すべての CAE 対応サービスは、クライアントまたはユーザーが要求または実行する可能性があるものに関して、常に CAE トークンを取得します。 厳密な強制モードが有効になっている場合、CAE が再生しないシナリオが 2 つがあります。
-   - 非 CAE 対応クライアントは、CAE 対応サービスの通常のトークンを取得してはならない。
-   - リソース プロバイダーによって表示される IP が、許可された範囲内に含められない場合は拒否します。
+- **無効** は、**すべてのクラウド アプリ** が選択されており、条件が選択されていない場合にのみ機能します。**無効** は、条件付きアクセス ポリシーで、 **[セッション]** の **[継続的アクセス評価をカスタマイズする]** の下で選択します。 すべてのユーザー、特定のユーザー、グループを無効にすることを選択できます。
+- **厳格な強制** を使用すると、CAE のセキュリティ上の利点をさらに強化できます。 確実に重要なイベントとポリシーがリアルタイムで適用されるようにします。  厳格な強制モードがオンになっているとき、CAE が適用される追加シナリオが 2 つあります。
+   - CAE に対応していないクライアントは、CAE に対応しているサービスにアクセスできません。
+   - リソース プロバイダーに検出されたクライアントの IP アドレスが条件付きアクセスの許可範囲にない場合、アクセスは拒否されます。
+
+> [!NOTE] 
+> 厳格な強制は、すべてのクライアント アプリケーションが CAE をサポートし、Azure AD で検出されたすべての IP アドレスと、Exchange Online や Azure Resource Mananger などのリソース プロバイダーが条件付きアクセス下の場所ポリシーに含まれていることを確認した後でのみ有効にします。 そうしないと、テナント内のユーザーがブロックされる可能性があります。
 
 :::image type="content" source="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png" alt-text=" Azureポータルの新しい条件付きアクセスポリシーにCAEの設定。" lightbox="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png":::
 
