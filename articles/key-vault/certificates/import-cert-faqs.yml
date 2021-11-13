@@ -10,12 +10,12 @@ metadata:
   ms.topic: how-to
   ms.date: 07/20/2020
   ms.author: sebansal
-  ms.openlocfilehash: 7341cad11d049217d282eb1e2c5c80aea0271ff2
-  ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+  ms.openlocfilehash: 6b7893e84dce9b5fa7bf7993dfa5f145363811f1
+  ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/15/2021
-  ms.locfileid: "112124808"
+  ms.lasthandoff: 11/06/2021
+  ms.locfileid: "131893103"
 title: Azure Key Vault 証明書のインポートに関する FAQ
 summary: この記事では、Azure Key Vault 証明書のインポートに関してよく寄せられる質問にお答えします。
 sections:
@@ -70,4 +70,7 @@ sections:
   - question: "Key Vault にインポートした App Service 証明書を表示できないのはなぜですか? \n"
     answer: >
       証明書を正常にインポートした場合は、 **[シークレット]** ペインに移動して確認できます。
+  - question: "1 つの .PEM または .PFX ファイルに証明書をまとめ、証明書バンドル全体をキー コンテナーにインポートするにはどうすればよいですか。 \n"
+    answer: >
+      証明書機関は、証明書を個別にダウンロードするか (ルート、中間、リーフ)、まとめて 1 つのファイルでダウンロードする選択肢を提供することがあります。 キー コンテナーに証明書をインポートするとき、証明書を 1 つインポートするか、チェーン全体をインポートするかはユーザー次第です。
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n- [Azure Key Vault 証明書](./about-certificates.md)"

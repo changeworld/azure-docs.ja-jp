@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/23/2021
+ms.date: 11/08/2021
 ms.author: alzam
-ms.openlocfilehash: ae6dfb4ae3f904f2528eb995e6dda00cd604f2c8
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 8ae6519881dd0e41cde8ed0fa4d7ffc64f35bdf2
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131891928"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058791"
 ---
 # <a name="monitoring-vpn-gateway"></a>VPN Gateway の監視
 

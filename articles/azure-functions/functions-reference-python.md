@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 78351934381ebd76e32041987a4534f64cf151bf
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: b4342a70e5fa7c5a0a7a2fd51dcfe97476f34995
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892743"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027206"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -427,7 +427,8 @@ Azure Functions では次の Python バージョンがサポートされてい�
 
 | Functions バージョン | Python<sup>*</sup> バージョン |
 | ----- | ----- |
-| 3.x | 3.9 (プレビュー) <br/> 3.8<br/>3.7<br/>3.6 |
+| 4.x | 3.9<br/> 3.8<br/>3.7 |
+| 3.x | 3.9<br/> 3.8<br/>3.7<br/>3.6 |
 | 2.x | 3.7<br/>3.6 |
 
 <sup>*</sup>公式 CPython ディストリビューション

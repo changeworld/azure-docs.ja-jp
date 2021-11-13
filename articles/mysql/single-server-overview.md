@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 6/19/2021
-ms.openlocfilehash: cf23b4111bc50b9276ffdc99704b750c8c7d5b3b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: dfeea2cfde2f8122891b6fada2eba1e546ed2342
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429111"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894224"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバー
 
@@ -20,16 +20,15 @@ ms.locfileid: "131429111"
 
 MySQL コミュニティ エディションを搭載した [Azure Database for MySQL](overview.md) は、次の 2 つのデプロイ モードで利用できます。
 
+- フレキシブル サーバー 
 - シングル サーバー
-- フレキシブル サーバー (プレビュー)
 
 この記事では、単一サーバー デプロイ モデルの概要を示し、主要概念について概説します。 フレキシブル サーバー デプロイ モードについては、[フレキシブル サーバーの概要](flexible-server/index.yml)を参照してください。 ワークロードに適したデプロイ オプションを決定する方法については、「[Azure で適切な MySQL サーバー オプションを選択する](select-right-deployment-type.md)」をご覧ください。
 
 ## <a name="overview"></a>概要
+Azure Database for MySQL 単一サーバーは、最小限のカスタマイズ用に設計されたフル マネージド データベース サービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、単一の可用性ゾーンで 99.99% の可用性を備えた組み込みの高可用性を実現するよう最適化されています。 MySQL 5.6 (廃止)、5.7、8.0 のコミュニティ バージョンをサポートしています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
-単一サーバーは、最小限の要件でデータベースをカスタマイズできる、完全に管理されたデータベースサービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、1 つの可用性ゾーンで 99.99% の可用性を提供するように最適化されています。 MySQL 5.6、5.7、および 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。 
-
-単一サーバーは、自動化されたパッチ適用を処理するように設計されていて、パッチ適用スケジュールや MySQL のカスタム構成設定をきめ細かに制御する必要がないクラウド ネイティブ アプリケーションに最適です。 
+単一サーバーは、**既に単一サーバーを活用している既存のアプリケーションにのみ** 最適です。 新たに開発または移行する場合は常に、デプロイ オプションとしてフレキシブル サーバーが推奨されます。 フレキシブル サーバーと単一サーバーのデプロイ オプションの違いについては、[最適なデプロイ オプションを選択する](select-right-deployment-type.md)方法に関するドキュメントを参照してください。
 
 ## <a name="high-availability"></a>高可用性
 
