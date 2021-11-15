@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell を使用して Marketplace 購入プラン情報を指定する
-description: Shared Image Gallery でイメージを作成するとき、Azure Marketplace 購入プラン詳細を指定する方法について説明します。
+description: Azure Compute Gallery (旧称 Shared Image Gallery) でイメージを作成するときに Azure Marketplace 購入プランの詳細を指定する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 52f4152a8f3ec1d2f812de74ed0bd238fb323330
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d50aa76f80205df1d34215a020691c51ca58d4b0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451837"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474612"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>イメージ作成時、Azure Marketplace 購入プラン情報を提供する
 
@@ -37,7 +37,7 @@ $vm.Plan
 
 ## <a name="create-the-image-definition"></a>イメージ定義を作成する
 
-イメージの格納に使用するイメージ ギャラリーを取得します。 すべてのギャラリーを最初に一覧表示できます。
+イメージの格納に使用するギャラリーを取得します。 すべてのギャラリーを最初に一覧表示できます。
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table

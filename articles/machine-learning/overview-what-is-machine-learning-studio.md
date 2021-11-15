@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: peterclu
 ms.author: peterlu
-ms.date: 08/23/2021
+ms.date: 10/21/2021
 adobe-target: true
-ms.openlocfilehash: d2b3a18341c782cf848ebd8740577004340be0f8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 09f4a047d3cccb5b34834a9315893c4c1687bc1b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351888"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556238"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -44,7 +44,7 @@ ms.locfileid: "129351888"
 
 + **Azure Machine Learning デザイナー**
 
-  デザイナーを使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 ML パイプラインを作成するには、データセットとモジュールをドラッグ アンド ドロップします。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
+  デザイナーを使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 ML パイプラインを作成するには、データセットとコンポーネントをドラッグ アンド ドロップします。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
 
     ![Azure Machine Learning デザイナーの例](media/concept-designer/designer-drag-and-drop.gif)
 

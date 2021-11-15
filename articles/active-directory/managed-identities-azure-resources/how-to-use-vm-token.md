@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a31cad4f2828a505eb89782bf28b01049a46cfc
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f923cafa9e43d965674050e43c2f2c6a14917dea
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998012"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266140"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -367,6 +367,9 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
 | 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、 *\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](./services-support-managed-identities.md)」で、サービスの一覧と、そのリソース ID を参照してください。
+
+> [!IMPORTANT]
+> - IMDS をプロキシの背後で使用することは想定されておらず、サポートされていません。 プロキシをバイパスする方法の例については、「[Azure Instance Metadata Samples (Azure インスタンス メタデータ サンプル)](https://github.com/microsoft/azureimds)」をご覧ください。  
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
 

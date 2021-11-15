@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: e21cfe528c3cba9c190ba667552deb7070884aa3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9a5a78fc77a2b0f0891bfdd2922ad1cd771aba42
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092111"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322902"
 ---
 # <a name="understand-and-work-with-azure-virtual-network-manager-preview-scopes"></a>Azure Virtual Network Manager (プレビュー) のスコープを理解し、操作する
 
@@ -42,7 +42,7 @@ ms.locfileid: "131092111"
 Azure Virtual Network Manager の *スコープ* は、機能を適用できる一連のリソースです。 スコープを指定する場合は、ネットワーク マネージャーがリソースを管理できるアクセスを制限します。 スコープの値は、管理グループ レベルまたはサブスクリプション レベルで指定できます。 リソース 階層を管理する方法については、[Azure管理グループ](../governance/management-groups/overview.md)を参照してください。 スコープとして管理グループを選択すると、すべての子リソースがスコープ内に含まれます。 
 
 > [!NOTE]
-> 同じ階層の重複するスコープを持つ複数のネットワーク マネージャーの作成はサポートされていません。
+> 同じ階層と同じ機能を選択し、(スコープが重複する) 複数の Azure Virtual Network マネージャーを作成することはできません。
 > 
 
 ## <a name="features"></a>機能

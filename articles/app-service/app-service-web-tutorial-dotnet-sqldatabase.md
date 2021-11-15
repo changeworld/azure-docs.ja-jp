@@ -4,14 +4,14 @@ description: C# ASP.NET アプリを Azure と Azure SQL Database にデプロ�
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/05/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 8569826c548e768e593e024af38b8b937ee02ca2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 72ea37f483055ae3bcb97520efa7f2a4fb704037
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058732"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058865"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>チュートリアル:Azure SQL Database を使用して Azure に ASP.NET アプリをデプロイする
 
@@ -34,9 +34,9 @@ ms.locfileid: "131058732"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、次のものが必要です。
 
-<bpt id="p2">**</bpt>[ASP.NET および Web の開発]<ept id="p2">**</ept> ワークロードと共に <bpt id="p1"><a href="https://www.visualstudio.com/downloads/" target="_blank"></bpt>Visual Studio 2019<ept id="p1"></a></ept> をインストールする。
+**ASP.NET および Web の開発** のワークロードと共に <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2022</a> をインストールする。
 
 既に Visual Studio をインストールしている場合は、 <bpt id="p1">**</bpt>[ツール]<ept id="p1">**</ept> <ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[Get Tools and Features]\(ツールと機能の取得\)<ept id="p2">**</ept> の順にクリックして、Visual Studio 内でワークロードを追加します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "131058732"
 
 ## <a name="publish-aspnet-application-to-azure"></a>ASP.NET アプリケーションを Azure に発行する
 
-1. <bpt id="p1">**</bpt>ソリューション エクスプローラー<ept id="p1">**</ept>で <bpt id="p2">**</bpt>DotNetAppSqlDb<ept id="p2">**</ept> プロジェクトを右クリックし、 <bpt id="p3">**</bpt>[発行]<ept id="p3">**</ept> を選択します。
+1. **ソリューション エクスプローラー** で **DotNetAppSqlDb** プロジェクトを右クリックし、 **[発行]** を選択します。
 
     ![ソリューション エクスプローラーから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "131058732"
 
    | 設定  | 推奨値 | 詳細情報 |
    | ----------------- | ------------ | ----|
-   |<bpt id="p1">**</bpt>App Service プラン<ept id="p1">**</ept>| myAppServicePlan | <bpt id="p1">[</bpt>App Service プラン<ept id="p1">](../app-service/overview-hosting-plans.md)</ept> |
+   |**App Service プラン**| myAppServicePlan | <bpt id="p1">[</bpt>App Service プラン<ept id="p1">](../app-service/overview-hosting-plans.md)</ept> |
    |**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**[サイズ]**| Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
@@ -337,7 +337,7 @@ public bool Done { get; set; }
 
 Azure アプリで Code First Migrations を有効にしたので、コードの変更を発行します。
 
-1. 発行ページで <bpt id="p1">**</bpt>[発行]<ept id="p1">**</ept> をクリックします。
+1. 発行ページで **[発行]** をクリックします。
 
 1. 再度、To Do 項目を追加してみてください。その後、 <bpt id="p1">**</bpt>[完了]<ept id="p1">**</ept> を選択すると、完了済みの項目としてホームページに表示されます。
 

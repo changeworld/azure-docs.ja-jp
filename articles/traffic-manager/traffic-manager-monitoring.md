@@ -1,21 +1,21 @@
 ---
-title: Azure Traffic Manager エンドポイントの監視 | Microsoft Docs
+title: Azure Traffic Manager エンドポイントの監視
 description: この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。
 services: traffic-manager
-author: duongau
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/22/2021
-ms.author: duau
-ms.openlocfilehash: ce4ff8cfa4bee895e17cd7ad22c54ff777d210ff
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/02/2021
+ms.author: allensu
+ms.openlocfilehash: 52edf0cbae53540152a9991980499698b3292287
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435184"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467209"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -134,8 +134,11 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 9. **サービスがオンラインに復帰**。 サービスが使用できるようになります。 監視システムが次の正常性チェックを行うまで、Traffic Manager ではそのエンドポイントは低下状態のままです。
 10. **サービスへのトラフィックの再開**。 Traffic Manager は、GET 要求を送信し、200 OK ステータス応答を受け取ります。 サービスが正常な状態に戻りました。 Traffic Manager のネーム サーバーがもう一度更新され、DNS 応答でサービスの DNS 名の配信が開始されます。 他のエンドポイントに返すキャッシュ済みの DNS 応答が期限切れになり、他のエンドポイントとの既存の接続が終了すると、トラフィックは元のエンドポイントに戻ります。
 
+    > [!IMPORTANT]
+    > Traffic Manager では、エンドポイントごとに複数の場所から複数のプローブをデプロイします。 複数のプローブによって、エンドポイント監視の回復性が向上します。 Traffic Manager では、単一のプローブ インスタンスに依存するのではなく、プローブの正常性の平均を集計します。 プローブ システムの冗長性は仕様によるものです。 エンドポイント値は、プローブごとではなく、総合的に確認する必要があります。 プローブの正常性に表示される数値は平均値です。 状態が問題になるのは、**Up** 状態を発行したプローブが 50% (0.5) 未満の場合のみです。
+
     > [!NOTE]
-    > Traffic Manager は DNS レベルで動作するため、いずれかのエンドポイントとの既存の接続に影響を与えることはありません。 (プロファイル設定を変更するか、フェールオーバーまたはフェールバックが発生して) エンドポイント間でトラフィックが送信される際、新しい接続は Traffic Manager によって使用可能なエンドポイントに転送されます。 ただし、他のエンドポイントは、セッションが終了するまで既存の接続を介してトラフィックを受信し続ける可能性があります。 トラフィックが既存の接続に転送されないようにするには、各エンドポイントで使用されるセッション期間をアプリケーションで制限する必要があります。
+    > Traffic Manager は DNS レベルで動作するため、いずれかのエンドポイントとの既存の接続に影響を与えることはありません。 (プロファイル設定を変更するか、フェールオーバーまたはフェールバックが発生して) エンドポイント間でトラフィックが送信される際、新しい接続は Traffic Manager によって使用可能なエンドポイントに転送されます。 他のエンドポイントは、セッションが終了するまで既存の接続を介してトラフィックを受信し続ける可能性があります。 トラフィックが既存の接続に転送されないようにするには、各エンドポイントで使用されるセッション期間をアプリケーションで制限する必要があります。
 
 ## <a name="traffic-routing-methods"></a>トラフィックのルーティング方法
 

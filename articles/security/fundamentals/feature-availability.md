@@ -1,26 +1,26 @@
 ---
 title: 米国政府機関のお客様向けの Azure サービス クラウド機能の利用可能性
-description: 米国政府機関のお客様向け Azure Sentinel などの Azure セキュリティ サービスの機能の利用可能性を一覧表示します
+description: 米国政府機関のお客様向け Microsoft Sentinel などの Azure セキュリティ サービスの機能の利用可能性を一覧表示します
 author: TerryLanfear
 ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 46d7b4d08a7181b56859c5639ccd5a187e526474
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 971a45445f65d35a7393c25e6ac88ad2134577e4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564349"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323236"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
 この記事では、次のセキュリティ サービスについての、Microsoft Azure および Azure Government クラウドの機能の利用可能性について説明します。
 
 - [Azure Information Protection](#azure-information-protection)
-- [Azure Security Center](#azure-security-center)
-- [Azure Sentinel](#azure-sentinel)
-- [Azure Defender for IoT](#azure-defender-for-iot)
+- [Microsoft Defender for Cloud](#microsoft-defender-for-cloud)
+- [Microsoft Sentinel](#microsoft-sentinel)
+- [Microsoft Defender for IoT](#microsoft-defender-for-iot)
 - [Azure Attestation](#azure-attestation)
 
 > [!NOTE]
@@ -50,7 +50,6 @@ Office 365 US Government 環境の詳細については、以下を参照して�
 - [Office 365 GCC](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc)
 - [Office 365 GCC High および DoD](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
 
-
 以下のセクションでは、サービスが Microsoft 365 と統合されたタイミング、および Office 365 GCC、Office 365 High、および Office 365 DoD の機能の利用可能性について説明します。
 
 ## <a name="azure-information-protection"></a>Azure Information Protection
@@ -66,8 +65,8 @@ AIP は、Microsoft Information Protection (MIP) ソリューションの一部�
 - GCC-High および DoD のお客様の場合は、追加の構成が必要です。 詳細については、「[Azure Information Protection Premium Government サービスの説明](/enterprise-mobility-security/solutions/ems-aip-premium-govt-service-description)」を参照してください。
 
 > [!NOTE]
-> 政府機関のお客様に対するサポートの詳細については、表の下の脚注に記載されています。 
-> 
+> 政府機関のお客様に対するサポートの詳細については、表の下の脚注に記載されています。
+>
 > GCC High および DoD のお客様向けの Azure Information Protection を構成するには、追加の手順が必要です。 詳細については、「[Azure Information Protection Premium Government サービスの説明](/enterprise-mobility-security/solutions/ems-aip-premium-govt-service-description)」を参照してください。
 >
 
@@ -93,9 +92,9 @@ AIP は、Microsoft Information Protection (MIP) ソリューションの一部�
 | - Office 365 DoD | - | GA |
 | |  |  |
 
-<sup><a name="aipnote1" /></a> 1</sup> スキャナーは Office 365 がなくてもファイルのみをスキャンするように機能します。 スキャナーでは、Office 365 なしで、ファイルにラベルを適用することはできません。
+<sup><a name="aipnote1"></a> 1</sup> スキャナーは Office 365 がなくてもファイルのみをスキャンするように機能します。 スキャナーでは、Office 365 なしで、ファイルにラベルを適用することはできません。
 
-<sup><a name="aipnote2" /></a>2</sup> 分類およびラベル付けアドインは、Professional Plus (ProPlus) および Click-to-Run (C2R) のバージョンを含む、Microsoft 365 Apps (バージョン 9126.1001 以降) を使用している政府機関のお客様に対してのみサポートされます。 Office 2010、Office 2013、その他の Office 2016 バージョンではサポートされていません。
+<sup><a name="aipnote2"></a>2</sup> 分類およびラベル付けアドインは、Professional Plus (ProPlus) および Click-to-Run (C2R) のバージョンを含む、Microsoft 365 Apps (バージョン 9126.1001 以降) を使用している政府機関のお客様に対してのみサポートされます。 Office 2010、Office 2013、その他の Office 2016 バージョンではサポートされていません。
 
 ### <a name="office-365-features"></a>Office 365 の機能
 
@@ -124,91 +123,90 @@ AIP は、Microsoft Information Protection (MIP) ソリューションの一部�
 |- [PTXT、PJPG、PFILE など、Microsoft Office 以外のファイル形式の保護 (一般的な保護)](/azure/information-protection/rms-client/clientv2-admin-guide-file-types)     |        GA       |    GA     |   GA       |
 |     |         |         |         |
 
+<sup><a name="aipnote3"></a>3</sup> 現在、政府機関のお客様は AD RMS 用のモバイル デバイス拡張機能を利用できません。
 
-<sup><a name="aipnote3" /></a>3</sup> 現在、政府機関のお客様は AD RMS 用のモバイル デバイス拡張機能を利用できません。
+<sup><a name="aipnote4"></a>4</sup> Information Rights Management と SharePoint Online (IRM で保護されたサイトとライブラリ) の組み合わせは現在使用できません。
 
-<sup><a name="aipnote4" /></a>4</sup> Information Rights Management と SharePoint Online (IRM で保護されたサイトとライブラリ) の組み合わせは現在使用できません。
+<sup><a name="aipnote5"></a>5</sup> Information Rights Management (IRM) は、Professional Plus (ProPlus) および Click-to-Run (C2R) のバージョンを含む、Microsoft 365 Apps (バージョン 9126.1001 以降) に対してのみサポートされます。 Office 2010、Office 2013、その他の Office 2016 バージョンではサポートされていません。
 
-<sup><a name="aipnote5" /></a>5</sup> Information Rights Management (IRM) は、Professional Plus (ProPlus) および Click-to-Run (C2R) のバージョンを含む、Microsoft 365 Apps (バージョン 9126.1001 以降) に対してのみサポートされます。 Office 2010、Office 2013、その他の Office 2016 バージョンではサポートされていません。
+<sup><a name="aipnote6"></a> 6</sup>政府機関のクラウドから商用クラウド内のユーザーへの保護されたドキュメントと電子メールを共有することは、現在できません。 商用クラウド内の Microsoft 365 Apps ユーザー、商用クラウド内の Microsoft 365 Apps 以外のユーザー、および個人向け RMS ライセンスを持つユーザーが含まれます。
 
-<sup><a name="aipnote6" /></a> 6</sup>政府機関のクラウドから商用クラウド内のユーザーへの保護されたドキュメントと電子メールを共有することは、現在できません。 商用クラウド内の Microsoft 365 Apps ユーザー、商用クラウド内の Microsoft 365 Apps 以外のユーザー、および個人向け RMS ライセンスを持つユーザーが含まれます。
+<sup><a name="aipnote7"></a>7</sup> Microsoft 365 セキュリティ/コンプライアンス センターでの[機密情報の種類](/microsoft-365/compliance/sensitive-information-type-entity-definitions)の数は、リージョンによって異なる場合があります。
 
-<sup><a name="aipnote7" /></a>7</sup> Microsoft 365 セキュリティ/コンプライアンス センターでの[機密情報の種類](/microsoft-365/compliance/sensitive-information-type-entity-definitions)の数は、リージョンによって異なる場合があります。
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-## <a name="azure-security-center"></a>Azure Security Center
+Microsoft Defender for Cloud は、データ センターのセキュリティ体制を強化する統合インフラストラクチャ セキュリティ管理システムです。Azure 内かどうかにかかわらずクラウド内とオンプレミス上のハイブリッド ワークロード全体を保護する高度な脅威防止機能があります。
 
-Azure Security Center は、データ センターのセキュリティ体制を強化する統合インフラストラクチャ セキュリティ管理システムです。Azure 内かどうかにかかわらずクラウド内とオンプレミス上のハイブリッド ワークロード全体を保護する高度な脅威防止機能があります。
+詳細については、[Microsoft Defender for Cloud 製品ドキュメント](../../security-center/security-center-introduction.md)を参照してください。
 
-詳細については、[Azure Security Center 製品のドキュメント](../../security-center/security-center-introduction.md)を参照してください。
+次の表は、Azure および Azure Government の現在の Defender for Cloud 機能の可用性を示します。
 
-次の表は、Azure および Azure Government の現在の Security Center の可用性を示します。
+| 機能とサービス                                                                                                                                                                  | Azure          | Azure Government               |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|
+| **Microsoft Defender for Cloud の無料機能**                                                                                                                                                |                |                                |
+| <li> [連続エクスポート](../../security-center/continuous-export.md)                                                                                                             | GA             | GA                             |
+| <li> [ワークフローの自動化](../../security-center/continuous-export.md)                                                                                                           | GA             | GA                             |
+| <li> [推奨事項の除外規則](../../security-center/exempt-resource.md)                                                                                                  | パブリック プレビュー | 利用不可                  |
+| <li> [アラートの抑制ルール](../../security-center/alerts-suppression-rules.md)                                                                                                | GA             | GA                             |
+| <li> [セキュリティ アラートのメール通知](../../security-center/security-center-provide-security-contact-details.md)                                                        | GA             | GA                             |
+| <li> [エージェントと拡張機能の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)                                                              | GA             | GA                             |
+| <li> [資産インベントリ](../../security-center/asset-inventory.md)                                                                                                                 | GA             | GA                             |
+| <li> [Microsoft Defender for Cloud のブック ギャラリーの Azure Monitor ブック レポート](../../security-center/custom-dashboards-azure-workbooks.md)                                  | GA             | GA                             |
+| **Microsoft Defender のプランと拡張機能**                                                                                                                                          |                |                                |
+| <li> [Microsoft Defender for servers](../../security-center/defender-for-servers-introduction.md)                                                                                    | GA             | GA                             |
+| <li> [Microsoft Defender for App Service](../../security-center/defender-for-app-service-introduction.md)                                                                            | GA             | 利用不可                  |
+| <li> [Microsoft Defender for DNS](../../security-center/defender-for-dns-introduction.md)                                                                                            | GA             | GA                             |
+| <li> [コンテナー レジストリ用 Microsoft Defender](../../security-center/defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> |
+| <li> [CI/CD ワークフロー内の画像をスキャンするコンテナー レジストリ用 Microsoft Defender](../../security-center/defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | パブリック プレビュー | 利用不可                  |
+| <li> [Microsoft Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             |
+| <li> [Azure Arc 対応 Kubernetes クラスター用 Defender 拡張機能](../../security-center/defender-for-kubernetes-azure-arc.md) <sup>[5](#footnote5)</sup>                 | パブリック プレビュー | 利用不可                  |
+| <li> [Azure SQL データベース サーバー用 Microsoft Defender](../../security-center/defender-for-sql-introduction.md)                                                                     | GA             | GA                             |
+| <li> [Microsoft Defender for SQL servers on machines](../../security-center/defender-for-sql-introduction.md)                                                                        | GA             | GA                             |
+| <li> [オープンソース リレーショナル データベース用 Microsoft Defender](../../security-center/defender-for-databases-introduction.md)                                                         | GA             | 利用不可                  |
+| <li> [Microsoft Defender for Key Vault](../../security-center/defender-for-key-vault-introduction.md)                                                                                | GA             | 利用不可                  |
+| <li> [Microsoft Defender for Resource Manager](../../security-center/defender-for-resource-manager-introduction.md)                                                                  | GA             | GA                             |
+| <li> [Microsoft Defender for Storage](../../security-center/defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             |
+| <li> [Threat protection for Cosmos DB](../../security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                          | パブリック プレビュー | 利用不可                  |
+| <li> [Kubernetes ワークロード保護](../../security-center/kubernetes-workload-protections.md)                                                                                  | GA             | GA                             |
+| <li> [Sentinel との双方向アラート同期](../../sentinel/connect-azure-security-center.md)                                                                       | パブリック プレビュー | 利用不可                  |
+| **Microsoft Defender for servers の機能** <sup>[7](#footnote7)</sup>                                                                                                               |                |                                |
+| <li> [Just In Time VM アクセス](../../security-center/security-center-just-in-time.md)                                                                                             | GA             | GA                             |
+| <li> [ファイルの整合性の監視](../../security-center/security-center-file-integrity-monitoring.md)                                                                             | GA             | GA                             |
+| <li> [アダプティブ アプリケーション制御](../../security-center/security-center-adaptive-application.md)                                                                              | GA             | GA                             |
+| <li> [アダプティブ ネットワークのセキュリティ強化機能](../../security-center/security-center-adaptive-network-hardening.md)                                                                           | GA             | 利用不可                  |
+| <li> [Docker ホストのセキュリティ強化機能](../../security-center/harden-docker-hosts.md)                                                                                                       | GA             | GA                             |
+| <li> [マシンに対する統合された脆弱性評価](../../security-center/deploy-vulnerability-assessment-vm.md)                                                             | GA             | 利用不可                  |
+| <li> [規制へのコンプライアンス ダッシュボードおよびレポート](../../security-center/security-center-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             |
+| <li> [Microsoft Defender for Endpoint のデプロイと統合ライセンス](../../security-center/security-center-wdatp.md)                                                         | GA             | GA                             |
+| <li> [AWS アカウントを接続する](../../security-center/quickstart-onboard-aws.md)                                                                                                      | GA             | 利用不可                  |
+| <li> [GCP アカウントを接続する](../../security-center/quickstart-onboard-gcp.md)                                                                                                      | GA             | 利用不可                  |
+|                                                                                                                                                                                  |                |                                |
 
+<sup><a name="footnote1"></a>1</sup> 部分的に GA: 脆弱性スキャンで発見された特定の項目を無効にする機能はパブリック プレビュー段階です。
 
-| 機能とサービス                                                                                                                                                               | Azure          | Azure Government               |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|
-| **Security Center の無料機能**                                                                                                                                             |                |                                |
-| - [連続エクスポート](../../security-center/continuous-export.md)                                                                                                             | GA             | GA                             |
-| - [ワークフローの自動化](../../security-center/continuous-export.md)                                                                                                           | GA             | GA                             |
-| - [推奨事項の除外規則](../../security-center/exempt-resource.md)                                                                                                  | パブリック プレビュー | 利用不可                  | 
-| - [アラートの抑制ルール](../../security-center/alerts-suppression-rules.md)                                                                                                | GA             | GA                             | 
-| - [セキュリティ アラートのメール通知](../../security-center/security-center-provide-security-contact-details.md)                                                        | GA             | GA                             | 
-| - [エージェントと拡張機能の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)                                                              | GA             | GA                             | 
-| - [資産インベントリ](../../security-center/asset-inventory.md)                                                                                                                 | GA             | GA                             | 
-| - [Azure Security Center のブック ギャラリーの Azure Monitor ブック レポート](../../security-center/custom-dashboards-azure-workbooks.md)                                  | GA             | GA                             | 
-| **Azure Defender のプランと拡張機能**                                                                                                                                       |                |                                | 
-| - [Azure Defender for servers](../../security-center/defender-for-servers-introduction.md)                                                                                    | GA             | GA                             | 
-| - [Azure Defender for App Service](../../security-center/defender-for-app-service-introduction.md)                                                                            | GA             | 利用不可                  | 
-| - [Azure Defender for DNS](../../security-center/defender-for-dns-introduction.md)                                                                                            | GA             | GA                             | 
-| - [コンテナー レジストリ用 Azure Defender](../../security-center/defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> | 
-| - [CI/CD ワークフロー内の画像をスキャンするコンテナー レジストリ用 Azure Defender](../../security-center/defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | パブリック プレビュー | 利用不可                  | 
-| - [Azure Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             | 
-| - [Azure Arc 対応 Kubernetes クラスター用 Azure Defender 拡張機能](../../security-center/defender-for-kubernetes-azure-arc.md) <sup>[5](#footnote5)</sup>                 | パブリック プレビュー | 利用不可                  | 
-| - [Azure SQL データベース サーバー用 Azure Defender](../../security-center/defender-for-sql-introduction.md)                                                                     | GA             | GA                             | 
-| - [Azure Defender for SQL servers on machines](../../security-center/defender-for-sql-introduction.md)                                                                        | GA             | GA                             |
-| - [オープンソース リレーショナル データベース用 Azure Defender](../../security-center/defender-for-databases-introduction.md)                                                         | GA             | 利用不可                  |
-| - [Azure Defender for Key Vault](../../security-center/defender-for-key-vault-introduction.md)                                                                                | GA             | 利用不可                  |
-| - [Azure Defender for Resource Manager](../../security-center/defender-for-resource-manager-introduction.md)                                                                  | GA             | GA                             |
-| - [Azure Defender for Storage](../../security-center/defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             |
-| - [Threat protection for Cosmos DB](../../security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                          | パブリック プレビュー | 利用不可                  |
-| - [Kubernetes ワークロード保護](../../security-center/kubernetes-workload-protections.md)                                                                                  | GA             | GA                             |
-| - [Sentinel との双方向アラート同期](../../sentinel/connect-azure-security-center.md)                                                                       | パブリック プレビュー | 利用不可                  | 
-| **Azure Defender for servers features** <sup>[7](#footnote7)</sup>                                                                                                            |                |                                |
-| - [Just-In-Time VM アクセス](../../security-center/security-center-just-in-time.md)                                                                                             | GA             | GA                             |
-| - [ファイルの整合性の監視](../../security-center/security-center-file-integrity-monitoring.md)                                                                             | GA             | GA                             |
-| - [適応型アプリケーション制御](../../security-center/security-center-adaptive-application.md)                                                                              | GA             | GA                             |
-| - [アダプティブ ネットワークのセキュリティ強化機能](../../security-center/security-center-adaptive-network-hardening.md)                                                                           | GA             | 利用不可                  |
-| - [Docker ホストのセキュリティ強化機能](../../security-center/harden-docker-hosts.md)                                                                                                       | GA             | GA                             |
-| - [マシンに対する統合された脆弱性評価](../../security-center/deploy-vulnerability-assessment-vm.md)                                                             | GA             | 利用不可                  |
-| - [規制へのコンプライアンス ダッシュボードおよびレポート](../../security-center/security-center-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             |
-| - [Microsoft Defender for Endpoint のデプロイと統合ライセンス](../../security-center/security-center-wdatp.md)                                                         | GA             | GA                             |
-| - [AWS アカウントを接続する](../../security-center/quickstart-onboard-aws.md)                                                                                                      | GA             | 利用不可                  |
-| - [GCP アカウントを接続する](../../security-center/quickstart-onboard-gcp.md)                                                                                                      | GA             | 利用不可                  |
-|                                                                                                                                                                               |                |                                |
+<sup><a name="footnote2"></a>2</sup> Azure Gov 上のコンテナー レジストリの脆弱性スキャンは、スキャン オン プッシュ機能でのみ実行できます。
 
-<sup><a name="footnote1" /></a>1</sup> 部分的に GA: 脆弱性スキャンで発見された特定の項目を無効にする機能はパブリック プレビュー段階です。
+<sup><a name="footnote3"></a>3</sup> コンテナー レジストリ用 Microsoft Defender が必要です。
 
-<sup><a name="footnote2" /></a>2</sup> Azure Gov 上のコンテナー レジストリの脆弱性スキャンは、スキャン オン プッシュ機能でのみ実行できます。
+<sup><a name="footnote4"></a>4</sup> 部分的に GA: Azure Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
 
-<sup><a name="footnote3" /></a>3</sup> コンテナー レジストリ用 Azure Defender が必要です。
+<sup><a name="footnote5"></a>5</sup> Microsoft Defender for Kubernetes が必要です。
 
-<sup><a name="footnote4" /></a>4</sup> 部分的に GA: Azure Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
+<sup><a name="footnote6"></a>6</sup> 部分的に GA: Microsoft Defender for Storage の脅威保護アラートの一部はパブリック プレビュー段階です。
 
-<sup><a name="footnote5" /></a>5</sup> Azure Defender for Kubernetes が必要です。
+<sup><a name="footnote7"></a>7</sup> これらの機能には、すべて [Microsoft Defender for servers](../../security-center/defender-for-servers-introduction.md) が必要です。
 
-<sup><a name="footnote6" /></a>6</sup> 部分的に GA: Azure Defender for Storage の脅威保護アラートの一部はパブリック プレビュー段階です。
+<sup><a name="footnote8"></a>8</sup> クラウドの種類ごとに提供される標準が異なる場合があります。
 
-<sup><a name="footnote7" /></a>7</sup> これらの機能には、すべて [Azure Defender for servers](../../security-center/defender-for-servers-introduction.md) が必要です。
+<a name="azure-sentinel"></a>
 
-<sup><a name="footnote8" /></a>8</sup> クラウドの種類ごとに提供される標準が異なる場合があります。
+## <a name="microsoft-sentinel"></a>Microsoft Sentinel
 
-## <a name="azure-sentinel"></a>Azure Sentinel
+Microsoft Sentinel は、スケーラブルでクラウドネイティブのセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Microsoft Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。
 
-Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型のセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。
+詳細については、[Microsoft Sentinel 製品ドキュメント](../../sentinel/overview.md)を参照してください。
 
-詳細については、[Azure Sentinel 製品のドキュメント](../../sentinel/overview.md)を参照してください。
-
-次の表に、Azure と Azure Government での現在の Azure Sentinel 機能の利用可能性を示しています。
-
+次の表に、Azure と Azure Government での現在の Microsoft Sentinel 機能の利用可能性を示しています。
 
 | 機能 | Azure | Azure Government  |
 | ----- | ----- | ---- |
@@ -236,8 +234,8 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 | - [Azure Active Directory](../../sentinel/connect-azure-active-directory.md) | GA | GA |
 | - [Azure ADIP](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection) | GA | GA |
 | - [Azure DDoS Protection](../../sentinel/data-connectors-reference.md#azure-ddos-protection) | GA | GA |
-| - [Azure Defender](../../sentinel/connect-azure-security-center.md) | GA | GA |
-| - [Azure Defender for IoT](../../sentinel/data-connectors-reference.md#azure-defender-for-iot) | パブリック プレビュー | 利用不可 |
+| - [Microsoft Defender for Cloud](../../sentinel/connect-azure-security-center.md) | GA | GA |
+| - [Microsoft Defender for IoT](../../sentinel/data-connectors-reference.md#microsoft-defender-for-iot) | パブリック プレビュー | 利用不可 |
 | - [Azure Firewall ](../../sentinel/data-connectors-reference.md#azure-firewall) | GA | GA |
 | - [Azure Information Protection](../../sentinel/data-connectors-reference.md#azure-information-protection) | パブリック プレビュー | 利用不可 |
 | - [Azure Key Vault ](../../sentinel/data-connectors-reference.md#azure-key-vault) | パブリック プレビュー | 利用不可 |
@@ -322,8 +320,7 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 | - [Zscaler](../../sentinel/data-connectors-reference.md#zscaler)                                         | GA             | GA             |
 | | | |
 
-
-<sup><a name="footnote1" /></a>1</sup> SSH および RDP 検出は、ソブリン クラウドでは Databricks ML プラットフォームを使用できないため、サポートされていません。
+<sup><a name="footnote1"></a>1</sup> SSH および RDP 検出は、ソブリン クラウドでは Databricks ML プラットフォームを使用できないため、サポートされていません。
 
 ### <a name="microsoft-365-data-connectors"></a>Microsoft 365 データ コネクタ
 
@@ -343,15 +340,15 @@ Office 365 GCC は、Azure の Azure Active Directory (Azure AD) とペアにな
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | 利用不可 |
 | - Office 365 DoD | - | 利用不可 |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)** |  |  |
+| **[Microsoft Defender for Cloud Apps](../../sentinel/data-connectors-reference.md#microsoft-defender-for-cloud-apps)** |  |  |
 | - Office 365 GCC | GA | - |
 | - Office 365 GCC High | - | GA |
 | - Office 365 DoD | - | GA |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)** <br>シャドウ IT ログ |  |  |
+| **[Microsoft Defender for Cloud Apps](../../sentinel/data-connectors-reference.md#microsoft-defender-for-cloud-apps)** <br>シャドウ IT ログ |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | パブリック プレビュー |
 | - Office 365 DoD | - | パブリック プレビュー |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)**                  <br>警告 |  |  |
+| **[Microsoft Defender for Cloud Apps](../../sentinel/data-connectors-reference.md#microsoft-defender-for-cloud-apps)**                  <br>警告 |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | パブリック プレビュー |
 | - Office 365 DoD | - | パブリック プレビュー |
@@ -373,11 +370,13 @@ Office 365 GCC は、Azure の Azure Active Directory (Azure AD) とペアにな
 | - Office 365 DoD | - | GA |
 |  |  |
 
-## <a name="azure-defender-for-iot"></a>Azure Defender for IoT
+<a name="azure-defender-for-iot"></a>
 
-Azure Defender for IoT を使用すると、IoT/OT デバイス全体にわたって包括的なセキュリティを利用して、IoT/OT イノベーションを加速させることができます。エンド ユーザー組織のためには、Azure Defender for IoT からは、エージェントがなく、短期間でデプロイされるネットワーク層セキュリティが提供されます。また、さまざまな産業用機器と連動し、Azure Sentinel やその他の SOC ツールと相互運用されます。 オンプレミスまたは Azure が接続されている環境でデプロイします。IoT デバイス ビルダーについては、Azure Defender for IoT セキュリティ エージェントを使用すると、新しい IoT デバイスと Azure IoT プロジェクトにセキュリティを直接組み込むことができます。 マイクロ エージェントには、バイナリ パッケージとしてデプロイする機能やソース コードを変更する機能など、柔軟なデプロイ オプションが用意されています。 また、マイクロ エージェントは、Linux や Azure RTOS などの標準的な IoT オペレーティング システムで利用できます。 詳細については、[Azure Defender for IoT のドキュメント](../../defender-for-iot/index.yml)を参照してください。
+## <a name="microsoft-defender-for-iot"></a>Microsoft Defender for IoT
 
-次の表は、Azure および Azure Government の現在の Azure Defender for IoT 機能の可用性を示します。
+Microsoft Defender for IoT を使用すると、IoT/OT デバイス全体にわたって包括的なセキュリティを利用して、IoT/OT イノベーションを加速させることができます。 エンド ユーザー組織のためには、Microsoft Defender for IoT からは、エージェントがなく、短期間でデプロイされるネットワーク層セキュリティが提供されます。また、さまざまな産業用機器と連動し、Microsoft Sentinel やその他の SOC ツールと相互運用されます。 オンプレミスまたは Azure が接続されている環境でデプロイします。 IoT デバイス ビルダーについては、Microsoft Defender for IoT セキュリティ エージェントを使用すると、新しい IoT デバイスと Azure IoT プロジェクトにセキュリティを直接組み込むことができます。 マイクロ エージェントには、バイナリ パッケージとしてデプロイする機能やソース コードを変更する機能など、柔軟なデプロイ オプションが用意されています。 また、マイクロ エージェントは、Linux や Azure RTOS などの標準的な IoT オペレーティング システムで利用できます。 詳細については、[Microsoft Defender for IoT 製品ドキュメント](../../defender-for-iot/index.yml)を参照してください。
+
+次の表は、Azure および Azure Government の現在の Microsoft Defender for IoT 機能の可用性を示します。
 
 ### <a name="for-organizations"></a>組織向け
 
@@ -413,7 +412,7 @@ Azure Defender for IoT を使用すると、IoT/OT デバイス全体にわた�
 | 機能 | Azure | Azure Government |
 |--|--|--|
 | [Azure RTOS 用マイクロ エージェント](../../defender-for-iot/iot-security-azure-rtos.md) | GA | GA |
-| [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | パブリック プレビュー | パブリック プレビュー |
+| [Microsoft Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | パブリック プレビュー | パブリック プレビュー |
 | **スタンドアロンのマイクロ エージェント for Linux** |  |  |
 | [スタンドアロン エージェントのバイナリ インストール](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | パブリック プレビュー | パブリック プレビュー |
 

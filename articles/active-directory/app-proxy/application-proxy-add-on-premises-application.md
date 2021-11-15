@@ -12,12 +12,12 @@ ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: ashishj
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: e561b34ae624b800d65885999f7029235fce31b6
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e9b8f17429c0cfead600361b60e2f752110a23ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990389"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444309"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -65,6 +65,7 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 > ```
 >
 > キーは、PowerShell で次のコマンドを使用して設定できます。
+>
 > ```
 > Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
 > ```
@@ -101,7 +102,7 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 1. サーバーを再起動します。
 
-> [!Note]
+> [!NOTE]
 > Microsoft では、異なるルート証明機関 (CA) のセットからの TLS 証明書を使用するように、Azure サービスが更新されています。 この変更は、現在の CA 証明書が CA/ブラウザー フォーラムのベースライン要件の 1 つに準拠していないため行われています。 詳細については、「[Azure TLS 証明書の変更](../../security/fundamentals/tls-certificate-changes.md)」を参照してください。
 
 ## <a name="prepare-your-on-premises-environment"></a>オンプレミスの環境を準備する
@@ -109,7 +110,7 @@ TLS 1.2 を有効にするには、次の手順に従います。
 Azure AD アプリケーション プロキシの環境を準備するには、まず Azure データ センターへの通信を有効にします。 パスにファイアウォールがある場合、それが開かれていることを確認します。 ファイアウォールが開かれていることで、コネクタによるアプリケーション プロキシへの HTTPS (TCP) 要求が可能になります。
 
 > [!IMPORTANT]
-> Azure Government クラウドのコネクタをインストールする場合は、[前提条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) と [インストール手順](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)に従います。 これには、別の URL のセットへのアクセスを有効にし、インストールを実行するための追加のパラメーターが必要です。
+> Azure Government クラウドのコネクタをインストールする場合は、[前提条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)と[インストール手順](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)に関する記事に従ってください。 これには、別の URL のセットへのアクセスを有効にし、インストールを実行するための追加のパラメーターが必要です。
 
 ### <a name="open-ports"></a>ポートを開く
 
@@ -127,19 +128,20 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 次の URL へのアクセスを許可します。
 
 | URL | Port | 用途 |
-| ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
-| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net         | 443/HTTPS | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP   | コネクタでは、証明書の検証にこれらの URL が使用されます。        |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
-| ctldl.windowsupdate.com                                      | 80/HTTP   | コネクタでは、登録プロセスの間にこの URL が使用されます。 |
+| --- | --- | --- |
+| `*.msappproxy.net` <br> `*.servicebus.windows.net` | 443/HTTPS | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
+| `crl3.digicert.com` <br> `crl4.digicert.com` <br> `ocsp.digicert.com` <br> `crl.microsoft.com` <br> `oneocsp.microsoft.com` <br> `ocsp.msocsp.com`<br> | 80/HTTP   | コネクタでは、証明書の検証にこれらの URL が使用されます。        |
+| `login.windows.net` <br> `secure.aadcdn.microsoftonline-p.com` <br> `*.microsoftonline.com` <br> `*.microsoftonline-p.com` <br> `*.msauth.net` <br> `*.msauthimages.net` <br> `*.msecnd.net` <br> `*.msftauth.net` <br> `*.msftauthimages.net` <br> `*.phonefactor.net` <br> `enterpriseregistration.windows.net` <br> `management.azure.com` <br> `policykeyservice.dc.ad.msft.net` <br> `ctldl.windowsupdate.com` <br> `www.microsoft.com/pkiops` | 443/HTTPS | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| `ctldl.windowsupdate.com` | 80/HTTP | コネクタでは、登録プロセスの間にこの URL が使用されます。 |
 
-ファイアウォールまたはプロキシでドメインのサフィックスに基づいてアクセス規則を構成できる場合は、上記の &ast;.msappproxy.net、&ast;.servicebus.windows.net などの URL への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+ファイアウォールまたはプロキシでドメインのサフィックスに基づいてアクセス規則を構成できる場合は、上記の `*.msappproxy.net`、`*.servicebus.windows.net`、およびその他の URL への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+
 > [!IMPORTANT]
 > Azure AD アプリケーション プロキシ コネクタと Azure AD アプリケーション プロキシ クラウド サービスの間の送信 TLS 通信に対しては、いかなる形式のインライン検査および終了も行わないでください。
 
 ### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Azure AD アプリケーション プロキシ エンドポイントの DNS 名前解決
 
-Azure AD アプリケーション プロキシ エンドポイントのパブリック DNS レコードは、A レコードを指すチェーン CNAME レコードです。 これにより、フォールト トレランスと柔軟性が確保されます。 Azure AD アプリケーション プロキシ コネクタは、ドメイン サフィックス _*.msappproxy.net_ または _*.servicebus.windows.net_ が付いているホスト名に常にアクセスすることが保証されています。 ただし、名前解決の際に、CNAME レコードには、異なるホスト名やサフィックスが付いた DNS レコードが含まれている場合があります。  このため、デバイス (設定に応じて、コネクタ サーバー、ファイアウォール、アウトバウンド プロキシ) がチェーン内のすべてのレコードを解決し、解決された IP アドレスに確実に接続できるようにする必要があります。 チェーン内の DNS レコードは随時変更される可能性があるため、DNS レコードの一覧をご提供することはできません。
+Azure AD アプリケーション プロキシ エンドポイントのパブリック DNS レコードは、A レコードを指すチェーン CNAME レコードです。 これにより、フォールト トレランスと柔軟性が確保されます。 Azure AD アプリケーション プロキシ コネクタは、ドメイン サフィックス `*.msappproxy.net` または `*.servicebus.windows.net` が付いているホスト名に常にアクセスすることが保証されています。 ただし、名前解決の際に、CNAME レコードには、異なるホスト名やサフィックスが付いた DNS レコードが含まれる場合があります。 このため、デバイス (設定に応じて、コネクタ サーバー、ファイアウォール、アウトバウンド プロキシ) がチェーン内のすべてのレコードを解決し、解決された IP アドレスに確実に接続できるようにする必要があります。 チェーン内の DNS レコードは随時変更される可能性があるため、DNS レコードの一覧をご提供することはできません。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 
@@ -148,7 +150,7 @@ Azure AD アプリケーション プロキシ エンドポイントのパブリ
 
 コネクタをインストールするには:
 
-1. アプリケーション プロキシを使用するディレクトリのアプリケーション管理者として、[Azure portal](https://portal.azure.com/) にサインインします。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の管理者エイリアスであることが必要です。
+1. アプリケーション プロキシを使用するディレクトリのアプリケーション管理者として、[Azure portal](https://portal.azure.com/) にサインインします。 たとえば、テナントのドメインが `contoso.com` の場合、管理者は `admin@contoso.com`、またはそのドメイン上の他の管理者エイリアスであることが必要です。
 1. 右上隅で自分のユーザー名を選択します。 アプリケーション プロキシを使用するディレクトリにサインインしていることを確認します。 ディレクトリを変更する必要がある場合は、 **[ディレクトリの切り替え]** を選択し、アプリケーション プロキシを使用するディレクトリを選択します。
 1. 左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
 1. **[管理]** で、 **[アプリケーション プロキシ]** を選択します。
@@ -216,7 +218,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | フィールド  | 説明 |
     | :--------------------- | :----------------------------------------------------------- |
     | **名前** | [マイ アプリ] および Azure portal に表示されるアプリケーションの名前。 |
-    | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリケーションが https:\//yourapp/app にあり、https:\//yourapp/media にある画像を使用する場合は、パスとして https:\//yourapp/ を発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
+    | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリが `https://yourapp/app` にあり、 `https://yourapp/media` にあるイメージを使用している場合、 `https://yourapp/` をパスとして発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
     | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](./application-proxy-configure-custom-domain.md)に関する記事を参照してください。 |
     | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication など、Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure AD に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
     | **コネクタ グループ** | コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。<br><br>アプリケーションで接続に Websocket を使用する場合は、グループ内のすべてのコネクタがバージョン 1.5.612.0 以降である必要があります。 |

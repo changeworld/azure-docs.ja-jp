@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 7fbe4e45e48d3416f530b6845faf702959f92463
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: aaddev
+ms.openlocfilehash: 1e12b2d9512bd7c62a2657e13e74790af6556cd4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067339"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507761"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
@@ -221,7 +221,7 @@ Apple では、App Store からバンドル ID を簡単に取得する方法は
 
 #### <a name="allow-users-to-sign-in-from-unknown-applications-and-the-safari-browser"></a>不明なアプリケーションおよび Safari ブラウザーからユーザーがサインインできるようにする
 
-既定では、Microsoft Enterprise SSO プラグインは、MSAL や Azure Active Directory 認証ライブラリ (ADAL) などの Microsoft ID プラットフォーム ライブラリを使用するアプリからユーザーがサインインした場合にのみ、許可されたアプリに対する SSO を提供します。 Microsoft Enterprise SSO プラグインは、新しいトークンの取得中に Microsoft ID プラットフォーム ライブラリを使用する別のアプリによって呼び出されたときに、共有資格情報を取得することもできます。
+既定では、Microsoft Enterprise SSO プラグインでは、MSAL などの Microsoft ID プラットフォーム ライブラリを使用しているアプリからユーザーがサインインしたときにのみ、認証されたアプリに対するシングル サインオンを実行します。 Microsoft Enterprise SSO プラグインは、新しいトークンの取得中に Microsoft ID プラットフォーム ライブラリを使用する別のアプリによって呼び出されたときに、共有資格情報を取得することもできます。
 
 `browser_sso_interaction_enabled` フラグを有効にすると、Microsoft ID プラットフォーム ライブラリを使用していないアプリで、初期ブートストラップを実行して共有資格情報を取得できるようになります。 Safari ブラウザーでも、初期ブートストラップを実行して共有資格情報を取得できるようになります。 
 

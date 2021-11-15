@@ -2,13 +2,13 @@
 title: App Service、Functions、および Logic Apps 用に Azure Arc セットアップする
 description: ご使用の Azure Arc 対応 Kubernetes クラスターに対して、App Service アプリ、Functions Apps、Logic Apps を有効にする方法を学習します。
 ms.topic: article
-ms.date: 08/17/2021
-ms.openlocfilehash: f0594458f65fbd14bc50540148d5ea68d15fbdbd
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.openlocfilehash: a330d68ed556a60261ca91e6bfb32fdddf52dc14
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707116"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435588"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
 
@@ -31,7 +31,6 @@ Azure アカウントを持っていない場合は、無料アカウントを[�
 Set the following environment variables based on your Kubernetes cluster deployment:
 
 ```bash
-staticIp="<public-ip-address-of-the-kubernetes-cluster>"
 aksClusterGroupName="<name-resource-group-with-aks-cluster>"
 groupName="<name-of-resource-group-with-the-arc-connected-cluster>"
 clusterName="<name-of-arc-connected-cluster>"
@@ -54,7 +53,7 @@ az provider register --namespace Microsoft.ExtendedLocation --wait
 az provider register --namespace Microsoft.Web --wait
 az provider register --namespace Microsoft.KubernetesConfiguration --wait
 az extension remove --name appservice-kube
-az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
+az extension add --upgrade --yes --name appservice-kube
 ```
 
 ## <a name="create-a-connected-cluster"></a>接続されているクラスターを作成する
@@ -74,8 +73,6 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
     az group create -g $aksClusterGroupName -l $resourceLocation
     az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
     infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
-    az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
-    staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -87,9 +84,6 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 
     az group create -g $aksClusterGroupName -l $resourceLocation
     az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
-    $infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
-    az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
-    $staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
     ```
 
     ---
@@ -255,7 +249,6 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" \
         --configuration-settings "appsNamespace=${namespace}" \
         --configuration-settings "clusterName=${kubeEnvironmentName}" \
-        --configuration-settings "loadBalancerIp=${staticIp}" \
         --configuration-settings "keda.enabled=true" \
         --configuration-settings "buildService.storageClassName=default" \
         --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" \
@@ -282,7 +275,6 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" `
         --configuration-settings "appsNamespace=${namespace}" `
         --configuration-settings "clusterName=${kubeEnvironmentName}" `
-        --configuration-settings "loadBalancerIp=${staticIp}" `
         --configuration-settings "keda.enabled=true" `
         --configuration-settings "buildService.storageClassName=default" `
         --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" `
@@ -304,15 +296,14 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
     | パラメーター | Description |
     | - | - |
     | `Microsoft.CustomLocation.ServiceAccount` | 作成されるカスタムの場所に対して作成されるサービス アカウント。 この値は `default` に設定することをお勧めします。 |
-    | `appsNamespace` | アプリ定義とポッドをプロビジョニングする名前空間。 拡張機能リリースの名前空間と一致する必要があります。 |
+    | `appsNamespace` | アプリ定義とポッドをプロビジョニングする名前空間。 拡張機能リリースの名前空間と一致する **必要があります**。 |
     | `clusterName` | この拡張機能に対して作成される App Service Kubernetes 環境の名前。 |
-    | `loadBalancerIp` | Kubernetes クラスターのパブリック IP。 App Service アプリは、この IP アドレスでトラフィックを受信します。 また、既定の DNS マッピングも通知します。 |
     | `keda.enabled` | [KEDA](https://keda.sh/) を Kubernetes クラスターにインストールする必要があるかどうか。 `true` または `false` を指定できます。 |
-    | `buildService.storageClassName` | ビルド成果物を格納するビルド サービスの[ストレージ クラスの名前](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class)。 `default` のような値は、[既定としてマークされているクラス](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)ではなく、`default` という名前のクラスを指定します。 |
+    | `buildService.storageClassName` | ビルド成果物を格納するビルド サービスの[ストレージ クラスの名前](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class)。 `default` のような値は、[既定としてマークされているクラス](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)ではなく、`default` という名前のクラスを指定します。  既定は AKS と AKS HCI の有効なストレージ クラスですが、他のディストリビューションやプラットフォームでは有効でない場合があります。 |
     | `buildService.storageAccessMode` | 上記で指定されたストレージ クラスで使用する[アクセス モード](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)。 `ReadWriteOnce` または `ReadWriteMany` を指定できます。 |
     | `customConfigMap` | App Service Kubernetes 環境によって設定される構成マップの名前。 現在、この値は `<namespace>/kube-environment-config` である必要があります。`<namespace>` は、上記の `appsNamespace` の値に置き換えてください。 |
     | `envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group` | Azure Kubernetes Service クラスターが存在するリソース グループの名前。 基盤となるクラスターが Azure Kubernetes Service の場合にのみ、有効かつ必須です。  |
-    | `logProcessor.appLogs.destination` | 省略可能。 `log-analytics` を受け入れます。 |
+    | `logProcessor.appLogs.destination` | 省略可能。 `log-analytics` または `none` を選びます。none を選ぶとプラットフォーム ログは無効になります。 |
     | `logProcessor.appLogs.logAnalyticsConfig.customerId` | `logProcessor.appLogs.destination` が `log-analytics` に設定されている場合にのみ、必須です。 base64 でエンコードされた Log Analytics ワークスペース ID。 このパラメーターは、保護された設定として構成する必要があります。 |
     | `logProcessor.appLogs.logAnalyticsConfig.sharedKey` | `logProcessor.appLogs.destination` が `log-analytics` に設定されている場合にのみ、必須です。 base64 でエンコードされた Log Analytics ワークスペース共有キー。 このパラメーターは、保護された設定として構成する必要があります。 |
     | | |
@@ -456,7 +447,6 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
         --resource-group $groupName \
         --name $kubeEnvironmentName \
         --custom-location $customLocationId \
-        --static-ip $staticIp
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -465,8 +455,7 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
     az appservice kube create `
         --resource-group $groupName `
         --name $kubeEnvironmentName `
-        --custom-location $customLocationId `
-        --static-ip $staticIp
+        --custom-location $customLocationId `      
     ```
 
     ---

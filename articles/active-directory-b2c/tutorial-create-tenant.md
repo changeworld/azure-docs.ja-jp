@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 48577b7625b80954d856d02fcee9e0696393bc55
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0ff64806531f1d99ced2ad2b5747ae73e54114bd
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036259"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505102"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -59,7 +59,7 @@ ms.locfileid: "131036259"
 1. 使用している Azure サブスクリプションのリソース プロバイダーとして **Microsoft.AzureActiveDirectory** を追加します ([詳細](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1))。
 
     1. Azure portal で、 **[サブスクリプション]** を検索して選択します。
-    2. お使いのサブスクリプションを選択し、左側のメニューで **[リソース プロバイダー]** を選択します。 左側にメニューが表示されない場合は、ページの左上にある **[<お使いのサブスクリプションの名前> のメニューを表示する]** アイコンを選択して開きます。
+    2. お使いのサブスクリプションを選択し、左側のメニューで **[リソース プロバイダー]** を選択します。 左側にメニューが表示されない場合は、ページの左上にある **[<お使いのサブスクリプションの名前> のメニューを表示する]** アイコンを選択して展開します。
     3. **Microsoft AzureActiveDirectory** 行に **[登録済み]** の状態が表示されていることを確認します。 そうでない場合は、行を選択して **[登録]** を選択します。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
@@ -85,6 +85,9 @@ ms.locfileid: "131036259"
 1. ディレクトリの設定を確認します。 **[作成]** を選択します。 デプロイ エラーの解決方法については[こちら](../azure-resource-manager/templates/common-deployment-errors.md)をご覧ください。
 
 課金のために、複数の Azure AD B2C テナントを 1 つの Azure サブスクリプションにリンクすることができます。 テナントをリンクするユーザーは、Azure AD B2C テナントの管理者であること、また、Azure サブスクリプション内で共同作成者以上のロールが割り当てられていることが必要です。 「[Azure AD B2C テナントをサブスクリプションにリンクする](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)」を参照してください。
+
+> [!NOTE]
+> Azure AD B2C ディレクトリが作成されるとき、`b2c-extensions-app` というアプリケーションがその新しいディレクトリ内に自動で作成されます。 これを変更したり削除したりしないでください。 このアプリケーションは、ユーザー データを保存するために Azure AD B2C によって使用されます。 Azure AD B2C: Extensions アプリについては、[こちら](extensions-app.md)を参照してください。
 
 ## <a name="select-your-b2c-tenant-directory"></a>B2C テナント ディレクトリを選択する
 

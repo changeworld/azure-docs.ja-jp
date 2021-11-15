@@ -6,15 +6,15 @@ author: agowdamsft
 ms.service: container-service
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 2/08/2021
+ms.date: 11/04/2021
 ms.author: amgowda
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e63e8d2caba6fe9ca5fa7b4a239f2194976dd569
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2c082d901bd2b48b9d220d9b1b373335b295b377
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086515"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845355"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Azure Kubernetes Service 上のコンフィデンシャル コンピューティング ノード
 
@@ -24,7 +24,7 @@ ms.locfileid: "131086515"
 
 Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コンフィデンシャル コンピューティング ノード](confidential-computing-enclaves.md)の追加をサポートします。 これらのノードにより、ハードウェアベースの信頼できる実行環境 (TEE: Trusted Execution Environment ) 内で機密のワークロードを実行できます。 TEE では、コンテナーのユーザーレベルのコードでメモリのプライベート領域を割り当てて、CPU でコードを直接実行できます。 CPU で直接実行されるこれらのプライベート メモリ領域は、エンクレーブと呼ばれます。 エンクレーブは、同じノードで実行されている他のプロセスから、データの機密性、データの整合性、およびコードの整合性を保護するのに役立ちます。 Intel SGX 実行モデルでは、ゲスト OS、ホスト OS、ハイパーバイザーの中間層も削除されるため、攻撃対象領域が小さくなります。 ノード内の "*ハードウェア ベースのコンテナーごとに分離された実行*" モデルによって、コンテナーごとに特殊なメモリ ブロックを暗号化したまま、アプリケーションを CPU で直接実行することができます。 機密コンテナーを使用したコンフィデンシャル コンピューティング ノードは、ゼロ トラスト セキュリティ計画と多層防御コンテナー戦略に対する優れた追加機能です。
 
-![SGX ノードの概要](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
+:::image type="content" source="./media/confidential-nodes-aks-overview/sgx-aks-node.png" alt-text="コードとデータが内部でセキュリティ保護された機密コンテナーを示す、AKS コンフィデンシャル コンピューティング ノードの図。":::
 
 ## <a name="aks-confidential-nodes-features"></a>AKS の機密ノードの機能
 

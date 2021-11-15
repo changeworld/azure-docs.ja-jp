@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ff40238d5b3b666ec6a64fef5b7cc4fc91ee677
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: d2b3707fd3b9b56131d24274555761f616991600
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669418"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508742"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -100,7 +100,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、Azure
 
 ### <a name="on-active-assignment"></a>アクティブな割り当て時
 
-このオプションを選択した場合、管理者は、資格のあるロールの割り当てでなく、アクティブなロールの割り当てを作成する前に、多要素認証を完了する必要があります。 ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で多要素認証を強制することができません。
+このオプションを選択した場合、管理者は、資格のあるロールの割り当てでなく、アクティブなロールの割り当てを作成する前に、多要素認証を完了する必要があります。 ユーザーがロール割り当てをアクティブ化するときに、Privileged Identity Management で多要素認証を強制することはできません。ロールが割り当てられた時点で、ユーザーがロールで既にアクティブになっているためです。
 
 アクティブなロールの割り当てを作成するときに多要素認証を要求するには、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに多要素認証を適用できます。
 
@@ -114,7 +114,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、Azure
 
 ## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
 
-**[アクティブ化の最大期間]** スライダーを使用して、ロールの有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
+**[アクティブ化の最大期間]** スライダーを使用して、ロールの割り当ての有効期限が切れるまでの最大時間 (時間単位) を設定します。 1 から 24 時間の範囲の値を指定できます。
 
 ## <a name="require-justification"></a>理由を必須にする
 

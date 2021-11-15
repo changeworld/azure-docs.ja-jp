@@ -2,14 +2,14 @@
 title: SAP HANA バックアップのサポート マトリックス
 description: この記事では、Azure Backup を使用して Azure VM 上の SAP HANA データベースをバックアップするときにサポートされるシナリオと制限事項について説明します。
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: 09dab8a35c5ed06ec9680b2cb57ca6ac0d27109f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b9d642d0c70b06677aedcce99c1f21ac4b3a7d34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427941"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244542"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -33,6 +33,7 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 | **バックアップの種類**           | 完全バックアップ、差分バックアップ、増分バックアップ、ログ バックアップ                          |  スナップショット                                       |
 | **復元の種類**          | サポートされている復元の種類については、SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照してください |                                                              |
 | **バックアップの制限**          | SAP HANA インスタンスごとに最大 8 TB の完全バックアップ サイズ (ソフト制限)         |                                                              |
+| **1 日あたりの完全バックアップの数**     |   スケジュールされたバックアップが 1 回。  <br><br>   オンデマンド バックアップが 3 回。 <br><br> 1 日に 3 回以上のバックアップをトリガーしないことをお勧めします。 ただし、試行が失敗した場合にユーザーが再試行できるようにするために、オンデマンド バックアップのハード制限は 9 回の試行に設定されます。  |
 | **特殊な構成** |                                                              | SAP HANA + Dynamic Tiering <br>  LaMa を使用した複製        |
 
 ------

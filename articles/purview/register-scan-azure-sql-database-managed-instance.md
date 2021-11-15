@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9c86bb1d8eea79c7094aacebb891305a1af66115
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0f1b570ce00a371a4f30e890eed771fa15c22174
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048218"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841868"
 ---
 # <a name="connect-to-and-manage-an-azure-sql-database-managed-instance-in-azure-purview"></a>Azure Purview で Azure SQL Database Managed Instance に接続して管理する
 
@@ -23,7 +23,9 @@ ms.locfileid: "131048218"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | [Data Factory のデータ系列](how-to-link-azure-data-factory.md) |
+| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | いいえ** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 ## <a name="prerequisites"></a>前提条件
 

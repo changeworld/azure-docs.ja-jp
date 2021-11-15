@@ -2,18 +2,18 @@
 title: Azure Marketplace
 description: EA のお客様が Azure Marketplace を使用する方法について説明します
 author: bandersmsft
-ms.reviewer: baolcsva
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: d7514f4f3b1280bd65eaf8913e4f97f21b92fa28
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f22dd59be380a7535d8bdc724d48152eeec4041f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616443"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244193"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -21,7 +21,7 @@ ms.locfileid: "128616443"
 
 ## <a name="azure-marketplace-for-ea-customers"></a>EA お客様向け Azure Marketplace
 
-ダイレクトのお客様の場合、Azure Marketplace の料金は Azure エンタープライズ ポータルに表示されます。 Azure Marketplace での購入および消費については、Azure 前払いとは別に、四半期ごとまたは月単位で未払い分が請求されます。
+ダイレクトのお客様の場合、Azure Marketplace の料金は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) に表示されます。 Azure Marketplace での購入および消費については、Azure 前払いとは別に、四半期ごとまたは月単位で未払い分が請求されます。 [Azure portal での Azure Marketplace の管理](direct-ea-administration.md#enable-azure-marketplace-purchases)に関する記事をご覧ください。
 
 インダイレクトのお客様は、Azure エンタープライズ ポータルの **[サブスクリプションの管理]** ページで Azure Marketplace のサブスクリプションを確認できますが、価格は非表示になります。 Azure Marketplace の料金については、ライセンス ソリューション プロバイダー (LSP) にお問い合わせください。
 
@@ -52,12 +52,21 @@ LSP は、Azure エンタープライズ ポータルの価格シート ペー�
 
 お客様は Azure エンタープライズ ポータルで加入契約に関連付けることで、ダイレクト Azure サブスクリプションを Azure EA に変換することはできますが、このアクションでは、子のサブスクリプションが自動的に変換されません。
 
-Azure Marketplace での購入を有効にするには、次のようにします。
+Azure Enterprise Portal で Azure Marketplace の購入を有効にするには:
 
 1. エンタープライズ管理者として、Azure エンタープライズ ポータルにサインインします。
 1. **[管理]** に移動します。
 1. **[加入契約の詳細]** で、 **[Azure Marketplace]** 品目の横にある鉛筆アイコンを選択します。
 1. **有効または無効**、あるいは必要に応じて、無料の **BYOL SKU のみ** に切り替えます。
+1. **[保存]** を選択します。
+
+ダイレクトのお客様は、Azure portal での Azure Marketplace の購入を有効にすることができます。
+
+1. Azure portal にサインインします。
+1. **[コストの管理と請求]** に移動します。
+1. 左側のメニューで [課金スコープ] を選択し、課金アカウントのスコープを選択します。
+1. 左側のメニューで **[ポリシー]** を選択します。
+1. [Azure Marketplace] で、ポリシーを **[オン]** に設定します。
 1. **[保存]** を選択します。
 
 > [!NOTE]

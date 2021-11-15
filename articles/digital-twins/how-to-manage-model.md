@@ -1,18 +1,18 @@
 ---
 title: DTDL モデルの管理
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins 内でモデルを作成、編集、および削除する方法を説明します。
+description: Azure Digital Twins 内で DTDL モデルの作成、編集、削除などの管理を行う方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 8/30/2021
+ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2e5c137ceb08bd89dc70026639c6191b1c61f42d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 7ae5a3293b7b9ba4712c3762b18b6d9c66eab926
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223232"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507172"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -97,10 +97,10 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 モデルの更新を行う前に、ソリューション全体を総合的に考察し、行おうとしているモデルの変更による影響を検討することをお勧めします。 Azure Digital Twins ソリューションのモデルは相互接続されることが多いため、1 つのモデルを更新するにはいくつかの他のモデルを更新する必要があるという連鎖的な変更に注意することが重要です。 モデルの更新は、そのモデルを使用するツインに影響し、さらにイングレスおよび処理コード、クライアント アプリケーション、および自動レポートにも影響を与える可能性があります。
 
 モデルの切り替えをスムーズに管理するための推奨事項を次に示します。
-* 個々のモデルの観点から考えるのではなく、モデルとその関係を常に最新の状態に保つために、必要に応じてモデル セット全体を進化させることを検討してください。
+* モデルを個別のエントリと考えるのではなく、モデルとその関係を常に最新の状態に保つために、必要に応じてモデル セット全体を進化させることを検討してください。
 * モデルをソース コードのように扱い、これらをソース コード管理で管理します。 モデルおよびモデルの変更に対し、ソリューション内の他のコードに適用するのと同じ厳格さと注意深さを適用します。
 
-モデルの更新を進める準備ができたら、このセクションの残りの部分では、更新の実装に使用できる方法について説明します。
+モデルの更新プロセスを進める準備ができたら、このセクションの残りの部分では、更新の実装に使用できる方法について説明します。
 
 ### <a name="strategies-for-updating-models"></a>モデルを更新するための方法
 

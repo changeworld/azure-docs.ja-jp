@@ -12,12 +12,12 @@ metadata:
   manager: daveba
   ms.reviewer: michmcla
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 101eec41e463be264f51015c9672b60bd52e0d40
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 083889b09517f8a0462abb7ea0f76e6071a03f95
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124787397"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130233811"
 title: Azure AD Multi-Factor Authentication についてよく寄せられる質問
 summary: >
   この FAQ では、Azure AD Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。
@@ -285,4 +285,11 @@ sections:
 
 
       このエラーを回避するには、管理関連の操作用と管理以外の操作用に異なるユーザー アカウントを使用します。 非管理アカウントを使用して Outlook にサインインできるように、後ほど、管理アカウントと非管理アカウントのメールボックスにリンクを作成することができます。 このソリューションの詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](https://help.outlook.com/141/gg709759.aspx?sl=1)」を参照してください。
+  - question: >
+      エラー コード"LsaLogonUser failed with NTSTATUS -1073741715 for MFA Server (MFA サーバーで LsaLogonUser が NTSTATUS -1073741715 で失敗しました)" のエラーが発生する原因として考えられるものは何ですか?
+    answer: >
+      エラー 1073741715 = ステータス ログオン エラー -> 試行されたログオンが無効。 これは、無効なユーザー名または認証のいずれかが原因です。
+
+
+      このエラーの考えられる理由: 入力されたプライマリ資格情報が正しい場合は、MFA サーバーとドメイン コントローラーでサポートされている NTLM バージョンが一致していない可能性があります。 MFA サーバーでは、NTLMv2 (LmCompatabilityLevel = 5) ではなく NTLMv1 (LmCompatabilityLevel = 1 から 4) のみがサポートされます。
 additionalContent: "## <a name=\"next-steps\"></a>次のステップ\n  ここで質問に対する回答が見つからない場合は、次のサポート オプションをご利用いただけます。\n        \n  * [Microsoft サポート技術情報](https://support.microsoft.com)を検索して、一般的な技術上の問題の解決方法を探します。\n  * このコミュニティで技術的な質問と回答を検索して参照したり、[Azure Active Directory の Q&A](/answers/topics/azure-active-directory.html) で独自の質問を投稿したりできます。\n  * さらにサポートが必要な場合は、[Azure Multi-Factor Authentication Server サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)を通して、サポートのプロに問い合わせてください。 お問い合わせの際は、問題に関する情報をできるだけお知らせいただくと役に立ちます。 エラーが表示されたページ、具体的なエラー コード、具体的な ID、エラーが表示されたユーザーの ID などの情報をご提供ください。\n  * 従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、[phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) のメール アドレスを使用してサポート ケースを開いてください。"

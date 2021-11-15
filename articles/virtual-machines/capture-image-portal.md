@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 06/21/2021
 ms.author: cynthn
 ms.custom: portal
-ms.openlocfilehash: b9218f6eebedd8f94c06a664518fc718f0eb7d19
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: bfab2d65de8b15ac72fe3c3b536b76ef14f046b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992119"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437298"
 ---
 # <a name="create-an-image-of-a-vm-in-the-portal"></a>ポータルで VM のイメージを作成する
 
 VM からイメージを作成し、それを使用して複数の VM を作成できます。
 
-Shared Image Gallery に格納されているイメージの場合、アカウントが既に作成されている VM を使用することも (特殊化)、イメージを作成する前に VM を一般化して、マシン アカウントや他のマシン固有の情報を削除することもできます。 VM を一般化するには、[Windows VM の一般化](generalize.md)に関するページ参照してください。 詳細については、「[一般化されたイメージと特殊化されたイメージ](shared-image-galleries.md#generalized-and-specialized-images)」を参照してください。
+Azure Compute Gallery (旧称 Shared Image Gallery) に格納されているイメージの場合、アカウントが既に作成されている VM を使用することも (特殊化)、イメージを作成する前に VM を一般化して、マシン アカウントや他のマシン固有の情報を削除することもできます。 VM を一般化するには、[Windows VM の一般化](generalize.md)に関するページ参照してください。 詳細については、「[一般化されたイメージと特殊化されたイメージ](shared-image-galleries.md#generalized-and-specialized-images)」を参照してください。
 
 
 ## <a name="capture-a-vm-in-the-portal"></a>ポータルで VM をキャプチャする 
@@ -45,7 +45,7 @@ Shared Image Gallery に格納されているイメージの場合、アカウ�
 
 1. **[オペレーティング システムの状態]** で、一般化または特殊化を選択します。 詳細については、「[一般化されたイメージと特殊化されたイメージ](shared-image-galleries.md#generalized-and-specialized-images)」を参照してください。
  
-1. イメージの定義を選択するか、 **[新規作成]** を選択して、新しい[イメージの定義](shared-image-galleries.md#image-definitions)の名前と情報を指定します。
+1. イメージの定義を選択するか、 **[新規作成]** を選択して、新しい [イメージの定義](shared-image-galleries.md#image-definitions)の名前と情報を指定します。
 
 1. [イメージのバージョン](shared-image-galleries.md#image-versions)番号を入力します。 これがこのイメージの最初のバージョンである場合は、「*1.0.0*」と入力します。
 
@@ -63,4 +63,4 @@ Shared Image Gallery に格納されているイメージの場合、アカウ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [共有イメージ ギャラリーの概要](shared-image-galleries.md)  
+- [Azure Compute Gallery の概要](shared-image-galleries.md) 

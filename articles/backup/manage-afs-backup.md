@@ -2,17 +2,20 @@
 title: Azure ファイル共有のバックアップを管理する
 description: この記事では、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.openlocfilehash: 421162387b28777acf1c4f86288796d8066468a6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 021a24cbe5c1e2ba9f504ca99c149b135bc40fc4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216050"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844735"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure ファイル共有のバックアップを管理する
 
-この記事では、[Azure Backup](./backup-overview.md) によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。 Recovery Services コンテナーで管理タスクを実行する方法について説明します。
+この記事では、[Azure Backup](./backup-overview.md) によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。 管理タスクを **バックアップ センター** で実行する方法について説明します。
 
 ## <a name="monitor-jobs"></a>ジョブの監視
 
@@ -20,31 +23,33 @@ ms.locfileid: "130216050"
 
 **[バックアップ ジョブ]** ページを開くには:
 
-1. ファイル共有のバックアップを構成するために使用した Recovery Services コンテナーを開きます。 **[概要]** ペインで、 **[監視]** セクションから **[バックアップ ジョブ]** を選択します。
+1. **バックアップ センター** に移動し、 **[監視]** セクションから **[バックアップ ジョブ]** を選択します。
 
-   ![監視セクションのバックアップ ジョブ](./media/manage-afs-backup/backup-jobs.png)
+   :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-list-inline.png" alt-text="[監視] セクションの [バックアップ ジョブ] を示すスクリーンショット。" lightbox="./media/manage-afs-backup/backup-center-jobs-list-expanded.png":::
 
-1. **[OK]** を選択すると、 **[バックアップ ジョブ]** ペインにすべてのジョブの状態が表示されます。 監視するファイル共有に対応するワークロード名を選択できます。
+   **[バックアップ ジョブ]** ペインにすべてのジョブの状態が表示されます。
 
-   ![ワークロード名](./media/manage-afs-backup/workload-name.png)
+1. データソースの種類として **[Azure Files (Azure Storage)]** を選択し、任意の行を選択して特定のジョブの詳細を表示します。
+
+   :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-inline.png" alt-text="ジョブの一覧を示すスクリーンショット。" lightbox="./media/manage-afs-backup/backup-center-jobs-expanded.png":::
 
 ## <a name="monitor-using-azure-backup-reports"></a>Azure Backup レポートを使用した監視
 
-Azure Backup では、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースを利用すると、バックアップに関するさまざまな分析情報を得られます。 これらのレポートを利用して、Azure Files のバックアップ項目、項目レベルのジョブ、アクティブ ポリシーの詳細を可視化できます。 バックアップ レポートで使用できるメール レポート機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。Azure Backup レポートの構成と表示方法を[ご覧ください](./configure-reports.md#get-started)。
+Azure Backup では、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースを利用すると、バックアップに関するさまざまな分析情報を得られます。 これらのレポートを利用して、Azure Files のバックアップ項目、項目レベルのジョブ、アクティブ ポリシーの詳細を可視化できます。 バックアップ レポートで使用できるメール レポート機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。 Azure Backup レポートを構成および表示する方法をご[確認](./configure-reports.md#get-started)ください。
 
 ## <a name="create-a-new-policy"></a>新しいポリシーの作成
 
-Recovery Services コンテナーの **[バックアップ ポリシー]** セクションから、Azure ファイル共有をバックアップするための新しいポリシーを作成できます。 ファイル共有のバックアップを構成した際に作成されたすべてのポリシーは、**Azure ファイル共有** という **ポリシーの種類** で表示されます。
+**バックアップ センター** の **[バックアップ ポリシー]** セクションから、Azure ファイル共有をバックアップするための新しいポリシーを作成できます。 ファイル共有のバックアップを構成した際に作成されたすべてのポリシーは、**Azure ファイル共有** という **ポリシーの種類** で表示されます。
 
 新しいバックアップ ポリシーを作成するには、次の手順を実行します。
 
-1. Recovery Services コンテナーの **[バックアップ ポリシー]** ペインで、 **[+ 追加]** を選択します。
+1. **バックアップ センター** の **[バックアップ ポリシー]** ペインで、 **[+ 追加]** を選択します。
 
-   :::image type="content" source="./media/manage-afs-backup/new-backup-policy.png" alt-text="新しいバックアップ ポリシーの作成を開始するオプションを示すスクリーンショット。":::
+   :::image type="content" source="./media/manage-afs-backup/backup-center-add-policy-inline.png" alt-text="新しいバックアップ ポリシーの作成を開始するオプションを示すスクリーンショット。" lightbox="./media/manage-afs-backup/backup-center-add-policy-expanded.png":::
 
-1. **[追加]** ペインで、 **[ポリシーの種類]** として **[Azure ファイル共有]** を選択します。
+1. データソースの種類として **[Azure Files (Azure Storage)]** を選択し、ポリシーを作成するコンテナーを選択して、 **[続行]** をクリックします。
 
-   :::image type="content" source="./media/manage-afs-backup/define-policy-type.png" alt-text="ポリシーの種類として Azure ファイル共有を選択することを示すスクリーンショット。":::
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-select-vault-for-policy.png" alt-text="ポリシーの種類として Azure ファイル共有を選択することを示すスクリーンショット。":::
 
 1. **Azure ファイル共有** の **[バックアップ ポリシー]** ペインが開くので、ポリシー名を指定します。
 
@@ -82,13 +87,13 @@ Recovery Services コンテナーの **[バックアップ ポリシー]** セ�
 
 既存のバックアップ ポリシーを表示するには:
 
-1. ファイル共有のバックアップを構成するために使用した Recovery Services コンテナーを開きます。 [Recovery Services コンテナー] メニューで、 **[管理]** セクションから **[バックアップ ポリシー]** を選択します。 コンテナーに構成されているすべてのバックアップ ポリシーが表示されます。
+1. **バックアップ センター** に移動し、 **[管理]** セクションから **[バックアップ ポリシー]** を選択します。
 
-   :::image type="content" source="./media/manage-afs-backup/all-backup-policies.png" alt-text="すべてのバックアップ ポリシーを示すスクリーンショット。":::
+   コンテナー全体で構成されているすべてのバックアップ ポリシーが表示されます。
 
-1. **Azure ファイル共有** に固有のポリシーを表示するには、右上のドロップダウンから **[Azure ファイル共有]** を選択します。
+   :::image type="content" source="./media/manage-afs-backup/backup-center-policies-list-inline.png" alt-text="すべてのバックアップ ポリシーを示すスクリーンショット。" lightbox="./media/manage-afs-backup/backup-center-policies-list-expanded.png":::
 
-   :::image type="content" source="./media/manage-afs-backup/azure-file-share.png" alt-text="Azure ファイル共有を選択するプロセスを示すスクリーンショット。":::
+1. **[Azure Files (Azure Storage)]** に固有のポリシーを表示するには、データソースの種類として **[Azure ファイル共有]** を選択します。
 
 ## <a name="modify-policy"></a>ポリシーを変更する
 
@@ -96,15 +101,19 @@ Recovery Services コンテナーの **[バックアップ ポリシー]** セ�
 
 ポリシーを変更するには:
 
-1. ファイル共有のバックアップを構成するために使用した Recovery Services コンテナーを開きます。 [Recovery Services コンテナー] メニューで、 **[管理]** セクションから **[バックアップ ポリシー]** を選択します。 コンテナーに構成されているすべてのバックアップ ポリシーが表示されます。
+1. **バックアップ センター** に移動し、 **[管理]** セクションから **[バックアップ ポリシー]** を選択します。
 
-   ![コンテナー内のすべてのバックアップ ポリシー](./media/manage-afs-backup/all-backup-policies-modify.png)
+   コンテナー全体で構成されているすべてのバックアップ ポリシーが表示されます。
 
-1. Azure ファイル共有に固有のポリシーを表示するには、右上のドロップダウンから **[Azure ファイル共有]** を選択します。 変更するバックアップ ポリシーを選択します。
+   :::image type="content" source="./media/manage-afs-backup/backup-center-policies-list-inline.png" alt-text="コンテナー内のすべてのバックアップ ポリシーを示すスクリーンショット。" lightbox="./media/manage-afs-backup/backup-center-policies-list-expanded.png":::
 
-   ![変更する Azure ファイル共有](./media/manage-afs-backup/azure-file-share-modify.png)
+1. Azure ファイル共有に固有のポリシーを表示するには、データソースの種類として **[Azure Files (Azure Storage)]** を選択します。
 
-1. **[スケジュール]** ペインが開きます。 必要に応じて **バックアップ スケジュール** と **保有期間の範囲** を編集し、 **[保存]** をクリックします。 ウィンドウに "更新が進行中です" というメッセージが表示されます。 ポリシーの変更が正常に更新されると、"バックアップ ポリシーを正常に更新しました" というメッセージが表示されます。
+   更新するポリシーをクリックします。
+
+1. **[スケジュール]** ペインが開きます。 必要に応じて **バックアップ スケジュール** と **保有期間の範囲** を編集し、 **[保存]** をクリックします。
+
+   ウィンドウに _[更新が進行中です]_ というメッセージが表示されます。 ポリシーの変更が正常に更新されると、 _[バックアップ ポリシーを正常に更新しました]_ というメッセージが表示されます。
 
    ![変更したポリシーを保存する](./media/manage-afs-backup/save-policy.png)
 
@@ -119,15 +128,11 @@ Azure Backup によって作成された基になるスナップショットが�
 
 Azure ファイル共有の保護を停止するには:
 
-1. ファイル共有の復旧ポイントが含まれている Recovery Services コンテナーを開きます。 **[保護された項目]** セクションから **[バックアップ項目]** を選択します。 バックアップ項目の種類の一覧が表示されます。
+1. **バックアップ センター** に移動し、メニューから **[バックアップ インスタンス]** を選択し、データソースの種類として **[Azure Files (Azure Storage)]** を選択します。
 
-   ![バックアップ項目](./media/manage-afs-backup/backup-items.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-backup-instances-inline.png" alt-text="データ型として Azure Files を選択することを示すスクリーンショット。" lightbox="./media/manage-afs-backup/azure-file-share-backup-instances-expanded.png":::
 
-1. **[バックアップの管理の種類]** の一覧で、 **[Azure Storage (Azure Files)]** を選択します。 **バックアップ項目 (Azure Storage (Azure Files))** の一覧が表示されます。
-
-   ![Azure Storage (Azure Files) のバックアップを選択する](./media/manage-afs-backup/azure-storage-azure-files.png)
-
-1. **[バックアップ項目 (Azure Storage (Azure Files))]** の一覧で、保護を停止するバックアップ項目を選択します。
+1. 保護を停止するバックアップ項目を選択します。
 
 1. **[バックアップの停止]** オプションを選択します。
 
@@ -143,15 +148,11 @@ Azure ファイル共有の保護を停止するには:
 
 Azure ファイル共有の保護を再開するには:
 
-1. ファイル共有の復旧ポイントが含まれている Recovery Services コンテナーを開きます。 **[保護された項目]** セクションから **[バックアップ項目]** を選択します。 バックアップ項目の種類の一覧が表示されます。
+1. **バックアップ センター** に移動し、メニューから **[バックアップ インスタンス]** を選択し、データソースの種類として **[Azure Files (Azure Storage)]** を選択します。
 
-   ![再開用に項目をバックアップする](./media/manage-afs-backup/backup-items-resume.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-backup-instances-inline.png" alt-text="データソースの種類として Azure Files を選択することを示すスクリーンショット。" lightbox="./media/manage-afs-backup/azure-file-share-backup-instances-expanded.png":::
 
-1. **[バックアップの管理の種類]** の一覧で、 **[Azure Storage (Azure Files)]** を選択します。 **バックアップ項目 (Azure Storage (Azure Files))** の一覧が表示されます。
-
-   ![Azure Storage (Azure Files) の一覧](./media/manage-afs-backup/azure-storage-azure-files.png)
-
-1. **[バックアップ項目 (Azure Storage (Azure Files))]** の一覧で、保護を再開するバックアップ項目を選択します。
+1. 保護を再開するバックアップ項目を選択します。
 
 1. **[バックアップの再開]** オプションを選択します。
 
@@ -159,7 +160,9 @@ Azure ファイル共有の保護を再開するには:
 
 1. **[バックアップ ポリシー]** ペインが開きます。 バックアップを再開するためのポリシーを選択します。
 
-1. バックアップ ポリシーを選択したら、 **[保存]** を選択します。 ポータルに "更新が進行中です" というメッセージが表示されます。 バックアップが正常に再開されると、"保護された Azure ファイル共有のバックアップ ポリシーが正常に更新されました" というメッセージが表示されます。
+1. バックアップ ポリシーを選択したら、 **[保存]** を選択します。
+
+   ポータルに _[更新が進行中です]_ というメッセージが表示されます。 バックアップが正常に再開されると、 _[保護された Azure ファイル共有のバックアップ ポリシーが正常に更新されました]_ というメッセージが表示されます。
 
    ![正常に更新されたバックアップ ポリシー](./media/manage-afs-backup/successfully-updated.png)
 

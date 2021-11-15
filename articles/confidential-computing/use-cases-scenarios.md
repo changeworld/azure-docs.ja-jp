@@ -2,24 +2,24 @@
 title: Azure のコンフィデンシャル コンピューティングの一般的なシナリオとユース ケース
 description: コンフィデンシャル コンピューティングを自分のシナリオで使用する方法について説明します。
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 11/01/2021
-ms.author: jencook
+ms.date: 11/04/2021
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 17462eaeacf36c7748c2654841e8ef11614a6c73
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2fd30934f71df8a84bf718445972ab9d0ff2d469
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080343"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347824"
 ---
 # <a name="use-cases-and-scenarios"></a>ユース ケースとシナリオ
 コンフィデンシャル コンピューティングは、政府、金融サービス、医療機関などの規制対象業界のデータを保護するために、さまざまなユース ケースに適用されます。 たとえば、機密データへのアクセスを防止することは、機密データを格納するクラウド プロバイダーなど、関係するすべての関係者から市民のデジタル ID を保護するのに役立ちます。 同じ機密データに、児童労働搾取の既知のイメージの検索と削除、人身売買の防止、デジタル フォレンジック捜査の支援に使用される生体認証データが含まれる場合があります。
 
-![コンフィデンシャル コンピューティングのユース ケース](media/use-cases-scenarios/use_cases.jpg)
+:::image type="content" source="media/use-cases-scenarios/use-cases.png" alt-text="政府、金融サービス、医療のシナリオなど、Azure コンフィデンシャル コンピューティングのユース ケースのスクリーンショット。":::
 
 この記事では、Azure のコンフィデンシャル コンピューティングに関して、いくつかの一般的なシナリオを概説します。 この記事の推奨事項は、コンフィデンシャル コンピューティングのサービスとフレームワークを使用してアプリケーションを開発する際の出発点として利用できます。
 
@@ -57,7 +57,7 @@ Azure のコンフィデンシャル コンピューティングでは、入力�
 
 コンフィデンシャル コンピューティングを通じて、金融機関は不正行為の検出率を高め、マネー ロンダリングのシナリオに対応できるほか、誤検知を減らし、より大きなデータ セットから継続的に学習することができます。
 
-![銀行向けの複数関係者間のデータ共有](media/use-cases-scenarios/mpc_banks.jpg)
+:::image type="content" source="media/use-cases-scenarios/mpc-banks.png" alt-text="銀行向けの複数関係者間のデータ共有のグラフィック。コンフィデンシャル コンピューティングによってデータ移動が可能になることが示されています。":::
 
 ### <a name="drug-development-in-healthcare"></a>医薬品の開発
 

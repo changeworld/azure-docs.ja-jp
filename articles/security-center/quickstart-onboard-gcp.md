@@ -7,13 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1b7d5e5a418fd776197cdbc6108fc4871668292c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b2f5d680fda34d181264a72a0d745a36093c472a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064812"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472169"
 ---
 #  <a name="connect-your-gcp-accounts-to-microsoft-defender-for-cloud"></a>GCP アカウントを Microsoft Defender for Cloud に接続する
 
@@ -21,19 +20,19 @@ ms.locfileid: "131064812"
 
 通常、クラウド ワークロードは複数のクラウド プラットフォームにまたがるため、クラウド セキュリティサービスもそうである必要があります。
 
-Microsoft Defender for Cloud は、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードを保護します。
+Microsoft Defender for Cloud により、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードが保護されます。
 
-GCP アカウントを Defender for Cloud にオンボードすると、 GCP Security Command と Microsoft Defender for Cloud が統合されます。 そのため、Defender for Cloud は、この両方のクラウド環境全体を可視化および保護することで、以下を実現します。
+Azure サブスクリプションに GCP アカウントを追加すると、Defender for Cloud から GCP セキュリティ コマンドを使用して接続できます。 これにより、Defender for Cloud はこの両方のクラウド環境のリソースを保護し、次の機能を提供できます。
 
 - セキュリティ構成ミスの検出
 - Defender for Cloud の推奨事項と GCP Security Command Center の検出結果を 1 つのビューに表示する
 - Defender for Cloud のセキュリティ スコアの計算に GCP リソースを組み込む
 - CIS 標準に基づく GCP Security Command Center の推奨事項を Defender for Cloud の規制コンプライアンス ダッシュボードに統合する
 
-次のスクリーンショットでは、Defender for Cloud の概要ダッシュボードに GCP プロジェクトが表示されていることがわかります。
+> [!IMPORTANT]
+> Ignite Fall 2021 では、他のクラウド プロバイダーのアカウントを接続するための新たな方法を発表しました。 これには、新しい **[環境設定]** ページを使用します。 GCP アカウントは、そのページではサポートされていません。 GCP アカウントを Azure サブスクリプションに接続するには、下で説明するようにクラシック クラウド コネクタ エクスペリエンスを使用する必要があります。
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-account-in-overview.png" alt-text="Defender for Cloud の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
-
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-account-in-overview.png" alt-text="Microsoft Defender for Cloud の概要ダッシュボードに GCP プロジェクトが表示されている状態のスクリーンショット。" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>可用性
 
@@ -111,7 +110,10 @@ Security Command Center API の詳細については、[こちら](https://cloud
 
 
 ### <a name="step-5-connect-gcp-to-defender-for-cloud"></a>手順 5. GCP から Defender for Cloud に接続する
-1. Defender for Cloud のメニューから、 **[クラウド コネクタ]** を選択します。
+1. Defender for Cloud のメニューから **[環境設定]** を開き、クラシック コネクタ エクスペリエンスに切り替えるオプションを選択します。
+
+    :::image type="content" source="media/quickstart-onboard-gcp/classic-connectors-experience.png" alt-text="Defender for Cloud のクラシック クラウド コネクタ エクスペリエンスに切り替える。":::
+
 1. [add GCP account]\(GCP アカウントの追加\) を選択します。
 1. オンボード ページで次の操作を行い、 **[次へ]** を選択します。
     1. 選択したサブスクリプションを検証します。
@@ -140,7 +142,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
 ## <a name="faq---connecting-gcp-accounts-to-microsoft-defender-for-cloud"></a>FAQ - Microsoft Defender for Cloud への GCP アカウントの接続
 
 ### <a name="can-i-connect-multiple-gcp-organizations-to-defender-for-cloud"></a>複数の GCP 組織を Defender for Cloud に接続できますか?
-正解です。 Defender for Cloud の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
+はい。 Defender for Cloud の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
 
 Defender for Cloud から監視する GCP 組織ごとにコネクタを作成します。 組織を接続すると、その組織内のすべてのプロジェクトが Defender for Cloud に追加されます。
 
@@ -148,9 +150,9 @@ Google Cloud リソース階層については、[Google のオンライン ド�
 
 
 ### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-defender-for-cloud"></a>GCP リソースを Defender for Cloud に接続するための API はありますか?
-正解です。 REST API を使用して Defender for Cloud クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
+はい。 REST API を使用して Defender for Cloud クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 GCP アカウントの接続は、Microsoft Defender for Cloud で利用できるマルチクラウド エクスペリエンスの一部です。 関連情報については、次のページを参照してください。
 

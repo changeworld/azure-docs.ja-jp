@@ -2,27 +2,37 @@
 title: Bicep の出力
 description: Bicep の出力値を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 4cdf21eddcf14f5563c0c638f962585ad021e8ed
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 10/19/2021
+ms.openlocfilehash: c9b8e0bb4bfb4533b66170c60c8da7b1073a0853
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428760"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236078"
 ---
 # <a name="outputs-in-bicep"></a>Bicep の出力
 
 この記事では、Bicep ファイルで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
 
-各出力値の形式は、いずれかの[データ型](data-types.md)に解決される必要があります。
-
 ## <a name="define-output-values"></a>出力値の定義
 
-次の例は、`output` キーワードを使用して、デプロイされたリソースからプロパティを返す方法を示しています。 この例では、`publicIP` は Bicep ファイルにデプロイされているパブリック IP アドレスの識別子 (シンボリック名) です。 出力値には、パブリック IP アドレスの完全修飾ドメイン名が取得されます。
+出力値を定義するための構文は次のとおりです。
+
+```bicep
+output <name> <data-type> = <value>
+```
+
+各出力値は、いずれかの[データ型](data-types.md)に解決される必要があります。
+
+次の例は、デプロイされたリソースからプロパティを返す方法を示しています。 この例では、`publicIP` は Bicep ファイルにデプロイされているパブリック IP アドレスのシンボリック名です。 出力値には、パブリック IP アドレスの完全修飾ドメイン名が取得されます。
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
 ```
+
+次の例は、さまざまな型の出力を返す方法を示しています。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
 
 名前にハイフンが含まれているプロパティを出力する必要がある場合は、ドット表記ではなく、名前を角かっこで囲みます。 たとえば、`.property-name` の代わりに `['property-name']` を使用します。
 
@@ -34,10 +44,19 @@ var user = {
 output stringOutput string = user['user-name']
 ```
 
-次の例は、さまざまな型の出力を返す方法を示しています。
+返す値がデプロイの状態によって異なる場合は、`?` 演算子を使用します。 詳しくは、「[条件付き出力](#conditional-output)」をご覧ください。
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
+```bicep
+output <name> <data-type> = <condition> ? <true-value> : <false-value>
+```
 
+出力値の複数のインスタンスを返すには、`for` 式を使用します。 詳しくは、「[動的な出力の数](#dynamic-number-of-outputs)」をご覧ください。
+
+```bicep
+output <name> <data-type> = [for <item> in <collection>: {
+  ...
+}]
+```
 
 ## <a name="conditional-output"></a>条件付き出力
 
@@ -74,28 +93,29 @@ Bicep で、動的出力の条件を定義する `for` 式を追加します。 
 
 ```bicep
 param nsgLocation string = resourceGroup().location
-param nsgNames array = [
-  'nsg1'
-  'nsg2'
-  'nsg3'
+param orgNames array = [
+  'Contoso'
+  'Fabrikam'
+  'Coho'
 ]
 
-resource nsg 'Microsoft.Network/networkSecurityGroups@2020-06-01' = [for name in nsgNames: {
-  name: name
+resource nsg 'Microsoft.Network/networkSecurityGroups@2020-06-01' = [for name in orgNames: {
+  name: 'nsg-${name}'
   location: nsgLocation
 }]
 
-output nsgs array = [for (name, i) in nsgNames: {
-  name: nsg[i].name
+output deployedNSGs array = [for (name, i) in orgNames: {
+  orgName: name
+  nsgName: nsg[i].name
   resourceId: nsg[i].id
 }]
 ```
 
-また、整数の範囲を反復処理することもできます。 詳細については、「[Bicep での出力の反復処理](loop-outputs.md)」を参照してください。
+詳しくは、「[Bicep の反復ループ](loops.md)」をご覧ください。
 
-## <a name="modules"></a>モジュール
+## <a name="outputs-from-modules"></a>モジュールからの出力
 
-モジュールを使用して関連するテンプレートをデプロイできます。 モジュールから出力値を取得するには、次の構文を使用します。
+モジュールから出力値を取得するには、次の構文を使用します。
 
 ```bicep
 <module-name>.outputs.<property-name>

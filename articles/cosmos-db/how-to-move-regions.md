@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: e8d39f6215e76c4cd9da9458f5e8a7af61622089
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: abe4c084243025cb5570d8913911a45554f067f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094836"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454525"
 ---
 # <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB アカウントを別のリージョンに移動する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -40,6 +40,9 @@ Azure Cosmos DB はデータ レプリケーションをネイティブでサポ
 1. 元のリージョンを削除します。
 
     Azure Cosmos DB アカウントからリージョンを削除するには、[Azure Cosmos DB アカウントに対するリージョンの追加/削除](how-to-manage-database-account.md#addremove-regions-from-your-database-account)に関するページを参照してください。
+
+> [!NOTE]
+> [非同期スループット スケーリング操作](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)の進行中にフェールオーバー操作を実行したり、新しいリージョンを追加または削除すると、スループットのスケールアップ操作は一時停止されます。 フェールオーバーまたはリージョンの追加/削除操作が完了すると、自動的に再開されます。 
 
 ## <a name="migrate-azure-cosmos-db-account-metadata"></a>Azure Cosmos DB アカウントのメタデータを移行する
 

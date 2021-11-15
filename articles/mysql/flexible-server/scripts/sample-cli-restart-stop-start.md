@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) を再起動、停止、または起動する
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーを再起動、停止、起動する
 description: この Azure CLI のサンプル スクリプトでは、Azure Database for MySQL - フレキシブル サーバーを再起動、停止、または起動する方法を示します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 2c4d17b0bcbba1c231b06f6112ef8b43e9b4786a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 12a375eb7195af9b95db85723efe7a52b53c5356
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604698"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844115"
 ---
-# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) を再起動、停止、または起動する
+# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバーを再起動、停止、または起動する
 
 このサンプルの CLI のスクリプトでは、Azure Database for MySQL - フレキシブル サーバーを再起動、起動および停止操作を実行します。 
 
@@ -62,5 +62,5 @@ ms.locfileid: "128604698"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

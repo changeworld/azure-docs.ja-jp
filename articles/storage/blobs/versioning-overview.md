@@ -10,12 +10,12 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2fa724f139881f7647468684f5ad97d80a80baf2
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 6807423e59c5877b67a8faaf3aebe4fd60e671fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274427"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424933"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 

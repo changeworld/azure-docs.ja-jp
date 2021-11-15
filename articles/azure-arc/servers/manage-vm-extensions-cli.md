@@ -1,19 +1,19 @@
 ---
 title: Azure CLI を使用して VM 拡張機能を有効にする
 description: この記事では、Azure CLI を使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 10/15/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41924f20679de16205af3c7cb962d6005e757e2d
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b7294285cd6e4fa7c2bbfac859c3fec8dfa3a474
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069636"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440414"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure CLI を使用して Azure VM 拡張機能を有効にする
 
-この記事では、Azure CLI を使用して、Azure Arc 対応サーバーでサポートされている VM 拡張機能を Linux または Windows ハイブリッド マシンにデプロイおよびアンインストールする方法を示します。
+この記事では、Azure CLI を使用して、Linux または Windows ハイブリッド マシンに対し、Azure Arc 対応サーバーでサポートされている VM 拡張機能のデプロイ、アップグレード、更新、アンインストールを行う方法を示します。
 
 > [!NOTE]
 > Azure Arc 対応サーバーでは、Azure 仮想マシンへの VM 拡張機能のデプロイと管理はサポートされていません。 Azure VM については、次の [VM 拡張機能の概要](../../virtual-machines/extensions/overview.md) に関する記事をご覧ください。
@@ -83,7 +83,31 @@ az connectedmachine extension list --machine-name "myMachineName" --resource-gro
     "namePropertiesInstanceViewName": "DependencyAgentWindows",
 ```
 
-## <a name="remove-an-installed-extension"></a>インストールされている拡張機能を削除する
+## <a name="update-extension-configuration"></a>拡張機能の構成を更新する
+
+VM 拡張機能の中には、Arc 対応サーバーにインストールするために構成設定が必要になるものがあります。たとえば、カスタム スクリプト拡張機能や Log Analytics エージェント VM 拡張機能が該当します。 拡張機能の構成をアップグレードするには、[az connectedmachine extension update](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_update) を使用してください。
+
+次に示したのは、カスタム スクリプト拡張機能を構成する方法の例です。
+
+```azurecli
+az connectedmachine extension update --name "CustomScriptExtension" --type "CustomScriptExtension" --publisher "Microsoft.HybridCompute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -lt 100 }\\\"\"}" --type-handler-version "1.10" --machine-name "myMachine" --resource-group "myResourceGroup"
+```
+
+## <a name="upgrade-extensions"></a>拡張機能のアップグレード
+
+サポートされている VM 拡張機能は、新しいバージョンがリリースされた時点でその最新リリースにアップグレードできます。 VM 拡張機能をアップグレードするには、[az connectedmachine upgrade-extension](/cli/azure/connectedmachine) と、`--machine-name`、`--resource-group`、`--extension-targets` の各パラメーターを使用します。
+
+`--extension-targets` パラメーターには、拡張機能と提供されている最新バージョンを指定する必要があります。 提供されている最新バージョンを調べるには、選択した Arc 対応サーバーの **[拡張機能]** ページを Azure portal で確認するか、[az vm extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list) を実行してこの情報を入手します。
+
+Windows 用の Log Analytics エージェント拡張機能を新しいバージョンにアップグレードするには、次のコマンドを実行します。
+
+```azurecli
+az connectedmachine upgrade-extension --machine-name "myMachineName" --resource-group "myResourceGroup --extension-targets  --extension-targets "{\"MicrosoftMonitoringAgent\":{\"targetVersion\":\"1.0.18053.0\"}}"" 
+```
+
+インストールされている VM 拡張機能のバージョンは、[az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list) コマンドを実行することでいつでも確認できます。 拡張機能のバージョンは、`typeHandlerVersion` プロパティの値によって表されます。
+
+## <a name="remove-extensions"></a>拡張機能を削除する
 
 Azure Arc 対応サーバーにインストールされている VM 拡張機能を削除するには、`--extension-name`、`--machine-name`、`--resource-group` の各パラメーターと共に [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) を使用します。
 

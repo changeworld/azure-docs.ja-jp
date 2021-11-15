@@ -1,19 +1,19 @@
 ---
 title: 'チュートリアル: Azure CLI を使用して Dapr アプリケーションを Azure Container Apps にデプロイする'
 description: Azure CLI を使用して、Dapr アプリケーションを Azure Container Apps にデプロイします。
-services: app-service
+services: container-apps
 author: asw101
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1fa71d13aa43d9fd681ab3eb6799734ea65c1482
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 178bc7af356f873fb2c12329de9fc9d7a9914a92
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092057"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026787"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Dapr アプリケーションを Azure Container Apps にデプロイする
 
@@ -131,6 +131,22 @@ az extension add \
 ```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
+```
+
+---
+
+拡張機能がインストールされたので、`Microsoft.Web` 名前空間を登録します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```azurecli
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -279,7 +295,9 @@ Azure Blob Storage アカウントを作成したら、このチュートリア�
 
 ```bash
 STORAGE_ACCOUNT_KEY=`az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query '[0].value' --out tsv`
+```
 
+```bash
 echo $STORAGE_ACCOUNT_KEY
 ```
 
@@ -287,7 +305,9 @@ echo $STORAGE_ACCOUNT_KEY
 
 ```powershell
 $STORAGE_ACCOUNT_KEY=(az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query '[0].value' --out tsv)
+```
 
+```powershell
 echo $STORAGE_ACCOUNT_KEY
 ```
 
@@ -421,11 +441,11 @@ Azure Storage アカウントのデータを表示することで、サービス
 
 1. **[編集]** タブをクリックします。
 
-1. **[更新]** ボタンをクリックして、更新を確認します。
+1. **[更新]** ボタンをクリックして、データがどのように自動的に更新されるかを確認します。
 
 ### <a name="view-logs"></a>ログの表示
 
-コンテナー アプリを使用してログされたデータは、Log Analytics ワークスペースの `ContainerAppConsoleLogs_CL` カスタム テーブルに格納されます。 Azure portal または CLI を使用してログを表示できます。
+コンテナー アプリを使用してログされたデータは、Log Analytics ワークスペースの `ContainerAppConsoleLogs_CL` カスタム テーブルに格納されます。 Azure portal または CLI を使用してログを表示できます。 ログに記録されたデータに対してクエリを実行する前に、初めて分析が到着するまでに数分かかることがあります。
 
 次の CLI コマンドを使用して、コマンド ラインでログを表示します。
 

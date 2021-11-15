@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9ee623656ee83347d2edc1fe010131913a07ccb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 39b6dd297ad0fbb739272db41900e68c799e790d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023787"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853803"
 ---
 # <a name="connect-to-and-manage-a-power-bi-tenant-in-azure-purview"></a>Azure Purview で Power BI テナントに接続して管理する
 
@@ -172,26 +172,38 @@ Power BI テナントがある Azure AD テナントが、Azure Purview アカ�
 
    1. Power BI が配置されている Azure Active Directory テナントに、アプリの登録を作成します。 `password` フィールドは、強力なパスワードで更新し、`app_display_name` は、Power BI テナントがホストされている Azure AD テナント内の存在しないアプリケーション名で更新してください。
 
-       ```powershell   
-       $SecureStringPassword = ConvertTo-SecureString -String <'password'> -AsPlainText -Force
-       $AppName = '<app_display_name>'
-       New-AzADApplication -DisplayName $AppName -Password $SecureStringPassword
-       ```
+      ```powershell   
+      $SecureStringPassword = ConvertTo-SecureString -String <'password'> -AsPlainText -Force
+      $AppName = '<app_display_name>'
+      New-AzADApplication -DisplayName $AppName -Password $SecureStringPassword
+      ```
 
    1. Azure Active Directory ダッシュボードで、新しく作成したアプリケーションを選択し、 **[アプリの登録]** を選択します。 アプリケーションに対して次の委任されたアクセス許可を割り当て、テナントに対する管理者の同意を付与します。
 
-         - Power BI Service     Tenant.Read.All
-         - Microsoft Graph      openid
+      - Power BI Service     Tenant.Read.All
+      - Microsoft Graph      openid
 
-   1. Azure Active Directory ダッシュボードで、新しく作成したアプリケーションを選択し、 **[認証]** を選択します。 **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** を選択します。
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-delegated-permissions.png" alt-text="Power BI サービスと Microsoft Graph の委任されたアクセス許可のスクリーンショット。":::
+
+   1. Azure Active Directory ダッシュボードで、新しく作成したアプリケーションを選択し、 **[認証]** を選択します。 **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** を選択します。 
+
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-multitenant.png" alt-text="サポートされているアカウントの種類のマルチテナントのスクリーンショット。":::
+
+   1. **[暗黙的な許可およびハイブリッド フロー]** で、必ず **[ID トークン (暗黙的およびハイブリッド フローに使用)]** を選択してください
+    
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-id-token-hybrid-flows.png" alt-text="ID トークン ハイブリッド フローのスクリーンショット。":::
 
    1. Web ブラウザーで次の URL を実行して、サービス プリンシパルのテナント固有のサインイン URL を作成します。
 
-     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
-
-    パラメーターを正しい情報に置き換えてください。<purview_tenant_id> は、Azure Purview アカウントがプロビジョニングされている Azure Active Directory テナントの ID (GUID) です。
-    <client_id_to_delegate_the_pbi_admin> は、サービス プリンシパルに対応するアプリケーション ID です
-
+      ```
+      https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
+      ```
+    
+      必ずパラメーターを正しい情報に置き換えてください。
+      
+      - `<purview_tenant_id>` は、Azure Purview アカウントがプロビジョニングされる Azure Active Directory テナント ID (GUID) です。
+      - `<client_id_to_delegate_the_pbi_admin>` は、サービス プリンシパルに対応するアプリケーション ID です
+   
    1. 管理者以外のアカウントを使用してサインインします。 これは外部テナントでサービス プリンシパルをプロビジョニングするために必要です。
 
    1. ダイアログが表示されたら、 _[基本プロファイルの表示]_ および _[アクセス権を付与したデータへのアクセスの管理]_ に対して要求されたアクセス許可に同意します。
@@ -209,7 +221,12 @@ Power BI テナントがある Azure AD テナントが、Azure Purview アカ�
     $Password = '<pbi_admin_password>'
     ```
 
-1. Azure Purview サブスクリプションで、Purview アカウントを見つけ、Azure RBAC ロールを使用して、"_Purview データ ソース管理者_" をサービス プリンシパルと Power BI ユーザーに割り当てます。
+    > [!Note]
+    > ポータルから Azure Active Directory でユーザー アカウントを作成する場合、パブリック クライアント フロー オプションは、既定では **[いいえ]** です。 これを **[はい]** に切り替える必要があります。
+    > <br>
+    > :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-public-client-flows.png" alt-text="パブリック クライアント フローのスクリーンショット。":::
+    
+1. Azure Purview Studio で、_データ ソース管理者_ を、サービス プリンシパルとルート コレクションの Power BI ユーザーに割り当てます。 
 
 1. テナント間の Power BI テナントを Azure Purview アカウント内の新しいデータ ソースとして登録するには、次のコマンドレットの `service_principal_key` を更新して PowerShell セッションで実行します。
 

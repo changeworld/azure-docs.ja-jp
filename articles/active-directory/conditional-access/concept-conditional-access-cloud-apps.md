@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d56443885c79f6d5aa153695df76156f4f9407
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a0bd64f8e3377b78f276b1b3c4bdef6f43d8c76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012683"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308050"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>条件付きアクセス: クラウド アプリ、アクション、認証コンテキスト
 
@@ -45,7 +45,7 @@ ms.locfileid: "131012683"
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
 - Microsoft Azure Subscription Management
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 - Microsoft Commerce Tools Access Control Portal
 - Microsoft Commerce Tools Authentication Service
 - Microsoft フォーム
@@ -144,7 +144,7 @@ Microsoft Azure の管理アプリケーションには、複数のサービス�
 
 ## <a name="authentication-context-preview"></a>認証コンテキスト (プレビュー)
 
-認証コンテキストを使用すると、アプリケーションのデータとアクションをさらにセキュリティで保護することができます。 これらのアプリケーションには、独自のカスタム アプリケーション、カスタム基幹業務 (LOB) アプリケーション、SharePoint などのアプリケーション、または Microsoft Cloud App Security (MCAS) によって保護されたアプリケーションが該当します。 
+認証コンテキストを使用すると、アプリケーションのデータとアクションをさらにセキュリティで保護することができます。 これらのアプリケーションには、独自のカスタム アプリケーション、カスタム基幹業務 (LOB) アプリケーション、SharePoint のようなアプリケーション、Microsoft Defender for Cloud Apps によって保護されるアプリケーションが該当します。 
 
 たとえば、組織は、ランチ メニューや秘密の BBQ ソース レシピなどのファイルを SharePoint サイト内に保持することができます。 すべてのユーザーがランチ メニュー サイトにアクセスできる場合がありますが、秘密の BBQ ソース レシピにアクセスできるユーザーは、管理対象デバイスからアクセスして、特定の利用規約に同意する必要があります。
 
@@ -176,7 +176,7 @@ Microsoft Azure の管理アプリケーションには、複数のサービス�
 アプリケーションでの認証コンテキストの使用の詳細については、次の記事を参照してください。
 
 - [SharePoint サイトを保護するための Microsoft Information Protection 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option)
-- [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
+- [Microsoft Defender for Cloud Apps](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [カスタム アプリケーション](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>次のステップ

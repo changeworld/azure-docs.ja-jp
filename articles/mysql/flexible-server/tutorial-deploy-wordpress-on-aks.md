@@ -7,24 +7,22 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: vc, devx-track-azurecli
-ms.openlocfilehash: 749137187b7fffe111f854860517dc608ae44c8a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ce9b80187bdab50ac05cd426fd04db7e31ccdc0e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582419"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853246"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>チュートリアル:Azure Database for MySQL - フレキシブル サーバーを使用して WordPress アプリを AKS にデプロイする
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-このクイックスタートでは、Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) で Azure Kubernetes Service (AKS) クラスターに WordPress アプリケーションをデプロイします。 
-**[AKS](../../aks/intro-kubernetes.md)** は、クラスターをすばやくデプロイして管理できるマネージド Kubernetes サービスです。 **[Azure Database for MySQL - フレキシブル サーバー (プレビュー)](overview.md)** は、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 フレキシブル サーバーは、現在プレビュー段階にあります。
+このクイックスタートでは、Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバーで Azure Kubernetes Service (AKS) クラスターに WordPress アプリケーションをデプロイします。
+**[AKS](../../aks/intro-kubernetes.md)** は、クラスターをすばやくデプロイして管理できるマネージド Kubernetes サービスです。 **[Azure Database for MySQL フレキシブル サーバー](overview.md)** は、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。
 
 > [!NOTE]
->
-> - Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
-> - このクイックスタートは、Kubernetes の概念、WordPress、MySQL.に関する基礎知識があることを前提としています。
+> このクイックスタートは、Kubernetes の概念、WordPress、MySQL.に関する基礎知識があることを前提としています。
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
@@ -142,7 +140,7 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 
 ```
 
-```wp-config-sample.php``` の名前を ```wp-config.php``` に変更し、21 から 32 行目をこのコード スニペットに置き換えます。 次のコード スニペットは、Kubernetes マニフェスト ファイルからデータベース ホスト、ユーザー名、パスワードを読み取ります。
+```wp-config-sample.php``` の名前を ```wp-config.php``` に変更し、```// ** MySQL settings - You can get this info from your web host ** //``` の最初の行から行 ```define( 'DB_COLLATE', '' );``` までを次のコード スニペットに置き換えます。 次のコードは、Kubernetes マニフェスト ファイルからデータベース ホスト、ユーザー名、パスワードを読み取ります。
 
 ```php
 //Using environment variables for DB connection information
@@ -153,9 +151,10 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 $connectstr_dbhost = getenv('DATABASE_HOST');
 $connectstr_dbusername = getenv('DATABASE_USERNAME');
 $connectstr_dbpassword = getenv('DATABASE_PASSWORD');
+$connectst_dbname = getenv('DATABASE_NAME');
 
 /** MySQL database name */
-define('DB_NAME', 'flexibleserverdb');
+define('DB_NAME', $connectst_dbname);
 
 /** MySQL database username */
 define('DB_USER', $connectstr_dbusername);
@@ -238,11 +237,11 @@ spec:
         - containerPort: 80
         env:
         - name: DATABASE_HOST
-          value: "SERVERNAME.mysql.database.azure.com"
+          value: "SERVERNAME.mysql.database.azure.com" #Update here
         - name: DATABASE_USERNAME
-          value: "YOUR-DATABASE-USERNAME"
+          value: "YOUR-DATABASE-USERNAME"  #Update here
         - name: DATABASE_PASSWORD
-          value: "YOUR-DATABASE-PASSWORD"
+          value: "YOUR-DATABASE-PASSWORD"  #Update here
         - name: DATABASE_NAME
           value: "flexibleserverdb"
       affinity:
@@ -290,20 +289,20 @@ service "php-svc" created
 進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
-kubectl get service wordpress-blog --watch
+kubectl get service php-svc --watch
 ```
 
 最初は、*wordpress-blog* サービスの *EXTERNAL-IP* が *pending* (保留中) として表示されます。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
-wordpress-blog   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
+php-svc  LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 *EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
 ```output
-wordpress-blog  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
+  php-svc  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
 ### <a name="browse-wordpress"></a>WordPress を参照する

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 63aae0f54d07fea45f4cecc5a4699cd1448c0a4f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 3404575f7eef3dc1c4f4784d255e0df6d569fd0f
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537775"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893692"
 ---
 # <a name="about-azure-cache-for-redis"></a>Azure Cache for Redis について
 
@@ -35,7 +35,7 @@ Azure Cache for Redis では、一般的なアプリケーションのアーキ�
 
 ## <a name="redis-versions"></a>Redis のバージョン
 
-Azure Cache for Redis では、OSS Redis バージョン 4.x および 6.0 (プレビュー) をサポートしています。 Redis 5.0 をスキップして最新バージョンをご提供することが決定しました。 これまで、Azure Cache for Redis は、1 つの Redis バージョンに対応していました。 今後は、新しいメジャー リリース アップグレードと、少なくとも 1 つ前の安定バージョンが提供される予定です。 アプリケーションにとって最適な[バージョンを選択する](cache-how-to-version.md)ことができます。
+Azure Cache for Redis では、OSS Redis バージョン 4.0.x と 6.0.x がサポートされます。 Redis 5.0 をスキップして最新バージョンをご提供することが決定しました。 これまで、Azure Cache for Redis は、1 つの Redis バージョンに対応していました。 今後は、新しいメジャー リリース アップグレードと、少なくとも 1 つ前の安定バージョンが提供される予定です。 アプリケーションにとって最適な[バージョンを選択する](cache-how-to-version.md)ことができます。
 
 
 ## <a name="service-tiers"></a>サービス階層
@@ -64,7 +64,7 @@ Azure Cache for Redis は、次のレベルで使用できます。
 | [データの永続化](cache-how-to-premium-persistence.md) |-|-|✔|プレビュー|プレビュー|
 | [ゾーン冗長性](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
 | [geo レプリケーション](cache-how-to-geo-replication.md) |-|-|✔|プレビュー|プレビュー|
-| [Redis モジュール](#choosing-the-right-tier) |-|-|-|✔|✔|
+| [Redis モジュール](#choosing-the-right-tier) |-|-|-|✔|-|
 | [Import/Export](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|
 | [Reboot](cache-administration.md#reboot) |✔|✔|✔|-|-|
 | [スケジュールされた更新](cache-administration.md#schedule-updates) |✔|✔|✔|-|-|

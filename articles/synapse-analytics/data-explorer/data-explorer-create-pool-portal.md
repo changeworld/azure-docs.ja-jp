@@ -10,12 +10,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8cf272407e64c612c4a3debb66ba13f7147cd227
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9a24d9bda03cdb456d92461546b606572f127bcb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092132"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467262"
 ---
 # <a name="quickstart-create-a-data-explorer-pool-using-the-azure-portal-preview"></a>クイックスタート: Azure portal を使用して Azure Data Explorer プールを作成する (プレビュー)
 
@@ -109,4 +109,6 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート: Synapse Studio を使用して Azure Data Explorer プールを作成する](data-explorer-create-pool-studio.md)
+- [インジェストの概要](ingest-data/data-explorer-ingest-data-overview.md)
+- [Data Explorer を使用して分析する](../get-started-analyze-data-explorer.md)
+- [Data Explorer プールを監視する](data-explorer-monitor-pools.md)

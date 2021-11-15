@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 72b8df5a79ae1d4da9821d6d7d275dc5744ebb17
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: f6de961bce052818270a949b45ed821d34b19b6c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272739"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463299"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 

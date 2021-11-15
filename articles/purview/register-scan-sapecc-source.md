@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: ce62eebd42812c4706e5fb7848a0a7bd4f6988ed
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: edc70416671e57624b5e36d90de37f0e9cefd74c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472430"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850643"
 ---
 # <a name="connect-to-and-manage-sap-ecc-in-azure-purview"></a>Azure Purview での SAP ECC への接続と管理
 
@@ -23,7 +23,9 @@ ms.locfileid: "131472430"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [あり](how-to-lineage-sapecc.md)|
+| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [はい**](how-to-lineage-sapecc.md)|
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,6 +40,10 @@ ms.locfileid: "131472430"
 * セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 
 * セルフホステッド統合ランタイム マシンに Visual Studio 2012 Update 4 の Visual C++ 再頒布可能パッケージがインストールされていることを確認します。 この更新プログラムがインストールされていない場合は、[ここからダウンロードできます](https://www.microsoft.com/download/details.aspx?id=30679)。
+
+* [Microsoft .NET 3.0 用の SAP コネクタ](https://support.sap.com/en/product/connectors/msnet.html) (64 ビット) を SAP の Web サイトからダウンロードし、それをセルフホステッド統合ランタイム コンピューターにインストールします。 インストール時に、 **[Optional setup steps]\(省略可能なセットアップ手順\)** ウィンドウで、 **[Install Assemblies to GAC]\(アセンブリを GAC にインストールする\)** オプションを必ず選択します。
+
+    :::image type="content" source="media/register-scan-saps4hana-source/requirement.png" alt-text="前提条件" border="true":::
 
 * コネクタにより、[SAP Java コネクタ (JCo)](https://support.sap.com/en/product/connectors/jco.html) 3.0 API を使用して SAP からメタデータが読み取られます。 セルフホステッド統合ランタイムがインストールされている仮想マシンで、Java コネクタが使用可能であることを確認します。 環境に合った JCo ディストリビューションを使用していることを確認してください。 たとえば、Microsoft Windows コンピューターで、sapjco3.jar と sapjco3.dll ファイルが使用可能であることを確認します。
 

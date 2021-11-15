@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 3901f624f5df8770a235c6cd184aca4a3409c26b
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f712f3f9928816e237504f504ec8ef28ec45d0e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547135"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263567"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -144,9 +144,9 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 
 構成オプションは、次のいずれかの方法で設定できます。
 
-* **Azure portal**: IoT ハブの **[設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** を展開します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
+* **Azure portal**: IoT ハブの **[ハブ設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** に移動します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
 
-    ![ポータルでの cloud-to-device メッセージングの構成オプションの設定](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+:::image type="content" source="./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png" alt-text="ポータルでの cloud-to-device メッセージングの構成オプションの設定" border="true":::
 
 * **Azure CLI**: [az iot hub update](/cli/azure/iot/hub#az_iot_hub_update) コマンドを使用します。
 

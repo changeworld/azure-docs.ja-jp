@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 26f70e4750d29231b3f139ecd617b43071e369bb
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: f0558d7e3cffd744ec4effa1d4f81f359e909e97
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066093"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503173"
 ---
 # <a name="shaping-data-for-projection-into-a-knowledge-store"></a>ナレッジ ストアへのプロジェクションのためのデータのシェイプ
 
@@ -20,7 +20,7 @@ Azure Cognitive Search の、「データのシェイプ」では、[ナレッ�
 
 スキルを実行すると、出力はノードの階層内のエンリッチメント ツリーに書き込まれます。エンリッチメント ツリー全体を表示して使用することもできますが、翻訳されたテキストに関連するノードや抽出されたエンティティを特定のテーブルに配置するなど、さまざまなシナリオでノードのサブセットを作成する、より細かい粒度が必要になる可能性の方が高くなります。
 
-エンリッチメント ツリー自体には、ナレッジ ストアでのコンテンツの表現方法を通知するロジックは含まれません。 データ シェイプは、各テーブル、オブジェクト、およびファイル プロジェクションに含まれるデータのスキーマを提供することで、このギャップを埋めます。 データ シェイプは、エンリッチされたデータのカスタム定義またはビューと考えられます。 必要な数のシェイプを作成し、それらを、ナレッジ ストア定義のプロジェクションに割り当てることができます。 
+エンリッチメント ツリー自体には、ナレッジ ストアでのコンテンツの表現方法を通知するロジックは含まれません。 データ シェイプは、各テーブル、オブジェクト、およびファイル プロジェクションに含まれるデータのスキーマを提供することで、このギャップを埋めます。 データ シェイプは、エンリッチされたデータのカスタム定義またはビューと考えられます。 必要な数のシェイプを作成してから、それらをナレッジ ストア定義の[プロジェクション](knowledge-store-projection-overview.md)に割り当てることができます。 
 
 ## <a name="approaches-for-creating-shapes"></a>シェイプを作成するための方法
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Symantec Web Security Service (WSS) の統合'
 description: Azure Active Directory と Symantec Web Security Service (WSS) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/24/2021
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 7eb68e8e460c12336e6f10eb65701a542fcc1b3a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 90abed6597f123b291a5af281f109f07df990be5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751890"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471214"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合
+# <a name="tutorial-azure-ad-sso-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure AD SSO と Symantec Web Security Service (WSS) の統合
 
 このチュートリアルでは、Symantec Web Security Service (WSS) アカウントを Azure Active Directory (Azure AD) アカウントに統合して、WSS で Azure AD にプロビジョニングされたエンド ユーザーを SAML 認証を使用して認証し、ユーザー レベルまたはグループ レベルのポリシー ルールを適用できるようにする方法について説明します。
 
 Symantec Web Security Service (WSS) と Azure AD の統合には、次の利点があります。
 
-- WSS アカウントによって使用されるすべてのエンド ユーザーとグループを Azure AD ポータルから管理できます。
+* WSS アカウントによって使用されるすべてのエンド ユーザーとグループを Azure AD ポータルから管理できます。
 
-- エンド ユーザーは、Azure AD 資格情報を使用して WSS で自己認証を行うことができます。
+* エンド ユーザーは、Azure AD 資格情報を使用して WSS で自己認証を行うことができます。
 
-- WSS アカウントに定義されたユーザー レベルおよびグループ レベルのポリシー ルールを適用できます。
+* WSS アカウントに定義されたユーザー レベルおよびグループ レベルのポリシー ルールを適用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,6 +36,9 @@ Symantec Web Security Service (WSS) と Azure AD の統合には、次の利点�
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Symantec Web Security Service (WSS) シングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

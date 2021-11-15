@@ -7,12 +7,12 @@ ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
 ms.custom: mode-api
-ms.openlocfilehash: b4bcd427508f3ecf66b0cca4bdade023c3f87d61
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0924c0eab925c0ba15f8e0bde841d3005535e23f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037817"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843216"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>クイックスタート: Azure PowerShell または Azure CLI を使用して Azure Purview アカウントを作成する
 
@@ -133,7 +133,15 @@ Purview の詳細については、[概要ページを参照してください](
     ---
 
 1. デプロイ コマンドから結果が返されます。 デプロイが成功したかどうかは、`ProvisioningState` を見て確認します。
-    
+
+1. ユーザー アカウントではなくサービス プリンシパルを使用して Azure Purview アカウントをデプロイした場合は、Azure CLI で次のコマンドも実行する必要があります。
+
+    ```azurecli
+    az purview account add-root-collection-admin --account-name --resource-group [--object-id]
+    ```
+  
+    このコマンドを使用すると、Azure Purview アカウントのルート コレクションに対する[コレクション管理者](catalog-permissions.md#roles)権限がユーザー アカウントに付与されます。 これにより、ユーザーは Purview Studio にアクセスして、他のユーザーのアクセス許可を追加できます。 Azure Purview のアクセス許可の詳細については、[アクセス許可に関するガイド](catalog-permissions.md)を参照してください。 コレクションの詳細については、[コレクションの管理に関する記事](how-to-create-and-manage-collections.md)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Purview アカウントを作成する方法について学習しました。
@@ -141,5 +149,5 @@ Purview の詳細については、[概要ページを参照してください](
 次の記事に従い、Purview Studio を操作する方法、コレクションを作成する方法、Purview にアクセス権を付与する方法について学習してください。
 
 * [Purview Studio の使用方法](use-purview-studio.md)
-* [コレクションの作成](quickstart-create-collection.md)
 * [Azure Purview アカウントにユーザーを追加する](catalog-permissions.md)
+* [コレクションの作成](quickstart-create-collection.md)

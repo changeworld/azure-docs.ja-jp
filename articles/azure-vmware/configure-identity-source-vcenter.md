@@ -3,12 +3,12 @@ title: vCenter の外部 ID ソースを構成する
 description: vCenter のために、LDAP または LDAPS を介して、Active Directory を外部 ID ソースとして構成する方法について説明します。
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: 77644c2d52a5eed87ab4dca83632b69834dd4c58
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 37478b65572fba2815121b0712d1a0f2e43376dc
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537114"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506298"
 ---
 # <a name="configure-external-identity-source-for-vcenter"></a>vCenter の外部 ID ソースを構成する
 
@@ -85,7 +85,7 @@ ms.locfileid: "123537114"
    | **名前**  | 外部 ID ソースのユーザー フレンドリ名。**avslap.local** などです。  |
    | **DomainName**  | ドメインの FQDN。   |
    | **DomainAlias**  | Active Directory ID ソースの場合は、ドメインの NetBIOS 名です。 SSPI 認証を使用している場合は、AD ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。     |
-   | **PrimaryUrl**  | 外部 ID ソースのプライマリ URL。**ldap://yourserver:389** などです。  |
+   | **PrimaryUrl**  | 外部 ID ソースのプライマリ URL。**ldap://yourserver:636** などです。  |
    | **SecondaryURL**  | プライマリの障害が発生した場合のセカンダリ フォールバック URL。  |
    | **BaseDNUsers**  |  有効なユーザーを探す場所。**CN=users,DC=yourserver,DC=internal** などです。  LDAP 認証を使用するにはベース DN が必要です。  |
    | **BaseDNGroups**  | グループを探す場所。**CN=group1, DC=yourserver,DC= internal** などです。 LDAP 認証を使用するにはベース DN が必要です。  |

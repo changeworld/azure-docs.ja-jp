@@ -1075,5 +1075,7 @@ items:
         href: 'https://azure.microsoft.com/global-infrastructure/services/'
       - name: サポート オプション
         href: 'https://azure.microsoft.com/support/options/'
+      - name: クォータの増加をサポートに依頼する
+        href: quota-increase.md
       - name: 制限
         href: ../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits

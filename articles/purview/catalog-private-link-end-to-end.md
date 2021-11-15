@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 4f15d39da8f97897498f07892eb90d37a1bd8574
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2d0a74b5674bba6850cbe38f1811c1204acb5e69
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209277"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848213"
 ---
 # <a name="connect-to-your-azure-purview-and-scan-data-sources-privately-and-securely"></a>プライベートかつ安全な Azure Purview への接続とデータ ソースのスキャン
 
@@ -26,7 +26,7 @@ Azure Purview では、"_インジェスト_" プライベート エンドポイ
 
  - BLOB プライベート エンドポイントは、Azure Purview マネージド ストレージ アカウントにリンクされます。
  - キュー プライベート エンドポイントは、Azure Purview マネージド ストレージ アカウントにリンクされます。
- - 名前空間プライベート エンドポイントは、Azure Purview マネージド イベント ハブ名前空間にリンクされます。
+ - 名前空間プライベート エンドポイントは、Azure Purview マネージド Event Hub 名前空間にリンクされます。
 
   :::image type="content" source="media/catalog-private-link/purview-private-link-architecture.png" alt-text="Azure Purview と Private Link アーキテクチャを示す図。":::
 
@@ -180,7 +180,7 @@ Azure Purview のインジェスト プライベート エンドポイントを�
    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="セルフホステッド IR を使用して Azure スキャンを実行する方法を示すスクリーンショット。":::
 
 > [!IMPORTANT]
-> 2021 年 8 月 18 日以降に Azure Purview アカウントを作成した場合は必ず、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新バージョンのセルフホステッド統合ランタイムをダウンロードしてインストールしてください。
+> 必ず [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新バージョンのセルフホステッド統合ランタイムをダウンロードしてインストールしてください。
 
 ## <a name="firewalls-to-restrict-public-access"></a>パブリック アクセスを制限するファイアウォール
 

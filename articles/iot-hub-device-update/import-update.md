@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f616fee894c1eb436770cdafbab7b60d7a1417db
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: caa58c1affc9e4a9cc9d3ec5b63e0b396e289144
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537134"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370424"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Device Update for IoT Hub に更新プログラムを追加する
 新しい更新プログラムを Device Update for IoT Hub に追加する方法について説明します。
@@ -38,7 +38,7 @@ OEM またはソリューション インテグレーターからデバイスを
 
 ## <a name="create-a-device-update-import-manifest"></a>Device Update のインポート マニフェストを作成する
 
-基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
+基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、それを理解し、まず、[イメージベース](device-update-raspberry-pi.md)か[パッケージベース](device-update-ubuntu-agent.md)をお試しください。
 
 1. 更新ファイルが、PowerShell からアクセスできるディレクトリに配置されていることを確認します。
 
@@ -78,7 +78,7 @@ OEM またはソリューション インテグレーターからデバイスを
 
 ## <a name="review-the-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
 
-マニフェストの出力例を以下に示します。 いずれかの項目について不明な点がある場合は、完全な「[インポート マニフェスト スキーマ](import-schema.md)」を参照してください。 
+マニフェストの出力例を以下に示します。 この例では、この更新プログラムを構成するファイルとして、.json ファイルと .zip ファイルの 2 つのファイルがあります。 いずれかの項目について不明な点がある場合は、完全な「[インポート マニフェスト スキーマ](import-schema.md)」を参照してください。 
 ```json
 {
   "updateId": {

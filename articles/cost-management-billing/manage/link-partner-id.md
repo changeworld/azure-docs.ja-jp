@@ -4,23 +4,23 @@ description: Azure の顧客のリソースを管理する際に使用するユ�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 09/08/2021
+ms.date: 11/04/2021
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f554c8e29cbff3b78a3390cb3f6ef155a7a61b6f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b5951b46448d7bfa1ac5010bd17a0a5e7d98b89f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744185"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577804"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
 Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理リンク (PAL) を使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
 
-PAL を使用することで、Microsoft は、Azure の利用者を成功に導いているパートナーを特定、評価することができます。 収益 (Azure 使用による収益) や効果に貢献している組織を、アカウントのアクセス許可 (Azure ロール) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。
+PAL を使用することで、Microsoft は、Azure の利用者を成功に導いているパートナーを特定、評価することができます。 収益 (Azure 使用による収益) や効果に貢献している組織を、アカウントのアクセス許可 (Azure ロール) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。 グループが Azure RBAC にアクセスできる場合は、グループ内のすべてのユーザーに対して PAL が認識されます。
 
 ## <a name="get-access-from-your-customer"></a>顧客からアクセス権を取得する
 

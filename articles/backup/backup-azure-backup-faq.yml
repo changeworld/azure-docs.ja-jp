@@ -4,13 +4,15 @@ metadata:
   description: 一般的な質問への回答
   ms.topic: article
   ms.service: backup
-  ms.date: 06/10/2021
-  ms.openlocfilehash: cf4539afef4df4f09da7eacdf3c195cb08a70e44
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 11/02/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: afa49f9f586540611e41983407f9381de971614b
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122254251"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131507153"
 title: Azure Backup - よく寄せられる質問
 summary: この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
 sections:
@@ -194,6 +196,10 @@ sections:
       Recovery Services コンテナーに転送されたデータのサイズが、バックアップ対象として選択したデータよりも小さいのはなぜでしょうか。
     answer: >
       Azure Backup エージェント、DPM、または Azure Backup Server からバックアップしたデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、コンテナー内のデータのサイズは 30 から 40% 小さくなります。
+  - question: >
+      復旧ポイントの有効期限を表示できますか?
+    answer: >
+      いいえ。スケジュールされたバックアップの有効期限は表示できません。 ただし、バックアップ ジョブを使用して、オンデマンド バックアップの有効期限を表示できます。
   - question: >
       コンテナー内の復旧ポイントから個々のファイルを削除できますか。
     answer: >

@@ -2,13 +2,13 @@
 title: IoT Hub のセキュリティに関する推奨事項
 description: セキュリティに関する推奨事項の概念と Defender for IoT Hub での使用方法について説明します。
 ms.topic: conceptual
-ms.date: 09/26/2021
-ms.openlocfilehash: 6e4af6e4cadbd45e91219d2fce6d87c4fb555ece
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 5a4d93c30a01cc0fa93cbb3e4835bf8a86ccc622
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083336"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331587"
 ---
 # <a name="security-recommendations-for-iot-hub"></a>IoT Hub のセキュリティに関する推奨事項
 
@@ -21,24 +21,31 @@ Defender for IoT では、Azure リソースと IoT デバイスがスキャン�
 
 推奨事項のアラートは、ご利用の環境のセキュリティ体制を改善するためのアクションの分析情報と推奨事項を示します。
 
-| 重大度 | Name | Data Source | 説明 |
-|--|--|--|--|
-| 高 | 複数のデバイスで同一の認証資格情報が使われています | IoT Hub | IoT Hub 認証資格情報が複数のデバイスで使われています。 このプロセスは、不正なデバイスが正当なデバイスを偽装していることを示している場合があります。 資格情報を重複して使用すると、悪意のあるアクターによるデバイス偽装のリスクが高くなります。 |
-| Medium | 既定の IP フィルター ポリシーを拒否にする必要があります | IoT Hub | 許可されるトラフィックを定義するルールを IP フィルター構成に含めて、それ以外のトラフィックはすべて既定で拒否する必要があります。 |
-| Medium | IP フィルター ルールに含まれている IP 範囲が大きい | IoT Hub | IP 許可フィルター ルールのソース IP 範囲が大きすぎます。 過度に制限の少ないルールでは、ご使用の IoT ハブが悪意のあるアクターに公開されてしまう可能性があります。 |
-| 低 | IoT Hub で診断ログを有効にする | IoT Hub | ログを有効にし、それらを最大 1 年間保持します。 ログを保持することで、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
-| 高 | 複数のデバイスで同一の認証資格情報が使われています | IoT Hub | IoT Hub 認証資格情報が複数のデバイスで使われています。 これは、不正なデバイスが正規のデバイスになりすましていることを示している可能性があり、悪意のあるアクターによるデバイスのなりすましのリスクもあります。 |
-| 高 | IoT Edge モジュールの IoT Edge モデル ツインに構成された高レベルのアクセス許可 | IoT Hub | IoT Edge モジュールは、広範な Linux 機能またはホストレベルのネットワーク アクセス (ホスト マシンとのデータの送受信) を持ち、特権モードで実行されるように構成されています。 |
-| Medium | ACR リポジトリで使用されないサービス プリンシパル | IoT Hub | ACR リポジトリから IoT Edge モジュールをプルするために使用される認証スキーマには、サービス プリンシパル認証が使用されません。 |
-| Medium | TLS 暗号スイートのアップグレードが必要です | IoT Hub | セキュリティで保護されていない TLS 構成が検出されました。 TLS 暗号スイートをすぐにアップグレードすることをお勧めします。 |
-| Medium | 既定の IP フィルター ポリシーを拒否にする必要があります | IoT Hub | 既定の IP フィルター構成では、許可されるトラフィックを定義する規則を設定し、その他のトラフィックはすべて拒否する必要があります |
-| Medium | IP フィルター ルールには幅広い IP 範囲が含まれています | IoT Hub | IP フィルター規則ソースの許可される IP 範囲が大きすぎます。 過度に制限の少ない規則では、ご使用の IoT ハブが悪意のあるアクターに公開されてしまう可能性があります。 |
-| Medium | SecurityGroup に不整合なモジュール設定があります | IoT Hub | このデバイス セキュリティ グループ内で、セキュリティ グループのその他の項目と比較すると、異常なデバイスは IoT Edge モジュールの設定が一貫していません。 |
-| 低 | IoT Edge Hub メモリを最適化できます | IoT Hub | ソリューション内の Edge モジュールによって使用されていないプロトコルのプロトコル ヘッドをオフにして、IoT Edge Hub のメモリ使用量を最適化します。 |
-| 低 | IoT Edge モジュールにログが構成されていません | IoT Hub | この IoT Edge モジュールでは、ログが無効になっています。 |
+### <a name="high-severity"></a>重要度レベル<bpt id="p1">**</bpt>高<ept id="p1">**</ept>
+
+| 重大度 | Name | Data Source | 説明 | RecommendationType |
+|--|--|--|--|--|
+| 高 | 複数のデバイスで同一の認証資格情報が使われています | IoT Hub | IoT Hub 認証資格情報が複数のデバイスで使われています。 これは、不正なデバイスが正規のデバイスになりすましていることを示している可能性があり、悪意のあるアクターによるデバイスのなりすましのリスクもあります。 | IoT_SharedCredentials |
+| 高 | IoT Edge モジュールの IoT Edge モデル ツインに構成された高レベルのアクセス許可 | IoT Hub | IoT Edge モジュールは、広範な Linux 機能またはホストレベルのネットワーク アクセス (ホスト マシンとのデータの送受信) を持ち、特権モードで実行されるように構成されています。 | IoT_PrivilegedDockerOptions |
+
+### <a name="medium-severity"></a>重要度レベル<bpt id="p1">**</bpt>中<ept id="p1">**</ept>
+
+| 重大度 | Name | Data Source | 説明 | RecommendationType |
+|--|--|--|--|--|
+| Medium | ACR リポジトリで使用されないサービス プリンシパル | IoT Hub | ACR リポジトリから IoT Edge モジュールをプルするために使用される認証スキーマには、サービス プリンシパル認証が使用されません。 | IoT_ACRAuthentication |
+| Medium | TLS 暗号スイートのアップグレードが必要です | IoT Hub | セキュリティで保護されていない TLS 構成が検出されました。 TLS 暗号スイートをすぐにアップグレードすることをお勧めします。 | IoT_VulnerableTLSCipherSuite |
+| Medium | 既定の IP フィルター ポリシーを拒否にする必要があります | IoT Hub | 既定の IP フィルター構成では、許可されるトラフィックを定義する規則を設定し、その他のトラフィックはすべて拒否する必要があります | IoT_IPFilter_DenyAll |
+| Medium | IP フィルター ルールには幅広い IP 範囲が含まれています | IoT Hub | IP フィルター規則ソースの許可される IP 範囲が大きすぎます。 過度に制限の少ない規則では、ご使用の IoT ハブが悪意のあるアクターに公開されてしまう可能性があります。 | IoT_IPFilter_PermissiveRule |
+| Medium | IP フィルターに推奨される規則 | IoT Hub | IP フィルターを、IotHub の動作によって取得され次の規則に変更することをお勧めします。 | IoT_RecommendedIpRulesByBaseLine |
+| Medium | SecurityGroup に不整合なモジュール設定があります | IoT Hub | このデバイス セキュリティ グループ内で、セキュリティ グループのその他の項目と比較すると、異常なデバイスは IoT Edge モジュールの設定が一貫していません。 | IoT_InconsistentModuleSettings |
+
+### <a name="low-severity"></a>重大度: 低
+
+| 重大度 | Name | Data Source | 説明 | RecommendationType |
+|--|--|--|--|--|
+| 低 | IoT Edge Hub メモリを最適化できます | IoT Hub | ソリューション内の Edge モジュールによって使用されていないプロトコルのプロトコル ヘッドをオフにして、IoT Edge Hub のメモリ使用量を最適化します。 | IoT_EdgeHubMemOptimize |
+| 低 | IoT Edge モジュールにログが構成されていません | IoT Hub | この IoT Edge モジュールでは、ログが無効になっています。 | IoT_EdgeLoggingOptions |
 
 ## <a name="next-steps"></a>次のステップ
 
-- Defender for IoT サービスの<bpt id="p1">[</bpt>概要<ept id="p1">](overview.md)</ept>
-- <bpt id="p1">[</bpt>セキュリティ データにアクセスする<ept id="p1">](how-to-security-data-access.md)</ept>方法を学習ぶ
-- <bpt id="p1">[</bpt>デバイスの調査<ept id="p1">](how-to-investigate-device.md)</ept>について学ぶ
+- [クラシック Defender for IoT デバイスのセキュリティ アラート](agent-based-security-alerts.md)の詳細を理解します

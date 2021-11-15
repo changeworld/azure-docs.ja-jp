@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/18/2019
-ms.openlocfilehash: 3ede36ef718fbe4ef535e9999edf55a0381cfd2e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 11/3/2021
+ms.openlocfilehash: 67b3ad49033a2fb4708b93c65e0d9f7110726cee
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538553"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850966"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis のフェールオーバーと修正プログラムの適用
 
@@ -84,7 +84,7 @@ Azure Cache for Redis サービスでは、お使いのキャッシュを最新�
 
 例外の数と種類は、キャッシュで接続が閉じられたときに、その要求がコード パス内のどこにあるかによって異なります。 たとえば、要求を送信した操作が、フェールオーバーの発生で応答を受信しない場合、タイムアウト例外を取得する可能性があります。 接続が閉じられたオブジェクトは、再接続が正常に行われるまで、新しい要求で接続例外を受け取ります。
 
-ほとんどのクライアント ライブラリは、構成されている場合、キャッシュへの再接続を試みます。 ただし、予期しないバグによってライブラリ オブジェクトが回復不能な状態になることがあります。 エラーが事前構成された時間を超えて続く場合は、接続オブジェクトを再作成する必要があります。 Microsoft.NET やその他のオブジェクト指向言語では、アプリケーションの再起動を必要としない接続の再作成は [Lazy\<T\> パターン](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)を使用して実現できます。
+ほとんどのクライアント ライブラリは、構成されている場合、キャッシュへの再接続を試みます。 ただし、予期しないバグによってライブラリ オブジェクトが回復不能な状態になることがあります。 事前に構成された時間を超えてエラーが続く場合は、接続オブジェクトを再作成する必要があります。 Microsoft .NET およびその他のオブジェクト指向言語では、[ForceReconnect パターン](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis)を使用することで、アプリケーションを再起動せずに接続を再作成できます。
 
 ### <a name="can-i-be-notified-in-advance-of-planned-maintenance"></a>計画メンテナンスの通知を前もって受け取ることはできますか?
 
@@ -100,7 +100,7 @@ Azure Cache for Redis では、[AzureRedisEvents](https://github.com/Azure/Azure
 
 数分後にメンテナンス操作が完了した時点で、別の通知が送信されます。
 
-アプリケーションは、この通知の内容を使用して、メンテナンスの実行中にキャッシュの使用を回避するアクションを実行できます。 キャッシュには、メンテナンス操作中にトラフィックのルートがそのキャッシュから切り離されるサーキット ブレーカー パターンが実装されている場合があります。 代わりに、トラフィックは永続ストアに直接送信されます。 この通知は、ユーザーが警告を受け取り、手動でアクションを実行するための時間を確保するためのものではありません。
+アプリケーションは、この通知の内容を使用して、メンテナンスの実行中にキャッシュの使用を回避するアクションを実行できます。 キャッシュには、メンテナンス操作中にトラフィックのルートがそのキャッシュから切り離されるサーキット ブレーカー パターンが実装されている場合があります。 代わりに、トラフィックは永続ストアに直接送信されます。 この通知は、ユーザーがアラートを受け取り、手動でアクションを実行するための時間を確保するためのものではありません。
 
 ほとんどの場合、アプリケーションで `AzureRedisEvents` にサブスクライブしたり、通知に応答したりする必要はありません。 代わりに、[回復性の組み込み](#build-in-resiliency)を実装することをお勧めします。
 

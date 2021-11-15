@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 7d01566c2c9f20b86d3cf135fc126bd5d5982e98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0978293d82de908ca31706fa40ebfdc489fab8fd
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056321"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848858"
 ---
 # <a name="connect-to-and-manage-dedicated-sql-pools-in-azure-purview"></a>Azure Purview で専用 SQL プールに接続して管理する
 
@@ -26,7 +26,9 @@ ms.locfileid: "131056321"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)| [あり](#scan)| [あり](#scan)| [あり](#scan)| いいえ | いいえ|
+| [あり](#register) | [あり](#scan)| [あり](#scan)| [あり](#scan)| [あり](#scan)| いいえ | いいえ** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 ### <a name="known-limitations"></a>既知の制限事項
 

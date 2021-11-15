@@ -4,7 +4,7 @@ summary: セキュリティは、Azure のすべての要素に統合されて�
 brand: azure
 metadata:
   title: Azure のセキュリティのドキュメント
-  description: Azure のセキュリティについて説明します。 セキュリティの基礎、ベスト プラクティスとパターン、Azure Security Center についての情報をご覧ください。
+  description: Azure のセキュリティについて説明します。 セキュリティの基礎、ベスト プラクティスとパターン、Microsoft Defender for Cloud についての情報をご覧ください。
   services: security
   ms.service: security
   ms.subservice: na
@@ -115,7 +115,7 @@ conceptualContent:
       links:
         - url: ../security-center/security-center-get-started.md
           itemType: quickstart
-          text: サブスクリプションでの Security Center の利用開始
+          text: サブスクリプションを Defender for Cloud へオンボードする
         - url: ../security-center/security-center-just-in-time.md
           itemType: how-to-guide
           text: Just-In-Time 仮想マシン アクセス
@@ -129,13 +129,13 @@ conceptualContent:
       links:
         - url: ../defender-for-iot/overview.md
           itemType: overview
-          text: Azure Security Center for IoT の概要
+          text: Microsoft Defender for IoT の概要
         - url: ../defender-for-iot/architecture.md
           itemType: how-to-guide
-          text: Azure Security Center for IoT のアーキテクチャ
+          text: Microsoft Defender for IoT のアーキテクチャ
         - url: ../defender-for-iot/getting-started.md
           itemType: how-to-guide
-          text: Azure Security Center for IoT の使用を開始する
+          text: Microsoft Defender for IoT での作業を開始する
       footerLink:
         url: /azure/asc-for-iot/
         text: 詳細情報
@@ -143,13 +143,13 @@ conceptualContent:
       links:
         - url: ../sentinel/overview.md
           itemType: overview
-          text: Azure Sentinel とは
+          text: Microsoft Sentinel とは
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
-          text: Azure Sentinel のオンボード
+          text: Microsoft Sentinel のオンボード
         - url: ../sentinel/get-visibility.md
           itemType: quickstart
-          text: Azure Sentinel の概要
+          text: Microsoft Quantum の概要
       footerLink:
         url: ../sentinel/index.yml
         text: 詳細情報
@@ -157,13 +157,13 @@ conceptualContent:
       links:
         - url: ../security-center/security-center-alerts-overview.md
           itemType: concept
-          text: Azure Security Center のセキュリティ アラート
+          text: Microsoft Defender for Cloud のセキュリティアラート
         - url: ../storage/common/azure-defender-storage-configure.md
           itemType: concept
-          text: Azure Defender for Storage
+          text: Microsoft Defender for Storage
         - url: ../azure-sql/database/threat-detection-overview.md
           itemType: concept
-          text: Azure Defender for SQL
+          text: Microsoft Defender for SQL
       footerLink:
         url: ./fundamentals/threat-detection.md
         text: 詳細情報

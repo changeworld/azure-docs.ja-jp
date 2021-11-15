@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 03/19/2019
-ms.openlocfilehash: d534736e72bb97caa96b1001d379aefd7e3c7c6b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: ebad0e9da1595d06dc2966d9b0c83dad9680556e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698806"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226794"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance でインメモリ テクノロジを使用してパフォーマンスを最適化する
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -48,18 +48,10 @@ Azure SQL Database と Azure SQL Managed Instance には、次のインメモリ
 
 クエリとトランザクションの処理が効率化するため、インメモリ テクノロジはコストの削減にも役立ちます。 通常は、パフォーマンスの向上を実現するためにデータベースの価格レベルをアップグレードする必要はありません。 場合によっては、インメモリ テクノロジでパフォーマンスを向上させながら価格レベルを下げられる場合さえあります。
 
-インメモリ OLTP がパフォーマンスの著しい向上を促した例を 2 つ紹介します。
-
-- インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu)。
-- サンプル ワークロードでリソースの消費量が大幅に向上したことが、[インメモリ OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) に関するビデオで示されています。 詳細については、[インメモリ OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu)。 詳細については、[インメモリ OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) に関するブログ記事を参照してください。
 
 > [!NOTE]  
 > インメモリ テクノロジは、Premium レベルと Business Critical レベルで使用できます。
-
-次のビデオでは、インメモリ テクノロジによるパフォーマンス向上の可能性について説明されています。 表示されるパフォーマンスの向上は、常にさまざまな要因 (ワークロードとデータの性質、データベースのアクセス パターンなど) に依存していることに注意してください。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
->
 
 この記事では、Azure SQL Database と Azure SQL Managed Instance に固有のインメモリ OLTP と列ストア インデックスの側面について説明し、サンプルも示します。
 
@@ -88,12 +80,7 @@ SQL Server でのインメモリの詳細については、次を参照してく
 > [!Note]
 > インメモリ OLTP テクノロジは、メモリに完全に格納できるデータ構造用に設計されています。 インメモリ データはディスクにオフロードできないため、十分なメモリがあるデータベースを使用するようにしてください。 詳細については、「[インメモリ OLTP のデータのサイズとストレージ上限](#data-size-and-storage-cap-for-in-memory-oltp)」を参照してください。
 
-インメモリ OLTP の簡単な手引き:[クイック スタート 1:T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp) (作業の開始に役立つ別の記事)
-
-テクノロジについての詳細なビデオ:
-
-- [インメモリ OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (パフォーマンス上のメリットと、こうした結果を自身で再現する手順を示しています)
-- [インメモリ OLTP のビデオ:概要および使用するタイミングと方法](/archive/blogs/sqlserverstorageengine/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it)
+- インメモリ OLTP の簡単な手引き: [クイック スタート 1: T-SQL のパフォーマンスを高速化するためのインメモリ OLTP テクノロジ](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)。
 
 特定のデータベースがインメモリ OLTP をサポートしているかどうかをプログラムによって確認する方法があります。 次の Transact-SQL クエリを実行できます。
 

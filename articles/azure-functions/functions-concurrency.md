@@ -5,19 +5,19 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 9/24/2021
 ms.author: cachai
-ms.openlocfilehash: 60d6861fbf0f9c02df78674f85633a962fea09a3
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 21702bf5bdc8eeee014305c106006a18640c001f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367784"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847662"
 ---
 # <a name="concurrency-in-azure-functions"></a>Azure Functions における同時実行
 
 この記事では、Azure Functions におけるイベントドリブン トリガーの同時実行制御の動作について説明します。 また、同時実行制御の動作を最適化するための新しい動的モデルについても説明します。 
 
 >[!NOTE]
->動的な同時実行制御モデルは現在プレビューの段階です。 動的な同時実行制御のサポートは、特定のバインド拡張機能に限定されており、こちらも現在はプレビューの段階です。  
+>動的な同時実行制御モデルは現在プレビューの段階です。 動的な同時実行制御のサポートは、特定のバインド拡張機能に限定されています。
 
 Functions のホスティング モデルを使用すると、複数の関数呼び出しを 1 つのコンピューティング インスタンスで同時に実行することができます。 たとえば、スケールアウトして複数のインスタンスで実行している関数アプリに、3 つの異なる関数がある場合を考えてみましょう。 このシナリオでは、関数アプリが実行されている各 VM インスタンスで、各関数によって呼び出しが処理されます。 1 つのインスタンス上の関数呼び出しは、メモリ、CPU、接続など、同じ VM のコンピューティング リソースを共有します。 アプリが動的プラン (従量課金プランまたは Premium) でホストされている場合、プラットフォームは、受信イベントの数に基づいて、関数アプリ インスタンスの数をスケールアップまたはスケールダウンします。 詳細については、[イベント ドリブン スケーリング](./Event-Driven-Scaling.md)に関するページを参照してください。 関数を Dedicated (App Service) プランでホストする場合は、インスタンスを手動で設定するか、[自動スケーリング スキームを設定](dedicated-plan.md#scaling)します。
 
@@ -38,7 +38,7 @@ Functions のホスティング モデルを使用すると、複数の関数呼
 Functions では、同じプランで実行されているすべての関数アプリの同時実行制御の構成を簡略化する動的な同時実行制御モデルが提供されるようになりました。 
 
 > [!NOTE]
-> 現在、動的な同時実行制御は、Service Bus トリガーでのみサポートされており、**Microsoft.Azure.WebJobs.Extensions.ServiceBus** 拡張機能の[バージョン 5.0.0-beta.6 (またはそれ以降)](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6) を使用する必要があります。
+> 動的な同時実行は、現在、Azure Blob、Azure Queue、および Service Bus トリガーのみでサポートされており、[以下の拡張機能のサポート セクション](#extension-support)に記載されているバージョンを使用する必要があります。
 
 ### <a name="benefits"></a>メリット
 
@@ -79,7 +79,20 @@ Functions では、同じプランで実行されているすべての関数ア�
 
 ### <a name="extension-support"></a>拡張機能のサポート 
 
-動的な同時実行制御は、ホスト レベルで関数アプリに対して有効化され、動的な同時実行制御をサポートするすべての拡張機能はそのモードで実行されます。 動的な同時実行制御を行うには、ホストと個々のトリガー拡張機能との連携が必要です。 プレビューでは、動的な同時実行制御は、以下の拡張機能の最新 (プレビュー) バージョンのみでサポートされます。
+動的な同時実行制御は、ホスト レベルで関数アプリに対して有効化され、動的な同時実行制御をサポートするすべての拡張機能はそのモードで実行されます。 動的な同時実行制御を行うには、ホストと個々のトリガー拡張機能との連携が必要です。 プレビューでは、動的な同時実行は、次の拡張機能の一覧にあるバージョンのみでサポートされています。
+
+#### <a name="azure-queues"></a>Azure キュー
+
+Azure Queue Storage トリガーには、独自のメッセージ ポーリング ループがあります。 静的な構成を使用する場合、同時実行は `BatchSize`/`NewBatchThreshold` 構成オプションによって制御されます。 動的な同時実行を使用する場合、これらの構成値は無視されます。 動的な同時実行はメッセージ ループに統合されるため、1 回のイテレーションでフェッチされるメッセージの数は動的に調整されます。 スロットルが有効になっている (ホストが過負荷になっている) 場合は、スロットルが無効になるまでメッセージ処理は一時停止されます。 スロットルが無効になると、同時実行数が増加します。
+
+キューに動的な同時実行を使用するには、ストレージ拡張機能の[バージョン 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) を使用する必要があります。
+
+#### <a name="azure-blobs"></a>Azure BLOB
+
+内部的に、Azure BLOB ストレージ トリガーでは、Azure キュー トリガーで使用されるのと同じインフラストラクチャが使用されます。 新しい、または更新された BLOB を処理する必要がある場合は、プラットフォームで管理されているコントロール キューにメッセージが書き込まれ、そのキューは、キュー トリガーに使用されるのと同じロジックを使用して処理されます。 動的な同時実行が有効になっている場合は、そのコントロール キューの処理に対する同時実行は動的に管理されます。
+
+BLOB に動的な同時実行を使用するには、ストレージ拡張機能の[バージョン 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) を使用する必要があります。
+
 
 #### <a name="service-bus"></a>Service Bus 
 
@@ -89,9 +102,9 @@ Functions では、同じプランで実行されているすべての関数ア�
 - **トピックまたはキューのセッション ベースのシングル ディスパッチ処理**: 関数を呼び出すたびに、1 つのメッセージが処理されます。 トピックまたはキューのアクティブなセッションの数に応じて、各インスタンスは 1 つ以上のセッションをリースします。 セッション内の順序を保証するために、各セッションのメッセージは順番に処理されます。 動的な同時実行制御を使用しない場合、同時実行は `MaxConcurrentSessions` 設定によって制御されます。 動的な同時実行が有効になっている場合、`MaxConcurrentSessions` は無視され、各インスタンスで処理されるセッション数は動的に調整されます。 
 - **バッチ処理**: 関数を呼び出すたびに、`MaxMessageCount` 設定によって制御されるメッセージのバッチが処理されます。 バッチ呼び出しは直列であるため、バッチによってトリガーされる関数の同時実行数は常に 1 つであり、動的な同時実行制御は適用されません。 
 
-Service Bus トリガーで動的な同時実行制御を使用するには、**Microsoft.Azure.WebJobs.Extensions.ServiceBus** 拡張機能の[バージョン 5.0.0-beta.6 (またはそれ以降)](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6) を使用する必要があります。 
+Service Bus トリガーで動的な同時実行制御を使用できるようにするには、Service Bus 拡張機能の[バージョン 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) を使用する必要があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、次のリソースを参照してください。
 

@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 334eb66a6372272b7b5d467c5603e694b1ad8683
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c57e93b68c6a9252fbb9a0551b3b987c44d759da
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610942"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841679"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 > [!IMPORTANT]
@@ -30,6 +30,9 @@ Key Vault マネージド ストレージ アカウント キー機能を使用�
 - ストレージ アカウント キーの管理は Key Vault のみが行う必要があります。 キーを自分で管理したり、Key Vault のプロセスに干渉したりしないでください。
 - ストレージ アカウント キーの管理は、1 つの Key Vault オブジェクトのみが行う必要があります。 複数のオブジェクトからのキー管理を許可しないでください。
 - キーの再生成は、Key Vault のみを使用して行います。 ストレージ アカウント キーを手動で再生成しないでください。
+
+> [!IMPORTANT]
+> ストレージ アカウントでキーを直接再生成すると、管理対象ストレージ アカウントのセットアップが中断され、使用中の SAS トークンが無効になり、障害を引き起こす可能性があります。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

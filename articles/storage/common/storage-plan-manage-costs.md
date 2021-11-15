@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 51335fe48208423883706796fe4812ec0e0af5fe
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 8cb7f667f2898d1508df2f58a3aea2ced68582e1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275717"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474801"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob Storage のコストを計画および管理する
 
@@ -117,7 +117,7 @@ Azure Storage の予約容量を使用して BLOB データのストレージ �
 
 コスト効率に優れたアクセス層に BLOB データを配置することで、コストを削減できます。 データの使用に関するコストを最適化するように設計された 3 つの層から選択します。 たとえば、"*ホット*" 層のストレージ コストは高くなりますが、アクセス コストは低くなります。 そのため、データに頻繁にアクセスする場合は、ホット層が最もコスト効率の高い選択肢になる可能性があります。 データにアクセスする頻度が少ない場合は、データを格納するコストを削減すると同時に、データにアクセスするコストが発生するため、"*コールド*" または "*アーカイブ*" 層が最も意味がある可能性があります。
 
-詳細については、「[BLOB データのホット、クール、アーカイブのアクセス層](../blobs/access-tiers-overview.md?tabs=azure-portal)」を参照してください。
+詳細については、「[BLOB データのホット、クールおよびアーカイブ アクセス層](../blobs/access-tiers-overview.md?tabs=azure-portal)」を参照してください。
 
 #### <a name="automatically-move-data-between-access-tiers"></a>アクセス層間でデータを自動的に移動する
 

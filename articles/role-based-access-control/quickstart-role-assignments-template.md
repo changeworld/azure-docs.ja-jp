@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 04/28/2021
 ms.author: rolyon
-ms.openlocfilehash: 48be24436e032f044e8f23238059e16b55d9cf5c
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 0fb96bedc12939c130b7fa4c7feee4c7967e0e77
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886900"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055683"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure でのロールを割り当てる
 
@@ -37,7 +37,7 @@ Azure ロールを割り当てたりロール割り当てを削除したりす�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/)からのものです。 テンプレートには、3 つのパラメーターとリソース セクションがあります。 リソース セクションには、ロールの割り当ての 3 つの要素 (セキュリティ プリンシパル、ロールの定義、スコープ) が含まれることに注意してください。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/)からのものです。 テンプレートには、2 つの parameters と 1 つの resources セクションがあります。 リソース セクションには、ロールの割り当ての 3 つの要素 (セキュリティ プリンシパル、ロールの定義、スコープ) が含まれることに注意してください。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
@@ -66,7 +66,7 @@ Azure ロールを割り当てたりロール割り当てを削除したりす�
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json"
 
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleAssignmentName $roleAssignmentName -roleDefinitionID $roleDefinitionId -principalId $principalId
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleDefinitionID $roleDefinitionId -principalId $principalId
     ```
 
 1. リソース グループ名 (ExampleGrouprg など) を入力します。
@@ -96,7 +96,6 @@ Azure ロールを割り当てたりロール割り当てを削除したりす�
     Parameters              :
                               Name                  Type                       Value
                               ====================  =========================  ==========
-                              roleAssignmentName    String                     {roleAssignmentName}
                               roleDefinitionID      String                     9980e02c-c2be-4d73-94e8-173b1dc7cf3c
                               principalId           String                     {principalId}
 

@@ -8,14 +8,16 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bacf4f808a7e963c11e8790636dabe1f3f4e4a47
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 702b2fcd2c5cb88adf7c610287dbb9be7089268b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129044191"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258318"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Azure Spring Cloud で分散トレースを使用する (非推奨)
+> [!NOTE]
+> 分散トレースは非推奨になっています。 詳しくは、「[Azure Spring Cloud での Application Insights Java In-Process Agent](./how-to-application-insights.md)」をご覧ください。
 
 Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
@@ -105,7 +107,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 「[初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)」クイックスタートを完了して、Azure Spring Cloud サービスをプロビジョニングして実行します。
+ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 [Azure Spring Cloud への初めての Spring Boot アプリのデプロイ](./quickstart.md)に関するクイックスタートを完了し、Azure Spring Cloud サービスをプロビジョニングして実行します。
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 

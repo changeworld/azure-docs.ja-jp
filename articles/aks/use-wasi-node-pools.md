@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で WebAssembly System Interface (WA
 services: container-service
 ms.topic: article
 ms.date: 10/12/2021
-ms.openlocfilehash: a15818cc352402cc6b4ba0f302228e183ab1d822
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 91649a6c7893970eee5685554385eed1493c0094
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007000"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265965"
 ---
 # <a name="create-webassembly-system-interface-wasi-node-pools-in-azure-kubernetes-service-aks-to-run-your-webassembly-wasm-workload-preview"></a>Azure Kubernetes Service (AKS) で WebAssembly System Interface (WASI) ノード プールを作成して WebAssembly (WASM) ワークロードを実行する (プレビュー)
 
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>制限事項
 
-* 同じノード プールで WebAssebmly とコンテナーを実行できません。
+* 同じノード プールで WebAssebmly とコンテナーを実行することはできません。
 * Wasmtime プロバイダーを使用して、WebAssembly (WASI) ランタイムのみを使用できます。
 * WASM/WASI ノード プールは、システム ノード プールには使用できません。
 * WASM/WASI ノード プールの *os-type* は Linux である必要があります。

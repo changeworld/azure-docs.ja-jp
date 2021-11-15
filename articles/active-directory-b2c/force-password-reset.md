@@ -12,16 +12,18 @@ ms.date: 09/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7c350c04071dd5f01804aaea57dd7390dc00bad5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4c5802d9cd1fc9a7a41d38bc70e9d384882a1ea1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130236715"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424327"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードの強制リセット フローを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="overview"></a>概要
 
@@ -33,11 +35,19 @@ ms.locfileid: "130236715"
 
 パスワードのリセット フローは、パスワードが含まれる[電子メール アドレス](sign-in-options.md#email-sign-in)や[ユーザー名](sign-in-options.md#username-sign-in)を使ってサインインを行う Azure AD B2C のローカル アカウントに適用されます。
 
-::: zone pivot="b2c-user-flow"
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+この機能は現在、ユーザー フローでのみ使用できます。 セットアップ手順については、上の **[ユーザー フロー]** を選択してください。 カスタム ポリシーの場合は、初回ログオン時にパスワードを強制的にリセットの [GitHub サンプル](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon)と以下の前提条件を使います。
+
+::: zone-end
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="configure-your-user-flow"></a>ユーザー フローを構成する
 
@@ -116,12 +126,6 @@ Content-type: application/json
 ### <a name="password-expiry-duration"></a>パスワードの有効期間
 
 パスワードの有効期間の既定値は **90** 日です。 値を構成するには、Windows PowerShell の Azure Active Directory モジュールから [Set-MsolPasswordPolicy](/powershell/module/msonline/set-msolpasswordpolicy) コマンドレットを使用します。 このコマンドは、設定した日数の経過後にすべてのユーザーのパスワードの有効期限が切れるように、テナントを更新します。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-この機能は現在、ユーザー フローでのみ使用できます。 セットアップ手順については、上の **[ユーザー フロー]** を選択してください。 カスタム ポリシーの場合は、初回ログオン時にパスワードを強制的にリセット [GitHub サンプル](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon)を使用します。
 
 ::: zone-end
 

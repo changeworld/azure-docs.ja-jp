@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 27b0841e601fb7d2eaa7712495b7440a0b886d7c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a1ae8cd56d705df0234425488029ca7073c6dfea
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769267"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347710"
 ---
 # <a name="migrate-failover-cluster-instance-to-sql-server-on-azure-vms"></a>フェールオーバー クラスター インスタンスを Azure VM 上の SQL Server に移行する
 
@@ -325,7 +325,7 @@ VM を移行し終えたら、クラスターを再構成します。 次の手�
    NumberofNodes | オプション | フェールオーバー クラスター インスタンス内のノード数を指定します。 このパラメーターは、作成する共有ディスクの適切な SKU を識別するために使用されます。 既定では、このスクリプトは、クラスター内のノード数が 2 であると想定しています。   
    DiskNamePrefix | オプション | 共有ディスクの名前に追加するプレフィックスを指定します。 
    
-   ```powershell 
+   ```powershell
    ./Create-SharedDisks.ps1 -ResourceGroupName $resoucegroupname -NumberofNodes $nodesincluster -DiskNamePrefix $disknameprefix 
    ```
 
@@ -336,7 +336,7 @@ VM を移行し終えたら、クラスターを再構成します。 次の手�
    ResourceGroupName | Mandatory | 移行するサーバーが含まれるリソース グループの名前を指定します。
    StartingLunNumber | オプション |共有ディスクの接続先として使用できる開始 LUN 番号を指定します。 既定では、スクリプトは 0 の LUN の共有ディスクから接続しようとします。  
    
-   ```powershell 
+   ```powershell
    ./Attach-ShareDisks.ps1 -ResourceGroupName $resoucegroupname 
    ```
 
@@ -374,10 +374,10 @@ SQL Server のフェールオーバー クラスター インスタンスの準�
     - [Azure Backup サービス](../../../backup/quick-backup-vm-portal.md)を使用して、Azure VM をバックアップすることで、データの安全性を保持します。 
     - Azure VM を [Site Recovery](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md) のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../../../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../../../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
     - [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 

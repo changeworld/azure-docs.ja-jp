@@ -3,28 +3,29 @@ title: Microsoft Defender for servers - 利点と機能
 description: Microsoft Defender for servers の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 09/05/2021
+ms.date: 11/02/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 121809ab32db6811eb6755c857f13a3469cbcfa0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a02c6305dd3fecfcc3e83d48f228e1753dda1e2b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131061050"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467589"
 ---
 # <a name="introduction-to-microsoft-defender-for-servers"></a>Microsoft Defender for servers の概要
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Microsoft Defender for servers によって、お使いの Windows マシンと Linux マシンを対象とした脅威検出および高度な防御が追加されます。
+Microsoft Defender for servers は、Microsoft Defender for Cloud の強化されたセキュリティ機能の 1 つです。 Azure、オンプレミス、またはマルチクラウド環境で実行されている Windows マシンと Linux マシンに脅威検出と高度な防御を追加するために使用してください。
 
-Windows の場合、Microsoft Defender for Cloud は Azure サービスと統合され、Windows ベースのマシンを監視および保護します。 Defender for Cloud は、これらすべてのサービスからのアラートと修復の提案を使いやすい形式で示します。
+ハイブリッドとマルチクラウドの環境のマシンを保護するために、Defender for Cloud では [Azure Arc](../azure-arc/index.yml) を使用します。こちらのクイック スタートの説明に従って、ハイブリッドおよびマルチクラウドのマシンを接続してください:
+- [Azure 以外のマシンを Microsoft Defender for Cloud に接続する](quickstart-onboard-machines.md)
+- [AWS アカウントを Microsoft Defender for Cloud に接続する](quickstart-onboard-aws.md)
 
-Linux の場合、Defender for Cloud は auditd (最も一般的な Linux 監査フレームワークの 1 つ) を使用して、Linux マシンから監査レコードを収集します。
-
+> [!TIP]
+> 他のクラウド環境で実行されているマシンに関連する Defender for servers の機能の詳細については、「[仮想マシンとサーバーでサポートされている機能](supported-machines-endpoint-solutions-clouds.md?tabs=features-windows#supported-features-for-virtual-machines-and-servers-)」を参照してください。
 
 ## <a name="what-are-the-benefits-of-microsoft-defender-for-servers"></a>Microsoft Defender for servers の利点
 
@@ -84,6 +85,14 @@ Microsoft Defender for servers には、次のような脅威検出および保�
 
     Linux アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-linux)に関するページを参照してください。
 
+## <a name="how-does-defender-for-servers-collect-data"></a>Defender for servers によるデータの収集方法
+
+Windows の場合、Microsoft Defender for Cloud は Azure サービスと統合され、Windows ベースのマシンを監視および保護します。 Defender for Cloud は、これらすべてのサービスからのアラートと修復の提案を使いやすい形式で示します。
+
+Linux の場合、Defender for Cloud は auditd (最も一般的な Linux 監査フレームワークの 1 つ) を使用して、Linux マシンから監査レコードを収集します。
+
+ハイブリッドおよびマルチクラウドのシナリオの場合、Defender for Cloud は [Azure Arc](../azure-arc/index.yml) と統合され、これらの Azure 以外のマシンが Azure リソースと見なされるようにします。 
+
 
 ## <a name="simulating-alerts"></a>アラートのシミュレーション
 
@@ -96,7 +105,7 @@ Microsoft Defender for servers には、次のような脅威検出および保�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Microsoft Defender for servers について説明しました。 
 

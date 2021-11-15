@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2fd75ab871916dae166b2ead54e7379cb3c972f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b3fa2fbceba39ee6044c252703236c85545e46db
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110781873"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349169"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Azure Active Directory の Microsoft 365 サービスのロール
 
@@ -39,7 +39,7 @@ Microsoft 365 のすべての製品は、Azure Active Directory (Azure AD) の�
 > | セキュリティ スコア | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
 > | Compliance Manager | [Compliance Manager ロール](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 使用不可 |
 > | Azure Information Protection | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |
-> | Microsoft Cloud App Security | [ロールベースのアクセス制御](/cloud-app-security/manage-admins) | [API リファレンス](/cloud-app-security/api-tokens)  |
+> | Microsoft Defender for Cloud Apps | [ロールベースのアクセス制御](/cloud-app-security/manage-admins) | [API リファレンス](/cloud-app-security/api-tokens)  |
 > | Azure Advanced Threat Protection | [Azure ATP ロール グループ](/azure-advanced-threat-protection/atp-role-groups) | 使用不可 |
 > | Windows Defender Advanced Threat Protection | [Windows Defender ATP のロール ベースのアクセス制御](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 使用不可 |
 > | Privileged Identity Management | [Azure AD の組み込みロール](permissions-reference.md) | [Graph API](/graph/api/overview)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list) |

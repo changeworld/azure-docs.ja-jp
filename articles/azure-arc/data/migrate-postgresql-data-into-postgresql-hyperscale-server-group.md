@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 25e19ac7512c26e9e6985d033ec46d76b4c5233a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ec41b338acbf055e8fa499ff6b4e867844b30e4d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729382"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553059"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに PostgreSQL データベースを移行する
 
@@ -45,9 +45,8 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループは、PostgreSQL
 - `psql`
 - ...
 
-   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
-
 ## <a name="example"></a>例
+
 `pgAdmin` ツールを用いたそれらの手順について説明します。
 次のセットアップを検討します。
 - **ソース:**  
@@ -80,8 +79,10 @@ az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> -
 ```
 次のような出力が返されます。
 ```console
-[
-  {
+{
+  "instances": [
+    {
+      "endpoints": [
     "Description": "PostgreSQL Instance",
     "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
   },
@@ -93,7 +94,13 @@ az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> -
     "Description": "Metrics Dashboard",
     "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
   }
-]
+],
+"engine": "PostgreSql",
+"name": "postgres01"
+}
+  ],
+  "namespace": "arc"
+}
 ```
 
 移行先データベースに **RESTORED_MyOnPremPostgresDB** という名前を付けます。
@@ -128,12 +135,17 @@ Azure Arc のセットアップでホストされている Postgres インスタ
 
 Arc セットアップ内では、`psql` を使用して Postgres インスタンスに接続し、データベース コンテキストを `RESTORED_MyOnPremPostgresDB` に設定して、データのクエリを実行できます。
 
-1. `psql` の接続文字列から役に立つエンド ポイントの一覧を表示します。
+1. `psql` の接続文字列の形成に役立つエンド ポイントの一覧を表示します。
 
-   ```azurecli
+   ```Az CLI
    az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
-   [
-     {
+   ```
+
+   ```Az CLI
+   {
+     "instances": [
+       {
+         "endpoints": [
        "Description": "PostgreSQL Instance",
        "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
      },
@@ -145,7 +157,13 @@ Arc セットアップ内では、`psql` を使用して Postgres インスタ�
        "Description": "Metrics Dashboard",
        "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
      }
-   ]
+   ],
+   "engine": "PostgreSql",
+   "name": "postgres01"
+   }
+     ],
+     "namespace": "arc"
+   }
    ```
 
 1. `psql` の接続文字列から、`-d` パラメーターを使用してデータベース名を指定します。 次のコマンドでは、パスワードの入力を求められます。

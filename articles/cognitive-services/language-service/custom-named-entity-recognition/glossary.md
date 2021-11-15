@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: 7683f6ef9966672a7b64a9c3474f37d9b95a942c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c57d4efffc207759b8d3da343bda397ee885dc0f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089944"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439084"
 ---
 # <a name="custom-named-entity-recognition-ner-definitions-and-terms"></a>カスタム固有表現認識 (NER) の定義と用語
 
@@ -38,7 +38,7 @@ ms.locfileid: "131089944"
 
 ## <a name="model"></a>モデル
 
-モデルは、特定のタスク (ここでは、カスタム エンティティ抽出) を実行するためにトレーニングされたオブジェクトです。
+モデルは、特定のタスク (ここでは、カスタムの固有表現認識) を実行するためにトレーニングされたオブジェクトです。
 
 * **モデルのトレーニング** は、タグ付けされたデータに基づいて何を抽出するかをモデルに教えるプロセスです。
 * **モデルの評価** は、モデルがどの程度適切に実行されるかを把握するために、トレーニングの直後に行うプロセスです。

@@ -67,7 +67,7 @@
               href: /security/benchmark/azure/baselines/sql-database-security-baseline?toc=/azure/azure-sql/toc.json
             - name: Always Encrypted
               href: database/always-encrypted-landing.yml
-            - name: Azure Defender for SQL
+            - name: Microsoft Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: 高度な脅威保護
               href: database/threat-detection-overview.md
@@ -479,6 +479,8 @@
                   href: database/ledger-limits.md
             - name: ネットワーク アクセス制御
               href: database/network-access-controls-overview.md
+            - name: 送信ファイアウォール規則
+              href: database/outbound-firewall-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
             - name: VNet エンドポイント

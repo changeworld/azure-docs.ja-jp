@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 93837c33d905ad3db1b5906e096165db938c0ae9
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: e17b788c3852d104d82b456e03c93420f3ea9f3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651812"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467853"
 ---
-# <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL を停止または開始する - フレキシブル サーバー (プレビュー)
+# <a name="stopstart-an-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL を停止または開始する - フレキシブル サーバー
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 この記事では、フレキシブル サーバーの停止および開始を実行する手順を説明します。
 
@@ -33,12 +30,12 @@ ms.locfileid: "122651812"
 1.  [Azure portal](https://portal.azure.com/) で、停止するフレキシブル サーバーを選択します。
 
 2.  **[概要]** ページのツール バーで **[停止]** ボタンをクリックします。
-    
-    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="フレキシブル サーバーを停止します。"::: 
+
+    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="フレキシブル サーバーを停止します。":::
 
 3.  **[はい]** をクリックして、サーバーが停止していることを確認します。
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="フレキシブル サーバーが停止していることを確認します。"::: 
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="フレキシブル サーバーが停止していることを確認します。":::
 
 > [!NOTE]
 > サーバーが停止すると、そのフレキシブル サーバーに対して他の管理操作は実行できません。
@@ -49,7 +46,7 @@ ms.locfileid: "122651812"
 
 2.  **[概要]** ページのツール バーで **[起動]** ボタンをクリックします。
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="フレキシブル サーバーを起動します。":::  
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="フレキシブル サーバーを起動します。":::
 
 > [!NOTE]
 > サーバーが起動した後、すべての管理操作をフレキシブル サーバーで使用できるようになります。

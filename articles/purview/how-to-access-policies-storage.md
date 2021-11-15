@@ -8,12 +8,12 @@ ms.subservice: purview-data-policies
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: cbd6214687e23b90d0c289dd5a34d9410b7f092a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ea5285c5fd29bfe34f97c87b2ac0c9bd7a5502a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017229"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425237"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Azure Storage のデータ所有者によるデータセットのプロビジョニング
 
@@ -25,18 +25,23 @@ Purview ポリシーの作成では、次の機能がサポートされていま
 > [!IMPORTANT]
 > これらの機能は現在、プレビュー段階にあります。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
+
+
 ## <a name="prerequisites"></a>前提条件
+
+### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Azure Purview データ使用ポリシー プレビューに参加するためのオプトイン
+この機能は現在プレビュー段階であり、[Purview データ使用ポリシー プレビューにオプトイン](https://aka.ms/opt-in-data-use-policy)する必要があります。
 
 ### <a name="provision-new-accounts-in-an-isolated-test-subscription"></a>分離テスト サブスクリプションで新しいアカウントをプロビジョニングする
 次の手順に従って、分離テスト サブスクリプションに新しい Azure Purview アカウントと新しい Azure Storage アカウントを作成します。 次に、これらのアカウントのアクセス ポリシー機能を有効にします。
 
-## <a name="supported-regions"></a>サポートされているリージョン
+### <a name="supported-regions"></a>サポートされているリージョン
 
 > [!IMPORTANT]
 > 1. アクセス ポリシー機能は、新しい Azure Purview アカウントと Azure Storage アカウントのみで利用できます。
 > 2. この機能は、アクセス ポリシー機能がデプロイされている以下のリージョンでのみ使用できます。
 
-### <a name="azure-purview"></a>Azure Purview 
+#### <a name="azure-purview"></a>Azure Purview 
 
 -   北ヨーロッパ
 -   西ヨーロッパ
@@ -51,7 +56,7 @@ Purview ポリシーの作成では、次の機能がサポートされていま
 -   フランス中部
 
 
-### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure Storage
 
 -   フランス中部
 -   カナダ中部
@@ -186,7 +191,6 @@ Purview で新しいポリシーを作成する手順は次のとおりです。
 
 ## <a name="next-steps"></a>次のステップ
 
-アクセス ポリシーに関連する概念については、次の記事を参照してください。
+この記事をチェックして Azure Purview に関連した概念を理解します。
 
-* [Azure Purview のアクセス ポリシーの概念](concept-data-policies.md)
-* [Azure Purview でのセルフサービスによるデータの検出とアクセスの概念](concept-self-service.md)
+* [Azure Purview の概要](overview.md)

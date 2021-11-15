@@ -3,17 +3,17 @@ title: マネージド ディスクのバースト
 description: Azure ディスクと Azure 仮想マシンのディスク バーストについて説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d6e326bdc08b58d4dc32eb8a3d7592f3fd85b4af
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: bd9cc8e9a9e60655d7d1805c1ceae4168353ec20
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074413"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506328"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 
@@ -33,7 +33,7 @@ Azure VM のバーストとディスク リソースのバーストは互いに�
 
 現在、バーストできるマネージド ディスクの種類は、[Premium SSD](disks-types.md#premium-ssds)、[Standard SSD](disks-types.md#standard-ssds) の 2 種類です。 その他のディスクの種類は、現在バーストできません。 ディスクのバーストには、次の 2 つのモデルがあります。
 
-- オンデマンドのバースト モデル (プレビュー)。ディスクのニーズが現在の容量を超えるたびに、ディスクがバーストします。 このモデルでは、ディスクがバーストするたびに追加料金が発生します。 オンデマンド バーストは 512 GiB より大きい Premium SSD でのみ使用できます。
+- オンデマンドのバースト モデル。ディスクのニーズが現在の容量を超えるたびに、ディスクがバーストします。 このモデルでは、ディスクがバーストするたびに追加料金が発生します。 オンデマンド バーストは 512 GiB より大きい Premium SSD でのみ使用できます。
 - クレジットベース モデル。クレジット バケットにバースト クレジットが累積されている場合にのみ、ディスクがバーストします。 このモデルでは、ディスクのバースト時に追加料金は発生しません。 クレジットベース バーストは、512 GiB 以下の Premium および Standard SSD でのみ使用できます。
 
 Azure [Premium SSD](disks-types.md#premium-ssds) ではいずれかのバースト モデルを使用できますが、[標準の SSD](disks-types.md#standard-ssds) は現在、クレジットベースのバーストのみを提供しています。

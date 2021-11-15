@@ -4,12 +4,12 @@ description: ASP.NET Core を使用した Azure App Services のアプリケー�
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: d31f8e59b297c16995482826414d07ab8cf5774f
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 4bb5df82dcfd045100b4fe41c70538504cf2566b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233224"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508233"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Azure App Service と ASP.NET Core のアプリケーション監視 
 
@@ -20,18 +20,14 @@ ms.locfileid: "129233224"
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 > [!IMPORTANT]
-> Windows での自動インストルメンテーションに対してサポートされる ASP.NET Core バージョンは、ASP.NET Core 3.1 および 5.0 です。 バージョン 2.0、2.1、2.2、および 3.0 は廃止され、サポートされなくなりました。 自動インストルメンテーションを機能させるには、[サポートされているバージョン](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)の .NET Core にアップグレードしてください。
-
-ASP.NET Core から完全なフレームワークをターゲットにすることは、Windows では **サポートされていません**。 代わりに、コードを介した[手動インストルメンテーション](./asp-net-core.md)を使用してください。
-
-Windows では、[フレームワークに依存するデプロイ](/dotnet/core/deploying/#publish-framework-dependent)がサポートされ、[自己完結型のデプロイ](/dotnet/core/deploying/#publish-self-contained)はサポートされません。
+> Windows での自動インストルメンテーションに対してサポートされる ASP.NET Core バージョンは、ASP.NET Core 3.1、5.0、6.0 です。 バージョン 2.0、2.1、2.2、および 3.0 は廃止され、サポートされなくなりました。 自動インストルメンテーションを機能させるには、[サポートされているバージョン](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)の .NET Core にアップグレードしてください。
 
 App Service リソースを使用した Application Insights の設定を開始するには、以下の[「監視を有効にする」セクション](#enable-monitoring )を参照してください。 
 
 # <a name="linux"></a>[Linux](#tab/Linux)
 
 > [!IMPORTANT]
-> Linux の自動インストルメンテーションでは、ASP.NET Core 6.0 (プレビュー) のみがサポートされています。
+> Linux での自動インストルメンテーションでは、ASP.NET Core 6.0 のみがサポートされています。
 
 > [!NOTE]
 > Linux の自動インストルメンテーション App Services ポータルの有効化は、パブリック プレビュー段階にあります。 これらのプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
@@ -120,6 +116,9 @@ Application Insights を使用したテレメトリの収集を有効にする�
 2\.5.1 より前のバージョンからアップグレードする場合は、ApplicationInsigths dll がアプリケーションの bin フォルダーから削除されていることを確認します。[トラブルシューティングの手順](#troubleshooting)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+> [!NOTE]
+> Azure App Services で `ASP.NET Core` ランタイムを使用して Web アプリを作成すると、1 つの静的な HTML ページがスターター Web サイトとしてデプロイされます。 既定のテンプレートに関する問題のトラブルシューティングはお勧め **しません**。 問題のトラブルシューティングを行う前に、アプリケーションをデプロイしてください。
 
 以下は、Azure App Services 上で実行されている ASP.NET Core ベースのアプリケーションの拡張機能/エージェント ベースの監視について、手順を追って説明するトラブルシューティング ガイドです。
 

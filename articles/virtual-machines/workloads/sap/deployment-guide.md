@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 89890c243fa3fba659c8da3aaf5627ded7d27fb1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 96fdec13ce028f3cac5f42c7092ca9b189923b9f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065580"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577785"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -835,7 +835,9 @@ Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagen
    sudo service waagent restart
    ```
 
-\\etc\\waagent.conf のプロキシ設定は、必要な VM 拡張機能にも適用されます。 Azure リポジトリを使用する場合は、これらのリポジトリへのトラフィックがオンプレミスのイントラネットを経由しないようにしてください。 強制トンネリングを有効にするためにユーザー定義ルートを作成した場合は、サイト間 VPN 接続を介さずに、リポジトリへのトラフィックをインターネットに直接ルーティングするルートを追加する必要があります。
+Azure リポジトリを使用する場合は、これらのリポジトリへのトラフィックがオンプレミスのイントラネットを経由しないようにしてください。 強制トンネリングを有効にするためにユーザー定義ルートを作成した場合は、サイト間 VPN 接続を介さずに、リポジトリへのトラフィックをインターネットに直接ルーティングするルートを追加する必要があります。
+
+また、SAP 用の VM 拡張機能は、インターネットにアクセスできる必要があります。 新しい VM Extension for SAP をインストールしていることを確認し、『VM Extension for Sap インストール ガイド』の「[Azure CLI を使用して SAP ソリューション用 Azure VM 拡張機能を構成する](vm-extension-for-sap-new.md#fa4428b9-bed6-459a-9dfb-74cc27454481)」の手順に従ってプロキシを構成してください。
 
 * **SLES**
 

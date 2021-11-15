@@ -17,12 +17,12 @@ ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, ignite-fall-2021
-ms.openlocfilehash: 2ff6432261915e7200d69bc3b80dba217e5c9285
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 35ea46e4ce2b7c4ebbb6fdfa24bbe1d60e679bb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131043967"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345702"
 ---
 # <a name="automate-management-with-the-windows-sql-server-iaas-agent-extension"></a>Windows SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -83,7 +83,7 @@ SQL Server IaaS Agent 拡張機能には、SQL Server VM を管理するため�
 | **ポータルでディスク使用率を表示する** | Azure portal 内の SQL データ ファイルのディスク使用率をグラフィカルに表示できます。  <br/> 管理モード: [完全] | 
 | **柔軟なライセンス** | ライセンス持ち込み (「Azure ハイブリッド特典」とも呼ばれます) から従量課金制のライセンス モデルに、またはその逆に[シームレスに移行](licensing-model-azure-hybrid-benefit-ahb-change.md)することで、コストを節約できます。 <br/> 管理モード: Lightweight および完全| 
 | **柔軟なバージョン/エディション** | SQL Server の[バージョン](change-sql-server-version.md)または[エディション](change-sql-server-edition.md)を変更する場合は、SQL Server VM 全体を再デプロイすることなく、Azure portal 内のメタデータを更新できます。  <br/> 管理モード: Lightweight および完全| 
-| **Security Center ポータルの統合** | [Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にすると、Azure portal の [SQL 仮想マシン](manage-sql-vm-portal.md) リソースに Security Center 推奨事項を直接表示できます。 詳細については、[セキュリティのベスト プラクティス](security-considerations-best-practices.md)を参照してください。  <br/> 管理モード: Lightweight および完全|
+| **Defender for Cloud ポータル統合** | [Microsoft Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にすると、Azure portal の [SQL 仮想マシン](manage-sql-vm-portal.md) リソースで Defender for Cloud 推奨事項を直接閲覧できます。 詳細については、[セキュリティのベスト プラクティス](security-considerations-best-practices.md)を参照してください。  <br/> 管理モード: Lightweight および完全|
 | **SQL評価 (プレビュー)** | 構成のベストプラクティスを使用して SQL Server vm の正常性を評価できます。 詳細については、「[SQL Assessment API](sql-assessment-for-sql-vm.md)」を参照してください。  <br/> 管理モード: [完全]| 
 
 

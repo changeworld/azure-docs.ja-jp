@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/26/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 883c4a0b4abe05d563ff418e84b507051e20c14c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4c8d53392a48c821cb126e729f8e29bf7c686b3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013063"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441079"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,6 +80,10 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 このセクションでは、SAP データ ソースへの Microsoft Power BI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
 ## <a name="change-log"></a>変更履歴
+- 
+- 2021 年 11 月 2 日:「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」と「[SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sapase.md)」を変更し、Azure NetApp Files で NFS に対する SAP ASE サポートを宣言しました。
+- 2021 年 11 月 2 日:「[Azure Availability Zones での SAP ワークロードの構成](./sap-ha-availability-zones.md)」を変更し、シンガポール南東部をアクティブ/アクティブ構成のリージョンに移しました
+- 2021 年 11 月 2 日:「[Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)」を変更し、HANA スケールアップアクティブ/アクティブ (読み取り有効) 構成の手順を更新しました。
 - 2021 年 10 月 26 日: [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関するページに変更を加え、HANA スケールアウト アクティブ/アクティブ (読み取りが有効) 構成のリソース名を更新
 - 2021 年 10 月 19 日: [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関するページに変更を加え、HANA スケールアウト アクティブ/アクティブ (読み取りが有効) 構成の手順を追加
 - 2021 年 10 月 11 日: 「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」、「[SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する](./sap-high-availability-infrastructure-wsfc-shared-disk.md)」、「[Windows Server フェールオーバー クラスタリングと Azure 共有ディスクを使用した SAP ASCS/SCS インスタンスのマルチ SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)」に変更を加え、サポートされる Azure 共有ディスクでのゾーン冗長ストレージ (ZRS) の説明を追加。

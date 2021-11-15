@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 26e0ae48c65953312757eb7ac4d6cb51ba2a44c5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0b75b49ce36ef4fb3e45b76ace5402dd5c39efe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590083"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456197"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -47,7 +47,7 @@ ms.locfileid: "128590083"
 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** に「`https://localhost:3000`」を入力します。
 1. このサンプルでは、ユーザーをサインインさせるために [暗黙的な許可のフロー](./v2-oauth2-implicit-grant-flow.md)が有効になっている必要があるため、 **[暗黙的な許可およびハイブリッド フロー]** セクションで **[ID トークン]** を選択します。
 1. **[構成]** をクリックします。
-1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
+1. **[管理]** で、 **[証明書とシークレット]**  >  **[Client secrets]\(クライアント シークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
 1. キーの説明 (インスタンス アプリ シークレット用) を入力します。
 1. キーの有効期間として **[1 年]、[2 年]** 、または **[有効期限なし]** を選択します。
 1. **[追加]** を選択します。 キー値が表示されます。 キー値をコピーし、後で使用できるように安全な場所に保存します。

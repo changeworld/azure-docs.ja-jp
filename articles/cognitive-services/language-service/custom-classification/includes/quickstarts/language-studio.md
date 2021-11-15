@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 912aa02fadef0f950f5d89535bfe38133b61137b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7018ad879e5877c131af041685722d30b2906b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092366"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131519973"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,8 +57,29 @@ Azure ストレージ アカウントを作成し、それを言語リソース�
 
 ## <a name="create-a-custom-classification-project"></a>カスタム分類プロジェクトを作成する
 
-[!INCLUDE [Language Studio project creation](../create-project.md)]
+1. [Language Studio](https://aka.ms/languageStudio) にログインします。 サブスクリプションと言語リソースを選ぶためのウィンドウが表示されます。 上の手順で作成したリソースを選びます。
 
+2. Language Studio の **[Classify text]\(テキストの分類\)** セクションで、利用可能なサービスから **[カスタム テキスト分類]** を選択します。
+
+3. プロジェクト ページの上部メニューから、 **[Create new project]\(新しいプロジェクトの作成\)** を選択します。 プロジェクトを作成すると、データのタグ付け、モデルのトレーニング、評価、改善、デプロイを実行できます。 
+
+    :::image type="content" source="../../media/create-project.png" alt-text="プロジェクト作成ページのスクリーンショット。" lightbox="../../media/create-project.png":::
+<!--
+4. If you have created your resource using the steps above, the **Connect storage** step will be completed already. You only need to do this step once for each resource you use and it is irreversible. If you connect a storage account to your resource, you cannot disconnect it later.
+
+    :::image type="content" source="../../../custom-named-entity-recognition/media/connect-storage.png" alt-text="A screenshot showing the storage connection screen." lightbox="../../../custom-named-entity-recognition/media/connect-storage.png":::
+-->
+4. 上記の手順を使用してリソースを作成した場合、**ストレージの接続** 手順は既に完了しています。 そうでない場合は、リソースに接続する前に、[ストレージ アカウントのロール](../../how-to/create-project.md#roles-for-your-storage-account)を割り当てる必要があります
+
+5. 名前、説明、プロジェクト内のファイルの言語など、プロジェクトの情報を入力します。 プロジェクトの名前は後で変更できません。
+    >[!TIP]
+    > データセットは、すべて同じ言語である必要はありません。 それぞれ異なるサポート言語の複数のファイルを含めることができます。 異なる言語のファイルがデータセットに含まれている場合、または実行時に異なる言語を想定している場合は、プロジェクトの基本情報を入力するときに **[enable multi-lingual dataset]\(多言語データセットを有効にする\)** を選択します。
+
+6. プロジェクトの種類を選択します。 このクイック スタートでは、複数のクラスを同じファイルに割り当てることができる、複数ラベル分類プロジェクトを作成します。 続けて、 **[次へ]** をクリックします。 [プロジェクトの種類](../../glossary.md#project-types)の詳細
+
+7. データをアップロードしたコンテナーを選びます。 このクイックスタートでは、コンテナー内にある既存のタグ ファイルを使用します。 続けて、 **[次へ]** をクリックします。
+
+8. 入力したデータを確認し、 **[Create Project]\(プロジェクトの作成\)** を選びます。
     
 ## <a name="train-your-model"></a>モデルをトレーニングする
 

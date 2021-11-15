@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 6140ba3573452e1285236e9848e2068fd77afc07
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2038efe285f36466b0b562d4d87fbd172a44dd42
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636099"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469591"
 ---
 # <a name="build-a-custom-teams-endpoint"></a>カスタム Teams エンドポイントを構築する
 
@@ -24,13 +24,13 @@ ms.locfileid: "128636099"
 
 Azure Communication Services を使用してカスタム Teams エンドポイントを構築し、Microsoft Teams クライアントやその他のカスタム Teams エンドポイントと通信できます。 カスタム Teams エンドポイントを利用し、Teams ユーザーのために音声、動画、会話、画面共有の機能をカスタマイズできます。
 
-Azure Communication Services Identity SDK を使用し、Azure Active Directory (Azure AD) ユーザー トークンを Teams のアクセス トークンに交換できます。 次のセクションの図は、架空の会社 Fabrikam が架空の会社 Contoso の顧客であるマルチテナントのユース ケースを示しています。
+Azure Communication Services Identity SDK を使用して、Teams ユーザーの Azure Active Directory (Azure AD) アクセス トークンを Communication Identity アクセス トークンと交換できます。 次のセクションの図は、架空の会社 Fabrikam が架空の会社 Contoso の顧客であるマルチテナントのユース ケースを示しています。
 
 ## <a name="calling"></a>呼び出し 
 
 音声、動画、画面共有の機能は Azure Communication Services Calling SDK から提供されます。 次の図は、呼び出し機能をカスタム Teams エンドポイントに統合するときに従うプロセスの概要を示しています。
 
-![カスタム Teams エンドポイント エクスペリエンスのために呼び出し機能を有効にするプロセスの図。](./media/teams-identities/teams-identity-calling-overview.png)
+![カスタム Teams エンドポイント エクスペリエンスのために呼び出し機能を有効にするプロセスの図。](./media/teams-identities/teams-identity-calling-overview.svg)
 
 ## <a name="chat"></a>チャット
 

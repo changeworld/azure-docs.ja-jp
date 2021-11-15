@@ -5,14 +5,14 @@ description: Azure Cache for Redis 接続の回復性を高める方法につい
 author: shpathak-msft
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 11/3/2021
 ms.author: shpathak
-ms.openlocfilehash: dd7bb63204ccaa38379b49cfe3946372319dfc44
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d8e5f95e78db7c46ad1c52401b938acc37af6b4f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252903"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850947"
 ---
 # <a name="connection-resilience"></a>接続の回復力
 
@@ -33,13 +33,16 @@ Linux の一部のバージョンでは、既定でオプティミスティッ�
 |設定  |値 |
 |---------|---------|
 | *net.ipv4.tcp_retries2*   | 5 |
-| *TCP_KEEPIDLE*   | 15 |
-| *TCP_KEEPINTVL*  | 5 |
-| *TCP_KEEPCNT* | 3 |
 
-*ForceReconnect* パターンの使用を検討します。 パターンの実装については、「[Reconnecting with Lazy\<T\> pattern (Lazy\&lt;T\&gt; パターンでの再接続)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-lazyreconnect-cs)」のコードを参照してください。
+このシナリオの詳細については、「[Linux で実行している場合、15 分間接続が再確立されない](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646)」を参照してください。 この説明は StackExchange.Redis ライブラリについてですが、Linux で実行されている他のクライアント ライブラリも影響を受けます。 この説明はやはり有効であり、他のライブラリに一般化できます。
 
-このシナリオの詳細については、「[Connection does not re-establish for 15 minutes when running on Linux (Linux で実行している場合、15 分間接続が再確立されない)](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646)」を参照してください。 この説明は StackExchange.Redis ライブラリについてですが、Linux で実行されている他のクライアント ライブラリも影響を受けます。 この説明はやはり有効であり、他のライブラリに一般化できます。
+## <a name="using-forcereconnect-with-stackexchangeredis"></a>ForceReconnect と StackExchange. Redis の使用
+
+接続が切断された後に、StackExchange. Redis が再接続できないことがまれにあります。 このような場合は、クライアントを再起動するか、新しい `ConnectionMultiplexer` を作成することで、問題が修正されます。 アプリによって定期的な再接続が強制的に行われるのを許可するのと同時に、シングルトン `ConnectionMultiplexer` パターンを使用することをお勧めします。 アプリケーションが使用するフレームワークとプラットフォームに最適なクイックスタート サンプル プロジェクトを見てみましょう。 このコード パターンの例については、「[クイックスタート](https://github.com/Azure-Samples/azure-cache-redis-samples)」を参照してください。
+
+`ConnectionMultiplexer` のユーザーは、古いものを破棄した結果として発生する可能性のある `ObjectDisposedException` エラーを処理する必要があります。
+
+`RedisConnectionExceptions` および `RedisSocketExceptions` に対して `ForceReconnectAsync()` を呼び出し ます。 また、`RedisTimeoutExceptions` に対して `ForceReconnectAsync()` を呼び出すこともできます。ただし、豊富な `ReconnectMinInterval` および `ReconnectErrorThreshold` を使用している場合に限ります。 それ以外の場合、新しい接続を確立すると、既にオーバーロードされているためにタイムアウトになったサーバーでカスケード障害が発生する可能性があります。
 
 ## <a name="configure-appropriate-timeouts"></a>適切なタイムアウトを構成する
 

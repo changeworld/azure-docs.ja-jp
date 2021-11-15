@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: mathoma,vanto
-ms.date: 08/20/2021
-ms.openlocfilehash: f9c5df5bf086e5d80c8f506aa8bb718427755d7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/04/2021
+ms.openlocfilehash: e445574d69096605f16a6a097f005e020674f6a2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680682"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851707"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -105,7 +105,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 通常、サービス管理者は、次の手順を使用してログイン資格情報を追加します。
 
 1. SQL Server Management Studio (SSMS) を使用して、サーバーにログインします。
-2. master データベースで次の SQL クエリを実行して、ログイン名が無効になっているかどうかを確認します。
+2. `master` データベースで次の SQL クエリを実行して、ログイン名が無効になっているかどうかを確認します。
 
    ```sql
    SELECT name, is_disabled FROM sys.sql_logins;
@@ -303,6 +303,8 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
 
+他のメモリ不足エラーおよびサンプル クエリについて詳しくは、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](troubleshoot-memory-errors-issues.md)」を参照してください。
+
 ### <a name="table-of-additional-resource-governance-error-messages"></a>その他のリソース ガバナンス エラー メッセージの表
 
 | エラー コード | 重大度 | 説明 |
@@ -314,7 +316,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。|
 | 40551 |16 |`TEMPDB` の使用領域が多すぎるため、セッションを終了しました。 クエリを変更して一時テーブルの使用領域を減らしてください。<br/><br/>一時オブジェクトを使用している場合は、セッションで不要となった一時オブジェクトを削除して `TEMPDB` データベースの領域を節約してください。 SQL Database での tempdb の使用については、「[SQL Database の Tempdb データベース](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」を参照してください。|
 | 40552 |16 |トランザクション ログの使用領域が多すぎるため、セッションを終了しました。 1 回のトランザクションで変更する行を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。<br/><br/>`bcp.exe` ユーティリティまたは `System.Data.SqlClient.SqlBulkCopy` クラスを使用して一括挿入を実行する場合は、1 回のトランザクションでサーバーにコピーされる行数を `-b batchsize` オプションまたは `BatchSize` オプションで制限してください。 `ALTER INDEX` ステートメントでインデックスを再構築する場合は、`REBUILD WITH ONLINE = ON` オプションの使用を検討してください。 仮想コア購入モデルでのトランザクション ログ サイズについては、次を参照してください。 <br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。|
-| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。|
+| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](elastic-pool-scale.md)に関する記事を参照してください。 メモリ不足エラーおよびサンプル クエリについて詳しくは、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](troubleshoot-memory-errors-issues.md)」を参照してください。|
 
 ## <a name="elastic-pool-errors"></a>エラスティック プールのエラー
 
@@ -345,7 +347,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 ## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>このログインで要求されたデータベース "master" を開けません。 ログインに失敗しました
 
-この問題は、アカウントに master データベースにアクセスするアクセス許可がないために発生します。 しかし、既定では、SQL Server Management Studio (SSMS) で master データベースへの接続が試行されます。
+この問題は、アカウントに `master` データベースにアクセスするアクセス許可がないために発生します。 しかし、既定では、SQL Server Management Studio (SSMS) で `master` データベースへの接続が試行されます。
 
 この問題を解決するには、次の手順に従ってください。
 

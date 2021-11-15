@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: ef24c80e50cc45f48b583d721b35f61645b94033
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 70d104853db5634e70dfbdd7bc01c1c2b8fd9589
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483182"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476150"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure の請求書の支払い方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "107483182"
 
 [Microsoft Customer Agreement にアクセスできるかどうかを確認](#check-access-to-a-microsoft-customer-agreement)してください。
 
-Azure の請求書には 2 とおりの支払い方法があります。 課金プロファイルの既定の支払い方法を使用する方法と一括払い ( **[今支払う]** ) を使用する方法です。
+Azure の請求書には 2 とおりの支払い方法があります。 課金プロファイルの既定の支払い方法を使用する方法と、 **[今支払う]** による一括払いを使用する方法です。
 
 Microsoft 担当者を通じて Azure にサインアップした場合、既定の支払い方法が必ず "*小切手または電信送金*" に設定されています。 Microsoft 担当者を通じて Azure にサインアップした場合、クレジットカードでの自動支払いは選択できません。 その代わりに、[クレジットカードを使用して個別の請求書の支払い](#pay-now-in-the-azure-portal)を行うことはできます。
 
@@ -40,6 +40,8 @@ Azure クレジットがある場合は、請求期間ごとに請求書に自�
 クレジット カードまたはデビット カードの自動請求がなんらかの理由によって拒否された場合は、Azure portal から **[今支払う]** を使用し、クレジット カードまたはデビット カードで一括払いすることができます。
 
 既定の支払い方法を小切手または電信送金に変更したい場合は、[請求書による支払い方法](../manage/pay-by-invoice.md)に関するページを参照してください。
+
+デビット カードの使用が許可されていない国がいくつかありますが、一般には、Azure の料金支払いにデビット カードを使用できます。 バーチャルおよびプリペイドのデビット カードは、Azure の料金支払いに使用できません。
 
 ### <a name="check-or-wire-transfer"></a>小切手または電信送金
 

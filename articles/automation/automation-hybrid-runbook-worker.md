@@ -3,15 +3,15 @@ title: Azure Automation Hybrid Runbook Worker の概要
 description: この記事では、ローカル データ センターまたはクラウド プロバイダー内のコンピューターで Runbook を実行できるようにする Hybrid Runbook Worker の概要について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2021
+ms.date: 11/11/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5b6a6036514d1d6391c242563afbf9c185ba71e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d7d9d5bb3c347a726efae4a2aa30938e6918e0ac
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130253117"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287329"
 ---
 # <a name="automation-hybrid-runbook-worker-overview"></a>Automation Hybrid Runbook Worker の概要
 
@@ -35,9 +35,12 @@ Azure Automation では、Azure 仮想マシン (VM) 拡張フレームワーク
 |管理のしやすさ| ARM ID と Hybrid Runbook Worker のネイティブ統合をサポートしています。ポリシーとテンプレートにより大規模なガバナンスを柔軟に実行できます。 |
 |Azure AD による認証| Azure AD で用意する VM システム割り当て ID を使用します。 これにより、ID およびリソースの資格情報の制御と管理を一元化できます。|
 
-インストール後の Hybrid Runbook Worker の操作でも、Hybrid Runbook Worker で Runbook を実行するプロセスは同じです。 拡張機能ベースのバージョンの目的は、Hybrid Runbook Worker ロールのインストールと管理を単純化し、エージェント ベースのバージョンを使用する場合に生じる複雑さをなくすことです。 拡張機能ベースのものを新たにインストールしても、インストール済みのエージェント ベース Hybrid Runbook Worker ロールとその管理には影響がありません。 同一のマシン上で両方の種類が共存できます。
+インストール後の Hybrid Runbook Worker の操作でも、Hybrid Runbook Worker で Runbook を実行するプロセスは同じです。 拡張機能ベースのバージョンの目的は、Hybrid Runbook Worker ロールのインストールと管理を単純化し、エージェント ベースのバージョンを使用する場合に生じる複雑さをなくすことです。 拡張機能ベースのものを新たにインストールしても、インストール済みのエージェント ベース Hybrid Runbook Worker ロールとその管理には影響がありません。 いずれの Hybrid Runbook Worker も同じコンピューター上で共存できます。
 
-拡張機能ベースの Hybrid Runbook Worker は、ユーザー Hybrid Runbook Worker だけをサポートしており、Update Management 機能に必要なシステム Hybrid Runbook Worker は含まれていません。 現在 PowerShell では、拡張機能ベースの Hybrid Runbook Worker のインストールをサポートしていません。
+拡張機能ベースの Hybrid Runbook Worker は、ユーザー Hybrid Runbook Worker だけをサポートしており、Update Management 機能に必要なシステム Hybrid Runbook Worker は含まれていません。
+
+>[!NOTE]
+> PowerShell では現在のところ、拡張機能ベースの Hybrid Runbook Worker をインストールできません。
 
 ## <a name="runbook-worker-types"></a>Runbook Worker の種類
 
@@ -48,13 +51,13 @@ Runbook Worker には、システムとユーザーの 2 種類があります�
 |**システム** |Windows および Linux マシンにユーザー指定の更新プログラムをインストールするために設計された Update Management 機能によって使用される、非表示の一連の Runbook がサポートされます。<br> この種類の Hybrid Runbook Worker は、Hybrid Runbook Worker グループのメンバーではないため、Hybrid Runbook Worker グループをターゲットにした Runbook は実行できません。 |
 |**User** |1 つまたは複数の Runbook Worker グループのメンバーである Windows および Linux マシン上で直接実行することを目的としたユーザー定義の Runbook がサポートされます。 |
 
-エージェントベース (V1) の Hybrid Runbook Worker は、Azure Monitor [Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)へのレポートのために、[Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)に依存します。 ワークスペースは、コンピューターから監視データを収集するだけでなく、Hybrid Runbook Worker のインストールに必要なコンポーネントをダウンロードするためのものでもあります。
+エージェントベース (V1) の Hybrid Runbook Worker は、Azure Monitor [Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)へのレポートのために、[Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)に依存します。 ワークスペースは、コンピューターから監視データを収集するだけでなく、エージェントベースの Hybrid Runbook Worker のインストールに必要なコンポーネントをダウンロードするためのものでもあります。
 
 Azure Automation [Update Management](./update-management/overview.md) を有効にすると、Log Analytics ワークスペースに接続されたマシンはすべてシステム Hybrid Runbook Worker として自動的に構成されます。 ユーザー Windows Hybrid Runbook Worker として設定するには、[Automation でエージェント ベースの Windows Hybrid Runbook Worker をデプロイする方法](automation-windows-hrw-install.md)に関する記事をご覧ください。Linux の場合は、[Automation でエージェント ベースの Linux Hybrid Runbook Worker をデプロイする方法](./automation-linux-hrw-install.md)に関する記事をご覧ください。
 
 ## <a name="runbook-worker-limits"></a>Runbook Worker の制限
 
-次の表は、Automation アカウントのシステムおよびユーザーのハイブリッド runbook worker の最大数を示しています。 管理するマシンが 4,000 台を超える場合は、別の Automation アカウントを作成することをお勧めします。
+次の表は、Automation アカウントにおけるシステムとユーザーの Hybrid Runbook Worker の最大数を示しています。 管理するマシンが 4,000 台を超える場合は、別の Automation アカウントを作成することをお勧めします。
 
 |worker の種類| Automation アカウントあたりの対応最大数。|
 |---|---|
@@ -63,9 +66,13 @@ Azure Automation [Update Management](./update-management/overview.md) を有効�
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
-![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/automation.png)
+各ユーザー Hybrid Runbook Worker は、Worker のインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループに 1 の worker を含めることは可能ですが、高可用性を実現するために、複数の worker をグループに含めることができます。 マシン 1 台につき、Automation アカウントにレポートを送信する Hybrid Runbook Worker を 1 つホスティングできます。1 つのハイブリッド worker を複数の Automation アカウントに登録することはできません。 ハイブリッド worker は、単一の Automation アカウントからしかジョブをリッスンできません。 
 
-各ユーザー Hybrid Runbook Worker は、Worker のインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループに 1 の worker を含めることは可能ですが、高可用性を実現するために、複数の worker をグループに含めることができます。 マシン 1 台につき、Automation アカウントにレポートを送信する Hybrid Runbook Worker を 1 つホスティングできます。1 つのハイブリッド worker を複数の Automation アカウントに登録することはできません。 ハイブリッド worker は、単一の Automation アカウントからしかジョブをリッスンできません。 Update Management によって管理されているシステム Hybrid Runbook Worker をホストしているマシンの場合は、Hybrid Runbook Worker グループに追加できます。 しかし、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じ Automation アカウントを使用する必要があります。
+:::image type="content" source="./media/automation-hybrid-runbook-worker/user-hybrid-runbook-worker.png" alt-text="ユーザー Hybrid Runbook Worker の技術解説図":::
+
+Update Management によって管理されているシステム Hybrid Runbook Worker をホストしているマシンの場合は、Hybrid Runbook Worker グループに追加できます。 しかし、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じ Automation アカウントを使用する必要があります。
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-runbook-worker.png" alt-text="システム Hybrid Runbook Worker の技術解説図":::
 
 ユーザー Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 ジョブ キューの処理時間は、ハイブリッド worker のハードウェア プロファイルと負荷によって異なります。 特定の worker を指定することはできません。 ハイブリッド worker は、ポーリング機構 (30 秒ごと) で動作し、先着順で処理を行います。 ジョブがプッシュされたタイミングに応じて、Automation サービスへの ping が実行されたハイブリッド worker によってジョブが取得されます。 通常、1 つのハイブリッド worker で取得できるジョブは、ping ごと (つまり、30秒ごと) に 4 つです。 30 秒に 4 つ以上のペースでジョブをプッシュする場合、Hybrid Runbook Worker グループから、もう 1 つのハイブリッド worker がジョブの処理に追加される見込みが大きいです。
 

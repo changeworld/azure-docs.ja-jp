@@ -3,14 +3,14 @@ metadata:
   title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
   description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
   ms.topic: article
-  ms.service: service-bus
+  ms.service: service-bus-messaging
   ms.date: 01/20/2021
-  ms.openlocfilehash: e364e9719962263e52aa404d8656729b27c72406
-  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+  ms.openlocfilehash: 53c370c85ae0de819ac10a167d57a8bdbe5fef06
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/01/2021
-  ms.locfileid: "129359432"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132061853"
 title: Azure Service Bus - よく寄せられる質問 (FAQ)
 summary: >
   この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。
@@ -76,7 +76,7 @@ sections:
   - question: >
       1 MB を超えるサイズのメッセージを処理する方法を教えてください
     answer: >
-      Service Bus メッセージング サービス (キューおよびトピック/サブスクリプション) では、アプリケーションは、最大 256 KB (Standard レベル) または 1 MB (Premium レベル) のサイズのメッセージを送信できます。 1 MB を超えるサイズのメッセージを扱う場合は、[このブログの投稿](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)で説明されている要求チェック パターンを使用します。
+      Service Bus メッセージング サービス (キューおよびトピック/サブスクリプション) では、アプリケーションは、最大 256 KB (Standard レベル) または 100 MB (Premium レベル) のサイズのメッセージを送信できます。 許容サイズを超えるサイズのメッセージを処理する場合は、[こちらのブログ投稿](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)で説明されている要求チェック パターンを使用します。
 - name: トラブルシューティング
   questions:
   - question: "別のサブスクリプションから名前空間を削除した後に、その名前空間を作成できないのはなぜですか。 \n"

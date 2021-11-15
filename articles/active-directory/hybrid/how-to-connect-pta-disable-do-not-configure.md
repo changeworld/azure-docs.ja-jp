@@ -11,14 +11,18 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acabc2cf177ec81ecc293398f9b43f42e71c2862
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 66980ff85a3b539c81653f2abce39a1ced50003b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234911"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427610"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect"></a>Azure AD Connect を使用して PTA を無効にする
+# <a name="disable-pta"></a>PTA を無効にする 
+
+PTA を無効にするには、この記事の「[Azure AD Connect を使用して PTA を無効にする](#disable-pta-when-using-azure-ad-connect)」と「[PowerShell での PTA を無効にする](#disable-pta-in-powershell)」で説明されている手順を実行します。
+
+## <a name="disable-pta-when-using-azure-ad-connect"></a>Azure AD Connect を使用して PTA を無効にする
 
 Azure AD Connect でパススルー認証を使用していて、それを **[構成しない]** に設定している場合は、それを無効にできます。 
 
@@ -44,8 +48,10 @@ PTA の無効化は、次のコマンドレットを使用して行うことが�
 >| AzureUSGovernment | US Gov|
 
 
-## <a name="to-disable-pta"></a>PTA を無効にするには
+## <a name="disable-pta-in-powershell"></a>PowerShell での PTA を無効にする
+
 PowerShell セッション内から、次を使用して PTA を無効にします。
+
 1. PS C:\Program Files\Microsoft Azure AD Connect Authentication Agent> `Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` または `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` または `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`

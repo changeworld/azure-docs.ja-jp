@@ -13,18 +13,18 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1b7574e38146f9f175a124928c23dfb0187bb71
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b97e440d318e1d08137ffa14691c5179d93d60f4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257368"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440737"
 ---
 # <a name="tutorial---onboard-external-users-to-azure-ad-through-an-approval-process"></a>チュートリアル - 承認プロセスを通じて Azure AD に外部ユーザーをオンボードする
 
 エンタイトルメント管理は、外部ユーザーをオンボードする手段として使用できます。 この機能を使用すると、外部ユーザーが一連のリソースへのアクセスを要求でき、その場合、ディレクトリにアクセスできるようにする前に承認を設定できます。 エンタイトルメントを通じてオンボードされた外部ユーザーについては、アクセス パッケージを使用してライフサイクルを管理できます。 最後のアクセス パッケージの有効期限が切れると、外部ユーザーはディレクトリから削除されます。
 
-このチュートリアルでは、あなたは WoodGrove Bank の IT 管理者として勤務しているとします。 あなたは、ご自身のビジネス グループが連携している外部組織のパートナーをオンボードするアクセス パッケージの作成を求められました。 それらは **[外部コラボレーション]** という Teams グループにアクセスする必要があります。 連携する組織の内部スポンサーによる承認が必要です。 また、パートナーのアクセス権を 60 日後に期限切れにする必要があるということも知らされています。
+このチュートリアルでは、あなたは WoodGrove Bank の IT 管理者として勤務しているとします。 あなたは、ご自身のビジネス グループが連携している外部組織のパートナーをオンボードするアクセス パッケージの作成を求められました。 それらは **[外部コラボレーション]** という Teams グループにアクセスする必要があります。 組織のコラボレーションには、内部スポンサーによる承認が必要です。 また、パートナーのアクセス権を 60 日後に期限切れにする必要があるということも知らされています。
 Azure AD エンタイトルメント管理を使用するには、次のいずれかのライセンスが必要です。
 
 - Azure AD Premium P2

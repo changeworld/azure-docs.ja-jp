@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 2887511d9d92fcf9112473207ba3445282b8b87f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 743db90c66f4499b356ca0413ab1827aa73d5f2e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015615"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852752"
 ---
 # <a name="connect-to-azure-data-lake-gen1-in-azure-purview"></a>Azure Purview で Azure Data Lake Gen1 に接続する
 
@@ -25,7 +25,9 @@ ms.locfileid: "131015615"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)|[あり](#scan) | [あり](#scan)|[あり](#scan)| いいえ |[Data Factory のデータ系列](how-to-link-azure-data-factory.md) |
+| [あり](#register) | [あり](#scan)|[あり](#scan) | [あり](#scan)|[あり](#scan)| いいえ |制限あり** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 ## <a name="prerequisites"></a>前提条件
 

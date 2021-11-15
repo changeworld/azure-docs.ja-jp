@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: be7e52cb093eb9920be5b6e8e9971b7f882f7f06
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0c2f154a0c45dd46a56a4321aa67a75e2263b317
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793837"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219604"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bicep における条件付きデプロイ
 
@@ -46,7 +46,7 @@ module dnsZone 'dnszones.bicep' = if (deployZone) {
 }
 ```
 
-条件は、依存関係の宣言と共に使用できます。 [明示的な依存関係](resource-declaration.md#set-resource-dependencies)の場合、リソースがデプロイされていないと、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。 暗黙的な依存関係の場合、条件付きリソースのプロパティを参照することはできますが、デプロイ エラーが発生する可能性があります。
+条件は、依存関係の宣言と共に使用できます。 [明示的な依存関係](resource-declaration.md#dependencies)の場合、リソースがデプロイされていないと、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。 暗黙的な依存関係の場合、条件付きリソースのプロパティを参照することはできますが、デプロイ エラーが発生する可能性があります。
 
 ## <a name="new-or-existing-resource"></a>新規または既存のリソース
 
@@ -113,4 +113,4 @@ output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!
 
 * 条件とループに関する Microsoft Learn モジュールについては、「[条件とループを使用した柔軟な Bicep テンプレートの作成](/learn/modules/build-flexible-bicep-templates-conditions-loops/)」を参照してください。
 * Bicep ファイルの作成に関する推奨事項については、「[Bicep のベストプラクティス](best-practices.md)」を参照してください。
-* リソースから複数のインスタンスを作成するには、「[Bicep でのリソースのイテレーション](loop-resources.md)」を参照してください。
+* リソースから複数のインスタンスを作成するには、「[Bicep の反復ループ](loops.md)」を参照してください。

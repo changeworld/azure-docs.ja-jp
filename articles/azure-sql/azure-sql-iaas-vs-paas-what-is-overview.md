@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: b8f55a720583713fad59fc07495dcab070d19fa7
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 2360b32a63ad5473f8dfa1f08a6d2df3e0e85fd4
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378096"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136583"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -34,9 +34,6 @@ Azure SQL は使い慣れた SQL Server エンジンに基づいて構築され�
 
 Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL の概要*" に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
-
-> [!TIP]
-> Azure SQL を改善するために、 [アンケートにご協力ください。](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)
 
 ## <a name="overview"></a>概要
 
@@ -116,7 +113,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 | :--- | :--- | :--- |
 |ほとんどのオンプレミス データベース レベルの機能をサポートしています。 最もよく使用される SQL Server 機能を利用できます。<br/>99.995% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>個々のデータベースに必要なリソース (CPU/ストレージ) を割り当てる機能。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| ほとんどすべてのオンプレミス インスタンス レベルおよびデータベース レベルの機能をサポートしています。 SQL Server との高い互換性。<br/>99.99% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| SQL Server エンジンを完全に制御できます。 すべてのオンプレミス機能をサポートしています。<br/>最大 99.99% の可用性。<br/>オンプレミスの SQL Server の対応するバージョンと完全に一致。<br/>固定された、既知のデータベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>SQL Server が配置されているホストでアプリケーションまたはサービスをデプロイできます。|
 |SQL Server からの移行が難しい可能性があります。<br/>一部の SQL Server 機能は使用できません。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。<br/>[Azure Private Link](database/private-endpoint-overview.md) を使用したプライベート IP アドレスのサポート。|利用できない最小限の数の SQL Server 機能がまだあります。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。|バックアップと修正プログラムを管理する必要があります。<br>高可用性ソリューションを独自に実装する必要があります。<br/>リソース (CPU/ストレージ) の変更中にダウンタイムが発生|
-| 最大 100 TB のデータベース。 | 最大 8 TB。 | 記憶域が 256 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 |
+| 最大 100 TB のデータベース。 | 最大 16 TB。 | 記憶域が 256 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 |
 | オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](managed-instance/vnet-existing-add-subnet.md)と接続。 | SQL 仮想マシンを使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 ハイブリッド クラウド ソリューションについて詳しくは、「[オンプレミス データ ソリューションのクラウドへの拡張](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)」をご覧ください。 |
 
 
@@ -177,5 +174,6 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 - SQL Database の使用を開始するには、「[初めての Azure SQL Database](database/single-database-create-quickstart.md)」を参照してください。
 - SQL Managed Instance の使用を開始するには、[初めての Azure SQL Managed Instance](managed-instance/instance-create-quickstart.md) に関する記事を参照してください。 
 - 「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+- 「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql-managed-instance/single/)」を参照してください。
 - Azure VM での SQL Server の基本的な使い方については、 [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines/windows/create-sql-vm-portal.md) に関する記事を参照してください。
 - [オンプレミス データベースに適した SQL Database または SQL Managed Instance の SKU を特定します](/sql/dma/dma-sku-recommend-sql-db/)。

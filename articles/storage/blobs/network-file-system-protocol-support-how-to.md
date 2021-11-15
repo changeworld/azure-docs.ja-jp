@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 54d406303019ebfa967133c26bd5487c848575b2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6b22b99cdd883ed8dedb90f925a918fe9c25d9bb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664886"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444878"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Blob Storage をマウントする
 
@@ -100,7 +100,7 @@ Linux システムにディレクトリを作成してから、コンテナー�
 |エラー | 原因 / 解決方法|
 |---|---|
 |`Access denied by server while mounting`|サポートされているサブネット内でクライアントが実行されていることを確認します。 [サポートされているネットワークの場所](network-file-system-protocol-support.md#supported-network-connections)のページを参照してください。|
-|`No such file or directory`| mount コマンドとそのパラメーターを直接ターミナルに入力するようにしてください。 別のアプリケーションからこのコマンドの一部をコピーしてターミナルに貼り付けると、貼り付けた情報の非表示の文字が原因でこのエラーが発生することがあります。|
+|`No such file or directory`| mount コマンドとそのパラメーターを直接ターミナルに入力するようにしてください。 別のアプリケーションからこのコマンドの一部をコピーしてターミナルに貼り付けると、貼り付けた情報の非表示の文字が原因でこのエラーが発生することがあります。 アカウントが NFS 3.0 に対応していない場合にも、このエラーが表示されることがあります。 |
 |`Permision denied`| 新しく作成された NFS v3 コンテナーの既定のモードは 0750 です。 ルート以外のユーザーにはボリュームへのアクセス権がありません。 ルート以外のユーザーからのアクセスが必要な場合、ルート ユーザーがモードを 0755 に変更する必要があります。 サンプル コマンド: `sudo chmod 0755 /mnt/<newcontainer>`|
 |`EINVAL ("Invalid argument"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>BLOB エンドポイントから作成された BLOB に書き込む。<li>スナップショットを持つ BLOB、またはアクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB を削除する。|
 |`EROFS ("Read-only file system"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>アクティブなリースを保持している BLOB に書き込むか、BLOB を削除する。<li>アクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB に書き込むか、BLOB を削除する。 |

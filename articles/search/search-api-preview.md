@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: ef420f52650ca037d8030fbd2e73d8e37d2153f7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a7a056a04963a8dd48a791c3851674b9abf54841
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023578"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501364"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
@@ -23,6 +23,7 @@ ms.locfileid: "131023578"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
+|  [**Azure Files Indexer**](search-file-storage-integration.md) | インデクサー データ ソース | [Azure Files](https://azure.microsoft.com/services/storage/files/) のインデクサーを作成するために REST API サポートを追加します。 | パブリック レビュー、[REST API 2021-04-30-Preview の検索](/rest/api/searchservice/index-preview) |
 | [**REST API 2021-04-30-Preview の検索**](/rest/api/searchservice/index-preview) | セキュリティ | 外部データ ソースに接続するインデクサーについて、Azure Active Directory でマネージド ID をサポートするように、[[データ ソースの作成または更新]](/rest/api/searchservice/preview-api/create-or-update-data-source) を変更します。 | パブリック レビュー、[REST API 2021-04-30-Preview の検索](/rest/api/searchservice/index-preview) |
 | [**Azure RBAC のサポート**](search-security-rbac.md) | セキュリティ | 新しい組み込みのロールを使用して、インデックスとインデックス作成へのアクセスを制御し、API キーの依存を解消または軽減します。 | パブリック プレビュー ([要求による](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#step-1-preview-sign-up))。 サブスクリプションのオンボード化後、Azure portal または管理 REST API バージョン 2021-04-01-Preview を使用して、データ プレーン認証用に検索サービスを構成します。 |
 | [**管理 REST API 2021-04-01-Preview**](/rest/api/searchmanagement/) | セキュリティ | 新しい [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) をサポートするために [[サービスの作成または更新]](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を変更します。 | パブリック プレビュー、[管理 REST API](/rest/api/searchmanagement/)、API バージョン 2021-04-01-Preview。|

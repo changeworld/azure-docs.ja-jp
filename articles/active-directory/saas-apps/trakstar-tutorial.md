@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c77e7072755dfb04005c2028358823d669deee
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ff1ef66fd8dc4e9d8d52b048da197274bdee89d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124825368"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>チュートリアル: Azure Active Directory と Trakstar の統合
 
@@ -77,15 +77,18 @@ Trakstar 用に Azure AD SSO を構成してテストするには、次の手順
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、対応する入力フィールドに次の値を入力します。
 
-    a. **[サインオン URL]** テキストボックスに、Trakstar 内の **ACS (Consumer) URL** ([Settings]\(設定\) > [Authentication & SSO]\(認証 & SSO\)) の値をコピーします。次の形式になっています: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
-
-    b. **[識別子 (エンティティ ID)]** ボックスは、既定値 `https://app.trakstar.com` のままにします。
-
+    | フィールド名 | 値 | 注意 | 
+    | ---------------------- | ----- | ---- |
+    | **応答 URL (Assertion Consumer Service URL)** | `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>` | `<YOUR_NAMESPACE>` は実際の値に置き換えます。これは Trakstar Perform の **ACS (Consumer) URL** フィールドに表示されます。 この表の後に表示される注記を参照してください。 |
+    | **サインオン URL** | `https://app.trakstar.com/auth/saml/?namespace=<YOUR_NAMESPACE>` | この URL は前の URL に "_類似_" していますが、`/callback` 部分がありません。 |
+    | **識別子 (エンティティ ID)** | `https://app.trakstar.com` | |
+    
     > [!NOTE]
-    > これらは実際の値ではありません。 この値を実際のサインオン URL に置き換えてください。 これらの値を取得するには、管理者として Trakstar にサインインします。
-    > [Settings]\(設定\) 内に [Authentication & SSO]\(認証 & SSO\) タブが表示されない場合は、この機能を利用できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらの値は、例としてのみ使用しています。 Trakstar Perform でのご自身の名前空間に固有の値を使用する必要があります。それらを表示するには、アプリケーションにサインインし、 **[設定]**  >  **[Authentication & SSO]\(認証と SSO\)**  >  **[SAML 2.0]**  >  **[構成]** の順に移動します。
+    > 
+    > **[設定]** に **[Authentication & SSO]\(認証と SSO\)** タブが表示されない場合は、この機能がない可能性があります。Trakstar のカスタマー サポートにお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

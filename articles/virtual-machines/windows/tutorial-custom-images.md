@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure PowerShell を使用してカスタム VM イメージを作成する
-description: このチュートリアルでは、Azure PowerShell を使用して、Azure 共有イメージ ギャラリーに格納される Windows カスタム仮想マシン イメージを作成する方法を学習します。
+description: このチュートリアルでは、Azure PowerShell を使用して、Azure Compute Gallery に保存される Windows カスタム仮想マシン イメージを作成する方法を学習します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,24 +9,24 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: fe7698a0a2a7c0059db6e5f96e3f86445bc5871f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 5c7ce289d515892db72b681e1e7ef5337eb7cb9b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449454"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421641"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 **適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
-イメージを使用してデプロイのブートストラップを実行し、複数の VM で一貫性を確保することができます。 このチュートリアルでは、PowerShell を使用して Azure 仮想マシンの独自の特殊化されたイメージを作成し、共有イメージ ギャラリーに格納します。 学習内容は次のとおりです。
+イメージを使用してデプロイのブートストラップを実行し、複数の VM で一貫性を確保することができます。 このチュートリアルでは、PowerShell を使用して Azure 仮想マシンの独自の特殊化されたイメージを作成し、Azure Compute Gallery (旧称 Shared Image Gallery) に保存します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * イメージ定義を作成する
 > * イメージ バージョンを作成する
 > * イメージから VM を作成する 
-> * イメージ ギャラリーを共有する
+> * ギャラリーを共有する
 
 
 
@@ -38,11 +38,11 @@ ms.locfileid: "123449454"
 
 ## <a name="overview"></a>概要
 
-[共有イメージ ギャラリー](../shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+[Azure Compute Gallery](../shared-image-galleries.md) により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
 
-共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
+Azure Compute Gallery を使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
 
-共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
+Azure Compute Gallery 機能には、複数のリソースの種類があります。
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
@@ -75,18 +75,18 @@ $resourceGroup = New-AzResourceGroup `
    -Location 'EastUS'
 ```
 
-## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
+## <a name="create-a-gallery"></a>ギャラリーの作成 
 
-イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
+ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-イメージ ギャラリーは、[New-AzGallery](/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
+ギャラリーは、[New-AzGallery](/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
 
 ```azurepowershell-interactive
 $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
-   -Description 'Shared Image Gallery for my organization'  
+   -Description 'Azure Compute Gallery for my organization' 
 ```
 
 
@@ -180,7 +180,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="share-the-gallery"></a>ギャラリーを共有する
 
-イメージ ギャラリー レベルでアクセスを共有することをお勧めします。 電子メール アドレスと [Get-AzADUser](/powershell/module/az.resources/get-azaduser) コマンドレットを使用して、ユーザーのオブジェクト ID を取得し、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用して、ギャラリーへのアクセス権を付与します。 この例のサンプル電子メール alinne_montes@contoso.com を独自の情報に置き換えます。
+ギャラリー レベルでアクセスを共有することをお勧めします。 電子メール アドレスと [Get-AzADUser](/powershell/module/az.resources/get-azaduser) コマンドレットを使用して、ユーザーのオブジェクト ID を取得し、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用して、ギャラリーへのアクセス権を付与します。 この例のサンプル電子メール alinne_montes@contoso.com を独自の情報に置き換えます。
 
 ```azurepowershell-interactive
 # Get the object ID for the user
@@ -215,11 +215,11 @@ Azure では、Packer 上に構築された [Azure VM Image Builder](../image-bu
 このチュートリアルでは、特殊化された VM イメージを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * イメージ定義を作成する
 > * イメージ バージョンを作成する
 > * イメージから VM を作成する 
-> * イメージ ギャラリーを共有する
+> * ギャラリーを共有する
 
 次のチュートリアルに進み、高可用性仮想マシンを作成する方法について学習してください。
 

@@ -7,18 +7,18 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: f28b30be15ea4808490851b6fd29c642438a43f8
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ef710559cb8d51b21e859bb08c50c5a2ed07b74c
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472658"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894205"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL 単一サーバーの新機能
 
 [!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
-Azure Database for MySQL は、Microsoft クラウドのリレーショナル データベース サービスです。 このサービスは、[MySQL コミュニティ エディション](https://www.mysql.com/products/community/) (GPLv2 ライセンスで入手可能) のデータベース エンジンを基にしており、バージョン 5.6、5.7、および 8.0 をサポートしています。 [Azure Database for MySQL 単一サーバー](./overview.md#azure-database-for-mysql---single-server)は、最小限の要件でデータベースをカスタマイズできる、フル マネージド データベース サービスを提供するデプロイ モードです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、セキュリティなど、データベース管理機能のほとんどを、最小限のユーザー構成と制御ですべて処理するよう設計されています。
+Azure Database for MySQL は、Microsoft クラウドのリレーショナル データベース サービスです。 このサービスは、[MySQL Community Edition](https://www.mysql.com/products/community/) (GPLv2 ライセンスで利用可能) のデータベース エンジンを基にしており、バージョン 5.6 (廃止)、5.7、および 8.0 をサポートしています。 [Azure Database for MySQL 単一サーバー](./overview.md#azure-database-for-mysql---single-server)は、最小限の要件でデータベースをカスタマイズできる、フル マネージド データベース サービスを提供するデプロイ モードです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、セキュリティなど、データベース管理機能のほとんどを、最小限のユーザー構成と制御ですべて処理するよう設計されています。
 
 この記事では、2021 年 1 月に利用開始される Azure Database for MySQL 単一サーバーの新しいリリースと機能について説明します。 リストは新しい順に記載されており、最新の更新が最初に示されています。
 

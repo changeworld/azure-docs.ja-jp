@@ -6,19 +6,17 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 8388df72352669eb81a22df392ca077f91d13cfb
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 69aeb2e450a78ce6c3bdc7378d9d53edf3706720
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754655"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475694"
 ---
-# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
+# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコンピューティング レベルのいずれかで作成できます。バースト可能、汎用、メモリ最適化。 コンピューティング レベルは、B シリーズ、D シリーズ、および E シリーズで使用される、基になる VM SKU によって区別されます。 選択したコンピューティング レベルおよびサイズで、サーバーで使用できるメモリと仮想コアが決まります。 同じストレージ テクノロジが、すべてのコンピューティング レベルで使用されます。 リソースはすべて、MySQL サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
 
@@ -111,9 +109,7 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 
 Azure Database for MySQL – フレキシブル サーバーでは、追加の IOPS のプロビジョニングがサポートされます。 この機能を使用すると、無償の IOPS 制限を超えて追加の IOPS をプロビジョニングできます。 この機能を使用すると、ワークロードの要件に基づいてプロビジョニングされる IOPS の数をいつでも増減できます。 
 
-最小 IOPS はすべてのコンピューティング サイズで 360 であり、最大 IOPS は選択したコンピューティング サイズによって決まります。 プレビューでは、サポートされる最大 IOPS は 20,000 IOPS です。
-
-コンピューティング サイズごとの最大 IOPS の詳細については、以下を参照してください。 
+最小 IOPS はすべてのコンピューティング サイズで 360 であり、最大 IOPS は選択したコンピューティング サイズによって決まります。 コンピューティング サイズごとの最大 IOPS の詳細については、以下を参照してください。 
 
 | コンピューティング サイズ         | 最大 IOPS        | 
 |----------------------|---------------------|
@@ -143,9 +139,9 @@ Azure Database for MySQL – フレキシブル サーバーでは、追加の I
 > [!Important]
 > **無償の IOPS** は、(コンピューティング サイズの "キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps" と、300 + プロビジョニングされたストレージ (GiB 単位) * 3) の最小値と等しくなります<br>
 > **最小 IOPS** は、すべてのコンピューティング サイズで 360 です<br>
-> **最大 IOPS** は、選択したコンピューティング サイズによって決まります。 プレビューでは、サポートされる最大 IOPS は 20,000 IOPS です。
+> **最大 IOPS** は、選択したコンピューティング サイズによって決まります。 
 
-Azure portal (Azure Monitor を含む) での自分の I/O 使用量は、[IO の割合](./concepts-monitoring.md)メトリクスを使用して監視できます。 コンピューティングに基づき、より多くの IOPS が必要になり、その後、最大 IOPS が必要になった場合は、サーバーのコンピューティングをスケーリングする必要があります。
+Azure portal (Azure Monitor を含む) での自分の I/O 使用量は、[IO の割合](./concepts-monitoring.md)メトリクスを使用して監視できます。 コンピューティングに基づく最大 IOPS よりも多くの IOPS が必要な場合は、サーバーのコンピューティングをスケーリングする必要があります。
 
 ## <a name="backup"></a>バックアップ
 

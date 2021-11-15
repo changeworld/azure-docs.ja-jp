@@ -4,16 +4,16 @@ description: 復元時間を特定し、ライブまたは削除された Azure 
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2021
+ms.date: 11/03/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f8622b37055cf8585e9c43f2e822756ac06d1de
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3161971323ebda6b55ec0fb423089d3115cd9c01
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352192"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562126"
 ---
 # <a name="restore-an-azure-cosmos-db-account-that-uses-continuous-backup-mode"></a>継続的バックアップ モードを使用する Azure Cosmos DB アカウントを復元する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -93,6 +93,18 @@ Azure portal を使用すると、削除されたアカウントを削除後 30 
 
 :::image type="content" source="./media/restore-account-continuous-backup/track-restore-operation-status.png" alt-text="操作が完了すると、復元されたアカウントの状態は、作成中からオンラインに変わります。" border="true" lightbox="./media/restore-account-continuous-backup/track-restore-operation-status.png":::
 
+### <a name="get-the-restore-details-from-the-restored-account"></a>復元されたアカウントから復元の詳細を取得する
+
+復元操作が完了したら、復元元のソース アカウントの詳細や復元時刻を確認する必要があります。
+
+Azure portal から復元の詳細を取得するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com/) にサインインし、復元されたアカウントに移動します。
+
+1. **[テンプレートのエクスポート]** ペインに移動します。 これにより、復元されたアカウントに対応する JSON テンプレートが開きます。
+
+1. **resources** > **properties** > **restoreParameters** オブジェクトに、復元の詳細が含まれています。 **restoreTimestampInUtc** で、アカウントが復元された時刻を確認できます。**databasesToRestore** には、アカウントが復元された特定のデータベースとコンテナーが示されています。
+
 ## <a name="restore-an-account-using-azure-powershell"></a><a id="restore-account-powershell"></a>Azure PowerShell を使用してアカウントを復元する
 
 アカウントを復元する前に、[Azure PowerShell の最新バージョン](/powershell/azure/install-az-ps?view=azps-6.2.1&preserve-view=true)または 6.2.0 以降のバージョンをインストールしてください。 次に、Azure アカウントに接続し、次のコマンドを使用して必要なサブスクリプションを選択します。
@@ -150,6 +162,14 @@ Restore-AzCosmosDBAccount `
   -DatabasesToRestore $datatabaseToRestore1, $datatabaseToRestore2 `
   -Location "West US"
 
+```
+
+### <a name="get-the-restore-details-from-the-restored-account"></a>復元されたアカウントから復元の詳細を取得する
+
+`Az.CosmosDB` モジュールをインポートし、次のコマンドを実行して復元の詳細を取得します。 restoreTimestamp は restoreParameters オブジェクトの下にあります。
+
+```azurepowershell
+Get-AzCosmosDBAccount -ResourceGroupName MyResourceGroup -Name MyCosmosDBDatabaseAccount 
 ```
 
 ### <a name="enumerate-restorable-resources-for-sql-api"></a><a id="enumerate-sql-api"></a>SQL API の復元可能なリソースを列挙する
@@ -315,9 +335,17 @@ Get-AzCosmosdbMongoDBRestorableResource `
 
    ```
 
+### <a name="get-the-restore-details-from-the-restored-account"></a>復元されたアカウントから復元の詳細を取得する
+
+次のコマンドを実行して、復元の詳細を取得します。 restoreTimestamp は restoreParameters オブジェクトの下にあります。
+
+```azurecli-interactive
+az cosmosdb show --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup
+```
+
 ### <a name="enumerate-restorable-resources-for-sql-api"></a><a id="enumerate-sql-api"></a>SQL API の復元可能なリソースの列挙
 
-下記の列挙コマンドは、さまざまなタイムスタンプで復元に使用できるリソースを検出するのに役立ちます。 また、復元可能なアカウント、データベース、およびコンテナー リソースでのキー イベントのフィードも提供されます。
+下記の列挙コマンドは、さまざまなタイムスタンプで復元に使用できるリソースを検出するのに役立ちます。 また、復元可能なアカウント、データベース、コンテナー リソースでの主要イベントのフィードも示されます。
 
 #### <a name="list-all-the-accounts-that-can-be-restored-in-the-current-subscription"></a>現在のサブスクリプションで復元可能なすべてのアカウントを一覧表示する
 

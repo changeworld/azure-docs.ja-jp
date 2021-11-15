@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: fdefcabdda64402610f115832976ec9f7af81b80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2c3aa5442f89879ddad4859029292027eef3d39
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258831"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259582"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -82,7 +82,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
      ```
 
 ## <a name="size-limitations"></a>サイズの制限
-- 1 つの DMS サービスを使用して、PostgreSQL から Azure DB for PostgreSQL に最大 2 TB のデータを移行できます。
+- 1 つの DMS サービスを使用して、PostgreSQL から Azure DB for PostgreSQL に最大 1 TB のデータを移行できます。
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
 
   **制限事項**:テーブルに主キーがない場合は、変更がターゲット データベースと同期されない可能性があります。

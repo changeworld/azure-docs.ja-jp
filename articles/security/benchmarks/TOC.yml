@@ -107,7 +107,7 @@
       href: /azure/databricks/scenarios/security-baseline
     - name: Azure DDOS Protection Standard のセキュリティ ベースライン
       href: ../fundamentals/ddos-protection-security-baseline.md
-    - name: Azure Defender for IoT のセキュリティ ベースライン
+    - name: Microsoft Defender for IoT のセキュリティ ベースライン
       href: ../../defender-for-iot/security-baseline.md
     - name: Azure DevTest Labs のセキュリティ ベースライン
       href: ../../devtest-labs/security-baseline.md
@@ -151,7 +151,7 @@
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
     - name: Azure Resource Manager のセキュリティ ベースライン
       href: ../../azure-resource-manager/management/security-baseline.md
-    - name: Azure Sentinel のセキュリティ ベースライン
+    - name: Microsoft Sentinel のセキュリティ ベースライン
       href: ../../sentinel/security-baseline.md
     - name: Azure SignalR Service のセキュリティ ベースライン
       href: ../../azure-signalr/security-baseline.md
@@ -199,7 +199,7 @@
       href: ../../governance/policy/samples/guest-configuration-baseline-linux.md?toc=/azure/security/benchmarks/toc.json
     - name: Logic Apps のセキュリティ ベースライン
       href: ../../logic-apps/security-baseline.md
-    - name: Microsoft Cloud App Security ベースライン
+    - name: Microsoft Defender for Cloud Apps のベースライン
       href: /cloud-app-security/security-baseline
     - name: Microsoft Defender for Identity のセキュリティ ベースライン
       href: /defender-for-identity/security-baseline
@@ -207,7 +207,7 @@
       href: ../../network-watcher/security-baseline.md
     - name: Power BI のベースライン
       href: /security/benchmark/azure/baselines/power-bi-security-baseline
-    - name: Security Center のベースライン
+    - name: Defender for Cloud のベースライン
       href: ../../security-center/security-baseline.md
     - name: Service Bus のベースライン
       href: ../../service-bus-messaging/security-baseline.md
@@ -247,7 +247,7 @@
       href: ../fundamentals/index.yml
     - name: クラウドにおける共同責任
       href: ../fundamentals/shared-responsibility.md
-    - name: Azure Security Center
+    - name: Microsoft Defender for Cloud
       href: ../../security-center/index.yml
     - name: Azure セキュリティ ベンチマーク基盤ブループリント サンプル
       href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md

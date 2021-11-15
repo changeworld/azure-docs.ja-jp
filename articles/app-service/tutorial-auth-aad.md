@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 2a77b03f4ea72e0cb22c790bbebab5127e4b0375
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 37bc8bdad9a066bb3988cfd03e3c1f857246e5c6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130220435"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136869"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -302,10 +302,12 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 Cloud Shell のフロントエンド アプリで次のコマンドを実行して、`scope` パラメーターを認証設定 `identityProviders.azureActiveDirectory.login.loginParameters` に追加します。 *\<front-end-app-name>* 、 *\<back-end-client-id>* は、適宜置き換えてください。
 
 ```azurecli-interactive
-az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body '{"identityProviders":{"azureActiveDirectory":{"login":{"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}}}}'
+authSettings=$(az webapp auth show -g myAuthResourceGroup -n <front-end-app-name>)
+authSettings=$(echo "$authSettings” | jq '.properties' | jq '.identityProviders.azureActiveDirectory.login += {"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}')
+az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body "$authSettings"
 ```
 
-要求するスコープの説明を次に示します。
+これらのコマンドでは実質的に、カスタム スコープを付加した `loginParameters` プロパティが追加されます。 要求するスコープの説明を次に示します。
 
 - `openid`、`profile`、`email` は、既に既定で App Service によって要求されています。 詳細については、「[OpenID Connect のスコープ](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes)」を参照してください。
 - `api://<back-end-client-id>/user_impersonation` は、バックエンド アプリの登録で公開される API です。 これは、バックエンド アプリを[トークンの対象ユーザー](https://wikipedia.org/wiki/JSON_Web_Token)として含む JWT トークンが得られるスコープです。 

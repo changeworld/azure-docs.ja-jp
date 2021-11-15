@@ -1,15 +1,15 @@
 ---
 title: Bicep ファイルを作成する - Visual Studio Code
 description: Visual Studio Code と Bicep 拡張機能を使用して、Azure リソースをデプロイするための Bicepファイルを作成します
-ms.date: 10/01/2021
+ms.date: 11/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 95e7a601da5c8a9976d2341c2964df0f4d9718d0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f5950a143510b85ea6de8f7af4e08c7d4b5ed293
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354939"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136231"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する
 
@@ -74,17 +74,15 @@ name: 'examplevnet'
 
 ## <a name="add-parameter"></a>パラメーターを追加する
 
-次に、ストレージ アカウント名に使用するパラメーターを追加します。 仮想ネットワークの上に数行追加し、次のように入力します。
+次に、ストレージ アカウント名に使用するパラメーターを追加します。 ファイルの先頭に、次のように追加します。
 
 ```bicep
 param storageName
 ```
 
-**storageName** の後にスペースを追加すると、そのパラメーターに使用できるデータ型が IntelliSense によって提案されることがわかります。
+**storageName** の後にスペースを追加すると、そのパラメーターに使用できるデータ型が IntelliSense によって提案されることがわかります。 **[string]** を選択します。
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-param.png" alt-text="パラメーターに文字列型を追加する":::
-
-**[string]** を選択します。
 
 次のようなパラメーターになります。
 
@@ -133,11 +131,11 @@ resource exampleStorage
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-resource-type.png" alt-text="リソースの種類に対応するストレージ アカウントを選択する":::
 
-**[Microsoft.Storage/storageAccounts]** を選択すると、使用できる API バージョンが表示されます。 最新のバージョンを選択します。
+**[Microsoft.Storage/storageAccounts]** を選択すると、使用できる API バージョンが表示されます。 **[2021-02-01]** を選択します。
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-api-version.png" alt-text="リソースの種類に対応する API バージョンを選択する":::
 
-リソースの種類の一重引用符の後に **=** とスペースを追加します。 リソースにプロパティを追加するためのオプションが表示されます。 **[required-properties]** を選択します。
+リソースの種類の一重引用符の後に `=` とスペースを追加します。 リソースにプロパティを追加するためのオプションが表示されます。 **[required-properties]** を選択します。
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-required-properties.png" alt-text="必要なプロパティを追加する":::
 
@@ -157,7 +155,7 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 完了までもう少しです。 これらのプロパティに値を指定するだけです。
 
-ここでも IntelliSense が役立ちます。 `name` を `storageName` に設定します。これは、ストレージ アカウントの名前を含むパラメーターです。 `location` の場合は、`eastus` に設定します。 SKU の名前と種類を追加すると、IntelliSense によって有効なオプションが表示されます。
+ここでも IntelliSense が役立ちます。 `name` を `storageName` に設定します。これは、ストレージ アカウントの名前を含むパラメーターです。 `location` の場合は、`'eastus'` に設定します。 SKU の名前と種類を追加すると、IntelliSense によって有効なオプションが表示されます。
 
 完了すると、次のようになります。
 
@@ -223,7 +221,7 @@ Bicep の構文の詳細については、[Bicep の構造](./file.md)に関す�
 ```azurecli
 az group create --name exampleRG --location eastus
 
-az deployment group create --resource-group exampleRG --template-file main.bicep --parameters storageName={your-unique-name}
+az deployment group create --resource-group exampleRG --template-file main.bicep --parameters storageName=uniquename
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -231,15 +229,15 @@ az deployment group create --resource-group exampleRG --template-file main.bicep
 ```azurepowershell
 New-AzResourceGroup -Name exampleRG -Location eastus
 
-New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.bicep -storageName "{your-unique-name}"
+New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.bicep -storageName "uniquename"
 ```
 
 ---
 
 > [!NOTE]
-> **{your-unique-name}** (中かっこを含む) は、一意のストレージ アカウント名に置き換えてください。
+> **uniquename** は、一意のストレージ アカウント名に置き換えてください。 ストレージ アカウントが既に取得されていることを示すエラー メッセージが表示された場合は、指定したストレージ名が使用されています。 一意である可能性が高い名前を指定してください。
 
-デプロイが完了すると、デプロイが成功したことを示すメッセージが表示されます。 ストレージ アカウントが既に取得されていることを示すエラー メッセージが表示された場合は、指定したストレージ名が使用されています。 一意である可能性が高い名前を指定してください。
+デプロイが完了すると、デプロイが成功したことを示すメッセージが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: dd32e421b678b9cfc6277bdc593a06f93fab447f
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: e63867a4c46f8249db93c13914ab7a7297252f48
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136114"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238456"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ
 
@@ -73,6 +73,12 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 - **サービス プリンシパル** は、アプリケーションまたはサービス、つまりユーザーまたはグループではなくコードを示すセキュリティ プリンシパルの一種です。 サービス プリンシパルのオブジェクト ID は **クライアント ID** と呼ばれ、ユーザー名のように機能します。 サービス プリンシパルの **クライアント シークレット** または **証明書** は、パスワードのように機能します。 多くの Azure サービスによって、**クライアント ID** および **証明書** の自動管理による [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の割り当てがサポートされます。 マネージド ID は、Azure 内での認証で最も安全かつ推奨されるオプションです。
 
 Key Vault の認証の詳細については、「[Azure Key Vault に対する認証](authentication.md)」を参照してください。
+
+## <a name="conditional-access"></a>条件付きアクセス 
+
+Key Vault では、Azure Active Directory の条件付きアクセス ポリシーがサポートされています。 条件付きアクセス ポリシーを使用すると、必要な場合は Key Vault に適切なアクセスの制御を適用して組織のセキュリティを維持し、必要でない場合はユーザーの邪魔にならないようにすることができます。
+
+詳しくは、[条件付きアクセスの概要](../../active-directory/conditional-access/overview.md)に関するページをご覧ください。
 
 ## <a name="privileged-access"></a>特権アクセス
 

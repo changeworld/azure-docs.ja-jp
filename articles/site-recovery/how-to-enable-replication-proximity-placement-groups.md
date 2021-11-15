@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: abcb233665d6c6074ff50d1bb53e553ed9eb99ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c721014e2f0a61e46ad599bccdc26388aa706a3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741964"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444954"
 ---
 # <a name="replicate-virtual-machines-running-in-a-proximity-placement-group-to-another-region"></a>近接配置グループで実行されている仮想マシンを別のリージョンにレプリケートする
 
@@ -66,7 +66,7 @@ VM ディザスター リカバリー ページで仮想マシンのレプリケ
 VM のレプリケーションを有効にした後で、DR リージョンの近接配置グループの選択を簡単に更新できます。
 
 1. 仮想マシンに移動します。 左側のウィンドウの **[操作]** で **[ディザスター リカバリー]** を選択します。
-2. **[コンピューティングとネットワーク]** ウィンドウに移動し、 **[編集]** を選択します。
+2. **[コンピューティング]** ペインに移動し、 **[編集]** を選択します。
 3. ターゲットの近接配置グループを含む複数のターゲット設定を編集するためのオプションが表示されます。 VM のフェールオーバー先となる近接配置グループを選択し、 **[保存]** を選択します。
 
 ### <a name="vmware-to-azure"></a>VMware から Azure

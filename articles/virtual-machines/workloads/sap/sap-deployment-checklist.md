@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45a18ade65a08b378652248bc0b0f62cb8f97e84
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 652347a2b63581a613088497ef8b3cb7df4ee8ec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072767"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448749"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -196,10 +196,10 @@ ms.locfileid: "130072767"
 
 1.  古いプラットフォームから Azure にシステムを移行する前に、CPU 使用率、ストレージのスループット、IOPS データなどのリソース消費データを収集します。 このデータは特に DBMS レイヤーのユニットから収集しますが、アプリケーション レイヤーのユニットからも収集します。 また、ネットワークとストレージの待機時間を測定します。
 2.  お使いのシステムの可用性の使用時間パターンを記録します。 目的は、非運用システムを毎日 1 日中使用できるようにする必要があるか、それとも週や月の特定の期間にシャットダウンできる非運用システムがあるかを、明らかにすることです。
-3.  Azure 内の VM 用にご自身の独自の OS イメージを作成する必要があるかどうか、または Shared Image Gallery のイメージを使用するかどうかを、テストして決定します。 Shared Image Gallery のイメージを使用する場合は、OS ベンダーとのサポート契約を反映した正しいイメージを使用する必要があります。 一部の OS ベンダーでは、Shared Image Gallery を使用して、独自のライセンス イメージを持ち込むことができます。 他の OS イメージについては、Azure によって見積もられる価格にサポートが含まれています。 独自の OS イメージを作成する場合は、次の記事でドキュメントを確認できます。
+3.  Azure 内の VM 用にご自身の独自の OS イメージを作成する必要があるかどうか、または Azure Compute Gallery (旧称 Shared Image Gallery) のイメージを使うかどうかを、テストして決定します。 Azure Compute Gallery のイメージを使う場合は、OS ベンダーとのサポート契約を反映した正しいイメージを使う必要があります。 一部の OS ベンダーでは、Azure Compute Gallery を使って、独自のライセンス イメージを持ち込むことができます。 他の OS イメージについては、Azure によって見積もられる価格にサポートが含まれています。 独自の OS イメージを作成する場合は、次の記事でドキュメントを確認できます。
     -   [Azure にデプロイされた Windows VM の一般化されたイメージの構築](../../windows/capture-image-resource.md)
     -   [Azure にデプロイされた Linux VM の一般化されたイメージの構築](../../linux/capture-image.md)
-3.  Shared Image Gallery の SUSE および Red Hat Linux イメージを使用する場合は、Shared Image Gallery 内の、Linux ベンダーによって提供されている SAP 用のイメージを使用する必要があります。
+3.  Azure Compute Gallery の SUSE および Red Hat Linux イメージを使う場合、Azure Compute Gallery で、Linux ベンダーによって提供されている SAP 用のイメージを使う必要があります。
 4.  Microsoft サポート契約に関する SAP のサポート要件を満たすことを確認します。 [SAP サポート ノート #2015553](https://launchpad.support.sap.com/#/notes/2015553) を参照してください。 HANA Large Instances については、「[オンボードの要件](./hana-onboarding-requirements.md)」を参照してください。
 4.  最適なダウンタイムを選択できるよう、適切なユーザーが[計画メンテナンスの通知](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/)を受け取ることを確認します。
 5.  [Channel 9](https://channel9.msdn.com/) などのチャネルで Azure に関するプレゼンテーションを頻繁にチェックし、デプロイに適用できる可能性のある新しい機能を確認します。
@@ -298,7 +298,7 @@ ms.locfileid: "130072767"
 3. システムをシャットダウンできる時間を最適化します。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)

@@ -12,16 +12,16 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: 4196ab27f5b3f4c6ab4897d2df8ad0b2007f8c2b
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 21aef2227768d49da9a5eab5f4e772441c9f15b0
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162797"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158672"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,7 +53,9 @@ Azure VM を作成するときは、可用性セットと可用性ゾーンの�
 
 ## <a name="connectivity"></a>接続
 
-可用性グループ用に対して仮想ネットワーク名または分散ネットワーク名を構成することができます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md)してから、可用性グループに対して[分散ネットワーク名 (DNN)](availability-group-distributed-network-name-dnn-listener-configure.md) または[仮想ネットワーク名 (VNN)](availability-group-vnn-azure-load-balancer-configure.md) をデプロイします。 
+可用性グループ リスナーに接続するためのオンプレミス エクスペリエンスに一致するよう、SQL Server VM を同じ仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)にデプロイします。 複数のサブネットを使用すると、トラフィックをリスナーにルーティングするための分散ネットワーク名 (DNN) や Azure Load Balancer への余分な依存関係が不要になります。 
+
+SQL Server VM を 1 つのサブネットにデプロイする場合、仮想ネットワーク名 (VNN) と Azure Load Balancer を構成するか、または分散ネットワーク名 (DNN) を構成して可用性グループ リスナーにトラフィックをルーティングすることができます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md)してから、可用性グループに対して[分散ネットワーク名 (DNN)](availability-group-distributed-network-name-dnn-listener-configure.md) または[仮想ネットワーク名 (VNN)](availability-group-vnn-azure-load-balancer-configure.md) をデプロイします。 
 
 DNN を使用すると、ほとんどの SQL Server 機能は可用性グループに対して透過的に機能しますが、特定の機能については、特別な考慮が必要となる場合があります。 詳細については、[AG と DNN の相互運用性](availability-group-dnn-interoperability.md)に関する記事を参照してください。 
 
@@ -97,7 +99,9 @@ Azure VM で AG を構成する場合、これらのしきい値をオンプレ�
 
 ## <a name="network-configuration"></a>ネットワークの構成  
 
-Azure VM フェールオーバー クラスターには、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure VM フェールオーバー クラスターに NIC とサブネットを追加する必要はありません。 クラスター検証レポートで、1 つのネットワークでしかノードに到達できないという警告が出されますが、Azure VM フェールオーバー クラスターではこの警告は無視して構いません。 
+Azure Load Balancer または分散ネットワーク名 (DNN) に依存しなくても可用性グループ リスナーにトラフィックをルーティングできるよう、可能な限り SQL Server VM を複数のサブネットにデプロイします。 
+
+Azure VM フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC を推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure VM フェールオーバー クラスターに NIC を追加する必要はありません。 クラスター検証レポートで、1 つのネットワークでしかノードに到達できないという警告が出されますが、Azure VM フェールオーバー クラスターではこの警告は無視して構いません。
 
 ## <a name="basic-availability-group"></a>基本的な可用性グループ
 
@@ -114,26 +118,27 @@ Azure VM 上の SQL Server に可用性グループをデプロイするため�
 
 次の表は、使用可能なオプションの比較を示しています。
 
-| | [Azure portal](availability-group-azure-portal-configure.md)、 | [Azure CLI / PowerShell](./availability-group-az-commandline-configure.md) | [クイック スタート テンプレート](availability-group-quickstart-template-configure.md) | [[手動]](availability-group-manually-configure-prerequisites-tutorial.md) |
+| | [Azure portal](availability-group-azure-portal-configure.md)、 | [Azure CLI / PowerShell](./availability-group-az-commandline-configure.md) | [クイック スタート テンプレート](availability-group-quickstart-template-configure.md) | [手動 (1 つのサブネット)](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md) | [手動 (複数のサブネット)](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
 |---------|---------|---------|---------|---------|
-|**SQL Server のバージョン** |2016 以降 |2016 以降|2016 以降|2012 以降|
-|**SQL Server のエディション** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
-|**Windows Server のバージョン**| 2016 以降 | 2016 以降 | 2016 以降 | All|
-|**クラスターを自動作成**|はい|はい | はい |いいえ|
-|**可用性グループを自動作成** |はい |いいえ|いいえ|いいえ|
-|**リスナーとロード バランサーを別々に作成** |いいえ|いいえ|いいえ|はい|
-|**この方法を使用して DNN リスナーを作成可能**|いいえ|いいえ|いいえ|はい|
-|**WSFC クォーラムの構成**|クラウド監視|クラウド監視|クラウド監視|All|
-|**複数のリージョンを使用した DR** |いいえ|いいえ|いいえ|はい|
-|**マルチサブネットのサポート** |はい|はい|はい|はい|
-|**既存の AD のサポート**|はい|はい|はい|はい|
-|**同一リージョン内の複数のゾーンを使用した DR**|はい|はい|はい|はい|
-|**AD なしの分散型 AG**|いいえ|いいえ|いいえ|はい|
-|**クラスターなしの分散型 AG** |いいえ|いいえ|いいえ|はい|
+|**SQL Server のバージョン** |2016 以降 |2016 以降|2016 以降|2012 以降|2012 以降| 
+|**SQL Server のエディション** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|Enterprise、Standard|
+|**Windows Server のバージョン**| 2016 以降 | 2016 以降 | 2016 以降 | All| All|
+|**クラスターを自動作成**|はい|はい | はい |いいえ| いいえ| 
+|**可用性グループを自動作成** |はい |いいえ|いいえ|いいえ| いいえ| 
+|**リスナーとロード バランサーを別々に作成** |いいえ|いいえ|いいえ|はい|なし|
+|**この方法を使用して DNN リスナーを作成可能**|いいえ|いいえ|いいえ|はい|なし|
+|**WSFC クォーラムの構成**|クラウド監視|クラウド監視|クラウド監視|All|All|
+|**複数のリージョンを使用した DR** |いいえ|いいえ|いいえ|はい|はい|
+|**マルチサブネットのサポート** |いいえ|いいえ|いいえ|該当なし|はい|
+|**既存の AD のサポート**|はい|はい|はい|はい|はい|
+|**同一リージョン内の複数のゾーンを使用した DR**|はい|はい|はい|はい|はい|
+|**AD なしの分散型 AG**|いいえ|いいえ|いいえ|はい| はい| 
+|**クラスターなしの分散型 AG** |いいえ|いいえ|いいえ|はい|はい|
+|**ロード バランサーまたは DNN が必要**| はい | はい | はい | はい | いいえ|
 
 ## <a name="next-steps"></a>次の手順
 
-[HADR のベスト プラクティス](hadr-cluster-best-practices.md)を確認し、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI または PowerShell](./availability-group-az-commandline-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用するか、または[手動](availability-group-manually-configure-prerequisites-tutorial.md)で可用性グループのデプロイを開始します。
+[HADR のベスト プラクティス](hadr-cluster-best-practices.md)を確認し、[Azure portal](availability-group-azure-portal-configure.md)、[Azure CLI または PowerShell](./availability-group-az-commandline-configure.md)、[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用するか、または[手動](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md)で可用性グループのデプロイを開始します。
 
 また、[クラスターレス可用性グループ](availability-group-clusterless-workgroup-configure.md)または可用性グループを[複数のリージョン](availability-group-manually-configure-multiple-regions.md)にデプロイすることもできます。
 

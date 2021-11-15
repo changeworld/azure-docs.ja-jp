@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c8a2ab0b904c60e2d1d1c44a9d596cf62d0403d6
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 49b0f5bac116ccdc6696ce23100f661791304ff5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546014"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465005"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>プロビジョニングされたスループット (RU/秒) のスケーリングに関するベスト プラクティス 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,10 +35,12 @@ ms.locfileid: "129546014"
     - その結果、操作の完了に時間がかかる場合があります (通常は 4 ~ 6 時間)。
 各物理パーティションでは、最大 10,000 RU/秒のスループット (すべての API に適用されます) と 50 GB のストレージ (ストレージが 30 GB の Cassandra を除くすべての API に適用されます) をサポートできます。 
 
+> [!NOTE]
+> 非同期スケールアップ操作の進行中に、[手動リージョン フェールオーバー操作](how-to-manage-database-account.md#manual-failover)または[新しいリージョンの追加/削除](how-to-manage-database-account.md#addremove-regions-from-your-database-account)を実行すると、スループット スケールアップ操作は一時停止されます。 フェールオーバーまたはリージョンの追加/削除操作が完了すると、自動的に再開されます。 
 - **インスタント スケールダウン**
     - スケールダウン操作の場合、Azure Cosmos DB ではパーティションを分割したり新規に追加したりする必要はありません。 
     - その結果、操作はすぐに完了し、対象の RU/s を使用できます。 
-    - この操作の主な結果として、パーティションの範囲あたりの RU が減少します。
+    - この操作の主な結果として、物理パーティションあたりの RU が減少します。
     
 ## <a name="how-to-scale-up-rus-without-changing-partition-layout"></a>パーティションのレイアウトを変更せずに RU/秒をスケールアップする方法
 

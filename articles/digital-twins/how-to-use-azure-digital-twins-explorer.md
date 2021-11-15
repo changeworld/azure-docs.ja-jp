@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e17d6026f9b655c6a08bc7e91939482d734a911d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 087af92ce70ccb8db37073b6aadb8cf9b83bc57c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070947"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454307"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer を使用する (プレビュー)
 
@@ -103,7 +103,35 @@ ms.locfileid: "131070947"
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA ツインが選択され、[ツインのプロパティ] パネルは展開されてツインのプロパティが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-ツインまたはそのプロパティの一部がモデルと一致しなくなった場合、[ツインのプロパティ] パネルにエラー メッセージが表示されます。 ツインのモデルが見つからない場合や、あるプロパティがツインで使用されているモデル定義に含まれていない場合、次のようなエラー メッセージが表示される場合があります。
+##### <a name="data-type-icons"></a>データ型のアイコン
+
+**[ツインのプロパティ]** および **[リレーションシップのプロパティ]** パネルに表示される各プロパティには、DTDL モデルのフィールドの型を示すアイコンが表示されます。 アイコンの上にマウス ポインターを置くと、関連付けられている型を表示できます。
+
+次の表は、使用可能なデータ型とそれに対応するアイコンを示しています。 また、この表には、各データ型から [DTDL 仕様](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#schemas)のスキーマの説明へのリンクも記載されています。
+
+| アイコン | データの種類 |
+| --- | --- |
+| ![ブール型のアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/boolean.svg) | [boolean](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![コンポーネントのアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/component.svg) | [コンポーネント](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#component) |
+| ![日付アイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/date.svg) | [date](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![dateTime アイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/datetime.svg) | [dateTime](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![継続時間のアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/duration.svg) | [duration](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![列挙型のアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/enum.svg) | [enum](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#enum) |
+| ![マップのアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/map.svg) | [map](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#map) |
+| ![数値のアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/numeric.svg) | [Double、float、integer、long](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) を含む数値型 |
+| ![オブジェクトのアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/object.svg) | [object](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#object) |
+| ![文字列のアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/string.svg) | [string](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![時刻のアイコン](./media/how-to-use-azure-digital-twins-explorer/data-icons/time.svg) | [time](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+
+##### <a name="errors"></a>エラー
+
+ツインまたはそのプロパティの一部がモデルと一致しなくなった場合、[ツインのプロパティ] パネルにエラー メッセージが表示されます。 
+
+エラーには 2 つのシナリオがあり、それぞれに独自のエラー メッセージが表示されます。
+* **ツインで使用されている 1 つまたは複数のモデルがみつかりません**。 この場合、ツインのプロパティ パネルで、そのモデルに関連付けられているすべてのプロパティに "missing" というフラグが設定されます。 これは、ツインの作成後にモデルが削除された場合に発生する可能性があります。
+* **ツインの一部のプロパティが、ツインのモデルの一部ではありません**。 ツインのプロパティ パネルでは、これらのプロパティにのみ "missing" というフラグが設定されます。 これは、プロパティの設定後にツインのモデルが置換または変更され、そのプロパティが最新バージョンのモデルに存在しなくなった場合に発生する可能性があります。
+
+両方のエラー メッセージは、次のスクリーンショットに示されています。
 
 :::row:::
     :::column:::
@@ -161,7 +189,7 @@ ms.locfileid: "131070947"
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-filter-text.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。テキスト フィルター アイコンが選択され、検索用語を入力できる [フィルター] タブが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-filter-text.png":::
 
-また、グラフに表示されるツインとグラフをテキストで強調表示するには、この **[強調表示]** アイコンを選択します。
+また、グラフに表示されるツインとリレーションシップをテキストで強調表示するには、この **[強調表示]** アイコンを選択します。
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-text.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。テキスト フィルター アイコンが選択され、検索用語を入力できる [強調表示] タブが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-text.png":::
 
@@ -173,7 +201,7 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 * [ツインとリレーションシップの単純なリストを表示する](#view-flat-list-of-twins-and-relationships)
 * [ツインを作成する](#create-twins) (初期プロパティありまたはなしで)
 * [リレーションシップの作成](#create-relationships) (ツイン間)
-* [ツインとリレーションシップを編集する](#edit-twins-and-relationships)
+* [ツインとリレーションシップのプロパティを編集する](#edit-twin-and-relationship-properties)
 * [ツインとリレーションシップを削除する](#delete-twins-and-relationships)
 
 ツインとリレーションシップの表示エクスペリエンスの詳細については、[ツインとツイン グラフの確認](#explore-the-twin-graph)に関するセクションを参照してください。
@@ -198,7 +226,7 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
     :::column-end:::
 :::row-end:::
 
-ツインにプロパティ値を追加するには、「[ツインとリレーションシップを編集する](#edit-twins-and-relationships)」を参照してください。
+ツインにプロパティ値を追加するには、「[ツインとリレーションシップのプロパティを編集する](#edit-twin-and-relationship-properties)」を参照してください。
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
@@ -210,15 +238,18 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 
 これにより、 **[リレーションシップの作成]** ダイアログが表示されます。このダイアログには、リレーションシップのソース ツインとターゲット ツインが表示され、その後に、ソース ツインが持つことができるリレーションシップの種類 (DTDL モデルで定義されます) を含む **[リレーションシップ]** ドロップダウン メニューが表示されます。 リレーションシップの種類のオプションを選択し、新しいリレーションシップを **[保存]** します。
 
-### <a name="edit-twins-and-relationships"></a>ツインとリレーションシップを編集する
+### <a name="edit-twin-and-relationship-properties"></a>ツインとリレーションシップのプロパティを編集する
 
 ツインまたはリレーションシップのプロパティ値を表示するには、 **[ツイン グラフ]** で要素を選択し、 **[プロパティ インスペクターの切り替え]** ボタンを使用して **[ツイン プロパティ]** または **[リレーションシップのプロパティ]** パネルをそれぞれ展開します。
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。FactoryA ツインが選択され、[ツインのプロパティ] パネルは展開されてツインのプロパティが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-このパネルを使用すると、書き込み可能なプロパティを直接編集できます。 値をインラインで更新し、パネルの上部にある **[変更を保存する]** ボタンをクリックして保存します。 更新が保存されると、[更新 API](/rest/api/azure-digitaltwins/) によって適用された JSON パッチ操作を示すモーダル ウィンドウが画面に表示されます。
+このパネルを使用すると、書き込み可能なプロパティを直接編集できます。 値をインラインで更新し、パネルの上部にある **[変更を保存する]** ボタンを選択して保存します。 更新が保存されると、[更新 API](/rest/api/azure-digitaltwins/) によって適用された JSON パッチ操作を示すモーダル ウィンドウが画面に表示されます。
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png" alt-text="Azure Digital Twins Explorer の [ツイン グラフ] パネルのスクリーンショット。画面の中央には、JSON パッチのコードを示す [パス情報] モーダルが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png":::
+
+>[!TIP]
+> **[ツインのプロパティ]** および **[リレーションシップのプロパティ]** パネルに表示される各プロパティには、DTDL モデルのフィールドの型を示すアイコンが表示されます。 型のアイコンの詳細については、「[データ型のアイコン](#data-type-icons)」を参照してください。
 
 ### <a name="delete-twins-and-relationships"></a>ツインとリレーションシップを削除する
 
@@ -507,7 +538,7 @@ Azure Digital Twins で、インポートするグラフのプレビューが表
 >
 > また、独立した URL エンコーダーを使用して、クエリ テキストを変換することもできます。
 
-**SELECT * FROM digitaltwins** を実行するクエリのパラメーターの例を次に示します。
+`SELECT * FROM digitaltwins` を実行するクエリのパラメーターの例は以下のとおりです:
 
 `...&query=SELECT%20*%20FROM%20digitaltwins`
 

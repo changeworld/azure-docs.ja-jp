@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: f9b4d079b359524faac8b594c653b7aebcac2676
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c28d2d2fbdbe48b2f07ed85f8cc08b93d70e1edb
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730522"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026965"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -37,7 +37,7 @@ Maven が好みの開発ツールでない場合は、Java 開発者向けの同
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 4.x。
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
@@ -47,7 +47,7 @@ Maven が好みの開発ツールでない場合は、Java 開発者向けの同
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `az --version` を実行して、Azure CLI バージョンが 2.4 以降であることを確認します。
 

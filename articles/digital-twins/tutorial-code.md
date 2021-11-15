@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:クライアント アプリをコーディングする
 titleSuffix: Azure Digital Twins
-description: .NET (C#) SDK を使用してクライアント アプリの最小限のコードを記述するチュートリアル。
+description: このチュートリアルでは、.NET (C#) SDK を使用して、Azure Digital Twins クライアント アプリの最小限のコードを記述する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 04/28/2021
+ms.date: 10/18/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 2146d07ce28cf0d14bb1b1416a0aa5b8ebf1febe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: df99bfd1dfd07749b4906e9bd7f9f62ece68066b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612075"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501706"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -27,7 +27,7 @@ Azure Digital Twins を使用する開発者は一般的に、Azure Digital Twin
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、セットアップとプロジェクトの作業にコマンド ラインを使用します。 そのため、任意のコード エディターを使用して演習を進めることができます。
+この Azure Digital Twins のチュートリアルでは、セットアップとプロジェクトの作業にコマンド ラインを使用します。 そのため、任意のコード エディターを使用して演習を進めることができます。
 
 開始するために必要なもの:
 * 任意のコード エディター
@@ -130,7 +130,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 > [!TIP] 
 > あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、[モデルの解析および検証](how-to-parse-models.md)に関するページを参照してください。
 
-次に、先ほど作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
+次に、作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
 
 まず、いくつかの `using` ステートメントをファイルの先頭に追加します。
 
@@ -162,7 +162,7 @@ dotnet run
 
 **この新しいコードをテストするためにプログラムをもう一度実行する前に**、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins では、同じモデルを 2 回アップロードすることはできません。そのため、同じモデルを再度アップロードしようとすると、プログラムから例外がスローされます。
 
-この点を考慮して、コマンド ウィンドウでこのコマンドを使用してプログラムを再度実行します。
+この情報を考慮して、コマンド ウィンドウでこのコマンドを使用してプログラムを再度実行します。
 
 ```cmd/sh
 dotnet run
@@ -196,7 +196,7 @@ dotnet run
 
 次に、プログラムを再度実行します。 
 
-最初の実行後にツインが既に存在していても、ツインを 2 回目に作成したときにエラーがスローされないことに注意してください。 モデルの作成とは異なり、ツインの作成では、REST レベルで *upsert* セマンティクスを使用して *PUT* 呼び出しを行います。 つまり、ツインが既に存在する場合、同じツインを再び作成しようとすると、単に元のツインが置き換えられます。 エラーはスローされません。
+最初の実行後にツインが既に存在していても、ツインを 2 回目に作成したときにエラーがスローされないことに注意してください。 モデルの作成とは異なり、ツインの作成では、REST レベルで *upsert* セマンティクスを使用して *PUT* 呼び出しを行います。 この種の REST 呼び出しを使用すると、ツインが既に存在する場合、同じツインを再び作成しようとすると、単に元のツインが置き換えられます。 エラーはスローされません。
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 

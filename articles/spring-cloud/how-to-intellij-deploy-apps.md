@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
+title: 'チュートリアル: IntelliJ を使用して Spring Boot アプリケーションをデプロイする'
 description: IntelliJ を使用してアプリケーションを Azure Spring Cloud にデプロイします。
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 11/03/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: c3f1ead5d0c7e9ab7011a1179badc41b40912c83
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: af1932ddaba8416a25b6095d8b6a7cccb16f6796
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015384"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576030"
 ---
-# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
+# <a name="deploy-spring-boot-applications-using-intellij"></a>IntelliJ を使用して Spring Boot アプリケーションをデプロイする
 
 **この記事の適用対象:** ✔️ Java
 
@@ -81,11 +81,11 @@ Azure にデプロイするには、Azure アカウントでサインインし�
 
 1. このプラグインは、プロジェクトに対して `mvn package` コマンドを実行してから、新しいアプリを作成し、`package` コマンドによって生成された jar をデプロイします。
 
-1. アプリの URL が出力ウィンドウに表示されない場合は、Azure portal から取得します。 リソース グループから Azure Spring Cloud のインスタンスに移動します。  次に **[アプリ]** を選択します。  実行中のアプリが一覧表示されます。
+1. アプリの URL が出力ウィンドウに表示されない場合は、Azure portal から取得します。 リソース グループから Azure Spring Cloud のインスタンスに移動します。  次に **[アプリ]** を選択します。  実行中のアプリが一覧表示されます。 アプリを選択し、**URL** または **テスト エンドポイント** をコピーします。
 
     ![テスト URL の取得](media/spring-cloud-intellij-howto/get-test-url.png)
 
-1. ブラウザーで URL に移動します。
+1. ブラウザーでその URL またはテスト エンドポイントに移動します。
 
     ![ブラウザーで移動 2](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
 

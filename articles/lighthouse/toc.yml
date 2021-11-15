@@ -101,7 +101,7 @@
             - name: 修復できるポリシーをデプロイする
               displayName: 'deployIfNotExists, modify, managed identities, managed identity'
               href: ./how-to/deploy-policy-remediation.md
-        - name: Azure Sentinel の統合
+        - name: Microsoft Sentinel の統合
           href: ./how-to/manage-sentinel-workspaces.md
 - name: リファレンス
   items:

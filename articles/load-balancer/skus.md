@@ -11,22 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 5000ac68cc0e00cdbe9d0ebd430f8cd88fe49e98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 204de2d0b3ed6e75d8b599e094a58e0b2e1826b0
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057706"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576113"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer の SKU
 
 Azure Load Balancer には 2 つの SKU があります。
 
 ## <a name="sku-comparison"></a><a name="skus"></a> SKU の比較
+Azure Load Balancer には、Basic、Standard、Gateway という 3 つの SKU があります。 各 SKU は特定のシナリオに対応しており、スケール、機能、価格の違いがあります。 
 
-Load Balancer では、Standard SKU と Basic SKU の両方がサポートされています。 これらの SKU の間には、シナリオのスケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオはすべて、Standard Load Balancer でも作成できます。
-
-違いを比較して理解するには、次の表をご覧ください。 詳しくは、「[Azure Standard Load Balancer の概要](./load-balancer-overview.md)」を参照してください。
+Basic と Standard の SKU の違いを比較して理解するには、次の表を参照してください。 詳しくは、「[Azure Standard Load Balancer の概要](./load-balancer-overview.md)」を参照してください。 現在プレビュー段階にあるサード パーティーのネットワーク仮想アプライアンス (NVA) に対応している Gateway SKU については、「[Gateway Load Balancer の概要](gateway-overview.md)」を参照してください
 
 >[!NOTE]
 > Microsoft では、Standard Load Balancer を推奨しています。
@@ -34,6 +33,7 @@ Load Balancer では、Standard SKU と Basic SKU の両方がサポートされ
 
 | | Standard Load Balancer | Basic Load Balancer |
 | --- | --- | --- |
+| **シナリオ** |  ハイ パフォーマンスと非常に短い待機時間を必要とする場合に、ネットワーク層のトラフィックを負荷分散する機能を備えています。 リージョン内およびリージョン間でトラフィックをルーティングし、高い回復性を実現するために可用性ゾーンにルーティングします。 | 高可用性や冗長性を必要としない小規模なアプリケーション向けに搭載されています。 可用性ゾーンと互換性がありません。 |
 | **バックエンドの種類** | IP ベース、NIC ベース | NIC ベース |
 | **[バックエンド プールのサイズ](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | 最大 1,000 インスタンスをサポート。 | 最大 300 インスタンスをサポート。 |
 | **バックエンド プール エンドポイント** | 単一の仮想ネットワーク内の任意の仮想マシンまたは仮想マシン スケール セット。 | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン。 |

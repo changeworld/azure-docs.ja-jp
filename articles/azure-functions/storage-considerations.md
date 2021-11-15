@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: dfbaf2947dd3eaacd155a240541a6abae3894b35
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6dc2bad744118e57b9e958658814f5c194f633ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599983"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216620"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -71,14 +71,16 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 
 Premium と Linux 以外の Consumption プランでは、高スケールの共有ファイル システムとして、Azure Files が既定で設定されています。 このファイル システムは、それらのプラットフォームでログ ストリーミングなどの機能を実現するためにも使用しますが、主な用途は、デプロイした機能のペイロードを安定的に送信することです。 [外部パッケージの URL を使用してアプリをデプロイするときは](./run-functions-from-deployment-package.md)、そのアプリのコンテンツを、読み取り専用の別のファイルシステムから提供します。その場合、必要なければ Azure Files を使用しなくてもかまいません。 この場合、書き込み可能なファイルシステムを用意することになりますが、すべての関数アプリのインスタンスでこれを共有することは保証できません。
 
-Azure Files を使わない場合、次のことを考慮する必要があります。
+Azure Files を使用しない場合は、次のことへの対応が必要です。
 
-* 外部パッケージ URL からデプロイする必要があります。
-* 書き込み可能な共有ファイル システムに依存した運用はできません。
-* アプリで Functions のランタイム v1 を使用できません。
+* 外部パッケージの URL からデプロイする必要があります。
+* 書き込み可能な共有ファイル システムの使用を前提にした運用はできません。
+* アプリで Functions ランタイム v1 を使用できません。
 * Azure portal などのクライアントのログ ストリーミングで、既定のログがファイル システムのログになります。 これの代わりに、Application Insights のログを使用するべきです。
 
 上の点に問題がなければ、Azure Files を使用せずにアプリを作成できます。 アプリケーションの設定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` を指定せずに、関数アプリを作成してください。 これを行うには、標準のデプロイ用の ARM テンプレートを生成し、これらの 2 つの設定を削除し、テンプレートをデプロイします。 
+
+Functions では動的スケールアウトのプロセスの一部に Azure Files を使用するため、Consumption、Premium プランにおいて Azure Files なしで実行すると、スケーリングが制限される可能性があります。
 
 ## <a name="mount-file-shares"></a>ファイル共有をマウントする
 

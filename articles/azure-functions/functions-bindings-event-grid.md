@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4935bb8c44c2f3d6d1a17a8c1f2ba897178d1606
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: f0f42b37c40a3a3a2ecda4115ebc7729fc686671
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069503"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473967"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions における Azure Event Grid のバインド
 
@@ -50,28 +50,21 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 #### <a name="event-grid-extension-3x-and-higher"></a>Event Grid 拡張機能 3.x 以降
 
-Event Grid のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。 [クラウド イベント](/dotnet/api/azure.messaging.cloudevent)は、新しい Event Grid 拡張機能でもサポートされています。
+Event Grid のバインド拡張機能の新しいバージョンを利用できるようになりました。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。 [クラウド イベント](/dotnet/api/azure.messaging.cloudevent)は、新しい Event Grid 拡張機能でもサポートされています。
 
-この拡張機能バージョンは[プレビュー NuGet パッケージ]として利用できます。あるいは、`host.json` ファイルに次を追加することでプレビュー拡張機能バンドル v3 から追加できます。
+この拡張機能のバージョンは、[NuGet パッケージ] バージョン 3.x をインストールすることによって利用できます。または、`host.json` ファイルに次のものを追加して、拡張機能バンドル v3 から追加することもできます。
 
 ```json
 {
   "version": "2.0",
   "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-    "version": "[3.*, 4.0.0)"
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.3.0, 4.0.0)"
   }
 }
 ```
 
 詳細については、[ユーザーの更新]に関するページを参照してください。
-
-[プレビュー NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.4
-[core tools]: ./functions-run-local.md
-[拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
-[NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
-[拡張機能の更新]: ./functions-bindings-register.md
-[Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
 

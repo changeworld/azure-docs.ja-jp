@@ -2,13 +2,13 @@
 title: Azure バックアップ レポートをメールで送信する
 description: 定期的なレポートをメールで受信する自動化されたタスクを作成します
 ms.topic: conceptual
-ms.date: 03/01/2021
-ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/19/2021
+ms.openlocfilehash: dd5e31663262463449df4377329edc6604ffb691
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561340"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235983"
 ---
 # <a name="email-azure-backup-reports"></a>Azure バックアップ レポートをメールで送信する
 
@@ -52,7 +52,7 @@ ms.locfileid: "105561340"
 
 ## <a name="contents-of-the-email"></a>メールの内容
 
-* ポータルに表示されるすべてのチャートとグラフを、メールでインライン コンテンツとして使用できます。
+* ポータルに表示されるすべてのチャートとグラフを、メールでインライン コンテンツとして使用できます。 バックアップ レポートで示される情報についての[詳細を確認](configure-reports.md)してください。
 * ポータルに表示されるグリッドは、メールでは *.csv の添付ファイルとして使用できます。
 * メール タスクの作成時に、レポートでユーザーによって選択されたすべてのレポートレベルのフィルターが、メールに表示されるデータで使用されます。
 * **[バックアップ インスタンス名]** 、 **[ポリシー名]** などのタブレベルのフィルターは適用されません。 この唯一の例外は、 **[最適化]** タブの **[リテンション期間の最適化]** グリッドです。ここでは、 **[毎日]** 、 **[毎週]** 、 **[毎月]** 、 **[毎年]** の RP 保有期間のフィルターが適用されます。

@@ -3,13 +3,16 @@ title: ハイブリッド バックアップを保護するセキュリティ機
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 04/26/2021
-ms.openlocfilehash: 10a3420003197fc76f9baefbfd4c58c40a6dacfc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: eebf21c5b967d08d3f38eef74239dbff0e3d4e7d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073664"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443428"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 
@@ -20,15 +23,18 @@ ms.locfileid: "131073664"
 - **復旧**。 削除日から 14 日間は、削除されたバックアップ データが保持されます。 これにより、特定の期間内のデータの復旧性が確保され、攻撃が行われてもデータが失われることはありません。 また、保持される最小復旧ポイントの数が非常に増えたため、データの破損を防ぐことができます。
 
 > [!NOTE]
-> サービスとしてのインフラストラクチャ (IaaS) VM バックアップを使用している場合は、セキュリティ機能を有効にしないでください。 現時点ではこれらの機能を IaaS VM バックアップで使用することはできません。そのため、これらの機能を有効にしても効果はありません。 セキュリティ機能は、次に示す機能を使用している場合にのみ有効にする必要があります。 <br/>
->
-> - **Azure Backup エージェント**。 エージェントの最小バージョンは 2.0.9052 です。 これらの機能を有効にした後、重要な操作を実行するためにエージェントをこのバージョンにアップグレードする必要があります。 <br/>
-> - **Azure Backup Server**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Azure Backup Server Update 1) です。 <br/>
-> - **System Center Data Protection Manager**。 Azure Backup エージェントの最小バージョンは 2.0.9052 (Data Protection Manager 2012 R2 UR12 または Data Protection Manager 2016 UR2) です。 <br/>
+> これらの機能は、Recovery Services コンテナーでのみ使用できます。 新しく作成されるすべての Recovery Services コンテナーでは、これらの機能が既定で有効になります。 既存の Recovery Services コンテナーでは、次のセクションで説明する手順に従ってこれらの機能を有効にできます。 機能が有効になったら、そのコンテナーに登録されているすべての Recovery Services エージェント コンピューター、Azure Backup Server インスタンス、および Data Protection Manager サーバーに機能が適用されます。
 
-> [!NOTE]
-> これらの機能は、Recovery Services コンテナーでのみ使用できます。 新しく作成されるすべての Recovery Services コンテナーでは、これらの機能が既定で有効になります。 既存の Recovery Services コンテナーでは、次のセクションで説明する手順に従ってこれらの機能を有効にできます。 機能が有効になったら、そのコンテナーに登録されているすべての Recovery Services エージェント コンピューター、Azure Backup Server インスタンス、および Data Protection Manager サーバーに機能が適用されます。 この設定の有効化は 1 回限りの操作であり、これらの機能を有効にした後で無効にすることはできません。
->
+## <a name="minimum-version-requirements"></a>最小バージョンの要件
+
+次を使用している場合にのみ、セキュリティ機能を有効にしてください。
+
+- **Azure Backup エージェント**: エージェントの最小バージョンは _2.0.9052_ です。 これらの機能を有効にした後、重要な操作を実行するためにエージェンのバージョンをアップグレードしてください。
+- **Azure Backup Server**: Azure Backup エージェントの最小バージョンは _2.0.9052_ _(Azure Backup Server Update 1)_ です。
+- **System Center Data Protection Manager**: Azure Backup エージェントの最小バージョンは _2.0.9052_ _(Data Protection Manager 2012 R2 UR12_/ _Data Protection Manager 2016 UR2)_ です。
+
+>[!Note]
+>サービスとしてのインフラストラクチャ (IaaS) VM バックアップを使用している場合は、セキュリティ機能を有効にしないでください。 現時点では、これらの機能は IaaS VM バックアップでは使用できないため、有効にしても効果はありません。
 
 ## <a name="enable-security-features"></a>セキュリティ機能の有効化
 

@@ -236,6 +236,8 @@
           href: azure-stack-hci-overview.md
         - name: Azure Stack HCI の FAQ (プレビュー)
           href: azure-stack-hci-faq.yml
+    - name: Azure Virtual Desktop リソースにタグを付ける
+      href: tag-virtual-desktop-resources.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

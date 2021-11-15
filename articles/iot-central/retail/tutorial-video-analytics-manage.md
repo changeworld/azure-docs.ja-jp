@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 509709b26a51a4202736fcab7e032ec8f91419eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832608"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851137"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>チュートリアル:ビデオ分析 (物体とモーションの検出) アプリケーションを監視、管理する
 
@@ -52,6 +52,22 @@ IoT Central アプリケーションで、以前作成した **LVA Gateway 001**
 
 > [!NOTE]
 > アプリケーションには、**LVA Edge Object Detector** デバイス テンプレートがあらかじめ存在します。
+
+デバイスが接続に失敗した場合は、デバイスのモジュールの状態を確認します。
+
+* SSH を使用して、デバイスでシェルを開きます。
+* シェルで次のコマンドを実行します。
+
+    `sudo iotedge list`
+
+モジュールが正常に実行されている場合は、次のような出力が表示されます。
+
+```
+    LvaEdgeGatewayModule                      running          Up 2 minutes     mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64
+    lvaEdge                                   running          Up 2 minutes     mcr.microsoft.com/media/live-video-analytics:2
+```
+
+詳しくは、「[IoT Edge デバイスのトラブルシューティング](../../iot-edge/troubleshoot.md)」を参照してください。
 
 ## <a name="add-a-motion-detection-camera-optional"></a>モーション検出カメラを追加する (省略可)
 

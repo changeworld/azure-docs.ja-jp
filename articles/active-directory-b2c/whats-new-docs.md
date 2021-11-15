@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 10/05/2021
+ms.date: 11/02/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,49 @@ ms.workload: identity
 ms.author: kengaderdus
 author: kengaderdus
 manager: CelesteDG
-ms.openlocfilehash: ba3e1ea54c6637e6882bdba1f62a9c41a1f17605
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: e916bdffcfff61d3cc09aca3cc055a69c1e56273
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043588"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462843"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [チュートリアル: 証明書利用者が IDEMIA または US State 発行のモバイル ID 資格情報を消費するように Azure Active Directory B2C を使用して IDEMIA を構成する (プレビュー)](partner-idemia.md)
+- [チュートリアル: F5 BIG-IP を使用してオンプレミスのアプリケーションを保護するように Azure Active Directory B2C を拡張する](partner-f5.md)
+- [ロールとリソースのアクセス制御](roles-resource-access-control.md)
+- [サポートされる Azure AD の機能](supported-azure-ad-features.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [チュートリアル: Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する](tutorial-create-user-flows.md)
+- [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui.md)
+- [チュートリアル: F5 BIG-IP を使用してオンプレミスのアプリケーションを保護するように Azure Active Directory B2C を拡張する](partner-f5.md)
+- [Azure Active Directory B2C を使用して汎用 OpenID Connect でのサインアップおよびサインインを設定する](identity-provider-generic-openid-connect.md)
+- [RelyingParty](relyingparty.md)
+- [Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)
+- [Application Insights を使用して Azure Active Directory B2C のログを収集する](troubleshoot-with-application-insights.md)
+- [Azure AD B2C のカスタム ポリシーとユーザー フローのトラブルシューティング](troubleshoot.md)
+- [Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)
+- [チュートリアル: Azure Sentinel で Azure Active Directory B2C のデータに関するセキュリティ分析を構成する](azure-sentinel.md)
+- [Azure Active Directory B2C とは](overview.md)
+- [クイックスタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定](quickstart-single-page-app.md)
+- [クイックスタート: Azure Active Directory B2C を使用した ASP.NET アプリケーションのサインインの設定](quickstart-web-app-dotnet.md)
+- [Azure Active Directory B2C 向けのソリューションとトレーニング](solution-articles.md)
+- [Azure Active Directory B2C の技術と機能の概要](technical-overview.md)
+- [SAML アプリケーションを Azure AD B2C に登録する](saml-service-provider.md)
+- [Azure Active Directory B2C でセッションの動作を構成する](session-behavior.md)
+
+
+
 
 ## <a name="september-2021"></a>2021 年 9 月
 
@@ -188,7 +221,7 @@ Azure Active Directory B2C のドキュメントの最新情報にようこそ�
 - [Azure AD B2C カスタム ポリシーの概要](custom-policy-overview.md)
 - [ユーザー フローとカスタム ポリシーの概要](user-flow-overview.md)
 - [ユーザー フローの電話でのサインアップとサインインを設定する](phone-authentication-user-flows.md)
-- [Azure Active Directory B2C の多要素認証 | Microsoft Docs](multi-factor-authentication.md)
+- [Azure Active Directory B2C で多要素認証を有効にする](multi-factor-authentication.md)
 - [Azure Active Directory B2C のユーザー フロー バージョン](user-flow-versions.md)
 
 

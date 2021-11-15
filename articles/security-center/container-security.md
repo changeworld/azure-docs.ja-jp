@@ -1,19 +1,18 @@
 ---
-title: Microsoft Defender for Cloud および Microsoft Defender を使用したコンテナーのセキュリティ
+title: Microsoft Defender for Cloud でのコンテナーのセキュリティ
 description: Microsoft Defender for Cloud のコンテナーのセキュリティ機能について説明します
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/06/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e3b839d572437e3fd9677ebabb111de68ef4d005
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 947aa4c5506b01ee3d22cd4372a4e5a5f0ca4992
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010089"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579314"
 ---
 # <a name="container-security-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud のコンテナーのセキュリティ
 
@@ -46,7 +45,7 @@ Defender for Cloud を使用すると、次のコンテナー リソースの種
 
 Azure Resource Manager ベースの Azure コンテナー レジストリ内のイメージを監視するには、[Microsoft Defender for container registries](defender-for-container-registries-introduction.md) を有効にします。 過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージが、Defender for Cloud によってスキャンされます。 統合されたスキャナーは、業界トップレベルの脆弱性スキャン ベンダー Qualys によって提供されます。
 
-Qualys または Defender for Cloud で問題が見つかった場合は、[ワークロード保護ダッシュボード](workload-protections-dashboard.md)で通知されます。 Defender for Cloud には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、問題の修正方法に関するガイダンスが表示されます。 コンテナーの Defender for Cloud の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-compute)を参照してください。
+Qualys または Defender for Cloud で問題が見つかった場合は、[ワークロード保護ダッシュボード](workload-protections-dashboard.md)で通知されます。 Defender for Cloud には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、問題の修正方法に関するガイダンスが表示されます。 Defender for Cloud のコンテナーに関する推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-compute)を参照してください。
 
 スキャナーによる検出結果が、Defender for Cloud によってフィルター処理され、分類されます。 イメージが正常な場合は、Defender for Cloud によってそのようにマークされます。 解決の必要な問題があるイメージに対してのみ、Defender for Cloud によってセキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Defender for Cloud での不要な情報アラートの可能性が減ります。
 
@@ -54,9 +53,9 @@ Qualys または Defender for Cloud で問題が見つかった場合は、[ワ�
 
 ### <a name="continuous-monitoring-of-your-docker-configuration"></a>Docker 構成の継続的な監視
 
-Microsoft Defender for Cloud では、IaaS Linux VM 上、または Docker コンテナーを実行している他の Linux マシン上でホストされているアンマネージド コンテナーが識別されます。 Defender for Cloud によって、こうしたコンテナーの構成が継続的に評価されます。 その後、[Center for Internet Security (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/) と比較されます。
+Microsoft Defender for Cloud では、IaaS Linux VM 上、または Docker コンテナーを実行している他の Linux マシン上でホストされているアンマネージド コンテナーが識別されます。 Defender for Cloud は、これらのコンテナーの構成を継続的に評価します。 その後、[Center for Internet Security (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/) と比較されます。
 
-Defender for Cloud には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Defender for Cloud によってセキュリティの推奨事項が生成されます。 Defender for Cloud の **推奨事項ページ** を使用して、推奨事項を表示したり、問題を修復したりします。 CIS ベンチマーク チェックは、AKS マネージド インスタンスまたは Databricks マネージド VM では実行されません。
+Defender for Cloud には、CI Docker ベンチマークのルールセット全体が含まれており、コンテナーがどのコントロールも満たさない場合は警告が表示されます。 誤った設定が検出されると、Defender for Cloud によってセキュリティの推奨事項が生成されます。 Defender for Cloud の **推奨事項ページ** を使用して、推奨事項を表示したり、問題を修復したりします。 CIS ベンチマーク チェックは、AKS マネージド インスタンスまたは Databricks マネージド VM では実行されません。
 
 この機能に表示される可能性がある、Defender for Cloud の関連する推奨事項の詳細については、推奨事項参照テーブルの[コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
 

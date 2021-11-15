@@ -7,19 +7,16 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: b27fb9ec4ff24cd53906b304db1f32655380fc66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 26c25afc997ee86f0fe23f944ae5afad34269e92
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128595786"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468121"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for MySQL - フレキシブル サーバーに接続してクエリを実行する
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 このクイックスタートでは、Azure CLI で ```az mysql flexible-server connect``` を使用して Azure Database for MySQL フレキシブル サーバーに接続し、```az mysql flexible-server execute``` コマンドで単一のクエリまたは SQL ファイルを実行する方法を示します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、クエリを実行したりすることができます。 対話モードを使用して、複数のクエリを実行することもできます。
 
@@ -29,10 +26,10 @@ ms.locfileid: "128595786"
 
     [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - [Azure CLI](/cli/azure/install-azure-cli) の最新バージョン (2.20.0 以降) をインストールする
-- Azure CLI から ```az login``` コマンドを使用してログインする 
+- Azure CLI を使用して ```az login``` コマンドでログインする
 - ```az config param-persist on``` を使用してパラメーターの永続化を有効にする。 パラメーターの永続化により、リソース グループや場所など、多数の引数を繰り返さなくてもローカル コンテキストを使用できるようになります。
 
-## <a name="create-an-mysql-flexible-server"></a>MySQL フレキシブル サーバーを作成する
+## <a name="create-a-mysql-flexible-server"></a>MySQL フレキシブル サーバーの作成
 
 最初に作成するのは、マネージド MySQL サーバーです。 [Azure Cloud Shell](https://shell.azure.com/) から次のスクリプトを実行して、このコマンドから返された **サーバー名**、**ユーザー名**、**パスワード** をメモします。
 
@@ -50,7 +47,7 @@ az mysql flexible-server db create -d newdatabase
 ```
 
 ## <a name="view-all-the-arguments"></a>すべての引数を確認する
-```--help``` 引数を指定すると、このコマンドのすべての引数を確認できます。 
+```--help``` 引数を指定すると、このコマンドのすべての引数を確認できます。
 
 ```azurecli
 az mysql flexible-server connect --help
@@ -164,7 +161,7 @@ SQL ファイルを実行するには、コマンドで ```--file-path``` 引数
 az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
 ```
 
-**例:** 
+**例:**
 ```azurecli
 az mysql flexible-server execute -n mysqldemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
 ```

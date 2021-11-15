@@ -1,7 +1,6 @@
 ---
 title: HR プロビジョニングに関する書き戻しに関する問題のトラブルシューティング
-description: HR プロビジョニングでのマネージャーの更新に関する問題をトラブルシューティングする方法について説明します
-services: active-directory
+description: HR プロビジョニングの書き戻しに関する問題を解決する方法について説明します。
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: ff6f9d291b52b7028fbccdc001bc10d60c8c1450
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1d40b2738e52866ebc47bbe43b673c52b774619f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478376"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324538"
 ---
 # <a name="troubleshoot-hr-write-back-issues"></a>HR の書き戻しに関する問題のトラブルシューティング
 
@@ -25,7 +24,7 @@ ms.locfileid: "131478376"
 * Workday Writeback
 * SAP SuccessFactors Writeback
 
-| | |
+| トラブルシューティング | 詳細 |
 |-- | -- |
 | **問題点** | 書き戻しアプリが正常に構成されました。 Azure AD から null または空の値を取得しています。 プロビジョニング サービスは、HR アプリで対応する電子メールまたは電話番号の値をクリアする必要があります。 しかし、操作は失敗します。 |
 | **原因** | プロビジョニング サービスには、null 値処理の既定のロジックがありません。 プロビジョニング サービスは、ソース アプリから空の文字列を取得すると、その値を対象アプリに "その他" としてフローしようとします。 Workday または SuccessFactors が空の値を処理できない場合は、エラーが返されます。 |

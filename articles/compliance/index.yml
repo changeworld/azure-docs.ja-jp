@@ -370,7 +370,7 @@ additionalContent:
       summary: リソースにアクセスするには、クラウド サービスにサインインする必要がある場合があります
       items:
         - title: 監査レポートと証明書
-          summary: Azure portal で ホーム」 > Security Center > 規制コンプライアンス の順に移動してアクセス可能
+          summary: Azure portal で ホーム」 > Defender for Cloud > 規制コンプライアンス の順に移動してアクセス可能
           links:
             - text: ISO 20000-1、22301、27001、27017、27018、27701、9001
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'

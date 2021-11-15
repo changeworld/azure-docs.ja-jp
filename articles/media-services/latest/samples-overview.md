@@ -8,18 +8,18 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: e17ec995ad9d8171d1d6a0b51b5112e4597d618f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1f7397423eef2969e3a3e61b2201770a1e54a2ed
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656679"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438355"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3 のサンプル
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-この記事では、Media Services 向けに提供されているすべてのサンプルを、手法と SDK 別に整理して掲載しています。  サンプルには、.NET、Node.JS (Typescript)、Python、Java のほかに、Postman を使用した REST が含まれています。
+この記事では、Media Services 向けに提供されているすべてのサンプルを、手法と SDK 別に整理して掲載しています。  サンプルには、.NET、Node.js (TypeScript)、Python、Java のほかに、Postman を使用した REST が含まれています。
 
 ## <a name="samples-by-sdk"></a>SDK 別サンプル
 

@@ -8,18 +8,18 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 944a49b0c58d1c6e197d385fd6bd029aa29631c5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 45d8b3dea72555470059cb14b3268e4d9b4e9611
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251948"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319516"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このアーティクルでは、詳細例を用いて Azure Data Factory の価格モデルの説明と実演を行います。
+このアーティクルでは、詳細例を用いて Azure Data Factory の価格モデルの説明と実演を行います。  もっと具体的なシナリオが必要な場合や、将来、サービスを使用する際のコストを見積もる場合は、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)も参照できます。
 
 > [!NOTE]
 > 次の例で使用されている価格は仮定的なものであり、実際の価格を暗示することを意図するものではありません。

@@ -11,12 +11,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: b495476a93d3cef76c866b3927aa4bfacdb98477
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a12bc8a4f41ec4ad30722d3f4489be01f1267381
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238751"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578953"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device"></a>クイックスタート:初めての IoT Edge モジュールを Windows デバイスにデプロイする
 
@@ -51,10 +51,10 @@ Azure CLI の環境を準備します。
 
 ご自身の IoT Edge デバイスが次の要件を満たしていることを確認します。
 
-* エディション
-  * Windows 10 バージョン 1809 以降、ビルド 17763 以降
-    * Professional、Enterprise、IoT Enterprise
-  * Windows Server 2019 ビルド 17763 以降
+* システム要件
+   * Windows 10¹/11 (Pro、Enterprise、IoT Enterprise)
+   * Windows Server 2019¹/2022  
+   <sub>¹ 現在のすべての累積更新プログラムがインストールされた Windows 10 および Windows Server 2019 最小ビルド 17763。</sub>
 
 * ハードウェア要件
   * 最小空きメモリ容量: 1 GB

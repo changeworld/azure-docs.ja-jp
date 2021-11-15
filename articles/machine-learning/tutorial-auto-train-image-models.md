@@ -11,12 +11,12 @@ ms.author: swatig
 ms.reviewer: nibaccam
 ms.date: 10/06/2021
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: a8b299a57b5ba3d31d34447ceacded9933c61b55
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e6906988b47ecdb1ba5e1ca7947666e6371ddd8e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007685"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468577"
 ---
 # <a name="tutorial-train-an-object-detection-model-preview-with-automl-and-python"></a>チュートリアル: AutoML と Python を使用してオブジェクト検出モデル (プレビュー) をトレーニングする
 
@@ -494,4 +494,7 @@ Azure Machine Learning の他のチュートリアルを実行する予定の場
 
 * [自動 ML の Computer Vision (プレビュー) の詳細を確認します](concept-automated-ml.md#computer-vision-preview)。
 * [Python を使用して Computer Vision モデルをトレーニングするために AutoML を設定する (プレビュー) 方法の詳細を確認します](how-to-auto-train-image-models.md)。
-* [GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml)で詳しいコード サンプルやユース ケースを確認してください。 Computer Vision モデルの構築に固有のサンプルについては、'image-' プレフィックスが付いたフォルダーを確認してください。
+* [GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml)で詳しいコード サンプルやユース ケースを確認してください。 Computer Vision モデルの構築に固有のサンプルについては、"image-" プレフィックスが付いたフォルダーを確認してください。
+
+> [!NOTE]
+> fridge オブジェクト データセットの使用は、[MIT ライセンス](https://github.com/microsoft/computervision-recipes/blob/master/LICENSE)のライセンスを通じて利用できます。

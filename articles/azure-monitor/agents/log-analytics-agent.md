@@ -4,13 +4,13 @@ description: このトピックは、Azure、オンプレミス、または他�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/12/2021
-ms.openlocfilehash: 749d807f15419445ff82f8e4b621efca034885a7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 1fa0763c9d4ccdb4e0233a5c6159be7c0d745be6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074234"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470397"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 
@@ -20,6 +20,7 @@ Azure Log Analytics エージェントによって、任意のクラウドの Wi
 > Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) とも呼ばれます。
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能との比較
+
 Azure Monitor の[Azure Diagnostics 拡張機能](./diagnostics-extension-overview.md)は、Azure 仮想マシンのゲスト オペレーティング システムから監視データを収集することにも使用できます。 ご自分の要件に応じて、いずれかまたは両方を選択できます。 Azure Monitor エージェントの詳細な比較については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。 
 
 考慮すべき主な違いは次のとおりです。
@@ -83,14 +84,14 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>オンプレミスまたは別のクラウド内の Windows 仮想マシン
 
-- [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用し、Log Analytics VM 拡張機能をデプロイし、管理します。
+- [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用し、Log Analytics VM 拡張機能をデプロイし、管理します。 Arc 対応サーバーに登録されたマシン上の拡張機能で利用できるさまざまなデプロイ方法を理解するには、[デプロイ オプション](../../azure-arc/servers/concept-log-analytics-extension-deployment.md)を確認してください。
 - エージェントをコマンド ラインから[手動でインストールします](../agents/agent-windows.md)。
 - [Azure Automation DSC](../agents/agent-windows.md#install-agent-using-dsc-in-azure-automation) を使用してインストールを自動化します。
 - [Azure Stack での Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win)を使用します
 
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>オンプレミスまたは別のクラウド内の Linux 仮想マシン
 
-- [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用し、Log Analytics VM 拡張機能をデプロイし、管理します。
+- [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用し、Log Analytics VM 拡張機能をデプロイし、管理します。 Arc 対応サーバーに登録されたマシン上の拡張機能で利用できるさまざまなデプロイ方法を理解するには、[デプロイ オプション](../../azure-arc/servers/concept-log-analytics-extension-deployment.md)を確認してください。
 - GitHub でホストされているラッパー スクリプトを呼び出してエージェントを[手動でインストールします](../vm/monitor-virtual-machine.md)。
 - 収集したデータを管理グループ直属の Windows コンピューターから転送する目的で、[System Center Operations Manager](./om-agents.md) と Azure Monitor を統合します。
 
@@ -148,6 +149,6 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [データ ソース](../agents/agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
+* [データ ソース](../agents/agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。
 * [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。

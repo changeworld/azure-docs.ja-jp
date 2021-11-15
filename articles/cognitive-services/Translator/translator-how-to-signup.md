@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: c21d78e9731bc1711e62d26d6cca269868ac1714
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02d1e509068c2332164fea7236fe1fe554b3ef02
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744718"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439274"
 ---
 # <a name="create-a-translator-resource"></a>Translator リソースを作成する
 
@@ -32,7 +32,7 @@ Translator サービスには、2 つの異なるリソースの種類を使用�
 * **単一サービス** リソースの種類を使用すると、1 つのサービス API キーとエンドポイントにアクセスできます。  
 
 * **マルチサービス** リソースの種類を使用すると、1 つの API キーとエンドポイントを使用して複数の Cognitive Services にアクセスできます。 現在、Cognitive Services リソースは次のサービスで使用できます。
-  * Language ([Translator](../translator/translator-overview.md)、[Language Understanding (LUIS)](../luis/what-is-luis.md)、[Text Analytics](../text-analytics/overview.md))  
+  * Language ([Translator](../translator/translator-overview.md)、[Language Understanding (LUIS)](../luis/what-is-luis.md)、[Language service](../text-analytics/overview.md))  
   * Vision ([Computer Vision](../computer-vision/overview.md))、([Face](../face/overview.md))  
   * Decision ([Content Moderator](../content-moderator/overview.md))  
 

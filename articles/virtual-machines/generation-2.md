@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: a8e6133d0b4e7d0595524bb4142e51610226ad7f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f0a78f60f8610c4b6430cf33928ec389c0ed85ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214689"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471575"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -37,10 +37,20 @@ Azure では、次の選択された VM シリーズに対して第 2 世代の�
 * [Dsv4 シリーズ](dv4-dsv4-series.md)
 * [Dasv4 シリーズ](dav4-dasv4-series.md)
 * [Ddsv4 シリーズ](ddv4-ddsv4-series.md)
+* [Dasv5 シリーズ](dasv5-dadsv5-series.md)
+* [Dadsv5 シリーズ](dasv5-dadsv5-series.md)
+* [Dv5 シリーズ](dv5-dsv5-series.md)
+* [Dsv5 シリーズ](dv5-dsv5-series.md)
 * [Esv3 シリーズ](ev3-esv3-series.md)
 * [Esv4 シリーズ](ev4-esv4-series.md)
 * [Easv4 シリーズ](eav4-easv4-series.md)
 * [Edsv4 シリーズ](edv4-edsv4-series.md)
+* [Easv5 シリーズ](easv5-eadsv5-series.md)
+* [Eadsv5 シリーズ](easv5-eadsv5-series.md)
+* [Edv5 シリーズ](edv5-edsv5-series.md)
+* [Edsv5 シリーズ](edv5-edsv5-series.md)
+* [Ev5 シリーズ](ev5-esv5-series.md)
+* [Esv5 シリーズ](ev5-esv5-series.md)
 * [Fsv2 シリーズ](fsv2-series.md)
 * [GS シリーズ](sizes-previous-gen.md#gs-series)
 * [HB シリーズ](hb-series.md)
@@ -58,6 +68,7 @@ Azure では、次の選択された VM シリーズに対して第 2 世代の�
 * [NVv3 シリーズ](nvv3-series.md)
 * [NVv4 シリーズ](nvv4-series.md)
 * [NCasT4_v3 シリーズ](nct4-v3-series.md)
+* [NDm A100 v4 シリーズ](ndm-a100-v4-series.md)
 
 <sup>1</sup> Mv2 シリーズ、DC シリーズ、NDv2 シリーズ、Msv2 および Mdsv2 シリーズ ミディアム メモリは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)、[DSv2 シリーズ](dv2-dsv2-series.md)、[ND A100 v4 シリーズ](nda100-v4-series.md)、[NDv2 シリーズ](ndv2-series.md)、および [Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)に関するページを参照してください。
 
@@ -96,7 +107,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 世代と第 2 世代の特徴の比較
 
-| 特徴量 | 第 1 世代 | 第 2 世代 |
+| 機能 | 第 1 世代 | 第 2 世代 |
 |---------|--------------|--------------|
 | ブート             | PCAT                      | UEFI                               |
 | ディスク コントローラー | IDE                       | SCSI                               |
@@ -111,9 +122,10 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | 仮想マシン スケール セットのサポート | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | バックアップ/復元                    | :heavy_check_mark: | :heavy_check_mark: |
-| 共有イメージ ギャラリー              | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Compute Gallery             | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [サーバー側暗号化](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
+
 
 ## <a name="creating-a-generation-2-vm"></a>第 2 世代 VM の作成
 

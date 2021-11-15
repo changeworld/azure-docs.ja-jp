@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: kkrishna
 ms.workload: identity
 ms.custom: aaddev
-ms.openlocfilehash: 0a310df6793d2caecda095f0c89244ffee5e46eb
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 48e9598acac2739b7663fcd9a46006208d44783c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113728032"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459503"
 ---
 # <a name="developers-guide-to-conditional-access-authentication-context"></a>条件付きアクセスの認証コンテキストの開発者ガイド
 
@@ -43,7 +43,7 @@ IT 管理者と規制機関は、認証の追加要素をユーザーに頻繁�
 
 ### <a name="prerequisites"></a>前提条件
 
-**最初に**、認証と許可に [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md) プロトコルを使用して、アプリを Microsoft ID プラットフォームと統合する必要があります。 [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用してアプリケーションを統合し、Azure Active Directory　でセキュリティ保護することが推奨されます。 アプリと Microsoft ID プラットフォームの統合方法の学習は、[Microsoft ID プラットフォームのドキュメント](index.yml)をお読みになることから始めることをお勧めします。 条件付きアクセス認証コンテキスト機能のサポートは、業界標準の [OpenID Connect](v2-protocols-oidc.md) プロトコルによって提供されるプロトコル拡張機能に基づいて構築されています。 開発者は、[条件付きアクセス認証コンテキスト参照](/graph/api/resources/authenticationcontextclassreference)の **値** と [クレーム要求](claims-challenge.md)パラメーターを使用して、アプリがポリシーをトリガーして満たすことができるようにします。
+**最初に**、認証と許可に [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md) プロトコルを使用して、アプリを Microsoft ID プラットフォームと統合する必要があります。 [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用してアプリケーションを統合し、Azure Active Directory　でセキュリティ保護することが推奨されます。 アプリと Microsoft ID プラットフォームの統合方法の学習は、[Microsoft ID プラットフォームのドキュメント](index.yml)をお読みになることから始めることをお勧めします。 条件付きアクセス認証コンテキスト機能のサポートは、業界標準の [OpenID Connect](v2-protocols-oidc.md) プロトコルによって提供されるプロトコル拡張機能に基づいて構築されています。 開発者は、[条件付きアクセス認証コンテキスト参照](/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences)の **値** と [クレーム要求](claims-challenge.md)パラメーターを使用して、アプリがポリシーをトリガーして満たすことができるようにします。
 
 **2 番目に**、[条件付きアクセス](../conditional-access/overview.md)では、Azure AD Premium P1 ライセンスが必要になります。 ライセンスの詳細については、[Azure AD の価格に関するページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 

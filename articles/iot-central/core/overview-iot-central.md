@@ -3,17 +3,17 @@ title: Azure IoT Central とは | Microsoft Docs
 description: Azure IoT Central は、IoT ソリューションの作成を簡素化し、IoT の管理、運用、開発の負担とコストを削減するのに役立つ IoT アプリケーション プラットフォームです。 この記事では、Azure IoT Central の機能について概要を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/19/2021
+ms.date: 11/05/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc, contperf-fy21q2, contperf-fy22q1
-ms.openlocfilehash: 98de0994e430ccf8bc3ab5026e9ef739c603368a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: mvc, contperf-fy21q2, contperf-fy22q1, contperf-fy22q2
+ms.openlocfilehash: 2362bfae3d06a217b24f2297ea00ac6a7e3732c5
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024279"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866698"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -23,25 +23,16 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 この記事では、IoT Central に関して以下の概要を説明します。
 
-- プロジェクトに関連付けられる一般的なユーザー ロール。
 - アプリケーションを作成する方法。
 - デバイスをアプリケーションに接続する方法。
 - アプリケーションを他のサービスと統合する方法。
 - アプリケーションを管理する方法。
+- プロジェクトに関連付けられる一般的なユーザー ロール。
 - 価格オプション。
-
-## <a name="user-roles"></a>ユーザー ロール
-
-この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のユーザー ロールに言及しています。
-
-- "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](quick-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
-- "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices-individually.md)します。
-- "_管理者_": 管理タスク (アプリケーション内での[ユーザー ロールとアクセス許可](howto-administer.md)の管理など) および他のサービスへの接続を保護するための[マネージド ID の構成](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)を担います。
-- "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で [実行するコードを作成](concepts-telemetry-properties-commands.md)します。
 
 ## <a name="create-your-iot-central-application"></a>IoT Central アプリケーションを作成する
 
-新しい IoT Central アプリケーションをすばやくデプロイし、具体的な要件に合わせてカスタマイズすることができます。 汎用の "_アプリケーション テンプレート_"、または各業界にフォーカスした、いずれかのアプリケーション テンプレートを使用して開始します。
+[新しい IoT Central アプリケーションをすばやくデプロイし](quick-deploy-iot-central.md)、具体的な要件に合わせてカスタマイズします。 汎用の "_アプリケーション テンプレート_"、または各業界にフォーカスした、いずれかのアプリケーション テンプレートを使用して開始します。
 
 - [小売](../retail/overview-iot-central-retail.md)
 - [エネルギー](../energy/overview-iot-central-energy.md)
@@ -80,7 +71,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 ### <a name="customize-the-ui"></a>UI のカスタマイズ
 
-アプリケーションを日常的に使用するオペレーターのために、IoT Central アプリケーションの UI をカスタマイズすることもできます。 次のようなカスタマイズを行うことができます。
+アプリケーションを日常的に使用するオペレーターのために、IoT Central アプリケーションの UI をカスタマイズします。 次のようなカスタマイズを行うことができます。
 
 - オペレーターによる分析情報の検出と問題の解決を迅速化するカスタム ダッシュボードを構成する。
 - 接続されているデバイスから時系列データを探すカスタム分析を構成する。
@@ -88,7 +79,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 ## <a name="manage-your-devices"></a>デバイスを管理する
 
-オペレーターが IoT Central ソリューションの[デバイスを管理する](howto-manage-devices-individually.md)際は、IoT Central アプリケーションを使用します。 オペレーターは、次のようなタスクを実行します。
+IoT Central アプリケーションを使用して、IoT Central ソリューションの[デバイスを管理します](howto-manage-devices-individually.md)。 オペレーターは、次のようなタスクを実行します。
 
 - アプリケーションに接続されたデバイスを監視する。
 - デバイスの問題をトラブルシューティングして修復する。
@@ -136,6 +127,15 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 
 - "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
 - "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 0**、**Standard 1**、**Standard 2** のいずれかの価格プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 [IoT Central の価格](https://aka.ms/iotcentral-pricing) についての詳細をご覧ください。
+
+## <a name="user-roles"></a>ユーザー ロール
+
+この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のユーザー ロールに言及しています。
+
+- "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](quick-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
+- "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices-individually.md)します。
+- "_管理者_": 管理タスク (アプリケーション内での [ユーザー ロールとアクセス許可](howto-administer.md)の管理など) および他のサービスへの接続を保護するための [マネージド ID の構成](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)を担います。
+- "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で [実行するコードを作成](concepts-telemetry-properties-commands.md)します。
 
 ## <a name="next-steps"></a>次のステップ
 

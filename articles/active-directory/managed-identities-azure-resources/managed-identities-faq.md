@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/08/2021
+ms.date: 10/20/2021
 ms.author: barclayn
-ms.openlocfilehash: 7d2f09d3990f9e71e55b29b1eac771266627237a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 48d3d5e0e1b6adfb1c0763d1fb7824d604628962
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791291"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266134"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Azure リソースのマネージド ID に関してよく寄せられる質問 - Azure AD
 
@@ -38,7 +38,7 @@ ms.locfileid: "124791291"
 az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
 ```
 
-### <a name="what-azure-rbac-permissions-are-required-to-work-with-managed-identities"></a>マネージド ID を操作するにはどのような Azure RBAC アクセス許可が必要ですか? 
+### <a name="which-azure-rbac-permissions-are-required-to-use-a-managed-identity-on-a-resource"></a>リソースのマネージド ID を使用するために必要な Azure RBAC アクセス許可は何ですか?
 
 - システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンの場合は `Microsoft.Compute/virtualMachines/write` が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
 - リソースへのユーザー割り当てマネージド ID の割り当て: そのリソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンの場合は `Microsoft.Compute/virtualMachines/write` が必要です。 また、ユーザー割り当て ID に対する `Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action` アクションも必要です。 このアクションは、[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator)組み込みロールに含まれています。

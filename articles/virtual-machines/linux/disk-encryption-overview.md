@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 564593dd6c3fe7e30d1e3a362f4c11c52adbc82c
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8fa9941d068b6062e8e0350aa9d711aa29808ee5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689720"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342663"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption
 
@@ -24,9 +24,9 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 
 Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回復性を備えています。 詳細については、「[Availability Zones をサポートする Azure サービス](../../availability-zones/az-region.md)」を参照してください。
 
-[Azure Security Center](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告を受け取ります。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
+[Microsoft Defender for Cloud](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告されます。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
 
-![Azure Security Center のディスク暗号化アラート](media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Microsoft Defender for Cloud のディスク暗号化アラート](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 

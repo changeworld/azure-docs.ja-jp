@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5227b738ab5d7af19ed2877a1c3d6b37ea08c556
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e910fd444fc443ef93d9cc513632ad6ab11a124e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535817"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461573"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -49,7 +49,7 @@ ms.locfileid: "123535817"
 
 - **プールの効率と課金:** Batch 自体に追加料金は発生しませんが、使用されるコンピューティング リソースに対して料金が発生します。 プール内のすべての計算ノードに対して、その状態に関係なく課金されます。 これには、ストレージやネットワーク コストなど、ノードを実行するために必要な料金がすべて含まれます。 詳細については、「[Azure Batch のコスト分析と予算](budget.md)」を参照してください。
 
-- **エフェメラル OS ディスク:** 仮想マシン構成プールでは、VM キャッシュまたは一時 SSD 上に OS ディスクを作成する[エフェメラル OS ディスク](create-pool-ephemeral-os-disk.md)を使用して、マネージド ディスクに関連した追加コストを回避できます。
+- **エフェメラル OS ディスク:** 仮想マシン構成プールでは、VM キャッシュまたは一時 SSD 上に OS ディスクを作成する [エフェメラル OS ディスク](create-pool-ephemeral-os-disk.md)を使用して、マネージド ディスクに関連した追加コストを回避できます。
 
 ### <a name="pool-allocation-failures"></a>プール割り当ての失敗
 
@@ -61,7 +61,7 @@ Batch プールでは、Azure のダウンタイム イベントが発生する�
 
 ### <a name="custom-image-pools"></a>カスタム イメージ プール
 
-仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用してプールを作成したり、[Shared Image Gallery のイメージを使用してカスタム イメージを作成したり](batch-sig-images.md)できます。 [マネージド イメージ](batch-custom-images.md)を使用してカスタム イメージ プールを作成することもできますが、可能であれば、Shared Image Gallery を使用してカスタム イメージを作成することをお勧めします。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりできます。
+仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使ってプールを作成したり、[Azure Compute Gallery のイメージを使ってカスタム イメージを作成したり](batch-sig-images.md)できます。 [マネージド イメージ](batch-custom-images.md)を使ってカスタム イメージ プールを作成することもできますが、可能であれば、Azure Compute Gallery を使ってカスタム イメージを作成することをお勧めします。 Azure Compute Gallery を使うと、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりできます。
 
 ### <a name="third-party-images"></a>サード パーティのイメージ
 

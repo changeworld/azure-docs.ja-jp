@@ -2,14 +2,14 @@
 title: Azure VM 内の SQL Server のバックアップに関する Azure Backup のサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM 内の SQL Server をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 08/20/2021
+ms.date: 10/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78dace2a60ff566af3485e6be0b7d9efc42d8654
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c0b46a1c75c47b85985946646bf3216c9ab719f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123103880"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219264"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 内の SQL Server のバックアップに関するサポート マトリックス
 
@@ -33,6 +33,7 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 |サーバー (およびコンテナー内) で保護できるデータベースの数    |   2000      |
 |サポートされているデータベース サイズ (これを超えると、パフォーマンスの問題が発生する可能性があります)   |   6 TB*      |
 |データベースでサポートされているファイルの数    |   1000      |
+|1 日あたりにサポートされる完全バックアップの数    |    1 つのスケジュールされたバックアップ。 <br><br> 3 つのオンデマンド バックアップ。 <br><br> 1 日に 3 回以上のバックアップをトリガーしないことをお勧めします。 ただし、試行が失敗した場合にユーザーが再試行できるようにするために、オンデマンド バックアップのハード制限は 9 回の試行に設定されます。 |
 
 _* データベース サイズの制限は、サポートされているデータ転送速度と、バックアップの制限時間の構成によって異なります。これは、ハード制限ではありません。バックアップのスループットのパフォーマンスに関する [詳細](#backup-throughput-performance)をご覧ください。_
 

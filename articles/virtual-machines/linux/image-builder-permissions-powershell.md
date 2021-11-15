@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 759f48a8bcfaa30c190c701ba5dcc8b9cad8a876
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e310a12248ab0f17c66de2561e090125cbec392e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696144"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444537"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "122696144"
 
 (AIB) に登録すると、ステージング リソース グループ (IT_*) を作成、管理、削除するためのアクセス許可が AIB サービスに付与され、イメージのビルドに必要なリソースを追加する権限が与えられます。 これは、登録が成功したときに、AIB サービス プリンシパル名 (SPN) がサブスクリプションで使用可能になることによって行われます。
 
-Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートまたはパブリック コンテナーを読み取るためのアクセス許可が必要です。
+Azure VM Image Builder で、マネージド イメージまたは Azure Compute Gallery (旧称 Shared Image Gallery) にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートまたはパブリック コンテナーを読み取るためのアクセス許可が必要です。
 
 イメージを構築する前にアクセス許可と特権を設定する必要があります。 以下のセクションでは、PowerShell を使用して考えられるシナリオを構成する方法について詳しく説明します。
 
@@ -55,7 +55,7 @@ Azure ユーザー割り当て ID の詳細については、ID の作成方法�
 
 ## <a name="allow-image-builder-to-distribute-images"></a>Image Builder にイメージの配布を許可する
 
-Azure Image Builder を使用してイメージ (マネージド イメージまたは Shared Image Gallery) を配布するには、これらのリソース グループにイメージを挿入することを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが構築されているリソース グループに対するアクセス許可を付与する必要があります。 Azure Image Builder には、サブスクリプション内の他のリソース グループのリソースにアクセスするアクセス許可が **ありません**。 ビルドが失敗しないようにするには、アクセスを許可する明示的なアクションを実行する必要があります。
+Azure Image Builder を使用してイメージ (マネージド イメージまたは Azure Compute Gallery) を配布するには、これらのリソース グループにイメージを挿入することを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが構築されているリソース グループに対するアクセス許可を付与する必要があります。 Azure Image Builder には、サブスクリプション内の他のリソース グループのリソースにアクセスするアクセス許可が **ありません**。 ビルドが失敗しないようにするには、アクセスを許可する明示的なアクションを実行する必要があります。
 
 イメージを配布するために、リソース グループに対する共同作成者アクセス許可をユーザー割り当てマネージド ID に付与する必要はありません。 ただし、ユーザー割り当てマネージド ID には、配布リソース グループに次の Azure `Actions` アクセス許可が必要です。
 
@@ -65,7 +65,7 @@ Microsoft.Compute/images/read
 Microsoft.Compute/images/delete
 ```
 
-Shared Image Gallery に配布する場合は、以下も必要です。
+Azure Compute Gallery に配布する場合、さらに次のアクセス許可が必要となります。
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -76,7 +76,7 @@ Microsoft.Compute/galleries/images/versions/write
 
 ## <a name="permission-to-customize-existing-images"></a>既存のイメージをカスタマイズするアクセス許可
 
-Azure Image Builder を使用してソース カスタム イメージ (マネージド イメージまたは Shared Image Gallery) からイメージをビルドするには、これらのリソース グループへのイメージの読み取りを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが配置されているリソース グループに対するアクセス許可を付与する必要があります。
+Azure Image Builder を使用してソース カスタム イメージ (マネージド イメージまたは Azure Compute Gallery) からイメージをビルドするには、これらのリソース グループへのイメージの読み取りを Azure Image Builder サービスに許可する必要があります。 必要なアクセス許可を付与するには、ユーザー割り当てマネージド ID を作成し、イメージが配置されているリソース グループに対するアクセス許可を付与する必要があります。
 
 既存のカスタム イメージから構築する:
 
@@ -84,7 +84,7 @@ Azure Image Builder を使用してソース カスタム イメージ (マネ�
 Microsoft.Compute/galleries/read
 ```
 
-既存の Shared Image Gallery バージョンから構築する:
+既存の Azure Compute Gallery バージョンからビルドする:
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -105,7 +105,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ## <a name="create-an-azure-role-definition"></a>Azure ロールの定義を作成する
 
-次の例では、前のセクションで説明したアクションから Azure ロール定義を作成します。 これらの例は、リソース グループ レベルで適用されます。 例が実際の要件に合った細かさかどうかを評価し、テストしてください。 シナリオによっては、特定の Shared Image Gallery に合わせて調整する必要がある場合があります。
+次の例では、前のセクションで説明したアクションから Azure ロール定義を作成します。 これらの例は、リソース グループ レベルで適用されます。 例が実際の要件に合った細かさかどうかを評価し、テストしてください。 シナリオによっては、特定の Azure Compute Gallery に合わせて調整する必要がある場合があります。
 
 イメージのアクションでは、読み取りと書き込みが許可されています。 環境に適したものを判断します。 たとえば、リソース グループ *example-rg-1* からイメージを読み取り、リソース グループ *example-rg-2* にイメージを書き込むことを Azure Image Builder に許可するロールを作成します。
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 11c04c9a513e454e8a9296c00b716a154b5bc541
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8768d188ae56896fe1f7272ee18533e95343e69c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029622"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846560"
 ---
 # <a name="tutorial-deploy-web-application-connected-to-azure-storage-blob-with-service-connector"></a>チュートリアル: Service Connector を使用して Azure Storage Blob に接続される Web アプリケーションをデプロイする
 
@@ -26,10 +26,10 @@ ms.locfileid: "131029622"
 ## <a name="1-set-up-your-initial-environment"></a>1.初期環境を設定する
 
 1. アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-2. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 以降をインストールします。これを任意のシェルで使用してコマンドを実行し、Azure リソースのプロビジョニングと構成を行います。
+2. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.30.0 以降をインストールします。これを任意のシェルで使用してコマンドを実行し、Azure リソースのプロビジョニングと構成を行います。
 
 
-Azure CLI のバージョンが 2.18.0 以降であることを確認します。
+Azure CLI のバージョンが 2.30.0 以降であることを確認します。
 
 ```Azure CLI
 az --version
@@ -92,6 +92,8 @@ az webapp connection create storage-blob -g ServiceConnector-tutorial-rg -n <app
 - *\<app-name>* を手順 3. で使用した Web アプリの名前に **置き換え** ます。
 - *\<storage-name>* を手順 4. で使用したストレージ アプリの名前に **置き換え** ます。
 
+> [!NOTE]
+> "The subscription is not registered to use Microsoft.ServiceLinker (サブスクリプションが Microsoft.ServiceLinker を使用するように登録されていません)" というエラー メッセージが表示される場合は、`az provider register -n Microsoft.ServiceLinker` を実行して Service Connector リソース プロバイダーを登録し、接続コマンドを再度実行してください。 
 
 ## <a name="6-run-sample-code"></a>6. サンプル コードを実行する
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2021
 ms.custom: generated
-ms.openlocfilehash: b8e3fe1f29650feebe5a666a60d37c4a09a4e363
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9278c0467213e9f3880958eb53365396b628f4b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023749"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343005"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -206,10 +206,10 @@ ms.locfileid: "131023749"
 > | **Security** |  |  |
 > | [Attestation Contributor](#attestation-contributor) | 構成証明プロバイダー インスタンスの読み取り、書き込み、または削除ができます | bbf86eb8-f7b4-4cce-96e4-18cddf81d86e |
 > | [Attestation Reader](#attestation-reader) | 構成証明プロバイダーのプロパティを読み取ることができます | fd1bd22b-8476-40bc-a0bc-69b95687b9f3 |
-> | [Azure Sentinel Automation 共同作成者](#azure-sentinel-automation-contributor) | Azure Sentinel Automation 共同作成者 | f4c81013-99ee-4d62-a7ee-b3f1f648599a |
-> | [Azure Sentinel 共同作成者](#azure-sentinel-contributor) | Azure Sentinel 共同作成者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
-> | [Azure Sentinel 閲覧者](#azure-sentinel-reader) | Azure Sentinel 閲覧者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
-> | [Azure Sentinel レスポンダー](#azure-sentinel-responder) | Azure Sentinel レスポンダー | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | [Microsoft Sentinel Automation 共同作成者](#microsoft-sentinel-automation-contributor) | Microsoft Sentinel Automation 共同作成者 | f4c81013-99ee-4d62-a7ee-b3f1f648599a |
+> | [Microsoft Sentinel 共同作成者](#microsoft-sentinel-contributor) | Microsoft Sentinel 共同作成者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | [Microsoft Sentinel 閲覧者](#microsoft-sentinel-reader) | Microsoft Sentinel 閲覧者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | [Microsoft Sentinel レスポンダー](#microsoft-sentinel-responder) | Microsoft Sentinel レスポンダー | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault Administrator](#key-vault-administrator) | キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 > | [Key Vault Certificates Officer](#key-vault-certificates-officer) | キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理しますが、Azure RBAC でのロール割り当ては許可されず、シークレット、キー、証明書へのアクセスも許可されません。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
@@ -7026,7 +7026,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理およびコンテンツ操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7085,7 +7085,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 コンテンツ操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7138,7 +7138,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 コンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7187,7 +7187,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7240,7 +7240,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7289,7 +7289,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作およびコンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -8309,7 +8309,7 @@ Azure Stack の登録を管理できます。
 EventGrid 操作を管理できます。
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/* | Event Grid リソースの作成と管理 |
@@ -9159,12 +9159,12 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 }
 ```
 
-### <a name="azure-sentinel-automation-contributor"></a>Azure Sentinel Automation 共同作成者
+### <a name="microsoft-sentinel-automation-contributor"></a>Microsoft Sentinel Automation 共同作成者
 
-Azure Sentinel Automation 共同作成者です。[詳細](../sentinel/roles.md)
+Microsoft Sentinel Automation 共同作成者 [詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/read | トリガーを読み取ります。 |
@@ -9182,7 +9182,7 @@ Azure Sentinel Automation 共同作成者です。[詳細](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Azure Sentinel Automation Contributor",
+  "description": "Microsoft Sentinel Automation Contributor",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f4c81013-99ee-4d62-a7ee-b3f1f648599a",
   "name": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
   "permissions": [
@@ -9198,18 +9198,18 @@ Azure Sentinel Automation 共同作成者です。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Sentinel Automation Contributor",
+  "roleName": "Microsoft Sentinel Automation Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="azure-sentinel-contributor"></a>Azure Sentinel 共同作成者
+### <a name="microsoft-sentinel-contributor"></a>Microsoft Sentinel 共同作成者
 
-Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
+Microsoft Sentinel 共同作成者 [詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
@@ -9239,7 +9239,7 @@ Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Azure Sentinel Contributor",
+  "description": "Microsoft Sentinel Contributor",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ab8e14d6-4a74-4a29-9ba8-549422addade",
   "name": "ab8e14d6-4a74-4a29-9ba8-549422addade",
   "permissions": [
@@ -9267,18 +9267,18 @@ Azure Sentinel 共同作成者です。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Sentinel Contributor",
+  "roleName": "Microsoft Sentinel Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="azure-sentinel-reader"></a>Azure Sentinel 閲覧者
+### <a name="microsoft-sentinel-reader"></a>Microsoft Sentinel 閲覧者
 
-Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
+Microsoft Sentinel 閲覧者 [詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
@@ -9312,7 +9312,7 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Azure Sentinel Reader",
+  "description": "Microsoft Sentinel Reader",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8d289c81-5878-46d4-8554-54e1e3d8b5cb",
   "name": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
   "permissions": [
@@ -9344,18 +9344,18 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Sentinel Reader",
+  "roleName": "Microsoft Sentinel Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="azure-sentinel-responder"></a>Azure Sentinel レスポンダー
+### <a name="microsoft-sentinel-responder"></a>Microsoft Sentinel レスポンダー
 
-Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
+Microsoft Sentinel レスポンダー [詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
@@ -9397,7 +9397,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
   "assignableScopes": [
     "/"
   ],
-  "description": "Azure Sentinel Responder",
+  "description": "Microsoft Sentinel Responder",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3e150937-b8fe-4cfb-8069-0eaf05ecd056",
   "name": "3e150937-b8fe-4cfb-8069-0eaf05ecd056",
   "permissions": [
@@ -9439,7 +9439,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Sentinel Responder",
+  "roleName": "Microsoft Sentinel Responder",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -11010,7 +11010,7 @@ Runbook のジョブを作成する方法については、Runbook のプロパ�
 クラスター ユーザーの資格情報アクションを一覧表示します。
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |

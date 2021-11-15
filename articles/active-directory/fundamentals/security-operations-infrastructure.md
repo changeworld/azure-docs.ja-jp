@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e86dc602e52fb96b7f9cea3a52079fc80c201b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c96362b522100d27757618e330f45514e4d442df
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041692"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349245"
 ---
 # <a name="security-operations-for-infrastructure"></a>インフラストラクチャのためのセキュリティ運用
 
@@ -51,13 +51,13 @@ ms.locfileid: "130041692"
 
 Azure portal から、Azure AD 監査ログを表示したり、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードしたりできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* [Azure Sentinel](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能が提供され、エンタープライズ レベルでインテリジェントなセキュリティ分析を実現します。 
+* [Microsoft Sentinel](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでインテリジェントにセキュリティを分析します。 
 
 * [Azure Monitor](../../azure-monitor/overview.md) – さまざまな状況の自動化された監視とアラートを有効にできます。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合 - Azure Event Hub 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) – アプリを検出し、アプリを管理し、すべてのアプリとリソースを制御し、クラウド アプリのコンプライアンス状況を確認できます。 
 
 この記事の残りの部分で、監視とアラートが必要な対象について説明し、脅威の種類別にまとめています。 特定の事前構築済みソリューションがある場合は、表の後にリンクを示しています。 それ以外の場合は、前述のツールを使用してアラートを作成できます。
 
@@ -137,7 +137,7 @@ Azure AD と Azure AD アプリケーション プロキシを使用すると、
 
 多要素認証 (MFA) を有効にするには、レガシ認証をブロックする必要もあります。 次に、環境を監視し、レガシ認証の使用に対してアラートを生成する必要があります。 POP、SMTP、IMAP、MAPI などのレガシ認証プロトコルでは MFA を強制できないからです。 そのために、これらのプロトコルは組織の攻撃者が好むエントリ ポイントとなります。 レガシ認証をブロックするために使用できるツールの詳細については、「[組織内のレガシ認証をブロックする新しいツール](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302)」を参照してください。 
 
-レガシ認証は、イベントの詳細の一部として Azure AD サインイン ログに取得されます。 Azure Monitor ブックを使用して、レガシ認証の使用状況を識別できます。 詳細情報については、「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../reports-monitoring/howto-use-azure-monitor-workbooks.md)」の「[レガシ認証を使用したサインイン](../reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 Azure Sentinel の安全でないプロトコル ブックを使用することもできます。 詳細については、「[Azure Sentinel の安全でないプロトコル ブックの実装ガイド](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564)」を参照してください。 監視する具体的なアクティビティは次の通りです。
+レガシ認証は、イベントの詳細の一部として Azure AD サインイン ログに取得されます。 Azure Monitor ブックを使用して、レガシ認証の使用状況を識別できます。 詳細情報については、「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../reports-monitoring/howto-use-azure-monitor-workbooks.md)」の「[レガシ認証を使用したサインイン](../reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 Microsoft Sentinel の安全でないプロトコル ブックを使用することもできます。 詳細については、[Microsoft Sentinel の安全でないプロトコル ブックの実装ガイド](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564)を参照してください。 監視する具体的なアクティビティは次の通りです。
 
 | [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
@@ -185,7 +185,7 @@ Azure AD は Microsoft SQL Server データ エンジンまたは SQL を使用�
 
 * SQL Server の場合は、「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください。
 
-* Azure Sentinel の場合は、[セキュリティ イベントを収集するための Windows サーバーへの接続](/sql/relational-databases/security/auditing/sql-server-audit-records)に関する記事を参照して下さい。 
+* Microsoft Sentinel の場合、[Windows サーバーに接続してセキュリティ イベントを収集する](/sql/relational-databases/security/auditing/sql-server-audit-records)方法に関するページを参照してください。 
 
 * Azure AD Connect の構成と使用の詳細については、「[Azure AD Connect とは](../hybrid/whatis-azure-ad-connect.md)」を参照してください
 

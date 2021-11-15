@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 029202fa236f5a7be2e3b3cbc650f2e54a4d1015
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 30347ccbea23fc91429a9653857aba9292afbc6a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085756"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560950"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Azure CLI を使用して Azure Machine Learning ワークスペースを管理する
 
 この記事では、Azure CLI を使用して Azure Machine Learning ワークスペースを作成および管理する方法について説明します。 Azure CLI には、Azure リソースを管理するためのコマンドが用意されています。また、オートメーションに重点を置くことで、Azure で迅速に作業できるように設計されています。 CLI の機械学習拡張機能には、Azure Machine Learning リソースを操作するためのコマンドが用意されています。
 
 > [!NOTE]
-> この記事の例では、1.0 CLI と CLI (v2) の両方のバージョンを参照します。 機械学習 CLI (v2) は現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> この記事の例では、1.0 CLI と 2.0 CLI の両方のバージョンを参照します。 バージョンの指定がないコマンドは、1.0 と 2.0 CLI のどちらでも実行できます。 機械学習 2.0 CLI は現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -121,24 +121,16 @@ az ml workspace create -w <workspace-name>
                        --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-# <a name="bring-existing-resources-cli-v2---preview"></a>[既存のリソースを持ち込む (CLI (v2) - プレビュー)](#tab/bringexistingresources2)
+# <a name="bring-existing-resources-20-cli---preview"></a>[既存のリソースを持ち込む (2.0 CLI - プレビュー)](#tab/bringexistingresources2)
 
 CLI を使用して既存の関連リソースを取り込むときに新しいワークスペースを作成するには、まず、構成ファイル内でワークスペースを構成する方法を定義する必要があります。
 
-```yaml workspace.yml
-name: azureml888
-location: EastUS
-description: Description of my workspace
-storage_account: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
-container_registry: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.ContainerRegistry/registries/<registry-name>
-key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.KeyVault/vaults/<vault-name>
-application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/microsoft.insights/components/<application-insights-name>
-```
+:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/with-existing-resources.yml":::
 
 その後、この構成ファイルを、ワークスペース作成 CLI コマンドの一部として参照できます。
 
 ```azurecli-interactive
-az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
+az ml workspace create -g <resource-group-name> --file workspace.yml
 ```
 
 既存のリソースをアタッチするには、そのリソースの ID を指定する必要があります。 この ID は、Azure portal の各リソースの [プロパティ] タブを使用するか、次のコマンドを使用して Azure CLIだ。
@@ -206,34 +198,26 @@ az ml workspace create -w <workspace-name>
 
 これらのコマンドの使用方法の詳細については、[CLI リファレンス ページ](/cli/azure/ml(v1)/workspace)をご覧ください。
 
-# <a name="cli-v2---preview"></a>[CLI (v2) - プレビュー](#tab/vnetpleconfigurationsv2cli)
+# <a name="20-cli---preview"></a>[2.0 CLI - プレビュー](#tab/vnetpleconfigurationsv2cli)
 
-CLI (v2) を使用してご自身のワークスペースのプライベート ネットワーク接続を設定するには、ワークスペース構成ファイルを拡張して、プライベート リンク エンドポイント リソースの詳細を追加します。
+プライベート リンクを使用しているときは、ワークスペースで、Azure Container Registry タスク コンピューティングを使用してイメージを作成することができません。 そのため、image_build_compute プロパティに CPU コンピューティング クラスター名を設定して、Docker イメージの環境作成に使用できるようにする必要があります。 インターネットでプライベート リンク ワークスペースにアクセスできるようにするかどうかも、public_network_access プロパティによって指定できます。
 
-```yaml workspace.yml
-name: azureml888
-location: EastUS
-description: Description of my workspace
-storage_account: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
-container_registry: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.ContainerRegistry/registries/<registry-name>
-key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.KeyVault/vaults/<vault-name>
-application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/microsoft.insights/components/<application-insights-name>
-
-private_endpoints:
-  approval_type: AutoApproval
-  connections:
-    my-endpt1:
-      subscription_id: <subscription-id>
-      resource_group: <resourcegroup>
-      location: <location>
-      vnet_name: <vnet-name>
-      subnet_name: <subnet-name>
-```
-
-その後、この構成ファイルを、ワークスペース作成 CLI コマンドの一部として参照できます。
+:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/privatelink.yml":::
 
 ```azurecli-interactive
-az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
+az ml workspace create -g <resource-group-name> --file privatelink.yml
+```
+
+ワークスペースの作成後、[Azure ネットワーク CLI コマンド](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)で、ワークスペースのプライベート リンク エンドポイントを作成します。
+
+```azurecli-interactive
+az network private-endpoint create \
+    --name <private-endpoint-name> \
+    --vnet-name <vnet-name> \
+    --subnet <subnet-name> \
+    --private-connection-resource-id "/subscriptions/<subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>" \
+    --group-id amlworkspace \
+    --connection-name workspace -l <location>
 ```
 
 ---
@@ -244,7 +228,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name> --file works
 
 暗号化用の独自のキーを持ち込むときに作成されるリソースの詳細については、[Azure Machine Learning を使用したデータの暗号化](./concept-data-encryption.md#azure-cosmos-db)に関するページをご覧ください。
 
-以下の CLI コマンドは、暗号化にカスタマー マネージド キーを使用するワークスペースを、1.0 CLI バージョンおよび CLI (v2) バージョンを使って作成する例を示しています。
+以下の CLI コマンドは、暗号化にカスタマー マネージド キーを使用するワークスペースを、1.0 CLI バージョンおよび 2.0 CLI バージョンを使って作成する例を示しています。
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -260,32 +244,18 @@ az ml workspace create -w <workspace-name>
                        --hbi-workspace
 ```
 
-# <a name="cli-v2---preview"></a>[CLI (v2) - プレビュー](#tab/vnetpleconfigurationsv2cli)
+# <a name="20-cli---preview"></a>[2.0 CLI - プレビュー](#tab/vnetpleconfigurationsv2cli)
 
 `customer_managed_key` パラメーターと、それに含まれる `key_vault` パラメーターおよび `key_uri` パラメータを使って、コンテナー内のキーのリソース ID と URI を指定します。
 
 お使いのワークスペース上で [Microsoft が収集するデータを制限](./concept-data-encryption.md#encryption-at-rest)するには、追加で `hbi_workspace` プロパティを指定できます。 
 
-```yaml workspace.yml
-name: azureml888
-location: EastUS
-description: Description of my workspace
-storage_account: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>
-container_registry: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.ContainerRegistry/registries/<registry-name>
-key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/Microsoft.KeyVault/vaults/<vault-name>
-application_insights: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers/microsoft.insights/components/<application-insights-name>
-
-hbi_workspace: true
-customer_managed_key:
-  key_vault: /subscriptions/<subscription-id>/resourceGroups/<resourcegroup-name>/providers//Microsoft.KeyVault/<vaulttype>/<vaultname>
-  key_uri: https://<keyvaultid>.vault.azure.net/keys/<keyname>/<keyversion>
-
-```
+:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/cmk.yml":::
 
 その後、この構成ファイルを、ワークスペース作成 CLI コマンドの一部として参照できます。
 
 ```azurecli-interactive
-az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
+az ml workspace create -g <resource-group-name> --file cmk.yml
 ```
 ---
 
@@ -301,16 +271,6 @@ az ml workspace create -w <workspace-name> -g <resource-group-name> --file works
 カスタマー マネージド キーと High Business Impact ワークスペースの詳細については、「[Azure Machine Learning のエンタープライズ セキュリティ](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 ## <a name="using-the-cli-to-manage-workspaces"></a>CLI を使用したワークスペースの管理
-
-### <a name="list-workspaces"></a>ワークスペースの一覧表示
-
-Azure サブスクリプションのすべてのワークスペースを一覧表示するには、次のコマンドを使用します。
-
-```azurecli-interactive
-az ml workspace list
-```
-
-詳細については、[az ml workspace list](/cli/azure/ml/workspace#az_ml_workspace_list) のドキュメントをご覧ください。
 
 ### <a name="get-workspace-information"></a>ワークスペース情報の取得
 

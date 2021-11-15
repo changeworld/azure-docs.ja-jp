@@ -11,12 +11,12 @@ ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a34bda9f5f25d31dec881bd6ea1e00442fbfafc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 294e66b8b7cef3cec9931b5369562a51b138ab28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130217167"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448673"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect プロビジョニング エージェントをインストールする
 この記事では、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で初期構成する方法について説明します。
@@ -104,6 +104,18 @@ ms.locfileid: "130217167"
 
 >[!IMPORTANT]
 >エージェントはインストールされていますが、ユーザーの同期を開始するには、事前に構成され、有効化されている必要があります。 新しいエージェントを構成するには、「[Azure AD Connect クラウド同期の新しい構成を作成する](how-to-configure.md)」を参照してください。
+
+### <a name="enable-password-writeback-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期でパスワード ライトバックを有効にする 
+
+パスワード ライトバックを使って、SSPR サービスでクラウド同期エージェントを検出するには、`Set-AADCloudSyncPasswordWritebackConfiguration` コマンドレットとテナントのグローバル管理者資格情報を使う必要があります。 
+
+  ```   
+   Import-Module "C:\\Program Files\\Microsoft Azure AD Connect Provisioning Agent\\Microsoft.CloudSync.Powershell.dll" 
+   Set-AADCloudSyncPasswordWritebackConfiguration -Enable $true -Credential $(Get-Credential)
+  ```
+
+Azure AD Connect クラウド同期でパスワード ライトバックを使う方法については、次を参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ 
 

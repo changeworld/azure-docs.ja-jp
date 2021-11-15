@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: cf094664fab07e9a75c890899dff9cd0118d12fc
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d8b8cebfe18b52de7b904989907d587a4519c8e3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614405"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254629"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Standard Load Balancer では、リージョン間の負荷分散がサポ
 * 次の最適なリージョンのデプロイへの[即時グローバル フェールオーバー](#regional-redundancy)。
 * [超低遅延](#ultra-low-latency)を使用した、最も近い Azure リージョンへのリージョン間の負荷分散。
 * 1 つのエンドポイントの背後で[スケールアップまたはスケールダウン](#ability-to-scale-updown-behind-a-single-endpoint)する機能。
-* [[静的 IP]](#static-ip)
+* 静的なエニーキャスト グローバル IP アドレス
 * [クライアント IP の保持](#client-ip-preservation)
 * 学習曲線のない、[既存のロード バランサーに基づく](#build-cross-region-solution-on-existing-azure-load-balancer)ソリューション
 
@@ -79,8 +79,8 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
-### <a name="static-ip"></a>静的 IP
-リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/public-ip-addresses.md#ip-address-assignment)を参照してください
+### <a name="static-anycast-global-ip-address"></a>静的なエニーキャスト グローバル IP アドレス
+リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/ip-services/public-ip-addresses.md#ip-address-assignment)を参照してください
 
 ### <a name="client-ip-preservation"></a>クライアント IP の保持
 リージョン間ロード バランサーは、レイヤー 4 のパススルー ネットワーク ロード バランサーです。 このパススルーによって、パケットの元の IP が保持されます。  元の IP は、仮想マシン上で実行するコードで使用できます。 この保持機能により、IP アドレスに固有のロジックを適用できます。

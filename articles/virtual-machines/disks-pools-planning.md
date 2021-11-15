@@ -8,12 +8,12 @@ ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db70740b484290b56d140d6b71d570d61afd138d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 801930dc58993a81c29969f602da64f201919bd0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082723"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428009"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Azure ディスク プール (プレビュー) の計画ガイド
 
@@ -57,6 +57,8 @@ Azure ディスク プール (プレビュー) をデプロイする前に、ワ
 次の例では、さまざまなパフォーマンス要因がどのように連携するかについて説明します。
 
 たとえば、2 つの 1 TiB Premium SSD (P30、プロビジョニングされたターゲットが 5000 IOPS、200 Mbps) を Standard ディスク プールに追加した場合、2 x 5000 = 10,000 IOPS を実現できます。 ただし、スループットはディスク プールによって 384 MBps に制限されます。 この 384 MBps という制限を超えるためには、さらに多くのディスク プールをデプロイしてスケールアウトし、スループットを向上できます。 ネットワーク スループットによって、スケールアウトの効果が制限されます。
+
+REST API で SKU を指定せずに作成されたディスク プールは、既定では標準のディスク プールになります。
 
 ## <a name="availability"></a>可用性
 

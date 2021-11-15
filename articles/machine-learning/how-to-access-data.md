@@ -11,12 +11,12 @@ author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 10/21/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 9d722d5344316582536b3301270ee47f3ec9d3dc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3c308761c0becae3a3f0d7eb3a33fc1bc76f5918
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554965"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867059"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure のストレージ サービスに接続する
 
@@ -29,7 +29,7 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 ローコード エクスペリエンスについては、[Azure Machine Learning スタジオを使ってデータストアを作成して登録](how-to-connect-data-ui.md#create-datastores)する方法に関する記事を参照してください。
 
 >[!TIP]
-> この記事では、サービス プリンシパルや Shared Access Signature (SAS) トークンなど、資格情報ベースの認証資格情報を使用してストレージ サービスに接続することを前提としています。 資格情報がデータストアに登録されている場合は、ワークスペースの "*閲覧者*" ロールを持つすべてのユーザーがこれらの資格情報を取得できることに注意してください。 [ワークスペースの "*閲覧者*" ロールの詳細については、こちらをご覧ください。](how-to-assign-roles.md#default-roles) <br><br>これが懸念される場合は、[ID ベースのアクセスを使用してストレージ サービスに接続](how-to-identity-based-data-access.md)する方法に関するページを参照してください。 <br><br>この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。 
+> この記事では、サービス プリンシパルや Shared Access Signature (SAS) トークンなど、資格情報ベースの認証資格情報を使用してストレージ サービスに接続することを前提としています。 資格情報がデータストアに登録されている場合は、ワークスペースの "*閲覧者*" ロールを持つすべてのユーザーがこれらの資格情報を取得できることに注意してください。 [ワークスペースの "*閲覧者*" ロールの詳細については、こちらをご覧ください。](how-to-assign-roles.md#default-roles) <br><br>これが懸念される場合は、[ID ベースのアクセスを使用してストレージ サービスに接続](how-to-identity-based-data-access.md)する方法に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -92,7 +92,7 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 Azure ストレージ サービスに安全に接続できるように、Azure Machine Learning では、対応するデータ ストレージ コンテナーにアクセスするためのアクセス許可が必要です。 このアクセスは、データストアの登録に使用される認証資格情報に依存します。 
 
 > [!NOTE]
-> このガイダンスは、[ID ベースのデータ アクセスを使用して作成されたデータストア (プレビュー)](how-to-identity-based-data-access.md) にも適用されます。 
+> このガイダンスは、[ID ベースのデータ アクセスを使用して作成されたデータストア](how-to-identity-based-data-access.md)にも適用されます。 
 
 ### <a name="virtual-network"></a>仮想ネットワーク 
 

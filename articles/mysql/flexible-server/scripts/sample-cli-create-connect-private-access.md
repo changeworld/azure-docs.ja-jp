@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - VNet に Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成する
+title: CLI スクリプト - VNet に Azure Database for MySQL - フレキシブル サーバーを作成する
 description: この Azure CLI サンプル スクリプトは、VNet に Azure Database for MySQL - フレキシブル サーバーを作成し (プライベート アクセス接続方法)、VNet 内の VM からそのサーバーに接続する方法を示します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: eef5a814fd25d30a96ad3fd445d30e9daeadc596
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4d7972293652d765cdb1686ff7759a41104f8229
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604660"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844242"
 ---
-# <a name="create-an-azure-database-for-mysql---flexible-server-preview-in-a-vnet-using-azure-cli"></a>Azure CLI を使用して VNet に Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成する
+# <a name="create-an-azure-database-for-mysql---flexible-server-in-a-vnet-using-azure-cli"></a>Azure CLI を使用して VNet に Azure Database for MySQL - フレキシブル サーバーを作成する
 
 このサンプル CLI スクリプトを使用すると、VNet に Azure Database for MySQL - フレキシブル サーバーが作成され ([プライベート アクセス接続方法](../concepts-networking-vnet.md))、VNet 内の VM からサーバーに接続されます。
 
@@ -55,5 +55,5 @@ ms.locfileid: "128604660"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

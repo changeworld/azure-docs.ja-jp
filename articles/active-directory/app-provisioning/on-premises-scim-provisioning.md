@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2021
+ms.date: 10/16/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: b1fb5523f0a487b4076c469e04cc97db01fa36b5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 232735af49cd0f38ff169c224a48b76b0707c97d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991111"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261141"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-to-scim-enabled-apps"></a>SCIM 対応アプリへの Azure AD オンプレミス アプリケーションのプロビジョニング
 
@@ -61,7 +61,7 @@ SCIM 対応アプリにユーザーをプロビジョニングするには、次
 * [SCIM](https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010) の実装が、[Azure AD の SCIM 要件](use-scim-to-provision-users-and-groups.md)を満たしていることを確認します。
   
   Azure AD では、開発者が SCIM の実装をブートストラップするために使用できるオープンソースの[参照コード](https://github.com/AzureAD/SCIMReferenceCode/wiki)が提供されています。 コードは現状有姿です。
-* /schemaDiscovery エンドポイントをサポートして、Azure portal で必要な構成を減らします。 
+* /schemas エンドポイントをサポートして、Azure portal で必要な構成を減らします。 
 
 ## <a name="next-steps"></a>次のステップ
 

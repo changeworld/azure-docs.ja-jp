@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a80cdacaebe4cba2dceb1b29b2f512a6148a518b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d91722247e44016695154912277a0e1e2370fed6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089815"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452131"
 ---
 # <a name="set-up-azure-virtual-desktop-for-azure-stack-hci-preview"></a>Azure Stack HCI 用 Azure Virtual Desktop (プレビュー) をセットアップする
 
@@ -40,20 +40,22 @@ Azure Stack HCI 用 Azure Virtual Desktop をセットアップするには:
 
 1. 「[ホスト プールのセットアップ プロセスの開始](create-host-pools-azure-marketplace.md#begin-the-host-pool-setup-process)」の手順に従って、仮想マシンがない新しいホスト プールを作成します。 そのセクションを最後まで行った後、この記事に戻り、ステップ 2 から始めます。
 
-2. 「[ワークスペース情報](create-host-pools-azure-marketplace.md#workspace-information)」の指示に従って、自分用のワークスペースを作成します。
+2. 新しく作成したホスト プールを検証ホスト プールとして構成します。「[検証ホスト プールとしてホスト プールを定義する](create-validation-host-pool.md#define-your-host-pool-as-a-validation-host-pool)」の手順に従って検証環境プロパティを有効にしてください。
 
-3. 「[新しい仮想マシンを作成する](/azure-stack/hci/manage/vm#create-a-new-vm)」の手順に従って、Azure Stack HCI インフラストラクチャに新しい仮想マシンをデプロイします。 サポートされている OS で VM をデプロイし、ドメインに参加させます。
+3. 「[ワークスペース情報](create-host-pools-azure-marketplace.md#workspace-information)」の指示に従って、自分用のワークスペースを作成します。
+
+4. 「[新しい仮想マシンを作成する](/azure-stack/hci/manage/vm#create-a-new-vm)」の手順に従って、Azure Stack HCI インフラストラクチャに新しい仮想マシンをデプロイします。 サポートされている OS で VM をデプロイし、ドメインに参加させます。
 
    >[!NOTE]
    >VM で Windows Server OS が実行されている場合は、リモート デスクトップ セッション ホスト (RDSH) ロールをインストールします。
 
-4. Connected Machine エージェントをインストールして、Azure で Azure Arc を通して新しい仮想マシンを管理できるようにします。 「[Azure Arc 対応サーバーにハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の説明に従って、仮想マシンに Windows エージェントをインストールします。
+5. Connected Machine エージェントをインストールして、Azure で Azure Arc を通して新しい仮想マシンを管理できるようにします。 「[Azure Arc 対応サーバーにハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の説明に従って、仮想マシンに Windows エージェントをインストールします。
 
-5. [Azure Virtual Desktop エージェント](agent-overview.md)をインストールして、前に作成した Azure Virtual Desktop ホスト プールに仮想マシンを追加します。 その後、[Azure Virtual Desktop ホスト プールへの VM の登録](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool)に関する記事の手順に従って、VM を Azure Virtual Desktop サービスに登録します。
+6. [Azure Virtual Desktop エージェント](agent-overview.md)をインストールして、前に作成した Azure Virtual Desktop ホスト プールに仮想マシンを追加します。 その後、[Azure Virtual Desktop ホスト プールへの VM の登録](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool)に関する記事の手順に従って、VM を Azure Virtual Desktop サービスに登録します。
 
-6. [アプリ グループの作成とユーザー割り当ての管理](manage-app-groups.md)に関する記事の説明に従って、テスト用のアプリ グループを作成し、それにユーザー アクセスを割り当てます。
+7. [アプリ グループの作成とユーザー割り当ての管理](manage-app-groups.md)に関する記事の説明に従って、テスト用のアプリ グループを作成し、それにユーザー アクセスを割り当てます。
 
-7. [Web クライアント](./user-documentation/connect-web.md)に移動し、新しいデプロイへのアクセス権をユーザーに付与します。
+8. [Web クライアント](./user-documentation/connect-web.md)に移動し、新しいデプロイへのアクセス権をユーザーに付与します。
 
 ## <a name="optional-configurations"></a>オプションの構成
 
@@ -165,6 +167,13 @@ VHD をエクスポートするには:
 
 2. VHD イメージをダウンロードします。 ダウンロード プロセスには数分かかる場合があるのでお待ちください。 イメージが完全にダウンロードされたことを確認した後、次のセクションに進みます。
 
+>[!NOTE]
+>AzCopy を実行している場合は、このコマンドを実行して md5check をスキップする必要があります。
+>
+> ```azure
+> azcopy copy “$sas" "destination_path_on_cluster" --check-md5 NoCheck
+> ```
+
 ### <a name="clean-up-the-managed-disk"></a>マネージド ディスクのクリーンアップ
 
 VHD を使い終わったら、マネージド ディスクを削除して領域を解放する必要があります。
@@ -177,6 +186,13 @@ az disk delete --name $diskName --resource-group $diskRG --yes
 ```
 
 このコマンドの完了には数分かかる場合があるのでお待ちください。
+
+>[!NOTE]
+>必要に応じて、次のコマンドを実行して、ダウンロード VHD を動的 VHDx に変換することもできます。
+>
+> ```powershell
+> Convert-VHD -Path " destination_path_on_cluster\file_name.vhd" -DestinationPath " destination_path_on_cluster\file_name.vhdx" -VHDType Dynamic
+> ```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 3016fb18827c0c1323cb151024303a15a2454c5a
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 02c0d31ec07c210197968e514573e372ef24dd59
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177937"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219112"
 ---
 # <a name="known-issues"></a>既知の問題
 この記事では、Azure Communication Services Calling SDK と Azure Communication Services Call Automation API に関連する制限事項と既知の問題について説明します。
@@ -49,15 +49,20 @@ Safari iOS や iPad では、アプリケーションでマイクやスピーカ
 
 macOS 上で Safari を使用している場合、アプリでは Communication Services のデバイス マネージャーを通じてスピーカーを列挙したり選択したりすることはできません。 このシナリオでは、デバイスは OS を介して選択する必要があります。 macOS 上で Chrome を使用している場合、アプリでは Communication Services のデバイス マネージャーを通じてデバイスを列挙したり選択したりできます。
 
-#### <a name="audio-connectivity-is-lost-when-receiving-sms-messages-or-calls-during-an-ongoing-voip-call"></a>進行中の VoIP 通話中に SMS メッセージまたは通話を受信したときに音声の接続が失われる
-この問題は、複数の理由により発生する可能性があります。
+#### <a name="device-will-get-muted-and-incoming-video-will-stop-rendering-when-an-interruption-occurs-that-takes-over-device-access"></a>デバイスへのアクセスを奪う介入が発生した場合、デバイスがミュートされ、受信する動画のレンダリングが停止します。
+この問題は主に、他のアプリケーションまたは OS によってマイクまたはカメラのコントロールが奪われることにより発生します。いくつかの例を下に挙げます。
 
-- 一部のモバイル ブラウザーでは、バックグラウンド状態での接続は維持されません。 このため、アプリケーションをバックグラウンドに押し出すイベントによって VoIP 通話が中断された場合、通話エクスペリエンスが低下する可能性があります。 
-- 場合によっては、SMS または PSTN 通話によって音声がキャプチャされ、VoIP 通話に音声が返されないことがあります。 Apple では、iOS バージョン 14.4.1 以降でこの問題を修正しました。 
+- 通話中に PSTN 呼び出しを受信すると、この呼び出しによってマイク デバイスへのアクセスが奪われます。
+- 通話中に、マイクまたはカメラへのアクセスを奪う別のネイティブ アプリケーションを使用すると、そちらに移動させられます。たとえば、YouTube の動画を再生したり FaceTime の通話を開始したりすると、この問題が発生します。
+- 通話中に Siri が有効になってマイクへのアクセスを奪われます。
+
+これらいずれのケースから回復する場合も、アプリケーションに戻ってそれをアンミュートし、動画の再生を開始し、介入が起こった後で音声と映像がもう一度再生されるようにします。
+
+場合によっては、デバイス (マイクまたはカメラ) が必要なときに解放されず、元の通話に問題が起こることがあります。たとえば、YouTube の動画の視聴中または PSTN 通話中にアンミュートしようとした場合に、この問題が発生します。 
 
 <br/>クライアント ライブラリ: 通話 (JavaScript)
-<br/>ブラウザー: Safari、Chrome
-<br/>オペレーティング システム: iOS、Android
+<br/>ブラウザー: Safari
+<br/>オペレーティング システム: iOS
 
 #### <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>ビデオ デバイスを繰り返し切り替えると、ビデオ ストリーミングが一時的に停止する場合がある
 
@@ -104,8 +109,8 @@ Communication Services ユーザーが JavaScript 通話 SDK を使用して通�
 ##### <a name="possible-causes"></a>考えられる原因
 調査中。
 
-#### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>MacOS および iOS 上の Safari でのデバイスの列挙またはアクセス 
-デバイスへのアクセスが許可された場合、しばらくすると、デバイスのアクセス許可はリセットされます。 MacOS および iOS 上の Safari では、取得したストリームがない限り、アクセス許可は長い時間保持されません。 この問題を回避する最も簡単な方法は、デバイス マネージャーのデバイス列挙 API (DeviceManager.getCameras()、DeviceManager.getSpeakers()、および DeviceManager.getMicrophones()) を呼び出す前に、DeviceManager.askDevicePermission() API を呼び出すことです。 アクセス許可があれば、ユーザーには何も表示されません。ない場合は、入力を求めるメッセージが再び表示されます。
+#### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>macOS または iOS の Safari で、デバイスのエニュメレーション、デバイスへのアクセスを行う 
+デバイスへのアクセスが許可された場合、しばらくすると、デバイスのアクセス許可はリセットされます。 macOS と iOS の Safari では、ストリームを取得する場合を除き、権限を長期間保持しません。 この問題を回避する最も簡単な方法は、デバイス マネージャーのデバイス列挙 API (DeviceManager.getCameras()、DeviceManager.getSpeakers()、および DeviceManager.getMicrophones()) を呼び出す前に、DeviceManager.askDevicePermission() API を呼び出すことです。 アクセス許可があれば、ユーザーには何も表示されません。ない場合は、入力を求めるメッセージが再び表示されます。
 
 <br/>影響を受けるデバイス: iPhone
 <br/>クライアント ライブラリ: 通話 (JavaScript)
@@ -118,8 +123,8 @@ Communication Services ユーザーが JavaScript 通話 SDK を使用して通�
 #### <a name="using-3rd-party-libraries-to-access-gum-during-the-call-may-result-in-audio-loss"></a>通話中にサード パーティのライブラリを使用して GUM にアクセスすると、オーディオが失われる可能性があります。
 アプリケーション内で getUserMedia を個別に使用すると、サード パーティのライブラリによって ACS ライブラリからのデバイス アクセスが引き継がれるため、オーディオ ストリームが失われることになります。
 開発者は、次のことを行うことをお勧めします。
-1. 通話中に内部で GetUserMedia API を使用しているサード パーティ製のライブラリを使用しないでください。
-2. それでもサード パーティのライブラリを使用する必要がある場合、復旧する唯一の方法は、選択したデバイスを変更するか (ユーザーが複数のデバイスを持っている場合)、通話を再開することです。
+- 通話中に内部で GetUserMedia API を使用しているサード パーティ製のライブラリを使用しないでください。
+- それでもサード パーティのライブラリを使用する必要がある場合、復旧する唯一の方法は、選択したデバイスを変更するか (ユーザーが複数のデバイスを持っている場合)、通話を再開することです。
 
 <br/>ブラウザー: Safari
 <br/>オペレーティング システム: iOS
@@ -128,7 +133,7 @@ Communication Services ユーザーが JavaScript 通話 SDK を使用して通�
 一部のブラウザー (Safari など) では、同じデバイスから独自のストリームを取得すると、競合状態になるという副作用があります。 他のデバイスからストリームを取得すると、ユーザーの USB/IO 帯域幅が不足し、sourceUnavailableError 率が急上昇します。  
 
 #### <a name="support-for-simulcast"></a>サイマルキャストのサポート
-サイマルキャストとは、クライアント側で同じビデオ ストリームを異なる解像度とビットレートで 2 回エンコードし、クライアントが受信するストリームを ACS インフラストラクチャに決定させるために使用される手法です。 Windows、Android、iOS 用 ACS 呼び出し元ライブラリ SDK は、サイマルキャスト ストリームの送信をサポートしています。 ACS Web SDK は、現在、サイマルキャスト ストリームの送信をサポートしていません。
+Simulcast を使用すれば、クライアントで、同じ動画ストリームを異なる解像度、ビットレートにより 2 回エンコードし、どちらのストリームを使用するべきかを ACS インフラストラクチャによって自動的に決めることができます。 Windows、Android、iOS 用 ACS 呼び出し元ライブラリ SDK は、サイマルキャスト ストリームの送信をサポートしています。 ACS Web SDK は、現在、サイマルキャスト ストリームの送信をサポートしていません。
 
 ## <a name="azure-communication-services-call-automation-apis"></a>Azure Communication Services Call Automation API
 

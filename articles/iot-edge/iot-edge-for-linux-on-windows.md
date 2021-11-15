@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/18/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6723b203215d650b1fe6718630ae3914c8313256
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 881d0fe19339976342db866072dcf86009b1bbd5
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751972"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578863"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows"></a>Azure IoT Edge for Linux on Windows とは
 
@@ -24,7 +24,7 @@ Azure IoT Edge for Linux on Windows を使用すると、Windows IoT デプロ�
 
 IoT Edge for Linux on Windows は、Windows デバイスで Linux 仮想マシンを実行することで機能します。 Linux 仮想マシンは、IoT Edge ランタイムと共にプレインストールされています。 デバイスにデプロイされているすべての IoT Edge モジュールは、仮想マシン内で実行されます。 一方、Windows ホスト デバイスで実行されている Windows アプリケーションは、Linux 仮想マシンで実行されているモジュールと通信できます。
 
-今すぐ[お試しください](how-to-install-iot-edge-on-windows.md)。
+今すぐ[お試しください](how-to-provision-single-device-linux-on-windows-symmetric.md)。
 
 ## <a name="components"></a>コンポーネント
 
@@ -40,6 +40,21 @@ IoT Edge for Linux on Windows では次のコンポーネントを使用する�
 
 Windows プロセスと Linux 仮想マシンの間の双方向通信では、Windows プロセスにより、Linux コンテナーで実行されるワークロードのユーザー インターフェイスまたはハードウェア プロキシを提供できます。
 
+
+## <a name="prerequisites"></a>前提条件
+
+以下の最小要件を備えた Windows デバイス:
+
+* システム要件
+   * Windows 10¹/11 (Pro、Enterprise、IoT Enterprise)
+   * Windows Server 2019¹/2022  
+   <sub>¹ 現在のすべての累積更新プログラムがインストールされた Windows 10 および Windows Server 2019 最小ビルド 17763。</sub>
+
+* ハードウェア要件
+  * 最小空きメモリ容量: 1 GB
+  * 最小空きディスク領域:10 GB
+
+
 ## <a name="samples"></a>サンプル
 
 IoT Edge for Linux on Windows では、Linux コンポーネントと Windows コンポーネントの間の相互運用性が重視されています。
@@ -54,10 +69,10 @@ IoT Edge サポートとフィードバック チャネルを使用して、IoT 
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) から直接サポート チケットを作成することで、Microsoft カスタマー サポート チームとやり取りをすることができます。
 
-**機能の要望** – Azure IoT Edge 製品はその製品の [ユーザーの声のページ](https://feedback.azure.com/forums/907045-azure-iot-edge)を介して機能の要望を追跡します。
+**機能の要望** – Azure IoT Edge 製品はその製品の [ユーザーの声のページ](https://feedback.azure.com/d365community/forum/0e2fff5d-f524-ec11-b6e6-000d3a4f0da0)を介して機能の要望を追跡します。
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細と操作中のサンプルについては、[IoT Edge for Linux on Windows 10 IoT Enterprise](https://aka.ms/azeflow-show) に関する動画をご覧ください。
 
-「[Azure IoT Edge for Linux on a Window デバイスのインストールとプロビジョニング](how-to-install-iot-edge-on-windows.md)」の手順に従って、IoT Edge for Linux on Windows でデバイスを設定します。
+「[Azure IoT Edge for Linux on Windows デバイスを手動でプロビジョニングする](how-to-provision-single-device-linux-on-windows-symmetric.md)」の手順に従って、IoT Edge for Linux on Windows でデバイスを設定します。

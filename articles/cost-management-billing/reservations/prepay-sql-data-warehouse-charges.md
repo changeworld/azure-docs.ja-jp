@@ -2,18 +2,18 @@
 title: Azure の予約容量で Azure Synapse Analytics (データ ウェアハウスのみ) 料金を節約する
 description: 予約容量を使用したコスト削減によって Azure Synapse Analytics 料金のコストを節約する方法について説明します。
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: 7e5987aee066e8c9e439b2789b1242e1bc541c35
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6b2fb94f625cb5eb6384961faa977da2b9822bf6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714106"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223975"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics (データ ウェアハウスのみ) 料金のコストを節約する
 
@@ -30,7 +30,8 @@ Azure Synapse Analytics の使用に関連するストレージまたはネッ�
 Azure Synapse Analytics の予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。 予約の支払いは、[前払いまたは月払い](./prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールを所持している必要があります。
-- エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 その設定が無効になっている場合は、EA 管理者である必要があります。
+- エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 その設定が無効になっている場合は、EA 管理者になってそれを有効にする必要があります。 Direct Enterprise のお客様は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes) で **予約インスタンス** の設定を更新できるようになりました。 [ポリシー] メニューに移動して、設定を変更します。
+
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが Azure Synapse Analytics の予約容量を購入できます。
 
 エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](understand-reserved-instance-usage.md)」をご覧ください。

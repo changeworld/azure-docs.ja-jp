@@ -1,14 +1,14 @@
 ---
 title: オンプレミスの管理コンソールを管理する
 description: バックアップと復元、ホスト名の定義、センサーへのプロキシの設定など、オンプレミスの管理コンソールのオプションについて説明します。
-ms.date: 1/12/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 9b956dbfa640862d10d0e47aef97e5a1727052c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3604b4674a86d719f2fecf841347c0a55f5b9757
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625223"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339708"
 ---
 # <a name="manage-the-on-premises-management-console"></a>オンプレミスの管理コンソールを管理する
 
@@ -24,7 +24,7 @@ Azure portal からオンプレミスの管理コンソールをオンボード�
 
 **アクティブ化ファイルをアップロードするには:**
 
-1. Azure Defender for IoT の **[価格]** ページに移動します。
+1. Microsoft Defender for IoT の **[価格]** ページに移動します。
 1. **[管理コンソールのアクティブ化ファイルのダウンロード]** タブを選択します。アクティブ化ファイルがダウンロードされます。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="アクティブ化ファイルをダウンロードします。":::

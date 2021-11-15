@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: mimckitt
-ms.openlocfilehash: dcdfee7742f2afb66965c855bf01f86dc1680690
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 64ff90e695b8027ed23da463bdf75a4778675e0a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692998"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456805"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "122692998"
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * 特殊化されたイメージ定義を作成する
 > * イメージ バージョンを作成する
 > * 特殊化されたイメージからスケール セットを作成する
@@ -38,9 +38,9 @@ ms.locfileid: "122692998"
 
 ## <a name="overview"></a>概要
 
-[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) により、組織全体でカスタム イメージを簡単に共有できます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
 
-共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
+Azure Compute Gallery を使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
 
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
 
@@ -235,7 +235,7 @@ az group delete --name myResourceGroup --no-wait --yes
 このチュートリアルでは、Azure CLI を使用してスケール セットにカスタム VM イメージを作成して使用する方法について学習しました。
 
 > [!div class="checklist"]
-> * Shared Image Gallery を作成する
+> * Azure Compute Gallery を作成する
 > * 特殊化されたイメージ定義を作成する
 > * イメージ バージョンを作成する
 > * 特殊化されたイメージからスケール セットを作成する

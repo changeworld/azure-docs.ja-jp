@@ -8,18 +8,20 @@ ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2021
+ms.date: 11/01/2021
 ms.author: duau
-ms.openlocfilehash: c76b78b8ed834b1cd3c86cab1bdbf5cb98141956
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: db0bf4783de324af2ab4e5a5ec6bfbaa18ad33cf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073242"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449775"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 
 次の表は、Azure Front Door のための Azure Resource Manager デプロイ モデル テンプレートのリンク一覧です。
+
+## <a name="azure-front-door"></a>Azure Front Door
 
 | Template | 説明 |
 | ---| ---|
@@ -35,6 +37,33 @@ ms.locfileid: "130073242"
 | [クライアント IP の許可リスト登録またはブロックリスト登録用の Front Door の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-clientip)| Front Door を構成して、クライアント IP を使用するカスタム アクセス コントロールを使用して特定のクライアント IP のトラフィックを制限します。 |
 | [特定の http パラメーターでアクションを実行する Front Door の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-http-params)| Front Door を構成して、http パラメーターを使用するアクセス コントロールのカスタム ルールを使用して受信要求の http パラメーターに基づいて特定のトラフィックを許可またはブロックします。 |
 | [Front Door レート制限の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-rate-limiting)| Front Door を構成して、特定のフロントエンド ホストの受信トラフィックのレート制限を行います。 |
+| | |
+
+## <a name="azure-front-door-standardpremium-preview"></a>Azure Front Door Standard または Premium (プレビュー)
+
+| サンプル | 説明 |
+|-|-|
+| [Front Door (簡易作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium/) | エンドポイント、配信元グループ、配信元、ルートを含む基本的な Front Door プロファイルを作成します。  |
+| [[ルール セット]](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rule-set/) | Front Door のプロファイルとルール セットを作成します。  |
+| [マネージド ルール セットを使用する WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-waf-managed/) | マネージド ルール セットを使用して、Front Door プロファイルと WAF を作成します。  |
+| [カスタム ルールを使用する WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-waf-custom/) | カスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
+| [レート制限を含む WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rate-limit/) | レート制限を実行するためのカスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
+| [ジオフィルタリングを含む WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-geo-filtering/) | ジオフィルタリングを実行するためのカスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
+|**App Service オリジン**| **説明** |
+| [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-app-service-public) | パブリック エンドポイントを使用する App Service アプリと Front Door プロファイルを作成します。  |
+| [Private Link を使用する App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-app-service-private-link) | プライベート エンドポイントを使用する App Service アプリと Front Door プロファイルを作成します。  |
+|**Azure Functions オリジン**| **説明** |
+| [Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-function-public/) | パブリック エンドポイントを使用する Azure Functions アプリと Front Door プロファイルを作成します。  |
+| [Private Link を使用する Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-function-private-link) | プライベート エンドポイントを使用する Azure Functions アプリと Front Door プロファイルを作成します。  |
+|**API Management オリジン**| **説明** |
+| [API Management (外部)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-api-management-external) | 外部 VNet 統合を使用する API Management インスタンスと Front Door プロファイルを作成します。  |
+|**Storage オリジン**| **説明** |
+| [Storage 静的 Web サイト](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-storage-static-website) | Azure ストレージ アカウントとパブリック エンドポイントを使用する静的 Web サイト、および Front Door プロファイルを作成します。  |
+| [Private Link を使用する Storage BLOB](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-storage-blobs-private-link) | Azure ストレージ アカウントとプライベート エンドポイントを使用する BLOB コンテナー、および Front Door プロファイルを作成します。  |
+|**Application Gateway オリジン**| **説明** |
+| [Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-application-gateway-public) | Application Gateway、および Front Door プロファイルを作成します。 |
+|**仮想マシン オリジン**| **説明** |
+| [Private Link サービスを使用した仮想マシン](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-vm-private-link) | 仮想マシンと Private Link サービス、および Front Door プロファイルを作成します。 |
 | | |
 
 ## <a name="next-steps"></a>次のステップ

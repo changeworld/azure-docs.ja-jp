@@ -2,19 +2,22 @@
 title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
-ms.date: 07/19/2021
-ms.openlocfilehash: cdc4b0c6fb5aabdb96597cfbbe151598b16a2cc0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/20/2021
+ms.openlocfilehash: 9bf771fae26d61a457299244910eff1cc6724b84
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438910"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232982"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
 アプリケーションを Kubernetes 用に簡単に管理し、デプロイするには、[オープン ソースの Helm パッケージ マネージャー][helm]を使用します。 Helm を使用すると、アプリケーション パッケージは[グラフ](https://helm.sh/docs/topics/charts/)として定義されます。これは収集され、[Helm グラフ リポジトリ](https://helm.sh/docs/topics/chart_repository/)に格納されます。
 
 この記事では、Helm 3 のコマンドを使用し、グラフを [OCI 成果物](container-registry-image-formats.md#oci-artifacts)として格納して、Azure コンテナー レジストリで Helm グラフ リポジトリをホストする方法について説明します。 多くのシナリオでは、開発したアプリケーション用の独自のグラフを構築し、アップロードすることになります。 独自の Helm グラフを作成する方法の詳細については、「[Chart Template Developer's Guide (グラフ テンプレート開発者ガイド)][develop-helm-charts]」を参照してください。 また、別の Helm リポジトリから既存の Helm グラフを格納することもできます。
+
+> [!IMPORTANT]
+> この記事は、バージョン **3.7.1** の時点の Helm 3 コマンドで更新されました。 Helm 3.7.1 には、以前のバージョンの Helm 3 で導入された、Helm CLI コマンドと OCI サポートへの変更が含まれています。 
 
 ## <a name="helm-3-or-helm-2"></a>Helm 3 か Helm 2 か
 
@@ -25,8 +28,8 @@ Azure Container Registry で Helm グラフをホストするには、Helm3 を�
 * Azure Container Registry のリポジトリに、Helm グラフを格納して管理できます
 * Helm グラフをレジストリに [OCI 成果物](container-registry-image-formats.md#oci-artifacts)として格納します。 Azure Container Registry では、Helm チャートなどの OCI 成果物に対する GA サポートが提供されます。
 * `helm registry login` または `az acr login` コマンドを使用して、レジストリで認証します。
-* `helm chart` コマンドを使用して、レジストリ内の Helm グラフをプッシュ、プル、管理します
-* `helm install` を使用して、ローカル リポジトリ キャッシュから Kubernetes クラスターにグラフをインストールします。
+* `helm` コマンドを使用して、レジストリ内の Helm グラフをプッシュ、プル、管理します
+* `helm install` を使用して、レジストリから Kubernetes クラスターにグラフをインストールします。
 
 ### <a name="feature-support"></a>機能サポート
 
@@ -63,7 +66,7 @@ Helm 2 と Azure Container Registry を使用してグラフを格納してデ�
 この記事のシナリオでは、次のリソースが必要です。
 
 - Azure サブスクリプションの **Azure コンテナー レジストリ**。 必要に応じて、[Azure portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用してレジストリを作成します。
-- **Helm クライアント バージョン 3.1.0 以降** - 現在のバージョンを確認するには、`helm version` を実行します。 Helm のインストール方法とアップグレード方法について詳しくは、「[Installing Helm (Helm のインストール)][helm-install]」をご覧ください。
+- **Helm クライアント バージョン 3.7.1 以降** - 現在のバージョンを確認するには、`helm version` を実行します。 Helm のインストール方法とアップグレード方法について詳しくは、「[Installing Helm (Helm のインストール)][helm-install]」をご覧ください。 以前のバージョンの Helm 3 からアップグレードする場合は、[リリース ノート](https://github.com/helm/helm/releases)を確認してください。
 - Helm グラフをインストールする **Kubernetes クラスター**。 必要に応じて、[Azure Kubernetes Service クラスター][aks-quickstart]を作成します。 
 - **Azure CLI バージョン 2.0.71 以降** - バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -114,24 +117,21 @@ EOF
 
 この例の作成と実行の詳細については、Helm ドキュメントの「[Getting Started](https://helm.sh/docs/chart_template_guide/getting_started/)」を参照してください。
 
-## <a name="save-chart-to-local-registry-cache"></a>ローカル レジストリ キャッシュにグラフを保存する
+## <a name="save-chart-to-local-archive"></a>グラフをローカル アーカイブに保存する
 
-ディレクトリを `hello-world` サブディレクトリに変更します。 次に、`helm chart save` を実行してグラフのコピーをローカルに保存し、レジストリの完全修飾名 (すべて小文字) とターゲット リポジトリおよびタグを使用して別名を作成します。 
+ディレクトリを `hello-world` サブディレクトリに変更します。 次に、`helm package` を実行して、グラフをローカル アーカイブに保存します。 
 
-次の例では、レジストリ名は *mycontainerregistry*、ターゲット リポジトリは *helm/hello-world*、ターゲット グラフ タグは *0.1.0* です。 依存関係を正常に取得するには、ターゲット グラフ イメージの名前とタグが `Chart.yaml` の名前とバージョンと一致している必要があります。
+次の例では、グラフは `Chart.yaml` 内の名前とバージョンで保存されます。
 
 ```console
 cd ..
-helm chart save . hello-world:0.1.0
-helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
+helm package .
 ```
 
-`helm chart list` を実行して、ローカル レジストリ キャッシュにグラフが保存されたことを確認します。 出力は次のようになります。
+出力は次のようになります。
 
-```console
-REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
-hello-world:0.1.0                                        hello-world      0.1.0   5899db0 3.2 KiB        2 minutes 
-mycontainerregistry.azurecr.io/helm/hello-world:0.1.0    hello-world      0.1.0   5899db0 3.2 KiB        2 minutes
+```output
+Successfully packaged chart and saved it to: /my/path/hello-world-0.1.0.tgz
 ```
 
 ## <a name="authenticate-with-the-registry"></a>レジストリで認証する
@@ -149,23 +149,19 @@ echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
 > [!TIP]
 > [個々の Azure AD ID](container-registry-authentication.md?tabs=azure-cli#individual-login-with-azure-ad) でレジストリにログインして、Helm グラフをプッシュしたりプルしたりすることもできます。
 
-## <a name="push-chart-to-registry"></a>レジストリにグラフをプッシュする
+## <a name="push-chart-to-registry-as-oci-artifact"></a>OCI 成果物としてグラフをレジストリにプッシュする
 
-Helm 3 CLI で `helm chart push` コマンドを実行して、完全修飾ターゲット リポジトリにグラフをプッシュします。
+Helm 3 CLI で `helm push` コマンドを実行して、完全修飾ターゲット リポジトリにグラフ アーカイブをプッシュします。 次の例では、ターゲット リポジトリの名前空間が `helm/hello-world` で、グラフに `0.1.0` というタグが付けられています。
 
 ```console
-helm chart push mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
+helm push hello-world-0.1.0.tgz oci://mycontainerregistry.azurecr.io/helm
 ```
 
 プッシュが成功すると、出力は次のようになります。
 
 ```output
-The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
-ref:     mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
-size:    3.2 KiB
-name:    hello-world
-version: 0.1.0
+Pushed: mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
+digest: sha256:5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
 ```
 
 ## <a name="list-charts-in-the-repository"></a>リポジトリのグラフ一覧
@@ -190,9 +186,9 @@ az acr repository show \
     "readEnabled": true,
     "writeEnabled": true
   },
-  "createdTime": "2020-03-20T18:11:37.6701689Z",
+  "createdTime": "2021-10-05T12:11:37.6701689Z",
   "imageName": "helm/hello-world",
-  "lastUpdateTime": "2020-03-20T18:11:37.7637082Z",
+  "lastUpdateTime": "2021-10-05T12:11:37.7637082Z",
   "manifestCount": 1,
   "registry": "mycontainerregistry.azurecr.io",
   "tagCount": 1
@@ -214,70 +210,29 @@ az acr repository show-manifests \
   {
     [...]
     "configMediaType": "application/vnd.cncf.helm.config.v1+json",
-    "createdTime": "2020-03-20T18:11:37.7167893Z",
+    "createdTime": "2021-10-05T12:11:37.7167893Z",
     "digest": "sha256:0c03b71c225c3ddff53660258ea16ca7412b53b1f6811bf769d8c85a1f0663ee",
     "imageSize": 3301,
-    "lastUpdateTime": "2020-03-20T18:11:37.7167893Z",
+    "lastUpdateTime": "2021-10-05T12:11:37.7167893Z",
     "mediaType": "application/vnd.oci.image.manifest.v1+json",
     "tags": [
       "0.1.0"
     ]
 ```
 
-## <a name="pull-chart-to-local-cache"></a>ローカル キャッシュにグラフをプルする
-
-Helm グラフを Kubernetes にインストールするには、グラフがローカル キャッシュにある必要があります。 この例では、最初に `helm chart remove` を実行して、`mycontainerregistry.azurecr.io/helm/hello-world:0.1.0` という名前の既存のローカル グラフを削除します。
-
-```console
-helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-```
-
-`helm chart pull` を実行して、Azure コンテナー レジストリからローカル キャッシュにグラフをダウンロードします。
-
-```console
-helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-```
-
-## <a name="export-helm-chart"></a>Helm グラフをエクスポートする
-
-グラフをさらに操作するには、`helm chart export` を使用してローカル ディレクトリにエクスポートします。 たとえば、プルしたグラフを `install` ディレクトリにエクスポートします。
-
-```console
-helm chart export mycontainerregistry.azurecr.io/helm/hello-world:0.1.0 \
-  --destination ./install
-```
-
-リポジトリにエクスポートされたグラフの情報を表示するには、グラフをエクスポートしたディレクトリで `helm show chart` コマンドを実行します。
-
-```console
-cd install
-helm show chart hello-world
-```
-
-次の出力例に示されているように、グラフの最新バージョンに関する詳細情報が Helm によって返されます。
-
-```output
-apiVersion: v2
-appVersion: 1.16.0
-description: A Helm chart for Kubernetes
-name: hello-world
-type: application
-version: 0.1.0    
-```
-
 ## <a name="install-helm-chart"></a>Helm グラフをインストールする
 
-ローカル キャッシュにプルしてエクスポートした Helm グラフをインストールするには、`helm install` を実行します。 *myhelmtest* などのリリース名を指定するか、`--generate-name` パラメーターを渡します。 次に例を示します。
+レジストリにプッシュした Helm グラフをインストールするには、`helm install` を実行します。 グラフのタグは、`--version` パラメーターを使用して渡します。 *myhelmtest* などのリリース名を指定するか、`--generate-name` パラメーターを渡します。 次に例を示します。
 
 ```console
-helm install myhelmtest ./hello-world
+helm install myhelmtest oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 グラフのインストールが成功した後の出力は次のようになります。
 
 ```console
 NAME: myhelmtest
-LAST DEPLOYED: Fri Mar 20 14:14:42 2020
+LAST DEPLOYED: Tue Oct  4 16:59:51 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
@@ -296,6 +251,14 @@ helm get manifest myhelmtest
 
 ```console
 helm uninstall myhelmtest
+```
+
+## <a name="pull-chart-to-local-archive"></a>グラフをローカル アーカイブにプルする
+
+必要に応じて、`helm pull` を使用して、コンテナー レジストリからローカル アーカイブにグラフをプルできます。 グラフのタグは、`--version` パラメーターを使用して渡します。 ローカル アーカイブが現在のパスに存在する場合は、このコマンドによって上書きされます。
+
+```console
+helm pull oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 ## <a name="delete-chart-from-the-registry"></a>レジストリからグラフを削除する
@@ -345,17 +308,18 @@ myregistry/wordpress            9.0.3           5.3.2           Web publishing p
 [...]
 ```
 
-### <a name="save-charts-as-oci-artifacts"></a>OCI 成果物としてグラフを保存する
+### <a name="pull-chart-archives-locally"></a>グラフ アーカイブをローカルにプルする
 
-リポジトリのグラフごとに、ローカルにグラフをプルし、OCI 成果物として保存します。 例:
+リポジトリ内のグラフごとに、グラフ アーカイブをローカルにプルし、ファイル名をメモします。
 
 ```console 
-helm pull myregisry/ingress-nginx --untar
-cd ingress-nginx
-helm chart save . myregistry.azurecr.io/ingress-nginx:3.20.1
+helm pull myregisry/ingress-nginx
+ls *.tgz
 ```
 
-### <a name="push-charts-to-registry"></a>レジストリにグラフをプッシュする
+`ingress-nginx-3.20.1.tgz` などのローカル グラフ アーカイブが作成されます。
+
+### <a name="push-charts-as-oci-artifacts-to-registry"></a>OCI 成果物としてグラフをレジストリにプッシュする
 
 レジストリにログインします。
 
@@ -363,10 +327,10 @@ helm chart save . myregistry.azurecr.io/ingress-nginx:3.20.1
 az acr login --name myregistry
 ```
 
-各グラフをレジストリにプッシュします。
+各グラフ アーカイブをレジストリにプッシュします。 例:
 
 ```console
-helm chart push myregistry.azurecr.io/ingress-nginx:3.20.1
+helm push ingress-nginx-3.20.1.tgz oci://myregistry.azurecr.io/helm
 ```
 
 グラフをプッシュした後、それがレジストリに格納されているのを確認します。

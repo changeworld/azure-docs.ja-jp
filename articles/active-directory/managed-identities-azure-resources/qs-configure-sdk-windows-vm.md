@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0102ea602cb6e6778940c77aec444d412fa4ed6d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 555ef4456f0aa77aaeb54981e214666a0f87a19a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114452646"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440702"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure SDK で Azure リソースのマネージド ID を使用して VM を構成する
 
@@ -46,6 +46,6 @@ Azure は、一連の [Azure SDK](https://azure.microsoft.com/downloads) によ�
 | Python | [システム割り当てマネージド ID が有効な VM を作成する](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
 | Ruby   | [システム割り当て ID が有効な Azure VM を作成する](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure portal、PowerShell、CLI、およびリソース テンプレートを使用する方法については、**Azure VM 用の ID の構成** に関するページを参照してください。

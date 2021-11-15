@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44a8c8ab6420db717533e83af9e01a89fad47bad
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 856cefa33948f530ee859ee1eeadfaf2cdf73de6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205032"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471784"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>セッション ホスト仮想マシンに Windows ライセンスを適用する
 
@@ -65,4 +65,4 @@ $vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object Reso
 
 ## <a name="requirements-for-deploying-windows-server-remote-desktop-services"></a>Windows Server リモート デスクトップ サービスをデプロイするための要件
 
-Windows Server 2019、2016、または 2012 R2 を Azure Virtual Desktop ホストとしてデプロイ内で展開する場合は、それらの仮想マシンからリモート デスクトップ サービス ライセンス サーバーにアクセスできる必要があります。 リモート デスクトップ サービス ライセンス サーバーは、オンプレミスまたは Azure に配置できます。 詳細については、「[リモート デスクトップ サービス ライセンス サーバーをアクティブ化する](/windows-server/remote/remote-desktop-services/rds-activate-license-server)」を参照してください。
+Windows Server を Azure Virtual Desktop ホストとしてデプロイ内で展開する場合は、それらの仮想マシンからリモート デスクトップ サービス ライセンス サーバーにアクセスできる必要があります。 リモート デスクトップ サービス ライセンス サーバーは、オンプレミスまたは Azure に配置できます。 詳細については、「[リモート デスクトップ サービス ライセンス サーバーをアクティブ化する](/windows-server/remote/remote-desktop-services/rds-activate-license-server)」を参照してください。

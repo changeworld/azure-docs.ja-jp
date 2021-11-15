@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c88bc4adc49dfb5ddad3ccfd8f20267fc5a420d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5dd6f2d024055a75e350bfb5b0eee0e26c115193
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092737"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475808"
 ---
 # <a name="set-up-sql-database-storage-for-standard-logic-apps-in-single-tenant-azure-logic-apps-preview"></a>シングルテナント Azure Logic Apps で Standard ロジック アプリの SQL データベース ストレージを設定する (プレビュー)
 

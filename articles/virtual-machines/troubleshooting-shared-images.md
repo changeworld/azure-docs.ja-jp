@@ -1,23 +1,23 @@
 ---
 title: Azure での共有イメージに関する問題のトラブルシューティング
-description: 共有イメージ ギャラリーに関する問題のトラブルシューティングを行う方法について説明します。
+description: Azure Compute Gallery の共有イメージに関する問題のトラブルシューティングを行う方法について説明します。
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 7/1/2021
-ms.openlocfilehash: 10e8b54145d5948eff55265b3b0bc0b413d2cd66
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a838879249bad2edfb8d5105e34cd7697a1f59e2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129054436"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437089"
 ---
-# <a name="troubleshoot-shared-image-galleries-in-azure"></a>Azure の共有イメージ ギャラリーのトラブルシューティング
+# <a name="troubleshoot-images-in-an-azure-compute-gallery"></a>Azure Compute Gallery のイメージをトラブルシューティングする
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
-共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで何らかの操作を実行しているときに問題が発生した場合は、失敗したコマンドをデバッグ モードで再実行します。 Azure CLI では `--debug` スイッチ、PowerShell では `-Debug` スイッチを渡して、デバッグ モードをアクティブにします。 エラーを特定したら、この記事に従ってトラブルシューティングします。
+ギャラリー、イメージ定義、イメージ バージョンなど、Azure Compute Gallery (旧称 Shared Image Gallery) のリソースに対してなんらかの操作を実行しているときに問題が発生した場合は、失敗したコマンドをデバッグ モードで再実行します。 Azure CLI では `--debug` スイッチ、PowerShell では `-Debug` スイッチを渡して、デバッグ モードをアクティブにします。 エラーを特定したら、この記事に従ってトラブルシューティングします。
 
 
 ## <a name="creating-or-modifying-a-gallery"></a>ギャラリーの作成または変更 ##
@@ -202,11 +202,11 @@ ms.locfileid: "129054436"
 **回避策**:イメージ定義と同じオペレーティング システム (Linux または Windows) のソースを選択するか、イメージ バージョンと同じオペレーティング システム世代の新しいイメージ定義を作成または選択します。
 
 **メッセージ**: "*ソース仮想マシン \<resourceID\> には、エフェメラル OS ディスクを含めることはできません。* "  
-**原因**: \<resourceID\> のソースにエフェメラル OS ディスクが含まれています。 共有イメージ ギャラリーでは現在、エフェメラル OS ディスクはサポートされていません。  
+**原因**: \<resourceID\> のソースにエフェメラル OS ディスクが含まれています。 Azure Compute Gallery では現在、エフェメラル OS ディスクはサポートされていません。  
 **回避策**:エフェメラル OS ディスクを使用しない VM に基づいて、別のソースを選択してください。
 
 **メッセージ**: "*ソース仮想マシン \<resourceID\> には、UltraSSD という種類のアカウントに格納されているディスク ['\<diskID\>'] を含めることはできません。* "  
-**原因**: ディスク \<diskID\> は Ultra SSD ディスクです。 共有イメージ ギャラリーでは現在、Ultra SSD ディスクはサポートされていません。  
+**原因**: ディスク \<diskID\> は Ultra SSD ディスクです。 Azure Compute Gallery では現在、Ultra SSD ディスクはサポートされていません。  
 **回避策**:Premium SSD、Standard SSD、および Standard HDD マネージド ディスクまたはそのいずれかのみを含むソースを使用します。
 
 **メッセージ**: "*ソース仮想マシン \<resourceID\> は Managed Disks から作成する必要があります。* "  
@@ -222,7 +222,7 @@ ms.locfileid: "129054436"
 **回避策**:イメージ バージョンと同じサブスクリプションおよびリージョンで暗号化セットを作成または使用します。
 
 **メッセージ**: "*暗号化されたソース: '\<resourceID\>' が、現在のギャラリー イメージ バージョンのサブスクリプション '\<subscriptionID\_1\>' とは異なるサブスクリプション ID にあります。暗号化されていないソースで再試行するか、ソースのサブスクリプション '\<subcriptionID\_2\>' を使用してギャラリー イメージ バージョンを作成してください。* "  
-**原因**:共有イメージ ギャラリーでは現在、ソース イメージが暗号化されている場合、別のソース イメージからの別のサブスクリプションでのイメージ バージョンの作成はサポートされていません。  
+**原因**: Azure Compute Gallery では現在、ソース イメージが暗号化されている場合、別のソース イメージからの別のサブスクリプションでのイメージ バージョンの作成はサポートされていません。  
 **回避策**:暗号化されていないソースを使用するか、ソースと同じサブスクリプションでイメージ バージョンを作成します。
 
 **メッセージ**: "*ディスク暗号化セット \<diskEncryptionSetID\> が見つかりませんでした。* "  
@@ -282,7 +282,7 @@ ms.locfileid: "129054436"
 **回避策**:既存のイメージ バージョンの LUN とデータ ディスクを使用します。
 
 **メッセージ**: "*ディスク暗号化セット \<diskEncryptionSetID\> は、ギャラリー リソースと同じサブスクリプション \<subscriptionID\> に存在する必要があります。* "  
-**原因**:共有イメージ ギャラリーでは現在、別のサブスクリプションでのディスク暗号化セットの使用はサポートされていません。  
+**原因**: Azure Compute Gallery では現在、別のサブスクリプションでのディスク暗号化セットの使用はサポートされていません。  
 **回避策**:同じサブスクリプションにイメージ バージョンとディスク暗号化セットを作成します。
 
 **メッセージ**: *'GalleryImageVersion ソース リソースのサイズ 2048 はサポートされている最大サイズ 1024 を超えている' ため、このリージョンでレプリケーションが失敗しました。*  
@@ -294,7 +294,7 @@ ms.locfileid: "129054436"
 **回避策**: 削除イベントの完了を待って、イメージ バージョンを再作成します。
 
 **メッセージ**: *Encryption is not supported for source resource '\<sourceID>'. Please use a different source resource type which supports encryption or remove encryption properties.* (ソース リソース \<sourceID> の暗号化はサポートしていません。暗号化をサポートしている他のソース リソースを使用するか、暗号化プロパティを削除してください。)  
-**原因**: 現在 Shared Image Gallery では、VM、ディスク、スナップショット、マネージド イメージの暗号化だけをサポートしています。 イメージ バージョンで指定したソースのいずれかが、前掲の暗号化をサポートしているソースのリストに含まれていません。  
+**原因**: 現在 Azure Compute Gallery では、VM、ディスク、スナップショット、マネージド イメージの暗号化だけをサポートしています。 イメージ バージョンで指定したソースのいずれかが、前掲の暗号化をサポートしているソースのリストに含まれていません。  
 **回避策**: ディスク暗号化セットをイメージ バージョンから削除し、サポート チームに問い合わせます。
 
 ## <a name="creating-or-updating-a-vm-or-scale-sets-from-an-image-version"></a>イメージ バージョンからの VM またはスケール セットの作成または更新 ##
@@ -312,7 +312,7 @@ ms.locfileid: "129054436"
 **回避策**: [最新から除外] が False に設定されているイメージ バージョンがリージョンに少なくとも 1 つ存在するようにしてください。 
 
 **メッセージ**: "*クライアントには、スコープ \<resourceID\> に対するアクション 'Microsoft.Compute/galleries/images/versions/read' を実行する権限がありますが、現在のテナント \<tenantID\> には、リンクされたサブスクリプション \<subscriptionID\> にアクセスする権限がありません。* "  
-**原因**:仮想マシンまたはスケール セットは、別のテナントの SIG イメージを使用して作成されました。 仮想マシンまたはスケール セットを変更しようとしましたが、イメージを所有しているサブスクリプションへのアクセス権がありません。  
+**原因**: 仮想マシンまたはスケール セットは、別のテナントのギャラリー イメージを使用して作成されました。 仮想マシンまたはスケール セットを変更しようとしましたが、イメージを所有しているサブスクリプションへのアクセス権がありません。  
 **回避策**:イメージ バージョンのサブスクリプションの所有者に連絡して、イメージ バージョンに対する読み取りアクセス権を付与するようにしてください。
 
 **メッセージ**: "*ギャラリー イメージ \<resourceID\> は \<region\> リージョンで使用できません。イメージ所有者に連絡して、このリージョンにレプリケートするか、要求されたリージョンを変更するようにしてください。* "  
@@ -331,7 +331,7 @@ ms.locfileid: "129054436"
 **原因**:スケール セットの現在のソース イメージは一般化されたソース イメージですが、特殊化されたソース イメージで更新されています。 スケール セットの現在のソース イメージと新しいソース イメージは、同じ状態である必要があります。  
 **回避策**:スケール セットを更新するには、一般化されたイメージ バージョンを使用します。
 
-**メッセージ**: "*共有イメージ ギャラリー \<versionID\> のディスク暗号化セット \<diskEncryptionSetID\> はサブスクリプション \<subscriptionID\_1\> に属しているため、サブスクリプション \<subscriptionID\_2\> のリソース '' で使用することはできません*"  
+**メッセージ**: "*Azure Compute Gallery \<versionID\> のディスク暗号化セット \<diskEncryptionSetID\> はサブスクリプション \<subscriptionID\_1\> に属しているため、サブスクリプション \<subscriptionID\_2\> のリソース '' で使用することはできません*"  
 **原因**:イメージ バージョンの暗号化に使用されるディスク暗号化セットが、イメージ バージョンをホストするサブスクリプションとは別のサブスクリプションに存在します。  
 **回避策**:イメージ バージョンとディスク暗号化セットに同じサブスクリプションを使用します。
 
@@ -346,12 +346,12 @@ ms.locfileid: "129054436"
 ## <a name="creating-a-disk-from-an-image-version"></a>イメージ バージョンからのディスクの作成 ##
 
 **メッセージ**: "*パラメーター imageReference の値が無効です。* "  
-**原因**:SIG イメージ バージョンからディスクにエクスポートしようとしましたが、そのイメージには存在しない LUN の位置が使用されています。    
+**原因**: ギャラリー イメージ バージョンからディスクにエクスポートしようとしましたが、そのイメージには存在しない LUN の位置が使用されています。    
 **回避策**:イメージ バージョンを確認して、使用されている LUN の位置を確認します。
 
 ## <a name="sharing-resources"></a>リソースを共有する
 
-サブスクリプション全体でのイメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md) を使用して有効にされています。 
+サブスクリプション全体でのギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md) を使用して有効にされています。 
 
 ## <a name="replication-speed"></a>レプリケーション速度
 
@@ -359,9 +359,9 @@ ms.locfileid: "129054436"
 
 ## <a name="azure-limits-and-quotas"></a>Azure の制限とクォータ 
 
-[Azure の制限とクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
+[Azure の制限とクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)は、すべての Azure Compute Gallery、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[共有イメージ ギャラリー](./shared-image-galleries.md)に関するページを参照してください。
+[Azure Compute Gallery](./shared-image-galleries.md) の詳細を確認してください。

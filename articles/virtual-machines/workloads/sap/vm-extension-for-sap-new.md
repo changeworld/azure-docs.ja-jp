@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2021
 ms.author: oldoll
-ms.openlocfilehash: 8e70919b229ff1c29590a370a201f8b8a0ebc62b
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: ce34b313661106e903a92aaf1a3b2f65213a1634
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067394"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577271"
 ---
 # <a name="new-version-of-azure-vm-extension-for-sap-solutions"></a>SAP ソリューション用 Azure VM 拡張機能の新しいバージョン 
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -90,6 +90,8 @@ SAP 用の新しい VM 拡張機能では、VM の監視と構成のデータに
 1. 次の PowerShell コマンドレットを実行します。
     使用可能な環境の一覧を表示するには、コマンドレット `Get-AzEnvironment` を実行します。 グローバル Azure を使う場合の環境は **AzureCloud** です。 Azure China 21Vianet の場合は、**AzureChinaCloud** を選択します。
 
+    VM Extension for SAP では、拡張機能が外部リソース (Azure Resource Manager API など) への接続に使用するプロキシの構成がサポートされています プロキシを設定するには、パラメーター -ProxyURI を使用してください。
+
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
     Connect-AzAccount -Environment $env
@@ -122,6 +124,8 @@ SAP 用の新しい VM 拡張機能では、VM の監視と構成データにア
   
 1. 新しい拡張機能の有効化:
   
+   VM Extension for SAP では、拡張機能が外部リソース (Azure Resource Manager API など) への接続に使用するプロキシの構成がサポートされています プロキシを設定するには、パラメーター --proxy-uri を使用してください。
+
    ```azurecli
    az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension
    ```

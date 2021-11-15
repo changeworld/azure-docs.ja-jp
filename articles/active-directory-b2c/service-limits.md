@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 06/02/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3b9fa2ad92756ef06510298bb2b29ac486ca9e57
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: 8e3ceab429f92340a080a6a42afd095375ce51b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035212"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266089"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C サービスの制限と制約
 
@@ -46,8 +47,8 @@ ms.locfileid: "130035212"
 |属性あたりの文字列制限      |250 文字          |
 |サブスクリプションあたりの B2C テナントの数      |20         |
 |カスタム ポリシーでの[継承](custom-policy-overview.md#inheritance-model)のレベル     |10         |
-|Azure AD B2C テナントあたりのポリシーの数      |200          |
-|ポリシー ファイルの最大サイズ      |400 KB          |
+|Azure AD B2C テナントあたりのポリシーの数 (ユーザー フロー + カスタム ポリシー)     |200          |
+|ポリシー ファイルの最大サイズ      |1024 KB          |
 
 <sup>1</sup> 「[Azure AD サービスの制限と制約](../active-directory/enterprise-users/directory-service-limits-restrictions.md)」も参照してください。
 

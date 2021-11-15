@@ -1,35 +1,35 @@
 ---
 title: イメージ定義とイメージ バージョンを作成する
-description: Azure の共有イメージ ギャラリーでイメージを作成する方法について説明します。
+description: Azure Compute Gallery でイメージを作成する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: f0ff3a0cc6bc228951fa47eb5723c520684d1dc5
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: e52457a67e2c653d1fa4e191ee568b35cb7e365f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452365"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471518"
 ---
 # <a name="create-an-image-definition-and-an-image-version"></a>イメージ定義とイメージ バージョンを作成する 
 
-[共有イメージ ギャラリー](shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、デプロイ タスク (アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成など) のブートストラップを実行するために使用できます。 
+[Azure Compute Gallery](shared-image-galleries.md) (旧称 Shared Image Gallery) により、組織全体でカスタム イメージを簡単に共有できます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、デプロイ タスク (アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成など) のブートストラップを実行するために使用できます。 
 
-共有イメージ ギャラリーを使用すると、組織内、リージョン内またはリージョン間、AAD テナント内で、他のユーザーとご自身のカスタム VM イメージを共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 複数のギャラリーを作成することで、共有イメージを論理的にグループ化できます。 
+Azure Compute Gallery を使用すると、組織内、リージョン内またはリージョン間、AAD テナント内で、他のユーザーとご自身のカスタム VM イメージを共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 イメージを論理的にグループ化するために、複数のギャラリーを作成できます。 
 
-共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
+Azure Compute Gallery 機能には、次のような複数のリソースの種類があります。
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](./includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事を完了するには、共有イメージ ギャラリーが存在し、イメージのソースが Azure で使用可能である必要があります。 イメージ ソースは、次のものとすることができます。
+この記事を完了するには、Azure Compute Gallery が既に存在し、イメージのソースが Azure で使用可能である必要があります。 イメージ ソースは、次のものとすることができます。
 - サブスクリプション内の VM。 [特殊な VM と一般の VM](shared-image-galleries.md#generalized-and-specialized-images) の両方からイメージをキャプチャできます。 
 - マネージド イメージ
 - マネージド OS ディスクとデータ ディスク。
@@ -54,10 +54,10 @@ ms.locfileid: "123452365"
 
 VM 以外のソースを使用してイメージを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) に移動し、 **[Shared Image Gallery]** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動し、**Azure Compute Gallery** を検索して選択します。
 1. 一覧から使うギャラリーを選びます。
-1. イメージ ギャラリーのページで、ページの上部から **[Add a new image definition]\(新しいイメージ定義の追加\)** を選択します。 
-1. **[Shared Image Gallery に新しいイメージ定義を追加]** の **[基本]** タブで **[リージョン]** を選択します。 
+1. ギャラリーのページで、ページの上部にある **[追加]** を選択し、ドロップダウンから **[VM image definition]\(VM イメージ定義\)** を選択します。 
+1. **[Add new image definition to Azure Compute Gallery]\(Azure Compute Gallery に新しいイメージ定義を追加\)** ページの **[基本]** タブで **[リージョン]** を選択します。 
 1. **[イメージの定義名]** で、「*myImageDefinition*」などの名前を入力します。
 1. **[オペレーティング システム]** では、ソースに基づいて適切なオプションを選択します。  
 1. **[VM の生成]** では、ソースに基づいてオプションを選択します。 ほとんどの場合、これは *[Gen 1]* になります。 詳細については、[第 2 世代 VM に対するサポート](generation-2.md)に関するページを参照してください。

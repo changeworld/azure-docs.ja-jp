@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) に監査ログを構成する
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーに監査ログを構成する
 description: この Azure CLI のサンプル スクリプトでは、Azure Database for MySQL - フレキシブル サーバーに監査ログを構成する方法を示します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 5f0393ebce70e68024cdd01e5120ec42b17089bc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 359d505f8d04090c14736be0d448558847e05c80
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604707"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844337"
 ---
-# <a name="configure-audit-logs-on-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) に監査ログを構成する
+# <a name="configure-audit-logs-on-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーに監査ログを構成する
 
 このサンプルの CLI スクリプトでは、Azure Database for MySQL - フレキシブル サーバーで[監査ログ](../concepts-audit-logs.md)が使用できるようになります。 
 
@@ -55,5 +55,5 @@ ms.locfileid: "128604707"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

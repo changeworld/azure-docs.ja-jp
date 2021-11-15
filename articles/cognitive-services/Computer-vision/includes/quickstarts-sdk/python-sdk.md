@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: e46f34c36d2cb2a62853536157105aa5f9ff7acd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2b76a751fb9005bba9b720a0ae1367591b89d5a8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083745"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521052"
 ---
 <a name="HOLTop"></a>
 
@@ -67,7 +67,7 @@ Computer Vision のサブスクリプション キーとエンドポイントの
 > 終わったらコードからサブスクリプション キーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../../key-vault/general/overview.md) が考えられます。
 
 > [!div class="nextstepaction"]
-> [クライアントを設定しました](?success=set-up-client#object-model) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=set-up-client&product=computer-vision&page=python-sdk)
+> [変数を設定しました](?success=set-up-client#object-model) [問題が発生しました](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=set-up-client&product=computer-vision&page=python-sdk)
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -143,7 +143,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 このクイックスタートでは、OCR クライアント ライブラリをインストールし、Read API を使用する方法について学習しました。 次は、Read API の機能の詳細について学習しましょう。
 
 > [!div class="nextstepaction"]
->[Read API を呼び出す](../../Vision-API-How-to-Topics/call-read-api.md)
+><bpt id="p1">[</bpt>Read API を呼び出す<ept id="p1">](../Vision-API-How-to-Topics/call-read-api.md)</ept>
 
 * [OCR の概要](../../overview-ocr.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) にあります。

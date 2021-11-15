@@ -6,15 +6,15 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.custom: mvc, ignite-fall-2021
-ms.date: 11/02/2021
+ms.custom: mvc
+ms.date: 11/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0d75d3c3a7276e15f114f7356941f38ac2ac7c64
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b6c756b0dd752d3e4de349b624f17342fad1c9d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091942"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576455"
 ---
 # <a name="what-is-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud とは
 
@@ -65,7 +65,7 @@ Defender for Cloud には、[Microsoft Threat Intelligence](https://go.microsoft
 
 Defender for Cloud は Azure ネイティブ サービスなので、多くの Azure サービスは、デプロイを必要とせずに監視および保護されます。
 
-必要に応じて、Defender for Cloud で Log Analytics エージェントを自動的にデプロイして、セキュリティ関連のデータを収集できます。 Azure マシンの場合、デプロイは直接処理されます。 ハイブリッドおよびマルチクラウド環境の場合は、[Azure Arc](https://azure.microsoft.com/services/azure-arc/) を使用して行われます。
+必要に応じて、Defender for Cloud で Log Analytics エージェントを自動的にデプロイして、セキュリティ関連のデータを収集できます。 Azure マシンの場合、デプロイは直接処理されます。 ハイブリッドおよびマルチクラウドの環境では、Microsoft Defender プランは [Azure Arc](https://azure.microsoft.com/services/azure-arc/) を使用して Azure 以外のマシンに拡張されます。CSPM の機能は、エージェントを必要とせずにマルチクラウド マシンに拡張されます (「[他のクラウドで実行されているリソースの保護](#defend-resources-running-on-other-clouds)」を参照してください)。
 
 
 ### <a name="azure-native-protections"></a>Azure ネイティブ保護
@@ -84,17 +84,17 @@ Azure 環境を保護するだけでなく、Defender for Cloud の機能をハ�
 
 オンプレミスのマシンに保護を拡張するには、[Azure Arc](https://azure.microsoft.com/services/azure-arc/) をデプロイし、Defender for Cloud の強化されたセキュリティ機能を有効にしてください。 詳細については、「[Azure Arc を使用して Azure 以外のマシンを追加する](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)」をご覧ください。
 
-
 ### <a name="defend-resources-running-on-other-clouds"></a>他のクラウドで実行されているリソースを保護する 
 
 Defender for Cloud を使用すると、他のクラウド (AWS や GCP など) 内のリソースを保護できます。 
 
-マルチクラウド保護プランには次のものが含まれます。
+たとえば、Azure サブスクリプションに[アマゾン ウェブ サービス (AWS) アカウントを接続して](quickstart-onboard-aws.md)いる場合は、次のいずれかの保護を有効にすることができます。
 
-- **CSPM** - 他のクラウド プロバイダーでリソースのセキュリティ スコアとセキュリティ強化に関する推奨事項を提供します。
-- **Microsoft Defender for Kubernetes** - Kubernetes クラスターの環境の強化、ワークロードの保護、ランタイム保護を行います。
-- **Microsoft Defender for servers** - お使いの Windows および Linux マシンを対象とした脅威検出および高度な防御が提供されます。
+- **Defender for Cloud の CSPM 機能** が、AWS リソースまで拡張されています。 このエージェントレス プランでは、AWS 固有のセキュリティの推奨事項に従って AWS リソースを評価します。これは、セキュリティ スコアに含まれています。 これらのリソースは、AWS (AWS CIS、AWS PCI DSS、および AWS の基本的なセキュリティのベスト プラクティス) に固有の組み込み標準に準拠しているかについても評価されます。 Defender for Cloud の[資産インベントリ ページ](asset-inventory.md)は、Azure リソースと AWS リソースを共に管理するのに役立つマルチクラウド対応機能です。
+- **Microsoft Defender For Kubernetes** のコンテナーの脅威検出と高度な防御が **Amazon EKS Linux クラスター** まで拡張されました。
+- **Microsoft Defender for servers** では、脅威検出および高度な防御が、お使いの Windows と Linux の EC2 インスタンスにもたらされます。 このプランには、Microsoft Defender for Endpoint の統合ライセンス、セキュリティ ベースラインと OS レベルの評価、脆弱性評価スキャン、適応型アプリケーション制御 (AAC)、ファイルの整合性の監視 (FIM) などが含まれます。
 
+詳細については、[AWS](quickstart-onboard-aws.md) と [GCP](quickstart-onboard-gcp.md) のアカウントを Microsoft Defender for Cloud に接続するに関する記事を参照してください。
 
 ## <a name="vulnerability-assessment-and-management"></a>脆弱性の評価と管理
 
@@ -163,7 +163,7 @@ Microsoft Defender for Cloud の **Defender プラン** ページでは、環境
 
 - Defender for Cloud を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションをお持ちでない場合には、[試用版にサインイン](https://azure.microsoft.com/free/)してください。
 
-- Azure portal の Defender for Cloud ダッシュボードに初めてアクセスするとき、または REST API を使用してプログラムで有効にすると、現在のすべての Azure サブスクリプションで、Defender for Cloud の無料プランが有効になります。 高度なセキュリティ管理と脅威検出の機能を利用するには、強化されたセキュリティ機能 を有効にする必要があります。 これらの機能は、最初の 30 日間は無料です。 [価格の詳細について確認してください](https://azure.microsoft.com/pricing/details/security-center/)。
+- Azure portal の Defender for Cloud ページに初めてアクセスするとき、または REST API を使用してプログラムで有効にすると、現在のすべての Azure サブスクリプションで、Defender for Cloud の無料プランが有効になります。 高度なセキュリティ管理と脅威検出の機能を利用するには、強化されたセキュリティ機能 を有効にする必要があります。 これらの機能は、最初の 30 日間は無料です。 [価格の詳細について確認してください](https://azure.microsoft.com/pricing/details/security-center/)。
 
 - 強化されたセキュリティ機能を今すぐ有効にする準備ができている場合は、「[クイック スタート: 強化されたセキュリティ機能を有効にする](enable-enhanced-security.md)」の手順に従ってください。
 

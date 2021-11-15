@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: fe61b971dbe1a3a82a085228ff8723f3cf47df20
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 71ee3e826eb1219a838a8e075e9f1a55e5f1ec8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129638616"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444511"
 ---
-このドキュメントでは、ユーザーを Azure Active Directory (Azure AD) から SQL データベースに自動的にプロビジョニングおよびプロビジョニング解除するために実行する必要がある手順について説明します。  ここでは、汎用 SQL コネクタと Azure AD ECMA Connector Host を設定して使用する方法を説明します。 
+このドキュメントでは、ユーザーを Azure Active Directory (Azure AD) から SQL データベースに自動的にプロビジョニングおよびプロビジョニング解除するために実行する必要がある手順について説明します。  
  
 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../articles/active-directory/app-provisioning/user-provisioning.md)」を参照してください。
 
-## <a name="prerequisites-for-the-azure-ad-ecma-connector-host"></a>Azure AD ECMA コネクタ ホストの前提条件
+## <a name="prerequisites-for-provisioning-to-a-sql-database"></a>SQL Database にプロビジョニングするための前提条件
 
 >[!IMPORTANT]
 > オンプレミス プロビジョニング プレビューは現在、招待のみのプレビューとなります。 この機能へのアクセスを要求するには、[アクセス要求フォーム](https://aka.ms/onpremprovisioningpublicpreviewaccess)を使用してください。 今後数か月の間に、より多くのお客様および接続ユーザーにプレビューを公開し、一般提供に向けて準備を進めていく予定です。
@@ -19,7 +19,6 @@ ms.locfileid: "129638616"
 ### <a name="on-premises-prerequisites"></a>オンプレミスの前提条件
 
  - SQL データベースなど、ユーザーの作成、更新、および削除が可能なターゲット システム。
- - エクスポート、スキーマの取得、および必要に応じてフル インポートまたは差分インポート操作をサポートする、ターゲットシステムの ECMA 2.0 以降のコネクタ。 構成中に ECMA コネクタの準備ができていない場合でも、環境に SQL Server インスタンスが存在し、汎用 SQL コネクタを使用していれば、エンド ツー エンドのフローを検証できます。
  - インターネット アクセス可能な TCP/IP アドレス、ターゲット システムへの接続のほか、login.microsoftonline.com への送信接続を備えた Windows Server 2016 以降のコンピューター。 1 つの例は、Azure IaaS でホストされているか、またはプロキシの背後にある Windows Server 2016 仮想マシンです。 サーバーには、少なくとも 3 GB の RAM が必要です。
  - .NET Framework 4.7.1 を含むコンピューター。
 
@@ -83,7 +82,9 @@ SQL Server を実行しているサーバー上で、 [付録 A](#appendix-a) �
  4. 追加された **オンプレミス ECMA アプリ** を選択します。
  5. **[Getting Started]\(作業の開始\)** の **[3. Provision user accounts]\(3. ユーザー アカウントのプロビジョニング\)** ボックスで、 **[Get started]\(作業の開始\)** を選択します。
  6. 上部にある **[Edit Provisioning]\(プロビジョニングの編集\)** を選択します。
- 7. **[オンプレミス接続]** で、エージェント インストーラーをダウンロードします。
+ 7. **[オンプレミス接続]** で、エージェント インストーラーをダウンロードします。     
+     >[!NOTE]
+     >オンプレミス アプリケーションのプロビジョニングと Azure AD Connect クラウド同期または人事主導のプロビジョニングには、異なるプロビジョニング エージェントを使用してください。 3 つのすべてのシナリオを同じエージェントで管理することはできません。 
  8. Azure AD Connect プロビジョニングのインストーラ (**AADConnectProvisioningAgentSetup.msi**) を実行します。
  9. **[Microsoft Azure AD Connect Provisioning Agent Package]** 画面で、ライセンス条項に同意し、 **[インストール]** を選択します。
      ![[Microsoft Azure AD Connect Provisioning Agent Package] 画面。](media/active-directory-app-provisioning-sql/install-1.png)</br>
@@ -210,7 +211,7 @@ SQL Server を実行しているサーバー上で、 [付録 A](#appendix-a) �
      ![プロビジョニング解除のページを示すスクリーンショット。](.\media\active-directory-app-provisioning-sql\conn-14.png)</br>
 
 
-## <a name="ensure-ecma2host-service-is-running"></a>ECMA2Host サービスが実行されていることを確かめる
+## <a name="ensure-the-ecma2host-service-is-running"></a>ECMA2Host サービスが実行されていることを確認する
  1. Azure AD ECMA Connector Host を実行しているサーバーで、 **[開始]** をクリックします。
  2. **「run」** と入力し、ボックスに **「services.msc」** と入力します。
  3. **サービス** リストで、**Microsoft ECMA2Host** が確実に存在し、実行中であるようにします。 そうでない場合は、 **[開始]** を選択します。
@@ -222,11 +223,11 @@ SQL Server を実行しているサーバー上で、 [付録 A](#appendix-a) �
  1. Azure portal にサインインします。
  2. **[エンタープライズ アプリケーション]** の **[On-premises ECMA app]\(オンプレミス ECMA アプリ\)** アプリケーションに移動します。
  3. **[Edit Provisioning]\(プロビジョニングの編集\)** に移動します。
- 4. 10 分後、 **[管理者資格情報]** セクションで、次の URL を入力します。 `connectorName` 部分を、ECMA ホスト上のコネクタの名前に置き換えます。 `localhost` はホスト名に置き換えることもできます。
+ 4. 10 分後、 **[管理者資格情報]** セクションで、次の URL を入力します。 `{connectorName}` 部分を、ECMA ホスト上のコネクタの名前に置き換えます。 `localhost` はホスト名に置き換えることもできます。
 
  |プロパティ|値|
  |-----|-----|
- |テナントの URL|https://localhost:8585/ecma2host_connectorName/scim|
+ |テナントの URL|https://localhost:8585/ecma2host_{connectorName}/scim|
  
  5. コネクタの作成時に定義した **シークレット トークン** の値を入力します。
  6. **[接続のテスト]** をクリックし、1 分待ちます。

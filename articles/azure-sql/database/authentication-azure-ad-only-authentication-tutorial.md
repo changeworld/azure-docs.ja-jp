@@ -8,22 +8,19 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/31/2021
-ms.openlocfilehash: 76425e37c83ea5ac44653e20753e35606b89d370
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/02/2021
+ms.openlocfilehash: 09e855391a591e39d31c1eb939bce6c2dc1cc6b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643234"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473625"
 ---
 # <a name="tutorial-enable-azure-active-directory-only-authentication-with-azure-sql"></a>チュートリアル: Azure SQL を使用して Azure Active Directory 専用認証を有効にする
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> この記事で説明している **Azure AD 専用認証** 機能は、**パブリック プレビュー** 段階です。 
-
-この記事では、Azure SQL Database および Azure SQL Managed Instance 内で [Azure AD 専用認証](authentication-azure-ad-only-authentication.md)機能を有効にする手順について説明します。 Azure AD 専用認証を有効にした SQL Database または Managed Instance をプロビジョニングしようとしている場合は、[Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する](authentication-azure-ad-only-authentication-create-server.md)方法に関する記事をご覧ください。
+この記事では、Azure SQL Database および Azure SQL Managed Instance 内で [Azure AD 専用認証](authentication-azure-ad-only-authentication.md)機能を有効にする手順について説明します。 Azure AD 専用認証を有効にした SQL Database または SQL Managed Instance をプロビジョニングしようとしている場合は、[Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する](authentication-azure-ad-only-authentication-create-server.md)方法に関する記事をご覧ください。
 
 このチュートリアルでは、次の作業を行う方法について説明します。
 
@@ -76,9 +73,16 @@ Azure portal で Azure AD 専用認証を有効にするには、次の手順を
 1. **[このサーバーの Azure Active Directory 認証のみをサポートする]** チェックボックスをオンにします。
 1. **[Azure AD 認証のみを有効にする]** ポップアップが表示されます。 **[はい]** ボタンをクリックしてこの機能を有効にし、設定を **保存** します。
 
-## <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
+## <a name="enable-in-sql-managed-instance-using-azure-portal"></a>Azure portal を使用して SQL Managed Instance で有効にする
 
-ポータルでは、SQL Managed Instance の Azure AD 専用認証の管理は現在サポートされていません。
+Azure portal で Azure AD 専用認証を有効にするには、次の手順を参照してください。
+
+1. [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)ロールを持つユーザーを使用して、[Azure portal](https://portal.azure.com/) にアクセスします。
+1. **SQL Managed Instance** リソースにアクセスし、 **[設定]** メニューの **[Active Directory 管理者]** を選択します。
+
+1. **Azure Active Directory 管理者** を追加していない場合は、Azure AD 専用認証を有効にする前にこれを設定する必要があります。
+1. **[このマネージド インスタンスの Azure Active Directory 認証のみをサポートする]** チェックボックスをオンにします。
+1. **[Azure AD 認証のみを有効にする]** ポップアップが表示されます。 **[はい]** ボタンをクリックしてこの機能を有効にし、設定を **保存** します。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -167,7 +171,7 @@ API を使用した Azure AD 専用認証の管理の詳細については、「
    Connect-AzAccount
    ```
 
-1. 次のコマンドの `<myinstance>` を SQL Managed Instance 名に置き換え、`<myresource>` を SQL Managed Instance を保持している Azure リソースに置き換えて、実行します。
+1. 次のコマンドの `<myinstance>` を SQL Managed Instance 名に置き換え、`<myresource>` を **SQL Managed Instance** を保持している Azure リソースに置き換えて、実行します。
 
    ```powershell
    Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication -InstanceName <myinstance> -ResourceGroupName <myresource>
@@ -181,7 +185,13 @@ API を使用した Azure AD 専用認証の管理の詳細については、「
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-[Azure portal](https://portal.azure.com/) で **SQL Server** リソースにアクセスします。 **[設定]** メニューの **[Azure Active Directory]** を選択します。 ポータルでの Azure AD 専用認証のサポートは、Azure SQL Database でのみ利用可能です。
+## <a name="check-status-in-sql-database"></a>SQL Database で状態を確認する
+
+[Azure portal](https://portal.azure.com/) で **SQL Server** リソースにアクセスします。 **[設定]** メニューの **[Azure Active Directory]** を選択します。
+
+## <a name="check-status-in-sql-managed-instance"></a>SQL Managed Instance で状態を確認する
+
+[Azure portal](https://portal.azure.com/) で、**SQL Managed Instance** リソースにアクセスします。 **[設定]** メニューで **[Active Directory 管理者]** を選択します。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -267,7 +277,7 @@ API を使用した Azure AD 専用認証の管理の詳細については、「
    Connect-AzAccount
    ```
 
-1. 次のコマンドの `<myinstance>` を SQL Managed Instance 名に置き換え、`<myresource>` を SQL Managed Instance を保持している Azure リソースに置き換えて、実行します。
+1. 次のコマンドの `<myinstance>` を SQL Managed Instance 名に置き換え、`<myresource>` を **SQL Managed Instance** を保持している Azure リソースに置き換えて、実行します。
 
    ```powershell
    Get-AzSqlInstanceActiveDirectoryOnlyAuthentication -InstanceName <myinstance> -ResourceGroupName <myresource>
@@ -277,7 +287,7 @@ API を使用した Azure AD 専用認証の管理の詳細については、「
 
 ## <a name="test-sql-authentication-with-connection-failure"></a>接続エラーが発生した SQL 認証をテストする
 
-Azure AD 専用認証を有効にした後、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して、[SQL Database または Managed Instance への接続](connect-query-ssms.md)をテストします。 接続には SQL 認証を使用します。
+Azure AD 専用認証を有効にした後、[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) を使用して、[SQL Database または SQL Managed Instance への接続](connect-query-ssms.md)をテストします。 接続には SQL 認証を使用します。
 
 次の出力のようなログイン失敗メッセージが表示されます。
 
@@ -294,11 +304,17 @@ Azure AD 専用認証機能を無効にすることで、Azure SQL の SQL 認�
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
+## <a name="disable-in-sql-database-using-azure-portal"></a>Azure portal を使用して SQL Database で無効にする
+
 1. [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)ロールを持つユーザーを使用して、[Azure portal](https://portal.azure.com/) にアクセスします。
 1. SQL Server リソースにアクセスし、 **[設定]** メニューの **[Azure Active Directory]** を選択します。
 1. Azure AD 専用認証機能を無効にするには、 **[このサーバーの Azure Active Directory 認証のみをサポートする]** チェックボックスをオフにして、設定を **保存** します。
 
-ポータルでは、SQL Managed Instance の Azure AD 専用認証の管理は現在サポートされていません。
+## <a name="disable-in-sql-managed-instance-using-azure-portal"></a>Azure portal を使用して SQL Managed Instance で無効にする
+
+1. [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)ロールを持つユーザーを使用して、[Azure portal](https://portal.azure.com/) にアクセスします。
+1. **SQL Managed Instance** リソースにアクセスし、 **[設定]** メニューの **[Active Directory 管理者]** を選択します。
+1. Azure AD 専用認証機能を無効にするには、 **[このマネージド インスタンスの Azure Active Directory 認証のみをサポートする]** チェックボックスをオフにして、設定を **保存** します。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -386,7 +402,7 @@ PowerShell を使用して Azure SQL Managed Instance で Azure AD 専用認証�
    Connect-AzAccount
    ```
 
-1. 次のコマンドの `<myinstance>` を SQL Managed Instance 名に置き換え、`<myresource>` を SQL Managed Instance を保持している Azure リソースに置き換えて、実行します。
+1. 次のコマンドの `<myinstance>` を SQL Managed Instance 名に置き換え、`<myresource>` を Managed Instance を保持している Azure リソースに置き換えて、実行します。
 
    ```powershell
    Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication -InstanceName <myinstance> -ResourceGroupName <myresource>

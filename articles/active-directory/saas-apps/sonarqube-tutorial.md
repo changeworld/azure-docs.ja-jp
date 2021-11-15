@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sonarqube の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Sonarqube の統合'
 description: Azure Active Directory と Sonarqube の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: e6f366fcc1f268f3c0fa629bd1903be4f8c8d2b8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8d209990a84464aa31d4f32a66c30de9f2047804
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785802"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462482"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sonarqube の統合
+# <a name="tutorial-azure-ad-sso-integration-with-sonarqube"></a>チュートリアル: Azure AD SSO と Sonarqube の統合
 
 このチュートリアルでは、Sonarqube と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Sonarqube を統合すると、次のことができます。
 
@@ -78,7 +78,7 @@ Sonarqube に対して Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[応答 URL]** ボックスに、`https://servicessonar.<YOUR_ORGANIZATION>.com` のパターンを使用して URL を入力します
+    a. **[応答 URL]** ボックスに、` https://sonar.<companyspecificurl>.io/oauth2/callback/saml` のパターンを使用して URL を入力します
 
     b. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
 

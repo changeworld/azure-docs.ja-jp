@@ -12,13 +12,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 06/25/2019
-ms.openlocfilehash: 55490fdafb1e494492e4768ddacc9f8c451acebe
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 10/18/2021
+ms.openlocfilehash: ac16a952c4697c99d224153fdb3dfb2684c66dc9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163178"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260647"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database--azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance によるビジネス継続性の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,7 +49,7 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 - [テンポラル テーブル](../temporal-tables.md)では、任意の時点から行バージョンを復元することができます。
 - [組み込み自動バックアップ](automated-backups-overview.md)と[ポイントインタイム リストア](recovery-using-backups.md#point-in-time-restore)を使用すると、構成された保有期間 (最大 35 日間) 内の特定の時点にデータベース全体を復元できます。
 - **サーバーが削除されていない** 場合は、[削除されたデータベースを削除された時点に復元する](recovery-using-backups.md#deleted-database-restore)ことができます。
-- [長期的なバックアップ保有期間](long-term-retention-overview.md)では、バックアップを 10 年間保持することができます。 これは SQL Managed Instance の制限付きパブリック プレビュー段階にあります。
+- [長期的なバックアップ保有期間](long-term-retention-overview.md)では、バックアップを 10 年間保持することができます。 SQL Managed Instance では、これは制限付きのパブリック プレビュー段階にあります。
 - データ センターの停止またはアプリケーションのアップグレードが発生した場合に、[アクティブ geo レプリケーション](active-geo-replication-overview.md)を使って、読み取り可能レプリカを作成し、手動で任意のレプリカにフェールオーバーできます。
 - [自動フェールオーバー グループ](auto-failover-group-overview.md#terminology-and-capabilities)を使用すると、データセンターの機能停止が発生した場合に、アプリケーションを自動的に復旧することができます。
 
@@ -86,7 +86,7 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 
 復旧方法によって、提供される RPO と RTO のレベルは異なります。 完全なアプリケーション復旧を達成するために、特定の復旧方法を選択することも、複数の方法を組み合わせて使用することもできます。 次の表で、各復旧オプションの RPO と RTO の比較を示します。 自動フェールオーバー グループにより、geo レプリケーションのデプロイと使用が簡略化され、次の表に示す追加機能が追加されます。
 
-| 復旧方法 | RTO | RPO |
+| **復旧方法** | **RTO** | **RPO** |
 | --- | --- | --- |
 | Geo レプリケーション バックアップからの geo リストア | 12 時間 | 1 時間 |
 | 自動フェールオーバー グループ | 1 時間 | 5 秒 |
@@ -104,9 +104,6 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 - データの変更頻度が高く、1 時間分のデータが失われることも許されない。
 - アクティブ geo レプリケーションの追加コストが、潜在的な財務責任と関連するビジネス損失を下回る。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
->
-
 アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。 これらのビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プールの設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プールのディザスター リカバリー戦略](disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 
 以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。 要件の計画、復旧後の手順、障害をシミュレートしてディザスター リカバリー訓練を実施する方法など、詳細な手順については、[SQL Database 内のデータベースの障害からの復旧](disaster-recovery-guidance.md)に関するページをご覧ください。
@@ -115,7 +112,7 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 
 使用するビジネス継続性機能に関係なく、次の操作を行う必要があります。
 
-- サーバー レベルの IP ファイアウォール規則、ログイン、マスター データベース レベルのアクセス許可など、ターゲット サーバーを特定して準備します。
+- ターゲット サーバーを特定して準備します (サーバー レベルの IP ファイアウォール規則、ログイン、`master` データベース レベルのアクセス許可など)。
 - クライアントとクライアント アプリケーションを、新しいサーバーにリダイレクトする方法を決めます
 - 監査の設定、アラートなど、他の依存関係を文書化します
 

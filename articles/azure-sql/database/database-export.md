@@ -9,14 +9,14 @@ author: cawrites
 ms.custom: sqldbrb=2
 ms.author: chadam
 ms.reviewer: ''
-ms.date: 01/11/2021
+ms.date: 11/01/2021
 ms.topic: how-to
-ms.openlocfilehash: a4882c763baf00220ac610ef9c0c8c6f5f56740d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d65e4c496b3be19e710fe94b955bcc7ad01be945
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361070"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470283"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 
@@ -47,7 +47,7 @@ Azure portal を使用して [Azure SQL Managed Instance](../managed-instance/sq
 > [!NOTE]
 > Azure portal または PowerShell から送信されたインポート/エクスポート要求を処理するマシンは、BACPAC ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズのデータベースでも大きく異なります。データベースのサイズの最大 3 倍のディスク領域が必要になることがあります。 インポート/エクスポート要求を実行するマシンには、450 GB のローカル ディスク領域しかありません。 その結果、一部の要求がエラー `There is not enough space on the disk` で失敗することがあります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、[SqlPackage](#sqlpackage-utility) を使用してこの問題を回避することをお勧めします。
 
-1. [Azure Portal](https://portal.azure.com) を使用してデータベースをエクスポートするには、データベースのページを開き、ツールバーの **[エクスポート]** をクリックします。
+1. [Azure portal](https://portal.azure.com) を使用してデータベースをエクスポートするには、データベースのページを開き、ツール バーの **[エクスポート]** を選択します。
 
    ![[エクスポート] ボタンが強調表示されているスクリーンショット。](./media/database-export/database-export1.png)
 
@@ -55,11 +55,9 @@ Azure portal を使用して [Azure SQL Managed Instance](../managed-instance/sq
 
     ![データベースのエクスポート](./media/database-export/database-export2.png)
 
-3. **[OK]** をクリックします。
+3. **[OK]** を選択します。
 
-4. エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含むサーバーのページを開きます。 **[設定]** の下で、 **[インポート/エクスポート履歴]** をクリックします。
-
-   ![エクスポート履歴](./media/database-export/export-history.png)
+4. エクスポート操作の進行状況を監視するには、エクスポートされたデータベースを含むサーバーのページを開きます。 **[データ管理]** で **[インポート/エクスポート履歴]** を選択します。
 
 ## <a name="sqlpackage-utility"></a>SQLPackage ユーティリティ
 

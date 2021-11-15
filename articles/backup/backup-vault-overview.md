@@ -2,14 +2,14 @@
 title: バックアップ コンテナーの概要
 description: バックアップ コンテナーの概要。
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 10/31/2021
 ms.custom: references_regions
-ms.openlocfilehash: afe103e7fb6c2cb59634029c5ae9a75acadf0afc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1a3909e525adadc2e5983e2792e407301a5b321d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130235888"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473644"
 ---
 # <a name="backup-vaults-overview"></a>バックアップ コンテナーの概要
 
@@ -132,7 +132,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
-コンテナーのサブスクリプションとリソース グループ間の移動は現在、次のリージョンでサポートされています:米国西部、米国中南部、東アジア、スイス北部、南アフリカ北部、英国西部、米国中北部、アラブ首長国連邦北部、ノルウェー東部、オーストラリア南東部、西日本、カナダ東部、韓国中部、オーストラリア中部、米国中西部、インド南部、アラブ首長国連邦中部、 南アフリカ西部、ノルウェー西部、スイス西部
+サブスクリプションとリソース グループの間のコンテナーの移動は、すべてのパブリック リージョンでサポートされます。
 
 ### <a name="use-azure-portal-to-move-backup-vault-to-a-different-resource-group"></a>Azure portal を使用してバックアップ コンテナーを別のリソース グループに移動する
 

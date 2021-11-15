@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 0faa0d97c1e1bb73e2a97aa3715efee58a589cd8
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3d3556315e95ad72dd0c0e754f8762bfa585c245
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131432626"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342435"
 ---
 # <a name="integrate-f5-big-ip-with-azure-active-directory"></a>F5 BIG-IP と Azure Active Directory の統合
 
@@ -42,9 +42,9 @@ Azure AD の事前認証によって BIG-IP の公開済みサービスにアク
 
 - [パートナー コラボレーション](../governance/entitlement-management-external-users.md) -管理対象ゲスト アクセスのエンタイトルメント管理
 
-- [Cloud App Security (CASB)](/cloud-app-security/what-is-cloud-app-security) - アプリの完全な検出とコントロール
+- [Defender for Cloud Apps (CASB)](/cloud-app-security/what-is-cloud-app-security) - アプリの完全な検出とコントロール
 
-- 脅威の監視 - [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) による高度な脅威分析
+- 脅威の監視 - [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/) による高度な脅威分析
 
 - [Azure AD ポータル](https://azure.microsoft.com/features/azure-portal/) - ID とアクセスを管理する単一のコントロール プレーン
 
@@ -93,7 +93,7 @@ BIG-IP と Azure AD の統合によって、従来のサービスや非 Azure AD
 
 BIG-IP はビジネスにとって重要な役割を果たすため、デプロイされた BIG-IP インスタンスを監視して、公開されたサービスが SHA レベルでも運用レベルでも高い可用性を持つことを保証する必要があります。
 
-セキュリティ情報イベント管理 (SIEM) ソリューションを介してローカルまたはリモートでイベントをログに記録するオプションがいくつかあります。これにより、オフボックス ストレージとテレメトリ処理が可能になります。 Azure AD および SHA 固有のアクティビティを監視する効果的な方法は、[Azure Monitor](../../azure-monitor/overview.md) と [Azure Sentinel](../../sentinel/overview.md) を使用することです。これによって次が実現します。
+セキュリティ情報イベント管理 (SIEM) ソリューションを介してローカルまたはリモートでイベントをログに記録するオプションがいくつかあります。これにより、オフボックス ストレージとテレメトリ処理が可能になります。 Azure AD および SHA 固有のアクティビティを監視する非常に効果的な方法は、[Azure Monitor](../../azure-monitor/overview.md) と [Microsoft Sentinel](../../sentinel/overview.md) を使用することです。これによって次が実現します。
 
 - 組織 (複数のクラウドにまたがる可能性もあり) とオンプレミスの場所の詳細な概要 (BIG-IP インフラストラクチャを含む)
 
@@ -147,7 +147,9 @@ SHA を実装するために事前の経験や F5 BIG-IP に関する知識は�
 
 - [Azure AD B2C と F5 BIG-IP を構成する](../../active-directory-b2c/partner-f5.md)
 
-- [フォームベース認証 SSO 用の F5 BIG IP との Azure Active Directory 統合](f5-big-ip-forms-advanced.md)
+- [F5 BIG-IP APM と Azure AD SSO (フォームベースのアプリケーションに)](f5-big-ip-forms-advanced.md)
+
+- [ヘッダーベース認証用の F5 BIG IP と Azure Active Directory SSO の統合](f5-big-ip-header-advanced.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -157,7 +159,7 @@ SHA を実装するために事前の経験や F5 BIG-IP に関する知識は�
 
 - [リモート作業を可能にする Microsoft ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Azure Sentinel の概要](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
+- [Microsoft Sentinel の概要](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
 
 ## <a name="next-steps"></a>次のステップ
 

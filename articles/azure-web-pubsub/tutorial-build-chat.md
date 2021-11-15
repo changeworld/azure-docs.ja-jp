@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/16/2021
-ms.openlocfilehash: cf3f6f174cc5302b4215db21ec7362401b3454e9
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.date: 11/01/2021
+ms.openlocfilehash: fd055903c0a5969c6facd881fc1b0f676c9596c8
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829737"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579219"
 ---
 # <a name="tutorial-create-a-chat-app-with-azure-web-pubsub-service"></a>チュートリアル: Azure Web PubSub サービスを使用してチャット アプリを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "122829737"
 
 [!INCLUDE [Get the connection string](includes/cli-awps-connstr.md)]
 
-フェッチされた **ConnectionString** をコピーします。これは、このチュートリアルの後半で `<connection_string>` の値として使用されます 。
+フェッチされた **ConnectionString** をコピーします。これは、このチュートリアルの後半で `<connection_string>` の値として使用します。
 
 ## <a name="set-up-the-project"></a>プロジェクトのセットアップ
 
@@ -81,7 +81,7 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
 
     ```bash
     dotnet new web
-    dotnet add package Azure.Messaging.WebPubSub --prerelease
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
     ```
 
 2.  次に、静的ファイルをサポートするために、`Startup.cs` の `app.UseRouting();` の前に `app.UseStaticFiles();` を追加します。 `app.UseEndpoints` 内の既定の `endpoints.MapGet` を除去します。
@@ -119,11 +119,14 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
 
 [メッセージの発行とサブスクライブに関するチュートリアル](./tutorial-pub-sub-messages.md)では、サブスクライバーが Web PubSub SDK の API を使用して接続文字列からアクセス トークンを生成し、それを使用してサービスに接続することを確認しました。 これは、通常は実際のアプリケーションでは安全ではありません。接続文字列にはサービスに対してあらゆる操作を実行するための高い特権があるためです。そのため、これをクライアントと共有することは推奨されません。 このアクセス トークン生成プロセスをサーバー側の REST API に変更しましょう。そうすれば、クライアントは接続で必要になるたびにこの API を呼び出してアクセス トークンを要求でき、接続文字列を保持する必要もありません。
 
-1.  Microsoft.Extensions.Azure をインストールします
+1.  依存関係をインストールし、.NET Core 用の[シークレット マネージャー](/aspnet/core/security/app-secrets#secret-manager) ツールを使用して接続文字列を設定します。 `<connection_string>` を、[前の手順](#get-the-connectionstring-for-future-use)でフェッチされたものに置き換えて下のコマンドを実行します
 
     ```bash
     dotnet add package Microsoft.Extensions.Azure
+    dotnet user-secrets init
+    dotnet user-secrets set Azure:WebPubSub:ConnectionString "<connection-string>"
     ```
+
 2. `ConfigureServices` 内のサービス クライアントを DI し、忘れずに `<connection_string>` を自分のサービスの 1 つに置き換えます。
 
     ```csharp
@@ -131,7 +134,7 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
     {
         services.AddAzureClients(builder =>
         {
-            builder.AddWebPubSubServiceClient("<connection_string>", "chat");
+            builder.AddWebPubSubServiceClient(Configuration["Azure:WebPubSub:ConnectionString"], "chat");
         });
     }
     ```
@@ -225,7 +228,7 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
 1.  Azure Web PubSub SDK をインストールします
 
     ```bash
-    npm install --save @azure/web-pubsub
+    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
     ```
 
 2.  `/negotiate` API をサーバーに追加してトークンを生成します
@@ -236,8 +239,9 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
 
     const app = express();
     const hubName = 'chat';
+    const port = 8080;
 
-    let serviceClient = new WebPubSubServiceClient(process.argv[2], hubName);
+    let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hubName);
 
     app.get('/negotiate', async (req, res) => {
       let id = req.query.id;
@@ -245,7 +249,7 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
         res.status(400).send('missing user id');
         return;
       }
-      let token = await serviceClient.getAuthenticationToken({ userId: id });
+      let token = await serviceClient.getClientAccessToken({ userId: id });
       res.json({
         url: token.url
       });
@@ -257,7 +261,14 @@ Azure Web PubSub には、サーバーとクライアントの 2 つのロール
 
     このトークン生成コードは、[メッセージの発行とサブスクライブに関するチュートリアル](./tutorial-pub-sub-messages.md)で使用したものと似ていますが、トークンを生成するときにもう 1 つの引数 (`userId`) を渡す点が異なります。 ユーザー ID を使用してクライアントの ID を識別すると、メッセージを受信したとき、メッセージがどこから来たかがわかります。
 
-    この API は、`node server "<connection-string>"` を実行して `http://localhost:8080/negotiate?id=<user-id>` にアクセスすることでテストできます。これにより、アクセス トークンを持つ Azure Web PubSub の完全な URL が提供されます。
+    次のコマンドを実行して、この API をテストします。
+
+    ```bash
+    export WebPubSubConnectionString="<connection-string>"
+    node server
+    ```
+
+    `http://localhost:8080/negotiate?id=<user-id>` にアクセスします。これにより、アクセス トークンを持つ Azure Web PubSub の完全な URL が提供されます。
 
 3.  次に、`index.html` を次のスクリプトで更新してサーバーからトークンを取得し、サービスに接続します
  
@@ -475,7 +486,7 @@ Azure Web PubSub は [CloudEvents](./reference-cloud-events.md) に従ってイ�
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             if (context.Request.Method == "OPTIONS")
             {
@@ -495,7 +506,7 @@ Azure Web PubSub は [CloudEvents](./reference-cloud-events.md) に従ってイ�
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             if (context.Request.Method == "OPTIONS")
             {
@@ -531,13 +542,13 @@ Web PubSub SDK を使用する場合は、CloudEvents スキーマを解析お�
 次のコードを追加して、クライアント接続イベントを処理するために REST API を `/eventhandler` で公開します (これは、Web PubSub SDK によって提供される express ミドルウェアによって実行されます)。
 
 ```bash
-npm install --save @azure/web-pubsub-express
+npm install --save @azure/web-pubsub-express@1.0.0-alpha.20211102.4
 ```
 
 ```javascript
 const { WebPubSubEventHandler } = require('@azure/web-pubsub-express');
 
-let handler = new WebPubSubEventHandler(hubName, ['*'], {
+let handler = new WebPubSubEventHandler(hubName, {
   path: '/eventhandler',
   onConnected: async req => {
     console.log(`${req.context.userId} connected`);
@@ -605,16 +616,15 @@ ngrok は、インターネットでアクセス可能な URL (`https://<domain-
 
 次に、サービス イベント ハンドラーを更新し、Webhook URL を設定します。
 
-Azure CLI の [az webpubsub event-handler hub](/cli/azure/webpubsub/event-handler/hub) コマンドを使用して、イベント ハンドラーの設定を更新します。
+Azure CLI の [az webpubsub hub create](/cli/azure/webpubsub/hub#az_webpubsub_hub_update) コマンドを使用して、チャット ハブのイベント ハンドラーの設定を作成します
 
   > [!Important]
   > &lt;your-unique-resource-name&gt; を、前の手順で作成した Web PubSub リソースの名前に置き換えます。
-  > &lt;domain-name&lt; を、ngrok が出力した名前に置き換えます。
+  > &lt;domain-name&gt; を、ngrok が出力した名前に置き換えます。
 
 ```azurecli-interactive
-az webpubsub event-handler hub update -n "<your-unique-resource-name>" -g "myResourceGroup" --hub-name chat --template url-template="https://<domain-name>.ngrok.io/eventHandler" user-event-pattern="*" system-event-pattern="connected"
+az webpubsub hub create -n "<your-unique-resource-name>" -g "myResourceGroup" --hub-name "chat" --event-handler url-template="https://<domain-name>.ngrok.io/eventHandler" user-event-pattern="*" system-event="connected"
 ```
-
 
 更新が完了したら、ホームページ http://localhost:8080/index.html を開き、ユーザー名を入力すると、connected メッセージがサーバー コンソールに出力されます。
 
@@ -632,7 +642,7 @@ az webpubsub event-handler hub update -n "<your-unique-resource-name>" -g "myRes
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             var serviceClient = context.RequestServices.GetRequiredService<WebPubSubServiceClient>();
             if (context.Request.Method == "OPTIONS")
@@ -714,7 +724,7 @@ az webpubsub event-handler hub update -n "<your-unique-resource-name>" -g "myRes
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             if (context.Request.Method == "OPTIONS")
             {
@@ -751,7 +761,7 @@ az webpubsub event-handler hub update -n "<your-unique-resource-name>" -g "myRes
 1. 新しい `handleUserEvent` ハンドラーを追加する
 
     ```javascript
-    let handler = new WebPubSubEventHandler(hubName, ['*'], {
+    let handler = new WebPubSubEventHandler(hubName, {
       path: '/eventhandler',
       onConnected: async req => {
         console.log(`${req.context.userId} connected`);
@@ -810,7 +820,7 @@ az webpubsub event-handler hub update -n "<your-unique-resource-name>" -g "myRes
 3. `sendToAll` はオブジェクトを入力として受け取り、JSON テキストをクライアントに送信します。 実際のシナリオでは、メッセージに関するより多くの情報を伝えるために、複雑なオブジェクトが必要になることがあります。 最後に、JSON オブジェクトをすべてのクライアントにブロードキャストするようにハンドラーを更新します。
 
     ```javascript
-    let handler = new WebPubSubEventHandler(hubName, ['*'], {
+    let handler = new WebPubSubEventHandler(hubName, {
       path: '/eventhandler',
       onConnected: async req => {
         console.log(`${req.context.userId} connected`);

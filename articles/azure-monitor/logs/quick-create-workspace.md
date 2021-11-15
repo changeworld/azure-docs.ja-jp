@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/18/2021
-ms.openlocfilehash: 01fe7b84596cbf4dba85f44c49488a8347b4cccc
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 3d9e075e50b4be0a21f4138a49faf8309474ad9c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324748"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440053"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure Portal で Log Analytics ワークスペースを作成する
 Azure portal で、 **[Log Analytics ワークスペース]** メニューを使用して、Log Analytics ワークスペースを作成します。 Log Analytics ワークスペースは、Azure Monitor ログ データ用の一意の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。 次のソースからデータを収集しようとする場合、Log Analytics ワークスペースが必要です。
@@ -23,7 +23,7 @@ Azure portal で、 **[Log Analytics ワークスペース]** メニューを使
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
@@ -41,7 +41,7 @@ Azure Portal で、 **[すべてのサービス]** をクリックします。 �
         ![Log Analytics リソース ブレードの作成](media/quick-create-workspace/create-workspace.png)  
 
 
-**[確認および作成]** をクリックして設定を見直し、 **[作成]** をクリックしてワークスペースを作成します。 これによって従量課金制という既定の価格レベルが選択され、課金対象となる量のデータを収集され始めるまでは何の料金も発生しません。 その他の価格レベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
+**[確認および作成]** をクリックして設定を見直し、 **[作成]** をクリックしてワークスペースを作成します。 これによって従量課金制という既定の価格レベルが選択され、課金対象となる量のデータが収集され始めるまで料金は一切発生しません。 その他の価格レベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
 
 
 

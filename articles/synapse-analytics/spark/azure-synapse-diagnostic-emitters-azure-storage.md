@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: 52d9c903cbd4aafe8799151663a37b09ed5676c2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: de21862295e0a27937b8dc7e9552ce9530ec217d
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241043"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997877"
 ---
 # <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-account"></a>Azure ストレージ アカウントを使用して Apache Spark アプリケーションのログとメトリックを収集する
 
@@ -69,6 +69,7 @@ spark.synapse.diagnostic.emitter.MyDestination1.secret <storage-access-key>
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | 省略可能。 シークレット (AccessKey または SAS) の内容。 |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | `.secret` が指定されていない場合は必須です。 シークレット (AccessKey または SAS) が格納されている [Azure Key Vault](../../key-vault/general/overview.md) の名前。 |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | `.secret.keyVault` を指定した場合は必須。 シークレット (AccessKey または SAS) が格納されている Azure Key Vault のシークレット名。 |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | 省略可能。 Azure Key Vault のリンクされたサービス名。 Synapse パイプラインで有効にした場合、AKV からシークレットを取得するために必要です。 (AKV に対する読み取りアクセス許可が MSI に付与されていることを確認してください)。 |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | 省略可能。 コンマ区切りの Spark イベント名。収集するイベントを指定できます。 例: `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | 省略可能。 コンマ区切りの log4j ロガー名。収集するログを指定できます。 例: `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | 省略可能。 コンマ区切りの Spark メトリック名のサフィックス。収集するメトリックを指定できます。 例: `jvm.heap.used` |

@@ -6,12 +6,12 @@ ms.author: wanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/30/2021
-ms.openlocfilehash: 5a1cf026759a8112901624d9db89d7c344930cb8
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6fecb2f492a71781706e19a407a87cb1af7dc006
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297430"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470264"
 ---
 # <a name="how-to-use-live-trace-tool-for-azure-signalr-service"></a>Azure SignalR サービスのライブ トレース ツールを使用する方法
 
@@ -53,11 +53,21 @@ ms.locfileid: "114297430"
 | 例外 | Azure Web PubSub サービスの実行時の例外 |
 | ハブ | ユーザー定義のハブ名 |
 | 接続 ID | 接続の ID |
-| 接続 ID | 接続の種類。 使用できる値は、`Server` (サーバーとサービスの接続) と `Client` (クライアントとサービスの接続) です|
+| 接続の種類 | 接続の種類。 使用できる値は、`Server` (サーバーとサービスの接続) と `Client` (クライアントとサービスの接続) です|
 | User ID | ユーザーの ID |
 | IP | クライアントの IP アドレス |
 | サーバー スティッキー | クライアントのルーティング モード。 使用できる値は、`Disabled`、`Preferred`、`Required` です。 詳細については、「[ServerStickyMode](https://github.com/Azure/azure-signalr/blob/master/docs/run-asp-net-core.md#serverstickymode)」を参照してください |
-| トランスポート | クライアントが HTTP 要求を送信するために使用できるトランスポート。 使用できる値は、`WebSockets`、`ServerSentEvents`、`LongPolling` です。 詳細については、「[HttpTransportType](/dotnet/api/microsoft.aspnetcore.http.connections.httptransporttype)」を参照してください |
+| トランスポート | クライアントが HTTP 要求を送信するために使用できるトランスポート。 使用できる値は、`WebSockets`、`ServerSentEvents`、`LongPolling` です。 詳細については、「[HttpTransportType](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.connections.httptransporttype)」を参照してください |
+| メッセージ トレース ID | メッセージの一意識別子 |
+| ルート テンプレート | API のルート テンプレート |
+| HTTP メソッド | HTTP メソッド (POST、GET、PUT、DELETE) |
+| URL | ユニフォーム リソース ロケーター |
+| トレース ID | 要求を表す一意識別子 |
+| 状態コード | HTTP 応答コード |
+| 期間 | 要求の受信から処理までの期間 |
+| ヘッダー | HTTP 要求または応答を使用してクライアントとサーバーによって渡される追加情報 |
+| 呼び出し ID | 呼び出しを表す一意識別子 (ASP.NET SignalR でのみ使用可能) |
+| メッセージ型 | メッセージの種類 (BroadcastDataMessage、JoinGroupMessage、LeaveGroupMessage、...) |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 10/12/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: f52f984b1e72d685dae46002e9ae4bac543c068a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 77e8ec3db7b66fe0c639bfd56942b171b9fc2129
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447698"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294278"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する
 
 [App Service Environment][AppServiceEnvironmentoverview] は、ユーザーの Azure 仮想ネットワークのサブネットに Azure App Service をデプロイしたものです。 アプリへのアクセスには、外部エンドポイントまたは内部エンドポイントを使用してデプロイできます。 内部エンドポイントを使用した App Service 環境のデプロイは、内部ロード バランサー (ILB) App Service 環境 (ASE) と呼ばれます。
 
@@ -58,7 +58,7 @@ ILB App Service 環境を作成する方法の詳細については、「[Azure 
 
 内部的な名前解決には、[プライベート DNS ゾーン][privatednszone]が必要です。 次の表に示すレコード セットを使用して ASE 名を使用して作成します (手順については、「[クイックスタート - Azure portal を使用して Azure プライベート DNS ゾーンを作成する][createprivatednszone]」を参照してください)。
 
-| Name  | Type | 値               |
+| 名前  | Type | 値               |
 | ----- | ---- | ------------------- |
 | *     | A    | ASE 受信アドレス |
 | @     | A    | ASE 受信アドレス |
@@ -78,7 +78,7 @@ ILB ASE で App Service プランとアプリを作成する必要がありま�
 
 セキュリティを強化するために、セッションの暗号化に TLS/SSL 証明書をバインドすることをお勧めします。 TLS/SSL 証明書をアプリケーション ゲートウェイにバインドするには、次の情報を含む有効な公開証明書が必要です。 [App Service 証明書](../configure-ssl-certificate.md#start-certificate-order)を使用して、TLS/SSL 証明書を購入し、.pfx 形式でエクスポートできます。
 
-| Name  | 値               | 説明|
+| 名前  | 値               | 説明|
 | ----- | ------------------- |------------|
 | **共通名** |`<yourappname>.<yourdomainname>` (例: `app.asabuludemo.com`)  <br/> または `*.<yourdomainname>`、例: `*.asabuludemo.com` | アプリケーション ゲートウェイの標準証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)|
 | **サブジェクトの別名** | `<yourappname>.scm.<yourdomainname>` (例: `app.scm.asabuludemo.com`)  <br/>または `*.scm.<yourdomainname>`、例: `*.scm.asabuludemo.com` |App Service kudu Service に接続することを許可する SAN。 App Service kudu サービスをインターネットに発行しない場合は、省略可能な設定です。|
@@ -103,22 +103,22 @@ Azure portal で、 **[新規]**  >  **[ネットワーク]**  >  **[アプリ�
     
     * パブリック IP アドレス - アプリケーション ゲートウェイのパブリック アクセスにパブリック IP アドレスを関連付ける必要があります。 この IP アドレスを記録します。後で DNS サービスにレコードを追加する必要があります。
     
-        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="アプリケーション ゲートウェイ フロントエンド設定からパブリック IP を取得するスクリーンショット。":::
+        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="アプリケーション ゲートウェイ フロントエンド設定からパブリック IP を取得する場面のスクリーンショット。":::
 
 3. バックエンド設定
 
     バックエンド プール名を入力し、 **[ターゲットの種類]** で **[App Services]** または **[IP アドレスまたは FQDN]** を選択します。 この場合、 **[App Services]** に設定し、ターゲット ドロップダウン リストから App Service 名を選択します。
-    
+
     :::image type="content" source="./media/integrate-with-application-gateway/add-backend-pool.png" alt-text="バックエンド設定でバックエンド プール名を追加したスクリーンショット。":::
 
 4. 構成設定
 
     **[構成]** 設定で、 **[ルーティング規則の追加]** アイコンをクリックして、ルーティング規則を追加する必要があります。
-    
+
     :::image type="content" source="./media/integrate-with-application-gateway/configuration.png" alt-text="構成設定にルーティング規則を追加したスクリーンショット。":::
-    
-    ルーティング規則は、**リスナー** と **バックエンド ターゲット** を構成する必要があります。 概念実証のデプロイのための HTTP リスナーを追加したり、セキュリティ強化のために HTTPS リスナーを追加したりできます。
-    
+
+    ルーティング規則は、**リスナー** と **バックエンド ターゲット** を構成する必要があります。 HTTPS リスナーは、概念実証デプロイやセキュリティ強化のために追加できます。
+
     * HTTP プロトコルを使用してアプリケーション ゲートウェイに接続するには、次の設定を使用してリスナーを作成します。
     
         | パラメーター      | 値                             | 説明                                                  |
@@ -152,7 +152,7 @@ Azure portal で、 **[新規]**  >  **[ネットワーク]**  >  **[アプリ�
     
     * **[バックエンド ターゲット]** で **[バックエンド プール]** と **[HTTP 設定]** を構成する必要があります。 バックエンド プールは、前の手順で構成されました。 **[新規追加]** リンクをクリックし、HTTP 設定を追加します。
     
-        :::image type="content" source="./media/integrate-with-application-gateway/add-new-http-setting.png" alt-text="HTTP 設定を追加するための新しいリンクを追加するスクリーンショット。":::
+        :::image type="content" source="./media/integrate-with-application-gateway/add-new-http-setting.png" alt-text="HTTP 設定を追加するための新しいリンクを追加する画面のスクリーンショット。":::
     
     * 次のような HTTP 設定が表示されます。
     
@@ -161,12 +161,12 @@ Azure portal で、 **[新規]**  >  **[ネットワーク]**  >  **[アプリ�
         | HTTP 設定名             | 例: `https-setting`                                   | HTTP 設定名                                            |
         | バックエンド プロトコル              | HTTPS                                                        | TLS/SSL 暗号化を使用する                                       |
         | バックエンド ポート                  | 443                                                          | 既定の HTTPS ポート                                           |
-        | 既知の CA 証明書を使用する | はい                                                          | ILB ASE の既定のドメイン名は **.appserviceenvironment.net** です。このドメインの証明書は、信頼された公開ルート機関によって発行されています。 [信頼されたルート証明書] 設定では、**既知の CA の信頼されたルート証明書** を使用するように設定できます。 |
-        | 新しいホスト名でオーバーライドする   | はい                                                          | ILB ASE 上のアプリに接続すると、ホスト名ヘッダーが上書きされます。 |
+        | 既知の CA 証明書を使用する | Yes                                                          | ILB ASE の既定のドメイン名は `.appserviceenvironment.net` です。このドメインの証明書は、信頼された公開ルート機関によって発行されます。 [信頼されたルート証明書] 設定では、**既知の CA の信頼されたルート証明書** を使用するように設定できます。 |
+        | 新しいホスト名でオーバーライドする   | Yes                                                          | ILB ASE 上のアプリに接続すると、ホスト名ヘッダーが上書きされます。 |
         | [ホスト名の上書き]            | バックエンド ターゲットからホスト名を選択する | バックエンド プールを App Service に設定する場合は、バックエンド ターゲットからホストを選択できます。 |
         | カスタム プローブを作成する | いいえ | 既定の正常性プローブを使用する|
         
-        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="HTTP 設定の詳細の追加のスクリーンショット。":::
+        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="[HTTP 設定の追加] ダイアログのスクリーンショット。":::
 
 
 ## <a name="configure-an-application-gateway-integration-with-ilb-ase"></a>ILB ASE とアプリケーション ゲートウェイの統合を構成する

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: b6d1a8ddcbf7982c4b8c2a44bbd23c8bb78676df
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 39f7b829cb3ccff2bae002d47ab320bad1a80b62
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214167"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476283"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -121,7 +121,7 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 > [!NOTE]
 > このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更したり手動フェールオーバーをトリガーしたりすることはできません。 「[フェールオーバー優先度を変更する](#modify-failover-priority)」と「[手動フェールオーバーをトリガーする](#trigger-manual-failover)」を参照してください。
 > [!TIP]
-> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。
+> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。 [非同期スループット スケーリング操作](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)が進行中の場合、スループットのスケールアップ操作は一時停止され、リージョンの追加または削除操作が完了すると自動的に再開されます。 
 
 ```azurepowershell-interactive
 # Create account with two regions
@@ -323,6 +323,9 @@ Update-AzCosmosDBAccountFailoverPriority `
 
 > [!CAUTION]
 > `failoverPriority=0` に対する `locationName` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
+
+> [!NOTE]
+> [非同期スループット スケーリング操作](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)の進行中に手動フェールオーバー操作を実行すると、スループットのスケールアップ操作は一時停止されます。 フェールオーバー操作が完了すると、自動的に再開されます。
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"

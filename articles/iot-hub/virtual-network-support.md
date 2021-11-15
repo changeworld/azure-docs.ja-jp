@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 10/20/2021
 ms.author: jlian
-ms.openlocfilehash: 726e482f64f7d9c1513f5ce362c232e225b9ee27
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: bd5a88bb8fc47e5f4815aea57544d6093281999b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712858"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258869"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -50,9 +50,9 @@ ms.locfileid: "109712858"
 
 プライベート エンドポイントは、IoT Hub デバイス API (device-to-cloud メッセージなど) とサービス API (デバイスの作成や更新など) で機能します。
 
-1. Azure portal で、 **[ネットワーク]** 、 **[プライベート エンドポイント接続]** の順に選択し、 **[+ プライベート エンドポイント]** をクリックします。
+1. Azure portal で、 **[ネットワーク]** 、 **[プライベート アクセス]** の順に選択し、 **[+ プライベート エンドポイントの作成]** オプションをクリックします。
 
-    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="IoT Hub 用にプライベート エンドポイントを追加する場所を示すスクリーンショット":::
+    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="IoT Hub 用にプライベート エンドポイントを追加する場所を示すスクリーンショット" border="true":::
 
 1. サブスクリプション、リソース グループ、名前、およびリージョンを指定して、新しいプライベート エンドポイントを作成します。 理想としては、プライベート エンドポイントをハブと同じリージョンに作成することをお勧めします。
 

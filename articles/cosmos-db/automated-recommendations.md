@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 3844e71a1c3c9e823586a428b9ae98a3b804d502
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 73bad87352176e4272a68248bf7f052dccc0165a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034551"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446412"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB の自動化された推奨事項
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -66,6 +66,8 @@ Azure Cosmos DB ペインに表示されるすべての推奨事項が Azure Adv
 | 予約容量 | RU/秒の使用量を検出し、予約インスタンスを、そのメリットを受けられる可能性のあるユーザーに推奨します。 |
 | 非アクティブなコンテナー | 30 日以上使用されていないコンテナーを検出し、そのようなコンテナー用のスループットを減らすか、それらを削除することを推奨します。|
 | 高スループットの新しいサブスクリプション | 1 日に異常に高い RU/秒を消費しているアカウントがある新しいサブスクリプションを検出し、通知を送ります。 この通知は、Azure Cosmos DB が消費量ベースのモデルではなく、プロビジョニングされたスループットベースのモデルで運用されていることを、新しいお客様に知らせるためのものです。 |
+| 自動スケールの有効化 | 自動スケーリングを有効にすることで、現在手動スループットを使用しているデータベースとコンテナーでコストを削減できるかどうかを検出します。 |
+| 自動スケーリングに代わる手動スループットの使用 | 手動スループットに切り替えることで、現在自動スケーリング スループットを使用しているデータベースとコンテナーでコストを削減できるかどうかを検出します。 |
 
 ## <a name="migration-recommendations"></a>移行の推奨事項
 

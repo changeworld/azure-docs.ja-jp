@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.subservice: maintenance
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 10/18/2021
+ms.date: 10/20/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7df73a0e09cf845f0dd7b5fda10bbb370057e998
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 91d172cf1d3ba5bf78feb8e18382631464619c04
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181390"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459731"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>プレビュー: Azure VM での VM ゲストの自動パッチ適用
+# <a name="automatic-vm-guest-patching-for-azure-vms"></a>Azure VM での VM ゲストの自動パッチ適用
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
 
@@ -28,11 +28,6 @@ VM ゲストの自動パッチ適用には、次の特性があります。
 - パッチ オーケストレーションが Azure によって管理され、[可用性優先の原則](#availability-first-updates)に従ってパッチが適用されます。
 - プラットフォーム正常性シグナルによって特定された仮想マシンの正常性は、パッチ適用の失敗を検出するために監視されます。
 - すべての VM サイズで機能します。
-
-> [!IMPORTANT]
-> 現在、VM ゲストの自動パッチ適用はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="how-does-automatic-vm-guest-patching-work"></a>VM ゲストの自動パッチ適用はどのように機能しますか?
 
@@ -78,7 +73,7 @@ VM ゲストの自動パッチ適用でパッチのソースは構成されな�
 毎月新しいロールアウトがトリガーされるので、オフピーク時間帯に VM の電源がオンになっている場合、VM は毎月少なくとも 1 つのパッチ ロールアウトを受け取ります。 このプロセスにより、VM には、使用可能な最新のセキュリティおよび重大パッチが毎月適用されます。 インストールされるパッチのセットの整合性を保証するには、独自のプライベート リポジトリにあるパッチを評価してダウンロードするように、VM を構成することができます。
 
 ## <a name="supported-os-images"></a>サポート対象の OS イメージ
-現在プレビューでは、特定の OS プラットフォーム イメージから作成された VM のみがサポートされています。 プレビューでは、カスタム イメージは現在サポートされていません。
+現在、特定の OS プラットフォーム イメージから作成された VM のみがサポートされています。 カスタム イメージは現在サポートされていません。
 
 現時点では、以下のプラットフォーム SKU がサポートされています (定期的に追加されます)。
 
@@ -91,8 +86,8 @@ VM ゲストの自動パッチ適用でパッチのソースは構成されな�
 | Redhat  | RHEL | 7.2、7.3、7.4、7.5、7.6、7.7、7.8、7_9、7-RAW、7-LVM |
 | Redhat  | RHEL | 8、8.1、8.2、8_3、8_4、8-LVM |
 | Redhat  | RHEL-RAW | 8-raw |
-| OpenLogic  | Centos | 7.2、7.3、7.4、7.5、7.6、7.7、7_8、7_9、7-LVM |
-| OpenLogic  | Centos | 8.0、8_1、8_2、8_3、8-lvm |
+| OpenLogic  | CentOS | 7.2、7.3、7.4、7.5、7.6、7.7、7_8、7_9、7-LVM |
+| OpenLogic  | CentOS | 8.0、8_1、8_2、8_3、8-lvm |
 | SUSE  | sles-12-sp5 | gen1、gen2 |
 | SUSE  | sles-15-sp2 | gen1、gen2 |
 | MicrosoftWindowsServer  | WindowsServer | 2008-R2-SP1 |
@@ -232,7 +227,7 @@ VM で VM のゲストの自動更新を有効にするには 3 時間以上か�
 自動更新はほとんどのシナリオで無効になっており、パッチのインストールは今後の拡張機能によって行われます。 次の条件が適用されます。
 - Windows VM でこれまで AutomaticByOS パッチ モードにより Automatic Windows Update がオンになっていた場合、拡張機能がインストールされると VM の Automatic Windows Update はオフになります。
 - Ubuntu VM の場合、VM ゲストの自動パッチ適用の有効化が完了すると、既定の自動更新は自動的に無効になります。
-- RHEL の場合、プレビューでは自動更新を手動で無効にする必要があります。 次のように実行します。
+- RHEL の場合、自動更新を手動で無効にする必要があります。 次のように実行します。
 
 ```
 systemctl stop packagekit

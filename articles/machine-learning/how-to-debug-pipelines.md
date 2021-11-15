@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 author: lobrien
 ms.author: laobri
-ms.date: 10/22/2020
+ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: f6fc3ad230c4da9f44c536ec61d8c840374c3ed6
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 0d25bcabc1c3108ed1899110a61da22551262bf8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429036"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559126"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>機械学習パイプラインのトラブルシューティング
 
@@ -238,10 +238,10 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ### <a name="get-logs-from-the-authoring-page"></a>作成ページからログを取得する
 
-パイプラインの実行を送信し、作成ページを表示したままにしておくと、各モジュールの実行が終了した時点で、モジュールごとに生成されたログ ファイルを確認できます。
+パイプライン実行を送信し、作成ページを表示したままにしておくと、各コンポーネントの実行が終了した時点で、ログ ファイルがコンポーネントごとに生成されるのを確認できます。
 
-1. 作成キャンバスでの実行が終了したモジュールを選択します。
-1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
+1. 作成キャンバスでの実行が終了したコンポーネントを選択します。
+1. コンポーネントの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブに移動します。
 1. 右ペインを展開して **70_driver_log.txt** を選択し、ブラウザーにファイルを表示します。 また、ログをローカルにダウンロードすることもできます。
 
     ![デザイナー上に展開された出力ペイン](./media/how-to-debug-pipelines/designer-logs.png)
@@ -254,8 +254,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
     ![パイプラインの実行ページ](./media/how-to-debug-pipelines/designer-pipelines.png)
 
-1. プレビュー ペインでモジュールを選択します。
-1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
+1. プレビュー ペインでコンポーネントを選択します。
+1. コンポーネントの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブに移動します。
 1. 右側のペインを展開して、ブラウザーで **70_driver_log.txt** ファイルを表示するか、またはログをローカルにダウンロードするファイルを選択します。
 
 > [!IMPORTANT]

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 10/05/2021
+ms.date: 11/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,33 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: 260473c428e7bdc2bfd968aa2ba5469e578c1005
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1c000a30c22cf7a934ab6deec5dc6d6a11bfc5a8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533150"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842361"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [アプリケーションの同意の管理と Azure Active Directory の同意要求の評価](manage-consent-requests.md)
+- [Azure Active Directory でのアプリケーション管理とは](what-is-application-management.md)
+- [Azure Active Directory を使用してエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)
+- [Azure Active Directory でのシングル サインオンとは](what-is-single-sign-on.md)
+- [エンタープライズ アプリケーション所有者の割り当て](assign-app-owners.md)
+- [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
+- [安全なハイブリッド アクセス:Azure Active Directory を使用してレガシ アプリをセキュリティで保護する](secure-hybrid-access.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [チュートリアル: Okta サインオン ポリシーを Azure Active Directory の条件付きアクセスに移行する](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md)
+- [チュートリアル: Okta 同期プロビジョニングを Azure AD Connect ベースの同期に移行する](migrate-okta-sync-provisioning-to-azure-active-directory.md)
+- [Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](manage-certificates-for-federated-single-sign-on.md)
+
 
 ## <a name="september-2021"></a>2021 年 9 月
 

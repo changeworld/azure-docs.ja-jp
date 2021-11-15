@@ -7,14 +7,14 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9cd237a6441c8da748c9c5b999a608cfcecb0d92
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 03597e324449cdb5d0530163c806d950dea5813a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651931"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438153"
 ---
-# <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーのゾーン冗長の高可用性を管理する (プレビュー)
+# <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーのゾーン冗長の高可用性を管理する 
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 

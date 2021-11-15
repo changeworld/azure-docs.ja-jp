@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Bot Service を使用して複数ドメイン用の FAQ ボットを作成する'
-description: このチュートリアルでは、QnA Maker と Azure Bot Service を使用して運用ユース ケース用の FAQ ボットをコーディングなしで作成します。
+title: 'チュートリアル: Azure Bot Service を使用して複数のカテゴリ用の FAQ ボットを作成する'
+description: このチュートリアルでは、質問と回答と Azure Bot Service を使用して運用ユース ケース用の FAQ ボットをコーディングなしで作成します。
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: tutorial
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 7fdf1178cd9e737b6696374bc126312c1aa819f6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed5f8bf8009df79f2d49b3040aef7a5fe5635fab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029959"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458173"
 ---
-# <a name="add-multiple-domains-to-your-faq-bot"></a>FAQ ボットに複数のドメインを追加する
+# <a name="add-multiple-categories-to-your-faq-bot"></a>FAQ ボットに複数のカテゴリを追加する
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * プロジェクトを作成し、メタデータを使用して質問応答ペアにタグを付けてドメインを区別できるようにする
+> * プロジェクトを作成し、メタデータを使用して質問応答ペアにタグを付けてカテゴリを区別できるようにする
 > * ドメインごとに個別のプロジェクトを作成する
 > * ドメインごとに個別の言語リソースを作成する
 
@@ -105,4 +105,4 @@ Surface 製品についてのボットの場合、次の手順のようにして
 
 ## <a name="create-a-separate-language-resource-for-each-domain"></a>ドメインごとに個別の言語リソースを作成する
 
-Microsoft のマーケティング チームが、Surface 製品と Xbox 製品に関するユーザーの質問に回答するカスタマー サポート ボットを構築しようとしているものとします。 Surface と Xbox のナレッジ ベースにアクセスするために、個別のチームを割り当てる予定です。 この場合は、Surface 用と Xbox 用に 2 つの QnA Maker リソースを作成する必要があります。 ただし、同じリソースにアクセスするユーザーに対して個別のロールを定義できます。
+Microsoft のマーケティング チームが、Surface 製品と Xbox 製品に関するユーザーの質問に回答するカスタマー サポート ボットを構築しようとしているものとします。 Surface と Xbox のナレッジ ベースにアクセスするために、個別のチームを割り当てる予定です。 この場合は、Surface 用と Xbox 用に 2 つの質問と回答リソースを作成する必要があります。 ただし、同じリソースにアクセスするユーザーに対して個別のロールを定義できます。

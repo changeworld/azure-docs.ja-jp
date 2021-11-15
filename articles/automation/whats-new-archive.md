@@ -3,14 +3,14 @@ title: Azure Automation の新着情報のアーカイブ
 description: このコンテンツ セットの概要セクションにある新着情報リリース ノートには、6 か月間のアクティビティが含まれています。 その後、これらの項目はメインの記事から削除され、この記事に配置されます。
 services: automation
 ms.topic: overview
-ms.date: 08/27/2021
+ms.date: 10/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 459bfea7504bb9d9078dadabf7443e995d5c90bc
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: bd481c65dadbf127682087e4c0cf6ca018b17098
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117734"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473948"
 ---
 # <a name="archive-for-whats-new-in-azure-automation"></a>Azure Automation の新着情報のアーカイブ
 
@@ -24,6 +24,90 @@ ms.locfileid: "123117734"
 
 ---
 
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-azure-automation-built-in-policy-definitions"></a>Azure Automation の新しい組み込みポリシー定義
+
+**種類:** 新機能
+
+Azure Automation に 5 つの新しい組み込みポリシー定義が追加されました。
+
+- Automation アカウントで公衆ネットワーク アクセスを無効にする必要がある
+- Azure Automation アカウントでは、保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
+- 公衆ネットワーク アクセスを無効にするように Azure Automation アカウントを構成する
+- Azure Automation アカウントでのプライベート エンドポイント接続の構成
+- Automation アカウントでプライベート エンドポイント接続を有効にする必要がある。
+
+詳細については、[Azure Policy リファレンス](./policy-reference.md)に関するページを参照してください。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>インド南部での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+インド南部でプロセスの自動化および State Configuration 機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-south-india-region/)を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uk-west"></a>英国西部での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+英国西部でプロセスの自動化および State Configuration 機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uk-west-region/)を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uae-central"></a>アラブ首長国連邦中部での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+アラブ首長国連邦中部でプロセスの自動化および State Configuration 機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/)を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2-norway-west-and-france-south"></a>オーストラリア中部 2、ノルウェー西部、フランス南部で利用可能な Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+各リージョンの地域を選択して、[データ所在地に関するページ](https://azure.microsoft.com/global-infrastructure/data-residency/)で詳細を確認してください。
+
+### <a name="new-scripts-added-for-installing-hybrid-worker-on-windows-and-linux"></a>Windows および Linux にハイブリッドワーカーをインストールするための新しいスクリプトを追加
+
+**種類:** 新機能
+
+Windows または Linux マシンで Hybrid Runbook Worker を設定する Azure Automation の主要なシナリオの 1 つに対応する 2 つの新しいスクリプトが Azure Automation [GitHub リポジトリ](https://github.com/azureautomation)に追加されました。 このスクリプトでは、新しい VM を作成するか既存の VM を使用し、必要に応じて Log Analytics ワークスペースを作成します。さらに、Windows 用の Log Analytics エージェントまたは Linux 用の Log Analytics エージェントをインストールし、マシンを Log Analytics ワークスペースに登録します。 Windows 用スクリプトの名前は **Create Automation Windows HybridWorker** です。Linux 用スクリプトの名前は **Create Automation Linux HybridWorker** です。
+
+### <a name="invoke-runbook-through-an-azure-resource-manager-template-webhook"></a>Azure Resource Manager テンプレート Webhook を介した Runbook の呼び出し
+
+**種類:** 新機能
+
+詳細については、「[ARM テンプレートから Webhook を使用する](./automation-webhooks.md#create-runbook-and-webhook-with-arm-template)」を参照してください。
+
+### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management で、CentOS 8.x、Red Hat Enterprise Linux Server 8.x、および SUSE Linux Enterprise Server 15 がサポートされるようになりました
+
+**種類:** 新機能
+
+詳細については、サポートされている Linux オペレーティングシステムの[完全な一覧](./update-management/operating-system-requirements.md)を参照してください。
+
+### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>ブラジル南部および東南アジアでのリージョン内データ所在地のサポート
+
+**種類:** 新機能
+
+ブラジル南部と東南アジアを除くすべてのリージョンにおいて、Azure Automation データは、ビジネス継続性とディザスター リカバリー (BCDR) を提供するために別のリージョン (Azure のペアになっているリージョン) に格納されます。 ブラジルおよび東南アジア リージョンの場合のみ、Azure Automation データは、これらのリージョンのデータ所在地の要件に対応するために同じリージョンに格納されるようになりました。 詳細については、「[Azure Automation での geo レプリケーション](./automation-managing-data.md#geo-replication-in-azure-automation)」を参照してください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>西日本での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+Automation アカウントと State Configuration が西日本リージョンで利用できるようになりました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/)を参照してください。
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>ハイブリッド worker で Runbook の実行を強制するためのカスタム Azure Policy コンプライアンスの導入
+
+**種類:** 新機能
+
+新しい Azure Policy コンプライアンス規則を使用すると、ハイブリッド worker グループでのみ実行されるジョブ、Webhook、ジョブ スケジュールを作成することができます。
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>米国東部、フランス中部、北ヨーロッパのリージョンで使用可能になった Update Management
+
+**種類:** 新機能
+
+Automation Update Management 機能を、米国東部、フランス中部、北ヨーロッパのリージョンで使用できるようになりました。 この変更を反映するドキュメントの最新版については、[サポートされるリージョン マッピング](how-to/region-mappings.md)に関するセクションを参照してください。
+
 ## <a name="january-2021"></a>2021 年 1 月
 
 ### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>スイス西部での GA を宣言された Automation と State Configuration のサポート
@@ -36,9 +120,9 @@ Automation アカウントと State Configuration がスイス西部リージョ
 
 **種類:** 新機能
 
-このスクリプトは、[GitHub リポジトリ](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py)からダウンロードできます。 
+このスクリプトは、[GitHub リポジトリ](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py)からダウンロードできます。
  
-### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>Centos 8.x、RHEL 8.x、SLES 15 での Hybrid Runbook Worker ロールのサポート
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>CentOS 8.x、RHEL 8.x、SLES 15 での Hybrid Runbook Worker ロールのサポート
 
 **種類:** 新機能
 
@@ -48,7 +132,7 @@ Hybrid Runbook Worker 機能では、CentOS 8.x、REHL 8.x、SLES 15 の各デ�
 
 **種類:** 新機能
 
-Automation アカウント、変更履歴とインベントリ、Update Management が、オーストラリア東部、東アジア、米国西部、米国中部の各リージョンで使用できるようになりました。 
+Automation アカウント、変更履歴とインベントリ、Update Management が、オーストラリア東部、東アジア、米国西部、米国中部の各リージョンで使用できるようになりました。
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>US Government クラウドでの Python 3 Runbook のパブリック プレビューの導入
 

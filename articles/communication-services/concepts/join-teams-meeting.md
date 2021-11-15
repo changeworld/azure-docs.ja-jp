@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: c0713588eadebbd1d9376faec8e61cf5a88dfd1d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6b6444ef42e0ada42f374ed5d1e69aefd332a983
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068914"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438875"
 ---
 # <a name="join-a-teams-meeting"></a>Teams 会議に参加する
 
@@ -38,7 +38,7 @@ Azure Communication Services を使用して構築された、Teams ユーザー
 
 Teams の匿名での会議への参加と同様に、アプリケーションには参加用の会議リンクが必要です。これは、Graph API または Microsoft Teams のカレンダーから取得できます。 Teams に表示される BYOI ユーザーの名前は、Communication Services Calling SDK を使用して構成でき、Azure Active Directory を使用して認証されていないことを Teams ユーザーに知らせるために、"外部" というラベルが付けられます。
 
-会議の間に、Communication Services のユーザーは、Azure Communication Services SDK を使用して、基本的なオーディオ、ビデオ、画面共有、チャット機能を使用できます。 Communication Services のユーザーが会議を離れるか、会議が終了すると、新しいチャット メッセージの送受信はできなくなりますが、会議の間に送受信されたメッセージにはアクセスできます。 Communication Services の匿名ユーザーは、会議に新しい参加者を追加することはできず、会議の録画や文字起こしを始めることもできません。
+会議の間に、Communication Services のユーザーは、Azure Communication Services SDK を使用して、基本的なオーディオ、ビデオ、画面共有、チャット機能を使用できます。 Communication Services のユーザーが会議を離れるか、会議が終了すると、新しいチャット メッセージの送受信はできなくなりますが、会議の間に送受信されたメッセージにはアクセスできます。 Communication Services の匿名ユーザーは、会議の参加者を追加したり削除したりすることはできません。また、会議の録画や文字起こしを始めることもできません。
 
 Teams 会議に参加するために必要なデータフローに関するその他の情報は、「[クライアントとサーバーのアーキテクチャ](client-and-server-architecture.md)」ページに記載されています。 「[グループ通話のヒーロー サンプル](../samples/calling-hero-sample.md)」では、Web アプリケーションから Teams 会議に参加するためのサンプル コードを入手できます。
 

@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: 68461802f24a34f66fd51dd6653fda97854c6cca
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 31645daf978aa24dfbdc7a947d7d3d8a609936b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128565325"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460605"
 ---
-# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) を再起動、停止、または開始する
+# <a name="restartstopstart-an-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーを再起動、停止、または開始する
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 この記事では、Azure CLI を使用してフレキシブル サーバーの再起動、開始、および停止を実行する方法について説明します。
 

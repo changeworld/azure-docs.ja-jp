@@ -9,22 +9,19 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5de4c52015a8282591edeee6de9fd27aae042324
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 4794813af900df66fd2d7cd6fb8e238f79d18d4b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770664"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327597"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>新しい仮想マシンのホットパッチ (プレビュー)
 
 > [!IMPORTANT]
-> Windows Server サービス用 Automanage は現在パブリック プレビュー段階にあります。 後述するホットパッチ機能を使用するためには、オプトイン手順が必要です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> ホットパッチは現在、パブリック プレビュー段階にあります。 後述するホットパッチ機能を使用するためには、オプトイン手順が必要です。
+> このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-> [!NOTE]
-> ホットパッチは、"_Windows Server 2022 Datacenter: Azure Edition (コア) プレビュー_" で評価できます。  "_Windows Server 2019 Datacenter: Azure Edition プレビュー_" でのホットパッチは、評価できなくなりました。
 
 ホット パッチの適用は、サポートされている _Windows Server Azure Edition_ の仮想マシン (VM) に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 この記事では、サポートされている _Windows Server Azure Edition_ の VM を対象にしたホットパッチについて説明します。これの利点は次のとおりです。
 * 再起動の回数が減り、ワークロードへの影響が少ない
@@ -49,18 +46,19 @@ ms.locfileid: "122770664"
 ## <a name="how-to-get-started"></a>ファースト ステップ
 
 > [!NOTE]
-> プレビュー段階では、[このリンク](https://aka.ms/AutomanageWindowsServerPreview)を使用して Azure portal で開始できます。
+> プレビュー段階では、[このリンク](https://aka.ms/ws2022ae-portal-preview)を使用して Azure portal で開始できます。
 
 新しい VM でホットパッチの使用を開始するには、次の手順に従います。
 1.  プレビューへのアクセスを有効にする
     * サブスクリプションごとに 1 回、プレビュー アクセスの有効化が必要になります。
-    * プレビュー アクセスは、次のセクションで説明するように、API、PowerShell、または CLI を使用して有効にすることができます。
-1.  Azure portal から VM を作成する
-    * プレビュー期間中は、[こちらのリンク](https://aka.ms/AutomanageWindowsServerPreview)を使用して開始する必要があります。
-1.  VM の詳細を指定する
-    * 使用するサポート対象の _Windows Server Azure Edition_ イメージが [イメージ] ドロップダウンで選択されていることを確認します。  サポートされているイメージは、この記事の冒頭に記載されています。
-    * [管理] タブの手順で、[Guest OS updates]\(ゲスト OS の更新プログラム\) まで下にスクロールします。 ホット パッチの適用がオンに設定され、パッチのインストールが既定の Azure オーケストレーションによるパッチ適用に設定されていることがわかります。
-    * VM ベスト プラクティスの自動管理が既定で有効になります
+    * プレビュー アクセスは、以下の「プレビュー アクセスの有効化」セクションで説明するように、API、PowerShell、または CLI を使用して有効にすることができます。
+1.  Azure portal から新しい VM の作成を開始する
+    * プレビュー期間中は、[こちらのリンク](https://aka.ms/ws2022ae-portal-preview)を使用して開始する必要があります。
+1.  VM の作成時に詳細を指定する
+    * [イメージ] ドロップダウンで、サポートされる _Windows Server Azure Edition_ イメージを選択するようにします。  [このガイド](automanage-windows-server-services-overview.md#getting-started-with-windows-server-azure-edition)を使用して、サポートされるイメージを判別します。
+    * [管理] タブの [ゲスト OS の更新プログラム] セクションで、[ホットパッチを有効にする] チェック ボックスをオンにして、プレビュー中にホットパッチを評価します。  パッチ オーケストレーション オプションは、"Azure による調整" に設定されます。 
+    * [管理] タブの [Azure Automanage] セクションで、[Azure Automanage 環境] に [Dev/Test] または [運用] を選択して、プレビュー中に Automanage マシンのベスト プラクティスを評価します。
+    
 1. 新しい VM を作成する
 
 ## <a name="enabling-preview-access"></a>プレビュー アクセスの有効化
@@ -234,5 +232,6 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Update Management については、[こちら](../automation/update-management/overview.md)をご覧ください。
-* VM ゲストの自動パッチ適用の詳細については、[こちら](../virtual-machines/automatic-vm-guest-patching.md)をご覧ください。
+* [Azure Update Management](../automation/update-management/overview.md) について学習します
+* [VM ゲストの自動パッチ適用](../virtual-machines/automatic-vm-guest-patching.md)について学習します
+* [Windows Server 用の Automanage](automanage-windows-server-services-overview.md) について学習します

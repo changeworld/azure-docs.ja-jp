@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7439263f15a99a7b717bac1dc48e06a77bb66b
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d136272f97a203d78a3c508d7c7ccd3770e0f216
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257126"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371740"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -77,6 +77,7 @@ ms.locfileid: "123257126"
 - メンバーとしてグループまたはチームに追加されたユーザー (ゲストを含む) は、そのグループまたはチームの他のすべてのメンバーを表示できます。
 - Azure AD では、Azure AD Connect を使用して Windows Server Active Directory から同期されたグループまたは、Exchange Online で配布グループとして作成されたグループのメンバーシップを変更できません。  
 - 動的グループのメンバーシップはメンバーの追加または削除によって更新することはできないため、動的グループのメンバーシップはエンタイトルメント管理での使用には適していません。
+- M365 グループには、[管理者の Microsoft 365 グループの概要](/microsoft-365/admin/create-groups/office-365-groups)に記載されている追加の制約があります。たとえば、グループあたりの所有者数が 100 であり、グループ会話に同時にアクセスできるメンバーの数に制限があり、メンバーごとのグループ数は 7000 です。
 
 詳細については、「[グループを比較する](/office365/admin/create-groups/compare-groups)」と「[Microsoft 365 グループおよび Microsoft Teams](/microsoftteams/office-365-groups)」を参照してください。
 

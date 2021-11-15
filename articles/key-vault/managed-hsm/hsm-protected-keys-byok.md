@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ffdec82c7009ca696b04b4ee5fff31a92bd77d50
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3afe9135c620b808ad6853705c5886aa3628ab7a
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440946"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370311"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM で保護されたキーを Managed HSM にインポートする (BYOK)
 
@@ -78,21 +78,21 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 |キー名|キーの種類|キー サイズまたは曲線|出発地|説明|
 |---|---|---|---|---|
-|キー交換キー (KEK)|RSA| 2,048 ビット<br />3,072 ビット<br />4,096 ビット|Managed HSM|Managed HSM で生成される、HSM で保護された RSA キー ペア|
+|キー交換キー (KEK)|RSA-HSM| 2,048 ビット<br />3,072 ビット<br />4,096 ビット|Managed HSM|Managed HSM で生成される、HSM で保護された RSA キー ペア|
 |ターゲット キー|
-||RSA|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Managed HSM に転送されるキー|
-||EC|P-256<br />P-384<br />P-521|ベンダー HSM|Managed HSM に転送されるキー|
-||対称キー (oct-HSM)|128 ビット<br />192 ビット<br />256 ビット|ベンダー HSM|Managed HSM に転送されるキー|
+||RSA-HSM|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Managed HSM に転送されるキー|
+||EC-HSM|P-256<br />P-384<br />P-521|ベンダー HSM|Managed HSM に転送されるキー|
+||対称キー (oct-hsm)|128 ビット<br />192 ビット<br />256 ビット|ベンダー HSM|Managed HSM に転送されるキー|
 ||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>キーを生成して Managed HSM に転送する
 
 キーを生成して Managed HSM に転送するには、次の操作を行います。
 
-* [ステップ 1:KEK を生成する](#step-1-generate-a-kek)
-* [手順 2:KEK 公開キーをダウンロードする](#step-2-download-the-kek-public-key)
-* [ステップ 3:キーを生成して転送用に準備をする](#step-3-generate-and-prepare-your-key-for-transfer)
-* [手順 4:キーを Managed HSM に転送する](#step-4-transfer-your-key-to-managed-hsm)
-
+  - [ステップ 1:KEK を生成する](#step-1-generate-a-kek)
+  - [手順 2:KEK 公開キーをダウンロードする](#step-2-download-the-kek-public-key)
+  - [ステップ 3:キーを生成して転送用に準備をする](#step-3-generate-and-prepare-your-key-for-transfer)
+  - [手順 4:キーを Managed HSM に転送する](#step-4-transfer-your-key-to-managed-hsm) 
+   
 ### <a name="step-1-generate-a-kek"></a>手順 1:KEK を生成する
 
 KEK は、Managed HSM で生成される RSA キーです。 KEK は、インポートするキー (*ターゲット* キー) を暗号化するために使用されます。

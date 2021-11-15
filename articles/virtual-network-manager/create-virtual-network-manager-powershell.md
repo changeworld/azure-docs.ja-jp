@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: template-quickstart, ignite-fall-2021
-ms.openlocfilehash: a25f96fc9584c776c51798ea05d6221116b0b6a9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: effbdd0482e40535793e2c60dcdce3b4cdb518e6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017194"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466467"
 ---
 # <a name="quickstart-create-a-mesh-network-with-azure-virtual-network-manager-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Azure Virtual Network Manager を使用したメッシュ ネットワークを作成する
 
@@ -30,6 +30,22 @@ Azure PowerShell を使用して、Azure Virtual Network Manager で仮想ネッ
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 最新の Azure PowerShell モジュールがあることを確認してください。ポータルで Azure Cloud Shell を使用することもできます。
 * PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+
+## <a name="register-subscription-for-public-preview"></a>サブスクリプションをパブリック プレビューに登録する
+
+次のコマンドを使用して、Azure サブスクリプションを Azure Virtual Network Manager のパブリック プレビューに登録します。
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName AllowAzureNetworkManager -ProviderNamespace Microsoft.Network
+```
+
+## <a name="install-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする
+
+次のコマンドを使用して、最新の *Az.Network* Azure PowerShell モジュールをインストールします。
+
+```azurepowershell-interactive
+Install-Module -Name Az.Network -AllowPrerelease
+```
 
 ## <a name="create-virtual-network-manager"></a>Virtual Network Manager を作成する
 

@@ -3,18 +3,18 @@ title: Azure Cost Management のデータへのアクセス許可を割り当て
 description: この記事では、Cost Management のデータに対するアクセス許可をさまざまなアクセス スコープで割り当てる方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
+ms.reviewer: sapnakeshari
 ms.custom: secdec18
-ms.openlocfilehash: dddb6292530687e75e4b5e697f4fc754d98040fb
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d467fd2ac2ecb01d4a933573603360f5382d5efb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706240"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457983"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -47,6 +47,7 @@ Azure EA サブスクリプションのコスト データを表示するには�
 
 <sup>2</sup> 登録アカウントも、"アカウント所有者" と呼ばれます。
 
+直接エンタープライズ管理者は、[Azure portal](https://portal.azure.com/) から課金アカウント、部門、および登録アカウントのスコープを割り当てることができます。 詳細については、「[Azure portal での直接 Enterprise Agreement の管理](../manage/direct-ea-administration.md)」を参照してください。
 
 ## <a name="other-azure-account-scopes"></a>その他の Azure アカウントのスコープ
 
@@ -119,6 +120,8 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 7. 部署管理者のアクセス許可を付与する部署を選択します。
 8. **[追加]** を選択してアカウントを作成します。  
     ![[部署管理者を追加する] ボックスに必須情報を入力する](./media/assign-access-acm-data/add-depart-admin.png)
+    
+直接エンタープライズ管理者は、Azure portal で部門管理者のアクセス許可を割り当てることができます。 詳細については、[Azure portal で部門管理者を追加する](../manage/direct-ea-administration.md#add-a-department-administrator)方法に関するページを参照してください。
 
 ## <a name="assign-enrollment-account-scope-access"></a>登録アカウントのスコープへのアクセス許可を割り当てる
 
@@ -136,10 +139,11 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 
 上記の手順を完了すると、ユーザー アカウントがエンタープライズ ポータルの登録アカウントになり、サブスクリプションを作成できます。 ユーザーは、作成したサブスクリプションのコストや使用量のデータにアクセスできます。
 
+直接エンタープライズ管理者は、Azure portal でアカウント オーナーのアクセス許可を割り当てることができます。 詳細については、[Azure portal でアカウント所有者を追加する](../manage/direct-ea-administration.md#add-an-account-and-account-owner)方法に関するセクションを参照してください。
+
 ## <a name="assign-management-group-scope-access"></a>管理グループのスコープへのアクセス許可を割り当てる
 
 管理グループのスコープを表示するアクセスには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 管理グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、管理グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
-
 
 - 管理グループ スコープで Cost Management 閲覧者 (または閲覧者) ロールをユーザーに割り当てます。  
      詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。

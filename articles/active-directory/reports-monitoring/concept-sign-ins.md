@@ -4,7 +4,7 @@ description: Azure Active Directory のサインイン ログの概要。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/16/2021
+ms.date: 10/25/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5940205b9a1a17a6d6d51d96a6ab792ac744d3f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ad322032237d8e65fd82fea74bf359fcd65c3840
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051631"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997231"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
@@ -280,6 +280,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 サインイン レポート内にある **[認証の詳細]** タブには、認証を試行するごとに次の情報が表示されます。
 
 - 適用される認証ポリシーの一覧 (条件付きアクセス、ユーザーごとの MFA、セキュリティの既定値など)
+- 適用されるセッション有効期間ポリシーの一覧 (サインインの頻度、MFA の保存、構成可能なトークンの有効期間など)
 - サインインに使用される認証方法のシーケンス
 - 認証試行が成功したかどうか
 - 認証試行が成功または失敗した理由の詳細
@@ -287,6 +288,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 こうした情報によって、管理者はユーザーのサインインの各ステップのトラブルシューティングを行い、次の情報を追跡できます。
 
 - 多要素認証によって保護されるサインインの回数 
+- セッション有効期間ポリシーに基づく認証プロンプトの理由
 - 各認証方法の使用状況と成功率 
 - パスワードレス認証方法の使用 (パスワードレス電話サインイン、FIDO2、Windows Hello for Business など) 
 - トークン要求によって認証要件が満たされる頻度 (ユーザーが対話形式でパスワードの入力や SMS OTP の入力を求められない場合など)
@@ -330,7 +332,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365 のアクティビティ ログ
 
-Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 アクティビティ ログと Azure AD アクティビティ ログで多くのディレクトリ リソースが共有される点について考えてみましょう。 Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターだけです。 
+Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 アクティビティと Azure AD アクティビティのログで多くのディレクトリ リソースが共有される点について考えてみましょう。 Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターだけです。 
 
 また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 

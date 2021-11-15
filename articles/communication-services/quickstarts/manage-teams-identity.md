@@ -10,12 +10,13 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: identity
-ms.openlocfilehash: 5fb6632fa31143c26d3cad84d42d1417aaf97496
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+zone_pivot_groups: acs-js-csharp-java-python
+ms.openlocfilehash: ba36a1cc58b4f244517b74996aa6f29c2d9bc04a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081341"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461180"
 ---
 # <a name="quickstart-set-up-and-manage-teams-access-tokens"></a>クイックスタート: Teams アクセス トークンを設定して管理する
 
@@ -43,7 +44,7 @@ Teams ID は Azure Active Directory のテナントにバインドされます�
 
 管理者ロールには Azure AD での拡張アクセス許可があります。 このロールのメンバーは、リソースを設定し、Azure portal から情報を読み取ることができます。 次の図では、管理者によって実行される必要があるすべてのアクションを確認できます。
 
-![カスタム Teams エンドポイント エクスペリエンスを有効にする管理者のアクション](./media/teams-identities/teams-identity-admin-overview.png)
+![カスタム Teams エンドポイント エクスペリエンスを有効にする管理者のアクション](./media/teams-identities/teams-identity-admin-overview.svg)
 
 1. Contoso の管理者は、Azure Active Directory で既存の "*アプリケーション*" を作成または選択します。 プロパティ *[Supported account types]\(サポートされているアカウントの種類\)* は、さまざまなテナントのユーザーがアプリケーションに対して認証できるかどうかを定義します。 プロパティ *[リダイレクト URI]* は、Contoso "*サーバー*" に成功した認証要求をリダイレクトします。
 1. Contoso の管理者は、Communication Services VoIP アクセス許可を使用してアプリケーションのマニフェストを拡張します。 
@@ -51,8 +52,8 @@ Teams ID は Azure Active Directory のテナントにバインドされます�
 1. Contoso の管理者は、必要に応じて更新できます。
 1. Contoso の管理者は、[このフォームを完成させて送信する](https://forms.office.com/r/B8p5KqCH19)ことで、エクスペリエンスを有効にします。
 1. Contoso の管理者は、既存の Communication Services を選択するか作成します。これは交換要求の認証に使用されます。 Azure AD ユーザー トークンは Teams アクセス トークンと交換されます。 詳細については、「[Communication Services のリソースを作成して管理する](./create-communication-resource.md)」を参照してください。
-1. Fabrikam の管理者は、Fabrikam テナントの Communication Services 用に新しいサービス プリンシパルを設定します。
-1. Fabrikam の管理者は、Communication Services VoIP アクセス許可を Contoso アプリケーションに付与します。 この手順は、Contoso アプリケーションが検証されていない場合にのみ必要です。 
+1. Fabrikam の管理者は、Fabrikam テナントの Communication Services 用に新しいサービス プリンシパルを設定します。 この手順は、アプリケーションが見つからない場合に必要です。
+1. Fabrikam の管理者は、Communication Services VoIP または `Teams.ManageCalls` のアクセス許可を Contoso アプリケーションに付与します。 この手順は、Contoso アプリケーションが検証されていない場合にのみ必要です。 
 
 ### <a name="step-1-create-an-azure-ad-application-registration-or-select-an-azure-ad-application"></a>手順 1: Azure AD アプリケーションの登録を作成するか Azure AD アプリケーションを選択する 
 
@@ -73,38 +74,22 @@ Teams ID は Azure Active Directory のテナントにバインドされます�
 ### <a name="step-3-optional-update-the-publisher-domain"></a>手順 3: (省略可能) パブリッシャー ドメインを更新する 
 **[ブランド化]** ペインで、アプリケーションのパブリッシャー ドメインを更新することができます。 これは、アプリケーションが Azure によって検証済みとしてマークされるマルチテナント アプリケーションの場合に便利です。 詳細については、「[アプリケーションのパブリッシャー ドメインを構成する](../../active-directory/develop/howto-configure-publisher-domain.md)」を参照してください。
 
-### <a name="step-4-define-the-communication-services-voip-permission-in-the-application"></a>手順 4: アプリケーションで Communication Services VoIP アクセス許可を定義する
+### <a name="step-4-add-the-communication-services-permissions-in-the-application"></a>手順 4: アプリケーションで Communication Services のアクセス許可を追加する
 
-アプリケーションの詳細にアクセスし、 **[マニフェスト]** ペインを選択して、*requiredResourceAccess* プロパティを探します。 これは、アプリケーションのアクセス許可を定義するオブジェクトの配列です。 ファースト パーティ アプリケーション Communication Services の VoIP アクセス許可を使用して、マニフェストを拡張します。 次のオブジェクトを配列に追加します。
+- Azure portal で AAD アプリに移動し、 **[API のアクセス許可]** を選択します。
+- **[アクセス許可の追加]** を選択します。
+- **[アクセス許可の追加]** メニューで、 **[Azure Communication Services]** を選択します
+- 必要なアクセス許可である **[VoIP]** または **[Teams.ManageCalls]** あるいはその両方を選択し、 **[アクセス許可の追加]** をクリックします。
 
-> [!NOTE] 
-> スニペット内の GUID は、アプリケーションとアクセス許可を一意に識別するため、変更しないでください。
+![アクセス許可のパート 1。](./media/active_directory_permissions.png)
 
-```json
-{
-   "resourceAppId": "1fd5118e-2576-4263-8130-9503064c837a",
-   "resourceAccess": [
-      {
-         "id": "31f1efa3-6f54-4008-ac59-1bf1f0ff9958",
-         "type": "Scope"
-      }
-   ]
-}
-```
-
-変更を保持するには、 **[保存]** を選択します。 **[API のアクセス許可]** ペインに *Azure Communication Services - VoIP* アクセス許可が表示されるようになりました。
-
-### <a name="step-5-enable-a-custom-teams-endpoint-experience-for-the-application"></a>手順 5: アプリケーションのカスタム Teams エンドポイント エクスペリエンスを有効にする
-
-アプリケーションのカスタム Teams エンドポイント エクスペリエンスを有効にするために、Azure AD 管理者は[このフォームを完成させて送信します](https://forms.office.com/r/B8p5KqCH19)。
-
-### <a name="step-6-create-or-select-a-communication-services-resource"></a>手順 6: Communication Services リソースを作成または選択する
+### <a name="step-5-create-or-select-a-communication-services-resource"></a>手順 5: Communication Services リソースを作成または選択する
 
 Communication Services リソースは、Azure AD ユーザー トークンを Teams アクセス トークンと交換するためのすべての要求を認証するために使用されます。 この交換をトリガーするには、Communication Services Identity SDK を使用し、アクセス キーで認証するか、Azure のロールベースのアクセス制御 (RBAC) を使用します。 アクセス キーは、Azure portal で取得するか、 **[アクセス制御 (IAM)]** ペインで Azure RBAC を構成することで取得できます。
 
 新しい Communication Services リソースを作成する場合は、「[Communication Services のリソースを作成して管理する](./create-communication-resource.md)」を参照してください。
 
-### <a name="step-7-set-up-a-communication-services-service-principal"></a>手順 7: Communication Services のサービス プリンシパルを設定する
+### <a name="step-6-set-up-a-communication-services-service-principal"></a>手順 6: Communication Services のサービス プリンシパルを設定する
 
 Fabrikam テナントでカスタム Teams エンドポイント エクスペリエンスを有効にするには、Fabrikam Azure AD の管理者が、アプリケーション ID *1fd5118e-2576-4263-8130-9503064c837a* を使用して Azure Communication Services という名前のサービス プリンシパルを設定する必要があります。 Azure Active Directory の **[エンタープライズ アプリケーション]** ペインにこのアプリケーションが表示されない場合は、手動で追加する必要があります。
 
@@ -132,7 +117,7 @@ Azure portal に接続して認証したら、次のコマンドを実行して�
 New-AzureADServicePrincipal -AppId "1fd5118e-2576-4263-8130-9503064c837a"
 ```
 
-### <a name="step-8-provide-administrator-consent"></a>手順 8: 管理者の同意を提供する
+### <a name="step-7-provide-administrator-consent"></a>手順 7: 管理者の同意を提供する
 
 Contoso アプリケーションが検証されていない場合、Azure AD 管理者は、Azure Communication Services VoIP の Contoso アプリケーションにアクセス許可を付与する必要があります。 Fabrikam の Azure AD 管理者は、一意の URL を使用して同意を提供します。 
 
@@ -159,7 +144,7 @@ Contoso の開発者は、ユーザーを認証するために "*クライアン
 
 開発者の必要なアクションを次の図に示します。
 
-![カスタム Teams エンドポイント エクスペリエンスを有効にするための開発者のアクションの図。](./media/teams-identities/teams-identity-developer-overview.png)
+![カスタム Teams エンドポイント エクスペリエンスを有効にするための開発者のアクションの図。](./media/teams-identities/teams-identity-developer-overview.svg)
 
 1. Contoso の開発者は、Communication Services VoIP アクセス許可のために管理者によって以前に作成されたアプリケーションに対してユーザーを認証するように MSAL ライブラリを構成します。
 1. Contoso の開発者は、Communication Services Identity SDK を初期化し、その SDK を使用して、受信する Azure AD ユーザー トークンを Teams アクセス トークンと交換します。 その後、Teams アクセス トークンが "*クライアント アプリケーション*" に返されます。
@@ -169,134 +154,30 @@ Microsoft Authentication Library を使用すると、開発者は Microsoft ID 
 パブリック ドキュメントでの環境の設定の詳細については、[Microsoft Authentication Library の概要](../../active-directory/develop/msal-overview.md)に関するページを参照してください。
 
 > [!NOTE]
-> 以降のセクションでは、.NET のコンソール アプリケーションで Azure AD アクセス トークンを Teams アクセス トークンと交換する方法について説明します。
+> 以降のセクションでは、コンソール アプリケーションで Azure AD アクセス トークンを Teams アクセス トークンと交換する方法について説明します。
 
-### <a name="create-a-new-application"></a>新しいアプリケーションを作成する
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [.NET](./includes/manage-teams-identity-net.md)]
+::: zone-end
 
-cmd、PowerShell、Bash などのコンソール ウィンドウで `dotnet new` コマンドを使用して、新しいコンソール アプリを `TeamsAccessTokensQuickstart` という名前で作成します。 このコマンドにより、1 つのソース ファイル (*Program.cs*) を含む単純な "Hello World" C# プロジェクトが作成されます。
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript](./includes/manage-teams-identity-js.md)]
+::: zone-end
 
-```console
-dotnet new console -o TeamsAccessTokensQuickstart
-```
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python](./includes/manage-teams-identity-python.md)]
+::: zone-end
 
-ディレクトリを、新しく作成したアプリ フォルダーに変更し、`dotnet build` コマンドを使用して自分のアプリケーションをコンパイルします。
+::: zone pivot="programming-language-java"
+[!INCLUDE [Java](./includes/manage-teams-identity-java.md)]
+::: zone-end
 
-```console
-cd TeamsAccessTokensQuickstart
-dotnet build
-```
-#### <a name="install-the-package"></a>パッケージをインストールする
-まだアプリケーション ディレクトリにいる間に、`dotnet add package` コマンドを使用して、.NET 用の Azure Communication Services ID ライブラリ パッケージをインストールします。
-
-```console
-dotnet add package Azure.Communication.Identity
-dotnet add package Microsoft.Identity.Client
-```
-
-> [!NOTE]
-> プライベート プレビューのパッケージは NPM または NuGet.org として公式のパッケージ リポジトリで利用できません。SDK はパッケージ リポジトリの [.net](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&package=Azure.Communication.Identity&protocolType=NuGet&version=1.1.0-alpha.20210531.2) と [javascript](https://www.npmjs.com/package/@azure/communication-identity/v/1.1.0-alpha.20210531.1) にあります。
-
-#### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
-
-プロジェクト ディレクトリから、次の操作を行います。
-
-1. テキスト エディターで *Program.cs* ファイルを開きます。
-1. `using` ディレクティブを追加して、次の名前空間を含めます。 
-    - Azure.Communication
-    - Azure.Communication.Identity
-    - Microsoft.Identity.Client
-1. `async` コードをサポートするように `Main` メソッドの宣言を更新します。
-
-開始するには、次のコードを使用します。
-
-```csharp
-using System;
-using System.Text;
-using Azure.Communication;
-using Azure.Communication.Identity;
-using Microsoft.Identity.Client;
-
-namespace TeamsAccessTokensQuickstart
-{
-    class Program
-    {
-        static async System.Threading.Tasks.Task Main(string[] args)
-        {
-            Console.WriteLine("Azure Communication Services – Teams access tokens quickstart");
-
-            // Quickstart code goes here
-        }
-    }
-}
-```
-
-### <a name="step-1-receive-the-azure-ad-user-token-via-the-msal-library"></a>手順 1: MSAL ライブラリを使用して Azure AD ユーザー トークンを受け取る
-
-MSAL ライブラリを使用し、Communication Services VoIP アクセス許可を持つ Contoso アプリケーションの Azure AD に対してユーザーを認証します。 パブリック クラウド ("*パラメーター authority*") で Contoso アプリケーション ("*パラメーター applicationId*") のクライアントを構成します。 Azure AD ユーザー トークンは、リダイレクト URI ("*パラメーター redirectUri*") に返されます。 資格情報は、既定のブラウザーで開く対話型のポップアップ ウィンドウから取得されます。
-
-> [!NOTE] 
-> リダイレクト URI は、アプリケーションで定義されている値と一致する必要があります。 リダイレクト URI を構成する方法については、管理者ガイドの最初の手順を確認してください。
-
-```csharp
-const string applicationId = "Contoso's_Application_ID";
-const string authority = "https://login.microsoftonline.com/common";
-const string redirectUri = "http://localhost";
-
-var client = PublicClientApplicationBuilder
-                .Create(applicationId)
-                .WithAuthority(authority)
-                .WithRedirectUri(redirectUri)
-                .Build();
-
-const string scope = "https://auth.msft.communication.azure.com/VoIP";
-
-var aadUserToken = await client.AcquireTokenInteractive(new[] { scope }).ExecuteAsync();
-
-Console.WriteLine("\nAuthenticated user: " + aadUserToken.Account.Username);
-Console.WriteLine("AAD user token expires on: " + aadUserToken.ExpiresOn);
-```
-
-変数 *aadUserToken* には、交換に使用される有効な Azure AD ユーザー トークンが格納されるようになりました。
-
-### <a name="step-2-exchange-the-azure-ad-user-token-for-the-teams-access-token"></a>手順 2: Azure AD ユーザー トークンを Teams アクセス トークンと交換する
-
-有効な Azure AD ユーザー トークンで、Communication Services VoIP アクセス許可を持つサード パーティ アプリケーション用の Azure AD に対してユーザーを認証します。 次のコードは、Azure AD ユーザー トークンと Teams アクセス トークンの交換を円滑に行うため、Communication Services Identity SDK によって使用されます。
-
-> [!NOTE]
-> 次のコードで、"\<Connection-String>" を有効な接続文字列に置き換えるか、認証に Azure RBAC を使用します。 詳細については、「[クイック スタート: アクセス トークンを作成して管理する](./access-tokens.md)」を参照してください。
-
-```csharp
-var identityClient = new CommunicationIdentityClient("<Connection-String>");
-var teamsAccessToken = identityClient.ExchangeTeamsToken(aadUserToken.AccessToken);
-
-Console.WriteLine("\nTeams access token expires on: " + teamsAccessToken.Value.ExpiresOn);
-```
-
-必要な条件がすべて満たされていると、24 時間有効な Teams アクセス トークンを取得できます。
-
-#### <a name="run-the-code"></a>コードの実行
-アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
-
-```console
-dotnet run
-```
-
-アプリの出力に、完了した各アクションが表示されます。
-
-```console
-Azure Communication Services - Teams access tokens quickstart
-
-Authenticated user: john.smith@contoso.com
-Azure AD user token expires on: 6/10/2021 10:13:17 AM +00:00
-
-Teams access token expires on: 6/11/2021 9:13:18 AM +00:00
-```
 
 ## <a name="user-actions"></a>ユーザー操作
 
 ユーザーは、Contoso アプリケーションの Fabrikam ユーザーを表します。 ユーザー エクスペリエンスを次の図に示します。
 
-![カスタム Teams エンドポイント エクスペリエンスを有効にするためのユーザー アクションの図。](./media/teams-identities/teams-identity-user-overview.png)
+![カスタム Teams エンドポイント エクスペリエンスを有効にするためのユーザー アクションの図。](./media/teams-identities/teams-identity-user-overview.svg)
 
 1. Fabrikam のユーザーは、Contoso "*クライアント アプリケーション*" を使用して認証するように求められます。
 1. Contoso "*クライアント アプリケーション*" では MSAL ライブラリを使用して、Communication Services VoIP アクセス許可を持つ Contoso アプリケーションの Fabrikam の Azure AD テナントに対してユーザーを認証します。 

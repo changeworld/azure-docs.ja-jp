@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 1a51af8fd34516ca87d7ab98332221a308480193
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/22/2021
+ms.openlocfilehash: 446943d4632ab6f659480574b7b0eb3db2bc9dcf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217149"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853094"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの作成および管理
 
@@ -20,9 +20,6 @@ ms.locfileid: "129217149"
 
 > [!NOTE]
 > Purview Integration Runtime は、同じマシン上の Azure Synapse Analytics または Azure Data Factory Integration Runtime と共有することはできません。 別のマシンにインストールする必要があります。
-
-> [!IMPORTANT]
-> 2021 年 8 月 18 日以降に Azure Purview アカウントを作成した場合は必ず、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新バージョンのセルフホステッド統合ランタイムをダウンロードしてインストールしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,6 +39,9 @@ ms.locfileid: "129217149"
 - セルフホステッド統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
 - スキャンは、設定したスケジュールに従って特定の頻度で実行されます。 コンピューター上のプロセッサおよび RAM の使用量は、ピーク時とアイドル時のある同じパターンに従います。 また、リソース使用量は、スキャンされるデータの量に大きく依存します。 複数のスキャン ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
 - Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。
+
+> [!IMPORTANT]
+> セルフホステッド統合ランタイムを使用して Parquet ファイルをスキャンする場合、**64 ビットの JRE 8 (Java Runtime Environment) または OpenJDK** を IR マシンにインストールする必要があります。 インストール ガイドについては、[ページの下部にある Java Runtime Environment のセクション](#java-runtime-environment-installation)を参照してください。
 
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムをセットアップする
 
@@ -78,6 +78,61 @@ ms.locfileid: "129217149"
 6. セルフホステッド統合ランタイムが正常に登録されると、次のウィンドウが表示されます。
 
    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="正常に登録":::
+
+### <a name="configure-proxy-server-settings"></a>プロキシ サーバーの設定を構成する
+
+HTTP プロキシに対して **[システム プロキシを使用する]** オプションを選択すると、セルフホステッド統合ランタイムで、diahost.exe.config と diawp.exe.config のプロキシ設定が使用されます。これらのファイルでプロキシが指定されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を以下に示します。
+
+1. エクスプローラーで、元のファイルのバックアップとして C:\Program Files\Microsoft Integration Runtime\5.0\Shared\diahost.exe.config のセーフ コピーを作成します。
+1. 管理者として実行中のメモ帳を開きます。
+1. メモ帳で、テキスト ファイル C:\Program Files\Microsoft Integration Runtime\5.0\Shared\diahost.exe.config を開きます。
+1. 次のコードに示されている既定の **system.net** のタグを見つけます。
+
+    ```xml
+    <system.net>
+        <defaultProxy useDefaultCredentials="true" />
+    </system.net>
+    ```
+
+    その後、次の例で示すように、プロキシ サーバーの詳細を追加できます。
+
+    ```xml
+    <system.net>
+        <defaultProxy enabled="true">
+              <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
+        </defaultProxy>
+    </system.net>
+    ```
+
+    プロキシ タグでは、`scriptLocation` のように必要な設定を指定するための追加のプロパティが許可されます。 構文については、「[\<proxy\> 要素 (ネットワーク設定)](/dotnet/framework/configure-apps/file-schema/network/proxy-element-network-settings)」を参照してください。
+
+    ```xml
+    <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
+    ```
+
+1. 元の場所に構成ファイルを保存します。 次に、セルフホステッド統合ランタイムのホスト サービスを再開して、変更を取得します。
+
+   サービスを再開するには、コントロール パネルのサービス アプレットを使用します。 または、Integration Runtime 構成マネージャーから、 **[サービスの停止]** ボタンを選択し、 **[サービスの開始]** を選びます。
+
+   サービスが開始されない場合は、不正確な XML タグ構文が編集済みのアプリケーション構成ファイルに追加されている可能性があります。
+
+> [!IMPORTANT]
+> diahost.exe.config と diawp.exe.config の両方を忘れずに更新してください。
+
+また、Microsoft Azure が会社の許可リストにあることを確認する必要もあります。 有効な Azure IP アドレスの一覧をダウンロードできます。 各クラウドの IP 範囲 (リージョン別とクラウド内のタグ付けされたサービス別に分けられています) を、MS ダウンロードから入手できるようになりました。 
+   - パブリック: https://www.microsoft.com/download/details.aspx?id=56519
+
+### <a name="possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server"></a>ファイアウォールとプロキシ サーバーに関する問題で発生する可能性がある症状
+
+次のようなエラー メッセージが表示される場合は、ファイアウォールまたはプロキシ サーバーの構成が正しくない可能性があります。 このような構成では、セルフホステッド統合ランタイムは、Azure マネージド ストレージ アカウントまたはデータ ソースに接続できません。 ファイアウォールとプロキシ サーバーが確実に正しく構成されるようにするには、前のセクションを参照してください。
+
+- セルフホステッド統合ランタイムを登録すると、次のエラー メッセージが表示されます。"この Integration Runtime ノードの登録に失敗しました。 認証キーが有効であり、Integration Runtime ホスト サービスがこのマシンで実行されていることをご確認ください。"
+- Integration Runtime 構成マネージャーを開くと、 **[切断]** または **[接続中]** という状態が表示されます。 **[イベント ビューアー]**  >  **[アプリケーションとサービス ログ]**  >  **[Microsoft Integration Runtime]** の順に選択して Windows イベント ログを表示すると、次のようなエラー メッセージが表示されます。
+
+  ```output
+  Unable to connect to the remote server
+  A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
+  ```
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 
@@ -128,6 +183,51 @@ ms.locfileid: "129217149"
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime-settings.png" alt-text="IR の詳細の編集":::
 
 セルフホステッド統合ランタイムを削除するには、管理センターの **[統合ランタイム]** に移動し、IR を選択して **[削除]** を選択します。 IR が削除されると、それに依存している実行中のスキャンは失敗します。
+
+## <a name="java-runtime-environment-installation"></a>Java Runtime Environment のインストール
+
+Purview でセルフホステッド統合ランタイムを使用して Parquet ファイルをスキャンする場合、Java Runtime Environment または OpenJDK をセルフホステッド IR マシンにインストールする必要があります。
+
+セルフホステッド IR を使用して Parquet ファイルをスキャンすると、サービスによって、最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* がチェックされます。このレジストリが見つからない場合、OpenJDK のシステム変数 *`JAVA_HOME`* が続いてチェックされます。これらのチェックにより、Java ランタイムが検出されます。
+
+- **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
+- **OpenJDK の使用方法**:IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
+
+## <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項
+
+企業ネットワーク環境でプロキシ サーバーを使用してインターネットにアクセスする場合は、適切なプロキシ設定を使用するようにセルフホステッド統合ランタイムを構成します。 プロキシは、初期登録フェーズ中に設定できます。
+
+:::image type="content" source="media/manage-integration-runtimes/self-hosted-proxy.png" alt-text="プロキシを指定する":::
+
+構成されると、セルフホステッド統合ランタイムはプロキシ サーバーを使用してクラウド サービスのソースおよびコピー先 (HTTP または HTTPS プロトコルを使用しているもの) に接続します。 初期セットアップ時に **[変更] リンク** を選択したのはこのためです。
+
+:::image type="content" source="media/manage-integration-runtimes/set-http-proxy.png" alt-text="プロキシを設定する":::
+
+3 つの構成オプションがあります。
+
+- **プロキシを使用しない**:セルフホステッド統合ランタイムは、クラウド サービスに接続するときにプロキシを明示的には使用しません。
+- **システム プロキシを使用する**:セルフホステッド統合ランタイムでは、diahost.exe.config と diawp.exe.config で構成されているプロキシ設定を使用します。これらのファイルでプロキシ構成が指定されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。
+- **カスタム プロキシを使用する**:diahost.exe.config と diawp.exe.config の構成は使用せず、セルフホステッド統合ランタイムで使用するように HTTP プロキシ設定を構成します。 **[アドレス]** と **[ポート]** の値は必須です。 **[ユーザー名]** と **[パスワード]** の値は、プロキシの認証設定によっては省略できます。 すべての設定は Windows DPAPI を使用して、自己ホスト型統合ランタイム上で暗号化され、コンピューターにローカルに格納されます。
+
+統合ランタイムのホスト サービスは、更新済みのプロキシ設定を保存した後に自動的に再起動されます。
+
+セルフホステッド統合ランタイムが登録された後、プロキシ設定を表示または更新する必要がある場合は、Microsoft Integration Runtime 構成マネージャーを使用します。
+
+1. **Microsoft Integration Runtime 構成マネージャー** を開きます。
+3. **[HTTP プロキシ]** の **[変更]** リンクを選択して、 **[HTTP プロキシを設定する]** ダイアログ ボックスを開きます。
+4. **[次へ]** を選択します。 その後、プロキシ設定を保存して統合ランタイムのホスト サービスを再起動するためのアクセス許可を求める警告が表示されます。
+
+構成マネージャー ツールを使用して、HTTP プロキシを表示して更新することができます。
+
+> [!NOTE]
+> NTLM 認証でプロキシ サーバーを設定する場合は、ドメイン アカウントで統合ランタイムのホスト サービスが実行されます。 ドメイン アカウントのパスワードを後で変更する場合は、忘れずにサービスの構成設定を更新し、サービスを再起動してください。 この要件のため、パスワードを頻繁に更新する必要がない専用のドメイン アカウントを使用して、プロキシ サーバーにアクセスすることをお勧めします。
+
+## <a name="installation-best-practices"></a>インストールのベスト プラクティス
+
+セルフホステッド統合ランタイムのインストールは、マネージド ID セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードして実行できます。
+
+- コンピューターが休止状態にならないように、セルフホステッド統合ランタイム用のホスト コンピューターの電源プランを構成します。 ホスト コンピューターが休止状態になると、セルフホステッド統合ランタイムはオフラインになります。
+- 定期的に、セルフホステッド統合ランタイムに関連付けられている資格情報をバックアップします。
 
 ## <a name="next-steps"></a>次のステップ
 

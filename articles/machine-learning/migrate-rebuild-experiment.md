@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 03/08/2021
-ms.openlocfilehash: 0a00ad012f38a142332a62846e78c2ae87460464
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/21/2021
+ms.openlocfilehash: fd0bb1394ce2ce8b8cf8d58ece5834f08e538eaa
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128659497"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556200"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>スタジオ (クラシック) の実験を Azure Machine Learning で再構築します。
 
@@ -42,16 +42,16 @@ Azure Machine Learning では、ビジュアル グラフは **パイプライ�
 1. Azure Machine Learning スタジオ ([ml.azure.com](https://ml.azure.com)) に移動します。
 1. 左側のナビゲーション ウィンドウで、 **[デザイナー]** > **[Easy-to-use prebuilt modules]\(使いやすい事前構築済みモジュール\)** の順に選択します。 ![新しいパイプライン ドラフトの作成方法を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
-1. デザイナー モジュールを使用して実験を手動で再構築します。
+1. デザイナー コンポーネントを使用して実験を手動で再構築します。
     
-    後継モジュールを見つけるには、[モジュール マッピング テーブル](migrate-overview.md#studio-classic-and-designer-module-mapping)を参照してください。 スタジオ (クラシック) の最も人気のあるモジュールの多くは、デザイナーにも同じバージョンがあります。
+    後継モジュールを見つけるには、[モジュール マッピング テーブル](migrate-overview.md#studio-classic-and-designer-component-mapping)を参照してください。 スタジオ (クラシック) の最も人気のあるモジュールの多くは、デザイナーにも同じバージョンがあります。
 
     > [!Important]
     > 実験で "R スクリプトの実行" モジュールが使用されている場合、ご自分の実験を移行するには追加の手順を行う必要があります。 詳細については、[R スクリプト モジュールの移行](migrate-execute-r-script.md)に関するページを参照してください。
 
 1. パラメーターを調整します。
     
-    各モジュールを選択し、右側にある [モジュールの設定] パネルでパラメーターを調整します。 そのパラメーターを使用して、スタジオ (クラシック) の実験の機能を再作成します。 各モジュールの詳細については、[モジュールのリファレンス](./algorithm-module-reference/module-reference.md)に関するページを参照してください。
+    各モジュールを選択し、右側にある [モジュールの設定] パネルでパラメーターを調整します。 そのパラメーターを使用して、スタジオ (クラシック) の実験の機能を再作成します。 各モジュールの詳細については、[モジュールのリファレンス](./component-reference/component-reference.md)に関するページを参照してください。
 
 ## <a name="submit-a-run-and-check-results"></a>実行および確認の結果を送信する
 
@@ -86,7 +86,7 @@ Azure Machine Learning では、ビジュアル グラフは **パイプライ�
     - **ログの表示**: ドライバーとシステム ログを表示します。 エラーや例外など、ユーザーが送信したスクリプトに関連する情報を表示するには、**70_driver_log** を使用します。
 
 > [!IMPORTANT]
-> スタジオ (クラシック) では C# パッケージが使用されているのに対して、デザイナー モジュールではオープン ソースの Python パッケージが使用されます。 その結果、デザイナーとスタジオ (クラシック) ではモジュールの出力が多少異なる場合があります。 
+> スタジオ (クラシック) では C# パッケージが使用されているのに対して、デザイナー コンポーネントではオープン ソースの Python パッケージが使用されます。 その結果、デザイナーとスタジオ (クラシック) ではモジュールの出力が多少異なる場合があります。 
 
 
 ## <a name="next-steps"></a>次のステップ

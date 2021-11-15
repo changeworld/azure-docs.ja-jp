@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: bef6439ae51c6e15f7be997758acbbd3722ae4ff
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8e4bc76203ee84d71f4a9f201dac6e63d4728c34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223265"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238062"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -37,9 +37,9 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>セッション/変換状態の取得の失敗
 
-REST API コマンドを頻繁に送信しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 スロットリングが発生した場合の http 状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
+REST API コマンドを頻繁に送信しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 スロットリングが発生した場合の HTTP 状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
-この制限は、直接呼び出した場合に REST API の呼び出しに影響するだけでなく、`Session.GetPropertiesAsync`、`Session.RenewAsync`、または `Frontend.GetAssetConversionStatusAsync` などの C#/C++ の対応するものにも影響します。
+この制限は、直接呼び出した場合に REST API の呼び出しに影響するだけでなく、`Session.GetPropertiesAsync`、`Session.RenewAsync`、または `Frontend.GetAssetConversionStatusAsync` などの C#/C++ の対応するものにも影響します。 また、一部の関数では、再試行のための保存のときは情報が返されることもあります。 たとえば、`RenderingSessionPropertiesResult.MinimumRetryDelay` は、別のチェックを試みる前に待機する秒数を指定します。 可能な場合は、そのような戻り値を使用するのが最善です。これにより、調整されることなく、可能な限り頻繁にチェックを行うことができます。
 
 サーバー側のスロットリングが発生する場合は、呼び出しの頻度を減らすようにコードを変更してください。 サーバーによって 1 分ごとにスロットリングの状態がリセットされるため、1 分後に安全にコードを再実行できます。
 

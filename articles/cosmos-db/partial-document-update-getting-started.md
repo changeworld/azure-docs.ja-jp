@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: abhishgu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 74f55120eb7a6ceeb1891be44e50344fe71b4de5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3ceebe9f537dcf2f496594d6a6c63972fcb7af92
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092597"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434106"
 ---
 # <a name="azure-cosmos-db-partial-document-update-getting-started"></a>Azure Cosmos DB の部分的なドキュメント更新: 概要
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,10 +27,10 @@ ms.locfileid: "131092597"
 
 ## <a name="net"></a>.NET
 
-[NuGet ギャラリー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)から [Azure Cosmos DB .NET SDK v3](sql-api-sdk-dotnet-standard.md) をダウンロードできます
+[NuGet ギャラリー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.22.1-preview)から *3.22.1-preview* バージョンの Azure Cosmos DB .NET SDK v3 をダウンロードできます
 
 > [!NOTE]
-> 完全なサンプルは、GitHub の [.NET v3 サンプル リポジトリ](https://github.com/Azure/azure-cosmos-dotnet-v3)にあります
+> 部分的なドキュメント更新の完全なサンプルは、GitHub の [.NET v3 サンプル リポジトリ](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/3fa885fdd84e2f8852d2a1d5c75c56b642b5bba3/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs)にあります。
 
 **1 つのパッチ操作の実行**
 
@@ -99,7 +99,7 @@ transactionalBatchInternalFalse.ExecuteAsync());
 
 ## <a name="java"></a>Java
 
-[Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) (バージョン `4.20.0` 以上) を `pom.xml` の依存関係の一覧に追加することも、[Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) から直接ダウンロードすることもできます。
+Patch API は、現在 Java SDK の 4.20.0 バージョンではプレビュー段階です。 一般提供版は、4.21.0 バージョンで提供される予定です。 パッチ操作を使用する場合は、[Azure Cosmos DB Java v4 SDK](sql-api-sdk-java-v4.md) の *4.20.0* バージョンを `pom.xml` の依存関係のリストに追加するか、[Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) から直接ダウンロードしてください。
 
 ```xml
 <dependency>

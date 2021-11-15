@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/02/2021
-ms.openlocfilehash: a19fd4aad4ee8e5bac7dc7cde2a5be4609a346fc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/03/2021
+ms.openlocfilehash: ad30dc4f59816f286f6ffe40909b76410e963c16
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796573"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555781"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
 
-ナレッジ ストアは、Azure Cognitive Search の機能です。[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)からのスキルセット出力を、その後のナレッジ マイニング、データ分析、またはダウンストリーム処理のために Azure Storage に送信するものです。 ナレッジ ストアにデータが取り込まれた後は、[Storage Explorer](knowledge-store-view-storage-explorer.md) や [Power BI](knowledge-store-connect-power-bi.md) などのツールを使用してコンテンツを探索できます。
+ナレッジ ストアは、Azure Cognitive Search の機能です。[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)からのスキルセット出力を、その後のナレッジ マイニング、データ分析、またはダウンストリーム処理のために Azure Storage に送信するものです。 ナレッジ ストアにデータが取り込まれた後は、[ストレージ ブラウザー](knowledge-store-view-storage-explorer.md)や [Power BI](knowledge-store-connect-power-bi.md) などのツールを使用してコンテンツを探索できます。
 
 この記事では、REST API を使用して、Azure Storage でナレッジ ストアにホテル宿泊の一連の顧客レビューを取り込み、エンリッチし、探索します。 最終的には、ソースから取得された元のテキスト コンテンツと AI によって生成されたコンテンツ (センチメント スコア、キー フレーズ抽出、言語検出、および非英語圏の顧客によるコメントのテキスト翻訳が含まれている) を含むナレッジ ストアが作成されます。
 
@@ -38,11 +38,11 @@ ms.locfileid: "124796573"
 
    **[StorageV2 (general purpose V2)]\(StorageV2 (汎用 V2)\)** のアカウントの種類を選択します。
 
-1. Azure Storage リソースで、**Storage Explorer** を使用して **hotel-reviews** という名前の BLOB コンテナーを作成します。
+1. Azure Storage リソースで、**ストレージ ブラウザー** を使用して **hotel-reviews** という名前の BLOB コンテナーを作成します。
 
 1. ページの上部にある **[アップロード]** を選択して、前の手順でダウンロードした **HotelReviews-Free.csv** ファイルを読み込みます。
 
-   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="アップロードしたファイルと左側のナビゲーション ペインが示された Storage Explorer のスクリーンショット" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="アップロードしたファイルと左側のナビゲーション ペインが示されたストレージ ブラウザーのスクリーンショット" border="true":::
 
 1. このリソースでの作業はほぼ完了ですが、これらのページを離れる前に、インデクサーを使用してこのデータを取得できるように、左側のナビゲーション ペインで **[アクセス キー]** を選択して接続文字列を取得します。
 
@@ -372,13 +372,13 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 
 Azure portal で、Azure Cognitive Search サービスの **[Overview]\(概要\)** ページに移動します。 **[Indexers]\(インデクサー\)** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 1、2 分以内に、状態が "進行中" から "成功" になり、エラーと警告数がゼロになります。
 
-## <a name="check-tables-in-storage-explorer"></a>Storage Explorer でテーブルを確認する
+## <a name="check-tables-in-storage-browser"></a>ストレージ ブラウザーでテーブルを確認する
 
-Azure portal で Azure Storage アカウントに切り替え、**Storage Explorer** を使用して新しいテーブルを表示します。 スキルセットに定義されているプロジェクションごとに 1 つずつ、6 つのテーブルが表示されます。
+Azure portal で Azure Storage アカウントに切り替え、**ストレージ ブラウザー** を使用して新しいテーブルを表示します。 スキルセットに定義されているプロジェクションごとに 1 つずつ、6 つのテーブルが表示されます。
 
 各テーブルは、クエリ内のテーブルをクロスリンクするために必要な ID を使用して生成されます。 テーブルを開いたときに、これらのフィールドの下までスクロールして、パイプラインによって追加されたコンテンツ フィールドを表示します。
 
-   :::image type="content" source="media/knowledge-store-create-rest/knowledge-store-tables.png" alt-text="Storage Explorer のナレッジ ストア テーブルのスクリーンショット" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="ストレージ ブラウザーのナレッジ ストア テーブルのスクリーンショット" border="true":::
 
 このチュートリアルでは、ナレッジ ストアは、テーブルのさまざまな整形と構造化方法を示すさまざまなテーブルで構成されています。 テーブル 1 から 3 は、Shaper スキルの出力を使用して列と行を決定します。 テーブル 4 から 6 は、プロジェクション自体に埋め込まれたインライン整形命令から作成されます。 どちらの方法を使用しても、同じ結果を得られます。
 
@@ -404,9 +404,9 @@ Azure portal で Azure Storage アカウントに切り替え、**Storage Explor
 
 ## <a name="next-steps"></a>次のステップ
 
-Cognitive Services を使用してデータをエンリッチし、その結果をナレッジ ストアに投影したので、Storage Explorer や他のアプリを使用して、エンリッチしたデータ セットを探索できます。
+Cognitive Services を使用してデータをエンリッチし、その結果をナレッジ ストアに投影したので、ストレージ ブラウザーや他のアプリを使用して、エンリッチしたデータ セットを探索できます。
 
-Storage Explorer を使用してこのナレッジ ストアを調べる方法については、次のチュートリアルを参照してください。
+ストレージ ブラウザーを使用してこのナレッジ ストアを調べる方法については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Storage Explorer を使用した表示](knowledge-store-view-storage-explorer.md)
+> [ストレージ ブラウザーを使用して表示する](knowledge-store-view-storage-explorer.md)

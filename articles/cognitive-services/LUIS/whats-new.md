@@ -4,19 +4,22 @@ description: この記事では、Azure Cognitive Services Language Understandin
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/07/2021
-ms.openlocfilehash: a42798f5af63d9ec43760511a749861a955518cf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/08/2021
+ms.openlocfilehash: e7ad62bde9a8b14ca31a84d2bb2907eb2a6db0af
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643082"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028764"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="november-2021"></a>2021 年 11 月
+* [Azure ロールベースのアクセス制御 (RBAC) の記事](role-based-access-control.md)
 
 ### <a name="august-2021"></a>2021 年 8 月
 * ノルウェー東部[公開リージョン](luis-reference-regions.md#publishing-to-europe)。

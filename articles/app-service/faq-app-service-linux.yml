@@ -9,12 +9,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: msangapu
   ms.custom: seodec18
-  ms.openlocfilehash: 737fcf42e351822da58e5e4c493f120cdfd6c4dd
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 679381acf9ecd5c8b69bf23bbffabeaeea446404
+  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131462406"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132372607"
 title: Azure App Service on Linux の FAQ
 summary: >
   App Service on Linux のリリースでは、機能の追加とプラットフォームの品質向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
@@ -273,6 +273,16 @@ sections:
       料金は SKU とリージョンによって異なりますが、料金ページで詳細を確認できます。「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/linux/)」を参照してください。
 - name: その他の質問
   questions:
+  - question: >
+      コンテナー ウォームアップ要求はどのように動作しますか。
+    answer: >
+      Azure App Services によってコンテナーが始動すると、ウォームアップ要求によって HTTP 要求がアプリケーションの [/robots933456.txt](configure-custom-container.md?pivots=container-linux#robots933456-in-logs) エンドポイントに送信されます。 これはただのダミー エンドポイントですが、お使いのアプリケーションでは、非 5XX 状態コードで応答する必要があります。 お使いのアプリケーションのロジックでは存在しないエンドポイントに HTTP 状態コードで応答しない場合、ウォームアップ要求では応答を受け取れず、コンテナーが繰り返し再起動されます。
+
+
+      ウォームアップ要求はまた、ポートの誤構成によって失敗することがあります。 Azure App Services でポートが正しく構成されるようにするには、「*Linux コンテナー内でポートを指定するための操作方法を教えてください*」という質問を参照してください。
+  - question: >
+      コンテナー ウォームアップ要求のタイムアウトを増やすことはできますか。
+    answer: ウォームアップ要求は既定で、コンテナーからの応答を 240 秒待ち、応答がなければ失敗となります。 アプリケーション設定 `WEBSITES_CONTAINER_START_TIME_LIMIT` に 240 秒から 1800 秒までの値を追加することでコンテナー ウォームアップ要求のタイムアウトを増やすことができます。
   - question: >
       Linux コンテナー内でポートを指定するための操作方法を教えてください。
     answer: >

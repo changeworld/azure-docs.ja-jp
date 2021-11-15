@@ -6,14 +6,14 @@ ms.subservice: language-service
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: aff89e8d55b4c4f3b2de77b7c44413fefc246cd1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f190c2aec509af157944fb11a110953c9e8bbdb0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092331"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476606"
 ---
-# <a name="create-test-and-deploy-custom-question-answering"></a>カスタム質問と回答を作成、テスト、デプロイする
+# <a name="create-test-and-deploy-a-custom-question-answering-project"></a>カスタムの質問と回答プロジェクトを作成、テスト、デプロイする
 
 FAQ や製品マニュアルなど、独自のコンテンツから質問と回答プロジェクトを作成できます。 この記事には、製品マニュアルから、質問に回答する質問と回答プロジェクトを作成する例が含まれています。
 
@@ -21,7 +21,7 @@ FAQ や製品マニュアルなど、独自のコンテンツから質問と回�
 
 > [!div class="checklist"]
 > * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
-> * カスタム質問と回答機能が有効になった[言語リソース](https://aka.ms/create-language-resource)。 リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、言語リソース名を覚えておいてください。
+> * カスタム質問と回答機能が有効になった[言語リソース](https://aka.ms/create-language-resource)。
 
 ## <a name="create-your-first-question-answering-project"></a>最初の質問と回答プロジェクトを作成する
 
@@ -58,7 +58,7 @@ FAQ や製品マニュアルなど、独自のコンテンツから質問と回�
     |--------|---------|
     |Surface Book ユーザー ガイド |https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf |
 
-    抽出プロセスでは、ドキュメントを読み取って質問と回答を識別します。これにはしばらくかかります。
+    抽出プロセスでは、ドキュメントを読み取って質問と回答を識別します。これにはしばらくかかります。 質問と回答では、基になるコンテンツが構造化されているか非構造化されているかが判断されます。
 
     ソースを正常に追加したら、ソース コンテンツを編集して、カスタム質問と回答セットを追加できます。
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 595296bff928ff75f52a05a1fc5e54fb94a2ad67
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a960bc3064b970fbfd463d0a7f1577354ca7adf1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475371"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850282"
 ---
 # <a name="quickstart-create-a-service-connection-in-app-service-with-the-azure-cli"></a>クイック スタート: Azure CLI を使用して App Service にサービス接続を作成する
 
@@ -22,22 +22,24 @@ ms.locfileid: "131475371"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- このクイックスタートには、Azure CLI のバージョン 2.22.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+- このクイックスタートには、Azure CLI のバージョン 2.30.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 - このクイックスタートは、少なくとも 1 つの App Service が Azure 上で既に実行されていることを前提としています。 App Service がない場合は、[作成します](../app-service/quickstart-dotnetcore.md)。
 
 ## <a name="view-supported-target-service-types"></a>サポートされているターゲット サービスの種類を表示する
 
-Azure CLI の [az webapp connection]() コマンドを使用すると、App Service へのサービス接続を作成および管理できます。 
+Azure CLI の [az webapp connection](/cli/azure/webapp/connection) コマンドを使用すると、App Service へのサービス接続を作成および管理できます。 
 
 ```azurecli-interactive
 az provider register -n Microsoft.ServiceLinker
-az webapp connection list-support-types
+az webapp connection list-support-types --output table
 ```
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
-Azure CLI の [az webapp connection]() コマンドで次の情報を指定すると、BLOB ストレージへのサービス接続を作成できます。
+#### <a name="using-access-key"></a>[アクセス キーの使用](#tab/Using-access-key)
+
+Azure CLI の [az webapp connection](/cli/azure/webapp/connection) コマンドで次の情報を指定すると、アクセス キーを使用した BLOB ストレージへのサービス接続を作成できます。
 
 - **Source compute service resource group name:** App Service のリソース グループ名。
 - **App Service name:** ターゲット サービスに接続する App Service の名前。
@@ -45,15 +47,36 @@ Azure CLI の [az webapp connection]() コマンドで次の情報を指定す�
 - **Storage account name:** BLOB ストレージのアカウント名。
 
 ```azurecli-interactive
-az webapp connection create storage-blob -g <app_service_resource_group> -n <app_service_name> --tg <storage_resource_group> --account <storage_account_name> --system-identity
+az webapp connection create storage-blob --secret
 ```
 
 > [!NOTE]
-> BLOB ストレージがない場合は、`az webapp connection create storage-blob -g <app_service_resource_group> -n <app_service_name> --tg <storage_resource_group> --account <storage_account_name> --system-identity --new` を実行して新しいものをプロビジョニングし、お使いの App Service に直接接続することができます。
+> BLOB ストレージがない場合は、`az webapp connection create storage-blob --new --secret` を実行して新しいものをプロビジョニングし、お使いの App Service に直接接続することができます。
+
+#### <a name="using-managed-identity"></a>[マネージド ID の使用](#tab/Using-Managed-Identity)
+
+> [!IMPORTANT]
+> マネージド ID を使用するには、[Azure AD ロールの割り当て](/active-directory/managed-identities-azure-resources/howto-assign-access-portal)へのアクセス許可が必要です。 アクセス許可がない場合、接続の作成は失敗します。 接続を作成するために、サブスクリプション所有者にアクセス許可またはアクセス キーの使用を要求できます。
+
+Azure CLI の [az webapp connection](/cli/azure/webapp/connection) コマンドで次の情報を指定すると、システム割り当てマネージド ID を使用した BLOB ストレージへのサービス接続を作成できます。
+
+- **Source compute service resource group name:** App Service のリソース グループ名。
+- **App Service name:** ターゲット サービスに接続する App Service の名前。
+- **Target service resource group name:** BLOB ストレージのリソース グループ名。
+- **Storage account name:** BLOB ストレージのアカウント名。
+
+```azurecli-interactive
+az webapp connection create storage-blob --system-identity
+```
+
+> [!NOTE]
+> BLOB ストレージがない場合は、`az webapp connection create storage-blob --new --system-identity` を実行して新しいものをプロビジョニングし、お使いの App Service に直接接続することができます。
+
+---
 
 ## <a name="view-connections"></a>接続の表示
 
-Azure CLI の [az webapp connection]() コマンドで次の情報を指定すると、App Service への接続を一覧表示できます。
+Azure CLI の [az webapp connection](/cli/azure/webapp/connection) コマンドで次の情報を指定すると、App Service への接続を一覧表示できます。
 
 - **Source compute service resource group name:** App Service のリソース グループ名。
 - **App Service name:** ターゲット サービスに接続する App Service の名前。

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 06/26/2019
-ms.openlocfilehash: 43a2ca496ee9cb03ee76c293e3a980573a50753c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: 945afcb2a4158ee4c80bd9d36a9697d6692d0d19
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691333"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250428"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance のテンポラル テーブルの概要
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "110691333"
 
 ![スキーマ](./media/temporal-tables/AzureTemporal1.png)
 
-さいわい、このアクティビティ情報を保持するために、アプリに手を加える必要はありません。 この処理は、テンポラル テーブルによって自動的に行われるため、Web サイトの設計の幅が広がり、より多くの時間をデータの分析そのものに費やすことができます。 必要な作業は **WebSiteInfo** テーブルを " [システム バージョン管理のテンポラル テーブル](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table)" として構成するだけです。 以降、このシナリオのテンポラル テーブルを利用するための詳しい手順を説明します。
+さいわい、このアクティビティ情報を保持するために、アプリに手を加える必要はありません。 この処理は、テンポラル テーブルによって自動的に行われるため、Web サイトの設計の幅が広がり、より多くの時間をデータの分析そのものに費やすことができます。 必要な作業は、`WebSiteInfo` テーブルを "[システム バージョン管理のテンポラル テーブル](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table)" として構成することだけです。 以降、このシナリオのテンポラル テーブルを利用するための詳しい手順を説明します。
 
 ## <a name="step-1-configure-tables-as-temporal"></a>手順 1:テーブルをテンポラルとして構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "110691333"
 
 ### <a name="create-new-table"></a>新しいテーブルの作成
 
-SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] \(Ctrl + Shift + M) を使用してテンプレートに値を入力します。
+SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] (Ctrl + Shift + M) を使用してテンプレートに値を入力します。
 
 ![SSMSNewTable](./media/temporal-tables/AzureTemporal2.png)
 
@@ -110,7 +110,7 @@ WITH (DROP_EXISTING = ON);
 
 テンポラル テーブルの大きな利点は、変更を追跡するために、既存の Web サイトになんら変更や調整を加える必要がないことです。 テンポラル テーブルは一度作成すれば、その後はユーザーに意識させることなく、データに変更が行われるたびに、以前の行バージョンを保存します。
 
-このシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、**PagesVisited** 列を更新してみましょう。
+この特定のシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、**PagesVisited** 列を更新してみましょう。
 
 ```sql
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5
@@ -201,4 +201,3 @@ ALTER TABLE dbo.WebsiteUserInfo
 ## <a name="next-steps"></a>次のステップ
 
 - テンポラル テーブルの詳細については、「[テンポラル テーブル](/sql/relational-databases/tables/temporal-tables)」をご確認ください。
-- Channel 9 にアクセスして、[テンポラル テーブル導入による成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。

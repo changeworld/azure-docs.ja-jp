@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 10fe890ecd4bb2bc89cea71d1a70f7df9eb38e1e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b39e13aa8cf5953349af14c80317b67f05047919
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089841"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576341"
 ---
 # <a name="connect-applications-in-azure-container-apps-preview"></a>Azure Container Apps プレビューでアプリケーションを接続する
 
@@ -21,9 +21,14 @@ ms.locfileid: "131089841"
 
 コンテナー アプリのドメイン名がわかっていれば、アプリケーション コード内でその場所を呼び出して、複数のコンテナー アプリをまとめて接続できます。
 
+> [!NOTE]
+> FQDN を使用して同じ環境で別のコンテナーを呼び出す場合、ネットワーク トラフィックが環境から出ることはありません。
+
+FQDN による場所または Dapr の両方を使用してコンテナー間で呼び出す方法を示すサンプル ソリューションについては、[Azure のサンプル](https://github.com/Azure-Samples/container-apps-connect-multiple-apps)を参照してください。
+
 ## <a name="location"></a>Location
 
-コンテナー アプリの場所は、その環境、名前、リージョンに関連付けられている値で構成されます。 トップレベル ドメイン `azurecontainerapps.io` を通して使用でき、完全修飾ドメイン名では次のものが使われます。
+コンテナー アプリの場所は、その環境、名前、リージョンに関連付けられている値で構成されます。 トップレベル ドメイン `azurecontainerapps.io` を通して使用でき、完全修飾ドメイン名 (FQDN) では次のものが使われます。
 
 - コンテナー アプリ名
 - 環境の一意識別子

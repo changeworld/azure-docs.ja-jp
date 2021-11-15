@@ -215,6 +215,9 @@ items:
           - name: データベース テンプレートの概要
             href: database-designer/overview-database-templates.md
             displayName: overview
+          - name: マップ データの概要
+            href: database-designer/overview-map-data.md
+            displayName: map data
       - name: クイックスタート
         items:
           - name: Lake データベースを作成する

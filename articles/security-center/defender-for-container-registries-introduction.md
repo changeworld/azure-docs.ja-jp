@@ -3,16 +3,16 @@ title: Microsoft Defender for container registries - 利点と機能
 description: Microsoft Defender for container registries の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 10/04/2021
+ms.date: 11/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 627ac6bacbd9d6f1c3649229bd29bbcd27d3e93b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 666b7f68e353586b9cfa866e2c63b65579bd5be5
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131463831"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989767"
 ---
 # <a name="introduction-to-microsoft-defender-for-container-registries"></a>Microsoft Defender for container registries の概要
 
@@ -63,7 +63,7 @@ Qualys または Defender for Cloud で問題が見つかった場合は、ワ�
 
 - **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure コンテナー レジストリからレジストリにイメージを取り込むためのインポート ツールが用意されています。 **Microsoft Defender for container registries** では、インポートした、サポートされているすべてのイメージがスキャンされます。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
  
-通常、スキャンは 2 分以内に完了しますが、最大で 15 分かかる場合もあります。 結果は、セキュリティに関する推奨事項として、このように表示されます。
+通常、スキャンは 2 分以内に完了しますが、最大で 40 分かかる場合もあります。 結果は、セキュリティに関する推奨事項として、このように表示されます。
 
 [![Azure Container Registry (ACR) でホストされるイメージで検出された脆弱性に関する Microsoft Defender for Cloud の推奨事項のサンプル。](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

@@ -10,12 +10,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 338798b017bd36be2dd3c717b67515064a245ebb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f43d48d4ce0f66fbd1663d58eb92728532833783
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092682"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563380"
 ---
 # <a name="what-is-azure-synapse-data-explorer-preview"></a>Azure Synapse Data Explorer とは (プレビュー)
 
@@ -72,7 +72,7 @@ Data Explorer は半構造化データ (JSON) および非構造化データ (�
 
 ### <a name="kusto-query-language"></a>Kusto クエリ言語
 
-Azure Monitor、Azure Application Insights、Azure Sentinel、Azure Data Explore など、Microsoft オファリングの急速な普及に伴い、KQL には大規模なコミュニティが形成されています。 この言語は読みやすい構文を目指して設計されており、1 行だけの簡単なクエリから複雑なデータ処理クエリへとスムーズに移行できます。 このことが、Data Explorer の充実した IntelliSense のサポートと豊富な言語コンストラクト、そして、SQL では利用できない集計、時系列、ユーザー分析のための組み込み機能によるテレメトリ データの高速な探索を可能にしています。
+Azure Monitor Log Analytics と Application Insights、Azure Sentinel、Azure Data Explore など、Microsoft オファリングの急速な普及に伴い、KQL には大規模なコミュニティが形成されています。 この言語は読みやすい構文を目指して設計されており、1 行だけの簡単なクエリから複雑なデータ処理クエリへとスムーズに移行できます。 このことが、Data Explorer の充実した IntelliSense のサポートと豊富な言語コンストラクト、そして、SQL では利用できない集計、時系列、ユーザー分析のための組み込み機能によるテレメトリ データの高速な探索を可能にしています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: 6e5949f22000c930f101ae36042587d97a5293a0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 13808d38a4ddb7e00af64b02df390eee1e1f9469
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664867"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421971"
 ---
 # <a name="known-issues-with-network-file-system-nfs-30-protocol-support-in-azure-blob-storage"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポートにおける既知の問題
 
@@ -27,6 +27,8 @@ ms.locfileid: "128664867"
 - 既存のストレージ アカウントで NFS 3.0 のサポートを有効にすることはできません。
 
 - ストレージ アカウントで NFS 3.0 のサポートを一度有効にすると、無効に戻すことはできません。
+
+- NFS 3.0 のストレージ アカウントを作成するときの冗長性オプションとして、GRS、GZRS、RA-GRS はサポートされません。
 
 ## <a name="nfs-30-features"></a>NFS 3.0 の機能
 

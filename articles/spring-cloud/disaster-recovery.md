@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 69dbe496745ebbe3fbc9547a1ffc381ec0cae905
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 94b4aa840e268bee19c99235b64ddefe986ca4a7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861338"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245874"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
 
@@ -67,4 +67,4 @@ Traffic Manager プロファイルは次のとおりです。
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)
+* [クイック スタート: 初めての Spring Boot アプリを Azure Spring Cloud にデプロイする](./quickstart.md)

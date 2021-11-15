@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: c39b86c6417d2cae8d303f7cae0aa523e223edaa
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/21/2021
+ms.openlocfilehash: 09403aa97df2fe0ab451eee3194b1d6e3b239ab2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866942"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249440"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
@@ -78,7 +78,7 @@ Azure IP 共同販売インセンティブ ステータスは、次のプラン�
 
 要件 1 - 次の実現:
 
-- "_組織レベル_" で、過去 12 か月間に Azure 使用による収益のしきい値である 100,000 米国ドルを少なくとも生み出している。 これは、Azure ソリューションを組み合わせて達成することができます。 プランがコマーシャル マーケットプレースで取引可能な場合、100,000 米国ドルの請求売上しきい値を満たすことで、この要件を達成できます。
+- "_組織レベル_" で、過去 12 か月間に Azure 使用による収益のしきい値である 100,000 米国ドルを少なくとも生み出している。 これは、Azure ソリューションを組み合わせて達成することができます。 プランがコマーシャル マーケットプレースで取引可能な場合、過去 12 か月間に 100,000 米国ドルの請求売上しきい値を満たすことで、この要件を達成できます。
 
 要件 2 - Azure ベースのソリューションに対する Microsoft の技術的な検証に合格:
 - 技術的な検証では、自分のプランの 50% を超えるインフラストラクチャで Azure 上の反復可能な IP コードを使用していることを確認する必要があります。 コマーシャル マーケットプレース上の取引可能な Azure VM および Azure アプリケーション ソリューションは、この要件を既定で満たす必要がある点に注意してください。

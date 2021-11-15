@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: beed3dac1a2ca5bc6d2a87ba2a9044333e798fa9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e571d29dc9bade1069f6c67257bf04552ff894ef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778519"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241612"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL - フレキシブル サーバー ファイアウォール規則の作成と管理
 
@@ -97,19 +97,19 @@ Azure CLI の **az postgres flexible-server firewall-rule** コマンドで、�
 
 ### <a name="create-a-firewall-rule"></a>ファイアウォール規則を作成する
 `az postgres flexible-server firewall-rule create` コマンドを使用して、サーバーに新しいファイアウォール規則を作成します。
-IP アドレスの範囲に対するアクセスを許可するには、次の例のように、開始 IP アドレスと終了 IP アドレスの IP アドレスを指定します。
+IP アドレスの範囲に対するアクセスを許可するには、次の例のように、開始 IP アドレスと終了 IP アドレスの IP アドレスを指定します。 このコマンドでは、パラメーターとして、サーバーが存在する Azure リソース グループの名前も必要です。 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
+az postgres flexible-server firewall-rule create --name mydemoserver --resource-group testGroup --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
 1 つの IP アドレスに対するアクセスを許可するには、次の例のように、1 つだけ IP アドレスを指定します。
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 1.1.1.1
+az postgres flexible-server firewall-rule create --name mydemoserver  --resource-group testGroup  --start-ip-address 1.1.1.1
 ```
 
 アプリケーションに Azure IP アドレスからフレキシブル サーバーへの接続を許可するには、次の例のように、開始 IP として IP アドレス 0.0.0.0 を指定します。
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
+az postgres flexible-server firewall-rule create --name mydemoserver --resource-group testGroup --start-ip-address 0.0.0.0
 ```
 
 > [!IMPORTANT]
@@ -120,17 +120,17 @@ az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-
 ### <a name="list-firewall-rules"></a>ファイアウォール規則の一覧表示 
 `az postgres flexible-server firewall-rule list` コマンドを使用して、サーバー上の既存のサーバー ファイアウォール規則を一覧表示します。 サーバー名属性は、 **--name** スイッチで指定されることにご注意ください。 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule list --name mydemoserver
+az postgres flexible-server firewall-rule list --name mydemoserver --resource-group testGroup
 ```
 規則がある場合は、JSON 形式 (既定) で出力として一覧表示されます。 --output table** スイッチを使用すると、結果をよりわかりやすい表形式で出力できます。
 ```azurecli-interactive
-az postgres flexible-server firewall-rule list --name mydemoserver --output table
+az postgres flexible-server firewall-rule list --name mydemoserver --resource-group testGroup --output table
 ```
 
 ### <a name="update-a-firewall-rule"></a>ファイアウォール規則の更新
 `az postgres flexible-server firewall-rule update` コマンドを使用して、サーバーの既存のファイアウォール規則を更新します。 入力として既存のファイアウォール規則の名前に加え、更新する開始 IP アドレスと終了 IP アドレス属性を指定します。
 ```azurecli-interactive
-az postgres flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
+az postgres flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
 正常に完了すると、コマンドの出力として、更新したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
@@ -139,14 +139,14 @@ az postgres flexible-server firewall-rule update --name mydemoserver --rule-name
 ### <a name="show-firewall-rule-details"></a>ファイアウォール規則の詳細の表示
 `az postgres flexible-server firewall-rule show` コマンドを使用して、サーバー上にある既存のファイアウォール規則の詳細を表示します。 既存のファイアウォール規則の名前を入力します。
 ```azurecli-interactive
-az postgres flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1
+az postgres flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup
 ```
 正常に完了すると、コマンドの出力として、指定したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
 ### <a name="delete-a-firewall-rule"></a>ファイアウォール規則の削除
 `az postgres flexible-server firewall-rule delete` コマンドを使用して、サーバーから既存のファイアウォール規則を削除します。 既存のファイアウォール規則の名前を入力します。
 ```azurecli-interactive
-az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1
+az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup
 ```
 正常に完了すると、出力はありません。 失敗した場合は、エラー メッセージ テキストが表示されます。
 

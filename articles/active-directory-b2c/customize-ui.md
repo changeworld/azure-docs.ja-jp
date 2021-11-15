@@ -3,22 +3,22 @@ title: ユーザー インターフェイスをカスタマイズする
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code, b2c-support
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 583c9fb66708cee46cbd0b7c7f341c1a6a9b7a55
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 70331a45936f2608f8eb9a4aadfd182056e11a77
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575315"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222727"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -227,7 +227,7 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 
 ユーザー フローのすべてのページをブランド化する場合は、ユーザー フローのページ レイアウトごとにページ レイアウト バージョンを設定します。
 
-![Azure portal での Azure AD B2C のページ レイアウトの選択](media/customize-ui/portal-02-page-layout-select.png)
+:::image type="content" source="media/customize-ui/portal-02-page-layout-select.png" alt-text="Azure portal での Azure AD B2C のページ レイアウトの選択。":::
 
 ::: zone-end
 
@@ -279,6 +279,25 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
   </ContentDefinition>
 </ContentDefinitions>
 ```
+
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+## <a name="re-order-input-fields-in-the-sign-up-form"></a>サインアップ フォームの入力フィールドの順序を変更する
+ローカル アカウント フォームのサインアップ ページの入力フィールドの順序を変更するには、次の手順に従います。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. 左側のメニューで **[ユーザー フロー]** を選択します。
+1. 入力フィールドの順序を変更するユーザー フロー (ローカル アカウントのみ) を選択します。
+1. 左側のメニューで、 **[ページ レイアウト]** を選択します。
+1. テーブルで、 **[ローカル アカウント サインアップ ページ]** の行を選択します。
+1. **[ユーザー属性]** で、順序を変更する入力フィールドを選択し、(上または下へ) ドラッグしてドロップするか、 **[上へ移動]** コントロールまたは **[下へ移動]** コントロールを使用して目的の順序にします。 
+1. ページの最上部で **[保存]** を選択します。
+
+  :::image type="content" source="media/customize-ui/portal-02-page-layout-fields.png" alt-text="Azure portal のユーザー フロー ページのテンプレート選択ドロップダウン。":::
 
 ::: zone-end
 

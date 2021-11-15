@@ -6,25 +6,23 @@ ms.author: dimadhus
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/6/2021
-ms.openlocfilehash: fa85818b364a869114fe6e3b2de8d2cebfa8ca60
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 961e1fbf4bc87355ce036fb9a5af7a1cd85c4e76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253656"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472715"
 ---
-# <a name="private-network-access-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のプライベート ネットワーク アクセス - フレキシブル サーバー (プレビュー)
+# <a name="private-network-access-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL のプライベート ネットワーク アクセス - フレキシブル サーバー
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、Azure MySQL フレキシブル サーバーのプライベート接続オプションについて説明します。 Azure でサーバーを安全に作成するための、Azure Database for MySQL フレキシブル サーバーの仮想ネットワークの概念について詳しく説明します。
 
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーはプレビュー段階です。
 
 ## <a name="private-access-vnet-integration"></a>プライベート アクセス (VNet 統合)
 
-[Azure Virtual Network (VNet)](../../virtual-network/virtual-networks-overview.md) は、Azure 内のプライベート ネットワークの基本的な構成要素です。 Virtual Network (VNet) を Azure Database for MySQL - フレキシブル サーバーと統合すると、Azure のネットワーク セキュリティと分離の利点が得られます。  
+[Azure Virtual Network (VNet)](../../virtual-network/virtual-networks-overview.md) は、Azure 内のプライベート ネットワークの基本的な構成要素です。 Virtual Network (VNet) を Azure Database for MySQL - フレキシブル サーバーと統合すると、Azure のネットワーク セキュリティと分離の利点が得られます。
 
 Azure Database for MySQL - フレキシブル サーバーの Virtual Network (VNet) 統合を使用すると、サービスへのアクセスを、仮想ネットワーク インフラストラクチャのみに制限できます。 Virtual Network (VNet) では、すべてのアプリケーションとデータベースのリソースを 1 つの仮想ネットワークに含めることができます。また、同じリージョン内または異なるリージョン間の異なる VNet にわたって拡張することもできます。 さまざまな仮想ネットワーク間のシームレスな接続は、Microsoft の低待機時間、高帯域幅のプライベート バックボーン インフラストラクチャを使用する[ピアリング](../../virtual-network/virtual-network-peering-overview.md)によって確立できます。 仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。
 
@@ -35,7 +33,7 @@ Azure Database for MySQL - フレキシブル サーバーは、次のクライ�
 
 サブネットにより、仮想ネットワークを 1 つ以上のサブネットワークにセグメント分割して、仮想ネットワークのアドレス空間の一部を割り当て、そこに Azure リソースをデプロイできます。 Azure Database for MySQL - フレキシブル サーバーには、[委任されたサブネット](../../virtual-network/subnet-delegation-overview.md)が必要です。 委任されたサブネットは、あるサブネットで Azure Database for MySQL - フレキシブル サーバーのみをホスト可能であることを示す、明示的な識別子です。 サブネットを委任することにより、そのサブネットに Azure Database for MySQL - フレキシブル サーバーをシームレスに管理する、サービス固有のリソースを作成するための、明示的なアクセス許可がサービスに与えられます。
 
-Azure Database for MySQL - フレキシブル サーバーは、Azure [プライベート DNS ゾーン](../../dns/private-dns-privatednszone.md)と統合されます。これにより、信頼性が高くセキュリティで保護された DNS サービスが提供され、仮想ネットワークでドメイン名を管理および解決するのに、カスタムの DNS ソリューションを追加する必要がなくなります。 プライベート DNS ゾーンは、[仮想ネットワーク リンク](../../dns/private-dns-virtual-network-links.md)を作成することで、1 つ以上の仮想ネットワークにリンクできます。 
+Azure Database for MySQL - フレキシブル サーバーは、Azure [プライベート DNS ゾーン](../../dns/private-dns-privatednszone.md)と統合されます。これにより、信頼性が高くセキュリティで保護された DNS サービスが提供され、仮想ネットワークでドメイン名を管理および解決するのに、カスタムの DNS ソリューションを追加する必要がなくなります。 プライベート DNS ゾーンは、[仮想ネットワーク リンク](../../dns/private-dns-virtual-network-links.md)を作成することで、1 つ以上の仮想ネットワークにリンクできます。
 
 
 :::image type="content" source="./media/concepts-networking/vnet-diagram.png" alt-text="フレキシブル サーバー MySQL VNET":::

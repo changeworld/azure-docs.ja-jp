@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 754f3671734125a47f633876e31e39f72dcbaa7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 86f0296ced4846dce7ec4be0d5b503d343d060bc
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076682"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848118"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Azure Purview 用 Amazon S3 Multi-Cloud Scanning Connector
 
@@ -22,6 +22,14 @@ Azure Purview 用 Multi-Cloud Scanning Connector を使用すると、Azure ス�
 この記事では、Azure Purview を使用して、Amazon S3 標準バケットに現在格納されている非構造化データをスキャンし、データ内に存在する機密情報の種類を検出する方法について説明します。 また、この攻略ガイドでは、情報保護とデータ コンプライアンスを容易にするためにデータが現在格納されている Amazon S3 バケットを識別する方法についても説明します。
 
 このサービスでは、Purview を使用して AWS に安全にアクセスできる Microsoft アカウントを提供し、そこで Azure Purview 用 Multi-Cloud Scanning Connector が実行されるようにします。 Amazon S3 バケットへのこのアクセスは、Azure Purview 用 Multi-Cloud Scanning Connector によりデータを読み取るために使用され、メタデータと分類のみを含むスキャン結果が Azure に報告されます。 Purview の分類およびラベル付けレポートを使用して、データ スキャンの結果を分析して確認します。
+
+## <a name="supported-capabilities"></a>サポートされる機能
+
+|**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
+|---|---|---|---|---|---|---|
+| はい | はい | はい | はい | はい | いいえ | 制限あり** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 > [!IMPORTANT]
 > Azure Purview 用 Multi-Cloud Scanning Connector は、Azure Purview への個別のアドオンです。 Azure Purview 用 Multi-Cloud Scanning Connector のご契約条件は、お客様が締結した Microsoft Azure サービスの契約に含まれています。 詳細については、 https://azure.microsoft.com/support/legal/ の「Microsoft Azure の法的情報」を参照してください。

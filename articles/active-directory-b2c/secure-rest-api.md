@@ -12,12 +12,12 @@ ms.date: 10/25/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2166b2c730a6101c59dddc38ad9a09c809f4eab2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a738459e50ed87dbfbdc97838d70f049d998eca5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040492"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326806"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Azure AD B2C で API コネクタとして使用される API をセキュリティで保護する 
 
@@ -340,8 +340,8 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
     <Key Id="BasicAuthenticationPassword" StorageReferenceId="B2C_1A_SecureRESTClientSecret" />
   </CryptographicKeys>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" />
+    <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="bearerToken" PartnerClaimType="access_token" />
@@ -349,6 +349,9 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
 ```
+
+> [!NOTE]
+> その他の技術プロファイルで `grant_type` または `scope` 要求を使用する場合、さらに `DefaultValue` を指定し、`AlwaysUseDefaultValue="true"` を使用することで、正しくない値をバインドして競合が発生する可能性を回避することをお勧めします。
 
 ### <a name="change-the-rest-technical-profile-to-use-bearer-token-authentication"></a>ベアラー トークン認証を使用するように REST 技術プロファイルを変更する
 

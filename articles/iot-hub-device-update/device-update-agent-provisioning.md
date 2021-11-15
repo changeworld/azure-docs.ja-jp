@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e65dc85dff7692f82118871ab93c628efe6cecf8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ecfbd8ac385a3449ce2934ec93b10c255d621fe1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661680"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259077"
 ---
 # <a name="device-update-agent-provisioning"></a>デバイス更新エージェントのプロビジョニング
 
@@ -87,7 +87,7 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 
 [IoT Edge 対応デバイス](../iot-edge/index.yml)でデバイス更新エージェントをプロビジョニングするには、次の手順に従います。
 
-1. 手順に従って [Azure IoT Edge ランタイムをインストールしてプロビジョニング](../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11)します。
+1. 指示に従って、[1 つの Linux IoT Edge デバイスを手動でプロビジョニング](../iot-edge/how-to-provision-single-device-linux-symmetric.md?preserve-view=true&view=iotedge-2020-11)します。
 
 1. デバイス更新のイメージの更新エージェントをインストールします。
 

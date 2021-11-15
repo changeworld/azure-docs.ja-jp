@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 764f6585aab43ba1f6db29a234cc2bc554b78c58
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 41d98bfa2fddc6575d53c2770e9411609acb68c1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236677"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845839"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -193,8 +193,7 @@ az aks create \
 ### <a name="configure-the-allocated-outbound-ports"></a>割り当てられた送信ポートを構成する
 
 > [!IMPORTANT]
-> クラスター上に、少数の宛先に対して多数の接続を確立することが想定されるアプリケーションがある場合 (たとえば、多数のフロントエンド インスタンスを 1 つの SQL DB に接続する場合)、SNAT ポートの枯渇 (接続元のポートの不足) が検出される可能性が非常に高くなります。 このようなシナリオでは、ロード バランサーに割り当てられる送信ポートと送信フロントエンド IP を増加することを強くお勧めします。 増加する場合、1 つの追加 IP アドレスに対して 64,000 個のポートを追加し、すべてのクラスター ノード間で分散させることを考慮する必要があります。
-
+> クラスター上に、少数の宛先への接続が多数確立されると予想されるアプリケーションがある場合 (たとえば、多数のフロントエンド インスタンスが 1 つの SQL DB に接続される場合)、SNAT ポートの枯渇 (接続元のポートが使い果たされること) が生じる可能性が非常に高くなります。 このような状況では、ロード バランサーで割り当てられている送信ポートと送信フロントエンド IP を増やすことを強くお勧めします。 これらの値を正しく計算する方法については、以下を参照してください。
 
 特に指定がない限り、AKS では、構成時に Standard Load Balancer で定義される割り当て送信ポート数の既定値が使用されます。 次のコマンドで示すように、この値は、AKS API の場合は **null** で、SLB API の場合は **0** です。
 
@@ -211,11 +210,19 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-この出力は、ポート数が 0 であることを意味しているものではなく、[バックエンド プールのサイズに基づく自動送信ポート割り当て][azure-lb-outbound-preallocatedports]を利用していることを意味しています。したがって、たとえば、クラスターのノード数が 50 以下の場合、各ノードに 1,024 個のポートが割り当てられます。その個数からノード数を増やしていくと、ノードあたりのポート数が徐々に削減されます。
+この出力の意味は、クラスターにあるポートが 0 個であるということではなく、[バックエンド プールのサイズに基づく自動送信ポート割り当て][azure-lb-outbound-preallocatedports]を使用しているということです。 たとえば、クラスターのノード数が 50 以下の場合、各ノードには 1024 個のポートが割り当てられます。 クラスター内のノードの数が増えるほど、ノードあたりの使用可能なポート数が少なくなります。
 
+割り当てられる送信ポートの数を定義または増やすには、送信ポートの数と IP の数に対して適切な値を計算する必要があります。 送信ポートの数は、インスタンスごとに、ここで指定した値に固定されます。 送信ポートの値は必ず 8 の倍数とします。
 
-割り当て送信ポート数を定義または増加するには、次の例のようにします。
+IP を追加しても、どのノードにもポートは追加されません。代わりに、クラスター内のより多くのノードに容量が提供されます。 この計算を実行する場合は、必ずアップグレードの一環として追加される可能性があるノード ([maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade)で指定されたノードの数を含む) を考慮してください。 必要な IP の数の計算は `(<maximum number of nodes in the cluster> * <outbound ports per node>) / 64000` です。直近の整数に切り上げます。
 
+例 :
+- 値が指定されず、クラスターに 48 個のノードがある場合、各ノードでは 1024 個のポートを使用できます。
+- 値が指定されず、クラスターのノード数が 52 個に拡大した場合、各ノードで使用できるポート数は 512 個になります。
+- 送信ポートが 1,000 に設定され、送信 IP 数が 2 に設定されている場合、クラスターは最大 128 個のノードをサポートできます (IP あたり 64,000 ポート/ノードあたり 1,000 ポート * 2 つの IP = 128 ノード)。
+- 送信ポートが 4,000 に設定され、送信 IP 数が 7 に設定されている場合、クラスターは最大 112 個のノードをサポートできます (IP あたり 64,000 ポート/ノードあたり 4,000 ポート * 7 つの IP = 112 ノード)。
+
+値を計算したら、次のコマンドを使用してそれらをクラスターに適用できます。
 
 ```azurecli-interactive
 az aks update \
@@ -225,13 +232,13 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-この例では、クラスター内の各ノードの割り当て送信ポート数が 4000 に設定され、IP 数は 7 個です。"*ノードあたり 4000 ポート * 100 ノード = 合計 400,000 ポート <  = 合計 448,000 ポート = 7 個の IP * IP あたり 64,000 ポート*" になります。 これにより、100 ノードに安全にスケーリングすることができ、既定のアップグレード操作を行うことができます。 アップグレードやその他の操作に必要な追加ノードに十分な数のポートを割り当てることが重要です。 AKS では、アップグレード用のバッファー ノード数の既定値として 1 が使用されます。このため、この例では、任意の時点で 4,000 個の空きポートが必要です。 [maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade)を使用する場合、ノードあたりの送信ポート数に maxSurge 値を乗算します。
+これらの値を確認するには、クラスターの最大サイズが 100 ノードであるものとして、必要なポートの数 (400,000) と使用可能なポートの数 (448,000) を計算します。 この構成では、100 ノードのクラスターに十分なポートを提供し、アップグレード時のノードの急増に対応する余地を設けます。
 
-ノード数を 100 以上に安全にスケーリングするために、IP をさらに追加する必要があります。
-
+- 100 ノード * ノードあたり 4,000 ポート = 400,000 ポートが必要
+- 7 つの IP * IP あたり 64,000 ポート = 448,000 ポートが使用可能。
 
 > [!IMPORTANT]
-> 接続またはスケーリングの問題を回避するために *allocatedOutboundPorts* をカスタマイズする前に、[必要なクォータを計算し、要件を確認する][requirements]必要があります。
+> 接続またはスケーリングの問題を回避するために *allocatedOutboundPorts* をカスタマイズする前に、[必要なクォータを計算し、要件を確認する] 必要があります。 アップグレードやその他の操作に必要な追加ノードに十分な数のポートを割り当てることが重要です。 既定では、AKS でアップグレード用に 1 つのバッファー ノードが使用されます。 [maxSurge 値](upgrade-cluster.md#customize-node-surge-upgrade)を使用する場合、ノードあたりの送信ポート数に maxSurge 値を乗算して、必要なポートの数を求めます。
 
 また、クラスターの作成時に **`load-balancer-outbound-ports`** パラメーターを使用することもできます。ただし、 **`load-balancer-managed-outbound-ip-count`** 、 **`load-balancer-outbound-ips`** 、または **`load-balancer-outbound-ip-prefixes`** のいずれかも指定する必要があります。  次に例を示します。
 
@@ -263,16 +270,7 @@ az aks update \
 > AKS では、既定で、アイドル時の TCP リセットが有効になっています。この構成を維持して、ご自分のシナリオでのアプリケーションの動作をより予測可能にするために使用することをお勧めします。
 > TCP RST は、ESTABLISHED 状態の TCP 接続時のみ送信されます。 詳細については、[こちら](../load-balancer/load-balancer-tcp-reset.md)を参照してください。
 
-### <a name="requirements-for-customizing-allocated-outbound-ports-and-idle-timeout"></a>割り当て送信ポート数とアイドル タイムアウトをカスタマイズするための要件
-
-- *allocatedOutboundPorts* に指定する値は、8 の倍数である必要もあります。
-- ノードの VM の数と割り当てる必要がある送信ポートの数に基づいた十分な送信 IP 容量が必要です。 送信 IP 容量が十分であることを確認するには、次の式を使用します。 
- 
-*outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*
- 
-たとえば、*nodeVMs* が 3 で、*desiredAllocatedOutboundPorts* が 50,000 の場合、必要な *outboundIPs* は 3 以上です。 必要最低限の量より多くの送信 IP 容量を組み込むことをお勧めします。 また、送信 IP 容量を計算するときは、クラスター オートスケーラーと、ノード プールのアップグレードの可能性を考慮する必要があります。 クラスター オートスケーラーについては、現在のノード数と最大ノード数を確認し、高い方の値を使用します。 アップグレードについては、アップグレードが可能なすべてのノード プールに対して追加のノード VM を考慮します。
-
-- *IdleTimeoutInMinutes* を既定の 30 分とは異なる値に設定する場合は、ワークロードで送信接続が必要な時間を考慮します。 また、AKS の外部で使用される *Standard* SKU ロード バランサーの既定のタイムアウト値が 4 分であることを考慮します。 特定の AKS ワークロードをより正確に反映するように *IdleTimeoutInMinutes* の値を設定すると、使用されなくなった接続と関連付けられることによる SNAT の枯渇を減らすのに役立ちます。
+*IdleTimeoutInMinutes* を既定の 30 分とは異なる値に設定する場合は、ワークロードで送信接続が必要な時間を考慮します。 また、AKS の外部で使用される *Standard* SKU ロード バランサーの既定のタイムアウト値が 4 分であることを考慮します。 特定の AKS ワークロードをより正確に反映するように *IdleTimeoutInMinutes* の値を設定すると、使用されなくなった接続と関連付けられることによる SNAT の枯渇を減らすのに役立ちます。
 
 > [!WARNING]
 > *AllocatedOutboundPorts* と *IdleTimeoutInMinutes* の値を変更すると、ロード バランサーの動作が大幅に変更される可能性があるため、トレードオフおよびアプリケーションの接続パターンをよく理解してから変更してください。これらの値を変更する前に、後の [SNAT のトラブルシューティングに関するセクション][troubleshoot-snat]を確認し、[Load Balancer のアウトバウンド規則][azure-lb-outbound-rules-overview]および [Azure での送信接続][azure-lb-outbound-connections]を確認して、変更の影響を完全に理解してください。
@@ -295,6 +293,8 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+この例では、`MY_EXTERNAL_IP_RANGE` の範囲からの受信外部トラフィックのみを許可するように規則を更新します。 `MY_EXTERNAL_IP_RANGE` を内部サブネットの IP アドレスに置き換えると、トラフィックはクラスターの内部 IP のみに制限されます。 トラフィックがクラスターの内部 IP に制限されている場合、Kubernetes クラスターの外部のクライアントはロード バランサーにアクセスできません。
 
 > [!NOTE]
 > 受信外部トラフィックは、ロード バランサーから AKS クラスターの仮想ネットワークに流れます。 この仮想ネットワークには、ロード バランサーからのすべての受信トラフィックを許可するネットワーク セキュリティ グループ (NSG) があります。 この NSG は *LoadBalancer* という種類の [サービス タグ][service-tags]を使用して、ロード バランサーからのトラフィックを許可します。
@@ -330,7 +330,7 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | リソース グループの名前            | クラスター インフラストラクチャと同一のリソース グループ (ノード リソース グループ) 内にないロード バランサーのパブリック IP のリソース グループを指定します。
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | 許可されるサービス タグの一覧          | 許可される[サービス タグ][service-tags]をコンマで区切った一覧指定します。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP アイドル タイムアウト (分)          | ロード バランサーで TCP 接続のアイドル タイムアウトが発生するまでの時間を分数で指定します。 既定値は 4 で、これが最小値です。 最大値は 30 です。 整数を指定する必要があります。
-|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | SLB の `enableTcpReset` を無効にします。
+|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | SLB の `enableTcpReset` を無効にします。 Kubernetes 1.18 で非推奨となり、1.20 で削除されました。 
 
 
 ## <a name="troubleshooting-snat"></a>SNAT のトラブルシューティング
@@ -355,9 +355,6 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 接続プールを使用し、接続ボリュームを形成します。
 - 警告なしで TCP フローを破棄し、TCP タイマーに依存してフローを消去することは決してしないでください。 TCP で明示的に接続を閉じなかった場合、中間システムとエンドポイントで状態が割り当てられたままになり、他の接続に SNAT ポートを利用できなくなります。 このパターンによって、アプリケーション エラーと SNAT 枯渇がトリガーされる可能性があります。
 - OS レベルの TCP 終了関連のタイマー値は、影響が専門的にわからない場合、変更しないでください。 TCP スタックの復旧中、接続のエンドポイントで期待値が一致しない場合、アプリケーションのパフォーマンスが低下する可能性があります。 タイマーの変更が必要になる場合、通常、基になる設計に問題があることを示しています。 次の推奨事項をご確認ください。
-
-
-上の例では、*MY_EXTERNAL_IP_RANGE* 範囲からの外部トラフィックのみを許可するように規則を更新します。 *MY_EXTERNAL_IP_RANGE* を内部サブネットの IP アドレスに置き換えると、トラフィックはクラスターの内部 IP のみに制限されます。 これにより、Kubernetes クラスター外部のクライアントは、ロード バランサーにアクセスできなくなります。
 
 ## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>ロード バランサーを Basic SKU から Standard SKU に移行する
 
@@ -427,7 +424,6 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
-[requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
 [service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

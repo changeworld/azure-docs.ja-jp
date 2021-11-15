@@ -6,17 +6,20 @@ ms.service: marketplace
 ms.topic: article
 author: navits09
 ms.author: navits
-ms.date: 10/14/2021
-ms.openlocfilehash: d04a031abced1bdc689feb078015737d20f40cfb
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.date: 10/26/2021
+ms.openlocfilehash: 22523b73847b21426eb1fa56af665274fc830b4b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047779"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851004"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースでのプライベート プラン
 
 公開元は、対象となる顧客にのみ表示されるようにプライベート プランを使用します。 この記事では、プライベート プランのオプションと利点について説明します。
+
+> [!TIP]
+> コマーシャル マーケットプレースでのプライベート プランの顧客のビューを表示するには、「[Azure Marketplace でのプライベート プラン](/marketplace/private-plans)」と「[Microsoft AppSource でのプライベート プラン](/marketplace/appsource-private-plans)」を参照してください。
 
 ## <a name="unlock-enterprise-deals-with-private-plans"></a>プライベート プランを使用してエンタープライズ取引を開放する
 

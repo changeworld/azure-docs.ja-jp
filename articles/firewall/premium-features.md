@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 11/04/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: c6cc19bd688dd2c38210fae8d77a036f2ba5be7e
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: addbd908670741cd0ba8662bf73a1a6788487498
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754313"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851460"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium の機能
 
@@ -51,8 +51,8 @@ Azure Firewall Premium にはシグネチャベースの IDPS が用意されて
 
 Azure Firewall シグネチャ/ルールセットには次のものが含まれます。
 - 実際のマルウェア、コマンド アンド コントロール、エクスプロイト キット、さらには従来の防止方法では見逃されていた、実害の出ている悪意のあるアクティビティについて、フィンガープリントを重視。
-- 50 以上のカテゴリで 55,000 を超えるルール。
-    - カテゴリには、マルウェアのコマンド アンド コントロール、DoS 攻撃、ボットネット、情報イベント、エクスプロイト、脆弱性、SCADA ネットワークプロトコル、エクスプロイト キット アクティビティなどが含まれます。
+- 50 以上のカテゴリで 58,000 を超えるルール。
+    - カテゴリには、マルウェアのコマンド アンド コントロール、フィッシング、トロイの木馬、ボットネット、情報イベント、エクスプロイト、脆弱性、SCADA ネットワーク プロトコル、エクスプロイト キット アクティビティなどが含まれます。
 - 20 ～ 40 以上の新しいルールが毎日リリースされます。
 - 最先端のマルウェア サンドボックスとグローバル センサー ネットワーク フィードバック ループを使用した、低い擬陽性率。
 
@@ -87,6 +87,26 @@ Web カテゴリでは、管理者は、ギャンブルの Web サイトやソ�
 ### <a name="category-exceptions"></a>カテゴリの例外
 
 Web カテゴリの規則の例外を作成できます。 規則コレクション グループ内で、より優先度の高い個別の許可または拒否の規則コレクションを作成します。 たとえば、優先度が 100 で `www.linkedin.com` を許可する規則コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否する規則コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリの例外が作成されます。
+
+### <a name="web-category-search"></a>Web カテゴリ検索
+
+**Web カテゴリのチェック** 機能を使用して、特定の FQDN または URL がどのカテゴリであるかを識別できます。 これを使用するには、 **[ファイアウォール ポリシー設定]** の **[Web カテゴリ]** タブを選択します。 これは、宛先トラフィックのアプリケーション ルールを定義する場合に特に便利です。
+
+:::image type="content" source="media/premium-features/firewall-category-search.png" alt-text="ファイアウォール カテゴリ検索ダイアログ":::
+
+### <a name="category-change"></a>カテゴリの変更
+
+**[ファイアウォール ポリシー設定]** の **[Web カテゴリ]** タブで、次の場合にカテゴリの変更を要求できます。 
+
+- FQDN または URL が別のカテゴリの下にある必要があると思われる 
+
+   or 
+
+- 分類されていない FQDN または URL に対して推奨されるカテゴリがある 
+
+ カテゴリ変更レポートを送信すると、処理要求を受信したということを示すトークンが通知に表示されます。 検索バーにトークンを入力することで、要求が進行中か、拒否されたか、または承認されたかを確認できます。  これを行うには、必ずトークン ID を保存してください。
+
+:::image type="content" source="media/premium-features/firewall-category-change.png" alt-text="ファイアウォール カテゴリのレポート ダイアログ":::
 
  ## <a name="supported-regions"></a>サポートされているリージョン
 

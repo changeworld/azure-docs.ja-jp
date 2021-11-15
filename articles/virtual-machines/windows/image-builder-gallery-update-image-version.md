@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.collection: windows
-ms.openlocfilehash: 166e9b2b2ea98027c4ca9a8e13c5c26d68214d9a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 2f3c4c302d0b31bbd97eedcd8e83f2cb50a8af2e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769077"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462900"
 ---
 # <a name="create-a-new-windows-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Azure Image Builder を使用して既存のイメージ バージョンから新しい Windows VM イメージ バージョンを作成する
 
 **適用対象:** :heavy_check_mark: Windows VM
 
-この記事では、[共有イメージ ギャラリー](../shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
+この記事では、[Azure Compute Gallery](../shared-image-galleries.md) (旧称 Shared Image Gallery) で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json) です。 
 
@@ -51,7 +51,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="set-variables-and-permissions"></a>変数とアクセス許可の設定
 
-[イメージの作成と共有イメージ ギャラリーへの配布](image-builder-gallery.md)に関するページの手順を使用して共有イメージ ギャラリーを作成した場合、必要な変数は既に作成されています。 それ以外の場合は、この例で使用するいくつかの変数を設定してください。
+[イメージの作成と Azure Compute Gallery への配布](image-builder-gallery.md)に関するページを使用して Azure Compute Gallery を作成した場合は、必要とする変数が既に作成されています。 それ以外の場合は、この例で使用するいくつかの変数を設定してください。
 
 Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
 
@@ -62,7 +62,7 @@ sigResourceGroup=myIBWinRG
 location=westus
 # Additional region to replicate the image to - we are using East US in this example
 additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
+# name of the Azure Compute Gallery - in this example we are using myGallery
 sigName=my22stSIG
 # name of the image definition to be created - in this example we are using myImageDef
 imageDefName=winSvrimages
@@ -97,7 +97,7 @@ sigDefImgVersionId=$(az sig image-version list \
 imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
 
-既に自身の共有イメージ ギャラリーがあり、以前の例に従わなかった場合、Image Builder がリソース グループにアクセスできるようにアクセス許可を割り当てる必要があります。これによりギャラリーにアクセスできます。 [イメージを作成して Shared Image Gallery に配布する方法](image-builder-gallery.md)に関する例の手順をご確認ください。
+既に自身の Azure Compute Gallery があり、以前の例に従わなかった場合、Image Builder がリソース グループにアクセスできるようにアクセス許可を割り当てる必要があります。これによりギャラリーにアクセスできます。 [イメージを作成して Azure Compute Gallery に配布する方法](image-builder-gallery.md)に関する例の手順をご確認ください。
 
 
 ## <a name="modify-helloimage-example"></a>helloImage の例の変更

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/19/2021
+ms.date: 10/28/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: has-adal-ref
-ms.openlocfilehash: 931d7385b9c7afe48d7c163aad3570c8485ae8d1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: b99b69b403603d347dfd49fd97de580a3871e799
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122767889"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466167"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -26,10 +26,10 @@ ms.locfileid: "122767889"
 ## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
 <div class='icon is-large'>
-    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+    <img alt='Azure support' src='./media/common/logo_azure.svg'>
 </div>
 
-クラウドへの移行を始めたばかりの開発者の方も、ビジネスクリティカルで戦略的なアプリケーションの展開を行う大企業のお客様も、さまざな [Azure サポート オプションをご確認し、最適なプランをお選びください](https://azure.microsoft.com/support/plans)。 Azure ユーザーは、Azure portal でサポート要求を作成し、管理できます。
+さまざまな [Azure サポート オプションを調べて、最も適したプランを選択します](https://azure.microsoft.com/support/plans)。 Azure portal でサポート要求を作成および管理するには、次の 2 つのオプションがあります。
 
 - Azure サポート プランをお持ちの場合は、[こちらからサポート要求をオープン](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "122767889"
 
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
-</div>             
+</div>
 
 ID アプリの開発に関する質問については、Microsoft のエンジニア、Azure Most Valuable Professionals (MVP)、およびエキスパー トコミュニティのメンバーから直接回答が得られます。
 
@@ -47,9 +47,8 @@ ID アプリの開発に関する質問については、Microsoft のエンジ�
 
 Microsoft Q&A を検索しても問題に対する回答が見つからない場合は、新しい質問を送信します。 [質の高い質問](/answers/articles/24951/how-to-write-a-quality-question.html)をするときは、次のタグのいずれかを使います。
 
-| コンポーネント/領域| Tags  |
-|------------|---------------------------|
-| Active Directory Authentication Library (ADAL)                              | [[adal]](/answers/topics/azure-ad-adal-deprecation.html)                |
+| コンポーネント/領域                                                              | Tags                                                                    |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | Microsoft Authentication Library (MSAL)                                     | [[msal]](/answers/topics/azure-ad-msal.html)                            |
 | Open Web Interface for .NET (OWIN) ミドルウェア                               | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
 | [Azure AD B2B / 外部 ID](../external-identities/what-is-b2b.md) | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html)                     |
@@ -65,22 +64,22 @@ Microsoft Q&A を検索しても問題に対する回答が見つからない場
 
 Microsoft 認証ライブラリ (MSAL) のいずれかに関するヘルプが必要な場合は、GitHub のリポジトリで問題を開きます。
 
-| MSAL ライブラリ | GitHub の問題の URL|
-| --- | --- |
-| MSAL for Android | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
-| MSAL Angular | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-| iOS および macOS 用の MSAL| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
-| MSAL Java | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
-| MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-| MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
-| MSAL Node | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-| MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
-| MSAL React | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL                   | GitHub の問題の URL                                                              |
+| ---------------------- | ------------------------------------------------------------------------------ |
+| MSAL for Android       | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
+| MSAL Angular           | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
+| iOS および macOS 用の MSAL | https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues    |
+| MSAL Java              | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues    |
+| MSAL.js                | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
+| MSAL.NET               | https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues  |
+| MSAL Node              | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
+| MSAL Python            | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues  |
+| MSAL React             | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues      |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 
 <div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+    <img alt='Stay informed' src='./media/common/i_blog.svg'>
 </div>
 
 - [Azure の更新情報](https://azure.microsoft.com/updates/?category=identity): 重要な製品の更新プログラム、ロードマップ、および発表について確認できます。

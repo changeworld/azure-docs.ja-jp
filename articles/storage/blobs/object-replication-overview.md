@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6808160b97d6d1d46917f2e1733b7b1badb4c5f4
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1c3f90087c2e016cdfd160c98df28cf3da25ca28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534356"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471955"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -65,7 +65,7 @@ ms.locfileid: "129534356"
 
 ### <a name="blob-tiering"></a>BLOB の階層
 
-オブジェクトのレプリケーションは、ソース アカウントと宛先アカウントがホット層またはクール層にある場合にサポートされます。 ソース アカウントと宛先アカウントが異なる層に存在していてもかまいません。 ただし、ソース アカウントまたは宛先アカウントのどちらかで BLOB がアーカイブ層に移動されている場合、オブジェクトのレプリケーションは失敗します。 BLOB レベルの詳細については、[BLOB データのホット、クール、アーカイブ アクセス レベル](access-tiers-overview.md)に関するページを参照してください。
+オブジェクトのレプリケーションは、ソース アカウントと宛先アカウントがホット層またはクール層にある場合にサポートされます。 ソース アカウントと宛先アカウントが異なる層に存在していてもかまいません。 ただし、ソース アカウントまたは宛先アカウントのどちらかで BLOB がアーカイブ層に移動されている場合、オブジェクトのレプリケーションは失敗します。 BLOB 層の詳細については、「[BLOB データのホット、クールおよびアーカイブ アクセス層](access-tiers-overview.md)」を参照してください。
 
 ### <a name="immutable-blobs"></a>不変 BLOB
 
@@ -99,7 +99,7 @@ Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポ�
 
 ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成した後、宛先コンテナーへの書き込み操作は許可されません。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 レプリケーション ルールが構成されている宛先コンテナーに書き込むには、そのコンテナーに対して構成されているルールを削除するか、レプリケーション ポリシーを削除する必要があります。 レプリケーション ポリシーがアクティブになっている場合、宛先コンテナーに対する読み取りおよび削除操作は許可されます。
 
-宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動できます。 アーカイブ レベルの詳細については、[BLOB データのホット、クール、アーカイブ アクセス レベル](access-tiers-overview.md#archive-access-tier)に関するページを参照してください。
+宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動できます。 アーカイブ層の詳細については、「[BLOB データのホット、クールおよびアーカイブ アクセス層](access-tiers-overview.md#archive-access-tier)」を参照してください。
 
 ## <a name="policy-definition-file"></a>ポリシー定義ファイル
 

@@ -10,12 +10,12 @@ ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 5b779df91c4f0347e329348b7bdccd49691d0d5d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d83cb752eaaa2ed3edf58d3d1f31d6d7c5af76cd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089817"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433139"
 ---
 # <a name="archive-a-blob"></a>BLOB のアーカイブ
 
@@ -230,6 +230,6 @@ az storage blob copy start \
 
 ## <a name="see-also"></a>関連項目
 
-- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)
+- [BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)
 - [アーカイブ アクセス層からの BLOB のリハイドレート](archive-rehydrate-overview.md)
 - [アーカイブ済み BLOB をオンライン層にリハイドレートする](archive-rehydrate-to-online-tier.md)

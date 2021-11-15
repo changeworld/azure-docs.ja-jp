@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: bca5d7535cbbcbf2fc7b6f54e853872c788c723d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bbcdce83fad513c85ab45f4c38c936b345828ef3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792279"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449680"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -198,7 +198,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
   - 照合する関連リソースを取得する範囲を設定します。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
   - _ResourceGroup_ の場合は、**if** 条件リソースのリソース グループまたは **ResourceGroupName** で指定されたリソース グループに制限されます。
-  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。
+  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。 適切に評価するためには、割り当てスコープがサブスクリプション以上で設定されている必要があります。 
   - 既定値は _ResourceGroup_ です。
 - **EvaluationDelay** (省略可能)
   - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
@@ -353,7 +353,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 照合する関連リソースを取得する範囲を設定します。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
   - _ResourceGroup_ の場合は、**if** 条件リソースのリソース グループまたは **ResourceGroupName** で指定されたリソース グループに制限されます。
-  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。
+  - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。 適切に評価するためには、割り当てスコープがサブスクリプション以上で設定されている必要があります。 
   - 既定値は _ResourceGroup_ です。
 - **EvaluationDelay** (省略可能)
   - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
@@ -641,7 +641,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|操作 |説明 |
+|Operation |説明 |
 |-|-|
 |addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
 |追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |

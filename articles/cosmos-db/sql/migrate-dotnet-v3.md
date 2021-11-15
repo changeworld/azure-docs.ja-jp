@@ -6,13 +6,13 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/04/2021
-ms.openlocfilehash: 58ea7624b32b7730863fe3d29f6d9245c4199d25
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/19/2021
+ms.openlocfilehash: 1bc32941ec6ca5c7053b39a7730852568d13fb28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535309"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219047"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Azure Cosmos DB .NET SDK v3 を使用するようにアプリケーションを移行する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -197,6 +197,17 @@ catch (CosmosException cosmosException) {
 |`EnableEndpointRediscovery`|`LimitToEndpoint` - 値が逆になりました。`EnableEndpointRediscovery` が `true` に設定されていた場合、`LimitToEndpoint` は `false` に設定する必要があります。 この設定を使用する前に、[クライアントに与える影響](troubleshoot-sdk-availability.md)を理解しておく必要があります。|
 |`ConnectionProtocol`|削除されます。 プロトコルは、ゲートウェイ (HTTPS) または直接 (TCP) のいずれかのモードに関連付けられています。 HTTPS プロトコルを使用したダイレクト モードは現在、V3 SDK ではサポートされていません。TCP プロトコルを使用することをお勧めします。 |
 |`MediaRequestTimeout`|削除されます。 アタッチがサポートされなくなりました。|
+
+### <a name="indexing-policy"></a>インデックス作成ポリシー
+
+インデックス作成ポリシーでは、これらのプロパティの設定はできません。 指定がない場合、これらのプロパティの値は次のようになります。
+
+| **プロパティ名**     | **新しい値 (設定不可)** |
+| ----------------------- | -------------------------------- |
+| `Kind`   | `range` |
+| `dataType`    | `String` および `Number` |
+
+パスを含めたり除外したりするためのインデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。 クエリ エンジンの改良により、古いバージョンの SDK であっても、これらのプロパティの設定がパフォーマンスに影響することはありません。
 
 ### <a name="session-token"></a>セッション トークン
 
@@ -710,4 +721,4 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * [v3 SDK でできること](sql-api-dotnet-v3sdk-samples.md)について、さらに学習する
 * Azure Cosmos DB に移行する容量計画を実行しようとしていますか?
     * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

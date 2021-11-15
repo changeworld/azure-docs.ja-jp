@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: f7454d26c57795383cc6bc8464e2259b1b29ed38
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113356953"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506329"
 ---
-### <a name="on-demand-bursting-preview"></a>オンデマンド バースト (プレビュー)
+### <a name="on-demand-bursting"></a>オンデマンド バースト
 
 ディスク バーストのオンデマンド バースト モデルを使用している Premium SSD なら、プロビジョニングされた元のターゲットを超えてバーストできます。最大バースト ターゲットを上限に、ワークロードに応じた必要な回数だけ、バースト可能です。 たとえば、1-TiB P30 ディスクでは、プロビジョニングされる IOPS は 5,000 IOPS です。 このディスクでディスク バーストが有効になっている場合、ワークロードで、最大バースト パフォーマンスである 30,000 IOPS および 1,000 Mbps まで、このディスクに IO を発行できます。
 
@@ -72,9 +72,13 @@ VM レベルのバーストでは、バーストのクレジットベース モ�
 - [Dsv4 シリーズ](../articles/virtual-machines/dv4-dsv4-series.md)
 - [Dasv4 シリーズ](../articles/virtual-machines/dav4-dasv4-series.md)
 - [Ddsv4 シリーズ](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Dasv5 シリーズ](../articles/virtual-machines/dasv5-dadsv5-series.md)
+- [Dadsv5 シリーズ](../articles/virtual-machines/dasv5-dadsv5-series.md)
 - [Esv4 シリーズ](../articles/virtual-machines/ev4-esv4-series.md)
 - [Easv4 シリーズ](../articles/virtual-machines/eav4-easv4-series.md)
 - [Edsv4 シリーズ](../articles/virtual-machines/edv4-edsv4-series.md)
+- [Easv5 シリーズ](../articles/virtual-machines/easv5-eadsv5-series.md)
+- [Eadsv5 シリーズ](../articles/virtual-machines/easv5-eadsv5-series.md)
 - [B シリーズ](../articles/virtual-machines/sizes-b-series-burstable.md)
 - [Fsv2 シリーズ](../articles/virtual-machines/fsv2-series.md)
 - [Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)

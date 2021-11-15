@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7153b33b0019600f58ea678079b553a9ad6c6672
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3b03dc507a76254f8568989af27f76aa75ad4e20
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823034"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222440"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>AD FS 証明書の緊急ローテーション
 AD FS 証明書をただちにローテーションする必要がある場合は、このセクションで後述する手順に従うことができます。
@@ -27,7 +27,7 @@ AD FS 証明書をただちにローテーションする必要がある場合�
 > 詳細については、AD FS をセキュリティ保護するためのベスト プラクティスの「[ハードウェア セキュリティ モジュール](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)」を参照してください。
 
 ## <a name="determine-your-token-signing-certificate-thumbprint"></a>トークン署名証明書の拇印を特定する
-現在 AD FS で使用している古いトークン署名証明書を失効させるには、トークン署名証明書の拇印を特定する必要があります。  これを行うには、次の手順を使用します。
+現在 AD FS で使用している古いトークン署名証明書を取り消すには、トークン署名証明書の拇印を特定する必要があります。  これを行うには、次の手順を使用します。
 
  1.    Microsoft オンライン サービスに接続します。`PS C:\>Connect-MsolService`
  2.    オンプレミスとクラウドの両方のトークン署名証明書の拇印と有効期限を文書化します。
@@ -41,7 +41,7 @@ AD FS 証明書をただちにローテーションする必要がある場合�
 
 Windows PowerShell コマンド `PS C:\>Get-AdfsProperties | FL AutoCert*, Certificate*` を実行できます。
 
-AutoCertificateRollover プロパティは、AD FS がトークン署名証明書とトークン暗号化解除証明書を自動的に更新するように構成されているかどうかを示します。  AutoCertificateRollover が TRUE に設定されている場合は、下の「AutoCertificateRollover が TRUE に設定されている場合の新しい自己署名証明書の生成」に説明されている手順に従います。  AutoCertificateRollover が FALSE に設定されている場合は、下の「AutoCertificateRollover が FALSE に設定されている場合の新しい証明書の手動での生成」に説明されている手順に従います
+AutoCertificateRollover プロパティは、AD FS がトークン署名証明書とトークン暗号化解除証明書を自動的に更新するように構成されているかどうかを示します。  AutoCertificateRollover が TRUE に設定されている場合は、下の「[AutoCertificateRollover が TRUE に設定されている場合の新しい自己署名証明書の生成](#generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true)」に説明されている手順に従います。  AutoCertificateRollover が FALSE に設定されている場合は、下の「[AutoCertificateRollover が FALSE に設定されている場合の新しい証明書の手動での生成](#generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false)」に説明されている手順に従います。
 
 
 ## <a name="generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true"></a>AutoCertificateRollover が TRUE に設定されている場合の新しい自己署名証明書の生成

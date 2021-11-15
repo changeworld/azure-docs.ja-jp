@@ -4,12 +4,12 @@ description: この記事では、モビリティ エージェントの自動更
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: 97cfba3e14268385632a47a5898b21e8d68811cb
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a683aacc762ce169045ee17891b49624ef1ee991
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539733"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437651"
 ---
 # <a name="upgrade-mobility-service-and-appliance-components-preview"></a>モビリティ サービスとアプライアンスのコンポーネントをアップグレードする (プレビュー)
 
@@ -117,6 +117,25 @@ ms.locfileid: "123539733"
 これらのいずれかを更新する必要がある場合、 **[状態]** が同様に反映されます。 ステータス メッセージをクリックして、コンポーネントをアップグレードします。
 
   ![レプリケーション アプライアンスのコンポーネント](./media/upgrade-mobility-service-preview/appliance-components.png)
+
+### <a name="turn-off-auto-update"></a>自動更新をオフにする
+
+1. アプライアンスを実行しているサーバーで、レジストリ エディターを開きます。
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** に移動します。
+3. 自動更新をオフにするには、DWORD 値が 0 のレジストリ キー **AutoUpdate** キーを作成します。
+
+    ![レジストリ キーを設定する](./media/upgrade-mobility-service-preview/registry-key.png)
+
+
+### <a name="turn-on-auto-update"></a>自動更新を有効にする
+
+自動更新は、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance から AutoUpdate レジストリ キーを削除することで有効にできます。
+
+レジストリ キーを削除するには、次の手順を実行します。
+
+1. アプライアンスを実行しているサーバーで、レジストリ エディターを開きます。
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** に移動します。
+3. 自動更新を無効にするために作成したレジストリ キー **AutoUpdate** を削除します。
 
 ### <a name="resolve-issues-with-component-upgrade"></a>コンポーネントのアップグレードに関する問題を解決する
 

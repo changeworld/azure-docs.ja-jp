@@ -1,25 +1,27 @@
 ---
-title: マイクロサービス アプリケーションの自動スケーリングを設定する
+title: アプリケーションの自動スケーリングを設定する
 description: この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/03/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1e0b9cb6beb48e6f9ae8c8d5d985f4dfd930d2d
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 67b5976e8df650ac8961cdb428338ca8147878d4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015506"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846636"
 ---
-# <a name="set-up-autoscale-for-microservice-applications"></a>マイクロサービス アプリケーションの自動スケーリングを設定する
+# <a name="set-up-autoscale-for-applications"></a>アプリケーションの自動スケーリングを設定する
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
-自動スケーリングは、需要の変化に応じてマイクロサービス アプリケーションが最高のパフォーマンスを発揮できるようにする Azure Spring Cloud の組み込み機能です。 これには、仮想 CPU、メモリ、アプリ インスタンスの数の変更が含まれます。 この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
+この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
 
+自動スケーリングは、需要の変化に応じてアプリケーションで最高のパフォーマンスが実現されるようにする Azure Spring Cloud の組み込み機能です。 Azure Spring Cloud では、スケールアウトとスケールインがサポートされています。これには、アプリ インスタンスの数と負荷分散の変更が含まれます。
+ 
 ## <a name="prerequisites"></a>前提条件
 
 以下の手順に従うためには、次の要件を満たす必要があります。
@@ -44,7 +46,7 @@ ms.locfileid: "122015506"
 
 自動スケーリングの要求管理には、次の 2 つのオプションがあります。
 
-* 手動スケーリング: 固定のインスタンス数を維持します。 Standard レベルでは、最大 500 インスタンスにスケールアウトできます。 この値は、マイクロサービス アプリケーションの個別の実行インスタンスの数を変更します。
+* 手動スケーリング: 固定のインスタンス数を維持します。 Standard レベルでは、最大 500 インスタンスにスケールアウトできます。 この値は、アプリケーションの個別の実行インスタンスの数を変更します。
 * カスタム自動スケーリング: 任意のメトリックに基づき、任意のスケジュールでスケーリングします。
 
 Azure portal でスケーリング方法を選択します。  次の図では、 **[カスタム自動スケーリング]** オプションとモードの設定を示します。

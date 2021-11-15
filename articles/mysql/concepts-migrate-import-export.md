@@ -7,12 +7,12 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 954e764cfa454cdfa3175a614093eda6ea8d6173
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: b26cfa516cc9080faac7d47c512b054e5909c1c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598380"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345245"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 
@@ -80,7 +80,7 @@ MySQL Workbench、Toad、または Navicat を使用して、Azure Database for 
 MySQL Workbench でデータをエクスポートおよびインポートする方法には、オブジェクト ブラウザーのコンテキスト メニューからと [ナビゲーター] ペインからの 2 つがあります。 各方法の目的は異なります。
 
 > [!NOTE]
-> MySQL Workbench で MySQL 単一サーバーまたはフレキシブル サーバー (プレビュー) への接続を追加する場合は、次のようにします。
+> MySQL Workbench で MySQL 単一サーバーまたはフレキシブル サーバーへの接続を追加する場合、次のようにします。
 >
 > - MySQL 単一サーバーの場合は、ユーザー名が *\<username@servername>* の形式であることをご確認ください。
 > - MySQL フレキシブル サーバーの場合は、 *\<username>* のみを使用します。 *\<username@servername>* を使用して接続すると、その接続は失敗します。

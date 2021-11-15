@@ -8,14 +8,14 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: c300e315571c90fd2aa1892336b6ad40d5593ed9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f28de0520e4b69970549f7258a5a41dd109d2b48
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433443"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852581"
 ---
-# <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview"></a>Azure Purview で Google BigQuery プロジェクトに接続して管理する
+# <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview-preview"></a>Azure Purview で Google BigQuery プロジェクトに接続して管理する (プレビュー)
 
 この記事では、Azure Purview で、Google BigQuery プロジェクトを登録する方法と、Google BigQuery を認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
@@ -98,8 +98,8 @@ ms.locfileid: "131433443"
     1. **資格情報:** BigQuery の資格情報を構成するときは、次のことを確認してください。
 
         * 認証方法として **[基本認証]** を選択します
-        * [ユーザー名] フィールドに、サービス アカウントのメール ID を指定します。 例: xyz\@developer.gserviceaccount.com
-        * サービス アカウントの秘密キー ファイルを JSON 形式でキー コンテナーのシークレットに保存します。
+        * [ユーザー名] フィールドに、サービス アカウントのメール ID を指定します。 たとえば、`xyz\@developer.gserviceaccount.com` のように指定します。
+        * 次の手順に従って、秘密キーを生成し、JSON をコピーして、Key Vault シークレットの値として格納します。
 
         Google のクラウド プラットフォームから新しい秘密キーを作成するには、次のようにします。
         1. ナビゲーション メニューで、[IAM と管理]、[サービス アカウント] の順に選択し、プロジェクトを選択します。 

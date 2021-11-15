@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4815eec021e4ebecda065667dca4568ded703ac5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: c54f5636ee7af8142bf5fcd401a2160a69cf550c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131044876"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436899"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -76,7 +77,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | CodeExpirationInSeconds | いいえ | コードの有効期限までの時間 (秒)。 最小値: `60`、最大値: `1200`、既定値: `600`。 コード (`ReuseSameCode` を使用した同じコード、または新しいコード) が提供されるたびに、コードの有効期限が延長されます。 この時間は、再試行タイムアウトの設定にも使用されます (最大試行回数に達すると、この時間が経過するまで、ユーザーは新しいコードの取得を試行できなくなります)。 |
 | CodeLength | いいえ | コードの長さ。 既定値は `6` です。 |
 | CharacterSet | いいえ | 正規表現で使用するように書式設定された、コードの文字セット。 たとえば、「 `a-z0-9A-Z` 」のように入力します。 既定値は `0-9` です。 文字セットには、指定したセット内の少なくとも 10 個の異なる文字を含める必要があります。 |
-| NumRetryAttempts | いいえ | コードが無効と見なされるまでの確認の試行回数。 既定値は `5` です。 |
+| NumRetryAttempts | いいえ | コードが無効と見なされるまでの確認の試行回数。 既定値は `5` です。 たとえば、NumRetryAttempts を 2 に設定した場合、許容される試行回数は 2 回だけです (初回 + 再試行 1 回)。 コードが正しいかどうかに関係なく、3 回目の試行で、最大試行回数に到達したという例外がスローされます。|
 | NumCodeGenerationAttempts | No | 識別子ごとの最大コード生成試行回数。 指定しない場合の既定値は 10 です。 |
 | 操作 | はい | 実行する操作。 指定できる値: `GenerateCode`。 |
 | ReuseSameCode | いいえ | 指定されたコードの有効期限が切れておらず、まだ有効である場合に、新しいコードを生成するのではなく、同じコードを指定する必要があるかどうか。 既定値は `false` です。  |
@@ -146,8 +147,8 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
-| UserMessageIfMaxRetryAttempted | No | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
-| UserMessageIfMaxNumberOfCodeGenerated | No | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
+| UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
 | UserMessageIfInvalidCode | いいえ | 無効なコードが指定された場合にユーザーに表示するメッセージ。 |
 | UserMessageIfVerificationFailedRetryAllowed | いいえ | 無効なコードを指定した場合にユーザーに表示するメッセージ。ユーザーは正しいコードを指定できます。  |
 |UserMessageIfSessionConflict|いいえ| コードを確認できない場合にユーザーに表示するメッセージ。|

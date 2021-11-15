@@ -1,6 +1,6 @@
 ---
-title: 割り当てられた SQL ライセンスが Azure によって毎時の使用量に適用される方法
-description: この記事では、Azure ハイブリッド特典を使用した場合、割り当てられた SQL ライセンスが Azure によってどのように毎時の使用量に適用されるかについて詳しく説明します。
+title: 一元割り当てする SQL ライセンスが Azure で 1 時間ごとにリソースの使用に適用される仕組み
+description: この記事では、Azure ハイブリッド特典で一元割り当てする SQL ライセンスが、Azure で 1 時間ごとにリソースの使用に適用される仕組みを、詳しく説明します。
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 69517a84fa28a6c1d9cde0cb51df82a296bd653a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 53f8538e6e34c91023bc55e7d47e5f28e9fb3e21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710158"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243849"
 ---
-# <a name="how-azure-applies-assigned-sql-licenses-to-hourly-usage"></a>割り当てられた SQL ライセンスが Azure によって毎時の使用量に適用される方法
+# <a name="how-azure-applies-centrally-assigned-sql-licenses-to-hourly-usage"></a>一元割り当てする SQL ライセンスが Azure で 1 時間ごとにリソースの使用に適用される仕組み
 
-この記事では、スコープレベルの Azure ハイブリッド特典が、SQL Server ライセンスの管理にどのように役立つかについて詳しく説明します。 このプロセスは、管理者がサブスクリプションまたは課金アカウントのスコープにライセンスを割り当てることから始まります。
+この記事では、SQL Server の スコープレベル Azure ハイブリッド特典一元管理について詳しく説明します。 このプロセスは、管理者がサブスクリプションまたは課金アカウントのスコープにライセンスを割り当てることから始まります。
 
 適切な定価または従量課金制のメーターが使用され、各リソースから 1 時間に 1 回使用状況が報告されます。 Azure 内部では、利用状況アプリケーション エンジンによって使用可能な NCL が評価され、その時間に適用されます。 ある時間の仮想コア リソースの消費に対して、選択されたスコープに十分な未使用の NCL がある場合、従量課金制のメーターは、価格がゼロ ($0) の対応する Azure ハイブリッド特典のメーターに切り替わります。
 
@@ -43,7 +43,7 @@ ms.locfileid: "129710158"
 
 :::image type="content" source="./media/manage-licenses-centrally/ncl-utilization-over-time.png" alt-text="時間経過に伴う NCL の使用状況を示す図。" border="false" lightbox="./media/manage-licenses-centrally/ncl-utilization-over-time.png":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- 「[スコープ レベルの Azure ハイブリッド特典の管理に関する FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
+- [Azure ハイブリッド特典一元管理の FAQ](faq-azure-hybrid-benefit-scope.yml) を確認する。
 - [既存の Azure ハイブリッド特典エクスペリエンスから移行する](transition-existing.md)方法について確認します。

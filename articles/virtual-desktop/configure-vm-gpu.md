@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 2ace40157681b250b56fcd595486260f07ec80c3
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 0bd470650ca3a2d6a8fd2d672d2eac0e5790dc89
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400707"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241005"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用グラフィックス処理装置 (GPU) アクセラレーションを構成する
 
@@ -82,6 +82,9 @@ Azure Virtual Desktop 内で Azure N シリーズ VM の GPU 機能を利用す�
 3. リモート デスクトップ セッションからサインアウトします。
 
 ## <a name="configure-fullscreen-video-encoding"></a>全画面表示のビデオ エンコードを構成する
+
+>[!NOTE]
+>GPU が存在しない場合でも、全画面ビデオ エンコードを有効にできます。
 
 3D モデリング、CAD/CAM、ビデオ アプリケーションなどの高フレーム レートのコンテンツを生成するアプリケーションを頻繁に使用する場合は、リモート セッションに対して全画面表示のビデオ エンコードを有効にすることを選択できます。 全画面表示のビデオ プロファイルでは、ネットワーク帯域幅と、セッション ホストとクライアント リソースの両方を犠牲にして、このようなアプリケーション用の高フレーム レートとより良いユーザー エクスペリエンスが提供されます。 全画面表示のビデオ エンコードには、GPU アクセラレーションを使用するフレーム エンコードの使用をお勧めします。 全画面表示のビデオ エンコードを有効にするセッション ホストのグループ ポリシーを構成します。 上記の手順に続けて次のようにします。
 

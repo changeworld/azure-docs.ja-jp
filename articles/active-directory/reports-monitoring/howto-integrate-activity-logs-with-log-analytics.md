@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e171720b3cf36d7ad2b074adadaa0e514779c3b
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 5cc4a93d102cd87097fed198f08240da7ec10e36
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131995390"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336356"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
@@ -31,7 +31,7 @@ ms.locfileid: "131995390"
 
 Azure Monitor ログに Azure AD アクティビティ ログを統合すると、次のようなタスクを実行できます。
 
- * Azure Security Center によって公開されたセキュリティ ログに対して Azure AD のサインイン ログを比較します。
+ * 自分の Azure AD サインイン ログと、Microsoft Defender for Cloud が発行したセキュリティ ログを比較します。
   
  * Azure Application Insights からのアプリケーション パフォーマンス データを相関させることによって、アプリケーションのサインイン ページでのパフォーマンス ボトルネックのトラブルシューティングを行います。
 

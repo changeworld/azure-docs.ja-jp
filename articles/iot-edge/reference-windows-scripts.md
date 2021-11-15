@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 912d13e5a9c05916e209ee42cf5629b8a363e686
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd450569298dfe8782f1a37b6c565daff0ae6175
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749531"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259169"
 ---
 # <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>Windows コンテナーを使用した IoT Edge 用の PowerShell スクリプト
 
@@ -105,4 +105,4 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 
 以下の記事で、これらのコマンドの使用方法を学習します。
 
-* [Azure IoT Edge for Windows をインストールまたはアンインストールする](how-to-install-iot-edge-windows-on-windows.md)
+* [対称キーを使用するか](how-to-provision-single-device-windows-symmetric.md)、[X.509 証明書を使用して、Azure IoT Edge for Windows をインストールまたはアンインストールする](how-to-provision-single-device-windows-x509.md)

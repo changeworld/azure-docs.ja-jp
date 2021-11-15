@@ -1,22 +1,22 @@
 ---
 title: 分散テーブルの設計ガイダンス
-description: Azure Synapse Analytics で専用 SQL プールを使用して、ハッシュ分散およびラウンド ロビン分散の各テーブルを設計するための推奨事項。
+description: 専用 SQL プールを使用してハッシュ分散およびラウンドロビン分散の各テーブルを設計するためのレコメンデーション。
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1f85a8d539c8f841bafaae9d877446c5e6ecb416
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f1cae70e186d6fb1467dcb5f31ea5c9ee15df6eb
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324575"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500623"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを使用して分散テーブルを設計するためのガイダンス
 
@@ -42,11 +42,11 @@ ms.locfileid: "122324575"
 
 ハッシュ分散テーブルでは、決定論的なハッシュ関数を使用して各行を 1 つの[ディストリビューション](massively-parallel-processing-mpp-architecture.md#distributions)に割り当て、複数の計算ノードにわたってテーブル行を分散させます。
 
-![分散テーブル](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分散テーブル")  
+:::image type="content" source="./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png" alt-text="分散テーブル" lightbox="./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png":::
 
 同一値は常に同じディストリビューションにハッシュされるため、SQL Analytics には行の位置情報に関する組み込みのナレッジがあります。 専用 SQL プールではこのナレッジを使用して、クエリ時のデータ移動を最小化し、クエリ パフォーマンスを向上させます。
 
-ハッシュ分散テーブルは、スター スキーマにある大規模なファクト テーブルに適しています。 非常に多数の行を格納し、その上で高度なパフォーマンスを実現できます。 もちろん、期待通りの分散システムのパフォーマンスを得るために役立つ設計上の考慮事項はいくつかあります。 適切なディストリビューション列を選択することはそのような考慮事項の 1 つであり、この記事で説明されています。
+ハッシュ分散テーブルは、スター スキーマにある大規模なファクト テーブルに適しています。 非常に多数の行を格納し、その上で高度なパフォーマンスを実現できます。 期待通りの分散システムのパフォーマンスを得るために役立つ設計上の考慮事項はいくつかあります。 適切なディストリビューション列を選択することはそのような考慮事項の 1 つであり、この記事で説明されています。
 
 ハッシュ分散テーブルの使用は、次の場合に検討してください。
 
@@ -70,7 +70,7 @@ ms.locfileid: "122324575"
 
 [ニューヨークのタクシー データの読み込み](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse)に関するチュートリアルでは、ラウンドロビン ステージング テーブルにデータを読み込む例を示しています。
 
-## <a name="choosing-a-distribution-column"></a>ディストリビューション列の選択
+## <a name="choose-a-distribution-column"></a>ディストリビューション列の選択
 
 ハッシュ分散テーブルには、ハッシュ キーであるディストリビューション列があります。 たとえば、次のコードは、ディストリビューション列として ProductKey を使ってハッシュ分散テーブルを作成します。
 
@@ -88,8 +88,7 @@ CREATE TABLE [dbo].[FactInternetSales]
 WITH
 (   CLUSTERED COLUMNSTORE INDEX
 ,  DISTRIBUTION = HASH([ProductKey])
-)
-;
+);
 ```
 
 ディストリビューション列に格納されているデータを更新できます。 ディストリビューション列のデータを更新すると、データ シャッフル操作が発生する可能性があります。
@@ -119,7 +118,7 @@ WITH
 
 - `JOIN`、`GROUP BY`、`DISTINCT`、`OVER`、および `HAVING` 句で使用されている。 2 つの大規模なファクト テーブルで頻繁に結合が生じる場合、両方のテーブルを結合列の 1 つに分散させると、クエリのパフォーマンスが向上します。  あるテーブルが結合に使用されない場合、`GROUP BY` 句に頻繁に出現する列でそのテーブルを分散させることを検討します。
 - `WHERE` 句で使用 *されていない*。 これによりクエリを絞り込み、すべてのディストリビューションでは実行されないようにすることができます。
-- 日付列 *ではない*。 WHERE 句は多くの場合、日付別にフィルター処理されます。  この場合、すべての処理が、少数のディストリビューションのみで実行される可能性があります。
+- 日付列 *ではない*。 `WHERE` 句は多くの場合、日付別にフィルター処理されます。  この場合、すべての処理が、少数のディストリビューションのみで実行される可能性があります。
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>ディストリビューション列として適切な列がない場合の対処方法
 
@@ -142,7 +141,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 
 10 % を超えるデータ スキューが発生しているテーブルを特定するには、次の手順を実行します。
 
-1. [テーブルの概要](sql-data-warehouse-tables-overview.md#table-size-queries)に関する記事に示されているビュー dbo.vTableSizes を作成します。  
+1. [テーブルの概要](sql-data-warehouse-tables-overview.md#table-size-queries)に関する記事に示されているビュー `dbo.vTableSizes` を作成します。  
 2. 次のクエリを実行します。
 
 ```sql

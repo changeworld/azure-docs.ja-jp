@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7468218fbbb08a2e7157d8fc10d6433d6d784d2e
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: a9b1dc77eb8eaae9e634cb362beed527a74a84be
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452349"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474517"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version"></a>VM を一般化されたイメージ バージョンから作成する
 
-Shared Image Gallery に格納されている[一般化されたイメージ バージョン](./shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 特殊化されたイメージから VM を作成する場合は、[特殊化されたイメージからの VM の作成](vm-specialized-image-version.md)に関するページをご覧ください。 
+Azure Compute Gallery (旧称 Shared Image Gallery) に格納されている[一般化されたイメージ バージョン](./shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 特殊化されたイメージから VM を作成する場合は、[特殊化されたイメージからの VM の作成](vm-specialized-image-version.md)に関するページをご覧ください。 
 
 
 ### <a name="portal"></a>[ポータル](#tab/portal)

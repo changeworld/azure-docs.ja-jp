@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ef52547bb8ec27bd759a238d742173f6b8fc3994
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e958f8b13c01e895aa4d6485aedd64dd155e69b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591978"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334988"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Secure Access VPN の統合
 
@@ -76,11 +76,11 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/ID/<IDENTIFIER_UID>`
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/ID/<IDENTIFIER_UID>`
 
-    b. **[応答 URL]** ボックスに、`https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/Login/<IDENTIFIER_UID>` のパターンを使用して URL を入力します
+    1. **[応答 URL]** ボックスに、`https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/Login/<IDENTIFIER_UID>` のパターンを使用して URL を入力します
 
-    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<GATEWAY_IP>/saml-vpn/`
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<GATEWAY_IP>/saml-vpn/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Check Point Remote Secure Access VPN クライアント サポート チーム](mailto:support@checkpoint.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -180,7 +180,6 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 
 1. **[OK]** をクリックします。
 
-
 ### <a name="configure-an-identity-provider-object"></a>ID プロバイダー オブジェクトを構成する
 
 1. Remote Access VPN に参加する各 Security Gateway について、次の手順を実行します。
@@ -220,7 +219,7 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 
     ![新しいオブジェクトを追加する画面のスクリーンショット。](./media/check-point-remote-access-vpn-tutorial/add-new-object.png)
 
-1. 名前と表示名を入力し、認証方法を追加または編集します。MEP に参加する GW でログイン オプションが使用される場合、ユーザー エクスペリエンスを円滑にするために、名前は "SAMLVPN_" プレフィックスで始めるようにしてください。 
+1. 名前と表示名を入力し、認証方法を追加または編集します。MEP に参加する GW でログイン オプションが使用される場合、ユーザー エクスペリエンスを円滑にするために、名前は "SAMLVPN_" プレフィックスで始めるようにしてください。
 
     ![ログイン オプションに関するスクリーンショット。](./media/check-point-remote-access-vpn-tutorial/login-option.png)
 
@@ -237,21 +236,21 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 
 1. 管理データベースで必要な設定を構成します。
 
-    1.  SmartConsole を閉じます。
+    1. SmartConsole を閉じます。
 
-    2.  GuiDBEdit ツールを使用して管理サーバーに接続します ([sk13009](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails&solutionid=sk13009) を参照)。
+    2. GuiDBEdit ツールを使用して管理サーバーに接続します ([sk13009](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails&solutionid=sk13009) を参照)。
 
-    3.  左上のペインで、 **[Edit]\(編集\) > [Network Objects]\(ネットワーク オブジェクト\)** に移動します。
+    3. 左上のペインで、 **[Edit]\(編集\) > [Network Objects]\(ネットワーク オブジェクト\)** に移動します。
 
-    4.  右上のペインで、 **[Security Gateway object]\(セキュリティ ゲートウェイ オブジェクト\)** を選択します。
+    4. 右上のペインで、 **[Security Gateway object]\(セキュリティ ゲートウェイ オブジェクト\)** を選択します。
 
-    5.  一番下のペインで、 **[realms_for_blades] > [vpn]** に移動します。
+    5. 一番下のペインで、 **[realms_for_blades] > [vpn]** に移動します。
 
-    6.  オンプレミスの Active Directory (LDAP) を使用したくない場合は、 **[do_ldap_fetch]** を **false** に、 **[do_generic_fetch]** を **true** に設定します。 次に、 **[OK]** をクリックします オンプレミスの Active Directory (LDAP) を使用したい場合は、 **[do_ldap_fetch]** を **true** に、 **[do_generic_fetch]** を **false** に設定します。 次に、 **[OK]** をクリックします
+    6. オンプレミスの Active Directory (LDAP) を使用したくない場合は、 **[do_ldap_fetch]** を **false** に、 **[do_generic_fetch]** を **true** に設定します。 次に、 **[OK]** をクリックします オンプレミスの Active Directory (LDAP) を使用したい場合は、 **[do_ldap_fetch]** を **true** に、 **[do_generic_fetch]** を **false** に設定します。 次に、 **[OK]** をクリックします
 
-    7.  該当するすべての Security Gateway について、手順 4. から手順 6. を繰り返します。
+    7. 該当するすべての Security Gateway について、手順 4. から手順 6. を繰り返します。
 
-    8.  すべての変更を保存 ( **[File]\(ファイル\)** メニュー > **[Save All]\(すべて保存\)** をクリック) します。
+    8. **[ファイル]**  >  **[保存]** を選択して、すべての変更を保存します。
 
 1. GuiDBEdit ツールを閉じます。
 
@@ -267,20 +266,21 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 
 1. VPN クライアントをインストールします。
 
-1. ID プロバイダーのブラウザー モード (オプション) を選択します。既定では、Windows クライアントはその埋め込みブラウザーを、macOS クライアントは Safari を ID プロバイダーのポータルでの認証に使用します。
-Windows クライアントで、この動作を変更して Internet Explorer を使用するには、次の手順を実行します。
+1. ID プロバイダーのブラウザー モード (オプション) を設定します。
 
-   1. クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
+    既定では、Windows クライアントはその埋め込みブラウザーを、macOS クライアントは Safari を ID プロバイダーのポータルでの認証に使用します。 Windows クライアントで、この動作を変更して Internet Explorer を使用するには、次の手順を実行します。
 
-   2. テキスト エディターで `trac.defaults` ファイルを開きます。
+    1. クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
 
-      - 32 ビット Windows の場合: 
+    2. テキスト エディターで `trac.defaults` ファイルを開きます。
 
-        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+       * 32 ビット Windows の場合: 
 
-      - 64 ビット Windows の場合: 
+         `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
 
-        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+       * 64 ビット Windows の場合: 
+
+         `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
 
     3. `idp_browser_mode` の値を `embedded` から `IE` に変更します。
 
@@ -296,34 +296,35 @@ Windows クライアントで、この動作を変更して Internet Explorer �
 
 1. バックグラウンドで実行中のブラウザーを使用して認証を開始します。
 
-   1. クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
+    1. クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
 
-   2. テキスト エディターで `trac.defaults` ファイルを開きます。
+    2. テキスト エディターで `trac.defaults` ファイルを開きます。
 
-      - 32 ビット Windows の場合: 
+        * 32 ビット Windows の場合: 
 
-        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+          `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
 
-      - 64 ビット Windows の場合: 
+        * 64 ビット Windows の場合: 
 
-        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+          `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
 
-      - macOS の場合:
-      
-        `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
+        * macOS の場合:
+
+          `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
 
     3. `idp_show_browser_primary_auth_flow` の値を `false` に変更します。
 
     4. ファイルを保存します。
 
     5. Check Point Endpoint Security VPN クライアント サービスを再起動します。
-       - Windows クライアントで、管理者として Windows コマンド プロンプトを開き、次のコマンドを実行します。
+
+       * Windows クライアントで、管理者として Windows コマンド プロンプトを開き、次のコマンドを実行します。
 
          `# net stop TracSrvWrapper`
-        
+
          `# net start TracSrvWrapper`
 
-       - macOS クライアントで、次を実行します。
+       * macOS クライアントで、次を実行します。
 
          `sudo launchctl stop com.checkpoint.epc.service`
 
@@ -333,7 +334,7 @@ Windows クライアントで、この動作を変更して Internet Explorer �
 
 このセクションでは、Britta Simon というユーザーを Check Point Remote Secure Access VPN に作成します。 [Check Point Remote Secure Access VPN サポート チーム](mailto:support@checkpoint.com)と連携して、Check Point Remote Secure Access VPN プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 1. VPN クライアントを開き、 **[接続先]** をクリックします。
 
@@ -347,4 +348,4 @@ Windows クライアントで、この動作を変更して Internet Explorer �
 
 ## <a name="next-steps"></a>次のステップ
 
-Check Point Remote Secure Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Check Point Remote Secure Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: ae3f62141fdcdb1185f493eceeef7124fe11f869
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: baa926382763199d90ab56cb84f9f5b035741261
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727853"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468953"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -109,7 +109,7 @@ Azure Spring Cloud は、クラウドでのアプリケーションのビルド�
 
 > **使用する場合:** Azure で Spring Boot または Spring Cloud ベースのマイクロサービスを実行する運用コストを最小限に抑える場合は、フル マネージドサービスとしての Azure Spring Cloud がお勧めです。 
 >
-> **概要:** [初めての Azure Spring Cloud アプリケーションをデプロイする](../../spring-cloud/quickstart.md)
+> **概要:** [初めての Spring Boot アプリを Azure Spring Cloud にデプロイする](../../spring-cloud/quickstart.md)。
 
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Azure サービスでアプリケーションを強化する
@@ -130,7 +130,7 @@ Azure には、アプリケーションのホスティングと共に、機能�
 
   > **いつ使用するか**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
   >
-  > **作業開始**: [BLOB](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、[テーブル](../../cosmos-db/tutorial-develop-table-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
+  > **作業開始**: [BLOB](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、[テーブル](../../cosmos-db/tutorial-develop-table-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または [ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
 
 * **Azure SQL Database**:クラウドにリレーショナル表形式データを格納する Azure ベース バージョンの Microsoft SQL Server エンジンです。 SQL Database は、予測可能なパフォーマンス、ダウンタイムなしのスケーラビリティ、ビジネス継続性、データ保護を提供しています。
 
@@ -168,7 +168,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
 アプリケーションの使用者を把握することだけでなく、リソースへの不正アクセスを防止することも重要です。 Azure には、アプリ クライアントを認証する方法がいくつか用意されています。
 
-* **Azure Active Directory (Azure AD)** :Microsoft のマルチテナントでクラウドベースの ID およびアクセス管理サービスです。 Azure AD と統合することで、シングル サインオン (SSO) 機能をアプリケーションに追加できます。 ディレクトリのプロパティには、Azure AD Graph API から直接、または Microsoft Graph API からアクセスできます。 OAuth 2.0 認証フレームワークと Open ID Connect の場合、ネイティブ HTTP/REST エンドポイントとマルチプラットフォーム Azure AD Authentication ライブラリを使用して、Azure AD のサポートと統合できます。
+* **Azure Active Directory (Azure AD)** :Microsoft のマルチテナントでクラウドベースの ID およびアクセス管理サービスです。 Azure AD と統合することで、シングル サインオン (SSO) 機能をアプリケーションに追加できます。 ディレクトリのプロパティには、Microsoft Graph API からアクセスできます。 OAuth 2.0 認証フレームワークと Open ID Connect の場合、ネイティブ HTTP/REST エンドポイントとマルチプラットフォーム Azure AD Authentication ライブラリを使用して、Azure AD のサポートと統合できます。
 
   > **いつ使用するか**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
   >
@@ -210,7 +210,7 @@ VM をプロビジョニングするか、継続的インテグレーション�
 >
 > **今すぐ試す:** [DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
 
-## <a name="azure-regions"></a>Azure のリージョン
+## <a name="azure-regions"></a>Azure Azure リージョン
 
 Azure は、世界中のさまざまな地域で一般的に利用できるグローバル クラウド プラットフォームです。 Azure でサービス、アプリケーション、VM をプロビジョニングするとき、リージョンを選択するように求められます。 このリージョンは、アプリケーションが実行される、またはデータが格納される特定のデータセンターに相当します。 これらのリージョンは特定の場所に対応しており、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページに公開されています。
 

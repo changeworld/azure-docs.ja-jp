@@ -3,12 +3,12 @@ title: Azure Lab Services で Linux VM に接続する | Microsoft Docs
 description: Azure Lab Services のラボで Linux 仮想マシン用リモート デスクトップを使用する方法について学習します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 6c8cd04f1ca3a070db73d2fc0eda4b6d4091f6ae
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 8cbb4b9366aa8de5827f010f0759fe4235cf1343
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179965"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263384"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services のクラスルーム ラボで Linux 仮想マシンに接続する
 この記事では、学生がラボで以下を使用して Linux 仮想マシン (VM) に接続する方法を示します。
@@ -45,7 +45,7 @@ ms.locfileid: "130179965"
 >  [GNOME](https://www.gnome.org/) や [MATE](https://mate-desktop.org/) を使用する必要がある場合は、ラボの VM を適切に構成できるように、講師と調整する必要があります。  VM が Azure Lab Services で正常に動作するために必要な Azure Linux エージェントには、既知のネットワーク競合が発生する可能性があります。  代わりに [XFCE](https://www.xfce.org/) などの異なるグラフィカル デスクトップ環境を使用することをお勧めします。
 
 ### <a name="connect-to-the-student-vm-using-microsoft-remote-desktop-rdp"></a>Microsoft リモート デスクトップ (RDP) を使用して学生の VM に接続する
-講師が Linux のグラフィカル デスクトップ環境 (XFCE、MATE など) 用の RDP および GUI パッケージを使用してラボを設定した後、学生は Microsoft リモート デスクトップ (RDP) を使用して各自の Linux VM に接続できるようになります。 接続する手順は次のとおりです。 
+講師が Linux のグラフィカル デスクトップ環境 (XFCE など) 用の RDP および GUI パッケージを使用してラボを設定した後、学生は Microsoft リモート デスクトップ (RDP) を使用して各自の Linux VM に接続できるようになります。 接続する手順は次のとおりです。 
 
 1. VM のタイルで、VM が実行されていることを確認し、 **[接続]** をクリックします。 VM に接続するための 2 つのオプションが表示されます。つまり、**SSH** と **RDP** です。
 
@@ -68,7 +68,7 @@ RDP クライアントには、ユーザーの接続エクスペリエンスを�
     ![RDP エクスペリエンス設定の変更](./media/how-to-enable-remote-desktop-linux/rdp-experience-settings.png)
 
 ### <a name="connect-to-the-student-vm-using-x2go"></a>X2Go を使用して学生の VM に接続する
-講師が Linux のグラフィカル デスクトップ環境 (XFCE、MATE など) 用の X2Go および GUI パッケージを使用してラボを設定した後、学生は X2Go を使用して各自の Linux VM に接続できるようになります。
+講師が Linux のグラフィカル デスクトップ環境 (XFCE など) 用の X2Go および GUI パッケージを使用してラボを設定した後、学生は X2Go を使用して各自の Linux VM に接続できるようになります。
 
 学生は、どの Linux グラフィカル デスクトップ環境がインストールされているかを講師に確認する必要があります。  この情報は、次の手順で X2Go クライアントを使用して接続する際に必要になります。
 

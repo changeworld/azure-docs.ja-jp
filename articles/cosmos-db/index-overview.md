@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 8228c3cedf58b389b93a516c4a372a38b33c0e4d
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 4bb901d0c6c917b2efbaef486e97010a8ac27458
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123028541"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450174"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

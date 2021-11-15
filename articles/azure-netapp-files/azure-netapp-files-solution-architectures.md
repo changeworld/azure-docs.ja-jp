@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/04/2021
+ms.date: 11/4/2021
 ms.author: b-juche
-ms.openlocfilehash: 8b37458635f73b463bf4e01630e406753e26f353
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: a69dd2528b4804e434cf6652d1ce2b03357025ee
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576322"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848612"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -31,6 +31,15 @@ ms.locfileid: "131576322"
 ## <a name="linux-oss-apps-and-database-solutions"></a>Linux OSS アプリとデータベース ソリューション
 
 このセクションでは、Linux OSS アプリケーションとデータベースのソリューションに関するリファレンスを提供します。 
+
+### <a name="linux-oss-apps"></a>Linux OSS アプリ
+
+* [AIX UNIX オンプレミスから Azure Linux への移行 - Azure シナリオ例](/azure/architecture/example-scenario/unix-migration/migrate-aix-azure-linux)
+
+### <a name="mainframe-refactor"></a>メインフレームのリファクタリング
+
+* [Azure への一般的なメインフレームのリファクタリング - Azure シナリオ例](/azure/architecture/example-scenario/mainframe/general-mainframe-refactor)
+* [Advanced を使用したメインフレーム アプリケーションのリファクタリング - Azure シナリオ例](/azure/architecture/example-scenario/mainframe/refactor-mainframe-applications-advanced)
 
 ### <a name="oracle"></a>Oracle
 
@@ -74,6 +83,7 @@ ms.locfileid: "131576322"
 
 ### <a name="generic-sap-and-sap-netweaver"></a>汎用 SAP と SAP Netweaver 
 
+* [Azure 上の Windows で SAP NetWeaver を実行する - Azure アーキテクチャ センター](/azure/architecture/reference-architectures/sap/sap-netweaver)
 * [Azure NetApp Files を使用した Microsoft Azure 上の SAP アプリケーション](https://www.netapp.com/us/media/tr-4746.pdf)
 * [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](../virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files.md)
 * [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
@@ -82,6 +92,9 @@ ms.locfileid: "131576322"
 
 ### <a name="sap-hana"></a>SAP HANA 
 
+* [スケールアップ システムの Linux VM 向け SAP HANA - Azure アーキテクチャ センター](/azure/architecture/reference-architectures/sap/run-sap-hana-for-linux-virtual-machines)
+* [Azure 上の Linux での SAP S/4HANA - Azure アーキテクチャ センター](/azure/architecture/reference-architectures/sap/sap-s4hana)
+* [Linux VM を使用して SAP BW/4HANA を実行する - Azure アーキテクチャ センター](/azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines)
 * [SAP HANA Azure 仮想マシンのストレージ構成](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 * [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
 * [Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
@@ -93,6 +106,7 @@ ms.locfileid: "131576322"
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
+* [Azure 上の Oracle Database の SAP システム - Azure アーキテクチャ センター](/azure/architecture/example-scenario/apps/sap-on-oracle)
 * [SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ - Azure Virtual Machines](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [Azure NetApp Files を使用して SAP AnyDB (Oracle 19c) をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
 * [Azure NetApp Files を使用した、SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ](../virtual-machines/workloads/sap/dbms_guide_ibm.md#using-azure-netapp-files)
@@ -159,10 +173,10 @@ ms.locfileid: "131576322"
 
 ### <a name="analytics"></a>Analytics
 
+* [Azure アーキテクチャの SAS ガイド - Azure アーキテクチャ センター | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 * [Azure NetApp Files: Microsoft Azure 上の SAS グリッドで使用する共有ファイル システム](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [Azure NetApp Files: MS Azure 上の SAS グリッドで使用する共有ファイル システム – RHEL8.3/nconnect の更新情報](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
 * [Microsoft Azure と SAS® を併用するためのベスト プラクティス](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
-* [Azure アーキテクチャの SAS ガイド - Azure アーキテクチャ センター | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 
 ### <a name="healthcare"></a>医療
 
@@ -184,7 +198,6 @@ ms.locfileid: "131576322"
 ### <a name="azure-red-hat-openshift"></a>Azure Red Hat Openshift   
 
 *   [Trident を使用して OpenShift から Azure NetApp Files を自動化](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-trident-to-automate-azure-netapp-files-from-openshift/ba-p/2367351)
-
 
 ### <a name="azure-batch"></a>Azure Batch
 

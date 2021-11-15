@@ -1,18 +1,18 @@
 ---
 title: スキャン ルール セットを作成する
 description: 組織内のデータ ソースをすばやくスキャンできるように、Azure Purview でスキャン ルール セットを作成します。
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 0b9175a2795ac926c7adf93dc81f84ff7b5a4472
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: fb3151b3981d0bd28120efab9bdba7fd143ae86d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207384"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510939"
 ---
 # <a name="create-a-scan-rule-set"></a>スキャン ルール セットを作成する
 
@@ -60,7 +60,7 @@ Azure Purview カタログで、スキャン ルール セットを作成する�
 
 1. **[作成]** を選択して、スキャン ルール セットの作成を完了します。
 
-### <a name="create-a-custom-file-type"></a>カスタムのファイルの種類を作成する
+## <a name="create-a-custom-file-type"></a>カスタムのファイルの種類を作成する
 
 Azure Purview では、スキャン ルール セットでのカスタムの拡張子の追加とカスタムの列区切り記号の定義がサポートされています。
 
@@ -91,6 +91,26 @@ Azure Purview では、スキャン ルール セットでのカスタムの拡�
 1. 変更または削除する場合は、新しいファイルの種類のタイルで **[編集]** を選択します。
 
 1. **[続行]** を選択して、スキャン ルール セットの構成を完了します。
+
+## <a name="ignore-patterns"></a>無視パターン
+
+Azure Purview では、スキャン時に資産を除外する正規表現 (regex) の定義がサポートされています。 Azure Purview では、スキャン時に資産の URL とこれらの正規表現を比較します。 指定された正規表現のいずれかに一致するすべての資産は、スキャン中に無視されます。
+
+**[無視パターン]** ブレードには、Spark トランザクション ファイルに対して 1 つの正規表現が事前に設定されます。 必要ない場合は、既存のパターンを削除できます。 最大 10 個の無視パターンを定義できます。
+
+:::image type="content" source="./media/create-a-scan-rule-set/ignore-patterns-blade.png" alt-text="4 つの正規表現が定義された [無視パターン] ブレードを示すスクリーンショット。1 つ目が事前に設定された Spark トランザクションの正規表現、2 つ目が \\.txt$、3 つ目が \\.csv$、最後が .folderB/.*。":::
+
+上の例について説明します。
+
+- 正規表現 2 と 3 によって、スキャン中に末尾が .txt および .csv のファイルがすべて無視されます。
+- 正規表現 4 によって、スキャン中に /folderB/ とそのすべての内容が無視されます。
+
+無視パターンの参考となるその他のヒントを次に示します。
+
+- Azure Purview では、正規表現の処理中に既定で正規表現に $ を追加します。
+- スキャン エージェントでどのような URL が正規表現と比較されるかを理解するには、Purview データ カタログを参照し、今後無視する資産を見つけ、 **[概要]** タブで完全修飾名 (FQN) を確認することをお勧めします。
+
+   :::image type="content" source="./media/create-a-scan-rule-set/fully-qualified-name.png" alt-text="資産の [概要] タブの完全修飾名を示すスクリーンショット。":::
 
 ## <a name="system-scan-rule-sets"></a>システム スキャン ルール セット
 

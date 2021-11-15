@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d1cf4c18c4722c327d9d74569e7709d11068dc7c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 71a86e1440d96a37fd72afc67aaaaa7d122c6d4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087071"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426679"
 ---
 # <a name="about-bastion-configuration-settings"></a>Bastion の構成設定について
 
@@ -36,7 +36,7 @@ SKU はサービス レベルとも呼ばれます。 Azure Bastion では、Bas
 
 | 方法 | 値 | リンク |
 | --- | --- | --- |
-| Azure portal | サービス レベル: Basic <br>Standard | [クイックスタート: VM 設定から Bastion を構成する](quickstart-host-portal.md)<br>[チュートリアル - Bastion を構成する](tutorial-create-host-portal.md) |
+| Azure portal | サービス レベル: Basic <br>標準 | [クイックスタート: VM 設定から Bastion を構成する](quickstart-host-portal.md)<br>[チュートリアル - Bastion を構成する](tutorial-create-host-portal.md) |
 | Azure PowerShell | Basic のみ - 設定なし |[Bastion を構成する - PowerShell](bastion-create-host-powershell.md) |
 | Azure CLI |  Basic のみ - 設定なし | [Bastion を構成する - CLI](create-host-cli.md) |
 
@@ -78,7 +78,7 @@ Azure Bastion では、Basic SKU から Standard SKU へのアップグレード
 Azure Bastion では、専用サブネット **AzureBastionSubnet** が必要です。 このサブネットは、Azure Bastion がデプロイされている Virtual Network に作成する必要があります。 サブネットには次の構成が必要です。
 
 * サブネットの名前は *AzureBastionSubnet* にしてください。
-* サブネットのサイズは /27 以上 (/26、/25 など) にしてください。
+* サブネットのサイズは /26 以上 (/25、/24 など) にしてください。
 * ホストのスケーリングの場合は、/26 以上のサブネットをお勧めします。 サブネット領域を小さくすると、スケール ユニットの数が制限されます。 詳細については、この記事の[ホストのスケーリング](#instance)に関するセクションをご覧ください。
 * サブネットは、bastion ホストと同じ VNet およびリソース グループに存在する必要があります。
 * サブネットに追加のリソースを含めることはできません。

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のサポート ポリシー、共�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 1e85effa5a8efca59bfc88aada050ee5ddcc7fcf
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 759d2714f755c39e0b189d7578e90cd268cd53c5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666443"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222459"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -18,7 +18,7 @@ ms.locfileid: "114666443"
 ## <a name="service-updates-and-releases"></a>サービスの更新とリリース
 
 * リリース情報については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)を参照してください。
-* プレビュー段階の機能については、「[AKS Preview Features and Related Projects](https://awesomeopensource.com/projects/aks?categoryPage=11)」(AKS のプレビュー機能と関連プロジェクト) を参照してください。
+* プレビューの機能については [AKS ロードマップ](https://github.com/Azure/AKS/projects/1)を参照してください。
 
 ## <a name="managed-features-in-aks"></a>AKS のマネージド機能
 

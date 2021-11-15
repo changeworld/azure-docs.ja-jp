@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 10/28/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0055cae979e1ab116d71a387f3f9d7e61afb9d32
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: ef091072d7d5847ca1e8daa206de1734dccf4ff2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754484"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469903"
 ---
 # <a name="translator-language-support"></a>Translator の言語サポート
 
@@ -185,7 +185,8 @@ ms.locfileid: "129754484"
 Translator で他の Cognitive Services を利用することによって、アプリやワークフローに機能を追加します。 追加のサービスでの言語の一覧は次に示されています。
 * [Computer Vision](../computer-vision/language-support.md) 
 * [Speech](../speech-service/language-support.md) 
-* [Text Analytics ](../text-analytics/language-support.md) 
+* [言語サービス](../language-service/index.yml) 
+    * 使用する機能を選択し、左側のナビゲーション メニューで **[言語のサポート]** を選択します。
 
 すべての [Cognitive Services](../index.yml) を表示します。 
 

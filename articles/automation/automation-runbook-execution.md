@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 700c5a9254cbb3ae8fe69ccc0f2ea3b76bb66121
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 11a4892a6cd9a1ddda9cf5857165dd9b52e1392b
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356443"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371861"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -74,9 +74,9 @@ Runbook には必ず、[リソース](/rest/api/resources/resources) (VM、ネ�
 
 ## <a name="security"></a>セキュリティ
 
-Azure Automation は、[Azure Security Center (ASC)](../security-center/security-center-introduction.md) を使用してリソースのセキュリティを確保し、Linux システムにおけるセキュリティ侵害を検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
+Azure Automation では [Microsoft Defender for Cloud](../defender-for-cloud/defender-for-cloud-introduction.md) を利用してリソースを守り、Linux システムのリスクを検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
 
-VM 上でスクリプトを実行できるユーザーには、ASC によって制約が課されます。スクリプトは、署名されている場合と署名されていない場合とがあります。 VM へのルート アクセスを持つユーザーは、明示的にデジタル署名を使用してマシンを構成するか、デジタル署名をオフにする必要があります。 それ以外のユーザーが、Automation アカウントを作成し、該当する機能を有効にした後で実行できるのは、オペレーティング システムの更新プログラムを適用するスクリプトだけです。
+VM 上でスクリプトを署名ありまたは署名なしで実行できるユーザーには、Defender for Cloud によって制約が課されます。 VM へのルート アクセスを持つユーザーは、明示的にデジタル署名を使用してマシンを構成するか、デジタル署名をオフにする必要があります。 それ以外のユーザーが、Automation アカウントを作成し、該当する機能を有効にした後で実行できるのは、オペレーティング システムの更新プログラムを適用するスクリプトだけです。
 
 ## <a name="subscriptions"></a>サブスクリプション
 

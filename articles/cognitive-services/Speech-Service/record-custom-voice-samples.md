@@ -3,19 +3,19 @@ title: カスタム音声サンプルを録音する - Speech Service
 titleSuffix: Azure Cognitive Services
 description: しっかりした台本を準備し、優秀なボイス タレントを採用し、プロフェッショナルなやり方で録音することによって、プロダクション品質のカスタム音声を作成します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: pafarley
-ms.openlocfilehash: 965791510a58391476e0f0ef1e276d06a83a690b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: 2a0c504fdcc39b4aff0981350e747dfd42ce3389
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540669"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504723"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>カスタム音声を作成するための音声サンプルを録音する
 
@@ -107,7 +107,9 @@ Role|目的
    次に、いくつかのベスト プラクティスの例を示します。
     - 省略形を含む行の場合、"BTW" ではなく、"By the way" とします。
     - 数字の行の場合、"911" ではなく、"9 1 1" とします。
-    - 頭字語を含む行の場合は、"ABC" ではなく "A B C" を使用します。その場合は、ボイス タレントが予期する方法でこれらの単語を発音します。 トレーニング プロセス中、台本と録音が一貫して一致する状態に保ちます。  
+    - 頭字語がある行の場合、"ABC" ではなく、"A B C" とします。
+   
+   そのようにして、ボイス タレントによってこれらの単語が期待どおりに発音されるようにします。 トレーニング プロセス中、台本と録音が一貫して一致する状態に保ちます。  
 
    > [!NOTE]
    > ボイス タレント用に準備された台本は、50% や $45 などのネイティブの読み取り規則に従う必要があります。一方、トレーニングに使用される台本は、正規化して、台本が *50 パーセント* や *45 ドル* などの音声コンテンツと一致する必要があります。 トレーニングに使用される台本をボイス タレントの録音に対して確認し、それらが一致するようにします。

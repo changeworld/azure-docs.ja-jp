@@ -6,21 +6,18 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 276bcd288f519a5060f859bf6b5a74c0453e7c79
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1d1ec1b6196dd543b9310a945fc9b07e26673c84
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994064"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472772"
 ---
-# <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー プレビューでの高可用性
+# <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーでの高可用性の概念
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT] 
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
-
-Azure Database for MySQL - フレキシブル サーバー プレビューでは、自動フェールオーバーによる高可用性 (HA) を構成できます。 高可用性ソリューションは、コミットされたデータが障害によって失われないこと、データベースがソフトウェア アーキテクチャでの単一障害点にならないことを保証するように設計されています。 高可用性が構成されている場合、フレキシブル サーバーによってスタンバイ レプリカが自動的にプロビジョニングされて管理されます。 高可用性には 2 つのアーキテクチャ モデルがあります。
+Azure Database for MySQL フレキシブル サーバーでは、自動フェールオーバーによる高可用性を構成できます。 高可用性ソリューションは、コミットされたデータが障害によって失われないこと、データベースがソフトウェア アーキテクチャでの単一障害点にならないことを保証するように設計されています。 高可用性が構成されている場合、フレキシブル サーバーは、スタンバイ レプリカを自動的にプロビジョニングして管理します。 高可用性アーキテクチャ モデルには、次の 2 つがあります。
 
 * **ゾーン冗長 HA**。 このオプションは、複数の可用性ゾーンにわたるインフラストラクチャの完全な分離と冗長性を実現する場合に適しています。 最高レベルの可用性が提供されますが、複数のゾーンにわたってアプリケーションの冗長性を構成する必要があります。 可用性ゾーン内のインフラストラクチャ障害に対して最高レベルの可用性を実現する必要があり、可用性ゾーン全体の待機時間を許容できる場合は、ゾーン冗長 HA が推奨されます。 サーバーを作成するときにのみ有効にすることができます。 ゾーン冗長 HA は、リージョンで複数の[可用性ゾーン](../../availability-zones/az-overview.md)がサポートされていて、[ゾーン冗長 Premium ファイル共有](../..//storage/common/storage-redundancy.md#zone-redundant-storage)が利用可能な、[Azure リージョンのサブセット](./overview.md#azure-regions)で利用できます。
 

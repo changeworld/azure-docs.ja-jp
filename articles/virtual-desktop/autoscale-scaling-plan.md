@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 644857c552b6e54d94746746f1c2ba9a230baeb6
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 88de9f363851d47fbefcdcf69060111d8fd64bbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181537"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842380"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Azure Virtual Desktop ホスト プールの自動スケーリング (プレビュー)
 
@@ -27,7 +27,10 @@ ms.locfileid: "130181537"
 - セッション ホストごとのセッションの制限
 
 >[!NOTE]
->Windows Virtual Desktop (クラシック) では、自動スケーリング機能はサポートされていません。 エフェメラル ディスクのスケーリングもサポートされていません。
+> - Azure Virtual Desktop (クラシック) では、自動スケーリング機能はサポートされていません。 
+> - 自動スケーリングでは Azure Stack HCI 用 Azure Virtual Desktop はサポートされません 
+> - 自動スケーリングでは、エフェメラル ディスクのスケーリングはサポートされません。
+
 
 最適な結果を得るには、Azure Virtual Desktop Azure Resource Manager テンプレートまたは Microsoft のファーストパーティ ツールを使用してデプロイした VM で自動スケーリングを使用することをお勧めします。
 
@@ -50,9 +53,9 @@ ms.locfileid: "130181537"
 
 スケーリング プランの作成を開始するには、まず、サブスクリプションでカスタムのロールベースのアクセス制御 (RBAC) ロールを作成する必要があります。 このロールを使用すると、Windows Virtual Desktop でサブスクリプション内のすべての VM の電源を管理できます。 また、アクティブなユーザー セッションがない場合、サービスでホスト プールと VM の両方にアクションを適用させることもできます。
 
-カスタム ロールを作成するには、この JSON テンプレートを使用して、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」の指示に従います。
-
+カスタム ロールを作成するには、次の JSON テンプレートを使用しているときに、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」の指示に従います。 このテンプレートには、必要なアクセス許可が既に含まれています。 詳細な手順については、「[Azure portal を使用してカスタム ロールを割り当てる](#assign-custom-roles-with-the-azure-portal)」を参照してください。
 ```json
+ {
  "properties": {
  "roleName": "Autoscale",
  "description": "Friendly description.",
@@ -62,19 +65,20 @@ ms.locfileid: "130181537"
   "permissions": [
    {
    "actions": [
-                      "Microsoft.Insights/eventtypes/values/read",
-           "Microsoft.Compute/virtualMachines/deallocate/action",
-                      "Microsoft.Compute/virtualMachines/restart/action",
-                      "Microsoft.Compute/virtualMachines/powerOff/action",
-                      "Microsoft.Compute/virtualMachines/start/action",
-                      "Microsoft.Compute/virtualMachines/read",
-                      "Microsoft.DesktopVirtualization/hostpools/read",
-                      "Microsoft.DesktopVirtualization/hostpools/write",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",                   "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
+                 "Microsoft.Insights/eventtypes/values/read",
+                 "Microsoft.Compute/virtualMachines/deallocate/action",
+                 "Microsoft.Compute/virtualMachines/restart/action",
+                 "Microsoft.Compute/virtualMachines/powerOff/action",
+                 "Microsoft.Compute/virtualMachines/start/action",
+                 "Microsoft.Compute/virtualMachines/read",
+                 "Microsoft.DesktopVirtualization/hostpools/read",
+                 "Microsoft.DesktopVirtualization/hostpools/write",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
 ],
   "notActions": [],
   "dataActions": [],
@@ -85,11 +89,9 @@ ms.locfileid: "130181537"
 }
 ```
 
-## <a name="assign-custom-roles"></a>カスタム ロールを割り当てる
+## <a name="assign-custom-roles-with-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる
 
-次に、Azure portal を使用して、作成したカスタム ロールをサブスクリプションに割り当てる必要があります。
-
-カスタム ロールを割り当てるには、次のようにします。
+Azure portal を使用してカスタム ロールを作成してサブスクリプションに割り当てるには、次のようにします。
 
 1. Azure portal を開き、 **[サブスクリプション]** に移動します。
 
@@ -103,18 +105,20 @@ ms.locfileid: "130181537"
 4. **アクセス許可** タブで、このロールを割り当てるサブスクリプションに次のアクセス許可を追加します。
 
     ```azcopy
-    "Microsoft.Compute/virtualMachines/deallocate/action", 
-    "Microsoft.Compute/virtualMachines/restart/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action", 
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/read",
-    "Microsoft.DesktopVirtualization/hostpools/read",
-    "Microsoft.DesktopVirtualization/hostpools/write",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+        "Microsoft.Insights/eventtypes/values/read"
+                 "Microsoft.Compute/virtualMachines/deallocate/action"
+                 "Microsoft.Compute/virtualMachines/restart/action"
+                 "Microsoft.Compute/virtualMachines/powerOff/action"
+                 "Microsoft.Compute/virtualMachines/start/action"
+                 "Microsoft.Compute/virtualMachines/read"
+                 "Microsoft.DesktopVirtualization/hostpools/read"
+                 "Microsoft.DesktopVirtualization/hostpools/write"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
     ```
 
 5. 完了したら、 **[OK]** をクリックします。
@@ -125,29 +129,14 @@ ms.locfileid: "130181537"
 
 1. **[アクセス制御 (IAM)]** タブで、 **[Add role assignments]\(ロールの割り当ての追加\)** を選択します。
 
-2. 先ほど作成したロールを選択します。
+2. 作成したロールを選択し、次の画面に進みます。
 
-3. 次のスクリーンショットに示されているように、検索バーに「**Windows Virtual Desktop**」と入力して選択します。
+3. **[+メンバーの選択]** を選択します。 次のスクリーンショットに示されているように、検索バーに「**Windows Virtual Desktop**」と入力して選択します。 Azure Virtual Desktop (クラシック) デプロイと、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop がある場合は、同じ名前の 2 つのアプリが表示されます。 両方とも選択します。
 
     > [!div class="mx-imgBorder"]
     > ![[ロールの割り当ての追加] メニューのスクリーンショット。 [選択] フィールドが赤で強調表示され、ユーザーによって検索フィールドに「Windows Virtual Desktop」と入力されています。](media/search-for-role.png)
 
-Azure portal でカスタム ロールを追加する場合は、次のアクセス許可も選択されていることを確認してください。
-
-   - Microsoft.Compute/virtualMachines/deallocate/action
-   - Microsoft.Compute/virtualMachines/restart/action
-   - Microsoft.Compute/virtualMachines/powerOff/action
-   - Microsoft.Compute/virtualMachines/start/action 
-   - Microsoft.Compute/virtualMachines/read
-   - Microsoft.DesktopVirtualization/hostpools/read
-   - Microsoft.DesktopVirtualization/hostpools/write
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/read
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/write
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read
-
-これらのアクセス許可は、手順 4 で入力したものと同じです。
+4. **[レビューと割り当て]** を選択して、割り当てを完了します。
 
 ## <a name="how-creating-a-scaling-plan-works"></a>スケーリング プランの作成のしくみ
 
@@ -194,7 +183,7 @@ Azure portal でカスタム ロールを追加する場合は、次のアクセ
 
 6. 必要に応じて、ユーザーに表示される "わかりやすい" 名前と、プランの説明を追加することもできます。
 
-7. **[リージョン]** で、スケーリング プランのリージョンを選択します。 オブジェクトのメタデータは、リージョンに関連付けられた地域に格納されます。 現時点では、自動スケーリングでサポートされているのは、米国中部と米国東部 2 のリージョンのみです。 リージョンの詳細については、[データの場所](data-locations.md)に関するページを参照してください。
+7. **[リージョン]** で、スケーリング プランのリージョンを選択します。 オブジェクトのメタデータは、リージョンに関連付けられた地域に格納されます。 リージョンの詳細については、[データの場所](data-locations.md)に関するページを参照してください。
 
 8. **[タイム ゾーン]** で、プランで使用するタイム ゾーンを選択します。
 
@@ -210,7 +199,7 @@ Azure portal でカスタム ロールを追加する場合は、次のアクセ
 
 1. **[スケジュール]** タブで **[スケジュールの追加]** を選択します。
 
-2. **[名前]** フィールドにスケジュールの名前を入力します。
+2. **[スケジュール名]** フィールドにスケジュールの名前を入力します。
 
 3. **[Repeat on]\(次の日に繰り返す\)** フィールドで、スケジュールを繰り返す日を選択します。
 
@@ -223,13 +212,13 @@ Azure portal でカスタム ロールを追加する場合は、次のアクセ
         >[!NOTE]
         >ここで選択した負荷分散設定によって、元のホスト プール設定で選択した設定がオーバーライドされます。
 
-    - **[ピーク時間]** には、1 日のうち使用率が最も高くなる開始時刻を入力します。 時刻が、スケーリング プランに指定したものと同じタイム ゾーンにあることを確認してください。 この時刻は、増加フェーズの終了時刻でもあります。
-
     - **[Minimum percentage of session host VMs]\(セッション ホスト VM の最小割合\)** に、増加時からピーク時の間に使用するセッション ホスト リソースの量を入力します。 たとえば、**10%** を選択し、ホスト プールに 10 のセッション ホストがある場合、自動スケーリングによって、増加時からピーク時の間に常に 1 つのセッション ホストをユーザー接続で使用できるようになります。
     
     - **[容量のしきい値]** に、増加フェーズとピーク フェーズの開始をトリガーするホスト プールの使用率を入力します。 たとえば、100 セッションを処理できるホスト プールに対して **60%** を選択した場合、自動スケーリングによって、ホスト プールが 60 セッションを超えた場合にのみ、追加のホストが有効になります。
 
 5. **[ピーク時間]** タブで、次のフィールドに入力します。
+
+    - **[開始日時]** には、1 日のうち使用率が最も高くなる開始時刻を入力します。 時刻が、スケーリング プランに指定したものと同じタイム ゾーンにあることを確認してください。 この時刻は、増加フェーズの終了時刻でもあります。
 
     - **[負荷分散]** には、幅優先または深さ優先の負荷分散を選択できます。 幅優先の負荷分散では、新しいユーザー セッションがホスト プール内のすべての使用可能なセッションに分散されます。 深さ優先の負荷分散では、セッション制限に達していない接続数が最も多い利用可能なセッション ホストに、新しいセッションが分散されます。 負荷分散の種類の詳細については、「[Azure Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)」を参照してください。
 

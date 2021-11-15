@@ -3,19 +3,19 @@ title: コール センターの文字起こし - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の一般的なシナリオは、インタラクティブ ボイス レスポンス (IVR) など、さまざまなシステムから入ってくる大量の電話データを文字に起こすことです。 Speech サービスと Unified 音声モデルを使用すると、企業は、音声取り込みシステムで高品質の文字起こしが可能になります。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: pafarley
-ms.openlocfilehash: 0c1e1ca9b38c342d469c7d4ea1589b48038c95db
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: ba4e6fc3d128daf54f55456163acb6a563745b55
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538869"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507949"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -76,7 +76,7 @@ Speech サービスがコール センターで利用される場合、機能的
 
 ### <a name="key-phrase-extraction"></a>キー フレーズ抽出
 
-分析アプリケーションとして難易度が高く、また、AI と機械学習の応用から得られるものが多いのがこの領域です。 この場合の主なシナリオは、顧客の意図を推測することです。 顧客が電話してきた理由は何か? 顧客はどのような問題を抱えているのか? 顧客に不快な思いをさせたのはなぜか? Microsoft の[テキスト分析サービス](https://azure.microsoft.com/services/cognitive-services/text-analytics/)には、すぐにお使いいただける一連の分析機能が用意されており、こうした重要なキーワードやフレーズを抽出できるように、エンドツーエンド ソリューションを簡単にアップグレードできます。
+分析アプリケーションとして難易度が高く、また、AI と機械学習の応用から得られるものが多いのがこの領域です。 この場合の主なシナリオは、顧客の意図を推測することです。 顧客が電話してきた理由は何か? 顧客はどのような問題を抱えているのか? 顧客に不快な思いをさせたのはなぜか? Microsoft の[言語サービス](https://azure.microsoft.com/services/cognitive-services/text-analytics/)には、すぐにお使いいただける一連の分析機能が用意されており、こうした重要なキーワードやフレーズを抽出できるように、エンドツーエンド ソリューションを簡単にアップグレードできます。
 
 それでは、音声認識のバッチ処理とリアルタイム パイプラインについてもう少し詳しく見てみましょう。
 

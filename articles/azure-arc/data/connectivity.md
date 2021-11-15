@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: f8e52c61db68aaf85af70b6bfb373bd7b331bd29
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 61dec7d7c6391cacb5f25a2fccbda6b4d97b7033
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555421"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316149"
 ---
 # <a name="connectivity-modes-and-requirements"></a>接続モードと要件
 
@@ -34,7 +34,7 @@ Azure Arc 対応データ サービスでは、2 つの異なる *接続モー�
 
 また、Azure Active Directory と Azure ロールベースのアクセス制御は、Azure への継続的な直接接続に依存して提供される機能であるため、直接接続モードでしか使用できません。
 
-Azure Defender セキュリティ サービス、Container Insights、BLOB ストレージへの Azure Backup など、一部の Azure 接続型サービスは、これらに直接到達できる場合にのみ利用可能です。
+Microsoft Defender for Cloud セキュリティ サービス、Container Insights、BLOB ストレージへの Azure Backup など、一部の Azure 接続型サービスは、サービスに直接到達できる場合にのみ利用できます。
 
 ||**間接接続**|**直接接続**|**非接続**|
 |---|---|---|---|
@@ -57,7 +57,7 @@ Azure Defender セキュリティ サービス、Container Insights、BLOB ス�
 |**監視**|サポートされています<br/>Grafana と Kibana のダッシュボードを使用したローカル監視。|サポートされています<br/>ローカルの監視ダッシュボードに加えて、_必要に応じて_、複数のサイトを 1 か所でまとめて監視するために、監視データとログを Azure Monitor に送信することができます。 |
 |**認証**|データ コントローラーとダッシュボードの認証には、ローカルのユーザー名/パスワードを使用します。 データベース インスタンスへの接続には、SQL と Postgres ログインまたは Active Directory (AD は現時点ではサポートされていません。まもなくプレビュー段階になります) を使用します。  Kubernetes API に対する認証には、K8s 認証プロバイダーを使用します。|間接接続モードの認証方法に加えて、またはその代わりに、_必要に応じて_ Azure Active Directory を使用できます。 **直接接続モードの保留中の可用性**|
 |**ロールベースのアクセス制御 (RBAC)**|Kubernetes API では Kubernetes RBAC を使用します。 データベース インスタンスには SQL および Postgres RBAC を使用します。|Azure Active Directory と Azure RBAC を使用できます。 **直接接続モードの保留中の可用性**|
-|**Azure Defender**|サポートされていません|将来的に予定されています|
+|**Microsoft Defender for Cloud**|サポートされていません|将来的に予定されています|
 
 ## <a name="connectivity-requirements"></a>接続の要件
 
@@ -75,7 +75,7 @@ Azure Defender セキュリティ サービス、Container Insights、BLOB ス�
 |**Azure Active Directory (AAD) (将来)**|お客様の環境 -> Azure -> お客様の環境|Optional|状況によりますが、Azure AD に対する支払いが既に発生している場合があります|直接のみ|認証に Azure AD を使用する場合は、常に Azure との接続が確立されている必要があります。 認証に Azure AD を使用しない場合は、Active Directory を介して Active Directory フェデレーション サービス (ADFS) を使用できます。 **直接接続モードの保留中の可用性**|
 |**バックアップと復元**|お客様の環境 -> お客様の環境|必須|いいえ|直接または間接|バックアップと復元サービスは、ローカル ストレージ クラスをポイントするように構成できます。 **直接接続モードの保留中の可用性**|
 |**Azure Backup - 長期保有期間 (将来)**| お客様の環境 -> Azure | Optional| はい (Azure Storage の場合) | 直接のみ |バックアップをオフサイトで長期間保持するために、ローカルで取得したバックアップを Azure Backup に送信し、復元のためにローカル環境に戻すことができます。 **直接接続モードの保留中の可用性**|
-|**Azure Defender セキュリティ サービス (将来)**|お客様の環境 -> Azure -> お客様の環境|Optional|はい|直接のみ|**直接接続モードの保留中の可用性**|
+|**Microsoft Defender for Cloud セキュリティ サービス (将来)**|お客様の環境 -> Azure -> お客様の環境|Optional|はい|直接のみ|**直接接続モードの保留中の可用性**|
 |**Azure portal からのプロビジョニングと構成の変更**|お客様の環境 -> Azure -> お客様の環境|省略可能|×|直接のみ|プロビジョニングと構成の変更は、Azure Data Studio または適切な CLI を使用してローカルで行うことができます。  直接接続モードでは、Azure portal からプロビジョニングと構成変更を行うこともできます。|
 
 

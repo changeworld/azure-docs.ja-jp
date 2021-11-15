@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 10/19/2021
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2243f149ebe89bcb3d52d5940ba930891925d788
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 23b9f2e8bb14d74a7f2b722945251acb182b71db
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724846"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222573"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
 
@@ -26,11 +26,10 @@ ms.locfileid: "121724846"
 - 適切なスコープを持つユーザーに代わるアプリケーション。
 - 適切なアプリケーション ロールを持つデーモン アプリ。
 
-> [!NOTE]
-> この記事のコード スニペットは、GitHub の以下のコード サンプルから抜粋されたものです。
->
-> - [ASP.NET Core Web API の増分チュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs)
-> - [ASP.NET Web API のサンプル](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/master/TodoListService/Controllers/TodoListController.cs)
+この記事のコード スニペットは、GitHub の以下のコード サンプルから抜粋されたものです。
+
+- [ASP.NET Core Web API の増分チュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs)
+- [ASP.NET Web API のサンプル](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/master/TodoListService/Controllers/TodoListController.cs)
 
 ASP.NET または ASP.NET Core の Web API を保護するには、次のいずれかの項目に `[Authorize]` 属性を追加する必要があります。
 
@@ -47,8 +46,8 @@ ASP.NET または ASP.NET Core の Web API を保護するには、次のいず�
 
 ただし、この保護は不十分です。 ASP.NET および ASP.NET Core でトークンが検証されることしか保証されません。 API は、API の呼び出しに使用されるトークンが、予期された要求を使用して要求されていることを検証する必要があります。 特に次の要求では検証が必要です。
 
-- API がユーザーの代わりに呼び出される場合は、"*スコープ*"。
-- API をデーモン アプリから呼び出すことができる場合は、"*アプリ ロール*"。
+- API がユーザーの代わりに呼び出される場合は、"_スコープ_"。
+- API をデーモン アプリから呼び出すことができる場合は、"_アプリ ロール_"。
 
 ## <a name="verify-scopes-in-apis-called-on-behalf-of-users"></a>ユーザーに代わって呼び出される API のスコープの確認
 
@@ -253,7 +252,7 @@ private void ValidateScopes(IEnumerable<string> acceptedScopes)
 }
 ```
 
-ASP.NET Core の `ValidateScopes` の完全なバージョンは、[*ScopesRequiredHttpContextExtensions.cs*](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/ScopesRequiredHttpContextExtensions.cs)
+ASP.NET Core の `ValidateScopes` の完全なバージョンは、[_ScopesRequiredHttpContextExtensions.cs_](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/ScopesRequiredHttpContextExtensions.cs)
 
 ---
 
@@ -291,7 +290,6 @@ MyController : ApiController
 ```
 
 ただし、この場合は、ロール要求を Startup.cs ファイルの "roles" にマップする必要があります。
-
 
 ```CSharp
  services.Configure<OpenIdConnectOptions>(OpenIdConnectDefaults.AuthenticationScheme, options =>
@@ -340,7 +338,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-ASP.NET Core の `ValidateAppRole` の完全バージョンは、[*RolesRequiredHttpContextExtensions.cs*](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/RolesRequiredHttpContextExtensions.cs) コードを参照してください。
+ASP.NET Core の `ValidateAppRole` の完全バージョンは、[_RolesRequiredHttpContextExtensions.cs_](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/RolesRequiredHttpContextExtensions.cs) コードを参照してください。
 
 ---
 
@@ -368,7 +366,7 @@ ASP.NET Core で Microsoft.Identity.Web を使用している場合は、ACL ベ
 System.UnauthorizedAccessException: IDW10201: Neither scope or roles claim was found in the bearer token.
 ```
 
- この例外を回避するには、appsettings.json の `AllowWebApiToBeAuthorizedByACL` 構成プロパティをプログラムで true に設定します。
+この例外を回避するには、appsettings.json の `AllowWebApiToBeAuthorizedByACL` 構成プロパティをプログラムで true に設定します。
 
 ```Json
 {

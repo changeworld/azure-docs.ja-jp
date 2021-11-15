@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2021
 ms.author: mmcrey
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a7fc9d45db3469fa9198990e4308e431ac0cbc68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 09d4c88bec94c881fd9895557aa35264ea4ffab4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092442"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561216"
 ---
 # <a name="dcsv3-and-dcdsv3-series"></a>DCsv3 および DCdsv3 シリーズ
 
@@ -39,7 +39,7 @@ CPU: 第 3 世代 Intel® Xeon スケーラブル プロセッサ 8370C<br>
 ベース オール コア周波数: 2.8 GHz<br>
 [Turbo Boost Max 3.0](https://www.intel.com/content/www/us/en/gaming/resources/turbo-boost.html): 有効、最大周波数 3.5 GHz<br>
 [ハイパー スレッディング](https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html): サポートされていません<br>
-合計メモリ暗号化: マルチキーが有効<br>
+[合計メモリ暗号化 - マルチキー](https://itpeernetwork.intel.com/memory-encryption/): 有効<br>
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Ultra-Disk Storage](disks-enable-ultra-ssd.md): サポートされています<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): サポートされています (CLI プロビジョニングまたは ARM テンプレートのみ)<br>

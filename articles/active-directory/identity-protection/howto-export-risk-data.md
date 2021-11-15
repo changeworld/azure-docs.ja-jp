@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ea682d65bde9748a4cd55ed066eb8f31eb418a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f723b6bf700b1dc18bea90b4ed0be00356c716a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784092"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300748"
 ---
 # <a name="how-to-export-risk-data"></a>方法: リスク データをエクスポートする
 
@@ -73,7 +73,7 @@ Azure Event Hubs では、Azure AD Identity Protection のようなソースか�
 
 ## <a name="other-options"></a>その他のオプション
 
-組織では、さらに処理するために [Azure AD データを Azure Sentinel に接続](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)することも選択できます。
+組織では、さらに処理するために [Azure AD データを Microsoft Sentinel に接続](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)することも選択できます。
 
 組織では、[Microsoft Graph API を使用して、リスク イベントをプログラムで操作](howto-identity-protection-graph-api.md)できます。
 

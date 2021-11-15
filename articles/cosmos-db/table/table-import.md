@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/07/2017
+ms.date: 11/08/2021
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fa40f5d77fc9aa993f510510eb6396e011bbf3fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c47b92d416bd24554c6e4cecc1aadb81c331616e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786445"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061270"
 ---
 # <a name="migrate-your-data-to-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -87,12 +87,12 @@ Table Storage からインポートするときにソース接続文字列を取
 Table Storage から Table API にインポートする方法を示すコマンドライン サンプルは以下のとおりです。
 
 ```bash
-dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
+dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmos.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
 ## <a name="migrate-data-by-using-azcopy"></a>AzCopy を使用してデータを移行する
 
-AzCopy コマンドライン ユーティリティを使用して、Table Storage から Azure Cosmos DB Table API にデータを移行することもできます。 AzCopy を使用するには、まず「[Table Storage からデータをエクスポートする](/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage)」の説明に従って、データをエクスポートします。 [Azure Cosmos DB Table API](/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage) に関するページの説明に従って、データを Azure Cosmos DB にインポートします。
+AzCopy コマンドライン ユーティリティを使用して、Table Storage から Azure Cosmos DB Table API にデータを移行することもできます。 AzCopy を使用するには、まず「[Table Storage からデータをエクスポートする](/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage)」の説明に従って、データをエクスポートします。 その後、次のコマンドを使用して Azure Cosmos DB Table API にデータをインポートします。 [Azure Table ストレージ](/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage)にインポートすることもできます。
 
 Azure Cosmos DB にインポートする際は、次のサンプルを参照してください。 `/Dest` 値では `core` ではなく `cosmosdb` を使用することに注意してください。
 

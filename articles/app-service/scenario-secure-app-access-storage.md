@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/16/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: be170a07340fdea84b9b4af03bd329fcdf91483d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5eb3998821a8022a82c127a69279809e93d31056
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065553"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477347"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>チュートリアル:Web アプリから Azure Storage にアクセスする
 
@@ -206,8 +206,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ---
 
-## <a name="access-blob-storage-net"></a>Blob Storage にアクセスする (.NET)
-
+## <a name="access-blob-storage"></a>Blob Storage にアクセスする
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスは、Azure Storage に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得してサービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、新しい BLOB をアップロードするサービス クライアント オブジェクトを作成します。
 
 このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity)を参照してください。
@@ -216,7 +216,7 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 Blob Storage を使用するための [Blob Storage NuGet パッケージ](https://www.nuget.org/packages/Azure.Storage.Blobs/)と、Azure AD の資格情報で認証するための [.NET 用 Azure Identity クライアント ライブラリ NuGet パッケージ](https://www.nuget.org/packages/Azure.Identity/)をインストールします。 クライアント ライブラリは、.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用してインストールします。
 
-# <a name="command-line"></a>[コマンド ライン](#tab/command-line)
+#### <a name="net-core-command-line"></a>.NET Core コマンド ライン
 
 コマンド ラインを開き、プロジェクト ファイルが含まれているディレクトリに切り替えます。
 
@@ -228,8 +228,7 @@ dotnet add package Azure.Storage.Blobs
 dotnet add package Azure.Identity
 ```
 
-# <a name="package-manager"></a>[パッケージ マネージャー](#tab/package-manager)
-
+#### <a name="package-manager-console"></a>パッケージ マネージャー コンソール
 Visual Studio でプロジェクトまたはソリューションを開き、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** コマンドを使用してコンソールを開きます。
 
 インストール コマンドを実行します。
@@ -238,8 +237,6 @@ Install-Package Azure.Storage.Blobs
 
 Install-Package Azure.Identity
 ```
-
----
 
 ### <a name="example"></a>例
 
@@ -286,11 +283,45 @@ static public async Task UploadBlob(string accountName, string containerName, st
 }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+[@azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/identity/identity/README.md) パッケージの `DefaultAzureCredential` クラスは、Azure Storage に対する要求をコードで承認するためにトークン資格情報を取得する際に使用されます。 [@azure/storage-blob](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/storage/storage-blob) パッケージの `BlobServiceClient` クラスは、新しい BLOB をストレージにアップロードするために使用されます。 `DefaultAzureCredential` クラスのインスタンスを作成します。これは、マネージド ID を使用し、トークンを取得して BLOB サービス クライアントにアタッチします。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用して、新しい BLOB をアップロードするサービス クライアント オブジェクトを作成します。
+
+このコードをサンプル アプリケーションの一部として見る場合は、[GitHub のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/1-WebApp-storage-managed-identity)で *StorageHelper.js* をご覧ください。
+
+### <a name="example"></a>例
+
+```nodejs
+const { DefaultAzureCredential } = require("@azure/identity");
+const { BlobServiceClient } = require("@azure/storage-blob");
+const defaultAzureCredential = new DefaultAzureCredential();
+
+// Some code omitted for brevity.
+
+async function uploadBlob(accountName, containerName, blobName, blobContents) {
+    const blobServiceClient = new BlobServiceClient(
+        `https://${accountName}.blob.core.windows.net`,
+        defaultAzureCredential
+    );
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+
+    try {
+        await containerClient.createIfNotExists();
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        const uploadBlobResponse = await blockBlobClient.upload(blobContents, blobContents.length);
+        console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+    } catch (error) {
+        console.log(error);
+    }
+}
+```
+---
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の作業を行う方法を学びました。
 

@@ -3,12 +3,12 @@ title: Azure NetApp Files と Azure VMware Solution との統合
 description: Azure NetApp Files および Azure VMware Solution VM を使用して、オンプレミス サーバー、Azure VMware Solution VM、クラウド インフラストラクチャの間でデータを移行および同期します。
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 4c07765bd54e59109f15f8a0cdfd067f48dd14b4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7335434c30b88e54fbfd15b18f3604954cbdef0f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443783"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226775"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files と Azure VMware Solution との統合
 
@@ -99,4 +99,5 @@ Azure NetApp Files とご利用の Azure VMware Solution ワークロードの�
 - [Azure NetApp Files のリソース制限](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
 - [Azure NetApp Files のネットワーク計画のガイドライン](../azure-netapp-files/azure-netapp-files-network-topologies.md)
 - [Azure NetApp Files ボリュームのリージョン間レプリケーション](../azure-netapp-files/cross-region-replication-introduction.md) 
-- [Azure NetApp Files についての FAQ](../azure-netapp-files/azure-netapp-files-faqs.md)
+- [Azure NetApp Files の NFS に関する FAQ](../azure-netapp-files/faq-nfs.md)
+- [Azure NetApp Files の SMB に関する FAQ](../azure-netapp-files/faq-smb.md)

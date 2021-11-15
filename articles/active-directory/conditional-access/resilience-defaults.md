@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a8e61f296d430713812007b93f1b34cea8588a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 5e2bebe9769d38502a37134326228d41979cad5a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811548"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432683"
 ---
-# <a name="conditional-access-resilience-defaults"></a>条件付きアクセス: 復元の既定値群
+# <a name="conditional-access-resilience-defaults-preview"></a>条件付きアクセス: 復元の既定値群 (プレビュー)
 
 プライマリ認証サービスが停止した場合、Azure Active Directory (Azure AD) Backup Authentication Service によって、既存のセッション用のアクセス トークンをアプリケーションに自動的に発行できます。 既存のセッションの再認証が、Azure AD に対する認証の 90% 以上を占めるので、この機能により、Azure AD の回復性が大幅に向上する可能性があります。 ゲスト ユーザーによる新しいセッションや認証は、Backup Authentication Service ではサポートされません。
 
@@ -38,7 +38,7 @@ ms.locfileid: "129811548"
 
 | Session description (セッションの説明) | アクセスが許可されます |
 | --- | --- |
-| 新しいセッション | No |
+| 新しいセッション | いいえ |
 | 既存のセッション – 条件付きアクセス ポリシーが構成されていない | はい |
 | 既存のセッション – 条件付きアクセス ポリシーが構成されており、MFA などの必要な制御が既に満たされた | はい |
 | 既存のセッション – 条件付きアクセス ポリシーが構成されており、MFA などの必要な制御がまだ満たされていない | 復元の既定値群によって決定されます |

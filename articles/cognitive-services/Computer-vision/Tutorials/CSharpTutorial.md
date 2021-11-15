@@ -8,15 +8,15 @@ manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 04/17/2019
+ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dd2ceaa97a456d72227d6180596aeccc9e00a614
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e083bc3d5f313be6bd32a75f413f858ef68e0993
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453900"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469998"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -34,7 +34,7 @@ Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマ
 
 * [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* Azure サブスクリプションを入手したら、Azure portal で <ph id="ph1"><a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="</ph>Computer Vision リソースを作成<ph id="ph2">"  target="_blank"></ph>Computer Vision リソースを作成<ph id="ph3"></a></ph>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
@@ -49,7 +49,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 ```
 
 > [!IMPORTANT]
-> このリポジトリを ZIP ファイルとしてダウンロードしないでください。 リポジトリを ZIP としてダウンロードすると、サブモジュールが含まれません。
+> このリポジトリを _.zip_ ファイルとしてダウンロードしないでください。 リポジトリを _.zip_ としてダウンロードすると、Git ではサブモジュールが含まれません。
 
 ### <a name="get-optional-sample-images"></a>オプションのサンプル画像を入手する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 4b4b84de819e8b2e64238ef1d3d8d7149473c2b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b39616ea0270615db618b8097a28b67f2cff45e5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753903"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と cloudtamer.io の統合
 
@@ -65,6 +65,7 @@ cloudtamer.io に対して Azure AD SSO を構成してテストするには、�
 1. **[cloudtamer.io の SSO の構成](#configure-cloudtamerio-sso)** - アプリケーション側でシングル サインオン設定を構成します。
     1. **[cloudtamer.io のテスト ユーザーの作成](#create-cloudtamerio-test-user)** - cloudtamer.io で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+1. **[グループ アサーション](#group-assertions)** - Azure AD と cloudtamer.io に対してグループ アサーションを設定します。
 
 ### <a name="begin-cloudtamerio-sso-configuration"></a>cloudtamer.io SSO 構成を開始する
 
@@ -179,7 +180,41 @@ cloudtamer.io に対して Azure AD SSO を構成してテストするには、�
 
 また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリの [cloudtamer.io] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した cloudtamer.io に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
+## <a name="group-assertions"></a>グループ アサーション
+
+既存の Azure Active Directory グループを使用して cloudtamer.io ユーザーのアクセス許可を簡単に管理するには、次の手順を実行します。
+
+### <a name="azure-ad-configuration"></a>Azure AD 構成
+
+1. Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に移動します。
+1. 一覧で、cloudtamer.io のエンタープライズ アプリケーションを選択します。
+1. **[概要]** の左側のメニューで、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン]** で、 **[User Attributes & Claims]\(ユーザー属性と要求\)** の下にある **[編集]** を選択します。
+1. **[グループ要求を追加する]** を選択します。 
+   > [!NOTE]
+   > グループ要求は 1 つだけ保持できます。 このオプションが無効になっている場合は、グループ要求が既に定義されている可能性があります。
+1. **[グループ要求]** に対して、要求で返される必要があるグループを選択します。
+   - cloudtamer.io で使用する予定であるすべてのグループをこのエンタープライズ アプリケーションに常に割り当てておく場合は、 **[アプリケーションに割り当てられているグループ]** を選択します。
+   - すべてのグループを表示する場合 (この選択によってグループ アサーションが大量に発生し、制限の対象になることがあります) は、 **[アプリケーションに割り当てられているグループ]** を選択します。
+1. **[ソース属性]** については、既定の **グループ ID** をままにします。
+1. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにします。
+1. **[名前]** に「**memberOf**」と入力します。
+1. **[保存]** を選択して、Azure AD での構成を完了します。
+
+### <a name="cloudtamerio-configuration"></a>cloudtamer.io の構成
+
+1. cloudtamer.io で、 **[Users]\(ユーザー\)**  >  **[Identity Management Systems]\(ID 管理システム\)** の順に移動します。
+1. Azure AD 用に作成した IDMS を選択します。
+1. 概要ページで、 **[User Group Associations]\(ユーザー グループの関連付け\)** タブを選択します。
+1. 必要なユーザー グループ マッピングごとに、次の手順を実行します。
+   1. **[Add]\(追加\)**  >  **[Add New]\(新規追加\)** の順に選択します。
+   1. 表示されるダイアログで、次の操作を行います。
+      1. **[Name]\(名前\)** に「**memberOf**」と入力します。
+      1. **[Regex]** には、一致させたいグループの (Azure AD の) オブジェクト ID を入力します。
+      1. **[User Group]\(ユーザー グループ\)** では、 **[Regex]** 内のグループにマップする cloudtamer.io 内部グループを選択します。
+      1. **[Update on Login]\(ログイン時に更新\)** チェックボックスをオンにします。
+   1. **[Add]\(追加\)** を選択して、グループの関連付けを追加します。
 
 ## <a name="next-steps"></a>次のステップ
 
-cloudtamer.io を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+cloudtamer.io を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

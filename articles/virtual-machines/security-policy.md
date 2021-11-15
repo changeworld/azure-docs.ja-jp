@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 2010347f2b796a7cac181d0b574401ad34b6f859
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a0f292a3ea3df213c1e9be76da0c2d35ce8554ce
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697260"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345170"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 
@@ -25,11 +25,11 @@ ms.locfileid: "122697260"
 
 最近のクラウド環境に対する脅威は変化が激しく、コンプライアンスとセキュリティの要件を満たすために効果的な保護を維持しなければならないという圧力はますます大きくなっています。 [Azure に対する Microsoft マルウェア対策](../security/fundamentals/antimalware.md)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 悪意のあることまたは望ましくないことが確認されているソフトウェアが VM 上で実行されようとしていたり、自らインストールを試みたりした場合に、その事実を把握できるようにアラートを構成することができます。 Linux または Windows Server 2008 を実行している VM ではサポートされていません。
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../security-center/security-center-introduction.md) は、VM に対する脅威の防御、検出、対応を可能にする機能です。 Security Center は、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Microsoft Defender for Cloud](../security-center/security-center-introduction.md) は、VM に対する脅威の防御、検出、対応に役立ちます。 Microsoft Defender for Cloud を導入すると、ご利用のすべての Azure サブスクリプションにセキュリティ監視とポリシー管理が組み込まれ、このツール以外では気付かないような脅威を検出できます。このツールはまた、幅広いセキュリティ ソリューション エコシステムと連動します。
 
-Security Center の Just-In-Time アクセスは、VM のデプロイ全体に適用できます。これによって Azure VM へのインバウンド トラフィックをロックダウンし、VM への接続が必要な場合は簡単にアクセスできるようにしつつ、攻撃に対する露出を減らすことができます。 Just-In-Time が有効で、ユーザー要求が VM にアクセスする場合、ユーザーが VM に対してどのアクセス許可を持っているかが Security Center によって確認されます。 ユーザーが適切なアクセス許可を持っている場合は要求が承認され、Security Center では、選択したポートへのインバウンド トラフィックを制限時間内だけで許可するように、ネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 
+Defender for Cloud の Just-In-Time アクセスは、VM のデプロイ全体に適用できます。これによって Azure VM へのインバウンド トラフィックをロックダウンし、VM への接続が必要な場合は簡単にアクセスできるようにしつつ、攻撃にさらされる状況を減らすことができます。 Just-In-Time が有効になっているとき、ユーザーが VM へのアクセスを要求すると、ユーザーに与えられている VM のアクセス許可が Defender for Cloud によって確認されます。 ユーザーに適切なアクセス許可が与えられている場合は要求が承認され、選択したポートへのインバウンド トラフィックを制限時間内だけで許可するように、Defender for Cloud によってネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Defender for Cloud により NSG が以前の状態に復元されます。 
 
 ## <a name="encryption"></a>暗号化
 
@@ -75,4 +75,4 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 
 ## <a name="next-steps"></a>次のステップ
-- Azure Security Center を使って [Linux](../security/fundamentals/overview.md) または [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security) の仮想マシンのセキュリティを監視する手順を参照します。
+- Microsoft Defender for Cloud を使用して [Linux](../security/fundamentals/overview.md) または [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security) の仮想マシンのセキュリティを監視する手順を確認します。

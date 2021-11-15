@@ -8,12 +8,12 @@ metadata:
   ms.author: helohr
   ms.custom: devx-track-azurepowershell
   manager: femila
-  ms.openlocfilehash: 732371ae56de0949609aa52086a0bcbaf6d98ccc
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 902b01508746ccc6253f633fd54ec6560659110b
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131092680"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131437337"
 title: Azure Stack HCI 用 Azure Virtual Desktop に関する FAQ
 summary: この記事では、Azure Stack HCI 用 Azure Virtual Desktop に関してよく寄せられるご質問に回答します。
 sections:
@@ -29,7 +29,15 @@ sections:
   - question: >
       Azure Stack HCI 以外のオンプレミス インフラストラクチャで Azure Virtual Desktop を使用できますか?
     answer: >
-      不正解です。 Azure Virtual Desktop のオンプレミス機能は、Azure Stack HCI インフラストラクチャを実行するセッション ホストにのみ展開されます。
+      いいえ。 Azure Virtual Desktop のオンプレミス機能は、Azure Stack HCI インフラストラクチャを実行するセッション ホストにのみ展開されます。
+  - question: >
+      Azure Virtual Desktop は Azure Arc 対応サービスですか?
+    answer: >
+      いいえ。Azure Virtual Desktop は Azure Arc 対応サービスではありません。 この技術ドキュメントで説明されているように、Azure、マルチクラウド環境、Azure Arc 対応サーバー (Azure Stack HCI 仮想マシンを除く) の外部ではサポートされません。
+  - question: >
+      Azure Government で Azure Stack HCI 用に Azure Virtual Desktop を使用できますか?
+    answer: >
+      いいえ。Azure Stack HCI は、Azure Government では現在使用できません。
   - question: >
       Azure Stack HCI 用 Azure Virtual Desktop を使用すると、すべてのデータがオンプレミスに保存されますか?
     answer: いいえ。Azure Stack HCI 用 Azure Virtual Desktop 使用しても、すべてのデータがオンプレミスに保存されるとは限りません。 管理者は、セッション ホスト仮想マシンと、ファイル サーバーなどの関連サービスをオンプレミスに配置することで、ユーザー データをオンプレミスに保存できます。 ただし、一部の顧客データ、診断データ、サービスによって生成されたデータは、引き続きデータセンターに保存されます。 Azure Virtual Desktop での各種データの保存方法について詳しくは、「[Azure Virtual Desktop のデータの場所](data-locations.md)」を参照してください。

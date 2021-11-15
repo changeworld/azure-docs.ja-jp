@@ -4,17 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins で採用できる既存の業界オントロジについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 2/26/2021
+ms.date: 10/27/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 51a35f13b8f9328abaad44b112acf4e2176796d6
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 936df82dc8c7c5babcb3b1844f2d53f1396dbd8b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771186"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500661"
 ---
 # <a name="adopting-an-industry-ontology"></a>業界オントロジの採用
+
+この記事では、ソリューションを簡略化するために採用できる、一連のさまざまな業界標準オントロジーについて説明します。
 
 Microsoft は、特定分野の専門家と提携してオントロジを公開しています。空白のページから始めるより、オープンソースの Digital Twins Definition Language (DTDL) オントロジから開始した方が簡単な場合があるためです。 これらのオントロジは、広く受け入れられている業界の規則を表しており、さまざまな顧客のユース ケースをサポートします。 
 

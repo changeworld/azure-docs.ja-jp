@@ -1,18 +1,18 @@
 ---
 title: エージェント ポートフォリオの概要と OS サポート (プレビュー)
-description: Azure Defender for IoT では、デバイスの種類に基づいて、エージェントの大規模なポートフォリオが提供されます。
-ms.date: 10/03/2021
+description: Microsoft Defender for IoT では、デバイスの種類に基づいて、大規模なエージェント ポートフォリオが提供されます。
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9cd87f9d332ca56da57a823886fa0ebdb93011fa
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: fbad1c486a9bf553b7f7effffe8dcf5e12b5d03a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399567"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319018"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>エージェント ポートフォリオの概要と OS サポート (プレビュー)
 
-Azure Defender for IoT では、デバイスの種類に基づいて、エージェントの大規模なポートフォリオが提供されます。
+Microsoft Defender for IoT では、デバイスの種類に基づいて、大規模なエージェント ポートフォリオが提供されます。
 
 ## <a name="standalone-agent"></a>スタンドアロンのエージェント
 
@@ -30,9 +30,9 @@ Azure Defender for IoT では、デバイスの種類に基づいて、エージ
 
 ## <a name="azure-rtos-micro-agent"></a>Azure RTOS マイクロ エージェント
 
-Azure Defender for IoT マイクロ エージェントでは、Azure RTOS を使用するデバイス向けの包括的で軽量のセキュリティ ソリューションが提供されます。 また、リアルタイム オペレーティング システム (RTOS) デバイスに関する一般的な脅威と潜在的な悪意のあるアクティビティへの対応が提供されます。 マイクロ エージェントは、Azure RTOS NetX Duo コンポーネントの一部として組み込まれており、デバイスのネットワーク アクティビティを監視します。
+Microsoft Defender for IoT マイクロ エージェントでは、Azure RTOS を使用するデバイス向けの包括的で軽量なセキュリティ ソリューションが提供されます。 Microsoft Defender for IoT マイクロ エージェントではまた、リアルタイム オペレーティング システム (RTOS) デバイスにおける一般的な脅威と悪意が潜在する行為に対応します。 マイクロ エージェントは、Azure RTOS NetX Duo コンポーネントの一部として組み込まれており、デバイスのネットワーク アクティビティを監視します。
 
-Azure Defender for IoT マイクロ エージェントは、Azure RTOS NetX Duo コンポーネントの一部として組み込まれており、デバイスのネットワーク アクティビティを監視します。 マイクロ エージェントは、リアルタイム オペレーティング システム (RTOS) デバイスに関する一般的な脅威と潜在的な悪意のあるアクティビティへの対応を提供する、包括的で軽量のセキュリティ ソリューションで構成されています。
+Microsoft Defender for IoT マイクロ エージェントは、Azure RTOS NetX Duo コンポーネントの一部として組み込まれており、デバイスのネットワーク アクティビティを監視します。 マイクロ エージェントは、リアルタイム オペレーティング システム (RTOS) デバイスに関する一般的な脅威と潜在的な悪意のあるアクティビティへの対応を提供する、包括的で軽量のセキュリティ ソリューションで構成されています。
 
 ## <a name="next-steps"></a>次の手順
 

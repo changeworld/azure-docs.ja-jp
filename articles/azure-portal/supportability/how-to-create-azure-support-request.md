@@ -3,13 +3,13 @@ title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 09/30/2021
-ms.openlocfilehash: 4598cc16173100749ad3f1bdefd3165020554465
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/20/2021
+ms.openlocfilehash: 8c1a9e841c291bc6a7a6139b7aff4217975a0bcd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358275"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265000"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -78,7 +78,7 @@ Microsoft は、発生している問題について情報を収集してその�
 
 1. お客様の問題に関する詳細情報を確認できるように **問題の詳細** をすべて入力します。 可能であれば、問題が発生した時期と、再現手順をお知らせください。 ログ ファイルや診断からの出力などのファイルをアップロードできます。 ファイルのアップロードの詳細については、「[ファイルのアップロードのガイドライン](how-to-manage-azure-support-request.md#file-upload-guidelines)」を参照してください。
 
-1. **[診断情報の共有]** セクションで、 **[はい]** または **[いいえ]** を選択します。 **[はい]** を選択することで、Azure サポートで Azure リソースから [診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 この情報を共有しない場合は、 **[いいえ]** を選択します。 収集する可能性があるファイルの種類の詳細については、「[詳細診断情報ログ](#advanced-diagnostic-information-logs)」セクションを参照してください。
+1. **[詳細診断情報]** セクションで、 **[はい]** または **[いいえ]** を選択します。 **[はい]** を選択することで、Azure サポートで Azure リソースから[詳細診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 この情報を共有しない場合は、 **[いいえ]** を選択します。 収集する可能性があるファイルの種類の詳細については、「[詳細診断情報ログ](#advanced-diagnostic-information-logs)」セクションを参照してください。
 
   場合によっては、追加のオプションを選択する必要があります。 たとえば、特定の種類の仮想マシンの問題の種類について、[仮想マシンのメモリへのアクセスを許可する](#memory-dump-collection)かどうかを選択できます。
 

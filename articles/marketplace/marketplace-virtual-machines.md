@@ -7,19 +7,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 4278a3b0e022015a1e12542cac7699590150b5e4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 10/26/2021
+ms.openlocfilehash: 2f8aa4612d386995f39fccceebdaee67e4afe9dd
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602579"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848346"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>仮想マシン オファーの計画
 
 この記事では、仮想マシン (VM) のオファーをコマーシャル マーケットプレースに発行するためのさまざまなオプションと要件について説明します。 VM オファーは、Azure Marketplace を通じてデプロイおよび課金される取引可能なオファーです。
 
 開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+
+> [!TIP]
+> コマーシャル マーケットプレースでの購入の顧客のビューを表示するには、「[Azure Marketplace での購入](/marketplace/azure-purchasing-invoicing)」を参照してください。
 
 ### <a name="technical-fundamentals"></a>技術的基礎
 

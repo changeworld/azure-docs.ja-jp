@@ -1,5 +1,5 @@
 ---
-title: ECMA Connector Host と Azure AD に関する問題のトラブルシューティング
+title: オンプレミス アプリケーションへのプロビジョニングに関する問題のトラブルシューティング
 description: ECMA Connector Host をインストールして使用するときに発生する可能性のあるさまざまな問題のトラブルシューティング方法について説明します。
 services: active-directory
 author: billmath
@@ -7,24 +7,24 @@ manager: karenh444
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/24/2021
+ms.date: 10/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 002c57afde5909a6f02644b554b389d02735def0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a364995ae443f121112c7e259525735bc7b8a13c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991133"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456349"
 ---
-# <a name="troubleshoot-ecma-connector-host-issues"></a>ECMA Connector Host に関する問題のトラブルシューティング
+# <a name="troubleshoot-on-premises-application-provisioning"></a>オンプレミス アプリケーションのプロビジョニングのトラブルシューティング
 
 >[!IMPORTANT]
-> オンプレミス プロビジョニング プレビューは現在、招待のみのプレビューです。 この機能へのアクセスを要求するには、[アクセス要求フォーム](https://aka.ms/onpremprovisioningpublicpreviewaccess)を使用してください。 今後数か月の間に、より多くのお客様および接続ユーザーにプレビューを公開し、一般提供に向けて準備を進めていく予定です。
+> オンプレミス プロビジョニング プレビューは現在、招待のみのプレビューとなります。 この機能へのアクセスを要求するには、[アクセス要求フォーム](https://aka.ms/onpremprovisioningpublicpreviewaccess)を使用してください。 今後数か月の間に、より多くのお客様および接続ユーザーにプレビューを公開し、一般提供に向けて準備を進めていく予定です。
 
 ## <a name="troubleshoot-test-connection-issues"></a>テスト接続の問題をトラブルシューティングする
-ECMA ホストとプロビジョニング エージェントを構成したら、Azure Active Directory (Azure AD) プロビジョニング サービスからプロビジョニング エージェント、ECMA ホスト、アプリケーションへの接続をテストします。 このエンド ツー エンド テストを実行するには、Azure portal でアプリケーションの **[テスト接続]** を選択します。 テスト接続に失敗した場合は、次のトラブルシューティング手順を試してください。
+プロビジョニング エージェントと ECMA ホストを構成したら、Azure Active Directory (Azure AD) プロビジョニング サービスからプロビジョニング エージェント、ECMA ホスト、アプリケーションへの接続をテストします。 このエンド ツー エンド テストを実行するには、Azure portal でアプリケーションの **[テスト接続]** を選択します。 テスト接続に失敗した場合は、次のトラブルシューティング手順を試してください。
 
  1. エージェントと ECMA ホストが実行中であることを確認します。
      1. エージェントがインストールされているサーバーの **スタート** ボタンをクリックし、 **[ファイル名を指定して実行]** で「**Services.msc**」と入力して、 **[サービス]** を開きます。

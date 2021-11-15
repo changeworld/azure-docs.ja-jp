@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272eaf3a21992cb5fecf1c02e5ab1000af149bcc
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 65f123208e9a6199134a9f033007332dc032ff8a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687841"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309588"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -316,7 +316,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 > [!NOTE]
 >  ユーザーは[グローバル管理者](../roles/permissions-reference.md)であること、および組織のためにこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、Azure portal の [レポート] タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータは収集されません。
 
-登録とパスワード リセットに関する監査ログは、30 日間利用できます。 企業内でのセキュリティ監査をもっと長い期間保有する必要がある場合は、ログをエクスポートし、[Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk、ArcSight などの SIEM ツールに取り込む必要があります。
+登録とパスワード リセットに関する監査ログは、30 日間利用できます。 企業内のセキュリティ監査をもっと長い期間保有する必要がある場合、ログをエクスポートし、[Microsoft Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk、ArcSight などの SIEM ツールに取り込む必要があります。
 
 ![SSPR レポートのスクリーンショット](./media/howto-sspr-deployment/sspr-reporting.png)
 

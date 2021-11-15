@@ -6,12 +6,12 @@ author: nickomang
 ms.topic: article
 ms.date: 09/09/2021
 ms.author: nickoman
-ms.openlocfilehash: 871a2f97ab8b95cca46fea91f5613cb489cb19a3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 93bcd85c1a0804a6b3335add09d609eac41db98a
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066921"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866755"
 ---
 # <a name="http-proxy-support-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での HTTP プロキシのサポート (プレビュー)
 
@@ -26,6 +26,7 @@ ms.locfileid: "131066921"
 ## <a name="limitations-and-other-details"></a>制限事項とその他の詳細
 
 次のシナリオはサポートされて **いません**。
+- 監視アドオン
 - ノード プールごとに異なるプロキシ構成
 - クラスター作成後のプロキシ設定の更新
 - ユーザーとパスワードの認証

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: 34d1d765dbb5f2267c4c56d4dd91daa31f8799a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: eabdbf7b427176d13046ebf7bf82f5a2979ed703
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629884"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989216"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>チュートリアル:Hootsuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,6 +37,9 @@ ms.locfileid: "128629884"
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md) 
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 組織に対する **メンバー管理** のアクセス許可を持つ、[Hootsuite](http://www.hootsuite.com/) のユーザー アカウント。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
@@ -135,13 +138,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは次からのサイクルよりも完了に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
 
 ## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-* [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
 
 ## <a name="change-log"></a>ログの変更
@@ -149,7 +152,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * 2020 年 10 月 22 日 - ユーザー属性 "name.givenName" および "name.familyName" のサポートが追加されました。 Users のカスタム拡張属性 "organizationIds" と "teamIds" は削除されました。
 グループ属性 "displayName"、"members"、および "externalId" のサポートが追加されました。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="more-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

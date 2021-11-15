@@ -11,12 +11,12 @@ author: mabasile-MSFT
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 385c8ee43d05e99e737b2307e6a2a822379233e5
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 12ca40edbe419668fab0654650049e82925fbb01
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481496"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463242"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics のビジネス インテリジェンス パートナー
 
@@ -39,13 +39,12 @@ ms.locfileid: "123481496"
 | ![Mode Analytics](./media/business-intelligence/mode-logo.png) |**モード**<br>Mode は、驚くほど速く、予想を超えて優れたデータ分析を使用したチームでの決断に役立つ、分析と BI の最新ソリューションです。 データ チームは、SQL、Python、R、およびビジュアル分析を組み合わせた推奨ワークフローで迅速に対応します。一方で、関係者は、独自にデータを調査、共有しながら、データ チームと足並みを揃えて作業を行います。 あらゆるユーザーがデータにアクセスしやすくなることで、質問から回答までの時間が短縮され、ビジネス上の決断をより速く下すことができるようになります。|[製品ページ](https://mode.com/)<br> |
 | ![Pyramid Analytics](./media/business-intelligence/pyramid-logo.png) |**Pyramid Analytics**<br>Pyramid 2020 は、チームを結びつけ、自信に満ちた意思決定を導出し、成功という結果をもたらす信頼性の高い分析プラットフォームです。 ビジネス ユーザーは、クラウド規模のハイエンドの分析とデータ サイエンスを、IT 部門の支援を受けずにあらゆるブラウザーやデバイスで行うことができます。 データ科学者は、機械学習のアルゴリズムとスクリプトを利用して、ビジネス上の困難な問題を理解できます。 パワー ユーザーは独自のデータを準備してモデル化し、明快な分析コンテンツを作成することができます。 技術に詳しくないユーザーでも、魅力的な視覚化やガイド付きの分析プレゼンテーションを活用できます。 これは、ガバナンスを備えた次世代のセルフサービス分析です。 |[製品ページ](https://www.pyramidanalytics.com/analytics-os)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pyramidanalytics.pyramid2020v4) |
 | ![Qlik](./media/business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>すべてのユーザーが使用できるこのデータ視覚化アプリで洞察を探索します。 Qlik Sense を使用すると、組織内のすべてのユーザーは柔軟な対話型の視覚化を簡単に作成して、意味のある意思決定を行うことができます。 |[製品ページ](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
+| ![SAS](./media/business-intelligence/sas-logo.jpg) |**SAS® Viya®**<br>SAS® Viya® は、スケーラブルなクラウドネイティブ アーキテクチャで実行される AI、分析、データ管理ソリューションです。 これにより、分析情報を運用化し、データ サイエンティストからビジネス ユーザーまで、すべてのユーザーが共同作業を行い、革新的な結果をより迅速に実現できるようになります。 オープン ソースまたは SAS モデルを使用すると、SAS® Viya® に API または対話型インターフェイスを介してアクセスして、生データをアクションに変換できます。 |[製品ページ](https://www.sas.com/microsoft)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/sas-institute-560503.sas-viya-saas?tab=Overview)<br>|
 | ![SiSense](./media/business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense は、高パフォーマンスの分析データベース、複数のソースの結合機能、シンプルなデータの抽出 (ETL)、Web ベースのデータ視覚化など、企業がデータを分析して視覚化にする際に必要なツールが含まれた、完全装備のビジネス インテリジェンス ソフトウェアです。 SiSense BI と Analytics を使用して、今すぐ大規模なデータ セットの分析と視覚化を開始できます。 |[製品ページ](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau のセルフ サービス分析では、フラット ファイルからデータベースに至るまで、さまざまな種類のデータをだれでもが視覚化して理解できるようにします。 Tableau には、Synapse SQL プールへの、最適化されたネイティブのコネクタが備わっており、ライブ データ分析とメモリ内分析の両方がサポートされます。 |[製品ページ](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/business-intelligence/targit_logo.png) |**Targit (Decision Suite)**<br>Targit Decision Suite の BI プラットフォームは、リアルタイム ダッシュボード、セルフサービス分析、わかりやすいレポート作成機能、魅力的なモバイル機能、簡単なデータ検出テクノロジを備えています。 すべてが 1 つにまとまったソリューションです。 Targit は、行動を起こす勇気を企業にもたらします。 |[製品ページ](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
 | ![ThoughtSpot](./media/business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>検索を使用して数十億にも及ぶレコードから詳細な分析情報を得たり、思いつきもしなかった内容の質問で AI から分析情報を引き出したりしましょう。 ThoughtSpot は、経営陣が、会社のデータに埋もれている分析情報を数秒で見つけることができるように支援します。 検索を使用して自社のデータを分析し、必要なタイミングで、自動化された分析情報を手に入れられます。|[製品ページ](https://www.thoughtspot.com)<br>|
 | ![Yellowfin](./media/business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin は、BARC の「The BI Survey」において "_カスタム_" レポートとダッシュボードの一流ベンダーとして評価されているクラウド BI ベンダーです。 Azure Synapse Analytics の専用 SQL プールに接続すると、受賞歴のあるコラボレーション BI 機能とロケーション インテリジェンス機能を備えた美しいレポートとダッシュボードを作成し、共有できるようになります。 |[製品ページ](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
-
-<!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>次の手順
 その他のパートナーの詳細については、[データ統合パートナー](data-integration.md)、[データ管理パートナー](data-management.md)、および[機械学習と AI のパートナー](machine-learning-ai.md)に関する記事を参照してください。

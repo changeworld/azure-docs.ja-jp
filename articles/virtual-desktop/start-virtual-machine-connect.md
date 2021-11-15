@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 85110db5b3f9e11105fa27a9ed8767d3d7e9e2bd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3f21a2d4eb0742bc5e91298816f9648e325b1955
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592244"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335330"
 ---
 # <a name="start-virtual-machine-on-connect"></a>接続時に仮想マシンを起動
 
@@ -38,20 +38,25 @@ PowerShell と Azure portal を使用して、個人用またはプールされ�
 
 接続時に仮想マシンを起動機能を構成する前に、VM にカスタム RBAC (ロールベースのアクセス制御) ロールを割り当てる必要があります。 このロールを使用すると、Azure Virtual Desktop でサブスクリプション内の VM を管理できるようになります。 また、このロールを使用して、VM を有効にしたり、その状態を確認したり、診断情報を報告したりすることもできます。 各ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
+>[!NOTE]
+>お使いの VM とホスト プールでサブスクリプションが異なる場合、その VM が含まれるサブスクリプションに RBAC ロールを割り当てる必要があります。
+
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
 Azure portal を使用して、接続時に仮想マシンを起動のカスタム ロールを割り当てるには、次のようにします。
 
 1. Azure portal を開き、 **[サブスクリプション]** に移動します。
 
-2. **[アクセス制御 (IAM)]** に移動し、 **[Add a custom role]\(カスタム ロールの追加\)** を選択します。
+2. お使いの VM が含まれるサブスクリプションを選択します。
+ 
+3. **[アクセス制御 (IAM)]** に移動し、 **[Add a custom role]\(カスタム ロールの追加\)** を選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アクセス制御 (IAM) の [追加] ボタンにあるドロップダウン メニューのスクリーンショット。 [Add a custom role]\(カスタム ロールの追加\) が赤色で強調表示されています。](media/add-custom-role.png)
 
-3. 次に、カスタム ロールに名前を指定し、説明を追加します。 "start VM on connect" という名前を付けることをお勧めします。
+4. 次に、カスタム ロールに名前を指定し、説明を追加します。 "start VM on connect" という名前を付けることをお勧めします。
 
-4. **[アクセス許可]** タブで、このロールを割り当てるサブスクリプションに、次の 2 つのアクセス許可セットのいずれかを追加します。 
+5. **[アクセス許可]** タブで、このロールを割り当てるサブスクリプションに、次の 2 つのアクセス許可セットのいずれかを追加します。 
  
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/read 
@@ -62,7 +67,7 @@ Azure portal を使用して、接続時に仮想マシンを起動のカスタ�
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/*/read 
 
-5. 完了したら、 **[OK]** をクリックします。
+6. 完了したら、 **[OK]** をクリックします。
 
 その後、ロールを割り当てて Azure Virtual Desktop へのアクセスを許可する必要があります。
 

@@ -1,27 +1,28 @@
 ---
-title: Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
+title: モデルの解釈可能性 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Python SDK を使用したトレーニング中および推論中に、機械学習モデルで予測を行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
-ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 10/21/2021
-ms.openlocfilehash: 37eb558e755860fc2130965fa5faacfe0d4fe804
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.custom: responsible-ml, mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: baf146725c01736fde36420779e495ce3906f891
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564824"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852600"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 
+この記事では、Azure Machine Learning におけるモデルの解釈可能性に使用できるメソッドについて説明します。 
 
-## <a name="model-interpretability-overview"></a>モデルの解釈可能性の概要
+## <a name="why-does-model-interpretability-matter"></a>モデルの解釈可能性が重要な理由
 
 データ サイエンティスト、監査者、ビジネスの意思決定者にとって、モデルの解釈可能性は会社のポリシー、業界標準、政府の規制に準拠する上で、次のように重要です。
 
@@ -54,7 +55,7 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 
 機械学習では、**特徴** は、ターゲット データ ポイントの予測に使用されるデータ フィールドです。 たとえば、信用リスクを予測するために、年齢、アカウント サイズ、およびアカウントの有効期間のデータ フィールドが使用されるとします。 この場合、年齢、アカウント サイズ、およびアカウントの有効期間が **特徴** です。 特徴の重要度から、各データ フィールドがモデルの予測にどのような影響を与えたかがわかります。 たとえば、年齢は予測で頻繁に使用されるが、アカウントのサイズとアカウントの有効期間は予測値に大きな影響を与えない場合があります。 このプロセスにより、データ サイエンティストは結果の予測を説明でき、利害関係者はモデルで最も重要な機能を認識できます。
 
-## <a name="supported-interpretability-techniques"></a>サポートされている解釈可能性の手法
+## <a name="supported-model-interpretability-techniques"></a>サポートされているモデルの解釈可能性の手法
 
  `azureml-interpret` は、解釈可能なモデルをトレーニングし、ブラックボックス化した AI システムを説明するオープン ソースの python パッケージである [Interpret-Community](https://github.com/interpretml/interpret-community/) で開発された解釈能力の手法を使用します。 [Interpret-Community](https://github.com/interpretml/interpret-community/) は、この SDK でサポートされている Explainer のホストとして機能し、現在、次の解釈可能性の手法をサポートしています。
 

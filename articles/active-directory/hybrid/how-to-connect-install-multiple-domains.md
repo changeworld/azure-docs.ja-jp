@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 671c9f9eadb7a272e718587417e78ff85d182b07
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1af2a466dc5906f752970cbc6b8898aeeea39475
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049370"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477499"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Microsoft 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -42,7 +42,7 @@ IssuerUri を表示するには、PowerShell コマンド `Get-MsolDomainFederat
 
 複数のトップレベル ドメインを追加しようとすると、問題が生じます。  たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。  このドキュメントでは、ドメインとして bmcontoso.com が使用されています。  ここでは、2 番目のトップレベル ドメインとして bmfabrikam.com が追加されています。
 
-![複数のトップレベル ドメインのスクリーンショット。](./media/how-to-connect-install-multiple-domains/domains.png)
+![複数のトップレベル ドメインのスクリーンショット](./media/how-to-connect-install-multiple-domains/domains.png)
 
 bmfabrikam.com ドメインを変換してフェデレーションしようとすると、エラーが発生します。  その原因は、IssuerUri プロパティで複数のドメインに同じ値を設定できないという Azure AD の制約にあります。  
 

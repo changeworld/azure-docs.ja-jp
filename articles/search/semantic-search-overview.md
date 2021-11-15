@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d7eb6bae2a6000f2f117dbe8f38976a13504825
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 18ed79768f1a803c4565426de67f6cde35a0a1fe
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014806"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577994"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのセマンティック検索
 
@@ -92,7 +92,7 @@ ms.locfileid: "131014806"
 | セマンティック検索 (ランク、キャプション、ハイライト、回答) | スタンダード レベル (S1、S2、S3) | 米国中北部、米国西部、米国西部 2、米国東部 2、北ヨーロッパ、西ヨーロッパ | 必須 | [Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)  |
 | スペル チェック | Basic<sup>1</sup> 以上  | All | なし | なし (無料) |
 
-<sup>1</sup> 共有 (無料) 検索サービスのプロビジョニングの仕組みや有効期間により、少数のサービスで無料のスペルチェックが発生します。 ただし、無料のスペルチェックの利用は保証されておらず、すでに存在しない場合は追加できません。
+<sup>1</sup> 共有 (無料) 検索サービスのプロビジョニングの仕組みや有効期間により、少数のサービスで無料のスペルチェックが発生します。 ただし、無料のサービスでスペル チェックを使用できるかどうかは保証および予想されるわけではありません。
 
 セマンティック検索の料金は、"queryType=semantic" を含む、検索文字列が空でないクエリ要求 (たとえば "search=pet friendly hotels in new york") を使用した場合に発生します。 検索文字が空の場合 ("search=*")、queryType が "semantic" に設定されていても課金されません。
 

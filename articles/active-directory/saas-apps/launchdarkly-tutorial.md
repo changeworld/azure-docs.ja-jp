@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 8831666015663eedd3ab779cd23b58bb8cf0df24
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9312c481e8d8196feb593bd5bb817f60e875a361
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124739143"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294670"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>チュートリアル: Azure Active Directory と LaunchDarkly の統合
 
@@ -87,7 +87,7 @@ LaunchDarkly に対する Azure AD SSO を構成してテストするには、�
     b. **[応答 URL]** ボックスに、`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL に値を置き換えます。実際の値については後で説明します。 アプリケーションを **IDP** モードで使用する場合は、 **[サインオン URL]** フィールドを空白のままにする必要があります。そうしないと、**IDP** からログインを開始できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL に値を置き換えます。実際の値については後で説明します。 LaunchDarkly では現在、**IDP** Initiated SSO がサポートされます。 このアプリケーションを **IDP** モードで使用する場合は、 **[サインオン URL]** フィールドを空白のままにする必要があります。そうしないと、**IDP** からログインを開始できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -163,4 +163,4 @@ LaunchDarkly に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-LaunchDarkly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+LaunchDarkly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -6,14 +6,14 @@ ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 10/05/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 797aff6fed0cf2eda46bcf5371e57e18df466f00
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 5ee6972ae409a2912f677c0411daf01aaa96f6f7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546964"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464701"
 ---
 # <a name="permissions-to-view-and-manage-azure-reservations"></a>Azure の予約を表示および管理するためのアクセス許可
 
@@ -92,6 +92,8 @@ Azure portal で、ユーザーを課金管理者としてマイクロソフト 
 
 予約注文に対する所有者アクセス権を持つユーザー、昇格されたアクセス権を持つユーザー、[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)は、アクセスできるすべての予約注文のアクセス管理を委任できます。
 
+PowerShell を使用して付与されたアクセス権は、Azure portal には表示されません。 代わりに、次のセクションの `get-AzRoleAssignment` コマンドを使用して、割り当てられたロールを表示します。
+
 ## <a name="assign-the-owner-role-for-all-reservations"></a>すべての予約に所有者ロールを割り当てる
 
 次の Azure PowerShell スクリプトを使用して、ユーザーに Azure AD テナント (ディレクトリ) 内のすべての予約注文に対する Azure RBAC アクセス権を付与します。
@@ -112,9 +114,15 @@ $reservationObjects = $responseJSON.value
 foreach ($reservation in $reservationObjects)
 {
   $reservationOrderId = $reservation.id.substring(0, 84)
-  Write-Host "Assiging Owner role assignment to "$reservationOrderId
+  Write-Host "Assigning Owner role assignment to "$reservationOrderId
   New-AzRoleAssignment -Scope $reservationOrderId -ObjectId <ObjectId> -RoleDefinitionName Owner
 }
+```
+
+PowerShell スクリプトを使用して所有権のロールを割り当て、正常に実行した場合、成功メッセージは返されません。 ただし、ロールが割り当てられたことは以下により確認できます。
+
+```azurepowershell
+get-AzRoleAssignment -Scope "/providers/Microsoft.Capacity" |?{$_.RoleDefinitionName -Like "Reservations*"}
 ```
 
 ### <a name="parameters"></a>パラメーター

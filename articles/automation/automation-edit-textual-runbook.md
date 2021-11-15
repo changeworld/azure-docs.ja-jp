@@ -4,22 +4,19 @@ description: この記事では、Azure Automation テキスト エディター�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: 48df3f834601410caf83d818ac75b1b7b7e68dc2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: dfab1cb98a15bb919ac017607a56366134149764
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468245"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435436"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation でのテキスト形式の Runbook の編集
 
-Azure Automation のテキスト エディターを使用して、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) および [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を編集できます。 このエディターは、Intellisense などの他のコード エディターの一般的な機能を備えています。 また、Runbook に共通するリソースへのアクセスを補助するための特別な追加機能を備えた色の設定を使用します。 
+Azure Automation のテキスト エディターを使用して、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) および [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を編集できます。 このエディターは、Intellisense などの他のコード エディターの一般的な機能を備えています。 また、Runbook に共通するリソースへのアクセスを補助するための特別な追加機能を備えた色の設定を使用します。
 
 このテキスト エディターには、コマンドレット、資産、および子 Runbook のコードを Runbook に挿入するための機能が含まれます。 コードを自分で入力する代わりに、使用可能なリソースの一覧から選択すると、エディターによって適切なコードが Runbook に挿入されます。
 
@@ -97,12 +94,11 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Automation で Runbook を管理する](manage-runbooks.md)。
-* [PowerShell ワークフローについての説明](automation-powershell-workflow.md)。
-* [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)。
+* 「[Azure Automation で Runbook を管理する](manage-runbooks.md)」方法を確認します。
+* PowerShell Workflow Runbook を初めて使う場合は、[PowerShell ワークフローの概要](automation-powershell-workflow.md)に関する記事を参照してください。
 * [証明書](./shared-resources/certificates.md)。
 * [接続](automation-connections.md)。
 * [資格情報](./shared-resources/credentials.md)。
 * [スケジュール](./shared-resources/schedules.md)。
 * [変数](./shared-resources/variables.md)。
-* [PowerShell コマンドレット リファレンス](/powershell/module/az.automation)。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

@@ -5,16 +5,18 @@ description: Azure Machine Learning でカスタム コンテナーを使用し�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
-ms.date: 06/16/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 83713736d68dcd019708ade16460cb369d50127d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: fdbe6f6232bcd4d53ce3473a80de2829f02fb6bf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251454"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056665"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントのカスタム コンテナーを使用して TF Serving で提供される TensorFlow モデルをデプロイする (プレビュー)
 
@@ -47,7 +49,7 @@ Azure Machine Learning でマネージド オンライン エンドポイント�
 
 To follow along with this tutorial, download the source code below.
 
-```azurecli-interactive
+```azurecli
 git clone https://github.com/Azure/azureml-examples --depth 1
 cd azureml-examples/cli
 ```
@@ -86,17 +88,23 @@ docker を使用して、テストのためにローカル環境でイメージ�
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="stop_image":::
 
-## <a name="create-a-yaml-file-for-your-endpoint"></a>エンドポイント用の YAML ファイルを作成する
+## <a name="create-a-yaml-file-for-your-endpoint-and-deployment"></a>エンドポイントおよびデプロイ用の YAML ファイルを作成する
 
-YAML を使用してクラウド デプロイを構成できます。 このエンドポイント用の YAML の例をご覧ください。
+YAML を使用してクラウド デプロイを構成できます。 この例で使用する YAML の例をご覧ください。
+
+__tfserving-endpoint.yml__
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
+
+__tfserving-deployment.yml__
+
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
 
 この YAML には、注意すべき重要な概念がいくつかあります。
 
 ### <a name="readiness-route-vs-liveness-route"></a>readiness ルートと liveness ルート
 
-HTTP サーバーでは、必要に応じて、_liveness_ と _readiness_ 両方のパスを定義できます。 liveness ルートは、サーバーが実行されているかどうかを調べるために使用されます。 readiness ルートは、サーバーが何らかの作業を行う準備ができているかどうかを調べるために使用されます。 機械学習の推論では、サーバーはモデルを読み込む前に、liveness 要求に対して 200 OK を応答できます。 サーバーは、モデルがメモリに読み込まれた後でのみ、readiness 要求に対して 200 OK を応答できます。
+HTTP サーバーでは、_liveness_ と _readiness_ 両方のパスを定義できます。 liveness ルートは、サーバーが実行されているかどうかを調べるために使用されます。 readiness ルートは、サーバーが作業を行う準備ができているかどうかを調べるために使用されます。 機械学習の推論では、サーバーはモデルを読み込む前に、liveness 要求に対して 200 OK を応答できます。 サーバーは、モデルがメモリに読み込まれた後でのみ、readiness 要求に対して 200 OK を応答できます。
 
 liveness probe と readiness probe の詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)を参照してください。
 
@@ -106,43 +114,58 @@ liveness probe と readiness probe の詳細については、[Kubernetes のド
 
 モデルをリアルタイム エンドポイントとしてデプロイすると、Azure Machine Learning によってモデルがエンドポイントに "_マウント_" されます。 モデルがマウントされると、新しい Docker イメージを作成することなく、モデルの新しいバージョンをデプロイできます。 既定では、名前 *foo* およびバージョン *1* で登録されたモデルは、デプロイされたコンテナーの内部の次のパスに配置されます: `/var/azureml-app/azureml-models/foo/1`
 
-たとえば、次のようなディレクトリ構造のローカル コンピューターがあるとします。
+たとえば、モデルが `half_plus_two` と名付けられている `/azureml-examples/cli/endpoints/online/custom-container` のようなディレクトリ構造のローカル コンピューターがあるとします。
 
-```
-azureml-examples
-  cli
-    endpoints
-      online
-        custom-container
-          half_plus_two
-          tfserving-endpoint.yml    
-```     
+:::image type="content" source="./media/how-to-deploy-custom-container/local-directory-structure.png" alt-text="ローカル ディレクトリ構造のツリー ビューを示す図。":::
 
-そして、`tfserving-endpoint.yml` には以下が含まれます。
+そして、`tfserving-deployment.yml` には以下が含まれます。
 
-```
+```yaml
 model:
     name: tfserving-mounted
     version: 1
     local_path: ./half_plus_two
 ```
 
-この場合、モデルはエンドポイント内の次の場所にあります。
+この場合、モデルは次のように、デプロイの `/var/azureml-app/azureml-models/tfserving-deployment/1` の下に配置されます。
 
+:::image type="content" source="./media/how-to-deploy-custom-container/deployment-location.png" alt-text="配置ディレクトリ構造のツリー ビューを示す図。":::
+
+必要に応じて、`model_mount_path` を構成することもできます。 これにより、モデルがマウントされているパスを変更できます。 たとえば、以下のように _tfserving-deployment.yml_ に `model_mount_path` パラメーターを含めることができます。
+
+> [!IMPORTANT]
+> `model_mount_path` には、Linux (コンテナー イメージの OS) で有効な絶対パスを指定してください。
+
+```YAML
+name: tfserving-deployment
+endpoint_name: tfserving-endpoint
+model:
+  name: tfserving-mounted
+  version: 1
+  local_path: ./half_plus_two
+model_mount_path: /var/tfserving-model-mount
+.....
 ```
-var 
-  azureml-app
-    azureml-models
-      tfserving-endpoint
-        1
-          half_plus_two
+
+この場合、モデルは次のように、デプロイの `/var/tfserving-model-mount/tfserving-deployment/1` に配置されます。 `azureml-app/azureml-models` の下ではなく、指定したマウント パスの配下にあることに注意してください。
+
+:::image type="content" source="./media/how-to-deploy-custom-container/mount-path-deployment-location.png" alt-text="mount_model_path を使用した場合の配置ディレクトリ構造のツリー ビューを示す図":::
+
+### <a name="create-your-endpoint-and-deployment"></a>エンドポイントとデプロイを作成する
+
+YAML の構築方法がわかったので、自分でエンドポイントを作成してください。
+
+```azurecli
+az ml online-endpoint create --name tfserving-endpoint -f endpoints/online/custom-container/tfserving-endpoint.yml
 ```
 
-### <a name="create-the-endpoint"></a>エンドポイントを作成する
+デプロイの作成には数分かかる場合があります。
 
-YAML の構築方法がわかったので、自分でエンドポイントを作成してください。 このコマンドが完了するまで数分かかることがあります。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="create_endpoint":::
+
+```azurecli
+az ml online-deployment create --name tfserving-deployment -f endpoints/online/custom-container/tfserving-deployment.yml
+```
 
 ### <a name="invoke-the-endpoint"></a>エンドポイントを呼び出す
 
@@ -154,7 +177,13 @@ YAML の構築方法がわかったので、自分でエンドポイントを作
 
 エンドポイントで正常にスコアリングできたので、それを削除してかまいません。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="delete_endpoint_and_model":::
+```azurecli
+az ml online-endpoint delete --name tfserving-endpoint
+```
+
+```azurecli
+az ml model delete -n tfserving-mounted --version 1
+```
 
 ## <a name="next-steps"></a>次の手順
 

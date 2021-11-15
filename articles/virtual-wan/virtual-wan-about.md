@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: 97ecb049d4307bacf6c9a7b73d08e3d25e05f112
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 7ca51e5dfba89307be28d277e50715b04f829004
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821669"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028061"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -95,7 +95,9 @@ Virtual WAN では、VNet 間のトランジット接続が可能です。 VNet 
 * **なし** 状態は、仮想ハブでルーターがプロビジョニングされなかったことを示します。 これは、Virtual WAN の種類が *Basic* の場合、またはサービスが利用可能になる前に仮想ハブがデプロイされた場合に発生する可能性があります。
 * **失敗** 状態は、インスタンス化中の失敗を示します。 ルーターをインスタンス化またはリセットするには、Azure portal の仮想ハブの [概要] ページに移動し、 **[Reset Router]\(ルーターのリセット\)** オプションを見つけます。
 
-各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 仮想ネットワーク接続間の接続では、単一の仮想ハブに接続されているすべての VNet 全体で合計 2,000 VM のワークロードを想定しています。
+各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 
+
+仮想ネットワーク接続間の接続では、単一の仮想ハブに接続されているすべての VNet 全体で、合計 2,000 VM の最大ワークロードを既定で想定しています。 この[制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits)は、オンライン カスタマー サポート リクエストを開いて増やすことができます。 コストへの影響については、[Azure Virtual WAN の価格](https://azure.microsoft.com/pricing/details/virtual-wan/)に関するページの "*ルーティング インフラストラクチャ ユニット*" のコストを参照してください。 
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN と ExpressRoute 間のトランジット接続
 

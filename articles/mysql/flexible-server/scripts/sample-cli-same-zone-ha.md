@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーで同一ゾーン高可用性を構成する (プレビュー)
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーで同一ゾーン高可用性を構成する
 description: この Azure CLI サンプル スクリプトでは Azure Database for MySQL フレキシブル サーバーで同一ゾーン高可用性を構成する方法を示します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 115baa8d181bd7ebef125e7a666216efe50680d2
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: c6565a9a8c74f4f1794b3e5869a1784520b8f583
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740786"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844099"
 ---
-# <a name="configure-same-zone-high-availability-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) で同一ゾーン高可用性を構成する
+# <a name="configure-same-zone-high-availability-in-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバーで同一ゾーン高可用性を構成する
 
 このサンプル CLI スクリプトでは、Azure Database for MySQL - フレキシブル サーバーで[同一ゾーン高可用性](../concepts-high-availability.md)を構成および管理します。 現在、同一ゾーン高可用性は、汎用およびメモリ最適化の価格レベルでのみサポートされています。
 
@@ -28,7 +28,7 @@ ms.locfileid: "129740786"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-スクリプトの中で強調表示されている行を編集し、変数に値を指定します。
+スクリプトの強調表示されている行を編集し、変数にご自分の値を指定します。
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/mysql/flexible-server/high-availability/same-zone-ha.sh?highlight=7,10-11 "Configure Same-Zone High Availability.")]
 
@@ -52,5 +52,5 @@ ms.locfileid: "129740786"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

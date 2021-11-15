@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 7bd926b12a85b62b79f55be3afd3dbbd67af4a25
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 92468fc96148dd22aab33e5cf7c4ff7a42c5ef65
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058428"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308638"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "131058428"
 | **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | イベント ログ<br>パフォーマンス | イベント ログ<br>ETW イベント<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>.NET アプリ ログ<br>クラッシュ ダンプ<br>エージェント診断ログ | イベント ログ<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>分析情報とソリューション<br>その他のサービス | プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック<sup>1</sup> | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
-| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
+| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Microsoft Defender for Cloud<br>Microsoft Sentinel | VM insights<br>サービス マップ |
 
 ### <a name="linux-agents"></a>Linux エージェント
 
@@ -42,7 +42,7 @@ ms.locfileid: "131058428"
 | **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック<sup>1</sup> | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
-| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
+| **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Microsoft Defender for Cloud<br>Microsoft Sentinel | VM insights<br>サービス マップ |
 
 <sup>1</sup> [ここをクリック](../essentials/metrics-custom-overview.md#quotas-and-limits)すると、Azure Monitor メトリックの使用に関するその他の制限を確認できます。 Linux では、Azure Monitor メトリックを唯一の宛先として使用する方法は、v.1.10.9.0 以降でサポートされています。 
 
@@ -53,23 +53,25 @@ ms.locfileid: "131058428"
 次のことを行う必要がある場合は、Azure Monitor エージェントを使用します。
 
 - Azure、その他のクラウド、またはオンプレミスの任意のマシンからゲスト ログとメトリックを収集する。 (Azure の外部のマシンには [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)が必要です。) 
-- [データ収集ルール](./data-collection-rule-overview.md)を使用してデータ収集の構成を一元的に管理し、Azure Resource Manager (ARM) テンプレートまたはポリシーを使用して全体的な管理を行う。
+- [データ収集ルール](./data-collection-rule-overview.md)を使用してデータ収集の構成を一元的に管理し、全体的な管理に Azure Resource Manager (ARM) テンプレートまたはポリシーを使用する。
 - Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリック (プレビュー) にデータを送信する。 
-- Windows と Linux でのログ用に Windows イベント フィルターまたはマルチホームを活用する。
+- Windows と Linux でのログ用に Windows イベント フィルターまたはマルチホームを使用する。
+
 <!--- Send data to Azure Storage for archiving.
 - Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
-- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md). (Available in private preview.)
+- Manage the security of your machines using [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)  or [Microsoft Sentinel](../../sentinel/overview.md). (Available in private preview.)
 - Use [VM insights](../vm/vminsights-overview.md) which allows you to monitor your machines at scale and monitors their processes and dependencies on other resources and external processes..  
-- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md).
+- Manage the security of your machines using [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)  or [Microsoft Sentinel](../../sentinel/overview.md).
 - Use different [solutions](../monitor-reference.md#insights-and-curated-visualizations) to monitor a particular service or application. */
 -->
+
 Azure Monitor エージェントの制限事項には、以下が含まれます。
-- 運用には Log Analytics ソリューションは使用できません (プレビューでのみ使用できます。[サポート対象に関する記事を参照してください](./azure-monitor-agent-overview.md#supported-services-and-features))。
+
+- 実稼働には Azure Monitor エージェントを使用できません (プレビューでのみ使用できます。[サポート対象に関する記事を参照してください](./azure-monitor-agent-overview.md#supported-services-and-features))。
 - プライベート リンクが関係するネットワークのシナリオは、まだサポートされていません。 
 - カスタム ログ (ファイル) や IIS ログ ファイルの収集は、まだサポートされていません。 
 - Event Hubs とストレージ アカウントは、送信先としてまだサポートされていません。
 - Hybrid Runbook Worker はサポートされていません。
-
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
 
@@ -83,7 +85,7 @@ Log Analytics エージェントは、次のような場合に使用します。
 * Azure の外部でホストされている Azure 仮想マシンまたはハイブリッド マシンから、ログとパフォーマンス データを収集する。
 * データを Log Analytics ワークスペースに送信して、[ログ クエリ](../logs/log-query-overview.md)など、[Azure Monitor ログ](../logs/data-platform-logs.md)でサポートされている機能を活用する。
 * マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる、[VM insights](../vm/vminsights-overview.md) を使用する。  
-* [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用のマシンのセキュリティを管理する。
+* [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) または [Microsoft Sentinel](../../sentinel/overview.md) を利用してコンピューターのセキュリティを管理します。
 * [Azure Automation Update Management](../../automation/update-management/overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking と Inventory](../../automation/change-tracking/overview.md) を使用して、Azure および非 Azure マシンを包括的に管理する。
 * さまざまな[ソリューション](../monitor-reference.md#insights-and-curated-visualizations)を使用して、特定のサービスまたはアプリケーションを監視する。
 
@@ -199,7 +201,8 @@ Telegraf エージェントは、次のような場合に使用します。
 
 <sup>1</sup> マシンに Python (2 または 3) がインストールされている必要があります。
 
-<sup>3</sup> 1.9.0 より前のバージョンでの Syslog イベントの収集に関する既知の問題
+<sup>3</sup> 1.9.0 より前のバージョンでの Syslog イベント収集に関する既知の問題。
+
 #### <a name="dependency-agent-linux-kernel-support"></a>依存関係エージェントの Linux カーネル サポート
 
 依存関係エージェントはカーネル レベルで動作するため、サポートもカーネルのバージョンに依存します。 次の表は、Linux OS のメジャーおよびマイナー リリースと依存関係エージェントでサポートされているカーネル バージョンの一覧です。

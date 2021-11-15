@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: b8ada581eabe0a2fedda08d0fbb1fa9585da0cca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f0ea867dd07192b066a7944a2b392bbc91913759
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121802098"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132353958"
 ---
 **データの収集量と保持期間** 
 
 | レベル | 1 日あたりの制限 | データの保持 | 解説 |
 |:---|:---|:---|:---|
 | 現在の GB あたりの価格レベル<br>(2018 年 4 月に導入) | 制限なし | 30 日 - 730 日 | 31 日を超えるデータ保持期間は追加料金で使用できます。 Azure Monitor の価格を確認してください。 |
-| 従来の Free レベル<br>(2016 年 4 月に導入) | 500 MB | 7 日 | ワークスペースが 1 日あたり 500 MB の制限に達した場合、データ インジェストが停止し、翌日の始めに再開されます。 1 日は UTC に基づきます。 Azure Security Center によって収集されるデータは、この 1 日あたり 500 MB の制限には含まれず、この制限を超えても引き続き収集されます。  |
+| 従来の Free レベル<br>(2016 年 4 月に導入) | 500 MB | 7 日 | ワークスペースが 1 日あたり 500 MB の制限に達した場合、データ インジェストが停止し、翌日の始めに再開されます。 1 日は UTC に基づきます。 Microsoft Defender for Cloud によって収集されるデータは 1 日あたり 500 MB の制限には含まれず、この制限を超えても引き続き収集されます。  |
 | 従来の GB あたりの Standalone レベル<br>(2016 年 4 月に導入) | 制限なし | 30 日 - 730 日 | 31 日を超えるデータ保持期間は追加料金で使用できます。 Azure Monitor の価格を確認してください。 |
 | 従来のノードあたり (OMS)<br>(2016 年 4 月に導入) | 制限なし | 30 日 - 730 日 | 31 日を超えるデータ保持期間は追加料金で使用できます。 Azure Monitor の価格を確認してください。 |
 | 従来の Standard レベル | 制限なし | 30 日  | 保持期間を調整することはできません。 |

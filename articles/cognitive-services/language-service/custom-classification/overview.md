@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 729cf1ed5d17345c530bd78f9c5c75c15990ab12
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec68964d1d0e43bf15e66750677326eca305784f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091491"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053067"
 ---
 # <a name="what-is-custom-text-classification-preview"></a>カスタム テキスト分類 (プレビュー) の概要
 
@@ -27,7 +27,13 @@ ms.locfileid: "131091491"
 カスタム テキスト分類では、次の 2 種類のプロジェクトがサポートされています。 
 
 * **単一ラベル分類** - データセットの各ファイルに 1 つのクラスを割り当てることができます。 たとえば、1 本の映画の脚本は、"アクション" または "スリラー" にのみ分類できます。 
-* **複数ラベル分類** - データセットの各ファイルに複数のクラスを割り当てることができます。 たとえば、1 本の映画の脚本は、"アクション" または "アクションとスリラー" に分類できます。 
+* **複数ラベル分類** - データセットの各ファイルに複数のクラスを割り当てることができます。 たとえば、1 本の映画の脚本は、"アクション" または "アクションとスリラー" に分類できます。
+
+このドキュメントには、次の種類の記事が含まれています。
+
+* [クイックスタート](quickstart.md)は、サービスへの要求の実行方法を説明する概要手順です。
+* [概念](concepts/evaluation.md)では、サービスの機能と特徴について説明します。
+* [攻略ガイド](how-to/tag-data.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 
 ## <a name="example-usage-scenarios"></a>使用シナリオの例
 
@@ -39,9 +45,9 @@ ms.locfileid: "131091491"
 
 検索は、カタログやドキュメントの検索、小売商品の検索、データ サイエンスのための知識マイニングなどの一般的なシナリオで、ユーザーにテキスト コンテンツを表示するアプリの基盤となるものです。さまざまな業界にわたる多くの企業では、構造化および非構造化ドキュメントの両方を含む、プライベートで異種なコンテンツに対して高度な検索エクスペリエンスを構築しようと検討しています。 そのパイプラインの一部として、開発者はカスタム分類を使用して、テキストをそれぞれの業界に関連するクラスに分類できます。 これらの予測されたクラスを使用してファイルのインデックス作成を強化することで、よりカスタマイズされた検索エクスペリエンスを実現できます。 
 
-## <a name="application-development-lifecycle"></a>アプリケーション開発ライフサイクル
+## <a name="project-development-lifecycle"></a>プロジェクト開発ライフサイクル
 
-カスタム分類アプリケーションの作成には、通常、いくつかの異なる手順が含まれます。 
+カスタム分類プロジェクトの作成には、通常、いくつかの異なる手順が含まれます。 
 
 :::image type="content" source="media/development-lifecycle.png" alt-text="開発ライフサイクル" lightbox="media/development-lifecycle.png":::
 
@@ -65,6 +71,6 @@ ms.locfileid: "131091491"
 
 * [クイックスタートに関する記事](quickstart.md)を使用して、カスタム テキスト分類の使用を開始します。  
 
-* アプリケーション開発ライフサイクルを進める過程で、[用語集](glossary.md)を参照して、この機能のドキュメント全体で使用される用語の詳細を確認してください。 
+* プロジェクト開発ライフサイクルを進める過程で、この機能のドキュメント全体で使用される用語の詳細については、「[用語集](glossary.md)」を参照してください。 
 
 * [リージョンの可用性](service-limits.md#regional-availability)などの情報については、「[サービスの制限](service-limits.md)」を必ずご覧ください。

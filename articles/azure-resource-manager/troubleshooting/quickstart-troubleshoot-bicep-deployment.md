@@ -1,15 +1,15 @@
 ---
 title: Bicep ファイルのデプロイのトラブルシューティング
 description: Bicep ファイルのデプロイのモニターとトラブルシューティングを行う方法を説明します。 アクティビティ ログとデプロイ履歴を紹介します。
-ms.date: 10/26/2021
+ms.date: 11/04/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44c98be9a0553d3e255b2272a3a8797bae61d3da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 31d212ef608b5fbabb4430b5320ae033ae2be325
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092248"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849446"
 ---
 # <a name="quickstart-troubleshoot-bicep-file-deployments"></a>クイックスタート: Bicep ファイルのデプロイのトラブルシューティング
 
@@ -17,11 +17,11 @@ ms.locfileid: "131092248"
 
 デプロイに関するエラーには 3 種類あります。
 
-- **検証エラー** デプロイ開始前に、ファイル中の構文エラーによって発生します。 これらのエラーはエディターで検出できます。
-- **プレフライト エラー** デプロイ開始後、最初のリソースをデプロイするまでに発生します。 これらのエラーは、デプロイを開始しなくても検出されます。 たとえば、パラメーターの値が正しくない場合は、プレフライト検証でエラーが検出されます。
+- **検証エラー** デプロイ開始前に、ファイル中の構文エラーによって発生します。 これらのエラーはエディターで特定できます。
+- **プレフライト検証エラー** は、デプロイ コマンドが実行されてもリソースがデプロイされない場合に発生します。 これらのエラーは、デプロイを開始しなくても検出されます。 たとえば、パラメーターの値が正しくない場合は、プレフライト検証でエラーが検出されます。
 - **デプロイ エラー** デプロイのプロセスで発生し、デプロイの進行状況を確認することでのみ検出できます。
 
-どの種類のエラーでも、デプロイのトラブルシューティングに使用できるエラー コードが出力されます。 検証およびプレフライト エラーは、デプロイ履歴には表示されません。
+どの種類のエラーでも、デプロイのトラブルシューティングに使用できるエラー コードが出力されます。 検証とプレフライトのエラーはアクティビティ ログに表示されますが、デプロイ履歴には表示されません。 構文エラーがある Bicep ファイルは JSON にコンパイルされず、アクティビティ ログに表示されません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,7 +126,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-Azure Resource Manager により、ストレージ アカウントの名前に許可されていない文字が含まれていると判定されます。 デプロイは実行されません。 
+Azure Resource Manager により、ストレージ アカウントの名前に許可されていない文字が含まれていると判定されます。 デプロイは実行されません。
 
 プレフライト検証に通らなかったことを示すエラー メッセージが表示されます。 ストレージ アカウント名は長さが 3 - 24 文字で、数字と小文字だけを使用する必要がある、というメッセージも表示されます。 入力したプレフィックスが、この要件を満たしていませんでした。 このエラー コードの詳しい情報は、[ストレージ アカウント名のエラーの解決](error-storage-account-name.md)に関する記事をご覧ください。
 
@@ -148,14 +148,20 @@ Azure Resource Manager により、ストレージ アカウントの名前に�
 
 ```azurecli
 az group create --name troubleshootRG --location westus
-az deployment group create --resource-group troubleshootRG --template-file troubleshoot.bicep --parameters prefixName=stg
+az deployment group create \
+  --resource-group troubleshootRG \
+  --template-file troubleshoot.bicep \
+  --parameters prefixName=stg
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup -Name troubleshootRG -Location westus
-New-AzResourceGroupDeployment -ResourceGroupName troubleshootRG -TemplateFile troubleshoot.bicep -prefixName stg
+New-AzResourceGroupDeployment `
+  -ResourceGroupName troubleshootRG `
+  -TemplateFile troubleshoot.bicep `
+  -prefixName stg
 ```
 
 ---

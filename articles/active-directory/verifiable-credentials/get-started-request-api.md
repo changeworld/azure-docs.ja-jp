@@ -10,36 +10,34 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 9b701589f7ee28cd3da8d4c028750459c53bb793
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 805ba2fc9a24536a940e4baf02e2934d26c10d75
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216922"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474024"
 ---
 # <a name="request-service-rest-api-preview"></a>要求サービス REST API (プレビュー)
 
-Azure Active Directory の検証可能な資格情報の要求サービス REST API を使用すると、Azure AD の検証可能な資格情報サービスを使用して検証可能な資格情報を発行および検証できます。 この記事では、要求サービス REST API を使用して開始する方法について説明します。
+Azure Active Directory (Azure AD) の検証可能な資格情報には、要求サービス REST API が含まれています。 この API を使用すると、資格情報を発行して検証できます。 この記事では、要求サービス REST API を使用して開始する方法について説明します。
 
 > [!IMPORTANT]
-> 現在、要求サービス REST API は、パブリック プレビュー (ベータ) 段階にあります。
-> このプレビュー バージョンは、サービス レベル アグリーメントなしで提供されます。プレビュー バージョンでは、API に重大な変更が加えられたり、非推奨化されたりすることがあります。 プレビュー段階では、実稼働ワークロードに対して API を使用することはお勧めしません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
+> 現在、要求サービス REST API は、プレビュー段階にあります。 このプレビュー バージョンは、サービス レベル アグリーメントなしで提供されます。プレビュー中は、API の破壊的変更や非推奨化が行われることがあります。 API のプレビュー バージョンは、運用ワークロードには推奨されません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="api-access-token"></a>API のアクセス トークン
 
-アプリケーションから要求サービス REST API にアクセスするには、必要なアクセス許可を持つ有効なアクセス トークンを含める必要があります。 Microsoft ID プラットフォームによって発行されたアクセス トークンには、要求サービス REST API で呼び出し元を検証するために使用される情報 (スコープ) が含まれています。 呼び出し元が要求している操作を実行するための適切なアクセス許可を持っていることが保証されます。
+アプリケーションから要求サービス REST API にアクセスするには、必要なアクセス許可を持つ有効なアクセス トークンを含める必要があります。 Microsoft ID プラットフォームによって発行されたアクセス トークンには、要求サービス REST API で呼び出し元を検証するために使用される情報 (スコープ) が含まれています。 アクセス トークンによって、呼び出し元が要求している操作を実行するための適切なアクセス許可を持っていることが保証されます。
 
-アクセス トークンを取得するには、アプリが Microsoft ID プラットフォームに登録され、要求サービス API へのアクセスを管理者によって認可されている必要があります。 "*検証可能な資格情報アプリ*" のアプリケーションを登録していない場合は、[アプリを登録する方法](verifiable-credentials-configure-tenant.md#step-3-register-an-application-in-azure-ad)に関する記事の手順に従って、[アプリケーション シークレットを生成](verifiable-credentials-configure-issuer.md#configure-the-verifiable-credentials-app)します。
+アクセス トークンを取得するには、アプリが Microsoft ID プラットフォームに登録され、要求サービス REST API へのアクセスを管理者によって認可されている必要があります。 "*検証可能な資格情報アプリ*" のアプリケーションを登録していない場合は、[アプリを登録する方法](verifiable-credentials-configure-tenant.md#register-an-application-in-azure-ad)を参照し、[アプリケーション シークレットを生成](verifiable-credentials-configure-issuer.md#configure-the-verifiable-credentials-app)します。
 
 ### <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-[OAuth 2.0 クライアント資格情報の付与フロー](../../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用し、Microsoft ID プラットフォームを使用してアクセス トークンを取得します。 信頼された OAuth ライブラリを使用することをお勧めします。 このチュートリアルでは、Microsoft Authentication Library ([MSAL](../../active-directory/develop/msal-overview.md)) を使用します。 MSAL は、Microsoft が提供するライブラリであり、セキュリティで保護された Web API を呼び出すことができるアプリへの認証と認可の追加が簡略化されます。
+[OAuth 2.0 クライアント資格情報の付与フロー](../../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用し、Microsoft ID プラットフォームを使用してアクセス トークンを取得します。 この目的には、信頼されたライブラリを使用します。 このチュートリアルでは、Microsoft Authentication Library ([MSAL](../../active-directory/develop/msal-overview.md)) を使用します。 MSAL を使用すると、セキュリティで保護された Web API を呼び出せるアプリに認証と承認を簡単に追加できます。
 
 # <a name="http"></a>[HTTP](#tab/http)
 
 ```http
-Pleaes refer to to the Microsoft Authentication Library (MSAL) documentation for more information on how to acquire tokens via HTTP.
+Refer to to the Microsoft Authentication Library (MSAL) documentation for more information on how to acquire tokens via HTTP.
 ```
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -93,19 +91,18 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 ---
 
-上記のコードでは、次のパラメーターを指定します。
+前のコードで、次のパラメーターを指定します。
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
-| Authority | 必須 | アプリケーションで操作する対象のディレクトリ テナント。 たとえば、`https://login.microsoftonline.com/{your-tenant}` です。`your-tenant` を[テナント ID または名前](../fundamentals/active-directory-how-to-find-tenant.md)に置き換えます。 |
-| クライアント ID | 必須 | お使いのアプリに割り当てられたアプリケーション ID。 この情報は、Azure portal のアプリを登録した場所で確認できます。 |
+| Authority | 必須 | アプリケーションで操作する対象のディレクトリ テナント。 (例: `https://login.microsoftonline.com/{your-tenant}`)。 (`your-tenant` は、実際の[テナント ID または名前](../fundamentals/active-directory-how-to-find-tenant.md)に置き換えます。) |
+| クライアント ID | 必須 | お使いのアプリに割り当てられたアプリケーション ID。 この情報は、アプリを登録した、Azure portal で確認できます。 |
 | クライアント シークレット | 必須 | アプリ用に生成したクライアント シークレット。|
 | スコープ | 必須 | `bbb94529-53a3-4be5-a069-7eaf2712b826/.default` に設定する必要があります。 |
 
+コンソール アプリの ID を使用してアクセス トークンを取得する方法の詳細については、[C#](../develop/quickstart-v2-netcore-daemon.md)、[Python](../develop/quickstart-v2-python-daemon.md)、[Node.js](../develop/quickstart-v2-nodejs-console.md)、[Java](../develop/quickstart-v2-java-daemon.md) のいずれかの記事を参照してください。
 
-コンソール アプリの ID を使用してアクセス トークンを取得する方法の詳細については、[C#](../develop/quickstart-v2-netcore-daemon.md)、[Python](../develop/quickstart-v2-python-daemon.md)、[Node.js](../develop/quickstart-v2-nodejs-console.md)、または [Java](../develop/quickstart-v2-java-daemon.md) のいずれかの記事を参照してください。
-
-クライアント シークレットではなく、[証明書を使用してアクセス トークンを要求する](../develop/v2-oauth2-client-creds-grant-flow.md)こともできます。
+クライアント シークレットではなく、[証明書を使用してトークン要求にアクセスする](../develop/v2-oauth2-client-creds-grant-flow.md)こともできます。
 
 # <a name="http"></a>[HTTP](#tab/http)
 
@@ -180,7 +177,7 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 検証可能な資格情報を発行または検証するには、次の手順を実行します。
 
-1. 要求サービス REST API に対する HTTP POST 要求を作成します。 `{tenantID}` を実際の **テナント ID** またはテナント名に置き換えます。
+1. Request Service REST API に対する HTTP POST 要求を作成します。 `{tenantID}` を実際のテナント ID またはテナント名に置き換えます。
 
     ```http
     POST https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -200,7 +197,7 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 ## <a name="issuance-request-example"></a>発行要求の例
 
-次の例は、検証可能な資格情報の発行要求を示しています。 ペイロードの詳細については、[要求サービス REST API の発行の仕様](issuance-request-api.md)に関する記事を参照してください
+次の例は、検証可能な資格情報の発行要求を示しています。 ペイロードの詳細については、「[Request Service REST API の発行の指定](issuance-request-api.md)」を参照してください。
 
 ```http
 POST https://beta.did.msidentity.com/v1.0/contoso.onmicrosoft.com/verifiablecredentials/request
@@ -235,11 +232,14 @@ Authorization: Bearer  <token>
 }
 ```  
 
-完全なコードについては、[C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs) または [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js) のいずれかのコード サンプルを確認してください。
+完全なコードについては、次のいずれかのコード サンプルを参照してください。
+
+- [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs)
+- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js)
 
 ## <a name="presentation-request-example"></a>プレゼンテーション要求の例
 
-次の例は、検証可能な資格情報のプレゼンテーション要求を示しています。 ペイロードの詳細については、[要求サービス REST API のプレゼンテーションの仕様](presentation-request-api.md)に関する記事を参照してください
+次の例は、検証可能な資格情報のプレゼンテーション要求を示しています。 ペイロードの詳細については、「[Request Service REST API の提示の仕様](presentation-request-api.md)」を参照してください。
 
 ```http
 POST https://beta.did.msidentity.com/v1.0/contoso.onmicrosoft.com/verifiablecredentials/request
@@ -274,14 +274,14 @@ Authorization: Bearer  <token>
 }
 ```
 
-完全なコードについては、次のコード サンプルのいずれかを確認してください。
+完全なコードについては、次のいずれかのコード サンプルを参照してください。
 
 - [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/1-asp-net-core-api-idtokenhint/VerifierController.cs) 
-- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/verifier.js)。
+- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/verifier.js)
 
 ## <a name="callback-events"></a>コールバック イベント
 
-要求ペイロードには、[発行](issuance-request-api.md#callback-events)および[プレゼンテーション](presentation-request-api.md#callback-events)のコールバック エンドポイントが含まれています。 エンドポイントは Web アプリケーションの一部であり、一般公開されている必要があります。 Azure AD の検証可能な資格情報サービスでは、エンドポイントを呼び出して、特定のイベントについてアプリに通知します。 たとえば、ユーザーが QR コードをスキャンしたときに、Authenticator アプリへのディープ リンクを使用するか、プレゼンテーション プロセスを終了します。
+要求ペイロードには、[発行](issuance-request-api.md#callback-events)および[プレゼンテーション](presentation-request-api.md#callback-events)のコールバック エンドポイントが含まれています。 エンドポイントは Web アプリケーションの一部であり、一般公開されている必要があります。 Azure AD の検証可能な資格情報では、エンドポイントを呼び出して、特定のイベントについてアプリに通知します。 たとえば、ユーザーが QR コードをスキャンしたり、Authenticator アプリへのディープ リンクを使用したり、プレゼンテーション プロセスを終了したりしたときに、このようなイベントが発生します。
 
 次の図は、要求サービス REST API に対してアプリで行う呼び出しと、アプリケーションへのコールバックを示しています。
 
@@ -291,7 +291,7 @@ Authorization: Bearer  <token>
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-適用不可。 上記のいずれかのプログラミング言語を選択してください。
+適用不可。 他のいずれかのプログラミング言語を選択してください。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -359,7 +359,7 @@ mainApp.app.post('/api/issuer/issuance-request-callback', parser, async (req, re
 
 ## <a name="next-steps"></a>次の手順
 
-次の記事を参照してください。
+これらの仕様の詳細を学習します。
 
 - [API の発行の仕様](issuance-request-api.md)
 - [API のプレゼンテーションの仕様](presentation-request-api.md)

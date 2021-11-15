@@ -7,12 +7,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yvettep
-ms.openlocfilehash: d13ae772aaef25997365915465ed544ea4002964
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 2b3a27a0f7f051b30a0e6c5fa0471acb4d0c6439
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "117029123"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310527"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>追加のドキュメントとリソース (対象領域別)
 
@@ -81,10 +81,10 @@ ms.locfileid: "117029123"
 
 * [Azure ガバナンス](../governance/index.yml)
 * [Azure のセキュリティのベスト プラクティス](../security/fundamentals/best-practices-and-patterns.md)
-* [Azure Security Center でサポートされている機能とプラットフォーム](../security-center/security-center-os-coverage.md)
+* [Microsoft Defender for Cloud でサポートされているプラットフォームと機能](../security-center/security-center-os-coverage.md)
 * [Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)
 * [Azure 診断ログ](../azure-monitor/essentials/platform-logs-overview.md)
-* [Azure Security Center のアラート](../security-center/security-center-managing-and-responding-alerts.md)
+* [Microsoft Defender for Cloud Alerts](../security-center/security-center-managing-and-responding-alerts.md)
 * [Azure Log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 * [Azure Monitor でログ データを分析する](../azure-monitor/logs/log-query-overview.md)
 * [Azure Monitor のログをイベント ハブにストリーム配信する](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)

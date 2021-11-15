@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: quickstart
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7c6865d574204f22c8b81afe04dd10561674876b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7111391f1a066e386384f6623fa6a3d593592123
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092062"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508761"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>クイック スタート: 最初のコンテナー アプリをデプロイする
 
@@ -61,7 +61,23 @@ az extension add `
 
 ---
 
-以下の環境変数を設定します。
+拡張機能がインストールされたので、`Microsoft.Web` 名前空間を登録します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
+```
+
+---
+
+次に、次の環境変数を設定します。
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
@@ -198,7 +214,8 @@ az containerapp create \
   --environment $CONTAINERAPPS_ENVIRONMENT \
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
   --target-port 80 \
-  --ingress 'external'
+  --ingress 'external' \
+  --query configuration.ingress.fqdn
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -210,14 +227,15 @@ az containerapp create `
   --environment $CONTAINERAPPS_ENVIRONMENT `
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest `
   --target-port 80 `
-  --ingress 'external'
+  --ingress 'external' `
+  --query configuration.ingress.fqdn
 ```
 
 ---
 
 `--ingress` を `external` に設定すると、コンテナー アプリがパブリック要求で使用できるようになります。
 
-`create` コマンドによって、コンテナー アプリの完全修飾ドメイン名が返されます。 この場所を Web ブラウザーにコピーすると、次のメッセージが表示されます。
+ここでは、`create` コマンドによって、コンテナー アプリの完全修飾ドメイン名が返されます。 この場所を Web ブラウザーにコピーすると、次のメッセージが表示されます。
 
 :::image type="content" source="media/get-started/azure-container-apps-quickstart.png" alt-text="Your first Azure Container Apps deployment. \(Azure Container Apps:の最初のデプロイ\)":::
 

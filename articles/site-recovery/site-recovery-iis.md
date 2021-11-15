@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 08f4c00d5d0d1d0d6d060d2170024ac166c308b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a353a2d95f9da4b78d88118555d20fc79bae5fd7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458557"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437614"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -69,9 +69,9 @@ Azure|NA|はい
 
 すべての IIS Web ファーム仮想マシンを Azure にレプリケートするには、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」のガイダンスに従います。
 
-静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、 **[コンピューティングとネットワーク] の設定** >  **[ターゲット IP]** に移動します。
+静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、 **[ネットワーク設定]**  >  **[ターゲット IP]** に移動します。
 
-![Site Recovery の [コンピューティングとネットワーク] ウィンドウでターゲット IP を設定する方法を示したスクリーン ショット](./media/site-recovery-active-directory/dns-target-ip.png)
+![Site Recovery のネットワーク ペインでターゲット IP を設定する方法を示したスクリーンショット](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>復旧計画の作成
 復旧計画では、フェールオーバー時における多層アプリケーション内の各種階層の順序付けがサポートされます。 順序付けは、アプリケーションの一貫性の保守に役立ちます。 多層 Web アプリケーションの復旧計画を作成する際には、[復旧計画の作成](site-recovery-create-recovery-plans.md)に関するページで説明されている手順を完了します。

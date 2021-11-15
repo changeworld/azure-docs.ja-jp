@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/14/2021
 ms.author: pafarley
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 31e712daa27a6fba0bdb834f57e6d6573cfba325
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: beda19bd951cf2750d071286ba066bb3a79c0e94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132137311"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319285"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -556,7 +556,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>録画したビデオ ファイルを使用して空間分析を実行する
 
-空間分析は、録画したビデオとライブ ビデオの両方で使用できます。 録画したビデオに対して空間分析を使用するには、ビデオ ファイルを録画して mp4 ファイルとして保存してみてください。 Azure に BLOB ストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 次に、Azure portal で次の BLOB ストレージ設定を更新します。
+空間分析は、録画したビデオとライブ ビデオの両方で使用できます。 録画したビデオに対して空間分析を使用するには、ビデオ ファイルを録画して mp4 ファイルとして保存します。 Azure に BLOB ストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 次に、Azure portal で次の BLOB ストレージ設定を更新します。
     1. **[安全な転送が必須]** を **[無効]** に変更
     2. **[Allow Blob public access]\(BLOB パブリック アクセスを許可する\)** を **[有効]** に変更
 

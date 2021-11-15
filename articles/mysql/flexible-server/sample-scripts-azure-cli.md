@@ -8,22 +8,18 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 7f68da581378d9050ad0026930196f09b744371f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ae33838b4dff052006f1124eea3dbec59cc7666
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604687"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844271"
 ---
-# <a name="azure-cli-samples-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル 
+# <a name="azure-cli-samples-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 次の表には、Azure Database for MySQL - フレキシブル サーバーの Azure CLI スクリプトのサンプルへのリンクが含まれています。
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
-
 
 | サンプル リンク | 説明  |
 |---|---|

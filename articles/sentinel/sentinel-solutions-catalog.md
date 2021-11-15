@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 10/12/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b7f0cc91f8705ac865cac4820402051dce1e9eff
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b02ce290d0910e2dccc19643c94ee338f80b6989
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064109"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467456"
 ---
 # <a name="azure-sentinel-content-hub-catalog"></a>Azure Sentinel コンテンツ ハブ カタログ
 
@@ -41,7 +41,8 @@ ms.locfileid: "131064109"
 |名前    |Includes  |Categories |サポートしているもの  |
 |---------|---------|---------|---------|
 |**Microsoft インサイダー リスク管理** |[データ コネクタ](data-connectors-reference.md#microsoft-365-insider-risk-management-irm-preview)、ブック、分析ルール、ハンティング クエリ |セキュリティ - 内部関係者による脅威 | Microsoft|
-|**Microsoft MITRE ATT&CK クラウド用ソリューション**| ブック、分析ルール、ハンティング クエリ|セキュリティ - 脅威からのデータ保護、セキュリティ - その他 |Microsoft |
+| **Microsoft MITRE ATT&CK クラウド用ソリューション**| ブック、分析ルール、ハンティング クエリ|セキュリティ - 脅威からのデータ保護、セキュリティ - その他 |Microsoft |
+| **Azure Sentinel Deception** | [ブック、分析ルール、ウォッチリスト](monitor-key-vault-honeytokens.md)  | セキュリティ - 脅威からのデータ保護  |Microsoft |
 |**ゼロ トラスト** (TIC 3.0) |Workbooks |ID、セキュリティ - その他 |Microsoft |
 | | | | |
 

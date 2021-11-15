@@ -1,5 +1,5 @@
 ---
-title: Python で ML モデルを解釈して説明する (プレビュー)
+title: Python を使用したモデルの解釈と説明 (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、機械学習モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
@@ -10,15 +10,15 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 10/21/2021
 ms.topic: how-to
-ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: ce73277b509a0ea98e02196998dc9b735768d5a7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.custom: devx-track-python, responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: f22bee60a86d162c57313ab33811a21408eefd74
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562430"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847453"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
+# <a name="use-the-python-interpretability-package-to-explain-ml-models--predictions-preview"></a>Python 解釈可能性パッケージを使用して、ML モデルと予測について説明する (プレビュー)
 
 この攻略ガイドでは、Azure Machine Learning Python SDK の解釈可能性パッケージを使用して次のタスクを実行する方法について学習します。
 
@@ -584,6 +584,6 @@ Azure Machine Learning スタジオの説明ダッシュボードにアクセス
 
 ## <a name="next-steps"></a>次のステップ
 
-[モデルの解釈可能性の詳細について学習する](how-to-machine-learning-interpretability.md)
+[Azure ML でのモデルの解釈可能性の手法](how-to-machine-learning-interpretability.md)
 
 [Azure Machine Learning の解釈可能性サンプル ノートブックを確認する](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)

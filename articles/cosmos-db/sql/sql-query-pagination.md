@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/15/2021
-ms.openlocfilehash: fd4f7d583df6c949fd549cfdc3020f15468f0e2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 699906e99adabdd14520eb0b391d7b1d6018ffa5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661224"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219074"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB での改ページ
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -23,7 +23,7 @@ Azure Cosmos DB では、クエリ結果が複数のページにわたる場合�
 
 クエリ結果が複数のページに分割される場合があります。 各ページの結果は、別個のクエリ実行によって生成されます。 クエリ結果を 1 回の実行で返すことができない場合、Azure Cosmos DB では自動的に結果が複数のページに分割されます。
 
-`MaxItemCount` を設定すると、1 回のクエリで返される項目の最大数を指定できます。 要求ごとに `MaxItemCount` を指定して、その数以下の項目を返すようにクエリ エンジンに指示します。 クエリ実行ごとの結果の数を制限しない場合は、`MaxItemCount` を `-1` に設定できます。
+`MaxItemCount` を設定すると、1 回のクエリで返される項目の最大数を指定できます。 `MaxItemCount` は要求ごとに指定され、その数以下の項目を返すようにクエリ エンジンに指示されます。 クエリ実行ごとの結果の数を制限しない場合は、`MaxItemCount` を `-1` に設定できます。
 
 また、他の理由でクエリ エンジンによってクエリ結果を複数ページに分割することが必要になる場合もあります。 これには以下が含まれます。
 
@@ -47,12 +47,13 @@ Azure Cosmos DB では、クエリ結果が複数のページにわたる場合�
 
 ## <a name="continuation-tokens"></a>継続トークン
 
-.NET SDK および Java SDK では、クエリの進行状況のブックマークとして、継続トークンを必要に応じて使用できます。 Azure Cosmos DB のクエリ実行は、サーバー側ではステートレスであり、継続トークンを利用していつでも再開できます。 継続トークンは、Node.js SDK ではサポートされていません。 Python SDK では、単一パーティション クエリでサポートされています。PK は、クエリ自体に含めるには十分でないため、options オブジェクトで指定する必要があります。
+.NET SDK および Java SDK では、クエリの進行状況のブックマークとして、継続トークンを必要に応じて使用できます。 Azure Cosmos DB のクエリ実行は、サーバー側ではステートレスであり、継続トークンを利用していつでも再開できます。 Python SDK と Node.js SDK では、これは単一パーティション クエリでサポートされています。PK は、クエリ自体に含めるには十分でないため、options オブジェクトで指定する必要があります。
 
 継続トークンを使用する例を次に示します。
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L230)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Node.js SDK](https://github.com/Azure/azure-sdk-for-js/blob/2186357a6e6a64b59915d0cf3cba845be4d115c4/sdk/cosmosdb/cosmos/samples/src/BulkUpdateWithSproc.ts#L16-L31)
 - [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 クエリから継続トークンが返される場合、追加のクエリ結果が存在します。

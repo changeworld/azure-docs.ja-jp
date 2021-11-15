@@ -12,39 +12,26 @@
       href: whats-new.md
     - name: Operations Manager からの移行
       href: azure-monitor-operations-manager.md
-- name: クイックスタート
-  items:
-    - name: Azure リソースの監視
-      href: essentials/quick-monitor-azure-resource.md
-    - name: ワークスペースへのアクティビティ ログの送信
-      items:
-        - name: Azure portal
-          href: essentials/quick-collect-activity-log-portal.md
-        - name: ARM テンプレート
-          displayName: Resource Manager
-          href: essentials/quick-collect-activity-log-arm.md
-    - name: アプリケーションの監視
-      items:
-        - name: ASP.NET Core アプリケーション
-          href: app/dotnet-quickstart.md
-        - name: Node.js アプリケーション
-          href: app/nodejs-quick-start.md
-        - name: モバイル アプリケーション
-          href: app/mobile-center-quickstart.md
-        - name: Web アプリケーション
-          href: app/website-monitoring.md
 - name: チュートリアル
   items:
-    - name: メトリック グラフを作成する
-      href: essentials/tutorial-metrics-explorer.md
-    - name: Azure リソースからログを収集する
+    - name: Azure リソースの監視
+      href: essentials/monitor-azure-resource.md
+    - name: メトリック データを分析する
+      href: essentials/tutorial-metrics.md
+    - name: メトリック アラートの作成
+      href: alerts/tutorial-metric-alert.md
+    - name: リソース ログを収集して表示する
       href: essentials/tutorial-resource-logs.md
-    - name: ログ クエリを書く
-      href: logs/get-started-queries.md
-    - name: ログ クエリからダッシュボードを作成する
-      href: visualize/tutorial-logs-dashboards.md
-    - name: パフォーマンスとスケジュールに基づく自動スケール
-      href: autoscale/tutorial-autoscale-performance-schedule.md
+    - name: ログ クエリ アラートを作成する
+      href: alerts/tutorial-log-alert.md
+    - name: 仮想マシン
+      items:
+        - name: 監視を有効にする
+          href: vm/tutorial-monitor-vm-enable.md
+        - name: マシン ダウン時のアラート
+          href: vm/tutorial-monitor-vm-alert.md
+        - name: ゲスト ログとメトリックを収集する
+          href: vm/tutorial-monitor-vm-guest.md
     - name: Application Insights
       items:
         - name: アプリケーションのランタイムの例外を見つける
@@ -57,6 +44,8 @@
           href: app/tutorial-users.md
         - name: アプリケーション データを含むダッシュボード
           href: app/tutorial-app-dashboards.md
+        - name: モバイル アプリケーションの監視
+          href: app/mobile-center-quickstart.md
 - name: サンプル
   items:
     - name: Resource Manager テンプレート
@@ -141,7 +130,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -284,6 +273,9 @@
             - name: 概要
               displayname: 'log query, log queries, query, queries'
               href: logs/log-query-overview.md
+            - name: はじめに
+              displayname: 'log query, log queries, query, queries'
+              href: logs/get-started-queries.md
             - name: KQL リファレンス
               href: /azure/data-explorer/kusto/query/
             - name: サンプル クエリ
@@ -1027,7 +1019,7 @@
               href: app/export-telemetry.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           items:
             - name: F5 による洞察
               href: app/visual-studio.md
@@ -1135,7 +1127,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: モニター
+        - name: Monitor
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md

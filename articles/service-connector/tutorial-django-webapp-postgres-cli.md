@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2021
 zone_pivot_groups: postgres-server-options
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a14dc7e27c49d9f4e253e3a3a51c0526a56cadf9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2a3307cfea56d18cbbe0186cd3c927fafdd4074
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091598"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853035"
 ---
 # <a name="tutorial-using-service-connector-preview-to-build-a-django-app-with-postgres-on-azure-app-service"></a>チュートリアル: Service Connector (プレビュー) を使用して、Azure App Service 上に Postgres を使用した Django アプリをビルドする
 
@@ -58,7 +58,7 @@ ms.locfileid: "131091598"
 
 1. アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 以降</a>をインストールします。
-1. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 以降をインストールします。これを任意のシェルで使用してコマンドを実行し、Azure リソースのプロビジョニングと構成を行います。
+1. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.30.0 以降をインストールします。これを任意のシェルで使用してコマンドを実行し、Azure リソースのプロビジョニングと構成を行います。
 
 ターミナル ウィンドウを開き、Python のバージョンが 3.6 以降であることを確認します。
 
@@ -82,13 +82,13 @@ py -3 --version
 
 ---
 
-Azure CLI のバージョンが 2.18.0 以降であることを確認します。
+Azure CLI のバージョンが 2.30.0 以降であることを確認します。
 
 ```azurecli
 az --version
 ```
 
-アップグレードする必要がある場合は、`az upgrade` コマンド (バージョン 2.11 以降が必要) を試すか、「<a href="/cli/azure/install-azure-cli" target="_blank"> Azure CLI のインストール</a>」をご覧ください。
+アップグレードする必要がある場合は、`az upgrade` コマンド (バージョン 2.30.0 以降が必要) を試すか、「<a href="/cli/azure/install-azure-cli" target="_blank"> Azure CLI のインストール</a>」を参照してください。
 
 次に CLI から Azure にサインインします。
 
@@ -331,6 +331,7 @@ az webapp connection create postgres --client-type django
 - このコマンドは、アプリ コードで想定されている "AZURE_POSTGRESQL_HOST"、"AZURE_POSTGRESQL_NAME"、"AZURE_POSTGRESQL_USER"、"AZURE_POSTGRESQL_PASS" という名前の設定を作成します。
 - 管理者の資格情報を忘れた場合は、コマンドを使用してリセットします。
 
+
 ::: zone-end
 
 ::: zone pivot="postgres-flexible-server"
@@ -344,6 +345,9 @@ az webapp connection create postgres --client-type django
 - 管理者の資格情報を忘れた場合は、コマンドを使用してリセットします。
 
 ::: zone-end
+
+> [!NOTE]
+> "The subscription is not registered to use Microsoft.ServiceLinker (サブスクリプションが Microsoft.ServiceLinker を使用するように登録されていません)" というエラー メッセージが表示される場合は、`az provider register -n Microsoft.ServiceLinker` を実行して Service Connector リソース プロバイダーを登録し、接続コマンドを再度実行してください。 
 
 Python コードでは、`os.environ.get('AZURE_POSTGRESQL_HOST')` のようなステートメントを使用して、環境変数としてこれらの設定にアクセスします。 詳細については、「[環境変数へのアクセス](../app-service/configure-language-python.md#access-environment-variables)」を参照してください。
 

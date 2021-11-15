@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 08/17/2021
 ms.author: allensu
-ms.openlocfilehash: 27c4340071e80cdcac806b80c28873e0955cd586
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d8ca819e7a63c7a0c4d507709c8495b604d19002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444710"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257672"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure における仮想ネットワークと仮想マシン
 
@@ -54,7 +54,7 @@ VM に接続された各 NIC は、VM と同じ場所およびサブスクリプ
 
 ## <a name="ip-addresses"></a>IP アドレス
 
-Azure では次の種類の [IP アドレス](../virtual-network/public-ip-addresses.md)をネットワーク インターフェイスに割り当てることができます。
+Azure では次の種類の [IP アドレス](./ip-services/public-ip-addresses.md)をネットワーク インターフェイスに割り当てることができます。
 
 - **パブリック IP アドレス** - インターネットのほか、仮想ネットワークに接続されていない他の Azure リソースとの (ネットワーク アドレス変換 (NAT) を使用しない) 送受信に使用します。 NIC へのパブリック IP アドレスの割り当てはオプションです。 パブリック IP アドレスには少額の費用がかかり、サブスクリプションごとに使用できる数には上限があります。
 - **プライベート IP アドレス** - 仮想ネットワーク、オンプレミスのネットワーク、(NAT を使用した) インターネットでの通信に使用します。 少なくとも 1 つのプライベート IP アドレスを VM に割り当てる必要があります。 Azure での NAT の詳細については、「[Azure の送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md)」を参照してください。
@@ -79,9 +79,9 @@ VM の IP アドレスが変わらないようにするため、割り当て方�
 
 | Method | 説明 |
 | ------ | ----------- |
-| [Azure Portal](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 既定では、パブリック IP アドレスは動的です。 この IP アドレスは、VM を停止または削除するときに変わる可能性があります。 VM で常に同じパブリック IP アドレスが使用されるようにするには、静的パブリック IP アドレスを作成します。 既定では、VM の作成時にポータルによって動的プライベート IP アドレスが NIC に割り当てられます。 この IP アドレスは、VM の作成後に "静的" に変更できます。|
-| [Azure PowerShell](../virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | **`-AllocationMethod`** パラメーターを Dynamic または Static に設定して [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を実行します。 |
-| [Azure CLI](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | **`--allocation-method`** パラメーターを Dynamic または Static に設定して [az network public-ip create](/cli/azure/network/public-ip) を実行します。 |
+| [Azure Portal](./ip-services/virtual-network-deploy-static-pip-arm-portal.md) | 既定では、パブリック IP アドレスは動的です。 この IP アドレスは、VM を停止または削除するときに変わる可能性があります。 VM で常に同じパブリック IP アドレスが使用されるようにするには、静的パブリック IP アドレスを作成します。 既定では、VM の作成時にポータルによって動的プライベート IP アドレスが NIC に割り当てられます。 この IP アドレスは、VM の作成後に "静的" に変更できます。|
+| [Azure PowerShell](./ip-services/virtual-network-deploy-static-pip-arm-ps.md) | **`-AllocationMethod`** パラメーターを Dynamic または Static に設定して [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を実行します。 |
+| [Azure CLI](./ip-services/virtual-network-deploy-static-pip-arm-cli.md) | **`--allocation-method`** パラメーターを Dynamic または Static に設定して [az network public-ip create](/cli/azure/network/public-ip) を実行します。 |
 | [テンプレート](../virtual-network/template-samples.md) | テンプレートを使用したパブリック IP アドレスのデプロイの詳細については、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/nic-publicip-dns-vnet)」を使用してください。 |
 
 パブリック IP アドレスの作成後、それを NIC に割り当てて VM に関連付けることができます。
@@ -174,10 +174,6 @@ NIC に対して NSG を関連付ける場合、NSG のネットワーク アク
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | [az network lb create](/cli/azure/network/lb) コマンドを使用してロード バランサーの初期構成を作成します。 プライベート IP アドレスを定義するために、 **`--private-ip-address`** パラメーターを使用して [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) を実行します。 [az network lb address-pool create](/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](/cli/azure/network/lb/probe) を使用してプローブを追加します。|
 | [テンプレート](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 2 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/2-vms-internal-load-balancer) に関するページをガイドとして使用してください。 |
 
-## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
-
-ロード バランサーと仮想マシン スケール セットの詳細については、「[Azure 仮想マシン スケール セットのネットワーク](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)」を参照してください。
-
 ## <a name="virtual-machines"></a>仮想マシン
 
 仮想マシンは同一の仮想ネットワーク内に作成でき、プライベート IP アドレスを使用して互いに接続できます。 仮想マシンは、異なるサブネット内にある場合に接続できます。 接続には、ゲートウェイを構成したり、パブリック IP アドレスを使用する必要はありません。 VM を仮想ネットワークに入れるには、仮想ネットワークを作成します。 それぞれの VM を作成する場合は、仮想ネットワークとサブネットに割り当てます。 デプロイ中または起動中に、仮想マシンでネットワーク設定が取得されます。
@@ -203,6 +199,8 @@ NAT では、アウトバウンド接続をサブネットごとに定義でき�
 NAT は、Standard SKU のパブリック IP アドレス リソースとパブリック IP プレフィックス リソースのどちらか、またはその両方を組み合わせたものと共に利用することができます。 パブリック IP プレフィックスを直接使用できるほか、複数の NAT ゲートウェイ リソースにプレフィックスのパブリック IP アドレスを割り振ることもできます。 すべてのトラフィックは、NAT によって、プレフィックスの IP アドレス範囲に調整されます。 デプロイの IP フィルター処理は容易です。
 
 サブネットのすべてのアウトバウンド トラフィックは NAT によって自動的に処理され、ユーザーによる構成は不要です。 ユーザー定義ルートは必要ありません。 NAT は他のアウトバウンド シナリオよりも優先され、サブネットの既定のインターネット宛先に取って代わります。
+
+フレキシブル オーケストレーション モードの仮想マシン スケール セットによって作成された仮想マシンには、既定のアウトバウンド アクセスがありません。 仮想マシン スケール セットのフレキシブル オーケストレーション モードに推奨されるアウトバウンド アクセス方法は、仮想ネットワーク NAT です。
 
 NAT ゲートウェイ リソースと仮想ネットワーク NAT の詳細については、「[Azure Virtual Network NAT とは](./nat-gateway/nat-overview.md)」を参照してください。
 

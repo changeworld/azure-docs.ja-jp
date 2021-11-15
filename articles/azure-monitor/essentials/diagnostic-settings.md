@@ -1,17 +1,17 @@
 ---
 title: プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 description: 診断設定を使用して、Azure Monitor プラットフォーム メトリックとログを Azure Monitor ログ、Azure Storage、または Azure Event Hubs に送信します。
-author: bwren
-ms.author: bwren
+author: rboucher
+ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/09/2021
-ms.openlocfilehash: 50eb92441c248884930e556551a92acb9e43661b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/02/2021
+ms.openlocfilehash: 39cb496d02ca77a65e4adff7aabf591b54e07ea4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130176408"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459009"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](./platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](./data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -47,6 +47,7 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 | [Log Analytics ワークスペース](../logs/design-logs-deployment.md) | Log Analytics ワークスペースにログとメトリックを送信すると、強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 |
 | [Event Hubs](../../event-hubs/index.yml) | Event Hubs にログとメトリックを送信すると、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。  |
 | [Azure Storage アカウント](../../storage/blobs/index.yml) | Azure ストレージ アカウントにログとメトリックをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 Azure Monitor ログや Log Analytics ワークスペースと比較すると、Azure ストレージはコストが低く、ログを無期限に保持することができます。  |
+| [Azure Monitor パートナーとの統合](/azure/partner-solutions/overview/)| Azure Monitor と Microsoft 以外のその他の監視プラットフォームとの間の特別な統合。 |
 
 
 ### <a name="destination-requirements"></a>送信先の要件
@@ -123,12 +124,12 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
         ![ストレージへの送信](media/diagnostic-settings/storage-settings-new.png)
 
         > [!TIP]
-        > 今後、混乱を避けるために、アイテム保持ポリシーを 0 に設定し、スケジュールされたジョブを使用してストレージからデータを手動で削除することを検討してください。
+        > アイテム保持ポリシーは 0 に設定し、[Azure Storage のライフサイクル ポリシー](/azure/storage/blobs/lifecycle-management-policy-configure)を使用するか、またはスケジュールされたジョブを使用してストレージからデータを削除することを検討してください。 このような方針を用いることで、多くの場合、動作の一貫性が向上します。 
         >
-        > まず、ストレージをアーカイブ用に使用している場合は、一般的にデータを 365 日以上保持することをお勧めします。 2 つ目の方法として、0 より大きいアイテム保持ポリシーを選択すると、保存時に有効期限日がログに付加されます。 保存後にログの日付を変更することはできません。
-        >
-        > たとえば、*WorkflowRuntime* のアイテム保持ポリシーを 180 日に設定し、24 時間後に 365 日に設定した場合、最初の 24 時間の間に保存されたログは 180 日後に自動的に削除されますが、その種類の後続のすべてのログは、365 日後に自動的に削除されます。 後でアイテム保持ポリシーを変更しても、最初の 24 時間のログが 365 日間保持されるようにはなりません。
-
+        > まず、ストレージをアーカイブ用に使用している場合は、一般的にデータを 365 日以上保持することをお勧めします。 2 つ目の方法として、0 より大きいアイテム保持ポリシーを選択すると、保存時に有効期限日がログに付加されます。 保存後にログの日付を変更することはできません。 たとえば、*WorkflowRuntime* のアイテム保持ポリシーを 180 日に設定し、24 時間後に 365 日に設定した場合、最初の 24 時間の間に保存されたログは 180 日後に自動的に削除されますが、その種類の後続のすべてのログは、365 日後に自動的に削除されます。 後でアイテム保持ポリシーを変更しても、最初の 24 時間のログが 365 日間保持されるようにはなりません。
+    
+     1. **パートナー統合** - まず、サブスクリプションにパートナー統合をインストールする必要があります。 詳細については、[Azure Monitor パートナーとの統合](/azure/partner-solutions/overview/)に関するページを参照してください。 
+    
 6. **[保存]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されると、ログが指定の送信先にストリーミングされます。 イベントが生成されてから、それが [Log Analytics ワークスペースに表示される](../logs/data-ingestion-time.md)まで、15 分ほどかかる場合があります。

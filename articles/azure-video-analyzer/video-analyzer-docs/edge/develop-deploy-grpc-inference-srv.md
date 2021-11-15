@@ -3,14 +3,14 @@ title: gRPC 推論サーバーを開発およびデプロイする - Azure Video
 description: この記事では、Azure Video Analyzer で使用する gRPC 推論サーバーを開発してデプロイする方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6b252ef52b1501d5428aa85cb697ea04a8c3cafc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3b5d2dbb4e686cfe03a8deefbcbbc6d08647f3de
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090032"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564081"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>gRPC 推論サーバーを開発およびデプロイする
 
@@ -40,7 +40,7 @@ gRPC 推論サーバーを作成し、それを拡張機能として Video Analy
 
 Video Analyzer モジュールを IoT Edge デバイスにデプロイして動作させるために必要な手順を行います。
 
-### <a name="high-level-implementation-steps"></a>基本的な実装手順
+### <a name="high-level-implementation-steps"></a>基本的な導入手順
 
 1. C#、C++、Dart、Go、Java、Node、Objective-C、PHP、Python、Ruby など、gRPC でサポートされている多くの言語からいずれかを選択します。
 1. [proto3 ファイル](https://github.com/Azure/video-analyzer/tree/main/contracts/grpc)を使用して Video Analyzer と通信する gRPC サーバーを実装します。
@@ -68,6 +68,9 @@ Video Analyzer モジュールを IoT Edge デバイスにデプロイして動�
 1. Linux 共有メモリ ハンドルを開きます。
 1. フレームを受信したときに、共有メモリ内のアドレス オフセットにアクセスします。
 1. Video Analyzer でメモリを再利用できるように、フレーム処理の完了を確認します。
+
+> [!NOTE]
+> 共有メモリがある推論に gRPC 拡張モジュールを使用する場合、Video Analyzer エッジ モジュールと拡張モジュールの両方を同じ[ユーザーとグループ](https://docs.docker.com/engine/reference/builder/#user)で実行する必要があります。
 
 ## <a name="create-a-grpc-inference-server"></a>gRPC 推論サーバーを作成する
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 06/10/2021
+ms.date: 10/21/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: c20c5f96820ae4cbf8aa361b29483fac260ec5ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 749400cc3f5c798b16dc08485f0cbff14cb276e7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824173"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556949"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>クイックスタート: Azure Machine Learning の利用を開始するために必要なワークスペース リソースを作成する
 
@@ -81,7 +81,7 @@ Azure Machine Learning は、自分のコンピューターにインストール
 
     * **[Notebooks]** セクションでは、Jupyter ノートブックを作成し、サンプル ノートブックをコピーして、ノートブックや Python スクリプトを実行できます。
     * **[自動 ML]** では、コードを記述せずに、画面の指示に従って機械学習モデルを作成できます。
-    * **[デザイナー]** では、あらかじめ構築されたモジュールを使用して、ドラッグ アンド ドロップでモデルを作成できます。
+    * **[デザイナー]** では、あらかじめ構築されたコンポーネントを使用して、ドラッグ アンド ドロップでモデルを作成できます。
 
 * スタジオの **[Assets]\(アセット\)** セクションでは、ジョブを実行する過程で作成したアセットを追跡できます。  新しいワークスペースの場合、これらのセクションには、まだ何も表示されません。
 

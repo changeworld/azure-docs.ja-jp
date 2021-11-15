@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: cba8ba5c8c5ff300fe585d75aab98fd4003a475d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 11/02/2021
+ms.openlocfilehash: cbdde26b030b5e3b89d96304ece6e6d698884c19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608233"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468520"
 ---
 # <a name="configure-a-managed-application-plan"></a>マネージド アプリケーション プランを構成する
 
@@ -155,6 +155,8 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 ### <a name="provide-a-notification-endpoint-url"></a>通知エンドポイント URL を指定する
 
 **[通知エンドポイント URL]** ボックスで、このプラン バージョンのマネージド アプリケーション インスタンスでのすべての CRUD 操作に関する通知を受け取るための、HTTPS Webhook エンドポイントを指定します。
+
+Webhook URI を呼び出す前に、Azure によって末尾に `/resource` が追加されます。 そのため、Webhook URL は `/resource` で終わる必要がありますが、 **[通知エンドポイント URL]** ボックスに入力した URL には `/resource` を含めないでください。 Webhook URL の詳細については、「[マネージド アプリケーションを計画する](plan-azure-app-managed-app.md#notification-endpoint-url)」を参照してください。
 
 ### <a name="customize-allowed-customer-actions-optional"></a>許可される顧客アクションをカスタマイズする (省略可能)
 

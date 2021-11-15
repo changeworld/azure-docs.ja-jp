@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/18/2021
-ms.openlocfilehash: 5cc266b61c00a27199e77e6e464fc6fc24cab818
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: b04b73cfd7cd2482e14485556df5a477e47a9334
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181584"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347976"
 ---
 # <a name="azure-monitor-best-practices---planning-your-monitoring-strategy-and-configuration"></a>Azure Monitor のベスト プラクティス - 監視の戦略と構成を計画する
 この記事は、[Azure Monitor を構成する際の推奨事項](best-practices.md)に関する記事で紹介されているシナリオの一部です。 実装を開始する前に考慮すべき計画について説明します。 これをお読みいただければ、選択した構成方法で特定のビジネス要件を確実に満たすことができます。
@@ -47,13 +47,13 @@ Azure Monitor は、正常性と状態を監視するという課題への対応
 以降のセクションでは、Azure Monitor と組み合わせて使用できる他のサービスと製品について説明しています。 これらのソリューションの実装に関するガイダンスは現在、このシナリオには含まれていません。それぞれ対応するドキュメントを参照してください。
 
 ### <a name="security-monitoring"></a>セキュリティの監視
-Azure Monitor に格納されている運用データはセキュリティ インシデントの調査に役立つことがありますが、Azure の他のサービスはセキュリティを監視するために設計されています。 Azure でのセキュリティの監視は、Azure Security Center と Azure Sentinel によって実行されます。
+Azure Monitor に格納されている運用データはセキュリティ インシデントの調査に役立つことがありますが、Azure の他のサービスはセキュリティを監視するために設計されています。 Azure のセキュリティは Microsoft Defender for Cloud と Microsoft Sentinel によって監視されます。
 
-- [Azure Security Center](../security-center/security-center-introduction.md) では、Azure リソースとハイブリッド サーバーに関する情報が収集されます。 Security Center では、セキュリティ イベントを収集することもできますが、インベントリ データ、評価のスキャンの結果、ポリシーの監査の収集に重点を置いて、脆弱性を強調し、是正措置を推奨します。 注目すべき機能には、対話型のネットワーク マップ、Just-In-Time の VM アクセス、アダプティブ ネットワークのセキュリティ強化機能、疑わしい実行可能ファイルをブロックする適応型アプリケーション制御が含まれます。
+- [Microsoft Defender for Cloud](../security-center/security-center-introduction.md) では、Azure リソースとハイブリッド サーバーに関する情報が収集されます。 Defender for Cloud ではセキュリティ イベントを収集できますが、インベントリ データ、評価のスキャンの結果、ポリシーの監査の収集に重点が置かれており、脆弱性を目立つように表示し、是正措置を推奨します。 注目すべき機能には、対話型のネットワーク マップ、Just-In-Time の VM アクセス、アダプティブ ネットワークのセキュリティ強化機能、疑わしい実行可能ファイルをブロックする適応型アプリケーション制御が含まれます。
 
-- [Azure Defender for Servers](../security-center/azure-defender.md) は、Security Center によって提供されるサーバー評価ソリューションです。 Defender for Servers では、Windows セキュリティ イベントを Log Analytics に送信できます。 Security Center は、アラートまたは分析に関して Windows のセキュリティ イベントに依存していません。 この機能を使用すると、調査などの目的でイベントを一元的にアーカイブできます。
+- [Microsoft Defender for Servers](../security-center/azure-defender.md) は、Defender for Cloud によって提供されるサーバー評価ソリューションです。 Defender for Servers では、Windows セキュリティ イベントを Log Analytics に送信できます。 Defender for Cloud は、アラートまたは分析に関して Windows のセキュリティ イベントに依存していません。 この機能を使用すると、調査などの目的でイベントを一元的にアーカイブできます。
 
-- [Azure Sentinel](../sentinel/overview.md) は、セキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Sentinel では、Microsoft およびサードパーティのさまざまなソースからセキュリティ データを収集して、アラート、視覚化、自動化を提供します。 このソリューションでは、可能な限り多くのセキュリティ ログ (Windows セキュリティ イベントを含む) を統合することに重点が置かれています。 Azure Sentinel では、Windows セキュリティ イベントのログを収集することもでき、通常、Log Analytics ワークスペースを Security Center と共有しています。 セキュリティ イベントは、同じワークスペースを共有している場合、Azure Sentinel または Security Center からのみ収集できます。 Security Center とは異なり、セキュリティ イベントは、Azure Sentinel でのアラートと分析の重要なコンポーネントです。
+- [Microsoft Sentinel](../sentinel/overview.md) は、セキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Sentinel では、Microsoft およびサードパーティのさまざまなソースからセキュリティ データを収集して、アラート、視覚化、自動化を提供します。 このソリューションでは、可能な限り多くのセキュリティ ログ (Windows セキュリティ イベントを含む) を統合することに重点が置かれています。 Microsoft Sentinel では、Windows セキュリティ イベントのログを収集することもできます。また、通常、Log Analytics ワークスペースを Security Center と共有しています。 セキュリティ イベントは、同じワークスペースを共有している場合にのみ、Microsoft Sentinel または Defender for Cloud から収集できます。 Defender for Cloud とは異なり、セキュリティ イベントは Microsoft Sentinel において警告と分析の主要構成要素です。
 
 - [Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) は、企業ネットワークによる高度な脅威に対する防御、検出、調査、対応を支援するように設計されたエンタープライズ エンドポイント セキュリティ プラットフォームです。 これは、Windows ユーザー デバイスの保護に主に重点を置いて設計されています。 Defender for Endpoint では、セキュリティの問題と脆弱性について、さまざまなオペレーティング システムのワークステーション、サーバー、タブレット、携帯電話を監視します。 Defender for Endpoint では、Microsoft エンドポイント マネージャーと密接に連携し、データを収集してセキュリティ評価が提供されます。 データ収集は主に ETW トレース ログに基づいており、分離されたワークスペースに格納されます。
 

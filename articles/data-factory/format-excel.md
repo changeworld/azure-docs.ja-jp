@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 66f0f310faa32e65dea657d7b15ceae7e4f84ba0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c1a84fb149ebfaa39fc6704602782c0f872476e2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831347"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238814"
 ---
 # <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での Excel ファイル形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -104,7 +104,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで Excel 形式での読み取りを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 Excel ファイルは、Excel データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用して参照できます。
+マッピング データ フローでは、次のデータ ストアで Excel 形式を読み取ることができます: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties)。 Excel ファイルは、Excel データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用して参照できます。
 
 ### <a name="source-properties"></a>ソースのプロパティ
 

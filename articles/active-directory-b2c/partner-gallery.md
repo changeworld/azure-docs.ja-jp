@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: a80b5b6340ddf0660961874281cbc6207ffea859
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: bf58338bfc16e2e0cea11183ad4fdf3e72961bb3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063578"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224924"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -47,6 +47,7 @@ Microsoft は、MFA とパスワードレス認証に関して次の ISV と提�
 |:-------------------------|:--------------|
 | ![bloksec ロゴのスクリーンショット](./media/partner-gallery/bloksec-logo.png) | [BlokSec](./partner-bloksec.md) は、パスワードレス認証とトークンレス MFA ソリューションであり、リアルタイムの同意ベースのサービスを提供し、パスワード スタッフィング、フィッシング、中間者攻撃などの ID 中心のサイバー攻撃から顧客を保護します。 |
 | ![Hypr ロゴのスクリーンショット](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) は、パスワードを公開キー暗号化に置き換えることによって、不正行為、フィッシング、資格情報の再利用を排除するパスワードレス認証プロバイダーです。 |
+| ![idemia ロゴのスクリーンショット](./media/partner-gallery/idemia-logo.png) | [IDEMIA](./partner-idemia.md) はパスワードレス認証プロバイダーであり、faceID やフィンガープリントなどの生体認証を使用して、不正行為や資格情報の再利用を排除するリアルタイムの同意ベースのサービスを提供します。 |
 | ![itsme ロゴのスクリーンショット](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) は、ユーザーがカード リーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに安全にサインインできる、eiDAS (Electronic Identification, Authentication and Trust Services) に準拠したデジタル ID ソリューションです。 |
 |![Keyless ロゴのスクリーンショット。](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) は、顔の生体認証スキャンの形式で認証を行い、不正行為、フィッシング、および資格情報の再利用を排除するパスワードレス認証プロバイダーです。
 | ![Nevis ロゴのスクリーンショット](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) を使用すると、パスワードレス認証が有効になり、強力な顧客認証と PSD2 のトランザクション要件に準拠するために、Nevis Access アプリによる、モバイルファーストの完全にブランド化されたエンド ユーザー エクスペリエンスが提供されます。 |

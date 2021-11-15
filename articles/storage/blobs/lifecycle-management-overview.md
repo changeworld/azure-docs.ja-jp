@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 245bcbfd59644946ac6f039e35fe02147054cc8c
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 69cb9048ef723744da93478b01ba7122152e1db9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273233"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460308"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>データ ライフサイクルを自動管理してコストを最適化する
 
@@ -400,5 +400,5 @@ BLOB の最終アクセス時刻が更新されるたびに、[その他の操�
 ## <a name="next-steps"></a>次のステップ
 
 - [ライフサイクル管理ポリシーを構成する](lifecycle-management-policy-configure.md)
-- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)
+- [BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)
 - [BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する](storage-manage-find-blobs.md)

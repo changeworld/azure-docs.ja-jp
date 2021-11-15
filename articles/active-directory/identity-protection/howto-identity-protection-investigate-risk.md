@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15ccb564fe2c3551103e71b8c1ca2a901ec03e0
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 776e98d414a62e63b6d472df45f52a66b52b0e62
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440759"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349264"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
@@ -87,7 +87,7 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 - 各リスク検出についての種類を含む情報
 - 同時にトリガーされたその他のリスク
 - サインインが試行された場所
-- Microsoft Cloud App Security (MCAS) のリンクから詳細な情報にアクセスする
+- Microsoft Defender for Cloud Apps から得られた情報をさらに詳しく確認するためのリンク
 
 管理者は、ユーザーのリスク レポートまたはサインイン レポートに戻り、収集された情報に基づいてアクションを実行できます。
 

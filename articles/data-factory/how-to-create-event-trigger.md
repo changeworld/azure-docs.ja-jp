@@ -10,12 +10,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: e2621a6eea481866bb5351623065e7d113e8e9bd
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: da1348f0e31fbe0c3e2528692d40675d799e43da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138665"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469694"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>ストレージ イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -31,6 +31,9 @@ ms.locfileid: "130138665"
 
 > [!NOTE]
 > この記事で説明されている統合は、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に依存しています。 サブスクリプションが Event Grid リソース プロバイダーに登録されていることを確認してください。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。 *Microsoft.EventGrid/eventSubscriptions/* * アクションを実行できる必要があります。 このアクションは、EventGrid EventSubscription 共同作成者の組み込みロールの一部です。
+
+> [!NOTE]
+> BLOB ストレージ アカウントが[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)の背後に存在し、パブリック ネットワーク アクセスをブロックする場合は、BLOB ストレージから Azure Event Grid への通信を許可するようにネットワーク規則を構成する必要があります。 [Storage のドキュメント](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services)に従って、Event Grid などの信頼された Azure サービスにストレージへのアクセス権を付与するか、[Event Grid のドキュメント](../event-grid/configure-private-endpoints.md)に従って、VNet アドレス空間にマップする Event Grid のプライベート エンドポイントを構成できます
 
 ## <a name="create-a-trigger-with-ui"></a>UI を使用してトリガーを作成する
 
@@ -95,7 +98,7 @@ ms.locfileid: "130138665"
 | **スコープ (scope)** | ストレージ アカウントの Azure Resource Manager リソース ID。 | String | Azure Resource Manager ID | はい |
 | **events** | このトリガーを起動するイベントの種類。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | はい、これらの値の任意の組み合わせが必須です。 |
 | **blobPathBeginsWith** | BLOB パスは、トリガーを起動するために指定されているパターンで始まる必要があります。 たとえば、`/records/blobs/december/` のみが、`records` コンテナー下の `december` フォルダーにあるブロブのトリガーを起動します。 | String   | | `blobPathBeginsWith` または `blobPathEndsWith` の少なくとも 1 つのプロパティに値を指定します。 |
-| **blobPathEndsWith** | BLOB パスは、トリガーを起動するために指定されているパターンで終わる必要があります。 たとえば、`december/boxes.csv` のみが、`december` フォルダー内の `boxes` というブロブのトリガーを起動します。 | String   | | これらのプロパティ (`blobPathBeginsWith` または `blobPathEndsWith`) の少なくとも 1 つの値を指定する必要があります。 |
+| **blobPathEndsWith** | BLOB パスは、トリガーを起動するために指定されているパターンで終わる必要があります。 たとえば、`december/boxes.csv` のみが、`december` フォルダー内の `boxes` というブロブのトリガーを起動します。 | String   | | `blobPathBeginsWith` または `blobPathEndsWith` の少なくとも 1 つのプロパティに値を指定します。 |
 | **ignoreEmptyBlobs** | ゼロバイトの BLOB でパイプライン実行をトリガーするかどうか。 既定では、これは true に設定されています。 | Boolean | true または false | いいえ |
 
 ## <a name="examples-of-storage-event-triggers"></a>ストレージ イベント トリガーの例

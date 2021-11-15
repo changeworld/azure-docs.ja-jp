@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 10/19/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: d563907d3567607e537eebfc5c91be02e27fd758
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8ee5cc31e0127ead62fa91f6b1bfab66854aac83
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014768"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260411"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>組織の Azure の価格の表示とダウンロード
 
@@ -28,11 +28,14 @@ Azure Enterprise Agreement (EA)、Microsoft 顧客契約 (MCA)、Microsoft Partn
 1. エンタープライズ管理者として [Azure portal](https://portal.azure.com/) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。  
    ![Azure portal での検索を示すスクリーンショット。](./media/ea-pricing/portal-cm-billing-search.png)
-1. 課金アカウントの下で、 **[使用量 + 請求金額]** を選択します。  
+1. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
+1. ナビゲーション メニューから **[使用量 + 請求金額]** を選びます。  
    ![[請求] で使用量と請求金額を確認できることを示すスクリーンショット](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 1. ![ダウンロード アイコン](./media/ea-pricing/download-icon.png)を選択します。 その月の **[ダウンロード]** を選択します。
-1. **[価格シート]** の下で **[CSV のダウンロード]** を選択します。  
+1. [使用量と請求金額をダウンロードする] ページの [価格シート] で、 **[ドキュメントの準備]** を選びます。 ファイルの準備にはしばらく時間がかかる場合があります。  
     :::image type="content" source="./media/ea-pricing/download-enterprise-agreement-price-sheet-01.png" alt-text="[使用量と請求金額をダウンロードする] オプションを示すスクリーンショット。" :::
+1. ファイルをダウンロードする準備ができたら、 **[CSV のダウンロード]** を選びます。
+
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>MCA または MPA アカウントの価格をダウンロードする
 

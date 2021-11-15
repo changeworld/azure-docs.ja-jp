@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a0eaee3c6e265063270d5cb3b2ea43d3c22fbb0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4de2ed185b3a4421a06ac9b3c88df68821b61adf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553078"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307993"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -77,7 +77,7 @@ Exchange Online、SharePoint Online、Teams、MS Graph は、重要な条件付�
 
 | | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+| **SharePoint Online** | サポートされています | サポートされていません | サポートされています | サポートされています | サポートされていません |
 
 | | Teams Web | Teams Win32 | Teams iOS | Teams Android | Teams Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -136,29 +136,11 @@ CAE 対応クライアントを使用していない場合、既定のアクセ�
 
 ## <a name="enable-or-disable-cae-preview"></a>CAE を有効または無効にする (プレビュー)
 
-1. **Azure portal** に、条件付きアクセス管理者、セキュリティ管理者、または全体管理者としてサインインします。
-1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[継続的アクセス評価]** の順に移動します。
-1. **[プレビューの有効化]** を選択します。
-1. **[保存]** を選択します。
-
-このページで、必要に応じて、プレビューの対象となるユーザーとグループを制限できます。
-
-> [!NOTE]
-> [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) を使用して Microsoft Graph のクエリを実行し、テナント内の CAE の構成を確認できます。 HTTP 200 応答と関連する応答の本文を見ると、テナント内で CAE が有効か無効かがわかります。 Microsoft Graph から HTTP 404 応答が返される場合、CAE は構成されていません。
-
-![Azure portal で CAE プレビューを有効にする](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
-
-### <a name="available-options"></a>使用可能なオプション
-
-組織には、CAE を有効にする場合のオプションがあります。
-
-1. **[一般提供の後に自動で有効にする]** を既定値をとして選択したままにしておくと、CAE が一般提供されている場合に機能が有効になります。
-1. **[プレビューの有効化]** を選択したお客様は、すぐに新しい機能を利用でき、一般提供時に変更を行う必要はありません。 
-1. **[プレビューの無効化]** を選択したお客様は、組織独自のペースで CAE を採用する時間があります。 この設定は、一般提供時に **[無効]** として保持されます。
+CAE 設定が条件付きアクセスの下に移動されました。 新しい CAE のお客様は、条件付きアクセスポリシーを作成するとき、CAE に直接アクセスしたり、切り替えたりできます。 ただし、既存のお客様の場合、条件付きアクセス経由で CAE へのアクセスを開始する前に移行しなければならないことがあります。
 
 #### <a name="migration"></a>移行
 
-CAE 設定が条件付きアクセスの下に移動されました。 以前にセキュリティの CAE 設定を構成しているお客様は、これらの設定を条件付きアクセスポリシーに移行する必要があります。 設定を条件付きアクセスポリシーに移行するには、次の手順を移行します。
+以前にセキュリティの CAE 設定を構成しているお客様は、これらの設定を新しい条件付きアクセスポリシーに移行する必要があります。 CAE 設定を条件付きアクセスポリシーに移行するには、次の手順を移行します。
 
 :::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="条件付きアクセス ポリシーに継続的アクセス評価を移行するオプションを示すポータル ビュー。" lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
 

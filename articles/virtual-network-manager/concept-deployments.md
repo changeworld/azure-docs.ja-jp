@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: bbf38eff6ffc5d24ae566ec94167a1c0c6ff9263
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f7e192133bac66d9ec593350a43d0d005bb05933
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092411"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866679"
 ---
 # <a name="configuration-deployments-in-azure-virtual-network-manager-preview"></a>Azure Virtual Network Manager での構成のデプロイ (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "131092411"
 
 ## <a name="deployment-against-network-group-membership-types"></a><a name="deployment"></a>ネットワーク グループのメンバーシップの種類に対応したデプロイ
 
-デプロイの更新は、ネットワーク グループ内のグループ メンバーが静的な場合と動的な場合で異なります。 動的なグループ メンバーの場合は、目標状態モデルが使用されます。 Azure Virtual Network Manager を使用すると、動的メンバーが構成の要件を満たしているかどうかが自動的に判断されて調整されるため、構成を再度デプロイする必要はありません。 ただし、静的メンバーとして追加した仮想ネットワークがある場合は、変更を適用するために構成をもう一度デプロイする必要があります。 たとえば、新しい仮想ネットワークを静的メンバーとして追加した場合は、構成を有効にするために再度デプロイする必要があります。
+ネットワーク グループの定義を変更しても、このネットワーク グループを使用する構成がデプロイされない限り、影響はありません。 そのため、デプロイの更新は、ネットワーク グループ内のグループ メンバーが静的な場合と動的な場合で異なります。 名前に "production" が含まれているすべての仮想ネットワークなど、動的なグループ メンバーシップが定義されている場合、動的メンバーが構成の要件を満たしているかどうかが Azure Virtual Network Manager によって自動的に判別され、構成を再デプロイすることなく調整されます。 これは、メンバーシップの条件が既に定義されており、定義が変更されていないためです。 ただし、静的メンバーとして追加した仮想ネットワークがある場合は、変更を適用するために構成をもう一度デプロイする必要があります。 たとえば、新しい仮想ネットワークを静的メンバーとして追加した場合は、構成を有効にするために再度デプロイする必要があります。
 
 ## <a name="deployment-status"></a>[デプロイ ステータス]
 

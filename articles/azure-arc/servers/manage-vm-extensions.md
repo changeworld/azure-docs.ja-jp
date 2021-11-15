@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: e652b7c520345ad56a28a718448ac520af8237e3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d853317fad2da9d8d7f27cece4fd7d219cdc42dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447362"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294183"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -58,7 +58,7 @@ Arc 対応サーバーでは、リソース グループまたは別の Azure �
 
 |拡張子 |Publisher |Type |追加情報 |
 |----------|----------|-----|-----------------------|
-|Azure Defender が統合された脆弱性スキャナー |Qualys |WindowsAgent.AzureSecurityCenter |[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Microsoft Defender for Cloud に組み込まれている脆弱性スキャナー |Qualys |WindowsAgent.AzureSecurityCenter |[Defender for Cloud に組み込まれている、Azure およびハイブリッド マシン向けの脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Microsoft Antimalware 拡張機能 |Microsoft.Azure.Security |IaaSAntimalware |[Windows 用の Microsoft Antimalware 拡張機能](../../virtual-machines/extensions/iaas-antimalware-windows.md) |
 |カスタム スクリプト拡張機能 |Microsoft.Compute | CustomScriptExtension |[Windows カスタム スクリプト拡張機能](../../virtual-machines/extensions/custom-script-windows.md)|
 |Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Windows 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-windows.md)|
@@ -71,7 +71,7 @@ Arc 対応サーバーでは、リソース グループまたは別の Azure �
 
 |拡張子 |Publisher |Type |追加情報 |
 |----------|----------|-----|-----------------------|
-|Azure Defender が統合された脆弱性スキャナー |Qualys |LinuxAgent.AzureSecurityCenter |[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Microsoft Defender for Cloud に組み込まれている脆弱性スキャナー |Qualys |LinuxAgent.AzureSecurityCenter |[Defender for Cloud に組み込まれている、Azure およびハイブリッド マシン向けの脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |カスタム スクリプト拡張機能 |Microsoft.Azure.Extensions |CustomScript |[Linux カスタム スクリプト拡張機能バージョン 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor for VMs (分析情報) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |

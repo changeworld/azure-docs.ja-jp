@@ -3,12 +3,12 @@ title: Azure portal から VM 拡張機能を有効にする
 description: この記事では、Azure portal からハイブリッド クラウド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
 ms.date: 10/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d6ecbbc57237192f68b9949ab960fb36cda64c81
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b3bb6e6b6dcb70dc229dc01a02d04cf195c89700
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069598"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423909"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure portal から Azure VM 拡張機能を有効にする
 
@@ -89,7 +89,7 @@ Azure Arc 対応サーバー上の VM 拡張機能の一覧を Azure portal か�
 
     :::image type="content" source="media/manage-vm-extensions-portal/vm-extensions-update-selected.png" alt-text="選択した拡張機能を更新します。" border="true":::
 
-## <a name="uninstall-extensions"></a>拡張機能のアンインストール
+## <a name="remove-extensions"></a>拡張機能を削除する
 
 Azure portal から、1 つ以上の拡張機能を Azure Arc 対応サーバーから削除できます。 拡張機能を削除するには、次の手順のようにします。
 

@@ -7,21 +7,21 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b3e7df998d32317763c6a0de7c0e7c1cc2f2420b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 286754a121dc2aabeeacda47dd82dd4f3a1ed83b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733507"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564520"
 ---
 # <a name="scale-out-and-in-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>ワーカー ノードを追加して Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトおよびスケールインする
 このドキュメントでは、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトおよびスケールインする方法について説明します。 シナリオを使用して説明します。 **シナリオを実行せずにスケールアウトする方法を確認したい場合は、「[スケール アウト](#scale-out)」** または「[スケールイン]()」の段落に進んでください。
 
-Azure Arc 対応 PosrgreSQL Hyperscale に Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を追加するときにスケールアウトします。
+スケールアウトは、Azure Arc 対応 PosrgreSQL Hyperscale サーバー グループに Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を追加するときに行われます。
 
-Azure Arc 対応 PosrgreSQL Hyperscale から Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を削除するときにスケールインします。
+スケールインは、Azure Arc 対応 PosrgreSQL Hyperscale サーバー グループから Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を削除するときに行われます。
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -53,26 +53,35 @@ az postgres arc-server endpoint list -n <server name>  --k8s-namespace <namespac
 ```
 次に例を示します。
 ```azurecli
-az postgres arc-server endpoint list -n postgres01  --k8s-namespace <namespace> --use-k8s
+az postgres arc-server endpoint list -n postgres01  --k8s-namespace arc --use-k8s
 ```
 
 出力例:
 
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+{
+  "instances": [
+    {
+      "endpoints": [
+        {
+          "description": "PostgreSQL Instance",
+          "endpoint": "postgresql://postgres:<replace with password>@12.345.567.89:5432"
+        },
+        {
+          "description": "Log Search Dashboard",
+          "endpoint": "https://23.456.78.99:5601/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))"
+        },
+        {
+          "description": "Metrics Dashboard",
+          "endpoint": "https://34.567.890.12:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01"
+        }
+      ],
+      "engine": "PostgreSql",
+      "name": "postgres01"
+    }
+  ],
+  "namespace": "arc"
+}
 ```
 
 ##### <a name="connect-with-the-client-tool-of-your-choice"></a>任意のクライアント ツールを使用して接続します。
@@ -160,7 +169,7 @@ az postgres arc-server edit -n <server group name> -w <target number of worker n
 この例では、次のコマンドを実行して、ワーカー ノードの数を 2 から 4 に増やします。
 
 ```azurecli
-az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace <namespace> --use-k8s 
+az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace arc --use-k8s 
 ```
 
 ノードを追加すると、サーバー グループが保留中状態であることが確認できます。 次に例を示します。
@@ -169,9 +178,12 @@ az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 ```console
-Name        State          Workers
-----------  -------------  ---------
-postgres01  Pending 4/5    4
+{
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Updating",
+    "workers": 4
+  }
 ```
 
 ノードが使用可能になると、Hyperscale のシャードリバランス機能が自動的に実行され、データが新しいノードに再分配されます。 スケールアウト操作は、オンライン操作です。 ノードが追加され、データがノード間で再分配されている間、データはクエリで使用可能なままになります。
@@ -184,27 +196,31 @@ postgres01  Pending 4/5    4
 次のコマンドを実行します。
 
 ```azurecli
-az postgres arc-server list --k8s-namespace <namespace> --use-k8s
+az postgres arc-server list --k8s-namespace arc --use-k8s
 ```
 
 名前空間に作成されているサーバー グループの一覧が返され、ワーカー ノードの数が示されます。 次に例を示します。
 ```console
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    4
+{
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 4
+  }
 ```
 
 #### <a name="with-kubectl"></a>kubectl を使用する:
 次のコマンドを実行します。
 ```console
-kubectl get postgresqls
+kubectl get postgresqls -n arc
 ```
 
 名前空間に作成されているサーバー グループの一覧が返され、ワーカー ノードの数が示されます。 次に例を示します。
 ```console
-NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-postgres01   Ready   4/4          10.0.0.4:31066      4d20h
+NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
+postgres01   Ready   5/5          12.345.567.89:5432   9d
 ```
+ワーカー ノードの数よりも 1 つ多い数のポッドがあることに注目します。 この追加のポッドは、coordinator ロールを持つ Postgres インスタンスをホストするために使用されます。
 
 #### <a name="with-a-sql-query"></a>SQL クエリを使用する:
 任意のクライアント ツールを使用してサーバー グループに接続し、次のクエリを実行します。
@@ -245,7 +261,6 @@ SELECT COUNT(*) FROM github_events;
 ```azurecli
 az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
-
 
 スケールイン操作は、オンライン操作です。 ノードが削除され、データが残りのノードに再調整される間も、アプリケーションはダウンタイムなしにデータにアクセスできます。
 

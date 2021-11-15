@@ -5,13 +5,13 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 11360af784f456559955152772ba099ad4d48d73
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/01/2021
+ms.openlocfilehash: 446a59d6234219425bb24e62ecfc4796cd7fec6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123423877"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429586"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -108,6 +108,12 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 ## <a name="can-a-project-have-multiple-appliances"></a>プロジェクトに複数のアプライアンスを含めることはできますか。
 
 1 つのプロジェクトに複数のアプライアンスを登録することができます。 ただし、1 つのアプライアンスに登録できるのは、1 つのプロジェクトだけです。
+
+## <a name="how-do-i-find-the-azure-migrate-appliances-registered-to-the-project"></a>プロジェクトに登録されている Azure Migrate アプライアンスを見つけるにはどうすればよいですか。
+1. Azure portal から [Azure Migrate ホームページ](https://portal.azure.com/?feature.customportal=false&feature.showassettypes=Microsoft_Azure_Migrate_AzureMigrationHub&feature.smsMigrationTool=true&feature.cloudamizeAssessmentTool=true&feature.sasAssessmentTool=true&feature.firstPartyDiscoveredMachines=true#blade/Microsoft_Azure_Migrate/AmhResourceMenuBlade/getStarted)に移動し、左側のメニューから **[Servers, databases and web apps]\(サーバー、データベース、Web アプリ\)** を選びます。
+1. 右上隅の **[変更]** を選び、プロジェクトを選びます。
+1. Azure Migrate プロジェクトで、[Azure Migrate: Discovery & assessment]\(Azure Migrate: 検出と評価\) から **[概要]** を選びます。
+1. **[概要]** で、左側のメニューの **[アプライアンス]** を選ぶと、プロジェクトに登録されているアプライアンスと、アプライアンス上のエージェントの接続状態が表示されます。
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate アプライアンス/レプリケーション アプライアンスは同じ vCenter に接続できますか。
 

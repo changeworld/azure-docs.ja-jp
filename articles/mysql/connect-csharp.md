@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 16127f59ce1f4a258bf76d97b072ec8cc5f6c6c5
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3af3a216b8c9d2e19021582181aea188de9dd0cc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643432"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472866"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:.NET (C#) を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -27,6 +27,7 @@ ms.locfileid: "122643432"
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free)。
 - [Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) を使用して、Azure Database for MySQL シングル サーバーを作成します <br/> [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) を使用して、Azure Database for PostgreSQL の単一サーバーを作成します (まだない場合)。
 - パブリック アクセスとプライベート アクセスのどちらを使用しているかに基づいて、次の **いずれか** のアクションを実行して、接続を有効にします。
+- 使用しているプラットフォーム (Windows、Ubuntu Linux、または macOS) 用の [.NET SDK](https://dotnet.microsoft.com/download) をインストールします。
 
 |アクション| 接続方法|ハウツー ガイド|
 |:--------- |:--------- |:--------- |

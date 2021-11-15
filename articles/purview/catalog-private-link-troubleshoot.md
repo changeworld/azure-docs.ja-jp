@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: cb41c6bd06541f414b5cd8f353e59f6094182d13
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 3a41e3e131c4537e21e3844dbf0db360e2b77b28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063360"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214721"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Purview アカウントのプライベート エンドポイント構成のトラブルシューティング
 
 > [!IMPORTANT]
-> **2021 年 9 月 27 日 15:30 UTC より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、「[ポータル プライベート エンドポイント用に DNS を再構成する](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints)」で詳しく説明されているように、必要なアクションを実行する必要があります。 **これらのアクションは、2021 年 10 月 11 日より前に完了する必要があります。そうしない場合、既存のポータルのプライベート エンドポイントの機能が停止します**。
+> **2021 年 9 月 27 日 15:30 UTC より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、「[ポータル プライベート エンドポイント用に DNS を再構成する](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints)」で詳しく説明されているように、必要なアクションを実行する必要があります。 **これらの操作は、2021 年 11 月 12 日より前に完了する必要があります。そうしない場合、既存のポータルのプライベート エンドポイントの機能が停止します**。
 
 このガイドでは、Azure Purview 用のプライベート エンドポイントの使用に関連する既知の制限について要約し、最も一般的な関連する問題のトラブルシューティングを行うための手順と解決策の一覧を示します。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "130063360"
 3. ポータルのプライベート エンドポイントがデプロイされていて、Azure Purview アカウントで公衆ネットワーク アクセスが拒否に設定されている場合は、内部ネットワークから [Azure Purview Studio](https://web.purview.azure.com/resource/) を起動していることを確認してください。
   <br>
     - 正しい名前解決を確認するには、**NSlookup.exe** コマンド ライン ツールを使用して `web.purview.azure.com` に問い合わせます。 結果として、ポータルのプライベート エンドポイントに属しているプライベート IP アドレスが返される必要があります。 
-    - ネットワーク接続を確認するには、任意のネットワーク テスト ツールを使用して、`web.purview.azure.com` エンドポイントのポート **443** への送信接続をテストします。 接続が成功する必要があります。    
+    - ネットワーク接続を確認するには、任意のネットワーク テスト ツールを使って、`web.purview.azure.com` エンドポイントのポート **443** への送信接続をテストします。 接続が成功する必要があります。    
 
 3. Azure プライベート DNS ゾーンが使用されている場合は、必要な Azure DNS ゾーンがデプロイされていて、各プライベート エンドポイントの DNS (A) レコードがあることを確認します。
 
@@ -164,7 +164,7 @@ ms.locfileid: "130063360"
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>原因 
-これは、以前のバージョンのセルフホステッド統合ランタイムが実行されていることを示している場合があります。 2021 年 8 月 18 日より後に Azure Purview アカウントを作成した場合は、セルフホステッド統合ランタイムのバージョン 5.9.7885.3 を使用する必要があります。
+これは、以前のバージョンのセルフホステッド統合ランタイムが実行されていることを示している場合があります。 2021 年 8 月 18 日より後に Azure Purview アカウントを作成した場合は、セルフホステッド統合ランタイムのバージョン 5.9.7885.3 を使う必要があります。
 
 ### <a name="resolution"></a>解像度 
 セルフホステッド統合ランタイムを 5.9.7885.3 にアップグレードします。

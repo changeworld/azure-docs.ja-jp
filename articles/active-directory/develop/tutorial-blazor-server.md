@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: f7d62b6fa3523accbeba9a083c74330ff344e2ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cbfd1432945bdf45fc1461440b835783e0b2079
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786372"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456159"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "124786372"
 
 最後に、アプリが保護された API (この場合 Microsoft Graph) を呼び出すので、その API を呼び出すためのアクセス トークンを要求するときに、その ID を確認するためにクライアント シークレットが必要になります。
 
-1. 同じアプリの登録内で、 **[管理]** の下にある **[証明書 & シークレット]** を選択します。
+1. 同じアプリの登録内で、 **[管理]** の下にある **[証明書とシークレット]** 、 **[Client secrets]\(クライアント シークレット\)** の順に選択します。
 2. 有効期限がない **新しいクライアント シークレット** を作成します。
 3. 次の手順で使用するため、そのシークレットの **値** を書き留めておきます。 このウィンドウから移動すると、もう一度アクセスすることはできません。 ただし、必要に応じて再作成することはできます。
 

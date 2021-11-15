@@ -7,16 +7,19 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cc3050cb7c92e0e46c02a4a12f218364b94b2d1f
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 57c161659819bd89d2587b287a3c58058aa3c9ce
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015544"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501383"
 ---
 # <a name="how-to-identify-outbound-public-ip-addresses-in-azure-spring-cloud"></a>Azure Spring Cloud で送信パブリック IP アドレスを識別する方法
 
-このページでは、Azure Spring Cloud アプリケーションの静的な送信パブリック IP アドレスを表示する方法について説明します。  パブリック IP は、データベース、ストレージ、キー コンテナーなど、外部リソースとの通信に使用されます。
+このページでは、Azure Spring Cloud アプリケーションの静的な送信パブリック IP アドレスを表示する方法について説明します。 パブリック IP は、データベース、ストレージ、キー コンテナーなど、外部リソースとの通信に使用されます。
+
+> [!IMPORTANT]
+> Azure Spring Cloud インスタンスが独自の仮想ネットワークにデプロイされている場合は、ネットワーク セキュリティ グループまたは Azure Firewall を利用して、エグレス トラフィックを完全に制御できます。
 
 ## <a name="how-ip-addresses-work-in-azure-spring-cloud"></a>Azure Spring Cloud で IP アドレスが動作するしくみ
 

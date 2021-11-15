@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: ed76730cd37cf903c77b0893b546ab824e7ddff3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a5921e2af4445ad645ce48f6102c311c9478b9e9
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010918"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848023"
 ---
 # <a name="connect-to-and-manage-azure-synapse-analytics-workspaces-in-azure-purview"></a>Azure Purview で Azure Synapse Analytics ワークスペースに接続して管理する
 
@@ -23,7 +23,7 @@ ms.locfileid: "131010918"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan)| [あり](#scan)| いいえ| [あり](how-to-lineage-azure-synapse-analytics.md)|
+| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan)| [あり](#scan)| いいえ| [はい - Synapse パイプライン](how-to-lineage-azure-synapse-analytics.md)|
 
 
 <!-- 4. Prerequisites

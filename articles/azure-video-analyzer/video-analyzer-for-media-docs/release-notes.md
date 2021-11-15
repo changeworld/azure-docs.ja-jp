@@ -5,12 +5,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 3bfe1e7f18f50723eed9d456eac8a773f06a34bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115402133ad33b9fa20eb3298db3e342ea2afbbd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552568"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461686"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Video Analyzer for Media リリース ノート
 
@@ -22,6 +22,22 @@ ms.locfileid: "128552568"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="november-2021"></a>2021 年 11 月
+ 
+### <a name="public-preview-of-azure-video-analyzer-for-media-account-management-based-on-arm"></a>Azure Video Analyzer for Media での ARM ベースのアカウント管理のパブリック プレビュー
+
+Azure Video Analyzer for Media では、Azure Resource Manager (ARM) ベースのアカウント管理のパブリック プレビューが導入されています。 ARM ベースの API を活用して、Azure portal からアカウントを作成、編集、削除することができます。
+
+詳細については、[Video Analyzer for Media アカウントの作成](https://techcommunity.microsoft.com/t5/azure-ai/azure-video-analyzer-for-media-is-now-available-as-an-azure/ba-p/2912422)に関する記事を参照してください。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="embed-widgets-in-your-app-using-azure-video-analyzer-for-media-package"></a>Azure Video Analyzer for Media パッケージを使ってアプリにウィジェットを埋め込む
+
+新しい Azure Video Analyzer for Media (AVAM) `@azure/video-analyzer-for-media-widgets` npm パッケージを使って、アプリに `insights` ウィジェットを追加し、ニーズに合わせてカスタマイズします。
+
+新しい AVAM パッケージを使うと、`iframe` 要素を追加してコグニティブな分析情報ウィジェットを埋め込むのではなく、ウィジェットとアプリを簡単に埋め込んで通信できます。 詳細については、[アプリへの Video Analyzer for Media ウィジェットの埋め込みとカスタマイズ](https://techcommunity.microsoft.com/t5/azure-media-services/embed-and-customize-azure-video-analyzer-for-media-widgets-in/ba-p/2847063)に関するドキュメントを参照してください。 
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -112,7 +128,7 @@ Video Analyzer for Media Web サイトでビデオの分析情報の表示を選
 
 ### <a name="new-developer-portal"></a>新しい開発者ポータル 
 
-Video Analyzer for Media の[開発者ポータル](https://api-portal.videoindexer.ai/)が新しくなりました。新しい Video Analyzer for Media API をお試しください。[GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer)、[スタック オーバーフロー](https://stackoverflow.com/questions/tagged/video-indexer)、関連するブログ記事が含まれた [Video Analyzer for Media の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)、[Video Analyzer for Media の FAQ](faq.yml)、フィードバックを提供し、機能を提案するための[ユーザーの声](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016)、およびウィジェット コード サンプルが含まれた ["CodePen" リンク](https://codepen.io/videoindexer)など、関連するすべてのリソースが 1 か所で見つかります。 
+Video Analyzer for Media の[開発者ポータル](https://api-portal.videoindexer.ai/)が新しくなりました。新しい Video Analyzer for Media API をお試しください。[GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer)、[スタック オーバーフロー](https://stackoverflow.com/questions/tagged/video-indexer)、関連するブログ記事が含まれた [Video Analyzer for Media の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)、[Video Analyzer for Media の FAQ](faq.yml)、フィードバックを提供し、機能を提案するための[ユーザーの声](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858)、およびウィジェット コード サンプルが含まれた ["CodePen" リンク](https://codepen.io/videoindexer)など、関連するすべてのリソースが 1 か所で見つかります。 
  
 ### <a name="advanced-customization-capabilities-for-insight-widget"></a>分析情報ウィジェットの高度なカスタマイズ機能 
 

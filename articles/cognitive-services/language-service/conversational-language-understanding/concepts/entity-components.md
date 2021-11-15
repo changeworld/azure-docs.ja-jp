@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-clu, ignite-fall-2021
-ms.openlocfilehash: 5a5c76ed125a600458b87b3c5f4c451a62b13e8c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c42028b10a71a039a208f82cfacb58e5ba8e07cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091523"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347729"
 ---
 # <a name="entity-components"></a>エンティティ コンポーネント
 
@@ -28,7 +28,7 @@ Conversational Language Understanding では、エンティティは、発話か
 
 ### <a name="learned-component"></a>Learned コンポーネント
 
-learned コンポーネントは、発話へのラベル付けに使用されたエンティティ タグを使用して、機械学習モデルをトレーニングします。 このモデルは、発話内のコンテキストに基づいて、エンティティがどこにあるかを予測するように学習します。 ラベルは、周囲にある単語の意味に基づき、とラベル付けされた単語として、エンティティが発話内に存在すると予想される場所の例を提供します。 このコンポーネントは、エンティティに対して発話にタグを付けてラベルを追加した場合にのみ定義されます。 エンティティに発話をタグ付けしていない場合、Learned コンポーネントはありません。
+learned コンポーネントは、発話へのラベル付けに使用されたエンティティ タグを使用して、機械学習モデルをトレーニングします。 このモデルは、発話内のコンテキストに基づいて、エンティティがどこにあるかを予測するように学習します。 ラベルは、周囲にある単語の意味に基づき、とラベル付けされた単語として、エンティティが発話内に存在すると予想される場所の例を提供します。 このコンポーネントは、エンティティに対して発話にタグを付けてラベルを追加した場合にのみ定義されます。 エンティティに発話をタグ付けしない場合、そのエンティティには Learned コンポーネントが与えられません。
 
 :::image type="content" source="../media/learned-component.png" alt-text="エンティティの learned コンポーネントの例を示すスクリーンショット。" lightbox="../media/learned-component.png":::
 

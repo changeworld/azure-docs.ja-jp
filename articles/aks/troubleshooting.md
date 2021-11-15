@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 09/24/2021
-ms.openlocfilehash: 16aa9482b9de779295732fef0f2b88fa348e9026
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: c21c5a981f091c9c4b0e340f3c0ae1481cd486c6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707186"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455912"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -92,6 +92,22 @@ API サーバーに接続するために、ポート 22、9000、および 1194 
 ## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。 どうすればよいですか。
 
 AKS でサポートされる TLS の最小バージョンは TLS 1.2 です。
+
+## <a name="my-application-is-failing-with-argument-list-too-long"></a>アプリケーションが `argument list too long` で失敗している
+
+次のようなエラー メッセージが表示される場合があります。
+
+```
+standard_init_linux.go:228: exec user process caused: argument list too long
+```
+
+次の 2 つの原因が考えられます。
+- 実行可能ファイルに指定された引数リストが長すぎる
+- 実行可能ファイルに指定された環境変数のセットが大きすぎる
+
+1 つの名前空間に多数のサービスがデプロイされている場合、環境変数のリストが大きくなりすぎることがあり、Kubelet でその実行可能ファイルを実行しようとすると上記のエラー メッセージが生成されます。 このエラーが発生するのは、アクティブな各サービスのホストとポートを記録する環境変数が Kubelet によって挿入されたためです。これにより、サービスでこの情報を使用して別のサービスを見つけることができます (詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#accessing-the-service)を参照してください)。 
+
+回避策として、[ポッド仕様](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/#podspec-v1-core)内で `enableServiceLinks: false` を設定することによって、この Kubelet の動作を無効にすることができます。**ただし**、サービスがこれらの環境変数に依存して他のサービスを特定している場合は、エラーが発生します。 1 つの解決策は、([CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/coredns/) を使用して) サービス解決に環境変数ではなく DNS を使用することです。 もう 1 つの方法は、アクティブになっているサービスの数を減らすことです。
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、`"Changing property 'imageReference' is not allowed"` エラーが発生します。 この問題を解決するにはどうすればよいですか。
 

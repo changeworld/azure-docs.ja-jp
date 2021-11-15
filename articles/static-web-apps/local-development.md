@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 04/02/2021
+ms.date: 10/21/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: a959a7b424a855f47a2e128b5c77727d21a9e0aa
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7419eea1503d8d0692bd1b112226c8ce626d9776
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449779"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261578"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps"></a>Azure Static Web Apps 用にローカル開発環境を設定する
 
@@ -63,9 +63,7 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 - **既存の Azure Static Web Apps サイト**: お持ちでない場合は、[vanilla-api](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) スターター アプリから開始してください。
 - **npm を含む [Node.js](https://nodejs.org)** : [npm](https://www.npmjs.com/) へのアクセスを含む [Node.js LTS](https://nodejs.org) バージョンを実行します。
 - **[Visual Studio Code](https://code.visualstudio.com/)** : API アプリケーションのデバッグに使用されますが、CLI には必要ありません。
-
-> [!NOTE]
-> [API をローカルに使用](add-api.md#run-the-frontend-and-api-locally)して `swa` を実行するには、Azure Functions Core Tools が必要です。
+- **[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)** : API をローカルで実行するのに必要。
 
 ## <a name="get-started"></a>作業開始
 
@@ -73,7 +71,9 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 
 1. CLI をインストールします。
 
-    `npm install -g @azure/static-web-apps-cli`
+    ```console
+    npm install -g @azure/static-web-apps-cli
+    ```
 
 1. アプリケーションで必要な場合は、アプリをビルドします。
 
@@ -83,7 +83,9 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 
 1. CLI を起動します。
 
-    `swa start`
+    ```console
+    swa start
+    ```
 
 1. `http://localhost:4280` に移動して、ブラウザーでアプリを表示します。
 
@@ -93,8 +95,8 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 |--- | --- |
 | 特定のフォルダーを処理する | `swa start ./output-folder` |
 | 実行中のフレームワーク開発サーバーを使用する | `swa start http://localhost:3000` |
-| フォルダー内の Functions アプリを起動する | `swa start ./output-folder --api ./api` |
-| 実行中の Functions アプリを使用する | `swa start ./output-folder --api http://localhost:7071` |
+| フォルダー内の Functions アプリを起動する | `swa start ./output-folder --api-location ./api` |
+| 実行中の Functions アプリを使用する | `swa start ./output-folder --api-location http://localhost:7071` |
 
 ## <a name="authorization-and-authentication-emulation"></a>承認と認証のエミュレーション
 
@@ -131,9 +133,14 @@ Azure Static Web Apps CLI は、Azure で実装されている[セキュリテ�
 
 1. Visual Studio Code で API アプリケーション フォルダーを開き、デバッグ セッションを開始します。
 
-1. 静的サーバーと API サーバーのアドレスを順番にリストして、`swa start` コマンドに渡します。
+1. 次のコマンドで Static Web Apps CLI を起動します。
 
-    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
+
+    ```console
+    swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api-location http://localhost:7071
+    ```
+
+    開発サーバーのポート番号で `<DEV-SERVER-PORT-NUMBER>` を置き換えてください。
 
 次のスクリーンショットは、一般的なデバッグ シナリオでのターミナルを示しています。
 

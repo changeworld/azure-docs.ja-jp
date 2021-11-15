@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: f40ac573e8abb20e7d4eb4b11a0d9e09f251d9c8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4a366d704e942c74bfa32e9a0819cfda2126b2d1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022020"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456615"
 ---
 # <a name="np-series"></a>NP シリーズ 
 

@@ -1,7 +1,6 @@
 ---
-title: このプランの内容
-titleSuffix: Azure Dev/Test offer
-description: クラウドサービスである Azure Dev/Test プランを使用して、機械学習プロジェクトのライフサイクルを能率化し、管理します。
+title: Azure Dev/Test プランとは
+description: Azure Dev/Test プランを使用して、Visual Studio サブスクライバー向けの Azure クレジットを受け取ります。
 ms.topic: overview
 ms.prod: visual-studio-windows
 ms.author: jametra
@@ -9,12 +8,12 @@ author: jamestramel
 ms.date: 10/12/2021
 ms.custom: devtestoffer
 adobe-target: true
-ms.openlocfilehash: cf7285f65ad9ce41d9674de3d1eaa43359666650
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ae8f0a6babc7fccb258956af4fa15d880d4f370
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017517"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062312"
 ---
 # <a name="what-is-the-azure-devtest-offer"></a>Azure Dev/Test オファーとは
 

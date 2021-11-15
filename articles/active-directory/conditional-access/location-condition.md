@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/21/2021
+ms.date: 10/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb, olhuan
+ms.reviewer: calebb, mewal
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 09dbcf3557dd45d005a61f9aed99e29abbc684e6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ef2a7671b1db13e1db9fae8339ae33726a2eb3b1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626420"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444283"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -80,7 +80,7 @@ IPv4/IPv6 アドレス範囲で定義されるネームド ロケーションに
 > [!NOTE]
 > IPv6 アドレスからのサインインは、国または地域にマップできず、不明な領域と見なされます。 国または地域にマップできるのは IPv4 アドレスのみです。
 
-**[Determine location by GPS coordinates (Preview)]\(場所を GPS 座標で決定する (プレビュー)\)** を選択した場合、ユーザーはモバイル デバイスに Microsoft Authenticator アプリをインストールする必要があります。 システムは 1 時間ごとに、ユーザーの Microsoft Authenticator アプリにアクセスしてユーザーのモバイル デバイスの GPS の場所を収集します。
+**[GPS 座標による場所の特定]** を選択した場合、ユーザーはモバイル デバイスに Microsoft Authenticator アプリをインストールする必要があります。 システムは 1 時間ごとに、ユーザーの Microsoft Authenticator アプリにアクセスしてユーザーのモバイル デバイスの GPS の場所を収集します。
 
 ユーザーは自分の場所を共有するよう Microsoft Authenticator アプリから初めて求められるときに、アプリで通知を受け取ります。 ユーザーはアプリを開いて、場所のアクセス許可を付与する必要があります。 
 

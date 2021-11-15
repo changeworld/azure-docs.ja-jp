@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 77b920f52f699cb4492764aaf5ecb8b5f8ee2a7e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: fa2f6c4ec9a64dacc719f62f6a87c6d9d6e112d2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559411"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319333"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>チュートリアル: ビデオを使用して推論メタデータを記録およびストリーム配信する
 
@@ -51,7 +51,7 @@ ms.locfileid: "131559411"
 
 図に示すように、パイプライン内の [RTSP ソース](../pipeline.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
 
-* 1 つ目は、HTTP 拡張ノードへのパスです。 HTTP 拡張ノードは、プロキシの役割を果たします。 これによって、10 番目ごとのビデオ フレームが指定された画像の種類に変換されます。 その後、画像は、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに HTTP 経由で転送されます。 この例では、そのエッジ モジュールは、さまざまな種類のオブジェクトを検出できる YOLOv3 モデルを使用して構築されています。 HTTP 拡張プロセッサ ノードによって、検出結果が収集され、それらの結果および (10 番目のフレームだけではなく) すべてのビデオ フレームがオブジェクト トラッカー ノードに送信されます。 オブジェクト トラッカー ノードでは、オプティカル フロー技術を使用して、AI モデルが適用されていない 9 個のフレーム内のオブジェクトが追跡されます。 トラッカー ノードによって、その結果がビデオ シンク ノードと IoT Hub シンク ノードに発行されます。 [ビデオ シンク](../pipeline.md#video-sink) ノードでは、オブジェクト トラッカー ノードからの推論メタデータを使用して、記録されたビデオが再生されます。 次に、[IoT Hub メッセージ シンク](../pipeline.md#iot-hub-message-sink) ノードによって、それらのイベントが [IoT Edge Hub](../../../iot-fundamentals/iot-glossary.md#iot-edge-hub) に送信されます。
+* 1 つ目は、HTTP 拡張ノードへのパスです。 HTTP 拡張ノードは、プロキシの役割を果たします。 これによって、10 番目ごとのビデオ フレームが指定された画像の種類に変換されます。 次に、その画像は、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに HTTP 経由で転送されます。 この例では、そのエッジ モジュールは、さまざまな種類のオブジェクトを検出できる YOLOv3 モデルを使用して構築されています。 HTTP 拡張プロセッサ ノードによって、検出結果が収集され、それらの結果および (10 番目のフレームだけではなく) すべてのビデオ フレームがオブジェクト トラッカー ノードに送信されます。 オブジェクト トラッカー ノードでは、オプティカル フロー技術を使用して、AI モデルが適用されていない 9 個のフレーム内のオブジェクトが追跡されます。 トラッカー ノードによって、その結果がビデオ シンク ノードと IoT Hub シンク ノードに発行されます。 [ビデオ シンク](../pipeline.md#video-sink) ノードでは、オブジェクト トラッカー ノードからの推論メタデータを使用して、記録されたビデオが再生されます。 次に、[IoT Hub メッセージ シンク](../pipeline.md#iot-hub-message-sink) ノードによって、それらのイベントが [IoT Edge Hub](../../../iot-fundamentals/iot-glossary.md#iot-edge-hub) に送信されます。
 
 * 2 番目のパスは、RTSP ソースからビデオ シンク ノードへの直接のパスで、継続的なビデオ記録を実現します。 このチュートリアルで使用するビデオは、[幹線道路の交差点のサンプル ビデオ](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)です。
 

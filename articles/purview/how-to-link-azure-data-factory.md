@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/01/2021
-ms.openlocfilehash: f939d397db80e303ec2ed36d4112df0d38d090aa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2ba2c135a0b07df6c6a4802c241b064b2ef94335
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464050"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851491"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -36,15 +36,13 @@ ms.locfileid: "131464050"
 
 >[!Note]
 >Data Factory の接続を表示するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
->- **2021 年 8 月 18 日以降** に作成された Purview アカウントの場合: ルート コレクションの **コレクション管理者** ロール。
->- **2021 年 8 月 18 日より前** に作成された Purview アカウントの場合: Azure 組み込みの **所有者**、**共同作成者**、**閲覧者**、または **ユーザー アクセス管理者** ロール。
+>ルート コレクションに対する **コレクション管理者** ロール。
 
 ## <a name="create-new-data-factory-connection"></a>新しい Data Factory 接続を作成する
 
 >[!Note]
 >Data Factory の接続を追加または削除するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
->- **2021 年 8 月 18 日以降** に作成された Purview アカウントの場合: ルート コレクションの **コレクション管理者** ロール。
->- **2021 年 8 月 18 日より前** に作成された Purview アカウントの場合: **所有者** または **ユーザー アクセス管理者** ロール。
+>ルート コレクションに対する **コレクション管理者** ロール。
 >
 > さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。
 
@@ -71,9 +69,7 @@ ms.locfileid: "131464050"
 
 データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 UI 上で Purview にデータ ファクトリを接続すると、ロールの割り当てが自動的に追加されます。
 
-- **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
-
-- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、お使いの Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
+データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールを付与します。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
 ### <a name="remove-data-factory-connections"></a>Data Factory 接続を削除する
 

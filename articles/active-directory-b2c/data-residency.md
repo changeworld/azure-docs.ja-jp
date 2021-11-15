@@ -1,7 +1,7 @@
 ---
 title: 利用可能なリージョンとデータの保存場所
 titleSuffix: Azure AD B2C
-description: 利用可能なリージョン、データの保存場所、Azure Active Directory B2C プレビュー テナントに関する情報。
+description: 利用可能なリージョン、データ所在地、高可用性、SLA、Azure Active Directory B2C プレビュー テナントに関する情報。
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 08/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 91b2c287b42d0a60a3b813b87f8e1eb2368da395
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 52fc2cc1e9658ef63b331d7d3983fdc47d13489e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040229"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424422"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 
@@ -33,8 +33,7 @@ Azure AD B2C は **世界中で一般提供** されており、**データの�
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-Azure AD B2C は、Azure パブリック クラウドを介して全世界で提供されています。 この機能の例は、Azure の「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」ページと [Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)に関するページで確認できます。
-
+Azure AD B2C は、Azure パブリック クラウドを介して全世界で提供されています。 このサービスが利用できるかどうかは、Azure の「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」ページと [Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)に関するページで確認できます。 また、Azure AD B2C は高可用性のサービスです。 詳細については、[Azure Active Directory B2C のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/active-directory-b2c/v1_1) を参照してください。
 ## <a name="data-residency"></a>データの保存場所
 
 Azure AD B2C では、ユーザー データが米国、ヨーロッパ、アジア太平洋のリージョン、またはオーストラリアに保存されます。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 09/01/2021
-ms.openlocfilehash: 52447010cb43cbe088fdaa71e8ee3f0043b64dbc
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: a4ac4425a3eeba6dafcaf11eb4c73f900c8fa04d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469943"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842785"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>チュートリアル:Azure IoT Central でビデオ分析 (物体とモーションの検出) アプリケーションを作成する (OpenVINO&trade;)
 
@@ -116,13 +116,13 @@ IoT Edge モジュールは、配置マニフェストを使用してデプロ�
 
 [!INCLUDE [iot-central-video-analytics-part3](../../../includes/iot-central-video-analytics-part3.md)]
 
-### <a name="replace-the-manifest"></a>マニフェストを置き換える
+### <a name="edit-the-manifest"></a>マニフェストを編集する
 
-**[LVA Edge Gateway v2]** ページで、 **[+ Replace manifest]\(+ マニフェストを置き換える\)** を選択します。
+**[LVA Edge Gateway v2]** ページで、 **[マニフェストの編集]** を選択します。
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="マニフェストを置き換える":::
 
-*lva-configuration* フォルダーに移動し、先ほど編集した *deployment.openvino.amd64.json* マニフェスト ファイルを選択します。 **[アップロード]** を選択します。 検証が完了したら、 **[Replace]\(置き換え\)** を選択します。
+**[replace it with a new file]\(新しいファイルに置き換える\)** を選択し、*lva-configuration* フォルダーに移動し、先ほど編集した *deployment.openvino.amd64.json* マニフェスト ファイルを選択し、 **[保存]** を選択します。
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
 

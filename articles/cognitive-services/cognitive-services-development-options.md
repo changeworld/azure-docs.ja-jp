@@ -7,13 +7,13 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: c06cdae9bd7e2b0d3830cd57327253206970b3c6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/28/2021
+ms.openlocfilehash: 1d6f882a52a66b478a34b0da129a53c502ccbbca
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077935"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458230"
 ---
 # <a name="cognitive-services-development-options"></a>Cognitive Services の開発オプション
 
@@ -95,7 +95,7 @@ Power Automate は、コードを記述せずにアプリとサービスの間�
 
 ### <a name="ai-builder"></a>AI Builder 
 
-Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder は、ポイント アンド クリック エクスペリエンスを通して、ソリューションに AI の機能を組み込みます。 Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
+Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder は、ポイント アンド クリック エクスペリエンスを通して、ソリューションに AI の機能を組み込みます。 言語サービス、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
 
 * **対象ユーザー**: ビジネス ユーザー (アナリスト)、SharePoint 管理者
 * **利点**:ポイント アンド クリック エクスペリエンスにより AI の機能を組み込むターンキー ソリューション。 コーディングやデータ サイエンスのスキルは必要ありません。

@@ -7,12 +7,12 @@ ms.date: 09/03/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5a04acfdec42319b998b2854be9690bab360558c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: affbabcb036e789975fdeb51f032e8c90861fac0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550535"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234588"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -169,9 +169,6 @@ Windows コンテナーを使用した開発の詳細については、この記
 :::moniker-end
 <!-- end 1.2 -->
 
-<!--1.2-->
-:::moniker range="iotedge-2020-11"
-
 ## <a name="module-security"></a>モジュールのセキュリティ
 
 モジュールは、セキュリティを考慮して開発する必要があります。 モジュールをセキュリティで保護する方法の詳細については、[Docker のセキュリティ](https://docs.docker.com/engine/security/)に関するページを参照してください。
@@ -180,7 +177,7 @@ Windows コンテナーを使用した開発の詳細については、この記
 
 ### <a name="allow-elevated-docker-permissions"></a>管理者特権での Docker アクセス許可を許可する
 
-IoT Edge デバイス上の config.toml ファイルには、`allow_elevated_docker_permissions` というパラメーターがあります。 **true** に設定すると、このフラグによって、[コンテナー作成オプション](how-to-use-create-options.md)の Docker HostConfig の `CapAdd` フィールドで定義した追加の機能に加えて、`--privileged` フラグが許可されます。
+IoT Edge デバイス上の構成ファイルには、`allow_elevated_docker_permissions` というパラメーターがあります。 **true** に設定すると、このフラグによって、[コンテナー作成オプション](how-to-use-create-options.md)の Docker HostConfig の `CapAdd` フィールドで定義した追加の機能に加えて、`--privileged` フラグが許可されます。
 
 >[!NOTE]
 >現時点では、このフラグは既定で **true** に設定されています。これにより、デプロイでモジュールに特権アクセス許可を与えることができます。 デバイスのセキュリティを向上させるには、このフラグを false に設定することをお勧めします。 将来的に、このフラグは既定で **false** に設定されます。
@@ -190,9 +187,6 @@ IoT Edge デバイス上の config.toml ファイルには、`allow_elevated_doc
 Docker の機能 **CAP_CHOWN** と **CAP_SETUID** は、既定で無効になっています。 これらの機能は、ホスト デバイス上のセキュリティで保護されたファイルに書き込むために使用でき、ルート アクセスを取得できる可能性があります。
 
 これらの機能が必要な場合は、コンテナーの作成オプションの CapADD を使用して、手動で再度有効にできます。
-
-:::moniker-end
-<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>次のステップ
 

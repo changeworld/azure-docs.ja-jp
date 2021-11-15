@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 45e86a925c83f32ab4f704ea7ffc4f83ff3089ae
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 83ef818f3b9555fc152f1ca31149a8c5686430ac
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131059929"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131473758"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -1102,4 +1102,4 @@ sections:
       データはどのくらいの頻度で収集されますか
     answer: >
       データ収集の頻度はカスタマイズできます。 既定の頻度の詳細については、「[SQL Insights によって収集されたデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#collected-data)」を参照してください。頻度をカスタマイズする手順については、 「[SQL 監視プロファイルの作成](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)」を参照してください。
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nAzure Monitor に関する一般的なフィードバックについては、[フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスしてください。"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nAzure Monitor に関する一般的なフィードバックについては、[フィードバック フォーラム](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)にアクセスしてください。"

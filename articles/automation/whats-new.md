@@ -4,14 +4,14 @@ description: 毎月更新される Azure Automation に対する重要な更新�
 services: automation
 ms.subservice: ''
 ms.topic: overview
-ms.date: 08/27/2021
+ms.date: 11/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 84644759a3f2f887662faae686814f032410266b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ea18171bdd957781e22743c3e59690fc8d4703f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123107935"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432436"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Automation の新着情報
 
@@ -22,6 +22,36 @@ Azure Automation には継続的に改善が施されています。 常に最�
 - バグの修正
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。 6 か月以上前の項目を探す場合は、「[Azure Automation の新着情報のアーカイブ](whats-new-archive.md)」を参照してください。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="preview-support-for-hybrid-runbook-worker-extension-for-azure-vms-and-arc-enabled-servers"></a>Hybrid Runbook Worker の Azure VM および Arc 対応サーバー用拡張機能のプレビュー サポート
+
+**種類:** 新機能
+
+Azure Automation では、Azure VM と、Arc 対応サーバーを介した非 Azure マシンに対するユーザー Hybrid Runbook Worker ネイティブ統合がリリースされました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/automation-user-hybrid-extension-support)を参照してください。
+
+### <a name="preview-support-for-azure-active-directory-authentication"></a>Azure Active Directory 認証のプレビュー サポート
+
+**種類:** 新機能
+
+Azure Automation では、Automation サービスのすべてのパブリック エンドポイントに対して Azure AD 認証サポートを備えた重要なセキュリティ機能が追加されました。 この機能は、Azure VM と Arc 対応サーバー用の Hybrid Runbook Worker 拡張機能のサポートによって実装されました。
+
+これにより、証明書への依存関係がなくなり、ローカル認証方法を使用せずに、厳格な監査とコンプライアンス要件を満たすことができます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/automation-user-hybrid-extension-support)を参照してください。
+
+### <a name="source-control-enabled-to-use-managed-identities"></a>マネージド ID の使用が有効なソース管理
+
+**種類:** 新機能
+
+Azure Automation でのソース管理の統合で、実行アカウントではなく、[マネージド ID](automation-security-overview.md#managed-identities) を使用できるようになりました。 詳細については、[ソース管理の統合の前提条件](source-control-integration.md#prerequisites)に関する記事を参照してください。
+
+## <a name="september"></a>September
+
+### <a name="support-for-az-modules-by-default"></a>Az モジュールを既定でサポート
+
+**種類:** 新機能
+
+Azure Automation では、Az モジュールが既定でサポートされるようになりました。 新しく作成された Automation アカウントには、Az モジュールの最新バージョン (6.4.0) が既定で含まれます。 また、Automation には、既存の Automation アカウントでの Az モジュールの更新を可能にする、Azure portal のオプション、 **[Update Az Modules]\(Az モジュールを更新する\)** も含まれます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-az-module-support)を参照してください。
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -43,7 +73,7 @@ Azure Automation で、Azure グローバル、Azure Government、Azure China �
 
 **種類:** 新機能
 
-Azure Automation 資産の暗号化を、お客様が各自のマネージド キーを使用して管理および保護することができます。 カスタマー マネージド キーの導入により、Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この追加の暗号化は、組織の規制またはコンプライアンスのニーズを満たすのに役立ちます。
+Azure Automation 資産の暗号化を、お客様が各自のマネージド キーを使用して管理および保護することができます。 カスタマー マネージド キーの導入により、Azure Key Vault で作成して管理するキーを使用して、既定の暗号化を追加の暗号化レイヤーで補完できます。 この追加の暗号化レベルは、組織の規制またはコンプライアンスのニーズを満たすのに役立ちます。
 
 詳細については、[カスタマー マネージド キーの使用](automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)に関するセクションを参照してください。
 
@@ -83,91 +113,7 @@ Start/Stop VMs during off-hours (v1) は、2022 年 5 月 21 日に非推奨と�
 
 **種類:** 新機能
 
-Azure Automation で、Azure グローバルおよび Azure Government リージョンのクラウドとハイブリッド ジョブに対して、[システム割り当てマネージド ID](./automation-security-overview.md#managed-identities-preview) がサポートされるようになりました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-system-assigned-managed-identities/)を参照してください。
-
-## <a name="march-2021"></a>2021 年 3 月
-
-### <a name="new-azure-automation-built-in-policy-definitions"></a>Azure Automation の新しい組み込みポリシー定義
-
-**種類:** 新機能
-
-Azure Automation に 5 つの新しい組み込みポリシー定義が追加されました。
-
-- Automation アカウントで公衆ネットワーク アクセスを無効にする必要がある
-- Azure Automation アカウントでは、保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
-- 公衆ネットワーク アクセスを無効にするように Azure Automation アカウントを構成する
-- Azure Automation アカウントでのプライベート エンドポイント接続の構成
-- Automation アカウントでプライベート エンドポイント接続を有効にする必要がある。
-
-詳細については、[Azure Policy リファレンス](./policy-reference.md)に関するページを参照してください。
-
-### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>インド南部での GA を宣言された Automation と State Configuration のサポート
-
-**種類:** 新機能
-
-インド南部でプロセスの自動化および State Configuration 機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-south-india-region/)を参照してください。
-
-### <a name="support-for-automation-and-state-configuration-declared-ga-in-uk-west"></a>英国西部での GA を宣言された Automation と State Configuration のサポート
-
-**種類:** 新機能
-
-英国西部でプロセスの自動化および State Configuration 機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uk-west-region/)を参照してください。
-
-### <a name="support-for-automation-and-state-configuration-declared-ga-in-uae-central"></a>アラブ首長国連邦中部での GA を宣言された Automation と State Configuration のサポート
-
-**種類:** 新機能
-
-アラブ首長国連邦中部でプロセスの自動化および State Configuration 機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/)を参照してください。
-
-### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2-norway-west-and-france-south"></a>オーストラリア中部 2、ノルウェー西部、フランス南部で利用可能な Automation と State Configuration のサポート
-
-**種類:** 新機能
-
-各リージョンの地域を選択して、[データ所在地に関するページ](https://azure.microsoft.com/global-infrastructure/data-residency/)で詳細を確認してください。
-
-### <a name="new-scripts-added-for-installing-hybrid-worker-on-windows-and-linux"></a>Windows および Linux にハイブリッドワーカーをインストールするための新しいスクリプトを追加
-
-**種類:** 新機能
-
-Windows または Linux マシンで Hybrid Runbook Worker を設定する Azure Automation の主要なシナリオの 1 つに対応する 2 つの新しいスクリプトが Azure Automation [GitHub リポジトリ](https://github.com/azureautomation)に追加されました。 このスクリプトでは、新しい VM を作成するか既存の VM を使用し、必要に応じて Log Analytics ワークスペースを作成します。さらに、Windows 用の Log Analytics エージェントまたは Linux 用の Log Analytics エージェントをインストールし、マシンを Log Analytics ワークスペースに登録します。 Windows 用スクリプトの名前は **Create Automation Windows HybridWorker** です。Linux 用スクリプトの名前は **Create Automation Linux HybridWorker** です。
-
-### <a name="invoke-runbook-through-an-azure-resource-manager-template-webhook"></a>Azure Resource Manager テンプレート Webhook を介した Runbook の呼び出し
-
-**種類:** 新機能
-
-詳細については、「[ARM テンプレートから Webhook を使用する](./automation-webhooks.md#create-runbook-and-webhook-with-arm-template)」を参照してください。
-
-### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management で、Centos 8.x、Red Hat Enterprise Linux Server 8.x、および SUSE Linux Enterprise Server 15 がサポートされるようになりました
-
-**種類:** 新機能
-
-詳細については、サポートされている Linux オペレーティングシステムの[完全な一覧](./update-management/operating-system-requirements.md)を参照してください。
-
-### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>ブラジル南部および東南アジアでのリージョン内データ所在地のサポート
-
-**種類:** 新機能
-
-ブラジル南部と東南アジアを除くすべてのリージョンにおいて、Azure Automation データは、ビジネス継続性とディザスター リカバリー (BCDR) を提供するために別のリージョン (Azure のペアになっているリージョン) に格納されます。 ブラジルおよび東南アジア リージョンの場合のみ、Azure Automation データは、これらのリージョンのデータ所在地の要件に対応するために同じリージョンに格納されるようになりました。 詳細については、「[Azure Automation での geo レプリケーション](./automation-managing-data.md#geo-replication-in-azure-automation)」を参照してください。
-
-## <a name="february-2021"></a>2021 年 2 月
-
-### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>西日本での GA を宣言された Automation と State Configuration のサポート
-
-**種類:** 新機能
-
-Automation アカウントと State Configuration が西日本リージョンで利用できるようになりました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/)を参照してください。
-
-### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>ハイブリッド worker で Runbook の実行を強制するためのカスタム Azure Policy コンプライアンスの導入
-
-**種類:** 新機能
-
-新しい Azure Policy コンプライアンス規則を使用すると、ハイブリッド worker グループでのみ実行されるジョブ、Webhook、ジョブ スケジュールを作成することができます。
-
-### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>米国東部、フランス中部、北ヨーロッパのリージョンで使用可能になった Update Management
-
-**種類:** 新機能
-
-Automation Update Management 機能を、米国東部、フランス中部、北ヨーロッパのリージョンで使用できるようになりました。 この変更を反映するドキュメントの最新版については、[サポートされるリージョン マッピング](how-to/region-mappings.md)に関するセクションを参照してください。
+Azure Automation で、Azure グローバルおよび Azure Government リージョンのクラウドとハイブリッド ジョブに対して、[システム割り当てマネージド ID](./automation-security-overview.md#managed-identities) がサポートされるようになりました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-system-assigned-managed-identities/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

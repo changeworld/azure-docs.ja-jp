@@ -1,19 +1,21 @@
 ---
 title: Azure サポート リクエストを管理する
-description: サポート リクエストの表示、メッセージの送信、リクエストの重大度の変更、Azure サポートとの診断情報の共有、クローズされたサポート リクエストの再開、およびファイルのアップロードの方法について説明します。
+description: サポート リクエストの表示、メッセージの送信、ファイルのアップロード、およびオプションの管理方法について説明します。
 tags: billing
 ms.topic: how-to
-ms.date: 09/30/2021
-ms.openlocfilehash: 8e7b074883fe2dcfb79913e54cf7180e26f29c2a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 11/02/2021
+ms.openlocfilehash: 361ab4b643dac6fb54fae8d236dfac38ee024701
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353200"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508346"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure サポート リクエストを管理する
 
-[Azure サポート リクエストを作成](how-to-create-azure-support-request.md)したら、[Azure portal](https://portal.azure.com) でそれを管理できます (この記事で説明)。 [Azure サポート チケット REST API ](/rest/api/support)を使用して、または [Azure CLI](/cli/azure/azure-cli-support-request) を使用して、プログラムによって要求を作成して管理することもできます。
+[Azure サポート リクエストの作成](how-to-create-azure-support-request.md)後は、[Azure portal](https://portal.azure.com) で管理することができます。 [Azure サポート チケット REST API ](/rest/api/support)を使用して、または [Azure CLI](/cli/azure/azure-cli-support-request) を使用して、プログラムによってリクエストを作成して管理することもできます。
+
+サポート リクエストを管理するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)、またはサブスクリプション レベルの[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 サブスクリプションなしで作成されたサポート リクエストを管理するには、[管理者](../../active-directory/roles/permissions-reference.md)である必要があります。
 
 ## <a name="view-support-requests"></a>サポート リクエストを表示する
 
@@ -50,15 +52,15 @@ ms.locfileid: "129353200"
 
         :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="新しい重大度レベルを選択できない":::
 
-## <a name="share-diagnostic-information-with-azure-support"></a>Azure サポートと診断情報を共有する
+## <a name="allow-collection-of-advanced-diagnostic-information"></a>高度な診断情報の収集を許可
 
-サポート リクエストを作成する場合、 **[診断情報の共有]** セクションで **[はい]** または **[いいえ]** を選択できます。 このオプションは、Azure サポートが、[ログ ファイル](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs)など、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できるどうかを決定します。
+サポート リクエストを作成する場合、 **[高度な診断情報]** セクションで **[はい]** または **[いいえ]** を選択できます。 このオプションは、Azure サポートが、[ログ ファイル](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs)など、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できるどうかを決定します。
 
-要求の作成 後に **[診断情報の共有]** の選択を変更するには:
+要求の作成後に **[高度な診断情報]** の選択を変更するには、以下の手順を実行します。
 
 1. **[すべてのサポート リクエスト]** ページで、サポート リクエストを選択します。
 
-1. **[サポート要求]** ページで 、 **[診断情報の共有]** を探し、 **[変更]** を選択します。
+1. **[サポート リクエスト]** ページで、 **[高度な診断情報]** を探し、 **[変更]** を選択します。
 
 1. **[はい]** または **[いいえ]** を選択し、 **[OK]** を選択して確定します。
 
@@ -117,7 +119,7 @@ ms.locfileid: "129353200"
 
 ## <a name="close-a-support-request"></a>サポート リクエストをクローズする
 
-サポート リクエストをクローズするには、要求をクローズするように求める[メッセージを送信](#send-a-message)します。
+サポート リクエストをクローズするには、リクエストをクローズすることを記載した[メッセージを送信](#send-a-message)します。
 
 ## <a name="reopen-a-closed-request"></a>クローズされたリクエストを再度開く
 

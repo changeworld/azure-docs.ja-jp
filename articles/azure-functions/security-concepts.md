@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 97a58c38f08e3b22f25ca2834a26692452fcff9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f215e67f3ea27e789ebd10e7baa487528339ee8e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746724"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316168"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -22,9 +22,9 @@ ms.locfileid: "121746724"
 
 このセクションでは、関数アプリの構成および実行を可能な限り安全に行う方法について説明します。 
 
-### <a name="security-center"></a>Security Center
+### <a name="defender-for-cloud"></a>Defender for Cloud
 
-ポータルでは、Security Center が関数アプリと統合されています。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行される関数アプリでは、追加コストを払えば Security Center のリアルタイム セキュリティ機能も利用できます。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/defender-for-app-service-introduction.md)」を参照してください。 
+ポータルでは、Defender for Cloud が関数アプリと統合されます。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行されている関数アプリでは、Defender for Cloud の高度なセキュリティ機能も使用されます (別途料金がかかります)。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/defender-for-app-service-introduction.md)」を参照してください。 
 
 ### <a name="log-and-monitor"></a>ログ記録と監視を行う
 
@@ -32,7 +32,7 @@ ms.locfileid: "121746724"
 
 Functions は Azure Monitor のログとも統合されており、関数アプリのログをシステム イベントと統合して分析を容易に進めることができます。 診断設定を使用すると、選択した送信先 (Logs Analytics ワークスペースなど) に対する関数のプラットフォーム ログおよびメトリックのストリーミング エクスポートを構成できます。 詳細については、「[Azure Monitor ログを使用した Azure Functions の監視](functions-monitor-log-analytics.md)」を参照してください。 
 
-エンタープライズレベルで脅威検出と対応を自動化するには、Logs Analytics ワークスペースにログとイベントをストリーム配信します。 その後、このワークスペースに Azure Sentinel を接続します。 詳細については、「[Azure Sentinel とは](../sentinel/overview.md)」を参照してください。  
+エンタープライズレベルで脅威検出と対応を自動化するには、Logs Analytics ワークスペースにログとイベントをストリーム配信します。 その後、このワークスペースに Azure Sentinel を接続できます。 詳細については、[Microsoft Sentinel の概要](../sentinel/overview.md)ページを参照してください。  
 
 監視に関するその他のセキュリティ推奨事項については、「[Azure Functions 用の Azure セキュリティ ベースライン](security-baseline.md#logging-and-monitoring)」を参照してください。 
 

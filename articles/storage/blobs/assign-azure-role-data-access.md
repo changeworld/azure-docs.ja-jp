@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 11/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b30bb21369e75b76c5aba299d38b2ccfc3259803
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6d2d2f530d64e3c459e0363079bebc9f99d44cf3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651600"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578821"
 ---
 # <a name="assign-an-azure-role-for-access-to-blob-data"></a>BLOB データにアクセスするための Azure ロールを割り当てる
 
-Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Storage では、BLOB データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールが定義されます。
+Azure Active Directory (AAD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Storage では、BLOB データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールが定義されます。
 
 Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
@@ -57,13 +57,49 @@ Azure AD の資格情報で Azure portal を使用するには、ユーザーに
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell を使用して Azure ロールをセキュリティ プリンシパルに割り当てるには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを呼び出します。 コマンドの形式は、割り当てのスコープによって異なります。 このコマンドを実行するには、対応するスコープ以上で割り当てられた **Microsoft.Authorization/roleAssignments/write** アクセス許可を含むロールが必要です。
+PowerShell を使用して Azure ロールをセキュリティ プリンシパルに割り当てるには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを呼び出します。 このコマンドを実行するには、対応するスコープ以上で割り当てられた **Microsoft.Authorization/roleAssignments/write** アクセス許可を含むロールが必要です。 
 
-コンテナーに対してスコープが指定されたロールを割り当てるには、コンテナーのスコープを含む文字列を `--scope` パラメーターに指定します。 コンテナーのスコープのフォームは次のとおりです。
+コマンドの形式は、割り当てのスコープによって異なりますが、`-ObjectId` と `-RoleDefinitionName` は必須のパラメーターです。 必須ではありませんが、最小限の特権の原則を保持するために、`-Scope` パラメーターの値を渡すことを強くお勧めします。 ロールとスコープを制限することで、セキュリティ プリンシパルが侵害された場合にリスクにさらされるリソースを制限することができます。
+
+`-ObjectId` パラメーターは、ロールが割り当てられるユーザー、グループ、またはサービス プリンシパルの Azure Active Directory (AAD) オブジェクト ID です。 ID を取得するには、次の例に示すように、[Get AzADUser](/powershell/module/az.resources/get-azaduser) を使用して Azure Active Directory ユーザーをフィルター処理できます。
+
+```azurepowershell
+Get-AzADUser -DisplayName '<Display Name>'
+(Get-AzADUser -StartsWith '<substring>').Id
+```
+
+最初の応答はセキュリティ プリンシパルを返し、2 番目の応答はセキュリティ プリンシパルのオブジェクト ID を返します。
+
+```Response
+UserPrincipalName : markpdaniels@contoso.com
+ObjectType        : User
+DisplayName       : Mark P. Daniels
+Id                : ab12cd34-ef56-ab12-cd34-ef56ab12cd34
+Type              : 
+
+ab12cd34-ef56-ab12-cd34-ef56ab12cd34
+```
+
+`-RoleDefinitionName` パラメーター値は、プリンシパルに割り当てる必要がある RBAC ロールの名前です。 Azure portal で Azure AD の資格情報を使用して BLOB データにアクセスするには、ユーザーに次のロールが割り当てられている必要があります。
+
+- **ストレージ BLOB データ共同作成者**、**ストレージ BLOB データ閲覧者** などのデータ アクセス ロール
+- Azure Resource Manager **閲覧者** ロール
+
+BLOB コンテナーまたはストレージ アカウントにスコープ指定されたロールを割り当てるには、`-Scope` パラメーターのリソースのスコープを含む文字列を指定する必要があります。 このアクションは、最小限の特権の原則に準拠しています。これは、ユーザーがジョブ機能を実行するために必要な最小限のアクセス レベルを付与される情報セキュリティの概念です。 この実践により、不要な特権によって発生する可能性のある偶発的または意図的な破損のリスクが軽減されます。
+
+コンテナーのスコープのフォームは次のとおりです。
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
+
+ストレージ アカウントのスコープのフォームは次のとおりです。
+
+```
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
+```
+
+ストレージ アカウントに対してスコープが指定されたロールを割り当てるには、コンテナーのスコープを含む文字列を `--scope` パラメーターに指定します。
 
 次の例では、*sample-container* という名前のコンテナーにスコープが指定された **ストレージ BLOB データ共同作成者** ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。
 
@@ -73,7 +109,29 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
 ```
 
-PowerShell を使用して、サブスクリプション、リソース グループ、またはストレージ アカウントをスコープとしたロールを割り当てる方法については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+次の例では、オブジェクト ID を指定することによって、**ストレージ BLOB データ閲覧者** ロールをユーザーに割り当てます。 ロールの割り当ては、**storage-account** という名前のストレージ アカウントにスコープが設定されています。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+
+```powershell
+New-AzRoleAssignment -ObjectID "ab12cd34-ef56-ab12-cd34-ef56ab12cd34" `
+    -RoleDefinitionName "Storage Blob Data Reader" `
+    -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/storage-account"
+```
+
+出力は次のようになります。
+
+```Response
+RoleAssignmentId   : /subscriptions/<subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.Storage/storageAccounts/<Storage Account>/providers/Microsoft.Authorization/roleAssignments/<Role Assignment ID>
+Scope              : /subscriptions/<subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.Storage/storageAccounts/<Storage Account>
+DisplayName        : Mark Patrick
+SignInName         : markpdaniels@contoso.com
+RoleDefinitionName : Storage Blob Data Reader
+RoleDefinitionId   : <Role Definition ID>
+ObjectId           : <Object ID>
+ObjectType         : User
+CanDelegate        : False
+```
+
+PowerShell を使用して、サブスクリプションまたはリソース グループをスコープとしたロールを割り当てる方法については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

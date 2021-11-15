@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 046bec93d3a9ae0ffef8b189470f412ab357943d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 503b2663d6de83d982e6f8e9c2538de3765c9294
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131018491"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466658"
 ---
 # <a name="create-a-azure-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Azure Virtual Desktop イメージを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "131018491"
 * [Restart](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer) を実行する。
 
-ここでは、Azure VM Image Builder を使用してこれを自動化する方法について説明します。また、他のリージョンへの複製、スケールの制御、および組織内外でのイメージの共有を行うことができる [Shared Image Gallery](../shared-image-galleries.md) にイメージを配布する方法について説明します。
+ここでは、Azure VM Image Builder を使用してこれを自動化する方法について説明します。また、他のリージョンへの複製、スケールの制御、および組織内外でのイメージの共有を行うことができる [Azure Compute Gallery](../shared-image-galleries.md) (以前の Shared Image Gallery) にイメージを配布する方法について説明します。
 
 
 Image Builder の構成のデプロイを簡略化するために、この例では、入れ子になった Image Builder テンプレートを使用して Azure Resource Manager テンプレートを使用します。 これにより、変数やパラメーターで入力できるなど、他のいくつかの利点が得られます。 これらのパラメーターをコマンド ラインから渡すこともできます。
@@ -167,9 +167,9 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 > 「New-AzRoleDefinition: ロールの定義の制限を超えました。 ロールの定義はこれ以上作成できません」のようなエラーが表示された場合、 「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md)」を参照してください。
 
 
-## <a name="create-the-shared-image-gallery"></a>Shared Image Gallery を作成する 
+## <a name="create-the-azure-compute-gallery"></a>Azure Compute Gallery を作成する 
 
-Shared Image Gallery がない場合、作成する必要があります。
+Azure Compute Gallery がない場合、作成する必要があります。
 
 ```azurepowershell-interactive
 $sigGalleryName= "myaibsig01"

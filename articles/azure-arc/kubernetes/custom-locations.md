@@ -1,35 +1,30 @@
 ---
-title: Azure Arc 対応 Kubernetes 上のカスタムの場所を作成および管理する
-services: azure-arc
+title: Azure Arc 対応 Kubernetes にカスタムの場所を作成および管理する
 ms.service: azure-arc
-ms.date: 05/25/2021
+ms.date: 10/19/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: カスタムの場所を使用して、Azure Arc 対応 Kubernetes クラスターに Azure PaaS サービスをデプロイします
-ms.openlocfilehash: a4586f6f527bd98f0f347e51c787f2bcda7c6d8d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: f241ec384fc9ed7ee96d7415074e009cea486811
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768303"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257028"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes にカスタムの場所を作成および管理する
 
-Azure の場所の拡張としての "*カスタムの場所*" を使用すると、テナント管理者は、Azure サービス インスタンスをデプロイするターゲットの場所として、Azure Arc 対応 Kubernetes クラスターを使用することができます。 Azure のリソースの例としては、Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale があります。
+ "*カスタムの場所*" を使用すると、テナントまたはクラスター管理者は、次のような Azure サービス インスタンスをデプロイするターゲットの場所として、Azure Arc 対応 Kubernetes クラスターを構成することができます。  Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale などのリソースです。 Azure Arc 対応 Kubernetes クラスターでのカスタムの場所は、Azure Arc 対応 Kubernetes クラスター内の名前空間の抽象化を表します。 テナントまたはクラスターの管理者は、Azure Arc 対応 SQL Managed Instance、Azure Arc 対応 PostgreSQL Hyperscale インスタンス、Azure Web アプリなどのリソースをカスタムの場所にデプロイするための、ロールベースのアクセス制御 (RBAC) のアクセス許可を、アプリケーション開発者やデータベース管理者に割り当てることができます。 
+ 
+この機能の概念的な概要については、[Azure Arc 対応 Kubernetes のカスタムの場所](conceptual-custom-locations.md)に関する記事をご覧ください。 
 
-Azure の場所と同様に、カスタムの場所にアクセスできるテナント内のエンド ユーザーは、会社のプライベート コンピューティングを使用してリソースをそこにデプロイできます。
-
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 > * Azure Arc 対応 Kubernetes クラスター上のカスタムの場所を有効にする。
-> * Azure サービス インスタンスの Azure サービス クラスター拡張機能をクラスターにデプロイする。
-> * Azure Arc 対応 Kubernetes クラスターにカスタムの場所を作成する。
+> * カスタムの場所を作成する。
 
-この機能の概念的な概要については、「[カスタムの場所 - Azure Arc 対応 Kubernetes](conceptual-custom-locations.md)」を参照してください。
-
-[!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,6 +48,8 @@ Azure の場所と同様に、カスタムの場所にアクセスできるテ�
     az extension update --name k8s-extension
     az extension update --name customlocation
     ```
+    >[!NOTE]
+    >最新バージョンの CLI 拡張機能を使用して最新の機能を入手することをお勧めします。  
 
 - `Microsoft.ExtendedLocation` のプロバイダー登録の完了を確認します。
     1. 次のコマンドを入力します。
@@ -100,35 +97,138 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 ## <a name="create-custom-location"></a>カスタムの場所を作成する
 
-1. クラスター上で最終的に必要な、Azure サービス インスタンスの Azure サービス クラスター拡張機能をデプロイします。
+1. クラスターにインストールする Azure サービス インスタンスの Azure サービス クラスター拡張機能をデプロイします。
 
     * [Azure Arc 対応 Data Services](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
 
         > [!NOTE]
-        > Arc 対応 Data Services クラスター拡張機能では、認証を使用しない送信プロキシと、基本認証を使用する送信プロキシがサポートされています。 現在、信頼できる証明書が必要な送信プロキシはサポートされていません。
+        > Azure Arc 対応 Data Services クラスター拡張機能では、認証を使用しない送信プロキシと、基本認証を使用する送信プロキシがサポートされています。 現在、信頼できる証明書が必要な送信プロキシはサポートされていません。
 
 
     * [Azure Arc 上の Azure App Service](../../app-service/manage-create-arc-environment.md#install-the-app-service-extension)
 
     * [Kubernetes 上の Event Grid](../../event-grid/kubernetes/install-k8s-extension.md)
 
-1. Azure Arc 対応 Kubernetes クラスターの Azure Resource Manager 識別子を取得します。これは、後の手順で `connectedClusterId` として参照されます。
+2. Azure Arc 対応 Kubernetes クラスターの Azure Resource Manager 識別子を取得します。これは、後の手順で `connectedClusterId` として参照されます。
 
     ```azurecli
     az connectedk8s show -n <clusterName> -g <resourceGroupName>  --query id -o tsv
     ```
 
-1. Azure Arc 対応 Kubernetes クラスターにデプロイされているクラスター拡張機能の Azure Resource Manager 識別子を取得します。これは、後の手順で `extensionId` として参照されます。
+3. Azure Arc 対応 Kubernetes クラスターにデプロイされているクラスター拡張機能の Azure Resource Manager 識別子を取得します。これは、後の手順で `extensionId` として参照されます。
 
     ```azurecli
     az k8s-extension show --name <extensionInstanceName> --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName>  --query id -o tsv
     ```
 
-1. Azure Arc 対応 Kubernetes クラスターと拡張機能を参照して、カスタムの場所を作成します。
+4. Azure Arc 対応 Kubernetes クラスターと拡張機能を参照して、カスタムの場所を作成します。
 
     ```azurecli
-    az customlocation create -n <customLocationName> -g <resourceGroupName> --namespace arc --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionId>
+    az customlocation create -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
     ```
+
+**必須のパラメーター**
+
+| パラメーター名 | 説明 |
+|----------------|------------|
+| `--name, --n` | カスタムの場所の名前 |
+| `--resource-group, --g` | カスタムの場所のリソース グループ  | 
+| `--namespace` | 作成されるカスタムの場所にバインドされたクラスター内の名前空間 |
+| `--host-resource-id` | Azure Arc 対応 Kubernetes クラスター (接続されたクラスター) の Azure Resource Manager 識別子 |
+| `--cluster-extension-ids` | 接続されたクラスターにインストールされているクラスター拡張機能インスタンスの Azure Resource Manager 識別子。 クラスター拡張機能の ID をスペースで区切って指定します  |
+
+**省略可能なパラメーター**
+
+| パラメーター名 | 説明 |
+|--------------|------------|
+| `--assign-identity` | 既定値は `None` です。 パラメーターが "SystemAssigned" に設定されている場合は、[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を作成します |
+| `--location, --l` | Azure 内のカスタムの場所の Azure Resource Manager リソースの場所。 既定では、接続されたクラスターの場所 (または Azure リージョン) に設定されます。 |
+| `--tags` | タグのスペース区切りのリスト: key[=value] [key[=value] ...]。既存のタグをクリアするには '' を使用します |
+| `--kubeconfig` | クラスターの管理 kubeconfig。 クラスターが AAD 対応クラスターではない場合は、ファイルとして渡す必要があります |
+
+
+## <a name="show-details-of-a-custom-location"></a>カスタムの場所の詳細を表示する
+
+カスタムの場所の詳細を表示する
+
+```azurecli
+    az customlocation show -n <customLocationName> -g <resourceGroupName> 
+```
+
+**必須のパラメーター**
+
+| パラメーター名 | 説明 |
+|----------------|------------|
+| `--name, --n` | カスタムの場所の名前 |
+| `--resource-group, --g` | カスタムの場所のリソース グループ  | 
+
+## <a name="list-custom-locations"></a>カスタムの場所を一覧表示する
+
+リソース グループ内のすべてのカスタムの場所の一覧を表示します
+
+```azurecli
+    az customlocation show -g <resourceGroupName> 
+```
+
+**必須のパラメーター**
+
+| パラメーター名 | 説明 |
+|----------------|------------|
+| `--resource-group, --g` | カスタムの場所のリソース グループ  | 
+
+
+## <a name="update-a-custom-location"></a>カスタムの場所を更新する
+
+新しいタグを追加し、既存のタグと関連付けられたクラスター拡張機能を維持したまま、新しいクラスター拡張機能 ID をカスタムの場所に関連付けるときは、`update` コマンドを使用します。 `--cluster-extension-ids`、`--tags`、`assign-identity` を更新できます。 
+
+```azurecli
+    az customlocation update -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+```
+**必須のパラメーター**
+
+| パラメーター名 | 説明 |
+|----------------|------------|
+| `--name, --n` | カスタムの場所の名前 |
+| `--resource-group, --g` | カスタムの場所のリソース グループ  | 
+| `--namespace` | 作成されるカスタムの場所にバインドされたクラスター内の名前空間 |
+| `--host-resource-id` | Azure Arc 対応 Kubernetes クラスター (接続されたクラスター) の Azure Resource Manager 識別子 |
+
+**省略可能なパラメーター**
+
+| パラメーター名 | 説明 |
+|--------------|------------|
+| `--assign-identity` | [システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) をカスタムの場所に割り当てる場合は、`None` または `"SystemAssigned` に更新できます |
+| `--cluster-extension-ids` | 接続されたクラスターにインストールされているクラスター拡張機能インスタンスの Azure Resource Manager 識別子を指定して、新しいクラスター拡張機能をこのカスタムの場所に関連付けます。 クラスター拡張機能の ID をスペースで区切って指定します |
+| `--tags` | 既存のタグに加えて、新しいタグを追加します。タグのスペース区切りのリスト: key[=value] [key[=value] ...]。 |
+
+## <a name="patch-a-custom-location"></a>カスタムの場所にパッチを適用する
+
+既存のタグとクラスター拡張機能 ID を新しいタグとクラスター拡張 ID に置き換える場合は、`patch` コマンドを使用します。 `--cluster-extension-ids`、`assign-identity`、`--tags` にパッチを適用できます。 
+
+```azurecli
+    az customlocation patch -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+```
+
+**必須のパラメーター**
+
+| パラメーター名 | 説明 |
+|----------------|------------|
+| `--name, --n` | カスタムの場所の名前 |
+| `--resource-group, --g` | カスタムの場所のリソース グループ  | 
+
+**省略可能なパラメーター**
+
+| パラメーター名 | 説明 |
+|--------------|------------|
+| `--assign-identity` | [システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) をカスタムの場所に割り当てる場合は、`None` または `"SystemAssigned` に更新できます |
+| `--cluster-extension-ids` | 接続されたクラスターにインストールされているクラスター拡張機能インスタンスの Azure Resource Manager 識別子を指定して、新しいクラスター拡張機能をこのカスタムの場所に関連付けます。 クラスター拡張機能の ID をスペースで区切って指定します |
+| `--tags` | 既存のタグに加えて、新しいタグを追加します。タグのスペース区切りのリスト: key[=value] [key[=value] ...]。 |
+
+## <a name="delete-a-custom-location"></a>カスタムの場所を削除する
+
+ ```azurecli
+    az customlocation delete -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

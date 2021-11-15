@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/01/2021
+ms.date: 10/21/2021
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: e3664e9a42a502509e74c43643d47f18e153ff6e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 6c080e89dab3193f373b0a1e194cb18661132bbd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429967"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559620"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする
 
@@ -47,7 +47,7 @@ Azure Machine Learning スタジオで Azure Machine Learning 自動 ML を使�
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。 
 
-[ワークスペースを作成する方法](how-to-manage-workspace.md)は多数あります。 このチュートリアルでは、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用してワークスペースを作成します。
+<bpt id="p1">[</bpt>ワークスペースを作成する方法<ept id="p1">](how-to-manage-workspace.md)</ept>は多数あります。 このチュートリアルでは、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用してワークスペースを作成します。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -127,8 +127,10 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 
     1. 予測するターゲット列として、 **[y]** を選択します。 この列には、クライアントが定期預金を申し込むかどうかが示されます。
     
-    1. **[+Create a new compute]\(+ 新しいコンピューティングの作成\)** を選択し、コンピューティング先を構成します。 コンピューティング先とは、トレーニング スクリプトを実行したりサービスのデプロイをホストしたりするために使用されるローカルまたはクラウド ベースのリソース環境です。 この実験では、クラウド ベースのコンピューティングを使用します。 
-        1. **[仮想マシン]** フォームに必要事項を入力してコンピューティングを設定します。
+    1. コンピューティングの種類として **[コンピューティング クラスター]** を選択します。 
+    
+    1.  **[+新規]** では、ストレージおよびコンピューティング ターゲットを構成します。 コンピューティング先とは、トレーニング スクリプトを実行したりサービスのデプロイをホストしたりするために使用されるローカルまたはクラウド ベースのリソース環境です。 この実験では、クラウド ベースのコンピューティングを使用します。 
+        1. **[仮想マシンの選択]** フォームに必要事項を入力してコンピューティングを設定します。
 
             フィールド | 説明 | チュートリアルの値
             ----|---|---

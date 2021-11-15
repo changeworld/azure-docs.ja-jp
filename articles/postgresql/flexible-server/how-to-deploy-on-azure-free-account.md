@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 08/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 38a1e264d3febfc114df253a24479d9580c86bb5
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0d1ba0118360f579b675f4f64d8ecba1b4764ff5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538365"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425406"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-postgresql---flexible-server-for-free"></a>Azure 無料アカウントを使用して Azure Database for PostgreSQL - フレキシブル サーバーを無料で試す
 
@@ -93,9 +93,9 @@ Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー
     
     パブリック アクセスを使用する場合、サーバーへのアクセスは、ファイアウォール規則に追加されている許可された IP アドレスに限定されます。 この方法では、特定の IP アドレスまたは範囲に対してファイアウォールを開く規則を作成しない限り、外部のアプリケーションやツールはサーバーとサーバー上のデータベースに接続できなくなります。
     
-    プライベート アクセス (VNet 統合) の場合、サーバーへのアクセスは仮想ネットワークに限定されます。 接続方法の詳細については、ネットワークの概要を参照してください。
+    プライベート アクセス (VNet 統合) を使用する場合、サーバーへのアクセスは仮想ネットワークに限定されます。 接続方法の詳細については、[**ネットワークの概要を参照してください**](https://docs.microsoft.com/azure/postgresql/flexible-server/concepts-networking)。
     
-    このチュートリアルでは、パブリック アクセスによるサーバーへの接続を有効にします。
+    このチュートリアルでは、その目的上、パブリック アクセスによるサーバーへの接続を有効にします。
 
 1. **[ネットワーク]** タブの **[接続方法]** で、 **[パブリック アクセス]** を選択します。
 

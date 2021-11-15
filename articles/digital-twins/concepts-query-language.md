@@ -1,34 +1,32 @@
 ---
 title: クエリ言語
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins クエリ言語の基本について理解します。
+description: Azure Digital Twins クエリ言語の基本について学習します。
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 10/27/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c5779f827177907d3bf3378fde8a35157723b5f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 620411b5fc8c657f837f3c27077d4ae3dbf16f1c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631117"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509690"
 ---
-# <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
+# <a name="azure-digital-twins-query-language"></a>Azure Digital Twins クエリ言語
 
-Azure Digital Twins の中心は、デジタル ツインとリレーションシップから構築された[ツイン グラフ](concepts-twins-graph.md)であることを思い出してください。 
+この記事では、クエリ言語とその機能の基本について説明します。 Azure Digital Twins の中心は、デジタル ツインとリレーションシップから構築された[ツイン グラフ](concepts-twins-graph.md)であることを思い出してください。 このグラフに対してクエリを実行し、デジタル ツインとそれに含まれるリレーションシップに関する情報を取得することができます。 これらのクエリは、**Azure Digital Twins クエリ言語** と呼ばれる、SQL に似たクエリ言語で記述されます。 この言語は、同等の機能を多数持つ [IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-query-language.md)に似ています。
 
-このグラフに対してクエリを実行し、デジタル ツインとそれに含まれるリレーションシップに関する情報を取得することができます。 これらのクエリは、**Azure Digital Twins クエリ言語** と呼ばれる、SQL に似たクエリ言語で記述されます。 この言語は、同等の機能を多数持つ [IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-query-language.md)に似ています。
-
-この記事では、クエリ言語とその機能の基本について説明します。 クエリ構文の詳細な例とクエリ要求の実行方法については、[ツイン グラフへのクエリの実行](how-to-query-graph.md)に関する記事を参照してください。
+クエリ構文の詳細な例とクエリ要求の実行方法については、[ツイン グラフへのクエリの実行](how-to-query-graph.md)に関する記事を参照してください。
 
 ## <a name="about-the-queries"></a>クエリについて
 
 Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル ツインを取得できます。
 * プロパティ ([タグのプロパティ](how-to-use-tags.md)を含む)
 * モデル
-* relationships
+* リレーションシップ
   - リレーションシップのプロパティ
 
 クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、[Azure Digital Twins のいずれかの SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。

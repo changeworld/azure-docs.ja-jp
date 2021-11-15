@@ -1,6 +1,6 @@
 ---
-title: 独自のリポジトリで Azure Sentinel のカスタム コンテンツを管理する | Microsoft Docs
-description: この記事では、カスタム コンテンツを保存できる GitHub または Azure DevOps リポジトリとの接続を作成する方法について説明します。
+title: リポジトリからカスタム コンテンツをデプロイする | Microsoft Docs
+description: この記事では、カスタム コンテンツを保存して Azure Sentinel にデプロイできる GitHub または Azure DevOps リポジトリとの接続を作成する方法について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 10/20/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7d1a20fd1d74c3b5057201cac38a9353737f98dd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 607e153b751315ee0a43c74cc2926dffbbc706d3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089939"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841660"
 ---
 # <a name="deploy-custom-content-from-your-repository-public-preview"></a>リポジトリからカスタム コンテンツをデプロイする (パブリック プレビュー)
 
@@ -125,7 +125,9 @@ Azure Sentinel ワークスペースを外部ソース管理リポジトリに�
 
 接続が作成されると、リポジトリに新しいワークフローまたはパイプラインが生成され、リポジトリに格納されているコンテンツが Azure Sentinel ワークスペースにデプロイされます。
 
-デプロイの時間は、デプロイするコンテンツの量によって異なる場合があります。 デプロイの状態の表示:
+デプロイの時間は、デプロイするコンテンツの量によって異なる場合があります。 
+
+### <a name="view-the-deployment-status"></a>デプロイの状態の表示:
 
 - **GitHub 内**: リポジトリの **[アクション]** タブ上。そこに表示されているワークフロー **.yaml** ファイルを選択して、詳細なデプロイ ログと特定のエラー メッセージ (関連する場合) にアクセスします。
 - **Azure DevOps 内**: リポジトリの **[パイプライン]** タブ上。

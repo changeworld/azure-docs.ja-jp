@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 86fd1a8a6dbf8ea18d630996dd0d5fc94537f363
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 72ef8193215d3dc35f576a96a005bde8bf40e49f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465746"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371944"
 ---
 # <a name="azure-automanage-for-machines-best-practices---windows-server"></a>Azure Automanage for Machines のベスト プラクティス - Windows Server
 
@@ -37,7 +37,7 @@ Automanage でサポートされている Windows Server のバージョンは�
 |-----------|---------------|----------------------|
 |[Machines Insights Monitoring](../azure-monitor/vm/vminsights-overview.md)    |Azure Monitor for Machines では、実行中のプロセスや他のリソースへの依存関係など、仮想マシンのパフォーマンスと正常性が監視されます。    |Production    |
 |[Backup](../backup/backup-overview.md)    |Azure Backup では、マシン上のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 料金は、保護対象の VM の数とサイズに基づいています。    |Production    |
-|[Azure Security Center](../security-center/security-center-introduction.md)    |Azure Security Center は統合されたインフラストラクチャ セキュリティ管理システムであり、データ センターのセキュリティ体制を強化し、クラウド内のハイブリッド ワークロード全体にわたる高度な脅威保護が提供されます。  VM が存在するサブスクリプションは、Automanage によって、Azure Security Center の Free レベルのオファリングに構成されます。 ご利用のサブスクリプションが Azure Security Center に既にオンボードされている場合、Automanage によって再構成されることはありません。    |運用、Dev/Test    |
+|[Microsoft Defender for Cloud](../defender-for-cloud/defender-for-cloud-introduction.md)    |Microsoft Defender for Cloud は統合されたインフラストラクチャ セキュリティ管理システムであり、データ センターのセキュリティ体制を強化し、クラウド内のハイブリッド ワークロード全体に高度な脅威保護を提供します。  VM が存在するサブスクリプションは、Automanage によって、Microsoft Defender for Cloud の Free レベルのオファリングに合わせて構成されます。 ご利用のサブスクリプションが Microsoft Defender for Cloud に既にオンボードされている場合、Automanage によって再構成されることはありません。    |運用、Dev/Test    |
 |[Microsoft Antimalware](../security/fundamentals/antimalware.md)    |Azure に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 **注:** Microsoft Antimalware を使用するには、他のマルウェア対策ソフトウェアがインストールされていないことが必要です。そうでないと、動作しない可能性があります。 |運用、Dev/Test    |
 |[更新管理](../automation/update-management/overview.md)    |Azure Automation の Update Management を使用して、マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。    |運用、Dev/Test    |
 |[変更履歴とインベントリ](../automation/change-tracking/overview.md) |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。    |運用、Dev/Test    |

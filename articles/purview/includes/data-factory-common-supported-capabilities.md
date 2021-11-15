@@ -4,13 +4,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
-ms.date: 09/27/2021
-ms.openlocfilehash: 8c4baccdbfb0f6162e666d6901e0080202a3b7e9
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/01/2021
+ms.openlocfilehash: 238db4caa1bcb11e0f4c27b6e490b0859b1e536d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212347"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851490"
 ---
 ### <a name="copy-activity-support"></a>Copy アクティビティのサポート
 
@@ -30,6 +30,7 @@ ms.locfileid: "129212347"
 | Azure SQL Database \* | はい | 
 | Azure SQL Managed Instance \* | はい | 
 | Azure Synapse Analytics \* | はい | 
+| Azure 専用 SQL プール (以前の SQL DW) \* | はい | 
 | Azure Table Storage | はい |
 | Amazon S3 | はい | 
 | Hive \* | はい | 
@@ -41,6 +42,8 @@ ms.locfileid: "129212347"
 *\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 
 セルフホステッド統合ランタイムを使用する場合は、以下に対する系列のサポートを備えた最小バージョンに注意してください。
+
+- 任意のユース ケース: バージョン 5.9.7885.3 以降
 - Oracle からのデータのコピー: バージョン 5.10 以降
 - COPY コマンドまたは PolyBase による Azure Synapse Analytics へのデータのコピー: バージョン 5.10 以降
 
@@ -71,6 +74,7 @@ ms.locfileid: "129212347"
 | Azure SQL Database \* | はい |
 | Azure SQL Managed Instance \* | はい | 
 | Azure Synapse Analytics \* | はい |
+| Azure 専用 SQL プール (以前の SQL DW) \* | はい | 
 
 *\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 

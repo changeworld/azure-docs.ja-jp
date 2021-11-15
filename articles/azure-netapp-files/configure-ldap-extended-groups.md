@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 90a87c85bace64c7c1cfc4a171c5fcbdb8d263c9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 79bd8ca1855391365bfc33c7a259d1a984ce139c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256364"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447058"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "130256364"
 
 * ボリュームを作成した後で、LDAP オプションの設定 (有効または無効) を変更することはできません。  
 
-* 次の表では、LDAP キャッシュの Time to Live (TTL) 設定について説明します。 クライアントを使用してファイルまたはディレクトリにアクセスしようとする前に、キャッシュが更新されるまで待機する必要があります。 そうでないと、アクセス拒否メッセージがクライアントに表示されます。 
+* 次の表では、LDAP キャッシュの Time to Live (TTL) 設定について説明します。 クライアントを使用してファイルまたはディレクトリにアクセスしようとする前に、キャッシュが更新されるまで待機する必要があります。 そうでないと、アクセスまたはアクセス許可の拒否メッセージがクライアントに表示されます。 
 
     |     エラー状態    |     解像度    |
     |-|-|

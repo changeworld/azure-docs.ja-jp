@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 12/21/2020
+ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: dcf05fe6acdb7f8f60520759b0a1b3e3e99fed3e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: cc8ac6d5abe5843c76698e0bf36cdeb8932246e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428010"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559582"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
 
@@ -111,9 +111,11 @@ Azure Machine Learning スタジオで自動機械学習を使用し、1 行の�
 
     1. 予測するターゲット列として、 **[cnt]** を選択します。 この列は、自転車シェアリング レンタルの合計数を示します。
 
-    1. **[Create a new compute]\(新しいコンピューティングの作成\)** を選択し、コンピューティング先を構成します。 自動 ML では、Azure Machine Learning コンピューティングのみがサポートされます。 
+    1. コンピューティングの種類として **[コンピューティング クラスター]** を選択します。 
 
-        1. **[仮想マシン]** フォームに必要事項を入力してコンピューティングを設定します。
+    1. **[+新規]** を選択して、ストレージおよびコンピューティング ターゲットを構成します。 自動 ML では、Azure Machine Learning コンピューティングのみがサポートされます。 
+
+        1. **[仮想マシンの選択]** フォームに必要事項を入力してコンピューティングを設定します。
 
             フィールド | 説明 | チュートリアルの値
             ----|---|---
@@ -127,7 +129,7 @@ Azure Machine Learning スタジオで自動機械学習を使用し、1 行の�
             ----|---|---
             コンピューティング名 |  コンピューティング コンテキストを識別する一意名。 | bike-compute
             最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
+            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|1800 (既定値)
             詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし 
   
         1. **[作成]** を選択して、コンピューティング先を取得します。 

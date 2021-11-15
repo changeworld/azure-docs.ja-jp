@@ -7,12 +7,12 @@ ms.date: 07/14/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 6ddb30832db4e504e57296d00db45125f8514afd
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 3216a8f82bc066cded33f133d9fe8823484d50b0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178524"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463147"
 ---
 # <a name="security-guidelines-for-cross-organizational-apps"></a>組織間アプリのセキュリティ ガイドライン
 
@@ -56,7 +56,7 @@ Azure Virtual Desktop では、次のオペレーティング システムがサ
 
 - Windows 7
 - Windows 10 Enterprise
-- Windows Server 2012 R2、2016、および 2019
+- Windows Server 2012 R2、2016、2019、および 2022
 - Windows 10 (Enterprise マルチセッション)
 
 Windows 10 Enterprise マルチセッションは、リモート デスクトップ セッション ホスト (RDSH) として機能する Azure 専用の OS です。これを使用すると、Windows Server と同様に、複数の対話型セッションを同時に実行できます。 Windows 10 環境は、使い慣れた一貫性のあるエクスペリエンスをユーザーに提供します。 また、IT 部門では RDS のクライアント アクセス ライセンス (CAL) を購入し続ける必要がないため、このサービスのユーザーごとの Windows ライセンスによって組織全体のコストも削減されます。 これらの利点のため、Windows 10 Enterprise マルチセッションは、Azure Virtual Desktop でのセッション ホスト用に最も広くデプロイされている OS です。

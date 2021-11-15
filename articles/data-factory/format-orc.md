@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: f0bd3840d7c1b1d3fde7c93f11e39d236a954847
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ecdbf06480c6bf1a7d81b6ab6a67ca353ab94a93
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743789"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215785"
 ---
 # <a name="orc-format-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics での ORC 形式
 
@@ -95,7 +95,7 @@ Azure Blob Storage 上の ORC データセットの例を次に示します。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでは、次のデータ ストアで ORC 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+マッピング データ フローでは、次のデータ ストアで ORC 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。また、[Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties) で ORC 形式を読み取ることができます。
 
 ORC ファイルは、ORC データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用して参照できます。
 

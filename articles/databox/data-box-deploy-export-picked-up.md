@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: alkohli
-ms.openlocfilehash: ea9a918ee32a3ada83651085290fa7c7b26c6e0e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 544454e4022da67db50fb194d7aea72a6bd716bd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024374"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449976"
 ---
 # <a name="tutorial-return-azure-data-box"></a>チュートリアル:Azure Data Box を返送する
 
@@ -59,7 +59,7 @@ Microsoft 管理による出荷を使用している場合は、出荷元のリ�
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-**ドイツまたはスイスから発送する場合** は、[自己管理の出荷を使用](#self-managed-shipping)することもできます。
+**ドイツまたはスイスの Azure データセンターに返送する場合** は、[自己管理型の発送を使用](#self-managed-shipping)することもできます。
 
 ## <a name="uk"></a>[英国](#tab/in-uk)
 

@@ -11,14 +11,14 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
-ms.openlocfilehash: d86b7b59e05aa923efd3e4d9228d8ac422fc863d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2bcf10cf3d5e2036a14372d5dd0bacef7e396857
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219534"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157108"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 |---------|---------|---------|---------|
 |**OS の最小バージョン**| All |Windows Server 2012|Windows Server 2016|
 |**SQL Server の最小バージョン**|All|SQL Server 2012|SQL Server 2016|
-|**サポートされる VM の可用性** |近接配置グループを含む可用性セット (Premium SSD の場合) </br> 同じ可用性ゾーン (Ultra SSD の場合) |可用性セットと可用性ゾーン|可用性セット |
+|**サポートされる VM の可用性** |[Premium SSD LRS](../../../virtual-machines/disks-redundancy.md#locally-redundant-storage-for-managed-disks): [近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)を含む、または含まない可用性セット </br> [Premium SSD ZRS](../../../virtual-machines/disks-redundancy.md#zone-redundant-storage-for-managed-disks): 可用性ゾーン</br> [Ultra Disks](../../../virtual-machines/disks-enable-ultra-ssd.md): 同じ可用性ゾーン|可用性セットと可用性ゾーン|可用性セット |
 |**FileStream のサポート**|はい|いいえ|はい |
 |**Azure BLOB キャッシュ**|いいえ|いいえ|はい|
 
@@ -74,16 +74,17 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 - 1 つの共有ディスクを使用することも、複数の共有ディスクをストライプして共有記憶域プールを作成することもできます。 
 - FileStream がサポートされます。
 - Premium SSD では、可用性セットがサポートされています。 
+- Premium SSD のゾーン冗長ストレージ (ZRS) では、Availability Zones がサポートされています。 FCI の VM 部分は、異なる可用性ゾーンに配置できます。 
 
 > [!NOTE]
 > Azure 共有ディスクは [Standard SSD サイズ](../../../virtual-machines/disks-shared.md#disk-sizes) もサポートしますが、パフォーマンスの制限事項があるため、SQL Server ワークロードに Standard SSD を使用することはお勧めしません。
 
 **制限事項**: 
-- 仮想マシンは、同じ可用性セットおよび同じ近接配置グループに配置することをお勧めします。
-- Ultra Disks では、可用性セットはサポートされていません。 
-- 可用性ゾーンは Ultra Disks でサポートされていますが、VM が同じ可用性ゾーンに存在する必要があるため、仮想マシンの可用性が低下します。 
-- 選択したハードウェア可用性ソリューションに関係なく、Azure 共有ディスクの使用時には、フェールオーバー クラスターの可用性は常に 99.9% になります。 
+
 - Premium SSD ディスクのキャッシュはサポートされていません。
+- Ultra Disks では、可用性セットはサポートされていません。 
+- 可用性ゾーンは Ultra Disks でサポートされていますが、すべての VM が同じ可用性ゾーンに存在する必要があるため、仮想マシンの可用性が 99.9% に低下します。
+- Ultra ディスクでは、ゾーン冗長ストレージ (ZRS) はサポートされていません。
 
  
 開始するには、[Azure 共有ディスクを使用した SQL Server フェールオーバー クラスター インスタンス](failover-cluster-instance-azure-shared-disks-manually-configure.md)に関する記事をご覧ください。 
@@ -97,11 +98,13 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 
 
 **メリット:** 
+
 - 十分なネットワーク帯域幅があれば、堅牢で高パフォーマンスの共有記憶域ソリューションを実現できます。 
 - Azure BLOB キャッシュがサポートされるため、キャッシュからローカルで読み取りを行うことができます。 (更新プログラムは両方のノードに同時にレプリケートされます。) 
 - FileStream がサポートされます。 
 
 **制限事項:**
+
 - Windows Server 2016 以降でのみ使用できます。 
 - 可用性ゾーンはサポートされていません。
 - 両方の仮想マシンに同じディスク容量を接続する必要があります。 
@@ -118,7 +121,7 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 **サポートされる SQL バージョン**:SQL Server 2012 以降   
 
 **メリット:** 
-- 複数の可用性ゾーンに分散している仮想マシンの共有記憶域ソリューションのみ。 
+- 複数の可用性ゾーンに分散している仮想マシンの共有ストレージ ソリューション。 
 - 1 桁の待ち時間とバースト可能な I/O パフォーマンスを備えたフル マネージド ファイル システム。 
 
 **制限事項:**
@@ -150,7 +153,9 @@ Microsoft パートナーの共有記憶域とデータ レプリケーション
 
 ## <a name="connectivity"></a>接続
 
-フェールオーバー クラスター インスタンスに対して、仮想ネットワーク名または分散ネットワーク名を構成できます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)してから、フェールオーバー クラスター インスタンスに対して[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[仮想ネットワーク名](failover-cluster-instance-vnn-azure-load-balancer-configure.md)をデプロイします。
+フェールオーバー クラスター インスタンスに接続するためのオンプレミス エクスペリエンスに一致するよう、SQL Server VM を同じ仮想ネットワーク内の[複数のサブネット](failover-cluster-instance-prepare-vm.md#subnets)にデプロイします。 複数のサブネットを使用すると、トラフィックを FCI にルーティングするための分散ネットワーク名 (DNN) や Azure Load Balancer への追加の依存関係が不要になります。 
+
+SQL Server VM を 1 つのサブネットにデプロイする場合、仮想ネットワーク名 (VNN) と Azure Load Balancer を構成するか、または分散ネットワーク名 (DNN) を構成してフェールオーバー クラスター インスタンスにトラフィックをルーティングできます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)してから、フェールオーバー クラスター インスタンスに対して[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[仮想ネットワーク名](failover-cluster-instance-vnn-azure-load-balancer-configure.md)をデプロイします。
 
 可能であれば、分散ネットワーク名を使用することをお勧めします。これにより、フェールオーバーが高速になり、ロード バランサーの管理にかかるオーバーヘッドとコストが削減されます。 
 
@@ -160,7 +165,7 @@ DNN を使用すると、ほとんどの SQL Server 機能は FCI に対して�
 
 Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスについて、次の制限事項を考慮してください。 
 
-### <a name="lightweight-extension-support"></a>軽量拡張機能サポート   
+### <a name="lightweight-extension-support"></a>軽量拡張機能サポート
 
 現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、SQL Server IaaS Agent 拡張機能の[軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)でのみサポートされています。 完全拡張機能モードから軽量モードに変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードで SQL IaaS Agent 拡張機能に登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときは、仮想マシンを削除してしまうことのないよう、正しい仮想マシンの横のチェック ボックスをオフにします。 
 

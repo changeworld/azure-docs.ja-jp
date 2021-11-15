@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 0bc3035b934f5b450345449b21e5aedd44642cf4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c5ad35114edaae42019e0949cc4ad8aa4b291ec6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070757"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441193"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 および Esv4 シリーズ
 
@@ -80,7 +80,7 @@ Esv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 | Standard_E32s_v4 | 32 | 256 | リモート ストレージのみ | 32 | 51200/768  | 64000/1600 | 8|16000 |
 | Standard_E48s_v4 | 48 | 384 | リモート ストレージのみ | 32 | 76800/1152 | 80000/2000 | 8|24000 |
 | Standard_E64s_v4 <sup>2</sup> | 64 | 504| リモート ストレージのみ | 32 | 80000/1200 | 80000/2000 | 8|30000 |
-| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | リモート ストレージのみ | 32 | 80000/1200 | 80000/2000 | 8|30000 |
+| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | リモート ストレージのみ | 64 | 80000/1200 | 80000/2000 | 8|30000 |
 
 <sup>1</sup> Esv4 シリーズの VM では、ディスクのパフォーマンスを[バースト](./disk-bursting.md)でき、一度に最大 30 分間バーストを最大にしておくことができます。<br>
 <sup>2</sup> [制限されたコア サイズも使用できます](./constrained-vcpu.md)。<br>

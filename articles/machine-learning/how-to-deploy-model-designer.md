@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.reviewer: peterlu
-ms.date: 10/08/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, studio, designer
-ms.openlocfilehash: d2553ddde013c43b9ce4d23d2cc0b4541150e6f3
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 4722a32435ad3b1a8f7fdcf0cd46c077b52a5f08
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740482"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557606"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>スタジオを使用して、デザイナーでトレーニングされたモデルをデプロイする
 
@@ -39,24 +38,24 @@ ms.locfileid: "129740482"
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
 
-* 次のいずれかのモジュールを含む完成したトレーニング パイプライン:
-    - [モデルのトレーニング モジュール](./algorithm-module-reference/train-model.md)
-    - [異常検出モデルのトレーニング モジュール](./algorithm-module-reference/train-anomaly-detection-model.md)
-    - [クラスタリング モデルのトレーニング モジュール](./algorithm-module-reference/train-clustering-model.md)
-    - [PyTorch モデルのトレーニング モジュール](./algorithm-module-reference/train-pytorch-model.md)
-    - [SVD レコメンダーのトレーニング モジュール](./algorithm-module-reference/train-svd-recommender.md)
-    - [Vowpal Wabbit モデルのトレーニング モジュール](./algorithm-module-reference/train-vowpal-wabbit-model.md)
-    - [ワイドかつディープなモデルのトレーニング モジュール](./algorithm-module-reference/train-wide-and-deep-recommender.md)
+* 次のいずれかのコンポーネントを含む完成したトレーニング パイプライン:
+    - [モデルのトレーニング コンポーネント](./algorithm-module-reference/train-model.md)
+    - [異常検出モデルのトレーニング コンポーネント](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [クラスタリング モデルのトレーニング コンポーネント](./algorithm-module-reference/train-clustering-model.md)
+    - [Pytorch モデルのトレーニング コンポーネント](./algorithm-module-reference/train-pytorch-model.md)
+    - [SVD レコメンダーのトレーニング コンポーネント](./algorithm-module-reference/train-svd-recommender.md)
+    - [Vowpal Wabbit モデルのトレーニング コンポーネント](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [ワイドかつディープなモデルのトレーニング コンポーネント](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>モデルを登録する
 
 トレーニング パイプラインが完了したら、トレーニングされたモデルを Azure Machine Learning ワークスペースに登録して、他のプロジェクトのモデルにアクセスできるようにします。
 
-1. [[モデルのトレーニング モジュール]](./algorithm-module-reference/train-model.md) を選択します。
+1. [[Train Model]\(モデルのトレーニング\)](./algorithm-module-reference/train-model.md) コンポーネントを選択します。
 1. 右側のウィンドウの **[出力 + ログ]** タブを選択します。
 1. **[モデルの登録]** アイコンを選択します ![歯車アイコンのスクリーンショット](./media/how-to-deploy-model-designer/register-model-icon.png)。
 
-    ![モデルのトレーニング モジュールの右側のウィンドウのスクリーンショット](./media/how-to-deploy-model-designer/train-model-right-pane.png)
+    ![モデルのトレーニング コンポーネントの右側のウィンドウのスクリーンショット](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
 1. モデルの名前を入力し、 **[保存]** を選択します。
 
@@ -68,13 +67,13 @@ ms.locfileid: "129740482"
 
 Azure Machine Learning スタジオにモデルをデプロイするには、次のファイルが必要です。
 
-- **エントリ スクリプト ファイル** - トレーニングされたモデルを読み込み、要求から入力データを処理し、リアルタイムの推論を行い、結果を返します。 **モデルのトレーニング** モジュールが完了すると、デザイナーによって `score.py` エントリ スクリプト ファイルが自動的に生成されます。
+- **エントリ スクリプト ファイル** - トレーニングされたモデルを読み込み、要求から入力データを処理し、リアルタイムの推論を行い、結果を返します。 **モデルのトレーニング** コンポーネントが完了すると、デザイナーによって `score.py` エントリ スクリプト ファイルが自動的に生成されます。
 
-- **Conda 依存関係ファイル** - Web サービスが依存する PIP および Conda パッケージを指定します。 **モデルのトレーニング** モジュールが完了すると、デザイナーによって `conda_env.yaml` ファイルが自動的に作成されます。
+- **Conda 依存関係ファイル** - Web サービスが依存する PIP および Conda パッケージを指定します。 **モデルのトレーニング** コンポーネントが完了すると、デザイナーによって `conda_env.yaml` ファイルが自動的に作成されます。
 
-これら 2 つのファイルは、**モデルのトレーニング** モジュールの右側のウィンドウでダウンロードできます。
+これら 2 つのファイルは、**モデルのトレーニング** コンポーネントの右側のウィンドウでダウンロードできます。
 
-1. **Train Model** (モデルのトレーニング) モジュールを選択します。
+1. **[Train Model]\(モデルのトレーニング\)** コンポーネントを選択します。
 1. **[出力 + ログ]** タブでフォルダー `trained_model_outputs` を選択します。
 1. `conda_env.yaml` ファイルと `score.py` ファイルをダウンロードします。
 
@@ -91,7 +90,7 @@ Azure Machine Learning スタジオにモデルをデプロイするには、次
     ![モデルの詳細ページにあるデプロイするダウンロード ファイルのスクリーンショット](./media/how-to-deploy-model-designer/download-artifacts-in-models-page.png)
 
 > [!NOTE]
-> `score.py` ファイルには、**モデルのスコアリング** モジュールとほぼ同じ機能が用意されています。 ただし、[SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)、[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)のような一部のモジュールには、さまざまなスコアリング モード パラメーターがあります。 これらのパラメーターは、エントリ スクリプトで変更することもできます。
+> `score.py` ファイルには、**モデルのスコアリング** コンポーネントとほぼ同じ機能が用意されています。 ただし、[SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)、[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)のような一部のコンポーネントには、さまざまなスコアリング モード パラメーターがあります。 これらのパラメーターは、エントリ スクリプトで変更することもできます。
 >
 >`score.py` ファイルでのパラメーターの設定の詳細については、[エントリ スクリプトの構成](#configure-the-entry-script)に関するセクションを参照してください。
 
@@ -181,7 +180,7 @@ image_transform = [
 ]
 transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
 
-# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model component
 sample_file_path = '_samples.json'
 with open(sample_file_path, 'r') as f:
     sample_data = json.load(f)
@@ -204,7 +203,7 @@ with open(data_file_path, 'w') as f:
 
 ## <a name="configure-the-entry-script"></a>エントリ スクリプトを構成する
 
-[SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)、[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)のようなデザイナーの一部のモジュールには、さまざまなスコアリング モード パラメーターがあります。 
+[SVD レコメンダーのスコアリング](./algorithm-module-reference/score-svd-recommender.md)、[ワイドかつディープなレコメンダーのスコアリング](./algorithm-module-reference/score-wide-and-deep-recommender.md)、[Vowpal Wabbit モデルのスコアリング](./algorithm-module-reference/score-vowpal-wabbit-model.md)のようなデザイナーの一部のコンポーネントには、さまざまなスコアリング モード パラメーターがあります。 
 
 このセクションでは、エントリ スクリプト ファイルでもこれらのパラメーターを更新する方法について説明します。
 
@@ -244,7 +243,7 @@ def run(data):
 
     data_frame_directory = create_dfd_from_dict(input_entry, schema_data)
 
-    # The parameter names can be inferred from Score Wide and Deep Recommender module parameters:
+    # The parameter names can be inferred from Score Wide and Deep Recommender component parameters:
     # convert the letters to lower cases and replace whitespaces to underscores.
     score_params = dict(
         trained_wide_and_deep_recommendation_model=model,

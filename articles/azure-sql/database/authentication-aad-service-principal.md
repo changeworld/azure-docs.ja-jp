@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 05/11/2021
-ms.openlocfilehash: 781cce588654ab5babcd74277a3fca97f9f906c1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 10/21/2021
+ms.openlocfilehash: 3d72b151e73b9adc39f71cd89362027ae2cd9e0f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252574"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256237"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL での Azure Active Directory のサービス プリンシパル
 
@@ -51,14 +51,14 @@ Azure AD アプリケーションの代わりに T-SQL コマンド `CREATE USER
 
 Azure AD アプリケーションの代わりに SQL Database で Azure AD オブジェクトを作成できるようにするには、次の設定が必要となります。
 
-1. サーバー ID を割り当てます。 割り当てられたサーバー ID は Managed Service Identity (MSI) を表します。 現時点では、Azure SQL のサーバー ID ではユーザー マネージド ID (UMI) がサポートされていません。
+1. サーバー ID を割り当てます。 割り当てられたサーバー ID は Managed Service Identity (MSI) を表します。 現在、Azure SQL のサーバー ID ではユーザー割り当てマネージド ID (UMI) はサポートされていません。
     - 新しい Azure SQL 論理サーバーの場合は、次の PowerShell コマンドを実行します。
     
     ```powershell
     New-AzSqlServer -ResourceGroupName <resource group> -Location <Location name> -ServerName <Server name> -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -AssignIdentity
     ```
 
-    詳細については、[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) コマンドを参照してください。
+    詳しくは、[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) コマンド、または SQL Managed Instance の [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) コマンドをご覧ください。
 
     - 既存の Azure SQL 論理サーバーの場合は、次のコマンドを実行します。
     
@@ -66,7 +66,7 @@ Azure AD アプリケーションの代わりに SQL Database で Azure AD オ�
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <Server name> -AssignIdentity
     ```
 
-    詳細については、[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) コマンドを参照してください。
+    詳しくは、[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) コマンド、または SQL Managed Instance の [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) コマンドをご覧ください。
 
     - サーバー ID がサーバーに割り当てられているかどうかを確認するには、Get AzSqlServer コマンドを実行します。
 

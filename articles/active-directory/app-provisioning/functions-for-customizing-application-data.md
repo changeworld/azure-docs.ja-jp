@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/21/2021
+ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5922fab330409391ba9857b76595f5834469d966
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 2962c033ee42b91913324f22dbba3ca3cae49fdf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991453"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456368"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory で属性マッピングの式を記述するためのリファレンス
 
-SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトに似た式を記述する必要があります。
+SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 これらのマッピングでは、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
 
 ## <a name="syntax-overview"></a>構文の概要
 
@@ -38,7 +38,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ## <a name="list-of-functions"></a>関数の一覧
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RandomString](#randomstring) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -56,7 +56,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 
 #### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
-例: Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に追加のサフィックスを追加する必要があります。
+例: Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に別のサフィックスを追加する必要があります。
 
 **式:**  
 `Append([userPrincipalName], ".test")`
@@ -94,8 +94,8 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **value1** |必須 |num |value2 と AND で処理する数値|
-| **value2** |必須 |num |value1 と AND で処理する数値|
+| **value1** |必須 |番号 |value2 と AND で処理する数値|
+| **value2** |必須 |番号 |value1 と AND で処理する数値|
 
 **例:** 
 `BitAnd(&HF, &HF7)`
@@ -114,7 +114,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** |必須 | expression | 任意の有効な式 |
+| **[式]** |必須 | expression | 任意の有効な式 |
 
 **例:** 
 `CBool([attribute1] = [attribute2])`                                                                    
@@ -132,7 +132,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は�
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** |必須 | expression | 日付/時刻を表す任意の有効な文字列。 サポートされている形式については、「[.NET カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 |
+| **[式]** |必須 | Expression | 日付/時刻を表す任意の有効な文字列。 サポートされている形式については、「[.NET カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 |
 
 **備考:**  
 返される文字列は常に UTC で、**M/d/yyyy h:mm:ss tt** の形式に従います。
@@ -418,7 +418,7 @@ Switch([Active], ,
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** | 必須 | expression | 評価の対象となる式 |
+| **[式]** | 必須 | Expression | 評価の対象となる式 |
 
 **例 1: 属性が null の場合はフローしない** <br>
 `IgnoreFlowIfNullOrEmpty([department])` <br>
@@ -480,7 +480,7 @@ Switch([Active], ,
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** |必須 |expression |評価の対象となる式 |
+| **[式]** |必須 |Expression |評価の対象となる式 |
 
 **例:** 
 `IsNull([displayName])`
@@ -498,7 +498,7 @@ Switch([Active], ,
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** |必須 |expression |評価の対象となる式 |
+| **[式]** |必須 |Expression |評価の対象となる式 |
 
 **例:** 
 `IsNullOrEmpty([displayName])`
@@ -515,7 +515,7 @@ Switch([Active], ,
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** |必須 |expression |評価の対象となる式 |
+| **[式]** |必須 |Expression |評価の対象となる式 |
 
 **例:** 
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -530,7 +530,7 @@ Switch([Active], ,
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **式 (expression)** |必須 |expression |評価の対象となる式 |
+| **[式]** |必須 |Expression |評価の対象となる式 |
 
 ---
 ### <a name="item"></a>Item
@@ -565,7 +565,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 ---
 ### <a name="left"></a>Left
-**関数:** Left(String,NumChars)
+**関数:** Left(String, NumChars)
 
 **説明:** Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。 numChars = 0 の場合、空の文字列を返します。
 numChars < 0 の場合、入力文字列を返します。
@@ -595,8 +595,8 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常、属性の名前。 |
-| **start** |必須 |整数 (integer) |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
-| **length** |必須 |整数 (integer) |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
+| **start** |必須 |Integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
+| **length** |必須 |Integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -634,7 +634,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 
 #### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
-例: アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
+例: アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換します。
 
 **Expression:** NormalizeDiacritics([givenName])
 
@@ -731,6 +731,31 @@ Now 関数は、**M/d/yyyy h:mm:ss tt** の形式で現在の UTC DateTime を�
 
 ---
 
+### <a name="randomstring"></a>RandomString
+**関数:** RandomString(Length, MinimumNumbers, MinimumSpecialCharacters , MinimumCapital, MinimumLowerCase, CharactersToAvoid)
+
+**説明:** RandomString 関数は、指定された条件に基づいてランダムな文字列を生成します。 使用できる文字は、[こちら](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference)で確認できます。
+
+**パラメーター:** 
+
+| 名前 | 必須/繰り返し | Type | Notes |
+| --- | --- | --- | --- |
+| **Length** |必須 |数値 |ランダムな文字列の合計文字数。 MinimumNumbers、MinimumSpecialCharacters、MinimumCapital の合計と同じか、それ以上であることが必要です。 最大 256 文字です。|
+| **MinimumNumbers** |必須 |数値 |ランダムな文字列に含まれる数字の最小文字数。|
+| **MinimumSpecialCharacters** |必須 |数値 |特殊文字の最小文字数。|
+| **MinimumCapital** |必須 |数値 |ランダムな文字列に含まれる大文字の最小文字数。|
+| **MinimumLowerCase** |必須 |数値 |ランダムな文字列に含まれる小文字の最小文字数。|
+| **CharactersToAvoid** |オプション |String |ランダムな文字列を生成するときに除外する文字。|
+
+
+**例 1:** - 特殊文字の制限なしでランダムな文字列を生成する: `RandomString(6,3,0,0,3)`
+6 文字のランダムな文字列を生成します。 文字列には数字が 3 つと小文字が 3 つ含まれます (1a73qt)。
+
+**例 2:** - 特殊文字の制限付きでランダムな文字列を生成する: `RandomString(10,2,2,2,1,"?,")`
+10 文字のランダムな文字列を生成します。 この文字列には、少なくとも数字が 2 つ、特殊文字が 2 つ、大文字が 2 つ、小文字が 1 つ含まれており、"?" 文字と "," 文字は除外されます (1@!2BaRg53)。
+
+---
+
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **関数:** RemoveDuplicates(attribute)
 
@@ -800,10 +825,11 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **説明:** 少なくとも 2 つの引数が必要です。引数は、式を使用して定義されている一意値生成ルールです。 関数では、各ルールが評価された後、生成された値の対象となるアプリ/ディレクトリでの一意性が確認されます。 最初に見つかった一意の値が返されます。 すべての値がターゲットに既に存在する場合、エントリはエスクローされて、理由が監査ログに記録されます。 渡すことができる引数の数に上限はありません。
 
 
- - これは最上位の関数であり、入れ子にはできません。
+ - この関数は最上位に配置する必要があり、入れ子にすることはできません。
  - この関数は、照合の優先順位を持つ属性には適用できません。     
  - この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、 **[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
  - この関数は現在、"Workday から Active Directory へのユーザー プロビジョニング" と "SuccessFactors から Active Directory へのユーザー プロビジョニング" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
+ - *SelectUniqueValue* 関数がオンプレミスの Active Directory で実行する LDAP 検索では、分音記号などの特殊文字がエスケープされません。 特殊文字を含む文字列 ("Jéssica Smith" など) を渡した場合、処理エラーが発生します。 以下の例のように [NormalizeDiacritics](#normalizediacritics) 関数を入れ子にして、特殊文字を正規化してください。 
 
 
 **パラメーター:** 
@@ -899,7 +925,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | **value** |必須 |String |key と一致する **source** の置換値。 |
 
 #### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
-例: Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
+例: Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義します。 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
 
 **式:**  
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
@@ -985,7 +1011,7 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 ここでは、式関数の使用例をさらに詳しく説明します。 
 
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする
-ユーザーの電子メールから既知のドメイン名をストリップして、ユーザー名を取得する必要があります。 たとえば、ドメインが "contoso.com" の場合は、次の式を使用することができます。
+ユーザーの電子メールから既知のドメイン名をストリップして、ユーザー名を取得します。 たとえば、ドメインが "contoso.com" の場合は、次の式を使用することができます。
 
 **式:**  
 `Replace([mail], "@contoso.com", , ,"", ,)`
@@ -997,7 +1023,7 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>姓の一部と名の一部を連結することでユーザー エイリアスを生成する
-ユーザーの名の最初の 3 文字とユーザーの姓の最初の 5 文字を取得することでユーザー エイリアスを生成する必要があります。
+ユーザーの名の最初の 3 文字とユーザーの姓の最初の 5 文字を取得することでユーザー エイリアスを生成します。
 
 **式:**  
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`

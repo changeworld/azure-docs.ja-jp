@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c5de4ed71de7f6cb6534620cbfd1bc62226123e5
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 31a7ed92f6fbdfc60753b91709738209acc38fc2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132799"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465480"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "130132799"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.2.0.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.2.2.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.2.0.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.2.2.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -348,11 +348,16 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
       },
       "springIntegration": {
         "enabled": true
-      }
+      },
+      "akka": { 
+        "enabled": true
+      },
     }
   }
 }
 ```
+> [!NOTE]
+> Akka インストルメンテーションはバージョン 3.2.2 から使用できます。
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -458,7 +463,7 @@ Application Insights Java 3.x は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.2.0.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.2.2.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 

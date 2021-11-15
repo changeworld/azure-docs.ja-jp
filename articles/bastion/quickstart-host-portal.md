@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e9504220ac6aa001314c8ebf78bdb11a6cd011a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 243b8a068c5301c5545c2afe8567ae1fbf71284c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071593"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426717"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>クイックスタート: VM 設定から Azure Bastion を構成する
 
@@ -63,7 +63,7 @@ ms.locfileid: "131071593"
 | --- | --- |
 | 名前 | VNet1-bastion |
 | + サブネット名 | AzureBastionSubnet |
-| AzureBastionSubnet アドレス | サブネット マスクが /27 以上の VNet アドレス空間内のサブネット。<br> 例: 10.1.1.0/26。  |
+| AzureBastionSubnet アドレス | サブネット マスクが /26 以上の VNet アドレス空間内のサブネット。<br> 例: 10.1.1.0/26。  |
 | 価格レベルまたは SKU | Standard |
 | パブリック IP アドレス |  新規作成 |
 | パブリック IP アドレス名 | VNet1-ip  |
@@ -89,7 +89,7 @@ bastion ホストは、いくつかの方法で構成できます。 以降の�
 
    :::image type="content" source="./media/quickstart-host-portal/create-step-1.png" alt-text="手順 1 で事前設定した設定のスクリーンショット。" lightbox="./media/quickstart-host-portal/create-step-1.png":::
 
-1. **[Azure Bastion を使用して接続する]** ページの **手順 2** で、値を構成します。 AzureBastionSubnet アドレス空間には、推奨されるアドレス空間があらかじめ設定されています。 AzureBastionSubnet には、/27 以上 (/26、/25 など) のアドレス空間を指定する必要があります。 ホストのスケーリングが制限されないように、/26 を使用することをお勧めします。 この設定の構成が完了したら、 **[サブネットの作成]** をクリックして AzureBastionSubnet を作成します。
+1. **[Azure Bastion を使用して接続する]** ページの **手順 2** で、値を構成します。 AzureBastionSubnet アドレス空間には、推奨されるアドレス空間があらかじめ設定されています。 AzureBastionSubnet には、/26 以上 (/25、/24 など) のアドレス空間を指定する必要があります。 ホストのスケーリングが制限されないように、/26 を使用することをお勧めします。 この設定の構成が完了したら、 **[サブネットの作成]** をクリックして AzureBastionSubnet を作成します。
 
      :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Bastion サブネットの作成のスクリーンショット。":::
 

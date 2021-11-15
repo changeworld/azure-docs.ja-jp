@@ -1,6 +1,6 @@
 ---
-title: Linux VM で Azure Image Builder と Shared Image Gallery を使用する
-description: Azure Image Builder と Azure CLI を使用して共有イメージ ギャラリーでイメージ バージョンを作成し、イメージをグローバルに配信する方法について説明します。
+title: Azure Image Builder と Azure Compute Gallery を Linux VM に使用する
+description: Azure Image Builder と Azure CLI を使用して Azure Compute Gallery にイメージ バージョンを作成し、イメージをグローバルに配布する方法について説明します。
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: cynthn
@@ -8,23 +8,23 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: ead4462c6dcff231b6127830ca24732bd7e3ef45
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8dd2e8068e21c5ee7ce4dea1b54d8f36df2e661b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769095"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437165"
 ---
-# <a name="create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Linux イメージを作成して共有イメージ ギャラリーに配布する
+# <a name="create-a-linux-image-and-distribute-it-to-an-azure-compute-gallery"></a>Linux イメージを作成して Azure Compute Gallery に配布する
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット
 
-この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
+この記事では、Azure Image Builder と Azure CLI を使用して [Azure Compute Gallery](../shared-image-galleries.md) (旧称 Shared Image Gallery) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIG.json](https://github.com/azure/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) です。 
 
-イメージを共有イメージ ギャラリーに配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](image-builder-json.md#distribute-sharedimage) が使われています。
+イメージを Azure Compute Gallery に配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](image-builder-json.md#distribute-sharedimage) が使われています。
 
 
 ## <a name="register-the-features"></a>機能の登録
@@ -64,7 +64,7 @@ sigResourceGroup=ibLinuxGalleryRG
 location=westus2
 # Additional region to replicate the image to - we are using East US in this example
 additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
+# name of the Azure Compute Gallery - in this example we are using myGallery
 sigName=myIbGallery
 # name of the image definition to be created - in this example we are using myImageDef
 imageDefName=myIbImageDef
@@ -85,7 +85,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定する
-Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、Azure Compute Gallery にイメージを挿入します。 この例では、ギャラリーへのイメージの配布を実行するための粒度の細かいアクションを含んだ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -121,9 +121,9 @@ az role assignment create \
 
 ## <a name="create-an-image-definition-and-gallery"></a>イメージ定義およびギャラリーの作成
 
-共有イメージ ギャラリーで Image Builder を使用するには、既存のイメージ ギャラリーとイメージ定義が必要です。 Image Builder では、イメージ ギャラリーとイメージ定義は自動的には作成されません。
+Azure Compute Gallery で Image Builder を使用するには、既存のギャラリーとイメージ定義が必要です。 Image Builder では、ギャラリーとイメージ定義は自動的には作成されません。
 
-使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 最初に、イメージ ギャラリーを作成します。
+使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 まず、ギャラリーを作成します。
 
 ```azurecli-interactive
 az sig create \
@@ -226,7 +226,7 @@ SSH 接続が確立されるとすぐに、イメージが *当日のメッセ�
 
 これにより、他のすべてのリソース ファイルとともに、作成されたイメージが削除されます。 リソースを削除する前に、このデプロイを終了していることを確認します。
 
-イメージ ギャラリー リソースを削除する場合、それらの作成に使用したイメージ定義を削除する前に、すべてのイメージ バージョンを削除する必要があります。 ギャラリーを削除するには、最初にギャラリー内のすべてのイメージ定義を削除していることが必要です。
+ギャラリー リソースを削除する場合、それらの作成に使用したイメージ定義を削除する前に、すべてのイメージ バージョンを削除する必要があります。 ギャラリーを削除するには、最初にギャラリー内のすべてのイメージ定義を削除していることが必要です。
 
 Image Builder テンプレートを削除します。
 
@@ -290,4 +290,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure 共有イメージ ギャラリー](../shared-image-galleries.md)に関するページを参照してください。
+[Azure Compute Gallery](../shared-image-galleries.md) の詳細を確認してください。

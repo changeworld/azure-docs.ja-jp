@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.author: JenCook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2e0a4496265e2399a6f8a1bbbff554c971067d24
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f0d28b9f6e9894ec8a5506a428b8c15cadb2f716
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017522"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845505"
 ---
 # <a name="confidential-computing-deployment-models"></a>コンフィデンシャル コンピューティング デプロイ モデル
 
@@ -64,7 +64,7 @@ VM 管理者、または VM 内で実行されているその他のアプリや�
 
 AMD SEV-SNP テクノロジを使用すると、ハイパーバイザーから VM を分離できます。 ハードウェア ベースのメモリ整合性保護により、悪意のあるハイパーバイザー ベースの攻撃を防ぐことができます。 SEV-SNP モデルでは、AMD Secure Processor と VM を信頼します。 このモデルは、他のハードウェアおよびソフトウェア コンポーネントは信頼しません。 信頼されていないコンポーネントには、BIOS とホスト システム上のハイパーバイザーが含まれます。
 
-![信頼された、および信頼されていないコンポーネントを定義する AMD SEV-SNP VM アーキテクチャの図。](media/confidential-computing-deployment-models/amd-sev-snp-vm.jpg)
+:::image type="content" source="media/confidential-computing-deployment-models/amd-sev-snp-vm.png" alt-text="信頼された、および信頼されていないコンポーネントを定義する AMD SEV-SNP VM アーキテクチャの図。":::
 
 ### <a name="secure-enclaves-on-intel-sgx"></a>Intel SGX でのセキュア エンクレーブ
 
@@ -72,7 +72,7 @@ AMD SEV-SNP テクノロジを使用すると、ハイパーバイザーから V
 
 Intel SGX では、アプリケーションの分離によって使用中のデータを保護することができます。 開発者は、選択したコードとデータを変更から保護することで、アプリケーションをセキュリティ強化されたエンクレーブまたは信頼された実行モジュールにパーティション分割して、アプリケーションのセキュリティを強化できます。 エンクレーブの外部のエンティティは、どのアクセス許可レベルでも、エンクレーブ メモリを読み書きすることはできません。 ハイパーバイザーまたはオペレーティング システムでは、通常の OS レベルの呼び出しを介してこのアクセスを取得できません。 エンクレーブ関数を呼び出す場合は、Intel SGX CPU で新しい一連の手順で行う必要があります。 このプロセスには、いくつかの保護チェックが含まれます。
 
-![アプリ エンクレーブ内のセキュリティで保護された情報を示す Intel SGX エンクレーブ アーキテクチャの図。](media/confidential-computing-deployment-models/intel-sgx-enclave.jpg)
+:::image type="content" source="media/confidential-computing-deployment-models/intel-sgx-enclave.png" alt-text="アプリ エンクレーブ内のセキュリティで保護された情報を示す Intel SGX エンクレーブ アーキテクチャの図。":::
 
 ## <a name="next-steps"></a>次のステップ
 

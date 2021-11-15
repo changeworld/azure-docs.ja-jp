@@ -5,15 +5,15 @@ services: app-service
 author: asw101
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3e27ba920f47a7033871d8ccdf227341d2400816
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4f8678dfd6871aa56a649c882b7b8636640bd3d4
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092058"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578275"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-an-arm-template"></a>チュートリアル: ARM テンプレートを使用して Dapr アプリケーションを Azure Container Apps にデプロイする
 
@@ -131,6 +131,22 @@ az extension add \
 ```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
+```
+
+---
+
+拡張機能がインストールされたので、`Microsoft.Web` 名前空間を登録します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -534,7 +550,7 @@ Azure Storage アカウントのデータを表示することで、サービス
 
 ### <a name="view-logs"></a>ログの表示
 
-コンテナー アプリを使用してログされたデータは、Log Analytics ワークスペースの `ContainerAppConsoleLogs_CL` カスタム テーブルに格納されます。 Azure portal または CLI を使用してログを表示できます。
+コンテナー アプリを使用してログされたデータは、Log Analytics ワークスペースの `ContainerAppConsoleLogs_CL` カスタム テーブルに格納されます。 Azure portal または CLI を使用してログを表示できます。 ログに記録されたデータに対してクエリを実行する前に、初めて分析が到着するまでに数分かかることがあります。
 
 次の CLI コマンドを使用して、コマンド ラインでログを表示します。
 

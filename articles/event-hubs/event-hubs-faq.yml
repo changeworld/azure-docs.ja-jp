@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: c4f0139377d24f5a7ad18f53f50c16d6bfd19191
-  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+  ms.openlocfilehash: 8b10d0f11f889407569d415c10d6a1898468d96c
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129536551"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130218056"
 title: Event Hubs のよく寄せられる質問
 summary: ''
 sections:
@@ -21,7 +21,7 @@ sections:
     answer: "名前空間は、Event Hub/Kafka トピックのためのスコーピング コンテナーです。 これにより、一意の <bpt id=\"p1\">[</bpt>FQDN<ept id=\"p1\">](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)</ept> が提供されます。 名前空間は、複数の Event Hub/Kafka トピックを収容できるアプリケーション コンテナーとして機能します。 \n"
   - question: >
       どのような場合に新しい名前空間を作成し、どのような場合に既存の名前空間を使用すればよいですか。
-    answer: "容量の割り当て (<bpt id=\"p1\">[</bpt>スループット ユニット (TU)<ept id=\"p1\">](/azure/event-hubs/event-hubs-faq#throughput-units)</ept> または<bpt id=\"p2\">[</bpt>処理ユニット (PU)<ept id=\"p2\">](./event-hubs-scalability.md#processing-units)</ept>) は、名前空間レベルで課金されます。 名前空間は、リージョンにも関連付けられています。\n\n次のシナリオのいずれかに該当する場合は、既存の名前空間を使用するのではなく、新しい名前空間を作成することをお勧めします。 \n\n- イベント ハブを新しいリージョンに関連付ける必要がある。\n- イベント ハブを別のサブスクリプションに関連付ける必要がある。\n- 異なる容量が割り当てられたイベント ハブが必要である (つまり、追加されたイベント ハブを含む名前空間の容量ニーズが 40 TU のしきい値を超え、専用のクラスターも使用したくない)  \n"
+    answer: "容量の割り当て (スループット ユニット (TU) または[処理ユニット (PU)](./event-hubs-scalability.md#processing-units)) は、名前空間レベルで課金されます。 名前空間は、リージョンにも関連付けられています。\n\n次のシナリオのいずれかに該当する場合は、既存の名前空間を使用するのではなく、新しい名前空間を作成することをお勧めします。 \n\n- イベント ハブを新しいリージョンに関連付ける必要がある。\n- イベント ハブを別のサブスクリプションに関連付ける必要がある。\n- 異なる容量が割り当てられたイベント ハブが必要である (つまり、追加されたイベント ハブを含む名前空間の容量ニーズが 40 TU のしきい値を超え、専用のクラスターも使用したくない)  \n"
   - question: >
       Event Hubs の Basic レベルと Standard レベルは何が違いますか。
     answer: >
@@ -214,7 +214,7 @@ sections:
 - name: トラブルシューティング
   questions:
   - question: "別のサブスクリプションから名前空間を削除した後に、その名前空間を作成できないのはなぜですか。 \n"
-    answer: "サブスクリプションから名前空間を削除した場合、別のサブスクリプションで同じ名前を使用して再作成するには、4 時間ほど時間を空けてから行ってください。 そうしないと、<ph id=\"ph1\">`Namespace already exists`</ph> というエラー メッセージが表示される場合があります。 \n"
+    answer: "サブスクリプションから名前空間を削除した場合、別のサブスクリプションで同じ名前を使用して再作成するには、4 時間ほど時間を空けてから行ってください。 そうしないと、`Namespace already exists` というエラー メッセージが表示される場合があります。 \n"
   - question: >
       Event Hubs によって生成される例外とその推奨されるアクションをいくつか教えてください。
     answer: >
@@ -234,5 +234,5 @@ sections:
   questions:
   - question: >
       Azure Blob Storage をチェックポイント ストアとして使用するときに、特定のバージョンの Azure Storage SDK を対象にするにはどうすればよいですか?
-    answer: "このコードを Azure Stack Hub で実行すると、特定の Storage API バージョンを対象としている場合を除き、実行時エラーが発生します。 これは、Event Hubs SDK では、Azure で利用できる最新の Azure Storage API が使用されますが、Azure Stack Hub プラットフォームではこれを利用できない可能性があるためです。 Azure Stack Hub でサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なる場合があります。 チェックポイント ストアとして Azure Blob Storage を使用している場合は、<bpt id=\"p1\">[</bpt>Azure Stack Hub ビルドでサポートされている Azure Storage API バージョン<ept id=\"p1\">](/azure-stack/user/azure-stack-acs-differences?#api-version)</ept>を確認し、コード内でそのバージョンを対象にします。 \n\nたとえば、Azure Stack Hub バージョン 2005 上で実行している場合、Storage サービスで利用できる最も高いバージョンは 2019-02-02 となります。 既定では、Event Hubs SDK クライアント ライブラリでは、Azure で利用できる最も高いバージョン (SDK のリリース時点では 2019-07-07) が使用されます。 この場合は、このセクションの手順に従うことに加え、Storage サービス API バージョン 2019-02-02 を対象とするコードを追加する必要もあります。 特定の Storage API バージョンを対象にする方法の例については、次の C#、Java、Python、および JavaScript/TypeScript 用のサンプルを参照してください。  \n\nコードから特定の Storage API バージョンを対象にする方法の例については、次の GitHub 上のサンプルを参照してください。 \n\n- <bpt id=\"p1\">[</bpt>.NET<ept id=\"p1\">](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)</ept>\n- <bpt id=\"p1\">[</bpt>Java<ept id=\"p1\">](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)</ept>\n- Python - <bpt id=\"p1\">[</bpt>同期<ept id=\"p1\">](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)</ept>、<bpt id=\"p2\">[</bpt>非同期<ept id=\"p2\">](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)</ept>\n- <bpt id=\"p1\">[</bpt>JavaScript<ept id=\"p1\">](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/javascript/receiveEventsWithApiSpecificStorage.js)</ept> および <bpt id=\"p2\">[</bpt>TypeScript<ept id=\"p2\">](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/typescript/src/receiveEventsWithApiSpecificStorage.ts)</ept>\n"
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nEvent Hubs の詳細については、次のリンク先を参照してください:\n\n* <bpt id=\"p1\">[</bpt>Event Hubs の概要<ept id=\"p1\">](./event-hubs-about.md)</ept>\n* <bpt id=\"p1\">[</bpt>Event Hub を作成する<ept id=\"p1\">](event-hubs-create.md)</ept>\n* <bpt id=\"p1\">[</bpt>Event Hubs の自動インフレ<ept id=\"p1\">](event-hubs-auto-inflate.md)</ept>"
+    answer: "このコードを Azure Stack Hub で実行すると、特定の Storage API バージョンを対象としている場合を除き、実行時エラーが発生します。 これは、Event Hubs SDK では、Azure で利用できる最新の Azure Storage API が使用されますが、Azure Stack Hub プラットフォームではこれを利用できない可能性があるためです。 Azure Stack Hub でサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なる場合があります。 チェックポイント ストアとして Azure Blob Storage を使用している場合は、<bpt id=\"p1\">[</bpt>Azure Stack Hub ビルドでサポートされている Azure Storage API バージョン<ept id=\"p1\">](/azure-stack/user/azure-stack-acs-differences?#api-version)</ept>を確認し、コード内でそのバージョンを対象にします。 \n\nたとえば、Azure Stack Hub バージョン 2005 上で実行している場合、Storage サービスで利用できる最も高いバージョンは 2019-02-02 となります。 既定では、Event Hubs SDK クライアント ライブラリでは、Azure で利用できる最も高いバージョン (SDK のリリース時点では 2019-07-07) が使用されます。 この場合は、このセクションの手順に従うことに加え、Storage サービス API バージョン 2019-02-02 を対象とするコードを追加する必要もあります。 特定の Storage API バージョンを対象にする方法の例については、次の C#、Java、Python、および JavaScript/TypeScript 用のサンプルを参照してください。  \n\nコードから特定の Storage API バージョンを対象にする方法の例については、次の GitHub 上のサンプルを参照してください。 \n\n- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)\n- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)\n- Python - <bpt id=\"p1\">[</bpt>同期<ept id=\"p1\">](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)</ept>、<bpt id=\"p2\">[</bpt>非同期<ept id=\"p2\">](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)</ept>\n- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/javascript/receiveEventsWithApiSpecificStorage.js) および [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/typescript/src/receiveEventsWithApiSpecificStorage.ts)\n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nEvent Hubs の詳細については、次のリンク先を参照してください:\n\n* [Event Hubs の概要](./event-hubs-about.md)\n* [Event Hub を作成する](event-hubs-create.md)\n* <bpt id=\"p1\">[</bpt>Event Hubs の自動インフレ<ept id=\"p1\">](event-hubs-auto-inflate.md)</ept>"

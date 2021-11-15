@@ -4,12 +4,12 @@ description: Site Recovery を使用して、Azure に System Center VMM クラ�
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc4e9066cb67617b52e9fa00a42ce95e31e0fe39
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89442822"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456972"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -91,6 +91,30 @@ Microsoft Azure Recovery Services Agent セットアップ ウィザードで、
 1. **[インストール]** : インストールが完了したら、 **[閉じる]** を選択してウィザードを終了します。
 
    ![エージェントのインストール](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+
+### <a name="install-the-recovery-services-agent-on-windows-core-hyper-v-hosts"></a>Recovery Services エージェントを Windows コア Hyper-V ホストにインストールする
+
+レプリケーション対象の VM が含まれる各 Windows コア Hyper-V ホストにエージェントをインストールします。
+
+1. Windows コア Hyper-V ホストで、次のコマンドを実行してディレクトリを作成します。
+
+   ```powershell
+   New-Item -Path C:\ASR -ItemType Directory
+   ```
+
+2. Microsoft Azure Recovery Services エージェントのインストーラーをダウンロードします。
+
+   ```powershell
+   Invoke-WebRequest -Uri <put the URI here> -OutFile .\ASR\MARSsoftware.exe
+   ```
+   
+3. インストーラーを実行します。
+
+   ```powershell
+   .\MARSsoftware.exe
+   ```
+
+4. Microsoft Azure Recovery Services エージェントのインストールが完了したら、ウィザード コンソールを閉じることができます。
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 

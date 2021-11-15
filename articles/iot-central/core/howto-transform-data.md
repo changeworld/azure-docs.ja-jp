@@ -7,14 +7,14 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0c087838029a5e7863359564682a6843238421c5
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: e05cbd17dbfe4f61562856f9244f5b4d0fa65dc9
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964592"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577386"
 ---
-# <a name="transform-data-for-iot-central"></a>IoT Central に対するデータの変換
+# <a name="transform-data-externally-for-iot-central"></a>IoT Central の外部でデータを変換する
 
 IoT デバイスから送信されるデータにはさまざまな形式があります。 デバイス データをご自分の IoT Central アプリケーションで使用するには、以下を行うために変換が必要になる場合があります。
 

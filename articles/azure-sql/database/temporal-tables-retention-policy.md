@@ -10,13 +10,13 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 09/25/2018
-ms.openlocfilehash: bd1884785f5c6e84abd4aae5af29805ec4c004cb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/18/2021
+ms.openlocfilehash: d3cf9b884dd1d2610aabe0aa0869ab8ad528da01
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741228"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216234"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>アイテム保持ポリシーを使用してテンポラル テーブルで履歴データを管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -182,7 +182,5 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーションでテンポラル テーブルを使用する方法については、[テンポラル テーブルの概要](../temporal-tables.md)に関するページを参照してください。
-
-Channel 9 にアクセスして、[テンポラル テーブル導入による成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
 テンポラル テーブルの詳細については、「[テンポラル テーブル](/sql/relational-databases/tables/temporal-tables)」を参照してください。

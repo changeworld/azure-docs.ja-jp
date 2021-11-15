@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: avgupta
-ms.openlocfilehash: f133c3184186ef46f7d4579a64d22733b773df7f
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 4edbeadd2615fc8d58761bc5b15a93ae626a6613
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415474"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265595"
 ---
 # <a name="reload-secrets-and-certificates-from-key-vault-automatically"></a>Key Vault からシークレットと証明書を自動的に再読み込みする
 

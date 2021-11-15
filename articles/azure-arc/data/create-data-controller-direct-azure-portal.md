@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: overview
-ms.openlocfilehash: 6ac96cb0420ecdba934b364c185bedf01f9f4321
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 9c3c5cd60c7eec5832d8e609e960fd42d38855cc
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822650"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557815"
 ---
 #  <a name="create-azure-arc-data-controller-from-azure-portal---direct-connectivity-mode"></a>Azure portal から Azure Arc データ コントローラーを作成する - 直接接続モード
 
@@ -43,12 +43,11 @@ Azure Arc データ コントローラーの作成フローは、次のいずれ
   - 事前に作成した **カスタムの場所** を選択するか、[新規作成] を選択して新しいカスタムの場所を作成します。 新しいカスタムの場所を作成する場合は、新しいカスタムの場所の名前を入力し、ドロップダウンから Azure Arc 対応 Kubernetes クラスターを選択してから、新しいカスタムの場所に関連付けられる名前空間を入力し、最後に [Create new custom location]\(新しいカスタムの場所の作成\) ウィンドウで [作成] を選択します。 [カスタムの場所](../kubernetes/conceptual-custom-locations.md)に関する詳細を確認してください
   - **Kubernetes configuration (Kubernetes の構成)** - ドロップダウンから、ご利用の Kubernetes ディストリビューションに最も適した Kubernetes 構成テンプレートを選択します。 独自の設定を使用するか、カスタム プロファイルを使用する場合は、ドロップダウンから [カスタム テンプレート] オプションを選択します。 右側に開いたブレードで、Docker 資格情報、リポジトリ情報、イメージ タグ、イメージのプル ポリシー、インフラストラクチャの種類、データのストレージ設定、ログとそのサイズ、サービスの種類、コントローラーと管理プロキシのポートに関する詳細を入力します。 必要なすべての情報を指定したら、[適用] を選択します。 また、ブレードの上部で [Upload a template (JSON)]\(テンプレート (JSON) のアップロード\) 選択して、独自のテンプレート ファイルをアップロードすることもできます。 カスタム設定を使用し、それらの設定のコピーをダウンロードする必要がある場合は、[Download this template (JSON)]\(このテンプレート (JSON) をダウンロードする\) を使用して実行します。 [カスタム構成プロファイル](create-custom-configuration-template.md)に関する詳細を確認してください。
   - 実際の環境に合った適切な **[サービスの種類]** を選択します
-  - **管理者アカウント** - データ コントローラーのログインとパスワードの資格情報を入力します
-  - **サービス プリンシパル** - 使用するサービス プリンシパル アカウントのクライアント ID、テナント ID、およびクライアント シークレット情報を入力します。
+  - **Metrics and Logs Dashboard Credentials (メトリックとログ ダッシュボードの資格情報)** - Grafana および Kibana ダッシュボードの資格情報を入力します
   - 必要なすべての情報を指定したら、[次へ: 追加設定] ボタンを選択して、次に進みます。
 - **[追加設定]** ページで以下を実行します。
-  - ログを Azure Log Analytics に自動的にアップロードする場合は、Log Analytics ワークスペース ID と Log Analytics 共有アクセス キーを入力します
-  - ログを Azure Log Analytics に自動的にアップロードしない場合は、[Enable logs upload]\(ログのアップロードを有効にする\) チェック ボックスをオフにします。
+  - **Metrics upload (メトリックのアップロード):** このオプションは、メトリックを自動的に Azure Monitor にアップロードする場合に選択します。これにより、メトリックの集計と分析、アラートの生成、通知の送信、自動化されたアクションのトリガーを行えます。 必要な **監視メトリック発行者** ロールは、拡張機能のマネージド ID に付与されます。 
+  - **Logs upload (ログのアップロード):** このオプションは、既存の Log Analytics ワークスペースにログを自動的にアップロードする場合に選択します。 Log Analytics ワークスペース ID と Log Analytics 共有アクセス キーを入力します。 
   - [次へ: タグ] を選択して、次に進みます。
 - **[タグ]** ページで、タグの名前と値を入力し、[次へ: 確認および作成] を選択します。
 - **[確認および作成]** ページで、デプロイの概要を表示します。 すべての設定が正しく表示されていることを確認し、[作成] を選択して、Azure Arc データ コントローラーのデプロイを開始します。

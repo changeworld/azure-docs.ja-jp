@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/01/2021
 ms.author: ibthampy
-ms.openlocfilehash: 77f6eaf0cbd9478df6659310c61fa4616c17c749
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 244708b6603351ce7b01a6f69f2f19887cc63ea9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458496"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344011"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
@@ -581,7 +581,7 @@ ms.locfileid: "131458496"
 |  Rel 20-12 |  4580325  |  Flash の更新プログラム | [3.92]、[4.85]、[5.50]、[6.26] | 2020 年 10 月 13 日 |
 |  Rel 20-12 |  [4586768]  |  IE の累積的な更新プログラム | [2.105]、[3.92]、[4.85] | 2020 年 11 月 10 日 |
 |  Rel 20-12 |  [4593226]  |  最新の累積的な更新プログラム | [5.50] | 2020 年 12 月 8 日 |
-|  Rel 20-12 |  [4052623]  |  Defender | [5.50]、[6.26] | 2020 年 12 月 13 日 |
+|  Rel 20-12 |  [4052623]  |  Defender for Cloud | [5.50]、[6.26] | 2020 年 12 月 13 日 |
 |  Rel 20-12 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [2.105] | 2020 年 11 月 10 日 |
 |  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [2.105] | 2020 年 11 月 10 日 |
 |  Rel 20-12 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [4.85] | 2020 年 11 月 10 日 |

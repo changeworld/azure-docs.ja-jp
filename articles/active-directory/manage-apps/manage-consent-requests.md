@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 039461797d9b451703959f43977234278e87827d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a69a880453ffffcb55fd257b8f1b65de75d2f80d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424061"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289150"
 ---
 # <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
 
@@ -42,7 +42,7 @@ Microsoft では、ユーザーが検証された発行元からのアプリと�
 
 3. 組織が適切なライセンスを持っている場合:
 
-    * [Microsoft Cloud App Security で OAuth アプリケーション監査機能](/cloud-app-security/investigate-risky-oauth)を追加で使用します。
+    * [Microsoft Defender for Cloud Apps で追加の OAuth アプリケーション監査機能](/cloud-app-security/investigate-risky-oauth)を使用します。
     * [Azure Monitor Workbooks を使用して、アクセス許可および同意](../reports-monitoring/howto-use-azure-monitor-workbooks.md)に関連するアクティビティを監視します。 *Consent Insights* ワークブックには、失敗した同意要求の数を示すアプリの一覧が表示されます。 これは、管理者の同意を許可するかどうかを管理者が確認および判断するため、アプリケーションの優先順位を決定するのに役立ちます。
 
 ### <a name="additional-considerations-for-reducing-friction"></a>摩擦の軽減に関するその他の考慮事項

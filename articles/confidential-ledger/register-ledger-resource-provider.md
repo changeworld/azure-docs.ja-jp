@@ -7,16 +7,16 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 69166e2d049bd2c7a9a4c356ec759096a6cda479
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b710b7f0879edfcf908ab2be01624123220be255
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387647"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458135"
 ---
-# <a name="register-the-confidential-ledger-resource-provider"></a>Confidential Ledger リソース プロバイダーを登録する
+# <a name="register-the-azure-confidential-ledger-resource-provider"></a>Azure Confidential Ledger リソース プロバイダーを登録する
 
-Azure Confidential Ledger を使用する前に、まず、Confidential Ledger リソース プロバイダーを登録する必要があります。
+Azure Confidential Ledger を使用する前に、まず、Azure Confidential Ledger リソース プロバイダーを登録する必要があります。
 
 ## <a name="how-to-register"></a>登録方法
 

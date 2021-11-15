@@ -5,12 +5,12 @@ ms.author: pprystinka
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ef83937970e1c4d657841ba2599dac14f02c212
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 276c85523b9b3df19a436543dd01a8a5121e510a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181820"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520373"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,8 +35,8 @@ Android Studio で、新しいプロジェクトを作成し、`Empty Activity` 
 
 ## <a name="maven-repository-credentials"></a>Maven リポジトリ資格情報
 
-- read:packages スコープが選択されている個人用アクセス トークンを指定する必要があります。
-- その PAT で SSO を有効にすることが必要な場合があります。
+- `read:packages` スコープが選択されている個人用アクセス トークン (PAT) を指定する必要があります。
+- その PAT で `SSO enabled` が必要な場合があります。
 - また、GitHub ユーザーが https://github.com/Azure/communication-preview にアクセスできることも確認します。
 - 個人用アクセス トークンは、 https://github.com/settings/tokens から生成できます。
 
@@ -219,6 +219,8 @@ Android Studio からアプリケーションをビルドして起動します�
 - オーディオのアクセス許可に同意し、デバイス、マイク、およびビデオの設定を選択します。
 - [`Join Call`] をクリックします。
 
+## <a name="sample-application-code-can-be-found-here"></a>サンプル アプリケーション コードは[こちら](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/ui-library-quickstart/ui-library-quick-start)にあります
+
 ![Launch](../../media/composite-android.gif)
 
 ## <a name="object-model"></a>オブジェクト モデル
@@ -233,7 +235,9 @@ Azure Communication Services Android UI が備える主な機能のいくつか�
 | [TeamsMeetingOptions](#teams-meeting)                              | Teams 会議に参加するために CallComposite 起動に渡されます。                                |
 | [ThemeConfiguration](#apply-theme-configuration)                   | 複合のプライマリ色を変更するために、CallCompositeBuilder でオプションとして挿入されます。           |
 
-## <a name="create-call-composite"></a>通話複合の作成
+## <a name="ui-library-functionality"></a>UI ライブラリの機能
+
+### <a name="create-call-composite"></a>通話複合の作成
 
 `startCallComposite` 関数内の `CallCompositeBuilder` インスタンスと `CallComposite` インスタンスを初期化します。
 
@@ -249,7 +253,7 @@ CallComposite callComposite = new CallCompositeBuilder().build();
 ```
 
 -----
-### <a name="create-communicationtokencredential"></a>`CommunicationTokenCredential` を作成します。
+### <a name="setup-authentication"></a>認証の設定
 
 `startCallComposite` 関数内の `CommunicationTokenCredential` インスタンスを初期化します。 `"<USER_ACCESS_TOKEN>"` を実際のトークンに置き換えます。
 
@@ -278,7 +282,7 @@ CommunicationTokenCredential communicationTokenCredential = new CommunicationTok
 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../../identity/quick-create-identity.md)に関するドキュメントを参照してください。
 
 -----
-## <a name="setup-group-call-or-teams-meeting-options"></a>グループ通話または Teams 会議オプションの設定
+### <a name="setup-group-call-or-teams-meeting-options"></a>グループ通話または Teams 会議オプションの設定
 
 設定する通話または会議の種類に応じて、適切なオプション オブジェクトを使用します。
 
@@ -344,11 +348,11 @@ TeamsMeetingOptions options = new TeamsMeetingOptions(
 -----
 ### <a name="get-a-microsoft-teams-meeting-link"></a>Microsoft Teams 会議のリンクを取得する
 
-Microsoft Teams 会議のリンクは、Graph API を使用して取得できます。 このプロセスについては、[Graph のドキュメント](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
+Microsoft Teams 会議のリンクは、Graph API を使用して取得できます。 このプロセスについては、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?preserve-view=true&tabs=http&view=graph-rest-beta)で詳しく説明されています。
 
-Communication Services 通話 SDK は、Microsoft Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](https://docs.microsoft.com/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
+Communication Services 通話 SDK は、Microsoft Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?preserve-view=true&view=graph-rest-beta)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
 
-## <a name="launch"></a>Launch
+### <a name="launch"></a>Launch
 
 `startCallComposite` 関数内の `CallComposite` インスタンスの `launch` を呼び出します。
 
@@ -366,19 +370,21 @@ callComposite.launch(options);
 
 -----
 
-## <a name="subscribe-on-events-from-callcomposite"></a>`CallComposite` からのイベントのサブスクライブ
+### <a name="subscribe-to-events-from-callcomposite"></a>`CallComposite` からイベントをサブスクライブします
 
 イベントを受信するには、`CallCompositeBuilder` にハンドラーを挿入します。
 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
 ```kotlin
-val communicationCallComposite: CallComposite =
+val callComposite: CallComposite =
             CallCompositeBuilder()
                 .callCompositeEventsHandler(ApplicationCallCompositeEventsHandler())
                 .build()
 
 ...
+import com.azure.android.communication.ui.CallCompositeEventsHandler
+import com.azure.android.communication.ui.configuration.events.OnExceptionEventArgs
 
 class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
     override fun onException(eventArgs: OnExceptionEventArgs) {
@@ -390,11 +396,13 @@ class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
 #### <a name="java"></a>[Java](#tab/java)
 
 ```java
-CallComposite communicationCallComposite =
+CallComposite callComposite =
                 new CallCompositeBuilder()
                         .callCompositeEventsHandler(new ApplicationCallCompositeEventsHandler())
                         .build();
 ...
+import com.azure.android.communication.ui.CallCompositeEventsHandler;
+import com.azure.android.communication.ui.configuration.events.OnExceptionEventArgs;
 
 class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandler {
     @Override
@@ -406,7 +414,7 @@ class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandle
 
 -----
 
-## <a name="apply-theme-configuration"></a>テーマ構成の適用
+### <a name="apply-theme-configuration"></a>テーマ構成の適用
 
 複合のプライマリ色を変更するには、`AzureCommunicationUI.Theme.Calling` を親テーマとして考慮することによって、`src/main/res/values/themes.xml` および `src/main/res/values-night/themes.xml` で新しいテーマ スタイルを作成します。 テーマを適用するには、`CallCompositeBuilder` にテーマ ID を挿入します。
 
@@ -419,6 +427,8 @@ class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandle
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
 ```kotlin
+import com.azure.android.communication.ui.configuration.ThemeConfiguration
+
 val communicationCallComposite: CallComposite =
         CallCompositeBuilder()
             .theme(ThemeConfiguration(R.style.MyCompany_CallComposite))
@@ -428,6 +438,8 @@ val communicationCallComposite: CallComposite =
 #### <a name="java"></a>[Java](#tab/java)
 
 ```java
+import com.azure.android.communication.ui.configuration.ThemeConfiguration;
+
 CallComposite callComposite = 
     new CallCompositeBuilder()
         .theme(new ThemeConfiguration(R.style.MyCompany_CallComposite))

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/28/2021
+ms.date: 11/11/2021
 ms.author: allensu
-ms.openlocfilehash: b9291a7d69bd2aeb5a9343d88d05d42d94d080e0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d0af0d38ef53e4ba90dcf0e7f4cbcc60c52b87a8
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249046"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373139"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -36,7 +36,7 @@ NAT ゲートウェイ リソースは、[Virtual Network NAT](nat-overview.md) 
 NAT ゲートウェイは簡単に構成、使用できるように意図されています。  
 
 NAT ゲートウェイ リソース:
-- リージョン単位またはゾーン単位 (ゾーン分離) の NAT ゲートウェイ リソースを作成する。
+- リージョンまたはゾーンの NAT ゲートウェイ リソースを作成する
 - パブリック IP アドレスを割り当てる。
 - 必要に応じて、TCP アイドル タイムアウトを変更する (省略可)。  既定値を変更する<ins>前に</ins>、[タイマー](#timers)を確認してください。
 
@@ -45,84 +45,20 @@ Virtual Network:
 
 ユーザー定義ルートは必要ありません。
 
-## <a name="resource"></a>リソース
-
-以下に示した Azure Resource Manager のテンプレートに似た形式の例を見るとわかるように、リソースはシンプルになるよう設計されています。  ここでこのテンプレートに似た形式を紹介するのは、概念と構造を図示するためです。  この例には、必要に応じて変更を加えてください。  このドキュメントは、チュートリアルとしての利用を意図したものではありません。
-
-次の図は、異なる Azure Resource Manager リソース間で書き換え可能な参照を示しています。  矢印は、書き換え可能なポイントを起点とする参照の方向を示しています。 確認 
-
-<p align="center">
-  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT のオブジェクト モデル">
-</p>
-
-*図:Virtual Network NAT のオブジェクト モデル*
-
-[プールベースの Load Balancer のアウトバウンド接続](../../load-balancer/load-balancer-outbound-connections.md)にはっきりと依存している場合を除き、NAT は、ほとんどのワークロードで推奨されます。  
-
-Standard Load Balancer のシナリオ ([アウトバウンド規則](../../load-balancer/load-balancer-outbound-connections.md#outboundrules)を含む) から、NAT ゲートウェイに移行することができます。 移行するには、パブリック IP リソースとパブリック IP プレフィックス リソースをロード バランサーのフロントエンドから NAT ゲートウェイに移します。 NAT ゲートウェイのための新しい IP アドレスは必要ありません。 Standard のパブリック IP アドレス リソースとパブリック IP プレフィックス リソースは、IP アドレスの総数が 16 を超えない限り、再利用することができます。 移行を計画するにあたっては、切り替えの過程で生じるサービスの中断を考慮してください。  プロセスを自動化することによって、中断は最小化することができます。 まずステージング環境で移行をテストしてください。  インバウンド方向のフローに対しては、切り替え時の影響はありません。
-
-
-次の例は、Azure Resource Manager テンプレートのスニペットです。  このテンプレートでは、NAT ゲートウェイなど、いくつかのリソースをデプロイします。  この例では、テンプレートに次のパラメーターがあります。
-
-- **natgatewayname** - NAT ゲートウェイの名前。
-- **location** - リソースが配置されている Azure リージョン。
-- **publicipname** - NAT ゲートウェイに関連付けられているアウトバウンド パブリック IP の名前。
-- **vnetname** - 仮想ネットワークの名前。
-- **subnetname** - NAT ゲートウェイに関連付けられているサブネットの名前。
-
-すべての IP アドレスとプレフィックス リソースによって提供される IP アドレスの総数が、16 個を超えることはできません。 IP アドレスの数は、1 から 16 の範囲内であれば、いくつでもかまいません。
-
-:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/nat-gateway-vnet/azuredeploy.json" range="81-96":::
-
-作成された NAT ゲートウェイ リソースは、仮想ネットワークの 1 つまたは複数のサブネット上で使用することができます。 その NAT ゲートウェイ リソースをどのサブネットで使用するかを指定してください。 1 つの NAT ゲートウェイを複数の仮想ネットワークにまたがって適用することはできません。 仮想ネットワークのすべてのサブネットに同じ NAT ゲートウェイを割り当てる必要はありません。 サブネットは、それぞれ異なる NAT ゲートウェイ リソースを使用して構成できます。
-
-可用性ゾーンを使用しないシナリオは、リージョン単位の運用となります (ゾーン指定なし)。 可用性ゾーンを使用する場合は、ゾーンを指定することで、NAT を特定のゾーンに分離することができます。 ゾーンの冗長性はサポートされません。 NAT の[可用性ゾーン](#availability-zones)について、再確認してください。
-
-:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
-
-NAT ゲートウェイは、仮想ネットワーク内のサブネットのプロパティを使用して定義します。 仮想マシンによって仮想ネットワーク **vnetname** のサブネット **subnetname** 上で作成されたフローに、NAT ゲートウェイが使用されます。 すべてのアウトバウンド接続には、**natgatewayname** に関連付けられた IP アドレスが発信元 IP アドレスとして使用されます。
-
-この例で使用される Azure Resource Manager テンプレートの詳細については、次を参照してください。
-
-- [クイック スタート: NAT ゲートウェイを作成する - Resource Manager テンプレート](quickstart-create-nat-gateway-template.md)
-- [Virtual Network NAT](https://azure.microsoft.com/resources/templates/nat-gateway-1-vm/)
 
 ## <a name="design-guidance"></a>設計ガイダンス
 
 NAT を使用した仮想ネットワークの設計に関する考慮事項をよく理解するために、次のセクションを振り返ってみましょう。  
 
-1. [コストの最適化](#cost-optimization)
-1. [インバウンドとアウトバウンドの共存](#coexistence-of-inbound-and-outbound)
-2. [Basic リソースの管理](#managing-basic-resources)
-3. [可用性ゾーン](#availability-zones)
+### <a name="connecting-to-azure-services"></a>Azure サービスへの接続
 
-### <a name="cost-optimization"></a>コストの最適化
+Azure サービスに接続するときは、[プライベート リンク](../../private-link/private-link-overview.md)を活用することをお勧めします。 
 
-[サービス エンドポイント](../virtual-network-service-endpoints-overview.md)と [Private Link](../../private-link/private-link-overview.md) は、コストを最適化するために検討するオプションです。 これらのサービスに NAT は必要ありません。 サービス エンドポイントまたは Private Link に送信されたトラフィックは、仮想ネットワークの NAT では処理されません。  
+プライベート リンクによってご利用の仮想ネットワークに Azure サービス リソースが関連付けられ、Azure サービス リソースへのアクセスが制御されます。 たとえば、Azure Storage にアクセスするとき、接続が完全にプライベートになるよう、ストレージのプライベート エンドポイントを使用します。
 
-サービス エンドポイントは、ご利用の仮想ネットワークに Azure サービス リソースを関連付けると共に、Azure サービス リソースへのアクセスを制御します。 たとえば Azure Storage にアクセスするときは、Storage のサービス エンドポイントを使用することで、データ処理量に対する NAT の課金を回避することができます。 サービス エンドポイントは無料です。
+### <a name="connecting-to-the-internet"></a>インターネットへの接続
 
-Private Link は、Azure PaaS サービス (または Private Link を使用してホストされるその他のサービス) を仮想ネットワーク内のプライベート エンドポイントとして公開するものです。  Private Link は時間とデータ処理量に基づいて課金されます。
-
-これらのアプローチのどちらか一方または両方がご自分のシナリオに適しているかどうかを評価したうえで、必要に応じてご利用ください。
-
-### <a name="coexistence-of-inbound-and-outbound"></a>インバウンドとアウトバウンドの共存
-
-NAT ゲートウェイは、次の機能と共に利用することができます。
-
- - Standard Load Balancer
- - Standard パブリック IP
- - Standard パブリック IP プレフィックス
-
-新しいデプロイを開発する際は、Standard SKU から始めるようにしてください。
-
-<p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="インターネットへのアウトバウンド接続のための Virtual Network NAT">
-</p>
-
-*図:インターネットへのアウトバウンド接続のための Virtual Network NAT*
-
-NAT ゲートウェイによって実現される、インターネットへのアウトバウンドのみのシナリオは、インターネットからのインバウンド機能を使用して拡張することができます。 それぞれのリソースは、フローの発生方向を認識します。 NAT ゲートウェイを使用したサブネットでは、インターネットへのアウトバウンド シナリオはすべて NAT ゲートウェイに取って代わられます。 インターネットからのインバウンド シナリオはそれぞれのリソースによって実現されます。
+パブリック エンドポイントに接続する必要があるあらゆる運用ワークロードの送信シナリオには NAT が推奨されます。 次のシナリオは、送信の NAT ゲートウェイを受信と共存させる方法の例です。
 
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>インスタンスレベル パブリック IP を使用した VM と NAT
 
@@ -139,7 +75,7 @@ NAT ゲートウェイによって実現される、インターネットへの�
 
 VM からのアウトバウンドには NAT ゲートウェイが使用されます。  外部からのインバウンドは影響を受けません。
 
-#### <a name="nat-and-vm-with-public-load-balancer"></a>パブリック Load Balancer を使用した VM と NAT
+#### <a name="nat-and-vm-with-standard-public-load-balancer"></a>Standard パブリック Load Balancer を使用した VM と NAT
 
 <p align="center">
   <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="パブリック Load Balancer を使用した VM と Virtual Network NAT">
@@ -154,7 +90,7 @@ VM からのアウトバウンドには NAT ゲートウェイが使用されま
 
 負荷分散規則またはアウトバウンド規則に含まれるアウトバウンド構成は、NAT ゲートウェイに取って代わられます。  外部からのインバウンドは影響を受けません。
 
-#### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>インスタンスレベル パブリック IP とパブリック Load Balancer を使用した VM と NAT
+#### <a name="nat-and-vm-with-instance-level-public-ip-and-standard-public-load-balancer"></a>インスタンスレベル パブリック IP と Standard パブリック Load Balancer を使用した VM と NAT
 
 <p align="center">
   <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="インスタンスレベル パブリック IP とパブリック Load Balancer を使用した VM と Virtual Network NAT">
@@ -168,62 +104,6 @@ VM からのアウトバウンドには NAT ゲートウェイが使用されま
 | 送信 | NAT Gateway |
 
 負荷分散規則またはアウトバウンド規則に含まれるアウトバウンド構成は、NAT ゲートウェイに取って代わられます。  この場合も、VM からのアウトバウンドには NAT ゲートウェイが使用されます。  外部からのインバウンドは影響を受けません。
-
-### <a name="managing-basic-resources"></a>Basic リソースの管理
-
-Standard Load Balancer、Standard パブリック IP、Standard パブリック IP プレフィックスは NAT ゲートウェイと共に利用することができます。 NAT ゲートウェイは、サブネットのスコープ内で動作します。 これらのサービスの Basic SKU は、NAT ゲートウェイが使用されていないサブネットにデプロイする必要があります。 このように分離されていることで、両方の SKU バリアントを同じ仮想ネットワークに共存させることができます。
-
-NAT ゲートウェイは、サブネットのアウトバウンド シナリオよりも優先されます。 目的の変換を指定して、Basic Load Balancer や Basic パブリック IP (それらに組み込まれているあらゆるマネージド サービスを含む) を調整することはできません。 サブネットにおけるインターネットへのアウトバウンド トラフィックは、NAT ゲートウェイによって制御されます。 Basic Load Balancer や Basic パブリック IP へのインバウンド トラフィックは利用できません。 Basic Load Balancer へのインバウンド トラフィックや、VM に構成されているパブリック IP へのインバウンド トラフィックは利用できません。
-
-### <a name="availability-zones"></a>可用性ゾーン
-
-#### <a name="zone-isolation-with-zonal-stacks"></a>ゾーン スタックを使用したゾーンの分離
-
-<p align="center">
-  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="ゾーン スタックを複数形成するゾーンの分離を使用した Virtual Network NAT">
-</p>
-
-*図:"ゾーン スタック" を複数形成するゾーンの分離を使用した Virtual Network NAT*
-
-NAT は回復性を備えており、可用性ゾーンがなくても、複数のインフラストラクチャ コンポーネントの障害に耐えることができます。  NAT を特定のゾーンに分離するシナリオでは、この回復性の上に可用性ゾーンが構築されます。
-
-仮想ネットワークとそのサブネットは、リージョンの構成概念です。  サブネットは特定のゾーンに制限されません。
-
-ゾーンの分離では、NAT ゲートウェイ リソースを使用する仮想マシンのインスタンスが NAT ゲートウェイ リソースやそのパブリック IP アドレスと同じゾーンに存在するときにゾーン保証が得られます。 ゾーンを分離するために使用すべきパターンは、可用性ゾーンごとに "ゾーン スタック" を作成することです。  この "ゾーン スタック" は、同じゾーンでの使用のみを想定したサブネット上の仮想マシン インスタンス、NAT ゲートウェイ リソース、パブリック IP アドレス、プレフィックス リソースから成ります。   そうすることでコントロール プレーンの操作とデータ プレーンが特定のゾーンにアラインメントされ、そのゾーンに制限されます。 
-
-ご利用のゾーン以外で起こった障害が NAT に影響を及ぼす心配はありません。 同じゾーンに属している仮想マシンからのアウトバウンド トラフィックは、ゾーンの分離によりエラーになります。  
-
-#### <a name="integrating-inbound-endpoints"></a>インバウンド エンドポイントを統合する
-
-実際のシナリオでインバウンド エンドポイントが必要になった場合、次の 2 つの選択肢があります。
-
-| オプション | Pattern | 例 | 長所 | 短所 |
-|---|---|---|---|---|
-| (1) | インバウンド エンドポイントを、アウトバウンド用に作成するそれぞれの **ゾーン スタック** に合わせて **アラインメント** する。 | ゾーン フロントエンドを使用して Standard ロード バランサーを作成する。 | インバウンドとアウトバウンドとで正常性モデルと障害モードが同じ。 運用がよりシンプルになる。 | ゾーンごとに各 IP アドレスを共通の DNS 名でマスクする必要がある。 |
-| (2) | **クロスゾーン** インバウンド エンドポイントでゾーン スタックを **オーバーレイ** する。 | ゾーン冗長フロントエンドを使用して Standard ロード バランサーを作成する。 | インバウンド エンドポイントに使用される IP アドレスが 1 つ。 | インバウンドとアウトバウンドとで正常性モデルと障害モードが異なる。  運用がより複雑になる。 |
-
->[!NOTE]
-> ゾーン分離 NAT ゲートウェイでは、IP アドレスが NAT ゲートウェイのゾーンと一致している必要があります。 異なるゾーンの IP アドレスが割り当てられている NAT ゲートウェイ リソースや、ゾーンを持たない NAT ゲートウェイ リソースは許容されません。
-
-#### <a name="cross-zone-outbound-scenarios-not-supported"></a>クロスゾーンのアウトバウンド シナリオはサポートされない
-
-<p align="center">
-  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Virtual Network NAT はゾーンスパニング サブネットと共存できない">
-</p>
-
-*図:Virtual Network NAT はゾーンスパニング サブネットと共存できない*
-
-同じサブネット内の複数のゾーンに仮想マシン インスタンスがデプロイされている場合、NAT ゲートウェイ リソースのゾーン保証は得られません。   また、1 つのサブネットに複数のゾーン NAT ゲートウェイがアタッチされていても、どの NAT ゲートウェイ リソースを選べばよいかが、仮想マシン インスタンスにはわかりません。
-
-a) 仮想マシン インスタンスのゾーンとゾーン NAT ゲートウェイのゾーンとがアラインメントされていない場合や、b) リージョンの NAT ゲートウェイ リソースがゾーンの仮想マシン インスタンスで使用されている場合、ゾーン保証は得られません。
-
-このシナリオは一見うまく行くように見えますが、可用性ゾーンの観点から見ると、正常性モデルと障害モードが不定です。 ゾーン スタックを使用するか、すべてをリージョンに揃えることを検討してください。
-
->[!NOTE]
->NAT ゲートウェイ リソースのゾーン プロパティは変更できません。  意図したリージョンまたはゾーンを選んで NAT ゲートウェイ リソースを再デプロイしてください。
-
->[!NOTE] 
->ゾーンが指定されていない場合、IP アドレスそのものはゾーン冗長ではありません。  [Standard Load Balancer のフロントエンドは、IP アドレスが特定のゾーンに作成されていなければゾーン冗長](../../load-balancer/load-balancer-standard-availability-zones.md)となります。  NAT にはこれが当てはまりません。  サポートされるのは、リージョン単位の分離とゾーン単位の分離だけです。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -335,10 +215,8 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 
 ## <a name="limitations"></a>制限事項
 
-- NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
-- サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
-- NAT を複数の仮想ネットワークにまたがって使用することはできません。
-- IP の断片化はサポートされていません。
+- Basic Load Balancer と Basic Public IP アドレスは NAT と互換性がありません。 代わりに、Standard SKU Load Balancer とパブリック IP を使用してください。
+- NAT ゲートウェイ経由の IP フラグメンテーションはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

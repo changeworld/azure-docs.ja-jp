@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b1a9f54febcd2ebf36287590cb0579f8d2dea804
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f6d54941d01bf6588a330dcf822b38c46ca8eed6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166357"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846541"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -33,7 +33,7 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 
 1. 既定では、再帰フラグは true で、sync によってすべてのサブディレクトリがコピーされます。 再帰フラグが false の場合、sync はディレクトリ内の最上位レベルのファイルのみがコピーされます。
 2. 仮想ディレクトリ間で同期する際に仮想ディレクトリの 1 つと同じ名前の BLOB がある場合は、パスの末尾にスラッシュ (例を参照) を追加します。
-3. `deleteDestination` フラグが true または prompt に設定されている場合、sync を実行すると、同期元に存在しないファイルと BLOB が同期先で削除されます。
+3. `--delete-destination` フラグが true または prompt に設定されている場合、sync を実行すると、同期元に存在しないファイルと BLOB が同期先で削除されます。
 
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 

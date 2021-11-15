@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cd3cbfd92f3448bd8b494b579a641bfb580ecd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b014cc8fb1c6ca2e318125aeaefed34950175eb
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131052448"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578013"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Microsoft 365 など) にユーザーが サインインするときに表示されます。
@@ -34,7 +34,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 > [!NOTE]
 > **すべてのブランド化要素は省略可能であり、変更されない場合は既定のままになります。** たとえば、背景画像なしでバナー ロゴを指定した場合、サインイン ページには目的のサイト (Microsoft 365 など) の既定の背景画像とロゴが表示されます。<br><br>さらに、サインイン ページのブランド情報は、個人用 Microsoft アカウントに継承されることはありません。 ユーザーまたはゲスト ユーザーが個人用 Microsoft アカウントを使用してサインインした場合、そのサインイン ページには組織のブランドは反映されません。
 
-### <a name="to-customize-your-branding"></a>ブランドをカスタマイズするには
+### <a name="to-configure-your-branding-for-the-first-time"></a>ブランドを初めて構成するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **Azure Active Directory** を選択し、 **[会社のブランド]** を選択し、 **[構成]** を選択します。
@@ -102,7 +102,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
 3. ブランドの追加が完了したら、 **[保存]** を選択します。
 
-    このプロセスによって最初のカスタム ブランド構成が作成され、それがテナントの既定値になります。 追加構成がある場合に、既定の構成を選択できます。
+    このプロセスによって最初のカスタム ブランド構成が作成され、それがテナントの既定値になります。 既定のカスタム ブランド構成は、すべての言語固有のブランド構成のフォールバック オプションとして機能します。 この構成は、作成後に削除することはできません。
     
     >[!IMPORTANT]
     >企業のブランド構成をテナントにさらに追加するには、 **[Contoso - 会社のブランド]** ページで **[新しい言語]** を選択する必要があります。 これにより **[会社のブランドの構成]** ページが開き、上記と同じ手順に従うことができます。

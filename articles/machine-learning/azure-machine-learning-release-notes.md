@@ -1,23 +1,24 @@
 ---
-title: このリリースの新機能
+title: Python SDK リリース ノート
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning および Machine Learning SDK と Data Prep Python SDK の最新の更新プログラムについて説明します。
+description: Azure Machine Learning Python SDK の最新情報について説明します。
+services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 10/04/2021
-ms.openlocfilehash: 8807aa11ce8f9d4c96ae27656d9d29a4f5f7e7f1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 10/21/2021
+ms.openlocfilehash: 5c2594e38db7a57e2861241d37405a8ce03b8494
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994178"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563171"
 ---
-# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
+# <a name="azure-machine-learning-python-sdk-release-notes"></a>Azure Machine Learning Python SDK のリリース ノート
 
-この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
+この記事では、Azure Machine Learning Python SDK の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
@@ -327,7 +328,7 @@ Azure CLI に対する `ml` 拡張機能は、Azure Machine Learning の次世�
     + 認証用のテナントが含まれるように、ポータル URI が更新されました。
     + リダイレクトを避けるために、実行 URI から実験名が削除されました。
     + 実験 ID を使用するように、実験 URO が更新されました。
-    + AZ CLI を使用してリモート コンピューティングをアタッチするためにバグを修正しました。
+    + AZ CLI を使用してリモート コンピューティングをアタッチする際のバグを修正しました
     + 認証用のテナントが含まれるように、ポータル URI が更新されました。
     + glob 構造に基づくファイル データセットのパーティションについて理解するためのサポートが追加されました。
   + **azureml-interpret**
@@ -1912,7 +1913,7 @@ Studio から、次の Web ベースの作成ツールにアクセスします�
 ### <a name="azure-machine-learning-designer-enhancements"></a>Azure Machine Learning デザイナーの強化
 
 + 以前はビジュアル インターフェイスと呼ばれていました 
-+    11 個の新しい[モジュール](algorithm-module-reference/module-reference.md)には、特徴エンジニアリング、クロス検証、データ変換など、レコメンダー、分類子、トレーニング ユーティリティが含まれています。
++    11 個の新しい[モジュール](component-reference/component-reference.md)には、特徴エンジニアリング、クロス検証、データ変換など、レコメンダー、分類子、トレーニング ユーティリティが含まれています。
 
 ### <a name="r-sdk"></a>R SDK 
  

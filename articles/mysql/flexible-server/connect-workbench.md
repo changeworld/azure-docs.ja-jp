@@ -7,19 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: bf516da87533fb057bd473aa50fc3d5304dbadd1
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7beb058e51010bc148d9cde31e4053d3de3cf598
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643399"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445523"
 ---
-# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>クイック スタート:MySQL Workbench を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) に接続し、データのクエリを実行する
+# <a name="use-mysql-workbench-with-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで MySQL Workbench を使用する
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 このクイックスタートでは、MySQL Workbench アプリケーションを使用して Azure Database for MySQL フレキシブル サーバーに接続する方法を紹介します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files の容量プールに関する問題をトラブルシューティングする | Microsoft Docs
+title: Azure NetApp Files の容量プール エラーをトラブルシューティングする | Microsoft Docs
 description: 容量プールを管理するときに発生する可能性のある問題について説明し、問題の解決策を示します。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 7ca7f042aaa97967d47dd9f35afaa647e0d37361
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: e637c80f864592f89252e52f27325762cd43582b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407268"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219775"
 ---
-# <a name="troubleshoot-capacity-pool-issues"></a>容量プールに関する問題のトラブルシューティング
+# <a name="troubleshoot-capacity-pool-errors"></a>容量プールのエラーのトラブルシューティング
 
 この記事では、プールの変更操作など、容量プールを管理するときに発生する可能性がある問題の解決策について説明します。 
 

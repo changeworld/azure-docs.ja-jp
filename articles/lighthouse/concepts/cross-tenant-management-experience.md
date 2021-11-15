@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure Lighthouse により、多くの Azure サービスでクロステナント エクスペリエンスが有効になり、強化されます。
-ms.date: 09/30/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 90ff0396a467f3137d6501ac34cf707577e43bdf
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 115f71148ddd2d18cd99be883bdef77b1c27ad1b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714778"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249687"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -103,6 +103,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
 - 顧客テナント内に作成されたワークスペースで[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
+- Azure AD B2C では、[サインインと監査ログ](../../active-directory-b2c/azure-monitor.md)をさまざまな監視ソリューションにルーティングします
 
 [Azure のネットワーク](../../networking/fundamentals/networking-overview.md):
 

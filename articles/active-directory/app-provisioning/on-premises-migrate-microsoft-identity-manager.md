@@ -7,16 +7,16 @@ manager: karenh444
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/11/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0044f96f58ba3aa868577b0d0664d71daeddbc7f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6659e28e1f2814f8bf2b0f08e21db25edae3dd66
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991073"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370690"
 ---
 # <a name="export-a-microsoft-identity-manager-connector-for-use-with-the-azure-ad-ecma-connector-host"></a>Azure AD ECMA コネクタ ホストで使用するために Microsoft Identity Manager コネクタをエクスポートする
 
@@ -26,7 +26,7 @@ ms.locfileid: "129991073"
 Forefront Identity Manager 同期サービスまたは Microsoft Identity Manager 同期サービス (MIM Sync) のインストールから特定のコネクタの構成を Azure Active Directory (Azure AD) ECMA Connector Host にインポートすることができます。 MIM Sync のインストールは、Azure AD からの継続的な同期ではなく、構成にのみ使用されます。
 
 >[!IMPORTANT]
->現時点では、汎用 SQL コネクタだけが、Azure AD ECMA コネクタ ホストでの使用がサポートされています。
+>現時点では、汎用の SQL コネクタと LDAP コネクタだけが、Azure AD ECMA コネクタ ホストで使用できます。
 
 ## <a name="create-and-export-a-connector-configuration-in-mim-sync"></a>MIM Sync のコネクタ構成を作成してエクスポートする
 ECMA コネクタと MIM Sync が既に構成されている場合は、手順 10 に進みます。

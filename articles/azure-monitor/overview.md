@@ -4,13 +4,13 @@ description: Azure のサービスおよびアプリケーションの包括的�
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2021
-ms.openlocfilehash: a47c26f2b600d7ed2ffd67877ab7202a763a4054
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/01/2021
+ms.openlocfilehash: 18019dbf4f6c3a6494b105362790dd41d4132595
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036316"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055852"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -55,7 +55,7 @@ Azure Monitor は[さまざまなソース](monitor-reference.md)からデータ
 
 - **アプリケーション監視データ:** プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
 - **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
-- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 メトリックまたはログのあるリソースの詳細な一覧については、[Azure Monitor で監視できる内容](monitor-reference.md#list-of-azure monitor-supported-services)に関するページを参照してください。
+- **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 メトリックまたはログのあるリソースの詳細な一覧については、[Azure Monitor で監視できる内容](monitor-reference.md#azure-supported-services)に関するページを参照してください。
 - **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
 - **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションを作成して仮想マシンや Web アプリ
 Azure Monitor では、[Data Collector API](logs/data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。
 
 ## <a name="insights-and-curated-visualizations"></a>分析情報とキュレーションされた視覚化
-データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 一部の Azure リソース プロバイダーには、"キュレーションされた視覚化" が用意されています。これにより、特定のサービスまたは一連のサービス向けにカスタマイズされた監視エクスペリエンスが提供されます。 通常、最小限の構成が必要です。 より大規模で拡張性の高いキュレーションされた視覚化は "分析情報" と呼ばれ、ドキュメントや Azure portal にはその名前で示されています。  
+データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 一部の Azure リソース プロバイダーには、"キュレーションされた視覚化" が用意されています。これにより、特定のサービスまたは一連のサービス向けにカスタマイズされた監視エクスペリエンスが提供されます。 通常、最小限の構成が必要です。 より大規模にスケーラブルなキュレーションされた視覚化は "分析情報" と呼ばれ、ドキュメントや Azure portal にはその名前で示されています。  
 
 詳細については、[Azure Monitor を使用した分析情報とキュレーションされた視覚化の一覧](monitor-reference.md#insights-and-curated-visualizations)に関する記事を参照してください。 大規模な分析情報については、以下でも説明します。
 

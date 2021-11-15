@@ -1,19 +1,19 @@
 ---
-title: ソフトウェア プラン割引 - Azure | Microsoft Docs
+title: ソフトウェア プラン割引 - Azure
 description: ソフトウェア プラン割引が仮想マシン上のソフトウェアにどのように適用されるかについて説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 8bf53715b7f19c44d9114150e617f903cd05a51e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: fec1ecd33c47379d5c9f599aa97f47c8c543de78
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566317"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425673"
 ---
 # <a name="azure-software-plan-discount"></a>Azure ソフトウェア プラン割引
 

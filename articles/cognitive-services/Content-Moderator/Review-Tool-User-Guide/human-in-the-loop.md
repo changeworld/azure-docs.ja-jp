@@ -5,17 +5,17 @@ description: AI と目視レビューを組み合わせたモデレート作業�
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
-ms.date: 03/15/2019
+ms.date: 10/28/2021
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: b4336b24dd68df2ce52081e6b0d3d1e49517f3d8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 10caecde2eb28a73252ce8581d279c657223f1c9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031765"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469979"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
 
@@ -31,7 +31,7 @@ Azure Content Moderator からは、機械学習コンテンツ モデレーシ�
 - モデレーション API の結果が出力されたときに目視[レビュー](../review-api.md#reviews)が作成されるよう自動化する。
 - コンテンツ カテゴリまたはエクスペリエンス レベルによって編成された複数のレビュー チームにコンテンツ レビューを割り当てまたはエスカレートする。
 - 既定またはカスタムのロジック フィルター ([ワークフロー](../review-api.md#workflows)) を使用することで、コードを記述せずに、コンテンツを並べ替えたり、追跡したりする。
-- [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API に加えて、Microsoft PhotoDNA、Text Analytics、および Face の各サービスを利用してコンテンツを処理する。
+- [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API に加えて、Microsoft PhotoDNA、Language、Face の各サービスを利用してコンテンツを処理する。
 - コンテンツ モデレーション プロセスの主要なパフォーマンス メトリックを取得します。
 
 ## <a name="review-tool-dashboard"></a>レビュー ツールのダッシュボード

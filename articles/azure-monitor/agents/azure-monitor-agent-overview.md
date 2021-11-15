@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 50ab3c65abd6fe57941f18f58ff277de6822389c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 22569277eefafc518f407f06e34a69c061509b96
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216487"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458971"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor エージェントの概要
 Azure Monitor エージェント (AMA) によって、Azure 仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントの概要について説明します。また、そのインストール方法やデータ収集の構成方法などの情報が含まれます。
@@ -61,7 +61,7 @@ Azure Monitor エージェントは [Azure Monitor のレガシ エージェン�
   必要なすべてのコア機能が Azure Monitor エージェントにある場合は、移行することを検討してください。 ユーザーにとって必須の重要な機能がある場合は、Azure Monitor エージェントが同等になるまで、現在のエージェントを引き続き使用してください。
 - **やり直しの許容範囲:** デプロイ スクリプトやオンボード テンプレートなどのリソースを使用して新しい環境を設定している場合は、必要な作業量を評価します。 その設定に大量の作業が必要な場合は、一般提供されるようになった新しいエージェントを使用して、新しい環境を設定することを検討してください。 
  
-  Log Analytics エージェントが非推奨となる日付は、2021 年 8 月に発表される予定です。 現在のエージェントは、非推奨になってから数年間サポートされます。
+  Azure Monitor の Log Analytics エージェントは 2024 年 8 月 31 日に廃止されます。 現在のエージェントは、非推奨になってから数年間サポートされます。
 
 ## <a name="supported-resource-types"></a>サポートされているリソースの種類
 現在、Azure 仮想マシン、仮想マシン スケール セット、Azure Arc 対応サーバーがサポートされています。 Azure Kubernetes Service と他のコンピューティング リソースの種類は、現在サポートされていません。
@@ -141,18 +141,28 @@ Windows や Linux 用の Azure Monitor エージェント拡張機能では、HT
 
     | パラメーター | 値 |
     |:---|:---|
-    | SettingString | 前述のフローチャートの JSON オブジェクト。文字列に変換されます。 該当しない場合はスキップします。 例: {"proxy":{"mode":"application","address":"http://[address]:[port]","auth": false}} |
-    | ProtectedSettingString | 前述のフローチャートの JSON オブジェクト。文字列に変換されます。 該当しない場合はスキップします。 例: {"proxy":{"username": "[username]","password": "[password]"}} |
+    | 設定 | 前述のフローチャートの JSON オブジェクト。文字列に変換されます。 該当しない場合はスキップします。 例: {"proxy":{"mode":"application","address":"http://[address]:[port]","auth": false}} |
+    | ProtectedSetting | 前述のフローチャートの JSON オブジェクト。文字列に変換されます。 該当しない場合はスキップします。 例: {"proxy":{"username": "[username]","password": "[password]"}} |
 
 
-# <a name="windows"></a>[Windows](#tab/PowerShellWindows)
+# <a name="windows-vm"></a>[Windows VM](#tab/PowerShellWindows)
 ```powershell
-Set-AzVMExtension -ExtensionName AzureMonitorWindowsAgent -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0 -SettingString <settingString> -ProtectedSettingString <protectedSettingString>
+Set-AzVMExtension -ExtensionName AzureMonitorWindowsAgent -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0 -Setting <settingString> -ProtectedSetting <protectedSettingString>
 ```
 
-# <a name="linux"></a>[Linux](#tab/PowerShellLinux)
+# <a name="linux-vm"></a>[Linux VM](#tab/PowerShellLinux)
 ```powershell
-Set-AzVMExtension -ExtensionName AzureMonitorLinuxAgent -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.5 -SettingString <settingString> -ProtectedSettingString <protectedSettingString>
+Set-AzVMExtension -ExtensionName AzureMonitorLinuxAgent -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.5 -Setting <settingString> -ProtectedSetting <protectedSettingString>
+```
+
+# <a name="windows-arc-enabled-server"></a>[Windows Arc 対応サーバー](#tab/PowerShellWindowsArc)
+```powershell
+New-AzConnectedMachineExtension -Name AzureMonitorWindowsAgent -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location> -Setting <settingString> -ProtectedSetting <protectedSettingString>
+```
+
+# <a name="linux-arc-enabled-server"></a>[Linux Arc 対応サーバー](#tab/PowerShellLinuxArc)
+```powershell
+New-AzConnectedMachineExtension -Name AzureMonitorLinuxAgent -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location> -Setting <settingString> -ProtectedSetting <protectedSettingString>
 ```
 
 ---

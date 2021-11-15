@@ -1,19 +1,19 @@
 ---
 title: Azure Container Apps 環境プレビュー
 description: Azure Container Apps で環境を管理する方法について説明します。
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3de8b98a992a97bb96d5e6164321e89da01f6342
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 122b172fc9fe2a66bae742f907d910cbccbf8fbc
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092060"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025800"
 ---
 # <a name="azure-container-apps-preview-environments"></a>Azure Container Apps プレビュー環境
 
@@ -34,23 +34,14 @@ ms.locfileid: "131092060"
 - 2 つのアプリケーションが同じコンピューティング リソースを共有しない
 - 2 つのアプリケーションが Dapr 経由で相互に通信できない
 
-## <a name="virtual-network-integration"></a>Virtual Network 統合
-
-各環境には、外部 IP アドレスが自動的に割り当てられます。 ただし、仮想ネットワークの外部からアクセスできないように個々のコンテナー アプリを構成することができます。
-
-| プロパティ | 説明 |
-|---|---|
-| `properties.workerAppsConfiguration.subnetResourceId` | 環境インフラストラクチャに使用されるサブネットの Azure Resource Manager リソース ID。 |
-| `properties.workerAppsConfiguration.aciSubnetResourceName` | コンテナー アプリが実行されているのと同じ VNET 内のサブネットの名前。 |
-
 ## <a name="logs"></a>ログ
 
-Kubernetes 環境 API リソースに関連する設定。
+設定は、Azure Container Apps 環境 API リソースに関連します。
 
 | プロパティ | 説明 |
 |---|---|
 | `properties.appLogsConfiguration` | 環境内のすべてのアプリのログが発行される Log Analytics ワークスペースの構成に使用されます |
-| `properties.workerAppsConfiguration.daprAIInstrumentationKey` | トレースのために Dapr に提供される App Insights のインストルメンテーション キー |
+| `properties.containerAppsConfiguration.daprAIInstrumentationKey` | トレースのために Dapr に提供される App Insights のインストルメンテーション キー |
 
 ## <a name="billing"></a>課金
 

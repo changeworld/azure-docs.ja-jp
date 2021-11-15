@@ -3,41 +3,32 @@ title: 'クイック スタート: Visual Studio を使用して Azure で初め
 description: このクイックスタートでは、Visual Studio を使用して、.NET Core 3.1 で実行されて C# HTTP でトリガーされる関数を作成し、Azure Functions に発行する方法について説明します。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 09/14/2021
+ms.date: 11/03/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f, contperf-fy21q3-portal
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-zone_pivot_groups: runtime-version-programming-functions
-ms.openlocfilehash: fb969f494c350d253d688d3a5379c30513aa64fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 60e40b675ac8bc32328ea68786329b372f91d056
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671262"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028213"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する
-
-[!INCLUDE [functions-runtime-version-dotnet](../../includes/functions-runtime-version-dotnet.md)]
 
 Azure Functions を使用すると、Azure のサーバーレス環境で C# コードを実行できます。 
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
-> * Visual Studio を使用して、C# クラス ライブラリ プロジェクトを作成します。
+> * Visual Studio を使用して、.NET 6.0 の C# クラス ライブラリ プロジェクトを作成します。
 > * HTTP 要求に応答する関数を作成します。 
 > * コードをローカル環境で実行して、関数の動作を確認します。
 > * コード プロジェクトを Azure Functions にデプロイします。
  
-::: zone pivot="programming-runtime-functions-v3"
 [!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
-::: zone-end
-::: zone pivot="programming-runtime-functions-v4"
-> [!NOTE]
-> 現時点では、Azure Functions 4.0 はプレビュー段階であり、Visual Studio は、[インプロセス実行モデル](functions-dotnet-class-library.md)を使用して .NET 6 でのみ実行される C# 関数の作成をサポートしています。
-::: zone-end
 
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
@@ -45,22 +36,12 @@ Azure Functions を使用すると、Azure のサーバーレス環境で C# コ
 
 ## <a name="prerequisites"></a>前提条件
 
-::: zone pivot="programming-runtime-functions-v3"
-+ [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 インストール時に必ず **[Azure の開発]** ワークロードを選択してください。 
-::: zone-end
-::: zone pivot="programming-runtime-functions-v4"
-+ [Visual Studio 2022 Preview 3以降](https://azure.microsoft.com/downloads/)。 インストール時に必ず **[Azure の開発]** ワークロードを選択してください。 
-::: zone-end
++ .NET 6.0 をサポートする [Visual Studio 2022](https://azure.microsoft.com/downloads/)。 インストール時に必ず **[Azure の開発]** ワークロードを選択してください。 
 
 + [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。 アカウントをまだ持っていない場合は、始める前に[無料アカウントを作成](https://azure.microsoft.com/free/dotnet/)してください。
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 
-::: zone pivot="programming-runtime-functions-v3"
-[!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
-::: zone-end
-
-::: zone pivot="programming-runtime-functions-v4"
 Visual Studio の Azure Functions プロジェクト テンプレートを使用すると、Azure の関数アプリに発行できる C# クラス ライブラリ プロジェクトを作成できます。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 1. Visual Studio メニューで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
@@ -73,9 +54,9 @@ Visual Studio の Azure Functions プロジェクト テンプレートを使用
 
     | 設定      | 値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **.NET のバージョン** | **.NET 6** | この値により、Azure Functions ランタイムのバージョン 4.x でインプロセスを実行する関数プロジェクトが作成されます。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](./functions-versions.md)」をご覧ください。   |
+    | **.NET のバージョン** | **.NET 6** | この値により、Azure Functions ランタイムのバージョン 4.x でインプロセスを実行する関数プロジェクトが作成されます。 **[.NET 6 (isolated)]\(.NET 6 (分離)\)** を選択して、別のワーカー プロセスで実行されるプロジェクトを作成することもできます。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](./functions-versions.md)」をご覧ください。   |
     | **関数テンプレート** | **HTTP トリガー** | この値は、HTTP 要求によってトリガーされる関数を作成します。 |
-    | **ストレージ アカウント (AzureWebJobsStorage)**  | **ストレージ エミュレーター** | Azure の関数アプリにはストレージ アカウントが必要であるため、プロジェクトを Azure に発行する際に割り当てられるか、作成されます。 HTTP トリガーによって、Azure Storage アカウントの接続文字列が使用されることはありません。その他のすべてのトリガーの種類には、有効な Azure Storage アカウントの接続文字列が必要です。  |
+    | **ストレージ アカウント (AzureWebJobsStorage)**  | **ストレージ エミュレーター** | Azure の関数アプリにはストレージ アカウントが必要であるため、プロジェクトを Azure に発行する際に割り当てられるか、作成されます。 HTTP トリガーによって、Azure Storage アカウントの接続文字列が使用されることはありません。その他のすべてのトリガーの種類には、有効な Azure Storage アカウントの接続文字列が必要です。 このオプションを選択すると、Azurite エミュレーターが使用されます。 |
     | **承認レベル** | **Anonymous** | 作成される関数を、すべてのクライアントがキーを使用せずにトリガーできます。 この承認設定により、新しい関数のテストが容易になります。 キーと承認の詳細については、「[承認キー](./functions-bindings-http-webhook-trigger.md#authorization-keys)」と [HTTP と Webhook のバインド](./functions-bindings-http-webhook.md)に関するページをご覧ください。 |
     
     :::image type="content" source="../../includes/media/functions-vs-tools-create/functions-project-settings-v4.png" alt-text="Azure Functions プロジェクトの設定":::
@@ -83,8 +64,6 @@ Visual Studio の Azure Functions プロジェクト テンプレートを使用
     **[承認レベル]** を **[匿名]** に設定していることを確認します。 **関数** の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](./functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
 
 1. **[作成]** を選択して、関数プロジェクトと HTTP トリガー関数を作成します。
-
-::: zone-end
 
 Visual Studio によってプロジェクトとクラスが作成されます。クラスの中には、HTTP トリガー関数型のスケルトン コードが含まれています。 スケルトン コードは、要求本文またはクエリ文字列の値を含む HTTP 応答を送信します。 `HttpTrigger`属性は、関数が HTTP 要求によってトリガーされることを指定します。
 
@@ -124,13 +103,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 1. 関数アプリを右クリックし、 **[ブラウザーで開く]** を選択します。 これにより、関数アプリのルートが既定の Web ブラウザーで開かれ、関数アプリが実行されていることを示すページが表示されます。 
 
-    ::: zone pivot="programming-runtime-functions-v3"
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="実行されている関数アプリ":::
-    ::: zone-end
-    
-    ::: zone pivot="programming-runtime-functions-v4"
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure-v4.png" alt-text="実行されている関数アプリ":::
-    ::: zone-end
 
 1. ブラウザーのアドレス バーで、ベース URL に文字列 `/api/HttpExample?name=Functions` を追加し、要求を実行します。
 

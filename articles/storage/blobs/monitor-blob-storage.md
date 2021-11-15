@@ -5,16 +5,16 @@ author: normesta
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bcfd37ff8c030136e37b4289bc37006012891412
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 656877f04c51b151168065c68cdc5016892f2a7f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617547"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308167"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob Storage の監視
 
@@ -208,10 +208,10 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、ログを有効にするストレージ アカウントのサブスクリプションに設定します。
 
-   ```azurecli-interactive
-   az account set --subscription <subscription-id>
+   ```azurecli
+      az account set --subscription <subscription-id>
    ```
-
+   
    `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
 
 #### <a name="archive-logs-to-a-storage-account"></a>ログをストレージ アカウントにアーカイブする
@@ -463,6 +463,17 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetBlob" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
@@ -471,7 +482,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[エンドポイント]** ページで確認できます。
 
-```azurecli-interactive
+```azurecli
    az monitor metrics list-definitions --resource <resource-ID>
 ```
 
@@ -479,8 +490,16 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 ストレージ アカウントまたは BLOB ストレージ サービスのメトリック値を読み取ることができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
 
-```azurecli-interactive
+```azurecli
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetBlob' " --aggregation "Total" 
 ```
 
 ### <a name="template"></a>[テンプレート](#tab/template)
@@ -629,7 +648,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 | ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![Yes](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。

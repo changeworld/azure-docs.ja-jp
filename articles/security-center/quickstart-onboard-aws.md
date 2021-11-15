@@ -1,19 +1,19 @@
 ---
 title: AWS アカウントを Microsoft Defender for Cloud に接続する
-description: Microsoft Defender for Cloud からの AWS リソースの監視
+description: Microsoft Defender for Cloud を使用して AWS リソースを保護する
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 11/02/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: fb37074fae4d984009f33b45c805cb4dcc886551
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+zone_pivot_groups: connect-aws-accounts
+ms.openlocfilehash: 9877ec3b69829d8210eed18577a3d0738dcef889
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131047783"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428546"
 ---
 #  <a name="connect-your-aws-accounts-to-microsoft-defender-for-cloud"></a>AWS アカウントを Microsoft Defender for Cloud に接続する
 
@@ -23,20 +23,93 @@ ms.locfileid: "131047783"
 
 Microsoft Defender for Cloud により、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードが保護されます。
 
-AWS アカウントを Defender for Cloud にオンボードすると、AWS Security Hub と Microsoft Defender for Cloud が統合されます。 そのため、Defender for Cloud では、この両方のクラウド環境全体を可視化および保護することで、以下を実現します。
+AWS ベースのリソースを保護するために、次の 2 つのメカニズムのいずれかを使用してアカウントを接続できます。
 
-- エージェントの自動プロビジョニング (Defender for Cloud は [Azure Arc](../azure-arc/servers/overview.md) を使用して Log Analytics エージェントをお使いの AWS インスタンスにデプロイします)
-- ポリシー管理
-- 脆弱性の管理
-- 埋め込まれたエンドポイント検出と応答 (EDR)
-- セキュリティ構成ミスの検出
-- Defender for Cloud の推奨事項と AWS Security Hub の検出結果を 1 つのビューに表示
-- Defender for Cloud のセキュリティ スコアの計算に AWS リソースを組み込む
-- AWS リソースの規制コンプライアンスの評価
+- **クラシック クラウド コネクタ エクスペリエンス** - 最初のマルチクラウド サービスの一環として、AWS および GCP のアカウントを接続する手段としてこれらのクラウド コネクタが導入されました。 クラシック クラウド コネクタ エクスペリエンスを使用して既に AWS コネクタを構成している場合は、この新しいメカニズムを使用してアカウントを接続し直すことをお勧めします。 [環境設定] ページでアカウントを追加したら、古いコネクタを削除して、重複する推奨事項が表示されないようにします。
 
-下のスクリーンショットでは、Defender for Cloud の概要ダッシュボードに AWS アカウントが表示されていることがわかります。
+- **[環境設定] ページ (プレビュー)** (推奨) - このプレビュー ページには、大幅に改善された、簡単なオンボード エクスペリエンス (自動プロビジョニングを含む) が用意されています。 また、このメカニズムによって、Defender for Cloud の強化されたセキュリティ機能が AWS リソースにも拡張されます。
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Defender for Cloud の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+    - **Defender for Cloud の CSPM 機能** が、AWS リソースまで拡張されています。 このエージェントレス プランでは、AWS 固有のセキュリティの推奨事項に従って AWS リソースを評価します。これは、セキュリティ スコアに含まれています。 これらのリソースは、AWS (AWS CI、AWS PCI DSS、および AWS の基本的なセキュリティのベスト プラクティス) に固有の組み込み標準に準拠しているかについても評価されます。 Defender for Cloud の[資産インベントリ ページ](asset-inventory.md)は、Azure リソースと AWS リソースを共に管理するのに役立つマルチクラウド対応機能です。
+    - **Microsoft Defender For Kubernetes** のコンテナーの脅威検出と高度な防御が **Amazon eks Linux クラスター** まで拡張されました。
+    - **Microsoft Defender for servers** では、脅威検出および高度な防御が、お使いの Windows と Linux の EC2 インスタンスにもたらされます。 このプランには、Microsoft Defender for Endpoint の統合ライセンス、セキュリティ ベースラインと OS レベルの評価、脆弱性評価スキャン、適応型アプリケーション制御 (AAC)、ファイルの整合性の監視 (FIM) などが含まれます。
+
+こちらのスクリーンショットでは、Defender for Cloud の[概要ダッシュボード](overview-page.md)に AWS アカウントが表示されています。
+
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="4 つの AWS プロジェクトが Defender for Cloud の概要ダッシュボードに表示されている" lightbox="./media/quickstart-onboard-aws/aws-account-in-overview.png":::
+
+
+::: zone pivot="env-settings"
+
+## <a name="availability"></a>可用性
+
+|側面|詳細|
+|----|:----|
+|リリース状態:|プレビュー。<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
+|価格:|CSPM プランは無料です。<br>Defender for Kubernetes プランは、プレビュー期間中は無料でご利用いただけます。 その後は、Azure リソースの Defender for Kubernetes プランと同じ価格で課金されます。<br>[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Azure に接続される AWS マシンごとに、Defender for servers プランの料金が、Azure マシン用の Defender for servers プランと同じ価格で課金されます。 AWS EC2 に Azure Arc エージェントがデプロイされていない場合、そのマシンに対して課金されることはありません。|
+|必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者**<br>所有者が (Defender for servers プランに必要となる) サービス プリンシパルの詳細を提供している場合、**共同作成者** も AWS アカウントに接続できます|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: ナショナル/ソブリン (Azure Government、Azure China 21Vianet)|
+|||
+
+## <a name="prerequisites"></a>前提条件
+
+- AWS アカウントを Azure サブスクリプションに接続するには、言うまでもなく、AWS アカウントにアクセスする必要があります。
+
+- **Defender For Kubernetes プランを有効にする** には、次のものが必要です。
+    - EKS K8s API サーバーにアクセスする権限を持つ、少なくとも 1 つの Amazon EKS クラスター。
+    - 新しい SQS キュー、Kinesis Firehose 配信ストリーム、および S3 バケットをクラスターのリージョンに作成するためのリソース容量。
+    
+    > [!TIP]
+    > 新しい EKS クラスターを作成するには、「[Amazon EKS の開始方法– eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)」のガイダンスに従ってください。
+
+- **Defender for servers プランを有効にする** には、次のものが必要です。
+    - Microsoft Defender for servers を有効にする (「[クイック スタート: 強化されたセキュリティ機能を有効にする](enable-enhanced-security.md)」を参照)
+    - AWS Systems Manager (SSM) によって管理され、SSM エージェントを使用している EC2 インスタンスがあるアクティブな AWS アカウント
+
+    > [!TIP]
+    > 一部の Amazon マシン イメージ (AMI) には SSM エージェントがプレインストールされています。該当する AMI の一覧が、「[AMIs がプリインストールされた SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-technical-details.html#ami-preinstalled-agent)」に記載されています。 
+
+    - お使いの EC2 インスタンスに SSM エージェントがない場合は、Amazon の関連する指示に従ってください。
+        - [ハイブリッド環境に SSM エージェントをインストールする (Windows)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html)
+        - [ハイブリッド環境に SSM エージェントをインストールする (Linux)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html)
+
+
+## <a name="connect-your-aws-account"></a>AWS アカウントを接続する
+
+以下の手順に従って AWS クラウド コネクタを作成します。 
+
+1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
+1. **[環境の追加]**  >  **[アマゾン ウェブ サービス]** を選択します。
+
+    :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-environment-settings.png" alt-text="AWS アカウントを Azure サブスクリプションに接続します。":::
+
+1. AWS アカウントの詳細 (コネクタ ソースを格納する場所を含む) を入力し、 **[Next: Select plans]\(次: プランの選択\)** を選択します。
+
+    :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-details.png" alt-text="AWS アカウントの追加ウィザードのステップ 1: アカウントの詳細を入力します。":::
+
+1. [Select plans]\(プランの選択\) タブで、この AWS アカウントに対して有効にする Defender for Cloud 機能を選択します。 
+
+    > [!IMPORTANT]
+    > 各機能には、アクセス許可に関する独自の要件があり、料金が発生する可能性があります。
+
+    :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-plans-selection.png" alt-text="[Select plans]\(プランの選択\) タブで、この AWS アカウントに対して有効にする Defender for Cloud 機能を選択します。":::
+
+    - Defender for Servers の対象を AWS EC2 まで拡張するには、 **[サーバー]** プランを **[オン]** に設定し、必要に応じて構成を編集します。 
+
+    - Defender for Kubernetes の対象を AWS EKS Linux クラスター まで拡張するには、 **[コンテナー]** プランを **[オン]** に設定し、必要に応じて構成を編集します。
+
+1. セットアップを完了します。
+    1. **[次: アクセスの構成]** を選択します。
+    1. CloudFormation テンプレートをダウンロードします。
+    1. ダウンロードした CloudFormation テンプレートを使用して、画面上の指示に従って AWS にスタックを作成します。
+    1. **[Next : Review and update]\(次: 確認と生成\)** を選択します。
+    1. **［作成］** を選択します
+
+すぐに AWS リソースのスキャンが開始され、数時間以内にセキュリティに関する推奨事項が表示されます。
+
+::: zone-end
+
+
+::: zone pivot="classic-connector"
 
 ## <a name="availability"></a>可用性
 
@@ -49,7 +122,6 @@ AWS アカウントを Defender for Cloud にオンボードすると、AWS Secu
 |||
 
 
-
 ## <a name="connect-your-aws-account"></a>AWS アカウントを接続する
 
 以下の手順に従って AWS クラウド コネクタを作成します。 
@@ -59,19 +131,17 @@ AWS アカウントを Defender for Cloud にオンボードすると、AWS Secu
 1. 複数のリージョンのセキュリティに関する推奨事項を表示するには、関連するリージョンごとに次の手順を繰り返します。
 
     > [!IMPORTANT]
-    > AWS マスター アカウントを使用している場合は、これらの手順を繰り返して、関連するすべてのリージョンで、マスター アカウントと、接続されたすべてのメンバー アカウントを構成します
+    > AWS 管理アカウントを使用している場合は、これらの手順を繰り返して、関連するすべてのリージョンで、管理アカウントと、接続されたすべてのメンバー アカウントを構成します
 
     1. [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html) を有効にします。
     1. [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html) を有効にします。
-    1. Security Hub にデータが流れていることを確認します。
-
-        Security Hub を初めて有効にするときは、データが使用可能になるまで数時間かかることがあります。
+    1. データが Security Hub に送信されていることを確認します。 Security Hub を初めて有効にするときは、データが使用可能になるまで数時間かかることがあります。
 
 ### <a name="step-2-set-up-authentication-for-defender-for-cloud-in-aws"></a>手順 2. AWS で Defender for Cloud の認証を設定する
 
 Defender for Cloud で AWS に対する認証を許可するには、次の 2 つの方法があります。
 
-- **Defender for Cloud 用の IAM ロールを作成する** - 最も安全な推奨される方法です
+- **Defender for Cloud 用の IAM ロールを作成する** (推奨) - 最も安全な方法です
 - **Defender for Cloud 用の AWS ユーザー** - IAM が有効になっていない場合の安全性が低いオプション
 
 #### <a name="create-an-iam-role-for-defender-for-cloud"></a>Defender for Cloud 用の IAM ロールを作成する
@@ -112,7 +182,7 @@ Defender for Cloud で AWS に対する認証を許可するには、次の 2 �
 1. **タグ** を選択します。 必要に応じて、タグを追加します。 ユーザーにタグを追加しても、接続には影響しません。
 1. **[レビュー]** を選択します。
 1. 後で使用するために、自動的に生成された **アクセス キー ID** と **シークレット アクセス キー** の CSV ファイルを保存します。
-1. 概要を確認し、 **[ユーザーを作成]** をクリックします。
+1. 概要を確認し、 **[ユーザーの作成]** を選択します。
 
 
 ### <a name="step-3-configure-the-ssm-agent"></a>手順 3. SSM エージェントを構成する
@@ -133,7 +203,10 @@ Defender for Cloud で AWS に対する認証を許可するには、次の 2 �
 
 ### <a name="step-5-connect-aws-to-defender-for-cloud"></a>手順 5. AWS から Defender for Cloud に接続する
 
-1. Defender for Cloud のメニューから、 **[マルチ クラウド コネクタ]** を選択します。
+1. Defender for Cloud のメニューから **[環境設定]** を開き、クラシック コネクタ エクスペリエンスに切り替えるオプションを選択します。
+
+    :::image type="content" source="media/quickstart-onboard-gcp/classic-connectors-experience.png" alt-text="Defender for Cloud のクラシック クラウド コネクタ エクスペリエンスに切り替える。":::
+
 1. **[Add AWS account]\(AWS アカウントの追加\)** を選択します。
     :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Defender for Cloud のマルチ クラウド コネクタ ページの [Add AWS account]\(AWS アカウントの追加\) ボタン":::
 1. **[AWS authentication]\(AWS 認証\)** タブでオプションを構成します。
@@ -141,6 +214,7 @@ Defender for Cloud で AWS に対する認証を許可するには、次の 2 �
     1. サブスクリプションが正しいことを確認します。 これは、コネクタと AWS Security Hub の推奨事項が追加されるサブスクリプションです。
     1. 「[手順 2. AWS で Defender for Cloud の認証を設定する](#step-2-set-up-authentication-for-defender-for-cloud-in-aws)」で選択した認証オプションに応じて、次の操作を行います。
         - **[Assume Role]\(ロールを想定\)** を選択し、「[Defender for Cloud 用の IAM ロールを作成する](#create-an-iam-role-for-defender-for-cloud)」から ARN を貼り付けます。
+
             :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portal で AWS 接続ウィザードの関連フィールドに ARN ファイルを貼り付ける。":::
 
             OR
@@ -173,13 +247,16 @@ Defender for Cloud で AWS に対する認証を許可するには、次の 2 �
 - Defender for Cloud サービスでは、新しい AWS EC2 インスタンスが 6 時間ごとにスキャンされ、構成に従ってそれらがオンボードされます。
 - Defender for Cloud の規制コンプライアンス ダッシュボードに AWS CIS 標準が表示されます。
 - Security Hub ポリシーが有効になっている場合、オンボードが完了してから 5 分から 10 分後に、推奨事項が Defender for Cloud ポータルと規制コンプライアンス ダッシュボードに表示されます。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Defender for Cloud の推奨事項ページの AWS リソースと推奨事項":::
 
+
+::: zone-end
+
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Defender for Cloud の推奨事項ページの AWS リソースと推奨事項" lightbox="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png":::
 
 
 ## <a name="monitoring-your-aws-resources"></a>AWS リソースの監視
 
-上記のように、Microsoft Defender for Cloud のセキュリティに関する推奨事項ページには、Azure および GCP リソースと共に AWS リソースが表示され、真のマルチクラウド ビューが実現します。
+前のスクリーンショットでわかるように、Defender for Cloud のセキュリティに関する推奨事項のページには AWS リソースが表示されます。 環境フィルターを使用して、Defender for Cloud のマルチクラウド機能を利用できます。Azure、AWS、および GCP リソースの推奨事項がまとめて表示されます。
 
 リソースの種類別に、リソースのアクティブな推奨事項をすべて表示するには、Defender for Cloud の資産インベントリ ページを使用し、関心のある AWS リソースの種類にフィルターを適用します。
 

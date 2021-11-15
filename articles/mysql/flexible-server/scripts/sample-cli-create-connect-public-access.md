@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成し、パブリック アクセス接続を有効化する
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーを作成し、パブリック アクセス接続を有効化する
 description: この Azure CLI サンプル スクリプトでは、Azure Database for MySQL - フレキシブル サーバーを作成し、サーバー レベルのファイアウォール規則 (パブリック アクセス接続方法) を構成してそのサーバーに接続する方法を示します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: cc9710576eef20505a9ae27b74ce93897e7889b0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59df8d613e8753895fba77d3bfabefe476f49cf1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701624"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844200"
 ---
-# <a name="create-an-azure-database-for-mysql---flexible-server-preview-and-enable-public-access-connectivity-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成し、パブリック アクセス接続を有効化する
+# <a name="create-an-azure-database-for-mysql---flexible-server-and-enable-public-access-connectivity-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーを作成し、パブリック アクセス接続を有効化する
 
 このサンプル CLI スクリプトでは、Azure Database for MySQL - フレキシブル サーバーを作成し、サーバー レベルのファイアウォール規則 ([パブリック アクセス接続方法](../concepts-networking-public.md)) を構成し、作成後にサーバーに接続します。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "128701624"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-スクリプトの中で強調表示されている行を編集し、変数に実際の値を指定します。
+スクリプトの強調表示されている行を編集し、変数にご自分の値を指定します。
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/mysql/flexible-server/create-server-public-access/create-connect-burstable-server-public-access.sh?highlight=8,11-12 "Create Flexible Server and enable public access.")]
 
@@ -58,5 +58,5 @@ ms.locfileid: "128701624"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

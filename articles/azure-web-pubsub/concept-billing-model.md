@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 03/29/2021
-ms.openlocfilehash: c7a7aaa47d40c9d49065f71bc9bebc998adbfc12
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 11/08/2021
+ms.openlocfilehash: e7bce9f9c5ac81d7f722e76162f38e4b0178a157
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410479"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131994993"
 ---
 # <a name="billing-model-of-azure-web-pubsub-service"></a>Azure Web PubSub サービスの課金モデル
 
@@ -43,7 +43,7 @@ Azure Web PubSub サービスの課金モデルは、ユニットの数と送信
 
 - サービスから受信者にブロードキャストされたメッセージ。
 - サービスからアップストリーム Webhook に送信されたメッセージ。
-- [ライブ トレース ツール](./howto-troubleshoot-diagnostic-logs.md#capture-diagnostic-logs-with-azure-web-pubsub-service-live-trace-tool)を使用した診断ログ。 
+- [ライブ トレース ツール](./howto-troubleshoot-resource-logs.md#capture-resource-logs-with-live-trace-tool)を使用したリソース ログ。 
 
 受信トラフィックは、Azure Web PubSub サービスに送信されたメッセージです。 
 

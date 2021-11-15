@@ -13,12 +13,12 @@ ms.date: 06/09/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 3c9af18a00d4880c34307525b735f8cef4d2685c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 5dfc0c3c006c42f6e56e9f2f15311a2b99396fe4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230838"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424099"
 ---
 # <a name="differences-between-adalnet-and-msalnet-apps"></a>ADAL.NET アプリと MSAL.NET アプリの違い
 
@@ -139,7 +139,7 @@ MSAL.NET を使用して、`MsalUiRequiredException` をキャッチします ([
 ```csharp
 catch(MsalUiRequiredException exception)
 {
- try {“try to authenticate interactively”}
+ try {"try to authenticate interactively"}
 }
 ```
 
@@ -159,6 +159,18 @@ catch(AdalException exception)
 ```
 
 詳細については、ADAL.NET を使用して[パブリック クライアント アプリケーションでトークンを取得する場合に推奨されるパターン](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token#recommended-pattern-to-acquire-a-token)に関するページを参照してください。
+
+### <a name="prompt-behavior"></a>プロンプトの動作
+
+MSAL.NET のプロンプトの動作は、ADAL.NET のプロンプトの動作と同じです。
+
+|  ADAL.NET | MSAL.NET | 説明 |
+| ----------- | ----------- | -------------|
+| `PromptBehavior.Auto`| `NoPrompt`| Azure AD により、最適な動作が選ばれます (ユーザーがサインインに 1 つのアカウントのみを使っている場合は自動的にサインインされ、サインインに複数のアカウントを使っている場合アカウント セレクターが表示されます)。 |
+| `PromptBehavior.Always`| `ForceLogin` | サインイン ボックスをリセットし、ユーザーに資格情報を再入力させます。 |
+| `PromptBehavior.RefreshSession`| `Consent`| すべてのアクセス許可に対してユーザーに再度同意させます。 |
+| `PromptBehavior.Never`| `Never`| 使わないでください。代わりに[パブリック クライアント アプリの推奨パターン](scenario-desktop-acquire-token.md?tabs=dotnet)を使ってください。 |
+| `PromptBehavior.SelectAccount`| `SelectAccount`| アカウント セレクターを表示し、ユーザーにアカウントを選ばせます。 |
 
 ### <a name="handling-claim-challenge-exceptions"></a>要求チャレンジ例外の処理
 
@@ -227,7 +239,7 @@ var scopes = new [] { ResourceId+"/.default" };
 
 クライアント資格情報フローの場合、`/.default` スコープも渡します。 このスコープにより、管理者がアプリケーションの登録で同意したアプリレベルのすべてのアクセス許可が、Azure AD に示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [アプリを ADAL から MSAL に移行する](msal-net-migration.md)
 [MSAL.NET を使用するために ADAL.NET 機密クライアント アプリを移行する](msal-net-migration-confidential-client.md)

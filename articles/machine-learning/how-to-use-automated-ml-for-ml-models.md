@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a48fa9df38b9892c740713b1463010c1f601506d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d7bf32faabd6b0a9d2037ad5599a5b2cceb70053
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000026"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556257"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
@@ -94,7 +94,9 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 1. ターゲット列を選択します。これは、予測を実行する列です。
 
-1. データ プロファイルとトレーニング ジョブのコンピューティングを選択します。 既存のコンピューティングの一覧は、ドロップダウン リストにあります。 新しいコンピューティングを作成するには、ステップ 7 の手順に従います。
+1. データ プロファイルとトレーニング ジョブのコンピューティング タイプを選択します。 [コンピューティング クラスター](concept-compute-target.md#azure-machine-learning-compute-managed)または[コンピューティング インスタンス](concept-compute-instance.md)を選択できます。 
+    
+1. 既存のコンピューティングのドロップダウン リストからコンピューティングを選択します。  新しいコンピューティングを作成するには、ステップ 7 の手順に従います。
 
 1. **[Create a new compute]\(新しいコンピューティングの作成\)** を選択して、この実験のコンピューティング コンテキストを構成します。
 

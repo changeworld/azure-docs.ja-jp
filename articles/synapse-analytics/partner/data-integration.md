@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d7987b29e6d8e5b361039f8d77828e38655cf221
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: fe1843f40759ee329576d0c47d3a8251becaf217
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481352"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460168"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics データ統合パートナー
 
@@ -48,6 +48,7 @@ Azure Synapse Analytics の専用 SQL プールを使用してデータ ウェ�
 | ![Precisely](./media/data-integration/precisely-logo.png) |**Precisely**<br>Precisely Connect ETL を使用すると、複数のソースから Azure ターゲットへのデータの抽出、転送、および読み込み (ETL) を行うことができます。 Connect ETL は、コーディングや調整を必要としない、構成が簡単なツールです。 ETL 変換は、即座に実行できます。 これにより、コストのかかるデータベースのステージング領域や手動のプッシュは不要になり、安定した持続可能なパフォーマンスを備えた独自のデータ ブレンドを作成できます。 メインフレーム DB2、VSAM、IMS、Oracle、SQL Server、Teradata などの複数のソースからレガシ データをインポートし、Azure Databricks、Azure Synapse Analytics、Azure Data Lake Storage などのクラウド ターゲットに書き込みます。 ハイ パフォーマンスの Connect ETL エンジンを使用することで、最適なパフォーマンスと整合性を期待できます。|[製品ページ](https://www.precisely.com/solution/microsoft-azure)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/syncsort.dmx) |
 | ![Qlik Data Integration](./media/business-intelligence/qlik_logo.png) |**Qlik Data Integration**<br>Qlik Data Integration は、Azure Synapse にデータを読み込むための自動化されたソリューションを提供します。 SQL Server、Oracle、DB2、Sybase、MySQL などの多数のソースからの、データのバッチ読み込みと増分レプリケーションを簡素化します。 |[製品ページ](https://www.qlik.com/us/products/data-integration-products)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik_data_integration_platform) <br> |
 | ![Qubole](./media/data-integration/qubole_logo.png) |**Qubole**<br>Qubole は、ユーザーによる ETL、分析、および AI/ML ワークロードの実行を可能にするクラウド ネイティブのプラットフォームを提供します。 Apache Spark、TensorFlow、Presto、Airflow、Hadoop、Hive など、さまざまな種類のオープン ソース エンジンをサポートしています。 SQL クエリ ツールをはじめ、ノートブック、そして優れたオープン ソース エンジンを使用したダッシュボードまで、エンドユーザーにとって使いやすいデータ処理用ツールを提供しています。|[製品ページ](https://www.qubole.com/company/partners/partners-microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
+| ![SAS](./media/business-intelligence/sas-logo.jpg) |**SAS® Viya®**<br>SAS® Viya® は、スケーラブルなクラウドネイティブ アーキテクチャで実行される AI、分析、データ管理ソリューションです。 これにより、分析情報を運用化し、データ サイエンティストからビジネス ユーザーまで、すべてのユーザーが共同作業を行い、革新的な結果をより迅速に実現できるようになります。 オープン ソースまたは SAS モデルを使うと、SAS® Viya® に API または対話型インターフェイスを介してアクセスして、生データをアクションに変換できます。 |[製品ページ](https://www.sas.com/microsoft)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/sas-institute-560503.sas-viya-saas?tab=Overview)<br> |
 | ![Segment](./media/data-integration/segment_logo.png) |**Segment**<br>Segment は、さまざまなソースに由来する顧客データを有意義に活用できるデータ管理と分析のソリューションです。 より優れた意思決定、製品、およびエクスペリエンスを作り出すために、200 を超えるツールにデータを接続できます。 Segment では、組み込みのデータ コネクターを使用して、複数のデータ ソースを変換してユーザーのウェアハウスに読み込みます。|[製品ページ](https://segment.com/)<br> |
 | ![Skyvia](./media/data-integration/skyvia_logo.png) |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまな種類のソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ](https://skyvia.com/)<br> |
 | ![SnapLogic](./media/data-integration/snaplogic_logo.png) |**SnapLogic**<br>SnapLogic プラットフォームを利用すると、顧客は Azure Synapse データ ウェアハウスに出入りするデータをすばやく転送できます。 数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を提供しています。|[製品ページ](https://www.snaplogic.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/snaplogic.snaplogic-elastic-integration-windows)<br> |

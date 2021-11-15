@@ -2,13 +2,13 @@
 title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレート (ARM テンプレート) で文字列の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: bfb80a03012f5a1a9194789a82efd5cccd1eb18d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/29/2021
+ms.openlocfilehash: 44661751e3bd1f32a9b06ed6b7b6993716162cb1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806992"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455038"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
@@ -56,7 +56,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |Base 64 形式として返す値。 |
 
@@ -72,7 +72,7 @@ base64 形式を含む文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -86,7 +86,7 @@ base64 形式を JSON オブジェクトに変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |string |JSON オブジェクトに変換する base64 形式。 |
 
@@ -102,7 +102,7 @@ JSON オブジェクト。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -116,7 +116,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |string |文字列に変換する base64 形式。 |
 
@@ -132,7 +132,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -146,7 +146,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または配列 |連結の最初の文字列または配列。 |
 | その他の引数 |いいえ |文字列または配列 |連結する順番でのその他の文字列または配列。 |
@@ -165,7 +165,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -175,7 +175,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -187,7 +187,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -204,7 +204,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -221,7 +221,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |はい |string |データ URI に変換する値。 |
 
@@ -237,7 +237,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -250,7 +250,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |はい |string |変換するデータ URI 値。 |
 
@@ -266,7 +266,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -279,7 +279,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -295,7 +295,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -309,7 +309,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -326,7 +326,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -343,7 +343,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
 
@@ -359,7 +359,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -372,7 +372,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | formatString | はい | string | 複合の書式設定文字列。 |
 | arg1 | はい | 文字列、整数、またはブール値 | 書式設定された文字列に含める値。 |
@@ -390,7 +390,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | formatTest | String | Hello, User. Formatted number:8,175,133 |
 
@@ -402,7 +402,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |GUID を作成するためにハッシュ関数で使用される値。 |
 | 必要に応じてその他のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
@@ -451,7 +451,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -468,7 +468,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -492,7 +492,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
@@ -508,7 +508,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -521,7 +521,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -538,7 +538,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -554,7 +554,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |array、string、または object |要素の数を取得するために使用する配列、文字の数を取得するために使用する文字列、またはルート レベル プロパティの数を取得するために使用するオブジェクト。 |
 
@@ -570,7 +570,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -608,7 +608,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -618,7 +618,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | nameOutput | string | storagenziwvyru7uxie |
 
@@ -630,7 +630,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |はい |文字列または整数 |右揃えにする値。 |
 | totalLength |はい |INT |返される文字列の文字合計数。 |
@@ -650,7 +650,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -662,7 +662,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalString |はい |string |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
 | oldString |はい |string |元の文字列から削除する文字列。 |
@@ -680,7 +680,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secondOutput | String | 123-123-xxxx |
@@ -693,7 +693,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |INT |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超過している場合は、空の配列または文字列が返されます。 |
@@ -710,7 +710,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -723,7 +723,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |分割する文字列。 |
 | delimiter |はい |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
@@ -740,7 +740,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -753,7 +753,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -770,7 +770,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -787,7 +787,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい | Any |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
 
@@ -803,7 +803,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -817,11 +817,11 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |はい |string |部分文字列の抽出元となる文字列。 |
 | startIndex |いいえ |INT |部分文字列の 0 から始まる開始文字位置。 |
-| length |いいえ |INT |部分文字列の文字数。 文字列内の場所を参照する必要があります。 0 以上である必要があります。 |
+| length |いいえ |INT |部分文字列の文字数。 文字列内の場所を参照する必要があります。 0 以上である必要があります。 省略した場合、開始位置からの文字列の残りの部分が返されます。|
 
 ### <a name="return-value"></a>戻り値
 
@@ -850,7 +850,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -862,7 +862,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
 | numberToTake |はい |INT |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超過している場合は、その配列または文字列のすべての要素が返されます。 |
@@ -879,7 +879,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -892,7 +892,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |はい |string |小文字に変換する値。 |
 
@@ -908,7 +908,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -921,7 +921,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |はい |string |大文字に変換する値。 |
 
@@ -937,7 +937,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -950,7 +950,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |はい |string |トリムする値。 |
 
@@ -966,7 +966,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | String | one two three |
 
@@ -978,7 +978,7 @@ newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.gu
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |一意の文字列を作成するためにハッシュ関数で使用される値。 |
 | 必要に応じてその他のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
@@ -1040,7 +1040,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseUri |はい |string |ベース URI 文字列。 この表の後に記述されている、末尾のスラッシュ (`/`) の処理に関する動作を注意して確認してください。  |
 | relativeUri |はい |string |ベース URI 文字列に追加する相対 URI 文字列。 |
@@ -1082,7 +1082,7 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -1096,7 +1096,7 @@ URI をエンコードします。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |はい |string |エンコード対象の値。 |
 
@@ -1112,7 +1112,7 @@ URI エンコードされた値の文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -1126,7 +1126,7 @@ URI エンコードされた値の文字列を返します。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |はい |string |文字列に変換する URI エンコードされた値。 |
 
@@ -1142,7 +1142,7 @@ URI エンコードされた値のデコード済み文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/17/2021
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bc5983ebafe39b7b0595106ec280cc81291163ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 244736501dbd9a996ddb89159f0a7289244e51b1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128573793"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466107"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>クイックスタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ
 
@@ -45,7 +45,7 @@ ms.locfileid: "128573793"
 > 1. **[管理]** で、 **[認証]** を選択します。
 > 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** に「`https://localhost:44321/signout-oidc`」を入力します。
 > 1. **[保存]** を選択します。
-> 1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
+> 1. **[管理]** で、 **[証明書とシークレット]**  >  **[クライアント シークレット]**  >  **[新しいクライアント シークレット]** の順に選択します。
 > 1. **説明** を入力します (`clientsecret1` など)。
 > 1. シークレットの有効期限として **[1 年間]** を選択します。
 > 1. **[追加]** を選択して、すぐにシークレットの **値** を記録します。この値は後の手順で使用します。 シークレット値は "*二度と表示されず*"、他の方法で取得することはできません。 パスワードと同様に、安全な場所に記録してください。

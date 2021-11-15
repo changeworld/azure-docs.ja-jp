@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d56760b85bfca74cb18481ebf08ece2e4255d389
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: e75fb11379ccbdff90d1acd1a3bce36b62bd8a1d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178013"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250865"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -61,7 +61,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 App Configuration は、通常は構成ファイルや環境変数に保存する任意の構成データを格納するように設計されています。 ただし、データの種類によっては、他のソースに保存するのが適している場合もあります。 たとえば、シークレット情報は Key Vault に、ファイルは Azure Storage に、メンバーシップ情報は Azure AD グループに、顧客一覧はデータベースに格納するなどです。
 
-それでも、外部データへの参照をキーと値に保存することで、App Configuration を利用することができます。 アプリケーションから参照が読み取られると、参照されたソースからデータが読み込まれます。 外部データの場所を変更した場合は、アプリケーション全体を更新して再デプロイするのではなく、App Configuration の参照を更新するだけで済みます。
+それでも、外部データへの参照をキーと値に保存することで、App Configuration を利用することができます。 [コンテンツ タイプを使用](./concept-key-value.md#use-content-type)して、各データ ソースを区別できます。 アプリケーションから参照が読み取られると、参照されたソースからデータが読み込まれます。 外部データの場所を変更した場合は、アプリケーション全体を更新して再デプロイするのではなく、App Configuration の参照を更新するだけで済みます。
 
 App Configuration の [Key Vault の参照](use-key-vault-references-dotnet-core.md)機能はこのケースの一例です。 これにより、アプリケーションに必要なシークレットを必要に応じて更新しながら、基となるシークレット自体は Key Vault に残すことができます。
 
@@ -88,7 +88,9 @@ App Configuration に過剰な要求があると、調整や超過分料金が�
 
 * 個々のキーを監視するのではなく、1 つの "*センチネル キー*" を監視します。 そのセンチネル キーが変更された場合にのみ、すべての構成を更新します。 例については、「[ASP.NET Core アプリで動的な構成を使用する](enable-dynamic-configuration-aspnet-core.md)」を参照してください。
 
-* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳細については、[Azure App Configuration イベントの Web エンドポイントへのルーティング](./howto-app-configuration-event.md)に関する記事を参照してください。
+* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳しくは、「[App Configuration のデータ変更通知に Event Grid を使用する](./howto-app-configuration-event.md)」をご覧ください。
+
+* 要求を複数の App Configuration ストアに分散させます。 たとえば、グローバルにデプロイされたアプリケーションに、各地理的リージョンの異なるストアを使用します。 各 App Configuration ストアには、独自の要求クォータがあります。 このセットアップにより、スケーラビリティのモデルが提供され、単一障害点を回避できます。
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>App Configuration への構成データのインポート
 

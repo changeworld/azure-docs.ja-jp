@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 04/16/2021
-ms.openlocfilehash: 2c0ce50c1aac28b532d23ecd1203ff76f10529d4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/10/2021
+ms.openlocfilehash: 921e441a783d1f7bf4dc68b9decf03d6b23fbdb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130077855"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132353929"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -39,13 +39,13 @@ Windows OS ディスクは、[sysprep](/windows-hardware/manufacture/desktop/sys
 ### <a name="capture-image"></a>イメージをキャプチャする
 
 > [!NOTE]
-> 公開するには、SIG を含む Azure サブスクリプションが、公開元アカウントと同じテナントにある必要があります。 また、公開元アカウントには、SIG を含むサブスクリプションへの共同作成者のアクセス権が少なくとも必要です。
+> 後悔するには、Azure Compute Gallery を含む Azure サブスクリプションを公開元アカウントと同じテナントの下に置く必要があります。 また、発行元アカウントには、Azure Compute Gallery を含むサブスクリプションへの共同作成者のアクセス権が少なくとも必要です。
 
-VM の準備ができたら、Azure Shared Image Gallery でキャプチャできます。 キャプチャするには、次の手順に従います。
+VM の準備ができたら、Azure Compute Gallery (以前の Shared Image Gallery) でそれをキャプチャできます。 キャプチャするには、次の手順に従います。
 
 1. [Azure portal](https://ms.portal.azure.com/) で、使用している仮想マシンのページにアクセスします。
 2. **[キャプチャ]** を選択します。
-3. **[Shared Image Gallery にイメージを共有する]** で、 **[Yes, share it to a gallery as an image version]\(はい、ギャラリーにイメージ バージョンとして共有します\)** を選択します。
+3. **[Azure コンピューティング ギャラリーにイメージを公開する]** で、 **[Yes, share it to a gallery as an image version]\(はい、ギャラリーにイメージ バージョンとして公開します\)** を選択します。
 4. **[Operating system state]\(オペレーティング システムの状態\)** で、[一般化] を選択します。
 5. ターゲット イメージ ギャラリーまたは **[新規作成]** を選択します。
 6. ターゲット イメージ定義または **[新規作成]** を選択します。
@@ -55,7 +55,7 @@ VM の準備ができたら、Azure Shared Image Gallery でキャプチャで�
 
 ## <a name="set-the-right-permissions"></a>適切なアクセス許可を選択する
 
-お使いのパートナー センター アカウントが、Shared Image Gallery をホストしているサブスクリプションの所有者であれば、それ以外のアクセス許可は必要ありません。
+お使いのパートナー センター アカウントが、Azure Compute Gallery をホストしているサブスクリプションの所有者であれば、それ以外のアクセス許可は必要ありません。
 
 サブスクリプションへの読み取りアクセス権のみを持っている場合は、次の 2 つのオプションのいずれかを使用します。
 
@@ -63,7 +63,7 @@ VM の準備ができたら、Azure Shared Image Gallery でキャプチャで�
 
 所有者が所有者のアクセス許可を付与するための手順:
 
-1. Azure Shared Image Gallery (SIG) にアクセスします。
+1. Azure Compute Gallery に移動します。
 2. 左側のパネルで **[アクセス制御 (IAM)]** を選択します。
 3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します。<br>
     :::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="[ロールの割り当ての追加] ウィンドウが表示されます。":::
@@ -74,7 +74,7 @@ VM の準備ができたら、Azure Shared Image Gallery でキャプチャで�
 
 ### <a name="option-two--run-a-command"></a>オプション 2 – コマンドを実行する
 
-所有者にこれらのコマンドのいずれかを実行するよう依頼します (どちらの場合も、Shared Image Gallery を作成したサブスクリプションの SusbscriptionId を使用します)。
+所有者にこれらのコマンドのいずれかを実行するよう依頼します (いずれの場合も、Azure Compute Gallery を作成したサブスクリプションの SusbscriptionId を使用します)。
 
 ```azurecli
 az login
@@ -88,4 +88,4 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
 ```
 
 > [!NOTE]
-> パートナー センターで SIG イメージを公開できるようになったため、SAS URI を生成する必要はありません。 ただし、それでも SAS URI の生成手順を参照する必要がある場合は、「[VM イメージの SAS URI を生成する方法](../azure-vm-get-sas-uri.md)」を参照してください。
+> パートナー センターで Azure Compute Gallery イメージを公開できるようになったため、SAS URI を生成する必要はありません。 ただし、それでも SAS URI の生成手順を参照する必要がある場合は、「[VM イメージの SAS URI を生成する方法](../azure-vm-get-sas-uri.md)」を参照してください。

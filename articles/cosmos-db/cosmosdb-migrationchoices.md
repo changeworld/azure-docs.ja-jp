@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 98458a624a9c0d713e518e3fda442b8e45209d25
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 11/03/2021
+ms.openlocfilehash: 412b047896496124b042de82d9841afba9112934
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123036508"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562772"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -62,8 +62,8 @@ ms.locfileid: "123036508"
 
 移行準備を終えて移行ツールを使用するときは、下に挙げる詳細なガイドを利用できます
 * [MongoDB ネイティブ ツールによるオフライン移行](mongodb/tutorial-mongotools-cosmos-db.md)
-* [Azure Database Migration Service (DMS) によるオフライン移行](../dms/tutorial-mongodb-cosmos-db.md)
-* [Azure Database Migration Service (DMS) によるオンライン移行](../dms/tutorial-mongodb-cosmos-db-online.md)
+* [Azure Database Migration Service (DMS) を使用したオフライン移行](../dms/tutorial-mongodb-cosmos-db.md)
+* [Azure Database Migration Service (DMS) を使用したオンライン移行](../dms/tutorial-mongodb-cosmos-db-online.md)
 * [Azure Databricks と Spark によるオフライン/オンライン移行](mongodb/migrate-databricks.md)
 
 移行を終えたら、[移行後ガイド](mongodb/post-migration-optimization.md)の説明に従って Azure Cosmos DB のデータ資産を最適化します。
@@ -75,7 +75,7 @@ ms.locfileid: "123036508"
 |オンライン|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|MongoDB 用 Azure Cosmos DB API |&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適し、ライブ変更のレプリケーションを処理します。 <br/>&bull; 他の MongoDB ソースでのみ機能します。|
 |オフライン|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB| MongoDB 用 Azure Cosmos DB API| &bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適し、ライブ変更のレプリケーションを処理します。 <br/>&bull; 他の MongoDB ソースでのみ機能します。|
 |オフライン|[Azure Data Factory](../data-factory/connector-azure-cosmos-db-mongodb-api.md)| &bull;JSON/CSV ファイル<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB 用 Azure Cosmos DB API <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Azure Blob Storage <br/><br/> サポートされているその他のソースについては、[Azure Data Factory](../data-factory/connector-overview.md) に関する記事をご覧ください。 | &bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB 用 Azure Cosmos DB API <br/>&bull; JSON ファイル <br/><br/> サポートされているその他のターゲットについては、[Azure Data Factory](../data-factory/connector-overview.md) に関する記事をご覧ください。| &bull; セットアップが簡単で、さまざまなソースをサポートします。 <br/>&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適しています。 <br/>&bull; チェックポイントがなく、移行の途中で問題が発生した場合、移行プロセスを全部やり直す必要があります。<br/>&bull; 配信不能キューがなく、エラーが含まれるファイルがいくつかあっただけで移行プロセス全体が停止することがあります。 <br/>&bull; 特定のデータ ソースの読み取りスループットを向上させるためのカスタム コードが必要です。|
-|オフライン|[既存の Mongo ツール (mongodump、mongorestore、Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | MongoDB 用 Azure Cosmos DB API| &bull; セットアップと統合が簡単です。 <br/>&bull; スロットルのカスタム処理が必要です。|
+|オフライン|既存の Mongo ツール ([mongodump](mongodb/tutorial-mongotools-cosmos-db.md#mongodumpmongorestore)、[mongorestore](mongodb/tutorial-mongotools-cosmos-db.md#mongodumpmongorestore)、[Studio3T](mongodb/connect-using-mongochef.md))|MongoDB | MongoDB 用 Azure Cosmos DB API| &bull; セットアップと統合が簡単です。 <br/>&bull; スロットルのカスタム処理が必要です。|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API
 
@@ -104,8 +104,8 @@ SQL API、Mongo API、Cassandra API 以外の API については、API の既�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Cosmos DB への移行のための容量計画を立てる場合。
-    * 既存のデータベース クラスターの仮想コアとサーバーの数しか分からない場合は、[仮想コアと仮想 CPU を使用して要求ユニットを見積もる方法](convert-vcore-to-request-unit.md)に関する記事を読みます 
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
     * 現在のデータベース ワークロードの通常の要求量が分かる場合は、[Azure Cosmos DB キャパシティ プランナーを使用して要求ユニットを見積もる方法](estimate-ru-with-capacity-planner.md)に関する記事を読みます
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
 * Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](./create-sql-api-spark.md)に関する記事をご覧ください。  

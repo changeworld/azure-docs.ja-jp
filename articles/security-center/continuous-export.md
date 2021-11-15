@@ -5,15 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1557503699a47e471abee173733007cb3d0b5380
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 23908a7824e4e489da575fd1563b82c340d42def
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010158"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425181"
 ---
 # <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Microsoft Defender for Cloud データを継続的にエクスポートする
 
@@ -28,7 +27,7 @@ Microsoft Defender for Cloud では、詳細なセキュリティ アラート�
 - 生成されるたびに特定の推奨事項を、イベント ハブまたは Log Analytics ワークスペースに送信する 
 - サブスクリプションのセキュリティ スコアは、特定のコントロールについて 0.01 以上で変化するたびに、Log Analytics ワークスペースに送信されます 
 
-この機能は "*連続*" と呼ばれていますが、セキュリティ スコアや規制コンプライアンス データの週単位のスナップショットをエクスポートするオプションもあります。
+この機能は *連続* と呼ばれていますが、週単位のスナップショットをエクスポートするオプションもあります。
 
 この記事では、Log Analytics ワークスペースまたは Azure Event Hubs への連続エクスポートの構成方法について説明します。
 
@@ -75,7 +74,7 @@ Azure portal の Microsoft Defender for Cloud ページから、REST API を介�
 
 連続エクスポート先として Log Analytics ワークスペースまたは Azure Event Hubs のどちらを設定する場合でも、次の手順を実行する必要があります。
 
-1. [Defender for Cloud] メニューで、**[環境設定]** を選択します。
+1. [Defender for Cloud] メニューで、 **[環境設定]** を開きます。
 
 1. データのエクスポートを構成する特定のサブスクリプションを選択します。
 
@@ -89,7 +88,7 @@ Azure portal の Microsoft Defender for Cloud ページから、REST API を介�
 
 1. 適切なエクスポート頻度を選択します。
     - **ストリーミング** – リソースの正常性状態が更新されると、評価が送信されます (更新がなければ、データは送信されません)。
-    - **スナップショット** –すべての規制コンプライアンス評価の現在の状態のスナップショットが、サブスクリプションごとに 1 週間に 1 回送信されます。 このプレビュー機能では、セキュリティ スコアと規制コンプライアンス データのスナップショットが週単位で提供されます。 スナップショット データを識別するには、``IsSnapshot`` フィールドを探します。
+    - **スナップショット** –選択したデータ型の現在の状態のスナップショットが、サブスクリプションごとに 1 週間に 1 回送信されます。 スナップショット データを識別するには、``IsSnapshot`` フィールドを探します。
 
 1. 必要に応じて、選択範囲に次の推奨事項のいずれかが含まれている場合は、脆弱性評価の結果を含めることができます。
     - SQL データベースでは脆弱性の検出結果を解決する必要がある

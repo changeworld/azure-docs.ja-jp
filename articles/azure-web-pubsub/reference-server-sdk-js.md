@@ -1,66 +1,53 @@
 ---
-title: リファレンス - Azure Web PubSub サービス用の JavaScript SDK
+title: リファレンス - Azure Web PubSub 用の JavaScript SDK
 description: このリファレンスでは、Azure Web PubSub サービス用 JavaScript SDK について説明します
 author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: 1d507f29b184403cb9ef31d84111af60f75c1584
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 11/01/2021
+ms.openlocfilehash: 4571bb8581892525785c3f08e0c627bf20f511aa
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113909"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578349"
 ---
-# <a name="javascript-sdk-for-the-azure-web-pubsub-service"></a>Azure Web PubSub サービス用の JavaScript SDK
+# <a name="javascript-sdk-for-azure-web-pubsub"></a>リファレンス - Azure Web PubSub 用の JavaScript SDK
 
-JavaScript 用として、次の 2 つのライブラリが用意されています。
-- [サービス クライアント ライブラリ](#service-client-library)
-    - ハブとグループにメッセージを送信します。
-    - 特定のユーザーと接続にメッセージを送信します。
-    - ユーザーと接続をグループに整理します。
-    - 接続を終了します
-    - 既存の接続のアクセス許可を付与、取り消し、チェックします
-- [受信クライアント イベント](#express) を処理する Express ミドルウェア
-  - 不正使用の検証要求を処理する
-  - クライアント イベント要求の処理
+JavaScript には、サービス クライアント ライブラリと Express ミドルウェアの 2 つのライブラリが用意されています。 以下のセクションでは、これらのライブラリの詳細について説明します。
 
 <a name="service-client-library"></a>
 
 ## <a name="azure-web-pubsub-service-client-library-for-javascript"></a>JavaScript 用 Azure Web PubSub サービス クライアント ライブラリ
-このライブラリの用途は次のとおりです。
 
-- ハブとグループにメッセージを送信します。
+このライブラリを使用して、次の操作を実行できます。
+- ハブとグループにメッセージを送信します。 
 - 特定のユーザーと接続にメッセージを送信します。
 - ユーザーと接続をグループに整理します。
 - 接続を終了します
-- 既存の接続のアクセス許可を付与、取り消し、チェックします
+- 既存の接続のアクセス許可を付与、取り消し、確認します
 
 [ソース コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/web-pubsub/web-pubsub) |
 [パッケージ (NPM)](https://www.npmjs.com/package/@azure/web-pubsub) |
 [API リファレンス ドキュメント](/javascript/api/@azure/web-pubsub/) |
-[製品ドキュメント](https://aka.ms/awps/doc) |
+[製品ドキュメント](./index.yml) |
 [サンプル][samples_ref]
 
-### <a name="getting-started"></a>はじめに
+### <a name="get-started"></a>はじめに
 
-#### <a name="currently-supported-environments"></a>現在サポートされている環境
-
-- [Node.js](https://nodejs.org/) バージョン 8.x.x 以上
-
-#### <a name="prerequisites"></a>前提条件
+[Node.js](https://nodejs.org/) バージョン 8.x.x 以降。 さらに、次の前提条件を満たしていることを確認します。
 
 - [Azure サブスクリプション][azure_sub]。
 - 既存の Azure Web PubSub サービス インスタンス。
 
-#### <a name="1-install-the-azureweb-pubsub-package"></a>1. `@azure/web-pubsub` パッケージをインストールする
+#### <a name="install-the-azureweb-pubsub-package"></a>`@azure/web-pubsub` パッケージのインストール
 
 ```bash
 npm install @azure/web-pubsub
 ```
 
-#### <a name="2-create-and-authenticate-a-webpubsubserviceclient"></a>2. WebPubSubServiceClient を作成して認証する
+#### <a name="create-and-authenticate-webpubsubserviceclient"></a>`WebPubSubServiceClient` の作成と認証
 
 ```js
 const { WebPubSubServiceClient } = require("@azure/web-pubsub");
@@ -68,7 +55,7 @@ const { WebPubSubServiceClient } = require("@azure/web-pubsub");
 const serviceClient = new WebPubSubServiceClient("<ConnectionString>", "<hubName>");
 ```
 
-エンドポイントと `AzureKeyCredential` を使用して `WebPubSubServiceClient` を認証できます。
+エンドポイントと `AzureKeyCredential` を使用して `WebPubSubServiceClient` を認証することもできます。
 
 ```js
 const { WebPubSubServiceClient, AzureKeyCredential } = require("@azure/web-pubsub");
@@ -114,8 +101,6 @@ await serviceClient.sendToAll(payload.buffer);
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-#### <a name="enable-logs"></a>ログの有効化
-
 このライブラリの使用時にデバッグ ログを表示するには、次の環境変数を取得します。
 
 - SignalR クライアント ライブラリからデバッグ ログを取得する
@@ -130,7 +115,7 @@ export AZURE_LOG_LEVEL=verbose
 
 ## <a name="azure-web-pubsub-cloudevents-handlers-for-express"></a>Express 用 Azure Web Pubsub CloudEvents ハンドラー
 
-Express ライブラリを使用する場合:
+Express ライブラリを使用して、次の操作を実行できます。
 - 受信クライアント イベントを処理する Web PubSub CloudEvents ミドルウェアを追加する
   - 不正使用の検証要求を処理する
   - クライアント イベント要求の処理
@@ -138,28 +123,23 @@ Express ライブラリを使用する場合:
 [ソース コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/web-pubsub/web-pubsub-express) |
 [パッケージ (NPM)](https://www.npmjs.com/package/@azure/web-pubsub-express) |
 [API リファレンス ドキュメント](/javascript/api/@azure/web-pubsub-express/) |
-[製品ドキュメント](https://aka.ms/awps/doc) |
+[製品ドキュメント](./index.yml) |
 [サンプル][samples_ref]
 
-### <a name="getting-started"></a>はじめに
+### <a name="get-started"></a>はじめに
 
-#### <a name="currently-supported-environments"></a>現在サポートされている環境
-
-- [Node.js](https://nodejs.org/) バージョン 8.x.x 以上
-- [Express](https://expressjs.com/) バージョン 4.x.x 以上
-
-#### <a name="prerequisites"></a>前提条件
+[Node.js](https://nodejs.org/)バージョン 8.x.x 以降、または [Express](https://expressjs.com/) バージョン 4.x.x 以降を使用してください。 さらに、次の前提条件を満たしていることを確認します。
 
 - [Azure サブスクリプション][azure_sub]。
 - 既存の Azure Web PubSub エンドポイント。
 
-#### <a name="1-install-the-azureweb-pubsub-express-package"></a>1. `@azure/web-pubsub-express` パッケージをインストールする
+#### <a name="install-the-azureweb-pubsub-express-package"></a>`@azure/web-pubsub-express` パッケージのインストール
 
 ```bash
 npm install @azure/web-pubsub-express
 ```
 
-#### <a name="2-create-a-webpubsubeventhandler"></a>2. WebPubSubEventHandler を作成する
+#### <a name="create-webpubsubeventhandler"></a>`WebPubSubEventHandler` を作成します。
 
 ```js
 const express = require("express");
@@ -189,13 +169,13 @@ app.listen(3000, () =>
 
 ### <a name="key-concepts"></a>主要な概念
 
-#### <a name="client-events"></a>クライアント イベント
+- **クライアント イベント**: クライアントは、接続のライフサイクル中にイベントを作成します。 たとえば、単純な WebSocket クライアント接続では、次のイベントが作成されます。
+  - サービスに接続しようとしたときの `connect` イベント。
+  - サービスに正常に接続されたときの `connected` イベント。
+  - サービスにメッセージを送信したときの `message` イベント。
+  - サービスから切断したときの `disconnected` イベント。
 
-イベントは、クライアント接続のライフサイクル中に作成されます。 たとえば、シンプル WebSocket クライアント接続では、サービスへの接続が試みられるときに `connect` イベント、サービスに正常に接続したときに `connected` イベント、サービスにメッセージを送信するときに `message` イベント、サービスから切断したときに `disconnected` イベントが作成されます。
-
-#### <a name="event-handler"></a>イベント ハンドラー
-
-イベント ハンドラーには、クライアント イベントを処理するロジックが含まれています。 イベント ハンドラーは、ポータルまたは Azure CLI を使用して事前にサービスに登録し設定しておく必要があります。 イベント ハンドラー ロジックをホストする場所は、通常、サーバー側と見なされます。
+- **イベント ハンドラー**: イベント ハンドラーには、クライアント イベントを処理するロジックが含まれています。 イベント ハンドラーは、Azure portal または Azure CLI を使用して事前にサービスに登録し設定しておく必要があります。 サーバーは、通常、イベント ハンドラーのロジックをホストします。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 

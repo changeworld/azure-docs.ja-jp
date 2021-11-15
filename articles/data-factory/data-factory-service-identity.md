@@ -6,15 +6,15 @@ author: nabhishek
 ms.service: data-factory
 ms.subservice: security
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 10/22/2021
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: ed7cd2836f601e412aca7f73c52f2a0e13173a8a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8e1eaad6d25623c9cb1697137fdb69340cb6aeca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011486"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846123"
 ---
 # <a name="managed-identity-for-azure-data-factory-and-azure-synapse"></a>Azure Data Factory および Azure Synapse 用のマネージド ID 
 
@@ -37,7 +37,7 @@ ms.locfileid: "131011486"
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)。この場合、マネージド ID は Azure Key Vault の認証に使用されます。
 - Azure Blob storage、Azure Data Explorer、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics、REST、Databricks アクティビティ、Web アクティビティなどのマネージ ID 認証を使用して、データ ストアまたはコンピューティングにアクセスします。 詳細については、コネクタとアクティビティに関する記事をご覧ください。
-- ユーザー割り当てマネージド ID は、Azure Key Vault に格納されているカスタマー マネージド キーを使用してメタデータを暗号化/暗号化解除する場合にも使用されます。こうして、二重暗号化が提供されます。 
+- マネージド ID は、Azure Key Vault に格納されているカスタマー マネージド キーを使用してデータやメタデータを暗号化/暗号化解除する場合にも使用されます。こうして、二重暗号化が提供されます。 
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID 
 

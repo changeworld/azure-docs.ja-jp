@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のコンピューティングとデータ ストアが保存時および転送中のデータの暗号化を提供する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 08/02/2021
-ms.openlocfilehash: 8f4bb5279442abb10a9b19e5cb3e3666a1319bb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/21/2021
+ms.openlocfilehash: 1ac26da492c4236d89ed71edf738dbc6cd813563
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621599"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552698"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -66,10 +66,13 @@ Azure Machine Learning では、メトリックとメタデータは Azure Cosmo
 
 * Azure Machine Learning ワークスペースを作成するときは、次のパラメーターを使用します。 SDK、Azure CLI、REST API、Resource Manager テンプレートでは、両方のパラメーターが必須であり、サポートされています。
 
+    * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
+
     * `resource_cmk_uri`:このパラメーターは、[キーのバージョン情報](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)を含む、キー コンテナー内のカスタマー マネージド キーの完全なリソース URI です。 
 
-    * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
-    
+        > [!NOTE]
+        > コンテナーを削除した場合の誤ったデータ損失を防ぐために、暗号化された Machine Learning ワークスペースを作成する前に、CMK キー コンテナー インスタンスで論理的な削除と消去保護を有効にする必要があります。
+        
         > [!NOTE]
         > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
 

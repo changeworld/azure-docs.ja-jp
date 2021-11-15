@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: c3564a7c66002241a6b678d7314c4abe92cd3d24
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3be8101834eaa9f023c12b61d37c3b572d7a6ac6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609633"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434125"
 ---
 # <a name="sms-sdk-overview"></a>SMS SDK の概要
 
@@ -38,7 +38,7 @@ Azure Communication Services の SMS SDK を使用して、アプリケーショ
 |                   | べき等のサポート                                                               | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | メッセージのカスタム タグ。                                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 | events            | Event Grid を使用して、受信メッセージと配信レポートを受信するように Webhook を構成する | ✔️   | ✔️    | ✔️    | ✔️      |
-| 電話番号      | フリーダイヤル番号                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
+| 電話番号      | 無料電話番号、ショート コード ("*近日対応予定*")                                        | ✔️   | ✔️    | ✔️    | ✔️      |
 | PSTN 通話      | SMS 対応の無料電話番号に PSTN 通話機能を追加する                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>次の手順

@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b86e90298bc753cdea5c0fb5f255e88fcc26dc5c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1c371a155f36574f7a443506c0b9090b6b3bd544
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440758"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447077"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor ビュー デザイナーからブックへの移行ガイド
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらはブックに移行されており、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 この記事は、ビュー デザイナーからブックへの移行を行う際に役立ちます。 
@@ -49,7 +49,7 @@ Workbooks は、データの持つ可能性を最大限に引き出すための�
 
 
 ## <a name="how-to-start-using-workbooks"></a>ブックの使用を開始する方法
-[ブック] から開いたブックは、Log Analytics ワークスペースで、ビュー デザイナーの場所のすぐ下にあるサイド ナビゲーション バーの項目として有効になります。
+Log Analytics ワークスペースの [ブック] タイルからブックを開きます。
 
 ![ブックのナビゲーション](media/view-designer-conversion-overview/workbooks-nav.png)
 

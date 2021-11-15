@@ -1,18 +1,18 @@
 ---
-title: Azure Automation アカウントのユーザー割り当てマネージド ID を削除する (プレビュー)
+title: Azure Automation アカウントのユーザー割り当てマネージド ID を削除する
 description: この記事では、Azure Automation アカウントのユーザー割り当てマネージド ID を削除する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2f5aba42974c34f9d6799f3965848bdd0ca3787c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11db735a21e4d4007c35f1a82f1e5dfadb377fd1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635168"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432455"
 ---
-# <a name="remove-user-assigned-managed-identity-for-azure-automation-account-preview"></a>Azure Automation アカウントのユーザー割り当てマネージド ID を削除する (プレビュー)
+# <a name="remove-user-assigned-managed-identity-for-azure-automation-account"></a>Azure Automation アカウントのユーザー割り当てマネージド ID を削除する
 
 Azure portal、PowerShell、Azure REST API、または Azure Resource Manager (ARM) テンプレートを使用して、Azure Automation のユーザー割り当てマネージド ID を削除できます。
 
@@ -233,6 +233,6 @@ Azure Resource Manager テンプレートを使用して Automation アカウン
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Automation でのマネージド ID の有効化の詳細については、[Automation でのマネージド ID の有効化と使用 (プレビュー)](enable-managed-identity-for-automation.md) に関する記事を参照してください。
+- Azure Automation でのマネージド ID の有効化の詳細については、[Automation でのマネージド ID の有効化と使用](enable-managed-identity-for-automation.md)に関する記事を参照してください。
 
 - Automation アカウントのセキュリティの概要については、[Automation アカウントの認証の概要](automation-security-overview.md)に関する記事を参照してください。

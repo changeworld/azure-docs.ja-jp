@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ef1725161630e4a79b078a3c473f56e3d14a06ca
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d89cde13500757ae38ceaba66044b10225508cb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994520"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460908"
 ---
 # <a name="about-keys"></a>キーについて
 
@@ -81,9 +81,15 @@ Key Vault は、RSA および EC キーをサポートしています。 マネ�
 |マネージド HSM 内の HSM で保護されたキー|FIPS 140-2 レベル 3|
 |||
 
-
-
 キーの種類、アルゴリズム、操作、属性、タグの詳細については、「[キーの種類、アルゴリズム、および操作](about-keys-details.md)」を参照してください。
+
+## <a name="usage-scenarios"></a>使用シナリオ
+
+| 使用する場合 | 例 |
+|--------------|-------------|
+| カスタマー マネージド キーを使用した統合リソース プロバイダー向けの Azure サーバー側のデータ暗号化 | - [Azure Key Vault でのカスタマー マネージド キーを使用したサーバー側暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-models#server-side-encryption-using-customer-managed-keys-in-azure-key-vault) |
+| クライアント側のデータ暗号化 | - [クライアント側の暗号化と Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption?tabs=dotnet)|
+| キーのない TLS | - キーの[クライアント ライブラリ](../general/client-libraries.md#client-libraries-per-language-and-object)を使用する |
 
 ## <a name="next-steps"></a>次のステップ
 - [Key Vault について](../general/overview.md)

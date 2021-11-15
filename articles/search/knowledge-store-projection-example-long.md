@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: e06772af191917daed79210c28ed2efb19c30036
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 10/20/2021
+ms.openlocfilehash: 41960e60479bf553eeb92cebb9888e2ae01aae55
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134224"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503074"
 ---
 # <a name="detailed-example-of-shapes-and-projections-in-a-knowledge-store"></a>ナレッジ ストア内のシェイプとプロジェクションの詳細な例
 
@@ -23,9 +23,17 @@ ms.locfileid: "130134224"
 
 ## <a name="download-sample-definitions"></a>サンプル定義をダウンロードする
 
+この例では、[Postman デスクトップ アプリケーション](https://www.postman.com/downloads/)と [Search REST API](/rest/api/searchservice/) を使用します。
+
 GitHub にある [azure-search-postman-samples](https://github.com/Azure-Samples/azure-search-postman-samples) を複製またはダウンロードし、[**プロジェクション コレクション**](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections)をインポートして、この例を自分で試してみましょう。
 
-コレクションにはサンプル ドキュメントは特に含まれていませんが、[azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) の[混合メディア ファイル](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/ai-enrichment-mixed-media)には、この例で説明するプロジェクションをサポートするテキストと画像の両方が含まれています。
+## <a name="set-up-sample-data"></a>サンプル データを設定する
+
+プロジェクト コレクションにはサンプル ドキュメントは特に含まれていませんが、[azure-search-sample-data リポジトリ](https://github.com/Azure-Samples/azure-search-sample-data)の [AI エンリッチメント デモ データ ファイル](https://github.com/azure-search-sample-data/tree/master/ai-enrichment-mixed-media)にはテキストと画像が含まれており、この例で説明するプロジェクションと連携しています。
+
+Azure Storage に BLOB コンテナーを作成し、14 項目すべてをアップロードします。
+
+この Azure Storage 内に存在する間に、Postman コレクションで指定できるように接続文字列をコピーします。
 
 ## <a name="example-skillset"></a>サンプル スキルセット
 

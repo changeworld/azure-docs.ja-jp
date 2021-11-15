@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: e422f6316cce204a4b6ea152ff9be4489bb3e331
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 99700ec8b58a1eb9ab1465cca915216748a74dec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767909"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435645"
 ---
 # <a name="app-service-environment-overview"></a>App Service Environment の概要 
 > [!NOTE]
@@ -23,7 +23,7 @@ Azure App Service Environment は、App Service アプリを大規模かつ安�
 
 - Windows Web アプリ
 - Linux Web アプリ
-- Docker コンテナー
+- Docker コンテナー (Windows と Linux)
 - 関数
 
 App Service Environment (ASE) は、以下を必要とするアプリケーション ワークロードに最適です。

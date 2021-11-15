@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bba7516637bedf6e81747cbb27f926964c63f53
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3723896da2cd14762fd3fe81fa50caaa4b74b0b8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556511"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250713"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
@@ -94,7 +94,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> ASP.NET Core アプリケーションでは、`TelemetryConfiguration.Active` を使用してチャネルを構成することはお勧めしません。
+> ASP.NET Core アプリケーションでは、`TelemetryConfiguration.Active` を使用してチャネルを構成することはサポートされていません。
 
 ### <a name="configuration-in-code-for-netnet-core-console-applications"></a>コードによる .NET および .NET Core コンソール アプリケーションの構成
 
@@ -147,7 +147,9 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 1. Windows でテレメトリが保存される既定のディスクの場所は、%LOCALAPPDATA% または %TEMP% です。 これらは通常、マシンのローカルの場所です。 アプリケーションがある場所から別の場所に物理的に移行した場合、元の場所に保存されているテレメトリが失われます。
 
-1. Windows 上の Web Apps では、既定のディスク ストレージの場所は D:\local\LocalAppData です。 この場所は、永続的なものではありません。 アプリの再起動やスケールアウトなどの操作によりワイプされるので、そこに保存されているテレメトリが失われます。 既定値をオーバーライドして、ストレージに D:\home のような永続的な場所を指定することもできます。 ただし、このような永続的な場所はリモート ストレージによって提供されるので、速度が遅いことがあります。
+1. Windows 上の Azure Web Apps では、既定のディスク ストレージの場所は D:\local\LocalAppData です。 この場所は、永続的なものではありません。 アプリの再起動やスケールアウトなどの操作によりワイプされるので、そこに保存されているテレメトリが失われます。 既定値をオーバーライドして、ストレージに D:\home のような永続的な場所を指定することもできます。 ただし、このような永続的な場所はリモート ストレージによって提供されるので、速度が遅いことがあります。
+
+あまりないことですが、チャネルによってテレメトリ項目が重複する可能性があります。 これは、ネットワーク障害やタイムアウトのために `ServerTelemetryChannel` で再試行が行われ、実際にはテレメトリがバックエンドに配信されたのに、ネットワークの問題やタイムアウトの発生によって応答が失われたときに発生します。
 
 ### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>ServerTelemetryChannel は Windows 以外のシステムでも動作しますか?
 
