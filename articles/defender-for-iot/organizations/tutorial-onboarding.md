@@ -1,21 +1,21 @@
 ---
-title: Azure Defender for IoT の試用版のセットアップ
-description: このチュートリアルでは、Azure Defender for IoT の試用版サブスクリプションを使用して、仮想マシン上で仮想センサーを Azure Defender for IoT にオンボードする方法について説明します。
+title: Microsoft Defender for IoT の試用版のセットアップ
+description: このチュートリアルでは、Microsoft Defender for IoT の試用版サブスクリプションを使用して、仮想マシン上で仮想センサーを Microsoft Defender for IoT にオンボードする方法について説明します。
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e509b3a1c12c7c7d118eca0b3a2adabe01bdc977
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 91e7d217861be41453669ea47525ed563200f54e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660307"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283640"
 ---
-# <a name="tutorial-azure-defender-for-iot-trial-setup"></a>チュートリアル: Azure Defender for IoT の試用版のセットアップ
+# <a name="tutorial-microsoft-defender-for-iot-trial-setup"></a>チュートリアル: Microsoft Defender for IoT の試用版のセットアップ
 
-このチュートリアルは、Azure Defender for IoT の試用版サブスクリプションを使用して、仮想マシン上で仮想センサーを Azure Defender for IoT にオンボードする方法を学ぶのに役立ちます。 このチュートリアルでは、サインアップして Azure Defender for IoT を環境に組み込む前にそれをテストするユーザーに最適なセットアップを示します。
+このチュートリアルでは、Microsoft Defender for IoT の試用版サブスクリプションを使用して、仮想マシン上で仮想センサーを Microsoft Defender for IoT にオンボードする方法について説明します。 このチュートリアルでは、サインアップして Microsoft Defender for IoT を環境に組み込む前にそれをテストするユーザーに最適なセットアップを示します。
 
 センサーの作成に必要なソフトウェアと共に仮想環境を使用することで、Defender for IoT によって以下を行うことができます。
 
@@ -25,12 +25,12 @@ ms.locfileid: "129660307"
 
 - 特殊な IoT と OT 対応の脅威インテリジェンスと行動分析によって、異常なアクティビティや未認可のアクティビティを検出します。 また、ゼロデイ マルウェア、ファイルレス マルウェア、現地調達型戦術など、静的な IOC では見逃されていた高度な脅威を検出することもできます。
 
-- 組織全体の鳥瞰図を表示するために Azure Sentinel に統合します。 Splunk、IBM QRadar、ServiceNow などのサードパーティ製ツールを含む既存のワークフローと一体化した統合 IoT と OT セキュリティ ガバナンスを実装します。
+- 組織全体の鳥瞰図を表示するために Microsoft Sentinel に統合します。 Splunk、IBM QRadar、ServiceNow などのサードパーティ製ツールを含む既存のワークフローと一体化した統合 IoT と OT セキュリティ ガバナンスを実装します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure Defender for IoT にオンボードする
+> * Microsoft Defender for IoT を使用してオンボードする
 > * 仮想センサーの ISO をダウンロードする
 > * センサー用の仮想マシンを作成する
 > * 仮想センサー ソフトウェアをインストールする
@@ -47,17 +47,17 @@ ms.locfileid: "129660307"
 
 - Azure アカウント。 Azure アカウントをまだお持ちではない場合は、[今すぐ Azure 無料アカウントを作成](https://azure.microsoft.com/free/)できます。
 
-## <a name="onboard-with-azure-defender-for-iot"></a>Azure Defender for IoT にオンボードする
+## <a name="onboard-with-microsoft-defender-for-iot"></a>Microsoft Defender for IoT を使用してオンボードする
 
-Azure Defender for IoT の使用を開始するには、Microsoft Azure サブスクリプションを用意する必要があります。 サブスクリプションをお持ちでない場合は、[今すぐ Azure 無料アカウントを作成](https://azure.microsoft.com/free/)できます。
+Microsoft Defender for IoT の使用を開始するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションをお持ちでない場合は、[今すぐ Azure 無料アカウントを作成](https://azure.microsoft.com/free/)できます。
 
 Defender for IoT を評価する場合は、試用版サブスクリプションをご利用いただけます。 試用版は 30 日間有効で、コミットされたデバイスを最大 1000 個サポートします。 試用版を使用すると、仮想センサーをネットワークにデプロイできます。 センサーを使用して、トラフィックの監視、データの分析、アラートの生成、ネットワークのリスクと脆弱性の把握などを行うことができます。 試用版では、仮想のオンプレミス管理コンソールをデプロイして、センサーによって生成された集計情報を表示することもできます。
 
-**サブスクリプションを Azure Defender for IoT にオンボードするには**:
+**サブスクリプションを Microsoft Defender for IoT にオンボードするには**:
 
-1. [Azure Portal](https://ms.portal.azure.com/) に移動します。
+1. [Azure Portal](https://portal.azure.com/) に移動します。
 
-1. **[Azure Defender for IoT]** を検索して選択します。
+1. **[Microsoft Defender for IoT]** を検索して選択します。
 
 1. **[Onboard subscription]\(サブスクリプションのオンボード\)** を選択します。
 
@@ -85,9 +85,9 @@ Defender for IoT を評価する場合は、試用版サブスクリプション
 
 **仮想センサーの ISO ファイルをダウンロードするには**:
 
-1. [Azure Portal](https://ms.portal.azure.com/) に移動します。
+1. [Azure Portal](https://portal.azure.com/) に移動します。
 
-1. **[Azure Defender for IoT]** を検索して選択します。
+1. **[Microsoft Defender for IoT]** を検索して選択します。
 
 1. [作業の開始] ページで、 **[センサー]** タブを選択します。
 
@@ -103,7 +103,7 @@ Defender for IoT を評価する場合は、試用版サブスクリプション
 
 - 仮想マシンに使用できるハードウェア リソース。
 
-- Azure Defender for IoT センサーの ISO インストール ファイル。
+- Microsoft Defender for IoT センサーの ISO インストール ファイル。
 
 - ハイパーバイザーが実行されていることを確認します。
 
@@ -404,7 +404,7 @@ Azure Defender for IoT センサーを使い始める前に、作成した仮想
 
 **仮想センサーをオンボードするには**:
 
-1. [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の **[ようこそ]** ページに移動します。
+1. Azure portal で [Defender for IoT の概要](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)ページに移動します。
 
 1. **[センサーのオンボード]** を選択します。
 
@@ -420,13 +420,13 @@ Azure Defender for IoT センサーを使い始める前に、作成した仮想
 
 1. **[クラウド接続]** トグルを使用してセンサーの接続モードを選択します。 このトグルがオンの場合、センサーはクラウド接続になります。 このトグルがオフの場合、センサーはローカル管理になります。
 
-   - **クラウド接続のセンサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 アラート情報は、IoT ハブを通じて配信され、Azure Sentinel などの他の Azure サービスと共有できます。 また、脅威インテリジェンス パッケージを Azure Defender for IoT ポータルからセンサーにプッシュすることもできます。 逆に、センサーがクラウドに接続されていない場合は、脅威インテリジェンス パッケージをダウンロードしてから、エンタープライズ センサーにアップロードする必要があります。 Defender for IoT からセンサーにパッケージをプッシュできるようにするには、 **[脅威インテリジェンスの自動更新]** トグルをオンにします。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
+   - **クラウド接続のセンサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 アラート情報は IoT ハブ経由で配信され、Microsoft Sentinel など、他の Azure サービスと共有できます。 また、脅威インテリジェンス パッケージを Defender for IoT からセンサーにプッシュできます。 逆に、センサーがクラウドに接続されていない場合は、脅威インテリジェンス パッケージをダウンロードしてから、エンタープライズ センサーにアップロードする必要があります。 Defender for IoT からセンサーにパッケージをプッシュできるようにするには、 **[脅威インテリジェンスの自動更新]** トグルをオンにします。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
 
       クラウド接続のセンサーの場合、オンボード時に定義された名前が、センサー コンソールに表示される名前です。 この名前は、コンソールから直接変更することはできません。 ローカル管理センサーの場合、オンボード時に指定された名前は、Azure に保存されますが、センサー コンソールで更新することができます。
 
    - **ローカル管理センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 エアギャップ ネットワークで作業していて、複数のローカル管理センサーによって検出されるすべての情報を一元的に表示したい場合は、オンプレミスの管理コンソールを使用します。
 
-1. センサーを関連付けるサイトを IoT Hub 内で選択します。 IoT Hub は、このセンサーと Azure Defender for IoT の間のゲートウェイとして機能します。 表示名とゾーンを定義します。 説明タグを追加することもできます。 表示名、ゾーン、タグは、「[オンボードされたセンサーを表示する](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors)」にある説明用のエントリです。
+1. センサーを関連付けるサイトを IoT Hub 内で選択します。 IoT Hub は、このセンサーと Microsoft Defender for IoT の間のゲートウェイとして機能します。 表示名とゾーンを定義します。 説明タグを追加することもできます。 表示名、ゾーン、タグは、「[オンボードされたセンサーを表示する](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors)」にある説明用のエントリです。
 
 1. **[登録]** を選択します。
 
@@ -448,7 +448,7 @@ Azure Defender for IoT センサーを使い始める前に、作成した仮想
 
 1. インストール中に定義された IP を使用して、ブラウザーからセンサー コンソールにアクセスします。
 
-    :::image type="content" source="media/tutorial-onboarding/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Azure Defender for IoT センサーのスクリーンショット。":::
+    :::image type="content" source="media/tutorial-onboarding/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Microsoft Defender for IoT センサーのスクリーンショット。":::
 
 1. センサーのインストール中に定義された資格情報を入力します。
 
@@ -477,4 +477,5 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 ## <a name="next-steps"></a>次のステップ
 
 [その他のアプライアンス](how-to-install-software.md#about-defender-for-iot-appliances)の設定方法を学びます。
+
 [エージェントレス アーキテクチャ](architecture.md)について確認します。

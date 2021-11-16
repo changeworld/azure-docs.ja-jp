@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 6d13f5f79da2906d1b994d4ab83e06d0593eaefe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e120d4fa4d85ba2d52821460da1aa62eafd0455d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586644"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158024"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>Azure Cosmos DB で API を選択する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ MongoDB、Cassandra、Gremlin、Table 用の API では、オープンソース 
 
 Oracle、DynamoDB、HBase などの他のデータベースから移行する場合や、最新のテクノロジを使用してアプリをビルドする場合は、SQL API を使用することをお勧めします。 SQL API では分析がサポートされ、運用と分析のワークロード間でパフォーマンスを分離できます。
 
-### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>MongoDB 用 API への移行のための容量計画
+### <a name="capacity-planning-for-migration-to-api-for-sqlcoreapi"></a>SQL (コア) API への移行のための容量計画
 
 既存のデータベース クラスターから Azure Cosmos DB SQL API への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
 * 既存のシャード化およびレプリケートされたデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは vCPU を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください。
@@ -94,5 +94,5 @@ Azure Table Storage 用に作成されたアプリケーションを Table API �
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

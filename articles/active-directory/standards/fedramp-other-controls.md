@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed80ffbe92777066e09d443f3e5319ad721be653
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 1d39594b5d6cf1f9430c8c8d8fbdc74343966cb0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540300"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302028"
 ---
 # <a name="configure-additional-controls-to-achieve-fedramp-high-impact-level"></a>FedRAMP High Impact レベルを達成するためにその他のコントロールを構成する
 
@@ -36,8 +36,8 @@ ms.locfileid: "110540300"
 
 | コントロール ID とサブパート| お客様の責任とガイダンス |
 | - | - |
-| AU-02 <br>AU-03 <br>AU-03(1)<br>AU-03(2)| AU-02 パート a で定義されたイベントをシステムが監査できることを確認し、 組織の監査可能イベントのサブセットに含まれるその他エンティティとの調整を行い、事後調査をサポートします。 監査レコードの集中管理を実装します。<p>すべてのアカウント ライフサイクル操作 (アカウントの作成、変更、有効化、無効化、削除の各アクション) は、Azure AD 監査ログ内で監査されます。 すべての認証および認可イベントは Azure AD サインイン ログ内で監査され、検出されたリスクがあれば Identity Protection ログで監査されます。 これらの各ログは、Azure Sentinel などのセキュリティ情報イベント管理 (SIEM) ソリューションに直接ストリーム配信できます。 または、Azure Event Hubs を使用して、ログをサードパーティ製の SIEM ソリューションと統合します。<p>イベントを監査する<li> [Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md)<li> [Azure Active Directory ポータルのサインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)<li>[方法: リスクの調査](../identity-protection/howto-identity-protection-investigate-risk.md)<p>SIEM の統合<li> [Azure Sentinel : Azure Active Directory (Azure AD) からデータを接続する](../../sentinel/connect-azure-active-directory.md)<li>[Azure イベント ハブやその他の SIEM へのストリーミング](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
-| AU-06<br>AU-06(1)<br>AU-06(3)<br>AU-06(4)<br>AU-06(5)<br>AU-06(6)<br>AU-06(7)<br>AU-06(10)<br>| 少なくとも毎週 1 回監査レコードをレビューおよび分析し、不適切または異常なアクティビティを特定し、結果を適切な担当者にレポートします。 <p>前出の AU-02 および AU-03 のガイダンスにより、監査レコードの毎週のレビューと適切な担当者へのレポートが可能になります。 Azure AD のみを使用してこれらの要件を満たすことはできません。 Azure Sentinel などの SIEM ソリューションも使用する必要があります。 詳細については、「[Azure Sentinel とは](../../sentinel/overview.md)」を参照してください。 |
+| AU-02 <br>AU-03 <br>AU-03(1)<br>AU-03(2)| AU-02 パート a で定義されたイベントをシステムが監査できることを確認し、 組織の監査可能イベントのサブセットに含まれるその他エンティティとの調整を行い、事後調査をサポートします。 監査レコードの集中管理を実装します。<p>すべてのアカウント ライフサイクル操作 (アカウントの作成、変更、有効化、無効化、削除の各アクション) は、Azure AD 監査ログ内で監査されます。 すべての認証および認可イベントは Azure AD サインイン ログ内で監査され、検出されたリスクがあれば Identity Protection ログで監査されます。 これらの各ログは、Microsoft Sentinel などのセキュリティ情報イベント管理 (SIEM) ソリューションに直接ストリーム配信できます。 または、Azure Event Hubs を使用して、ログをサードパーティ製の SIEM ソリューションと統合します。<p>イベントを監査する<li> [Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md)<li> [Azure Active Directory ポータルのサインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)<li>[方法: リスクの調査](../identity-protection/howto-identity-protection-investigate-risk.md)<p>SIEM の統合<li> [Microsoft Sentinel: Azure Active Directory (Azure AD) のデータを接続する](../../sentinel/connect-azure-active-directory.md)<li>[Azure イベント ハブやその他の SIEM へのストリーミング](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
+| AU-06<br>AU-06(1)<br>AU-06(3)<br>AU-06(4)<br>AU-06(5)<br>AU-06(6)<br>AU-06(7)<br>AU-06(10)<br>| 少なくとも毎週 1 回監査レコードをレビューおよび分析し、不適切または異常なアクティビティを特定し、結果を適切な担当者にレポートします。 <p>前出の AU-02 および AU-03 のガイダンスにより、監査レコードの毎週のレビューと適切な担当者へのレポートが可能になります。 Azure AD のみを使用してこれらの要件を満たすことはできません。 Microsoft Sentinel などの SIEM ソリューションも使用する必要があります。 詳細については、「[Microsoft Sentinel とは](../../sentinel/overview.md)」を参照してください。 |
 
 ## <a name="incident-response"></a>インシデント対応
 
@@ -49,7 +49,7 @@ ms.locfileid: "110540300"
 
 | コントロール ID とサブパート| お客様の責任とガイダンス |
 | - | - |
-| IR-04<br>IR-04(1)<br>IR-04(2)<br>IR-04(3)<br>IR-04(4)<br>IR-04(6)<br>IR-04(8)<br>IR-05<br>IR-05(1)| インシデントの処理と監視の機能を実装します。 これには、自動インシデント処理、動的再構成、運用の継続性、情報の相関、インサイダーの脅威、外部組織との相関、インシデントの監視と自動追跡などがあります。 <p>監査ログには、構成の変更がすべて記録されます。 認証および認可イベントはサインイン ログ内で監査され、検出されたリスクがあれば Identity Protection ログで監査されます。 これらのログはそれぞれ、Azure Sentinel などの SIEM ソリューションに直接ストリーム配信することができます。 または、Azure Event Hubs を使用して、ログをサードパーティ製の SIEM ソリューションと統合します。 Microsoft Graph や Azure AD PowerShell を使用して、SIEM 内のイベントに基づいて動的再構成を自動化します。<p>イベントを監査する<br><li>[Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md)<li>[Azure Active Directory ポータルのサインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)<li>[方法: リスクの調査](../identity-protection/howto-identity-protection-investigate-risk.md)<p>SIEM の統合<li>[Azure Sentinel : Azure Active Directory (Azure AD) からデータを接続する](../../sentinel/connect-azure-active-directory.md)<li>[Azure イベント ハブやその他の SIEM へのストリーミング](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)<p>動的再構成<li>[AzureAD モジュール](/powershell/module/azuread/)<li>[Microsoft Graph の概要](/graph/overview?view=graph-rest-1.0&preserve-view=true) |
+| IR-04<br>IR-04(1)<br>IR-04(2)<br>IR-04(3)<br>IR-04(4)<br>IR-04(6)<br>IR-04(8)<br>IR-05<br>IR-05(1)| インシデントの処理と監視の機能を実装します。 これには、自動インシデント処理、動的再構成、運用の継続性、情報の相関、インサイダーの脅威、外部組織との相関、インシデントの監視と自動追跡などがあります。 <p>監査ログには、構成の変更がすべて記録されます。 認証および認可イベントはサインイン ログ内で監査され、検出されたリスクがあれば Identity Protection ログで監査されます。 これらのログはそれぞれ、Microsoft Sentinel などの SIEM ソリューションに直接ストリーム配信することができます。 または、Azure Event Hubs を使用して、ログをサードパーティ製の SIEM ソリューションと統合します。 Microsoft Graph や Azure AD PowerShell を使用して、SIEM 内のイベントに基づいて動的再構成を自動化します。<p>イベントを監査する<br><li>[Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md)<li>[Azure Active Directory ポータルのサインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)<li>[方法: リスクの調査](../identity-protection/howto-identity-protection-investigate-risk.md)<p>SIEM の統合<li>[Microsoft Sentinel: Azure Active Directory (Azure AD) のデータを接続する](../../sentinel/connect-azure-active-directory.md)<li>[Azure イベント ハブやその他の SIEM へのストリーミング](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)<p>動的再構成<li>[AzureAD モジュール](/powershell/module/azuread/)<li>[Microsoft Graph の概要](/graph/overview?view=graph-rest-1.0&preserve-view=true) |
 
 ## <a name="personnel-security"></a>人的セキュリティ
 

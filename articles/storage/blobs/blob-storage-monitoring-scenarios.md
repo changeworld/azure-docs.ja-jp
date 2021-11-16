@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 98c077ff578cfbe70bfe3a871e5a1eb4d5fbd755
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 54155f2bacd9a593a1288c8d1f95a5843dca2602
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584258"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134790"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Azure Blob Storage の監視に関するベスト プラクティス
 
@@ -132,6 +132,8 @@ StorageBlobLogs
 
 監査の "誰が" 部分については、`AuthenticationType` に、要求を行うために使用された認証の種類が表示されます。 このフィールドには、アカウント キー、SAS トークン、または Azure Active Directory (Azure AD) 認証の使用など、Azure Storage でサポートされているすべての種類の認証を表示できます。
 
+#### <a name="identifying-the-security-principal-used-to-authorize-a-request"></a>要求の承認に使用されるセキュリティ プリンシパルの特定
+
 要求が Azure AD を使用して認証された場合、`RequesterObjectId` フィールドには、セキュリティ プリンシパルを識別する最も信頼性の高い方法が示されます。 そのセキュリティ プリンシパルのフレンドリ名を見つけるには、`RequesterObjectId` フィールドの値を取得し、Azure portal の Azure AD ページでセキュリティ プリンシパルを検索します。 次のスクリーンショットは、Azure AD での検索結果を示しています。
 
 > [!div class="mx-imgBorder"]
@@ -150,6 +152,32 @@ StorageBlobLogs
 ```
 
 共有キーと SAS 認証では、個々の ID を監査する手段は提供されません。 したがって、ID に基づく監査能力を向上させたい場合は、Azure AD に移行し、共有キーと SAS の認証を禁止することをお勧めします。 共有キーと SAS 認証を禁止する方法については、「[Azure Storage アカウントの共有キーによる承認を禁止する](../common/shared-key-authorization-prevent.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=portal)」を参照してください。 Azure AD の使用を開始するには、[Azure Active Directory を使用した BLOB へのアクセスの承認](authorize-access-azure-active-directory.md)に関するページを参照してください。
+
+#### <a name="identifying-the-sas-token-used-to-authorize-a-request"></a>要求の承認に使用される SAS トークンの特定
+
+SAS トークンを使用して承認された操作を照会できます。 たとえば、次のクエリは、SAS トークンを使用して承認されたすべての書き込み操作を返します。
+
+```kusto
+StorageBlobLogs
+| where TimeGenerated > ago(3d)
+  and OperationName == "PutBlob"
+  and AuthenticationType == "SAS"
+| project TimeGenerated, AuthenticationType, AuthenticationHash, OperationName, Uri
+```
+
+セキュリティ上の理由から、SAS トークンはログには表示されません。 ただし、SAS トークンの SHA-256 ハッシュは、このクエリによって返される `AuthenticationHash` フィールドに表示されます。 
+
+複数の SAS トークンを分散していて、どの SAS トークンが使用されているかを知る必要がある場合は、各 SAS トークンを SHA-256 ハッシュに変換し、ログに表示されるハッシュ値とそのハッシュを比較する必要があります。
+
+最初に各 SAS トークン文字列をデコードします。 次の例では、PowerShell を使用して SAS トークン文字列をデコードします。
+
+```powershell
+[uri]::UnescapeDataString("<SAS token goes here>")
+```
+
+その後、その文字列を [Get-FileHash](/powershell/module/microsoft.powershell.utility/get-filehash) PowerShell コマンドレットに渡すことができます。 サンプルについては、「[例 4: 文字列のハッシュを計算する](/powershell/module/microsoft.powershell.utility/get-filehash#example-4--compute-the-hash-of-a-string)」を参照してください。
+
+または、デコードされた文字列を kusto クエリの一部として [hash_sha256()](/data-explorer/kusto/query/sha256hashfunction) 関数に渡すこともできます。
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>頻度の低いクエリのコストを最適化する
 

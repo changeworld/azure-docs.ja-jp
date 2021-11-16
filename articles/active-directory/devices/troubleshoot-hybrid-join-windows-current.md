@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2b7e51bc2837cdb068f0f9d6704e80d3f41c396e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 6188dcd648b59ba7ff535a7431ff0bb47a6f660e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538863"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136095"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイスのトラブルシューティング
 
@@ -32,6 +32,10 @@ ms.locfileid: "129538863"
 - デバイスベースの条件付きアクセス
 - [Enterprise State Roaming](./enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+
+
+> [!NOTE] 
+> デバイス登録に関するよくある問題のトラブルシューティングを行うには、[デバイス登録のトラブルシューティング ツール](https://aka.ms/DSRegTool)を使用してください。
 
 
 ## <a name="troubleshoot-join-failures"></a>参加エラーのトラブルシューティング

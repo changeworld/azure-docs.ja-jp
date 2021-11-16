@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da609d7952243c19a3cc6cc9417353965635f0de
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 1af397b12c01d64e1947448dbd0b5096ae436343
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851308"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335292"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -303,7 +303,7 @@ Azure Active Directory がオンプレミスの Active Directory に接続され
 
 #### <a name="establish-integrated-monitoring"></a>統合型の監視を確立する
 
-[Azure Security Center](../../security-center/security-center-introduction.md)は以下の機能を提供します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は次を行います。
 
 * Azure サブスクリプション全体のセキュリティ監視とポリシー管理を統合します
 * 他の方法では見過ごされてしまう可能性のある脅威を検出します
@@ -322,7 +322,7 @@ Azure AD 管理者ロールと共に Privileged Identity Management を使用し
 Azure ログ統合を使用すると、未加工のログを、Azure リソースから組織の既存のセキュリティ情報イベント管理 (SIEM) システムに統合できます。 [Azure ログ統合](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)では、Windows イベント ビューアーのログから Windows イベントが収集され、Azure リソースが次から収集されます。
 
 * Azure アクティビティ ログ
-* Azure Security Center のアラート
+* Microsoft Defender for Cloud アラート
 * Azure リソース ログ
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD を介して他のクラウド アプリへのアクセスを管理する組織における追加の手順
@@ -333,7 +333,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などのクラ�
 
 #### <a name="integrate-information-protection"></a>Information Protection を統合する
 
-Microsoft Cloud App Security を使用すると、ファイルを調査し、Azure Information Protection 分類ラベルに基づいてポリシーを設定して、クラウド データの可視性と制御を向上させることができます。 クラウド内のファイルをスキャンして分類し、Azure Information Protection ラベルを適用します。 詳しくは、「[Azure Information Protection の統合](/cloud-app-security/azip-integration)」をご覧ください。
+Microsoft Defender for Cloud Apps を使用すると、ファイルを調査し、Azure Information Protection 分類ラベルに基づいてポリシーを設定して、ご自分のクラウド データの可視性と制御を向上させることができます。 クラウド内のファイルをスキャンして分類し、Azure Information Protection ラベルを適用します。 詳しくは、「[Azure Information Protection の統合](/cloud-app-security/azip-integration)」をご覧ください。
 
 #### <a name="configure-conditional-access"></a>条件付きアクセスを構成する
 
@@ -341,7 +341,7 @@ Microsoft Cloud App Security を使用すると、ファイルを調査し、Azu
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>接続されているクラウド アプリのアクティビティを監視する
 
-接続されているアプリケーションでもユーザーのアクセスが確実に保護されるように、[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) の利用をお勧めします。 この機能により、クラウド アプリへのエンタープライズ アクセスと管理者アカウントが保護され、以下が可能になります。
+接続されているアプリケーションでもユーザーのアクセスが確実に保護されるように、[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) の利用をお勧めします。 この機能により、クラウド アプリへのエンタープライズ アクセスと管理者アカウントが保護され、以下が可能になります。
 
 * 可視性と制御をクラウド アプリに拡張する
 * アクセス、アクティビティ、データ共有のポリシーを作成する
@@ -349,7 +349,7 @@ Microsoft Cloud App Security を使用すると、ファイルを調査し、Azu
 * データの漏えいを防ぐ
 * リスクを最小限に抑え、脅威の防止とポリシーの適用を自動化する
 
-Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サーバーと統合して、Microsoft 365 のアラートとアクティビティの一元的な監視を可能にします。 サーバー上で稼働し、Cloud App Security からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](/cloud-app-security/siem)」をご覧ください。
+Defender for Cloud Apps SIEM エージェントは、Defender for Cloud Apps を SIEM サーバーと統合して、Microsoft 365 のアラートとアクティビティの一元的な監視を可能にします。 お使いのサーバー上で稼働し、Defender for Cloud App からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](/cloud-app-security/siem)」をご覧ください。
 
 ## <a name="stage-4-continue-building-defenses"></a>ステージ 4: 防御の構築を継続する
 

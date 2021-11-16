@@ -11,18 +11,21 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: b868de74376199fdc173c41e8711575b44e67200
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: adacd4e8264b7fcd4c0389f8d575247a17a664aa
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164804"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158960"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>SQL Server FCI および DNN との機能の相互運用性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の複数のサブネットに SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して分散ネットワーク名 (DNN) が不要になります。
 
 特定の SQL Server 機能では、ハードコーディングされた仮想ネットワーク名 (VNN) が使用されます。 そのため、分散ネットワーク名 (DNN) リソースを Azure VM 上のフェールオーバー クラスター インスタンスおよび SQL Server と一緒に使用する場合には、いくつかの追加の考慮事項があります。 
 

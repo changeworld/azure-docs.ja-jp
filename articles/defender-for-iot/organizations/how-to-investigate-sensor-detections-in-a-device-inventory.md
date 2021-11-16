@@ -3,12 +3,12 @@ title: 特定のセンサーによって検出されたデバイスに関する�
 description: デバイス インベントリには、センサーで検出された広範なデバイス属性が表示されます。
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 10df10a64059e5f5673a9e4ae6f18a09e4c41838
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 423ddcb9b50be6aa758e28f20291f8d66e58e3f4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515275"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028194"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>デバイス インベントリのセンサー検出を調査する
 
@@ -45,7 +45,20 @@ ms.locfileid: "113515275"
 | 最終アクティビティ | デバイスで最後に実行されたアクティビティ。 |
 | Discovered | このデバイスがネットワークに最初に表示された日時。 |
 
-デバイス インベントリを表示するには、次の操作を行います。
+## <a name="what-is-an-inventory-device"></a>インベントリ デバイスとは
+
+Defender for IoT デバイス インベントリには、組織のネットワークとマネージド エンドポイントを監視しているセンサーによって検出された広範な資産属性が表示されます。
+
+Defender for IoT では、次のインベントリでデバイスを識別し、一意の単一ネットワーク デバイスとして分類します。
+
+1. スタンドアロンの IT、OT、IoT デバイス (1 枚以上の NIC を搭載)
+1. 複数のバックプレーン コンポーネント (すべてのラック、スロット、モジュールを含む) で構成されるデバイス
+1. スイッチやルーターなど、ネットワーク インフラストラクチャとして機能するデバイス (複数の NIC を搭載)。 
+
+パブリック インターネット IP アドレス、マルチキャスト グループ、ブロードキャスト グループは、インベントリ デバイスとは見なされません。
+60 日を超えて非アクティブ状態にあるデバイスは、非アクティブなインベントリ デバイスとして分類されます。
+
+**デバイス インベントリを表示するには、次の操作を行います。**
 
 1. 左側のウィンドウで **[デバイス]** を選択します。 右側に **[デバイス]** ウィンドウが開きます。
 

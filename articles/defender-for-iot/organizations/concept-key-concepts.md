@@ -3,12 +3,12 @@ title: 主な利点
 description: Defender for IoT の基本的な概念について説明します。
 ms.date: 09/09/2021
 ms.topic: article
-ms.openlocfilehash: be5c7f31cb652bb40f4bae35fa42b76d7a576276
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 284301f7a797f2a161aafe90ec641fc062738933
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836475"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026465"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -114,6 +114,20 @@ Defender for IoT を使用すると、複数のデプロイを効果的に管理
 条件に基づくカスタムのアラートのトリガーとメッセージングを使用すると、特定のネットワーク アクティビティを特定し、セキュリティ、IT、および運用チームを効果的に更新することができます。
 
 サポートされているプロトコルの完全な一覧については、「[サポートされているプロトコル](concept-supported-protocols.md#supported-protocols)」を参照してください。
+
+## <a name="what-is-an-inventory-device"></a>インベントリ デバイスとは
+
+Defender for IoT デバイス インベントリには、組織のネットワークとマネージド エンドポイントを監視しているセンサーによって検出された広範な資産属性が表示されます。
+
+Defender for IoT では、次のインベントリでデバイスを識別し、一意の単一ネットワーク デバイスとして分類します。
+
+1. スタンドアロンの IT、OT、IoT デバイス (1 枚以上の NIC を搭載)
+1. 複数のバックプレーン コンポーネント (すべてのラック、スロット、モジュールを含む) で構成されるデバイス
+1. スイッチやルーターなど、ネットワーク インフラストラクチャとして機能するデバイス (複数の NIC を搭載)。 
+
+パブリック インターネット IP アドレス、マルチキャスト グループ、ブロードキャスト グループは、インベントリ デバイスとは見なされません。
+60 日を超えて非アクティブ状態にあるデバイスは、非アクティブなインベントリ デバイスとして分類されます。
+
 
 ## <a name="high-availability"></a>高可用性
 

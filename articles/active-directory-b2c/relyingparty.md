@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/27/2021
+ms.date: 11/09/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: b4344626318799a79fa668784e5674730e1731cd
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 83a4c80b809d2ea127b28d5f562d6c837a16d891
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065497"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136160"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -244,6 +244,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | UseDetachedKeys | No |  指定できる値: `true` または `false` (既定値)。 値が `true` に設定されている場合、暗号化されたアサーションの形式が変わります。 デタッチされたキーを使用すると、暗号化されたアサーションが EncryptedData ではなく、EncrytedAssertion の子として追加されます。 |
 | WantsSignedResponses| No | Azure AD B2C が SAML 応答の `Response` セクションに署名するかどうかを示します。 指定できる値: `true` (既定値) または `false`。  |
 | RemoveMillisecondsFromDateTime| いいえ | SAML 応答内の datetime の値からミリ秒を削除するかどうかを示します (これには、IssueInstant、NotBefore、NotOnOrAfter、および AuthnInstant が含まれます)。 指定できる値: `false` (既定値) または `true`。  |
+| RequestContextMaximumLengthInBytes| いいえ | [SAML アプリケーション](saml-service-provider.md) の `RelayState` パラメーターの最大長を指定します。 既定値は 1000 です。 最大は 2048 です。| 
 
 ### <a name="inputclaims"></a>InputClaims
 

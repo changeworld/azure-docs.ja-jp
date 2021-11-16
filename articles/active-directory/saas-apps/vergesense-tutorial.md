@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: c47e24556df3238545bcaeff03d53ecb013c59f3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d9631a119fe96bdcf6f99c9be73ad35a5bdc6e4d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128702016"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282388"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-vergesense"></a>チュートリアル: Azure AD SSO と VergeSense の統合
 
@@ -147,4 +147,4 @@ VergeSense 用に Azure AD SSO を構成してテストするには、次の手�
 
 ## <a name="next-steps"></a>次のステップ
 
-VergeSense を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+VergeSense を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

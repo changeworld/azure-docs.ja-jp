@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: b0ee99863c0ba0287d3fd192ed04145fd3a3c69f
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: c008122f0354b77505df61bdade90adb3960782f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129402673"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280812"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-adp"></a>チュートリアル: Azure AD SSO と ADP の統合
 
@@ -214,4 +214,4 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 ## <a name="next-steps"></a>次のステップ
 
-ADP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+ADP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

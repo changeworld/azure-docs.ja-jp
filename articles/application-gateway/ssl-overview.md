@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: 8a757b1825cb1c1e2f471a965077ea5801000dc4
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: be89c299d5b45f54a5d147bf3841384526f54360
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761455"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556675"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway での TLS 終端とエンド ツー エンド TLS の概要
 
@@ -27,7 +27,7 @@ Application Gateway では、ゲートウェイの TLS 終端がサポートさ�
 - **インテリジェントなルーティング** – トラフィックの暗号化を解除することで、アプリケーション ゲートウェイはヘッダー、URIなど、要求のコンテンツにアクセスでき、このデータを使用して要求をルーティングすることができます。
 - **証明書の管理** – 証明書は、購入して、すべてのバックエンド サーバーではなくアプリケーション ゲートウェイにインストールするだけで済みます。 これにより時間もコストも節約できます。
 
-TLS 終端を構成するには、TLS/SSL 証明書をリスナーに追加して、アプリケーション ゲートウェイで TLS/SSL プロトコルの仕様どおりの対称キーを派生させることを可能にする必要があります。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 TLS/SSL 証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
+TLS 終端を構成するには、TLS/SSL 証明書をリスナーに追加する必要があります。 これにより、Application Gateway で受信トラフィックを復号化し、クライアントへの応答トラフィックを暗号化することができます。 Application Gateway に提供される証明書は、プライベートおよび公開キーの両方を含む Personal Information Exchange (PFX) 形式である必要があります。
 
 > [!IMPORTANT] 
 > リスナーの証明書では、信頼のチェーンを確立するため、証明書チェーン全体をアップロードする必要があります (CA からのルート証明書、中間、リーフ証明書)。 
@@ -150,6 +150,7 @@ HTTPS の正常性プローブに対しては、Application Gateway v1 SKU で�
 | --- | --- | --- |
 | TLS ハンドシェイク中の FQDN としての SNI (server_name) ヘッダー | バックエンド プールから FQDN として設定されます。 [RFC 6066](https://tools.ietf.org/html/rfc6066) に従い、リテラルな IPv4 および IPv6 アドレスは、SNI ホスト名では許可されていません。 <br> **注:** バックエンド プールでの FQDN は、バックエンド サーバーの IP アドレス (パブリックまたはプライベート) に DNS 解決される必要があります | SNI ヘッダー (server_name) は、HTTP 設定からホスト名として設定されます。そうでない場合は、*PickHostnameFromBackendAddress* オプションが選択されているか、ホスト名が指定されていないと、バックエンド プールの構成に FQDN として設定されます
 | バックエンド プール アドレスが IP アドレスであるか、またはホスト名が HTTP 設定に設定されていない場合 | バックエンド プール エントリが FQDN でない場合、[RFC 6066](https://tools.ietf.org/html/rfc6066) に従って SNI は設定されません | SNI はクライアントによって入力された FQDN からホスト名として設定されます。また、バックエンド証明書の CN が、このホスト名と一致している必要があります。
+| ホスト名は HTTP サーバー設定で指定されていないが、FQDN がバックエンド プール メンバーのターゲットとして指定されている場合 | SNI はクライアントによって入力された FQDN からホスト名として設定されます。また、バックエンド証明書の CN が、このホスト名と一致している必要があります。 | SNI はクライアントによって入力された FQDN からホスト名として設定されます。また、バックエンド証明書の CN が、このホスト名と一致している必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,14 +2,14 @@
 title: クラウドへのイベントベースのビデオ記録とクラウドからの再生に関するチュートリアル - Azure
 description: このチュートリアルでは、Azure Video Analyzer を使用して、イベントベースのビデオ録画をクラウドに記録し、それをクラウドから再生する方法について説明します。
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4f5c7bfe4c56eaa5730a408b549723331c969c29
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 04d84e372cd7464ba91f415ae9bfdd8875796e96
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092306"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284647"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>チュートリアル: イベントベースのビデオ記録と再生
 

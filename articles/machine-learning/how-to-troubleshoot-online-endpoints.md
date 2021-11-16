@@ -11,12 +11,12 @@ ms.reviewer: laobri
 ms.date: 11/03/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 06c8c9c128528b3e50c49e9c29a0849c9640d7eb
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 02f65a5c07536afb1fb20c3f85c444f2376c9b34
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560684"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137582"
 ---
 # <a name="troubleshooting-online-endpoints-deployment-and-scoring-preview"></a>オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
@@ -96,86 +96,47 @@ az ml online-deployment get-logs -h
 
 デプロイ操作の状態の一部としてレポートされる一般的なデプロイ エラーの一覧を次に示します。
 
-### <a name="err_1100-not-enough-quota"></a>ERR_1100: Not enough quota (ERR_1100: 十分なクォータがありません)
+* [OutOfQuota](#error-outofquota)
+* [OutOfCapacity](#error-outofcapacity)
+* [BadArgument](#error-badargument)
+* [ResourceNotReady](#error-resourcenotready)
+* [ResourceNotFound](#error-resourcenotfound)
+* [OperationCancelled](#error-operationcancelled)
+* [InternalServerError](#error-internalservererror)
+
+### <a name="error-outofquota"></a>ERROR: OutOfQuota
+
+以下に示すのは、Azure サービスを使用するときにクォータが不足している可能性がある一般的なリソースの一覧です。
+
+* [CPU](#cpu-quota)
+* [ロールの割り当て](#role-assignment-quota)
+* [エンドポイント](#endpoint-quota)
+* [Kubernetes](#kubernetes-quota)
+* [その他](#other-quota)
+
+#### <a name="cpu-quota"></a>CPU クォータ
 
 モデルをデプロイする前に、十分なコンピューティング クォータを用意する必要があります。 このクォータでは、サブスクリプションごと、ワークスペースごと、SKU ごと、リージョンごとに使用可能な仮想コアの量を定義します。 SKU の種類に基づいて、デプロイするたびに使用可能なクォータが減算され、削除するたびに加算されます。
 
-考えられる軽減策は、使用されていない削除可能なデプロイが含まれていないかを確認することです。 または、[クォータの引き上げ要求](./how-to-manage-quotas.md)を送信できます。
+考えられる軽減策は、使用されていない削除可能なデプロイが含まれていないかを確認することです。 または、[クォータの引き上げ要求](how-to-manage-quotas.md#request-quota-increases)を送信できます。
 
-### <a name="err_1101-out-of-capacity"></a>ERR_1101: Out of capacity (容量不足です)
+#### <a name="role-assignment-quota"></a>ロールの割り当てクォータ
 
-Azure Machine Learning の容量不足のため、指定された VM サイズをプロビジョニングできませんでした。 後で再試行するか、別のリージョンにデプロイしてみてください。
+このサブスクリプションで使用されていないロールの割り当てを削除してみてください。 Azure portal の [アクセス制御] メニューで、すべてのロールの割り当てを確認できます。
 
-### <a name="err_1102-no-more-role-assignments"></a>ERR_1102: No more role assignments (これ以上ロールの割り当てはありません)
+#### <a name="endpoint-quota"></a>エンドポイント クォータ
 
-このサブスクリプションで使用されていないロールの割り当てを削除します。 Azure portal の [アクセス制御] メニューで、すべてのロールの割り当てを確認できます。
+このサブスクリプションで使用されていないエンドポイントをいくつか削除してみてください。
 
-### <a name="err_1103-endpoint-quota-reached"></a>ERR_1103: Endpoint quota reached (エンドポイントのクォータに達しました)
+#### <a name="kubernetes-quota"></a>Kubernetes クォータ
 
-このサブスクリプションで使用されていないエンドポイントをいくつか削除します。
+要求された CPU またはメモリを満たすことができませんでした。 要求またはクラスターを調整してください。
 
-### <a name="err_1200-unable-to-download-user-container-image"></a>ERR_1200: Unable to download user container image (ERR_1200: ユーザー コンテナー イメージをダウンロードできません)
-
-コンピューティングをプロビジョニングした後、デプロイの作成時に、Azure ではワークスペースのプライベート Azure コンテナー レジストリ (ACR) からユーザー コンテナー イメージをプルしようとします。 2 つの問題が発生する可能性があります。
-
-- ユーザー コンテナー イメージが見つかりません。
-
-  ワークスペース ACR でコンテナー イメージを使用できることを確認します。
-たとえば、イメージが `testacr.azurecr.io/azureml/azureml_92a029f831ce58d2ed011c3c42d35acb:latest` の場合は、`az acr repository show-tags -n testacr --repository azureml/azureml_92a029f831ce58d2ed011c3c42d35acb --orderby time_desc --output table` を使用してリポジトリを確認します。
-
-- ACR にアクセスする際にアクセス許可の問題が発生しています。
-
-  イメージをプルする際、Azure では[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用して ACR にアクセスします。 
-
-  - SystemAssigned を使用して関連付けられたエンドポイントを作成した場合は、Azure のロールベースのアクセス制御 (RBAC) のアクセス許可が自動的に付与され、それ以上のアクセス許可は必要ありません。
-  - UserAssigned を使用して関連付けられたエンドポイントを作成した場合は、ユーザーのマネージド ID に、ワークスペース ACR に対する AcrPull アクセス許可が含まれている必要があります。
-
-このエラーに関する詳細を表示するには、次を実行します。
-
-```azurecli
-az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
-```
-
-### <a name="err_1300-unable-to-download-user-modelcode-artifacts"></a>ERR_1300: Unable to download user model\code artifacts (ERR_1300: ユーザー モデルおよびコード成果物をダウンロードできません)
-
-コンピューティング リソースをプロビジョニングした後、デプロイの作成時に、Azure ではユーザー モデルとコード成果物をワークスペース ストレージ アカウントからユーザー コンテナーにマウントしようとします。
-
-- ユーザー モデルとコード成果物が見つかりません。
-
-  - モデルとコード成果物が、デプロイと同じワークスペースに登録されていることを確認します。 `show` コマンドを使用して、ワークスペース内のモデルまたはコード成果物の詳細を表示します。 次に例を示します。 
-  
-    ```azurecli
-    az ml model show --name <model-name>
-    az ml code show --name <code-name> --version <version>
-    ```
-
-  - また、BLOB がワークスペース ストレージ アカウント内に存在するかどうかを確認することもできます。
-
-    たとえば、BLOB が `https://foobar.blob.core.windows.net/210212154504-1517266419/WebUpload/210212154504-1517266419/GaussianNB.pkl` の場合、`az storage blob exists --account-name foobar --container-name 210212154504-1517266419 --name WebUpload/210212154504-1517266419/GaussianNB.pkl --subscription <sub-name>` コマンドを使用して、それが存在するかどうかを確認できます。
-
-- ACR にアクセスする際にアクセス許可の問題が発生しています。
-
-  BLOB をプルするために、Azure では[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用してストレージ アカウントにアクセスします。
-
-  - SystemAssigned を使用して関連付けられたエンドポイントを作成した場合は、Azure のロールベースのアクセス制御 (RBAC) のアクセス許可が自動的に付与され、それ以上のアクセス許可は必要ありません。
-
-  - UserAssigned を使用して関連付けられているエンドポイントを作成した場合は、ユーザーのマネージド ID に、ワークスペース ストレージ アカウントに対するストレージ BLOB データ閲覧者のアクセス許可が必要です。
-
-このエラーに関する詳細を表示するには、次を実行します。
-
-```azurecli
-az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
-```
-
-### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350: Unable to download user model, not enough space on the disk (ユーザー モデルをダウンロードできません。ディスクに十分な領域がありません)
-
-この問題は、モデルのサイズが使用可能なディスク領域よりも大きい場合に発生します。 もっと大きいディスク領域がある SKU を試してください。
-
-### <a name="err_2100-unable-to-start-user-container"></a>ERR_2100: Unable to start user container (ERR_2100: ユーザー コンテナーを起動できません)
+#### <a name="other-quota"></a>その他のクォータ
 
 デプロイの一部として提供される `score.py` を実行するために、Azure では `score.py` に必要なすべてのリソースを含むコンテナーを作成し、そのコンテナーでスコアリング スクリプトを実行します。
 
-このエラーは、このコンテナーを起動できなかったため、スコアリングを実行できなかったことを意味します。 コンテナーには、`instance_type` でサポートできるよりも多くのリソースが必要である可能性があります。 その場合は、オンライン デプロイの `instance_type` を更新することを検討してください。
+コンテナーを起動できなかった場合、これはスコアリングを実行できなかったことを意味します。 コンテナーには、`instance_type` でサポートできるよりも多くのリソースが必要である可能性があります。 その場合は、オンライン デプロイの `instance_type` を更新することを検討してください。
 
 エラーの正確な原因を取得するには、次を実行します。 
 
@@ -183,29 +144,96 @@ az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
-### <a name="err_2101-kubernetes-unschedulable"></a>ERR_2101: Kubernetes unschedulable (Kubernetes スケジュール不可)
+### <a name="error-outofcapacity"></a>ERROR: OutOfCapacity
 
-要求された CPU またはメモリを満たすことができません。 要求またはクラスターを調整してください。
+Azure Machine Learning の容量不足のため、指定された VM サイズをプロビジョニングできませんでした。 後で再試行するか、別のリージョンにデプロイしてみてください。
 
-### <a name="err_2102-resources-requests-invalid"></a>ERR_2102: Resources requests invalid (無効なリソース要求)
+### <a name="error-badargument"></a>ERROR: BadArgument
+
+以下に示すのは、このエラーが発生する可能性がある理由の一覧です。
+
+* [リソース要求が制限を超えている](#resource-requests-greater-than-limits)
+* [リソースをダウンロードできない](#unable-to-download-resources)
+
+#### <a name="resource-requests-greater-than-limits"></a>制限を超えているリソース要求
 
 リソースに対する要求は、制限以下でなければなりません。 制限を設定しない場合は、Azure Machine Learning ワークスペースにコンピューティングをアタッチするときに既定値が設定されます。 制限は、Azure portal または `az ml compute show` コマンドを使用して確認できます。
 
-### <a name="err_2200-user-container-has-crashedterminated"></a>ERR_2200: User container has crashed\terminated (ERR_2200: ユーザー コンテナーがクラッシュまたは終了しました)
+#### <a name="unable-to-download-resources"></a>リソースをダウンロードできない
 
-デプロイの一部として提供される `score.py` を実行するために、Azure では `score.py` に必要なすべてのリソースを含むコンテナーを作成し、そのコンテナーでスコアリング スクリプトを実行します。  このシナリオのエラーは、実行中にこのコンテナーがクラッシュしたため、スコアリングを実行できなかったことを意味します。 このエラーは、次の場合に発生します。
+コンピューティング リソースをプロビジョニングした後、Azure では、デプロイの作成中に、ワークスペースのプライベート Azure Container Registry (ACR) からユーザー コンテナー イメージをプルし、ユーザー モデルとコード成果物をワークスペース ストレージ アカウントからユーザー コンテナーにマウントしようとします。
+
+まず、ACR へのアクセスに関するアクセス許可の問題があるかどうかを確認してください。
+
+BLOB をプルするために、Azure では[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用してストレージ アカウントにアクセスします。
+
+  - SystemAssigned を使用して関連付けられたエンドポイントを作成した場合は、Azure のロールベースのアクセス制御 (RBAC) のアクセス許可が自動的に付与され、それ以上のアクセス許可は必要ありません。
+
+  - UserAssigned を使用して関連付けられているエンドポイントを作成した場合は、ユーザーのマネージド ID に、ワークスペース ストレージ アカウントに対するストレージ BLOB データ閲覧者のアクセス許可が必要です。
+
+このプロセス中に、操作が失敗したステージに応じて、いくつかの異なる問題が発生する可能性があります。
+
+* [ユーザー コンテナー イメージをダウンロードできません](#unable-to-download-user-container-image)
+* [ユーザー モデルおよびコード成果物をダウンロードできません](#unable-to-download-user-model-or-code-artifacts)
+
+これらのエラーの詳細を表示するには、次を実行します。
+
+```azurecli
+az ml online-deployment get-logs -n <endpoint-name> --deployment <deployment-name> --l 100
+``` 
+
+#### <a name="unable-to-download-user-container-image"></a>ユーザー コンテナー イメージをダウンロードできません
+
+ユーザー コンテナーが見つからなかった可能性があります。
+
+ワークスペース ACR でコンテナー イメージを使用できることを確認します。
+
+たとえば、イメージが `testacr.azurecr.io/azureml/azureml_92a029f831ce58d2ed011c3c42d35acb:latest` の場合は、`az acr repository show-tags -n testacr --repository azureml/azureml_92a029f831ce58d2ed011c3c42d35acb --orderby time_desc --output table` を使用してリポジトリを確認します。
+
+#### <a name="unable-to-download-user-model-or-code-artifacts"></a>ユーザー モデルおよびコード成果物をダウンロードできません
+
+ユーザー モデルまたはコード成果物が見つからない可能性があります。
+
+モデルとコード成果物が、デプロイと同じワークスペースに登録されていることを確認します。 `show` コマンドを使用して、ワークスペース内のモデルまたはコード成果物の詳細を表示します。 
+
+- 次に例を示します。 
+  
+  ```azurecli
+  az ml model show --name <model-name>
+  az ml code show --name <code-name> --version <version>
+  ```
+ 
+  また、BLOB がワークスペース ストレージ アカウント内に存在するかどうかを確認することもできます。
+
+- たとえば、BLOB が `https://foobar.blob.core.windows.net/210212154504-1517266419/WebUpload/210212154504-1517266419/GaussianNB.pkl` の場合、次のコマンドを使用して、それが存在するかどうかを確認できます。
+
+  `az storage blob exists --account-name foobar --container-name 210212154504-1517266419 --name WebUpload/210212154504-1517266419/GaussianNB.pkl --subscription <sub-name>`
+
+### <a name="error-resourcenotready"></a>ERROR: ResourceNotReady
+
+デプロイの一部として提供される `score.py` を実行するために、Azure では `score.py` に必要なすべてのリソースを含むコンテナーを作成し、そのコンテナーでスコアリング スクリプトを実行します。 このシナリオのエラーは、実行中にこのコンテナーがクラッシュしたため、スコアリングを実行できないことを意味します。 このエラーは、次の場合に発生します。
 
 - `score.py` にエラーがある。 `get-logs` を使用すると、一般的な問題を診断できます。
-    - インポートされたパッケージは、conda 環境には存在しません
-    - 構文エラー
-    - `init()` メソッドのエラー
+    - インポートされたパッケージは、conda 環境には存在しません。
+    - 構文エラーです。
+    - `init()` メソッドのエラー。
 - `get-logs` によってログが生成されていない場合は、通常、コンテナーの起動に失敗したということを意味します。 この問題をデバッグするには、代わりに[ローカルにデプロイ](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-troubleshoot-online-endpoints.md#deploy-locally)してみてください。
 - readiness probe または liveness probe が正しく設定されていない。
 - 依存関係が不足しているなど、コンテナーの環境設定にエラーがある。
 
-### <a name="err_5000-internal-error"></a>ERR_5000: Internal error (ERR_5000: 内部エラー)
+### <a name="error-resourcenotfound"></a>ERROR: ResourceNotFound
 
-Microsoft では信頼性の高い、安定したサービスを提供するために最善を尽くしていますが、計画どおりに進まない場合があります。 このエラーが発生した場合、Microsoft 側で問題が発生しているため、当社で修正する必要があります。 すべての関連情報を記載のうえ、[カスタマー サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信していただけましたら、こちらで問題に対処します。  
+このエラーは Azure Resource Manager が必要なリソースを見つけられない場合に発生します。 たとえば、ストレージ アカウントが参照されているが、指定されたパスで見つからない場合、このエラーが発生します。 正確なパスまたは名前のスペルによって提供された可能性のあるリソースを再確認してください。
+
+詳細については、「[リソースが見つからないエラーを解決する](../azure-resource-manager/troubleshooting/error-not-found.md)」を参照してください。 
+
+### <a name="error-operationcancelled"></a>ERROR: OperationCancelled
+
+Azure の操作には、優先度レベルが割り当てられており、高いものから順に実行されます。 このエラーは、操作が優先度の高い別の操作によって上書きされた場合に発生します。 操作を再試行すると、キャンセルせずに操作を実行することが許可される場合があります。
+
+### <a name="error-internalservererror"></a>ERROR: InternalServerError
+
+Microsoft では信頼性の高い、安定したサービスを提供するために最善を尽くしていますが、計画どおりに進まない場合があります。 このエラーが発生した場合、Microsoft 側で問題が発生しているため、当社で修正する必要があります。 すべての関連情報を記載のうえ、[カスタマー サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信していただけましたら、こちらで問題に対処します。 
 
 ## <a name="autoscaling-issues"></a>自動スケールの問題
 

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 10/21/2021
+ms.date: 11/05/2021
 ms.custom: devx-track-python, ignite-fall-2021
-ms.openlocfilehash: 075c6404acbb4e2d74967873e3a8359076c1a228
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a2b818aaea5bc737d1b68f9e88dd5c0611c297f1
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056530"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135887"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>ネットワークの着信トラフィックおよび送信トラフィックを構成する
 
@@ -34,6 +34,18 @@ ms.locfileid: "131056530"
 > * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
 > * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
 > * [カスタム DNS を使用する](how-to-custom-dns.md)
+
+## <a name="well-known-ports"></a>既知のポート
+
+この記事に記載されているサービスで使用される既知のポートを次に示します。 この記事で使用されているポート範囲がこのセクションに記載されていない場合、それはサービスに固有のものであり、使用されている内容についての情報が公開されていない可能性があります。
+
+
+| Port | 説明 |
+| ----- | ----- | 
+| 80 | セキュリティで保護されていない Web トラフィック (HTTP) |
+| 443 | セキュリティで保護されている Web トラフィック (HTTPS) |
+| 445 | Azure File Storage のファイル共有へのアクセスに使用される SMB トラフィック |
+| 8787 | コンピューティング インスタンスで RStudio に接続するときに使用されます |
 
 ## <a name="required-public-internet-access"></a>必要なパブリック インターネット アクセス
 
@@ -60,9 +72,9 @@ ms.locfileid: "131056530"
 
 1. 次のサービス タグ __への__、またサービス タグ __からの__ トラフィックを許可する __ネットワーク規則__ を追加します。
 
-    | サービス タグ | Protocol | Port |
+    | サービス タグ | プロトコル | Port |
     | ----- |:-----:|:-----:|
-    | AzureActiveDirectory | TCP | * |
+    | AzureActiveDirectory | TCP | 80、443 |
     | AzureMachineLearning | TCP | 443 |
     | AzureResourceManager | TCP | 443 |
     | Storage.region       | TCP | 443 |
@@ -122,52 +134,143 @@ Azure Machine Learning で Azure Kubernetes Service を使用する場合は、�
 
 次の表のホストは Microsoft によって所有されており、ワークスペースが適切に機能するために必要なサービスが提供されます。 表には、Azure Public、Azure Government、Azure China 21Vianet リージョンのホストが一覧表示されています。
 
+> [!IMPORTANT]
+> Azure Machine Learning では、サブスクリプションと Microsoft が管理するサブスクリプションで Azure Storage アカウントが使用されます。 該当する場合、このセクションでは、区別するために次の用語が使用されます。
+>
+> * __ご使用のストレージ__: サブスクリプションの Azure Storage アカウントを使用して、データと成果物 (モデル、トレーニング データ、トレーニング ログ、Python スクリプトなど) を格納します。>
+> * __Microsoft ストレージ__: Azure Machine Learning コンピューティング インスタンスとコンピューティング クラスターは、Azure Batch に依存し、Microsoft サブスクリプションにあるストレージにアクセスする必要があります。 このストレージは、コンピューティング インスタンスの管理にのみ使用されます。 ここにはデータが格納されていません。
+
 **一般的な Azure ホスト**
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+# <a name="azure-public"></a>[Azure Public](#tab/public)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ---- | 
+| Azure Active Directory | login.microsoftonline.com | TCP | 80、443 |
+| Azure portal | management.azure.com | TCP | 443 |
+| Azure Resource Manager | management.azure.com | TCP | 443 |
+
+# <a name="azure-government"></a>[Azure Government](#tab/gov)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ---- |
+| Azure Active Directory | login.microsoftonline.us | TCP | 80、443 |
+| Azure portal | management.azure.us | TCP | 443 |
+| Azure Resource Manager | management.usgovcloudapi.net | TCP | 443 |
+
+# <a name="azure-china-21vianet"></a>[Azure China 21Vianet](#tab/china)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
-| Azure portal | management.azure.com | management.azure.us | management.azure.cn |
-| Azure Resource Manager | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
+| Azure Active Directory | login.chinacloudapi.cn | TCP | 80、443 |
+| Azure portal | management.azure.cn | TCP | 443 |
+| Azure Resource Manager | management.chinacloudapi.cn | TCP | 443 |
+
+---
 
 **Azure Machine Learning ホスト**
 
 > [!IMPORTANT]
 > 次の表では、`<storage>` を、使用している Azure Machine Learning ワークスペースの既定のストレージ アカウント名に置き換えてください。
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+# <a name="azure-public"></a>[Azure Public](#tab/public)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| Azure Machine Learning Studio | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
-| API |\*.azureml.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| 統合されたノートブック | \*.notebooks.azure.net | \*.notebooks.usgovcloudapi.net |\*.notebooks.chinacloudapi.cn |
-| 統合されたノートブック | \<storage\>.file.core.windows.net | \<storage\>.file.core.usgovcloudapi.net | \<storage\>.file.core.chinacloudapi.cn |
-| 統合されたノートブック | \<storage\>.dfs.core.windows.net | \<storage\>.dfs.core.usgovcloudapi.net | \<storage\>.dfs.core.chinacloudapi.cn |
-| 統合されたノートブック | \<storage\>.blob.core.windows.net | \<storage\>.blob.core.usgovcloudapi.net | \<storage\>.blob.core.chinacloudapi.cn |
-| 統合されたノートブック | graph.microsoft.com | graph.microsoft.us | graph.chinacloudapi.cn |
-| 統合されたノートブック | \*.aznbcontent.net |  | |
+| Azure Machine Learning Studio | ml.azure.com | TCP | 443 |
+| API |\*.azureml.ms | TCP | 443 |
+| 統合されたノートブック | \*.notebooks.azure.net | TCP | 443 |
+| 統合されたノートブック | \<storage\>.file.core.windows.net | TCP | 443、445 |
+| 統合されたノートブック | \<storage\>.dfs.core.windows.net | TCP | 443 |
+| 統合されたノートブック | \<storage\>.blob.core.windows.net | TCP | 443 |
+| 統合されたノートブック | graph.microsoft.com | TCP | 443 |
+| 統合されたノートブック | \*.aznbcontent.net | TCP | 443 |
+
+# <a name="azure-government"></a>[Azure Government](#tab/gov)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| Azure Machine Learning Studio | ml.azure.us | TCP | 443 |
+| API | \*.ml.azure.us | TCP | 443 |
+| 統合されたノートブック | \*.notebooks.usgovcloudapi.net | TCP | 443 |
+| 統合されたノートブック | \<storage\>.file.core.usgovcloudapi.net | TCP | 443、445 |
+| 統合されたノートブック | \<storage\>.dfs.core.usgovcloudapi.net | TCP | 443 |
+| 統合されたノートブック  | \<storage\>.blob.core.usgovcloudapi.net | TCP | 443 |
+| 統合されたノートブック | graph.microsoft.us | TCP | 443 |
+| 統合されたノートブック | \*.aznbcontent.net | TCP | 443 |
+
+# <a name="azure-china-21vianet"></a>[Azure China 21Vianet](#tab/china)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| Azure Machine Learning Studio | studio.ml.azure.cn | TCP | 443 |
+| API | \*.ml.azure.cn | TCP | 443 |
+| 統合されたノートブック | \*.notebooks.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | \<storage\>.file.core.chinacloudapi.cn | TCP | 443、445 |
+| 統合されたノートブック | \<storage\>.dfs.core.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | \<storage\>.blob.core.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | graph.chinacloudapi.cn | TCP | 443 |
+| 統合されたノートブック | \*.aznbcontent.net | TCP | 443 |
+
+---
 
 **Azure Machine Learning コンピューティング インスタンスおよびコンピューティング クラスターのホスト**
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
-| ----- | ----- | ----- | ----- |
-| コンピューティング クラスター/インスタンス | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
-| コンピューティング インスタンス | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
-| コンピューティング インスタンス | \*.instances.azureml.ms |  |  |
-| Azure Storage アカウント | \*.blob.core.windows.net</br>\*.table.core.windows.net</br>\*.queue.core.windows.net | \*.blob.core.usgovcloudapi.net</br>\*.table.core.usgovcloudapi.net</br>\*.queue.core.usgovcloudapi.net | \*blob.core.chinacloudapi.cn</br>\*.table.core.chinacloudapi.cn</br>\*.queue.core.chinacloudapi.cn |
-| Azure Key Vault | \*.vault.azure.net | \*.vault.usgovcloudapi.net | \*.vault.azure.cn |
-
-> [!IMPORTANT]
-> ファイアウォールでは、__TCP__ ポート __18881、443、8787__ 経由での \*.instances.azureml.ms との通信を許可する必要があります。
-
 > [!TIP]
-> Azure Key Vault の FQDN は、[hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) フラグを有効にしてワークスペースが作成された場合にのみ必要です。
+> * __Azure Key Vault__ のホストは、[hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) フラグを有効にしてワークスペースが作成された場合にのみ必要です。
+> * __コンピューティング インスタンス__ のポート 8787 と 18881 は、Azure Machine ワークスペースにプライベート エンドポイントがある場合にのみ必要です。
+> * 次の表では、`<storage>` を、使用している Azure Machine Learning ワークスペースの既定のストレージ アカウント名に置き換えてください。
+
+# <a name="azure-public"></a>[Azure Public](#tab/public)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| コンピューティング クラスター/インスタンス | graph.windows.net | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.net | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.ms | TCP | 443、8787、18881 |
+| Microsoft ストレージ アクセス | \*.blob.core.windows.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.table.core.windows.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.queue.core.windows.net | TCP | 443 |
+| ストレージ アカウント | \<storage\>.file.core.windows.net | TCP | 443、445 |
+| ストレージ アカウント | \<storage\>.blob.core.windows.net | TCP | 443 |
+| Azure Key Vault | \*.vault.azure.net | TCP | 443 |
+
+# <a name="azure-government"></a>[Azure Government](#tab/gov)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| コンピューティング クラスター/インスタンス | graph.windows.net | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.us | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.ms | TCP | 443、8787、18881 |
+| Microsoft ストレージ アクセス | \*.blob.core.usgovcloudapi.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.table.core.usgovcloudapi.net | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.queue.core.usgovcloudapi.net | TCP | 443 |
+| ストレージ アカウント | \<storage\>.file.core.usgovcloudapi.net | TCP | 443、445 |
+| ストレージ アカウント | \<storage\>.blob.core.usgovcloudapi.net | TCP | 443 |
+| Azure Key Vault | \*.vault.usgovcloudapi.net | TCP | 443 |
+
+# <a name="azure-china-21vianet"></a>[Azure China 21Vianet](#tab/china)
+
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
+| ----- | ----- | ----- | ----- |
+| コンピューティング クラスター/インスタンス | graph.chinacloudapi.cn | TCP | 443 |
+| コンピューティング インスタンス |  \*.instances.azureml.cn | TCP | 443 |
+| コンピューティング インスタンス | \*.instances.azureml.ms | TCP | 443、8787、18881 |
+| Microsoft ストレージ アクセス | \*blob.core.chinacloudapi.cn | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.table.core.chinacloudapi.cn | TCP | 443 |
+| Microsoft ストレージ アクセス | \*.queue.core.chinacloudapi.cn | TCP | 443 |
+| ストレージ アカウント | \<storage\>.file.core.chinacloudapi.cn | TCP | 443、445 |
+| ストレージ アカウント | \<storage\>.blob.core.chinacloudapi.cn | TCP | 443 |
+| Azure Key Vault | \*.vault.azure.cn | TCP | 443 |
+
+---
 
 **Azure Machine Learning によって管理される Docker イメージ**
 
-| **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
+| **次のために必須:** | **ホスト** | **プロトコル** | **ポート** |
 | ----- | ----- | ----- | ----- |
-| Microsoft Container Registry | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
-| Azure Machine Learning の事前構築済みイメージ | azurearctest.azurecr.io | azurearctest.azurecr.io | azurearctest.azurecr.io |
+| Microsoft Container Registry | mcr.microsoft.com | TCP | 443 |
+| Azure Machine Learning の事前構築済みイメージ | azurearctest.azurecr.io | TCP | 443 |
 
 > [!TIP]
 > * カスタム Docker イメージには __Azure Container Registry__ が必要です。 これには、Microsoft が提供する基本イメージへの小さな変更 (追加のパッケージなど) が含まれます。
@@ -273,7 +376,7 @@ Azure Machine Learning 拡張機能をクラスターにデプロイするとき
 |  **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | セットアップ スクリプトを通じてコンピューティング インスタンスにインストールされている VS Code サーバー ビットを取得するために使用されます。|
 | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** |コンピューティング インスタンスにインストールされている Websocket サーバー ビットを取得するために使用されます。 Websocket サーバーは、Visual Studio Code クライアント (デスクトップ アプリケーション) から、コンピューティング インスタンスで実行されている Visual Studio Code サーバーに要求を送信するために使用されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 

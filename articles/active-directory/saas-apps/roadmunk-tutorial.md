@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f0c139ac775cf0761e1866853c959d7e98b20cf3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e9038d90d84bd6007b280f712587cee3d628c9c1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821751"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Roadmunk の統合
 
@@ -177,4 +177,4 @@ Roadmunk に対して Azure AD SSO を構成してテストする方法の概要
 
 Roadmunk を構成した後、セッション制御を適用できます。 セッション制御により、組織の機密データの流出と侵入をリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 
 
-[Microsoft Cloud App Security を使用してセッション制御を適用する方法](/cloud-app-security/proxy-deployment-any-app)を確認してください。
+[Microsoft Defender for Cloud Apps を使用してセッション制御を強制する](/cloud-app-security/proxy-deployment-any-app)方法をご覧ください。

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/08/2021
-ms.custom: project-no-code, ignite-fall-2021
+ms.custom: project-no-code, ignite-fall-2021, b2c-support
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 19a13d9c2941d9a98cce4415b9266d67a9bb8e53
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7d64e4991a71849f8a0269dcfa8eff32164ef75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028103"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133714"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -35,6 +35,9 @@ Microsoft Graph API を使用した Azure AD B2C ユーザーの移行につい�
 MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作するには、そのためのアクセス許可を付与するアプリケーション登録が必要になります。 「[Microsoft Graph を使用して Azure AD B2C を管理する](microsoft-graph-get-started.md)」という記事の手順に従って、管理アプリケーションで使用できるアプリケーション登録を作成します。 
 
 ## <a name="user-management"></a>[ユーザー管理]
+> [!NOTE]
+> Azure AD B2C では、現在のところ、ディレクトリ オブジェクトに対する高度なクエリ機能はサポートされていません。 これは、クエリ パラメーター `$count` および `$search` と、`$filter` クエリ パラメーターの演算子 Not (`not`)、Not equals (`ne`)、Ends with (`endsWith`) がサポートされていないことを意味します。 詳細については、[Microsoft Graph のクエリ パラメーター](/graph/query-parameters)と [Microsoft Graph の高度なクエリ機能](/graph/aad-advanced-queries)に関するページを参照してください。
+
 
 - [ユーザーの一覧表示](/graph/api/user-list)
 - [コンシューマー ユーザーを作成する](/graph/api/user-post-users)

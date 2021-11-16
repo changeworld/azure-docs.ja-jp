@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: ca43e9d1e54566da374ccbae011e66ae54297af4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 43b4fcdbd867a2aee95c6bf23d57e77e8fbbe08f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131432569"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026902"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -325,7 +325,7 @@ Azure Policy のために (それが提供されているリージョンで) マ
 | ユーザー割り当て済み | 利用不可 | 利用不可 | 利用不可 | 利用不可 |
 
 
-詳細については、「[Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](../../spring-cloud/how-to-enable-system-assigned-managed-identity.md)」を参照してください。
+詳細については、「[Azure Spring Cloud でアプリケーションのシステム割り当てマネージド ID を有効にする方法](../../spring-cloud/how-to-enable-system-assigned-managed-identity.md)」を参照してください。
 
 ### <a name="azure-stack-edge"></a>Azure Stack Edge
 

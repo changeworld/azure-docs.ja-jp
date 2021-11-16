@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: a048937226f979db58996eb4bf996b9f254d9182
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 4956bf409190b560824f57e2f79e94ae5360e99a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132460"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258071"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>チュートリアル: Azure Static Web Apps から Mongoose を使用して Cosmos DB のデータにアクセスする
 
@@ -44,7 +44,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 3. 検索ボックスに「**Azure Cosmos DB**」と入力します
 4. **[Azure Cosmos DB]** をクリックします
 5. **[作成]**
-6. **[MongoDB 向けの Azure Cosmos DB API]** で **[作成]** を選択します
+6. ダイアログが表示されたら、 **[MongoDB 向けの Azure Cosmos DB API]** で **[作成]** を選びます。
 7. 次の情報を使用して Azure Cosmos DB アカウントを構成します
     - [サブスクリプション]: 使用するサブスクリプションを選択します
     - [リソース]: **[新規作成]** をクリックし、名前を **aswa-mongoose** に設定します
@@ -53,8 +53,8 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
     - [容量モード]: **サーバーレス (プレビュー)**
     - [バージョン]: **4.0**
 :::image type="content" source="media/add-mongoose/cosmos-db.png" alt-text="新しい Cosmos DB インスタンスの作成":::
-7. **[確認と作成]** をクリックします。
-8. **[作成]**
+8. **[確認と作成]** をクリックします。
+9. **[作成]**
 
 この作成プロセスには数分かかります。 後述する手順でデータベースに戻り、接続文字列を収集します。
 

@@ -4,16 +4,16 @@ description: Azure ディスク プールのデプロイ方法を説明します
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7230bf83f5ca203aa40cb043b3ea02d983ba7a4a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4c010d1c142a2f2e09c0a60122f446ab7df6530
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022194"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135369"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>Azure ディスク プール (プレビュー) をデプロイする
 
@@ -33,6 +33,8 @@ ms.locfileid: "131022194"
 
 - ディスク プールに追加するマネージド ディスクのセット。
 - ディスク プール用にデプロイされた専用サブネットを使用する仮想ネットワーク。
+    - 送信ポート 53、443、5671 が開いている必要があります。
+    - ディスク プールに必要な送信依存関係がネットワーク設定によってブロックされていないことを確認します。 [Azure PowerShell モジュール](/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint?view=azps-6.6.0)または [Azure CLI](/cli/azure/disk-pool?view=azure-cli-latest#az_disk_pool_list_outbound_network_dependency_endpoint) のいずれかを使用して、すべての送信依存関係の完全な一覧を取得できます。
 
 Azure PowerShell モジュールを使用する場合は、[バージョン 6.1.0 以降](/powershell/module/az.diskpool/?view=azps-6.1.0&preserve-view=true)をインストールしてください。
 

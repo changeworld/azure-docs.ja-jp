@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 08afa72507bb5689dbd1a003cb776958d6e63f1d
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 34f9948905a51fd020a0942836a37d2c9737f4e3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746449"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059830"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -23,19 +23,49 @@ ms.locfileid: "111746449"
 
 ## <a name="enable-visualizations"></a>視覚化の有効化
 
-動画フレームで AI 分析情報イベントの視覚化を有効にするには、デスクトップ マシン上で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
+動画フレームで AI 分析情報イベントの視覚化を有効にするには、デスクトップ マシンまたは Azure VM で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
 
-デバイスが Azure Stack Edge デバイスでない場合は、[デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のデプロイ マニフェスト ファイルを編集して、`DISPLAY` 環境変数に正しい値を使用します。 ホスト コンピューターの `$DISPLAY` 変数と一致している必要があります。 デプロイ マニフェストを更新した後、コンテナーを再デプロイします。
+デバイスがローカル デスクトップ マシンまたは Azure GPU VM (リモート デスクトップが有効) である場合、任意の操作の `.debug` バージョンに切り替えて、出力を視覚化できます。
 
-デプロイが完了したら、 `.Xauthority` ファイルをホストコンピューターからコンテナーにコピーし、再起動することが必要になる場合があります。 次のサンプルでは、 `peopleanalytics` は、ホストコンピューター上のコンテナーの名前になります。
+1.  ローカルでデスクトップを開くか、空間分析を実行しているホスト コンピューターのリモート デスクトップ クライアントを使用してデスクトップを開きます。 
+2.  ターミナルから `xhost +` を実行します。
+3.  `spaceanalytics` モジュールの下にある[配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)を `DISPLAY` 環境変数の値で更新します。 その値は、ホスト コンピューターのターミナルで `echo $DISPLAY` を実行すると確認できます。
+    ```
+    "env": {        
+        "DISPLAY": {
+            "value": ":11"
+            }
+    }
+    ```
+4. デバッグ モードで実行する配置マニフェストのグラフを更新します。 次の例では、operationId を cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug に更新します。 ビジュアライザー ウィンドウを有効にするには、新しいパラメーター `VISUALIZER_NODE_CONFIG` が必要です。 すべての操作はデバッグ フレーバーで使用できます。 共有ノードを使用する場合は、cognitiveservices.vision.spatialanalysis.debug 操作を使用して、インスタンス パラメーターに `VISUALIZER_NODE_CONFIG` を追加します。 
 
-```bash
-sudo docker cp $XAUTHORITY peopleanalytics:/root/.Xauthority
-sudo docker stop peopleanalytics
-sudo docker start peopleanalytics
-xhost +
-```
+    ```
+    "zonecrossing": {
+        "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug",
+        "version": 1,
+        "enabled": true,
+        "parameters": {
+            "VIDEO_URL": "Replace http url here",
+            "VIDEO_SOURCE_ID": "zonecrossingcamera",
+            "VIDEO_IS_LIVE": false,
+            "VIDEO_DECODE_GPU_INDEX": 0,
+            "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
+            "CAMERACALIBRATOR_NODE_CONFIG": "{ \"gpu_index\": 0}",
+            "VISUALIZER_NODE_CONFIG": "{ \"show_debug_video\": true }",
+            "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+        }
+    }
+    ```
+    
+5. 再デプロイすると、ホスト コンピューターでビジュアライザー ウィンドウが表示されます。
+6. デプロイが完了したら、`.Xauthority` ファイルをホスト コンピューターからコンテナーにコピーし、再起動することが必要になる場合があります。 次のサンプルでは、 `peopleanalytics` は、ホストコンピューター上のコンテナーの名前になります。
 
+    ```bash
+    sudo docker cp $XAUTHORITY peopleanalytics:/root/.Xauthority
+    sudo docker stop peopleanalytics
+    sudo docker start peopleanalytics
+    xhost +
+    ```
 
 ## <a name="collect-system-health-telemetry"></a>システム正常性テレメトリの収集
 

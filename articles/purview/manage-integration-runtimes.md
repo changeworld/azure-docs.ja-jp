@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 10/22/2021
-ms.openlocfilehash: 446943d4632ab6f659480574b7b0eb3db2bc9dcf
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 10e893886d98fc5ea6d79bf8092cc5b0d948d84a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131853094"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309720"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの作成および管理
 

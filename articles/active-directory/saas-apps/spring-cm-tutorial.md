@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/24/2021
 ms.author: jeedes
-ms.openlocfilehash: d9a93423ebec13d4caba18aebd938cb9b51fcc96
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b75de6a5495372a7d79b452b12d79a2612e64f6c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800994"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル:Azure Active Directory と SpringCM の統合
 
@@ -91,7 +91,7 @@ SpringCM に対して Azure AD SSO を構成してテストするには、次の
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -103,7 +103,7 @@ SpringCM に対して Azure AD SSO を構成してテストするには、次の
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に SpringCM へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
@@ -115,13 +115,13 @@ SpringCM に対して Azure AD SSO を構成してテストするには、次の
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-springcm-sso&quot;></a>SpringCM SSO の構成
+## <a name="configure-springcm-sso"></a>SpringCM SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として **SpringCM** 企業サイトにサインオンします。
 
 1. 上部にあるメニューの **[GO TO]** をクリックし、 **[Preferences]** をクリックします。次に、 **[Account Preferences]** セクションで、 **[SAML SSO]** をクリックします。
 
-    ![[SAML SSO]](./media/spring-cm-tutorial/preferences.png &quot;SAML SSO")
+    ![[SAML SSO]](./media/spring-cm-tutorial/preferences.png "SAML SSO")
 
 1. [Identity Provider Configuration] セクションで、次の手順に従います。
 
@@ -179,4 +179,4 @@ Azure Active Directory ユーザーが SpringCM にサインインできるよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-SpringCM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SpringCM を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

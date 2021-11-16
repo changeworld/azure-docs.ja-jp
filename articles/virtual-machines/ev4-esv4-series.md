@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: c5ad35114edaae42019e0949cc4ad8aa4b291ec6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: de77aa1984e58947a9877b4c20720e62a2e277ef
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441193"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372077"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 および Esv4 シリーズ
 
@@ -39,6 +39,7 @@ Ev4 シリーズのサイズは、Intel Xeon&reg; Platinum 8272CL (Cascade Lake)
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
@@ -67,6 +68,7 @@ Esv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 

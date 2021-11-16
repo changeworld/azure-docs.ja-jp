@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 665ca1dca46dbfcf1cdc5e07b0c4672f79dc586a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d198a444cfb2c37f4bff815561c5a6dcd95d4a4e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546816"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135077"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -72,6 +72,7 @@ Active Directory 環境のセキュリティ保護の詳細については、[Ac
     - AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 リモート インストールを行うには、これらのサーバーで Windows リモート管理を有効にする必要があります。 
     - TLS/SSL 証明書を構成する必要があります。 詳細については、[AD FS の SSL/TLS プロトコルおよび暗号スイートの管理](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)および [AD FS での SSL 証明書の管理](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)に関する記事を参照してください。
     - 名前解決を構成する必要があります。 
+- Azure AD Connect と Azure AD の間のトラフィックを解読して分析することはサポートされていません。 それを行うとサービスが中断される可能性があります。
 - 全体管理者が MFA を有効にしている場合、URL https://secure.aadcdn.microsoftonline-p.com は信頼済みサイトの一覧に *なければなりません*。 MFA チャレンジを求められたときに、この URL がまだ追加されていない場合は、信頼済みサイトの一覧に追加するように促されます。 信頼済みサイトへの追加には、Internet Explorer を使用できます。
 - 同期に Azure AD Connect Health を使用する予定の場合は、Azure AD Connect Health の前提条件も満たされていることを確認してください。 詳細については、「[Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)」を参照してください。
 

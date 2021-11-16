@@ -1,5 +1,5 @@
 ---
-title: Archive レベルのサポートの概要
+title: Azure Backup - Archive レベルの概要
 description: Azure Backup の Archive レベルのサポートについて説明します。
 ms.topic: overview
 ms.date: 10/23/2021
@@ -7,14 +7,14 @@ ms.custom: references_regions
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 3c28d99c066bf71ea3970ce8a01eb68989e11123
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9712b198e8be9a7a90699cc6ce544a627bfdea63
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080899"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510344"
 ---
-# <a name="about-archive-tier-support"></a>Archive レベルのサポートについて
+# <a name="overview-of-archive-tier-in-azure-backup"></a>Azure Backup の Archive レベルの概要
 
 お客様は、組織のコンプライアンス ルールによって定義されたデータ保有ニーズに従って長期保有 (LTR) バックアップ データを含むバックアップ データを保存するために Azure Backup を使用しています。 ほとんどの場合、古いバックアップ データにアクセスすることはめったになく、コンプライアンスのニーズのためだけに保存されています。
 
@@ -24,7 +24,7 @@ Azure Backup では、スナップショットと Standard レベルに加えて
 
 Archive レベルでは、次のワークロードがサポートされます。
 
-| ワークロード | オペレーション |
+| ワークロード | Operations |
 | --- | --- |
 | Azure の仮想マシン | <ul><li>月単位および年単位の復旧ポイントトのみ。 日単位および週単位の復旧ポイントはサポートされていません。  </li><li>期間 >= 3 か月 (Vault-Standard 層) </li><li>保有期間 >= 6 か月 </li><li>アクティブな日単位および週単位の依存関係なし。 </li></ul> |
 | Azure 仮想マシン内の SQL Server または Azure 仮想マシン内の SAP HANA | <ul><li>完全復旧ポイントのみ。 ログと差分はサポートされていません。 </li><li>期間 >= 45 日 (Vault-Standard レベル)。 </li><li>保有期間 >= 6 か月 </li><li>依存関係なし </li></ul> |
@@ -106,9 +106,9 @@ GRS コンテナー内のデータを Standard レベルから Archive レベル
 
 ### <a name="i-have-stopped-protection-and-retained-data-for-my-workload-can-i-move-the-recovery-points-to-archive-tier"></a>保護を停止し、ワークロードのデータを保持しました。 復旧ポイントを Archive レベル移動することは可能ですか。
 
-不正解です。 特定のワークロードの保護を停止すると、対応する復旧ポイントを Archive レベルに移動することはできなくなります。 復旧ポイントを Archive レベルに移動するには、データ ソースの保護を再開する必要があります。
+いいえ。 特定のワークロードの保護を停止すると、対応する復旧ポイントを Archive レベルに移動することはできなくなります。 復旧ポイントを Archive レベルに移動するには、データ ソースの保護を再開する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Archive レベルを使用する](use-archive-tier-support.md)
 - [Azure Backup の価格](azure-backup-pricing.md)

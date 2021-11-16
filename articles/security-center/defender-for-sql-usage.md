@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 11/09/2021
 ms.author: memildin
-ms.openlocfilehash: f48acfc942e40b4316a72b2626c29900d1a9cd6f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c38ff365efb2be164304b67ce5ab083bb0f1b0fe
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131428845"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057359"
 ---
 # <a name="enable-microsoft-defender-for-sql-servers-on-machines"></a>コンピューターの SQL サーバーに対して Microsoft Defender を有効にする 
 
@@ -28,10 +28,12 @@ ms.locfileid: "131428845"
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|**コンピューター上の SQL サーバー用の Microsoft Defender** は、料金に関する[ページ](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます。|
-|保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
+|価格:|**コンピューター上の SQL サーバー用の Microsoft Defender** は、料金に関する [ページ](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます。|
+|保護される SQL のバージョン:|SQL Server (現在 [Microsoft でサポートされている](/mem/configmgr/core/plan-design/configs/support-for-sql-server-versions)バージョン)|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China 21Vianet|
 |||
+
+
 
 ## <a name="set-up-microsoft-defender-for-sql-servers-on-machines"></a>コンピューターの SQL サーバー用に Microsoft Defender をセットアップする
 
@@ -48,12 +50,12 @@ ms.locfileid: "131428845"
 
 - **Azure VM 上の SQL Server** - 「[SQL Server VM を SQL IaaS Agent 拡張機能に登録する](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)」で説明されているように、SQL Server VM を SQL IaaS Agent 拡張機能に登録します。
 
-- **Azure Arc 上の SQL Server** - [Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md)で説明されているインストール方法に従って、Azure Arc エージェントをインストールします。
+- **Azure Arc 対応サーバー上の SQL Server** - [Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md)で説明されているインストール方法に従って、Azure Arc エージェントをインストールします。
 
 ### <a name="step-2-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 2. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
 
 - **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントの自動プロビジョニングを有効にする <a name="auto-provision-mma"></a>](enable-data-collection.md#auto-provision-mma)ことができます。 または、手動の手順に従って [Azure Stack Hub VM をオンボードする](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)こともできます。
-- **Azure Arc上のSQL Server**: SQL Serverが[Azure Arc](../azure-arc/index.yml)対応サーバーで管理されている場合、Defender for Cloudの推奨事項「Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)」を利用してLog Analyticsエージェントを導入することができます。
+- **Azure Arc 対応サーバー上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) 対応サーバーで管理されている場合、Defender for Cloud の推奨事項「Log Analytics エージェントは Windows ベースの Azure Arc マシンにインストールする (Preview)」に従って Log Analytics エージェントを導入することができます。
 
 - **オンプレミスの SQL Server** - SQL Server が Azure Arc を使用しないオンプレミスの Windows マシンでホストされている場合は、Azure に接続するためのオプションが 2 つあります。
     

@@ -2,18 +2,17 @@
 title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: 6dc2bad744118e57b9e958658814f5c194f633ad
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: 0e53d2919d8af3f0e8162d4aca9f55f2ec0ab740
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216620"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335881"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
 Azure Functions では、Function App インスタンスを作成するときに Azure ストレージ アカウントが必要になります。 次のストレージ サービスは、お使いの Function App によって利用できます。
-
 
 |ストレージ サービス  | 機能の使用法  |
 |---------|---------|
@@ -52,6 +51,10 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 ### <a name="shared-storage-accounts"></a>共有のストレージ アカウント
 
 複数の Function App では、同じストレージ アカウントを問題なく共有できます。 たとえば、Visual Studio では、Azure ストレージ エミュレーターを使用して複数のアプリを開発できます。 この場合、エミュレーターは単一のストレージ アカウントのように動作します。 お使いの Function App で使用されているものと同じストレージ アカウントは、アプリケーション データを格納するためにも使用できます。 ただし、運用環境では、この手法が常に適切であるとは限りません。
+
+### <a name="lifecycle-management-policy-considerations"></a>ライフサイクル管理ポリシーに関する考慮事項
+
+Functions は、Blob ストレージを使用して、[関数アクセス キー](functions-bindings-http-webhook-trigger.md#authorization-keys)などの重要な情報を保持します。 Blob Storage アカウントに[ライフサイクル管理ポリシー](../storage/blobs/lifecycle-management-overview.md)を適用すると、ポリシーが Functions ホストが必要とする BLOB を削除する場合があります。 この理由から、Functions が使用するストレージ アカウントにこのようなポリシーを適用しないようにする必要があります。 このようなポリシーを適用する必要がある場合は、通常は `azure-webjobs` または `scm` のプレフィックスが付いている Functions が使用するコンテナーは除外することを忘れないでください。
 
 ### <a name="optimize-storage-performance"></a>ストレージ パフォーマンスの最適化
 

@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   ms.date: 09/02/2021
   ms.custom: contperf-fy21q3
-  ms.openlocfilehash: 3324750f4e79f2a7a151a9146ac35ce5189251f2
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 7e0f13b29a516dd12d524e922b07609453ac2111
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124819667"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132491205"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
@@ -36,6 +36,10 @@ landingContent:
       url: core/concepts-architecture.md
     - text: アプリケーション テンプレート
       url: core/concepts-app-templates.md
+  - linkListType: video
+    links:
+    - text: 動画リソース
+      url: https://www.youtube.com/playlist?list=PL1ljc761XCiYlm8Rx58jLsUp4gAspw1SG
   - linkListType: whats-new
     links:
     - text: 最新の更新

@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0b7dfd314f745565a4beca8432d1e452c95df403
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6f798cb4bc1511c0656c697f04e2d1763ca54321
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001240"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308600"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -24,7 +24,7 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 - **[カスタマー マネージド キー](../logs/customer-managed-keys.md)** - お客様によって指定、管理されるキーを利用してクラスター データを暗号化します。
 - **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** - Microsoft サポート エンジニアのデータ アクセス要求を制御します。
 - **[二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** - 暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。
-- **[Availability Zones](./availability-zones.md)** - 専用クラスター上の Availability Zones を使用してデータセンターの障害からデータを保護します。 可用性ゾーンは、別の物理的な場所にあるデータセンターであり、独立した電源、冷却手段、ネットワークを備えています。 ゾーンのこの独立したインフラストラクチャと物理的な分離により、ワークスペースで任意のゾーンのリソースに依存できるので、インシデントの可能性がはるかに低くなります。
+- **[可用性ゾーン](../../availability-zones/az-overview.md)** - 物理的に場所を分け、独立した電源、冷却、ネットワークを備えたゾーンを設けることで、データセンターの障害からユーザーのデータを保護します。 ゾーンを物理に離し、独立したインフラを持つことで、ワークスペース任意のゾーンのリソースにも依存できるため、インシデントの可能性がはるかに低くなります。 [Azure の可用性ゾーンがある](../../availability-zones/az-overview.md#azure-regions-with-availability-zones)リージョンでは、データの回復力を高めるために、可用性ゾーンが有効な専用クラスターが作成されます。 クラスタ内の可用性ゾーンの構成は、一度作成すると変更することはできず、設定はクラスタのプロパティ `isAvailabilityZonesEnabled` で確認できます。 [Azure Monitor の可用性ゾーン](./availability-zones.md)は、サービスのより広範な部分をカバーしており、リージョンで利用可能な場合は、Azure Monitor の回復力を自動的に拡張します。
 - **[マルチワークスペース](../logs/cross-workspace-query.md)** - お客様が運用に複数のワークスペースを使用している場合、専用クラスターの使用をお勧めします。 すべてのワークスペースが同じクラスター上にある場合は、クロスワークスペース クエリの実行速度が速くなります。 割り当てられたコミットメント レベルですべてのクラスターのインジェストが考慮されるため、専用クラスターを使用する方がコスト効率が高くなる可能性もあります。その一部が小さく、コミットメント レベル割引の対象になっていない場合でも、すべてのワークスペースに適用されます。
 
 
@@ -47,26 +47,11 @@ Log Analytics 専用クラスターには、500 GB/日以上のコミットメ�
 
 1. **クラスター (既定)** : 取り込まれたデータの課金は、クラスター レベルで行われます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 
 
-2. **ワークスペース**: クラスターのコミットメント レベル コストは、各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例的に帰属します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。この価格モデルの詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。 
+2. **ワークスペース**: クラスターのコミットメント レベル コストは、(各ワークスペースに対する [Microsoft Defender for Cloud](../../security-center/index.yml) からのノードごとの割り当てを考慮した後) 各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例して割り当てられます。この価格モデルの詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。 
 
-ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターのコミットメント レベルに対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Azure Security Center からのノードごとのデータ割り当ては引き続き適用されます。
+ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターのコミットメント レベルに対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Microsoft Defender for Cloud からのノードごとのデータ割り当ては、引き続き行われます。
 
 Log Analytics 専用クラスターの課金の詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。
-
-## <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
-
-構成手順の一部はすぐに完了できないため、非同期的に実行されます。 応答の状態には、次のいずれかが含まれます: *InProgress*、*Updating*、*Deleting*、*Succeeded*、 *Failed* (エラー コードを伴う)。 REST を使用している場合、応答では最初に HTTP 状態コード 202 (承認済み) と Azure-AsyncOperation プロパティを持つヘッダーが返されます。
-
-```JSON
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
-```
-
-Azure-AsyncOperation ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
-
-```rest
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
-Authorization: Bearer <token>
-```
 
 ## <a name="create-a-dedicated-cluster"></a>専用クラスターを作成する
 
@@ -91,12 +76,13 @@ Authorization: Bearer <token>
 
 **CLI**
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster create --no-wait --resource-group "resource-group-name" --name "cluster-name" --location "region-name" --sku-capacity "daily-ingestion-gigabyte"
 
-# Wait for job completion
-az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.operationalinsights/clusters/cluster-name --include-response-body true
+# Wait for job completion when `--no-wait` was used
+$clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
+az resource wait --created --ids $clusterResourceId --include-response-body true
 ```
 
 **PowerShell**
@@ -106,7 +92,7 @@ Select-AzSubscription "cluster-subscription-id"
 
 New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" -AsJob
 
-# Check when the job is done
+# Check when the job is done when `-AsJob` was used
 Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
@@ -145,7 +131,7 @@ Log Analytics クラスターのプロビジョニングは、完了するまで
 **CLI**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
 ```
@@ -230,15 +216,16 @@ Log Analytics ワークスペースが専用クラスターにリンクされて
 **CLI**
 ```azurecli
 # Find cluster resource ID
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 $clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
 
 # Link workspace
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 az monitor log-analytics workspace linked-service create --no-wait --name cluster --resource-group "resource-group-name" --workspace-name "workspace-name" --write-access-resource-id $clusterResourceId
 
-# Wait for job completion
-az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.operationalinsights/clusters/cluster-name --include-response-body true
+# Wait for job completion when `--no-wait` was used
+$workspaceResourceId = az monitor log-analytics workspace list --resource-group "resource-group-name" --query "[?contains(name, "workspace-name")].[id]" --output tsv
+az resource wait --deleted --ids $workspaceResourceId --include-response-body true
 ```
 
 **PowerShell**
@@ -284,14 +271,11 @@ Content-type: application/json
 
 ### <a name="check-workspace-link-status"></a>ワークスペースのリンク状態を確認する
   
-カスタマー マネージド キーを使用してクラスターが構成されている場合、リンク操作の完了後にワークスペースに取り込まれたデータは、マネージド キーで暗号化された状態で格納されます。 ワークスペースのリンク操作が完了するには最大 90 分かかる場合があります。また、状態は次の 2 つの方法で確認できます。
-
-- 応答から Azure-AsyncOperation URL 値をコピーし、非同期操作と状態のチェックに従います。
-- ワークスペースで Get 操作を実行し、応答の *features* の下に *clusterResourceId* プロパティが存在するかどうかを確認します。
+カスタマー マネージド キーを使用してクラスターが構成されている場合、リンク操作の完了後にワークスペースに取り込まれたデータは、マネージド キーで暗号化された状態で格納されます。 ワークスペースのリンク操作の完了には最大 90 分かかることがあります。ワークスペースに Get 要求を送信し、応答の *features* の下に *clusterResourceId* プロパティが存在するかどうかを確認することで、状態を確認することができます。
 
 **CLI**
 ```azurecli
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace show --resource-group "resource-group-name" --workspace-name "workspace-name"
 ```
@@ -370,7 +354,7 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster list --resource-group "resource-group-name"
 ```
@@ -438,7 +422,7 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster list
 ```
@@ -473,7 +457,7 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster update --resource-group "resource-group-name" --name "cluster-name"  --sku-capacity 500
 ```
@@ -540,7 +524,7 @@ Content-type: application/json
 **CLI**
 
 ```azurecli
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "workspace-name" --name cluster
 ```
@@ -559,22 +543,19 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-nam
 
 ## <a name="delete-cluster"></a>クラスターを削除する
 
-削除する前に、専用クラスターからすべてのワークスペースのリンクを解除する必要があります。 この操作を実行するには、クラスター リソースに対する "*書き込み*" アクセス許可が必要です。 
+削除する前に、専用クラスターからすべてのワークスペースのリンクを解除することをお勧めします。 クラスター リソースに対する "*書き込み*" アクセス許可が必要です。 クラスターを削除すると、リンクされたワークスペースや以前リンクされていたワークスペースからクラスターに取り込まれたすべてのデータへのアクセスが失われます。 この操作は元に戻すことができません。 ワークスペースがリンクされているときにクラスターを削除すると、自動的にリンクが解除され、代わりに新しいデータが Log Analytics ストレージに取り込まれます。
 
-クラスター リソースが削除されると、物理クラスターは消去と削除のプロセスに入ります。 クラスターを削除すると、クラスターに格納されていたすべてのデータが削除されます。 このデータは、過去にクラスターにリンクされたワークスペースのものである可能性があります。
-
-過去 14 日以内に削除されたクラスター リソースは、論理的な削除状態であり、そのデータで復旧できます。 クラスター リソースの削除によって、すべてのワークスペースがクラスター リソースから関連付け解除されているため、回復後にワークスペースを再関連付けする必要があります。 ユーザーが復旧操作を実行することはできません。Microsoft チャネルまたはサポートに問い合わせて、復旧要求を行ってください。
-
-削除後 14 日間クラスター リソース名は予約され、他のリソースでは使用できません。
+過去 14 日間に削除されたクラスター リソースは、論理的な削除状態で保持され、その名前は予約済みのままになります。 論理的な削除期間が終了すると、クラスターは完全に削除され、その名前を使用できるようになります。
 
 > [!WARNING] 
-> サブスクリプションあたり 3 つのクラスターに制限されています。 アクティブなクラスターと論理的に削除されたクラスターは、この一部としてカウントされます。 クラスターを作成して削除する反復手順は作成しないでください。 Log Analytics バックエンド システムに大きな影響を与えます。
+> - 論理的に削除されたクラスターの復元はサポートされていないため、一度削除されたクラスターを復元することはできません。
+> - サブスクリプションあたり 4 つのクラスターに制限されています。 アクティブなクラスターと論理的に削除されたクラスターは、この一部としてカウントされます。 クラスターを作成して削除する反復手順は作成しないでください。 Log Analytics バックエンド システムに大きな影響を与えます。
 
 クラスターを削除するには、次のコマンドを使用します。
 
 **CLI**
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
 az monitor log-analytics cluster delete --resource-group "resource-group-name" --name $clusterName
 ```
@@ -630,9 +611,7 @@ Authorization: Bearer <token>
 
 - クラスターがプロビジョニング中または更新中の状態のときにクラスターを更新すると、更新は失敗します。
 
-- 一部の操作は長く、完了するまでに時間がかかることがあります。 "*クラスターの作成*"、"*クラスターのキーの更新*"、 *"クラスターの削除*" などです。 操作の状態を確認するには、次の 2 つの方法があります。
-  - REST を使用している場合、応答から Azure-AsyncOperation URL 値をコピーし、「[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)」に従います。
-  - GET 要求をクラスターまたはワークスペースに送信し、応答を観察します。 たとえば、リンクされていないワークスペースには、*features* の下に *clusterResourceId* が存在しません。
+- 一部の操作は長く、完了するまでに時間がかかることがあります。 "*クラスターの作成*"、"*クラスターのキーの更新*"、 *"クラスターの削除*" などです。 クラスターまたはワークスペースに GET 要求を送信して操作の状態を確認し、応答を確認できます。 たとえば、リンクされていないワークスペースには、*features* の下に *clusterResourceId* が存在しません。
 
 - 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
 

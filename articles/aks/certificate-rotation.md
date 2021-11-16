@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) での証明書のローテーション
 description: Azure Kubernetes Service (AKS) クラスターで証明書をローテーションする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 7/13/2021
-ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.date: 11/03/2021
+ms.openlocfilehash: cd1e55df9609adcc8d5d1d33b1853ba855889b8f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066225"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371621"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -55,10 +55,37 @@ az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id Ru
 az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
 ```
 
+## <a name="certificate-auto-rotation"></a>証明書の自動ローテーション
+
+Azure Kubernetes Service では、非 CA 証明書の有効期限が切れてダウンタイムが発生する前に、コントロール プレーンとエージェント ノードの両方でそれらを自動的にローテーションします。
+
+AKS で非 CA 証明書を自動的にローテーションするには、クラスターに [TLS ブートストラップ](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/)が必要です。 TLS ブートストラップは現在、次のリージョンでご利用いただけます。
+
+* eastus2euap
+* centraluseuap
+* westcentralus
+* uksouth
+* eastus
+* australiacentral
+* australiaest
+
+#### <a name="how-to-check-whether-current-agent-node-pool-is-tls-bootstrapping-enabled"></a>現在のエージェント ノード プールで TLS ブートストラップが有効かどうかを確認する方法
+お使いのクラスターで TLS ブートストラップが有効であるかどうかを確認するには、次のパスを参照してください。  Linux ノードの場合: /var/lib/kubelet/bootstrap-kubeconfig、Windows ノードの場合: c:\k\bootstrap-config
+
+> [注] このファイル パスは、今後 k8s のバージョンが進んだ場合に変わる可能性があります。
+
+> [!IMPORTANT]
+>リージョンが構成されたら、新しいクラスターを作成するか、"az aks upgrade -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME" を使用して既存のクラスターにアップグレードし、そのクラスターに証明書の自動ローテーションを設定します。 
+
+### <a name="limitation"></a>制限事項
+
+証明書の自動ローテーションは、非 RBAC クラスターでは有効にできません。
+
+
 ## <a name="rotate-your-cluster-certificates"></a>クラスター証明書をローテーションする
 
 > [!WARNING]
-> `az aks rotate-certs` を使用して証明書をローテーションすると、すべてのノードが再作成され、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
+> `az aks rotate-certs` を使用して証明書をローテーションすると、すべてのノードと OS ディスクが再作成され、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用のローカル コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 

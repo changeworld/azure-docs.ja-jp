@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6dddc2825c580507177fd60479f2f496ba742c7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c783ec82455e1460e3508357c29167c40ca4e9db
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447951"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307974"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -66,12 +66,12 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | 通常とは異なるサインイン プロパティ | リアルタイム | このリスク検出の種類は、過去のサインイン履歴 (IP、緯度/経度、および ASN) を考慮して、異常なサインインを判別します。システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク検出がトリガーされます。 新しく作成されたユーザーは、しばらくの間 "学習モード" に置かれ、そのユーザーの行動がアルゴリズムによって学習されるまで、通常とは異なるサインイン プロパティ リスク検出は停止されます。 学習モードの期間は動的であり、ユーザーのサインイン パターンに関する十分な情報をアルゴリズムが収集するためにかかる時間によって決まります。 最小期間は 5 日です。 無活動状態が長期間続いた場合、ユーザーは学習モードに戻る可能性があります。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 <br><br> この検出は、基本認証 (または従来のプロトコル) に対しても実行されます。 これらのプロトコルには、クライアント ID などの最新のプロパティがないため、誤検知を減らすためのテレメトリが限られています。 お客様には、最新の認証に移行することをお勧めしています。 <br><br> 通常とは異なるサインイン プロパティは、対話型サインインと非対話型サインインの両方で検出できます。この検出が非対話型サインインで行われた場合、トークン リプレイ攻撃のリスクがあるため精査を増やす必要があります。  |
 | ユーザーに対するセキュリティ侵害を管理者が確認しました | オフライン | この検出は、管理者が "危険なユーザー" UI で、または riskyUsers API を使用して、[ユーザーに対するセキュリティ侵害を確認しますか?] を選択したことを示します。 このユーザーに対するセキュリティが侵害されたことを確認した管理者を調べるには、ユーザーのリスク履歴を (UI または API 経由で) 確認します。 |
 | 悪意のある IP アドレス | オフライン | この検出は、悪意のある IP アドレスからのサインインを示します。 IP アドレスは、その IPアドレスまたはその他の IP 評価ソースから受信した無効な資格情報によるエラー率の高さに基づいて、悪意があるとみなされます。 |
-| 受信トレイに対する疑わしい操作ルール | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) によって検出されます。 ユーザーの受信トレイでメッセージまたはフォルダーを削除または移動する疑わしいルールが設定されている場合、この検出によって環境がプロファイルされ、アラートがトリガーされます。 この検出は、ユーザー アカウントが侵害されていること、メッセージが意図的に非表示にされていること、組織内でスパムまたはマルウェアを配信するためにメールボックスが使用されていることを示唆している可能性があります。 |
+| 受信トレイに対する疑わしい操作ルール | オフライン | この検出は、[Microsoft Defender for Cloud Apps](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) によって検出されます。 ユーザーの受信トレイでメッセージまたはフォルダーを削除または移動する疑わしいルールが設定されている場合、この検出によって環境がプロファイルされ、アラートがトリガーされます。 この検出は、ユーザー アカウントが侵害されていること、メッセージが意図的に非表示にされていること、組織内でスパムまたはマルウェアを配信するためにメールボックスが使用されていることを示唆している可能性があります。 |
 | パスワード スプレー | オフライン | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
-| あり得ない移動 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) によって検出されます。 この検出は、(1 つまたは複数のセッションにおける) 2 つのユーザー アクティビティが地理的に離れている場所で、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短い時間内に発生したことを示します。これは、別のユーザーが同じ資格情報を使用していることを示唆します。 |
-| 初めての国 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 この検出では、新しい場所や頻度の低い場所を判断する際に、過去にアクティビティが発生した場所が考慮されます。 異常検出エンジンにより、組織内のユーザーが以前に使用したことのある場所に関する情報が格納されます。 |
-| 匿名 IP アドレスからのアクティビティ | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 この検出は、匿名プロキシ IP アドレスとして識別された IP アドレスからユーザーがアクティブだったことを示します。 |
-| 受信トレイからの疑わしい転送 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 この検出は、ユーザーがすべてのメールのコピーを外部のアドレスに転送する受信トレイ ルールを作成した場合などの疑わしいメール転送ルールを探します。 |
+| あり得ない移動 | オフライン | この検出は、[Microsoft Defender for Cloud Apps](/cloud-app-security/anomaly-detection-policy#impossible-travel) によって検出されます。 この検出は、(1 つまたは複数のセッションにおける) 2 つのユーザー アクティビティが地理的に離れている場所で、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短い時間内に発生したことを示します。これは、別のユーザーが同じ資格情報を使用していることを示唆します。 |
+| 初めての国 | オフライン | この検出は、[Microsoft Defender for Cloud Apps](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 この検出では、新しい場所や頻度の低い場所を判断する際に、過去にアクティビティが発生した場所が考慮されます。 異常検出エンジンにより、組織内のユーザーが以前に使用したことのある場所に関する情報が格納されます。 |
+| 匿名 IP アドレスからのアクティビティ | オフライン | この検出は、[Microsoft Defender for Cloud Apps](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 この検出は、匿名プロキシ IP アドレスとして識別された IP アドレスからユーザーがアクティブだったことを示します。 |
+| 受信トレイからの疑わしい転送 | オフライン | この検出は、[Microsoft Defender for Cloud Apps](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 この検出は、ユーザーがすべてのメールのコピーを外部のアドレスに転送する受信トレイ ルールを作成した場合などの疑わしいメール転送ルールを探します。 |
 | Azure AD 脅威インテリジェンス | オフライン | このリスク検出の種類は、Microsoft の内部および外部の脅威インテリジェンスのソースに基づいて、特定のユーザーにとって異常であったり、既知の攻撃パターンに一致したりするサインイン アクティビティを示します。 |
 
 ### <a name="other-risk-detections"></a>その他のリスク検出

@@ -8,12 +8,12 @@ ms.date: 12/15/2020
 ms.author: helohr
 ms.service: virtual-desktop
 manager: femila
-ms.openlocfilehash: e26a4b60edc413080a34687dbeb136c07ec0f412
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e453f6f104a79ee4d364b7f52ab7c805741e3a22
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467057"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326837"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -50,21 +50,19 @@ Azure Virtual Desktop は、Azure のサービスです。 Azure Virtual Desktop
 
 このセクションでは、Azure エコシステムをセキュリティで保護するためのベスト プラクティスについて説明します。
 
-### <a name="enable-azure-security-center"></a>Azure Security Center を有効にする
+### <a name="enable-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud を有効にする
 
-サブスクリプション、仮想マシン、キー コンテナー、およびストレージ アカウントで Azure Security Center Standard を有効にすることをお勧めします。
+次の目的を達成するために、Microsoft Defender for Cloud の強化されたセキュリティ機能を有効にすることをお勧めします。
 
-Azure Security Center Standard を使用すると、次のことを実行できます。
+- 脆弱性を管理する。
+- PCI などの一般的なフレームワークを使ってコンプライアンスを評価する。
+- 環境の全体的なセキュリティを強化する。
 
-* 脆弱性を管理する。
-* PCI などの一般的なフレームワークを使ってコンプライアンスを評価する。
-* 環境の全体的なセキュリティを強化する。
-
-詳細については、「[Azure サブスクリプションでの Security Center Standard の利用開始](../security-center/security-center-get-started.md)」を参照してください。
+詳細については、[強化されたセキュリティ機能の有効化](../security-center/enable-enhanced-security.md)に関するページを参照してください。
 
 ### <a name="improve-your-secure-score"></a>セキュア スコアを向上させる
 
-セキュア スコアは、全体的なセキュリティを向上させるための推奨事項とベスト プラクティスに関する助言を提供します。 これらの推奨事項には、どれが最も重要かを選択するのに役立つように優先順位が付けられています。また、クイック修正のオプションを使用すると、潜在的な脆弱性に迅速に対処できます。 また、これらの推奨事項は時間の経過とともに更新されるため、環境のセキュリティを維持するための最良の方法について、常に最新の情報を得ることができます。 詳細については、「[Azure Security Center でセキュア スコアを向上する](../security-center/secure-score-security-controls.md)」を参照してください。
+セキュア スコアは、全体的なセキュリティを向上させるための推奨事項とベスト プラクティスに関する助言を提供します。 これらの推奨事項には、どれが最も重要かを選択するのに役立つように優先順位が付けられています。また、クイック修正のオプションを使用すると、潜在的な脆弱性に迅速に対処できます。 また、これらの推奨事項は時間の経過とともに更新されるため、環境のセキュリティを維持するための最良の方法について、常に最新の情報を得ることができます。 詳細については、[Microsoft Defender for Cloud のセキュア スコア向上](../security-center/secure-score-security-controls.md)に関するページを参照してください。
 
 ## <a name="azure-virtual-desktop-security-best-practices"></a>Azure Virtual Desktop のセキュリティに関するベスト プラクティス
 
@@ -109,11 +107,11 @@ FSLogix などのプロファイル ソリューションや、VHD ファイル�
 
 ### <a name="install-an-endpoint-detection-and-response-product"></a>エンドポイントの検出と応答製品をインストールする
 
-エンドポイントの検出と応答 (EDR) 製品をインストールして、高度な検出と応答の機能を提供することをお勧めします。 [Azure Security Center](../security-center/security-center-services.md) が有効になったサーバー オペレーティング システムでは、EDR 製品をインストールすると Defender ATP がデプロイされます。 クライアント オペレーティング システムの場合は、[Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding) またはサードパーティ製の製品をこれらのエンドポイントにデプロイできます。
+エンドポイントの検出と応答 (EDR) 製品をインストールして、高度な検出と応答の機能を提供することをお勧めします。 [Microsoft Defender for Cloud](../security-center/security-center-services.md) が有効になったサーバー オペレーティング システムでは、EDR 製品をインストールすると Defender ATP がデプロイされます。 クライアント オペレーティング システムの場合は、[Defender ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding) またはサードパーティ製の製品をこれらのエンドポイントにデプロイできます。
 
 ### <a name="enable-threat-and-vulnerability-management-assessments"></a>脅威と脆弱性の管理の評価を有効にする
 
-オペレーティング システムとアプリケーションに存在するソフトウェアの脆弱性を特定することは、環境のセキュリティを維持するために不可欠です。 Azure Security Center は、サーバー オペレーティング システムの脆弱性評価によって問題のある箇所を特定するのに役立ちます。 また、デスクトップ オペレーティング システムの脅威と脆弱性の管理を提供する Defender ATP を使用することもできます。 Azure Security Center と Defender ATP を使用することをお勧めしていますが、必要であれば、サードパーティ製品を使用することもできます。
+オペレーティング システムとアプリケーションに存在するソフトウェアの脆弱性を特定することは、環境のセキュリティを維持するために不可欠です。 Microsoft Defender for Cloud は、サーバー オペレーティング システムの脆弱性評価によって問題のある箇所を特定するのに役立ちます。 また、デスクトップ オペレーティング システムの脅威と脆弱性の管理を提供する Defender ATP を使用することもできます。 Microsoft Defender for Cloud と Defender ATP を使用することをお勧めしていますが、必要であれば、サードパーティ製品を使用することもできます。
 
 ### <a name="patch-software-vulnerabilities-in-your-environment"></a>環境内のソフトウェアの脆弱性を修正する
 

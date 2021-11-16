@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 327c030708f37bffab05aa72884422a487b6b729
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0eea2233a2b6b59c92b49ca325378a95301fc962
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166941"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158854"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>FCI VNN 用に Azure Load Balancer を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の複数のサブネットに SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して Azure Load Balancer が不要になります。
 
 Azure 仮想マシンでは、一度に 1 つのクラスター ノードに設定する必要がある IP アドレスを保持するために、クラスターでロード バランサーが使用されます。 このソリューションでは、Azure のクラスター化されたリソースによって使用される仮想ネットワーク名 (VNN) の IP アドレスが、ロード バランサーによって保持されます。 
 

@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: faeaf58537da4a40716f0c2e76b205980b727bf9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a929e5d4bccc3a6b2d27125de6aad4472364d67e
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459108"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179152"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -158,6 +158,18 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 | 412 | 要求の `ETag` が、RFC7232 に従って、既存のリソースの `ETag` と一致しません。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)してください。 |
 | 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)」を参照してください。 | メッセージの頻度を削減し、より多くのデバイス間で責任を分割します。 |
 | 500 | 内部エラーが発生しました。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)して、さらにサポートを受けられるかどうかを確認します。 |
+
+### <a name="detailed-authorization-error-codes"></a>詳細な承認エラー コード
+
+| Error | サブ エラー コード | Notes |
+| - | - | - |
+| 401 権限がありません | 401002 | デバイスが無効または期限切れの資格情報を使用しています。 このエラーは DPS によって報告されます。 |
+| 401 権限がありません | 400209 | デバイスがオペレーターによる承認を待っているか、オペレーターによってブロックされています。 |
+| 401 IoTHubUnauthorized |  | デバイスが期限切れのセキュリティ トークンを使用しています。 このエラーは IoT Hub によって報告されます。 |
+| 401 IoTHubUnauthorized | DEVICE_DISABLED | この IoT ハブではデバイスが無効になり、別の IoT ハブに移動されました。 デバイスを再プロビジョニングします。 |
+| 401 IoTHubUnauthorized | DEVICE_BLOCKED | オペレーターによってこのデバイスがブロックされました。 |
+
+
 
 ### <a name="file-upload-error-codes"></a>ファイルのアップロードに関するエラー コード
 

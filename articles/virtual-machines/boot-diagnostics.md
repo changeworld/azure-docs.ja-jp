@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: f0e8a9775fead0f2d54ccf131240f7d4cdefee4d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ceae158a8fab584b3674c62c621530dd2e6b25b9
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694422"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132155930"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure のブート診断
 
@@ -28,7 +28,7 @@ Azure portal で VM を作成するとき、ブート診断は既定で有効に
 
 別のブート診断エクスペリエンスでは、ユーザー管理のストレージ アカウントを使用します。 ユーザーは、新しいストレージ アカウントを作成することも、既存のものを使用することもできます。
 > [!NOTE]
-> ブート診断に関連付けられたユーザー管理のストレージ アカウントでは、ストレージ アカウントおよび関連付けられている仮想マシンが同じサブスクリプションに存在する必要があります。 
+> ブート診断に関連付けられたユーザー マネージド ストレージ アカウントでは、ストレージ アカウントおよび関連付けられている仮想マシンが同じリージョンおよびサブスクリプションに存在する必要があります。 
 
 
 
@@ -106,7 +106,7 @@ API バージョン 2020-06-01 以降はすべて、マネージド ブート診
 ## <a name="limitations"></a>制限事項
 - マネージド ブート診断は、Azure Resource Manager VM でのみ使用できます。 
 - マネージド ブート診断は、アンマネージド OS ディスクを使用する VM をサポートしていません。
-- ブート診断機能では、Premium ストレージ アカウントまたはゾーン冗長ストレージのアカウントはサポートされていません。 いずれかがブート診断に使用される場合、VM の起動時に `StorageAccountTypeNotSupported` エラーが表示されます。 
+- ブート診断機能では、Premium ストレージ アカウントまたはゾーン冗長ストレージ アカウントはサポートされていません。 いずれかがブート診断に使用される場合、VM の起動時に `StorageAccountTypeNotSupported` エラーが表示されます。 
 - マネージド ストレージ アカウントは、Resource Manager API バージョン "2020-06-01" 以降でサポートされています。
 - Azure シリアル コンソールは現在、ブート診断用のマネージド ストレージ アカウントとの互換性はありません。 [Azure シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-overview)についてさらに詳しく学習します。
 - ポータルは、単一インスタンス VM のマネージド ストレージ アカウントでのブート診断の使用のみをサポートしています。

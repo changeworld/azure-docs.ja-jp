@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3e8430499edde638bf32cca2f9a36fb3c3583863
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 3c1b3ac13f79037b3357f3ecba0d3d668f88d0b5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178058"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850890"
 ---
 # <a name="install-the-azure-monitor-agent"></a>Azure Monitor エージェントのインストール
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。
@@ -39,14 +39,16 @@ Azure Monitor エージェントは、次の表に示す詳細で [Azure VM 拡�
 | TypeHandlerVersion  | 1.0 | 1.5 |
 
 ## <a name="extension-versions"></a>拡張機能のバージョン
-プレビュー バージョンを使用せず、GA+ バージョンに更新することを強く推奨します。
+プレビューまたは中間バージョンを使用する代わりに、以下に示す GA+ バージョンに更新することを強くお勧めします。
 
 | リリース日 | リリース ノート | Windows | Linux |
 |:---|:---|:---|:---|:---|
 | 2021 年 6 月 | 一般提供が告知されました。 <ul><li>メトリックの宛先を除くすべての機能が一般提供になりました</li><li>実稼働の品質、セキュリティとコンプライアンス</li><li>すべてのパブリック リージョンで利用可能</li><li>EPS を上げるためのパフォーマンスとスケーリングの改善</li></ul> [詳細情報](https://azure.microsoft.com/updates/azure-monitor-agent-and-data-collection-rules-now-generally-available/) | 1.0.12.0 | 1.9.1.0 |
 | 2021 年 7 月 | <ul><li>直接プロキシのサポート</li><li>Log Analytics ゲートウェイのサポート</li></ul> [詳細情報](https://azure.microsoft.com/updates/general-availability-azure-monitor-agent-and-data-collection-rules-now-support-direct-proxies-and-log-analytics-gateway/) | 1.1.1.0 | 1.10.5.0 |
-| 2021 年 8 月 | Azure Monitor のメトリックを唯一の宛先として許可する問題を解決 | 1.1.2.0 | 1.10.9.0 (1.10.7.0 を使用しないでください) |
-| 2021 年 9 月 | エージェントの再起動時にデータが失われる問題を解決 | 1.1.3.1 (1.1.3.1 を使用しないでください) | 1.12.2.0 |
+| 2021 年 8 月 | Azure Monitor のメトリックを唯一の宛先として許可する問題を解決 | 1.1.2.0 | 1.10.9.0<sup>1</sup> |
+| 2021 年 9 月 | <ul><li>エージェントの再起動時にデータが失われる問題を解決</li><li>Arc Windows サーバー用の 1.1.3.1<sup>2</sup> で新しく発生したバグに対処しました</li></ul> | 1.1.3.2 | 1.12.2.0 <sup>2</sup> |  
+
+<sup>1</sup> AMA Linux バージョン 1.10.7.0 は使用しないでください <sup>2</sup> Arc 対応サーバーで動作しない既知のバグ
 
 
 ## <a name="install-with-azure-portal"></a>Azure portal を使用してインストールする

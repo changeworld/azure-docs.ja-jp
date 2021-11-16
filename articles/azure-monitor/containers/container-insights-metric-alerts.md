@@ -3,12 +3,12 @@ title: Container insights からのメトリック アラート
 description: この記事では、Container insights から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 7036bc7a0f161044312687d6b22171df99821e6a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 49ae1fee1961bf722489309d2d605ca7697ab218
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714431"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455133"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Container insights からの推奨メトリック アラート (プレビュー)
 
@@ -47,6 +47,7 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 |**(新規) Average container CPU % (コンテナーの平均 CPU %)** |コンテナーあたりの使用された平均 CPU を計算します。|コンテナーあたりの平均 CPU 使用率が 95% を超えたとき。| 
 |**(新規) Average container working set memory % (コンテナーの平均ワーキング セット メモリ %)** |コンテナーあたりの使用された平均ワーキング セット メモリを計算します。|コンテナーあたりの平均ワーキング セット メモリ使用率が 95% を超えたとき。 |
 |Average CPU % (平均 CPU %) |ノードあたりの使用された平均 CPU を計算します。 |ノードの平均 CPU 使用率が 80% を超えたとき |
+| 日単位のデータ上限の違反 | データ上限に違反したとき| Log Analytics ワークスペースへのデータ インジェストの合計が[指定されたクォータ](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を超えた場合 |
 |Average Disk Usage % (平均ディスク使用率 %) |ノードの平均ディスク使用率を計算します。|ノードの平均ディスク使用率が 80% を超えたとき。 |
 |**Average Persistent Volume Usage % (永続ボリュームの平均使用率 %)** |ポッドあたりの平均 PV 使用量を計算します。 |ポッドあたりの平均 PV 使用率が 80% を超えたとき。|
 |Average Working set memory % (平均ワーキング セット メモリ %) |ノードの平均ワーキング セット メモリを計算します。 |ノードの平均ワーキング セット メモリが 80% を超えたとき。 |
@@ -88,11 +89,11 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 |メトリック名前空間 |メトリック |説明 |
 |---------|----|------------|
 |Insights.container/nodes |cpuUsageMillicores |ホスト別の CPU 使用率 (ミリコア単位)。|
-|Insights.container/nodes |cpuUsagePercentage |ノード別の CPU 使用率 (%)。|
+|Insights.container/nodes |cpuUsagePercentage、cpuUsageAllocatablePercentage (プレビュー) |ノード別の CPU 使用率とそれぞれの割り当て可能な CPU 使用率。|
 |Insights.container/nodes |memoryRssBytes |ホスト別のメモリ RSS 使用量 (バイト単位)。|
-|Insights.container/nodes |memoryRssPercentage |ホスト別のメモリ RSS 使用率 (%)。|
+|Insights.container/nodes |memoryRssPercentage、memoryRssAllocatablePercentage (プレビュー) |ホスト別のメモリ RSS 使用率とそれぞれの割り当て可能なメモリ RSS 使用率。|
 |Insights.container/nodes |memoryWorkingSetBytes |ホスト別のメモリ ワーキング セット使用量 (バイト単位)。|
-|Insights.container/nodes |memoryWorkingSetPercentage |ホスト別のメモリ ワーキング セット使用率 (%)。|
+|Insights.container/nodes |memoryWorkingSetPercentage、memoryRssAllocatablePercentage (プレビュー) |ホスト別のメモリ ワーキング セット使用率とそれぞれの割り当て可能なメモリ ワーキング セット使用率。|
 |Insights.container/nodes |nodesCount |状態別のノード数。|
 |Insights.container/nodes |diskUsedPercentage |デバイス別のノードで使用されるディスクの割合 (%)。|
 |Insights.container/pods |podCount |コントローラー、名前空間、ノード、フェーズ別のポッド数。|

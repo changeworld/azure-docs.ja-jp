@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 07/09/2021
-ms.openlocfilehash: d36d7e91afc4b0bade9f3da08d1324aa7f56cba9
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: e658a8ed30b15327a68ce1671c19e55253ad6b06
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594141"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026712"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning コンピューティング クラスターの作成
 
@@ -46,7 +46,7 @@ Azure Machine Learning コンピューティング クラスターを使用し�
 
 ## <a name="what-is-a-compute-cluster"></a>コンピューティング クラスターとは
 
-Azure Machine Learning コンピューティング クラスターは、シングルノードまたはマルチノードのコンピューティングを簡単に作成できるマネージド コンピューティング インフラストラクチャです。 コンピューティング クラスターは、ワークスペース内の他のユーザーと共有できるリソースです。 コンピューティングはジョブが送信されると自動的にスケールアップされ、Azure 仮想ネットワークに配置できます。 コンピューティングはコンテナー化環境で実行され、モデルの依存関係が [Docker コンテナー](https://www.docker.com/why-docker)にパッケージ化されます。
+Azure Machine Learning コンピューティング クラスターは、シングルノードまたはマルチノードのコンピューティングを簡単に作成できるマネージド コンピューティング インフラストラクチャです。 コンピューティング クラスターは、ワークスペース内の他のユーザーと共有できるリソースです。 コンピューティングはジョブが送信されると自動的にスケールアップされ、Azure 仮想ネットワークに配置できます。 コンピューティング クラスターでは、仮想ネットワークでも **パブリック IP なし (プレビュー)** のデプロイはサポートされません。 コンピューティングはコンテナー化環境で実行され、モデルの依存関係が [Docker コンテナー](https://www.docker.com/why-docker)にパッケージ化されます。
 
 コンピューティング クラスターを使用することで、企業で SSH ポートを開かなくても、[仮想ネットワーク環境](how-to-secure-training-vnet.md)でジョブを安全に実行できます。 ジョブはコンテナー化された環境で実行され、モデルの依存関係が Docker コンテナーにパッケージ化されます。 
 

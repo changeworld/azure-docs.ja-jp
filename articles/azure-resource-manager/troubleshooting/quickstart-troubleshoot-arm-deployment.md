@@ -1,15 +1,15 @@
 ---
 title: ARM テンプレート デプロイのトラブルシューティング
 description: Azure Resource Manager テンプレート (ARM テンプレート) デプロイのトラブルシューティング方法について説明します。
-ms.date: 11/04/2021
+ms.date: 11/08/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 561fab9d7a94bb4eb97d59fcae835dd8cc72a778
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: ce9bf9ee097a41b3e3ecbc0cd515dd58cf30ea82
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131849520"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062060"
 ---
 # <a name="quickstart-troubleshoot-arm-template-deployments"></a>クイックスタート: ARM テンプレート デプロイのトラブルシューティング
 
@@ -89,11 +89,11 @@ ms.locfileid: "131849520"
 
 ## <a name="fix-validation-error"></a>検証エラーを修正する
 
-Visual Studio Code でファイルを開きます。 `parameterss:` の下の波線はエラーを示しています。 エラーにカーソルを合わせると、検証エラーが表示されます。
+Visual Studio Code でファイルを開きます。 `parameterss:` の下の波線はエラーを示しています。 検証エラーを表示するために、エラーにカーソルを合わせます。
 
 :::image type="content" source="media/quickstart-troubleshoot-arm-deployment/validation-error.png" alt-text="Visual Studio Code でのテンプレートの検証エラーのスクリーンショット。":::
 
-`variables` と `resources` に _undefined parameter reference_ のエラーがあるのがわかります。
+`variables` と `resources` に _undefined parameter reference_ のエラーがあるのがわかります。 テンプレートの検証エラーを表示するには、 **[表示]**  >  **[Problems]\(問題\)** を選択します。
 
 :::image type="content" source="media/quickstart-troubleshoot-arm-deployment/validation-undefined-parameter.png" alt-text="undefined parameter reference エラーを示す Visual Studio Code のスクリーンショット。":::
 

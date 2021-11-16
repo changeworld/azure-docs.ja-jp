@@ -1,27 +1,27 @@
 ---
-title: Fortinet を Azure Defender for IoT と統合する
-description: このチュートリアルでは、Azure Defender for IoT と Fortinet を統合する方法について説明します。
+title: Fortinet を Microsoft Defender for IoT と統合する
+description: このチュートリアルでは、Microsoft Defender for IoT と Fortinet を統合する方法について説明します。
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/25/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 81bbedf86c3559b8f668dcfcf26cb0d9dab21af0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0556cab649a87b7c0309671acc60d9756a3d03c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070909"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283659"
 ---
-# <a name="tutorial-integrate-fortinet-with-azure-defender-for-iot"></a>チュートリアル: Fortinet を Azure Defender for IoT と統合する
+# <a name="tutorial-integrate-fortinet-with-microsoft-defender-for-iot"></a>チュートリアル: Fortinet を Microsoft Defender for IoT と統合する
 
-このチュートリアルは、Fortinet と Azure Defender for IoT を統合し、使用する方法を学ぶのに役立ちます。
+このチュートリアルは、Fortinet と Microsoft Defender for IoT を統合し、使用する方法を学ぶのに役立ちます。
 
-Azure Defender for IoT を使用すると、ICS デバイス、脆弱性、脅威に関する即時の分析情報を 1 時間以内に提供する、ICS 対応の自己学習エンジンによって IIoT、ICS、SCADA のリスクを軽減できます。  Defender for IoT は、エージェント、ルール、署名、特殊なスキル、または環境に関する事前の知識などに依存することなく、これを実現します。
+Microsoft Defender for IoT を使用すると、ICS デバイス、脆弱性、脅威に関する即時の分析情報を 1 時間以内に提供する、ICS 対応の自己学習エンジンによって IIoT、ICS、SCADA のリスクを軽減できます。  Defender for IoT は、エージェント、ルール、署名、特殊なスキル、または環境に関する事前の知識などに依存することなく、これを実現します。
 
-Defenders for IoT と Fortinet は、IoT および ICS ネットワークに対する攻撃を検出して停止する技術パートナーシップを確立しました。
+Defender for IoT と Fortinet は、IoT および ICS ネットワークに対する攻撃を検出して停止する技術パートナーシップを確立しました。
 
-Fortinet と Azure Defender for IoT は、次のものを防止します。
+Fortinet と Microsoft Defender for IoT により、以下が回避されます。
 
 - プログラマブル ロジック コントローラー (PLC) への承認されていない変更。
 
@@ -58,7 +58,7 @@ Azure アカウントをまだお持ちではない場合は、[今すぐ Azure 
 
 ## <a name="create-an-api-key-in-fortinet"></a>Fortinet で API キーを作成する
 
-アプリケーション プログラミング インターフェイス (API) キーは、API がアクセスを要求しているアプリケーションまたはユーザーを識別できるようにする、一意に生成されるコードです。 Azure Defender for IoT と Fortinet が正しく通信するには、API キーが必要です。
+アプリケーション プログラミング インターフェイス (API) キーは、API がアクセスを要求しているアプリケーションまたはユーザーを識別できるようにする、一意に生成されるコードです。 Microsoft Defender for IoT と Fortinet が正しく通信するには、API キーが必要です。
 
 **Fortinet で API キーを作成するには**:
 
@@ -105,7 +105,7 @@ FortiGate ファイアウォールを使用して、疑わしいトラフィッ�
 
 **マルウェア関連のアラートをブロックする転送ルールを設定するには**:
 
-1. Azure Defender for IoT 管理コンソールにサインインします。
+1. Microsoft Defender for IoT 管理コンソールにサインインします。
 
 1. 左側のウィンドウで、 **[転送]** を選択します。
 

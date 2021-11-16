@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes のクラスター拡張機能の概要について説明します
-ms.openlocfilehash: 1f6bc02e111041e9a89e8066a57586c331c1a297
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6ae9270822ae16608a2c470ed818bcb8e6c2aa38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265540"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279274"
 ---
 # <a name="cluster-extensions"></a>クラスター拡張機能
 
-Azure Monitor、Azure Defender for Kubernetes、Azure アプリ サービスや Azure Data Service などのサービスのような管理サービスは、クラスター拡張機能を通じて Kubernetes クラスターでインスタンス化できます。 [Helm チャート](https://helm.sh/)により、最も複雑な Kubernetes アプリケーションでも、そのアプリケーションを定義、インストール、アップグレードするために必要な構成要素を提供することで管理できます。 クラスター拡張機能は、Helm のパッケージング コンポーネントの上に構築され、kubernetes クラスターで有効にする予定のサービスのインスタンスのインストールとライフサイクル管理のための Azure Resource Manager 主導のエクスペリエンスが提供されます。 クラスターのオペレーターまたは管理者は、クラスター拡張機能を使用して、次のことを行うことができます。 
+Azure Monitor、Microsoft Defender for Kubernetes、Azure アプリ サービスや Azure Data Service などのサービスのような管理サービスは、クラスター拡張機能を通じて Kubernetes クラスターでインスタンス化できます。 [Helm チャート](https://helm.sh/)により、最も複雑な Kubernetes アプリケーションでも、そのアプリケーションを定義、インストール、アップグレードするために必要な構成要素を提供することで管理できます。 クラスター拡張機能は、Helm のパッケージング コンポーネントの上に構築され、kubernetes クラスターで有効にする予定のサービスのインスタンスのインストールとライフサイクル管理のための Azure Resource Manager 主導のエクスペリエンスが提供されます。 クラスターのオペレーターまたは管理者は、クラスター拡張機能を使用して、次のことを行うことができます。 
 
 - 必要な機能のさまざまな拡張機能をインストールし、すべてのクラスターとそれらのクラスターにインストールされている拡張機能のインベントリを Azure portal、CLI、SDK などの Azure インターフェイスから取得します。 
 - 他の Azure リソースと同様に、Azure のロールベースのアクセス制御 (RBAC) を使用して、クラスター拡張機能リソースへのアクセスを制御できます
@@ -25,7 +25,7 @@ Azure Monitor、Azure Defender for Kubernetes、Azure アプリ サービスや 
 - 拡張機能の自動アップグレードを設定するか、特定のバージョンに固定して、更新プログラムを管理します。
 - 拡張機能のプロパティの更新や 1 つ以上の拡張機能インスタンスの削除など、拡張機能のライフサイクルを管理します。
 
-拡張機能では、クラスタースコープにするか、名前空間にスコープを設定することができます。 各拡張機能の種類 (Azure Monitor、Azure Defender、Azure アプリ サービスなど) によって、クラスター上で動作するスコープが定義されます。 
+拡張機能では、クラスタースコープにするか、名前空間にスコープを設定することができます。 各拡張機能の種類 (Azure Monitor、Microsoft Defender for Cloud、Azure アプリ サービスなど) によって、クラスター上で動作するスコープが定義されます。 
 
 ## <a name="architecture-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc 対応 Kubernetes クラスターのアーキテクチャ
 

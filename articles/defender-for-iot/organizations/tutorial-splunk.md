@@ -1,21 +1,21 @@
 ---
-title: Splunk を Azure Defender for IoT と統合する
-description: このチュートリアルでは、Splunk と Azure Defender for IoT を統合する方法について説明します。
+title: Splunk を Microsoft Defender for IoT と統合する
+description: このチュートリアルでは、Splunk を Microsoft Defender for IoT と統合する方法について説明します。
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/12/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 2484de315508310729882e46b5e22669d01ec9f8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4b0f321741d6f07f2ac636d57de31bf02503877
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814706"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283583"
 ---
-# <a name="tutorial-integrate-splunk-with-azure-defender-for-iot"></a>チュートリアル: Splunk を Azure Defender for IoT と統合する
+# <a name="tutorial-integrate-splunk-with-microsoft-defender-for-iot"></a>チュートリアル: Splunk を Microsoft Defender for IoT と統合する
 
-このチュートリアルは、Splunk と Azure Defender for IoT を統合し、使用する方法を学ぶのに役立ちます。
+このチュートリアルは、Splunk を Microsoft Defender for IoT と統合して使用する方法を学ぶのに役立ちます。
 
 Defender for IoT により、IIoT、ICS、SCADA のリスクが軽減されます。それには、エージェント、ルール、署名、専門的なスキル、または以前の環境の知識に依存することなく、1 イメージ時間未満で、ICS デバイス、脆弱性、脅威についての即座の分析情報を提供する、特許取得済みの ICS 対応自己学習エンジンが使用されます。
 
@@ -26,7 +26,7 @@ OT ネットワークのセキュリティと回復性への可視性がない�
 Splunk アプリケーションは、ローカル環境にインストールすることも、クラウドで実行することもできます。 Splunk を Defender for IoT と統合することにより、両方のデプロイがサポートされます。
 
 > [!Note]
-> CyberX について記載があった場合、これは Azure Defender for IoT を指しています。
+> CyberX について記載があった場合、これは Microsoft Defender for IoT を指しています。
 
 このチュートリアルでは、次の作業を行う方法について説明します。
 
@@ -131,7 +131,7 @@ Defender for IoT から Splunk サーバーにアラート情報を送信する�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Splunk 統合の使用を開始する方法を学習しました。 次に、[ServiceNow と Azure Defender for IoT を統合する](tutorial-servicenow.md)方法の学習に進みます。
+このチュートリアルでは、Splunk 統合の使用を開始する方法を学習しました。 次に、[ServiceNow と Microsoft Defender for IoT を統合する](tutorial-servicenow.md)方法の学習に進みます。
 
 > [!div class="nextstepaction"]
-> [ServiceNow を Azure Defender for IoT と統合する](tutorial-servicenow.md)
+> [ServiceNow を Microsoft Defender for IoT と統合する](tutorial-servicenow.md)

@@ -1,18 +1,18 @@
 ---
 title: ユーザーの作成と管理
 description: センサーとオンプレミス管理コンソールのユーザーを作成および管理します。 ユーザーには、管理者、セキュリティ アナリスト、または読み取り専用ユーザーのロールを割り当てることができます。
-ms.date: 05/20/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: fa10961218d536faf09a1f7062c8a8c77dc99ce4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 73e08c7cdca6e57445566a99cb779a322306f944
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434036"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318942"
 ---
 # <a name="about-defender-for-iot-console-users"></a>About Defender for IoT コンソール ユーザーについて
 
-この記事では、センサーとオンプレミス管理コンソールのユーザーを作成および管理する方法について説明します。 ユーザー ロールには、管理者、セキュリティアナリスト、または読み取り専用ユーザーが含まれます。 各ロールには、センサーまたはオンプレミス管理コンソール用のツールに対する一連のアクセス許可が関連付けられています。 ロールは、Azure Defender for IoT に対してセキュリティで保護されたきめ細かいアクセスを容易にするように設計されています。
+この記事では、センサーとオンプレミス管理コンソールのユーザーを作成および管理する方法について説明します。 ユーザー ロールには、管理者、セキュリティアナリスト、または読み取り専用ユーザーが含まれます。 各ロールには、センサーまたはオンプレミス管理コンソール用のツールに対する一連のアクセス許可が関連付けられています。 ロールは、Microsoft Defender for IoT に対してセキュリティで保護されたきめ細かいアクセスを容易にするように設計されています。
 
 ユーザー アクティビティを追跡したり Active Directory サインインを有効にしたりするための機能も使用できます。
 

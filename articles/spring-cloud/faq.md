@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a1653b9940f7b278d2d1a7e4b21bd2b9d57b9411
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 8e5f4e1a50b25fc9022444c25a2c1e091c5496e3
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131474820"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997478"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -43,7 +43,7 @@ Azure Spring Cloud は、基になる Kubernetes worker ノードでアプリケ
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
-米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、東日本、南アフリカ北部、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、東日本、南アフリカ北部、ブラジル南部、フランス中部、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>指定されたリージョン外に格納されている顧客データはありますか?
 
@@ -221,7 +221,7 @@ Azure Spring Cloud は、お客様のアプリケーションのポート1025を
 
 ### <a name="whether-and-when-will-my-application-be-restarted"></a>アプリケーションを再起動するかどうかを指定します。
 
-はい。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
+正解です。 詳細について[Azure のアクティビティログと Azure Service Health を使用したアプリのライフサイクルイベントの監視](./monitor-app-lifecycle-events.md)を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?

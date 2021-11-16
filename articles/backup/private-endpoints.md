@@ -2,14 +2,17 @@
 title: Azure Backup のプライベート エンドポイントの作成と使用
 description: Azure Backup のプライベート エンドポイントを作成するプロセスについて説明します。プライベート エンドポイントを使用することで、リソースのセキュリティが維持しやすくなります。
 ms.topic: conceptual
-ms.date: 09/24/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 246b3fa30b52b654e9210ddbf86ca5ede519f50d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: e474ae10e1461e834312e4ff52b36ece57bcc30e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264676"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137925"
 ---
 # <a name="create-and-use-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントの作成と使用
 
@@ -544,7 +547,7 @@ Azure VM またはオンプレミスのマシン用のプロキシ サーバー�
    >- [US Gov ](../azure-government/documentation-government-developer-guide.md)
    >- [geo コード リスト - サンプル XML](scripts/geo-code-list.md)
 
-次の図は、必須の DNS エントリを含むプライベート DNS ゾーンに VNet がリンクされているプロキシ サーバーがあるセットアップ (Azure プライベート DNS ゾーンの使用) を示しています。 プロキシ サーバーには独自のカスタム DNS サーバーを含めることもでき、上記のドメインは条件付きで 169.63.129.16 に転送できます。 DNS 解決にカスタム DNS サーバー/ホスト ファイルを使用している場合、[DNS エントリの管理](#manage-dns-records)と[保護の構成](#configure-backup)に関するセクションを参照してください。
+次の図は、必須の DNS エントリを含むプライベート DNS ゾーンに VNet がリンクされているプロキシ サーバーがあるセットアップ (Azure プライベート DNS ゾーンの使用) を示しています。 プロキシ サーバーには独自のカスタム DNS サーバーを含めることもでき、上記のドメインは条件付きで 168.63.129.16 に転送できます。 DNS 解決にカスタム DNS サーバー/ホスト ファイルを使用している場合、[DNS エントリの管理](#manage-dns-records)と[保護の構成](#configure-backup)に関するセクションを参照してください。
 
 :::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="プロキシ サーバーがあるセットアップを示す図。" lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
 

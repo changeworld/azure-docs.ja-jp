@@ -6,12 +6,12 @@ ms.date: 11/03/2021
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 021a24cbe5c1e2ba9f504ca99c149b135bc40fc4
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 465331a39f5fc05d81a4ff06cd58c3962b301831
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131844735"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332043"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure ファイル共有のバックアップを管理する
 
@@ -32,6 +32,9 @@ ms.locfileid: "131844735"
 1. データソースの種類として **[Azure Files (Azure Storage)]** を選択し、任意の行を選択して特定のジョブの詳細を表示します。
 
    :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-inline.png" alt-text="ジョブの一覧を示すスクリーンショット。" lightbox="./media/manage-afs-backup/backup-center-jobs-expanded.png":::
+   
+    >[!NOTE]
+    >Azure Files に対応するバックアップ ジョブで転送されたデータは、コンテナーに転送するデータがないため MB 単位で 0 です。
 
 ## <a name="monitor-using-azure-backup-reports"></a>Azure Backup レポートを使用した監視
 

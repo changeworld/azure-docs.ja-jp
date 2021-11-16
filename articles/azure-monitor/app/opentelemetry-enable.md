@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 3961f7233de1fcd09dc8a2199dfa424b505add27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ae52a8977247903574b9d23fda795e5fd8b7ea3d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058105"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054431"
 ---
 # <a name="enable-azure-monitor-opentelemetry-exporter-for-net-nodejs-and-python-applications-preview"></a>.NET、Node.js、Python アプリケーション用の Azure Monitor OpenTelemetry エクスポーターを有効にする (プレビュー)
 
@@ -40,7 +40,7 @@ ms.locfileid: "131058105"
  - [操作名](correlation.md#data-model-for-telemetry-correlation)をオーバーライドする機能
  - ユーザー ID または認証されたユーザー ID を手動で設定する機能
  - 操作名の依存関係テレメトリへの伝達
- - Azure Functions Worker を使用した分散トレース コンテキストの伝達 (インストルメンテーション ライブラリ)
+ - Azure Functions での[インストルメンテーション ライブラリ](#instrumentation-libraries)のサポート
 
 全機能のエクスペリエンスが必要なユーザーは、OpenTelemetry ベースのオファリングが成熟するまで、既存の Application Insights [ASP.NET](asp-net.md) または [ASP.NET Core](asp-net-core.md) SDK を使用する必要があります。
 
@@ -81,7 +81,7 @@ ms.locfileid: "131058105"
  - [操作名](correlation.md#data-model-for-telemetry-correlation)をオーバーライドする機能
  - ユーザー ID または認証されたユーザー ID を手動で設定する機能
  - 操作名の依存関係テレメトリへの伝達
- - Azure Functions Worker を使用した分散トレース コンテキストの伝達 (インストルメンテーション ライブラリ)
+ - Azure Functions での[インストルメンテーション ライブラリ](#instrumentation-libraries)のサポート
 
 全機能のエクスペリエンスが必要なユーザーは、OpenTelemetry ベースのオファリングが成熟するまで、既存の [Application Insights Python-OpenCensus SDK](opencensus-python.md) を使用する必要があります。
 
@@ -175,7 +175,7 @@ pip install azure-monitor-opentelemetry-exporter
 
 ##### <a name="net"></a>[.NET](#tab/net)
 
-次のコードは、OpenTelemetry TracerProvider を設定することによって、C# コンソールアプリケーションで OpenTelemetry を有効にする方法を示しています このコードは、アプリケーションの起動時に存在する必要があります。 たとえば ASP.NET Core、通常はアプリケーション クラスの `ConfigureServices` メソッドで行 `Startup` われます。 アプリケーション ASP.NET、通常は で行われます `Global.aspx.cs` 。
+次のコードは、OpenTelemetry TracerProvider を設定することによって、C# コンソールアプリケーションで OpenTelemetry を有効にする方法を示しています このコードは、アプリケーションの起動時に存在する必要があります。 たとえば ASP.NET Core、通常はアプリケーション クラスの `ConfigureServices` メソッドで行 `Startup` われます。 アプリケーション ASP.NET、通常は で行われます `Global.asax.cs` 。
 
 ```csharp
 using System.Diagnostics;
@@ -457,7 +457,7 @@ trace.set_tracer_provider(
 1. [インストルメンテーション ライブラリ](#instrumentation-libraries)によって提供されるオプションの使用。
 2. カスタム スパン プロセッサの追加。
 
-これらの属性には、テレメトリへのカスタム ビジネス プロパティの追加が含まれる可能性があります。 また、属性を使用して、Application Insights のスキーマの [ユーザー ID] や [クライアント IP] などの省略可能なフィールドを設定することもできます。
+これらの属性には、テレメトリへのカスタム プロパティの追加が含まれる可能性があります。 また、属性を使用して、Application Insights のスキーマの [クライアント IP] などの省略可能なフィールドを設定することもできます。
 
 > [!TIP]
 > "インストルメンテーション ライブラリによって提供されるオプション" (使用可能な場合) を使用する利点は、コンテキスト全体を使用できることです。つまり、ユーザーは属性を追加するか、または追加の属性をフィルター処理するかを選択できます。 たとえば、HttpClient インストルメンテーション ライブラリに含まれている強化オプションにより、ユーザーは httpRequestMessage 自体にアクセスして、そこから任意のものを選択し、それを属性として格納できます。
@@ -586,6 +586,7 @@ class SpanEnrichingProcessor(SpanProcessor):
 [カスタム プロパティの追加の例](#add-custom-property)を使用しますが、`ActivityEnrichingProcessor.cs` の次のコード行を入れ替えます。
 
 ```C#
+// only applicable in case of activity.Kind == Server
 activity.SetTag("http.client_ip", "<IP Address>");
 ```
 

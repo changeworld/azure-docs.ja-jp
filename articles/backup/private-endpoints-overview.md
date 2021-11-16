@@ -2,14 +2,17 @@
 title: プライベート エンドポイントの概要
 description: Azure Backup のプライベート エンドポイントの使用について、およびプライベート エンドポイントを使用することでリソースのセキュリティを維持しやすくなるシナリオについて理解を深めます。
 ms.topic: conceptual
-ms.date: 09/28/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3070cb72b6e5949b94972f9dad54d4e57e5bf591
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: c9ff432c1de5ebdb44ae8f5fa0d4889026a32252
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154966"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136487"
 ---
 # <a name="overview-and-concepts-of-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントの概要と概念
 
@@ -73,9 +76,9 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 >BLOB とキューのプライベート エンドポイントは標準の名前付けパターンに従い、 **\<the name of the private endpoint>_ecs** または **\<the name of the private endpoint>_prot** で始まり、末尾にそれぞれ  **\_blob** および  **\_queue**  が付きます。
 
 Azure Backup サービスのエンドポイントは、プライベート エンドポイント対応コンテナー向けに変更されます。  
-サードパーティのプロキシ サーバーとファイアウォールを使用して DNS プロキシ サーバーを構成した場合、上記のドメイン名を許可して、これらのプライベート IP アドレス マッピングを使用するプライベート DNS ゾーンへの仮想ネットワーク リンクを使用して、カスタム DNS (プライベート IP アドレス マッピングを使用) または 169.63.129.16 にリダイレクトする必要があります。
+サードパーティのプロキシ サーバーとファイアウォールを使用して DNS プロキシ サーバーを構成した場合、上記のドメイン名を許可して、これらのプライベート IP アドレス マッピングを使用するプライベート DNS ゾーンへの仮想ネットワーク リンクを使用して、カスタム DNS (プライベート IP アドレス マッピングを使用) または 168.63.129.16 にリダイレクトする必要があります。
 
-次の例は、Recovery Services コンテナー、BLOB、キュー、AAD のドメイン名クエリを 169.63.129.16 にリダイレクトするために DNS プロキシとして使用される Azure ファイアウォールを示しています。
+次の例は、Recovery Services コンテナー、BLOB、キュー、AAD のドメイン名クエリを 168.63.129.16 にリダイレクトするために DNS プロキシとして使用される Azure ファイアウォールを示しています。
 
 :::image type="content" source="./media/private-endpoints-overview/azure-firewall-used-as-dns-proxy-inline.png" alt-text="ドメイン名クエリをリダイレクトするために DNS プロキシとして Azure ファイアウォールを使用する方法を示す図。" lightbox="./media/private-endpoints-overview/azure-firewall-used-as-dns-proxy-expanded.png":::
 

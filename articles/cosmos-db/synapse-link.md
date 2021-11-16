@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.reviewer: sngun
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: a051b2ebd49155f921ca76a851ef0a684f3f74bd
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 459aedbda8ea42fb0ee0990fb1074373efc38acc
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545719"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133935"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB とは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -117,11 +117,18 @@ Synapse Link は、次の場合にお勧めします。
 
 * Azure Synapse Link for Azure Cosmos DB は、SQL API および Azure Cosmos DB の MongoDB 用 API に対してサポートされています。 Gremlin API、Cassandra API、および Table API に対してはサポートされていません。
 
-* 分析ストアは、新しいコンテナーに対してのみ有効にできます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
+* Synapse Link は、SQL API と MongoDB API の両方のアカウントの新しいコンテナーで有効にすることができますが、既存のコンテナーは SQL API でのみサポートされています。
 
-* 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](./online-backup-and-restore.md)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。
+* 現時点では、分析ストア内のデータのバックアップと復元はサポートされていません。 この制限は、定期的および継続的バックアップ モードの両方に適用され、Cosmos DB トランザクション ストアのデータには影響しません。
+
+* 同じデータベース アカウント内での Synapse Link と定期的バックアップ モードの共存がサポートされています。 一方、分析ストア内のデータのバックアップと復元はサポートされていません。
+
+* 同じデータベース アカウント内での Synapse Link と継続的バックアップ モードの共存はサポートされていません。
 
 * 現時点では、Azure Synapse 専用 SQL プールを使用した Azure Cosmos DB 分析ストアへのアクセスはサポートされていません。
+
+* Azure Synapse Link と定期的なバックアップ モードは、同じデータベース アカウント内で共存することができます。 ただし、バックアップと復元には、分析ストア データは含まれません。 Synapse Link が有効になっている場合、Azure Cosmos DB がトランザクション ストア内のデータを、スケジュールされたバックアップ間隔で引き続き自動的にバックアップします。
+
 
 ## <a name="security"></a>セキュリティ
 

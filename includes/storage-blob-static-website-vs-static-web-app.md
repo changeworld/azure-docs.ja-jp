@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2021
 ms.author: normesta
 ms.custom: include file
-ms.openlocfilehash: b8476d23fb6db197d98847298535d4a873604316
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 74ee76424ccbbdcaaebb4652acbe42bf569ac86d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843185"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132096935"
 ---
 静的 Web サイトにはいくつかの制限があります。 たとえば、ヘッダーを構成する場合は、Azure Content Delivery Network (Azure CDN) を使用する必要があります。 静的 Web サイト機能自体の一部としてヘッダーを構成する方法はありません。 また、AuthN と AuthZ はサポートされません。 
 

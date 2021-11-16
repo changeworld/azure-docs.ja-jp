@@ -6,6 +6,7 @@
     - name: Microsoft Defender for Cloud とは
       href: defender-for-cloud-introduction.md
     - name: 強化されたセキュリティ機能とは
+      displayName: azure defender
       href: enhanced-security-features-overview.md
     - name: 新機能
       displayName: 'changelog, news, release notes'
@@ -96,7 +97,7 @@
     - name: セキュリティで保護されたスコアにアクセスして追跡する
       href: secure-score-access-and-track.md
     - name: データの機密性に応じた、セキュリティ アクションの優先順位付け
-      displayName: 'sensitivity, data, purview, inventory'
+      displayName: 'sensitivity, data, purview, inventory, information protection'
       href: information-protection.md
     - name: Asset Inventory によるリソースの管理
       href: asset-inventory.md
@@ -220,9 +221,6 @@
         - name: CI/CD ワークフロー内のイメージをスキャンする
           displayName: 'ACR, registry, images, trevi, vulnerabilities, scanner'
           href: defender-for-container-registries-cicd.md
-        - name: 特定のイメージの脆弱性の検出結果を無効にする (プレビュー)
-          displayName: 'ACR, registry, images, qualys'
-          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
         - name: Azure Arc 対応 Kubernetes クラスターを保護する
           displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
           href: defender-for-kubernetes-azure-arc.md
@@ -263,6 +261,7 @@
     - name: セキュリティ ソリューションとデータ ソースの統合
       href: partner-integration.md
     - name: ネットワーク リソースの保護
+      displayName: 'map, network map'
       href: protect-network-resources.md
     - name: MFA の適用と管理
       displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
@@ -320,7 +319,7 @@
     - name: REST API ドキュメント
       href: /rest/api/securitycenter/
     - name: セキュリティ ベースライン
-      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/security-center/TOC.json
+      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/defender-for-cloud/TOC.json
     - name: Microsoft Defender for Cloud のよくあるご質問
       items:
         - name: 一般的な質問

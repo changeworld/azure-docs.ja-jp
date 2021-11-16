@@ -5,15 +5,15 @@ author: lobrien
 ms.service: machine-learning
 services: machine-learning
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 11/05/2021
 ms.author: larryfr
 ms.custom: include file
-ms.openlocfilehash: e144756e65c0ae4d202333cd2972d9c5a1e3fdc8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e066c97e12f4b8e34f66235f53857c583e4350a9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740698"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135886"
 ---
 Azure Machine Learning は、パブリック インターネットへの受信アクセスと送信アクセスの両方が必要です。 次の表に、必要なアクセスの概要と、その目的を示します。 すべての項目の __プロトコル__ は __TCP__ です。 `.region` で終わるサービス タグでは、`region` を、ご利用のワークスペースを含む Azure リージョンに置き換えます。 `Storage.westus` の例を次に示します。
 
@@ -21,7 +21,7 @@ Azure Machine Learning は、パブリック インターネットへの受信�
 | ----- |:-----:| ----- | ----- |
 | 受信 | 29876 から 29877 | BatchNodeManagement | Azure Machine Learning コンピューティング インスタンスとコンピューティング クラスターを作成、更新、削除します。 |
 | 受信 | 44224 | AzureMachineLearning | Azure Machine Learning コンピューティング インスタンスを作成、更新、削除します。 |
-| 送信 | * | AzureActiveDirectory | Azure Active Directory を使用した認証。 |
+| 送信 | 80、443 | AzureActiveDirectory | Azure Active Directory を使用した認証。 |
 | 送信 | 443 | AzureMachineLearning | Azure Machine Learning service の使用。 |
 | 送信 | 443 | AzureResourceManager | Azure Machine Learning による Azure リソースの作成。 |
 | 送信 | 443 | Storage.region | Microsoft Azure Batch サービスの Azure Storage アカウントの格納データにアクセスします。 |

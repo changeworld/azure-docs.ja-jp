@@ -6,43 +6,32 @@ ms.author: vlrodrig
 ms.service: purview
 ms.subservice: purview-data-policies
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: ea5285c5fd29bfe34f97c87b2ac0c9bd7a5502a9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0a20f0a420387fe70ccc41481c29fa698920ec25
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425237"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324705"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Azure Storage のデータ所有者によるデータセットのプロビジョニング
 
 ## <a name="supported-capabilities"></a>サポートされる機能
-
-Purview ポリシーの作成では、次の機能がサポートされています。
--   BLOB または ADLS Gen2 ファイルに格納されているデータへのアクセスを制御する Azure Storage のデータ アクセス ポリシー
+このガイドでは、Azure Purview から作成および管理されるデータ アクセス ポリシーを適用するように Azure Storage を構成する方法について説明します。 Azure Purview ポリシーの作成では、次の機能がサポートされています。
+-   BLOB または Azure Data Lake Storage (ADLS) Gen2 ファイルに格納されているデータへのアクセスを制御するデータ アクセス ポリシー
 
 > [!IMPORTANT]
 > これらの機能は現在、プレビュー段階にあります。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-
-
-## <a name="prerequisites"></a>前提条件
-
-### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Azure Purview データ使用ポリシー プレビューに参加するためのオプトイン
-この機能は現在プレビュー段階であり、[Purview データ使用ポリシー プレビューにオプトイン](https://aka.ms/opt-in-data-use-policy)する必要があります。
-
-### <a name="provision-new-accounts-in-an-isolated-test-subscription"></a>分離テスト サブスクリプションで新しいアカウントをプロビジョニングする
-次の手順に従って、分離テスト サブスクリプションに新しい Azure Purview アカウントと新しい Azure Storage アカウントを作成します。 次に、これらのアカウントのアクセス ポリシー機能を有効にします。
+## <a name="important-limitations"></a>重要な制限事項
+1. アクセス ポリシー機能は、新しい Azure Purview アカウントと Azure Storage アカウントのみで利用できます。
+2. ガバナンスを使用するためにすべてのデータ ソースを登録し、関連付けられているすべてのアクセス ポリシーを 1 つの Azure Purview アカウントで管理します。
+3. この機能は、アクセス ポリシーの管理と適用機能がデプロイされている、以下のリストに含まれているリージョンでのみ使用できます。
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
-> [!IMPORTANT]
-> 1. アクセス ポリシー機能は、新しい Azure Purview アカウントと Azure Storage アカウントのみで利用できます。
-> 2. この機能は、アクセス ポリシー機能がデプロイされている以下のリージョンでのみ使用できます。
-
-#### <a name="azure-purview"></a>Azure Purview 
-
+#### <a name="azure-purview-management-side"></a>Azure Purview (管理側)
 -   北ヨーロッパ
 -   西ヨーロッパ
 -   英国南部
@@ -55,30 +44,24 @@ Purview ポリシーの作成では、次の機能がサポートされていま
 -   カナダ中部
 -   フランス中部
 
-
-#### <a name="azure-storage"></a>Azure Storage
-
+#### <a name="azure-storage-enforcement-side"></a>Azure Storage (適用側)
 -   フランス中部
 -   カナダ中部
 
+## <a name="prerequisites"></a>必須コンポーネント
+> [!Important]
+> このセクションの内容を慎重にお読みください。 アクセス ポリシーが正しく機能するには、複数の前提条件があります。
 
-### <a name="create-azure-purview-account"></a>Azure Purview アカウントを作成する
-
-新しい機能用に分離されたサブスクリプションの下で、新しい機能が有効になっているリージョンに、新しい Azure Purview アカウントを作成します。
-
-新しい Purview アカウントを作成するには、「[クイック スタート: Azure portal で Azure Purview アカウントを作成する](create-catalog-portal.md)」を参照してください。
+### <a name="select-an-isolated-test-subscription"></a>分離されたテスト サブスクリプションを選択する
+分離されたテスト サブスクリプションを作成または使用し、次の手順に従ってそのサブスクリプションに新しい Azure Storage アカウントと新しい Azure Purview アカウントを作成します。
 
 ### <a name="create-azure-storage-account"></a>Azure ストレージ アカウントを作成する
+上記 (制限事項の下) のリストに含まれるリージョンに、新しい Azure Storage アカウントを作成します。 [Azure Storage の 「ストレージ アカウントを作成する」](../storage/common/storage-account-create.md)を参照してください。
 
-新しい Azure Storage アカウントを作成するには、「[ストレージ アカウントの作成 - Azure Storage](../storage/common/storage-account-create.md)」を参照してください
+### <a name="configure-azure-storage-to-enforce-access-policies-from-purview"></a>Purview からアクセス ポリシーを適用するように Azure Storage を構成する
 
-### <a name="configure-azure-purview-and-storage-for-access-policies"></a>アクセス ポリシー用に Azure Purview および Storage を構成する
-
-このセクションでは、アクセス ポリシーを有効にするために Azure Purview と Storage を構成する手順について説明します。
-
-#### <a name="register-the-access-policies-functionality-in-azure-storage"></a>Azure Storage でアクセス ポリシー機能を登録する
-
-この機能がサブスクリプションで有効になるよう登録して確認するには、PowerShell で次のコマンドを実行します
+#### <a name="enable-access-policy-enforcement-in-the-subscription"></a>サブスクリプションでアクセス ポリシーの適用を有効にする
+Azure Storage アカウントが存在するサブスクリプションでアクセス ポリシー機能が有効になっているのを登録して確認するには、PowerShell で次のコマンドを実行します。
 
 ```powershell
 # Install the Az module
@@ -88,27 +71,43 @@ Connect-AzAccount -Subscription <SubscriptionID>
 # Register the feature
 Register-AzProviderFeature -FeatureName AllowPurviewPolicyEnforcement -ProviderNamespace Microsoft.Storage
 ```
-
 最後のコマンドの出力に "RegistrationState" の値が "Registered" と表示されている場合、この機能に対するサブスクリプションは有効になっています。
 
+#### <a name="check-access-permissions-in-azure-storage"></a>Azure Storage でアクセス許可を確認する
+ユーザーは、アクセス ポリシー用に後でこのデータ ソースを Azure Purview に登録するには、Azure Storage アカウントで "所有者" ロールを持っている必要があります。「[Azure リソースに対するユーザーのアクセス権を確認する](../role-based-access-control/check-access.md)」
+
+### <a name="create-azure-purview-account"></a>Azure Purview アカウントを作成する
+分離されたテスト サブスクリプションの下で、新しい機能が有効になっているリージョンに、新しい Azure Purview アカウントを作成します。 新しい Purview アカウントを作成するには、「[クイック スタート: Azure portal で Azure Purview アカウントを作成する](create-catalog-portal.md)」を参照してください。
+
+### <a name="configure-azure-purview-to-manage-access-policies"></a>アクセス ポリシーを管理するように Azure Purview を構成する
+Azure Purview でアクセス ポリシーを管理するには、次のすべての手順を行います 
+
+#### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Azure Purview データ使用ポリシー プレビューに参加するためのオプトイン
+この機能は現在プレビュー段階であり、[Purview データ使用ポリシー プレビューにオプトイン](https://aka.ms/opt-in-data-use-policy)する必要があります。
+
+#### <a name="register-purview-as-a-resource-provider-in-other-subscriptions"></a>Purview を他のサブスクリプションのリソース プロバイダーとして登録する
+この手順は、アクセスを管理するストレージ アカウントが Azure Purview アカウントとは異なるサブスクリプションにある場合にのみ実行します。 このガイドに従って、Azure Purview をそのサブスクリプションのリソース プロバイダーとして登録します。  
+[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)
+
+#### <a name="configure-permissions-for-policy-management-actions"></a>ポリシー管理アクションのアクセス許可を構成する
+-   ポリシーの作成または管理アクションを実行するためには、ユーザーが、ルート コレクション レベルで Purview ポリシー作成者ロールの一部である必要があります。
+-   ポリシーを発行するためには、ユーザーが、ルート コレクション レベルで Purview データ ソース管理者ロールの一部である必要があります。
+
+このガイドのロールの割り当ての管理に関するセクションを参照してください。[コレクションを作成および管理する方法](how-to-create-and-manage-collections.md)
+
 #### <a name="register-and-scan-data-sources-in-purview"></a>Purview でデータ ソースを登録してスキャンする
+Purview に各データ ソースを登録してスキャンし、後でアクセス ポリシーを定義します。 Purview 登録ガイドに従って、ストレージ アカウントを登録します。
 
-ポリシーを定義するには、データ ソースを Purview に登録してスキャンする必要があります。 Purview 登録ガイドに従って、ストレージ アカウントを登録します。
-
--   [Azure Storage BLOB をスキャンする方法 - Azure Purview](register-scan-azure-blob-storage-source.md)
+-   [Azure Storage Blob を登録してスキャンする方法 - Azure Purview](register-scan-azure-blob-storage-source.md)
 
 -   [Azure Data Lake Storage (ADLS) Gen2 の登録とスキャン - Azure Purview](register-scan-adls-gen2.md)
 
-登録時に、図に示すように、データ使用ガバナンスのデータ ソースを有効にします。
+登録時に、図に示されているように、**データ使用ガバナンス** トグルを使用してデータ ソースのアクセス ポリシーを有効にします。
 
 :::image type="content" source="./media/how-to-access-policies-storage/register-data-source-for-policy.png" alt-text="ポリシーのデータ ソースを登録する方法を示す画像。":::
 
-#### <a name="configure-permissions-for-policy-management-actions"></a>ポリシー管理アクションのアクセス許可を構成する
-
--   ポリシーの作成および管理アクションを実行するには、ユーザーは Purview データ キュレーター ロールの一部である必要があります。
--   ポリシーを公開するには、ユーザーは Purview データ ソース管理者ロールの一部である必要があります。
-
-このガイドのロールの割り当ての管理に関するセクションを参照してください。[コレクションを作成および管理する方法](how-to-create-and-manage-collections.md)
+> [!NOTE]
+> トグルの動作により、特定のサブスクリプションのすべてのデータ ソースは、1 つの Purview アカウントのデータ使用ガバナンスにのみ登録できるようになります。 その Purview アカウント自体は、テナント内の任意のサブスクリプションに含まれている可能性があります。
 
 ## <a name="policy-authoring"></a>ポリシーの作成
 
@@ -185,12 +184,35 @@ Purview で新しいポリシーを作成する手順は次のとおりです。
 
     :::image type="content" source="./media/how-to-access-policies-storage/publish-policy-storage.png" alt-text="データ所有者がポリシーを公開する方法を示す画像。":::
 
-1. データ ソースの一覧が表示されます。 名前を入力してリストをフィルター処理することができます。 次に、このポリシーを公開する各データ ソースを選択し、 **[Publish]\(公開\)** ボタンを選択します。 公開はバックグラウンド操作です。 変更がデータ ソースに反映されるには、最大で 2 時間かかる場合があります。
+1. データ ソースの一覧が表示されます。 名前を入力してリストをフィルター処理することができます。 次に、このポリシーを公開する各データ ソースを選択し、 **[Publish]\(公開\)** ボタンを選択します。
 
     :::image type="content" source="./media/how-to-access-policies-storage/select-data-sources-publish-policy-storage.png" alt-text="ポリシーが公開されるデータ ソースをデータ所有者が選択する方法を示す画像。":::
 
-## <a name="next-steps"></a>次のステップ
+>[!NOTE]
+> 公開はバックグラウンド操作です。 変更がデータ ソースに反映されるには、最大で **2 時間** かかる場合があります。
 
-この記事をチェックして Azure Purview に関連した概念を理解します。
+## <a name="azure-purview-policy-action-to-azure-storage-action-mapping"></a>Azure Storage アクション マッピングに対する Azure Purview ポリシー アクション
 
-* [Azure Purview の概要](overview.md)
+このセクションでは、Azure Purview データ ポリシーのアクションが、Azure Storage データ ポリシー内の特定のアクションにどのようにマップされるのかについてのリファレンスを含みます。
+
+| **Purview ポリシー アクション** | **データ ソース固有のアクション**                                                                |
+|---------------------------|-------------------------------------------------------------------------------------------------|
+|||
+| *読み取り*                      |<sub>Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read                        |
+|                           |<sub>Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery                      |
+|                           |<sub>Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed                    |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                            |
+|||
+| *Modify*                    |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read                            |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write                           |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action                      |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action                     |
+|                           |<sub>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete                          |
+|||
+
+## <a name="next-steps"></a>次の手順
+
+この攻略ガイドで説明されている機能に関連するブログとデモをご確認ください
+
+* [Microsoft Ignite 2021 で紹介された Azure Purview の新機能](https://techcommunity.microsoft.com/t5/azure-purview/what-s-new-in-azure-purview-at-microsoft-ignite-2021/ba-p/2915954)
+* [Azure Storage のアクセス ポリシーのデモ](https://www.youtube.com/watch?v=CFE8ltT19Ss)

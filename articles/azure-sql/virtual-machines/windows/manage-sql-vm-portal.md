@@ -14,12 +14,12 @@ ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 16b2a041dc384e8c04df077638a51db1a7823da2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 602cb3affc441c92dfa29ac41de893c96a617ff7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072117"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301876"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Azure portal を使用して SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,12 +118,13 @@ SQL 仮想マシン リソースの **[セキュリティの構成]** ページ�
 
 詳細については、[セキュリティのベスト プラクティス](security-considerations-best-practices.md)に関するページをご覧ください。
 
+<a name="security-center"></a>
 
-## <a name="security-center"></a>Security Center 
+## <a name="defender-for-cloud"></a>Defender for Cloud 
 
-SQL 仮想マシン リソースの **[Security Center]** ページを使用して、SQL 仮想マシン ブレードに Security Center の推奨事項を直接表示します。 この機能を活用するには、[Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にします。 
+SQL 仮想マシンのリソースの **[Defender for SQL]** ページを使用して、SQL 仮想マシン ブレードに Defender for Cloud の推奨事項を直接表示します。 この機能を活用するには、[Microsoft Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にします。 
 
-![SQL 仮想マシン リソースを使用して Azure portal の SQL Server Security Center 設定を構成する](./media/manage-sql-vm-portal/sql-vm-security-center.png)
+![SQL 仮想マシン リソースを使用して Azure portal で SQL Server Defender for Cloud 設定を構成する](./media/manage-sql-vm-portal/sql-vm-security-center.png)
 
 ## <a name="sql-assessment-preview"></a>SQL評価 (プレビュー)
 

@@ -4,16 +4,14 @@ services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: article
-author: mlearned
-ms.author: mlearned
-description: 'Azure Arc 対応オンボード サービス プリンシパルの作成 '
+description: 'Azure Arc 対応オンボード サービス プリンシパルを作成する '
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 610b355073473f0e492350753a523b7943666f13
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c102ce73672528810bbb35b2a74a5de2a3bf81e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121747"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056247"
 ---
 # <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用のオンボード サービス プリンシパルを作成する
 

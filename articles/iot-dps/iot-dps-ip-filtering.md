@@ -1,18 +1,18 @@
 ---
-title: Azure IoT DPS の IP 接続フィルター | Microsoft Docs
-description: Azure IoT DPS インスタンスへの特定の IP アドレスからの接続をブロックする IP フィルター処理を使用する方法。 個別の IP アドレスまたは一定の範囲の IP アドレスからの接続をブロックできます。
-author: wesmc7777
-ms.author: wesmc
+title: Microsoft Azure IoT DPS の IP 接続フィルター
+description: Azure IoT DPS インスタンスへの特定の IP アドレスからの接続をブロックする IP フィルター処理を使用する方法。
+author: anastasia-ms
+ms.author: v-stharr
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/05/2021
+ms.openlocfilehash: 01a3449526166ceb54565e73683a6d3c7dc41603
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934494"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133275"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS の IP 接続フィルターを使用する
 
@@ -25,6 +25,9 @@ ms.locfileid: "98934494"
 * DPS が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、DPS を [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) と共に使用して、DPS と使用しているデバイスとの間にプライベート接続を作成する場合が該当します。
 
 * DPS の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
+
+>[!Note]
+>IP フィルタリングが有効になっている場合は、Azure portal を使用してサービス操作を実行することができなくなります (登録の管理など)。 ポータルを使用してサービス操作を実行するには、IP フィルタリングを一時的に非アクティブ化し、作業を完了してから、IP フィルタリング機能を再度有効にする必要があります。 独自のクライアントを使用し、IP フィルターの非アクティブ化を回避するには、マシンの IP アドレスを `ipFilterRules` に追加し、CLI を使用して DPS で登録を管理します。
 
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
 

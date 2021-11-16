@@ -16,12 +16,12 @@ ms.date: 05/02/2017
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: e9f00376008e4c469318044d3a45280981be621a
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 687fac713abd4843431363214365d35821fa7d28
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166154"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157090"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -33,13 +33,13 @@ ms.locfileid: "130166154"
 
 次の図は、Azure Virtual Machines での可用性グループの一般的なデプロイを示したものです。
 
-   !["Windows Server フェールオーバー クラスター" と "Always On 可用性グループ" を使用した Azure ロード バランサーと可用性セットを示す図。](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+:::image type="content" source="./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png" alt-text="Windows Server フェールオーバー クラスターと Always On 可用性グループを使用した Azure ロード バランサーと可用性セットを示す図":::
 
 このデプロイでは、すべての仮想マシンが 1 つの Azure リージョンに存在します。 可用性グループ レプリカは、SQL-1 および SQL-2 上の自動フェールオーバーとの同期コミットを持つことができます。 このアーキテクチャを構築するには、[可用性グループのテンプレートまたはチュートリアルに関する記事](availability-group-overview.md)をご覧ください。
 
 このアーキテクチャは、Azure リージョンにアクセスできなくなった場合、ダウンタイムに対して脆弱です。 この脆弱性に対処するには、別の Azure リージョンにレプリカを追加します。 次の図は、新しいアーキテクチャの概要を示したものです。
 
-   ![可用性グループ DR](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic-dr.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic-dr.png" alt-text="可用性グループ DR":::
 
 上の図では、SQL-3 という名前の新しい仮想マシンが示されています。 SQL-3 は別の Azure リージョンにあります。 SQL-3 は、Windows Server フェールオーバー クラスターに追加されています。 SQL-3 は可用性グループのレプリカをホストできます。 最後に、SQL-3 の Azure リージョンに新しい Azure Load Balancer があることに注意してください。
 
@@ -55,7 +55,7 @@ ms.locfileid: "130166154"
 
 次の図では、データ センター間のネットワークの通信方法を示します。
 
-   ![VPN ゲートウェイを使用して通信する異なる Azure リージョンの 2 つの仮想ネットワークを示す図。](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png" alt-text="VPN ゲートウェイを使用して通信する異なる Azure リージョンの 2 つの仮想ネットワークを示す図。":::
 
 >[!IMPORTANT]
 >このアーキテクチャでは、Azure リージョン間でレプリケートされるデータに対して送信データ料金がかかります。 「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。  
@@ -77,7 +77,7 @@ ms.locfileid: "130166154"
 
 1. [新しいリージョンに SQL Server 仮想マシンを作成します](create-sql-vm-portal.md)。
 
-1. [新しいリージョンのネットワークに Azure Load Balancer を作成します](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)。
+1. [新しいリージョンのネットワークに Azure Load Balancer を作成します](availability-group-manually-configure-tutorial-single-subnet.md#configure-internal-load-balancer)。
 
    このロード バランサーでは次のことが必要です。
 
@@ -89,36 +89,36 @@ ms.locfileid: "130166154"
    - バックエンド プール内の仮想マシンが単一の可用性セットまたは仮想マシン スケール セットの一部でない場合は、Standard ロード バランサーであること。 詳細については、「[Azure Load Balancer Standard の概要](../../../load-balancer/load-balancer-overview.md)」をご覧ください。
    - 2 つの異なるリージョンにある 2 つの仮想ネットワークがグローバル VNet ピアリングを介してピアリングされている場合は、Standard Load Balancer であること。 詳細については、「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)」を参照してください。
 
-1. [新しい SQL Server にフェールオーバー クラスタリング機能を追加します](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
+1. [新しい SQL Server にフェールオーバー クラスタリング機能を追加します](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
-1. [新しい SQL Server をドメインに参加させます](availability-group-manually-configure-prerequisites-tutorial.md#joinDomain)。
+1. [新しい SQL Server をドメインに参加させます](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#joinDomain)。
 
-1. [ドメイン アカウントを使うように新しい SQL Server サービス アカウントを設定します](availability-group-manually-configure-prerequisites-tutorial.md#setServiceAccount)。
+1. [ドメイン アカウントを使うように新しい SQL Server サービス アカウントを設定します](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#setServiceAccount)。
 
-1. [Windows Server フェールオーバー クラスターに新しい SQL Server を追加します](availability-group-manually-configure-tutorial.md#addNode)。
+1. [Windows Server フェールオーバー クラスターに新しい SQL Server を追加します](availability-group-manually-configure-tutorial-single-subnet.md#addNode)。
 
 1. クラスターに IP アドレス リソースを追加します。
 
    IP アドレス リソースはフェールオーバー クラスター マネージャーで作成できます。 クラスターの名前を選択し、 **[クラスター コア リソース]** の下でクラスター名を右クリックして、 **[プロパティ]** を選択します。 
 
-   ![クラスター名、[サーバー名]、[プロパティ] が選択された [フェールオーバー クラスター マネージャー] を示すスクリーンショット。](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png" alt-text="クラスター名、サーバー名、プロパティが選択されたフェールオーバー クラスター マネージャーを示すスクリーンショット。":::
 
    **[プロパティ]** ダイアログ ボックスで、 **[IP アドレス]** の下にある **[追加]** を選択し、リモート ネットワーク領域からクラスター名の IP アドレスを追加します。 **[IP アドレス]** ダイアログ ボックスで **[OK]** を選択し、 **[クラスターのプロパティ]** ダイアログ ボックスでもう一度 **[OK]** を選択して、新しい IP アドレスを保存します。 
 
-   ![クラスター IP を追加する](./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png" alt-text="クラスター IP を追加する":::
 
 
 1. コア クラスター名の依存関係として IP アドレスを追加します。
 
    クラスターのプロパティをもう一度開き、 **[依存関係]** タブを選択します。2 つの IP アドレスの OR 依存関係を構成します。 
 
-   ![クラスターのプロパティ](./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png" alt-text="クラスターのプロパティ":::
 
 1. クラスター内の可用性グループ ロールに IP アドレス リソースを追加します。 
 
    フェールオーバー クラスター マネージャーで可用性グループ ロールを右クリックし、 **[リソースの追加]** 、 **[その他のリソース]** を選択し、 **[IP アドレス]** を選択します。
 
-   ![IP アドレスを作成する](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png" alt-text="IP アドレスを作成する":::
 
    この IP アドレスを次のように構成します。
 
@@ -129,12 +129,12 @@ ms.locfileid: "130166154"
 
    次のスクリーンショットは、適切に構成された IP アドレス クラスター リソースを示したものです。
 
-   ![可用性グループ](./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png)
+   :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png" alt-text="可用性グループ":::
 
    >[!IMPORTANT]
    >クラスター リソース グループには、両方の IP アドレスが含まれます。 両方の IP アドレスが、リスナー クライアント アクセス ポイントの依存関係です。 クラスターの依存関係の構成では、**OR** 演算子を使います。
 
-1. [PowerShell でクラスターのパラメーターを設定する](availability-group-manually-configure-tutorial.md#setparam)。
+1. [PowerShell でクラスターのパラメーターを設定する](availability-group-manually-configure-tutorial-single-subnet.md#setparam)。
 
    新しいリージョンのロード バランサーに構成したクラスター ネットワーク名、IP アドレス、およびプローブ ポートを指定して、PowerShell スクリプトを実行します。
 
@@ -151,17 +151,10 @@ ms.locfileid: "130166154"
 
 1. SQL Server 構成マネージャーで、新しい SQL Server の [Always On 可用性グループを有効](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)にします。
 
-1. SQL Server Management Studio の新しい SQL Server で、[システム アカウントのアクセス許可を構成します](availability-group-manually-configure-prerequisites-tutorial.md#configure-system-account-permissions)。
+1. [新しい SQL Server でファイアウォール ポートを開きます](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#endpoint-firewall)。 開く必要があるポート番号は、環境に依存します。 ミラーリング エンドポイントと Azure Load Balancer 正常性プローブのポートを開きます。
+1. SQL Server Management Studio の新しい SQL Server で、[システム アカウントのアクセス許可を構成します](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md#configure-system-account-permissions)。
 
-1. [新しい SQL Server でファイアウォール ポートを開きます](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall)。
-
-   開く必要があるポート番号は、環境に依存します。 ミラーリング エンドポイントと Azure Load Balancer 正常性プローブのポートを開きます。
-
-
-1. [新しい SQL Server の可用性グループにレプリカを追加します](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。
-
-   リモート Azure リージョンのレプリカについては、手動フェールオーバーでの非同期レプリケーション用に設定します。  
-   
+1. [新しい SQL Server の可用性グループにレプリカを追加します](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。 リモート Azure リージョンのレプリカについては、手動フェールオーバーでの非同期レプリケーション用に設定します。  
 
 ## <a name="set-connection-for-multiple-subnets"></a>複数のサブネットに対する接続を設定する
 

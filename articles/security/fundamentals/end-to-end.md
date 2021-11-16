@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: 9e68df70afdc0f8e35ec862d9f9570dd13306191
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: eb96e21644f6318320ee8a5c7c33b83a73a59c94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114466057"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335501"
 ---
 # <a name="end-to-end-security-in-azure"></a>Azure のエンドツーエンド セキュリティ
 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
@@ -50,7 +50,7 @@ ms.locfileid: "114466057"
 
 | サービス | 説明 |
 |------|--------|
-| [Azure Security Center](../../security-center/security-center-introduction.md)| データ センターのセキュリティ体制を強化する統合インフラストラクチャ セキュリティ管理システムです。Azure 内かどうかにかかわらずクラウド内とオンプレミスのハイブリッド ワークロード全体を保護する高度な脅威防止機能があります。 |
+| [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md)| データ センターのセキュリティ体制を強化する統合インフラストラクチャ セキュリティ管理システムです。Azure 内かどうかにかかわらずクラウド内とオンプレミスのハイブリッド ワークロード全体を保護する高度な脅威防止機能があります。 |
 | **ID&nbsp; & &nbsp;アクセス&nbsp;管理** | |
 | [Azure Active Directory (AD)](../../active-directory/fundamentals/active-directory-whatis.md)| Microsoft のクラウドベースの ID とアクセスの管理サービスです。  |
 |  | [条件付きアクセス](../../active-directory/conditional-access/overview.md)は、Azure AD で使用されるツールです。このツールによって、ID シグナルをまとめて、決定を行い、組織のポリシーを適用することができます。 |
@@ -87,21 +87,21 @@ ms.locfileid: "114466057"
 
 | サービス | 説明 |
 |------|--------|
-| [Azure Defender](../../security-center/azure-defender.md) | Azure とハイブリッド リソースおよびワークロードの高度でインテリジェントな保護が実現されます。 Security Center の Azure Defender ダッシュボードにより、環境のクラウド ワークロード保護機能を可視化し、制御できます。 |
-| [Azure Sentinel](../../sentinel/overview.md) | スケーラブルでクラウドネイティブのセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Sentinel によって、高度なセキュリティ分析と脅威インテリジェンスが企業全体で実現され、アラートの検出、脅威の可視性、予防的な捜索、脅威への対応のための 1 つのソリューションが提供されます。 |
+| [Microsoft Defender for Cloud](../../security-center/azure-defender.md) | Azure とハイブリッド リソースおよびワークロードの高度でインテリジェントな保護が実現されます。 Defender for Cloud のワークロード保護ダッシュボードにより、環境のクラウド ワークロード保護機能を可視化し、制御できます。 |
+| [Microsoft Sentinel](../../sentinel/overview.md) | スケーラブルでクラウドネイティブのセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Sentinel によって、高度なセキュリティ分析と脅威インテリジェンスが企業全体で実現され、アラートの検出、脅威の可視性、予防的な捜索、脅威への対応のための 1 つのソリューションが提供されます。 |
 | **ID&nbsp; & &nbsp;アクセス&nbsp;管理** |  |
 | [Microsoft 365 Defender](/microsoft-365/security/defender/microsoft-365-defender) | 統合された侵害前後のエンタープライズ防御スイートです。これによって、高度な攻撃に対して統合された保護が提供されるように、エンドポイント、ID、電子メール、およびアプリケーション間の検出、防止、調査、および対応がネイティブに調整されます。 |
 |  | [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) は、企業ネットワークによる高度な脅威に対する防御、検出、調査、対応を支援するように、設計されたエンタープライズ エンドポイント セキュリティ プラットフォームです。 |
 |  | [Microsoft Defender for Identity](/defender-for-identity/what-is) はクラウド ベースのセキュリティ ソリューションです。これによって、オンプレミスの Active Directory シグナルを利用した、組織に向けられた高度な脅威、侵害された ID、および悪意のあるインサイダーによるアクションの識別、検出、調査支援が行われます。 |
 | [Azure AD Identity Protection](../../active-directory/identity-protection/howto-identity-protection-configure-notifications.md) | ユーザーのリスクとリスク検出の管理に役立つ 2 種類の自動通知電子メール (危険な状態のユーザーが検出されたことを示す電子メールおよび週間ダイジェスト電子メール) が送信されます。 |
 | **インフラストラクチャとネットワーク** |  |
-| [Azure Defender for IoT](../../defender-for-iot/overview.md) | IoT/OT デバイス、脆弱性、脅威を特定するための統合セキュリティ ソリューションです。 これを使用すれば、既存の IoT/OT デバイスを保護する必要があるか、新しい IoT イノベーションにセキュリティを組み込む必要があるかにかかわらず、IoT/OT 環境全体をセキュリティで保護することができます。 |
+| [Microsoft Defender for IoT](../../defender-for-iot/overview.md) | IoT/OT デバイス、脆弱性、脅威を特定するための統合セキュリティ ソリューションです。 これを使用すれば、既存の IoT/OT デバイスを保護する必要があるか、新しい IoT イノベーションにセキュリティを組み込む必要があるかにかかわらず、IoT/OT 環境全体をセキュリティで保護することができます。 |
 | [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) | Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールが提供されます。 Network Watcher は、仮想マシン、仮想ネットワーク、アプリケーション ゲートウェイ、ロード バランサーなどの IaaS 製品のネットワーク正常性を監視および修復するように設計されています。 |
 | [Azure Policy 監査ログ](../../governance/policy/overview.md) | 組織の標準を適用し、コンプライアンスを大規模に評価するのに役立ちます。 Azure Policy では、アクティビティ ログが使用されます。これは、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素を含めるために、自動的に有効になります。 |
 | **データとアプリケーション** |  |
-| [Azure Defender for container registries](../../security-center/defender-for-container-registries-introduction.md) | Azure Resource Manager ベースの Azure Container Registry レジストリ内のイメージをスキャンし、画像の脆弱性をより詳細に把握するための脆弱性スキャナーが含まれています。 |
-| [Azure Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) | Azure Kubernetes Service (AKS) によって取得されたログを使用して AKS のマネージド サービスを監視することで、クラスター レベルの脅威の防止が提供されます。 |
-| [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) | 複数のクラウドで動作するクラウド アクセス セキュリティ ブローカー (CASB) です。 お使いのクラウド サービス全体にわたるサイバー攻撃の脅威を特定し、対処するために、豊富な表示機能、データ送受信の制御、高度な分析を備えています。 |
+| [コンテナー レジストリ用 Microsoft Defender](../../security-center/defender-for-container-registries-introduction.md) | Azure Resource Manager ベースの Azure Container Registry レジストリ内のイメージをスキャンし、画像の脆弱性をより詳細に把握するための脆弱性スキャナーが含まれています。 |
+| [Microsoft Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) | Azure Kubernetes Service (AKS) によって取得されたログを使用して AKS のマネージド サービスを監視することで、クラスター レベルの脅威の防止が提供されます。 |
+| [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) | 複数のクラウドで動作するクラウド アクセス セキュリティ ブローカー (CASB) です。 お使いのクラウド サービス全体にわたるサイバー攻撃の脅威を特定し、対処するために、豊富な表示機能、データ送受信の制御、高度な分析を備えています。 |
 
 ## <a name="investigate-and-respond"></a>調査と対応
 
@@ -109,14 +109,14 @@ ms.locfileid: "114466057"
 
 | サービス | 説明 |
 |------|--------|
-| [Azure Sentinel](../../sentinel/hunting.md) | 組織のデータ ソースにわたってセキュリティ上の脅威を検出するための、強力な検索とクエリのツールです。 |
+| [Microsoft Sentinel](../../sentinel/hunting.md) | 組織のデータ ソースにわたってセキュリティ上の脅威を検出するための、強力な検索とクエリのツールです。 |
 | [Azure &nbsp;Monitor&nbsp; ログ&nbsp;と&nbsp;メトリック](../../azure-monitor/overview.md) | クラウドおよびオンプレミス環境のテレメトリを収集、分析し、対応する包括的なソリューションが提供されます。 Azure Monitor では、分析、視覚化、およびアラートを行うために使用できる共通データ プラットフォームにさまざまなソースからデータが[収集されて集計されます](../../azure-monitor/data-platform.md#observability-data-in-azure-monitor)。 |
 | **ID&nbsp; & &nbsp;アクセス&nbsp;管理** |  |
 | [Azure&nbsp; AD&nbsp; レポート&nbsp;と&nbsp;監視](../../active-directory/reports-monitoring/index.yml) | [Azure AD レポート](../../active-directory/reports-monitoring/overview-reports.md)を使用すると、ご利用の環境におけるアクティビティを包括的に把握することができます。 |
 |  | [Azure AD 監視](../../active-directory/reports-monitoring/overview-monitoring.md)を使用すると、Azure AD のアクティビティ ログを別のエンドポイントにルーティングできます。|
 | [Azure AD PIM 監査履歴](../../active-directory/privileged-identity-management/pim-how-to-use-audit-log.md) | すべての特権ロールでの過去 30 日間におけるすべてのロール割り当てとアクティブ化を確認できます。 |
 | **データとアプリケーション** |  |
-| [Microsoft Cloud App Security](/cloud-app-security/investigate) | クラウド環境で起こっていることをより深く解釈するためのツールが提供されます。 |
+| [Microsoft Defender for Cloud Apps](/cloud-app-security/investigate) | クラウド環境で起こっていることをより深く解釈するためのツールが提供されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

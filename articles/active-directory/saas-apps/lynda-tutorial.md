@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/05/2021
 ms.author: jeedes
-ms.openlocfilehash: bf9fc9ed487efc5612e728e2975ad2642a2a292c
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: a3aa7f2590eee1df84c85a1df2e99469149accc3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857951"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285069"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-lyndacom"></a>チュートリアル: Azure AD SSO と Lynda.com の統合
 
@@ -142,4 +142,4 @@ Lynda.com へのユーザー プロビジョニングの構成にあたって必
 
 ## <a name="next-steps"></a>次のステップ
 
-Lynda.com を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Lynda.com を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

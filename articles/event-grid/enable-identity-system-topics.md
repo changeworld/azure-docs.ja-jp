@@ -2,19 +2,20 @@
 title: Azure Event Grid のシステム トピックでマネージド ID を有効にする
 description: この記事では、Azure Event Grid のシステム トピックに対してマネージド サービス ID を有効にする方法を説明します。
 ms.topic: how-to
-ms.date: 08/20/2021
-ms.openlocfilehash: d5d8c15c818f1a9735b6cf32fe48276fb311e8ea
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 11/02/2021
+ms.openlocfilehash: 825b1d22568b110f22e596d424a2f781b65de625
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633573"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157146"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-system-topic"></a>システムマネージド ID を Event Grid のシステム トピックに割り当てる
-この記事では、既存の Event Grid システムのトピックに、システム割り当てまたはユーザー割り当ての ID を割り当てる方法について説明します。 マネージド ID については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。  
+この記事では、Event Grid システムのトピックに、システム割り当てまたはユーザー割り当ての ID を割り当てる方法について説明します。 通常、マネージド ID については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。  
 
-> [!IMPORTANT]
-> 1 つのシステム トピックに対してシステム割り当て ID またはユーザー割り当て ID のいずれかを有効にすることができますが、両方を有効にすることはできません。 1 つのシステム トピックに割り当てられるユーザー割り当て ID は、最大 2 つです。 
+> [!NOTE]
+> - システム トピックには、1 つのシステム割り当て ID と最大 2 つのユーザー割り当て ID を割り当てることができます。 
+> - Azure サブスクリプション、リソース グループ、Azure Maps など、グローバルな Azure リソースに関連付けられているシステム トピックに対して、ID を有効にすることができます。 これらのグローバル ソースのシステム トピックは、特定のリージョンにも関連付けられていません。
 
 ## <a name="enable-managed-identity-for-an-existing-system-topic"></a>既存のシステム トピックのマネージド ID を有効にする
 このセクションでは、既存のシステム トピックに対してマネージド ID を有効にする方法について説明します。 
@@ -22,7 +23,7 @@ ms.locfileid: "122633573"
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 上部の検索バーで、**Event Grid システム トピック** を検索します。
 3. マネージド ID を有効にする **システム トピック** を選択します。 
-4. 左側のメニューの **[ID]** を選択します。 グローバル ロケーションにあるシステム・トピックに関しては、このオプションは表示されません。 
+4. 左側のメニューの **[ID]** を選択します。  
 
 ### <a name="enable-system-assigned-identity"></a>システム割り当て ID を有効にする
 1. スイッチを **オン** にして、ID を有効にします。 
@@ -72,14 +73,8 @@ ms.locfileid: "122633573"
                 1. **[追加]** を選択します。                         
 
 > [!NOTE]
-> 現在、システム トピックをサポートする Azure リソースに対してイベント サブスクリプションを作成するときに、新しいシステム トピックのマネージド ID を有効にすることはできません。 
-
-
-## <a name="global-azure-sources"></a>グローバルな Azure ソース
-システムマネージド ID は、リージョンの Azure リソースに対してのみ有効にすることができます。 Azure サブスクリプション、リソース グループ、Azure Maps など、グローバルな Azure リソースに関連付けられているシステム トピックに対して、これを有効にすることはできません。 これらのグローバル ソースのシステム トピックは、特定のリージョンにも関連付けられていません。 場所が **[GLOBAL]** に設定されているシステム トピックの **[ID]** ページは表示されません。 
-
-:::image type="content" source="./media/managed-service-identity/system-topic-location-global.png" alt-text="場所が [GLOBAL] に設定されたシステム トピック"::: 
-
+> - 現在、Azure portal では、システム トピックを作成するときに、システム割り当て ID とユーザー割り当て ID の両方を割り当てることはできません。 システム トピックの作成後に両方を割り当てることができます。 
+> - 現在、システム トピックをサポートする Azure リソースに対してイベント サブスクリプションを作成するときに、新しいシステム トピックのマネージド ID を有効にすることはできません。 
 
 
 ## <a name="next-steps"></a>次の手順

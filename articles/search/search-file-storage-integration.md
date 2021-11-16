@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.openlocfilehash: 94f1a1760c02401bbca04ac01af5dd9b10093311
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 37f33bb17b48f482f27a449871acc7256713c100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511307"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157562"
 ---
 # <a name="index-data-from-azure-files"></a>Azure Files のインデックス データ
 
@@ -42,6 +42,9 @@ Azure Cognitive Search の Azure Files インデクサーは、次の形式の�
 ## <a name="required-resources"></a>必要なリソース
 
 Azure Cognitive Search と [Azure Files](https://azure.microsoft.com/services/storage/files/) の両方が必要です。 Azure Files 内に、ソース コンテンツを提供するファイル共有が必要です。
+
+> [!NOTE]
+> ファイル共有のインデックスを作成するには、その共有で、[ファイル データ プレーン REST API](/rest/api/storageservices/file-service-rest-api) を使用したアクセスがサポートされている必要があります。 [NFS 共有](../storage/files/files-nfs-protocol.md#support-for-azure-storage-features)ではファイル データ プレーン REST API がサポートされていないため、Azure Cognitive Search インデクサーを使用できません。[SMB 共有](../storage/files/files-smb-protocol.md)ではファイル データ プレーン REST API がサポートされているため、Azure Cognitive Search インデクサーを使用できます。
 
 <a name="configure"></a>
 

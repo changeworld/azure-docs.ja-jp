@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: fcbe52a8c390d41abbaa0a97b88bb360df595d60
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c46803ae300acfe36163edcb92770c069ae67382
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553996"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179898"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と AutoML を含む開発環境をセットアップする 
 
@@ -53,7 +53,7 @@ Azure Databricks は、以下のように使用できます。
 | 設定 |適用対象| 値 |
 |----|---|---|
 | クラスター名 |常時| yourclustername |
-| Databricks Runtime のバージョン |常時| Runtime 7.3 LTS 以下 - ML 以外|
+| Databricks Runtime のバージョン |常時| Runtime 7.3 LTS - ML 以外|
 | Python バージョン |常時| 3 |
 | worker の種類 <br>(同時実行反復処理の最大数を決定) |自動化された ML<br>のみ| メモリ最適化 VM 優先 |
 | ワーカー |常時| 2 以上 |
@@ -97,7 +97,7 @@ Azure Databricks は、以下のように使用できます。
   ![Databricks 用の Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>AutoML を含む Azure ML SDK を Databricks に追加する
-クラスターが Databricks Runtime 7.1 - 7.3 LTS (ML *以外*) で作成された場合は、ノートブックの最初のセルで次のコマンドを実行して AML SDK をインストールします。
+クラスターが Databricks Runtime 7.3 LTS (ML *以外*) で作成された場合は、ノートブックの最初のセルで次のコマンドを実行して AML SDK をインストールします。
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt

@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.openlocfilehash: 95d14afebd6567e18aed6e4585c930a3d46ccb42
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: e97ed074cd9c0fee7a2fc3b3c7795d205292da28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137693"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254156"
 ---
 # <a name="configure-and-verify-dns-name-resolution-for-azure-purview-private-endpoints"></a>Azure Purview プライベート エンドポイントの DNS 名前解決の構成と検証
 
 > [!IMPORTANT]
-> **2021 年 9 月 27 日 15:30 UTC より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、「[ポータル プライベート エンドポイント用に DNS を再構成する](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints)」で詳しく説明されているように、必要なアクションを実行する必要があります。 **これらのアクションは、2021 年 10 月 11 日より前に完了する必要があります。そうしない場合、既存のポータルのプライベート エンドポイントの機能が停止します**。
+> **2021 年 9 月 27 日 15:30 UTC より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、「[ポータル プライベート エンドポイント用に DNS を再構成する](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints)」で詳しく説明されているように、必要なアクションを実行する必要があります。 **これらの操作は、2021 年 11 月 12 日より前に完了する必要があります。そうしない場合、既存のポータルのプライベート エンドポイントの機能が停止します**。
 
 ## <a name="conceptual-overview"></a>概念の概要
 Azure Purview アカウントのプライベート エンドポイントを設定する場合、正確な名前解決は重要な要件です。 

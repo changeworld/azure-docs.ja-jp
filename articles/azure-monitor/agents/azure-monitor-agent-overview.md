@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 22569277eefafc518f407f06e34a69c061509b96
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c89625bb1ea7a9b2bee53468a09a48073e5516bf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458971"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308657"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor エージェントの概要
 Azure Monitor エージェント (AMA) によって、Azure 仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントの概要について説明します。また、そのインストール方法やデータ収集の構成方法などの情報が含まれます。
@@ -33,12 +33,12 @@ Azure Monitor エージェントでは、この機能が 1 つのエージェン
 ### <a name="current-limitations"></a>現在の制限
 既存のエージェントと比較して、この新しいエージェントはまだ完全には同等ではありません。
 - **Log Analytics エージェント (MMA/OMS) との比較**
-    - 一部の Log Analytics ソリューションは現在サポートされていません。 [サポート対象](#supported-services-and-features)を確認してください。
-    - Azure Private Link はサポートされません。
-    - ファイル ベースのログや IIS ログの収集はサポートされません。
+  - 一部の Log Analytics ソリューションは現在サポートされていません。 [サポート対象](#supported-services-and-features)を確認してください。
+  - Azure Private Link はサポートされません。
+  - ファイル ベースのログや IIS ログの収集はサポートされません。
 - **Azure Diagnostics の拡張機能 (WAD/LAD) との比較:**
-    - Event Hubs とストレージ アカウントは、送信先としてサポートされません。
-    - ファイル ベースのログ、IIS ログ、ETW イベント、.NET イベント、クラッシュ ダンプの収集はサポートされていません。
+  - Event Hubs とストレージ アカウントは、送信先としてサポートされません。
+  - ファイル ベースのログ、IIS ログ、ETW イベント、.NET イベント、クラッシュ ダンプの収集はサポートされていません。
 
 ### <a name="changes-in-data-collection"></a>データ収集の変更
 既存のエージェントのデータ収集を定義する方法は、それぞれ明確に異なります。 各方法には、Azure Monitor エージェントによって対処される課題があります。
@@ -77,8 +77,8 @@ Azure Monitor エージェントで現在サポートされている Windows と
 
 | Azure サービス | 現在のサポート | 詳細情報 |
 |:---|:---|:---|
-| [Azure Security Center](../../security-center/security-center-introduction.md) | プライベート プレビュー | [サインアップ リンク](https://aka.ms/AMAgent) |
-| [Azure Sentinel](../../sentinel/overview.md) | <ul><li>Windows イベント転送 (WEF): プライベート プレビュー</li><li>Windows セキュリティ イベント: [パブリック プレビュー](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[サインアップ リンク](https://aka.ms/AMAgent) </li><li>サインアップの必要はありません</li></ul> |
+| [Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) | プライベート プレビュー | [サインアップ リンク](https://aka.ms/AMAgent) |
+| [Microsoft Sentinel](../../sentinel/overview.md) | <ul><li>Windows イベント転送 (WEF): プライベート プレビュー</li><li>Windows セキュリティ イベント: [パブリック プレビュー](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[サインアップ リンク](https://aka.ms/AMAgent) </li><li>サインアップの必要はありません</li></ul> |
 
 次の表に、Azure Monitor 機能に対する Azure Monitor エージェントの現在のサポートを示します。
 
@@ -93,7 +93,7 @@ Azure Monitor エージェントで現在サポートされている Windows と
 
 | 解決策 | 現在のサポート | 詳細情報 |
 |:---|:---|:---|
-| [変更の追跡](../../automation/change-tracking/overview.md) | Azure Security Center プライベート プレビューでファイルの整合性の監視としてサポートされています。  | [サインアップ リンク](https://aka.ms/AMAgent) |
+| [変更の追跡](../../automation/change-tracking/overview.md) | Microsoft Defender for Cloud プライベート プレビューでファイルの整合性の監視としてサポートされています。  | [サインアップ リンク](https://aka.ms/AMAgent) |
 | [更新管理](../../automation/update-management/overview.md) | エージェントを必要としない Update Management v2 (プライベート プレビュー) を使用します。 | [サインアップ リンク](https://www.yammer.com/azureadvisors/threads/1064001355087872) |
 
 ## <a name="coexistence-with-other-agents"></a>他のエージェントとの共存
@@ -134,8 +134,7 @@ Windows や Linux 用の Azure Monitor エージェント拡張機能では、HT
 
 1. このフローチャートを使用して、*setting* パラメーターと *protectedSetting* パラメーターの値を最初に決定します。
 
-   ![拡張機能を有効にするときに setting パラメーターと protectedSetting パラメーターの値を決定するためのフローチャート。](media/azure-monitor-agent-overview/proxy-flowchart.png)
-
+    ![拡張機能を有効にするときに setting パラメーターと protectedSetting パラメーターの値を決定するためのフローチャート。](media/azure-monitor-agent-overview/proxy-flowchart.png)
 
 2. *setting* パラメーターと *protectedSetting* パラメーターの値が決定したら、PowerShell コマンドを使用して Azure Monitor エージェントをデプロイするときに、これらの追加パラメーターを指定します。 次の例は、Azure 仮想マシンの場合です。
 
@@ -144,8 +143,8 @@ Windows や Linux 用の Azure Monitor エージェント拡張機能では、HT
     | 設定 | 前述のフローチャートの JSON オブジェクト。文字列に変換されます。 該当しない場合はスキップします。 例: {"proxy":{"mode":"application","address":"http://[address]:[port]","auth": false}} |
     | ProtectedSetting | 前述のフローチャートの JSON オブジェクト。文字列に変換されます。 該当しない場合はスキップします。 例: {"proxy":{"username": "[username]","password": "[password]"}} |
 
-
 # <a name="windows-vm"></a>[Windows VM](#tab/PowerShellWindows)
+
 ```powershell
 Set-AzVMExtension -ExtensionName AzureMonitorWindowsAgent -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0 -Setting <settingString> -ProtectedSetting <protectedSettingString>
 ```

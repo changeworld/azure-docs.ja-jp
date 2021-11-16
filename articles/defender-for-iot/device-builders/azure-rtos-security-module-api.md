@@ -4,16 +4,18 @@ description: Azure RTOS 用の Defender for IoT マイクロ エージェント�
 ms.topic: reference
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: e7000a7e6d8ba332432f1ececa12bd9543e9e4a7
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 291dfa88ea9be2c17706828ac59a2321fee11ef2
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018309"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131998019"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Azure RTOS 用の Defender for IoT マイクロ エージェント API (プレビュー)
 
-この API は、Azure RTOS 用の Defender for IoT マイクロ エージェントでのみ使用することを目的としています。 その他のリソースについては、[Azure RTOS 用の Defender for IoT マイクロ エージェントに関連する GitHub リソース](https://github.com/azure-rtos/azure-iot-preview/releases)を参照してください。 
+Defender for IoT API は、[Microsoft API ライセンスと利用規約](/legal/microsoft-apis/terms-of-use)によって管理されています。
+
+この API は、Azure RTOS 用の Defender for IoT マイクロ エージェントでのみ使用することを目的としています。 その他のリソースについては、[Azure RTOS 用の Defender for IoT マイクロ エージェントに関連する GitHub リソース](https://github.com/azure-rtos/azure-iot-preview/releases)を参照してください。
 
 ## <a name="enable-defender-iot-micro-agent-for-azure-rtos"></a>Azure RTOS 用の Defender for IoT マイクロ エージェントを有効にする
 
@@ -51,7 +53,6 @@ Threads
 
 **nx_azure_iot_security_module_disable**
 
-
 ### <a name="prototype"></a>プロトタイプ
 
 ```c
@@ -79,7 +80,6 @@ UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ### <a name="allowed-from"></a>許可元
 
 Threads
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,12 +5,12 @@ services: service-bus-messaging
 ms.devlang: PHP
 ms.topic: how-to
 ms.date: 07/23/2021
-ms.openlocfilehash: d0909c4e2ea5ef53a1438ce05f5ddad485c80248
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5f1a3b09594a6f47d285f03ca841f763b759a3c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725124"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055928"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
@@ -159,7 +159,7 @@ catch(ServiceException $e){
 
 Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage][BrokeredMessage] クラスのインスタンスになります。 [BrokeredMessage][BrokeredMessage] オブジェクトには、アプリケーションに特有のカスタム プロパティの保持に使用する標準的なプロパティやメソッド、および任意のアプリケーション データの本体が含まれています。
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 100 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズの上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 

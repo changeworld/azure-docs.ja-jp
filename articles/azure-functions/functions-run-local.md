@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 10/05/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: fa804ee911d8b810de391916f7ae92ff46efe0b1
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8512df7ba32e7fabee5d666ca119197da7d82d6b
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613284"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028403"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -39,13 +39,13 @@ Azure Functions Core Tools には、4 つのバージョンがあります。 �
 
 各特定のバージョンと詳細なインストール手順の詳細については、以下のバージョン タブを選択します。
 
+# <a name="version-4x"></a>[バージョン 4.x](#tab/v4)
+
+Functions ランタイムの[バージョン 4.x](functions-versions.md) をサポートします。 このバージョンでは Windows、macOS、Linux がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm が使用されます。 これは、Functions ランタイムと Core Tools で推奨されるバージョンです。
+
 # <a name="version-3x"></a>[バージョン 3.x](#tab/v3)
 
-Azure Functions ランタイムの[バージョン 3.x](functions-versions.md) をサポートします。 このバージョンでは Windows、macOS、Linux がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm が使用されます。 これは、Functions ランタイムと Core Tools で推奨されるバージョンです。
-
-# <a name="version-4x-preview"></a>[バージョン 4.x (プレビュー)](#tab/v4)
-
-プレビュー段階にある Functions ランタイムの[バージョン 4.x](functions-versions.md) をサポートします。 このバージョンでは Windows、macOS、Linux がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm が使用されます。 .NET 6.0 で C# 関数を実行する必要がない限り、Functions ランタイムと Core Tools のバージョン 3.x の使用を検討してください。
+Azure Functions ランタイムの[バージョン 3.x](functions-versions.md) をサポートします。 このバージョンでは Windows、macOS、Linux がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm が使用されます。 
 
 # <a name="version-2x"></a>[バージョン 2.x](#tab/v2)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 140f15f8940f61c14994b8e72a78c1b5b4f360f2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010543"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327103"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Azure IoT デバイス製造元向けのセキュリティ プラクティス
 IoT デバイスをリリースする製造元が増えており、一般的なプラクティスに関するガイダンスを示しておくと役に立ちます。 この記事では、Azure IoT Device Provisioning Service (DPS) で使用するデバイスを製造するときに考慮すべき推奨されるセキュリティ プラクティスについて説明します。  
@@ -188,6 +188,6 @@ TPM チップ搭載デバイスの製造における重要な手順は、TPM の
 
 この記事で推奨されているセキュリティ プラクティスに加えて、Azure IoT では、セキュリティで保護されたハードウェアの選択とセキュリティで保護された IoT デプロイの作成に役立つリソースが提供されています。 
 - デプロイ プロセスがガイドされている Azure IoT の[セキュリティに関する推奨事項](../iot-fundamentals/security-recommendations.md)。 
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/) では、セキュリティで保護された IoT デプロイを作成するためのサービスが提供されています。 
+- [Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) では、セキュリティで保護された IoT デプロイを作成するためのサービスが提供されています。 
 - ハードウェア環境の評価に関するヘルプについては、ホワイトペーパー「[IoT セキュリティの評価](https://download.microsoft.com/download/D/3/9/D3948E3C-D5DC-474E-B22F-81BA8ED7A446/Evaluating_Your_IOT_Security_whitepaper_EN_US.pdf)」を参照してください。 
 - セキュリティで保護されたハードウェアの選択に関するヘルプについては、「[IoT のデプロイに適したセキュリティで保護されたハードウェア](https://download.microsoft.com/download/C/0/5/C05276D6-E602-4BB1-98A4-C29C88E57566/The_right_secure_hardware_for_your_IoT_deployment_EN_US.pdf)」を参照してください。 

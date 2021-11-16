@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f2aae24d6a3e4fff70443107d769f0e23c82bfbc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bf53669dc4c6ca445ea43535a709804d387e855d
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046985"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989586"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Azure Sentinel の DNS 正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -95,7 +95,7 @@ DNS 情報モデルにカスタム パーサーを実装するときは、次の
 
 次のフィルター処理パラメーターを使用できます。
 
-| 名前     | 型      | 説明 |
+| 名前     | 種類      | 説明 |
 |----------|-----------|-------------|
 | **starttime** | DATETIME | この時間以降に実行された DNS クエリのみをフィルター処理します。 |
 | **endtime** | DATETIME | この時間以前に実行が完了した DNS クエリのみをフィルター処理します。 |
@@ -171,27 +171,27 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 
 | **フィールド** | **クラス** | **Type**  | **考察 (Discussion)** |
 | --- | --- | --- | --- |
-| **EventMessage** | オプション | String | レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。 |
-| **EventCount** | Mandatory | Integer | レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>他のソースの場合は、**1** に設定する必要があります。 <br><br>例:`1`|
+| **EventMessage** | 省略可能 | String | レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。 |
+| **EventCount** | Mandatory | 整数型 | レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>他のソースの場合は、**1** に設定する必要があります。 <br><br>例:`1`|
 | **EventStartTime** | Mandatory | 日付/時刻 | ソースが集計に対応しており、レコードで複数のイベントが表されている場合は、このフィールドを使用して、最初のイベントが生成された日時を指定します。 <br><br>それ以外の場合は、[TimeGenerated](#timegenerated) フィールドの別名です。 |
 | **EventEndTime** | エイリアス || [TimeGenerated](#timegenerated) フィールドの別名。 |
 | **EventType** | Mandatory | Enumerated | レコードによって報告される操作を示します。 <br><Br> DNS レコードの場合、この値は [DNS の操作コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)になります。 <br><br>例: `lookup`|
-| **EventSubType** | オプション | Enumerated | **request** または **response**。 ほとんどのソースでは、[応答だけがログに記録される](#guidelines-for-collecting-dns-events)ため、多くの場合、この値は **response** になります。  |
+| **EventSubType** | 省略可能 | Enumerated | **request** または **response**。 ほとんどのソースでは、[応答だけがログに記録される](#guidelines-for-collecting-dns-events)ため、多くの場合、この値は **response** になります。  |
 | **EventResult** | Mandatory | Enumerated | 以下の値のいずれかです。**Success**、**Partial**、**Failure**、**NA** (該当なし)。<br> <br>ソース レコードでは、異なる用語を使用して値が指定されている場合があります。それを、これらの値に正規化する必要があります。 または、ソースで [EventResultDetails](#eventresultdetails) フィールドのみが提供されている場合があり、これを分析して EventResult の値を得る必要があります。<br> <br>このレコードが応答ではなく要求を表している場合は、**NA** に設定します。 <br><br>例: `Success`|
 | <a name=eventresultdetails></a>**EventResultDetails** | エイリアス | | **_EventResult_** フィールドで報告された結果の理由または詳細。 [ResponseCodeName](#responsecodename) フィールドの別名を設定します。|
-| **EventOriginalUid** | オプション | String | ソースによって提供されている場合、元のレコードの一意の ID。 |
-| **EventOriginalType**   | オプション    | String  |  元のイベントの種類または ID (ソースによって提供されている場合)。<br><br>例: `lookup` |
+| **EventOriginalUid** | 省略可能 | String | ソースによって提供されている場合、元のレコードの一意の ID。 |
+| **EventOriginalType**   | 省略可能    | String  |  元のイベントの種類または ID (ソースによって提供されている場合)。<br><br>例: `lookup` |
 | <a name ="eventproduct"></a>**EventProduct** | Mandatory | String | イベントを生成している製品。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。 <br><br>例: `DNS Server` |
-| **EventProductVersion** | オプション | String | イベントを生成している製品のバージョン。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。 <br><br>例: `12.1` |
+| **EventProductVersion** | 省略可能 | String | イベントを生成している製品のバージョン。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。 <br><br>例: `12.1` |
 | **EventVendor** | Mandatory | String | イベントを生成している製品のベンダー。 このフィールドは、ソース レコードで使用できないことがあります。その場合は、パーサーで設定する必要があります。<br><br>例: `Microsoft`|
 | **EventSchemaVersion** | Mandatory | String | ここに記載されているスキーマのバージョンは **0.1.2** です。 |
 | **EventSchema** | Mandatory | String | ここに記載されているスキーマの名前は **Dns** です。 |
-| **EventReportUrl** | オプション | String | リソースのイベントで提供された、そのイベントに関する他の情報を提供する URL。 |
+| **EventReportUrl** | 省略可能 | String | リソースのイベントで提供された、そのイベントに関する他の情報を提供する URL。 |
 | <a name="dvc"></a>**Dvc** | Mandatory       | String     |    イベントが発生したデバイスの一意の識別子。 <br><br>このフィールドの別名は、[DvcId](#dvcid)、[DvcHostname](#dvchostname)、または [DvcIpAddr](#dvcipaddr) フィールドになる場合があります。 明確なデバイスがないクラウド リソースの場合は、[Event Product](#eventproduct) フィールドと同じ値を使用します。 <br><br>例: `ContosoDc.Contoso.Azure`       |
 | <a name ="dvcipaddr"></a>**DvcIpAddr**           | 推奨 | IP アドレス |  プロセス イベントが発生したデバイスの IP アドレス。 <br><br>例: `45.21.42.12` |
 | <a name ="dvchostname"></a>**DvcHostname**         | 推奨 | Hostname (ホスト名)   | プロセス イベントが発生したデバイスのホスト名。 <br><br>例: `ContosoDc.Contoso.Azure`                |
-| <a name ="dvcid"></a>**DvcId**               | オプション    | String     | プロセス イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
-| <a name=additionalfields></a>**AdditionalFields** | オプション | 動的 | ソースから保持する必要のある他の情報が提供される場合は、元のフィールド名をそのまま使用するか、**AdditionalFields** 動的フィールドを作成し、追加情報をキーと値のペアとして追加します。 |
+| <a name ="dvcid"></a>**DvcId**               | 省略可能    | String     | プロセス イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
+| <a name=additionalfields></a>**AdditionalFields** | 省略可能 | 動的 | ソースから保持する必要のある他の情報が提供される場合は、元のフィールド名をそのまま使用するか、**AdditionalFields** 動的フィールドを作成し、追加情報をキーと値のペアとして追加します。 |
 | | | | |
 
 ### <a name="dns-specific-fields"></a>DNS 固有のフィールド
@@ -201,27 +201,27 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 | **フィールド** | **クラス** | **Type** | **ノート** |
 | --- | --- | --- | --- |
 | **SrcIpAddr** | 推奨 | IP アドレス | DNS 要求を送信しているクライアントの IP アドレス。 再帰的な DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `192.168.12.1` |
-| **SrcPortNumber** | オプション | Integer | DNS クエリの送信元ポート。<br><br>例: `54312` |
-| **DstIpAddr** | オプション | IP アドレス | DNS 要求を受信しているサーバーの IP アドレス。 通常の DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `127.0.0.1` |
-| **DstPortNumber** | オプション | Integer  | 送信先ポート番号。<br><br>例: `53` |
+| **SrcPortNumber** | 省略可能 | Integer | DNS クエリの送信元ポート。<br><br>例: `54312` |
+| **DstIpAddr** | 省略可能 | IP アドレス | DNS 要求を受信しているサーバーの IP アドレス。 通常の DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `127.0.0.1` |
+| **DstPortNumber** | 省略可能 | Integer  | 送信先ポート番号。<br><br>例: `53` |
 | **IpAddr** | エイリアス | | SrcIpAddr の別名 |
 | <a name=query></a>**DnsQuery** | Mandatory | FQDN | 解決する必要があるドメイン。 <br><br>**注**: ソースによっては、このクエリが異なる形式で送信されます。 たとえば、DNS プロトコル自体では、このクエリは末尾にドット ( **.** ) が含まれているため、これを削除する必要があります。<br><br>DNS プロトコルでは 1 つの要求に複数のクエリを含めることができますが、このようなシナリオは行われるとしてもまれです。 要求に複数のクエリがある場合は、最初のものをこのフィールドに格納し、必要に応じて残りを [AdditionalFields](#additionalfields) フィールドに保持します。<br><br>例: `www.malicious.com` |
 | **Domain** | エイリアス | | [Query](#query) の別名。 |
-| **DnsQueryType** | オプション | Integer | このフィールドには、[DNS のリソース レコードの種類コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)が含まれる場合があります。 <br><br>例: `28`|
+| **DnsQueryType** | 省略可能 | Integer | このフィールドには、[DNS のリソース レコードの種類コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)が含まれる場合があります。 <br><br>例: `28`|
 | **DnsQueryTypeName** | 推奨 | Enumerated | このフィールドには、[DNS のリソース レコードの種類](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)の名前が含まれる場合があります。 <br><br>**注**: IANA では値の大文字と小文字は定義されていないので、分析では必要に応じて大文字と小文字を正規化する必要があります。 ソースで数値のクエリの種類コードのみが提供され、クエリの種類の名前が提供されない場合は、パーサーでこの値をエンリッチするためにルックアップ テーブルを含める必要があります。<br><br>例: `AAAA`|
-| <a name=responsename></a>**DnsResponseName** | オプション | String | レコードに含まれる応答の内容。<br> <br> DNS 応答データは、レポート デバイスの間で一貫性がなく、解析が複雑であり、ソースに依存しない分析にとっての価値は高くありません。 したがって、情報モデルでの解析と正規化は必要なく、Azure Sentinel では補助関数を使用して応答情報が提供されます。 詳細については、「[DNS の応答の処理](#handling-dns-response)」を参照してください。|
+| <a name=responsename></a>**DnsResponseName** | 省略可能 | String | レコードに含まれる応答の内容。<br> <br> DNS 応答データは、レポート デバイスの間で一貫性がなく、解析が複雑であり、ソースに依存しない分析にとっての価値は高くありません。 したがって、情報モデルでの解析と正規化は必要なく、Azure Sentinel では補助関数を使用して応答情報が提供されます。 詳細については、「[DNS の応答の処理](#handling-dns-response)」を参照してください。|
 | <a name=responsecodename></a>**DnsResponseCodeName** |  Mandatory | Enumerated | [DNS 応答コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 <br><br>**注**: IANA では値の大文字と小文字は定義されていないので、分析では大文字と小文字を正規化する必要があります。 ソースで数値の応答コードのみが提供され、応答コードの名前が提供されない場合は、パーサーでこの値をエンリッチするためにルックアップ テーブルを含める必要があります。 <br><br> このレコードが応答ではなく要求を表している場合は、**NA** に設定します。 <br><br>例: `NXDOMAIN` |
-| **DnsResponseCode** | オプション | Integer | [DNS 数値応答コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 <br><br>例: `3`|
+| **DnsResponseCode** | 省略可能 | Integer | [DNS 数値応答コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 <br><br>例: `3`|
 | **TransactionIdHex** | 推奨 | String | DNS の一意の 16 進トランザクション ID。 |
-| **NetworkProtocol** | オプション | Enumerated | ネットワーク解決イベントによって使用されるトランスポート プロトコル。 値は **UDP** または **TCP** であり、DNS の場合は **UDP** に設定されるのが普通です。 <br><br>例: `UDP`|
-| **DnsQueryClass** | オプション | Integer | [DNS クラス ID](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。<br> <br>実際には、**IN** クラス (ID 1) だけが使用されるので、このフィールドの価値は高くありません。|
-| **DnsQueryClassName** | オプション | String | [DNS クラスの名前](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。<br> <br>実際には、**IN** クラス (ID 1) だけが使用されるので、このフィールドの価値は高くありません。 <br><br>例: `IN`|
-| <a name=flags></a>**DnsFlags** | オプション | 文字列のリスト | レポート デバイスによって提供されるフラグ フィールド。 フラグ情報が複数のフィールドで提供されている場合は、区切り記号としてコンマを使用して連結します。 <br><br>DNS フラグは解析が複雑で、分析ではあまり使用されないので、解析と正規化は必要なく、Azure Sentinel では補助関数を使用してフラグ情報が提供されます。 詳細については、「[DNS の応答の処理](#handling-dns-response)」を参照してください。 <br><br>例: `["DR"]`|
+| **NetworkProtocol** | 省略可能 | Enumerated | ネットワーク解決イベントによって使用されるトランスポート プロトコル。 値は **UDP** または **TCP** であり、DNS の場合は **UDP** に設定されるのが普通です。 <br><br>例: `UDP`|
+| **DnsQueryClass** | 省略可能 | Integer | [DNS クラス ID](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。<br> <br>実際には、**IN** クラス (ID 1) だけが使用されるので、このフィールドの価値は高くありません。|
+| **DnsQueryClassName** | 省略可能 | String | [DNS クラスの名前](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。<br> <br>実際には、**IN** クラス (ID 1) だけが使用されるので、このフィールドの価値は高くありません。 <br><br>例: `IN`|
+| <a name=flags></a>**DnsFlags** | 省略可能 | 文字列のリスト | レポート デバイスによって提供されるフラグ フィールド。 フラグ情報が複数のフィールドで提供されている場合は、区切り記号としてコンマを使用して連結します。 <br><br>DNS フラグは解析が複雑で、分析ではあまり使用されないので、解析と正規化は必要なく、Azure Sentinel では補助関数を使用してフラグ情報が提供されます。 詳細については、「[DNS の応答の処理](#handling-dns-response)」を参照してください。 <br><br>例: `["DR"]`|
 | <a name=UrlCategory></a>**UrlCategory** |  省略可能 | String | DNS イベント ソースで、要求されたドメインのカテゴリが検索されることもあります。 フィールドは、Azure Sentinel のネットワーク スキーマに合わせて **_UrlCategory_** と呼ばれます。 <br><br>**_DomainCategory_** は、DNS に適合する別名として追加されます。 <br><br>例: `Educational \\ Phishing` |
 | **DomainCategory** | 省略可能 | エイリアス | [UrlCategory](#UrlCategory) の別名。 |
 | **ThreatCategory** | 省略可能 | String | DNS イベント ソースで DNS セキュリティも提供される場合は、DNS イベントも評価されている可能性があります。 たとえば、脅威インテリジェンス データベースで IP アドレスまたはドメインが検索され、脅威カテゴリでドメインまたは IP アドレスに割り当られる場合があります。 |
-| **EventSeverity** | オプション | String | DNS イベント ソースで DNS セキュリティも提供される場合は、DNS イベントが評価されている可能性があります。 たとえば、脅威インテリジェンス データベースで IP アドレスまたはドメインが検索され、評価に基づいて重大度が割り当られる場合があります。 <br><br>例: `Informational`|
-| **DvcAction** | オプション | String | DNS イベント ソースで DNS セキュリティも提供される場合は、要求に対してブロックといったアクションが実行される可能性があります。 <br><br>例: `Blocked` |
+| **EventSeverity** | 省略可能 | String | DNS イベント ソースで DNS セキュリティも提供される場合は、DNS イベントが評価されている可能性があります。 たとえば、脅威インテリジェンス データベースで IP アドレスまたはドメインが検索され、評価に基づいて重大度が割り当られる場合があります。 <br><br>例: `Informational`|
+| **DvcAction** | 省略可能 | String | DNS イベント ソースで DNS セキュリティも提供される場合は、要求に対してブロックといったアクションが実行される可能性があります。 <br><br>例: `Blocked` |
 | **DnsFlagsAuthenticated** | 省略可能 | ブール型 | DNSSEC に関連する DNS の `AD` フラグは、応答において、応答の回答セクションと権限セクションに含まれるすべてのデータが、サーバーのポリシーに従ってそのサーバーによって検証されたことを示します。 詳細については、[RFC 3655 セクション 6.1](https://tools.ietf.org/html/rfc3655#section-6.1) を参照してください。    |
 | **DnsFlagsAuthoritative** | 省略可能 | ブール型 | DNS の `AA` フラグは、サーバーからの応答に権限があったかどうかを示します    |
 | **DnsFlagsCheckingDisabled** | 省略可能 | ブール型 | DNSSEC に関連する DNS の `CD` フラグは、クエリにおいて、検証されていないデータがクエリを送信しているシステムで許容されることを示します。 詳細については、[RFC 3655 セクション 6.1](https://tools.ietf.org/html/rfc3655#section-6.1) を参照してください。   |
@@ -263,7 +263,7 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 詳細については、[Azure Sentinel の正規化](normalization.md)に関するページを参照してください。
 
 
-| **エンティティ** | **Fields** | **Type** | **必須フィールド** | **ノート** |
+| **エンティティ** | **Fields** | **Type** | **必須フィールド** | **メモ** |
 | --- | --- | --- | --- | --- |
 | **俳優** | Actor\* | User |  | ほとんどの DNS イベント ソースでは、ユーザーの情報は提供されません。これは、通常、DNS プロトコルの一部ではありません。 <br><br>場合によっては、通常はソース IP アドレスをユーザー情報に解決することで、レポート デバイスからユーザー情報が提供されます。 そのような場合は、スキーマ エンティティのドキュメントで説明されているようにユーザーを表します。 情報はソース IP アドレスに基づくので、記述子として **Actor** を使用します。 <br><br>**注**: エンティティ記述子として **Actor** を使用するときは、**User** フィールドを追加する必要はありません。 |
 | **ソース デバイス** | Src\* | Device | `SrcIpAddr` | 通常は、DNS イベント ソースによって要求のソースの IP アドレスが報告されるため、**SrcIpAddr** は必須です。 <br><br>レポート デバイスにより要求のソースに関する情報がさらに提供される場合、またはデータをエンリッチする場合は、デバイス エンティティのガイドラインに従い、フィールドのプレフィックスとして **Src** を使用して正規化します。 |

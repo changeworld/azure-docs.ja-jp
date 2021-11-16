@@ -1,17 +1,17 @@
 ---
 title: Azure HPC Cache の前提条件
 description: Azure HPC Cache を使用するための前提条件
-author: femila
+author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2021
-ms.author: femila
-ms.openlocfilehash: b075e41d8bd8865fcb5ed24c4ecba2b9f539d3dd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/03/2021
+ms.author: rohogue
+ms.openlocfilehash: 1929677370ddf6f505f2425f61bfdaf4466223bb
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078600"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137759"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -79,6 +79,26 @@ Blob Storage だけを使用するのであれば、Azure に用意されてい�
 単純な DNS サーバーを使用して、利用可能なすべてのキャッシュ マウント ポイント間でクライアント接続を負荷分散することもできます。
 
 Azure 仮想ネットワークと DNS サーバーの構成について詳しくは、「[Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
+
+### <a name="ntp-access"></a>NTP アクセス
+
+HPC Cache は、通常の運用のために NTP サーバーへのアクセスを必要とします。 仮想ネットワークからの送信トラフィックを制限する場合は、少なくとも 1 つの NTP サーバーへのトラフィックを許可してください。 既定のサーバーは time.windows.com で、キャッシュはこのサーバーに UDP ポート 123 で接続します。
+
+NTP サーバーへの送信トラフィックを許可するルールをキャッシュネットワークの[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に作成します。 この規則では、単に UDP ポート 123 のすべての送信トラフィックを許可するか、またはより多くの制限を設定することができます。
+
+この例では、IP アドレス 168.61.215.74 への送信トラフィックを明示的に開きます。これは、time.windows.com によって使用されるアドレスです。
+
+| Priority | 名前 | Port | Protocol | source | 到着地   | アクション |
+|----------|------|------|----------|--------|---------------|--------|
+| 200      | NTP  | Any  | UDP      | Any    | 168.61.215.74 | Allow  |
+
+NTP ルールの優先順位が、送信アクセスを幅広く拒否するルールよりも高いことを確認します。
+
+NTP アクセスに関するその他のヒント:
+
+* HPC Cache と NTP サーバーの間にファイアウォールがある場合は、これらのファイアウォールでも NTP アクセスが許可されていることを確認してください。
+
+* **ネットワーク** ページで、HPC Cache で使用する NTP サーバーを構成できます。 詳細については、「[追加の設定の構成](configuration.md#customize-ntp)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 

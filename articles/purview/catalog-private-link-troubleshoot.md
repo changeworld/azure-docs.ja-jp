@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 3a41e3e131c4537e21e3844dbf0db360e2b77b28
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1557b229c4db50dca2115fc9c11123c76c5adc50
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214721"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851821"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Purview アカウントのプライベート エンドポイント構成のトラブルシューティング
 
@@ -90,7 +90,7 @@ ms.locfileid: "130214721"
    
 6. セルフホステッド統合ランタイムの VM から Purview エンドポイントへのネットワーク接続と名前解決をテストします。
 
-7. セルフホステッド統合ランタイムから、Azure Purview 管理対象リソース (BLOB キューやイベント ハブなど) へのポート 443 とプライベート IP アドレスを使用したネットワーク接続と名前解決を テストします。 (マネージド ストレージ アカウントとイベント ハブ名前空間を、Azure Purview アカウントに割り当てられている対応する管理対象リソース名に置き換えます)。
+7. セルフホステッド統合ランタイムから、Azure Purview 管理対象リソース (BLOB キューやイベント ハブなど) へのポート 443 とプライベート IP アドレスを使用したネットワーク接続と名前解決をテストします。 (マネージド ストレージ アカウントとイベント ハブ名前空間を、Azure Purview アカウントに割り当てられている対応する管理対象リソース名に置き換えます)。
 
     ```powershell
     Test-NetConnection -ComputerName `scansoutdeastasiaocvseab`.blob.core.windows.net -Port 443
@@ -164,7 +164,7 @@ ms.locfileid: "130214721"
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>原因 
-これは、以前のバージョンのセルフホステッド統合ランタイムが実行されていることを示している場合があります。 2021 年 8 月 18 日より後に Azure Purview アカウントを作成した場合は、セルフホステッド統合ランタイムのバージョン 5.9.7885.3 を使う必要があります。
+これは、以前のバージョンのセルフホステッド統合ランタイムが実行されていることを示している場合があります。 セルフホステッド統合ランタイム バージョン 5.9.7885.3 以上を使用する必要があります。
 
 ### <a name="resolution"></a>解像度 
 セルフホステッド統合ランタイムを 5.9.7885.3 にアップグレードします。

@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: a0290f85e1f408f9d1ec91cdc353a1acc87faeef
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: bc88b1dcebede150ca912244d482a2e926f13e2b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130160927"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158156"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>フェールオーバー クラスター インスタンス用に DNN を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の複数のサブネットに SQL Server VM を作成することで、フェールオーバー クラスター インスタンスに対して分散ネットワーク名 (DNN) が不要になります。
 
 Azure Virtual Machines では、分散ネットワーク名 (DNN) によって、クラスター化された適切なリソースにトラフィックがルーティングされます。 これにより、仮想ネットワーク名 (VNN) よりも簡単に SQL Server フェールオーバー クラスター インスタンス (FCI) に接続することができます。Azure Load Balancer は必要ありません。 
 

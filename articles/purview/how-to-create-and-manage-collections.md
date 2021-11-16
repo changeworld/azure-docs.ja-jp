@@ -6,21 +6,16 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 11/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0a684cec230766119345b8fd8acd3df53cc3f25a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 0c288971fefc95bfed7d5c4b7496dda628bb1f90
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213016"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845268"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Azure Purview でコレクションを作成および管理する
-
-> [!NOTE]
-> 現時点では、このガイドは **2021 年 8 月 18 日以降** に作成された Azure Purview インスタンスにのみ適用されます。 8 月 18 日より前に作成されたインスタンスでもコレクションを作成できますが、これらのコレクションでアクセス許可を管理することはできません。 8 月 18 日より前に作成された Purview インスタンスのコレクションの作成については、ページの下部にある [**レガシ コレクション ガイド**](#legacy-collection-guide)を参照してください。
->
-> すべてのレガシ アカウントは、今後数週間以内に自動的にアップグレードされます。 Purview アカウントがアップグレードされると、メールで通知が届きます。 アカウントがアップグレードされたときの変更内容については、[アップグレードされたアカウントに関するガイド](concept-account-upgrade.md)を参照してください。
 
 Azure Purview のコレクションは、ビジネスのフローによる資産とソースの整理に使用できますが、Purview 間のアクセスを管理するために使用されるツールでもあります。 このガイドでは、これらのコレクションの作成と管理に加えて、ソースを登録して資産をコレクションに追加する方法の手順について説明します。
 
@@ -103,6 +98,20 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/refresh-single-collection.png" alt-text="Purview Studio のコレクション ウィンドウのスクリーンショット。コレクション ウィンドウの下の [更新] ボタンが強調表示されています。" border="true":::
 
+### <a name="delete-a-collection"></a>コレクションの削除
+
+コレクションを削除するには、コレクション管理者である必要があります。 わからない場合は、前述のガイドに従ってアクセス許可を確認してください。 コレクションを削除できるのは、子のコレクション、資産、データ ソース、またはスキャンが関連付けられていない場合のみです。 
+
+1. コレクションの詳細ページから **[削除]** を選択します。
+   
+   :::image type="content" source="./media/how-to-create-and-manage-collections/delete-collections.png" alt-text="コレクションを削除する Purview スタジオ ウィンドウのスクリーンショット" border="true":::
+
+2. **[このコレクションを削除しますか?]** というプロンプトが表示されたら、 **[確定]** を選択します。
+
+   :::image type="content" source="./media/how-to-create-and-manage-collections/delete-collection-confirmation.png" alt-text="コレクションを削除するための確認メッセージが表示されている Purview スタジオ ウィンドウのスクリーンショット" border="true":::
+
+3. Purview Data Map からのコレクションの削除を確認します。
+
 ## <a name="add-roles-and-restrict-access-through-collections"></a>ロールを追加して、コレクションからアクセスを制限する
 
 アクセス許可は Purview のコレクションから管理されるため、ロールとユーザーに付与するアクセス許可を理解することが重要です。 コレクションに対するアクセス許可を付与されたユーザーは、そのコレクションに関連付けられているソースと資産にアクセスできるだけでなく、サブコレクションに対するアクセス許可を継承します。 継承は[制限できます](#restrict-inheritance)が、既定では許可されています。
@@ -140,7 +149,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/remove-role-assignment.png" alt-text="Purview Studio のコレクション ウィンドウのスクリーンショット。[ロールの割り当て] タブが選択され、いずれかの名前の横に [X] ボタンが強調表示されています。" border="true":::
 
-1. ユーザーを削除する場合は、 **[Confirm (確認)]** を選択します。
+1. ユーザーを削除する場合は、 **[確定]** を選択します。
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/confirm-remove.png" alt-text="確認のポップアップのスクリーンショット。[確認] ボタンが強調表示されています。" border="true":::
 
@@ -264,28 +273,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/view-asset-details.png" alt-text="Purview Studio カタログ ウィンドウのスクリーンショット。[コレクション別] タブが選択され、[資産] チェック ボックスが強調表示されています。"border="true":::
 
-## <a name="legacy-collection-guide"></a>レガシ コレクション ガイド
-
-> [!NOTE]
-> このレガシ コレクション ガイドは、2021 年 8 月 18 日より前に作成された Purview インスタンス専用です。 その後に作成されたインスタンスは、上記のガイドに従う必要があります。
-
-レガシ コレクションでは、データ マップ内のソースのみを整理し、これらのソースのアクセス許可については管理しません。
-
-### <a name="create-a-legacy-collection"></a>レガシ コレクションを作成する
-
-1. 左側ペインから [データ マップ] を選択し、データ マップを開きます。 マップ ビューを使用すると、コレクションと、その下に一覧表示されているソースを確認できます。
-
-    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-view.png" alt-text="データ マップが開かれている Purview Studio ウィンドウのスクリーンショット。" border="true":::
-
-1. **[+ 新しいコレクション]** を選択します。
-
-    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-create.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、[+ 新しいコレクション] が強調表示されています。" border="true":::
-
-1. コレクションに名前を付け、親または [なし] を選択します。 **［作成］** を選択します コレクション情報はデータ マップに反映されます。
-
-    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-name.png" alt-text="新しいコレクション ウィンドウが表示されている Purview Studio ウィンドウのスクリーンショット。" border="true":::
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 コレクションが作成されたので、以下のガイドに従ってリソースの追加やスキャンを行います。
 

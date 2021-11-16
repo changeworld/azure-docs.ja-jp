@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/02/2021
-ms.openlocfilehash: 1fa0763c9d4ccdb4e0233a5c6159be7c0d745be6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2044e40c61e5683d9c21051ed38af471dbd73991
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470397"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294050"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 
-Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントは、分析情報や、[VM insights](../vm/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
+Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントは、分析情報や、[VM Insights](../vm/vminsights-enable-overview.md)、[Microsoft Defender for Cloud](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) などの Azure Monitor のその他のサービスもサポートしています。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
 
 > [!NOTE]
 > Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) とも呼ばれます。
@@ -27,7 +27,7 @@ Azure Monitor の[Azure Diagnostics 拡張機能](./diagnostics-extension-overvi
 
 - Azure Diagnostics 拡張機能は、Azure の仮想マシンでのみ使用できます。 Log Analytics エージェントは、Azure、他のクラウド、およびオンプレミスの仮想マシンで使用できます。
 - Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](../essentials/data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](../logs/data-platform-logs.md)にデータが送信されます。
-- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-curated-visualizations)、[VM insights](../vm/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
+- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-curated-visualizations)、[VM Insights](../vm/vminsights-overview.md)、および [Microsoft Defender for Cloud](../../security-center/index.yml) などのその他のサービスに必要です。
 
 ## <a name="costs"></a>コスト
 
@@ -55,7 +55,7 @@ Log Analytics エージェントは、データを Azure Monitor の Log Analyti
 
 ## <a name="other-services"></a>その他のサービス
 
-Linux および Windows 用のエージェントは、Azure Monitor に接続するためだけのものではありません。 Azure Security Center や Azure Sentinel などの他のサービスは、エージェントと、その接続されている Log Analytics ワークスペースに依存します。 エージェントでは Azure Automation もサポートされており、Hybrid Runbook Worker ロールや、[Change Tracking](../../automation/change-tracking/overview.md)、[Update Management](../../automation/update-management/overview.md)、[Azure Security Center](../../security-center/security-center-introduction.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
+Linux および Windows 用のエージェントは、Azure Monitor に接続するためだけのものではありません。 Microsoft Defender for Cloud および Microsoft Sentinel などのその他のサービスは、エージェントとそれが接続されている Log Analytics ワークスペースに依存します。 エージェントでは、Hybrid Runbook Worker ロールや、[Change Tracking](../../automation/change-tracking/overview.md)、[Update Management](../../automation/update-management/overview.md)、[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) などその他のサービスをホストするために、Azure Automation もサポートしています。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
 ## <a name="workspace-and-management-group-limitations"></a>ワークスペースと管理グループの制限事項
 
@@ -78,7 +78,7 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 ### <a name="azure-virtual-machine"></a>Azure 仮想マシン
 
 - [VM insights](../vm/vminsights-enable-overview.md) には、エージェントを大規模に有効にする複数の方法が用意されています。 これには、Log Analytics エージェントと Dependency Agent のインストールが含まれます。 
-- [Azure Security Center では、Log Analytics エージェントをプロビジョニングできます](../../security-center/security-center-enable-data-collection.md)。セキュリティの脆弱性と脅威を監視するために有効にすれば、サポートされているすべての Azure VM と作成された新しいものを対象にできます。
+- セキュリティの脆弱性と脅威の監視を有効にすると、サポートされているすべての Azure VM と作成された新しいものに [Microsoft Defender for Cloud で Log Analytics エージェントをプロビジョニングできます](../../security-center/security-center-enable-data-collection.md)。
 - [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能は、Azure portal、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使用してインストールできます。
 - 個別の Azure 仮想マシン用に、[Azure portal から手動で](../vm/monitor-virtual-machine.md?toc=%2fazure%2fazure-monitor%2ftoc.json)インストールします。
 

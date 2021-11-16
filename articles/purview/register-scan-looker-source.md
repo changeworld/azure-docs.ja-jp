@@ -8,14 +8,14 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 27a21f7cb9c04cdb03138540aa10aadf0f94cb57
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3bb15a424496c04f63537a9dac4622e52a052c46
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475542"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848042"
 ---
-# <a name="connect-to-and-manage-looker-in-azure-purview"></a>Azure Purview で Looker に接続して管理する
+# <a name="connect-to-and-manage-looker-in-azure-purview-preview"></a>Azure Purview で Looker に接続して管理する (プレビュー)
 
 この記事では、Looker を登録する方法と、Azure Purview で Looker を認証して操作する方法の概要を説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 664a63e50b4b0ff1d239317fce653378461a5d4c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 62ba9a8fa578ab12408160d9a6d19243474921fc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113799307"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277222"
 ---
 # <a name="deploy-azure-virtual-desktop-with-the-getting-started-feature"></a>作業の開始機能を使用して Azure Virtual Desktop をデプロイする
 
@@ -19,10 +19,10 @@ Azure portal の新しい作業の開始機能を使用すると、Azure Virtual
 
 ## <a name="requirements"></a>必要条件
 
-作業の開始機能を使用するには、次のものが必要です。
+作業の開始を使用できるようにするには、次の要件を満たす必要があります。
 
-- Azure Active Directory (AD) テナント
-- Azure AD の全体管理者アクセス許可が付与されているアカウント
+- Azure Active Directory (AD) テナント。
+- Azure AD の全体管理者アクセス許可が付与されているアカウント。
 
    >[!NOTE]
    >現在、作業の開始機能では、MSA、B2B、またはゲスト アカウントはサポートされていません。
@@ -32,13 +32,13 @@ Azure portal の新しい作業の開始機能を使用すると、Azure Virtual
    >[!NOTE]
    >現在、作業の開始機能では、多要素認証を使用するアカウントはサポートされていません。
 
-- サブスクリプションの **所有者アクセス許可** が付与されているアカウント
+- サブスクリプションの **所有者アクセス許可** が付与されているアカウント。
 
 Active Directory Domain Services (AD DS) が使用されている環境で作業の開始機能を使用する場合は、これらの要件も満たす必要があります。
 
-- AD DS ドメイン管理者の資格情報
-- 対象のサブスクリプションで Azure AD Connect を構成したうえで、"USERS" コンテナーが Azure AD と同期していることを確認する必要があります
-- 対象の仮想マシン (VM) のドメイン コントローラーには、種類が **Microsoft.Powershell.DSC** の DSC 拡張機能が含まれていてはなりません
+- AD DS ドメイン管理者の資格情報。
+- 対象のサブスクリプションで Azure AD Connect を構成したうえで、"USERS" コンテナーが Azure AD と同期していることを確認する必要があります。
+- 対象の仮想マシン (VM) のドメイン コントローラーには、種類が **Microsoft.Powershell.DSC** の DSC 拡張機能が含まれていてはなりません。
 
 ID プロバイダーのない環境で作業の開始機能を使用する場合は、これらの追加要件に従う必要があります。
 

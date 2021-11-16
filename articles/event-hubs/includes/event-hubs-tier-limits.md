@@ -1,5 +1,5 @@
 ---
-title: インクルード ファイル description: インクルード ファイル services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 05/25/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+title: インクルード ファイル description: インクルード ファイル services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 11/04/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
 
 ---
 
@@ -12,7 +12,7 @@ title: インクルード ファイル description: インクルード ファイ
 | 名前空間あたりの仲介型接続の数 | 100 | 5,000 | PU あたり処理装置あたり 10000 | CU あたり 100, 000 |
 | イベント データの最大リテンション期間 | 1 日 | 7 日 | 90 日間<br/>PU あたり 1 TB | 90 日間<br/>CU あたり 10 TB |
 | 最大 TU または PU または CU | 40 TU | 40 TU | 16 PU | 20 CU |
-| イベント ハブあたりのパーティションの数 | 32 | 32 | 100 | イベント ハブあたり 1,024<br/> CU あたり 2,000 |
+| イベント ハブあたりのパーティションの数 | 32 | 32 | イベントハブあたり 100、PU あたり 200 | イベント ハブあたり 1,024<br/> CU あたり 2,000 |
 | サブスクリプションあたりの名前空間の数 | 1000 | 1000 | 1000 | 1000 (CU あたり 50) |
 | 名前空間あたりのイベント ハブの数 | 10 | 10 | PU あたり 100 | 1000 |
 | キャプチャ | なし | 1 時間ごとの課金 | Included | Included |

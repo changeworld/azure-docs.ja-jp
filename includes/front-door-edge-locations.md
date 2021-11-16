@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 89937ef43dc207b9c13e669fb008112798beb538
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c0e366f64e0fe318fc7c4848ec783547c09e18f7
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110472365"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132146252"
 ---
 | Region | 市区町村 |
 |--|--|

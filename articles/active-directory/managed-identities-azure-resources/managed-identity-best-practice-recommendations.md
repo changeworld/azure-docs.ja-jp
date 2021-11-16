@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/15/2021
+ms.date: 11/09/2021
 ms.author: barclayn
-ms.openlocfilehash: b1dbdf7f7798458ec3ea3a7487f69a9dee244dda
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 400fe7d940a97ddf9fb885302edd93c8780491f5
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131474290"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134808"
 ---
 # <a name="managed-identity-best-practice-recommendations"></a>マネージド ID のベスト プラクティスに関する推奨事項
 
@@ -38,7 +38,6 @@ ms.locfileid: "131474290"
 インフラストラクチャで複数のリソースが同じリソースへのアクセスを必要とする場合は、1 つのユーザー割り当て ID をそれらに割り当てることができます。 管理する ID とロールの割り当ての数が少なくなるため、管理のオーバーヘッドが削減されます。
 
 各リソースがそれぞれの ID を持つことが必要な場合、あるいは一意のアクセス許可セットを必要とするリソースがあり、リソースが削除されたときに ID も削除したい場合は、システム割り当て ID を使用する必要があります。
-
 
 | シナリオ| 推奨|Notes|
 |---|---|---|
@@ -89,7 +88,7 @@ ms.locfileid: "131474290"
 
 ### <a name="consider-the-effect-of-assigning-managed-identities-to-azure-resources"></a>マネージド ID を Azure リソースに割り当てる影響を考慮する
 
-Azure Logic App、Azure 関数、仮想マシンなどの Azure リソースにマネージド ID が割り当てられると、そのマネージド ID に付与されているすべてのアクセス許可が Azure リソースで利用できるようになるということに注意する必要があります。 もし、あるユーザーがこのリソースにコードをインストールまたは実行するアクセス権を持っている場合、そのユーザーはその Azure リソースに割り当てられている、または関連付けられているすべての ID へのアクセス許可を持っていることになるため、これは特に重要なことです。 マネージド ID の目的は、開発者がアクセスを得るために資格情報の処理を行ったり、これをコードに直接挿入したりすることなく、Azure リソース上で実行されるコードに他のリソースへのアクセス許可を与えることです。
+Azure Logic App、Azure 関数、仮想マシンなどの Azure リソースにマネージド ID が割り当てられると、そのマネージド ID に付与されているすべてのアクセス許可が Azure リソースで利用できるようになるということに注意する必要があります。 もし、あるユーザーがこのリソースにコードをインストールまたは実行するアクセス権を持っている場合、そのユーザーはその Azure リソースに割り当てられている、または関連付けられているすべての ID へのアクセス許可を持っていることになるため、これは重要なことです。 マネージド ID の目的は、開発者がアクセスを得るために資格情報の処理を行ったり、これをコードに直接挿入したりすることなく、Azure リソース上で実行されるコードに他のリソースへのアクセス許可を与えることです。
 
 例えば、マネージド ID (ClientId = 1234) に ***StorageAccount7755** _ への読み取りおよび書き込みアクセス許可が付与され、_*_LogicApp3388_*_ に割り当てられている場合、マネージド ID やストレージ アカウントに対する直接的な権限は持たないが、_*_LogicApp3388_*_ 内でコードを実行する権限を持つ Alice は、そのマネージド ID を使用するコードを実行することで、_ *_StorageAccount7755_** との間でデータの読み取りと書き込みを行うこともできます。
 
@@ -109,3 +108,11 @@ Azure Logic App、Azure 関数、仮想マシンなどの Azure リソースに�
 削除されたマネージド ID に関連付けられているロールの割り当ては、ポータルで表示したとき "ID が見つかりません" と表示されます。 詳細については、[こちら](../../role-based-access-control/troubleshooting.md#role-assignments-with-identity-not-found)を参照してください。
 
 :::image type="content" source="media/managed-identity-best-practice-recommendations/identity-not-found.png" alt-text="ロールの割り当てでの「ID が見つかりません」。":::
+
+## <a name="limitation-of-using-azure-ad-groups-with-managed-identities-for-authorization"></a>マネージド ID を持つ Azure AD グループを認可に使用することの制限
+
+サービスへのアクセスを許可するために Azure AD グループを使用するのは、認可プロセスを簡素化するための優れた方法です。 発想はシンプルです。アクセス許可をグループに付与し、ID をグループに ID を追加して、それらの ID が同じアクセス許可を継承するようにします。 これは、さまざまなオンプレミス システムで採用されている十分に確立されたパターンであり、ID がユーザーを表す場合は適切に機能します。 ただし、Azure AD のアプリケーションやマネージド ID など、人間以外の ID に関しては、今のところ、これとまったく同じメカニズムが十分に適しているとはいえません。 Azure AD や Azure ロールベースのアクセス制御 (Azure RBAC) を使用する現在の実装では、Azure AD によって発行されるアクセス トークンを各 ID の認証に使用します。 ただし、ID がグループに追加される場合、そのグループ メンバーシップは、Azure AD によって発行されるアクセス トークンではクレームとして表されます。 Azure RBAC ではこのクレームを使用して、アクセスを許可または拒否するための認可ルールをさらに評価します。  
+
+グループ メンバーシップはアクセス トークン内のクレームであるため、グループ メンバーシップの変更はトークンが更新されるまで有効になりません。 人間のユーザーは、ログアウトして再度ログインすれば、新しいアクセス トークンを取得できます。 マネージド ID のトークンは、パフォーマンスと回復性を確保するために、基盤の Azure インフラストラクチャによってキャッシュされます。 これは、マネージド ID のグループ メンバーシップの変更が有効になるまでに数時間かかる場合があることを意味します。 現時点では、マネージド ID のトークンの有効期限が切れる前にトークンを強制的に更新することはできません。 したがって、マネージド ID を使用する Azure リソースに適切なアクセス権が付与されるまでの待ち時間は、ID で直接アクセス許可を追加または削除する場合は数分で済むのに対し、ID のグループ メンバーシップを変更してアクセス許可を追加または削除する場合には数時間かかることがあります。
+
+アクセス許可を持つマネージド ID の追加または削除を Azure AD グループに対して行う代わりに、マネージド ID のアクセス許可の変更が速やかに有効になるよう、アクセス許可が ID に直接適用される[ユーザー割り当てマネージド ID](how-manage-user-assigned-managed-identities.md?pivots=identity-mi-methods-azcli) を使用して Azure リソースをグループ化することをお勧めします。 ユーザー割り当てマネージド ID は、1 つ以上の Azure リソースに割り当てて使用できるため、グループのように使用できます。 割り当て操作は、[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)および[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator)のロールを使用して制御できます。

@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 32d39c956121881da0073b53fe5b4196dbc179de
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/08/2021
+ms.openlocfilehash: 7b8343c06dd0815f8c0fb44fa00f85c2c0195b13
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828501"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058527"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>マッピング データ フロー内の列パターンを使用する
 
@@ -83,9 +83,10 @@ ms.locfileid: "124828501"
 
 上記の例では、複合列 `a` のすべてのサブ列に対して照合されます。 `a` には 2 つのサブ列 `b` と `c` が含まれています。 [Name as]\(付ける名前\) 条件が `$$` であるため、出力スキーマには 2 つの列 `b` と `c` が含まれす。
 
-## <a name="pattern-matching-expression-values"></a>パターン マッチングの式の値。
+## <a name="pattern-matching-expression-values"></a>パターン マッチングの式の値
 
-* `$$` は、実行時に各一致の名前または値に変換されます。 `$$` は `this` と同等と見なされます。
+* `$$` は、実行時に各一致の名前または値に変換されます。 `$$` は `this` と同等と見なされます
+* `$0` は、スカラー型の実行時に現在の列名と一致するものに変換されます。 階層型の場合、`$0` は現在一致している列階層パスを表します。
 * `name` は、受信した各列の名前を表します
 * `type` は、受信した各列のデータ型を表します。 データ フロー型システムのデータ型の一覧については、[こちら](concepts-data-flow-overview.md#data-flow-data-types)を参照してください。
 * `stream` は、フロー内の各ストリームまたは変換に関連付けられた名前を表します

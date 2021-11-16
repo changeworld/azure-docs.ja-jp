@@ -12,12 +12,12 @@ ms.date: 10/14/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: bfe2bbe061f92c4290e63d36e8dcd647b4f7f830
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8692ebd01c794165fc93e1aaaae912b33a4c1b52
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131078011"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062778"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Read OCR Docker コンテナーをインストールする
 
@@ -26,6 +26,9 @@ ms.locfileid: "131078011"
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
 *Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API 攻略ガイド](Vision-API-How-to-Topics/call-read-api.md)に関するページを参照してください。
+
+## <a name="whats-new"></a>新機能
+Read コンテナーの既存のユーザーは、122 の言語をサポートし、パフォーマンスと AI が全体的に強化された、新しい `3.2-model-2021-09-30-preview` バージョンの Read コンテナーを利用できます。 [ダウンロードの手順](#docker-pull-for-the-read-ocr-container)に従って作業を開始してください。
 
 ## <a name="read-32-container"></a>Read 3.2 コンテナー
 
@@ -88,12 +91,19 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
-| Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
+| Read 3.2 model-2021-09-30-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview` |
 | Read 3.2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
+| Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>Read OCR コンテナー用の Docker pull
+
+最新のプレビューについては、以下を参照してください。
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview
+```
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -123,6 +133,12 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。
 
 `docker run` コマンドの[例](computer-vision-resource-container-config.md#example-docker-run-commands)を利用できます。
+
+最新のプレビューでは、3.2 パスを次のように置き換えます。
+
+```
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-model-2021-09-30-preview
+```
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
@@ -205,6 +221,10 @@ mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
+最新のプレビューについては、以下を参照してください。
+
+3\.2 と同じ Swagger パスを使用しますが、5000 番ポートで 3.2 を既にデプロイしている場合は別のポートを使用します。
+
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
 コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` で確認できます。
@@ -217,6 +237,7 @@ mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 ### <a name="asynchronous-read"></a>非同期読み取り
 
+最新のプレビューでは、追加の `"modelVersion": "2021-09-30-preview"` を除いて、すべてが 3.2 と同じです。
 
 # <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 

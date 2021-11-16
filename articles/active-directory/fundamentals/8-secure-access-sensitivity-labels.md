@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc8ceddce4d41244d72632db058aa58c0d919db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cbdd8f5e69fb21c59be5017a3c28e1067062968
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565174"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292607"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>秘密度ラベルを使用してアクセスを制御する 
 
@@ -33,16 +33,13 @@ ms.locfileid: "102565174"
 電子メールやその他のコンテンツの秘密度ラベルは、コンテンツと共に移動します。 コンテナーの秘密度ラベルはコンテナーへのアクセスを制限できますが、コンテナー内のコンテンツはラベルを継承しません。 たとえば、ユーザーは保護されたサイトからコンテンツを取得してダウンロードし、そのコンテンツにも秘密度ラベルが付いていない限り、制限なしで共有できます。
 
  >[!NOTE]
->秘密度ラベルを適用するには、ユーザーは Microsoft の職場または学校のアカウントにサインインする必要があります。 
+>秘密度ラベルを適用するには、ユーザーは Microsoft の職場または学校のアカウントにサインインする必要があります。
 
- 
 ## <a name="permissions-necessary-to-create-and-manage-sensitivity-levels"></a>秘密度ラベルの作成および管理に必要なアクセス許可
 
-秘密度ラベルを作成するコンプライアンス チームのメンバーには、Microsoft 365 コンプライアンス センター、Microsoft 365 セキュリティセンター、またはセキュリティ/コンプライアンス センターへのアクセス許可が必要です。
+秘密度ラベルを作成するコンプライアンス チームのメンバーには、Microsoft 365 Defender ポータル、Microsoft 365 コンプライアンス センター、または Office 365 のセキュリティ センターおよびコンプライアンス センターへのアクセス許可が必要です。
 
 既定では、テナントの全体管理者はこれらの管理センターにアクセスでき、コンプライアンス責任者や他のユーザーに対して、必ずしもテナント管理者のすべてのアクセス許可を与えなくても、アクセスを許可することができます。この委任された制限付き管理者アクセスについては、コンプライアンス データ管理者、コンプライアンス管理者、またはセキュリティ管理者の役割グループにユーザーを追加します。
-
- 
 
 ## <a name="determine-your-sensitivity-label-strategy"></a>秘密度ラベル戦略を決定する
 

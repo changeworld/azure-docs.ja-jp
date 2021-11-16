@@ -1,28 +1,30 @@
 ---
 title: Horizon API
 description: このガイドでは、よく使用される Horizon メソッドについて説明します。
-ms.date: 1/5/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: b65f7663df29e2c82faa5d1aeec3b820d5fbaf70
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: db3fd241593f2d5c3e43485bcca4790a73f975fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018526"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331321"
 ---
-# <a name="horizon-api"></a>Horizon API 
+# <a name="horizon-api"></a>Horizon API
 
 このガイドでは、よく使用される Horizon メソッドについて説明します。
 
-### <a name="getting-more-information"></a>詳細情報の入手先
+## <a name="getting-more-information"></a>詳細情報の入手先
+
+Defender for IoT API は、[Microsoft API ライセンスと利用規約](/legal/microsoft-apis/terms-of-use)によって管理されています。
 
 Horizon および Defender for IoT プラットフォームでの作業の詳細については、次の情報を参照してください。
 
 - Horizon Open Development Environment (ODE) SDK については、Defender for IoT の担当者にお問い合わせください。
+
 - サポートとトラブルシューティングの情報については、<support@cyberx-labs.com> にお問い合わせください。
 
 - Defender for IoT コンソールから Defender for IoT ユーザー ガイドにアクセスするには、:::image type="icon" source="media/references-horizon-api/profile.png"::: を選択し、 **[Download User Guide]\(ユーザー ガイドのダウンロード\)** を選択します。
-
 
 ## `horizon::protocol::BaseParser`
 
@@ -35,7 +37,7 @@ Horizon および Defender for IoT プラットフォームでの作業の詳細
 
 プラグインに対して呼び出される最初の関数により、Horizon がそれを認識して登録するためのパーサーのインスタンスが作成されます。
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
 [なし] :
 
@@ -45,15 +47,15 @@ Horizon および Defender for IoT プラットフォームでの作業の詳細
 
 ## `std::vector<uint64_t> horizon::protocol::BaseParser::processDissectAs(const std::map<std::string, std::vector<std::string>> &) const`
 
-この関数は、上で登録された各プラグインに対して呼び出されます。 
+この関数は、上で登録された各プラグインに対して呼び出されます。
 
 ほとんどの場合、これは空になります。 問題が発生したことを Horizon が認識できるように例外をスローします。
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
 - 登録を必要とする別のプラグインの config.json で定義されている dissect_as の構造を含むマップ。
 
-### <a name="return-value"></a>戻り値 
+### <a name="return-value"></a>戻り値
 
 uint64_t の種類に処理される登録である uint64_t の配列。 つまり、マップにはポートの一覧が表示され、その値は uin64_t になります。
 
@@ -70,7 +72,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 - データの格納と、SDK 関連のオブジェクト (ILayer やフィールドなど) の作成を担当する SDK 制御ユニット。
 - 生パケットのデータを読み取るためのヘルパー。 これは、config.json で定義したバイト順で既に設定されています。
 
-### <a name="return-value"></a>戻り値 
+### <a name="return-value"></a>戻り値
 
 処理の結果です。 *[成功]* 、 *[不正な形式]* 、または *[Sanity]\(サニティ\)* のいずれかになります。
 
@@ -82,7 +84,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 コンストラクター
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
 - config.json での定義に従って、Horizon でログ記録に使用されるエラー コードを定義します。
 
@@ -94,7 +96,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 コンストラクター
 
-### <a name="parameters"></a>パラメーター  
+### <a name="parameters"></a>パラメーター
 
 - config.json で定義されているエラー コード。
 
@@ -110,7 +112,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 コンストラクターです。
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
 - 識別された場合は、パケットの方向。 値には *REQUEST*、または *RESPONSE* を指定できます。
 
@@ -127,15 +129,15 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 コンストラクターです。
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
--  [警告]。 これらのイベントは失敗しませんが、Horizon に通知されます。
+- [警告]。 これらのイベントは失敗しませんが、Horizon に通知されます。
 
 ## `HorizonID HORIZON_FIELD(const std::string_view &)`
 
 フィールド名への文字列ベースの参照 (たとえば、function_code) を HorizonID に変換します。
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
 - 変換する文字列。
 
@@ -163,7 +165,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 要求された ID を持つ 64 ビットの新しい数値フィールドをレイヤーに作成します。
 
-### <a name="parameters"></a>パラメーター 
+### <a name="parameters"></a>パラメーター
 
 - 前に作成したレイヤー。
 - **HORIZON_FIELD** マクロによって作成された HorizonID。
@@ -173,7 +175,7 @@ uint64_t の種類に処理される登録である uint64_t の配列。 つま
 
 要求された ID を持つ新しい文字列フィールドをレイヤーに作成します。 メモリが移動されるため、注意してください。 この値を再び使用することはできません。
 
-### <a name="parameters"></a>パラメーター  
+### <a name="parameters"></a>パラメーター
 
 - 前に作成したレイヤー。
 - **HORIZON_FIELD** マクロによって作成された HorizonID。

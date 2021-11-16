@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2021
 ms.author: jeedes
-ms.openlocfilehash: cba9a44c70a24490546a9275010785de0be5ef59
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 954eac8427da17fc3f365fb654f3c88f33c3c955
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855462"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285217"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-intralinks"></a>チュートリアル: Azure AD SSO と Intralinks の統合
 
@@ -135,4 +135,4 @@ Intralinks 用に Azure AD SSO を構成してテストするには、次の手�
 
 ## <a name="next-steps"></a>次のステップ
 
-Intralinks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Intralinks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

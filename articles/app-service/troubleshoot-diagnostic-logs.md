@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 7e477f3d8df098f53abc4b1ad5f963f019b79ead
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 64a8259f859bb53be6464a9f522c4dcb5491ba21
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470891"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279331"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -195,15 +195,15 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 | ログのタイプ | Windows | Windows コンテナー | Linux | Linux コンテナー | 説明 |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE および Tomcat | はい | はい | はい | 標準出力と標準エラー |
-| AppServiceHTTPLogs | はい | はい | はい | はい | Web サーバー ログ |
+| AppServiceConsoleLogs | Java SE および Tomcat | はい | Yes | はい | 標準出力と標準エラー |
+| AppServiceHTTPLogs | はい | Yes | Yes | はい | Web サーバー ログ |
 | AppServiceEnvironmentPlatformLogs | はい | 該当なし | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
-| AppServiceAuditLogs | はい | はい | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
+| AppServiceAuditLogs | はい | Yes | Yes | はい | FTP および Kudu 経由のログイン アクティビティ |
 | AppServiceFileAuditLogs | はい | はい | TBA | TBA | サイト コンテンツに行われたファイルの変更。**Premium レベル以上でのみ使用可能** |
 | AppServiceAppLogs | ASP.NET および Tomcat <sup>1</sup> | ASP.NET および Tomcat <sup>1</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | アプリケーション ログ |
-| AppServiceIPSecAuditLogs  | はい | はい | はい | はい | IP ルールからの要求 |
-| AppServicePlatformLogs  | TBA | はい | はい | はい | コンテナーの操作ログ |
-| AppServiceAntivirusScanAuditLogs <sup>3</sup> | はい | はい | はい | はい | Microsoft Defender を使用する [ウイルス対策のスキャン ログ](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)。**Premium レベルでのみ使用可能** | 
+| AppServiceIPSecAuditLogs  | はい | Yes | Yes | はい | IP ルールからの要求 |
+| AppServicePlatformLogs  | TBA | はい | Yes | はい | コンテナーの操作ログ |
+| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Yes | Yes | Yes | Yes | Microsoft Defender for Cloud を使用する [ウイルス対策のスキャン ログ](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)。**Premium レベルでのみ使用可能** | 
 
 <sup>1</sup> Tomcat アプリの場合は、アプリ設定に `TOMCAT_USE_STARTUP_BAT` を追加し、それを `false` または `0` に設定します。 "*最新の*" Tomcat バージョンであり、かつ *java.util.logging* を使用する必要があります。
 

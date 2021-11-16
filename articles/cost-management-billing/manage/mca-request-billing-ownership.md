@@ -7,56 +7,82 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/28/2021
+ms.date: 11/09/2021
 ms.author: banders
-ms.openlocfilehash: af3b4eabfb47fb64e9e3912c8edcf939d17e04f2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 482db68e048c645eddf16849b32e39f1dc397d09
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131476245"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179405"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Azure サブスクリプションの課金所有権を Microsoft 顧客契約で使用するために譲渡する
 
-次の場合に、ご自分の Azure サブスクリプションの課金所有権を譲渡する必要があります。
-- サブスクリプションの請求責任を別の課金所有者に移動する必要がある。
-- ご自分の Azure サブスクリプションをライセンス契約間で譲渡する。 たとえば、Enterprise Agreement またはマイクロソフト オンライン サブスクリプション契約 (MOSA) から Microsoft 顧客契約などです。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
+次の場合に、ご自分の Azure サブスクリプションの課金所有権を譲渡します。
 
-課金所有権を要求するユーザーには、次のいずれかのロールが必要です。
+- サブスクリプションの請求責任を別の課金所有者に移動する必要がある。
+- ご自分の Azure サブスクリプションをライセンス契約間で譲渡する。 たとえば、Enterprise Agreement またはマイクロソフト オンライン サブスクリプション契約 (MOSA) から Microsoft 顧客契約などです。
+
+[Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
+
+切り替えによって Azure サブスクリプションの課金責任のみが移行されます。サブスクリプションに関連付けられている Azure リソースは移行されないため、切り替えによって Azure サービスが中断されることはありません。
+
+このプロセスには次のタスクが含まれており、それについては順を追って説明します。
+
+1. 課金所有権を要求する
+2. 移転リクエストを確認および承認する
+3. 移転リクエストの状態を確認する
+
+開始する前に、課金所有権を要求するユーザーが次のいずれかのロールを持っていることを確認してください。
+
 - Microsoft 顧客契約の場合は、課金アカウントあるいは関連する課金プロファイルまたは請求書セクションの所有者または共同作成者のロールが必要です。 詳細については、[課金のロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するセクションを参照してください。
 - Enterprise Agreement の場合は、アカウント オーナーである必要があります。
 - マイクロソフト オンライン サブスクリプション契約の場合は、アカウント管理者である必要があります。
 
+準備ができたら、次の手順を実行してください。 また、プロセスの各手順について説明している次の動画を参照することもできます。
+
+>[!VIDEO https://www.youtube.com/embed/gfiUI2YLsgc]
+
 ## <a name="request-billing-ownership"></a>課金所有権を要求する
 
-1. Microsoft 顧客契約の課金アカウントの請求書セクション所有者または共同作成者として [Azure portal](https://portal.azure.com) にサインインします。
+1. Microsoft 顧客契約の課金アカウントの請求書セクション所有者または共同作成者として [Azure portal](https://portal.azure.com) にサインインします。 Microsoft 顧客契約への同意に使用したものと同じ資格情報を使用します。
 1. "**コスト管理 + 請求**" を検索します。  
     ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. 課金スコープ ページで **[課金スコープ]** を選択し、課金アカウントを選択します。このアカウントが、サブスクリプション利用の支払いに使用されます。 課金アカウントの種類は、**Microsoft 顧客契約** である必要があります。  
-    [![ポータルでコスト管理と請求を検索しているところを示すスクリーンショット](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
+1. 課金スコープ ページで **[課金スコープ]** を選択し、課金アカウントを選択します。このアカウントが、サブスクリプションでの Azure の使用量に対する課金に使用されます。 **[Microsoft 顧客契約]** というラベルの付いた課金アカウントを選択します。  
+    [![ポータルでコスト管理と請求を検索しているところを示すスクリーンショット](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)  
     > [!NOTE]
-    > ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-for-access)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。
+    >ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-for-access)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。
 1. 左側の **[課金プロファイル]** を選択します。  
     [![課金プロファイルの選択を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
-    > [!Note]
+    > [!NOTE]
     > 課金プロファイルが表示されない場合、課金スコープが正しくありません。 Microsoft 顧客契約の課金アカウントを選択してから [課金プロファイル] を選択する必要があります。 スコープの変更方法については、[Azure portal での課金スコープの切り替え](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)に関するセクションを参照してください。
 1. 一覧から **[課金プロファイル]** を選択します。 サブスクリプションの所有権を引き継ぐと、その使用料はこの課金プロファイルに対して請求されます。
 1. 左側から **[請求書セクション]** を選択します。  
     [![[請求書セクション] の選択を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
-1. 一覧から [請求書セクション] を選択します。 サブスクリプションの所有権を引き継ぐと、その使用は、課金プロファイルの請求書のこのセクションに割り当てられます。
+1. 一覧から [請求書セクション] を選択します。 既定では、課金プロファイルごとに 1 つの請求書セクションが含まれています。 Azure サブスクリプションの課金を移動させる請求書を選択します。これは、Azure サブスクリプションの従量課金の移転先です。
 1. 左下で **[譲渡要求]** を選択し、 **[新しい要求を追加]** を選択します。  
     [![移転リクエストの選択を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 **[譲渡要求を送信します]** を選択します。  
+1. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 ユーザーは、前のサブスクリプションのアカウント管理者ロールを持っている必要があります。 **[譲渡要求を送信します]** を選択します。  
     [![移転リクエストの送信を示すスクリーンショット](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
+
+## <a name="review-and-approve-transfer-request"></a>移転リクエストを確認および承認する
+
 1. ユーザーは、譲渡要求を確認する手順を示す電子メールを受信します。  
     ![譲渡要求電子メールのレビューを示すスクリーンショット](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
-1. 譲渡要求を承認するには、ユーザーは、電子メールのリンクを選択し、指示に従います。
-    [![移転リクエストのレビューを示すスクリーンショット](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox) ユーザーは、Azure 製品の移転元となる課金アカウントを選択できます。 選択すると、候補となる移転可能な製品が表示されます。 **注:** 無効なサブスクリプションは移転できません。該当する場合、"移転不可の Azure 製品" リストに表示されます。 移転の対象となる Azure 製品を選択したら、 **[Validate]\(検証\)** を選択します。
-1. Azure 製品を移転した場合の影響が **[移転の検証結果]** 領域に表示されます。 考えられる状態は次のとおりです。
+1. 譲渡要求を承認するには、ユーザーは、電子メールのリンクを選択し、指示に従います。  
+
+    ユーザーは、Azure 製品の移転元となる課金アカウントを選択します。 選択すると、候補となる移転可能な製品が表示されます。 移転の対象となる Azure 製品を選択したら、 **[Validate]\(検証\)** を選択します。
+
+    >[!NOTE]
+    > 無効なサブスクリプションは移転できません。該当する場合、"移転不可の Azure 製品" リストに表示されます。 
+
+    [![移転リクエストの確認を示すスクリーンショット](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox)
+1. 移転される Azure 製品の状態が **[移転の検証結果]** 領域に表示されます。 考えられる状態は次のとおりです。
     * **[Passed]\(合格\)** - この Azure 製品は検証を通過しました。移転することができます。
-    * **[警告]** - 選択された Azure 製品には警告が出されています。 製品を移転することはできますが、その場合、なんらかの影響が生じます。対策を講じることができるようユーザーは、その影響を把握しておく必要があります。 たとえば、移転しようとしている Azure サブスクリプションには RI の割引きが適用されています。 移転後は、その割引きがサブスクリプションに適用されなくなります。 割り引きの効果を最大限に利用するためには、その特典を利用できる別のサブスクリプションに RI を関連付ける必要があります。 または、選択ページに戻ってその Azure サブスクリプションの選択を解除することもできます。
+    * **[警告]** - 選択された Azure 製品には警告が出されています。 製品を移転することはできますが、その場合、何らかの影響が生じます。対策を講じることができるようユーザーは、その影響を把握しておく必要があります。 たとえば、移転しようとしている Azure サブスクリプションには RI の割引きが適用されています。 移転後は、その割引きがサブスクリプションに適用されなくなります。 割り引きの効果を最大限に利用するためには、その特典を利用できる別のサブスクリプションに RI を関連付ける必要があります。 または、選択ページに戻ってその Azure サブスクリプションの選択を解除することもできます。
     * **[Failed]\(不合格\)** - 選択された Azure 製品は、エラーのため移転できません。 選択ページに戻ってその製品の選択を解除し、他の Azure 製品を選んで移転する必要があります。  
     ![検証のエクスペリエンスを示すスクリーンショット](./media/mca-request-billing-ownership/validate-transfer-request.png)
+1. 検証が **[合格]** として完了したら、 **[移転]** を選択します。 `Transfer is in progress` というメッセージが表示され、完了すると、`Transfer completed successfully` というメッセージが表示されます。
 
 ## <a name="check-the-transfer-request-status"></a>譲渡要求の状態を確認する
 
@@ -139,7 +165,7 @@ ms.locfileid: "131476245"
 
 Azure サポート プランに加入していて、ご自分のすべての Azure サブスクリプションを新しい契約に譲渡する場合、サポート プランは、サブスクリプションと共には譲渡されないため、解約する必要があります。 たとえば、マイクロソフト オンライン サブスクリプション契約 (Web 上で購入した Azure サブスクリプション) を Microsoft 顧客契約に転送する場合などです。 サポート プランを解約するには:
 
-資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、古いアカウントのアカウント管理者の資格情報を使用する必要があります。
+資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、前のアカウントのアカウント管理者の資格情報を使用してください。
 
 1.  Azure Portal ( https://portal.azure.com ) にサインインします。
 1.  **[コストの管理と請求]** に移動します。
@@ -156,7 +182,7 @@ Azure サポート プランに加入していて、ご自分のすべての Azu
 
 新しい Microsoft 顧客契約アカウントに課金所有権を譲渡した後、古いマイクロソフト オンライン サブスクリプション契約アカウント (Web 上で購入した Azure サブスクリプション) の請求書にアクセスすることができます。 そのためには、次の手順を行ってください。
 
-資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、古いアカウントのアカウント管理者の資格情報を使用する必要があります。
+資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、前のアカウントのアカウント管理者の資格情報を使用してください。
 
 1.  Azure Portal ( https://portal.azure.com/ ) にサインインします。
 1.  **[コストの管理と請求]** に移動します。

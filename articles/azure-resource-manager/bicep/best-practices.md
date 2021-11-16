@@ -4,13 +4,13 @@ description: 適切に機能し、管理しやすい Bicep ファイルを作成
 author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: cea4adc3ed6843e9d07670cd2959e27311c2f22a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 65f55208f0a2e09db39cedc8e5074b622b232834
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131059720"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057672"
 ---
 # <a name="best-practices-for-bicep"></a>Bicep に関するベスト プラクティス
 
@@ -42,8 +42,6 @@ Bicep パラメーターの詳細については、「[Bicep のパラメータ�
 
 ## <a name="variables"></a>変数
 
-* 変数名にはキャメル ケースを使用します (例: `myVariableName`)。
-
 * 変数を定義する場合、[データ型](data-types.md)は不要です。 変数は解決値から型を推論します。
 
 * Bicep 関数を使用すると、変数を作成できます。
@@ -52,13 +50,29 @@ Bicep パラメーターの詳細については、「[Bicep のパラメータ�
 
 Bicep 変数の詳細については、「[Bicep の変数](variables.md)」を参照してください。
 
-## <a name="naming"></a>名前を付ける
+## <a name="names"></a>名前
+
+* 名前にはローワー キャメル ケース (最初の単語の先頭が小文字) を使用します (例: `myVariableName` または `myResource`)。
 
 * [uniqueString() 関数](bicep-functions-string.md#uniquestring)は、グローバルに一意のリソース名を作成する場合に便利です。 同じパラメーターを指定すると、毎回同じ文字列が返されます。 リソース グループ ID を渡すことは、同じリソース グループに対するどのデプロイでも文字列が同じであり、異なるリソース グループまたはサブスクリプションにデプロイする場合は文字列が異なることを意味します。
 
 * `uniqueString()` 関数によって、数字で始まる文字列が作成される場合があります。 一部の Azure リソース (ストレージ アカウントなど) では、数字で始まる名前を使用することはできません。 この要件により、文字列補間を使用してリソース名を作成することをお勧めします。 一意の文字列にプレフィックスを追加できます。
 
 * 多くの場合、テンプレート式を使用してリソース名を作成することをお勧めします。 多くの Azure リソースの種類には、許可される文字と名前の長さに関する規則があります。 テンプレートにリソース名の作成を埋め込むと、そのテンプレートを使用するすべてのユーザーが、これらの規則自体に従うことを覚えている必要はありません。
+
+* シンボリック名に `name` を使用しないでください。 シンボリック名はリソースの名前ではなくリソースを表します。 たとえば、次のようにするのではなく、
+
+  ```bicep
+  resource cosmosDBAccountName 'Microsoft.DocumentDB/databaseAccounts@2021-04-15' = {
+  ```
+
+  次のようにします。
+
+  ```bicep
+  resource cosmosDBAccount 'Microsoft.DocumentDB/databaseAccounts@2021-04-15' = {
+  ```
+
+* サフィックスを使用して変数とパラメーターを区別しないでください。
 
 ## <a name="resource-definitions"></a>リソース定義
 
@@ -70,19 +84,21 @@ Bicep 変数の詳細については、「[Bicep の変数](variables.md)」を�
 
 * 可能であれば、Bicep ファイルで [reference](./bicep-functions-resource.md#reference) と [resourceId](./bicep-functions-resource.md#resourceid) 関数を使用しないようにしてください。 シンボリック名を使用して、Bicep 内の任意のリソースにアクセスできます。 たとえば、シンボリック名 toyDesignDocumentsStorageAccount を使用してストレージ アカウントを定義する場合は、式 `toyDesignDocumentsStorageAccount.id` を使用してそのリソース ID にアクセスできます。 シンボリック名を使用することで、リソース間に暗黙的な依存関係が作成されます。
 
+* 明示的な依存関係よりも暗黙的な依存関係を優先的に使用してください。 `dependsOn` リソース プロパティを使用すると、リソース間の明示的な依存関係を宣言できますが、通常であれば、他のリソースのシンボリック名を使用すればそのリソースを使用できます。 これによって、2 つのリソース間に暗黙の依存関係が作成され、Bicep で関係自体を管理できるようになります。
+
 * リソースが Bicep ファイルにデプロイされていない場合でも、`existing` キーワードを使用してリソースへのシンボリック参照を取得することができます。
 
 ## <a name="child-resources"></a>子リソース
 
 * 入れ子の階層が深くなりすぎないようにしてください。 入れ子の階層が深すぎると、Bicep コードが読みにくくなり、操作も難しくなります。
 
-* 子リソースのリソース名を作成しないことをお勧めします。 Bicep がリソース間の関係を理解する場合に提供される利点が失われます。 代わりに `parent` プロパティまたは入れ子を使用します。
+* 子リソースのリソース名を作成しなでください。 Bicep がリソース間の関係を理解する場合に提供される利点が失われます。 代わりに `parent` プロパティまたは入れ子を使用します。
 
 ## <a name="outputs"></a>出力
 
 * 機密データについては出力を作成しないでください。 出力値は、デプロイ履歴にアクセスできるユーザーであれば誰でもアクセスできます。 こういったものは、シークレットの処理には適していません。
 
-* 出力を介してプロパティ値を渡すのではなく、`existing` キーワードを使用して、既存のリソースのプロパティを検索します。 出力を介してキーを渡すのではなく、この方法で他のリソースからキーを参照するのがベスト プラクティスです。 常に最新のデータが取得されます。
+* 出力を介してプロパティ値を渡すのではなく、`[existing` キーワード](resource-declaration.md#existing-resources)を使用して、既存のリソースのプロパティを検索します。 出力を介してキーを渡すのではなく、この方法で他のリソースからキーを参照するのがベスト プラクティスです。 常に最新のデータが取得されます。
 
 Bicep の出力の詳細については、「[Bicep の出力](outputs.md)」を参照してください。
 

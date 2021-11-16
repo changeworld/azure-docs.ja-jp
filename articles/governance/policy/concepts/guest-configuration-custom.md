@@ -3,12 +3,12 @@ title: ゲスト構成用の PowerShell Desired State Configuration の動作に
 description: この記事では、Azure Policy を介してマシンに構成の変更を配信するために使用されるプラットフォームの概要について説明します。
 ms.date: 05/31/2021
 ms.topic: how-to
-ms.openlocfilehash: b501305513e99963ec9d00a49e6e7aa1c74b3683
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6118ec0ce0bb8b0296153d32dbad559a6b53ebb8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045334"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261864"
 ---
 # <a name="changes-to-behavior-in-powershell-desired-state-configuration-for-guest-configuration"></a>ゲスト構成用の PowerShell Desired State Configuration の動作に対する変更
 
@@ -30,6 +30,30 @@ ms.locfileid: "130045334"
 
 ゲスト構成では、同じマシンへの複数の構成の割り当てがサポートされます。 ゲスト構成拡張機能のオペレーティング システム内で必要となる特別な手順はありません。 [部分構成](/powershell/scripting/dsc/pull-server/partialConfigs)を構成する必要はありません。
 
+## <a name="dependencies-are-managed-per-configuration"></a>依存関係は構成ごとに管理される
+
+[利用できるツールを使用して構成をパッケージ化する](../how-to/guest-configuration-create.md)と、構成に必要な依存関係が .zip ファイルに組み込まれます。
+マシンによって、構成ごとに内容が一意のフォルダーに抽出されます。
+ゲスト構成拡張機能によって提供されるエージェントにより、パッケージが抽出されたパスにのみモジュールの自動読み込みを制限する `$Env:PSModulePath` を使用して、構成ごとに専用の PowerShell セッションが作成されます。
+
+この変更には複数の利点があります。
+
+- 同じマシンで、構成ごとに異なるモジュール バージョンを使用できます。
+- マシンで構成が削除されなくなった場合、構成間で共有される依存関係を管理する必要なしに、抽出されたフォルダー全体がエージェントによって安全に削除されます。
+- 中央のサービスでモジュールの複数のバージョンを管理する必要はありません。
+  
+## <a name="artifacts-are-managed-as-packages"></a>成果物はパッケージとして管理される
+
+Azure Automation State Configuration 機能には、モジュールと構成スクリプトの成果物管理が含まれます。 両方がサービスに発行されると、スクリプトを MOF 形式にコンパイルできます。 同様に、Windowsプル サーバーも、Web サービス インスタンスで構成とモジュールを管理する必要がありました。 これに対し、DSC 拡張機能ではモデルが簡略化されており、すべての成果物がまとめてパッケージ化され、HTTPS 要求を使用してターゲット マシンからアクセスできる場所に格納されます (Azure Blob Storage が一般的なオプションです)。
+
+ゲスト構成では、すべての成果物がまとめてパッケージ化され、HTTPS 経由でターゲット マシンからアクセスされる、簡略化されたモデルのみが使用されます。
+サービスでモジュール、スクリプト、またはコンパイルを発行する必要はありません。 1 つの変更点は、コンパイル済みの MOF が常にパッケージに含まれる必要があることです。 スクリプト ファイルをパッケージに組み込み、ターゲット マシンでコンパイルすることはできません。
+
+## <a name="maximum-size-of-custom-configuration-package"></a>カスタム構成パッケージの最大サイズ
+
+Azure Automation の状態の構成では、DSC 構成で[サイズの制限](../../../automation/automation-dsc-compile.md#compile-your-dsc-configuration-in-windows-powershell)がありました。
+ゲスト構成では、合計 100 MB (圧縮前) までのパッケージ サイズがサポートされます。 パッケージ内の MOF ファイルのサイズに特定の制限はありません。
+
 ## <a name="configuration-mode-is-set-in-the-package-artifact"></a>構成モードはパッケージ成果物で設定する
 
 構成パッケージの作成時に、次のオプションを使用してモードが設定されます。
@@ -46,7 +70,11 @@ ms.locfileid: "130045334"
 
 ゲスト構成の割り当てに値を渡す Azure Policy のパラメーターは、"_文字列_" 型である必要があります。 DSC リソースで配列がサポートされている場合でも、パラメーターを使用して配列を渡すことはできません。
 
-## <a name="sequence-of-events"></a>イベントの順序
+## <a name="trigger-set-from-outside-machine"></a>外部マシンから設定されたトリガー
+
+以前のバージョンの DSC の課題は、多くのカスタム コードを使用せずに、WinRM リモート接続に依存することなく、大規模なドリフトを修正することでした。 ゲスト構成によってこの問題が解決されます。 ゲスト構成のユーザーは、[オンデマンド修復](./guest-configuration-policy-effects.md#remediation-on-demand-applyandmonitor)を使用してドリフトの修正を制御できます。
+
+## <a name="sequence-includes-get-method"></a>シーケンスには Get メソッドが含まれる
 
 ゲスト構成でマシンを監査または構成する場合、同じイベントの順序が Windows と Linux の両方で使用されます。 動作の主な変更点は、マシンの状態に関する詳細を返す `Get` メソッドがサービスによって呼び出されることです。
 
@@ -55,15 +83,6 @@ ms.locfileid: "130045334"
 1. パッケージが `AuditandSet` に設定されている場合、このブール値によって、`Set` メソッドを使用して構成を適用してマシンを修復するかどうかが判別されます。
    `Test` メソッドによって False が返される場合、`Set` が実行されます。 `Test` によって True が返される場合、`Set` は実行されません。
 1. 最後に、プロバイダーによって `Get` が実行され、各設定の現在の状態が返されます。これにより、マシンが準拠していない理由と、現在の状態が準拠していることの確認に関する両方の詳細情報が得られます。
-
-## <a name="trigger-set-from-outside-machine"></a>外部マシンから設定されたトリガー
-
-以前のバージョンの DSC の課題は、多くのカスタム コードを使用せずに、WinRM リモート接続に依存することなく、大規模なドリフトを修正することでした。 ゲスト構成によってこの問題が解決されます。 ゲスト構成のユーザーは、[オンデマンド修復](./guest-configuration-policy-effects.md#remediation-on-demand-applyandmonitor)を使用してドリフトの修正を制御できます。
-
-## <a name="maximum-size-of-custom-configuration-package"></a>カスタム構成パッケージの最大サイズ
-
-Azure Automation の状態の構成では、DSC 構成で[サイズの制限](../../../automation/automation-dsc-compile.md#compile-your-dsc-configuration-in-windows-powershell)がありました。
-ゲスト構成では、合計 100 MB (圧縮前) までのパッケージ サイズがサポートされます。 パッケージ内の MOF ファイルのサイズに特定の制限はありません。
 
 ## <a name="special-requirements-for-get"></a>Get の特別な要件
 
@@ -95,7 +114,7 @@ return @{
 }
 ```
 
-コマンドライン ツールを使用して Get で返される情報を取得すると、予期しない出力が返されることがあります。 PowerShell で出力をキャプチャする場合でも、出力が標準エラーに書き込まれる可能性があります。 この問題を回避するには、出力を null にリダイレクトすることを検討してください。
+コマンドライン ツールを使用して Get で返される情報を取得すると、予期しない出力が返されることがあります。 PowerShell で出力をキャプチャする場合でも、出力が標準エラーに書き込まれている可能性があります。 この問題を回避するには、出力を null にリダイレクトすることを検討してください。
 
 ### <a name="the-reasons-property-embedded-class"></a>Reasons プロパティが埋め込まれたクラス
 
@@ -174,11 +193,11 @@ class Example {
 PowerShell ギャラリーの `PsDscResources` モジュールと Windows に含まれている `PSDesiredStateConfiguration` モジュールは、Microsoft によってサポートされ、DSC で一般的に使用される一連のリソースでした。 DSCv3 用に `PSDscResources` モジュールが更新されるまでは、次の既知の互換性の問題に注意してください。
 
 - Windows に含まれている `PSDesiredStateConfiguration` モジュールのリソースは使用しないでください。 代わりに、`PSDscResources` に切り替えます。
-- `PsDscResources` の `WindowsFeature` および `WindowsFeatureSet` リソースを使用しないでください。 代わりに、`WindowsOptionalFeature` および `WindowsOptionalFeatureSet` リソースに切り替えます。
+- `WindowsFeature` リソースと `WindowsFeatureSet` リソースを `PsDscResources` で使用しないでください。 代わりに、`WindowsOptionalFeature` および `WindowsOptionalFeatureSet` リソースに切り替えます。
   
 [Linux 用 DSC](https://github.com/microsoft/PowerShell-DSC-for-Linux/tree/master/Providers) リポジトリに含まれていた Linux 用の "nx" リソースは、C 言語と Python 言語を組み合わせて記述されていました。 Linux での DSC に進むパスでは PowerShell を使用するため、既存の "nx" リソースは DSCv3 と互換性がありません。 Linux でサポートされているリソースを含む新しいモジュールが利用可能になるまで、カスタム リソースを作成する必要があります。
 
-## <a name="coexistance-with-dsc-version-3-and-previous-versions"></a>DSC バージョン 3 と以前のバージョンの共存
+## <a name="coexistence-with-dsc-version-3-and-previous-versions"></a>DSC バージョン 3 と以前のバージョンの共存
 
 ゲスト構成の DSC バージョン 3 は、[Windows](/powershell/scripting/dsc/getting-started/wingettingstarted) および [Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted) にインストールされている以前のバージョンと共存させることができます。
 実装は別々です。 ただし、DSC バージョン間の競合検出は行われないため、同じ設定を管理しようとしないでください。

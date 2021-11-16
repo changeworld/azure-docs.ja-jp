@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: bbbdd3591363e613e4eefb253c96cd8915d8c5cb
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f4b79d1f575d2cccfd2ea6f50af13e439a3ca968
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449357"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053502"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
@@ -101,7 +101,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>ダッシュボードから標準を削除する
 
-提供されている規制基準に組織に関連していないものが含まれている場合、簡単なプロセスで UI からそれらを削除できます。 これにより、規制へのコンプライアンス ダッシュボードをさらにカスタマイズし、ユーザーに該当する標準にのみ焦点を当てることができます。
+提供されている規制基準のうち、お客様の組織に関連しないものをすべて削除することで、規制コンプライアンス ダッシュボードをカスタマイズし、お客様に該当する標準のみに焦点を当て続けることができます。
 
 標準を削除するには:
 

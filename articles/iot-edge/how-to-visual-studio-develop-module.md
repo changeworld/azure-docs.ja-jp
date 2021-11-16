@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: e7ded6eb8b3e8ee44594e75eb22b920c4e0649b6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 5f546acb48a84ddddeb822601d9284818d2211fb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037593"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423073"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -164,6 +164,9 @@ IoT edgeHub 開発ツールは、ローカルでの開発およびデバッグ �
 
 通常は、複数のモジュールを含むソリューション全体の中で実行する前に、各モジュールをテストしてデバッグします。
 
+>[!TIP]
+>開発している IoT Edge モジュールの種類に応じて、適切な Docker コンテナー モード (Linux コンテナー モードまたは Windows コンテナー モード) に切り替えておいてください。 2 種類のモードの切り替えは、Docker Desktop メニューから行うことができます。 Windows コンテナーを使用する場合は **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を、Linux コンテナーを使用する場合は **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。 
+
 1. **ソリューション エクスプローラー** でモジュール フォルダーを右クリックし、コンテキスト メニューから **[スタートアップ プロジェクトに設定]** を選択します。
 
    ![スタートアップ プロジェクトを設定する](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
@@ -205,7 +208,7 @@ IoT edgeHub 開発ツールは、ローカルでの開発およびデバッグ �
 1. `deployment.template.json` ファイルを開くと、新しいモジュールが **modules** セクションに追加されていることがわかります。 新しいモジュールから IoT Hub にメッセージを送信するための新しいルートも **routes** セクションに追加されました。 シミュレートされた温度センサーから新しいモジュールにデータを送信する場合は、次の例のような別のルートを追加します。 
 
     ```json
-   "sensorTo<NewModuleName>&quot;: &quot;FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/<NewModuleName>/inputs/input1\")"
+   "sensorTo<NewModuleName>": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/<NewModuleName>/inputs/input1\")"
     ```
 
 1. プロジェクト フォルダーを右クリックし、コンテキスト メニューから **[スタートアップ プロジェクトに設定]** を選択します。
@@ -246,7 +249,7 @@ IoT edgeHub 開発ツールは、ローカルでの開発およびデバッグ �
     ```
 
    >[!NOTE]
-   >この記事では、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
+   >この記事では、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 1. **ソリューション エクスプローラー** でプロジェクト フォルダーを右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
 

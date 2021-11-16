@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 8404078943f9398df6604c78413bc3750f13d655
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 0555bf71402230cf8264a271ce3ac6cf59357c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729085"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134049"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -22,6 +22,19 @@ ms.locfileid: "129729085"
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">サポート オプション</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">サポートされているバージョン</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">コード サンプル</a>
+
+
+## <a name="service-fabric-82"></a>Service Fabric 8.2
+
+Service Fabric ランタイムの 8.2 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
+
+### <a name="key-announcements"></a>重要なお知らせ
+- アップグレードによって影響が生じるかどうかを通知する API をクラスター マネージャーで公開します
+
+### <a name="service-fabric-82-releases"></a>Service Fabric 8.2 リリース
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2021 年 10 月 29 日 | [Azure Service Fabric 8.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-2-release/ba-p/2895108)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_82.md)|
 
 
 ## <a name="service-fabric-81"></a>Service Fabric 8.1

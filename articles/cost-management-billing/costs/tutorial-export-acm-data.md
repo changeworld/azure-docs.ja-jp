@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 11/03/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a08c6a6b00273e21c517162260f54ed3e6fc65ff
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: fdefbf1de5e61d05379dd0cfce07a30038dea4f0
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711361"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502808"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -45,6 +45,7 @@ Azure のコスト データを Azure Storage にエクスポートするスケ�
 Azure Storage アカウントの場合:
 - エクスポートに関するアクセス許可に関係なく、構成されているストレージ アカウントを変更するには書き込みアクセス許可が必要です。
 - BLOB またはファイル ストレージに対して Azure ストレージ アカウントを構成する必要があります。
+- このストレージ アカウントに、ファイアウォールを構成することはできません。
 
 新しいサブスクリプションをご利用の場合、すぐには Cost Management 機能を使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。
 

@@ -11,12 +11,12 @@ ms.subservice: hybrid
 ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d58e688133af9f587e3b2c6d40d9f9cf07e5a60
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 1e90fccbae8217e8728f75c11c6df1d7d677fbb9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500889"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133466"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -73,6 +73,9 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 ### <a name="bug-fixes"></a>バグの修正
 - 以前の Windows OS バージョン 2008 または 2008 R2 で実行されている AADConnect サーバーの自動アップグレード プロセスでアップグレードが失敗するバグを修正しました。 これらのバージョンの Windows Server はサポートされなくなりました。 このリリースでは、Windows Server 2012 以降を実行しているコンピューターの自動アップグレードのみが試行されます。
 - 特定の条件下で、アクセス違反例外が原因で miisserver がクラッシュする問題を修正しました。
+
+### <a name="known-issues"></a>既知の問題
+- V2 エンドポイントが古いバージョンで実行されていて、新しい V1.6 リリースにアップグレードしようとすると、グループ メンバーシップの 50K の制限が再び発生するという問題があります。 V1.6 ではこの問題の修正は行われないため、この問題が発生した場合は AADConnect V2.0 にアップグレードする必要があります。
 
 ## <a name="20280"></a>2.0.28.0
 

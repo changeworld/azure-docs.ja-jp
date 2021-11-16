@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ff13936785dc48fc8fb0c4b26a55651f0e7f827c
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2b4f8ddb82e758899c0de70bf722f1184f2f7aff
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565671"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056532"
 ---
 # <a name="cli-v2-compute-instance-yaml-schema"></a>CLI (v2) コンピューティング インスタンス YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131565671"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | string | **必須。** コンピューティングの種類。 | `computeinstance` | |
@@ -48,11 +48,11 @@ ms.locfileid: "131565671"
 
 ## <a name="yaml-minimal"></a>YAML: 最小
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/instance-minimal.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/instance-minimal.yml":::
 
 ## <a name="yaml-basic"></a>YAML: 基本
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/instance-basic.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/instance-basic.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

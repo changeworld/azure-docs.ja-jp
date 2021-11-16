@@ -7,12 +7,12 @@ ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
-ms.openlocfilehash: 160cbb8873d962b8fe439e798ace08d2e434c13c
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 42800401334da2f348cee6796e773c1ed0c0f8ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132310540"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451162"
 ---
 # <a name="azure-automanage-for-machines-best-practices---azure-arc-enabled-servers"></a>Azure Automanage for Machines のベスト プラクティス - Azure Arc 対応サーバー
 

@@ -1,25 +1,23 @@
 ---
-title: Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
+title: Azure Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: article
-author: mlearned
-ms.author: mlearned
-description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用します
+description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用する
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bc0dc3f0583c346ae909bbb877a6e8a9a9d66a72
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449545"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053295"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
+# <a name="deploy-helm-charts-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
 
 Helm は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープンソースのパッケージ化ツールです。 APT や Yum などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャート の管理に使用されます。
 
-この記事では、Azure Arc 対応 Kubernetes で Helm を構成して使用する方法を説明します。
+この記事では、Azure Arc 対応 Kubernetes で Helm を構成して使用する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +31,7 @@ Helm は、Kubernetes アプリケーションのインストールとライフ�
   az extension add --name k8s-configuration
   ```
 
-## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes での GitOps および Helm の使用方法の概要
+## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes での GitOps および Helm の使用の概要
 
  Helm Operator により、Helm Chart の Release を自動化する Flux への拡張機能が提供されます。 Helm Chart の Release は、HelmRelease と呼ばれる Kubernetes のカスタム リソースによって表現されます。 Flux によってこれらのリソースが Git からクラスターに同期され、Helm Operator によって Helm Chart がリソースで指定されたとおりに確実にリリースされるようにします。
 

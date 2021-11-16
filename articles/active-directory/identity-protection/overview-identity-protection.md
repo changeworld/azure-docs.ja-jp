@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d472587800c536f6bebe7e0cf41a2b6fdac2606
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b624194285dd5ba7e0a54b8a15d3885a845d64dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131451542"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283242"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -79,7 +79,7 @@ Microsoft ではリスクの計算方法に関する具体的な詳細を公開�
 
 Identity Protection からのデータを他のツールにエクスポートしてアーカイブしたり、さらに調査したり、関連付けしたりすることができます。 Microsoft Graph ベースの API を使用すると、組織はこのデータを収集して、SIEM などのツールでさらに処理することができます。 Identity Protection API へのアクセス方法の詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](howto-identity-protection-graph-api.md)」を参照してください
 
-Identity Protection の情報と Azure Sentinel の統合に関する情報については、「[Azure AD Identity Protection からデータを接続する](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)」を参照してください。
+Identity Protection の情報と Microsoft Azure Sentinel の統合に関する情報については、「[Azure AD Identity Protection からデータを接続する](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)」を参照してください。
 
 また、組織では、Azure AD 内の診断設定を変更して、RiskyUsers と UserRiskEvents のデータを Log Analytics ワークスペースに送信すること、データをストレージ アカウントにアーカイブすること、データをイベント ハブにストリーミングすること、またはデータをパートナー ソリューションに送信することで、データの保存期間を長くすることができます。 その方法の詳細については、記事「[方法: リスク データをエクスポートする](howto-export-risk-data.md)」を参照してください。
 

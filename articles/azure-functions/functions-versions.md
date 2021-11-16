@@ -3,22 +3,23 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 10/26/2021
-ms.openlocfilehash: 1a1d2cc0e5aab3daac5bb65881f9e891497fd994
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/3/2021
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: a3d84e01bd183feb09f9594295111d98713c0373
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048724"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058658"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
-現在、Azure Functions では、いくつかのバージョンのランタイム ホストがサポートされています。 次の表に、使用可能なバージョン、サポート レベル、いつ使用する必要があるかの詳細を示します。
+<a name="top"></a>現在、Azure Functions では、いくつかのバージョンのランタイム ホストがサポートされています。 次の表に、使用可能なバージョン、サポート レベル、いつ使用する必要があるかの詳細を示します。
 
 | Version | サポート レベル | 説明 |
 | --- | --- | --- |
-| 4.x | プレビュー | すべての言語をサポートします。 [.NET 6.0 で C# 関数を実行する](functions-dotnet-class-library.md#supported-versions)には、このバージョンを使用します。 |
-| 3.x | GA | _すべての言語の関数にお勧めされるランタイム バージョン。_ |
+| 4.x | GA | _すべての言語の関数にお勧めされるランタイム バージョン。_ [.NET 6.0 で C# 関数を実行する](functions-dotnet-class-library.md#supported-versions)には、このバージョンを使用します。 |
+| 3.x | GA | すべての言語をサポートします。 [.NET Core 3.1 および .NET 5.0 で C# 関数を実行する](functions-dotnet-class-library.md#supported-versions)には、このバージョンを使用します。|
 | 2.x | GA | [レガシ バージョン 2.x のアプリ](#pinning-to-version-20)ではサポートされません。 このバージョンはメンテナンス モードになっており、拡張機能は以降のバージョンでのみ提供されます。|
 | 1.x | GA | .NET Framework を使用する必要があり、Azure portal、Azure Stack Hub ポータル、または Windows コンピューター上のローカルでの開発のみをサポートする C# アプリに限りお勧めされます。 このバージョンはメンテナンス モードになっており、拡張機能は以降のバージョンでのみ提供されます。 |
 
@@ -48,7 +49,7 @@ Azure の公開アプリから使用される Functions ランタイムのバー
 
 | 値 | ランタイム ターゲット |
 | ------ | -------- |
-| `~4` | 4.x (プレビュー) |
+| `~4` | 4.x |
 | `~3` | 3.x |
 | `~2` | 2.x |
 | `~1` | 1.x |
@@ -70,61 +71,55 @@ Azure の公開アプリから使用される Functions ランタイムのバー
 
 `~2.0` に固定されている関数アプリは、引き続き .Net Core 2.2 で実行され、セキュリティやその他の更新プログラムを受信しなくなります。 詳細については、[Functions v2. x に関する考慮事項](functions-dotnet-class-library.md#functions-v2x-considerations)に関するページを参照してください。   
 
-## <a name="migrating-from-3x-to-4x-preview"></a><a name="migrating-from-3x-to-4x"></a>3.x から 4.x への移行 (プレビュー)
+## <a name="migrating-from-3x-to-4x"></a><a name="migrating-from-3x-to-4x"></a>3.x から 4.x への移行
 
-Azure Functions バージョン 4.x (プレビュー) では、バージョン 3.x との下位互換性が高くなっています。 多くのアプリでは、コードを大幅に変更することなく、4.x に安全にアップグレードされるはずです。 運用アプリでメジャー バージョンを変更する前に、必ず広範囲にテストしてください。
+Azure Functions バージョン 4.x は、バージョン 3.x との下位互換性が高くなっています。 多くのアプリでは、コードを大幅に変更することなく、4.x に安全にアップグレードされるはずです。 運用アプリでメジャー バージョンを変更する前に、必ず広範囲にテストしてください。
 
 ### <a name="upgrading-an-existing-app"></a>既存のアプリのアップグレード
 
+関数アプリをローカルで開発する場合は、ローカルのプロジェクト環境と、Azure で実行されている関数アプリの両方をアップグレードする必要があります。 
+
 #### <a name="local-project"></a>ローカル プロジェクト
 
-# <a name="c"></a>[C\#](#tab/csharp)
- 
-.NET アプリを .NET 6 および Azure Functions 4.x に更新するには、とを更新します `TargetFramework``AzureFunctionsVersion` 。
+アップグレード手順は言語によって異なる場合があります。 目的の言語が表示されていない場合は、[記事の上部](#top)にあるスイッチャーから選択してください。
+
+::: zone pivot="programming-language-csharp"  
+C# クラス ライブラリ アプリを .NET 6 および Azure Functions 4.x に更新するには、`TargetFramework` と `AzureFunctionsVersion` を更新します。
 
 ```xml
 <TargetFramework>net6.0</TargetFramework>
 <AzureFunctionsVersion>v4</AzureFunctionsVersion>
 ```
 
-また、アプリによって参照される NuGet パッケージが最新バージョンに更新されていることを確認します。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。
+アプリによって参照される NuGet パッケージも、必ず最新バージョンに更新する必要があります。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。 具体的なパッケージは、関数をインプロセスとアウトプロセスのどちらで実行するかによって異なります。 
 
-##### <a name="net-6-in-process"></a>.NET 6 インプロセス
+# <a name="in-process"></a>[インプロセス](#tab/in-process)
 
 * [4.0.0 また](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) はそれ以降のバージョン
 
-##### <a name="net-6-isolated"></a>.NET 6 分離
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
 
 * [1.5.2 また](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) はそれ以降のバージョン
 * [1.2.0 また](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) はそれ以降のバージョン。
 
-# <a name="java"></a>[Java](#tab/java)
+---
+::: zone-end  
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+アプリを Azure Functions 4.x に更新するには、[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) のローカル インストールを 4.x に更新し、アプリの [Azure Functions 拡張機能バンドル](functions-bindings-register.md#extension-bundles)を 2.x 以上に更新します。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。
 
-Java アプリを Azure Functions 4.x に更新するには、 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) のローカルインストールを4.x に更新し、アプリの [Azure Functions extensions バンドル](functions-bindings-register.md#extension-bundles) を2.x 以上に更新します。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Node.js アプリを Azure Functions 4.x に更新するには、 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) のローカルインストールを4.x に更新し、アプリの [Azure Functions extensions バンドル](functions-bindings-register.md#extension-bundles) を2.x 以上に更新します。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。
-
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
 > [!NOTE]
 > Node.js 10 と12は、Azure Functions 4.x ではサポートされていません。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-PowerShell アプリを Azure Functions 4.x に更新するには、 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) のローカルインストールを4.x に更新し、アプリの [Azure Functions extensions バンドル](functions-bindings-register.md#extension-bundles) を2.x 以上に更新します。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。
-
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
 > [!NOTE]
 > PowerShell 6 は Azure Functions 4.x ではサポートされていません。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python アプリを Azure Functions 4.x に更新するには、 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) のローカルインストールを4.x に更新し、アプリの [Azure Functions extensions バンドル](functions-bindings-register.md#extension-bundles) を2.x 以上に更新します。 詳細については、「 [重大な変更](#breaking-changes-between-3x-and-4x) 」を参照してください。
-
+::: zone-end  
+::: zone pivot="programming-language-python"  
 > [!NOTE]
 > Python 3.6 は Azure Functions 4.x ではサポートされていません。
-
----
-
+::: zone-end
 
 #### <a name="azure"></a>Azure
 
@@ -151,22 +146,9 @@ az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURC
 
 - 4\.x Linux 従量課金プランの関数アプリでは、既定および最大のタイムアウトが適用されるようになりました。 ([#1915](https://github.com/Azure/Azure-Functions/issues/1915))
 
-- アプリケーション インサイトは、プレビュー バージョン 4.0.0.16714 Azure Functions 既定では含まれていません。 別の拡張機能として使用できます。 ([#2027](https://github.com/Azure/Azure-Functions/issues/2027))
-    
-    > [!NOTE]
-    > これは、バージョン 4.0.0.16714 での一時的な変更です。 今後のバージョンでは、Application インサイトを使用するために拡張機能は必要ありません。 拡張機能をインストールしている場合は、Azure Functions バージョン 4.0.1.16815 以降を使用している場合は、アプリから削除します。
-    
-    - インプロセス .NET アプリの場合は、[Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) 拡張機能パッケージを関数アプリに追加します。
-    - 分離 .NET アプリの場合:
-        - [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) 拡張機能パッケージを、関数アプリに追加します。
-        - [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) および [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) パッケージを、最新バージョンに更新します。
-    - 他の言語の場合は、[Azure Functions 拡張機能バンドル](functions-bindings-register.md#extension-bundles)の今後の更新で、Application Insights 拡張機能が組み込まれます。 新しいバンドルが使用できるようになったら、アプリでそれが自動的に使用されます。 更新された拡張機能バンドルの準備が整うまで、関数アプリから `APPINSIGHTS_INSTRUMENTATIONKEY` および `APPLICATIONINSIGHTS_CONNECTION_STRING` アプリの設定の両方を削除します。 これで、ホストの起動に失敗することがなくなります。
-
 - ストレージ アカウントを共有する関数アプリは、計算されたホスト名が同じ場合、起動に失敗します。 関数アプリごとに個別のストレージ アカウントを使用します。 ([#2049](https://github.com/Azure/Azure-Functions/issues/2049))
 
-#### <a name="languages"></a>言語
-
-# <a name="c"></a>[C\#](#tab/csharp)
+::: zone pivot="programming-language-csharp" 
 
 - Azure Functions 4.x は、.NET 6 のインプロセスアプリと分離アプリをサポートしています。
 
@@ -175,34 +157,30 @@ az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURC
 - `EnableEnhancedScopes` は既定で有効になっています。 ([#1954](https://github.com/Azure/Azure-Functions/issues/1954))
 
 - 登録済みサービスとして `HttpClient` を削除します。 ([#1911](https://github.com/Azure/Azure-Functions/issues/1911))
-
-# <a name="java"></a>[Java](#tab/java)
-
+::: zone-end  
+::: zone pivot="programming-language-java"  
 - Java 11 では、単一クラス ローダーを使用します。 ([#1997](https://github.com/Azure/Azure-Functions/issues/1997))
 
 - Java 8 では、ワーカー jar の読み込みを停止します。 ([#1991](https://github.com/Azure/Azure-Functions/issues/1991))
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+::: zone-end    
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
 
 - Node.js 10  と12 は、Azure Functions 4.x ではサポートされていません。 ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
 - 以前の不整合に対処するために、Node.js アプリの出力シリアル化が更新されました。 ([#2007](https://github.com/Azure/Azure-Functions/issues/2007))
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
 - PowerShell 6 は Azure Functions 4.x ではサポートされていません。 ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
 - 既定のスレッド数が更新されました。 スレッド セーフではない関数やメモリ使用量が多い関数は、影響を受ける可能性があります。 ([#1962](https://github.com/Azure/Azure-Functions/issues/1962))
-
-# <a name="python"></a>[Python](#tab/python)
-
+::: zone-end  
+::: zone pivot="programming-language-python"  
 - Python 3.6 は Azure Functions 4.x ではサポートされていません。 ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
 - 共有メモリ転送は、既定で有効になっています。 ([#1973](https://github.com/Azure/Azure-Functions/issues/1973))
 
 - 既定のスレッド数が更新されました。 スレッド セーフではない関数やメモリ使用量が多い関数は、影響を受ける可能性があります。 ([#1962](https://github.com/Azure/Azure-Functions/issues/1962))
-
----
+::: zone-end
 
 ## <a name="migrating-from-2x-to-3x"></a>2\.x から 3.x への移行
 
@@ -212,8 +190,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 2\.x アプリを 3.x にアップグレードする前に、次の言語固有の変更点にご留意ください。
 
-# <a name="c"></a>[C\#](#tab/csharp)
-
+::: zone pivot="programming-language-csharp"
 .NET クラス ライブラリ関数を実行する場合のバージョン間の主な違いは、.NET Core ランタイムです。 Functions バージョン 2.x は .NET Core 2.2 で実行されるように設計されており、バージョン 3.x は .NET Core 3.1 で実行されるように設計されています。  
 
 * [同期サーバー操作は既定では無効になっています](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
@@ -223,11 +200,8 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 >[!NOTE]
 >.NET Core 2.2 のサポートに関する問題のため、バージョン 2 (`~2`) に固定された関数アプリは、基本的には .Net core 3.1 で実行されています。 詳細については、[Functions v2.x 互換性モード](functions-dotnet-class-library.md#functions-v2x-considerations)に関するページを参照してください。
 
-# <a name="java"></a>[Java](#tab/java)
-
-[なし] :
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
 
 * `context.done` 経由で割り当てられた出力バインディングまたは戻り値が `context.bindings` の設定と同じ動作をするようになりました。
 
@@ -237,17 +211,8 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 * HTTP 要求ペイロードには `context.bindingData.req` 経由でアクセスできなくなりました。  引き続き入力パラメーター `context.req` としてアクセスできるほか、`context.bindings` でアクセスできます。
 
-* Node.js 8 のサポートが終了し、3.x 関数では実行されません。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-[なし] :
-
-# <a name="python"></a>[Python](#tab/python)
-
-[なし] :
-
----
+* Node.js 8 はサポートが終了しており、3.x 関数では実行されません。
+::: zone-end 
 
 ## <a name="migrating-from-1x-to-later-versions"></a>1\.x からそれ以降のバージョンへの移行
 
@@ -293,7 +258,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 Visual Studio では、プロジェクトを作成するときにランタイムのバージョンを選択します。 Visual Studio 用の Azure Functions ツールは、ランタイムのメジャー バージョン 3 つをサポートしています。 デバッグ時と公開時には、プロジェクトの設定に基づいて正しいバージョンが使用されます。 バージョン設定は、`.csproj` ファイルの次のプロパティで定義されています。
 
-# <a name="version-4x-preview"></a>[バージョン 4.x (プレビュー)](#tab/v4)
+# <a name="version-4x"></a>[バージョン 4.x](#tab/v4)
 
 ```xml
 <TargetFramework>net6.0</TargetFramework>

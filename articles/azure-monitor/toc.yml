@@ -130,7 +130,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -165,8 +165,6 @@
               href: best-practices-analysis.md
             - name: アラートと自動アクション
               href: best-practices-alerts.md
-        - name: Azure リソースの監視
-          href: essentials/monitor-azure-resource.md
         - name: 仮想マシンの監視
           items:
             - name: 概要
@@ -1127,7 +1125,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: Monitor
+        - name: モニター
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md

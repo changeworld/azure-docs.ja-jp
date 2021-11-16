@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Video Analyzer 使用�
 ms.topic: tutorial
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: faa8053ed2d6dbc2b1df0917fcb08dd308fb1910
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4f4f24150223d9996e83b664ba13a123e9cc68a7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552603"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284457"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>チュートリアル: ライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 
@@ -38,7 +38,7 @@ ms.locfileid: "131552603"
 
 この図は、このチュートリアルでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](../pipeline.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[HTTP 拡張プロセッサ](../pipeline.md#http-extension-processor)ノードにビデオ フレームを送信します。
 
-HTTP 拡張ノードは、プロキシの役割を果たします。 これによって、10 番目ごとのビデオ フレームが指定された画像の種類に変換されます。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに HTTP 経由で転送します。 この例では、そのエッジ モジュールは、さまざまな種類のオブジェクトを検出できる [YOLOv3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3) モデルを使用して構築されています。 HTTP 拡張プロセッサ ノードでは検出結果を収集し、それらの結果および (10 番目のフレームだけではなく) すべてのビデオ フレームをオブジェクト トラッカー ノードに送信します。 オブジェクト トラッカー ノードでは、オプティカル フロー技術を使用して、AI モデルが適用されていない 9 個のフレーム内のオブジェクトが追跡されます。 トラッカー ノードでは、その結果が IoT Hub メッセージ シンク ノードに発行されます。 次に、この [IoT Hub メッセージ シンク](../pipeline.md#iot-hub-message-sink) ノードによって、それらのイベントが [IoT Edge Hub](../../../iot-fundamentals/iot-glossary.md?view=iotedge-2020-11&preserve-view=true#iot-edge-hub) に送信されます。
+HTTP 拡張ノードは、プロキシの役割を果たします。 これによって、10 番目ごとのビデオ フレームが指定された画像の種類に変換されます。 次に、その画像は、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに HTTP 経由で転送されます。 この例では、そのエッジ モジュールは、さまざまな種類のオブジェクトを検出できる [YOLOv3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3) モデルを使用して構築されています。 HTTP 拡張プロセッサ ノードでは検出結果を収集し、それらの結果および (10 番目のフレームだけではなく) すべてのビデオ フレームをオブジェクト トラッカー ノードに送信します。 オブジェクト トラッカー ノードでは、オプティカル フロー技術を使用して、AI モデルが適用されていない 9 個のフレーム内のオブジェクトが追跡されます。 トラッカー ノードでは、その結果が IoT Hub メッセージ シンク ノードに発行されます。 次に、この [IoT Hub メッセージ シンク](../pipeline.md#iot-hub-message-sink) ノードによって、それらのイベントが [IoT Edge Hub](../../../iot-fundamentals/iot-glossary.md?view=iotedge-2020-11&preserve-view=true#iot-edge-hub) に送信されます。
 
 ライン クロッシング ノードでは、アップストリームのオブジェクト トラッカー ノードから結果が受信されます。 オブジェクト トラッカー ノードの出力には、検出されたオブジェクトの座標が含まれます。 これらの座標は、ライン クロッシング ノードによって線座標に照らして評価されます。 オブジェクトが線を越えると、ライン クロッシング ノードによってイベントが生成されます。 イベントは、IoT Edge ハブ メッセージ シンクに送信されます。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: e6dd9403912d6fddf0b0c6a8d3953756c7432ea6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 477dcc9935185861f551f89e7376f705c29ccb29
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040002"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workplace by Facebook の統合
 
@@ -43,7 +43,7 @@ ms.locfileid: "131040002"
 
 * Workplace by Facebook では、**SP** Initiated SSO がサポートされます。
 * Workplace by Facebook では、**Just-In-Time プロビジョニング** がサポートされます。
-* Workplace by Facebook では、 **[自動ユーザー プロビジョニング](workplacebyfacebook-provisioning-tutorial.md)** がサポートされます。
+* Workplace by Facebook では、 **[自動ユーザー プロビジョニング](workplace-by-facebook-provisioning-tutorial.md)** がサポートされます。
 * Workplace by Facebook Mobile アプリケーションを Azure AD と共に構成して SSO を有効にできるようになりました。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
@@ -83,11 +83,11 @@ Workplace by Facebook に対する Azure AD SSO を構成してテストする�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. (ワークプレースに受信者 URL として表示される) **[サインオン URL]** ボックスに、`https://.workplace.com/work/saml.php` のパターンを使用して URL を入力します。
+    a. (ワークプレースに受信者 URL として表示される) **[サインオン URL]** ボックスに、`https://.facebook.com/work/saml.php` のパターンを使用して URL を入力します。
 
-    b. (ワークプレースにオーディエンス URL として表示される) **[識別子 (エンティティ ID)]** ボックスに、`https://www.workplace.com/company/` のパターンを使用して URL を入力します。
+    b. (ワークプレースにオーディエンス URL として表示される) **[識別子 (エンティティ ID)]** ボックスに、`https://www.facebook.com/company/` のパターンを使用して URL を入力します。
 
-    c. (ワークプレースに Assertion Consumer Service URL として表示される) **[応答 URL]** ボックスに、`https://.workplace.com/work/saml.php` のパターンを使用して URL を入力します。
+    c. (ワークプレースに Assertion Consumer Service URL として表示される) **[応答 URL]** ボックスに、`https://.facebook.com/work/saml.php` のパターンを使用して URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 Workplace コミュニティの適切な値については、Workplace Company Dashboard の認証ページを参照してください。この点については、このチュートリアルの中で後述します。
@@ -233,4 +233,4 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 ## <a name="next-steps"></a>次のステップ
 
-Workplace by Facebook を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Workplace by Facebook を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

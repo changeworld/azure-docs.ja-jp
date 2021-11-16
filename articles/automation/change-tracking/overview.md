@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2675f6633da27c12e067cf93463f6cba94b473c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 073fd4918cec0a1ec1dc679285b62fd63fe078d3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769392"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325735"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "122769392"
 > [!NOTE]
 > Azure Resource Manager のプロパティの変更を追跡するには、Azure Resource Graph の[変更履歴](../../governance/resource-graph/how-to/get-resource-changes.md)を参照してください。
 
-変更履歴とインベントリでは、[Azure Security Center のファイルの整合性の監視 (FIM)](../../security-center/security-center-file-integrity-monitoring.md) を使用して、オペレーティング システム、アプリケーション ファイル、および Windows レジストリが調査されます。 これらのエンティティは FIM で監視されますが、変更履歴とインベントリでネイティブに追跡されます。
+変更履歴とインベントリでは、[Microsoft Defender for Cloud のファイルの整合性の監視 (FIM)](../../security-center/security-center-file-integrity-monitoring.md) を使用して、オペレーティング システム、アプリケーション ファイル、Windows レジストリが調査されます。 これらのエンティティは FIM で監視されますが、変更履歴とインベントリでネイティブに追跡されます。
 
 - ソフトウェアの変更
 - Windows サービス
@@ -34,7 +34,7 @@ ms.locfileid: "122769392"
 
 変更履歴とインベントリに含まれる機能をすべて有効にすると、追加料金が発生する可能性があります。 続行する前に、[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)と [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。
 
-変更履歴とインベントリでは、Azure Monitor ログにデータが転送され、収集されたデータが Log Analytics ワークスペースに格納されます。 ファイルの整合性の監視 (FIM) 機能は、**Azure Defender for servers** が有効な場合にのみ使用できます。 詳細については、Azure Security Center の[価格](../../security-center/security-center-pricing.md)を参照してください。 FIM では、変更履歴とインベントリのデータを格納するために作成されたものと同じ Log Analytics ワークスペースにデータがアップロードされます。 正確な使用量を把握するために、リンクされた Log Analytics ワークスペースを監視することが推奨されています。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/logs/manage-cost-storage.md)に関するページを参照してください。
+変更履歴とインベントリでは、Azure Monitor ログにデータが転送され、収集されたデータが Log Analytics ワークスペースに格納されます。 ファイルの整合性の監視 (FIM) 機能は、**Microsoft Defender for servers** が有効な場合にのみ使用できます。 詳細については、Microsoft Defender for Cloud の[価格](../../security-center/security-center-pricing.md)に関するページを参照してください。 FIM では、変更履歴とインベントリのデータを格納するために作成されたものと同じ Log Analytics ワークスペースにデータがアップロードされます。 正確な使用量を把握するために、リンクされた Log Analytics ワークスペースを監視することが推奨されています。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/logs/manage-cost-storage.md)に関するページを参照してください。
 
 Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。
 

@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/08/2021
 ms.author: aahi
 ms.custom: language-service-sentiment-opinion-mining, ignite-fall-2021
-ms.openlocfilehash: 3c010c4734380faf1551bc6701bbbf01173243c7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a0cbc5bab15e80bb18ca3d4a13efa2d05fe5aeff
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090001"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027149"
 ---
 # <a name="sentiment-analysis-and-opinion-mining-language-support"></a>感情分析とオピニオン マイニングの言語サポート 
 
 この記事では、感情分析とオピニオン マイニングでサポートされている自然言語について説明します。
 
 > [!NOTE]
-> 新しい[モデル バージョン](how-to/call-api.md#specify-the-sentiment-analysis-model)がリリースされると、言語が追加されます。 感情分析の現在のモデル バージョンは `2020-04-01` です。
+> 新しいモデル バージョンがリリースされると、言語が追加されます。 感情分析の現在の一般公開モデル バージョンは `2020-04-01` です。 最新のプレビュー モデル バージョン (`2021-10-01-preview`) を使用するには、API 呼び出しで指定します。 詳細については、[API の呼び出し方法](how-to/call-api.md#specify-the-sentiment-analysis-model)に関するページを参照してください。
 
 ## <a name="sentiment-analysis-language-support"></a>感情分析の言語サポート
 
@@ -50,12 +50,12 @@ ms.locfileid: "131090001"
 | Language              | 言語コード | 次のモデル バージョン以降: |              Notes |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | 英語               |     `en`      |  2020-04-01              |                    |
-| フランス語                |     `fr`      |         2021-10-01         |                    |
-| ドイツ語                |     `de`      |         2021-10-01         |                    |
-| イタリア語               |     `it`      |         2021-10-01         |                    |
-| ポルトガル語 (ブラジル)   |    `pt-BR`    |         2021-10-01         |                    |
-| ポルトガル語 (ポルトガル) |    `pt-PT`    |         2021-10-01         | `pt` も可能 |
-| スペイン語               |     `es`      |         2021-10-01         |                    |
+| フランス語                |     `fr`      |         2021-10-01-preview         |                    |
+| ドイツ語                |     `de`      |         2021-10-01-preview         |                    |
+| イタリア語               |     `it`      |         2021-10-01-preview         |                    |
+| ポルトガル語 (ブラジル)   |    `pt-BR`    |         2021-10-01-preview         |                    |
+| ポルトガル語 (ポルトガル) |    `pt-PT`    |         2021-10-01-preview         | `pt` も可能 |
+| スペイン語               |     `es`      |         2021-10-01-preview         |                    |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 11/02/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 795d54406230dbc7ea6e9666cfef51c8f96219fe
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 548e622548f7b55259cb08a5937d45ab2766df3f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576189"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061118"
 ---
 # <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>資産インベントリを使用してリソースのセキュリティ態勢を管理する
 
@@ -74,7 +74,7 @@ Defender for Cloud は、サブスクリプションに接続されているリ�
 > [!TIP]
 > KQL のドキュメントでは、いくつかのサンプル データと単純なクエリを組み合わせたデータベースを使用して、この言語の「感触」をつかむことができます。 詳しくは、[KQL のチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)をご覧ください。
 
-**[資産管理オプション]** - インベントリでは、複雑な検出クエリを実行できます。 クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
+**資産管理オプション** - クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
 
 - フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします。
 - クラウドの Defender に新しいサーバーを追加する- **[Azure 以外のサーバーの追加]** ツールバーボタンを使用します。
@@ -219,7 +219,7 @@ Azure Resource Graph エクスプローラーを使用してソフトウェア �
 
 :::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでは、監視エージェントまたは Defender for Cloud 列に空白の情報が表示されます。" lightbox="./media/asset-inventory/agent-pricing-blanks.png":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Microsoft Defender for Cloud の資産インベントリ ページについて説明しました。
 

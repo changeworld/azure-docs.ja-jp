@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 10/21/2021
-ms.openlocfilehash: 119405dc4db6d31aaf2ac5b704af7798ce41837a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/09/2021
+ms.openlocfilehash: d71d986ca975b9617af9b966c8795cd30d7db01d
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564406"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134940"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>セキュリティで保護されたワークスペースを使用する場合のネットワーク トラフィック フロー
 
@@ -61,6 +61,16 @@ Azure Machine Learning ワークスペースと関連付けられているリソ
 | [Azure Kubernetes Service を使用する](#scenario-use-azure-kubernetes-service) | NA | AKS の送信構成については、[Azure Kubernetes Service にデプロイする方法](how-to-deploy-azure-kubernetes-service.md#understand-connectivity-requirements-for-aks-inferencing-cluster)に関するページを参照してください。 | 内部ロード バランサーを構成します。 詳細については、[Azure Kubernetes Service にデプロイする方法](how-to-deploy-azure-kubernetes-service.md#understand-connectivity-requirements-for-aks-inferencing-cluster)に関するページを参照してください。 | 
 | [Azure Machine Learning によって管理される Docker イメージを使用する](#scenario-use-docker-images-managed-by-azure-ml) | NA | <ul><li>Microsoft Container Registry</li><li>`viennaglobal.azurecr.io` グローバル コンテナー レジストリ</li></ul> | ワークスペースの Azure Container Registry が VNet の背後にある場合は、コンピューティング クラスターを使用してイメージを作成するようにワークスペースを構成します。 詳細については、[仮想ネットワーク内のワークスペースをセキュリティで保護する方法](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)に関するページを参照してください。 | 
 
+> [!IMPORTANT]
+> Azure Machine Learning は複数のストレージ アカウントを使用します。 それぞれが異なるデータを格納し、目的も異なります。
+>
+> * __ご使用のストレージ__: Azure サブスクリプションの Azure Storage アカウントを使用して、データと成果物 (モデル、トレーニング データ、トレーニング ログ、Python スクリプトなど) を格納します。 たとえば、ワークスペースの _デフォルト_ のストレージ アカウントは、サブスクリプションに含まれています。 Azure Machine Learning のコンピューティング インスタンスとコンピューティング クラスターは、ポート 445 (SMB) と 443 (HTTPS) を介して、このストレージ内の __ファイル__ と __BLOB__ データにアクセスします。
+> 
+>    コンピューティング インスタンスまたはコンピューティング クラスターを使用する場合、ストレージ アカウントは、SMB プロトコルを使用してファイル共有としてマウントされます。 コンピューティングインスタンス/クラスターがデータにアクセスする方法は次のようになります。
+>
+> * __Microsoft ストレージ__: Azure Machine Learning コンピューティング インスタンスとコンピューティング クラスターは、Azure Batch に依存し、Microsoft サブスクリプションにあるストレージにアクセスします。 このストレージは、コンピューティング インスタンス/クラスターの管理にのみ使用されます。 ここにはデータが格納されていません。 コンピューティング インスタンスとコンピューティング クラスターは、ポート 443 (HTTPS) を使用して、このストレージ内の __BLOB__、__テーブル__、__キュー__ のデータにアクセスします。
+>
+> Azure Machine Learning では、メタデータは Azure Cosmos DB インスタンスにも格納されます。 既定では、このインスタンスは Microsoft サブスクリプションでホストされ、Microsoft によって管理されます。 必要に応じて、Azure サブスクリプションで Azure Cosmos DB インスタンスを使用できます。 詳細については、[Azure Machine Learning を使用したデータの暗号化](concept-data-encryption.md#azure-cosmos-db)に関するページを参照してください。
 
 ## <a name="scenario-access-workspace-from-studio"></a>シナリオ: スタジオからワークスペースにアクセスする
 

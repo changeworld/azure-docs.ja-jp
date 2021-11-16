@@ -3,12 +3,12 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: d786b3d0e9afbf7ab4e895c6788209644d9f921f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1a299843b402d03543adbf9a9efdf86800abd564
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092757"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063762"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -67,7 +67,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 基本的にこのウィンドウ型のモデルは、TCP のウィンドウ型フロー制御の概念と似ていますが、ソケット内のセッション レベルの概念である点が異なります。 このプロトコルの概念は、複数の同時セッションを可能にするものであり、ちょうど高速道路の追い越し車線のように、優先度の高いトラフィックが、抑制された通常のトラフィックを追い越すことができるようになっています。
 
-現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256 KB) です｡ Service Bus Premium および Event Hubs の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
+現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256 KB) です｡ Service Bus Premium および Event Hubs の場合は、これが 1,048,576 (100 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
 

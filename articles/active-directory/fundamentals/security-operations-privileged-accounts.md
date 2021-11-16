@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 467c5ad44b38e237b1ad9b947f438dcef1006750
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: dbe761073c2e7f9a18d9750cea2f4369663cb4a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038842"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300787"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>特権アカウントのためのセキュリティ運用
 
@@ -46,13 +46,13 @@ Azure Active Directory (Azure AD) は、ID およびアクセス管理 (IAM) を
 
 Azure portal から、Azure AD 監査ログを表示したり、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードしたりできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* [Azure Sentinel](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能が提供され、エンタープライズ レベルでインテリジェントなセキュリティ分析を実現します。 
+* [Microsoft Sentinel](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでインテリジェントにセキュリティを分析します。 
 
 * [Azure Monitor](../../azure-monitor/overview.md) – さまざまな状況の自動化された監視とアラートを有効にできます。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) を SIEM と統合 - Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログをプッシュできます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) – アプリを検出および管理し、すべてのアプリとリソースを制御し、クラウド アプリのコンプライアンス状況を確認できます。 
 
 * Microsoft Graph - データとユーザーをエクスポートして、 MS Graph を使用してより詳細な分析を行うことができます。 MS Graph の詳細については、[Microsoft Graph PowerShell SDK と Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md) に関するページを参照してください。 
 
@@ -62,7 +62,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
    * 危険なサインイン – 疑わしい状況を示す可能性のあるサインインの状況に関する情報が含まれています。 このレポートの情報を調査するための追加情報については、「[方法: リスクを調査する](../identity-protection/howto-identity-protection-investigate-risk.md)」を参照してください。 
 
-   * リスク検出 – リスクが検出されたときトリガーされる他のリスクに関する情報や、サインインの場所などの他の関連情報、およびMicrosoft Cloud App Security (MCAS) からの詳細情報が含まれます。
+   * リスク検出 – リスクが検出されたときトリガーされるその他のリスクに関する情報や、サインインの場所などの他の関連情報、および Microsoft Defender for Cloud Apps からの詳細情報が含まれます。
 
  
 
@@ -143,7 +143,8 @@ Azure AD サインイン ログをデータ ソースとして使用して、特
 | MFA に登録されていない特権アカウントを検出します。 | 高 | Azure AD Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 [credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
 | アカウントのロックアウト | 高 | Azure AD サインイン ログ | 状態 = 失敗<br>および<br>エラー コード = 50053 | ベースラインしきい値を定義してから、組織の行動に合わせて監視および調整し、誤ったアラートが生成されないようにします。 |
 | アカウントがサインインで無効またはブロックされる | 低 | Azure AD サインイン ログ | 状態 = 失敗<br>および<br>ターゲット = ユーザー UPN<br>および<br>エラー コード = 50057 | これは、誰かが組織を退職した後にアカウントにアクセスしようとしていることを示している可能性があります。 このアカウントはブロックされていますが、このアクティビティについて記録し、アラートを出すことが重要です。 |
-| MFA 不正のアラート/ブロック | 高 | Azure AD サインイン ログ/Azure Log Analytics | 成功 = false<br>および<br>結果の詳細 = MFA が拒否<br>および<br>ターゲット = ユーザー | 特権ユーザーは、自分が MFA プロンプトを引き起こしていないと示しており、攻撃者がアカウントのパスワードを持っていることを示している可能性があります。 |
+| MFA 不正のアラート/ブロック | 高 | Azure AD サインイン ログ/Azure Log Analytics | Sign-ins>Authentication details Result details = MFA denied, Fraud Code Entered (サインイン>認証詳細 結果詳細 = MFA 拒否、不正なコードの入力) | 特権ユーザーは、自分が MFA プロンプトを引き起こしていないと示しており、攻撃者がアカウントのパスワードを持っていることを示している可能性があります。 |
+| MFA 不正のアラート/ブロック | 高 | Azure AD Audit Log のログ、Azure Log Anaylitics | Activity Type = Fraud Reported - user is blocked for MFA or Fraud reported - no action taken (based on tenant level settings for fraud report) (アクティビティの種類 = 不正報告 - MFA または 不正報告によりユーザーをブロックしています - 対応を行いませんでした (不正報告のテナント レベル設定による)) | 特権ユーザーは、自分が MFA プロンプトを引き起こしていないと示しており、攻撃者がアカウントのパスワードを持っていることを示している可能性があります。 |
 | 想定された制御の範囲外の特権アカウント サインイン。 |  | Azure AD サインイン ログ | 状態 = 失敗<br>UserPricipalName = \<Admin account\><br>場所 = \<unapproved location\><br>IP アドレス = \<unapproved IP\><br>デバイス情報 = \<unapproved Browser, Operating System\> | 未承認として定義したエントリを監視し、アラートを出します。 |
 | 通常のサインイン時間外 | 高 | Azure AD サインイン ログ | 状態 = 成功<br>および<br>場所 =<br>および<br>時間 = 勤務時間外 | 想定される時間外にサインインが発生した場合について監視し、アラートを出します。 各特権アカウントの通常の勤務パターンを見つけて、通常の勤務時間外に予定外の変更が発生した場合にアラートを出すことが重要です。 通常の勤務時間外のサインインが、侵害や内部関係者の脅威の可能性を示している場合があります。 | 
 | ID 保護のリスク | 高 | ID 保護のログ | リスク状態 = リスクあり<br>および<br>リスク レベル = 低/中/高<br>および<br>アクティビティ = 通常とは異なるサインイン/TOR など | これは、そのアカウントへのサインインに何らかの異常が検出されたことを示しており、アラートを出す必要があります。 | 

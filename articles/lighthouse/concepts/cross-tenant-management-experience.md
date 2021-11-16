@@ -3,12 +3,12 @@ title: テナント間の管理エクスペリエンス
 description: Azure Lighthouse により、多くの Azure サービスでクロステナント エクスペリエンスが有効になり、強化されます。
 ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 115f71148ddd2d18cd99be883bdef77b1c27ad1b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a9dbf51a965c1aa73489fdd2990736914b27177c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249687"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312459"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -54,7 +54,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
   - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Azure 外の Windows Server または Linux コンピューターを管理する](../../azure-arc/servers/onboard-portal.md)
   - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
   - 顧客のハイブリッド環境全体に同じポリシー セットが提供されていることを確認する
-  - Azure Security Center を使用して、顧客のハイブリッド環境全体のコンプライアンスを監視する
+  - Microsoft Defender for Cloud を使用して顧客のハイブリッド環境全体のコンプライアンスを監視する
 - ハイブリッド Kubernetes クラスターを大規模に管理する - [Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md):
   - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Kubernetes クラスターを管理する](../../azure-arc/kubernetes/quickstart-connect-cluster.md)
   - 接続されたクラスターに [GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) を使用する
@@ -125,7 +125,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - 返されるクエリ結果にテナント ID が含まれるため、サブスクリプションが管理対象のテナントに属しているかどうかを特定できる
 
-[Azure Security Center](../../security-center/index.yml):
+[Microsoft Defender for Cloud](../../security-center/index.yml):
 
 - テナント間の表示
   - セキュリティ ポリシーへの準拠を監視し、セキュリティの適用範囲がすべてのテナントのリソースになるようにする
@@ -141,13 +141,13 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
   - アダプティブ ネットワーク強化を使用してネットワーク セキュリティ グループの構成を強化する
   - サーバーで、適応型アプリケーション制御の対象とすべきアプリケーションとプロセスのみが実行されるようにする
   - ファイルの整合性の監視 (FIM) を使用して、重要なファイルとレジストリ エントリに対する変更を監視する
-- サブスクリプション全体を管理テナントに委任する必要があることにご注意ください。Azure Security Center シナリオは、委任されたリソース グループではサポートされません。
+- 管理テナントにはサブスクリプション全体を委任する必要があることにご注意ください。Microsoft Defender for Cloud のシナリオでは、委任されたリソース グループではサポートされていません。
 
-[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
+[Microsoft Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 
-- [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel リソースを管理する
+- [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Microsoft Sentinel リソースを管理する
 - [複数のテナントにわたる攻撃を追跡し、セキュリティ アラートを表示する](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- テナント間に分散している複数の Azure Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
+- テナント間に分散している複数の Microsoft Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
 
 [Azure Service Health](../../service-health/index.yml):
 

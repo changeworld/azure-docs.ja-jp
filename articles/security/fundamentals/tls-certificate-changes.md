@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 09/13/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 01acde63371fea6a8c3f752caf31fa883e5e617e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cc8cdfcfeee8c5deefe64799be7c6ee27cb644f6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641220"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135823"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
@@ -24,13 +24,13 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 
 既存の Azure エンドポイントは、2020 年 8 月 13 日以降、段階的に移行されました。 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。
 
-すべての Azure サービスがこの変更の影響を受けます。 ここでは、特定のサービスに関する追加の詳細を示します。
+すべての Azure サービスがこの変更の影響を受けます。 ここでは、特定のサービスに関するその他の詳細を示します。
 
 - 2020 年 7 月 7 日に、[Azure Active Directory](../../active-directory/index.yml) (Azure AD) サービスでこの移行が開始されました。
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](../../iot-dps/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。
 - [Azure Storage](../../storage/index.yml) の詳細については、[こちらをクリックしてください](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581)。
 - [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](../../azure-cache-for-redis/cache-whats-new.md)をクリックしてください。
-- Azure Instance Metadata Service は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)をクリックしてください。
+- [Azure Instance Metadata Service](../../virtual-machines/linux/instance-metadata-service.md?tabs=linux) については、「[Azure Instance Metadata Service の構成証明済みデータ TLS: 重要な変更の多くはこちらにあります](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-instance-metadata-service-attested-data-tls-critical/ba-p/2888953)」を参照してください。 を参照してください。
 
 > [!IMPORTANT]
 > お客様は、Azure Storage に接続しようとしたときの接続エラーを防ぐため、この変更後にアプリケーションを更新することが必要になる場合があります。

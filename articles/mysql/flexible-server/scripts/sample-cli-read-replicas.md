@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) での読み取りレプリカの作成と管理
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカの作成と管理
 description: この Azure CLI サンプル スクリプトは、Azure Database for MySQL - フレキシブル サーバーで読み取りレプリカを作成および管理する方法を示しています
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 02eea900b9e78b0a23bead45bd077902de7417eb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1155231ca8909352aee2354023a19ea66c7ffc4d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701952"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844114"
 ---
-# <a name="create-and-manage-read-replicas-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI スクリプトを使用した Azure Database for MySQL - フレキシブル サーバー (プレビュー) での読み取りレプリカの作成と管理
+# <a name="create-and-manage-read-replicas-in-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI スクリプトを使用した Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカの作成と管理
 
 この CLI サンプル スクリプトは、Azure Database for MySQL - フレキシブル サーバーで [読み取りレプリカ](../concepts-read-replicas.md)を作成して管理します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "128701952"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-スクリプト内の強調表示されている行を編集し、変数に実際の値を指定します。
+スクリプトの強調表示されている行を編集し、変数にご自分の値を指定します。
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/mysql/flexible-server/read-replicas/create-manage-read-replicas.sh?highlight=7,10-12 "Create and manage Flexible Server Read Replicas.")]
 
@@ -56,5 +56,5 @@ ms.locfileid: "128701952"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

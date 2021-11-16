@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: cf3aa4510c29ecc45fe5217e727fa0efc15a1809
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1f1c6e9a50879159a73528ca21592ce01b29beeb
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425085"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063422"
 ---
 # <a name="introduction-to-microsoft-defender-for-key-vault"></a>Microsoft Defender for Key Vault の概要
 
@@ -34,7 +34,7 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 ## <a name="what-are-the-benefits-of-microsoft-defender-for-key-vault"></a>Microsoft Defender for Key Vault の利点
 
-Microsoft Defender によって、通常とは異なる、害を及ぼす可能性のある Key Vault アカウントへのアクセスや悪用の試みが検出されます。 この保護層により、セキュリティの専門家でなくても、サードパーティ製のセキュリティ監視システムを管理する必要なしに、脅威に対処することができます。  
+Microsoft Defender によって、通常とは異なる、害を及ぼす可能性のある Key Vault アカウントへのアクセスや悪用の試みが検出されます。 この保護層により、セキュリティの専門家でなくても、サードパーティ製のセキュリティ監視システムを管理することなく、脅威に対処できます。  
 
 異常なアクティビティが発生した場合、Defender によってアラートが表示され、必要に応じて組織の関連するメンバーにメールが送信されます。 これらのアラートには、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項が含まれます。 
 

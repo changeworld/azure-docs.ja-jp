@@ -11,20 +11,23 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/08/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: dd8713bcbe96c16e24305e05f693bbf15af327ab
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 79aefd5c4b41e86aeeb2f7f02f2df57397c4b36b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163055"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157478"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>AG と DNN リスナーとの機能の相互運用性 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-特定の SQL Server 機能では、ハードコーディングされた仮想ネットワーク名 (VNN) が使用されます。 そのため、分散ネットワーク名 (DNN) リスナーを Azure VM 上の Always On 可用性グループおよび SQL Server と一緒に使用する場合には、いくつかの追加の考慮事項がある場合があります。 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して分散ネットワーク名が不要になります。
+
+特定の SQL Server 機能では、ハードコーディングされた仮想ネットワーク名 (VNN) が使用されます。 そのため、分散ネットワーク名 (DNN) リスナーを、1 つのサブネット内の Azure VM 上の Always On 可用性グループおよび SQL Server と一緒に使用する場合には、いくつかの追加の考慮事項がある場合があります。 
 
 この記事では、SQL Server 機能と可用性グループ DNN リスナーとの相互運用性について詳しく説明します。 
 

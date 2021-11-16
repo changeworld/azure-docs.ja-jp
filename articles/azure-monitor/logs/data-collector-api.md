@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2021
-ms.openlocfilehash: 043427f288a5e757e63aefe79b97953f40a15c69
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a7d998499285dbaa400269bc87d027febfd0ca14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461933"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325621"
 ---
 # <a name="send-log-data-to-azure-monitor-by-using-the-http-data-collector-api-preview"></a>HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (プレビュー)
 
@@ -263,7 +263,6 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
     $authorization = 'SharedKey {0}:{1}' -f $customerId,$encodedHash
     return $authorization
 }
-
 
 # Create the function to create and post the request
 Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
@@ -569,7 +568,7 @@ public class ApiExample {
 | 代替手段 | 説明 | 最も適しているデータ |
 |---|---|---|
 | [カスタム イベント](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Application Insights でのネイティブ SDK ベースのインジェスト | 通常はアプリケーション内で SDK を使用してインストルメント化される Application Insights では、カスタム イベントを使用してカスタム データを送信できます。 | <ul><li> アプリケーション内で生成されるが、SDK によって既定のデータの種類 (要求、依存関係、例外など) のいずれかを介して取得されないデータ。</li><li> Application Insights で他のアプリケーション データに最も頻繁に関連付けられるデータ。 </li></ul> |
-| Azure Monitor ログの Data Collector API | Azure Monitor ログの Data Collector API は、データを取り込むための完全に拡張可能な方法です。 JSON オブジェクト形式のデータはすべてここで送信できます。 送信後、Monitor ログ内の他のデータや他の Application Insights データと関連付けるために、データは処理されて Monitor ログで使用できるようになります。 <br/><br/> データは、ファイルとして Azure Blob Storage の BLOB に簡単にアップロードできます。これらのファイルは処理された後、Log Analytics にアップロードされます。 サンプルの実装については、「[データ コレクター API によるデータ パイプラインの作成](./create-pipeline-datacollector-api.md)」を参照してください。 | <ul><li> Application Insights 内でインストルメント化されたアプリケーション内で必ずしも生成されるわけではないデータ。<br>例として、ルックアップ テーブル、ファクト テーブル、参照データ、事前に集計された統計などがあります。 </li><li> 他の Azure Monitor データ (Application Insights、他の Monitor ログ データの種類、Security Center、Container Insights、仮想マシンなど) と相互参照されるデータ。 </li></ul> |
+| Azure Monitor ログの Data Collector API | Azure Monitor ログの Data Collector API は、データを取り込むための完全に拡張可能な方法です。 JSON オブジェクト形式のデータはすべてここで送信できます。 送信後、Monitor ログ内の他のデータや他の Application Insights データと関連付けるために、データは処理されて Monitor ログで使用できるようになります。 <br/><br/> データは、ファイルとして Azure Blob Storage の BLOB に簡単にアップロードできます。これらのファイルは処理された後、Log Analytics にアップロードされます。 サンプルの実装については、「[データ コレクター API によるデータ パイプラインの作成](./create-pipeline-datacollector-api.md)」を参照してください。 | <ul><li> Application Insights 内でインストルメント化されたアプリケーション内で必ずしも生成されるわけではないデータ。<br>例として、ルックアップ テーブル、ファクト テーブル、参照データ、事前に集計された統計などがあります。 </li><li> 他の Azure Monitor データ (Application Insights、他の Monitor ログ データの種類、Defender for Cloud、Container Insights、仮想マシンなど) と相互参照されるデータ。 </li></ul> |
 | [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | 現在、一般提供されている Azure Data Explorer は、Application Insights Analytics と Azure Monitor ログを強化するデータ プラットフォームです。 このデータ プラットフォームを RAW 形式で使用すると、クラスターに対する完全な柔軟性 (Kubernetes のロールベースのアクセス制御 (RBAC)、リテンション率、スキーマなど) が得られます (ただし、管理オーバーヘッドが必要になります)。 Azure Data Explorer には、[CSV、TSV、JSON](/azure/kusto/management/mappings) の各ファイルを含め、多数の[インジェスト オプション](/azure/data-explorer/ingest-data-overview#ingestion-methods)が用意されています。 | <ul><li> Application Insights または Monitor ログで他のどのデータにも関連付けられないデータ。 </li><li> Azure Monitor ログでは現在使用できない高度なインジェストまたは処理機能を必要とするデータ。 </li></ul> |
 
 

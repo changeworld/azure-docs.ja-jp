@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: f333ea27279098d43065a9ffd613f994940ff340
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bf14e52e38a1fae06ef607a4c8c066249055acb8
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019706"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132155953"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
 
@@ -68,6 +68,8 @@ SAP Basis バージョンが 7.50 以前の場合は、次の SAP ノートを�
 |     |         |
 
 [SAP サポート Launchpad サイト](https://support.sap.com/en/index.html)から SAP ノートにアクセスします。
+## <a name="requires-sap-ports-access"></a>SAP ポートへのアクセスが必要です。
+SAP 環境ホスト。32xx、5xx13、および 33xx (xx は SAP インスタンス番号) の TCP ポートを介してアクセス。
 
 ## <a name="required-abap-authorizations"></a>必要な ABAP 承認
 

@@ -6,12 +6,12 @@ ms.service: private-multi-access-edge-compute-mec
 ms.topic: overview
 ms.date: 06/16/2021
 ms.author: kumud
-ms.openlocfilehash: 1875a2cfaa89a6eeeb45ae2efe84959ff6771268
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6d85a42b3ff23f4bead8abd3187b9a899ebb12c3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707334"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277944"
 ---
 # <a name="what-is-azure-private-multi-access-edge-compute"></a>Azure プライベート マルチアクセス エッジ コンピューティングとは
 
@@ -59,7 +59,7 @@ Fusion Core を使用することにより、ISV は、ライブ ビデオ分析
 ### <a name="azure-stack-hardware-and-services"></a>Azure Stack ハードウェアおよびサービス
 **Azure Stack Edge**: Azure Stack Edge では、データが作成されるエッジで直接コンピューティング、ストレージ、インテリジェンスを利用できるデバイスのポートフォリオを提供します。 デバイスは、1 から 2 個の NVIDIA T4 GPU が付属する 1U のラックマウント可能なアプライアンスです。 Azure IoT Edge を使用することにより、コンテナーを IoT Hub からデプロイおよび管理し、Azure Stack Edge 上の Azure IoT ソリューションと統合できます。 Azure Stack Edge Pro SKU は、エッジでネットワーク機能を実行することが認定されています。 詳細については、「[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)」を参照してください。
 
-**Azure Stack HCI**: Azure Stack HCI は、Azure サービスとして提供される新しいハイパーコンバージド インフラストラクチャ (HCI) オペレーティング システムで、最新のセキュリティ、パフォーマンス、機能の更新プログラムが提供されます。 既存のツールやプロセスを使用して、Windows および Linux の仮想マシン (VM) をデータセンターまたはエッジにデプロイして実行できます。 Azure Backup、Azure Monitor、Azure Security Center を使用して、データセンターをクラウドに拡張できます。 詳細については、「[Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/)」を参照してください。
+**Azure Stack HCI**: Azure Stack HCI は、Azure サービスとして提供される新しいハイパーコンバージド インフラストラクチャ (HCI) オペレーティング システムで、最新のセキュリティ、パフォーマンス、機能の更新プログラムが提供されます。 既存のツールやプロセスを使用して、Windows および Linux の仮想マシン (VM) をデータセンターまたはエッジにデプロイして実行できます。 Azure Backup、Azure Monitor、Microsoft Defender for Cloud を使用して、データセンターをクラウドに拡張できます。 詳細については、「[Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/)」を参照してください。
 
 ### <a name="application-services"></a>アプリケーション サービス
 

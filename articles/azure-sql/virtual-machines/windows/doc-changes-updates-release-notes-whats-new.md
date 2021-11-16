@@ -11,14 +11,14 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/01/2021
+ms.date: 11/10/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 592f2ae9b3d09ce84296dca31d68031b7d5fff84
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3eeeb1a2525877cad031d1f0acd38de6c45b2bac
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080918"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157686"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,9 @@ SQL Server がインストールされた Azure 仮想マシン (VM) を手動�
 
 | [変更点] | 詳細 |
 | --- | --- |
-| **SQL の評価** | [SQL Assessment](sql-assessment-for-sql-vm.md)を使用して Azure portal 内の SQL Server VM の正常性を評価し、パフォーマンスを向上させる推奨事項を提示し、不足しているベストプラクティス構成を特定できるようになりました。 現在、この機能はプレビュー段階にあります。 |
+| **HADR で Azure Load Balancer または DNN が不要に** | 複数のサブネットに SQL Server VM をデプロイすると、高可用性/ディザスター リカバリ (HADR) ソリューションにトラフィックをルーティングするために Azure Load Balancer または分散ネットワーク名 (DNN) に依存する必要がなくなります。 詳細については、[複数のサブネットの可用性グループ](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)のチュートリアル、または [FCI 用の SQL Server VM の準備](failover-cluster-instance-prepare-vm.md#subnets)に関する記事を参照してください。 | 
+| **SQL の評価** | [SQL Assessment](sql-assessment-for-sql-vm.md) を使用して Azure portal 内の SQL Server VM の正常性を評価し、パフォーマンスを向上させる推奨事項を提示し、不足しているベストプラクティス構成を特定できるようになりました。 現在、この機能はプレビュー段階にあります。 |
+| &nbsp; | &nbsp; |
 
 
 ## <a name="october-2021"></a>2021 年 10 月
@@ -37,6 +39,7 @@ SQL Server がインストールされた Azure 仮想マシン (VM) を手動�
 | [変更点] | 詳細 |
 | --- | --- |
 | **SQL IaaS 拡張機能での Ubuntu のサポートの開始** | [SQL Server IaaS 拡張](../linux/sql-server-iaas-agent-extension-linux.md)機能を使用して Ubuntu Linux 上で実行されている SQL Server VM を[登録](../linux/sql-iaas-agent-extension-register-vm-linux.md)するためのサポートが追加されました。 | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="september-2021"></a>2021 年 9 月
@@ -44,6 +47,7 @@ SQL Server がインストールされた Azure 仮想マシン (VM) を手動�
 | [変更点] | 詳細 |
 | --- | --- |
 | **SQL IaaS 拡張機能のフル モードで再起動が不要に** | [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に SQL Server VM を[フル モード](sql-agent-extension-manually-register-single-vm.md#full-mode)で登録するときでも、SQL Server サービスの再起動は不要になりました。 | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="july-2021"></a>2021 年 7 月
@@ -51,6 +55,7 @@ SQL Server がインストールされた Azure 仮想マシン (VM) を手動�
 | [変更点] | 詳細 |
 | --- | --- |
 | **ポータルで SQL Server IaaS 拡張機能を修復する** | これで、Azure portal から SQL Server IaaS Agent 拡張機能の状態を直接確認し、必要であればそれを[修復](sql-agent-extension-manually-register-single-vm.md#repair-extension)できるようになりました。 | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="june-2021"></a>2021 年 6 月
@@ -58,12 +63,15 @@ SQL Server がインストールされた Azure 仮想マシン (VM) を手動�
 | [変更点] | 詳細 |
 | --- | --- |
 | **Azure portal のセキュリティ拡張機能** | [Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にすると、[Azure portal で SQL 仮想マシン リソース](manage-sql-vm-portal.md#security-center)のセキュリティ センター推奨事項を表示できます。 | 
+| &nbsp; | &nbsp; |
+
 
 ## <a name="may-2021"></a>2021 年 5 月
 
 | [変更点] | 詳細 |
 | --- | --- |
 | **HADR コンテンツの更新** | Microsoft では、高可用性とディザスター リカバリー (HADR) のコンテンツを更新し、強化しました。 ここでは、[Windows Server フェールオーバー クラスターの概要](hadr-windows-server-failover-cluster-overview.md)と、SQL Server VM の[クォーラムの構成方法](hadr-cluster-quorum-configure-how-to.md)について説明します。  さらに、クラウドに採用されているより包括的な設定の推奨事項を使用して、[クラスターのベスト プラクティス](hadr-cluster-best-practices.md)を強化しました。| 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="april-2021"></a>2021 年 4 月
@@ -71,14 +79,14 @@ SQL Server がインストールされた Azure 仮想マシン (VM) を手動�
 | [変更点] | 詳細 |
 | --- | --- |
 | **高可用性を VM に移行する** | Azure Migrate では、高可用性ソリューション全体を Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 今すぐ Azure Migrate を使用して、[可用性グループ](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)または[フェールオーバー クラスター インスタンス](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)を SQL Server VM に移行してください。 | 
-
+| &nbsp; | &nbsp; |
 
 ## <a name="march-2021"></a>2021 年 3 月
 
 | [変更点] | 詳細 |
 | --- | --- |
 | **パフォーマンスのベスト プラクティスの更新** | パフォーマンスのベスト プラクティスに関するドキュメントを書き換え、更新しました。1 つの記事を一連の記事に分割し、[チェックリスト](performance-guidelines-best-practices-checklist.md)、[VM サイズのガイダンス](performance-guidelines-best-practices-vm-size.md)、[記憶域のガイダンス](performance-guidelines-best-practices-storage.md)、[基本手順](performance-guidelines-best-practices-collect-baseline.md)がそれぞれまとめられています。   | 
-
+| &nbsp; | &nbsp; |
 
 
 ## <a name="2020"></a>2020

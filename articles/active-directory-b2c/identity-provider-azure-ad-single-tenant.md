@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81067c8c1b24897d88f3d8da4d21329b030cbd03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a63c89174103613c722d463e32085600019e9ea0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036449"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026009"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -80,7 +80,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[省略可能な要求を追加]** を選択します。
 1. **[トークンの種類]** で、 **[ID]** を選択します。
 1. 追加する省略可能な要求 (`family_name` と `given_name`) を選択します。
-1. **[追加]** をクリックします。
+1. **[追加]** を選択します。 **[Microsoft Graph 電子メールのアクセス許可を有効にします (要求がトークンに表示されるために必要)]** が表示される場合は、それを有効にしてから再度 **[追加]** を選択します。
 
 ## <a name="optional-verify-your-app-authenticity"></a>[省略可能] アプリの信頼性を確認する
 
@@ -101,8 +101,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` 」のように入力します。
-    たとえば、「 `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` 」のように入力します。
+ たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` 」のように入力します。 カスタム ドメインを使用する場合は、`https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` に自分のカスタム ドメインを入れて `contoso.com` を置き換えます。
 
 1. **[クライアント ID]** には、前に記録したアプリケーション ID を入力します。
 1. **[クライアント シークレット]** には、前に記録したクライアント シークレットを入力します。
@@ -125,7 +124,8 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Azure AD ID プロバイダーを追加するユーザー フローをクリックします。
-1. **[ソーシャル ID プロバイダー]** から、 **[Contoso Azure AD]** を選択します。
+1. **[設定]** で **[ID プロバイダー]** を選択します
+1. **[カスタム ID プロバイダー]** で **[Contoso Azure AD]** を選択します。
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。 

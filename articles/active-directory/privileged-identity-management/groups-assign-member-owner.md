@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f2978f2ee0eca3aef438d05f1e8aebbee3eeb1
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 62012b910ad1e08291760a2aea0747bf5d4c024d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667689"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157574"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる
 
@@ -34,7 +34,8 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 これらの手順に従って、ユーザーを特権アクセス グループのメンバーまたは所有者の適用対象にすることができます。
 
-1. 全体管理者またはグループ所有者のアクセス許可を持つ [Azure AD にサインイン](https://aad.portal.azure.com)します。
+1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)のロール、特権ロール管理者のロール、またはグループの所有者のロールであるユーザーを使用して、[Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
+
 1. **[グループ]** を選択し、管理対象とする、ロールを割り当て可能なグループを選択します。 リストを検索またはフィルター処理することができます。
 
     ![PIM で管理する、ロールを割り当て可能なグループを見つける](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)

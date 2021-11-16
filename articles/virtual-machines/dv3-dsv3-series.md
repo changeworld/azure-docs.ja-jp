@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: e6439acb72bffabf117387182ee6eb08f1041873
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ecc2412c8774dc3c0b9b84b336fbacae440f9419
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131437279"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369970"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 および Dsv3 シリーズ
 
@@ -38,6 +38,7 @@ Dv3 シリーズの VM は、Intel® ハイパースレッディング テクノ
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC 数/想定ネットワーク帯域幅 |
@@ -66,6 +67,7 @@ Dsv3 シリーズの VM は、Intel® ハイパースレッディング テク�
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | バースト キャッシュが有効な一時ストレージの最大スループット: IOPS/MBps<sup>2</sup> | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | バースト キャッシュが無効なディスクの最大スループット: IOPS/MBps<sup>1</sup> | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |

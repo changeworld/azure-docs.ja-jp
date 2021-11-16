@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/27/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 4e2dff653564a568905160188fc4be308812c557
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 99735c9e18cb6e278c85254bcebbe514c2fbe0f3
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460719"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866560"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
@@ -118,7 +118,10 @@ SaaS サブスクリプションに対して 2 種類の更新ができます。
 
 公開元は、公開元側で SaaS サービスへの変更を行うことも、行わないこともあります。 公開元側で、中断された顧客に対してこの情報が提供されるようにし、SaaS サービスへの顧客のアクセスを制限またはブロックすることをお勧めします。 支払いが一切受け取られない可能性があります。
 
-Microsoft は、サブスクリプションを自動的に取り消す前に、30 日間の猶予期間を顧客に提供します。 サブスクリプションが *Suspended* 状態にある場合:
+> [!NOTE]
+> Microsoft は、サブスクリプションを自動的に取り消す前に、30 日間の猶予期間を顧客に提供します。 30 日間の猶予期間が過ぎた後、Webhook は[登録解除](#cancel-a-subscription)のアクションを受け取ります。
+
+サブスクリプションが *Suspended* 状態にある場合:
 
 * パートナーまたは ISV は SaaS アカウントを復旧可能な状態にしておく必要があります。これにより、データや設定を失わずにすべての機能を復元できます。
 * パートナーまたは ISV は、猶予期間中に支払いが発生した場合は、サブスクリプションの復帰要求を想定し、そうでなければ、猶予期間の終わりにこのサブスクリプションのプロビジョニング解除要求を想定してください。 両方の要求は、Webhook メカニズムを使用して送信されます。

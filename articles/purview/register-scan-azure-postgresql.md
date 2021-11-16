@@ -1,29 +1,31 @@
 ---
 title: Azure Database for PostgreSQL に接続して管理する
-description: このガイドでは、Azure Purview で Azure Database for PostgreSQL に接続し、Azure Purview の機能を使用して Azure Database for PostgreSQL ソースをスキャンおよび管理する方法について説明します。
-author: evwhite
+description: このガイドでは、Azure Purview で Azure Database for PostgreSQL 単一サーバーに接続し、Azure Purview の機能を使用して Azure Database for PostgreSQL ソースをスキャンおよび管理する方法について説明します。
+author: evangelinew
 ms.author: evwhite
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 1f5fa328a7a7a2f61647274eba0ba0282a820ec8
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: a4205f768e004613231961a43f7ec9fa5461f078
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131841904"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179647"
 ---
 # <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Azure Purview で Azure Database for PostgreSQL に接続して管理する
 
-この記事では、Azure Database for PostgreSQL を登録する方法と、Azure Purview で Azure Database for PostgreSQL を認証して操作する方法の概要を説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
+この記事では、単一サーバー デプロイ オプションでデプロイされた Azure Database for PostgreSQL を登録する方法と、Azure Purview で Azure Database for PostgreSQL を認証して操作する方法の概要を説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
+Purview は、Azure Database for PostgreSQL の単一サーバー デプロイ オプションのみをサポートしています。
+
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)| [あり](#scan) | [あり](#scan) | [あり](#scan) | いいえ | いいえ** |
+| [あり](#register) | [あり](#scan)| [はい](#scan) | [はい](#scan) | [はい](#scan) | いいえ | いいえ** |
 
 \** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
@@ -33,7 +35,7 @@ ms.locfileid: "131841904"
 
 * アクティブな [Purview リソース](create-catalog-portal.md)。
 
-* Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
+* Purview Studio でソースを登録し管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細は、[Azure Purview のアクセス許可に関するページ](catalog-permissions.md)を参照してください。
 
 ## <a name="register"></a>登録
 
@@ -41,7 +43,7 @@ ms.locfileid: "131841904"
 
 ### <a name="authentication-for-registration"></a>登録の認証
 
-現時点では、Azure Database for PostgreSQL を管理および操作するためには、SQL 認証のみがサポートされています。
+現時点では、Azure Database for PostgreSQL 単一サーバーを管理および操作するためには、SQL 認証のみがサポートされています。
 
 #### <a name="sql-authentication"></a>SQL 認証
 

@@ -3,12 +3,12 @@ title: 環境変数とアプリ設定のリファレンス
 description: 一般的に使用される環境変数と、アプリ設定で変更できるものについて説明します。
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: ae0f67ae935d31fc242350761e80e5d073a7273a
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: e315a51e7d160bcc2d8864cfa954924f0fe4c094
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892061"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025757"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Azure App Service の環境変数とアプリ設定
 
@@ -298,7 +298,7 @@ DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
 |`WEBSITE_SLOT_NAME`| 読み取り専用です。 現在のデプロイ スロットの名前。 運用スロットの名前は `Production` です。 ||
 |`WEBSITE_OVERRIDE_STICKY_EXTENSION_VERSIONS`| 既定では、サイト拡張機能のバージョンは各スロットに固有です。 これにより、スワップ後に拡張機能のバージョンが変更されるために発生する予期しないアプリケーション動作を防ぐことができます。 拡張機能のバージョンもスワップする場合は、"*すべてのスロット*" で `1` に設定します。 ||
 |`WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS`| 特定の設定を、[既定で固定またはスワップ不可能](deploy-staging-slots.md#which-settings-are-swapped)として指定します。 既定値は `true` です。 代わりに "*すべてのデプロイ スロット*" をスワップ可能にするには、それらに対してこの設定を `false` または `0` に設定します。 特定の設定の種類を細かく制御することはできません。 ||
-|`WEBSITE_SWAP_WARMUP_PING_PATH`| ターゲット スロットをウォームアップするために ping を実行するパス (スラッシュで始まる)。 既定値は `/` で、ルート パスに ping を実行します。 | `/statuscheck` |
+|`WEBSITE_SWAP_WARMUP_PING_PATH`| ターゲット スロットをウォームアップするために ping を実行するパス (スラッシュで始まる)。 既定値は `/` で、HTTP 経由でルート パスに ping を実行します。 | `/statuscheck` |
 |`WEBSITE_SWAP_WARMUP_PING_STATUSES`| スワップ中のウォームアップ操作の有効な HTTP 応答コード。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。 | `200,202` |
 | `WEBSITE_SLOT_NUMBER_OF_TIMEOUTS_BEFORE_RESTART` | スロット スワップ中に特定の VM インスタンス上のサイトを強制的に再起動するまでのタイムアウトの最大回数。 既定では、 `3`です。 ||
 | `WEBSITE_SLOT_MAX_NUMBER_OF_TIMEOUTS` | スロット スワップ中に 1 つの URL に対するタイムアウト要求を中止するまでの最大回数。 既定では、 `5`です。 ||

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
-ms.openlocfilehash: d0b97d65a9c543c6afd4ae8afa9e75bf37b9f7a3
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 87318f887078a07783ec68af4fb6819f227eb38c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071209"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248528"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガーとバインドの概要
 
@@ -55,7 +55,7 @@ ms.locfileid: "130071209"
 
 ### <a name="cosmos-db-extension-4x-and-higher"></a>Cosmos DB 拡張機能 4.x 以降
 
-Cosmos DB のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 [シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更され、v2 SDK `Microsoft.Azure.DocumentDB` からの型が v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) からの新しい型に置き換えられます。 これらの新しい型の相違点と、それらへの移行方法の詳細については、[SDK 移行ガイド](../cosmos-db/sql/migrate-dotnet-v3.md)、[トリガー](./functions-bindings-cosmosdb-v2-trigger.md)、[入力バインディング](./functions-bindings-cosmosdb-v2-input.md)、および[出力バインディング](./functions-bindings-cosmosdb-v2-output.md)の例を参照してください。
+Cosmos DB のバインド拡張機能の新しいバージョンはプレビュー版をご利用いただけます。 [シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 マネージド ID を使用して関数アプリを構成するチュートリアルについては、[ID ベースの接続を使用した関数アプリの作成に関するチュートリアル](./functions-identity-based-connections-tutorial.md)を参照してください。 .NET アプリケーションの場合は、新しい拡張機能のバージョンでバインドできる型も変更され、v2 SDK `Microsoft.Azure.DocumentDB` からの型が v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) からの新しい型に置き換えられます。 これらの新しい型の相違点と、それらへの移行方法の詳細については、[SDK 移行ガイド](../cosmos-db/sql/migrate-dotnet-v3.md)、[トリガー](./functions-bindings-cosmosdb-v2-trigger.md)、[入力バインディング](./functions-bindings-cosmosdb-v2-input.md)、および[出力バインディング](./functions-bindings-cosmosdb-v2-output.md)の例を参照してください。
 
 この拡張機能のバージョンは、[プレビュー NuGet パッケージ]として入手できます。 詳細については、[ユーザーの更新]に関するページを参照してください。
 

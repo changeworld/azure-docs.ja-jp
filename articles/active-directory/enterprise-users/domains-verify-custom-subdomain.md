@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/28/2021
+ms.date: 11/05/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb41fbaf1b1430cddb1ce5c44748edf35801405e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c8a0ab89e8437edec176e7033665b627df6cd493
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427648"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866490"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Azure Active Directory でのサブドメイン認証の種類の変更
 
@@ -39,7 +39,7 @@ Azure AD ポータルで、親ドメインがフェデレーションされて�
    New-MsolDomain -Name "child.mydomain.com" -Authentication Federated
    ```
 
-1. [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net) を使用して、ドメインに GET を実行します。 ドメインはルート ドメインではないため、ルート ドメインの認証の種類を継承します。 コマンドと結果は次のようになります。独自のテナント ID を使用しています。
+1. ドメインを取得するには、次の例を使用します。 ドメインはルート ドメインではないため、ルート ドメインの認証の種類を継承します。 コマンドと結果は次のようになります。独自のテナント ID を使用しています。
 
    ```http
    GET https://graph.windows.net/{tenant_id}/domains?api-version=1.6
@@ -63,7 +63,7 @@ Azure AD ポータルで、親ドメインがフェデレーションされて�
      },
    ```
 
-### <a name="use-azure-ad-graph-explorer-api-to-make-this-a-root-domain"></a>Azure AD Graph Explorer API を使用してこれをルート ドメインにする
+### <a name="use-microsoft-graph-api-to-make-this-a-root-domain"></a>Microsoft Graph API を使用してこれをルート ドメインにする
 
 次のコマンドを使用して、サブドメインを昇格します。
 
@@ -79,7 +79,7 @@ POST https://graph.windows.net/{tenant_id}/domains/child.mydomain.com/promote?ap
    Set-MsolDomainAuthentication -DomainName child.mydomain.com -Authentication Managed
    ```
 
-1. Azure AD Graph Explorer で GET を使って、サブドメイン認証の種類がマネージドになったことを確認します。
+1. Microsoft Graph API で GET を使って、サブドメイン認証の種類がマネージドになったことを確認します。
 
    ```http
    GET https://graph.windows.net/{{tenant_id} }/domains?api-version=1.6

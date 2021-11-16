@@ -11,34 +11,37 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/06/2019
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.reviewer: mathoma
-ms.openlocfilehash: bcf48bf068d48420c162effa563c4225baf7b990
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a443d65b6e96a96df164a828ac4783966297ab8b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219642"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156299"
 ---
-# <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
+# <a name="configure-one-or-more-always-on-availability-group-listeners"></a>1 つ以上の Always On 可用性グループ リスナーの構成
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
 
 このドキュメントでは、PowerShell を使用して次のいずれかのタスクを実行する方法について説明します。
 - ロード バランサーを作成する
 - SQL Server 可用性グループの既存のロード バランサーに IP アドレスを追加する。
 
-可用性グループ リスナーは、クライアントがデータベース アクセスのために接続する仮想ネットワーク名です。 Azure Virtual Machines では、ロード バランサーによってリスナーの IP アドレスが保持されます。 ロード バランサーは、プローブ ポートでリッスンしている SQL Server のインスタンスにトラフィックをルーティングします。 通常、可用性グループでは内部ロード バランサーが使用されます。 Azure 内部ロード バランサーは、1 つ以上の IP アドレスをホストできます。 各 IP アドレスで、特定のプローブ ポートが使用されます。 
+可用性グループ リスナーは、クライアントがデータベース アクセスのために接続する仮想ネットワーク名です。 1 つのサブネットの Azure Virtual Machines では、ロード バランサーによってリスナーの IP アドレスが保持されます。 ロード バランサーは、プローブ ポートでリッスンしている SQL Server のインスタンスにトラフィックをルーティングします。 通常、可用性グループでは内部ロード バランサーが使用されます。 Azure 内部ロード バランサーは、1 つ以上の IP アドレスをホストできます。 各 IP アドレスで、特定のプローブ ポートが使用されます。 
 
-内部ロード バランサーに複数の IP アドレスを割り当てる機能は Azure の新機能であり、Resource Manager モデルでのみ利用できます。 この作業を行うには、SQL Server 可用性グループが Resource Manager モデルの Azure Virtual Machines にデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](./availability-group-quickstart-template-configure.md) を使用すると、Azure Resource Manager で自動的に可用性グループを作成することができます。 このテンプレートでは、内部ロード バランサーを含む可用性グループが自動的に作成されます。 必要に応じて [AlwaysOn 可用性グループを手動で構成](availability-group-manually-configure-tutorial.md)することもできます。
+内部ロード バランサーに複数の IP アドレスを割り当てる機能は Azure の新機能であり、Resource Manager モデルでのみ利用できます。 この作業を行うには、SQL Server 可用性グループが Resource Manager モデルの Azure Virtual Machines にデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](./availability-group-quickstart-template-configure.md) を使用すると、Azure Resource Manager で自動的に可用性グループを作成することができます。 このテンプレートでは、内部ロード バランサーを含む可用性グループが自動的に作成されます。 必要に応じて [AlwaysOn 可用性グループを手動で構成](availability-group-manually-configure-tutorial-single-subnet.md)することもできます。
 
 この記事の手順を完了するには、可用性グループが既に構成されている必要があります。  
 
 関連トピック:
 
-* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](availability-group-manually-configure-tutorial.md)   
+* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](availability-group-manually-configure-tutorial-single-subnet.md)   
 * [Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]

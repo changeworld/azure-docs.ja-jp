@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: セキュリティ エージェントの概要'
-description: このクイックスタートでは、Azure Defender for IoT サービスで使用されるエージェントのセキュリティ エージェント アーキテクチャについて説明します。
+description: このクイックスタートでは、Microsoft Defender for IoT サービスで使用されるエージェントのセキュリティ エージェント アーキテクチャについて説明します。
 ms.topic: quickstart
-ms.date: 4/4/2021
-ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 0fba4f592bdfa0ca055fcccb4808bb8d5dbd37b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011257"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281762"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>クイックスタート: セキュリティ エージェントの参照アーキテクチャ
 
-Azure Defender for IoT には、IoT Hub を介してセキュリティ データのログを収集、処理、集計、および送信する、セキュリティ エージェントの参照アーキテクチャがあります。
+Microsoft Defender for IoT には、IoT Hub を介してセキュリティ データのログを収集、処理、集計、および送信する、セキュリティ エージェントのリファレンス アーキテクチャが用意されています。
 
 セキュリティ エージェントは、制約のある IoT 環境で機能するように設計されており、消費するリソースと比較した場合、提供する価値という観点で高度にカスタマイズ可能です。
 
@@ -44,11 +44,9 @@ Defender for IoT では、32 ビットと 64 ビットの Windows のエージ�
 | 32 ビット | C | C# |  |
 | 64 ビット | C# または C | C# | デバイス リソースがさらに制限されているか少ないデバイスについては、C エージェントを使用することをお勧めします。 |
 
-
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Defender for IoT Defender-IoT-micro-agent アーキテクチャと利用できるインストーラーについて概要を学習しました。
-Defender for IoT のデプロイの概要について引き続き学習するには、 
+この記事では、Defender for IoT の Defender-IoT-micro-agent アーキテクチャと、使用可能なインストーラーの概要について説明しました。引き続き Defender for IoT のデプロイを開始するには、使用可能なセキュリティ エージェントの認証方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 8f18b4f7c39ba16fbd70301c36d08319c2e3fcf9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d7fa588c0711285c968c13ab14e319fb803e9785
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065287"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323469"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -185,7 +185,7 @@ Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/a
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
-Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Azure Security Center に対して、リソースのスキャンと推奨事項の順守を許可する必要があります。 詳細については、「[Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)」および「[Azure Kubernetes Service と Security Center の統合](../security-center/defender-for-kubernetes-introduction.md)」を参照してください。
+Microsoft Defender for Cloud では、統合されたセキュリティ管理と高度な脅威に対する保護がハイブリッド クラウド ワークロードに提供されます。 リソースのスキャンを Microsoft Defender for Cloud に許可し、その推奨事項に従う必要があります。 詳細については、[Defender for Cloud による Azure Container Registry イメージのスキャン](../security-center/defender-for-container-registries-introduction.md)および [Azure Kubernetes Service と Defender for Cloud の統合](../security-center/defender-for-kubernetes-introduction.md)に関するページを参照してください。
 
 ### <a name="advanced"></a>詳細設定
 

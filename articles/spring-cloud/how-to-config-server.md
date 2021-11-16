@@ -7,12 +7,12 @@ ms.author: karler
 author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 0de08976f0391c995004265ac1b1a33cf4a5c491
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 00411cf37a6f2728d3f8d1d0565e1d836b839192
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835789"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135398"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -107,7 +107,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 > 多くの `Git` リポジトリ サーバーで、HTTP 基本認証のパスワードではなく、トークンの使用がサポートされています。 一部のリポジトリでは、トークンを無期限に保持できます。 しかし、一部の Git リポジトリ サーバー (Azure DevOps Server を含む) では、強制的にトークンの有効期限を数時間に設定しています。 トークンの有効期限が切れるリポジトリでは、Azure Spring Cloud でトークンベースの認証を使用しないでください。
 > Github のパスワード認証のサポートが削除されたため、Github ではパスワード認証の代わりに個人用アクセス トークンを使用する必要があります。 詳細については、[トークン認証](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)に関するページをご覧ください。
 
-### <a name="git-repositories-with-pattern"></a>パターンを使用する Git リポジトリ
+### <a name="git-additional-repositories"></a>Git の追加リポジトリ
 
 パターンを使用する Git リポジトリを設定するために使用されるすべての構成可能なプロパティを、以下の一覧に示します。
 
@@ -128,6 +128,16 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 | `repos."host-key"`                 | いいえ             | Git リポジトリ サーバーのホスト キーには、`host-key-algorithm` で対応されているアルゴリズム プレフィックスを含めないでください。 |
 | `repos."host-key-algorithm"`       | いいえ             | ホスト キー アルゴリズム。*ssh-dss*、*ssh-rsa*、*ecdsa-sha2-nistp256*、*ecdsa-sha2-nistp384*、*ecdsa-sha2-nistp521* のいずれかを指定する必要があります。 `host-key` が存在する場合にのみ "*必須*"。 |
 | `repos."strict-host-key-checking"` | いいえ             | プライベートな `host-key` が指定されたら、Config Server インスタンスが起動に失敗するかどうかを示します。 *true* (既定値) または *false* にする必要があります。 |
+
+次の表に、 **[追加のリポジトリ]** セクションの例をいくつか示します。 詳細については、Spring のドキュメントの「[パターン マッチングと複数のリポジトリ](https://cloud.spring.io/spring-cloud-config/reference/html/#_pattern_matching_and_multiple_repositories)」を参照してください。
+
+| パターン                        | 説明 |
+| :------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| *test-config-server-app-0/\**   | パターンとリポジトリの URI は、`test-config-server-app-0` という名前の Spring boot アプリケーションを任意のプロファイルと照合します。  |
+| *test-config-server-app-1/dev*  | パターンとリポジトリの URI は、`test-config-server-app-1` という名前の Spring boot アプリケーションを dev プロファイルと照合します。  |
+| *test-config-server-app-2/prod* | パターンとリポジトリの URI は、`test-config-server-app-2` という名前の Spring boot アプリケーションを prod プロファイルと照合します。 |
+
+:::image type="content" source="media/spring-cloud-tutorial-config-server/additional-repositories.png" lightbox="media/spring-cloud-tutorial-config-server/additional-repositories.png" alt-text="[追加のリポジトリ] テーブルの [パターン] 列が強調表示されている [構成サーバー] ページを示す Azure portal のスクリーンショット":::
 
 ## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>自分の Config Server リポジトリを Azure Spring Cloud に接続する
 
@@ -175,9 +185,9 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
     ![[認証の編集] ペインの SSH 認証](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
-#### <a name="pattern-repository"></a>パターン リポジトリ
+#### <a name="additional-repositories"></a>追加のリポジトリ
 
-オプションの **パターン リポジトリ** を使用してサービスを構成する場合は、**既定のリポジトリ** と同じように、**URI** と **認証** を指定します。 パターンの **名前** を必ず指定し、 **[適用]** を選択してインスタンスに接続します。
+オプションの **追加のリポジトリ** を使用してサービスを構成する場合は、**既定のリポジトリ** と同じように、**URI** と **認証** を指定します。 パターンの **名前** を必ず指定し、 **[適用]** を選択してインスタンスに接続します。
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>リポジトリの情報を YAML ファイルに入力する
 

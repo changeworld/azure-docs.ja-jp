@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 11/08/2021
 ms.author: cshoe
-ms.openlocfilehash: 15df9d0bf25739fd1271f0f51f693e1a1d368637
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: b7ab83ddf6d3f20c28d030d48b50ebb88d6676ae
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138453"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027472"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure Functions による Azure Static Web Apps での API のサポート
 
@@ -33,7 +33,7 @@ Azure Static Web Apps の API は、[ホスティング プラン](plans.md#feat
 | 機能 | マネージド関数 | 独自の関数の持ち込み |
 | --- | --- | --- |
 | Azure Functions [トリガー](../azure-functions/functions-triggers-bindings.md#supported-bindings)へのアクセス | HTTP のみ | All |
-| サポートされている Azure Functions [ランタイム](../azure-functions/supported-languages.md#languages-by-runtime-version) | Node.js 12<br>.NET Core 3.1<br>Python 3.8 | All |
+| サポートされている Azure Functions [ランタイム](../azure-functions/supported-languages.md#languages-by-runtime-version) | Node.js 12<br>.NET Core 3.1<br>.NET 6.0<br>Python 3.8 | All |
 | サポートされている Azure Functions の[ホスティング プラン](../azure-functions/functions-scale.md) | 従量課金 | 従量課金<br>Premium<br>専用 |
 | ユーザー認証とロールベースの承認データに直接アクセスできる[統合セキュリティ](user-information.md)。 | ✔ | ✔ |
 | カスタム CORS ルールを必要とせずに、Web アプリで安全に _api_ ルートを使用できるようにする [ルーティングの統合](./configuration.md?#routes)。 | ✔ | ✔ |
@@ -66,7 +66,7 @@ Web アプリでは、_api_ ルートを介して API エンドポイントを�
 
 | マネージド関数 | 独自の関数の持ち込み |
 | --- | --- |
-| <ul><li>トリガーは、[HTTP](../azure-functions/functions-bindings-http-webhook.md) に限定されています。</li><li>Azure Functions アプリは Node.js 12、.NET Core 3.1、または Python 3.8 形式である必要があります。</li><li>一部のアプリケーション設定は、サービスによって管理されているため、次のプレフィックスはランタイムで予約されています。<ul><li>*APPSETTING\_、AZUREBLOBSTORAGE\_、AZUREFILESSTORAGE\_、AZURE_FUNCTION\_、CONTAINER\_、DIAGNOSTICS\_、DOCKER\_、FUNCTIONS\_、IDENTITY\_、MACHINEKEY\_、MAINSITE\_、MSDEPLOY\_、SCMSITE\_、SCM\_、WEBSITES\_、WEBSITE\_、WEBSOCKET\_、AzureWeb*</li></ul></li></ul> | <ul><li>Functions アプリのデプロイを管理する必要があります。</li></ul> |
+| <ul><li>トリガーは、[HTTP](../azure-functions/functions-bindings-http-webhook.md) に限定されています。</li><li>Azure Functions アプリは Node.js 12、.NET Core 3.1、.NET 6.0、または Python 3.8 形式である必要があります。</li><li>一部のアプリケーション設定は、サービスによって管理されているため、次のプレフィックスはランタイムで予約されています。<ul><li>*APPSETTING\_、AZUREBLOBSTORAGE\_、AZUREFILESSTORAGE\_、AZURE_FUNCTION\_、CONTAINER\_、DIAGNOSTICS\_、DOCKER\_、FUNCTIONS\_、IDENTITY\_、MACHINEKEY\_、MAINSITE\_、MSDEPLOY\_、SCMSITE\_、SCM\_、WEBSITES\_、WEBSITE\_、WEBSOCKET\_、AzureWeb*</li></ul></li></ul> | <ul><li>Functions アプリのデプロイを管理する必要があります。</li></ul> |
 
 ## <a name="next-steps"></a>次のステップ
 

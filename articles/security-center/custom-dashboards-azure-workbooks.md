@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/18/2021
-ms.openlocfilehash: 50070c59c99e40e0d4d40577119f7f1d9805ecf9
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 07c253efdb5f029d6df5e508cd690d2b47d40934
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445314"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056002"
 ---
 # <a name="create-rich-interactive-reports-of-defender-for-cloud-data"></a>Defender for Cloud データの豊富な対話型レポートを作成する
 

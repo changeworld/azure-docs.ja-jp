@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 11/4/2021
 ms.author: b-juche
-ms.openlocfilehash: 3488b6807982f97cd5feef9b07a6dc7cbe180dcd
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 90867546e0866d0d899bc990a9eb5225fbaf4c1e
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407553"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027719"
 ---
 # <a name="create-a-capacity-pool-for-azure-netapp-files"></a>Azure NetApp Files 用の容量プールを作成する
 
@@ -51,7 +51,7 @@ ms.locfileid: "129407553"
 
     * **サイズ**     
      購入する容量プールのサイズを指定します。        
-     容量プールの最小サイズは 4 TiB です。 プールは、4 TiB の倍数のサイズで作成することができます。   
+     容量プールの最小サイズは 4 TiB です。 容量プールのサイズは 1 TiB 単位で変更できます。
 
    * **QoS**   
      容量プールで **[手動]** と **[自動]** のどちらの種類の QoS を使用するかを指定します。  

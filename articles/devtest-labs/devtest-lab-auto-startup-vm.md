@@ -3,22 +3,22 @@ title: VM の自動開始設定を構成する
 description: ラボで VM の自動開始設定を構成する方法について説明します。 この設定により、ラボ内の VM はスケジュールに基づいて自動的に開始されます。
 ms.topic: how-to
 ms.date: 10/21/2021
-ms.openlocfilehash: 8493a5037c01741c11f89ec5df84adac2d2d70c3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ea4220af8a3d7ade997b9e64b7164757edfc165a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255026"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286718"
 ---
-# <a name="auto-startup-lab-virtual-machines"></a>ラボの仮想マシンの自動スタートアップ
+# <a name="start-up-lab-virtual-machines-automatically"></a>ラボ仮想マシンを自動的に起動する
 
-自動開始を使用すると、毎日スケジュールされた時刻にラボ内の仮想マシン (VM) を自動的に起動できます。 最初に自動開始ポリシーを作成する必要があります。 次に、ポリシーに従う VM を選ぶ必要があります。 自動的に開始する VM をわざわざ明示的に選ぶのは、必要のない VM が誤って開始されてコストが増えるのを防ぐためです。
+自動開始を使用すると、毎日スケジュールされた時刻にラボ内の仮想マシン (VM) を自動的に起動できます。 まず、自動開始ポリシーを作成する必要があります。 次に、ポリシーに従う VM を選ぶ必要があります。 自動的に開始する VM をわざわざ明示的に選ぶのは、必要のない VM が誤って開始されてコストが増えるのを防ぐためです。
 
 この記事では、ラボの自動開始ポリシーの構成方法について説明します。 自動シャットダウンの設定の構成については、[Azure DevTest Labs でのラボの自動シャットダウン ポリシーの管理](devtest-lab-auto-shutdown.md)に関する記事をご覧ください。 
 
 ## <a name="configure-auto-start-settings-for-a-lab"></a>ラボの自動開始設定を構成する 
 
-このポリシーでは、ラボの VM に自動開始が自動的に適用されることはありません。 ポリシーを構成した後、「[ラボの VM で自動開始を有効にする](#enable-auto-start-for-a-vm-in-the-lab)」の手順のようにします。
+このポリシーでは、ラボの VM に自動開始が自動的に適用されることはありません。 ポリシーを構成した後、「[ラボの VM で自動開始を有効にする](#enable-auto start-for-a-vm-in-the-lab)」の手順に従います。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -44,7 +44,7 @@ ms.locfileid: "130255026"
 
     :::image type="content" source="./media/devtest-lab-auto-startup-vm/auto-start-configuration.png" alt-text="自動開始のスケジュール設定のスクリーンショット。":::
 
-1. <bpt id="p1">**</bpt>[保存]<ept id="p1">**</ept> を選択します。 
+1. **[保存]** を選択します。 
 
 ## <a name="enable-auto-start-for-a-vm-in-the-lab"></a>ラボの VM で自動開始を有効にする
 
@@ -64,4 +64,4 @@ ms.locfileid: "130255026"
 
 ## <a name="next-steps"></a>次のステップ
 
-ラボの自動シャットダウン ポリシーの構成については、「[Azure DevTest Labs でラボの自動シャットダウン ポリシーを管理する](devtest-lab-auto-shutdown.md)」を参照してください。
+- [Azure DevTest Labs でラボの自動シャットダウン ポリシーを管理する](devtest-lab-auto-shutdown.md)

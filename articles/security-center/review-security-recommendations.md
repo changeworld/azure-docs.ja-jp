@@ -5,15 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 10/20/2021
+ms.date: 11/07/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 01a89b52efb3b0184001dd130499e0438687772f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: eb310e8edfb48c2252ae596aa95225e00329f5d2
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092696"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988240"
 ---
 # <a name="review-your-security-recommendations"></a>セキュリティの推奨事項を確認する
 
@@ -45,7 +44,11 @@ Defender for Cloud によってリソースのセキュリティ状態が分析�
         - **クエリを開く** - すべての推奨事項には、Azure Resource Graph Explorer を使用して、影響を受けるリソースの詳細情報を表示するオプションがあります。
     1. **重大度インジケーター**。
     1. **更新間隔** (該当する場合)。
-    1. この推奨事項に対して除外が存在する場合は、除外されたリソースの数を示す **除外されたリソースの数**。
+    1. **除外されたリソースの数**。推奨事項に対して除外が存在する場合に、特定リソースを表示するリンクと共に除外されたリソースの数が示されます。
+    1. **MITRE ATT&CK ® 戦術と手法へのマッピング**。推奨事項で戦術と手法が定義されている場合は、MITRE のサイトの関連ページへのリンクのアイコンを選択します。 
+
+        :::image type="content" source="media/review-security-recommendations/tactics-window.png" alt-text="推奨事項の MITRE 戦術マッピングのスクリーンショット。":::
+
     1. **説明** - セキュリティの問題に関する短い説明。
     1. 関連する場合、詳細ページには **関連する推奨事項** の表も含まれています。
 
@@ -65,7 +68,6 @@ Defender for Cloud によってリソースのセキュリティ状態が分析�
     1. **影響を受けるリソース** - リソースはタブにグループ化されています。
         - **正常なリソース** - 影響を受けていないか、既に問題を修正した関連するリソース。
         - **異常なリソース** – 特定された問題の影響を受けているリソース。
-        - **削除済み** - (更新間隔で定義されている) 評価サイクルの間に削除されたリソース。
         - **適用されないリソース** – 推奨事項で明確な回答を得ることができないリソース。 [適用されないリソース] タブには、各リソースの理由も含まれています。 
 
             :::image type="content" source="./media/review-security-recommendations/recommendations-not-applicable-reasons.png" alt-text="理由が表示されている [適用されないリソース] タブ。":::

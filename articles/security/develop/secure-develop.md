@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 2f81cd3e37b6fefea1a76a8a4bb50c756ff1fca4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: afe4ce82b779a6f8913ed61a44f3cf15992ba7e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131463527"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335520"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 
@@ -102,7 +102,7 @@ Azure Active Directory B2C では、[セルフサービス パスワード リ�
 
 マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Broadcom](https://www.broadcom.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) をインストールできます。
 
-[Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/security-center-partner-integration.md) と統合できます。
+[Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと組み込みの検出 (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Microsoft Defender for Cloud](../../security-center/security-center-partner-integration.md) と統合できます。
 
 ### <a name="dont-cache-sensitive-content"></a>機密性の高いコンテンツをキャッシュしない
 

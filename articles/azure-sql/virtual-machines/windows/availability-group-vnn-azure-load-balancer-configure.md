@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/14/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: cddf36f1bd51b50d1642f92158adc3a3ba46cdc2
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7c749744ef6dcad4ca8f233b1a85e07843ba0406
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161502"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158476"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>AG VNN リスナーのロード バランサーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure 仮想マシンでは、一度に 1 つのクラスター ノードに設定する必要がある IP アドレスを保持するために、クラスターでロード バランサーが使用されます。 このソリューションでは、Always On 可用性グループ (AG) の仮想ネットワーク名 (VNN) リスナーの IP アドレスが、ロード バランサーによって保持されます。 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
+
+Azure 仮想マシンでは、一度に 1 つのクラスター ノードに設定する必要がある IP アドレスを保持するために、クラスターでロード バランサーが使用されます。 このソリューションでは、SQL Server VM が 1 つのサブネット内にある場合に、Always On 可用性グループ (AG) の仮想ネットワーク名 (VNN) リスナーの IP アドレスが、ロード バランサーによって保持されます。 
 
 この記事では、Azure Load Balancer サービスを使用してロード バランサーを構成する方法について説明します。 高可用性とディザスター リカバリー (HADR) を実現するために、ロード バランサーによって、Azure VM 上の SQL Server を使用する[可用性グループ (AG) リスナー](availability-group-overview.md)にトラフィックがルーティングされます。 
 

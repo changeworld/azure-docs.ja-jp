@@ -1,16 +1,16 @@
 ---
 title: 'クイックスタート: Azure リソースを IoT ソリューションに追加する'
-description: このクイックスタートでは、Azure Defender for IoT を使用してエンド ツー エンドの IoT ソリューションを構成する方法について説明します。
+description: このクイックスタートでは、Microsoft Defender for IoT を使用してエンド ツー エンドの IoT ソリューションを構成する方法について説明します。
 ms.topic: quickstart
-ms.date: 09/13/2021
-ms.openlocfilehash: e66accdc1ba671941c13433eeca9b3e9c541781b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 2ac4a91870f9a8ed0a0df2d9b4f8e904806eb482
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634826"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283906"
 ---
-# <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>クイック スタート:Azure Defender for IoT ソリューションを構成する
+# <a name="quickstart-configure-your-microsoft-defender-for-iot-solution"></a>クイックスタート: Microsoft Defender for IoT ソリューションを構成する
 
 この記事では、初めて Defender for IoT を使用して IoT セキュリティ ソリューションを構成する方法について説明します。
 
@@ -30,7 +30,7 @@ IoT Hub で Defender for IoT を有効にすると、Defender for IoT によっ�
 
 選択に応じて、サブスクリプション全体、リソース グループ、または単一のリソースを追加できます。
 
-すべてのリソース関係を定義すると、Defender for IoT によって、これらのリソースに対するセキュリティの推奨事項とアラートが Defender を通じて提供されるようになります。
+すべてのリソース関係を定義すると、Defender for IoT によって、これらのリソースに対するセキュリティの推奨事項とアラートが Defender for Cloud を通じて提供されるようになります。
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>IoT ソリューションへの Azure リソースの追加
 

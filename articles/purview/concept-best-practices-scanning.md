@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 53cf2144dfbb858d21030da7147805155ca1b982
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 85dc954dcb352f9bc2447e72322d35e8d5e73cb3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056302"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552660"
 ---
 # <a name="azure-purview-scanning-best-practices"></a>Azure 管理範囲スキャンのベストプラクティス
 
@@ -98,6 +98,7 @@ Azure 管理範囲は、オンプレミス、マルチクラウド、および S
             - アカウントキーまたは基本認証 (たとえば、SAP S/4HANA ソースの場合)
             > [!Note]
             > ストレージ アカウントに対してファイアウォールが有効になっている場合は、スキャンを設定するときに、 [マネージド ID] の認証方法を使用する必要があります。
+            > 新しい資格情報を設定するときに、資格情報の名前に使用できるのは、_文字、数字、アンダースコア、ハイフン_ のみです。 
 
     - **Integration Runtime**
         - 可能な場合は、Azure の自動解決統合ランタイムを使用します。

@@ -5,12 +5,12 @@ ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
-ms.openlocfilehash: 6689f54035467b7ee380e292abad98db180b5516
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2382a45b73f3961053e870c15b99f3ef5746f966
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083652"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056684"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>Java で Azure Service Bus キューを使用してメッセージを送受信する (古いパッケージ)
 
@@ -110,7 +110,7 @@ public void run() throws Exception {
 Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[Message](/java/api/com.microsoft.azure.servicebus.message) クラスのインスタンスになります。 Message オブジェクトには、(Label、TimeToLive などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、Message のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。 または、**java.IO.InputStream** オブジェクトを提供することもできます。
 
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 100 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 キューからメッセージを受信する主な方法は、**ServiceBusContract** オブジェクトを使用することです。 メッセージは 2 つの異なるモードで受信できます。**ReceiveAndDelete** と **PeekLock** です。

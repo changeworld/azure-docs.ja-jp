@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 09/23/2021
-ms.openlocfilehash: a501b564fcf8d9780c6398a5abd8bae49c10811f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 11/5/2021
+ms.openlocfilehash: ce039347c2fe06f061aecc4a01cd05e92c43ae74
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163553"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893267"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "130163553"
 
 [セカンダリ レプリカ](service-tier-hyperscale-replicas.md)を少なくとも 1 つ追加していれば、Hyperscale サービス レベルでも *読み取りスケールアウト* 機能を利用できます。 Hyperscale セカンダリ[名前付きレプリカ](service-tier-hyperscale-replicas.md#named-replica-in-preview)を使用すれば、独立実行できるスケーリング、アクセスの分離、ワークロードの分離、大規模な読み取りスケールアウトなどの機能が利用できます。 読み取り専用ワークロードのロードバランシングに、単一のセカンダリ HA レプリカで利用できる以上のリソースが必要な場合は、複数のセカンダリ [HA レプリカ](service-tier-hyperscale-replicas.md#high-availability-replica)を使用できます。 
 
-Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 "*読み取りスケールアウト*" 機能は、これらのサービス レベルでは使用できません。
+Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 "*読み取りスケールアウト*" 機能は、これらのサービス レベルでは使用できません。 ただし、[geo レプリカ](active-geo-replication-overview.md)は、これらのサービス レベルで同様の機能を提供できます。
 
 次の図に、Premium および Business Critical のデータベースとマネージド インスタンスの機能を図示します。
 
@@ -196,6 +196,13 @@ geo レプリケーションしたセカンダリ データベースには、プ
 
 > [!NOTE]
 > geo レプリケーションしたセカンダリ データベースのレプリカ間には、自動ラウンドロビンなどの負荷分散ルーティングの仕組みはありません。ただし、2 つ以上の HA レプリカが存在する Hyperscale geo レプリカは例外です。 この場合、読み取り専用を意図したセッションは、geo レプリカのすべての HA レプリカに分散します。
+
+## <a name="feature-support-on-read-only-replicas"></a>読み取り専用レプリカでの機能のサポート
+
+読み取り専用レプリカでの一部の機能の動作の一覧を次に示します。
+* 読み取り専用レプリカでの監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
+* [Query Performance Insight](query-performance-insight-use.md) は、[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)のデータに依存しており、現在、読み取り専用レプリカでのアクティビティは追跡されません。 Query Performance Insight では、読み取り専用レプリカで実行されるクエリは表示されません。
+* [自動チューニングに関する文書](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)で詳細に説明されているように、自動チューニングはクエリ ストアに依存しています。 自動チューニングは、プライマリ レプリカで実行されているワークロードに対してのみ機能します。
 
 ## <a name="next-steps"></a>次のステップ
 

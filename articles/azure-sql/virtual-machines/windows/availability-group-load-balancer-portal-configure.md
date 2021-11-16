@@ -1,5 +1,5 @@
 ---
-title: 可用性グループ リスナーとロード バランサーの構成 (Azure portal)
+title: ロード バランサーと可用性グループ リスナーの構成 (Azure portal)
 description: Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。
 services: virtual-machines
 documentationcenter: na
@@ -11,33 +11,36 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/16/2017
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: d0489295cbc161f98ebe036ff79bdc2f2861877a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0077b6a237cefd5547b70b79044087d86a9ea236
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130250371"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157504"
 ---
-# <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
+# <a name="configure-a-load-balancer--availability-group-listener-sql-server-on-azure-vms"></a>ロード バランサーと可用性グループ リスナーの構成 (Azure VM 上の SQL Server)
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して Azure Load Balancer が不要になります。
 
-この記事では、Azure Resource Manager で動作する Azure Virtual Machines に、SQL Server Always On 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure Virtual Machines 上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
+
+この記事では、Azure Resource Manager で動作する 1 つのサブネット内の Azure Virtual Machines に、SQL Server Always On 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure Virtual Machines 上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
 
 この作業を行うには、Resource Manager で動作する Azure VM に SQL Server Always On 可用性グループがデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](./availability-group-quickstart-template-configure.md)を使用すると、Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
 
-必要に応じて [可用性グループを手動で構成](availability-group-manually-configure-tutorial.md)することもできます。
+必要に応じて [可用性グループを手動で構成](availability-group-manually-configure-tutorial-single-subnet.md)することもできます。
 
 この記事は、可用性グループの構成が既に済んでいることを前提としています。  
 
 関連記事を参照:
 
-* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](availability-group-manually-configure-tutorial.md)   
+* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](availability-group-manually-configure-tutorial-single-subnet.md)   
 * [Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 この記事では、Azure Portal でロード バランサーを作成し、必要な構成を行います。 その作業が済んだら、可用性グループ リスナーのロード バランサーの IP アドレスを使用するようにクラスターを構成します。

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッド
 services: container-service
 ms.topic: article
 ms.date: 07/08/2021
-ms.openlocfilehash: c68783cd614ca5dc1a569f17365992a378d225b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d303e00c7f1a7ef76bb048048123b65eb42de402
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732217"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179958"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -61,7 +61,7 @@ echo Storage account key: $STORAGE_KEY
 
 Kubernetes には、前の手順で作成されたファイル共有にアクセスするための資格情報が必要です。 これらの資格情報は [Kubernetes シークレット][kubernetes-secret]に格納され、Kubernetes ポッドを作成するときにそのシークレットが参照されます。
 
-`kubectl create secret` コマンドを使用して、シークレットを作成します。 次の例では、*azure-secret* という名前の共有を作成し、前の手順の *azurestorageaccountname* と *azurestorageaccountkey* を設定します。 既存の Azure ストレージ アカウントを使用するには、アカウント名とキーを指定します。
+`kubectl create secret` コマンドを使用して、シークレットを作成します。 次の例では、*azure-secret* という名前のシークレットを作成し、前の手順の *azurestorageaccountname* と *azurestorageaccountkey* を設定しています。 既存の Azure ストレージ アカウントを使用するには、アカウント名とキーを指定します。
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY

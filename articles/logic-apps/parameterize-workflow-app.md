@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: azla
 ms.topic: how-to
 ms.date: 08/09/2021
-ms.openlocfilehash: 32d15d248154c61320fe12074373a6401fe3bdcd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a29eda23d12ca07057ff1081ae8d9bc4cfdc56ed
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742194"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137032"
 ---
 # <a name="create-parameters-to-use-in-workflows-across-environments-in-single-tenant-azure-logic-apps"></a>シングルテナント Azure Logic Apps の環境をまたいだワークフローで使用するパラメーターを作成する
 
@@ -159,10 +159,10 @@ Azure Logic Apps では、"*パラメーター*" を定義することによっ�
    "managedApiConnections": {
       "azureblob": {
          "api": {
-            "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/providers/Microsoft.Web/locations/@appsetting('WORKFLOWS_LOCATION_NAME')/managedApis/azureblob"
+            "id": "/subscriptions/@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}/providers/Microsoft.Web/locations/@{appsetting('WORKFLOWS_LOCATION_NAME')}/managedApis/azureblob"
          },
          "connection": {
-            "id": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/resourceGroups/@appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')/providers/Microsoft.Web/connections/azureblob"
+            "id": "/subscriptions/@{appsetting('WORKFLOWS_SUBSCRIPTION_ID')}/resourceGroups/@{appsetting('WORKFLOWS_RESOURCE_GROUP_NAME')}/providers/Microsoft.Web/connections/azureblob"
          },
          "connectionRuntimeUrl": "@appsetting('BLOB_CONNECTION_RUNTIMEURL')",
          "authentication": "@parameters('blob_auth')"
@@ -170,6 +170,14 @@ Azure Logic Apps では、"*パラメーター*" を定義することによっ�
    }
 }
 ```
+
+> [!NOTE]
+> プレーンテキストでインラインの式がある場合は、その式を中かっこ ({}) で囲み、その式の補間形式を使用してください。 この形式は、解析の問題を回避するのに役立ちます。
+>
+> たとえば、`"<text>/@<function-name>('<parameter-name>')/<text>"` がある場合は、代わりに次のバージョンを使用します。 `"<text>/@{<function-name>('<parameter-name>')}/<text>"`。 
+>
+> 詳細については、「[関数の使用に関する考慮事項](workflow-definition-language-functions-reference.md#function-considerations)」を参照してください。
+     
 
 ## <a name="manage-parameters-files"></a>パラメーター ファイルを管理する
 
