@@ -4,15 +4,15 @@ description: Azure Cosmos DB アカウントの Synapse Link を有効にする�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: 116997c8abbad382dc10014fd76e7933f333c113
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 271b0a6c41f37a3ac8efe6e5562af48f3f267692
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123109352"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425862"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB を構成して使用する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -280,6 +280,9 @@ Spark 2 統合の場合は、「[Spark 2 を使用して分析ストアを Azure
 
 Synapse Link for Azure Cosmos DB 上にサーバーレス SQL プール データベースおよびビューを作成できます。 後で、Azure Cosmos コンテナーのクエリを実行してから、これらのビュー上で Power BI を使用してモデルを構築して、そのクエリを反映させることができます。 トランザクション ワークロードへのパフォーマンスやコストの影響はなく、ETL パイプライン管理の複雑さもありません。 [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) または[インポート](/power-bi/connect-data/service-dataset-modes-understand#import-mode)のいずれかのモードを使用できます。 詳細については、[Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データを分析する](synapse-link-power-bi.md)方法に関する記事を参照してください。
 
+## <a name="configure-custom-partitioning"></a>カスタム パーティション分割を構成する
+
+カスタム パーティション分割を使用すると、分析クエリでフィルターとして一般的に使用されるフィールドで分析ストア データをパーティション分割して、クエリ パフォーマンスを向上させることができます。詳細については、[カスタム パーティション分割の概要](custom-partitioning-analytical-store.md)および[カスタム パーティション分割を構成する方法](configure-custom-partitioning.md)に関するページを参照してください。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 

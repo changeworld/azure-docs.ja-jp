@@ -1,5 +1,5 @@
 ---
-title: Azure ハイブリッド特典のスコープ レベルの管理とは
+title: 一元管理された Azure ハイブリッド特典とは
 description: Azure ハイブリッド特典は、オンプレミスのコア ベースの Windows Server と SQL Server のライセンスを、アクティブなソフトウェア アシュアランス (またはサブスクリプション) と一緒に Azure に移行できるようにするライセンス特典です。
 keywords: ''
 author: bandersmsft
@@ -9,18 +9,18 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 795c8c3509a25abc8244150f129eb9dfbf997557
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 8fb630db1d14fe7af1008979eb5b72ee62287d6a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547442"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235698"
 ---
-# <a name="what-is-scope-level-management-of-azure-hybrid-benefit"></a>Azure ハイブリッド特典のスコープ レベルの管理とは
+# <a name="what-is-centrally-managed-azure-hybrid-benefit"></a>一元管理された Azure ハイブリッド特典とは
 
 Azure ハイブリッド特典は、クラウドでワークロードを実行するコストを大幅に削減するのに役立つライセンス特典です。 これは、オンプレミスのソフトウェア アシュアランス対応の Windows Server および SQL Server ライセンスを Azure で使用できるようにすることで機能します。 詳細については、「<bpt id="p1">[</bpt>Azure ハイブリッド特典<ept id="p1">](https://azure.microsoft.com/pricing/hybrid-benefit/)</ept>」を参照してください。
 
-SQL Server の Azure ハイブリッド特典は、Azure サブスクリプション全体または課金アカウント全体のスコープで管理できます。 大まかに言うと、次のようなしくみです。
+SQL Server の Azure ハイブリッド特典は、Azure サブスクリプション全体または課金アカウント全体のスコープで一元的に管理できます。 大まかに言うと、次のようなしくみです。
 
 1. まず、自己インストールした SQL サーバー イメージの IaaS 拡張機能への自動登録を有効にして、あなたと Azure からすべての SQL サーバー VM が見えることを確認します。 詳細については、「[Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md)」を参照してください。
 1. Azure portal の **[コストの管理と請求]** で、あなた (請求管理者) は、スコープと、スコープ内のリソースをカバーするために割り当てる対象ライセンスの数を選択します。  
@@ -32,7 +32,7 @@ SQL Server の Azure ハイブリッド特典は、Azure サブスクリプシ�
 
 Azure ハイブリッド特典を有効にする元々のリソース レベルの方法は、SQL Server で引き続き使用可能であり、Windows Server では現在のところ唯一の選択肢です。 これには、個々のリソース (SQL Database や Windows Server VM など) を作成または管理するときに、そのリソースの特典を選択する DevOps ロールが必要です。 その結果、そのリソースの時間当たりのコストが割り引かれます。 詳細については、「<bpt id="p1">[</bpt>Windows Server 向け Azure ハイブリッド特典<ept id="p1">](../../azure-sql/azure-hybrid-benefit.md)</ept>」を参照してください。
 
-サブスクリプションまたはアカウント スコープ レベルで SQL Server の Azure ハイブリッド特典を有効にすることは、現在プレビュー段階です。 これはエンタープライズのお客様のみが使用できます。 Microsoft では、Windows Server などのお客様にこの機能を拡張するように取り組んでいます。
+サブスクリプションまたはアカウント スコープ レベルで SQL Server の Azure ハイブリッド特典の一元的な管理を有効にすることは、現在プレビュー段階です。 これはエンタープライズのお客様のみが使用できます。 Microsoft では、Windows Server などのお客様にこの機能を拡張するように取り組んでいます。
 
 ## <a name="qualifying-sql-server-licenses"></a>対象となる SQL Server ライセンス
 
@@ -40,7 +40,7 @@ Azure ハイブリッド特典を有効にする元々のリソース レベル�
 
 ## <a name="qualifying-azure-resources"></a>対象となる Azure リソース
 
-スコープレベルの Azure ハイブリッド特典管理は、次の一般的な Azure SQL リソースをカバーします。
+スコープ レベルでAzure ハイブリッド特典を一元的に管理すると、次の一般的な Azure SQL リソースが対象になります。
 
 - SQL データベース
 - SQL マネージド インスタンス
@@ -52,7 +52,7 @@ Azure ハイブリッド特典を有効にする元々のリソース レベル�
 - Azure 専用ホスト
 - Azure Data Factory SQL Server Integration Services (SSIS)
 
-## <a name="scope-level-management-advantages"></a>スコープレベルの管理の利点
+## <a name="centralized-scope-level-management-advantages"></a>スコープレベルでの一元的な管理の利点
 
 次のような点があります。
 
@@ -104,5 +104,5 @@ SQL Server Enterprise (コア) と SQL Server Standard (コア) のソフトウ�
 ## <a name="next-steps"></a>次のステップ
 
 - [SQL Server の Azure ハイブリッド特典の管理と最適化](tutorial-azure-hybrid-benefits-sql.md)に関するチュートリアルに従います。
-- 「[Azure ハイブリッド特典のスコープレベルの管理に移行する](transition-existing.md)」方法について確認します。
-- 「[スコープ レベルの Azure ハイブリッド特典の管理に関する FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
+- [一元管理された Azure ハイブリッド特典への移行](transition-existing.md)方法について確認します。
+- [一元管理された Azure ハイブリッド特典の FAQ](faq-azure-hybrid-benefit-scope.yml) を確認します。

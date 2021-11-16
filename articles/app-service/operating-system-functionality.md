@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 09/09/2021
 ms.custom: seodec18
-ms.openlocfilehash: d4242ae2afb79f44452c51a971a64632e0d7f098
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 207d2f12c8603b7533cef588131e4a60e0f0ad36
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769923"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427325"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](./overview.md)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
 
 > [!NOTE] 
-> App Service の [Linux アプリ](overview.md#app-service-on-linux)は、独自のコンテナーで実行されます。 ホスト オペレーティング システムへのアクセスは許可されていません。コンテナーにはルート アクセスが可能です。 同様に、[Windows コンテナーで実行されるアプリ](quickstart-custom-container.md?pivots=container-windows)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 
+> App Service の [Linux アプリ](overview.md#app-service-on-linux)は、独自のコンテナーで実行されます。 コンテナーへのルート アクセス権はありますが、ホスト オペレーティング システムへのアクセスは許可されていません。 同様に、[Windows コンテナーで実行されるアプリ](quickstart-custom-container.md?pivots=container-windows)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 
 >
 
 <a id="tiers"></a>
@@ -80,7 +80,7 @@ Azure サービスの性質上、UNC 共有をホストする仮想マシンは�
 
 App Service での一時的なローカル ストレージの使用例として、ASP.NET 一時ファイルのディレクトリと IIS 圧縮ファイルのディレクトリがあります。 ASP.NET コンパイル システムでは、`%SystemDrive%\local\Temporary ASP.NET Files` ディレクトリをコンパイルの一時的なキャッシュ場所として使用します。 IIS では、`%SystemDrive%\local\IIS Temporary Compressed Files` ディレクトリを使用して圧縮済みの応答出力を保存します。 これらはいずれも、App Service ではアプリごとの一時的なローカル ストレージに再マッピングされます。 この再マッピングにより、引き続き適切に機能させることができます。
 
-App Service の各アプリは、"アプリケーション プール ID" と呼ばれる、ランダムな一意の低特権ワーカー プロセス ID として実行されます。詳細については、[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) をご覧ください。 アプリケーション コードでは、オペレーティング システム ドライブへの基本的な読み取り専用のアクセスにこの ID を使用します。 つまり、アプリケーション コードは、オペレーティング システム ドライブ上の共通ディレクトリ構造を参照し、共通ファイルを読み取ることができます。 少々広範なアクセス レベルに思えるかもしれませんが、Azure ホステッド サービスに worker ロールをプロビジョニングしてドライブ コンテンツを読み取る場合も、同じディレクトリとファイルにアクセスできます。 
+App Service の各アプリは、"アプリケーション プール ID" と呼ばれる、ランダムな一意の低特権ワーカー プロセス ID として実行されます。詳細については、IIS の「[アプリケーション プール ID](/iis/manage/configuring-security/application-pool-identities)」のドキュメントを参照してください。 アプリケーション コードでは、オペレーティング システム ドライブへの基本的な読み取り専用のアクセスにこの ID を使用します。 つまり、アプリケーション コードは、オペレーティング システム ドライブ上の共通ディレクトリ構造を参照し、共通ファイルを読み取ることができます。 少々広範なアクセス レベルに思えるかもしれませんが、Azure ホステッド サービスに worker ロールをプロビジョニングしてドライブ コンテンツを読み取る場合も、同じディレクトリとファイルにアクセスできます。 
 
 <a name="multipleinstances"></a>
 

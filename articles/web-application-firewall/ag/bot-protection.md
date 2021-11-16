@@ -7,18 +7,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 12c9466a4bee6adb77a0e46e63767c2b22fcc01d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a13784f722648f3639bcca7eece46d5128a689de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729424"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344885"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway での Web アプリケーション ファイアウォール用にボット保護を構成する
 
 この記事では、Azure portal を使用して Application Gateway 用の Azure Web アプリケーション ファイアウォール (WAF) のボット保護規則を構成する方法について説明します。 
 
-マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求をブロックしたりログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
+マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求をブロックしたりログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは Microsoft の脅威インテリジェンスの動力となるものであり、Microsoft Defender for Cloud を含む複数のサービスによって使用されます。
 
 ## <a name="prerequisites"></a>前提条件
 

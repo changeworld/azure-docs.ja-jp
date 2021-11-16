@@ -2,20 +2,20 @@
 title: Synapse SQL の一時テーブルを使用する
 description: Synapse SQL の一時テーブルの基本的な利用方法について説明します。
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.openlocfilehash: 8513df83196b3521a749515c6bb22caad7d255b7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
+ms.openlocfilehash: 3244152e4d7eb7cac78dcab07995719bdd07e863
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816045"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508553"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL の一時テーブル
 
@@ -25,7 +25,7 @@ ms.locfileid: "107816045"
 
 ## <a name="temporary-tables"></a>一時テーブル
 
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 Synapse SQL では、一時テーブルはセッション レベルで存在します。  一時テーブルは、それが作成されたセッションにのみ表示されます。 そのため、そのセッションがログオフされたときに自動的に削除されます。 
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 Synapse SQL では、一時テーブルはセッション レベルで存在します。  一時テーブルは、それが作成されたセッションにのみ表示されます。 そのため、そのセッションが終了すると自動的に削除されます。 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>専用 SQL プール内の一時テーブル
 
@@ -95,8 +95,7 @@ GROUP BY
 
 > [!NOTE]
 > `CTAS` は強力なコマンドであり、トランザクション ログ領域を効率的に利用するという長所があります。 
-> 
-> 
+
 
 ### <a name="drop-temporary-tables"></a>一時テーブルを削除する
 

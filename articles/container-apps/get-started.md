@@ -1,19 +1,19 @@
 ---
 title: 'クイック スタート: 最初のコンテナー アプリをデプロイする'
 description: 最初のアプリケーションを Azure Container Apps プレビューにデプロイします。
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7111391f1a066e386384f6623fa6a3d593592123
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 68d446ca120ea9378c998cb81c2bf06579ffde7d
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508761"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028517"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>クイック スタート: 最初のコンテナー アプリをデプロイする
 
@@ -37,7 +37,7 @@ az login
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az login
 ```
 
@@ -54,7 +54,7 @@ az extension add \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
 ```
@@ -71,7 +71,7 @@ az provider register --namespace Microsoft.Web
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az provider register --namespace Microsoft.Web
 ```
 
@@ -111,7 +111,7 @@ az group create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az group create `
   --name $RESOURCE_GROUP `
   --location "$LOCATION"
@@ -139,7 +139,7 @@ az monitor log-analytics workspace create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az monitor log-analytics workspace create `
   --resource-group $RESOURCE_GROUP `
   --workspace-name $LOG_ANALYTICS_WORKSPACE
@@ -190,7 +190,7 @@ az containerapp env create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp env create `
   --name $CONTAINERAPPS_ENVIRONMENT `
   --resource-group $RESOURCE_GROUP `
@@ -220,7 +220,7 @@ az containerapp create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp create `
   --name my-container-app `
   --resource-group $RESOURCE_GROUP `
@@ -252,7 +252,7 @@ az group delete \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az group delete `
   --name $RESOURCE_GROUP
 ```

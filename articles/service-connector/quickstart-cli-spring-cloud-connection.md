@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4ee0fffb402ba3553055c732df9e0ebad94ea511
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3b269e9a8967c3a0134fbac78ac734c98e7c479b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091218"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842570"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-with-the-azure-cli"></a>クイックスタート : Azure CLI を使用して Spring Cloud にサービス接続を作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "131091218"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- このクイックスタートには、Azure CLI のバージョン 2.22.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+- このクイックスタートには、Azure CLI のバージョン 2.30.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 - このクイックスタートは、少なくとも 1 つの Spring Cloud アプリケーションが Azure 上で既に実行されていることを前提としています。 Spring Cloud アプリケーションがない場合は、[作成します](../spring-cloud/quickstart.md)。
 
@@ -32,12 +32,15 @@ ms.locfileid: "131091218"
 Azure CLI の [az spring-cloud connection]() コマンドを使用して、Spring Cloud アプリケーションへのサービス接続を作成および管理します。 
 
 ```azurecli-interactive
-az spring-cloud connection list-support-types
+az provider register -n Microsoft.ServiceLinker
+az spring-cloud connection list-support-types --output table
 ```
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
-Azure CLI の [az spring-cloud connection]() コマンドで次の情報を指定して、BLOB ストレージへのサービス接続を作成します。
+#### <a name="using-access-key"></a>[アクセス キーの使用](#tab/Using-access-key)
+
+Azure CLI の [az spring-cloud connection]() コマンドで次の情報を指定すると、アクセス キーを使用した BLOB ストレージへのサービス接続を作成できます。
 
 - **Spring Cloud resource group name:** Spring Cloud のリソース グループ名。
 - **Spring Cloud name:** ご使用の Spring Cloud の名前。
@@ -46,11 +49,33 @@ Azure CLI の [az spring-cloud connection]() コマンドで次の情報を指�
 - **Storage account name:** BLOB ストレージのアカウント名。
 
 ```azurecli-interactive
-az spring-cloud connection create storage-blob -g <spring_cloud_resource_group> --service <spring_cloud_name> --app <app_name> --deployment default --tg <storage_resource_group> --account <storage_account_name> --system-identity
+az spring-cloud connection create storage-blob --secret
 ```
 
 > [!NOTE]
-> BLOB ストレージがない場合は、`az spring-cloud connection create storage-blob -g <app_service_resource_group> -n <app_service_name> --tg <storage_resource_group> --account <storage_account_name> --system-identity --new` を実行して新しいものをプロビジョニングし、お使いの App Service に直接接続することができます。
+> BLOB ストレージがない場合は、`az spring-cloud connection create storage-blob --new --secret` を実行して新しいものをプロビジョニングし、お使いの App Service に直接接続することができます。
+
+#### <a name="using-managed-identity"></a>[マネージド ID の使用](#tab/Using-Managed-Identity)
+
+> [!IMPORTANT]
+> マネージド ID を使用するには、[Azure AD ロールの割り当て](/active-directory/managed-identities-azure-resources/howto-assign-access-portal)へのアクセス許可が必要です。 アクセス許可がない場合、接続の作成は失敗します。 接続を作成するために、サブスクリプション所有者にアクセス許可またはアクセス キーの使用を要求できます。
+
+Azure CLI の [az spring-cloud connection]() コマンドで次の情報を指定すると、システム割り当てマネージド ID を使用した BLOB ストレージへのサービス接続を作成できます。
+
+- **Spring Cloud resource group name:** Spring Cloud のリソース グループ名。
+- **Spring Cloud name:** ご使用の Spring Cloud の名前。
+- **Spring Cloud app name:** ターゲット サービスに接続する Spring Cloud アプリの名前。
+- **Target service resource group name:** BLOB ストレージのリソース グループ名。
+- **Storage account name:** BLOB ストレージのアカウント名。
+
+```azurecli-interactive
+az spring-cloud connection create storage-blob --system-identity
+```
+
+> [!NOTE]
+> BLOB ストレージがない場合は、`az spring-cloud connection create --system-identity --new --secret` を実行して新しいものをプロビジョニングし、お使いの App Service に直接接続することができます。
+
+---
 
 ## <a name="view-connections"></a>接続の表示
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/29/2021
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894df32142cf29e59e40b1e9218f4090bbda93f0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 86e2eee3be8a25cc236a5774ab485c863c8d655b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351615"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842527"
 ---
 # <a name="quickstartconnect-a-synapse-workspace-to-an-azure-purview-account"></a>クイックスタート: Synapse ワークスペースを Azure Purview アカウントに接続する
 
@@ -67,13 +67,9 @@ Purview の接続情報は、次のような Synapse ワークスペース リ�
 
 Synapse ワークスペースのマネージド ID は、Synapse ワークスペースから Purview への系列のプッシュ操作を認証するために使用されます。
 
-- **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、Synapse ワークスペースのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、「[Azure Purview でのアクセス制御](../../purview/catalog-permissions.md)」および「[コレクションを使用してロールを追加してアクセスを制限する](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)」を参照してください。
+Synapse ワークスペースのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールを付与します。 詳細については、「[Azure Purview でのアクセス制御](../../purview/catalog-permissions.md)」および「[コレクションを使用してロールを追加してアクセスを制限する](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)」を参照してください。
 
-    Synapse Studio で Synapse ワークスペースを Purview に接続すると、Synapse は、自動的にこのようなロールの割り当ての追加を試みます。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
-
-- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、Synapse ワークスペースのマネージド ID に、Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)** ](../../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
-
-    Synapse Studio で Synapse ワークスペースを Purview に接続すると、Synapse は、自動的にこのようなロールの割り当ての追加を試みます。 Purview アカウントに Azure 組み込みの **所有者** ロールまたは **ユーザー アクセス管理者** ロールがある場合、この操作は成功します。
+Synapse Studio で Synapse ワークスペースを Purview に接続すると、Synapse は、自動的にこのようなロールの割り当ての追加を試みます。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
 
 ## <a name="monitor-purview-connection"></a>Purview 接続を監視する
 

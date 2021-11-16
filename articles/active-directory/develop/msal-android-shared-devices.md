@@ -13,12 +13,12 @@ ms.date: 09/30/2021
 ms.author: marsma
 ms.reviewer: brandwe
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 3a1539f80556afa9a3dbeb73edcd4d38380db33a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fa55cf74ce8dc1de2782d748e770d7770057ab33
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357661"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227699"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
@@ -93,6 +93,12 @@ private IPublicClientApplication mApplication;
 
 アプリケーションが複数アカウント モードで実行されているときに、管理者がデバイスを共有デバイス モードにすると、そのデバイス上のすべてのアカウントがアプリケーションから消去され、アプリケーションは単一アカウント モードに移行します。
 
+## <a name="microsoft-applications-that-support-shared-device-mode"></a>共有デバイス モードをサポートしている Microsoft アプリケーション
+
+これらの Microsoft アプリケーションは、Azure AD の共有デバイス モードをサポートしています。
+
+* [Microsoft Teams](/microsoftteams/platform/)
+* Android Enterprise 用 [Microsoft Managed Home Screen](/mem/intune/apps/app-configuration-managed-home-screen-app) アプリ
 ## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>共有デバイスのサインアウトとアプリのライフサイクル全体
 
 ユーザーがサインアウトしたら、そのユーザーのプライバシーとデータを保護するためのアクションを実行する必要があります。 たとえば、医療記録アプリを構築している場合は、ユーザーがサインアウトしたら、以前に表示された患者記録が消去されていることを確認する必要があります。 アプリケーションは、フォアグラウンドに入るたびに、データのプライバシーとチェックに備える必要があります。

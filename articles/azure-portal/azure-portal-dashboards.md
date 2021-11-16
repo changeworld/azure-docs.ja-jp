@@ -2,13 +2,13 @@
 title: Azure portal でダッシュボードを作成する
 description: この記事では、Azure portal でダッシュボードを作成およびカスタマイズする方法について説明します。
 ms.topic: how-to
-ms.date: 08/19/2021
-ms.openlocfilehash: af26cc36f73088c9a4231e59f3414efaa828d452
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 10/19/2021
+ms.openlocfilehash: 57de040263fdc6ae7a3aaa366b7cabc4f98235b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597722"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219851"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Azure portal でダッシュボードを作成する
 
@@ -31,7 +31,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
     :::image type="content" source="media/azure-portal-dashboards/portal-menu-dashboard.png" alt-text="[ダッシュボード] が選択されている Azure portal のスクリーンショット。":::
 
-1. **[新しいダッシュボード ]** 、 **[空のダッシュボード]** の順に選択します。
+1. **[新しいダッシュボード]** 、 **[空のダッシュボード]** の順に選択します。
 
     :::image type="content" source="media/azure-portal-dashboards/create-new-dashboard.png" alt-text="[新しいダッシュボード] オプションのスクリーンショット。":::
 

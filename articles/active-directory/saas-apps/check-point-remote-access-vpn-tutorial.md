@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: e958f8b13c01e895aa4d6485aedd64dd155e69b5
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 33bcb007c1cfd4d09c25fb4abbf9c5fcfb15b58f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132334988"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Secure Access VPN の統合
 
@@ -348,4 +348,4 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 
 ## <a name="next-steps"></a>次のステップ
 
-Check Point Remote Secure Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Check Point Remote Secure Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

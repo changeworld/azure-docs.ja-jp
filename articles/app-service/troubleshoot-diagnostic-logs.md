@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: ac47322f33ac8f2efd08e5b04e639f09959dee28
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 7e477f3d8df098f53abc4b1ad5f963f019b79ead
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352017"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470891"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -19,7 +19,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 この記事では、[Azure portal](https://portal.azure.com) と Azure CLI を使用して診断ログを操作します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)」を参照してください。
 
 > [!NOTE]
-> この記事のログ記録の手順に加えて、Azure Monitoring による新しい統合ログ機能があります。 この機能の詳細については、「[Azure Monitor にログを送信する (プレビュー)](#send-logs-to-azure-monitor-preview)」のセクションを参照してください。 
+> この記事のログ記録の手順に加えて、Azure Monitoring による新しい統合ログ機能があります。 この機能の詳細については、「[ログを Azure Monitor に送信する](#send-logs-to-azure-monitor)」のセクションを参照してください。 
 >
 >
 
@@ -182,12 +182,12 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | **Web サーバー ログ** | */LogFiles/http/RawLogs/* | [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)を使用して書式設定されたテキスト ファイルが含まれます。 この情報は、テキスト エディターまたは [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22) などのユーティリティを使用して読むことができます。<br/>App Service では、`s-ip`、`s-computername`、または `cs-version` フィールドはサポートされていません。 |
 | **デプロイ ログ** | */LogFiles/Git/* および */deployments/* | 内部デプロイ プロセスによって生成されたログだけでなく、Git デプロイのログも含まれます。 |
 
-## <a name="send-logs-to-azure-monitor-preview"></a>Azure Monitor にログを送信する (プレビュー)
+## <a name="send-logs-to-azure-monitor"></a>ログを Azure Monitor に送信する
 
-新しい [Azure Monitor の統合](https://aka.ms/appsvcblog-azmon)を使用すると、ストレージ アカウント、Event Hubs、および Log Analytics にログを送信するために[診断設定 (プレビュー) を作成](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting)できます。 
+新しい [Azure Monitor の統合](https://aka.ms/appsvcblog-azmon)を使用すると、ストレージ アカウント、Event Hubs、および Log Analytics にログを送信するために[診断設定を作成](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting)できます。 
 
 > [!div class="mx-imgBorder"]
-> ![診断設定 (プレビュー)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+> ![診断設定](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
 
 ### <a name="supported-log-types"></a>サポートされるログの種類
 
@@ -203,11 +203,13 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | AppServiceAppLogs | ASP.NET および Tomcat <sup>1</sup> | ASP.NET および Tomcat <sup>1</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | アプリケーション ログ |
 | AppServiceIPSecAuditLogs  | はい | はい | はい | はい | IP ルールからの要求 |
 | AppServicePlatformLogs  | TBA | はい | はい | はい | コンテナーの操作ログ |
-| AppServiceAntivirusScanAuditLogs | はい | はい | はい | はい | Microsoft Defender を使用する [ウイルス対策のスキャン ログ](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)。**Premium レベルでのみ使用可能** | 
+| AppServiceAntivirusScanAuditLogs <sup>3</sup> | はい | はい | はい | はい | Microsoft Defender を使用する [ウイルス対策のスキャン ログ](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)。**Premium レベルでのみ使用可能** | 
 
 <sup>1</sup> Tomcat アプリの場合は、アプリ設定に `TOMCAT_USE_STARTUP_BAT` を追加し、それを `false` または `0` に設定します。 "*最新の*" Tomcat バージョンであり、かつ *java.util.logging* を使用する必要があります。
 
 <sup>2</sup> Java SE アプリの場合は、アプリ設定に `WEBSITE_AZMON_PREVIEW_ENABLED` を追加し、それを `true` または `1` に設定します。
+
+<sup>3</sup> ログの種類の AppServiceAntivirusScanAuditLogs は、現在プレビューの段階です
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/logs/log-query-overview.md)

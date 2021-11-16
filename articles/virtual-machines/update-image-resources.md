@@ -1,6 +1,6 @@
 ---
 title: イメージ リソースの一覧表示、更新、削除
-description: 共有イメージ ギャラリーのイメージ リソースを一覧表示、更新、削除します。
+description: Azure Compute Gallery のイメージ リソースを一覧表示、更新、削除します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af41cd667da05abcd05d4c04d913e82567eec5ca
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 2c01020c266a357329c38023c9e9c34c59424088
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452307"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448769"
 ---
 # <a name="list-update-and-delete-image-resources"></a>イメージ リソースの一覧表示、更新、削除 
 
-Azure CLI または Azure PowerShell を使用して、共有イメージ ギャラリー リソースを管理できます。
+Azure CLI または Azure PowerShell を使って、Azure Compute Gallery (旧称 Shared Image Gallery) のリソースを管理できます。
 
 ## <a name="list-information"></a>リストの情報
 
@@ -36,7 +36,7 @@ az sig list -o table
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用して、ギャラリーにある共有イメージ バージョンを一覧表示します。
+[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使って、ギャラリーにあるイメージ バージョンを一覧表示します。
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
@@ -95,7 +95,7 @@ Remove-AzGalleryImageVersion `
 ### <a name="cli"></a>[CLI](#tab/cli)
 更新可能な対象については、いくつか制限があります。 次の項目を更新できます。 
 
-共有イメージ ギャラリー:
+Azure Compute Gallery:
 - 説明
 
 イメージ定義:
@@ -170,7 +170,7 @@ az sig image-version update \
 
 更新可能な対象については、いくつか制限があります。 次の項目を更新できます。 
 
-共有イメージ ギャラリー:
+Azure Compute Gallery:
 - 説明
 
 イメージ定義:
@@ -258,7 +258,7 @@ az sig image-definition delete \
 ```
 
 
-[az sig delete](/cli/azure/sig#az_sig_delete) を使用してイメージのギャラリーを削除します。
+[az sig delete](/cli/azure/sig#az_sig_delete) を使ってギャラリーを削除します。
 
 ```azurecli-interactive
 az sig delete \

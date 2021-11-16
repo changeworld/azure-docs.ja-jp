@@ -7,16 +7,16 @@ ms.date: 10/18/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 5db9227303ed6b409dfd1650fc3c3a409ac2ba90
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 265dfc023d0adf384eb483efc16a40380e395fb3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167822"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458154"
 ---
 # <a name="quickstart-create-a-confidential-ledger-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Confidential Ledger を作成する
 
-Azure Confidential Ledger は、データを安全に保持する必要がある機密のデータ ログとレコードに対して高い整合性ストアを提供するクラウド サービスです。 Confidential Ledger の詳細と、Confidential Ledger に格納できるものの例については、[Microsoft Azure Confidential Ledger の概要](overview.md)に関する記事を参照してください。
+Azure Confidential Ledger は、データを安全に保持する必要がある機密のデータ ログとレコードに対して高い整合性ストアを提供するクラウド サービスです。 Azure Confidential Ledger の詳細と、Confidential Ledger に格納できるものの例については、[Microsoft Azure Confidential Ledger の概要](overview.md)に関する記事を参照してください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,7 +65,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
  
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Confidential Ledger に関するその他の記事は、このクイックスタートに基づいています。 後続の記事に引き続き取り組む場合は、これらのリソースをそのまま残しておくことをお勧めします。 
+Azure Confidential Ledger に関するその他の記事は、このクイックスタートに基づいています。 後続の記事に引き続き取り組む場合は、これらのリソースをそのまま残しておくことをお勧めします。 
 
 不要になったら、リソース グループを削除します。これにより、Confidential Ledger と関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
 
@@ -77,6 +77,6 @@ Confidential Ledger に関するその他の記事は、このクイックスタ
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure portal を使用して Confidential Ledger を作成しました。 Confidential Ledger およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
+このクイックスタートでは、Azure portal を使用して Confidential Ledger を作成しました。 Azure Confidential Ledger およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Microsoft Azure Confidential Ledger の概要](overview.md)

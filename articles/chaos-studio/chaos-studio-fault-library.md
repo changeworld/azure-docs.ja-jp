@@ -4,16 +4,16 @@ description: Chaos Studio で使用可能なアクション (すべての前提�
 services: chaos-studio
 author: johnkemnetz
 ms.topic: article
-ms.date: 11/01/2021
+ms.date: 11/10/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 80d399ecb2b3d73b8014e3eebf8dbb8ea1de0436
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 60e9dd18d8c9357f2696ec79be08925cdd7e97da
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089968"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371013"
 ---
 # <a name="chaos-studio-fault-and-action-library"></a>Chaos Studio の障害およびアクション ライブラリ
 
@@ -58,7 +58,7 @@ ms.locfileid: "131089968"
 | Urn | urn:csci:microsoft:agent:cpuPressure/1.0 |
 | パラメーター (キー、値)  |
 | pressureLevel | VM に適用される CPU 負荷 (%) の値を示す 1 から 99 までの整数。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 ```json
@@ -103,7 +103,7 @@ Linux での既知の問題:
 | Urn | urn:csci:microsoft:agent:physicalMemoryPressure/1.0 |
 | パラメーター (キー、値) |  |
 | pressureLevel | VM に適用される物理メモリ負荷 (%) の値を示す 1 から 99 までの整数。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -143,7 +143,7 @@ Linux での既知の問題:
 | Urn | urn:csci:microsoft:agent:virtualMemoryPressure/1.0 |
 | パラメーター (キー、値) |  |
 | pressureLevel | VM に適用される物理メモリ負荷 (%) の値を示す 1 から 99 までの整数。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -183,7 +183,7 @@ Linux での既知の問題:
 | Urn | urn:csci:microsoft:agent:diskIOPressure/1.0 |
 | パラメーター (キー、値) |  |
 | pressureMode | VM のプライマリ ストレージに追加するディスク負荷のプリセット モード。 次の表にある負荷モードのいずれかである必要があります。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="pressure-modes"></a>負荷モード
 
@@ -235,7 +235,7 @@ Linux での既知の問題:
 | workerCount | 実行されるワーカー プロセスの数。 これを 0 に設定すると、存在するプロセッサと同じ数のワーカー プロセスが生成されます。 |
 | fileSizePerWorker | ワーカーが I/O 操作を実行する対象となる一時ファイルのサイズ。 整数とバイト (b)、キロバイト (k)、メガバイト (m)、またはギガバイト (g) での単位 (たとえば、4 メガバイトの場合は 4m、256 ギガバイトの場合は 256g) |
 | blockSize | ディスク I/O 操作に使用されるブロック サイズ (上限は 4 メガバイト)。 整数とバイト (b)、キロバイト (k)、またはメガバイト (m) での単位 (たとえば、512 キロバイトの場合は 512k) |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -322,7 +322,7 @@ Linux での既知の問題:
 | Urn | urn:csci:microsoft:agent:stopService/1.0 |
 | パラメーター (キー、値) |  |
 | serviceName | 停止する Windows サービスの名前。 コマンド プロンプトで `sc.exe query` を実行して、サービス名を調べることができます。Windows サービスのフレンドリ名はサポートされていません。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -362,7 +362,7 @@ Linux での既知の問題:
 | Urn | urn:csci:microsoft:agent:timeChange/1.0 |
 | パラメーター (キー、値) |  |
 | dateTime | [ISO8601 形式](https://www.cryptosys.net/pki/manpki/pki_iso8601datetime.html)での DateTime 文字列。 YYYY-MM-DD 値がない場合は、既定で、実験が実行される現在の日に設定されます。 Thh:mm:ss 値がない場合、既定値は午前 12:00:00 です。 2 桁の年 (YY) が指定されている場合は、現在の世紀に基づいて 4 桁の年 (YYYY) に変換されます。 \<Z\> がない場合は、既定でローカル タイム ゾーンのオフセットに設定されます。 \<Z\> には常に、符号記号 (負または正) が含まれている必要があります。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -403,7 +403,7 @@ Linux での既知の問題:
 | パラメーター (キー、値) |  |
 | processName | VM 上で実行されているプロセスの名前 (.exe はなし) |
 | killIntervalInMilliseconds | 連続した強制終了の試みの間で障害を待機させる時間 (ミリ秒単位)。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -448,7 +448,7 @@ Linux での既知の問題:
 | パラメーター (キー、値) |  |
 | hosts | DNS 参照要求を失敗させるホスト名の区切られた JSON 配列。 |
 | dnsFailureReturnCode | 参照エラーとしてクライアントに返される DNS エラー コード (FormErr、ServFail、NXDomain、NotImp、Refused、XDomain、YXRRSet、NXRRSet、NotAuth、NotZone)。 DNS リターン コードの詳細については、[IANA の Web サイト](https://www.iana.org/assignments/dns-parameters/dns-parameters.xml#dns-parameters-6)を参照してください。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -502,7 +502,7 @@ Linux での既知の問題:
 | subnetMask | IP アドレス範囲のサブネット マスク。 |
 | portLow | (省略可能) ポート範囲の開始のポート番号。 |
 | portHigh | (省略可能) ポート範囲の終了のポート番号。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -550,7 +550,7 @@ Linux での既知の問題:
 | subnetMask | IP アドレス範囲のサブネット マスク。 |
 | portLow | (省略可能) ポート範囲の開始のポート番号。 |
 | portHigh | (省略可能) ポート範囲の終了のポート番号。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -597,7 +597,7 @@ Linux での既知の問題:
 | subnetMask | IP アドレス範囲のサブネット マスク。 |
 | portLow | (省略可能) ポート範囲の開始のポート番号。 |
 | portHigh | (省略可能) ポート範囲の終了のポート番号。 |
-| virtualMachineScaleSetInstances | (省略可能) この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 |
+| virtualMachineScaleSetInstances | この障害を仮想マシン スケール セットに適用するときのインスタンス ID の配列。 仮想マシン スケール セットの場合に必要です。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -737,13 +737,13 @@ Linux での既知の問題:
 
 | プロパティ | 値 |
 |-|-|
-| 機能名 | NetworkChaos-1.0 |
+| 機能名 | NetworkChaos-2.1 |
 | 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
-| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/networkchaos_experiment) から発生させることができるネットワーク障害を AKS クラスターに対して実行させます。 ネットワークの停止、遅延、重複、損失、破損の結果として得られる AKS インシデントを再作成するのに役立ちます。 |
-| 前提条件 | この AKS クラスターには[バージョン 1.2.3 以前の Chaos Mesh がデプロイされ、AKS マネージド AAD が無効になっている](chaos-studio-tutorial-aks.md)必要があります。 |
-| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/1.0 |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/) から発生させることができるネットワーク障害を AKS クラスターに対して実行させます。 ネットワークの停止、遅延、重複、損失、破損の結果として得られる AKS インシデントを再作成するのに役立ちます。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/2.1 |
 | パラメーター (キー、値) |  |
-| jsonSpec | [NetworkChaos の種類](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/networkchaos_experiment)を使用する、JSON 形式でかつエスケープされた [Chaos Mesh 仕様](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file)。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[NetworkChaos の種類](https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/#create-experiments-using-the-yaml-files)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -753,11 +753,11 @@ Linux での既知の問題:
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:networkChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"action\":\"delay\",\"delay\":{\"latency\":\"30s\"},\"duration\":\"30s\",\"mode\":\"one\",\"scheduler\":{\"cron\":\"@every 60s\"},\"selector\":{\"labelSelectors\":{\"app\":\"web-show\"}}}"
+            "value": "{\"action\":\"delay\",\"mode\":\"one\",\"selector\":{\"namespaces\":[\"default\"],\"labelSelectors\":{\"app\":\"web-show\"}},\"delay\":{\"latency\":\"10ms\",\"correlation\":\"100\",\"jitter\":\"0ms\"}}"
         }
     ],
       "duration": "PT10M",
@@ -771,13 +771,13 @@ Linux での既知の問題:
 
 | プロパティ | 値 |
 |-|-|
-| 機能名 | PodChaos-1.0 |
+| 機能名 | PodChaos-2.1 |
 | 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
-| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/podchaos_experiment) から発生させることができるポッド障害を AKS クラスターに対して実行させます。 ポッドのエラーまたはコンテナーの問題の結果である AKS インシデントを再作成するのに役立ちます。 |
-| 前提条件 | この AKS クラスターには[バージョン 1.2.3 以前の Chaos Mesh がデプロイされ、AKS マネージド AAD が無効になっている](chaos-studio-tutorial-aks.md)必要があります。 |
-| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/1.0 |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/) から発生させることができるポッド障害を AKS クラスターに対して実行させます。 ポッドのエラーまたはコンテナーの問題の結果である AKS インシデントを再作成するのに役立ちます。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/2.1 |
 | パラメーター (キー、値) |  |
-| jsonSpec | [PodChaos の種類](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/podchaos_experiment#pod-failure-configuration-file)を使用する、JSON 形式でかつエスケープされた [Chaos Mesh 仕様](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file)。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[PodChaos の種類](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/#create-experiments-using-yaml-configuration-files)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -787,11 +787,11 @@ Linux での既知の問題:
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:podChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"action\":\"pod-failure\",\"mode\":\"one\",\"value\":\"\",\"duration\":\"30s\",\"selector\":{\"labelSelectors\":{\"app.kubernetes.io\/component\":\"tikv\"}},\"scheduler\":{\"cron\":\"@every 2m\"}}"
+            "value": "{\"action\":\"pod-failure\",\"mode\":\"one\",\"duration\":\"30s\",\"selector\":{\"labelSelectors\":{\"app.kubernetes.io\/component\":\"tikv\"}}}"
         }
     ],
       "duration": "PT10M",
@@ -805,13 +805,13 @@ Linux での既知の問題:
 
 | プロパティ | 値 |
 |-|-|
-| 機能名 | StressChaos-1.0 |
+| 機能名 | StressChaos-2.1 |
 | 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
-| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/stresschaos_experiment) から発生させることができるストレス障害を AKS クラスターに対して実行させます。 ポッドのコレクションに対するストレス (大量の CPU またはメモリの使用など) を原因とする AKS インシデントを再作成するのに役立ちます。 |
-| 前提条件 | この AKS クラスターには[バージョン 1.2.3 以前の Chaos Mesh がデプロイされ、AKS マネージド AAD が無効になっている](chaos-studio-tutorial-aks.md)必要があります。 |
-| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/1.0 |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/) から発生させることができるストレス障害を AKS クラスターに対して実行させます。 ポッドのコレクションに対するストレス (大量の CPU またはメモリの使用など) を原因とする AKS インシデントを再作成するのに役立ちます。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/2.1 |
 | パラメーター (キー、値) |  |
-| jsonSpec | [StressChaos の種類](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/stresschaos_experiment#configuration)を使用する、JSON 形式でかつエスケープされた [Chaos Mesh 仕様](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file)。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[StressChaos の種類](https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/#create-experiments-using-the-yaml-file)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -821,11 +821,11 @@ Linux での既知の問題:
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:stressChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"mode\":\"one\",\"selector\":{\"namespaces\":[\"tidb-cluster-demo\"]},\"stressors\":{\"cpu\":{\"workers\":1}},\"duration\":\"30s\",\"scheduler\":{\"cron\":\"@every 2m\"}}"
+            "value": "{\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"app1\"}},\"stressors\":{\"memory\":{\"workers\":4,\"size\":\"256MB\"}}}"
         }
     ],
       "duration": "PT10M",
@@ -839,13 +839,13 @@ Linux での既知の問題:
 
 | プロパティ | 値 |
 |-|-|
-| 機能名 | IOChaos-1.0 |
+| 機能名 | IOChaos-2.1 |
 | 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
-| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/iochaos_experiment) から発生させることができる IO 障害を AKS クラスターに対して実行させます。 IO システム コール (`open`、`read`、`write` など) を使用しているときの IO の遅延や読み取り/書き込みエラーを原因とする AKS インシデントを再作成するのに役立ちます。 |
-| 前提条件 | この AKS クラスターには[バージョン 1.2.3 以前の Chaos Mesh がデプロイされ、AKS マネージド AAD が無効になっている](chaos-studio-tutorial-aks.md)必要があります。 |
-| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/1.0 |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-io-chaos-on-kubernetes/) から発生させることができる IO 障害を AKS クラスターに対して実行させます。 IO システム コール (`open`、`read`、`write` など) を使用しているときの IO の遅延や読み取り/書き込みエラーを原因とする AKS インシデントを再作成するのに役立ちます。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/2.1 |
 | パラメーター (キー、値) |  |
-| jsonSpec | [IOChaos の種類](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/iochaos_experiment#configuration-file)を使用する、JSON 形式でかつエスケープされた [Chaos Mesh 仕様](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file)。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[IOChaos の種類](https://chaos-mesh.org/docs/simulate-io-chaos-on-kubernetes/#create-experiments-using-the-yaml-files)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -855,11 +855,11 @@ Linux での既知の問題:
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:IOChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"action\":\"latency\",\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"etcd\"}},\"volumePath\":\"\/var\/run\/etcd\",\"path\":\"\/var\/run\/etcd\/**\/*\",\"delay\":\"100ms\",\"percent\":50,\"duration\":\"400s\",\"scheduler\":{\"cron\":\"@every 10m\"}}"
+            "value": "{\"action\":\"latency\",\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"etcd\"}},\"volumePath\":\"\/var\/run\/etcd\",\"path\":\"\/var\/run\/etcd\/**\/*\",\"delay\":\"100ms\",\"percent\":50,\"duration\":\"400s\"}"
         }
     ],
       "duration": "PT10M",
@@ -873,13 +873,13 @@ Linux での既知の問題:
 
 | プロパティ | 値 |
 |-|-|
-| 機能名 | TimeChaos-1.0 |
+| 機能名 | TimeChaos-2.1 |
 | 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
-| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/timechaos_experiment) を使用して AKS クラスターでシステム クロックの変更を発生させます。 分散システムの同期ずれ、うるう年/うるう秒のロジックの欠落や不正確さなどを原因とする AKS インシデントを再作成するのに役立ちます。 |
-| 前提条件 | この AKS クラスターには[バージョン 1.2.3 以前の Chaos Mesh がデプロイされ、AKS マネージド AAD が無効になっている](chaos-studio-tutorial-aks.md)必要があります。 |
-| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/1.0 |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-time-chaos-on-kubernetes/) を使用して AKS クラスターでシステム クロックの変更を発生させます。 分散システムの同期ずれ、うるう年/うるう秒のロジックの欠落や不正確さなどを原因とする AKS インシデントを再作成するのに役立ちます。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/2.1 |
 | パラメーター (キー、値) |  |
-| jsonSpec | [TimeChaos の種類](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/timechaos_experiment#configuration-file)を使用する、JSON 形式でかつエスケープされた [Chaos Mesh 仕様](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file)。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[TimeChaos の種類](https://chaos-mesh.org/docs/simulate-time-chaos-on-kubernetes/#create-experiments-using-the-yaml-file)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -889,11 +889,11 @@ Linux での既知の問題:
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:timeChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
-            "value": "{\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app.kubernetes.io\/component\":\"pd\"}},\"timeOffset\":\"-10m100ns\",\"clockIds\":[\"CLOCK_REALTIME\"],\"containerNames\":[\"pd\"],\"duration\":\"10s\",\"scheduler\":{\"cron\":\"@every 15s\"}}"
+            "value": "{\"mode\":\"one\",\"selector\":{\"labelSelectors\":{\"app\":\"app1\"}},\"timeOffset\":\"-10m100ns\"}"
         }
     ],
       "duration": "PT10M",
@@ -907,13 +907,13 @@ Linux での既知の問題:
 
 | プロパティ | 値 |
 |-|-|
-| 機能名 | KernelChaos-1.0 |
+| 機能名 | KernelChaos-2.1 |
 | 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
-| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/kernelchaos_experiment) から発生させることができるカーネル障害を AKS クラスターに対して実行させます。 マウント エラーや未割り当てメモリなどの Linux カーネル レベルのエラーを原因とする AKS インシデントを再作成するのに役立ちます。 |
-| 前提条件 | この AKS クラスターには[バージョン 1.2.3 以前の Chaos Mesh がデプロイされ、AKS マネージド AAD が無効になっている](chaos-studio-tutorial-aks.md)必要があります。 |
-| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/1.0 |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-kernel-chaos-on-kubernetes/) から発生させることができるカーネル障害を AKS クラスターに対して実行させます。 マウント エラーや未割り当てメモリなどの Linux カーネル レベルのエラーを原因とする AKS インシデントを再作成するのに役立ちます。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/2.1 |
 | パラメーター (キー、値) |  |
-| jsonSpec | [KernelChaos の種類](https://chaos-mesh.org/docs/1.2.3/chaos_experiments/kernelchaos_experiment#configuration-file)を使用する、JSON 形式でかつエスケープされた [Chaos Mesh 仕様](https://chaos-mesh.org/docs/user_guides/run_chaos_experiment#step-2-define-the-experiment-configuration-file)。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[KernelChaos の種類](https://chaos-mesh.org/docs/simulate-kernel-chaos-on-kubernetes/#configuration-file)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
 
 ### <a name="sample-json"></a>サンプル JSON
 
@@ -923,11 +923,79 @@ Linux での既知の問題:
   "actions": [
     {
       "type": "continuous",
-      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/1.0",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:kernelChaos/2.1",
       "parameters": [
         {
             "key": "jsonSpec",
             "value": "{\"mode\":\"one\",\"selector\":{\"namespaces\":[\"chaos-mount\"]},\"failKernRequest\":{\"callchain\":[{\"funcname\":\"__x64_sys_mount\"}],\"failtype\":0}}"
+        }
+    ],
+      "duration": "PT10M",
+      "selectorid": "myResources"
+    }
+  ]
+}
+```
+
+## <a name="aks-chaos-mesh-http-faults"></a>AKS Chaos Mesh の HTTP 障害
+
+| プロパティ | 値 |
+|-|-|
+| 機能名 | HTTPChaos-2.1 |
+| 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-http-chaos-on-kubernetes/) から発生させることができる HTTP 障害を AKS クラスターに対して実行させます。 遅延応答や不正な応答など、HTTP 要求や応答処理の失敗によるインシデントを再現する場合に便利です。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている必要があります](chaos-studio-tutorial-aks-portal.md)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:httpChaos/2.1 |
+| パラメーター (キー、値) |  |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[HTTPChaos の種類](https://chaos-mesh.org/docs/simulate-http-chaos-on-kubernetes/#create-experiments)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+
+### <a name="sample-json"></a>サンプル JSON
+
+```json
+{
+  "name": "branchOne",
+  "actions": [
+    {
+      "type": "continuous",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:httpChaos/2.1",
+      "parameters": [
+        {
+            "key": "jsonSpec",
+            "value": "{\"mode\":\"all\",\"selector\":{\"labelSelectors\":{\"app\":\"nginx\"}},\"target\":\"Request\",\"port\":80,\"method\":\"GET\",\"path\":\"\/api\",\"abort\":true,\"duration\":\"5m\",\"scheduler\":{\"cron\":\"@every 10m\"}}"
+        }
+    ],
+      "duration": "PT10M",
+      "selectorid": "myResources"
+    }
+  ]
+}
+```
+
+## <a name="aks-chaos-mesh-dns-faults"></a>AKS Chaos Mesh の DNS 障害
+
+| プロパティ | 値 |
+|-|-|
+| 機能名 | DNSChaos-2.1 |
+| 変換後の型 | Microsoft-AzureKubernetesServiceChaosMesh |
+| 説明 | [Chaos Mesh](https://chaos-mesh.org/docs/simulate-dns-chaos-on-kubernetes/) から発生させることができる DNS 障害を AKS クラスターに対して実行させます。 DNS 障害によるインシデントを再現する場合に便利です。 |
+| 前提条件 | AKS クラスターには [Chaos Mesh がデプロイされている](chaos-studio-tutorial-aks-portal.md)必要があります。また、[DNS サービスがインストールされている必要があります](https://chaos-mesh.org/docs/simulate-dns-chaos-on-kubernetes/#deploy-chaos-dns-service)。 |
+| Urn | urn:csci:microsoft:azureKubernetesServiceChaosMesh:dnsChaos/2.1 |
+| パラメーター (キー、値) |  |
+| jsonSpec | JSON 形式であり、ARM テンプレート、REST API、または Azure CLI を使って作成した場合は、[DNSChaos の種類](https://chaos-mesh.org/docs/simulate-dns-chaos-on-kubernetes/#create-experiments-using-the-yaml-file)を使う JSON でエスケープされた Chaos Mesh 仕様。 [このような YAML から JSON へのコンバーター](https://www.convertjson.com/yaml-to-json.htm)を使用して Chaos Mesh YAML を JSON に変換して縮小し、[このような JSON 文字列エスケープ ツール](https://www.freeformatter.com/json-escape.html)を使用して JSON 仕様をエスケープすることができます。"jsonSpec" プロパティには YAML のみを含めます (メタデータや種類などは含めないでください)。 |
+
+### <a name="sample-json"></a>サンプル JSON
+
+```json
+{
+  "name": "branchOne",
+  "actions": [
+    {
+      "type": "continuous",
+      "name": "urn:csci:microsoft:azureKubernetesServiceChaosMesh:dnsChaos/2.1",
+      "parameters": [
+        {
+            "key": "jsonSpec",
+            "value": "{\"action\":\"random\",\"mode\":\"all\",\"patterns\":[\"google.com\",\"chaos-mesh.*\",\"github.?om\"],\"selector\":{\"namespaces\":[\"busybox\"]}}"
         }
     ],
       "duration": "PT10M",

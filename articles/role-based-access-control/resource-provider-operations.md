@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: a4ac1b31688fe1ac37fe52fd38da338848d3cd07
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a27e519cb9588388e78d25174bcb893923790d4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037798"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347068"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -7354,8 +7354,8 @@ Azure サービス: [IoT セキュリティ](../iot-fundamentals/iot-security-ar
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | Microsoft.IoTSecurity/unregister/action | Azure Defender for IoT のサブスクリプションの登録を解除します。 |
-> | Microsoft.IoTSecurity/register/action | Azure Defender for IoT のサブスクリプションを登録します。 |
+> | Microsoft.IoTSecurity/unregister/action | Microsoft Defender for IoT のサブスクリプションの登録を解除します |
+> | Microsoft.IoTSecurity/register/action | Defender for IoT のサブスクリプションを登録します |
 > | Microsoft.IoTSecurity/defenderSettings/read | IoT Defender の設定を取得します |
 > | Microsoft.IoTSecurity/defenderSettings/write | IoT Defender の設定を作成または更新します。 |
 > | Microsoft.IoTSecurity/defenderSettings/delete | IoT Defender の設定を削除します |
@@ -8776,13 +8776,13 @@ Azure サービス:Microsoft Monitoring Insights
 
 ### <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
 
-Azure サービス:[Azure Sentinel](../sentinel/index.yml)
+Azure サービス: [Microsoft Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | Microsoft.SecurityInsights/register/action | Azure Sentinel にサブスクリプションを登録します |
-> | Microsoft.SecurityInsights/unregister/action | Azure Sentinel からサブスクリプションを登録解除します |
+> | Microsoft.SecurityInsights/register/action | Microsoft Sentinel にサブスクリプションを登録します |
+> | Microsoft.SecurityInsights/unregister/action | Microsoft Sentinel に登録したサブスクリプションを解除します |
 > | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
 > | Microsoft.SecurityInsights/Aggregations/read | 集計情報を取得します |
 > | Microsoft.SecurityInsights/alertRules/read | アラート ルールを取得します |

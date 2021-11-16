@@ -13,12 +13,12 @@ ms.date: 07/16/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2ee33ec1ff87a73e31e55f06fe70672314384a6e
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: bbfb5923228b3f581981ad23d933e047cee7212a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059475"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435981"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -30,7 +30,7 @@ Microsoft ID プラットフォームでは、[OAuth 2.0 リソース所有者�
 
 > [!IMPORTANT]
 >
-> * Microsoft ID プラットフォームでは、Azure AD テナントに対してのみ ROPC をサポートしています。個人アカウントは対象外です。 そのため、テナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) または `organizations` エンドポイントを使用する必要があります。
+> * Microsoft ID プラットフォームでは、Azure AD テナント内での ROPC をサポートしています。個人アカウントは対象外です。 そのため、テナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) または `organizations` エンドポイントを使用する必要があります。
 > * Azure AD テナントに招待された個人アカウントでは、ROPC を使用できません。
 > * パスワードがないアカウントは ROPC でサインインできません。つまり、SMS サインイン、FIDO、および Authenticator アプリなどの機能は、そのフローでは動作しません。 アプリまたはユーザーがこれらの機能を必要とする場合は、ROPC 以外のフローを使用してください。
 > * ユーザーが[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) を使用してアプリケーションにログインすると、ログインできずにブロックされます。

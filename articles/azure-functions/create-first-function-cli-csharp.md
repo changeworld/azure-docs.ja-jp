@@ -11,35 +11,26 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
-zone_pivot_groups: runtime-version-programming-functions
-ms.openlocfilehash: e025362dfb992c1c9471ccae602412bcd21cb98e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 75d8177b8feaeb5bf4dfa0d7a3791b65fab930d4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031474"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026685"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
-
-[!INCLUDE [functions-runtime-version-dotnet](../../includes/functions-runtime-version-dotnet.md)]
 
 この記事では、コマンドライン ツールを使用して、HTTP 要求に応答する C# 関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。
 
 [!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
 
-このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
+この記事では、.NET 6.0 で実行される HTTP によってトリガーされる関数を作成します。 また、この記事の [Visual Studio Code ベースのバージョン](create-first-function-vs-code-csharp.md)も存在します。
 
-また、この記事の [Visual Studio Code ベースのバージョン](create-first-function-vs-code-csharp.md)も存在します。
+このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
 ## <a name="configure-your-local-environment"></a>ローカル環境を構成する
 
 開始する前に、次の項目を用意する必要があります。
-
-::: zone pivot="programming-runtime-functions-v3"
-[!INCLUDE [functions-cli-dotnet-prerequisites](../../includes/functions-cli-dotnet-prerequisites.md)]
-::: zone-end
-::: zone pivot="programming-runtime-functions-v4"
-# <a name="in-process"></a>[インプロセス](#tab/in-process)
 
 + [.NET 6.0 SDK](https://dotnet.microsoft.com/download)
 
@@ -51,22 +42,6 @@ ms.locfileid: "131031474"
 
     + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 
-# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
-
-+ [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
-
-+ [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)。 ビルド プロセスで必要です。
-
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 4.x。
-
-+ 次のいずれかのツール。Azure リソースの作成に使用します。
-
-    + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
-
-    + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
----
-::: zone-end
-
 アクティブなサブスクリプションを含む Azure アカウントも必要です。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
@@ -75,7 +50,7 @@ ms.locfileid: "131031474"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `dotnet --list-sdks` を実行して、必要なバージョンがインストールされていることを確認します。
 
@@ -85,7 +60,7 @@ ms.locfileid: "131031474"
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `dotnet --list-sdks` を実行して、必要なバージョンがインストールされていることを確認します。
 
@@ -235,10 +210,8 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
     ---
 
-    ::: zone pivot="programming-runtime-functions-v4"
     > [!NOTE]
     > このコマンドによって、3.x バージョンの Azure Functions ランタイムを使用し、関数アプリが作成されます。 後で実行する `func azure functionapp publish` コマンドによってアプリがバージョン 4.x に更新されます。
-    ::: zone-end
 
     前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。
 

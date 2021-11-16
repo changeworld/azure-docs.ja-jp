@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: dfb4cf341c6014854e219c17d387076f5beab595
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8010de7d6aa0af0d096a0c7ed23740f23734cda2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010728"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554395"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -121,7 +121,7 @@ Azure Cognitive Search では、インデクサーによって作成された出
 
 処理が済むと、エンリッチメントされたドキュメントで構成された、Azure Cognitive Search で完全にテキスト検索が可能な、[検索インデックス](search-what-is-an-index.md)が手に入ります。 [**インデックスをクエリ**](search-query-overview.md)することで、開発者やユーザーは、パイプラインによって生成されるエンリッチメントされたコンテンツにアクセスできます。 インデックスは、Azure Cognitive Search 用に作成する他のものと同様に、カスタム アナライザーでテキスト分析を補完したり、ファジー検索クエリを呼び出したり、フィルターを追加したり、スコアリング プロファイルを使用して実験して検索の関連性を調整したりすることができます。
 
-また、[ナレッジ ストア](knowledge-store-concept-intro.md)を使用する場合もあります。 ナレッジ ストアには、分析や機械学習などのナレッジ マイニング シナリオで使用できるデータが格納されています。 [Storage Explorer](knowledge-store-view-storage-explorer.md)、[Power BI](knowledge-store-connect-power-bi.md)、または Azure Storage に接続する任意のアプリを使用できます。
+また、[ナレッジ ストア](knowledge-store-concept-intro.md)を使用する場合もあります。 ナレッジ ストアには、分析や機械学習などのナレッジ マイニング シナリオで使用できるデータが格納されています。 [ストレージ ブラウザー](knowledge-store-view-storage-explorer.md)、[Power BI](knowledge-store-connect-power-bi.md)、または Azure Storage に接続する任意のアプリを使用できます。
 
 ## <a name="checklist-a-typical-workflow"></a>チェックリスト:一般的なワークフロー
 

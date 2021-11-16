@@ -5,22 +5,22 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 10/20/2021
+ms.date: 11/09/2021
 ms.author: memildin
-ms.openlocfilehash: 51e54741de4a8319a6487c99ecff1104017a13a5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a159292ed534e8933b18bd206c19b77247f4ea3e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449338"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057591"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>セキュリティ アラートの電子メール通知を構成する 
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-セキュリティ アラートは、組織内の適切な人物に届ける必要があります。 既定では、サブスクリプションに関して重大度が高いアラートがトリガーされるたびに、Defender for Cloud からサブスクリプションの所有者にメールが送信されます。 このページでは、これらの通知をカスタマイズする方法について説明します。
+セキュリティ アラートは、組織内の適切な人物に届ける必要があります。 既定では、サブスクリプションに関して重大度が高いアラートがトリガーされるたびに、Microsoft Defender for Cloud からサブスクリプションの所有者にメールが送信されます。 このページでは、これらの通知をカスタマイズする方法について説明します。
 
-通知用電子メールに独自の設定を定義するには、Microsoft Defender for Cloud の **[電子メール通知]** 設定ページで以下を選択できます。
+Defender for Cloud の **[電子メール通知]** 設定ページを使用して、次のような通知メールに関する設定を定義します。
 
 - **通知する必要がある "*ユーザー*"** - 電子メールは、選択した個人、またはサブスクリプションに指定された Azure ロールを持つ任意のユーザーに送信できます。 
 - **通知する必要がある "*内容*"** - Defender for Cloud から通知を送信する必要がある重大度レベルを変更します。

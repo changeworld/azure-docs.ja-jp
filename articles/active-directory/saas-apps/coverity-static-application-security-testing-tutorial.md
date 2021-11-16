@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 1ab33f1905b69c0a90fbd0584982d693dcfa86d5
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 6faeb92b62892b29ee4fc27fc8b075f6a22a40b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132000573"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338518"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-coverity-static-application-security-testing"></a>チュートリアル: Azure AD SSO と Coverity 静的アプリケーションのセキュリティ テストの統合
 
@@ -140,4 +140,4 @@ Coverity 静的アプリケーションのセキュリティ テストに対し�
 
 ## <a name="next-steps"></a>次のステップ
 
-Coverity 静的アプリケーションのセキュリティ テストを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Coverity 静的アプリケーションのセキュリティ テストを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9c408a0a8b0f278ea75462a9c006b64b9d5601c8
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a1c19100cad65c965c567c93c67db1033a4bba10
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425332"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136845"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>チュートリアル:Azure Database for PostgreSQL - フレキシブル サーバーを使用して Django アプリを AKS にデプロイする
 
@@ -59,7 +59,7 @@ az group create --name django-project --location eastus
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-AKS クラスターを作成するには、[az aks create](/cli/azure/aks#az_aks_create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create](/cli/azure/aks#az_aks_create) コマンドを使用します。 次の例では、*djangoappcluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -207,7 +207,7 @@ docker build --tag myblog:latest .
 >Azure Container Registry (ACR) を使用している場合は、```az aks update``` コマンドを実行して ACR アカウントを AKS クラスターに接続します。
 >
 >```azurecli-interactive
->az aks update -n myAKSCluster -g django-project --attach-acr <your-acr-name>
+>az aks update -n djangoappcluster -g django-project --attach-acr <your-acr-name>
 > ```
 >
 

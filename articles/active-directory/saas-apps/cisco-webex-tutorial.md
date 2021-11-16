@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Cisco Webex Meetings の統合'
 description: Azure Active Directory と Cisco Webex Meetings の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/17/2021
+ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 0682673b6c18d2ac1694814b2b030297db7bf8db
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a4f111ea3d9c32014ea91757255fe9b3567028d2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826631"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436394"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
+# <a name="tutorial-azure-ad-sso-integration-with-cisco-webex-meetings"></a>チュートリアル: Azure AD SSO と Cisco Webex Meetings の統合
 
 このチュートリアルでは、Cisco Webex Meetings と Azure Active Directory (Azure AD) を統合する方法について説明します。 Cisco Webex Meetings を Azure AD と統合すると、次のことができます。
 
@@ -33,6 +33,7 @@ ms.locfileid: "124826631"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Cisco Webex Meetings でのシングル サインオン (SSO) が有効なサブスクリプション。
+*  Cisco Webex Meetings のサービス プロバイダー メタデータ ファイル。
 
 > [!NOTE]
 > この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。

@@ -8,12 +8,12 @@ ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3161fefd2b164ad9fbe61fd4f1f322b831985589
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a084e6bad7530c4d506728b17227de13f1f86a1
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070413"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579298"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -24,7 +24,8 @@ ms.locfileid: "131070413"
 - テレメトリ、プロパティ変更、デバイスのライフサイクル、デバイスの接続性、デバイスのライフサイクル、およびデバイスのテンプレートのライフサイクル データを、JSON 形式で、ほぼリアルタイムで継続的にエクスポートする
 - データ ストリームをフィルター処理して、カスタム条件に一致するデータをエクスポートする
 - デバイスからのカスタム値とプロパティ値を使用してデータ ストリームをエンリッチ化する
-- データを Azure Event Hubs、Azure Service Bus、Azure Blob Storage、Webhook エンドポイントなどの宛先に送信する
+- データ ストリームを変換して、シェイプとコンテンツを変更します。
+- データを Azure Event Hubs、Azure Data Explorer、Azure Service Bus、Azure Blob Storage、Webhook エンドポイントなどの宛先に送信します。
 
 > [!Tip]
 > データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、データ エクスポートを早い段階で有効にしてください。
@@ -43,6 +44,7 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
 - Azure Service Bus キュー
 - Azure Service Bus トピック
 - Azure Blob Storage
+- Azure Data Explorer
 - Webhook
 
 ### <a name="connection-options"></a>接続オプション
@@ -213,6 +215,62 @@ Blob コンテナーをさらにセキュリティで保護し、マネージド
 
 ---
 
+### <a name="create-an-azure-data-explorer-destination"></a>Azure Data Explorer の宛先を作成する
+
+エクスポート先となる既存の [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) のクラスターとデータベースがない場合は、次の手順に従います。
+
+1. 新しい Azure Data Explorer クラスターとデータベースを作成します。 詳細については、[Azure Data Explorer のクイック スタート](/azure/data-explorer/create-cluster-database-portal)に関するページを参照してください。 作成するデータベースの名前をメモしておきます。この値は次の手順で必要になります。
+
+1. IoT Central アプリケーションを Azure Data Explorer に接続するために使用できるサービス プリンシパルを作成します。 Azure Cloud Shell を使用して次のコマンドを実行します。
+
+    ```azurecli
+    az ad sp create-for-rbac --skip-assignment --name "My SP for IoT Central"
+    ```
+
+    コマンドの出力で、`appId`、`password`、`tenant` の値をメモしておきます。これらの値は次の手順で必要になります。
+
+1. サービス プリンシパルをデータベースに追加するには、Azure Data Explorer ポータルに移動し、データベースに対して次のクエリを実行します。 プレースホルダーを、前に書き留めた値に置き換えます。
+
+    ```kusto
+    .add database <YourDatabaseName> admins ('aadapp=<YourAppId>;<YourTenant>');
+    ```
+
+1. エクスポートするデータに適したスキーマを使用して、データベースにテーブルを作成します。 次のクエリ例では、`smartvitalspatch` という名前のテーブルを作成します。 詳しくは、「[IoT Central アプリケーション内のデータをエクスポート用に変換する](howto-transform-data-internally.md)」を参照してください。
+
+    ```kusto
+    .create table smartvitalspatch (
+      EnqueuedTime:datetime,
+      Message:string,
+      Application:string,
+      Device:string,
+      Simulated:boolean,
+      Template:string,
+      Module:string,
+      Component:string,
+      Capability:string,
+      Value:dynamic
+    )
+    ```
+
+1. (オプション) Azure Data Explorer データベースへのデータの取り込みを高速化するには、次のようにします。
+
+    1. Azure Data Explorer クラスターの **[構成]** ページに移動します。 次に、 **[ストリーミング インジェスト**] オプションを有効にします。
+    1. 次のクエリを実行して、テーブル ポリシーを変更してストリーミング インジェストを有効にします。
+
+        ```kusto
+        .alter table smartvitalspatch policy streamingingestion enable
+        ```
+
+1. Azure Data Explorer クラスターの URL、データベース名、テーブル名を使用して IoT Central に Azure Data Explorer の宛先を追加します。 次の表は、承認に使用するサービス プリンシパルの値を示しています。
+
+    | サービス プリンシパルの値 | 宛先の構成 |
+    | ----------------------- | ------------------------- |
+    | appId                   | ClientID                  |
+    | tenant                  | テナント ID                 |
+    | password                | クライアント シークレット             |
+
+    :::image type="content" source="media/howto-export-data/export-destination.png" alt-text="Azure Data Explorer のエクスポート先のスクリーンショット。":::
+
 ### <a name="create-a-webhook-endpoint"></a>Webhook エンドポイントを作成する
 
 パブリックに使用できる HTTP Webhook エンドポイントにデータをエクスポートできます。 [RequestBin](https://requestbin.net/) を使用して、テスト用の Webhook エンドポイントを作成できます。 RequestBin は、要求の上限に達したときに、要求をスロットルします。
@@ -295,6 +353,12 @@ Azure portal でエクスポートされたファイルを参照するには、�
 データはほぼリアルタイムでエクスポートされます。 データはメッセージ本文に含まれ、UTF-8 としてエンコードされた JSON 形式です。
 
 メッセージの注釈またはシステム プロパティ バッグ内には、メッセージ本文の対応するフィールドと同じ値を持つ `iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source`、および `iotcentral-message-type` フィールドがあります。
+
+### <a name="azure-data-explorer-destination"></a>Azure Data Explorer の宛先
+
+データは、Azure Data Explorer クラスター内の指定されたデータベース テーブルにほぼリアルタイムでエクスポートされます。 データはメッセージ本文に含まれ、UTF-8 としてエンコードされた JSON 形式です。 IoT Central に [変換](howto-transform-data-internally.md) を追加して、テーブルスキーマに一致するデータをエクスポートすることができます。
+
+Azure Data Explorer ポータルでエクスポートされたデータに対してクエリを実行するには、データベースに移動し、 **[クエリ]** を選択します。
 
 ### <a name="webhook-destination"></a>Webhook の宛先
 
@@ -464,7 +528,7 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 - `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
 - `properties`: 変更されたプロパティの名前と値を含む、変更されたプロパティの配列。 プロパティがコンポーネントまたは IoT Edge モジュール内でモデル化されている場合、コンポーネントとモジュールの情報が含まれます。
 - `enrichments`:エクスポートに設定されたエンリッチメント。
-- 
+
 Event Hubs と Service Bus の場合、IoT Central から新しいメッセージ データが、ほぼリアルタイムでイベント ハブあるいは Service Bus キューまたはトピックに送信されます。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` および `iotcentral-message-type` が自動的に含まれます。
 
 Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
@@ -560,6 +624,7 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
   }
 }
 ```
+
 ## <a name="device-template-lifecycle-changes-format"></a>デバイス テンプレートのライフサイクル変更の形式
 
 各メッセージまたはレコードは、1 つの発行されたデバイス テンプレートに対する 1 つの変更を表します。 エクスポートされたメッセージに含まれる情報は次のとおりです。
@@ -607,4 +672,4 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
 
 ## <a name="next-steps"></a>次の手順
 
-新しいデータ エクスポートの使用方法を理解できたので、次の手順として、[IoT Central で分析を使用する方法](./howto-create-analytics.md)の習得に進むことをお勧めします
+データのエクスポートを構成する方法を理解したので、次の手順として、[IoT Central アプリケーション内のデータをエクスポート用に変換する](howto-transform-data-internally.md)について学習することをお勧めします。

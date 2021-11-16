@@ -9,12 +9,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 734c469afa43a178f5c7a50550426a47940b8f35
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8e0a2110458f57fb5485d982b6114574ac220eb5
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820029"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373367"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -74,7 +74,7 @@ ms.locfileid: "124820029"
 - コピー アクティビティは特定の頻度で実行されます。 コンピューター上のプロセッサおよび RAM の使用量は、ピーク時とアイドル時のある同じパターンに従います。 また、リソース使用量は、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
 - Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。 Parquet の詳細については、「[Azure Data Factory での Parquet 形式](./format-parquet.md#using-self-hosted-integration-runtime)」を参照してください。 ファイルの作成は、セルフホステッド統合コンピューターで実行されます。 予想どおりに動作するには、ファイルの作成に次の前提条件が必要です。
   - [Visual C++ 2010 再領布](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)パッケージ (x64)
-  - [Adopt OpenJDK](https://adoptopenjdk.net/) などの JRE プロバイダーの Java Runtime (JRE) バージョン 8。 `JAVA_HOME` 環境変数が、JRE フォルダー (JDK フォルダーだけでなく) に設定されていることを確認します。
+  - [Adopt OpenJDK](https://adoptopenjdk.net/) などの JRE プロバイダーの Java Runtime (JRE) バージョン 8。 JAVA_HOME 環境変数が JDK フォルダー (JRE フォルダーだけでなく) に設定されていることを確認します。
 
 >[!NOTE]
 >政府機関向けクラウドで実行する場合は、[政府機関向けクラウドへの接続](../azure-government/documentation-government-get-started-connect-with-ps.md)に関する記事を確認してください。

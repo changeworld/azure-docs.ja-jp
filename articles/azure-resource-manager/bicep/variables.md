@@ -4,13 +4,13 @@ description: Bicep で変数を定義する方法について説明します
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 040e40d20fe81bb72493f087c9d0583a911b1ee7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/19/2021
+ms.openlocfilehash: 13cb7847019e6b8a4e6e00c6be8d5949a03b3072
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733353"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219566"
 ---
 # <a name="variables-in-bicep"></a>Bicep の変数
 
@@ -20,7 +20,13 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 
 ## <a name="define-variable"></a>変数を定義する
 
-変数を定義するときは、その変数の[データ型](data-types.md)は指定しません。 代わりに、値またはテンプレート式を指定します。 変数の型は解決済みの値から推定されます。 次の例では、変数を文字列に設定します。
+変数を定義するための構文は次のとおりです。
+
+```bicep
+var <variable-name> = <variable-value>
+```
+
+その変数の[データ型](data-types.md)は指定しないことに注意してください。 型は値から推論されます。 次の例では、変数を文字列に設定します。
 
 ```bicep
 var stringVar = 'example value'
@@ -29,50 +35,92 @@ var stringVar = 'example value'
 変数を構築する際には、パラメーターまたは別の変数からの値を使用できます。
 
 ```bicep
-param inputValue string = 'deployment Parameter'
+param inputValue string = 'deployment parameter'
 
-var stringVar = 'myVariable'
-
+var stringVar = 'preset variable'
 var concatToVar =  '${stringVar}AddToVar'
 var concatToParam = '${inputValue}AddToParam'
+
+output addToVar string = concatToVar
+output addToParam string = concatToParam
 ```
 
-[Bicep 関数](bicep-functions.md)を使用すると、変数の値を作成できます。 変数を宣言するときに、[参照](bicep-functions-resource.md#reference)関数と[リスト](bicep-functions-resource.md#list)関数が有効です。
+上記の例では、以下が返されます。
 
-次の例では、ストレージ アカウント名に文字列値を作成します。 Bicep 関数をいくつか使用してパラメーター値を取得し、連結して一意の文字列にします。
+```json
+{
+  "addToParam": {
+    "type": "String",
+    "value": "deployment parameterAddToParam"
+  },
+  "addToVar": {
+    "type": "String",
+    "value": "preset variableAddToVar"
+  }
+}
+```
+
+[Bicep 関数](bicep-functions.md)を使用すると、変数の値を作成できます。 次の例では、Bicep 関数を使用して、ストレージ アカウント名の文字列値を作成します。
 
 ```bicep
+param storageNamePrefix string = 'stg'
 var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
+output uniqueStorageName string = storageName
 ```
 
-次の例では、リソースはデプロイされません。 さまざまな型の変数を宣言する方法を示します。
+次の例では、以下のような値が返されます。
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
+```json
+"uniqueStorageName": {
+  "type": "String",
+  "value": "stghzuunrvapn6sw"
+}
+```
 
-ループを使用して、動的な数の要素を含む配列変数を宣言できます。 詳細については、「[Bicep での変数の反復処理](loop-variables.md)」を参照してください。
+変数を定義するときに反復ループを使用できます。 次の例では、3 つのプロパティを持つオブジェクトの配列を作成します。
+
+```bicep
+param itemCount int = 3
+
+var objectArray = [for i in range(0, itemCount): {
+  name: 'myDataDisk${(i + 1)}'
+  diskSizeGB: '1'
+  diskIndex: i
+}]
+
+output arrayResult array = objectArray
+```
+
+出力には、次の値を含む配列が返されます。
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  }
+]
+```
+
+変数で使用できるループの種類の詳細については、「[Bicep の反復ループ](loops.md)」を参照してください。
 
 ## <a name="use-variable"></a>変数を使用する
 
 次の例は、リソース プロパティに変数を使用する方法を示しています。 変数名 `storageName` を指定することによって変数の値を参照します。
 
-```bicep
-param rgLocation string = resourceGroup().location
-param storageNamePrefix string = 'STG'
-
-var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
-
-resource demoAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: storageName
-  location: rgLocation
-  kind: 'Storage'
-  sku: {
-    name: 'Standard_LRS'
-    tier: 'Standard'
-  }
-}
-
-output stgOutput string = storageName
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variableswithfunction.bicep" highlight="4,7,15" :::
 
 ストレージ アカウント名では小文字を使用する必要があるため、`storageName` 変数は `toLower` 関数を使用して `storageNamePrefix` 値を小文字にします。 `uniqueString` 関数は、リソース グループ ID から一意の値を作成します。 値は文字列に連結されます。
 
@@ -85,4 +133,4 @@ output stgOutput string = storageName
 ## <a name="next-steps"></a>次の手順
 
 - 変数に使用できるプロパティの詳細については、「[Bicep ファイルの構造と構文について](file.md)」をご覧ください。
-- 変数宣言でのループの使用については、「[Bicep での変数の反復処理](loop-variables.md)」を参照してください。
+- ループ構文の使用の詳細については、「[Bicep の反復ループ](loops.md)」を参照してください。

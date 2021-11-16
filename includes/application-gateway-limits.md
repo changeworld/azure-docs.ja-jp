@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 09/09/2021
 ms.author: victorh
-ms.openlocfilehash: f106ca51487e1c4c306d51161110062ad3582fcd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 76fed7a6f79dafd42c6262f4f73bd21a7c2e45a7
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129440005"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860810"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -27,7 +27,8 @@ ms.locfileid: "129440005"
 | 認証証明書 |100 | |
 | 信頼されたルート証明書 |100 | |
 | 最小要求タイムアウト |1 秒 | |
-| 最大要求タイムアウト |24 時間 | |
+| プライベート バックエンドへの要求タイムアウトの最大値 |24 時間 | |
+| 外部バックエンドへの要求タイムアウトの最大値 |4 分 | |
 | サイトの数 |100<sup>1</sup> |HTTP リスナーあたり 1 |
 | 各リスナーあたりの URL のマップの数 |1 | |
 | URL マップあたりのパスベース ルールの最大数|100||

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 0e7166399dac6d28a5b7e0ed4cf5f4e5cd20e97c
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 236f6a577dd1ae566b560c811f4a9c48c47c9456
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132059036"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851099"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -198,7 +198,7 @@ Microsoft を介した取引を利用できるのは、次のコマーシャル 
 
 - **Azure 仮想マシン**: 無料、BYOL、または使用量ベースの価格モデルから選択します。 顧客の Azure 請求書には、Microsoft によって、基になる Azure インフラストラクチャ料金とは別に、公開元のソフトウェア ライセンス料金が提示されます。 Azure インフラストラクチャ料金は、公開元のソフトウェアを使用することによって発生します。
 
-- **SaaS アプリケーション**: マルチテナント ソリューションであり、認証には [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用し、[SaaS Fulfillment API シリーズ](partner-center-portal/pc-saas-fulfillment-apis.md)と統合する必要があります。 Azure インフラストラクチャの使用量が管理されて、公開元に直接課金されるため、公開元は Azure インフラストラクチャの使用料金とソフトウェア ライセンスの料金を 1 つのコスト項目として考慮する必要があります。 詳細なガイダンスについては、「[コマーシャル マーケットプレースの SaaS オファーを計画する方法](plan-saas-offer.md#plans)」を参照してください。
+- **SaaS アプリケーション**: マルチテナント ソリューションであり、認証には [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用し、[SaaS Fulfillment API シリーズ](partner-center-portal/pc-saas-fulfillment-api-v2.md)と統合する必要があります。 Azure インフラストラクチャの使用量が管理されて、公開元に直接課金されるため、公開元は Azure インフラストラクチャの使用料金とソフトウェア ライセンスの料金を 1 つのコスト項目として考慮する必要があります。 詳細なガイダンスについては、「[コマーシャル マーケットプレースの SaaS オファーを計画する方法](plan-saas-offer.md#plans)」を参照してください。
 
 ## <a name="private-plans"></a>プライベート プラン
 

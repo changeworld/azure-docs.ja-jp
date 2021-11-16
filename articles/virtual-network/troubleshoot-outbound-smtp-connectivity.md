@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/28/2021
 ms.author: genli
-ms.openlocfilehash: 3cc4cb587a7b2d5d06c249cc8f25bc78cdb86739
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 5c4c129514ccf2fe3b55fc173d3fd4b87fd50715
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165265"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248965"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
 
 仮想マシン (VM) から TCP ポート 25 上で外部ドメイン (outlook.com や gmail.com など) に直接送信される送信電子メール メッセージは、その VM が特定のサブスクリプションの種類でデプロイされている場合にのみ可能です。
+
+> [!IMPORTANT]
+> 以下のすべての例で、このプロセスは仮想マシンと VM スケール セットのリソース (`Microsoft.Compute/virtualMachines` & `Microsoft.Compute/virtualMachineScaleSets`) に "*のみ*" 適用されます。 すべての Azure PaaS (サービスとしてのプラットフォーム) リソース ([Azure App Service](https://azure.microsoft.com/services/app-service) や [Azure Functions](https://azure.microsoft.com/services/functions) など) で、ポート 25 での電子メールの送信はサポートされていません。
 
 ## <a name="recommended-method-of-sending-email"></a>メール送信の推奨される方法
 

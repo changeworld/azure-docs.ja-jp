@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: oracle
 ms.collection: linux
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 10/15/2021
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: f6f7312590b98474d5edab02ea8e73725aded229
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 3a5b7d99c0995ae0e91056520945c0ed1a78d136
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690079"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223046"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -200,12 +200,13 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 **Recommendations (推奨事項)**
 
-スループットを最大にするには、ホスト キャッシュを可能な限り **ReadOnly** で開始することをお勧めします。 Premium Storage では、**ReadOnly** オプションを使用してファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、/etc/fstab ファイルをディスクに更新します。
+スループットを最大にするには、ホスト キャッシュを可能な限り **ReadOnly** で開始することをお勧めします。 Premium Storage では、**ReadOnly** オプションを使用してファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、`/etc/fstab` ファイルをディスクに更新します。
 
 ![[読み取り専用] と [なし] のオプションが表示されたマネージド ディスク ページのスクリーンショット。](./media/oracle-design/premium_disk02.png)
 
-- OS ディスクの場合は、既定の **Read/Write** キャッシュを使用し、Oracle ワークロード VM には Premium SSD を使用します。  また、スワップに使用するボリュームも Premium SSD 上に存在するようにしてください。
-- データファイルの場合はすべて、キャッシュに **ReadOnly** を使用します。 ReadOnly キャッシュは、Premium マネージド ディスク P30 以上でのみ使用できます。  ReadOnly キャッシュで使用できるボリュームには、4095 GiB の制限があります。  割り当てがそれより大きくなると、既定ではホスト キャッシュが無効になります。
+- **OS ディスク** の場合は、**Premium SSD と読み取り/書き込みホスト キャッシュ** を使用します。
+- Oracle データファイル、tempfiles、controlfiles、ブロック変更追跡ファイル、BFILE、外部テーブル用のファイル、フラッシュバック ログを含む **データ ディスク** の場合は、**Premium SSD と ReadOnly ホスト キャッシュ** を使用します。
+- **Oracle オンライン redo ログ ファイルを含むデータ ディスク** の場合は、**ホスト キャッシュなし ([なし]) で Premium SSD または UltraDisk** を使用します。 Oracle のアーカイブされた redo ログ ファイルと RMAN バックアップ セットは、オンライン redo ログ ファイルと一緒に存在することもできます。 ホスト キャッシュは 4095 GiB に制限されています。そのため、ホスト キャッシュを使用して P50 より大きい Premium SSD を割り当てないでください。 4 TiB を超えるストレージが必要な場合、RAID-0 では、Linux LVM2 を使用するか Oracle ASM を使用して、複数の Premium SSD をストライプします。
 
 ワークロードが日中と夜間で大きく異なり、IO ワークロードでそれをサポートできる場合は、バーストを備えた P1-P20 Premium SSD により、夜間のバッチ読み込みや限られた IO 要求の間に必要とされるパフォーマンスが得られる可能性があります。  
 

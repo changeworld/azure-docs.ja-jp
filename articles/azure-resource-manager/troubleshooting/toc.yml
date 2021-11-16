@@ -22,33 +22,35 @@
       items:
         - name: 一般的なデプロイのエラー
           href: common-deployment-errors.md
-        - name: AccountNameInvalid
+        - name: アカウント名が無効
           href: error-storage-account-name.md
-        - name: DeploymentQuotaExceeded
+        - name: デプロイ クォータの超過
           href: deployment-quota-exceeded.md
-        - name: InvalidTemplate
+        - name: 無効なテンプレート
           href: error-invalid-template.md
-        - name: JobSizeExceeded
+        - name: ジョブのサイズ超過
           href: error-job-size-exceeded.md
-        - name: NoRegisteredProviderFound
+        - name: No registered provider found (登録済みのプロバイダーが見つかりません)
           href: error-register-resource-provider.md
-        - name: NotFound
+        - name: 見つかりません
           href: error-not-found.md
-        - name: ParentResourceNotFound
+        - name: 親リソースが見つからない
           href: error-parent-resource.md
         - name: Linux のプロビジョニングと割り当ての問題
           href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux
         - name: Windows のプロビジョニングと割り当ての問題
           href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows
-        - name: RequestDisallowedByPolicy
+        - name: 要求がポリシーにより許可されない
           href: error-policy-requestdisallowedbypolicy.md
-        - name: ReservedResourceName
+        - name: 予約されたリソース名
           href: error-reserved-resource-name.md
-        - name: ResourceQuotaExceeded
+        - name: リソースの名前と種類の形式
+          href: error-invalid-name-segments.md
+        - name: リソース クォータを超過しました
           href: error-resource-quota.md
-        - name: SkuNotAvailable
+        - name: SKU not available (SKU が利用できません)
           href: error-sku-not-available.md
-- name: 参照先
+- name: リファレンス
   items:
     - name: Bicep および ARM テンプレート参照
       href: /azure/templates/

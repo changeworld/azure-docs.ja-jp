@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: f1ef5d40ccf6339d909f2cad6388186ddb5a0a04
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fa2904768023120fb2b08a52a23bb33e71e4d2f6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355957"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219150"
 ---
 # <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Anomaly Detector 一変量モジュールを IoT Edge にデプロイする
 
@@ -73,6 +73,8 @@ IoT Edge デバイスのランタイムの状態をトラブルシューティ�
 ## <a name="test-anomaly-detector-on-an-iot-edge-device"></a>IoT Edge デバイスで Anomaly Detector をテストする
 
 Azure Cognitive Services コンテナーが実行されている Azure IoT Edge デバイスへの HTTP 呼び出しを行います。 コンテナーには、REST ベースのエンドポイント API が用意されています。 モジュール API には、ホスト `http://<your-edge-device-ipaddress>:5000` を使用します。
+
+または、Azure IoT Edge デバイスで [Anomaly Detector クライアント ライブラリを使用してモジュール クライアントを作成](../quickstarts/client-libraries.md?tabs=linux&pivots=programming-language-python)し、エッジで実行中の Azure Cognitive Services コンテナーを呼び出すこともできます。 ホスト エンドポイント `http://<your-edge-device-ipaddress>:5000` を使用し、ホスト キーを空のままにします。 
 
 エッジ デバイスでポート 5000 での受信方向の通信がまだ許可されていない場合は、新しい **受信ポート規則** を作成する必要があります。 
 

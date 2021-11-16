@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 80929cb469d4d60c649786c955e8f92906794185
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a27e468a13f95b45a56961b5bb1bfe50553bd841
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011089"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841849"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関する分類の分析情報
 
@@ -21,7 +21,7 @@ ms.locfileid: "131011089"
 > [!IMPORTANT]
 > Azure Purview Insights は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-サポートされるデータ ソースは、Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics (旧称 SQL DW)、Azure SQL Database、Azure SQL Managed Instance、SQL Server、Amazon S3 バケット、Amazon RDS データベース (パブリック プレビュー) です。
+サポートされるデータ ソースは、Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics (旧称 SQL DW)、Azure SQL Database、Azure SQL Managed Instance、SQL Server、Amazon S3 バケット、Amazon RDS データベース (パブリック プレビュー)、Power BI です。
 
 このハウツーガイドでは、次の方法について説明します。
 

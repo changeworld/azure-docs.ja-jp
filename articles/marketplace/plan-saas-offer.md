@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/26/2021
-ms.openlocfilehash: bcfeb7b4baa0b9eae419bb8535869053d63ba57d
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d2caec4bff61fde962a231858d3dfc675426d076
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132055814"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848270"
 ---
 # <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けの SaaS オファーを計画する
 
@@ -59,7 +59,7 @@ _[今すぐ入手 (無料)]_ 、 _[無料試用版]_ 、 _[Sell through Microsof
 
 これらの追加の技術的な要件は、" _[Sell through Microsoft]\(Microsoft を通じた販売\)_ " (取引可能) リスト オプションにのみ適用されます。
 
-- [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-apis.md) を使用して、Azure Marketplace と Microsoft AppSource を統合する必要があります。 SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、削除する必要があります。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 収集されたフィールドの使用方法を示す図と詳細な説明については、この [API](./partner-center-portal/pc-saas-fulfillment-apis.md) に関するドキュメントをご覧ください。
+- [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) を使用して、Azure Marketplace と Microsoft AppSource を統合する必要があります。 SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、削除する必要があります。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 収集されたフィールドの使用方法を示す図と詳細な説明については、この [API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) に関するドキュメントをご覧ください。
 - オファーに対して少なくとも 1 つのプランを作成する必要があります。 プランの価格は、公開する前に選択する価格モデル ("_定額_" または "_ユーザーごと_") に基づきます。 [プラン](#plans)の詳細については、この記事の後半で説明します。
 - 顧客は、いつでもオファーをキャンセルできます。
 
@@ -69,13 +69,13 @@ _[今すぐ入手 (無料)]_ 、 _[無料試用版]_ 、 _[Sell through Microsof
 
 - **ランディング ページ URL**: ユーザーがコマーシャル マーケットプレースからオファーを取得した後にユーザーをダイレクトして、新しく作成された SaaS サブスクリプションから構成プロセスをトリガーする SaaS サイトの URL (例: `https://contoso.com/signup`)。 この URL では、フルフィルメント API を呼び出して対話型登録ページのプロビジョニングの詳細を取得するために使用できるトークンが受け取られます。
 
-  この URL は、特定の顧客の SaaS 購入を一意に識別する、マーケットプレース購入識別トークン パラメーターを使用して呼び出されます。 [解決 API](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) を使用して、このトークンを対応する SaaS サブスクリプションの詳細と交換する必要があります。 これらの詳細や、顧客と対話する Web ページの一部として収集したいその他の情報は、顧客のオンボード エクスペリエンスを開始するために使用できます。これは、サブスクリプション期間を開始するために API のアクティブ化呼び出しで最終的に終了する必要があります。 このページでは、ユーザーは Azure Active Directory (Azure AD) を使用してワンクリック認証でサインアップする必要があります。
+  この URL は、特定の顧客の SaaS 購入を一意に識別する、マーケットプレース購入識別トークン パラメーターを使用して呼び出されます。 [解決 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) を使用して、このトークンを対応する SaaS サブスクリプションの詳細と交換する必要があります。 これらの詳細や、顧客と対話する Web ページの一部として収集したいその他の情報は、顧客のオンボード エクスペリエンスを開始するために使用できます。これは、サブスクリプション期間を開始するために API のアクティブ化呼び出しで最終的に終了する必要があります。 このページでは、ユーザーは Azure Active Directory (Azure AD) を使用してワンクリック認証でサインアップする必要があります。
 
   マーケットプレース購入識別トークン パラメーターを含むこの URL は、顧客が Azure portal または Microsoft 365 管理センターからマネージド SaaS エクスペリエンスを起動したときにも呼び出されます。 両方のフロー (トークンが、新しい顧客の購入後に初めて提供される場合と既存の顧客がその SaaS ソリューションを管理するために再度提供される場合) を処理する必要があります。
 
     構成するランディング ページは、24 時間 365 日稼働している必要があります。 これは、コマーシャル マーケットプレースでの SaaS オファーの新しい購入について、またはオファーのアクティブなサブスクリプションの構成要求について、通知を受ける唯一の方法です。
 
-- **[接続 Webhook]** : Microsoft からパートナーに送信する必要があるすべての非同期イベントのため (SaaS サブスクリプションが取り消されたときなど)、パートナーは [接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-webhook.md)必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。
+- **[接続 Webhook]** : Microsoft からパートナーに送信する必要があるすべての非同期イベントのため (SaaS サブスクリプションが取り消されたときなど)、パートナーは [接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。
 
   指定する Webhook は、24 時間 365 日稼働している必要があります。 これは、コマーシャル マーケットプレースを介して購入された顧客の SaaS サブスクリプションに関する更新について通知を受ける唯一の方法です。
 

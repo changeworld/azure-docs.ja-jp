@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 ms.topic: how-to
-ms.custom: how-to, managed online endpoints, devplatv2
+ms.custom: how-to, managed online endpoints, devplatv2, studio
 ms.author: ssambare
 author: shivanissambare
-ms.reviewer: peterlu
-ms.date: 05/25/2021
-ms.openlocfilehash: d195ce6019f200b3cd3b264aacf09a8cbdb30c5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.reviewer: laobri
+ms.date: 10/21/2021
+ms.openlocfilehash: fee2a8211b90c2b7dbc06a1e64f047e28031eaa6
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057592"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560382"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する
 
@@ -27,17 +27,15 @@ ms.locfileid: "131057592"
 > [!div class="checklist"]
 > * マネージド オンライン エンドポイントを作成する
 > * マネージド オンライン エンドポイントを表示する
+> * マネージド オンライン エンドポイントにデプロイを追加する
 > * マネージド オンライン エンドポイントを更新する
 > * マネージド オンライン エンドポイントとデプロイを削除する
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>前提条件
-
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
-- [ワークスペースに登録されているモデル](how-to-deploy-and-where.md#registermodel)。
-- デプロイされるモデルのスコアリング ファイル。 モデルを登録し、スコアリング ファイルを作成する手順の例については、[画像の分類に関するチュートリアル](tutorial-train-models-with-aml.md)を参照してください。
-- 自分のワークスペースに登録されたカスタム環境、**または** Docker コンテナー レジストリ イメージと Python 環境。 環境の詳細については、「[Azure Machine Learning でソフトウェア環境を作成して使用する](how-to-use-environments.md)」を参照してください。
+- サンプル リポジトリ - [AzureML のサンプル リポジトリ](https://github.com/Azure/azureml-examples)をクローンします。 この記事では、`/cli/endpoints/online` のアセットを使用しています。
 
 ## <a name="create-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイント (プレビュー) を作成する
 
@@ -47,18 +45,23 @@ ms.locfileid: "131057592"
 1. 左側のナビゲーション バーで、 **[エンドポイント]** ページを選択します。
 1. **[+ 作成 (プレビュー)]** を選択します。
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/endpoint-create-managed-online-endpoint.png" alt-text="[エンドポイント] タブでマネージド オンライン エンドポイントを作成する":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/endpoint-create-managed-online-endpoint.png" lightbox="media/how-to-create-managed-online-endpoint-studio/endpoint-create-managed-online-endpoint.png" alt-text="[エンドポイント] タブからマネージド オンライン エンドポイントを作成する様子を示すスクリーンショット。":::
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/online-endpoint-wizard.png" lightbox="media/how-to-create-managed-online-endpoint-studio/online-endpoint-wizard.png" alt-text="マネージド オンライン エンドポイント作成ウィザードのスクリーンショット。":::
+
+### <a name="follow-the-setup-wizard-to-configure-your-managed-online-endpoint"></a>セットアップ ウィザードに従って、マネージド オンライン エンドポイントを構成します。
+
+1. サンプル [モデル](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/model-1/model)と[スコアリング スクリプト](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/model-1/onlinescoring/score.py)を [https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/model-1](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/model-1) から使用できます。
+1. ウィザードの **[環境]** ステップで、**AzureML-sklearn-0.24.1-ubuntu18.04-py37-cpu-inference** キュレーション環境を選択できます。
 
 スタジオの **[モデル]** ページでマネージド オンライン エンドポイントを作成することもできます。 これは、既存のマネージド オンライン デプロイにモデルを追加するための簡単な方法です。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com) に移動します。
 1. 左側のナビゲーション バーで、 **[モデル]** ページを選択します。
 1. モデル名の横にある円をチェックして、モデルを選択します。
-1. **[デプロイ]**  >  **[Deploy to endpoint (preview)]\(エンドポイント (プレビュー) にデプロイする\)** の順に選択します。
+1. **[デプロイ]**  >  **[リアルタイム エンドポイントへのデプロイ (プレビュー)]** を選択します。
 
-セットアップ ウィザードに従って、マネージド オンライン エンドポイントを構成します。
-
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-page-deployment-latest.png" alt-text="[モデル] タブでマネージド オンライン エンドポイントを作成する":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/deploy-from-models-page.png" lightbox="media/how-to-create-managed-online-endpoint-studio/deploy-from-models-page.png" alt-text="Models UI からマネージド オンライン エンドポイントを作成する様子を示すスクリーンショット。":::
 
 ## <a name="view-managed-online-endpoints-preview"></a>マネージド オンライン エンドポイント (プレビュー) を表示する
 
@@ -67,6 +70,8 @@ ms.locfileid: "131057592"
 1. 左側のナビゲーション バーで、 **[エンドポイント]** を選択します。
 1. (省略可能) **マネージド** コンピューティングの種類のみを表示するために、 **[コンピューティングの種類]** に対して **フィルター** を作成します。
 1. エンドポイント名を選択して、エンドポイントの詳細ページを表示します。
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/managed-endpoint-details-page.png" lightbox="media/how-to-create-managed-online-endpoint-studio/managed-endpoint-details-page.png" alt-text="マネージド エンドポイントの詳細ビューのスクリーンショット。":::
 
 ### <a name="test"></a>テスト
 
@@ -77,7 +82,7 @@ ms.locfileid: "131057592"
 1. サンプル入力を入力します。
 1. **[Test]** を選択します。
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/test-deployment.png" alt-text="ブラウザーでサンプル データを直接指定してデプロイをテストする":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/test-deployment.png" lightbox="media/how-to-create-managed-online-endpoint-studio/test-deployment.png" alt-text="ブラウザーでサンプル データを直接指定してデプロイをテストする様子を示すスクリーンショット。":::
 
 ### <a name="monitoring"></a>監視
 
@@ -85,32 +90,38 @@ ms.locfileid: "131057592"
 
 監視タブを使用するには、エンドポイントを作成するときに **[Enable Application Insight diagnostic and data collection]\(Application Insight の診断とデータ収集を有効にする\)** を選択する必要があります。
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/monitor-endpoint.png" alt-text="スタジオでエンドポイントレベルのメトリックを監視する":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/monitor-endpoint.png" lightbox="media/how-to-create-managed-online-endpoint-studio/monitor-endpoint.png" alt-text="スタジオでエンドポイント レベルのメトリックを監視する様子を示すスクリーンショット。":::
 
 その他のモニターとアラートを表示する方法の詳細については、「[マネージド オンライン エンドポイントを監視する方法](how-to-monitor-online-endpoints.md)」を参照してください。
 
-## <a name="update-managed-online-endpoints-preview"></a>マネージド オンライン エンドポイント (プレビュー) を更新する
+## <a name="add-a-deployment-to-a-managed-online-endpoint"></a>マネージド オンライン エンドポイントにデプロイを追加する
 
-さらにデプロイを追加し、トラフィックの割り当てを調整するために、マネージド オンライン エンドポイント (プレビュー) を更新する方法について説明します。
+既存のマネージド オンライン エンドポイントにデプロイを追加できます。
 
-### <a name="add-a-managed-online-deployment"></a>マネージド オンライン デプロイを追加する
-
-次の手順に従って、既存のマネージド オンライン エンドポイントにデプロイを追加します。
+**エンドポイントの詳細ページ** から以下を行います
 
 1. [エンドポイントの詳細ページ](#view-managed-online-endpoints-preview)で、 **[+ デプロイの追加]** ボタンを選択します。
 2. 手順に従ってデプロイを完了します。
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/add-deploy-option-from-endpoint-page.png" lightbox="media/how-to-create-managed-online-endpoint-studio/add-deploy-option-from-endpoint-page.png" alt-text="[エンドポイントの詳細] ページの [デプロイオプションの追加] のスクリーンショット。":::
 
 または、 **[モデル]** ページを使用してデプロイを追加することもできます。
 
 1. 左側のナビゲーション バーで、 **[モデル]** ページを選択します。
 1. モデル名の横にある円をチェックして、モデルを選択します。
-1. **[デプロイ]**  >  **[Deploy to endpoint (preview)]\(エンドポイント (プレビュー) にデプロイする\)** の順に選択します。
+1. **[デプロイ]**  >  **[リアルタイム エンドポイントへのデプロイ (プレビュー)]** を選択します。
 1. 既存のマネージド オンライン エンドポイントにデプロイすることを選択します。
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/select-existing-managed-endpoints.png" lightbox="media/how-to-create-managed-online-endpoint-studio/select-existing-managed-endpoints.png" alt-text="[モデル] ページの [デプロイの追加] オプションのスクリーンショット。":::
 
 > [!NOTE]
 > 新しいデプロイを追加するときに、エンドポイント内のデプロイ間のトラフィックのバランスを調整できます。
 >
-> :::image type="content" source="media/how-to-create-managed-online-endpoint-studio/adjust-deployment-traffic.png" alt-text="スライダーを使用して、複数のデプロイにわたるトラフィックの分散を制御する":::
+> :::image type="content" source="media/how-to-create-managed-online-endpoint-studio/adjust-deployment-traffic.png" lightbox="media/how-to-create-managed-online-endpoint-studio/adjust-deployment-traffic.png" alt-text="スライダーを使用して、複数のデプロイにわたるトラフィックの分散を制御する方法を示すスクリーンショット。":::
+
+## <a name="update-managed-online-endpoints-preview"></a>マネージド オンライン エンドポイント (プレビュー) を更新する
+
+デプロイ トラフィックの割合とインスタンス数は、Azure Machine Learning スタジオから更新できます。
 
 ### <a name="update-deployment-traffic-allocation"></a>デプロイのトラフィックの割り当てを更新する
 
@@ -131,7 +142,6 @@ ms.locfileid: "131057592"
 1. インスタンス数を更新します。
 1. **[更新]** を選択します。
 
-
 ## <a name="delete-managed-online-endpoints-and-deployments-preview"></a>マネージド オンライン エンドポイントとデプロイ (プレビュー) を削除する
 
 マネージド オンライン エンドポイント (プレビュー) 全体と、それに関連付けられているデプロイ (プレビュー) を削除する方法について説明します。 または、マネージド オンライン エンドポイントから個々のデプロイを削除します。
@@ -146,7 +156,6 @@ ms.locfileid: "131057592"
 1. **[削除]** を選択します。
 
 または、[エンドポイントの詳細ページ](#view-managed-online-endpoints-preview)で、マネージド オンライン エンドポイントを直接削除することもできます。 
-
 
 ### <a name="delete-an-individual-deployment"></a>個々のデプロイを削除する
 

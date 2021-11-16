@@ -11,12 +11,12 @@ metadata:
   ms.date: 10/26/2021
   ms.author: kengaderdus
   ms.subservice: B2C
-  ms.openlocfilehash: a60d5e15f08ad845e2c0eaa8644b6ee2521458b3
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: edef0972b98885927d8b26229fe97faab21a50ef
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131007317"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131424365"
 title: Azure AD B2C:よく寄せられる質問 (FAQ)
 summary: このページには、Azure Active Directory B2C (Azure AD B2C) に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 sections:
@@ -155,7 +155,7 @@ sections:
   - question: >
       Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
     answer: >
-      この機能は、パブリック プレビューで使用できます。 詳細については、[Azure AD B2C カスタムドメインに関するページ](./custom-domain.md?pivots=b2c-user-flow)を参照してください。
+      はい、独自のドメインを使用できます。 詳細については、[Azure AD B2C カスタムドメインに関するページ](./custom-domain.md?pivots=b2c-user-flow)を参照してください。
   - question: >
       Azure AD B2C テナントを削除する方法はありますか。
     answer: "Azure AD B2C テナントを削除するには、次の手順に従います。\n\n新しい統一的な **アプリの登録** エクスペリエンスと、従来の **アプリケーション (レガシ)** エクスペリエンスのいずれかを利用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。\n\n#### <a name=\"app-registrations\"></a>[アプリの登録](#tab/app-reg-ga/)\n\n1. *サブスクリプション管理者* として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。\n1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\\(ディレクトリ + サブスクリプション\\)** アイコンを選択します。\n1. **[ポータルの設定] | [Directories + subscriptions]\\(ディレクトリ + サブスクリプション\\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。\n1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。\n1. Azure AD B2C テナント内のすべての **ユーザー フロー (ポリシー)** を削除します。\n1. Azure AD B2C テナントの **ID プロバイダー** をすべて削除します。\n1. **[アプリの登録]** 、 **[すべてのアプリケーション]** タブの順に選択します。\n1. 登録したすべてのアプリケーションを削除します。\n1. **b2c-extensions-app** を削除します。\n1. **[管理]** にある **[ユーザー]** を選択します。\n1. 各ユーザーを順に選択します (ただし、現在サインインに使用している *サブスクリプション管理者* ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。\n1. 左側のメニューで、 **[Azure Active Directory]** を選択します。\n1. **[管理]** の下で、 **[プロパティ]** を選択します。\n1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。\n1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。\n1. 左側のメニューで、 **[Azure Active Directory]** を選択します。\n1. **[概要]** ページで **[テナントの削除]** を選択します。 画面の指示に従って、プロセスを完了します。\n\n#### <a name=\"applications-legacy\"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)\n\n1. *サブスクリプション管理者* として [Azure portal](https://portal.azure.com/) にサインインします。 Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントを使用します。\n1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\\(ディレクトリ + サブスクリプション\\)** アイコンを選択します。\n1. **[ポータルの設定] | [Directories + subscriptions]\\(ディレクトリ + サブスクリプション\\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。\n1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。\n1. ご使用の Azure AD B2C テナントの **ユーザー フロー (ポリシー)** をすべて削除します。\n1. ご使用の Azure AD B2C テナントに登録したすべての **アプリケーション (レガシ)** を削除します。\n1. 左側のメニューで、 **[Azure Active Directory]** を選択します。\n1. **[管理]** にある **[ユーザー]** を選択します。\n1. 各ユーザーを順に選択します (ただし、現在サインインに使用している *サブスクリプション管理者* ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。\n1. **[管理]** の **[アプリの登録]** を選択します。\n1. **[アプリケーションをすべて表示]** を選択します。\n1. **b2c-extensions-app** という名前のアプリケーションを選択し、 **[削除]** を選択した後、確認を求められたら **[はい]** を選択します。\n1. **[管理]** の下で **[ユーザー設定]** を選択します。\n1. 表示される場合は、 **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。\n1. **[管理]** の下で、 **[プロパティ]** を選択します。\n1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。\n1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。\n1. 左側のメニューで、 **[Azure Active Directory]** を選択します。\n1. **[概要]** ページで **[ディレクトリの削除]** を選択します。 画面の指示に従って、プロセスを完了します。\n\n* * *          \n"

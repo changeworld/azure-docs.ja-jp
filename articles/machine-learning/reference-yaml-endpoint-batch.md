@@ -10,12 +10,12 @@ author: tracychms
 ms.author: tracych
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: c91de82d4b0eec1256d34a28132ae3161c62690a
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: cfb475bef0cb308a8e7570a4cbad71e4e9bebb54
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132057767"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131565664"
 ---
 # <a name="cli-v2-batch-endpoint-yaml-schema"></a>CLI (v2) バッチ エンドポイント YAML スキーマ
 
@@ -25,9 +25,9 @@ ms.locfileid: "132057767"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | Type | 説明 | 使用できる値 | 既定値 |
+| キー | 種類 | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使用して YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
+| `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使って YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `name` | string | **必須。** エンドポイントの名前。 Azure リージョン レベルで一意である必要があります。 | | |
 | `description` | string | エンドポイントの説明。 | | |
 | `tags` | object | エンドポイントのタグのディクショナリ。 | | |
@@ -41,11 +41,11 @@ ms.locfileid: "132057767"
 
 ## <a name="examples"></a>例
 
-例は、[GitHub リポジトリの例](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/batch)にあります。 以下にいくつか示します。
+例は、[例の GitHub リポジトリ](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/batch)内にあります。 以下にいくつか示します。
 
 ## <a name="yaml-basic"></a>YAML: 基本
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/batch-endpoint.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

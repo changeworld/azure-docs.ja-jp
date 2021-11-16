@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6cf54dc041d844c14abb68b1fd7463cfa62f5e80
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8a39809cf787237a38d5246c32e481fb82ac2629
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695780"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474555"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 
@@ -31,6 +31,9 @@ GPU 最適化済み VM サイズは、単一の GPU、複数の GPU、または�
 - [NV シリーズ](nv-series.md)と [NVv3 シリーズ](nvv3-series.md)のサイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化および設計されています。 これらの VM は、NVIDIA Tesla M60 GPU によってバックアップされています。
 
 - [NVv4 シリーズ](nvv4-series.md)の VM サイズは、VDI およびリモート視覚化用に最適化され、設計されています。 パーティション分割された GPU では、NVv4 は、より小さな GPU リソースを必要とするワークロードに適したサイズを提供します。 これらの VM は、AMD Radeon Instinct MI25 GPU によってバックアップされています。 NVv4 VM では現在、Windows ゲスト オペレーティング システムのみがサポートされています。
+
+- [NDm A100 v4 シリーズ](ndm-a100-v4-series.md)の仮想マシンは、ハイエンドのディープ ラーニング トレーニングと密結合のスケールアップおよびスケールアウトの HPC ワークロード向けに設計された、Azure GPU ファミリに新たに追加された主力製品です。 NDm A100 v4 シリーズは、単一の仮想マシン (VM) と 8 つの NVIDIA アンペア A100 80 GB テンソル コア GPU で開始されます。
+
 
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 

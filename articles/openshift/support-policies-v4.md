@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: b652087db880cf9bd85d5d3eb00b989bc7be18e4
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: ae8311da88ec2598417dd248e12fb044bc9dbf38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112893530"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223217"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -78,3 +78,19 @@ Azure Red Hat OpenShift 4 は、次の仮想マシン サイズのワーカー �
 |Dsv3|Standard_D8s_v3|8|32|
 |Dsv3|Standard_D16s_v3|16|64|
 |Dsv3|Standard_D32s_v3|32|128|
+
+### <a name="day-2-worker-node"></a>運用段階のワーカー ノード
+次のインスタンスの種類は、MachineSet を構成することで運用段階の操作としてサポートされています。 MachineSet の作成方法の詳細については、[Azure での MachineSet の作成](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html)に関する記事をご覧ください。
+
+
+|系列|サイズ|vCPU|メモリ:GiB|
+|-|-|-|-|
+|L4s|Standard_L4s|4|32|
+|L8s|Standard_L8s|8|64|
+|L16s|Standard_L16s|16|128|
+|L32s|Standard_L32s|32|256|
+|L8s_v2|Standard_L8s_v2|8|64|
+|L16s_v2|Standard_L16s_v2|16|128|
+|L32s_v2|Standard_L32s_v2|32|256|
+|L48s_v2|Standard_L48s_v2|32|384|
+|L64s_v2|Standard_L48s_v2|64|512|

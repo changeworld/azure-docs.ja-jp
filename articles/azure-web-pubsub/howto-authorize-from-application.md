@@ -3,15 +3,15 @@ title: Azure アプリケーションからの Web PubSub リソースへの要�
 description: この記事では、Azure アプリケーションからの Azure AD を使用した Web PubSub リソースの要求を承認する方法について説明します
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 7bca3e4840cf78b497f5907e780a267221dd1b8b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9c6b0c520fbde3f028e933d7eec05d390cb209e8
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477941"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997649"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-azure-applications"></a>Azure アプリケーションからの Web PubSub リソースへの要求を Azure AD を使用して承認する
 

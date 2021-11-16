@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: fdbe6f6232bcd4d53ce3473a80de2829f02fb6bf
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 9b36a5799444b6da011693693b58f6574b135799
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056665"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553635"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントのカスタム コンテナーを使用して TF Serving で提供される TensorFlow モデルをデプロイする (プレビュー)
 
@@ -58,35 +58,35 @@ cd azureml-examples/cli
 
 環境変数を定義します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="initialize_variables":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="initialize_variables":::
 
 ## <a name="download-a-tensorflow-model"></a>TensorFlow モデルをダウンロードする
 
 入力を 2 で除算して結果に 2 を加算するモデルをダウンロードして解凍します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="download_and_unzip_model":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="download_and_unzip_model":::
 
 ## <a name="run-a-tf-serving-image-locally-to-test-that-it-works"></a>TF Serving イメージをローカル環境で実行して動作することをテストする
 
 docker を使用して、テストのためにローカル環境でイメージを実行します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="run_image_locally_for_testing":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="run_image_locally_for_testing":::
 
 ### <a name="check-that-you-can-send-liveness-and-scoring-requests-to-the-image"></a>イメージに liveness とスコアリングの要求を送信できることを調べる
 
 最初に、コンテナーが "アライブ" であること、つまりコンテナー内部のプロセスがまだ実行されていることを確認します。 200 (OK) 応答を受け取る必要があります。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="check_liveness_locally":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="check_liveness_locally":::
 
 次に、ラベル付けされていないデータに関する予測を取得できることを確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="check_scoring_locally":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="check_scoring_locally":::
 
 ### <a name="stop-the-image"></a>イメージを停止する
 
 ローカル環境でのテストが済んだので、イメージを停止します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="stop_image":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="stop_image":::
 
 ## <a name="create-a-yaml-file-for-your-endpoint-and-deployment"></a>エンドポイントおよびデプロイ用の YAML ファイルを作成する
 
@@ -94,11 +94,11 @@ YAML を使用してクラウド デプロイを構成できます。 この例�
 
 __tfserving-endpoint.yml__
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
 
 __tfserving-deployment.yml__
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
 
 この YAML には、注意すべき重要な概念がいくつかあります。
 
@@ -171,7 +171,7 @@ az ml online-deployment create --name tfserving-deployment -f endpoints/online/c
 
 デプロイが完了したら、デプロイされたエンドポイントにスコアリング要求を行うことができるかどうかを確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="invoke_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="invoke_endpoint":::
 
 ### <a name="delete-endpoint-and-model"></a>エンドポイントとモデルを削除する
 

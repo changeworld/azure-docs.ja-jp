@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 25eb702d61b98d9c418e20763e95a948cc2cbf05
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b639c4193a246ccf7f57520089132f0f49d16ebb
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565670"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062436"
 ---
 # <a name="cli-v2-attached-virtual-machine-yaml-schema"></a>CLI (v2) 接続済み仮想マシン YAML スキーマ
 
@@ -25,7 +25,7 @@ ms.locfileid: "131565670"
 
 ## <a name="yaml-syntax"></a>YAML 構文
 
-| キー | 種類 | 説明 | 使用できる値 | 既定値 |
+| キー | Type | 説明 | 使用できる値 | 既定値 |
 | --- | ---- | ----------- | -------------- | ------- |
 | `$schema` | string | YAML スキーマ。 Azure Machine Learning 用 VS Code 拡張機能を使って YAML ファイルを作成する場合は、ファイルの先頭に `$schema` を含めることで、スキーマとリソースの入力候補を呼び出すことができます。 | | |
 | `type` | string | **必須。** コンピューティングの種類。 | `virtualmachine` | |
@@ -36,7 +36,7 @@ ms.locfileid: "131565670"
 | `ssh_settings.admin_username` | string | 仮想マシンへの SSH 接続に使用できる管理者のユーザー アカウントの名前。 | | |
 | `ssh_settings.admin_password` | string | 管理者のユーザー アカウントのパスワード。 **`admin_password` または `ssh_private_key_file` のいずれかが必須です。** | | |
 | `ssh_settings.ssh_private_key_file` | string | 管理者のユーザー アカウントの SSH 秘密キー ファイルへのローカル パス。 **`admin_password` または `ssh_private_key_file` のいずれかが必須です。** | | |
-| `ssh_settings.ssh_port` | 整数 | 仮想マシンの SSH ポート。 | | `22` |
+| `ssh_settings.ssh_port` | 整数 (integer) | 仮想マシンの SSH ポート。 | | `22` |
 
 ## <a name="remarks"></a>Remarks
 
@@ -48,7 +48,7 @@ ms.locfileid: "131565670"
 
 ## <a name="yaml-basic"></a>YAML: 基本
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/vm-attach.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/vm-attach.yml":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,16 +3,16 @@ title: テスト証明書を作成する - Azure IoT Edge | Microsoft Docs
 description: テスト証明書を作成し、それらを Azure IoT Edge デバイスにインストールして運用環境のデプロイの準備をする方法について説明します。
 author: kgremban
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 460c8f4d5d59b0f43d0706587dafab60289b1984
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ac93261275ea28161661f458ff2ac9bb204e872d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610980"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430175"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -34,7 +34,7 @@ IoT Edge シナリオをテストするためのデモ証明書を作成する�
 2. シナリオに応じて、他のすべての証明書の署名に使用する[ルート CA 証明書を作成します。](#create-root-ca-certificate)
 3. テストするシナリオに必要な証明書を生成します。
    * 手動または IoT Hub Device Provisioning Service を使用して、X.509 証明書認証でデバイスをプロビジョニングするための [IoT Edge デバイス ID 証明書を作成](#create-iot-edge-device-identity-certificates)します。
-   * ゲートウェイ シナリオの IoT Edge デバイス向けに [IoT Edge デバイスの CA 証明書を作成します](#create-iot-edge-device-ca-certificates)。
+   * ゲートウェイ シナリオの IoT Edge デバイス向けに [IoT Edge CA 証明書を作成します](#create-iot-edge-ca-certificates)。
    * ゲートウェイ シナリオでダウンストリーム デバイスを認証するために、[ダウンストリーム デバイス証明書を作成します](#create-downstream-device-certificates)。
 
 ## <a name="prerequisites"></a>前提条件
@@ -226,20 +226,24 @@ DPS に IoT Edge デバイスを個別に登録するには、`iot-edge-device-i
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
-## <a name="create-iot-edge-device-ca-certificates"></a>IoT Edge デバイス CA 証明書の作成
+## <a name="create-iot-edge-ca-certificates"></a>IoT Edge CA 証明書を作成する
 
-運用環境に移行するすべての IoT Edge デバイスには、構成ファイルから参照されるデバイス CA 証明書が必要です。
-デバイス CA 証明書により、デバイスで実行されるモジュールのために証明書の作成が行われます。
-また、デバイス CA 証明書は、IoT Edge デバイスがダウンストリーム デバイスに対して ID を検証する手段であるため、ゲートウェイのシナリオにも必要です。
-
-<!-- 1.1 -->
+<!--1.1-->
 :::moniker range="iotedge-2018-06"
+
+運用環境に移行するすべての IoT Edge デバイスには、構成ファイルから参照される CA 署名証明書が必要です。 この証明書は、**デバイス CA 証明書** と呼ばれます。 デバイス CA 証明書により、デバイスで実行されるモジュールのために証明書の作成が行われます。 また、デバイス CA 証明書は、IoT Edge デバイスがダウンストリーム デバイスに対して ID を検証する手段であるため、ゲートウェイのシナリオにも必要です。
+
 デバイス CA の証明書は、IoT Edge デバイス上の config.yaml ファイルの **証明書** セクションにあります。
+
 :::moniker-end
 
-<!-- 1.2 -->
+<!--1.2-->
 :::moniker range=">=iotedge-2020-11"
-デバイス CA の証明書は、IoT Edge デバイス上の config.toml ファイルの **Edge CA** セクションにあります。
+
+運用環境に移行するすべての IoT Edge デバイスには、構成ファイルから参照される CA 署名証明書が必要です。 この証明書は、**エッジ CA 証明書** と呼ばれます。 エッジ CA 証明書により、デバイスで実行されるモジュールのために証明書の作成が行われます。 また、エッジ CA 証明書は、IoT Edge デバイスがダウンストリーム デバイスに対して ID を検証する手段であるため、ゲートウェイのシナリオにも必要です。
+
+エッジ CA の証明書は、IoT Edge デバイス上の config.toml ファイルの **Edge CA** セクションにあります。
+
 :::moniker-end
 
 このセクションの手順を続ける前に、「[スクリプトの設定](#set-up-scripts)」セクションと「[ルート CA 証明書の作成](#create-root-ca-certificate)」セクションの手順に従います。
@@ -248,7 +252,7 @@ DPS に IoT Edge デバイスを個別に登録するには、`iot-edge-device-i
 
 1. 証明書生成スクリプトとルート CA 証明書がある作業ディレクトリに移動します。
 
-2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します。
+2. 次のコマンドを使って、IoT Edge CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します。
 
    ```powershell
    New-CACertsEdgeDevice "<CA cert name>"
@@ -265,7 +269,7 @@ DPS に IoT Edge デバイスを個別に登録するには、`iot-edge-device-i
 
 1. 証明書生成スクリプトとルート CA 証明書がある作業ディレクトリに移動します。
 
-2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します。
+2. 次のコマンドを使って、IoT Edge CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します。
 
    ```bash
    ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"

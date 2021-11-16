@@ -3,21 +3,25 @@ title: Azure Automation でグラフィカル Runbook を作成する
 description: この記事では、コードを使用せず、グラフィカル Runbook を作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af5a1a8353435d9f54b28bce46897f55f8b560a7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ce84a91fcb91be0326571a95cfa92fdfa3b33ef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812659"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220266"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Automation でグラフィカル Runbook を作成する
 
 Azure Automation の Runbook はすべて Windows PowerShell ワークフローです。 グラフィカル Runbook とグラフィカル PowerShell ワークフロー Runbook は、Automation ワーカーが実行する PowerShell コードを生成しますが、これを表示したり変更したりすることはできません。 グラフィカル Runbook をグラフィカル PowerShell ワークフロー Runbook に変換することも、その逆を行うこともできます。 ただし、これらの Runbook をテキスト形式の Runbook に変換することはできません。 また、Automation のグラフィカル エディターでは、テキスト形式の Runbook をインポートできません。
 
 グラフィカル作成では、基になる Windows PowerShell または PowerShell Workflow の複雑なコードを使用しなくても、Azure Automation の Runbook を作成することができます。 コマンドレットや Runbook のライブラリからキャンバスにアクティビティを追加し、それらをリンクして、ワークフローを形成するように構成できます。 これまでに System Center Orchestrator または Service Management Automation (SMA) で作業したことがあれば、グラフィカル作成には見覚えがあるはずです。 この記事では、グラフィカル Runbook の作成を開始するうえで必要な概念について説明します。
+
+> [!NOTE]
+> デジタル署名をグラフィカル Runbook に追加することはできません。 この機能は、Azure Automation ではサポートされていません。
+>
 
 ## <a name="overview-of-graphical-editor"></a>グラフィカル エディターの概要
 

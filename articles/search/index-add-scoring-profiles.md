@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 986bc72d135cbbfceeb4b7e60556673a8dd8edbc
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 757290560f921ee87cf9454037a4f8f199283f29
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275850"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449490"
 ---
 # <a name="add-scoring-profiles-to-a-search-index"></a>検索インデックスにスコアリング プロファイルを追加する
 
@@ -206,7 +206,7 @@ POST /indexes/hotels/docs&api-version=2020-06-30
 
 | 機能 | 説明 |
 |-|-|
-| "freshness" | datetime フィールド (Edm.DataTimeOffset) の値によってブーストします。 この関数には `boostingDuration` 属性が含まれているので、ブーストが発生する期間を表す値を指定できます。 | 
+| "freshness" | datetime フィールド (Edm.DateTimeOffset) の値によってブーストします。 この関数には `boostingDuration` 属性が含まれているので、ブーストが発生する期間を表す値を指定できます。 | 
 | "magnitude" | 数値の高低に基づいてブーストします。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、Edm.Double フィールドと Edm.Int フィールドでのみ使用できます。 magnitude 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、"boostingRangeStart" を 100 に、"boostingRangeEnd" を 1 に設定して、より低い価格の項目をブーストします。 | 
 | "distance"  | 近接または地理的な場所によってブーストします。 この関数は、Edm.GeographyPoint フィールドでのみ使用できます。 | 
 | "tag"  | 検索ドキュメントとクエリ文字列の両方に共通するタグによってブーストします。 タグは `tagsParameter` で指定されます。 この関数は、Edm.String フィールドと Collection(Edm.String) フィールドでのみ使用できます。 | 

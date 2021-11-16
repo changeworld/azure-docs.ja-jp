@@ -3,22 +3,22 @@ title: サインアップおよびサインイン フローを設定する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C でサインアップおよびサインイン フローを設定する方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/24/2021
-ms.author: mimart
+ms.date: 10/21/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9774eef558b02bef4ef9ec9ecacd6e5a132fd244
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8b1607609bafabc210572717fd84bfcb25da8022
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570312"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231991"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインアップおよびサインイン フローを設定する
 
@@ -70,7 +70,7 @@ ms.locfileid: "128570312"
 
    * **[ローカル アカウント]** で、 **[Email signin]\(メールでのサインイン\)** 、 **[User ID signin]\(ユーザー ID でのサインイン\)** 、 **[Phone signin]\(電話でのサインイン\)** 、 **[Phone/Email signin]\(電話とメールでのサインイン\)** 、 **[None]\(なし\)** のいずれかを選択します。 [詳細については、こちらを参照してください](sign-in-options.md)。
    * **[ソーシャル ID プロバイダ]** で、既に設定してある外部のソーシャル ID プロバイダまたはエンタープライズ ID プロバイダーをどれか選択します。 [詳細については、こちらを参照してください](add-identity-provider.md)。
-1. 第 2 の認証方法で ID を証明することをユーザーに要求したい場合は、 **[多要素認証]** で、認証方法の種類を選択し、さらに、いつ多要素認証 (MFA) を適用するかを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
+1. ユーザーの ID 認証を二重に行う場合は、 **[Multifactor authentication]\(多要素認証\)** で、2 つ目の認証方法と、多要素認証 (MFA) を実行するタイミングを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
 1. Azure AD B2C テナントに条件付きアクセス ポリシーを設定していて、それをこのユーザー フローで有効にする場合は、 **[Conditional access]\(条件付きアクセス\)** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを有効にする\)** チェック ボックスに印を入れます。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
 1. **[ユーザー属性とトークン要求]** で、サインアップ中にユーザーから収集する属性とトークンで返す要求を選択します。 すべての値を表示するために **[Show more]\(詳細表示\)** を選択して値を選び、 **[OK]** を選択します。
 
@@ -81,6 +81,10 @@ ms.locfileid: "128570312"
 
 1. **[作成]** を選択して、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
 1. 手順に従って、["パスワードを忘れた場合" のフローを処理します](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) (サインアップまたはサインイン ポリシー内)。
+
+
+### <a name="re-order-the-sign-up-form"></a>サインアップ フォームを並べ替える
+[ローカル アカウントのユーザー フロー入力フィールドを並べ替える方法](customize-ui.md#re-order-input-fields-in-the-sign-up-form)を説明します
 
 ### <a name="test-the-user-flow"></a>ユーザー フローをテストする
 

@@ -11,12 +11,12 @@ ms.author: rvadthyavath
 author: vadthyavath
 ms.date: 10/13/2021
 ms.custom: ''
-ms.openlocfilehash: 376ba24800b3d547a302d83eef960c58afd73054
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 725e8ae80d29a352bd2146906a782d4c8c2e6e38
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006998"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442564"
 ---
 # <a name="data-schemas-to-train-computer-vision-models-with-automated-machine-learning"></a>自動機械学習を使用してコンピューター ビジョン モデルをトレーニングするためのデータ スキーマ
 
@@ -44,12 +44,12 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 
 | Key       | 説明  | 例 |
 | -------- |----------|-----|
-| image_url | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | 画像の種類 ([Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) ライブラリで使用可能なすべての画像形式がサポートされています)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif","bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | 画像の幅<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
-| height | 画像の高さ<br>`Optional, String or Positive Integer` | `"200px" or 200` |
-| label | 画像のクラスまたはラベル<br>`Required, String` | `"cat"` |
+| `image_url` | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | 画像の種類 ([Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) ライブラリで使用可能なすべての画像形式がサポートされています)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif","bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | 画像の幅<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
+| `height` | 画像の高さ<br>`Optional, String or Positive Integer` | `"200px" or 200` |
+| `label` | 画像のクラスまたはラベル<br>`Required, String` | `"cat"` |
 
 
 複数クラス画像分類用の JSONL ファイルの例:
@@ -61,6 +61,8 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "1024px", "height": "768px"}, "label": "water_bottle"}
   ```
+
+![複数クラス画像分類の画像の例。](media/reference-automl-images-schema/multiclass-predictions.jpg)
 
 ### <a name="image-classification-multi-label"></a>画像分類複数ラベル
 
@@ -88,12 +90,12 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 
 | Key       | 説明  | 例 |
 | -------- |----------|-----|
-| image_url | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | 画像の種類 ([Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) ライブラリで使用可能なすべての画像形式がサポートされています)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | 画像の幅<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
-| height | 画像の高さ<br>`Optional, String or Positive Integer` | `"200px" or 200` |
-| label | 画像のクラスまたはラベルの一覧<br>`Required, List of Strings` | `["cat","dog"]` |
+| `image_url` | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | 画像の種類 ([Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) ライブラリで使用可能なすべての画像形式がサポートされています)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | 画像の幅<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
+| `height` | 画像の高さ<br>`Optional, String or Positive Integer` | `"200px" or 200` |
+| `label` | 画像のクラスまたはラベルの一覧<br>`Required, List of Strings` | `["cat","dog"]` |
 
 
 画像分類複数ラベル用の JSONL ファイルの例:
@@ -106,6 +108,8 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "1024px", "height": "768px"}, "label": ["carton","milk_bottle","water_bottle"]}
   ```
+
+![画像分類複数ラベルの画像の例。](media/reference-automl-images-schema/multilabel-predictions.jpg)
 
 ### <a name="object-detection"></a>オブジェクトの検出
 
@@ -142,27 +146,27 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 ```
 
 ここでは、 
-- xmin = 境界ボックスの左上隅の x 座標
-- ymin = 境界ボックスの左上隅の y 座標
-- xmax = 境界ボックスの右下隅の x 座標
-- ymax = 境界ボックスの右下隅の y 座標
+- `xmin` = 境界ボックスの左上隅の x 座標
+- `ymin` = 境界ボックスの左上隅の y 座標
+- `xmax` = 境界ボックスの右下隅の x 座標
+- `ymax` = 境界ボックスの右下隅の y 座標
 
 
 
 | Key       | 説明  | 例 |
 | -------- |----------|-----|
-| image_url | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | 画像の種類 ([Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) ライブラリで使用可能なすべての画像形式がサポートされています。 ただし、YOLO の場合は、[opencv](https://pypi.org/project/opencv-python/4.3.0.36/) で許可されている画像形式だけがサポートされます)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | 画像の幅<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
-| height | 画像の高さ<br>`Optional, String or Positive Integer` | `"665px" or 665` |
-| label (外部キー) | 境界ボックスの一覧。各ボックスは左上と右下の座標 `label, topX, topY, bottomX, bottomY, isCrowd` の辞書です<br>`Required, List of dictionaries` | `[{"label": "cat", "topX": 0.260, "topY": 0.406, "bottomX": 0.735, "bottomY": 0.701, "isCrowd": 0}]` |
-| label (内部キー)| 境界ボックス内の物体のクラスまたはラベル<br>`Required, String` | `"cat"` |
-| topX | 境界ボックスの左上隅の x 座標と画像の幅の比率<br>`Required, Float in the range [0,1]` | `0.260` |
-| topY | 境界ボックスの左上隅の y 座標と画像の高さの比率<br>`Required, Float in the range [0,1]` | `0.406` |
-| bottomX | 境界ボックスの右下隅の x 座標と画像の幅の比率<br>`Required, Float in the range [0,1]` | `0.735` |
-| bottomY | 境界ボックスの右下隅の y 座標と画像の高さの比率<br>`Required, Float in the range [0,1]` | `0.701` |
-| isCrowd | 境界ボックスが物体群の周りにあるかどうかを示します。 この特別なフラグが設定されている場合は、メトリックを計算するときにこの特定の境界ボックスをスキップします。<br>`Optional, Bool` | `0` |
+| `image_url` | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | 画像の種類 ([Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) ライブラリで使用可能なすべての画像形式がサポートされています。 ただし、YOLO の場合は、[opencv](https://pypi.org/project/opencv-python/4.3.0.36/) で許可されている画像形式だけがサポートされます)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | 画像の幅<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
+| `height` | 画像の高さ<br>`Optional, String or Positive Integer` | `"665px" or 665` |
+| `label` (外部キー) | 境界ボックスの一覧。各ボックスは左上と右下の座標 `label, topX, topY, bottomX, bottomY, isCrowd` の辞書です<br>`Required, List of dictionaries` | `[{"label": "cat", "topX": 0.260, "topY": 0.406, "bottomX": 0.735, "bottomY": 0.701, "isCrowd": 0}]` |
+| `label` (内部キー)| 境界ボックス内の物体のクラスまたはラベル<br>`Required, String` | `"cat"` |
+| `topX` | 境界ボックスの左上隅の x 座標と画像の幅の比率<br>`Required, Float in the range [0,1]` | `0.260` |
+| `topY` | 境界ボックスの左上隅の y 座標と画像の高さの比率<br>`Required, Float in the range [0,1]` | `0.406` |
+| `bottomX` | 境界ボックスの右下隅の x 座標と画像の幅の比率<br>`Required, Float in the range [0,1]` | `0.735` |
+| `bottomY` | 境界ボックスの右下隅の y 座標と画像の高さの比率<br>`Required, Float in the range [0,1]` | `0.701` |
+| `isCrowd` | 境界ボックスが物体群の周りにあるかどうかを示します。 この特別なフラグが設定されている場合は、メトリックを計算するときにこの特定の境界ボックスをスキップします。<br>`Optional, Bool` | `0` |
 
 
 物体検出用の JSONL ファイルの例:
@@ -174,7 +178,9 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 .
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "499px", "height": "666px"}, "label": [{"label": "carton", "topX": 0.0180, "topY": 0.297, "bottomX": 0.380, "bottomY": 0.836, "isCrowd": 0}, {"label": "milk_bottle", "topX": 0.454, "topY": 0.348, "bottomX": 0.613, "bottomY": 0.683, "isCrowd": 0}, {"label": "water_bottle", "topX": 0.667, "topY": 0.279, "bottomX": 0.841, "bottomY": 0.615, "isCrowd": 0}]}
-  ```
+```
+
+![物体検出の画像の例。](media/reference-automl-images-schema/object-detect-predictions.jpg)
 
 ### <a name="instance-segmentation"></a>インスタンスのセグメント化
 
@@ -202,15 +208,15 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 
 | Key       | 説明  | 例 |
 | -------- |----------|-----|
-| image_url | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | イメージの種類<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff" }`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | 画像の幅<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
-| height | 画像の高さ<br>`Optional, String or Positive Integer` | `"665px" or 665` |
-| label (外部キー) | マスクの一覧。各マスクは `label, isCrowd, polygon coordinates` のディクショナリです <br>`Required, List of dictionaries` | ` [{"label": "can", "isCrowd": 0, "polygon": [[0.577, 0.689,`<br> ` 0.562, 0.681,`<br> `0.559, 0.686]]}]` |
-| label (内部キー)| マスク内の物体のクラスとラベル<br>`Required, String` | `"cat"` |
-| isCrowd | マスクが物体群の周りにあるかどうかを示します<br>`Optional, Bool` | `0` |
-| polygon | 物体を表す多角形の座標<br>`Required,  List of list for multiple segments of the same instance. Float values in the range [0,1]` | ` [[0.577, 0.689, 0.567, 0.689, 0.559, 0.686]]` |
+| `image_url` | AML データソース内での画像の場所<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | 画像詳細<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | イメージの種類<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff" }`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | 画像の幅<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
+| `height` | 画像の高さ<br>`Optional, String or Positive Integer` | `"665px" or 665` |
+| `label` (外部キー) | マスクの一覧。各マスクは `label, isCrowd, polygon coordinates` のディクショナリです <br>`Required, List of dictionaries` | ` [{"label": "can", "isCrowd": 0, "polygon": [[0.577, 0.689,`<br> ` 0.562, 0.681,`<br> `0.559, 0.686]]}]` |
+| `label` (内部キー)| マスク内の物体のクラスとラベル<br>`Required, String` | `"cat"` |
+| `isCrowd` | マスクが物体群の周りにあるかどうかを示します<br>`Optional, Bool` | `0` |
+| `polygon` | 物体を表す多角形の座標<br>`Required,  List of list for multiple segments of the same instance. Float values in the range [0,1]` | ` [[0.577, 0.689, 0.567, 0.689, 0.559, 0.686]]` |
 
 
 インスタンス セグメント化用の JSONL ファイルの例:
@@ -223,6 +229,8 @@ Azure Machine Learning AutoML for Images では、入力画像データを [JSON
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "499px", "height": "666px"}, "label": [{"label": "water_bottle", "isCrowd": 0, "polygon": [[0.334, 0.626, 0.304, 0.621, 0.254, 0.603, 0.164, 0.605, 0.158, 0.602, 0.146, 0.602, 0.142, 0.608, 0.094, 0.612, 0.084, 0.599, 0.080, 0.585, 0.080, 0.539, 0.082, 0.536, 0.092, 0.533, 0.126, 0.530, 0.132, 0.533, 0.144, 0.533, 0.162, 0.525, 0.172, 0.525, 0.186, 0.521, 0.196, 0.521 ]]}, {"label": "milk_bottle", "isCrowd": 0, "polygon": [[0.392, 0.773, 0.380, 0.732, 0.379, 0.767, 0.367, 0.755, 0.362, 0.735, 0.362, 0.714, 0.352, 0.644, 0.352, 0.611, 0.362, 0.597, 0.40, 0.593, 0.444,  0.494, 0.588, 0.515, 0.585, 0.621, 0.588, 0.671, 0.582, 0.713, 0.572, 0.753 ]]}]}
 ```
+
+![インスタンス セグメント化の画像の例。](media/reference-automl-images-schema/instance-segmentation-predictions.jpg)
 
 ## <a name="data-format-for-inference"></a>推論用のデータ形式
 
@@ -389,6 +397,9 @@ response = requests.post(scoring_uri, data, headers=headers)
    ]
 }
 ```
+
+> [!NOTE]
+> この記事で使用されている画像は Fridge Objects データセットのもので、著作権は © Microsoft Corporation に帰属します。[MIT ライセンス](https://github.com/microsoft/computervision-recipes/blob/master/LICENSE)の下で [computervision-recipes/01_training_introduction.ipynb](https://github.com/microsoft/computervision-recipes/blob/master/scenarios/detection/01_training_introduction.ipynb) から入手できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/29/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: aad9a66c37b4d9d4ba590e339cd2188e5e194c64
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921012"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449927"
 ---
 ::: zone target = "docs"
 
@@ -71,7 +71,7 @@ ms.locfileid: "87921012"
 ## <a name="ship-data-box-heavy-back"></a>Data Box Heavy の返送
 
 1. デバイスの電源をオフにして、すべてのケーブル類を取り外します。 4 つの電源コードをまとめ、デバイスの背面からアクセスできるトレイにしっかりと格納します。
-2. FedEx (米国) または DHL (EU) の小口トラック輸送でデバイスを返送します。
+2. FedEx (米国) または DHL (ヨーロッパ) の小口トラック輸送でデバイスを返送します。
 
     1. [Data Box 運用チーム](mailto:DataBoxOps@microsoft.com)に連絡して集荷について通知し、返送ラベルを入手します。
     2. 運送業者の現地の電話番号にかけて、集荷のスケジュールを設定します。

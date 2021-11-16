@@ -5,15 +5,15 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 10/20/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8115e79a0cf747fbf5980d717331883097012077
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 491d8cb7cc11d0a904ad70fac8d54c9c6e16670d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112413003"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288081"
 ---
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
@@ -23,8 +23,8 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | キューまたはサブスクリプションにアクティブなメッセージがあり、リッスンしているレシーバーがない場合に生成されます。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListeners | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
-| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションにアクティブなメッセージがある場合に、その特定のキューまたはサブスクリプションにアクティブなリスナーが存在する場合でも、定期的に生成されます。 |
-| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションの配信不能エンティティにメッセージがある場合に、その特定のキューまたはサブスクリプションの配信不能エンティティにアクティブなリスナーが存在する場合でも、定期的に生成されます。 | 
+| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションにアクティブなメッセージがある場合に、その特定のキューまたはサブスクリプションにアクティブなリスナーが存在する場合でも、30 秒間隔で生成されます。 また、キューやサブスクリプションのアクティブなメッセージ数が 0 から正の値に遷移したときにも発生します。 |
+| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションの配信不能エンティティにメッセージがある場合に、その特定のキューまたはサブスクリプションの配信不能エンティティにアクティブなリスナーが存在する場合でも、30 秒間隔で生成されます。 また、キューやサブスクリプションの配信不能エンティティの配信不能メッセージ カウントが 0 から正の値に遷移したときにも発生します。 | 
 
 ## <a name="example-event"></a>イベントの例
 

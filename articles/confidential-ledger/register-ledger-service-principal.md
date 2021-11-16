@@ -7,12 +7,12 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: a4f751bcb262011b073207751ac590edeb41d391
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 843c2489052ed1df78c738b680740d2a7206e4a5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387639"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454506"
 ---
 # <a name="register-a-confidential-ledger-service-principal"></a>Confidential Ledger サービス プリンシパルを登録する
 

@@ -9,20 +9,20 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: jairoc
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c12dea04fe603be370947ef0bae3c9db28335a01
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4b76ade4b47417cb6c3d4f65daa335553c7a4b83
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624009"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179182"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>チュートリアル: 最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Introduction to device management in Azure Active Directory](overview.md)」(Azure Active Directory のデバイス管理の概要) を参照してください。
 
-Windows 10 では、最初の実行エクスペリエンス (FRX) 中に新しいデバイスを Azure AD に参加させることができます。  
+Windows 10 では、OOBE (out-of-box experience) 時、つまり初回実行時に新しいデバイスを Azure AD に参加させることができます。  
 これにより、市販のデバイスを従業員や学生に配布することができます。
 
 Windows 10 Professional または Windows 10 Enterprise のいずれかがデバイスにインストールされている場合、既定のエクスペリエンスは、会社所有のデバイスのセットアップ プロセスになります。
@@ -48,16 +48,16 @@ Windows 10 デバイスを参加させるには、デバイスを登録できる
 1. 新しいデバイスの電源をオンにしてセットアップ プロセスを開始すると、**準備** メッセージが表示されます。 指示に従って、デバイスを設定します。
 1. 地域と言語をカスタマイズすることから開始します。 次に、マイクロソフト ソフトウェア ライセンス条項に同意します。
  
-    ![地域をカスタマイズする](./media/azuread-joined-devices-frx/01.png)
+    <!--![Customize for your region](./media/azuread-joined-devices-frx/01.png)-->
 
 1. インターネットに接続するために使用するネットワークを選択します。
 1. **[This device belongs to my organization]\(このデバイスは私の組織の所有物です\)** をクリックします。 
 
-    ![この PC の所有者画面](./media/azuread-joined-devices-frx/02.png)
+    <!--![Who owns this PC screen](./media/azuread-joined-devices-frx/02.png)-->
 
 1. 組織によって提供された資格情報を入力し、**[サインイン]** をクリックします。
 
-    ![サインイン画面](./media/azuread-joined-devices-frx/03.png)
+    <!--![Sign-in screen](./media/azuread-joined-devices-frx/03.png)-->
 
 1. デバイスによって、Azure AD で一致するテナントが検索されます。 フェデレーション ドメインに属している場合は、オンプレミスのセキュリティ トークン サービス (STS) サーバー、たとえば Active Directory フェデレーション サービス (AD FS) にリダイレクトされます。
 1. フェデレーション ドメインのユーザーでない場合は、Azure AD でホストされるページに資格情報を直接入力します。 

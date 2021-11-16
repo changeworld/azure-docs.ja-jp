@@ -5,14 +5,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/29/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: c4b3e9aeaaea9e8ff3d7abc58a8e468ca8dc2c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddc720f8ac9b99418b0c5c7d6a70ababcfd034a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97820540"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426178"
 ---
-### <a name="text-analytics-support-notes"></a>\*\*テキスト分析サポートに関するメモ
-テキスト分析には、keyPhrase 事前構築済みエンティティと感情分析が含まれます。 サブカルチャ `pt-PT` および `pt-BR` については、ポルトガル語のみがサポートされています。 その他のカルチャはすべて、プライマリ カルチャ レベルでサポートされています。 Text Analytics の[サポートされている言語](../../text-analytics/language-support.md)の詳細を確認してください。
+### <a name="language-service-support-notes"></a>**言語サービスのサポートに関するメモ
+言語サービスには、keyPhrase 事前構築済みエンティティと感情分析が含まれます。 サブカルチャ `pt-PT` および `pt-BR` については、ポルトガル語のみがサポートされています。 その他のカルチャはすべて、プライマリ カルチャ レベルでサポートされています。

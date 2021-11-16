@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 06/24/2021
-ms.openlocfilehash: 6dac3b8230a0bad9c6492b236eac5dddc1839471
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: af2927e4aa9dc9044546537adbde3af97cba4be1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895780"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249383"
 ---
 # <a name="measured-boot-and-host-attestation"></a>メジャー ブートとホストの構成証明
 この記事では、メジャー ブートとホストの構成証明を通じて、Microsoft がホストの整合性とセキュリティを確保する方法について説明します。

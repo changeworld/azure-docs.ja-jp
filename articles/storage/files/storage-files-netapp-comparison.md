@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 8/31/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 1238152a52eedb3a9771a31c7969be3478dc1355
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ac4965bf9de7b579704aa522ff08826f4f969cf2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426042"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463204"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Azure Files と Azure NetApp Files の比較
 
@@ -30,8 +30,8 @@ ms.locfileid: "123426042"
 | 利用可能なリージョン | Premium<br><ul><li>30 リージョン以上</li></ul><br>Standard<br><ul><li>すべてのリージョン</li></ul><br> 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。 | すべてのレベル<br><ul><li>28 リージョン以上</li></ul><br> 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。 |
 | 冗長性 | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> 詳細については、「[冗長性](./storage-files-planning.md#redundancy)」を参照してください。 | すべてのレベル<br><ul><li>組み込みのローカル HA</li><li>[リージョン間レプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md)</li></ul> |
 | サービス レベル アグリーメント (SLA)<br><br> Azure Files と Azure NetApp Files の SLA は異なる方法で計算されることに注意してください。 | [Azure Files の SLA](https://azure.microsoft.com/support/legal/sla/storage/) | [Azure NetApp Files の SLA](https://azure.microsoft.com/support/legal/sla/netapp) |  
-| ID ベースの認証と認可 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> ID ベースの認証は、SMB プロトコルを使用している場合にのみサポートされることに注意してください。 詳細については、「[よくあるご質問](./storage-files-faq.md#security-authentication-and-access-control)」をご覧ください。 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> NFS/SMB デュアル プロトコル<ul><li>ADDS/LDAP 統合</li></ul><br>NFSv3/NFSv4.1<ul><li>NFS 拡張グループとの ADDS/LDAP 統合 [(プレビュー)](../../azure-netapp-files/configure-ldap-extended-groups.md)</li></ul><br> 詳細については、「[よくあるご質問](../../azure-netapp-files/azure-netapp-files-faqs.md)」をご覧ください。 |
-| 暗号化 | すべてのプロトコル<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li></ul><br>SMB<br><ul><li>AES 256 または RC4-HMAC を使用した Kerberos 暗号化</li><li>転送中の暗号化</li></ul><br>REST<br><ul><li>転送中の暗号化</li></ul><br> 詳細については、[セキュリティとネットワーク](files-nfs-protocol.md#security-and-networking)に関するページを参照してください。 | すべてのプロトコル<br><ul><li>Microsoft マネージド キーを使用した保存時の暗号化 (AES 256) </li></ul><br>SMB<ul><li>AES-CCM (SMB 3.0) と AES-GCM (SMB 3.1.1) を使用した転送中の暗号化</li></ul><br>NFS 4.1<ul><li>AES 256 による Kerberos を使用した転送中の暗号化</li></ul><br> 詳細については、「[セキュリティに関する FAQ](../../azure-netapp-files/azure-netapp-files-faqs.md#security-faqs)」を参照してください。 |
+| ID ベースの認証と認可 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> ID ベースの認証は、SMB プロトコルを使用している場合にのみサポートされることに注意してください。 詳細については、「[よくあるご質問](./storage-files-faq.md#security-authentication-and-access-control)」をご覧ください。 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> NFS/SMB デュアル プロトコル<ul><li>ADDS/LDAP 統合</li></ul><br>NFSv3/NFSv4.1<ul><li>NFS 拡張グループとの ADDS/LDAP 統合 [(プレビュー)](../../azure-netapp-files/configure-ldap-extended-groups.md)</li></ul><br> 詳細については、[Azure NetApp Files の NFS FAQ](../../azure-netapp-files/faq-nfs.md) に関する記事と、[Azure NetApp Files の SMB FAQ](../../azure-netapp-files/faq-smb.md) に関する記事を参照してください。 |
+| 暗号化 | すべてのプロトコル<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li></ul><br>SMB<br><ul><li>AES 256 または RC4-HMAC を使用した Kerberos 暗号化</li><li>転送中の暗号化</li></ul><br>REST<br><ul><li>転送中の暗号化</li></ul><br> 詳細については、[セキュリティとネットワーク](files-nfs-protocol.md#security-and-networking)に関するページを参照してください。 | すべてのプロトコル<br><ul><li>Microsoft マネージド キーを使用した保存時の暗号化 (AES 256) </li></ul><br>SMB<ul><li>AES-CCM (SMB 3.0) と AES-GCM (SMB 3.1.1) を使用した転送中の暗号化</li></ul><br>NFS 4.1<ul><li>AES 256 による Kerberos を使用した転送中の暗号化</li></ul><br> 詳細については、「[セキュリティに関する FAQ](../../azure-netapp-files/faq-security.md)」を参照してください。 |
 | アクセス オプション | <ul><li>インターネット</li><li>セキュリティで保護された VNet アクセス</li><li>VPN Gateway</li><li>ExpressRoute</li><li>Azure File Sync</li></ul><br> 詳細については、[ネットワークの考慮事項](./storage-files-networking-overview.md)に関する記事を参照してください。 | <ul><li>セキュリティで保護された VNet アクセス</li><li>VPN Gateway</li><li>ExpressRoute</li><li>[グローバル ファイル キャッシュ](https://cloud.netapp.com/global-file-cache/azure)</li><li>[HPC Cache](../../hpc-cache/hpc-cache-overview.md)</li></ul><br> 詳細については、[ネットワークの考慮事項](../../azure-netapp-files/azure-netapp-files-network-topologies.md)に関する記事を参照してください。 |
 | データ保護  | <ul><li>増分スナップショット</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しい場所に復元</li><li>インプレース復元</li><li>共有レベルの論理的な削除</li><li>Azure Backup 統合</li></ul><br> 詳細については、「[Azure Files でのデータ保護機能の拡張](https://azure.microsoft.com/blog/azure-files-enhances-data-protection-capabilities/)」を参照してください。 | <ul><li>スナップショット (255/ボリューム)</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しいボリュームに復元</li><li>インプレース復元</li><li>[リージョン間のレプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md) (パブリックプレビュー)</li></ul><br> 詳細については、「[Azure NetApp Files スナップショットのしくみ](../../azure-netapp-files/snapshots-introduction.md)」を参照してください。 |
 | 移行ツール  | <ul><li>Azure Data Box</li><li>Azure File Sync</li><li>記憶域移行サービス</li><li>AzCopy</li><li>Robocopy</li></ul><br> 詳細については、「[Azure ファイル共有への移行](./storage-files-migration-overview.md)」を参照してください。 | <ul><li>[グローバル ファイル キャッシュ](https://cloud.netapp.com/global-file-cache/azure)</li><li>[CloudSync](https://cloud.netapp.com/cloud-sync-service)、[XCP](https://xcp.netapp.com/)</li><li>記憶域移行サービス</li><li>AzCopy</li><li>Robocopy</li><li>アプリケーション ベース (HSR、Data Guard、AOAG など)</li></ul> |
@@ -44,7 +44,7 @@ ms.locfileid: "123426042"
 |---------|---------|---------|
 | 共有またはボリュームの最小サイズ | Premium<br><ul><li>100 GiB</li></ul><br>Standard<br><ul><li>最小なし。</li></ul> | すべてのレベル<br><ul><li>100 GiB (容量プールの最小サイズ: 4 TiB)</li></ul> |
 | 共有またはボリュームの最大サイズ | 100 TiB | すべてのレベル<br><ul><li>100 TiB (容量プール上限: 500 TiB)</li></ul><br>Azure NetApp アカウントごとに最大 12.5 PiB まで |
-| 共有またはボリュームの最大 IOPS | Premium<br><ul><li>最大 100 k</li></ul><br>Standard<br><ul><li>最大 10 k</li></ul> | Ultra および Premium<br><ul><li>最大 450 k </li></ul><br>Standard<br><ul><li>最大 320 k</li></ul> |
+| 共有またはボリュームの最大 IOPS | Premium<br><ul><li>最大 100 k</li></ul><br>Standard<br><ul><li>最大 20K</li></ul> | Ultra および Premium<br><ul><li>最大 450 k </li></ul><br>Standard<br><ul><li>最大 320 k</li></ul> |
 | 共有またはボリュームの最大スループット | Premium<br><ul><li>最大 10 GiB/秒</li></ul><br>Standard<br><ul><li>最大 300 MiB/秒</li></ul> | Ultra および Premium<br><ul><li>最大 4.5 GiB/秒</li></ul><br>Standard<br><ul><li>最大 3.2 GiB/秒</li></ul> |
 | 最大ファイル サイズ | 4 TiB | 16 TiB |
 | ファイルあたりの最大 IOPS | Premium<br><ul><li>最大 8,000</li></ul><br>Standard<br><ul><li>1,000</li></ul> | すべてのレベル<br><ul><li>ボリューム上限まで</li></ul> |

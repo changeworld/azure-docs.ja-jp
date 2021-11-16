@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0a88acaf29187c648b24f74877a260a8772f6008
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9468de9cbd88e9ad4406ac929aebc6bda938fb3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319685"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447381"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway リスナーの構成
 
@@ -54,7 +54,7 @@ HTTP または HTTPS を選択します。
 - [TLS ターミネーション](features.md#secure-sockets-layer-ssltls-termination)または[エンド ツー エンドの TLS 暗号化](./ssl-overview.md)が必要な場合は、HTTPS を選択します。 クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されます。 また、TLS 接続はアプリケーション ゲートウェイで終了します。 エンド ツー エンドの TLS 暗号化が必要な場合は、HTTPS を選択して **バックエンド HTTP** 設定を構成する必要があります。 これにより、トラフィックがアプリケーション ゲートウェイからバックエンドに送られるときに再暗号化されます。
 
 
-TLS ターミネーションとエンド ツー エンド TLS 暗号化を構成するには、リスナーに証明書を追加して、アプリケーション ゲートウェイが対称キーを派生できるようにする必要があります。 これは TLS プロトコル仕様によって規定されています。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 この形式を使用すると、ゲートウェイがトラフィックの暗号化と復号化に使用する秘密キーをエクスポートできます。
+TLS 終端を構成するには、TLS/SSL 証明書をリスナーに追加する必要があります。 これにより、Application Gateway で受信トラフィックを復号化し、クライアントへの応答トラフィックを暗号化することができます。 Application Gateway に提供される証明書は、プライベートおよび公開キーの両方を含む Personal Information Exchange (PFX) 形式である必要があります。
 
 ## <a name="supported-certificates"></a>サポートされている証明書
 

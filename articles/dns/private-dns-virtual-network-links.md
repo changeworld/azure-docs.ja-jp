@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 9e8ed0e21f1a6a98915dd3db1d5b8c2dcc1d6103
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fa1729029d7576dac1dab2ea77cfe1c257441b42
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763291"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500813"
 ---
 # <a name="what-is-a-virtual-network-link"></a>仮想ネットワーク リンクとは
 

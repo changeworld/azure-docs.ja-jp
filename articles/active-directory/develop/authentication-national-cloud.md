@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/21/2021
+ms.date: 11/03/2021
 ms.author: negoe
 ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d920747b3af826a3009c602e81baa9157160eeb8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc62e3a4ae32cf4b2d0a63dd15bdab24ac490d1e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551526"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564539"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -30,7 +30,7 @@ ms.locfileid: "128551526"
 - Azure China 21Vianet
 - Azure Germany ([2021 年 10 月 29 日に終了](https://www.microsoft.com/cloud-platform/germany-cloud-regions))。 [Azure Germany の移行](#azure-germany-microsoft-cloud-deutschland)について説明します。
 
-各クラウド "_インスタンス_"、個別の国クラウド、グローバル Azure クラウドは、それ自体のエンドポイントを有する別個の環境です。 クラウド固有のエンドポイントには、OAuth 2.0 アクセス トークンと OpenID Connect ID トークン要求エンドポイントに加え、Azure portal など、アプリの管理とデプロイのための URL が含まれています。
+個々の各国のクラウドとグローバル Azure クラウドは、クラウド _インスタンス_ です。 各クラウド インスタンスはそれぞれ独立しており、独自の環境と _エンドポイント_ を持っています。 クラウド固有のエンドポイントには、OAuth 2.0 アクセス トークンと OpenID Connect ID トークン要求エンドポイントに加え、Azure portal など、アプリの管理とデプロイのための URL が含まれています。
 
 アプリを開発する場合は、アプリケーションをデプロイするクラウド インスタンスのエンドポイントを使用します。
 
@@ -45,6 +45,18 @@ ms.locfileid: "128551526"
 | 米国政府の Azure portal          | `https://portal.azure.us`  |
 | 21Vianet が運営する中国の Azure portal | `https://portal.azure.cn`  |
 | Azure portal (グローバル サービス)           | `https://portal.azure.com` |
+
+## <a name="application-endpoints"></a>アプリケーション エンドポイント
+
+アプリケーションの認証エンドポイントは Azure Portal で見つけることができます。
+
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. **[Azure Active Directory]** を選択します。
+1. **[管理]** で、 **[アプリの登録]** を選択し、上部のメニューで **[エンドポイント]** を選択します。
+
+   Azure AD テナントに登録されたアプリケーションの認証エンドポイントが一覧表示された **[エンドポイント]** ページが表示されます。
+
+   使用している認証プロトコルに対応するエンドポイントを **アプリケーション (クライアント) ID** と共に使用して、アプリケーション固有の認証要求を作成します。
 
 ## <a name="azure-ad-authentication-endpoints"></a>Azure AD 認証エンドポイント
 
@@ -67,17 +79,15 @@ ms.locfileid: "128551526"
 
 ## <a name="azure-germany-microsoft-cloud-deutschland"></a>Azure Germany (Microsoft Cloud Deutschland)
 
-> [!WARNING]
-> Azure Germany (Microsoft Cloud Deutschland) は [2021 年 10 月 29 日に終了します](https://www.microsoft.com/cloud-platform/germany-cloud-regions)。 その日より前にグローバル Azure のリージョンに移行 "_しない_" サービスとアプリケーションにはアクセスできなくなります。
-
 アプリケーションを Azure Germany から移行していない場合は、[Azure Germany からの移行に関する Azure Active Directory 情報](/microsoft-365/enterprise/ms-cloud-germany-transition-azure-ad)に従って開始してください。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 各国のクラウドの環境で Microsoft Graph API を呼び出す方法については、[各国のクラウドのデプロイでの Microsoft Graph](/graph/deployments)に関するページを参照してください。
 
-> [!IMPORTANT]
-> グローバル サービスの特定のリージョンにある特定のサービスや機能が、一部の各国のクラウドでは使用できない場合があります。 どのようなサービスが使用できるかを見つけるには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)」を参照してください。
+グローバル Azure クラウドのサービスや機能の中には、各国のクラウドのような他のクラウド インスタンスでは利用できないものがあります。
+
+特定のクラウド インスタンスで使用できるサービスと機能については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)」を参照してください。
 
 Microsoft ID プラットフォームを使用してアプリケーションを構築する方法については、[SPA (シングルページ アプリケーション) で認証コード フローする方法に関するチュートリアル](tutorial-v2-angular-auth-code.md)を参照してください。 具体的には、このアプリはユーザーをサインインさせ、Microsoft Graph API を呼び出すためのアクセス トークンを取得します。
 

@@ -3,12 +3,12 @@ title: Event Grid の問題のトラブルシューティング
 description: この記事では、Azure Event Grid の問題をトラブルシューティングするためのさまざまな方法を紹介します。
 ms.topic: conceptual
 ms.date: 06/10/2021
-ms.openlocfilehash: 5dd6450e1f849dca084bbe0e52a0bcab8f7a29ca
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: ab7f106a741c2f4371e5df0f5092213af987d340
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982306"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370368"
 ---
 # <a name="troubleshoot-azure-event-grid-issues"></a>Azure Event Grid の問題のトラブルシューティング
 この記事では、Azure Event Grid の問題をトラブルシューティングするのに役立つ情報を提供します。 
@@ -32,6 +32,16 @@ Azure Event Grid メトリックとアクティビティ ログ操作に関す�
 400、409、403 などのエラー コードを含むエラー メッセージが表示された場合は、[Event Grid エラーのトラブルシューティング](troubleshoot-errors.md)に関するページを参照してください。 
 
 ## <a name="distributed-tracing"></a>分散トレース 
+
+[Azure Event Hubs](handler-event-hubs.md) または [Azure Service Bus](handler-service-bus.md) Event Grid サブスクリプションでエンドツーエンドのトレースを有効にするには、`traceparent` CloudEvent 拡張属性を `Diagnostic-Id` AMQP アプリケーション プロパティに転送するように[カスタム配信プロパティ](delivery-properties.md)を構成します。 Event Hubs でトレース配信プロパティを構成したサブスクリプションの例:
+
+```azurecli
+az eventgrid event-subscription create --name <event-grid-subscription-name> \
+    --source-resource-id <event-grid-resource-id>
+    --endpoint-type eventhub \
+    --endpoint <event-hubs-endpoint> \
+    --delivery-attribute-mapping Diagnostic-Id dynamic traceparent
+```
 
 ### <a name="net"></a>.NET
 Event Grid .NET ライブラリでは、分散トレースをサポートしています。 分散トレースに関する [CloudEvents 仕様のガイダンス](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md)に従うため、分散トレースが有効になっている場合、ライブラリでは `CloudEvent` の [ExtensionAttributes](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/src/Customization#L126) で `traceparent` および `tracestate` を設定します。 アプリケーションで分散トレースを有効にする方法の詳細については、Azure SDK の[分散トレースに関するドキュメント](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md#Distributed-tracing)を参照してください。

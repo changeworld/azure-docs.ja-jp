@@ -7,18 +7,18 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: c9987e82fe64dd30584f3ceb8dbacfc857d27ab8
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: c004ce9854d3a4397fed9064f90c345df5c04189
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779387"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561254"
 ---
-# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
+# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group-from-cli"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを CLI から作成する
 
-このドキュメントでは、Azure Arc で PostgreSQL Hyperscale サーバー グループを作成する手順について説明します。
+このドキュメントでは、Azure Arc で PostgreSQL Hyperscale サーバー グループを作成し、それに接続する手順について説明します。
 
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
@@ -44,7 +44,7 @@ oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace 
 
 **Server-group-name は、次の手順で作成するサーバー グループの名前です。**
 
-OpenShift の SCC の詳細については、[OpenShift のドキュメント](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)を参照してください。 この時点で、次の手順を実装できます。
+OpenShift の SCC の詳細については、[OpenShift のドキュメント](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)を参照してください。 次の手順に進みます。
 
 
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
@@ -65,72 +65,36 @@ az postgres arc-server create --help
 
 
 
-|以下のものが必要です。   |デプロイするサーバー グループの形状   |使用する -w パラメーター   |Note   |
+|以下のものが必要です。   |デプロイするサーバー グループの形状   |使用する `-w` パラメーター   |Note   |
 |---|---|---|---|
-|アプリケーションのスケーラビリティ ニーズを満たすための、Postgres のスケールアウト形式。   |3 つ以上の Postgres インスタンス (コーディネーターが 1 つで、ワーカーが 2 つ以上)。   |-w n, with n>=2 を使用する。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
-|最小限のコストでアプリケーションの機能検証を行うための、Postgres Hyperscale の基本形式。 パフォーマンスとスケーラビリティの検証には無効です。 そのためには、上記のデプロイの種類を使用する必要があります。   |コーディネーターでもありワーカーでもある 1 つの Postgres インスタンス。   |-w 0 を使用して、Citus 拡張機能を読み込む。 コマンド ラインからデプロイする場合は、パラメー -w 0 --extensions Citus を使用します。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
-|必要に応じてスケールアウトできる Postgres の単純なインスタンス。   |1 つの Postgres インスタンス。 コーディネーターとワーカーのセマンティックはまだ認識されていません。 デプロイ後にスケールアウトするには、構成を編集してワーカー ノードの数を増やし、データを分散させます。   |-w 0 を使用するか、-w を指定しません。   |Hyperscale 機能を提供する Citus 拡張機能はデプロイに存在しますが、まだ読み込まれていません。   |
+|アプリケーションのスケーラビリティ ニーズを満たすための、Postgres のスケールアウト形式。   |3 つ以上の Postgres インスタンス (コーディネーターが 1 つで、ワーカーが 2 つ以上)。   |`-w n` を使用 (n は 2 以上)。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
+|最小限のコストでアプリケーションの機能検証を行うための、Postgres Hyperscale の基本形式。 パフォーマンスとスケーラビリティの検証には無効です。 そのためには、上記のデプロイの種類を使用する必要があります。   |コーディネーターでもありワーカーでもある 1 つの Postgres インスタンス。   |`-w 0` を使用して、Citus 拡張機能を読み込む。 コマンド ラインからデプロイする場合は、パラメーター `-w 0` --extensions Citus を使用します。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
+|必要に応じてスケールアウトできる Postgres の単純なインスタンス。   |1 つの Postgres インスタンス。 コーディネーターとワーカーのセマンティックはまだ認識されていません。 デプロイ後にスケールアウトするには、構成を編集してワーカー ノードの数を増やし、データを分散させます。   |`-w 0` を使用するか、`-w` を指定しないでください。   |Hyperscale 機能を提供する Citus 拡張機能はデプロイに存在しますが、まだ読み込まれていません。   |
 |   |   |   |   |
 
--w 1 を使用すると機能しますが、使用はお勧めしません。 このデプロイでは、あまり大きな価値は提供されません。 これにより、Postgres の 2 つのインスタンス (1 つのコーディネーターと 1 つのワーカー) が取得されます。 この設定では、1 つのワーカーがデプロイされるため、実際にはデータをスケールアウトできません。 そのため、パフォーマンスとスケーラビリティは向上しません。 今後のリリースでは、このデプロイのサポートは削除される予定です。
+`-w 1` を使用しても機能しますが、使用はお勧めしません。 このデプロイでは、あまり大きな価値は提供されません。 これによって取得されるのは 2 つの Postgres インスタンスであり、1 つはコーディネーターで、もう 1 つはワーカーです。 この設定では、デプロイされるのは 1 つのワーカーのみであるため、実際にはデータはスケールアウトされません。 そのため、パフォーマンスとスケーラビリティは向上しません。 今後のリリースでは、このデプロイのサポートは削除される予定です。
 
-- サーバー グループで使おうとしている **ストレージ クラス**。 ストレージ クラスはデプロイ後に変更することはできないため、サーバー グループをデプロイする時点で設定することが重要です。 もしデプロイ後にストレージ クラスを変更するとすれば、データの抽出、サーバー グループの削除、新しいサーバー グループの作成、データのインポートが必要になります。 データ、ログ、バックアップ用に使用するストレージ クラスを指定することもできます。 既定では、ストレージ クラスを指定しない場合、データ コントローラーのストレージ クラスが使用されます。
+- サーバー グループで使おうとしている **ストレージ クラス**。 この設定はデプロイ後に変更することはできないため、サーバー グループをデプロイする時点で設定することが重要です。 データ、ログ、バックアップ用に使用するストレージ クラスを指定することもできます。 既定では、ストレージ クラスを指定しない場合、データ コントローラーのストレージ クラスが使用されます。
     - データ用のストレージ クラスを設定するには、パラメーター `--storage-class-data` または `-scd` を指定し、その後にストレージ クラスの名前を指定します。
     - ログ用のストレージ クラスを設定するには、パラメーター `--storage-class-logs` または `-scl` を指定し、その後にストレージ クラスの名前を指定します。
-    - バックアップ用のストレージ クラスを設定するには: Azure Arc 対応 PostgreSQL Hyperscale のこのプレビューでは、実行しようとしているバックアップ/復元操作の種類に応じて、ストレージ クラスを設定する方法が 2 つあります。 Microsoft は、このエクスペリエンスの簡素化に取り組んでいます。 ストレージ クラスまたはボリューム要求マウントのいずれかを指定します。 ボリューム要求マウントは、(同じ名前空間内の) 既存の永続的ボリューム要求と、コロンで区切られたボリュームの種類 (およびボリュームの種類に応じたオプションのメタデータ) のペアです。 永続的ボリュームは、PostgreSQL サーバー グループの各ポッドにマウントされます。
-        - 実行する予定があるのはデータベースの完全復元だけである場合は、パラメーター `--storage-class-backups` または `-scb` を設定し、その後にストレージ クラスの名前を指定します。
-        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `--volume-claim-mounts` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
+    - 設計とエクスペリエンスの最終処理中にバックアップ/復元機能が一時的に削除されたため、バックアップ用のストレージ クラスの設定のサポートが一時的に削除されました。
 
-作成コマンドを実行すると、既定の `postgres` 管理ユーザーのパスワードを入力するよう求められ ます。 そのユーザーの名前は、このプレビューでは変更できません。 作成コマンドを実行する前に `AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップすることができます。
+   > [!IMPORTANT]
+   > デプロイ後にストレージ クラスを変更する必要がある場合、データの抽出、サーバー グループの削除、新しいサーバー グループの作成、データのインポートを行ってください。 
+
+作成コマンドを実行すると、既定の `postgres` 管理ユーザーのパスワードを入力するよう求められます。 そのユーザーの名前は、このプレビューでは変更できません。 作成コマンドを実行する前に `AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップすることができます。
 
 ### <a name="examples"></a>例
 
 **データ コントローラーと同じストレージ クラスを使用する 2 つのワーカー ノードが含まれる、postgres01 という名前の Postgres バージョン 12 のサーバー グループをデプロイするには、次のコマンドを実行します。**
+
 ```azurecli
 az postgres arc-server create -n postgres01 --workers 2 --k8s-namespace <namespace> --use-k8s
 ```
 
-**データとログのためのデータ コントローラーと同じストレージ クラスを使用する 2 つのワーカー ノードが含まれる、postgres01 という名前の Postgres バージョン 12 のサーバーグループをデプロイするには、以下の手順を実行します。**
-
- この例は、お使いのサーバー グループが Azure Kubernetes Service (AKS) クラスターでホストされていることを前提としています。 この例では、ストレージ クラス名として azurefile-premium を使用します。 次の例を実際の環境に合わせて調整してもかまいません。 この構成には、**accessModes として ReadWriteMany が必要** であることに注意してください。  
-
-まず、以下のバックアップ PVC (永続ボリューム要求) の説明を含む YAML ファイルを作成し、たとえば CreateBackupPVC.yml という名前を付けます。
-```console
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: backup-pvc
-  namespace: arc
-spec:
-  accessModes:
-    - ReadWriteMany
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: azurefile-premium
-```
-
-次に、YAML ファイルに格納されている定義を使用して PVC を作成します。
-
-```console
-kubectl create -f e:\CreateBackupPVC.yml -n arc
-``` 
-
-次に、サーバー グループを作成します。
-
-```azurecli
-az postgres arc-server create -n postgres01 --workers 2 --volume-claim-mounts backup-pvc:backup --k8s-namespace <namespace> --use-k8s
-```
-
-> [!IMPORTANT]
-> - [バックアップ/復元に関連する現在の制限事項](limitations-postgresql-hyperscale.md#backup-and-restore)をお読みください。
-
-
 > [!NOTE]  
 > - 同じターミナル セッションで `AZDATA_USERNAME` および `AZDATA_PASSWORD` セッション環境変数を使用してデータ コントローラーをデプロイした場合は、PostgreSQL Hyperscale サーバー グループをデプロイするために `AZDATA_PASSWORD` の値も使用されます。 別のパスワードを使用する場合は、(1) `AZDATA_PASSWORD` の値を更新するか、(2) `AZDATA_PASSWORD` 環境変数を削除するか、(3) その値を削除すると、サーバー グループを作成するときに対話形式でパスワードの入力を求められます。
 > - PostgreSQL Hyperscale サーバー グループを作成しても、リソースはすぐに Azure に登録されません。 [リソース インベントリ](upload-metrics-and-logs-to-azure-monitor.md)または[利用状況データ](view-billing-data-in-azure.md)を Azure にアップロードするプロセスの一環として、Azure でリソースが作成され、そのリソースを Azure portal で確認できるようになります。
-
 
 
 ## <a name="list-the-postgresql-hyperscale-server-groups-deployed-in-your-arc-data-controller"></a>Arc データ コントローラーにデプロイされている PostgreSQL Hyperscale サーバー グループを一覧表示する
@@ -143,9 +107,12 @@ az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 
 
 ```output
-Name        State     Workers
-----------  --------  ---------
-postgres01  Ready     2
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 2
+  }
 ```
 
 ## <a name="get-the-endpoints-to-connect-to-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに接続するためのエンドポイントを取得する
@@ -157,47 +124,54 @@ az postgres arc-server endpoint list -n <server group name> --k8s-namespace <nam
 ```
 次に例を示します。
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+{
+  "instances": [
+    {
+      "endpoints": [
+        {
+          "description": "PostgreSQL Instance",
+          "endpoint": "postgresql://postgres:<replace with password>@123.456.78.912:5432"
+        },
+        {
+          "description": "Log Search Dashboard",
+        },
+        {
+          "description": "Metrics Dashboard",
+          "endpoint": "https://98.765.432.11:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01"
+        }
+      ],
+      "engine": "PostgreSql",
+      "name": "postgres01"
+    }
+  ],
+  "namespace": "arc"
+}
 ```
 
-PostgreSQL インスタンスのエンドポイントを使用すると、[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[pgcli](https://www.pgcli.com/) psql、pgAdmin などのお気に入りのツールから、PostgreSQL Hyperscale サーバー グループに接続できます。そうするときには、分散テーブルを作成済みの場合はクエリが適切なワーカー ノード/インスタンスにルーティングされるよう処理するコーディネーター ノード/インスタンスに接続します。 詳細については、[Azure Arc 対応 PostgreSQL Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。
+PostgreSQL インスタンス エンドポイントを使用して、お気に入りのツール ([Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[pgcli](https://www.pgcli.com/) psql、pgAdmin など) から PostgreSQL Hyperscale サーバー グループに接続できます。これを行う場合は、コーディネーター ノード/インスタンスに接続します。これにより、分散テーブルを作成していた場合、適切なワーカー ノード/インスタンスにクエリがルーティングされます。 詳細については、[Azure Arc 対応 PostgreSQL Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。
 
    [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>Azure 仮想マシンのデプロイに関する特別な注意事項
 
 Azure 仮想マシンを使用している場合は、エンドポイントの IP アドレスに _パブリック_ IP アドレスが表示されません。 パブリック IP アドレスを検索するには、次のコマンドを使用します。
-
 ```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
-
 その後、パブリック IP アドレスとポートを組み合わせて接続できます。
 
-また、ネットワーク セキュリティ ゲートウェイ (NSG) を使用して PostgreSQL Hyperscale サーバー グループのポートを公開する必要がある場合もあります。 NSG 経由のトラフィックを許可するには、次のコマンドを使用して実行できる規則を追加する必要があります。
-
-規則を設定するには、NSG の名前を把握しておく必要があります。 次のコマンドを使用して、NSG を特定します。
+また、ネットワーク セキュリティ ゲートウェイ (NSG) を使用して PostgreSQL Hyperscale サーバー グループのポートを公開する必要がある場合もあります。 (NSG) を経由したトラフィックを許可するには、規則を設定します。 規則を設定するには、NSG の名前を把握しておく必要があります。 次のコマンドを使用して、NSG を特定します。
 
 ```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30655 に対する NSG 規則を作成し、**任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロック ダウンできます。
+NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30655 に対する NSG 規則を作成し、**任意の** ソース IP アドレスからの接続を許可します。 
 
-以下の --destination-port-ranges パラメーターの値は、上記の 'az postgres arc-server list' コマンドで取得されたポート番号に置き換えてください。
+> [!WARNING]
+> 任意の発信元 IP アドレスからの接続を許可するようにルールを設定することはお勧めしません。 クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の `-source-address-prefixes` 値を指定すると、適切にロック ダウンできます。
+
+次の `--destination-port-ranges` パラメーターの値を、上記の `az postgres arc-server list` コマンドから受け取ったポート番号に置き換えます。
 
 ```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'

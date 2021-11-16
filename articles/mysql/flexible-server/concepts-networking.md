@@ -6,21 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: 44b13211bd8a7f3b71f1357db0097500801c2a0c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ae111660b2faa6f5bba17e9f94b17caa2b2c642
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724295"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438203"
 ---
-# <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL の接続およびネットワークの概念 - フレキシブル サーバー (プレビュー)
+# <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL の接続およびネットワークの概念 - フレキシブル サーバー
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、Azure MySQL フレキシブル サーバーへの接続を制御するための概念について説明します。 Azure でサーバーを安全に作成してアクセスするための、Azure Database for MySQL フレキシブル サーバーのネットワークの概念について詳しく説明します。
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーはプレビュー段階です。
 
 Azure Database for MySQL - フレキシブル サーバーでは、サーバーへの接続を構成する 2 種類の方法がサポートされています。
 > [!NOTE]

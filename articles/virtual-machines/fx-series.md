@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: jushiman
-ms.openlocfilehash: 20b1ad634f204e0aeb6f12cc737f7f82ddaf8d32
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5027fdc53b59383d7fc4bc7475d1d3eea6450a78
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071190"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372020"
 ---
 # <a name="fx-series"></a>FX シリーズ
 
@@ -28,6 +28,7 @@ FX シリーズ VM には、[Intel® Turbo Boost Technology 2.0](https://www.int
 [VM 世代サポート](generation-2.md): 第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+[仮想化を入れ子にする](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
 <br>
 
 | サイズ | vCPU の数 | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |

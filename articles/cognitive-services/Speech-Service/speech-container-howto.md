@@ -3,21 +3,21 @@ title: Speech サービス API 向けの Docker コンテナーをインスト�
 titleSuffix: Azure Cognitive Services
 description: 音声サービスの Docker コンテナーを使用し、音声認識、文字起こし、生成などをオンプレミスで実行します。
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2021
-ms.author: aahi
+ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: a930b5234f13d7e53bc50b6dc3f7b3d959df2e0e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 3297231244cd5323c0218dcce02ac20453456685
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131024594"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867173"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -30,11 +30,11 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 | コンテナー | 特徴 | 最新 | リリースの状態 |
 |--|--|--|--|
-| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.15.0 | 一般公開 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.15.0 | 一般公開 |
+| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.16.0 | 一般公開 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.16.0 | 一般公開 |
 | テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.15.0 | 一般公開 |
 | 音声言語識別 | オーディオ ファイルで話されている言語を検出します。 | 1.3.0 | preview |
-| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.9.0 | 一般公開 |
+| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.10.0 | 一般公開 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -311,18 +311,18 @@ diarize_speech_config.set_service_property(
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>音声テキスト変換の出力のセンチメントを分析する 
-v2.6.0 以降の音声テキスト変換コンテナーでは、プレビュー版ではなく TextAnalytics 3.0 API エンドポイントを使用する必要があります。 次に例を示します。
+v2.6.0 以降の音声テキスト変換コンテナーでは、プレビュー版ではなく、言語サービス 3.0 API エンドポイントを使用する必要があります。 次に例を示します。
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
 * `https://localhost:5000/text/analytics/v3.0/sentiment`
 
 > [!NOTE]
-> Text Analytics `v3.0` API は、Text Analytics `v3.0-preview.1` と下位互換性がありません。 サポートされている最新のセンチメント機能を使用するには、`v2.6.0` の音声テキスト変換コンテナー イメージと Text Analytics `v3.0` を使用します。
+> 言語サービス `v3.0` API は `v3.0-preview.1` と下位互換性がありません。 最新のセンチメント機能のサポートを取得するには、`v2.6.0` の音声テキスト変換コンテナー イメージと言語サービス `v3.0` を使用します。
 
-音声テキスト変換コンテナーの v2.2.0 から、出力に対して[センチメント分析 v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) を呼び出すことができるようになりました。 センチメント分析を呼び出すには、Text Analytics API リソース エンドポイントが必要です。 次に例を示します。 
+音声テキスト変換コンテナーの v2.2.0 から、出力に対して[センチメント分析 v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) を呼び出すことができるようになりました。 感情分析を呼び出すには、言語サービス API リソース エンドポイントが必要です。 次に例を示します。 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
-クラウドでテキスト分析エンドポイントにアクセスしている場合は、キーが必要になります。 Text Analytics をローカルで実行している場合は、これを指定する必要はありません。
+クラウドで言語サービス エンドポイントにアクセスしている場合は、キーが必要になります。 言語サービス機能をローカルで実行している場合は、これを指定する必要はありません。
 
 キーとエンドポイントは、次の例のように、引数として Speech コンテナーに渡されます。
 
@@ -339,7 +339,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 このコマンドは、次の操作を行います。
 
 * 上のコマンドと同じ手順を実行します。
-* センチメント分析の要求を送信するための Text Analytics API エンドポイントとキーが格納されています。 
+* 感情分析の要求を送信するための言語サービス API エンドポイントとキーが格納されています。 
 
 #### <a name="phraselist-v2-on-the-speech-to-text-output"></a>音声テキスト変換の出力における Phraselist v2 
 
@@ -541,13 +541,13 @@ WSS プロトコルと HTTPS プロトコルを使用する方法については
 
 #### <a name="analyze-sentiment"></a>感情を分析する
 
-Text Analytics API 資格情報[をコンテナーに指定した](#analyze-sentiment-on-the-speech-to-text-output)場合は、Speech SDK を使用して、センチメント分析で音声認識要求を送信できます。 *シンプル* な形式または *詳細* な形式のいずれかを使用するよう、API 応答を構成できます。
+言語サービス API 資格情報を[コンテナーに指定](#analyze-sentiment-on-the-speech-to-text-output)した場合は、Speech SDK を使用して、感情分析で音声認識要求を送信できます。 *シンプル* な形式または *詳細* な形式のいずれかを使用するよう、API 応答を構成できます。
 > [!NOTE]
 > Speech サービス Python SDK の v1.13 では、感情分析の問題が特定されています。 Speech サービス Python SDK で感情分析を使用している場合は、v1.12 以前のバージョンを使用してください。
 
 # <a name="simple-format"></a>[シンプルな形式](#tab/simple-format)
 
-音声クライアントでシンプルな形式を使用するように構成するには、`Simple.Extensions` の値として `"Sentiment"` を追加します。 特定の Text Analytics モデルのバージョンを選択する場合は、`speechcontext-phraseDetection.sentimentAnalysis.modelversion` プロパティの構成で `'latest'` を置き換えます。
+音声クライアントでシンプルな形式を使用するように構成するには、`Simple.Extensions` の値として `"Sentiment"` を追加します。 特定の言語サービス モデルのバージョンを選択する場合は、`speechcontext-phraseDetection.sentimentAnalysis.modelversion` プロパティの構成で `'latest'` を置き換えます。
 
 ```python
 speech_config.set_service_property(
@@ -581,7 +581,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[詳細な形式](#tab/detailed-format)
 
-Speech クライアントで詳細な形式を使用するように構成するには、`Detailed.Extensions`、`Detailed.Options`、またはその両方の値として `"Sentiment"` を追加します。 特定の Text Analytics モデルのバージョンを選択する場合は、`speechcontext-phraseDetection.sentimentAnalysis.modelversion` プロパティの構成で `'latest'` を置き換えます。
+Speech クライアントで詳細な形式を使用するように構成するには、`Detailed.Extensions`、`Detailed.Options`、またはその両方の値として `"Sentiment"` を追加します。 特定の感情分析モデルのバージョンを選択する場合は、`speechcontext-phraseDetection.sentimentAnalysis.modelversion` プロパティの構成で `'latest'` を置き換えます。
 
 ```python
 speech_config.set_service_property(

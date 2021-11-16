@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: 3cb83bd9b3aded2ab167afb39b024266a76163ae
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0e89a59e9051de255be21103121569e45a2621a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049085"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440547"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -72,7 +72,7 @@ az aks create \
 
 - "system"。既定値でもあります。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
 - "none"。既定でパブリック DNS に設定されます。これは、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  
-- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID"。Azure グローバル クラウド用に `privatelink.<region>.azmk8s.io` の形式でプライベート DNS ゾーンを作成する必要があります。 そのプライベート DNS ゾーンのリソース ID は、後で必要になります。  さらに、少なくとも `private dns zone contributor` および `vnet contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルも必要になります。
+- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID"。Azure グローバル クラウド用に `privatelink.<region>.azmk8s.io` または `<subzone>.privatelink.<region>.azmk8s.io` の形式でプライベート DNS ゾーンを作成する必要があります。 そのプライベート DNS ゾーンのリソース ID は、後で必要になります。  さらに、少なくとも `private dns zone contributor` および `vnet contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルも必要になります。
   - プライベート DNS ゾーンが AKS クラスターとは異なるサブスクリプションにある場合は、両方のサブスクリプションで Microsoft.ContainerServices を登録する必要があります。
   - "fqdn-subdomain" は、サブドメインの機能を `privatelink.<region>.azmk8s.io` に提供するためにのみ、"CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" と共に使用できます。
 
@@ -91,7 +91,7 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-シークレット ストア CSI ドライバーを使用できる AKS クラスターを作成するには、サブスクリプションで `EnablePrivateClusterSubZone` 機能フラグを有効にする必要があります。
+SubZone を使用して AKS プライベート クラスターを作成するには、サブスクリプションで `EnablePrivateClusterSubZone` 機能フラグを有効にする必要があります。
 
 `EnablePrivateClusterSubZone` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
 
@@ -113,8 +113,6 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-the-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-"*aks-preview*" Azure CLI 拡張機能バージョン 0.5.34 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 この拡張機能が既にインストールされている場合は、[az extension update][az-extension-update] コマンドを使用して、最新の使用可能なバージョンに更新します。
-
 ```azurecli-interactive
 # Install the aks-preview extension
 az extension add --name aks-preview
@@ -123,16 +121,25 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="private-aks-cluster-with-byo-private-dns-subzone"></a>BYO プライベート DNS サブゾーンを持つプライベート AKS クラスター
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-zone"></a>カスタム プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <BYO private dns zone ResourceId>
+# Custom Private DNS Zone name should be in format "privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId>
 ```
 
 ### <a name="create-a-private-aks-cluster-with-custom-private-dns-subzone"></a>カスタム プライベート DNS サブゾーンを持つプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
+# Custom Private DNS Zone name should be in format "<subzone>.privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId>
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-zone-and-custom-subdomain"></a>カスタム プライベート DNS ゾーンとカスタム サブドメインがあるプライベート AKS クラスターを作成する
+
+```azurecli-interactive
+# Custom Private DNS Zone name could be in formats "privatelink.<region>.azmk8s.io" or "<subzone>.privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain>
 ```
 
 ### <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>パブリック FQDN があるプライベート AKS クラスターを作成する

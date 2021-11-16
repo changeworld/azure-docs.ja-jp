@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 3404575f7eef3dc1c4f4784d255e0df6d569fd0f
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 8940744c2f857064699180c24bc3b766bc7995f2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893692"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440224"
 ---
 # <a name="about-azure-cache-for-redis"></a>Azure Cache for Redis について
 
@@ -64,7 +64,7 @@ Azure Cache for Redis は、次のレベルで使用できます。
 | [データの永続化](cache-how-to-premium-persistence.md) |-|-|✔|プレビュー|プレビュー|
 | [ゾーン冗長性](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
 | [geo レプリケーション](cache-how-to-geo-replication.md) |-|-|✔|プレビュー|プレビュー|
-| [Redis モジュール](#choosing-the-right-tier) |-|-|-|✔|-|
+| [Redis モジュール](#choosing-the-right-tier) |-|-|-|✔|✔|
 | [Import/Export](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|
 | [Reboot](cache-administration.md#reboot) |✔|✔|✔|-|-|
 | [スケジュールされた更新](cache-administration.md#schedule-updates) |✔|✔|✔|-|-|

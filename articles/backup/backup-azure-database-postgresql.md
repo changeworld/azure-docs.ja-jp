@@ -2,13 +2,16 @@
 title: Azure Database for PostgreSQL のバックアップ
 description: 長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー) について説明します。
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: a012ef97db27b97039fa7aac7b108ca86afb9314
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 4121326bf36c71c3f98894bd8413dc1ae5f57a06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219623"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458927"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -31,6 +34,9 @@ ms.locfileid: "130219623"
    :::image type="content" source="./media/backup-azure-database-postgresql/create-or-add-backup-policy-inline.png" alt-text="バックアップ ポリシーを追加するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/create-or-add-backup-policy-expanded.png":::
 
 1. **バックアップする Azure Postgres データベースを選択する**: コンテナーと同じリージョンにある場合は、サブスクリプション全体で Azure PostgreSQL サーバーの 1 つを選択します。 矢印を展開して、サーバー内のデータベースの一覧を表示します。
+
+   >[!Note]
+   >データベース *azure_maintenance* と *azure_sys* はバックアップできず、またバックアップする必要もありません。 また、既にバックアップ コンテナーにバックアップされているデータベースをバックアップすることはできません。
 
    :::image type="content" source="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-inline.png" alt-text="Azure PostgreSQL データベースを選択するオプションが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-expanded.png":::
 
@@ -115,7 +121,7 @@ ms.locfileid: "130219623"
    - **バックアップ データ ストア** では、保持期間の範囲は 7 日から 10 年です。
    - **アーカイブ データ ストア** では、保持期間の範囲は 6 か月から 10 年です。
 
-   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="5. [On-expiry]\(期限切れ時\) を選択して、期限切れになったときにバックアップをアーカイブ データ ストアに移動することが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
+   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="[On-expiry]\(期限切れ時\) を選択して、期限切れになったときにバックアップをアーカイブ データ ストアに移動することが表示されているスクリーンショット。" lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
 
 >[!Note]
 >保持規則は、事前に決められた優先順位で評価されます。 優先順位は、高い方から順に、年単位の規則、月単位の規則、週単位の規則となります。 他の規則が適用されない場合、既定の保持設定が適用されます。 たとえば、最初に成功した週単位のバックアップと、最初に成功した月単位のバックアップで、復旧ポイントが同じになる場合があります。 しかし、月単位の規則の方が週単位の規則よりも優先順位が高いため、毎月最初に成功したバックアップに対応する保持が適用されます。

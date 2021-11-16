@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/01/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
 ms.subservice: blobs
-ms.openlocfilehash: 4c8f1c2f769340cb36832b06bf5a76258b69cd9f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e24c058239d57cba1c66ebff06ba9d482bcb594
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008812"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433196"
 ---
 # <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>アーカイブ済み BLOB をオンライン層にリハイドレートする
 
@@ -214,7 +214,7 @@ Azure portal を使用して保留中の操作についてリハイドレート�
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell を使用して保留中の操作のリハイドレートの優先度を変更するには、最初にサービスから BLOB のプロパティを取得します。 この手順は、使用するオブジェクトのプロパティ設定が最新のものであることを保証するのに必要です。 次に、BLOB の **BlobClient** プロパティを使用して BLOB への .NET リファレンスを返してから、そのリファレンスに対して **SetAccessTier** メソッドを呼び出します。
+PowerShell で保留中の操作のリハイドレーションの優先度を変更するには、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage)モジュールバージョン 3.12.0 以降がインストールされていることを確認します。 次に、サービスから BLOB のプロパティを取得します。 この手順は、使用するオブジェクトのプロパティ設定が最新のものであることを保証するのに必要です。 最後に、BLOB の **BlobClient** プロパティを使用して BLOB への .NET リファレンスを返してから、そのリファレンスに対して **SetAccessTier** メソッドを呼び出します。
 
 ```azurepowershell
 # Get the blob from the service.
@@ -224,7 +224,6 @@ $rehydratingBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName -
 if ($rehydratingBlob.BlobProperties.RehydratePriority -eq "Standard")
 {
     # Change rehydration priority to High, using the same target tier.
-    
     if ($rehydratingBlob.BlobProperties.ArchiveStatus -eq "rehydrate-pending-to-hot")
     {
         $rehydratingBlob.BlobClient.SetAccessTier("Hot", $null, "High")
@@ -241,7 +240,9 @@ if ($rehydratingBlob.BlobProperties.RehydratePriority -eq "Standard")
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して保留中の操作のリハイドレート優先度を変更するには、`--rehydrate-priority` パラメーターを "*高*" に設定した [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) コマンドを呼び出します。 ターゲット層 (ホットまたはクール) は、リハイドレート操作に対して元々指定してある層と同じものにする必要があります。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+Azure CLI で保留中の操作のリハイドレーションの優先度を変更するには、最初に Azure CLI バージョン 2.29.2 以降がインストールされていることを確認します。 Azure CLI のインストールに関する詳細については、「[Azure CLI をインストールする方法](/cli/azure/install-azure-cli)」をご覧ください。
+
+次に、[az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) コマンドを、`--rehydrate-priority` パラメーターを *High* に設定して呼び出します。 ターゲット層 (ホットまたはクール) は、リハイドレート操作に対して元々指定してある層と同じものにする必要があります。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
 
 ```azurecli
 # Update the rehydration priority for a blob moving to the Hot tier.

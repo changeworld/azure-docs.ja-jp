@@ -6,14 +6,14 @@ metadata:
   ms.author: rosouz
   ms.service: cosmos-db
   ms.topic: conceptual
-  ms.date: 11/30/2020
+  ms.date: 11/02/2021
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: a03572b75d12535dfd81e1539e2d4d27b1ffc2df
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 8dc71afd5e134e1822df027e9b5f51dc33ed3b76
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131011410"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131425843"
 title: Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -108,8 +108,7 @@ sections:
       コンテナー内の特定の項目が[分析用に適切に定義されたスキーマ](analytical-store-introduction.md#analytical-schema)に違反している場合、それらは分析ストアに含まれません。 分析用に適切に定義されたスキーマによってシナリオが妨げられる場合は、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)に電子メールを送信して支援を求めてください。
   - question: >
       トランザクション ストアとは異なる方法で分析ストアのデータをパーティション分割できますか?
-    answer: >
-      分析ストア内のデータは、トランザクション ストアのシャードの行方向のパーティション分割に基づいてパーティション分割されます。 現時点では、分析ストアに別のパーティション分割方式を選択することはできません。
+    answer: "既定では、分析ストアはパーティション分割されません。分析クエリに頻繁に使われるフィルターがある場合は、これらのフィールドに基づいてパーティション分割することで、クエリのパフォーマンスを向上させることができます。 詳細については、[カスタム パーティション分割の概要](custom-partitioning-analytical-store.md)と[カスタム パーティション分割を構成する方法](configure-custom-partitioning.md)に関する記事を参照してください。  \n"
   - question: >
       分析ストアでトランザクション データを列形式に変換する方法をカスタマイズまたはオーバーライドできますか?
     answer: >
@@ -154,7 +153,7 @@ sections:
   - question: >
       Azure Synapse Link ではカスタマー マネージド キーを使用できますか?
     answer: >
-      はい、Azure Synapse Link では、Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成がサポートされています。 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 詳細については、[Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成](how-to-setup-cmk.md#using-managed-identity)に関する記事を参照してください。
+      はい、Azure Synapse Link では、Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成がサポートされています。 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 詳細については、[Azure Cosmos DB アカウントのマネージド ID を使ったカスタマー マネージド キーの構成](how-to-setup-cmk.md#using-managed-identity)に関する記事を参照してください。
   - question: >
       Azure Synapse Link では、Azure Synapse マネージド仮想ネットワークとのネットワークの分離が提供されますか?
     answer: >

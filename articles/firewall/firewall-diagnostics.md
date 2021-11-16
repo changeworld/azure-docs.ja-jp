@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/03/2021
+ms.date: 10/22/2021
 ms.author: victorh
-ms.openlocfilehash: 62659116599a60d5a9407fea4d2b1f06594ef475
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d421986ebeb308efb0e076b1a80f537d49082ec5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824450"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242351"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -55,11 +55,15 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 PowerShell を使用して診断ログを有効にするには、次の手順を使用します。
 
-1. ログ データが保存されている Log Analytics ワークスペースのリソース ID をメモしておきます。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>` です。
+1. ログ データが保存されている Log Analytics ワークスペースのリソース ID をメモしておきます。 この値の形式は次のとおりです。
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`
 
    サブスクリプション内の任意のワークスペースを使用できます。 この情報は、Azure Portal で確認できます。 この情報はリソースの **プロパティ** ページにあります。
 
-2. ファイアウォールのリソース ID に注意してください。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
+2. ファイアウォールのリソース ID に注意してください。 この値の形式は次のとおりです。
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`
 
    この情報は、ポータルで確認できます。
 
@@ -81,11 +85,15 @@ PowerShell を使用して診断ログを有効にするには、次の手順を
 
 Azure CLI を使用して診断ログを有効にするには、次の手順を使用します。
 
-1. ログ データが保存されている Log Analytics ワークスペースのリソース ID をメモしておきます。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
+1. ログ データが保存されている Log Analytics ワークスペースのリソース ID をメモしておきます。 この値の形式は次のとおりです。
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`
 
    サブスクリプション内の任意のワークスペースを使用できます。 この情報は、Azure Portal で確認できます。 この情報はリソースの **プロパティ** ページにあります。
 
-2. ファイアウォールのリソース ID に注意してください。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
+2. ファイアウォールのリソース ID に注意してください。 この値の形式は次のとおりです。
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`
 
    この情報は、ポータルで確認できます。
 

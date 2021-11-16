@@ -1,5 +1,5 @@
 ---
-title: Windows VM のイメージ ギャラリーで Azure Image Builder を使用する
+title: Windows VM のギャラリーで Azure Image Builder を使用する
 description: Azure Image Builder と Azure PowerShell を使用し、Azure Shared Gallery イメージ バージョンを作成します。
 author: kof-f
 ms.author: kofiforson
@@ -10,22 +10,22 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6206401d41662724e2c44851e930373b7f90030d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 224a24de18060568ef8b5ba86f9da8354fab8ddd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436430"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462881"
 ---
-# <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Windows イメージを作成して共有イメージ ギャラリーに配布する 
+# <a name="create-a-windows-image-and-distribute-it-to-an-azure-compute-gallery"></a>Windows イメージを作成して Azure Compute Gallery に配布する 
 
 **適用対象:** :heavy_check_mark: Windows VM 
 
-この記事では、Azure Image Builder と Azure PowerShell を使用して [Shared Image Gallery](../shared-image-galleries.md) にイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は [Azure CLI](../linux/image-builder-gallery.md) で実行することもできます。
+この記事では、Azure Image Builder と Azure PowerShell を使用して [Azure Compute Gallery](../shared-image-galleries.md) (旧称 Shared Image Gallery) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は [Azure CLI](../linux/image-builder-gallery.md) で実行することもできます。
 
 .json テンプレートを使って、イメージを構成します。 今回使用する .json ファイルは [armTemplateWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json) です。 テンプレートのローカル バージョンをダウンロードして編集します。そのため、この記事はローカル PowerShell セッションを使用して作成されています。
 
-イメージを共有イメージ ギャラリーに配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) が使われています。
+イメージを Azure Compute Gallery に配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) が使われています。
 
 Azure Image Builder では、sysprep が自動的に実行され、イメージが汎用化されます。これは汎用 sysprep コマンドであり、必要に応じて[オーバーライド](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully)できます。 
 
@@ -87,7 +87,7 @@ $imageTemplateName="helloImageTemplateWin02ps"
 # This gives you the properties of the managed image on completion.
 $runOutputName="winclientR01"
 
-# Create a resource group for Image Template and Shared Image Gallery
+# Create a resource group for Image Template and Azure Compute Gallery
 New-AzResourceGroup `
    -Name $imageResourceGroup `
    -Location $location
@@ -95,7 +95,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定する
-Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) を使用して、Azure Compute Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
 ```powershell
 # setup role def names, these need to be unique
@@ -140,14 +140,14 @@ https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
 ```
 
 
-## <a name="create-the-shared-image-gallery"></a>Shared Image Gallery を作成する
+## <a name="create-the-azure-compute-gallery"></a>Azure Compute Gallery を作成する
 
-共有イメージ ギャラリーで Image Builder を使用するには、既存のイメージ ギャラリーとイメージ定義が必要です。 Image Builder では、イメージ ギャラリーとイメージ定義は自動的には作成されません。
+Azure Compute Gallery で Image Builder を使用するには、既存のギャラリーとイメージ定義が必要です。 Image Builder では、ギャラリーとイメージ定義は自動的には作成されません。
 
-使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 最初に、イメージ ギャラリーを作成します。
+使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 まず、ギャラリーを作成します。
 
 ```powershell
-# Image gallery name
+# Gallery name
 $sigGalleryName= "myIBSIG"
 
 # Image definition name
@@ -278,7 +278,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $vmResourceGroup -Location 
 $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
-# Create a virtual machine configuration using $imageVersion.Id to specify the shared image
+# Create a virtual machine configuration using $imageVersion.Id to specify the image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -Id $imageVersion.Id | `

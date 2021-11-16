@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 7945df58db31ad7dbd9c162366596756f62b3475
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cf89b21c3aceee55e121d918f21db4bcf7c51d42
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066750"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440490"
 ---
 # <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Azure CLI を使用して Open Service Mesh AKS アドオンをデプロイする
 
@@ -102,6 +102,14 @@ az aks list -g <my-osm-aks-cluster-rg> -o json | jq -r '.[].addonProfiles.openSe
 kubectl get deployments -n kube-system --selector app=osm-controller
 kubectl get pods -n kube-system --selector app=osm-controller
 kubectl get services -n kube-system --selector app=osm-controller
+```
+
+### <a name="check-osm-add-on-version"></a>OSM アドオンのバージョンを確認する
+
+インストールした OSM アドオンのバージョンは v0.11.1 以上である必要があります。 これを確認するには、次のコマンドを実行し、osm-controller のイメージのバージョンを確かめます。この情報はイメージのタグにエンコードされています。 
+
+```azurecli-interactive
+kubectl get deployment -n kube-system osm-controller -o=jsonpath='{$.spec.template.spec.containers[:1].image}'
 ```
 
 ## <a name="accessing-the-aks-osm-add-on-configuration"></a>AKS OSM アドオンの構成にアクセスする

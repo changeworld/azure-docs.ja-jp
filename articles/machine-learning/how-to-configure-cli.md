@@ -8,15 +8,15 @@ ms.subservice: mlops
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 05/25/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: d3b21575b1e0e7e8e5c049cdf692ea261b8173c6
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: de4ca6e0fcbcc6394889a6c334c9dc19f69da041
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423898"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560988"
 ---
 # <a name="install-and-set-up-the-cli-v2"></a>CLI (v2) のインストールと設定
 
@@ -33,35 +33,35 @@ ms.locfileid: "129423898"
 
 新しい Machine Learning 拡張機能には、**Azure CLI バージョン `>=2.15.0` が必要です**。 この要件が満たされていることを確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_version":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_version":::
 
 そうでない場合は、[Azure CLI をアップグレード](/cli/azure/update-azure-cli)します。
 
 インストールされた Azure CLI 拡張機能を確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_list":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_extension_list":::
 
 `azure-cli-ml` 拡張機能など、`ml` 名前空間を使用する競合する拡張機能がインストールされていないことを確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_remove":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_extension_remove":::
 
 ここで、`ml` 拡張機能をインストールします。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_install":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_ml_install":::
 
 help コマンドを実行してインストールを確認し、使用可能なサブコマンドを調べます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_verify":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_ml_verify":::
 
 拡張機能を最新バージョンにアップグレードすることができます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_update":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_ml_update":::
 
 ### <a name="installation-on-linux"></a>Linux へのインストール
 
 Linux を使用している場合、必要な CLI バージョンと Machine Learning 拡張機能をインストールする最も簡単な方法は次のとおりです。
 
-:::code language="bash" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_install_linux":::
+:::code language="bash" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_extension_install_linux":::
 
 詳しくは、[Linux 向け Azure CLI のインストールに関するページ](/cli/azure/install-azure-cli-linux)を参照してください。
 
@@ -69,29 +69,43 @@ Linux を使用している場合、必要な CLI バージョンと Machine Lea
 
 ログイン: 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_login":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_login":::
 
 複数の Azure サブスクリプションにアクセスできる場合は、アクティブなサブスクリプションを設定できます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_account_set":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="az_account_set":::
+
+必要に応じて、後続のコマンドで使用するために、シェルに共通変数を設定します。
+
+:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/azure-github.sh" id="set_variables":::
+
+> [!WARNING]
+> これにより、Bash 構文を使用して変数を設定し、必要に応じてシェルに合わせて調整します。 変数を使用する代わりに、以下のコマンドの値をインラインで置き換えることもできます。
 
 まだ存在していない場合は、Azure リソース グループを作成できます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_group_create":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/azure-github.sh" id="az_group_create":::
+
+そして、機械学習ワークスペースを作成します。
+
+:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/azure-github.sh" id="az_ml_workspace_create":::
 
 機械学習サブコマンドには、`--workspace/-w` および `--resource-group/-g` パラメーターが必要です。 これらを繰り返し入力しなくて済むようにするには、既定値を構成します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_configure_defaults":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_configure_defaults":::
 
 > [!TIP]
 > ほとんどのコード例では、既定のワークスペースとリソース グループが設定されていることを前提としています。 これらは、コマンド ラインでオーバーライドできます。
 
-次に機械学習ワークスペースを作成します。
+`--list-defaults/-l` を使用して、現在の既定値を表示することができます:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_workspace_create":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="list_defaults":::
+
+> [!TIP]
+> `--output/-o` と組み合わせることで、より読みやすい出力形式にすることができます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Machine Learning CLI 拡張機能 (プレビュー) を使用してモデルをトレーニングする](how-to-train-cli.md)
+- [CLI (v2) を使用してモデルをトレーニングする](how-to-train-cli.md)
 - [Visual Studio Code Azure Machine Learning 拡張機能をセットアップする](how-to-setup-vs-code.md)
 - [Azure Machine Learning Visual Studio Code 拡張機能を使用して画像分類 TensorFlow モデルをトレーニングする](tutorial-train-deploy-image-classification-model-vscode.md)

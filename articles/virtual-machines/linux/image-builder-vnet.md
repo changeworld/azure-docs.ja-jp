@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: e6ea151e7f8449a8dc3e86944fff4bcf55932784
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5bee5e85fe7529ae783e99be02159bc8d62442b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770403"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437222"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Linux VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 
@@ -153,7 +153,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>リソース グループのアクセス許可を設定する
 
-Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、Azure Compute Gallery (旧称 Shared Image Gallery) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
 ```bash
 # create user assigned identity for image builder
@@ -266,7 +266,7 @@ SSH 接続が確立されるとすぐに、イメージが *当日のメッセ�
 
 次では、作成されたイメージが他のすべてのリソース ファイルと共に削除されます。 リソースを削除する前に、このデプロイを終了していることを確認します。
 
-イメージ ギャラリー リソースを削除する場合、それらの作成に使用したイメージ定義を削除する前に、すべてのイメージ バージョンを削除する必要があります。 ギャラリーを削除するには、最初にギャラリー内のすべてのイメージ定義を削除していることが必要です。
+ギャラリー リソースを削除する場合、それらの作成に使用したイメージ定義を削除する前に、すべてのイメージ バージョンを削除する必要があります。 ギャラリーを削除するには、最初にギャラリー内のすべてのイメージ定義を削除していることが必要です。
 
 Image Builder テンプレートを削除します。
 
@@ -306,4 +306,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure 共有イメージ ギャラリー](../shared-image-galleries.md)に関するページを参照してください。
+[Azure Compute Gallery](../shared-image-galleries.md) の詳細を確認してください。

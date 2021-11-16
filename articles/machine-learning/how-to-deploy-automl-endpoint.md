@@ -11,12 +11,12 @@ author: shivanissambare
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 5bc5208de912a6f11271681b754736bfafe17e8b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2a2c04795b3cfcf38e3a2b84ccc36c0ee488f5f6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565718"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059395"
 ---
 # <a name="how-to-deploy-an-automl-model-to-an-online-endpoint-preview"></a>AutoML モデルをオンライン エンドポイントにデプロイする方法 (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "131565718"
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
 AutoML でトレーニングされた機械学習モデル。 詳細については、「[チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする](tutorial-first-experiment-automated-ml.md)」または「[チュートリアル: 自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)」を参照してください。
 
@@ -124,11 +124,11 @@ CLI からデプロイを作成するには、ML v2 拡張機能を持つ Azure 
 
 __automl_endpoint.yml__
 
-::: code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/endpoint.yml" :::
+::: code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/endpoint.yml" :::
 
 __automl_deployment.yml__
 
-::: code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/blue-deployment.yml" :::
+::: code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml" :::
 
 [AutoML モデル] ページからダウンロードしたファイルを使用するには、このファイルを変更する必要があります。
 

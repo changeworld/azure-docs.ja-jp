@@ -8,12 +8,12 @@ ms.subservice: purview-insights
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1fd89f44552e8a986e4ccffb55836c0d4db3d8d2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2c030d419349275204e662d78396543f5517ceca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015031"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847225"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure Purview のデータに関する秘密度ラベルの分析情報
 
@@ -22,7 +22,7 @@ ms.locfileid: "131015031"
 > [!IMPORTANT]
 > Azure Purview 秘密度ラベルの分析情報は、現在プレビューの段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-サポートされるデータ ソースは次のとおりです。Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、SQL Server、Azure SQL Database、Azure SQL Managed Instance、Amazon S3 バケット、Amazon RDS データベース (パブリック プレビュー)
+サポートされるデータ ソースは次のとおりです。Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、SQL Server、Azure SQL Database、Azure SQL Managed Instance、Amazon S3 バケット、Amazon RDS データベース (パブリック プレビュー)、Power BI
 
 このハウツーガイドでは、次の方法について説明します。
 
@@ -31,11 +31,7 @@ ms.locfileid: "131015031"
 > - データに関する秘密度ラベルの分析情報を表示する
 > - ドリルダウンして、データの秘密度ラベルの詳細情報を確認する
 
-> [!NOTE]
-> Purview によってスキャンされる [Power BI 資産](register-scan-power-bi-tenant.md)で見つかった秘密度ラベルは、現在、秘密度ラベルの分析情報レポートには表示されていません。 
->
-> Power BI 資産の秘密度ラベルを表示するには、[Purview Data Catalog](how-to-search-catalog.md) で資産を表示します。
-> 
+ 
 ## <a name="prerequisites"></a>前提条件
 
 Purview の分析情報の使用を開始する前に、次の手順を完了していることを確認してください。

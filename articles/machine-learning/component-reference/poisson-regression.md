@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 0ab03efd4ca6bf372b90ba04744c929082e85796
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 3c77b0ac501d6829429cde79ca9165a1df450215
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132339582"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566097"
 ---
 # <a name="poisson-regression"></a>ポワソン回帰
 
@@ -85,24 +85,24 @@ ms.locfileid: "132339582"
 
     - **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) コンポーネントを使用します。
 
-    - **[トレーナー モードの作成]** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)コンポーネントを使用します。
+    - **[トレーナー モードの作成]** を **[Parameter Range]\(パラメーター範囲\)** を設定する場合は、[[モデルのハイパーパラメーターの調整]](tune-model-hyperparameters.md) コンポーネントを使用します。
 
     > [!WARNING]
     > 
     > - パラメーター範囲を [[モデルのトレーニング]](train-model.md) に渡すと、パラメーター範囲リストの 1 番目の値のみが使用されます。
     > 
-    > - [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)コンポーネントで各パラメーターにさまざまな設定が必要なときに、1 つのパラメーター値のセットを渡すと、それらの値は無視され、学習器の既定値が使用されます。
+    > - [[モデルのハイパーパラメーターの調整]](tune-model-hyperparameters.md) コンポーネントによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。
     > 
     > - **[Parameter Range]\(パラメーター範囲\)** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一の値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。
 
-8. パイプラインを送信します。
+8.  パイプラインを送信します。
 
 ## <a name="results"></a>結果
 
 トレーニングの完了後:
 
-- トレーニング済みモデルのスナップショットを保存するには、トレーニング コンポーネントを選択し、右側のパネルの **[出力とログ]** タブに切り替えます。 **[データセットの登録]** アイコンをクリックします。  保存されたモデルは、コンポーネント ツリーにコンポーネントとして示されます。
++ トレーニング済みモデルのスナップショットを保存するには、トレーニング コンポーネントを選択し、右側のパネルにある **[出力とログ]** タブに切り替えます。 **[データセットの登録]** アイコンをクリックします。  保存されたモデルは、コンポーネント ツリーにコンポーネントとして示されています。 
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning で[使用できる一連のコンポーネント](component-reference.md)を参照してください。
+Azure Machine Learning で[使用できる一連のコンポーネント](component-reference.md)をご覧ください。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e3ed432e1c0c6b9fbe602720935e5c549437587a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 3b1e21dc3c9960648f3114998a1d4d141f1e518a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277121"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449110"
 ---
 # <a name="latency-in-blob-storage"></a>Blob Storage での待ち時間
 

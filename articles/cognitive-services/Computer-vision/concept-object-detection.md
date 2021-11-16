@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 68c2cfeec9ef2aaa73c1553c8b50150564986e88
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d8ef3a319b9701ece0b7a66e3d428c519642767c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465248"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454791"
 ---
 # <a name="detect-common-objects-in-images"></a>画像内の一般的なオブジェクトを検出する
 
-オブジェクトの検出は[タグ付け](concept-tagging-images.md)に似ていますが、API で返されるのは、検出された各オブジェクトの境界ボックスの座標 (ピクセル単位) です。 たとえば犬や猫、人物が画像に含まれている場合、検出操作によって、それらのオブジェクトが、画像における対応する座標と共に一覧表示されます。 この機能を使用すれば、画像に含まれるオブジェクト間の関係を処理することができます。 画像内に同じタグのインスタンスが複数存在するかどうかも判別できます。
+オブジェクトの検出は[タグ付け](concept-tagging-images.md)に似ていますが、API で返されるのは、イメージに検出された各オブジェクトの境界ボックスの座標 (ピクセル単位) です。 たとえば犬や猫、人物が画像に含まれている場合、検出操作によって、それらのオブジェクトが、画像における対応する座標と共に一覧表示されます。 この機能を使用すれば、画像に含まれるオブジェクト間の関係を処理することができます。 画像内に同じオブジェクトのインスタンスが複数存在するかどうかも判別できます。
 
 Detect API は、画像内で特定されたオブジェクトや生物に応じてタグを適用します。 この時点では、タグ付けの分類とオブジェクト検出の分類との間に、正式な関係は存在しません。 概念レベルで言えば、Detect API はオブジェクトや生物を検出するだけであるのに対し、Tag API では、コンテキスト上の用語 ("indoor" など) も対象となり、それらの位置を境界ボックスで特定することはできません。
 

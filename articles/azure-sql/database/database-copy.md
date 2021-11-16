@@ -11,12 +11,12 @@ author: rothja
 ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 2a725512f3fa18a9af43d2725cda4ce1248e796a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e425644b279b19b9ea6e894e7e81130742bbf60e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737103"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432208"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -94,11 +94,8 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 > [!NOTE]
 > T-SQL ステートメントを終了しても、データベース コピー操作は終了しません。 操作を終了するには、ターゲット データベースを削除します。
-> [!NOTE]
-> ソースやコピー先サーバーにプライベート エンドポイントが構成され、パブリック ネットワーク アクセスが無効になっている場合、データベースはコピーできません。 プライベート エンドポイントが構成され、パブリック ネットワーク アクセスが許可されている場合、パブリック IP アドレスからコピー先サーバーに接続されているときに開始されたデータベース コピーは成功します。
-現在の接続の送信元 IP アドレスを確認するには、`SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` を実行します。
- 
-
+>
+> ソースやコピー先サーバーに[プライベート エンドポイント](private-endpoint-overview.md)が構成され、[パブリック ネットワーク アクセスが拒否されている](connectivity-settings.md#deny-public-network-access)場合、データベースはコピーできません。 プライベート エンドポイントが構成され、パブリック ネットワーク アクセスが許可されている場合、パブリック IP アドレスからコピー先サーバーに接続されているときに開始されたデータベース コピーはサポートされます。 コピー操作が完了したら、パブリック アクセスを拒否してください。
 
 > [!IMPORTANT]
 > T-SQL CREATE DATABASE ...AS COPY OF コマンドを使用する際に、バックアップ ストレージの冗長性を選択することはできません。 
@@ -141,7 +138,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> 両方のサーバーのファイアウォールは、T-SQL CREATE DATABASE ...AS COPY OF コマンドを発行するクライアントの IP からの受信接続を許可するように構成する必要があります。
+> 両方のサーバーのファイアウォールは、T-SQL CREATE DATABASE ...AS COPY OF コマンドを発行するクライアントの IP からの受信接続を許可するように構成する必要があります。 現在の接続の送信元 IP アドレスを確認するには、`SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` を実行します。
 
 ### <a name="copy-to-a-different-subscription"></a>別のサブスクリプションへのコピー
 

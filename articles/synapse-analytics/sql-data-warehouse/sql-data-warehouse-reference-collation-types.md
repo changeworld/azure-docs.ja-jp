@@ -11,18 +11,21 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 18720d99bc8cf0e237e25ea13f686970573d5704
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc2f5f735f20e54baa22eea7ad4d9fd00a3bc426
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678442"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850111"
 ---
 # <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) 用のデータベースの照合順序のサポート 
 
 新しい専用 SQL プール (旧称 SQL DW) を作成するときに、Azure portal から既定のデータベースの照合順序を変更できます。 この機能により、サポートされる 3800 個のデータベースの照合順序のいずれかを使用して、新しいデータベースをさらに簡単に作成できるようになりました。
 
 照合順序では、文字ベースのデータ型に対するロケール、コード ページ、並べ替え順序、および大文字と小文字の区別の規則を指定します。 選択されると、照合順序情報を必要とするすべての列と式が、選択された照合順序をデータベース設定から継承します。 既定の継承は、文字ベースのデータ型に対する別の照合順序を明示的に宣言することによって上書きできます。
+
+> [!NOTE]
+> Azure Synapse Analytics では、クエリ テキスト (変数、定数などを含む) は、他の SQL Server オファリングと同様のサーバーレベルの照合順序ではなく、常にデータベースレベルの照合順序を使用して処理されます。
 
 ## <a name="changing-collation"></a>照合順序の変更
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/25/2021
 ms.author: sahmalik
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a6b57ac40c124b2290642e452ef9c9f294acc9da
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b06c771d14d0257ac69db9d3a9a40d3eadeba3e7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837789"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436262"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-wam"></a>Web API を呼び出すデスクトップ アプリ: WAM を使用してトークンを取得する
 
@@ -140,7 +140,7 @@ MSAL のトークン キャッシュを保持することが重要です。MSAL 
 
 - WAM の対話型操作は、UI スレッド上で行われる必要があります。 UI スレッド上でない場合、MSAL によって意味のある例外がスローされます。 これはコンソール アプリには適用されません。
 - MSAL アカウントが最初に WAM を介して取得された場合、つまり、Windows の職場または学校のアカウントを WAM で見つけることができる場合、`WithAccount` によって高速認証エクスペリエンスが提供されます。
-- 同じユーザー名を持つ職場または学校のアカウントが Windows で見つからない限り、WAM でユーザー名フィールドにログイン ヒントを事前設定することはできません。
+- 同じユーザー名の職場または学校アカウントが Windows で見つからない限り、WAM でユーザー名フィールドにログイン ヒントを事前設定することはできません。
 - WAM で高速認証エクスペリエンスを提供できない場合は、アカウント ピッカーが表示されます。 ユーザーは新しいアカウントを追加できます。
 
 !["WAM アカウント ピッカー"](media/scenario-desktop-acquire-token-wam/wam-account-picker.png)

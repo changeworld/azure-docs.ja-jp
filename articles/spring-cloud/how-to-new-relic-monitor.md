@@ -1,23 +1,23 @@
 ---
-title: New Relic Java エージェントを使用して監視する方法
+title: New Relic Java エージェントを使用して Spring Boot アプリを監視する方法
 titleSuffix: Azure Spring Cloud
-description: New Relic Java エージェントを使用して Azure Spring Cloud アプリを監視する方法について説明します。
+description: New Relic Java エージェントを使用して Spring Boot アプリケーションを監視する方法について説明します。
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 4f8773660846dfeef87c27ccbe0755a0ce37d325
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 740193a9526bf19efb0e98f937c6f77c30b50b61
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180435"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258299"
 ---
-# <a name="how-to-monitor-with-new-relic-java-agent-preview"></a>New Relic Java エージェントを使用して監視する方法 (プレビュー)
+# <a name="how-to-monitor-spring-boot-apps-using-new-relic-java-agent-preview"></a>New Relic Java エージェントを使用して Spring Boot アプリを監視する方法 (プレビュー)
 
-この機能によって、New Relic Java エージェントで Azure Spring Cloud アプリを監視することができます。
+この機能を使用すると、Azure Spring Cloud で実行されている Spring Boot アプリケーションを New Relic Java エージェントによって監視できます。
 
 New Relic Java エージェントによって、以下を行えます。
 * New Relic Java エージェントを使用する。
@@ -35,7 +35,7 @@ New Relic Java エージェントによって、以下を行えます。
 * [New Relic](https://newrelic.com/) アカウント。
 * [Azure CLI バージョン 2.0.67 以降](/cli/azure/install-azure-cli)。
 
-## <a name="leverage-the-new-relic-java-in-process-agent"></a>New Relic Java インプロセス エージェントを利用する
+## <a name="activate-the-new-relic-java-in-process-agent"></a>New Relic Java インプロセス エージェントをアクティブにする
 
 エージェントを受け入れるには、次の手順に従います。
 
@@ -57,11 +57,11 @@ New Relic Java エージェントによって、以下を行えます。
        --env NEW_RELIC_APP_NAME=appName NEW_RELIC_LICENSE_KEY=newRelicLicenseKey
     ```
 
-Azure Spring Cloud では、 */opt/agents/newrelic/java/newrelic-agent.jar* に New Relic Java エージェントが事前にインストールされます。 お客様は、アプリケーションの **JVM オプション** からエージェントを利用できるだけでなく、[New Relic Java エージェント環境変数](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file/#Environment_Variables)を使用してエージェントを構成することもできます。
+Azure Spring Cloud では、 */opt/agents/newrelic/java/newrelic-agent.jar* に New Relic Java エージェントが事前にインストールされます。 お客様は、アプリケーションの **JVM オプション** からエージェントをアクティブにできるだけでなく、[New Relic Java エージェント環境変数](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file/#Environment_Variables)を使用してエージェントを構成することもできます。
 
 ## <a name="portal"></a>ポータル
 
-次の手順で、このエージェントをポータルから利用することもできます。
+次の手順で、このエージェントをポータルからアクティブにすることもできます。
 
 1. ナビゲーション ウィンドウの **[設定]** / **[アプリ]** からアプリを見つけます。
 
@@ -99,15 +99,50 @@ Azure Spring Cloud では、 */opt/agents/newrelic/java/newrelic-agent.jar* に 
 
    [ ![アプリケーション プロファイル](media/new-relic-monitoring/profile-app.png) ](media/new-relic-monitoring/profile-app.png)
 
-## <a name="new-relic-java-agent-logging"></a>New Relic Java エージェントのログ記録
+## <a name="automate-provisioning"></a>プロビジョニングを自動化する
 
-Azure Spring Cloud では、既定で New Relic Java エージェントのログが `STDOUT` に出力されます。 アプリケーション ログと統合されます。 アプリケーション ログから明示的なエージェント バージョンを取得できます。
+Terraform または Azure Resource Manager テンプレート (ARM テンプレート) を使用して、プロビジョニング自動化パイプラインを実行することもできます。 このパイプラインでは、作成およびデプロイする新しいアプリケーションをインストルメント化して監視するための完全なハンズオン エクスペリエンスが提供されます。
 
-New Relic エージェントのログは、以下から取得することもできます。
+### <a name="automate-provisioning-using-terraform"></a>Terraform を使用してプロビジョニングを自動化する
 
-* Azure Spring Cloud のログ。
-* Azure Spring Cloud Application Insights。
-* Azure Spring Cloud LogStream。
+Terraform テンプレートで環境変数を構成するには、次のコードをテンプレートに追加し、 *\<...>* プレースホルダーを実際の値に置き換えます。 詳細については、「[Azure Spring Cloud のアクティブなデプロイを管理する](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_active_deployment)」を参照してください。
+
+```terraform
+resource "azurerm_spring_cloud_java_deployment" "example" {
+  ...
+  jvm_options = "-javaagent:/opt/agents/newrelic/java/newrelic-agent.jar"
+  ...
+    environment_variables = {
+      "NEW_RELIC_APP_NAME": "<app-name>",
+      "NEW_RELIC_LICENSE_KEY": "<new-relic-license-key>"
+  }
+}
+```
+
+### <a name="automate-provisioning-using-an-arm-template"></a>ARM テンプレートを使用してプロビジョニングを自動化する
+
+ARM テンプレートで環境変数を構成するには、次のコードをテンプレートに追加し、 *\<...>* プレースホルダーを実際の値に置き換えます。 詳細については、[Microsoft.AppPlatform Spring/apps/deployments](/azure/templates/microsoft.appplatform/spring/apps/deployments?tabs=json) を参照してください。
+
+```ARM template
+"deploymentSettings": {
+  "environmentVariables": {
+    "NEW_RELIC_APP_NAME" : "<app-name>",
+    "NEW_RELIC_LICENSE_KEY" : "<new-relic-license-key>"
+  },
+  "jvmOptions": "-javaagent:/opt/agents/newrelic/java/newrelic-agent.jar",
+  ...
+}
+```
+
+## <a name="view-new-relic-java-agent-logs"></a>New Relic Java エージェントのログを表示する
+
+Azure Spring Cloud では、既定で New Relic Java エージェントのログが `STDOUT` に出力されます。 このログは、アプリケーション ログと混在しています。 アプリケーション ログから明示的なエージェント バージョンを見つけることができます。
+
+New Relic エージェントのログは、次の場所から取得することもできます。
+
+* Azure Spring Cloud のログ
+* Azure Spring Cloud Application Insights
+* Azure Spring Cloud LogStream
 
 New Relic によって提供される一部の環境変数 (`NEW_RELIC_LOG_LEVEL` など) を利用して新しいエージェントのログ記録を構成し、ログのレベルを制御できます。 詳細については、[New Relic の環境変数](https://docs.newrelic.com/docs/agents/java-agent/configuration/java-agent-configuration-config-file/#Environment_Variables)に関するページを参照してください。
 

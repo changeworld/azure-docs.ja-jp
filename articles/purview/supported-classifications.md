@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: e3018a1b9d94ca1f750bf8d17b1ea6ba028ad07f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa92330fcbae0bba9e3f9d18cb3e56d9c16a9ee6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056150"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449452"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview でサポートされている分類
 
@@ -410,7 +410,10 @@ OR
 
 ### <a name="pattern"></a>[パターン]
 
-- 1 文字 (N、E、D、F、A、C、U、X) の後に 7 桁の数字、または
+- 1 文字 (N、E、D、F、A、C、U、X) の後に 7 桁の数字
+
+**or**
+
 - 2 文字 (PA、PB、PC、PD、PE、PF、PU、PW、PX、PZ) の後に 7 桁の数字。
 
 ### <a name="checksum"></a>Checksum
@@ -1566,9 +1569,13 @@ Registro de Identidade (RIC) (新しい形式):
 カナダの銀行口座番号は 7 桁または 12 桁です。
 
 カナダの銀行口座番号は次のとおりです。
+
 - 5 桁の数字
 - 1 つのハイフン
-- 3 桁の数字、または
+- 3 桁の数字
+
+**or**
+
 - ゼロ "0"
 - 8 桁の数字
 
@@ -7170,9 +7177,13 @@ Checksum
 ### <a name="pattern"></a>Pattern
 
 7 ～ 12 桁の数字:
+
 - 4 桁の数字
 - 1 つのハイフン (省略可能)
-- 6 桁の数字、または
+- 6 桁の数字
+
+*or*
+
 - 7 ～ 12 桁の連続する数字
 
 ### <a name="checksum"></a>Checksum
@@ -9352,7 +9363,10 @@ Checksum
 
 9 桁または 14 桁の数字:
 
-- 9 桁の数字または
+- 9 桁の数字
+
+**or**
+
 - 9 桁の数字
 - ハイフン
 - 5 桁の数字

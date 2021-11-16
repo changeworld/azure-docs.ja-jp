@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2021
+ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ffbdb8349f9da359cd050b8fd7f058d1877966b0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ee57c3de5b0e6166e54c79713e789f2211ffed3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004286"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445011"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -193,7 +193,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Azure Synapse Analytics          | はい                | はい、RSA 3072 ビット  | -                  |
 | SQL Server Stretch Database      | はい                | はい、RSA 3072 ビット  | はい                |
 | Table Storage                    | はい                | はい                | はい                |
-| Azure Cosmos DB                  | はい                | はい                | -                  |
+| Azure Cosmos DB                  | はい ([詳細](../../cosmos-db/database-security.md?tabs=sql-api))              | はい ([詳細](../../cosmos-db/how-to-setup-cmk.md))                | -                  |
 | Azure Databricks                 | はい                | はい                | -                  |
 | Azure Database Migration Service | はい                | 該当なし\*              | -                  |
 | **ID**                     |                    |                    |                    |

@@ -11,20 +11,24 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 51ba253024b1419913e136b4a11c3a3d3551743f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b4a23b3c59050b99db2938b33091d359f3c34ea
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090004"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502941"
 ---
-# <a name="what-is-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language とは 
+# <a name="what-is-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language とは
 
 Azure Cognitive Service for Language は、テキストを理解し分析するための自然言語処理 (NLP) 機能を提供するクラウドベースのサービスです。 このサービスを使用すると、Web ベースの Language Studio、REST API、およびクライアント ライブラリを使用してインテリジェントなアプリケーションを構築できます。  
 
 この言語サービスでは、Text Analytics、QnA Maker、および LUIS が統合され、いくつかの新機能も提供されます。 これらの機能は次のいずれかになります。
 * 事前構成済み。つまり、この機能で使用される AI モデルはカスタマイズできません。 ユーザーは単にデータを送信し、機能の出力をアプリケーションで使用します。
-* カスタマイズ可能。つまり、明確にデータに合うように、ツールを使用して AI モデルをトレーニングします。 
+* カスタマイズ可能。つまり、明確にデータに合うように、ツールを使用して AI モデルをトレーニングします。
+
+## <a name="migrate-from-text-analytics-qna-maker-or-language-understanding"></a>Text Analytics、QnA Maker、または Language Understanding から移行しますか?
+
+Azure Cognitive Services for Language には、Cognitive Services Text Analytics、QnA Maker、Language Understanding (LUIS) の 3 つの個別の言語サービスが統合されています。 これら 3 つのサービスを使用している場合は、新しい Azure Cognitive Services for Language に簡単に移行できます。 手順については、「[Azure Cognitive Services for Language への移行](concepts/migrate.md)」を参照してください。  
 
 ## <a name="available-features"></a>利用可能な機能
 
@@ -37,7 +41,7 @@ Azure Cognitive Service for Language には、次の機能が用意されてい�
 > | [個人を特定できる情報 (PII) の検出](personally-identifiable-information/overview.md)     | この事前構成済み機能では、アカウント情報など、機密情報のいくつかの事前に定義されたカテゴリにわたる、テキスト内のエンティティが識別されます。        | • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](named-entity-recognition/quickstart.md) |
 > | [キー フレーズ抽出](key-phrase-extraction/overview.md)     | この事前構成済み機能では、非構造化テキストが評価され、入力ドキュメントごとに、テキスト内のキー フレーズと主要ポイントのリストが返されます。 | • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](key-phrase-extraction/quickstart.md) <br> • [Docker コンテナー](key-phrase-extraction/how-to/use-containers.md)  |
 > |[エンティティ リンク設定](entity-linking/overview.md)    | この事前構成済み機能では、テキスト内で検出されたエンティティの ID が明確にされ、Wikipedia 上のエンティティへのリンクが提供されます。        | • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](entity-linking/quickstart.md) |
-> | [Text Analytics for Health (プレビュー)](text-analytics-for-health/overview.md)    | この事前構成済み機能では、臨床メモや医師のメモなど、非構造化医療テキストから情報が抽出されます。  | • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](text-analytics-for-health/quickstart.md) <br> • [Docker コンテナー](text-analytics-for-health/how-to/use-containers.md) |
+> | [Text Analytics for Health](text-analytics-for-health/overview.md)    | この事前構成済み機能では、臨床メモや医師のメモなど、非構造化医療テキストから情報が抽出されます。  | • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](text-analytics-for-health/quickstart.md) <br> • [Docker コンテナー](text-analytics-for-health/how-to/use-containers.md) |
 > | [カスタム NER](custom-named-entity-recognition/overview.md)    | 指定した非構造化テキストを使用して、カスタム エンティティ カテゴリを抽出する AI モデルを構築します。 |  • [Language Studio](custom-named-entity-recognition/quickstart.md?pivots=language-studio) <br> • [REST API](custom-named-entity-recognition/quickstart.md?pivots=rest-api) |
 > | [感情と意見を分析する](sentiment-opinion-mining/overview.md)     | この事前構成済み機能では、文とドキュメントのセンチメント ラベル ("*否定的*"、"*ニュートラル*"、"*肯定的*" など) が提供されます。 この機能を使用すると、製品やサービスの属性など、テキストに現れる単語に関連した意見に関するより詳細な情報を追加で提供できます。 |  • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](sentiment-opinion-mining/quickstart.md) <br> • [Docker コンテナー](sentiment-opinion-mining/how-to/use-containers.md)
 > |[言語検出](language-detection/overview.md)    | この事前構成済み機能では、テキストが評価され、記述された言語が判断されます。 言語識別子と、分析の強度を示すスコアが返されます。        | • [Language Studio](language-studio.md) <br> • [REST API とクライアント ライブラリ](language-detection/quickstart.md) <br> • [Docker コンテナー](language-detection/how-to/use-containers.md) |

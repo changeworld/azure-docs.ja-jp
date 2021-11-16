@@ -5,14 +5,18 @@ author: craftyhouse
 ms.topic: conceptual
 ms.date: 10/19/2021
 ms.author: micraft
-ms.openlocfilehash: 11660a3bb10e7004ce78d2788f93ac6fc2fc821d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17ec57ca04defa61080ebb5a67f879c737ea16fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089933"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460395"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-node-type-with-managed-data-diskspreview"></a>マネージド データ ディスクを使用して Azure Service Fabric クラスター ノード タイプをデプロイする (プレビュー)
+
+>[!NOTE]
+> マネージド データ ディスクのサポートは、現在はまだプレビュー段階です。運用環境のワークロードには使用しないでください。
+
 
 Service Fabric ノード タイプでは既定として、データ ストレージの基になる仮想マシン スケール セット内の各 VM 上の一時ディスクが使用されます。 ただし、一時ディスクは永続的ではなく、一時ディスクのサイズは特定の VM SKU に拘束されるため、一部のシナリオでは制限が厳しすぎる可能性があります。 Azure Managed Disksでは、VM SKU とは別に、あるノード タイプに使用されるサイズとパフォーマンスをお客様が指定できる永続データ ディスクを利用できます。 次のドキュメントでは、Service Fabric のネイティブ サポートを使用して、既定のデータ パスとして Azure Managed Disks を構成して使用する手順を示します。 Service Fabric によって、ノード タイプの作成時に Azure Managed Disks が自動的に構成され、VM または仮想マシン スケール セットが再イメージ化される状況が処理されます。
 
@@ -28,7 +32,7 @@ Service Fabric ノード タイプでは既定として、データ ストレー
     * Linux の場合 - **useManagedDataDisk:true** および **dataPath: '\mnt\sfdataroot'** 。
 
 >[!NOTE]
-> Linux Service Fabric クラスター用のマネージド データ ディスクのサポートは、現在運用環境で使用できませんが、お客様は Linux 用テスト Service Fabric 拡張機能を使用して試すことができます。
+> Linux Service Fabric クラスター用のマネージド データ ディスクのサポートは、現在使用できません。
 
 Service Fabric 拡張機能の Azure Resource Manager テンプレート
 ```json

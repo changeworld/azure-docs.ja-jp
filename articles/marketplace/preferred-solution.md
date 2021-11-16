@@ -6,15 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: feospina
 ms.author: feospina
-ms.date: 7/15/2021
-ms.openlocfilehash: e00b00f493bb68c989d38b017db387ab01183fc3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/26/2021
+ms.openlocfilehash: 295e2533957f376dd905e6deb528e9cb9ceffce0
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736469"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848839"
 ---
 # <a name="microsoft-preferred-solution-badge"></a>Microsoft の優先ソリューション バッジ
+
+> [!TIP]
+> コマーシャル マーケットプレースでの優先ソリューションの顧客のビューを表示するには、「[Azure Marketplace とは](/marketplace/azure-marketplace-overview#microsoft-preferred-solutions)」と「[Microsoft AppSource とは](/marketplace/appsource-overview)」を参照してください。
 
 ## <a name="what-is-the-microsoft-preferred-solution-badge"></a>Microsoft の優先ソリューション バッジとは何ですか?
 

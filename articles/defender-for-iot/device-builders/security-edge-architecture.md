@@ -1,25 +1,22 @@
 ---
 title: IoT Edge 用の Defender for IoT azureiotsecurity
-description: IoT Edge 用の Azure Defender for IoT azureiotsecurity のアーキテクチャと機能を理解します。
+description: IoT Edge 用の Microsoft Defender for IoT azureiotsecurity のアーキテクチャと機能を理解します。
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: dddd45c857537cbb1af8032c6e53590e9a8ff4cd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 55681d731193e0f73a9fb21b415b03d4411ee6fe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604894"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318961"
 ---
-# <a name="azure-defender-for-iot-edge-azureiotsecurity"></a>Azure Defender for IoT Edge azureiotsecurity
+# <a name="microsoft-defender-for-iot-edge-azureiotsecurity"></a>Microsoft Defender for IoT Edge azureiotsecurity
 
-[Azure IoT Edge](../../iot-edge/index.yml) では、エッジでのビジネス ワークフローを管理および実行するための強力な機能が提供されます。
-IoT Edge は IoT 環境内で重要な役割を果たしているため、悪意のあるアクターの注意を特に引きます。
+[Azure IoT Edge](../../iot-edge/index.yml) では、エッジでのビジネス ワークフローを管理および実行するための強力な機能が提供されます。 IoT Edge は IoT 環境内で重要な役割を果たしているため、悪意のあるアクターの注意を特に引きます。
 
-Defender for IoT azureiotsecurity により、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。
-Defender for IoT モジュールでは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データが収集、集約、分析されて、実行可能なセキュリティ推奨事項とアラートに変換されます。
+Defender for IoT azureiotsecurity により、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。 Defender for IoT モジュールでは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データが収集、集約、分析されて、実行可能なセキュリティ推奨事項とアラートに変換されます。
 
-IoT デバイスに対する Defender for IoT セキュリティ エージェントと同様に、Defender for IoT Edge モジュールもそのモジュール ツインによって高度なカスタマイズが可能です。
-詳しくは、[エージェントの構成](how-to-agent-configuration.md)に関する記事をご覧ください。
+IoT デバイスに対する Defender for IoT セキュリティ エージェントと同様に、Defender for IoT Edge モジュールもそのモジュール ツインによって高度なカスタマイズが可能です。 詳しくは、[エージェントの構成](how-to-agent-configuration.md)に関する記事をご覧ください。
 
 IoT Edge 用の Defender for IoT azureiotsecurity では、次の機能が提供されます。
 
@@ -35,8 +32,7 @@ IoT Edge 用の Defender for IoT azureiotsecurity では、次の機能が提供
 
   詳細については、[Defender for IoT エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
-IoT Edge 用の Defender for IoT azureiotsecurity は、IoT Edge において特権モードで実行されます。
-モジュールでオペレーティング システムおよび他の IoT Edge モジュールを監視できるためには、特権モードが必要です。
+IoT Edge 用の Defender for IoT azureiotsecurity は、IoT Edge において特権モードで実行されます。 モジュールでオペレーティング システムおよび他の IoT Edge モジュールを監視できるためには、特権モードが必要です。
 
 ## <a name="module-supported-platforms"></a>モジュールのサポート対象プラットフォーム
 

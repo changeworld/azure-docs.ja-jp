@@ -1,6 +1,6 @@
 ---
 title: ID セキュリティ スコアとは - Azure Active Directory
-description: ID セキュリティ スコアを使用して、お使いのディレクトリのセキュリティ体制を強化する方法
+description: ID セキュリティ スコアを使用してディレクトリのセキュリティ体制を強化する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d5c1a1493a7ea2aac0945dae14fc4c547ad86c9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 322643d443aac7cb0ec1aac06b46535114c8d340
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409921"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309512"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは
 
@@ -95,7 +95,7 @@ ID セキュリティ スコアは、次のロールが使用できます。
 
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>スコアが変更されました。 その理由を見つけるにはどうしたらよいですか?
 
-[Microsoft 365 セキュリティ センター](https://security.microsoft.com/)をご覧ください。ここには、ご自身の Microsoft セキュリティ スコアの詳細情報が示されています。 ご自身のセキュリティ スコアに対するすべての変更の詳細を、履歴タブで確認することができます。
+[Microsoft 365 Defender ポータル](https://security.microsoft.com/)に移動します。そこには Microsoft セキュリティ スコアの完全版があります。 ご自身のセキュリティ スコアに対するすべての変更の詳細を、履歴タブで確認することができます。
 
 ### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>セキュリティ スコアは侵害されるリスクを測定しますか?
 
@@ -105,7 +105,7 @@ ID セキュリティ スコアは、次のロールが使用できます。
 
 推奨されるセキュリティ機能を構成したり、セキュリティ関連のタスク (レポートの参照など) を実行したりするとスコアが向上します。 一部のアクションは、部分的な完了としてスコア付けされます (ユーザーのための多要素認証 (MFA) の有効化など)。 セキュリティ スコアは、使用している Microsoft セキュリティ サービスを直接表しています。 セキュリティは、使いやすさとのバランスを取る必要があることに注意してください。 すべてのセキュリティ コントロールには、ユーザーに影響するコンポーネントがあります。 ユーザーへの影響が少ないコントロールは、ユーザーの日常操作にほとんど、またはまったく影響しません。
 
-スコアの履歴を表示するには、[Microsoft 365 セキュリティ センター](https://security.microsoft.com/)に移動して、ご自身の全体的な Microsoft セキュリティ スコアをご確認ください。 全体的なセキュリティ スコアへの変更を確認するには、[履歴の表示] をクリックします。 特定の日付を選択すると、その日どのコントロールが有効になっていて、コントロールごとにどれだけのポイントを得たかを確認できます。
+スコアの履歴を確認するには、[Microsoft 365 Defender ポータル](https://security.microsoft.com/)に移動してください。全体的な Microsoft セキュリティ スコアを調査できます。 全体的なセキュリティ スコアへの変更を確認するには、[履歴の表示] をクリックします。 特定の日付を選択すると、その日どのコントロールが有効になっていて、コントロールごとにどれだけのポイントを得たかを確認できます。
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>ID セキュリティ スコアは Microsoft 365 のセキュリティ スコアにどのように関連していますか?
 

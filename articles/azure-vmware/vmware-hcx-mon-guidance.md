@@ -3,16 +3,21 @@ title: VMware HCX Mobility Optimized Networking (MON) のガイダンス
 description: Mobility Optimized Networking (MON) の Azure VMware Solution 固有のユース ケースについて説明します。
 ms.topic: reference
 ms.date: 10/04/2021
-ms.openlocfilehash: 1b170615b5a0ec0df81a8be7c71b8ac5ae17a24a
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 34840fedbf2ae2dbf32711f4dfee307fe3a3a5ca
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424731"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373329"
 ---
 # <a name="vmware-hcx-mobility-optimized-networking-mon-guidance"></a>VMware HCX Mobility Optimized Networking (MON) のガイダンス
 
+>[!NOTE]
+>
+>HCX Mobility Optimized Networking は VMware と Azure VMware Solution (HCX バージョン 4.1.0 以降) で公式サポートされています。 
+
 >[!IMPORTANT] 
+>
 >HCX MON を有効にする前に、下の制限とサポートされていない構成をお読みください。
 >
 >[HCX NE のサポートされていないソース構成](https://docs.vmware.com/en/VMware-HCX/4.2/hcx-user-guide/GUID-DBDB4D1B-60B6-4D16-936B-4AC632606909.html)

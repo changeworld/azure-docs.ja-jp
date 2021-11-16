@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) を監視およびスケーリングする
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーを監視およびスケーリングする
 description: この Azure CLI のサンプル スクリプトでは、変化するパフォーマンスのニーズを対応するために、1 つの Azure Database for MySQL - フレキシブル サーバーを監視およびスケールアップまたはダウンする方法を示します。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 3ab338f1648753b89907180be78b3a687b370ded
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 82661e10c2434541be89df6dc0e0871618a1a6b5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604678"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844193"
 ---
-# <a name="monitor-and-scale-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を監視およびスケーリングする
+# <a name="monitor-and-scale-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーを監視およびスケーリングする
 
 このサンプルの CLI スクリプトでは、対応するメトリックを照会後、1 つの Azure Database for MySQL - フレキシブル サーバーのコンピューティング、ストレージおよび IOPS をスケーリングする方法を示します。 コンピューティングと IOPS はスケールアップまたはダウンできるのに対し、ストレージはスケールアップのみ可能です。 
 
@@ -53,5 +53,5 @@ ms.locfileid: "128604678"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

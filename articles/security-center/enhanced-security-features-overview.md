@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 10/21/2021
-ms.openlocfilehash: 7cd13ebef2e548d9596823f829041e48c99e532e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 76cc49932cf469a994c64956f0589beff81c332f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441839"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063329"
 ---
 # <a name="microsoft-defender-for-clouds-enhanced-security-features"></a>Microsoft Defender for Cloud の強化されたセキュリティ機能
 
@@ -144,4 +144,4 @@ Defender for Cloud の課金は、Log Analytics の課金と密接に関連し�
 
 - [Azure ワークロードのコストを最適化する方法](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
 - [ご利用の通貨とリージョンにおける価格の詳細](https://azure.microsoft.com/pricing/details/security-center/)
-- ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../azure-monitor/insights/solution-targeting.md)を使用すると、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットをターゲットにすることができます。 ソリューションのターゲット設定を使用している場合、Defender for Cloud では、ソリューションがないものとしてワークスペースが一覧表示されます。
+- ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../azure-monitor/insights/solution-targeting.md)を使用して、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットを対象にします。 ソリューションのターゲット設定を使用している場合、Defender for Cloud では、ソリューションがないものとしてワークスペースが一覧表示されます。

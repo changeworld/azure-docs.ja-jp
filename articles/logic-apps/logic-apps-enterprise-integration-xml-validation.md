@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: f295054913dbf275533d4d14f39497071c6984a8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 20edb5f3b94e9014ce08d012cb0033a3bfb28db5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353222"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457470"
 ---
 # <a name="validate-xml-in-workflows-with-azure-logic-apps"></a>Azure Logic Apps を使用してワークフローで XML を検証する
 

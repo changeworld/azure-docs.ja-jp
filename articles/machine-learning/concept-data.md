@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 537fe72423e7ab4052f2a4bad32784a541228296
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5623567cb35f6222d660b9e02de5d2fa125dd826
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553958"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867154"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -67,7 +67,7 @@ Azure Machine Learning データストアでは、Azure のデータ ストレ�
 + Azure Database for MySQL
 
 >[!TIP]
-> データストア作成のために一般提供されている機能では、ストレージ サービスにアクセスするために、サービス プリンシパルや Shared Access Signature (SAS) トークンなどの資格情報ベースの認証が必要です。 これらの資格情報には、ワークスペースへの "*閲覧者*" アクセス権を持つユーザーがアクセスできます。 <br><br>これに問題がある場合は、[ストレージ サービスへの ID ベースのデータ アクセス (プレビュー) を使用するデータストアを作成](how-to-identity-based-data-access.md)します。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
+> データストア作成のために一般提供されている機能では、ストレージ サービスにアクセスするために、サービス プリンシパルや Shared Access Signature (SAS) トークンなどの資格情報ベースの認証が必要です。 これらの資格情報には、ワークスペースへの "*閲覧者*" アクセス権を持つユーザーがアクセスできます。 <br><br>これに問題がある場合は、[ストレージ サービスへの ID ベースのデータ アクセスを使用するデータストアを作成](how-to-identity-based-data-access.md)します。
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>データセットを使用してストレージ内のデータを参照する

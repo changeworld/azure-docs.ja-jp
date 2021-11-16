@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 8b2b64de8dd16e36b6956c289beda986d89a5c98
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1c33c2f4bf89b76abf40d12146965114ba4918b0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733504"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564501"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-az-or-kubectl"></a>CLI (az または kubectl) を使用した Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアップとスケールダウン
 
@@ -25,7 +25,9 @@ ms.locfileid: "121733504"
 
 このガイドでは、仮想コアやメモリをスケーリングする方法について説明します。
 
-サーバー グループの仮想コアまたはメモリの設定をスケールアップまたはスケールダウンすると、各仮想コアとメモリの設定に対して最小値または最大値を設定できます。 特定の数の仮想コアまたは特定の量のメモリを使用するようにサーバー グループを構成する場合は、最小設定の値を最大設定の値にします。
+サーバー グループの仮想コアまたはメモリの設定をスケールアップまたはスケールダウンすると、各仮想コアとメモリの設定に対して最小値または最大値を設定できます。 特定の数の仮想コアまたは特定の量のメモリを使用するようにサーバー グループを構成する場合は、最小設定の値を最大設定の値にします。 仮想コアとメモリに設定された値を大きくする前に、次を確認する必要があります。 
+- デプロイをホストする物理インフラストラクチャで十分なリソースを使用できる 
+- 同じシステム上に併置されている複数のワークロードが同じ仮想コアまたはメモリに関して競合していない
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -33,7 +35,7 @@ ms.locfileid: "121733504"
 
 サーバー グループの現在の定義を表示し、現在の仮想コアとメモリの設定を確認するには、次のコマンドのいずれかを実行します。
 
-### <a name="cli-with-azure-cli-az"></a>azure cli (az) を使用した CLI
+### <a name="with-azure-cli-az"></a>Azure CLI (az) の場合
 
 ```azurecli
 az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
@@ -54,7 +56,9 @@ Spec:
       Name:   citus
     Version:  12
   Scale:
-    Workers:  2
+    Replicas:       1
+    Sync Replicas:  0
+    Workers:        4
   Scheduling:
     Default:
       Resources:
@@ -117,13 +121,13 @@ az postgres arc-server edit -n <servergroup name> --memory-limit/memory-request/
 **コーディネーター ロールは 2 コアを超えないように構成し、ワーカー ロールは 4 コアを超えないように構成します。**
 
 ```azurecli
- az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace <namespace> --use-k8s
- az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace <namespace> --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace arc --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace arc --use-k8s
 ```
 
 or
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace arc --use-k8s
 ```
 
 > [!NOTE]
@@ -150,6 +154,17 @@ kubectl edit postgresql/<servergroup name> -n <namespace name>
 サーバー グループの定義を、下の構成と一致するように設定します。
 
 ```json
+...
+  spec:
+  dev: false
+  engine:
+    extensions:
+    - name: citus
+    version: 12
+  scale:
+    replicas: 1
+    syncReplicas: "0"
+    workers: 4
   scheduling:
     default:
       resources:
@@ -163,7 +178,7 @@ kubectl edit postgresql/<servergroup name> -n <namespace name>
             memory: 1Gi
           requests:
             cpu: "2"
-            memory: 512Mi
+            memory: 256Mi
       worker:
         resources:
           limits:
@@ -171,7 +186,8 @@ kubectl edit postgresql/<servergroup name> -n <namespace name>
             memory: 1Gi
           requests:
             cpu: "2"
-            memory: 512Mi
+            memory: 256Mi
+...
 ```
 
 `vi` エディターに慣れていない場合は、[こちら](https://www.computerhope.com/unix/uvi.htm)で必要なコマンドの説明を参照してください。
@@ -186,13 +202,13 @@ kubectl edit postgresql/<servergroup name> -n <namespace name>
 コア/メモリ制限/要求のパラメーターを既定値にリセットするには、それらのパラメーターを編集して、実際の値ではなく空の文字列を渡します。 たとえば、コア制限パラメーターをリセットする場合は、次のコマンドを実行します。
 
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
-az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace arc --use-k8s
+az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace arc --use-k8s
 ```
 
 or 
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace arc --use-k8s
 ```
 
 ## <a name="next-steps"></a>次のステップ

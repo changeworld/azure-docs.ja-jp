@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/14/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 34ee024344fb5ed7bf7da32f181a0bc43cbfc8fd
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8a937074cfc0cd4305ac5946bdb792d612c44f7b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038652"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465385"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files のボリューム レプリケーションを作成する
 
@@ -75,7 +75,7 @@ NFS プロトコルの場合、エクスポート ポリシー ルールが、�
 
 7. **[タグ]** タブで、必要に応じてキーと値のペアを作成します。  
 
-8. **[レプリケーション]** タブで、「[ソース ボリュームのリソース ID を見つける](#locate-the-source-volume-resource-id)」で取得したソース ボリュームのリソース ID を貼り付け、目的のレプリケーション スケジュールを選択します。 レプリケーション スケジュールのオプションには、10 分ごと、毎時間、毎日、毎週、毎月があります。  
+8. **[レプリケーション]** タブで、「[ソース ボリュームのリソース ID を見つける](#locate-the-source-volume-resource-id)」で取得したソース ボリュームのリソース ID を貼り付け、目的のレプリケーション スケジュールを選択します。 レプリケーション スケジュールのオプションには、10 分ごと、毎時間、毎日があります。
 
     ![ボリューム レプリケーションを作成する](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 

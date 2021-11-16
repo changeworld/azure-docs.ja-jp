@@ -10,12 +10,12 @@ ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 2385bfead10efc82e0a1f3c8f0f02f1cd8d9f2f4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: beaf5e72c74e066a0fc517d12100cb1703928b71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019269"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441516"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>BLOB リハイドレート イベントに応答して Azure 関数を実行する
 
@@ -25,7 +25,7 @@ ms.locfileid: "131019269"
 
 この記事では、Visual Studio から .NET を使用して Azure 関数を作成し、テストする方法を示します。 さまざまなローカル開発環境から、さまざまなプログラミング言語を使用して Azure 関数を作成することができます。 Azure Functions でサポートされている言語の詳細については、「[Azure Functions でサポートされている言語](../../azure-functions/supported-languages.md)」を参照してください。 Azure Functions の開発オプションの詳細については、「[Azure Functions をローカルでコーディングしてテストする](../../azure-functions/functions-develop-local.md)」を参照してください。
 
-アーカイブ層からの BLOB のリハイドレートの詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」を参照してください。
+アーカイブ層からの BLOB のリハイドレートの詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -292,9 +292,9 @@ BLOB をリハイドレートして関数をテストする方法については
 
 リハイドレートが完了すると、ログ BLOB は、リハイドレートした BLOB と同じコンテナーに書き込まれます。 たとえば、コピー操作を使用して BLOB をリハイドレートした後、元のソース BLOB がアーカイブ層に残り、完全にリハイドレートされたコピー先 BLOB が対象のオンライン層に表示され、Azure 関数によって作成されたログ BLOB も一覧に表示されていることを Azure portal で確認できます。
 
-:::image type="content" source="media/archive-rehydrate-handle-event/copy-blob-archive-tier-rehydrated-with-log-blob.png" alt-text="アーカイブ層の元の BLOB、ホット層のリハイドレートされた BLOB、およびイベント ハンドラーによって書き込まれたログ BLOB を示すスクリーンショット":::
+:::image type="content" source="media/archive-rehydrate-handle-event/copy-blob-archive-tier-rehydrated-with-log-blob.png" alt-text="アーカイブ層の元の BLOB、ホット層のリハイドレートされた BLOB、イベント ハンドラーなどによって書き込まれたログ BLOB を示すスクリーンショット":::
 
-リハイドレートの優先度の設定によっては、BLOB のリハイドレートに最大 15 時間かかることに注意してください。 リハイドレートの優先度を **[高]** に設定すると、サイズが 10 GB 未満の BLOB の場合、リハイドレートが 1 時間以内に完了する可能性があります。 ただし、優先度の高いリハイドレートではコストが高くなります。 詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」を参照してください。
+リハイドレートの優先度の設定によっては、BLOB のリハイドレートに最大 15 時間かかることに注意してください。 リハイドレートの優先度を **[高]** に設定すると、サイズが 10 GB 未満の BLOB の場合、リハイドレートが 1 時間以内に完了する可能性があります。 ただし、優先度の高いリハイドレートではコストが高くなります。 詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」をご覧ください。
 
 > [!TIP]
 > この方法の目的は、BLOB のリハイドレートのコンテキストでこれらのイベントを処理することですが、テスト目的では、イベントが直ちに発生するため、BLOB のアップロードやオンライン BLOB の層の変更 (*例*: ホットからクールなど) に応じてこれらのイベントを観察することも役立ちます。
@@ -303,7 +303,7 @@ Event Grid 内でイベントをフィルター処理する方法の詳細につ
 
 ## <a name="see-also"></a>関連項目
 
-- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)
+- [BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)。
 - [アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)
 - [アーカイブ済み BLOB をオンライン層にリハイドレートする](archive-rehydrate-to-online-tier.md)
 - [Blob Storage のイベント処理](storage-blob-event-overview.md)

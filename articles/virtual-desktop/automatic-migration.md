@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a82d67cf0bb1644e31ff3d87d315cd920a92749a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6d5fed6547a32382413c1a128b1a9003bf099c88
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074595"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471765"
 ---
 # <a name="migrate-automatically-from-azure-virtual-desktop-classic-preview"></a>Azure Virtual Desktop (クラシック) から自動的に移行する (プレビュー)
 
@@ -146,40 +146,40 @@ Azure Virtual Desktop (クラシック) リソースを Azure Resource Manager �
 
 2. 次に、**Start-RdsHostPoolMigration** コマンドレットを実行して、1 つのホスト プールまたはテナント内のすべてのホスト プールのどちらを移行するかを選択します。
 
-    次に例を示します。
+   次に例を示します。
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -Location WestUS
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -Location WestUS
+   ```
 
-    特定のホスト プールのリソースを移行する場合は、ホスト プール名を含めます。 たとえば、"Office" という名前のホスト プールを移行する場合は、次のようなコマンドを実行します。
+   特定のホスト プールのリソースを移行する場合は、ホスト プール名を含めます。 たとえば、"Office" という名前のホスト プールを移行する場合は、次のようなコマンドを実行します。
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments $false -Location EastUS
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments $false -Location EastUS
+   ```
 
-    ワークスペース名が指定されない場合、このモジュールでは、テナント名に基づいて自動的に作成されます。 ただし、特定のワークスペースを使用する場合は、そのリソース ID を次のように入力できます。
+   ワークスペース名が指定されない場合、このモジュールでは、テナント名に基づいて自動的に作成されます。 ただし、特定のワークスペースを使用する場合は、そのリソース ID を次のように入力できます。
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments -Location EastUS -Workspace <Resource ID of workspacename>
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments -Location EastUS -Workspace <Resource ID of workspacename>
+   ```
     
-    特定のワークスペースを使用したいが、そのリソース ID がわからない場合は、次のコマンドレットを実行します。
+   特定のワークスペースを使用したいが、そのリソース ID がわからない場合は、次のコマンドレットを実行します。
 
-    ```powershell
-    Get-AzWvdWorkspace -WorkspaceName <workspace> -ResourceGroupName <resource group> |fl
-    ```
+   ```powershell
+   Get-AzWvdWorkspace -WorkspaceName <workspace> -ResourceGroupName <resource group> |fl
+   ```
 
-  また、既存のユーザー割り当てのユーザー割り当てモードも指定する必要があります。
+   また、既存のユーザー割り当てのユーザー割り当てモードも指定する必要があります。
 
-  - 古いアプリ グループのすべてのユーザー割り当てを Azure Resource Manager アプリケーション グループにコピーするには、 **[コピー]** を使用します。 ユーザーは、自分のクライアントの両方のバージョンのフィードを表示できます。
-  - ユーザー割り当てを変更しない場合は、 **[なし]** を使用します。 後で、Azure portal、PowerShell、または API を使用して、ユーザーまたはユーザー グループをアプリ グループに割り当てることができます。 ユーザーは、Azure Virtual Desktop (クラシック) クライアントを使用したフィードのみを表示できます。
+      - 古いアプリ グループのすべてのユーザー割り当てを Azure Resource Manager アプリケーション グループにコピーするには、 **[コピー]** を使用します。 ユーザーは、自分のクライアントの両方のバージョンのフィードを表示できます。
+      - ユーザー割り当てを変更しない場合は、 **[なし]** を使用します。 後で、Azure portal、PowerShell、または API を使用して、ユーザーまたはユーザー グループをアプリ グループに割り当てることができます。 ユーザーは、Azure Virtual Desktop (クラシック) クライアントを使用したフィードのみを表示できます。
 
-  サブスクリプションあたり 2,000 のユーザー割り当てしかコピーできないため、実際の制限は、サブスクリプションに既に存在する割り当ての数によって異なります。 このモジュールでは、既に存在する割り当ての数に基づいて制限を計算します。 コピーするための十分な割り当てがない場合は、次のエラー メッセージが表示されます。"ユーザー割り当てをコピーするためのロールの割り当てクォータが不足しています。 -CopyUserAssignments スイッチなしでコマンドを再実行して移行してください。"
+   サブスクリプションあたり 2,000 のユーザー割り当てしかコピーできないため、実際の制限は、サブスクリプションに既に存在する割り当ての数によって異なります。 このモジュールでは、既に存在する割り当ての数に基づいて制限を計算します。 コピーするための十分な割り当てがない場合は、次のエラー メッセージが表示されます。"ユーザー割り当てをコピーするためのロールの割り当てクォータが不足しています。 -CopyUserAssignments スイッチなしでコマンドを再実行して移行してください。"
 
-3. コマンドを実行すると、このモジュールでサービス オブジェクトが作成されるまでに最大 15 分かかります。 ユーザー割り当てをコピーまたは移動した場合は、それにより、このモジュールがすべての設定を完了するためにかかる時間が追加されます。
+3. コマンド実行後、モジュールによってサービス オブジェクトを作成するまで、最大 15 分かかります。 ユーザー割り当てをコピーまたは移動した場合は、それにより、このモジュールがすべての設定を完了するためにかかる時間が追加されます。
 
-   **Start-RdsHostPoolMigration** コマンドレットが完了すると、次のものが表示されます。
+   **Start-RdsHostPoolMigration** コマンドレットを実行すると、次の結果が得られます。
 
       - 指定したテナントまたはホスト プールの Azure サービス オブジェクト
 

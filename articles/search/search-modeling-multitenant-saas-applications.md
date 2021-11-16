@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 7833dcf8fbe2b6460346310a4d094c7bb5d606c4
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 057c06b2d3b83b49448e2ec6edd0b1140a324375
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581576"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422522"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
 
@@ -104,7 +104,7 @@ Azure Cognitive Search では、個々のインデックスとインデックス
 
 1 つのサービスのインデックスの総数が増えすぎた場合は、新しいテナントに対応するためにサービスをもう 1 つプロビジョニングする必要があります。 新しいサービスを追加したときに、検索サービス間でインデックスを移動する必要がある場合、Azure Cognitive Search ではインデックスを移動することはできないため、インデックスのデータをインデックス間で手動でコピーする必要があります。
 
-## <a name="model-2-once-service-per-tenant"></a>モデル 2: テナントあたり 1 つのサービス
+## <a name="model-2-one-service-per-tenant"></a>モデル 2: テナントあたり 1 つのサービス
 
 :::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="テナントごとのサービス モデルの図" border="false":::
 

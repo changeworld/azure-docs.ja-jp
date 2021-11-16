@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/21/2021
-ms.openlocfilehash: cc403561784deea26e238063f585873c24cd39d3
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d5034f59cc71352518c0570e525f952f0f657c71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562734"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343137"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティとガバナンス
 
@@ -107,7 +107,7 @@ Azure Machine Learning では、Azure プラットフォーム上でさまざま
 
 ## <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
-[Azure Security Center](../security-center/security-center-introduction.md) は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Azure Machine Learning のために、[Azure Container Registry](../container-registry/container-registry-intro.md) リソースと Azure Kubernetes Service リソースのスキャンを有効にしてください。 詳細については、「[Security Center による Azure Container Registry のイメージ スキャン](../security-center/defender-for-container-registries-introduction.md)」および「[Azure Kubernetes Service と Security Center の統合](../security-center/defender-for-kubernetes-introduction.md)」を参照してください。
+[Microsoft Defender for Cloud](../security-center/security-center-introduction.md) では、統合されたセキュリティ管理と高度な脅威に対する保護がハイブリッド クラウド ワークロード全体に提供されます。 Azure Machine Learning のために、[Azure Container Registry](../container-registry/container-registry-intro.md) リソースと Azure Kubernetes Service リソースのスキャンを有効にしてください。 詳細については、[Defender for Cloud による Azure Container Registry イメージのスキャン](../security-center/defender-for-container-registries-introduction.md)および [Azure Kubernetes Service と Defender for Cloud の統合](../security-center/defender-for-kubernetes-introduction.md)に関するページを参照してください。
 
 ## <a name="audit-and-manage-compliance"></a>コンプライアンスの監査と管理
 

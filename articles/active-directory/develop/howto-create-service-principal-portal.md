@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: 9bcc18a16566f63678fb739b2d453ecc6ffdf3d5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ebd3b0f8ffc5b00ebbce55884c889549501ab3ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993893"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466221"
 ---
 # <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -157,7 +157,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 1. **[Azure Active Directory]** を選択します。
 1. Azure AD の **[アプリの登録]** から、アプリケーションを選択します。
 1. **[証明書とシークレット]** を選択します。
-1. **[証明書のアップロード]** を選択し、証明書 (既存の証明書、またはエクスポートした自己署名証明書) を選択します。
+1. **[証明書]**  >  **[証明書のアップロード]** を選び、証明書 (既存の証明書、またはエクスポートした自己署名証明書) を選びます。
 
     ![[証明書のアップロード] を選択して、追加するものを選択する](./media/howto-create-service-principal-portal/upload-cert.png)
 

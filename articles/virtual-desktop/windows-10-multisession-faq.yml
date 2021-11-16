@@ -8,12 +8,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: e6633e117fc06e9d7e337d6bece2cc2f7c36193c
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 0546f6186fbf725e14a105b0d735db0b7ecef2cc
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253329"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131841604"
 title: Windows 10 Enterprise マルチセッションに関する FAQ
 summary: この記事では、よく寄せられる質問に回答し、Windows 10 Enterprise マルチセッションのベスト プラクティスについて説明します。
 sections:
@@ -92,4 +92,6 @@ sections:
       5. **無効** を選択し、 **[OK]** を選択します。
 
       6. **[適用]** を選択します。
+  - question: Windows 10 または 11 Enterprise マルチセッションでは、Windows Server Update Services (WSUS) を通じて機能更新プログラムを受け取れますか?
+    answer: "現時点では、WSUS は、Windows 10 または 11 Enterprise マルチセッションへの機能更新プログラムを提供できません。\n         \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n   \nAzure Virtual Desktop と Windows 10 Enterprise マルチセッションの詳細については、次をご覧ください。\n        \n- [Azure Virtual Desktop のドキュメント](overview.md)を参照する\n- [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスする\n- [Azure Virtual Desktop のチュートリアル](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)を使用して Azure Virtual Desktop のデプロイをセットアップする"

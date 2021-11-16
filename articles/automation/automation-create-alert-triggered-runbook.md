@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee8d8929dc444d72539893a7978b828fc5c3742d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 2584390610aaef5ddd8364d33f3c065ecf3bd321
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352570"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443834"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -49,7 +49,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 ## <a name="assign-permissions-to-managed-identities"></a>マネージド ID にアクセス許可を割り当てる
 
-適切な[マネージド ID](./automation-security-overview.md#managed-identities-preview) にアクセス許可を割り当てて、仮想マシンを停止できるようにします。 Runbook では、Automation アカウントのシステム割り当てマネージド ID またはユーザー割り当てマネージド ID のいずれかを使用できます。 以下に、各 ID にアクセス許可を割り当てる手順を示します。 次の手順では PowerShell を使用します。 ポータルを使用する場合は、「[Azure portal を使用して Azure ロールを割り当てる](./../role-based-access-control/role-assignments-portal.md)」を参照してください。
+適切な[マネージド ID](./automation-security-overview.md#managed-identities) にアクセス許可を割り当てて、仮想マシンを停止できるようにします。 Runbook では、Automation アカウントのシステム割り当てマネージド ID またはユーザー割り当てマネージド ID のいずれかを使用できます。 以下に、各 ID にアクセス許可を割り当てる手順を示します。 この手順では PowerShell を使用します。 ポータルを使用する場合は、「[Azure portal を使用して Azure ロールを割り当てる](./../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、Azure に対話的にサインインし、指示に従います。
 
@@ -83,7 +83,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
         -RoleDefinitionName "DevTest Labs User"
     ```
 
-1. ユーザー割り当てマネージド ID にロールを割り当てる
+1. ユーザー割り当てマネージド ID にロールを割り当てます。
 
     ```powershell
     $UAMI = (Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $userAssignedManagedIdentity)
@@ -107,7 +107,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 この例では、Azure 仮想マシン (VM) からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに、Runbook がトリガーされます。 アラートには複数の状態があります。最も一般的な 2 つの状態は "アクティブ" と "解決済み" です。 Runbook が複数回実行されないことを確実にするために、Runbook ロジックの状態を確認します。 この記事の例では、状態がアクティブのアラートのみを検索する方法を示しています。
 
-Runbook では、VM に対する管理アクションの実行を Azure で認証するために、Automation アカウントの[システム割り当てマネージド ID](./automation-security-overview.md#managed-identities-preview) が使用されます。 Runbook は、ユーザー割り当てマネージド ID を使用するように簡単に変更することができます。
+Runbook では、VM に対する管理アクションの実行を Azure で認証するために、Automation アカウントの[システム割り当てマネージド ID](./automation-security-overview.md#managed-identities) が使用されます。 Runbook は、ユーザー割り当てマネージド ID を使用するように簡単に変更することができます。
 
 この例を使用して **Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 
@@ -117,7 +117,7 @@ Runbook では、VM に対する管理アクションの実行を Azure で認�
 
 1. **[+ Runbook の作成]** を選択します。
     1. Runbook に `Stop-AzureVmInResponsetoVMAlert` という名前を付けます。
-    1. **[Runbook の種類]** ドロップダウン メニューから、 **[PowerShell]** を選択します。
+    1. **[Runbook の種類]** ドロップダウン リストから、 **[PowerShell]** を選択します。
     1. **［作成］** を選択します
 
 1. Runbook エディターで、次のコードを貼り付けます。

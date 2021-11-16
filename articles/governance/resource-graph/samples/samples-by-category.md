@@ -1,15 +1,15 @@
 ---
 title: カテゴリ別のサンプル Azure Resource Graph クエリのリスト
 description: Azure Resource-Graph のサンプル クエリを一覧表示します。 カテゴリには、タグ、Azure Advisor、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a16d52f0c780a73bebf9db3e764d76ea6394aff2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: c2026751ec34d6e5952f156684100a9e5b7c341c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536260"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060216"
 ---
 # <a name="azure-resource-graph-sample-queries-by-category"></a>カテゴリ別の Azure Resource Graph サンプル クエリ
 
@@ -80,6 +80,10 @@ ms.locfileid: "123536260"
 
 [!INCLUDE [azure-resource-graph-samples-cat-general](../../../../includes/resource-graph/samples/bycat/general.md)]
 
+## <a name="iot-defender"></a>IoT Defender
+
+[!INCLUDE [azure-resource-graph-samples-cat-iot-defender](../../../../includes/resource-graph/samples/bycat/iot-defender.md)]
+
 ## <a name="management-groups"></a>管理グループ
 
 [!INCLUDE [azure-resource-graph-samples-cat-management-groups](../../../../includes/resource-graph/samples/bycat/management-groups.md)]
@@ -88,7 +92,7 @@ ms.locfileid: "123536260"
 
 [!INCLUDE [azure-resource-graph-samples-cat-networking](../../../../includes/resource-graph/samples/bycat/networking.md)]
 
-## <a name="resource-health"></a>リソース ヘルス
+## <a name="resource-health"></a>リソース正常性
 
 [!INCLUDE [azure-resource-graph-samples-cat-resource-health](../../../../includes/resource-graph/samples/bycat/resource-health.md)]
 

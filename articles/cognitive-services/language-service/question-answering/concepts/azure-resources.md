@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 10/10/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 0ed037e44ff202ec1fd0cacfbbbcfb16ee9be273
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ddd5ed0c51c412342b6e8093a69cdef900346be2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476682"
 ---
 # <a name="azure-resources-for-question-answering"></a>質問応答のための Azure リソース
 
@@ -67,9 +67,6 @@ ms.locfileid: "131092347"
 
 これらのキーは、API を介してサービスに要求を行うときに使用します。
 
-> [!div class="mx-imgBorder"]
-> ![キー管理マネージド プレビューのスクリーンショット。](../../../qnamaker/media/qnamaker-how-to-key-management/custom-question-answering-key-management.png)
-
 |名前|場所|目的|
 |--|--|--|
 |オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、Language Service API にアクセスするために使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しいリソースの作成時に作成されます。<br><br>これらのキーは、 **[キーとエンドポイント]** ページの **Cognitive Services** リソースで確認できます。|
@@ -77,9 +74,9 @@ ms.locfileid: "131092347"
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
 
-オーサリング キーは、Text Analytics リソースにカスタム質問と回答 (プレビュー) 機能を追加した Azure portal から表示およびリセットできます。
+オーサリング キーの表示とリセットは、言語リソースのカスタム質問応答機能を追加した Azure portal から行うことができます。
 
-1. Azure portal で Text Analytics リソースに移動し、種類が *Cognitive Services* であるリソースを選択します。
+1. Azure portal で言語リソースに移動し、種類が *Cognitive Services* であるリソースを選択します。
 
     > [!div class="mx-imgBorder"]
     > ![質問応答リソース一覧のスクリーンショット。](../../../qnamaker/media/qnamaker-how-to-setup-service/resources-created-question-answering.png)

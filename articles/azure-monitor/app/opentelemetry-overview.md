@@ -5,18 +5,18 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 268d7d8372fef1568a369f956e3caa91749f0e8e
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: a839437bd572946a6e6c2f62f2658ff4696db4e9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859583"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233490"
 ---
 # <a name="opentelemetry-overview"></a>OpenTelemetry の概要
 
 Microsoft は、テレメトリ インストルメンテーションの将来として [OpenTelemetry](https://opentelemetry.io/) を採用できることを嬉しく思っています。 お客様からはベンダー中立のインストルメンテーションが求められてきており、Microsoft は OpenTelemetry コミュニティと提携して、言語間で一貫した API または SDK を作成することに喜びを感じています。
 
-Microsoft は、以前人気のあった 2 つのオープンソース テレメトリ プロジェクト [OpenCensus](https://opencensus.io/) と [OpenTracing](https://opentracing.io/) のプロジェクト利害関係者と連携して、1 つのプロジェクト OpenTelemetry の作成を支援してきました。 OpenTelemetry には、すべての主要なクラウドおよびアプリケーション パフォーマンス管理 (APM) ベンダーからの貢献が含まれており、Microsoft が Platinum メンバーである [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) によって収容されています。
+Microsoft は、以前の重要テレメトリ プロジェクト 2 つ、[OpenCensus](https://opencensus.io/) と [OpenTracing](https://opentracing.io/) の関係者と協力し、単一のプロジェクト、OpenTelemetry を創設しました。 OpenTelemetry は、Microsoft が Platinum Member となっている [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) のプロジェクトであり、すべての主要なクラウド ベンダーと Application Performance Management (APM) ベンダーがこのプロジェクトにコントリビュートしています。
 
 ## <a name="concepts"></a>概念
 
@@ -39,10 +39,10 @@ Microsoft は、以前人気のあった 2 つのオープンソース テレメ
 1.  手動インストルメンテーション
 2.  自動インストルメンテーション
 
-手動インストルメンテーションは、OpenTelemetry API に対するコーディングです。 エンドユーザーのコンテキストでは、これは通常、アプリケーションで言語固有の SDK をインストールすることを指します。 手動インストルメンテーション パッケージは、[.NET、Python、JavaScript 用の Azure Monitor OpenTelemetry ベースのエクスポーター **プレビュー** オファリング](opentelemetry-enable.md)で構成されています。
+手動インストルメンテーションは、OpenTelemetry API に対するコーディングです。 エンド ユーザーの場合は、通常、特定の言語に対応した SDK をアプリケーションにインストールすることを意味します。 手動インストルメンテーション パッケージは、[.NET、Python、JavaScript 用の Azure Monitor OpenTelemetry ベースのエクスポーター **プレビュー** オファリング](opentelemetry-enable.md)で構成されています。
 
 > [!IMPORTANT]
-> "手動" は、分散トレースのスパンを定義するための複雑なコードを記述する必要があることを示しているわけでは **ありません** (ただし、これはオプションとして残されています)。 OpenTelemetry のコントリビューターによって管理されている豊富で拡大しているインストルメンテーション ライブラリのセットにより、共通のフレームワークとライブラリ全体でテレメトリ信号を簡単にキャプチャできます。 OpenTelemetry インストルメンテーション ライブラリのサブセットは Azure Monitor によってサポートされ、カスタマー フィードバックによって通知されます。 さらに、最も普及している Azure サービス SDK を OpenTelemetry プロトコル (OTLP) を出力するようにインストルメント化し、それらを Azure Monitor 用に最適化することに取り組んでいます。
+> "手動" は、分散トレースのスパンを定義するための複雑なコードを記述する必要があることを示しているわけでは **ありません** (ただし、これはオプションとして残されています)。 OpenTelemetry のコントリビューターによって管理されている豊富で拡大しているインストルメンテーション ライブラリのセットにより、共通のフレームワークとライブラリ全体でテレメトリ信号を簡単にキャプチャできます。 OpenTelemetry インストルメンテーション ライブラリのサブセットは Azure Monitor によってサポートされ、カスタマー フィードバックによって通知されます。 また、[OpenTelemetry を使用して、よく利用される Azure Service SDK をインストルメント化](https://devblogs.microsoft.com/azure-sdk/introducing-experimental-opentelemetry-support-in-the-azure-sdk-for-net/)できるようにする作業を、現在進めています。
 
 これに対して、自動インストルメンテーションでは、アプリケーションのコードに触れることなく、構成を使用してテレメトリ収集を有効にします。 便利ではありますが、構成できなくなる傾向にあり、すべての言語で使用できるわけではありません。 Azure Monitor の OpenTelemetry ベースの自動インストルメンテーション オファリングは [Java 3.X OpenTelemetry ベースの GA オファリング](java-in-process-agent.md)で構成され、カスタマー フィードバックによって通知されるよう Microsoft はここに引き続き投資しています。 OpenTelemetry コミュニティは C# と Python での自動インストルメンテーションも実験していますが、Azure Monitor は、近い将来における単純で、かつ効率的な手動インストルメンテーション ストーリーの作成に焦点を絞っています。
 
@@ -56,7 +56,7 @@ Azure Monitor (または、いずれかのベンダー) にデータを送信す
 
 **Azure Monitor の現在サポートされている OpenTelemetry ベースのオファリングはすべて、直接エクスポーターを使用します**。 
 
-別の方法として、エージェント経由でテレメトリを送信すると、OpenTelemetry でサポートされている任意の言語で [OTLP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/README.md) を使用して Azure Monitor に送信するためのパスが提供されます。 これにより、お客様は、[サポートされている言語](platforms.md)以外の言語で記述されたアプリケーションを監視できるようになります。 
+別の方法として、エージェント経由でテレメトリを送信すると、OpenTelemetry でサポートされている任意の言語で [OTLP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/README.md) を使用して Azure Monitor に送信するためのパスが提供されます。 顧客は、OTLP でデータを受け取ることにより、[サポートしている言語](platforms.md)以外の言語で書かれたアプリケーションもモニターできるようになります。 
 
 > [!NOTE]
 > Microsoft がアプリケーション監視のための "エージェント経由" のアプローチをまだ正式にサポートしていないにもかかわらず、一部のお客様は、エージェントの代わりとして [OpenTelemetry-Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/design.md) を使用し始めています。 その間、オープン ソース コミュニティは OpenTelemetry-Collector Azure Monitor エクスポーターを提供してきました。一部のお客様は、これを使用してデータを Azure Monitor Application Insights に送信しています。
@@ -69,9 +69,11 @@ Application Insights の従来の用語のいくつかは、業界が OpenTeleme
 
 Application Insights | OpenTelemetry
 ------ | ------
-トレース   | ログ
-チャネル   | エクスポーター  
-コード不要/エージェント ベース   | 自動インストルメンテーション
+自動コレクター | インストルメンテーション ライブラリ
+チャネル | エクスポーター  
+コード不要/エージェント ベース |  自動インストルメンテーション
+トレース | ログ
+
 
 ## <a name="next-step"></a>次のステップ
 

@@ -2,20 +2,20 @@
 title: Azure のコストの管理を計画する
 description: Azure のコストを管理する計画を立て、Azure アカウントのコスト追跡および管理機能を使用する方法について説明します。
 author: bandersmsft
-ms.reviewer: amberb
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 10/20/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d1a76078db3acd79d1f59ce43852d538edac7964
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 63542b241d26964d1f24fbe6744b4cbd6bccd6c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710889"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215728"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure のコストの管理を計画する
 
@@ -152,6 +152,7 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
     - お客様は部門管理者であり、 **[DA ビューの請求金額]** 設定が登録管理者によって無効にされている。  登録管理者に問い合わせて、アクセスできるように設定してもらってください。
     - チャネル パートナーを通して Azure を購入したが、パートナーが価格情報を公開していない。  
 - Enterprise Portal でコストのアクセスに関連する設定を更新した場合、変更が Azure portal に表示されるまで数分の遅延があります。
+- ダイレクト EA のお客様は、[Azure portal](https://portal.azure.com/) でコスト関連の設定を更新できます。 [ポリシー] メニューに移動して、設定を変更します。
 - 使用制限と請求書ガイダンスは、EA サブスクリプションには適用されません。
 
 ### <a name="check-your-subscription-and-access"></a>サブスクリプションとアクセスを確認する

@@ -1,19 +1,19 @@
 ---
 title: 'チュートリアル: Azure Container Apps プレビューを使用してバックグラウンド処理アプリケーションをデプロイする'
 description: Azure Container Apps を使ってバックグラウンドで継続的に実行されるアプリケーションを作成する方法について説明します
-services: app-service
+services: container-apps
 author: jorgearteiro
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: joarteir
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 57d5c01290f59a876a187538c9578b84fab26773
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ca9fa15259222651570c1909f6c4557c79a87298
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091767"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028004"
 ---
 # <a name="tutorial-deploy-a-background-processing-application-with-azure-container-apps-preview"></a>チュートリアル: Azure Container Apps プレビューを使用してバックグラウンド処理アプリケーションをデプロイする
 
@@ -88,7 +88,7 @@ az login
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az login
 ```
 
@@ -104,7 +104,7 @@ az upgrade
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az upgrade
 ```
 
@@ -121,9 +121,25 @@ az extension add \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl
+```
+
+---
+
+拡張機能がインストールされたので、`Microsoft.Web` 名前空間を登録します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```azurecli
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -140,7 +156,7 @@ az group create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az group create `
   --name $RESOURCE_GROUP `
   --location $LOCATION
@@ -168,7 +184,7 @@ az monitor log-analytics workspace create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az monitor log-analytics workspace create `
   --resource-group $RESOURCE_GROUP `
   --workspace-name $LOG_ANALYTICS_WORKSPACE
@@ -215,7 +231,7 @@ az containerapp env create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az containerapp env create `
   --name $CONTAINERAPPS_ENVIRONMENT `
   --resource-group $RESOURCE_GROUP `
@@ -243,7 +259,7 @@ az storage account create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az storage account create `
   --name $STORAGE_ACCOUNT `
   --resource-group $RESOURCE_GROUP `
@@ -283,7 +299,7 @@ az storage queue create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az storage queue create `
   --name "myqueue" `
   --account-name $STORAGE_ACCOUNT `
@@ -305,7 +321,7 @@ az storage message put \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az storage message put `
   --content "Hello Queue Reader App" `
   --queue-name "myqueue" `
@@ -412,7 +428,7 @@ az deployment group create --resource-group "$RESOURCE_GROUP" \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az deployment group create --resource-group "$RESOURCE_GROUP" `
   --template-file ./queue.json `
   --parameters `
@@ -429,7 +445,7 @@ az deployment group create --resource-group "$RESOURCE_GROUP" `
 
 ## <a name="verify-the-result"></a>結果を確認する
 
-Azure ストレージ キューからメッセージが到着すると、バックグラウンド プロセスとして実行されているコンテナー アプリにより、Log Analytics にログ エントリが作成されます。
+Azure ストレージ キューからメッセージが到着すると、バックグラウンド プロセスとして実行されているコンテナー アプリにより、Log Analytics にログ エントリが作成されます。 ログに記録されたデータに対してクエリを実行する前に、初めて分析が到着するまでに数分かかることがあります。
 
 ログに記録されたメッセージを表示するには、次のコマンドを実行します。 このコマンドには Log Analytics 拡張機能が必要なので、要求されたらプロンプトを受け入れて拡張機能をインストールします。
 
@@ -469,7 +485,7 @@ az group delete \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az group delete `
   --resource-group $RESOURCE_GROUP
 ```

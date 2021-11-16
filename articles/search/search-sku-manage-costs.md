@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 6a371d3a9edf537e78f5a889139a053cb925518f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 21b12da25ae2baf7e31ad12af7b5c346b64bc3ac
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770835"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577234"
 ---
 # <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure CognitiveSearch サービスのコストの見積りと管理を行う
 
@@ -51,7 +51,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 + 特定の機能やプレミアム機能に必要なアドオン サービス:
 
   + 課金対象のスキルを使用した AI エンリッチメント ([Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) が必要)。 画像抽出も課金対象です。
-  + ナレッジ ストア ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要)
+  + ナレッジ ストア ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要) インデクサーによるストレージに対する操作は、課金対象です。
   + 増分エンリッチメント ([Azure Storage](https://azure.microsoft.com/pricing/details/storage/) が必要。AI エンリッチメントに適用される)
   + カスタマー マネージド キーと二重暗号化 ([Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) が必要)
   + インターネットにアクセスできないモデル用のプライベート エンドポイント ([Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) が必要)
@@ -118,4 +118,4 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> <bpt id="p1">[</bpt>Cost Management を使用してコスト分析を開始する<ept id="p1">](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)</ept>

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 102b6e24c0d945cfd8e9bef8b7ae3a9c1992087e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93313632"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335368"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure Synapse Analytics Apache Spark プールの自動スケーリング
 
@@ -26,8 +26,8 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 |メトリック|説明|
 |---|---|
-|保留中の CPU の合計|すべての保留中のノードの実行を開始するために必要なコアの総数。|
-|保留中のメモリの合計|すべての保留中のノードの実行を開始するために必要なメモリの合計 (MB 単位)。|
+|保留中の CPU の合計|保留中の全ジョブを実行するために必要なコアの総数。|
+|保留中のメモリの合計|保留中の全ジョブを実行するために必要なメモリの合計 (MB 単位)。|
 |空き CPU の合計|アクティブなノード上のすべての未使用のコアの合計。|
 |空きメモリの合計|アクティブなノード上の未使用のメモリの合計 (MB 単位)。|
 |ノードごとの使用済みメモリ|ノードに対する負荷。 10 GB のメモリが使用されているノードは、使用済みメモリが 2 GB のワーカーより多くの負荷がかかっていると見なされます。|
@@ -45,7 +45,7 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 スケールアップの場合、Azure Synapse Autoscale サービスによって、現在の CPU とメモリの要件を満たすために必要な新しいノードの数が計算された後、必要な数のノードを追加するスケールアップ要求が発行されます。
 
-スケールダウンの場合、ノードごとの Executor の数、アプリケーション マスターの数、および現在の CPU とメモリの要件に基づき、自動スケーリングにより、特定の数のノードを削除する要求が発行されます。 また、サービスでは、現在のジョブの実行に基づいて、削除候補のノードも検出されます。 スケールダウン操作では、最初にノードの使用が停止された後、クラスターから削除されます。
+スケールダウンの場合、Executor の数、ノードごとのアプリケーション マスター数、現在の CPU とメモリの要件に基づき、自動スケーリングにより、特定の数のノードを削除する要求が発行されます。 また、サービスでは、現在のジョブの実行に基づいて、削除候補のノードも検出されます。 スケールダウン操作では、最初にノードの使用が停止された後、クラスターから削除されます。
 
 ## <a name="get-started"></a>はじめに
 

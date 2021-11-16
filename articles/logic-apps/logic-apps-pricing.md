@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: d6a43a64cbe24bc547ef1c6e61d4c0e3c340d76f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.date: 11/10/2021
+ms.openlocfilehash: 90e0703313db99bee1a7d06e9c1bc9d0efac135f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067271"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372968"
 ---
 # <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Azure Logic Apps の使用量の測定、課金、各価格モデル
 
@@ -73,10 +73,10 @@ ms.locfileid: "130067271"
 
 シングルテナント Azure Logic Apps では、ロジック アプリとそのワークフローの価格と課金は、[**標準** プラン](https://azure.microsoft.com/pricing/details/logic-apps/)に従います。 このようなロジック アプリは、さまざまな方法で作成します。たとえば、**ロジック アプリ (標準)** リソースの種類を選択するときや、Visual Studio Code で **Azure Logic Apps (標準)** 拡張機能を使用するときなどです。 この価格モデルでは、ロジック アプリでホスティング プランと価格レベルを使用する必要があります。これは、予約容量と専用リソースに対して、それらを使用しているかどうかに関係なく課金されるという点で、従量課金プランとは異なります。
 
+リソースの種類を **ロジック アプリ (Standard)** にして新しいロジック アプリを作成またはデプロイするとき、すべての Azure リージョンでワークフロー Standard ホスティング プランを使用できます。 既存の **App Service Environment v3** リソースを選択することもできますが、このオプションは App Service プランでのみ利用できます。 このオプションを選択した場合、App Service プランで使用されたインスタンスと、ロジック アプリ ワークフローの実行に対して課金されます。 その他の料金は適用されません。
+
 > [!IMPORTANT]
-> リソースの種類を **ロジック アプリ (Standard)** にして新しいロジック アプリを作成またはデプロイするとき、すべての Azure リージョンでワークフロー Standard ホスティング プランを使用できます。 ロジック アプリ リソースを作成し、デプロイするリージョンとして既存の **App Service Environment v3 (ASEv3)** リソースを使用する場合に "*のみ*" App Service ホスティング プランを使用できます。
->
-> Azure リージョンでは現在、Functions Premium プラン、App Service Environment v1、App Service Environment v2 は、リソース タイプ **Logic App (Standard)** のパブリック リリースで利用できなくなっています。あるいはサポートされていません。 App Service プランは ASEv3 以外では利用できず、サポートされていません。
+> Azure リージョンでは現在、プランまたはリソースである Functions Premium、App Service Environment v1、App Service Environment v2 は、リソース タイプ **Logic App (Standard)** のパブリック リリースで利用できなくなっています。あるいはサポートされていません。 ASEv3 を除き、App Service プランは利用できず、サポートされていません。
 
 次の表は、シングルテナント Azure Logic Apps のロジック アプリとワークフローで次のコンポーネントを使用した場合に、標準モデルでそれらに対して測定と課金がどのように処理されるかをまとめたものです。
 

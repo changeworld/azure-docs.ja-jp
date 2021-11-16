@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60a01c9e3a3e8643ad7d993db34d299fdc5ef145
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 5c7e7cc2434c9c55043ae6e504d868a103da35db
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014594"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226245"
 ---
 # <a name="collect-and-transport-metrics-preview"></a>メトリックの収集と転送 (プレビュー)
 
@@ -219,7 +219,7 @@ metricToSelect{quantile=0.5,otherLabel=~Re[ge]*|x}[http://VeryNoisyModule:9001/m
   * `=` は、指定された文字列と厳密に等しいラベルに一致します (大文字と小文字が区別されます)。
   * `!=` は、指定された文字列と厳密に等しくはないラベルに一致します。
   * `=~` は、ラベルを指定された正規表現に一致させます。 例: `label=~CPU|Mem|[0-9]*`
-  * `!=` は、指定された正規表現に適合しないラベルに一致します。
+  * `!~` は、指定された正規表現に適合しないラベルに一致します。
   * 正規表現は完全に固定されます (各正規表現の先頭と末尾には、^ と $ が自動的に追加されます)。
   * メトリック セレクターのこのコンポーネントはオプションです。
 
@@ -228,15 +228,15 @@ metricToSelect{quantile=0.5,otherLabel=~Re[ge]*|x}[http://VeryNoisyModule:9001/m
 * URL は、`MetricsEndpointsCSV` に示されている URL と完全に一致している必要があります。
 * メトリック セレクターのこのコンポーネントはオプションです。
 
-メトリックは、選択されたセレクターのすべての部分に一致する必要があります。 これは名前が一致し、"*なおかつ*" 同じタグの値がすべて一致し、"*なおかつ*" 指定されたエンドポイントから取得されている必要があります。 たとえば、`mem{quantile=0.5,otherLabel=foobar}[http://VeryNoisyModule:9001/metrics]` はセレクター `mem{quantile=0.5,otherLabel=~foo|bar}[http://VeryNoisyModule:9001/metrics]` と一致しません。 複数のセレクターを使用すると、「かつ」のような動作ではなく、「または」のような動作が作成されます。
+メトリックは、選択されたセレクターのすべての部分に一致する必要があります。 これは名前が一致し、"*なおかつ*" 同じラベルの値がすべて一致し、"*なおかつ*" 指定されたエンドポイントから取得されている必要があります。 たとえば、`mem{quantile=0.5,otherLabel=foobar}[http://VeryNoisyModule:9001/metrics]` はセレクター `mem{quantile=0.5,otherLabel=~foo|bar}[http://VeryNoisyModule:9001/metrics]` と一致しません。 複数のセレクターを使用すると、「かつ」のような動作ではなく、「または」のような動作が作成されます。
 
-たとえば、モジュール `module1` のメトリック `mem` にはすべてのタグを許可するが、`module2` の同じメトリックにはタグ `agg=p99` のみを許可するには、`AllowedMetrics` に次のセレクターを追加します。
+たとえば、カスタム メトリック `mem` にはモジュール `module1` のすべてのラベルを許可するが、`module2` の同じメトリックにはラベル `agg=p99` のみを許可するには、`AllowedMetrics` に次のセレクターを追加します。
 
 ```query
 mem{}[http://module1:9001/metrics] mem{agg="p99"}[http://module2:9001/metrics]
 ```
 
-または、メトリック `mem` と `cpu` にすべてのタグまたはエンドポイントを許可するには、`AllowedMetrics` に次を追加します。
+または、すべてのラベルまたはエンドポイントにカスタム メトリック `mem` と `cpu` を許可するには、`AllowedMetrics` に次を追加します。
 
 ```query
 mem cpu
@@ -382,7 +382,7 @@ IoT Hub から Log Analytics にメトリック メッセージを配信する�
 
 IoT Edge デバイスからのメトリックを IoT Central アプリケーションで表示するには:
 
-* **IoT Edge メトリック標準インターフェイス** を継承インターフェイスとして[デバイス テンプレート](../iot-central/core/concepts-device-templates.md)に追加します。
+* **IoT Edge メトリック標準インターフェイス** を継承インターフェイスとして [デバイス テンプレート](../iot-central/core/concepts-device-templates.md)に追加します。
 
     :::image type="content" source="media/how-to-collect-and-transport-metrics/add-metrics-interface.png" alt-text="IoT Edge メトリック標準インターフェイスを追加します。":::
 

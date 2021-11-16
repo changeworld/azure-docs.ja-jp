@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: dc878b0f1a843d8212cd6541338510f8eff4b56c
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5c204a07a0457852d2faefacdd77740f147b9d88
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714947"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225993"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>チュートリアル:IoT Edge デバイスの階層を作成する
 
@@ -78,7 +78,7 @@ IoT Edge デバイスの階層を作成するには、以下のものが必要�
 
    この仮想マシンでは、ユーザーの認証に SSH キーが使用されます。 SSH キーの作成と使用に慣れていない場合は、[Azure の Linux VM に使用する SSH の公開キーと秘密キーの組に関する手順](../virtual-machines/linux/mac-create-ssh-keys.md)に従ってください。
 
-   IoT Edge バージョン 1.2 はこの ARM テンプレートと共にプレインストールされるため、そのアセットを仮想マシンに手動でインストールする必要はありません。 IoT Edge を自分のデバイスにインストールする場合は、[Azure IoT Edge for Linux (バージョン 1.2) のインストール](how-to-install-iot-edge.md)に関するページまたは [IoT Edge のバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関するページを参照してください。
+   IoT Edge バージョン 1.2 はこの ARM テンプレートと共にプレインストールされるため、そのアセットを仮想マシンに手動でインストールする必要はありません。 IoT Edge を自分のデバイスにインストールする場合は、[Azure IoT Edge for Linux (バージョン 1.2) のインストール](how-to-provision-single-device-linux-symmetric.md)に関するページまたは [IoT Edge のバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関するページを参照してください。
 
    この ARM テンプレートを使用して正常に仮想マシンが作成されると、仮想マシンの `SSH` ハンドルと完全修飾ドメイン名 (`FQDN`) が出力されます。 各仮想マシンの SSH ハンドルと FQDN (または IP アドレス) は、この後の手順の構成で使用するため、この情報を記録しておいてください。 サンプル出力を下の図に示します。
 
@@ -151,7 +151,7 @@ IoT Edge デバイスの階層を作成して構成するには、`iotedge-confi
 
    運用環境のシナリオでは、**edgedevices** セクションで階層ツリーを編集して必要な構造を反映することができます。 このチュートリアルの目的では、既定のツリーをそのまま使用します。 デバイスごとに `device_id` フィールドが存在し、そこでデバイスに名前を付けることができます。 また、そのデバイスのデプロイ JSON のパスを指定する `deployment` フィールドもあります。
 
-   IoT Edge デバイスは、Azure portal または Azure Cloud Shell から手動で IoT ハブに登録することもできます。 その方法については、[IoT Edge デバイスの登録方法に関するガイド](how-to-register-device.md)を参照してください。
+   IoT Edge デバイスは、Azure portal、Azure Cloud Shell、または Visual Studio Code を使用して手動で IoT Hub に登録することもできます。 方法については、[Linux IoT Edge デバイスを手動でプロビジョニングする方法に関するエンドツーエンド ガイドの冒頭](how-to-provision-single-device-linux-symmetric.md#register-your-device)を参照してください。
 
    親子関係は手動で定義することもできます。 詳細については、使用法ガイドの「[ゲートウェイ階層を作成する](how-to-connect-downstream-iot-edge-device.md#create-a-gateway-hierarchy)」セクションを参照してください。
 

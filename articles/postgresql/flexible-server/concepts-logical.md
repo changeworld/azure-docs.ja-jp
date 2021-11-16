@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: 5298b572c24d174842da1c9e29b01a1d98f47a39
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 13326622dae32c0ebd8fa86035967d51ab734c2a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387356"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241594"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコード
 
@@ -20,24 +20,24 @@ ms.locfileid: "129387356"
 Azure Database for PostgreSQL - フレキシブル サーバーでは、次の論理データの抽出とレプリケーションの手法がサポートされています。
 1. **論理レプリケーション**
    1. データ オブジェクトをレプリケートする、PostgreSQL の[ネイティブ論理レプリケーション](https://www.postgresql.org/docs/12/logical-replication.html)を使用する。 論理レプリケーションを使用すると、テーブル レベルのデータ レプリケーションなど、データ レプリケーションをきめ細かく制御できます。
-   2. 論理ストリーミング レプリケーションと、データベースの初期スキーマのコピー、TRUNCATE のサポート、DDL のレプリケート機能などの追加機能を提供する [pglogical](https://github.com/2ndQuadrant/pglogical) 拡張機能を使用する。 
+   2. 論理ストリーミング レプリケーションと、データベースの初期スキーマのコピー、TRUNCATE のサポート、DDL のレプリケート機能などの機能をさらに提供する [pglogical](https://github.com/2ndQuadrant/pglogical) 拡張機能を使用する。 
 2. 先書きログ (WAL) の内容を [デコード](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html)することで実施される **論理デコード**。 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの比較
-論理レプリケーションと論理デコードには、似ている点がいくつかあります。 両方とも
-* Postgres からデータをレプリケートできます
-* 変更のソースとして[先書きログ (WAL)](https://www.postgresql.org/docs/current/wal.html) を使用します
+論理レプリケーションと論理デコードには、似ている点がいくつかあります。 両方とも:
+* Postgres からデータをレプリケートできます。
+* 変更のソースとして[先書きログ (WAL)](https://www.postgresql.org/docs/current/wal.html) を使用します。
 * データを送信するために[論理レプリケーション スロット](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html#LOGICALDECODING-REPLICATION-SLOTS)を使用します。 スロットは、変更のストリームを表します。
-* テーブルの [REPLICA IDENTITY プロパティ](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-CREATETABLE-REPLICA-IDENTITY)を使用して、送信できる変更を特定します
-* DDL の変更はレプリケートされません
+* テーブルの [REPLICA IDENTITY プロパティ](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-CREATETABLE-REPLICA-IDENTITY)を使用して、送信できる変更を特定します。
+* DDL の変更はレプリケートされません。
 
 
-2 つのテクノロジには次のような違いがあります。論理レプリケーション 
-* レプリケートするテーブルまたはテーブルのセットを指定できます
-* PostgreSQL のインスタンス間でデータをレプリケートします
+2 つのテクノロジには次のような違いがあります。論理レプリケーション: 
+* レプリケートするテーブルまたはテーブルのセットを指定できます。
+* PostgreSQL のインスタンス間でデータをレプリケートします。
 
-論理デコード 
-* データベース内のすべてのテーブルから変更を抽出します 
+論理デコード:
+* データベース内のすべてのテーブルから変更を抽出します。
 * PostgreSQL のインスタンス間でデータを直接送信することはできません。
 
 >[!NOTE]
@@ -104,7 +104,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
 
 ### <a name="pglogical-extension"></a>pglogical 拡張機能
 
-プロバイダー データベース サーバーとサブスクライバーで pglogical を構成する例を次に示します。 詳細については、[pglogical 拡張機能のドキュメント](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs)を参照してください。 また、上で示した前提条件のタスクを実行してある必要があります。
+プロバイダー データベース サーバーとサブスクライバーで pglogical を構成する例を次に示します。 詳しくは、[pglogical 拡張機能のドキュメント](https://github.com/2ndQuadrant/pglogical#usage)をご覧ください。 また、上で示した前提条件のタスクを実行してある必要があります。
 
 
 1. プロバイダーとサブスクライバー両方のデータベース サーバーのデータベースに、pglogical 拡張機能をインストールします。
@@ -112,7 +112,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
    \C myDB
    CREATE EXTENSION pglogical;
    ```
-2. レプリケーション ユーザーがサーバー管理ユーザー (サーバーを作成したユーザー) 以外の場合は、必ずユーザーに `azure_pg_admin` および `replication` 特権を割り当ててください。 または、管理者ユーザーをレプリケーション ユーザーに付与することもできます。 詳細については、[pglogical のドキュメント](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs/#limitations-and-restrictions)を参照してください。
+2. レプリケーション ユーザーがサーバー管理ユーザー (サーバーを作成したユーザー) 以外の場合は、必ずユーザーに `azure_pg_admin` および `replication` 特権を割り当ててください。 または、管理者ユーザーをレプリケーション ユーザーに付与することもできます。 詳しくは、[pglogical のドキュメント](https://github.com/2ndQuadrant/pglogical#limitations-and-restrictions)をご覧ください。
    ```SQL
    GRANT azure_pg_admin, replication to myUser;
    ```
@@ -243,10 +243,9 @@ SELECT * FROM pg_replication_slots;
 ## <a name="limitations"></a>制限事項
 * [こちら](https://www.postgresql.org/docs/12/logical-replication-restrictions.html)に記載されているように、**論理レプリケーション** の制限が適用されます。
 * **読み取りレプリカ** - Azure Database for PostgreSQL の読み取りレプリカは、現時点では、フレキシブル サーバーではサポートされていません。
-* **スロットと HA フェールオーバー** - プライマリ サーバー上の論理レプリケーション スロットは、セカンダリ AZ 内のスタンバイ サーバーでは使用できません。 これは、サーバーでゾーン冗長高可用性オプションが使用されている場合に当てはまります。 スタンバイ サーバーへのフェールオーバーが発生した場合、論理レプリケーション スロットは、スタンバイ上で使用可能になりません。
+* **スロットと HA フェールオーバー** - プライマリ サーバー上の論理レプリケーション スロットは、セカンダリ AZ 内のスタンバイ サーバーでは使用できません。 この状況は、サーバーでゾーン冗長高可用性オプションが使用されている場合に当てはまります。 スタンバイ サーバーへのフェールオーバーが発生した場合、論理レプリケーション スロットは、スタンバイ上で使用可能になりません。
 
 ## <a name="next-steps"></a>次のステップ
 * [ネットワーク オプション](concepts-networking.md)の詳細を確認する
 * フレキシブル サーバーで使用できる[拡張機能](concepts-extensions.md)について確認する
 * [高可用性](concepts-high-availability.md)の詳細を確認する
-

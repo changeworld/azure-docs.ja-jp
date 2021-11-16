@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/02/2021
 ms.author: duau
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: f25a2f21713684024dcacee18e5666dfbb33a1b2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 921c829cefae8ab4ea96066d70c5d110fc9188f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092672"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451941"
 ---
 # <a name="azure-virtual-network-manager-faq"></a>Azure Virtual Network Manager に関する FAQ
 
@@ -89,15 +89,36 @@ ms.locfileid: "131092672"
 
 はい。既に作成されている既存のピアリングをオーバーライドまたは削除することができます。
 
+### <a name="how-can-i-explicitly-allow-sqlmi-traffic-before-having-deny-rules"></a>SQLMI トラフィックを明示的に許可して、拒否ルールが適用されないようにするにはどうすればよいですか?
+
+Azure SQL Managed Instance には、いくつかのネットワーク要件があります。 セキュリティ管理者のルールによってネットワーク要件がブロックされる可能性がある場合は、以下のサンプル ルールをご使用ください。SQL Managed Instance のトラフィックをブロックする可能性のある拒否ルールよりも高い優先度で SQLMI トラフィックを許可できます。
+
+#### <a name="inbound-rules"></a>受信の規則
+
+| Port | Protocol | source | 宛先 | アクション |
+| ---- | -------- | ------ | ----------- | ------ |
+| 9000、9003、1438、1440、1452 | TCP | SqlManagement | **VirtualNetwork** | Allow |
+| 9000、9003 | TCP | CorpNetSaw | **VirtualNetwork** | Allow |
+| 9000、9003 | TCP | CorpnetPublic | **VirtualNetwork** | Allow |
+| Any | Any | **VirtualNetwork** | **VirtualNetwork** | Allow |
+| Any | Any | **AzureLoadBalancer** | **VirtualNetwork** | Allow |
+
+#### <a name="outbound-rules"></a>アウトバウンド規則
+
+| Port | Protocol | source | 宛先 | アクション |
+| ---- | -------- | ------ | ----------- | ------ |
+| 443、12000 | TCP  | **VirtualNetwork** | AzureCloud | Allow |
+| Any | Any | **VirtualNetwork** | **VirtualNetwork** | Allow |
+
 ## <a name="limits"></a>制限
 
 ### <a name="what-are-the-service-limitation-of-azure-virtual-network-manager"></a>Azure Virtual Network Manager のサービス制限とは何ですか?
 
-* ハブおよびスポーク トポロジのハブは、最大 500 のスポークとピアリングできます。 
+* ハブおよびスポーク トポロジのハブは、最大 250 のスポークとピアリングできます。 
+
+* メッシュ トポロジには、最大 250 の仮想ネットワークを含めることができます。
 
 * 仮想ネットワーク内のサブネットは、メッシュ構成内に同じアドレス空間を持っている場合、相互に通信することができません。 
-
-* Azure Virtual Network Manager では、特定の仮想ネットワークのすべての接続構成で 500 の仮想ネットワーク ピアリング接続のみが許可されます。 レガシ ピアリングを独自に管理することもできます。 
 
 * すべての管理者規則を組み合わせた IP プレフィックスの最大数は 1000 です。 
 
@@ -105,8 +126,8 @@ ms.locfileid: "131092672"
 
 * Azure Virtual Network Manager のパブリック プレビューでは、テナント間のサポートは提供されていません。
 
-* 仮想ネットワークは、最大で 5 つのメッシュ構成に属することができます。 
+* 仮想ネットワークは、最大で 2 つのメッシュ構成に属することができます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure portal を使用して [Azure Virtual Network Manager](create-virtual-network-manager-portal.md) インスタンスを作成します。

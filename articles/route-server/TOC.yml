@@ -31,6 +31,8 @@
       href: expressroute-vpn-support.md
     - name: デュアルホーム ネットワーク
       href: about-dual-homed-network.md
+    - name: パスの選択
+      href: path-selection.md
 - name: 操作方法ガイド
   items:
     - name: Route Server の問題のトラブルシューティング

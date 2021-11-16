@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 6a56d8135a55b472f282781bbf50af5726d18785
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: f17e7e0d5a42b3926f85c39cd424c8ffc8e00c03
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036134"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451922"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 

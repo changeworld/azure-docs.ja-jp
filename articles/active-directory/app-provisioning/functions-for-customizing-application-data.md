@@ -1,7 +1,6 @@
 ---
 title: Azure Active Directory アプリケーションのプロビジョニングで属性マッピングの式を記述するためのリファレンス
 description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。 関数の参照一覧が含まれています。
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.topic: reference
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2962c033ee42b91913324f22dbba3ca3cae49fdf
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 83b6e19a1e67e2e7e018aaa43ba4cf6149940ed7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456368"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292682"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory で属性マッピングの式を記述するためのリファレンス
 
@@ -112,7 +111,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** |必須 | expression | 任意の有効な式 |
 
@@ -130,7 +129,7 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は�
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** |必須 | Expression | 日付/時刻を表す任意の有効な文字列。 サポートされている形式については、「[.NET カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 |
 
@@ -416,7 +415,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** | 必須 | Expression | 評価の対象となる式 |
 
@@ -478,7 +477,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -496,7 +495,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -513,7 +512,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -528,7 +527,7 @@ Switch([Active], ,
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[式]** |必須 |Expression |評価の対象となる式 |
 
@@ -734,11 +733,11 @@ Now 関数は、**M/d/yyyy h:mm:ss tt** の形式で現在の UTC DateTime を�
 ### <a name="randomstring"></a>RandomString
 **関数:** RandomString(Length, MinimumNumbers, MinimumSpecialCharacters , MinimumCapital, MinimumLowerCase, CharactersToAvoid)
 
-**説明:** RandomString 関数は、指定された条件に基づいてランダムな文字列を生成します。 使用できる文字は、[こちら](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference)で確認できます。
+**説明:** RandomString 関数は、指定された条件に基づいてランダムな文字列を生成します。 使用できる文字は、[こちら](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference)で確認できます。
 
 **パラメーター:** 
 
-| 名前 | 必須/繰り返し | Type | Notes |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **Length** |必須 |数値 |ランダムな文字列の合計文字数。 MinimumNumbers、MinimumSpecialCharacters、MinimumCapital の合計と同じか、それ以上であることが必要です。 最大 256 文字です。|
 | **MinimumNumbers** |必須 |数値 |ランダムな文字列に含まれる数字の最小文字数。|

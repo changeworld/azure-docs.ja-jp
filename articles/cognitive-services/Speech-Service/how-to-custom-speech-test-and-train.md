@@ -3,20 +3,20 @@ title: Custom Speech 用のデータを準備する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: マイクロソフトの音声認識の正確性をテストする場合、またはカスタム モデルをトレーニングする場合は、オーディオ データとテキスト データが必要です。 このページでは、データ型、使用方法、および管理方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d73f17d3e3eb8d5511dcb98c6a074a73120eaf06
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 645a45ed2ad16abc92b0dded9f1950a3e1ad47d6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080614"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509932"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -52,7 +52,7 @@ ms.locfileid: "131080614"
 | [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-trainingtesting) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [プレーンテキスト](#plain-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
-| [構造化テキスト](#structured-text-data-for-training-public-preview) (パブリック プレビュー) | いいえ | 該当なし | はい | 最大 2000 の項目、最大 50,000 のトレーニング文を含む最大 20 個のクラス |
+| [構造化テキスト](#structured-text-data-for-training-public-preview) (パブリック プレビュー) | いいえ | 該当なし | はい | 最大 4,000 の項目、最大 50,000 のトレーニング文を含む最大 10 個のクラス |
 | [発音](#pronunciation-data-for-training) | いいえ | 該当なし | はい | 1 KB - 1 MB の発音テキスト |
 
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
@@ -192,14 +192,14 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 
 ## <a name="structured-text-data-for-training-public-preview"></a>トレーニング用の構造化テキスト データ (パブリック プレビュー)
 
-多くの場合、予想される発話では特定のパターンに従います。 一般的なパターンの 1 つとして、発話では、リストの単語や語句だけが異なることが挙げられます。 例として、"私は `product` について質問があります。" では、`product` は、可能な製品のリストです。 または、"その `object` を `color` にします" では、`object` はジオメトリック形状のリストで、`color` は色のリストです。 トレーニング データの作成を簡略化し、カスタム言語モデル内でのモデリングを改善できるようにするには、マークダウン形式の構造化テキストを使用して項目のリストを定義してから、トレーニング発話内でそれらを参照できます。 また、マークダウン形式では、単語の発音の指定もサポートされます。 マークダウン形式では、Language Understanding モデル (特に、リスト エンティティと発話の例) のトレーニングに使用される _.lu_ マークダウンとその形式を共有します。 完全な _.lu_ マークダウンの詳細については、「<a href="https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0" target="_blank">.lu ファイル形式</a>」のドキュメントを参照してください。 
+多くの場合、予想される発話では特定のパターンに従います。 一般的なパターンの 1 つとして、発話では、リストの単語や語句だけが異なることが挙げられます。 例として、"私は `product` について質問があります。" では、`product` は、可能な製品のリストです。 または、"その `object` を `color` にします" では、`object` はジオメトリック形状のリストで、`color` は色のリストです。 トレーニング データの作成を簡略化し、カスタム言語モデル内でのモデリングを改善できるようにするには、マークダウン形式の構造化テキストを使用して項目のリストを定義してから、トレーニング発話内でそれらを参照できます。 また、マークダウン形式では、単語の発音の指定もサポートされます。 マークダウン形式では、Language Understanding モデル (特に、リスト エンティティと発話の例) のトレーニングに使用される `.lu` マークダウンとその形式を共有します。 完全な `.lu` マークダウンの詳細については、<a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">`.lu` ファイル形式</a>に関する記事を参照してください。
 
 マークダウン形式の例を次に示します。
 
 ```markdown
 // This is a comment
 
-// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 20 of these
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 10 of these
 @ list food =
 - pizza
 - burger

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: thwimmer
-ms.openlocfilehash: 50ac8f30f4b0f9ad04b76710958772dfec458c28
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 14f075c0e721a61237e85311e894a928865698c6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989970"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440846"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>チュートリアル:iPass SmartConnect を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -34,10 +34,6 @@ ms.locfileid: "131989970"
 * Azure AD テナント。
 * [iPass SmartConnect テナント](https://www.ipass.com/buy-ipass/)。
 * Admin アクセス許可がある iPass SmartConnect のユーザー アカウント。
-
-> [!NOTE]
-> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
-
 
 ## <a name="assigning-users-to-ipass-smartconnect"></a>ユーザーを iPass SmartConnect に割り当てる
 

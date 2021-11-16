@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 9312c481e8d8196feb593bd5bb817f60e875a361
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 3654f06c40f3d16783c8e5dca94b51a510295ad4
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132294670"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>チュートリアル: Azure Active Directory と LaunchDarkly の統合
 
@@ -163,4 +163,4 @@ LaunchDarkly に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-LaunchDarkly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+LaunchDarkly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -3,17 +3,17 @@ title: Azure EA 契約と修正
 description: この記事では、Azure EA 契約と修正が Azure EA Portal の使用にどのように影響するかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: 200b71b84bd4c09e40b7c19426b9f1e1d09bf943
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778221"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247423"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -33,7 +33,7 @@ ms.locfileid: "104778221"
 
 **保留中** - 登録管理者は Azure EA Portal にサインインする必要があります。 サインインすると、登録が **アクティブ** な状態に切り替わります。
 
-**アクティブ** - 登録にアクセスして使用できます。 Azure EA Portal で、アカウントとサブスクリプションを作成できます。 登録は、Enterprise Agreement の終了日までアクティブな状態が維持されます。
+**アクティブ** - 登録にアクセスして使用できます。 Azure EA Portal で、アカウントとサブスクリプションを作成できます。 直接契約の顧客は、部署、アカウント、サブスクリプションを [Azure portal](https://portal.azure.com) で作成できます。 登録は、Enterprise Agreement の終了日までアクティブな状態が維持されます。 
 
 **無期限の延長期間** - エンタープライズ契約の終了日に達した後、無期限の延長期間の状態になります。 EA 登録がエンタープライズ契約の終了日に達する前に、登録管理者が次のことを決定する必要があります。
 
@@ -168,6 +168,8 @@ Microsoft は、購入した月間前払いに含まれる利用に関連する�
 1. 右上隅にある [ダウンロード] アイコンをクリックします。
 1. [含まれている数量] 列のフィルターを使用して対応するプラン SKU の部品番号を見つけ、"0" より大きい値を選択します。
 
+直接契約の顧客は、Azure portal で価格表を見ることができます。 [Azure portal で価格表を見る方法](ea-pricing.md#download-pricing-for-an-enterprise-agreement)に関する記事をご覧ください。
+
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>既存/新規のアカウント所有者による新しいサブスクリプションの作成
 
 **ステップ 1:アカウントにサインインする**
@@ -190,6 +192,8 @@ Microsoft は、購入した月間前払いに含まれる利用に関連する�
 新しいサブスクリプションがサブスクリプション リストに反映されるまで、最大 24 時間かかることがあります。
 
 サブスクリプションを表示して管理できるのは、アカウント所有者だけです。
+
+直接契約の顧客は、Azure portal でサブスクリプションの作成、編集ができます。 [Azure portal でサブスクリプションを管理する方法](direct-ea-administration.md#create-a-subscription)に関するセクションをご覧ください。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 

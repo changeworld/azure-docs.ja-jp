@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: b39616ea0270615db618b8097a28b67f2cff45e5
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 329121332449316f3582ee38c11ad843b25ab812
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132311561"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054127"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と cloudtamer.io の統合
 
@@ -217,4 +217,4 @@ cloudtamer.io に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-cloudtamer.io を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+cloudtamer.io を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

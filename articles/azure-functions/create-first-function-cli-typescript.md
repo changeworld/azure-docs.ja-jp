@@ -4,12 +4,12 @@ description: コマンド ラインから TypeScript 関数を作成し、ロー
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b015f74b0477cbd46ae56eb1e452c462e1cd9a13
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: debbadadf5b21ac4fd6dbc2742ff7a2371b8d3f6
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039394"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026579"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に TypeScript 関数を作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "131039394"
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 4.x。
 
 + 次のいずれかのツール。Azure リソースの作成に使用します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "131039394"
 
     + Azure [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 5.9.0 以降。
 
-+ [Node.js](https://nodejs.org/) アクティブ LTS およびメンテナンス LTS バージョン (8.11.1 および 10.14.1 を推奨)。
++ [Node.js](https://nodejs.org/) バージョン 14。 
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 
@@ -43,7 +43,7 @@ ms.locfileid: "131039394"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `az --version` を実行して、Azure CLI バージョンが 2.4 以降であることを確認します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "131039394"
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。
 

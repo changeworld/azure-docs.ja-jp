@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: cynthn
 ms.custom: portal
-ms.openlocfilehash: 7b733043a6b9a8e68aad94aaa57baf5c4d3fd2aa
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: e28ec0a10431316f7c5658ec006a7136f5388ff3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128914"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444613"
 ---
 # <a name="remove-machine-specific-information-by-generalizing-a-vm-before-creating-an-image"></a>イメージ作成前に VM を一般化し、マシン固有の情報を削除します。
 
-一般化されたイメージを作成する希望が特にないのであれば、[Shared Image Gallery](shared-image-galleries.md#generalized-and-specialized-images) でイメージを作成するとき、VM を一般化する必要はありません。 ギャラリーの外でマネージド イメージを作成するとき、一般化が必要になります。
+一般化されたイメージを作成する希望が特にないのであれば、[Azure Compute Gallery](shared-image-galleries.md#generalized-and-specialized-images) でイメージを作成するとき、VM を一般化する必要はありません。 ギャラリーの外でマネージド イメージを作成するとき、一般化が必要になります。
 
 一般化でマシン固有の情報が削除され、複数の VM 作成にイメージを使用できます。 VM が一般化されたら、起動シーケンスを正しく設定できるよう、VM が一般化されたことをプラットフォームに認識させる必要があります。 VM が一般化されたら、再起動しないでください。
 

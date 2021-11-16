@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/18/2021
 ms.author: duau
-ms.openlocfilehash: 448438fd5bde23d3518099715f41a4a9739f4815
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: da3be1f9fbfc2872c31ed4f40d01a1d38ef300ef
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132135853"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477877"
 ---
 # <a name="configure-custom-bgp-communities-for-azure-expressroute-private-peering-preview"></a>Azure ExpressRoute プライベート ピアリングのカスタム BGP コミュニティを構成する (プレビュー)
 
@@ -85,13 +85,13 @@ BGP コミュニティは、コミュニティ値でタグ付けされた IP プ
         Name = 'myVirtualNetwork'
         ResourceGroupName = 'myERRG'
     } 
-    $vnet = Get-AzVirtualNetwork @virtualnetwork
+    $vnet = Get-AzVirtualNewtork @virtualnetwork
     ```
 
 1. 対象の仮想ネットワークの `VirtualNetworkCommunity` 値を更新します。
 
     ```azurepowershell-interactive
-    $vnet.BgpCommunities = @{VirtualNetworkCommunity = '12076:20002'}
+    $vnet.BgpCommunities.VirtualNetworkCommunity = '12076:20002'
     $vnet | Set-AzVirtualNetwork
     ```
 
@@ -113,7 +113,7 @@ BGP コミュニティは、コミュニティ値でタグ付けされた IP プ
 >  既存の仮想ネットワークが既に ExpressRoute 回線に接続されている場合は、カスタム BGP コミュニティ値を適用した後、ExpressRoute 接続を削除して再作成する必要があります。 詳細については、[仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)方法に関するページを参照してください。
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)。
 - [ネットワーク パフォーマンスのトラブルシューティング](expressroute-troubleshooting-network-performance.md)

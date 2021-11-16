@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: c257941079c3a43639337dd1b010002ddac4672e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0e7e2da03d90f4111601871db7085749f9efc75a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122652217"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457356"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する 
+# <a name="set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、Azure Portal を使用して Azure Database for MySQL のアラートを設定する方法について説明します。 お使いの Azure のサービスの監視メトリックに基づいてアラートを受け取ることができます。
 
@@ -54,14 +51,14 @@ ms.locfileid: "122652217"
 12. アラートに関する通知を受け取るための新しいアクション グループを作成することもできます。 詳細については、[アクション グループの作成と管理](../../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 13. 新しいアクション グループを作成するには、 **[+ アクション グループの作成]** を選択します。 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[アクション グループ名]** 、 **[表示名]** を使用して、[アクション グループの作成] フォームに入力します。
 14. アクショングループの **[通知]** を構成します。
-    
+
     **[通知の種類]** で、[電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。 電子メールを送信するための **Azure Resource Manager ロール** を選択します。
     また、**電子メール/SMS メッセージ/プッシュ/音声** を選択して、特定の受信者に通知を送信することもできます。
 
     通知の種類に **[名前]** を指定し、完了したら **[確認および作成]** を選択します。
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Action group":::-->
-    
+
 15. **[アラート ルール名]** 、 **[説明]** 、 **[リソース グループにアラート ルールを保存します]** 、および **[重大度]** などの **[アラート ルールの詳細]** を入力します。
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Action group":::-->

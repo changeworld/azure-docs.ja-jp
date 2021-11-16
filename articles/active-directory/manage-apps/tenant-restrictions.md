@@ -12,12 +12,12 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5cdbbe4955063d6a241949be14cd7dcd0af0a5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 2838c6be64718669fb03b3a04dbbea41e5de8c19
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997518"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841830"
 ---
 # <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントへのアクセスを制限する
 
@@ -78,7 +78,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各送
 
 - *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<permitted tenant list\> の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントとディレクトリ ID 自体を識別できます。 テナントを記述する 3 つのすべての方法の例として、Contoso、Fabrikam、および Microsoft を許可する名前と値のペアは、`Restrict-Access-To-Tenants: contoso.com,fabrikam.onmicrosoft.com,72f988bf-86f1-41af-91ab-2d7cd011db47` のようになります。
 
-- *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  これらの認証のログを取得するには、このスポットで独自のディレクトリ ID を使用する **必要があります**。
+- *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。 これらの認証のログを取得するには、ここで独自のディレクトリ ID を使用する *必要があります*。 独自のディレクトリ ID 以外の ID を使用する場合、これらのサインインログは他のユーザーのテナントに表示 *され*、すべての個人情報が削除されます。 詳細については、[管理者向けエクスペリエンス](#admin-experience)に関する記事を参照してください。
 
 > [!TIP]
 > ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。

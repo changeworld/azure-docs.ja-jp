@@ -1,26 +1,27 @@
 ---
 title: ARM テンプレート デプロイのトラブルシューティング
-description: Azure Resource Manager テンプレート (ARM テンプレート) のデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
-ms.date: 11/01/2021
+description: Azure Resource Manager テンプレート (ARM テンプレート) デプロイのトラブルシューティング方法について説明します。
+ms.date: 11/04/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b2dae6d4f90410b8ce1f8fc455aa95ede0ab0d3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 561fab9d7a94bb4eb97d59fcae835dd8cc72a778
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091410"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849520"
 ---
 # <a name="quickstart-troubleshoot-arm-template-deployments"></a>クイックスタート: ARM テンプレート デプロイのトラブルシューティング
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) デプロイ エラーのトラブルシューティング方法について説明します。 2 つのエラーがあるテンプレートを設定し、アクティビティ ログとデプロイ履歴を使用してエラーを修正する方法について説明します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) デプロイ エラーのトラブルシューティング方法について説明します。 エラーを含むテンプレートを設定し、エラーを修正する方法を学びます。
 
-テンプレート デプロイに関連するエラーには、次の 2 種類があります。
+デプロイに関するエラーには 3 種類あります。
 
-- **検証エラー** デプロイ開始前に、ファイル中の構文エラーによって発生します。
-- **デプロイ エラー** デプロイ プロセス中に発生し、API バージョンなどの正しくない値が原因で起きる場合があります。
+- **検証エラー** デプロイ開始前に、ファイル中の構文エラーによって発生します。 これらのエラーはエディターで特定できます。
+- **プレフライト検証エラー** は、デプロイ コマンドが実行されてもリソースがデプロイされない場合に発生します。 これらのエラーは、デプロイを開始しなくても検出されます。 たとえば、パラメーターの値が正しくない場合は、プレフライト検証でエラーが検出されます。
+- **デプロイ エラー** デプロイのプロセスで発生し、デプロイの進行状況を確認することでのみ検出できます。
 
-この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーもアクティビティ ログに表示されます。 検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
+どの種類のエラーでも、デプロイのトラブルシューティングに使用できるエラー コードが出力されます。 検証とプレフライトのエラーはアクティビティ ログに表示されますが、デプロイ履歴には表示されません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,21 +29,170 @@ ms.locfileid: "131091410"
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 - [Visual Studio Code](https://code.visualstudio.com/) と最新の [Azure Resource Manager ツール拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)。
-- [Azure Cloud Shell](../templates/deploy-cloud-shell.md#deploy-local-template) を使用してローカル テンプレートをデプロイする方法を確認してください。
+- 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 
 ## <a name="create-a-template-with-errors"></a>エラーがあるテンプレートの作成
 
-次のテンプレートには、検証エラーとデプロイ エラーが含まれています。 ストレージ アカウントをデプロイできるように、テンプレートのエラーをトラブルシューティングし、修正します。
-
-サンプル テンプレートの両方のエラーが、次の行にあります。
+次のテンプレートをコピーしてローカルに保存します。 このファイルを使用して、検証エラー、プレフライト エラー、デプロイ エラーのトラブルシューティングを行います。 このクイックスタートでは、ファイルに _troubleshoot.json_ という名前を付けていますが、任意の名前を使用できます。
 
 ```json
-"apiVersion1": "2018-07-02",
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameterss": {
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ]
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "prefixName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "storageAccountName": "[concat(parameters('prefixName'), uniquestring(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {}
+    }
+  ],
+  "outputs": {
+    "storageAccountName": {
+      "type": "string",
+      "value": "[variables('storageAccountName')]"
+    },
+    "vnetResult": {
+      "type": "object",
+      "value": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'doesnotexist'), '2021-03-01', 'Full')]"
+    }
+  }
+}
 ```
 
-1. Visual Studio Code を開き、 **[ファイル]**  >  **[新しいファイル]** の順に選択します。
-1. テンプレートをコピーするには、 **[コピー]** を選択し、新しいファイルに貼り付けます。
-1. **[ファイル]**  >  **[名前を付けて保存]** の順に選択し、ファイルに _azuredeploy.json_ という名前を付けて、自分のローカル コンピューターに保存します。
+## <a name="fix-validation-error"></a>検証エラーを修正する
+
+Visual Studio Code でファイルを開きます。 `parameterss:` の下の波線はエラーを示しています。 エラーにカーソルを合わせると、検証エラーが表示されます。
+
+:::image type="content" source="media/quickstart-troubleshoot-arm-deployment/validation-error.png" alt-text="Visual Studio Code でのテンプレートの検証エラーのスクリーンショット。":::
+
+`variables` と `resources` に _undefined parameter reference_ のエラーがあるのがわかります。
+
+:::image type="content" source="media/quickstart-troubleshoot-arm-deployment/validation-undefined-parameter.png" alt-text="undefined parameter reference エラーを示す Visual Studio Code のスクリーンショット。":::
+
+このすべてのエラーは、要素名のスペルが正しくないために発生します。
+
+```json
+"parameterss": {
+```
+
+エラー メッセージは、_Template validation failed: Could not find member 'parameterss' on object of type 'Template'. Path 'parameterss', line 4, position 16_ となっています。
+
+[parameters](../templates/syntax.md#parameters) の ARM テンプレート構文は、`parameters` が正しい要素名であることを示しています。
+
+検証エラーと _undefined parameter reference_ エラーを修正するにはスペルを修正し、ファイルを保存します。
+
+```json
+"parameters": {
+```
+
+## <a name="fix-preflight-error"></a>プレフライト エラーを修正する
+
+プレフライト検証エラーを作成するには、`prefixName` パラメーターに正しくない値を使用します。
+
+このクイックスタートではリソース グループ名に _troubleshootRG_ を使用していますが、任意の名前を使用できます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group create --name troubleshootRG --location westus
+az deployment group create \
+  --resource-group troubleshootRG \
+  --template-file troubleshoot.json \
+  --parameters prefixName=long!!StoragePrefix
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroup -Name troubleshootRG -Location westus
+New-AzResourceGroupDeployment `
+  -ResourceGroupName troubleshootRG `
+  -TemplateFile troubleshoot.json `
+  -prefixName long!!StoragePrefix
+```
+
+---
+
+テンプレートはプレフライト検証に失敗し、デプロイが実行されません。 `prefixName` が 11 文字を超え、特殊文字と大文字を含んでいます。
+
+ストレージ名は 3 から 24 文字までとし、小文字と数字のみを使用する必要があります。 プレフィックス値によって無効なストレージ名が作成されました。 詳細については、「[ストレージ アカウント名のエラーの解決](error-storage-account-name.md)」を参照してください。 プレフライト エラーを修正するには、使用するプレフィックスを 11 文字以下にし、小文字または数字のみを含めます。
+
+デプロイが実行されなかったため、デプロイ履歴はありません。
+
+:::image type="content" source="media/quickstart-troubleshoot-arm-deployment/preflight-no-deploy.png" alt-text="プレフライト エラーのためにデプロイが実行されなかったことを示すリソース グループの概要のスクリーンショット。":::
+
+アクティビティ ログにプレフライト エラーが表示されます。 ログを選択するとエラーの詳細が表示されます。
+
+:::image type="content" source="media/quickstart-troubleshoot-arm-deployment/preflight-activity-log.png" alt-text="プレフライト エラーが発生しているリソース グループのアクティビティ ログのスクリーンショット。":::
+
+## <a name="fix-deployment-error"></a>デプロイ エラーを修正する
+
+`storage` のような有効なプレフィックス値を使用してデプロイを実行します。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group create --name troubleshootRG --location westus
+az deployment group create \
+  --resource-group troubleshootRG \
+  --template-file troubleshoot.json \
+  --parameters prefixName=storage
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroup -Name troubleshootRG -Location westus
+New-AzResourceGroupDeployment `
+  -ResourceGroupName troubleshootRG `
+  -TemplateFile troubleshoot.json `
+  -prefixName storage
+```
+
+---
+
+デプロイが始まり、デプロイ履歴に表示されます。 `outputs` がリソース グループに存在しない仮想ネットワークを参照しているため、デプロイは失敗します。 ただし、ストレージ アカウントにはエラーがなかったため、リソースはデプロイされました。 デプロイ履歴には、デプロイが失敗したことが表示されます。
+
+:::image type="content" source="media/quickstart-troubleshoot-arm-deployment/deployment-failed.png" alt-text="デプロイの失敗を示すリソース グループの概要のスクリーンショット。":::
+
+デプロイ エラーを修正するには、有効なリソースを使用するように reference 関数を変更します。 詳細については、「[リソースが見つからないエラーを解決する](error-not-found.md)」を参照してください。 このクイック スタートでは、`vnetResult` の前のコンマとすべての `vnetResult` を削除します。 ファイルを保存し、デプロイを再実行します。
+
+```json
+"vnetResult": {
+  "type": "object",
+  "value": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'doesnotexist'), '2021-03-01', 'Full')]"
+}
+```
+
+検証、プレフライト、デプロイのエラーが修正された後、次のテンプレートによってストレージ アカウントがデプロイされます。 デプロイ履歴とアクティビティ ログに、デプロイが成功したことが表示されます。
 
 ```json
 {
@@ -57,26 +207,23 @@ ms.locfileid: "131091410"
         "Standard_GRS",
         "Standard_ZRS",
         "Premium_LRS"
-      ],
-      "metadata": {
-        "description": "Storage Account type"
-      }
+      ]
     },
     "location": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Location for all resources."
-      }
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "prefixName": {
+      "type": "string"
     }
   },
   "variables": {
-    "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+    "storageAccountName": "[concat(parameters('prefixName'), uniquestring(resourceGroup().id))]"
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion1": "2018-07-02",
+      "apiVersion": "2021-04-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -95,174 +242,20 @@ ms.locfileid: "131091410"
 }
 ```
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
-
-テンプレートを Cloud Shell にアップロードし、Azure CLI または Azure PowerShell を使用してデプロイします。
-
-1. [Cloud Shell](https://shell.azure.com) にサインインします。
-1. 左上隅から **[Bash]** または **[PowerShell]** を選択します。
-
-    :::image type="content" source="media/quickstart-troubleshoot-arm-deployment/cloud-shell-upload.png" alt-text="シェルを選択し、ファイルをアップロードするための Azure Cloud Shell のスクリーンショット。":::
-
-1. **[ファイルのアップロード/ダウンロード]** を選択し、_azuredeploy. json_ ファイルをアップロードします。
-1. テンプレートをデプロイするには、次のコマンドをコピーし、シェル ウィンドウに貼り付けます。
-
-    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter a resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    New-AzResourceGroup -Name "$resourceGroupName" -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-    ```azurecli
-    echo "Enter a resource group name:" &&
-    read resourceGroupName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    az group create --name $resourceGroupName --location $location &&
-    az deployment group create --resource-group $resourceGroupName --template-file $HOME/azuredeploy.json &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-    > [!NOTE]
-    > デプロイを実行するのと同じリソース グループ名と場所を使用します。 リソース グループの更新を求めるメッセージが表示されたら、 **[はい]** を選択します。
-
-## <a name="troubleshoot-the-validation-error"></a>検証エラーのトラブルシューティング
-
-検証エラーでは、エラー コードが `InvalidRequestContent` であるエラー メッセージがシェルに表示されます。
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-```Output
-New-AzResourceGroupDeployment: 6:49:10 PM - Error: Code=InvalidRequestContent; Message=The request content
-was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type
-'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 34, position 24.'.
-
-New-AzResourceGroupDeployment: The deployment validation failed
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```Output
-{"error":{"code":"InvalidRequestContent","message":"The request content was invalid and could not be
-deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'.
-Path 'properties.template.resources[0].apiVersion1', line 32, position 20.'."}}
-```
-
----
-
-### <a name="fix-the-validation-error"></a>検証エラーを修正する
-
-エラーの原因は、`apiVersion1` が正しくないことです。 Visual Studio Code を使用して、`apiVersion1` を `apiVersion` に変更し、テンプレートを保存します。 [テンプレートをデプロイする](#deploy-the-template)手順に従ってテンプレートをアップロードし、デプロイを再実行します。
-
-## <a name="troubleshoot-the-deployment-error"></a>デプロイ エラーのトラブルシューティング
-
-デプロイ エラーでは、エラー コードが `NoRegisteredProviderFound` であるエラー メッセージがシェルに表示されます。 リソース グループの **[デプロイ]** と **[アクティビティ ログ]** でもエラーを表示できます。
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-```Output
-New-AzResourceGroupDeployment: 6:51:48 PM - The deployment 'azuredeploy' failed with error(s).
-Showing 1 out of 1 error(s).
-Status Message: No registered resource provider found for location 'centralus' and API version '2018-07-02'
-for type 'storageAccounts'. The supported api-versions are '2021-06-01, 2021-05-01, 2021-04-01, 2021-02-01,
-2021-01-01, 2020-08-01-preview, 2019-06-01, 2019-04-01, 2018-11-01, 2018-07-01, 2018-03-01-preview,
-2018-02-01, 2017-10-01, 2017-06-01, 2016-12-01, 2016-05-01, 2016-01-01, 2015-06-15, 2015-05-01-preview'.
-The supported locations are 'eastus, eastus2, westus, westeurope, eastasia, southeastasia, japaneast,
-japanwest, northcentralus, southcentralus, centralus, northeurope, brazilsouth, australiaeast,
-australiasoutheast, southindia, centralindia, westindia, canadaeast, canadacentral, westus2, westcentralus,
-uksouth, ukwest, koreacentral, koreasouth, francecentral, australiacentral, southafricanorth, uaenorth,
-switzerlandnorth, germanywestcentral, norwayeast, westus3, jioindiawest'.
-(Code:NoRegisteredProviderFound)
-CorrelationId: 11111111-1111-1111-1111-111111111111
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```Output
-{"status":"Failed","error":{"code":"DeploymentFailed","message":"At least one resource deployment operation
-failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage
-details.", "details":[{"code":"BadRequest","message":"{\r\n  \"error\": {\r\n
-\"code\": \"NoRegisteredProviderFound\", \r\n    \"message\": \"No registered resource provider found for
-location 'centralus' and API version '2018-07-02' for type 'storageAccounts'. The supported api-versions
-are '2021-06-01, 2021-05-01, 2021-04-01, 2021-02-01, 2021-01-01, 2020-08-01-preview, 2019-06-01,
-2019-04-01, 2018-11-01, 2018-07-01, 2018-03-01-preview, 2018-02-01, 2017-10-01, 2017-06-01, 2016-12-01,
-2016-05-01, 2016-01-01, 2015-06-15, 2015-05-01-preview'.
-The supported locations are 'eastus, eastus2, westus, westeurope, eastasia, southeastasia, japaneast,
-japanwest, northcentralus, southcentralus, centralus, northeurope, brazilsouth, australiaeast,
-australiasoutheast, southindia, centralindia, westindia, canadaeast, canadacentral, westus2, westcentralus,
-uksouth, ukwest, koreacentral, koreasouth, francecentral, australiacentral, southafricanorth, uaenorth,
-switzerlandnorth, germanywestcentral, norwayeast, westus3, jioindiawest'.\"\r\n  }\r\n}"}]}}
-```
-
----
-
-### <a name="deployments"></a>デプロイメント
-
-デプロイ エラーは、次の手順を使用して、Azure portal で表示できます。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 検索ボックスに「_リソース グループ_」と入力し、 **[リソース グループ]** を選択します。
-
-    :::image type="content" source="./media/quickstart-troubleshoot-arm-deployment/search-box.png" alt-text="Azure portal の検索ボックスのスクリーンショット。":::
-
-1. デプロイのリソース グループ名を選択します。
-1. **[概要]** に移動し、リンク **[1 失敗]** を選択します。
-
-    :::image type="content" source="./media/quickstart-troubleshoot-arm-deployment/arm-template-deployment-error.png" alt-text="失敗したデプロイへのリンクが強調表示されているスクリーンショット。":::
-
-1. **[デプロイ]** で **[エラーの詳細]** を選択します。
-
-    :::image type="content" source="./media/quickstart-troubleshoot-arm-deployment/arm-template-deployment-error-details.png" alt-text="エラーの詳細への、失敗したデプロイのリンクのスクリーンショット。":::
-
-    エラー メッセージは、デプロイ コマンドの出力と同じです。
-
-    :::image type="content" source="./media/quickstart-troubleshoot-arm-deployment/arm-template-deployment-error-summary.png" alt-text="デプロイ エラーの詳細のスクリーンショット。":::
-
-### <a name="activity-log"></a>アクティビティ ログ
-
-リソース グループのアクティビティ ログでエラーを見つけることもできます。 アクティビティ ログに最新のデプロイ情報が表示されるまでに、数分かかります。
-
-1. リソース グループで、 **[アクティビティ ログ]** を選択します。
-1. ログを見つけ、表示するログを選択するには、フィルターを使用します。
-
-    :::image type="content" source="./media/quickstart-troubleshoot-arm-deployment/arm-template-deployment-activity-log.png" alt-text="失敗したデプロイが強調表示されている、リソース グループのアクティビティ ログのスクリーンショット。":::
-
-1. ログを選択すると、詳細が表示されます。
-
-    :::image type="content" source="./media/quickstart-troubleshoot-arm-deployment/arm-template-deployment-activity-log-details.png" alt-text="失敗したデプロイのエラー メッセージを示す、アクティビティ ログの詳細のスクリーンショット。":::
-
-### <a name="fix-the-deployment-error"></a>デプロイ エラーの修正
-
-**"登録済みのリソース プロバイダーが見つかりませんでした"** というデプロイ エラーは、正しくない API バージョンによって発生します。 Visual Studio Code を使用して API バージョンを `2021-04-01` などの有効な値に変更し、テンプレートを保存します。 [テンプレートをデプロイする](#deploy-the-template)手順に従ってテンプレートをアップロードし、デプロイを再実行します。
-
-検証エラーとデプロイ エラーを修正すると、ストレージ アカウントが作成されます。 リソース グループの **[概要]** に移動し、リソースを表示します。 **[デプロイ]** と **[アクティビティ ログ]** に、成功したデプロイが表示されます。
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure リソースが必要なくなったときは、リソース グループを削除します。 リソース グループは Cloud Shell かポータルで削除できます。
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-山かっこを含めて、`<rgname>` をリソース グループ名に置き換えてください。
-
-```azurepowershell
-Remove-AzResourceGroup -Name <rgname>
-```
+Azure リソースが必要なくなったときは、リソース グループを削除します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-山かっこを含めて、`<rgname>` をリソース グループ名に置き換えてください。
-
 ```azurecli
-az group delete --name <rgname>
+az group delete --name troubleshootRG
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name troubleshootRG
 ```
 
 ---

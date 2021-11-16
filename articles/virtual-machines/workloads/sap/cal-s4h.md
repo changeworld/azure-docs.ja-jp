@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/26/2021
 ms.author: hobruche
-ms.openlocfilehash: 71dde25230c2a474a42872f7b2830c60439738c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0fff7d57e8a7dfa312b16accd15ef5990cdedf15
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630776"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853626"
 ---
 # <a name="sap-cloud-appliance-library"></a>SAP Cloud Appliance Library
 
@@ -37,6 +37,8 @@ ms.locfileid: "128630776"
 |このアプライアンスには SAP S/4HANA 2020 (FPS01) が含まれていて、SAP S/4HANA コア機能向けの SAP Best Practices のほか、サービス、マスター データ管理 (MDG)、輸送管理 (TM)、ポートフォリオ管理 (PPM)、人材管理 (HCM)、分析、移行コックピットなど、その他のシナリオが事前にアクティブ化されています。 ユーザー アクセスは、SAP Fiori、SAP GUI、SAP HANA Studio、Windows リモート デスクトップ、または完全な管理者アクセス用のバックエンド オペレーティング システムを介して行われます。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/a0b63a18-0fd3-4d88-bbb9-4f02c13dc343) | 
 | **SAP S/4HANA 2020 FPS02** 2021 年 6 月 10 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=c7cff775-cbf7-4cd1-a907-6eeca95a0946&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 | このソリューションは、フロントエンド アクセスを容易にするリモート デスクトップが含まれた標準の S/4HANA システム インストールとして提供されます。 これには、クライアント 100 で事前構成およびアクティブ化された SAP S/4HANA Fiori UI が含まれています。必須コンポーネントは SAP ノート 3045635「SAP S/4HANA 2020 FPS02 での SAP Fiori の高速アクティブ化」に従ってアクティブ化されています。 詳細については、リンクを参照してください。 | [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/c7cff775-cbf7-4cd1-a907-6eeca95a0946) | 
+| **IDES EHP8 FOR SAP ERP 6.0 on SAP ASE、2021 年 6 月** 2021 年 6 月 10 日  | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=ed55a454-0b10-47c5-8644-475ecb8988a0&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|IDES システムは、SAP 内部デモ システムのコピーであり、カスタマイズとテストのためのプレイグラウンドとして使用されます。 この IDES システムは、SAP S/4HANA Fully-Activated Appliance (2020 FPS01 以上) のデータ移行シナリオでソース システムとして特に使用できます。 その他に、事前定義済みのマスター データとトランザクション データに基づく標準的なビジネス シナリオが含まれます。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/ed55a454-0b10-47c5-8644-475ecb8988a0) |
 | **SAP BW/4HANA 2.0 SP07 including BW/4HANA Content 2.0 SP06** 2020 年 2 月 24 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=0f2f20f4-d012-4f76-81af-6ff15063db66&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |このソリューションは、SAP BW/4HANA の分析情報を提供します。 SAP BW/4HANA は、HANA 向けに最適化された次世代のデータ ウェアハウスです。 このソリューションは基本の BW/4HANA オプションに加え、HANA に対して最適化された一連の BW/4HANA コンテンツと、SAP Data Warehouse Cloud による次段階のハイブリッド シナリオを提供します。 システムが事前構成済みのため、シナリオの実装を直接開始できます。| [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/0f2f20f4-d012-4f76-81af-6ff15063db66) | 
 | **SAP Business One 10.0 PL02, version for SAP HANA** 2020 年 8 月 4 日  | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=371edc8c-56c6-4d21-acb4-2d734722c712&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
@@ -52,7 +54,18 @@ ms.locfileid: "128630776"
 | **SAP S/4HANA 2020 FPS01 Utilities Trial** 2021 年 7 月 21 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=68785eeb-a228-4aa8-8273-b4c30775590c&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |このソリューションを使用すると、独自の SAP S/4HANA 2020 ユーティリティ システムを作成して、全領域の完全な管理者アクセスなど、ハンズオン エクスペリエンスを実現できます。 厳選されたガイド ツアーは、メータリング データの最適な処理、ロールベースの Fiori ユーザー インターフェイスを介した合理的な請求プロセス、顧客エンゲージメントにおける業界固有のカスタマー サービス管理を理解するのに役立ちます。|  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/68785eeb-a228-4aa8-8273-b4c30775590c)| 
 | **SAP Product Lifecycle Costing 4.0 SP3 Hotfix 2** 2021 年 8 月 1 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=f2bf191a-7efc-48a2-b8ac-51756eb225bc&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
-|SAP Product Lifecycle Costing は、製品ライフサイクルの初期段階において新製品のコストとその他のディメンション、または製品に関する見積もりを計算するためのソリューションです。コスト要因をすばやく特定し、選択肢を容易にシミュレートして比較します。|  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/f2bf191a-7efc-48a2-b8ac-51756eb225bc)| 
+|SAP Product Lifecycle Costing は、製品ライフサイクルの初期段階において新製品のコストとその他のディメンション、または製品に関する見積もりを計算するためのソリューションです。コスト要因をすばやく特定し、選択肢を容易にシミュレートして比較します。|  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/f2bf191a-7efc-48a2-b8ac-51756eb225bc)|
+| **SAP ABAP Platform 1909, Developer Edition** 2021 年 6 月 21 日  | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=7bd4548f-a95b-4ee9-910a-08c74b4f6c37&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|SAP ABAP Platform on SAP HANA では、SAP ABAP Platform 1909 Developer Edition on SAP HANA にアクセスできます。 このソリューションには、多数の追加要素 (SAP ABAP RESTful Application Programming Model、SAP Fiori Launchpad、SAP gCTS、SAP ABAP Test Cockpit、事前構成済みのフロントエンド/バックエンド接続など) が事前構成されています。また、すべての標準 ABAP AS インフラストラクチャ (トランザクション管理、データベース操作/永続化、Change and Transport System、SAP ゲートウェイ、ABAP Development Toolkit との相互運用性、SAP WebIDE など) も含まれます。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/7bd4548f-a95b-4ee9-910a-08c74b4f6c37) |
+| **1: SAP ERP ソース システム (openSAP)** 2021 年 9 月 17 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=1a3556c0-0ee1-4a4c-8a5a-db08173df293&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|SAP ERP から SAP S/4HANA 初期状態へのシステム変換を実行するためのソリューション 1。 これは、SAP EHP6 for SAP ERP 6.0 SPS13 から SAP S/4HANA 2020 FPS00 への変換のために、テストされ準備されています。 |  [詳細]( https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/1a3556c0-0ee1-4a4c-8a5a-db08173df293) |
+| **2: 準備手順の後、ソフトウェア更新マネージャー (openSAP) を実行する前の SAP ERP ソース システム** 2021 年 10 月 17 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=5eb92a4d-a704-48b8-b060-0647c63b667c&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|準備手順の後、ソフトウェア更新マネージャーを実行する前に SAP ERP から SAP S/4HANA へのシステム変換を実行するためのソリューション 2。 これは、SAP EHP6 for SAP ERP 6.0 SPS13 から SAP S/4HANA 2020 FPS00 への変換のために、テストされ準備されています。 |  [詳細]( https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/5eb92a4d-a704-48b8-b060-0647c63b667c) |
+| **3. 技術変換の後、追加構成の前の SAP S/4HANA ターゲット システム** 2021 年 9 月 22 日  | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=4336a3fb-2fc9-4a93-9500-c65101ffc9d7&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|追加構成の前、SAP ERP から SAP S/4HANA への技術システム変換を実行した後のソリューション 3。 これは、SAP EHP6 for SAP ERP 6.0 SPS13 から SAP S/4HANA 2020 FPS00 への変換のために、テストされ準備されています。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/4336a3fb-2fc9-4a93-9500-c65101ffc9d7) |
+| **4: 追加構成を含む SAP S/4HANA ターゲット システム (openSAP)** 2021 年 10 月 17 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=f48f2b77-389f-488b-be2b-1c14a86b2e69&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|追加構成を含む SAP ERP から SAP S/4HANA への技術システム変換を実行した後のソリューション 4。 これは、SAP EHP6 for SAP ERP 6.0 SPS13 から SAP S/4HANA 2020 FPS00 への変換のために、テストされ準備されています。 |  [詳細]( https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/f48f2b77-389f-488b-be2b-1c14a86b2e69) |
+ 
 
 
 

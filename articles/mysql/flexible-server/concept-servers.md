@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: c368e94d8d2b07e3d1487d1b6e505d2a87a89e91
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ea421471de279edc512c22c80d21daeebec106fe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994083"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468216"
 ---
-# <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのサーバーの概念
+# <a name="server-concepts-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーでのサーバーの概念
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT] 
-> Azure Database for MySQL フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
 
 この記事では、Azure Database for MySQL フレキシブル サーバーの使用に関する考慮事項とガイドラインを示します。
 
@@ -63,7 +60,7 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
 |*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
-|*mysql.az_load_timezone*|該当なし|なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
+|*mysql.az_load_timezone*|該当なし|該当なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
 
 
 ## <a name="next-steps"></a>次のステップ

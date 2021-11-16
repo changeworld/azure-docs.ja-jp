@@ -9,12 +9,12 @@ metadata:
   author: johnkemnetz
   ms.author: johnkem
   ms.date: 08/24/2021
-  ms.openlocfilehash: 5d4f68ac59b001886636f9a2ddb4214e17ffebe9
-  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+  ms.openlocfilehash: 776dd66dddd2e781b3c78ae8bfd0823215332d59
+  ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 11/12/2021
-  ms.locfileid: "132372532"
+  ms.locfileid: "132401879"
 landingContent:
 - title: Azure Chaos Studio について
   linkLists:
@@ -24,9 +24,21 @@ landingContent:
       url: chaos-studio-overview.md
     - text: カオス エンジニアリングとは
       url: chaos-studio-chaos-engineering-overview.md
+  - linkListType: concept
+    links:
+    - text: カオス実験
+      url: chaos-studio-chaos-experiments.md
+    - text: ターゲットと機能
+      url: chaos-studio-targets-capabilities.md
+    - text: 許可とセキュリティ
+      url: chaos-studio-permissions-security.md
 - title: はじめに
   linkLists:
-  - linkListType: tutorial
+  - linkListType: video
+    links:
+    - text: Chaos Studio の概要
+      url: https://channel9.msdn.com/Shows/Azure-Videos/Azure-Chaos-Studio-Curious-to-control-chaos
+  - linkListType: how-to-guide
     links:
     - text: サービスダイレクト フォールトを使用するカオス実験を作成して、Azure Cosmos DB インスタンスをフェールオーバーする
       url: chaos-studio-tutorial-service-direct-portal.md
@@ -46,3 +58,13 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/chaosstudio
     - text: Python SDK
       url: https://docs.microsoft.com/python/api/azure-mgmt-chaos/?view=azure-python-preview
+- title: サンプル
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: ARM テンプレートを使用して実験を作成する
+      url: sample-template-experiment.md
+    - text: ARM テンプレートを使用してリソースをオンボードする
+      url: sample-template-targets.md
+    - text: REST API のサンプル
+      url: chaos-studio-samples-rest-api.md

@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 04/28/2021
-ms.openlocfilehash: aba57e9ba46faef60f97819fa3de3e89fa94f00e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/01/2021
+ms.openlocfilehash: 51f71bcf39f0b54bf0f7fb389fbbb9797fbb2151
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638131"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469466"
 ---
 # <a name="plan-to-manage-costs-for-azure-data-factory"></a>Azure Data Factory のコストを管理するための計画
 
@@ -73,12 +73,15 @@ Azure Data Factory リソースを作成または使用すると、次の測定�
 
 ### <a name="other-costs-that-might-accrue-with-azure-data-factory"></a>Azure Data Factory で発生する可能性があるその他のコスト
 
-Azure Data Factory のリソースを作成すると、他の Azure サービスのリソースも作成されます。 これには次のようなものがあります。
+Azure Data Factory (ADF) のリソースを作成すると、他の Azure サービスのリソースも作成されます。 これには次のようなものがあります。
 
 - パイプライン アクティビティの実行
 - 外部パイプライン アクティビティの実行
 - データ ファクトリ成果物の作成/編集/取得/監視
-- インスタンスの種類と期間に基づいた SSIS Integration Runtime の期間
+- インスタンスの種類と期間に基づいた SSIS Integration Runtime (IR) の期間
+
+> [!NOTE]
+> ADF とその他の Azure リソースに同じタグを割り当てて、それらを同じカテゴリにまとめ、統合された課金を表示できます。 ADF タグは、その中のすべての SSIS IR に継承されます。 ADF タグを変更する場合は、新しいタグを継承できるようにその中のすべての SSIS IR を停止して再起動する必要があります。[SSIS IR の再構成](manage-azure-ssis-integration-runtime.md#to-reconfigure-an-azure-ssis-ir)に関するセクションを参照してください。
 
 ### <a name="using-azure-prepayment-with-azure-data-factory"></a>Azure Data Factory での Azure 前払いの使用
 

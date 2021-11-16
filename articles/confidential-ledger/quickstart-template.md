@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 04/15/2021
-ms.openlocfilehash: dd6dd17db52ea0ecbd2793f62bf319ce36321f98
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0b393c39940e0912a2497b6efba9ca920ce71fe7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752104"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438837"
 ---
 # <a name="quickstart-create-an-microsoft-azure-confidential-ledger-with-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Microsoft Azure Confidential Ledger を作成する
 
-[Microsoft Azure Confidential Ledger](overview.md) は、機密データ レコードを管理するための、安全性が非常に高い新しいサービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して新しい台帳を作成する方法を説明します。
+[Microsoft Azure Confidential Ledger](overview.md) は、機密データ レコードを管理するための、安全性の高い新しいサービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して新しい台帳を作成する方法を説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -63,7 +63,7 @@ az ad sp list --show-mine -o table
 
 1. 次の値を選択または入力します。
 
-    指定がない場合、既定値を使用して Confidential Ledger を作成してください。
+    指定がない場合は、既定値を使用して Confidential Ledger を作成します。
 
     - **台帳名**: 台帳の名前を選択します。 台帳名はグローバルに一意である必要があります。
     - **[場所]** :場所を選択します。 たとえば、**East US** などとします。
@@ -79,7 +79,7 @@ Azure portal を使用して台帳リソースをチェックできます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Microsoft Azure Confidential Ledger に関するその他の記事は、このクイックスタートに基づいている場合があります。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
+Azure Confidential Ledger に関するその他の記事は、このクイックスタートに基づいている場合があります。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
 
 不要になった場合、リソース グループを削除すれば、台帳リソースも削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには、次を実行します。
 

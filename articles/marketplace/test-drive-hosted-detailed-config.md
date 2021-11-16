@@ -6,17 +6,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 09/27/2021
-ms.openlocfilehash: 320d1b309f49b748e48a7a019c43246e8e5ce7c7
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 10/26/2021
+ms.openlocfilehash: 5fde0e1d9dc78c735ae9e889af5fbd889a588540
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080309"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851023"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>ホストされた体験版の詳細な構成
 
 この記事では、Dynamics 365 for Customer Engagement & Power Apps または Dynamics 365 for Operations 用のホストされた体験版を構成する方法について説明します。
+
+> [!TIP]
+> コマーシャル マーケットプレースでの体験版の顧客のビューを表示するには、「[Azure Marketplace とは](/marketplace/azure-marketplace-overview#take-action-on-a-listing)」や「[Microsoft AppSource とは](/marketplace/appsource-overview)」を参照してください。
 
 ## <a name="configure-for-dynamics-365-customer-engagement--power-apps"></a>Dynamics 365 Customer Engagement & Power Apps 用に構成する
 
@@ -29,7 +32,7 @@ ms.locfileid: "129080309"
 3. 既存の **Dynamics 365 for Customer Engagement & Power Apps** オファーを検索するか、新しい **Dynamics 365 for Customer Engagement & Power Apps** オファーを作成します。
 4. **[オファーのセットアップ]** ページで、 **[体験版を有効にする]** チェック ボックスをオンにし、 **[体験版の種類]** を選択して (下の説明を参照)、 **[下書きの保存]** を選択します。
 
-    [ ![[体験版を有効にする] チェック ボックスをオンにした状態を示しています。](./media/test-drive/enable-test-drive-check-box-workspaces.png) ](./media/test-drive/enable-test-drive-check-box-workspaces.png#lightbox)
+    [![[体験版を有効にする] チェック ボックスをオンにした状態を示しています。](./media/test-drive/enable-test-drive-check-box-workspaces.png)](./media/test-drive/enable-test-drive-check-box-workspaces.png#lightbox)
 
     - **[体験版の種類]** – **[Microsoft Hosted (Dynamics 365 for Customer Engagement & PowerApps)]\(Microsoft ホスト (Dynamics 365 for Customer Engagement & PowerApps)\)** を選択します。 これは、体験版ユーザーのプロビジョニングとプロビジョニング解除を行うサービスが Microsoft によってホストされて管理されることを示します。
 

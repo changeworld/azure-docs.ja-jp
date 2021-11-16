@@ -146,6 +146,8 @@
           href: how-to-appdynamics-java-agent-monitor.md
         - name: アプリのライフサイクル イベントを監視する
           href: monitor-app-lifecycle-events.md
+        - name: カスタム永続ストレージを使用したログバック
+          href: how-to-write-log-to-custom-persistent-storage.md
     - name: ネットワーク
       items:
         - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
@@ -153,7 +155,7 @@
         - name: プライベート ネットワークのアプリケーションにアクセスする
           href: access-app-virtual-network.md
         - name: アプリケーションをインターネットに公開する
-          href: expose-apps-gateway-azure-firewall.md
+          href: expose-apps-gateway.md
         - name: Palo Alto を構成する
           href: how-to-configure-palo-alto.md
         - name: VNET での Azure Spring Cloud の実行に関するお客様の責任

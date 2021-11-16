@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 10/15/2021
 ms.author: barclayn
-ms.openlocfilehash: e25ebb85071b6d0af2696083afda45a453c5841a
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: b1dbdf7f7798458ec3ea3a7487f69a9dee244dda
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131026"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474290"
 ---
 # <a name="managed-identity-best-practice-recommendations"></a>マネージド ID のベスト プラクティスに関する推奨事項
 

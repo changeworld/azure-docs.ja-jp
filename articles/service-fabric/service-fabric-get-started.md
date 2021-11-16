@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: dac29dcce226ef7978353113a46dcfe9ae3ff327
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 8f520d74f8b3ccac8c31fce6fbf4af2016cb51ac
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657304"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217717"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
@@ -49,8 +49,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 
 現在のバージョンは次のとおりです。
 
-* Service Fabric SDK および Tools 5.1.335
-* Service Fabric ランタイム 8.1.335
+* Service Fabric SDK および Tools 5.2.1235
+* Service Fabric ランタイム 8.2.1235
 
 サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 

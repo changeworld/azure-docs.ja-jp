@@ -3,12 +3,12 @@ title: Azure Web アプリ拡張機能のリリース ノート - Application In
 description: Application Insights を使用した実行時インストルメンテーションのための Azure Web アプリ拡張機能のリリース ノートです。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0ddf90f5e6ffbe685c4aea1239323beea6c106
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 84d01a2bcc4e371ca03610f2d002eaaf73159b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828813"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316035"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights 用 Azure Web アプリ拡張機能のリリース ノート
 
@@ -25,6 +25,26 @@ ms.locfileid: "124828813"
     - プライベート サイト拡張機能は現在サポートされていないため、アンインストールしてください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2842"></a>2.8.42
+
+- JAVA 拡張機能: 2.5.1 から [Java Agent 3.2.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0) にアップグレード。
+- Node.js 拡張機能: AI SDK を 2.1.7 から [2.1.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.8) に更新。 ユーザー割り当ておよびシステム割り当ての AAD マネージド ID のサポートを追加。
+- .NET Core: [.NET Startup Hook](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md) を利用した .NET 6.0 サポートと自己完結型展開を追加。
+
+### <a name="2841"></a>2.8.41
+
+- Node.js 拡張機能: AI SDK を 2.1.3 から [2.1.7](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.7) に更新。
+- .NET Core: サポート対象外のバージョン (2.1) を削除。 サポートされているバージョンは 3.1 と 5.0 です。
+
+### <a name="2840"></a>2.8.40
+
+- JAVA 拡張機能: 3.0.2 から [Java Agent 3.1.1 (GA)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.1) にアップグレード。
+- Node.js 拡張機能: AI SDK を 1.8.8 から [2.1.3](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/2.1.3) に更新。
+
+### <a name="2839"></a>2.8.39
+
+- .NET Core: .NET Core 5.0 サポートを追加。
 
 ### <a name="2838"></a>2.8.38
 

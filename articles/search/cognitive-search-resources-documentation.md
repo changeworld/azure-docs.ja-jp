@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 26338164ca073ff5d9b331d36a5a9d935a3f3468
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: acf4d6fa3057dca4d1b7ccf0c08ee8c8ca5ef31a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707599"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555528"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -43,7 +43,7 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 
 + [クイック スタート: Azure portal でナレッジ ストアを作成する](knowledge-store-create-portal.md)
 + [REST と Postman を使用してナレッジ ストアを作成する](knowledge-store-create-rest.md)
-+ [Storage Explorer でナレッジ ストアを表示する](knowledge-store-view-storage-explorer.md)
++ [ストレージ ブラウザーでナレッジ ストアを表示する](knowledge-store-view-storage-explorer.md)
 + [Power BI を使用してナレッジ ストアに接続する](knowledge-store-connect-power-bi.md)
 + [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)
 

@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 56735c016b5496826b774d2f242ff03117a3a923
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 69d09cb0d2cbdef559670c34dcfb486edb41d0b5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754807"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249231"
 ---
 # <a name="support-and-troubleshooting-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのサポートとトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "124754807"
 
 [Azure Virtual Machines](../virtual-machines/index.yml) と[仮想マシン スケール セット](overview.md)の使用時に発生する可能性のある問題を特定、診断、修正する方法は、さまざまな記事で説明されています。
 
--  [Azure 仮想マシンのトラブルシューティングに関するドキュメント](/troubleshoot/azure/virtual-machines/welcome-virtual-machines) 
+-  [Azure 仮想マシン スケール セットのトラブルシューティングに関するドキュメント](/troubleshoot/azure/virtual-machine-scale-sets/welcome-virtual-machine-scale-sets) 
 - [Azure 仮想マシン スケール セットについてよく寄せられる質問](virtual-machine-scale-sets-faq.yml)
 
 

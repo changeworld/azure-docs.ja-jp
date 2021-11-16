@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/15/2021
 ms.custom: devx-track-azurecli, ignite-fall-2021
-ms.openlocfilehash: ab1c521be2748c8f58fec4c2f0455e1f08c39bdc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a8ba281a1061643cc582e6de4fc75a8c43fae71c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092194"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447431"
 ---
 # <a name="dapr-extension-for-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) 用 Dapr 拡張機能 (プレビュー)
 
@@ -37,6 +37,10 @@ AKS クラスターに Dapr がインストールされたので、アプリケ�
 > [!WARNING]
 > AKS 拡張機能を使用して Dapr をインストールする場合は、Dapr の今後の管理のために、Dapr CLI ではなく拡張機能を引き続き使用することをお勧めします。 2 つのツールを組み合わせると、競合が発生し、望ましくない動作が発生する可能性があります。
 
+## <a name="supported-kubernetes-versions"></a>サポートされている Kubernetes のバージョン
+
+Dapr 拡張機能には、AKS と同じサポート ウィンドウが使われています。 詳細については、「[Kubernetes バージョン サポート ポリシー][k8s-version-support-policy]」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件 
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -44,16 +48,15 @@ AKS クラスターに Dapr がインストールされたので、アプリケ�
 - まだない場合は、[AKS クラスター][deploy-cluster]を作成する必要があります。
 
 
-### <a name="register-the-extensions-aks-extensionmanager-and-aks-dapr-preview-features"></a>プレビュー機能 `Extensions`、`AKS-ExtensionManager`、`AKS-Dapr` を登録する
+### <a name="register-the-aks-extensionmanager-and-aks-dapr-preview-features"></a>プレビュー機能 `AKS-ExtensionManager` と `AKS-Dapr` を登録する
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-Dapr 拡張機能を使用できる AKS クラスターを作成するには、サブスクリプションで `Extensions`、`AKS-ExtensionManager`、`AKS-Dapr` 機能フラグを有効にする必要があります。
+Dapr 拡張機能を使える AKS クラスターを作成するには、サブスクリプションで `AKS-ExtensionManager` と `AKS-Dapr` の機能フラグを有効にする必要があります。
 
-次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`Extensions`、`AKS-ExtensionManager`、`AKS-Dapr` 機能フラグを登録します。
+次の例に示すように [az feature register][az-feature-register] コマンドを使って `AKS-ExtensionManager` と `AKS-Dapr` の機能フラグを登録します。
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.KubernetesConfiguration" --name "Extensions"
 az feature register --namespace "Microsoft.ContainerService" --name "AKS-ExtensionManager"
 az feature register --namespace "Microsoft.ContainerService" --name "AKS-Dapr"
 ```
@@ -61,7 +64,6 @@ az feature register --namespace "Microsoft.ContainerService" --name "AKS-Dapr"
 状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.KubernetesConfiguration/Extensions')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ExtensionManager')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-Dapr')].{Name:name,State:properties.state}"
 ```
@@ -173,6 +175,11 @@ az k8s-extension show --cluster-type managedClusters \
 
 ## <a name="update-configuration-settings"></a>構成設定の更新
 
+> [!IMPORTANT]
+> 一部の構成オプションは、作成後に変更できません。 これらのオプションを調整するには、拡張機能の削除と変更が必要です。 これは次の設定に適用されます。
+> * `global.ha.*`
+> * `dapr_placement.*`
+
 > [!NOTE]
 > 高可用性 (HA) は、いつでも有効にできます。 ただし、これを有効にした場合、無効にするには、拡張機能を削除して再作成する必要があります。 ユース ケースに高可用性が必要であるか不明な場合は、中断を最小限に抑えるために、最初にこれを無効にすることをお勧めします。
 
@@ -234,13 +241,15 @@ az k8s-extension delete --resource-group myResourceGroup --cluster-name myAKSClu
 
 ## <a name="next-steps"></a>次の手順
 
-- AKS クラスターに Dapr が正常にプロビジョニングされたので、[サンプル アプリケーション][sample-application]のデプロイを試します
+- AKS クラスターに Dapr が正常にプロビジョニングされたので、[サンプル アプリケーション][sample-application]のデプロイを試します。
 
 <!-- LINKS INTERNAL -->
 [deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[sample-application]: ./quickstart-dapr.md
+[k8s-version-support-policy]: ./supported-kubernetes-versions.md?tabs=azure-cli#kubernetes-version-support-policy
 
 <!-- LINKS EXTERNAL -->
 [kubernetes-production]: https://docs.dapr.io/operations/hosting/kubernetes/kubernetes-production

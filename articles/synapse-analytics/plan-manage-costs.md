@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 1527888458a494e0b2d7177246c991228440d255
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: bd1e55c216a314bfc6e132979d5a4999d4f363eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860528"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850624"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure Synapse Analytics のコストを計画して管理する
 
@@ -42,7 +42,7 @@ Azure Synapse Analytics リソースを作成または使用すると、次の�
 - データ探索とデータ ウェアハウス 
     - 専用 SQL プール - DWU ブロックの数と実行時間に基づいて課金されます。
     - ストレージ - 格納されている TB の数に基づいて課金されます。
-    - サーバーレス SQL プール - 処理されたデータの TB によって課金されます。
+    - サーバーレス SQL プール - 処理済みデータの TB によって課金されます。
 - Apache Spark プール - インスタンスの数と実行時間に対して課金されます。
 - データ統合 
     - オーケストレーション アクティビティの実行 - アクティビティの実行回数に基づいて課金されます。
@@ -66,6 +66,10 @@ Azure Synapse リソースを削除しても、次のリソースが引き続き
 ### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Azure Synapse で Azure 前払いクレジットを使用する 
 
 Azure Synapse Analytics の料金は、Azure 前払いのクレジットで支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+
+### <a name="pre-purchase-plan-for-azure-synapse"></a>Azure Synapse の事前購入プラン
+
+Azure Synapse コミット ユニット (SCU) を 1 年間事前購入すると、Azure Synapse Analytics のコストを節約できます。 事前購入済みの SCU は、購入期間中はいつでも使用できます。 詳しくは、「[事前購入プランを使用して Azure Synapse Analytics のコストを最適化する](../cost-management-billing/reservations/synapse-analytics-pre-purchase-plan.md)」を参照してください
 
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portal で推定料金を検討する

@@ -1,6 +1,6 @@
 ---
 title: トークン エンリッチメント - Azure Active Directory B2C
-description: API を使用して、外部ソースからの要求でトークンを強化します。
+description: API または送信 Webhook を使用して、外部 ID データ ソースからの要求を使用してトークンを強化します。
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -11,18 +11,18 @@ ms.date: 08/29/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8f5bf34424754106c6d86195c37d23c3c9060c1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b27fcb43d815a6a2567ebb11c0ea768914582eb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008353"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440965"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>API コネクタを使用して外部ソースからの要求でトークンを強化する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、ID 開発者が [API コネクタ](api-connectors-overview.md)を使用して、RESTful API との対話をユーザー フローに統合することができます。 このチュートリアルを終了すると、API と対話して外部ソースからの情報でトークンを強化する Azure AD B2C ユーザー フローを作成できるようになります。
+Azure Active Directory B2C (Azure AD B2C) では、ID 開発者が [API コネクタ](api-connectors-overview.md)を使用して、RESTful API との対話をユーザー フローに統合することができます。 これにより、開発者は外部 ID ソースからデータを動的に取得できます。 このチュートリアルを終了すると、API と対話して外部ソースからの情報でトークンを強化する Azure AD B2C ユーザー フローを作成できるようになります。
 
 ::: zone pivot="b2c-user-flow"
 

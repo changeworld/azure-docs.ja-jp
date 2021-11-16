@@ -13,12 +13,12 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 67da7a27598e0791b266f0073c0bbf8ad5862614
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f9fb2c01a3e6cffd4091049579e570d77cdb35e2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617551"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459389"
 ---
 # <a name="manage-app-consent-policies-in-azure-active-directory"></a>Azure Active Directory でアプリ同意ポリシーを管理する
 

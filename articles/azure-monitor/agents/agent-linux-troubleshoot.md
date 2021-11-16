@@ -4,25 +4,17 @@ description: Azure Monitor の Linux 用 Log Analytics エージェントに関�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/21/2019
-ms.openlocfilehash: e3e65bd40bfceb6a48d4ce917c274f6532aa30e7
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 10/21/2021
+ms.openlocfilehash: fce62f3bbe5a3eca29f89cb47c98df6485d1d123
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178557"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216563"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法
 
 Azure Monitor の Linux 用 Log Analytics エージェントで発生する可能性のあるエラーのトラブルシューティングのヘルプを提供し、それらを解決するための考えられる解決策を提案します。
-
-どの手順でも解決しない場合は、以下のサポート チャネルもご利用いただけます。
-
-* Premier サポート ベネフィットをお持ちのお客様は、[Premier](https://premier.microsoft.com/) でサポート要求を開くことができます。
-* Azure サポート契約のお客様は、[Azure portal](https://azure.microsoft.com/support/options/) でサポート要求を開くことができます。
-* OMI の問題は、[OMI トラブルシューティング ガイド](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)を参考にして診断してください。
-* [GitHub の問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)を提出します。
-* Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics のトラブルシューティング ツール
 
@@ -36,9 +28,10 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 
 トラブルシューティング ツールは、Log Analytics エージェントのインストール時に自動的に含まれます。 ただし、何らかの理由でインストールに失敗した場合は、次の手順に従って手動でインストールすることもできます。
 
-1. トラブルシューティング ツール バンドルをコンピューターにコピーします。`wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
-2. バンドルをアンパックします。`tar -xzvf omsagent_tst.tar.gz`
-3. 手動インストールを実行します。`sudo ./install_tst`
+1. トラブルシューティング ツールに必要であるため、[GNU Project Debugger (GDB)](https://www.gnu.org/software/gdb/) をマシンにインストールしてください。
+2. トラブルシューティング ツール バンドルをコンピューターにコピーします。`wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+3. バンドルをアンパックします。`tar -xzvf omsagent_tst.tar.gz`
+4. 手動インストールを実行します。`sudo ./install_tst`
 
 ### <a name="scenarios-covered"></a>対象となるシナリオ
 
@@ -59,7 +52,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 
 ## <a name="purge-and-re-install-the-linux-agent"></a>Linux エージェントの消去と再インストール
 
-エージェントのクリーン再インストールによってほとんどの問題が解決されることがわかりました。 実際にこれは、サポートチームがエージェントを未破損状態にするための、サポートからの最初の提案となることがあります。 トラブルシューティング ツールを実行し、ログを収集し、クリーン再インストールを試行することで、問題をより迅速に解決できます。
+エージェントのクリーン再インストールによってほとんどの問題が解決されることがわかりました。 実際、エージェントを修復するために試す方法として、サポート チームが、この方法を最初に提案する場合もあります。 トラブルシューティング ツールを実行し、ログを収集し、クリーン再インストールを試行することで、問題をより迅速に解決できます。
 
 1. 消去スクリプトをダウンロードします。
 - `$ wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/purge_omsagent.sh`
@@ -494,3 +487,17 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. `sudo sh ./omsagent-*.universal.x64.sh --upgrade` を実行してパッケージをアップグレードします。
+
+## <a name="issue-installation-is-failing-saying-python2-cannot-support-ctypes-even-though-python3-is-being-used"></a>問題: Python 3 を使用しているのに、Python 2 では Ctype をサポートしていない、というエラーが出てインストールに失敗する
+
+### <a name="probable-causes"></a>考えられる原因
+
+VM の言語が英語でない場合に、使用している Python のバージョンの確認に失敗する、既知の問題があります。 その結果、常に、エージェントによって Pyhon 2 を使用しているとみなされ、Pyhon 2 を使用していない場合にもエラーが発生します。
+
+### <a name="resolution"></a>解決策
+
+VM の環境言語を英語に変更します。
+
+```
+export LANG=en_US.UTF-8
+```

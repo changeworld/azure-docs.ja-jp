@@ -36,6 +36,8 @@
           href: total-costs.md
         - name: ユーザーごとのアプリ ストリーミング コストを見積もる
           href: streaming-costs.md
+        - name: Azure Virtual Desktop リソースにタグを付ける
+          href: ../tag-virtual-desktop-resources.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Microsoft Intune を使用してアプリを展開する
           href: /mem/intune/apps/apps-windows-10-app-deploy?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: Intune マネージド エンドポイント クライアントを提供する

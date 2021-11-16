@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: eeba36b200028d4e90e22cd32c9bab6dbe3799e0
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: c911a3ea8607cb83cb3d96a44bfac424042df30a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113492867"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232870"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Azure Digital Twins クエリ言語リファレンス: SELECT 句
 

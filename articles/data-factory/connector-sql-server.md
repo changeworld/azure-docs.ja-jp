@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/29/2021
-ms.openlocfilehash: e366ed2b17ab805c5b3d23663ee96222e2ec9372
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 575f6ff04e2e3ea006ec700e43205bce2d42c7a4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358038"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319550"
 ---
 # <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SQL Server との間でデータをコピーおよび変換する
 
@@ -560,7 +560,7 @@ END
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> SQL シンクからのストアド プロシージャの呼び出し
 
-SQL Server データベースにデータをコピーするときに、ユーザーが指定したストアド プロシージャを構成し、ソース テーブルの各バッチに関する追加のパラメーターと共に呼び出すこともできます。 ストアド プロシージャ機能は [テーブル値パラメーター](/dotnet/framework/data/adonet/sql/table-valued-parameters)を利用しています。
+SQL Server データベースにデータをコピーするときに、ユーザーが指定したストアド プロシージャを構成し、ソース テーブルの各バッチに関する追加のパラメーターと共に呼び出すこともできます。 ストアド プロシージャ機能は [テーブル値パラメーター](/dotnet/framework/data/adonet/sql/table-valued-parameters)を利用しています。  このサービスでは、ストアド プロシージャがそれ自体のトランザクションでラップされることにご留意ください。つまり、ストアド プロシージャ内で作成されたトランザクションはすべて入れ子になり、例外処理を意味することがあります。
 
 組み込みのコピー メカニズムでは目的を達成できない場合は、ストアド プロシージャを使用できます。 1 つの例は、宛先テーブルへのソース データの最終挿入の前に追加の処理を適用する場合です。 その他の処理の例をいくつか挙げると、列のマージ、追加の値の検索、複数のテーブルへの挿入があります。
 
@@ -683,27 +683,27 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Decimal |Decimal (10 進数型) |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | INT |Int32 |
-| money |Decimal |
+| money |Decimal (10 進数型) |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Decimal (10 進数型) |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Decimal (10 進数型) |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
-| UNIQUEIDENTIFIER |Guid |
+| UNIQUEIDENTIFIER |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |String |

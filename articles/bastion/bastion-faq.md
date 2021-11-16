@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 99cee6b73fb37caf0ccf09170d60ea4ba3effc2a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: ea55c6d1ca0575ed2f8487b332f3341579bd3a88
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714172"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852220"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
 
@@ -24,7 +24,7 @@ ms.locfileid: "129714172"
 
 ### <a name="is-ipv6-supported"></a>IPv6 はサポートされていますか?
 
-現時点では、IPv6 はサポートされていません。 Azure Bastion は、IPv4 のみをサポートしています。
+現時点では、IPv6 はサポートされていません。 Azure Bastion は、IPv4 のみをサポートしています。 したがって、Bastion リソースには IPv4 パブリック IP アドレスのみ割り当てることができ、Bastion を使用して IPv4 ターゲット VM に接続できます。 また、Bastion を使用してデュアル スタック ターゲット VM に接続できますが、IPv4 トラフィックは Azure Bastion 経由でのみ送受信できます。 
 
 ### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Azure プライベート DNS ゾーンで Azure Bastion を使用することはできますか?
 
@@ -46,7 +46,7 @@ ms.locfileid: "129714172"
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>RDP セッションではどのような機能がサポートされていますか?
 
-現時点では、テキストのコピーと貼り付けのみがサポートされています。 ファイルのコピーなどの機能はサポートされていません。 [Azure Bastion フィードバック ページ](https://feedback.azure.com/forums/217313-networking?category_id=367303)で、新機能に関するフィードバックをぜひお寄せください。
+現時点では、テキストのコピーと貼り付けのみがサポートされています。 ファイルのコピーなどの機能はサポートされていません。 [Azure Bastion フィードバック ページ](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=c109f019-8326-ec11-b6e6-000d3a4f0789)で、新機能に関するフィードバックをぜひお寄せください。
 
 ### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Bastion によるセキュリティ強化は、AADJ VM 拡張機能に参加している VM で動作しますか?
 
@@ -96,7 +96,7 @@ Azure Bastion によって、顧客データがデプロイされているリー
 * sv-se-qwerty
 * tr-tr-qwerty
 
-ターゲット VM での既定のキーボード レイアウトは、ご利用のローカル言語と一致します。これは、ご利用のローカル コンピューターの設定で変更できます。
+ターゲット言語の適切なキー マッピングを確立するには、ローカル コンピューターの言語、またはターゲット VM 内の言語を英語 (米国) に設定する必要があります。 つまり、ターゲット VM 言語がターゲット言語に設定されている場合、またはその逆の場合、ローカル コンピューターの言語は英語 (米国) に設定する必要があります。 コンピューター設定で、マシンに英語 (米国) 言語を追加できます。
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Azure Bastion では、ターゲット VM のタイムゾーンの構成やタイムゾーンのリダイレクトはサポートされていますか?
 

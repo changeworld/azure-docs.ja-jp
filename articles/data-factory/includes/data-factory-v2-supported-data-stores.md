@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/29/2021
 ms.author: jianleishen
 ms.custom: include file
-ms.openlocfilehash: 4bb3c4e2c51323400ca233193c65ba85b3200316
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6bb98eee64707f43e486180f2a221689de1dc774
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725746"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354083"
 ---
 | カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート | [Azure IR](../concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -54,7 +54,7 @@ ms.locfileid: "129725746"
 | &nbsp; |[Presto](../connector-presto.md) |✓ | |✓ |✓  |
 | &nbsp; |[Open Hub を介した SAP Business Warehouse](../connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
 | &nbsp; |[MDX を介した SAP Business Warehouse](../connector-sap-business-warehouse.md) |✓ | | |✓  |
-| &nbsp; |[SAP HANA](../connector-sap-hana.md) |✓ |✓ | |✓  |
+| &nbsp; |[SAP HANA](../connector-sap-hana.md) |✓ | [ODBC Connector と SAP HANA ODBC ドライバー](../connector-sap-hana.md#sap-hana-sink)でのみサポートされるシンク | |✓  |
 | &nbsp; |[SAP テーブル](../connector-sap-table.md) |✓ | | |✓  |
 | &nbsp; |[Snowflake](../connector-snowflake.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Spark](../connector-spark.md) |✓ | |✓ |✓  |

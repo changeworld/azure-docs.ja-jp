@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5583596e399456461b2fc157a193b83b596180ee
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 4ea9643f14bb020978e05eb8b0a714365c2770b4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387394"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559278"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -28,7 +28,7 @@ Key Vault では、シークレットの contentType フィールドもサポー
 
 ## <a name="encryption"></a>暗号化
 
-Key Vault 内のシークレットはすべて、暗号化した状態で格納されます。 この暗号化は透過的に行われ、ユーザーによる操作は必要ありません。 ユーザーによって追加されたシークレットは、Azure Key Vault サービスによって暗号化され、ユーザーが読み取るとき自動的に暗号化が解除されます。 暗号化キーは、キー コンテナーごとに一意となります。
+Key Vault 内のシークレットはすべて、暗号化した状態で格納されます。 Key Vault では、暗号化キーの階層を使用して保存中のシークレットを暗号化します。その階層内のすべてのキーは、FIPS 140-2 に準拠しているモジュールによって保護されます。 中国以外のすべてのリージョンでは、そのキー階層のルートは、FIPS 140-2 レベル 2 以上で検証されたモジュールによって保護されます。 中国では、その階層のルートは、FIPS 140-2 レベル 1 で検証されたモジュールによって保護されます。 この暗号化は透過的に行われ、ユーザーによる操作は必要ありません。 ユーザーによって追加されたシークレットは、Azure Key Vault サービスによって暗号化され、ユーザーが読み取るとき自動的に暗号化が解除されます。 暗号化キーは、キー コンテナーごとに一意となります。
 
 ## <a name="secret-attributes"></a>シークレットの属性
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.author: ssambare
 author: shivanissambare
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 521ebf79dd265b26958c36411c1d6aa281e11a5e
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: d4c65af505725f3f667dd2ad51902717352e4c42
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842589"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063667"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -63,7 +63,7 @@ NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造�
 
 1. 次のコマンドを使用して、作成するエンドポイントの名前を設定します。 この例では、エンドポイントにランダムな名前を作成します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="set_endpoint_name":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="set_endpoint_name":::
 
 1. 次のコマンドを使用して Python の要件をインストールします。
 
@@ -78,11 +78,11 @@ NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造�
 
     __create-managed-endpoint.yaml__
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/triton/single-model/create-managed-endpoint.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-endpoint.yaml":::
 
 1. YAML 構成を使用して新しいエンドポイントを作成するには、次のコマンドを使用します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="create_endpoint":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="create_endpoint":::
 
 1. デプロイの YAML 構成ファイルを作成します。 次の例では、前の手順で作成したエンドポイントに対して __blue__ という名前のデプロイを構成します。 次のコマンドで使用されているものは、前に複製した azureml-examples リポジトリ内の `/cli/endpoints/online/triton/single-model/create-managed-deployment.yml` にあります。
 
@@ -91,11 +91,11 @@ NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造�
     >
     > このデプロイでは、Standard_NC6s_v3 VM を使用します。 この VM を使用するには、事前にサブスクリプションのクォータの引き上げを要求しなければならない場合があります。 詳細については、「[NCv3 シリーズ](/azure/virtual-machines/ncv3-series)」を参照してください。
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/triton/single-model/create-managed-deployment.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-deployment.yaml":::
 
 1. YAML 構成を使用してデプロイを作成するには、次のコマンドを使用します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="create_deployment":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="create_deployment":::
 
 ### <a name="invoke-your-endpoint"></a>エンドポイントを呼び出す
 
@@ -106,15 +106,15 @@ NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造�
 
 1. エンドポイントのスコアリング URI を取得するには、次のコマンドを使用します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="get_scoring_uri":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="get_scoring_uri":::
 
 1. 認証トークンを取得するには、次のコマンドを使用します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="get_token":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="get_token":::
 
 1. エンドポイントを使用してデータをスコア付けするには、次のコマンドを使用します。 これは、クジャクの画像 (https://aka.ms/peacock-pic) ) をエンドポイントに送信します。
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="check_scoring_of_model":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="check_scoring_of_model":::
 
     スクリプトからの応答は次のテキストのようになります。
 
@@ -129,7 +129,7 @@ NVIDIA Triton 推論サーバーには特定のモデル リポジトリ構造�
 
 エンドポイントを使い終えたら、次のコマンドを使用して削除します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="delete_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="delete_endpoint":::
 
 モデルを削除するには次のコマンドを使用します。
 

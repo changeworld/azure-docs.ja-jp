@@ -1,22 +1,22 @@
 ---
 title: デジタル ツインとツイン グラフ
 titleSuffix: Azure Digital Twins
-description: デジタル ツインの概念と、そのリレーションシップによってグラフが作成されるしくみについて説明します。
+description: デジタル ツインの概念と、そのリレーションシップによってデジタル ツイン グラフが作成されるしくみについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 8/26/2021
+ms.date: 10/20/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 42cce83683df789aeaabe53ca170f17319ec3603
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 33ad5a0eb684526184affba2d254bf20f66de930
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224833"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500243"
 ---
-# <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
+# <a name="digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフ
 
-Azure Digital Twins ソリューションでは、環境内のエンティティは **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
+この記事では、Azure Digital Twins の文脈における **デジタル ツイン** について、およびそのリレーションシップによって **ツイン グラフ** が作成されるしくみについて説明します。 Azure Digital Twins ソリューションでは、環境内のエンティティは **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
 
 > [!TIP]
 > "Azure Digital Twins" は、この Azure サービス全体を指します。 "デジタル ツイン" または単に "ツイン" は、サービスのインスタンス内の個々のツイン ノードを指します。

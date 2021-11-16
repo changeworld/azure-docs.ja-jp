@@ -5,12 +5,12 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 10/18/2021
-ms.openlocfilehash: b2c39e3b8b408ddb6a3efe6641e8a537a180eb2d
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 033f02c2dec0d03e185401d3f4bbe2eadc053758
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132278229"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242238"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポートを Debezium と統合する
 
@@ -71,8 +71,7 @@ Event Hubs サービスとの間で送受信を行うには、イベント ハ�
 Kafka Connect のスループットを Kafka から Event Hubs にリダイレクトする際に、最小限の再構成が必要となります。  次の `connect-distributed.properties` サンプルは、Event Hubs 上の Kafka エンドポイントに対して認証と通信を行うように Connect を構成する方法を示しています。
 
 > [!IMPORTANT]
-> - Debezium により、テーブルごとのトピックと、一連のメタデータ トピックが自動的に作成されます。 Kafka の **トピック** は、Event Hubs のインスタンス (イベント ハブ) に対応します。 Apache Kafka と Azure Event Hubs の対応については、「[Kafka と Event Hubs の概念のマッピング](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)」をご覧ください。 
-> - Event Hubs 名前空間内のイベント ハブの数には、レベル (Basic、Standard、Premium、Dedicated) に応じて異なる **制限** があります。 これらの制限については、「[クォータ](compare-tiers.md#quotas)」をご覧ください。
+> Debezium により、テーブルごとのトピックと、一連のメタデータ トピックが自動的に作成されます。 Kafka の **トピック** は、Event Hubs のインスタンス (イベント ハブ) に対応します。 Apache Kafka と Azure Event Hubs の対応については、「[Kafka と Event Hubs の概念のマッピング](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)」をご覧ください。 Event Hubs 名前空間内のイベント ハブの数には、レベル (Basic、Standard、Premium、Dedicated) に応じて異なる **制限** があります。 これらの制限については、「[クォータ](compare-tiers.md#quotas)」をご覧ください。
 
 ```properties
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 # e.g. namespace.servicebus.windows.net:9093

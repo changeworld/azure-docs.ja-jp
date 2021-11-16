@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用して、Azure のリソースを�
 ms.topic: overview
 ms.date: 08/27/2021
 ms.custom: contperf-fy21q1,contperf-fy21q3-portal
-ms.openlocfilehash: ecb9c163728536b56d119ffa5d67aa6650dbc7e7
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: f83021f35b76dc96c7ae841c2dd636de5b73c107
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106501"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134521"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -81,9 +81,15 @@ ID とアクセスの管理の詳細については、[Azure Active Directory](.
 
 * リソース グループのリソースは、リソース グループとは別のリージョンに配置できます。
 
-* リソース グループを作成するとき、そのリソース グループの場所を指定する必要があります。 "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
+* リソース グループを作成するとき、その場所を指定する必要があります。 
 
-   リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
+  "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 
+
+  リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。 
+  
+  Azure Content Delivery Network、Azure Traffic Manager、Azure Front Door などのグローバル リソースを除き、リソース グループのリージョンが 一時的に利用できなくなった場合、メタデータが利用できなくなるため、そのリソース グループ内のリソースは更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 
+   
+  信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
 
 * リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[Azure のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
 

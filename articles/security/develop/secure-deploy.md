@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f8094fc0eaf646a026371db3726706f92c763f6d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ab2188e0a59216ab01b54f430506003529129bb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460548"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342986"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上にデプロイする
 この記事では、クラウド向けのアプリケーションをデプロイするときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) のリリースと対応のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションのデプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -68,18 +68,18 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 アプリケーションの監視を支援する Azure サービスは次のとおりです。
 
   - Azure Application Insights
-  - Azure Security Center
+  - Microsoft Defender for Cloud
 
 #### <a name="application-insights"></a>Application Insights
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 Application Insights は、パフォーマンスの異常を自動的に検出します。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
-#### <a name="azure-security-center"></a>Azure Security Center
+#### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) を使用すると、Web アプリケーションなどの Azure リソースのセキュリティを高度に視覚化 (および制御) しながら、脅威を回避し、検出し、それらに対応することができます。 Azure Security Center は、見つけにくい脅威の検出に役立ちます。 これは、さまざまなセキュリティ ソリューションと連携します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) では、Web アプリケーションなどの Azure リソースのセキュリティ状況が非常にわかりやすく表示され、かつ、抑制機能にも優れており、脅威を回避し、検出し、それらに対応できます。 Microsoft Defender for Cloud では、このツールでなければ気付かないような脅威を検出できます。 これは、さまざまなセキュリティ ソリューションと連携します。
 
-Security Center の Free レベルでは、Azure リソースに対してのみ限定的なセキュリティを提供します。 [Security Center Standard レベル](../../security-center/security-center-get-started.md)では、オンプレミスのリソースや他のクラウドにこれらの機能を拡張します。
-Security Center Standard は以下のことに役立ちます。
+Defender for Cloud の Free レベルでは、Azure リソースに対してのみ限定的なセキュリティを提供します。 [Defender for Cloud の Standard レベル](../../security-center/security-center-get-started.md)では、機能が使用できる対象が増え、オンプレミスのリソースや他のクラウドでも使用できるようになります。
+Defender for Cloud Standard では、次のことが可能になります。
 
   - セキュリティの脆弱性を検出して修正する。
   - 悪意のあるアクティビティをブロックするため、アクセスとアプリケーションの制御を適用する。

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: d8d18d296a54b85cb3b571099e13f8c3e4e7a9c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 27f338d093d2084df5ca00b61a8c258d04067b69
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750245"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563361"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Kibana と Grafana を使用してログとメトリックを表示する
 
@@ -27,7 +27,7 @@ Web ダッシュボードである Kibana と Grafana は、Azure Arc 対応デ�
 Azure Arc 対応 SQL Managed Instance のログと監視ダッシュボードにアクセスするには、次の `azdata` CLI コマンドを実行します。
 
 ```azurecl
-az sql mi-arc endpoint list -n <name of SQL instance>
+az sql mi-arc endpoint list -n <name of SQL instance> --use-k8s
 
 ```
 関連する Grafana ダッシュボードは次のとおりです。
@@ -96,4 +96,3 @@ az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 60
    - [Kibana ガイド](https://www.elastic.co/guide/en/kibana/current/index.html)
    - [Kibana でのデータ視覚化を使用したダッシュボードのドリルダウンの概要](https://www.elastic.co/webinars/dashboard-drilldowns-with-data-visualizations-in-kibana/)
    - [Kibana ダッシュボードを作成する方法](https://www.elastic.co/webinars/how-to-build-kibana-dashboards/)
-

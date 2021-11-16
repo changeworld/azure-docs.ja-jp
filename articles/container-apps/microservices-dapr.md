@@ -1,19 +1,19 @@
 ---
 title: 'チュートリアル: Azure CLI を使用して Dapr アプリケーションを Azure Container Apps にデプロイする'
 description: Azure CLI を使用して、Dapr アプリケーションを Azure Container Apps にデプロイします。
-services: container-apps
+services: app-service
 author: asw101
-ms.service: container-apps
+ms.service: app-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 178bc7af356f873fb2c12329de9fc9d7a9914a92
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: cbca0dbd5449e5461e938d7c252c06f2ef0c18e3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026787"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578919"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Dapr アプリケーションを Azure Container Apps にデプロイする
 
@@ -145,7 +145,7 @@ az provider register --namespace Microsoft.Web
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az provider register --namespace Microsoft.Web
 ```
 

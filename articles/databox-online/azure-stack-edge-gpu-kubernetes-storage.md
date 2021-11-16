@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 10/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d848d663121474085935c68e62b8aa38f195ba8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5ef771c007d41e2e81dad7773c17bb1f9d3bb6a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442181"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469238"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ストレージ管理
 
@@ -104,6 +104,8 @@ spec:
   volumeName: <nfs-or-smb-share-name-here> 
   storageClassName: ""
 ```
+
+`volumeName` フィールドの値を取得するには、作成後に SMB または NFS 共有を選択するときに、Edge コンピューティング モジュールのローカル マウント ポイントを選択します。 これは、共有名と同じです。 
 
 詳細については、[kubectl を使用した Azure Stack Edge Pro での静的プロビジョニングによるステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)に関する記事をご覧ください。
 

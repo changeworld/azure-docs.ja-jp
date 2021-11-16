@@ -10,12 +10,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: 5a2bd61c2e59e5933361cc5d64462ba50a12d836
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 642448cab1fa6511d9d12eb4a3de894f3e5c1251
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737124"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056760"
 ---
 # <a name="what-are-azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービスとは
 
@@ -54,13 +54,16 @@ Azure portal、Azure Data Studio、`arcdata` 拡張子が付いた Azure CLI (`a
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Arc 対応データ サービスで現在サポートされているシナリオを次の表に示します。
+Azure Arc 対応データ サービスで現在サポートされているシナリオを次の表に示します。
 
 |Azure リージョン  |直接接続モード  |間接接続モード  |
 |---------|---------|---------|
 |米国東部|利用可能|利用可能
 |米国東部 2|利用可能|利用可能
+|米国西部|利用可能|利用可能
 |米国西部 2|利用可能|利用可能
+|米国西部 3|利用可能|利用可能
+|米国中北部 | 利用可能 | 利用可能
 |米国中部|使用不可|利用可能
 |米国中南部|利用可能|利用可能
 |英国南部|利用可能|利用可能

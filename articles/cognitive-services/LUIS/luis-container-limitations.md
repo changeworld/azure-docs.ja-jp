@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd29ef48f2d1042091a1379570e8ea710c718ff9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96002345"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426224"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) コンテナーの制限
 
@@ -46,7 +46,7 @@ LUIS アプリケーションは、次の依存関係を一切 **含んでいな
 
 LUIS コンテナーは、LUIS によって適切に[サポートされる言語](luis-language-support.md#languages-supported)のサブセットをサポートしています。 LUIS コンテナーは、次の言語の発話を理解することができます。
 
-| Language | Locale | 事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
+| Language | Locale | 事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | **[感情分析](../language-service/sentiment-opinion-mining/language-support.md)と[キー フレーズ抽出](../language-service/key-phrase-extraction/language-support.md)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|❌|❌|❌|❌|
@@ -67,4 +67,4 @@ LUIS コンテナーは、LUIS によって適切に[サポートされる言語
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
-[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
+[!INCLUDE [Language service support notes](includes/text-analytics-support-notes.md)]

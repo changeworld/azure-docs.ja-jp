@@ -1,14 +1,14 @@
 ---
 title: 個々のセンサーの管理
 description: アクティブ化ファイルの管理、証明書、バックアップの実行、スタンドアロン センサーの更新など、個々のセンサーを管理する方法について説明します。
-ms.date: 08/25/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: fd708b2ab259b38ea6983c4d4a6dac319e416218
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: dbbf08f1e139a265b947cc99c7287765d6a6d03a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424288"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339955"
 ---
 # <a name="manage-individual-sensors"></a>個々のセンサーの管理
 
@@ -20,7 +20,7 @@ ms.locfileid: "123424288"
 
 ## <a name="manage-sensor-activation-files"></a>センサーのアクティブ化ファイルの管理
 
-お使いのセンサーは、Azure portal から Azure Defender for IoT でオンボードされたものです。 各センサーは、ローカル接続のセンサーまたはクラウド接続のセンサーとしてオンボードされました。
+お使いのセンサーは、Azure portal から Microsoft Defender for IoT でオンボードされました。 各センサーは、ローカル接続のセンサーまたはクラウド接続のセンサーとしてオンボードされました。
 
 デプロイする各センサーには一意のアクティブ化ファイルがアップロードされます。 新しいファイルを使用するタイミングと方法について詳しくは、「[新しいアクティブ化ファイルをアップロードする](#upload-new-activation-files)」をご覧ください。 ファイルをアップロードできない場合は、「[アクティブ化ファイルのアップロードのトラブルシューティング」](#troubleshoot-activation-file-upload)をご覧ください。
 
@@ -78,11 +78,11 @@ ms.locfileid: "123424288"
 
 アクティブ化ファイルをアップロードできなかった場合は、エラー メッセージが表示されます。 次のイベントが発生している可能性があります。
 
-- **ローカル接続のセンサーの場合**: アクティブ化ファイルが有効ではありません。 ファイルが有効でない場合は、Defender for IoT ポータルにアクセスします。 **[センサー管理]** ページで、無効なファイルを含むセンサーを選択し、新しいアクティブ化ファイルをダウンロードします。
+- **ローカル接続のセンサーの場合**: アクティブ化ファイルが有効ではありません。 ファイルが有効でない場合は、[Azure portal で Defender for IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) に移動します。 **[センサー管理]** ページで、無効なファイルを含むセンサーを選択し、新しいアクティブ化ファイルをダウンロードします。
 
 - **クラウド接続のセンサーの場合**: センサーがインターネットに接続できません。 センサーのネットワーク構成を確認します。 センサーがインターネットにアクセスするために Web プロキシ経由で接続する必要がある場合は、 **[センサーのネットワーク構成]** 画面でプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールやプロキシで \*.azure-devices.net:443 が許可されていることを確認します。 ワイルドカードがサポートされていない場合、または細かく制御する必要がある場合は、特定の Defender for IoT ハブの FQDN をお使いのファイアウォールやプロキシで開く必要があります。 詳しくは、「[リファレンス - IoT Hub エンドポイント](../../iot-hub/iot-hub-devguide-endpoints.md)」をご覧ください。  
 
-- **クラウド接続のセンサーの場合**: アクティブ化ファイルは有効ですが、Defender for IoT で拒否されました。 この問題を解決できない場合は、Defender for IoT ポータルの [サイトとセンサー] ページから、別のアクティブ化をダウンロードできます。 それでもうまくいかない場合は、Microsoft サポートにお問い合わせください。
+- **クラウド接続のセンサーの場合**: アクティブ化ファイルは有効ですが、Defender for IoT で拒否されました。 この問題を解決できない場合は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の **[サイトとセンサー]** ページから別のアクティブ化をダウンロードできます。 それでもうまくいかない場合は、Microsoft サポートにお問い合わせください。
 
 ## <a name="manage-certificates"></a>証明書の管理
 
@@ -164,7 +164,7 @@ ms.locfileid: "123424288"
 
 名前を変更するには:
 
-1. Azure Defender for IoT ポータルで、[サイトとセンサー] ページに移動します。
+1. [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) で [サイトとセンサー] ページに移動します。
 
 1. [サイトとセンサー] ページからセンサーを削除します。
 

@@ -2,18 +2,18 @@
 title: 事前購入を利用して Azure Databricks のコストを最適化する
 description: コスト削減のために容量が予約された Azure Databricks 料金を前払いする方法について説明します。
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: 8047c57c929deeffcb69943ce17fa5fe81d31af1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72bb3403a49431d1dbc1cbd9d15ac37348818118
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645058"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243830"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する
 
@@ -42,8 +42,8 @@ Databricks の事前購入は、すべての Databricks ワークロードおよ
 Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) 内で購入できます。 予約容量を購入するには、少なくとも 1 つのエンタープライズ サブスクリプションに対して所有者ロールを所持している必要があります。
 
 - 次に対する所有者ロールに属している必要があります: 少なくとも 1 つの Enterprise Agreement (プラン番号: MS-AZR-0017P または MS-AZR-0148P) または Microsoft Customer Agreement または従来課金制の個々のサブスクリプション (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
-- EA サブスクリプションの場合、EA ポータルで [予約インスタンスを追加します] を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
-- Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
+- Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合、有効にするにはユーザーがサブスクリプションの EA 管理者である必要があります。 ダイレクト EA のお客様は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes) で **予約インスタンス** の設定を更新できるようになりました。 [ポリシー] メニューに移動して、設定を変更します。
+
 
 **購入方法:**
 

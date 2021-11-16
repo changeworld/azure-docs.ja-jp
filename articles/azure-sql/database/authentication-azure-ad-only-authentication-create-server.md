@@ -8,20 +8,18 @@ ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/04/2021
-ms.openlocfilehash: 959175611f42c8c75da465044c7962c585d3728f
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 11/02/2021
+ms.openlocfilehash: 1a1c93a47d85b13c1f2a8267539da4c72f166756
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458675"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423757"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> この記事で説明している **Azure AD 専用認証** 機能は、**パブリック プレビュー** 段階です。 この機能の詳細については、「[Azure SQL を使用した Azure AD 専用認証](authentication-azure-ad-only-authentication.md)」を参照してください。 Azure AD 専用認証は現在、Azure Synapse Analytics では使用できません。
 
 この攻略ガイドでは、プロビジョニング中に [Azure AD 専用認証](authentication-azure-ad-only-authentication.md)を有効にした Azure SQL Database 用[論理サーバー](logical-servers.md)または [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) を作成する手順の概要を示します。 Azure AD 専用認証機能を使用すると、ユーザーは SQL 認証を使用してサーバーまたはマネージド インスタンスに接続できなくなり、Azure AD 認証を使用した接続のみが許可されます。
 
@@ -298,7 +296,27 @@ ARM テンプレートを使用して、サーバーの Azure AD 管理者が設
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-現在、Azure portal を使用した、 Azure AD 専用認証が有効なマネージド インスタンスの管理またはデプロイはサポートされていません。 Azure AD 専用認証を有効にしてマネージド インスタンスをデプロイするには、Azure CLI、PowerShell、Rest API、ARM テンプレートのいずれかを使用しします。
+1. Azure portal の [[SQL デプロイ オプションの選択]](https://portal.azure.com/#create/Microsoft.AzureSQL) ページを参照します。
+
+1. まだ Azure portal にサインインしていない場合は、求められたらサインインします。
+
+1. **[SQL マネージド インスタンス]** で、 **[リソースの種類]** を **[単一インスタンス]** に設定し、 **[作成]** を選択します。
+
+1. **[基本]** タブの **[プロジェクトの詳細]** と **[マネージド ドインスタンスの詳細]** に必須情報を記入します。 これは、SQL Managed Instance をプロビジョニングするために必要な最小限の情報セットです。
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-managed-instance-create-basic.png" alt-text="Managed Instance の作成の基本タブが表示されている Azure portal のスクリーンショット":::
+
+   構成オプションの詳細については、[クイック スタート: Azure SQL Managed Instance の作成](../managed-instance/instance-create-quickstart.md)に関するページを参照してください。
+
+1. **[認証]** の下の **[認証方法]** にある **[Azure Active Directory (Azure AD) 認証のみを使用]** を選択します。
+
+1. **[管理者の設定]** を選択します。マネージド インスタンス Azure AD 管理者として Azure AD プリンシパルを選択するメニューが表示されます。 完了したら、 **[選択]** ボタンを使用して管理者を設定します。
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-managed-instance-create-basic-choose-authentication.png" alt-text="Managed Instance の作成の基本タブが表示され、Azure AD 認証のみが選択されている Azure portal のスクリーンショット":::
+
+1. 残りの設定は既定値のまま使用できます。 **[ネットワーク]** や **[セキュリティ]** などのタブや設定の詳細については、[クイック スタート: Azure SQL Managed Instance の作成](../managed-instance/instance-create-quickstart.md)に関する記事を参照してください。
+
+1. 設定の構成が完了したら、 **[確認と作成]** を選択して続行します。 **[作成]** を選択して、マネージド インスタンスのプロビジョニングを開始します。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -710,7 +728,6 @@ Invoke-RestMethod -Uri https://management.azure.com/subscriptions/$subscriptionI
 
 ## <a name="limitations"></a>制限事項
 
-- プロビジョニング中に Azure portal を使用して、Azure AD 専用認証を有効にしたマネージド インスタンスの作成は、現在サポートされていません。
 - サーバー管理者のパスワードをリセットするには、Azure AD 専用認証を無効にする必要があります。
 - Azure AD 専用認証が無効になっている場合は、すべての API を使用するときに、サーバー管理者とパスワードを持つサーバーを作成する必要があります。
 

@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
-ms.date: 1/14/2021
-ms.openlocfilehash: 5ae1bfde67d2fed9147ffe8a18203f3dc1d80c19
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/04/2021
+ms.openlocfilehash: d4b9249ece6117af35466b0984c9dc5ceff2a224
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431980"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843636"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database での検出可能なクエリ パフォーマンス ボトルネックの種類
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -197,7 +197,7 @@ Intelligent Insights を使用して[ワークロードの増加](database/intel
   ワークロードで一時テーブルが使用されていたり、プランで TempDB 溢れが発生したりしている場合、クエリには TempDB のスループットに問題がある可能性があります。 DMV を使用した[TempDB に関する問題の特定](database/monitoring-with-dmvs.md#identify-tempdb-performance-issues)に関する記事を参照してください。
 - **メモリ関連の問題**
 
-  ワークロードに十分なメモリがない場合、ページの予測保持期間が低下するか、クエリが取得するメモリが必要なメモリよりも少なくなる可能性があります。 場合によっては、クエリ オプティマイザーの組み込みインテリジェンスによってメモリ関連の問題は修正されます。 DMV を使用した[メモリ許可に関する問題の特定](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)に関する記事を参照してください。
+  ワークロードに十分なメモリがない場合、ページの予測保持期間が低下するか、クエリが取得するメモリが必要なメモリよりも少なくなる可能性があります。 場合によっては、クエリ オプティマイザーの組み込みインテリジェンスによってメモリ関連の問題は修正されます。 DMV を使用した[メモリ許可に関する問題の特定](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)に関する記事を参照してください。 詳細情報やサンプル クエリについては、「[Azure SQL Database によるメモリ不足エラーのトラブルシューティング](database/troubleshoot-memory-errors-issues.md)」を参照してください。
 
 ### <a name="methods-to-show-top-wait-categories"></a>上位の待機カテゴリを表示する方法
 

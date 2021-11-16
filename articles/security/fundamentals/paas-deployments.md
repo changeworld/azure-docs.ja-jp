@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 96223db4d9087395f6771a4922694592a9e51b5e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 558eebf12179b04fb9a76c3db0195c4e812e956c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037342"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335444"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -53,7 +53,7 @@ ms.locfileid: "131037342"
 
 Azure プラットフォームではネットワークベースのさまざまなテクノロジを使用して、強力な DDoS 保護を提供します。 ただし、ネットワークベースのすべての種類の DDoS 保護方法には、リンクごとやデータセンターごとに限界があります。 大規模な DDoS 攻撃の影響を回避するには、DDoS 攻撃に対する防御を迅速かつ自動的にスケール アウトする Azure のコア クラウド機能を活用できます。 これを実行する方法については、推奨されるプラクティスの記事で詳しく説明します。
 
-## <a name="modernizing-the-defenders-mindset"></a>防御担当者の意識を改革
+## <a name="modernizing-the-defender-for-clouds-mindset"></a>Defender for Cloud の思考を最新式にする
 PaaS デプロイにより、セキュリティへのアプローチ全般に変革がもたらされます。 すべて自分で制御しなければならない状況から、Microsoft と責任を分担する状況へと変わります。
 
 PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重要な相違点は、主要なセキュリティ境界を定義する新しい視点です。 これまでは、ネットワークこそがオンプレミスの主要なセキュリティ境界であり、オンプレミス セキュリティ設計のほとんどでは、主要なセキュリティの中心としてネットワークが使用されてきました。 PaaS デプロイでは、ID を主要なセキュリティ境界と考えることによって、お客様により充実したサービスを提供します。
@@ -125,7 +125,7 @@ App Service 使用時のベスト プラクティスを次に示します。
 **詳細**: [App Service Environment](../../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../../app-service/overview-vnet-integration.md)」を参照してください。
 
 **ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
-**詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
+**詳細**: Microsoft Defender for Cloud を使用し、お使いの App Service 環境を監視します。 Defender for Cloud では、潜在的なセキュリティの脆弱性を特定すると、必要な抑制力を構成するプロセスを指示する[推奨事項](../../security-center/asset-inventory.md)が作成されます。
 
 ## <a name="azure-cloud-services"></a>Azure クラウド サービス
 [Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) は、PaaS の 1 つの例です。 このテクノロジは、Azure App Service と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。

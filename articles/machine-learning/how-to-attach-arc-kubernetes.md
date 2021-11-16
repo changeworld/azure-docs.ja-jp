@@ -1,6 +1,6 @@
 ---
 title: Azure Arc 対応機械学習 (プレビュー)
-description: Azure Machine Learning で機械学習モデルのトレーニングと推論を行う Azure Arc 対応 Kubernetes クラスターを構成する
+description: Azure Machine Learning で機械学習モデルのトレーニングと推論を行う Azure Kubernetes Service と Azure Arc 対応 Kubernetes クラスターを構成する
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
@@ -9,22 +9,30 @@ ms.subservice: mlops
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5e9d95f863e5107a71118da9fdc9b0c5329acbb0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4c2867382ffd3c3369417b0e83fb89bc6dd6561
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084666"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460946"
 ---
-# <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Azure Arc 対応機械学習を構成する (プレビュー)
+# <a name="configure-kubernetes-clusters-for-machine-learning-preview"></a>機械学習のための Kubernetes クラスターを構成する (プレビュー)
 
-トレーニングと推論を行うための Azure Arc 対応機械学習を構成する方法について説明します。
+機械学習ワークロードのトレーニングと推論に使用する Azure Kubernetes Service (AKS) と Azure Arc 対応 Kubernetes クラスターを構成する方法について説明します。
 
 ## <a name="what-is-azure-arc-enabled-machine-learning"></a>Azure Arc 対応機械学習とは
 
 Azure Arc を使用することで、ユーザーはオンプレミス、マルチクラウド、エッジを問わず、あらゆる Kubernetes 環境で Azure サービスを実行することができます。
 
-Azure Arc 対応機械学習を使用すると、Azure Arc 対応 Kubernetes クラスターを構成して、Azure Machine Learning で機械学習モデルをトレーニング、推論、管理することができます。
+Azure Arc 対応機械学習を使用すると、Azure Kubernetes Service または Azure Arc 対応 Kubernetes クラスターを構成して、Azure Machine Learning で機械学習モデルをトレーニング、推論、管理することができます。
+
+## <a name="machine-learning-on-azure-kubernetes-service"></a>Azure Kubernetes Service での Machine Learning
+
+Azure Machine Learning のトレーニングと推論ワークロードに Azure Kubernetes Service クラスターを使用する場合、それらを Azure Arc に接続する必要はありません。
+
+インバウンドとアウトバウンドのネットワーク トラフィックを構成する必要があります。 詳細については、[ネットワークのインバウンド トラフィックおよびアウトバウンド トラフィックの構成 (AKS)](how-to-access-azureml-behind-firewall.md#azure-kubernetes-services-1) に関する記事を参照してください。
+
+Azure Machine Learning の拡張機能を Azure Kubernetes Service クラスターにデプロイする方法については、「[Azure Machine Learning 拡張機能の展開](#deploy-azure-machine-learning-extension)」セクションを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,15 +40,18 @@ Azure Arc 対応機械学習を使用すると、Azure Arc 対応 Kubernetes ク
 * Azure Arc 対応 Kubernetes クラスター。 詳細については、[既存の Kubernetes クラスターを Azure Arc に接続する方法に関するクイックスタート ガイド](../azure-arc/kubernetes/quickstart-connect-cluster.md)を参照してください。
 
     > [!NOTE]
-    > Azure Kubernetes Service (AKS) クラスターについては、それらを Azure Arc に接続することは **省略可能です**。
+    > AKS クラスターについて、それらを Azure Arc に接続するかどうかは **任意** です。
+
+* [Azure Arc のネットワーク要件](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)を満たすこと
+
+    > [!IMPORTANT]
+    > 送信プロキシ サーバーまたはファイアウォールの内側で実行するクラスターには、追加のネットワーク構成が必要です。
+    >
+    > 詳細については、[ネットワークのインバウンド トラフィックおよびアウトバウンド トラフィックの構成 (Azure Arc 対応 Kubernetes)](how-to-access-azureml-behind-firewall.md#arc-kubernetes)に関する記事を参照してください。
 
 * [Azure Arc 対応 Kubernetes クラスターの拡張機能の前提条件](../azure-arc/kubernetes/extensions.md#prerequisites)を満たしていること。
   * Azure CLI バージョン >= 2.24.0
   * Azure CLI k8s-extension 拡張機能のバージョン >= 1.0.0
-* [Azure Arc のネットワーク要件](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)を満たすこと
-
-    > [!IMPORTANT]
-    > 送信プロキシ サーバーまたはファイアウォールの内側で実行するクラスターには、追加のネットワーク構成が必要です。 詳細については、[ネットワークの着信トラフィックおよび送信トラフィックの構成](how-to-access-azureml-behind-firewall.md#arc-kubernetes)に関する記事を参照してください。
 
 * Azure Machine Learning ワークスペース。 まだお持ちでない場合は、開始する前に[ワークスペースを作成](how-to-manage-workspace.md?tabs=python)してください。
   * Azure Machine Learning Python SDK のバージョン >= 1.30
@@ -84,7 +95,7 @@ Azure Arc 対応 Kubernetes には、Azure Policy 定義、監視、機械学習
 `k8s-extension` Azure CLI 拡張機能の [`create`](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) コマンドを使用して、Azure Arc 対応 Kubernetes クラスターに Azure Machine Learning 拡張機能を展開します。
 
 > [!IMPORTANT]
-> Azure Machine Learning 拡張機能を AKS クラスターに展開するには、`--cluster-type` パラメーターを `managedCluster` に設定します。
+> Azure Machine Learning 拡張機能を AKS クラスターに展開するには、`--cluster-type` パラメーターを `managedClusters` に設定します。
 
 Azure Machine Learning 拡張機能のさまざまな展開シナリオに使用できる構成設定の一覧を次に示します。
 

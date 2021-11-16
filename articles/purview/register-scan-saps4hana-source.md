@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: c3497b39699d66cc665ea2c217dea5e016ca42df
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: df8794f0b22fa5ae1cc457bd8dfebc12032a7961
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472411"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848877"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Azure Purview での SAP S/4HANA への接続と管理
 
@@ -23,7 +23,9 @@ ms.locfileid: "131472411"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [あり](how-to-lineage-sapecc.md)|
+| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| [はい**](how-to-lineage-sapecc.md)|
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 ## <a name="prerequisites"></a>前提条件
 

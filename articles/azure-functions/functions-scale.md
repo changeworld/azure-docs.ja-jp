@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2c760e4b1ca923496d11002f2e30b72672f32df
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9deb2e40c081b776a8dfa5fc5fb96efcfc4c219f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778402"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252941"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions のホスティング オプション
 
@@ -48,16 +48,16 @@ Azure で Function App を作成するときは、アプリのホスティング
 
 ## <a name="operating-systemruntime"></a>オペレーティング システム/ランタイム
 
-次の表は、ホスティング プランでサポートされているオペレーティング システムと言語ランタイムのサポートを示しています。
+次の表では、ホスティング プランでのオペレーティング システムと言語のサポートを示します。
 
 | | Linux<sup>1</sup><br/>コードのみ | Windows<sup>2</sup><br/>コードのみ | Linux<sup>1、3</sup><br/>Docker コンテナー |
 | --- | --- | --- | --- |
-| **[従量課金プラン](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | サポートなし  |
-| **[Premium プラン](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[専用プラン](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes (ダイレクト)](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[Azure Arc (プレビュー)](../app-service/overview-arc-integration.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[従量課金プラン](consumption-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript | サポートなし  |
+| **[Premium プラン](functions-premium-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript  | 
+| **[専用プラン](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[ASE](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript | 
+| **[Kubernetes (ダイレクト)](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[Azure Arc (プレビュー)](../app-service/overview-arc-integration.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | 該当なし |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
 
 <sup>1</sup> Linux は、Python ランタイム スタックでサポートされている唯一のオペレーティング システムです。 <br/>
 <sup>2</sup> Windows は、PowerShell ランタイム スタックでサポートされている唯一のオペレーティング システムです。<br/>

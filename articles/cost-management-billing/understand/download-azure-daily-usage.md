@@ -4,18 +4,19 @@ description: Azure の毎日の使用状況と料金をダウンロードまた�
 keywords: 使用量の請求, 利用料金, 使用量のダウンロード, 使用量の表示, Azure 請求書, Azure 使用量
 author: bandersmsft
 ms.author: banders
+ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.date: 09/15/2021
-ms.openlocfilehash: 7b5a9f195d2ba8b682dd4458358cb9d85b7f16d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: e7f4a5f12ec9e1be5c7129d12ed519bc4c781d61
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644526"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255410"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
@@ -48,6 +49,10 @@ EA のお客様として使用量データを表示およびダウンロード�
 1. **[使用量 + 請求金額]** を選択します。
 1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。  
     ![EA のお客様の [コストの管理と請求] の [請求書] ページを示すスクリーンショット。](./media/download-azure-daily-usage/download-usage-ea.png)
+1. [使用量と請求金額をダウンロードする] ページの [使用状況詳細] で、ダウンロードする請求の種類を一覧から選びます。 選択に応じて、RI (予約) 購入を含むすべての請求金額 (使用量と購入額) が CSV ファイルで提供されます。 または、予約購入を含む償却費 (使用量と購入額)。 
+    :::image type="content" source="./media/download-azure-daily-usage/select-usage-detail-charge-type.png" alt-text="ダウンロードする使用量の詳細と請求の種類の選択を示すスクリーンショット。" :::
+1. **[ドキュメントの準備]** を選びます。
+1.  月間使用量によっては、Azure でダウンロードを準備するまでに時間がかかることがあります。 ダウンロードの準備ができたら、**[CSV のダウンロード]** を選択します。
 
 ## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Microsoft 顧客契約に関する使用量のダウンロード
 
@@ -89,16 +94,15 @@ Microsoft 顧客契約を結んでいる場合は、現在の請求期間の月�
 サブスクリプションの月度累計使用量情報を照会するには、サインイン後、[az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) コマンドを使用します。
 
 ```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
+az costmanagement query --timeframe MonthToDate --type Usage --dataset-aggregation '{\"totalCost\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}}' --dataset-grouping name="ResourceGroup" type="Dimension"
    --scope "subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
 **--dataset-filter** などのパラメーターを使用してクエリを絞り込むこともできます。
 
 ```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
-   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+'{\"totalCost\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}}' --dataset-grouping name="ResourceGroup" type="Dimension"
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
 ```
 
 **--dataset-filter** パラメーターには、JSON 文字列または `@json-file` を指定します。
