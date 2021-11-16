@@ -9,12 +9,12 @@ ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 22c64b5489cbcf0206624e613fb9d3449fa4a4d1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 6584120a0a66fd1d913fdee86a24ce3d91b2555f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219287"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519669"
 ---
 # <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager テンプレートでカスタム パラメーターを使用する
 
@@ -124,6 +124,13 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
         "properties": {
             "typeProperties": {
                 "*": "="
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/credentials" : {
+        "properties": {
+            "typeProperties": {
+                "resourceId": "="
             }
         }
     }
@@ -430,4 +437,4 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
 - [Resource Manager テンプレートを各環境に手動でレベル上げする](continuous-integration-delivery-manual-promotion.md)
 - [リンクされた Resource Manager テンプレート](continuous-integration-delivery-linked-templates.md)
 - [修正プログラム運用環境の適用](continuous-integration-delivery-hotfix-environment.md)
-- [サンプルのデプロイ前と後のスクリプト](continuous-integration-delivery-sample-script.md)
+- [サンプルのデプロイ前とデプロイ後のスクリプト](continuous-integration-delivery-sample-script.md)

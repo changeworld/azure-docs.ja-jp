@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5e66040d279700b2755ccf5ca554891f3f4c3c7
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 0144ea1819a2ea3fd58b238744290556fbea0eae
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132371070"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132159129"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -307,6 +307,15 @@ Azure portal では、必要なアクセス許可が [Azure Active Directory] > 
 **製品の機能:** 開発者エクスペリエンス
  
 最新の Edge ブラウザーは、[シングル ページ アプリの認証コード](../develop/v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps)を利用するときに、`Origin` ヘッダーを提供する要件に含まれるようになりました。 互換性修正プログラムで、最新の Edge ブラウザーが CORS コントロールから誤って除外されていましたが、そのバグは 10 月中に修正されます。 アプリケーションのサブセットは、ブラウザーで無効にされている CORS に依存しています。これには、トラフィックから `Origin` ヘッダーが削除されるという副作用があります。 これは Azure AD を使用する場合にサポートされていない構成であり、CORS の無効化に依存するこれらのアプリでは、セキュリティの回避策として最新の Edge を使用できなくなります。  すべての最新のブラウザーには、CORS が強制的に適用されるように、HTTP 仕様ごとに `Origin` ヘッダーが含まれている必要があります。 [詳細については、こちらを参照してください](../develop/reference-breaking-changes.md#the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt)。 
+
+---
+
+### <a name="general-availability---access-packages-can-expire-after-number-of-hours"></a>一般提供 - 数時間後にアクセス パッケージを期限切れにできる
+
+**種類:** 新機能  
+**サービス カテゴリ:** ユーザー アクセス管理 **製品の機能:** エンタイトルメント管理
+ 
+エンタイトルメント管理での有効期限の詳細設定に、別のオプションが用意されるようになりました。 以前の設定に加えて、数時間で期限切れになるアクセス パッケージを構成できます。 [詳細については、こちらを参照してください](../governance/entitlement-management-access-package-create.md#lifecycle)。
 
 ---
 

@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 971a45445f65d35a7393c25e6ac88ad2134577e4
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 9d2b984d78abd09e1fe4baf7e0c443e83ad8dc13
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132323236"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523108"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -137,50 +137,50 @@ AIP は、Microsoft Information Protection (MIP) ソリューションの一部�
 
 Microsoft Defender for Cloud は、データ センターのセキュリティ体制を強化する統合インフラストラクチャ セキュリティ管理システムです。Azure 内かどうかにかかわらずクラウド内とオンプレミス上のハイブリッド ワークロード全体を保護する高度な脅威防止機能があります。
 
-詳細については、[Microsoft Defender for Cloud 製品ドキュメント](../../security-center/security-center-introduction.md)を参照してください。
+詳細については、[Microsoft Defender for Cloud 製品ドキュメント](../../defender-for-cloud/defender-for-cloud-introduction.md)を参照してください。
 
 次の表は、Azure および Azure Government の現在の Defender for Cloud 機能の可用性を示します。
 
-| 機能とサービス                                                                                                                                                                  | Azure          | Azure Government               |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|
-| **Microsoft Defender for Cloud の無料機能**                                                                                                                                                |                |                                |
-| <li> [連続エクスポート](../../security-center/continuous-export.md)                                                                                                             | GA             | GA                             |
-| <li> [ワークフローの自動化](../../security-center/continuous-export.md)                                                                                                           | GA             | GA                             |
-| <li> [推奨事項の除外規則](../../security-center/exempt-resource.md)                                                                                                  | パブリック プレビュー | 利用不可                  |
-| <li> [アラートの抑制ルール](../../security-center/alerts-suppression-rules.md)                                                                                                | GA             | GA                             |
-| <li> [セキュリティ アラートのメール通知](../../security-center/security-center-provide-security-contact-details.md)                                                        | GA             | GA                             |
-| <li> [エージェントと拡張機能の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)                                                              | GA             | GA                             |
-| <li> [資産インベントリ](../../security-center/asset-inventory.md)                                                                                                                 | GA             | GA                             |
-| <li> [Microsoft Defender for Cloud のブック ギャラリーの Azure Monitor ブック レポート](../../security-center/custom-dashboards-azure-workbooks.md)                                  | GA             | GA                             |
+| 機能とサービス                                                                                                                                                                      | Azure          | Azure Government               |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|
+| **Microsoft Defender for Cloud の無料機能**                                                                                                                                       |                |                                |
+| <li> [連続エクスポート](../../defender-for-cloud/continuous-export.md)                                                                                                                 | GA             | GA                             |
+| <li> [ワークフローの自動化](../../defender-for-cloud/workflow-automation.md)                                                                                                               | GA             | GA                             |
+| <li> [推奨事項の除外規則](../../defender-for-cloud/exempt-resource.md)                                                                                                      | パブリック プレビュー | 利用不可                  |
+| <li> [アラートの抑制ルール](../../defender-for-cloud/alerts-suppression-rules.md)                                                                                                    | GA             | GA                             |
+| <li> [セキュリティ アラートのメール通知](../../defender-for-cloud/configure-email-notifications.md)                                                            | GA             | GA                             |
+| <li> [エージェントと拡張機能の自動プロビジョニング](../../defender-for-cloud/enable-data-collection.md)                                                                  | GA             | GA                             |
+| <li> [資産インベントリ](../../defender-for-cloud/asset-inventory.md)                                                                                                                     | GA             | GA                             |
+| <li> [Microsoft Defender for Cloud のブック ギャラリーの Azure Monitor ブック レポート](../../defender-for-cloud/custom-dashboards-azure-workbooks.md)                               | GA             | GA                             |
 | **Microsoft Defender のプランと拡張機能**                                                                                                                                          |                |                                |
-| <li> [Microsoft Defender for servers](../../security-center/defender-for-servers-introduction.md)                                                                                    | GA             | GA                             |
-| <li> [Microsoft Defender for App Service](../../security-center/defender-for-app-service-introduction.md)                                                                            | GA             | 利用不可                  |
-| <li> [Microsoft Defender for DNS](../../security-center/defender-for-dns-introduction.md)                                                                                            | GA             | GA                             |
-| <li> [コンテナー レジストリ用 Microsoft Defender](../../security-center/defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> |
-| <li> [CI/CD ワークフロー内の画像をスキャンするコンテナー レジストリ用 Microsoft Defender](../../security-center/defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | パブリック プレビュー | 利用不可                  |
-| <li> [Microsoft Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             |
-| <li> [Azure Arc 対応 Kubernetes クラスター用 Defender 拡張機能](../../security-center/defender-for-kubernetes-azure-arc.md) <sup>[5](#footnote5)</sup>                 | パブリック プレビュー | 利用不可                  |
-| <li> [Azure SQL データベース サーバー用 Microsoft Defender](../../security-center/defender-for-sql-introduction.md)                                                                     | GA             | GA                             |
-| <li> [Microsoft Defender for SQL servers on machines](../../security-center/defender-for-sql-introduction.md)                                                                        | GA             | GA                             |
-| <li> [オープンソース リレーショナル データベース用 Microsoft Defender](../../security-center/defender-for-databases-introduction.md)                                                         | GA             | 利用不可                  |
-| <li> [Microsoft Defender for Key Vault](../../security-center/defender-for-key-vault-introduction.md)                                                                                | GA             | 利用不可                  |
-| <li> [Microsoft Defender for Resource Manager](../../security-center/defender-for-resource-manager-introduction.md)                                                                  | GA             | GA                             |
-| <li> [Microsoft Defender for Storage](../../security-center/defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             |
-| <li> [Threat protection for Cosmos DB](../../security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                          | パブリック プレビュー | 利用不可                  |
-| <li> [Kubernetes ワークロード保護](../../security-center/kubernetes-workload-protections.md)                                                                                  | GA             | GA                             |
-| <li> [Sentinel との双方向アラート同期](../../sentinel/connect-azure-security-center.md)                                                                       | パブリック プレビュー | 利用不可                  |
+| <li> [Microsoft Defender for servers](../../defender-for-cloud/defender-for-servers-introduction.md)                                                                                    | GA             | GA                             |
+| <li> [Microsoft Defender for App Service](../../defender-for-cloud/defender-for-app-service-introduction.md)                                                                            | GA             | 利用不可                  |
+| <li> [Microsoft Defender for DNS](../../defender-for-cloud/defender-for-dns-introduction.md)                                                                                            | GA             | GA                             |
+| <li> [コンテナー レジストリ用 Microsoft Defender](../../defender-for-cloud/defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> |
+| <li> [CI/CD ワークフロー内の画像をスキャンするコンテナー レジストリ用 Microsoft Defender](../../defender-for-cloud/defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | パブリック プレビュー | 利用不可                  |
+| <li> [Microsoft Defender for Kubernetes](../../defender-for-cloud/defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             |
+| <li> [Azure Arc 対応 Kubernetes クラスター用 Defender 拡張機能](../../defender-for-cloud/defender-for-kubernetes-azure-arc.md) <sup>[5](#footnote5)</sup>                           | パブリック プレビュー | 利用不可                  |
+| <li> [Azure SQL データベース サーバー用 Microsoft Defender](../../defender-for-cloud/defender-for-sql-introduction.md)                                                                     | GA             | GA                             |
+| <li> [Microsoft Defender for SQL servers on machines](../../defender-for-cloud/defender-for-sql-introduction.md)                                                                        | GA             | GA                             |
+| <li> [オープンソース リレーショナル データベース用 Microsoft Defender](../../defender-for-cloud/defender-for-databases-introduction.md)                                                         | GA             | 利用不可                  |
+| <li> [Microsoft Defender for Key Vault](../../defender-for-cloud/defender-for-key-vault-introduction.md)                                                                                | GA             | 利用不可                  |
+| <li> [Microsoft Defender for Resource Manager](../../defender-for-cloud/defender-for-resource-manager-introduction.md)                                                                  | GA             | GA                             |
+| <li> [Microsoft Defender for Storage](../../defender-for-cloud/defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             |
+| <li> [Threat protection for Cosmos DB](../../defender-for-cloud/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                              | パブリック プレビュー | 利用不可                  |
+| <li> [Kubernetes ワークロード保護](../../defender-for-cloud/kubernetes-workload-protections.md)                                                                                      | GA             | GA                             |
+| <li> [Sentinel との双方向アラート同期](../../sentinel/connect-azure-security-center.md)                                                                           | パブリック プレビュー | 利用不可                  |
 | **Microsoft Defender for servers の機能** <sup>[7](#footnote7)</sup>                                                                                                               |                |                                |
-| <li> [Just In Time VM アクセス](../../security-center/security-center-just-in-time.md)                                                                                             | GA             | GA                             |
-| <li> [ファイルの整合性の監視](../../security-center/security-center-file-integrity-monitoring.md)                                                                             | GA             | GA                             |
-| <li> [アダプティブ アプリケーション制御](../../security-center/security-center-adaptive-application.md)                                                                              | GA             | GA                             |
-| <li> [アダプティブ ネットワークのセキュリティ強化機能](../../security-center/security-center-adaptive-network-hardening.md)                                                                           | GA             | 利用不可                  |
-| <li> [Docker ホストのセキュリティ強化機能](../../security-center/harden-docker-hosts.md)                                                                                                       | GA             | GA                             |
-| <li> [マシンに対する統合された脆弱性評価](../../security-center/deploy-vulnerability-assessment-vm.md)                                                             | GA             | 利用不可                  |
-| <li> [規制へのコンプライアンス ダッシュボードおよびレポート](../../security-center/security-center-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             |
-| <li> [Microsoft Defender for Endpoint のデプロイと統合ライセンス](../../security-center/security-center-wdatp.md)                                                         | GA             | GA                             |
-| <li> [AWS アカウントを接続する](../../security-center/quickstart-onboard-aws.md)                                                                                                      | GA             | 利用不可                  |
-| <li> [GCP アカウントを接続する](../../security-center/quickstart-onboard-gcp.md)                                                                                                      | GA             | 利用不可                  |
-|                                                                                                                                                                                  |                |                                |
+| <li> [Just In Time VM アクセス](../../defender-for-cloud/just-in-time-access-overview.md)                                                                                                 | GA             | GA                             |
+| <li> [ファイルの整合性の監視](../../defender-for-cloud/file-integrity-monitoring-overview.md)                                                                                 | GA             | GA                             |
+| <li> [アダプティブ アプリケーション制御](../../defender-for-cloud/adaptive-application-controls.md)                                                                                  | GA             | GA                             |
+| <li> [アダプティブ ネットワークのセキュリティ強化機能](../../defender-for-cloud/adaptive-network-hardening.md)                                                                               | GA             | 利用不可                  |
+| <li> [Docker ホストのセキュリティ強化機能](../../defender-for-cloud/harden-docker-hosts.md)                                                                                                           | GA             | GA                             |
+| <li> [マシンに対する統合された脆弱性評価](../../defender-for-cloud/deploy-vulnerability-assessment-vm.md)                                                                 | GA             | 利用不可                  |
+| <li> [規制へのコンプライアンス ダッシュボードおよびレポート](../../defender-for-cloud/regulatory-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                           | GA             | GA                             |
+| <li> [Microsoft Defender for Endpoint のデプロイと統合ライセンス](../../defender-for-cloud/integration-defender-for-endpoint.md)                                                             | GA             | GA                             |
+| <li> [AWS アカウントを接続する](../../defender-for-cloud/quickstart-onboard-aws.md)                                                                                                          | GA             | 利用不可                  |
+| <li> [GCP アカウントを接続する](../../defender-for-cloud/quickstart-onboard-gcp.md)                                                                                                          | GA             | 利用不可                  |
+|                                                                                                                                                                                      |                |                                |
 
 <sup><a name="footnote1"></a>1</sup> 部分的に GA: 脆弱性スキャンで発見された特定の項目を無効にする機能はパブリック プレビュー段階です。
 
@@ -194,7 +194,7 @@ Microsoft Defender for Cloud は、データ センターのセキュリティ�
 
 <sup><a name="footnote6"></a>6</sup> 部分的に GA: Microsoft Defender for Storage の脅威保護アラートの一部はパブリック プレビュー段階です。
 
-<sup><a name="footnote7"></a>7</sup> これらの機能には、すべて [Microsoft Defender for servers](../../security-center/defender-for-servers-introduction.md) が必要です。
+<sup><a name="footnote7"></a>7</sup> これらの機能には、すべて [Microsoft Defender for servers](../../defender-for-cloud/defender-for-servers-introduction.md) が必要です。
 
 <sup><a name="footnote8"></a>8</sup> クラウドの種類ごとに提供される標準が異なる場合があります。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09322cb8d5497b2f6ea639955ebd7338e39f2418
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a6b7a9c072951a7010403c9e54dff844eb910d95
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116587"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490672"
 ---
 # <a name="recommendations-and-guidelines-for-keyword-recognition"></a>キーワード認識に関する推奨事項とガイドライン
 
@@ -42,13 +42,13 @@ ms.locfileid: "110116587"
 
 [キーワード検証](keyword-recognition-overview.md#keyword-verification)が使用されるマルチステージのキーワード認識シナリオでは、アプリケーションでエンドユーザーにキーワード検出を通知させるタイミングを選択できます。 視覚または可聴インジケーターを表示する際には、キーワード検証サービスからの応答を頼りにすることをお勧めします。
 
-![精度を最適化する際のユーザー エクスペリエンス ガイドライン。](media/custom-keyword/keyword-verification-ux-accuracy.png)
+![精度を最適化する際のユーザー エクスペリエンス ガイドライン。](media/custom-keyword/kw-verification-ux-accuracy.png)
 
 これにより、誤って受け入れてしまうユーザー認識の影響を最小限に抑えるという精度の観点からは最適なエクスペリエンスを確保できますが、余分の待機時間が発生することになります。
 
 待機時間を最適化する必要のあるアプリケーションでは、デバイス上のキーワード認識に基づいて、エンドユーザーに対して軽い控えめなインジケーターを提供できます。 たとえば、LED パターンを点灯させたり、アイコンを点滅させたりします。 キーワード検証でキーワードが受け入れられた場合は、インジケーターを存続させ、応答でキーワードが拒否された場合は、無視することができます。
 
-![待機時間を最適化する際のユーザー エクスペリエンス ガイドライン。](media/custom-keyword/keyword-verification-ux-latency.png)
+![待機時間を最適化する際のユーザー エクスペリエンス ガイドライン。](media/custom-keyword/kw-verification-ux-latency.png)
 
 ## <a name="next-steps"></a>次の手順
 

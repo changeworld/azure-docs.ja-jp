@@ -4,12 +4,12 @@ ms.service: iot-dps
 ms.topic: include
 ms.date: 10/10/2021
 ms.author: v-stharr
-ms.openlocfilehash: fa416ff3e3ef5b502b65ac414558692ccd7071b5
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: ac1d2554df675dc055530ab4b721a0510f2fddfb
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129866138"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399403"
 ---
 > [!NOTE]
 > このサービスの一部の領域には、調整可能な制限があります。 これは、次の表の *調整可能?* 列に示されています。 制限が調整可能な場合、*調整可能?* の値は *はい* になります。
@@ -42,4 +42,3 @@ Device Provisioning Service には、次のレートの制限があります。
 | デバイス登録 | 200/分/サービス | はい |
 | デバイスのポーリング操作 | 5/10 秒/デバイス | いいえ |
 
-DPS での各 API 呼び出しは、1 回の "*操作*" として課金されます。 これには、すべてのサービス API とデバイス登録 API が含まれます。 デバイス登録のポーリング操作は課金されません。

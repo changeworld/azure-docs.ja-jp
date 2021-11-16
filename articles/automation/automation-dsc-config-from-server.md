@@ -3,19 +3,15 @@ title: Azure Automation State Configuration のために既存のサーバーか
 description: この記事では、Azure Automation State Configuration のために既存のサーバーから構成を作成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8fc5210ad64d534f8be015d324a454b513b7fccc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0240fd14a8e5dd5975fd499839e10caa0756953f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758341"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491509"
 ---
 # <a name="create-configurations-from-existing-servers"></a>既存のサーバーから構成を作成する
 

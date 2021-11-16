@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe761073c2e7f9a18d9750cea2f4369663cb4a1
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: a10d5f1e21f741382ad0d82c06c3f60b19e2c1c4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132300787"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519327"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>特権アカウントのためのセキュリティ運用
 
@@ -140,7 +140,7 @@ Azure AD サインイン ログをデータ ソースとして使用して、特
 | 名前付けポリシーに従わない特権アカウント。| | Azure サブスクリプション | [Azure portal を使用して Azure でのロールの割り当てを一覧表示する - Azure RBAC](../../role-based-access-control/role-assignments-list-portal.md)| サブスクリプションのロール割り当てを一覧表示し、サインイン名が組織の形式と一致していない場合にアラートを出します。 たとえば、プレフィックスとしての ADM_ です。 |
 | 割り込み |  高/中 | Azure AD サインイン | 状態 = 中断<br>および<br>エラー コード = 50074<br>および<br>失敗の理由 = 強力な認証が必要<br>状態 = 中断<br>および<br>エラー コード = 500121<br>失敗の理由 = 強力な認証の要求時に、認証に失敗しました | これは、攻撃者がアカウントのパスワードを持っていても、MFA チャレンジに合格できないことを示している可能性があります。 | 
 | 名前付けポリシーに従わない特権アカウント。| 高 | Azure AD ディレクトリ | [Azure AD ロールの割り当てを一覧表示する](../roles/view-assignments.md)| UPN が組織の形式と一致しない Azure AD ロール アラートのロール割り当てを一覧表示します。 たとえば、プレフィックスとしての ADM_ です。 |
-| MFA に登録されていない特権アカウントを検出します。 | 高 | Azure AD Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 [credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
+| MFA に登録されていない特権アカウントを検出します。 | 高 | Microsoft Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 [credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
 | アカウントのロックアウト | 高 | Azure AD サインイン ログ | 状態 = 失敗<br>および<br>エラー コード = 50053 | ベースラインしきい値を定義してから、組織の行動に合わせて監視および調整し、誤ったアラートが生成されないようにします。 |
 | アカウントがサインインで無効またはブロックされる | 低 | Azure AD サインイン ログ | 状態 = 失敗<br>および<br>ターゲット = ユーザー UPN<br>および<br>エラー コード = 50057 | これは、誰かが組織を退職した後にアカウントにアクセスしようとしていることを示している可能性があります。 このアカウントはブロックされていますが、このアクティビティについて記録し、アラートを出すことが重要です。 |
 | MFA 不正のアラート/ブロック | 高 | Azure AD サインイン ログ/Azure Log Analytics | Sign-ins>Authentication details Result details = MFA denied, Fraud Code Entered (サインイン>認証詳細 結果詳細 = MFA 拒否、不正なコードの入力) | 特権ユーザーは、自分が MFA プロンプトを引き起こしていないと示しており、攻撃者がアカウントのパスワードを持っていることを示している可能性があります。 |

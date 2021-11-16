@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 41960e60479bf553eeb92cebb9888e2ae01aae55
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: a820101897ae20dbdeac029187d4ace356ae08af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503074"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491110"
 ---
 # <a name="detailed-example-of-shapes-and-projections-in-a-knowledge-store"></a>ナレッジ ストア内のシェイプとプロジェクションの詳細な例
 
@@ -29,7 +29,7 @@ GitHub にある [azure-search-postman-samples](https://github.com/Azure-Samples
 
 ## <a name="set-up-sample-data"></a>サンプル データを設定する
 
-プロジェクト コレクションにはサンプル ドキュメントは特に含まれていませんが、[azure-search-sample-data リポジトリ](https://github.com/Azure-Samples/azure-search-sample-data)の [AI エンリッチメント デモ データ ファイル](https://github.com/azure-search-sample-data/tree/master/ai-enrichment-mixed-media)にはテキストと画像が含まれており、この例で説明するプロジェクションと連携しています。
+プロジェクト コレクションにはサンプル ドキュメントは特に含まれていませんが、[azure-search-sample-data リポジトリ](https://github.com/Azure-Samples/azure-search-sample-data)の [AI エンリッチメント デモ データ ファイル](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/ai-enrichment-mixed-media)にはテキストと画像が含まれており、この例で説明するプロジェクションと連携しています。
 
 Azure Storage に BLOB コンテナーを作成し、14 項目すべてをアップロードします。
 

@@ -6,8 +6,8 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9548e3dfd01e4cc0c48a0d5e61a68a0c1b3276d4
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 9a316ce12c9352b86e45426130925d4ca3e23c2f
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132336831"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518890"
 ---
 # <a name="deploy-custom-content-from-your-repository-public-preview"></a>リポジトリからカスタム コンテンツをデプロイする (パブリック プレビュー)
 

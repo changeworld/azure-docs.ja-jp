@@ -3,15 +3,15 @@ title: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用し�
 description: このチュートリアルでは、Intel が提供する AI モデル サーバー (トレーニング済みモデルを含む) を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 titleSuffix: Azure
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 29c6771921ca7e37d5825a24e812234fff9e294b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2e6e14849bfa00862b2fd87a0e42d88b315ab14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091163"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490707"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -72,7 +72,7 @@ HTTP 拡張プロセッサ ノードは、プロキシの役割を果たしま�
 
 ### <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
-Azure リソースを設定する際に、IoT Edge デバイスとして使用している、Azure の Linux VM に[駐車場の短いビデオ](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)がコピーされます。 このクイックスタートでは、このビデオ ファイルを使用してライブ ストリームをシミュレートします。
+Azure リソースを設定する際に、IoT Edge デバイスとして使用している、Azure の Linux VM に[駐車場の短いビデオ](https://avamedia.blob.core.windows.net/public/lots_015.mkv)がコピーされます。 このクイックスタートでは、このビデオ ファイルを使用してライブ ストリームをシミュレートします。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 

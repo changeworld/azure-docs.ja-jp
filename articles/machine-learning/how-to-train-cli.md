@@ -11,12 +11,12 @@ ms.author: amipatel
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 1300a830fb3688c9ebc2b9f43b77e3b9214c731d
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b849293d94b435fa74378d80d8989e6075f78d86
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054317"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493668"
 ---
 # <a name="train-models-with-the-cli-v2-preview"></a>CLI (v2) を使用してモデルをトレーニングする (プレビュー)
 
@@ -350,7 +350,7 @@ scikit-learn フレームワークは、自動ログ記録のために MLflow �
 
 Azure Machine Learning では、PyTorch、TensorFlow、MPI ベースの分散トレーニングがサポートされています。 詳細については、[コマンド ジョブ YAML 構文リファレンスの分散セクション](reference-yaml-job-command.md#distribution-configurations)を参照してください。
 
-たとえば、分散 PyTorch を使用して、CIFAR-10 データセットで自力ニューラル ネットワーク (CNN) をトレーニングできます。 完全なスクリプトは、[サンプル リポジトリ](https://github.com/Azure/azureml-examples/tree/cli-preview/jobs/single-step/pytorch/cifar-distributed/)で入手できます。
+たとえば、分散 PyTorch を使用して、CIFAR-10 データセットで自力ニューラル ネットワーク (CNN) をトレーニングできます。 完全なスクリプトは、[サンプル リポジトリ](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/single-step/pytorch/cifar-distributed)で入手できます。
 
 `torchvision` の CIFAR-10 データセットは、`cifar-10-batches-py` ディレクトリを含むディレクトリを入力として受け取る必要があります。 zip 形式のソースをダウンロードし、ローカル ディレクトリに抽出できます。
 

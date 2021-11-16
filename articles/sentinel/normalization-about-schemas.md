@@ -6,8 +6,8 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d33602cf17ebd9004bd77d353d6315cd780e39d0
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 5a315d02b29e113958c1bf2e9004e33b9021caa7
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132373006"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520315"
 ---
 # <a name="advanced-siem-information-model-asim-schemas-public-preview"></a>Advanced SIEM Information Model (ASIM) スキーマ (パブリック プレビュー)
 
@@ -85,7 +85,7 @@ ms.locfileid: "132373006"
 
 次のフィールドは、レコードごとに Log Analytics によって生成され、[カスタム コネクタを作成する](create-custom-connector.md)ときにオーバーライドできます。
 
-| フィールド         | Type     | 考察 (Discussion)      |
+| フィールド         | 型     | 考察 (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
@@ -99,7 +99,7 @@ ms.locfileid: "132373006"
 
 次のフィールドは、すべてのスキーマに対して ASIM によって定義されます。
 
-| フィールド               | クラス       | Type       |  説明        |
+| フィールド               | クラス       | 型       |  説明        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
 | **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
@@ -169,7 +169,7 @@ ms.locfileid: "132373006"
 
 次の表では、ユーザーに対してサポートされている識別子について説明します。
 
-|正規化されたフィールド  |Type  |形式とサポートされる型  |
+|正規化されたフィールド  |型  |形式とサポートされる型  |
 |---------|---------|---------|
 |**UserId**     |    String     |   コンピューターが判読できる、英数字で、システム内のユーザーを一意に表現したもの。 <br><br>形式とサポートされる型は次のとおりです。<br>    - **SID** (Windows): `S-1-5-21-1377283216-344919071-3415362939-500`<br>    -  **UID** (Linux): `4578`<br>    -    **AADID** (Azure Active Directory): `9267d02c-5f76-40a9-a9eb-b686f3ca47aa`<br>    - **OktaId**: `00urjk4znu3BcncfY0h7`<br>    - **AWSId**: `72643944673`<br><br>    ID 型を `UserIdType` フィールドに格納します。 他の ID がある場合は、フィールド名をそれぞれ`UserSid`、`UserUid`、`UserAADID`、`UserOktaId`、`UserAwsId`に正規化することを推奨します。       |
 |**ユーザー名**     |  String       |   ユーザー名 (可能な場合はドメイン情報を含む) を、以下のいずれかの形式で、以下の優先順位で記載してください。 <br> -   **Upn/Email**: `johndow@contoso.com` <br>  -    **Windows**: `Contoso\johndow` <br> -   **DN**: `CN=Jeff Smith,OU=Sales,DC=Fabrikam,DC=COM` <br>  - **Simple**: `johndow`. この形式は、ドメイン情報が使用できない場合にのみ使用してください。 <br><br> Username 型を `UsernameType` フィールドに格納します。    |
@@ -187,7 +187,7 @@ ms.locfileid: "132373006"
 
 次の表では、プロセスに対してサポートされている識別子について説明します。
 
-|正規化されたフィールド  |Type  |形式とサポートされる型  |
+|正規化されたフィールド  |型  |形式とサポートされる型  |
 |---------|---------|---------|
 |**Id**     |    String     |   OS によって割り当てられたプロセス ID。      |
 |**Guid**     |  String       |   OS によって割り当てられたプロセス GUID。 GUID は一般的にシステムの再起動間で一意ですが、ID は再利用される場合が多いです。   |
@@ -218,7 +218,7 @@ ms.locfileid: "132373006"
 
 次の表では、デバイスに対してサポートされている識別子について説明します。
 
-|正規化されたフィールド  |Type  |形式とサポートされる型  |
+|正規化されたフィールド  |型  |形式とサポートされる型  |
 |---------|---------|---------|
 |**hostname**     |    String     |        |
 |**FQDN**     |  String       |   完全修飾ドメイン名   |

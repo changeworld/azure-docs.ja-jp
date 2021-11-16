@@ -5,12 +5,12 @@ services: automation
 keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Management, Change Tracking, DSC, インベントリ, Runbook, Python, グラフィカル
 ms.date: 10/25/2021
 ms.topic: overview
-ms.openlocfilehash: e641908666c081ca66a76999c63a29e73befe6aa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d6a703a04aeec9b764f74a7574cde4baea875604
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030361"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491490"
 ---
 # <a name="what-is-azure-automation"></a>Azure Automation とは
 
@@ -116,10 +116,10 @@ Azure Automation は、インフラストラクチャとアプリケーション
 
 これらの Azure サービスは、HTTP Webhook または API メソッドを使用して、Automation ジョブおよび Runbook リソースを処理できます。
 
-* [Azure Logic Apps](/connectors/built-in.md)
-* [Azure Power Apps](/connectors/azureautomation.md)
+* [Azure Logic Apps](/azure/connectors/built-in)
+* [Azure Power Apps](/connectors/azureautomation)
 * [Azure Event Grid](../event-grid/handler-webhooks.md)
-* [Azure Power Automate](/connectors/azureautomation.md)
+* [Azure Power Automate](/connectors/azureautomation)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

@@ -1,18 +1,18 @@
 ---
 title: App Service Environment の使用および管理
 description: App Service Environment でアプリを作成、発行、スケーリングする方法について説明します。 この記事では、すべての一般的なタスクを紹介します。
-author: ccompy
+author: madsd
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 8/5/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 379122c7446c9a0a2434905d794072f03dd3a10c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ab273ab277b91cf76962eff97e5cf3dd10a9b897
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240587"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520353"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 > [!NOTE]

@@ -10,12 +10,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 11/03/2021
-ms.openlocfilehash: 94a1d171fb2bdf16f8229aa9a9bc9fd4a7ab3458
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: f979651909a2484f6bcdf7b0953c91874bea7cc5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062911"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520657"
 ---
 # <a name="autoscale-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントを自動スケーリングする (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Monitor 自動スケーリング機能では、豊富なルール セッ�
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-## <a name="prerequisites"></a>必須コンポーネント 
+## <a name="prerequisites"></a>前提条件 
 
 * デプロイされたエンドポイント。 [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングします (プレビュー)](how-to-deploy-managed-online-endpoints.md)。 
 
@@ -187,7 +187,7 @@ __[メトリックに基づいてスケーリングする]__ を選択してか�
 
 Azure Monitor を使用した自動スケーリングの詳細については、次の記事を参照してください。
 
-- [自動スケール設定について](/autoscale/autoscale-understand-settings)
-- [自動スケーリングの一般的なパターンの概要](/autoscale/autoscale-common-scale-patterns)
-- [自動スケーリングのベスト プラクティス](/autoscale/autoscale-best-practices)
-- [Azure 自動スケーリングのトラブルシューティング](/autoscale/autoscale-troubleshoot)
+- [自動スケール設定について](/azure-monitor/autoscale/autoscale-understand-settings)
+- [自動スケーリングの一般的なパターンの概要](/azure-monitor/autoscale/autoscale-common-scale-patterns)
+- [自動スケーリングのベスト プラクティス](/azure-monitor/autoscale/autoscale-best-practices)
+- [Azure 自動スケーリングのトラブルシューティング](/azure-monitor/autoscale/autoscale-troubleshoot)

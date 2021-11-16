@@ -7,19 +7,19 @@ metadata:
   author: memildin
   manager: rkarlin
   ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
-  ms.service: security-center
+  ms.service: defender-for-cloud
   ms.devlang: na
   ms.topic: conceptual
   ms.tgt_pltfrm: na
   ms.workload: na
   ms.date: 11/09/2021
   ms.author: memildin
-  ms.openlocfilehash: 129a040e1c0823390eab07e33e2ad8c411541ddc
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: 37ba61efbecdad80ab57dca2f535edbdb8681a14
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132350026"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132487178"
 title: FAQ - Microsoft Defender for Cloud に関する一般的な質問
 summary: ''
 sections:

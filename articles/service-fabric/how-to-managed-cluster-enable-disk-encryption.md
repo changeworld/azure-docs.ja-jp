@@ -4,12 +4,12 @@ description: ARM テンプレートを使用して、Windows の Azure Service F
 ms.topic: how-to
 ms.date: 11/8/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd16cdea3a5c8fa4f235ff14ab75bdd07e348db0
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: d1d1db17d6914904d9995883903c50982de84daa
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132349853"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486946"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-nodes"></a>Service Fabric 管理対象クラスター ノードのディスク暗号化を有効にする
 
@@ -60,7 +60,7 @@ Service Fabric マネージド クラスターは、データ保護を促進す�
    New-AzResourceGroupDeployment -Name $resourceGroupName -ResourceGroupName $resourceGroupName -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug -Verbose 
    ```
 
-   `Get-AzVmssDiskEncryption` コマンドを使用して、ノードの種類の基になるスケール セットでディスク暗号化の状態を確認できます。 まず、マネージド クラスターのサポート リソースグループ (基になる仮想ネットワーク、ロード バランサー、パブリック IP、NSG、スケール セット、ストレージ アカウントを含む) の名前を確認する必要があります。 `VmssName` は必ず、確認するクラスター ノードの種類の名前 (デプロイ テンプレートで指定) に変更してください。
+   `Get-AzVmss` コマンドを使用して、ノードの種類の基になるスケール セットでディスク暗号化の状態を確認できます。 まず、マネージド クラスターのサポート リソースグループ (基になる仮想ネットワーク、ロード バランサー、パブリック IP、NSG、スケール セット、ストレージ アカウントを含む) の名前を確認する必要があります。 `NodeTypeNAme` は必ず、確認するクラスター ノードの種類の名前 (デプロイ テンプレートで指定) に変更してください。
 
    ```powershell
    $NodeTypeName = "NT2"

@@ -9,14 +9,14 @@ ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: spunukol
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e80a7a27a084734183f28edad7816edbcbe2ebb
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: ade33d37584595bcc5c4e9ce1d1fda6edadd67a4
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/10/2021
-ms.locfileid: "132136142"
+ms.locfileid: "132158069"
 ---
 # <a name="troubleshoot-devices-by-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -67,7 +67,7 @@ ms.locfileid: "132136142"
 - **TpmProtected**: デバイスの秘密キーがハードウェア トラステッド プラットフォーム モジュール (TPM) に格納されている場合は、状態が *YES* に設定されます。
 - **DeviceAuthStatus**: Azure AD でデバイスの正常性を確認するためのチェックを実行します。 正常性状態は次のとおりです。  
   * *SUCCESS* Azure AD にデバイスが存在し、有効になっている場合。  
-  * *FAILED. Device is either disabled or deleted* デバイスが無効になっているか削除されている場合。 この問題の詳細については、[ Azure Active Directory デバイス管理の FAQ](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)に関するページを参照してください。  
+  * *FAILED. Device is either disabled or deleted* デバイスが無効になっているか削除されている場合。 この問題の詳細については、[ Azure Active Directory デバイス管理の FAQ](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-11-devices)に関するページを参照してください。 
   * *FAILED. ERROR* テストを実行できなかった場合。 このテストには、Azure AD へのネットワーク接続が必要です。
     > [!NOTE]
     > **DeviceAuthStatus** フィールドは Windows 10 May 2021 Update (バージョン 21H1) で追加されました。  

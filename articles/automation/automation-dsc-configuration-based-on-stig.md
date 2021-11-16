@@ -3,19 +3,15 @@ title: Azure Automation State Configuration の STIG に基づくデータの構
 description: この記事では、Azure Automation State Configuration の DoD STIG に基づいてデータを構成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: dab0cd7f7d660808b4ed7a91318baad55f80928c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba875eb6fd132a6f5bcf916936545ac76c1656d3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87015138"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488585"
 ---
 # <a name="configure-data-based-on-security-technical-information-guide-stig"></a>セキュリティ技術情報ガイド (STIG) に基づいてデータを構成する
 

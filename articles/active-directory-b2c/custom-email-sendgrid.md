@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/10/2021
+ms.date: 09/15/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7cebff64b67d5ec9f97700929d576ef8dbbc9bf0
-ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
+ms.openlocfilehash: 5bb6c3aef0476e3da440eb8523d0ccc09491e074
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132180105"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501402"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -167,9 +167,6 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
 1. ページの最上部の **[Save]\(保存\)** を選択します。
 1. **[Transactional Templates]\(トランザクション テンプレート\)** に戻るには、戻る矢印を選択します。
 1. 後の手順で使用するために、作成したテンプレートの **ID** を記録します。 たとえば、「 `d-989077fbba9746e89f3f6411f596fb96` 」のように入力します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
-
-
-[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C の要求の種類を追加する
 
@@ -391,7 +388,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>DisplayControl への参照を付ける
 
-最後の手順では、作成した DisplayControl への参照を追加します。 基本ポリシーで構成されている既存の `LocalAccountSignUpWithLogonEmail` および `LocalAccountDiscoveryUsingEmailAddress` セルフアサート技術プロファイルを、次の XML スニペットでオーバーライドします。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合、これらの技術プロファイルでは `DisplayControl` への参照を伴う `DisplayClaims` が使用されています。
+最後の手順では、作成した DisplayControl への参照を追加します。 既存の `LocalAccountSignUpWithLogonEmail` と `LocalAccountDiscoveryUsingEmailAddress` セルフアサート技術プロファイルを次のように置き換えます。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合。 これらの技術プロファイルでは、DisplayControl を参照する `DisplayClaims` が使用されます。
 
 詳細については、[セルフアサート技術プロファイル](restful-technical-profile.md)に関するページと「[DisplayControl](display-controls.md)」を参照してください。
 
@@ -462,7 +459,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -559,7 +556,9 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カスタム メール確認 - DisplayControls カスタム ポリシー](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/SendGrid)の例は GitHub で確認できます。
+カスタム メール確認ポリシーの例は GitHub で確認できます。
+
+- [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - カスタム REST API や任意の HTTP ベース SMTP メール プロバイダーの使用方法については、「[Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する](restful-technical-profile.md)」を参照してください。
 
 ::: zone-end

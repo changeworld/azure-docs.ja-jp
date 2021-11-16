@@ -2,14 +2,14 @@
 title: 連続録画と再生に関するチュートリアル - Azure Video Analyzer
 description: このチュートリアルでは、Azure Video Analyzer を使用してクラウドに連続録画し、その録画を再生する方法について説明します。
 ms.topic: tutorial
-ms.date: 09/27/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c7fb6e35b3fa4f06734ab5aedb4c7b8df6d8ba27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4b01a1a02e6e9c7901f6b366ff79b1e84891e44d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030337"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493307"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>チュートリアル: 連続録画と再生
 
@@ -59,7 +59,7 @@ ms.locfileid: "131030337"
 > :::image type="content" source="../media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="CVR のための Video Analyzer パイプライン":::
 <!-- ./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg -->
 
-このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) を使用して構築されたエッジ モジュールを使用して、RTSP カメラをシミュレートします。 パイプライン内では、[RTSP ソース](../pipeline.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[ビデオ シンク ノード](../pipeline.md#video-sink)に送信します。これにより、ビデオが Video Analyzer アカウントに録画されます。 このチュートリアルで使用するビデオは、[幹線道路の交差点のサンプル ビデオ](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)です。
+このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) を使用して構築されたエッジ モジュールを使用して、RTSP カメラをシミュレートします。 パイプライン内では、[RTSP ソース](../pipeline.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[ビデオ シンク ノード](../pipeline.md#video-sink)に送信します。これにより、ビデオが Video Analyzer アカウントに録画されます。 このチュートリアルで使用するビデオは、[幹線道路の交差点のサンプル ビデオ](https://avamedia.blob.core.windows.net/public/camera-300s.mkv)です。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 

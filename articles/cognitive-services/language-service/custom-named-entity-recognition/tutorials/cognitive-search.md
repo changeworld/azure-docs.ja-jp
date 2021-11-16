@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: cc7a7c478ada34aeea5815ec937b8442aa2bd98c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 555269beeb5e8b36597998a8941e2b64120691b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092084"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484172"
 ---
 # <a name="tutorial-enrich-a-cognitive-search-index-with-custom-entities-from-your-data"></a>チュートリアル: データからのカスタム エンティティで Cognitive Search のインデックスをエンリッチする
 
@@ -115,7 +115,7 @@ ms.locfileid: "131092084"
 
 ### <a name="prepare-configuration-file"></a>構成ファイルを準備する
 
-1. ダウンロードしたフォルダーで、[サンプル構成ファイル](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Docs/Assets/configs.json)を見つけます。 それをテキスト エディターで開きます。 
+1. ダウンロードしたフォルダーで、[サンプル構成ファイル](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Samples/configs.json)を見つけます。 それをテキスト エディターで開きます。 
 
 2. 次のようにして、ストレージ アカウントの接続文字列を取得します。
     1. [Azure portal](https://ms.portal.azure.com/#home) でストレージ アカウントの概要ページに移動します。
@@ -137,7 +137,7 @@ ms.locfileid: "131092084"
 
 ### <a name="prepare-schema-file"></a>スキーマ ファイルを準備する
 
-前にダウンロードしたフォルダーで、[サンプル スキーマ ファイル](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Docs/Assets/app-schema.json)を見つけます。 それをテキスト エディターで開きます。 
+前にダウンロードしたフォルダーで、[サンプル スキーマ ファイル](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Samples/app-schema.json)を見つけます。 それをテキスト エディターで開きます。 
 
 `entityNames` 配列内のエントリは、プロジェクトの作成時に割り当てたエンティティ名になります。 それらをプロジェクトからコピーして、[Language Studio](https://aka.ms/custom-extraction) に貼り付けます。または、 
 

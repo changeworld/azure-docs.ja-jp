@@ -2,13 +2,13 @@
 title: Azure リソースをデプロイするための Bicep 言語
 description: Azure にインフラストラクチャをデプロイするための Bicep 言語について説明します。 JSON を使用してテンプレートを開発するよりも優れた作成エクスペリエンスが提供されます。
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: ace417bb8a71a277bbcb4ef178c6aaf24b97533b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/12/2021
+ms.openlocfilehash: 028ec297aa30bf6bfd397fee83b8b4525a66bdbc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831949"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484290"
 ---
 # <a name="what-is-bicep"></a>Bicep とは
 
@@ -110,27 +110,9 @@ ARM テンプレートを選択したお客様の場合、Bicep によって作�
 
 準備ができたら、[JSON ファイルを Bicep に逆コンパイルする](./decompile.md)ことができます。
 
-## <a name="known-limitations"></a>既知の制限事項
+**Bicep を使用して Azure Stack Hub にデプロイすることはできますか?**
 
-- Bicep では改行が識別されます。 次に例を示します。
-
-    ```bicep
-    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
-      ...
-    }
-    ```
-
-    これを次のように記述することはできません。
-
-    ```bicep
-    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' =
-        if (newOrExisting == 'new') {
-          ...
-        }
-    ```
-
-- 単一の apiProfile をリソースの種類ごとの apiVersion のセットにマップするために使用される apiProfile の概念はサポートされていません。
-- ユーザー定義関数はサポートされていません。
+はい。Azure Stack Hub のデプロイには Bicep を使用できます。ただし Bicep では、まだ Azure Stack Hub では利用できない型が表示されることがあるので注意してください。 [Azure Stack Hub クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/Bicep)で一連の例をご覧いただけます。 
 
 ## <a name="next-steps"></a>次の手順
 

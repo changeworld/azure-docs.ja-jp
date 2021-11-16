@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/30/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e3999eaa137a26680ff5741f38d434d2a9f618
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 8b76f3a84a227bc4a3ac6fd28a7f15206c5c34a4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998905"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400986"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Azure AD におけるサインイン診断とは
 

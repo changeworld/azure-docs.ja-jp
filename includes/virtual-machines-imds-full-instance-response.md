@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: ef1c20a0d51ca0f96d812e31efdc1b496dea1271
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7bb7b18288eb8c284f7b6f7abfacf52d8365245b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130173322"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132530071"
 ---
 #### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
@@ -21,7 +21,7 @@ ms.locfileid: "130173322"
         "azEnvironment": "AZUREPUBLICCLOUD",
         "extendedLocation": {
             "type": "edgeZone",
-            "location": "microsoftlosangeles"
+            "name": "microsoftlosangeles"
         },
         "evictionPolicy": "",
         "isHostCompatibilityLayerVm": "true",
@@ -161,7 +161,7 @@ ms.locfileid: "130173322"
         "azEnvironment": "AZUREPUBLICCLOUD",
         "extendedLocation": {
             "type": "edgeZone",
-            "location": "microsoftlosangeles"
+            "name": "microsoftlosangeles"
         },
         "evictionPolicy": "",
         "isHostCompatibilityLayerVm": "true",

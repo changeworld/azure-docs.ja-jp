@@ -9,12 +9,12 @@ ms.subservice: automl
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: 93bad9fa76940a31a26fca624507038a773bfd91
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 3b638535784e35089050f3f7e55d85232800ef06
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132343270"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561558"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -272,7 +272,7 @@ spearman_correlation| スピアマンの相関は、2 つのデータセット�
 画像オブジェクト検出またはインスタンス セグメント化のモデルからのすべての予測は、信頼度スコアと関連付けられます。
 信頼度スコアがスコアのしきい値より大きい予測は予測として出力され、メトリックの計算に使用されます。その既定値はモデルによって異なり、[ハイパーパラメーターの調整](how-to-auto-train-image-models.md#model-specific-hyperparameters)に関するページ (`box_score_threshold` ハイパーパラメーター) から参照できます。
 
-画像オブジェクト検出とインスタンス セグメント化モデルのメトリック コンピューティングは、**IoU** ([Intersection over Union](https://en.wikipedia.org/wiki/Jaccard_index)) というメトリックで定義される重複測定に基づいて行われます。これを計算するには、グランドトゥルースと予測の間の積集合を、グランドトゥルースと予測の和集合で除算します。 すべての予測から計算された IoU は、IoU しきい値と呼ばれる **重複しきい値** と比較されます。これでは、ユーザーが注釈を付けたグランドトゥルースとどれだけ予測が重なると、予測が陽性の予測と見なされるかが決定されます。 予測から計算された IoU が重複しきい値よりも小さい場合、その予測は関連するクラスの陽性の予測とは見なされません。
+画像オブジェクト検出とインスタンス セグメント化モデルのメトリック コンピューティングは、**IoU** ([Intersection over Union](https://en.wikipedia.org/wiki/Jaccard_index)) というメトリックで定義される重複測定に基づいて行われます。これを計算するには、グランドトゥルースと予測の間の積集合を、グランドトゥルースと予測の和集合で除算します。 すべての予測から計算された IoU は、IoU しきい値と呼ばれる **重複しきい値** と比較されます。これにより、予測がユーザーが注釈をつけたグランドトゥルースとどれだけ重なると、予測が陽性の予測と見なされるかが決まります。 予測から計算された IoU が重複しきい値よりも小さい場合、その予測は関連するクラスの陽性の予測とは見なされません。
 
 画像オブジェクト検出モデルとインスタンス セグメント化モデルを評価するための主要なメトリックは、**平均適合率 (mAP)** です。 mAP は、すべてのクラスの平均適合率 (AP) の平均値です。 自動化 ML オブジェクト検出モデルは、次の 2 つの一般的な方法を使用した mAP の計算をサポートしています。
 

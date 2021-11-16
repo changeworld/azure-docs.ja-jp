@@ -4,20 +4,22 @@ description: Azure Chaos Studio について理解します。これは、カオ
 services: chaos-studio
 author: johnkemnetz
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/11/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: template-overview,ignite-fall-2021
-ms.openlocfilehash: 7375457b539fc24fad8dce34e416c341ce4abf68
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 4df530e20733e5f24db930e88bb30894293416a7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/12/2021
-ms.locfileid: "132371507"
+ms.locfileid: "132399335"
 ---
 # <a name="what-is-azure-chaos-studio-preview"></a>Azure Chaos Studio プレビューとは
 
 Azure Chaos Studio は、Azure アプリケーションに障害を挿入することで回復性を向上させる管理サービスです。 アプリケーションに対して、制御されたフォールト挿入実験を実行すると (カオス エンジニアリングとして知られるプラクティス)、リージョンの停止や VM で高 CPU 使用率を引き起こすアプリケーション障害といった実際のインシデントに対する回復性を測定して理解し、向上させることができます。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Videos/Azure-Chaos-Studio-Curious-to-control-chaos/player]
 
 ## <a name="why-should-i-use-chaos-studio"></a>Chaos Studio を使用する必要がある理由
 

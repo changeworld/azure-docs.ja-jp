@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 67ac8e5cc3f7d555086ad6f643b82e8615168fa3
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 379d842f465b6e199f86137057dc037b903613a4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028118"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490612"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -255,7 +255,6 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (タンザニア) | `en-TZ` | Female | `en-TZ-ImaniNeural` <sup>[新規作成]</sup>  | 全般 |
 | 英語 (タンザニア) | `en-TZ` | Male | `en-TZ-ElimuNeural` <sup>[新規作成]</sup>  | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-LibbyNeural` | 全般 |
-| 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` <sup>10 月 30 日に廃止予定。詳しくは以下を参照</sup> | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-SoniaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
 | 英語 (米国) | `en-US` | Female | `en-US-AmberNeural` | 全般 |
@@ -436,10 +435,6 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | ウェールズ語 (イギリス) | `cy-GB` | Male | `cy-GB-AledNeural` | 全般 | 
 | ズールー語 (南アフリカ) | `zu-ZA` | Female | `zu-ZA-ThandoNeural` <sup>[新規作成]</sup>  | 全般 |
 | ズールー語 (南アフリカ) | `zu-ZA` | Male | `zu-ZA-ThembaNeural` <sup>[新規作成]</sup>  | 全般 |
-
-> [!IMPORTANT]
-> 英語 (イギリス) 音声の `en-GB-MiaNeural` は、**2021 年 10 月 30 日** に廃止される予定です。 `en-GB-MiaNeural` へのサービス要求は、**2021 年 10 月 30 日** 以降、自動的に `en-GB-SoniaNeural` にリダイレクトされます。
-> コンテナーの Neural TTS をお使いの場合は、**2021 年 10 月 30 日** までに最新版を [ダウンロード](speech-container-howto.md#get-the-container-image-with-docker-pull)して導入してください。 **2021 年 10 月 30 日** 以降、以前のバージョンの要求はすべて拒否されます。
 
 #### <a name="neural-voices-in-preview"></a>プレビュー段階のニューラル音声
 
@@ -744,7 +739,7 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 | 日本語 (日本) | ja-JP | いいえ | はい |
 | ポルトガル語 (ブラジル) | pt-BR | いいえ | はい |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

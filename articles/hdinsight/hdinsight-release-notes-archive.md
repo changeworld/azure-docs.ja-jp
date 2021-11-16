@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive, references_regions
 ms.date: 07/27/2021
-ms.openlocfilehash: 732d7ee085fdb7ff91ffe4e90ce8d996b9299b6c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b6c80fca815523cdf4ec61d7e66417999fed5d91
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073037"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484144"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
@@ -438,7 +438,7 @@ Zeppelin では、文字列形式のテーブル出力の先頭の 0 が誤っ�
 HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このリリースから、新しく作成された HDInsight クラスターでは、Azure 仮想マシン スケール セットの使用が開始されます。 変更は段階的にロールアウト中です。 破壊的変更は予期されていません。 [Azure 仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)についてご確認ください。
  
 #### <a name="reboot-vms-in-hdinsight-cluster"></a>HDInsight クラスターでの VM の再起動
-このリリースでは、応答しないノードを再起動するために、HDInsight クラスターでの VM の再起動がサポートされます。 現時点では API からのみ実行可能で、PowerShell と CLI でのサポートが予定されています。 API の詳細については、[このドキュメント](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)を参照してください。
+このリリースでは、応答しないノードを再起動するために、HDInsight クラスターでの VM の再起動がサポートされます。 現時点では API からのみ実行可能で、PowerShell と CLI でのサポートが予定されています。 API の詳細については、[このドキュメント](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/virtualMachines.json)を参照してください。
  
 ### <a name="deprecation"></a>非推奨
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark クラスターでの Spark 2.1 と 2.2 の非推奨化

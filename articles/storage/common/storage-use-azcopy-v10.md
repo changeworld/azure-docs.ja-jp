@@ -4,16 +4,16 @@ description: AzCopy は、ストレージ アカウント間のデータ コピ�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2021
+ms.date: 11/15/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ccf2f423137e4732b2785f23256577c92eee07ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2b00c5a0eda3f4679bcbc12a979064cde680e3c
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595657"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516838"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -152,7 +152,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 そのリンクを取得するには、このコマンドを実行します。
 
-| オペレーティング システム  | コマンド |
+| オペレーティング システム  | command |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -162,7 +162,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 この URL はこのコマンドの出力に表示されます。 その後、実際のスクリプトでその URL を使用して AzCopy をダウンロードできます。
 
-| オペレーティング システム  | コマンド |
+| オペレーティング システム  | command |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

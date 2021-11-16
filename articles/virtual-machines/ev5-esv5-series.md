@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: de1f9694bac6cb57c6d14e352a958e7bfc7f0516
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 897ae578ca1ff088e2f3f937bb9f00977ee233ad
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866785"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399354"
 ---
 # <a name="ev5-and-esv5-series"></a>Ev5 および Esv5 シリーズ
 
@@ -38,6 +38,7 @@ Ev5 シリーズでサポートされているディスクの種類は、Standar
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 必須 <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 最大 NIC 数|最大ネットワーク帯域幅 (Mbps) |
@@ -70,6 +71,7 @@ Esv5 シリーズでサポートされているディスクの種類は、Standa
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 必須 <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | キャッシュ不使用時の最大バースト ディスク スループット (IOPS/MBps)<sup>5</sup> | 最大 NIC 数 | 最大ネットワーク帯域幅 (Mbps) |

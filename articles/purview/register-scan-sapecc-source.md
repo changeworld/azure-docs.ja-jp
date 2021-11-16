@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: edc70416671e57624b5e36d90de37f0e9cefd74c
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 853509bbf2148fc4d34463b61c3dfb4a330b79ad
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850643"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486317"
 ---
 # <a name="connect-to-and-manage-sap-ecc-in-azure-purview"></a>Azure Purview での SAP ECC への接続と管理
 
@@ -36,6 +36,9 @@ ms.locfileid: "131850643"
 * Purview Studio でソースを登録して管理するには、データ ソース管理者およびデータ閲覧者である必要があります。 詳細については、[Azure Purview のアクセス許可](catalog-permissions.md)に関するページを参照してください。
 
 * 最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。 詳細については、[セルフホステッド統合ランタイムの作成および構成ガイド](../data-factory/create-self-hosted-integration-runtime.md)に関する記事を参照してください。
+
+    >[!NOTE]
+    >SAP ECC のスキャンはメモリを集中的に使用する操作であり、128 GB などの大容量のメモリを搭載したマシンにセルフホステッド統合ランタイムをインストールすることをお勧めします。
 
 * セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 

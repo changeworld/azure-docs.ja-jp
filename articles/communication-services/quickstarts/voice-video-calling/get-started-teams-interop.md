@@ -9,18 +9,16 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: b585e21a5c8daa425a52d3212dec6ddfb64934f9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 4ab25d1105f8dcad40599a8096ea114c31dfa61a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215898"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488333"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>クイックスタート: 通話アプリを Teams の会議に参加させる
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
-
-Azure Communication Services の使用を開始するには、JavaScript SDK を使用して通話ソリューションを Microsoft Teams に接続します。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/teams-interop/teams-interop-javascript.md)]

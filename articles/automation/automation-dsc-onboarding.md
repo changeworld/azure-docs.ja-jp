@@ -4,18 +4,15 @@ description: この記事では、Azure Automation State Configuration による
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: 8d35eee9d0c205e2d55093d1a6bcec1d762c78a8
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: fc14ccca588a51271f3cb52c90904375b6739802
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651640"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484448"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Automation State Configuration を有効にする
 

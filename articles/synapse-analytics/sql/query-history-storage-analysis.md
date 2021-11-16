@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/28/2021
 ms.custom: template-concept
-ms.openlocfilehash: 866ca9439b5fc06f1e869cef6eef4c4adf979558
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 9f6493b2011a06a56f64e47711756b1172300885
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063880"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490271"
 ---
 # <a name="historical-query-storage-and-analysis-in-azure-synapse-analytics"></a>Azure Synapse Analytics での履歴クエリのストレージと分析
 
@@ -82,7 +82,7 @@ DMV を使用した Azure Synapse Analytics ワークロードの監視に関す
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics ワークスペースは、Azure portal で簡単に作成できます。 Synapse を Log Analytics と接続する方法の詳細については、「[ワークロードを監視する - Azure portal](../sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md)」を参照してください。
 
-Azure Data Explorer と同様に、Log Analytics では Kusto クエリ言語 (KQL) を使用します。 Kusto 構文の詳細については、「[Kusto クエリの概要](/data-explorer/kusto/query/index.md)」を参照してください。 
+Azure Data Explorer と同様に、Log Analytics では Kusto クエリ言語 (KQL) を使用します。 Kusto 構文の詳細については、「[Kusto クエリの概要](/azure/data-explorer/kusto/query/)」を参照してください。 
 
 構成可能な保持期間と共に、Log Analytics でクエリを実行するために特に対象とするワークスペースを選択します。 Log Analytics を使用すると、データの保存、クエリの実行と保存を柔軟に行うことができます。
 
@@ -95,7 +95,7 @@ Azure Data Explorer と同様に、Log Analytics では Kusto クエリ言語 (K
 
 ## <a name="azure-data-explorer-adx"></a>Azure Data Explorer (ADX)
 
-Azure Data Explorer (ADX) は、最先端のデータ探索サービスです。 このサービスは、Azure Synapse Analytics からの履歴クエリを分析するために使用できます。 ログをコピーして Azure Data Factory (ADX) に保存するように ADF パイプラインを設定するには、「[Azure Data Explorer との間でデータをコピーする](/data-factory/connector-azure-data-explorer.md)」を参照してください。 ADX では、パフォーマンスに優れた Kusto クエリを実行してログを分析できます。 たとえば ADF を使用して DMV 出力のクエリを実行して ADX に読み込むために、ここで他の戦略を組み合わせることができます。
+Azure Data Explorer (ADX) は、最先端のデータ探索サービスです。 このサービスは、Azure Synapse Analytics からの履歴クエリを分析するために使用できます。 ログをコピーして Azure Data Factory (ADX) に保存するように ADF パイプラインを設定するには、「[Azure Data Explorer との間でデータをコピーする](/azure/data-factory/connector-azure-data-explorer)」を参照してください。 ADX では、パフォーマンスに優れた Kusto クエリを実行してログを分析できます。 たとえば ADF を使用して DMV 出力のクエリを実行して ADX に読み込むために、ここで他の戦略を組み合わせることができます。
   
 長所:
 * ADX には、カスタマイズ可能なログ保持ポリシーが用意されています。

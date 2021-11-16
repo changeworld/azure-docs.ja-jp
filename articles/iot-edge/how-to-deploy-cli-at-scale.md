@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 678090d4c4de0dfd306bd5b91a26787f9ff15db2
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 504ae03ecff532fff5a8343d02fd8bba21524cfd
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455856"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397321"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-by-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールのデプロイと監視
 
@@ -162,7 +162,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 前の例では、モジュールの `properties.desired` を設定する多層デプロイを示しました。 この多層デプロイは、同じモジュールが既に適用されているデバイスをターゲットにしていた場合、既存の適切なプロパティをすべて上書きしていました。 必要なプロパティを上書きするのではなく更新するには、新しいサブセクションを定義できます。 次に例を示します。
 
 ```json
-"SimulatedTEmperatureSensor": {
+"SimulatedTemperatureSensor": {
   "properties.desired.layeredProperties": {
     "SendData": true,
     "SendInterval": 5
@@ -173,7 +173,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 同じことを次のように表現することもできます。
 
 ```json
-"SimulatedTEmperatureSensor": {
+"SimulatedTemperatureSensor": {
   "properties.desired.layeredProperties.SendData" : true,
   "properties.desired.layeredProperties.SendInterval": 5
 }

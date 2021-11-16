@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-key-phrase, ignite-fall-2021
-ms.openlocfilehash: efa3506540a769c691d8a6d86a4bf2adbfe52dbc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ae7ac89fd1607d49c61421b97586a85d9d7ec945
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090005"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488246"
 ---
 # <a name="what-is-key-phrase-extraction-in-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language のキー フレーズ抽出とは
 
@@ -35,7 +35,7 @@ ms.locfileid: "131090005"
 
 ## <a name="responsible-ai"></a>責任ある AI 
 
-AI システムには、テクノロジだけでなく、それを使用する人、それによって影響を受ける人、それが展開される環境も含まれています。 システムでの責任ある AI の使用と展開については、[キー フレーズ抽出の透過性のためのメモ](/legal/cognitive-services/language-service/transparency-note-key-phrase-detection?context=/azure/cognitive-services/language-service/context/context)の記事を参照してください。 詳細については、次の記事も参照してください。
+AI システムには、テクノロジだけでなく、それを使用する人、それによって影響を受ける人、それが展開される環境も含まれています。 システムでの責任ある AI の使用と展開については、[キー フレーズ抽出の透過性のためのメモ](/legal/cognitive-services/language-service/transparency-note-key-phrase-extraction?context=/azure/cognitive-services/language-service/context/context)の記事を参照してください。 詳細については、次の記事も参照してください。
 
 [!INCLUDE [Responsible AI links](../includes/overview-responsible-ai-links.md)]
 

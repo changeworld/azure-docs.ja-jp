@@ -4,17 +4,17 @@ description: この記事では、Azure Event Hubs での Schema Registry のサ
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 95db225c83bb760b0f5de12a39b20d24c1613d62
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f9e405a82b73530cc53ec98f22b2c1f4473b2550
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449846"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398523"
 ---
 # <a name="azure-schema-registry-in-azure-event-hubs"></a>Azure Event Hubs の Azure スキーマ レジストリ
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに構造化データが含まれています。 [Apache Avro](https://avro.apache.org/) などのスキーマ駆動型形式は、このような構造化データをシリアル化または逆シリアル化するためによく使用されます。 
 
-:::image type="content" source="./media/schema-registry-overview/schema-driven-ser-de.png" alt-text="スキーマ駆動型のシリアル化またはシリアル化解除":::
+:::image type="content" source="./media/schema-registry-overview/schema-driven-ser-de.svg" alt-text="スキーマ駆動型のシリアル化またはシリアル化解除":::
 
 プロデューサー アプリケーションは、スキーマ ドキュメントを使用してイベント ペイロードをシリアル化し、Azure Event Hubs などのイベント ブローカーに発行します。 同様に、コンシューマー アプリケーションは、ブローカーからイベント ペイロードを読み取り、同じスキーマ ドキュメントを使用してシリアル化を解除します。 そのため、プロデューサーとコンシューマーの両方で、スキーマ ドキュメントを使用してデータの整合性を検証できます。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "131449846"
 ## <a name="azure-schema-registry"></a>Azure スキーマ レジストリ
 **Azure Schema Registry** は Event Hubs の機能で、イベント駆動型およびメッセージング中心のアプリケーション用のスキーマ ドキュメントの中央リポジトリとして機能します。 プロデューサーとコンシューマー アプリケーションに対し、スキーマを管理して共有することなく、データを交換できる柔軟性を提供します。 また、Schema Registry には、再利用可能なスキーマのための単純なガバナンス フレームワークが用意されており、グループ化構成体 (スキーマ グループ) を使用してスキーマ間のリレーションシップを定義します。
 
-:::image type="content" source="./media/schema-registry-overview/schema-registry.png" alt-text="スキーマ レジストリ":::
+:::image type="content" source="./media/schema-registry-overview/schema-registry.svg" alt-text="スキーマ レジストリ":::
 
 Apache Avro のようなスキーマ駆動型のシリアル化フレームワークを使用すると、共有スキーマにシリアル化メタデータを外部化するすることで、JSON などのタグ付きの形式の場合と同様に、すべてのデータ セットに含まれる型情報およびフィールド名の、メッセージごとのオーバーヘッドを大幅に削減することもできます。 スキーマをイベントと一緒にイベント インフラストラクチャ内に保持しておくことで、シリアル化または逆シリアル化に必要なメタデータに常にアクセスできるため、スキーマを間違えることがありません。 
 
@@ -36,7 +36,7 @@ Apache Avro のようなスキーマ駆動型のシリアル化フレームワ�
 ## <a name="schema-registry-information-flow"></a>スキーマ レジストリ情報フロー 
 スキーマ レジストリを使用する場合の情報フローは、Azure Event Hubs のイベントを発行または使用するために使用するすべてのプロトコルで同じです。 次の図は、ユーザーがスキーマ レジストリを持つ Kafka イベント プロデューサーとコンシューマー シナリオの情報フローを示しています。 
 
-:::image type="content" source="./media/schema-registry-overview/information-flow.png" lightbox="./media/schema-registry-overview/information-flow.png" alt-text="スキーマ レジストリ情報フローを示す画像。":::
+:::image type="content" source="./media/schema-registry-overview/information-flow.svg" lightbox="./media/schema-registry-overview/information-flow.svg" alt-text="スキーマ レジストリ情報フローを示す画像。":::
 
 
 情報フローはプロデューサー側から開始され、Kafka プロデューサーはスキーマ ドキュメントを使用してデータをシリアル化します。 

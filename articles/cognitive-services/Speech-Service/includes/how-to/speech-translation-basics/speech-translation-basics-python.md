@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: eur
-ms.openlocfilehash: bb01d62fdccb93fd890bde1a2695db44fc53eecf
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 0d8bc9478b41977d4d4f31e4617b6c206d3bfbf9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506877"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529954"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 
@@ -80,6 +80,7 @@ def translate_speech_to_text():
             subscription=speech_key, region=service_region)
 
     # Source (input) language
+    from_language = "it-IT"
     translation_config.speech_recognition_language = from_language
 ```
 

@@ -2,13 +2,13 @@
 title: ストレージ アカウント名のエラー
 description: Azure Resource Manager テンプレート (ARM テンプレート) または Bicep ファイル内でストレージ アカウント名を指定するときに発生する可能性があるエラーについて説明します。
 ms.topic: troubleshooting
-ms.date: 10/26/2021
-ms.openlocfilehash: 78bf097ccaf5f826dc20a11ee36375111b1a7354
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: 8f26efffac8768abb2279722fb1b5dbf174072f3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091430"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487751"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>ストレージ アカウント名のエラーの解決
 
@@ -41,12 +41,7 @@ Message=The storage account named mystorage is already taken.
 
 一意の名前を作成するには、使用している命名規則に、`uniqueString` 関数の結果を連結します。
 
-ARM テンプレートの場合は、[concat](../templates/template-functions-string.md#concat) を [uniqueString](../templates/template-functions-string.md#uniquestring) と一緒に使用します。
-
-```json
-"name": "[concat('storage', uniqueString(resourceGroup().id))]",
-"type": "Microsoft.Storage/storageAccounts",
-```
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
 Bicep は、[string interpolation](../bicep/bicep-functions-string.md#concat) を [uniqueString](../bicep/bicep-functions-string.md#uniquestring) と一緒に使用します。
 
@@ -55,9 +50,30 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
 ```
 
+# <a name="json"></a>[JSON](#tab/json)
+
+ARM テンプレートの場合は、[concat](../templates/template-functions-string.md#concat) を [uniqueString](../templates/template-functions-string.md#uniquestring) と一緒に使用します。
+
+```json
+"name": "[concat('storage', uniqueString(resourceGroup().id))]",
+"type": "Microsoft.Storage/storageAccounts",
+```
+
+---
+
 ストレージ アカウント名が 24 文字を超えないようにしてください。 `uniqueString` 関数は、13 文字を返します。 プレフィックスまたはサフィックスを連結する場合は、11 文字以下の値を指定します。
 
 次の例では、最大 11 文字のプレフィックスを作成するパラメーターを使用します。
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+@description('The prefix value for the storage account name.')
+@maxLength(11)
+param storageNamePrefix string = 'storage'
+```
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -72,18 +88,20 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 }
 ```
 
-```bicep
-@description('The prefix value for the storage account name.')
-@maxLength(11)
-param storageNamePrefix string = 'storage'
-```
+---
 
 次に、パラメーター値を `uniqueString` 値と連結して、ストレージ アカウント名を作成します。
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+name: '${storageNamePrefix}${uniqueString(resourceGroup().id)}'
+```
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "name": "[concat(parameters('storageNamePrefix'), uniquestring(resourceGroup().id))]"
 ```
 
-```bicep
-name: '${storageNamePrefix}${uniqueString(resourceGroup().id)}'
-```
+---

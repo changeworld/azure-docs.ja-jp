@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 11/04/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 42845d87a8c1679a9b186cf71a9b82a9413fb005
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c7770c61ce6d768f3fdd3216da94c87466310e74
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563589"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484239"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>クイック スタート:独自のモデルを使用してライブ ビデオを分析する - HTTP
 
@@ -35,7 +35,7 @@ ms.locfileid: "131563589"
 
 Azure リソースを設定する際に、高速道路のトラフィックの短いビデオが、IoT Edge デバイスとして使用している、Azure の Linux VM にコピーされます。 このクイックスタートでは、このビデオ ファイルを使用してライブ ストリームをシミュレートします。
 
-[VLC メディア プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを開きます。 Ctrl キーを押しながら N キーを押し、[ハイウェイの交差点のサンプル ビデオ](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)へのリンクを貼り付けて、再生を開始します。 高速道路のトラフィック内を移動する多くの車両の映像が表示されます。
+[VLC メディア プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを開きます。 Ctrl キーを押しながら N キーを押し、[ハイウェイの交差点のサンプル ビデオ](https://avamedia.blob.core.windows.net/public/camera-300s.mkv)へのリンクを貼り付けて、再生を開始します。 高速道路のトラフィック内を移動する多くの車両の映像が表示されます。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LTY4]
 

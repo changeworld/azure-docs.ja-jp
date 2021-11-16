@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: f215e67f3ea27e789ebd10e7baa487528339ee8e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: d1901c9f471901c086c99d1c1fff66ab1258bd54
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132316168"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484466"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -24,7 +24,7 @@ ms.locfileid: "132316168"
 
 ### <a name="defender-for-cloud"></a>Defender for Cloud
 
-ポータルでは、Defender for Cloud が関数アプリと統合されます。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行されている関数アプリでは、Defender for Cloud の高度なセキュリティ機能も使用されます (別途料金がかかります)。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/defender-for-app-service-introduction.md)」を参照してください。 
+ポータルでは、Defender for Cloud が関数アプリと統合されます。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行されている関数アプリでは、Defender for Cloud の高度なセキュリティ機能も使用されます (別途料金がかかります)。 詳細については、「[Azure App Service Web アプリと API を保護する](../defender-for-cloud/defender-for-app-service-introduction.md)」を参照してください。 
 
 ### <a name="log-and-monitor"></a>ログ記録と監視を行う
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/28/2021
 ms.topic: how-to
-ms.openlocfilehash: 9dcd0f6ec8935a0c5951421e64f747f3543df846
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 48f83cd92f682b6fb66a1d7b5bebd49cd5053b62
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132346156"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400777"
 ---
 # <a name="deploy-an-extension-based-windows-or-linux-user-hybrid-runbook-worker-in-automation-preview"></a>拡張機能ベースの Windows または Linux ユーザー Hybrid Runbook Worker を Automation にデプロイする (プレビュー)
 
@@ -440,8 +440,8 @@ Azure Resource Manager (ARM) テンプレートを使用して、新しい Azure
 
 テンプレート内に定義されている Azure リソース:
 
-- hybridRunbookWorkerGroups/hybridRunbookWorkers
-- [Microsoft.Compute/virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions): 
+- [hybridRunbookWorkerGroups/hybridRunbookWorkers](/azure/templates/microsoft.automation/automationaccounts/hybridrunbookworkergroups/hybridrunbookworkers)
+- [Microsoft.Compute/virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions)
 
 ### <a name="review-parameters"></a>パラメーターの確認
 

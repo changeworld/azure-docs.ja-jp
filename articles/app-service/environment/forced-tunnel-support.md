@@ -1,18 +1,18 @@
 ---
 title: 強制トンネリングについて
 description: 仮想ネットワークでアウトバウンド トラフィックが強制トンネリングされている場合に App Service Environment を正しく機能させるための設定方法について説明します。
-author: ccompy
+author: madsd
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 ms.date: 05/29/2018
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8d05b4f8e69023e1ecec7002f394141fff008f0d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e0d43424e038328f82d3639891aa85397f68d3ad
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432970"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519612"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 > [!NOTE]

@@ -4,14 +4,14 @@ description: Azure App Service に、初めての Node.js の Hello World を数
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 09/14/2021
-ms.custom: mvc, devcenter, seodec18
+ms.custom: mvc, devcenter, seodec18, mode-portal
 zone_pivot_groups: app-service-vscode-cli-portal
-ms.openlocfilehash: 6eab9e5d144b4c52dff5a3bdd23c47ee3905e212
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 70d98c6aed2e8f561aeb40e4e60fdeab603f58c6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131455694"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524058"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 

@@ -3,12 +3,12 @@ title: プライベート リンクを使用してプライベート エンド�
 description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にします。 プライベート リンク アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 10/26/2021
-ms.openlocfilehash: 36f06efc223ff84efb7cf7d638900a5d018ce149
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ef3f6cd30852f6c2bac5f5e9dce383d8f4501023
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446595"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523412"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure Private Link を使用して Azure Container Registry にプライベートで接続する
 
@@ -21,7 +21,7 @@ ms.locfileid: "131446595"
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 > [!NOTE]
-> 2021 年 10 月以降、新しいコンテナー レジストリには、最大 200 個のプライベート エンドポイントを使えるようになります。 それより前に作成したレジストリの場合、最大 10 個のプライベート エンドポイントを使うことができます。 レジストリの制限を確認するには、[az acr show-usage](/cli/az/acr#az_acr_show_usage) コマンドを使います。
+> 2021 年 10 月以降、新しいコンテナー レジストリには、最大 200 個のプライベート エンドポイントを使えるようになります。 それより前に作成したレジストリの場合、最大 10 個のプライベート エンドポイントを使うことができます。 レジストリの制限を確認するには、[az acr show-usage](/cli/azure/acr#az_acr_show_usage) コマンドを使います。
 
 ## <a name="prerequisites"></a>前提条件
 

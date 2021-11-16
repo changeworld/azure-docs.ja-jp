@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9dc0378ff232fd7743989860ca89baf264de8d2b
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 4c652a9292caf8e7ac198ac6922b11b78a85781e
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/12/2021
-ms.locfileid: "132370462"
+ms.locfileid: "132401423"
 ---
 # <a name="fsv2-series"></a>Fsv2 シリーズ
 
@@ -30,7 +30,7 @@ Fsv2 シリーズの VM は、Intel® ハイパースレッディング テク�
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
-[仮想化を入れ子にする](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md): サポートされています <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU の数 | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps |  バースト キャッシュが無効なディスクの最大スループット: IOPS/MBps<sup>1</sup> |最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |

@@ -1,39 +1,39 @@
 ---
-title: Azure Sentinel 情報モデル (ASIM) コンテンツ | Microsoft Docs
-description: この記事では、Azure Sentinel 情報モデル (ASIM) を使用した Azure Sentinel コンテンツの概要について説明します。
+title: Advanced SIEM Information Model (ASIM) コンテンツ | Microsoft Docs
+description: この記事では、Advanced SIEM Information Model (ASIM) を使用した Microsoft Sentinel コンテンツについて説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.author: ofshezaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 49711b1d056ecc57b64544374461c1f2963b88d2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 78b8615a959a5913b171b8f52b5f6ee0caa85578
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064456"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517484"
 ---
-# <a name="azure-sentinel-information-model-asim-security-content--public-preview"></a>Azure Sentinel 情報モデル (ASIM) セキュリティ コンテンツ (パブリック プレビュー)
+# <a name="advanced-siem-information-model-asim-security-content--public-preview"></a>Advanced SIEM Information Model (ASIM) セキュリティ コンテンツ (パブリック プレビュー)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Azure Sentinel の正規化されたセキュリティ コンテンツには、ソースに依存しない正規化パーサーで使用できる分析ルール、検索クエリ、ブックが含まれています。
+Microsoft Sentinel の正規化されたセキュリティ コンテンツには、ソースに依存しない正規化パーサーで使用できる分析ルール、検索クエリ、ブックが含まれています。
 
-<a name="builtin"></a>Azure Sentinel のギャラリーと[ソリューション](sentinel-solutions-catalog.md)で正規化された組み込みのコンテンツを見つける、独自の正規化されたコンテンツを作成する、または既存のコンテンツを変更して正規化されたデータを使用することができます。
+<a name="builtin"></a>正規化された組み込みのコンテンツを Microsoft Sentinel のギャラリーと[ソリューション](sentinel-solutions-catalog.md)で見つける、独自の正規化されたコンテンツを作成する、既存のコンテンツを変更して正規化されたデータを使用することができます。
 
-この記事では、ASIM をサポートするように構成された組み込みの Azure Sentinel コンテンツを紹介します。  Azure Sentinel GitHub リポジトリへのリンクは以下で参照として示されていますが、これらのルールは [Azure Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 ルールに関連するハンティング クエリをコピーするには、リンクされた GitHub ページを使用してください。
+この記事では、ASIM をサポートするように構成された組み込みの Microsoft Sentinel コンテンツを紹介します。  Microsoft Sentinel GitHub リポジトリへのリンクは下に参照として掲載していますが、これらのルールは [Microsoft Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 ルールに関連するハンティング クエリをコピーするには、リンクされた GitHub ページを使用してください。
 
 > [!TIP]
-> また、Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する[こちらの詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[こちらのスライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)をご確認ください。 詳細については、「[次のステップ](#next-steps)」を参照してください。
+> また、Microsoft Sentinel の正規化パーサーと正規化されたコンテンツに関する詳しいウェビナーを[こちら](https://www.youtube.com/watch?v=zaqblyjQW6k)でご視聴いただけます。スライドは[こちら](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)でご確認いただけます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
 >
 
 > [!IMPORTANT]
@@ -196,11 +196,11 @@ imDns
 
 ## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
-この記事では、Azure Sentinel 情報モデル (ASIM) コンテンツについて説明しています。
+この記事では、Advanced SIEM Information Model (ASIM) コンテンツについて説明します。
 
-詳細については次を参照してください:
+詳細については、次を参照してください。
 
-- [Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)を確認してください。
-- [Azure Sentinel 情報モデルの概要](normalization.md)
-- [Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)
-- [Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)
+- Microsoft Sentinel の正規化パーサーと正規化されたコンテンツに関する詳しいウェビナーを[こちら](https://www.youtube.com/watch?v=zaqblyjQW6k)でご視聴いただけます。スライドは[こちら](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)でご確認いただけます。
+- [Advanced SIEM Information Model の概要](normalization.md)
+- [Advanced SIEM Information Model のスキーマ](normalization-about-schemas.md)
+- [Advanced SIEM Information Model のパーサー](normalization-about-parsers.md)

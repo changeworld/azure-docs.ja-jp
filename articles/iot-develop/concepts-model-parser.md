@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: a4deb82ad3d9029483813e6aa1fd9813c7d815fa
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: eec6c2e70ff11d9da162db79867279abb10d4506
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406420"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399278"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>Digital Twins モデル パーサーについて理解する
 
@@ -28,7 +28,7 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
 ```
 
 > [!NOTE]
-> この記事の執筆時点では、パーサーのバージョンは `3.12.5` です。
+> この記事の執筆時点では、パーサーのバージョンは `3.12.7` です。
 
 ## <a name="use-the-parser-to-validate-a-model"></a>パーサーを使用してモデルを検証する
 

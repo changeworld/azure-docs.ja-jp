@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 8a2fac1ded1cd17d9e47500eda06e58ca21fc6e7
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 496dc7271b3468a106bd6c1dbe25e00bc147c26a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850054"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401973"
 ---
 # <a name="edv5-and-edsv5-series"></a>Edv5 および Edsv5 シリーズ
 
@@ -35,6 +35,7 @@ Edv5 シリーズの仮想マシンでは、ディスクの種類として Stand
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 必須 <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループット: IOPS/MBps<sup>*</sup>  | 最大 NIC 数|最大ネットワーク帯域幅 (Mbps) |
@@ -69,6 +70,7 @@ Edsv5 シリーズの仮想マシンでは、ディスクの種類として Stan
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 必須 <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループット: IOPS/MBps<sup>*</sup> | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | キャッシュ不使用時の最大バースト ディスク スループット (IOPS/MBps)<sup>5</sup> | 最大 NIC 数 | 最大ネットワーク帯域幅 (Mbps) |

@@ -5,16 +5,16 @@ titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c4c2867382ffd3c3369417b0e83fb89bc6dd6561
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 635153d510b18bc0ce97033094abf21a3b6d3d74
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460946"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491630"
 ---
 # <a name="configure-kubernetes-clusters-for-machine-learning-preview"></a>機械学習のための Kubernetes クラスターを構成する (プレビュー)
 

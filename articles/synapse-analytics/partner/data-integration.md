@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fe1843f40759ee329576d0c47d3a8251becaf217
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 78ae9a54d9e09076c010afc75a693a5a87f66ab7
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460168"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518092"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics データ統合パートナー
 
@@ -28,7 +28,7 @@ Azure Synapse Analytics の専用 SQL プールを使用してデータ ウェ�
 | ------- | ----------- | -------------------- |
 | ![Ab Initio](./media/data-integration/abinitio-logo.png) |**Ab Initio**<br> Ab Initio のアジャイルなデジタル エンジニアリング プラットフォームは、企業のコンピューティングにおけるデータ処理とデータ管理に関する最も困難な問題を解決するために役立ちます。 Ab Initio のクラウド ネイティブ プラットフォームを使用すると、従来のシステムに格納されているデータを含め、企業のエコシステム内の任意の場所 (Azure またはオンプレミス) でデータにアクセスし、使用できます。 直感的なインターフェイスに、強力な自動化、データ品質、データ ガバナンス、およびアクティブなメタデータ機能を組み合わせることで、迅速な開発と真のデータ セルフサービスが可能になり、アナリストが迅速かつ効果的に仕事を遂行できるようになります。 Ab Initio を使用して世界最大規模のビジネスに参加し、ビッグ データを有意義なデータに変換しましょう。 |[製品ページ](https://www.abinitio.com/) |
 | ![Aecorsoft](./media/data-integration/aecorsoft-logo.png) |**Aecorsoft**<br> AecorSoft の高速でスケーラブルなリアルタイムの ELT/ETL ソフトウェア ソリューションは、SAP のユーザーが複雑な SAP データを Azure Synapse Analytics および Azure データ プラットフォームに持ち込むのを支援します。 SAP アプリケーション レイヤーのセキュリティに完全に準拠した AecorSoft ソリューションは、SAP アプリケーションと統合するための正式な SAP Premium 認定を受けています。 AecorSoft 独自のスーパーデルタおよび変更データ キャプチャ機能を使用すると、SAP ユーザーは、SAP 透過テーブル、プール、クラスター テーブルの差分データを CSV、Parquet、Avro、ORC、または GZIP 形式で Azure にストリーミングできます。 SAP 表形式データに加えて、BW クエリや S/4HANA CDS ビューなど、その他の多くのビジネス ルール重視型 SAP オブジェクトも完全にサポートされています。 |[製品ページ](https://www.aecorsoft.com/products/dataintegrator)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aecorsoftinc1588038796343.aecorsoftintegrationservice_adf)<br>|
-| ![Alooma](./media/data-integration/alooma_logo.png) |**Alooma**<br> Alooma は、データ チームがさまざまなデータ サイロから Azure Synapse データ ウェアハウスへ、すべてリアル タイムでデータを統合、強化、およびストリーミングできる抽出、変換、読み込み (ETL) ソリューションです。 |[製品ページ](https://www.alooma.com/) |
+| ![Alooma](./media/data-integration/alooma_logo.png) |**Alooma**<br> Alooma は、データ チームがさまざまなデータ サイロから Azure Synapse データ ウェアハウスへ、すべてリアル タイムでデータを統合、強化、およびストリーミングできる抽出、変換、読み込み (ETL) ソリューションです。 | |
 | ![Alteryx](./media/data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer は、セルフサービス型データ分析のための再現可能なワークフローの提供を通じて、従来のアプローチのように分析に数週間も費やすことなく、数時間で深い洞察をもたらします。 Alteryx Designer は、統一された直観的なユーザー インターフェースを使用した、データ準備、データ ブレンド、予測分析、統計分析、および空間分析を組み合わせることにより、データ アナリストを支援します。 |[製品ページ](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![BI ビルダー (Xpert BI)](./media/data-integration/bibuilders-logo.png) |**BI ビルダー (Xpert BI)**<br> Xpert BI を使用すると、メタデータベースの自動化により、組織が Azure で堅牢でスケーラブルなデータ プラットフォームをより迅速に構築し、保守できるようになります。 ベスト プラクティスと DataOps を使用して Azure Synapse が拡張され、組み込みのデータ ガバナンス機能を使用するアジャイル データ開発が実現されます。 Xpert BI を使用すると、ビジネスと分析のニーズの変化と成長に応じて、Azure Synapse、Azure Data Lake Storage、Azure SQL Database などのさまざまな Azure ソリューションをすばやくテストし、切り替えられます。|[製品ページ](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/bi-builders-as.xpert-bi-vm)<br>|
 | ![BryteFlow](./media/data-integration/bryteflow-logo.png) |**BryteFlow**<br> BryteFlow を使用すると、Oracle、SQL Server、SAP、MySQL などのトランザクション ソースのデータを、ベストプラクティスに従って Azure Synapse Analytics にリアルタイムで継続的にレプリケートし、すぐに使用できる調整されたデータにアクセスできます。 BryteFlow では、ログベースの変更データ キャプチャを使用して数分でデータを抽出してレプリケートし、デルタを自動的にマージしてデータを更新します。 また、時系列で構成することもできます。 どのプロセスにもコーディングは不要 (ポイントして選択するのみ) で、宛先にテーブルが自動的に作成されます。 BryteFlow では、非常に高いスループット、テラバイトのデータの取り込み、スマートなパーティション分割、マルチスレッドの並列読み込みを使用した、エンタープライズ規模の自動化されたデータ統合がサポートされます。|[製品ページ](https://bryteflow.com/data-integration-on-azure-synapse/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/bryte.bryteflowingest-azure-standard?tab=Overview)<br>|
