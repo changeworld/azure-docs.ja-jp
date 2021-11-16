@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 839d5f7cd096b9b820e3a137f48efa8882fd3d1c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 09dc0bd3afb2b9bfc99313ad38d5c7ad19086cb8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003120"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061042"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Device Update for IoT Hub への更新プログラムのインポート - スキーマおよびその他の情報
-Device Update for IoT Hub に更新プログラムにインポートする場合は、まず、[概念](import-concepts.md)と[攻略ガイド](import-update.md) を必ず確認しておいてください。 インポート マニフェストの構築時に使用されるスキーマの詳細と、関連するオブジェクトの情報に関心がある場合は、以下を参照してください。
+Device Update for IoT Hub に更新プログラムにインポートする場合は、まず、[概念](import-concepts.md)と[攻略ガイド](import-update.md) を必ず確認しておいてください。 インポート マニフェストの構築時に使用されるスキーマの詳細、または関連するオブジェクトの情報に関心がある場合は、以下を参照してください。
 
 ## <a name="import-manifest-schema"></a>インポート マニフェスト スキーマ
 
@@ -34,7 +34,7 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 | --------- | --------- | --------- | --------- |
 | プロバイダー | string | 更新プログラム ID のプロバイダー部分 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 | 名前 | string | 更新プログラム ID の名前部分 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
-| Version | version | 更新プログラム ID のバージョン部分。 | 2 から 4 のパート、ドットで区切られたバージョン番号 (0 から 2147483647 まで)。 先頭の 0 は削除されます。 |
+| Version | version | 更新プログラム ID のバージョン部分。 | 2 から 4 のパート、ドットで区切られたバージョン番号。 ドットで区切られた _各_ 部分の合計数は、0 ～ 2147483647 の範囲で指定できます。 先頭の 0 はサポートされていません。
 
 ## <a name="file-object"></a>File オブジェクト
 

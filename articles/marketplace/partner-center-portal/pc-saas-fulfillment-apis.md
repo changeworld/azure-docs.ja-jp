@@ -4,27 +4,36 @@ description: Microsoft AppSource および Azure Marketplace で SaaS オファ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 11/09/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 50bb572d7fc9c05bb22c8ab35851df7a58dc2562
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: fbe417eca2e636f5af7fea2b9e200205dcc255af
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455940"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398385"
 ---
 # <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API
 
-SaaS Fulfillment API を使用すると、発行元 (独立系ソフトウェア ベンダー (ISV) とも呼ばれます) は、SaaS アプリケーションを Microsoft AppSource、Azure Marketplace、Azure portal と統合することができます。 これらの API により、ISV アプリケーションは、すべての商取引が有効になっているチャネル (直接、パートナー主導 (再販業者)、フィールド主導) に参加できるようになります。  これらの API との統合は、パートナー センターで取引可能な SaaS オファーを作成して公開するための要件です。
+SaaS Fulfillment API を使用すると、発行元 (独立系ソフトウェア ベンダー (ISV) とも呼ばれます) は、SaaS アプリケーションを Microsoft AppSource、Azure Marketplace、Azure portal と統合することができます。 これらの API により、ISV アプリケーションは、すべての商取引が有効になっているチャネル (直接、パートナー主導 (再販業者)、フィールド主導) に参加できるようになります。 これらの API との統合は、パートナー センターで取引可能な SaaS オファーを作成して公開するための要件です。
+
+SaaS Fulfillment API の詳細については、次の記事も参照することをお勧めします。
+- [SaaS サブスクリプション ライフサイクルの管理](pc-saas-fulfillment-life-cycle.md)
+- [SaaS Fulfillment サブスクリプション API v2](pc-saas-fulfillment-subscription-api.md)
+- [SaaS Fulfillment 操作 API v2](pc-saas-fulfillment-operations-api.md)
+- [SaaS サービスでの Webhook の実装](pc-saas-fulfillment-webhook.md)
+- [SaaS Fulfillment API についてよく寄せられる質問](saas-fulfillment-apis-faq.yml)
+
+## <a name="api-flows"></a>API フロー
 
 ISV と Microsoft の両方で同じサブスクリプションの状態を維持するために、ISV は次の API フローを SaaS サービス コードに追加することで実装する必要があります。
 
 * ランディング ページ フロー:Microsoft は、発行元の SaaS オファーがマーケットプレースの顧客によって購入されたことを発行元に通知します。
 * アクティベーション フロー:発行元は、新しく購入した SaaS アカウントが発行元側で構成されていることを Microsoft に通知します。
-* 更新フロー:購入したプランの変更、または購入したシート数の変更。
+* 更新フロー: 購入プランまたは購入シートの数、あるいはその両方の変更。
 * 中断および再開のフロー:顧客の支払い方法が無効になった場合に、購入した SaaS オファーを中断します。 支払い方法に関する問題が解決されると、中断されたオファーを再開できます。
-* Webhook フロー:Microsoft は、Microsoft 側の顧客によってトリガーされた SaaS サブスクリプションの変更と解約について、発行元に通知します。
+* Webhook フロー: Microsoft は、Microsoft 側の顧客によってトリガーされた SaaS サブスクリプションの変更と解約について、発行元に通知します。
 
 購入した SaaS サブスクリプションを解約する場合、統合は、Microsoft 側の顧客で行うことができるため、省略可能です。
 
@@ -39,11 +48,11 @@ SaaS Fulfillment API との統合を正しく行うことは、次を保証す�
 * パートナー主導 (再販業者、CSP)
 * フィールド主導
 
-リセラー (CSP) シナリオでは、CSP がエンド ユーザーに代わって SaaS オファーを購入します。 顧客は SaaS オファーを使用することが見込まれますが、CSP は次のことを行うエンティティです。
+リセラー (CSP) シナリオでは、CSP がエンド ユーザーに代わって SaaS オファーを購入します。 顧客は SaaS オファーを使用することが見込まれますが、CSP は次のタスクを行うエンティティです。
 
 * 顧客に請求する
 * サブスクリプション プランまたは購入したシート数を変更する
-* サブスクリプションを解約する
+* サブスクリプションを取り消す
 
 発行元は、このシナリオのために API 呼び出しフローを異なる方法で実装する必要はありません。
 
@@ -57,4 +66,4 @@ CSP の詳細については、 https://partner.microsoft.com/licensing を参�
 
 ## <a name="next-steps"></a>次のステップ
 
-SaaS アプリケーションをまだ登録していない場合は、「[Azure AD アプリケーションの登録](./pc-saas-registration.md)」で説明されているように、[Azure portal](https://ms.portal.azure.com) で登録を行います。  その後、このインターフェイスの最新バージョンを使用して開発を行います。[SaaS Fulfillment API バージョン 2](./pc-saas-fulfillment-api-v2.md)
+- SaaS アプリケーションをまだ登録していない場合は、「[Azure AD アプリケーションの登録](./pc-saas-registration.md)」で説明されているように、[Azure portal](https://ms.portal.azure.com) で登録を行います。  その後、開発に次のインターフェイスの最新バージョンを使用します。[SaaS Fulfillment サブスクリプション API v2](pc-saas-fulfillment-subscription-api.md) および [SaaS Fulfillment 操作 API v2](pc-saas-fulfillment-operations-api.md)。

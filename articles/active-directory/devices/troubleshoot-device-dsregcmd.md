@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad62e355fc54f08e6c21967c2359740f22323db9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8e80a7a27a084734183f28edad7816edbcbe2ebb
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616766"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136142"
 ---
 # <a name="troubleshoot-devices-by-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -252,7 +252,7 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 
 - **Client Time**: システムの UTC での時刻。
 - **AD Connectivity Test**: このテストは、ドメイン コントローラーへの接続テストを実行します。 このテストでエラーが発生すると、事前チェック フェーズで参加エラーが発生する可能性があります。
-- **AD Configuration Test**: このテストでは、オンプレミスの Active Directory フォレストで、Special Containment Procedures (SCP) オブジェクトが適切に構成されているかどうかを読み取って確認します。 このテストでエラーが発生すると、検出フェーズでエラー コード 0x801c001d で参加エラーが発生する可能性があります。
+- **AD Configuration Test**: このテストでは、オンプレミスの Active Directory フォレストで、Service Connection Point (SCP) オブジェクトが適切に構成されているかどうかを読み取って確認します。 このテストでエラーが発生すると、検出フェーズでエラー コード 0x801c001d で参加エラーが発生する可能性があります。
 - **DRS Discovery Test**: このテストでは、検出メタデータ エンドポイントから DRS エンドポイントを取得し、ユーザー領域要求を実行します。 このテストでエラーが発生すると、検出フェーズで参加エラーが発生する可能性があります。
 - **DRS Connectivity Test**: このテストでは、DRS エンドポイントへの基本接続テストを実行します。
 - **Token acquisition Test**: ユーザー テナントがフェデレーションされている場合、このテストでは Azure AD 認証トークンの取得が試行されます。 このテストでエラーが発生すると、認証フェーズで参加エラーが発生する可能性があります。 認証に失敗した場合、次のレジストリ キー設定でフォールバックが明示的に無効になっていない限り、フォールバックとして同期参加が試行されます。

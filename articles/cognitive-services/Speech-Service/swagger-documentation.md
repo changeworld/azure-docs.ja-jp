@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 02/16/2021
 ms.author: alexeyo
-ms.openlocfilehash: baab45ee4fe3d65c51ce40e6be202980815eb9a6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: edc01f30ea3090f5c95a1da16e4d62feecbb18cc
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131507191"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989282"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 
-音声サービスでは、データのインポート、モデルの作成、モデルの精度のテスト、カスタム エンドポイントの作成、バッチ文字起こしのキューイング、サブスクリプションの管理に使用されるいくつかの REST API を操作するための Swagger 仕様を提供しています。 [Speech Studio の Custom Speech 領域](./custom-speech-overview.md)を介して利用できる操作のほとんどは、これらの API を使用してプログラムによって実行できます。
+音声サービスでは、データのインポート、モデルの作成、モデルの精度のテスト、カスタム エンドポイントの作成、バッチ文字起こしのキューイング、サブスクリプションの管理に使用されるいくつかの REST API を操作するための Swagger 仕様を提供しています。 [Speech Studio の Custom Speech 領域](https://aka.ms/speechstudio/customspeech)を介して利用できる操作のほとんどは、これらの API を使用してプログラムによって実行できます。
 
 > [!NOTE]
 > 音声サービスには、[Speech to Text](rest-speech-to-text.md) と [Text to Speech](rest-text-to-speech.md) の REST API がいくつか含まれています。  

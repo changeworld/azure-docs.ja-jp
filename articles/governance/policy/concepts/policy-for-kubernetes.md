@@ -4,12 +4,12 @@ description: Azure Policy で Rego および Open Policy Agent を使用して�
 ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 75f93320e3cb051ec05008146fec08ada4b3a3cb
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 337f0863c4c09da6956a6fb1539395566adf6a48
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460965"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852163"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -35,7 +35,7 @@ Kubernetes クラスターで Azure Policy を有効にして使用するには�
 
 1. Kubernetes クラスターを構成し、アドオンをインストールする:
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
-   - [Azure Arc 対応 Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+   - [Azure Arc 対応 Kubernetes](#install-azure-policy-extension-for-azure-arc-enabled-kubernetes)
    - [AKS エンジン](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
@@ -60,7 +60,7 @@ Kubernetes クラスターの Azure Policy アドオンに、次の一般的な�
 - Azure Policy アドオン以外の Gatekeeper のインストールは、サポートされていません。 Azure Policy アドオンを有効にする前に、以前の Gatekeeper インストールによってインストールされたすべてのコンポーネントをアンインストールします。
 - [非対応の理由](../how-to/determine-non-compliance.md#compliance-reasons)は、`Microsoft.Kubernetes.Data`
   [リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)には利用できません。 [コンポーネントの詳細](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)を使用してください。
-- [除外](./exemption-structure.md)は、[リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)ではサポートされていません。
+- コンポーネント レベルの[除外](./exemption-structure.md)は、[リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)ではサポートされていません。
 
 AKS の Azure Policy アドオンにのみ、次の制限事項が適用されます。
 
@@ -90,13 +90,13 @@ Azure Policy アドオンを使用する場合の一般的な推奨事項を次�
 
 Azure Policy アドオンをインストールしたり、このサービスの機能のいずれかを有効にしたりする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にする必要があります。
 
-1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)に関するページを参照してください。
 
 1. リソース プロバイダーとプレビュー機能を登録します。
 
    - Azure portal:
 
-     **Microsoft.PolicyInsights** リソース プロバイダーを登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
+     **Microsoft.PolicyInsights** リソース プロバイダーを登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」を参照してください。
 
    - Azure CLI:
 
@@ -118,7 +118,7 @@ Azure Policy アドオンをインストールしたり、このサービスの�
    az aks list
    ```
 
-1. バージョン _2.12.0_ 以降の Azure CLI をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+1. バージョン _2.12.0_ 以降の Azure CLI をインストールします。 詳細については、「 [Azure CLI のインストール](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)」を参照してください。
 
 上記の前提条件ステップが完了したら、管理する AKS クラスターに Azure Policy アドオンをインストールします。
 
@@ -159,12 +159,151 @@ kubectl get pods -n gatekeeper-system
         "identity": null
 }
 ```
+## <a name="install-azure-policy-extension-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-extension-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の Azure Policy 拡張機能 (プレビュー) をインストールする
 
-## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の Azure Policy アドオン (プレビュー) をインストールする
+[Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) を使用すると、Kubernetes クラスターのコンプライアンスの状態を 1 か所から管理し、レポートすることができます。
+
+この記事では、Kubernetes 用の Azure Policy 拡張機能を[作成](#create-azure-policy-extension)し、[拡張機能の状態を表示](#show-azure-policy-extension)し、拡張機能を[削除](#delete-azure-policy-extension)する方法について説明します。
+
+拡張機能のプラットフォームの概要については、[Azure Arc クラスターの拡張機能](/azure/azure-arc/kubernetes/conceptual-extensions)に関する記事を参照してください。
+
+### <a name="prerequisites"></a>前提条件
+
+> 注: 既に Helm を使用して拡張機能なしで Kubernetes 用の Azure Policy を直接 Azure Arc クラスターにデプロイしている場合は、記載されている手順に従って [Helm チャートを削除](#remove-the-add-on-from-azure-arc-enabled-kubernetes)します。 削除が完了したら、次に進むことができます。
+1. お使いの Kubernetes クラスターがサポートされているディストリビューションであることを確認します。
+
+    > 注: Arc 拡張機能用の Azure Policy は、[次の Kubernetes ディストリビューション](/azure-arc/kubernetes/conceptual-extensions)でサポートされています。
+1. [Azure Arc へのクラスターの接続](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli)など、[こちら](/azure/azure-arc/kubernetes/extensions)に記載されている Kubernetes 拡張機能の一般的な前提条件をすべて満たしていることを確認します。
+
+    > 注: Arc 対応 Kubernetes クラスターでは、[こちらのリージョンで](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) Azure Policy 拡張機能がサポートされています。
+1. Azure Policy 拡張機能のポートを開きます。 Azure Policy 拡張機能では、これらのドメインとポートを使用して、ポリシー定義と割り当てがフェッチされ、クラスターのコンプライアンスが Azure policy に報告されます。
+
+   |Domain |Port |
+   |---|---|
+   |`data.policy.core.windows.net` |`443` |
+   |`store.policy.core.windows.net` |`443` |
+   |`login.windows.net` |`443` |
+   |`dc.services.visualstudio.com` |`443` |
+
+1. Azure Policy 拡張機能をインストールしたり、このサービスの機能のいずれかを有効にしたりする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にする必要があります。
+    > 注: リソース プロバイダーを有効にするには、[リソース プロバイダーと種類](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)に関する記事の手順を実行するか、Azure CLI または Azure PowerShell コマンドを実行します。
+   - Azure CLI
+
+     ```azurecli-interactive
+     # Log in first with az login if you're not using Cloud Shell
+     # Provider register: Register the Azure Policy provider
+     az provider register --namespace 'Microsoft.PolicyInsights'
+     ```
+
+   - Azure PowerShell
+
+     ```azurepowershell-interactive
+     # Log in first with Connect-AzAccount if you're not using Cloud Shell
+    
+     # Provider register: Register the Azure Policy provider
+     Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+     ```
+
+### <a name="create-azure-policy-extension"></a>Azure Policy 拡張機能を作成する
+
+> Azure Policy 拡張機能の作成では、以下に注意してください。
+> - 自動アップグレードは既定で有効になっています。これにより、新しい変更がデプロイされると、Azure Policy 拡張機能のマイナー バージョンが更新されます。
+> - パラメーターとして `connectedk8s` に渡されるプロキシ変数は、送信プロキシをサポートするように Azure Policy 拡張機能に反映されます。
+> 
+拡張機能のインスタンスを作成するには、Arc 対応クラスターで、`<>` をご自身の値に置き換えて次のコマンドを実行します。
+
+```console
+az k8s-extension create --cluster-type connectedClusters --cluster-name <CLUSTER_NAME> --resource-group <RESOURCE_GROUP> --extension-type Microsoft.PolicyInsights --name <EXTENSION_INSTANCE_NAME>
+```
+
+#### <a name="example"></a>例:
+
+```console
+az k8s-extension create --cluster-type connectedClusters --cluster-name my-test-cluster --resource-group my-test-rg --extension-type Microsoft.PolicyInsights --name azurepolicy
+```
+
+#### <a name="example-output"></a>出力例:
+
+```
+{
+  "aksAssignedIdentity": null,
+  "autoUpgradeMinorVersion": true,
+  "configurationProtectedSettings": {},
+  "configurationSettings": {},
+  "customLocationSettings": null,
+  "errorInfo": null,
+  "extensionType": "microsoft.policyinsights",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-test-rg/providers/Microsoft.Kubernetes/connectedClusters/my-test-cluster/providers/Microsoft.KubernetesConfiguration/extensions/azurepolicy",
+ "identity": {
+    "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "tenantId": null,
+    "type": "SystemAssigned"
+  },
+  "location": null,
+  "name": "azurepolicy",
+  "packageUri": null,
+  "provisioningState": "Succeeded",
+  "releaseTrain": "Stable",
+  "resourceGroup": "my-test-rg",
+  "scope": {
+    "cluster": {
+      "releaseNamespace": "kube-system"
+    },
+    "namespace": null
+  },
+  "statuses": [],
+  "systemData": {
+    "createdAt": "2021-10-27T01:20:06.834236+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2021-10-27T01:20:06.834236+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
+  },
+  "type": "Microsoft.KubernetesConfiguration/extensions",
+  "version": "1.1.0"
+}
+```
+
+### <a name="show-azure-policy-extension"></a>Azure Policy 拡張機能を表示する
+
+拡張機能インスタンスが正常に作成されたことを確認し、拡張機能のメタデータを検査するには、`<>` をご自身の値に置き換えて次のコマンドを実行します。
+
+```console
+az k8s-extension show --cluster-type connectedClusters --cluster-name <CLUSTER_NAME> --resource-group <RESOURCE_GROUP> --name <EXTENSION_INSTANCE_NAME>
+```
+
+#### <a name="example"></a>例:
+
+```console
+az k8s-extension show --cluster-type connectedClusters --cluster-name my-test-cluster --resource-group my-test-rg --name azurepolicy
+```
+
+#### <a name="to-validate-that-the-add-on-installation-was-successful-and-that-the-azure-policy-and-gatekeeper-pods-are-running-run-the-following-command"></a>アドオンが正常にインストールされていることと、azure-policy および gatekeeper ポッドが実行されていることを確認するには、次のコマンドを実行します。
+
+```console
+kubectl get pods -n kube-system
+```
+
+```console
+kubectl get pods -n gatekeeper-system
+```
+
+### <a name="delete-azure-policy-extension"></a>Azure Policy 拡張機能を削除する
+拡張機能インスタンスを削除するには、`<>` をご自身の値に置き換えて次のコマンドを実行します。
+
+```console
+az k8s-extension delete --cluster-type connectedClusters --cluster-name <CLUSTER_NAME> --resource-group <RESOURCE_GROUP> --name <EXTENSION_INSTANCE_NAME>
+```
+
+## <a name="install-azure-policy-add-on-using-helm-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Helm を使用して Azure Arc 対応 Kubernetes 用の Azure Policy アドオン (プレビュー) をインストールする
+
+> [!NOTE]
+> Azure Policy アドオンの Helm モデルはまもなく非推奨になります。 代わりに、[Azure Arc 対応 Kubernetes 用の Azure Policy 拡張機能](#install-azure-policy-extension-for-azure-arc-enabled-kubernetes)を選んでください。
 
 Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にし、クラスター サービス プリンシパルのロール割り当てを作成する必要があります。
 
-1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)に関するページを参照してください。
 
 1. リソース プロバイダーを有効にするには、[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関する記事の手順を実行するか、Azure CLI または Azure PowerShell コマンドを実行します。
 
@@ -266,9 +405,13 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="install-azure-policy-add-on-for-aks-engine-preview"></a><a name="install-azure-policy-add-on-for-aks-engine"></a>AKS エンジン用の Azure Policy アドオン (プレビュー) をインストールする
 
+> 注: AKS エンジン用の Azure Policy アドオンはまもなく非推奨になります。 代わりに、[Arc 対応 Kubernetes を使用して Azure Policy 拡張機能](#install-azure-policy-extension-for-azure-arc-enabled-kubernetes)をインストールすることをお勧めします。
+
+1. お使いの Kubernetes クラスターがサポートされているディストリビューションであることを確認します。
+
 Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にし、クラスター サービス プリンシパルのロール割り当てを作成する必要があります。
 
-1. Azure CLI バージョン 2.0.62 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+1. Azure CLI バージョン 2.0.62 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)に関するページを参照してください。
 
 1. リソース プロバイダーを有効にするには、[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関する記事の手順を実行するか、Azure CLI または Azure PowerShell コマンドを実行します。
 
@@ -560,6 +703,13 @@ status:
 ## <a name="troubleshooting-the-add-on"></a>アドオンのトラブルシューティング
 
 Kubernetes のアドオンのトラブルシューティングに関する詳細については、Azure Policy のトラブルシューティングに関する記事の [Kubernetes のセクション](../troubleshoot/general.md#add-on-for-kubernetes-general-errors)を参照してください。
+
+Arc 拡張機能用の Azure Policy 拡張機能に関連する問題については、以下を参照してください。
+- [Azure Arc 対応 Kubernetes のトラブルシューティング](/azure/azure-arc/kubernetes/troubleshooting#azure-arc-enabled-kubernetes-troubleshooting)
+
+Azure Policy に関連する問題については、以下を参照してください。
+- [Azure Policy ログを検査する](/azure/governance/policy/concepts/policy-for-kubernetes#logging)
+- [Kubernetes での Azure Policy に関する一般的なトラブルシューティング](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors)
 
 ## <a name="remove-the-add-on"></a>アドオンを削除する
 

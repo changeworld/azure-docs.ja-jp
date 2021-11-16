@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 08/19/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3cbe6b4c5cc4958eb471cb1b2d322cb73754a669
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: af2d2b1c1932cd46d4b823c23bf62b30eff5688b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017486"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060735"
 ---
 # <a name="file-integrity-monitoring-in-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud でのファイルの整合性の監視
 
@@ -198,7 +197,7 @@ FIM は、Azure portal の Defender for Cloud のページからのみ利用で�
       - ファイルのコンテンツ
       - Windows サービス
 
-      各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 一覧表示されるエンティティごとに、Defender for Cloud によって、FIM が有効になっている (true) か、有効になっていない (false) かが識別されます。  エンティティを編集することで、FIM を有効または無効にすることができます。
+      各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 一覧表示されるエンティティごとに、Defender for Cloud によって、FIM が有効になっている (true) か、有効になっていない (false) かが識別されます。 エンティティを編集して、FIM を有効または無効にします。
 
     :::image type="content" source="./media/file-integrity-monitoring-overview/file-integrity-monitoring-workspace-configuration.png" alt-text="Microsoft Defender for Cloud でのファイルの整合性の監視に関するワークスペース構成。":::
 

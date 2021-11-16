@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 38694ff8bdbe041d582af3b8bfb9d0c9fffe9e62
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aac6f381e81dbc1d7465527623f0c1a29272a05b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656590"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279688"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-rsa-archer-suite"></a>チュートリアル: Azure AD SSO と RSA Archer Suite の統合
 
@@ -170,4 +170,4 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
 ## <a name="next-steps"></a>次のステップ
 
-RSA Archer Suite を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+RSA Archer Suite を構成したら、組織の機微なデータを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -5,23 +5,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/18/2021
-ms.openlocfilehash: 408103657b3d1485d8807768e83cc1d9721fd22b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: b5522cb26f7f8fe486b4b690938a23c7e75c746a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181585"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315960"
 ---
 # <a name="azure-monitor-best-practices---configure-data-collection"></a>Azure Monitor のベスト プラクティス - データ収集を構成する
 この記事は、[Azure Monitor を構成する際の推奨事項](best-practices.md)に関する記事で紹介されているシナリオの一部です。 Azure やハイブリッド アプリケーション、リソースに対して Azure Monitor の機能を有効にするために必要なデータ収集を構成する際に推奨される手順を説明しています。
 
-
 > [!IMPORTANT]
 > Azure Monitor の機能とその構成は、ビジネス要件と、有効にする機能のコストとのバランスによって異なります。 以下の各ステップでは、潜在的なコストがあるかどうかが示されており、作業を進める前にこれらのコストを評価する必要があります。 価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
-> 
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
-[Azure Monitor Logs](logs/data-platform-logs.md) を有効にするには、少なくとも 1 つの Log Analytics ワークスペースが必要です。これは、Azure リソースからのログなどのデータの収集、Azure 仮想マシンのゲスト オペレーティング システムからのデータの収集、およびほとんどの Azure Monitor 分析情報のために必要です。 Azure Sentinel や Azure Security Center などの他のサービスでも、Log Analytics ワークスペースが使用され、Azure Monitor に使用するものと同じものを共有できます。 この監視をサポートするには 1 つのワークスペースから始めることができますが、複数のワークスペースを使用する場合のガイダンスについては、「[Azure Monitor ログのデプロイの設計](logs/design-logs-deployment.md)」を参照してください。
+[Azure Monitor Logs](logs/data-platform-logs.md) を有効にするには、少なくとも 1 つの Log Analytics ワークスペースが必要です。これは、Azure リソースからのログなどのデータの収集、Azure 仮想マシンのゲスト オペレーティング システムからのデータの収集、およびほとんどの Azure Monitor 分析情報のために必要です。 Microsoft Sentinel や Microsoft Defender for Cloud などの他のサービスでも Log Analytics ワークスペースが使用され、Azure Monitor に使用するものと同じものを共有できます。 この監視をサポートするには 1 つのワークスペースから始めることができますが、複数のワークスペースを使用する場合のガイダンスについては、「[Azure Monitor ログのデプロイの設計](logs/design-logs-deployment.md)」を参照してください。
 
 Log Analytics ワークスペースの作成にはコストがかかりませんが、そこに収集されるようにデータを構成すると、料金が発生する可能性があります。 「[Azure Monitor ログで使用量とコストを管理する](logs/manage-cost-storage.md)」をご覧ください。  
 
@@ -30,7 +28,7 @@ Log Analytics ワークスペースの作成にはコストがかかりません
 ## <a name="collect-data-from-azure-resources"></a>Azure リソースからデータを収集する
 Azure リソースの一部の監視は、構成を必要とせずに自動的に使用できますが、追加の監視データを収集するには構成手順を実行する必要があります。 次の表では、Azure リソースから使用可能なすべてのデータを収集するために必要な構成手順を示します。これには、Azure Monitor Metrics および Azure Monitor Logs にデータが送信されるステップが含まれています。 以下のセクションでは、各ステップについてさらに詳しく説明します。
 
-[ ![Azure リソース監視をデプロイする](media/best-practices-data-collection/best-practices-azure-resources.png)](media/best-practices-data-collection/best-practices-azure-resources.png#lightbox)
+[![Azure リソース監視をデプロイする](media/best-practices-data-collection/best-practices-azure-resources.png)](media/best-practices-data-collection/best-practices-azure-resources.png#lightbox)
 
 ### <a name="collect-tenant-and-subscription-logs"></a>テナントとサブスクリプションのログを収集する
 テナントに対する [Azure Active Directory ログ](../active-directory/reports-monitoring/overview-reports.md)とサブスクリプションに対する[アクティビティ ログ](essentials/platform-logs-overview.md)は自動的に収集されますが、それらを Log Analytics ワークスペースに送信することで、Log Analytics のログ クエリを使用して、他のログ データと共にこれらのイベントを分析することができます。 これにより、Azure Active Directory ログに対してアラートを生成するための唯一の方法であるログ クエリ アラートを作成し、アクティビティ ログ アラートより複雑なロジックを提供することもできます。

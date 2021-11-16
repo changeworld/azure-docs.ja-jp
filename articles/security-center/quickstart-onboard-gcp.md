@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b2f5d680fda34d181264a72a0d745a36093c472a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5d51a9495f2b05af6697147df20db01f0f14d083
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472169"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059982"
 ---
 #  <a name="connect-your-gcp-accounts-to-microsoft-defender-for-cloud"></a>GCP アカウントを Microsoft Defender for Cloud に接続する
 
@@ -20,9 +20,9 @@ ms.locfileid: "131472169"
 
 通常、クラウド ワークロードは複数のクラウド プラットフォームにまたがるため、クラウド セキュリティサービスもそうである必要があります。
 
-Microsoft Defender for Cloud により、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードが保護されます。
+Microsoft Defender for Cloud は、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードを保護します。
 
-Azure サブスクリプションに GCP アカウントを追加すると、Defender for Cloud から GCP セキュリティ コマンドを使用して接続できます。 これにより、Defender for Cloud はこの両方のクラウド環境のリソースを保護し、次の機能を提供できます。
+Azure サブスクリプションに GCP アカウントを追加すると、GCP セキュリティ コマンドを使用して Defender for Cloud に接続できます。 これにより、Defender for Cloud はこの両方のクラウド環境のリソースを保護し、次の機能を提供できます。
 
 - セキュリティ構成ミスの検出
 - Defender for Cloud の推奨事項と GCP Security Command Center の検出結果を 1 つのビューに表示する
@@ -142,7 +142,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
 ## <a name="faq---connecting-gcp-accounts-to-microsoft-defender-for-cloud"></a>FAQ - Microsoft Defender for Cloud への GCP アカウントの接続
 
 ### <a name="can-i-connect-multiple-gcp-organizations-to-defender-for-cloud"></a>複数の GCP 組織を Defender for Cloud に接続できますか?
-はい。 Defender for Cloud の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
+正解です。 Defender for Cloud の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 
 
 Defender for Cloud から監視する GCP 組織ごとにコネクタを作成します。 組織を接続すると、その組織内のすべてのプロジェクトが Defender for Cloud に追加されます。
 
@@ -150,9 +150,9 @@ Google Cloud リソース階層については、[Google のオンライン ド�
 
 
 ### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-defender-for-cloud"></a>GCP リソースを Defender for Cloud に接続するための API はありますか?
-はい。 REST API を使用して Defender for Cloud クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
+正解です。 REST API を使用して Defender for Cloud クラウド コネクタを作成、編集、または削除するには、[Connectors API](/rest/api/securitycenter/connectors) の詳細をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 GCP アカウントの接続は、Microsoft Defender for Cloud で利用できるマルチクラウド エクスペリエンスの一部です。 関連情報については、次のページを参照してください。
 

@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 99f3bb2dc2095e8c9ae89afe78b4522dcdc23a07
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c954f411d14aaa0f33bf4a3423a67ae64204f932
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265364"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892860"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -70,8 +70,8 @@ Azure Functions では、2 種類の仮想ネットワーク統合がサポー�
 
 Azure Functions の仮想ネットワーク統合では、App Service Web アプリと共有インフラストラクチャを使用します。 2 種類の仮想ネットワーク統合の詳細については、次を参照してください。
 
-* [リージョンでの仮想ネットワーク統合](../app-service/overview-vnet-integration.md#regional-vnet-integration)
-* [ゲートウェイが必要な仮想ネットワーク統合](../app-service/overview-vnet-integration.md#gateway-required-vnet-integration)
+* [リージョンでの仮想ネットワーク統合](../app-service/overview-vnet-integration.md#regional-virtual-network-integration)
+* [ゲートウェイが必要な仮想ネットワーク統合](../app-service/overview-vnet-integration.md#gateway-required-virtual-network-integration)
 
 仮想ネットワーク統合を設定する方法については、[Vnet 統合の有効化](#enable-vnet-integration)に関する記事を参照してください。
 

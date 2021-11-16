@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 987857c4534ddbef90ef3eca5f73f554db0c4341
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: c9a81c052f44afbb2049442f09e34a0e6bc588f9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777718"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054773"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -797,6 +797,13 @@ Durable Functions は Azure Functions と同じように課金されます。 �
 * [Visual Studio Code と PowerShell を使用する場合](quickstart-powershell-vscode.md)
 
 これらのクイックスタートでは、"hello world" という持続的関数をローカルで作成してテストします。 その後、関数コードを Azure に発行します。 作成した関数は、他の関数の呼び出しを調整し、連結します。
+
+## <a name="publications"></a>パブリケーション
+
+Durable Functions は、Microsoft Research と共同で開発されました。 結果として、Durable Functions チームは研究論文と成果物を積極的に作成しています。これには、次のようなものがあります。
+
+* [Durable Functions: ステートフル サーバーレスのセマンティクス](https://www.microsoft.com/en-us/research/uploads/prod/2021/10/DF-Semantics-Final.pdf) _(OOPSLA'21)_
+* [Durable Functions と Netherite を使用したサーバーレス ワークフロー](https://arxiv.org/pdf/2103.00033.pdf) " _(査読前の原稿)_ "
 
 ## <a name="learn-more"></a>詳細情報
 

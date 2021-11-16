@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 6f798cb4bc1511c0656c697f04e2d1763ca54321
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 95830ef00132c7b432b29c033a9d7e7e400b8aad
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132308600"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458857"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -47,9 +47,9 @@ Log Analytics 専用クラスターには、500 GB/日以上のコミットメ�
 
 1. **クラスター (既定)** : 取り込まれたデータの課金は、クラスター レベルで行われます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 
 
-2. **ワークスペース**: クラスターのコミットメント レベル コストは、(各ワークスペースに対する [Microsoft Defender for Cloud](../../security-center/index.yml) からのノードごとの割り当てを考慮した後) 各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例して割り当てられます。この価格モデルの詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。 
+2. **ワークスペース**: クラスターのコミットメント レベル コストは、各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例的に帰属します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。この価格モデルの詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。 
 
-ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターのコミットメント レベルに対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Microsoft Defender for Cloud からのノードごとのデータ割り当ては、引き続き行われます。
+ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターのコミットメント レベルに対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Azure Security Center からのノードごとのデータ割り当ては引き続き適用されます。
 
 Log Analytics 専用クラスターの課金の詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。
 

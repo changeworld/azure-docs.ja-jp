@@ -2,19 +2,19 @@
 title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
 ms.topic: quickstart
-ms.date: 06/06/2021
-ms.openlocfilehash: 223337469a309fd1f28ef1bf469f2998a5af43ba
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.date: 11/09/2021
+ms.openlocfilehash: 85bd254236a6d08d8f232e14e5a41dab99f0af04
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138466"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283868"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 
-この記事では、Azure Defender for IoT を設定するために実行する手順の概要について説明します。 このプロセスでは、次のことを行う必要があります。
+この記事では、Microsoft Defender for IoT を設定するために実行する手順の概要について説明します。 このプロセスでは、次のことを行う必要があります。
 
-- Azure Defender for IoT ポータルでサブスクリプションとセンサーを登録します。
+- Azure portal で Defender for IoT のサブスクリプションとセンサーを登録します。
 - センサーとオンプレミス管理コンソール ソフトウェアをインストールします。
 - センサーと管理コンソールの初回のアクティブ化を実行します。
 
@@ -25,9 +25,10 @@ ms.locfileid: "130138466"
 一部の設定手順では、特定のユーザーのアクセス許可が必要です。
 
 センサーと管理コンソールをアクティブにし、SSL/TLS 証明書をアップロードして、新しいパスワードを生成するには、管理ユーザーのアクセス許可が必要です。
-### <a name="for-the-defender-for-iot-portal"></a>Defender for IoT ポータルの場合
 
-Azure Defender for IoT ポータル ツールに対するユーザー アクセス許可を次の表で説明します。
+### <a name="for-defender-for-iot-in-the-azure-portal"></a>Azure portal の Defender for IoT の場合
+
+Azure portal のツールに対するユーザー アクセス許可を次の表で説明します。
 
 | 権限 | セキュリティ閲覧者 | セキュリティ管理者 | サブスクリプションの共同作成者 | サブスクリプションの所有者 |
 |--|--|--|--|--|
@@ -47,15 +48,15 @@ Azure Defender for IoT ポータル ツールに対するユーザー アクセ�
 - 証明書を作成するための要件
 - その他のネットワークの詳細
 
-詳細については、[Azure Defender for IoT network の設定の概要](how-to-set-up-your-network.md)に関する記事を参照してください。
+詳細については、[Microsoft Defender for IoT ネットワーク設定の概要](how-to-set-up-your-network.md)に関する記事を参照してください。
 
 **ネットワーク負荷を処理するために必要なセンサーと管理コンソール アプライアンスを明確にする**
 
-Azure Defender for IoT では、物理的な配置と仮想デプロイの両方をサポートしています。 物理的な配置では、さまざまな認定アプライアンスを購入できます。 詳細については、「[必要なアプライアンスを特定する](how-to-identify-required-appliances.md)」を参照してください。
+Microsoft Defender for IoT では、物理的な配置と仮想デプロイの両方をサポートしています。 物理的な配置では、さまざまな認定アプライアンスを購入できます。 詳細については、「[必要なアプライアンスを特定する](how-to-identify-required-appliances.md)」を参照してください。
 
 監視するデバイスのおおよその数を計算することをお勧めします。 後で Azure サブスクリプションをポータルに登録するときに、この番号を入力するように求められます。 数値は 1,000 間隔 (たとえば 1000、2000、3000) で追加できます。 監視対象デバイスの数は、"*コミット済みデバイス*" と呼ばれます。
 
-## <a name="register-with-azure-defender-for-iot"></a>Azure Defender for IoT に登録する
+## <a name="register-with-microsoft-defender-for-iot"></a>Microsoft Defender for IoT を使用して登録する
 
 登録には次のものが含まれます。
 
@@ -67,7 +68,7 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 
 **登録するには**:
 
-1. Azure Defender for IoT ポータルに移動します。
+1. Azure portal で [Defender for IoT の概要](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)ページに移動します。
 
 1. **[Onboard subscription]\(サブスクリプションのオンボード\)** を選択します。
 
@@ -81,13 +82,13 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 
 オンプレミス管理コンソール アプライアンスを取得した後:
 
-- Azure Defender for IoT ポータルから ISO パッケージをダウンロードします。
+- Azure portal から ISO パッケージをダウンロードします。
 - このソフトウェアをインストールします。
 - 管理コンソールの初期設定をアクティブにして実行します。
 
 **インストールして設定するには**:
 
-1. Defender for IoT ポータルから **[作業の開始]** を選択します。
+1. Azure portal で [Defender for IoT の概要](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)ページに移動します。
 
 1. **[On-premises management console]\(オンプレミス管理コンソール\)** タブを選択します。
 
@@ -99,29 +100,29 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 
 ## <a name="onboard-a-sensor"></a>センサーをオンボードする ##
 
-センサーを Azure Defender for IoT に登録してセンサー アクティブ化ファイルをダウンロードし、センサーをオンボードします。
+センサーをオンボードするために、Microsoft Defender for IoT に登録して、センサー アクティブ化ファイルをダウンロードします。
 
 1. センサー名を定義し、サブスクリプションに関連付けます。
 
 1. センサーの接続モードを選択します。
 
-   - **クラウド接続センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 さらに、アラート情報は、IoT ハブを通じて配信され、Azure Sentinel などの他の Azure サービスと共有できます。  Azure Defender for IoT ポータルからセンサーに脅威インテリジェンス パッケージを自動的にプッシュすることを選択することもできます。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
+   - **クラウド接続センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 さらに、アラート情報は IoT ハブ経由で配信され、Microsoft Sentinel などの他の Azure サービスと共有できます。 Defender for IoT からセンサーに脅威インテリジェンス パッケージを自動的にプッシュすることを選択することもできます。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
 
    - **ローカル管理センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 エアギャップ ネットワークで作業していて、複数のローカル管理センサーによって検出されるすべての情報を一元的に表示したい場合は、オンプレミスの管理コンソールを使用します。
 
-1. センサーを関連付けるサイトを IoT Hub 内で選択します。 IoT Hub は、このセンサーと Azure Defender for IoT の間のゲートウェイとして機能します。 表示名とゾーンを定義します。 説明タグを追加することもできます。 表示名、ゾーン、タグは、[[サイトとセンサー] ページ](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors)にある説明用のエントリです。
+1. センサーを関連付けるサイトを IoT Hub 内で選択します。 IoT Hub は、このセンサーと Microsoft Defender for IoT の間のゲートウェイとして機能します。 表示名とゾーンを定義します。 説明タグを追加することもできます。 表示名、ゾーン、タグは、[[サイトとセンサー] ページ](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors)にある説明用のエントリです。
 
 1. **[登録]** を選択します。
 
 1. **[アクティブ化ファイルのダウンロード]** を選択します。
 
-オンボードの詳細については、[Defender for IoT ポータルでのセンサーのオンボードと管理](how-to-manage-sensors-on-the-cloud.md)に関する記事を参照してください。
+オンボードの詳細については、[Defender for IoT を使用したセンサーのオンボードと管理](how-to-manage-sensors-on-the-cloud.md)に関する記事を参照してください。
 
 ## <a name="install-and-set-up-the-sensor"></a>センサーをインストールして設定する
 
-Azure Defender for IoT ポータルから ISO パッケージをダウンロードし、ソフトウェアをインストールして、センサーを設定します。
+Azure portal から ISO パッケージをダウンロードしてソフトウェアをインストールし、センサーを設定します。
 
-1. Defender for IoT ポータルから **[作業の開始]** を選択します。
+1. Azure portal で [Defender for IoT の概要](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)ページに移動します。
 
 1. **[Set up sensor]\(センサーの設定\)** を選択します。
 
@@ -143,12 +144,12 @@ Azure Defender for IoT ポータルから ISO パッケージをダウンロー�
 
 詳細については、「[センサーをオンプレミス管理コンソールに接続する](how-to-activate-and-set-up-your-on-premises-management-console.md#connect-sensors-to-the-on-premises-management-console)」を参照してください。
 
-## <a name="populate-azure-sentinel-with-alert-information-optional"></a>Azure Sentinel にアラート情報を設定する (省略可能)
+## <a name="populate-microsoft-sentinel-with-alert-information-optional"></a>Microsoft Sentinel にアラート情報を取り込む
 
-Azure Sentinel を構成して Azure Sentinel にアラート情報を送信します。 「[Defender for IoT からのデータを Azure Sentinel に接続する](how-to-configure-with-sentinel.md)」を参照してください。  
+Microsoft Sentinel を構成して、アラート情報を Microsoft Sentinel に送信します。 「[Defender for IoT からのデータを Microsoft Sentinel に接続する](how-to-configure-with-sentinel.md)」を参照してください。  
 
 ## <a name="next-steps"></a>次のステップ ##
 
-[Azure Defender for IoT へようこそ](overview.md)
+[Microsoft Defender for IoT へようこそ](overview.md)
 
-[Azure Defender for IoT のアーキテクチャ](architecture.md)
+[Microsoft Defender for IoT のアーキテクチャ](architecture.md)

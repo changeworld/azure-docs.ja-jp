@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f07cb6dc6e5ab01b4c172c660fa971b1ef2a3db9
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 03799c27173a06ba1ffb25ba117750e65bca6b31
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132286092"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842513"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
 
@@ -59,7 +59,7 @@ Azure では、MySQL サーバーのワークロードをホスト型仮想マ�
 | SSL/TLS | 既定で有効になり、TLS v1.2、1.1、および 1.0 がサポートされます | 既定で有効になり、TLS v1.2、1.1、および 1.0 がサポートされます| TLS v1.2、1.1、および 1.0 でサポートされています |
 | 保存データの暗号化 | カスタマー マネージド キーを使用してサポートされます (BYOK) | サービス マネージド キーを使用してサポートされます | サポートされていません|
 | Azure AD Authentication | サポートされています | サポートされていません | サポートされていません|
-| Microsoft Defender for Cloud サポート | はい | いいえ | いいえ |
+| Azure Defender のサポート | はい | いいえ | いいえ |
 | [Server Audit] | サポートされています | サポートされています | ユーザー管理 |
 | [**修正プログラムの適用とメンテナンス**](flexible-server/concepts-maintenance.md) | | |
 | オペレーティング システムの修正プログラムの適用| 自動  | 自動  | ユーザー管理 |

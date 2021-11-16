@@ -11,12 +11,12 @@ ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 10/21/2021
-ms.openlocfilehash: 941e99ba438d2f9819ccde34d922fb79075f73e9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2916b7c8042a96e35ad138ae5ae20c389c62e751
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553939"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866641"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -97,8 +97,7 @@ TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Mac
 データを Azure Machine Learning からアクセスできるようにするには、[Azure Machine Learning データストア](how-to-access-data.md)または Web URL のパスからデータセットを作成する必要があります。 
 
 > [!TIP] 
-> ID ベースのデータ アクセスを使用して、ストレージ URL からデータセットを直接作成できます。 詳細については、[ID ベースのデータ アクセスを使用したストレージへの接続 (プレビュー)](how-to-identity-based-data-access.md) に関するページを参照してください。<br><br>
-この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。 
+> ID ベースのデータ アクセスを使用して、ストレージ URL からデータセットを直接作成できます。 詳細については、「[ID ベースのデータ アクセスを使用したストレージへの接続](how-to-identity-based-data-access.md)」を参照してください。
 
  
 Python SDK を使用してデータストアからデータセットを作成するには、次の手順を実行します。

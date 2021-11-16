@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:セキュリティ モジュール ツインを作成する
-description: このクイックスタートでは、Azure Defender for IoT で使用する Defender for IoT モジュール ツインを作成する方法について説明します。
+description: このクイックスタートでは、Microsoft Defender for IoT で使用する Defender for IoT モジュール ツインを作成する方法について説明します。
 ms.topic: quickstart
-ms.date: 05/26/2021
-ms.openlocfilehash: 5f2d6b4e4ab747988fe41322aab61c90b7c15b18
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 34927684fb87b48390479bccd63d7667a6350d14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011329"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281894"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
@@ -22,8 +22,7 @@ ms.locfileid: "113011329"
 
 Azure に構築された IoT ソリューションでは、デバイス ツインが、デバイスの管理とプロセスの自動化の両方で主要な役割を果たします。
 
-Defender for IoT は、既存の IoT デバイス管理プラットフォームと完全に統合されるため、デバイスのセキュリティ状態を管理したり、既存のデバイス制御機能を利用したりすることができます。
-Defender for IoT の統合は、IoT Hub ツイン メカニズムを利用することによって実現されます。
+Defender for IoT は、既存の IoT デバイス管理プラットフォームと完全に統合されるため、デバイスのセキュリティ状態を管理したり、既存のデバイス制御機能を利用したりすることができます。 Defender for IoT の統合は、IoT Hub ツイン メカニズムを利用することによって実現されます。
 
 Azure IoT Hub でのモジュール ツインの一般的な概念の詳細については、[IoT Hub モジュール ツイン](../../iot-hub/iot-hub-devguide-module-twins.md) [IoT Hub モジュール ツイン] に関するページを参照してください。
 

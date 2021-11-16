@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 04/09/2021
+ms.date: 11/08/2021
 ms.author: cshoe
-ms.openlocfilehash: 90c044593ac02f2c906fb2347d731168b25af5af
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: ac22d5ef720fb0701cb126e6fa0cb627614dd09c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813868"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027168"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>チュートリアル:Azure Static Web Apps での Blazor を使用した静的 Web アプリのビルド
 
@@ -27,23 +27,23 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 ## <a name="application-overview"></a>アプリケーションの概要
 
-Azure Static Web Apps を使用して、サーバーレス バックエンドでサポートされる静的 Web アプリケーションを作成できます。 次のチュートリアルに、気象データを返す C# Blazor Web アプリケーションをデプロイする方法が示されてます。
+Azure Static Web Apps を使用して、サーバーレス バックエンドでサポートされる静的 Web アプリケーションを作成できます。 次のチュートリアルでは、サーバーレス API によって返される気象データを表示する C# Blazor WebAssembly アプリケーションを配置する方法が示されています。
 
 :::image type="content" source="./media/deploy-blazor/blazor-app-complete.png" alt-text="完全な Blazor アプリ":::
 
 このチュートリアルで紹介するアプリは、3 つの異なる Visual Studio プロジェクトから構成されています。
 
-- **Api**:静的アプリに気象情報を提供する API エンドポイントを実装する C# Azure Functions アプリケーション。 **WeatherForecastFunction** は、`WeatherForecast` オブジェクトの配列を返します。
+- **Api**: Blazor WebAssembly アプリに気象情報を提供する API エンドポイントを実装する C# Azure Functions アプリケーション。 **WeatherForecastFunction** は、`WeatherForecast` オブジェクトの配列を返します。
 
-- **クライアント**: フロントエンド Blazor Web アセンブリ プロジェクト。 すべてのルートで _index.html_ ファイルが確実に処理されるように、[フォールバック ルート](#fallback-route)が実装されます。
+- **Client**: フロントエンド Blazor WebAssembly プロジェクト。 クライアント側のルーティングが機能するように、[フォールバック ルート](#fallback-route)が実装されます。
 
 - **共有**:Api プロジェクトと Client プロジェクトの両方のプロジェクトによって参照される共通クラスを保持します。これにより、データを API エンドポイントからフロントエンド Web アプリにフローさせることができます。 両方のアプリで、[`WeatherForecast`](https://github.com/staticwebdev/blazor-starter/blob/main/Shared/WeatherForecast.cs) クラスが共有されます。
 
-これらのプロジェクトがまとまって、API バックエンドによってサポートされているブラウザーで実行される Blazor Web アセンブリ アプリケーションを作成するために必要な部分が構成されます。
+これらのプロジェクトがまとまって、Azure Functions API バックエンドによってサポートされているブラウザーで実行される Blazor WebAssembly アプリケーションを作成するために必要な部分が構成されます。
 
 ## <a name="fallback-route"></a>フォールバック ルート
 
-アプリケーションでは、アプリケーションの特定のルートにマップされる _/counter_ や _/fetchdata_ などの URL が公開されます。 このアプリは単一ページ アプリケーションとして実装されるため、各ルートで _index.html_ ファイルが使用されます。 任意のパスに対する要求で _index.html_ が確実に返されるようにするため、Client プロジェクトの _wwwroot_ フォルダーにある _staticwebapp.config.json_ ファイルに [フォールバック ルート](./configuration.md#fallback-routes)が実装されます。
+アプリケーションでは、アプリケーションの特定のルートにマップされる _/counter_ や _/fetchdata_ などの URL が公開されます。 このアプリは単一ページ アプリケーションとして実装されるため、各ルートで _index.html_ ファイルが使用されます。 任意のパスに対する要求で _index.html_ が確実に返されるようにするため、Client プロジェクトの root フォルダーにある _staticwebapp.config.json_ ファイルに[フォールバック ルート](./configuration.md#fallback-routes)が実装されます。
 
 ```json
 {
@@ -57,7 +57,7 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 ## <a name="create-a-repository"></a>リポジトリを作成する
 
-この記事では、簡単に作業を開始できるように、GitHub テンプレート リポジトリを使用します。 テンプレートには、Azure Static Web Apps にデプロイされるスターター アプリが含まれます。
+この記事では、簡単に作業を開始できるように、GitHub テンプレート リポジトリを使用します。 テンプレートには、Azure Static Web Apps にデプロイできるスターター アプリが含まれます。
 
 1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
@@ -93,8 +93,14 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
     | _リポジトリ_ | **my-first-static-blazor-app** を選択します。 |
     | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
 
-1. _[Build Details]\(ビルドの詳細\)_ セクションで、 _[Build Presets]\(ビルドのプリセット\)_ ドロップダウンから **[Blazor]** を選択し、既定値をそのままにします。
+1. _[Build Details]\(ビルドの詳細\)_ セクションで、 _[Build Presets]\(ビルドのプリセット\)_ ドロップダウンから **[Blazor]** を選択すると、次の値が設定されます。
 
+    | プロパティ | 値 | 説明 |
+    | --- | --- | --- |
+    | アプリの場所 | **Client** | Blazor WebAssembly アプリを含むフォルダー |
+    | API の場所 | **Api** | Azure Functions アプリを含むフォルダー |
+    | Output location (出力場所) | **wwwroot** | 発行された Blazor WebAssembly アプリケーションを含むビルド出力のフォルダー |
+    
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
 1. **[確認および作成]** ボタンを選択して、詳細がすべて正しいことを確認します。
@@ -111,7 +117,7 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 静的アプリのデプロイには 2 つの側面があります。 まず、アプリを構成する基になる Azure リソースをプロビジョニングします。 2 つ目は、アプリケーションをビルドして発行する GitHub Actions ワークフローです。
 
-新しい静的サイトに移動する前にまず、デプロイ ビルドの実行が完了している必要があります。
+新しい静的 Web サイトに移動する前に、デプロイ ビルドの実行が完了している必要があります。
 
 Static Web Apps の概要ウィンドウには、Web アプリとの対話に役立つ一連のリンクが表示されます。
 

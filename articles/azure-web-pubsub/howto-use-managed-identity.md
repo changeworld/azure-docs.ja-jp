@@ -4,14 +4,14 @@ description: Azure Web PubSub サービスでのマネージド ID のしくみ�
 author: chenyl
 ms.service: azure-web-pubsub
 ms.topic: article
-ms.date: 11/08/2021
+ms.date: 10/22/2021
 ms.author: chenyl
-ms.openlocfilehash: 0601308270e86031b570eaeb86a78a42a7e69c28
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: c328e0e3bbff8c6e25e6f7b2df1c38cc710ace6b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997497"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130269737"
 ---
 # <a name="managed-identities-for-azure-web-pubsub-service"></a>Azure Web PubSub サービスでのマネージド ID
 

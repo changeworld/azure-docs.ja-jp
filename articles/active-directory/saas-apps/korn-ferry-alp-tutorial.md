@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: cad00073f8bb61ce1ec59e3ee5d0139958065548
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ce4ba44c1c3096bad6b936f293b47ac5ff9a30c7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424118"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285198"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-korn-ferry-alp"></a>チュートリアル: Azure AD SSO と Korn Ferry ALP の統合
 
@@ -142,4 +142,4 @@ Korn Ferry ALP に対する Azure AD SSO を構成してテストするには、
 
 ## <a name="next-steps"></a>次のステップ
 
-Korn Ferry ALP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Korn Ferry ALP を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

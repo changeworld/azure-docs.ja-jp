@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel に送信できる Windows セキュリティ イベント セット | Microsoft Docs
-description: Windows システムから収集して Azure Sentinel ワークスペースにストリーム配信できる、事前に構築された Windows セキュリティ イベントのセットについて説明します。
+title: Microsoft Sentinel に送信できる Windows セキュリティ イベント セット
+description: Windows システムから収集し、Microsoft Sentinel ワークスペースにストリーム配信できる、事前に構築された Windows セキュリティ イベントのセットについて説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 58503ee618666d990c8d23b7c42df5b277f53af4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 26bee8145176c5cba98286d5df7c2807c808a2c7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477866"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346802"
 ---
-# <a name="windows-security-event-sets-that-can-be-sent-to-azure-sentinel"></a>Azure Sentinel に送信できる Windows セキュリティ イベント セット
+# <a name="windows-security-event-sets-that-can-be-sent-to-microsoft-sentinel"></a>Microsoft Sentinel に送信できる Windows セキュリティ イベント セット
 
 [Windows セキュリティ イベント データ コネクタ](data-connectors-reference.md#windows-security-events-via-ama) ([レガシー バージョン](data-connectors-reference.md#security-events-via-legacy-agent-windows)を含む) を使用して Windows デバイスからセキュリティ イベントを取り込む場合、収集するイベントを次のセットから選択できます。
 
@@ -48,8 +48,7 @@ ms.locfileid: "131477866"
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Windows イベントのコレクションを Azure Sentinel にフィルター処理する方法について説明しました。
+このドキュメントでは、Windows イベントのコレクションを Microsoft Sentinel にフィルター処理する方法について説明しました。
 
 - [Windows セキュリティ イベントの収集](connect-windows-security-events.md)の詳細を確認する。
-- [組み込み](detect-threats-built-in.md)または[カスタム](detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。
-
+- [組み込み](detect-threats-built-in.md)または[カスタム](detect-threats-custom.md)のルールを使用して、Microsoft Sentinel で脅威の検出を開始する。

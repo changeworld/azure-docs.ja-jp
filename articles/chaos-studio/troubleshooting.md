@@ -7,14 +7,14 @@ ms.author: cashton
 ms.topic: troubleshooting
 ms.date: 11/01/2021
 ms.custom: template-troubleshooting, ignite-fall-2021
-ms.openlocfilehash: afe37f4e7600f248f6ea3be50b0a1972946e381d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 235dccf84d28f159a4ef5337a431c27c0316d6ec
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089811"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158921"
 ---
-# <a name="azure-chaos-studio-troubleshooting"></a>Azure Chaos Studio のトラブルシューティング
+# <a name="troubleshoot-issues-with-azure-chaos-studio"></a>Azure Chaos Studio に関する問題のトラブルシューティング
 
 Chaos Studio の使用時に、何らかの問題が発生する場合があります。 この記事では、よく発生する問題とトラブルシューティングの手順について詳しく説明します。
 
@@ -47,6 +47,12 @@ AKS に対して Chaos Mesh の障害を使用する前に、まず Chaos Mesh �
 [実験] ページで実験名をクリックし、[実験の詳細] ビューに移動します。 [履歴] セクションで、実行インスタンスの [詳細] リンクをクリックして詳細を確認します。
 
 ![実験履歴](images/run-experiment-history.png)
+
+### <a name="my-agent-based-fault-failed-with-error-verify-that-the-target-is-correctly-onboarded-and-proper-read-permissions-are-provided-to-the-experiment-msi"></a>エージェントベースのフォールトはエラーで失敗しました: ターゲットが正しくオンボードされており、適切な読み取りアクセス許可が実験用 msi に付与されていることを確認してください。
+
+これは、Azure portal を使用してエージェントをオンボードした場合に発生する可能性があります。この操作には、エージェントベースのターゲットを有効にしても、ユーザー割り当てマネージド ID が仮想マシンまたは仮想マシン スケール セットに割り当てられないという既知の問題があります。
+
+これを解決するには、Azure portal で、仮想マシンまたは仮想マシン スケール セットにアクセスし、 **[ID]** を選択して **[ユーザー割り当て]** タブを開き、ユーザー割り当て ID を仮想マシンに **[追加]** します。 完了後、エージェントが接続するために仮想マシンの再起動が必要な場合があります。
 
 ### <a name="how-do-i-collect-agent-logs-on-a-linux-virtual-machine"></a>Linux 仮想マシンでエージェント ログはどのように収集できますか?
 

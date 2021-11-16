@@ -6,13 +6,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: b8d67c3c5b596627fc1795cf97d807d7f582e326
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/07/2021
+ms.openlocfilehash: 7894e187efedf91e3c586dd0d8caaf35e753be3c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131442162"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028585"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>SAP R3 ブリッジ ファミリ用のメタデータ抽出 ABAP 関数モジュールをデプロイする
 
@@ -32,6 +32,12 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 > [!Note]
 > 以下の手順は、SAP GUI v.7.2 に基づいてコンパイルされました
+
+## <a name="prerequisites"></a>前提条件
+
+Purview Studio から ABAP 関数モジュールのソース コードをダウンロードします。 ソースを登録した後、[SAP ECC](register-scan-sapecc-source.md) または [SAP S/4HANA](register-scan-saps4hana-source.md) のスキャンを新規に登録すると、次のようにダウンロード リンクが上部に表示されます。 
+
+:::image type="content" source="media/abap-functions-deployment-guide/download-abap-code.png" alt-text="Purview Studio から ABAP 関数モジュールのソース コードをダウンロードする" border="true":::
 
 ## <a name="deployment-of-the-module"></a>モジュールのデプロイ
 
@@ -79,7 +85,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 3. **[Source code]\(ソース コード\)** タブに移動します。関数のコードをデプロイするには 2 つの方法があります。
 
-   a. メイン メニューから、テキスト ファイル [Z\_MITI\_DOWNLOAD](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) ファイルをアップロードします。 これを行うには、 **[ユーティリティ]** 、 **[その他のユーティリティ]** 、 **[アップロード/ダウンロード]** 、 **[アップロード]** の順に選択します。
+   a. メイン メニューから、[[前提条件]](#prerequisites) にある説明に従って、Purview Studio からダウンロードしたテキスト ファイルをアップロードします。 これを行うには、 **[ユーティリティ]** 、 **[その他のユーティリティ]** 、 **[アップロード/ダウンロード]** 、 **[アップロード]** の順に選択します。
 
    b. または、ファイルを開き、その内容をコピーして、**[Source code]\(ソース コード\)** 領域に貼り付けます。
 

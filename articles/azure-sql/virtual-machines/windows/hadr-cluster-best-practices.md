@@ -11,15 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 40c68a77a3e432c5ff03da2a99e93255719e8898
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8be0dc33d580314fd6b5e6472ed1cf41c5be2d4e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163412"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158435"
 ---
 # <a name="hadr-configuration-best-practices-sql-server-on-azure-vms"></a>HADR 構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,13 +36,14 @@ Azure Virtual Machines (VM) 上の SQL Server を使用して高可用性とデ�
 
 Windows クラスターの場合は、次のベスト プラクティスについて検討します。 
 
+* Azure Load Balancer または分散ネットワーク名 (DNN) に依存しなくても HADR ソリューションにトラフィックをルーティングできるよう、可能な限り SQL Server VM を複数のサブネットにデプロイします。 
 * 一時的なネットワーク障害や Azure プラットフォーム メンテナンスによって予期しない停止が起こらないよう、クラスターを変更してパラメーターを緩和します。 詳細については、[ハートビートとしきい値の設定](#heartbeat-and-threshold)に関する記事を参照してください。 Windows Server 2012 以降の場合は、次の推奨値を使用します。 
    - **SameSubnetDelay**: 1 秒
    - **SameSubnetThreshold**: 40 ハートビート
    - **CrossSubnetDelay**: 1 秒
    - **CrossSubnetThreshold**: 40 ハートビート
 * VM は可用性セットまたは別の可用性ゾーンに配置します。  詳細については、「[VM の可用性の設定](#vm-availability-settings)」を参照してください。 
-* 1 つの NIC (クラスター ノードあたり) と 1 つのサブネットを使用します。 
+* クラスター ノードごとに 1 つの NIC を使用します。 
 * 3 つ以上の奇数の投票を使用するように、クラスターの[クォーラム投票](#quorum-voting)を構成します。 投票は DR リージョンに割り当てないでください。 
 * リソースの制約による予期しない再起動やフェールオーバーが発生しないように、[リソース制限](#resource-limits)を慎重に監視します。
    - OS、ドライバー、SQL Server が最新のビルドになっていることを確認します。 
@@ -58,7 +59,7 @@ SQL Server の可用性グループまたはフェールオーバー クラス�
    `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.   
    40 秒から始めます。 先ほど推奨した緩和されている `SameSubnetThreshold` と `SameSubnetDelay` の値を使用している場合は、リース タイムアウト値が 80 秒を超えないようにしてください。   
    - **指定した期間の最大エラー数**: この値は 6 に設定します。 
-* 仮想ネットワーク名 (VNN) を使用して HADR ソリューションに接続する場合は、お使いのクラスターが 1 つのサブネットにしかまたがっていない場合でも、接続文字列に `MultiSubnetFailover = true` を指定します。 
+* 仮想ネットワーク名 (VNN) と Azure Load Balancer を使用して HADR ソリューションに接続する場合は、お使いのクラスターが 1 つのサブネットにしかまたがっていない場合でも、接続文字列に `MultiSubnetFailover = true` を指定します。 
    - クライアントで `MultiSubnetFailover = True` がサポートされていない場合は、`RegisterAllProvidersIP = 0` および `HostRecordTTL = 300` を設定して、クライアント資格情報をより短期間だけキャッシュすることが必要になる可能性があります。 ただし、そうすることで、DNS サーバーに対して追加のクエリが発生する場合があります。 
 - 分散ネットワーク名 (DNN) を使用して HADR ソリューションに接続する場合は、以下を検討してください。
    - `MultiSubnetFailover = True` をサポートするクライアント ドライバーを使用する必要があります。このパラメーターは接続文字列に含める必要があります。 
@@ -115,15 +116,20 @@ Windows Server フェールオーバー クラスターに参加しているノ�
 
 ## <a name="connectivity"></a>接続性
 
+可用性グループ リスナーまたはフェールオーバー クラスター インスタンスに接続するためのオンプレミス エクスペリエンスに一致するよう、SQL Server VM を同じ仮想ネットワーク内の複数のサブネットにデプロイします。 複数のサブネットを使用すると、トラフィックをリスナーにルーティングするための分散ネットワーク名や Azure Load Balancer への余分な依存関係が不要になります。  
 
-フェールオーバー クラスター インスタンスと可用性グループ リスナーの両方で、仮想ネットワーク名 (VNN)、または (SQL Server 2019 以降では) 分散ネットワーク名 (DNN) を構成できます。 
+HADR ソリューションを簡素化するには、可能な限り、SQL Server VM を複数のサブネットにデプロイします。  詳細については、[複数サブネットの AG](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) および[複数サブネットの FCI](failover-cluster-instance-prepare-vm.md#subnets) に関するページを参照してください。 
+
+SQL Server VM が 1 つのサブネット内にある場合は、フェールオーバー クラスター インスタンスと可用性グループ リスナーの両方に対して、仮想ネットワーク名 (VNN) と Azure Load Balancer、または分散ネットワーク名 (DNN) のいずれかを構成できます。 
 
 推奨されている接続オプションは、分散ネットワーク名です (使用可能な場合)。 
 - ロード バランサーのリソースを維持する必要がなくなるため、エンド ツー エンド ソリューションはより堅牢になります。 
 - ロード バランサーのプローブを排除すると、フェールオーバー時間を最小限に抑えられます。 
 - DNN を使用すると、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンスまたは可用性グループ リスナーのプロビジョニングと管理が簡単になります。 
 
-DNN を使用しているか、または複数のサブネットにまたがる AG または FCI を使用している場合は、MultiSubnetFailover パラメーターをサポートするクライアント ドライバーを使用し、接続文字列に MultiSubnetFailover = True を指定する必要があります。 可用性グループの場合、接続文字列に DNN ポート番号が含まれている必要があります (FCI の場合は不要です)。 
+次の制限が適用されます。 
+- クライアント ドライバーで `MultiSubnetFailover=True` パラメーターがサポートされている必要があります。 
+- DNN 機能は、Windows Server 2016 以降の [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31)、[SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9)、[SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) 以降で使用できます。
 
 詳細については、[Windows Server フェールオーバー クラスターの概要](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)に関するページを参照してください。 
 
@@ -134,7 +140,7 @@ DNN を使用しているか、または複数のサブネットにまたがる 
 DNN を使用すると、ほとんどの SQL Server 機能は FCI と可用性グループに対して透過的に機能しますが、特定の機能については、特別な考慮が必要となる場合があります。 詳細については、[FCI と DNN の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関するページと、[AG と DNN の相互運用性](availability-group-dnn-interoperability.md)に関するページを参照してください。 
 
 >[!TIP]
-> 1 つのサブネットの HADR ソリューションでも、接続文字列内で MultiSubnetFailover パラメータ = true を設定することで、今後、接続文字列を変更することなく、複数のサブネットにまたがることができます。  
+> 1 つのサブネットの HADR ソリューションでも、接続文字列内で MultiSubnetFailover パラメーターを true に設定することで、今後、接続文字列を更新しなくても、複数のサブネットにまたがることができます。  
 
 ## <a name="heartbeat-and-threshold"></a>ハートビートとしきい値 
 
@@ -285,6 +291,8 @@ VM またはディスクの制限により、クラスターの正常性に影�
 
 ## <a name="networking"></a>ネットワーク
 
+Azure Load Balancer または分散ネットワーク名 (DNN) に依存しなくても HADR ソリューションにトラフィックをルーティングできるよう、可能な限り SQL Server VM を複数のサブネットにデプロイします。
+
 サーバー (クラスター ノード) ごとに 1 つの NIC を使用します。 Azure ネットワークは物理的な冗長を備えているので、Azure 仮想マシンのゲスト クラスターに NIC を追加する必要はありません。 クラスター検証レポートには、ノードは 1 つのネットワーク上でのみ到達可能であることを警告するメッセージが表示されます。 Azure 仮想マシンのゲスト フェールオーバー クラスターでは、この警告を無視できます。 
 
 特定の VM の帯域幅の制限は NIC 間で共有され、NIC を追加しても、Azure VM 上の SQL Server の可用性グループ パフォーマンスは向上しません。 そのため、2 つ目の NIC を追加する必要はありません。 
@@ -300,10 +308,7 @@ Azure の RFC に準拠していない DHCP サービスにより、特定のフ
 5. NODE2 では、NODE1 との接続を確立しようとするときに、NODE1 の IP アドレスがそれ自体に解決されるため、NODE1 宛てのパケットは NODE2 から送信されません。 NODE2 では NODE1 との接続を確立できず、クォーラムが失われ、クラスターがシャットダウンされます。
 6. NODE1 では NODE2 にパケットを送信できますが、NODE2 は応答できません。 NODE1 はクォーラムを失い、クラスターをシャットダウンします。
 
-このシナリオは、クラスター ネットワーク名をオンラインにするために、クラスター ネットワーク名に未使用の静的 IP アドレスを割り当てることによって回避できます。 たとえば、169.254.1.1 のようなリンク ローカル IP アドレスを使用できます。 このプロセスを簡略化するには、[可用性グループのための Azure での Windows フェールオーバー クラスターの構成](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)に関するページを参照してください。
-
-詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](./availability-group-quickstart-template-configure.md)」を参照してください。
-
+このシナリオは、クラスター ネットワーク名をオンラインにし、IP アドレスを [Azure Load Balancer](availability-group-load-balancer-portal-configure.md) に追加するために、クラスター ネットワーク名に未使用の静的 IP アドレスを割り当てることによって回避できます。
 
 ## <a name="known-issues"></a>既知の問題
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - スコープ レベルの Azure ハイブリッド特典を SQL Server に合わせて最適化する
+title: チュートリアル - SQL Server に対して一元的に管理された Azure ハイブリッド特典を最適化する
 description: このチュートリアルでは、Azure で SQL Server のライセンスを事前に割り当て、Azure ハイブリッド特典を管理および最適化する方法について説明します。
 author: bandersmsft
 ms.author: banders
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: fa928181b20a5975f4c6e42079695aede223ddac
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 6031bd83a5a32ffc5e76a4a967e305324f8d7ee8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547482"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218865"
 ---
-# <a name="tutorial-optimize-scope-level-azure-hybrid-benefit-for-sql-server"></a>チュートリアル: スコープ レベルの Azure ハイブリッド特典を SQL Server に合わせて最適化する
+# <a name="tutorial-optimize-centrally-managed-azure-hybrid-benefit-for-sql-server"></a>チュートリアル: SQL Server に対して一元的に管理された Azure ハイブリッド特典を最適化する
 
-このチュートリアルでは、Azure で SQL Server のライセンスを事前に割り当て、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を管理および最適化する方法について説明します。 特典を最適化することで、Azure SQL の運用コストを削減できます。
+このチュートリアルでは、Azure で SQL Server のライセンスを積極的に割り当て、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を一元的に管理および最適化する方法について説明します。 特典を最適化することで、Azure SQL の運用コストを削減できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,10 +32,10 @@ ms.locfileid: "129547482"
 
 開始する前に、次の要件が満たされていることを確認します。
 
-「[Azure ハイブリッド特典のスコープレベルの管理とは](overview-azure-hybrid-benefit-scope.md)」の記事を読み、理解していること。 この記事では、Azure ハイブリッド特典の対象となる SQL Server ライセンスの種類について説明します。また、サブスクリプションまたは全体の課金アカウント レベルで選択したスコープで Azure ハイブリッド特典を有効にして使用する方法についても説明します。
+「[一元管理された Azure ハイブリッド特典とは](overview-azure-hybrid-benefit-scope.md)」の記事を読み、理解していること。 この記事では、Azure ハイブリッド特典の対象となる SQL Server ライセンスの種類について説明します。また、サブスクリプションまたは全体の課金アカウント レベルで選択したスコープで Azure ハイブリッド特典を有効にして使用する方法についても説明します。
 
 > [!NOTE]
-> スコープを指定して Azure ハイブリッド特典を使用することは、現在パブリック プレビュー段階であり、エンタープライズのお客様に限定されています。
+> スコープ レベルで Azure ハイブリッド特典を一元的に管理することは、現在パブリック プレビュー段階であり、エンタープライズのお客様に限定されています。
 
 この新しいエクスペリエンスの使用を開始する前に、Azure で SQL Server を実行する自己インストールした仮想マシンが登録されていることを確認してください。 そうすると、SQL Server を実行している Azure リソースがお客様と Azure から見えるようになります。 Azure に SQL VM を登録する方法については、「[SQL Server VM を SQL IaaS Agent 拡張機能に登録する](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)」と「[Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md)」を参照してください。
 
@@ -94,7 +94,7 @@ SQL Server のライセンスを購入して Azure ハイブリッド特典を�
 
 次の例では、あなたが Contoso Insurance 社の請求管理者であると仮定してください。 あなたは Contoso の SQL Server の Azure ハイブリッド特典を管理しています。
 
-あなたは、アカウント全体のレベルで SQL Server の Azure ハイブリッド特典を管理できることを調達部門から知らされました。 調達部門は、Microsoft アカウント チームからこの情報を知りました。 あなたは、Azure ハイブリッド特典を管理するのが最近大変だったので、興味を持ちました。 その理由の 1 つは、開発者が互いにスクリプトを共有するときに、リソース上で任意に特典を有効 (または無効) にしていたからです。
+あなたは、アカウント全体のレベルで SQL Server の Azure ハイブリッド特典を一元的に管理できることを調達部門から知らされました。 調達部門は、Microsoft アカウント チームからこの情報を知りました。 あなたは、Azure ハイブリッド特典を管理するのが最近大変だったので、興味を持ちました。 その理由の 1 つは、開発者が互いにスクリプトを共有するときに、リソース上で任意に特典を有効 (または無効) にしていたからです。
 
 新しい Azure ハイブリッド特典エクスペリエンスは、Azure portal の [コストの管理と請求] 領域にあります。
 
@@ -124,5 +124,5 @@ SQL Server のライセンスを購入して Azure ハイブリッド特典を�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure ハイブリッド特典のスコープレベルの管理に移行する](transition-existing.md)」方法について確認します。
-- 「[スコープ レベルの Azure ハイブリッド特典の管理に関する FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
+- [一元管理された Azure ハイブリッド特典への移行](transition-existing.md)方法について確認します。
+- [一元管理された Azure ハイブリッド特典の FAQ](faq-azure-hybrid-benefit-scope.yml) を確認します。

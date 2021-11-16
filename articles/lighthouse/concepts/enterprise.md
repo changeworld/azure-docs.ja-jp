@@ -1,14 +1,14 @@
 ---
 title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
-ms.date: 09/08/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f83e5d84eee0c3ed7f159778630e3598274e4916
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d0accd765049c671d8d61a76d7c6449260b0140
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768783"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249649"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -49,6 +49,12 @@ Azure Lighthouse では、データやリソースを物理的に移動するの
 通常、エンタープライズ ユーザーはエンタープライズのテナントに直接アクセスでき、管理オファリングを市場に投入したり宣伝したりする必要がないので、通常は、Azure Resource Manager テンプレートをデプロイする方がより高速で簡単です。 [オンボード ガイダンス](../how-to/onboard-customer.md)ではサービス プロバイダーと顧客の場合について説明していますが、エンタープライズは同じプロセスを使用してテナントをオンボードできます。
 
 必要に応じて、[マネージド サービス オファーを Azure Marketplace に公開](../how-to/publish-managed-services-offers.md)して、企業内のテナントをオンボーディングすることもできます。 オファーが適切なテナントでのみ利用できるようにするには、必ずプランを非公開とマークします。 非公開プランの場合、オンボードする予定の各テナントのサブスクリプション ID を指定します。また、他のユーザーはあなたのプランを取得できなくなります。
+
+## <a name="azure-ad-b2c"></a>Azure AD B2C
+
+[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) は、サービスとしての企業-消費者間 (B2C) ID が提供されます。 Azure Lighthouse を使用してリソース グループを委任すると、Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサインインと監査ログをさまざまな監視ソリューションにルーティングできます。 そのログを、長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合して環境の分析情報を取得したりすることができます。
+
+詳細については、「[Azure Monitor で Azure AD B2C を監視する](../../active-directory-b2c/azure-monitor.md)」を参照してください。
 
 ## <a name="terminology-notes"></a>用語に関する注意事項
 

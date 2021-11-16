@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d146be642050c169dabf009352a34ad595fab84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 853174bd96f0a88f8513df848aab7a3d34aceb28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746425"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451846"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ) 
 
@@ -208,7 +208,7 @@ Azure AD Kerberos サーバーは、Azure AD 内では *KerberosDomain* オブ�
 
 すべてのオブジェクトを表示するには、Azure AD Connect の最新バージョンに含まれている Azure AD Kerberos サーバー PowerShell コマンドレットを使用します。
 
-オブジェクトの表示方法を含む詳細については、「[Kerberos サーバー オブジェクトの作成](howto-authentication-passwordless-security-key-on-premises.md#create-kerberos-server-object)」を参照してください。
+オブジェクトの表示方法を含む詳細については、「[Kerberos サーバー オブジェクトの作成](howto-authentication-passwordless-security-key-on-premises.md#create-a-kerberos-server-object)」を参照してください。
 
 ### <a name="why-cant-we-have-the-public-key-registered-to-on-premises-ad-ds-so-there-is-no-dependency-on-the-internet"></a>インターネットへの依存関係がなくなるように、公開キーをオンプレミスの AD DS に登録することができないのはなぜですか。
 
@@ -219,7 +219,7 @@ Microsoft では Windows Hello for Business のデプロイ モデルの複雑�
 他の DC と同様に、Azure AD Kerberos サーバー暗号化の *krbtgt* キーは定期的にローテーションする必要があります。 他のすべての AD DS *krbtgt* キーのローテーションのスケジュールと同じスケジュールにすることをお勧めします。
 
 > [!NOTE]
-> *krbtgt* キーをローテーションするツールは他にもありますが、Azure AD Kerberos サーバーの [*krbtgt* キーをローテーションするには、PowerShell コマンドレットを使用する](howto-authentication-passwordless-security-key-on-premises.md#rotating-the-azure-ad-kerberos-server-key)必要があります。 この方法を使用すると、オンプレミスの AD DS 環境と Azure AD の両方で、キーが確実に更新されます。
+> *krbtgt* キーをローテーションするツールは他にもありますが、Azure AD Kerberos サーバーの [*krbtgt* キーをローテーションするには、PowerShell コマンドレットを使用する](howto-authentication-passwordless-security-key-on-premises.md#rotate-the-azure-ad-kerberos-server-key)必要があります。 この方法を使用すると、オンプレミスの AD DS 環境と Azure AD の両方で、キーが確実に更新されます。
 
 ### <a name="why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad"></a>なぜ Azure AD Connect が必要なのですか。 これによって、Azure AD から AD DS に情報が書き戻されることはありますか。
 
@@ -235,7 +235,7 @@ HTTP 要求は、標準のプライマリ更新トークン (PRT) 要求です�
 
 Azure AD は、暗号化されたクライアント キーとメッセージ バッファーを、追加のプロパティとして PRT 応答に結合します。 ペイロードは、Azure AD デバイス セッション キーを使用して暗号化されます。
 
-| フィールド              | 型   | 説明  |
+| フィールド              | Type   | 説明  |
 |--------------------|--------|--------------|
 | tgt_client_key     | string | Base64 でエンコードされたクライアント キー (シークレット)。 このキーは、TGT を保護するために使用されるクライアント シークレットです。 このパスワードレスのシナリオでは、クライアント シークレットはサーバーによって各 TGT 要求の一部として生成され、応答でクライアントに返されます。 |
 | tgt_key_type       | INT    | クライアント キーと KERB_MESSAGE_BUFFER に含まれる Kerberos セッション キーの両方に使用される、オンプレミスの AD DS キーの種類。 |

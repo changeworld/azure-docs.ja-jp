@@ -5,15 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: db79a066b5bfa350d8af47e8d817345276eac4e3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ae757f9facc7365dafb8412ec164d549e73f1df7
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092724"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576170"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -250,7 +249,7 @@ REST API から使用できる関数をいくつか以下に示します。
 Defender for Cloud にスキャナーをデプロイするときにアラートが生成されないようにするには、適応型アプリケーション制御の推奨許可リストに、すべてのコンピューターのスキャナーが含まれていることを確認します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このページでは、Azure と Azure 以外のマシンで実行されるアプリケーションの許可リストを定義するために、Microsoft Defender for Cloudで適応型アプリケーション制御を使用する方法を学習しました。 その他のクラウド ワークロード保護機能の詳細については、次のページを参照してください。
 
 * [Just-In-Time (JIT) VM アクセスについて](just-in-time-access-overview.md)

@@ -4,25 +4,24 @@ description: 条件付きアクセスでデバイスのフィルターを使用�
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/26/2021
+ms.date: 11/08/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dc7b4630d26c0f1b78df5a29a3210fd68f3d734
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: da1ecbbc9f4d6b318c7829b946da5495104e4632
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012664"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135445"
 ---
 # <a name="conditional-access-filter-for-devices"></a>条件付きアクセス: デバイスのフィルター
 
 条件付きアクセス ポリシーを作成する際、管理者は、環境内の特定のデバイスを対象または対象外とする機能を求めています。 デバイスの条件フィルターは、管理者にこの機能を提供します。 [デバイスフィルターのサポートされている演算子とプロパティ](#supported-operators-and-device-properties-for-filters)、および条件付きアクセスポリシーで使用できるその他の割り当て条件を使用して、特定のデバイスを対象にすることができるようになりました。
 
 :::image type="content" source="media/concept-condition-filters-for-devices/create-filter-for-devices-condition.png" alt-text="条件付きアクセス ポリシーで、デバイスのフィルター条件を作成する":::
-
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
@@ -88,6 +87,10 @@ ms.locfileid: "131012664"
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
 
+### <a name="setting-attribute-values"></a>属性値の設定
+
+拡張属性の設定は、Graph API によって実現されています。 デバイス属性の設定の詳細については、「[デバイスの更新](/graph/api/device-update?view=graph-rest-1.0&tabs=http#example-2--write-extensionattributes-on-a-device)」という記事を参照してください。
+
 ### <a name="filter-for-devices-graph-api"></a>デバイスのフィルター処理 Graph API
 
 デバイス API のフィルターは Microsoft Graph v1.0 エンドポイントで使用してアクセスでき https://graph.microsoft.com/v1.0/identity/conditionalaccess/policies/ ます。 新しい条件付きアクセスポリシーを作成するときにデバイスのフィルターを構成できます。また、既存のポリシーを更新して、デバイスのフィルターを構成することもできます。 既存のポリシーを更新するには、既存のポリシーのポリシー ID を追加し、次の要求本文を実行することで、前述の Microsoft Graph v1.0 エンドポイントでパッチ呼び出しを実行できます。 次の例では、SAWデバイスとして認識していないデバイスを除外するデバイス条件を設定します。 ルール構文は、複数の単一式で構成できます。 構文の詳細については、「 [Azure Active Directory のグループのダイナミックメンバーシップ規則](../enterprise-users/groups-dynamic-membership.md)」を参照してください。 
@@ -119,7 +122,7 @@ ms.locfileid: "131012664"
 | mdmAppId | Equals、NotEquals、In、NotIn | 有効な MDM アプリケーション ID | (device.mdmAppId -in [“0000000a-0000-0000-c000-000000000000”]) |
 | model | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 任意の文字列 | (device.model -notContains “Surface”) |
 | operatingSystem | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 有効なオペレーティング システム (Windows、iOS、Android など) | (device.operatingSystem -eq “Windows”) |
-| operatingSystemVersion | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 有効なオペレーティング システムのバージョン (Windows 7 の場合は 6.1、Windows 8 の場合は 6.2、Windows 10 の場合は 10.0 など) | (device.operatingSystemVersion -in [“10.0.18363”, “10.0.19041”, “10.0.19042”]) |
+| operatingSystemVersion | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 有効なオペレーティング システムのバージョン (Windows 7 の場合は 6.1、Windows 8 の場合は 6.2、Windows 10 の場合は 10.0、Windows 11 など) | (device.operatingSystemVersion -in [“10.0.18363”, “10.0.19041”, “10.0.19042”, “10.0.22000”]) |
 | physicalIds | Contains、NotContains | たとえば、Windows オートパイロット デバイスにはすべて、デバイスの physicalIds プロパティに ZTDId (インポートされたすべての Windows オートパイロット デバイスに割り当てられた一意の値) が格納されています。 | (devicePhysicalIDs-contains "[ZTDId]: value") |
 | profileType | Equals、NotEquals | デバイスに設定されている有効なプロファイルの種類。 サポートされている値は、RegisteredDevice (既定値)、SecureVM (Azure AD サインインで有効になっている Azure の Windows VM に使用)、プリンター (プリンターに使用)、共有 (共有デバイスに使用)、IoT (IoT デバイスに使用) | (device.profileType -notIn [“Printer”, “Shared”, “IoT”]) |
 | systemLabels | Contains、NotContains | システムによってデバイスに適用されているラベルの一覧。 サポートされている値は、AzureResource (Azure AD サインインで有効になっている Azure の Windows VM に使用)、M365Managed (Microsoft マネージド デスクトップを使用して管理されるデバイスに使用)、MultiUser (共有デバイスに使用) など | (device.systemLabels - "M365Managed" を含む) |
@@ -143,6 +146,7 @@ ms.locfileid: "131012664"
 
 ## <a name="next-steps"></a>次のステップ
 
+- [デバイスを更新する Graph API](/graph/api/device-update?view=graph-rest-1.0&tabs=http)
 - [条件付きアクセス:条件](concept-conditional-access-conditions.md)
 - [一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)
 - [特権アクセスの一部としてデバイスをセキュリティで保護する](/security/compass/privileged-access-devices)

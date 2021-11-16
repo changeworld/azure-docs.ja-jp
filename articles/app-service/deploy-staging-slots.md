@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 77e374e43722554a215675fd09d0317899d7992f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: feea2bdccd5f4e7ea4c18b7dd155ee0f105b6c8f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709054"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027567"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -217,7 +217,7 @@ ms.locfileid: "129709054"
 
 次の[アプリ設定](configure-common.md)の 1 つまたは両方を使用して、ウォームアップの動作をカスタマイズすることもできます。
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 たとえば `/statuscheck` です。 既定値は `/` です。 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: サイトをウォームアップするための、HTTP 経由での ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 たとえば `/statuscheck` です。 既定値は `/` です。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば `200,202` とします。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。
 - `WEBSITE_WARMUP_PATH`: (スロット スワップ中だけでなく) サイトが再起動されるたびに ping を実行する必要があるサイトの相対パス。 サンプル値には、`/statuscheck` またはルート パス、`/` が含まれます。
 

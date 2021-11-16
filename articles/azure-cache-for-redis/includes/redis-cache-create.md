@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 63c9c98f7b85c18cde58d65a8d1fd94eff2b1985
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74b23eb8560a830e7e07a86fe745b94619eeeaf0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560168"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440330"
 ---
 1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。
 
@@ -39,11 +39,11 @@ ms.locfileid: "128560168"
 
 1. **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンを選択します。
 
-1. Basic または Standard のキャッシュ インスタンスの **[詳細]** タブで、非 TLS ポートを有効にする場合は有効トグルをオンにします。 使用する Redis のバージョン 4 または (プレビュー) 6 を選択することもできます。
+1. Basic または Standard のキャッシュ インスタンスの **[詳細]** タブで、非 TLS ポートを有効にする場合は有効トグルをオンにします。 また、使用する Redis のバージョンを 4 または 6 から選択できます。
 
-    :::image type="content" source="media/redis-cache-create/redis-version.png" alt-text="Redis バージョン 4 または 6。":::
+    :::image type="content" source="media/redis-cache-create/cache-redis-version.png" alt-text="Redis バージョン 4 または 6。":::
 
-1. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。 使用する Redis のバージョン 4 または (プレビュー) 6 を選択することもできます。
+1. Premium キャッシュ インスタンスの **[詳細]** タブで、非 TLS ポート、クラスタリング、データ永続化の設定を構成します。 また、使用する Redis のバージョンを 4 または 6 から選択できます。
 
 1. ページの下部にある **[次へ: タグ]** タブを選択するか、ページの下部にある **[次へ: タグ]** ボタンを選択します。
 
@@ -54,3 +54,5 @@ ms.locfileid: "128560168"
 1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
 キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
+
+<!-- Comment to dirty file. -->

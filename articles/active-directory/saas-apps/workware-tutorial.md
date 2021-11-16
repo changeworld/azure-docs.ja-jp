@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 9d213c63be608f2b28ec28f6597d33ff622b8cb5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 37da17ab39e9f30114741319cdef6bc7036fa734
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005772"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284951"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-workware"></a>チュートリアル: Azure AD SSO と Workware の統合
 
@@ -167,4 +167,4 @@ Workware で SSO 機能を使用するには、次の設定を完了する必要
 
 ## <a name="next-steps"></a>次のステップ
 
-Workware を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Workware を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

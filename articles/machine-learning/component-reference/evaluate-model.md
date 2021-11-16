@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3fede7fbb0f4951633ec74284fad00d2d66257b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ff2233f6a1b669856084cdd07591d99ee23dbe8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565579"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331226"
 ---
 # <a name="evaluate-model-component"></a>モデルの評価コンポーネント
 
@@ -138,8 +138,7 @@ ms.locfileid: "131565579"
      この数が大きい場合は、クラスターが広範囲に分散していることを意味する可能性があります。 クラスターの分散を特定するには、この統計を **Average Distance to Cluster Center (クラスターの中心への平均距離)** と共に確認する必要があります。   
 
 -   結果の各セクションの下部にある **Combined Evaluation (結合した評価)** スコアには、その特定のモデルで作成されたクラスターの平均スコアが一覧表示されます。  
-  
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のコンポーネント](component-reference.md)を参照してください。
+Azure Machine Learning で[使える一連のコンポーネント](component-reference.md)を参照してください。

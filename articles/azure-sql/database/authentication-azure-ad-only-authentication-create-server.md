@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/02/2021
-ms.openlocfilehash: 1a1c93a47d85b13c1f2a8267539da4c72f166756
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 845ecacf97887ef3488d1fd80b40f9424234e257
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131423757"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290495"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する
 
@@ -79,7 +79,7 @@ ms.locfileid: "131423757"
 
 1. **[接続ポリシー]** と **[最小 TLS バージョン]** は規定値のままにします。
 
-1. ページの下部で **[次へ: セキュリティ]** を選択します。 自身の環境向けに、 **[Azure Defender for SQL]** 、 **[Ledger]** 、 **[ID]** 、 **[Transparent Data Encryption]** の設定を構成します。 これらの設定は省略することもできます。
+1. ページの下部で **[次へ: セキュリティ]** を選択します。 ご自分の環境に、 **[Microsoft Defender for SQL]** 、 **[Ledger]** 、 **[ID]** 、 **[Transparent Data Encryption]** の設定を構成します。 これらの設定は省略することもできます。
 
    > [!NOTE]
    > ユーザー割り当てマネージド ID (UMI) の使用は、Azure AD 専用認証ではサポートされていません。 **[ID]** セクションでサーバー ID を UMI として設定しないでください。

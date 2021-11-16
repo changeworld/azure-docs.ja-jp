@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b7c4b0f75dd94a5aa61b75b99bbb553c98090aac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afc8bd93704008860882150b53e1624072871778
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726061"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441813"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -52,7 +52,7 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 >[!NOTE]
 >* ネットワーク マッピングを変更すると、新しい VM レプリケーションの既定のみが変更されます。 既存のレプリケーションのターゲット仮想ネットワークの選択は影響を受けません。
->* 既存のレプリケーションのターゲット ネットワークを変更する場合は、レプリケートされた項目の [コンピューティングとネットワークの設定] に移動します。
+>* 既存のレプリケーションのターゲット ネットワークを変更する場合は、レプリケートされた項目の **[ネットワーク]** 設定に移動します。
 
 ## <a name="specify-a-subnet"></a>サブネットを指定する
 
@@ -60,9 +60,9 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 - ソース VM サブネットと同じ名前のサブネットをターゲット ネットワークで利用できる場合は、そのサブネットがターゲット VM に対して設定されます。
 - ターゲット ネットワークに同じ名前のサブネットが存在しない場合は、アルファベット順で最初のサブネットがターゲット サブネットとして設定されます。
-- ターゲット サブネットは、VM の **[コンピューティングとネットワーク]** の設定で変更できます。
+- ターゲット サブネットは、VM の **[ネットワーク]** 設定で変更できます。
 
-    ![[コンピューティングとネットワーク] の [コンピューティングのプロパティ] ウィンドウ](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
+    ![[ネットワーク] のコンピューティング プロパティ ウィンドウ](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
 ## <a name="set-up-ip-addressing-for-target-vms"></a>ターゲット VM の IP アドレス指定を設定する
@@ -72,6 +72,7 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 - **DHCP**: ソース VM の NIC が DHCP を使用する場合は、ターゲット VM の NIC も DHCP を使用するように設定されます。
 - **静的 IP アドレス**: ソース VM の NIC が静的 IP アドレス指定を使用する場合は、ターゲット VM の NIC も静的 IP アドレスを使用します。
 
+セカンダリ IP 構成も同様です。
 
 ## <a name="ip-address-assignment-during-failover"></a>フェールオーバー時の IP アドレスの割り当て
 
@@ -91,7 +92,7 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 - フェールオーバー VNet は、ディザスター リカバリーの設定時に選択するターゲット ネットワークです。
 - テスト フェールオーバーには必ず非運用環境のネットワークを使用することをお勧めします。
-- VM の **[コンピューティングとネットワーク]** の設定でターゲット IP アドレスを変更できます。
+- VM の **[ネットワーク]** 設定でターゲット IP アドレスを変更できます。
 
 
 ## <a name="next-steps"></a>次のステップ

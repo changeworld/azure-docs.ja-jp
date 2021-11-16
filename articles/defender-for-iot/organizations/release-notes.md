@@ -1,17 +1,16 @@
 ---
-title: Azure Defender for IoT の新機能
+title: Microsoft Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
 ms.topic: overview
-ms.date: 10/20/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: a4a39ef6d48ecd2466c6642fcaa91611d2f44da6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.openlocfilehash: 955e9feb6d7f47c325421a9bf680c2151a9200f6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073075"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283625"
 ---
-# <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能  
+# <a name="whats-new-in-microsoft-defender-for-iot"></a>Microsoft Defender for IoT の新機能
 
 [!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
@@ -19,13 +18,13 @@ ms.locfileid: "131073075"
 
 記載されている機能はプレビュー段階です。 [Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはその他のまだ一般提供されていない Azure 機能に適用される他の法律条項が含まれています。
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート
+## <a name="versioning-and-support-for-defender-for-iot"></a>Defender for IoT のバージョン管理とサポート
 
-以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンを示しています。
+以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Defender for IoT のバージョンを示しています。
 
 ### <a name="servicing-information-and-timelines"></a>サービスの情報とタイムライン
 
-Microsoft では、Azure Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Azure Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
+Microsoft では、Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
 
 ### <a name="versions-and-support-dates"></a>バージョンとサポートの日付
 
@@ -77,17 +76,29 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 
 ### <a name="pcap-api"></a>PCAP API
 
-新しい PCAP API を使用すると、ユーザーはセンサー自体に直接アクセスして、または直接アクセスせずに、オンプレミスの管理コンソールを介してセンサーから PCAP ファイルを取得できます。 これを行うには、管理コンソールをプロキシとして使用します。
+新しい PCAP API を使用すると、ユーザーはセンサー自体に直接アクセスして、または直接アクセスせずに、オンプレミスの管理コンソールを介してセンサーから PCAP ファイルを取得できます。
 
 ### <a name="on-premises-management-console-audit"></a>オンプレミスの管理コンソール監査
 
-センサーのデプロイの監査ログが、オンプレミスの管理コンソールから使用できるようになりました。
+オンプレミスの管理コンソールの監査ログをエクスポートして、誰がどのような変更を行ったのかを容易に調べることができるようになりました。
 
 ### <a name="webhook-extended"></a>Webhook 拡張
 
-Webhook 拡張を使用すると、Webhook アラートのすべての情報と追加のデータをエンドポイントに送信できます。
+Webhook 拡張を使用して、エンドポイントに追加のデータを送信することができます。 拡張機能には、Webhook アラートのすべての情報が含まれ、レポートに次の情報が追加されます。
 
-### <a name="unicode-support-for-certificate-passphrases"></a>証明書のパスフレーズに対する Unicode サポート 
+- sensorID
+- sensorName
+- zoneID
+- zoneName
+- siteID
+- siteName
+- sourceDeviceAddress
+- destinationDeviceAddress
+- remediationSteps
+- handled
+- additionalInformation
+
+### <a name="unicode-support-for-certificate-passphrases"></a>証明書のパスフレーズに対する Unicode サポート
 
 センサー証明書のパスフレーズを操作するときに、Unicode 文字がサポートされるようになりました。 詳細については、「[証明書について](how-to-deploy-certificates.md#about-certificates)」を参照してください。
 
@@ -126,7 +137,7 @@ Webhook 拡張を使用すると、Webhook アラートのすべての情報と�
 - 送信元と送信先のアドレス
 - 修復ステップ
 - ユーザーが定義したセンサーの名前
-- センサーに関連付けられているゾーンの名前 
+- センサーに関連付けられているゾーンの名前
 - センサーに関連付けられているサイトの名前
 
 **センサー**
@@ -171,6 +182,7 @@ Webhook 拡張を使用すると、Webhook アラートのすべての情報と�
 - [オンボード](#onboarding)
 - [使いやすさ](#usability)
 - [他の更新プログラム](#other-updates)
+
 ### <a name="security"></a>セキュリティ
 
 このリリースでは、証明書とパスワードの回復で機能強化が行われました。

@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.openlocfilehash: 01839f2a6f16584148d4cab86e07f3da0eefee43
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a8eded57142bf4682a0b555136c30462e9cf08ad
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076549"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060512"
 ---
 # <a name="make-predictions-with-onnx-on-computer-vision-models-from-automl"></a>AutoMLのコンピュータービジョンモデルでONNX を使用して予測を行います。 
 
@@ -157,7 +157,7 @@ for idx, output in enumerate(range(len(sess_output))):
          
 | 出力名   | 出力図形  | 出力の種類 | 説明 |
 | -------- |----------|-----|------|
-| 出力1 | `(batch_size, num_classes)` | ndarray(float) | モデルは、( `softmax`なし) logitsを 返し ます。 たとえば、バッチサイズ1と4クラスの場合、`(1, 4)`を返します。 |
+| 出力1 | `(batch_size, num_classes)` | ndarray(float) | モデルは、( `softmax`なし) logitsを返します。 たとえば、バッチサイズ1と4クラスの場合、`(1, 4)`を返します。 |
 
 # <a name="multi-label-image-classification"></a>[複数ラベルの画像分類](#tab/multi-label)
 
@@ -227,6 +227,9 @@ for idx, output in enumerate(range(len(sess_output))):
 # <a name="instance-segmentation"></a>[インスタンスのセグメント化](#tab/instance-segmentation)
 
 このインスタンスセグメント化の例では、 [fridgeObjectsデータセット](https://cvbp-secondary.z19.web.core.windows.net/datasets/object_detection/odFridgeObjectsMask.zip)でトレーニングされた Mask R-CNNモデルを128の画像と4つのクラス/ラベルで使用して、ONNX モデルの推定を説明します。 インスタンスセグメント化モデルのトレーニングの詳細については、「 [インスタンスセグメント化のノートブック](https://github.com/Azure/azureml-examples/tree/81c7d33ed82f62f419472bc11f7e1bad448ff15b/python-sdk/tutorials/automl-with-azureml/image-instance-segmentation)」を参照してください。
+
+>[!IMPORTANT]
+> インスタンス セグメント化タスクでは、Mask R-CNN のみがサポートされています。 入力形式と出力形式は、Mask R-CNN のみに基づいています。
 
 ### <a name="input-format"></a>入力形式
 
@@ -488,7 +491,7 @@ img_data = preprocess(img, resize_size, crop_size_onnx)
 
 # <a name="object-detection-with-faster-r-cnn"></a>[より高速なR-CNN を使用した物体検出](#tab/object-detect-cnn)
 
-より高速なR-CNNアルゴリズムを使用した物体検出では、イメージのトリミングを除き、画像分類と同じ前処理手順に従います。 高さ`600`と幅`800`を指定して画像のサイズを変更 し、次のコードを使用して期待される入力の高さと幅を取得できます。
+より高速なR-CNNアルゴリズムを使用した物体検出では、イメージのトリミングを除き、画像分類と同じ前処理手順に従います。 高さ `600` と幅 `800` を使用してイメージのサイズを変更できます。 次のコードを使用して、予想される入力の高さと幅を取得できます。
 
 ```python
 batch, channel, height_onnx, width_onnx = session.get_inputs()[0].shape
@@ -556,6 +559,8 @@ img_data, pad = preprocess(test_image_path)
 ```
 
 # <a name="instance-segmentation"></a>[インスタンスのセグメント化](#tab/instance-segmentation)
+>[!IMPORTANT]
+> インスタンス セグメント化タスクでは、Mask R-CNN のみがサポートされています。 前処理の手順は、Mask R-CNN にのみ基づいています。
 
 ONNXモデルの推定について、次の前処理手順を実行します。
 
@@ -613,6 +618,9 @@ img_data = preprocess(img, resize_height, resize_width)
 ## <a name="inference-with-onnx-runtime"></a>ONNX Runtimeでの推論
 
 推論とONNX Runtime は、コンピュータービジョンのタスクごとに異なります。
+
+>[!WARNING]
+> バッチ スコアリングは、すべてのコンピューター ビジョン タスクで現在サポートされていません。 
 
 # <a name="multi-class-image-classification"></a>[複数クラスの画像分類](#tab/multi-class)
 

@@ -11,12 +11,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2, ignite-fall-2021
 ms.date: 10/21/2021
-ms.openlocfilehash: 03d5c93d27587e88ae1f21e12b8a729fab042ac7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 7129286a0a91e27e80ebe4a6f3fc99e2b0e6c9b8
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554034"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135934"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 
@@ -129,7 +129,7 @@ Visual Studio Code を使用すると、エンドポイントを対話的にデ�
 | **追加設定なしのログ** | [エンドポイント レベルでの Azure ログと Log Analytics](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | サポートされています |
 | **Application Insights** | サポートされています | サポートされています |
 | **管理対象 ID** | [サポートされています](how-to-access-resources-from-endpoints-managed-identities.md) | サポートされています |
-| **仮想ネットワーク (VNET)** | サポートされていません (パブリック プレビュー) | サポートされています |
+| **仮想ネットワーク (VNET)** | まだサポートされていません (現在取り組み中です) | サポートされています |
 | **コストを表示する** | [エンドポイントとデプロイのレベル](how-to-view-online-endpoints-costs.md) | クラスター レベル |
 
 ### <a name="managed-online-endpoints"></a>マネージド オンライン エンドポイント

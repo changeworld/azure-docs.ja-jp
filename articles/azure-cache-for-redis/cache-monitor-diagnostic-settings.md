@@ -8,12 +8,12 @@ ms.service: cache
 ms.topic: how-to
 ms.date: 11/3/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 11e855f5cae1a9a3a678e44669351ded07a2a55b
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: 8fd6ae4eb82c7b8cb1439f621f26eef7860bcc0d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132159098"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340226"
 ---
 # <a name="monitor-azure-cache-for-redis-data-using-diagnostic-settings"></a>診断設定を使用して Azure Cache for Redis のデータを監視する
 
@@ -99,7 +99,7 @@ PUT https://management.azure.com/{resourceUri}/providers/Microsoft.Insights/diag
 
 ## <a name="create-diagnostic-setting-via-azure-cli"></a>Azure CLI を介した診断設定の作成
 
-Azure CLI を使用して診断設定を作成するには、`az monitor diagnostic-settings create` コマンドを使用します。 コマンドとパラメーターの詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_create&preserve-view=true)」を参照してください。
+Azure CLI を使用して診断設定を作成するには、`az monitor diagnostic-settings create` コマンドを使用します。 コマンドとパラメーターの詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest&branch=main&preserve-view=true#az_monitor_diagnostic_settings_create)」を参照してください。
 
 ```azurecli
 az monitor diagnostic-settings create 

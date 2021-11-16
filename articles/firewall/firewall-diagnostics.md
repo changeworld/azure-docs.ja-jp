@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: victorh
-ms.openlocfilehash: d421986ebeb308efb0e076b1a80f537d49082ec5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f39a858b99bf21a17a250d7e62f4af39c7d8213d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130242351"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343251"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -113,7 +113,7 @@ Azure CLI を使用して診断ログを有効にするには、次の手順を�
 
 * **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」を参照してください。
 * **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
-* **Azure Sentinel**:Azure Firewall ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。 Azure Sentinel の Azure Firewall データ コネクタは、現在パブリック プレビュー段階にあります。 詳細については、[Azure Firewall からのデータの接続](../sentinel/data-connectors-reference.md#azure-firewall)に関するページを参照してください。
+* **Microsoft Sentinel**: Azure Firewall ログを Microsoft Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。 Microsoft Sentinel の Azure Firewall データ コネクタは、現在パブリック プレビュー段階にあります。 詳細については、[Azure Firewall からのデータの接続](../sentinel/data-connectors-reference.md#azure-firewall)に関するページを参照してください。
 
    概要については、Mohit Kumar による次のビデオを参照してください。
    > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWI4nn]

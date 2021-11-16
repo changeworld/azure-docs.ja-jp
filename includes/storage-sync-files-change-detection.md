@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: rogarana
-ms.openlocfilehash: a741a3bcace98aa4e153f2dc4aaf1b9c900c2003
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 70fa104ef285ecffe11940d04deb451a9cdf39ee
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080569"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866728"
 ---
 Azure Portal または SMB を使用して Azure ファイル共有に加えられた変更は、サーバー エンドポイントに対する変更とは異なり、検出とレプリケーションが即座に行われることはありません。 Azure Files にはまだ変更通知/ジャーナルがないため、ファイルが変更されたときに自動的に同期セッションを開始する方法はありません。 Windows Server では、Azure File Sync は [Windows USN ジャーナル](/windows/win32/fileio/change-journals)を使用して、ファイルが変更されたときに同期セッションを自動的に開始します。
 
@@ -23,4 +23,4 @@ Azure ファイル共有で変更されたファイルを直ちに同期した�
 >[!NOTE]
 >REST を使用して Azure ファイル共有に加えられた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
 
-Windows Server 上のボリュームに対する USN のような変更検出を Azure ファイル共有に追加するための調査を行っています。
+Windows Server 上のボリュームに対する USN のような変更検出を Azure ファイル共有に追加するための調査を行っています。 今後この機能の開発を優先的に進めるために、[Azure コミュニティ フィードバック](https://feedback.azure.com/d365community/idea/26f8aa9d-3725-ec11-b6e6-000d3a4f0f84)で投票をお願いします。

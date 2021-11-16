@@ -7,16 +7,16 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 125f56a6c96e37394e4e9e2565093c847e592108
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 216a626bfaaf86a8c2237b5d871ab7895d921127
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585935"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476397"
 ---
 # <a name="creating-a-client-certificate"></a>クライアント証明書を作成する
 
-Confidential Ledger API ではクライアント証明書による認証が必要です。 Confidential Ledger Functional API の呼び出しに使用できるのは、台帳の作成時または更新時に許可リストに追加した証明書だけです。
+Azure Confidential Ledger API ではクライアント証明書による認証が必要です。 Confidential Ledger Functional API の呼び出しに使用できるのは、台帳の作成時または更新時に許可リストに追加した証明書だけです。
 
 証明書は PEM 形式である必要があります。 Ledger Update API で複数の証明書の作成や証明書の追加、削除ができます。
 

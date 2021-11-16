@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe50839beb886d22ad05414e220781f87e5f75b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a80564d341ad6e3fbefe1500a222ad20fc3a482c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045466"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349283"
 ---
 # <a name="azure-active-directory-security-operations-for-devices"></a>デバイス向けの Azure Active Directory のセキュリティ運用
 
@@ -62,13 +62,13 @@ ms.locfileid: "130045466"
 
 Azure AD 監査ログは、Azure portal で確認し、コンマ区切り値 (CSV) ファイルまたは JavaScript Object Notation (JSON) ファイルとしてダウンロードできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* **[Azure Sentinel](../../sentinel/overview.md)** - セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
+* **[Microsoft Sentinel](../../sentinel/overview.md)** – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでインテリジェントにセキュリティを分析します。 
 
 * **[Azure Monitor](../..//azure-monitor/overview.md)** - さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合** - Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの [他の SIEM と Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** – アプリの検出と管理、アプリとリソース全体のガバナンス、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* **[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security)** – アプリを検出し、アプリを管理し、すべてのアプリとリソースを制御し、クラウド アプリのコンプライアンス状況を確認できます。 
 
 監視およびアラートの対象となるのは、条件付きアクセス ポリシーの影響がほとんどです。 [条件付きアクセスに関する分析情報とレポート ブック](../conditional-access/howto-conditional-access-insights-reporting.md)を使用して、1 つまたは複数の条件付きアクセス ポリシーがサインインに及ぼしている影響と、デバイスの状態などのポリシーの結果を確認できます。 このブックでは、影響の概要を確認し、指定期間における影響を特定できます。 また、このブックを使用して、特定のユーザーのサインインを調査することもできます。 
 
@@ -85,7 +85,7 @@ Azure AD 登録済みデバイスおよび Azure AD 参加済みデバイスは�
 | ドメイン参加済みデバイスまたは準拠デバイスを必須とする条件付きアクセス ポリシーに対する変更。| 高| 監査ログ| CA ポリシーに対する変更<br>| アラートのタイミング: <br><li> ドメインへの参加または準拠を必須とするポリシーに対する変更。<li>信頼できる場所に対する変更。<li> MFA ポリシーの例外へのアカウントまたはデバイスの追加。 |
 
 
-Azure Sentinel を使用して、MFA なしでデバイスの登録または参加が行われたときに適切な管理者に通知するアラートを作成できます。
+Microsoft Sentinel を使用し、MFA なしでデバイスを登録したとき、デバイスに参加したときに適切な管理者に通知するアラートを作成できます。
 
 ```
 Sign-in logs

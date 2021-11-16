@@ -1,5 +1,5 @@
 ---
-title: Azure Firewall の機能
+title: Azure Firewall Standard の機能
 description: Azure Firewall の機能について説明します
 services: firewall
 author: vhorne
@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 348a52aaee7569a4f98a4d67b83d1d957fd89f62
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0c9b871197085a6a220482c3b9d1d35f25d5b427
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130242219"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136759"
 ---
-# <a name="azure-firewall-features"></a>Azure Firewall の機能
+# <a name="azure-firewall-standard-features"></a>Azure Firewall Standard の機能
 
-[Azure Firewall](overview.md) は、Azure 仮想ネットワーク リソースを保護する、クラウドベースのマネージド ネットワーク セキュリティ サービスです。
+[Azure Firewall](overview.md) Standard は、Azure 仮想ネットワーク リソースを保護する、クラウドベースのマネージド ネットワーク セキュリティ サービスです。
 
-![ファイアウォールの概要](media/overview/firewall-threat.png)
+:::image type="content" source="media/features/firewall-standard.png" alt-text="Azure Firewall Standard の機能":::
 
 Azure Firewall には次の機能が含まれています。
 
@@ -30,6 +30,10 @@ Azure Firewall には次の機能が含まれています。
 - FQDN のタグ
 - サービス タグ
 - 脅威インテリジェンス
+- DNS プロキシ
+- [カスタム DNS]
+- ネットワーク規則内の FQDN
+- 強制トンネル モードでのパブリック IP アドレスを使用しないデプロイ
 - 送信 SNAT サポート
 - 受信 DNAT のサポート
 - 複数のパブリック IP アドレス
@@ -82,6 +86,30 @@ Azure Firewall では、レイヤー 3 とレイヤー 4 のネットワーク �
 ## <a name="threat-intelligence"></a>脅威インテリジェンス
 
 ファイアウォール用に[脅威インテリジェンス](threat-intel.md)ベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。
+
+## <a name="dns-proxy"></a>DNS プロキシ
+
+DNS プロキシを有効にすると、Azure Firewall は DNS クエリを処理し、仮想ネットワークから目的の DNS サーバーに転送できます。 この機能は非常に重要であり、ネットワーク ルールで信頼性の高い FQDN フィルタリングを行うために必要です。 Azure Firewall とファイアウォール ポリシーの設定で DNS プロキシを有効にすることができます。 DNS プロキシの詳細については、「[Azure Firewall の DNS 設定](dns-settings.md)」を参照してください。
+
+## <a name="custom-dns"></a>[カスタム DNS]
+
+カスタム DNS を使用すると、独自の DNS サーバーを使用するように Azure Firewall を構成し、ファイアウォールの送信依存関係が Azure DNS で解決された状態を維持することができます。 Azure Firewall とファイアウォール ポリシーの DNS 設定で、単一の DNS サーバーまたは複数のサーバーを構成することができます。 カスタム DNS の詳細については、「[Azure Firewall の DNS 設定](dns-settings.md)」を参照してください。
+
+Azure Firewall では、Azure プライベート DNS を使用して名前を解決することもできます。 Azure Firewall が存在する仮想ネットワークは、Azure プライベート ゾーンにリンクされている必要があります。 詳細については、「[プライベート リンクを使用して DNS フォワーダーとして Azure Firewall を使用する](https://github.com/adstuart/azure-privatelink-dns-azurefirewall)」を参照してください。
+
+## <a name="fqdn-in-network-rules"></a>ネットワーク規則内の FQDN
+
+Azure Firewall とファイアウォール ポリシーでの DNS 解決に基づいて、ネットワーク ルールで完全修飾ドメイン名 (FQDN) を使用できます。 
+
+ルール コレクションで指定された FQDN は、ファイアウォールの DNS 設定に基づいて IP アドレスに変換されます。 この機能を使用すると、任意の TCP/UDP プロトコル (NTP、SSH、RDP など) を含む FQDN を使用して送信トラフィックをフィルター処理できます。 この機能は DNS の解決に基づいているため、DNS プロキシを有効にして、保護された仮想マシンとファイアウォールとの間で名前解決に整合性があることを確認するよう強くお勧めします。
+
+## <a name="deploy-azure-firewall-without-public-ip-address-in-forced-tunnel-mode"></a>強制トンネル モードでパブリック IP アドレスを使用せずに Azure Firewall をデプロイする
+
+Azure Firewall サービスでは、運用目的でパブリック IP アドレスが必要になります。 セキュリティで保護されていますが、一部のデプロイでは、パブリック IP アドレスをインターネットに直接公開しないことをお勧めします。 
+
+このような場合は、強制トンネル モードで Azure Firewall をデプロイできます。 この構成では、管理 NIC が作成されます。この NIC は、操作用に Azure Firewall によって使用されます。 テナント データ パスネットワークは、パブリック IP アドレスなしで構成でき、インターネット トラフィックは、別のファイアウォールに強制的にトンネリングするか、完全にブロックすることができます。
+
+強制トンネル モードを実行時に構成することはできません。 ファイアウォールを再デプロイするか、停止および開始機能を使用して、既存の Azure Firewall を強制トンネル モードで再構成できます。 セキュリティで保護されたハブにデプロイされているファイアウォールは、常に強制トンネル モードでデプロイされます。
 
 ## <a name="outbound-snat-support"></a>送信 SNAT サポート
 

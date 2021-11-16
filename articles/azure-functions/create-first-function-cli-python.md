@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: ac4d0240f73f2165abed0fb11bd248f9af997124
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d72c220eb75372ee4faad94f4c7d08010eb725c4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048743"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026551"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "131048743"
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 4.x。
 
 + 次のいずれかのツール。Azure リソースの作成に使用します。
 
@@ -50,23 +50,23 @@ ms.locfileid: "131048743"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `az --version` を実行して、Azure CLI バージョンが 2.4 以降であることを確認します。
 
 + `az login` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
-+ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.8.x、3.7.x、または 3.6.x であることを確認します。
++ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.9.x、3.8.x、または 3.7.x であることを確認します。
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 3.x であることを確認します。
++ ターミナルまたはコマンド ウィンドウで `func --version` を実行して、Azure Functions Core Tools のバージョンが 4.x であることを確認します。
 
 + `(Get-Module -ListAvailable Az).Version` を実行し、バージョン 5.0 以降であることを確認します。
 
 + `Connect-AzAccount` を実行して Azure にサインインし、アクティブなサブスクリプションを確認します。
 
-+ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.8.x、3.7.x、または 3.6.x であることを確認します。
++ `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.9.x、3.8.x、または 3.7.x であることを確認します。
 
 ---
 

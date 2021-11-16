@@ -12,15 +12,15 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f964829c0d775bd33ea0c44386820ae2ba921ce1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 161805ec90daec9814e3ac8b0547bf36a22d7d91
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466050"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135258"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect 同期 V2 エンドポイント API 
-Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、次のものがサポートされています。
+Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、以下をサポートします。
     
  - メンバー数が最大 250,000 までのグループの同期
  - Azure AD に対するエクスポートとインポートのパフォーマンスの向上
@@ -40,7 +40,8 @@ V2 エンドポイントのサポートは、V1.x バージョンでは使用で
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問  
  
-**新しいエンドポイントがアップグレードと新規インストールの既定値になるのはいつですか?**   V2 エンドポイントは AADConnect V2.0 では既定の設定ですが、AADConnect V1.x ではサポートされません
+**新しいエンドポイントがアップグレードと新規インストールの既定値になるのはいつですか?**   V2 エンドポイントは AADConnect V2.0 では既定の設定ですが、AADConnect V1.x ではサポートされません。
+古いバージョンと共に V2 エンドポイントを実行している場合、より新しい V1.6 リリースにアップグレードしようとすると、グループ メンバーシップの 50,000 件制限が復活するという問題があります。 V1.6 ではこの問題の修正は行われないため、この問題が発生している場合は AADConnect V2.0 にアップグレードする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

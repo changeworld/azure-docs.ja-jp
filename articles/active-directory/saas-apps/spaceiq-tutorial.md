@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 22206e91842a71e4dd41102a4ba9a86e11649201
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 110f7bf02ba85a64a2978b23d5f43434d34b43b8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785650"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル: Azure Active Directory と SpaceIQ の統合
 
@@ -160,4 +160,4 @@ SpaceIQ では、自動ユーザー プロビジョニングもサポートさ�
 
 ## <a name="next-steps"></a>次のステップ
 
-SpaceIQ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SpaceIQ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

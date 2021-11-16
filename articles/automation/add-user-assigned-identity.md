@@ -1,20 +1,20 @@
 ---
-title: Azure Automation アカウントのユーザー割り当てマネージド ID を使用する (プレビュー)
+title: Azure Automation アカウントのユーザー割り当てマネージド ID を使用する
 description: この記事では、Azure Automation アカウントのユーザー割り当てマネージド ID を設定する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7b1a75aac3166b1fdd3cdd39f5f66bd380339975
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 033f25f5d5902b339a2777cffc8c526a459ca587
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061791"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435531"
 ---
-# <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Azure Automation アカウントのユーザー割り当てマネージド ID を使用する (プレビュー)
+# <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account"></a>Azure Automation アカウントのユーザー割り当てマネージド ID を使用する
 
-この記事では、Azure Automation アカウントに対してユーザー割り当てマネージド ID を追加し、それを使用して他のリソースにアクセスする方法を説明します。 マネージド ID と Azure Automation の連携方法の詳細については、[マネージド ID](automation-security-overview.md#managed-identities-preview) に関する記事を参照してください。
+この記事では、Azure Automation アカウントに対してユーザー割り当てマネージド ID を追加し、それを使用して他のリソースにアクセスする方法を説明します。 マネージド ID と Azure Automation の連携方法の詳細については、[マネージド ID](automation-security-overview.md#managed-identities) に関する記事を参照してください。
 
 > [!NOTE]
 > ユーザー割り当てマネージド ID がサポートされているのはクラウド ジョブの場合だけです。  
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Azure Automation アカウント。 手順については、「[Azure Automation アカウントを作成する](./quickstarts/create-account-portal.md)」をご覧ください。
 
-- システム割り当てマネージド ID。 手順については、「[Azure Automation アカウントのシステム割り当てマネージド ID を使用する (プレビュー)](enable-managed-identity-for-automation.md)」を参照してください。
+- システム割り当てマネージド ID。 手順については、「[Azure Automation アカウントのシステム割り当てマネージド ID を使用する](enable-managed-identity-for-automation.md)」を参照してください。
 
 - ユーザー割り当てマネージド ID。 手順については、「[ユーザー割り当てマネージド ID を作成する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)」を参照してください。
 
@@ -336,7 +336,7 @@ HTTP エンドポイントに対して、次のことを確認してください
 - リソースを GET 要求の場合はクエリ パラメーターとして、POST 要求の場合はフォーム データとして、要求と共に渡す必要があります。
 - Post 要求のコンテンツ タイプは `application/x-www-form-urlencoded` である必要があります。
 
-### <a name="get-access-token-for-user-assigned-managed-identity-using-http-get"></a>HTTP Get を使用してユーザー割り当てマネージド ID のアクセス トークンを取得する  
+### <a name="get-access-token-for-user-assigned-managed-identity-using-http-get"></a>HTTP Get を使ってユーザー割り当てマネージド ID のアクセス トークンを取得する  
 
 ```powershell
 $resource= "?resource=https://management.azure.com/"
@@ -348,7 +348,7 @@ $accessToken = Invoke-RestMethod -Uri $url -Method 'GET' -Headers�
 Write-Output $accessToken.access_token 
 ```
 
-### <a name="get-access-token-for-user-assigned-managed-identity-using-http-post"></a>HTTP Post を使用してユーザー割り当てマネージド ID のアクセス トークンを取得する
+### <a name="get-access-token-for-user-assigned-managed-identity-using-http-post"></a>HTTP Post を使ってユーザー割り当てマネージド ID のアクセス トークンを取得する
 
 ```powershell
 $url = $env:IDENTITY_ENDPOINT
@@ -397,8 +397,8 @@ print(response.text)
 
 ## <a name="next-steps"></a>次の手順
 
-- Runbook が正常に完了しない場合は、「[Azure Automation マネージド ID に関する問題のトラブルシューティング (プレビュー)](troubleshoot/managed-identity.md)」を参照してください。
+- Runbook が正常に完了しない場合は、「[Azure Automation マネージド ID に関する問題のトラブルシューティング](troubleshoot/managed-identity.md)」を参照してください。
 
-- マネージド ID を無効にする必要がある場合は、「[Azure Automation アカウントのマネージド ID を無効にする (プレビュー)](disable-managed-identity-for-automation.md)」を参照してください。
+- マネージド ID を無効にする必要がある場合は、「[Azure Automation アカウントのマネージド ID を無効にする](disable-managed-identity-for-automation.md)」を参照してください。
 
 - Azure Automation アカウントのセキュリティの概要については、[Automation アカウントの認証の概要](automation-security-overview.md)に関する記事を参照してください。

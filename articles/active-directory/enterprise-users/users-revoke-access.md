@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdff97b2b0325d8c965000a309fb6c3232aee7f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 10f530b703c67192104e3cb6ea553973b8534437
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129985183"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292644"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -123,7 +123,7 @@ Azure Active Directory の管理者として、PowerShell を開き、``Connect-
 > [!NOTE]
 > ワイプ後にデバイス上のデータを復元することはできません。
 
-- 必要に応じて、[Microsoft Cloud App Security (MCAS) を使用してデータのダウンロードをブロック](/cloud-app-security/use-case-proxy-block-session-aad)してください。 オンラインでのみデータにアクセスできる場合、組織はセッションを監視し、リアルタイム ポリシーの適用を実現できます。
+- 必要に応じて、[データのダウンロードをブロックするために Microsoft Defender for Cloud Apps](/cloud-app-security/use-case-proxy-block-session-aad) を使用します。 オンラインでのみデータにアクセスできる場合、組織はセッションを監視し、リアルタイム ポリシーの適用を実現できます。
 
 - [Azure AD で継続的アクセス評価 (CAE)](../conditional-access/concept-continuous-access-evaluation.md) を有効にします。 CAE を使用すると、管理者は CAE 対応アプリケーションのセッション トークンとアクセス トークンを取り消すことができます。  
 

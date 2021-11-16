@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 087af92ce70ccb8db37073b6aadb8cf9b83bc57c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f77efc7ab6880db771ea7f53fe9cfb2858c6ecc0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131454307"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328167"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer を使用する (プレビュー)
 
@@ -304,9 +304,9 @@ Azure Digital Twins Explorer には、インスタンス内の[ツイン](concep
 
 [モデル グラフ] 画面でモデルをクリックしてドラッグすると、さまざまな構成にモデルを再配置することができます。
 
-また、 **[実行レイアウト]** メニューのオプションから、いくつかのレイアウト アルゴリズムのうちのいずれかをモデル グラフに適用することもできます。 
+また、 **[レイアウトの選択]** メニューのオプションのいくつかのレイアウト アルゴリズムのいずれかを、モデル グラフに適用することもできます。 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Azure Digital Twins Explorer の [モデル グラフ] パネルのスクリーンショット。[実行レイアウト] ボタンが強調表示され、レイアウト オプション (Cola、Dagre、fCoSE、Klay、d3Force) を含むメニューが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Azure Digital Twins Explorer の [モデル グラフ] パネルのスクリーンショット。[レイアウトの選択] ボタンが強調表示され、レイアウト オプション (Cola、Dagre、fCoSE、Klay、d3Force) を含むメニューが表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
 
 ### <a name="filter-and-highlight-model-graph-elements"></a>モデル グラフの要素をフィルター処理および強調表示する
 
@@ -554,7 +554,7 @@ Azure Digital Twins Explorer のいくつかの詳細設定を有効にして、
 
 右上のツール バーにある設定の歯車アイコンからは、いくつかの高度な機能にアクセスすることができます。
 * **一括読み込み**: クエリ結果に含まれて **いない** 他のツインとのリレーションシップを持つツインがクエリから返された場合、この機能によって、グラフをレンダリングする前に "含まれていない" ツインが読み込まれます。
-* **キャッシュ**: この機能を有効にすると、クエリのパフォーマンスを向上させるために、Azure Digital Twins Explorer によって、リレーションシップとモデルのローカル キャッシュがメモリ内に保持されます。 これらのキャッシュは、関連する要素に対する書き込み操作や、ブラウザーの更新時に消去されます。
+* **キャッシュ**: この機能を有効にすると、クエリのパフォーマンスを向上させるために、Azure Digital Twins Explorer によって、リレーションシップとモデルのローカル キャッシュがメモリ内に保持されます。 これらのキャッシュは、関連する要素に対する書き込み操作や、ブラウザーの更新時に消去されます。 この機能は既定では無効です。
 * **コンソール**: この機能を使用すると、コンソール ウィンドウが表示されます。このウィンドウでは、グラフを操作するための単純なシェル関数を使用できます。
 * **出力**: この機能を使用すると、操作の診断トレースを示す出力ウィンドウが表示されます。
 * **ハイ コントラスト**: この機能を使用すると、Azure Digital Twins Explorer の色を変更し、コントラストを高めて表示することができます。

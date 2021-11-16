@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5313e8935791a16bc5046b50b23c68665c486705
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: b0f0c4c360b8b9b3cdbe78c833df2a76c2b27d84
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132026446"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323526"
 ---
 # <a name="container-apps-preview-arm-template-api-specification"></a>Container Apps プレビューの ARM テンプレートの API 仕様
 

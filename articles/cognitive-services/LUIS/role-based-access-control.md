@@ -7,14 +7,14 @@ ms.author: aahi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5651f4241cb206413dc0a669965c006efce042b6
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 2c1f9d8783ca293898ff77f851ac928c1b94413e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894899"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137887"
 ---
 # <a name="luis-role-based-access-control"></a>LUIS ロールベースのアクセス制御
 
@@ -67,14 +67,16 @@ LUIS アプリケーションの検証と確認のみを行う必要があるユ
         * アプリケーションのテスト
     :::column-end:::
     :::column span="":::
-      * 以下のすべての GET API: 
-         * [LUIS Programmatic v3.0-preview](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f)
-         * [LUIS Programmatic v2.0 APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)
-      * 以下のすべての API: 
-         * [LUIS Endpoint APIs v2.0](https://chinaeast2.dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)
-         * [LUIS Endpoint APIs v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8)
-         * [LUIS Endpoint APIs v3.0-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a9459a1fe8fa44c28dd8)
-      * すべてのバッチ テスト Web API
+      以下のすべての GET API: 
+        * [LUIS Programmatic v3.0-preview](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f)
+        * [LUIS Programmatic v2.0 APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)
+
+      以下のすべての API: 
+        * [LUIS Endpoint APIs v2.0](https://chinaeast2.dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)
+        * [LUIS Endpoint APIs v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8)
+        * [LUIS Endpoint APIs v3.0-preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a9459a1fe8fa44c28dd8)
+
+      すべてのバッチ テスト Web API
     :::column-end:::
 :::row-end:::
 
@@ -92,25 +94,28 @@ LUIS アプリケーションの検証と確認のみを行う必要があるユ
 :::row-end:::
 :::row:::
     :::column span="":::
-      * Cognitive Services LUIS 閲覧者のすべての機能。
-      * 追加する機能: 
-          * 発話
-          * 意図
-          * エンティティ
+      * Cognitive Services LUIS 閲覧者のすべての機能。 
+
+      追加する機能: 
+        * 発話
+        * 意図
+        * エンティティ
     :::column-end:::
     :::column span="":::
       * LUIS 閲覧者の下にあるすべての API
-      * 以下のすべての POST、PUT、DELETE API:
-         * [LUIS Programmatic v3.0-preview](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f)
-         * [LUIS Programmatic v2.0 APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2d)
 
-          以下を除く
-          * [アプリケーションを削除する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c39)
-          * [アプリを別の LUIS 作成 Azure リソースに移動する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/apps-move-app-to-another-luis-authoring-azure-resource)
-          * [アプリケーションを発行する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c3b)
-          * [ アプリケーション設定の更新](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58aeface39e2bb03dcd5909e)
-          * [LUIS Azure アカウントをアプリケーションに割り当てる](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5be32228e8473de116325515)
-          * [割り当てられた LUIS Azure アカウントをアプリケーションから削除する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5be32554f8591db3a86232e1)
+      以下のすべての POST、PUT、DELETE API:
+
+        * [LUIS Programmatic v3.0-preview](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f)
+        * [LUIS Programmatic v2.0 APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2d)
+
+        以下を除く
+        * [アプリケーションを削除する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c39)
+        * [アプリを別の LUIS 作成 Azure リソースに移動する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/apps-move-app-to-another-luis-authoring-azure-resource)
+        * [アプリケーションを発行する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c3b)
+        * [ アプリケーション設定の更新](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58aeface39e2bb03dcd5909e)
+        * [LUIS Azure アカウントをアプリケーションに割り当てる](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5be32228e8473de116325515)
+        * [割り当てられた LUIS Azure アカウントをアプリケーションから削除する](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5be32554f8591db3a86232e1)
     :::column-end:::
 :::row-end:::
 

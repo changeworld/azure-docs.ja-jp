@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 1afc8bb1a8932fb808073cfdb9468c126c407b1e
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: b286dfd6fd4e494427b1094fc38039e575af1e17
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131579345"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846085"
 ---
 # <a name="create-and-provision-an-iot-edge-for-linux-on-windows-device-at-scale-by-using-a-tpm"></a>TPM を使用して IoT Edge for Linux on Windows デバイスを大規模に作成およびプロビジョニングする
 
@@ -86,9 +86,9 @@ IoT Edge for Linux on Windows VM には TPM 機能があり、有効または無
 
 # <a name="physical-tpm"></a>[物理 TPM](#tab/physical-tpm)
 
-デバイスをプロビジョニングするには、TPM チップから情報を収集して Device Provisioning Service のインスタンスに提供し、サービスが接続を試みたときにデバイスを認識できるようにする必要があります。
+デバイスをプロビジョニングするには、TPM チップの **保証キー** と、デバイスの **登録 ID** が必要です。 デバイス プロビジョニング サービスのインスタンスにこの情報を提供して、サービスが接続を試みたときにデバイスを認識できるようにします。
 
-最初に、保証キーを確認する必要があります。これは、各 TPM チップに固有であり、それに関連付けられている TPM チップの製造元から取得されます。 次に、自分のデバイスの登録 ID を指定する必要があります。 たとえば、保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の登録 ID を派生させることができます。
+保証キーは、各 TPM チップに固有です。 これは、関連付けられている TPM チップの製造元から取得されます。 たとえば、保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の登録 ID を派生させることができます。
 
 IoT Edge for Linux on Windows には、TPM からこの情報を取得するのに役立つ PowerShell スクリプトが用意されています。 スクリプトを使用するには、自分のデバイスでこれらの手順を実行します。
 
@@ -133,7 +133,7 @@ IoT Hub Device Provisioning Service には、TPM をシミュレートし、保�
 1. Device Provisioning Service のインスタンスから収集した **スコープ ID** を使用して、デバイスをプロビジョニングします。
 
    ```powershell
-   Provision-EflowVM -provisioningType "DpsTpm" -scopeId "<scope id>"
+   Provision-EflowVM -provisioningType "DpsTpm" -scopeId "SCOPE_ID_HERE"
    ```
 
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
@@ -151,7 +151,7 @@ IoT Hub Device Provisioning Service には、TPM をシミュレートし、保�
 
 ---
 
-## <a name="verify-successful-configuration"></a>構成が成功したことを確認する
+## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
 IoT Edge for Linux on Windows が IoT Edge デバイスに正常にインストールされ、構成されたことを確認します。
 
@@ -203,7 +203,7 @@ Device Provisioning Service で作成した個々の登録が使用されたこ�
 
 ---
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Device Provisioning Service の登録プロセスでは、新しいデバイスをプロビジョニングするときに、デバイス ID とデバイス ツイン タグを同時に設定できます。 これらの値を使用して、個々のデバイスまたはデバイス グループをデバイスの自動管理で使用できます。
 

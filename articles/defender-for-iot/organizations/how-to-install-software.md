@@ -1,18 +1,18 @@
 ---
 title: Defender for IoT のインストール
-description: Azure Defender for IoT のセンサーとオンプレミス管理コンソールをインストールする方法について説明します。
-ms.date: 10/21/2021
+description: Microsoft Defender for IoT のセンサーとオンプレミス管理コンソールをインストールする方法について説明します。
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 0548b1caa269431bb27a54e2dcbd297b2d4734a0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 23776a9abf35cc8cdba512517163ab2f723b458d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247590"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343783"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT のインストール
 
-この記事では、次の Azure Defender for IoT コンポーネントをインストールする方法について説明します。
+この記事では、次の Microsoft Defender for IoT コンポーネントをインストールする方法について説明します。
 
 - **センサー**:Defender for IoT センサーは、パッシブ (エージェントレス) 監視を使用して、ICS ネットワーク トラフィックを収集します。 このセンサーは、パッシブで非侵入型であるため、OT と IoT のネットワークとデバイスに影響しません。 このセンサーは、SPAN ポートまたはネットワーク TAP に接続し、ネットワークの監視を直ちに開始します。 検出はセンサー コンソールに表示されます。 そこでは、ネットワーク マップ、デバイス インベントリ、広範なレポートによって、それらを表示、調査、分析できます。 例としては、リスク評価レポート、データ マイニング クエリ、攻撃ベクトルなどがあります。
 
@@ -73,7 +73,7 @@ Defender for IoT アプライアンス センサーは、SPAN ポートまたは
 
 ### <a name="access-the-iso-installation-image"></a>ISO インストール イメージにアクセスする
 
-インストール イメージには、Defender for IoT ポータルからアクセスできます。
+インストール イメージには、Azure portal の Defender for IoT からアクセスできます。
 
 ファイルにアクセスするには:
 
@@ -408,7 +408,7 @@ BIOS にアクセスした後、 **[デバイス設定]** に移動します。
 
 1. スクリーンとキーボードをアプライアンスに接続し、次に CLI に接続します。
 
-1. Defender for IoT ポータルの **[更新]** ページからダウンロードした ISO イメージを含む外部 CD またはキーのディスクを接続します。
+1. Azure portal の Defender for IoT の **[更新]** ページからダウンロードした ISO イメージを含む外部 CD またはキーのディスクを接続します。
 
 1. アプライアンスを起動します。
 
@@ -494,7 +494,7 @@ Enterprise 構成は同じです。
 
 1. スクリーンとキーボードをアプライアンスに接続し、次に CLI に接続します。
 
-1. Defender for IoT ポータルの **[更新]** ページからダウンロードした ISO イメージを含む外部 CD またはキーのディスクを接続します。
+1. Azure portal の Defender for IoT の **[更新]** ページからダウンロードした ISO イメージを含む外部 CD またはキーのディスクを接続します。
 
 1. アプライアンスを起動します。
 
@@ -631,7 +631,7 @@ Enterprise 構成は同じです。
 
 - 仮想マシンに使用できるハードウェア リソース
 
-- Azure Defender for IoT センサーの ISO インストール ファイル
+- Microsoft Defender for IoT センサーの ISO インストール ファイル
 
 ハイパーバイザーが実行されていることを確認します。
 
@@ -812,8 +812,7 @@ Enterprise 構成は同じです。
 
 :::image type="content" source="media/tutorial-install-components/secondary-nic.png" alt-text="セカンダリ NIC の全体的なアーキテクチャ。":::
 
-どちらの NIC でも、ユーザー インターフェイス (UI) をサポートできます。
-セカンダリ NIC をデプロイしないことにした場合は、すべての機能がプライマリ NIC を介して使用できるようになります。
+どちらの NIC でも、ユーザー インターフェイス (UI) をサポートできます。 セカンダリ NIC をデプロイしないことにした場合は、すべての機能がプライマリ NIC を介して使用できるようになります。
 
 オンプレミスの管理コンソールを既に構成しており、オンプレミスの管理コンソールにセカンダリ NIC を追加したい場合は、次の手順を使用します。
 

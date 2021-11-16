@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 09/10/2021
-ms.openlocfilehash: 7dcf326ea0834bdf644e2b717517f67d41d330e0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 83da2d9c1c242e49aac28067d1c315e1e382f2ef
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743266"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063648"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -327,27 +327,27 @@ SQL ソースからデータを共有するとき、スナップショットの�
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Decimal |Decimal (10 進数型) |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | INT |Int32 |
-| money |Decimal |
+| money |Decimal (10 進数型) |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Decimal (10 進数型) |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Decimal (10 進数型) |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
-| UNIQUEIDENTIFIER |Guid |
+| UNIQUEIDENTIFIER |GUID |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |String |
@@ -364,9 +364,13 @@ SQL ソースからデータを共有するとき、スナップショットの�
 ## <a name="sql-snapshot-performance"></a>SQL スナップショットのパフォーマンス
 SQL スナップショットのパフォーマンスは、さまざまな要因の影響を受けます。 常に、独自のパフォーマンス テストを実施することをお勧めします。 パフォーマンスに影響するいくつかの要因の例を下に示します。
 
+* ソースまたはコピー先のデータ ストアの 1 秒あたりの入出力操作数 (IOPS) と帯域幅。
 * ソースとターゲットの SQL データ ストアのハードウェア構成 (仮想コア、メモリ、DWU など)。 
-* ソースとターゲットのデータ ストアへの同時アクセス。 同じ SQL データ ストアから複数のテーブルとビューを共有している場合、または複数のテーブルとビューを同じ SQL データ ストアに受信する場合、パフォーマンスに影響します。   
-* ソースとターゲットのデータ ストアの場所。 
+* ソースとターゲットのデータ ストアへの同時アクセス。 同じ SQL データ ストアから複数のテーブルとビューを共有している場合、または複数のテーブルとビューを同じ SQL データ ストアに受信する場合、パフォーマンスに影響します。
+* ソースとコピー先のデータ ストア間のネットワーク帯域幅と、ソースとターゲットのデータ ストアの場所。
+* 共有するテーブルとビューのサイズ。 SQL スナップショット共有では、テーブル全体の完全なコピーが行われます。 テーブルのサイズが時間の経過と共に増加すると、スナップショットの処理時間が長くなります。 
+
+増分更新が必要な大きなテーブルでは、ストレージ アカウントに更新をエクスポートし、ストレージ アカウントの増分共有機能を利用してパフォーマンスを向上させることができます。
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL スナップショット エラーのトラブルシューティング
 スナップショット エラーの最も一般的な原因は、Data Share にソースまたはターゲットのデータ ストアへのアクセス許可がないことです。 ソースまたはターゲットの Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) へのアクセス許可を Data Share に付与するには、Azure Active Directory 認証を使用して SQL データベースに接続するときに、提供された SQL スクリプトを実行する必要があります。 その他の SQL スナップショット エラーをトラブルシューティングするには、[スナップショット エラーのトラブルシューティング](data-share-troubleshoot.md#snapshots)に関する記事を参照してください。

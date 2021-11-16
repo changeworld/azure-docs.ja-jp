@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: fe7353f8b4021e4cacb6037f65fcf9f22520f8ae
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 1b698ae5b03a7d622e4fccb717789be8cb330057
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129455"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561292"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでの "プロジェクション"
 
@@ -23,7 +23,7 @@ ms.locfileid: "130129455"
 
 プロジェクションは、Cognitive Search スキルセットで定義されますが、最終的な成果は Azure Storage 内のテーブル、オブジェクト、画像ファイル プロジェクションになります。
 
-:::image type="content" source="media/knowledge-store-concept-intro/projections-azure-storage.png" alt-text="Azure Storage 内で表されるプロジェクション" border="true":::
+:::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="Azure Storage 内で表されるプロジェクション" border="true":::
 
 ## <a name="types-of-projections-and-usage"></a>プロジェクションの種類と使用方法
 
@@ -142,7 +142,7 @@ ms.locfileid: "130129455"
 
 インデクサーを実行した後、プロジェクションに接続し、そのデータを他のアプリやワークロードで使用します。
 
-+ [Storage Explorer](knowledge-store-view-storage-explorer.md) を使用して、オブジェクトの作成とコンテンツを確認します。
++ [ストレージ ブラウザー](knowledge-store-view-storage-explorer.md)を使用して、オブジェクトの作成とコンテンツを確認します。
 
 + [データ探索用の Power BI](knowledge-store-connect-power-bi.md) を使用します。 このツールは、データが Azure Table Storage 内にある場合に最適です。 Power BI 内では、データを操作して、クエリと分析が容易な新しいテーブルに格納できます。
 

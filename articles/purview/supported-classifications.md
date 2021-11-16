@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: fa92330fcbae0bba9e3f9d18cb3e56d9c16a9ee6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bc4d71f3e7b696bf46a1aa580e4a2ba254ba9d13
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449452"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343024"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview でサポートされている分類
 
@@ -164,7 +164,7 @@ Person ブルーム フィルターは、以下の 2 つのデータセットを
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 
 ### <a name="format"></a>Format
@@ -205,7 +205,7 @@ Person ブルーム フィルターは、以下の 2 つのデータセットを
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -628,7 +628,7 @@ OR
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -799,7 +799,7 @@ OR
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -809,7 +809,7 @@ OR
 
 11 文字の英数字パターン:
 
-- A または a
+- または a
 - T または t
 - 省略可能なスペース
 - U または u
@@ -1130,7 +1130,7 @@ OR
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -1451,7 +1451,7 @@ Registro de Identidade (RIC) (新しい形式):
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -2752,7 +2752,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -2833,7 +2833,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -3604,7 +3604,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -4341,7 +4341,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -4647,7 +4647,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -4868,7 +4868,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -5227,7 +5227,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -5489,7 +5489,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -5525,7 +5525,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -5785,7 +5785,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -5901,7 +5901,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -5954,7 +5954,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -6727,7 +6727,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -6840,7 +6840,7 @@ Visa、MasterCard、Discover Card、JCB、American Express、ギフト カード
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -7001,7 +7001,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -7040,7 +7040,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -7651,7 +7651,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -7897,7 +7897,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -8327,7 +8327,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -8700,7 +8700,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -8761,7 +8761,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -8801,7 +8801,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -8841,7 +8841,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -8934,7 +8934,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -9005,7 +9005,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -9353,7 +9353,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -9401,7 +9401,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -9901,7 +9901,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -10019,7 +10019,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -10065,7 +10065,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -10311,7 +10311,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -10572,7 +10572,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -10675,7 +10675,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -10937,7 +10937,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -11072,7 +11072,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -11404,7 +11404,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -11518,7 +11518,7 @@ Checksum
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -11986,7 +11986,7 @@ OR
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -12314,7 +12314,7 @@ OR
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 
@@ -12346,7 +12346,7 @@ OR
 - 通信コンプライアンス ポリシー
 - 情報ガバナンス
 - レコードの管理
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 
 ### <a name="format"></a>Format
 

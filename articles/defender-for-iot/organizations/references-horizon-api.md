@@ -1,14 +1,14 @@
 ---
 title: Horizon API
 description: このガイドでは、よく使用される Horizon メソッドについて説明します。
-ms.date: 11/09/2021
+ms.date: 1/5/2021
 ms.topic: article
-ms.openlocfilehash: db3fd241593f2d5c3e43485bcca4790a73f975fd
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 7fc49227f75ddb7648b0acbd179ef2fd40fd486c
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132331321"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997383"
 ---
 # <a name="horizon-api"></a>Horizon API
 

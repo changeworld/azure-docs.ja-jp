@@ -1,6 +1,6 @@
 ---
-title: リポジトリからカスタム コンテンツをデプロイする | Microsoft Docs
-description: この記事では、カスタム コンテンツを保存して Azure Sentinel にデプロイできる GitHub または Azure DevOps リポジトリとの接続を作成する方法について説明します。
+title: リポジトリからカスタム コンテンツをデプロイする
+description: この記事では、カスタム コンテンツを保存して Microsoft Sentinel にデプロイできる GitHub または Azure DevOps リポジトリとの接続を作成する方法について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -12,77 +12,77 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/20/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 607e153b751315ee0a43c74cc2926dffbbc706d3
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 9548e3dfd01e4cc0c48a0d5e61a68a0c1b3276d4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131841660"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336831"
 ---
 # <a name="deploy-custom-content-from-your-repository-public-preview"></a>リポジトリからカスタム コンテンツをデプロイする (パブリック プレビュー)
 
 > [!IMPORTANT]
 >
-> Azure Sentinel **リポジトリ** ページは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> Microsoft Sentinel **リポジトリ** ページは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Sentinel の *コンテンツ* は、Azure Sentinel で取り込み、監視、アラート、ハンティングなどを行うお客様を支援するセキュリティ情報およびイベント管理 (SIEM) です。 たとえば、Azure Sentinel のコンテンツにはデータ コネクタ、パーサー、ブック、分析ルールなどがあります。 詳細については、「[Azure Sentinel のコンテンツとソリューションについて](sentinel-solutions.md)」を参照してください。
+Microsoft Sentinel の "*コンテンツ*" は、Microsoft Sentinel で取り込み、監視、アラート、ハンティングなどを行うお客様を支援するセキュリティ情報およびイベント管理 (SIEM) です。 たとえば、Microsoft Sentinel のコンテンツにはデータ コネクタ、パーサー、ブック、分析ルールなどがあります。 詳細については、「[Microsoft Sentinel のコンテンツとソリューションについて](sentinel-solutions.md)」を参照してください。
 
-Azure Sentinel コンテンツ ハブで提供されている、すぐに利用できる (組み込み) コンテンツを使用して、独自のニーズに合わせてカスタマイズしたり、独自のカスタム コンテンツを最初から作成することができます。
+Microsoft Sentinel コンテンツ ハブで提供されている、すぐに利用できる (組み込み) コンテンツを使用して、独自のニーズに合わせてカスタマイズしたり、独自のカスタム コンテンツを最初から作成したりできます。
 
-カスタム コンテンツを作成したら、独自の Azure Sentinel ワークスペース、または GitHub リポジトリや Azure DevOps リポジトリを含む外部ソース管理リポジトリにそれを格納して管理できます。 この記事では、Azure Sentinel と外部ソース管理リポジトリ間の接続を作成および管理する方法について説明します。 外部リポジトリでコンテンツを管理することで、Azure Sentinel の外部でコンテンツを更新し、ワークスペースに自動的にデプロイさせることができます。
+カスタム コンテンツを作成したら、独自の Microsoft Sentinel ワークスペース、または GitHub や Azure DevOps のリポジトリを含む外部ソース管理リポジトリにそれを格納して管理できます。 この記事では、Microsoft Sentinel と外部ソース管理リポジトリ間の接続を作成および管理する方法について説明します。 外部リポジトリでコンテンツを管理することで、Microsoft Sentinel の外部でコンテンツを更新し、ワークスペースに自動的にデプロイさせることができます。
 
 > [!TIP]
-> この記事では、特定の種類のコンテンツを最初から作成する方法については説明 *しません*。 詳細については、各コンテンツの種類に関する関連の [Azure Sentinel GitHub wiki](https://github.com/Azure/Azure-Sentinel/wiki#get-started) を参照してください。
+> この記事では、特定の種類のコンテンツを最初から作成する方法については説明 *しません*。 詳細については、各コンテンツ タイプに関する関連の [Microsoft Sentinel GitHub wiki](https://github.com/Azure/Azure-Sentinel/wiki#get-started) を参照してください。
 >
 
 ## <a name="prerequisites-and-scope"></a>前提条件とスコープ
 
-Azure Sentinel ワークスペースを外部ソース管理リポジトリに接続する前に、次があることを確認してください。
+Microsoft Sentinel ワークスペースを外部ソース管理リポジトリに接続する前に、次があることを確認してください。
 
 - 関連する [Azure Resource Manager (ARM) テンプレート](/azure/azure-resource-manager/templates/)で、ワークスペースにデプロイするカスタム コンテンツ ファイルを含む GitHub または Azure DevOps リポジトリへのアクセス。
 
-    Azure Sentinel では、現在、GitHub リポジトリおよび Azure DevOps リポジトリとの接続のみがサポートされています。
+    Microsoft Sentinel では、現在、GitHub および Azure DevOps のリポジトリとの接続のみがサポートされています。
 
-- Azure Sentinel ワークスペースを含むリソース グループの **所有者** ロール。 Azure Sentinel とソース管理リポジトリ間の接続を作成するために、**所有者** ロールが必要です。
+- Microsoft Sentinel ワークスペースを含むリソース グループの **所有者** ロール。 Microsoft Sentinel とソース管理リポジトリ間の接続を作成するために、**所有者** ロールが必要です。
 
 ### <a name="maximum-connections-and-deployments"></a>最大接続数とデプロイ数
 
-- 現在、Azure Sentinel ワークスペースは **5 つの接続** に制限されています。
+- 現在、Microsoft Sentinel ワークスペースは **5 つの接続** に制限されています。
 
 - 各 Azure リソース グループは、そのデプロイ履歴で **800 デプロイ** に制限されます。 リソース グループに大量の ARM テンプレート デプロイがある場合は、`Deployment QuotaExceeded` エラーが表示される場合があります。 詳細については、Azure Resource Manager テンプレート ドキュメントの「[DeploymentQuotaExceeded](/azure/azure-resource-manager/templates/deployment-quota-exceeded)」を参照してください。
 
 ### <a name="validate-your-content"></a>コンテンツの検証
 
-リポジトリ接続経由で、Azure Sentinel にコンテンツをデプロイすると、データが正しい ARM テンプレート形式であることが検証される以外に、そのコンテンツは検証されません。
+リポジトリ接続経由で、Microsoft Sentinel にコンテンツをデプロイすると、データが正しい ARM テンプレート形式であることが検証される以外に、そのコンテンツは検証されません。
 
-通常の検証プロセスを使用して、コンテンツ テンプレートを検証することが推奨されます。 [Azure Sentinel GitHub 検証プロセス](https://github.com/Azure/Azure-Sentinel/wiki#test-your-contribution)とツールを利用して、独自の検証プロセスを設定できます。
+通常の検証プロセスを使用して、コンテンツ テンプレートを検証することが推奨されます。 [Microsoft Sentinel GitHub 検証プロセス](https://github.com/Azure/Azure-Sentinel/wiki#test-your-contribution)とツールを利用して、独自の検証プロセスを設定できます。
 
 ## <a name="connect-a-repository"></a>リポジトリの接続
 
-この手順では、GitHub または Azure DevOps リポジトリを Azure Sentinel ワークスペースに接続する方法について説明します。Azure Sentinel ではなく、そこでカスタム コンテンツを保存して管理できます。
+この手順では、GitHub または Azure DevOps リポジトリを Microsoft Sentinel ワークスペースに接続する方法について説明します。Microsoft Sentinel ではなく、そこでカスタム コンテンツを保存して管理できます。
 
-各接続では、分析ルール、自動化ルール、ハンティング クエリ、パーサー、プレイブック、ブックなど、多くの種類のカスタム コンテンツをサポートできます。 詳細については、「[Azure Sentinel のコンテンツとソリューションについて](sentinel-solutions.md)」を参照してください。
-
+各接続では、分析ルール、自動化ルール、ハンティング クエリ、パーサー、プレイブック、ブックなど、多くの種類のカスタム コンテンツをサポートできます。 詳細については、「[Microsoft Sentinel のコンテンツとソリューションについて](sentinel-solutions.md)」を参照してください。
 
 **接続を作成するには**:
 
 1. 接続に使用する資格情報で、ソース管理アプリにサインインしていることを確認します。  現在、別の資格情報を使用してサインインしている場合は、まずサインアウトします。
 
-1. Azure Sentinel で、左側の **[コンテンツ管理]** の下の **[リポジトリ]** を選択します。
+1. Microsoft Sentinel で、左側の **[コンテンツ管理]** の下の **[リポジトリ]** を選択します。
 
 1. **[新規追加]** を選択し、 **[新しい接続の作成]** ページで、接続のわかりやすい名前と説明を入力します。
 
 1. **[ソース管理]** ドロップダウンから、接続先のリポジトリの種類を選択し、 **[承認]** を選択します。
 
 1. 接続の種類に応じて、次のいずれかのタブを選択します。
+
     # <a name="github"></a>[GitHub](#tab/github)
 
     1. 入力を求められたら、GitHub 資格情報を入力します。
 
-        接続を初めて追加すると、新しいブラウザー ウィンドウまたはタブが表示され、Azure Sentinel への接続を認可するように求められます。 同じブラウザーで GitHub アカウントに既にログインしている場合は、GitHub 資格情報が自動的に設定されます。
+        接続を初めて追加すると、新しいブラウザー ウィンドウまたはタブが表示され、Microsoft Sentinel への接続を認可するように求められます。 同じブラウザーで GitHub アカウントに既にログインしている場合は、GitHub 資格情報が自動的に設定されます。
 
     1. **[リポジトリ]** 領域が **[新しい接続の作成]** ページに表示され、そこで接続先の既存のリポジトリを選択できます。 一覧からリポジトリを選択し、 **[リポジトリの追加]** を選択します。
 
@@ -90,28 +90,31 @@ Azure Sentinel ワークスペースを外部ソース管理リポジトリに�
 
         GitHub に移動し、アプリのインストールを続行します。
 
-    1. **Azure-Sentinel** アプリがリポジトリにインストールされると、 **[新しい接続の作成]** ページの **[ブランチ]** ドロップダウンにブランチが設定されます。 Azure Sentinel ワークスペースに接続するブランチを選択します。
+    1. **Azure-Sentinel** アプリがリポジトリにインストールされると、 **[新しい接続の作成]** ページの **[ブランチ]** ドロップダウンにブランチが設定されます。 Microsoft Sentinel ワークスペースに接続するブランチを選択します。
 
     1. **[コンテンツの種類]** ドロップダウンから、デプロイするコンテンツの種類を選択します。
 
-        - パーサーとハンティング クエリの両方で **Saved Searches** API を使用してコンテンツを Azure Sentinel にデプロイします。 これらのコンテンツの種類のいずれかを選択し、ブランチに他の種類のコンテンツも含まれる場合は、両方のコンテンツの種類がデプロイされます。
+        - パーサーとハンティング クエリの両方で **Saved Searches** API を使用してコンテンツを Microsoft Sentinel にデプロイします。 これらのコンテンツの種類のいずれかを選択し、ブランチに他の種類のコンテンツも含まれる場合は、両方のコンテンツの種類がデプロイされます。
 
-        - 他のすべてのコンテンツの種類については、 **[新しい接続の作成]** ウィンドウでコンテンツの種類を選択すると、そのコンテンツだけが Azure Sentinel にデプロイされます。 他の種類のコンテンツはデプロイされません。
+        - 他のすべてのコンテンツ タイプについては、 **[新しい接続の作成]** ウィンドウでコンテンツ タイプを選択すると、そのコンテンツだけが Microsoft Sentinel にデプロイされます。 他の種類のコンテンツはデプロイされません。
 
     1. **[作成]** を選択して接続を作成します。 たとえば、次のように入力します。
 
         :::image type="content" source="media/ci-cd/create-new-connection-github.png" alt-text="新しい GitHub リポジトリ接続のスクリーンショット。":::
 
-
     # <a name="azure-devops"></a>[Azure DevOps](#tab/azure-devops)
 
-    現在の Azure 資格情報を使用して、Azure DevOps に自動的にサインインされます。 Azure Sentinel で使用しているのと同じ資格情報で Azure DevOps に現在サインインしていない場合は、Azure DevOps のアカウントを Azure Sentinel と一致するアカウントに切り替えます。
+    > [!NOTE]
+    > Azure DevOps 接続を作成するとき、[ゲストユーザー](/azure/active-directory/external-identities/what-is-b2b)は、自分の Azure Active Directory テナントにないワークスペースに現在接続できません。 このようなクロステナント シナリオは、Azure DevOps 接続ではまだサポートされていません。
+    >
 
-    1.  Azure Sentinel で、表示されるドロップダウン リストから、 **[組織]** 、 **[プロジェクト]** 、 **[リポジトリ]** 、 **[ブランチ]** 、 **[コンテンツの種類]** を選択します。
+    現在の Azure 資格情報を使用して、Azure DevOps に自動的に承認されます。 有効な接続を確保するには、Microsoft Sentinel から接続しているのと[同じ Azure DevOps アカウントが承認されていることを確認する](https://aex.dev.azure.com/)か、InPrivate ブラウザーウィンドウを使用して接続を作成します。
+    
+    1.  Microsoft Sentinel で、表示されるドロップダウン リストから、 **[組織]** 、 **[プロジェクト]** 、 **[リポジトリ]** 、 **[ブランチ]** 、 **[コンテンツ タイプ]** を選択します。
 
-        - パーサーとハンティング クエリの両方で **Saved Searches** API を使用してコンテンツを Azure Sentinel にデプロイします。 これらのコンテンツの種類のいずれかを選択し、ブランチに他の種類のコンテンツも含まれる場合は、両方のコンテンツの種類がデプロイされます。
+        - パーサーとハンティング クエリの両方で **Saved Searches** API を使用してコンテンツを Microsoft Sentinel にデプロイします。 これらのコンテンツの種類のいずれかを選択し、ブランチに他の種類のコンテンツも含まれる場合は、両方のコンテンツの種類がデプロイされます。
 
-        - 他のすべてのコンテンツの種類については、 **[新しい接続の作成]** ウィンドウでコンテンツの種類を選択すると、そのコンテンツだけが Azure Sentinel にデプロイされます。 他の種類のコンテンツはデプロイされません。
+        - 他のすべてのコンテンツ タイプについては、 **[新しい接続の作成]** ウィンドウでコンテンツ タイプを選択すると、そのコンテンツだけが Microsoft Sentinel にデプロイされます。 他の種類のコンテンツはデプロイされません。
 
     1. **[作成]** を選択して接続を作成します。 たとえば、次のように入力します。
 
@@ -120,21 +123,21 @@ Azure Sentinel ワークスペースを外部ソース管理リポジトリに�
     ---
 
     > [!NOTE]
-    > 同じリポジトリとブランチがある重複する接続を 1 つの Azure Sentinel ワークスペースに作成することはできません。
+    > 同じリポジトリとブランチがある重複する接続を 1 つの Microsoft Sentinel ワークスペースに作成することはできません。
     >
 
-接続が作成されると、リポジトリに新しいワークフローまたはパイプラインが生成され、リポジトリに格納されているコンテンツが Azure Sentinel ワークスペースにデプロイされます。
+接続が作成されると、リポジトリに新しいワークフローまたはパイプラインが生成され、リポジトリに格納されているコンテンツが Microsoft Sentinel ワークスペースにデプロイされます。
 
 デプロイの時間は、デプロイするコンテンツの量によって異なる場合があります。 
 
-### <a name="view-the-deployment-status"></a>デプロイの状態の表示:
+### <a name="view-the-deployment-status"></a>デプロイの状態を表示する
 
 - **GitHub 内**: リポジトリの **[アクション]** タブ上。そこに表示されているワークフロー **.yaml** ファイルを選択して、詳細なデプロイ ログと特定のエラー メッセージ (関連する場合) にアクセスします。
 - **Azure DevOps 内**: リポジトリの **[パイプライン]** タブ上。
 
 デプロイの完了後:
 
-- リポジトリに格納されているコンテンツは、Azure Sentinel ワークスペースの関連する Azure Sentinel ページに表示されます。
+- リポジトリに格納されているコンテンツは、Microsoft Sentinel ワークスペースの関連する Microsoft Sentinel ページに表示されます。
 
 - **[リポジトリ]** ページの接続の詳細が、接続のデプロイ ログへのリンクで更新されます。 たとえば、次のように入力します。
 
@@ -220,7 +223,6 @@ GitHub または Azure DevOps からのコンテンツ デプロイの既定の�
 
         このトリガーを、スケジュール設定やプル要求トリガーなど、使用可能な任意の Azure DevOps トリガーに変更します。 詳細については、[Azure DevOps トリガーのドキュメント](/azure/devops/pipelines/yaml-schema)を参照してください。
 
-
     - **デプロイ パスを変更するには**:
 
         `trigger` セクションの既定の構成には次のコードが含まれます。これは、`main` ブランチがデプロイ トリガーのパスに含まれることを示しています。
@@ -262,47 +264,47 @@ GitHub または Azure DevOps からのコンテンツ デプロイの既定の�
 >
 ## <a name="edit-or-delete-content-in-your-repository"></a>リポジトリ内のコンテンツを編集または削除する
 
-ソース管理リポジトリへの接続を正常に作成すると、そのリポジトリ内のコンテンツが変更または追加されるたびに、デプロイ ワークフローが再度実行され、リポジトリ内のすべてのコンテンツが、接続されているすべての Azure Sentinel ワークスペースにデプロイされます。
+ソース管理リポジトリへの接続を正常に作成すると、そのリポジトリ内のコンテンツが変更または追加されるたびに、デプロイ ワークフローが再度実行され、リポジトリ内のすべてのコンテンツが、接続されているすべての Microsoft Sentinel ワークスペースにデプロイされます。
 
-Azure Sentinel 内ではなく、リポジトリ内の接続されているリポジトリに格納されているコンテンツ *のみ* 編集することが推奨されます。 たとえば、分析ルールを変更するには、GitHub または Azure DevOps で直接行います。
+Microsoft Sentinel 内ではなく、リポジトリ内の接続されているリポジトリに格納されているコンテンツ "*のみ*" 編集することが推奨されます。 たとえば、分析ルールを変更するには、GitHub または Azure DevOps で直接行います。
 
-Azure Sentinel でコンテンツを編集した場合は、次回にリポジトリ コンテンツがワークスペースにデプロイされたときに、変更が上書きされるのを防ぐために、必ずソース管理リポジトリにエクスポートしてください。
+Microsoft Sentinel でコンテンツを編集した場合は、次回にリポジトリ コンテンツがワークスペースにデプロイされたときに、変更が上書きされるのを防ぐために、必ずソース管理リポジトリにエクスポートしてください。
 
-コンテンツを削除する場合は、リポジトリと Azure portal の両方からそれを削除してください。 リポジトリからコンテンツを削除しても、Azure Sentinel ワークスペースから削除されません。
+コンテンツを削除する場合は、リポジトリと Azure portal の両方からそれを削除してください。 リポジトリからコンテンツを削除しても、Microsoft Sentinel ワークスペースから削除されません。
 
 ## <a name="remove-a-repository-connection"></a>リポジトリ接続を削除する
 
-この手順では、Azure Sentinel からソース管理リポジトリへの接続を削除する方法について説明します。
+この手順では、Microsoft Sentinel からソース管理リポジトリへの接続を削除する方法について説明します。
 
 **接続を削除するには**:
 
-1. Azure Sentinel で、左側の **[コンテンツ管理]** の下の **[リポジトリ]** を選択します。
+1. Microsoft Sentinel で、左側の **[コンテンツ管理]** の下の **[リポジトリ]** を選択します。
 1. グリッドで、削除する接続を選択し、 **[削除]** を選択します。
 1. **[はい]** を選択して、削除を確認します。
 
-接続を削除後、接続によって以前にデプロイされたコンテンツは、Azure Sentinel ワークスペースに残ります。 接続の削除後にリポジトリに追加されたコンテンツはデプロイされません。
+接続を削除後、接続によって以前にデプロイされたコンテンツは、Microsoft Sentinel ワークスペースに残ります。 接続の削除後にリポジトリに追加されたコンテンツはデプロイされません。
 
 > [!TIP]
 > 接続を削除するときに問題またはエラー メッセージを検出した場合は、ソース管理を確認して、接続に関連付けられていた GitHub ワークフローまたは Azure DevOps パイプラインが削除されたことを確認することが推奨されます。
 >
 
-### <a name="removing-the-azure-sentinel-app-from-your-github-repository"></a>GitHub リポジトリから Azure Sentinel アプリを削除する
+### <a name="removing-the-microsoft-sentinel-app-from-your-github-repository"></a>GitHub リポジトリからの Microsoft Sentinel アプリの削除
 
-GitHub リポジトリから Azure Sentinel アプリを削除する場合は、*最初に* Azure Sentinel **リポジトリ** ページから関連付けられているすべての接続を削除することが推奨されます。
+GitHub リポジトリから Microsoft Sentinel アプリを削除する場合は、"*最初に*" Microsoft Sentinel **リポジトリ** ページから関連付けられているすべての接続を削除することが推奨されます。
 
-各 Azure Sentinel アプリのインストールには、接続の追加と削除時の両方で使用される一意の ID があります。 ID が見つからない場合、または変更されている場合は、Azure Sentinel **リポジトリ** ページから接続を削除し、GitHub リポジトリからワークフローを手動で削除して、今後のコンテンツのデプロイを防ぐ必要があります。
+各 Microsoft Sentinel アプリのインストールには、接続の追加と削除時の両方で使用される一意の ID があります。 ID が見つからない場合、または変更されている場合は、Microsoft Sentinel **リポジトリ** ページからの接続の削除と、GitHub リポジトリからの手動でのワークフロー削除の両方を行って、今後のコンテンツのデプロイを防ぐ必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure Sentinel で、すぐ利用できるコンテンツを使用する場合と同じように、カスタム コンテンツを使用します。
+Microsoft Sentinel で、すぐ利用できるコンテンツを使用する場合と同じように、カスタム コンテンツを使用します。
 
 詳細については、次を参照してください。
 
-- [Azure Sentinel ソリューションを見つけてデプロイする (パブリック プレビュー)](sentinel-solutions-deploy.md)
-- [Azure Sentinel データ コネクタ](connect-data-sources.md)
-- [Azure Sentinel Information Model (ASIM) パーサー (パブリック プレビュー)](normalization-about-parsers.md)
+- [Microsoft Sentinel ソリューションを検出してデプロイする (パブリック プレビュー)](sentinel-solutions-deploy.md)
+- [Microsoft Sentinel データ コネクタ](connect-data-sources.md)
+- [Advanced SIEM Information Model (ASIM) パーサー (パブリック プレビュー)](normalization-about-parsers.md)
 - [収集されたデータを視覚化する](get-visibility.md)
 - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
-- [Azure Sentinel で脅威を検出する](hunting.md)
-- [Azure Sentinel ウォッチリストを使用する](watchlists.md)
-- [Azure Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)
+- [Microsoft Sentinel を使用して脅威を追求する](hunting.md)
+- [Microsoft Sentinel ウォッチリストを使用する](watchlists.md)
+- [Microsoft Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)

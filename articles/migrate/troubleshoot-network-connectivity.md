@@ -1,18 +1,18 @@
 ---
 title: ネットワーク接続に関する問題のトラブルシューティング | Microsoft Docs
 description: プライベート エンドポイントで Azure Migrate を使用する際の一般的なエラーに対するトラブルシューティングのヒントを提供します。
-author: MaggiePucciEvans
-ms.author: evansma
+author: SGSneha
+ms.author: v-ssudhir
 ms.manager: deseelam
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/19/2021
-ms.openlocfilehash: 5f225711fd4bf373fc03dbfa451ae5dea041d2b8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 11/03/2021
+ms.openlocfilehash: 4c23367862728d42148971b4941d6c94a750c227
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166462"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504609"
 ---
 # <a name="troubleshoot-network-connectivity"></a>ネットワーク接続のトラブルシューティング
 このアーティクルは、プライベート エンドポイントで Azure Migrate を使用する際のネットワーク接続のトラブルシューティングを行う際に役立ちます。
@@ -26,9 +26,9 @@ ms.locfileid: "130166462"
 2. プロパティ ページには、Azure Migrate によって自動的に作成されたプライベート リンク FQDN とプライベート エンドポイントが一覧表示されます。  
 
 3. 診断したいプライベート エンドポイントを選択します。  
-   a. 接続状態が [承認済み] になっていることを確認します。           
-   b. 接続が保留中の状態である場合、接続を承認する必要があります。                         
-   c. プライベート エンドポイント リソースに移動して、仮想ネットワークが、移行プロジェクトのプライベート エンドポイントの仮想ネットワークと一致しているかどうかを確認することもできます。                                                        
+      a. 接続状態が [承認済み] になっていることを確認します。           
+      b. 接続が保留中の状態である場合、接続を承認する必要があります。                         
+      c. プライベート エンドポイント リソースに移動して、仮想ネットワークが、移行プロジェクトのプライベート エンドポイントの仮想ネットワークと一致しているかどうかを確認することもできます。                                                        
 
      ![プライベート エンドポイント接続を確認する](./media/how-to-use-azure-migrate-with-private-endpoints/private-endpoint-connection.png)
 
@@ -49,13 +49,13 @@ ms.locfileid: "130166462"
 
 ストレージ アカウントのプライベート リンク FQDN を DNS 解決する具体的な例  
 
-- 「_nslookup ```<storage-account-name>_.blob.core.windows.net.```」を入力します。```<storage-account-name>``` は、Azure Migrate で使用するストレージ アカウントの名前に置き換えてください。  
+-  「_nslookup ```<storage-account-name>_.blob.core.windows.net.```」を入力します。```<storage-account-name>``` は、Azure Migrate で使用するストレージ アカウントの名前に置き換えてください。  
 
     このようなメッセージが返されます。  
 
    ![DNS 解決の例](./media/how-to-use-azure-migrate-with-private-endpoints/dns-resolution-example.png)
 
-- ストレージ アカウントに対応する 10.1.0.5 というプライベート IP アドレスが返されます。 このアドレスは、プライベート エンドポイントの仮想ネットワーク サブネットに属します。   
+-  ストレージ アカウントに対応する 10.1.0.5 というプライベート IP アドレスが返されます。 このアドレスは、プライベート エンドポイントの仮想ネットワーク サブネットに属します。   
 
 他の Azure Migrate アーティファクトについても、同様の方法を使用して DNS 解決を検証できます。   
 
@@ -74,10 +74,10 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 
 ### <a name="confirm-that-the-required-private-dns-zone-resource-exists"></a>必要なプライベート DNS ゾーン リソースが存在することを確認する  
 既定では Azure Migrate は、*privatelink* サブドメインに対応するプライベート DNS ゾーンも作成します。 プライベート DNS ゾーンは、プライベート エンドポイントのリソース グループと同じ Azure リソース グループに作成されます。 Azure リソース グループには、次の形式のプライベート DNS ゾーン リソースが含まれている必要があります。
-- privatelink.vaultcore.azure.net (キー コンテナー)
-- privatelink.blob.core.windows.net (ストレージ アカウント)
-- privatelink.siterecovery.windowsazure.com (Recovery Services コンテナー) (Hyper-V およびエージェントベースのレプリケーションの場合)
-- privatelink.prod.migration.windowsazure.com (移行プロジェクト、評価プロジェクト、探索サイト)   
+-  privatelink.vaultcore.azure.net (キー コンテナー)
+-  privatelink.blob.core.windows.net (ストレージ アカウント)
+-  privatelink.siterecovery.windowsazure.com (Recovery Services コンテナー) (Hyper-V およびエージェントベースのレプリケーションの場合)
+-  privatelink.prod.migration.windowsazure.com (移行プロジェクト、評価プロジェクト、探索サイト)   
 
 Azure Migrate は、プライベート DNS ゾーンを自動的に作成します (ユーザーが選択したキャッシュ ストレージ アカウントとレプリケーション ストレージ アカウントを除くを除く)。 リンクされたプライベート DNS ゾーンは、プライベート エンドポイント ページに移動し、DNS 構成を選択することで特定できます。 プライベート DNS ゾーンは、[private DNS integration (プライベート DNS 統合)] セクションに表示されます。
 
@@ -104,11 +104,11 @@ Azure portal でプライベート DNS ゾーン リソースに移動し、左�
 
 プライベート DNS ゾーンにおけるストレージ アカウントの DNS A レコードの具体的な例を次に示します。
 
-![DNS レコード](./media/how-to-use-azure-migrate-with-private-endpoints/dns-a-records.png)   
+   ![DNS レコード](./media/how-to-use-azure-migrate-with-private-endpoints/dns-a-records.png)   
 
 プライベート DNS ゾーンにおける Recovery Services コンテナーのマイクロサービスの DNS A レコードの具体的な例を次に示します。
 
-[![Recovery Services コンテナーの DNS レコード](./media/how-to-use-azure-migrate-with-private-endpoints/rsv-a-records-inline.png)](./media/how-to-use-azure-migrate-with-private-endpoints/rsv-a-records-expanded.png#lightbox)  
+   [![Recovery Services コンテナーの DNS レコード](./media/how-to-use-azure-migrate-with-private-endpoints/rsv-a-records-inline.png)](./media/how-to-use-azure-migrate-with-private-endpoints/rsv-a-records-expanded.png#lightbox)  
 
 >[!Note]
 > A レコードを削除または変更しても、TTL (Time To Live) の値の有効期限がまだ切れていない可能性があるため、マシンが古い IP アドレスに解決される場合があります。  
@@ -117,9 +117,9 @@ Azure portal でプライベート DNS ゾーン リソースに移動し、左�
 
 以下、高度なシナリオまたは複雑なシナリオで想定される事柄をいくつか挙げてみます。
 
-- ファイアウォールの設定。仮想ネットワークに接続されている Azure Firewall、またはアプライアンス マシンにデプロイされるカスタム ファイアウォール ソリューションが該当します。  
-- ネットワーク ピアリング。使用される DNS サーバーと、トラフィックのルーティング方法に影響を与える可能性があります。  
-- カスタム ゲートウェイ (NAT) ソリューション。DNS クエリからのトラフィックなど、トラフィックのルーティング方法に影響を与える可能性があります。
+-  ファイアウォールの設定。仮想ネットワークに接続されている Azure Firewall、またはアプライアンス マシンにデプロイされるカスタム ファイアウォール ソリューションが該当します。  
+-  ネットワーク ピアリング。使用される DNS サーバーと、トラフィックのルーティング方法に影響を与える可能性があります。  
+-  カスタム ゲートウェイ (NAT) ソリューション。DNS クエリからのトラフィックなど、トラフィックのルーティング方法に影響を与える可能性があります。
 
 詳細については、[プライベート エンドポイント接続の問題に関するトラブルシューティング ガイド](../private-link/troubleshoot-private-endpoint-connectivity.md)を参照してください。  
 
@@ -128,27 +128,30 @@ Azure portal でプライベート DNS ゾーン リソースに移動し、左�
 
 ### <a name="appliance-registration-fails-with-the-error-forbiddentoaccesskeyvault"></a>アプライアンスの登録がエラー ForbiddenToAccessKeyVault で失敗する
 <_KeyVaultName_> に対する Azure Key Vault の作成または更新操作が、次のエラーのため失敗しました: <_ErrorMessage_>
+
 #### <a name="possible-causes"></a>考えられる原因:
 この問題は、アプライアンスの登録に使用されている Azure アカウントに必要なアクセス許可がない場合、または Azure Migrate アプライアンスが Key Vault にアクセスできない場合に発生する可能性があります。
+
 #### <a name="remediation"></a>修復:
+
 **Key Vault へのアクセスに関する問題のトラブルシューティング手順:**
 1. アプライアンスの登録に使用する Azure ユーザー アカウントに、少なくともサブスクリプションの共同作成者アクセス許可があることを確認します。
-2. アプライアンスを登録しようとしているユーザーが Key Vault にアクセスできること、および [Key Vault] > [アクセス ポリシー] セクションでアクセス ポリシーが割り当てられていることを確認します。 [詳細情報](../key-vault/general/assign-access-policy-portal.md)
-- 必要な Azure ロールとアクセス許可の[詳細を参照](./migrate-appliance.md#appliance---vmware)してください。
+1. アプライアンスを登録しようとしているユーザーが Key Vault にアクセスできること、および [Key Vault] > [アクセス ポリシー] セクションでアクセス ポリシーが割り当てられていることを確認します。 [詳細情報](../key-vault/general/assign-access-policy-portal.md)
+-  必要な Azure ロールとアクセス許可の[詳細を参照](./migrate-appliance.md#appliance---vmware)してください。
 
 **Key Vault に対する接続の問題のトラブルシューティング手順:** プライベート エンドポイント接続用にアプライアンスを有効にした場合は、以下の手順に従ってネットワーク接続の問題のトラブルシューティングを行います。
-- アプライアンスが同じ仮想ネットワーク内でホストされているか、プライベート リンク経由で (Key Vault プライベート エンドポイントが作成されている) ターゲットの Azure 仮想ネットワークに接続されていることを確認します。 Key Vault プライベート エンドポイントは、プロジェクトの作成エクスペリエンス中に選択した仮想ネットワークに作成されます。 仮想ネットワークの詳細は、 **[Azure Migrate] > [プロパティ]** ページで確認できます。
-![Azure Migrate のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-properties-page.png)  
+-  アプライアンスが同じ仮想ネットワーク内でホストされているか、プライベート リンク経由で (Key Vault プライベート エンドポイントが作成されている) ターゲットの Azure 仮想ネットワークに接続されていることを確認します。 Key Vault プライベート エンドポイントは、プロジェクトの作成エクスペリエンス中に選択した仮想ネットワークに作成されます。 仮想ネットワークの詳細は、 **[Azure Migrate] > [プロパティ]** ページで確認できます。
+   ![Azure Migrate のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-properties-page.png)  
 
-- アプライアンスがプライベート リンク経由で Key Vault にネットワーク接続できることを確認します。 プライベート リンク接続を検証するには、アプライアンスをホストしているオンプレミス サーバーから Key Vault リソース エンドポイントの DNS 解決を実行して、プライベート IP アドレスに解決されることを確認します。
-- **[Azure Migrate: Discovery and Assessment] > [プロパティ]** にアクセスして、キーの生成手順で作成した Key Vault などのリソースのプライベート エンドポイントの詳細を確認します。  
+-  アプライアンスがプライベート リンク経由で Key Vault にネットワーク接続できることを確認します。 プライベート リンク接続を検証するには、アプライアンスをホストしているオンプレミス サーバーから Key Vault リソース エンドポイントの DNS 解決を実行して、プライベート IP アドレスに解決されることを確認します。
+-  **[Azure Migrate: Discovery and Assessment] > [プロパティ]** にアクセスして、キーの生成手順で作成した Key Vault などのリソースのプライベート エンドポイントの詳細を確認します。  
 
-    ![Azure Migrate サーバー評価のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-server-assessment-properties.png)  
-- **[DNS 設定のダウンロード]** を選択して、DNS マッピングをダウンロードします。
+      ![Azure Migrate サーバー評価のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-server-assessment-properties.png)  
+-  **[DNS 設定のダウンロード]** を選択して、DNS マッピングをダウンロードします。
 
-    ![DNS 設定のダウンロード](./media/how-to-use-azure-migrate-with-private-endpoints/download-dns-settings.png)  
+      ![DNS 設定のダウンロード](./media/how-to-use-azure-migrate-with-private-endpoints/download-dns-settings.png)  
 
-- コマンド ラインを開いて、以下の nslookup コマンドを実行し、DNS 設定ファイルに記載されている Key Vault URL へのネットワーク接続を確認します。   
+-  コマンド ラインを開いて、以下の nslookup コマンドを実行し、DNS 設定ファイルに記載されている Key Vault URL へのネットワーク接続を確認します。   
 
     ```console
     nslookup <your-key-vault-name>.vault.azure.net
@@ -180,22 +183,30 @@ Azure portal でプライベート DNS ゾーン リソースに移動し、左�
     前述のように、nslookup コマンドはプライベート IP アドレスに解決される必要があります。 プライベート IP アドレスは、DNS 設定ファイルに記載されているものと一致するはずです。
 
 DNS 解決が正しくない場合は、これらの手順を実行します。
+
 1. オンプレミス アプライアンス上にある DNS の hosts ファイルを編集し、DNS マッピングとそれに対応するプライベート IP アドレスでソース環境の DNS レコードを手動で更新します。 この方法は、テスト目的で推奨されます。
 
-   ![DNS hosts ファイル](./media/how-to-use-azure-migrate-with-private-endpoints/dns-hosts-file-1.png)
+      ![DNS hosts ファイル](./media/how-to-use-azure-migrate-with-private-endpoints/dns-hosts-file-1.png)
 
-2. カスタム DNS サーバーを使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。
-3. それでも問題が解決しない場合は、[こちらのセクションを参照して](#validate-the-private-dns-zone)、さらにトラブルシューティングを行ってください。
+1. カスタム DNS サーバーを使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。
+
+1. **プロキシ サーバーに関する考慮事項**: アプライアンスでプロキシ サーバーが送信接続に使用されている場合は、ネットワーク設定と構成を検証して、プライベート リンク URL に到達可能であり、予想どおりにルーティングできることを確認する必要が生じる場合があります。
+
+    - プロキシ サーバーがインターネット接続用の場合は、プライベート リンク FQDN のプロキシ サーバーをバイパスするためにトラフィック フォワーダーまたは規則を追加する必要が生じる場合があります。 プロキシ バイパス規則を追加する方法の[詳細を参照してください](/azure/migrate/how-to-use-azure-migrate-with-private-endpoints#set-up-prerequisites)。
+    - または、プロキシ サーバーがすべての送信トラフィック用の場合は、プロキシ サーバーがプライベート リンク FQDN をそれぞれのプライベート IP アドレスに解決できることを確認します。 簡単な回避策として、上に示すように、DNS マッピングと、関連付けられたプライベート IP アドレスを使用して、プロキシ サーバー上の DNS レコードを手動で更新できます。 この方法は、テスト目的で推奨されます。
+
+1. それでも問題が解決しない場合は、[こちらのセクションを参照して](#validate-the-private-dns-zone)、さらにトラブルシューティングを行ってください。
 
 接続を確認したら、登録プロセスを再試行します。
 
 ### <a name="start-discovery-fails-with-the-error-agentnotconnected"></a>検出の開始がエラー AgentNotConnected で失敗する
 オンプレミスのエージェントが次の Azure Migrate サービス エンドポイントと通信できないため、アプライアンスは検出を開始できませんでした: Azure 内の <_URLname_>。
 
-![エージェントが接続されていないエラー](./media/how-to-use-azure-migrate-with-private-endpoints/agent-not-connected-error.png)  
+   ![エージェントが接続されていないエラー](./media/how-to-use-azure-migrate-with-private-endpoints/agent-not-connected-error.png)  
 
 #### <a name="possible-causes"></a>考えられる原因:
 この問題は、アプライアンスがエラー メッセージに示されているサービス エンドポイントに接続できない場合に発生する可能性があります。
+
 #### <a name="remediation"></a>修復:
 アプライアンスが直接またはプロキシを介して接続されていることを確認し、エラー メッセージに示されているサービス エンドポイントを解決できることを確認します。  
 
@@ -205,16 +216,18 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 
 プライベート エンドポイント接続用にアプライアンスを有効にした場合は、以下の手順に従ってネットワーク接続の問題のトラブルシューティングを行います。
 
-- アプライアンスが同じ仮想ネットワーク内でホストされているか、プライベート リンク経由で (プライベート エンドポイントが作成されている) ターゲットの Azure 仮想ネットワークに接続されていることを確認します。 Azure Migrate サービスのプライベート エンドポイントは、プロジェクトの作成エクスペリエンス中に選択した仮想ネットワークに作成されます。 仮想ネットワークの詳細は、 **[Azure Migrate] > [プロパティ]** ページで確認できます。
+-  アプライアンスが同じ仮想ネットワーク内でホストされているか、プライベート リンク経由で (プライベート エンドポイントが作成されている) ターゲットの Azure 仮想ネットワークに接続されていることを確認します。 Azure Migrate サービスのプライベート エンドポイントは、プロジェクトの作成エクスペリエンス中に選択した仮想ネットワークに作成されます。 仮想ネットワークの詳細は、 **[Azure Migrate] > [プロパティ]** ページで確認できます。
 
-![Azure Migrate のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-properties-page.png)   
+      ![Azure Migrate のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-properties-page.png)   
 
-- アプライアンスがプライベート リンク接続を介して、エラー メッセージに示されているサービス エンドポイントの URL やその他の URL にネットワーク接続できることを確認します。 プライベート リンク接続を検証するには、アプライアンスをホストしているオンプレミス サーバーから URL の DNS 解決を実行して、プライベート IP アドレスに解決されることを確認します。
-- **[Azure Migrate: Discovery and Assessment] > [プロパティ]** にアクセスして、キーの生成手順で作成したサービス エンドポイントのプライベート エンドポイントの詳細を確認します。  
-    ![Azure Migrate サーバー評価のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-server-assessment-properties.png)  
+-  アプライアンスがプライベート リンク接続を介して、エラー メッセージに示されているサービス エンドポイントの URL やその他の URL にネットワーク接続できることを確認します。 プライベート リンク接続を検証するには、アプライアンスをホストしているオンプレミス サーバーから URL の DNS 解決を実行して、プライベート IP アドレスに解決されることを確認します。
+-  **[Azure Migrate: Discovery and Assessment] > [プロパティ]** にアクセスして、キーの生成手順で作成したサービス エンドポイントのプライベート エンドポイントの詳細を確認します。 
+
+      ![Azure Migrate サーバー評価のプロパティ](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-server-assessment-properties.png)  
+
 - **[DNS 設定のダウンロード]** を選択して、DNS マッピングをダウンロードします。
 
-    ![DNS 設定のダウンロード](./media/how-to-use-azure-migrate-with-private-endpoints/download-dns-settings.png)   
+   ![DNS 設定のダウンロード](./media/how-to-use-azure-migrate-with-private-endpoints/download-dns-settings.png)   
 
 |**プライベート エンドポイント URL を含む DNS マッピング**  | **詳細** |
 |--- | ---|
@@ -235,7 +248,7 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 |aka.ms/* (省略可能) | アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用される、aka リンクへのアクセスを許可します
 |download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します    
 
-- コマンド ラインを開いて、以下の nslookup コマンドを実行し、DNS 設定ファイルに記載されている URL へのプライベートリンク接続を確認します。 DNS 設定ファイル内のすべての URL に対してこの手順を繰り返します。
+-  コマンド ラインを開いて、以下の nslookup コマンドを実行し、DNS 設定ファイルに記載されている URL へのプライベートリンク接続を確認します。 DNS 設定ファイル内のすべての URL に対してこの手順を繰り返します。
 
     _**図**: 検出サービス エンドポイントへのプライベート リンク接続の検証_
 
@@ -257,12 +270,19 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
     前述のように、nslookup コマンドはプライベート IP アドレスに解決される必要があります。 プライベート IP アドレスは、DNS 設定ファイルに記載されているものと一致するはずです。
 
 DNS 解決が正しくない場合は、これらの手順を実行します。
+
 1. オンプレミス アプライアンス上にある DNS の hosts ファイルを編集し、DNS マッピングとそれに対応するプライベート IP アドレスでソース環境の DNS レコードを手動で更新します。 この方法は、テスト目的で推奨されます。
 
-   ![DNS hosts ファイル](./media/how-to-use-azure-migrate-with-private-endpoints/dns-hosts-file-1.png)
+      ![DNS hosts ファイル](./media/how-to-use-azure-migrate-with-private-endpoints/dns-hosts-file-1.png)
 
-2. カスタム DNS サーバーを使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。
-3. それでも問題が解決しない場合は、[こちらのセクションを参照して](#validate-the-private-dns-zone)、さらにトラブルシューティングを行ってください。
+1. カスタム DNS サーバーを使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。
+
+1. **プロキシ サーバーに関する考慮事項**: アプライアンスでプロキシ サーバーが送信接続に使用されている場合は、ネットワーク設定と構成を検証して、プライベート リンク URL に到達可能であり、予想どおりにルーティングできることを確認する必要が生じる場合があります。
+
+    - プロキシ サーバーがインターネット接続用の場合は、プライベート リンク FQDN のプロキシ サーバーをバイパスするためにトラフィック フォワーダーまたは規則を追加する必要が生じる場合があります。 プロキシ バイパス規則を追加する方法の[詳細を参照してください](/azure/migrate/how-to-use-azure-migrate-with-private-endpoints#set-up-prerequisites)。
+    - または、プロキシ サーバーがすべての送信トラフィック用の場合は、プロキシ サーバーがプライベート リンク FQDN をそれぞれのプライベート IP アドレスに解決できることを確認します。 簡単な回避策として、上に示すように、DNS マッピングと、関連付けられたプライベート IP アドレスを使用して、プロキシ サーバー上の DNS レコードを手動で更新できます。 この方法は、テスト目的で推奨されます。
+
+1. それでも問題が解決しない場合は、[こちらのセクションを参照して](#validate-the-private-dns-zone)、さらにトラブルシューティングを行ってください。
 
 接続を確認したら、検出プロセスを再試行します。
 
@@ -286,7 +306,7 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 
 1. **ストレージ アカウントを見つける**: ストレージ アカウント名は、[Azure Migrate: Discovery and Assessment properties]\(Azure Migrate: 検出と評価のプロパティ\) ページで確認できます。 ストレージ アカウント名には、*usa* というサフィックスが付きます。 
 
-   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/server-assessment-properties.png" alt-text="DNS 設定のダウンロードのスナップショット。"::: 
+      :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/server-assessment-properties.png" alt-text="DNS 設定のダウンロードのスナップショット。"::: 
 
 2. ストレージ アカウントに移動し、ストレージ アカウントのネットワーク プロパティを編集して、すべての、または他のネットワークからのアクセスを許可します。 
 
@@ -294,4 +314,4 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 
 3. また、選択したネットワークにアクセスを制限し、Azure portal にアクセスしようとしている場所からクライアントのパブリック IP アドレスを追加することもできます。  
 
-    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall.png" alt-text="クライアントのパブリック IP アドレスの追加のスナップショット。":::
+      :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall.png" alt-text="クライアントのパブリック IP アドレスの追加のスナップショット。":::

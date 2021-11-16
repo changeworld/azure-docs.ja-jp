@@ -5,13 +5,13 @@ author: chenyl
 ms.author: chenyl
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/31/2021
-ms.openlocfilehash: 045d7946a94ba9658dcdc235e1d30e36b4c4e09b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/08/2021
+ms.openlocfilehash: 8e801391e5ac2ebe2a4dee276f525885ff84f449
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626990"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997801"
 ---
 #  <a name="the-azure-web-pubsub-supported-protobuf-websocket-subprotocol"></a>Azure Web PubSub でサポートされる Protobuf WebSocket サブプロトコル
      
@@ -69,23 +69,24 @@ message UpstreamMessage {
 
     message SendToGroupMessage {
         string group = 1;
-        optional int32 ack_id = 2;
+        optional uint64 ack_id = 2;
         MessageData data = 3;
     }
 
     message EventMessage {
         string event = 1;
         MessageData data = 2;
+        optional uint64 ack_id = 3;
     }
     
     message JoinGroupMessage {
         string group = 1;
-        optional int32 ack_id = 2;
+        optional uint64 ack_id = 2;
     }
 
     message LeaveGroupMessage {
         string group = 1;
-        optional int32 ack_id = 2;
+        optional uint64 ack_id = 2;
     }
 }
 
@@ -104,7 +105,7 @@ message MessageData {
 
 `join_group_message.group` をグループ名に設定します。
 
-* `ackId` はオプションです。 これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 
 ### <a name="leave-groups"></a>グループを脱退する
 
@@ -112,13 +113,13 @@ message MessageData {
 
 `leave_group_message.group` をグループ名に設定します。
 
-* `ackId` はオプションです。 これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 
 ### <a name="publish-messages"></a>メッセージを発行する
 
 形式:
 
-* `ackId` はオプションです。 これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 
 暗黙的な`dataType` があり、これは設定した `MessageData` の `data` に基づいて、`protobuf`、`text`、または `binary` のいずれかにすることができます。 受信側クライアントは `dataType` を利用して、コンテンツを正しく処理できます。
 
@@ -347,7 +348,7 @@ message DownstreamMessage {
     }
     
     message AckMessage {
-        int32 ack_id = 1;
+        uint64 ack_id = 1;
         bool success = 2;
         optional ErrorMessage error = 3;
     

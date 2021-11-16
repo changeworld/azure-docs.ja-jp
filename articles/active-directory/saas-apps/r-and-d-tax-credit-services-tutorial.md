@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 81c56e4656c42901cfa32d5485db5113ecb21bf5
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: f7f6e25b1c276fdda310f394a9b939ea7f860cfa
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132299872"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132000581"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-r-and-d-tax-credit-services--10-wk-implementation"></a>チュートリアル:Azure AD SSO と R および D の税クレジット サービスの統合: 10 週間での実装
 
@@ -136,4 +136,4 @@ R および D の税クレジット サービスに対して Azure AD SSO を構
 
 ## <a name="next-steps"></a>次のステップ
 
-R および D の税クレジット サービスを構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+R および D の税クレジット サービスを構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

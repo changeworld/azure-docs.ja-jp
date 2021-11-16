@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: fd9984d6db66413f3c53d20fa63ffb4e1a106f3d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 712b1d3e7fde41991f9cea2d62e7e0864224509d
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131454544"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135204"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -177,6 +177,21 @@ df = spark.read\
 ```
 
 * Azure Synapse Spark では、名前に空白を含むプロパティがサポートされるようになりました。
+
+* 次の BSON データ型はサポートされておらず、分析ストアでは表されません。
+  * Decimal128
+  * Regular Expression
+  * DB Pointer
+  * JavaScript
+  * シンボル
+  * MinKey / MaxKey 
+
+* ISO 8601 UTC 標準に準拠した DateTime 文字列を使用する場合、次の動作を期待できます。
+  * Azure Synapse の Spark プールは、これらの列を `string` として表示します。
+  * Azure Synapse の SQL サーバーレス プールは、これらの列を `varchar(8000)` として表示します。
+
+* Azure Synapse の SQL サーバーレス プールでは、最大 1,000 列の結果セットがサポートされており、入れ子になった列を公開する場合も、その制限までカウントされます。 データ アーキテクチャを設計し、トランザクション データをモデル化する場合は、この情報を考慮してください。
+
 
 ### <a name="schema-representation"></a>スキーマ表現
 

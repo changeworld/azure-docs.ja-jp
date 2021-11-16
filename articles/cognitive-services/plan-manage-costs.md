@@ -6,13 +6,13 @@ ms.author: pafarley
 ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
-ms.date: 10/28/2021
-ms.openlocfilehash: 2fa5a5867bc64da126e24c65b1b6d0c5d618ae18
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/03/2021
+ms.openlocfilehash: 2f436f971b151fb4043ca459bb36442a2d504491
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446545"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026028"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure Cognitive Services のコストを計画および管理する
 
@@ -38,11 +38,13 @@ Cognitive Services を追加する前に、[Azure 料金計算ツール](https:/
 
 Cognitive Services は、新しいリソースをデプロイするときに[コストが発生する](https://azure.microsoft.com/pricing/details/cognitive-services/) Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
 
-### <a name="how-youre-charged-for-cognitive-services"></a>Cognitive Services に対する課金方法
+Cognitive Services リソースを作成または使用すると、使用するサービスに基づいて課金される場合があります。 Cognitive Services に使用できる課金モデルには、従量課金制とコミットメント レベルの 2 種類があります。
 
-Cognitive Services リソースを作成または使用すると、使用するサービスに基づいて、次の測定に対して課金される場合があります。
+## <a name="pay-as-you-go"></a>従量課金制
 
-| サービス | 測定 | 課金情報 | 
+従量課金制の価格では、課金情報に基づいて、使用した Cognitive Services オファリングに従って課金されます。
+
+| サービス | インスタンス | 課金情報 | 
 |---------|-------|---------------------|
 | **Vision** | | |
 | [Computer Vision](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) | Free または Standard (S1) | トランザクションの数によって請求されます。 トランザクションあたりの料金は、機能 (読み取り、OCR、空間分析) によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)に関するページを参照してください。 |
@@ -59,6 +61,17 @@ Cognitive Services リソースを作成または使用すると、使用する�
 | [Anomaly Detector](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Free または Standard | トランザクションの数によって請求されます。 | 
 | [Content Moderator](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) | Free または Standard | トランザクションの数によって請求されます。 |
 | [Personalizer](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/) | Free または Standard (S0) | トランザクションごとに月単位で請求されます。 ストレージとトランザクション クォータがあります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/)に関するページを参照してください。 | 
+
+## <a name="commitment-tier"></a>コミットメント レベル
+
+従量課金制モデルに加えて、Cognitive Services にはコミットメント レベルがあります。これにより、固定料金でいくつかのサービス フィーチャーの使用をコミットできるため、ワークロードのニーズに基づいて予測可能な総コストを知ることができます。
+
+コミットメント レベルの価格では、選択したプランに従って課金されます。 利用可能なサービス、サインアップする方法、プランを購入する際の考慮事項については、「[クイックスタート: コミットメント レベル価格で購入する](commitment-tier.md)」を参照してください。
+
+> [!NOTE]
+> コミットメント プランによって指定されたクォータを超えるリソースを使用した場合、コミットメント プランの購入時に Azure portal に規定されている超過分に従い、追加の使用量に対して課金されます。 詳細については、[Azure Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)に関するページを参照してください。
+
+
 
 
 ### <a name="costs-that-typically-accrue-with-cognitive-services"></a>Cognitive Services で通常発生するコスト

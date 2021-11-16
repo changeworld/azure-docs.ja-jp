@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.custom: devplatv2
 author: wenxwei
 ms.author: wenxwei
-ms.date: 06/22/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 2d69263d1c4037640eefd44a1328414f8a47ad06
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: a626c789737b8af53c18946450c9be7ee5f91176
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705394"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562012"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>ジョブ作成 UI (プレビュー) を使用してトレーニング ジョブを作成する
 
@@ -28,7 +28,7 @@ Azure Machine Learning でトレーニング ジョブを作成するには、�
 
 * Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
 
-* Azure Machine Learning 内でのジョブの意味について理解します。 「[ジョブの概要](how-to-train-cli.md#introducing-jobs)」を参照してください。
+* Azure Machine Learning 内でのジョブの意味について理解します。 [CLI (v2) を使用したモデルのトレーニング方法](how-to-train-cli.md)に関するページを参照してください。
 
 ## <a name="get-started"></a>はじめに
 

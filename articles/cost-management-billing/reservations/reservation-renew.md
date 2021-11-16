@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: dbeb1a776aa5d813806cec6622e1ad1e515ccfc5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f6cd42395b0255a7c0bd68285dd532363b2141f
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623686"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179829"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する
 
@@ -89,7 +89,7 @@ Azure では、次の場合に更新が処理されない可能性がありま�
 
 購入方法に応じて、電子メールが送信されるユーザーは異なります。
 
-- EA のお客様 - 電子メールは、EA ポータルで設定された通知の連絡先に送信されます。
+- EA のお客様 - 電子メールは、EA ポータルで設定された通知の連絡先、または使用状況の通知を受信できるように自動的に登録されているエンタープライズ管理者に送信されます。
 - 従量課金制料金を使用した個々のサブスクリプションのお客様 - 電子メールは、アカウント管理者として設定されたユーザーに送信されます。
 - クラウド ソリューション プロバイダーのお客様 - 電子メールは、パートナー通知の連絡先に送信されます。
 

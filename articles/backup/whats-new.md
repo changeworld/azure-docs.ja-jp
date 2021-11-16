@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 398833135c97d3d067e7e2b29704ffd6bad25bbd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 78d6b8cee1ad2442278497c5ca3e282b19d1beb6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020428"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997250"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -19,6 +19,7 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 ## <a name="updates-summary"></a>更新の概要
 
 - 2021 年 10 月
+  - [1 日に複数回の Azure Files のバックアップ (プレビュー)](#multiple-backups-per-day-for-azure-files-in-preview)
   - [Azure Backup のメトリックとメトリック アラート (プレビュー)](#azure-backup-metrics-and-metrics-alerts-in-preview)
 - 2021 年 7 月
   - [Azure VM 内の SQL Server の Azure Backup でのアーカイブ層のサポートが一般提供開始](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
@@ -40,14 +41,22 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [Azure VM 上の SAP HANA データベースの増分バックアップ (プレビュー段階)](#incremental-backups-for-sap-hana-databases-in-preview)
 - 2020 年 9 月
   - [バックアップ センター (プレビュー段階)](#backup-center-in-preview)
-  - [Azure Database for PostgreSQL のバックアップ (プレビュー段階)](#backup-azure-database-for-postgresql-in-preview)
+  - [Azure Database for PostgreSQL のバックアップ (プレビュー段階)](#back-up-azure-database-for-postgresql-in-preview)
   - [ディスクの選択的なバックアップと復元](#selective-disk-backup-and-restore)
   - [Azure VM 上の SQL Server データベースと SAP HANA データベースのリージョン間の復元 (プレビュー段階)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
   - [最大 32 個のディスクを使用する VM のバックアップのサポート (一般提供)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Azure VM での SQL のバックアップ構成エクスペリエンスの簡素化](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [RHEL の Azure Virtual Machines での SAP HANA のバックアップ (プレビュー段階)](#back-up-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="multiple-backups-per-day-for-azure-files-in-preview"></a>1 日に複数回の Azure Files のバックアップ (プレビュー)
+
+RPO (回復ポイントの目標) が低いことは、頻繁に更新されるビジネスクリティカルなデータを含む Azure Files の主要な要件です。 災害発生時や、望まない変更がファイル共有の内容に発生した場合にデータの損失を最小限に抑えるために、1 日 1 回よりも多い頻度でバックアップを行うことをお勧めします。
+
+1 日に複数のスナップショットを作成するために、Azure Backup を使用して、バックアップ ポリシーを作成したり、既存のバックアップ ポリシーを変更したりできるようになりました。 この機能を使用して、バックアップ ジョブがトリガーされる期間を定義することもできます。 この機能によって、Azure Files の内容が頻繁に更新される業務時間にバックアップのスケジュールを合わせることができます。
+
+詳細については、[バックアップ ポリシーを使用して 1 日に複数回のバックアップを構成する方法](/azure/backup/manage-afs-backup#create-a-new-policy)に関するページを参照してください。
 
 ## <a name="azure-backup-metrics-and-metrics-alerts-in-preview"></a>Azure Backup のメトリックとメトリック アラート (プレビュー)
 
@@ -148,7 +157,7 @@ Azure Backup で、中央コンソールからバックアップ資産全体を�
 
 詳細については、「[バックアップ センターの概要](backup-center-overview.md)」を参照してください。
 
-## <a name="backup-azure-database-for-postgresql-in-preview"></a>Azure Database for PostgreSQL のバックアップ (プレビュー段階)
+## <a name="back-up-azure-database-for-postgresql-in-preview"></a>Azure Database for PostgreSQL のバックアップ (プレビュー段階)
 
 Azure Backup と Azure Database Services の連携により、Azure PostgreSQL 向けのエンタープライズ クラスのバックアップ ソリューションが構築されます (現在はプレビュー)。 お客様が管理するバックアップ ポリシーを使用して、データの保護とコンプライアンスのニーズを満たすことができるようになり、バックアップを最大 10 年間保持できます。 これにより、個々のデータベース レベルでバックアップと復元の操作の管理をきめ細かく制御できます。 同様に、PostgreSQL の異なるバージョン間で、または Blob Storage にも、簡単に復元できます。
 
@@ -180,7 +189,7 @@ Azure VM 内の SQL Server のバックアップの構成が、Azure portal の 
 
 詳細については、「[VM ウィンドウから SQL Server をバックアップする](backup-sql-server-vm-from-vm-pane.md)」を参照してください。
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)
+## <a name="back-up-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)
 
 Azure Backup は、Azure 用のネイティブ バックアップ ソリューションであり、SAP によって認定された BackInt です。 SAP HANA の実行に最も広く使用されている Linux オペレーティング システムの 1 つである Red Hat Enterprise Linux (RHEL) のサポートが、Azure Backup に追加されました。
 
@@ -218,6 +227,6 @@ Azure Backup では、カスタマー マネージド キーを使用して暗�
 
 詳細については、[カスタマー マネージド キーを使用した Azure Backup の暗号化](encryption-at-rest-with-cmk.md)に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

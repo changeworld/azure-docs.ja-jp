@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 10/13/2021
+ms.date: 11/10/2021
 ms.author: memildin
-ms.openlocfilehash: 275dfc8d33be95db1d6712157686ee5dc89bd0be
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fca622c8c49a16d9926a5fc1e8e0f0064ee758d7
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449319"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157457"
 ---
 # <a name="important-upcoming-changes-to-microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud に対する今後の重要な変更
 
@@ -32,11 +32,11 @@ ms.locfileid: "131449319"
 |----------------------|---------------------------|
 | [プレビュー アラートの非推奨: ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | 2021 年 11 月|
 | <bpt id="p1">[</bpt>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定<ept id="p1">](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)</ept>| 2021 年 11 月|
-| <bpt id="p1">[</bpt>エンドポイント保護ソリューションを管理するための推奨事項の変更<ept id="p1">](#changes-to-recommendations-for-managing-endpoint-protection-solutions)</ept>             | 2021 年 11 月| 
 | [オンプレミスのマシンのインベントリ表示で、リソース名に別のテンプレートが使用されるようになります](#inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name)    | 2021 年 11 月    |
-| [ID の推奨事項に対する複数の変更](#multiple-changes-to-identity-recommendations)                                                                                          | 2021 年 11 月    |
+| [ID の推奨事項に対する複数の変更](#multiple-changes-to-identity-recommendations)                                                                                          | 2021 年 12 月    |
 | [Microsoft Defender for Storage からのセキュリティ アラートに対する変更](#changes-to-a-security-alert-from-microsoft-defender-for-storage)  | 2021 年 11 月    |
-| <bpt id="p1">[</bpt>SQL データベースで機密データを分類するための推奨事項の強化<ept id="p1">](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)</ept>                              | Q1 2022    |
+| <bpt id="p1">[</bpt>SQL データベースで機密データを分類するための推奨事項の強化<ept id="p1">](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)</ept>   | Q1 2022    |
+| <bpt id="p1">[</bpt>エンドポイント保護ソリューションを管理するための推奨事項の変更<ept id="p1">](#changes-to-recommendations-for-managing-endpoint-protection-solutions)</ept>             | 2022 年 2 月| 
 |||
 
 ### <a name="deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses"></a>プレビュー アラートの非推奨: ARM.MCAS_ActivityFromAnonymousIPAddresses
@@ -60,27 +60,6 @@ ISO 27001 のレガシ実装は Defender for Cloud の規制コンプライア�
 
 :::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="ISO 27001 のレガシ実装の削除に関するメッセージが表示されている Defender for Cloud の規制コンプライアンス ダッシュボード。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
-### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>エンドポイント保護ソリューションを管理するための推奨事項の変更
-
-**変更予定日:** 2021 年 11 月
-
-2021 年 8 月に、お使いのマシンにエンドポイント保護ソリューションをデプロイして維持するための 2 つの新しい<bpt id="p1">**</bpt>プレビュー<ept id="p1">**</ept>推奨事項が追加されました。 詳細については、<bpt id="p1">[</bpt>リリース ノート<ept id="p1">](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview)</ept>を参照してください。
-
-これらの推奨事項が一般提供されると、次の既存の推奨事項が置き換えられます。
-
-- "<bpt id="p1">**</bpt>エンドポイント保護をお使いのマシンにインストールする必要がある<ept id="p1">**</ept>" は、次を置き換えます。
-    - [仮想マシンにエンドポイント保護ソリューションをインストールする (キー: 83f577bd-a1b6-b7e1-0891-12ca19d1e6df)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/83f577bd-a1b6-b7e1-0891-12ca19d1e6df)
-    - [エンドポイント保護ソリューションをマシンにインストールする (キー: 383cf3bc-fdf9-4a02-120a-3e7e36c6bfee)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/383cf3bc-fdf9-4a02-120a-3e7e36c6bfee)
-
-- "<bpt id="p1">**</bpt>Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります<ept id="p1">**</ept>" は、同じ名前を持つ既存の推奨事項を置き換えます。 2 つの推奨事項には、異なる評価キーがあります。
-    - <bpt id="p1">**</bpt>プレビュー<ept id="p1">**</ept>推奨事項の評価キー: 37a3689a-818e-4a0e-82ac-b1392b9bb000
-    - <bpt id="p1">**</bpt>GA<ept id="p1">**</ept> 推奨事項の評価キー: 3bcd234d-c9c7-c2a2-89e0-c01f419c1a8a
-
-詳細情報:
-- [Defender for Cloud でサポートされているエンドポイント保護ソリューション](supported-machines-endpoint-solutions-clouds.md#endpoint-supported)
-- <bpt id="p1">[</bpt>これらの推奨事項で、デプロイされたソリューションの状態を評価する方法<ept id="p1">](security-center-endpoint-protection.md)</ept>
-
-
 
 ### <a name="inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name"></a>オンプレミスのマシンのインベントリ表示では、リソース名に別のテンプレートが使用されます
 
@@ -94,9 +73,9 @@ ISO 27001 のレガシ実装は Defender for Cloud の規制コンプライア�
 
 ### <a name="multiple-changes-to-identity-recommendations"></a>ID の推奨事項に対する複数の変更
 
-**変更予定日:** 2021 年 11 月
+**変更予定日:** 2021 年 12 月
 
-Defender for Cloud には、ユーザーとアカウントの管理を向上させるための複数の推奨事項が含まれています。 11 月に、次のような変更を行います。
+Defender for Cloud には、ユーザーとアカウントの管理を向上させるための複数の推奨事項が含まれています。 12 月に、次のような変更を行います。
 
 - **更新間隔の改善** - 現在、ID の推奨事項の更新間隔は 24 時間です。 この更新の間隔が 12 時間に短縮されます。
 
@@ -139,9 +118,6 @@ Defender for Cloud には、ユーザーとアカウントの管理を向上さ�
     |||
  
 
-
-
-
 ### <a name="changes-to-a-security-alert-from-microsoft-defender-for-storage"></a>Microsoft Defender for Storage からのセキュリティ アラートに対する変更
 
 **変更予定日:** 2021 年 11 月
@@ -166,6 +142,28 @@ Microsoft Defender for Storage によって提供されるプレビュー アラ
 <bpt id="p1">**</bpt>変更予定日:<ept id="p1">**</ept> 2022 年第 1 四半期
 
 "<bpt id="p2">**</bpt>データ分類の適用<ept id="p2">**</ept>" セキュリティ コントロールにおける推奨事項 "<bpt id="p1">**</bpt>SQL データベースの機密データを分類する必要がある<ept id="p1">**</ept>" は、より Microsoft のデータ分類戦略に沿った新しいバージョンで置き換えられる予定です。 これにより、推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
+
+
+### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>エンドポイント保護ソリューションを管理するための推奨事項の変更
+
+**変更予定日:** 2022 年 2 月
+
+2021 年 8 月に、お使いのマシンにエンドポイント保護ソリューションをデプロイして維持するための 2 つの新しい<bpt id="p1">**</bpt>プレビュー<ept id="p1">**</ept>推奨事項が追加されました。 詳細については、<bpt id="p1">[</bpt>リリース ノート<ept id="p1">](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview)</ept>を参照してください。
+
+これらの推奨事項が一般提供されると、次の既存の推奨事項が置き換えられます。
+
+- "<bpt id="p1">**</bpt>エンドポイント保護をお使いのマシンにインストールする必要がある<ept id="p1">**</ept>" は、次を置き換えます。
+    - [仮想マシンにエンドポイント保護ソリューションをインストールする (キー: 83f577bd-a1b6-b7e1-0891-12ca19d1e6df)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/83f577bd-a1b6-b7e1-0891-12ca19d1e6df)
+    - [エンドポイント保護ソリューションをマシンにインストールする (キー: 383cf3bc-fdf9-4a02-120a-3e7e36c6bfee)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/383cf3bc-fdf9-4a02-120a-3e7e36c6bfee)
+
+- "<bpt id="p1">**</bpt>Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります<ept id="p1">**</ept>" は、同じ名前を持つ既存の推奨事項を置き換えます。 2 つの推奨事項には、異なる評価キーがあります。
+    - <bpt id="p1">**</bpt>プレビュー<ept id="p1">**</ept>推奨事項の評価キー: 37a3689a-818e-4a0e-82ac-b1392b9bb000
+    - <bpt id="p1">**</bpt>GA<ept id="p1">**</ept> 推奨事項の評価キー: 3bcd234d-c9c7-c2a2-89e0-c01f419c1a8a
+
+詳細情報:
+- [Defender for Cloud でサポートされているエンドポイント保護ソリューション](supported-machines-endpoint-solutions-clouds.md#endpoint-supported)
+- <bpt id="p1">[</bpt>これらの推奨事項で、デプロイされたソリューションの状態を評価する方法<ept id="p1">](security-center-endpoint-protection.md)</ept>
+
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,22 +1,22 @@
 ---
-title: CLI (v2) を使用してモデルをトレーニングする (ジョブを作成する)
+title: CLI (v2) を使用してモデルをトレーニングする
 titleSuffix: Azure Machine Learning
 description: Machine Learning 用の Azure CLI 拡張機能を使用してモデルをトレーニングする (ジョブを作成する) 方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-author: lostmygithubaccount
-ms.author: copeters
+author: amibp
+ms.author: amipatel
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 3d46d5baeb7e81e113c24e24a9a69b5cfc2a47a7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 1300a830fb3688c9ebc2b9f43b77e3b9214c731d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557378"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054317"
 ---
 # <a name="train-models-with-the-cli-v2-preview"></a>CLI (v2) を使用してモデルをトレーニングする (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Machine Learning CLI (v2) は、モデルのライフサイクルを追跡
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
 - CLI (v2) を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 - [CLI (v2) をインストールして設定](how-to-configure-cli.md)します。
@@ -38,7 +38,7 @@ Azure Machine Learning CLI (v2) は、モデルのライフサイクルを追跡
 
 トレーニング例を実行するには、最初に examples リポジトリを複製し、`cli` ディレクトリに変更します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="git_clone":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="git_clone":::
 
 `--depth 1` を使用すると、リポジトリに対する最新のコミットだけが複製されるので、操作の完了にかかる時間を短縮できます。
 
@@ -46,7 +46,7 @@ Azure Machine Learning CLI (v2) は、モデルのライフサイクルを追跡
 
 コマンド ラインから Azure Machine Learning コンピューティング クラスターを作成できます。 たとえば、次のコマンドでは、`cpu-cluster` という名前のクラスターと `gpu-cluster` という名前のクラスターを作成します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-compute.sh" id="create_computes":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-compute.sh" id="create_computes":::
 
 `cpu-cluster` と `gpu-cluster` はジョブが送信されるまでゼロ ノードのままであるため、この時点ではコンピューティングの料金は請求されません。 [AmlCompute のコストを管理および最適化する](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)方法を確認してください。
 
@@ -62,7 +62,7 @@ Azure Machine Learning CLI (v2) では、ジョブは YAML 形式で作成され
 
 "hello world" ジョブには、この 3 つのすべてがあります。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world.yml":::
 
 > [!WARNING]
 > Python は、ジョブに使用される環境にインストールする必要があります。 必要に応じてをインストールするには、Dockerfile で `apt-get update -y && apt-get install python3 -y` を実行するか、既に Python がインストールされている基本イメージから派生させます。
@@ -72,7 +72,7 @@ Azure Machine Learning CLI (v2) では、ジョブは YAML 形式で作成され
 
 これは次のように実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world":::
 
 > [!TIP]
 > `--web` パラメーターは、既定の Web ブラウザーを使用して、Azure Machine Learning スタジオでジョブを開こうとします。 `--stream` パラメーターを使用すると、コンソールにログをストリーミングし、さらにコマンドをブロックできます。
@@ -81,7 +81,7 @@ Azure Machine Learning CLI (v2) では、ジョブは YAML 形式で作成され
 
 YAML ジョブの仕様値は、ジョブの作成時または更新時に `--set` を使用して上書きできます。 次に例を示します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_set":::
 
 ## <a name="job-names"></a>ジョブ名
 
@@ -89,35 +89,35 @@ YAML ジョブの仕様値は、ジョブの作成時または更新時に `--se
 
 スクリプトと CI/CD フローのジョブを自動化するためにジョブ名の作成時に `--query name -o tsv` を追加してジョブ名を問い合わせて出力を部分的に取り除くことで、ジョブの名前を取得できます。 詳細はシェルによって異なりますが、Bash の場合は次のようになります。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_name":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_name":::
 
 次に、後続の `update`、`show`、`stream` などのコマンドで、`$run_id` を使用します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_show":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_show":::
 
 ## <a name="organize-jobs"></a>ジョブを整理する
 
 ジョブを整理するには、表示名、実験名、説明、タグを設定します。 説明は、スタジオでのマークダウン構文をサポートしています。 これらのプロパティは、ジョブの作成後に変更できます。 完全な例:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-org.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-org.yml":::
 
 このジョブを実行できます。これらのプロパティは、スタジオですぐに表示されます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_org":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_org":::
 
 `--set` を使用すると、ジョブの作成後に変更可能な値を更新できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_org_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_org_set":::
 
 ## <a name="environment-variables"></a>環境変数
 
 ジョブで使用する環境変数を設定できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-env-var.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-env-var.yml":::
 
 このジョブは、次のように実行できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_env_var":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_env_var":::
 
 > [!WARNING]
 > `command` で引数をパラメーター化するには、`inputs` を使用する必要があります。 「[入力と出力を使用する](#inputs-and-outputs)」を参照してください。
@@ -136,7 +136,7 @@ YAML ジョブの仕様値は、ジョブの作成時または更新時に `--se
 
 コードを指定するジョブを見てみましょう。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-mlflow.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-mlflow.yml":::
 
 Python スクリプトは、ローカルのソース コード ディレクトリにあります。 次に、コマンドは、`python` を呼び出してスクリプトを実行します。 同じパターンを他のプログラミング言語にも適用できます。
 
@@ -155,11 +155,11 @@ Python スクリプトは、ローカルのソース コード ディレクト�
 
 `mlflow` を使用してパラメーター、メトリック、成果物をログに記録する上記のジョブで呼び出された Python スクリプトを見てみましょう。
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/basics/src/hello-mlflow.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/basics/src/hello-mlflow.py":::
 
 このジョブは、Azure Machine Learning を使用してクラウドで実行できます。このジョブは追跡され、監査可能です。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_mlflow":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_mlflow":::
 
 ### <a name="query-metrics-with-mlflow"></a>MLflow によるメトリックのクエリ
 
@@ -167,7 +167,7 @@ Python スクリプトは、ローカルのソース コード ディレクト�
 
 まず、Azure Machine Learning ワークスペースの MLflow 追跡 URI を取得します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="mlflow_uri":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="mlflow_uri":::
 
 MLflow がインポートされた Python 環境から、`mlflow.set_tracking_uri(<YOUR_TRACKING_URI>)` でこのコマンドの出力を使用します。 MLflow の呼び出しが、Azure Machine Learning ワークスペースのジョブに対応するようになりました。
 
@@ -179,15 +179,15 @@ MLflow がインポートされた Python 環境から、`mlflow.set_tracking_ur
 
 リテラル入力は、コマンドで直接解決されます。 "hello world" ジョブを変更して、リテラル入力を使用できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-input.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-input.yml":::
 
 このジョブは、次のように実行できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_input":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_input":::
 
 `--set` を使用して、入力をオーバーライドできます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_input_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_input_set":::
 
 ジョブへのリテラル入力は、モデル トレーニングでのハイパーパラメーター スイープの[検索空間入力に変換](#search-space-inputs)できます。
 
@@ -200,15 +200,15 @@ MLflow がインポートされた Python 環境から、`mlflow.set_tracking_ur
 
 引数を取り込み、ランダムなメトリックをログに記録する単純な Python スクリプトを使用して、概念を示します。
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/basics/src/hello-sweep.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/basics/src/hello-sweep.py":::
 
 さらに対応するスイープ ジョブを作成します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-sweep.yml":::
 
 さらに次を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_sweep":::
 
 ### <a name="data-inputs"></a>データ入力
 
@@ -216,23 +216,23 @@ MLflow がインポートされた Python 環境から、`mlflow.set_tracking_ur
 
 Iris CSV ファイルへのパスを引数として受け取り、データフレームに読み込み、最初の 5 行を出力して `outputs` ディレクトリに保存する Python スクリプトを作成できます。
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/basics/src/hello-iris.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/basics/src/hello-iris.py":::
 
 Azure Storage URI の入力を指定できます。この入力は、ローカル ファイル システムにデータをマウントまたはダウンロードします。 1 つのファイルを指定できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-file.yml":::
 
 次に、以下を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="iris_file":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="iris_file":::
 
 または、フォルダー全体を指定します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-folder.yml":::
 
 次に、以下を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="iris_folder":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="iris_folder":::
 
 #### <a name="private-data"></a>プライベート データ
 
@@ -241,11 +241,11 @@ Azure Storage URI の入力を指定できます。この入力は、ローカ�
 > [!WARNING]
 > Iris CSV を `workspaceblobstore` 内の同じ場所にコピーしていない場合、これらのジョブの実行は失敗します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-file.yml":::
 
 または、ディレクトリ全体を次に示します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-folder.yml":::
 
 ### <a name="default-outputs"></a>既定の出力
 
@@ -253,15 +253,15 @@ Azure Storage URI の入力を指定できます。この入力は、ローカ�
 
 `stdout` に出力するのではなく、既定の出力ディレクトリ内のファイルに出力するように、"hello world" ジョブを変更できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output.yml":::
 
 このジョブは、次のように実行できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_output":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_output":::
 
 ログをダウンロードします。`helloworld.txt` は、`<RUN_ID>/outputs/` ディレクトリ内に配置されます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_output_download":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_output_download":::
 
 ### <a name="data-outputs"></a>データ出力
 
@@ -269,7 +269,7 @@ Azure Storage URI の入力を指定できます。この入力は、ローカ�
 
 以前の "hello world" ジョブを変更して、名前付きデータ出力に書き込む場合があります。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output-data.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output-data.yml":::
 
 ## <a name="hello-pipelines"></a>Hello パイプライン
 
@@ -277,69 +277,69 @@ Azure Storage URI の入力を指定できます。この入力は、ローカ�
 
 "hello world" ジョブは、次の 2 つのジョブに分割できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline.yml":::
 
 さらに次を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline":::
 
 コンピューティング先に使用可能なリソースがある場合、"hello" ジョブと "world" ジョブはそれぞれ並列で実行されます。
 
 パイプライン内のステップ間でデータを渡す場合は、"hello" ジョブのデータ出力と、前の出力を参照する "world" ジョブでの対応する入力を定義します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-io.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-io.yml":::
 
 さらに次を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline_io":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline_io":::
 
 今回は、"hello" ジョブの完了後に "world" ジョブが実行されます。
 
 パイプライン内のジョブ間で共通設定が重複しないようにするには、ジョブの外部で設定できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-settings.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-settings.yml":::
 
 次を実行できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline_settings":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline_settings":::
 
 個々のジョブに対応する設定によって、パイプライン ジョブの共通設定がオーバーライドされます。 ここまでの概念は、ジョブ "A"、"B"、および "C" を含む 3 段階のパイプライン ジョブに組み合わせることができます。 "C" ジョブは "B" ジョブにデータ依存関係を持ち、"A" ジョブは個別に実行できます。 "A" ジョブでは、個別に設定された環境を使用し、その入力の 1 つをトップ レベルのパイプライン ジョブ入力にバインドします。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-abc.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-abc.yml":::
 
 次を実行できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline_abc":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline_abc":::
 
 ## <a name="train-a-model"></a>モデルをトレーニングする
 
 この時点で、モデルはまだトレーニングされていません。 MLflow 追跡を使用して Python スクリプトにいくつかの `sklearn` コードを追加し、Iris CSV でモデルをトレーニングします。
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/src/main.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/src/main.py":::
 
 scikit-learn フレームワークは、自動ログ記録のために MLflow でサポートされています。そのため、スクリプト内の 1 回の `mlflow.autolog()` 呼び出しで、すべてのモデル パラメーター、トレーニング メトリック、モデル成果物、およびいくつかの追加成果物 (この場合は混同行列の画像) がログに記録されます。
 
 これをクラウドで実行するには、次をジョブとして指定します。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job.yml":::
 
 さらに次を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="sklearn_iris":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="sklearn_iris":::
 
 モデルを登録するには、出力をダウンロードし、ローカル ディレクトリからモデルを作成します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="sklearn_download_register_model":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="sklearn_download_register_model":::
 
 ## <a name="sweep-hyperparameters"></a>ハイパーパラメーターをスイープする
 
 前のジョブをハイパーパラメーターをスイープするように変更できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
 
 さらに次を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="sklearn_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="sklearn_sweep":::
 
 > [!TIP]
 > 進行状況を監視し、パラメーター グラフを表示するには、スタジオの [子実行] タブを確認します。
@@ -354,25 +354,25 @@ Azure Machine Learning では、PyTorch、TensorFlow、MPI ベースの分散ト
 
 `torchvision` の CIFAR-10 データセットは、`cifar-10-batches-py` ディレクトリを含むディレクトリを入力として受け取る必要があります。 zip 形式のソースをダウンロードし、ローカル ディレクトリに抽出できます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-datasets.sh" id="download_untar_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-datasets.sh" id="download_untar_cifar":::
 
 次に、ローカル ディレクトリから Azure Machine Learning データセットを作成します。このデータセットは、既定のデータストアにアップロードされます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-datasets.sh" id="create_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-datasets.sh" id="create_cifar":::
 
 必要に応じて、そのローカル ファイルとディレクトリを削除します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-datasets.sh" id="cleanup_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-datasets.sh" id="cleanup_cifar":::
 
 データセット (ファイルのみ) は、データ入力の `dataset` キーを使用してジョブで参照できます。 形式は `azureml:<DATASET_NAME>:<DATASET_VERSION>` なので、作成されたばかりの CIFAR-10 データセットの場合は、`azureml:cifar-10-example:1` です。
 
 データセットを配置すると、分散 PyTorch ジョブを作成してモデルをトレーニングできます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
 
 さらに次を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="pytorch_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="pytorch_cifar":::
 
 ## <a name="build-a-training-pipeline"></a>トレーニング パイプラインを構築する
 
@@ -386,11 +386,11 @@ Azure Machine Learning では、PyTorch、TensorFlow、MPI ベースの分散ト
 
 パイプライン ジョブ内で、次の 3 つのジョブを調整できます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines/cifar-10/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines/cifar-10/job.yml":::
 
 次に、以下を実行します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="pipeline_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="pipeline_cifar":::
 
 Pipelines は、再利用可能なコンポーネントを使用して記述することもできます。 詳細については、[Azure Machine Learning CLI (プレビュー) を使用してコンポーネントベースの機械学習パイプラインを作成して実行する](how-to-create-component-pipelines-cli.md)方法に関する記事を参照してください。
 

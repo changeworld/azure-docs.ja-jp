@@ -10,21 +10,23 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 04bd20e233bac44194c66e772db19f022458383d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c147dfb2dbb16e350214dedff39a36625735834d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615526"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062949"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>移行の概要: SQL Server から Azure SQL Database へ
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 SQL Server データベースを Azure SQL Database に移行するためのオプションと考慮事項について説明します。 
 
-オンプレミスまたは次で実行されている SQL Server データベースを移行できます。 
+次の環境でオンプレミスで実行されている SQL Server データベースを移行できます。 
 
 - Azure Virtual Machines 上の SQL Server。  
+- Azure SQL Database (PaaS)。
+- Azure SQL Managed Instance (PaaS)。
 - アマゾン ウェブ サービス (AWS) Elastic Compute Cloud (EC2)。
 - AWS RDS (Relational Database Service)。
 - Google Cloud Platform (GCP) の Compute Engine。  

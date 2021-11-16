@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 8e58a31d37e4b6aece877e8a2d920e7abc91d8f8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 07c8b711ae32311cceba0c6ebe3353974b867356
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710955"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061779"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -190,6 +190,34 @@ Azure 課金アカウントでは、以下の更新された機能を使用で�
 **過去の請求書を新しいエクスペリエンスで利用できる** お使いのアカウントが更新される前に生成された請求書は、引き続き Azure portal で利用できます。
 
 **月の途中で更新されたアカウントの請求書** お使いのアカウントが月の途中で更新された場合、アカウントが更新された日までの累積料金の請求書が 1 つ生成されます。 その月の残りの分については別の請求書が生成されます。 たとえば、お使いのアカウントに 1 つのサブスクリプションがあり、9 月 15 日に更新されたとします。 9 月 15 日までの累積料金の請求書が 1 つ生成されます。 9 月 15 日から 9 月 30 日までの期間に対して別途請求書が生成されます。 10 月以降は、月ごとに 1 つの請求書が生成されます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="you-get-an-email-to-accept-the-terms-of-the-microsoft-customer-agreement-but-the-link-in-the-email-doesnt-work"></a>Microsoft 顧客契約の条項に同意するための電子メールを受け取ったが、電子メール内のリンクが機能しない
+
+Azure の課金アカウントが更新されると、Microsoft 顧客契約の条項に同意するための電子メールが Microsoft から送信されます。 次の理由により、電子メール内のリンクが機能しないことがあります。
+
+- 他のいずれかの電子メールを使用して課金管理の実行にアクセスする必要がある。 
+
+    これは通常、Microsoft 顧客契約の条項に同意するように求める電子メールを受け取ったときに発生します。 そのリンクをクリックすると、"`You don't have permission to accept the agreement. This typically happens when you sign in with an email, which doesn’t have permission to accept the agreement. Check you’ve signed in with the correct email address. If you are still seeing the error, see Why I can't accept an agreement`" というエラー メッセージが表示されます。 課金管理を実行するためのアクセス許可があるメール アドレスでサインインしていることを確認してください。
+
+- 別の ID を使用して請求書にアクセスする必要がある。 
+
+    お客様によっては、同じメール アドレスで 2 つの ID (職場アカウントと Microsoft アカウント) を所有している場合があります。 通常、課金管理を実行するアクセス許可があるのは、そのいずれかの ID のみです。 アクセス許可がない ID でサインインした場合、条項に同意することはできません。 正しい ID を使用してサインインしていることを確認してください。
+
+- 間違った Azure Active Directory (Azure AD) テナントにサインインしている。 
+
+    課金アカウントは Azure AD テナントに関連付けられます。 間違ったテナントにサインインした場合、条項に同意することはできません。 正しい Azure AD テナントにサインインしていることを確認してください。 正しいテナントにサインインしていない場合は、Azure portal で次の手順に従ってテナントを切り替えてください。
+
+    1. ページの右上から自分のメールを選択します。
+
+    2. **[ディレクトリの切り替え]** を選択します。
+
+        ![ポータルで [ディレクトリの切り替え] を選択する操作を示すスクリーンショット](./media/mosp-new-customer-experience/select-switch-directory.png)
+
+    3. **[すべてのディレクトリ]** セクションからディレクトリの **[切り替え]** を選択します。
+
+        ![ポータルでのディレクトリの選択操作を示すスクリーンショット](./media/mosp-new-customer-experience/select-directory.png)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

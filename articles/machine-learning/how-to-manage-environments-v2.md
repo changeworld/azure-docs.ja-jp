@@ -11,12 +11,12 @@ ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 351ef1c91ae665c170604543ac509562d2e2f0d0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2c88c8954e334b5c6ffc80a60b2bd85cd98bda7a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565760"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055533"
 ---
 # <a name="manage-azure-machine-learning-environments-with-the-cli-v2-preview"></a>CLI (v2) を使用した Azure Machine Learning 環境の管理 (プレビュー)
 
@@ -38,7 +38,7 @@ Azure Machine Learning 環境は、ジョブまたはデプロイの実行環境
 
 トレーニング例を実行するには、最初に examples リポジトリを複製し、`cli` ディレクトリに変更します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="git_clone":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="git_clone":::
 
 なお、`--depth 1` では、リポジトリに対する最新のコミットだけが複製されるので、操作の完了にかかる時間を短縮できます。
 
@@ -68,7 +68,7 @@ Docker イメージから環境を定義するには、Docker Hub や Azure Cont
 
 Docker イメージから定義された環境の YAML 仕様ファイルの例を以下に示します。 Docker Hub のオフィシャル PyTorch リポジトリにあるイメージは、YAML ファイルの `image` プロパティを使用して指定されます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image.yml":::
 
 環境を作成するには:
 
@@ -89,7 +89,7 @@ az ml environment create --file assets/environment/docker-image.yml
 
 この例では、ビルド コンテキストに `Dockerfile` という名前の Dockerfile と、Python パッケージをインストールするために Dockerfile 内で参照される `requirements.txt` ファイルが含まれています。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-context.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-context.yml":::
 
 環境を作成するには:
 
@@ -107,7 +107,7 @@ Conda 環境の依存関係を含む標準の conda YAML 構成ファイルを�
 
 conda 仕様から定義された環境の YAML 仕様ファイルの例を以下に示します。 ここでは、Azure ML environment yaml ファイルから conda ファイルへの相対パスが、`conda_file` プロパティを使用して指定されています。 また、別のファイルで定義するのではなく、`conda_file` プロパティを使用して conda 仕様をインラインで定義することもできます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image-plus-conda.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image-plus-conda.yml":::
 
 環境を作成するには:
 

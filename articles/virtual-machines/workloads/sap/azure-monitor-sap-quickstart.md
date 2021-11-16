@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.date: 07/08/2021
-ms.openlocfilehash: 0f5b2c2d94a2b0e106bf0541e080cfa9d05b45ac
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 82dc8aaa14aeae63549a872d887f40d16eebec96
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441136"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315333"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-by-using-the-azure-portal"></a>Azure portal を使用して Azure Monitor for SAP Solutions をデプロイする
 
@@ -87,71 +87,71 @@ $sapcntrluri = "https://&quot; + $SAPHostName + &quot;:5&quot; + $InstanceNumber
 $sapcntrl = New-WebServiceProxy -uri $sapcntrluri -namespace WebServiceProxy -class sapcntrl
 $FunctionObject = New-Object ($sapcntrl.GetType().NameSpace + ".$Function")
 $sapcntrl.$Function($FunctionObject)
-
-11. **Repeat Steps 3-10 for each instance profile **.
+```
+11. **インスタンス プロファイルごとに手順 3 から 10 を繰り返します**。
 
 >[!Important] 
->It is critical that the sapstartsrv service is restarted on each instance of the SAP system for the SAPControl web methods to be unprotected.  These read-only SOAP API are required for the NetWeaver provider to fetch metric data from the SAP System and failure to unprotect these methods will lead to empty or missing visualizations on the NetWeaver metric workbook.
+>SAPControl Web メソッドの保護を解除するには、SAP システムの各インスタンスで sapstartsrv サービスが再起動されることが重要です。  NetWeaver プロバイダーが SAP システムからメトリック データをフェッチするにはこれらの読み取り専用 SOAP API が必要であり、これらのメソッドの保護を解除できなかった場合、NetWeaver のメトリック ブックの視覚化が空になるか表示されません。
    
 >[!Tip]
-> Use an access control list (ACL) to filter the access to a server port. For more information, see [this SAP note](https://launchpad.support.sap.com/#/notes/1495075).
+> サーバー ポートへのアクセスをフィルター処理するには、アクセス制御リスト (ACL) を使用します。 詳細については、[こちらの SAP ノート](https://launchpad.support.sap.com/#/notes/1495075)を参照してください。
 
-To install the NetWeaver provider on the Azure portal:
+Azure portal で NetWeaver プロバイダーをインストールするには:
 
-1. Make sure you've completed the earlier prerequisite steps and that the server has been restarted.
-1. On the Azure portal, under **Azure Monitor for SAP Solutions**, select **Add provider**, and then:
+1. 前の前提条件の手順を完了していること、およびサーバーが再起動されていることを確認します。
+1. Azure portal の **Azure Monitor for SAP Solutions** で、 **[プロバイダーの追加]** を選択してから次のようにします。
 
-   1. For **Type**, select **SAP NetWeaver**.
+   1. **[種類]** で、 **[SAP NetWeaver]** を選択します。
 
-   1. For **Hostname**, enter the host name of the SAP system.
+   1. **[ホスト名]** に、SAP システムのホスト名を入力します。
 
-   1. For **Subdomain**, enter a subdomain if one applies.
+   1. **[サブドメイン]** に、サブドメインを入力します (ある場合)。
 
-   1. For **Instance No**, enter the instance number that corresponds to the host name you entered. 
+   1. **[Instance No]\(インスタンス番号\)** に、入力したホスト名に対応するインスタンス番号を入力します。 
 
-   1. For **SID**, enter the system ID.
+   1. **[SID]** に、システム ID を入力します。
    
-   ![Screenshot showing the configuration options for adding a SAP NetWeaver provider.](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
+   ![SAP NetWeaver プロバイダーを追加するための構成オプションを示すスクリーンショット。](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
-1.    When you're finished, select **Add provider**. Continue to add providers as needed, or select **Review + create** to complete the deployment.
+1.    終わったら、 **[プロバイダーの追加]** を選択します。 必要に応じてプロバイダーの追加を続けるか、 **[確認および作成]** を選択してデプロイを完了します。
 
 >[!Important]
->If the SAP application servers (ie. virtual machines) are part of a network domain, such as one managed by Azure Active Directory, then it is critical that the corresponding subdomain is provided in the Subdomain text box.  The Azure Monitor for SAP collector VM that exists inside the Virtual Network is not joined to the domain and as such will not be able to resolve the hostname of instances inside the SAP system unless the hostname is a fully qualified domain name.  Failure to provide this will result in missing / incomplete visualizations in the NetWeaver workbook.
+>SAP アプリケーション サーバー (つまり仮想マシン) が、Azure Active Directory によって管理されているもののように、ネットワーク ドメインの一部である場合は、対応するサブドメインを [サブドメイン] テキスト ボックスで指定することが重要です。  仮想ネットワーク内に存在する Azure Monitor for SAP コレクター VM はドメインに参加していないため、ホスト名が完全修飾ドメイン名でない限り、SAP システム内のインスタンスのホスト名を解決できません。  これを指定しなかった場合は、NetWeaver ブックに視覚化が存在しないか、不完全になります。
  
->For example, if the hostname of the SAP system has a fully qualified domain name of "myhost.mycompany.global.corp" then please enter a Hostname of "myhost" and provide a Subdomain of "mycompany.global.corp".  When the NetWeaver provider invokes the GetSystemInstanceList API on the SAP system, SAP returns the hostnames of all instances in the system.  The collector VM will use this list to make additional API calls to fetch metrics specific to each instance's features (e.g.  ABAP, J2EE, MESSAGESERVER, ENQUE, ENQREP, etc…). If specified, the collector VM will then use the subdomain  "mycompany.global.corp" to build the fully qualified domain name of each instance in the SAP system.  
+>たとえば、SAP システムのホスト名の完全修飾ドメイン名が "myhost.mycompany.global.corp" である場合は、[ホスト名] に「myhost」と入力し、[サブドメイン] で「mycompany.global.corp」と指定します。  NetWeaver プロバイダーが SAP システムで GetSystemInstanceList API を呼び出すと、SAP からシステム内のすべてのインスタンスのホスト名が返されます。  コレクター VM でこの一覧を使用して追加の API 呼び出しが行われ、各インスタンスの機能に固有のメトリックが取り込まれます (例: ABAP、J2EE、MESSAGESERVER、ENQUE、ENQREP など)。 指定した場合は、コレクター VM でサブドメイン "mycompany.global.corp" を使用して、SAP システム内の各インスタンスの完全修飾ドメイン名が作成されます。  
  
->Please DO NOT specify an IP Address for the hostname field if the SAP system is a part of network domain.
+>SAP システムがネットワーク ドメインの一部である場合は、[ホスト名] フィールドで IP アドレスを指定しないでください。
 
    
-### SAP HANA provider 
+### <a name="sap-hana-provider"></a>SAP HANA プロバイダー 
 
-1. Select the **Providers** tab to add the providers you want to configure. You can add multiple providers one after another, or add them after you deploy the monitoring resource. 
+1. 構成するプロバイダーを追加するには、 **[プロバイダー]** タブを選択します。 複数のプロバイダーを 1 つずつ追加することも、監視リソースをデプロイした後で追加することもできます。 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Screenshot showing the tab where you add providers." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="プロバイダーを追加するタブを示すスクリーンショット。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
-1. Select **Add provider**, and then:
+1. **[プロバイダーの追加]** を選択した後、次のようにします。
 
-   1. For **Type**, select **SAP HANA**. 
+   1. **[種類]** で、 **[SAP HANA]** を選択します。 
 
       > [!IMPORTANT]
-      > Ensure that a SAP HANA provider is configured for the SAP HANA `master` node.
+      > SAP HANA プロバイダーが SAP HANA の `master` ノード用に構成されていることを確認します。
 
-   1. For **IP address**, enter the private IP address for the HANA server.
+   1. **[IP アドレス]** に、HANA サーバーのプライベート IP アドレスを入力します。
 
-   1. For **Database tenant**, enter the name of the tenant you want to use. You can choose any tenant, but we recommend using **SYSTEMDB** because it enables a wider array of monitoring areas. 
+   1. **[データベース テナント]** に、使用するテナントの名前を入力します。 任意のテナントを選択できますが、**SYSTEMDB** を使用すると、さまざまな監視領域が有効になるため、これを使用することをお勧めします。 
 
-   1. For **SQL port**, enter the port number associated with your HANA database. It should be in the format of *[3]* + *[instance#]* + *[13]*. An example is **30013**. 
+   1. **[SQL ポート]** に、HANA データベースに関連付けられているポート番号を入力します。 *[3]*  + <*インスタンス番号*> +  *[13]* という形式にする必要があります。 たとえば、**30013** のようになります。 
 
-   1. For **Database username**, enter the username you want to use. Ensure the database user has the *monitoring* and *catalog read* roles assigned.
+   1. **[データベース ユーザー名]** には、使用するユーザー名を入力します。 データベース ユーザーには、"*監視*" と "*カタログ読み取り*" のロールが割り当てられている必要があります。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Screenshot showing configuration options for adding an SAP HANA provider." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="SAP HANA プロバイダーを追加するための構成オプションを示すスクリーンショット。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
-1. When you're finished, select **Add provider**. Continue to add providers as needed, or select **Review + create** to complete the deployment.
+1. 終わったら、 **[プロバイダーの追加]** を選択します。 必要に応じてプロバイダーの追加を続けるか、 **[確認および作成]** を選択してデプロイを完了します。
 
    
-### Microsoft SQL Server provider
+### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server プロバイダー
 
-1. Before you add the Microsoft SQL Server provider, run the following script in SQL Server Management Studio to create a user with the appropriate permissions for configuring the provider.
+1. Microsoft SQL Server プロバイダーを追加する前に、SQL Server Management Studio で次のスクリプトを実行して、プロバイダーを構成するための適切なアクセス許可を持つユーザーを作成します。
 
    ```sql
    USE [<Database to monitor>]
@@ -176,7 +176,7 @@ To install the NetWeaver provider on the Azure portal:
    ALTER ROLE [db_datareader] ADD MEMBER [AMS]
    ALTER ROLE [db_denydatawriter] ADD MEMBER [AMS]
    GO
-   ``` 
+   ```
 
 1. **[プロバイダーの追加]** を選択した後、次のようにします。
 

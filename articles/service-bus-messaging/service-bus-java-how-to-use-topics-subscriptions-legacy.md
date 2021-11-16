@@ -5,12 +5,12 @@ ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
-ms.openlocfilehash: b0f62a9e2953fd7d088a2bed1d3cfa52f6a3b26a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4cc0321c8d54e0ce354cc49406e4c35484f7f97a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083595"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058508"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Java (古いパッケージ) で Service Bus のトピックとサブスクリプションを使用する
 この記事では、Azure Service Bus のトピックにメッセージを送信し、そのトピックへのサブスクリプションからメッセージを受信する Java コードを記述します。 
@@ -114,7 +114,7 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 100 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 3 つのサブスクリプションのために **SubscriptionClient** オブジェクトを 3 つ作成し、Service Bus トピックからのメッセージを非同期的に送信するヘルパー メソッドを呼び出すように、**main** メソッドを更新します。 サンプル コードは、**BasicTopic** という名前のトピックと、**Subscription1**、**Subscription2**、および **Subscription3** という名前の 3 つのサブスクリプションを作成する前提になっています。 それらに異なる名前を使用した場合は、テストする前にコードを更新します。 

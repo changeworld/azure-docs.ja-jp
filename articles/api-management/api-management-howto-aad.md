@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/20/2021
 ms.author: danlep
-ms.openlocfilehash: 03ac79a70a1725fd6d1ceca6d79d4cdb325a8c51
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: fd45ad3a77ddfe9bea46c9c816b67be0c2cf1fac
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428466"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579162"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -76,7 +76,7 @@ ms.locfileid: "129428466"
     * **[Description]\(説明\)** を入力します。
     * **[有効期限]** のオプションを選択します。
     * **[追加]** をクリックします。 
-1. ページから離れる前に、クライアントの **シークレット ID** をコピーします。 この情報は後で必要になります。 
+1. ページから離れる前に、クライアント **シークレット値** をコピーします。 この情報は後で必要になります。 
 1. サイド メニューの **[管理]** で、 **[認証]** を選択します。
 1. **[暗黙的な許可およびハイブリッド フロー]** セクションで、 **[ID トークン]** チェックボックスを選択します。
 1. API Management インスタンスが含まれているブラウザー タブに切り替えます。 
@@ -104,40 +104,39 @@ Azure AD テナント内のユーザーに対するアクセス許可を有効�
 * Azure AD グループを API Management に追加する。 
 * Azure AD グループを使用して製品の可視性を制御する。
 
-既定では、[前のセクション](#authorize-developer-accounts-by-using-azure-ad)で登録したアプリケーションは、必要な `User.Read` の委任されたアクセス許可によって Microsoft Graph API にアクセスできます。 次の手順に従って、`Directory.Read.All` のアプリケーションのアクセス許可により、Microsoft Graph API と Azure AD Graph API へのアクセス許可をアプリケーションに付与します。 
+次の手順に従って、次のものを付与します。
+* Microsoft Graph API と Azure Active Directory Graph API の `Directory.Read.All` アプリケーション アクセス許可。
+* Microsoft Graph の `User.Read` の委任されたアクセス許可 
 
-1. 前のセクションで作成したアプリの登録に移動します。
-2. サイド メニューの **[管理]** で、 **[API のアクセス許可]** を選択します。
-1. **[アクセス許可の追加]** を選択します。 
-1. **[API アクセス許可の要求]** ペインで、以下を実行します。
-    1. **[Microsoft API]** タブを選択します。
-    1. **[Microsoft Graph]** タイルを選択します。 
-    1. **[アプリケーションのアクセス許可]** を選択 し、**ディレクトリ** を検索します。 
-    1. **Directory.Read.All** アクセス許可を選択します。 
-    1. ウィンドウの下部にある **[アクセス許可の追加]** を選択します。
-1. **[アクセス許可の追加]** を選択して、別のアクセス許可を追加します。 
-1. **[API アクセス許可の要求]** ペインで、以下を実行します。
-    1. **[Microsoft API]** タブを選択します。
-    1. **[サポートされているレガシ API]** セクションまで下にスクロールします。
-    1. **[Azure Active Directory Graph]** タイルを選択します。 
-    1. **[アプリケーションのアクセス許可]** を選択 し、**ディレクトリ** を検索します。 
-    1. **Directory.Read.All** アクセス許可を選択します。
-    1. **[アクセス許可の追加]** を選択します. 
-1. **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** を選択して、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
+1. 次の PowerShell スクリプトの最初の 3 行を使用する環境に合わせて更新して実行します。 
+   ```powershell
+   $subId = "Your Azure subscription ID" #e.g. "1fb8fadf-03a3-4253-8993-65391f432d3a"
+   $tenantId = "Your Azure AD Tenant or Organization ID" #e.g. 0e054eb4-e5d0-43b8-ba1e-d7b5156f6da8"
+   $appObjectID = "Application Object ID that has been registered in AAD" #e.g. "2215b54a-df84-453f-b4db-ae079c0d2619"
+   #Login and Set the Subscription
+   az login
+   az account set --subscription $subId
+   #Assign the following permissions: Microsoft Graph Delegated Permission: User.Read, Microsoft Graph Application Permission: Directory.ReadAll,  Azure Active Directory Graph Application Permission: Directory.ReadAll (legacy)
+   az rest --method PATCH --uri "https://graph.microsoft.com/v1.0/$($tenantId)/applications/$($appObjectID)" --body "{'requiredResourceAccess':[{'resourceAccess': [{'id': 'e1fe6dd8-ba31-4d61-89e7-88639da4683d','type': 'Scope'},{'id': '7ab1d382-f21e-4acd-a863-ba3e13f7da61','type': 'Role'}],'resourceAppId': '00000003-0000-0000-c000-000000000000'},{'resourceAccess': [{'id': '5778995a-e1bf-45b8-affa-663a9f3f4d04','type': 'Role'}], 'resourceAppId': '00000002-0000-0000-c000-000000000000'}]}"
+   ```
+2. ログアウトし、Azure portal にもう一度ログインします。
+3. [前のセクション](#authorize-developer-accounts-by-using-azure-ad)で登録したアプリケーションのアプリ登録ページに移動します。 
+4. **[API アクセス許可]** をクリックします。 手順 1. で PowerShell スクリプトによって付与されたアクセス許可が表示されます。 
+5. **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** を選択して、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
 
 これで、外部の Azure AD グループを、API Management インスタンスの **[グループ]** タブから追加できるようになります。
 
 1. サイド メニューの **[開発者ポータル]** で **[グループ]** を選択します。
-1. **[Azure AD グループの追加]** ボタンを選択します。
+2. **[Azure AD グループの追加]** ボタンを選択します。
 
    ![[A A D グループの追加] ボタン](./media/api-management-howto-aad/api-management-with-aad008.png)
 1. ドロップダウン リストから **[テナント]** を選択します。 
-1. 追加するグループを検索して、選択します。
-1. **[選択]** ボタンを押します。
+2. 追加するグループを検索して、選択します。
+3. **[選択]** ボタンを押します。
 
 外部 Azure AD グループを追加した後、次のようにしてそのプロパティを確認および構成できます。 
 1. **[グループ]** タブからグループの名前を選択します。 
-1. グループの **[名前]** と **[説明]** の情報を編集します。
+2. グループの **[名前]** と **[説明]** の情報を編集します。
  
 これで、構成された Azure AD インスタンスのユーザーが次のことができるようになります。
 * 開発者ポータルにサインインする。 
@@ -162,17 +161,17 @@ Azure AD テナント内のユーザーに対するアクセス許可を有効�
 前のセクションで構成した Azure AD アカウントを使用して開発者ポータルにサインインするには、次の操作を行います。
 
 1. Active Directory のアプリケーション構成のサインイン URL を使用して新しいブラウザー ウィンドウを開きます。 
-1. **[Azure Active Directory]** を選択します。
+2. **[Azure Active Directory]** を選択します。
 
    ![サインイン ページ][api-management-dev-portal-signin]
 
 1. Azure AD 内のいずれかのユーザーの資格情報を入力します。
-1. **[サインイン]** をクリックします。
+2. **[サインイン]** をクリックします。
 
    ![ユーザー名とパスワードを使用してサインインする][api-management-aad-signin]
 
 1. 登録フォームが表示される場合、必要な追加情報をすべて入力します。 
-1. **[サインアップ]** を選択します。
+2. **[サインアップ]** を選択します。
 
    ![登録フォームの [サインアップ] ボタン][api-management-complete-registration]
 

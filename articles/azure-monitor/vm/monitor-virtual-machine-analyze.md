@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: 06a37bc77d5eda453740881af9ca45ad4b8746e8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 9eb84e0b685a41cd0ead7aae1feb38c475465f83
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715176"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325674"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-analyze-monitoring-data"></a>Azure Monitor を使用して仮想マシンを監視する: 監視データの分析
 この記事は、シナリオ「[Azure Monitor で仮想マシンとそのワークロードを監視する](monitor-virtual-machine.md)」の一部です。 これは、仮想マシンの構成を完了した後に仮想マシンの監視データを分析する方法について説明しています。
@@ -96,7 +96,7 @@ VM insights には、監視対象マシンの操作の状態、時間の経過�
 | 仮想マシンのゲスト | メトリックを使用するすべての Azure Monitor 機能で使用可能な、ゲスト オペレーティング システムとアプリケーションのパフォーマンス データ。 | [データ収集ルール](../agents/data-collection-rule-overview.md)を使用してインストールされた [Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md)。 |
 
 ## <a name="analyze-log-data-with-log-analytics"></a>Log Analytics を使用してログ データを分析する
-Log Analytics を使用すると、ログ データのカスタム分析を実行できます。 VM insights でビューを作成するために使用されるデータをさらに掘り下げる場合は、Log Analytics を使用します。 そのデータのさまざまなロジックと集計を分析したり、Azure Security Center と Azure Sentinel によって収集されたセキュリティ データを正常性と可用性のデータに関連付けたり、[ワークロード](monitor-virtual-machine-workloads.md)用に収集されたデータを操作したりすることができます。
+Log Analytics を使用すると、ログ データのカスタム分析を実行できます。 VM insights でビューを作成するために使用されるデータをさらに掘り下げる場合は、Log Analytics を使用します。 そのデータのさまざまなロジックと集計を分析したり、Microsoft Defender for Cloud と Microsoft Sentinel によって収集されたセキュリティ データを正常性と可用性のデータに関連付けたり、[ワークロード](monitor-virtual-machine-workloads.md)用に収集されたデータを操作したりすることができます。
 
 Log Analytics を使用するために、必ずしもログ クエリの記述方法について理解している必要はありません。 複数の事前定義済みのクエリがあり、そこからクエリを選択して、変更せずに実行するか、カスタム クエリの開始として使用することができます。 Log Analytics 画面の上部にある **[クエリ]** を選択して、 **[リソースの種類]** が **仮想マシン** または **仮想マシン スケール セット** のクエリを表示します。 これらのクエリの使用方法の詳細については、「[Azure Monitor Log Analytics でのクエリの使用](../logs/queries.md)」を参照してください。 Log Analytics を使用してクエリを実行し、その結果を操作する方法のチュートリアルについては、「[Log Analytics のチュートリアル](../logs/log-analytics-tutorial.md)」を参照してください。
 

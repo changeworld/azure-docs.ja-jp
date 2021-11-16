@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu, shreyamalik
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93d44065255dcb9f4977e93dd596eb3b80c1faa2
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 292860ed26a39205f221c213f392b4b120006d13
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533156"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344771"
 ---
 # <a name="monitor-and-troubleshoot-continuous-access-evaluation"></a>継続的アクセス評価の監視とトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "129533156"
 
 ここでは、管理者にユーザーのサインイン イベントに関する情報が表示されます。 サインインを選択すると、適用されている条件付きアクセス ポリシーや、CAE が有効になっているかなど、セッションの詳細が表示されます。 
 
-特定のサインインの試行は、対話型タブまたは非対話型タブに表示される可能性があります。管理者は、ユーザーのサインインを追跡するときに、両方のタブを確認することが必要な場合があります。
+認証ごとに複数のサインイン要求が存在します。 対話型タブに表示されるものもあれば、非対話型タブに表示されるものもあります。CAE は、それらの要求のうち 1 つについてのみ true と表示され、対話型タブまたは非対話型タブに表示されます。管理者は、両方のタブをチェックして、ユーザーの認証が CAE 対応かどうかを確認する必要があります。 
 
 ### <a name="searching-for-specific-sign-in-attempts"></a>特定のサインイン試行の検索
 

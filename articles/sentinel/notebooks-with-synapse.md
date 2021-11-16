@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel ノートブックと Azure Synapse 統合を使用した大規模なセキュリティ分析
-description: この記事では、Azure Sentinel ノートブックを使用して Azure Synapse Analytics でビッグ データを実行する方法について説明します。
+title: Microsoft Sentinel ノートブックと Azure Synapse の統合を使用した大規模なセキュリティ分析
+description: この記事では、Azure Synapse Analytics で Microsoft Sentinel ノートブックを使用してビッグ データのクエリを実行する方法について説明します。
 services: sentinel
 author: batamig
 ms.author: bagol
@@ -9,23 +9,23 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
-ms.date: 10/06/2021
-ms.openlocfilehash: 6e5efb00db63f0188248c758443e944f0653e513
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.openlocfilehash: 91838bc13fc8efe7f2fbae17dd6276ee78aa1bb8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089763"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308088"
 ---
-# <a name="large-scale-security-analytics-using-azure-sentinel-notebooks-and-azure-synapse-integration-public-preview"></a>Azure Sentinel ノートブックと Azure Synapse 統合を使用した大規模なセキュリティ分析 (パブリック プレビュー)
+# <a name="large-scale-security-analytics-using-microsoft-sentinel-notebooks-and-azure-synapse-integration-public-preview"></a>Microsoft Sentinel ノートブックと Azure Synapse の統合を使用した大規模なセキュリティ分析 (パブリック プレビュー)
 
 > [!IMPORTANT]
-> Azure Sentinel ノートブックの Azure Synapse Analytics との統合は現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> Microsoft Sentinel ノートブックと Azure Synapse Analytics の統合は、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
-Azure Sentinel ノートブックと Azure Synapse Analytics を統合すると、大規模なセキュリティ分析が可能になります。
+Microsoft Sentinel ノートブックと Azure Synapse Analytics を統合すると、大規模なセキュリティ分析が可能になります。
 
-KQL と Log Analytics は Azure Sentinel でデータのクエリと分析を行うための主要なツールおよびソリューションですが、Azure Synapse には、組み込みのデータ レイク アクセスと Apache Spark 分散処理エンジンによるビッグ データ分析用の特別な機能が用意されています。
+Microsoft Sentinel でデータのクエリと分析を行うための主要なツールおよびソリューションとして KQL と Log Analytics がありますが、Azure Synapse には、組み込みのデータ レイク アクセスと Apache Spark 分散処理エンジンによるビッグ データ分析用の特別な機能が用意されています。
 
 Azure Synapse との統合により、次が提供されます。
 
@@ -41,40 +41,40 @@ Azure Synapse との統合により、次が提供されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="understand-azure-sentinel-notebooks"></a>Azure Sentinel ノートブックの理解
+### <a name="understand-microsoft-sentinel-notebooks"></a>Microsoft Sentinel ノートブックを理解する
 
-この記事の手順を実行する前に、Azure Sentinel ノートブック全般について学習することが推奨されます。
+この記事の手順を行う前に、Microsoft Sentinel ノートブック全般について学習することをお勧めします。
 
-始めに、「[Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)」および「[チュートリアル: Azure Sentinel で Jupyter Notebook と MSTICPy の使用を開始する](notebook-get-started.md)」を参照してください。
+始めに、「[Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)」および「[チュートリアル: Microsoft Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)」を参照してください。
 
 ### <a name="required-roles-and-permissions"></a>必要なロールとアクセス許可
 
-Azure Sentinel ノートブックで Azure Synapse を使用するには、次のロールとアクセス許可が必要です。
+Microsoft Sentinel ノートブックで Azure Synapse を使用するには、次のロールとアクセス許可が必要です。
 
 |Type  |詳細  |
 |---------|---------|
-|**Azure Sentinel**     |- Azure Sentinel からノートブックを保存して起動するための **Azure Sentinel 共同作成者** ロール         |
-|**Azure Machine Learning**     |- 必要に応じて、新しい Azure Machine Learning ワークスペースを作成するための、リソース グループ レベルの **所有者** または **共同作成者** ロール。 <br>- Azure Sentinel ノートブックを実行する Azure Machine Learning ワークスペースへの **共同作成者** ロール。    <br><br>詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](/azure/machine-learning/how-to-assign-roles)」を参照してください。     |
+|**Microsoft Sentinel**     |- Microsoft Sentinel からノートブックを保存して起動するための **Microsoft Sentinel 共同作成者** ロール         |
+|**Azure Machine Learning**     |- 必要に応じて、新しい Azure Machine Learning ワークスペースを作成するための、リソース グループ レベルの **所有者** または **共同作成者** ロール。 <br>- Microsoft Sentinel ノートブックを実行する Azure Machine Learning ワークスペースへの **共同作成者** ロール。    <br><br>詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](/azure/machine-learning/how-to-assign-roles)」を参照してください。     |
 |**Azure Synapse Analytics**     | - 新しい Azure Synapse ワークスペースを作成するための、リソース グループレベルの **所有者** ロール。<br>- クエリを実行するための Azure Synapse ワークスペースへの **共同作成者** ロール。 <br>- Synapse Studio への Azure Synapse Analytics **共同作成者** ロール   <br><br>詳細については、「[Synapse で一般的なタスクを実行するために必要なロールについて理解する](/azure/synapse-analytics/security/synapse-workspace-understand-what-role-you-need)」を参照してください。     |
 |**Azure Data Lake Storage Gen2**     | - Log Analytics ワークスペースからデータをエクスポートするための、Azure Log Analytics **共同作成者** ロール<br>- データ レイクからのデータのクエリを実行すための、Azure Blob Storage 共同作成者ロール  <br><br>詳細については、[Azure ロールの割り当て](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)に関するページを参照してください。|
 |     |         |
 
 ### <a name="connect-to-azure-ml-and-synapse-workspaces"></a>Azure ML および Synapse ワークスペースに接続する
 
-Azure Synapse で Azure Sentinel ノートブックを使用するには、最初に Azure Machine Learning ワークスペースと Azure Synapse ワークスペースの両方に接続する必要があります。
+Azure Synapse で Microsoft Sentinel ノートブックを使用するには、最初に Azure Machine Learning ワークスペースと Azure Synapse ワークスペースの両方に接続する必要があります。
 
 **Azure Machine Learning ワークスペースを作成または接続するには**:
 
-Azure Machine Learning ワークスペースは、Azure Sentinel でノートブックを使用するための基本要件です。
+Azure Machine Learning ワークスペースは、Microsoft Sentinel でノートブックを使用するための基本要件です。
 
 まだ接続していない場合は、「[Jupyter のノートブックを使用してセキュリティの脅威を検出する](notebooks.md)」を参照してください。
 
 **新しい Azure Synapse ワークスペースを作成するには**:
 
-Azure Sentinel **[ノートブック]** ページの上部で、 **[Azure Synapse の構成]** を選択し、次に **[新しい Azure Synapse ワークスペースの作成]** を選択します。
+Microsoft Sentinel の **[ノートブック]** ページの上部で、 **[Azure Synapse の構成]** を選択し、次に **[新しい Azure Synapse ワークスペースの作成]** を選択します。
 
 > [!NOTE]
-> Azure Data Lake Storage Gen2 は、すべての Azure Synapse ワークスペースが付属する組み込みのデータ レイクです。 Azure Sentinel ワークスペースと同じリージョンにある新しいデータ レイクを選択するか、作成してください。 これは、この記事で後述するように、データをエクスポートするときに必要です。
+> Azure Data Lake Storage Gen2 は、すべての Azure Synapse ワークスペースが付属する組み込みのデータ レイクです。 Microsoft Sentinel ワークスペースと同じリージョンにある新しいデータ レイクを選択するか、作成してください。 これは、この記事で後述するように、データをエクスポートするときに必要です。
 >
 
 詳細については、[Azure Synapse のドキュメント](/azure/synapse-analytics/quickstart-create-workspace)を参照してください。
@@ -82,15 +82,15 @@ Azure Sentinel **[ノートブック]** ページの上部で、 **[Azure Synaps
 
 ## <a name="configure-your-azure-synapse-analytics-integration"></a>Azure Synapse Analytics 統合を構成する
 
-Azure Sentinel には、組み込みの「**Azure Synapse - Azure ML と Azure Synapse Analytics の構成**」ノートブックが用意されており、Azure Synapse と統合するために必要な構成がガイドされます。
+Microsoft Sentinel には、組み込みの「**Azure Synapse - Azure ML と Azure Synapse Analytics の構成**」ノートブックが用意されており、Azure Synapse と統合するために必要な構成がガイドされます。
 
 > [!NOTE]
-> Azure Synapse 統合の構成は、1 回だけの手順であり、このノートブックは Azure Sentinel ワークスペースに対して 1 回実行する必要があるだけです。
+> Azure Synapse 統合の構成は、1 回だけの手順であり、このノートブックは Microsoft Sentinel ワークスペースに対して 1 回実行する必要があるだけです。
 >
 
 **Azure Synapse - Azure ML と Azure Synapse Analytics ノートブックの構成を実行するには**:
 
-1. Azure Sentinel **[ノートブック]** ページで、 **[テンプレート]** タブを選択し、検索バーに「**Synapse**」と入力してノートブックを検索します。
+1. Microsoft Sentinel **[ノートブック]** ページで、 **[テンプレート]** タブを選択し、検索バーに「**Synapse**」と入力してノートブックを検索します。
 
 1. **[Azure Synapse - Azure ML と Azure Synapse Analytics の構成]** を見つけて選択し、右下にある **[ノートブック テンプレートの複製]** を選択します。
 
@@ -98,7 +98,7 @@ Azure Sentinel には、組み込みの「**Azure Synapse - Azure ML と Azure S
 
 1. ノートブックがデプロイされたら、 **[ノートブックの起動]** を選択し、それを開きます。
 
-    Azure Sentinel 内で、ノートブックが Azure ML ワークスペースに開きます。 詳細については、「[Azure ML ワークスペースでノートブックを起動する](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace)」を参照してください。
+    Microsoft Sentinel 内で、ノートブックが Azure ML ワークスペースに開きます。 詳細については、「[Azure ML ワークスペースでノートブックを起動する](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace)」を参照してください。
 
 1. ノートブックの最初の手順のセルを実行して、必要な Python ライブラリと関数を読み込み、Azure リソースに対して認証します。
 
@@ -112,11 +112,11 @@ Azure Sentinel には、組み込みの「**Azure Synapse - Azure ML と Azure S
 
 ## <a name="hunt-on-historical-data-at-scale"></a>大規模な履歴データの検索
 
-Azure Sentinel には、組み込みの「**Azure Synapse - Apache Spark を使用して潜在的なネットワーク ビーコンを検出する**」ノートブックが用意されています。 このノートブックを実際のサンプル セキュリティ シナリオのテンプレートとして使用して、Azure Sentinel と Azure Synapse によるビッグ データのハンティングを開始します。
+Microsoft Sentinel には、組み込みの「**Azure Synapse - Apache Spark を使用して潜在的なネットワーク ビーコンを検出する**」ノートブックが用意されています。 このノートブックを実際のサンプル セキュリティ シナリオのテンプレートとして使用して、Microsoft Sentinel と Azure Synapse によるビッグ データのハンティングを開始します。
 
-**Azure Sentinel と Azure Synapse を使用して潜在的なネットワーク ビーコンを検出するには**:
+**Microsoft Sentinel と Azure Synapse を使用して潜在的なネットワーク ビーコンを検出するには**:
 
-1. Azure Sentinel **[ノートブック]** ページで、 **[テンプレート]** タブを選択し、検索バーに「**Synapse**」と入力してノートブックを検索します。
+1. Microsoft Sentinel **[ノートブック]** ページで、 **[テンプレート]** タブを選択し、検索バーに「**Synapse**」と入力してノートブックを検索します。
 
 1. **[Azure Synapse - Apache Spark を使用して潜在的なネットワーク ビーコンを検出する]** を見つけて選択し、右下にある **[ノートブック テンプレートの複製]** を選択します。
 
@@ -124,7 +124,7 @@ Azure Sentinel には、組み込みの「**Azure Synapse - Apache Spark を使�
 
 1. ノートブックがデプロイされたら、 **[ノートブックの起動]** を選択し、それを開きます。
 
-    Azure Sentinel 内から、ノートブックが Azure ML ワークスペースに開きます。 詳細については、「[Azure ML ワークスペースでノートブックを起動する](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace)」を参照してください。
+    Microsoft Sentinel 内から、ノートブックがご利用の Azure ML ワークスペースに開きます。 詳細については、「[Azure ML ワークスペースでノートブックを起動する](notebooks.md#launch-a-notebook-in-your-azure-ml-workspace)」を参照してください。
 
 1. ノートブックの最初の手順のセルを実行して、必要な Python ライブラリと関数を読み込み、Azure リソースに対して認証します。
 
@@ -160,19 +160,19 @@ Azure Sentinel には、組み込みの「**Azure Synapse - Apache Spark を使�
     - IP アドレス GeoLocation、WhoIs、その他の脅威インテリジェンス データによって結果を補強し、異常なネットワーク動作のより完全な全体像を取得します。
     - リモート ネットワーク接続や他のイベントの分布を確認しながら、MSTICPy の視覚化を実行して場所をマップします。
 
-    結果は、詳細な調査のために Azure Sentinel に書き戻すことができます。 たとえば、結果からカスタム インシデント、ウォッチリスト、またはハンティング ブックマークを作成できます。
+    詳細な調査のために、結果を Microsoft Sentinel に書き戻すことができます。 たとえば、結果からカスタム インシデント、ウォッチリスト、またはハンティング ブックマークを作成できます。
 
     > [!TIP]
     > これらの手順は、潜在的なネットワーク ビーコンを検出したり、それらをテンプレートとして使用して、組織のニーズに合わせてそれらを変更したりするときに使用します。
     >
 
-## <a name="manage-your-azure-synapse-session-from-azure-sentinel"></a>Azure Sentinel から Azure Synapse セッションを管理する
+## <a name="manage-your-azure-synapse-session-from-microsoft-sentinel"></a>Microsoft Sentinel から Azure Synapse セッションを管理する
 
-Azure Synapse セッション内でない場合、Azure Sentinel は既定で、 **[ノートブック]** ページの上部にある **[コンピューティング]** フィールドで選択されている Azure ML コンピューティングに設定されています。
+Azure Synapse セッション内でない場合、Microsoft Sentinel は既定で、 **[ノートブック]** ページの上部にある **[コンピューティング]** フィールドで選択されている Azure ML コンピューティングに設定されています。
 
 次のコードを使用します。これは、ここまたは、「**Azure Synapse - Apache Spark を使用して潜在的なネットワーク ビーコンを検出する**」ノートブックからコピーして、Azure Synapse セッションを開始および停止できます。
 
-### <a name="start-an-azure-synapse-session-from-within-azure-sentinel"></a>Azure Synapse セッション内から Azure Sentinel セッションを開始する
+### <a name="start-an-azure-synapse-session-from-within-microsoft-sentinel"></a>Azure Synapse セッション内から Microsoft Sentinel セッションを開始する
 
 次のコードを実行します。
 
@@ -192,7 +192,7 @@ account_name = '<storage account name>' # fill in your primary account name
 container_name = '<container name>' # fill in your container name
 subscription_id = '<subscription if>' # fill in your subscription id
 resource_group = '<resource group>' # fill in your resource groups for ADLS
-workspace_name = '<azure sentinel/log analytics workspace name>' # fill in your workspace name
+workspace_name = '<Microsoft Sentinel/log analytics workspace name>' # fill in your workspace name
 device_vendor = "Fortinet"  # Replace your desired network vendor from commonsecuritylogs
 
 # Datetime and lookback parameters
@@ -222,7 +222,7 @@ lookback_days = "21" # fill in lookback days if you want to run it on historical
 
 上記の例では、クエリが 2021 年 10 月 28 日から 11 月 17 日までのデータに対して実行されます。
 
-### <a name="stop-an-azure-synapse-session-from-within-azure-sentinel"></a>Azure Sentinel 内から Azure Synapse セッションを停止する
+### <a name="stop-an-azure-synapse-session-from-within-microsoft-sentinel"></a>Microsoft Sentinel 内から Azure Synapse セッションを停止する
 
 次のコードを実行します。
 
@@ -230,7 +230,7 @@ lookback_days = "21" # fill in lookback days if you want to run it on historical
 %synapse stop
 ```
 
-### <a name="switch-azure-synapse-workspaces-in-azure-sentinel"></a>Azure Sentinel で Azure Synapse ワークスペースを切り替える
+### <a name="switch-azure-synapse-workspaces-in-microsoft-sentinel"></a>Microsoft Sentinel で Azure Synapse ワークスペースを切り替える
 
 現在サインインしているものと異なる Synapse ワークスペースを管理または選択するには、次のいずれかの方法を使用します。
 
@@ -258,5 +258,5 @@ lookback_days = "21" # fill in lookback days if you want to run it on historical
 詳細については、次を参照してください。
 
 - [Jupyter のノートブックを使用してセキュリティの脅威を検出する](notebooks.md)
-- [チュートリアル: Azure Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
+- [チュートリアル: Microsoft Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
 - [Azure Synapse Analytics と Azure Machine Learning ワークスペースをリンクして Apache Spark プールをアタッチする (プレビュー)](/azure/machine-learning/how-to-link-synapse-ml-workspaces)

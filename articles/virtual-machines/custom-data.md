@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: bf81d49bbbfaae2b96dfb712ae69568695ba6f23
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 729c988bcf64cab30cf7644c85a5749ff9c592b7
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687517"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137004"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
 
@@ -84,7 +84,7 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM の作成後にカスタム データを更新できますか?
-単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](/rest/api/compute/virtualmachinescalesets/update) を使用して VMSS カスタム データを更新できます (PS または AZ CLI クライアントには適用されません)。 VMSS モデルのカスタム データを更新すると、次のようになります。
+単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](/rest/api/compute/virtualmachinescalesets/update)、[Az CLI](/cli/azure/vmss?view=azure-cli-latest#az_vmss_update)、または [Az PowerShell](/powershell/module/az.compute/update-azvmss?view=azps-6.6.0) を使用して VMSS カスタム データを更新できます。 VMSS モデルのカスタム データを更新すると、次のようになります。
 * VMSS の既存のインスタンスは、再イメージ化されるまで、更新されたカスタム データを取得しません。
 * VMSS のアップグレードされた既存のインスタンスは、更新されたカスタム データを取得しません。
 * 新しいインスタンスは、新しいカスタム データを受け取ります。

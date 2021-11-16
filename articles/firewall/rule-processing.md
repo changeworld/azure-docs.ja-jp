@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/28/2021
+ms.date: 11/09/2021
 ms.author: victorh
-ms.openlocfilehash: 2dbcb4d42372c97b12d4a71ef43ee1e10f1232bf
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ec914df62c98ea7948c198949b34e37aa3c485d3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209549"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137342"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Firewall 規則を構成する
 従来の規則か Firewall Policy を使用して、Azure Firewall で NAT 規則、ネットワーク規則、アプリケーション規則を設定できます。 Azure Firewall では既定ですべてのトラフィックを拒否します。トラフィックを許可するには、手動で規則を設定する必要があります。
@@ -53,7 +53,9 @@ Firewall Policy を親ポリシーから継承した場合、子ポリシーの�
 |ChAppRC2      |     アプリケーション ルール コレクション    |2000         |7         |-|
 |ChDNATRC3     | DNAT Rule Collection        | 3000        |  2       |-|
 
-規則の処理は次の順序で行います: DNATRC1、DNATRC3、ChDNATRC3、NetworkRC1、NetworkRC2、ChNetRC1、ChNetRC2、AppRC2、ChAppRC1、ChAppRC2
+規則の処理は次の順序で行います: DNATRC1、DNATRC3、ChDNATRC3、NetworkRC1、NetworkRC2、ChNetRC1、ChNetRC2、AppRC2、ChAppRC1、ChAppRC2。
+
+ファイアウォール ポリシー規則セットの詳細については、「[Azure Firewall ポリシー規則セット](policy-rule-sets.md)」を参照してください。
 
 ### <a name="threat-intelligence"></a>[脅威インテリジェンス]
 

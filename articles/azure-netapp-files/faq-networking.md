@@ -6,13 +6,13 @@ ms.workload: storage
 ms.topic: conceptual
 author: b-juche
 ms.author: b-juche
-ms.date: 10/11/2021
-ms.openlocfilehash: 62dff22000c27125d278c06aa41228264150a8c0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/08/2021
+ms.openlocfilehash: 9539cf9cc327cb954a852c183cf8c94ee4d56ca1
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130269909"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054792"
 ---
 # <a name="networking-faqs-for-azure-netapp-files"></a>Azure NetApp Files のネットワークに関する FAQ
 
@@ -43,7 +43,7 @@ ms.locfileid: "130269909"
 
 ## <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files はデュアル スタック (IPv4 および IPv6) VNet をサポートしていますか?
 
-いいえ。Azure NetApp Files は現時点ではデュアル スタック (IPv4 および IPv6) VNet をサポートしていません。  
+いいえ。Azure NetApp Files は現時点ではデュアル スタック (IPv4 および IPv6) の委任されたサブネットへのボリュームのデプロイをサポートしていません。 Azure NetApp Files サービスの委任されたサブネットは、IPv4 専用サブネットである必要があります。 ただし、デュアルスタック サブネットまたは (ピアリングされた) VNet を介して IPv4 経由で Azure NetApp Files にアクセスできます。
 
 ## <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>ゲスト OS マウントのために Azure VMware Solution を使用する IP アドレスの数は 1,000 に制限されていますか?
 

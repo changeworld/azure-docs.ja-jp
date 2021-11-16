@@ -1,28 +1,28 @@
 ---
-title: Defender for IoT ポータルでセンサーを管理する
-description: Defender for IoT ポータルでセンサーのオンボード、表示、管理を行う方法について説明します。
-ms.date: 06/03/2021
+title: Azure portal で Defender for IoT を使用してセンサーを管理する
+description: Azure portal ポータルで Defender for IoT を利用し、センサーをオンボード、表示、管理する方法について説明します。
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 47bdcbdcab807efae9a39383837b6c863ec6fd06
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: c01f5826238a5e4091fbaef58b42205c0bb2d9d2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113019862"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339899"
 ---
-# <a name="manage-sensors-in-the-defender-for-iot-portal"></a>Defender for IoT ポータルでセンサーを管理する
+# <a name="manage-sensors-with-defender-for-iot-in-the-azure-portal"></a>Azure portal で Defender for IoT を使用してセンサーを管理する
 
-この記事では、[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)でセンサーのオンボード、表示、管理を行う方法について説明します。
+この記事では、[Azure portal ポータルで Defender for IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) を利用し、センサーをオンボード、表示、管理する方法について説明します。
 
 ## <a name="onboard-sensors"></a>センサーをオンボードする
 
-センサーを Azure Defender for IoT に登録してセンサー アクティブ化ファイルをダウンロードし、センサーをオンボードします。
+センサーは、それを Microsoft Defender for IoT に登録してセンサー アクティブ化ファイルをダウンロードすることでオンボードします。
 
 ### <a name="register-the-sensor"></a>センサーを登録する
 
 **登録するには、次の手順を実行します。**
 
-1. [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の **[ようこそ]** ページに移動します。
+1. Azure portal で [Defender for IoT の概要ページ](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)に移動します。
 
 1. **[センサーのオンボード]** を選択します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "113019862"
 
 1. センサー名を作成します。 
 
-    インストールしたセンサーの IP アドレスを名前の一部として含めるか、識別しやすい名前を使用することをお勧めします。 そうすることで追跡が容易になるほか、Azure [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)での登録名と、センサー コンソールに表示されるデプロイ済みセンサーの IP との間で名前の一貫性が確保されます。
+    インストールしたセンサーの IP アドレスを名前の一部として含めるか、識別しやすい名前を使用することをお勧めします。 それにより追跡が容易になるほか、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) での登録名と、センサー コンソールに表示されるデプロイ済みセンサーの IP との間で一貫性が与えられます。
 
 1. センサーを Azure サブスクリプションと関連付けます。
 
@@ -38,13 +38,13 @@ ms.locfileid: "113019862"
 
 1. **[クラウド接続]** トグルを使用してセンサーの接続モードを選択します。 このトグルがオンの場合、センサーはクラウド接続になります。 このトグルがオフの場合、センサーはローカル管理になります。
 
-   - **クラウド接続のセンサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 アラート情報は、IoT ハブを通じて配信され、Azure Sentinel などの他の Azure サービスと共有できます。 また、脅威インテリジェンス パッケージを Azure Defender for IoT ポータルからセンサーにプッシュすることもできます。 逆に、センサーがクラウドに接続されていない場合は、脅威インテリジェンス パッケージをダウンロードしてから、エンタープライズ センサーにアップロードする必要があります。 Defender for IoT からセンサーにパッケージをプッシュできるようにするには、 **[脅威インテリジェンスの自動更新]** トグルをオンにします。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
+   - **クラウド接続のセンサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 アラート情報は IoT ハブ経由で配信され、Microsoft Sentinel など、他の Azure サービスと共有できます。 また、脅威インテリジェンス パッケージを Defender for IoT からセンサーにプッシュできます。 逆に、センサーがクラウドに接続されていない場合は、脅威インテリジェンス パッケージをダウンロードしてから、エンタープライズ センサーにアップロードする必要があります。 Defender for IoT からセンサーにパッケージをプッシュできるようにするには、 **[脅威インテリジェンスの自動更新]** トグルをオンにします。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
    
    クラウド接続のセンサーの場合、オンボード時に定義された名前が、センサー コンソールに表示される名前です。 この名前は、コンソールから直接変更することはできません。 ローカル管理センサーの場合、オンボード時に指定された名前は、Azure に保存されますが、センサー コンソールで更新することができます。
 
    - **ローカル管理センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 エアギャップ ネットワークで作業していて、複数のローカル管理センサーによって検出されるすべての情報を一元的に表示したい場合は、オンプレミスの管理コンソールを使用します。
 
-1. センサーを関連付けるサイトを IoT Hub 内で選択します。 IoT Hub は、このセンサーと Azure Defender for IoT の間のゲートウェイとして機能します。 表示名とゾーンを定義します。 説明タグを追加することもできます。 表示名、ゾーン、タグは、[[サイトとセンサー] ページ](#view-onboarded-sensors)にある説明用のエントリです。
+1. センサーを関連付けるサイトを IoT Hub 内で選択します。 IoT Hub は、このセンサーと Microsoft Defender for IoT の間のゲートウェイとして機能します。 表示名とゾーンを定義します。 説明タグを追加することもできます。 表示名、ゾーン、タグは、[[サイトとセンサー] ページ](#view-onboarded-sensors)にある説明用のエントリです。
 
 1. **[登録]** を選択します。 
 
@@ -62,7 +62,9 @@ ms.locfileid: "113019862"
 
 ## <a name="view-onboarded-sensors"></a>オンボードされたセンサーを表示する
 
-[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)で、オンボード センサーに関する重要な運用情報を表示できます。
+オンボードされたセンサーに関する重要な操作情報を表示するには:
+
+1. Azure portal で [Defender for IoT の概要](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)ページに移動します。
 
 1. **[サイトとセンサー]** を選択します。 このページには、オンボードされたセンサーの数、クラウド接続およびローカル管理のセンサーの数、および以下が表示されます。
 
@@ -77,7 +79,7 @@ ms.locfileid: "113019862"
 
 ## <a name="manage-onboarded-sensors"></a>オンボード センサーを管理する
 
-センサーに関連する管理タスクでは、[Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)を使用します。
+センサーに関連する管理タスクには [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) を使用します。
 
 オンボードされたセンサーは、 **[サイトとセンサー]** ページに表示されます。 また、このページからは、センサー情報を編集することもできます。
 
@@ -113,7 +115,7 @@ ms.locfileid: "113019862"
 
 次のような場合は、センサーの再アクティブ化が必要になることがあります。
 
-- **ローカル管理モードではなく、クラウド接続モードで作業する**:再アクティブ化した後は、センサーにセンサー検出が表示され、新たに検出されたアラート情報が IoT ハブを通じて配信されます。 この情報は、Azure Sentinel などの他の Azure サービスと共有することができます。
+- **ローカル管理モードではなく、クラウド接続モードで作業する**:再アクティブ化した後は、センサーにセンサー検出が表示され、新たに検出されたアラート情報が IoT ハブを通じて配信されます。 この情報は、Microsoft Sentinel など、他の Azure サービスと共有できます。
 
 - **クラウド接続モードではなく、ローカル管理モードで作業する**: 再アクティブ化後は、そのセンサーにのみセンサーの検出情報が表示されます。
 
@@ -121,7 +123,7 @@ ms.locfileid: "113019862"
 
 **センサーを再アクティブ化するには**
 
-1. [Defender for IoT ポータル](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)の **[サイトとセンサー]** ページに移動します。
+1. [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) で **[サイトとセンサー]** ページに移動します。
 
 1. 新しいアクティブ化ファイルをアップロードするセンサーを選択します。
 

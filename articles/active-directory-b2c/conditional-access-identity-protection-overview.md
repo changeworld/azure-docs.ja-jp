@@ -10,12 +10,12 @@ ms.author: kengaderdus
 author: kengaderdus
 manager: CelesteDG
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b53e5397c9e4e04a7049d18f9e9efdcfc62a921
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6c5c7b8ed515fc3148f42b06c3c81f6060816e79
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130037797"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281383"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセス
 
@@ -28,7 +28,7 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 > [!NOTE]
 > 危険なサインインのポリシーを作成するには、Azure AD B2C **Premium 2** が必要です。 **Premium P1** のテナントでは、場所、アプリケーション、ユーザーベース、またはグループベースのポリシーに基づいてポリシーを作成できます。 詳細については、「[Azure AD B2C 価格レベルを変更する](billing.md#change-your-azure-ad-pricing-tier)」を参照してください。
 
-## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセスの利点  
+## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセスの利点
 
 条件付きアクセス ポリシーと Identity Protection のリスク検出とを組み合わせると、危険な認証に対して適切なポリシー アクションで対応することができます。
 
@@ -41,7 +41,7 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 
 通常、Azure AD B2C における Identity Protection と条件付きアクセスは、Azure AD での場合と同じように機能しますが、次の例外があります。
 
-- Azure AD B2C では Security Center が利用できません。
+- Microsoft Defender for Cloud は、Azure AD B2C では使用できません。
 
 - Azure AD B2C テナントの ROPC サーバー間フローでは、Identity Protection と条件付きアクセスはサポートされません。
 
@@ -50,7 +50,6 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 - Azure AD B2C テナントで利用できるのは、Identity Protection のリスク検出のサブセットです。 [ID 保護によるリスクの調査](identity-protection-investigate-risk.md)および[ユーザー フローへの条件付きアクセスの追加](conditional-access-user-flow.md)に関する記事をご覧ください。
 
 - Azure AD B2C テナントでは、条件付きアクセスのデバイス コンプライアンス機能は利用できません。
-
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>ユーザー フローやカスタム ポリシーに条件付きアクセスを統合する
 

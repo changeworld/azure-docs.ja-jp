@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 7e16fd0d1c6370cb0ab973760c988c600f42888c
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: bbb3a3e5356bb522a8ebcc60204f990f23a7193a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129153522"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283507"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -116,7 +116,7 @@ Azure Migrate Server Migration は、移行対象の VM を検出するために
 
 次のようにアプライアンスの準備をします。
 
-- [アプライアンスの要件を確認します](migrate-replication-appliance.md#appliance-requirements)。 一般に、レプリケーション アプライアンスは、ダウンロードした OVA ファイルを使用し、VMware VM として設定します。 すべての要件を満たしたアプライアンスがテンプレートによって作成されます。
+- [アプライアンスの要件を確認します](migrate-replication-appliance.md#appliance-requirements)。 一般に、レプリケーション アプライアンスは、ダウンロードした OVA ファイルを使用して VMware VM として設定します。 すべての要件を満たしたアプライアンスがテンプレートによって作成されます。
 - アプライアンスに MySQL がインストールされている必要があります。 インストール方法を[確認](migrate-replication-appliance.md#mysql-installation)してください。
 - アプライアンス マシンからアクセスする必要のある[パブリック クラウドの URL](migrate-replication-appliance.md#url-access) と [Azure Government の URL ](migrate-replication-appliance.md#azure-government-url-access) を確認します。
 - レプリケーション アプライアンス マシンからアクセスする必要のある[ポートを確認](migrate-replication-appliance.md#port-access)します。
@@ -384,10 +384,10 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [Microsoft Defender for Cloud のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用し、インバウンド トラフィック アクセスをロックダウンし、制限します。
     - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
-    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
+    - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Microsoft Defender for Cloud](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
     - [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 

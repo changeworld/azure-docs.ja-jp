@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 11/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b34ecc7b2ef83f6f9e3f609163f193825f7cce8b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 41a46f2ccb925a51aec92bad94d1c1e2164745f4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452112"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312041"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
@@ -50,9 +50,9 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 | 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
 | 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-Azure Security Center は自動的に Log Analytics エージェントをプロビジョニングし、Azure サブスクリプションの既定の Log Analytics ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
+Microsoft Defender for Cloud は自動的に Log Analytics エージェントをプロビジョニングし、Azure サブスクリプションの既定のログ分析ワークスペースに接続します。 Microsoft Defender for Cloud を使用している場合は、このドキュメントの手順は実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Microsoft Defender for Cloud との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 

@@ -571,9 +571,9 @@ items:
       - name: チュートリアル
         items:
           - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
-            href: /databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
           - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
-            href: /translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
       - name: リファレンス
         items:
           - name: REST API

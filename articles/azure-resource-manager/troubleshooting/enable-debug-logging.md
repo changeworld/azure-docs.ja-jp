@@ -3,14 +3,14 @@ title: デバッグ ログの有効化
 description: デバッグ ログを有効にして、Azure Resource Manager テンプレート (ARM テンプレート) または Bicep ファイルでデプロイされた Azure リソースのトラブルシューティングを行う方法について説明します。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 11/02/2021
+ms.date: 11/05/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d68041953979b594c83059a28a78e3440ca297ac
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fcd2cbdf052f934bb797b3f1dab148d951d09167
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478332"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989651"
 ---
 # <a name="enable-debug-logging"></a>デバッグ ログの有効化
 
@@ -44,7 +44,7 @@ Get-AzResourceGroupDeploymentOperation `
   -ResourceGroupName examplegroup
 ```
 
-プロパティを指定できます。 たとえば、`StatusMessage` プロパティは、Azure CLI `response` プロパティと同じデータを出力します。
+`StatusMessage` や `StatusCode` などのプロパティを指定して、出力をフィルター処理できます。
 
 ```azurepowershell
 (Get-AzResourceGroupDeploymentOperation `
@@ -52,13 +52,11 @@ Get-AzResourceGroupDeploymentOperation `
   -ResourceGroupName examplegroup).StatusMessage
 ```
 
-デバッグ `request` および `response` 情報を取得するには、Azure CLI を使用します。 Az モジュール バージョン 4.8 以降では、`Get-AzResourceGroupDeploymentOperation` は出力にこれらのプロパティを含めません。 利用可能なプロパティの一覧については、[出力](/powershell/module/az.resources/get-azresourcegroupdeploymentoperation#outputs)を参照してください。
-
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してデバッグ ログ記録を有効にすることはできませんが、デバッグ ログ データを取得できます。
 
-次のコマンドでデプロイ操作を取得します。
+[az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment_operation_group_list) コマンドを使用して、デプロイ操作を取得します。
 
 ```azurecli
 az deployment operation group list \
@@ -108,7 +106,7 @@ az deployment operation group list \
 }
 ```
 
-Bicep では、`Microsoft.Resources/deployments` でなく[モジュール](../bicep/modules.md)が使用されます。 モジュールを使用すると、コードを再利用して別の Bicep ファイルから Bicep ファイルをデプロイできます。
+Bicep では、`Microsoft.Resources/deployments` でなく[モジュール](../bicep/modules.md)が使用されます。 modules を使用すると、コードを再利用して別の Bicep ファイルから Bicep ファイルをデプロイできます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,20 +12,18 @@ ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a983da4159f41ae6dfe261b7f42ce20c2d2fa3a4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8e955a50ed85710c0a3a33680b1edc4ef5873da6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594747"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135506"
 ---
 # <a name="tutorial-configure-azure-active-directory-b2c-with-bloksec-for-passwordless-authentication"></a>チュートリアル: パスワードレス認証のために Azure Active Directory B2C と BlokSec を構成する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 ::: zone pivot="b2c-custom-policy"
-
-
 
 ::: zone-end
 
@@ -56,9 +54,10 @@ BlokSec 統合には、次のコンポーネントが含まれています。
 
 ## <a name="onboard-to-bloksec"></a>BlokSec にオンボードする
 
-[フォーム](https://bloksec.com/request-a-demo/)に入力し、BlokSec を使用してデモ テナントを要求します。 メッセージ フィールドでは、Azure AD B2C を使用してオンボードするように指示されます。 アプリ ストアから無料の BlokSec yuID モバイル アプリをダウンロードしてインストールします。 デモ テナントの準備が完了すると、メールが届きます。 BlokSec アプリケーションがインストールされているモバイル デバイスで、yuID アプリを使用して管理者アカウントを登録するリンクを選択します。
+[フォーム](https://bloksec.com/)に入力し、BlokSec を使用してデモ テナントを要求します。 メッセージ フィールドでは、Azure AD B2C を使用してオンボードするように指示されます。 アプリ ストアから無料の BlokSec yuID モバイル アプリをダウンロードしてインストールします。 デモ テナントの準備が完了すると、メールが届きます。 BlokSec アプリケーションがインストールされているモバイル デバイスで、yuID アプリを使用して管理者アカウントを登録するリンクを選択します。
 
 ::: zone pivot="b2c-user-flow"
+
 ## <a name="prerequisites"></a>前提条件
 
 作業を開始するには、以下が必要です。
@@ -73,6 +72,7 @@ BlokSec 統合には、次のコンポーネントが含まれています。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
 ## <a name="prerequisites"></a>前提条件
 
 作業を開始するには、以下が必要です。
@@ -116,8 +116,8 @@ BlokSec 統合には、次のコンポーネントが含まれています。
 1. Azure AD B2C テナントのグローバル管理者として [Azure portal](https://portal.azure.com/#home) にサインインします。
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
 1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
-1. Azure portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。 
-1. **[ダッシュボード] > [Azure Active Directory B2C] > [ID プロバイダー]** の順に移動します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >  **[ID プロバイダー]** の順に移動します。
 1. 新しい **[OpenID Connect プロバイダー]** を選択します。
 1. **[追加]** を選択します。
 
@@ -130,7 +130,7 @@ BlokSec 統合には、次のコンポーネントが含まれています。
 |プロパティ  |値  |
 |:---------|:---------|
 |名前     |BlokSec yuID を入力します - パスワードレスまたは選択した名前|
-|メタデータ URL|https://api.bloksec.io/oidc/.well-known/openid-configuration|         
+|メタデータ URL| `https://api.bloksec.io/oidc/.well-known/openid-configuration` |
 |クライアント ID|**パート 1** でキャプチャされた BlokSec 管理者 UI のアプリケーション ID|
 |クライアント シークレット|**パート 1** でキャプチャされた BlokSec 管理者 UI のアプリケーション シークレット|
 |Scope|OpenID 電子メール プロファイル|
@@ -181,13 +181,13 @@ BlokSec 統合には、次のコンポーネントが含まれています。
 
 1. **[ユーザー フローを実行します]** を選択します。
 
-1. フォームに返信 URL を入力します (例: https://jwt.ms )。
+1. フォームに、`https://jwt.ms` のような 返信 URL を入力します。
 
 1. ブラウザーは、BlokSec のログイン ページにリダイレクトされます。 ユーザーの登録中に登録されたアカウント名を入力します。 ユーザーは、BlokSec yuID アプリケーションがインストールされているモバイル デバイスにプッシュ通知を受け取ります。通知を開くと、ユーザーに認証チャレンジが表示されます。
 
-1. 認証チャレンジが受け入れられると、ユーザーはブラウザーによって応答 URL にリダイレクトされます。  
+1. 認証チャレンジが受け入れられると、ユーザーはブラウザーによって応答 URL にリダイレクトされます。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次のステップ
 
 追加情報については、次の記事を参照してください。
 
@@ -324,7 +324,8 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 証明書利用者ポリシー (例 [SignUpSignIn.xml](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/SocialAndLocalAccounts/SignUpOrSignin.xml)) は、Azure AD B2C が実行されるユーザー体験を指定します。 証明書利用者内の **DefaultUserJourney** 要素を検索します。 ID プロバイダーを追加したユーザー体験 ID と一致するように **ReferenceId** を更新します。
 
-次の例では、`CustomSignUpOrSignIn` ユーザー体験について、ReferenceId を `CustomSignUpOrSignIn` に設定しています。  
+次の例では、`CustomSignUpOrSignIn` ユーザー体験について、ReferenceId を `CustomSignUpOrSignIn` に設定しています。
+
 ```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="CustomSignUpSignIn" />
@@ -350,7 +351,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次のステップ
 
 追加情報については、次の記事を参照してください。
 

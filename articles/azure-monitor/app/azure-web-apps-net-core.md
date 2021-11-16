@@ -4,12 +4,12 @@ description: ASP.NET Core を使用した Azure App Services のアプリケー�
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 4bb5df82dcfd045100b4fe41c70538504cf2566b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 747b79affc2cb2ef862c1fb4000879ddbbe5b9f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508233"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308790"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Azure App Service と ASP.NET Core のアプリケーション監視 
 
@@ -22,6 +22,8 @@ ms.locfileid: "131508233"
 > [!IMPORTANT]
 > Windows での自動インストルメンテーションに対してサポートされる ASP.NET Core バージョンは、ASP.NET Core 3.1、5.0、6.0 です。 バージョン 2.0、2.1、2.2、および 3.0 は廃止され、サポートされなくなりました。 自動インストルメンテーションを機能させるには、[サポートされているバージョン](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)の .NET Core にアップグレードしてください。
 
+[自己完結型デプロイのトリミング](/dotnet/core/deploying/trimming/trim-self-contained)は **サポートされていません**。 代わりに、コードを介した[手動インストルメンテーション](./asp-net-core.md)を使用してください。
+
 App Service リソースを使用した Application Insights の設定を開始するには、以下の[「監視を有効にする」セクション](#enable-monitoring )を参照してください。 
 
 # <a name="linux"></a>[Linux](#tab/Linux)
@@ -32,7 +34,7 @@ App Service リソースを使用した Application Insights の設定を開始�
 > [!NOTE]
 > Linux の自動インストルメンテーション App Services ポータルの有効化は、パブリック プレビュー段階にあります。 これらのプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 
- Linux では、[フレームワークに依存するデプロイ](/dotnet/core/deploying/#publish-framework-dependent)と[自己完結型のデプロイ](/dotnet/core/deploying/#publish-self-contained)がサポートされます。 
+[自己完結型デプロイのトリミング](/dotnet/core/deploying/trimming/trim-self-contained)は **サポートされていません**。 代わりに、コードを介した[手動インストルメンテーション](./asp-net-core.md)を使用してください。
 
 App Service リソースを使用した Application Insights の設定を開始するには、以下の[「監視を有効にする」セクション](#enable-monitoring )を参照してください。 
 

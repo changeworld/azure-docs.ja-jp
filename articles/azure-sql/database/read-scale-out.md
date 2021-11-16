@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 11/5/2021
-ms.openlocfilehash: ce039347c2fe06f061aecc4a01cd05e92c43ae74
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.date: 09/23/2021
+ms.openlocfilehash: f5acdf621c04ba48664004bbb1f28ae1c0914fcb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893267"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447039"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "131893267"
 
 [セカンダリ レプリカ](service-tier-hyperscale-replicas.md)を少なくとも 1 つ追加していれば、Hyperscale サービス レベルでも *読み取りスケールアウト* 機能を利用できます。 Hyperscale セカンダリ[名前付きレプリカ](service-tier-hyperscale-replicas.md#named-replica-in-preview)を使用すれば、独立実行できるスケーリング、アクセスの分離、ワークロードの分離、大規模な読み取りスケールアウトなどの機能が利用できます。 読み取り専用ワークロードのロードバランシングに、単一のセカンダリ HA レプリカで利用できる以上のリソースが必要な場合は、複数のセカンダリ [HA レプリカ](service-tier-hyperscale-replicas.md#high-availability-replica)を使用できます。 
 
-Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 "*読み取りスケールアウト*" 機能は、これらのサービス レベルでは使用できません。 ただし、[geo レプリカ](active-geo-replication-overview.md)は、これらのサービス レベルで同様の機能を提供できます。
+Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 "*読み取りスケールアウト*" 機能は、これらのサービス レベルでは使用できません。
 
 次の図に、Premium および Business Critical のデータベースとマネージド インスタンスの機能を図示します。
 

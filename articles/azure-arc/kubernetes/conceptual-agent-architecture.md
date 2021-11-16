@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes エージェントのアーキテクチャの概要について説明します
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 6bb1b035e1c64e82f89804928854ca019ad22201
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106442543"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450839"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc 対応 Kubernetes エージェントのアーキテクチャ
 
@@ -25,7 +25,7 @@ ms.locfileid: "106442543"
 
 ## <a name="deploy-agents-to-your-cluster"></a>クラスターにエージェントをデプロイする
 
-ほとんどのオンプレミス データセンターにおいては、ネットワーク境界のファイアウォールで、受信通信を禁止する厳格なネットワーク規則が適用されます。 Azure Arc 対応 Kubernetes は、ファイアウォールで受信ポートを要求しないで、選択されたエグレス エンドポイントのみを送信通信用に有効にすることで、これらの制限と連携します。 この送信通信は、Azure Arc 対応 Kubernetes エージェントによって開始されます。 
+ほとんどのオンプレミス データセンターにおいては、ネットワーク境界のファイアウォールで、受信通信を禁止する厳格なネットワーク規則が適用されます。 Azure Arc 対応 Kubernetes は、ファイアウォールで受信ポートを要求しないで、選んだエグレス エンドポイントのみを送信通信用に有効にすることで、これらの制限と連携します。 この送信通信は、Azure Arc 対応 Kubernetes エージェントによって開始されます。 
 
 ![アーキテクチャの概要](./media/architectural-overview.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "106442543"
         | `deployment.apps/clusterconnect-agent` | クラスターの `apiserver` へのアクセスを提供するクラスター接続機能を有効にするリバース プロキシ エージェント。 これは、クラスターで `cluster-connect` 機能が有効な場合にのみデプロイされるオプション コンポーネントです。   |
         | `deployment.apps/guard` | AAD RBAC 機能に使用される認証および承認 Webhook サーバー。 これは、クラスターで `azure-rbac` 機能が有効な場合にのみデプロイされるオプション コンポーネントです。   |
 
-1. すべての Azure Arc 対応 Kubernetes エージェントのポッドが `Running` 状態になったら、クラスターが Azure Arc に接続されていることを確認します。次のような結果が表示されます。
+1. すべての Azure Arc 対応 Kubernetes エージェントのポッドが `Running` 状態になったら、クラスターが Azure Arc に接続されていることを確認します。次のものが表示されます。
     * [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 内の Azure Arc 対応 Kubernetes リソース。 このリソースは、実際の Kubernetes クラスター自体ではなく、カスタマー マネージド Kubernetes クラスターのプロジェクションとして、Azure で追跡されます。
     * クラスターのメタデータ (Kubernetes のバージョン、エージェントのバージョン、ノードの数など) は、Azure Arc 対応 Kubernetes リソースのメタデータとして表示されます。
 
@@ -84,7 +84,7 @@ ms.locfileid: "106442543"
 | 接続 | Azure Arc 対応 Kubernetes リソースは Azure Resource Manager で作成されていますが、エージェントのハートビートがまだサービスによって受信されていません。 |
 | 接続中 | Azure Arc 対応 Kubernetes サービスは、過去 15 分以内にエージェントのハートビートを受信しました。 |
 | オフライン | Azure Arc 対応 Kubernetes リソースは以前は接続されていましたが、サービスは 15 分間エージェントのハートビートを受信していません。 |
-| 有効期限切れ | MSI 証明書の有効期間は、発行後 90 日です。 この証明書の有効期限が切れると、リソースは `Expired` であると見なされ、このクラスター上で構成、監視、ポリシーなどの機能がすべて停止します。 有効期限が切れた Azure Arc 対応 Kubernetes リソースに対処する方法の詳細については、[こちらの FAQ に関する記事](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources)を参照してください |
+| 有効期限切れ | MSI 証明書の有効期間は、発行後 90 日です。 この証明書の有効期限が切れると、リソースは `Expired` であると見なされ、このクラスター上で構成、監視、ポリシーなどの機能がすべて停止します。 有効期限が切れた Azure Arc 対応 Kubernetes リソースに対処する方法の詳細については、[こちらの FAQ に関する記事](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources)を参照してください。 |
 
 ## <a name="understand-connectivity-modes"></a>接続モードを理解する
 
@@ -92,9 +92,9 @@ ms.locfileid: "106442543"
 | ----------------- | ----------- |
 | 完全に接続済み | GitOps 構成の伝達、Azure Policy および Gatekeeper ポリシーの適用、Azure Monitor でのワークロードのメトリックとログの収集において、エージェントと Azure との通信は、ほとんど遅延がなく一貫して行われます。 |
 | 半接続済み | `clusteridentityoperator` によってプルダウンされた MSI 証明書は、証明書の有効期限が切れるまで最大 90 日有効です。 有効期限が切れると、Azure Arc 対応 Kubernetes リソースの動作は停止します。 クラスター上で Azure Arc のすべての機能を再アクティブ化するには、Azure Arc 対応 Kubernetes リソースとエージェントを削除して作成し直します。 90 日の期間中、少なくとも 30 日ごとに 1 回はクラスターに接続してください。 |
-| [Disconnected]\(切断済み\) | 現在、Azure にアクセスできない切断された環境の Kubernetes クラスターは、Azure Arc 対応 Kubernetes ではサポートされていません。 この機能が重要な場合は、[Azure Arc の UserVoice フォーラム](https://feedback.azure.com/forums/925690-azure-arc)でアイデアを提出するか賛成投票してください。
+| [Disconnected]\(切断済み\) | 現在、Azure にアクセスできない切断された環境の Kubernetes クラスターは、Azure Arc 対応 Kubernetes ではサポートされていません。 この機能が重要な場合は、[Azure Arc の UserVoice フォーラム](https://feedback.azure.com/d365community/forum/5c778dec-0625-ec11-b6e6-000d3a4f0858)でアイデアを提出するか賛成投票してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./quickstart-connect-cluster.md)します。
-* [Azure Arc 対応 Kubernetes を使用して、構成リソースとして](./conceptual-configurations.md)、クラスターと Git リポジトリ間の接続を作成する方法の詳細について説明します。
+* [Azure Arc 対応 Kubernetes を使って、構成リソースとして](./conceptual-configurations.md)、クラスターと Git リポジトリ間の接続を作成する方法の詳細について説明します。

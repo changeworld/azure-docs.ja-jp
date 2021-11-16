@@ -3,12 +3,12 @@ title: Azure Storage キューと Service Bus キューの比較
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 ms.topic: article
 ms.date: 06/15/2021
-ms.openlocfilehash: a93123ded873a5020e440c606fcd4f8278baa4aa
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 0c660b1d57fda2550572f028a3ce271558bde115
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112120169"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061346"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、どちらのソリューションが自分のニーズに最も適しているかについて、より多くの情報に基づいて判断できるようになります。
@@ -128,7 +128,7 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
 | 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/common/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
-| 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)。<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
+| 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** または **100 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)。<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**無限** (API バージョン 2017-07-27 以降) |**TimeSpan.Max** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり) |
 | 同時クライアントの最大数 |**無制限** |**5,000** |
@@ -176,7 +176,7 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 
 ### <a name="additional-information"></a>関連情報
 * どちらのキュー テクノロジでも、すべての要求を認証する必要があります。 匿名アクセスを使用するパブリック キューはサポートされていません。 [SAS](service-bus-sas.md) を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
-* Storage キューによって提供される認証方式では、対称キーの使用が必要です。 このキーは、SHA-256 アルゴリズムで計算され、**Base64** 文字列としてエンコードされたハッシュベース メッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure ストレージ サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](service-bus-sas.md)」をご覧ください。
+* Storage キューによって提供される認証方式では、対称キーの使用が必要です。 このキーは、SHA-256 アルゴリズムで計算され、**Base64** 文字列としてエンコードされたハッシュベース メッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure Storage サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](service-bus-sas.md)」をご覧ください。
 
 ## <a name="conclusion"></a>まとめ
 2 つのテクノロジをより深く理解することにより、使用するキュー テクノロジとその状況について、より多くの十分な情報を得たうえでの決定を行うことができます。 Storage キューまたは Service Bus キューを使用する状況についての判断は明らかに多数の要因に依存します。 それらの要因がアプリケーションとそのアーキテクチャの個々のニーズに大きく依存している場合もあります。 

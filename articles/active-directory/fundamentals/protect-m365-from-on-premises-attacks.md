@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73bd6ed2c94ca696eefd4e7a3dfcf5b78cc6dd99
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2c8b611b9edb3e4c53b2d40231a6df6c3ccd8a1e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251188"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346498"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -31,6 +31,7 @@ ms.locfileid: "130251188"
 - オンプレミスの侵害からクラウド システムを保護する方法でシステムを運用するために必要なトレードオフ。
 
 このガイダンスを実装して、Microsoft 365 のクラウド環境をセキュリティで保護することを強くお勧めします。
+
 > [!NOTE]
 > この記事は、もともとブログ記事として公開されたものです。 長期の公開と保守のため、現在の場所に移動されました。
 >
@@ -38,11 +39,9 @@ ms.locfileid: "130251188"
 
 ## <a name="primary-threat-vectors-from-compromised-on-premises-environments"></a>セキュリティが侵害されたオンプレミス環境からの主要な脅威ベクトル
 
-
 Microsoft 365 クラウド環境は、広範な監視とセキュリティのインフラストラクチャからベネフィットを受けています。 Microsoft 365 は、機械学習と人の知性を使用して、世界中のトラフィックに注意を向けています。 これにより、攻撃を迅速に検出し、ほぼリアルタイムで再構成できます。 
 
-オンプレミスのインフラストラクチャを Microsoft 365 に接続するハイブリッド デプロイでは、多くの組織で、重要な認証およびディレクトリ オブジェクトの状態管理の決定のため、オンプレミスのコンポーネントに信頼が委任されます。
-残念ながら、オンプレミス環境が侵害された場合、これらの信頼関係は、攻撃者が Microsoft 365 環境を侵害する機会になります。
+オンプレミスのインフラストラクチャを Microsoft 365 に接続するハイブリッド デプロイでは、多くの組織で、重要な認証およびディレクトリ オブジェクトの状態管理の決定のため、オンプレミスのコンポーネントに信頼が委任されます。 残念ながら、オンプレミス環境が侵害された場合、これらの信頼関係は、攻撃者が Microsoft 365 環境を侵害する機会になります。
 
 2 つの主要な脅威ベクトルは、*フェデレーションの信頼関係* と *アカウントの同期* です。 どちらのベクトルによっても、攻撃者にクラウドへの管理アクセスが許可されます。
 
@@ -51,7 +50,6 @@ Microsoft 365 クラウド環境は、広範な監視とセキュリティのイ
 * **アカウントの同期** を使用すると、特権を持つユーザー (資格情報を含む) や、Microsoft 365 での管理者特権を持つグループを変更できます。 直接、または信頼されたロールやグループに含めることにより、*同期されたオブジェクトが Microsoft 365 のユーザーを超える権限を保持しないようにすることをお勧めします*。 これらのオブジェクトに、信頼されたクラウドのロールまたはグループにおいて、確実に直接または入れ子の割り当てがないようにします。
 
 ## <a name="protecting-microsoft-365-from-on-premises-compromise"></a>オンプレミスのセキュリティ侵害から Microsoft 365 を保護する
-
 
 前に説明した脅威ベクトルに対処するには、次の図に示す原則に従うことをお勧めします。
 
@@ -73,18 +71,15 @@ Microsoft 365 クラウド環境は、広範な監視とセキュリティのイ
 
 1. **Microsoft 365 からデバイスを管理します。** Azure AD Join とクラウドベースのモバイル デバイス管理 (MDM) を使用して、オンプレミスのデバイス管理インフラストラクチャへの依存関係を排除します。 これらの依存関係は、デバイスとセキュリティ制御を侵害するおそれがあります。
 
-1. **オンプレミスのアカウントが、Microsoft 365 に対する昇格された特権を持たないようにしてください。**
-    一部のアカウントは、NTLM、LDAP、または Kerberos 認証を必要とするオンプレミス アプリケーションにアクセスします。 これらのアカウントは、組織のオンプレミス ID インフラストラクチャ内に存在する必要があります。 サービス アカウントも含めて、これらのアカウントが特権のあるクラウドのロールまたはグループに含まれていないようにしてください。 また、これらのアカウントへの変更により、クラウド環境の整合性が影響を受けないようにしてください。 特権のあるオンプレミス ソフトウェアが、Microsoft 365 の特権のあるアカウントまたはロールに影響を与えることができないようにする必要があります。
+1. **オンプレミスのアカウントが、Microsoft 365 に対する昇格された特権を持たないようにしてください。** 一部のアカウントは、NTLM、LDAP、または Kerberos 認証を必要とするオンプレミス アプリケーションにアクセスします。 これらのアカウントは、組織のオンプレミス ID インフラストラクチャ内に存在する必要があります。 サービス アカウントも含めて、これらのアカウントが特権のあるクラウドのロールまたはグループに含まれていないようにしてください。 また、これらのアカウントへの変更により、クラウド環境の整合性が影響を受けないようにしてください。 特権のあるオンプレミス ソフトウェアが、Microsoft 365 の特権のあるアカウントまたはロールに影響を与えることができないようにする必要があります。
 
 1. **Azure AD クラウド認証** を使用して、オンプレミスの資格情報への依存関係を排除します。 常に、Windows Hello、FIDO、Microsoft Authenticator、Azure AD 多要素認証などの強力な認証を使用します。
 
 ## <a name="specific-security-recommendations"></a>特定のセキュリティに関する推奨事項
 
-
 以下のセクションでは、前述の原則を実装する方法についての具体的なガイダンスを提供します。
 
 ### <a name="isolate-privileged-identities"></a>特権 ID を分離する
-
 
 Azure AD では、管理者などの特権ロールを持つユーザーが、環境の他の部分の構築と管理に対する信頼の根幹になります。 セキュリティ侵害の影響を最小限に抑えるため、次のことを実装します。
 
@@ -134,14 +129,13 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 * **クラウド アプリケーション:** 可能であれば、オンプレミスのプロビジョニング ソリューションではなく、[Azure AD アプリのプロビジョニング](../app-provisioning/user-provisioning.md)をデプロイします。 この方法では、オンプレミスの侵害の悪意のあるハッカー プロファイルの影響を受けないように、サービスとしてのソフトウェア (SaaS) アプリの一部を保護します。 
 
-* **外部 ID**: [Azure AD B2B Collaboration](../external-identities/what-is-b2b.md) を使用します。
-    この方法により、パートナー、顧客、サプライヤーとの外部コラボレーションのための、オンプレミス アカウントでの依存関係が減ります。 他の ID プロバイダーとの直接フェデレーションを慎重に評価します。 次の方法で B2B ゲスト アカウントを制限することをお勧めします。
+* **外部 ID**: [Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用します。この方法により、パートナー、顧客、サプライヤーとの外部コラボレーションのための、オンプレミス アカウントでの依存関係が減ります。 他の ID プロバイダーとの直接フェデレーションを慎重に評価します。 次の方法で B2B ゲスト アカウントを制限することをお勧めします。
 
-   *  ディレクトリ内の参照グループおよびその他のプロパティへのゲスト アクセスを制限します。 外部コラボレーション設定を使用して、ゲストが所属していないグループを読み取る機能を制限します。 
+   * ディレクトリ内の参照グループおよびその他のプロパティへのゲスト アクセスを制限します。 外部コラボレーション設定を使用して、ゲストが所属していないグループを読み取る機能を制限します。 
 
-    *   Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成します。 その後、[アクセスをブロックするポリシーを実装します](../../role-based-access-control/conditional-access-azure-management.md)。 
+    * Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成します。 その後、[アクセスをブロックするポリシーを実装します](../../role-based-access-control/conditional-access-azure-management.md)。 
 
-* **切断されたフォレスト:** [Azure AD クラウド プロビジョニング](../cloud-sync/what-is-cloud-sync.md)を使用します。 この方法により、切断されたフォレストに接続できるようになり、オンプレミスの侵害の影響を広げるおそれがあるフォレスト間の接続や信頼関係を確立する必要がなくなります。 
+* **切断されたフォレスト:** [Azure AD クラウド プロビジョニング](../cloud-sync/what-is-cloud-sync.md)を使用します。 この方法により、切断されたフォレストに接続できるようになり、オンプレミスの侵害の影響を広げるおそれがあるフォレスト間の接続や信頼関係を確立する必要がなくなります。
  
 ### <a name="limitations-and-tradeoffs"></a>制限事項とトレードオフ
 
@@ -153,18 +147,17 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
 * **コラボレーション**: 最新のコラボレーションのために Microsoft 365 グループと Microsoft Teams を使用します。 オンプレミスの配布リストの使用を停止し、[Outlook の Microsoft 365 グループに配布リストをアップグレードします](/office365/admin/manage/upgrade-distribution-lists)。
 
-* **アクセス**:Azure AD セキュリティ グループまたは Microsoft 365 グループを使用して、Azure AD 内のアプリケーションへのアクセスを承認します。
+* **アクセス**: Azure AD セキュリティ グループまたは Microsoft 365 グループを使用して、Azure AD 内のアプリケーションへのアクセスを承認します。
+
 * **Office 365 のライセンス**: グループベースのライセンスを使用し、クラウド専用グループを使用して Office 365 にプロビジョニングします。 この方法により、グループ メンバーシップの制御がオンプレミスのインフラストラクチャから切り離されます。
 
-オンプレミスの侵害でメンバーシップが引き継がれるのを避けるため、アクセスに使用されるグループの所有者は、特権 ID と見なされる必要があります。
-引き継ぎには、オンプレミスでのグループ メンバーシップの直接操作、または Microsoft 365 での動的グループ メンバーシップに影響する可能性があるオンプレミスの属性の操作が含まれます。
+オンプレミスの侵害でメンバーシップが引き継がれるのを避けるため、アクセスに使用されるグループの所有者は、特権 ID と見なされる必要があります。 引き継ぎには、オンプレミスでのグループ メンバーシップの直接操作、または Microsoft 365 での動的グループ メンバーシップに影響する可能性があるオンプレミスの属性の操作が含まれます。
 
 ## <a name="manage-devices-from-the-cloud"></a>クラウドからデバイスを管理する
 
-
 Azure AD の機能を使用して、デバイスを安全に管理します。
 
--   **Windows 10 ワークステーションを使用する**: MDM ポリシーを使用して、[Azure AD Join を使用したデバイスをデプロイ](../devices/azureadjoin-plan.md)します。 完全に自動化されたプロビジョニング エクスペリエンスを実現するには、[Windows Autopilot](/mem/autopilot/windows-autopilot) を有効にします。
+- **Windows 10 ワークステーションを使用する**: MDM ポリシーを使用して、[Azure AD Join を使用したデバイスをデプロイ](../devices/azureadjoin-plan.md)します。 完全に自動化されたプロビジョニング エクスペリエンスを実現するには、[Windows Autopilot](/mem/autopilot/windows-autopilot) を有効にします。
 
     -   Windows 8.1 以前を実行しているマシンを廃止します。
 
@@ -220,15 +213,16 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 * **Suspicious activity** 
 
-    すべての [Azure AD リスク イベント](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)で、疑わしいアクティビティを監視します。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) は、Azure Security Center とネイティブに統合されています。
+    すべての [Azure AD リスク イベント](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)で、疑わしいアクティビティを監視します。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) は、Microsoft Defender for Cloud にネイティブに統合されています。
 
     場所ベースのシグナルで多くのノイズが検出されないよう、ネットワークの[ネームド ロケーション](../conditional-access/location-condition.md)を定義します。 
 *  **ユーザー/エンティティ行動分析 (UEBA) のアラート** 
 
     UEBA を使用して、異常検出に関する分析情報を取得します。
-    * Microsoft Cloud App Security (MCAS) により、[クラウドでの UEBA](/cloud-app-security/tutorial-ueba) が提供されます。
 
-    * [Azure Advanced Threat Protection (ATP) からオンプレミスの UEBA を統合する](/defender-for-identity/install-step2)ことができます。 MCAS により、Azure AD Identity Protection からのシグナルが読み取られます。 
+    * Microsoft Defender for Cloud Apps は、[クラウドでの UEBA](/cloud-app-security/tutorial-ueba) を提供しています。
+
+    * [Azure Advanced Threat Protection (ATP) からオンプレミスの UEBA を統合する](/defender-for-identity/install-step2)ことができます。 Dender for Cloud Apps は Azure AD Identity Protection からシグナルを読み取ります。 
 
 * **緊急アクセス アカウントのアクティビティ** 
 
@@ -240,11 +234,11 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
    * グループ メンバーシップのすべての更新。 
 
-   * アプリケーションの割り当て。 
+   * アプリケーションの割り当て。
+
 * **特権ロールのアクティビティ**
 
-    [Azure AD Privileged Identity Management (PIM) によって生成されるセキュリティ アラート](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)を構成して確認します。
-    ユーザーが直接割り当てられたときに常にアラートを生成することで、PIM の外部での特権ロールの直接割り当てを監視します。
+    [Azure AD Privileged Identity Management (PIM) によって生成されるセキュリティ アラート](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)を構成して確認します。 ユーザーが直接割り当てられたときに常にアラートを生成することで、PIM の外部での特権ロールの直接割り当てを監視します。
 
 * **Azure AD のテナント全体の構成**
 
@@ -272,7 +266,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 ### <a name="log-management"></a>ログの管理
 
-一貫したツール セットを容易にするために、ログのストレージと保持の戦略、設計、および実装を定義します。 たとえば、Azure Sentinel、一般的なクエリ、調査やフォレンジックのプレイブックなどのセキュリティ情報イベント管理 (SIEM) システムを検討できます。
+一貫したツール セットを容易にするために、ログのストレージと保持の戦略、設計、および実装を定義します。 たとえば、Microsoft Sentinel、一般的なクエリ、調査やフォレンジックのプレイブックなどのセキュリティ情報イベント管理 (SIEM) システムを検討できます。
 
 * **Azure AD ログ**: 診断、ログの保持、SIEM インジェストなどの設定のベスト プラクティスに常に従って、生成されたログとシグナルを取り込みます。 
 

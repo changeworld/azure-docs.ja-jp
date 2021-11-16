@@ -2,14 +2,14 @@
 title: Azure RTOS 用の Defender for IoT マイクロ エージェント API
 description: Azure RTOS 用の Defender for IoT マイクロ エージェントの API を参照します。
 ms.topic: reference
-ms.date: 09/07/2020
+ms.date: 11/09/2021
 ms.author: mlottner
-ms.openlocfilehash: 291dfa88ea9be2c17706828ac59a2321fee11ef2
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: ad79ec853f3ee625c9b8c3c4bb4063aee87481f1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131998019"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286642"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Azure RTOS 用の Defender for IoT マイクロ エージェント API (プレビュー)
 

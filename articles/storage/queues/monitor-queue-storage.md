@@ -5,17 +5,17 @@ author: normesta
 services: storage
 ms.author: normesta
 ms.reviewer: fryu
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 05dae168df808cf0abd55b7908f181044fa8651f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dfd31111844bc6969d0d2d61caac53b663b1c05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804396"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346631"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure Queue Storage の監視
 
@@ -322,6 +322,17 @@ Azure Queue Storage のメトリックは、次の名前空間にあります。
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) コマンドレットを使用します。
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetMessages" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
@@ -340,6 +351,14 @@ Azure Queue Storage のメトリックは、次の名前空間にあります。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>ディメンションのあるメトリック値を読み取る
+
+メトリックにディメンションが付いている場合、メトリック値を読み取り、ディメンション値をフィルターにしてメトリック値を絞り込むことができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetMessages' " --aggregation "Total" 
 ```
 
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)

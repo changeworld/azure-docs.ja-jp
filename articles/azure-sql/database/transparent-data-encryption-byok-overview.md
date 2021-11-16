@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: 290065bb7410c42695cf2b0062cdd11cb02c9580
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8f056fd416b6bbb36296a57fca26906852eb3af8
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065534"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156569"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -87,7 +87,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
     - 消去保護は、 または[PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell)を使用[Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)有効にできます。 消去保護を有効にすると、保持期間が経過するまで、削除された状態のコンテナーまたはオブジェクトを消去できません。 既定の保有期間は 90 日ですが、7 日から 90 日の間に構成Azure portal。   
 
 > [!IMPORTANT]
-> カスタマー マネージド TDE で構成されているサーバーのキー コンテナーと、カスタマー マネージド TDE を使用する既存のサーバーでは、ソフト削除と消去保護の両方を有効にする必要があります。 ユーザーが管理する TDE を使用しているサーバーの場合、関連付けられているキーコンテナーで論理的な削除と削除の保護が有効になっていないと、データベースの作成、geo レプリケーションのセットアップ、データベースの復元、TDE プロテクターの更新などのアクションの実行が失敗 *し、"指定された Key Vault uri が無効です。キーコンテナーが論理的な削除と消去による保護で構成されていることを確認してください。 "*
+> カスタマー マネージド TDE で構成されているサーバーのキー コンテナーと、カスタマー マネージド TDE を使用する既存のサーバーでは、ソフト削除と消去保護の両方を有効にする必要があります。
 
 - サーバーまたはマネージド インスタンスに、そのキー コンテナー ID を使用してキー コンテナー (*get*、*wrapKey*、*unwrapKey*) へのアクセス権を付与Azure Active Directoryします。 サーバーを使用Azure portal、Azure ADが自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-configure.md)および [SQL Managed Instance 用 BYOK 対応 TDE の構成](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)に関する記事を参照してください。
     - Key vault のアクセス許可モデル (アクセスポリシーまたは Azure RBAC) に応じて、key vault にアクセスポリシーを作成するか、ロール {1}Key Vault Crypto Service 暗号化ユーザー{2}を使用して新しい Azure RBAC ロールの割り当てを作成することによって、[key vault のアクセス権を付与できます](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations)。
@@ -146,9 +146,9 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 キーへのアクセスが復元された後、データベースをオンラインに戻すには、追加の時間と手順が必要です。これは、キーにアクセスできなくなってからの経過時間とデータベース内のデータのサイズによって異なる場合があります。
 
-- キーのアクセスが 8 時間以内に復元された場合、データベースは次の 1 時間以内に自動回復します。
+- キーのアクセスが 30 分以内に復元された場合、データベースは次の 1 時間以内に自動回復します。
 
-- 8 時間を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](auto-failover-group-overview.md)構成、ポイントインタイム リストア履歴、タグなど) が **失われます**。 そのため、8 時間以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
+- 30 分を超えてからキーのアクセスが復元された場合、自動回復は不可能です。データベースの復旧にはポータルで追加の手順を踏む必要があり、データベースのサイズによってはかなりの時間がかかることがあります。 データベースがオンラインに戻ると、以前に構成されたサーバーレベルの設定 ([フェールオーバー グループ](auto-failover-group-overview.md)構成、ポイントインタイム リストア履歴、タグなど) が **失われます**。 そのため、30 分以内にキー アクセスの潜在的な問題を特定して対処できるようにする通知システムを実装することをお勧めします。
 
 以下は、アクセスできないデータベースをオンラインに戻すためにポータルで必要な追加手順です。
 

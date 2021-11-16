@@ -7,12 +7,12 @@ ms.date: 11/01/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 2dc71c72ebbc31af30e25834ece0e15dddcba5dc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 90abee8e5d776b1426e306fe915f5e19a9b1716c
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091642"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158409"
 ---
 # <a name="create-a-chaos-experiment-that-uses-an-agent-based-fault-to-add-cpu-pressure-to-a-linux-vm"></a>エージェントベースの障害を使用して Linux VM に CPU 負荷を追加するカオス実験を作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "131091642"
 - Azure サブスクリプション。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 - Linux 仮想マシン。 仮想マシンがない場合は、[次の手順に従って作成](../virtual-machines/linux/quick-create-portal.md)できます。
 - [お使いの仮想マシンへの SSH 接続](../virtual-machines/ssh-keys-portal.md)を許可するネットワーク セットアップ
-- ユーザー割り当てマネージド ID。 ユーザー割り当てマネージド ID をお持ちではない場合は、[次の手順に従って作成](../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md)できます
+- ユーザー割り当てマネージド ID が **ターゲットの仮想マシンまたは仮想マシン スケール セットに割り当てられていること**。 ユーザー割り当てマネージド ID をお持ちではない場合は、[次の手順に従って作成](../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md)できます
 
 
 ## <a name="enable-chaos-studio-on-your-virtual-machine"></a>仮想マシンで Chaos Studio を有効にする
@@ -49,6 +49,9 @@ sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.
 
 ### <a name="enable-chaos-target-capabilities-and-agent"></a>カオス ターゲット、機能、エージェントを有効にする
 
+> [!IMPORTANT]
+> 以下の手順を完了する前に、[ユーザー割り当てマネージド ID を作成](../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md)し、ターゲットの仮想マシンまたは仮想マシン スケール セットに割り当てる必要があります。
+
 1. [Azure Portal](https://portal.azure.com)を開きます。
 2. 検索バーで「**Chaos Studio (preview)** 」を検索します。
 3. **[Targets]\(ターゲット\)** をクリックし、お使いの仮想マシンに移動します。
@@ -67,11 +70,11 @@ sudo dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.
 ## <a name="create-an-experiment"></a>実験の作成
 仮想マシンがオンボードされ、実験を作成できるようになりました。 カオス実験には、ターゲット リソースに対して実行するアクションを、順番に実行するステップと、並行して実行する分岐に分けて定義します。
 
-1. Chaos Studio ナビゲーションの **[実験]** タブをクリックします。 このビューでは、すべてのカオス実験を表示および管理できます。 **[実験の追加]** をクリックします
-![Azure portal の実験ビュー](images/tutorial-agent-based-add.png)
-2. **[サブスクリプション]** 、 **[リソース グループ]** 、カオス実験をデプロイする **[場所]** に入力します。 実験に **名前** を付けます。 **[Next : Experiment designer >]\(次へ : 実験デザイナー >\)** をクリックします
-![基本的な実験の詳細の追加](images/tutorial-agent-based-add-basics.png)
-3. これで、Chaos Studio 実験デザイナーが表示されます。 実験デザイナーでは、ステップ、分岐、およびフォールトを追加して実験を構築することができます。 **ステップ** と **分岐** にわかりやすい名前を付け、 **[フォールトの追加]** をクリックします。
+1. Chaos Studio ナビゲーションの **[実験]** タブをクリックします。 このビューでは、すべてのカオス実験を表示および管理できます。 **[実験の追加]** 
+![Azure portal の実験ビュー](images/tutorial-agent-based-add.png) をクリックします
+2. **[サブスクリプション]** 、 **[リソース グループ]** 、カオス実験をデプロイする **[場所]** に情報を入力します。 実験に **名前** を付けます。 **[次へ: 実験デザイナー >]** 
+![基本的な実験の詳細の追加](images/tutorial-agent-based-add-basics.png) をクリックします
+3. これで、Chaos Studio 実験デザイナーが表示されます。 実験デザイナーでは、ステップ、分岐、障害などを追加して実験を構築することができます。 **ステップ** と **分岐** にフレンドリ名を付け、 **[障害の追加]** をクリックします。
 ![実験デザイナー](images/tutorial-agent-based-add-designer.png)
 4. ドロップダウンから **[CPU Pressure]\(CPU 負荷\)** を選択し、負荷を適用する分数を **[Duration]\(期間\)** に、適用する CPU 負荷の量を **[pressureLevel]** に入力します。 **virtualMachineScaleSetInstances** は空白のままにします。 **[Next: Target resources >]\(次へ: ターゲット リソース >\)** をクリックします
 ![障害プロパティ](images/tutorial-agent-based-add-fault.png)

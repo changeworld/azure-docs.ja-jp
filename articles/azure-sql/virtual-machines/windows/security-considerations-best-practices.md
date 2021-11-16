@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
-ms.openlocfilehash: 6927d3d4c9cc7839acc2d17faef88ccd98fd6b21
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 327c2fa71fc8c95da654e7fca9450a8d0372e1ab
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164546"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301785"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,15 +31,15 @@ Azure はいくつかの業界規制および標準に準拠しているため�
 
 このトピックで説明している手法に加えて、従来のオンプレミスのセキュリティ手法でのセキュリティ ベスト プラクティスと仮想マシンのセキュリティ ベスト プラクティスの両方を確認して実装することをお勧めします。 
 
-## <a name="azure-defender-for-sql"></a>Azure Defender for SQL 
+## <a name="microsoft-defender-for-sql"></a>Microsoft Defender for SQL 
 
-[Azure Defender for SQL](../../../security-center/defender-for-sql-introduction.md) では、脆弱性評価やセキュリティ アラートなどの Azure Security Center のセキュリティ機能が有効になります。 詳細については、[Azure Defender for SQL の有効化](../../../security-center/defender-for-sql-usage.md)に関する記事を参照してください。 
+[Microsoft Defender for SQL](../../../security-center/defender-for-sql-introduction.md) では、脆弱性評価、セキュリティ アラートなど、Microsoft Defender for Cloud のセキュリティ機能が有効になります。 詳細については、[Microsoft Defender for SQL の有効化](../../../security-center/defender-for-sql-usage.md)に関するページを参照してください。 
 
 ## <a name="portal-management"></a>ポータル管理
 
 [SQL Server VM を SQL IaaS 拡張機能 に登録](sql-agent-extension-manually-register-single-vm.md)した後、Azure Key Vault 統合の有効化や SQL 認証など、Azure portal の [SQL 仮想マシン リソース](manage-sql-vm-portal.md)を使用していくつかのセキュリティ設定を構成できます。 
 
-さらに、[Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効化した後、脆弱性評価やセキュリティ アラートなどの Security Center の機能を Azure portal の [SQL 仮想マシン リソース](manage-sql-vm-portal.md)から直接表示できます。 
+さらに、[Microsoft Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にした後、脆弱性評価やセキュリティ アラートなどの Defender for Cloud の機能を Azure portal の [SQL 仮想マシン リソース](manage-sql-vm-portal.md)で直接表示できます。 
 
 詳細については、[ポータルでの SQL Server VM の管理](manage-sql-vm-portal.md)に関する記事を参照してください。 
 
@@ -133,5 +133,3 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Security](security-considerations-best-practices.md)
 - [HADR の設定](hadr-cluster-best-practices.md)
 - [ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)
-
-

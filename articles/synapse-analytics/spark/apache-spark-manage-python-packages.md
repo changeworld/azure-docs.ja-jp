@@ -10,12 +10,12 @@ ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1b69aed711100eead6e7669c7d57e2f8faac25ad
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: c696105fee677e8e8dca71d5515e0dd2374960b0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429183"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228451"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 
@@ -61,7 +61,7 @@ absl-py==0.7.0
 adal==1.2.1
 alabaster==0.7.10
 ```
-##### <a name="yml-format-preview"></a>YML 形式 (プレビュー)
+##### <a name="yml-format"></a>YML 形式
 さらに、*environment.yml* ファイルを指定してプール環境を更新することもできます。 このファイルに記載されているパッケージが、既定の Conda チャネル、Conda-Forge、PyPI からダウンロードされます。 構成オプションを使用して、他のチャネルを指定したり、既定のチャネルを削除したりできます。
 
 この例では、チャネルと Conda/PyPI の依存関係を指定します。 
@@ -116,7 +116,7 @@ Spark プールのライブラリを更新または追加するには:
 > この設定をオフにした場合は、現在の Spark セッションが終了するまで待つか、手動で停止する必要があります。 セッションが終了したら、プールが再起動されるようにする必要があります。
 
 
-##### <a name="track-installation-progress-preview"></a>インストールの進行状況の追跡 (プレビュー)
+##### <a name="track-installation-progress"></a>インストールの進行状況の追跡  
 システム予約 Spark ジョブは、新しい一連のライブラリを使用してプールが更新されるたびに開始されます。 この Spark ジョブは、ライブラリのインストールの状態を監視するために役立ちます。 ライブラリの競合またはその他の問題のためインストールが失敗した場合、Spark プールは以前の、または既定の状態に戻ります。 
 
 さらに、ユーザーはインストール ログを調査することで、依存関係の競合を特定したり、プールの更新中にインストールされたライブラリを確認したりすることもできます。
@@ -132,7 +132,7 @@ Spark プールのライブラリを更新または追加するには:
 ## <a name="install-wheel-files"></a>wheel ファイルをインストールする
 Python の wheel ファイルは、Python ライブラリをパッケージ化するための一般的な方法です。 Azure Synapse Analytics 内で、ユーザーは自分の wheel ファイルを Azure Data Lake Storage アカウントの既知の場所にアップロードしたり、Azure Synapse のワークスペース パッケージ インターフェイスを使用してアップロードしたりできます。
 
-### <a name="workspace-packages-preview"></a>ワークスペース パッケージ (プレビュー)
+### <a name="workspace-packages"></a>ワークスペース パッケージ 
 ワークスペース パッケージは、カスタムまたはプライベートの wheel ファイルにすることができます。 これらのパッケージをワークスペースにアップロードし、後で特定の Spark プールに割り当てることができます。
 
 ワークスペース パッケージを追加するには:
@@ -145,7 +145,7 @@ Python の wheel ファイルは、Python ライブラリをパッケージ化�
 >[!WARNING]
 >- Azure Synapse 内では、Apache Spark プールは、ワークスペース パッケージとしてアップロードされたカスタム ライブラリ、または既知の Azure Data Lake Storage パス内にアップロードされたカスタム ライブラリのいずれかを利用できます。 ただし、これらのオプションの両方を、同じ Apache Spark プール内で同時に使用することはできません。 両方の方法を使用してパッケージが提供されている場合は、ワークスペース パッケージの一覧で指定した wheel ファイルのみがインストールされます。 
 >
->- ワークスペース パッケージ (プレビュー) を使用して特定の Apache Spark プールにパッケージをインストールした後は、同じプールにストレージ アカウント パスを使用してパッケージを指定できなくなるという制限があります。  
+>- ワークスペース パッケージを使用して特定の Apache Spark プールにパッケージをインストールした後は、同じプールにストレージ アカウント パスを使用してパッケージを指定できなくなるという制限があります。  
 
 ### <a name="storage-account"></a>ストレージ アカウント
 Synapse ワークスペースにリンクされている Azure Data Lake Storage (Gen2) アカウントにすべての wheel ファイルをアップロードすることで、カスタム ビルドの wheel パッケージを Apache Spark プールにインストールできます。 
@@ -164,7 +164,7 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 > Azure DataLake Storage メソッドを使用してカスタム ライブラリをインストールするには、Azure Synapse Analytics ワークスペースにリンクされているプライマリ Gen2 ストレージ アカウントに対して、**ストレージ BLOB データ共同作成者** または **ストレージ BLOB データ所有者** のアクセス許可を持っている必要があります。
 
 
-## <a name="session-scoped-packages-preview"></a>セッション スコープのパッケージ (プレビュー)
+## <a name="session-scoped-packages"></a>セッション スコープのパッケージ
 プール レベルのパッケージに加えて、セッション スコープのライブラリをノートブック セッションの開始時に指定することもできます。  セッション スコープのライブラリを使用すると、ノートブック セッション内でカスタム Python 環境を指定して使用できます。 
 
 セッション スコープのライブラリを使用する場合は、以下の点に留意することが重要です。

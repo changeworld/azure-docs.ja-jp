@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/25/2021
-ms.openlocfilehash: 8ab0c27f8e27737c9208d77e9d1a1bd50d79afd0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b1ad94c92e1a21e7d636982194608ea6bf1afa43
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565640"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345226"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 

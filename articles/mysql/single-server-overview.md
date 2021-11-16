@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 6/19/2021
-ms.openlocfilehash: dfeea2cfde2f8122891b6fada2eba1e546ed2342
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 4238ac653d6b34294d956ea9ff72fe2184ddd1be
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894224"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281648"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバー
 
@@ -28,7 +28,7 @@ MySQL コミュニティ エディションを搭載した [Azure Database for M
 ## <a name="overview"></a>概要
 Azure Database for MySQL 単一サーバーは、最小限のカスタマイズ用に設計されたフル マネージド データベース サービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、単一の可用性ゾーンで 99.99% の可用性を備えた組み込みの高可用性を実現するよう最適化されています。 MySQL 5.6 (廃止)、5.7、8.0 のコミュニティ バージョンをサポートしています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
-単一サーバーは、**既に単一サーバーを活用している既存のアプリケーションにのみ** 最適です。 新たに開発または移行する場合は常に、デプロイ オプションとしてフレキシブル サーバーが推奨されます。 フレキシブル サーバーと単一サーバーのデプロイ オプションの違いについては、[最適なデプロイ オプションを選択する](select-right-deployment-type.md)方法に関するドキュメントを参照してください。
+単一サーバーは、**既に単一サーバーを活用している既存のアプリケーションにのみ** 最適です。 新たに開発または移行する場合は、デプロイ オプションとしてフレキシブル サーバーが推奨されます。 フレキシブル サーバーと単一サーバーのデプロイ オプションの違いについては、[最適なデプロイ オプションを選択する](select-right-deployment-type.md)方法に関するドキュメントを参照してください。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -63,7 +63,7 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 
 単一サーバーでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 データ (バックアップを含む) と、クエリの実行中に作成される一時ファイルは暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステム マネージド (既定) または[カスタマー マネージド](concepts-data-encryption-mysql.md)にできます。 サービスでは、既定で適用されるトランスポート層セキュリティ (SSL/TLS) を使用して、動作中のデータが暗号化されます。 このサービスでは、TLS バージョン 1.2、1.1、1.0 がサポートされており、[TLS の最低バージョン](concepts-ssl-connection-security.md)を適用することができます。 
 
-このサービスを使用すると、[プライベート リンク](concepts-data-access-security-private-link.md)を使用してサーバーにプライベート アクセスすることができ、オプションの[オープンソース リレーショナル データベース用 Azure Defender](../security-center/defender-for-databases-introduction.md) プランを通じて脅威からの保護が提供されます。 Azure Defender により、データベースへのアクセスやその悪用を試みる、異常で有害と考えられる不自然な動作が検出されます。
+このサービスを使用すると、[プライベート リンク](concepts-data-access-security-private-link.md)を使用してサーバーにプライベート アクセスすることができ、オプションの[オープンソース リレーショナル データベース用 Microsoft Defender](../security-center/defender-for-databases-introduction.md) プランを通じて脅威からの保護が提供されます。 オープンソース リレーショナル データベース用 Microsoft Defender によって、通常とは異なる、害を与えるおそれがあるアクセスや悪用がデータベースに対して試みられていることを示す異常なアクティビティを検出します。
 
 ネイティブ認証に加えて、単一サーバーでは [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 認証がサポートされています。 Azure AD 認証は、Azure AD で定義および管理されている ID を使用して MySQL サーバーに接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Azure サービスを一元管理でき、アクセスの制御が簡素化および一元化されます。
 

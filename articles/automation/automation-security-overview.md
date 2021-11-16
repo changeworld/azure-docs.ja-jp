@@ -4,15 +4,15 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 08/02/2021
+ms.date: 11/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a86a5c8c0922e0861411e93376047344ba6c5af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d6a509e4d99b95e2113aceb00ff1dab9a98fd91
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124789106"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866660"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
@@ -22,7 +22,7 @@ Azure Automation を使用すると、Azure 内のリソース、オンプレミ
 
 ## <a name="automation-account"></a>Automation アカウント
 
-Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。 Automation アカウントを使用すると、他のアカウントのリソースから Automation のリソース、Runbook、資産、構成を分離できます。 Automation アカウントを使用して、リソースを個別の論理環境または委任された役割に分けることができます。 たとえば、開発環境用、本番環境用、オンプレミス環境用に、それぞれ異なるアカウントを使用できます。 または、[Update Management](update-management/overview.md) を使用して、すべてのコンピューターでオペレーティング システムの更新プログラムを管理するように 1 つの Automation アカウントを専用にすることもできます。 
+Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。 Automation アカウントを使用すると、他のアカウントのリソースから Automation のリソース、Runbook、資産、構成を分離できます。 Automation アカウントを使用して、リソースを個別の論理環境または委任された役割に分けることができます。 たとえば、開発環境用、本番環境用、オンプレミス環境用に、それぞれ異なるアカウントを使用できます。 または、[Update Management](update-management/overview.md) を使用して、すべてのコンピューターでオペレーティング システムの更新プログラムを管理するように 1 つの Automation アカウントを専用にすることもできます。
 
 Azure Automation アカウントは、Microsoft アカウントや、Azure サブスクリプションで作成されたアカウントとは異なります。 Automation アカウントの作成の概要については、「[Automation アカウントを作成する](./quickstarts/create-account-portal.md)」を参照してください。
 
@@ -32,9 +32,14 @@ Azure Automation アカウントは、Microsoft アカウントや、Azure サ�
 
 Azure Automation で Azure Resource Manager と PowerShell コマンドレットを使用してリソースに対して作成するすべてのタスクは、Azure Active Directory (Azure AD) の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。
 
-## <a name="managed-identities-preview"></a>マネージド ID (プレビュー)
+## <a name="managed-identities"></a>マネージド ID
 
 Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、シークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+
+マネージド ID は、Runbook で認証を行うための推奨される方法であり、Automation アカウントの既定の認証方法です。
+
+> [!NOTE]
+> Automation アカウントを作成すると、実行アカウントを作成するオプションは使用できなくなります。 ただし、既存および新しい Automation アカウントの実行アカウントは引き続きサポートされます。 Automation アカウントで[実行アカウントを作成する](create-run-as-account.md)には、Azure portalまたは PowerShell を使用します。
 
 以下に、マネージド ID を使用するベネフィットをいくつか紹介します。
 
@@ -42,11 +47,9 @@ Azure Active Directory (Azure AD) のマネージド ID を使用すると、Run
 
 - マネージド ID の使用に関して追加コストは一切かからない。
 
-- Automation 実行アカウントで使用される証明書を更新する必要がない。
-
 - Runbook コードで実行接続オブジェクトを指定する必要がない。 証明書、接続、実行アカウントなどを作成せずに、Runbook から Automation アカウントのマネージド ID を使用してリソースにアクセスできます。
 
-Automation アカウントには、次の 2 種類の ID を付与できます。
+Automation アカウントは、次の 2 種類のマネージド ID を使用して認証できます。
 
 - システム割り当て ID はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。
 
@@ -55,7 +58,7 @@ Automation アカウントには、次の 2 種類の ID を付与できます�
 > [!NOTE]
 > ユーザー割り当て ID がサポートされているのはクラウド ジョブの場合だけです。 さまざまなマネージド ID の詳細については、「[ID の種類の管理](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)」を参照してください。
 
-マネージド ID の使用の詳細については、[Azure Automation のマネージド ID の有効化 (プレビュー)](enable-managed-identity-for-automation.md)に関するページを参照してください。
+マネージド ID の使用の詳細については、[Azure Automation のマネージド ID の有効化](enable-managed-identity-for-automation.md)に関するページを参照してください。
 
 ## <a name="run-as-accounts"></a>実行アカウント
 
@@ -66,6 +69,9 @@ Azure Automation の実行アカウントを使用すると、Azure Resource Man
 - サブスクリプション、
 - Azure Active Directory (Azure AD)、および
 - Automation アカウント
+
+> [!NOTE]
+> Azure Automation では実行アカウントは自動的には作成されません。これはマネージド ID の使用に置き換わりました。 ただし、既存および新しい Automation アカウントの実行アカウントは引き続きサポートされます。 Automation アカウントで[実行アカウントを作成する](create-run-as-account.md)には、Azure portalまたは PowerShell を使用します。
 
 ### <a name="subscription-permissions"></a>サブスクリプションのアクセス許可
 
@@ -100,8 +106,10 @@ Azure Resource Manager とクラシック デプロイ モデルの詳細につ�
 
 Automation アカウントを作成するときに、既定では、実行アカウントが自己署名証明書を使用して同時に作成されます。 Automation アカウントと共に作成しないことを選択した場合は、後で個別に作成できます。 Azure クラシック実行アカウントはオプションです。クラシック リソースを管理する必要がある場合は、個別に作成されます。
 
-既定の自己署名証明書ではなく、エンタープライズまたはサードパーティの証明機関 (CA) によって発行された証明書を使用する場合、実行およびクラシック実行アカウントに対して [[実行アカウントを作成する PowerShell スクリプト]](create-run-as-account.md#powershell-script-to-create-a-run-as-account) オプションを使用できます。
+> [!NOTE]
+> Azure Automation では、実行アカウントが自動的には作成されません。 これは、マネージド ID を使用して置き換えられました。
 
+既定の自己署名証明書ではなく、エンタープライズまたはサードパーティの証明機関 (CA) によって発行された証明書を使用する場合、実行およびクラシック実行アカウントに対して [[実行アカウントを作成する PowerShell スクリプト]](create-run-as-account.md#powershell-script-to-create-a-run-as-account) オプションを使用できます。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 

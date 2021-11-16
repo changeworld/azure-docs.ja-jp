@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 09/22/2021
-ms.openlocfilehash: 4897b557626be5071a21d2cc1a6a8194eaed8994
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.date: 10/21/2021
+ms.openlocfilehash: 8515ad8c9a3db24c8504094cf7273cd149b7ab2d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154282"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559183"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -419,7 +419,7 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
 コンピューティング インスタンスの[スケジュールを作成](#schedule)して、時刻と曜日に基づいて自動的に開始および停止することができます。
 
 > [!TIP]
-> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを停止または再起動する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 から 2 GB をクリアしてください。 コンピューティング インスタンスは、sudo シャットダウンをターミナルから発行して停止しないでください。
+> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを停止または再起動する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 から 2 GB をクリアしてください。 コンピューティング インスタンスは、sudo シャットダウンをターミナルから発行して停止しないでください。 コンピューティング インスタンスの一時ディスク サイズは、選択した VM サイズによって異なります。これは /mnt にマウントされます。
 
 # <a name="python"></a>[Python](#tab/python)
 

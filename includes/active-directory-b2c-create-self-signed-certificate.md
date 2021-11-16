@@ -3,14 +3,14 @@ author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/27/2021
+ms.date: 11/12/2021
 ms.author: kengaderdus
-ms.openlocfilehash: 90c564956db3cfba02c9adee8c4f2fa2c5bac4fa
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 957a119f1a48c1e79326d80a16763204cd41a669
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130050647"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252382"
 ---
 証明書をまだ持っていない場合は、自己署名証明書を使用できます。 自己署名証明書は、証明機関 (CA) によって署名されていないセキュリティ証明書であり、CA によって署名された証明書のセキュリティ保証を提供するものではありません。 
 
@@ -18,7 +18,7 @@ ms.locfileid: "130050647"
 
 Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) コマンドレットを使用して証明書を生成します。
 
-1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
+1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 `contosowebapp.contoso.onmicrosoft.com` などのアプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -31,11 +31,15 @@ Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/p
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. **[ユーザー証明書の管理]**  >  **[現在のユーザー]**  >  **[個人用]**  >  **[証明書]**  > *yourappname.yourtenant.onmicrosoft.com* を開きます。
+1. Windows コンピューターで、 **[ユーザー証明書の管理]** を検索して選択します 
+1. **[証明書 - 現在のユーザー]** で、 **[個人用]**  >  **[証明書]** >*yourappname.yourtenant.onmicrosoft.com* を開きます。
 1. 証明書を選択し、 **[アクション]**  >  **[すべてのタスク]**  >  **[エクスポート]** の順に選択します。
-1. **[はい]**  >  **[次へ]**  >  **[はい、秘密キーをエクスポートします]**  >  **[次へ]** を選択します。
-1. **[エクスポート ファイルの形式]** の既定値を受け入れます。
-1. 証明書のパスワードを指定します。
+1. **[次へ]**  >  **[はい、秘密キーをエクスポートします]**  >  **[次へ]** を選択します。
+1. **[エクスポート ファイルの形式]** の既定値を受け入れて、 **[次へ]** を選択します。
+1. **[パスワード]** オプションを有効にして、証明書のパスワードを入力し、 **[次へ]** を選択します。
+1. 証明書を保存する場所を指定するには、 **[参照]** を選択し、任意のディレクトリに移動します。 
+1. **[名前を付けて保存]** ウィンドウで、 **[ファイル名]** を入力して、 **[保存]** を選択します。
+1. **[次へ]** > **[完了]** の順に選択します。
 
 Azure AD B2C で .pfx ファイルのパスワードを受け入れるには、Windows 証明書ストアのエクスポート ユーティリティで、AES256-SHA256 ではなく、TripleDES-SHA1 オプションを使用してパスワードを暗号化する必要があります。
 

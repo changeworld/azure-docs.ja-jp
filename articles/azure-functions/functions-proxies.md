@@ -2,13 +2,13 @@
 title: Azure Functions でプロキシを操作する
 description: Azure Functions プロキシ の使用方法の概要
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: 34873d3d7e0200d2c6ee58096af880f26c428732
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 11/08/2021
+ms.openlocfilehash: 415d090aff611a3c7fc7cd7fb1c511b43b0702db
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429606"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058620"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -19,6 +19,8 @@ ms.locfileid: "129429606"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
+> プロキシは Azure Functions [バージョン](./functions-versions.md) 1.x ～ 3.x で使用できます。
+> 
 > アプリケーションに [Azure API Management](../api-management/api-management-key-concepts.md) を使用することも検討してください。 Functions プロキシと同じ機能に加え、OpenAPI 統合、レート制限、高度なポリシーなど、API を構築し、保守管理するためのその他のツールを提供します。 
 
 ## <a name="create-a-proxy"></a><a name="create"></a>プロキシを作成する

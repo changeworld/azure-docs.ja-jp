@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 0834fa6fd7eff41f37eb8f16dc3429189be284cb
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f16060e58783a96c95c71361908d6bfbc74e36ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688678"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281440"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
 **適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
@@ -143,7 +143,7 @@ VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行�
 > * VM のメトリックを表示する
 > * アラートを作成する
 
-次のチュートリアルに進み、Azure Security Center について学習してください。
+次のチュートリアルに進み、Microsoft Defender for Cloud について学習してください。
 
 > [!div class="nextstepaction"]
 > [VM のセキュリティの管理](../../security/fundamentals/overview.md)

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/13/2021
-ms.openlocfilehash: 1e83714026ac0d2ac50a4b30d358e127b92e99b2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/10/2021
+ms.openlocfilehash: b8464f8f919b05647ef053c78573692975fd0b63
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433557"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305904"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
@@ -239,14 +239,14 @@ VM に対して選択できるプロパティの一覧を次に示します。
 次の 2 つの必須フィールドは、上の図に示されています。
 
 - **ディスクのバージョン**: 提供するイメージのバージョンです。
-- **OS VHD リンク**: Azure 共有イメージ ギャラリーに格納されているイメージ。 [共有イメージ ギャラリー](azure-vm-create-using-approved-base.md#capture-image)でイメージをキャプチャする方法について説明します。
+- **OS VHD link\(OS VHD リンク\)** : Azure Compute Gallery (以前の Shared Image Gallery) に格納されているイメージです。 [Azure Compute Gallery](azure-vm-create-using-approved-base.md#capture-image) にイメージをキャプチャする方法をご確認ください。
 
 データ ディスク ( **[データ ディスクの追加 (最大 16)]** を選択) は、その Azure ストレージ アカウントに格納される VHD Shared Access Signature URI でもあります。 プランでの送信ごとに、イメージを 1 つだけ追加します。
 
 使用するオペレーティング システムに関係なく、ソリューションに必要な最小数のデータ ディスクのみを追加します。 顧客はデプロイ時にイメージの一部であるディスクを削除することはできませんが、デプロイ中またはデプロイ後にいつでもディスクを追加できます。
 
 > [!NOTE]
-> SAS を使用してイメージを提供し、データ ディスクがある場合は、SAS URI として提供する必要があります。 共有イメージを使用している場合は、共有イメージ ギャラリーでイメージの一部としてキャプチャされます。 オファーが Azure Marketplace に公開されると、Azure Storage または共有イメージ ギャラリーからイメージを削除できます。
+> SAS を使用してイメージを提供し、データ ディスクがある場合は、SAS URI として提供する必要があります。 共有イメージを使用している場合は、Azure Compute Gallery にご自分のイメージの一部としてキャプチャされます。 オファーが Azure Marketplace に公開されると、そのイメージはお使いの Azure ストレージまたは Azure Compute Gallery から削除できます。
 
 **[下書きの保存]** を選択してから、作成したばかりのプランの左上にある **[← プランの概要]** を選択します。
 

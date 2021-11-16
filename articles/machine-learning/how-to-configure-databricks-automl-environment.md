@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: c46803ae300acfe36163edcb92770c069ae67382
-ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
+ms.openlocfilehash: 0e3270c827e25ff13bd53c5a7d7d2610ce36c921
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132179898"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286180"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と AutoML を含む開発環境をセットアップする 
 
@@ -102,7 +102,6 @@ Azure Databricks は、以下のように使用できます。
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
 ```
-Databricks Runtime 7.0 以前の場合は、[init スクリプト](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)を使用して Azure Machine Learning SDK をインストールします。
 
 ### <a name="automl-config-settings"></a>AutoML 構成の設定
 

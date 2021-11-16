@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 09/17/2021
-ms.openlocfilehash: 9e0b90c4d9ec306e462cef63f27e7a306a8289df
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 830c636dfe3f8179a459fd8bfe7aedd51ff11902
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077562"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861115"
 ---
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 このセクションでは、Azure CLI を使用して IoT ハブとリソース グループを作成します。  Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 IoT ハブは、IoT アプリケーションとデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
@@ -53,7 +53,7 @@ IoT ハブとリソース グループを作成するには、次のようにし
 このクイックスタートの残りの部分では、IoT エクスプローラーを使用して、IoT ハブへのデバイスの登録と、デバイス テレメトリの表示を行います。 このセクションでは、先ほど作成した IoT ハブに接続し、パブリック モデル リポジトリからプラグ アンド プレイ モデルを読み取るように IoT エクスプローラーを構成します。 
 
 > [!NOTE]
-> Azure CLI を使用してデバイスを登録することもできます。 *[az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) --device-id mydevice --hub-name {YourIoTHubName}* コマンドを使用して新しいデバイスを登録し、 *[az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) --device-id mydevice --hub-name {YourIoTHubName}* コマンドを使用してデバイスのプライマリ接続文字列を取得します。 デバイスの接続文字列を書き留めたら、"[デバイスを実行する](#run-a-device)" に進むことができます。
+> Azure CLI を使用してデバイスを登録することもできます。 *[az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) --device-id mydevice --hub-name {YourIoTHubName}* コマンドを使用して新しいデバイスを登録し、 *[az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) --device-id mydevice --hub-name {YourIoTHubName}* コマンドを使用してデバイスのプライマリ接続文字列を取得します。 デバイスの接続文字列を書き留めたら、「[デバイス サンプルを実行する](#run-the-device-sample)」に進むことができます。
 
 IoT ハブへの接続を追加するには:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 92bc5dd433c5cdc32b2598a35aadcce6be7b1c9c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9d245ab63e65048f91179b6255f23ee3a12942ee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828006"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル: Azure Active Directory と Picturepark の統合
 
@@ -104,7 +104,7 @@ Picturepark を使用した Azure AD SSO を構成してテストするには、
 
     ![構成 URL のコピー](./media/picturepark-tutorial/configure.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -116,7 +116,7 @@ Picturepark を使用した Azure AD SSO を構成してテストするには、
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Picturepark へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -128,13 +128,13 @@ Picturepark を使用した Azure AD SSO を構成してテストするには、
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name=&quot;configure-picturepark-sso&quot;></a>Picturepark の SSO の構成
+## <a name="configure-picturepark-sso"></a>Picturepark の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、Picturepark 企業サイトに管理者としてサインインします。
 
 2. 画面上部のツール バーで、[**管理ツール**]、[**管理コンソール**] の順にクリックします。
    
-    ![[Management Console]](./media/picturepark-tutorial/tools.png &quot;[Management Console]")
+    ![[Management Console]](./media/picturepark-tutorial/tools.png "[Management Console]")
 
 3. [**認証**]、[**ID プロバイダー**] の順にクリックします。
    
@@ -216,4 +216,4 @@ Azure AD ユーザーが Picturepark にサインインできるようにする�
 
 ## <a name="next-steps"></a>次のステップ
 
-Picturepark を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Picturepark を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

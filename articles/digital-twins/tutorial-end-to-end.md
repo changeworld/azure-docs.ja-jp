@@ -1,22 +1,22 @@
 ---
 title: チュートリアル:エンド ツー エンドのソリューションを接続する"
 titleSuffix: Azure Digital Twins
-description: デバイス データによって駆動されるエンド ツー エンドの Azure Digital Twins ソリューションを構築するチュートリアル。
+description: このチュートリアルに従って、デバイス データによって駆動されるエンド ツー エンドの Azure Digital Twins ソリューションを構築する方法を学習します。
 author: baanders
 ms.author: baanders
-ms.date: 8/23/2021
+ms.date: 10/19/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9d19a74dc7bacc996fe328679d9c3e12766bfadf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9233f33818e9961cc5daf8cf35b14457172ecae3
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626192"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504837"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
-Azure Digital Twins インスタンスは、環境のライブ データによって駆動される完全なエンド ツー エンドのソリューションを設定するために、デバイスとデータの管理を目的とした他の Azure サービスに接続することができます。
+この Azure Digital Twins のチュートリアルでは、サービスの機能を示すエンド ツー エンドのソリューションを構築する方法について説明します。 Azure Digital Twins インスタンスは、環境のライブ データによって駆動される完全なエンド ツー エンドのソリューションを設定するために、デバイスとデータの管理を目的とした他の Azure サービスに接続することができます。
 
 このチュートリアルでは次のことを行います。
 > [!div class="checklist"]
@@ -51,7 +51,7 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 * [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) の使用例 (*CommandLoop.cs* 内で確認可能)
 * Azure Digital Twins API を呼び出すためのコンソール インターフェイス
 * *SampleClientApp* - サンプル Azure Digital Twins ソリューション
-* *SampleFunctionsApp* - IoT Hub および Azure Digital Twins のイベントから受け取ったテレメトリの結果として Azure Digital Twins グラフを更新する Azure Functions アプリ
+* *SampleFunctionsApp* - IoT Hub および Azure Digital Twins のイベントから受け取ったテレメトリに基づいて Azure Digital Twins グラフを更新する Azure Functions アプリ
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>事前に作成されたツイン グラフをインスタンス化する
 
@@ -393,7 +393,7 @@ ObserveProperties thermostat67 Temperature
 
 ## <a name="run-the-simulation-and-see-the-results"></a>シミュレーションを実行して結果を確認する
 
-これで、シミュレートされたデバイスから Azure Digital Twins へのイベント フローが可能になりました。また、必要に応じて、Azure Digital Twins グラフを使用してツインを更新することもできます。 このセクションでは、デバイス シミュレーターをもう一度実行して、設定したイベント フロー全体を開始し、Azure Digital Twins にクエリを実行してライブの結果を確認します。
+これで、イベントには、シミュレートされたデバイスから Azure Digital Twins にフローし、必要に応じて、Azure Digital Twins グラフを使用してツインを更新する機能が必要になります。 このセクションでは、デバイス シミュレーターをもう一度実行して、設定したイベント フロー全体を開始し、Azure Digital Twins にクエリを実行してライブの結果を確認します。
 
 _**DeviceSimulator**_ プロジェクトが開いている Visual Studio ウィンドウに移動し、プロジェクトを実行します。
 

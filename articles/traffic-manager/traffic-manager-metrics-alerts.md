@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: b18e0329aeb4e95e021c3326b6b428c10edc0c6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaa1ef35432a0e31376bcff8f50bc8bdffbfaf58
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586418"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054670"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
 
@@ -63,6 +63,17 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager メトリックのアラート
 Traffic Manager からメトリックをプロセスおよび表示することに加えて、Azure Monitor ではお客様はこれらのメトリックに関連するアラートを構成して受信できます。 アラートを引き起こすためにこれらのメトリックで満たす必要がある条件、これらの条件を監視する頻度、アラートの送信方法を選択できます。 詳細については、[Azure Monitor アラートのドキュメント](../azure-monitor/alerts/alerts-metric.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+プローブがダウンしたときにシステムに通知されるようにするには、アラート監視が重要です。 非常に機密性の高い監視は、邪魔になることがあります。 Traffic Manager では、回復性を向上させるために複数のプローブをデプロイします。 プローブの状態のしきい値は、0.5 未満である必要があります。 **アップ** 状態の平均が 0.5 を下回る場合 (つまり、プローブの 50% 未満がアップの場合)、エンドポイント障害のアラートが出される必要があります。
+
+> [!NOTE]
+> 回復性を向上させるために、複数のプローブがデプロイされます。 送信されている多数のプローブのうち 1 つがダウンしている場合、エンドポイントがダウンしていることを反映しているとは限りません。 返されたプローブの大半がダウンしている場合、エンドポイントはダウンとしてのみ分類されます。
+
+次の構成は、アラート設定の一例です。
+
+:::image type="content" source="./media/traffic-manager-metrics-alerts/alert-example.png" alt-text="プローブしきい値アラートの例のスクリーンショット。":::
+
+プローブと監視の詳細については、「[Traffic Manager エンドポイントの監視](traffic-manager-monitoring.md)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
 - [Azure Monitor サービス](../azure-monitor/essentials/metrics-supported.md)を確認する
 - [Azure Monitor を使用してグラフを作成](../azure-monitor/essentials/metrics-getting-started.md#create-your-first-metric-chart)する方法を確認する

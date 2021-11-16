@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, references_regions, ignite-fall-2021
-ms.openlocfilehash: 8c2286b73435fae063da0d9f39eb78d9ebef350d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7a9f0692f45f1d97824d4428e6a777e38b372d8a
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090011"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025933"
 ---
 # <a name="how-to-create-custom-text-classification-projects"></a>カスタム テキスト分類プロジェクトを作成する方法
 
@@ -104,9 +104,9 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 次に、ストレージ アカウントに[適切なロール](#roles-for-your-storage-account)を割り当てて、言語リソースに接続する必要があります。 
 
-## <a name="roles-for-your-azure-resource"></a>Azure リソースのロール
+## <a name="roles-for-your-azure-language-resource"></a>Azure 言語リソースのロール
 
-所有者または共同作成者のロールが Azure リソースに割り当てられている必要があります。
+**所有者** または **共同作成者** のロールが Azure 言語リソースに割り当てられている必要があります。
 
 ## <a name="enable-identity-management-for-your-resource"></a>リソースの ID 管理を有効にする
 

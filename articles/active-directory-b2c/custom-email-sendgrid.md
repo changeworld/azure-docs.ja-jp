@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 304b7056fda06e017be445b57a4b75aef6a17ffc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7cebff64b67d5ec9f97700929d576ef8dbbc9bf0
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131007420"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180105"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -64,10 +64,10 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポリシー キーに格納したら、SendGrid [動的トランザクション テンプレート](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)を作成します。
 
-1. SendGrid サイトで [[transactional templates]\(トランザクション テンプレート\)](https://sendgrid.com/dynamic_templates) ページを開き、 **[テンプレートの作成]** を選択します。
-1. 「`Verification email`」のような一意のテンプレート名を入力し、 **[保存]** を選択します。
-1. 新しいテンプレートの編集を開始するには、 **[バージョンの追加]** を選択します。
-1. **[コード エディター]** を選択し、 **[続行]** を選択します。
+1. SendGrid サイトで [[transactional templates]\(トランザクション テンプレート\)](https://sendgrid.com/dynamic_templates) ページを開き、 **[Create a Dynamic Template]\(動的テンプレートの作成\)** を選択します。
+1. 「`Verification email`」のような一意のテンプレート名を入力し、 **[Create]\(作成\)** を選択します。
+1. 新しいテンプレートの編集を開始するには、テンプレート (つまり `Verification email`) を選択して **[Add Version]\(バージョンの追加\)** を選択します。
+1. **[Blank Template]\(空のテンプレート\)** を選択して、 **[Code Editor]\(コード エディター\)** を選択します。
 1. HTML エディターに次の HTML テンプレートを貼り付けるか、独自のテンプレートを貼り付けます。 `{{otp}}` パラメーターと `{{email}}` パラメーターは、ワンタイム パスワード値とユーザー電子メール アドレスで動的に置換されます。
 
     ```HTML
@@ -162,10 +162,14 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
     </html>
     ```
 
-1. 左側にある **[設定]** を展開し、 **[メールの件名]** に「`{{subject}}`」と入力します。
-1. **[テンプレートの保存]** を選択します。
+1. 左側にある **[Settings]\(設定\)** を展開し、 **[Version Name]\(バージョン名\)** にテンプレートのバージョンを入力します。 
+1. **[Subject]\(件名\)** に「`{{subject}}`」と入力します。
+1. ページの最上部の **[Save]\(保存\)** を選択します。
 1. **[Transactional Templates]\(トランザクション テンプレート\)** に戻るには、戻る矢印を選択します。
 1. 後の手順で使用するために、作成したテンプレートの **ID** を記録します。 たとえば、「 `d-989077fbba9746e89f3f6411f596fb96` 」のように入力します。 [要求変換を追加する](#add-the-claims-transformation)ときにこの ID を指定します。
+
+
+[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C の要求の種類を追加する
 
@@ -387,7 +391,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>DisplayControl への参照を付ける
 
-最後の手順では、作成した DisplayControl への参照を追加します。 既存の `LocalAccountSignUpWithLogonEmail` と `LocalAccountDiscoveryUsingEmailAddress` セルフアサート技術プロファイルを次のように置き換えます。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合。 これらの技術プロファイルでは、DisplayControl を参照する `DisplayClaims` が使用されます。
+最後の手順では、作成した DisplayControl への参照を追加します。 基本ポリシーで構成されている既存の `LocalAccountSignUpWithLogonEmail` および `LocalAccountDiscoveryUsingEmailAddress` セルフアサート技術プロファイルを、次の XML スニペットでオーバーライドします。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合、これらの技術プロファイルでは `DisplayControl` への参照を伴う `DisplayClaims` が使用されています。
 
 詳細については、[セルフアサート技術プロファイル](restful-technical-profile.md)に関するページと「[DisplayControl](display-controls.md)」を参照してください。
 
@@ -396,13 +400,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -413,13 +410,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
       </DisplayClaims>
     </TechnicalProfile>
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
       </DisplayClaims>
@@ -472,7 +462,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -554,10 +544,11 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
     <!-- Email validation error messages-->
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
@@ -565,13 +556,10 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 </LocalizedResources>
 ```
 
-ローカライズされた文字列を追加した後に、LocalAccountSignUpWithLogonEmail と LocalAccountDiscoveryUsingEmailAddress の技術プロファイルから OTP 検証エラー メッセージのメタデータを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム メール確認ポリシーの例は GitHub で確認できます。
-
-- [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+- [カスタム メール確認 - DisplayControls カスタム ポリシー](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/SendGrid)の例は GitHub で確認できます。
 - カスタム REST API や任意の HTTP ベース SMTP メール プロバイダーの使用方法については、「[Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する](restful-technical-profile.md)」を参照してください。
 
 ::: zone-end

@@ -6,13 +6,14 @@ ms.service: marketplace
 ms.topic: article
 author: navits09
 ms.author: navits
-ms.date: 10/26/2021
-ms.openlocfilehash: 22523b73847b21426eb1fa56af665274fc830b4b
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.reviewer: amhindma
+ms.date: 11/10/2021
+ms.openlocfilehash: d8f2435fe78465ee40e3cf6011db14d6daf7c04f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851004"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324652"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースでのプライベート プラン
 
@@ -57,7 +58,7 @@ ms.locfileid: "131851004"
 
 新規と既存のプライベート プランの両方で、公開元は、サブスクリプション ID を使用してターゲット顧客を指定できます。 Azure アプリケーションとマネージド サービスのオファーの場合、公開元は、プライベート プランの利用可用性を個々の Azure サブスクリプション ID に制限できます。 SaaS オファーの場合、公開元は、Azure Active Directory テナント ID を関連付け、プライベート プランの利用可用性を制限できます。 仮想マシン オファーの場合、公開元は、Azure テナント ID、サブスクリプション ID、または両方を使用し、プライベート プランにアクセスできる対象ユーザーを割り当てできます。 これらのオファーの種類の場合、最大 10 の ID を手動で追加するか、10 を超える ID が必要な場合は CSV スプレッドシートをインポートできます。
 
-オファーが認定を受けて公開された後、プライベート サブスクリプションの同期機能を使用することで、プランの顧客を更新したり、削除したりできます。 この機能により、公開元は、オファーを再び認定したり公開したりせずに、プライベート プランを提示する顧客の一覧を迅速かつ簡単に更新できます。
+オファーが認定され、公開されたら、プライベート ユーザーの同期機能を使用することで、プランの顧客を更新したり、削除したりできます。 この機能により、公開元は、オファーを再び認定したり公開したりせずに、プライベート プランを提示する顧客の一覧を迅速かつ簡単に更新できます。
 
 ## <a name="deploying-a-private-plan"></a>プライベート プランをデプロイする
 

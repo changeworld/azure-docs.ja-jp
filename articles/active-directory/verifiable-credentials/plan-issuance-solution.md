@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: d724c41fd16ea762fc96c36e67fe4a00a5b5e72d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdf6ef5910e31dc21929cf484b2b1ad580badef7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728165"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319722"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials-issuance-solution-preview"></a>Azure Active Directory の検証可能な資格情報の発行ソリューションを計画する (プレビュー)
 
@@ -286,7 +286,7 @@ Azure AD の検証可能な資格情報の発行サービス、Azure Key Vault�
 
 * 構成の変更を監視し、アラートを送信するために、Azure Storage アカウントのログを有効にします。 詳細については、「[Azure Blob Storage の監視](../../storage/blobs/monitor-blob-storage.md)」を参照してください。
 
-* 長期保有のため、[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel) などのセキュリティ情報イベント管理 (SIEM) システムにログをアーカイブします。
+* 長期保有のため、[Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel) などのセキュリティ情報イベント管理 (SIEM) システムにログをアーカイブします。
 
 * 以下を使用してスプーフィングのリスクを軽減します。
 

@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: d08d691b7ef990ac351984798efd1562171a023a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c434319e48bb2bf1f7d0321a8200e9d42532e659
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553420"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289739"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーにデータをインポートする
 
@@ -66,7 +66,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 - 現時点では、デザイナーでは表形式のデータセットのみを視覚化できます。 デザイナーの外部でファイル データセットを登録した場合、デザイナー キャンバスでそのデータセットを視覚化することはできません。
 - 現在デザイナーでサポートされるのは、**Azure Blob Storage** に格納されるプレビューの出力のみです。 出力データストアの確認と変更は、コンポーネントの右側のパネルにある **[パラメーター]** タブの **[Output settings]\(出力設定\)** から実行できます。
 - データが仮想ネットワーク (VNet) に格納されているときにプレビューする場合は、データストアのワークスペース マネージド ID を有効にする必要があります。
-    1. 関連するデータストアにアクセスし、 **[Update authentication]\(認証の更新\)** をクリックします。
+    1. 関連するデータストアにアクセスし、 **[認証の更新]** をクリックします。
     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="資格情報の更新":::
     1. **[はい]** を選択して、ワークスペース マネージド ID を有効にします。
     :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="ワークスペース マネージド ID を有効にする":::

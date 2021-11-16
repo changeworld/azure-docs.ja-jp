@@ -6,12 +6,12 @@ title: Azure Spring Cloud の参照アーキテクチャ
 ms.author: akaleshian
 ms.service: spring-cloud
 description: この参照アーキテクチャは、Azure Spring Cloud を使用するための一般的なエンタープライズ ハブとスポーク設計を使用した基盤です。
-ms.openlocfilehash: d3124f9e9eac913a333e4ab186c871297e955d1e
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 5d8886453a3047d9ce48b875ce4841d640d0f2b1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469088"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323067"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud の参照アーキテクチャ
 
@@ -82,7 +82,7 @@ Azure Spring Cloud には、次の 2 つの専用サブネットが必要です�
 
 * [Azure Pipelines][5]: 更新された Spring Boot アプリを Azure Spring Cloud に自動的にデプロイできる、完全な機能を備えた継続的インテグレーションまたは継続的開発 (CI/CD) サービス。
 
-* [Azure Security Center][4]: オンプレミス、複数のクラウド、および Azure にわたるワークロードのために統合されたセキュリティ管理および脅威防止システム。
+* [Microsoft Defender for Cloud][4]: オンプレミス、複数のクラウド、および Azure にわたるワークロードのために統合されたセキュリティ管理および脅威防止システム。
 
 * [Azure Spring Cloud][1]: Java ベースの Spring Boot アプリケーションと .NET ベースの [Steeltoe][9] アプリケーションに特化して設計および最適化されたマネージド サービス。
 
@@ -136,7 +136,7 @@ Azure Spring Cloud には、次の 2 つの専用サブネットが必要です�
 
 * [Azure Pipelines][5]: 更新された Spring Boot アプリを Azure Spring Cloud に自動的にデプロイできる、完全な機能を備えた継続的インテグレーションまたは継続的開発 (CI/CD) サービス。
 
-* [Azure Security Center][4]: オンプレミス、複数のクラウド、および Azure にわたるワークロードのために統合されたセキュリティ管理および脅威防止システム。
+* [Microsoft Defender for Cloud][4]: オンプレミス、複数のクラウド、および Azure にわたるワークロードのために統合されたセキュリティ管理および脅威防止システム。
 
 * [Azure Spring Cloud][1]: Java ベースの Spring Boot アプリケーションと .NET ベースの [Steeltoe][9] アプリケーションに特化して設計および最適化されたマネージド サービス。
 
@@ -167,7 +167,7 @@ Azure Spring Cloud は、オペレーショナル エクセレンスの複数の
 * Azure Pipelines を使用すると、人為的なエラーを回避するのに役立つと同時に、デプロイの信頼性と整合性を確保することができます。
 * Azure Monitor と Application Insights を使用して、ログと利用統計情報を格納できます。
   収集されたログとメトリック データを評価して、ご利用のアプリケーションの正常性とパフォーマンスを確かめることができます。 アプリケーション パフォーマンス監視 (APM) は、Java エージェントを使用してサービスに完全に統合されます。 このエージェントで、追加のコードを必要とせずに、デプロイされたすべてのアプリケーションと依存関係を可視化できます。 詳細については、ブログ記事の「[Azure Spring Cloud でアプリケーションと依存関係を簡単に監視する][15]」を参照してください。
-* Azure Security Center を使用すると、指定されたデータを分析および評価するためのプラットフォームを提供することによって、アプリケーションで確実にセキュリティを維持することができます。
+* Microsoft Defender for Cloud を使用すると、指定されたデータを分析および評価するためのプラットフォームを提供することによって、アプリケーションで確実にセキュリティを維持することができます。
 * サービスでさまざまなデプロイ パターンがサポートされます。 詳細については、「[Azure Spring Cloud でステージング環境を設定する][14]」を参照してください。
 
 ### <a name="reliability"></a>[信頼性]

@@ -2,21 +2,21 @@
 title: 列ストア インデックスのパフォーマンスの向上
 description: メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。
 services: synapse-analytics
-author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: jrasnick
-ms.reviewer: igorstan
+ms.date: 10/18/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 750fc421cd644ec41384d43705b41602df24719b
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 95d3a7c44608cd44eaa95be44572b56c4231e57f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860985"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237835"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>列ストア インデックスのパフォーマンスのために行グループの品質を最大化する
 
@@ -42,13 +42,13 @@ ms.locfileid: "121860985"
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 
-行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) には、SQL DB に一致するビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
+行グループの行数や、トリミングがあった場合のトリミングの理由など、役に立つ情報を示す動的管理ビュー (DMV) ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) には、SQL DB に一致するビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
 
 ```sql
-create view dbo.vCS_rg_physical_stats
-as
-with cte
-as
+CREATE VIEW dbo.vCS_rg_physical_stats
+AS
+WITH cte
+AS
 (
 select   tb.[name]                    AS [logical_table_name]
 ,        rg.[row_group_id]            AS [row_group_id]
@@ -65,11 +65,11 @@ JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  
                                                                             AND rg.[pdw_node_id]   = nt.[pdw_node_id]
                                         AND rg.[distribution_id]    = nt.[distribution_id]
 )
-select *
-from cte;
+SELECT *
+FROM cte;
 ```
 
-trim_reason_desc は、行グループがトリミングされたかどうかを示します (trim_reason_desc = NO_TRIM は、トリミングがなく、新しいグループが最適な品質であることを示します)。 次のトリミングの理由は、行グループのトリミングが不完全であることを示します。
+`trim_reason_desc` 列は、行グループがトリミングされたかどうかを示します (trim_reason_desc = NO_TRIM は、トリミングがなく、新しいグループが最適な品質であることを示します)。 次のトリミングの理由は、行グループのトリミングが不完全であることを示します。
 
 - BULKLOAD:このトリミング理由は、負荷の行の受信バッチが 100 万行未満の場合に使用されます。 (デルタ ストアへの挿入とは異なり) 挿入される行が 100,000 行を超え、トリミング理由が BULKLOAD に設定されている場合、エンジンでは圧縮された行グループが作成されます。 このシナリオでは、より多くの行を追加できるように、バッチ負荷を増やすことをお勧めします。 また、行グループはパーティション境界をまたぐことはできないため、パーティション構成を評価し直して細かくなり過ぎないようにします。
 - MEMORY_LIMITATION:100 万行の行グループを作成するには、エンジンに特定サイズの作業メモリが必要です。 読み込みセッションに使用できるメモリが、必要な作業メモリよりも少ない場合、行グループは途中でトリミングされます。 以下のセクションでは、必要なメモリを見積もり、メモリの割り当てを増やす方法について説明します。
@@ -88,8 +88,6 @@ trim_reason_desc は、行グループがトリミングされたかどうかを
 > 短い文字列の列は 32 バイト以下の文字列データを使用し、長い文字列の列は 32 バイト超の文字列データを使用します。
 
 長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ* を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに 1 つだけです。
-
-列ストアのメモリ要件の詳細については、[Synapse SQL のスケーリング: 構成とガイダンス](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)に関するビデオをご覧ください。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>メモリ要件を軽減する方法
 

@@ -1,14 +1,14 @@
 ---
 title: デバイス ビルダー用の Defender for IoT 用語集
 description: この用語集では、Defender for IoT プラットフォームに関する重要な用語と概念について簡単に説明しています。
-ms.date: 05/27/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 362e1838d4c37f0ba9d109e51ce9f654e0ee2796
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 34b1bf4f1c49588326c38915c35132219f34e1b3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018789"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056494"
 ---
 # <a name="defender-for-iot-glossary-for-device-builder"></a>デバイス ビルダー用の Defender for IoT 用語集
 
@@ -28,6 +28,7 @@ ms.locfileid: "113018789"
 |--|--|--|
 | **デバイス ツイン** | デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 | [モジュール ツイン](#m) <br /> <br />[Defender-IoT-micro-agent ツイン](#s) |
 | **Defender-IoT-micro-agent ツイン** `(DB)` | Defender-IoT-micro-agent ツインでは、ソリューション内の特定のデバイスごとに、デバイスのセキュリティに関連するすべての情報が保持されます。 | [デバイス ツイン](#d) <br /> <br />[モジュール ツイン](#m) |
+| **デバイス インベントリ** | Defender for IoT では、次のインベントリでデバイスを識別し、一意の単一ネットワーク デバイスとして分類します。 <br><br> - 1 枚以上の NIC を搭載したスタンドアロンの IT、OT、および IoT デバイス。 <br><br> - 複数のバックプレーン コンポーネントで構成されるデバイス。 これには、すべてのラック、スロット、モジュールが含まれます。 <br><br> - ネットワーク インフラストラクチャとして機能するデバイス。 たとえば、スイッチや、複数の NIC を搭載したルーターです。 <br><br> - パブリック インターネット IP アドレス、マルチキャスト グループ、ブロードキャスト グループは、インベントリ デバイスとは見なされません。 <br><br>60 日を超えて非アクティブ状態にあるデバイスは、非アクティブなインベントリ デバイスとして分類されます。|
 
 ## <a name="e"></a>E
 

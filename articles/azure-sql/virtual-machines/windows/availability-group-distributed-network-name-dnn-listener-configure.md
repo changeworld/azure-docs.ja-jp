@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 3ad963def4866e7528527400ff259502441c9dbf
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f4a79ae5b1083bf9091486e9f4d87c6fdad14747
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130165625"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156904"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>可用性グループの DNN リスナーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure VM 上の SQL Server を使用すると、分散ネットワーク名 (DNN) によって、クラスター化された適切なリソースにトラフィックがルーティングされます。 これにより、仮想ネットワーク名 (VNN) リスナーよりも簡単に Always On 可用性グループ (AG) に接続する方法が提供されます。Azure Load Balancer は必要ありません。
+> [!TIP]
+> 同じ Azure 仮想ネットワーク内の[複数のサブネット](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)に SQL Server VM を作成することで、Always On 可用性グループ (AG) に対して分散ネットワーク名が不要になります。
+
+1 つのサブネット内の Azure VM 上の SQL Server を使用すると、分散ネットワーク名 (DNN) によって、クラスター化された適切なリソースにトラフィックがルーティングされます。 これにより、仮想ネットワーク名 (VNN) リスナーよりも簡単に Always On 可用性グループ (AG) に接続する方法が提供されます。Azure Load Balancer は必要ありません。
 
 この記事では、高可用性とディザスター リカバリー (HADR) のために、DNN リスナーを構成して、VNN リスナーを置き換え、Azure VM 上の SQL Server で可用性グループにトラフィックをルーティングする方法について説明します。
 

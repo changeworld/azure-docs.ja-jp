@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 11/02/2021
 ms.author: duau
-ms.openlocfilehash: 0e62c64aa5e1aa3f29c58510bb53f092b9417bb6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5e0cac6f9ba6a245ec201666adb2c5cfeed79c38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477835"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343099"
 ---
 # <a name="end-to-end-tls-with-azure-front-door"></a>Azure Front Door を使用したエンド ツー エンド TLS
 
@@ -54,6 +54,8 @@ HTTPS 接続の場合、Azure Front Door では、サブジェクト名がバッ
 
 セキュリティの観点から、Microsoft では証明書のサブジェクト名のチェックを無効にすることを推奨していません。 たとえば、テストなどの特定のユース ケースでは、配信元で自己署名証明書を使用する必要があります。 HTTPS 接続の失敗を解決するための回避策として、Azure Front Door で証明書のサブジェクト名のチェックを無効にすることができます。 無効にするオプションは、Azure portal の Azure Front Door 設定と、Azure Front Door API の BackendPoolsSettings にあります。 
 
+## <a name="frontend-tls-connection-client-to-front-door"></a>フロントエンド TLS 接続 (クライアントから Front Door)
+
 Azure Front Door カスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、Azure Front Door によって管理されている証明書を使用するか、独自の証明書を使用するかを選択できます。  
 
 * Azure Front Door マネージド証明書では、DigiCert を介して標準の TLS/SSL 証明書が提供され、Azure Front Door の Key Vault に格納されます。   
@@ -62,11 +64,13 @@ Azure Front Door カスタム ドメインでコンテンツを安全に配信�
 
 * 自己署名証明書はサポートされていません。  [カスタム ドメインの HTTPS を有効にする方法](front-door-custom-domain-https.md)を参照してください。
 
-Azure Front Door マネージド証明書の場合、証明書は Azure Front Door によって管理され、90 日の有効期間内に自動的にローテーションされます。 Azure Front Door マネージド証明書を使用していて、証明書の有効期限まであと 60 日未満である場合は、サポート チケットを提出します。 
+### <a name="certificate-autorotation"></a>証明書の自動ローテーション
+
+Azure Front Door マネージド証明書では、証明書は Azure Front Door によって管理され、90 日の有効期間内に自動ローテーションされます。 Azure Front Door の Standard/Premium マネージド証明書では、証明書は Azure Front Door によって管理され、45 日の有効期間内に自動ローテーションされます。 Azure Front Door マネージド証明書を使用していて、証明書の有効期限まで 60 日未満、また Standard/Premium SKU の場合 30 日未満の場合、サポート チケットを提出してください。 
 
 独自のカスタム TLS/SSL 証明書の場合:
 
-1. キー コンテナーで新しいバージョンの証明書が利用可能になったときに、証明書を最新バージョンに自動的にローテーションするには、シークレットのバージョンを "Latest" に設定します。 カスタム証明書の場合、証明書の有効期限に関係なく、1 から 2日以内に新しいバージョンの証明書で自動的にローテーションされます。
+1. キー コンテナーで新しいバージョンの証明書が利用可能になったときに、証明書を最新バージョンに自動的にローテーションするには、シークレットのバージョンを "Latest" に設定します。 カスタム証明書の場合、証明書の有効期限に関係なく、1 から 2 日以内に新しいバージョンの証明書に自動ローテーションされます。
 
 1. 特定のバージョンが選択されている場合、自動ローテーションはサポートされません。 証明書をローテーションするには、新しいバージョンを手動で再選択する必要があります。 新しいバージョンの証明書またはシークレットがデプロイされるまで、最大で 24 時間かかります。
 
@@ -74,7 +78,7 @@ Azure Front Door マネージド証明書の場合、証明書は Azure Front Do
 
 ## <a name="supported-cipher-suites"></a>サポートされている暗号スイート
 
-### <a name="for-tls12-the-following-cipher-suites-are-supported"></a>TLS1.2 では、次の暗号スイートがサポートされています。
+TLS1.2 では、次の暗号スイートがサポートされています。
 
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -84,7 +88,7 @@ Azure Front Door マネージド証明書の場合、証明書は Azure Front Do
 > [!NOTE]
 > Windows 10 以降に関しては、より良いセキュリティのために 1 つまたは両方の ECDHE 暗号スイートを有効化することを推奨します。 Windows 8.1、8、7 は、これらの ECDHE 暗号スイートと互換性がありません。 これらのオペレーティング システムとの互換性のために、DHE 暗号スイートが提供されています。
 
-### <a name="using-custom-domains-with-tls1011-enabled-the-following-cipher-suites-are-supported"></a>TLS1.0 または TLS1.1 が有効になっているカスタム ドメインを使用している場合は、次の暗号スイートがサポートされます。
+TLS1.0 または TLS1.1 が有効になっているカスタム ドメインを使用している場合は、次の暗号スイートがサポートされます。
 
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -107,7 +111,9 @@ Azure Front Door マネージド証明書の場合、証明書は Azure Front Do
 * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 * TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-## <a name="next-steps"></a>次の手順
+Azure Front Door は、特定の暗号スイートの構成はサポートしていません。 ご自分の証明機関 (Verisign、Entrust、Digicert など) から独自のカスタム TLS/SSL 証明書を取得することができます。 その後、生成する証明書に対して特定の暗号スイートがマークされるようにすることができます。 
+
+## <a name="next-steps"></a>次のステップ
 
 * Azure Front Door の[カスタム ドメインを構成します](front-door-custom-domain.md)。
 * [カスタム ドメインの HTTPS を有効します](front-door-custom-domain-https.md)。

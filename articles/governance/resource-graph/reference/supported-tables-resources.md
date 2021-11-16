@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 9dfdd77d400dfa91ec26df23d323f8290dc97da0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 9b3ce54d9554164b375ed1a08fdbcce8429dbb21
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536069"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054811"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -32,6 +32,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 
 ## <a name="desktopvirtualizationresources"></a>desktopvirtualizationresources
 
+- microsoft.chaos/experiments/statuses
+- microsoft.chaos/targets
+- microsoft.chaos/targets/capabilities
 - microsoft.desktopvirtualization/hostpools/sessionhosts
 
 ## <a name="extendedlocationresources"></a>extendedlocationresources
@@ -64,11 +67,16 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 ## <a name="iotsecurityresources"></a>iotsecurityresources
 
 - microsoft.iotsecurity/locations/devicegroups/alerts
+  - サンプル クエリ: [過去 30 日間の新しいアラートをすべて取得する](../samples/samples-by-category.md#get-all-new-alerts-from-the-past-30-days)
 - microsoft.iotsecurity/locations/devicegroups/devices
+  - サンプル クエリ: [ネットワーク内に存在する IoT デバイスの数をオペレーション システム別にカウントする](../samples/samples-by-category.md#count-how-many-iot-devices-there-are-in-your-network-by-operation-system)
 - microsoft.iotsecurity/locations/devicegroups/recommendations
+  - サンプル クエリ: [重要度が高い推奨事項をすべて取得する](../samples/samples-by-category.md#get-all-high-severity-recommendations)
 - microsoft.iotsecurity/onpremisesensors
 - microsoft.iotsecurity/sensors
+  - サンプル クエリ: [すべてのセンサーを種類別にカウントする](../samples/samples-by-category.md#count-all-sensors-by-type)
 - microsoft.iotsecurity/sites
+  - サンプル クエリ: [特定のタグ値を含むサイトを一覧表示する](../samples/samples-by-category.md#list-sites-with-a-specific-tag-value)
 
 ## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
 
@@ -77,6 +85,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.kubernetesconfiguration/extensions
   - サンプル クエリ: [Azure Monitor 拡張機能のあるすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-with-azure-monitor-extension)
   - サンプル クエリ: [Azure Monitor 拡張機能がないすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
+- microsoft.kubernetesconfiguration/fluxconfigurations
 - microsoft.kubernetesconfiguration/sourcecontrolconfigurations
 
 ## <a name="maintenanceresources"></a>maintenanceresources
@@ -129,14 +138,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.management/managementgroups
   - サンプル クエリ: [管理グループあたりのサブスクリプションの数](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
   - サンプル クエリ: [指定された管理グループのすべての管理グループの先祖を一覧表示する](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-management-group)
-- microsoft.resources/subscriptions (サブスクリプション)
-  - サンプル クエリ: [管理グループあたりのサブスクリプションの数](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
-  - サンプル クエリ: [サブスクリプション名を含むキー コンテナー](../samples/samples-by-category.md#key-vaults-with-subscription-name)
-  - サンプル クエリ: [指定されたサブスクリプションのすべての管理グループの先祖を一覧表示する](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-subscription)
-  - サンプル クエリ: [指定された管理グループの下にあるすべてのサブスクリプションを一覧表示する](../samples/samples-by-category.md#list-all-subscriptions-under-a-specified-management-group)
-  - サンプル クエリ: [結果から列を削除する](../samples/samples-by-category.md#remove-columns-from-results)
-  - サンプル クエリ: [管理グループ別のセキュリティ スコア](../samples/samples-by-category.md#secure-score-per-management-group)
 - Microsoft.Resources/subscriptions/resourceGroups (リソース グループ)
+  - サンプル クエリ: [2 つのクエリの結果を結合して 1 つの結果にする](../samples/samples-by-category.md)
   - サンプル クエリ: [リソース グループ上の特定の大文字と小文字が区別されないタグを含んだストレージ アカウントを検索する](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
   - サンプル クエリ: [リソース グループ上の特定の大文字と小文字が区別されたタグを含んだストレージ アカウントを検索する](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
 
@@ -149,7 +152,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
 - conexlink.mycloudit/accounts
 - crypteron.datasecurity/apps
-- dynatrace.observability/monitors
+- Dynatrace.Observability/monitors (Dynatrace)
 - GitHub.Enterprise/accounts (GitHub AE)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
@@ -159,6 +162,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - incapsula.waf/accounts
 - LiveArena.Broadcast/services (LiveArena ブロードキャスト)
 - Mailjet.Email/services (Mailjet メール サービス)
+- micorosft.web/kubeenvironments
 - Microsoft.AAD/domainServices (Azure AD Domain Services)
 - microsoft.aadiam/azureadmetrics
 - microsoft.aadiam/privateLinkForAzureAD (Azure AD 用プライベート リンク)
@@ -178,6 +182,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.AppPlatform/Spring (Azure Spring Cloud)
 - microsoft.archive/collections
 - Microsoft.Attestation/attestationProviders (構成証明プロバイダー)
+- microsoft.authorization/elevateaccessroleassignment
 - Microsoft.Authorization/resourceManagementPrivateLinks (リソース管理のプライベート リンク)
 - microsoft.automanage/accounts
 - microsoft.automanage/configurationprofilepreferences
@@ -196,6 +201,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.AzureArcData/sqlManagedInstances (SQL マネージド インスタンス - Azure Arc)
 - Microsoft.AzureArcData/sqlServerInstances (SQL Server - Azure Arc)
 - microsoft.azurecis/autopilotenvironments
+- microsoft.azurecis/dstsserviceaccounts
+- microsoft.azurecis/dstsserviceclientidentities
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -216,6 +223,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.azurestackhci/networkinterfaces
 - microsoft.azurestackhci/virtualharddisks
 - Microsoft.AzureStackHCI/virtualmachines (Azure Stack HCI 仮想マシン - Azure Arc)
+- microsoft.azurestackhci/virtualmachines/extensions
 - microsoft.azurestackhci/virtualnetworks
 - microsoft.backupsolutions/vmwareapplications
 - microsoft.baremetal/consoleconnections
@@ -242,8 +250,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Cdn/Profiles/AfdEndpoints (エンドポイント)
 - microsoft.cdn/profiles/endpoints (エンドポイント)
 - Microsoft.CertificateRegistration/certificateOrders (App Service 証明書)
-- microsoft.chaos/chaosexperiments (カオス実験)
-- microsoft.chaos/experiments
+- microsoft.chaos/chaosexperiments (カオス実験 (クラシック))
+- microsoft.chaos/experiments (カオス実験)
 - microsoft.classicCompute/domainNames (クラウド サービス (クラシック))
 - Microsoft.ClassicCompute/VirtualMachines (仮想マシン (クラシック))
 - Microsoft.ClassicNetwork/networkSecurityGroups (ネットワーク セキュリティ グループ (クラシック))
@@ -270,8 +278,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Compute/diskEncryptionSets (ディスク暗号化セット)
 - Microsoft.Compute/disks (ディスク)
 - Microsoft.Compute/galleries (共有イメージ ギャラリー)
-- Microsoft.Compute/galleries/applications (ギャラリー アプリケーション)
-- Microsoft.Compute/galleries/applications/versions (ギャラリー アプリケーション バージョン)
+- Microsoft.Compute/galleries/applications (VM アプリケーション)
+- Microsoft.Compute/galleries/applications/versions (VM アプリケーション バージョン)
 - Microsoft.Compute/galleries/images (イメージ定義)
 - Microsoft.Compute/galleries/images/versions (イメージ バージョン)
 - Microsoft.Compute/hostgroups (ホスト グループ)
@@ -309,6 +317,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.ConnectedVehicle/platformAccounts (接続された車両プラットフォーム)
 - microsoft.connectedvmwarevsphere/clusters
 - microsoft.connectedvmwarevsphere/datastores
+- microsoft.connectedvmwarevsphere/hosts
 - microsoft.connectedvmwarevsphere/resourcepools
 - Microsoft.connectedVMwareVSphere/vCenters (VMware vCenters)
 - Microsoft.ConnectedVMwarevSphere/VirtualMachines (VMware + AVS 仮想マシン)
@@ -356,7 +365,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.DataProtection/resourceGuards (リソース ガード (プレビュー))
 - microsoft.dataprotection/resourceoperationgatekeepers
 - microsoft.datareplication/replicationfabrics
-- microsoft.datareplication/replicationvaults
+- Microsoft.DataReplication/replicationVaults (Site Recovery コンテナー)
 - Microsoft.DataShare/accounts (データ共有)
 - Microsoft.DBforMariaDB/servers (Azure Database for MariaDB サーバー)
 - Microsoft.DBforMySQL/flexibleServers (Azure Database for MySQL フレキシブル サーバー)
@@ -450,6 +459,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.hybridcompute/machines/extensions
   - サンプルクエリ: [Azure Arc 対応サーバーにインストールされているすべての拡張機能を一覧表示する](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes (Azure Arc プライベート リンク スコープ)
+- microsoft.hybridcontainerservice/provisionedclusters
 - Microsoft.HybridData/dataManagers (StorSimple Data Managers)
 - Microsoft.HybridNetwork/devices (Azure ネットワーク機能マネージャー – デバイス (プレビュー))
 - Microsoft.HybridNetwork/networkFunctions (Azure ネットワーク機能マネージャー – ネットワーク機能 (プレビュー))
@@ -539,7 +549,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.MarketplaceApps/classicDevServices (従来の開発サービス)
 - microsoft.media/mediaservices (Media Services)
 - microsoft.media/mediaservices/liveevents (ライブ イベント)
-- microsoft.media/mediaservices/streamingEndpoints (ストリーミング エンドポイント)
+- microsoft.media/mediaservices/streamingendpoints (ストリーミング エンドポイント)
 - microsoft.media/mediaservices/transforms
 - microsoft media/videoanalyzers (Video Analyzer)
 - microsoft.microservices4spring/appclusters
@@ -566,12 +576,14 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.mobilenetwork/packetcorecontrolplanes/packetcoredataplanes/attacheddatanetworks
 - Microsoft.MobileNetwork/sims (Sims)
 - microsoft.mobilenetwork/sims/simprofiles
+- microsoft.monitor/accounts
 - Microsoft.NetApp/netAppAccounts (NetApp アカウント)
 - microsoft.netapp/netappaccounts/backuppolicies
 - Microsoft.NetApp/netAppAccounts/capacityPools (容量プール)
 - Microsoft.NetApp/netAppAccounts/capacityPools/Volumes (ボリューム)
 - microsoft.netapp/netappaccounts/capacitypools/volumes/mounttargets
 - Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots (スナップショット)
+- microsoft.netapp/netappaccounts/capacitypools/volumes/subvolumes
 - Microsoft.NetApp/netAppAccounts/snapshotPolicies (スナップショット ポリシー)
 - Microsoft.Network/applicationGateways (アプリケーション ゲートウェイ)
 - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies (Web アプリケーション ファイアウォール ポリシー (WAF))
@@ -660,7 +672,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.OperationsManagement/solutions (ソリューション)
 - microsoft.operationsmanagement/views
 - Microsoft.Orbital/contactProfiles (ContactProfiles)
-- microsoft.orbital/groundstations
+- Microsoft.Orbital/GroundStations (GroundStations)
 - microsoft.orbital/orbitalendpoints
 - microsoft.orbital/orbitalgateways
 - microsoft.orbital/orbitalgateways/orbitall2connections
@@ -678,6 +690,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.powerplatform/accounts
 - microsoft.powerplatform/enterprisepolicies
 - microsoft.projectbabylon/accounts
+- microsoft.providerhubdevtest/regionalstresstests
 - Microsoft.Purview/Accounts (Purview アカウント)
 - Microsoft.Quantum/Workspaces (Quantum ワークスペース)
 - Microsoft.RecommendationsService/accounts (Intelligent Recommendations アカウント)
@@ -696,14 +709,16 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.SaaS/applications (サービスとしてのソフトウェア (クラシック))
 - Microsoft.SaaS/resources (SaaS)
 - Microsoft.Scheduler/jobCollections (スケジューラ ジョブ コレクション)
-- Microsoft.Scom/managedInstances (Aquila リソース)
+- Microsoft.Scom/managedInstances (Aquila インスタンス)
 - microsoft.scvmm/clouds
 - Microsoft.scvmm/virtualMachines (SCVMM 仮想マシン - Azure Arc)
 - microsoft.scvmm/virtualmachinetemplates
 - microsoft.scvmm/virtualnetworks
 - microsoft.scvmm/vmmservers
 - Microsoft.Search/searchServices (Search Service)
+- microsoft.security/assignments
 - microsoft.security/automations
+- microsoft.security/customentitystoreassignments
 - microsoft.security/iotsecuritysolutions
 - microsoft.security/securityconnectors
 - Microsoft.SecurityDetonation/chambers (セキュリティ デトネーション チャンバー)
@@ -797,6 +812,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.web/certificates
 - Microsoft.Web/connectionGateways (オンプレミス データ ゲートウェイ)
 - Microsoft.Web/connections (API 接続)
+- microsoft.web/containerapps
 - Microsoft.Web/customApis (Logic Apps カスタム コネクタ)
 - Microsoft.Web/HostingEnvironments (App Service 環境)
 - Microsoft.Web/KubeEnvironments (App Service Kubernetes 環境)
@@ -814,7 +830,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - NGINX.NGINXPLUS/nginxDeployments (NGINX デプロイ)
 - Paraleap.CloudMonix/services (CloudMonix)
 - Pokitdok.Platform/services (PokitDok プラットフォーム)
-- Providers.Test/statefulIbizaEngines (アプリケーション評価)
+- private.contoso/employees
+- Providers.Test/statefulIbizaEngines (マイ リソース)
 - RavenHq.Db/databases (RavenHQ)
 - Raygun.CrashReporting/apps (Raygun)
 - Sendgrid.Email/accounts (SendGrid アカウント)

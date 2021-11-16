@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 328bfff2366efb416cbd41452a821256f675d0e2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 10435eba4127fbb58d939bfac0710aa90e2c7b32
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078695"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846256"
 ---
 # <a name="teams-interoperability-calling-and-chat"></a>Teams相互運用性: 呼び出しとチャット
 
@@ -33,20 +33,20 @@ Communication Services ユーザーと Teams テナント間で通話とチャ�
 
 Teams ユーザーと接続して通信するために Azure Communication Services を使用して構築されたカスタム アプリケーションは、エンド ユーザーまたはボットによって使用できます。また、アプリケーションの開発者が明示的に示す場合を限り、Teams ユーザーに対する表示方法に違いはありません。
 
-Teams ユーザーと通話やチャットを開始するには、そのユーザーの Azure Active Directory (AAD) のオブジェクト ID が必要です。 これを取得するには[Microsoft Graph API](/graph/api/resources/users) を使用するか、 [Azure AD Connect](../../../active-directory/hybrid/how-to-connect-sync-whatis.md) (または他のメカニズム) を使用してオンプレミスのディレクトリと AAD の間で同期する場合があります。
+Teams ユーザーと通話やチャットを開始するには、そのユーザーの Azure Active Directory (Azure AD) のオブジェクト ID が必要です。 これを取得するには、[Microsoft Graph API](/graph/api/resources/users) を使用します。また、[Azure AD Connect](../../../active-directory/hybrid/how-to-connect-sync-whatis.md) (または他のメカニズム) を使用してオンプレミスのディレクトリと Azure AD 間の同期を行っている場合は、オンプレミス ディレクトリからも取得できます。
 
 ## <a name="calling"></a>呼び出し
-Calling SDK を使用すると、Communication Services ユーザーまたはエンドポイントは、Teams ユーザー (Azure Active Directory (AAD) オブジェクト ID で識別される 1 対 1 の呼び出しを開始できます。 他の Communication Services ユーザーを呼び出す既存のアプリケーションを簡単に変更して、代わりに Teams ユーザーを呼び出すことができます。
+Calling SDK を使用すると、Communication Services ユーザーまたはエンドポイントは、Azure Active Directory (Azure AD) のオブジェクト ID で識別された Teams ユーザーと 1 対 1 の通話を開始できます。 他の Communication Services ユーザーを呼び出す既存のアプリケーションを簡単に変更して、代わりに Teams ユーザーを呼び出すことができます。
  
 [通話の管理 - Azure Communication Services に関するハウツーガイド | Microsoft Docs](../../how-tos/calling-sdk/manage-calls.md?pivots=platform-web)
 
-別の ACS ユーザーの呼び出し:
+[communicationUserId](/javascript/api/@azure/communication-common/communicationuseridentifier?view=azure-node-latest#communicationUserId) を使用して別の Communication Services エンドポイントを呼び出します。
 ```js
-const acsCallee = { communicationUserId: <'ACS_USER_ID>' }
+const acsCallee = { communicationUserId: '<ACS User ID>' }
 const call = callAgent.startCall([acsCallee]);
 ```
 
-Teams ユーザーの呼び出し:
+[microsoftTeamsUserId](/javascript/api/@azure/communication-common/microsoftteamsuseridentifier?view=azure-node-latest#microsoftTeamsUserId) を使用して Teams ユーザーを呼び出します。
 ```js
 const teamsCallee = { microsoftTeamsUserId: '<Teams User AAD Object ID>' }
 const call = callAgent.startCall([teamsCallee]);
@@ -55,16 +55,14 @@ const call = callAgent.startCall([teamsCallee]);
 **制限事項と既知の問題**
 - Teams ユーザーは「TeamsOnly」モードである必要があります。 Skype for Business ユーザーが 1 対 1 の呼び出しを受信 Communication Services できない。
 - グループ呼び出しへのエスカレーションはサポートされていません。
-- 通話履歴に Communication Services ユーザーが正しく表示されない
 - Communication Services の記録は、1 対 1 の呼び出しでは使用できません。
 - 通話転送、グループ通話の集荷、同化、ボイス メールなどの高度な通話ルーティング機能はサポートされていません。
 - Teams ユーザーは、転送/転送 Communication Services としてユーザーを設定できない。
-- LyncIpPhone フォークはサポートされていません。
+- Teams クライアントには、Communication Services ユーザーとの 1 対 1 の通話中に予期したとおりに動作しない機能が多数あります。
+- サードパーティ製の [Teams 用デバイス](/MicrosoftTeams/devices/teams-ip-phones)と [Skype IP 電話](/skypeforbusiness/certification/devices-ip-phones)はサポートされていません。
 
 ## <a name="chat"></a>チャット
-Chat SDK を使用すると、Communication Services ユーザーまたはエンドポイントは、Teams ユーザー (Azure Active Directory (AAD) オブジェクト ID で識別される 1:n チャットを開始できます。 他の Communication Services ユーザーとのチャットを作成する既存のアプリケーションを簡単に変更し、代わりに Teams ユーザーとのチャットを作成することができます。
-                                            
-[クイック スタート:チャットをアプリに追加する](../../quickstarts/chat/get-started.md?pivots=programming-language-javascript)
+Chat SDK を使用すると、Communication Services ユーザーまたはエンドポイントは、Azure Active Directory (AAD) のオブジェクト ID で識別された Teams ユーザーとのグループ チャットを開始できます。 他の Communication Services ユーザーとのチャットを作成する既存のアプリケーションを簡単に変更し、代わりに Teams ユーザーとのチャットを作成できます。 Chat SDK を使用して Teams ユーザーを参加者として追加する方法の例を次に示します。 Chat SDK を使用してメッセージを送信する方法、参加者を管理する方法などについては、[クイックスタート](../../quickstarts/chat/get-started.md?pivots=programming-language-javascript)のページを参照してください。
 
 Teams ユーザーとのチャットの作成:
 ```js
@@ -72,7 +70,7 @@ async function createChatThread() {
 const createChatThreadRequest = {  topic: "Hello, World!"  }; 
 const createChatThreadOptions = {
     participants: [ { 
-        id: { microsoftTeamsUserId: '<TEAMS_USER_ID>' }, 
+        id: { microsoftTeamsUserId: '<Teams User AAD Object ID>' }, 
         displayName: '<USER_DISPLAY_NAME>' }
     ] }; 
 const createChatThreadResult = await chatClient.createChatThread( 
@@ -80,26 +78,16 @@ createChatThreadRequest, createChatThreadOptions );
 const threadId = createChatThreadResult.chatThread.id; return threadId; }
 ```                                         
 
-**サポートされる機能**
--   送信/受信メッセージ (種類: テキスト、リッチテキスト、絵文字) 
--   Communication Services ユーザーは、送信されたメッセージを編集できます
--   送信済みメッセージの削除
--   リアルタイム通知を受け取る (現在、ACS でサポートされているスレッドおよびメッセージ関連イベント)
--   送信および入力インジケーターを受信する
--   開封確認メッセージを送信および受信する
--   参加者の追加とメッセージ履歴の共有: Teams ユーザーは Teams ユーザーのみを追加できます。 Communication Services ユーザーは、Teams と Communication Services ユーザーを追加できます。
--   チャットから既存の参加者を削除する
--   チャットを離れる
--   チャット トピックを更新する
--   Communication Services ユーザーはチャットを削除できます。
+テストを簡単に行えるように、[こちら](https://github.com/Azure-Samples/communication-services-web-chat-hero/tree/teams-interop-chat-adhoc)にサンプル アプリを公開しました。 作業を開始するには、Communication Services リソースと、相互運用が有効になった Teams テナントでこのアプリを更新してください。 
 
-
-**制限事項と既知の問題**
-- Teams ユーザーによるメッセージの編集に失敗します。
-- Communication Services によってスレッドが削除されると、Teams ユーザーのメッセージ履歴が削除され、Teams ユーザーがスレッドから削除されます。
-- 外部ユーザー用の Teams クライアント UI に整合性がありません。
-- Teams のクライアントを使用して、チャット参加者との通話を開始することはできません
-
+**制限事項と既知の問題** </br>
+プライベート プレビュー段階では、Communication Services ユーザーは、プレーンおよびリッチ テキスト メッセージ、入力インジケーター、確認メッセージ、リアルタイム通知の送受信など、Communication Services Chat SDK を使用してさまざまなアクションを実行できます。 ただし、Teams のチャット機能の多くはサポートされていません。 重要な動作と既知の問題を次に示します。
+-   チャットを開始できるのは、Communication Services ユーザーのみである。 
+-   Communication Services ユーザーは、gif、画像、またはファイルを送受信できない。 ファイルと画像へのリンクは共有できます。
+-   Communication Services ユーザーはチャットを削除できる。 これにより、Teams ユーザーはチャット スレッドから削除され、Teams クライアントからのメッセージ履歴は非表示になります。
+- 既知の問題: Communication Services ユーザーが参加者一覧に正しく表示されない。 現在、彼らは外部として表示されますが、ピープル カードの一貫性が損なわれる可能性があります。 
+- 既知の問題: Teams アプリ内から、チャットを通話にエスカレートできない。 
+- 既知の問題: Teams ユーザーによるメッセージの編集はサポートされていない。 
 
 ## <a name="privacy"></a>プライバシー
 Azure Communication Services と Microsoft Teams の間の相互運用性により、アプリケーションとユーザーは、Teams の呼び出し、会議、チャットに参加できます。 アプリケーションの開発者は、Teams の呼び出しまたは会議で記録または文字起こしが有効になったら、そのことをユーザーに通知する責任があります。

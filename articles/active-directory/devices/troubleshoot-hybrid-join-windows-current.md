@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6188dcd648b59ba7ff535a7431ff0bb47a6f660e
-ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
+ms.openlocfilehash: f5320812be623437099ed0ab587dbbe3d4abe6ef
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/10/2021
-ms.locfileid: "132136095"
+ms.locfileid: "132158758"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイスのトラブルシューティング
 
@@ -478,7 +478,7 @@ WamDefaultAuthority: organizations
 
 | エラー コード | 理由 | 解像度 |
 | --- | --- | --- |
-| **AADSTS50155: デバイス認証に失敗しました** | <li>Azure AD で、PRT を発行するデバイスを認証できません。<li>Azure portal で、デバイスが削除または無効化されていないことを確認します。 この問題の詳細については、「[Azure Active Directory デバイス管理の FAQ](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)」を参照してください。 | 「[Azure Active Directory デバイス管理の FAQ](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do)」にあるこの問題に関する手順に従って、デバイスの参加の種類に基づいてデバイスを再登録します。 |
+| **AADSTS50155: デバイス認証に失敗しました** | <li>Azure AD で、PRT を発行するデバイスを認証できません。<li>Azure portal で、デバイスが削除または無効化されていないことを確認します。 この問題の詳細については、「[Azure Active Directory デバイス管理の FAQ](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-11-devices)」を参照してください。 | 「[Azure Active Directory デバイス管理の FAQ](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do)」にあるこの問題に関する手順に従って、デバイスの参加の種類に基づいてデバイスを再登録します。 |
 | **AADSTS50034: ユーザー アカウント `Account` が `tenant id` ディレクトリに存在しない** | Azure AD で、テナント内のユーザー アカウントを検出できません。 | <li>ユーザーが正しい UPN を入力していることを確認します。<li>オンプレミスのユーザー アカウントが Azure AD と同期されていることを確認します。<li>指定された UPN は、イベント 1144 (Azure AD 分析ログ) に含まれます。 |
 | **AADSTS50126: 無効なユーザー名またはパスワードにより、資格情報の検証でエラーが発生しました。** | <li>Windows の LoginUI でユーザーが入力したユーザー名とパスワードが正しくありません。<li>テナントでパスワード ハッシュの同期が有効になっており、デバイスがハイブリッド参加済みで、ユーザーがパスワードを変更した直後である場合、新しいパスワードが Azure AD と同期されていない可能性があります。 | 新しい証明書を使用して新しい PRT を取得するには、Azure AD パスワード同期が完了するまで待ちます。 |
 | | |

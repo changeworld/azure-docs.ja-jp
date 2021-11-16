@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 00aa377ffc7f713159f4ff8a55b562eaf809980b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d3b2be483c134724ceea37f1afb905eea498001c
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064299"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132155998"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>SAP の継続的な脅威監視をデプロイする (パブリック プレビュー)
 
@@ -101,7 +101,7 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
     > SAP の **[Import Options]\(インポート オプション\)** 領域に、 **[Ignore Invalid Component Version]\(無効なコンポーネント バージョンを無視する\)** オプションが表示される場合があります。 表示されたら、続行する前にこのオプションを選択します。
     >
 
-1. SAP 変更要求 *14 (NPLK900140)* をインポートして、 **/MSFTSEN/SENTINEL_CONNECTOR** という名前の新しい SAP ロールを作成します。 **STMS_IMPORT** SAP トランザクション コードを使用します。
+1. SAP 変更要求 *14 (NPLK900163)* をインポートして、 **/MSFTSEN/SENTINEL_CONNECTOR** という名前の新しい SAP ロールを作成します。 **STMS_IMPORT** SAP トランザクション コードを使用します。
 
     次のような必要なアクセス許可を使用してロールが作成されていることを確認します。
 

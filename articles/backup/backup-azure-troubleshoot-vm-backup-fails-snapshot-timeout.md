@@ -2,14 +2,16 @@
 title: エージェントと拡張機能に関する問題のトラブルシューティング
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
 ms.topic: troubleshooting
-ms.date: 05/25/2021
+ms.date: 11/10/2021
 ms.service: backup
-ms.openlocfilehash: cefb166363677e0d4a7c52eae967b92a8216c825
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+author: v-amallick
+ms.author: v-amallick
+ms.openlocfilehash: 464b2e6ed2c968ea57d5396570d8a928d9d9bace
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264639"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301952"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -129,6 +131,9 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **エラー メッセージ**:Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 <br>
 
 暗号化された VM のバックアップ操作を正常に完了するには、キー コンテナーへのアクセス許可が必要です。 アクセス許可は、[Azure portal](./backup-azure-vms-encryption.md) または [PowerShell](./backup-azure-vms-automation.md#enable-protection) を使用して設定できます。
+
+>[!Note]
+>キー コンテナーへのアクセスに必要なアクセス許可が既に設定されている場合は、しばらくしてから操作を再試行してください。
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - Snapshot operation failed due to no network connectivity on the virtual machine (仮想マシンがネットワークに接続していないためにスナップショット操作が失敗しました)
 

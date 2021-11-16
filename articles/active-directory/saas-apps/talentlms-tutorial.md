@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 055c3774acfa3930e7fa1663a46629e80448c25f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1d9d9adec6c8b9db9429cebba29fdf4a7e5a304f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606040"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282691"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-talentlms"></a>チュートリアル: Azure AD SSO と TalentLMS の統合
 
@@ -191,4 +191,4 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
 ## <a name="next-steps"></a>次のステップ
 
-TalentLMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+TalentLMS を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

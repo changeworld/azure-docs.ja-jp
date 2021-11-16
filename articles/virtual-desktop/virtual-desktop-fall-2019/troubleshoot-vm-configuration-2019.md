@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f867ad9d55f5e5dbaac7962dd8e4ae4daeafee6f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 18a4c83dfa9998ede857147cf35d47d116fd9686
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776844"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444689"
 ---
 # <a name="azure-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Azure Virtual Desktop (クラシック) セッション ホスト仮想マシンの構成
 
@@ -178,7 +178,7 @@ VM の推奨されるプロビジョニング方法は、Azure Resource Manager 
 
 ## <a name="troubleshooting-issues-with-the-azure-virtual-desktop-side-by-side-stack"></a>Azure Virtual Desktop サイドバイサイド スタックで問題を解決する
 
-Azure Virtual Desktop サイドバイサイド スタックが Windows Server 2019 で自動的にインストールされます。 Microsoft Installer (MSI) を使用し、Microsoft Windows Server 2016 または Windows Server 2012 R2 にサイドバイサイド スタックをインストールします。 Microsoft Windows 10 の場合、Azure Virtual Desktop サイドバイサイド スタックは **enablesxstackrs.ps1** で有効になります。
+Windows Server 2019 以降では、Azure Virtual Desktop サイドバイサイド スタックが自動的にインストールされます。 Microsoft Installer (MSI) を使用し、Microsoft Windows Server 2016 または Windows Server 2012 R2 にサイドバイサイド スタックをインストールします。 Microsoft Windows 10 の場合、Azure Virtual Desktop サイドバイサイド スタックは **enablesxstackrs.ps1** で有効になります。
 
 サイドバイサイド スタックは主に 3 とおりの方法でセッション ホスト プール VM にインストールされるか、有効化されます。
 
@@ -354,7 +354,7 @@ Azure ギャラリーから、最新バージョンの Windows 10 バージョ�
 - Azure Virtual Desktop のトラブルシューティングの概要とエスカレーション トラックについては、[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview-2019.md)に関する記事を参照してください。
 - Azure Virtual Desktop 環境でテナントとホスト プールを作成しているときに発生した問題のトラブルシューティングを行う場合は、[テナントとホスト プールの作成](troubleshoot-set-up-issues-2019.md)に関する記事を参照してください。
 - Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題のトラブルシューティングを行う場合は、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration-2019.md)」を参照してください。
-- Azure Virtual Desktop クライアント接続の問題のトラブルシューティングを行う場合は、「[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection-2019.md)」を参照してください。
+- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection-2019.md)に関するページを参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](../troubleshoot-client.md) に関するページを参照してください
 - Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell-2019.md)」を参照してください。
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup-2019.md)に関するページを参照してください。
