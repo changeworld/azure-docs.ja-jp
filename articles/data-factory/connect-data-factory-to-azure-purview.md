@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
 ms.date: 10/25/2021
-ms.openlocfilehash: 1875b32d5a5f964b3a602b60d820ca377e0ee927
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 026dc4cb24c5e7b51fc5eec918cf92d3b6b23090
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040910"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846142"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory を Azure Purview に接続する (プレビュー)
 
@@ -72,13 +72,9 @@ Azure Purview に Data Factory を登録する方法については、「[Azure 
 
 データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 
 
-- **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
+データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールを付与します。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
-    作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
-
-- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview アカウントの Azure 組み込みの [**Purview データ キュレーター (レガシ)**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
-
-    作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview アカウントに Azure 組み込みの **所有者** ロールまたは **ユーザー アクセス管理者** ロールがある場合、この操作は成功します。
+作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
 
 ## <a name="monitor-purview-connection"></a>Purview 接続を監視する
 

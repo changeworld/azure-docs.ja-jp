@@ -3,21 +3,21 @@ title: Automation でエージェントベースの Windows Hybrid Runbook Worke
 description: この記事では、お使いのローカル データ センターまたはクラウド環境内の Windows ベースのマシン上で Runbook を実行するために使用できるエージェントベースの Hybrid Runbook Worker をデプロイする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/27/2021
+ms.date: 10/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 900ccf0434ee9d6dde9b0312a1bace180fe1470f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d2588864b2a6bdba913c9a7fb0bbc7af62e8c4c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706562"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248566"
 ---
 # <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Automation でエージェントベースの Windows Hybrid Runbook Worker をデプロイする
 
 Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Azure または Azure 以外のマシン ([Azure Arc 対応サーバー](../azure-arc/servers/overview.md)に登録されているサーバーを含む) 上で Runbook を直接実行することができます。 ロールをホストしているマシンまたはサーバーで、環境内のリソースに対して Runbook を直接実行して、それらのローカル リソースを管理できます。
 
-Azure Automation によって Runbook が格納および管理された後、1 つ以上の選択されたマシンに配信されます。 この記事では、Windows マシンにユーザー Hybrid Runbook Worker をデプロイする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。 ユーザー Hybrid Runbook Worker については、「[Automation で拡張機能ベースの Windows または Linux ユーザー Hybrid Runbook Worker をデプロイする](./extension-based-hybrid-runbook-worker-install.md)」も参照してください
+Azure Automation によって Runbook が格納および管理された後、1 つ以上の選択されたマシンに配信されます。 この記事では、Windows マシンにユーザー Hybrid Runbook Worker をデプロイする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。 ユーザー Hybrid Runbook Worker については、「[拡張機能ベースの Windows または Linux ユーザー Hybrid Runbook Worker を Automation にデプロイする](./extension-based-hybrid-runbook-worker-install.md)」もご覧ください
 
 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
@@ -27,7 +27,7 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。
 
@@ -171,7 +171,7 @@ Windows Hybrid Runbook Worker をインストールして構成するには、�
 
     - Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、PowerShell、または Azure Policy を使用すれば、"[*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
     
-    - Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Azure Arc 対応サーバーでは、以下の方法を使用した Log Analytics エージェントのデプロイがサポートされています。
+    - Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Azure Arc 対応サーバーは、以下の方法を使用した Log Analytics エージェントのデプロイをサポートしています。
     
       - VM 拡張機能フレームワークの使用。
         

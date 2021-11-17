@@ -7,12 +7,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6f2732f03b990d10b3ae15e472bf7600114c3a33
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc89cbfd01ef827be277d332ecd770b3fa6d7016
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727822"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249801"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>モジュールにデバイスのローカル ストレージへのアクセスを許可する
 
@@ -75,14 +75,25 @@ Azure Storage サービスを使用して、またはデバイスのコンテナ
 
 たとえば、Linux システムでは、`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` は、ご利用のホスト システム上のディレクトリ **/etc/iotedge/storage** がコンテナー内のディレクトリ **/iotedge/storage/** にマップされていることを意味します。 Windows システムでは、別の例として、`"Binds":["C:\\temp:C:\\contemp"]` は、ご利用のホスト システム上のディレクトリ **C:\\temp** がコンテナー内のディレクトリ **C:\\contemp** にマップされていることを意味します。
 
-さらに、Linux デバイスでは、モジュールのユーザー プロファイルが、ホスト システム ディレクトリに対して必要な読み取り、書き込み、および実行のアクセス許可を持っていることを確認します。 IoT Edge ハブがデバイスのローカル ストレージにメッセージを格納できるようにする前述の例に戻ると、ユーザー プロファイル UID 1000 にアクセス許可を付与する必要があります。 (IoT Edge エージェントはルートとして動作するため、追加のアクセス許可は必要ありません。)Linux システム上でディレクトリのアクセス許可を管理するには、`chown` を使用してディレクトリの所有者を変更してから `chmod` を使用してアクセス許可を変更するなど、いくつかの方法があります。たとえば、次のようにします。
+作成オプションの詳細については、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)を参照してください。
+
+## <a name="host-system-permissions"></a>ホスト システムのアクセス許可
+
+Linux デバイスでは、モジュールのユーザー プロファイルが、ホスト システム ディレクトリに対して必要な読み取り、書き込み、および実行のアクセス許可を持っていることを確認します。 IoT Edge ハブがデバイスのローカル ストレージにメッセージを格納できるようにする前述の例に戻ると、ユーザー プロファイル UID 1000 にアクセス許可を付与する必要があります。 Linux システム上でディレクトリのアクセス許可を管理するには、`chown` を使用してディレクトリの所有者を変更してから `chmod` を使用してアクセス許可を変更するなど、いくつかの方法があります。たとえば、次のようにします。
 
 ```bash
 sudo chown 1000 <HostStoragePath>
 sudo chmod 700 <HostStoragePath>
 ```
 
-作成オプションの詳細については、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)を参照してください。
+Windows デバイスでは、ホスト システム ディレクトリ上でアクセス許可を構成する必要もあります。 PowerShell を使用してアクセス許可を設定できます。
+
+```powershell
+$acl = get-acl <HostStoragePath>
+$ace = new-object system.security.AccessControl.FileSystemAccessRule('Authenticated Users','FullControl','Allow')
+$acl.AddAccessRule($ace)
+$acl | Set-Acl
+```
 
 ## <a name="encrypted-data-in-module-storage"></a>モジュール ストレージのデータを暗号化する
 

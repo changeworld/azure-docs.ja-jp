@@ -10,12 +10,12 @@ metadata:
   ms.author: mbaldwin
   ms.date: 11/01/2019
   ms.custom: seodec18
-  ms.openlocfilehash: ed0948b665846c6114ce0bf69872f384d7703c5e
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: add854c34ccce78dcd8af98a1f62ea089fad197a
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063676"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130262947"
 title: Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 summary: >
   この記事では、Windows VM 用の Azure Disk Encryption についてよく寄せられる質問 (FAQ) への回答を示します。 このサービスの詳細については、「[Azure Disk Encryption の概要](disk-encryption-overview.md)」をご覧ください。
@@ -63,9 +63,13 @@ sections:
       シークレットまたは暗号化キーを切り替えるにはどうすればいいですか。
     answer: "シークレットを切り替えるには、別のキー コンテナーを指定して、最初に使用したのと同じコマンドを呼び出してディスクの暗号化を有効にするだけです。 キーの暗号化キーを切り替えるには、新しいキーの暗号化を指定して、最初に使用したのと同じコマンドを呼び出してディスク暗号化を有効にします。 \n\n>[!WARNING]\n> - これまで、[Azure AD アプリで Azure AD の資格情報を指定することで Azure Disk Encryption](disk-encryption-windows-aad.md) を使用してこの VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 この暗号化された VM に対して Azure Disk Encryption を使用することはできません。それはサポートされていないシナリオであり、暗号化された VM 用の AAD アプリケーションからの切り替えはまだサポートされていないことを意味します。\n"
   - question: >
-      最初にキー暗号化キーを使用していなかった場合は、どのようにしてキー暗号化キーを追加または削除すればいいですか。
+      最初にキー暗号化キー (KEK) を使用していなかった場合は、どのようにしてキー暗号化キーを追加または削除すればいいですか。
     answer: >
       キー暗号化キーを追加するには、キー暗号化キーのパラメーターを渡して、有効化コマンドをもう一度呼び出します。 キー暗号化キーを削除するには、キー暗号化キーのパラメーターを指定せずに、有効化コマンドをもう一度呼び出します。
+  - question: >
+      キー暗号化キー (KEK) にはどのサイズを使用すべきですか?
+    answer: >
+      Windows サーバー 2022 には、新しいバージョンの BitLocker が含まれています。前提条件ページで説明されているとおり、3072 または 4096 ビットのキー サイズから始めることをお勧めします。 以前のバージョンの Windows では、2048 ビットも使用できます。
   - question: >
       Azure Disk Encryption では、Bring Your Own Key (BYOK) を実施できますか。
     answer: >

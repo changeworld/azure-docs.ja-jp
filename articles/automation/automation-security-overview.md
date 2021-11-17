@@ -4,15 +4,15 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 11/05/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7d6a509e4d99b95e2113aceb00ff1dab9a98fd91
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 08f265d4e2af8fe985db3ceab78b535db2f73924
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866660"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470872"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
@@ -37,9 +37,6 @@ Azure Automation で Azure Resource Manager と PowerShell コマンドレット
 Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、シークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
 マネージド ID は、Runbook で認証を行うための推奨される方法であり、Automation アカウントの既定の認証方法です。
-
-> [!NOTE]
-> Automation アカウントを作成すると、実行アカウントを作成するオプションは使用できなくなります。 ただし、既存および新しい Automation アカウントの実行アカウントは引き続きサポートされます。 Automation アカウントで[実行アカウントを作成する](create-run-as-account.md)には、Azure portalまたは PowerShell を使用します。
 
 以下に、マネージド ID を使用するベネフィットをいくつか紹介します。
 
@@ -71,7 +68,7 @@ Azure Automation の実行アカウントを使用すると、Azure Resource Man
 - Automation アカウント
 
 > [!NOTE]
-> Azure Automation では実行アカウントは自動的には作成されません。これはマネージド ID の使用に置き換わりました。 ただし、既存および新しい Automation アカウントの実行アカウントは引き続きサポートされます。 Automation アカウントで[実行アカウントを作成する](create-run-as-account.md)には、Azure portalまたは PowerShell を使用します。
+> Azure Automation では、実行アカウントが自動的には作成されません。 これは、マネージド ID を使用して置き換えられました。
 
 ### <a name="subscription-permissions"></a>サブスクリプションのアクセス許可
 

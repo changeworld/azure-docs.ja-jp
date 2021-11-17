@@ -11,15 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: dc007e4aeb68d3cecd156a650bd3c04de1fd26e0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 66899b7b4c5a9cb77b7545d671ac27433f927d5a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162190"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156876"
 ---
 # <a name="windows-server-failover-cluster-with-sql-server-on-azure-vms"></a>Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -80,9 +80,11 @@ Always On 可用性グループ (AG) やフェールオーバー クラスター
 
 ## <a name="virtual-network-name-vnn"></a>仮想ネットワーク名 (VNN)
 
+可用性グループ リスナーまたはフェールオーバー クラスター インスタンスに接続するためのオンプレミス エクスペリエンスに一致するよう、SQL Server VM を同じ仮想ネットワーク内の複数のサブネットにデプロイします。 複数のサブネットを使用すると、トラフィックを HADR ソリューションにルーティングするために Azure Load Balancer にさらに依存する必要がなくなります。  詳細については、[複数サブネットの AG](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) および[複数サブネットの FCI](failover-cluster-instance-prepare-vm.md#subnets) に関するページを参照してください。 
+
 従来のオンプレミス環境の場合、フェールオーバー クラスター インスタンスや Always On 可用性グループなどのクラスター化されたリソースは、トラフィックを適切なターゲット (フェールオーバー クラスター インスタンス、または Always On 可用性グループのリスナー) にルーティングするために、仮想ネットワーク名に依存しています。 仮想名によって DNS の IP アドレスがバインドされるので、どのノードが現在リソースを所有しているかにかかわらず、クライアントから仮想名または IP アドレスのいずれかを使用して高可用ターゲットに接続することができます。 VNN は、クラスターによって管理されるネットワークの名前とアドレスであり、フェールオーバー イベントの発生時にネットワーク アドレスはクラスター サービスによってノード間で移動されます。 障害が発生すると、アドレスは元のプライマリ レプリカではオフラインになり、新しいプライマリ レプリカではオンラインになります。
 
-Azure Virtual Machines 上で、クライアントからのトラフィックをクラスター化されたリソース (フェールオーバー クラスター インスタンス、または可用性グループのリスナー) の仮想ネットワーク名にルーティングするには、追加コンポーネントが必要です。 Azure 内のロード バランサーには、クラスター化された SQL Server リソースが依存する VNN の IP アドレスが保持されるため、適切な高可用ターゲットにトラフィックをルーティングするために必要です。 また、ロード バランサーによって、ネットワーク コンポーネントの障害が検出され、アドレスが新しいホストに移動されます。 
+1 つのサブネット内の Azure Virtual Machines で、クライアントからのトラフィックをクラスター化されたリソース (フェールオーバー クラスター インスタンス、または可用性グループのリスナー) の仮想ネットワーク名にルーティングするには、追加コンポーネントが必要です。 Azure 内のロード バランサーには、クラスター化された SQL Server リソースが依存する VNN の IP アドレスが保持されるため、適切な高可用ターゲットにトラフィックをルーティングするために必要です。 また、ロード バランサーによって、ネットワーク コンポーネントの障害が検出され、アドレスが新しいホストに移動されます。 
 
 ロード バランサーでは、フロント エンドに到着する受信フローが分散され、バックエンド プールによって定義されたインスタンスにそのトラフィックがルーティングされます。 トラフィック フローを構成するには、負荷分散規則と正常性プローブを使用します。 SQL Server FCI の場合、バックエンド プール インスタンスは SQL Server を実行する Azure 仮想マシンであり、可用性グループの場合、バックエンド プールはリスナーです。 ロード バランサーを使用している場合は、フェールオーバーにわずかな遅延が発生します。正常性プローブでは、既定で 10 秒ごとにアライブ チェックが行われるためです。 
 
@@ -92,11 +94,13 @@ Azure Virtual Machines 上で、クライアントからのトラフィックを
 **サポートされる SQL バージョン**:All   
 **サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンス、可用性グループ   
 
-VNN の構成は煩雑になる可能性があり、障害の原因が増え、障害検出の延期期間が発生する可能性があり、追加リソースの管理に伴うオーバーヘッドとコストが生じます。 このような制限の一部に対処するために、SQL Server 2019 には分散ネットワーク名機能のサポートが導入されました。 
+VNN の構成は煩雑になる可能性があり、障害の原因が増え、障害検出の延期期間が発生する可能性があり、追加リソースの管理に伴うオーバーヘッドとコストが生じます。 このような制限の一部に対処するために、SQL Server には分散ネットワーク名機能のサポートが導入されました。 
 
 ## <a name="distributed-network-name-dnn"></a>分散ネットワーク名 (DNN)
 
-SQL Server 2019 以降、分散ネットワーク名機能は、ロード バランサーを使用せずに SQL Server クライアントから SQL Server フェールオーバー クラスター インスタンスまたは可用性グループ リスナーに接続するための代替手段となりました。 
+可用性グループ リスナーまたはフェールオーバー クラスター インスタンスに接続するためのオンプレミス エクスペリエンスに一致するよう、SQL Server VM を同じ仮想ネットワーク内の複数のサブネットにデプロイします。 複数のサブネットを使用すると、トラフィックを HADR ソリューションにルーティングするために DNN にさらに依存する必要がなくなります。 詳細については、[複数サブネットの AG](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) および[複数サブネットの FCI](failover-cluster-instance-prepare-vm.md#subnets) に関するページを参照してください。 
+
+1 つのサブネットにデプロイされる SQL Server VM に関しては、分散ネットワーク名機能は、ロード バランサーを使用せずに SQL Server クライアントから SQL Server フェールオーバー クラスター インスタンスまたは可用性グループ リスナーに接続するための代替手段となりました。 DNN 機能は、Windows Server 2016 以降の [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31)、[SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9)、[SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) 以降で使用できます。
 
 DNN リソースを作成すると、クラスターではその DNS 名がクラスター内のすべてのノードの IP アドレスにバインドされます。 接続先のリソースを見つけるために、クライアントから、この一覧の各 IP アドレスへの接続が試みられます。 接続文字列に `MultiSubnetFailover=True` を指定することで、このプロセスを高速化できます。 この設定によって、プロバイダーはすべての IP アドレスを並行して試行するように指示されるので、クライアントから FCI またはリスナーへの瞬時の接続ができるようになります。 
 

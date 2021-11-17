@@ -7,15 +7,15 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: article
-  ms.date: 07/21/2021
+  ms.date: 08/31/2021
   ms.author: alkohli
   ms.custom: references_regions
-  ms.openlocfilehash: 47d941b1c6e6ce7b0f383e977f227db65fa86871
-  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+  ms.openlocfilehash: b2aed039a735ff9124fe19c61992ec184879c0b7
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2021
-  ms.locfileid: "114653427"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132059293"
 title: 'Azure Data Box: よく寄せられる質問'
 summary: >
   Microsoft Azure Data Box ハイブリッド ソリューションにより、転送デバイスを使用することで、迅速かつ安価で信頼性の高い方法で、数テラバイトのデータを Azure に送信できます。 この FAQ では、Azure portal で Data Box の使用に関して多く寄せられる質問とその回答を紹介しています。
@@ -43,7 +43,7 @@ sections:
   - question: >
       Data Box では、どのリージョンでデータを保存できますか?
     answer: >
-      Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国、日本、オーストラリア、およびカナダでサポートされています。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
+      Data Box は、米国、カナダ、ヨーロッパ、英国、スイス、オーストラリア、シンガポール、香港、日本、韓国、インド、ブラジル、南アフリカ、アラブ首長国連邦内のすべてのリージョンでサポートされています。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
   - question: >
       特定の国の場所にあるソース データを別の国/地域の Azure リージョンにインポートしたり、ある国の Azure リージョンから別の国/地域にデータをエクスポートしたりする方法はありますか?
     answer: >
@@ -111,7 +111,8 @@ sections:
       前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。 複製はインポート注文の場合にのみ許可されます。
 - name: 構成と接続
   questions:
-  - question: "Data Box をロック解除する方法を教えてください。 \n"
+  - question: >
+      Data Box をロック解除する方法を教えてください。
     answer: >
       Azure portal で、対象の Data Box の注文に移動し、 **[デバイスの詳細]** に移動します。 ロック解除パスワードをコピーします。 Data Box で、このパスワードを使用してローカル Web UI にログインします。 詳細については、[チュートリアルの Azure Data Box の開梱、配線、接続](data-box-deploy-set-up.md)に関するページを参照してください。
   - question: >
@@ -162,6 +163,9 @@ sections:
       Data Box では、ポート チャネル構成がサポートされていますか。 MPIO はどうですか。
     answer: >
       Data Box では、ポート チャネル構成、マルチパス IO (MPIO) 構成、または vLAN 構成はサポートされていません。
+  - question: >
+      デバイス上に自動的に生成された自己署名証明書の有効期限が切れるのはいつですか?
+    answer: "[!INCLUDE [return-data-box-before-certificates-expire](../../includes/data-box-certificate-expiration.md)] 詳細については、[独自の証明書の使用](data-box-bring-your-own-certificates.md)に関するページを参照してください。     \n"
 - name: 状態の追跡
   questions:
   - question: "注文してからデバイスを返送するまで、Data Box を追跡する方法を教えてください。 \n"

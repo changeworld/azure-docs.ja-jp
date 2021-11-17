@@ -1,15 +1,14 @@
 ---
 title: Azure Automation でのネットワーク構成の詳細
 description: この記事では、Azure Automation State Configuration、Azure Automation Hybrid Runbook Worker、Update Management、および変更履歴とインベントリに必要なネットワーク情報の詳細について説明します
-ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 2dd5d0d0c309e835fee8a55e9fa991a0efeaf729
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7f441f49d7f94447ab16a6a3f98b0db55dabcc1f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231598"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491452"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure Automation でのネットワーク構成の詳細
 

@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: template-quickstart, ignite-fall-2021
-ms.openlocfilehash: 4794e327ceeacaa91075317d1009ae45834580d8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 134f8b28d6505963cde1f44f0b6850643dae3436
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017183"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421755"
 ---
 # <a name="quickstart-create-a-mesh-network-topology-with-azure-virtual-network-manager-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Azure Virtual Network Manager でメッシュ ネットワーク トポロジを作成する
 
@@ -29,6 +29,16 @@ Azure portal を使用して、すべての仮想ネットワークの接続を�
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+## <a name="register-subscription-for-public-preview"></a>サブスクリプションをパブリック プレビューに登録する
+
+1. [プレビュー機能](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade)のページにアクセスします。
+
+1. 「**AllowAzureNetworkManager**」を検索します。
+
+1. *[AllowAzureNetworkManager]* の横にあるチェックボックスをオンにし、 **[+ Register]\(+ 登録\)** を選択します。
+
+    :::image type="content" source="./media/create-virtual-network-manager-portal/registration.png" alt-text="プレビュー機能の登録ページのスクリーンショット。":::
+
 ## <a name="create-virtual-network-manager"></a>Virtual Network Manager を作成する
 
 1. **[+ リソースの作成]** を選択し、 **[ネットワーク マネージャー]** を検索します。 次に、 **[作成]** を選択して、Azure Virtual Network Manager の設定を開始します。
@@ -37,7 +47,7 @@ Azure portal を使用して、すべての仮想ネットワークの接続を�
 
     :::image type="content" source="./media/create-virtual-network-manager-portal/network-manager-basics.png" alt-text="ネットワーク マネージャーの基本ページの作成のスクリーンショット。":::
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | サブスクリプション | Azure Virtual Network Manager をデプロイするサブスクリプションを選択します。 |
     | リソース グループ | Azure Virtual Network Manager を格納するリソース グループを選択または作成します。 この例では、以前に作成した **myAVNMResourceGroup** を使用します。
@@ -63,7 +73,7 @@ Azure portal を使用して、すべての仮想ネットワークの接続を�
 
     :::image type="content" source="./media/create-virtual-network-manager-portal/create-mesh-vnet-basic.png" alt-text="仮想ネットワーク作成の基本ページのスクリーンショット。":::
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | サブスクリプション | この仮想ネットワークをデプロイするサブスクリプションを選択します。 |
     | リソース グループ | 仮想ネットワークを格納する新しいリソース グループを選択または作成します。 このクイックスタートでは、**myAVNMResourceGroup** という名前の新しいリソース グループを使用します。
@@ -86,7 +96,7 @@ Azure portal を使用して、すべての仮想ネットワークの接続を�
 
 1. 手順 2 から 5 を繰り返して、次の情報を含む仮想ネットワークあと 2 つ作成します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | サブスクリプション | 手順 3 で選択したものと同じサブスクリプションを選択します。 |
     | リソース グループ | **myAVNMResourceGroup** を選択します。 |
@@ -137,7 +147,7 @@ Azure portal を使用して、すべての仮想ネットワークの接続を�
 
     :::image type="content" source="./media/create-virtual-network-manager-portal/connectivity-configuration.png" alt-text="[接続構成を追加する] ページのスクリーンショット。":::
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | この接続構成の名前を入力します。 |
     | 説明 | *(省略可能)* この接続構成に関する説明を入力します。 |

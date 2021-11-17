@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel |Microsoft Docsでほぼリアルタイム (NRT) の分析ルールを使用して、脅威をすばやく検出します
-description: このアーティクルでは、Azure Sentinelで新しいほぼリアルタイム (NRT) の分析ルールが、脅威を迅速に検出するのにどのように役立を説明します。
+title: Azure Sentinel でほぼリアルタイム (NRT) の分析ルールを使用して脅威をすばやく検出する | Microsoft Docs
+description: この記事では、Microsoft Sentinel で新しい NRT (ほぼリアルタイム) 分析ルールを利用し、脅威を速やかに検出する方法について説明します。
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f8b4b534cd6725f7c19ee4f3f77a6d7ed500889c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 70fbed7df5ece53eb4403fea7f055563eaac1633
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131091230"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308188"
 ---
-# <a name="detect-threats-quickly-with-near-real-time-nrt-analytics-rules-in-azure-sentinel"></a>Azure Sentinelでほぼリアルタイム (NRT) の分析ルールを使用して、脅威をすばやく検出します
+# <a name="detect-threats-quickly-with-near-real-time-nrt-analytics-rules-in-microsoft-sentinel"></a>Microsoft Sentinel でほぼリアルタイム (NRT) の分析ルールを使用し、脅威をすばやく検出する
 
 > [!IMPORTANT]
 >
@@ -30,15 +30,15 @@ ms.locfileid: "131091230"
 
 ## <a name="what-are-near-real-time-nrt-analytics-rules"></a>ほぼリアルタイム (NRT) 分析ルールとは？
 
-セキュリティの脅威に直面した場合、時間と速度が本質的です。 脅威を含め、迅速に分析して対応できるよう、脅威が実現する場合は、脅威に注意する必要があります。 Azure Sentinelのほぼリアルタイム (NRT) 分析ルールを使用すると、オンプレミスの SIEM に近い脅威検出を高速化し、特定のシナリオで応答時間を短縮できます。
+セキュリティの脅威に直面した場合、時間と速度が本質的です。 脅威を含め、迅速に分析して対応できるよう、脅威が実現する場合は、脅威に注意する必要があります。 Microsoft Sentinel のほぼリアルタイム (NRT) 分析ルールを使用すると、オンプレミス SIEM に匹敵するスピードで脅威を検出し、特定のシナリオで応答時間を短縮できます。
 
-Azure Sentinelの[ニア・リアルタイム分析ルール](detect-threats-built-in.md#nrt)は、すぐに使用できる最新の脅威検出を提供します。 この型のルールは、わずか1分サイクル間隔でクエリを実行することにより、応答性が高くなるように設計されています。
+Microsoft Sentinel の[ほぼリアルタイム分析ルール](detect-threats-built-in.md#nrt)では、面倒な設定なし、かつ最新の方法で脅威を検出できます。 この型のルールは、わずか1分サイクル間隔でクエリを実行することにより、応答性が高くなるように設計されています。
 
 ## <a name="how-do-they-work"></a>どのように動作するでしょうか。
 
 NRT ルールは、1 分ごとに 1 回実行し、前の 1 分間に取り込まれたイベントをキャプチャして、可能な限り最新の情報を提供できるハードコードされています。
 
-インジェストのタイム ラグを考慮して組み込みの 5 分間の延期期間で実行される定期的なスケジュールされたルールとは異なり、NRT ルールはわずか 2 分の延期期間で実行され、ソースでの生成時間 (TimeGenerated フィールド) ではなく、イベントのインジェスト時間に対してクエリを実行することで、インジェスト延期期間の問題を解決します。 この結果により、検出の周波数と正確性の両方が向上します。 (この問題を完全に理解するには、 [「クエリのスケジュール設定とアラートのしきい値」](detect-threats-custom.md#query-scheduling-and-alert-threshold) と、そこで説明されているリンクされたアーティクル[「Azure Sentinelのスケジュールされたアラート ルールでのインジェスト延期期間を処理する」](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851)を参照してください。)
+インジェストのタイム ラグを考慮して組み込みの 5 分間の延期期間で実行される定期的なスケジュールされたルールとは異なり、NRT ルールはわずか 2 分の延期期間で実行され、ソースでの生成時間 (TimeGenerated フィールド) ではなく、イベントのインジェスト時間に対してクエリを実行することで、インジェスト延期期間の問題を解決します。 この結果により、検出の周波数と正確性の両方が向上します。 (この問題を完全に理解するには、[「クエリのスケジュール設定とアラートのしきい値」](detect-threats-custom.md#query-scheduling-and-alert-threshold)と、そこにリンクが記載されている[Microsoft Sentinel でスケジュールされているアラート ルールでインジェスト遅延を処理する](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851)方法に関する記事を参照してください)
 
 NRT ルールには、スケジュールされた分析ルールとしての機能と特徴の多くがあります。 アラート エンリッチメント機能の完全なセットを使用できます。エンティティをマップし、カスタムの詳細をサーフェスし、アラートの詳細の動的コンテンツを構成できます。 アラートをインシデントにグループ化する方法を選択し、結果を生成した後にクエリの実行を一時的に抑制できます。また、ルールから生成されたアラートやインシデントに応答して実行する自動化ルールとプレイブックを定義できます。
 
@@ -65,7 +65,7 @@ NRT ルールには、スケジュールされた分析ルールとしての機�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、Azure Sentinelでほぼリアルタイム (NRT) の分析ルールがどのように実行すると学習しました。
+このドキュメントでは、Microsoft Sentinel のほぼリアルタイム (NRT) 分析ルールのしくみを説明しました。
 
 - [NRT 規則を作成する](create-nrt-rules.md)方法について学習します。
 - [ほかの種類の分析ルール](detect-threats-built-in.md)についてご確認ください。

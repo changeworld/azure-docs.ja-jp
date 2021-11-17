@@ -2,19 +2,19 @@
 title: Azure におけるマイクロソフト エンタープライズ契約 (EA) の管理者ロールを理解する
 description: Azure の Enterprise 管理者ロールについて説明します。 5 種類の管理者ロールを割り当てることができます。
 author: bandersmsft
-ms.reviewer: adwise
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 07/06/2021
+ms.date: 10/22/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 82e5b16ef4f7892a52ea0ec3d332104cbf99bb68
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 08f13b90190e3d05f87947cb7be58cbda8566c8a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765494"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232889"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Azure におけるマイクロソフト エンタープライズ契約のロールの管理
 
@@ -69,6 +69,8 @@ Azure エンタープライズ ポータルの階層は、次のもので構成�
 - 通知の連絡先
 
 ロールは、タスクを完了するために 2 つの異なるポータルで機能します。 課金とコストを管理するには [Azure エンタープライズ ポータル](https://ea.azure.com)を使用し、Azure サービスを管理するには [Azure portal](https://portal.azure.com) を使用します。
+
+直接 EA を使用しているお客様は、Azure portal ですべての管理タスクを完了できます。 [Azure portal](https://portal.azure.com) を使用して、課金、コスト、Azure サービスを管理できます。
 
 ユーザー ロールは、ユーザー アカウントに関連付けられています。 ユーザーの信頼性を確認するには、各ユーザーが有効な職場、学校、または Microsoft アカウントを持っている必要があります。 各アカウントが、アクティブに監視されている電子メール アドレスに関連付けられていることを確認します。 アカウント通知は、電子メール アドレスに送信されます。
 
@@ -168,7 +170,8 @@ EA 購入者ロールは現在、SPN ベースのアクセスでのみ有効と�
 
 ## <a name="add-a-new-enterprise-administrator"></a>新しいエンタープライズ管理者を追加する
 
-エンタープライズ管理者は、Azure EA 登録を管理する際に、最も多くの特権を持っています。 EA 契約を設定したときに、最初の Azure EA 管理者が作成されています。 ただし、いつでも新しい管理者を追加したり、管理者を削除したりできます。 新しい管理者を追加できるのは、既存の管理者のみです。 エンタープライズ管理者を追加する方法の詳細については、「[Create another enterprise admin (別のエンタープライズ管理者を作成する)](ea-portal-administration.md#create-another-enterprise-administrator)」を参照してください。課金プロファイルのロールとタスクの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+エンタープライズ管理者は、Azure EA 登録を管理する際に、最も多くの特権を持っています。 EA 契約を設定したときに、最初の Azure EA 管理者が作成されています。 ただし、いつでも新しい管理者を追加したり、管理者を削除したりできます。 新しい管理者を追加できるのは、既存の管理者のみです。 エンタープライズ管理者を追加する方法の詳細については、「[別のエンタープライズ管理者を作成する](ea-portal-administration.md#create-another-enterprise-administrator)」を参照してください。直接 EA を使用しているお客様は、Azure portal を使用して EA 管理者を追加できます。[Azure portal での別のエンタープライズ管理者の作成](direct-ea-administration.md#add-another-enterprise-administrator)に関するページを参照してください。 課金プロファイルのロールとタスクの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>アカウント所有者状態を保留中からアクティブに更新する
 
@@ -178,7 +181,7 @@ EA 購入者ロールは現在、SPN ベースのアクセスでのみ有効と�
 
 Azure EA 管理者は、部署を作成した後、部署管理者を追加し、それぞれを部署に関連付けることができます。 部署管理者は、新しいアカウントを作成できます。 Azure EA サブスクリプションを作成するには、新しいアカウントが必要です。
 
-部門管理者を追加する方法の詳細については、[Azure EA 部門管理者の作成](ea-portal-administration.md#add-a-department-administrator)に関するセクションを参照してください。
+直接 EA を使用している管理者は、Azure portal で部署管理者を追加できます。 詳細については、[Azure EA 部門管理者の作成](direct-ea-administration.md#add-a-department-administrator)に関するページを参照してください。
 
 ## <a name="usage-and-costs-access-by-role"></a>ロール別の使用量/コスト アクセス
 

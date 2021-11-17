@@ -2,13 +2,13 @@
 title: Azure リソースをデプロイするための Bicep 言語
 description: Azure にインフラストラクチャをデプロイするための Bicep 言語について説明します。 JSON を使用してテンプレートを開発するよりも優れた作成エクスペリエンスが提供されます。
 ms.topic: conceptual
-ms.date: 11/12/2021
-ms.openlocfilehash: 028ec297aa30bf6bfd397fee83b8b4525a66bdbc
-ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
+ms.date: 09/09/2021
+ms.openlocfilehash: 565f849edafaa6c083a1e7d21bb67f8b3ab8453e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2021
-ms.locfileid: "132484290"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443492"
 ---
 # <a name="what-is-bicep"></a>Bicep とは
 
@@ -113,6 +113,28 @@ ARM テンプレートを選択したお客様の場合、Bicep によって作�
 **Bicep を使用して Azure Stack Hub にデプロイすることはできますか?**
 
 はい。Azure Stack Hub のデプロイには Bicep を使用できます。ただし Bicep では、まだ Azure Stack Hub では利用できない型が表示されることがあるので注意してください。 [Azure Stack Hub クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/Bicep)で一連の例をご覧いただけます。 
+
+## <a name="known-limitations"></a>既知の制限事項
+
+- Bicep では改行が識別されます。 次に例を示します。
+
+    ```bicep
+    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
+      ...
+    }
+    ```
+
+    これを次のように記述することはできません。
+
+    ```bicep
+    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' =
+        if (newOrExisting == 'new') {
+          ...
+        }
+    ```
+
+- 単一の apiProfile をリソースの種類ごとの apiVersion のセットにマップするために使用される apiProfile の概念はサポートされていません。
+- ユーザー定義関数はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

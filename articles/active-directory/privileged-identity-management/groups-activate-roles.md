@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a2088357859ec3f77e7a482ba1507f86e9fdf92
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 365f480af81289a9f48dd6ce5a1102be7a7ed6a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668241"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444157"
 ---
 # <a name="activate-my-privileged-access-group-roles-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ ロールをアクティブにする
 

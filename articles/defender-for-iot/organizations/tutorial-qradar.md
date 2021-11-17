@@ -1,21 +1,21 @@
 ---
-title: QRadar を Azure Defender for IoT と統合する
-description: このチュートリアルでは、Qradar を Azure Defender for IoT と統合する方法について説明します。
+title: Qradar を Microsoft Defender for IoT と統合する
+description: このチュートリアルでは、Qradar を Microsoft Defender for IoT と統合する方法について説明します。
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/12/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: ec55a652b59f7d45e01ef22e62bd046473ef8559
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c6a1cfab17b2355f5f5501cd7fc2e944c74556f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124839230"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278362"
 ---
-# <a name="tutorial-integrate-qradar-with-azure-defender-for-iot"></a>チュートリアル: QRadar を Azure Defender for IoT と統合する
+# <a name="tutorial-integrate-qradar-with-microsoft-defender-for-iot"></a>チュートリアル: Qradar を Microsoft Defender for IoT と統合する
 
-このチュートリアルは、Qradar を Azure Defender for IoT と統合して使用する方法を学ぶのに役立ちます。
+このチュートリアルは、Qradar を Microsoft Defender for IoT と統合して使用する方法を学ぶのに役立ちます。
 
 Defender for IoT は、唯一の ICS と、特許を取得した ICS 対応の脅威分析と機械学習を備えた IoT サイバーセキュリティ プラットフォームを提供します。
 
@@ -23,7 +23,7 @@ Defender for IoT では、その継続的な ICS 脅威監視プラットフォ�
 
 この統合の利点のいくつかを次に示します。
 
-- 統一された IT や、OT セキュリティの監視とガバナンスのために Azure Defender for IoT アラートを IBM QRadar に転送する機能。
+- 統一された IT や、OT セキュリティの監視とガバナンスのために Microsoft Defender for IoT アラートを IBM QRadar に転送する機能。
 
 - IT と OT の両方の環境に関する概要を取得する機能。 IT と OT の境界にまたがる場合が多い多段階攻撃を検出し、それに対応することが可能になります。
 
@@ -192,7 +192,7 @@ QID は、QRadar におけるイベント識別子です。 Defenders for IoT �
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、QRadar 統合の使用を開始する方法を学習しました。 次に、[ServiceNow と Azure Defender for IoT を統合する](tutorial-servicenow.md)方法の学習に進みます。
+このチュートリアルでは、QRadar 統合の使用を開始する方法を学習しました。 次に、[ServiceNow と Microsoft Defender for IoT を統合する](tutorial-servicenow.md)方法の学習に進みます。
 
 > [!div class="nextstepaction"]
-> [ServiceNow を Azure Defender for IoT と統合する](tutorial-servicenow.md)
+> [ServiceNow を Microsoft Defender for IoT と統合する](tutorial-servicenow.md)

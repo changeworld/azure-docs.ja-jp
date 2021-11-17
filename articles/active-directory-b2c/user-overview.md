@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/22/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 0e5b8daff5c3e13524d5193e97588a7ecc1bff65
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: fe6b7e334352630eb3797cb96b33422a84721813
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043816"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266108"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -25,7 +25,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 次の種類のアカウントを使用できます。
 
 - **職場アカウント** - 職場アカウントは、テナントのリソースにアクセスでき、管理者ロールを使用してテナントを管理できます。
-- **ゲスト アカウント** - ゲスト アカウントは、アプリケーションにアクセスしたり、テナントを管理したりするために使用できる Microsoft アカウントまたは Azure AD ユーザーにしかなれません。
+- **ゲスト アカウント** - ゲスト アカウントにできるのは、[テナントの管理](tenant-management.md)などの管理責任を共有するために使用できる Microsoft アカウントまたは Azure AD ユーザーのみです。
 - **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C に登録したアプリケーションのユーザーによって使用されます。 コンシューマー アカウントは、次によって作成できます。
   - Azure AD B2C アプリケーションでサインアップ ユーザー フローを実行するユーザー
   - Microsoft Graph API の使用

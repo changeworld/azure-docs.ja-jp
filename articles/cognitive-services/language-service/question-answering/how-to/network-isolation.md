@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: e16734ac0ff53f778fad368913d89bcea3869ee3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ab30b82a9bac9d06e2d5228b2004c36d465d392
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092320"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458211"
 ---
 #  <a name="network-isolation-and-private-endpoints"></a>ネットワーク分離とプライベート エンドポイント
 
@@ -52,9 +52,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 ![マネージド ネットワーク サービス](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-3.png)
 
 ## <a name="support-details"></a>サポートの詳細
- * Text Analytics サービスへのプライベート アクセスを有効にすると、Azure Cognitive Search サービスへの変更はサポートされません。 プライベート アクセスを有効にした後で [機能] タブで Azure Cognitive Search サービスを変更すると、Text Analytics サービスを使用できなくなります。
+ * 言語リソースへのプライベート アクセスを有効にすると、Azure Cognitive Search サービスへの変更はサポートされません。 プライベート アクセスを有効にした後に [機能] タブで Azure Cognitive Search サービスを変更すると、言語リソースを使用できなくなります。
 
- * プライベート エンドポイント接続を確立した後で Azure Cognitive Search サービス ネットワークを [パブリック] に切り替えると、Text Analytics サービスを使用できなくなります。 プライベート エンドポイント接続を機能させるには、Azure Search サービス ネットワークが [プライベート] になっている必要があります。
+ * プライベート エンドポイント接続を確立した後に Azure Cognitive Search サービス ネットワークを [パブリック] に切り替えると、言語リソースを使用できなくなります。 プライベート エンドポイント接続を機能させるには、Azure Search サービス ネットワークが [プライベート] になっている必要があります。
 
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Cognitive Search リソースへのアクセスを制限する
 

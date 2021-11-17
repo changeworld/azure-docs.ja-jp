@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: beaa5df1d0a8e8537574e6e1e6284272d3a8a294
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 259be22f0d69326617845d4b14a249e3b5cf4939
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261236"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424611"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
@@ -72,9 +72,7 @@ Azure VNET の IPv6 は、お客様が Azure でデュアル スタック (IPv4 
 
 ## <a name="limitations"></a>制限事項
 Azure Virtual Network の IPv6 の現在のリリースには、次の制限があります。
-- Azure Virtual Network の IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンと米国政府リージョンで使用できます。  
-- ExpressRoute ゲートウェイは、IPv6 を有効になっている VNET で IPv4 専用のトラフィックに対して使用できます。  ExpressRoute の IPv6 トラフィックのサポートはプレビュー段階です。   
-- VPN ゲートウェイは、IPv6 が有効になっている VNET で、直接的にも、"UseRemoteGateway" とのピアリングでも使用できません。
+- VPN Gateway は現在 IPv6 トラフィックのみをサポートしますが、デュアル スタックの VNET にデプロイすることは可能です。
 - Azure プラットフォーム (AKS など) では、コンテナーに対する IPv6 通信はサポートされていません。 
 - IPv6 専用 Virtual Machines または Virtual Machine Scale Sets はサポートされていません。各 NIC には、少なくとも 1 つの IPv4 IP 構成を含める必要があります。 
 - 既存の IPv4 デプロイに IPv6 を追加する場合、既存のリソース ナビゲーション リンクがある VNET に IPv6 範囲を追加することはできません。  

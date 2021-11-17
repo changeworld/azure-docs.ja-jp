@@ -6,21 +6,18 @@ ms.author: dimadhus
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/6/2021
-ms.openlocfilehash: 414b2f8d6e64112c737fe220003ca2c58b3e9d7b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a8d2e1e6ef3f1aa2dcb736336232b1b149eb7b89
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781070"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438204"
 ---
-# <a name="public-network-access-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL の公衆ネットワーク アクセス - フレキシブル サーバー (プレビュー)
+# <a name="public-network-access-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL の公衆ネットワーク アクセス - フレキシブル サーバー
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、サーバーのパブリック接続オプションについて説明します。 また、インターネット経由で安全にアクセスできる Azure Database for MySQL フレキシブル サーバーを作成するための概念についても詳しく説明します。
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーはプレビュー段階です。
 
 ## <a name="public-access-allowed-ip-addresses"></a>パブリック アクセス (許可された IP アドレス)
 
@@ -42,7 +39,7 @@ IP アドレスへのアクセス許可を付与することは、ファイア�
 ご使用の Azure サービスに対して固定の発信 IP アドレスが使用できない場合は、すべての Azure データセンターの IP アドレスからの接続を有効にすることを検討できます。
 
 > [!IMPORTANT]
-> **[Allow public access from Azure services and resources within Azure]\(Azure サービスおよび Azure 内のリソースからのパブリック アクセスを許可\)** オプションを選択すると、他の顧客のサブスクリプションからの接続を含め、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> **[Azure サービスおよび Azure 内のリソースからのパブリック アクセスを許可する]** オプションを選択すると、他の顧客のサブスクリプションからの接続を含め、Azure サービスからのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 
 [Azure portal](how-to-manage-firewall-portal.md) または [Azure CLI](how-to-manage-firewall-cli.md) を使用して、パブリック アクセス (許可される IP アドレス) を有効にし、管理する方法を確認します。
 
@@ -58,7 +55,7 @@ Microsoft Azure Database for MySQL サーバー サービスに対するアク�
 
   * Azure Database for MySQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲については、お使いのインターネット サービス プロバイダー (ISP) に問い合わせてください。その後、その IP アドレス範囲をファイアウォール規則として追加します。
   * 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
-  
+
 * **ファイアウォール規則が IPv6 形式で使用できない:** ファイアウォール規則は IPv4 形式である必要があります。 IPv6 形式でファイアウォール規則を指定すると、検証エラーが表示されます。
 
 ## <a name="next-steps"></a>次のステップ

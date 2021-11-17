@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: da6a02c12c9e24d4091c632fbf73a0cc97255afa
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2370e3895cc70a4303c9d91d300b47b32913ac7a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223103"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131996321"
 ---
 # <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs"></a>Azure Event Hubs を使用して Apache Spark アプリケーションのログとメトリックを収集する 
 
@@ -59,6 +59,7 @@ spark.synapse.diagnostic.emitter.MyDestination1.secret <connection-string>
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | 省略可能。 Azure Eventhub インスタンスの接続文字列。 このフィールドは、パターン `Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>;EntityPath=<PathName>` と一致する必要があります |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | `.secret` が指定されていない場合は必須です。 シークレット (接続文字列) が格納されている [Azure Key Vault](../../key-vault/general/overview.md) の名前。                                                                  |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | `.secret.keyVault` を指定した場合は必須。 シークレット (接続文字列) が格納されている Azure Key Vault のシークレット名。                                                                         |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | 省略可能。 Azure Key Vault のリンクされたサービス名。 Synapse パイプラインで有効にした場合、AKV からシークレットを取得するために必要です。 (AKV に対する読み取りアクセス許可が MSI に付与されていることを確認してください)。 |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | 省略可能。 コンマ区切りの Spark イベント名。収集するイベントを指定できます。 例: `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | 省略可能。 コンマ区切りの log4j ロガー名。収集するログを指定できます。 例: `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | 省略可能。 コンマ区切りの Spark メトリック名のサフィックス。収集するメトリックを指定できます。 例: `jvm.heap.used` |

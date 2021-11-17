@@ -7,19 +7,19 @@ metadata:
   author: memildin
   manager: rkarlin
   ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
-  ms.service: security-center
+  ms.service: defender-for-cloud
   ms.devlang: na
   ms.topic: conceptual
   ms.tgt_pltfrm: na
   ms.workload: na
   ms.date: 11/09/2021
   ms.author: memildin
-  ms.openlocfilehash: c34a9a61939b3956d0ab9ae3d8784138bbd7315d
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: 06bda44580a05b470489bca67c3464786c856cb3
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132350022"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132493766"
 title: FAQ - 仮想マシンに関する質問
 summary: ''
 sections:

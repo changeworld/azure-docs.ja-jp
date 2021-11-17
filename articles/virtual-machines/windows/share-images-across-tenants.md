@@ -1,6 +1,6 @@
 ---
 title: Azure のテナント間でギャラリー イメージを共有する
-description: 共有イメージ ギャラリーと PowerShell を使用して、Azure テナント間で VM イメージを共有する方法について説明します。
+description: Azure Compute Gallery と PowerShell を使用して、Azure テナント間で VM イメージを共有する方法について説明します。
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/15/2019
 ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50bea2cbd4d42855ecf621cb65f61b4565242a6f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 029e926a7b3b2d932189d0c2b9aa046fabc30a28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450991"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444564"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>PowerShell を使用して Azure テナント間でギャラリー VM イメージを共有する
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
-共有イメージ ギャラリーでは、Azure RBAC を使用してイメージを共有できます。 Azure RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 この単純な共有オプションの詳細については、「[ギャラリーを共有する](../share-gallery.md)」を参照してください。
+Azure Compute Gallery では、Azure RBAC を使用してイメージを共有できます。 Azure RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 この単純な共有オプションの詳細については、「[ギャラリーを共有する](../share-gallery.md)」を参照してください。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -51,7 +51,7 @@ $resourceGroup = "myResourceGroup"
 $location = "South Central US"
 $vmName = "myVMfromImage"
 
-# Set a variable for the image version in Tenant 1 using the full image ID of the shared image version
+# Set a variable for the image version in Tenant 1 using the full image ID of the image version
 $image = "/subscriptions/<Tenant 1 subscription>/resourceGroups/<Resource group>/providers/Microsoft.Compute/galleries/<Gallery>/images/<Image definition>/versions/<version>"
 
 # Create user object
@@ -74,7 +74,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $l
 $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
-# Create a virtual machine configuration using the $image variable to specify the shared image
+# Create a virtual machine configuration using the $image variable to specify the image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -Id $image | `
@@ -86,4 +86,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>次のステップ
 
-[共有イメージ ギャラリー リソース](../image-version.md)を作成します。
+[Azure Compute Gallery リソース](../image-version.md)を作成します。

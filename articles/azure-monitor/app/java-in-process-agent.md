@@ -6,12 +6,12 @@ ms.date: 06/24/2021
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c732762b825a38560c1191371565331271bc18b5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: c1bf5936e9e01a3d0446b99d9974011679b57b0a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162731"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432189"
 ---
 # <a name="azure-monitor-opentelemetry-based-auto-instrumentation-for-java-applications"></a>Java アプリケーションのための Azure Monitor OpenTelemetry ベースの自動インストルメンテーション
 
@@ -21,7 +21,7 @@ ms.locfileid: "130162731"
 Java 自動インストルメンテーションは、コード変更なしで有効にできます。
 
 ### <a name="prerequisites"></a>必須コンポーネント
-- バージョン 8 以上を使用する Java アプリケーション
+- Java 8 以上を使用する Java アプリケーション
 - Azure サブスクリプション - [Azure サブスクリプションを無料で作成する](https://azure.microsoft.com/free/)
 - Application Insights リソース - [Application Insights リソースを作成する](create-workspace-resource.md#create-workspace-based-resource)
 
@@ -30,42 +30,42 @@ Java 自動インストルメンテーションは、コード変更なしで有
 
 #### <a name="1-download-jar-file"></a>1. jar ファイルをダウンロードする
 
-[applicationinsights-agent-3.2.0.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.0/applicationinsights-agent-3.2.0.jar) ファイルをダウンロードします。
+[applicationinsights-agent-3.2.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.2/applicationinsights-agent-3.2.2.jar) ファイルをダウンロードします。
 
 > [!WARNING]
 > 
 > - **3.0 プレビューからアップグレードしている場合**
 >
->    ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、すべての[構成オプション](./java-standalone-config.md)を注意深く確認してください。
+>    すべての[構成オプション](./java-standalone-config.md)を慎重に確認します。 Json 構造体は完全に変更されました。 ファイル名はすべて小文字になりました。
 > 
 > - **3.0.x からアップグレードしている場合**
 > 
 >    操作名と要求テレメトリ名の先頭には、http メソッド (`GET`、`POST` など) が付けられます。
->    これは、以前の値に依存しているカスタム ダッシュボードまたはアラートに影響を与える場合があります。
->    詳細については、[3.1.0 のリリース ノート](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.0) を参照してください。
+>    この変更は、以前の値に依存しているカスタム ダッシュボードまたはアラートに影響を与える場合があります。
+>    詳細については、[3.1.0 のリリース ノート](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.0)を参照してください。
 >
 > - **3.1.x からアップグレードしている場合**
 > 
->    データベースの依存関係名がより簡潔になり、完全な (サニタイズされた) クエリが引き続き `data` フィールド内に存在します。 また、HTTP の依存関係名がよりわかりやすいものになっています。
->    これは、以前の値に依存しているカスタム ダッシュボードまたはアラートに影響を与える場合があります。
+>    完全な (サニタイズされた) クエリは変わらず `data` フィールド内に存在しながら、データベースの依存関係名がより簡潔になりました。 HTTP の依存関係名がよりわかりやすいものになっています。
+>    この変更は、以前の値に依存しているカスタム ダッシュボードまたはアラートに影響を与える場合があります。
 >    詳細については、[3.2.0 のリリース ノート](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0)を参照してください。
 
 #### <a name="2-point-the-jvm-to-the-jar-file"></a>2. JVM が jar ファイルを指すようにする
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.2.0.jar` を追加します。 
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.2.2.jar` を追加します。 
 
 > [!TIP]
 > アプリケーションの JVM 引数の構成に関するヘルプについては、[JVM の引数の更新に関するヒント](./java-standalone-arguments.md)のページを参照してください。
 
 #### <a name="3-set-application-insights-connection-string"></a>3. Application Insights の接続文字列を設定する
 
-jar ファイルが Application Insights リソースを指すようにします。それには、次の環境変数を設定するか、
+jar ファイルが Application Insights リソースを指すように、次の環境変数を設定します。
 
 ```console
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.2.0.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.2.2.jar` と同じディレクトリに配置します。
 
 ```json
 {
@@ -82,19 +82,19 @@ Application Insights リソースの接続文字列を見つけます。
 アプリケーションを実行し、Azure portal で [Application Insights リソース] タブを開きます。 ポータルにデータが表示されるまでに数分かかることがあります。
 
 > [!NOTE]
-> アプリケーションを実行できない場合、またはデータが期待どおりに取得されない場合は、「[トラブルシューティング](#troubleshooting)」に進んでください。
+> アプリケーションを実行できない場合、またはデータが期待どおりに取得されない場合は、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 
 :::image type="content" source="media/opentelemetry/server-requests.png" alt-text="サーバー要求とサーバー応答時間が強調表示されている [Application Insights の概要] タブのスクリーンショット。":::
 
 > [!IMPORTANT]
-> 同じ Application Insights リソースに 2 つ以上のサービスがテレメトリを出力している場合は、それらをアプリケーション マップで正しく表すために、[クラウド ロール名を設定する](java-standalone-config.md#cloud-role-name)必要があります。
+> 同じ Application Insights リソースにテレメトリを出力しているサービスが 2 つ以上ある場合は、アプリケーション マップ上で正しく表すために、[クラウド ロール名を設定する](java-standalone-config.md#cloud-role-name)必要があります。
 
 > [!NOTE]
-> Application Insights インストルメンテーションの使用の一部として、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
+> Application Insights インストルメンテーションの使用時に、診断データが収集され、Microsoft に送信されます。 このデータは、Application Insights の実行と改善に役立ちます。 重要でないデータ収集を無効にするオプションがあります。 [詳細については、こちらを参照してください](./statsbeat.md)。
 
 ## <a name="configuration-options"></a>構成オプション
 
-`applicationinsights.json` ファイルでは、次の構成を追加できます。
+`applicationinsights.json` ファイルでは、以下の設定を構成することができます。
 
 * クラウド ロール名
 * クラウド ロール インスタンス
@@ -210,15 +210,15 @@ Java 3.X には、次のインストルメンテーション ライブラリが�
 ## <a name="modify-telemetry"></a>テレメトリの変更
 
 ### <a name="add-span-attributes"></a>スパン属性を追加する
-スパンに属性を追加するには、`opentelemetry-api` を使用できます。 これらの属性には、テレメトリへのカスタム ビジネス ディメンションの追加が含まれる可能性があります。 また、属性を使用して、Application Insights のスキーマの [ユーザー ID] や [クライアント IP] などの省略可能なフィールドを設定することもできます。
+`opentelemetry-api` を使用して、スパンに属性を追加することができます。 これらの属性には、テレメトリへのカスタム ビジネス ディメンションの追加を含めることができます。 また、属性を使用して、Application Insights のスキーマの省略可能なフィールド ([ユーザー ID] や [クライアント IP] など) を設定することもできます。
 
 #### <a name="add-custom-dimension"></a>カスタム ディメンションを追加する
 1 つ以上のカスタム ディメンションを追加すると、要求、依存関係、または例外テーブル内の _customDimensions_ フィールドにデータが入力されます。
 
 > [!NOTE]
-> この機能は、3.2.0 以降にのみ存在します。
+> この機能は、3.2.0 以降でのみ利用できます。
 
-アプリケーションに `opentelemetry-api-1.6.0.jar` を追加し、
+アプリケーションに `opentelemetry-api-1.6.0.jar` を追加します:
 
 ```xml
 <dependency>
@@ -228,7 +228,7 @@ Java 3.X には、次のインストルメンテーション ライブラリが�
 </dependency>
 ```
 
-コードにカスタム ディメンションを追加します。
+コードにカスタム ディメンションを追加します:
 
 ```java
 import io.opentelemetry.api.trace.Span;
@@ -243,9 +243,9 @@ Span.current().setAttribute("mycustomdimension", "myvalue1");
 > 認証されたユーザー ID を設定する前に、該当するプライバシーに関する法律を調べてください。
 
 > [!NOTE]
-> この機能は、3.2.0 以降にのみ存在します。
+> この機能は、3.2.0 以降でのみ利用できます。
 
-アプリケーションに `opentelemetry-api-1.6.0.jar` を追加し、
+アプリケーションに `opentelemetry-api-1.6.0.jar` を追加します:
 
 ```xml
 <dependency>
@@ -265,12 +265,12 @@ Span.current().setAttribute("enduser.id", "myuser");
 
 ### <a name="get-trace-id-or-span-id"></a>トレース ID またはスパン ID を取得する
 
-トレース ID またはスパン ID を取得するには、`opentelemetry-api` を使用できます。 これは、これらの識別子を既存のログ テレメトリに追加して、問題のデバッグや診断時の相関関係を改善するために行われる場合があります。
+`opentelemetry-api` を使用して、トレース ID またはスパン ID を取得することができます。 このアクションは、これらの識別子を既存のログ テレメトリに追加して、問題のデバッグや診断時の相関関係を改善するために行われる場合があります。
 
 > [!NOTE]
-> この機能は、3.2.0 以降にのみ存在します。
+> この機能は、3.2.0 以降でのみ利用できます。
 
-アプリケーションに `opentelemetry-api-1.6.0.jar` を追加し、
+アプリケーションに `opentelemetry-api-1.6.0.jar` を追加します:
 
 ```xml
 <dependency>
@@ -288,12 +288,12 @@ import io.opentelemetry.api.trace.Span;
 String traceId = Span.current().getSpanContext().getTraceId();
 String spanId = Span.current().getSpanContext().getSpanId();
 ```
+
 ## <a name="custom-telemetry"></a>カスタムのテレメトリ
 
 Application Insights Java 3.x での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
 
-現時点では、Micrometer、一般的なログ記録フレームワーク、および Application Insights Java 2.x SDK をサポートしています。
-Application Insights Java 3.x を使用すると、これらの API を使用して送信されたテレメトリが自動的にキャプチャされ、自動収集されたテレメトリと関連付けられます。
+現時点では、Micrometer、一般的なログ記録フレームワーク、および Application Insights Java 2.x SDK をサポートしています。 Application Insights Java 3.x を使用すると、これらの API を使用して送信されたテレメトリが自動的にキャプチャされ、自動収集されたテレメトリと関連付けられます。
 
 ### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
 
@@ -331,7 +331,7 @@ Micrometer の[グローバル レジストリ](https://micrometer.io/docs/conce
 static final Counter counter = Metrics.counter("test_counter");
 ```
 
-次に、それを使用してメトリックを記録します。
+カウンターを使用してメトリックを記録します。
 
 ```java
 counter.increment();
@@ -342,9 +342,9 @@ counter.increment();
 Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは、トレースおよび例外テレメトリとして自動収集されます。
 
 既定では、INFO レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
-このレベルを変更する方法については、[構成オプション](./java-standalone-config.md#auto-collected-logging)に関する記事を参照してください。
+このレベルを変更するには、[構成オプション](./java-standalone-config.md#auto-collected-logging)に関する記事を参照してください。
 
-カスタム ディメンションをログに添付する場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.x を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
+カスタム ディメンションをログにアタッチする場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。 Application Insights Java 3.x では、これらの MDC プロパティがトレースおよび例外テレメトリのカスタム ディメンションとして自動的にキャプチャされます。
 
 ### <a name="send-custom-telemetry-using-the-2x-sdk"></a>2\.x SDK を使用してカスタム テレメトリを送信する
 
@@ -364,7 +364,7 @@ TelemetryClient を作成します。
 static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-次に、それを使用して、カスタム テレメトリを送信します。
+クライアントを使用してカスタム テレメトリを送信します。
 
 ##### <a name="events"></a>events
 
@@ -412,7 +412,8 @@ try {
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-[トラブルシューティング](java-standalone-troubleshoot.md)に関するページを参照します。
+
+[トラブルシューティング](java-standalone-troubleshoot.md)に関する記事を参照してください。
 
 ## <a name="support"></a>サポート
 - [トラブルシューティング手順](java-standalone-troubleshoot.md)を確認してください。

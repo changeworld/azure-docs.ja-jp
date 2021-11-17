@@ -7,24 +7,20 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 2472a3495b872a17b073a86a6d99c6ddbf218343
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 619c65cb2f86c946d0e85573a967a23d718b38c9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501440"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-mysql---flexible-server-for-free"></a>Azure 無料アカウントを使用して Azure Database for MySQL - フレキシブル サーバーを無料で試す
 
-Azure Database for MySQL - フレキシブル サーバー (プレビュー) は、高可用性の MySQL データベースをクラウド内で実行、管理、スケーリングするために使用されるマネージド サービスです。  Azure 無料アカウントを使用すると、フレキシブル サーバーを **12 か月間無料** でご利用いただけます。**1 か月あたりの上限** は次のとおりです。
+Azure Database for MySQL - フレキシブル サーバーは、高可用性の MySQL データベースをクラウド内で実行、管理、スケーリングするために使用されるマネージド サービスです。  Azure 無料アカウントを使用すると、フレキシブル サーバーを **12 か月間無料** でご利用いただけます。**1 か月あたりの上限** は次のとおりです。
 - **Burstable B1MS** インスタンスを **750 時間**。これはデータベース インスタンスを毎月十分に継続実行できるだけの時間です。
 - **32 GB のストレージと 32 GB のバックアップ ストレージ。** 
 
 この記事では、[Azure 無料アカウント](https://azure.microsoft.com/free/)を使用して、フレキシブル サーバーを無料で作成、使用する方法について説明します。 
-
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -54,7 +50,7 @@ Azure Database for MySQL - フレキシブル サーバー (プレビュー) は
 
 1. **［作成］** を選択します
 
-1. **[MySQL デプロイ オプションの Azure データベースの選択]** ページで、 **[フレキシブル サーバー (プレビュー)]** を選択します。 
+1. **[Azure Database for MySQL デプロイ オプションの選択]** ページで、 **[フレキシブル サーバー]** を選択します。 
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/select-deployment-option.png" alt-text="フレキシブル サーバーのデプロイ オプションを選択する画面のスクリーンショット。":::
 

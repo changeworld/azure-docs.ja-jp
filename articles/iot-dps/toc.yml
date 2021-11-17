@@ -106,8 +106,12 @@
         - name: Windows
           href: ../iot-edge/how-to-provision-devices-at-scale-windows-tpm.md
           maintainContext: true
-    - name: トラブルシューティング
-      href: how-to-troubleshoot-dps.md
+    - name: トラブルシューティングと FAQ
+      items:
+        - name: DPS のトラブルシューティング
+          href: how-to-troubleshoot-dps.md
+        - name: DPS の FAQ
+          href: dps-faq.yml
 - name: リファレンス
   items:
     - name: REST API

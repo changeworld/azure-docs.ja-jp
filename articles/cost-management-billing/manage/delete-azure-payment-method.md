@@ -2,19 +2,19 @@
 title: Azure の課金の支払い方法を削除する
 description: Azure サブスクリプションで使用される支払い方法を削除する方法について説明します。
 author: bandersmsft
-ms.reviewer: judupont
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: banders
-ms.openlocfilehash: 1ba1a97acfe2345ed5632ae6f84caacc525f13e4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 6050b98d54cf46bf83168d7d33b9ca44d2bd6eda
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544813"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180018"
 ---
 # <a name="delete-an-azure-billing-payment-method"></a>Azure の課金の支払い方法を削除する
 
@@ -84,8 +84,7 @@ Microsoft 顧客契約の支払い方法を削除するには、次の手順を�
 1. **[コストの管理と請求]** に移動します。
 1. 必要に応じて、課金スコープを選択します。
 1. 左側のメニュー一覧の **[課金]** で **[支払い方法]** を選択します。
-1. [支払い方法] 領域で、自分の支払い方法が表示されている "_行_" を選択します。 支払い方法のリンクは選択しないでください。 支払い方法を選択したことが、視覚的にはわからない場合があります。
-1. **[削除]** を選択します。  
+1. [支払い方法] 領域で、支払い方法がオンになっている行の省略記号 **[...]** を選択してから、 **[削除]** を選択します。
     :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="MOSP の支払い方法をデタッチするために必要な是正措置を示す画面の例" :::
 1. すべての条件を満たしている場合、[Delete a payment method]\(支払い方法の削除\) 領域の **[削除]** を選択します。 [削除] が選択できない場合は、次の手順に進んでください。
 1. 条件の一覧が表示されます。 一覧に表示されているアクションを実行してください。 [Delete a payment method]\(支払い方法の削除\) 領域に表示されているリンクを選択します。  

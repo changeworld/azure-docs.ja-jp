@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20eafed03b9dd63bf6c59445d744d7a3c67c5614
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e1cc2d2bf4a51a0d50c47d41982ced9962a977e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601750"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302052"
 ---
 # <a name="configure-azure-active-directory-to-meet-fedramp-high-impact-level"></a>FedRAMP High Impact Level を満たすための Azure Active Directory の構成
 
@@ -38,7 +38,7 @@ FedRAMP 認可を目指すには複数のパスがあります。 Azure の既�
 
 FedRAMP High ベースラインは、[NIST 800-53 Security Controls Catalog Revision 4](https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final) から 421 個のコントロールおよびコントロール拡張機能で構成されます。 該当する場合は、[800-53 Revision 5](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) の明確な情報を記載しました。 この記事では、ID に関連するこれらのコントロールのサブセットで、構成する必要があるものについて説明します。 
 
-Azure Active Directory (Azure AD) で構成を担当するコントロールのコンプライアンスの実現に役立つ規範的なガイダンスを提供します。 一部の ID コントロール要件に完全に対処するには、他のシステムの使用が必要になる場合があります。 他のシステムには、Azure Sentinel などのセキュリティ情報イベント管理ツールが考えられます。 Azure Active Directory の外部で Azure サービスを使用している場合、他にも考慮する必要があるコントロールがありますが、Azure に既に用意されている機能を使用して、コントロールを満たすことができます。
+Azure Active Directory (Azure AD) で構成を担当するコントロールのコンプライアンスの実現に役立つ規範的なガイダンスを提供します。 一部の ID コントロール要件に完全に対処するには、他のシステムの使用が必要になる場合があります。 他のシステムには、Microsoft Sentinel などのセキュリティ情報イベント管理ツールが考えられます。 Azure Active Directory の外部で Azure サービスを使用している場合、他にも考慮する必要があるコントロールがありますが、Azure に既に用意されている機能を使用して、コントロールを満たすことができます。
 
 FedRAMP リソースの一覧を次に示します。
 
@@ -67,4 +67,3 @@ FedRAMP リソースの一覧を次に示します。
 [ID および認証のコントロールを構成する](fedramp-identification-and-authentication-controls.md)
 
 [その他のコントロールの構成](fedramp-other-controls.md)
-

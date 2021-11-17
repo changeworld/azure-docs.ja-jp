@@ -3,15 +3,15 @@ title: Azure Active Directory を使用して Azure Web PubSub のアクセス�
 description: この記事では、Azure Active Directory を使用して Azure Web PubSub サービス リソースへのアクセスを認可する方法について説明します。
 author: terencefan
 ms.author: tefa
-ms.date: 11/08/2021
+ms.date: 09/06/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 386ef4d27a8fc2fbe4d9c3f209d2016fa1911761
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: be8c2aa41f8680df9156d7b86dd8eb2bf24ca514
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997459"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477944"
 ---
 # <a name="authorize-access-to-web-pubsub-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Web PubSub リソースへのアクセスを認可する
 Azure Web PubSub サービスでは、Azure Active Directory (Azure AD) を使用して Web PubSub リソースへの要求を認可することがサポートされています。 Azure AD を使用することで、ロールベースのアクセス制御 (RBAC) を使用してセキュリティ プリンシパルにアクセス許可を付与することができます<sup>[<a href="#security-principal">1</a>]</sup>。 セキュリティ プリンシパルは、OAuth 2.0 トークンを返す Azure AD によって認証されます。 その後、Web PubSub リソースに対する要求を認可するためにそのトークンを使用できます。
@@ -80,7 +80,7 @@ Azure SignalR リソースへのアクセスのスコープは、次のレベル
 
     これは通常、Web PubSub データプレーンの **読み取り専用** REST API **のみ** を呼び出す管理ツールを作成する場合に使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure アプリケーションを作成し、AAD 認証を使用する方法については、以下を参照してください
 - [Azure アプリケーションからの Web PubSub リソースへの要求を Azure AD を使用して認可する](howto-authorize-from-application.md)

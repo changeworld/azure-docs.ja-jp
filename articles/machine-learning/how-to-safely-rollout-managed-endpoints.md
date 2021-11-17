@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 813ef955a202f5645d8e4881efb3b2d083fa4d63
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 7f82c65a2aba8057ab3f7cbc6729b83ed597e12b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063591"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564805"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>オンライン エンドポイントの安全なロールアウト (プレビュー)
 
@@ -56,7 +56,7 @@ ms.locfileid: "132063591"
 
 * まだ環境変数 $ENDPOINT_NAME の設定が済んでいない場合は、ここで設定してください。
 
-   :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
+   :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
 
 * (推奨) サンプル リポジトリをクローンしてリポジトリの `cli/` ディレクトリに切り替えます。 
 
@@ -83,7 +83,7 @@ az ml online-deployment show --name blue --endpoint $ENDPOINT_NAME
 
 「[マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)」で説明されているデプロイでは、デプロイ yaml ファイルで `instance_count` の値を `1` に設定しました。 `update` コマンドを使用してスケール アウトできます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
 
 > [!Note]
 > 上記のコマンドでは、`--set` を使用してデプロイ構成をオーバーライドします。 または、yaml ファイルを更新し、`--file` 入力を使用して `update` コマンドに入力 として渡します。
@@ -92,27 +92,27 @@ az ml online-deployment show --name blue --endpoint $ENDPOINT_NAME
 
 `green` という名前の新しいデプロイを作成します。 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="create_green" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="create_green" :::
 
 green には、どのトラフィックも明示的に割り当てていないので、割り当てられたトラフィックはありません。 次のコマンドを使用して確認できます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="get_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="get_traffic" :::
 
 ### <a name="test-the-new-deployment"></a>新しいデプロイをテストする
 
 `green` に割り当てられたトラフィックは 0% ですが、`--deployment` の名前を指定して直接呼び出すことができます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green" :::
 
 トラフィック ルールを介さずに、REST クライアントを使用して直接デプロイを呼び出したい場合、`azureml-model-deployment: <deployment-name>` という HTTP ヘッダーを設定します。 次のコード スニペットでは、`curl` を使用してデプロイを直接呼び出します。 コード スニペットは、Unix/WSL 環境で動作する必要があります。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green_using_curl" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green_using_curl" :::
 
 ## <a name="test-the-new-deployment-with-a-small-percentage-of-live-traffic"></a>ライブ トラフィックの割合を小さく抑えて新しいデプロイをテストする
 
 `green` デプロイをテストしたら、それにトラフィックのごく一部を割り当てます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
 
 これで、`green` デプロイが要求の 10% を受け取るようになります。 
 
@@ -120,17 +120,17 @@ green には、どのトラフィックも明示的に割り当てていない�
 
 `green` デプロイに問題がなければ、すべてのトラフィックをそのデプロイに切り替えます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
 
 ## <a name="remove-the-old-deployment"></a>以前のデプロイを削除する
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
 
 ## <a name="delete-the-endpoint-and-deployment"></a>エンドポイントとデプロイを削除する
 
 デプロイを使用する予定がなければ、次のようにして削除してください。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
 
 
 ## <a name="next-steps"></a>次の手順

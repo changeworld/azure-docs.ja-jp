@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1c8f1117053e6076d2281036ecc63f1cbf97d15
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5597ca90a2264d192273ebfd57ecfd51382c3c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352755"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349302"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -299,7 +299,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 | ユーザーが、統合された登録を実行できない。| [統合された登録](concept-registration-mfa-sspr-combined.md)が有効になっていることを確認します。 |
 | ユーザーが[セキュリティの設定](https://aka.ms/mysecurityinfo)でセキュリティ キーを追加できない。| [セキュリティ キー](howto-authentication-passwordless-security-key.md)が有効になっていることを確認します。 |
 | ユーザーが Windows 10 のサインイン オプションでセキュリティ キーを追加できない。| [Windows サインイン用のセキュリティ キー](concept-authentication-passwordless.md)が有効になっていることを確認します。 |
-| **エラー メッセージ**:We detected that this browser or OS doesn't support FIDO2 security keys. (このブラウザーまたは OS では FIDO2 セキュリティ キーがサポートされていないことが検出されました。)| パスワードレス FIDO2 セキュリティ デバイスは、Windows 10 バージョン 1809 以降のサポートされているブラウザー (Microsoft Edge、Firefox バージョン 67) でのみ登録できます。 |
+| **エラー メッセージ**:We detected that this browser or OS doesn't support FIDO2 security keys. (このブラウザーまたは OS では FIDO2 セキュリティ キーがサポートされていないことが検出されました。)| パスワードなしの FIDO2 セキュリティ デバイスは、Windows 10 バージョン 1809 以降のサポートされているブラウザー (Microsoft Edge、Firefox バージョン 67) でのみ登録できます。 |
 | **エラー メッセージ**:会社のポリシーでは、別の方法を使用してサインインする必要があります。| テナントでセキュリティ キーが有効になっていることを確認します。 |
 | ユーザーが Windows 10 バージョン 1809 でセキュリティ キーを管理できない| バージョン 1809 では、FIDO2 キー ベンダーによって提供されるセキュリティ キー管理ソフトウェアを使用する必要があります。 ベンダーにサポートについてお問い合わせください。 |
 | FIDO2 のセキュリティ キーが破損している可能性がある - どうすればテストできるか。| [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) に移動して、テスト アカウントの資格情報を入力します。問題のあるセキュリティ キーをプラグインして、画面の右上にある [+] ボタンを選択し、[作成] を選択して作成プロセスを実行します。 このシナリオが失敗する場合、デバイスに欠陥がある可能性があります。 |
@@ -354,7 +354,7 @@ Azure AD では、次の場合に監査ログにエントリが追加されま�
 
 * ユーザーが、Win 10 マシン上でセキュリティ キーに対して自分のアカウントを有効/無効にするか、セキュリティ キーの第 2 の要素をリセットした場合。 イベント ID: 4670 および 5382 を参照してください。
 
-**Azure AD ではほとんどの監査データが 30 日間保持され**、Azure 管理ポータルまたは API でデータを分析システムにダウンロードして利用できます。 さらに長いデータ保持期間が必要な場合は、[Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk、Sumo Logic などの SIEM ツールでログをエクスポートして使用します。 監査、傾向分析やその他のビジネス ニーズに応じて、必要であれば保持期間を長くすることをお勧めします。
+**Azure AD ではほとんどの監査データが 30 日間保持され**、Azure 管理ポータルまたは API でデータを分析システムにダウンロードして利用できます。 データ保持期間を長くする必要な場合は、[Microsoft Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk、Sumo Logic などの SIEM ツールでログをエクスポートして使用します。 監査、傾向分析やその他のビジネス ニーズに応じて、必要であれば保持期間を長くすることをお勧めします。
 
 [認証方法のアクティビティ] ダッシュボードには、[登録] と [使用状況] という 2 つのタブがあります。
 

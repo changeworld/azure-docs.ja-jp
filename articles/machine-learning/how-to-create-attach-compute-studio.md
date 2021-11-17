@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/16/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 57a3f1f9d9665e23ba40479062f0f60e59608b66
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 669b14511c13ac1571082507ad8c16ed6b571600
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707423"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556542"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -204,6 +204,9 @@ SSH アクセスを有効にしてコンピューティング インスタンス
       `ssh -i <keyname.pem> azureuser@... (rest of connection string)`
 
 1. Linux ユーザーの場合は、[Azure 内の Linux VM 用の SSH キーの組を作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)方法に関する記事の手順に従ってください
+1. SCP の場合は次を使用します。 
+
+   `scp -i key.pem -P {port} {fileToCopyFromLocal }  azureuser@yourComputeInstancePublicIP:~/{destination}`
 
 ## <a name="next-steps"></a>次のステップ
 

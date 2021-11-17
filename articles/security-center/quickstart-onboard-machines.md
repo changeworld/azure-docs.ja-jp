@@ -8,13 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e5c44033a5f03726dc7e1f1129287edef5350aa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 390a628640389b2d2b89afbf36b4aab41f1eb115
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014380"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422313"
 ---
 # <a name="connect-your-non-azure-machines-to-microsoft-defender-for-cloud"></a>Azure 以外のマシンを Microsoft Defender for Cloud に接続する
 
@@ -28,6 +27,9 @@ Azure 以外のコンピューターは、次のいずれかの方法で接続�
 - Azure portal の Defender for Cloud のページから ( **[作業の開始]** と **[インベントリ]** )
 
 このページではそれぞれについて説明します。
+
+> [!TIP]
+> 他のクラウド プロバイダーからマシンを接続している場合は、「[AWS アカウントを接続する](quickstart-onboard-aws.md)」または「[GCP アカウントを接続する](quickstart-onboard-gcp.md)」を参照してください。
 
 ::: zone pivot="azure-arc"
 

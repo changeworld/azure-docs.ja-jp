@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 02/09/2021
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 57aae03e18f938ca89da5081a2076698ea3341f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b6cd1bce4528d35cf0f7f897e6032079cae6cdea
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091578"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579238"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization"></a>Kubernetes 認可に Azure RBAC を使用する
 
@@ -79,6 +79,11 @@ Azure AD 統合と Kubernetes 認可用の Azure RBAC を使用してクラス�
 
 ```azurecli-interactive
 az aks update -g myResourceGroup -n myAKSCluster --enable-azure-rbac
+```
+既存の AKS クラスターから Kubernetes 認可用の Azure RBAC を削除するには、[az aks update][az-aks-update] コマンドをフラグ `disable-azure-rbac` と共に使用します。
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster --disable-azure-rbac
 ```
 
 ## <a name="create-role-assignments-for-users-to-access-cluster"></a>ユーザーがクラスターにアクセスするためのロールの割り当てを作成する

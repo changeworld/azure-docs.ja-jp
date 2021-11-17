@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/27/2021
 ms.author: spelluru
 ms.custom: devx-track-java
-ms.openlocfilehash: 4d8faa2d3ed17b404ae0609573c9f981386f10a5
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 6009d3ee7ce1ea55e9ccd3191e4d1bb2eef09ea4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154624"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063498"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する
 
@@ -40,7 +40,7 @@ Azure Service Bus と Apache ActiveMQ は両方とも、クライアント ア�
 | アプリケーションの階層化 | クラスター化モノリス | 2 層 <br> (ゲートウェイ + バックエンド) |
 | プロトコルのサポート | <ul> <li>AMQP</li> <li> STOMP </li> <li> OpenWire </li> </ul> | AMQP |
 | プロビジョニング モード | <ul> <li> サービスとしてのインフラストラクチャ (IaaS)、オンプレミス </li> <li> Amazon MQ (マネージド PaaS) </li> | マネージド PaaS (サービスとしてのプラットフォーム) |
-| メッセージ サイズ | ユーザーが構成可能 | 1 MB (Premium レベル) |
+| メッセージ サイズ | ユーザーが構成可能 | 100 MB (Premium レベル) |
 | 高可用性 | お客様による管理 | プラットフォーム管理 |
 | 障害復旧 | お客様による管理 | プラットフォーム管理 | 
 

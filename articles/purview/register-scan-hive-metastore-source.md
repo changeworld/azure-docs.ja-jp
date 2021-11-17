@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 074a2cbef5a19185f2e817f9cedd4ea509a3d966
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2e40125d65dd2b4b701d5b1049444a52e6cb7dc4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131457280"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850662"
 ---
 # <a name="connect-to-and-manage-hive-metastore-databases-in-azure-purview"></a>Azure Purview で Hive メタストア データベースに接続して管理する
 
@@ -23,7 +23,9 @@ ms.locfileid: "131457280"
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| はい |
+| [あり](#register)| [あり](#scan)| いいえ | いいえ | いいえ | いいえ| はい** |
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 > [!Important]
 > サポートされているプラットフォームは、Apache Hadoop、Cloudera、Hortonworks、Databricks です。

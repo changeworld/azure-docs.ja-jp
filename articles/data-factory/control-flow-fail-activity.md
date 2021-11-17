@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory および Synapse Analytics で Fail アクティビティを実行する (プレビュー)
+title: Azure Data Factory および Synapse Analytics で Fail アクティビティを実行する
 titleSuffix: Azure Data Factory & Azure Synapse
 description: この記事では、Azure Data Factory と Synapse Analytics の Fail アクティビティで、意図的にパイプラインでエラーをスローする方法を説明します。
 author: chez-charlie
@@ -9,14 +9,14 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 2b8b012617633a7569c951e842d35b05a3b2740e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 07891ea9f4f25827c80ac56a2731d4a5393f3b38
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535876"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438723"
 ---
-# <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics-preview"></a>Azure Data Factory および Synapse Analytics で Fail アクティビティを実行する (プレビュー)
+# <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory および Synapse Analytics で Fail アクティビティを実行する
 
 パイプラインで意図的にエラーをスローしたい場合があります。 [Lookup アクティビティ](control-flow-lookup-activity.md)から一致するデータが返されなかったり、[Custom アクティビティ](transform-data-using-dotnet-custom-activity.md)が内部エラーで終了したりする場合があります。 理由にかかわらず、パイプラインで Fail アクティビティを使用し、そのエラー メッセージとエラー コードの両方をカスタマイズできるようになりました。
 

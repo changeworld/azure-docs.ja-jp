@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 605c7641c5960bf5643a0ca26e29339d5cd21db0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 70ad7876b56b12c6a9d6fd1654e12dc0a764aa00
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563247"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339974"
 ---
 # <a name="connect-devices-to-azure-video-analyzer"></a>Azure Video Analyzer へのデバイスの接続
 

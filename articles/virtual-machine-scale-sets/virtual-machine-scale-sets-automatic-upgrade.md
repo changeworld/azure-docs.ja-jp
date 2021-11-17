@@ -9,12 +9,12 @@ ms.subservice: automatic-os-upgrade
 ms.date: 07/29/2021
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9e814ad43d157d69fee2b70eaaccbadf23f4fa2
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f4b5c58eb8811db9042d92416c4c37fa30234149
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690517"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432949"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -27,7 +27,7 @@ OS の自動アップグレードには、次の特徴があります。
 - 構成すると、イメージ発行元によって公開された最新の OS イメージが、ユーザーの介入なしでスケール セットに自動的に適用されます。
 - 新しいイメージが発行元によって発行されるたびに、ローリングの方法でバッチごとにインスタンスをアップグレードします。
 - アプリケーション正常性プローブおよび[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)と統合されます。
-- すべての VM サイズに対して、また、[Shared Image Gallery](../virtual-machines/shared-image-galleries.md) から入手したカスタム イメージを含む Windows イメージと Linux イメージの両方に対して動作します。
+- すべての VM サイズに対して、また、[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) から入手したカスタム イメージを含む Windows イメージと Linux イメージの両方に対して動作します。
 - 自動アップグレードはいつでも停止できます (OS のアップグレードは、手動でも開始できます)。
 - VM の OS ディスクが、最新バージョンのイメージで作成された新しい OS ディスクに置き換えられます。 永続化されているデータ ディスクは保持されたまま、構成済みの拡張機能とカスタム データ スクリプトが実行されます。
 - [拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)がサポートされています。
@@ -55,7 +55,7 @@ Azure Load Balancer アプリケーション正常性プローブまたは[ア�
 - 共通のスケール セット内のすべての VM が同時に更新されることはありません。  
 - 共通の仮想マシン スケール セット内の VM は、以下に示すように、バッチにグループ化され、更新ドメインの境界内で更新されます。
 
-プラットフォームの調整された更新プロセスに従って、サポートされている OS プラットフォーム イメージのアップグレードが毎月ロールアウトされます。 Shared Image Gallery から入手したカスタム イメージの場合、イメージのアップグレードは、その新しいイメージが公開され、そのスケール セットのリージョンに[レプリケート](../virtual-machines/shared-image-galleries.md#replication)された時に、特定の Azure リージョンに対してのみ開始されます。
+プラットフォームの調整された更新プロセスに従って、サポートされている OS プラットフォーム イメージのアップグレードが毎月ロールアウトされます。 Azure Compute Gallery から入手したカスタム イメージの場合、イメージのアップグレードは、その新しいイメージが公開され、そのスケール セットのリージョンに[レプリケート](../virtual-machines/shared-image-galleries.md#replication)された時に、特定の Azure リージョンに対してのみ開始されます。
 
 ### <a name="upgrading-vms-in-a-scale-set"></a>スケール セット内の VM のアップグレード
 
@@ -73,7 +73,7 @@ Azure Load Balancer アプリケーション正常性プローブまたは[ア�
 >OS の自動アップグレードでは、スケール セットの参照イメージ SKU はアップグレードされません。 SKU (Ubuntu 16.04-LTS から 18.04-LTS など) を変更するには、目的のイメージ SKU を使用して直接[スケール セット モデル](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)を更新する必要があります。 既存のスケール セットに対して、イメージ発行者とオファーを変更することはできません。  
 
 ## <a name="supported-os-images"></a>サポート対象の OS イメージ
-現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージが [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) を介してスケール セットで使用されている場合は、その[カスタム イメージ](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)はサポートされます。
+現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージが [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) を介してスケール セットで使用されている場合は、そのカスタム イメージは[サポートされます](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)。
 
 現時点では、以下のプラットフォーム SKU がサポートされています (定期的に追加されます)。
 
@@ -116,11 +116,11 @@ Service Fabric クラスターと Service Fabric 拡張機能で持続性の設�
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>カスタム イメージの OS イメージの自動アップグレード
 
-OS イメージの自動アップグレードは、[Shared Image Gallery](../virtual-machines/shared-image-galleries.md) を介して展開されているカスタム イメージでサポートされています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
+OS イメージの自動アップグレードは、[Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) を介して展開されているカスタム イメージでサポートされています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
 
 ### <a name="additional-requirements-for-custom-images"></a>カスタム イメージのその他の要件
 - OS イメージの自動アップグレードのセットアップおよび構成プロセスは、このページの[構成に関するセクション](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)で詳しく説明されているように、すべてのスケール セットについて同一です。
-- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](../virtual-machines/shared-image-galleries.md#replication)ときに、Shared Image Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
+- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](../virtual-machines/shared-image-galleries.md#replication)ときに、Azure Compute Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
 - そのギャラリー イメージの最新バージョンから、新しいイメージ バージョンを除外しないでください。 ギャラリー イメージの最新バージョンから除外されたイメージ バージョンは、OS イメージの自動アップグレードによってスケール セットにロールアウトされません。
 
 > [!NOTE]

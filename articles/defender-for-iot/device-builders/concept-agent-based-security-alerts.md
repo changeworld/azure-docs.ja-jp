@@ -2,13 +2,13 @@
 title: マイクロ エージェントのセキュリティ アラート (プレビュー)
 description: Defender for IoT デバイスの機能とサービスを使用したセキュリティ アラートと推奨される修復について説明します。
 ms.topic: conceptual
-ms.date: 10/19/2021
-ms.openlocfilehash: f7f3ba18d405839cceea1330a782451bc494b515
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: 2a5a33b2ad7fd32fafc9a3c7998a21769426f858
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226435"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286623"
 ---
 # <a name="micro-agent-security-alerts-preview"></a>マイクロ エージェントのセキュリティ アラート (プレビュー)
 

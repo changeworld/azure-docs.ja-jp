@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single Sign-on の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と AWS Single Sign-on の統合'
 description: Azure Active Directory と AWS Single Sign-on の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: bda8218fb9d08da410b08f8b6f3a3e3cda53ec22
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4e7d0f8edb34f7c6a91eeb8bac6f04b97440f764
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759692"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440821"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single Sign-on の統合
+# <a name="tutorial-azure-ad-sso-integration-with-aws-single-sign-on"></a>チュートリアル: Azure AD SSO と AWS Single Sign-on の統合
 
 このチュートリアルでは、AWS Single Sign-on と Azure Active Directory (Azure AD) を統合する方法について説明します。 AWS Single Sign-on を Azure AD と統合すると、次のことができます。
 
@@ -80,7 +80,7 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    b. **フォルダー ロゴ** をクリックして、「**AWS Single Sign-on の SSO の構成**」セクション (ポイント 8) でダウンロードしたメタデータ ファイルを選択し、 **[追加]** をクリックします。
+    b. **フォルダー ロゴ** をクリックして、「 **[AWS Single Sign-on の SSO の構成](#configure-aws-single-sign-on-sso)** 」セクションでダウンロードするように説明されているメタデータ ファイルを選択し、 **[追加]** をクリックします。
 
     ![Image2](common/browse-upload-metadata.png)
 

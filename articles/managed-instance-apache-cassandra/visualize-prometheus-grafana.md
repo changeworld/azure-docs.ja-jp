@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: thvankra
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4464db95637511339e0000235b85da86306b4cef
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8fe10e1706667bba10133131f7a1d50a6e3fa110
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051023"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309812"
 ---
 # <a name="configure-grafana-to-visualize-metrics-emitted-from-the-managed-instance-cluster"></a>マネージド インスタンス クラスターから生成されたメトリックを視覚化するように Grafana を構成する
 
@@ -21,7 +21,7 @@ Azure Managed Instance for Apache Cassandra クラスターをデプロイする
 * マネージド インスタンスが存在する Azure 仮想ネットワーク内に Ubuntu 仮想マシンをデプロイします。
 * ダッシュボードを作成し、Prometheus から生成されたメトリックを視覚化するためのオープンソースの [Grafana ツール](https://grafana.com/grafana/)をインストールします。
 
-## <a name="deploy-a-ubuntu-server"></a>Ubuntu サーバーをデプロイする
+## <a name="deploy-an-ubuntu-server"></a>Ubuntu サーバーをデプロイする
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 

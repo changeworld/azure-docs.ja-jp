@@ -2,14 +2,14 @@
 title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
-ms.date: 10/06/2021
+ms.date: 11/08/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 67439ad4c3d51dc354007b11008179d210aeaca6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0734e6d7d54966617e66a5ac5876df4a1da9264f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046814"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028783"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -25,14 +25,11 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 | 予測可能なパフォーマンス |変わりやすい待機時間 |
 | 固定価格 |従量課金制の変わりやすい料金 |
 | ワークロードをスケールアップおよびスケールダウンする機能 |該当なし |
-| 最大 1 MB のメッセージ サイズ。 |最大 256 KB のメッセージ サイズ |
+| 最大 100 MB のメッセージ サイズ。 詳細については、[大量メッセージ サポート](#large-messages-support)に関する記事を参照してください。 |最大 256 KB のメッセージ サイズ |
 
 **Service Bus Premium メッセージング** では、各顧客のワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット* と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 各 Service Bus Premium 名前空間に対して 1、2、4、8、または 16 のメッセージング ユニットを購入することができます。 1 つのワークロードまたはエンティティが複数のメッセージング ユニットにまたがることができ、メッセージング ユニットの数は任意で変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
 このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。 Premium メッセージングでのピークのパフォーマンスは、Standard レベルよりもはるかに高速です。
-
-> [!NOTE]
-> Premium メッセージングのバッチ サイズの制限は 1 MB です。
 
 ## <a name="premium-messaging-technical-differences"></a>Premium メッセージングの技術的な相違点
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Front Door - バックエンドの正常性監視 | Microsoft Docs
-description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます
+description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: 6ccd231c69d69900f81ab91d39eada1f67c7886f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 101d769fce7baaac629c756b3f7fad173f736b6c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792469"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053709"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
@@ -80,4 +80,5 @@ Azure Front Door では、すべてのアルゴリズムで次の同じ 3 段階
 ## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door Standard または Premium を作成する](standard-premium/create-front-door-portal.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

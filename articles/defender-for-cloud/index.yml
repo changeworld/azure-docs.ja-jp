@@ -5,18 +5,18 @@ metadata:
   title: Microsoft Defender for Cloud のドキュメント
   description: Microsoft が提供するクイックスタートとチュートリアルを使用して、Defender for Cloud の利用開始、ワークロードをセキュリティで保護する方法の確認、リスクの抑制、攻撃の検出および対応を行えます。
   services: security-center
-  ms.service: security-center
+  ms.service: defender-for-cloud
   ms.topic: landing-page
   ms.collection: collection
   author: memildin
   ms.author: memildin
   ms.date: 10/21/2021
-  ms.openlocfilehash: 5ab94b1a0cf16df2475d073e62ee7877b97c28e2
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: 66839c045da6af6c4b6279ac0501a85ab7ea939b
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132349643"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132487091"
 landingContent:
 - title: Defender for Cloud について
   linkLists:

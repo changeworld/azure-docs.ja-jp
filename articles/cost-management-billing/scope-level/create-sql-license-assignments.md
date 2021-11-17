@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisri
-ms.openlocfilehash: 48b68260e07d6e69e41daeacae631a9415f48a65
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: e97c4a51366dbfd2c9016de4684129a91df0cbe9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547220"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218941"
 ---
 # <a name="create-sql-server-license-assignments-for-azure-hybrid-benefit"></a>Azure ハイブリッド特典用に SQL Server ライセンス割り当てを作成する
 
-Azure portal での新しい Azure ハイブリッド特典のエクスペリエンスでは、アカウント レベルまたは特定のサブスクリプション レベルでの SQL Server ライセンス割り当てがサポートされます。 アカウント レベルで割り当てが作成されると、Azure ハイブリッド特典割引が、アカウント内のすべてのサブスクリプション内の SQL リソースに、割り当てで指定されたライセンス数まで自動的に適用されます。
+Azure portal の新しい一元化された Azure ハイブリッド特典エクスペリエンスでは、アカウント レベルまたは特定のサブスクリプション レベルでの SQL Server ライセンス割り当てがサポートされます。 アカウント レベルで割り当てが作成されると、Azure ハイブリッド特典割引が、アカウント内のすべてのサブスクリプション内の SQL リソースに、割り当てで指定されたライセンス数まで自動的に適用されます。
 
 各ライセンス割り当てに対してスコープが選択され、そのスコープにライセンスが割り当てられます。 各スコープには、複数のライセンス エントリを含めることができます。
 
@@ -42,7 +42,7 @@ SQL Server ライセンス割り当てを作成するには、次の前提条件
 | CSP/パートナー主導の顧客 | 使用不可 | なし |
 
 > [!NOTE]
-> スコープ レベルのライセンス エクスペリエンスは、スポンサー MSDN クレジット サブスクリプションと MPN サブスクリプションには用意されていません。 Dev/Test サブスクリプション (MS-AZR-0148P または MS-AZR-0023P という種類のオファー) では、SQL ソフトウェアの使用は無料です。
+> スコープに対して一元的にライセンスを割り当ててる操作は、スポンサー、MSDN クレジット サブスクリプション、または MPN サブスクリプションに使うことはできません。 Dev/Test サブスクリプション (MS-AZR-0148P または MS-AZR-0023P という種類のオファー) では、SQL ソフトウェアの使用は無料です。
 
 ## <a name="create-a-sql-license-assignment"></a>SQL ライセンス割り当てを作成する
 
@@ -101,7 +101,7 @@ SQL ライセンス割り当てを作成した後は、Azure portal での Azure
 - ハイブリッド特典オプションは、SQL リソース構成内と同様には表示されません。
 - ハイブリッド特典をプログラムによって構成するアプリケーションまたはスクリプトは、引き続き機能しますが、設定の効果はありません。
 - SQL ソフトウェア割引が、スコープ内の SQL リソースに適用されます。 スコープは、リソースが作成されたアカウントのサブスクリプション用に作成されているライセンス割り当てのライセンス数に基づいています。
-- ハイブリッド特典用に構成された特定のリソースには、他のリソースによってすべてのライセンスが使用されている場合は、割引が適用されないことがあります。 ただし、ライセンス数に基づいて最大割引がスコープに適用されます。 割引の適用方法の詳細については、[Azure ハイブリッド特典のスコープレベルの管理](overview-azure-hybrid-benefit-scope.md)に関するページを参照してください。
+- ハイブリッド特典用に構成された特定のリソースには、他のリソースによってすべてのライセンスが使用されている場合は、割引が適用されないことがあります。 ただし、ライセンス数に基づいて最大割引がスコープに適用されます。 割引の適用方法の詳細については、「[一元管理された Azure ハイブリッド特典とは](overview-azure-hybrid-benefit-scope.md)」を参照してください。
 
 ## <a name="cancel-a-license-assignment"></a>ライセンス割り当てを取り消す
 
@@ -117,5 +117,5 @@ SQL ライセンス割り当てを作成した後は、Azure portal での Azure
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[スコープ レベルの Azure ハイブリッド特典の管理に関する FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
-- 割引がどのように適用されるかについては、[Azure ハイブリッド特典のスコープレベルの管理](overview-azure-hybrid-benefit-scope.md)に関するページを参照してください。
+- 「[一元管理された Azure ハイブリッド特典の FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
+- [一元管理された Azure ハイブリッド特典の概要](overview-azure-hybrid-benefit-scope.md)に関するページで、割引が適用される方法について理解します。

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dec042c66ebed15a51d5c6c1f3ef6a3e3e2fb456
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734782"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428028"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure Synapse Analytics ワークロード グループ分離
 
@@ -61,7 +61,7 @@ ms.locfileid: "98734782"
 
 ## <a name="resources-per-request-definition"></a>要求の定義ごとのリソース
 
-ワークロード グループは、REQUEST_MIN_RESOURCE_GRANT_PERCENT パラメーターと REQUEST_MAX_RESOURCE_GRANT_PERCENT パラメーターで要求ごとに割り当てられるリソースの最小容量と最大量を [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で定義するメカニズムを提供します。  この場合のリソースは、CPU とメモリです。  これらの値を構成すると、システムで実現できるリソースの量とコンカレンシーのレベルが決まります。
+ワークロード グループは、REQUEST_MIN_RESOURCE_GRANT_PERCENT パラメーターと REQUEST_MAX_RESOURCE_GRANT_PERCENT パラメーターで要求ごとに割り当てられるリソースの最小容量と最大量を [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 構文で定義するメカニズムを提供します。  この場合のリソースはメモリです。 CPU リソースは、ワークロード グループの CAP_PERCENTAGE_RESOURCE 値によって上限が決まり、個々の要求レベルでは管理されません。 これらの値を構成すると、システムで実現できるリソースの量とコンカレンシーのレベルが決まります。
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT は省略可能なパラメーターで、既定値は REQUEST_MIN_RESOURCE_GRANT_PERCENT に対して指定されている値と同じです。

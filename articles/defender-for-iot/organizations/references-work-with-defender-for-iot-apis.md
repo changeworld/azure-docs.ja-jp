@@ -1,16 +1,18 @@
 ---
 title: Defender for IoT の API を操作する
 description: 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
-ms.date: 10/17/2021
+ms.date: 11/08/2021
 ms.topic: reference
-ms.openlocfilehash: f11627a35f2d91cb719866e6fc7d8fc480a50b17
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 0176fe3da6c2105c522f92614295500fb8ce0e81
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131582"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997668"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
+
+Defender for IoT API は、[Microsoft API ライセンスと利用規約](/legal/microsoft-apis/terms-of-use)によって管理されています。
 
 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
 

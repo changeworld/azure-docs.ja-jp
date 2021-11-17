@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 12af9165b8393291b67fd0cbe4cb2ced6ae77a17
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8e1e43b1c1f11ae6eb37ab599f9636bc47423f8b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212190"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442143"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類
 
@@ -28,6 +28,9 @@ Azure Purview Data Catalog には、データ資産に含まれている可能�
 
 > [!Note]
 > Microsoft の[データ サンプリング ルール](sources-and-scans.md#sampling-within-a-file)は、システムとカスタムの両方の分類に適用されます。  
+
+> [!NOTE]
+> Purview のカスタム分類は、構造化データ ソース (SQL、CosmosDB など) と構造化ファイル タイプ (CSV、JSON、Parquet など) にのみ適用されます。 DOC、PDF、XLSX などの非構造化データ ファイル タイプには適用されません。
 
 ## <a name="steps-to-create-a-custom-classification"></a>カスタム分類の作成手順
 

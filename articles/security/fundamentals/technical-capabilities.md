@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: e0513ac3c4fdf4cfb01d9d0f879bfe06bf3bb601
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0768b4bc50d1c4dade9ff08acb4fd9129a8b6f1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037323"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335539"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -336,11 +336,11 @@ Azure Monitor を使用すれば、オンプレミス型、Azure、AWS、Windows
 
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender for Cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Microsoft Defender for Cloud](../../security-center/security-center-introduction.md) は、Azure リソースのセキュリティを可視化して制御することで、脅威の防止、検出、対応を行うのに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-Security Center は Azure リソースのセキュリティの状態を分析して、潜在的なセキュリティ脆弱性を特定します。 推奨事項の一覧では、必要な制御を構成する手順を説明します。
+Defender for Cloud により Azure リソースのセキュリティの状態が分析され、潜在的なセキュリティ脆弱性が特定されます。 推奨事項の一覧では、必要な制御を構成する手順を説明します。
 
 たとえば、次のようになります。
 
@@ -354,7 +354,7 @@ Security Center は Azure リソースのセキュリティの状態を分析し
 
 - 推奨基準と一致しない OS 構成に対処する
 
-Security Center は、Azure リソース、ネットワーク、パートナー ソリューション (マルウェア対策プログラム、ファイアウォールなど) からログ データを自動的に収集、分析、統合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
+Defender for Cloud は、Azure リソース、ネットワーク、パートナー ソリューション (マルウェア対策プログラム、ファイアウォールなど) からログ データを自動的に収集、分析、統合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
 
 - 既知の悪意のある IP アドレスと通信する、セキュリティ侵害された VM
 

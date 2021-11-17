@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 269769c8bc80986230cbbee4225a38523f605724
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 8114492c9740cf706e9d2ba6fbd99f22029ba769
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131565743"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289833"
 ---
 # <a name="train-anomaly-detection-model-component"></a>異常検出モデルのトレーニング コンポーネント
 
@@ -48,10 +48,8 @@ ms.locfileid: "131565743"
 
 + トレーニング済みのモデルのスナップショットを保存するには、コンポーネントを選択します。 次に、右側のパネルの **[出力 + ログ]** タブにある **[データセットの登録]** アイコンをクリックします。   
 
- 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のコンポーネント](component-reference.md)を参照してください。 
 
 デザイナー コンポーネント固有のエラーの一覧については、「[デザイナーの例外とエラー コード](designer-error-codes.md)」を参照してください。
-'

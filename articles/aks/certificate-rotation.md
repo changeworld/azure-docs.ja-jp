@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで証明書をロー
 services: container-service
 ms.topic: article
 ms.date: 11/03/2021
-ms.openlocfilehash: cd1e55df9609adcc8d5d1d33b1853ba855889b8f
-ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
+ms.openlocfilehash: 7651af1bc1b3229fa206dbb507a918d611b2eafc
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132371621"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575771"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -69,15 +69,10 @@ AKS で非 CA 証明書を自動的にローテーションするには、クラ
 * australiacentral
 * australiaest
 
-#### <a name="how-to-check-whether-current-agent-node-pool-is-tls-bootstrapping-enabled"></a>現在のエージェント ノード プールで TLS ブートストラップが有効かどうかを確認する方法
-お使いのクラスターで TLS ブートストラップが有効であるかどうかを確認するには、次のパスを参照してください。  Linux ノードの場合: /var/lib/kubelet/bootstrap-kubeconfig、Windows ノードの場合: c:\k\bootstrap-config
-
-> [注] このファイル パスは、今後 k8s のバージョンが進んだ場合に変わる可能性があります。
-
 > [!IMPORTANT]
 >リージョンが構成されたら、新しいクラスターを作成するか、"az aks upgrade -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME" を使用して既存のクラスターにアップグレードし、そのクラスターに証明書の自動ローテーションを設定します。 
 
-### <a name="limitation"></a>制限事項
+### <a name="limititation"></a>制限事項
 
 証明書の自動ローテーションは、非 RBAC クラスターでは有効にできません。
 
@@ -85,7 +80,7 @@ AKS で非 CA 証明書を自動的にローテーションするには、クラ
 ## <a name="rotate-your-cluster-certificates"></a>クラスター証明書をローテーションする
 
 > [!WARNING]
-> `az aks rotate-certs` を使用して証明書をローテーションすると、すべてのノードと OS ディスクが再作成され、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
+> `az aks rotate-certs` を使用して証明書をローテーションすると、すべてのノードが再作成され、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用のローカル コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 

@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 17482c9de7cc6c26355fa6ec629028739b209785
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545041"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134331"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 
@@ -209,7 +209,7 @@ Azure Virtual WAN 接続は、2 つのトンネルから成ります。 Virtual 
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Azure Virtual WAN を使用する場合、ネットワーク スループットまたは接続に制限はありますか。
 
-ネットワーク スループットは、仮想 WAN ハブのサービスごとにあります。 仮想 WAN は必要な数だけ使用できますが、各仮想 WAN ではリージョンごとに 1 つのハブが許可されます。 各ハブでは、VPN の総スループットは最大 20 Gbps、ExpressRoute の総スループットは最大 20 Gbps、ユーザー VPN (ポイント対サイト) VPN の総スループットは最大 20 Gbps となります。 仮想ハブのルーターでは、VNet 対 VNet のトラフィック フローに対して最大 50 Gbps がサポートされ、単一の仮想ハブに接続されているすべての VNet で合計 2,000 の VM ワークロードが想定されます。
+ネットワーク スループットは、仮想 WAN ハブのサービスごとにあります。 仮想 WAN は必要な数だけ使用できますが、各仮想 WAN ではリージョンごとに 1 つのハブが許可されます。 各ハブでは、VPN の総スループットは最大 20 Gbps、ExpressRoute の総スループットは最大 20 Gbps、ユーザー VPN (ポイント対サイト) VPN の総スループットは最大 20 Gbps となります。 仮想ハブのルーターでは、VNet 対 VNet のトラフィック フローに対して最大 50 Gbps がサポートされ、単一の仮想ハブに接続されているすべての VNet で合計 2,000 の VM ワークロードが想定されます。 この[制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits)は、オンライン カスタマー サポート リクエストを開いて増やすことができます。 コストへの影響については、[Azure Virtual WAN の価格](https://azure.microsoft.com/pricing/details/virtual-wan/)に関するページの "*ルーティング インフラストラクチャ ユニット*" のコストを参照してください。 
 
 VPN サイトでは、ハブに接続するときに、複数の接続を使用します。 Virtual WAN では、仮想ハブあたり最大 1,000 の接続または 2,000 の IPsec トンネルがサポートされます。 リモート ユーザーは、仮想ハブに接続するときに、P2S VPN ゲートウェイに接続します。これにより、仮想ハブの P2S VPN ゲートウェイに対して選択されたスケール ユニット (帯域幅) に応じて、最大 10,000 のユーザーがサポートされます。
 
@@ -321,7 +321,7 @@ Azure Firewall 経由のインターネット ブレークアウトを使用し�
 
 Azure Route Server は、Border Gateway Protocol (BGP) ピアリング サービスを提供しており、NVA (Network Virtual Appliance) は、このピアリング サービスを使用して、DIY ハブ VNet のルート サーバーからルートを学習することができます。 VNet 対 VNet トランジット ルーティング、カスタム ルーティング、カスタム ルートの関連付けと伝播、ゼロタッチのフル メッシュ型ハブ サービス、そして ExpressRoute、サイト VPN、リモート ユーザー P2S VPN、大規模 P2S VPN、セキュア ハブ (Azure Firewall) 機能の接続サービスなど、さまざまな機能が Virtual WAN のルーティングには備わっています。 NVA と Azure Route Server との間で BGP ピアリングを確立すると、NVA からの IP アドレスを仮想ネットワークにアドバタイズすることができます。 トランジット ルーティング、カスタム ルーティングなど、先進のあらゆるルーティング機能に、Virtual WAN ルーティングを使用することができます。
 
-### <a name="if-i-am-using-a-third-party-security-provider-zscalar-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>サードパーティのセキュリティ プロバイダー (ZScalar、iBoss、チェックポイント) を使用してインターネット トラフィックをセキュリティで保護している場合、Azure portal でサードパーティのセキュリティ プロバイダーに関連付けられている VPN サイトが表示されないのはなぜですか?
+### <a name="if-i-am-using-a-third-party-security-provider-zscaler-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>サード パーティのセキュリティ プロバイダー (Zscaler、iBoss、または Checkpoint) を使用してインターネット トラフィックをセキュリティで保護している場合、Azure portal でサード パーティのセキュリティ プロバイダーに関連付けられている VPN サイトが表示されないのはなぜですか?
 
 ユーザーのインターネット アクセスを保護するためにセキュリティ パートナー プロバイダーをデプロイすることを選択すると、サードパーティのセキュリティ プロバイダーによって、ユーザーに代わって VPN サイトが作成されます。 サードパーティのセキュリティ プロバイダーはプロバイダーによって自動的に作成され、ユーザーが作成した VPN サイトではないため、この VPN サイトは Azure portal に表示されません。
 

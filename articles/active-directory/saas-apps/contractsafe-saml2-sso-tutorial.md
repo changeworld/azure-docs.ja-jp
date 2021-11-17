@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 7e01f3790f14ae2aaf20da465cd9c66336ea5ce6
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 15f57b89e024fda9bbdc9af320c09e9cc370cce5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132280509"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477461"
 ---
 # <a name="tutorial-integrate-azure-ad-sso-with-contractsafe-saml2-sso"></a>チュートリアル: Azure AD SSO と ContractSafe Saml2 SSO を統合する
 
@@ -143,4 +143,4 @@ ContractSafe Saml2 SSO で B.Simon というユーザーを作成します。 [C
 
 ## <a name="next-steps"></a>次のステップ
 
-ContractSafe Saml2 SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+ContractSafe Saml2 SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

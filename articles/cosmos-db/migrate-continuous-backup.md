@@ -4,16 +4,16 @@ description: Azure Cosmos DB では現在、定期モードから継続モード
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 10/04/2021
+ms.date: 10/28/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: b6821435f2f6ce04f1b8ba4b3af8b8f47097c2fa
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3ac1ae98dfa920a4b4060905e99b7378fcdb3414
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546017"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476302"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Azure Cosmos DB アカウントを定期バックアップ モードから継続的バックアップ モードに移行する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "129546017"
 > [!NOTE]
 > 移行機能は一方向のみであり、元に戻すことができない操作です。 つまり、定義モードから継続モードに移行した後、定期モードに戻すことはできません。
 >
-> 次の条件に該当する場合にのみ、アカウントを継続的バックアップ モードに移行できます。
+> 次の条件に該当する場合にのみ、アカウントを継続的バックアップ モードに移行できます。 アカウントを移行する前に、[ポイントインタイム リストアの制限事項](continuous-backup-restore-introduction.md#current-limitations)も確認してください。
 >
 > * アカウントの種類が SQL API または MongoDB の API の場合。
 > * アカウントに単一の書き込みリージョンがある場合。
@@ -209,7 +209,7 @@ t1 より前の時点に復元する場合は、定期バックアップ アカ�
 #### <a name="since-the-continuous-backup-mode-is-now-ga-would-you-still-recommend-restoring-a-copy-of-your-account-and-try-migration-on-the-copy-before-deciding-to-migrate-the-production-account"></a>継続的バックアップ モードの一般提供が開始されましたが、引き続き、実稼働アカウントの移行を決定する前にアカウントのコピーを復元し、そのコピーで移行を試すことを推奨しますか?
 実稼働アカウントを移行する前に、継続的バックアップ モードの機能をテストして、予想どおりに動作することを確認することをお勧めします。 移行は一方向の操作であり、元に戻すことができないためです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 継続的バックアップ モードの詳細については、次の記事を参照してください。
 
@@ -221,4 +221,4 @@ t1 より前の時点に復元する場合は、定期バックアップ アカ�
 
 Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-   * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+   * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

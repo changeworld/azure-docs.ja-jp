@@ -8,22 +8,22 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/8/2021
-ms.openlocfilehash: 4628f6c6d368f5d62a8c7e5a2dd07adab9d0a3b5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3642323efddfab0c791273169e2c0fb0ec76f0b9
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131477959"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989909"
 ---
 # <a name="easv5-and-eadsv5-series"></a>Easv5 および Eadsv5 シリーズ
 
-**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 Easv5 シリーズおよび Eadsv5 シリーズは、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で利用し、ほとんどのメモリ最適化されたワークロードを実行するための顧客オプションを増やします。 これらの仮想マシンでは、リレーショナル データベース サーバーやインメモリ分析ワークロードなど、ほとんどのメモリ集中型のエンタープライズ アプリケーションに関連する要件を満たす vCPU とメモリの組み合わせが提供されます。
 
 ## <a name="easv5-series"></a>Easv5 シリーズ
 
-Easv5 シリーズは、3.7 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Easv5 シリーズのサイズでは、メモリ集中型のエンタープライズ アプリケーションに最適な vCPU とメモリの組み合わせが提供されます。 ローカル ディスクのない新しい VM は、ローカル一時ディスクを必要としないワークロードに対して、より優れた価値提案を提供します。
+Easv5 シリーズは、3.5 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Easv5 シリーズのサイズでは、メモリ集中型のエンタープライズ アプリケーションに最適な vCPU とメモリの組み合わせが提供されます。 ローカル ディスクのない新しい VM は、ローカル一時ディスクを必要としないワークロードに対して、より優れた価値提案を提供します。
 
 > [!NOTE]
 > よく寄せられる質問については、[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.yml)に関する記事をご覧ください。
@@ -57,7 +57,7 @@ Easv5 シリーズの仮想マシンでは、Standard SSD、Standard HDD、お�
 
 ## <a name="eadsv5-series"></a>Eadsv5 シリーズ
 
-Eadsv5 シリーズは、3.7 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Eadsv5 シリーズのサイズでは、メモリ集中型のエンタープライズ アプリケーションに最適な vCPU、メモリ、一時ストレージの組み合わせが提供されます。 これらの新しい VM では、50% 大きいローカル ストレージが使用されるほか、[Gen2](generation-2.md) VM の [Eav4 または Easv4](eav4-easv4-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上します。
+Eadsv5 シリーズは、3.5 GHz のブーストされた最大周波数を達成できる、AMD の第 3 世代 EPYC<sup>TM</sup> 7763v プロセッサを利用しています。 Eadsv5 シリーズのサイズでは、メモリ集中型のエンタープライズ アプリケーションに最適な vCPU、メモリ、一時ストレージの組み合わせが提供されます。 これらの新しい VM では、50% 大きいローカル ストレージが使用されるほか、[Gen2](generation-2.md) VM の [Eav4 または Easv4](eav4-easv4-series.md) サイズと比べて読み取りと書き込みの両方のローカル ディスク IOPS が向上します。
 
 Eadsv5 シリーズの仮想マシンでは、Standard SSD、Standard HDD、および Premium SSD のディスクの種類がサポートされています。 また、リージョンでの可用性に基づいて、Ultra Disk ストレージを接続することもできます。 ディスク ストレージは、仮想マシンとは別に課金されます。 [ディスクの価格に関するページを参照してください](https://azure.microsoft.com/pricing/details/managed-disks/)。
 

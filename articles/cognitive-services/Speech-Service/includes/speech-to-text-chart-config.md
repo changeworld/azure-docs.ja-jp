@@ -3,19 +3,19 @@ title: Speech コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の helm チャートの構成オプションについて説明します。
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/05/2020
-ms.author: pafarley
-ms.openlocfilehash: 0726b01ea082df91d426a66d36f7ad5f83babba4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: b5d2eed959f216d7ec3f1b504e086b1b83efdb58
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646559"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500773"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>音声テキスト変換 (サブチャート: charts/speechToText)
 
@@ -43,7 +43,7 @@ ms.locfileid: "123646559"
 
 #### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>センチメント分析 (サブチャート: charts/speechToText)
 
-音声テキスト変換コンテナー v2.2.0 および Helm Chart v0.2.0 から、Text Analytics API を使用したセンチメント分析には、次のパラメーターが使用されています。
+音声テキスト変換コンテナー v2.2.0 および Helm Chart v0.2.0 から、言語サービス API を使用した感情分析には、次のパラメーターが使用されています。
 
 |パラメーター|説明|値|Default|
 | --- | --- | --- | --- |

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aee712f22bd4110670a93dc5f7a9709689f2f96
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b437a88ca30907c097f33ef2065702db4f8945b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440806"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342549"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -127,7 +127,7 @@ Microsoft 365 グループの有効期限は、ユーザーが有効期限や最
 
 ## <a name="how-microsoft-365-group-expiration-works-with-retention-policy"></a>Microsoft 365 グループの有効期限とアイテム保持ポリシーの連携
 
-アイテム保持ポリシーは、セキュリティ/コンプライアンス センターを使用して構成されます。 Microsoft 365 グループに対してアイテム保持ポリシーを設定した場合は、グループの有効期限が切れてグループが削除されると、グループ メールボックス内のグループのメッセージ交換とグループ サイト内のファイルは、アイテム保持ポリシーで定義されている特定の日数の間、保持コンテナーに保持されます。 有効期限が過ぎた後、ユーザーにはグループやその内容が表示されませんが、E-Discovery を使用してサイトとメールボックスのデータを復旧できます。
+アイテム保持ポリシーは、セキュリティおよびコンプライアンス センターを使用して構成されます。 Microsoft 365 グループに対してアイテム保持ポリシーを設定した場合は、グループの有効期限が切れてグループが削除されると、グループ メールボックス内のグループのメッセージ交換とグループ サイト内のファイルは、アイテム保持ポリシーで定義されている特定の日数の間、保持コンテナーに保持されます。 有効期限が過ぎた後、ユーザーにはグループやその内容が表示されませんが、E-Discovery を使用してサイトとメールボックスのデータを復旧できます。
 
 ## <a name="powershell-examples"></a>PowerShell の例
 

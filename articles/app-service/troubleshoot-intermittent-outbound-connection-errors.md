@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: fe746ed4fe8c24afa0667d8c2559d9c46fee5211
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 1b85dd7bdab820cd66f1ac4f2421191f354a073c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660079"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220379"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -47,7 +47,7 @@ SNAT ポートの制限を回避するための解決策は、いくつかあり
 
 SNAT ポートの問題を回避することは、同じホストとポートへの新しい接続を繰り返し作成しないことを意味します。 接続プールは、この問題を解決するための理解しやすい方法の 1 つです。
 
-サービス エンドポイントがサポートされる Azure サービスが宛先であれば、[リージョンの VNet 統合](./web-sites-integrate-with-vnet.md)とサービス エンドポイントまたはプライベート エンドポイントを利用し、SNAT ポート不足問題を回避できます。 リージョンの VNet 統合を使用しているとき、統合サブネットにサービス エンドポイントを配置する場合、アプリでそれらのサービスにトラフィックを送信するとき、送信 SNAT ポート制限が適用されません。 同様に、リージョンの VNet 統合とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。 
+サービス エンドポイントがサポートされる Azure サービスが宛先であれば、[リージョンの VNet 統合](./overview-vnet-integration.md)とサービス エンドポイントまたはプライベート エンドポイントを利用し、SNAT ポート不足問題を回避できます。 リージョンの VNet 統合を使用しているとき、統合サブネットにサービス エンドポイントを配置する場合、アプリでそれらのサービスにトラフィックを送信するとき、送信 SNAT ポート制限が適用されません。 同様に、リージョンの VNet 統合とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。 
 
 送信先が Azure 外部の外部エンドポイントである場合、[NAT ゲートウェイを使用する](./networking/nat-gateway-integration.md)と、64,000 個の送信 SNAT ポートが提供されます。 また、他のユーザーと共有しない専用の送信アドレスが提供されます。 
 
@@ -156,6 +156,7 @@ TCP 接続と SNAT ポートは直接関連していません。 TCP 接続の�
 * プロトコル、IP アドレス、またはポートのいずれかでフローが異なる場合、異なるフローで SNAT ポートを共有できます。 TCP 接続メトリックは、すべての TCP 接続をカウントします。
 * TCP 接続の制限は、ワーカー インスタンス レベルで行われます。 Azure ネットワークの送信負荷分散では、SNAT ポート制限に TCP 接続メトリックを使用しません。
 * TCP 接続の制限については、[TCP 接続でのサンドボックスの VM 間数値制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)に関するページで説明しています。
+* Azure App Service ソース ポートからの新しい送信 TCP セッションでは、既存の TCP セッションは失敗します。 単一の IP を使用するか、バックエンド プール メンバーを再構成して競合を回避することができます。
 
 |制限名|説明|小 (A1)|中 (A2)|大 (A3)|分離層 (ASE)|
 |---|---|---|---|---|---|

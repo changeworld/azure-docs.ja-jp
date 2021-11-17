@@ -7,14 +7,14 @@ ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acfa59c13f0f9429135ea7f2218ca8fec121c8a3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879716"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428313"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -22,7 +22,7 @@ ms.locfileid: "98879716"
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 
-保存データには、物理メディア上の永続的ストレージに存在する、あらゆるデジタル形式の情報が含まれます。 これには、磁気メディアまたは光学メディア上のファイル、アーカイブされたデータ、データのバックアップなどが含まれます。 Microsoft Azure では、さまざまなニーズに応えるために、ファイル、ディスク、BLOB、テーブル ストレージなど、多様なデータ ストレージ ソリューションをご用意しています。 Microsoft は、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md)、Azure Data Lake を保護する暗号化の機能も提供しています。
+保存データには、物理メディア上の永続的ストレージに存在する、あらゆるデジタル形式の情報が含まれます。 これには、磁気メディアまたは光学メディア上のファイル、アーカイブされたデータ、データのバックアップなどが含まれます。 Microsoft Azure では、さまざまなニーズに応えるために、ファイル、ディスク、BLOB、テーブル ストレージなど、多様なデータ ストレージ ソリューションをご用意しています。 Microsoft は、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)、Azure Data Lake を保護する暗号化の機能も提供しています。
 
 保存されているデータの暗号化は、サービスとしてのソフトウェア (SaaS)、サービスとしてのプラットフォーム (PaaS)、サービスとしてのインフラストラクチャ (IaaS) の各クラウド モデルのサービスで使用できます。 この記事では、Azure の暗号化オプションを使用する際に役立つリソースを提供し、その概要について説明します。
 
@@ -99,7 +99,7 @@ CLE には、対称キーまたは非対称キーのいずれかを、証明書�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB データベースの暗号化
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) は、Microsoft のグローバル分散型マルチモデル データベースです。 Cosmos DB に保存された、不揮発性ストレージ (ソリッド ステート ドライブ) 内のユーザー データは既定で暗号化されます。 この設定のオン、オフを切り替えることはできません。 保存時の暗号化は、セキュリティで保護されたキー ストレージ システム、暗号化ネットワーク、暗号化 API など、多くのセキュリティ テクノロジを使用して実装されています。 暗号化キーは Microsoft が管理し、Microsoft の社内ガイドラインに沿って交換されます。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) は、Microsoft のグローバル分散型マルチモデル データベースです。 Cosmos DB に保存された、不揮発性ストレージ (ソリッド ステート ドライブ) 内のユーザー データは既定で暗号化されます。 この設定のオン、オフを切り替えることはできません。 保存時の暗号化は、セキュリティで保護されたキー ストレージ システム、暗号化ネットワーク、暗号化 API など、多くのセキュリティ テクノロジを使用して実装されています。 暗号化キーは Microsoft が管理し、Microsoft の社内ガイドラインに沿って交換されます。 必要であれば、[カスタマー マネージド キー (CMK)](../../cosmos-db/how-to-setup-cmk.md) 機能を使って自分で管理しているキーにより、2 層目の暗号化を追加することもできます。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake での保存されているときの暗号化
 

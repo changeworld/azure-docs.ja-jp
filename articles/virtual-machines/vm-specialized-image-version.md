@@ -1,6 +1,6 @@
 ---
 title: 特殊化されたイメージ バージョンから VM を作成する
-description: 共有イメージ ギャラリー内の特殊化されたイメージ バージョンを使用して VM を作成します。
+description: Azure Compute Gallery 内の特殊化されたイメージ バージョンを使用して VM を作成します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,18 +9,22 @@ ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 009678278d7900908572e81b7aab4222dc3c4a07
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: b500a7e02167f5373eb2dbdeb4bdb708c5b69966
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452310"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474498"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version"></a>特殊化されたイメージ バージョンを使用して VM を作成する 
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
-Shared Image Gallery に格納されている[特殊化されたイメージ バージョン](./shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、[一般化されたイメージ バージョンからの VM の作成](vm-generalized-image-version.md)に関する記事をご覧ください。
+Azure Compute Gallery (旧称 Shared Image Gallery) に格納されている[特殊化されたイメージ バージョン](./shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 一般化されたイメージ バージョンを使用して VM を作成する場合は、[一般化されたイメージ バージョンからの VM の作成](vm-generalized-image-version.md)に関する記事をご覧ください。
+
+> [!IMPORTANT]
+> 
+> 特殊化されたイメージから新しい VM を作成すると、新しい VM は、元の VM のコンピューター名を保持します。 その他のコンピューター固有の情報 (CMID など) も保持されます。場合によっては、この重複情報によって問題が発生する可能性があります。 VM をコピーするときは、アプリケーションが依存するコンピューター固有の情報の種類を把握しておいてください。  
 
 必要に応じて、これらの例のリソース名を置き換えてください。 
 
@@ -159,8 +163,8 @@ New-AzVM `
 
 **次の手順**
 
-共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
+Azure Compute Gallery リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
-- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
-- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Azure Compute Gallery の作成](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Azure Compute Gallery でのイメージ定義の作成](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Azure Compute Gallery でのイメージ バージョンの作成](https://azure.microsoft.com/resources/templates/sig-image-version-create/)

@@ -2,13 +2,13 @@
 title: Service Fabric マネージド クラスターのネットワーク設定を構成する
 description: NSG ルール、RDP ポート アクセス、負荷分散規則などに関して Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
-ms.date: 11/10/2021
-ms.openlocfilehash: 2334618f11533d285154082e0d1b5dadbc41368f
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.date: 8/23/2021
+ms.openlocfilehash: 3482f414029c79ceea9c0ee8bcc258ed2fc495e1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132289392"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558879"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターのネットワーク設定を構成する
 
@@ -20,9 +20,6 @@ Service Fabric マネージド クラスターは、既定のネットワーク�
 - [IPv6 を有効にする](#ipv6)
 - [Bring Your Own Virtual Network](#byovnet)
 - [Bring Your Own Load Balancer](#byolb)
-- [高速ネットワークの有効化](#accelnet)
-- [補助サブネットを構成する](#auxsubnet)
-
 
 <a id="nsgrules"></a>
 ## <a name="manage-nsg-rules"></a>NSG ルールの管理
@@ -202,8 +199,8 @@ Azure portal を使用して、リモート デスクトップ プロトコル (
 
    ![受信 NAT 規則][Inbound-NAT-Rules]
 
-   既定では、Windows クラスターの場合、フロントエンド ポートは 50000 以上の範囲で、ターゲット ポートはポート 3389 であり、ターゲット ノードの RDP サービスにマップされます。
-   > [!NOTE]
+   既定では、Windows クラスターの場合、フロントエンド ポートの割り当ては 50000 から開始し、ターゲット ポートはポート 3389 であり、ターゲット ノードの RDP サービスにマップされます。
+   >[!NOTE]
    > BYOLB 機能を使用していて、RDP が必要な場合は、NAT プールをそのように個別に構成する必要があります。 これによって、これらのノード タイプに対して NAT 規則が自動的に作成されることはありません。
 
 4. 特定のノード (スケール セット インスタンス) にリモート接続します。 クラスターまたはその他の構成した資格情報を作成したときに設定したユーザー名とパスワードを使用することができます。
@@ -339,6 +336,7 @@ IPv6 は、既定ではマネージド クラスターで有効になってい�
 > [!NOTE]
 > この設定は、クラスターが作成され、指定したサブネットにマネージド クラスターで NSG が割り当てられると、変更できません。 NSG の割り当てをオーバーライドしないでください。そうしないとトラフィックが中断するおそれがあります。
 
+
 **Bring Your Own Virtual Network を使用するには:**
 
 1. Service Fabric リソース プロバイダー アプリケーションのサブスクリプションからサービスの `Id` を取得します。
@@ -441,38 +439,30 @@ IPv6 は、既定ではマネージド クラスターで有効になってい�
 
 <a id="byolb"></a>
 ## <a name="bring-your-own-azure-load-balancer-preview"></a>Bring Your Own Azure Load Balancer (プレビュー)
-マネージド クラスターで、プライマリとセカンダリの両方のノード タイプ用に、静的パブリック IP を使用して Azure のパブリック Standard Load Balancer と完全修飾のドメイン名が作成されます。 Bring Your Own Load Balancer を使用すると、受信トラフィックと送信トラフィックの両方向けに既存の Azure Load Balancer をセカンダリ ノード タイプに使用することができます。 Bring Your Own Azure Load Balancer を使用すると、次のことができます。
+マネージド クラスターで、プライマリとセカンダリの両方のノード タイプ用に、静的パブリック IP を使用して Azure ロード バランサーと完全修飾のドメイン名が作成されます。 この機能を使用すると、受信と送信の両方のトラフィック用に、セカンダリ ノード タイプの Azure ロード バランサーを作成または再利用できます。 Bring Your Own Azure Load Balancer を使用すると、次のことができます。
 
 * プライベートまたはパブリックのトラフィック用に事前構成済みのロード バランサーの静的 IP アドレスを使用する
 * ロード バランサーを特定のノード タイプにマップする
-* 各ノード タイプは独自のサブネットにデプロイされるので、ノード タイプごとにネットワーク セキュリティ グループの規則を構成します
+* 各ノード タイプは一意の NSG を持つ独自のサブネットにデプロイされるので、ノード タイプごとにネットワーク セキュリティ グループの規則を構成します 
 * 既存のポリシーとコントロール (適用されている場合) を維持する
-* 内部専用ロード バランサーを構成し、既定のロード バランサーは外部トラフィック用に使用します
 
 > [!NOTE]
 > BYOVNET を使用すると、ロード バランサーを追加で構成した場合でも、マネージド クラスターリソースは 1 つの NSG を備えた 1 つのサブネットにデプロイされます。
 
 > [!NOTE]
-> ノード タイプのデプロイ後に既定のロード バランサーからカスタムのそれに切り替えすることはできませんが、有効にした場合は、デプロイ後にカスタム ロード バランサーの構成を変更できます。
+> あるノード タイプのクラスターのデプロイ後に既定からカスタムに切り替えることはできませんが、デプロイ後にカスタム ロード バランサーの構成を変更することはできます。
 
 **機能の要件**
  * Basic と Standard の SKU Azure Load Balancer タイプがサポートされています
- * バックエンドおよび NAT プールが Azure Load Balancer に構成されている必要があります。
- * 用意されたパブリック ロード バランサーまたは既定のパブリック ロード バランサーを使用して、送信接続を有効にする必要があります
+ * バックエンドおよび NAT プールが既存の Azure ロード バランサーに構成されている必要があります。 例については、[こちらにある作成とロールの割り当てのサンプル](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json)全体を参照してください。 
 
 これを使用したお客様のシナリオの例を次に示します。
 
 この例では、お客様は、既存の静的 IP アドレスが構成された既存の Azure ロード バランサーを 2 つのノード タイプにルーティングしたいと考えています。
-
 ![Bring Your Own Load Balancer の例 1][sfmc-byolb-example-1]
 
-この例では、お客様は既存の Azure ロード バランサーを使用してトラフィックをルーティングし、個別のノード タイプで動作するアプリケーションへのトラフィック フローを個別に管理したいと考えています。 この例のように設定すると、各ノード タイプは、独自のマネージド NSG の背後に置かれます。
-
+この例では、お客様は既存の Azure ロード バランサーを使用してトラフィックをルーティングし、個別のノード タイプで動作するアプリケーションへのトラフィック フローを個別に管理したいと考えています。 この例のように設定すると、各ノード タイプは、管理できる独自の NSG の背後に置かれます。
 ![Bring Your Own Load Balancer の例 2][sfmc-byolb-example-2]
-
-この例では、顧客は既存の内部 Azure Load Balancer を介してトラフィックをルーティングしたいと考えています。 これにより、個別のノード タイプで動作するアプリケーションへのトラフィック フローを個別に管理できます。 この例のように設定すると、各ノード タイプは独自のマネージド NSG の背後に配置され、外部トラフィックに既定のロード バランサーが使用されます。
-
-![Bring Your Own Load Balancer の例 3][sfmc-byolb-example-3]
 
 Bring Your Own Load Balancer を構成するには:
 
@@ -505,7 +495,7 @@ Bring Your Own Load Balancer を構成するには:
 
 2. Service Fabric リソース プロバイダー アプリケーションにロールの割り当てを追加します。 ロールの割り当ての追加は、1 回限りの操作です。 ロールを追加するには、次の PowerShell コマンドを実行するか、以下に示す Azure Resource Manager (ARM) テンプレートを構成します。
 
-   以下の手順では、Existing-RG リソース グループにある Existing-LoadBalancer1 という名前の既存のロード バランサーを使用します。 
+   以下の手順では、Existing-RG リソース グループにある Existing-LoadBalancer1 という名前の既存のロード バランサーを使用します。
 
    既存の Azure ロード バランサーから必須の `Id` プロパティの情報を取得します。 次のことを行います。 
 
@@ -527,7 +517,7 @@ Bring Your Own Load Balancer を構成するには:
    New-AzRoleAssignment -PrincipalId 00000000-0000-0000-0000-000000000000 -RoleDefinitionName "Network Contributor" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<LoadBalancerName>"
    ```
 
-   または、`principalId`、`roleDefinitionId`に適切な値が構成された Azure Resource Manager (ARM) テンプレートを使用して、ロールの割り当てを追加することもできます。
+   あるいは、`principalId` (手順 1. で取得)、`loadBalancerRoleAssignmentID`、および `roleDefinitionId` に適切な値が構成された Azure Resource Manager (ARM) テンプレートを使用して、ロールの割り当てを追加することもできます。
 
    ```JSON
       "type": "Microsoft.Authorization/roleAssignments",
@@ -545,40 +535,17 @@ Bring Your Own Load Balancer を構成するには:
    > [!NOTE]
    > loadBalancerRoleAssignmentID は [GUID](../azure-resource-manager/templates/template-functions-string.md#examples-16) である必要があります。 このロールの割り当てを含むテンプレートを再びデプロイする場合は、GUID が最初に使用したものと同じであることを確認します。 作成が必要なのは 1 回だけなので、これを分離して実行するか、デプロイ後にクラスター テンプレートからこのリソースを削除することをお勧めします。
 
-   [パブリック ロード バランサーを作成しロールを割り当てる](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json)テンプレートの例をご覧ください。
-
-
-3. ノード タイプに必要な送信接続を構成します。 送信接続を提供するか、既定のパブリック ロード バランサーを使用するには、パブリック ロード バランサーを構成する必要があります。 
-   
-   `outboundRules` を構成して送信接続を提供するパブリック ロード バランサーを構成します。[ロード バランサーを作成してロールを割り当てる Azure Resource Manager (ARM) テンプレートのサンプル](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json)をご覧ください。
-   
-   OR
-   
-   既定のロード バランサーを使用するノード タイプを構成するには、お使いのテンプレートで次を設定します。 
-   
-   * Service Fabric マネージド クラスター リソースの apiVersion は、**2021-11-01-preview** 以降である必要があります。
-
-   ```json
-      {
-      "apiVersion": "[variables('sfApiVersion')]",
-      "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-      ...
-      "properties": {
-          "isPrimary": false,
-          "useDefaultPublicLoadBalancer": true
-          ...
-      }
-   ```
+3. 必要な送信接続を構成します。 すべてのノードは、ポート 443 で ServiceFabric リソース プロバイダーへの送信をルーティングできる必要があります。 NSG で `ServiceFabric` サービス タグを使用して、トラフィックの送信先を Azure エンドポイントに制限できます。
 
 4. 必要に応じて、既存の Azure ロード バランサーで受信アプリケーション ポートと関連プローブを構成します。
-   例については、[Bring Your Own Load Balancer の Azure Resource Manager (ARM) テンプレートのサンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB)をご覧ください。
 
 5. 必要に応じて、ノード タイプに適用されるマネージド クラスター NSG ルールを構成し、Azure ロード バランサーで構成した必要なトラフィックを許可します。そうしないと、トラフィックがブロックされます。
-   インバウンド NSG の構成の例については、[Bring Your Own Load Balancer の Azure Resource Manager (ARM) テンプレートのサンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB)を参照してください。 テンプレートで `networkSecurityRules` プロパティを検索します。
 
-6. 構成済みのマネージド クラスター ARM テンプレートをデプロイします。この手順では、[Bring Your Own Load Balancer の Azure Resource Manager (ARM) テンプレートのサンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB)を使用します。
+   インバウンド規則を開く方法の例については、[Bring Your Own Load Balancer の Azure Resource Manager (ARM) サンプル テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB)を参照してください。
 
-   `westus` に `MyResourceGroup` というリソース グループを作成し、既存のロードバランサーを使用してクラスターをデプロイする方法を次に示します。
+6. 構成したマネージド クラスターの ARM テンプレートをデプロイする
+
+   次の例では、`westus` に `MyResourceGroup` という名前のリソース グループを作成し、この機能を有効にしたクラスターをデプロイします。
    ```powershell
     New-AzResourceGroup -Name MyResourceGroup -Location westus
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName MyResourceGroup -TemplateFile AzureDeploy.json
@@ -586,62 +553,6 @@ Bring Your Own Load Balancer を構成するには:
 
    デプロイ後、受信と送信のトラフィック用に指定されたロード バランサーを使用するようにセカンダリ ノード タイプが構成されます。 Service Fabric のクライアント接続およびゲートウェイ エンドポイントは、マネージド クラスターのプライマリ ノード タイプの静的 IP アドレスのパブリック DNS を引き続き指します。
 
-
-
-<a id="accelnet"></a>
-## <a name="enable-accelerated-networking-preview"></a>高速ネットワークの有効化 (プレビュー)
-高速ネットワークを使用すると、ノード タイプの基になるリソースである仮想マシン スケール セット VM に対して、単一ルート I/O 仮想化 (SR-IOV) が可能になります。 この高パフォーマンスのパスによってデータ パスからホストがバイパスされ、最も要求の厳しいネットワーク ワークロードで、待機時間、ジッター、CPU 使用率が低下します。 Service Fabric マネージド クラスター ノード タイプは、[サポートされている VM SKU](../virtual-machines/sizes.md) で、高速ネットワークを使用してプロビジョニングすることができます。 その他の考慮事項こちらの「[制限と制約](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints)」を参照してください。 
-
-* 高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された汎用のインスタンス サイズのほとんどでサポートされています。 ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。
-
-次に示すように、Resource Manager テンプレートで`enableAcceleratedNetworking` プロパティを宣言して高速ネットワークを有効にします。
-
-* Service Fabric マネージド クラスター リソースの apiVersion は、**2021-11-01-preview** 以降である必要があります。
-
-```json
-   {
-   "apiVersion": "[variables('sfApiVersion')]",
-   "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-   ...
-   "properties": {
-       ...
-       "enableAcceleratedNetworking": true,
-       ...
-   }
-```
-
-既存の Service Fabric クラスターで高速ネットワークを有効にするには、最初に新しいノード タイプを追加し、次を実行して Service Fabric クラスターをスケール アウトする必要があります。
-
-1) 高速ネットワークを有効にして 1 つのノード タイプをプロビジョニングします
-2) 高速ネットワークを有効にしてプロビジョニングしたノード タイプに、サービスとその状態を移行します
-
-所定の位置で高速ネットワークを有効にするとダウンタイムが発生するため、既存のクラスターで高速ネットワークを有効にするためには、インフラストラクチャのスケール アウトが必要です。可用性セット内のすべての仮想マシンは、任意の既存 NIC で高速ネットワークを有効にする前に停止し、割り当てを解除する必要があるためです。
-
-
-<a id="auxsubnet"></a>
-## <a name="configure-auxiliary-subnets-preview"></a>補助サブネットを構成する (プレビュー)
-補助サブネットにより、[Private Link](../private-link/private-link-service-overview.md) や [bastion ホスト](../bastion/bastion-overview.md)などのシナリオをサポートするノード タイプなしで、追加のマネージド サブネットを作成することができます。
-
-次に示すように、Resource Manager テンプレートで `auxiliarySubnets` プロパティと必要なパラメーターを宣言して補助サブネットを構成します。
-
-* Service Fabric マネージド クラスター リソースの apiVersion は、**2021-11-01-preview** 以降である必要があります。
-
-```JSON
-    "resources": [
-        {
-            "apiVersion": "[variables('sfApiVersion')]",
-            "type": "Microsoft.ServiceFabric/managedclusters",
-            ...
-            "properties": {
-                "auxiliarySubnets": [
-                  {
-                  "name" : "mysubnet",
-                  "enableIpv6" : "true"
-                  }
-                ]              
-```
-
-[使用可能なパラメーターの完全なリスト](/azure/templates/microsoft.servicefabric/2021-11-01/managedclusters)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric マネージド クラスターの構成オプション](how-to-managed-cluster-configuration.md)
@@ -652,5 +563,4 @@ Bring Your Own Load Balancer を構成するには:
 [sfmc-rdp-connect]: ./media/how-to-managed-cluster-networking/sfmc-rdp-connect.png
 [sfmc-byolb-example-1]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-1.png
 [sfmc-byolb-example-2]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-2.png
-[sfmc-byolb-example-3]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-3.png
 

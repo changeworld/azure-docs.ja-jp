@@ -2,18 +2,15 @@
 title: Azure Automation でエージェント ベースの Hybrid Runbook Worker の問題をトラブルシューティングする
 description: この記事では、Azure Automation エージェント ベースの Hybrid Runbook Worker で発生する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
-ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/18/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 623e36b4efc3a0ecd0a7a5d7f7097e1f5aa64788
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: b97a811ecaeb5df843ea87efa0ab4230886a5e1a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179224"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487834"
 ---
 # <a name="troubleshoot-agent-based-hybrid-runbook-worker-issues-in-automation"></a>Automation でエージェント ベースの Hybrid Runbook Worker の問題をトラブルシューティングする
 

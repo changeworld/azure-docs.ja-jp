@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e3797e7f78b0938a50e2803f46962b4cacdcd33
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b2d8dcbee2b8308a78982122aea79c9775580642
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998164"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347049"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -218,7 +218,7 @@ Azure での特定の機能に対して責任を負うグループまたは個�
 **ベスト プラクティス**: 直接的な運用責任を持つセキュリティ チームには、適切なアクセス許可を付与します。
 **詳細**: Azure の組み込みロールで、適切なロールの割り当てを確認します。 組み込みロールが組織の特定のニーズを満たさない場合は、[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)を作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
 
-**ベスト プラクティス**:Azure Security Center へのアクセス権を、それを必要とするセキュリティ ロールに付与します。 Security Center では、セキュリティ チームはすばやくリスクを特定して修復できます。
+**ベスト プラクティス**: Microsoft Defender for Cloud に、それを必要とするセキュリティ ロールへのアクセス権を付与します。 Defender for Cloud では、セキュリティ チームはすばやくリスクを特定して解決できます。
 **詳細**: これらのニーズを持つセキュリティ チームを Azure RBAC [セキュリティ管理者](../../role-based-access-control/built-in-roles.md#security-admin)に追加し、セキュリティ ポリシーを表示したり、セキュリティ状態を表示したり、セキュリティ ポリシーを編集したり、アラートと推奨事項を表示したり、アラートと推奨事項を無視したりできるようにします。 責任の範囲に応じて、ルート管理グループまたはセグメント管理グループを使用して、これを行うことができます。
 
 Azure RBAC などの機能を使用したデータ アクセス制御を適用しない組織では、ユーザーに必要以上の権限が付与される可能性があります。 これにより、ユーザーがアクセスする必要のない種類のデータ (ビジネスへの影響が高いものなど) にアクセスできるようになり、データのセキュリティ侵害につながる恐れがあります。

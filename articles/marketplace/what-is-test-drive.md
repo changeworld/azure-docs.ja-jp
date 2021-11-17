@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 12/08/2020
-ms.openlocfilehash: 5fba64beff10f59be42776cc87cf6f37922295dd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 10/26/2021
+ms.openlocfilehash: 9769e52457a65ab3b37135cdbe7d7fdd78e1f1e6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949073"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853854"
 ---
 # <a name="what-is-a-test-drive"></a>体験版とは
 
 体験版は、購入前に試用するオプションを提供することで潜在顧客へのオファーを披露します。これにより、見込みの高い潜在顧客が生成され、コンバージョンが増加する結果になります。 体験版によって、実際の実装シナリオで製品を活用できます。 製品を試用しているお客様は、同様のソリューションを購入する明確な意図があることを示しています。 これを活用して、より見込みがある潜在顧客をフォローできます。
 
 お客様は、体験版の恩恵も受けられます。 最初に製品を試してみることで、購入プロセスでの摩擦を減らすことができます。 さらに、体験版は事前にプロビジョニングされています。つまり、お客様が製品をダウンロード、設定、または構成する必要がありません。
+
+> [!TIP]
+> コマーシャル マーケットプレースでの体験版の顧客のビューを表示するには、「[Azure Marketplace とは](/marketplace/azure-marketplace-overview#take-action-on-a-listing)」や「[Microsoft AppSource とは](/marketplace/appsource-overview)」を参照してください。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 

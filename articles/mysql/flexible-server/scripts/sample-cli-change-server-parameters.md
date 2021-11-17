@@ -1,5 +1,5 @@
 ---
-title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバー (プレビュー) のサーバー パラメーターの一覧表示と変更
+title: CLI スクリプト - Azure Database for MySQL - フレキシブル サーバーのサーバー パラメーターの一覧表示と変更
 description: この Azure CLI サンプル スクリプトは、Azure Database for MySQL - フレキシブル サーバーのサーバー パラメーターを一覧表示し、変更する方法を示しています。
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: bcb811c9143e97ae070873c4b94396d6a1308d4a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4316669346f8bedec7a674da3e7114b95dd8c4ca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604667"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844281"
 ---
-# <a name="list-and-change-server-parameters-of-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL - フレキシブル サーバー (プレビュー) のサーバー パラメーターの一覧表示と変更
+# <a name="list-and-change-server-parameters-of-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL - フレキシブル サーバーのサーバー パラメーターの一覧表示と変更
 
 このサンプル CLI スクリプトを使用すると、Azure Database for MySQL - フレキシブル サーバーに使用できる [サーバー パラメーター](../concepts-server-parameters.md)とそれに使用できる値がすべて一覧表示され、*max_connections* とグローバル *time_zone* パラメーターが既定値以外の値に設定されます。
 
@@ -54,5 +54,5 @@ ms.locfileid: "128604667"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバーの Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

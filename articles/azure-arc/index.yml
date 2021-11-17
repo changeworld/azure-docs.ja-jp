@@ -96,7 +96,7 @@ conceptualContent:
           text: Azure Policy の概要
         - url: ../security-center/azure-defender.md
           itemType: overview
-          text: Azure Defender の概要
+          text: Microsoft Defender for Cloud の概要
         - url: ../automation/automation-intro.md
           itemType: overview
           text: Azure Automation の概要

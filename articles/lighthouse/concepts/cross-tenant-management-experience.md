@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure Lighthouse により、多くの Azure サービスでクロステナント エクスペリエンスが有効になり、強化されます。
-ms.date: 10/21/2021
+ms.date: 11/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: a9dbf51a965c1aa73489fdd2990736914b27177c
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 07a0e2e9a42ace65cc159e0363a8ba86f4291cca
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132312459"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492836"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -125,6 +125,23 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - 返されるクエリ結果にテナント ID が含まれるため、サブスクリプションが管理対象のテナントに属しているかどうかを特定できる
 
+[Azure Service Health](../../service-health/index.yml):
+
+- Azure Resource Health を使用して、顧客のリソースの正常性を監視する
+- 顧客が使用している Azure サービスの正常性を追跡する
+
+[Azure Site Recovery](../../site-recovery/index.yml):
+
+- 顧客のテナント内にある Azure 仮想マシンのディザスター リカバリー オプションを管理する (VM 拡張機能のコピーには `RunAs` アカウントを使用できないことに注意してください)
+
+[Azure Virtual Machines](../../virtual-machines/index.yml):
+
+- 仮想マシン拡張機能を使用して、Azure VM のデプロイ後の構成と自動タスクを提供する
+- ブート診断を使用して、Azure VM のトラブルシューティングを行う
+- シリアル コンソールを使用して VM にアクセスする
+- [ポリシーによるマネージド ID](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret) を使用して、ディスク暗号化のためのパスワード、シークレット、または暗号化キー用に VM を Azure Key Vault と統合して、シークレットが管理対象のテナントの Key Vault に確実に保存されるようにする
+- VM へのリモート ログインに Azure Active Directory を使用できないことに注意する
+
 [Microsoft Defender for Cloud](../../security-center/index.yml):
 
 - テナント間の表示
@@ -148,23 +165,6 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Microsoft Sentinel リソースを管理する
 - [複数のテナントにわたる攻撃を追跡し、セキュリティ アラートを表示する](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
 - テナント間に分散している複数の Microsoft Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
-
-[Azure Service Health](../../service-health/index.yml):
-
-- Azure Resource Health を使用して、顧客のリソースの正常性を監視する
-- 顧客が使用している Azure サービスの正常性を追跡する
-
-[Azure Site Recovery](../../site-recovery/index.yml):
-
-- 顧客のテナント内にある Azure 仮想マシンのディザスター リカバリー オプションを管理する (VM 拡張機能のコピーには `RunAs` アカウントを使用できないことに注意してください)
-
-[Azure Virtual Machines](../../virtual-machines/index.yml):
-
-- 仮想マシン拡張機能を使用して、Azure VM のデプロイ後の構成と自動タスクを提供する
-- ブート診断を使用して、Azure VM のトラブルシューティングを行う
-- シリアル コンソールを使用して VM にアクセスする
-- [ポリシーによるマネージド ID](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret) を使用して、ディスク暗号化のためのパスワード、シークレット、または暗号化キー用に VM を Azure Key Vault と統合して、シークレットが管理対象のテナントの Key Vault に確実に保存されるようにする
-- VM へのリモート ログインに Azure Active Directory を使用できないことに注意する
 
 サポート リクエスト:
 

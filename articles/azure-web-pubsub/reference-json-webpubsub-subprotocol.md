@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: 8f1710246158e953492fec23869ba91a77c78e60
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/06/2021
+ms.openlocfilehash: 2208c41ea49bae4ad3791a7e26f694e4cf4fbbd3
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177823"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997858"
 ---
 #  <a name="azure-web-pubsub-supported-json-websocket-subprotocol"></a>Azure Web PubSub でサポートされる JSON WebSocket サブプロトコル
      
@@ -54,11 +54,11 @@ REST API またはサーバー SDK により、サーバー側でクライアン
 {
     "type": "joinGroup",
     "group": "<group_name>",
-    "ackId" : 1 // optional
+    "ackId" : 1
 }
 ```
 
-* `ackId` は省略可能です。これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 
 ### <a name="leave-groups"></a>グループを脱退する
 
@@ -68,11 +68,11 @@ REST API またはサーバー SDK により、サーバー側でクライアン
 {
     "type": "leaveGroup",
     "group": "<group_name>",
-    "ackId" : 1 // optional
+    "ackId" : 1
 }
 ```
 
-* `ackId` は省略可能です。これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 
 ### <a name="publish-messages"></a>メッセージを発行する
 
@@ -82,14 +82,14 @@ REST API またはサーバー SDK により、サーバー側でクライアン
 {
     "type": "sendToGroup",
     "group": "<group_name>",
-    "ackId" : 1, // optional
+    "ackId" : 1,
     "noEcho": true|false,
     "dataType" : "json|text|binary",
     "data": {}, // data can be string or valid json token depending on the dataType 
 }
 ```
 
-* `ackId` は省略可能です。これは、このコマンド メッセージに対する増分の整数です。 `ackId` を指定すると、コマンドが実行されたときに、サービスからクライアントに、[確認応答メッセージ](#ack-response)が送信されます。
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 * `noEcho` はオプションです。 true に設定した場合、このメッセージは同じ接続にエコーバックされません。 設定しない場合の既定値は false です。
 * `dataType` には、`json`、`text`、`binary` のいずれかを指定できます。
      * `json`: `data` は JSON でサポートされているどの型でもよく、そのままで発行されます。`dataType` が指定されていない場合は、既定で `json` になります。
@@ -102,7 +102,8 @@ REST API またはサーバー SDK により、サーバー側でクライアン
     "type": "sendToGroup",
     "group": "<group_name>",
     "dataType" : "text",
-    "data": "text data" 
+    "data": "text data",
+    "ackId": 1
 }
 ```
 
@@ -151,7 +152,8 @@ REST API またはサーバー SDK により、サーバー側でクライアン
     "type": "sendToGroup",
     "group": "<group_name>",
     "dataType" : "binary",
-    "data": "<base64_binary>"
+    "data": "<base64_binary>",
+    "ackId": 1
 }
 ```
 
@@ -175,10 +177,13 @@ REST API またはサーバー SDK により、サーバー側でクライアン
 {
     "type": "event",
     "event": "<event_name>",
+    "ackId": 1,
     "dataType" : "json|text|binary",
     "data": {}, // data can be string or valid json token depending on the dataType 
 }
 ```
+
+* `ackId` は各要求の ID で、一意である必要があります。 要求の処理結果を通知するために、サービスから[確認応答メッセージ](#ack-response)が送信されます。 詳細については、[AckId と確認応答](./concept-client-protocols.md#ackid-and-ack-response)に関するページを参照してください。
 
 `dataType` には、`text`、`binary`、`json` のいずれかを指定できます。
 * `json`: データは JSON でサポートされているどの型でもよく、そのままで発行されます。`dataType` が指定されていない場合は、既定で `json` になります。
@@ -190,6 +195,7 @@ REST API またはサーバー SDK により、サーバー側でクライアン
 {
     "type": "event",
     "event": "<event_name>",
+    "ackId": 1,
     "dataType" : "text",
     "data": "text data", 
 }
@@ -223,6 +229,7 @@ text data
 {
     "type": "event",
     "event": "<event_name>",
+    "ackId": 1,
     "dataType" : "json",
     "data": {
         "hello": "world"
@@ -260,6 +267,7 @@ ce-eventName: <event_name>
 {
     "type": "event",
     "event": "<event_name>",
+    "ackId": 1,
     "dataType" : "binary",
     "data": "base64_binary", 
 }
@@ -307,7 +315,7 @@ WebSocket フレームは、テキスト メッセージ フレームの場合�
     "ackId": 1, // The ack id for the request to ack
     "success": false, // true or false
     "error": {
-        "name": "NotFound|Forbidden|Timeout|InternalServerError",
+        "name": "Forbidden|InternalServerError|Duplicate",
         "message": "<error_detail>"
     }
 }

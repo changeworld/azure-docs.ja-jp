@@ -5,14 +5,14 @@ description: サービス タグを使って Azure Web PubSub Service への送�
 author: ArchangelSDY
 ms.service: azure-web-pubsub
 ms.topic: article
-ms.date: 11/08/2021
+ms.date: 10/21/2021
 ms.author: dayshen
-ms.openlocfilehash: ef420efa87d80ddbadc103ad1fadece81e47e9f4
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 2422fb24fd3608d035fe374bd08dcae49321f4f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997932"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130270090"
 ---
 # <a name="use-service-tags-for-azure-web-pubsub-service"></a>Azure Web PubSub Service にサービス タグを使う
 

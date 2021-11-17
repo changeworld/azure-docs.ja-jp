@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: badc03111d7c657685742505e53642498db344e9
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 50b3a4501eeeefe9bcdf59da8bb1e9eacda07bf9
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668582"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157466"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループの設定 (プレビュー) を構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "129668582"
 
 Azure 特権アクセス グループ ロールの設定を開くには、次の手順に従います。
 
-1. [全体管理者](../roles/permissions-reference.md#global-administrator)ロールのユーザーまたはグループ所有者として割り当てられているユーザーとして、[Azure portal](https://portal.azure.com/) にサインインします。
+1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)のロール、特権ロール管理者のロール、またはグループの所有者のロールであるユーザーを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -64,10 +64,10 @@ Azure 特権アクセス グループ ロールの設定を開くには、次の
 
 [ロールの設定] ページの **[通知]** タブで、Privileged Identity Management によって、通知を受信するユーザーとユーザーが受信する通知をきめ細かく制御できます。
 
-- **メールをオフにする**<br>特定のメールをオフにするには、既定の受信者のチェック ボックスをオフにし、追加の受信者をすべて削除します。  
-- **指定したメール アドレスへのメールを制限する**<br>既定の受信者に送信されるメールをオフにするには、既定の受信者のチェック ボックスをオフにします。 その後に、追加の受信者として追加のメール アドレスを追加できます。 複数のメール アドレスを追加する場合は、セミコロン (;) で区切ります。
-- **既定の受信者と追加の受信者の両方にメールを送信する**<br>既定の受信者と追加の受信者の両方にメールを送信するには、既定の受信者のチェック ボックスをオンにし、追加の受信者のメール アドレスを追加します。
-- **重要なメールのみ**<br>メールの種類ごとに、重要なメールのみを受信するためのチェック ボックスをオンにすることができます。 つまり、Privileged Identity Management では、メールに即時の操作が必要な場合にのみ、構成された受信者に引き続きメールが送信されます。 たとえば、ユーザーにロールの割り当てを拡張するように求めるメールはトリガーされませんが、管理者に拡張の要求を承認するように求めるメールはトリガーされます。
+- **メールをオフにする**<br>既定の受信者のチェック ボックスをオフにして、他の受信者をすべて削除すると、特定のメールをオフにできます。  
+- **指定したメール アドレスへのメールを制限する**<br>既定の受信者のチェック ボックスをオフにすると、既定の受信者に送信されるメールをオフにできます。 その後で、受信者として他のメール アドレスを追加できます。 複数のメール アドレスを追加する場合は、セミコロン (;) で区切ります。
+- **既定の受信者と、いっそう多くの受信者の両方にメールを送信する**<br>既定の受信者のチェック ボックスをオンにして、他の受信者のメール アドレスを追加すると、既定の受信者と他の受信者の両方にメールを送信できます。
+- **重要なメールのみ**<br>メールの種類ごとにチェック ボックスをオンにすると、重要なメールのみを受信できます。 つまり、メールで即時のアクションが求められている場合にのみ、指定された受信者に、Privileged Identity Management によって引き続きメールが送信されます。 たとえば、ユーザーにロールの割り当てを拡張するように求めるメールはトリガーされませんが、管理者に拡張の要求を承認するように求めるメールはトリガーされます。
 
 ## <a name="assignment-duration"></a>割り当て期間
 

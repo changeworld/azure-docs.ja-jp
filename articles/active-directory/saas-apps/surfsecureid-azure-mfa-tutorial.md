@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/20/2021
 ms.author: jeedes
-ms.openlocfilehash: f477769780b81df6bd1edc8263e90902816aad64
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 8034af23b35545e1e5f5508632b0b8737537b0f5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132282761"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063857"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-surfsecureid---azure-mfa"></a>チュートリアル: Azure AD SSO と SURFsecureID - Azure MFA の統合
 
@@ -157,4 +157,4 @@ SURFsecureID - Azure MFA に対して Azure AD SSO を構成してテストす�
 
 ## <a name="next-steps"></a>次のステップ
 
-SURFsecureID - Azure MFA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Defender for Cloud Apps でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+SURFsecureID - Azure MFA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

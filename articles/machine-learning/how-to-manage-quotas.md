@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: SimranArora904
 ms.author: siarora
-ms.date: 06/14/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 6da58d3f37af146c2cb1371cd8b18f134c24d0a2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 809f87ea7d8c4bdf3c6f21fe742ef5a5f2b595d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067434"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335634"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
@@ -105,7 +105,9 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 ### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Azure Machine Learning マネージド オンライン エンドポイント (プレビュー)
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-Azure Machine Learning マネージド オンライン エンドポイントには、次の制限があります。
+Azure Machine Learning マネージド オンライン エンドポイントには、次の表に記載されている制限があります。 
+
+エンドポイントの現在の使用状況を確認するには、[メトリックを表示](how-to-monitor-online-endpoints.md#view-metrics)します。 Azure Machine Learning の製品チームに例外を要求するには、テクニカル サポート チケットを開いてください。
 
 | **リソース** | **制限** |
 | --- | --- |
@@ -115,11 +117,15 @@ Azure Machine Learning マネージド オンライン エンドポイントに�
 | サブスクリプションあたりのデプロイの数 | 200 |
 | エンドポイントあたりのデプロイの数 | 20 |
 | デプロイあたりのインスタンスの数 | 20 |
-| エンドポイント レベルでのペイロードの最大サイズ | 1.5 MB |
-| エンドポイント レベルでの最大要求タイムアウト  | 60 秒 |
-| すべてのデプロイのエンドポイント レベルでの QPS 合計 | 100 |
+| エンドポイント レベルでの最大要求タイムアウト  | 90 秒 |
+| すべてのデプロイに対するエンドポイント レベルでの 1 秒あたりの要求の合計数  | 500 <sup>2</sup> |
+| すべてのデプロイに対するエンドポイント レベルでの 1 秒あたりの接続の合計数  | 500 <sup>2</sup> |
+| すべてのデプロイに対するエンドポイント レベルでのアクティブな接続の合計数  | 500 <sup>2</sup> |
+| すべてのデプロイのエンドポイント レベルでの帯域幅合計  | 5 MBPS <sup>2</sup> |
 
 <sup>1</sup> エンドポイント名とデプロイ名で、`my-endpoint-name` のような単一のダッシュを使用できます。
+
+<sup>2</sup> 制限の引き上げを要求する場合は、必要に応じて、関連する制限値を計算してください。 たとえば、1 秒あたりの要求数の増加を要求した場合、必要な接続と帯域幅の制限を計算し、同じ要求でこれらの制限を増やすことが必要になる場合があります。
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning パイプライン
 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)には次の制限事項があります。

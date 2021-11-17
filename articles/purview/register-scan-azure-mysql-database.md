@@ -1,6 +1,6 @@
 ---
-title: Azure MySQL データベースに接続して管理する
-description: このガイドでは、Azure Purview で Azure MySQL データベースに接続する方法と、Purview の機能を使用して Azure MySQL データベース ソースをスキャンおよび管理する方法について説明します。
+title: Azure Database for MySQL に接続して管理する
+description: このガイドでは、Azure Purview で Azure Database for MySQL に接続し、Azure Purview の機能を使用して Azure Database for MySQL ソースをスキャンおよび管理する方法について説明します。
 author: evwhite
 ms.author: evwhite
 ms.service: purview
@@ -8,24 +8,26 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: bdb96c3e1de3062426b87fe702d7694890fca44f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bcde9aee9719f8dbb127b908c312cc734c559f02
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015050"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841895"
 ---
-# <a name="connect-to-and-manage-azure-mysql-databases-in-azure-purview"></a>Azure Purview で Azure MySQL データベースに接続して管理する
+# <a name="connect-to-and-manage-azure-databases-for-mysql-in-azure-purview"></a>Azure Purview で Azure Database for MySQL に接続して管理する
 
-この記事では、Azure Purview で、Azure MySQL データベースを登録する方法と、Azure MySQL データベースを認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
+この記事では、Azure Purview で、Azure Database for MySQL を登録する方法と、Azure Database for MySQL を認証して操作する方法について説明します。 Azure Purview の詳細については、[概要の記事](overview.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 |**メタデータの抽出**|  **フル スキャン**  |**増分スキャン**|**スコープ スキャン**|**分類**|**アクセス ポリシー**|**系列**|
 |---|---|---|---|---|---|---|
-| [あり](#register) | [あり](#scan)| [はい*](#scan) | [はい](#scan) | [はい](#scan) | いいえ | [Data Factory のデータ系列](how-to-link-azure-data-factory.md) |
+| [あり](#register) | [あり](#scan)| [はい*](#scan) | [あり](#scan) | [あり](#scan) | いいえ | いいえ** |
 
 \* Purview では、増分スキャンのために Azure Database for MySQL の UPDATE_TIME メタデータが利用されます。 場合によっては、このフィールドがデータベースに保持されておらず、フルスキャンが実行されることがあります。 詳細については、MySQL の [INFORMATION_SCHEMA TABLES テーブル](https://dev.mysql.com/doc/refman/5.7/en/information-schema-tables-table.html)を参照してください。
+
+\** データセットが [Data Factory Copy アクティビティ](how-to-link-azure-data-factory.md)でソース/シンクとして使用される場合、系列はサポートされています 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +39,7 @@ ms.locfileid: "131015050"
 
 ## <a name="register"></a>登録
 
-このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に Azure MySQL データベースを登録する方法について説明します。
+このセクションでは、[Purview Studio](https://web.purview.azure.com/) を使用して Azure Purview に Azure Database for MySQL を登録する方法について説明します。
 
 ### <a name="authentication-for-registration"></a>登録の認証
 
@@ -54,7 +56,7 @@ ms.locfileid: "131015050"
 
 ### <a name="steps-to-register"></a>登録する手順
 
-新しい Azure MySQL データベースをお使いのデータ カタログに登録するには、次の手順を行います。
+新しい Azure Database for MySQL をデータ カタログに登録するには、次の手順を実行します。
 
 1. ご自分の Purview アカウントに移動します。
 
@@ -66,7 +68,7 @@ ms.locfileid: "131015050"
 
 :::image type="content" source="media/register-scan-azure-mysql/01-register-azure-mysql-data-source.png" alt-text="新しいデータ ソースの登録" border="true":::
 
-**[Register sources (Azure Database for MySQL)]\(ソースの登録 (Azure Database for MySQL)\)** 画面で、以下を実行します。
+**[Register sources (Azure Database for MySQL)]\(Azure Database for MySQL のソース登録\)** 画面で、以下を実行します。
 
 1. ご自分のデータ ソースの **名前** を入力します。 これがご自分のカタログのこのデータ ソースの表示名になります。
 1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択し、 **[Azure subscription]\(Azure サブスクリプション\)** ドロップダウン ボックスから適切なサブスクリプション、 **[Server name]\(サーバー名\)** ドロップダウン ボックスから適切なサーバーを選択します。
@@ -76,7 +78,7 @@ ms.locfileid: "131015050"
 
 ## <a name="scan"></a>スキャン
 
-次の手順に従って、Azure MySQL データベースをスキャンし、自動的に資産を識別してデータを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
+次の手順に従って、Azure Database for MySQL をスキャンし、自動的に資産を識別してデータを分類します。 スキャン全般の詳細については、[スキャンとインジェストの概要](concept-scans-and-ingestion.md)に関するページを参照してください。
 
 ### <a name="create-and-run-scan"></a>スキャンの作成と実行
 

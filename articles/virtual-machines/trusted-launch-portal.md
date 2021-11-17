@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 10/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1bf17761ed7ddba74ea62f5545f44f1c4b57c8d3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0212c21a90caa533003d2304cfded72eb2370b49
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456526"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286053"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled"></a>トラステッド起動を有効にして VM をデプロイする
 
@@ -22,9 +22,9 @@ ms.locfileid: "131456526"
 
 [トラステッド起動](trusted-launch.md)は、[第 2 世代](generation-2.md)の VM のセキュリティを向上させる手段です。 トラステッド起動を使用すると、vTPM やセキュア ブートのようなインフラストラクチャ テクノロジを組み合わせることによって、高度で永続的な攻撃手法から保護されます。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>必須コンポーネント 
 
-- まだ Azure Security Center にサブスクリプションがオンボードされていない場合は、[サブスクリプションを Azure Security Center にオンボード](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview)する必要があります。 Azure Security Center (ASC) には Free レベルがあります。各種の Azure リソースやハイブリッド リソースについてのきわめて有益な分析情報が得られます。 トラステッド起動は ASC を活用して、VM の正常性に関するさまざまな推奨事項を表示します。 
+- まだ Microsoft Defender for Cloud にサブスクリプションがオンボードされていない場合は、[サブスクリプションを Microsoft Defender for Cloud にオンボード](https://azure.microsoft.com/services/security-center/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&OCID=AID2200277_SEM_CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXHeKhV--teH6kIijnBTmP-PgktfvGr5zW9TAx00SR7xsGUc3sTj5sBoCkEoQAvD_BwE#overview)する必要があります。 Microsoft Defender for Cloud には Free レベルがあります。各種の Azure リソースやハイブリッド リソースについてのきわめて有益な分析情報が得られます。 トラステッド起動は Defender for Cloud を活用して、VM の正常性に関するさまざまな推奨事項を表示します。 
 
 - Azure Policy のイニシアティブをサブスクリプションに割り当てます。 ポリシーのイニシアティブは、サブスクリプションごとに 1 回だけ割り当てる必要があります。 これによって必要な全拡張機能が、サポート対象のすべての VM に自動的にインストールされます。 
     - トラステッド起動が有効な VM でゲスト構成証明を有効にするための前提条件を構成します 
@@ -158,9 +158,6 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $
 [![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ---
-
-
-
 
 ## <a name="verify-or-update-your-settings"></a>設定を確認または更新する
 

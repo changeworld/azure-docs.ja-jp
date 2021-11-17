@@ -3,12 +3,12 @@ title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: 98430d7b9db857de6dc3dfb37e61908b236591f2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 55a5d432505d6c0aec7c2fc9b030eb9763413bee
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433442"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063291"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
 Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および **要求 - 応答** のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
@@ -54,7 +54,7 @@ Service Bus で FIFO 処理を保証するには、セッションを使用し�
 
 セッション状態機能は、そのセッションに対して記録された処理の状態になるようにすぐに利用可能なセッションが、新しいプロセッサによって取得されるときに、ブローカー内のメッセージ セッションのアプリケーションで定義された注釈を使用できます。
 
-Service Bus の観点からは、メッセージ セッションの状態は、Service Bus Standard の場合は 256 KB の、Service Bus Premium の場合は 1 MB のサイズのデータを保持できる不透明なバイナリ オブジェクトです。 セッションに対する処理状態は、セッション状態に保持されるか、セッション状態は記憶域の場所または情報が保管されているデータベース レコードを指すことができます。
+Service Bus の観点からは、メッセージ セッションの状態は、Service Bus Standard の場合は 256 KB の、Service Bus Premium の場合は 100 MB のサイズのデータを保持できる不透明なバイナリ オブジェクトです。 セッションに対する処理状態は、セッション状態に保持されるか、セッション状態は記憶域の場所または情報が保管されているデータベース レコードを指すことができます。
 
 セッション状態を管理するためのメソッド、SetState と GetState はセッション受信プロセスのオブジェクトにあります。 過去にセッション状態がなかったセッションは、GetState への参照として null を返します。 以前に設定したセッション状態をクリアするには、受信側の SetState メソッドに null を渡します。
 

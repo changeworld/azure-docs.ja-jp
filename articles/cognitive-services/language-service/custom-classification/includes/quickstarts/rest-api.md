@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 89c310e1cb18a41a4d04760af26dc06215770b9d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1ec5ed80111d7d0665d42b20dd725769b13de4b9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092368"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520002"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,6 +83,16 @@ Azure ストレージ アカウントを作成し、それを言語リソース�
 |プレースホルダー  |値  | 例 |
 |---------|---------|---------|
 |`{YOUR-ENDPOINT}`     | API 要求を認証するためのエンドポイント。   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
+
+### <a name="parameters"></a>パラメーター
+
+次のパラメーターを要求と一緒に渡します。 
+
+|キー|説明|値|
+|--|--|--|
+|`api-version`| 使用されている API バージョン。| `2021-11-01-preview` |
+
+パラメーターを渡す場合は、要求 URL の末尾に `?api-version=2021-11-01-preview` を追加します。
 
 ### <a name="headers"></a>ヘッダー
 
@@ -156,6 +166,16 @@ API 要求を作るときは、次の URL を使います。 次のプレース�
 |`{YOUR-ENDPOINT}`     | API 要求を認証するためのエンドポイント。   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 |`{PROJECT-NAME}`     | プロジェクトの名前。 この値は、大文字と小文字が区別されます。  | `myProject` |
 
+### <a name="parameters"></a>パラメーター
+
+次のパラメーターを要求と一緒に渡します。 
+
+|キー|説明|値|
+|--|--|--|
+|`api-version`| 使用されている API バージョン。| `2021-11-01-preview` |
+
+パラメーターを渡す場合は、要求 URL の末尾に `?api-version=2021-11-01-preview` を追加します。
+
 ### <a name="headers"></a>ヘッダー
 
 要求を認証するには、次のヘッダーを使います。 
@@ -183,7 +203,7 @@ API 要求を作るときは、次の URL を使います。 次のプレース�
 API 要求を送信すると、成功を示す `202` 応答が返されます。 応答ヘッダーで、`location` の値を抽出します。 それは次のように書式設定されています。 
 
 ```rest
-{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}
+{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}?api-version=xxxx-xx-xx-xxxxxxx
 ``` 
 
 この操作は非同期であるため、`JOB-ID` を使って要求が識別されます。 次のステップではこの URL を使ってトレーニングの状態を取得します。 
@@ -203,6 +223,16 @@ API 要求を送信すると、成功を示す `202` 応答が返されます。
 |`{PROJECT-NAME}`     | プロジェクトの名前。 この値は、大文字と小文字が区別されます。  | `myProject` |
 |`{JOB-ID}`     | モデルのトレーニングの状態を取得するための ID。 これは、前のステップで受け取った `location` ヘッダーの値に含まれています。  | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx` |
 
+### <a name="parameters"></a>パラメーター
+
+次のパラメーターを要求と一緒に渡します。 
+
+|キー|説明|値|
+|--|--|--|
+|`api-version`| 使用されている API バージョン。| `2021-11-01-preview` |
+
+パラメーターを渡す場合は、要求 URL の末尾に `?api-version=2021-11-01-preview` を追加します。
+
 ### <a name="headers"></a>ヘッダー
 
 要求を認証するには、次のヘッダーを使います。 
@@ -210,7 +240,6 @@ API 要求を送信すると、成功を示す `202` 応答が返されます。
 |Key|値|
 |--|--|
 |`Ocp-Apim-Subscription-Key`| リソースへのキー。 API 要求の認証に使われます。|
-
 
 ### <a name="response-body"></a>応答本文
 
@@ -262,6 +291,16 @@ API 要求を送信すると、成功を示す `202` 応答が返されます。
 |`{PROJECT-NAME}`     | プロジェクトの名前。 この値は、大文字と小文字が区別されます。  | `myProject` |
 |`{DEPLOYMENT-NAME}`     | デプロイの名前。 この値は、大文字と小文字が区別されます。  | `prod` |
 
+### <a name="parameters"></a>パラメーター
+
+次のパラメーターを要求と一緒に渡します。 
+
+|キー|説明|値|
+|--|--|--|
+|`api-version`| 使用されている API バージョン。| `2021-11-01-preview` |
+
+パラメーターを渡す場合は、要求 URL の末尾に `?api-version=2021-11-01-preview` を追加します。
+
 ### <a name="headers"></a>ヘッダー
 
 要求を認証するには、次のヘッダーを使います。 
@@ -284,7 +323,7 @@ API 要求を送信すると、成功を示す `202` 応答が返されます。
 API 要求を送信すると、成功を示す `202` 応答が返されます。 応答ヘッダーで、`location` の値を抽出します。 それは次のように書式設定されています。 
 
 ```rest
-{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/deployments/{DEPLOYMENT-NAME}/jobs/{JOB-ID}
+{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/deployments/{DEPLOYMENT-NAME}/jobs/{JOB-ID}?api-version=xxxx-xx-xx-xxxxxxx
 ``` 
 
 この操作は非同期であるため、`JOB-ID` を使って要求が識別されます。 次のステップではこの URL を使って発行の状態を取得します。
@@ -304,6 +343,16 @@ API 要求を送信すると、成功を示す `202` 応答が返されます。
 |`{DEPLOYMENT-NAME}`     | デプロイの名前。 この値は、大文字と小文字が区別されます。  | `prod` |
 |`{JOB-ID}`     | モデルのトレーニングの状態を取得するための ID。 これは、前のステップで受け取った `location` ヘッダーの値に含まれています。  | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx` |
 
+### <a name="parameters"></a>パラメーター
+
+次のパラメーターを要求と一緒に渡します。 
+
+|キー|説明|値|
+|--|--|--|
+|`api-version`| 使用されている API バージョン。| `2021-11-01-preview` |
+
+パラメーターを渡す場合は、要求 URL の末尾に `?api-version=2021-11-01-preview` を追加します。
+
 ### <a name="headers"></a>ヘッダー
 
 要求を認証するには、次のヘッダーを使います。 
@@ -311,7 +360,6 @@ API 要求を送信すると、成功を示す `202` 応答が返されます。
 |Key|値|
 |--|--|
 |`Ocp-Apim-Subscription-Key`| リソースへのキー。 API 要求の認証に使われます。|
-
 
 ### <a name="submit-text-classification-task"></a>テキスト分類タスクを送信する
 

@@ -1,5 +1,5 @@
 ---
-title: 機械学習モデルをデプロイする方法
+title: 機械学習モデルのデプロイ
 titleSuffix: Azure Machine Learning
 description: 機械学習モデルをデプロイする方法と場所について説明します。 Azure Container Instances、Azure Kubernetes Service、および FPGA にデプロイします。
 services: machine-learning
@@ -8,14 +8,14 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 04/21/2021
 ms.topic: how-to
-ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
+ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4, mktng-kw-nov2021
 adobe-target: true
-ms.openlocfilehash: b5514df10228a9e5638712976a0602fc33c8a990
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 78abc8d3dba3090198f8856d71f91a9087237641
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604362"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853322"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする 
 
@@ -24,15 +24,17 @@ ms.locfileid: "128604362"
 > [!TIP]
 > マネージド オンライン エンドポイント (プレビュー) を使用すると、基盤となるインフラストラクチャを作成および管理することなく、トレーニング済みモデルをデプロイすることができます。 詳細については、「[マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)」を参照してください。
 
+## <a name="workflow-for-deploying-a-model"></a>モデルをデプロイするためのワークフロー
+
 モデルをどこにデプロイするかに関係なく、ワークフローは同様です。
 
-1. モデルを登録する
-1. エントリ スクリプトを用意する
-1. 推論構成ファイルを準備します
-1. モデルをローカルに展開して、すべてが正しく動作することを確認する
-1. コンピューティング ターゲットを選択する
-1. モデルをクラウドに再展開する
-1. 結果の Web サービスをテストする
+1. モデルを登録します。
+1. エントリ スクリプトを用意します。
+1. 推論構成を準備します。
+1. モデルをローカルにデプロイして、すべてが正しく動作することを確認します。
+1. コンピューティング ターゲットを選択します。
+1. モデルをクラウドに再デプロイします。
+1. 結果の Web サービスをテストします。
 
 機械学習デプロイ ワークフローに関連する概念の詳細については、[Azure Machine Learning でのモデルの管理、デプロイ、監視](concept-model-management-and-deployment.md)に関する記事を参照してください。
 
@@ -83,7 +85,7 @@ SDK を使用してワークスペースに接続する方法の詳細につい�
 
 ---
 
-## <a name="register-your-model"></a><a id="registermodel"></a> モデルを登録する
+## <a name="register-the-model"></a><a id="registermodel"></a> モデルを登録する
 
 展開する機械学習サービスには通常、次のものが必要です。
     

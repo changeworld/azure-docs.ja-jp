@@ -2,13 +2,16 @@
 title: Azure Backup を使用して Azure に SAP HANA データベースをバックアップする
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: 472a83ddac9b88179f583868ba4e19136b147154
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 5c92daa02a98e87f440bc76c114f5b6839eadd08
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236044"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439630"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -102,19 +105,28 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
 ## <a name="discover-the-databases"></a>データベースを検出する
 
-1. コンテナーの <bpt id="p1">**</bpt>[作業の開始]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[バックアップ]<ept id="p2">**</ept> を選択します。 <bpt id="p1">**</bpt>[ワークロードはどこで実行されていますか?]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[Azure VM の SAP HANA]<ept id="p2">**</ept> を選択します。
-2. <bpt id="p1">**</bpt>[検出の開始]<ept id="p1">**</ept> を選択します。 これで、コンテナー リージョン内の保護されていない Linux VM の検出が開始されます。
+1. Azure portal で、 **[バックアップ センター]** に移動し、 **[+ バックアップ]** をクリックします。
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/backup-center-configure-inline.png" alt-text="SAP HANA データベースのチェックを開始することを示すスクリーンショット。" lightbox="./media/backup-azure-sap-hana-database/backup-center-configure-expanded.png":::
+
+1. データソースの種類として **[Azure VM の SAP HANA]** を選び、バックアップに使う Recovery Services コンテナーを選んで、 **[続行]** をクリックします。
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-vault.png" alt-text="Azure VM での SAP HANA データベースの選択を示すスクリーンショット。":::
+
+1. <bpt id="p1">**</bpt>[検出の開始]<ept id="p1">**</ept> を選択します。 これで、コンテナー リージョン内の保護されていない Linux VM の検出が開始されます。
 
    * 検出後、保護されていない VM は、ポータルで名前およびリソース グループ別に一覧表示されます。
    * VM が予期したとおりに一覧表示されない場合は、それが既にコンテナーにバックアップされているかどうかを確認してください。
    * 複数の VM を同じ名前にすることはできますが、それらは異なるリソース グループに属しています。
 
-3. <bpt id="p1">**</bpt>[仮想マシンの選択]<ept id="p1">**</ept> で、リンクをクリックして、データベースの検出のために SAP HANA VM へのアクセス許可を Azure Backup サービスに与えるスクリプトをダウンロードします。
-4. バックアップする SAP HANA データベースをホストしている各 VM でスクリプトを実行します。
-5. VM でスクリプトを実行した後、 <bpt id="p1">**</bpt>[仮想マシンの選択]<ept id="p1">**</ept> で、VM を選択します。 次に、 <bpt id="p1">**</bpt>[データベースを検出]<ept id="p1">**</ept> を選択します。
-6. Azure Backup によって、VM 上のすべての SAP HANA データベースが検出されます。 検出中に、Azure Backup によって VM がコンテナーに登録され、VM に拡張機能がインストールされます。 エージェントはデータベースにインストールされません。
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-discover-databases.png" alt-text="[検出の開始] の選択を示すスクリーンショット。":::
 
-    ![SAP HANA データベースを検出する](./media/backup-azure-sap-hana-database/hana-discover.png)
+1. <bpt id="p1">**</bpt>[仮想マシンの選択]<ept id="p1">**</ept> で、リンクをクリックして、データベースの検出のために SAP HANA VM へのアクセス許可を Azure Backup サービスに与えるスクリプトをダウンロードします。
+1. バックアップする SAP HANA データベースをホストしている各 VM でスクリプトを実行します。
+1. VM でスクリプトを実行した後、 <bpt id="p1">**</bpt>[仮想マシンの選択]<ept id="p1">**</ept> で、VM を選択します。 次に、 <bpt id="p1">**</bpt>[データベースを検出]<ept id="p1">**</ept> を選択します。
+1. Azure Backup によって、VM 上のすべての SAP HANA データベースが検出されます。 検出中に、Azure Backup によって VM がコンテナーに登録され、VM に拡張機能がインストールされます。 エージェントはデータベースにインストールされません。
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-virtual-machines-inline.png" alt-text="検出された SAP HANA データベースを示すスクリーンショット。" lightbox="./media/backup-azure-sap-hana-database/hana-select-virtual-machines-expanded.png":::
 
 ## <a name="configure-backup"></a>バックアップの構成  
 
@@ -122,13 +134,16 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
 1. 手順 2 で、 <bpt id="p1">**</bpt>[バックアップの構成]<ept id="p1">**</ept> を選択します。
 
-    ![バックアップの構成](./media/backup-azure-sap-hana-database/configure-backup.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-configure-backups.png" alt-text="バックアップの構成を示すスクリーンショット。":::
+
 2. <bpt id="p1">**</bpt>[バックアップする項目の選択]<ept id="p1">**</ept> で、保護するデータベースをすべて選択し、 <bpt id="p2">**</bpt>[OK]<ept id="p2">**</ept> を選びます。
 
-    ![バックアップする項目を選択する](./media/backup-azure-sap-hana-database/select-items.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-databases-inline.png" alt-text="バックアップするデータベースの選択を示すスクリーンショット。" lightbox="./media/backup-azure-sap-hana-database/hana-select-databases-expanded.png":::
+
 3. <bpt id="p1">**</bpt>[バックアップ ポリシー]<ept id="p1">**</ept> <ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[バックアップ ポリシーの選択]<ept id="p2">**</ept> で、以下の手順に従って、データベースの新しいバックアップ ポリシーを作成します。
 
-    ![バックアップ ポリシーを選択する](./media/backup-azure-sap-hana-database/backup-policy.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-policy-summary.png" alt-text="バックアップ ポリシーの選択を示すスクリーンショット。":::
+
 4. ポリシーを作成した後、 <bpt id="p1">**</bpt>[バックアップ] メニュー<ept id="p1">**</ept>の <bpt id="p2">**</bpt>[バックアップの有効化]<ept id="p2">**</ept> を選択します。
 
     ![バックアップの有効化](./media/backup-azure-sap-hana-database/enable-backup.png)
@@ -183,7 +198,7 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
 
     ![増分バックアップ ポリシー](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-1. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
+1. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択してポリシーを保存し、 <bpt id="p2">**</bpt>[バックアップ ポリシー]<ept id="p2">**</ept> のメイン メニューに戻ります。
 1. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
     * <bpt id="p1">**</bpt>[ログ バックアップ]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[有効化]<ept id="p2">**</ept> を選択します。  すべてのログ バックアップは SAP HANA で管理されるため、これを無効にすることはできません。
     * 頻度とリテンション期間の制御を設定します。
@@ -191,7 +206,7 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
     > [!NOTE]
     > ログ バックアップでは、完全バックアップが正常に完了した後にのみ、フローが開始されます。
 
-1. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択してポリシーを保存し、 <bpt id="p2">**</bpt>[バックアップ ポリシー]<ept id="p2">**</ept> のメイン メニューに戻ります。
+1. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 1. バックアップ ポリシーの定義が完了した後、 **[OK]** を選択します。
 
 > [!NOTE]

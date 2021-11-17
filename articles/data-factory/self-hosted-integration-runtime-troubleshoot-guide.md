@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
+ms.date: 10/26/2021
 ms.author: lle
-ms.openlocfilehash: d1b3770d236c7f88090840720e8f88fd453e70cf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 35d0b094e80796eb43f59d0c104bb3ced9f5b0ed
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755940"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430877"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -206,7 +206,7 @@ SSL/TLS ハンドシェイクに関連したケースを処理しているとき
 
 次のエラーでは、*System.ValueTuple* アセンブリが欠落していることを明確に確認できます。 この問題は、アプリケーションが *System.ValueTuple.dll* アセンブリを確認しようとしたときに発生します。
  
-"\<LogProperties>\<ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. (\<LogProperties>\<ErrorInfo>[{"Code":0,"Message":"'Npgsql.PoolManager' のタイプ初期化子が例外をスローしました。","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"ファイルまたはアセンブリ 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX'、またはその依存関係の 1 つを読み込めませんでした。) The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]\</ErrorInfo>\</LogProperties> (指定されたファイルが見つかりません。","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]\</ErrorInfo>\</LogProperties>)"
+> "\<LogProperties>\<ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. (\<LogProperties>\<ErrorInfo>[{"Code":0,"Message":"'Npgsql.PoolManager' のタイプ初期化子が例外をスローしました。","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"ファイルまたはアセンブリ 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX'、またはその依存関係の 1 つを読み込めませんでした。) The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]\</ErrorInfo>\</LogProperties> (指定されたファイルが見つかりません。","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]\</ErrorInfo>\</LogProperties>)"
  
 GAC の詳細については、「[グローバル アセンブリ キャッシュ](/dotnet/framework/app-domains/gac)」を参照してください。
 
@@ -355,6 +355,66 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
     1. **NT SERVICE\DIAHostService** を選択して、この証明書へのフル コントロール アクセス許可を付与し、適用して保存します。 
     1. **[名前の確認]** を選択し、 **[OK]** を選択します。
     1. "アクセス許可" ウィンドウで、 **[適用]** を選択してから **[OK]** を選択します。
+
+### <a name="usererrorjrenotfound-error-message-when-you-run-a-copy-activity-to-azure"></a>Azure へのコピー アクティビティを実行するときに UserErrorJreNotFound エラー メッセージが表示される
+
+#### <a name="symptoms"></a>現象 
+
+Java ベースのツールまたはプログラムを使用して Microsoft Azure にコンテンツをコピーしようとすると (たとえば、ORC または Parquet フォーマット ファイルをコピーする場合)、次のようなエラー メッセージが表示されます。
+
+> ErrorCode=UserErrorJreNotFound,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Java Runtime Environment が見つかりません。 `http://go.microsoft.com/fwlink/?LinkId=808605` にアクセスして、Integration Runtime (セルフホステッド) ノード コンピューターにダウンロードし、インストールします。 64 ビットの Integration Runtime には、64 ビットの JRE が必要であり、32 ビットの Integration Runtime には 32 ビットの JRE が必要であることに注意してください。,Source=Microsoft.DataTransfer.Common,''Type=System.DllNotFoundException,Message=DLL 'jvm.dll を読み込めません': 指定されたモジュールが見つかりませんでした。 (HRESULT からの例外: 0x8007007E),Source=Microsoft.DataTransfer.Richfile.HiveOrcBridge
+
+#### <a name="cause"></a>原因
+
+この問題は、次のいずれかの理由で発生します。
+
+- Integration Runtime サーバーに Java Runtime Environment (JRE) が正しくインストールされていません。
+
+- Integration Runtime サーバーに、JRE に必要な依存関係がありません。
+
+既定では、Integration Runtime でレジストリ エントリを使用して JRE パスが解決されます。 これらのエントリは、JRE のインストール時に自動的に設定されます。
+
+#### <a name="resolution"></a>解決方法
+
+慎重にこのセクションの手順に従います。 レジストリを正しく変更しないと、重大な問題が発生する可能性があります。 変更する前に、問題が発生した場合に[復元するためにレジストリをバックアップ](https://support.microsoft.com/topic/how-to-back-up-and-restore-the-registry-in-windows-855140ad-e318-2a13-2829-d428a2ab0692)します。 
+
+この問題を解決するには、次の手順に従って、JRE のインストールの状態を確認します。
+
+1. Integration Runtime (Diahost.exe) と JRE が同じプラットフォームにインストールされていることを確認します。 次の状況を確認します。
+    - 64 ビットの ADF Integration Runtime の 64 ビット JRE は、`C:\Program Files\Java\` のフォルダーにインストールする必要があります。
+    
+        > [!NOTE]
+        > このフォルダーは `C:\Program Files (x86)\Java\` ではありません
+    
+    - JRE 7 と JRE 8 はどちらもこのコピー アクティビティと互換性があります。 JRE J6 と、JRE 6 より前のバージョンは、この用途には検証されていません。
+
+2. レジストリで適切な設定を確認します。 これを行うには、次の手順に従います。
+
+    1. **[ファイル名を指定して実行]** メニューで「**Regedit**」と入力し、Enter キーを押します。
+    
+    1. ナビゲーション ウィンドウで、次のサブキーを見つけます。<br/> `HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment`. <br/> 
+
+        **[詳細]** ウィンドウに、JRE バージョン (たとえば 1.8) を示す最新バージョンのエントリが表示されています。
+    
+        :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/java-runtime-environment-image.png" alt-text="Java Runtime Environment を示すスクリーンショット。":::
+
+    1. ナビゲーション ウィンドウで、JRE フォルダーの下にあるバージョン (たとえば、1.8) と完全に一致するサブキーを見つけます。 詳細ウィンドウに、**JavaHome** エントリが表示されます。 このエントリの値は、JRE インストール パスです。
+    
+        :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/java-home-entry-image.png" alt-text="JavaHome エントリを示すスクリーンショット。":::
+
+3. 次のパスで bin\server フォルダーを見つけます。 <br/> 
+
+    `C:\Program Files\Java\jre1.8.0_74`
+    
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/folder-of-jre.png" alt-text="JRE フォルダーを示すスクリーンショット。":::
+
+1. このフォルダーに jvm.dll ファイルが含まれているかどうかを確認します。 そうでない場合は、`bin\client` フォルダー内のファイルを確認します。
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/file-location-image.png" alt-text="jvm.dll ファイルの場所を示すスクリーンショット。":::
+
+> [!NOTE]
+> - これらの構成のいずれかが上記の手順の説明どおりでない場合は、[JRE Windows インストーラー](https://java.com/en/download/manual.jsp)を使用して問題を解決します。
+> - 上記の手順のすべての構成が正しい場合は、システムに VC++ ランタイム ライブラリがない可能性があります。 この問題を解決するには、VC++ 2010 再頒布可能パッケージをインストールします。
 
 ## <a name="self-hosted-ir-setup"></a>セルフホステッド IR の設定
 

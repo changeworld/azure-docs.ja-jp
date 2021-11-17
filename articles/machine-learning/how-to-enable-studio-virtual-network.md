@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 07/13/2021
+ms.date: 11/01/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: 6a10384757552108aefc3dd828bf0fd7ddce2f82
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c978e214e9a3c7e7bef5afc60f11263c1e9efe12
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427497"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562487"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -76,6 +76,13 @@ ms.locfileid: "129427497"
 この問題を回避するには、次の 2 とおりの方法があります。1) ワークスペースの作成時に自動的に作成される既定のファイルストアを使用します。 2) 独自のファイルストアを使用するには、ワークスペースの作成時にそのファイルストアが VNet の外部にあることを確認します。 ワークスペースが作成されたら、仮想ネットワークにストレージ アカウントを追加します。
 
 この問題を解決するには、仮想ネットワークから ファイルストア アカウントを削除してから、仮想ネットワークに追加し直します。
+
+### <a name="designer-sample-pipeline"></a>デザイナーのサンプル パイプライン
+
+ユーザーがデザイナー ホームページでサンプル パイプラインを実行できないという既知の問題があります。 このサンプル パイプラインで使用されるサンプル データセットは、Azure Gloabal データセットであり、すべての仮想ネットワーク環境を満たすことはできません。
+
+この問題を解決するには、パブリック ワークスペースを使用してサンプル パイプラインを実行し、デザイナーの使用方法を理解したうえで、サンプル データセットを、仮想ネットワーク内のワークスペースの実際のデータセットで置き換えます。
+
 ## <a name="datastore-azure-storage-account"></a>データストア: Azure Storage アカウント
 
 次の手順を使用して、Azure Blob および File ストレージの格納データへのアクセスを有効にします。
@@ -140,13 +147,13 @@ Azure Data Lake Storage Gen2 をデータストアとして使用する場合、
 
 SQL 包含ユーザーを作成したら、これに対してアクセス許可を付与するため、[GRANT T-SQL コマンド](/sql/t-sql/statements/grant-object-permissions-transact-sql)を使用します。
 
-## <a name="intermediate-module-output"></a>中間モジュール出力
+## <a name="intermediate-component-output"></a>中間コンポーネントの出力
 
-Azure Machine Learning デザイナーの中間モジュール出力を使用する場合、デザイナーの任意のモジュールについて出力場所を指定できます。 これは、セキュリティ、ログ、または監査の目的で、中間データセットを別の場所に格納する場合に使用します。 出力を指定するには、次の手順を実行します。
+Azure Machine Learning デザイナーの中間コンポーネント出力を使用する場合、デザイナーの任意のコンポーネントについて出力場所を指定できます。 これは、セキュリティ、ログ、または監査の目的で、中間データセットを別の場所に格納する場合に使用します。 出力を指定するには、次の手順を実行します。
 
-1. 出力を指定するモジュールを選択します。
-1. 右側に表示される [モジュール設定] ウィンドウで、 **[出力設定]** を選択します。
-1. 各モジュールの出力に使用するデータストアを指定します。
+1. 出力を指定するコンポーネントを選択します。
+1. 右側に表示される [コンポーネント設定] ウィンドウで、 **[出力設定]** を選択します。
+1. 各コンポーネントの出力に使用するデータストアを指定します。
 
 仮想ネットワーク内の中間ストレージ アカウントにアクセスできることを確認してください。 そうでない場合、パイプラインは失敗します。
 

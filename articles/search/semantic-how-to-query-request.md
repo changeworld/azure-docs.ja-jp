@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: e3ae63b202d826e48789bd8d15a197048d5566b7
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: e89f449d62a86d8a935647d0a60af25415f65b85
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178332"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058337"
 ---
 # <a name="create-a-query-that-invokes-semantic-ranking-and-returns-semantic-captions"></a>セマンティックのランク付けを呼び出してセマンティック キャプションを返すクエリを作成する
 

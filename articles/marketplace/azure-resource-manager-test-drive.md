@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.author: trkeya
 author: trkeya
-ms.date: 09/09/2021
-ms.openlocfilehash: 7415e01f79c7982b2e56e1bb02fc84be13174388
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/26/2021
+ms.openlocfilehash: 3bcd8b99ea7361e0af05cd55f96741b0d5ab5db8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065154"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847434"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -21,6 +21,9 @@ ms.locfileid: "131065154"
 ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
 
 **ホストされた** 体験版または **ロジック アプリ** の体験版については、「[体験版とは](what-is-test-drive.md)」を参照してください。
+
+> [!TIP]
+> コマーシャル マーケットプレースでの体験版の顧客のビューを表示するには、「[Azure Marketplace とは](/marketplace/azure-marketplace-overview#take-action-on-a-listing)」や「[Microsoft AppSource とは](/marketplace/appsource-overview)」を参照してください。
 
 ## <a name="technical-configuration"></a>技術的な構成
 

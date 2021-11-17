@@ -9,20 +9,18 @@ ms.subservice: language-service
 ms.topic: reference
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 24e5f8baa8b90dbdaf848711ce87006c0de90ee6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dbef13bdb39085c650a1fc5cedceb6c143eea4ad
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092654"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450117"
 ---
 # <a name="language-support-for-custom-question-answering-and-knowledge-bases"></a>カスタム質問と回答、およびナレッジ ベースの言語サポート
 
-この記事では、カスタム質問と回答が有効なリソースとナレッジ ベースの言語サポート オプションについて説明します。 
+この記事では、カスタム質問と回答が有効なリソースとナレッジ ベースの言語サポート オプションについて説明します。
 
 カスタム質問と回答では、複数の言語をサポートしているリソースに新しいプロジェクトを追加するたびに言語を選択するか、リソースの今後のすべてのプロジェクトに適用される言語を選択するかの、どちらかを選ぶことができます。
-
-すべてのプロジェクトで言語設定を有効にした場合、この設定を無効にすることはできません。
 
 ## <a name="supporting-multiple-languages-in-one-custom-question-answering-enabled-resource"></a>1 つのカスタム質問と回答が有効なリソースでの複数の言語のサポート
 
@@ -50,7 +48,7 @@ ms.locfileid: "131092654"
 
 ## <a name="languages-supported"></a>サポートされている言語
 
-次の一覧では、QnA Maker のリソースに対してサポートされている言語を示します。 
+次の一覧では、質問応答リソースに対してサポートされている言語を示します。
 
 | Language |
 |--|
@@ -111,7 +109,7 @@ ms.locfileid: "131092654"
 ## <a name="query-matching-and-relevance"></a>クエリの一致と関連性
 カスタム質問と回答による結果の提供は、[Azure Cognitive Search の言語アナライザー](/rest/api/searchservice/language-support)に依存しています。
 
-Azure Cognitive Search の機能はサポートされている言語に従いますが、QnA Maker には Azure Search の結果より上位に追加のランカーがあります。 このランカー モデルでは、以下の言語においていくつかの特別なセマンティックとワード ベースの機能が使用されます。
+Azure Cognitive Search の機能はサポートされている言語に従いますが、質問と回答には Azure Search の結果より上位に追加のランカーがあります。 このランカー モデルでは、以下の言語においていくつかの特別なセマンティックとワード ベースの機能が使用されます。
 
 |追加のランカーがある言語|
 |--|

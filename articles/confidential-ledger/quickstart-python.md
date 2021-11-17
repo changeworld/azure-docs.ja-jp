@@ -7,18 +7,18 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 1fd69155a6131565b81ba9684e5c2c077a5420d9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 292c298f3af1b693574ecf9e053de14373d4d597
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671528"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476321"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>クイックスタート: Python 用 Microsoft Azure Confidential Ledger クライアント ライブラリ
 
 Python 用 Microsoft Azure Confidential Ledger クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
-Microsoft Azure Confidential Ledger は、機密データ レコードを管理するための、安全性の高い新しいサービスです。 Confidential Ledger は、許可型ブロックチェーン モデルに基づき、不変性 (台帳を追加専用にする) や改ざん防止 (すべてのレコードをそのまま保持する) など、独自のデータ整合性の利点を提供します。
+Microsoft Azure Confidential Ledger は、機密データ レコードを管理するための、安全性の高い新しいサービスです。 Azure Confidential Ledger は、許可型ブロックチェーン モデルに基づき、不変性 (台帳を追加専用にする) や改ざん防止 (すべてのレコードをそのまま保持する) など、独自のデータ整合性の利点を提供します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,13 +48,13 @@ Azure Active Directory ID クライアント ライブラリをインストー�
 pip install azure-identity
 ```
 
-Confidential Ledger コントロール プレーン クライアント ライブラリをインストールします。
+Azure Confidential Ledger コントロール プレーン クライアント ライブラリをインストールします。
 
 ```terminal
 pip install azure.mgmt.confidentialledger
 ```
 
-Confidential Ledger データ プレーン クライアント ライブラリをインストールします。
+Azure Confidential Ledger データ プレーン クライアント ライブラリをインストールします。
 
 ```terminal
 pip install azure.confidentialledger 
@@ -297,7 +297,7 @@ print(entry.contents)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Microsoft Azure Confidential Ledger に関するその他の記事は、このクイックスタートに基づいている場合があります。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
+Azure Confidential Ledger に関するその他の記事は、このクイックスタートに基づいている場合があります。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
 
 それ以外の場合は、この記事で作成したリソースの操作が完了したら、Azure CLI の [az group delete](/cli/azure/group?#az_group_delete) コマンドを使用して、リソース グループとそれに含まれるすべてのリソースを削除します。
 

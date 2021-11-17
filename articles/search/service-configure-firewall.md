@@ -1,61 +1,60 @@
 ---
-title: Azure Cognitive Search サービス用に IP ファイアウォールを構成する
+title: IP ファイアウォールの構成
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search サービスへのアクセスを制限するための IP 制御ポリシーを構成します。
+description: Azure Cognitive Search サービスへのアクセスを特定の IP アドレスに制限するための IP 制御ポリシーを構成します。
 manager: nitinme
-author: markheff
-ms.author: maheff
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: de34c2921c7829cb6d7e7354a1ebcff44271efd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: e403a71525a8400f47dee01c14ac192c13ab3826
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545549"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223190"
 ---
-# <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Azure Cognitive Search 用に IP ファイアウォールを構成する
+# <a name="configure-an-ip-firewall-for-azure-cognitive-search"></a>Azure Cognitive Search 用に IP ファイアウォールを構成する
 
-Azure Cognitive Search では、受信ファイアウォールをサポートするための IP 規則がサポートされています。 このモデルには、Azure 仮想ネットワーク セキュリティ グループにある IP 規則と同様に、検索サービス用の追加のセキュリティ層が用意されています。 これらの IP 規則を使用して、承認された一連のマシンやクラウド サービスからのみアクセスできるように検索サービスを構成することができます。 ただし、検索サービスに格納されているデータに、これらの承認された一連のマシンやサービスからアクセスするには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
+Azure Cognitive Search では、Azure 仮想ネットワーク セキュリティ グループにある IP 規則と同様に、ファイアウォール経由の受信アクセスに関する IP 規則をサポートしています。 IP 規則を利用することで、検索サービスのアクセスを、承認された一連のマシンとクラウド サービスに制限できます。 これらの承認された一連のマシンやサービスから検索サービスに格納されているデータにアクセスするには、引き続き呼び出し側で有効な認可トークンを提示する必要があります。
 
-IP 規則は、この記事で説明されているように Azure portal で設定できます。 また、[Management REST API バージョン 2020-03-13](/rest/api/searchmanagement/)、[Azure PowerShell](/powershell/module/az.search)、または [Azure CLI](/cli/azure/search) を使用することもできます。
+この記事で説明するように、Azure portal では Basic レベル以上でプロビジョニングされた検索サービスに対して IP 規則を設定できます。 また、[Management REST API バージョン 2020-03-13](/rest/api/searchmanagement/)、[Azure PowerShell](/powershell/module/az.search)、または [Azure CLI](/cli/azure/search) を使用することもできます。
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
+<a id="configure-ip-policy"></a> 
 
-Azure portal で IP アクセス制御ポリシーを設定するには、Azure Cognitive Search サービスのページに移動し、ナビゲーション メニューの **[ネットワーク]** を選択します。 エンドポイント ネットワーク接続は **[パブリック]** である必要があります。 接続が **[プライベート]** に設定されている場合は、プライベート エンドポイント経由でのみ検索サービスにアクセスできます。
+## <a name="set-ip-ranges-in-azure-portal"></a>Azure portal で IP 範囲を設定する
 
-![Azure portal で IP ファイアウォールを構成する方法を示すスクリーンショット](./media/service-configure-firewall/azure-portal-firewall.png)
+Azure portal で IP アクセス制御ポリシーを設定するには、Azure Cognitive Search サービスのページに移動し、左側のナビゲーション ウィンドウで **[ネットワーク]** を選択します。 エンドポイント ネットワーク接続は **[パブリック アクセス]** である必要があります。 接続が **[プライベート アクセス]** または **[共有プライベート アクセス]** に設定されている場合は、プライベート エンドポイント経由でのみ検索サービスにアクセスできます。
+
+:::image type="content" source="media/service-configure-firewall/azure-portal-firewall.png" alt-text="Azure portal で IP ファイアウォールを構成する方法を示すスクリーンショット" border="true":::
 
 Azure portal では、CIDR 形式で IP アドレスと IP アドレス範囲を指定できます。 CIDR 表記の例として、8.8.8.0/24 があります。これは、8.8.8.0 から 8.8.8.255 の範囲の IP を表しています。
 
-> [!NOTE]
-> Azure Cognitive Search サービスに対して IP アクセス制御ポリシーを有効にした後は、許可された IP アドレス範囲リストに含まれていないマシンからのデータ プレーンへの要求はすべて拒否されます。 IP 規則が構成されている場合は、Azure portal の一部の機能が無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。 ポータルの代わりに、[VS Code 拡張機能](https://aka.ms/vscode-search)を使用して、サービス内のさまざまなコンポーネントを操作することもできます。
+Azure Cognitive Search サービスに対して IP アクセス制御ポリシーを有効にした後は、許可された IP アドレス範囲リストに含まれていないマシンからのデータ プレーンへの要求はすべて拒否されます。 
 
-### <a name="requests-from-your-current-ip"></a>現在ご利用の IP からの要求
+## <a name="allow-access-from-azure-portal"></a>Azure Portal からのアクセスを許可する
 
-開発が簡単になるように、Azure portal ではクライアント マシンの IP を識別して許可リストに追加することができます。 それにより、マシンで実行されているアプリは、Azure Cognitive Search サービスにアクセスすることができます。
+既定では、IP 規則が構成されていると、Azure portal の一部の機能が無効になります。 サービス レベル情報の表示と管理はできますが、ポータルからインデックス、インデクサー、その他のトップ レベル リソースへのアクセスは制限されます。
 
-ポータルでは、クライアントの IP アドレスが自動的に検出されます。 それは、ご利用のマシンまたはネットワーク ゲートウェイのクライアント IP アドレスの場合があります。 運用環境にご利用のワークロードを移行する前に、この IP アドレスを必ず削除してください。
+ポータルのサービス管理機能を維持するには、 **[例外]** の [アクセスを許可する] オプションを選択します。 または、[VS Code 拡張機能](https://aka.ms/vscode-search)を使用してコンテンツを管理します。
 
-現在の IP を IP リストに追加するには、 **[クライアント IP アドレスを追加する]** をオンにしてください。 次に、 **[保存]** を選択します。
+## <a name="allow-access-from-your-client"></a>クライアントからのアクセスを許可する
 
-![現在の IP を許可するようにファイアウォール設定を構成する方法を示すスクリーンショット](./media/service-configure-firewall/enable-current-ip.png)
+インデックス作成とクエリの要求を検索サービスにプッシュするクライアント アプリケーションは、IP 範囲で表す必要があります。 Azure では通常、サービスの FQDN に ping を実行して IP アドレスを特定できます (たとえば、`ping <your-search-service-name>.search.windows.net` によって検索サービスの IP アドレスが返されます)。 
 
-## <a name="troubleshoot-issues-with-an-ip-access-control-policy"></a><a id="troubleshoot-ip-firewall"></a>IP アクセス制御ポリシーに関する問題のトラブルシューティング
+クライアントの IP アドレスを指定した場合、要求が完全に拒否されることはありませんが、コンテンツや操作に正常にアクセスするには、認可も必要になります。 次のいずれかの方法を使用して要求を認証します。
 
-次のオプションを使用して IP アクセス制御ポリシーに関する問題のトラブルシューティングを行うことができます。
++ [キーベースの認証](search-security-api-keys.md)。要求に対して管理またはクエリ API キーが提供されます
++ [ロールベースの認可](search-security-rbac.md)。呼び出し元は検索サービスのセキュリティ ロールのメンバーであり、[登録されたアプリで Azure Active Directory から取得した OAuth トークンを提示します](search-howto-aad.md)。
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="rejected-requests"></a>拒否された要求
 
-Azure Cognitive Search サービスに対して IP アクセス制御ポリシーを有効にすると、Azure portal を含め、許可された IP アドレス範囲リストに含まれていないマシンからの要求はすべてブロックされます。  サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。 
-
-### <a name="sdks"></a>SDK
-
-許可リストに含まれていないマシンから SDK を使用して Azure Cognitive Search サービスにアクセスすると、**403 Forbidden** という一般的な応答が返され、詳しい情報は示されません。 ご利用のアカウントの許可 IP リストを確認し、検索サービス用に正しい構成が更新されていることを確認してください。
+許可リストに含まれていない IP アドレスから要求が送信された場合は、追加情報を含まない汎用的な **403 Forbidden** 応答が返されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-Private Link を使用した検索サービスへのアクセスの詳細については、次の記事を参照してください。
+クライアント アプリケーションが Azure 上の静的 Web アプリである場合は、検索サービスの IP ファイアウォール規則に含める IP 範囲を決定する方法を確認します。
 
-* [Azure Cognitive Search に安全な接続を行うためのプライベート エンドポイントを作成する](service-create-private-endpoint.md)
+> [!div class="nextstepaction"]
+> [Azure App Service における受信 IP アドレスと送信 IP アドレス](../app-service/overview-inbound-outbound-ips.md)

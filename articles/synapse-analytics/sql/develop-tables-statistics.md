@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 215b9486af06c58cd1e7a6990bfc10ad43d4407f
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 26d2b6123e40f163d261009ff1c2f706f7597825
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860979"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309607"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE 50 PERCENT;
 ```
 
-*product\_category* と *product\_sub\_category* の間には相関関係が存在するため、これらの列に同時にアクセスする場合は複数列統計オブジェクトが役立ちます。
+*product\_category* と *product\_sub\_category* の間には相関関係が存在するため、これらの列に同時にアクセスする場合は複数列統計オブジェクトが役立ちます。 このテーブルに対してクエリを実行すると、複数列統計では、結合、GROUP BY 集計、個別のカウント、WHERE フィルターのカーディナリティ推定が向上します (プライマリ統計列がフィルターに含まれる場合)。
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>テーブルのすべての列の統計の作成
 

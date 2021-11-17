@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 35738fe541d237b6bf271ea2892a67049f820fbf
-ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
+ms.openlocfilehash: 0bdd2c517a6bfef059ad89d7c3cbf1a825aba526
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2021
-ms.locfileid: "132402316"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866786"
 ---
 # <a name="dv5-and-dsv5-series"></a>Dv5 および Dsv5 シリーズ
 
@@ -38,7 +38,6 @@ Dv5 シリーズの仮想マシンには一時ストレージがないため、�
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 必須 <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
-[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 最大 NIC 数|最大ネットワーク帯域幅 (Mbps) |
@@ -68,7 +67,6 @@ Dsv5 シリーズの仮想マシンには一時ストレージがないため、
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 必須 <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
-[入れ子になった仮想化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization): サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | キャッシュ不使用時の最大バースト ディスク スループット (IOPS/MBps)<sup>3</sup> | 最大 NIC 数 | 最大ネットワーク帯域幅 (Mbps) |

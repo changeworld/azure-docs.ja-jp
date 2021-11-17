@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 711f83a33a530aef99bba75a0010bcd131aa771b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 01a82e178725cc310e5e693c738de047f09c1b7a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228967"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505595"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ ms.locfileid: "130228967"
 1. ポータルの左側で、 **[リソースの作成]** を選択し、検索ボックスに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、そのエントリを選択します。 **[仮想ネットワーク ゲートウェイ]** のページで、 **[作成]** を選択します。
 1. **[仮想ネットワーク ゲートウェイの作成]** ページで、これらの設定を入力または選択します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | --------| ----- |
     | サブスクリプション | 正しいサブスクリプションが選択されていることを確認します。 |
     | リソース グループ | 仮想ネットワークを選択すると、リソース グループが自動的に選択されます。 | 
@@ -82,16 +82,13 @@ ms.locfileid: "130228967"
     | 仮想ネットワーク | *[TestVNET]* を選択します。 |
     | パブリック IP アドレス | **[新規作成]** を選択します。|
     | パブリック IP アドレス名 | パブリック IP アドレスの名前を指定します。 |
-    | パブリック IP アドレスの SKU | パブリック IP アドレスの SKU を指定します。 デュアルスタック ゲートウェイの場合は [標準] を選択します。 |
 
     > [!IMPORTANT]
-    > ExpressRoute で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、必ず [標準]、[静的] タイプのパブリック IP アドレスを使用してゲートウェイを作成してください。
+    > ExpressRoute で IPv6 ベースのプライベート ピアリングを使用する予定の場合は [PowerShell の手順](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway)を使用して、必ず [標準]、[静的] タイプのパブリック IP アドレスでゲートウェイを作成してください。
     > 
     > 
 
 1. **[確認および作成]** 、 **[作成]** の順に選択して、ゲートウェイの作成を開始します。 設定が検証されて、ゲートウェイが作動します。 仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。
-
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="[仮想ネットワーク ゲートウェイの作成] ページのフィールド":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

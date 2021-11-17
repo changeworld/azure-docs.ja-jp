@@ -126,7 +126,7 @@
           href: azure-policy.md
         - name: Azure Policy を使用した Azure Key Vault の実装に関する問題のトラブルシューティング
           href: troubleshoot-azure-policy-for-key-vault.md
-        - name: 個々の Key Vault オブジェクトのバックアップ
+        - name: オブジェクトのバックアップと復元
           href: backup.md
     - name: セキュリティで保護
       items:

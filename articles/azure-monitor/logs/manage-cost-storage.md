@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 10/17/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 87aeb36a8bdd843f4ad1c0e228299b201321db44
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 37b6411dbddd92f9a0ba8ba8908b1f848d761683
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461914"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319702"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 
 > [!NOTE]
 > この記事では、Azure Monitor ログにかかるコストを理解し、それを制御する方法について説明します。 関連記事の「[使用量と推定コストの監視](../usage-estimated-costs.md)」では、さまざまな価格モデルに対する複数の Azure 監視機能全体の使用量と推定コストを表示する方法について説明します。 この記事のすべての価格とコストは、単に例示を目的としています。 
@@ -45,7 +45,7 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
 
 すべての価格レベルにおいて、イベントのデータ サイズは、データがエージェントから送信されるか、インジェスト プロセス中に追加されるかに関係なく、Log Analytics に格納されているこのイベントのプロパティの文字列表記から計算されます。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity)、[Heartbeat](/azure/azure-monitor/reference/tables/heartbeat)、[Usage](/azure/azure-monitor/reference/tables/usage)、[Operation](/azure/azure-monitor/reference/tables/operation) 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 一部のソリューションでは、無料のデータ インジェストに関するソリューション固有のポリシーが他のソリューションより多くなっています。たとえば、[Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/) の場合、サーバー評価の最初の 180 日間、依存関係視覚化データが無料になります。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように [_IsBillable](log-standard-columns.md#_isbillable) プロパティを使用できます。 使用量は GB (10^9 バイト) 単位で報告されます。 
 
-また、[Azure Defender (Security Center)](https://azure.microsoft.com/pricing/details/azure-defender/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)、[構成管理](https://azure.microsoft.com/pricing/details/automation/)などの一部のソリューションには、独自の価格モデルがあります。 
+また、[Microsoft Defender for Cloud](https://azure.microsoft.com/pricing/details/azure-defender/)、[Microsoft Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)、[構成管理](https://azure.microsoft.com/pricing/details/automation/)などの一部のソリューションには、独自の価格モデルがあります。 
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics 専用クラスター
 
@@ -55,9 +55,9 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
 
 クラスターでの使用については、2 つの課金モードがあります。 これらは、[クラスターの作成](logs-dedicated-clusters.md#create-a-dedicated-cluster)時に `billingType` パラメーターによって指定することも、作成後に設定することもできます。 次の 2 つのモードがあります。 
 
-- **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで行われるこのデータ集計の前にワークスペース レベルで適用されます。 
+- **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Microsoft Defender for Cloud](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースのデータの集計に対するこの集計の前に、ワークスペース レベルで適用されます。 
 
-- **ワークスペース**: クラスターのコミットメント レベル コストは、(各ワークスペースに対する [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当てを考慮した後に) 各ワークスペースのデータ インジェスト ボリュームによって、クラスター内のワークスペースに比例して割り当てられます。1 日の間にクラスターに取り込まれたデータ ボリュームの合計がコミットメント レベルよりも少ない場合は、ワークスペースごとにコミットメント レベルとして取り込まれたデータに対して有効な 1 GB あたりのコミットメント レベル料金で課金され、コミットメント レベルの未使用分についてはクラスター リソースに課金されます。 1 日の間にクラスターに取り込まれたデータ ボリュームの合計がコミットメント レベルよりも多い場合は、ワークスペースごとに、その日に取り込まれたデータの割合に基づいてコミットメント レベルの割合で課金され、コミットメント レベルを超えて取り込まれたデータの割合についてワークスペースごとに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計がコミットメント レベルを超えている場合、クラスター リソースには何も課金されません。
+- **ワークスペース**: クラスターのコミットメント レベル コストは、(各ワークスペースに対する [Microsoft Defender for Cloud](../../security-center/index.yml) からのノードごとの割り当てを考慮した後に) 各ワークスペースのデータ インジェスト ボリュームによって、クラスター内のワークスペースに比例して割り当てられます。1 日の間にクラスターに取り込まれたデータ ボリュームの合計がコミットメント レベルよりも少ない場合は、ワークスペースごとにコミットメント レベルとして取り込まれたデータに対して有効な 1 GB あたりのコミットメント レベル料金で課金され、コミットメント レベルの未使用分についてはクラスター リソースに課金されます。 1 日の間にクラスターに取り込まれたデータ ボリュームの合計がコミットメント レベルよりも多い場合は、ワークスペースごとに、その日に取り込まれたデータの割合に基づいてコミットメント レベルの割合で課金され、コミットメント レベルを超えて取り込まれたデータの割合についてワークスペースごとに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計がコミットメント レベルを超えている場合、クラスター リソースには何も課金されません。
 
 クラスター課金オプションでは、データ保有はワークスペースごとに課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられるかどうかに関係なく、クラスターの課金が開始されます。 クラスターに関連付けられたワークスペースには、独自の価格レベルはなくなります。
 
@@ -73,7 +73,7 @@ Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料
 
 特定の Log Analytics ワークスペースの課金対象の使用量を表示する最も簡単な方法は、ワークスペースの **概要** ページに移動し、ページ上部にある基本セクションの右上にある **[View Cost]\(価格の表示\)** をクリックすることです。 これにより、このワークスペースに対して既にスコープが設定されている Azure Cost Management + Billing のコスト分析が起動します。  
 
-または、[Azure Cost Management + Billing](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) ハブから起動することもできます。 ここでは、"コスト分析" 機能を使用して、Azure リソースの経費を表示できます。 まず、Log Analytics の支出を追跡するために、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。 **[グループ化]** で **[測定カテゴリ]** または **[測定]** を選択します。 Azure Defender (Security Center) や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行います。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
+または、[Azure Cost Management + Billing](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) ハブから起動することもできます。 ここでは、"コスト分析" 機能を使用して、Azure リソースの経費を表示できます。 まず、Log Analytics の支出を追跡するために、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。 **[グループ化]** で **[測定カテゴリ]** または **[測定]** を選択します。 Microsoft Defender for Cloud、Microsoft Sentinel などのその他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行います。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
 
 使用状況をさらに詳しく理解するために、[Azure portal から使用状況をダウンロード](../../cost-management-billing/understand/download-azure-daily-usage.md)することもできます。 ダウンロードしたスプレッドシートで、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Log Analytics ワークスペースからの使用状況を検索できます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (一部のレガシ価格レベルで使用)、"Azure Monitor" (コミットメント レベルの価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含める) を追加します。 使用量が [消費量] 列に表示され、各エントリの単位が [測定単位] 列に表示されます。 詳細については、「[個々の Azure サブスクリプションの課金書を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
@@ -143,7 +143,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
-2018 年 4 月 2 日に Log Analytics ワークスペースまたは Application Insights リソースが含まれていたか、2019 年 2 月 1 日より前に開始され、まだアクティブな Enterprise Agreement にリンクされているサブスクリプションは、レガシ価格レベル (**無料試用版**、**スタンドアロン (GB 単位)** 、および **ノードごと (OMS)** ) を引き続き利用できます。 無料試用版の価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Azure Defender (Security Center)](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データ保有は 7 日に制限されます。 無料試用版価格レベルは、評価目的専用です。 Free レベルに対して、SLA は提供されません。  スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
+2018 年 4 月 2 日に Log Analytics ワークスペースまたは Application Insights リソースが含まれていたか、2019 年 2 月 1 日より前に開始され、まだアクティブな Enterprise Agreement にリンクされているサブスクリプションは、レガシ価格レベル (**無料試用版**、**スタンドアロン (GB 単位)** 、および **ノードごと (OMS)** ) を引き続き利用できます。 無料試用版の価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Microsoft Defender for Cloud](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データ保有は 7 日に制限されます。 無料試用版価格レベルは、評価目的専用です。 Free レベルに対して、SLA は提供されません。  スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
 
 スタンドアロン価格レベルでの使用量は、取り込まれたデータ ボリューム単位で請求されます。 これは **Log Analytics** サービス上で報告され、メーターには "分析対象データ" という名前が付けられています。 
 
@@ -151,20 +151,20 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 
 - **ノード**: これは、ノード月の単位での監視対象ノード (VM) 数に対応した使用量です。
 - **ノードごとの超過データ**: これは、集計されたデータの割り当てを超える取り込まれたデータの GB 数です。
-- **ノードごとに含まれるデータ**: これは、集計されたデータの割り当ての範囲に含まれる取り込まれたデータ量です。 このメーターは、すべての価格レベルにワークスペースが存在する場合に、Azure Defender (Security Center) によって提供される範囲のデータ量を示するためにも使用されます。
+- **ノードごとに含まれるデータ**: これは、集計されたデータの割り当ての範囲に含まれる取り込まれたデータ量です。 このメーターは、すべての価格レベルにワークスペースが存在する場合に、Microsoft Defender for Cloud によって提供される範囲のデータ量を示すためにも使用されます。
 
 > [!TIP]
 > ワークスペースで **ノードごとの** 価格レベルにアクセスできるが、従量課金制レベルよりもコストが低いかどうか知りたい場合は、[次のクエリを使用](#evaluating-the-legacy-per-node-pricing-tier)して、推奨事項を簡単に取得できます。 
 
 2016 年 4 月より前に作成されたワークスペースの場合、**Standard** と **Premium** の価格レベルを引き続き利用できます。これらのデータ保有は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでの Azure 請求書のデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
 
-### <a name="legacy-pricing-tiers-and-azure-defender-security-center"></a>レガシ価格レベルと Azure Defender (Security Center)
+### <a name="legacy-pricing-tiers-and-microsoft-defender-for-cloud"></a>レガシ価格レベルと Microsoft Defender for Cloud
 
-また、従来の Log Analytics レベルの使用と [Azure Defender (Security Center)](../../security-center/index.yml) に対する使用量の請求方法の間にもいくつかの動作があります。 
+また、従来の Log Analytics レベルの使用と [Microsoft Defender for Cloud](../../security-center/index.yml) に対する使用量の請求方法の間にもいくつかの動作があります。 
 
-- ワークスペースが従来の Standard レベルまたは Premium レベルの場合、Azure Defender はノードごとではなく Log Analytics データ インジェストに対してのみ課金されます。
-- ワークスペースが従来のノードごとのレベルの場合、Azure Defender は、現在の [Azure Defender ノードベースの価格モデル](https://azure.microsoft.com/pricing/details/security-center/)を使用して課金されます。 
-- 他の価格レベル (コミットメント レベルを含む) では、2017 年 6 月 19 日より前に Azure Defender が有効になっている場合、Azure Defender は Log Analytics データ インジェストに対してのみ課金されます。 それ以外の場合、Azure Defender は、現在の Azure Defender ノードベースの価格モデルを使用して課金されます。
+- ワークスペースが従来の Standard レベルまたは Premium レベルの場合、Microsoft Defender for Cloud はノードごとではなく Log Analytics データ インジェストに対してのみ課金されます。
+- ワークスペースが従来の Per Node レベルの場合、Microsoft Defender for Cloud は、現在の [Microsoft Defender for Cloud のノードベースの価格モデル](https://azure.microsoft.com/pricing/details/security-center/)を使用して課金されます。 
+- 他の価格レベル (コミットメント レベルを含む) では、2017 年 6 月 19 日より前に Microsoft Defender for Cloud が有効になっている場合、Microsoft Defender for Cloud は Log Analytics データ インジェストに対してのみ課金されます。 それ以外の場合、Microsoft Defender for Cloud は、現在の Microsoft Defender for Cloud のノードベースの価格モデルを使用して課金されます。
 
 価格レベルの制限に関する詳細は、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)」にあります。
 
@@ -173,9 +173,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 > [!NOTE]
 > OMS E1 Suite、OMS E2 Suite、または OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の *ノード単位* の価格レベルを選択します。
 
-## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics と Azure Defender (Security Center)
+## <a name="log-analytics-and-microsoft-defender-for-cloud"></a>Log Analytics と Microsoft Defender for Cloud
 
-[Azure Defender for Servers (Security Center)](../../security-center/index.yml) の課金は Log Analytics の課金と密接に結び付けられています。 Azure Defender では、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、[監視対象サービス数に応じて課金](https://azure.microsoft.com/pricing/details/azure-defender/)され、[セキュリティ データの種類のサブセット](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus)、および Update と UpdateSummary のデータの種類に対して適用される 500 MB/ノード/日の割り当てが行われます ([詳細情報](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance))。 監視対象サーバーの数は、1 時間単位の細分性で計算されます。 各監視対象サーバーからの毎日のデータ割り当ては、ワークスペース レベルで集計されます。 ワークスペースがレガシのノードごとの価格レベルにある場合、Azure Defender と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
+[Microsoft Defender for Servers (Defender for Cloud)](../../security-center/index.yml) の課金は、Log Analytics の課金と密接に結び付けられています。 Microsoft Defender for Cloud では、[監視対象サービス数に応じて課金](https://azure.microsoft.com/pricing/details/azure-defender/)されます。また、Update Management ソリューションがワークスペースで実行されていないか、ソリューションのターゲット設定が有効にされている場合、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security)のサブセット (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus)、および Update と UpdateSummary のデータの種類に対して適用される、毎日サーバーあたり 500 MB のデータ割り当てが提供されます ([詳細情報](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance))。 監視対象サーバーの数は、1 時間単位の細分性で計算されます。 各監視対象サーバーからの毎日のデータ割り当ては、ワークスペース レベルで集計されます。 ワークスペースが従来の Per Node 価格レベルである場合、Microsoft Defender for Cloud と Log Analytics の割り当てが結合されて、取り込まれたすべての課金対象データにまとめて適用されます。  
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
@@ -263,7 +263,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > 特にワークスペース上で大量のデータを受信している場合には、日次上限によって、指定された上限レベルで厳密にデータ収集を停止することはできず、一部のデータが超過することが予想されます。 データが上限を超えて収集された場合でも、請求は発生します。 日次上限の動作の確認に役立つクエリについては、この記事の「[日次上限の効果を表示する](#view-the-effect-of-the-daily-cap)」セクションを参照してください。 
 
 > [!WARNING]
-> 日次上限によって、データの種類 (**WindowsEvent**、**SecurityAlert**、**SecurityBaseline**、**SecurityBaselineSummary**、**SecurityDetection**、**SecurityEvent**、**WindowsFirewall**、**MaliciousIPCommunication**、**LinuxAuditLog**、**SysmonEvent**、**ProtectionStatus**、**Update** および **UpdateSummary**) の収集が停止することはありません。ただし、2017 年 6 月 19 日より前に Azure Defender (Security Center) がインストールされたワークスペースは除きます。 
+> 日次上限によって、データの種類 (**WindowsEvent**、**SecurityAlert**、**SecurityBaseline**、**SecurityBaselineSummary**、**SecurityDetection**、**SecurityEvent**、**WindowsFirewall**、**MaliciousIPCommunication**、**LinuxAuditLog**、**SysmonEvent**、**ProtectionStatus**、**Update** および **UpdateSummary**) の収集が停止することはありません。ただし、2017 年 6 月 19 日より前に Microsoft Defender for Cloud がインストールされたワークスペースは除きます。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>定義する日次データ制限を明らかにする
 
@@ -278,7 +278,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 3. 既定では、 **[日次上限]** は **[OFF]** に設定されています。 有効にするには、 **[ON]** を選択し、GB/日単位でデータ ボリュームの制限を設定します。
 
 :::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Log Analytics のデータ制限の構成":::
-    
+
 Azure Resource Manager を使用して、日次上限を構成することができます。 これを構成するには、「[ワークスペース-作成または更新](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)」で説明されているように、`WorkspaceCapping` で `dailyQuotaGb` パラメーターを設定します。 
 
 このクエリを使用して、1 日あたりの上限に加えられた変更を追跡できます。
@@ -415,7 +415,7 @@ Event
 | where EventID == 5145 or EventID == 5156
 | where _IsBillable == true
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
-``` 
+```
 
 句 `where _IsBillable = true` は、取り込み料金がかからない特定のソリューションからのデータの種類を除外することに注意してください。 `_IsBillable` に関する[詳細情報](./log-standard-columns.md#_isbillable)を参照してください。
 
@@ -526,7 +526,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 > [!WARNING]
 > **Usage** データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなっています。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
 
-## <a name="late-arriving-data"></a>到着遅延データ   
+## <a name="late-arriving-data"></a>到着遅延データ
 
 古いタイムスタンプでデータが取り込まれる状況が発生することがあります。 たとえば、通信に問題があるためにエージェントが Log Analytics と通信できない場合や、ホストの時刻や日時が正しくない場合があります。 これは、**Usage** データ型によって報告される取り込まれたデータと、イベントが生成されたタイムスタンプである **TimeGenerated** によって指定された特定の日の生データの **_BilledSize** を合計するクエリとの間の明らかな不一致によって示される可能性があります。
 
@@ -573,7 +573,7 @@ W3CIISLog
 | -------------------------- | ------------------------- |
 | データ収集ルール      | [Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md)は、データ収集ルールを使用してデータの収集を管理します。 カスタム XPath クエリを使用して、[データの収集を制限](../agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)することができます。 | 
 | Container Insights         | 必要なデータのみを収集するように [Container Insights を構成](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost)します。 |
-| Azure Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](../../sentinel/connect-data-sources.md)を確認します。 Sentinel のコストと課金の詳細については、[こちらをご覧](../../sentinel/azure-sentinel-billing.md)ください。 |
+| Microsoft Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](../../sentinel/connect-data-sources.md)を確認します。 Sentinel のコストと課金の詳細については、[こちらをご覧](../../sentinel/azure-sentinel-billing.md)ください。 |
 | セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](../../security-center/security-center-enable-data-collection.md#data-collection-tier)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10))。 <br> - [レジストリの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))。 <br> - [ファイル システムの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))。 <br> - [カーネル オブジェクトの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))。 <br> - [ハンドル操作の監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))。 <br> - リムーバブル記憶域の監査。 |
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](../agents/data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす。 <br> - パフォーマンス カウンターの数を減らす。 |
 | イベント ログ                 | [イベント ログの構成](../agents/data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす。 <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
@@ -642,9 +642,9 @@ union
 
 この評価を容易にするために、次のクエリを使用して、ワークスペースの使用パターンに基づいて最適な価格レベルの推奨設定を作成できます。 このクエリでは、監視対象ノードとワークスペースに取り込まれた過去 7 日間のデータに注目し、各日でどの価格レベルが最適であるかが評価されます。 クエリを使用するには、以下を指定する必要があります。
 
-- ワークスペースが Azure Defender (Security Center) を使用するかどうかを、**WorkspaceHasSecurityCenter** を **true** または **false** に設定して指定する。 
+- ワークスペースが Microsoft Defender for Cloud を使用するかどうかを、**workspaceHasSecurityCenter** を **true** または **false** に設定して指定する。 
 - 特定の割引がある場合は価格を更新する。
-- **daysToEvaluate** を設定し、さかのぼって分析する日数を指定する。 これは、クエリで 7 日間のデータの検索に時間がかかりすぎている場合に便利です。 
+- **daysToEvaluate** を設定し、さかのぼって分析する日数を指定する。 これは、クエリで 7 日間のデータの検索に時間がかかりすぎている場合に便利です。
 
 価格レベルの推奨クエリは次のとおりです。
 
@@ -652,8 +652,8 @@ union
 // Set these parameters before running query
 // Pricing details available at https://azure.microsoft.com/pricing/details/monitor/
 let daysToEvaluate = 7; // Enter number of previous days to analyze (reduce if the query is taking too long)
-let workspaceHasSecurityCenter = false;  // Specify if the workspace has Azure Security Center
-let PerNodePrice = 15.; // Enter your montly price per monitored nodes
+let workspaceHasSecurityCenter = false;  // Specify if the workspace has Defender for Cloud (formerly known as Azure Security Center)
+let PerNodePrice = 15.; // Enter your monthly price per monitored nodes
 let PerNodeOveragePrice = 2.30; // Enter your price per GB for data overage in the Per Node pricing tier
 let PerGBPrice = 2.30; // Enter your price per GB in the Pay-as-you-go pricing tier
 let CommitmentTier100Price = 196.; // Enter your price for the 100 GB/day commitment tier
@@ -756,7 +756,7 @@ union *
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Log Analytics を使用したデータ転送の料金
 
-Log Analytics にデータを送信すると、データ帯域幅の料金が発生する可能性があります。 これは Log Analytics エージェントがインストールされている仮想マシンに限定され、診断設定を使用している場合や、Azure Sentinel に組み込まれている他のコネクタでは適用されません。 [Azure 帯域幅の価格ページ](https://azure.microsoft.com/pricing/details/bandwidth/)で説明されているように、2 つのリージョンに存在する Azure サービス間のデータ転送は、通常の料金で送信データ転送として課金されます。 受信データ転送は無料です。 ただし、この料金は、Log Analytics データ インジェストのコストと比べると非常に小さいものです。 そのため、Log Analytics のコスト管理では、ご自分で[取り込まれたデータ ボリューム](#understanding-ingested-data-volume)に注目する必要があります。 
+Log Analytics にデータを送信すると、データ帯域幅の料金が発生する可能性があります。 ただし、Log Analytics エージェントがインストールされている仮想マシンに限定され、診断設定を使用している場合や、Microsoft Sentinel に組み込まれている他のコネクタでは適用されません。 [Azure 帯域幅の価格ページ](https://azure.microsoft.com/pricing/details/bandwidth/)で説明されているように、2 つのリージョンに存在する Azure サービス間のデータ転送は、通常の料金で送信データ転送として課金されます。 受信データ転送は無料です。 ただし、この料金は、Log Analytics データ インジェストのコストと比べると非常に小さいものです。 そのため、Log Analytics のコスト管理では、ご自分で[取り込まれたデータ ボリューム](#understanding-ingested-data-volume)に注目する必要があります。 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics がデータを収集しなくなった場合のトラブルシューティング
 
@@ -787,7 +787,7 @@ Log Analytics の追加の制限があり、その一部は Log Analytics 価格
 - 検索言語の使用方法については、[Azure Monitor ログでのログ検索](../logs/log-query-overview.md)に関する記事を参照してください。 検索クエリを使用して、使用量データをさらに分析できます。
 - [新しいログ アラートの作成](../alerts/alerts-metric.md)に関するページで説明されている手順を使用して、検索条件が満たされた場合に通知されるようにします。
 - [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
-- 効果的なイベント収集ポリシーを構成するには、[Azure Defender (Security Center) のフィルタリング ポリシー](../../security-center/security-center-enable-data-collection.md)をご確認ください。
+- 効果的なイベント収集ポリシーを構成するには、[Microsoft Defender for Cloud のフィルタリング ポリシー](../../security-center/security-center-enable-data-collection.md)に関するページを参照してください。
 - [パフォーマンス カウンターの構成](../agents/data-sources-performance-counters.md)を変更します。
 - イベントの収集設定を変更する方法については、[イベント ログの構成](../agents/data-sources-windows-events.md)に関するページを参照してください。
 - Syslog の収集設定を変更する方法については、[Syslog の構成](../agents/data-sources-syslog.md)に関するページを参照してください。

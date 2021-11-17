@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 63df94e51b53dde61fd7863ece33b2a9baac2908
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4d54fba6f3b59c0e32286333694fa460cdb07b3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554566"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487545"
 ---
 # <a name="analyze-live-video-streams-with-multiple-ai-models-using-ai-composition"></a>AI コンポジションを使用した複数の AI モデルによるライブ ビデオ ストリームの分析
 
@@ -44,9 +44,9 @@ Azure Video Analyzer を使用すると、[AI コンポジション](../ai-compo
 
 前提条件のセクションで指定されたクイックスタートは既に完了しているため、エッジ デバイスは既に作成されています。 このエッジ デバイスには、特定のビデオ ファイルを含む /home/localedgeuser/samples/input という入力フォルダーがあります。 IoT Edge デバイスにログインし、ディレクトリを /home/localedgeuser/samples/input/ に変更します。次のコマンドを実行して、このハウツー ガイドで使用する入力ファイルを取得します。
 
-wget https://lvamedia.blob.core.windows.net/public/co-final.mkv
+wget https://avamedia.blob.core.windows.net/public/co-final.mkv
 
-さらに、必要に応じて、[VLC メディア プレーヤー](https://www.videolan.org/vlc/)がインストールされているマシンで Ctrl + N キーを押し、[サンプル ビデオ (.mkv)](https://lvamedia.blob.core.windows.net/public/co-final.mkv) へのリンクを貼り付けて再生を開始します。 高速道路上の車の映像が表示されます。
+さらに、必要に応じて、[VLC メディア プレーヤー](https://www.videolan.org/vlc/)がインストールされているマシンで Ctrl + N キーを押し、[サンプル ビデオ (.mkv)](https://avamedia.blob.core.windows.net/public/co-final.mkv) へのリンクを貼り付けて再生を開始します。 高速道路上の車の映像が表示されます。
 
 ## <a name="create-and-deploy-the-pipeline"></a>パイプラインを作成してデプロイする
 

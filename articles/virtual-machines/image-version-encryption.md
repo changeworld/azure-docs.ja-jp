@@ -1,24 +1,25 @@
 ---
 title: 独自のキーで暗号化されたイメージ バージョンを作成する
-description: カスタマー マネージド暗号化キーを使用して、共有イメージ ギャラリーにイメージ バージョンを作成します。
+description: カスタマー マネージド暗号化キーを使用して、Azure Compute Gallery にイメージ バージョンを作成します。
+author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 7/1/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d80b2fb62f0c11a06daaf9198add9c7cbe19a42a
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: bcd214413eb4880219e18c4bb03e4430f31690fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458739"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452055"
 ---
 # <a name="use-customer-managed-keys-for-encrypting-images"></a>イメージの暗号化にカスタマー マネージド キーを使用する
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
-共有イメージ ギャラリー内のイメージはスナップショットとして格納されるので、サーバー側暗号化によって自動的に暗号化されます。 サーバー側暗号化には、利用可能な最強のブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。 サーバー側暗号化は、FIPS 140-2 にも準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
+Azure Compute Gallery (旧称 Shared Image Gallery) 内のイメージはスナップショットとして格納されるので、サーバー側暗号化によって自動的に暗号化されます。 サーバー側暗号化には、利用可能な最強のブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。 サーバー側暗号化は、FIPS 140-2 にも準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
 
 イメージの暗号化にはプラットフォーム マネージド キーを利用することも、独自のキーを使用することもできます。 二重暗号化のために両方を併用することもできます。 独自のキーを使用して暗号化を管理する場合は、イメージ内のすべてのディスクの暗号化と暗号化解除に使用する *カスタマー マネージド キー* を指定できます。 
 
@@ -37,7 +38,7 @@ ms.locfileid: "129458739"
 
 ## <a name="limitations"></a>制限事項
 
-共有イメージ ギャラリー内のイメージの暗号化にカスタマー マネージド キーを使用する場合、こちらの制限が適用されます。   
+Azure Compute Gallery 内のイメージの暗号化にカスタマー マネージド キーを使用する場合、こちらの制限が適用されます。 
 
 - 暗号化キー セットは、お使いのイメージと同じサブスクリプション内にある必要があります。
 
@@ -98,7 +99,7 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>VM の作成
 
-共有イメージ ギャラリーから仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してそのディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 拡張パラメーター セットを使用し、`Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` を VM 構成に追加します。
+Azure Compute Gallery から仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してそのディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 拡張パラメーター セットを使用し、`Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` を VM 構成に追加します。
 
 データ ディスクの場合は、[Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) を使用するときに `-DiskEncryptionSetId $setID` パラメーターを追加します。
 
@@ -142,7 +143,7 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>VM の作成
 
-共有イメージ ギャラリーから VM を作成し、カスタマー マネージド キーを使用してディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 `--os-disk-encryption-set` パラメーターに暗号化セットの ID を指定して追加するだけです。 データ ディスクの場合は、そのデータ ディスクのディスク暗号化セットのスペース区切りリストを指定して `--data-disk-encryption-sets` を追加します。
+Azure Compute Gallery から VM を作成し、カスタマー マネージド キーを使用してディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 `--os-disk-encryption-set` パラメーターに暗号化セットの ID を指定して追加するだけです。 データ ディスクの場合は、そのデータ ディスクのディスク暗号化セットのスペース区切りリストを指定して `--data-disk-encryption-sets` を追加します。
 
 
 ## <a name="portal"></a>ポータル

@@ -6,16 +6,16 @@ author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 9ea9d5d34d69b950e3fa80c350c43f12615660ba
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 83f6c3a7e88cf42cbb2a2d36ff07ac79e7eb5894
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112558"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452207"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-2-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark 2 を使用して Azure Cosmos DB と対話する
 
@@ -48,6 +48,8 @@ Azure Cosmos DB 分析ストアに対してクエリを実行するために使�
 一方、**Spark テーブルを作成する** 場合、分析ストアの状態のメタデータは Spark にキャッシュされず、Spark テーブルに対して SparkSQL のクエリが実行されるたびに再読み込みが行われます。
 
 このため、Spark DataFrame に読み込むことと、Spark テーブルを作成することは、Spark 分析を分析ストアの固定スナップショットに対して評価するか、分析ストアの最新のスナップショットに対して評価するかに基づいて選択できます。
+
+分析クエリに頻繁に使用されるフィルターがある場合は、これらのフィールドに基づいてパーティション分割することで、クエリのパフォーマンスを向上させることができます。 Azure Synapse Spark ノートブックからパーティション分割ジョブを定期的に実行すると、分析ストアでパーティション分割をトリガーできます。 このパーティション分割ストアは、Azure Synapse ワークスペースにリンクされている ADLS Gen2 プライマリ ストレージ アカウントを指します。 詳細については、[カスタム パーティション分割の概要](../../cosmos-db/custom-partitioning-analytical-store.md)および[カスタム パーティション分割を構成する方法](../../cosmos-db/configure-custom-partitioning.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Mongo DB アカウントの Azure Cosmos DB API に対してクエリを実行するには、分析ストア内の[完全に忠実なスキーマ表現](../../cosmos-db/analytical-store-introduction.md#analytical-schema)と、使用される拡張プロパティ名の詳細を確認してください。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, references_regions, ignite-fall-2021
-ms.openlocfilehash: d56cec53d4fec33ec6db17667d95f9cc246796a4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 255c0f5f85f1f7b385fed82c36a799004f03ed0b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092285"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488218"
 ---
 # <a name="custom-named-entity-recognition-ner-service-limits"></a>カスタム固有表現認識 (NER) サービスの制限
 
@@ -24,7 +24,7 @@ ms.locfileid: "131092285"
 
 ## <a name="file-limits"></a>ファイルの制限
 
-* 使用できるのは、`.txt` ファイルのみです。 データが別の形式の場合は、[CLUtils 解析コマンド](https://github.com/microsoft/CogSLanguageUtilities/blob/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md)を使ってドキュメントを開き、テキストを抽出できます。
+* 使用できるのは、`.txt` ファイルのみです。 データが別の形式の場合は、[CLUtils 解析コマンド](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md)を使ってドキュメントを開き、テキストを抽出できます。
 
 * コンテナーにアップロードされたすべてのファイルにデータが含まれている必要があります。 トレーニングには空のファイルを使うことはできません。
 
@@ -44,7 +44,7 @@ ms.locfileid: "131092285"
 * 要求ごとの最大ファイル サイズは 125,000 文字です。 全体が 125,000 文字を超えない限り、最大 25 ファイルを送信できます。
 
 > [!NOTE]
-> 制限を超えるファイルを送信する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 この処理には、[CLUtils の Chunk コマンド](https://github.com/microsoft/CogSLanguageUtilities/tree/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand)を使えます。
+> 制限を超えるファイルを送信する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 この処理には、[CLUtils の Chunk コマンド](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand/README.md)を使えます。
 
 ## <a name="azure-resource-limits"></a>Azure リソースの制限
 

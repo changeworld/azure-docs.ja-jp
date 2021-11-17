@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-entity-linking, ignite-fall-2021
-ms.openlocfilehash: d1c8d20c9581fa8c2f51b516c11e28e390a8fcd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bbd4483702055a4bebb05251606fb705b1e0deb2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131090007"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487469"
 ---
 # <a name="what-is-entity-linking-in-azure-cognitive-service-for-language"></a>Azure Cognitive Service for Language のエンティティ リンク設定とは
 
@@ -33,7 +33,7 @@ ms.locfileid: "131090007"
 
 ## <a name="responsible-ai"></a>責任ある AI 
 
-AI システムには、テクノロジだけでなく、それを使う人、それによって影響を受ける人、それがデプロイされる環境も含まれています。 システムでの責任ある AI の使用とデプロイについては、[エンティティ リンク設定の透明性に関する注意](/legal/cognitive-services/language-service/transparency-note-entity-linking?context=/azure/cognitive-services/language-service/context/context)の記事を参照してください。 詳細については、次の記事も参照してください。
+AI システムには、テクノロジだけでなく、それを使う人、それによって影響を受ける人、それがデプロイされる環境も含まれています。 システムでの責任ある AI の使用とデプロイについては、[エンティティ リンク設定の透明性に関する注意](/legal/cognitive-services/language-service/transparency-note?context=/azure/cognitive-services/language-service/context/context)の記事を参照してください。 詳細については、次の記事も参照してください。
 
 [!INCLUDE [Responsible AI links](../includes/overview-responsible-ai-links.md)]
 

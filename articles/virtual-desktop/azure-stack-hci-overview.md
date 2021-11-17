@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8b456b534dd176fd8dc6bcd3b31b2a713fd8d7a2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5faea9929fb62af8736e62ca6e629cb2bde01f3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131089744"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452169"
 ---
 # <a name="azure-virtual-desktop-for-azure-stack-hci-preview"></a>Azure Stack HCI 用 Azure Virtual Desktop (プレビュー)
 
@@ -66,7 +66,7 @@ Azure Stack HCI 用 Azure Virtual Desktop のパブリック プレビュー バ
 
 - Azure portal の [Azure Virtual Desktop] タブでは、Azure Stack HCI インフラストラクチャ上に新しい仮想マシンを直接作成することはできません。 代わりに、管理者はオンプレミスの仮想マシンを個別に作成し、それを Azure Virtual Desktop ホスト プールに登録する必要があります。
 
-- Windows 10 または Windows 11 Enterprise のマルチセッション仮想デスクトップに接続すると、ユーザーに有効なライセンスがある場合でも "ライセンス認証が必要" というメッセージが表示されることがあります。
+- Windows 10 または Windows 11 Enterprise のマルチセッション仮想デスクトップに接続すると、ユーザーに有効なライセンスがある場合でも、"Windows のライセンス認証" を促すデスクトップ ウォーターマークが表示されるなど、ライセンス認証の問題が発生することがあります。
 
 - Azure Stack HCI 用 Azure Virtual Desktop では現在、クラウドとオンプレミスの両方のセッション ホストを含むホスト プールはサポートされていません。 デプロイの各ホスト プールには、1 種類のホスト プールのみが含まれている必要があります。
 

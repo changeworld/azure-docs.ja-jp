@@ -7,18 +7,152 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 08/19/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: d91b14057937275338ee1c96ee4025d66af6251d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: references_regions
+ms.openlocfilehash: 384232e803469a2ccbe0480c0e4e41c01f96b7ee
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794600"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852258"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>リリース ノート - Azure Arc 対応データ サービス
 
 この記事では、Azure Arc 対応データ サービスで最近リリースされた、または強化された機能と機能強化について説明します。
+
+## <a name="november-2021"></a>2021 年 11 月
+
+このリリースは、2021 年 11 月 3 日に公開されました
+
+#### <a name="tools"></a>ツール
+
+##### <a name="azure-data-studio"></a>Azure Data Studio
+
+[Azure Data Studio 用の Arc 拡張機能](/sql/azure-data-studio/extensions/azure-arc-extension)の最新バージョンをインストールするか、この最新バージョンに更新してください。
+
+##### <a name="azure-az-cli"></a>Azure (`az`) CLI
+
+直接接続デプロイをサポートするために、`az` CLI 用の `arcdata` 拡張機能をインストールまたは更新してください。
+
+次の `sql` コマンドで、直接接続モードがサポートされるようになりました。
+
+   ```console
+   az arcdata dc create
+   az arcdata dc delete
+   az arcdata sql mi-arc create
+   az arcdata sql mi-arc delete
+   ```
+ 
+#### <a name="data-controller"></a>データ コントローラー
+
+- 直接接続モードが一般公開されました
+- Azure Arc 対応 Kubernetes クラスターの直接接続 Azure Arc データ コントローラー拡張機能で、サービス プリンシパル名の代わりに、システム生成のマネージド ID が使用されるようになりました。 新しい Azure Arc データ コントローラー拡張機能が作成されると、マネージド ID が自動的に作成されます。 それでも、使用状況とメトリックをアップロードするための適切なアクセス許可を付与する必要があります。
+- メトリックのアップロードでは、直接接続 Azure Arc データ コントローラーと共にシステム生成のマネージド ID が活用されます。 
+- Azure CLI (`az`) から、直接接続モードの Azure Arc データ コントローラーを作成します。
+- Azure Monitor にメトリックが自動的にアップロードされます
+- Azure Log Analytics にログが自動的にアップロードされます
+- Azure Arc データ コントローラーのデプロイの後、Azure へのメトリック、ログ、またはこれらの両方の自動アップロードを有効または無効にします。
+- Azure CLI を使用して、2021 年 7 月のリリースからインプレース アップグレードします (Azure Arc データ コントローラー、General Purpose SQL Managed Instance などの一般公開サービスのみ)。
+- 新しい環境変数を使用して、DC デプロイ時にメトリックとログのダッシュボードのユーザー名とパスワードを個別に設定します。
+
+   ```console
+   AZDATA_LOGSUI_USERNAME
+   AZDATA_LOGSUI_PASSWORD
+   AZDATA_METRICSUI_USERNAME
+   AZDATA_METRICSUI_PASSWORD
+   ```
+- 新しいコマンド - `az arcdata dc list-upgrades` を使用すると、現在デプロイされているデータ コントローラーから使用できるアップグレードの一覧が表示されます。
+
+
+以前と同様に、`AZDATA_USERNAME` および `AZDATA_PASSWORD` 環境変数を引き続き使用できます。 `AZDATA_USERNAME` と `AZDATA_PASSWORD` のみ指定した場合、デプロイでは、ログとメトリックの両方のダッシュボードに対してこれらが使用されます。
+
+##### <a name="region-availability"></a>利用可能なリージョン
+
+- このリリースでは、直接接続モードは次の Azure リージョンでのみ使用できます。
+
+   - 米国中北部 *
+   - 米国中部
+   - 米国東部
+   - 米国東部 2
+   - 米国西部 *
+   - 米国西部 2
+   - 米国西部 3 *
+   - 英国南部
+   - 西ヨーロッパ
+   - 北ヨーロッパ
+   - オーストラリア東部
+   - 東南アジア
+   - 韓国中部
+   - フランス中部
+
+    \* 2011 年 11 月に新しく追加
+
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
+
+- Azure Arc 対応 SQL Managed Instance General Purpose のインスタンスをインプレース アップグレードします
+- SQL バイナリが新しいバージョンに更新されました
+- Azure CLI を使用した Azure Arc 対応 SQL Managed Instance の直接接続モードのデプロイ
+- Azure Arc 対応 SQL Managed Instance のポイントインタイム リストアがこのリリースで一般公開されました。 現在、ポイントインタイム リストアは、General Purpose SQL Managed Instance でのみサポートされています。 Business Critical SQL Managed Instance のポイントインタイム リストアは、現在プレビュー段階です。
+- ポイントインタイム リストアで、新しい `--dry-run` オプションが使用できるようになりました
+- 回復ポイントの目標が既定で 5 分に設定され、構成不可になりました
+- バックアップの保持期間は、既定で 7 日間に設定されます。 保持期間をゼロに設定する新しいオプションでは、バックアップを必要としない開発およびテスト インスタンスの自動バックアップが無効になります
+- ポイントインタイム リストア操作で構成済みのタイム ゾーンが反映されない問題が解決されました 
+- Azure CLI または Azure Data Studio から特定の時点に復元します
+ 
+
+### <a name="known-issues"></a>既知の問題
+
+#### <a name="data-controller-upgrade"></a>データ コントローラーのアップグレード
+
+- 現時点では、CLI またはポータルを使用した直接接続データ コントローラーのアップグレードはサポートされていません。
+- 現時点で、Azure Arc データ コントローラーや General Purpose SQL Managed Instance など、一般公開されているサービスのみアップグレードできます。 また、Business Critical SQL Managed Instance、Azure Arc 対応 PostgreSQL Hyperscale、またはこれらの両方がある場合、アップグレードに進む前に、これらを削除します。
+
+#### <a name="commands"></a>コマンド
+
+現時点では、次のコマンドは直接接続モードをサポートしていません。
+
+```console
+az arcdata dc update
+az arcdata sql mi-arc update
+```
+
+#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
+
+- 現在のプレビュー リリースでは、Azure Arc 対応 PostgreSQL Hyperscale サーバーのバックアップと復元はサポートされていません。
+
+- `pg_cron` 拡張機能を同時に有効にし、構成することはできません。 これには、2 つのコマンドを使用する必要があります。 1 つは有効化のコマンドで、もう 1 つは構成するコマンドです。 次に例を示します。
+
+   1. 拡張機能の有効化:
+
+      ```console
+      az postgres arc-server edit -n myservergroup --extensions pg_cron
+      ```
+
+   1. サーバー グループを再起動します。
+
+   1. 拡張機能の構成:
+
+      ```console
+      az postgres arc-server edit -n myservergroup --engine-settings cron.database_name='postgres'
+      ```
+
+   再起動が完了する前に 2 つ目のコマンドを実行すると、失敗します。 そのような場合は、しばらく待ってから、2 つ目のコマンドをもう一度実行してください。
+
+- サーバー グループの構成を編集して追加の拡張機能を有効にするときに `--extensions` パラメーターに無効な値を渡すと、有効な拡張機能の一覧がサーバー グループの作成時の設定に誤ってリセットされ、ユーザーは追加の拡張機能を作成できなくなります。 そのような場合に使用できる唯一の回避策は、サーバー グループを削除して再デプロイすることです。
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
+
+- ポッドが再プロビジョニングされると、SQL Managed Instance によって、すべてのデータベースの完全バックアップの新しいセットが開始されます。
+- データ コントローラーが直接接続されている場合、SQL Managed Instance をプロビジョニングする前に、データ コントローラーを最新のバージョンにアップグレードする必要があります。 `v1.0.0_2021-07-30` のデータ コントローラー imageVersion を使用して SQL Managed Instance をプロビジョニングしようとしても成功しません。
+
+
+##### <a name="other-limitations"></a>その他の制限事項
+
+- トランザクション レプリケーションは現在サポートされていません。
+- ログ配布は現在ブロックされています。
+- SQL Server 認証のみがサポートされています。
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -47,24 +181,28 @@ ms.locfileid: "124794600"
 - AKS HCI へのデプロイには、特別なストレージ クラス構成が必要です。 詳細については、「[ストレージの構成 (Azure Stack HCI と AKS-HCI)](create-data-controller-indirect-cli.md#configure-storage-azure-stack-hci-with-aks-hci)」を参照してください。
 - データをエクスポートするときに SSL 以外の接続を許可するための新しい要件があります。 対話型プロンプトを非表示にするように環境変数を設定します。
 
-### <a name="whats-new"></a>新機能
+### <a name="whats-new"></a>新着情報
 
 #### <a name="data-controller"></a>データ コントローラー
 
 - 直接接続モードはプレビュー段階です。 
 
 - このリリースでは、直接接続モード (プレビュー) は次の Azure リージョンでのみ使用できます。
+
+   - 米国中北部 *
    - 米国中部
    - 米国東部
    - 米国東部 2
+   - 米国西部 *
    - 米国西部 2
+   - 米国西部 3 *
    - 英国南部
    - 西ヨーロッパ
    - 北ヨーロッパ
    - オーストラリア東部
    - 東南アジア
    - 韓国中部
-   - フランス中部
+   - フランス中部 \* :2021 年 11 月に新しく追加されました。
 
 - 現時点では、Grafana 管理エクスペリエンスを使用して、追加の基本認証ユーザーを Grafana に追加できます。 Grafana の .ini ファイルを変更することによる Grafana のカスタマイズは、サポートされていません。
 
@@ -77,17 +215,17 @@ ms.locfileid: "124794600"
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 
 - 自動バックアップとポイントインタイム リストアはプレビュー段階です。
-- Azure Arc 対応 SQL マネージド インスタンス内の既存のデータベースから、同じインスタンス内の新しいデータベースへのポイントインタイム リストアをサポートします。
+- Azure Arc 対応 SQL Managed Instance 内の既存のデータベースから、同じインスタンス内の新しいデータベースへのポイントインタイム リストアがサポートされます。
 - 現在の datetime が UTC 形式でポイントインタイムとして指定されている場合、最新の有効な復元時刻に解決され、有効な最後のトランザクションまで特定のデータベースが復元されます。
 - データベースは、トランザクションが実行された任意の時点に復元できます。
-- Azure Arc 対応 SQL マネージド インスタンスに対して特定の回復ポイント目標を設定するには、SQL マネージド インスタンスの CRD を編集して `recoveryPointObjectiveInSeconds` プロパティを設定します。 サポートされる値は 300 から 600 までです。
+- Azure Arc 対応 SQL Managed Instance に対して特定の回復ポイント目標を設定するには、SQL Managed Instance の CRD を編集して `recoveryPointObjectiveInSeconds` プロパティを設定します。 サポートされる値は 300 から 600 までです。
 - 自動バックアップを無効にするには、SQL インスタンスの CRD を編集して `recoveryPointObjectiveInSeconds` プロパティを 0 に設定します。
 
 ### <a name="known-issues"></a>既知の問題
 
 #### <a name="platform"></a>プラットフォーム
 
-- Azure portal を使用して、直接接続モードのクラスター上にデータ コントローラー、SQL マネージド インスタンス、または PostgreSQL Hyperscale サーバー グループを作成できます。 直接接続モードのデプロイは、他の Azure Arc 対応データ サービス ツールではサポートされていません。 具体的には、このリリース中は、次のツールのいずれかを使用して直接接続モードでデータ コントローラーをデプロイすることはできません。
+- Azure portal を使用して、直接接続モードのクラスター上にデータ コントローラー、SQL Managed Instance、または PostgreSQL Hyperscale サーバー グループを作成できます。 直接接続モードのデプロイは、他の Azure Arc 対応データ サービス ツールではサポートされていません。 具体的には、このリリース中は、次のツールのいずれかを使用して直接接続モードでデータ コントローラーをデプロイすることはできません。
    - Azure Data Studio
    - Kubernetes ネイティブ ツール (`kubectl`)
    - Azure CLI 用 `arcdata` 拡張機能 (`az`)
@@ -103,7 +241,7 @@ ms.locfileid: "124794600"
 
 #### <a name="data-controller"></a>データ コントローラー
 
-- Azure portal から Azure Arc データ コントローラーが削除されたとき、この Arc データ コントローラーにデプロイされた Azure Arc 対応 SQL マネージド インスタンスがある場合は、削除をブロックするための検証が行われます。 現在、この検証は、Azure Arc データ コントローラーの [概要] ページから削除が実行された場合にのみ適用されます。 
+- Azure portal から Azure Arc データ コントローラーが削除されたとき、この Arc データ コントローラーにデプロイされた Azure Arc 対応 SQL Managed Instance がある場合は、削除をブロックするための検証が行われます。 現在、この検証は、Azure Arc データ コントローラーの [概要] ページから削除が実行された場合にのみ適用されます。 
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
 
@@ -140,22 +278,22 @@ ms.locfileid: "124794600"
 
 ##### <a name="point-in-time-restorepitr-supportability-and-limitations"></a>ポイントインタイム リストア (PITR) のサポートと制限事項:
     
--  1 つの Azure Arc 対応 SQL マネージド インスタンスから別の Azure Arc 対応 SQL マネージド インスタンスへの復元は、サポートされていません。  データベースは、バックアップが作成されたのと同じ Azure Arc 対応 SQL Managed Instance にのみ復元できます。
--  ポイントインタイム リストアの目的のためには、データベースの名前変更は現在サポートされていません。
--  現時点では、ポイントインタイム リストアに許可される時間枠に関する情報を提供する CLI コマンドや API はありません。 データベースが作成された日時以降の妥当な期間内の時間を指定することができ、タイムスタンプが有効な場合は復元が機能します。 タイムスタンプが有効でない場合は、許可される期間がエラー メッセージを介して示されます。
--  TDE 対応データベースの復元はサポートされていません。
--  現在、削除されたデータベースは復元できません。
+- 1 つの Azure Arc 対応 SQL Managed Instance から、別の Azure Arc 対応 SQL Managed Instance スへの復元は、サポートされていません。  データベースは、バックアップが作成されたのと同じ Azure Arc 対応 SQL Managed Instance にのみ復元できます。
+- ポイントインタイム リストアの目的のためには、データベースの名前変更は現在サポートされていません。
+- 現時点では、ポイントインタイム リストアに許可される時間枠に関する情報を提供する CLI コマンドや API はありません。 データベースが作成された日時以降の妥当な期間内の時間を指定することができ、タイムスタンプが有効な場合は復元が機能します。 タイムスタンプが有効でない場合は、許可される期間がエラー メッセージを介して示されます。
+- TDE 対応データベースの復元はサポートされていません。
+- 現在、削除されたデータベースは復元できません。
 
 #####   <a name="automated-backups"></a>自動バックアップ
 
--  データベースの名前を変更すると、このデータベースの自動バックアップが停止します。
--  データ保持期間は適用されません。 使用可能な領域がある限り、すべてのバックアップが保持されます。 
--  単純復旧モデルのユーザー データベースはバックアップされません。
--  データベースの作成および削除に対する干渉を防ぐために、システム データベース `model` はバックアップされません。 管理操作が実行されているときは DB がロックされます。 
--  現時点では、`master` および `msdb` システム データベースだけがバックアップされます。 完全バックアップのみが 12 時間ごとに実行されます。
--  バックアップできるのは `ONLINE` ユーザー データベースのみです。
--  既定の回復ポイントの目標 (RPO): 5 分。 現在のリリースでは変更できません。
--  バックアップは無期限に保持されます。 領域を回復するには、手動でバックアップを削除します。
+- データベースの名前を変更すると、このデータベースの自動バックアップが停止します。
+- データ保持期間は適用されません。 使用可能な領域がある限り、すべてのバックアップが保持されます。 
+- 単純復旧モデルのユーザー データベースはバックアップされません。
+- データベースの作成および削除に対する干渉を防ぐために、システム データベース `model` はバックアップされません。 管理操作が実行されているときは DB がロックされます。 
+- 現時点では、`master` および `msdb` システム データベースだけがバックアップされます。 完全バックアップのみが 12 時間ごとに実行されます。
+- バックアップできるのは `ONLINE` ユーザー データベースのみです。
+- 既定の回復ポイントの目標 (RPO): 5 分。 現在のリリースでは変更できません。
+- バックアップは無期限に保持されます。 領域を回復するには、手動でバックアップを削除します。
 
 ##### <a name="other-limitations"></a>その他の制限事項
 - トランザクション レプリケーションは現在サポートされていません。
@@ -170,7 +308,7 @@ ms.locfileid: "124794600"
 
 #### <a name="new-deployment-templates"></a>新しいデプロイ テンプレート
 
-- データ コントローラー、ブートストラップ、マネージド インスタンス、および SQL マネージド インスタンス用の Kubernetes ネイティブ デプロイ テンプレートが変更されています。 ご使用の .yaml テンプレートを更新してください。 [サンプルの yaml ファイル](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml)
+- データ コントローラー、ブートストラップ、SQL Managed Instance 用の Kubernetes ネイティブ デプロイ テンプレートが変更されました。 ご使用の .yaml テンプレートを更新してください。 [サンプルの yaml ファイル](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml)
 
 #### <a name="new-azure-cli-extension-for-data-controller-and-azure-arc-enabled-sql-managed-instance"></a>データ コントローラーおよび Azure Arc 対応 SQL Managed Instance 用の新しい Azure CLI 拡張機能
 
@@ -180,7 +318,7 @@ ms.locfileid: "124794600"
 az extension add --name arcdata
 ```
 
-この拡張機能により、データ コントローラーと SQL マネージド インスタンスおよび PostgreSQL Hyperscale リソースのコマンドライン操作がサポートされます。
+この拡張機能により、データ コントローラーと SQL Managed Instance および PostgreSQL Hyperscale リソースのコマンドライン操作がサポートされます。
 
 データ コントローラーのスクリプトを更新するには、`azdata arc dc...` を `az arcdata dc...` に置き換えます。
 
@@ -210,7 +348,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 自動バックアップ サービスが利用可能になり、既定で有効になっています。 バックアップ ボリュームの空き領域を注意深く監視してください。
 
-### <a name="whats-new"></a>新機能
+### <a name="whats-new"></a>新着情報
 
 このリリースでは、Azure Arc 対応データ サービス用の CLI 拡張機能 `az` が導入されています。 詳細については、上記の「[互換性に影響する変更点](#breaking-change)」を参照してください。
 
@@ -240,19 +378,19 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 
--  自動バックアップが有効になりました。
--  `sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com` カスタム リソース定義 (CRD) に基づいて新しいカスタム リソースを作成することで、同じ SQL インスタンス上の新しいデータベースとしてデータベース バックアップを復元できるようになりました。 詳細についてはドキュメントを参照してください。 データベースを復元するためのコマンド ライン インターフェイス (`azdata` または `az`)、Azure portal、Azure Data Studio エクスペリエンスはまだありません。
--  このリリースに含まれる SQL エンジンのバイナリのバージョンは、Azure SQL Managed Instance (Azure の PaaS) にグローバルにデプロイされている最新のバイナリに合わせて調整されています。 この調整により、Azure SQL Managed Instance PaaS と Azure Arc 対応 Azure SQL Managed Instance の間でバックアップと復元が可能になります。 互換性の詳細については、後で説明します。
--  Azure portal から直接接続モードで Azure Arc SQL マネージド インスタンスを削除できるようになりました。
--  価格レベル (`GeneralPurpose`、`BusinessCritical`)、ライセンスの種類 (`LicenseIncluded`)、`BasePrice` (AHB 価格に使用)、`developer` を使用するように SQL Managed Instance を構成できるようになりました。 Azure Arc 対応 SQL Managed Instance を使用した場合、一般提供日 (公式発表で 2021 年 7 月 30 日の予定) まで、およびサービスの一般提供バージョンにアップグレードするまで、料金は発生しません。
--  Azure Data Studio の `arcdata` 拡張機能には、SQL マネージド インスタンスをデプロイおよび編集するために構成できる追加のパラメーターが加えられています (エージェントの有効化と無効化、管理者ログイン シークレット、注釈、ラベル、サービス注釈、サービス ラベル、SSL/TLS 構成設定、照合順序、言語、トレース フラグなど)。
--  `azdata` またはカスタム リソース タスクで分散型可用性グループを設定するための新しいコマンド。 これらのコマンドはプレビューの初期段階にあるため、ドキュメントは間もなく提供される予定です。
+- 自動バックアップが有効になりました。
+- `sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com` カスタム リソース定義 (CRD) に基づいて新しいカスタム リソースを作成することで、同じ SQL インスタンス上の新しいデータベースとしてデータベース バックアップを復元できるようになりました。 詳細についてはドキュメントを参照してください。 データベースを復元するためのコマンド ライン インターフェイス (`azdata` または `az`)、Azure portal、Azure Data Studio エクスペリエンスはまだありません。
+- このリリースに含まれる SQL エンジンのバイナリのバージョンは、Azure SQL Managed Instance (Azure の PaaS) にグローバルにデプロイされている最新のバイナリに合わせて調整されています。 この調整により、Azure SQL Managed Instance PaaS と Azure Arc 対応 Azure SQL Managed Instance の間でバックアップと復元が可能になります。 互換性の詳細については、後で説明します。
+- Azure portal から直接接続モードで Azure Arc SQL マネージド インスタンスを削除できるようになりました。
+- 価格レベル (`GeneralPurpose`、`BusinessCritical`)、ライセンスの種類 (`LicenseIncluded`)、`BasePrice` (AHB 価格に使用)、`developer` を使用するように SQL Managed Instance を構成できるようになりました。 Azure Arc 対応 SQL Managed Instance を使用した場合、一般提供日 (公式発表で 2021 年 7 月 30 日の予定) まで、およびサービスの一般提供バージョンにアップグレードするまで、料金は発生しません。
+- Azure Data Studio の `arcdata` 拡張機能には、SQL マネージド インスタンスをデプロイおよび編集するために構成できる追加のパラメーターが加えられています (エージェントの有効化と無効化、管理者ログイン シークレット、注釈、ラベル、サービス注釈、サービス ラベル、SSL/TLS 構成設定、照合順序、言語、トレース フラグなど)。
+- `azdata` またはカスタム リソース タスクで分散型可用性グループを設定するための新しいコマンド。 これらのコマンドはプレビューの初期段階にあるため、ドキュメントは間もなく提供される予定です。
 
    > [!NOTE]
    > これらのコマンドは、`az arcdata` 拡張機能に移行されます。
 
--  `azdata arc dc export` は非推奨とされます。 これは、Azure CLI 用 `arcdata` 拡張機能 (`az`) の `az arcdata dc export` によって置き換えられます。 データのエクスポートに異なる方法が使用されます。データ コントローラー API への直接接続は行われなくなくなりました。 代わりに、`exporttasks.tasks.arcdata.microsoft.com` カスタム リソース定義 (CRD) に基づいてエクスポート タスクが作成されます。 作成されたカスタム リソースのエクスポート タスクにより、ダウンロード可能なパッケージを生成するようにワークフローが処理されます。 Azure CLI の場合、このタスクが完了するまで待機し、タスクのカスタム リソース ステータスからセキュリティで保護された URL を取得してパッケージをダウンロードします。
--  NFS ベースのストレージ クラスの使用をサポート。
+- `azdata arc dc export` は非推奨とされます。 これは、Azure CLI 用 `arcdata` 拡張機能 (`az`) の `az arcdata dc export` によって置き換えられます。 データのエクスポートに異なる方法が使用されます。データ コントローラー API への直接接続は行われなくなくなりました。 代わりに、`exporttasks.tasks.arcdata.microsoft.com` カスタム リソース定義 (CRD) に基づいてエクスポート タスクが作成されます。 作成されたカスタム リソースのエクスポート タスクにより、ダウンロード可能なパッケージを生成するようにワークフローが処理されます。 Azure CLI の場合、このタスクが完了するまで待機し、タスクのカスタム リソース ステータスからセキュリティで保護された URL を取得してパッケージをダウンロードします。
+- NFS ベースのストレージ クラスの使用をサポート。
 - Azure portal に Arc SQL Managed Instance の診断とソリューションが追加されました
 
 ## <a name="may-2021"></a>2021 年 5 月
@@ -271,7 +409,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 #### <a name="platform"></a>プラットフォーム
 
-- Azure portal から、データ コントローラー、SQL マネージド インスタンス、および PostgreSQL Hyperscale サーバー グループを作成および削除します。
+- Azure portal から、データ コントローラー、SQL Managed Instance、PostgreSQL Hyperscale サーバー グループを作成および削除します。
 - Azure Arc データ サービスを削除するときにポータル アクションを検証します。 たとえば、データ コントローラーを使用してデプロイされた SQL マネージド インスタンスがある場合に、そのデータ コントローラーを削除しようとすると、ポータルによって警告が表示されます。
 - Azure portal を使用して Azure Arc 対応のデータ コントローラーをデプロイするときに、カスタム設定をサポートするカスタム構成プロファイルを作成します。
 - 必要に応じて、直接接続モードでログを Azure Log Analytics ワークスペースに自動的にアップロードします。
@@ -361,7 +499,7 @@ PostgreSQL 用のカスタム リソース定義 (CRD) は、どちらも 1 つ�
 
 ### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 
-- Azure portal から直接接続モードで SQL マネージド インスタンスを作成できるようになりました。
+- Azure portal から直接接続モードで SQL Managed Instance を作成できるようになりました。
 
 - データベースを 3 つのレプリカを持つ SQL Managed Instance に復元できるようになりました。これは、可用性グループに自動的に追加されます。
 
@@ -498,6 +636,6 @@ Azure Arc 対応データ サービスは、パブリック プレビュー用�
 
 - [クライアント ツールをインストールする](install-client-tools.md)
 - [Azure Arc データ コントローラーを作成する](create-data-controller.md) (先にクライアント ツールをインストールする必要があります)
-- [Azure Arc で Azure SQL マネージド インスタンスを作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成する必要があります)
+- [Azure Arc で Azure SQL Managed Instance を作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成する必要があります)
 - [Azure Arc に Azure Database for PostgreSQL Hyperscale サーバー グループを作成する](create-postgresql-hyperscale-server-group.md) (先に Azure Arc データ コントローラーを作成する必要があります)
 - [Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)

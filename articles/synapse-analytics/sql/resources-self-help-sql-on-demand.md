@@ -10,12 +10,12 @@ ms.date: 9/23/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick, wiassaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c5057290f21a87a2a8c599de7d3fdd2c8b76ebb6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5f783ad0ee776d4f07e313595e54dc6661dd8661
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046548"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556770"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -165,6 +165,12 @@ FROM
 
     AS [result]
 ```
+
+### <a name="cannot-bulk-load-because-the-file-could-not-be-opened"></a>ファイルを開けなかったので、一括読み込みできません
+
+このエラーは、クエリの実行中にファイルが変更された場合に返されます。 通常、次のようなエラーが発生します。`Cannot bulk load because the file {file path} could not be opened. Operating system error code 12(The access code is invalid.).`
+
+サーバーレス SQL プールでは、クエリの実行中に変更されたファイルを読み取ることはできません。 クエリではファイルをロックできません。 変更操作が **追加** されたことがわかっている場合は、オプション `{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}` を設定してみます。 [追加専用ファイルに対してクエリを実行する](query-single-csv-file.md#querying-appendable-files)方法または[追加専用ファイルにテーブルを作成する](create-use-external-tables.md#external-table-on-appendable-files)方法を参照してください。
 
 ### <a name="query-fails-with-conversion-error"></a>変換エラーでクエリが失敗する
 "データ ファイル <ファイル パス> の行 n、列 m <列名> の一括読み込みデータ変換エラー (型の不一致または指定されたコードページでは無効な文字)" というエラー メッセージでクエリが失敗する場合は、データ型が行番号 n および列 m の実際のデータと一致しなかったことを意味します。 
@@ -401,9 +407,28 @@ FROM
     AS [result]
 ```
 
+### <a name="waitiocompletion-call-failed"></a>`WaitIOCompletion` 呼び出しに失敗しました
+
+このメッセージは、リモート ストレージ (Azure Data Lake) からデータを読み取る IO 操作の完了を待機しているときにクエリが失敗したことを示します。ストレージがサーバーレス SQL プールと同じリージョンに配置されていること、および既定で一時停止されている `archive access` ストレージを使用していないことを確認してください。 ストレージのメトリックを確認し、ストレージ レイヤーに I/O 要求を飽和させる可能性のある (新しいファイルをアップロードしている) 他のワークロードがないことを確認します。
+
 ### <a name="incorrect-syntax-near-not"></a>'NOT' 付近に不適切な構文があります。
 
-このエラーは、列定義に `NOT NULL` 制約を含む列を含む外部テーブルがいくつかあることを示します。 テーブルを更新して、列定義から `NOT NULL` を削除します。
+このエラーは、列定義に `NOT NULL` 制約を含む列を含む外部テーブルがいくつかあることを示します。 テーブルを更新して、列定義から `NOT NULL` を削除します。 
+
+### <a name="inserting-value-to-batch-for-column-type-datetime2-failed"></a>列の種類 DATETIME2 のバッチに値を挿入できませんでした
+
+Parquet/Delta Lake ファイルに格納されている datetime 値を `DATETIME2` 列として表すことはできません。 Spark を使用してこのファイル内の最小値を調べ、0001-01-03 未満の日付があることを確認します。 Parquet (一部の Spark バージョン) で値を書き込むために使用されるユリウス暦と、サーバーレス SQL プールで使用されるグレゴリオ暦との間に 2 日の差がある場合があり、それによって、無効な (負の) 日付値に変換されることがあります。 
+
+Spark を使用してこれらの値を更新してみます。 次のサンプルは、Delta Lake で値を更新する方法を示しています。
+
+```spark
+from delta.tables import *
+from pyspark.sql.functions import *
+
+deltaTable = DeltaTable.forPath(spark, 
+             "abfss://my-container@myaccount.dfs.core.windows.net/delta-lake-data-set")
+deltaTable.update(col("MyDateTimeColumn") < '0001-02-02', { "MyDateTimeColumn": null } )
+```
 
 ## <a name="configuration"></a>構成
 
@@ -471,7 +496,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 | 型 `type name` の列 `column name` は外部データ型 `type name` と互換性がありません。 | `WITH` 句に指定された列の型が Azure Cosmos DB コンテナーの型と一致しません。 セクション「[Azure Cosmos DB から SQL 型へのマッピング](query-cosmos-db-analytical-store.md#azure-cosmos-db-to-sql-type-mappings)」で説明されているように列の型を変更するか、または `VARCHAR` 型を使用してください。 |
 | すべてのセルで、この列には `NULL` 値が含まれます。 | `WITH` 句の列名またはパス式が間違っている可能性があります。 `WITH` 句の列名 (または列の型の後のパス式) は、Azure Cosmos DB コレクションの一部のプロパティ名と一致する必要があります。 比較では、"*大文字と小文字が区別されます*"。 たとえば、`productCode` と `ProductCode` は異なるプロパティです。 |
 
-[Azure Synapse Analytics のフィードバック ページ](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)で、提案や問題を報告できます。
+[Azure Synapse Analytics のフィードバック ページ](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8)で、提案や問題を報告できます。
 
 ### <a name="utf-8-collation-warning-is-returned-while-reading-cosmosdb-string-types"></a>CosmosDB の文字列型の読み取り中に UTF-8 照合順序の警告が返される
 
@@ -517,7 +542,7 @@ Azure Synapse SQL では、次の場合、トランザクション ストアに�
   - パーティション スキーマを記述するためにワイルドカードを指定しないでください。 Delta Lake パーティションは、Delta Lake クエリによって自動的に識別されます。 
 - Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールで自動的に使用できるようになりません。 このような Delta Lake テーブルに対して、T-SQL 言語を使用してクエリを実行するには、[CREATE EXTERNAL TABLE](./create-use-external-tables.md#delta-lake-external-table) ステートメントを実行し、形式として Delta を指定します。
 - 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
-- サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
+- サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/d365community/idea/8fa91755-0925-ec11-b6e6-000d3a4f07b8)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data) には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - Azure Synapse Analytics のサーバーレス SQL プールでは、[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットはサポートされていません。
 - Delta Lake のサポートは、専用 SQL プールでは使用できません。 Delta Lake ファイルのクエリにはサーバーレス プールを使用していることを確認してください。
@@ -544,63 +569,9 @@ FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0
 
 このクエリが失敗した場合、呼び出し元には、基になるストレージ ファイルを読み取るためのアクセス許可がありません。 
 
-最も簡単な方法は、クエリの対象となるストレージ アカウントに対する "ストレージ BLOB データ共同作成者" ロールを自分に付与することです。 
+最も簡単な方法は、クエリを実行しようとしているストレージ アカウントに対する `Storage Blob Data Contributor` ロールを自分に付与することです。 
 - [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/blobs/assign-azure-role-data-access.md)。 
 - [「Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する」を参照してください](develop-storage-files-storage-access-control.md)。
-
-### <a name="partitioning-column-returns-null-values"></a>パーティション分割列から NULL 値が返される
-
-**状態**: 解決済み
-
-**リリース**: 2021 年 8 月
-
-### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>トポロジの変更またはコンピューティング コンテナーの障害が原因でクエリが失敗する
-
-**状態**: 解決済み
-
-**リリース**: 2021 年 8 月
-
-### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>"VARCHAR" 型の列は、外部データ型 "Parquet 列が入れ子にされた型" と互換性がありません
-
-WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。
-
-```sql
-SELECT TOP 10 *
-FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
-    FORMAT = 'delta') as rows;
-```
-
-スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。 FORMAT='parquet' を指定してパスに ** を追加すると、クエリによって何らかの結果が返されることを確認します。
-
-**回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。 これは、`WITH` 句がパーティション列に対して `NULL` を返すという別の既知の問題があるため、データセットがパーティション分割されている場合には機能しないことに注意してください。 複合型の列を含むパーティション分割されたデータセットは、現在サポートされていません。
-
-### <a name="cannot-parse-field-type-in-json-object"></a>JSON オブジェクト内の "type" フィールドを解析できない
-
-WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。 
-
-```sql
-SELECT TOP 10 *
-FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
-    FORMAT = 'delta') as rows;
-```
-
-スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。 FORMAT='parquet' を指定してパスに ** を追加すると、クエリによって何らかの結果が返されることを確認します。
-
-**回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。 これは、`WITH` 句がパーティション列に対して `NULL` を返すという別の既知の問題があるため、データセットがパーティション分割されている場合には機能しないことに注意してください。 複合型の列を含むパーティション分割されたデータセットは、現在サポートされていません。
-
-### <a name="cannot-find-value-of-partitioning-column-in-file"></a>ファイルのパーティション分割列の値が見つからない 
-
-Delta Lake データ セットのパーティション分割列に、`NULL` 値がある可能性があります。 これらのパーティションは `HIVE_DEFAULT_PARTITION` フォルダーに格納されます。 現在、これはサーバーレス SQL プールではサポートされていません。 この場合、次のようなエラーが表示されます。
-
-```
-Resolving Delta logs on path 'https://....core.windows.net/.../' failed with error:
-Cannot find value of partitioning column '<column name>' in file 
-'https://......core.windows.net/...../<column name>=__HIVE_DEFAULT_PARTITION__/part-00042-2c0d5c0e-8e89-4ab8-b514-207dcfd6fe13.c000.snappy.parquet'.
-```
-
-**回避策:** Apache Spark プールを使用して Delta Lake データ セットを更新し、パーティション分割列の `"null"` ではなく、何らかの値 (空の文字列または `null`) を使用してみてください。
 
 ### <a name="json-text-is-not-properly-formatted"></a>JSON テキストの形式が正しくない
 
@@ -608,43 +579,51 @@ Cannot find value of partitioning column '<column name>' in file
 
 ```
 Msg 13609, Level 16, State 4, Line 1
-JSON text is not properly formatted. Unexpected character '{' is found at position 263934.
+JSON text is not properly formatted. Unexpected character '' is found at position 263934.
 Msg 16513, Level 16, State 0, Line 1
 Error reading external metadata.
 ```
-まず、Delta Lake データ セットが破損していないことを確認します。
-- Azure Synapse または Databricks クラスターの Apache Spark プールを使用して、Delta Lake フォルダーの内容を読み取ることができることを確認します。 これにより、`_delta_log` ファイルが破損していないことを確認します。
-- `FORMAT='PARQUET'` を指定し、URI パスの末尾に再帰的なワイルドカード `/**` を使用して、データファイルの内容を読み取ることができることを確認します。 すべての Parquet ファイルを読み取ることができる場合、問題は `_delta_log` トランザクション ログ フォルダーにあります。
+Delta Lake データ セットが破損していないことを確認します。 Azure Synapse の Apache Spark プールを使用して、Delta Lake フォルダーの内容を読み取ることができることを確認します。 これにより、`_delta_log` ファイルが破損していないことを確認します。
 
-一般的なエラーと回避策
+**回避策** - Apache Spark プールを使用して Delta Lake データセットにチェックポイントを作成し、クエリを再実行してみてください。 チェックポイントによってトランザクションの JSON ログ ファイルが集計され、問題が解決する可能性があります。
 
-- `JSON text is not properly formatted. Unexpected character '.'` - 基になる parquet ファイルに、サーバーレス SQL プールでサポートされていないデータ型が含まれている可能性があります。
-
-**回避策:** サポートされていない型を除外する WITH スキーマを使用してみてください。
-
-- `JSON text is not properly formatted. Unexpected character '{'` - データベースの `_UTF8` 照合順序を使用している可能性があります。 
-
-**回避策:** `master` データベースまたは UTF8 以外の照合順序を持つその他のデータベースに対してクエリを実行してみてください。 この回避策で問題が解決された場合は、`_UTF8` 照合順序でないデータベースを使用します。 `WITH` 句の列定義で `_UTF8` 照合順序を指定してください。
-
-**一般的な回避策** - Apache Spark プールを使用して Delta Lake データセットにチェックポイントを作成し、クエリを再実行してみてください。 チェックポイントによってトランザクションの JSON ログ ファイルが集計され、問題が解決する可能性があります。
-
-データセットが有効であり、回避策が役に立たない場合は、サポート チケットを報告し、Azure サポートに再現手順を提供してください。
+データ セットが有効な場合は、[サポート チケットを作成](../../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request)し、追加情報を入力します。
 - 列の追加または削除やテーブルの最適化などの変更を行わないでください。これにより、Delta Lake トランザクション ログ ファイルの状態が変わる可能性があります。
 - `_delta_log` フォルダーの内容を新しい空のフォルダーにコピーします。 `.parquet data` ファイルはコピー **しない** でください。
 - 新しいフォルダーにコピーしたコンテンツを読み取り、同じエラーが発生していることを確認してください。
-- これで、引き続き Spark プールで Delta Lake フォルダーを使用できるようになりました。 これの共有が許可されている場合は、Microsoft サポートにコピーしたデータを提供します。
 - コピーした `_delta_log` ファイルの内容を Azure サポートに送信します。
 
-Azure チームは、`delta_log` ファイルの内容を調査し、考えられるエラーとその回避策に関する詳細情報を提供します。
+これで、引き続き Spark プールで Delta Lake フォルダーを使用できるようになりました。 これの共有が許可されている場合は、Microsoft サポートにコピーしたデータを提供します。 Azure チームは、`delta_log` ファイルの内容を調査し、考えられるエラーとその回避策に関する詳細情報を提供します。
+
+### <a name="partitioning-column-returns-null-values"></a>パーティション分割列から NULL 値が返される
+
+**状態**: 解決済み
+
+**リリース**: 2021 年 8 月
+
+### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>"VARCHAR" 型の列は、外部データ型 "Parquet 列が入れ子にされた型" と互換性がありません
+
+**状態**: 解決済み
+
+**リリース**: 2021 年 10 月
+
+### <a name="cannot-parse-field-type-in-json-object"></a>JSON オブジェクト内の "type" フィールドを解析できない
+
+**状態**: 解決済み
+
+**リリース**: 2021 年 10 月
+
+### <a name="cannot-find-value-of-partitioning-column-in-file"></a>ファイルのパーティション分割列の値が見つからない 
+
+**状態**: 解決済み
+
+**リリース**: 2021 年 11 月
 
 ### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>"ログ ファイルから JSON オブジェクトを解析できない" エラーによりパス ... のデルタ ログの解決が失敗する
 
-このエラーは、次の理由またはサポートされていない機能が原因で発生する場合があります。
-- Delta Lake データセットに対する[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)。 Azure Synapse Analytics のサーバーレス SQL プールでは、[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットはサポートされていません。
-- 統計情報を含む Delta Lake データセットの float 型の列。
-- float 型の列でパーティション分割されたデータセット。
+**状態**: 解決済み
 
-**回避策**: サーバーレス SQL プールを使用して Delta Lake フォルダーを読み取る場合は、[ブルーム フィルターを削除](/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)します。 問題の原因となっている `float` 型の列がある場合は、データセットを再度パーティション分割するか、統計情報を削除する必要があります。
+**リリース**: 2021 年 11 月
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -690,7 +669,7 @@ Synapse Studio を使用している場合は、SQL Server Management Studio や
 ```
 Login error: Login failed for user '<token-identified principal>'.
 ```
-サービス プリンシパルのログインは、SID としてアプリケーション ID を使用して作成する必要があります (オブジェクト ID ではありません)。 サービス プリンシパルには既知の制限があります。これにより、別の SPI やアプリに対してロールの割り当てを作成するときに、Azure Synapse サービスが Azure AD Graph からアプリケーション ID をフェッチできないようになっています。  
+サービス プリンシパルのログインは、SID としてアプリケーション ID を使用して作成する必要があります (オブジェクト ID ではありません)。 サービス プリンシパルには既知の制限があります。これにより、別の SPI やアプリに対してロールの割り当てを作成するときに、Azure Synapse サービスが Microsoft Graph からアプリケーション ID をフェッチできないようになっています。  
 
 #### <a name="solution-1"></a>解決策 #1
 Azure portal から [Synapse Studio] > [管理] > [アクセス制御] に移動し、目的のサービス プリンシパルに Synapse 管理者または Synapse SQL 管理者を手動で追加します。

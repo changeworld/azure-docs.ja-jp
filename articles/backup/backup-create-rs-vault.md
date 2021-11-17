@@ -4,12 +4,12 @@ description: この記事では、バックアップと復旧ポイントを格�
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: dde592064c5cd4f42bd8baf94854fa2f95f4945e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: afb8485fe8baca002102f82a6f44f535075cadf8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078277"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062626"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -42,35 +42,18 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 
 ## <a name="set-cross-region-restore"></a>リージョンをまたがる復元の設定
 
-**リージョンをまたがる復元 (CRR)** の復元オプションを使用すると、データをセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)) に復元できます。
+リージョンをまたがる復元 (CRR) の復元オプションを使用すると、データをセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。 これを使用して、監査またはコンプライアンスの要件がある場合に訓練を実施したり、プライマリ リージョンで災害が発生した場合にデータを復元したりできます。
 
-これは次のデータソースをサポートしています。
-
-- Azure VM
-- Azure VM 上にホストされている SQL データベース
-- Azure VM 上にホストされている SAP HANA データベース
-
-リージョンをまたがる復元を使用すると、次のことができます。
-
-- 監査またはコンプライアンスの要件がある場合にドリルを実施する
-- プライマリ リージョンで障害が発生した場合にデータを復元する
-
-VM を復元する場合は、VM またはそのディスクを復元できます。 Azure VM 上にホストされている SQL/SAP HANA データベースから復元する場合は、データベースまたはそのファイルを復元できます。
-
-この機能を選択するには、 **[バックアップ構成]** ウィンドウから **[Enable Cross Region Restore]\(リージョンをまたがる復元を有効にする\)** を選択します。
-
-このプロセスはストレージレベルで行われるため、[価格面での影響](https://azure.microsoft.com/pricing/details/backup/)があります。
-
->[!NOTE]
->作業を開始する前に、次のことを行います。
->
->- サポートされているマネージド型とリージョンの一覧については、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
->- Azure VM のリージョンをまたがる復元 (CRR) 機能と SAP HANA データベースは、現在、Azure のパブリック リージョンとソブリン リージョンのすべてで一般提供されています。 利用可能なリージョンについては、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
->- CRR は、任意の GRS コンテナーのためのコンテナー レベルのオプトイン機能です (既定ではオフになっています)。
->- オプトイン後にセカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかることがあります。
->- 現在、Azure VM の CRR は、Azure Resource Manager の Azure VM と暗号化された Azure VM でサポートされています。 クラシック Azure VM はサポートされません。 追加の管理の種類が CRR をサポートすると、それらは自動的に **登録** されます。
->- 初めて保護を開始した後は、現在、リージョンをまたがる復元を GRS または LRS に **戻すことはできません**。
->- 現在、[読み取りアクセス geo 冗長ストレージ (RA GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) のレプリケーションは 15 分ですが、セカンダリ リージョンの [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) は、プライマリ リージョンから最大 12 時間です。
+作業を開始する前に、次のことを行います。
+- CRR のサポート条件は以下のとおりです。
+     - [GRS レプリケーション タイプ](#set-storage-redundancy)の Recovery Services Vault のみ。
+     - ARM ベースの Azure VM および暗号化 Azure VM である Azure VM (VM またはそのディスクを復元できます)。 クラシック VM はサポートされません。  
+     - Azure VM でホストされている SQL/SAP HANA データベース (データベースまたはそのファイルを復元できます)
+     - サポートされているマネージド型とリージョンの一覧については、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
+- CRR を使用すると追加料金が発生します。[詳細](https://azure.microsoft.com/pricing/details/backup/)
+- オプトイン後に **セカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかる** ことがあります。
+- 初めて保護を開始した後は、現在、CRR を GRS または LRS に戻すことはできません。
+- 現在、読み取りアクセス geo 冗長ストレージ (RA GRS) のレプリケーションは 15 分ですが、セカンダリ リージョンの [RPO](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) は、プライマリ リージョンから最大 12 時間です。
 
 ### <a name="configure-cross-region-restore"></a>リージョンをまたがる復元の構成
 

@@ -5,12 +5,12 @@ ms.author: pprystinka
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 276c85523b9b3df19a436543dd01a8a5121e510a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 284db42a0e7816908929b98b649280b000b814f2
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131520373"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134018"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +57,7 @@ android {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-ui:1.0.0-alpha.1'
+    implementation 'com.azure.android:azure-communication-ui:1.0.0-alpha.2'
     ...
 }
 ```
@@ -146,8 +146,8 @@ class MainActivity : AppCompatActivity() {
         val options = GroupCallOptions(
             this,
             communicationTokenCredential,
+            UUID.fromString("GROUP_CALL_ID"),
             "DISPLAY_NAME",
-            UUID.fromString("GROUP_CALL_ID")
         )
 
         val callComposite: CallComposite = CallCompositeBuilder().build()
@@ -198,8 +198,8 @@ public class MainActivity extends AppCompatActivity {
 
         GroupCallOptions options = new GroupCallOptions(this,
                 communicationTokenCredential,
-                "DISPLAY_NAME",
-                UUID.fromString("GROUP_CALL_ID"));
+                UUID.fromString("GROUP_CALL_ID"),
+                "DISPLAY_NAME");
 
         callComposite.launch(options);
     }
@@ -300,8 +300,8 @@ CommunicationTokenCredential communicationTokenCredential = new CommunicationTok
 val options = GroupCallOptions(
             this,
             communicationTokenCredential,
+            UUID.fromString("GROUP_CALL_ID"),
             "DISPLAY_NAME",
-            UUID.fromString("GROUP_CALL_ID")
         )
 ```
 
@@ -311,8 +311,8 @@ val options = GroupCallOptions(
 GroupCallOptions options = new GroupCallOptions(
     this,
     communicationTokenCredential,
-    "DISPLAY_NAME",
-    UUID.fromString("GROUP_CALL_ID")
+    UUID.fromString("GROUP_CALL_ID"),
+    "DISPLAY_NAME"
 );
 ```
 -----
@@ -329,8 +329,8 @@ GroupCallOptions options = new GroupCallOptions(
 val options = TeamsMeetingOptions(
             this,
             communicationTokenCredential,
+            "TEAMS_MEETING_LINK",
             "DISPLAY_NAME",
-           "TEAMS_MEETING_LINK"
         )
 ```
 
@@ -340,8 +340,8 @@ val options = TeamsMeetingOptions(
 TeamsMeetingOptions options = new TeamsMeetingOptions(
     this,
     communicationTokenCredential,
-    "DISPLAY_NAME",
-    "TEAMS_MEETING_LINK"
+    "TEAMS_MEETING_LINK",
+    "DISPLAY_NAME"
 );
 ```
 
@@ -379,18 +379,10 @@ callComposite.launch(options);
 ```kotlin
 val callComposite: CallComposite =
             CallCompositeBuilder()
-                .callCompositeEventsHandler(ApplicationCallCompositeEventsHandler())
+                .onException { 
+                    //...
+                }
                 .build()
-
-...
-import com.azure.android.communication.ui.CallCompositeEventsHandler
-import com.azure.android.communication.ui.configuration.events.OnExceptionEventArgs
-
-class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
-    override fun onException(eventArgs: OnExceptionEventArgs) {
-        //...
-    }
-}
 ```
 
 #### <a name="java"></a>[Java](#tab/java)
@@ -398,18 +390,10 @@ class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
 ```java
 CallComposite callComposite =
                 new CallCompositeBuilder()
-                        .callCompositeEventsHandler(new ApplicationCallCompositeEventsHandler())
+                        .onException(eventArgs -> {
+                            //...
+                        })
                         .build();
-...
-import com.azure.android.communication.ui.CallCompositeEventsHandler;
-import com.azure.android.communication.ui.configuration.events.OnExceptionEventArgs;
-
-class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandler {
-    @Override
-    public void onException(@NonNull OnExceptionEventArgs eventArgs) {
-        //...
-    }
-}
 ```
 
 -----
@@ -429,7 +413,7 @@ class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandle
 ```kotlin
 import com.azure.android.communication.ui.configuration.ThemeConfiguration
 
-val communicationCallComposite: CallComposite =
+val callComposite: CallComposite =
         CallCompositeBuilder()
             .theme(ThemeConfiguration(R.style.MyCompany_CallComposite))
             .build()

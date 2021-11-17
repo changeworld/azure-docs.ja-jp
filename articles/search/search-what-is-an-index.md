@@ -1,5 +1,5 @@
 ---
-title: インデックスを作成する
+title: インデックスの概要
 titleSuffix: Azure Cognitive Search
 description: スキーマ定義や物理データ構造など、Azure Cognitive Search のインデックス作成の概念とツールについて説明します。
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: cdfadc895de3af0f79c30a067f3e5376bfa8873b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 11/08/2021
+ms.openlocfilehash: ab1106ef927829589934485c2022d353339d5089
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769104"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062816"
 ---
-# <a name="creating-search-indexes-in-azure-cognitive-search"></a>Azure Cognitive Search での検索インデックスの作成
+# <a name="search-indexes-in-azure-cognitive-search"></a>Azure Cognitive Search の検索インデックス
 
 Azure Cognitive Search では、フル テキスト クエリおよびフィルター適用済みクエリに使用される検索可能なコンテンツが "*検索インデックス*" に格納されます。 インデックスは、スキーマによって定義され、サービスに保存されます。2 番目の手順としてデータのインポートが続きます。 
 
-インデックスには "*検索ドキュメント*" が格納されます。 概念的に、ドキュメントはインデックス内で検索可能なデータの 1 つの単位です。 小売業者であれば製品ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*検索インデックス* は *テーブル* と同じで、*ドキュメント* はテーブルにおける *行* とほぼ同じです。
+この記事では、検索インデックスの概要について説明します。 すぐに開始したいですか? [検索インデックスの作成](search-how-to-create-search-index.md)に関する記事を参照してください。
 
-## <a name="whats-an-index-schema"></a>インデックス スキーマとは何ですか。
+## <a name="whats-a-search-index"></a>検索インデックスとは
+
+Cognitive Search のインデックスには "*検索ドキュメント*" が格納されます。 概念的に、ドキュメントはインデックス内で検索可能なデータの 1 つの単位です。 たとえば、小売業者であれば製品ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*検索インデックス* は *テーブル* と同じで、*ドキュメント* はテーブルにおける *行* とほぼ同じです。
 
 インデックスの物理的な構造は、スキーマによって決まります。 "フィールド" コレクションは通常、インデックスの最大の部分であり、各フィールドには、名前、[データ型](/rest/api/searchservice/Supported-data-types)の割り当て、および使用方法を決定する許容される動作を示す属性が設定されます。
 
@@ -59,56 +61,9 @@ Azure Cognitive Search では、フル テキスト クエリおよびフィル�
 
 その他の要素は簡潔にするために折りたたまれていますが、[suggester](index-add-suggesters.md)、[スコアリング プロファイル](index-add-scoring-profiles.md)、[アナライザー](search-analyzers.md)の各リンクから詳細を得ることができます。これらは、アナライザーによってサポートされる言語規則やその他の特性と、[クロス オリジン リモート スクリプティング (CORS)](#corsoptions) 設定に従って文字列をトークンに処理するために使用されます。
 
-## <a name="choose-a-client"></a>クライアントを選択する
+## <a name="field-definitions"></a>フィールド定義
 
-検索インデックスを作成する方法はいくつかあります。 早期の開発と概念実証のテストには、Azure portal または SDK をお勧めします。
-
-開発時に、頻繁な再構築を計画します。 物理構造はサービス内で作成されるため、既存のフィールド定義への変更のほとんどにおいて[インデックスの削除と再作成](search-howto-reindex.md)が必要です。 リビルドを高速化するために、データのサブセットを使って作業することを検討してもよいでしょう。
-
-### <a name="permissions"></a>アクセス許可
-
-GET 要求を含む、検索インデックスに関連するすべての操作では、要求に対して 1 つの[管理者 API キー](search-security-api-keys.md)が必要です。
-
-### <a name="limits"></a>制限
-
-作成できるオブジェクトの数が、すべての[サービス レベルで制限](search-limits-quotas-capacity.md#index-limits)されています。 Free レベルを試している場合は、所定の期間内に 3 つのインデックスのみを作成できます。
-
-### <a name="use-azure-portal-to-create-a-search-index"></a>Azure portal を使用して検索インデックスを作成する
-
-ポータルには、検索インデックスを作成するための次の 2 つのオプションが用意されています。[**データのインポート ウィザード**](search-import-data-portal.md)と **インデックスの追加** によって、インデックス スキーマを指定するためのフィールドが提供されます。 ウィザードでは、インデクサー、データソース、およびデータの読み込みも作成することにより、追加の操作が組み込まれます。 これだと目的よりも機能が多い場合は、**インデックスの追加** または別の方法を使用する必要があります。
-
-次のスクリーンショットは、ポータルで **インデックスの追加** 機能が見つかる場所を示したものです。 **データのインポート** がすぐそばにあります。
-
-  :::image type="content" source="media/search-what-is-an-index/add-index.png" alt-text="[インデックスの追加] コマンド" border="true":::
-
-> [!Tip]
-> ポータルを使用したインデックスの設計では、数値フィールドに対してフルテキスト検索機能を許可しないなど、特定のデータ型に対して要件とスキーマ ルールが適用されます。 機能するインデックスを作成したら、ポータルから JSON をコピーして、ソリューションに追加できます。
-
-### <a name="use-a-rest-client"></a>REST クライアントを使用する
-
-Postman と Visual Studio Code (Azure Cognitive Search 用の拡張機能を備えているもの) はどちらも、検索インデックス クライアントとして機能できます。 どちらのツールを使用しても、検索サービスに接続し、[インデックスを作成する (REST)](/rest/api/searchservice/create-index) 要求を送信できます。 REST クライアントを使用してオブジェクトを作成する方法がわかるチュートリアルと例が多数提供されています。 
-
-各クライアントの詳細については、最初に次のいずれかの記事を参照してください。
-
-+ [REST と Postman を使用して検索インデックスを作成する](search-get-started-rest.md)
-+ [Visual Studio Code と Azure Cognitive Search の使用を開始する](search-get-started-vs-code.md)
-
-インデックス要求を整理する方法については、「[インデックス操作 (REST)](/rest/api/searchservice/index-operations)」を参照してください。
-
-### <a name="use-an-sdk"></a>SDK を使用する
-
-Cognitive Search の場合、一般公開される機能は Azure SDK によって実装されています。 そのため、いずれかの SDK を使用して検索インデックスを作成できます。 これらのすべてに、インデックスを作成および更新するためのメソッドを含む **SearchIndexClient** が用意されています。
-
-| Azure SDK | Client | 例 |
-|-----------|--------|----------|
-| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-search-dotnet-samples/quickstart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
-| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
-| JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |
-| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
-
-## <a name="define-fields"></a>フィールドを定義する
-
-検索ドキュメントは、`fields` コレクションによって定義されます。 クエリとキーのフィールドが必要になります。 また、フィルター、ファセット、および並べ替えをサポートするフィールドが必要になる場合もあります。 また、ユーザーに表示されないデータのフィールドが必要な場合もあります。たとえば、利益幅やマーケティング プロモーションのためのフィールドを作成して、検索順位の変更に使用できます。
+検索ドキュメントは、`fields` コレクションによって定義されます。 ドキュメントの識別のためのフィールド (キー)、検索可能なテキストの格納、フィルター、ファセット、並べ替えをサポートするためのフィールドが必要になります。 ユーザーに表示しないデータのフィールドが必要になる場合もあります。 たとえば、検索順位の変更に使用できる利益率やマーケティング プロモーションのフィールドが必要な場合があります。
 
 Edm.String 型の 1 つのフィールドをドキュメント キーとして指定する必要があります。 これは各検索ドキュメントを一意に識別するために使用され、大文字と小文字が区別されます。 キーを使用してドキュメントを取得し、詳細ページを設定できます。
 
@@ -140,7 +95,7 @@ Edm.String 型の 1 つのフィールドをドキュメント キーとして�
 
 <a name="index-size"></a>
 
-## <a name="attributes-and-index-size-storage-implications"></a>属性とインデックスのサイズ (ストレージへの影響)
+## <a name="storage-implications-of-field-attributes"></a>フィールド属性のストレージへの影響
 
 インデックスのサイズは、アップロードするドキュメントのサイズと、suggester を含めるかどうかや、個々のフィールドに属性を設定する方法など、インデックス構成によって決定されます。 
 
@@ -175,7 +130,9 @@ CORS に対しては以下のオプションを設定できます。
 
 Azure Cognitive Search のインデックスの作成には、ほぼどのサンプルまたはチュートリアルを使用しても、実践の参考にできます。 まず、目次から任意のクイックスタートを選択できます。
 
-ただし、データを使用してインデックスを読み込む方法についても理解しておく必要があります。 インデックスの定義とデータのインポートの方法は、連携して定義されます。 次の記事では、インデックスの読み込みの詳細について説明します。
+ただし、データを使用してインデックスを読み込む方法についても理解しておく必要があります。 インデックスの定義とデータのインポートの方法は、連携して定義されます。 次の記事では、インデックスの作成および読み込みの詳細について説明します。
+
++ [検索インデックスの作成](search-how-to-create-search-index.md)
 
 + [データ インポートの概要](search-what-is-data-import.md)
 

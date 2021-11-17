@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5c6530f138167cbd21ed1b40dee3b056ceb8c638
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0e0f99f4400b07791f65e8525894278ae9f9b9f5
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803865"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133526"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -208,7 +208,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> ローカル SSD = 224 GB |32 |576 GB |50,000 IOPS <br> 512 MB/秒 |4,000 IOPS、33 MB/秒 |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> ローカル SSD = 896 GB |64 |4224 GB |80,000 IOPS <br> 2,000 MB/秒 |5,000 IOPS、50 MB/秒 |
 
-利用可能なすべての Azure VM サイズの一覧については、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。 これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
+利用可能なすべての Azure VM サイズの完全な一覧については、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。 これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
 
 *スケールの上限*  
 IOPS の上限は、VM あたりとディスクあたりで異なり、互いに独立しています。 アプリケーションが、VM と VM に接続された Premium ディスクの制限の範囲内で IOPS を引き上げていることを確認します。 制限を超えると、アプリケーションのパフォーマンスが調整されます。

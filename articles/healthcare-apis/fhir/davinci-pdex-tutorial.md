@@ -7,13 +7,13 @@ ms.subservice: fhir
 ms.topic: tutorial
 ms.author: cavoeg
 author: caitlinv39
-ms.date: 08/06/2021
-ms.openlocfilehash: d4b6906cc646d6dd742c15b78feb8af1e83a56ce
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.date: 11/12/2021
+ms.openlocfilehash: 12f7cbac225cfe4e85d2df21c363d4c08fb0b4c6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779860"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494457"
 ---
 # <a name="da-vinci-pdex"></a>Da Vinci PDex
 
@@ -23,7 +23,7 @@ ms.locfileid: "122779860"
 このチュートリアルでは、Azure の医療 api (fhir サービスと呼ばれる) の fhir サービスを設定して、 [Da ヴィンチ支払人データ Exchange 実装ガイド](http://hl7.org/fhir/us/davinci-pdex/toc.html)(pdex IG) の[Touchstone](https://touchstone.aegis.net/touchstone/)テストに合格する手順を説明します。
 
 > [!NOTE]
-> これらのすべてのテストに対して、JSON テストに対して実行します。 FHIR サービスは JSON と XML の両方をサポートしていますが、JSON または XML にアクセスするための個別のエンドポイントがありません。 このため、すべての XML テストが失敗します。 XML で機能ステートメントを表示する場合は、単に \_ format パラメーター: \` GET {fhirurl}/metadata を渡してください \_ 。format = xml\`
+> FHIR サービスは、JSON のみをサポートしています。 Microsoft オープンソースの FHIR サービスは、JSON と XML の両方をサポートしています。また、オープンソースでは、_format パラメーターを使用して XML 機能ステートメントを表示できます。 `GET {fhirurl}/metadata?_format=xml`
 
 ## <a name="touchstone-capability-statement"></a>Touchstone 機能ステートメント
 
@@ -57,7 +57,7 @@ ms.locfileid: "122779860"
 
 :::image type="content" source="media/centers-medicare-services-tutorials/davinci-pdex-test-patient-everything.png" alt-text="touchstone の患者/$everything テストに合格しました。":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Touchstone で支払人 Exchange テストに渡す方法について説明します。 次に、Da ヴィンチ PDEX 支払人 Network (Plan-Net) 実装ガイドをテストする方法を学習します。
 

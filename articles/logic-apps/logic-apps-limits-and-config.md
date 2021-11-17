@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
 ms.date: 11/02/2021
-ms.openlocfilehash: 68d587888a915ed317b6a31f9000d0086adda21b
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: eda51c5adb4d266e714b3a7ca26523b198dbcbc3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132283488"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442637"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Azure Logic Apps の制約と構成の参考文献
 
@@ -524,7 +524,7 @@ IP アドレスを使用してファイアウォールを設定する前に、�
 >
 > 次のコネクタは、Logic Apps サービスへの受信 Webhook コールバックを行います。
 >
-> Adobe Creative Cloud、Adobe Sign、Adobe Sign Demo、Adobe Sign Preview、Adobe Sign Stage、Microsoft Azure Sentinel、Business Central、Calendly、Common Data Service、DocuSign、DocuSign Demo、Dynamics 365 for Fin & Ops、LiveChat、Office 365 Outlook、Outlook.com、Parserr、SAP*、Shifts for Microsoft Teams、Teamwork Projects、Typeform
+> Adobe Creative Cloud、Adobe Sign、Adobe Sign Demo、Adobe Sign Preview、Adobe Sign Stage、Azure Sentinel、Business Central、Calendly、Common Data Service、DocuSign、DocuSign Demo、Dynamics 365 for Fin & Ops、LiveChat、Office 365 Outlook、Outlook.com、Parserr、SAP*、Shifts for Microsoft Teams、Teamwork Projects、Typeform
 >
 > \* **SAP**:返される呼び出し元は、デプロイ環境がマルチテナント Azure か ISE かによって異なります。 マルチテナント環境では、オンプレミス データ ゲートウェイによって Logic Apps サービスへのコールバックが行われます。 ISE では、SAP コネクタによって Logic Apps サービスへのコールバックが行われます。
 

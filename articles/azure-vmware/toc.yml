@@ -58,7 +58,7 @@
       items:
         - name: VM を保護、監視、管理する
           href: integrate-azure-native-services.md
-        - name: Azure Security Center を統合する
+        - name: Microsoft Defender for Cloud を統合する
           href: azure-security-integration.md
         - name: Azure NetApp Files を統合する
           href: netapp-files-with-azure-vmware-solution.md
@@ -208,7 +208,7 @@
           href: ./faq.yml
         - name: ネットワークと相互接続
           href: ./faq.yml
-        - name: ストレージ
+        - name: Storage
           href: ./faq.yml
         - name: ホスト、クラスター、およびプライベート クラウド
           href: ./faq.yml

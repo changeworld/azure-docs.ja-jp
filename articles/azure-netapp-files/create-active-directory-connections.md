@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/09/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: ba34d9d1d85ae5845247133289001ffe58174213
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: e05850686fca42a8d21bc477e39171ff792db307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407648"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473834"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -92,6 +92,17 @@ Azure NetApp Files のいくつかの機能では、Active Directory 接続が�
     [LDAP チャネル バインド](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry)構成が単体で Azure NetApp Files サービスに影響することはありません。 ただし、LDAP チャネル バインドとセキュリティで保護された LDAP (LDAPS や `start_tls`など) の両方を使用すると、SMB ボリュームの作成は失敗します。
 
 * AD 統合 DNS ではない場合、"フレンドリ名" を使用して Azure NetApp Files が機能するようにするには、DNS A/PTR レコードを追加する必要があります。 
+
+* 次の表では、LDAP キャッシュの Time to Live (TTL) 設定について説明します。 クライアントを使用してファイルまたはディレクトリにアクセスしようとする前に、キャッシュが更新されるまで待機する必要があります。 そうでないと、アクセスまたはアクセス許可の拒否メッセージがクライアントに表示されます。 
+
+    |     エラー状態    |     解像度    |
+    |-|-|
+    | キャッシュ |  [Default Timeout]\(既定のタイムアウト\) |
+    | グループ メンバーシップの一覧  | 24 時間の TTL  |
+    | Unix グループ  | 24 時間の TTL、1 分の負の TTL  |
+    | Unix ユーザー  | 24 時間の TTL、1 分の負の TTL  |
+
+    キャッシュには、*Time to Live* と呼ばれる特定のタイムアウト期間があります。 タイムアウト期間が経過すると、古いエントリが残らないようにエントリが期限切れになります。 *負の TTL* の値は、存在しない可能性があるオブジェクトの LDAP クエリに起因するパフォーマンスの問題を回避するために、失敗した参照が存在する場所です。   
 
 ## <a name="decide-which-domain-services-to-use"></a>使用するドメイン サービスを決定する 
 

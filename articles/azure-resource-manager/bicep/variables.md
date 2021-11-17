@@ -4,13 +4,13 @@ description: Bicep で変数を定義する方法について説明します
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/19/2021
-ms.openlocfilehash: 13cb7847019e6b8a4e6e00c6be8d5949a03b3072
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/12/2021
+ms.openlocfilehash: 35175cff08b1470725da87015a3faef9f5bc3ed4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219566"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494788"
 ---
 # <a name="variables-in-bicep"></a>Bicep の変数
 
@@ -25,6 +25,8 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 ```bicep
 var <variable-name> = <variable-value>
 ```
+
+変数の名前を変数、パラメーター、モジュール、またはリソースと同じにすることはできません。
 
 その変数の[データ型](data-types.md)は指定しないことに注意してください。 型は値から推論されます。 次の例では、変数を文字列に設定します。
 

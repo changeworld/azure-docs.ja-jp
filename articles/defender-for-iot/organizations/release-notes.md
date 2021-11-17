@@ -1,16 +1,16 @@
 ---
-title: Microsoft Defender for IoT の新機能
+title: Azure Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
 ms.topic: overview
-ms.date: 11/09/2021
-ms.openlocfilehash: 955e9feb6d7f47c325421a9bf680c2151a9200f6
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.date: 11/07/2021
+ms.openlocfilehash: ca588aed8a461e48cf85a01e97d5f8ddd4a42e24
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132283625"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988277"
 ---
-# <a name="whats-new-in-microsoft-defender-for-iot"></a>Microsoft Defender for IoT の新機能
+# <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能  
 
 [!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
@@ -18,13 +18,13 @@ ms.locfileid: "132283625"
 
 記載されている機能はプレビュー段階です。 [Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはその他のまだ一般提供されていない Azure 機能に適用される他の法律条項が含まれています。
 
-## <a name="versioning-and-support-for-defender-for-iot"></a>Defender for IoT のバージョン管理とサポート
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート
 
-以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Defender for IoT のバージョンを示しています。
+以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンを示しています。
 
 ### <a name="servicing-information-and-timelines"></a>サービスの情報とタイムライン
 
-Microsoft では、Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
+Microsoft では、Azure Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Azure Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
 
 ### <a name="versions-and-support-dates"></a>バージョンとサポートの日付
 

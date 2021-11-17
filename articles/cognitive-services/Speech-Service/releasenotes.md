@@ -9,15 +9,77 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e0be3ef40e60f43d3b76c58b8141a0e29ce2742f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b4b291006795728348aa694e56c3e84a88d8e65c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067681"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469960"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
+## <a name="speech-sdk-1190-2021-nov-release"></a>Speech SDK 1.19.0: 2021 年 11 月のリリース  
+
+ 
+
+**注**: [こちら](speech-sdk.md#get-the-speech-sdk)から Speech SDK を開始してください。 Windows の Speech SDK は、Visual Studio の Microsoft Visual C++ 再配布可能パッケージに依存します。 [こちら](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)でダウンロードできます。  
+  
+
+#### <a name="highlights"></a>ハイライト 
+
+- Speaker Recognition サービスの一般提供 (GA) が開始されました。 Speech SDK API は、C++、C#、Java、および Javascript で利用できます。 話者認識を使用すると、話者の固有の音声特性を正確に検証し、識別することができます。 詳細については、[ドキュメント](speaker-recognition-overview.md)を参照してください。 
+
+- Ubuntu 16.04 のサポートは Azure DevOps および Github と共に削除されました。 Ubuntu 16.04 の有効期間は、2021 年 4 月に終了しました。 Ubuntu 16.04 のワークフローは、Ubuntu 18.04 以降に移行してください。   
+
+- Linux バイナリの OpenSSL リンクは動的に変更されました。 Linux バイナリ サイズが約 50% 削減されました。 
+
+- Mac M1 の ARM ベースのシリコンをサポートしました。 
+
+ 
+
+#### <a name="new-features"></a>新機能 
+
+- **C++/C#/Java**: Microsoft Audio Stack を使用した音声入力のオーディオ処理のサポートを有効にする新しい API が追加されました。 [こちら](audio-processing-overview.md)のドキュメントを参照してください。
+
+- **C++** : より高度なパターン マッチングを容易にするための、意図認識用の新しい API が追加されました。 これには List や Prebuilt Integer エンティティのほか、意図やエンティティをモデルとしてグループ化することに対応しています (ドキュメント、アップデート、サンプルは現在開発中で、今後公開される予定です)。 
+
+- **Mac**: [GitHub の Issue 番号 1244](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1244) に関連して、Cocoapod、Python、Java、NuGet パッケージの ARM64 (M1) ベースのシリコンがサポートされるようになりました。
+
+- **iOS/Mac**: [GitHub の Issue 番号 919](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/919) に関連して、iOS と MacOS のバイナリが xcframework にパッケージされるようになりました。
+
+- **iOS/Mac**: [GitHub の Issue 番号 1171](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1171) に関連して、Mac catalyst がサポートされるようになりました。 
+
+- **Linux**: [Speech SDK について](speech-sdk.md)、CentOS7 向けの新しい tar パッケージが追加されました。
+
+- **Javascript**: VoiceProfile と SpeakerRecognizer の API が非同期または待避可能になりました。 
+
+- **Javascript**: US Government Azure リージョンのがサポートされるようになりました。 
+
+- **Windows**: ユニバーサル Windows プラットフォーム (UWP) で再生がサポートされるようになりました。 
+
+  
+
+#### <a name="bug-fixes"></a>バグの修正 
+
+- **Android**: Android パッケージの OpenSSL のセキュリティ アップデート (バージョン 1.1.1l に更新) 
+
+- **Python**: python でスピーカー デバイスを選択できないバグを修正しました。 
+
+- **Core**: 接続の試行が失敗したときに自動的に再接続するようになりました。 
+
+- **iOS**: Gstreamer を使用する際の不安定さとビットコード ビルドの問題により、iOS パッケージでのオーディオ圧縮を無効にしました。 詳細については、[GitHub の Issue 番号 1209](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1209) を参照してください。
+
+ 
+
+#### <a name="samples-github"></a>サンプル [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+
+- **Mac/iOS**: xcframework パッケージを使用するようサンプルとクイックスタートが更新されました。 
+
+- **.NET**: .NET core 3.1 バージョンを使用するようにサンプルが更新されました。 
+
+- **Javascript**: 音声アシスタントのサンプルが追加されました。 
+
+ 
 ## <a name="text-to-speech-2021-october-release"></a>テキスト読み上げの 2021 年 10 月のリリース
 **ニューラル TTS 用に新しい言語と音声を追加**
 - **49 個の新しい言語とバリアントが導入されました** - ニューラル TTS 言語の一覧に、以下に示す 49 個の新しいロケールの 98 個の新しい音声が追加されています。`af-ZA` アフリカーンス語 (南アフリカ) の Adri、`af-ZA` アフリカーンス語 (南アフリカ) の Willem、`am-ET` アムハラ語 (エチオピア) の Mekdes、`am-ET` アムハラ語 (エチオピア) の Ameha、`ar-AE` アラビア語 (アラブ首長国連邦) の Fatima、`ar-AE` アラビア語 (アラブ首長国連邦) の Hamdan、`ar-BH` アラビア語 (バーレーン) の Laila、`ar-BH` アラビア語 (バーレーン) の Ali、`ar-DZ` アラビア語 (アルジェリア) の Amina、`ar-DZ` アラビア語 (アルジェリア) の Ismael、`ar-IQ` アラビア語 (イラク) の Rana、`ar-IQ` アラビア語 (イラク) の Bassel、`ar-JO` アラビア語 (ヨルダン) の Sana、`ar-JO` アラビア語 (ヨルダン) の Taim、`ar-KW` アラビア語 (クウェート) の Noura、`ar-KW` アラビア語 (クウェート) の Fahed、`ar-LY` アラビア語 (リビア) の Iman、`ar-LY` アラビア語 (リビア) の Omar、`ar-MA` アラビア語 (モロッコ) の Mouna、`ar-MA` アラビア語 (モロッコ) の Jamal、`ar-QA` アラビア語 (カタール) の Amal、`ar-QA` アラビア語 (カタール) の Moaz、`ar-SY` アラビア語 (シリア) の Amany、`ar-SY` アラビア語 (シリア) の Laith、`ar-TN` アラビア語 (チュニジア) の Reem、`ar-TN` アラビア語 (チュニジア) の Hedi、`ar-YE` アラビア語 (イエメン) の Maryam、`ar-YE` アラビア語 (イエメン) の Saleh、`bn-BD` バングラ語 (バングラデシュ) の Nabanita、`bn-BD` バングラ語 (バングラデシュ) の Pradeep、`en-KE` 英語 (ケニア) の Asilia、`en-KE` 英語 (ケニア) の Chilemba、`en-NG` 英語 (ナイジェリア) の Ezinne、`en-NG` 英語 (ナイジェリア) の Abeo、`en-TZ` 英語 (タンザニア) の Imani、`en-TZ` 英語 (タンザニア) の Elimu、`es-BO` スペイン語 (ボリビア) の Sofia、`es-BO` スペイン語 (ボリビア) の Marcelo、`es-CL` スペイン語 (チリ) の Catalina、`es-CL` スペイン語 (チリ) の Lorenzo、`es-CR` スペイン語 (コスタリカ) の Maria、`es-CR` スペイン語 (コスタリカ) の Juan、`es-CU` スペイン語 (キューバ) の Belkys、`es-CU` スペイン語 (キューバ) の Manuel、`es-DO` スペイン語 (ドミニカ共和国) の Ramona、`es-DO` スペイン語 (ドミニカ共和国) の Emilio、`es-EC` スペイン語 (エクアドル) の Andrea、`es-EC` スペイン語 (エクアドル) の Luis、`es-GQ` スペイン語 (赤道ギニア) の Teresa、`es-GQ` スペイン語 (赤道ギニア) の Javier、`es-GT` スペイン語 (グアテマラ) の Marta、`es-GT` スペイン語 (グアテマラ) の Andres、`es-HN` スペイン語 (ホンジュラス) の Karla、`es-HN` スペイン語 (ホンジュラス) の Carlos、`es-NI` スペイン語 (ニカラグア) の Yolanda、`es-NI` スペイン語 (ニカラグア) の Federico、`es-PA` スペイン語 (パナマ) の Margarita、`es-PA` スペイン語 (パナマ) の Roberto、`es-PE` スペイン語 (ペルー) の Camila、`es-PE` スペイン語 (ペルー) の Alex、`es-PR` スペイン語 (プエルトリコ) の Karina、`es-PR` スペイン語 (プエルトリコ) の Victor、`es-PY` スペイン語 (パラグアイ) の Tania、`es-PY` スペイン語 (パラグアイ) の Mario、`es-SV` スペイン語 (エルサルバドル) の Lorena、`es-SV` スペイン語 (エルサルバドル) の Rodrigo、`es-UY` スペイン語 (ウルグアイ) の Valentina、`es-UY` スペイン語 (ウルグアイ) の Mateo、`es-VE` スペイン語 (ベネズエラ) の Paola、`es-VE` スペイン語 (ベネズエラ) の Sebastian、`fa-IR` ペルシャ語 (イラン) の Dilara、`fa-IR` ペルシャ語 (イラン) の Farid、`fil-PH` フィリピン語 (フィリピン) の Blessica、`fil-PH` フィリピン語 (フィリピン) の Angelo、`gl-ES` ガリシア語 (スペイン) の Sabela、`gl-ES` ガリシア語 (スペイン) の Roi、`jv-ID` ジャワ語 (インドネシア) の Siti、`jv-ID` ジャワ語 (インドネシア) の Dimas、`km-KH` クメール語 (カンボジア) の Sreymom、`km-KH` クメール語 (カンボジア) の Piseth、`my-MM` ミャンマー語 (ミャンマー) の Nilar、`my-MM` ミャンマー語 (ミャンマー) の Thiha、`so-SO` ソマリ語 (ソマリア) の Ubax、`so-SO` ソマリ語 (ソマリア) の Muuse、`su-ID` スンダ語 (インドネシア) の Tuti、`su-ID` スンダ語 (インドネシア) の Jajang、`sw-TZ` スワヒリ語 (タンザニア) の Rehema、`sw-TZ` スワヒリ語 (タンザニア) の Daudi、`ta-LK` タミル語 (スリランカ) の Saranya、`ta-LK` タミル語 (スリランカ) の Kumar、`ta-SG` タミル語 (シンガポール) の Venba、`ta-SG` タミル語 (シンガポール) の Anbu、`ur-IN` ウルドゥー語 (インド) の Gul、`ur-IN` ウルドゥー語 (インド) の Salman、`uz-UZ` ウズベク語 (ウズベキスタン) の Madina、`uz-UZ` ウズベク語 (ウズベキスタン) の Sardor、`zu-ZA` ズールー語 (南アフリカ) の Thando、`zu-ZA` ズールー語 (南アフリカ) の Themba。

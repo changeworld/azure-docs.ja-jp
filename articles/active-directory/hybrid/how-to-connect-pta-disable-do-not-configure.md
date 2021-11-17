@@ -11,12 +11,12 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66980ff85a3b539c81653f2abce39a1ced50003b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0e58ca9cce30c03467e7171ef29cf1e360fbe02e
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427610"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371716"
 ---
 # <a name="disable-pta"></a>PTA を無効にする 
 
@@ -53,8 +53,8 @@ PTA の無効化は、次のコマンドレットを使用して行うことが�
 PowerShell セッション内から、次を使用して PTA を無効にします。
 
 1. PS C:\Program Files\Microsoft Azure AD Connect Authentication Agent> `Import-Module .\Modules\PassthroughAuthPSModule`
-2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` または `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
-3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` または `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
+2. `Get-PassthroughAuthenticationEnablementStatus`
+3. `Disable-PassthroughAuthentication`
 
 ## <a name="if-you-dont-have-access-to-an-agent"></a>エージェントへのアクセス権がない場合
 

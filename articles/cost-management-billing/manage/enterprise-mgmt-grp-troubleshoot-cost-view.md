@@ -6,15 +6,15 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/22/2021
 ms.author: banders
-ms.custom: seodec18
-ms.openlocfilehash: c2a89f4905cda375b9e7565631a0ffd28e6dfa16
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: sapnakeshari
+ms.openlocfilehash: 02507604c1194d726014453bde6cd03c2c21aa31
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561461"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255428"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング
 
@@ -31,9 +31,12 @@ ms.locfileid: "128561461"
 2. EA の直接のお客様である場合は、次の可能性が考えられます。
     * お客様はアカウント所有者であり、登録管理者が **AO ビュー料金** 設定を無効にした。  
     * お客様は部門管理者であり、登録管理者が **DA ビュー料金** 設定を無効にした。
-    * 登録管理者に問い合わせて、アクセスできるように設定してもらってください。 登録管理者は[エンタープライズ ポータル](https://ea.azure.com/manage/enrollment)で設定を更新できます。
+    * 登録管理者に問い合わせて、アクセスできるように設定してもらってください。 登録管理者は [Azure portal](https://portal.azure.com/) で設定を更新できます。 **[ポリシー]** メニューに移動して、設定を変更します。 
+    * 登録管理者は[エンタープライズ ポータル](https://ea.azure.com/manage/enrollment)で設定を更新できます。
 
       ![ビュー変更のためのエンタープライズ ポータル設定を示しているスクリーンショット。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/ea-portal-settings.png)
+    
+ 
 
 ## <a name="asset-is-unavailable"></a>アセットを使用できない場合
 

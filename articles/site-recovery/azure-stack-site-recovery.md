@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 386eae05ea06b59aac290d5f1f51d643d7952b6a
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: d423f4511e830c4a62537330f3bff7d2c7bc6ec9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580424"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452720"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -260,7 +260,7 @@ Azure へのテスト フェールオーバーを実行して、すべて想定�
 
 1. **[保護されているアイテム]** で、 **[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
-3. **[コンピューティングとネットワーク]** で、必要に応じて設定を変更します。
+3. **[コンピューティング]** と **[ネットワーク]** の設定で、必要に応じて設定を変更します。
 
     - Azure VM 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます。
     - ネットワーク設定も、表示して変更できます。 これらには、フェールオーバー後に Azure VM が参加するネットワーク/サブネットと、VM に割り当てられた IP アドレスが含まれます。

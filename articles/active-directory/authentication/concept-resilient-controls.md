@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4ea1a6b66980081597f301f22243bfd7397630
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 522e3c3e22730ee038f2a77585b698b3ed89921e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388339"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321836"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -122,7 +122,7 @@ ms.locfileid: "129388339"
 * [Azure AD のセルフサービス パスワード リセット (SSPR)](./tutorial-enable-sspr.md) および [Azure AD のパスワード保護](./howto-password-ban-bad-on-premises-deploy.md)を展開し、ユーザーが禁止されているありふれたパスワードや条件を使用しないようにします。
 * 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 次に例を示します。
   * Exchange および SharePoint に制限されたセッション要求を送信するバックアップ ポリシーを構成します。
-  * 組織で Microsoft Cloud App Security が使用されている場合は、フォールバックするポリシーで、MCAS を適用し、MCAS によって読み取り専用アクセスを許可してアップロードを許可しないことを検討します。
+  * 組織で Microsoft Defender for Cloud Apps を使用している場合、Defender for Cloud Apps を使用するポリシーにフォールバックし、読み取り専用アクセスは許可するが、アップロードは許可しないことを検討してください。
 * 中断中にポリシーを簡単に見つけられるよう、ポリシーに名前を付けます。 ポリシー名には次の要素を含めます。
   * ポリシーの *ラベル番号*。
   * 表示するテキスト。このポリシーは緊急時のみを対象としています。 次に例を示します。**ENABLE IN EMERGENCY**

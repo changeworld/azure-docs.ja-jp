@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 7040b9b813d57d1ad10b2406e8167ac2ec0cd690
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7def4d2afac4a1f52db89defb226857b7f8b41fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166390"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468349"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカ
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーの読み取りレプリカは、プレビュー段階です。
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 MySQL は、インターネット規模の Web およびモバイル アプリケーションを実行するための一般的なデータベース エンジンの 1 つです。 多くのお客様は、オンライン教育サービス、ビデオ ストリーミング サービス、デジタル支払いソリューション、eコマース プラットフォーム、ゲーム サービス、ニュース ポータル、政府機関、医療機関の Web サイトなどにそれを使用しています。 これらのサービスは、Web またはモバイル アプリケーションでのトラフィックの増加に合わせて、サービスを提供し、スケーリングする必要があります。
 
@@ -118,17 +115,17 @@ Azure Database for MySQL フレキシブル サーバーにより、Azure Monito
 
 グローバル トランザクション識別子 (GTID) は、ソース サーバー上でコミットされた各トランザクションで作成される一意の識別子であり、Azure Database for MySQL フレキシブル サーバーでは既定でオフになっています。 GTID はバージョン 5.7 と 8.0 でサポートされています。 GTID の詳細とレプリケーションでの使用方法については、MySQL の [GTID を使用したレプリケーション](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html)に関するドキュメントを参照してください。
 
-GTID を構成するために、次のサーバー パラメーターを使用できます。 
+GTID を構成するために、次のサーバー パラメーターを使用できます。
 
 |**サーバー パラメーター**|**説明**|**既定値**|**値**|
 |--|--|--|--|
 |`gtid_mode`|トランザクションを識別するために GTID を使用するかどうかを示します。 モード間の変更は、一度に 1 つのステップで昇順でのみ実行できます (例: `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF*`|`OFF`:新規とレプリケーションのトランザクションの両方が匿名である必要があります <br> `OFF_PERMISSIVE`:新しいトランザクションは匿名です。 レプリケートされたトランザクションは、匿名または GTID トランザクションのいずれかにすることができます。 <br> `ON_PERMISSIVE`:新しいトランザクションは GTID トランザクションです。 レプリケートされたトランザクションは、匿名または GTID トランザクションのいずれかにすることができます。 <br> `ON`:新規およびレプリケートされたトランザクションは、どちらも GTID トランザクションである必要があります。|
-|`enforce_gtid_consistency`|トランザクション セーフな方法でログに記録できるステートメントのみを実行できるようにすることで、GTID の一貫性を強制的に適用します。 GTID レプリケーションを有効にする前に、この値を `ON` に設定する必要があります。 |`OFF*`|`OFF`:すべてのトランザクションが GTID の一貫性に違反することが許可されます。  <br> `ON`:すべてのトランザクションが GTID の一貫性に違反することが許可されません。 <br> `WARN`:すべてのトランザクションは GTID の一貫性に違反することが許可されますが、警告が生成されます。 | 
+|`enforce_gtid_consistency`|トランザクション セーフな方法でログに記録できるステートメントのみを実行できるようにすることで、GTID の一貫性を強制的に適用します。 GTID レプリケーションを有効にする前に、この値を `ON` に設定する必要があります。 |`OFF*`|`OFF`:すべてのトランザクションが GTID の一貫性に違反することが許可されます。  <br> `ON`:すべてのトランザクションが GTID の一貫性に違反することが許可されません。 <br> `WARN`:すべてのトランザクションは GTID の一貫性に違反することが許可されますが、警告が生成されます。 |
 
 **高可用性機能が有効になっている Azure Database for MySQL フレキシブル サーバーの場合、既定値は `ON` に設定されています*
 > [!NOTE]
 >
-> * いったん GTID を有効になると、無効に戻すことはできません。 GTID をオフにする必要がある場合は、サポートにお問い合わせください。 
+> * いったん GTID を有効になると、無効に戻すことはできません。 GTID をオフにする必要がある場合は、サポートにお問い合わせください。
 >
 > * GTID をある値から別の値に変更するには、一度に 1 つのステップをモードの昇順で実行します。 たとえば、gtid_mode が現在 OFF_PERMISSIVE に設定されている場合、ON_PERMISSIVE に変更することはできますが、ON にはできません。
 >
@@ -154,7 +151,7 @@ GTID を有効にして整合性動作を構成するには、[Azure portal](how
 | 停止されたレプリカ | ソース サーバーと読み取りレプリカの間のレプリケーションを停止すると、停止されたレプリカは、読み取りと書き込みの両方を受け入れるスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。 |
 | 削除されたソースおよびスタンドアロン サーバー | ソース サーバーが削除されると、すべての読み取りレプリカへのレプリケーションが停止されます。 これらのレプリカは自動的にスタンドアロン サーバーになり、読み取りと書き込みの両方を受け入れることができます。 ソース サーバー自体は削除されます。 |
 | ユーザー アカウント | ソース サーバー上のユーザーは、読み取りレプリカにレプリケートされます。 ソース サーバー上で使用可能なユーザー アカウントのみを使って読み取りレプリカに接続できます。 |
-| サーバー パラメーター | データが非同期にならないようにするため、また潜在的なデータの損失や破損を防ぐために、一部のサーバー パラメーターは、読み取りレプリカの使用時に更新されないようにロックされます。 <br> 次のサーバー パラメーターは、ソースとレプリカの両サーバーでロックされます。<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) パラメーターは、レプリカ サーバーでロックされます。 <br> ソース サーバーで上記のパラメーターのいずれかを更新するには、レプリカ サーバーを削除し、ソースでパラメーターの値を更新してから、レプリカを再作成してください。 
+| サーバー パラメーター | データが非同期にならないようにするため、また潜在的なデータの損失や破損を防ぐために、一部のサーバー パラメーターは、読み取りレプリカの使用時に更新されないようにロックされます。 <br> 次のサーバー パラメーターは、ソースとレプリカの両サーバーでロックされます。<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) パラメーターは、レプリカ サーバーでロックされます。 <br> ソース サーバーで上記のパラメーターのいずれかを更新するには、レプリカ サーバーを削除し、ソースでパラメーターの値を更新してから、レプリカを再作成してください。
 <br> 読み取りレプリカで「foreign_keys_checks」などのセッション レベルのパラメーターを構成する場合は、読み取りレプリカで設定されているパラメーター値がソース サーバーのパラメーター値と一致していることを確認してください。|
 | その他 | - レプリカのレプリカを作成することはサポートされていません。 <br> - メモリ内テーブルを使用すると、レプリカが同期しなくなる可能性があります。これは、MySQL レプリケーション テクノロジの制限事項です。 詳細については、[MySQL のリファレンス ドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html)をお読みください。 <br>- ソース サーバーのテーブルに主キーがあることを確認します。 主キーがないと、ソースとレプリカ間でレプリケーションの待機時間が発生する可能性があります。<br>- MySQL のレプリケーションの制限事項の完全な一覧については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を確認してください |
 

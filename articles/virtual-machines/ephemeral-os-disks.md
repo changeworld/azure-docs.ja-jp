@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7318baacb8765a6009c0cd502a5eafe1ad7ba20e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6ab8c0d7d1e547d564ddc3329858ddc49d51185b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082677"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448977"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -24,7 +24,7 @@ ms.locfileid: "131082677"
  
 エフェメラル ディスクの主な機能は次のとおりです。 
 - ステートレス アプリケーションに最適です。
-- Marketplace、カスタム イメージ、および [Shared Image Gallery](./shared-image-galleries.md) によってサポートされます。
+- Marketplace、カスタム イメージ、[Azure Compute Gallery](./shared-image-galleries.md) (旧称 Shared Image Gallery) でサポートされます。
 - VM およびスケール セット インスタンスを元のブート状態に速やかにリセットまたは再イメージ化することができます。  
 - 一時ディスクと同様に、待機時間が短縮されます。 
 - エフェメラル OS ディスクは無料で、OS ディスクのストレージ コストはかかりません。

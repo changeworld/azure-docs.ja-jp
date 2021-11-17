@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 5c8a6974778e76afc6f2ca7018e034ad5655690c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 42eaec619097d673c77b6b233a2f2316605971b6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262529"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132348428"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
@@ -56,7 +56,7 @@ ms.locfileid: "130262529"
 
 | 推奨 | 説明 |
 |-|-|
-|Azure Security Center の Azure Defender for App Service を使用する | [Azure Defender for App Service](../security-center/defender-for-app-service-introduction.md) は Azure App Service にネイティブ統合されています。 App Service プランの対象となるリソースが Security Center によって評価され、その結果に基づき、セキュリティ上の推奨事項が生成されます。 [こちらの推奨事項]()../security-center/recommendations-reference.md#appservices-recommendations) にある詳しい手順を利用し、App Service リソースを強化してください。 Azure Defender からは脅威防止機能も提供され、事前攻撃からコマンド & コントロールまで、ほぼすべての MITRE ATT&CK 作戦をカバーする無数の脅威を検出できます。 Azure App Service アラートの完全な一覧については、[Azure Defender for App Service のアラート](../security-center/alerts-reference.md#alerts-azureappserv)に関するページを参照してください。|
+|Microsoft Defender for Cloud の Microsoft Defender for App Service を使用する | [Microsoft Defender for App Service](../security-center/defender-for-app-service-introduction.md) は Azure App Service にネイティブ統合されています。 App Service プランの対象となるリソースが Defender for Cloud によって評価され、その結果に基づき、セキュリティ上の推奨事項が生成されます。 [こちらの推奨事項]()../security-center/recommendations-reference.md#appservices-recommendations) にある詳しい手順を利用し、App Service リソースを強化してください。 Microsoft Defender for Cloud からは脅威防止機能も提供され、無数の脅威を検出できます。事前攻撃からコマンド & コントロールまで、ほぼすべての MITRE ATT&CK 作戦に対応しています。 Azure App Service アラートの完全な一覧については、[Microsoft Defender for App Service のアラート](../security-center/alerts-reference.md#alerts-azureappserv)に関するページを参照してください。|
 
 ## <a name="next-steps"></a>次のステップ
 

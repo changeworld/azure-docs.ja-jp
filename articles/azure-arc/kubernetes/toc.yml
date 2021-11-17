@@ -56,7 +56,7 @@
           href: extensions.md
         - name: Azure Monitor を使用してコンテナーを監視する
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Azure Defender を使用して脅威保護を適用する
+        - name: Microsoft Defender for Cloud を使用して脅威保護を適用する
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Policy を使用したクラスター内でのポリシーの適用
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json

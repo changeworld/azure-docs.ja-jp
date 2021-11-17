@@ -11,19 +11,19 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: d5644ecbc6b76ab2fc1ec44239fc14c52ab5fa73
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bac6068c02ea4f253176a65061d11604104c2bd5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131092289"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439046"
 ---
 # <a name="what-is-custom-named-entity-recognition-ner-preview"></a>カスタム固有表現認識 (NER) とは (プレビュー)
 
-カスタムの NER は、 [Microsoft チューリング ](https://msturing.org/about)テクノロジ上に構築された[Azure Cognitive Service for Language](../overview.md)内のカスタム機能の一部として提供されています。 この機能を使用すると、ユーザーはカスタム AI モデルを作成して、コントラクトや財務ドキュメントなどの非構造化テキストからドメイン固有のエンティティを抽出できます。 開発者は、カスタムの NER プロジェクトを作成することによって、データのタグ付けを繰り返し行うことができ、モデル パフォーマンスをトレーニング、評価、および改善してから、利用できるようにすることができます。 
+カスタム NER は、[Azure Cognitive Service for Language](../overview.md) で提供されている機能の 1 つです。 これは、機械学習インテリジェンスを適用してカスタム NER タスク用のカスタム モデルを構築できるようにする、クラウドベースの API サービスです。
 
-モデルの構築とカスタマイズを簡単にするために、サービスには、[Language studio](https://aka.ms/languageStudio) を使用してアクセスできるカスタム Web ポータルが用意されています。 この[クイックスタート](quickstart.md)の手順に従って、サービスを簡単に開始できます。 
-
+カスタム NER は、[Azure Cognitive for Language](../overview.md) 内のカスタム機能の一部として提供されています。 この機能を使用すると、ユーザーはカスタム AI モデルを作成して、コントラクトや財務ドキュメントなどの非構造化テキストからドメイン固有のエンティティを抽出できます。 開発者は、カスタムの NER プロジェクトを作成することによって、データのタグ付けを繰り返し行うことができ、モデル パフォーマンスをトレーニング、評価、および改善してから、利用できるようにすることができます。 タグ付けされたデータの品質は、モデルのパフォーマンスに大きく影響します。 モデルの構築とカスタマイズを簡単にするために、サービスには、[Language Studio](https://aka.ms/languageStudio) からアクセスできるカスタム Web ポータルが用意されています。 この[クイックスタート](quickstart.md)の手順に従って、サービスを簡単に開始できます。 
+ 
 このドキュメントには、次の種類の記事が含まれています。
 
 * [クイックスタート](quickstart.md)は、サービスへの要求の実行方法を説明する概要手順です。
@@ -34,7 +34,7 @@ ms.locfileid: "131092289"
 
 ### <a name="information-extraction"></a>情報の抽出
 
-金融機関や法務部門の多くは、銀行明細書、法的契約書、銀行のフォームなど、数千の複雑な非構造化テキストのデータを 1 日単位で抽出して正規化します。 これらのフォームを手動で処理する代わりに、カスタムの NER がこのプロセスを自動化するのに役立ちます。
+金融機関や法務部門の多くは、銀行明細書、法的契約書、銀行のフォームなど、数千の複雑な非構造化テキストのデータを 1 日単位で抽出して正規化します。 これらのフォームを手動で処理する代わりにカスタム NER を使用すると、このプロセスを自動化し、コスト、時間、労力を節約できます。
 
 ### <a name="knowledge-mining-to-enhanceenrich-semantic-search"></a>セマンティック検索を強化するためのナレッジ マイニング
 
@@ -42,7 +42,7 @@ ms.locfileid: "131092289"
 
 ### <a name="audit-and-compliance"></a>監査とコンプライアンス
 
-組織のポリシーを監査して適用するために、手動で長いテキスト ファイルを使用する代わりに、カスタムの NER を使用して、自動化されたソリューションを構築し、必要なビジネス ルールを適用できます。 
+金融や法律関連企業の IT 部門は、ポリシーを監査して適用するために、非常に長いテキスト ファイルを手動で確認するのではなく、カスタム NER を使用して、自動化されたソリューションを構築できます。 これらのソリューションは、コンプライアンス ポリシーを適用し、構造化および非構造化コンテンツを処理するナレッジ マイニング パイプラインに基づいて必要なビジネス ルールを設定するのに役立ちます。
 
 ## <a name="application-development-lifecycle"></a>アプリケーション開発ライフサイクル
 
